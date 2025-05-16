@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e39d46_e7fd7aaf",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-16T20:20:00Z",
+      "side": 1,
+      "message": "Nit: The descriptions in this section are slightly oblique. I think the behavior we\u0027re talking about here is most directly described in the USB 3.2 Gen2 branch of Figure 5-1, the TBT Gen3 rows of Table 5-1 (including footnote 3), and ss 5.4.3.3 (describing the cable speed and cable type fields of the EUDO).",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 49
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00846d66_6e04d829",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-16T20:20:00Z",
+      "side": 1,
+      "message": "The structure here doesn\u0027t seem like it quite matches the comments or the process described in Figure 5-1. I don\u0027t see reference to differing decision paths for PD 2.0 and PD 3.0. Implicitly, there must be a little bit, because a PD 2.0 didn\u0027t define Gen3 or Gen4 USB speed fields. But this should only apply to the Discover ID cable speed check. Other than that, the PD 2.0 and PD 3.0 branches are equivalent here.\n\nAlso, Figure 5-1 depicts first checking the USB signaling and then only checking the TBT signaling if the USB signaling is Gen2.\n\nAlso, this code implicitly handles USB speed Gen1 the same and Gen3 and Gen4, but the comments obscure that.\n\nI think this could be something like\n```\n/* USB Gen3, or Gen4: Use directly */\nif (pd_get_rev() \u003d\u003d PD_REV30 \u0026\u0026 ss \u003e\u003d GEN2)\n   return ss;\n/* USB Gen1: Use directly */\nelse if (ss \u003d\u003d GEN1)\n   return ss;\nelse if (tbt_speed \u003d\u003d GEN3)\n   return GEN3;\nelse\n   return GEN2;\n```\nand I think the behavior would be equivalent, and the structure would map more closely to the flowchart.\n\nTo be clear, we may have to choose in some places between clarity of the code and clearly mapping to the flowchart, but I think here we can take a small step towards both ideals.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ee6ed0_ae9c8687",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-16T20:20:00Z",
+      "side": 1,
+      "message": "Nit: I think `cable_usb4_speed` would be a clearer name.",
+      "range": {
+        "startLine": 365,
+        "startChar": 35,
+        "endLine": 365,
+        "endChar": 53
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0bed0c1_254a7c97",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-16T20:20:00Z",
+      "side": 1,
+      "message": "Nit: I think this would be clearer if `max_board_speed` was USB-typed, and the board\u0027s max TBT speed was immediately converted to a USB speed. Unless we have a function to get the board\u0027s max USB speed directly, then we should use that.\n\nThen, the next line could just a straightforward MIN of two USB-typed speeds.",
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef448784_c2078e56",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-16T20:20:00Z",
+      "side": 1,
+      "message": "Don\u0027t we have a function to do this conversion?",
+      "range": {
+        "startLine": 384,
+        "startChar": 39,
+        "endLine": 384,
+        "endChar": 58
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
