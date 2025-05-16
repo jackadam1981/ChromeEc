@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10291e0_37792e5b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-16T10:09:24Z",
+      "side": 1,
+      "message": "This is not guarded call to privet library.",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a05641_6d6add82",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-16T10:09:24Z",
+      "side": 1,
+      "message": "This is not guarded call to privet library.",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
