@@ -177,6 +177,24 @@
       "parentUuid": "9853a917_b7dd1a77",
       "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd25468_4c88e85b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-16T19:17:03Z",
+      "side": 1,
+      "message": "I added them",
+      "parentUuid": "d95291d0_9b954a1b",
+      "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
