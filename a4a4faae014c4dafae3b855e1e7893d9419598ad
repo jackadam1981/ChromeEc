@@ -46,6 +46,29 @@
       },
       "revId": "a4a4faae014c4dafae3b855e1e7893d9419598ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6749d2ab_2b808568",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-05-16T22:53:02Z",
+      "side": 1,
+      "message": "Where is S0ix ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "a4a4faae014c4dafae3b855e1e7893d9419598ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
