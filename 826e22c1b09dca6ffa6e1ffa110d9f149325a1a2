@@ -22,6 +22,30 @@
       },
       "revId": "826e22c1b09dca6ffa6e1ffa110d9f149325a1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e09703_10e33bbc",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T11:57:21Z",
+      "side": 1,
+      "message": "This is for RTK5915 ULPM enter, however, in brox design, it support non-ULPM, so we\u0027ll enable this on later platform.",
+      "parentUuid": "362fa3d1_19179cb9",
+      "range": {
+        "startLine": 247,
+        "startChar": 7,
+        "endLine": 247,
+        "endChar": 22
+      },
+      "revId": "826e22c1b09dca6ffa6e1ffa110d9f149325a1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
