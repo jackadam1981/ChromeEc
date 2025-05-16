@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6791dd_9534869f",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:09:14Z",
+      "side": 1,
+      "message": "Move the ite.conf changes into a separate commit.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "9fca461986e172847876da3b4ae885a562bb2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2240449_3ac457ad",
+        "filename": "zephyr/program/brox/brtk/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:09:14Z",
+      "side": 1,
+      "message": "Delete.  The brtk platform should change the PDC log level.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "9fca461986e172847876da3b4ae885a562bb2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10639874_7477109f",
+        "filename": "zephyr/program/brox/brtk/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:09:14Z",
+      "side": 1,
+      "message": "Why is this needed?  Should this be enabled for all Realtek designs?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "9fca461986e172847876da3b4ae885a562bb2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb28349_e90bd940",
+        "filename": "zephyr/program/brox/brtk/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:09:14Z",
+      "side": 1,
+      "message": "This is included by ../binman.dtsi",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "9fca461986e172847876da3b4ae885a562bb2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
