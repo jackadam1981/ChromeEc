@@ -1,0 +1,214 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2910ac4_76f27339",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T00:12:28Z",
+      "side": 1,
+      "message": "Nit - split across multiple lines",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 95
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d3d9575b_21b2d953",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/Kconfig.flash",
+              "range": {
+                "startLine": 118,
+                "startChar": 0,
+                "endLine": 119,
+                "endChar": 0
+              },
+              "replacement": "\tdefault y if SOC_FAMILY_NPCX\n\tdefault y if SOC_FAMILY_ITE_EC\n\tdefault y if SOC_FAMILY_STM32\n\tdefault y if SOC_FAMILY_REALTEK_EC\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de090458_df35f3d0",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T00:12:28Z",
+      "side": 1,
+      "message": "The binman devicetree node sets these sizes.  This change isn\u0027t needed.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a67a40_0c707a35",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T00:12:28Z",
+      "side": 1,
+      "message": "These settings are already in minimal/realtek.conf.  They are not needed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52d3ef51_5b18e885",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f68419_231ff941",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T00:12:28Z",
+      "side": 1,
+      "message": "Add a comment: \"TODO: b/390237764 - add flash protection\"",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4d8d33f9_6c288fc9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+              "range": {
+                "startLine": 439,
+                "startChar": 0,
+                "endLine": 439,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* TODO: b/390237764 - add flash protection */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045419a7_4a19dddb",
+        "filename": "zephyr/program/minimal/realtek.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T00:12:28Z",
+      "side": 1,
+      "message": "Duplicate line",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "817ae88a_989c3d27",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/minimal/realtek.conf",
+              "range": {
+                "startLine": 8,
+                "startChar": 0,
+                "endLine": 9,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200fea93_a3ff3609",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T00:12:28Z",
+      "side": 1,
+      "message": "How is this address determined?  Can this be setup in the linker file instead?\n\nMy concern is that changes to the EC image layout could overlap this address.",
+      "range": {
+        "startLine": 45,
+        "startChar": 29,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
