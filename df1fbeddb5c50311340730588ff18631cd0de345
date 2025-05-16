@@ -159,6 +159,24 @@
       "parentUuid": "ab8bd461_12b7fde6",
       "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95291d0_9b954a1b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-16T05:20:05Z",
+      "side": 1,
+      "message": "Thanks. It would be nice if they switch to this file at some point and we can delete the CrosEC version of the driver.",
+      "parentUuid": "9853a917_b7dd1a77",
+      "revId": "df1fbeddb5c50311340730588ff18631cd0de345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
