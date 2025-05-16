@@ -16,6 +16,144 @@
       "message": "Note that this CL is blocked from merging until the upstream flash driver https://crrev.com/c/6553675/1 merges",
       "revId": "db163e5fd87ed2973100605628b504293875d287",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0798d0_5848e776",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T16:03:31Z",
+      "side": 1,
+      "message": "FLASH_WATCHDOG_RELOAD_SIZE isn\u0027t used by this driver.",
+      "range": {
+        "startLine": 302,
+        "startChar": 13,
+        "endLine": 302,
+        "endChar": 39
+      },
+      "revId": "db163e5fd87ed2973100605628b504293875d287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7061651f_9e0c11ff",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T16:03:31Z",
+      "side": 1,
+      "message": "Nit - the upstream driver checks for a negative offset so this check isn\u0027t needed.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "db163e5fd87ed2973100605628b504293875d287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29098479_347255fd",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T16:03:31Z",
+      "side": 1,
+      "message": "\"rearrange RAM\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "09edb6e3_204c8558",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+              "range": {
+                "startLine": 45,
+                "startChar": 0,
+                "endLine": 46,
+                "endChar": 0
+              },
+              "replacement": "/* TODO: follow b/416020794 to rearrange RAM */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "db163e5fd87ed2973100605628b504293875d287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3290cf7f_3fd652bf",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T16:03:31Z",
+      "side": 1,
+      "message": "Create a typedef for the function signature.",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cef62ae7_0fe0a903",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "typedef void (*start_lfw_func)(uint32_t, uint32_t, uint32_t, uint32_t);\n\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+              "range": {
+                "startLine": 52,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "\tstart_lfw_func __start_lfw_in_sram \u003d\n\t\t(start_lfw_func)(__lfw_sram_start | 0x01);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "db163e5fd87ed2973100605628b504293875d287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

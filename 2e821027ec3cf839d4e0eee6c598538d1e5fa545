@@ -353,6 +353,30 @@
       },
       "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7484492a_38c916ca",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T16:03:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "859d3e14_53edd0d1",
+      "range": {
+        "startLine": 45,
+        "startChar": 29,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
