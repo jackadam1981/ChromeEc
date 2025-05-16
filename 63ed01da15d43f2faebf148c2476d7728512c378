@@ -52,6 +52,24 @@
       "parentUuid": "7dec17f3_25efcfc4",
       "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7671cf91_3a473ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-16T17:39:23Z",
+      "side": 1,
+      "message": "based on this: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d689?q\u003dplatform%2Fec%20CONFIG_HOSTCMD_ALIGNED#:~:text\u003d688-,689,-690\n\nif the config is enabled or disabled, it is going to make the struct packed, right?",
+      "parentUuid": "6c5be6bf_0c6de406",
+      "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
