@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3535f739_fa39bc7f",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-16T19:31:01Z",
+      "side": 1,
+      "message": "@chlin56@nuvoton.com\n@CHChang19@nuvoton.com\n\nIf I modify this to:\n\n```\n\twp-ro {\n\t\tec-ro {\n\t\t\tkey-ro {\n\t\t\t\tcompatible \u003d \"cros-ec,flash-layout\";\n\t\t\t\ttype \u003d \"section\";\n\t\t\t\toffset \u003d \u003c0x1fc00\u003e;\n\t\t\t\tsize \u003d \u003c0x400\u003e;\n\t\t\t};\n\t\t};\n\t};\n```\n\nI believe I get a compilation error or warning??\n```\nKEY_RO:/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/packer/key.vbpubk2 SIG_RW:/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/packer/ec.sig`\nWARNING: copy_to_area: area KEY_RO: /mnt/host/source/src/platform/ec/build/zephyr/gwendolin/packer/key.vbpubk2 size (832) smaller than area size 1024; erasing remaining data to 0xff\nWARNING: copy_to_area: area SIG_RW: /mnt/host/source/src/platform/ec/build/zephyr/gwendolin/packer/ec.sig size (440) smaller than area size 1024; erasing remaining data to 0xff\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/ec.bin\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/key.vbprik2\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/ec.config\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/zephyr.ro.elf\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/zephyr.ro.lst\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/zephyr.rw.elf\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/zephyr.rw.lst\u0027 created.\nOutput file \u0027/mnt/host/source/src/platform/ec/build/zephyr/gwendolin/output/npcx_monitor.bin\u0027 created.\n```\n\ncan you please advise?",
+      "parentUuid": "b41ef9e1_c4005b62",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9292b941_80ad7f34",
         "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
         "patchSetId": 6
