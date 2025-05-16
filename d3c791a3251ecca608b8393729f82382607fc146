@@ -33,6 +33,23 @@
       "message": "could you please sync up with\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6516872?\nthat\u0027ll involve waiting until those patches land because it will determine\nto what extent we will be set up to share configs among the EC options on this RVP.",
       "revId": "d3c791a3251ecca608b8393729f82382607fc146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e5f081_a5a67b8e",
+        "filename": "zephyr/program/ocelot/ocelot_nuvoton/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-16T00:04:22Z",
+      "side": 1,
+      "message": "i\u0027m not sure if intel has access to the `arb` utility\nin order to auto-generate this file.\nyou may want to ask someone at google to regenerate this file\nif needed as we very much do not want to handcraft this file.",
+      "revId": "d3c791a3251ecca608b8393729f82382607fc146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
