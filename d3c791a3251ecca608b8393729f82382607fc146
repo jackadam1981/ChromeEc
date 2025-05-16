@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "975f0931_7b646285",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-16T00:16:20Z",
+      "side": 1,
+      "message": "Yes, I will sync up with the mentioned CL. I thought, pushing these cL patches will help us in determining the common files across the 3 projects. I will further push the initial cLs used for ITE as well for reference, so that syncing between 3 projects becomes easier \u0026 we can further restructure them.",
+      "parentUuid": "a7185eaa_87556d28",
+      "revId": "d3c791a3251ecca608b8393729f82382607fc146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71e5f081_a5a67b8e",
         "filename": "zephyr/program/ocelot/ocelot_nuvoton/generated.dtsi",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2025-05-16T00:04:22Z",
       "side": 1,
       "message": "i\u0027m not sure if intel has access to the `arb` utility\nin order to auto-generate this file.\nyou may want to ask someone at google to regenerate this file\nif needed as we very much do not want to handcraft this file.",
+      "revId": "d3c791a3251ecca608b8393729f82382607fc146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0287d052_41cd4929",
+        "filename": "zephyr/program/ocelot/ocelot_nuvoton/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-05-16T00:16:20Z",
+      "side": 1,
+      "message": "Intel donot have access to this file. \nI just changed this file for time being as with latest generated.dtsi changes for kbd, build for this Cl was failing. I will ask tristian to make corresponding changes, as it\u0027s breaking with his latest changes in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6522026",
+      "parentUuid": "71e5f081_a5a67b8e",
       "revId": "d3c791a3251ecca608b8393729f82382607fc146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
