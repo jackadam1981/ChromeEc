@@ -70,6 +70,30 @@
       },
       "revId": "00a679126dce6044330c61d6f8a33c32ffcbbbac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd56ac6_b88ac8bd",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-16T05:16:36Z",
+      "side": 0,
+      "message": "Based on above comment i have tested the code along with few other changes, and results looks positive. with this new CL, we have noticed the TBT5 cable returns 80Gbps in all scenario and it fallback to 40Gbps based on the Board max speed. Also it resolve the previous issue for cable capable of TBT3 Gen3 + USB3.2 USB2 speed that returns 20Gbps, now it fallback to board speed to 40Gbps. Also this CL adhered as per USB TypeC Spec Release v2.4 (Ref 5.4.3.2.1 Discovering Passive Cables, Ref 5.4.3.2 USB4 Cable Discovery). The test results are attached to partner bug for your reference as commnet#36. please review below CL.   \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6555304",
+      "parentUuid": "2c8d7c2f_b44fede5",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "00a679126dce6044330c61d6f8a33c32ffcbbbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

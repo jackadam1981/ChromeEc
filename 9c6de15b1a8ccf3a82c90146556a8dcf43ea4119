@@ -103,6 +103,24 @@
       ],
       "revId": "9c6de15b1a8ccf3a82c90146556a8dcf43ea4119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705c32ae_04aa0faa",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-16T05:16:36Z",
+      "side": 1,
+      "message": "Please review below CL, and based on your review feedback, we will do the change as per the comment.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6555304",
+      "parentUuid": "a07421f1_22739ae0",
+      "revId": "9c6de15b1a8ccf3a82c90146556a8dcf43ea4119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
