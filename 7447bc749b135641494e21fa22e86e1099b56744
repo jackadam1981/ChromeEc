@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47c30a0_0c82c487",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T16:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "596b89fc_05fd5f16",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "7447bc749b135641494e21fa22e86e1099b56744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee638369_920485a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-06T20:35:27Z",
       "side": 1,
       "message": "Dates should be changes to 2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7447bc749b135641494e21fa22e86e1099b56744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091f7cba_04858cac",
+        "filename": "zephyr/program/brox/brtk/brtk.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T16:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee638369_920485a5",
       "range": {
         "startLine": 1,
         "startChar": 13,
