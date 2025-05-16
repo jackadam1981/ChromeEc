@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2633a4fc_96f8d37d",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T16:16:41Z",
+      "side": 1,
+      "message": "Even thought the watchdog timer isn\u0027t enabled, the devicetree node `wdog: watchdog@4000c000` still exists and you can use it to get the register address.\n\n```\n#define WDT_NODE DT_INST(0, realtek_rts5912_watchdog)\n#define RTK_WDT_REG_BASE ((WDT_Type *)(DT_REG_ADDR(WDT_NODE)))\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 62
+      },
+      "revId": "db163e5fd87ed2973100605628b504293875d287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29098479_347255fd",
         "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
         "patchSetId": 13
