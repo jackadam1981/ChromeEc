@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f093b5d2_bb9a50ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-16T07:14:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3fdcc20c_b641b5b2",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f5e58cb_d06a0105",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6040286_ba495610",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-16T07:14:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4f5e58cb_d06a0105",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6354f710_f1797adb",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-05-15T20:00:15Z",
       "side": 1,
       "message": "Please run upload hooks when submitting changes, this failed several formatting checks which need to be fixed with:\n\ncros format zephyr/shim/chip/npcx/ram_lock.c zephyr/shim/core/cortex-m/mpu.c zephyr/test/hwtest/src/ram_lock.c",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ae6c65_264b805b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-16T07:14:37Z",
+      "side": 1,
+      "message": "Thanks for the reminder.\nDone.",
+      "parentUuid": "6354f710_f1797adb",
       "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e7eced_6457ee71",
+        "filename": "zephyr/shim/core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-16T07:14:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e386b236_cac26889",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 83
+      },
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a692186_c3315e71",
@@ -88,6 +166,24 @@
       "writtenOn": "2025-05-15T20:00:15Z",
       "side": 1,
       "message": "[FAILED] chromiumos/platform/ec: _check_no_long_lines\n    Found lines longer than the limit (first 5 shown):\n\n    zephyr/test/hwtest/src/ram_lock.c, line 248, 102 chars, over 80 chars",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd6ef4f_f873dcb3",
+        "filename": "zephyr/test/hwtest/src/ram_lock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-16T07:14:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8a692186_c3315e71",
       "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
