@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d548493_e20c74bd",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/interrupts.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-16T16:41:54Z",
+      "side": 1,
+      "message": "I do not think that is worthwhile for such a small DT snippet. Power sequencing signals is more complex so I\u0027m happy with sharing just that one.",
+      "parentUuid": "226c34ba_0537c80c",
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e65b4d_e829bcb9",
