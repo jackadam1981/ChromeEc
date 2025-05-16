@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "680e697c_fe0060b3",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T09:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2910ac4_76f27339",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 95
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de090458_df35f3d0",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-05-16T00:12:28Z",
       "side": 1,
       "message": "The binman devicetree node sets these sizes.  This change isn\u0027t needed.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7a7ae5_d02acd5a",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T09:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de090458_df35f3d0",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -106,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc67479_43e9a76b",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912_defconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T09:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a67a40_0c707a35",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09f68419_231ff941",
@@ -143,6 +215,30 @@
           ]
         }
       ],
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68928d65_ab1b7474",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T09:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f68419_231ff941",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 15
+      },
       "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +284,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf69a03a_014dedb3",
+        "filename": "zephyr/program/minimal/realtek.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T09:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "045419a7_4a19dddb",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 40
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "200fea93_a3ff3609",
@@ -201,6 +321,30 @@
       "writtenOn": "2025-05-16T00:12:28Z",
       "side": 1,
       "message": "How is this address determined?  Can this be setup in the linker file instead?\n\nMy concern is that changes to the EC image layout could overlap this address.",
+      "range": {
+        "startLine": 45,
+        "startChar": 29,
+        "endLine": 45,
+        "endChar": 40
+      },
+      "revId": "2e821027ec3cf839d4e0eee6c598538d1e5fa545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859d3e14_53edd0d1",
+        "filename": "zephyr/shim/chip/rtk/system_download_from_flash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-16T09:50:14Z",
+      "side": 1,
+      "message": "The concern make sense.\nThe address is based 0x2000_7000 - 0x2000_b3df: customer use (16 kb) this plan, but we can rerange the fmap and sram map in b/416020794. And push a CL for the rerange.",
+      "parentUuid": "200fea93_a3ff3609",
       "range": {
         "startLine": 45,
         "startChar": 29,
