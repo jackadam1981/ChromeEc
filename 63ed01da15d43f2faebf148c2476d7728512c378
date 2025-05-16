@@ -34,6 +34,24 @@
       "parentUuid": "d434ea90_71707e80",
       "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5be6bf_0c6de406",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-16T17:28:42Z",
+      "side": 1,
+      "message": "Since this is a zephyr project, I added this new config in `zephyr/program/fpmcu/Kconfig\n\n```\nif BOARD_HELIPILOT\n\nconfig HELIPILOT_EC_RO_QUIRKS\n\tbool \"Quirks required by helipilot EC RO\"\n\tdefault n\n\thelp\n\t  Include additional code that fixes problems when using EC RO and\n\t  Zephyr RW.\n\nconfig HOSTCMD_ALIGNED\n\tbool\n\tdefault y\nendif\n```\n\nI confirmed that this config is enabled in the `.config` file `./zephyr/helipilot/build-rw/zephyr/.config`\n\n```\nCONFIG_BOARD_HELIPILOT\u003dy\nCONFIG_HELIPILOT_EC_RO_QUIRKS\u003dy\nCONFIG_HOSTCMD_ALIGNED\u003dy\n```\n\nI am still getting the same compilation error",
+      "parentUuid": "7dec17f3_25efcfc4",
+      "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
