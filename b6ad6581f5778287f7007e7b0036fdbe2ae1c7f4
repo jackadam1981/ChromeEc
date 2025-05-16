@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64bd1dc3_772d613f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T15:42:46Z",
+      "side": 1,
+      "message": "This change needs to the flash support CL in order to compile.\n\nYou can require that this CL merges with the flash support CL by adding this message to the commit message (it should be added just before the Change-Id line)\n\n```\nCq-Depend: chromium:6508707\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "b6ad6581f5778287f7007e7b0036fdbe2ae1c7f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
