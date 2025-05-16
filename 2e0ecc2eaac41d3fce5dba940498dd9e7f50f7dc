@@ -33,6 +33,47 @@
       "message": "Brandon or Caveh, could you test this out on one of your devices?",
       "revId": "2e0ecc2eaac41d3fce5dba940498dd9e7f50f7dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe71583_24ddcdaa",
+        "filename": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-16T19:39:40Z",
+      "side": 1,
+      "message": "how about `s0ix-entry-timeout`?\n`s0ix-sleep-timeout` is somewhat confusing.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "027d6646_79078873",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/dts/bindings/power/intel,ap-pwrseq.yaml",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "  s0ix-entry-timeout:\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2e0ecc2eaac41d3fce5dba940498dd9e7f50f7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
