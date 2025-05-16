@@ -84,7 +84,8 @@ enum sleep_hang_type {
 };
 
 static uint16_t sleep_signal_timeout;
-static uint16_t host_sleep_timeout_default = CONFIG_SLEEP_TIMEOUT_MS;
+static uint16_t host_sleep_timeout_default =
+	AP_PWRSEQ_DT_VALUE(s0ix_entry_timeout) * MSEC_PER_SEC;
 static uint32_t sleep_signal_transitions;
 static enum sleep_hang_type timeout_hang_type;
 
