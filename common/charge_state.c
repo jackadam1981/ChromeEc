@@ -191,8 +191,8 @@ static int battery_sustainer_set(int8_t lower, int8_t upper)
 	if (lower == -1 || upper == -1) {
 		if (battery_sustainer_enabled()) {
 			CPRINTS("Sustainer disabled");
-			sustain_soc.lower = -1;
-			sustain_soc.upper = -1;
+			sustain_soc.lower = 30;
+			sustain_soc.upper = 40;
 			sustain_soc.flags = 0;
 		}
 		return EC_SUCCESS;
