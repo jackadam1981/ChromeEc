@@ -16,6 +16,24 @@
       "message": "@davidmcross@google.com does this increase the memory usage footprint?",
       "revId": "5d4dda32705e4b3ab927c95f4ae9be3315077a64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644bc693_693f2bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-16T00:14:55Z",
+      "side": 1,
+      "message": "Yes, by 568 bytes (323976 - 323408), 323408 being the baseline image size after cherry picking crrev/c/6552540, the first CL in the chain",
+      "parentUuid": "8f779131_b07ba372",
+      "revId": "5d4dda32705e4b3ab927c95f4ae9be3315077a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
