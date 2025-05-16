@@ -5,6 +5,9 @@
 cros_ec_library_include_directories(include)
 
 zephyr_library_sources(clock.c)
+if (NOT DEFINED CONFIG_COVERAGE)
+  add_subdirectory(rtk_flame)
+endif()
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_EXTERNAL_STORAGE
         system_external_storage.c
         system_download_from_flash.c)

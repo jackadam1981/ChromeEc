@@ -427,6 +427,7 @@ class RTKBinmanPacker(BinmanPacker):
     """
 
     ro_file = "zephyr.rts5912.bin"
+    rts5915_flash_upload = "rts5915_flash_upload.bin"
 
     def _get_max_image_bytes(self, dir_map):
         ro_dir = dir_map["ro"]
@@ -444,6 +445,7 @@ class RTKBinmanPacker(BinmanPacker):
     # This can probably be removed too and just rely on binman to
     # check the sizes... see the comment above.
     def pack_firmware(self, work_dir, jobclient, dir_map, version_string=""):
+        ro_dir = dir_map["ro"]
         for path, output_file in super().pack_firmware(
             work_dir,
             jobclient,
@@ -457,6 +459,9 @@ class RTKBinmanPacker(BinmanPacker):
                 )
             else:
                 yield path, output_file
+
+        # Include the RTK monitor file as an output artifact.
+        yield ro_dir / self.rts5915_flash_upload, self.rts5915_flash_upload
 
 
 # A dictionary mapping packer config names to classes.
