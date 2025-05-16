@@ -50,6 +50,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c901da02_c8b02ccd",
+        "filename": "zephyr/program/brox/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-05-16T23:00:10Z",
+      "side": 1,
+      "message": "If I am reading the macros correctly, this needs to be \"S0ix\", here and in all the files.",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "651181da_ec740221",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/power_signals.dtsi",
+              "range": {
+                "startLine": 153,
+                "startChar": 0,
+                "endLine": 154,
+                "endChar": 0
+              },
+              "replacement": "\t\tchipset \u003d \"S0ix\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a4a4faae014c4dafae3b855e1e7893d9419598ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6749d2ab_2b808568",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 2
