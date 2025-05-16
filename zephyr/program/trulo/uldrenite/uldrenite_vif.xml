@@ -154,7 +154,7 @@
       <vif:SnkPDO>
         <!--Sink PDO 3-->
         <vif:Snk_PDO_Supply_Type value="2">Variable</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Op_Current value="325">3250 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
+        <vif:Snk_PDO_Op_Current value="300">3000 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
         <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
         <vif:Snk_PDO_Max_Voltage value="300">15000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
       </vif:SnkPDO>
@@ -323,7 +323,7 @@
       <vif:SnkPDO>
         <!--Sink PDO 3-->
         <vif:Snk_PDO_Supply_Type value="2">Variable</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Op_Current value="325">3250 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
+        <vif:Snk_PDO_Op_Current value="300">3000 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
         <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
         <vif:Snk_PDO_Max_Voltage value="300">15000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
       </vif:SnkPDO>
