@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2dd5f2e_96d1848e",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:00:58Z",
+      "side": 1,
+      "message": "These are the EC application defaults.  No need to duplicate.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a29a4458_65afb062",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/Kconfig.defconfig",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8951ba77_e21368c2",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:00:58Z",
+      "side": 1,
+      "message": "`CHIP_VERSION_OFFSET`?  This routine duplicates the get_chip_id function from above.",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ca7c91_480baa7b",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:00:58Z",
+      "side": 1,
+      "message": "Create a macro for this value.",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dbc29b86_80ead977",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "#define BBRAM_KEY_VALUE 0xA5\n\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 160,
+                "startChar": 0,
+                "endLine": 161,
+                "endChar": 0
+              },
+              "replacement": "\tif (key_val !\u003d BBRAM_KEY_VALUE) {\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 176,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "\t\tkey_val \u003d BBRAM_KEY_VALUE;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

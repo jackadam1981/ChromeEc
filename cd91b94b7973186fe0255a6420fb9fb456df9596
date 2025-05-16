@@ -429,6 +429,30 @@
       },
       "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466b8992_f7da76e7",
+        "filename": "zephyr/include/cros/realtek/realtek.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-16T17:00:58Z",
+      "side": 1,
+      "message": "I\u0027ve reconsidered, a linker section isn\u0027t needed.  However, can the ROM log info area be reserved in Zephyr upstream?",
+      "parentUuid": "07681f7c_753e6c1a",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
