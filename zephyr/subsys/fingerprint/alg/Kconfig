@@ -30,6 +30,15 @@ config FP_ALGORITHM_TEMPLATE_SIZE
 	  consists of template size + alignment padding + size of template
 	  size variable.
 
+config FP_MAX_FINGER_COUNT
+	  int "Maximum number of loaded finger templates"
+	  default 5 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
+	  default 5 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
+	  default 5
+	  help
+		Max number of templates stored / matched against. This limit comes
+		from memory constraints and matching time.
+
 config HAVE_BEP_PRIVATE_DRIVER
 	bool
 	default n
