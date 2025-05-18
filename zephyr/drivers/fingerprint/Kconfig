@@ -43,6 +43,14 @@ config FINGERPRINT_SENSOR_IMAGE_OFFSET
 
 	  This option overrides the default offset (0).
 
+config FP_MAX_FINGER_COUNT
+	int "Maximum number of loaded finger templates"
+	default 5 if FINGERPRINT_SENSOR_FPC1025
+	default 5 if FINGERPRINT_SENSOR_FPC1145
+	help
+	  Max number of templates stored / matched against. This limit comes
+	  from memory constraints and matching time.
+
 # zephyr-keep-sorted-start
 rsource "Kconfig.fpc"
 rsource "Kconfig.sensor_sim"
