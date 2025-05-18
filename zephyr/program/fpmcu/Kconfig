@@ -35,8 +35,8 @@ config BLOONCHIPPER_EC_RO_QUIRKS
 
 endif
 
-config BOARD_HELIPILOT
-	bool "Helipilot FPMCU Board"
+config BASEBOARD_HELIPILOT
+	bool "Helipilot FPMCU Baseboard"
 	select HAS_COVERAGE_SUPPORT
 	select BOARD_FINGERPRINT
 	select FINGERPRINT_SUBSYSTEM if CROS_EC_RW
@@ -48,10 +48,11 @@ config BOARD_HELIPILOT
 	depends on PLATFORM_EC_RSA_KEY_SIZE = 3072
 	depends on PLATFORM_EC_RSA_EXPONENT_3
 	help
-	  Build the helipilot FPMCU board. The board uses NPCX99FPA0BX MCU
-	  and FPC1025 sensor.
+	  Build the helipilot FPMCU Baseboard. The Baseboard uses NPCX99FPA0BX MCU
+	  in combination with a variety of fingerprint sensors including FPC1025,
+	  ELAN80SG, EGIS630, etc.
 
-if BOARD_HELIPILOT
+if BASEBOARD_HELIPILOT
 
 config HELIPILOT_EC_RO_QUIRKS
 	bool "Quirks required by helipilot EC RO"
