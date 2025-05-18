@@ -35,7 +35,7 @@ config BLOONCHIPPER_EC_RO_QUIRKS
 
 endif
 
-config BOARD_HELIPILOT
+config BASEBOARD_HELIPILOT
 	bool "Helipilot FPMCU Board"
 	select HAS_COVERAGE_SUPPORT
 	select BOARD_FINGERPRINT
@@ -51,7 +51,7 @@ config BOARD_HELIPILOT
 	  Build the helipilot FPMCU board. The board uses NPCX99FPA0BX MCU
 	  and FPC1025 sensor.
 
-if BOARD_HELIPILOT
+if BASEBOARD_HELIPILOT
 
 config HELIPILOT_EC_RO_QUIRKS
 	bool "Quirks required by helipilot EC RO"
