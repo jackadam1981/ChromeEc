@@ -30,7 +30,7 @@ ZTEST(timer, test_crec_usleep)
 	int error_threshold =
 		(USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC) * 2;
 
-	if (IS_ENABLED(CONFIG_BOARD_HELIPILOT)) {
+	if (IS_ENABLED(CONFIG_BASEBOARD_HELIPILOT)) {
 		/* TODO(b/309557100): Adjust the threshold for Helipilot as it
 		 * is done for CrosEC.
 		 */
