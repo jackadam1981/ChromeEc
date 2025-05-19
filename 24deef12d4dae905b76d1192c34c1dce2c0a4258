@@ -52,6 +52,24 @@
       "parentUuid": "dc3deb9a_0f8f0862",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967430d9_e20a0a26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-19T10:51:57Z",
+      "side": 1,
+      "message": "Could you move `gwendolin.dts` under `fpmcu/helipilot`, please? Also I see that `helipilot/gwendolin/gpio.dtsi` is the same as `helipilot/gpio.dtsi`. Could you remove the former file?\n\nAlso I noticed that `helipilot/gwendolin/soc.dtsi` is almost the same as `helipilot/soc.dtsi` (you removed code/data split change). The idea behind changing code/data split in `helipilot/soc.dts` was to provide some kind of default split, but I see that each board redefines the split again, so I think, you can remove code/data split change from `helipilot/soc.dtsi` and also reuse that file.\n\nIf you have some questions please let me know.",
+      "parentUuid": "d3cdbd29_cc479dc8",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
