@@ -88,6 +88,24 @@
       "parentUuid": "967430d9_e20a0a26",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7da96808_bb14c101",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-19T19:51:45Z",
+      "side": 1,
+      "message": "\u003e My understanding is that the split in `helipilot/soc.dtsi` was mandatory for helipilot\n\nThat was a [default from EC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/helipilot/base_board.h;l\u003d65-79;drc\u003d41b950775beed01afbc7c1ddb2107d5a0e1d1b7b), but due to rounding bug the split turned out to be different. It was hardcoded in RO, so we had to adjust `helipilot.dts` to take that into account.\n\n\u003e If I understood correctly, Patryk is asking that I remove the split from this file and reuse it for Gwendolin.\n\nI just noticed that you don\u0027t really need to remove the default split (from `helipilot/soc.dtsi`), because you override it in `gwendolin.dts` anyway.",
+      "parentUuid": "9e36e676_f8c4dde1",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
