@@ -3,14 +3,14 @@
 # found in the LICENSE file.
 
 description: "BYD L25B3PG1"
-compatible: "BYD,l25b3pg1"
+compatible: "byd,l25b3pg1"
 
 include: battery-smart.yaml
 
 properties:
   enum-name:
     type: string
-    default: "BYD,l25b3pg1"
+    default: "byd,l25b3pg1"
 
   # Fuel gauge
   manuf_name:
