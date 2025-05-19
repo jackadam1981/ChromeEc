@@ -178,6 +178,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f98e55_9a5f51f2",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-19T20:55:48Z",
+      "side": 1,
+      "message": "\u003e In the first \"if\" condition, we replaced \"\u003e\u003d\" with \"\u003e\".\n\nYou\u0027re right. I messed that up. I think the version you have in patchset 2 looks right.",
+      "parentUuid": "ab9ec5b7_431b97e2",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ee6ed0_ae9c8687",
@@ -363,6 +387,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "cebbd347_18c47274",
+      "range": {
+        "startLine": 384,
+        "startChar": 39,
+        "endLine": 384,
+        "endChar": 58
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbf7c3d_54164206",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-19T20:55:48Z",
+      "side": 1,
+      "message": "IMO, we should, but we can save that for future refactoring. The code you have here appears to be correct.",
+      "parentUuid": "02d843e7_3763ac58",
       "range": {
         "startLine": 384,
         "startChar": 39,
