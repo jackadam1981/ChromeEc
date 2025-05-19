@@ -150,6 +150,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "020de616_c78a1d0a",
+        "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-19T06:09:43Z",
+      "side": 1,
+      "message": "```\nWARNING: copy_to_area: area KEY_RO: /mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/key.vbpubk2 size (832) smaller than area size 1024; erasing remaining data to 0xff\nWARNING: copy_to_area: area SIG_RW: /mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/ec.sig size (440) smaller than area size 1024; erasing remaining data to 0xff\n```\n\nThis is a warning message, and it indicates that the file size is not aligned to 1024 bytes. As stated in the message, the content will be aligned accordingly.\n\nAs this is not an area we\u0027re familiar with, we’re unable to provide concrete suggestions at the moment.",
+      "parentUuid": "897f7b3e_0e452839",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "c648ee4f02aa79a899a9f60e8b5d0447821b9458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9292b941_80ad7f34",
         "filename": "zephyr/program/fpmcu/gwendolin/rwsig.dtsi",
         "patchSetId": 6
