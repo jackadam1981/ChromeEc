@@ -19,8 +19,8 @@
 /* Erase bank size */
 #define CONFIG_FLASH_ERASE_SIZE \
 	DT_PROP(DT_INST(0, soc_nv_flash), erase_block_size)
-/* Protect bank size */
-#define CONFIG_FLASH_BANK_SIZE CONFIG_FLASH_ERASE_SIZE
+/* Protect bank size, set by SPI_FLASH_SR1_SEC (0 = 64 KB) */
+#define CONFIG_FLASH_BANK_SIZE 0x10000
 
 #define CONFIG_RO_STORAGE_OFF 0x20
 #define CONFIG_RW_STORAGE_OFF 0x0
