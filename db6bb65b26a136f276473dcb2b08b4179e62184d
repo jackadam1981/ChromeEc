@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85fc3edd_fff3ed3b",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-19T17:58:00Z",
+      "side": 1,
+      "message": "nit: this part looks new. Can you mention it in the commit message?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 68
+      },
+      "revId": "db6bb65b26a136f276473dcb2b08b4179e62184d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
