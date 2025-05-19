@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c34c78e_308e7a9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-19T20:45:24Z",
+      "side": 1,
+      "message": "The correct behavior is that they should default to SVDM version 2.1 but fall back to previous versions based on the partners\u0027 behavior. I think that\u0027s what you meant and what this CL does.\n\nIf so, I\u0027d modify the commit message for clarity:\n```suggestion\nFall back to lower PD spec revisions coherently, based on the partners\u0027 advertised PD revisions and SVDM versions.\n```",
+      "parentUuid": "ed3ddf38_f7d7c961",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdce7962_bd0ba1a3",
         "filename": "zephyr/test/drivers/testcase.yaml",
         "patchSetId": 6
@@ -219,6 +243,24 @@
       "side": 1,
       "message": "Could you explain a bit more?",
       "parentUuid": "7b50c6b2_e027c2bb",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee19ca6_c8ab7e37",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-19T20:45:24Z",
+      "side": 1,
+      "message": "The code on the next line sets the UFP VDO, and the UFP VDO does not include hardware version or firmware version fields. Those fields do exist in the passive cable VDO and other SOP\u0027 VDOs, but that\u0027s not what this function is about. This comment doesn\u0027t match the code, and we should remove it.\n\nI think you copy-pasted this from `usbc_dp_mode.c`, and it\u0027s also wrong there. I probably copy-pasted it from some other code to set a cable VDO. That comment should be removed too.",
+      "parentUuid": "4f814cab_33c0b33d",
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -422,6 +464,24 @@
       "side": 1,
       "message": "So correct me if I misunderstood but this new test doesn\u0027t test directly path for SVDM version, however it bring some value I believe. Is there a need to copy all tests scenarios from usbc_dp_mode?\n\nYou can create bug for testing different DPAM 2.1 and 2.0.",
       "parentUuid": "5edb5d22_655e37e1",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5081bf_9f96124a",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-19T20:45:24Z",
+      "side": 1,
+      "message": "Created b:418824261.\n\nThis test doesn\u0027t exercise a path whose behavior changes (much) based on SVDM version. The EC is just supposed to remember the exact values it sees from the partner. These values are different from the DPAM 2.1 version of the test, but the code path is the same.\n\nI guess a test like this could check that the SVDM version of the Discover Modes REQ to make sure that it matches the version from the Discover Identity ACK, but this test is not doing that right now.\n\nYou definitely don\u0027t need to copy all of the scenarios from `usbc_dp_mode.c`. There are a bunch of different discovery contents that should result in different forms of mode entry for DPAM 2.1. For DPAM 1.0/2.0, there\u0027s basically only one: The partner supporting DPAM.\n\nAt first glance, I\u0027d say a modified version of `test_dp21_entry_passive_32` with different discovery values should be a pretty good start for testing DPAM 1.0/2.0 mode entry.",
+      "parentUuid": "e4b08ad1_2606f3ec",
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
