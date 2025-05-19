@@ -16,6 +16,47 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "adbf164b5e8ae3c67af4c0c194b5fc0b021ce80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4665bcc7_5d1f878b",
+        "filename": "util/twister_launcher.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-19T16:41:43Z",
+      "side": 1,
+      "message": "`src/third_party/zephyr`",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 49
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3bd1bedd_d9e05475",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/twister_launcher.py",
+              "range": {
+                "startLine": 140,
+                "startChar": 0,
+                "endLine": 141,
+                "endChar": 0
+              },
+              "replacement": "# List of modules to use from the src/third_party/zephyr directory\n"
+            }
+          ]
+        }
+      ],
+      "revId": "adbf164b5e8ae3c67af4c0c194b5fc0b021ce80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
