@@ -47,8 +47,6 @@ static const struct cros_flash_rtk_config cros_flash_config = {
 
 static struct cros_flash_rtk_data cros_flash_data;
 
-#define FLASH_LOCK 0x1C
-
 static int cros_flash_rtk_set_status_reg(const struct device *dev, uint8_t *reg)
 {
 	const struct cros_flash_rtk_config *cfg = DRV_CONFIG(dev);
@@ -74,15 +72,34 @@ static int cros_flash_rtk_write_protection_set(const struct device *dev,
 					       bool enable)
 {
 	const struct cros_flash_rtk_config *cfg = DRV_CONFIG(dev);
-	uint8_t op_out = FLASH_LOCK;
 
 	/* Write protection can be cleared only by core domain reset */
 	if (!enable) {
 		LOG_ERR("WP can be disabled only via core domain reset");
 		return -ENOTSUP;
 	}
-	return flash_ex_op(cfg->flash_dev, FLASH_RTS5912_EX_OP_WR_SR,
-			   (uintptr_t)NULL, &op_out);
+
+	LOG_DBG("FLASH: SET HWWP");
+
+	return flash_ex_op(cfg->flash_dev, FLASH_RTS5912_EX_OP_SET_WP,
+			   (uintptr_t)NULL, &enable);
+}
+
+static int is_int_flash_protected(const struct device *dev)
+{
+	const struct cros_flash_rtk_config *cfg = DRV_CONFIG(dev);
+	uint8_t is_wp;
+	int ret;
+
+	ret = flash_ex_op(cfg->flash_dev, FLASH_RTS5912_EX_OP_GET_WP,
+			  (uintptr_t)&is_wp, NULL);
+	if (ret != 0) {
+		return ret;
+	}
+
+	LOG_DBG("FLASH: GET HWWP: %x", is_wp);
+
+	return (is_wp != 0 ? 1 : 0);
 }
 
 static void flash_get_status(const struct device *dev, uint8_t *sr1,
@@ -120,7 +137,7 @@ static int flash_set_status(const struct device *dev, uint8_t sr1, uint8_t sr2)
 	int rv;
 	uint8_t regs[2] = { sr1, sr2 };
 
-	if (flash_check_status_reg_srp(dev)) {
+	if (is_int_flash_protected(dev) && flash_check_status_reg_srp(dev)) {
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
@@ -227,6 +244,10 @@ static int flash_write_prot_reg(const struct device *dev, unsigned int offset,
 		return rv;
 	}
 
+	if (hw_protect) {
+		sr1 |= SPI_FLASH_SR1_SRP0;
+	}
+
 	return flash_set_status_for_prot(dev, sr1, sr2);
 }
 
@@ -252,22 +273,12 @@ static int flash_check_prot_range(const struct device *dev, unsigned int offset,
 /* cros ec flash driver implementations */
 static int cros_flash_rtk_init(const struct device *dev)
 {
-	struct cros_flash_rtk_data *data = DRV_DATA(dev);
-	const struct cros_flash_rtk_config *cfg = DRV_CONFIG(dev);
-
-	data->all_protected = 0;
-	data->addr_prot_start = 0;
-	data->addr_prot_length = 0;
 	/*
 	 * Protect status registers of internal spi-flash if WP# is active
 	 * during ec initialization.
 	 */
 	flash_protect_int_flash(dev, write_protect_is_asserted());
 
-	if (!device_is_ready(cfg->flash_dev)) {
-		LOG_ERR("device %s not ready", cfg->flash_dev->name);
-		return -ENODEV;
-	}
 	return EC_SUCCESS;
 }
 
@@ -395,6 +406,11 @@ static uint32_t cros_flash_rtk_get_protect_flags(const struct device *dev)
 		return EC_FLASH_PROTECT_ERROR_UNKNOWN;
 	}
 
+	if (len && (!(sr1 & SPI_FLASH_SR1_SRP0))) {
+		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
+	}
+
+	/* Read all-protected state from our shadow copy */
 	if (DRV_DATA(dev)->all_protected) {
 		flags |= EC_FLASH_PROTECT_ALL_NOW;
 	}
@@ -411,14 +427,15 @@ static int cros_flash_rtk_protect_at_boot(const struct device *dev,
 	if ((new_flags & (EC_FLASH_PROTECT_RO_AT_BOOT |
 			  EC_FLASH_PROTECT_ALL_AT_BOOT)) == 0) {
 		/* Clear protection bits in status register */
-		return flash_set_status_for_prot(dev, 0x04, 0);
+		return flash_set_status_for_prot(dev, 0, 0);
 	}
 
 	ret = flash_write_prot_reg(dev, CONFIG_WP_STORAGE_OFF,
 				   CONFIG_WP_STORAGE_SIZE, 1);
 	if (new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) {
-		/* TODO: b/390237764 - add flash protection */
 		data->all_protected = 1;
+		ret = flash_write_prot_reg(
+			dev, 0, CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES, 1);
 	}
 	return ret;
 }
@@ -429,8 +446,9 @@ static int cros_flash_rtk_protect_now(const struct device *dev, int all)
 	int ret = EC_SUCCESS;
 
 	if (all) {
-		/* TODO: b/390237764 - add flash protection */
 		data->all_protected = 1;
+		ret = flash_write_prot_reg(
+			dev, 0, CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES, 1);
 	} else {
 		ret = flash_write_prot_reg(dev, CONFIG_WP_STORAGE_OFF,
 					   CONFIG_WP_STORAGE_SIZE, 1);
@@ -461,7 +479,24 @@ static const struct cros_flash_driver_api cros_flash_rtk_driver_api = {
 
 BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
 
-DEVICE_DT_INST_DEFINE(0, cros_flash_rtk_init, NULL, &cros_flash_data,
+static int flash_rtk_init(const struct device *dev)
+{
+	const struct cros_flash_rtk_config *cfg = DRV_CONFIG(dev);
+	struct cros_flash_rtk_data *data = DRV_DATA(dev);
+
+	data->all_protected = 0;
+	data->addr_prot_start = 0;
+	data->addr_prot_length = 0;
+
+	if (!device_is_ready(cfg->flash_dev)) {
+		LOG_ERR("device %s not ready", cfg->flash_dev->name);
+		return -ENODEV;
+	}
+
+	return EC_SUCCESS;
+}
+
+DEVICE_DT_INST_DEFINE(0, flash_rtk_init, NULL, &cros_flash_data,
 		      &cros_flash_config, POST_KERNEL,
 		      CONFIG_CROS_FLASH_INIT_PRIORITY,
 		      &cros_flash_rtk_driver_api);
