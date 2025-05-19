@@ -124,6 +124,24 @@
       "parentUuid": "7da96808_bb14c101",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee68ef5d_ce8c96fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-19T20:38:31Z",
+      "side": 1,
+      "message": "If you have some `helipilot`/`gwendolin` specific changes, you can always put them in `helipilot.dts`/`gwendolin.dts`. The idea was to have common `soc.dtsi`, `gpio.dtsi` and `rwsig.dtsi`. There is nothing bad in providing resonable defaults.\n\nI see your changes in `rwsig.dtsi`. I think we can\u0027t improve anything there but I need to double check tomorrow.",
+      "parentUuid": "0470684c_baf8c22d",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
