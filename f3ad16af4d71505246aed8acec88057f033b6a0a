@@ -88,6 +88,24 @@
       "parentUuid": "2ffd758e_4fa41c5f",
       "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6a0f3a_4fa6c2f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-19T18:52:42Z",
+      "side": 1,
+      "message": "\u003e Buccaneer and Gwendolin will be limited to 3.\n\nIs it due to memory constraints or matching time constraints? What if we use the same driver + algorithm on a different MCU with different memory and computing power?  IMO it\u0027s not purely an algorithm thing.",
+      "parentUuid": "04c23ccf_74749268",
+      "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
