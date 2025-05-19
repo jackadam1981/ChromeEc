@@ -39,8 +39,6 @@ struct cros_flash_rtk_data {
 
 #define DRV_DATA(dev) ((struct cros_flash_rtk_data *)(dev)->data)
 
-#define FLASH_LOCK 0x1C
-
 static int cros_flash_rtk_set_status_reg(const struct device *dev, uint8_t *reg)
 {
 	uint8_t send_sr1 = reg[0];
@@ -67,7 +65,6 @@ static int cros_flash_rtk_write_protection_set(const struct device *dev,
 					       bool enable)
 {
 	struct cros_flash_rtk_data *data = DRV_DATA(dev);
-	uint8_t op_out = FLASH_LOCK;
 
 	/* Write protection can be cleared only by core domain reset */
 	if (!enable) {
@@ -75,8 +72,27 @@ static int cros_flash_rtk_write_protection_set(const struct device *dev,
 		return -ENOTSUP;
 	}
 
-	return flash_ex_op(data->flash_dev, FLASH_RTS5912_EX_OP_WR_SR,
-			   (uintptr_t)NULL, &op_out);
+	LOG_DBG("FLASH: SET HWWP");
+
+	return flash_ex_op(data->flash_dev, FLASH_RTS5912_EX_OP_SET_WP,
+			   (uintptr_t)NULL, &enable);
+}
+
+static int is_int_flash_protected(const struct device *dev)
+{
+	struct cros_flash_rtk_data *data = DRV_DATA(dev);
+	uint8_t is_wp;
+	int ret;
+
+	ret = flash_ex_op(data->flash_dev, FLASH_RTS5912_EX_OP_GET_WP,
+			  (uintptr_t)&is_wp, NULL);
+	if (ret != 0) {
+		return ret;
+	}
+
+	LOG_DBG("FLASH: GET HWWP: %x", is_wp);
+
+	return (is_wp != 0 ? 1 : 0);
 }
 
 static void flash_get_status(const struct device *dev, uint8_t *sr1,
@@ -114,7 +130,7 @@ static int flash_set_status(const struct device *dev, uint8_t sr1, uint8_t sr2)
 	int rv;
 	uint8_t regs[2];
 
-	if (flash_check_status_reg_srp(dev)) {
+	if (is_int_flash_protected(dev) && flash_check_status_reg_srp(dev)) {
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
@@ -221,6 +237,10 @@ static int flash_write_prot_reg(const struct device *dev, unsigned int offset,
 
 	if (rv) {
 		return rv;
+	}
+
+	if (hw_protect) {
+		sr1 |= SPI_FLASH_SR1_SRP0;
 	}
 
 	return flash_set_status_for_prot(dev, sr1, sr2);
@@ -393,6 +413,10 @@ static uint32_t cros_flash_rtk_get_protect_flags(const struct device *dev)
 		return EC_FLASH_PROTECT_ERROR_UNKNOWN;
 	}
 
+	if (len && (!(sr1 & SPI_FLASH_SR1_SRP0))) {
+		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
+	}
+
 	/* Read all-protected state from our shadow copy */
 	if (all_protected) {
 		flags |= EC_FLASH_PROTECT_ALL_NOW;
@@ -409,7 +433,7 @@ static int cros_flash_rtk_protect_at_boot(const struct device *dev,
 	if ((new_flags & (EC_FLASH_PROTECT_RO_AT_BOOT |
 			  EC_FLASH_PROTECT_ALL_AT_BOOT)) == 0) {
 		/* Clear protection bits in status register */
-		return flash_set_status_for_prot(dev, 0x04, 0);
+		return flash_set_status_for_prot(dev, 0, 0);
 	}
 
 	ret = flash_write_prot_reg(dev, CONFIG_WP_STORAGE_OFF,
