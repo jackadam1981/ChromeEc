@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398af1fb_d5719ef8",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-19T21:09:05Z",
+      "side": 1,
+      "message": "I think this is expected to be enabled for all FPMCUs? In that case, we\u0027d want it in the shared `fpmcu/prj.conf`.\n\nIt looks like we have in it [`bloonchipper`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/bloonchipper/prj.conf;l\u003d57-58;drc\u003d43e081654818d8b4091f2d82b2738eaa616d6947), so I think we can push it into the generic FPMCU config.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "1c7138fb12126fcc3a16d04de11fa8e467ad2774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
