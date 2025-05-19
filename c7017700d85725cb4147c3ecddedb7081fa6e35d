@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388f7201_eeeb7f40",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/i2c.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-19T21:57:32Z",
+      "side": 1,
+      "message": "I would call this I2C_PORT_PD for consistency, but I don\u0027t think it matters anymore for the Zephyr PDC drivers.",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d471ae8e_034728a1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ocelot_microchip/i2c.dtsi",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 17,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tenum-names \u003d \"I2C_PORT_PD\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c7017700d85725cb4147c3ecddedb7081fa6e35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
