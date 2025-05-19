@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2c86cb5_4b2bb1c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-05-19T07:52:35Z",
+      "side": 1,
+      "message": "Hi @davidmcross@google.com,\n\nIt means that we don\u0027t need the BRANCH field and Signed-off-by tag in the commit message when we upload a CL in the future. Is it right? Thanks.",
+      "parentUuid": "a6040286_ba495610",
+      "revId": "1d9cdcb1594bcef2ce8216acede42624767f7009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6354f710_f1797adb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
