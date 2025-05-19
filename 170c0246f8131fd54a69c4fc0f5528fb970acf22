@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a860c4a_117a621d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "\"make runhosttests\" and \"make try_build_boards\" works. Let\u0027s deliver this change and I will try to create unit test for this here:",
+      "parentUuid": "9f9d9426_d918dba8",
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d05d060e_807eefd9",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
         "patchSetId": 1
@@ -189,6 +207,30 @@
           ]
         }
       ],
+      "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8949eaf0_711e8d30",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d05d060e_807eefd9",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
       "revId": "170c0246f8131fd54a69c4fc0f5528fb970acf22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

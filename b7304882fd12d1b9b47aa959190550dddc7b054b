@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed3ddf38_f7d7c961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Now I added correct logic I believe (common/usbc/dp_alt_mode.c). It looks like prl_get_rev() always returns PD_REV30, meaning all ports on all platforms support only SVDM version 2.0 according to spec, is that correct?",
+      "parentUuid": "3a7398d9_b77bda8c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdce7962_bd0ba1a3",
         "filename": "zephyr/test/drivers/testcase.yaml",
         "patchSetId": 6
@@ -61,6 +85,30 @@
           ]
         }
       ],
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a274ece6_eb31fb32",
+        "filename": "zephyr/test/drivers/testcase.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdce7962_bd0ba1a3",
+      "range": {
+        "startLine": 272,
+        "startChar": 22,
+        "endLine": 272,
+        "endChar": 25
+      },
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d310a759_f97a2503",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31bd2bd7_9ccf14d2",
+      "range": {
+        "startLine": 6,
+        "startChar": 33,
+        "endLine": 6,
+        "endChar": 55
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b50c6b2_e027c2bb",
@@ -129,6 +201,24 @@
       "writtenOn": "2025-05-14T16:51:45Z",
       "side": 1,
       "message": "Hardware version and firmware version are the fields for the cable VDOs. (IDK why this is different than the UFP VDO.)",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f814cab_33c0b33d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Could you explain a bit more?",
+      "parentUuid": "7b50c6b2_e027c2bb",
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +268,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5008f1eb_52d566fc",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb5667b_2d45ce23",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f1c712_a35cb53e",
@@ -191,6 +299,30 @@
       "writtenOn": "2025-05-14T16:51:45Z",
       "side": 1,
       "message": "These functions largely duplicate code in the DPAM 2.1 tests. I think these functions could be parameterized by the SVDM version, and then each set of tests could call the common functions with the appropriate version.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc56720_565ef0b4",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "Now there is still one struct but I adjust it in usbc_dp_mode_setup() and usbc_dp_mode_setup_svdm_ver_20() functions.",
+      "parentUuid": "a6f1c712_a35cb53e",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -272,6 +404,24 @@
           ]
         }
       ],
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b08ad1_2606f3ec",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-19T16:06:30Z",
+      "side": 1,
+      "message": "So correct me if I misunderstood but this new test doesn\u0027t test directly path for SVDM version, however it bring some value I believe. Is there a need to copy all tests scenarios from usbc_dp_mode?\n\nYou can create bug for testing different DPAM 2.1 and 2.0.",
+      "parentUuid": "5edb5d22_655e37e1",
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
