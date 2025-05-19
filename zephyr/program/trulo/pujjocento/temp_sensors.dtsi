@@ -6,6 +6,20 @@
 #include <cros/thermistor/thermistor.dtsi>
 
 / {
+
+	fans {
+		compatible = "cros-ec,fans";
+
+		fan_0 {
+			pwms = <&pwm5 5 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			rpm_min = <3000>;
+			rpm_start = <3000>;
+			rpm_max = <6000>;
+			tach = <&tach1>;
+			rpm_deviation = <1>;
+		};
+	};
+
 	temp_memory: temp-memory {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_51K1_47K_4050B>;
@@ -39,6 +53,26 @@
 			sensor = <&temp_ambient>;
 		};
 	};
+};
+
+&pwm5_gpb7 {
+	drive-open-drain;
+};
+
+&pwm5 {
+	status = "okay";
+	pinctrl-0 = <&pwm5_gpb7>;
+	pinctrl-names = "default";
+};
+
+/* Tachometer for fan speed measurement */
+&tach1 {
+	status = "okay";
+	pinctrl-0 = <&ta1_2_in_gp93>;
+	pinctrl-names = "default";
+	port = <NPCX_TACH_PORT_A>; /* port-A is selected */
+	sample-clk = <NPCX_TACH_FREQ_LFCLK>; /* Use LFCLK as sampling clock */
+	pulses-per-round = <2>; /* number of pulses per round of encoder */
 };
 
 &thermistor_3V3_51K1_47K_4050B {
