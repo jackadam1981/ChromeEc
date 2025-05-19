@@ -22,6 +22,30 @@
       },
       "revId": "db6bb65b26a136f276473dcb2b08b4179e62184d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caddafb4_b022c5e0",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-19T18:17:34Z",
+      "side": 1,
+      "message": "I modified the commit message",
+      "parentUuid": "85fc3edd_fff3ed3b",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 68
+      },
+      "revId": "db6bb65b26a136f276473dcb2b08b4179e62184d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
