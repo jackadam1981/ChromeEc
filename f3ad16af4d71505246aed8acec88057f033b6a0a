@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f255b4e6_fb508e71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-19T10:19:01Z",
+      "side": 1,
+      "message": "Why you need to move this config? I think that max finger count is a property of our fingerprint application, not algorithm. Of course we can add defaults basing on sensor, algorithm or even board.",
+      "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
