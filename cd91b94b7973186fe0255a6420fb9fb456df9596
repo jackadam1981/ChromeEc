@@ -453,6 +453,30 @@
       },
       "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a42eb9_8c84125d",
+        "filename": "zephyr/include/cros/realtek/realtek.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-19T14:38:44Z",
+      "side": 1,
+      "message": "I create b/418727861 to record this change in Zephyr driver.",
+      "parentUuid": "466b8992_f7da76e7",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "cd91b94b7973186fe0255a6420fb9fb456df9596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5893c79c_9851a0eb",
+        "filename": "zephyr/boards/google/realtek/Kconfig.defconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-19T14:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2dd5f2e_96d1848e",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8951ba77_e21368c2",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-05-16T17:00:58Z",
       "side": 1,
       "message": "`CHIP_VERSION_OFFSET`?  This routine duplicates the get_chip_id function from above.",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 59
+      },
+      "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2773733c_204c8c79",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-19T14:38:44Z",
+      "side": 1,
+      "message": "we do save the chip id and chip version in the same offset:\n[31:16] main id\n[15:8] chip version\n\nI remove unused CHIP_VERSION_OFFSET.",
+      "parentUuid": "8951ba77_e21368c2",
       "range": {
         "startLine": 87,
         "startChar": 45,
@@ -122,6 +170,30 @@
           ]
         }
       ],
+      "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95c1362_8628a19e",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-19T14:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ca7c91_480baa7b",
+      "range": {
+        "startLine": 160,
+        "startChar": 16,
+        "endLine": 160,
+        "endChar": 20
+      },
       "revId": "de99c0be4c0aae901b7e1449a11bc2af3453d9f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
