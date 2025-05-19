@@ -16,6 +16,24 @@
       "message": "Why you need to move this config? I think that max finger count is a property of our fingerprint application, not algorithm. Of course we can add defaults basing on sensor, algorithm or even board.",
       "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142083ca_e35ef878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-19T15:53:45Z",
+      "side": 1,
+      "message": "The decision was driven by the differing maximum enrolled finger counts: `Helipilot` supports up to 5, while `Buccaneer` and `Gwendolin` will be limited to 3. This is likely an algorithm-specific constraint.\n\nI can rewrite it as such:\n\n```\nconfig FP_MAX_FINGER_COUNT\n\t  int \"Maximum number of loaded finger templates\"\n\t  default 5\n\t  help\n\t\tMax number of templates stored / matched against. This limit comes\n\t\tfrom memory constraints and matching time.\n```\n\nand then when I introduce `gwendolin`, I will override the default:\n\n```\nconfig FP_MAX_FINGER_COUNT\n\t  int \"Maximum number of loaded finger templates\"\n\t  default 3 if FINGERPRINT_SENSOR_EGIS630 \u0026\u0026 FP_EGIS_EGIS630_ALGORITHM\n\t  default 5\n\t  help\n\t\tMax number of templates stored / matched against. This limit comes\n\t\tfrom memory constraints and matching time.\n```",
+      "parentUuid": "f255b4e6_fb508e71",
+      "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
