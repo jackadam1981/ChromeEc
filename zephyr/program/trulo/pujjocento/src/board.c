@@ -4,6 +4,7 @@
  */
 
 #include "cros_cbi.h"
+#include "fan.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -49,3 +50,24 @@ test_export_static void kb_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_I2C);
+
+test_export_static void fan_init(void)
+{
+	int ret;
+	uint32_t val;
+	/*
+	 * Retrieve the fan config.
+	 */
+	ret = cros_cbi_get_fw_config(FW_FAN, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_FAN);
+		return;
+	}
+	if (val != FW_FAN_PRESENT) {
+		/* Disable the fan */
+		fan_set_count(0);
+	} else {
+		CPRINTS("Thermal: 15W thermal control");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
