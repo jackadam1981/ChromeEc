@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "112cc3ba_526167ff",
+        "filename": "zephyr/program/skywalker/yoda/motionsense.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-05-19T07:57:08Z",
+      "side": 1,
+      "message": "I only see \"lis2dw12-int \u003d \u0026lid_accel;\" in this file.",
+      "parentUuid": "211513af_b7b3b9d3",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ebe8c17e219d557f0a11ecfd99a99e666049ce93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60871a6c_4b9addcd",
