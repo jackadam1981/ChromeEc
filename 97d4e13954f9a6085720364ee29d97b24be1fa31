@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b0a18b_7b65591e",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-19T14:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceb5d06e_2aa0f427",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 49
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00846d66_6e04d829",
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "Done. The code structure has been modified to better align with the flowchart. We\u0027ve made one adjustment regarding the selection of USB Gen3 and Gen4 speeds.\n\nIn the first \"if\" condition, we replaced \"\u003e\u003d\" with \"\u003e\". \n\nwith \"\u003e\u003d\", cables capable of TBT3 Gen3 + USB3.2 Gen2 were entering the initial if condition and returning with usb.ss speed (Gen2), resulting in an incorrect speed(Gen2) selection. By changing the condition to \"\u003e\", only cables capable of USB Gen3 and Gen4 speeds will be considered, which is the expected scenario.\n\nThe test results are attached to partner bug for your reference as commnet#38\nThe test executed with various Docks and cables. \n \nOriginal Suggestion:\nif (pd_get_rev() \u003d\u003d PD_REV30 \u0026\u0026 ss \u003e\u003d GEN2)\n   return ss;\n\nUpdated Change :\nif (pd_get_rev() \u003d\u003d PD_REV30 \u0026\u0026 ss \u003e GEN2)\n   return ss;",
       "parentUuid": "00846d66_6e04d829",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9ec5b7_431b97e2",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-19T14:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21170ff6_1610951f",
       "range": {
         "startLine": 125,
         "startChar": 1,
@@ -177,6 +225,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e176b61b_327fdd9c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-19T14:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a92c15f1_b2757b3d",
+      "range": {
+        "startLine": 365,
+        "startChar": 35,
+        "endLine": 365,
+        "endChar": 53
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0bed0c1_254a7c97",
@@ -208,6 +280,24 @@
       "side": 1,
       "message": "Done. \n1. Speed immediately converted to a USB speed.\n2. After conversion, perform MIN of two USB-typed speeds.",
       "parentUuid": "b0bed0c1_254a7c97",
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff55ab07_3728f5ba",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-19T14:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c613a79_0c59aec4",
       "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -249,6 +339,30 @@
       "side": 1,
       "message": "No, we don\u0027t have function for conversion.",
       "parentUuid": "ef448784_c2078e56",
+      "range": {
+        "startLine": 384,
+        "startChar": 39,
+        "endLine": 384,
+        "endChar": 58
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d843e7_3763ac58",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1534804
+      },
+      "writtenOn": "2025-05-19T14:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cebbd347_18c47274",
       "range": {
         "startLine": 384,
         "startChar": 39,
