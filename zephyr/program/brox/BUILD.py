@@ -34,6 +34,8 @@ brox = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
         # Common sensor configs
@@ -46,6 +48,8 @@ register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
         # Project-specific KConfig customization.
@@ -58,6 +62,8 @@ brox_sku4 = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
         # Project-specific KConfig customization.
@@ -100,6 +106,8 @@ greenbayupoc = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "greenbayupoc" / "project.conf",
     ],
@@ -110,6 +118,8 @@ jubilant = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Project-specific config
         here / "jubilant" / "project.conf",
         # Common sensor configs
@@ -122,6 +132,8 @@ lotso = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Common sensor configs
         here / "motionsense.conf",
         # Project-specific config
