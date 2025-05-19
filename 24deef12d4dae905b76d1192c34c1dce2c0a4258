@@ -70,6 +70,24 @@
       "parentUuid": "d3cdbd29_cc479dc8",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e36e676_f8c4dde1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-19T15:32:30Z",
+      "side": 1,
+      "message": "@davidmcross@google.com My understanding is that the split in `helipilot/soc.dtsi` was mandatory for `helipilot` because of the previously merged EC RO image. If I understood correctly, Patryk is asking that I remove the split from this file and reuse it for `Gwendolin`. Please advise if you have any concerns.",
+      "parentUuid": "967430d9_e20a0a26",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
