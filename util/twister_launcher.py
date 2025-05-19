@@ -137,6 +137,18 @@ ZEPHYR_TEST_PATHS = [
     Path("tests/subsys/shell"),
 ]
 
+# List of modules to use from the src/third_party/zephyr directory
+THIRD_PARTY_MODULES = [
+    "intel_module_private",
+    "cmsis",
+    "cmsis_6",
+    "picolibc",
+    "ish",
+    "hal_stm32",
+    "hal_intel_public",
+    "nanopb",
+]
+
 
 def find_checkout() -> Path:
     """Find the location of the source checkout or return None."""
@@ -203,19 +215,6 @@ def find_paths():
             ) from err
 
     return ec_base, zephyr_base, zephyr_modules_dir, pigweed_dir
-
-
-def find_modules(mod_dir: Path) -> list:
-    """Find Zephyr modules in the given directory `dir`."""
-
-    modules = []
-    for child in mod_dir.iterdir():
-        # TODO: use a static list here instead of finding modules automatically
-        # so we don't unintentionally use new modules that are
-        # missing support files
-        if child.is_dir() and (child / "zephyr" / "module.yml").exists():
-            modules.append(child.resolve())
-    return modules
 
 
 def is_tool(name):
@@ -302,9 +301,14 @@ def main():
 
     # Get paths for the build.
     ec_base, zephyr_base, zephyr_modules_dir, pigweed_dir = find_paths()
-
     zephyr_base = zephyr_base.resolve()
-    zephyr_modules = find_modules(zephyr_modules_dir)
+
+    zephyr_modules = []
+
+    # Add all third_pary modules
+    for module_name in THIRD_PARTY_MODULES:
+        module_path = zephyr_modules_dir / module_name
+        zephyr_modules.append(module_path.resolve())
 
     # Add the EC dir as a module if not already included (resolve all paths to
     # account for symlinked or relative paths)
