@@ -297,6 +297,13 @@ pw::Status cros::dsp::service::Driver::Init() {
 
   LOG_INF("Setting up target %s::0x%02x", bus_->name, target_cfg_.address);
 
+  // TODO (b/418804163) - On a warm reset we can't get into target mode without
+  //   first recovering then writing to the bus. We write to the same address
+  //   we're about to listen to so we're sure that nobody else should be
+  //   listening to this address.
+  i2c_recover_bus(bus_);
+  i2c_write(bus_, reinterpret_cast<uint8_t*>(&rc), 1, target_cfg_.address);
+
   rc |= i2c_target_register(bus_, &target_cfg_);
   PW_CHECK_INT_EQ(rc, 0);
 
