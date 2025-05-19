@@ -106,6 +106,24 @@
       "parentUuid": "9e36e676_f8c4dde1",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0470684c_baf8c22d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-19T19:59:12Z",
+      "side": 1,
+      "message": "I would have preferred to have a clean `soc.dtsi` file for `gwendolin` if the changes that were made in `helipilot/soc.dtsi` are `helipilot` specific. I followed your recommendation though. Thanks",
+      "parentUuid": "7da96808_bb14c101",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
