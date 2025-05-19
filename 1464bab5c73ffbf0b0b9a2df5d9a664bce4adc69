@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30bcda69_2fc7a9ad",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "d4e65b4d_e829bcb9",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35afc82_7d6602be",
@@ -89,6 +113,30 @@
       "writtenOn": "2025-05-15T21:06:27Z",
       "side": 1,
       "message": "`EC_PG3` doesn\u0027t enable a primary 3.3 rail - this looks to be a power good signal input to the Silego chip.  Can you clarify this?",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b6ddc4_6150ab18",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "No it is not input to silego chip. EC_PG3 is going to LDO (RT6585BGQW in page no. 268) as PRIM_VR_EN (through switch (SW8U2 -\u003e pin s3-s6 closed)) to further generate power good signal.",
+      "parentUuid": "a35afc82_7d6602be",
       "range": {
         "startLine": 21,
         "startChar": 15,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e88b53_8674cc5c",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "5e852641_eb0d6192",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cd044dd_f4fc6d05",
@@ -135,6 +207,30 @@
       "writtenOn": "2025-05-15T21:06:27Z",
       "side": 1,
       "message": "`pwr_rsmrst_pwrgd: rsmrst-pwrgd-ec-n`",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b4208d_da40fdf9",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "3cd044dd_f4fc6d05",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -168,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06195026_7db328cd",
+        "filename": "zephyr/program/ocelot/power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "EC can reset the AP. I will add support in further CL as IOEX gpio pin is used for sys_rst.",
+      "parentUuid": "69a2dc85_93ee9d92",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 28
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb4fea3e_4858e733",
@@ -191,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4195f3af_6df0465f",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "Yes, EC_PG3 is mapped to PRIM_VR_EN as mentioned in comment:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6516872/comment/a35afc82_7d6602be/",
+      "parentUuid": "cb4fea3e_4858e733",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3e0d85c_221c1f5a",
@@ -204,6 +348,30 @@
       "writtenOn": "2025-05-15T21:06:27Z",
       "side": 1,
       "message": "Non-blocking comment - this is required for PTL and all later chipsets, correct?\n\nCan this be moved into some common PTL+ power sequence handler?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "1464bab5c73ffbf0b0b9a2df5d9a664bce4adc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6acf8ca8_db3e0bed",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-19T18:51:16Z",
+      "side": 1,
+      "message": "Ok Keith, If It is non-blocking, I will explore this to handle it commonly and upload change separately.",
+      "parentUuid": "d3e0d85c_221c1f5a",
       "range": {
         "startLine": 60,
         "startChar": 0,
