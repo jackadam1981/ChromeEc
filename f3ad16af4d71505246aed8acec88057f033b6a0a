@@ -34,6 +34,24 @@
       "parentUuid": "f255b4e6_fb508e71",
       "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ecbead4_c44bb8aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-19T18:21:51Z",
+      "side": 1,
+      "message": "Can\u0027t you do the same thing even without moving the config? (i.e., add the `if FINGERPRINT_SENSOR_EGIS630 \u0026\u0026 FP_EGIS_EGIS630_ALGORITHM` in the original `Kconfig`)",
+      "parentUuid": "142083ca_e35ef878",
+      "revId": "f3ad16af4d71505246aed8acec88057f033b6a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
