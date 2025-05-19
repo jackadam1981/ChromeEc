@@ -5,12 +5,7 @@
 
 /* Brtk program common DTS includes */
 
-/* Arbitrage generates an incorrect node label when using alternate pins.
- * Create a 2nd node label on I2C3 as a workaround.
- * TODO: b/310227384 - I2C alternate selection not detected automatically.
- */
-i2c3ALT: &i2c3 {
-};
+#include <cros/integrated_fwid.dtsi>
 
 #include <cros/cbi_flash.dtsi>
 
@@ -31,7 +26,6 @@ i2c3ALT: &i2c3 {
 #include "../temp_sensors.dtsi"
 #include "rtk_usb_typec.dtsi"
 #include "../usba.dtsi"
-#include "../binman.dtsi"
 
 /* Brtk project DTS includes*/
 

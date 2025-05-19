@@ -8,43 +8,20 @@
 		gpio-wp = &gpio_ec_wp_odl;
 	};
 	chosen {
-		zephyr,console = &uart2;
-		zephyr,shell-uart = &uart2;
-	};
-
-	prochot-vcmp {
-		compatible = "cros-ec,prochot-vcmp";
-		vcmp = <&vcmp0>;
-		high-level-mv = <1050>;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
 	};
 };
 
-&vcmp0 {
-	status = "okay";
-	scan-period = <IT8XXX2_VCMP_SCAN_PERIOD_5MS>;
-	comparison = <IT8XXX2_VCMP_GREATER>;
-	threshold-mv = <0>;
-	io-channels = <&adc0 0>;
-};
-
-/* UART interface is SIN1/SOUT1 pins, which ITE maps to devicetree uart2 */
-&uart1 {
-	status = "disabled";
-};
-
-&ite_uart1_wrapper {
-	status = "disabled";
-};
-
-&uart2 {
+/* UART interface is gpio113.114 */
+&uart0 {
 	status = "okay";
 	current-speed = <115200>;
 };
 
-&ite_uart2_wrapper {
+&uart0_wrapper {
 	status = "okay";
-	pinctrl-0 = <&uart2_rx_gpf0_default
-		     &uart2_tx_gpf1_default>;
+	pinctrl-0 = <&uart_rx_gpio113 &uart_tx_gpio114>;
 	pinctrl-names = "default";
 };
 
