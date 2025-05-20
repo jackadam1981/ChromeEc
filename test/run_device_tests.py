@@ -117,10 +117,10 @@ DATA_ACCESS_VIOLATION_24000000_REGEX = re.compile(
     r"Data access violation, mfar = 24000000\r\n"
 )
 DATA_ACCESS_VIOLATION_64020000_REGEX = re.compile(
-    r"Data access violation, mfar = 64020000\r\n"
+    r"(Data access violation, mfar = 64020000\r\n)|(.*MMFAR Address: 0x64020000\r\n)"
 )
 DATA_ACCESS_VIOLATION_64030000_REGEX = re.compile(
-    r"Data access violation, mfar = 64030000\r\n"
+    r"(Data access violation, mfar = 64030000\r\n)|(.*MMFAR Address: 0x64030000\r\n)"
 )
 DATA_ACCESS_VIOLATION_200B0000_REGEX = re.compile(
     r"Data access violation, mfar = 200b0000\r\n"
