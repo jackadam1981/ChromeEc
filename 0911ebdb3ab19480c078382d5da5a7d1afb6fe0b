@@ -16,6 +16,24 @@
       "message": "You marked some comments as done since patchset 6, but there weren\u0027t corresponding changes in the code. Did you forget to upload?",
       "revId": "0911ebdb3ab19480c078382d5da5a7d1afb6fe0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41b5cf7_d387ddf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-20T10:17:03Z",
+      "side": 1,
+      "message": "Yes some problem occured during last upload. You can check now.",
+      "parentUuid": "3853ce08_136d038b",
+      "revId": "0911ebdb3ab19480c078382d5da5a7d1afb6fe0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

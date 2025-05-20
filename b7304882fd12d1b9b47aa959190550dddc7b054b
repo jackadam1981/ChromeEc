@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c61e1bb_c06a8f6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-20T10:17:03Z",
+      "side": 1,
+      "message": "I uploaded in last patchset change based on spec. Right now function to get PD rev returns always version 30, since spec says that version 2.1 is used if spec revision is greater or equal 3.1.",
+      "parentUuid": "5c34c78e_308e7a9e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdce7962_bd0ba1a3",
         "filename": "zephyr/test/drivers/testcase.yaml",
         "patchSetId": 6
@@ -261,6 +285,24 @@
       "side": 1,
       "message": "The code on the next line sets the UFP VDO, and the UFP VDO does not include hardware version or firmware version fields. Those fields do exist in the passive cable VDO and other SOP\u0027 VDOs, but that\u0027s not what this function is about. This comment doesn\u0027t match the code, and we should remove it.\n\nI think you copy-pasted this from `usbc_dp_mode.c`, and it\u0027s also wrong there. I probably copy-pasted it from some other code to set a cable VDO. That comment should be removed too.",
       "parentUuid": "4f814cab_33c0b33d",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a50252c7_98ff7cef",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-20T10:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee19ca6_c8ab7e37",
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
