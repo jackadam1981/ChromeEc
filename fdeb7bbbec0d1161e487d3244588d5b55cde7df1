@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ff6d11_4de1f912",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-20T10:26:42Z",
+      "side": 1,
+      "message": "if `CONFIG_WATCHDOG\u003dn`, I think this line won\u0027t compile because `DEVICE_DT_GET(DT_NODELABEL(wdog))` might expand to an undeclared variable.\n\nUse `#ifdef CONFIG_WATCHDOG` instead.\n\nSame thing for other part of code that also references watchdog.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "31961854_b42d8d3c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 51,
+                "endChar": 0
+              },
+              "replacement": "\t#ifdef CONFIG_WATCHDOG\n"
+            },
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 60,
+                "endChar": 0
+              },
+              "replacement": "\t#endif\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdeb7bbbec0d1161e487d3244588d5b55cde7df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d12880_862341cf",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-20T10:26:42Z",
+      "side": 1,
+      "message": "isn\u0027t this `snprintf(..., \"%04x\", chip_id)` (or reversed)?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8f6f7474_5db5b2fd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 101,
+                "startChar": 0,
+                "endLine": 102,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/cros_system/cros_system_rtk.c",
+              "range": {
+                "startLine": 103,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": "\tsnprintf(buf + 3, (sizeof(buf) - 3), \"%04x\", chip_id);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdeb7bbbec0d1161e487d3244588d5b55cde7df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
