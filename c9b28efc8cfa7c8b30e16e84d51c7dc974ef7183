@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdebea4_8f6517b3",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T02:39:34Z",
+      "side": 1,
+      "message": "You can put the CBI allocation directly into common board code here.  We plan to always have CBI in the flash.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "c9b28efc8cfa7c8b30e16e84d51c7dc974ef7183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a921ee_63f0da0c",
+        "filename": "zephyr/program/brox/brtk/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T02:39:34Z",
+      "side": 1,
+      "message": "Move the common Realtek board code.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "c9b28efc8cfa7c8b30e16e84d51c7dc974ef7183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92a67ac_5a27b98a",
+        "filename": "zephyr/program/brox/brtk/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T02:39:34Z",
+      "side": 1,
+      "message": "Move to zephyr/boards/google/realtek/realtek_rts5912.dts",
+      "revId": "c9b28efc8cfa7c8b30e16e84d51c7dc974ef7183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557a96c6_4fcece6d",
+        "filename": "zephyr/program/brox/ite.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T02:39:34Z",
+      "side": 1,
+      "message": "Nit - it\u0027s not necessary to move this into the ITE specific file.  The settings can remain in the shared program.conf file.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "c9b28efc8cfa7c8b30e16e84d51c7dc974ef7183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
