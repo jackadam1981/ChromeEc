@@ -1,0 +1,383 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4221bff0_f694eca1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "If we haven\u0027t done discovery yet, and we\u0027re connected a PD 3.x partner, we should return `SVDM_VER_2_1` as a default. If we\u0027re asking this question, it will be because we\u0027re about to send Discover Identity. Once it comes back, we\u0027ll set `svdm_vers`, and we\u0027ll use that for the next VDM we send.\n\nAs discussed out of band, SVDM version 2.1 should be our default here, because _we_ implement PD r3.2. We have no real way of telling whether the partner is implementing, for example, PD r3.1 or PD r3.2 without sending Get_Revision. The partner emulator won\u0027t respond to Get_Revision, so it wouldn\u0027t matter for these tests anyway. When we downgrade our SVDM version from 2.1 to 2.0, it should be based on the partner\u0027s SVDM version, and we already have logic for that.",
+      "fixSuggestions": [
+        {
+          "fixId": "35bc2b44_e6899c4d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/usbc/usb_pe_drp_sm.c",
+              "range": {
+                "startLine": 700,
+                "startChar": 0,
+                "endLine": 703,
+                "endChar": 0
+              },
+              "replacement": "\t\t/*\n\t\t * If we haven\u0027t done discovery yet, and we\u0027re connected a PD 3.x\n\t\t * partner, we should return SVDM_VER_2_1 as a default. If we\u0027re\n\t\t * asking this question, it will be because we\u0027re about to send\n\t\t * Discover Identity.\n\t\t */\n"
+            },
+            {
+              "path": "common/usbc/usb_pe_drp_sm.c",
+              "range": {
+                "startLine": 704,
+                "startChar": 0,
+                "endLine": 705,
+                "endChar": 0
+              },
+              "replacement": "\t\t\treturn SVDM_VER_2_1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cceb15d9_7912a8dc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s possible to go down this branch unless we connected to some hypothetical, future PD 4.x device. `enum pd_rev_type` and the message field it represents don\u0027t have any concept of minor revision.",
+      "fixSuggestions": [
+        {
+          "fixId": "14d59882_fa0dc0f5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/usbc/usb_pe_drp_sm.c",
+              "range": {
+                "startLine": 706,
+                "startChar": 0,
+                "endLine": 707,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn SVDM_VER_2_0;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce089f7_4a40547c",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628981a1_f55481ce",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "This should only be set with SVDM version 2.1. In the current code structure, I might put the actual value of this field in `add_dp_discovery_svdm_ver_21`, because you could have an SVDM-version-2.1 VDM that sets this field or one that clears it.",
+      "fixSuggestions": [
+        {
+          "fixId": "54a90873_a2aca524",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "\t\t(svdm_version \u003d\u003d SVDM_VER_2_1 ? DPAM_VER_VDO(0x1) : 0);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add0cee0_61862f82",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "Technically, I think SVDM 2.1 for DPAM adds the `NO_DPAM_SUPSEND` field in bit 9. The general form of this function would only set this field if `svdm_version` was 2.1. However, we don\u0027t do anything with this field, so it\u0027s fine for it to remain 0 in both cases for the foreseeable future.",
+      "fixSuggestions": [
+        {
+          "fixId": "5986a49f_4d5dc585",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+              "range": {
+                "startLine": 103,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": "\tuint32_t dp_status_vdo \u003d 0;\n\tif (svdm_version \u003e\u003d SVDM_VER_2_1) {\n\t\tdp_status_vdo \u003d VDO_DP_STATUS(0, /* IRQ_HPD */\n\t\t\t\t\t      false, /* HPD_HI|LOW */\n\t\t\t\t\t      0, /* request exit DP */\n\t\t\t\t\t      0, /* request exit USB */\n\t\t\t\t\t      1, /* MF pref */\n\t\t\t\t\t      true, /* DP Enabled */\n\t\t\t\t\t      0, /* power low e.g. normal */\n\t\t\t\t\t      0x2 /* Connected as Sink */) |\n\t\t\t\t   BIT(9); /* NO_DPAM_SUPSEND */\n\t} else {\n\t\tdp_status_vdo \u003d VDO_DP_STATUS(0, /* IRQ_HPD */\n\t\t\t\t\t      false, /* HPD_HI|LOW */\n\t\t\t\t\t      0, /* request exit DP */\n\t\t\t\t\t      0, /* request exit USB */\n\t\t\t\t\t      1, /* MF pref */\n\t\t\t\t\t      true, /* DP Enabled */\n\t\t\t\t\t      0, /* power low e.g. normal */\n\t\t\t\t\t      0x2 /* Connected as Sink */);\n\t}\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+              "range": {
+                "startLine": 104,
+                "startChar": 0,
+                "endLine": 112,
+                "endChar": 0
+              },
+              "replacement": "\t\tdp_status_vdo;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4343ee_d80741c8",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "Just FYI, `data` will be a pointer to whatever the fixture type is of the calling test, and you\u0027re using this function with multiple suites, which means multiple fixture types. This isn\u0027t a problem right now, because 1) you\u0027re not dereferencing the pointer, and 2) the structs happen to have the same definition anyway. But just be aware that if you added a field to one of these structs and accessed it here, this function would have undefined behavior for the other test.\n\nI\u0027d prefer that we never use functions like this, but the alternative is more test boilerplate, and the compiler doesn\u0027t catch it, so you\u0027ll probably find quite a few instances of this pattern.",
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9542d65_98fe0d7e",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "This struct and these functions should be in a .c file. In a .h file, they\u0027ll be instantiated for each .c file that includes them.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64243ce9_ec81afa5",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "I think I understand what this line of code is doing, but I don\u0027t understand this comment. None of the other tests exercise should PD r2.0, which is fine.",
+      "range": {
+        "startLine": 63,
+        "startChar": 40,
+        "endLine": 63,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "172d9eed_41171261",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "\t/* Initialize the partner with PD revision 3.0.\n\t * This will allow to test both PD revision 2.0 and 3.0\n\t * during the test execution.\n\t */\n\ttcpci_partner_init(partner, PD_REV30);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bb7e30_ae4e643c",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "This should be reset upon disconnect anyway.",
+      "fixSuggestions": [
+        {
+          "fixId": "8461061c_6edc6117",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 79,
+                "endChar": 0
+              },
+              "replacement": "\tprl_set_rev(TEST_PORT, TCPCI_MSG_SOP, PD_REV30);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed353c9f_7f001b1d",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "Nit: Can you use a macro for this like the other lines?",
+      "range": {
+        "startLine": 93,
+        "startChar": 56,
+        "endLine": 93,
+        "endChar": 63
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c78aa028_4f022994",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "#define VDO_MODAL_OPERATION_BIT BIT(26)\n\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 93,
+                "startChar": 0,
+                "endLine": 94,
+                "endChar": 0
+              },
+              "replacement": "\tfixture-\u003epartner.cable-\u003eidentity_vdm[VDO_INDEX_IDH] |\u003d\n\t\tVDO_MODAL_OPERATION_BIT;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9ffae1_96db8228",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-20T20:07:27Z",
+      "side": 1,
+      "message": "Can you add a TODO for b:418824261 to assert on the message sequence?",
+      "fixSuggestions": [
+        {
+          "fixId": "15e09a19_f1296a18",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 189,
+                "startChar": 0,
+                "endLine": 189,
+                "endChar": 0
+              },
+              "replacement": "\t/* TODO: b/418824261 - Assert on the message sequence. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
