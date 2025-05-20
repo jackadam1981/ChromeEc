@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16ccb8c_c5952be4",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-20T16:32:27Z",
+      "side": 1,
+      "message": "This makes sense to me now:\n\n```\n- sys_clock_hw_cycles_per_sec(): This function returns the number of hardware clock cycles in one second.\n\n- USEC_PER_SEC: This constant represents the number of microseconds in one second (1,000,000).\n\n- USEC_PER_SEC / sys_clock_hw_cycles_per_sec(): This calculation gives the duration of a single hardware clock cycle in microseconds, which essentially represents the resolution of a \"tick\" when converted to microseconds.\n\n- 2 * (single_tick_duration_in_usec): Since the comment states the maximum error threshold is \"two ticks,\" we multiply the duration of a single tick (in microseconds) by 2.\n```",
+      "parentUuid": "ae1fb028_2f889206",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fc9c1a4_d056a9eb",
