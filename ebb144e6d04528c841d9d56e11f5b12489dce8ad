@@ -22,6 +22,30 @@
       },
       "revId": "ebb144e6d04528c841d9d56e11f5b12489dce8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676c99d1_43f5c629",
+        "filename": "zephyr/program/bluey/adc.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1550739
+      },
+      "writtenOn": "2025-05-20T19:32:44Z",
+      "side": 1,
+      "message": "// VPH rail voltage, in volts\nV_VPH \u003d (raw_adc_value/adc_max) * (reference_voltage/external_divider) \n\nadc_max \u003d 0x3FF\nreference_voltage \u003d 3.3\nexternal_divider \u003d (5/16)   //podrick board\nexternal_divider \u003d (47/57)  //quenbi board",
+      "parentUuid": "2fc3e3a7_bbd4a150",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "ebb144e6d04528c841d9d56e11f5b12489dce8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
