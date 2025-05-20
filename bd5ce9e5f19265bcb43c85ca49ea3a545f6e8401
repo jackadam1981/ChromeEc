@@ -22,6 +22,30 @@
       },
       "revId": "bd5ce9e5f19265bcb43c85ca49ea3a545f6e8401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60461bd_dc7975a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-20T20:28:11Z",
+      "side": 1,
+      "message": "This only worked a part of the time, I was thinking we merge it and send the patch for upstream zephyr in the bug?",
+      "parentUuid": "884933fd_c8626e3a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "bd5ce9e5f19265bcb43c85ca49ea3a545f6e8401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
