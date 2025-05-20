@@ -12,7 +12,6 @@
 #include "../usba.dtsi"
 
 /* Trulo project DTS includes*/
-#include "battery.dtsi"
 #include "cbi.dtsi"
 #include "gpio.dtsi"
 #include "keyboard.dtsi"
@@ -23,6 +22,26 @@
 
 
 /* Trulo overrides follow... */
+
+/ {
+    batteries {
+		default_battery: atl_l25n3pg1 {
+			compatible = "atl,l25n3pg1", "battery-smart";
+		};
+		byd_l25b3pg1 {
+			compatible = "byd,l25b3pg1", "battery-smart";
+		};
+		cosmx_l25x3pg1 {
+			compatible = "cosmx,l25x3pg1", "battery-smart";
+		};
+		sunwoda_l25d3pg1 {
+			compatible = "sunwoda,l25d3pg1", "battery-smart";
+		};
+		smp_l25m3pg1 {
+			compatible = "smp,l25m3pg1", "battery-smart";
+		};
+    };
+};
 
 &cbi_flash {
 	/*
