@@ -150,6 +150,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb342f92_7994c522",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-20T21:21:36Z",
+      "side": 1,
+      "message": "Unfortunately, the Zephyr vs EC code boundary is not very clean. We are actually including many EC files, such as [`timer.c` in the Zephyr build](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/CMakeLists.txt;l\u003d553-555;drc\u003d96d5d359ed9ed24b0e52d3185efd45c38eefdc74). That file contains `crec_usleep`.",
+      "parentUuid": "4ca63641_821564c1",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58755617_1b91c566",
         "filename": "zephyr/test/hwtest/src/timer.c",
         "patchSetId": 3
