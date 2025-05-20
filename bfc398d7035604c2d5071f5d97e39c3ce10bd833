@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae1fb028_2f889206",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-20T16:21:22Z",
+      "side": 1,
+      "message": "I think it\u0027s ok as written?\n\n`(USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC)` should result in a value of `usec  / clock tick`. Then we multiply by two clock ticks, which gives us `usec`.",
+      "parentUuid": "58755617_1b91c566",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fc9c1a4_d056a9eb",
         "filename": "zephyr/test/hwtest/src/timer.c",
         "patchSetId": 3
