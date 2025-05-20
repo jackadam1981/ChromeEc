@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85bacf6_5f731d76",
+        "filename": "zephyr/program/fpmcu/helipilot/gwendolin/rwsig.dtsi",
+        "patchSetId": 37
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-05-20T11:54:10Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org @dawidn@google.com @dabros@google.com @fsammoura@google.com\n\nFYI `SIG_RW` section must be placed within `EC_RW` section because:\n- RWSIG assumes that the last 1kB of EC_RW is a signature\n- `bio_fw_updater` updates `EC_RW` section only and we want to update RW firmware + signature 😊\n\nThe downsize is that the we load signature to SRAM when jumping to RW, after RW was verified. This is something we can try to improve in future.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "a247e780598819c10640d14deea151cb95eca231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
