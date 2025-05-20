@@ -92,6 +92,8 @@ if(DEFINED CONFIG_PLATFORM_EC)
 
   include(fpu.cmake)
 
+  include(malloc.cmake)
+
   # When LTO is enabled, enable only for the "app" library, which compiles
   # and links all Chromium OS sources.
   # TODO: Enable LTO for all sources when Zephyr supports it.
