@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202c4d0a_12cb3afa",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-05-20T21:31:25Z",
+      "side": 1,
+      "message": "S0ix",
+      "range": {
+        "startLine": 318,
+        "startChar": 34,
+        "endLine": 318,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "325d0910_bb5800b7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+              "range": {
+                "startLine": 318,
+                "startChar": 0,
+                "endLine": 319,
+                "endChar": 0
+              },
+              "replacement": "AP_POWER_CHIPSET_SUB_STATE_DEFINE(S0ix, NULL, x86_non_dsx_adlp_s0ix_run, NULL,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e3f9c8cbf4ea38578fb21f16fdbe0bbdaa35efe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a57f36_d915e9a4",
+        "filename": "zephyr/test/nissa/src/board_ap_pwrseq_drv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-05-20T21:31:25Z",
+      "side": 1,
+      "message": "S0ix",
+      "range": {
+        "startLine": 239,
+        "startChar": 34,
+        "endLine": 239,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9946afaf_19b8b0c5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/nissa/src/board_ap_pwrseq_drv.c",
+              "range": {
+                "startLine": 239,
+                "startChar": 0,
+                "endLine": 240,
+                "endChar": 0
+              },
+              "replacement": "AP_POWER_CHIPSET_SUB_STATE_DEFINE(S0ix, NULL, x86_non_dsx_adlp_s0ix_run, NULL,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e3f9c8cbf4ea38578fb21f16fdbe0bbdaa35efe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
