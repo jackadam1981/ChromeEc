@@ -1,0 +1,248 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f106dd7f_95622574",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-20T05:36:10Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n@tomhughes@chromium.org\nWhy are we using `crec_usleep` rather than `k_usleep` since this is a zephyr test?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8d7bce7b_7ee5a1a9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": "#include \u003ckernel.h\u003e\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 25,
+                "endChar": 0
+              },
+              "replacement": "\tk_usleep(expected_duration);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58755617_1b91c566",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-20T05:36:10Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n@tomhughes@chromium.org\nThis comment and the implementation does not seem aligned to me. It reads `The maximum error threshold is two ticks.` I understand it that it should be translated to `(USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC) + 2`.\nCan you please advise?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "32b13082_a18f6cf9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "\t/* The sleep duration is adjusted to the system tick boundaries.\n\t * The maximum error threshold is two ticks, this is equivalent to\n\t * two times the duration of a tick.\n\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc9c1a4_d056a9eb",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-20T05:36:10Z",
+      "side": 1,
+      "message": "@davidmcross@google.com\n`CONFIG_SYS_CLOCK_TICKS_PER_SEC` still prints as `10,000` for `helipilot`. Is there a config in zephyr for the LF clock frequency or ticks per seconds that I can use here instead of using the hardcoded number for the LFCLK?",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e34e77ae_5b8c0331",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0
+              },
+              "replacement": "\t/* Helipilot uses the LFCLK for events which runs at a different\n\t * frequency than the system clock. The LFCLK frequency is\n\t * defined by CONFIG_CLOCK_LF_HZ. The error is also higher\n\t * than the system clock.\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 41,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": "\t\tdouble clock_tick_us \u003d\n\t\t\t(1.0 / CONFIG_CLOCK_LF_HZ) * 1000000.0;\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_true(sleep_duration \u003e\u003d expected_duration,\n\t\t     \"sleep_duration %\" PRIu64 \" \u003c expected_duration %d\",\n\t\t     sleep_duration, expected_duration);\n\tzassert_true((sleep_duration - expected_duration) \u003c error_threshold,\n\t\t     \"sleep_duration %\" PRIu64\n\t\t     \" - expected_duration %d \u003e\u003d error_threshold %d\",\n\t\t     sleep_duration, expected_duration, error_threshold);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 62,
+                "startChar": 0,
+                "endLine": 63,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_true(timestamp_expired(deadline, \u0026now),\n\t\t     \"deadline %\" PRIu64 \" should be expired\", deadline.val);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 66,
+                "startChar": 0,
+                "endLine": 67,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_true(timestamp_expired(deadline, \u0026now),\n\t\t     \"deadline %\" PRIu64 \" should be expired\", deadline.val);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_false(timestamp_expired(deadline, \u0026now),\n\t\t      \"deadline %\" PRIu64 \" should not be expired\",\n\t\t      deadline.val);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 82,
+                "startChar": 0,
+                "endLine": 83,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_true(timestamp_expired(deadline, NULL),\n\t\t     \"deadline %\" PRIu64 \" should be expired\", deadline.val);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 87,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_false(timestamp_expired(deadline, NULL),\n\t\t      \"deadline %\" PRIu64 \" should not be expired\",\n\t\t      deadline.val);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce73b30_3c70bdf6",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-20T05:36:10Z",
+      "side": 1,
+      "message": "@davidmcross@google.com\nZephyr should not change anything about this comment, am I right?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3f3d8b97_720f48e7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/timer.c",
+              "range": {
+                "startLine": 33,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0
+              },
+              "replacement": "\t/* Helipilot uses the LFCLK for events which runs at 32768 Hz with an\n\t * error of 2%. This gives a 30.5 us resolution and a max error of\n\t * 246.9 us on 12345 us. This is considerably lower resolution and higher\n\t * error than the stm32 boards and may result in higher deltas.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
