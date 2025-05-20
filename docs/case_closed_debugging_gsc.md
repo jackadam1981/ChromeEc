@@ -47,39 +47,42 @@ Capability Setting | Privilege Level Required
 The default GSC privilege level is [`Locked`] with the following capability
 settings:
 
-Capability        | Default    | Function
------------------ | ---------- | --------
-`UartGscRxAPTx`   | `Always`   | AP console read access
-`UartGscTxAPRx`   | `Always`   | AP console write access
-`UartGscRxECTx`   | `Always`   | EC console read access
-`UartGscTxECRx`   | `IfOpened` | EC console write access
-[`FlashAP`]       | `IfOpened` | Allows flashing the AP
-[`FlashEC`]       | `IfOpened` | Allows flashing the EC
-[`OverrideWP`]    | `IfOpened` | Override hardware write protect
-`RebootECAP`      | `IfOpened` | Allow rebooting the EC/AP from the GSC console
-`GscFullConsole`  | `IfOpened` | Allow access to restricted GSC console commands
-`UnlockNoReboot`  | `Always`   | Allow unlocking GSC without rebooting the AP
-`UnlockNoShortPP` | `Always`   | Allow unlocking GSC without physical presence
-`OpenNoTPMWipe`   | `IfOpened` | Allow opening GSC without wiping the TPM
-`OpenNoLongPP`    | `IfOpened` | Allow opening GSC without physical presence
-`BatteryBypassPP` | `Always`   | Allow opening GSC without physical presence and developer mode if the battery is removed
-`Unused`          | `Always`   | Doesn't do anything
-`I2C`             | `IfOpened` | Allow access to the I2C controller (used for measuring power)
-`FlashRead`       | `Always`   | Allow dumping a hash of the AP or EC flash
-`OpenNoDevMode`   | `IfOpened` | Allow opening GSC without developer mode
-`OpenFromUSB`     | `IfOpened` | Allow opening GSC from USB
+Capability         | Default    | Function
+------------------ | ---------- | --------
+`UartGscRxAPTx`    | `Always`   | AP console read access
+`UartGscTxAPRx`    | `Always`   | AP console write access
+`UartGscRxECTx`    | `Always`   | EC console read access
+`UartGscTxECRx`    | `IfOpened` | EC console write access
+`UartGscRxFpmcuTx` | `Always`   | FPMCU console read access (Ti50 only)
+`UartGscTxFpmcuRx` | `IfOpened` | FPMCU console write access (Ti50 only)
+[`FlashAP`]        | `IfOpened` | Allows flashing the AP
+[`FlashEC`]        | `IfOpened` | Allows flashing the EC
+[`OverrideWP`]     | `IfOpened` | Override hardware write protect
+`RebootECAP`       | `IfOpened` | Allow rebooting the EC/AP from the GSC console
+`GscFullConsole`   | `IfOpened` | Allow access to restricted GSC console commands
+`UnlockNoReboot`   | `Always`   | Allow unlocking GSC without rebooting the AP
+`UnlockNoShortPP`  | `Always`   | Allow unlocking GSC without physical presence
+`OpenNoTPMWipe`    | `IfOpened` | Allow opening GSC without wiping the TPM
+`OpenNoLongPP`     | `IfOpened` | Allow opening GSC without physical presence
+`BatteryBypassPP`  | `Always`   | Allow opening GSC without physical presence and developer mode if the battery is removed
+`Unused`           | `Always`   | Doesn't do anything
+`I2C`              | `IfOpened` | Allow access to the I2C controller (used for measuring power)
+`FlashRead`        | `Always`   | Allow dumping a hash of the AP or EC flash
+`OpenNoDevMode`    | `IfOpened` | Allow opening GSC without developer mode
+`OpenFromUSB`      | `IfOpened` | Allow opening GSC from USB
 
 ## Consoles {#consoles}
 
-GSC presents 3 consoles through CCD: AP, EC, and GSC, each of which show up on
-your host machine as a `/dev/ttyUSBX` device when a debug cable ([Suzy-Q] or
-[Type-C Servo v4]) is plugged in to the DUT.
+GSC presents 4 consoles through CCD: AP, EC, FPMCU and GSC, each of which show
+up on your host machine as a `/dev/ttyUSBX` device when a debug cable ([Suzy-Q]
+or [Type-C Servo v4]) is plugged in to the DUT.
 
-Console | Default access                              | Capability Name
-------- | ------------------------------------------- | ---------------
-GSC     | always read/write, but commands are limited | `GscFullConsole` enables the full set of GSC console commands
-AP      | read/write                                  | `UartGscRxAPTx` / `UartGscTxAPRx`
-EC      | read-only                                   | `UartGscRxECTx` / `UartGscTxECRx`
+Console           | Default access                              | Capability Name
+----------------- | ------------------------------------------- | ---------------
+GSC               | always read/write, but commands are limited | `GscFullConsole` enables the full set of GSC console commands
+AP                | read/write                                  | `UartGscRxAPTx` / `UartGscTxAPRx`
+EC                | read-only                                   | `UartGscRxECTx` / `UartGscTxECRx`
+FPMCU (Ti50 only) | read-only                                   | `UartGscRxFpmcuTx` / `UartGscTxFpmcuRx`
 
 ### Connecting to a Console
 
@@ -115,6 +118,11 @@ use the [`usb_console`] command to connect to Cr50 (`18d1:5014`) or Ti50
 (chroot) $ sudo usb_console -d 18d1:504a -i 2
 ```
 
+```bash
+# Connect to FPMCU console (on Ti50-based device only)
+(chroot) $ sudo usb_console -d 18d1:504a -i 6
+```
+
 #### Using "servod" to access the console
 
 [`servod`] can be used to create alternative console devices when combined with
@@ -131,7 +139,7 @@ Next, start [`servod`]:
 Then use `dut-control` to display the console devices:
 
 ```bash
-(chroot) $ dut-control gsc_uart_pty ec_uart_pty cpu_uart_pty
+(chroot) $ dut-control gsc_uart_pty ec_uart_pty cpu_uart_pty fpmcu_uart_pty
 ```
 
 Connect to the console devices with your favorite terminal program (e.g.,
