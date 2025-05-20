@@ -28,6 +28,12 @@ struct rollback_info rollback_info = {
 	.region_1_offset = 0x40000,
 	.region_size_bytes = 128 * 1024,
 };
+#elif defined(CONFIG_SOC_NPCX9MFP)
+struct rollback_info rollback_info = {
+	.region_0_offset = 0x20000,
+	.region_1_offset = 0x30000,
+	.region_size_bytes = 64 * 1024,
+};
 #else
 #error "Rollback info not defined for this chip. Please add it."
 #endif
@@ -40,7 +46,6 @@ static int read_rollback_region(const struct rollback_info *info, int region)
 
 	int offset = region == 0 ? info->region_0_offset :
 				   info->region_1_offset;
-
 	for (i = 0; i < info->region_size_bytes; i++) {
 		if (crec_flash_read(offset + i, sizeof(data), &data) ==
 		    EC_SUCCESS)
