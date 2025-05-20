@@ -46,6 +46,30 @@
       },
       "revId": "e09afc2ef3ec1b331bf023b8b39ec8ba9a4d0be4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c95bc4_14d27c60",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-05-20T19:34:21Z",
+      "side": 1,
+      "message": "I just checked my Ti50. This is correct. \n\nThe FPMCU UART is read-only until CCD is unlocked. Just like the EC.\n\nThe AP is read-write by default.\n\n```\n  UartGscRxAPTx    Y 0\u003dDefault (Always)\n  UartGscTxAPRx    Y 0\u003dDefault (Always)\n  UartGscRxECTx    Y 0\u003dDefault (Always)\n  UartGscTxECRx    Y 0\u003dDefault (IfOpened)\n  UartGscRxFpmcuTx Y 0\u003dDefault (Always)\n  UartGscTxFpmcuRx Y 0\u003dDefault (IfOpened)\n```",
+      "parentUuid": "eaaa92f1_2eef739d",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 72
+      },
+      "revId": "e09afc2ef3ec1b331bf023b8b39ec8ba9a4d0be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
