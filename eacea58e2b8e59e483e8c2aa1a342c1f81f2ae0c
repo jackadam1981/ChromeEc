@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490077f9_43a5bac2",
+        "filename": "zephyr/program/trulo/pujjocento/keyboard.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-05-20T02:46:07Z",
+      "side": 1,
+      "message": "this time is no need, new code has been apply this setting, please reference 5979310: keyboard_input: add a dedicated col2 settle delay | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5979310",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "eacea58e2b8e59e483e8c2aa1a342c1f81f2ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
