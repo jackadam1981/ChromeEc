@@ -54,6 +54,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffc3c29d_89df29c2",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-20T16:17:11Z",
+      "side": 1,
+      "message": "If you use [blame on this line](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/timer.c;l\u003d24;drc\u003d7c3c058ecbe96a95ccb3e66f4dca6c0409a14b87), you\u0027ll see a link to [the CL](https://crrev.com/c/6237896) that gives the context.\n\nI think we should probably add a comment here too though, so it\u0027s more obvious. Can you create a separate CL for that?",
+      "parentUuid": "f106dd7f_95622574",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58755617_1b91c566",
         "filename": "zephyr/test/hwtest/src/timer.c",
         "patchSetId": 3
