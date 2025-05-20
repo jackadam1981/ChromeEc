@@ -33,11 +33,19 @@ ZTEST(timer, test_crec_usleep)
 	int error_threshold =
 		(USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC) * 2;
 
+	/* Helipilot uses the LFCLK for events which runs at 32768 Hz
+	 * with an error of 2%. This gives a 30.5 us resolution and a
+	 * max error of 246.9 us on 12345 us. This is considerably lower
+	 * resolution and higher error than the stm32 boards and may
+	 * result in higher deltas.
+	 */
 	if (IS_ENABLED(CONFIG_BASEBOARD_HELIPILOT)) {
-		/* TODO(b/309557100): Adjust the threshold for Helipilot as it
-		 * is done for CrosEC.
-		 */
-		zassert_unreachable();
+		double max_error = expected_duration * 0.02;
+		double clock_tick_us =
+			USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC;
+
+		/* Assume a worst case error of max_error + 1 clock tick */
+		error_threshold = (int)(max_error + clock_tick_us);
 	}
 
 	zassert_true(sleep_duration >= expected_duration);
