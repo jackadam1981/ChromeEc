@@ -16,6 +16,29 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8714793742793333473) is being automatically retried for the following reasons:\n- Some child builders are now retryable:amd64-generic-vm-optimized-cq, arm64-generic-incremental-cq, rex-cq, skyrim-cq, strongbad-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "8b807e4d1b5d85a90cc1b16cbd7e253cdd2692ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006aaf9b_40111524",
+        "filename": "zephyr/zmake/zmake/configlib.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T23:10:14Z",
+      "side": 1,
+      "message": "Zephyr recently switched from the \"cmsis\" module to \"cmsis_6\", so both need to be included by default for RTK.\n\nPlease make this change and rebase the full stack of CLs.\n\n```suggestion\n    kwargs.setdefault(\"modules\", [\"cmsis\", \"cmsis_6\", \"ec\"])\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "8b807e4d1b5d85a90cc1b16cbd7e253cdd2692ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
