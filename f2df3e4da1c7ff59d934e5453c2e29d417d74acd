@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e0227b_b15b655e",
+        "filename": "zephyr/program/brox/brtk/rtk_generated.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T02:38:38Z",
+      "side": 1,
+      "message": "Don\u0027t use C++ style comments.\n\nI also don\u0027t understand what this comment means.  Are these unused pins that need to be set as inputs to prevent leakage?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 57
+      },
+      "revId": "f2df3e4da1c7ff59d934e5453c2e29d417d74acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d3112dc_6df09fb6",
+        "filename": "zephyr/program/brox/brtk/rtk_power_signals.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-20T02:38:38Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed.  These files are included by boards/google/realtek/realtek.dtsi",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "f2df3e4da1c7ff59d934e5453c2e29d417d74acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
