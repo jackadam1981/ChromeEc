@@ -16,6 +16,24 @@
       "message": "Mary, do we even have direct connection to FPMCU? I thought it all comes via vendor commands from AP",
       "revId": "37b524f04c85f6d8e11284c10cb3c34c3d939a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e4703b_fd822278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-20T19:07:43Z",
+      "side": 1,
+      "message": "\u003e do we even have direct connection to FPMCU\n\nOn Ti50 we do. See http://b/418298959 and http://b/140731892. I confirmed it works: https://crrev.com/c/6569636.",
+      "parentUuid": "a2409d64_46f7462b",
+      "revId": "37b524f04c85f6d8e11284c10cb3c34c3d939a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
