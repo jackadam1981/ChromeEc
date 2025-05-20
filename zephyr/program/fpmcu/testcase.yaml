@@ -151,6 +151,7 @@ tests:
   rng_benchmark:
     extra_configs:
     - CONFIG_HW_TEST_RNG_BENCHMARK=y
+    - CONFIG_ZTEST_STACK_SIZE=2048
     extra_conf_files:
     - prj_hw_tests.conf
   rollback:
