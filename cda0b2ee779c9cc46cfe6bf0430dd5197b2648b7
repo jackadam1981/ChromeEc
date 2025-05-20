@@ -40,6 +40,30 @@
       ],
       "revId": "cda0b2ee779c9cc46cfe6bf0430dd5197b2648b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85dfc9b7_9ebb70ef",
+        "filename": "zephyr/program/ocelot/ocelot_microchip/i2c.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-20T17:23:54Z",
+      "side": 1,
+      "message": "Realtek states that 100kHz (standard) is typical, and this is what we did on prior designs, but they also say it can be cranked up to 400kHz (fast) for FW update (http://b/309975989). We should probably make it `I2C_BITRATE_STANDARD`",
+      "parentUuid": "1b8f6258_d911de0d",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "cda0b2ee779c9cc46cfe6bf0430dd5197b2648b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
