@@ -38,6 +38,7 @@ register_skywalker_npcx_project(project_name="skywalker")
 register_skywalker_ite_project(project_name="luuke")
 register_skywalker_npcx_project(project_name="obiwan")
 register_skywalker_npcx_project(project_name="yoda")
+register_skywalker_ite_project(project_name="anakin")
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
@@ -45,3 +46,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="skywalker", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="luuke", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="obiwan", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yoda", addr=0x40144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="anakin", addr=0x60098)
