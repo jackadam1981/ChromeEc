@@ -1,0 +1,132 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95aa0adf_f8f2cd02",
+        "filename": "zephyr/boards/google/realtek/realtek.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-20T10:07:46Z",
+      "side": 1,
+      "message": "remote whitespace",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "eea2b906_871ac630",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/boards/google/realtek/realtek.dtsi",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 47,
+                "endChar": 0
+              },
+              "replacement": "\tstatus \u003d \"okay\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9b8425771a75f9fb20cd2070869f29c449641b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b524e887_269b15dc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-20T10:07:46Z",
+      "side": 1,
+      "message": "Put the mutable data (all_protected, addr_prot_start, addr_prot_length) in data, and move the `flash_dev` to config:\n\n```\nstruct cros_flash_rtk_data {\n    int all_protected;\n    int addr_prot_start;\n    int addr_prot_length;\n}\n\nstruct cros_flash_rtk_config {\n    const struct device *flash_dev;\n};\n```",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "9b8425771a75f9fb20cd2070869f29c449641b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7213a8_b2b0752a",
+        "filename": "zephyr/shim/chip/rtk/system_external_storage.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-20T10:07:46Z",
+      "side": 1,
+      "message": "not used, remove these",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c28de2c3_4b4cb64f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/system_external_storage.c",
+              "range": {
+                "startLine": 17,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9b8425771a75f9fb20cd2070869f29c449641b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d214620_089dac19",
+        "filename": "zephyr/shim/chip/rtk/system_external_storage.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-20T10:07:46Z",
+      "side": 1,
+      "message": "I guess you don\u0027t need the `static` here?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9b8425771a75f9fb20cd2070869f29c449641b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
