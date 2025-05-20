@@ -167,6 +167,46 @@ kernel:
 (dut)$ cat /sys/kernel/debug/cros_fp/console_log
 ```
 
+## Console
+
+ChromeOS devices with a Ti50 GSC can connect to the FPMCU console through [CCD].
+
+Access to the console is controlled with the
+[`UartGscRxFpmcuTx` and `UartGscTxFpmcuRx` capabilities][ccd consoles]. Follow
+the [CCD Open] instructions to configure access.
+
+The FPMCU console is configured as [usb interface number 6]. With a SuzyQ or
+servod v4 plugged in to the ChromeOS device, you should see `/dev/ttyUSB6`,
+which you can connect to using your favorite terminal program:
+
+```bash
+(outside) screen /dev/ttyUSB6
+```
+
+Alternatively, you can use the [`usb_console` tool].
+
+If you run `servod`, it provides access to the console over a `pty`. You can
+find the name of the `pty` with the following commands and then use your
+favorite terminal program:
+
+**Raw console**:
+
+```bash
+(outside) dut-control -- raw_fpmcu_uart_pty
+```
+
+**EC3P0 console**:
+
+```bash
+(outside) dut-control -- fpmcu_uart_pty
+```
+
+[ccd consoles]: https://chromium.googlesource.com/chromiumos/platform/ec/+/gsc_utils/docs/case_closed_debugging_gsc.md#consoles
+[CCD Open]: https://chromium.googlesource.com/chromiumos/platform/ec/+/gsc_utils/docs/case_closed_debugging_gsc.md#ccd-open
+[`usb_console` tool]: https://chromium.googlesource.com/chromiumos/platform/ec/+/gsc_utils/docs/case_closed_debugging_gsc.md#connecting-to-a-console
+[usb interface number 6]: http://shortn/_A9FHouqAkD
+[CCD]: ../sitemap.md#case-closed-debugging-ccd
+
 ## Production Updates (Auto-Update)
 
 ### `fp_updater.sh` and `bio_fw_updater`
