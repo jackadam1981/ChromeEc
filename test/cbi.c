@@ -214,7 +214,6 @@ DECLARE_EC_TEST(test_all_tags)
 	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
 	zassert_equal(cbi_get_ssfc(&d32), EC_SUCCESS);
 	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
-	zassert_equal(cbi_get_factory_calibration_data(&d32), EC_SUCCESS);
 	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
 	zassert_equal(cbi_get_rework_id(&d64), EC_SUCCESS);
 	/* This should be zassert_equal, but for EC test fmt is always "0x%x"
@@ -223,8 +222,6 @@ DECLARE_EC_TEST(test_all_tags)
 	zassert_true((unsigned long long)d64 == (unsigned long long)d8,
 		     "0x%llx, 0x%llx", (unsigned long long)d64,
 		     (unsigned long long)d8);
-	zassert_equal(cbi_get_common_control((union ec_common_control *)&d32),
-		      EC_SUCCESS);
 	zassert_equal(d32, d8, "0x%x, 0x%x", d32, d8);
 
 	/* Write protect */

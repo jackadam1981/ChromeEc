@@ -6597,15 +6597,8 @@ enum cbi_data_tag {
 	/* Second Source Factory Cache */
 	CBI_TAG_SSFC = 8, /* uint32_t bit field */
 	CBI_TAG_REWORK_ID = 9, /* uint64_t or smaller */
-	CBI_TAG_FACTORY_CALIBRATION_DATA = 10, /* uint32_t bit field */
-
-	/*
-	 * A uint32_t field reserved for controlling common features at runtime.
-	 * It shouldn't be used at board-level. See union ec_common_control for
-	 * the bit definitions.
-	 */
-	CBI_TAG_COMMON_CONTROL = 11,
-
+	CBI_TAG_FACTORY_CALIBRATION_DATA = 10, /* Deprecated */
+	CBI_TAG_COMMON_CONTROL = 11, /* Deprecated */
 	/* struct board_batt_params */
 	CBI_TAG_BATTERY_CONFIG = 12,
 	/* CBI_TAG_BATTERY_CONFIG_1 ~ 15 will use 13 ~ 27. */
@@ -6613,13 +6606,6 @@ enum cbi_data_tag {
 
 	/* Last entry */
 	CBI_TAG_COUNT,
-};
-
-union ec_common_control {
-	struct {
-		uint32_t ucsi_enabled : 1;
-	};
-	uint32_t raw_value;
 };
 
 /*

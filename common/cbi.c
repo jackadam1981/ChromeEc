@@ -300,22 +300,6 @@ int cbi_get_rework_id(uint64_t *id)
 	return cbi_get_board_info(CBI_TAG_REWORK_ID, (uint8_t *)id, &size);
 }
 
-int cbi_get_factory_calibration_data(uint32_t *calibration_data)
-{
-	uint8_t size = sizeof(*calibration_data);
-
-	return cbi_get_board_info(CBI_TAG_FACTORY_CALIBRATION_DATA,
-				  (uint8_t *)calibration_data, &size);
-}
-
-test_mockable int cbi_get_common_control(union ec_common_control *ctrl)
-{
-	uint8_t size = sizeof(*ctrl);
-
-	return cbi_get_board_info(CBI_TAG_COMMON_CONTROL, (uint8_t *)ctrl,
-				  &size);
-}
-
 static enum ec_status
 common_cbi_set(const struct __ec_align4 ec_params_set_cbi *p)
 {
@@ -542,7 +526,6 @@ static void dump_cbi(void)
 {
 	uint32_t val;
 	uint64_t lval;
-	union ec_common_control ctrl;
 
 	/* Ensure we read the latest data from flash. */
 	cbi_invalidate_cache();
@@ -565,8 +548,6 @@ static void dump_cbi(void)
 	print_tag("PCB_SUPPLIER", cbi_get_pcb_supplier(&val), &val);
 	print_tag("SSFC", cbi_get_ssfc(&val), &val);
 	print_uint64_tag("REWORK_ID", cbi_get_rework_id(&lval), &lval);
-	print_tag("COMMON_CONTROL", cbi_get_common_control(&ctrl),
-		  &ctrl.raw_value);
 }
 
 /*
