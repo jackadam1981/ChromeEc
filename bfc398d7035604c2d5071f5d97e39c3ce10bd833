@@ -126,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ca63641_821564c1",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-20T19:20:45Z",
+      "side": 1,
+      "message": "I gave this more thoughts. If we do not use `crec_sleep` in zephyr, why we need to test it?",
+      "parentUuid": "336b5156_c8771f44",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58755617_1b91c566",
         "filename": "zephyr/test/hwtest/src/timer.c",
         "patchSetId": 3
