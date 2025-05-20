@@ -21,6 +21,9 @@ ZTEST(timer, test_crec_usleep)
 	const int expected_duration = 12345;
 
 	uint64_t start_time = sys_clock_cycle_get_64();
+	/* This test is trying to test the functionality of crec_usleep, so we
+	 * allow the usage even though it's in Zephyr code.
+	 */
 	crec_usleep(expected_duration); /* NOLINT_EC_SYMBOL */
 	uint64_t sleep_duration =
 		((sys_clock_cycle_get_64() - start_time) * USEC_PER_SEC) /
