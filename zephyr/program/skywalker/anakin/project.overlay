@@ -34,6 +34,38 @@
 		};
 	};
 
+	named-gpios {
+		/delete-node/ ec_i2c_pdc0_s_int_odl;
+		/delete-node/ ec_i2c_pdc1_s_int_odl;
+		/delete-node/ usb_c0_dp_hpd;
+		/delete-node/ usb_c1_dp_hpd;
+	};
+
+	named-i2c-ports {
+		/delete-node/ ec_i2c_pdc_s_scl_3v3;
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
+			<&gpioj 2 GPIO_INPUT_PULL_DOWN>;
+	};
+
 	cros-keyscan {
 		compatible = "cros-ec,keyscan";
 
@@ -88,6 +120,13 @@
 
 &pwm3 {
 	prescaler-cx = <PWM_PRESCALER_C4>;
+};
+
+&i2c4 {
+	/delete-node/ ps8747-mux-1@10;
+	/delete-node/ tusb546-mux-0@44;
+
+	status = "disabled";
 };
 
 &sha0 {
