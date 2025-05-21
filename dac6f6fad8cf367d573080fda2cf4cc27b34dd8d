@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834ec32b_2521b913",
+        "filename": "zephyr/program/trulo/pujjolo/src/keyboard_customization.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-05-21T07:02:29Z",
+      "side": 1,
+      "message": "I guess numpad only exist on pujjoquince, but not on pujjolo. Please replace all occurrences of the project name with proper description, like `numpad` or `no_numpad` in this CL.",
+      "fixSuggestions": [
+        {
+          "fixId": "c4e2f796_7c9a9009",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjolo/src/keyboard_customization.c",
+              "range": {
+                "startLine": 99,
+                "startChar": 0,
+                "endLine": 100,
+                "endChar": 0
+              },
+              "replacement": "\t\tLOG_INF(\"numpad keyboard matrix\");\n"
+            },
+            {
+              "path": "zephyr/program/trulo/pujjolo/src/keyboard_customization.c",
+              "range": {
+                "startLine": 104,
+                "startChar": 0,
+                "endLine": 105,
+                "endChar": 0
+              },
+              "replacement": "\t\tLOG_INF(\"no numpad keyboard matrix\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "dac6f6fad8cf367d573080fda2cf4cc27b34dd8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
