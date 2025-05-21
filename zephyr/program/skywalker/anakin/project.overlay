@@ -32,12 +32,19 @@
 		/delete-node/ ec_i2c_pdc1_s_int_odl;
 		/delete-node/ usb_c0_dp_hpd;
 		/delete-node/ usb_c1_dp_hpd;
+		/delete-node/ en_usb_c0_dev_mode;
 
 		gpio_bl_pwr_pgd: bl_pwr_pgd {
 			gpios = <&gpiof 1 (GPIO_INPUT)>;
 		};
 		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
 			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_jd1: jd1 {
+			gpios = <&gpiof 0 (GPIO_INPUT)>;
+		};
+		gpio_5p0va_pwr_mode: 5p0va_pwr_mode {
+			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
 		};
 	};
 
@@ -46,6 +53,11 @@
 			irq-pin = <&gpio_bl_pwr_pgd>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bl_pg_interrupt";
+		};
+		int_jd1: jd1 {
+			irq-pin = <&gpio_jd1>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "audio_jack_interrupt";
 		};
 	};
 
@@ -63,7 +75,6 @@
 			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
-			<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
