@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91569d8f_ea05a30e",
+        "filename": "board/moxie/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-21T00:44:01Z",
+      "side": 1,
+      "message": "please add the `_US` suffix so it\u0027s obvious that this is microseconds.",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0d78ae48_e9fcf1c2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/moxie/led.c",
+              "range": {
+                "startLine": 87,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "#define LED_PULSE_PERIOD_US (4 * SECOND)\n"
+            },
+            {
+              "path": "board/moxie/led.c",
+              "range": {
+                "startLine": 89,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "#define LED_PULSE_US (LED_PULSE_PERIOD_US * LED_DUTY_CYCLE / 100 / 2)\n"
+            },
+            {
+              "path": "board/moxie/led.c",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "/* LED_PULSE_PERIOD_US \u003d time_on + time_off;\n"
+            },
+            {
+              "path": "board/moxie/led.c",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": " * time_off \u003d LED_PULSE_PERIOD_US - LED_PULSE_US * 2;\n"
+            },
+            {
+              "path": "board/moxie/led.c",
+              "range": {
+                "startLine": 112,
+                "startChar": 0,
+                "endLine": 113,
+                "endChar": 0
+              },
+              "replacement": "\t\t    LED_PULSE_PERIOD_US - LED_PULSE_US * 2, (color))\n"
+            },
+            {
+              "path": "board/moxie/led.c",
+              "range": {
+                "startLine": 154,
+                "startChar": 0,
+                "endLine": 155,
+                "endChar": 0
+              },
+              "replacement": "\tCONFIG_TICK(LED_PULSE_TICK_US, LED_PULSE_PERIOD_US, LED_BLUE);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c71fb60a19ab8752f6ef97bf7176c91da7bb17a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
