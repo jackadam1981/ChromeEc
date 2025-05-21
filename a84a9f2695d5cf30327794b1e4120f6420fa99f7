@@ -16,6 +16,47 @@
       "message": "Hi Ting and Sung-Chi,\nCould you please help review?  Thanks.",
       "revId": "a84a9f2695d5cf30327794b1e4120f6420fa99f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1940819_52e113f1",
+        "filename": "zephyr/program/skywalker/obiwan/led_policy.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2025-05-21T03:56:30Z",
+      "side": 1,
+      "message": "Remove extra space.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3d69688b_1e464a8b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/skywalker/obiwan/led_policy.dtsi",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 7,
+                "endChar": 0
+              },
+              "replacement": "#include \u003cdt-bindings/battery.h\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a84a9f2695d5cf30327794b1e4120f6420fa99f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
