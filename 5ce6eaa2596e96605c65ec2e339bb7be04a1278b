@@ -1,0 +1,117 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47e1ff0_6b15f7c3",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-21T18:29:26Z",
+      "side": 1,
+      "message": "Possibility for a future bug here, as board_battery_type is initialized to BATTERY_TYPE_COUNT, so that value might be used for the calculation. Instead, it would be safer to define 2 compile-time values and use those when applicable,i.e. \n```\n#define CHARGING_VOLTAGE_SDI_4404D57M 8700\n#define CHARGING_VOLTAGE_SDI_4404D57L 8600\n```",
+      "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126c0242_c28339ca",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-21T18:29:26Z",
+      "side": 1,
+      "message": "This and the next line is in milli-volts, right?",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "414a48d0_ba8e3ecd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/meliks/src/battery.c",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "#define DROP_CELL_VOLT_MV 16 // 2S battery\n#define DROP_VOLT_MV (DROP_CELL_VOLT_MV * BAT_SERIES)\n"
+            },
+            {
+              "path": "zephyr/program/nissa/meliks/src/battery.c",
+              "range": {
+                "startLine": 274,
+                "startChar": 0,
+                "endLine": 275,
+                "endChar": 0
+              },
+              "replacement": "\t\tbat_drop_voltage \u003d CHARGING_VOLTAGE - (DROP_VOLT_MV * drop_step);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c75ab8e_4e31ab09",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-21T18:29:26Z",
+      "side": 1,
+      "message": "the comment should be above line 439 \"batt_pres \u003d ... BP_NO : BP_YES\"",
+      "fixSuggestions": [
+        {
+          "fixId": "21ed15ec_85edffb5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/meliks/src/battery.c",
+              "range": {
+                "startLine": 439,
+                "startChar": 0,
+                "endLine": 439,
+                "endChar": 0
+              },
+              "replacement": "\t/* The GPIO is low when the battery is present */\n"
+            },
+            {
+              "path": "zephyr/program/nissa/meliks/src/battery.c",
+              "range": {
+                "startLine": 446,
+                "startChar": 0,
+                "endLine": 447,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
