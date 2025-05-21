@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9235e3a_e0cb31e5",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:55:05Z",
+      "side": 1,
+      "message": "You are using here config `FINGERPRINT_SENSOR_EGIS630` which doesn\u0027t exist at this point. You should probably swap CLs",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7280f9_a741fe43",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:55:05Z",
+      "side": 1,
+      "message": "Why 2 not [3](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/egis/egis_api.h;l\u003d23)?",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70efaaf8_bfe06ba4",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:55:05Z",
+      "side": 1,
+      "message": "You probably don\u0027t have to add `default n`. Configs by default are not set. I know it is copy-paste, but it should be the same case for other configs or I\u0027m missing something.",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d6a915_77a020d8",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:55:05Z",
+      "side": 1,
+      "message": "Unnecessary line",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe1b5615_9b5964bb",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:55:05Z",
+      "side": 1,
+      "message": "Incorrect function name",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa5f4ef_8d11c323",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:55:05Z",
+      "side": 1,
+      "message": "It is something to double-check, but Zephyr code rather uses `__ASSERT...` macros. Same goes for every `assert` in this file.",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
