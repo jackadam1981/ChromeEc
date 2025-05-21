@@ -60,7 +60,7 @@ static void test_soft_reboot(void)
 static void test_hard_reboot(void)
 {
 	check_panic_data();
-	LOG_INF("Perform soft reboot");
+	LOG_INF("Perform hard reboot");
 	cflush();
 	system_reset(SYSTEM_RESET_HARD);
 	/* Should never reach this. */
