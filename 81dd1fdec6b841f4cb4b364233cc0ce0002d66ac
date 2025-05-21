@@ -100,6 +100,30 @@
       ],
       "revId": "81dd1fdec6b841f4cb4b364233cc0ce0002d66ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c2b48e_eee0402f",
+        "filename": "board/moxie/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2025-05-21T00:18:11Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "6ac7f9bd_1a4620a5",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "81dd1fdec6b841f4cb4b364233cc0ce0002d66ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
