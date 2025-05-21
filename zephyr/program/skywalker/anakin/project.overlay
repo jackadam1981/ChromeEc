@@ -33,6 +33,11 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "base_accel_gyro_interrupt";
 		};
+		int_jd1: jd1 {
+			irq-pin = <&gpio_jd1>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "audio_jack_interrupt";
+		};
 	};
 
 	named-gpios {
