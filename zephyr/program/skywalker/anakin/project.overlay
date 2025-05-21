@@ -37,6 +37,11 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "bl_pg_interrupt";
 		};
+		int_jd1: jd1 {
+			irq-pin = <&gpio_jd1>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "audio_jack_interrupt";
+		};
 	};
 
 	named-gpios {
