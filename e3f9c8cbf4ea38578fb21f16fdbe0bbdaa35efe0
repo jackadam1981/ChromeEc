@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcde051_267f684a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_adlp_pwrseq_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-21T18:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202c4d0a_12cb3afa",
+      "range": {
+        "startLine": 318,
+        "startChar": 34,
+        "endLine": 318,
+        "endChar": 38
+      },
+      "revId": "e3f9c8cbf4ea38578fb21f16fdbe0bbdaa35efe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9a57f36_d915e9a4",
@@ -79,6 +103,30 @@
           ]
         }
       ],
+      "revId": "e3f9c8cbf4ea38578fb21f16fdbe0bbdaa35efe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a967c63_2710cf4e",
+        "filename": "zephyr/test/nissa/src/board_ap_pwrseq_drv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-21T18:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a57f36_d915e9a4",
+      "range": {
+        "startLine": 239,
+        "startChar": 34,
+        "endLine": 239,
+        "endChar": 38
+      },
       "revId": "e3f9c8cbf4ea38578fb21f16fdbe0bbdaa35efe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
