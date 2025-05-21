@@ -43,9 +43,6 @@
 		/delete-node/ en_usb_c0_dev_mode;
 		/delete-node/ ec_kso_02_inv;
 
-		gpio_bl_pwr_pgd: bl_pwr_pgd {
-			gpios = <&gpiof 1 (GPIO_INPUT)>;
-		};
 		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
 			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
 		};
@@ -74,6 +71,7 @@
 			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
