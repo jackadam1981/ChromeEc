@@ -1,0 +1,630 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150b1292_e3568c3c",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Copy and paste error?  Why are you including a microchip directory?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c47e78b_828cd397",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Why no optimization?  How big is the binary?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2036a3a5_6c9a72fa",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Use snake case for C structure definitions.  All caps is for macros and enums.",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "240d08c4_bbdf4dd7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": "static int8_t config_command(struct spic_command *command, uint8_t cmd,\n\t\t\t     uint32_t addr, enum spic_address_size addr_size,\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 51,
+                "startChar": 0,
+                "endLine": 52,
+                "endChar": 0
+              },
+              "replacement": "static struct spic_command command_default \u003d {\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 53,
+                "startChar": 0,
+                "endLine": 54,
+                "endChar": 0
+              },
+              "replacement": "        .bus_width \u003d SPIC_BUS_SINGLE,\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 57,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "        .bus_width \u003d SPIC_BUS_SINGLE,\n        .size \u003d SPIC_ADDR_SIZE_24,\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 68,
+                "endChar": 0
+              },
+              "replacement": "        .bus_width \u003d SPIC_BUS_SINGLE,\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 98,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "\tstruct spic_command *command \u003d \u0026command_default;\n\tenum spic_address_size addr_size \u003d SPIC_ADDR_SIZE_24;\n\tenum spic_status status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "\t\taddr_size \u003d SPIC_ADDR_SIZE_32;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "\tif (status !\u003d SPIC_STATUS_OKAY) {\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 131,
+                "startChar": 0,
+                "endLine": 134,
+                "endChar": 0
+              },
+              "replacement": "\tstruct spic_command *command \u003d \u0026command_default;\n\tenum spic_address_size addr_size \u003d SPIC_ADDR_SIZE_24;\n\tenum spic_status status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 142,
+                "startChar": 0,
+                "endLine": 143,
+                "endChar": 0
+              },
+              "replacement": "\t\taddr_size \u003d SPIC_ADDR_SIZE_32;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 177,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (status !\u003d SPIC_STATUS_OKAY) {\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "\tstruct spic_command *command \u003d \u0026command_default;\n\tenum spic_address_size addr_size \u003d SPIC_ADDR_SIZE_24;\n\tenum spic_status status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 200,
+                "startChar": 0,
+                "endLine": 201,
+                "endChar": 0
+              },
+              "replacement": "\t\taddr_size \u003d SPIC_ADDR_SIZE_32;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 213,
+                "startChar": 0,
+                "endLine": 214,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (status !\u003d SPIC_STATUS_OKAY) {\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 233,
+                "startChar": 0,
+                "endLine": 235,
+                "endChar": 0
+              },
+              "replacement": "static int8_t config_command(struct spic_command *command, uint8_t cmd,\n\t\t\t     uint32_t addr, enum spic_address_size addr_size,\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 254,
+                "startChar": 0,
+                "endLine": 255,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand-\u003edata.bus_width \u003d SPIC_BUS_SINGLE;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 264,
+                "startChar": 0,
+                "endLine": 266,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand-\u003eaddress.bus_width \u003d SPIC_BUS_SINGLE;\n\t\tcommand-\u003edata.bus_width \u003d SPIC_BUS_SINGLE;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 269,
+                "startChar": 0,
+                "endLine": 271,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand-\u003eaddress.bus_width \u003d SPIC_BUS_SINGLE;\n\t\tcommand-\u003edata.bus_width \u003d SPIC_BUS_DUAL;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 274,
+                "startChar": 0,
+                "endLine": 276,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand-\u003eaddress.bus_width \u003d SPIC_BUS_SINGLE;\n\t\tcommand-\u003edata.bus_width \u003d SPIC_BUS_QUAD;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 279,
+                "startChar": 0,
+                "endLine": 281,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand-\u003eaddress.bus_width \u003d SPIC_BUS_DUAL;\n\t\tcommand-\u003edata.bus_width \u003d SPIC_BUS_DUAL;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 285,
+                "startChar": 0,
+                "endLine": 287,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand-\u003eaddress.bus_width \u003d SPIC_BUS_QUAD;\n\t\tcommand-\u003edata.bus_width \u003d SPIC_BUS_QUAD;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 303,
+                "startChar": 0,
+                "endLine": 305,
+                "endChar": 0
+              },
+              "replacement": "\tstruct spic_command *command \u003d \u0026command_default;\n\tenum spic_status status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 310,
+                "startChar": 0,
+                "endLine": 311,
+                "endChar": 0
+              },
+              "replacement": "\tif (status !\u003d SPIC_STATUS_OKAY) {\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 320,
+                "startChar": 0,
+                "endLine": 322,
+                "endChar": 0
+              },
+              "replacement": "\tstruct spic_command *command \u003d \u0026command_default;\n\tenum spic_status status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 327,
+                "startChar": 0,
+                "endLine": 328,
+                "endChar": 0
+              },
+              "replacement": "\tif (status !\u003d SPIC_STATUS_OKAY) {\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 337,
+                "startChar": 0,
+                "endLine": 339,
+                "endChar": 0
+              },
+              "replacement": "\tstruct spic_command *command \u003d \u0026command_default;\n\tenum spic_status status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+              "range": {
+                "startLine": 345,
+                "startChar": 0,
+                "endLine": 346,
+                "endChar": 0
+              },
+              "replacement": "\tif (status !\u003d SPIC_STATUS_OKAY) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d31d6e_c515edac",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Run clang-format on all files.  The indentation here is not correct.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3de7f3_ba72cd4c",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"idenfication\" is a possible misspelling of \"identification\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"idenfication\" is a possible misspelling of \"identification\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 48
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121e9370_15c336fa",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "You should be able to link in the standard library implementation.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 51
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48e9b7b_9004a8aa",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"sucessfully\" is a possible misspelling of \"successfully\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"sucessfully\" is a possible misspelling of \"successfully\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 27,
+        "startChar": 44,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79114dbf_88141ed1",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Don\u0027t create typedefs.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6496e0ce_ee12240d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "} spic_status;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": "} spic_bus_width;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 41,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": "} spic_address_size;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 43,
+                "startChar": 0,
+                "endLine": 44,
+                "endChar": 0
+              },
+              "replacement": "typedef uint8_t spic_alt_size;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 48,
+                "endChar": 0
+              },
+              "replacement": "\t\tspic_bus_width bus_width; /**\u003c Bus width for the instruction\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 54,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "\t\tspic_bus_width bus_width; /**\u003c Bus width for the address \u003e*/\n\t\tspic_address_size size; /**\u003c Address size \u003e*/\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 61,
+                "startChar": 0,
+                "endLine": 63,
+                "endChar": 0
+              },
+              "replacement": "\t\tspic_bus_width bus_width; /**\u003c Bus width for alternative  \u003e*/\n\t\tspic_alt_size size; /**\u003c Alternative size \u003e*/\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 70,
+                "endChar": 0
+              },
+              "replacement": "\t\tspic_bus_width bus_width; /**\u003c Bus width for data \u003e*/\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "} spic_command;\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "spic_status spic_init(uint8_t hz, uint8_t mode);\nspic_status spic_init_direct(uint8_t hz, uint8_t mode);\nspic_status spic_frequency(uint8_t hz);\nspic_status spic_write(const spic_command *command, const void *data,\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.h",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "spic_status spic_read(const spic_command *command, void *data,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b668620c_69e04c58",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/reg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "This file defines both bitmap fields and macros for the register fields.\n\nYou should pick one method and use it consistently.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e1ddad_eddd8a4d",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/reg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T23:03:35Z",
+      "side": 1,
+      "message": "Needs a newline at the end of the file.",
+      "range": {
+        "startLine": 1878,
+        "startChar": 0,
+        "endLine": 1878,
+        "endChar": 22
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
