@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92139090_c550e2a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-21T22:15:19Z",
+      "side": 1,
+      "message": "This is a blanket reduction in the current limit across TCPMv2, which isn\u0027t necessarily how I want to address this. However, if screebo passes the test with this CL, that would confirm your theory of the failure.",
+      "revId": "65fb8a99da44037dd8cce7af0bcd1dd4e3609f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
