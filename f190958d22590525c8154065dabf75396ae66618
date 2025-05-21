@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd1add0_040efd69",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T13:59:43Z",
+      "side": 1,
+      "message": "`device *watchdog` above already points to the wdog node.  You can use that pointer instead of declaring a new one.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "f190958d22590525c8154065dabf75396ae66618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
