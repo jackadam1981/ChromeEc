@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa139f7_b72d2562",
+        "filename": "zephyr/malloc.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-21T00:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba41b09e_7a488af9",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 86
+      },
+      "revId": "8afee9c509b43bfabbe2de76d82de295ec9c7fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06741beb_c422f725",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-05-20T23:37:00Z",
       "side": 1,
       "message": "CMake indent should be 2 spaces, no tabs.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 81
+      },
+      "revId": "8afee9c509b43bfabbe2de76d82de295ec9c7fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea67768f_a5b77d6f",
+        "filename": "zephyr/malloc.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-21T00:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06741beb_c422f725",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -101,6 +149,30 @@
           ]
         }
       ],
+      "revId": "8afee9c509b43bfabbe2de76d82de295ec9c7fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d1e443_27876e84",
+        "filename": "zephyr/malloc.cmake",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-21T00:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7453ca2_1fd674d9",
+      "range": {
+        "startLine": 11,
+        "startChar": 97,
+        "endLine": 11,
+        "endChar": 137
+      },
       "revId": "8afee9c509b43bfabbe2de76d82de295ec9c7fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
