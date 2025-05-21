@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce279480_9f5f4bb2",
+        "filename": "zephyr/program/brox/brtk/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-21T08:21:50Z",
+      "side": 1,
+      "message": "I remove it form project.conf",
+      "parentUuid": "fd01dc0a_e7087306",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "9fca461986e172847876da3b4ae885a562bb2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10639874_7477109f",
