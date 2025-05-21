@@ -33,6 +33,11 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "base_accel_gyro_interrupt";
 		};
+		int_bl_pwr_pgd: bl_pwr_pgd {
+			irq-pin = <&gpio_bl_pwr_pgd>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "bl_pg_interrupt";
+		};
 	};
 
 	named-gpios {
