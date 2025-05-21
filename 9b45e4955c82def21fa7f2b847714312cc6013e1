@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01cf7f57_4f5730da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 62
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-05-21T05:58:30Z",
+      "side": 1,
+      "message": "I think we should be able to build the driver without the privet lib. Please try to set `CONFIG_HAVE_EGIS630_PRIVATE_DRIVER\u003dn` and test what happens.",
+      "revId": "9b45e4955c82def21fa7f2b847714312cc6013e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
