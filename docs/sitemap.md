@@ -37,6 +37,10 @@
 
 *   [Renode](../util/renode/README.md)
 
+## LLVM Toolchain
+
+*   [LLVM Toolchain](./llvm_toolchain.md)
+
 ## Testing
 
 *   [Unit Tests](./unit_tests.md)
