@@ -461,7 +461,6 @@ class Renode(Platform):
                     # TODO(b/390255521)
                     "timer",
                     # TODO(b/405230727)
-                    "stdlib",
                 ]:
                     return True
 
