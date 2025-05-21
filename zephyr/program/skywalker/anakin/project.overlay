@@ -32,6 +32,21 @@
 		/delete-node/ ec_i2c_pdc1_s_int_odl;
 		/delete-node/ usb_c0_dp_hpd;
 		/delete-node/ usb_c1_dp_hpd;
+
+		gpio_bl_pwr_pgd: bl_pwr_pgd {
+			gpios = <&gpiof 1 (GPIO_INPUT)>;
+		};
+		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
+			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
+		};
+	};
+
+	gpio-interrupts {
+		int_bl_pwr_pgd: bl_pwr_pgd {
+			irq-pin = <&gpio_bl_pwr_pgd>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "bl_pg_interrupt";
+		};
 	};
 
 	named-i2c-ports {
@@ -49,12 +64,10 @@
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
-			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
-			<&gpioi 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpioj 2 GPIO_INPUT_PULL_DOWN>;
 	};
