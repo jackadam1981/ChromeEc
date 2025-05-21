@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d86646c7_63d5319d",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-21T08:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39d7efe2_8d63ef8f",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 0
+      },
+      "revId": "581f71acf5eb5c8a36b55683971757c0422f87cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3be1378_41edc51c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eadbedda_b5b84348",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-21T08:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3be1378_41edc51c",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 22
+      },
+      "revId": "581f71acf5eb5c8a36b55683971757c0422f87cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42389b54_78706514",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-05-20T23:37:48Z",
       "side": 1,
       "message": "This works on the brox platform because the hardware design implements the hibernate circuitry using discrete logic.  \n\nDoes the RTS5915 support a deep-sleep mode natively?  This would be a mode where most of the EC can be turned off except for a few wake input sources.\n\nDoes the RTS5915 always require the platform provide the hibernate logic?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 0
+      },
+      "revId": "581f71acf5eb5c8a36b55683971757c0422f87cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac5680b_9e429861",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-21T08:02:59Z",
+      "side": 1,
+      "message": "In brox we follow the original design of external hibernate logic.\n\nHowever, RTS5915 does support a deep-sleep mode (ULPM mode) which relay on vbatt to keep some wake pin (vin pin) function and those vin pin will trigger a vout to enable z power, and then ec will be powered (wake).",
+      "parentUuid": "42389b54_78706514",
       "range": {
         "startLine": 238,
         "startChar": 0,
