@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca52ba7_ce95fb67",
+        "filename": "zephyr/program/brox/brox-tokenized/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-21T19:47:10Z",
+      "side": 1,
+      "message": "Nit - move the board changes to a separate CL as a parent to this CL.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "ed3c84923d390b915a11f581cb91799d0ef2fecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
