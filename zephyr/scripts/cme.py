@@ -157,6 +157,12 @@ def disambiguify(component):
     name = component["component_name"]
     if name in cme_chip_id.DISAMBIGUATION_DICTIONARY:
         for comp_info in cme_chip_id.DISAMBIGUATION_DICTIONARY[name]:
+            if (
+                comp_info.component_type is not None
+                and comp_info.component_type is not component["component_type"]
+            ):
+                continue
+
             new_comp = deepcopy(component)
             new_comp["component_name"] = comp_info.name
 
