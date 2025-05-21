@@ -460,8 +460,6 @@ class Renode(Platform):
                     "zephyr_counter_basic_api_stm32_subsec",
                     # TODO(b/390255521)
                     "timer",
-                    # TODO(b/405230727)
-                    "stdlib",
                 ]:
                     return True
 
