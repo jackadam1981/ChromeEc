@@ -22,6 +22,30 @@
       },
       "revId": "b083b6a87161030ae6b50980a735c3d2ef5b7377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764316b1_ff080236",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_host_sleep.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-05-21T19:06:31Z",
+      "side": 1,
+      "message": "This is not related, it was introduced by CL:6558549.",
+      "parentUuid": "88d2af10_1d68e55b",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "b083b6a87161030ae6b50980a735c3d2ef5b7377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
