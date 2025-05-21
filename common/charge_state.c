@@ -1886,7 +1886,10 @@ int charge_set_input_current_limit(int ma, int mv)
 {
 	int chgnum = 0;
 
+	CPRINTS("%s: %d mV %d mA", __func__, mv, ma);
+
 	ma = derate_input_current(ma);
+	CPRINTS("%s: derated current limit %d mA", __func__, ma);
 #ifdef CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT
 	if (CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT > 0) {
 		ma = MAX(ma, CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT);

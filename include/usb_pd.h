@@ -1635,7 +1635,7 @@ enum cable_outlet {
 #define PD_EOP 0x0D
 
 /* Minimum PD supply current  (mA) */
-#define PD_MIN_MA 500
+#define PD_MIN_MA 400
 
 /* Minimum PD voltage (mV) */
 #define PD_MIN_MV 5000
@@ -1654,7 +1654,7 @@ enum cable_outlet {
 #define PD_SNK_VA_MV 250
 
 /* Maximum power consumption while in Sink Standby */
-#define PD_SNK_STDBY_MW 2500
+#define PD_SNK_STDBY_MW 2000
 
 /* --- Policy layer functions --- */
 

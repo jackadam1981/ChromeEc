@@ -3584,6 +3584,7 @@ static void pe_snk_apply_psnkstdby(int port)
 		high = MAX(charge_manager_get_charger_voltage(), mv);
 	else
 		high = mv;
+	CPRINTS("Higher voltage %umv", high);
 	charge_manager_force_ceil(
 		port, high > 0 ? PD_SNK_STDBY_MW * 1000 / high : PD_MIN_MA);
 }

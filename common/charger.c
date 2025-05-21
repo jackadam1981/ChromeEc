@@ -572,6 +572,7 @@ enum ec_error_list charger_get_vsys_voltage(int port, int *voltage)
 enum ec_error_list charger_set_input_current_limit(int chgnum,
 						   int input_current)
 {
+	CPRINTS("%s: charger %d, %d mA", __func__, chgnum, input_current);
 	/* Note: may be called with CHARGE_PORT_NONE regularly */
 	if (chgnum < 0)
 		return EC_ERROR_INVAL;

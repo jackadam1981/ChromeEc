@@ -711,6 +711,8 @@ static int charge_manager_get_ceil(int port)
 			ceil = val;
 	}
 
+	CPRINTS("%s: returning %d mW", __func__, ceil);
+
 	return ceil;
 }
 
@@ -1384,20 +1386,25 @@ void charge_manager_leave_safe_mode(void)
 
 void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 {
+	CPRINTS("%s: C%d %d mW", __func__, port, ceil);
+
 	if (!is_valid_port(port))
 		return;
 
 	CM_MUTEX_LOCK(&cm_refresh);
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
-		if (port == charge_port && charge_manager_is_seeded())
+		if (port == charge_port && charge_manager_is_seeded()) {
+			CPRINTS("Scheduling charge manager refresh");
 			hook_call_deferred(&charge_manager_refresh_data, 0);
+		}
 	}
 	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	CPRINTS("%s: C%d %d mW", __func__, port, ceil);
 	CM_MUTEX_LOCK(&cm_refresh);
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
@@ -1891,7 +1898,16 @@ board_fill_source_power_info(int port, struct ec_response_usb_pd_power_info *r)
 __overridable void board_set_charge_limit(int port, int supplier, int charge_ma,
 					  int max_ma, int charge_mv)
 {
+	int rv = EC_SUCCESS;
+
+	CPRINTS("%s: C%d supplier %d (0=PD), charge %d mV, %d mA, "
+		"max %d mA",
+		__func__, port, supplier, charge_mv, charge_ma, max_ma);
+
 #if defined(CONFIG_CHARGER) && defined(CONFIG_BATTERY)
-	charge_set_input_current_limit(charge_ma, charge_mv);
+	rv = charge_set_input_current_limit(charge_ma, charge_mv);
+	if (rv != EC_SUCCESS)
+		CPRINTS("%s: charge_set_input_current_limt returned %d",
+			__func__, rv);
 #endif
 }

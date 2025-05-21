@@ -103,6 +103,8 @@ static enum ec_error_list isl9241_set_input_current_limit(int chgnum,
 	int rv;
 	uint16_t reg = AC_CURRENT_TO_REG(input_current);
 
+	CPRINTS("%s: charger %d, %d mA", __func__, chgnum, input_current);
+	CPRINTS("%s: charger %d, reg value 0x%04x", __func__, chgnum, reg);
 	rv = isl9241_write(chgnum, ISL9241_REG_ADAPTER_CUR_LIMIT1, reg);
 	if (rv)
 		return rv;
@@ -117,10 +119,13 @@ static enum ec_error_list isl9241_get_input_current_limit(int chgnum,
 
 	rv = isl9241_read(chgnum, ISL9241_REG_ADAPTER_CUR_LIMIT1,
 			  input_current);
-	if (rv)
+	if (rv) {
+		CPRINTS("%s failed to read reg", __func__);
 		return rv;
+	}
 
 	*input_current = AC_REG_TO_CURRENT(*input_current);
+	CPRINTS("%s returning %d mA", __func__, *input_current);
 	return EC_SUCCESS;
 }
 
