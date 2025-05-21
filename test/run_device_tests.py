@@ -858,7 +858,6 @@ class AllTests:
         """Return Zephyr upstream test configs."""
         # Make sure proper paths are added in the twister script, see ZEPHYR_TEST_PATHS
         tests = [
-            # TODO(b/380492754): Fix compilation.
             TestConfig(
                 zephyr_name="cpp.main.newlib",
                 test_name="zephyr_cpp_newlib",
