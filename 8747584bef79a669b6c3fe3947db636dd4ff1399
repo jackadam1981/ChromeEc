@@ -16,6 +16,24 @@
       "message": "Just wondering if this CL applies to Brya where ISH is not available?",
       "revId": "8747584bef79a669b6c3fe3947db636dd4ff1399",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e5042a9_52df3ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-21T15:32:53Z",
+      "side": 1,
+      "message": "Most likely no since the count will never be 0.",
+      "parentUuid": "a0c9720f_1ceb0386",
+      "revId": "8747584bef79a669b6c3fe3947db636dd4ff1399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
