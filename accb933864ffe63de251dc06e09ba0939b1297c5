@@ -34,6 +34,23 @@
       "parentUuid": "9ee90553_4a2a39a4",
       "revId": "accb933864ffe63de251dc06e09ba0939b1297c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42a817f_121c12c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-22T22:08:40Z",
+      "side": 1,
+      "message": "some builders are not happy:\n\n[ocelot_microchip:rw] /mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/ap_power_interface.c:143:14: error: \u0027AP_POWER_STATE_S0ix\u0027 undeclared (first use in this function); did you mean \u0027AP_POWER_STATE_S0\u0027?\n[ocelot_microchip:rw]   143 |         case AP_POWER_STATE_S0ix:\n[ocelot_microchip:rw]       |              ^~~~~~~~~~~~~~~~~~~",
+      "revId": "accb933864ffe63de251dc06e09ba0939b1297c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
