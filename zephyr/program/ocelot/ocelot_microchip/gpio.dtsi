@@ -18,10 +18,6 @@
  */
 
  / {
-	aliases {
-		gpio-wp = &ec_spi_oe_mecc;
-	};
-
 	named-gpios {
 		compatible = "named-gpios";
 
@@ -58,7 +54,7 @@
 			gpios = <MCHP_GPIO_DECODE_034 GPIO_ODR_HIGH>;
 		};
 		/*TODO: ec_spi_oe_mecc to be declared later while uploading the ioexp changes*/
-		ec_spi_oe_mecc: ec-spi-wp {
+		ec-spi-wp {
 			gpios = <MCHP_GPIO_DECODE_227 GPIO_INPUT>;
 		};
 		gpio_mic_privacy_ec: mic-privacy-ec {

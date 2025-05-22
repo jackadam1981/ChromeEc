@@ -14,4 +14,12 @@
 #include "interrupts.dtsi"
 #include "power_signals.dtsi"
 
+#include "../ioex_gpio.dtsi"
+
+#include <ite/it8801-common-cfg.dtsi>
+
 /* ocelot_mchp overrides follow... */
+
+&it8801_mfd {
+	irq-gpios = <MCHP_GPIO_DECODE_025 GPIO_ACTIVE_HIGH>;
+};
