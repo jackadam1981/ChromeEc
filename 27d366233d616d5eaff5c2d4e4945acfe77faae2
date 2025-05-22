@@ -93,6 +93,30 @@
       },
       "revId": "27d366233d616d5eaff5c2d4e4945acfe77faae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c463f0f8_b98c290b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-05-22T23:44:36Z",
+      "side": 1,
+      "message": "I had intended to make this check consistent with how it\u0027s done in the other states. I have fixed that now.",
+      "parentUuid": "ec18a185_17e8b1f8",
+      "range": {
+        "startLine": 1510,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 0
+      },
+      "revId": "27d366233d616d5eaff5c2d4e4945acfe77faae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
