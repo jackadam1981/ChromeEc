@@ -4,9 +4,11 @@
  */
 
 #include "accelgyro.h"
-#include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "driver/accel_bma4xx.h"
 #include "driver/accel_lis2dw12_public.h"
+#include "driver/accelgyro_bmi3xx.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "hooks.h"
 #include "motionsense_sensors.h"
 
@@ -15,6 +17,7 @@
 LOG_MODULE_REGISTER(board_sensor, LOG_LEVEL_INF);
 
 static bool lid_uses_bma422;
+static bool base_uses_bmi323;
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
@@ -25,22 +28,23 @@ void lid_accel_interrupt(enum gpio_signal signal)
 	}
 }
 
+void base_accel_gyro_interrupt(enum gpio_signal signal)
+{
+	if (base_uses_bmi323) {
+		bmi3xx_interrupt(signal);
+	} else {
+		lsm6dsm_interrupt(signal);
+	}
+}
+
 static void alt_sensor_init(void)
 {
-	int ret;
-	uint32_t board_version;
+	lid_uses_bma422 = cros_cbi_ssfc_check_match(
+		CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_0)));
 
-	ret = cbi_get_board_version(&board_version);
-	if (ret != EC_SUCCESS) {
-		lid_uses_bma422 = false;
-		LOG_ERR("Error retrieving CBI board version");
-		return;
-	}
+	base_uses_bmi323 = cros_cbi_ssfc_check_match(
+		CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_0)));
 
-	if (board_version >= 1) {
-		lid_uses_bma422 = true;
-		LOG_INF("Replace lis2dw12 with bma422");
-		MOTIONSENSE_ENABLE_ALTERNATE(alt_lid_accel);
-	}
+	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
