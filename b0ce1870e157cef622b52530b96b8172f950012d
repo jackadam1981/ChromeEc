@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672831c1_3f819fb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-22T20:55:30Z",
+      "side": 1,
+      "message": "Incomplete commit message? Also *tps6699x",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "b0ce1870e157cef622b52530b96b8172f950012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a09cf78_0aa2118f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-22T20:55:30Z",
+      "side": 1,
+      "message": "Why is this in the middle of the sink policy flag checks for some states? Can it be consistently before or after the state-specific policy checks?",
+      "range": {
+        "startLine": 1609,
+        "startChar": 3,
+        "endLine": 1610,
+        "endChar": 9
+      },
+      "revId": "b0ce1870e157cef622b52530b96b8172f950012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd62faea_23f89ea7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3067,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-22T20:55:30Z",
+      "side": 1,
+      "message": "Put a log message here. It\u0027d be nice if it could print the state name but I don\u0027t think we have a mapping.",
+      "range": {
+        "startLine": 3067,
+        "startChar": 0,
+        "endLine": 3067,
+        "endChar": 1
+      },
+      "revId": "b0ce1870e157cef622b52530b96b8172f950012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
