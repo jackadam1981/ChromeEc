@@ -47,6 +47,28 @@ bloonchipper = register_fpmcu_variant(
     ),
 )
 
+buccaneer = register_fpmcu_variant(
+    project_name="buccaneer",
+    zephyr_board="google_quincy",
+    register_func=register_npcx_project,
+    variant_modules=["cmsis", "cmsis_6"],
+    variant_optional_modules=["elan"],
+    variant_dts_overlays=[
+        here / "helipilot" / "buccaneer.dts",
+    ],
+    variant_kconfig_files=[
+        here / "helipilot" / "prj.conf",
+        here / "helipilot" / "ec_quirks.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "helipilot" / "buccaneer" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="buccaneer", addr=0x40144)
+
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="bloonchipper", addr=0x601C8)
