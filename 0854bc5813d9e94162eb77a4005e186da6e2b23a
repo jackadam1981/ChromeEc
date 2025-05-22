@@ -22,6 +22,70 @@
       },
       "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11d2cd9_9103344b",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T21:20:20Z",
+      "side": 1,
+      "message": "This is same priority as the I2C bus.  This should be 51 or greater to ensure the IO expander is initialized after the I2C bus.",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c45f4e9c_a07e5e14",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/program.conf",
+              "range": {
+                "startLine": 54,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "CONFIG_GPIO_PCA95XX_INIT_PRIORITY\u003d51\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cca3c2e_1596299f",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T21:20:20Z",
+      "side": 1,
+      "message": "Did the WCL RVP fix the power rail for the PCA95xx?  Is this code still needed or can the driver be initialized automatically?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
