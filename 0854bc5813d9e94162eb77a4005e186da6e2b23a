@@ -86,6 +86,30 @@
       },
       "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055ea764_d942f56b",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T21:22:43Z",
+      "side": 1,
+      "message": "I also see that you didn\u0027t set `zephyr,deferred-init`, so this code should be a NOP",
+      "parentUuid": "1cca3c2e_1596299f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
