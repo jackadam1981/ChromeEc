@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2aa0e2e_8235555c",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T23:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e990cb_9f9d1a33",
+      "range": {
+        "startLine": 2578,
+        "startChar": 19,
+        "endLine": 2578,
+        "endChar": 20
+      },
+      "revId": "27d366233d616d5eaff5c2d4e4945acfe77faae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec18a185_17e8b1f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-22T23:12:33Z",
       "side": 1,
       "message": "All the other states check the common policies first.  Why is this done after the DRP mode check?\n\nPlease add a comment explaining this.",
+      "range": {
+        "startLine": 1510,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 0
+      },
+      "revId": "27d366233d616d5eaff5c2d4e4945acfe77faae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b5ed0e_f9a98c1d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T23:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec18a185_17e8b1f8",
       "range": {
         "startLine": 1510,
         "startChar": 0,
