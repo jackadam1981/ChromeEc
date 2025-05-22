@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10569b6f_6aaabdaa",
+        "filename": "zephyr/include/cros/realtek/realtek.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T20:46:05Z",
+      "side": 1,
+      "message": "Add \"TODO: b/418727861 - remove once the ROM log is reserved upstream\"",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e6652573_cf048f54",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/include/cros/realtek/realtek.dtsi",
+              "range": {
+                "startLine": 81,
+                "startChar": 0,
+                "endLine": 81,
+                "endChar": 0
+              },
+              "replacement": "/* TODO: b/418727861 - remove once the ROM log is reserved upstream */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "90d1a8ca77e8689e1e244b0fe653d33ed86584ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
