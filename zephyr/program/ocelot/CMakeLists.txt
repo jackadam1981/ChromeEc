@@ -21,6 +21,7 @@ endif()
 
 if(DEFINED CONFIG_BOARD_OCELOTRVP_MCHP)
 	project(ocelotrvp-mchp)
+	zephyr_library_sources("src/rvp_board_id.c")
 	zephyr_library_sources("src/rvp_board_power.c")
 endif()
 
