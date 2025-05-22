@@ -40,6 +40,30 @@
       ],
       "revId": "94db9ce6e1bff5fd517f75ef8e9fb757413d8147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6962c98b_4f436fef",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2025-05-22T00:57:20Z",
+      "side": 1,
+      "message": "check_battery_life_time() function is only for 4404D57M battery.\nSo it is called only when SDI_4404D57M battery is connected like below.\n\nif (board_battery_type \u003d\u003d BATTERY_SDI_4404D57M) {\n\tcheck_battery_life_time();\n}",
+      "parentUuid": "dbf93a35_1b67f8ad",
+      "range": {
+        "startLine": 278,
+        "startChar": 21,
+        "endLine": 278,
+        "endChar": 50
+      },
+      "revId": "94db9ce6e1bff5fd517f75ef8e9fb757413d8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
