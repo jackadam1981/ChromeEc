@@ -208,6 +208,8 @@ enum pdc_cmd_t {
 	CMD_PDC_GET_SBU_MUX_MODE,
 	/** CMD_PDC_SET_SBU_MUX_MODE */
 	CMD_PDC_SET_SBU_MUX_MODE,
+	/** CMD_PDC_SET_AP_POWER_STATE */
+	CMD_PDC_SET_AP_POWER_STATE,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -431,6 +433,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_ATTENTION_VDO] = "PDC_GET_ATTENTION_VDO",
 	[CMD_PDC_GET_SBU_MUX_MODE] = "PDC_GET_SBU_MUX_MODE",
 	[CMD_PDC_SET_SBU_MUX_MODE] = "PDC_SET_SBU_MUX_MODE",
+	[CMD_PDC_SET_AP_POWER_STATE] = "PDC_SET_AP_POWER_STATE",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -455,6 +458,23 @@ static const char *const pdc_state_names[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(pdc_state_names) == PDC_STATE_COUNT,
 	     "pdc_state_names array has wrong number of elements");
+
+/**
+ * @brief Common policy flags which are applicable regardless of attached state
+ */
+enum policy_common_t {
+	/** COMMON_POLICY_SET_POWER_STATE */
+	COMMON_POLICY_SET_POWER_STATE,
+	/** COMMON_POLICY_COUNT */
+	COMMON_POLICY_COUNT,
+};
+
+struct pdc_common_policy_t {
+	/** Common policy flags */
+	ATOMIC_DEFINE(flags, COMMON_POLICY_COUNT);
+	/** Current AP power state */
+	enum power_state ap_state;
+};
 
 /**
  * @brief Unattached policy flags
@@ -706,6 +726,8 @@ struct pdc_port_t {
 	struct pdc_snk_attached_policy_t snk_policy;
 	/** PDC Source Attached policy */
 	struct pdc_src_attached_policy_t src_policy;
+	/** PDC Common policy */
+	struct pdc_common_policy_t common_policy;
 
 	/** Cable Property */
 	union cable_property_t cable_prop;
@@ -1466,8 +1488,24 @@ static struct pdc_pdos_t *get_pdc_pdos_ptr(struct pdc_port_t *port,
 	return pdc_pdos;
 }
 
+static bool run_common_policies(struct pdc_port_t *port)
+{
+	if (atomic_test_and_clear_bit(port->common_policy.flags,
+				      COMMON_POLICY_SET_POWER_STATE)) {
+		/* Send new AP power state to PDC */
+		queue_internal_cmd(port, CMD_PDC_SET_AP_POWER_STATE);
+		return true;
+	}
+
+	return false;
+}
+
 static void run_unattached_policies(struct pdc_port_t *port)
 {
+	if (run_common_policies(port)) {
+		return;
+	}
+
 	if (atomic_test_and_clear_bit(port->una_policy.flags,
 				      UNA_POLICY_DRP_MODE)) {
 		/* Set DRP current policy */
@@ -1566,6 +1604,10 @@ static void run_snk_policies(struct pdc_port_t *port)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_num = config->connector_num;
 
+	if (run_common_policies(port)) {
+		return;
+	}
+
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
 		port->snk_attached_local_state = SNK_ATTACHED_SET_SINK_PATH;
@@ -1647,6 +1689,11 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 	 * We don't expect hard resets while connected to a non-PD
 	 * partner.
 	 */
+
+	if (run_common_policies(port)) {
+		return;
+	}
+
 	if (atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_SET_ACTIVE_CHARGE_PORT)) {
 		/* Check if we are the active charge port */
@@ -1688,6 +1735,10 @@ static void run_src_policies(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *config = port->dev->config;
 	int port_num = config->connector_num;
+
+	if (run_common_policies(port)) {
+		return;
+	}
 
 	if (atomic_test_and_clear_bit(port->src_policy.flags,
 				      SRC_POLICY_SWAP_TO_SNK)) {
@@ -1768,6 +1819,10 @@ static void run_src_policies(struct pdc_port_t *port)
 
 static void run_typec_src_policies(struct pdc_port_t *port)
 {
+	if (run_common_policies(port)) {
+		return;
+	}
+
 	/* Check if Rp value needs to be adjusted */
 	if (atomic_test_and_clear_bit(port->src_policy.flags,
 				      SRC_POLICY_SET_RP)) {
@@ -2584,6 +2639,10 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	case CMD_PDC_SET_SBU_MUX_MODE:
 		rv = pdc_set_sbu_mux_mode(port->pdc, port->sbu_mux_mode);
 		break;
+	case CMD_PDC_SET_AP_POWER_STATE:
+		rv = pdc_set_ap_power_state(port->pdc,
+					    port->common_policy.ap_state);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -3004,6 +3063,15 @@ static void pdc_init_entry(void *obj)
 	}
 }
 
+static void pdc_notify_ap_power_state(int port, enum power_state state)
+{
+	pdc_data[port]->port.common_policy.ap_state = state;
+	atomic_set_bit(pdc_data[port]->port.common_policy.flags,
+		       COMMON_POLICY_SET_POWER_STATE);
+	LOG_INF("C%d: Setting AP power state to %s", port,
+		state == POWER_S0 ? "S0" : "S5");
+}
+
 /**
  * @brief Chipset Resume (S3->S0) Policy 1: Set a flag to perform a one-time
  *        test if we should swap to a source role. (applicable only if we are
@@ -3062,6 +3130,8 @@ static void enforce_pd_chipset_startup_policy_1(int port)
 	LOG_DBG("C%d: Chipset Startup Policy 1", port);
 
 	pdc_power_mgmt_set_dual_role(port, PD_DRP_TOGGLE_OFF);
+	/* Notify PDC that the AP is starting up to enable retimer */
+	pdc_notify_ap_power_state(port, POWER_S0);
 }
 
 /**
@@ -3073,6 +3143,8 @@ static void enforce_pd_chipset_shutdown_policy_1(int port)
 	LOG_DBG("C%d: Chipset Shutdown Policy 1", port);
 
 	pdc_power_mgmt_set_dual_role(port, PD_DRP_FORCE_SINK);
+	/* Notify PDC that AP is shutting down to disable retimer */
+	pdc_notify_ap_power_state(port, POWER_S5);
 }
 
 static void set_hpd_wake_watch(int port);

@@ -344,6 +344,14 @@ ZTEST(pdc_api_null_check, test_pdc_set_sbu_mux_mode)
 		      -ENOSYS);
 }
 
+ZTEST(pdc_api_null_check, test_pdc_set_ap_power_state)
+{
+	int rv = pdc_set_ap_power_state(&fake_pdc, 0);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
 ZTEST(pdc_api_null_check, test_completeness)
 {
 	/* Count the number of PDC API methods supported */
