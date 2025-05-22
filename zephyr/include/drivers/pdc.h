@@ -12,6 +12,7 @@
 #define ZEPHYR_INCLUDE_DRIVERS_PDC_H_
 
 #include "ec_commands.h"
+#include "power.h"
 #include "ucsi_v3.h"
 #include "usb_pd.h"
 #include "usbc/utils.h"
@@ -250,6 +251,8 @@ typedef int (*pdc_get_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode *mode);
 typedef int (*pdc_set_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode mode);
+typedef int (*pdc_set_ap_power_state_t)(const struct device *dev,
+					enum power_state state);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -300,6 +303,7 @@ __subsystem struct pdc_driver_api {
 	pdc_get_attention_vdo_t get_attention_vdo;
 	pdc_get_sbu_mux_mode_t get_sbu_mux_mode;
 	pdc_set_sbu_mux_mode_t set_sbu_mux_mode;
+	pdc_set_ap_power_state_t set_ap_power_state;
 };
 /**
  * @endcond
@@ -1470,6 +1474,26 @@ static inline int pdc_set_sbu_mux_mode(const struct device *dev,
 	}
 
 	return api->set_sbu_mux_mode(dev, mode);
+}
+
+/**
+ * @brief Notify the PDC of the current AP power state
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param power_state New AP power state
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_ap_power_state(const struct device *dev,
+					 enum power_state state)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_ap_power_state == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_ap_power_state(dev, state);
 }
 
 #ifdef __cplusplus

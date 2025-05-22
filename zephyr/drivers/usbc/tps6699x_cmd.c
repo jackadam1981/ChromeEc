@@ -204,6 +204,13 @@ int tps_rw_transmit_sink_capabilities(const struct i2c_dt_spec *i2c,
 			    sizeof(union reg_transmit_sink_capabilities), flag);
 }
 
+int tps_rw_sx_app_config(const struct i2c_dt_spec *i2c,
+			 union reg_sx_app_config *buf, int flag)
+{
+	return tps_xfer_reg(i2c, REG_SET_SX_APP_CONFIG, buf->raw_value,
+			    sizeof(union reg_sx_app_config), flag);
+}
+
 int tps_rd_active_rdo_contract(const struct i2c_dt_spec *i2c,
 			       union reg_active_rdo_contract *buf)
 {
