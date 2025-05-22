@@ -419,6 +419,30 @@
       },
       "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3bfb14_e136de63",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1365385
+      },
+      "writtenOn": "2025-05-22T12:01:10Z",
+      "side": 1,
+      "message": "Hi Abe: I have raised  Cross bug raised for code refactoring. Based on your recommendations, we can continue our  discussions further \u0026 look into making it simpler \u0026 neat. https://partnerissuetracker.corp.google.com/issues/419461296\n@jignesh1.patel@intel.com : plz mention the crossbug in this CL for reference.",
+      "parentUuid": "efbf7c3d_54164206",
+      "range": {
+        "startLine": 384,
+        "startChar": 39,
+        "endLine": 384,
+        "endChar": 58
+      },
+      "revId": "97d4e13954f9a6085720364ee29d97b24be1fa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
