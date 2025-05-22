@@ -73,10 +73,14 @@
 		/delete-node/ lid-accel;
 		/delete-node/ ec-imu;
 		/delete-node/ tablet_mode;
+		/delete-node/ volume-up;
+		/delete-node/ volume-down;
 	};
 
 	named-gpios {
 		/delete-node/ en_pp5000_z1;
+		/delete-node/ ec_voldn_btn_odl;
+		/delete-node/ ec_volup_btn_odl;
 
 		gpio_lcd_bist: lcd_bist {
 			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
@@ -105,6 +109,8 @@
 			<&gpioa 7 0>,
 			<&gpioc 0 0>,
 			<&gpioc 7 0>,
+			<&gpioe 2 0>,
+			<&gpiod 5 0>,
 			<&gpiof 2 0>,
 			<&gpiof 3 0>,
 			<&gpiof 4 0>,
