@@ -64,6 +64,30 @@
       },
       "revId": "94db9ce6e1bff5fd517f75ef8e9fb757413d8147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa010d04_0c9efb49",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-22T02:04:12Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "6962c98b_4f436fef",
+      "range": {
+        "startLine": 278,
+        "startChar": 21,
+        "endLine": 278,
+        "endChar": 50
+      },
+      "revId": "94db9ce6e1bff5fd517f75ef8e9fb757413d8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
