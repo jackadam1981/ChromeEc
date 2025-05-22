@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aac8ee85_367020df",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:57:14Z",
+      "side": 1,
+      "message": "can we discuss this in a GVC. This function flips the interrupt value. If I do not mock it for testing purposes, I will get an IRQ not ready issue. Let us discuss best approach to guard this. maybe if it is not guarded, calls a function that we define for testing, or mock it...",
+      "parentUuid": "c10291e0_37792e5b",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56a05641_6d6add82",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
         "patchSetId": 54
@@ -31,6 +49,24 @@
       "writtenOn": "2025-05-16T10:09:24Z",
       "side": 1,
       "message": "This is not guarded call to privet library.",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6176f76c_35f5a1ec",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:57:14Z",
+      "side": 1,
+      "message": "If I guard it, I will lose some ability to do additional testing. Let us discuss strategy to guard it and still test it (same as sensor init)",
+      "parentUuid": "56a05641_6d6add82",
       "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
