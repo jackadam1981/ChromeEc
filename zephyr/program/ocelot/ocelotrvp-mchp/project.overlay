@@ -15,7 +15,10 @@
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_interrupts.dtsi"
+#include "../rvp_ioex_gpio.dtsi"
 #include "../rvp_usbc.dtsi"
+
+#include <ite/it8801-common-cfg.dtsi>
 
 /* ocelot_mchp overrides follow... */
 
@@ -27,5 +30,9 @@
 /* Use only port C0 */
 /delete-node/ &pdc_c1;
 /delete-node/ &usbc_port1;
+
+&it8801_mfd {
+	irq-gpios = <MCHP_GPIO_DECODE_025 GPIO_ACTIVE_HIGH>;
+};
 
 /* Disable nodes for features not yet enabled. */
