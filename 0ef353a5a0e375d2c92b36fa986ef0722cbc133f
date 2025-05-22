@@ -87,6 +87,30 @@
       },
       "revId": "0ef353a5a0e375d2c92b36fa986ef0722cbc133f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6d2e777_84d42231",
+        "filename": "zephyr/program/trulo/trulo/trulo_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-22T10:59:19Z",
+      "side": 1,
+      "message": "The mismatch was a result of wrong EC code used before.",
+      "parentUuid": "c0855271_a0ab239a",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 16
+      },
+      "revId": "0ef353a5a0e375d2c92b36fa986ef0722cbc133f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
