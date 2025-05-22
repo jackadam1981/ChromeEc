@@ -34,6 +34,24 @@
       "parentUuid": "ff836e70_8b420848",
       "revId": "3237a8b9592dd49332894850188f476ee2296f86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8fa973_ee81df40",
+        "filename": "zephyr/program/brox/brtk/rtk_generated.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-05-22T10:52:05Z",
+      "side": 1,
+      "message": "If there\u0027s no auto-generated device tree file,\nmy suggestion is to split the contents of rtk_generated.dtsi into other `.dtsi` files.\n\nFor example, `named-gpios` node to rtk_gpio.dtsi, `named-i2c-ports` to rts_i2c.dtsi.",
+      "parentUuid": "fbc3dbcb_53255ea0",
+      "revId": "3237a8b9592dd49332894850188f476ee2296f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
