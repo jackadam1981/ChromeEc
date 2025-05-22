@@ -9,7 +9,8 @@
 
 		i2c_charger: charger {
 			i2c-port = <&charger_i2c>;
-			enum-names = "I2C_PORT_CHARGER";
+			enum-names = "I2C_PORT_CHARGER",
+				"I2C_PORT_PORT80";
 		};
 		ec_pd_power: typec-aic1-power {
 			i2c-port = <&pd_pow_i2c>;
@@ -59,6 +60,11 @@ charger_i2c: &i2c_smb_0 {
 		board-gpios = <&pca95xx_0 8 0>, <&pca95xx_0 9 0>,
 			      <&pca95xx_0 10 0>, <&pca95xx_0 11 0>,
 			      <&pca95xx_0 12 0>, <&pca95xx_0 13 0>;
+	};
+	seven_seg_display: max695x-seven-seg-display@38 {
+		compatible = "maxim,max695x";
+		reg = <0x38>;
+		label = "MAX695X_SEVEN_SEG_DISPLAY";
 	};
 };
 
