@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43777a59_9c7d7470",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2025-05-22T00:03:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b47e1ff0_6b15f7c3",
+      "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "126c0242_c28339ca",
@@ -69,6 +87,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11ca7b8_fcc7286b",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2025-05-22T00:03:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126c0242_c28339ca",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c75ab8e_4e31ab09",
@@ -110,6 +152,24 @@
           ]
         }
       ],
+      "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f03d607_eb4cbaab",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2025-05-22T00:03:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c75ab8e_4e31ab09",
       "revId": "5ce6eaa2596e96605c65ec2e339bb7be04a1278b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
