@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5c062d_7c85bd84",
+        "filename": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-05-22T07:15:27Z",
+      "side": 1,
+      "message": "Delete this node if it\u0027s not used.",
+      "fixSuggestions": [
+        {
+          "fixId": "e84a4a17_79eb2d1f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+              "range": {
+                "startLine": 66,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/trulo/pujjocento/gpio.dtsi",
+              "range": {
+                "startLine": 135,
+                "startChar": 0,
+                "endLine": 135,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\u003c\u0026gpioa 0 0\u003e,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d7027186e8d595c0ef7f1b3aaa47512e813a08d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
