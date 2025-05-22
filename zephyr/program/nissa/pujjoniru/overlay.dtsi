@@ -197,7 +197,7 @@
 			tach = <&tach0>;
 			rpm_min = <1500>;
 			rpm_start = <1500>;
-			rpm_max = <4000>;
+			rpm_max = <4500>;
 			rpm_deviation = <1>;
 		};
 	};
