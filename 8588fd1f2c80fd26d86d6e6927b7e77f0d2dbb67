@@ -3,6 +3,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f93f2d5_6bb32d28",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T20:37:16Z",
+      "side": 1,
+      "message": "Adding `tcflush(uart_fd, TCIOFLUSH);` here improves reliability.  Specifically, the `flash_ec` no longer has to retry the first operation done with rtkupdate.",
+      "fixSuggestions": [
+        {
+          "fixId": "45f0545c_12c851e2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 136,
+                "startChar": 0,
+                "endLine": 136,
+                "endChar": 0
+              },
+              "replacement": "\ttcflush(uart_fd, TCIOFLUSH);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8588fd1f2c80fd26d86d6e6927b7e77f0d2dbb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aec38836_ce32da03",
         "filename": "util/rtkupdate.c",
         "patchSetId": 7
