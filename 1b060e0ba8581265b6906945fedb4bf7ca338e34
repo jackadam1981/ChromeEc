@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcd282e_840a4f0f",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-05-22T08:08:32Z",
+      "side": 1,
+      "message": "You don\u0027t need to wrap this with an if, it\u0027s the same if as line 61 so it\u0027ll always be true",
+      "fixSuggestions": [
+        {
+          "fixId": "2af15800_a07fa893",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/uldrenite/src/sensor.c",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 89,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t/* Only valid in EC */\n\t\t\t\tgmr_tablet_switch_disable();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1b060e0ba8581265b6906945fedb4bf7ca338e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
