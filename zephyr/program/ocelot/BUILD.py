@@ -63,6 +63,8 @@ def register_mec172x_project(
         kconfig_files=[
             # Common to all projects.
             here / "program.conf",
+            # Common to all rvp.
+            here / "rvp_program.conf",
             # Project-specific KConfig customization.
             here / project_name / "project.conf",
             # Additional project-specific KConfig customization.
