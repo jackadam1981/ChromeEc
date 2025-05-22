@@ -142,6 +142,24 @@
       "parentUuid": "0470684c_baf8c22d",
       "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06adf8c_82a00319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-05-22T22:08:51Z",
+      "side": 1,
+      "message": "The default split from helipilot is based on the ECOS RO image as Patryk mentioned. It should not constrain the gwendolin image in any way and I don\u0027t see a value in defining the legacy helipilot split as a SOC default on gwendolin",
+      "parentUuid": "ee68ef5d_ce8c96fc",
+      "revId": "24deef12d4dae905b76d1192c34c1dce2c0a4258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
