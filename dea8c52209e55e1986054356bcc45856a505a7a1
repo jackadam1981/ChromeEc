@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df53f47_c83c94e0",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:35:11Z",
+      "side": 1,
+      "message": "until we figure out the memory savings, I would keep it at 2.",
+      "parentUuid": "5c7280f9_a741fe43",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70efaaf8_bfe06ba4",
