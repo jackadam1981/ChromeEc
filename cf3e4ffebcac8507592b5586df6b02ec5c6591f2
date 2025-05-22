@@ -50,6 +50,42 @@
       "message": "`ish_enabled` here can be uninitialized, we set it on line 57 only if we\u0027re running on the EC. This means that this init function will break the ISH behavior. I suggest initializing the `ish_enabled \u003d ISH_ENABLED` this way on the ISH this will clearly be correct and on the EC it will only be correct if `cros_cbi_get_fw_config` returned that it\u0027s true.",
       "revId": "cf3e4ffebcac8507592b5586df6b02ec5c6591f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf17cdf_5385866d",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-05-22T08:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a369c39_b1afee54",
+      "revId": "cf3e4ffebcac8507592b5586df6b02ec5c6591f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6a20b7_b6c5c80c",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-05-22T08:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7aeda6a_2da2ef49",
+      "revId": "cf3e4ffebcac8507592b5586df6b02ec5c6591f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
