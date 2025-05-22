@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff70928_bd4057fb",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:52:39Z",
+      "side": 1,
+      "message": "I can fit 3 finger enrollment. However, I have to reduce the heap size to 97kB. With that I am seeing allocation failures and reboot during the enrollment process. Although Egis claims that they need 93kB heap, I believe they need slightly more than that based on the experimental values",
+      "parentUuid": "1df53f47_c83c94e0",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70efaaf8_bfe06ba4",
