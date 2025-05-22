@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee90553_4a2a39a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-22T05:22:37Z",
+      "side": 1,
+      "message": "i ran the `suite:faft_ec` with this and passed all the relevant tests\nexcept `BootTime.x86`. it still needed some changes:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/6575887\nwe\u0027ll probably need to get a bit fancier with the regex to support both\nold and new power sequencing cases.",
+      "revId": "accb933864ffe63de251dc06e09ba0939b1297c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
