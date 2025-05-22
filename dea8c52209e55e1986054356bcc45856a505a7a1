@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ca78a1_f1fe81ea",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:28:35Z",
+      "side": 1,
+      "message": "I swapped the CLS",
+      "parentUuid": "d9235e3a_e0cb31e5",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7280f9_a741fe43",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b28012ff_bb995d4c",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 48
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:28:35Z",
+      "side": 1,
+      "message": "yes, I am following the same structure as the definition of the other configs. I can remove the `default n`. However, I believe we should clean it first for the other configs. please let me know your thoughts.",
+      "parentUuid": "70efaaf8_bfe06ba4",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3d6a915_77a020d8",
         "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
         "patchSetId": 48
@@ -65,6 +101,24 @@
       "writtenOn": "2025-05-21T05:55:05Z",
       "side": 1,
       "message": "Unnecessary line",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6494190c_12be439a",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:28:35Z",
+      "side": 1,
+      "message": "removed it",
+      "parentUuid": "a3d6a915_77a020d8",
       "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e51cc9_ba135caa",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe1b5615_9b5964bb",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aa5f4ef_8d11c323",
@@ -99,6 +171,24 @@
       "writtenOn": "2025-05-21T05:55:05Z",
       "side": 1,
       "message": "It is something to double-check, but Zephyr code rather uses `__ASSERT...` macros. Same goes for every `assert` in this file.",
+      "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a68aa44_363f861d",
+        "filename": "zephyr/subsys/fingerprint/alg/egis_egis630_bio_alg.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-22T17:28:35Z",
+      "side": 1,
+      "message": "I am using the `assert.h` header from the stdlib. Is there a reason to use the __ASSERT macro?",
+      "parentUuid": "4aa5f4ef_8d11c323",
       "revId": "dea8c52209e55e1986054356bcc45856a505a7a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
