@@ -1,0 +1,59 @@
+/* Copyright 2025 The Chromium OS Authors. All rights reserved
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		/* KBD IOEX configuration, IOEX present on GSC AIC */
+		chgr-led-pwm4 {
+			gpios = <&ioex_it8801_port1 5 GPIO_INPUT>;
+		};
+		chgr-led-pwm3 {
+			gpios = <&ioex_it8801_port1 4 GPIO_INPUT>;
+		};
+		plt-config-1 {
+			gpios = <&ioex_it8801_port1 3 GPIO_INPUT>;
+		};
+		servo-chassis-odl-r {
+			gpios = <&ioex_it8801_port1 2 GPIO_INPUT>;
+		};
+		plt-config-2 {
+			gpios = <&ioex_it8801_port1 1 GPIO_INPUT>;
+		};
+		/* EC-SoC gpio pin for system reset */
+		sys-rst-odl-ec {
+			gpios = <&ioex_it8801_port1 0 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)>;
+		};
+		/* unused gpio */
+		ec-eeprom-wp {
+			gpios = <&ioex_it8801_port2 0 GPIO_INPUT>;
+		};
+		/* unused gpio */
+		smc-lid-ec {
+			gpios = <&ioex_it8801_port2 1 GPIO_INPUT>;
+		};
+		tp11 {
+			gpios = <&ioex_it8801_port2 2 GPIO_INPUT>;
+		};
+		tp-kso-15 {
+			gpios = <&ioex_it8801_port0 0 GPIO_INPUT>;
+		};
+		tp-gpio03 {
+			gpios = <&ioex_it8801_port0 3 GPIO_INPUT>;
+		};
+		/* EC-GSC gpio pin for enabling packet mode */
+		ec-h1-packet-mode {
+			gpios = <&ioex_it8801_port0 4 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
+		/* EC-SoC gpio used for rtc-rst */
+		rtc-rst {
+			gpios = <&ioex_it8801_port0 6 GPIO_OUTPUT_LOW>;
+		};
+		/* unused gpio */
+		tp-ec-entering-rw {
+			gpios = <&ioex_it8801_port0 7 GPIO_INPUT>;
+		};
+	};
+};

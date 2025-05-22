@@ -9,6 +9,11 @@ i2c_port_charger: &i2c_smb_0 {
 	pinctrl-names = "default";
 	port-sel = <0>;
 	status = "okay";
+
+	it8801_mfd: it8801@39 {
+		compatible = "ite,it8801-mfd";
+		reg = <0x39>;
+	};
 };
 
 /* typec-aic1-power */
