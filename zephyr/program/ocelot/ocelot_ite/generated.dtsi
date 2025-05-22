@@ -167,26 +167,35 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
-		i2c_bga_pina5: bga_pina5 {
-			i2c-port = <&i2c0>;
-		};
-		i2c_wc_usbc_pd_clk_aic1_r: wc_usbc_pd_clk_aic1_r {
+		i2c_named_i2c_port_pd1: named_i2c_port_pd1 {
+			// signal name was manually overriden from "wc_usbc_pd_clk_aic1_r"
 			i2c-port = <&i2c1>;
+			enum-names = "I2C_PORT_PD";
 		};
-		i2c_wc_usbc_pd_clk_aic2_r: wc_usbc_pd_clk_aic2_r {
+		i2c_named_i2c_port_pd2: named_i2c_port_pd2 {
+			// signal name was manually overriden from "wc_usbc_pd_clk_aic2_r"
 			i2c-port = <&i2c3>;
+			enum-names = "I2C_PORT_PD_SPARE";
 		};
-		i2c_smb_bs_clk_r: smb_bs_clk_r {
+		i2c_named_i2c_port_charger: named_i2c_port_charger {
+			// signal name was manually overriden from "smb_bs_clk_r"
 			i2c-port = <&i2c4>;
+			enum-names = "I2C_PORT_BATTERY", "I2C_PORT_CHARGER";
 		};
-		i2c_c_ish_ec_clk_r: c_ish_ec_clk_r {
+		i2c_named_i2c_port_ish: named_i2c_port_ish {
+			// signal name was manually overriden from "c_ish_ec_clk_r"
 			i2c-port = <&i2c5>;
+			enum-names = "I2C_PORT_ISH";
 		};
 	};
 
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
+			/* BGA_PINA2 */
+			<&gpiob 4 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* BGA_PINA5 */
+			<&gpiob 3 (GPIO_INPUT | GPIO_PULL_UP)>,
 			/* BGA_PINM2 */
 			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
 			/* BGA_PINN1 */
@@ -201,13 +210,6 @@
 		&adc0_ch3_gpi3_default
 		&adc0_ch4_gpi4_default
 		&adc0_ch5_gpi5_default>;
-	pinctrl-names = "default";
-};
-
-&i2c0 {
-	status = "okay";
-	pinctrl-0 = <&i2c0_clk_gpb3_default
-		&i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
 };
 
