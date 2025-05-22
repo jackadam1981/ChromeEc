@@ -68,6 +68,64 @@ FAKE_VOID_FUNC(lpc_keyboard_resume_irq);
 
 FAKE_VALUE_FUNC(enum ec_error_list, charger_set_frequency, int);
 
+static int board_version;
+
+static int cbi_get_board_version_mock(uint32_t *value)
+{
+	*value = board_version;
+	return 0;
+}
+
+static bool has_keypad;
+static bool keyboard_ca_fr;
+static bool lid_inverted;
+static bool clamshell_mode;
+static bool fan_present;
+static bool kb_backlight_sku;
+static int thermal_solution;
+static bool cbi_touch_en;
+static bool cbi_read_fail;
+
+static int cbi_get_fw_config_mock(enum cbi_fw_config_field_id field,
+				  uint32_t *value)
+{
+	if (cbi_read_fail) {
+		return -1;
+	}
+
+	switch (field) {
+	case FW_KB_NUMERIC_PAD:
+		*value = has_keypad ? FW_KB_NUMERIC_PAD_PRESENT :
+				      FW_KB_NUMERIC_PAD_ABSENT;
+		return 0;
+	case FW_KB_TYPE:
+		*value = keyboard_ca_fr ? FW_KB_TYPE_CA_FR : FW_KB_TYPE_DEFAULT;
+		return 0;
+	case FW_LID_INVERSION:
+		*value = lid_inverted ? FW_LID_XY_ROT_180 : FW_LID_REGULAR;
+		return 0;
+	case FORM_FACTOR:
+		*value = clamshell_mode ? CLAMSHELL : CONVERTIBLE;
+		return 0;
+	case FW_FAN:
+		*value = fan_present ? FW_FAN_PRESENT : FW_FAN_NOT_PRESENT;
+		return 0;
+	case FW_KB_BL:
+		*value = kb_backlight_sku ? FW_KB_BL_PRESENT :
+					    FW_KB_BL_NOT_PRESENT;
+		return 0;
+	case FW_THERMAL:
+		*value = thermal_solution;
+		return 0;
+	case FW_TOUCH_EN:
+		*value = cbi_touch_en ? FW_TOUCH_EN_ENABLE :
+					FW_TOUCH_EN_DISABLE;
+		return 0;
+	default:
+		return -EINVAL;
+	};
+}
+
 static void test_before(void *fixture)
 {
 	RESET_FAKE(cbi_get_board_version);
@@ -95,17 +153,28 @@ static void test_before(void *fixture)
 	i2c_common_emul_set_write_fail_reg(
 		emul_tcpci_generic_get_i2c_common_data(TCPC1),
 		I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* These functions takes a pointer argument, the default mock returns
+	 * with the value unmodified, typically whatever is on the stack, which
+	 * can lead to flaky tests. Use an actual fake function by default.
+	 */
+	board_version = 0;
+	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_mock;
+
+	has_keypad = false;
+	keyboard_ca_fr = false;
+	lid_inverted = false;
+	clamshell_mode = false;
+	fan_present = false;
+	kb_backlight_sku = false;
+	thermal_solution = 0;
+	cbi_touch_en = false;
+	cbi_read_fail = false;
+
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_fw_config_mock;
 }
 
 ZTEST_SUITE(craask, NULL, NULL, test_before, NULL, NULL);
-
-static int board_version;
-
-static int cbi_get_board_version_mock(uint32_t *value)
-{
-	*value = board_version;
-	return 0;
-}
 
 int clock_get_freq(void)
 {
@@ -114,8 +183,6 @@ int clock_get_freq(void)
 
 ZTEST(craask, test_volum_up_dn_buttons)
 {
-	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_mock;
-
 	nissa_get_sb_type_fake.return_val = NISSA_SB_C_A;
 
 	board_version = 1;
@@ -134,24 +201,8 @@ ZTEST(craask, test_volum_up_dn_buttons)
 	zassert_equal(buttons[BUTTON_VOLUME_DOWN].gpio, GPIO_VOLUME_UP_L);
 }
 
-static bool has_keypad;
-
-static int cbi_get_keyboard_configuration(enum cbi_fw_config_field_id field,
-					  uint32_t *value)
-{
-	if (field != FW_KB_NUMERIC_PAD)
-		return -EINVAL;
-
-	*value = has_keypad ? FW_KB_NUMERIC_PAD_PRESENT :
-			      FW_KB_NUMERIC_PAD_ABSENT;
-	return 0;
-}
-
 ZTEST(craask, test_keyboard_configuration)
 {
-	cros_cbi_get_fw_config_fake.custom_fake =
-		cbi_get_keyboard_configuration;
-
 	has_keypad = false;
 	kb_init();
 	zassert_equal(keyboard_raw_get_cols(), KEYBOARD_COLS_NO_KEYPAD);
@@ -174,24 +225,10 @@ ZTEST(craask, test_keyboard_configuration)
 	zassert_equal(board_vivaldi_keybd_idx(), 1);
 }
 
-static bool keyboard_ca_fr;
-
-static int cbi_get_keyboard_type_config(enum cbi_fw_config_field_id field,
-					uint32_t *value)
-{
-	if (field != FW_KB_TYPE)
-		return -EINVAL;
-
-	*value = keyboard_ca_fr ? FW_KB_TYPE_CA_FR : FW_KB_TYPE_DEFAULT;
-	return 0;
-}
-
 ZTEST(craask, test_keyboard_type)
 {
 	uint16_t forwardslash_pipe_key = get_scancode_set2(2, 7);
 	uint16_t right_control_key = get_scancode_set2(4, 0);
-
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_keyboard_type_config;
 
 	keyboard_ca_fr = false;
 	kb_init();
@@ -204,17 +241,6 @@ ZTEST(craask, test_keyboard_type)
 	zassert_equal(get_scancode_set2(2, 7), right_control_key);
 }
 
-static bool lid_inverted;
-
-static int cbi_get_lid_orientation_config(enum cbi_fw_config_field_id field,
-					  uint32_t *value)
-{
-	if (field == FW_LID_INVERSION)
-		*value = lid_inverted ? FW_LID_XY_ROT_180 : FW_LID_REGULAR;
-
-	return 0;
-}
-
 ZTEST(craask, test_base_orientation)
 {
 	const int BASE_SENSOR = SENSOR_ID(DT_NODELABEL(base_accel));
@@ -225,7 +251,6 @@ ZTEST(craask, test_base_orientation)
 
 	motion_sensors[BASE_SENSOR].rot_standard_ref = normal_rotation;
 
-	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_mock;
 	board_version = 2;
 	form_factor_init();
 	zassert_equal_ptr(motion_sensors[BASE_SENSOR].rot_standard_ref,
@@ -257,9 +282,6 @@ ZTEST(craask, test_lid_orientation)
 
 	motion_sensors[LID_SENSOR].rot_standard_ref = normal_rotation;
 
-	cros_cbi_get_fw_config_fake.custom_fake =
-		cbi_get_lid_orientation_config;
-
 	lid_inverted = false;
 	form_factor_init();
 	zassert_equal_ptr(motion_sensors[LID_SENSOR].rot_standard_ref,
@@ -273,25 +295,13 @@ ZTEST(craask, test_lid_orientation)
 			  normal_rotation,
 			  "errors should leave the rotation unchanged");
 
-	cros_cbi_get_fw_config_fake.custom_fake =
-		cbi_get_lid_orientation_config;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_fw_config_mock;
 
 	lid_inverted = true;
 	form_factor_init();
 	zassert_equal_ptr(
 		motion_sensors[LID_SENSOR].rot_standard_ref, inverted_rotation,
 		"inverted orientation should be same as lid_rot_bma422");
-}
-
-static bool clamshell_mode;
-
-static int cbi_get_form_factor_config(enum cbi_fw_config_field_id field,
-				      uint32_t *value)
-{
-	if (field == FORM_FACTOR)
-		*value = clamshell_mode ? CLAMSHELL : CONVERTIBLE;
-
-	return 0;
 }
 
 ZTEST(craask, test_convertible)
@@ -314,8 +324,6 @@ ZTEST(craask, test_convertible)
 	tablet_reset();
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_tablet_mode));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
-
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 
 	clamshell_mode = false;
 	clamshell_init();
@@ -375,8 +383,6 @@ ZTEST(craask, test_clamshell)
 	tablet_reset();
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_tablet_mode));
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
-
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 
 	clamshell_mode = true;
 	clamshell_init();
@@ -438,7 +444,6 @@ ZTEST(craask, test_alt_sensor_base_lsm6dso)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 
 	clamshell_mode = false;
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -472,7 +477,6 @@ ZTEST(craask, test_alt_sensor_base_bmi323)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 
 	clamshell_mode = false;
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -506,7 +510,6 @@ ZTEST(craask, test_alt_sensor_base_bma422)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
 
 	clamshell_mode = false;
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -540,7 +543,6 @@ ZTEST(craask, test_alt_sensor_lid_lis2dw12)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_accel));
 
 	clamshell_mode = false;
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -572,7 +574,6 @@ ZTEST(craask, test_alt_sensor_lid_bma422)
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_accel));
 
 	clamshell_mode = false;
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 	alt_sensor_init();
 
 	/* Clear base_imu_irq call count before test */
@@ -588,26 +589,12 @@ ZTEST(craask, test_alt_sensor_lid_bma422)
 	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
 }
 
-static bool fan_present;
-
-static int cbi_get_fan_fw_config(enum cbi_fw_config_field_id field,
-				 uint32_t *value)
-{
-	if (field != FW_FAN)
-		return -EINVAL;
-
-	*value = fan_present ? FW_FAN_PRESENT : FW_FAN_NOT_PRESENT;
-	return 0;
-}
-
 ZTEST(craask, test_fan_present)
 {
 	int flags;
 
 	/* Default fan_count = CONFIG_FANS = CONFIG_PLATFORM_EC_NUM_FANS */
 	fan_set_count(CONFIG_PLATFORM_EC_NUM_FANS);
-
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_fan_fw_config;
 
 	fan_present = true;
 	fan_init();
@@ -625,8 +612,6 @@ ZTEST(craask, test_fan_absent)
 
 	/* Default fan_count = CONFIG_FANS = CONFIG_PLATFORM_EC_NUM_FANS */
 	fan_set_count(CONFIG_PLATFORM_EC_NUM_FANS);
-
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_fan_fw_config;
 
 	fan_present = false;
 	fan_init();
@@ -916,16 +901,6 @@ ZTEST(craask, test_process_pd_alert)
 		      USB_CHG_EVENT_BC12);
 }
 
-static bool kb_backlight_sku;
-
-static int cbi_get_kb_bl_fw_config(enum cbi_fw_config_field_id field,
-				   uint32_t *value)
-{
-	zassert_equal(field, FW_KB_BL);
-	*value = kb_backlight_sku ? FW_KB_BL_PRESENT : FW_KB_BL_NOT_PRESENT;
-	return 0;
-}
-
 ZTEST(craask, test_keyboard_backlight)
 {
 	/* For PLATFORM_EC_PWM_KBLIGHT default enabled, EC_FEATURE_PWM_KEYB
@@ -935,7 +910,6 @@ ZTEST(craask, test_keyboard_backlight)
 	uint32_t result;
 
 	/* Support keyboard backlight */
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_kb_bl_fw_config;
 	kb_backlight_sku = true;
 	result = board_override_feature_flags0(flags0);
 	zassert_equal(result, flags0,
@@ -949,7 +923,7 @@ ZTEST(craask, test_keyboard_backlight)
 		      "Unchange ec feature, keep PWM_KEYB feature.");
 
 	/* Not support keyboard backlight */
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_kb_bl_fw_config;
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_fw_config_mock;
 	kb_backlight_sku = false;
 	result = board_override_feature_flags0(flags0);
 	zassert_equal(result, 0, "No kblight should clear PWM_KEYB feature.");
@@ -975,16 +949,6 @@ ZTEST(craask, test_led_pwm)
 	zassert_equal(set_pwm_led_color_fake.arg1_val, -1);
 }
 
-static int thermal_solution;
-
-static int cbi_get_thermal_fw_config(enum cbi_fw_config_field_id field,
-				     uint32_t *value)
-{
-	zassert_equal(field, FW_THERMAL);
-	*value = thermal_solution;
-	return 0;
-}
-
 static int chipset_state;
 
 static int chipset_in_state_mock(int state_mask)
@@ -1004,7 +968,6 @@ ZTEST(craask, test_6w_thermal_solution)
 	fan_set_enabled(0, 1);
 
 	/* Test fan table for 6W CPU */
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_thermal_fw_config;
 	thermal_solution = FW_THERMAL_6W;
 	thermal_init();
 
@@ -1082,7 +1045,6 @@ ZTEST(craask, test_15w_thermal_solution)
 	fan_set_enabled(0, 1);
 
 	/* Test fan table for 15W CPU */
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_thermal_fw_config;
 	thermal_solution = FW_THERMAL_15W;
 	thermal_init();
 
@@ -1151,22 +1113,6 @@ ZTEST(craask, test_15w_thermal_solution)
 	zassert_equal(fan_get_rpm_target(0), 0);
 }
 
-static bool cbi_touch_en;
-static bool cbi_read_fail;
-
-static int cbi_get_touch_en_config(enum cbi_fw_config_field_id field,
-				   uint32_t *value)
-{
-	if (field != FW_TOUCH_EN)
-		return -EINVAL;
-
-	if (cbi_read_fail)
-		return -1;
-
-	*value = cbi_touch_en ? FW_TOUCH_EN_ENABLE : FW_TOUCH_EN_DISABLE;
-	return 0;
-}
-
 #define TEST_DELAY_MS 1
 #define TOUCH_ENABLE_DELAY_MS (500 + TEST_DELAY_MS)
 #define TOUCH_DISABLE_DELAY_MS (0 + TEST_DELAY_MS)
@@ -1180,7 +1126,6 @@ ZTEST(craask, test_touch_enable)
 
 	cbi_touch_en = true;
 	cbi_read_fail = false;
-	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_touch_en_config;
 
 	hook_notify(HOOK_INIT);
 
@@ -1224,8 +1169,6 @@ ZTEST(craask, test_touch_enable)
 
 ZTEST(craask, test_update_charger_config_enable)
 {
-	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_mock;
-
 	/* Craask/Craaskbowl/Craaskvin */
 	board_version = 0x05;
 	hook_notify(HOOK_INIT);
@@ -1244,8 +1187,6 @@ ZTEST(craask, test_update_charger_config_enable)
 
 ZTEST(craask, test_update_charger_config_disable)
 {
-	cbi_get_board_version_fake.custom_fake = cbi_get_board_version_mock;
-
 	/* Craaskana */
 	board_version = 0x0b;
 	hook_notify(HOOK_INIT);
