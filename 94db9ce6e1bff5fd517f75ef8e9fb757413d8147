@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf93a35_1b67f8ad",
+        "filename": "zephyr/program/nissa/meliks/src/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-22T00:51:01Z",
+      "side": 1,
+      "message": "shouldn\u0027t there be 2 cases? for CHARGING_VOLTAGE_SDI_4404D57M and CHARGING_VOLTAGE_SDI_4404D57",
+      "range": {
+        "startLine": 278,
+        "startChar": 21,
+        "endLine": 278,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0aa3f260_632e43b0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/nissa/meliks/src/battery.c",
+              "range": {
+                "startLine": 278,
+                "startChar": 0,
+                "endLine": 280,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (board_battery_type \u003d\u003d BATTERY_SDI_4404D57M)\n\t\t\tbat_drop_voltage \u003d CHARGING_VOLTAGE_SDI_4404D57M -\n\t\t\t\t\t   (DROP_VOLT_MV * drop_step);\n\t\telse\n\t\t\tbat_drop_voltage \u003d CHARGING_VOLTAGE_SDI_4404D57 -\n\t\t\t\t\t   (DROP_VOLT_MV * drop_step);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "94db9ce6e1bff5fd517f75ef8e9fb757413d8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
