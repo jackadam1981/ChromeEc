@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5168ed13_16a684b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-22T08:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9f418e_bb88a16d",
+      "revId": "f190958d22590525c8154065dabf75396ae66618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbd1add0_040efd69",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-05-21T13:59:43Z",
       "side": 1,
       "message": "`device *watchdog` above already points to the wdog node.  You can use that pointer instead of declaring a new one.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "f190958d22590525c8154065dabf75396ae66618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58a743c_0a85f666",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-22T08:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd1add0_040efd69",
       "range": {
         "startLine": 51,
         "startChar": 0,
