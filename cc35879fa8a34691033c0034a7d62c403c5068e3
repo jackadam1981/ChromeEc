@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab5ddac_b43b53c4",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T21:04:56Z",
+      "side": 1,
+      "message": "This signal should be configured the power sequence driver and node and can be deleted from this file.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
