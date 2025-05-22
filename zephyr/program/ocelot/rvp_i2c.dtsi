@@ -48,6 +48,14 @@
 		status = "okay";
 		reg = <0x9>;
 	};
+	pca95xx_1: pca95xx@23 {
+		compatible = "nxp,pca95xx";
+		label = "PCA95XX_1";
+		reg = <0x23>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		ngpios = <16>;
+	};
 	seven_seg_display: max695x-seven-seg-display@38 {
 		compatible = "maxim,max695x";
 		reg = <0x38>;
