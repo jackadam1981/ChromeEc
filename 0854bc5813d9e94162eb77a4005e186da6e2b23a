@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4949f190_5457dd4b",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-22T21:05:42Z",
+      "side": 1,
+      "message": "Should we make a `program_rvp.conf` that we pull in to `ocelot_microchip`, `_ite`, and `_nuvoton`? There will be several configs that apply to all the RVP builds but won\u0027t be applicable to future partner designs like the IO expander.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
