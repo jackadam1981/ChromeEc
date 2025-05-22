@@ -33,6 +33,29 @@
       "message": "Hi Keith, Yuval,\ncould you please help review the change.",
       "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae521513_c82e495f",
+        "filename": "zephyr/program/trulo/trulo/src/suspend_resume.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-22T17:50:34Z",
+      "side": 1,
+      "message": "With sensors on the ISH, the [tabletmode interrupt](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_tabletmode_interrupt/tabletmode_interrupt.c;l\u003d95;drc\u003d78e8e15fceba38bd250c401cb2696a25c145a116) should be disabling keyboard scanning during suspend.\n\nI don\u0027t think board specific code is needed.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
