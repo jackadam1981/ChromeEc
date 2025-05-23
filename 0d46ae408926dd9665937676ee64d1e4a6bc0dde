@@ -16,6 +16,52 @@
       "message": "Give my +2 as patchset 3 has been +2\u0027d previously and only commit comment being changed in patchset 4.",
       "revId": "0d46ae408926dd9665937676ee64d1e4a6bc0dde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02161c42_9326ad19",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T16:50:37Z",
+      "side": 1,
+      "message": "I don\u0027t like this automatic conversion of `enum tbt_compat_cable_speed` to `enum usb_rev30_ss`.\n\nThere is a function [`usb_rev30_to_tbt_speed()`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/tbt_alt_mode.c;l\u003d622;drc\u003d3a47f3a831c00c4a4c9ec274a85f4ece34a9db45) that converts USB speeds to TBT speeds.  Can you create a function with the reverse lookup?",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 68
+      },
+      "revId": "0d46ae408926dd9665937676ee64d1e4a6bc0dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57dc6248_daa7a56a",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T16:50:37Z",
+      "side": 1,
+      "message": "Use `MIN(cable_usb4_speed, max_board_speed)`",
+      "range": {
+        "startLine": 384,
+        "startChar": 18,
+        "endLine": 386,
+        "endChar": 0
+      },
+      "revId": "0d46ae408926dd9665937676ee64d1e4a6bc0dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
