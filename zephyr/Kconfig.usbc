@@ -22,11 +22,12 @@ config TEST_DISABLE_PLATFORM_EC_USBC
 	  USBC.
 
 rsource "Kconfig.retimer"
+rsource "Kconfig.pd_meas_vbus"
+
 
 if PLATFORM_EC_USBC
 
 rsource "Kconfig.pd_int_shared"
-rsource "Kconfig.pd_meas_vbus"
 rsource "Kconfig.pd_frs"
 rsource "Kconfig.pd_discharge"
 rsource "Kconfig.pd_vbus_detection"
