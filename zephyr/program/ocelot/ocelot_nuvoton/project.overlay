@@ -11,6 +11,7 @@
 #include "generated.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dtsi"
+#include "../battery.dtsi"
 #include "../interrupts.dtsi"
 
 /* ocelot_nuvoton overrides follow... */
