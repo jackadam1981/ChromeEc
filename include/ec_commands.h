@@ -1758,6 +1758,10 @@ enum ec_feature_code {
 	 * The EC supports Strauss keyboard.
 	 */
 	EC_FEATURE_STRAUSS = 55,
+	/*
+	 * The EC supports PoE.
+	 */
+	EC_FEATURE_POE = 56,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -8147,6 +8151,13 @@ struct pdc_trace_msg_entry {
 	uint8_t pdc_data_size;
 	/* Captured PDC message. */
 	uint8_t pdc_data[0];
+} __ec_align1;
+
+/* Enable/disable Ethernet POE power */
+#define EC_CMD_SWITCH_ENABLE_POE 0x0145
+
+struct ec_params_switch_enable_poe {
+	uint8_t enabled;
 } __ec_align1;
 
 /*****************************************************************************/
