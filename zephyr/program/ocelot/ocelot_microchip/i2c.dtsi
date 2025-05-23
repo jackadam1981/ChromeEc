@@ -9,7 +9,7 @@
 
 		i2c_charger: charger {
 			i2c-port = <&charger_i2c>;
-			enum-names = "I2C_PORT_CHARGER";
+			enum-names = "I2C_PORT_CHARGER", "I2C_PORT_BATTERY";
 		};
 		ec_pd_power: typec-aic1-power {
 			i2c-port = <&pd_pow_i2c>;
@@ -37,3 +37,5 @@ pd_pow_i2c: &i2c_smb_1 {
 	port-sel = <6>;
 	status = "okay";
 };
+
+#include "../i2c.dtsi"

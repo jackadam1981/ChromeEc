@@ -1,0 +1,28 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+&charger_i2c {
+	label = "I2C_CHARGER";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	status = "okay";
+
+	charger: raa489@9 {
+		compatible = "intersil,isl9241";
+		status = "okay";
+		reg = <0x9>;
+	};
+};
+
+/ {
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger>;
+		};
+	};
+};
