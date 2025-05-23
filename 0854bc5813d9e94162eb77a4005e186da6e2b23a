@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4cae68b_489ded05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-23T23:38:40Z",
+      "side": 1,
+      "message": "is board ID meaningful on this platform?\ndoes anything depend on whatever is encoded here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "0854bc5813d9e94162eb77a4005e186da6e2b23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4949f190_5457dd4b",
         "filename": "zephyr/program/ocelot/program.conf",
         "patchSetId": 1
