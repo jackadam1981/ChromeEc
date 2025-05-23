@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e4e682_ece83d22",
+        "filename": "zephyr/boards/google/realtek/realtek.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:42:55Z",
+      "side": 1,
+      "message": "Not related to this change, but the `ns16550` driver doesn\u0027t use the `pinctrl` property.  This can be deleted as the `uart0_wrapper` handles setting up the pins.\n\nThis should be fixed in a new CL.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "8d793e02335f989698f1ac2597fb773873ef09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc411bde_b61f3781",
+        "filename": "zephyr/program/brox/brtk/brtk.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:42:55Z",
+      "side": 1,
+      "message": "The `gpio-kbd-kso2` is not used by the keyboard input driver.  This is not needed and can be deleted.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "8d793e02335f989698f1ac2597fb773873ef09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea63db21_ed6b1517",
+        "filename": "zephyr/program/brox/brtk/rtk_keyboard.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:42:55Z",
+      "side": 1,
+      "message": "Delete.  Otherwise if the upstream compatible string changes, the brtk build will fail.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "8d793e02335f989698f1ac2597fb773873ef09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
