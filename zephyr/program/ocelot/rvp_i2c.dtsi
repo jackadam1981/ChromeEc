@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
- / {
+/ {
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
@@ -24,7 +24,17 @@
 			enum-names = "I2C_PORT_ISH";
 		};
 	};
- };
+	/* TODO: move to a separate file when full PDC support added. */
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger>;
+		};
+	};
+};
 
 &i2c_port_pd1 {
 	label = "I2C_PORT_PD";
@@ -40,6 +50,12 @@
 &i2c_port_charger {
 	label = "I2C_PORT_CHARGER";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
+
+	charger: raa489@9 {
+		compatible = "intersil,isl9241";
+		status = "okay";
+		reg = <0x9>;
+	};
 };
 
 &i2c_port_ish {
