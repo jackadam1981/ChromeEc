@@ -9,7 +9,6 @@
 #include "../cbi.dtsi"
 #include "../generated.dtsi"
 #include "../i2c.dtsi"
-#include "../trulo.dtsi"
 
 /* Pujjolo project DTS includes*/
 #include "battery.dtsi"
@@ -26,14 +25,6 @@
 #include "usba.dtsi"
 
 /* Trulo overrides follow... */
-
-/{
-	gpio-interrupts {
-		/delete-node/ vol_up ;
-		/delete-node/ vol_down ;
-		/delete-node/ soc_enbkl;
-	};
-};
 
 &cbi_flash {
 	/*
