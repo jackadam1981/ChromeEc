@@ -748,8 +748,9 @@ static int command_ccd_info(void)
 		cflush();
 	}
 
-	ccprintf("TPM:%s%s\n",
+	ccprintf("TPM:%s%s%s\n",
 		 board_fwmp_allows_unlock() ? "" : " fwmp_lock",
+		 board_fwmp_allows_boot_policy_update() ? "" : " block_dev",
 		 board_vboot_dev_mode_enabled() ? " dev_mode" : "");
 
 	ccprintf("Capabilities are %s.\n", raw_check_all_caps_default() ?
