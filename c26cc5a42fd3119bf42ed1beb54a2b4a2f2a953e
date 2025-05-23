@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8a3893_b07ffb47",
+        "filename": "zephyr/program/brox/brtk/brtk.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:31:39Z",
+      "side": 1,
+      "message": "This pin setting for eSPI are fixed.  Add these settings to common file zephyr/boards/google/realtek/realtek_rts5912.dts\n\nThe `status\u003d\"okay\"` setting should remain in this file.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "c26cc5a42fd3119bf42ed1beb54a2b4a2f2a953e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
