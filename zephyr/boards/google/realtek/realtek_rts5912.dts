@@ -20,12 +20,13 @@
 		offset = <0x0>;
 		/*
 		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
-		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
+		 * The total flash size is 1 MiB.
+		 * Set the write protected region to the lower half of flash.
 		 */
-		size = <0x50000>;
+		size = <0x80000>;
 		ec-ro {
 			fmap {
-				offset = <(0x50000 - 0x1000 - 0x400)>;
+				offset = <(0x50000 - 0x400)>;
 				/*
 				 * don't specify 'size = <0x400>' here so
 				 * it is auto-assigned to the fmap size.
@@ -33,7 +34,7 @@
 			};
 		};
 		cbi_flash: cbi {
-			offset = <(0x50000 - 0x1000)>;
+			offset = <0x50000>;
 			size = <0x1000>;
 		};
 	};
@@ -41,7 +42,6 @@
 		offset = <0x80000>;
 		/*
 		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
-		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
 		 */
 		size = <0x50000>;
 		rw-fw {
