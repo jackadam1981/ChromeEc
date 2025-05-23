@@ -31,6 +31,7 @@ i2c_port_ish: &i2c5 {
 bc_acok: &gpio_bc_acok {};
 pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};
 
+#include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 
