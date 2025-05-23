@@ -24,6 +24,13 @@ config TEST_DISABLE_PLATFORM_EC_USBC
 rsource "Kconfig.retimer"
 rsource "Kconfig.pd_meas_vbus"
 
+config PLATFORM_EC_USBC_STUB
+	bool
+	default y if !PLATFORM_EC_USBC
+	help
+	  This is a helper symbol that indicates no USB-C stack is configured.
+	  The application compiles in a stub USB-C implementation when this
+	  symbol is defined.
 
 if PLATFORM_EC_USBC
 
