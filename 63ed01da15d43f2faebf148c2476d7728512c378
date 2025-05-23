@@ -70,6 +70,24 @@
       "parentUuid": "6c5be6bf_0c6de406",
       "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd145a84_1c562f27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-23T20:52:46Z",
+      "side": 1,
+      "message": "When it\u0027s enabled, we would have [both the `packed` and `align` attributes](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d651;drc\u003dcfcd3ac85ebd00a2742537c573589351e3c5d7ab). I was hoping the `align` would fix the warning by ensuring the struct was aligned, but sounds like it\u0027s only paying attention to `packed`.\n\nAnyway, I think we can abandon this now that we can [get the ROM report inside the chroot with `clang`](http://b/419642921).",
+      "parentUuid": "7671cf91_3a473ae9",
+      "revId": "63ed01da15d43f2faebf148c2476d7728512c378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
