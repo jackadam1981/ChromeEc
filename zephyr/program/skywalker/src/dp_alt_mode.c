@@ -5,6 +5,7 @@
 
 #include "chipset.h"
 #include "console.h"
+#include "hooks.h"
 #include "timer.h"
 #include "typec_control.h"
 #include "usb_mux.h"
@@ -36,6 +37,24 @@ static void set_dp_path_sel(int port)
 	LOG_INF("Set DP_AUX_PATH_SEL: %d", port);
 }
 
+static bool dp_attached[2];
+
+static void skywalker_dp_attention(int port, uint32_t vdo_dp_status);
+
+void fake_attention(void)
+{
+	uint32_t vdo_dp_status = VDO_DP_STATUS(0 /* irq */, 1 /* lvl */, 0, 0, 0, 0, 0, 0);
+
+	for (int port = 0; port < 2; port++) {
+		if (dp_attached[port]) {
+			LOG_INF("\x1b[1;31mfake attention to port %d\x1b[m", port);
+			skywalker_dp_attention(port, vdo_dp_status);
+			break;
+		}
+	}
+}
+DECLARE_DEFERRED(fake_attention);
+
 void svdm_set_hpd_gpio(int port, int en)
 {
 	/*
@@ -46,10 +65,12 @@ void svdm_set_hpd_gpio(int port, int en)
 	if (en && active_aux_port < 0) {
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_ap_dp_hpd_l), 1);
 		active_aux_port = port;
+		LOG_INF("\x1b[1;31mset hpd 1\x1b[m");
 	}
 
 	if (!en && active_aux_port == port) {
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_ap_dp_hpd_l), 0);
+		LOG_INF("\x1b[1;31mset hpd 0\x1b[m");
 		active_aux_port = -1;
 	}
 }
@@ -71,6 +92,9 @@ static void skywalker_dp_attention(int port, uint32_t vdo_dp_status)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(vdo_dp_status);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(vdo_dp_status);
+
+	dp_attached[port] = true;
+	hook_call_deferred(&fake_attention_data, -1);
 
 	if (!is_dp_muxable(port)) {
 		LOG_INF("p%d: The other port is already muxed.", port);
@@ -143,6 +167,13 @@ static void skywalker_dp_attention(int port, uint32_t vdo_dp_status)
 
 static void skywalker_set_unattached(int port)
 {
+	dp_attached[port] = false;
+
+	int other_port = !port;
+	if (active_aux_port == port && dp_attached[other_port]) {
+		hook_call_deferred(&fake_attention_data, SECOND);
+	}
+
 	svdm_set_hpd_gpio(port, 0);
 }
 
