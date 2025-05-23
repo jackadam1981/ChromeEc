@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35c4198_25eba122",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb40645_45b02175",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Delete all the GPIOs that are setup by rtk_power_signals.dtsi.\n\nITE brox defines these GPIOs because of a limitation with the tool that creates the generated.dtsi file.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89607ec2_7e3fe924",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df114d05_89f181ab",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8925dae_fb5081a5",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08644427_207408f5",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6604d8_ff2ffed7",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4670ed81_8c437fe2",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de76b1a8_ee1fa604",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365b3749_f7521d20",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6917382_9ecb4c0d",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb45d8c_8fe4e747",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have discouraged expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 157,
+        "startChar": 67,
+        "endLine": 157,
+        "endChar": 68
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fd6b46_d5fdced3",
+        "filename": "zephyr/program/brox/brtk/rtk_power_signals.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T15:51:04Z",
+      "side": 1,
+      "message": "Create mapping of RTS5912_GPIO_VOLTAGE_1V8 to the common symbol GPIO_VOLTAGE_1P8.\nThis should be added to zephyr/google/boards/realtek/realtek.dtsi\n\n[Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/google/it8xxx2/it8xxx2.dtsi;l\u003d12;drc\u003d566a871677f71c889a9665287a06bbf0933b4c3d)",
+      "range": {
+        "startLine": 113,
+        "startChar": 39,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
