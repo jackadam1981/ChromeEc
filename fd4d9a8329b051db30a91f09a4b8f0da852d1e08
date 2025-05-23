@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32530f5d_47fe511a",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:24:37Z",
+      "side": 1,
+      "message": "This I2C bus was only used on early Brox devices.  It can be deleted.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a604ea4_953fb3c1",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:24:37Z",
+      "side": 1,
+      "message": "No need to include nodes that are disabled.  This can be deleted.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09220604_36fe6f74",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:24:37Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199b4efc_150be971",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:24:37Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52b0e09f_8c082d1f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 93,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
