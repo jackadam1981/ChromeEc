@@ -33,8 +33,13 @@ config CROS_EC_RAM_SIZE
 config CROS_EC_RO_MEM_OFF
 	default 0
 
-# Image size is configured with binman's property.
-# (CROS_EC_RO_SIZE and CROS_EC_RW_SIZE)
+# Image size should be limited by sram code size
+# TODO: b/416020794, make the EC image size as big as the available code RAM.
+config CROS_EC_RO_SIZE
+	default 0x40000
+
+config CROS_EC_RW_SIZE
+	default 0x40000
 
 config CROS_EC_RW_MEM_OFF
 	default 0

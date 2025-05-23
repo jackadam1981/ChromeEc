@@ -20,12 +20,14 @@
 		offset = <0x0>;
 		/*
 		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
-		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
+		 * In flash.c, it request mutiple of CONFIG_FLASH_BANK_SIZE (64 kb for rts5915).
+		 * Moreove, this size also use to determine CONFIG_WP_STORAGE_SIZE, 
+		 * and rts5915 support FLASH_W25Q80 for internal flash, so the wp range are fixed.
 		 */
-		size = <0x50000>;
+		size = <0x80000>;
 		ec-ro {
 			fmap {
-				offset = <(0x50000 - 0x1000 - 0x400)>;
+				offset = <(0x50000 - 0x400)>;
 				/*
 				 * don't specify 'size = <0x400>' here so
 				 * it is auto-assigned to the fmap size.
@@ -33,7 +35,7 @@
 			};
 		};
 		cbi_flash: cbi {
-			offset = <(0x50000 - 0x1000)>;
+			offset = <0x50000>;
 			size = <0x1000>;
 		};
 	};
@@ -41,7 +43,9 @@
 		offset = <0x80000>;
 		/*
 		 * TODO: b/416020794, make the EC image size as big as the available code RAM.
-		 * In flash.c, it request mutiple of CONFIG_FLASH_ERASE_SIZE (4 kb for rts5915).
+		 * In flash.c, it request mutiple of CONFIG_FLASH_BANK_SIZE (64 kb for rts5915).
+		 * Moreove, this size also use to determine CONFIG_WP_STORAGE_SIZE, 
+		 * and rts5915 support FLASH_W25Q80 for internal flash, so the wp range are fixed.
 		 */
 		size = <0x50000>;
 		rw-fw {
