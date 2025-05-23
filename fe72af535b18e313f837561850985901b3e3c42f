@@ -16,6 +16,24 @@
       "message": "This shouldn\u0027t merge until https://crrev.com/c/6581487/1 merges.",
       "revId": "fe72af535b18e313f837561850985901b3e3c42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e9dc4a_32c80cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-23T20:27:31Z",
+      "side": 1,
+      "message": "Added a `Cq-Depend` to enforce that.",
+      "parentUuid": "ef553a14_77f57a06",
+      "revId": "fe72af535b18e313f837561850985901b3e3c42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
