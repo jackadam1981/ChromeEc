@@ -1,0 +1,48 @@
+==2603460== Memcheck, a memory error detector
+==2603460== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2603460== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2603460== Command: ./krabby/krabby.woobat/zephyr/zephyr.exe
+==2603460== 
+==2603460== Thread 7:
+==2603460== Conditional jump or move depends on uninitialised value(s)
+==2603460==    at 0x439D32: board_sensor_init (zephyr/program/corsola/woobat/src/sensor.c:110)
+==2603460==    by 0x44A0BE: hook_notify (zephyr/shim/src/hooks.c:165)
+==2603460==    by 0x437C58: ppc_woobat_test_ppc_init (zephyr/test/krabby/src/ppc_woobat.c:26)
+==2603460==    by 0x437C58: _ppc_woobat_test_ppc_init_wrapper (zephyr/test/krabby/src/ppc_woobat.c:19)
+==2603460==    by 0x4423EB: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2603460==    by 0x4423EB: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2603460==    by 0x43A866: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2603460==    by 0x441266: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2603460==    by 0x451519: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2603460==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2603460==    by 0x4ABAC05: clone (clone.S:107)
+==2603460== 
+==2603460== Conditional jump or move depends on uninitialised value(s)
+==2603460==    at 0x439D36: board_sensor_init (zephyr/program/corsola/woobat/src/sensor.c:110)
+==2603460==    by 0x44A0BE: hook_notify (zephyr/shim/src/hooks.c:165)
+==2603460==    by 0x437C58: ppc_woobat_test_ppc_init (zephyr/test/krabby/src/ppc_woobat.c:26)
+==2603460==    by 0x437C58: _ppc_woobat_test_ppc_init_wrapper (zephyr/test/krabby/src/ppc_woobat.c:19)
+==2603460==    by 0x4423EB: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2603460==    by 0x4423EB: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2603460==    by 0x43A866: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2603460==    by 0x441266: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2603460==    by 0x451519: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2603460==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2603460==    by 0x4ABAC05: clone (clone.S:107)
+==2603460== 
+==2603460== 
+==2603460== HEAP SUMMARY:
+==2603460==     in use at exit: 3,560 bytes in 6 blocks
+==2603460==   total heap usage: 21 allocs, 15 frees, 14,382 bytes allocated
+==2603460== 
+==2603460== LEAK SUMMARY:
+==2603460==    definitely lost: 0 bytes in 0 blocks
+==2603460==    indirectly lost: 0 bytes in 0 blocks
+==2603460==      possibly lost: 424 bytes in 3 blocks
+==2603460==    still reachable: 3,136 bytes in 3 blocks
+==2603460==         suppressed: 0 bytes in 0 blocks
+==2603460== Rerun with --leak-check=full to see details of leaked memory
+==2603460== 
+==2603460== Use --track-origins=yes to see where uninitialised values come from
+==2603460== For lists of detected and suppressed errors, rerun with: -s
+==2603460== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

@@ -1,0 +1,33 @@
+==2586052== Memcheck, a memory error detector
+==2586052== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2586052== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2586052== Command: ./pdc/pdc.usb_mux/zephyr/zephyr.exe
+==2586052== 
+==2586052== Thread 8:
+==2586052== Conditional jump or move depends on uninitialised value(s)
+==2586052==    at 0x414760: handle_connector_status (zephyr/subsys/pd_controller/pdc_power_mgmt.c:1240)
+==2586052==    by 0x414760: pdc_send_cmd_wait_run (zephyr/subsys/pd_controller/pdc_power_mgmt.c:2714)
+==2586052==    by 0x42D444: smf_run_state (third_party/zephyr/main/lib/smf/smf.c:410)
+==2586052==    by 0x412D2F: pdc_thread (zephyr/subsys/pd_controller/pdc_power_mgmt.c:963)
+==2586052==    by 0x4265D2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2586052==    by 0x42CF44: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2586052==    by 0x441CC9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2586052==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2586052==    by 0x4ABAC05: clone (clone.S:107)
+==2586052== 
+==2586052== 
+==2586052== HEAP SUMMARY:
+==2586052==     in use at exit: 4,688 bytes in 14 blocks
+==2586052==   total heap usage: 27 allocs, 13 frees, 15,246 bytes allocated
+==2586052== 
+==2586052== LEAK SUMMARY:
+==2586052==    definitely lost: 0 bytes in 0 blocks
+==2586052==    indirectly lost: 0 bytes in 0 blocks
+==2586052==      possibly lost: 1,552 bytes in 11 blocks
+==2586052==    still reachable: 3,136 bytes in 3 blocks
+==2586052==         suppressed: 0 bytes in 0 blocks
+==2586052== Rerun with --leak-check=full to see details of leaked memory
+==2586052== 
+==2586052== Use --track-origins=yes to see where uninitialised values come from
+==2586052== For lists of detected and suppressed errors, rerun with: -s
+==2586052== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)

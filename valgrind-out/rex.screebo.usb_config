@@ -1,0 +1,116 @@
+==2587886== Memcheck, a memory error detector
+==2587886== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2587886== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2587886== Command: ./rex/rex.screebo.usb_config/zephyr/zephyr.exe
+==2587886== 
+==2587886== Thread 6:
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x43402B: usb_config_test_board_reset_pd_mcu (zephyr/test/rex/tests/screebo/src/usb_config.c:191)
+==2587886==    by 0x43402B: _usb_config_test_board_reset_pd_mcu_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:182)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x433F09: usb_config_test_ppc_interrupt (zephyr/test/rex/tests/screebo/src/usb_config.c:166)
+==2587886==    by 0x433F09: _usb_config_test_ppc_interrupt_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:161)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x433F8A: usb_config_test_ppc_interrupt (zephyr/test/rex/tests/screebo/src/usb_config.c:176)
+==2587886==    by 0x433F8A: _usb_config_test_ppc_interrupt_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:161)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x433A98: usb_config_test_setup_db_usb3 (zephyr/test/rex/tests/screebo/src/usb_config.c:109)
+==2587886==    by 0x433A98: _usb_config_test_setup_db_usb3_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:105)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== Thread 7:
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x433BD7: usb_config_test_setup_mb_usb3 (zephyr/test/rex/tests/screebo/src/usb_config.c:126)
+==2587886==    by 0x433BD7: _usb_config_test_setup_mb_usb3_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:122)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== Thread 6:
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x433D17: usb_config_test_setup_mb_usb4 (zephyr/test/rex/tests/screebo/src/usb_config.c:140)
+==2587886==    by 0x433D17: _usb_config_test_setup_mb_usb4_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:136)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== Thread 7:
+==2587886== Conditional jump or move depends on uninitialised value(s)
+==2587886==    at 0x4348EC: hbr_rst_runtime_config (zephyr/program/rex/screebo/src/usb_config.c:176)
+==2587886==    by 0x4411C9: hook_notify (zephyr/shim/src/hooks.c:165)
+==2587886==    by 0x433E25: usb_config_test_setup_usb_db_error_reading_cbi (zephyr/test/rex/tests/screebo/src/usb_config.c:153)
+==2587886==    by 0x433E25: _usb_config_test_setup_usb_db_error_reading_cbi_wrapper (zephyr/test/rex/tests/screebo/src/usb_config.c:149)
+==2587886==    by 0x43B062: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2587886==    by 0x43B062: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2587886==    by 0x434F46: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2587886==    by 0x439F3D: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2587886==    by 0x4482E9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2587886==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2587886==    by 0x4ABAC05: clone (clone.S:107)
+==2587886== 
+==2587886== 
+==2587886== HEAP SUMMARY:
+==2587886==     in use at exit: 3,680 bytes in 7 blocks
+==2587886==   total heap usage: 21 allocs, 14 frees, 14,382 bytes allocated
+==2587886== 
+==2587886== LEAK SUMMARY:
+==2587886==    definitely lost: 0 bytes in 0 blocks
+==2587886==    indirectly lost: 0 bytes in 0 blocks
+==2587886==      possibly lost: 544 bytes in 4 blocks
+==2587886==    still reachable: 3,136 bytes in 3 blocks
+==2587886==         suppressed: 0 bytes in 0 blocks
+==2587886== Rerun with --leak-check=full to see details of leaked memory
+==2587886== 
+==2587886== Use --track-origins=yes to see where uninitialised values come from
+==2587886== For lists of detected and suppressed errors, rerun with: -s
+==2587886== ERROR SUMMARY: 7 errors from 7 contexts (suppressed: 0 from 0)

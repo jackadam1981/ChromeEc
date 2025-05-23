@@ -1,0 +1,63 @@
+==2600975== Memcheck, a memory error detector
+==2600975== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2600975== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2600975== Command: ./drivers/drivers.panic_output/zephyr/zephyr.exe
+==2600975== 
+==2600975== Thread 19:
+==2600975== Invalid read of size 4
+==2600975==    at 0x440604: command_crash (common/panic_output.c:474)
+==2600975==    by 0x46D1E3: crash_thread_worker (zephyr/test/drivers/panic_output/src/panic_output_crash_cmd.c:80)
+==2600975==    by 0x46E752: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600975==    by 0x4766D8: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600975==    by 0x495519: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600975==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600975==    by 0x4ABAC05: clone (clone.S:107)
+==2600975==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==2600975== 
+==2600975== Invalid read of size 4
+==2600975==    at 0x440604: command_crash (common/panic_output.c:474)
+==2600975==    by 0x4404D2: command_crash_nested_handler (common/panic_output.c:410)
+==2600975==    by 0x46D228: nested_crash_thread_worker (zephyr/test/drivers/panic_output/src/panic_output_crash_cmd.c:98)
+==2600975==    by 0x46E752: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600975==    by 0x4766D8: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600975==    by 0x495519: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600975==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600975==    by 0x4ABAC05: clone (clone.S:107)
+==2600975==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==2600975== 
+==2600975== Invalid read of size 4
+==2600975==    at 0x4406AB: command_crash (common/panic_output.c:450)
+==2600975==    by 0x46D1E3: crash_thread_worker (zephyr/test/drivers/panic_output/src/panic_output_crash_cmd.c:80)
+==2600975==    by 0x46E752: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600975==    by 0x4766D8: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600975==    by 0x495519: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600975==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600975==    by 0x4ABAC05: clone (clone.S:107)
+==2600975==  Address 0xcdef is not stack'd, malloc'd or (recently) free'd
+==2600975== 
+==2600975== Invalid read of size 4
+==2600975==    at 0x4406AB: command_crash (common/panic_output.c:450)
+==2600975==    by 0x4404D2: command_crash_nested_handler (common/panic_output.c:410)
+==2600975==    by 0x46D228: nested_crash_thread_worker (zephyr/test/drivers/panic_output/src/panic_output_crash_cmd.c:98)
+==2600975==    by 0x46E752: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600975==    by 0x4766D8: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600975==    by 0x495519: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600975==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600975==    by 0x4ABAC05: clone (clone.S:107)
+==2600975==  Address 0xcdef is not stack'd, malloc'd or (recently) free'd
+==2600975== 
+==2600975== 
+==2600975== HEAP SUMMARY:
+==2600975==     in use at exit: 6,488 bytes in 6 blocks
+==2600975==   total heap usage: 35 allocs, 29 frees, 19,406 bytes allocated
+==2600975== 
+==2600975== LEAK SUMMARY:
+==2600975==    definitely lost: 0 bytes in 0 blocks
+==2600975==    indirectly lost: 0 bytes in 0 blocks
+==2600975==      possibly lost: 280 bytes in 2 blocks
+==2600975==    still reachable: 6,208 bytes in 4 blocks
+==2600975==         suppressed: 0 bytes in 0 blocks
+==2600975== Rerun with --leak-check=full to see details of leaked memory
+==2600975== 
+==2600975== For lists of detected and suppressed errors, rerun with: -s
+==2600975== ERROR SUMMARY: 11 errors from 4 contexts (suppressed: 0 from 0)

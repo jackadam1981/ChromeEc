@@ -1,0 +1,46 @@
+==2594083== Memcheck, a memory error detector
+==2594083== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2594083== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2594083== Command: ./drivers/drivers.cbi_flash.from_eeprom/zephyr/zephyr.exe
+==2594083== 
+==2594083== Thread 3:
+==2594083== Conditional jump or move depends on uninitialised value(s)
+==2594083==    at 0x48A528: is_valid_cbi (zephyr/shim/src/cbi/cbi_transfer.c:22)
+==2594083==    by 0x48A528: cros_cbi_transfer_eeprom_to_flash (zephyr/shim/src/cbi/cbi_transfer.c:58)
+==2594083==    by 0x48A411: cros_cbi_ec_init (zephyr/shim/src/cbi/cros_cbi.c:16)
+==2594083==    by 0x48E6B1: z_sys_init_run_level (third_party/zephyr/main/kernel/init.c:377)
+==2594083==    by 0x48E6B1: bg_thread_main (third_party/zephyr/main/kernel/init.c:540)
+==2594083==    by 0x46D552: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2594083==    by 0x4754D8: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2594083==    by 0x494409: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2594083==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2594083==    by 0x4ABAC05: clone (clone.S:107)
+==2594083== 
+==2594083== Conditional jump or move depends on uninitialised value(s)
+==2594083==    at 0x48A592: is_valid_cbi (zephyr/shim/src/cbi/cbi_transfer.c:22)
+==2594083==    by 0x48A592: cros_cbi_transfer_eeprom_to_flash (zephyr/shim/src/cbi/cbi_transfer.c:64)
+==2594083==    by 0x48A411: cros_cbi_ec_init (zephyr/shim/src/cbi/cros_cbi.c:16)
+==2594083==    by 0x48E6B1: z_sys_init_run_level (third_party/zephyr/main/kernel/init.c:377)
+==2594083==    by 0x48E6B1: bg_thread_main (third_party/zephyr/main/kernel/init.c:540)
+==2594083==    by 0x46D552: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2594083==    by 0x4754D8: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2594083==    by 0x494409: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2594083==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2594083==    by 0x4ABAC05: clone (clone.S:107)
+==2594083== 
+==2594083== 
+==2594083== HEAP SUMMARY:
+==2594083==     in use at exit: 3,704 bytes in 7 blocks
+==2594083==   total heap usage: 33 allocs, 26 frees, 16,190 bytes allocated
+==2594083== 
+==2594083== LEAK SUMMARY:
+==2594083==    definitely lost: 0 bytes in 0 blocks
+==2594083==    indirectly lost: 0 bytes in 0 blocks
+==2594083==      possibly lost: 568 bytes in 4 blocks
+==2594083==    still reachable: 3,136 bytes in 3 blocks
+==2594083==         suppressed: 0 bytes in 0 blocks
+==2594083== Rerun with --leak-check=full to see details of leaked memory
+==2594083== 
+==2594083== Use --track-origins=yes to see where uninitialised values come from
+==2594083== For lists of detected and suppressed errors, rerun with: -s
+==2594083== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

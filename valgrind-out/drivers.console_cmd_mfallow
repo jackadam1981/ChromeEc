@@ -1,0 +1,106 @@
+==2596617== Memcheck, a memory error detector
+==2596617== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2596617== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2596617== Command: ./drivers/drivers.console_cmd_mfallow/zephyr/zephyr.exe
+==2596617== 
+==2596617== Thread 2:
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x4449B1: extract_pdo_helper (common/usbc_utils.c:109)
+==2596617==    by 0x44494B: pd_extract_pdo_power (common/usbc_utils.c:150)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x4449B9: extract_pdo_helper (common/usbc_utils.c:112)
+==2596617==    by 0x44494B: pd_extract_pdo_power (common/usbc_utils.c:150)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x4449FF: extract_pdo_helper (common/usbc_utils.c:123)
+==2596617==    by 0x44494B: pd_extract_pdo_power (common/usbc_utils.c:150)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x444A03: extract_pdo_helper (common/usbc_utils.c:129)
+==2596617==    by 0x44494B: pd_extract_pdo_power (common/usbc_utils.c:150)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x444A0B: extract_pdo_helper (common/usbc_utils.c:131)
+==2596617==    by 0x44494B: pd_extract_pdo_power (common/usbc_utils.c:150)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x444952: pd_extract_pdo_power (common/usbc_utils.c:152)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x444961: pd_extract_pdo_power (common/usbc_utils.c:155)
+==2596617==    by 0x430718: charge_manager_refresh (common/charge_manager.c:1056)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== Conditional jump or move depends on uninitialised value(s)
+==2596617==    at 0x430725: charge_manager_refresh (common/charge_manager.c:1059)
+==2596617==    by 0x492C7F: work_queue_main (third_party/zephyr/main/kernel/work.c:684)
+==2596617==    by 0x46DB32: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2596617==    by 0x475C18: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2596617==    by 0x4978F9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2596617==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2596617==    by 0x4ABAC05: clone (clone.S:107)
+==2596617== 
+==2596617== 
+==2596617== HEAP SUMMARY:
+==2596617==     in use at exit: 3,974 bytes in 24 blocks
+==2596617==   total heap usage: 526 allocs, 502 frees, 28,108 bytes allocated
+==2596617== 
+==2596617== LEAK SUMMARY:
+==2596617==    definitely lost: 396 bytes in 9 blocks
+==2596617==    indirectly lost: 18 bytes in 9 blocks
+==2596617==      possibly lost: 424 bytes in 3 blocks
+==2596617==    still reachable: 3,136 bytes in 3 blocks
+==2596617==         suppressed: 0 bytes in 0 blocks
+==2596617== Rerun with --leak-check=full to see details of leaked memory
+==2596617== 
+==2596617== Use --track-origins=yes to see where uninitialised values come from
+==2596617== For lists of detected and suppressed errors, rerun with: -s
+==2596617== ERROR SUMMARY: 96 errors from 8 contexts (suppressed: 0 from 0)

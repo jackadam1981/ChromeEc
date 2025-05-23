@@ -1,0 +1,86 @@
+==2600293== Memcheck, a memory error detector
+==2600293== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2600293== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2600293== Command: ./drivers/drivers.one_wire_uart.keyboard/zephyr/zephyr.exe
+==2600293== 
+==2600293== Thread 19:
+==2600293== Conditional jump or move depends on uninitialised value(s)
+==2600293==    at 0x47F461: checksum (zephyr/drivers/one_wire_uart/one_wire_uart.c:45)
+==2600293==    by 0x47F461: one_wire_uart_send (zephyr/drivers/one_wire_uart/one_wire_uart.c:91)
+==2600293==    by 0x48004A: set_touchpad_report (zephyr/drivers/one_wire_uart/keyboard.c:75)
+==2600293==    by 0x46D986: one_wire_uart_keyboard_test_touchpad_event (zephyr/test/drivers/one_wire_uart/src/keyboard.c:62)
+==2600293==    by 0x46D986: _one_wire_uart_keyboard_test_touchpad_event_wrapper (zephyr/test/drivers/one_wire_uart/src/keyboard.c:56)
+==2600293==    by 0x477DD8: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2600293==    by 0x477DD8: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2600293==    by 0x46E9F2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600293==    by 0x476A98: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600293==    by 0x4971B9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600293==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600293==    by 0x4ABAC05: clone (clone.S:107)
+==2600293== 
+==2600293== Conditional jump or move depends on uninitialised value(s)
+==2600293==    at 0x47F47D: checksum (zephyr/drivers/one_wire_uart/one_wire_uart.c:45)
+==2600293==    by 0x47F47D: one_wire_uart_send (zephyr/drivers/one_wire_uart/one_wire_uart.c:91)
+==2600293==    by 0x48004A: set_touchpad_report (zephyr/drivers/one_wire_uart/keyboard.c:75)
+==2600293==    by 0x46D986: one_wire_uart_keyboard_test_touchpad_event (zephyr/test/drivers/one_wire_uart/src/keyboard.c:62)
+==2600293==    by 0x46D986: _one_wire_uart_keyboard_test_touchpad_event_wrapper (zephyr/test/drivers/one_wire_uart/src/keyboard.c:56)
+==2600293==    by 0x477DD8: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2600293==    by 0x477DD8: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2600293==    by 0x46E9F2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600293==    by 0x476A98: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600293==    by 0x4971B9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600293==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600293==    by 0x4ABAC05: clone (clone.S:107)
+==2600293== 
+==2600293== Conditional jump or move depends on uninitialised value(s)
+==2600293==    at 0x484FFF2: bcmp (in /usr/libexec/valgrind/vgpreload_memcheck-x86-linux.so)
+==2600293==    by 0x46DA3C: one_wire_uart_keyboard_test_touchpad_event (zephyr/test/drivers/one_wire_uart/src/keyboard.c:66)
+==2600293==    by 0x46DA3C: _one_wire_uart_keyboard_test_touchpad_event_wrapper (zephyr/test/drivers/one_wire_uart/src/keyboard.c:56)
+==2600293==    by 0x477DD8: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2600293==    by 0x477DD8: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2600293==    by 0x46E9F2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600293==    by 0x476A98: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600293==    by 0x4971B9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600293==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600293==    by 0x4ABAC05: clone (clone.S:107)
+==2600293== 
+==2600293== Conditional jump or move depends on uninitialised value(s)
+==2600293==    at 0x484FFE2: bcmp (in /usr/libexec/valgrind/vgpreload_memcheck-x86-linux.so)
+==2600293==    by 0x46DA3C: one_wire_uart_keyboard_test_touchpad_event (zephyr/test/drivers/one_wire_uart/src/keyboard.c:66)
+==2600293==    by 0x46DA3C: _one_wire_uart_keyboard_test_touchpad_event_wrapper (zephyr/test/drivers/one_wire_uart/src/keyboard.c:56)
+==2600293==    by 0x477DD8: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2600293==    by 0x477DD8: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2600293==    by 0x46E9F2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600293==    by 0x476A98: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600293==    by 0x4971B9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600293==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600293==    by 0x4ABAC05: clone (clone.S:107)
+==2600293== 
+==2600293== Conditional jump or move depends on uninitialised value(s)
+==2600293==    at 0x46AA18: z_zassert (third_party/zephyr/main/subsys/testsuite/ztest/include/zephyr/ztest_assert.h:82)
+==2600293==    by 0x46DA63: one_wire_uart_keyboard_test_touchpad_event (zephyr/test/drivers/one_wire_uart/src/keyboard.c:66)
+==2600293==    by 0x46DA63: _one_wire_uart_keyboard_test_touchpad_event_wrapper (zephyr/test/drivers/one_wire_uart/src/keyboard.c:56)
+==2600293==    by 0x477DD8: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2600293==    by 0x477DD8: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2600293==    by 0x46E9F2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2600293==    by 0x476A98: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2600293==    by 0x4971B9: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2600293==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2600293==    by 0x4ABAC05: clone (clone.S:107)
+==2600293== 
+==2600293== 
+==2600293== HEAP SUMMARY:
+==2600293==     in use at exit: 3,996 bytes in 10 blocks
+==2600293==   total heap usage: 35 allocs, 25 frees, 16,338 bytes allocated
+==2600293== 
+==2600293== LEAK SUMMARY:
+==2600293==    definitely lost: 4 bytes in 1 blocks
+==2600293==    indirectly lost: 0 bytes in 0 blocks
+==2600293==      possibly lost: 856 bytes in 6 blocks
+==2600293==    still reachable: 3,136 bytes in 3 blocks
+==2600293==         suppressed: 0 bytes in 0 blocks
+==2600293== Rerun with --leak-check=full to see details of leaked memory
+==2600293== 
+==2600293== Use --track-origins=yes to see where uninitialised values come from
+==2600293== For lists of detected and suppressed errors, rerun with: -s
+==2600293== ERROR SUMMARY: 46 errors from 5 contexts (suppressed: 0 from 0)

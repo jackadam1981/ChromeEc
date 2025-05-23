@@ -1,0 +1,61 @@
+==2602892== Memcheck, a memory error detector
+==2602892== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2602892== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2602892== Command: ./krabby/krabby.chinchou/zephyr/zephyr.exe
+==2602892== 
+==2602892== Thread 3:
+==2602892== Conditional jump or move depends on uninitialised value(s)
+==2602892==    at 0x4410E2: board_setup_init (zephyr/program/corsola/chinchou/src/board.c:35)
+==2602892==    by 0x45234E: hook_notify (zephyr/shim/src/hooks.c:165)
+==2602892==    by 0x440B5A: reset (zephyr/test/krabby/src/board_chinchou.c:37)
+==2602892==    by 0x440A36: alt_sensor_no_use_setup (zephyr/test/krabby/src/board_chinchou.c:184)
+==2602892==    by 0x449104: z_ztest_run_test_suite_ptr (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:839)
+==2602892==    by 0x4494ED: __ztest_run_test_suite (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1051)
+==2602892==    by 0x4494ED: z_impl_ztest_run_test_suites (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1097)
+==2602892==    by 0x44962F: ztest_run_all (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1177)
+==2602892==    by 0x44962F: test_main (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1185)
+==2602892==    by 0x449654: main (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1446)
+==2602892== 
+==2602892== Conditional jump or move depends on uninitialised value(s)
+==2602892==    at 0x4410E2: board_setup_init (zephyr/program/corsola/chinchou/src/board.c:35)
+==2602892==    by 0x45234E: hook_notify (zephyr/shim/src/hooks.c:165)
+==2602892==    by 0x440B5A: reset (zephyr/test/krabby/src/board_chinchou.c:37)
+==2602892==    by 0x4408C1: alt_sensor_use_setup (zephyr/test/krabby/src/board_chinchou.c:149)
+==2602892==    by 0x449104: z_ztest_run_test_suite_ptr (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:839)
+==2602892==    by 0x4494ED: __ztest_run_test_suite (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1051)
+==2602892==    by 0x4494ED: z_impl_ztest_run_test_suites (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1097)
+==2602892==    by 0x44962F: ztest_run_all (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1177)
+==2602892==    by 0x44962F: test_main (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1185)
+==2602892==    by 0x449654: main (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:1446)
+==2602892== 
+==2602892== Thread 16:
+==2602892== Conditional jump or move depends on uninitialised value(s)
+==2602892==    at 0x441535: charger_profile_override (zephyr/program/corsola/chinchou/src/thermal.c:187)
+==2602892==    by 0x44105C: wait_heat_stable (zephyr/test/krabby/src/temp_chinchou.c:29)
+==2602892==    by 0x440F20: test_table (zephyr/test/krabby/src/temp_chinchou.c:52)
+==2602892==    by 0x440F20: temp_current_test_current_limit_in_each_zone (zephyr/test/krabby/src/temp_chinchou.c:82)
+==2602892==    by 0x440F20: _temp_current_test_current_limit_in_each_zone_wrapper (zephyr/test/krabby/src/temp_chinchou.c:59)
+==2602892==    by 0x44997A: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2602892==    by 0x44997A: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2602892==    by 0x441CC2: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2602892==    by 0x4487F5: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2602892==    by 0x459F59: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2602892==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2602892==    by 0x4ABAC05: clone (clone.S:107)
+==2602892== 
+==2602892== 
+==2602892== HEAP SUMMARY:
+==2602892==     in use at exit: 3,560 bytes in 6 blocks
+==2602892==   total heap usage: 30 allocs, 24 frees, 15,694 bytes allocated
+==2602892== 
+==2602892== LEAK SUMMARY:
+==2602892==    definitely lost: 0 bytes in 0 blocks
+==2602892==    indirectly lost: 0 bytes in 0 blocks
+==2602892==      possibly lost: 424 bytes in 3 blocks
+==2602892==    still reachable: 3,136 bytes in 3 blocks
+==2602892==         suppressed: 0 bytes in 0 blocks
+==2602892== Rerun with --leak-check=full to see details of leaked memory
+==2602892== 
+==2602892== Use --track-origins=yes to see where uninitialised values come from
+==2602892== For lists of detected and suppressed errors, rerun with: -s
+==2602892== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

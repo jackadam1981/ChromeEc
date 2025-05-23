@@ -1,0 +1,34 @@
+==2585951== Memcheck, a memory error detector
+==2585951== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2585951== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2585951== Command: ./rex/rex.kanix.keyboard/zephyr/zephyr.exe
+==2585951== 
+==2585951== Thread 7:
+==2585951== Conditional jump or move depends on uninitialised value(s)
+==2585951==    at 0x40E2C1: kb_init (zephyr/program/rex/kanix/src/keyboard.c:31)
+==2585951==    by 0x40E210: kanix_keyboard_test_keyboard_type_init_error (zephyr/test/rex/tests/kanix/src/keyboard.c:62)
+==2585951==    by 0x40E210: _kanix_keyboard_test_keyboard_type_init_error_wrapper (zephyr/test/rex/tests/kanix/src/keyboard.c:59)
+==2585951==    by 0x4142F8: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2585951==    by 0x4142F8: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2585951==    by 0x40E4EA: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2585951==    by 0x4131D3: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2585951==    by 0x41D869: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2585951==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2585951==    by 0x4ABAC05: clone (clone.S:107)
+==2585951== 
+==2585951== 
+==2585951== HEAP SUMMARY:
+==2585951==     in use at exit: 3,680 bytes in 7 blocks
+==2585951==   total heap usage: 21 allocs, 14 frees, 14,374 bytes allocated
+==2585951== 
+==2585951== LEAK SUMMARY:
+==2585951==    definitely lost: 0 bytes in 0 blocks
+==2585951==    indirectly lost: 0 bytes in 0 blocks
+==2585951==      possibly lost: 544 bytes in 4 blocks
+==2585951==    still reachable: 3,136 bytes in 3 blocks
+==2585951==         suppressed: 0 bytes in 0 blocks
+==2585951== Rerun with --leak-check=full to see details of leaked memory
+==2585951== 
+==2585951== Use --track-origins=yes to see where uninitialised values come from
+==2585951== For lists of detected and suppressed errors, rerun with: -s
+==2585951== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

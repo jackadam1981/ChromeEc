@@ -1,0 +1,38 @@
+==2584467== Memcheck, a memory error detector
+==2584467== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==2584467== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==2584467== Command: ./krabby/krabby.starmie/zephyr/zephyr.exe
+==2584467== 
+==2584467== Thread 13:
+==2584467== Conditional jump or move depends on uninitialised value(s)
+==2584467==    at 0x43F21B: charger_profile_override (zephyr/program/corsola/starmie/src/thermal.c:144)
+==2584467==    by 0x43F0C3: wait_heat_stable (zephyr/test/krabby/src/temp_starmie.c:25)
+==2584467==    by 0x43EFC7: test_table (zephyr/test/krabby/src/temp_starmie.c:44)
+==2584467==    by 0x43EFC7: temp_current_test_current_limit_in_each_zone (zephyr/test/krabby/src/temp_starmie.c:84)
+==2584467==    by 0x43EFC7: _temp_current_test_current_limit_in_each_zone_wrapper (zephyr/test/krabby/src/temp_starmie.c:51)
+==2584467==    by 0x4475C3: run_test_functions (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:328)
+==2584467==    by 0x4475C3: test_cb (third_party/zephyr/main/subsys/testsuite/ztest/src/ztest.c:664)
+==2584467==    by 0x43F98B: z_thread_entry (third_party/zephyr/main/lib/os/thread_entry.c:48)
+==2584467==    by 0x446475: posix_arch_thread_entry (third_party/zephyr/main/arch/posix/core/thread.c:96)
+==2584467==    by 0x456B09: nct_thread_starter (third_party/zephyr/main/scripts/native_simulator/common/src/nct.c:290)
+==2584467==    by 0x4A24780: start_thread (pthread_create.c:448)
+==2584467==    by 0x4ABAC05: clone (clone.S:107)
+==2584467== 
+Error on: nce_sem_rewait(&this->sem_hw)
+Programming error on: This CPU was already halted
+ ==2584467== 
+==2584467== HEAP SUMMARY:
+==2584467==     in use at exit: 3,272 bytes in 4 blocks
+==2584467==   total heap usage: 28 allocs, 24 frees, 19,342 bytes allocated
+==2584467== 
+==2584467== LEAK SUMMARY:
+==2584467==    definitely lost: 0 bytes in 0 blocks
+==2584467==    indirectly lost: 0 bytes in 0 blocks
+==2584467==      possibly lost: 136 bytes in 1 blocks
+==2584467==    still reachable: 3,136 bytes in 3 blocks
+==2584467==         suppressed: 0 bytes in 0 blocks
+==2584467== Rerun with --leak-check=full to see details of leaked memory
+==2584467== 
+==2584467== Use --track-origins=yes to see where uninitialised values come from
+==2584467== For lists of detected and suppressed errors, rerun with: -s
+==2584467== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
