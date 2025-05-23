@@ -22,6 +22,30 @@
       },
       "revId": "c26cc5a42fd3119bf42ed1beb54a2b4a2f2a953e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872affcb_5afe4fe3",
+        "filename": "zephyr/program/brox/brtk/brtk.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T22:34:02Z",
+      "side": 1,
+      "message": "Correction - add this to zephyr/boards/google/realtek/reaktek.dtsi",
+      "parentUuid": "bc8a3893_b07ffb47",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "c26cc5a42fd3119bf42ed1beb54a2b4a2f2a953e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
