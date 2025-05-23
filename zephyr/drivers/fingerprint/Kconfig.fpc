@@ -15,7 +15,7 @@ if FINGERPRINT_SENSOR_FPC1025
 
 config FINGERPRINT_SENSOR_FPC1025_HEAP_SIZE
 	int "Size of heap for FPC1025 driver"
-	default 65536
+	default 35536
 	help
 	  Size of heap to be used by FPC private library. The heap must have
 	  enough size to keep finger templates during matching.

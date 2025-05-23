@@ -32,7 +32,7 @@ config FP_ALGORITHM_TEMPLATE_SIZE
 
 config FP_MAX_FINGER_COUNT
 	  int "Maximum number of loaded finger templates"
-	  default 5 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
+	  default 3 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	  default 5 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
 	  default 5
 	  help

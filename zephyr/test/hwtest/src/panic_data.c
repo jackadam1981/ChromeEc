@@ -7,8 +7,6 @@
 #include "panic.h"
 #include "system.h"
 
-#include <stdlib.h>
-
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/__assert.h>
 
