@@ -1376,7 +1376,7 @@ static int command_flash_wp(int argc, const char **argv)
 {
 	int val;
 
-	if (argc < 2)
+	if (argc != 2)
 		return EC_ERROR_PARAM_COUNT;
 
 	if (!strcasecmp(argv[1], "now"))
