@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b696fb74_711bd083",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T16:53:33Z",
+      "side": 1,
+      "message": "I see Abe asked for this and this will be followed up on b/419461296",
+      "parentUuid": "02161c42_9326ad19",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 68
+      },
+      "revId": "0d46ae408926dd9665937676ee64d1e4a6bc0dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57dc6248_daa7a56a",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-05-23T16:50:37Z",
       "side": 1,
       "message": "Use `MIN(cable_usb4_speed, max_board_speed)`",
+      "range": {
+        "startLine": 384,
+        "startChar": 18,
+        "endLine": 386,
+        "endChar": 0
+      },
+      "revId": "0d46ae408926dd9665937676ee64d1e4a6bc0dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f17d49_1f511103",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-23T16:53:33Z",
+      "side": 1,
+      "message": "Minor nit and this doesn\u0027t need to block this CL.",
+      "parentUuid": "57dc6248_daa7a56a",
       "range": {
         "startLine": 384,
         "startChar": 18,
