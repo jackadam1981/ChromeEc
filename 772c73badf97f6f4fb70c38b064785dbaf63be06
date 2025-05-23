@@ -16,6 +16,24 @@
       "message": "could help fullcheckout-presubmit miss something?",
       "revId": "772c73badf97f6f4fb70c38b064785dbaf63be06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43883b4_21a4c4d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-05-23T08:51:40Z",
+      "side": 1,
+      "message": "```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      17:57:08: WARNING: board/moxie/led.c: needs formatting\n      17:57:40: NOTICE: You can fix formatting errors by running:\n        cros format board/moxie/led.c\n```\n\ncan you try that command? if it does not fix it up there\u0027s something wrong with your local setup",
+      "parentUuid": "92e32c3b_3440b364",
+      "revId": "772c73badf97f6f4fb70c38b064785dbaf63be06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
