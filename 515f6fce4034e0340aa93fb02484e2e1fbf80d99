@@ -292,6 +292,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baab7604_28c55030",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2025-05-23T13:39:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4617eea1_d821f4f3",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e347c75_ff445f5c",
@@ -305,6 +323,24 @@
       "writtenOn": "2025-04-10T04:05:05Z",
       "side": 1,
       "message": "setting scale is missing.",
+      "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c41751_b7428460",
+        "filename": "driver/als_cm36781.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 3352538
+      },
+      "writtenOn": "2025-05-23T13:39:03Z",
+      "side": 1,
+      "message": "Is setting scale required?",
+      "parentUuid": "7e347c75_ff445f5c",
       "revId": "515f6fce4034e0340aa93fb02484e2e1fbf80d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
