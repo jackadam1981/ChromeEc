@@ -289,6 +289,7 @@ class CompareBuilds:
             "brox-ish",
             "ptl-ish",
             "trulo-ish",
+            "uldrenite-ish",
         }
 
         output_dir1 = self.checkouts[0].modules_dir / output_path
