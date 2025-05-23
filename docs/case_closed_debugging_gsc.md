@@ -47,39 +47,42 @@ Capability Setting | Privilege Level Required
 The default GSC privilege level is [`Locked`] with the following capability
 settings:
 
-Capability        | Default    | Function
------------------ | ---------- | --------
-`UartGscRxAPTx`   | `Always`   | AP console read access
-`UartGscTxAPRx`   | `Always`   | AP console write access
-`UartGscRxECTx`   | `Always`   | EC console read access
-`UartGscTxECRx`   | `IfOpened` | EC console write access
-[`FlashAP`]       | `IfOpened` | Allows flashing the AP
-[`FlashEC`]       | `IfOpened` | Allows flashing the EC
-[`OverrideWP`]    | `IfOpened` | Override hardware write protect
-`RebootECAP`      | `IfOpened` | Allow rebooting the EC/AP from the GSC console
-`GscFullConsole`  | `IfOpened` | Allow access to restricted GSC console commands
-`UnlockNoReboot`  | `Always`   | Allow unlocking GSC without rebooting the AP
-`UnlockNoShortPP` | `Always`   | Allow unlocking GSC without physical presence
-`OpenNoTPMWipe`   | `IfOpened` | Allow opening GSC without wiping the TPM
-`OpenNoLongPP`    | `IfOpened` | Allow opening GSC without physical presence
-`BatteryBypassPP` | `Always`   | Allow opening GSC without physical presence and developer mode if the battery is removed
-`Unused`          | `Always`   | Doesn't do anything
-`I2C`             | `IfOpened` | Allow access to the I2C controller (used for measuring power)
-`FlashRead`       | `Always`   | Allow dumping a hash of the AP or EC flash
-`OpenNoDevMode`   | `IfOpened` | Allow opening GSC without developer mode
-`OpenFromUSB`     | `IfOpened` | Allow opening GSC from USB
+Capability         | Default    | Function
+------------------ | ---------- | --------
+`UartGscRxAPTx`    | `Always`   | AP console read access
+`UartGscTxAPRx`    | `Always`   | AP console write access
+`UartGscRxECTx`    | `Always`   | EC console read access
+`UartGscTxECRx`    | `IfOpened` | EC console write access
+`UartGscRxFpmcuTx` | `Always`   | FPMCU console read access (Ti50 only)
+`UartGscTxFpmcuRx` | `IfOpened` | FPMCU console write access (Ti50 only)
+[`FlashAP`]        | `IfOpened` | Allows flashing the AP
+[`FlashEC`]        | `IfOpened` | Allows flashing the EC
+[`OverrideWP`]     | `IfOpened` | Override hardware write protect
+`RebootECAP`       | `IfOpened` | Allow rebooting the EC/AP from the GSC console
+`GscFullConsole`   | `IfOpened` | Allow access to restricted GSC console commands
+`UnlockNoReboot`   | `Always`   | Allow unlocking GSC without rebooting the AP
+`UnlockNoShortPP`  | `Always`   | Allow unlocking GSC without physical presence
+`OpenNoTPMWipe`    | `IfOpened` | Allow opening GSC without wiping the TPM
+`OpenNoLongPP`     | `IfOpened` | Allow opening GSC without physical presence
+`BatteryBypassPP`  | `Always`   | Allow opening GSC without physical presence and developer mode if the battery is removed
+`Unused`           | `Always`   | Doesn't do anything
+`I2C`              | `IfOpened` | Allow access to the I2C controller (used for measuring power)
+`FlashRead`        | `Always`   | Allow dumping a hash of the AP or EC flash
+`OpenNoDevMode`    | `IfOpened` | Allow opening GSC without developer mode
+`OpenFromUSB`      | `IfOpened` | Allow opening GSC from USB
 
 ## Consoles {#consoles}
 
-GSC presents 3 consoles through CCD: AP, EC, and GSC, each of which show up on
-your host machine as a `/dev/ttyUSBX` device when a debug cable ([Suzy-Q] or
-[Type-C Servo v4]) is plugged in to the DUT.
+GSC presents 4 consoles through CCD: AP, EC, FPMCU and GSC, each of which show
+up on your host machine as a `/dev/ttyUSBX` device when a debug cable ([Suzy-Q]
+or [Type-C Servo v4]) is plugged in to the DUT.
 
-Console | Default access                              | Capability Name
-------- | ------------------------------------------- | ---------------
-GSC     | always read/write, but commands are limited | `GscFullConsole` enables the full set of GSC console commands
-AP      | read/write                                  | `UartGscRxAPTx` / `UartGscTxAPRx`
-EC      | read-only                                   | `UartGscRxECTx` / `UartGscTxECRx`
+Console           | Default access                              | Capability Name
+----------------- | ------------------------------------------- | ---------------
+GSC               | always read/write, but commands are limited | `GscFullConsole` enables the full set of GSC console commands
+AP                | read/write                                  | `UartGscRxAPTx` / `UartGscTxAPRx`
+EC                | read-only                                   | `UartGscRxECTx` / `UartGscTxECRx`
+FPMCU (Ti50 only) | read-only                                   | `UartGscRxFpmcuTx` / `UartGscTxFpmcuRx`
 
 ### Connecting to a Console
 
@@ -115,6 +118,11 @@ use the [`usb_console`] command to connect to Cr50 (`18d1:5014`) or Ti50
 (chroot) $ sudo usb_console -d 18d1:504a -i 2
 ```
 
+```bash
+# Connect to FPMCU console (on Ti50-based device only)
+(chroot) $ sudo usb_console -d 18d1:504a -i 6
+```
+
 #### Using "servod" to access the console
 
 [`servod`] can be used to create alternative console devices when combined with
@@ -131,7 +139,7 @@ Next, start [`servod`]:
 Then use `dut-control` to display the console devices:
 
 ```bash
-(chroot) $ dut-control gsc_uart_pty ec_uart_pty cpu_uart_pty
+(chroot) $ dut-control gsc_uart_pty ec_uart_pty cpu_uart_pty fpmcu_uart_pty
 ```
 
 Connect to the console devices with your favorite terminal program (e.g.,
@@ -414,7 +422,11 @@ If you suspect the board you are using has this issue, you can try this:
 
 ## Control Hardware Write Protect {#hw-wp}
 
-Control of hardware write protect is restricted by the `OverrideWP` capability.
+Control of hardware write protect is restricted by CCD capabilities. Cr50
+controls access to wp with the `OverrideWP` capability.
+[Ti50 controls wp][hw-wp-ti50] with the `OverrideWP` capability and
+the `AllowUnverifiedRo` capability.
+
 When the capability is allowed, the hardware write protect setting can be
 controlled with the `wp` command in the GSC console. Otherwise, the hardware
 write protect is determined based on the presence of the battery.
@@ -443,7 +455,7 @@ updated, it crashes, the battery completely drains, the battery is removed, or
 power is otherwise lost.
 
 The `atboot` setting is the state of the write protect when GSC boots; it
-defaults to `follow_batt_pres`.
+defaults to `follow_batt_pres` on Cr50 and `forced enabled` on Ti50.
 
 To change the `atboot` setting, add the `atboot` arg to the end of the `wp`
 command:
@@ -471,6 +483,50 @@ Flash WP: forced disabled  <-- Current hardware write protect state
 `disabled`             | Disabled, following battery presence
 
 ### Special Case Devices
+
+#### Ti50 Device {#hw-wp-ti50}
+
+Ti50 devices force enable WP by default. They do not let you change the WP
+setting until `AllowUnverifiedRo` is set to Always and `OverrideWP` is
+accessible. After `AllowUnverifiedRo` is set to Always, Ti50 will start
+following battery presence to control WP.
+
+Steps to change the Ti50 WP settings
+
+1. [CCD Open]
+
+1. Set AllowUnverifiedRo to Always
+```bash
+(dut) $ gsctool -a -I AllowUnverifiedRo:Always
+Tap the power button when prompted
+or
+(ti50 console) $ ccd set AllowUnverifiedRo Always
+```
+
+1. Check WP. Ti50 will start using `follow_batt_pres` atboot. WP will still
+   be enabled until Ti50 resets.
+```bash
+(dut) $ gsctool -a -w
+Getting WP
+WP: 00000006
+Flash WP: forced enabled
+ at boot: follow_batt_pres
+or
+(ti50 console) $ wp
+wp
+Flash WP: forced enabled
+ at boot: follow_batt_pres
+```
+
+1. If you need it to immediately start following battery presence, you can set
+   it with:
+```bash
+(dut) $ gsctool -a -w follow_batt_pres
+or
+(ti50 console) $ ccd wp follow_batt_pres
+```
+
+#### Bob
 
 Bob devices have a write protect screw in addition to battery presence. The
 write protect screw will force enable write protect until it's removed. If GSC
@@ -631,13 +687,13 @@ To disable:
 ### Updating GSC {#updating-cr50}
 
 Production (`MP`) versions of Cr50 firmware use a [minor version][semver] of
-`3`: `0.3.x`. Production firmware versions `0.3.9` or newer support CCD.
+`5`: `0.5.x`. Production firmware versions `0.3.9` or newer support CCD.
 
 Production (`MP`) versions of Ti50 firmware use a [minor version][semver] of
 `23`: `0.23.x`.
 
-Development (`PrePVT`) versions of Cr50 firmware use a minor version of `4`:
-`0.4.x`. Development firmware versions `0.4.9` or newer support CCD.
+Development (`PrePVT`) versions of Cr50 firmware use a minor version of `6`:
+`0.6.x`. Development firmware versions `0.4.9` or newer support CCD.
 
 Development (`PrePVT`) versions of Ti50 firmware use a minor version of `24`:
 `0.24.x`.
@@ -647,16 +703,21 @@ it is a little easier to CCD [`Open`] PrePVT images. You can't run PrePVT images
 on MP devices, so if you're trying to update to PrePVT and it fails try using
 the MP image.
 
+#### Updating GSC From the AP {#update-gsc-from-ap}
 1.  Flash a test image newer than M66.
 
-1.  Enable [Developer Mode] and connect a debug cable ([`Suzy-Q`] or [`Type-C
-    Servo v4`]).
+1.  Enable [Developer Mode] and connect a debug cable ([Suzy-Q] or [Type-C
+    Servo v4]).
 
 1.  Check the running GSC version with `gsctool`:
 
 ```bash
 (dut) $ sudo gsctool -a -f
 
+...
+device: [H1, DT, NT] <-- The "device" is the GSC chip type.
+                         H1 is a cr50 chip.
+                         DT and NT are ti50 chips.
 ...
 RW 0.4.26  <-- The "RW" version is the one to check
 ```
@@ -666,19 +727,89 @@ RW 0.4.26  <-- The "RW" version is the one to check
 *Production (MP) image*:
 
 ```bash
-(dut) $ sudo gsctool -a /opt/google/cr50/firmware/cr50.bin.prod
-(dut) $ sudo gsctool -a /opt/google/ti50/firmware/ti50.bin.prod
+# Run with all MP images. Gsctool will pick the correct image.
+(dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prod
 ```
 
 *Development (PrePVT) image*:
 
 ```bash
-(dut) $ sudo gsctool -a /opt/google/cr50/firmware/cr50.bin.prepvt
-(dut) $ sudo gsctool -a /opt/google/ti50/firmware/ti50.bin.prepvt
+# Run with all PrePVT images. Gsctool will pick the correct image.
+(dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prepvt
 ```
 
-1.  Check the GSC version again to make sure it's either `0.3.X` or `0.4.X`, or
-    check the Ti50 version again to make sure it's either `0.23.X` or `0.24.X`.
+1.  Check the GSC version again. gsctool prints the chip type after `device:` \
+    Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
+    Ti50 DT version - make sure it's either `0.23.X` or `0.24.X`. \
+    Ti50 NT version - make sure it's either `0.33.X` or `0.34.X`.
+
+#### Updating GSC From the chroot {#update-gsc-from-chroot}
+
+This is very similar to updating from the AP, but don't use "-a" as a gsctool
+arg in the chroot.
+
+1.  Install necessary GSC tools and images. This installs the most recent
+    GSC images in /opt/google/{cr50,ti50}/firmware/
+```bash
+(inside chroot) $ sudo emerge chromeos-ti50 chromeos-cr50
+(inside chroot) $ ls /opt/google/cr50/firmware/
+(inside chroot) $ ls /opt/google/ti50/firmware/
+```
+
+1.  Connect a debug cable ([Suzy-Q] or [Type-C Servo v4]).
+
+1.  Find the GSC serial number. Gsctool will need the device serial number if
+    you have multiple CCD devices connected.
+```
+# Find with servo
+SER=$(dut-control -p $PORT ccd_serialname | cut -d : -f 2)
+
+# Example of how to find the serial with lsusb
+# Disconnect the CCD device
+# List connected devices
+lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.start
+# Connect the CCD device
+lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.end
+# Find the serial of new device
+diff /tmp/gsc.devices*
+```
+
+1.  Check the running GSC version and chip type with `gsctool`. You can drop the
+    `-n $SER` if you only have one CCD device connected.
+
+```bash
+(inside chroot) $ sudo gsctool -f -n $SER
+
+...
+device: [H1, DT, NT] <-- The "device" is the GSC chip type.
+                         H1 is a cr50 chip.
+                         DT and NT are ti50 chips.
+...
+RW 0.4.26  <-- The "RW" version is the one to check
+```
+1.  Update GSC using the firmware in the chroot:
+    Select the correct image based on your dut.
+
+*Production (MP) image*:
+
+```bash
+# Supply all of the MP images. gsctool will select the correct one for the
+# chip
+(inside chroot) $ sudo gsctool -n $SER /opt/google/*50/firmware/*prod
+```
+
+*Development (PrePVT) image*:
+
+```bash
+# Supply all of the PrePVT images. gsctool will select the correct one for the
+# chip
+(inside chroot) $ sudo gsctool -n $SER /opt/google/*/firmware/*prepvt
+```
+
+1.  Check the GSC version again. gsctool prints the chip type after `device:` \
+    Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
+    Ti50 DT version - make sure it's either `0.23.X` or `0.24.X`. \
+    Ti50 NT version - make sure it's either `0.33.X` or `0.34.X`.
 
 ### Speed up Flashing the AP {#speed-up-ap-flash}
 
@@ -749,6 +880,7 @@ by running [`flashrom`] or `futility` from the device bash prompt.
 [cap]: #cap
 [consoles]: #consoles
 [hw-wp]: #hw-wp
+[hw-wp-ti50]: #hw-wp-ti50
 [`flash_ec`]: https://chromium.googlesource.com/chromiumos/platform/ec/+/main/util/flash_ec
 [CCD Open]: #ccd-open
 [`flashrom`]: https://chromium.googlesource.com/chromiumos/third_party/flashrom/+/main/README.chromiumos
