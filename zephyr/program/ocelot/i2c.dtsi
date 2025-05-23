@@ -9,11 +9,34 @@
 
 		i2c_charger {
 			i2c-port = <&charger_i2c>;
-			enum-names = "I2C_PORT_CHARGER";
+			enum-names = "I2C_PORT_CHARGER", "I2C_PORT_BATTERY";
 		};
 		ec_pd_power {
 			i2c-port = <&pd_pow_i2c>;
 			enum-names = "I2C_PORT_PD";
 		};
+	};
+
+	/* TODO: move to a separate file when full PDC support added. */
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger>;
+		};
+	};
+};
+
+&charger_i2c {
+	label = "I2C_CHARGER";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	status = "okay";
+
+	charger: raa489@9 {
+		compatible = "intersil,isl9241";
+		status = "okay";
+		reg = <0x9>;
 	};
 };
