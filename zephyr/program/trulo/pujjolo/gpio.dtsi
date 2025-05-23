@@ -3,7 +3,12 @@
  * found in the LICENSE file.
  */
 
+ #include <cros/integrated_fwid.dtsi>
+
  / {
+	aliases {
+		gpio-wp = &gpio_ec_wp_odl;
+	};
 
 	named-gpios {
 		/delete-node/ acok_od;
@@ -17,7 +22,6 @@
 		/delete-node/ vccin_aux_r_vid1;
 		/delete-node/ imu_int_l;
 		/delete-node/ i2c_ec_pd_int_odl;
-		/delete-node/ voldn_btn_odl;
 		/delete-node/ en_kb_bl;
 		/delete-node/ volup_btn_odl;
 		/delete-node/ voldn_btn_odl;
@@ -83,6 +87,13 @@
 		gpio_pen_detect_odl: pen_detect_odl {
 			gpios = <&gpio9 6 (GPIO_INPUT | GPIO_PULL_UP)>;
 		};
+		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
+			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		/* The legacy system code requires GPIO_ENTERING_RW symbol */
+		gpio_ec_entering_rw: ec_entering_rw {
+			enum-name = "GPIO_ENTERING_RW";
+		};
 	};
 
 	gpio-interrupts {
@@ -91,6 +102,21 @@
 			irq-pin = <&gpio_pen_detect_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "pen_detect_interrupt";
+		};
+		int_power_button: power_button {
+			irq-pin = <&gpio_ec_pwr_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_button_interrupt";
+		};
+		int_lid_open: lid_open {
+			irq-pin = <&gpio_lid_open>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "lid_interrupt";
+		};
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_ec_acok_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
 		};
 	};
 	unused-pins {
@@ -125,4 +151,45 @@
 };
 &gpio_ec_pmc_pd1_int_odl {
 	no-auto-init;
+};
+
+/* Power switch logic input pads */
+/* LID_OPEN_OD */
+&psl_in1_gpd2 {
+	psl-in-mode = "edge";
+	psl-in-pol = "high-rising";
+};
+
+/* EC_PWR_BTN_ODL */
+&psl_in2_gp00 {
+	psl-in-mode = "edge";
+	psl-in-pol = "low-falling";
+};
+
+/* ACOK_EC_OD */
+&psl_in3_gp01 {
+	psl-in-mode = "edge";
+	psl-in-pol = "high-rising";
+};
+
+/* Power domain device controlled by PSL (Power Switch Logic) IO pads */
+&power_ctrl_psl {
+	status = "okay";
+	pinctrl-names = "sleep";
+	pinctrl-0 = <&psl_in1_gpd2 &psl_in2_gp00 &psl_in3_gp01>;
+};
+
+/* The eSPI shim requires this GPIO nodelabel */
+gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_odl {
+};
+
+/* host interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
+
+&sha0 {
+	status = "okay";
 };
