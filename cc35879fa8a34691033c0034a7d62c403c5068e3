@@ -46,6 +46,47 @@
       },
       "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e59df10_7a1f41e4",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-05-23T23:16:25Z",
+      "side": 1,
+      "message": "we should probably not use GPIO20 at all. i don\u0027t think it\u0027s\nconnected. WP is supposed come in on MECC pin 192.\n\nhttps://b.corp.google.com/issues/418282403#comment9",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "3cb48579_e48c4589",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ioex_gpio.dtsi",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
