@@ -26,9 +26,6 @@
 &uart0 {
 	status = "okay";
 	current-speed = <115200>;
-	pinctrl-0 = <&uart_rx_gpio113
-			&uart_tx_gpio114>;
-	pinctrl-names = "default";
 };
 
 &uart0_wrapper {
