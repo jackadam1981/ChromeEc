@@ -526,8 +526,9 @@ void battery_get_params(struct batt_params *batt)
 	if (fake_temperature >= 0)
 		batt_new.temperature = fake_temperature;
 
-	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge) &&
-	    fake_state_of_charge < 0)
+	if (force_bad_soc ||
+	    (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge) &&
+	     fake_state_of_charge < 0))
 		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 
 	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
