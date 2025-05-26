@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "889fd4d79638a1f104952b56e1ad1c614b19725c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0145cd61_663485be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-26T06:12:02Z",
+      "side": 1,
+      "message": "The `rollbackinfo` console command does not give the correct results. If I disable `CONFIG_PLATFORM_EC_USE_ZEPHYR_FLASH_PAGE_LAYOUT` in the `helipilot` prj.conf file, the methodology for `get_rollback_offset` is aligned with the EC approach. With that the value of `CONFIG_FLASH_ERASE_SIZE` is wrong.\n\nI still believe that zephyr is using a different approach and there is something wrong with npcx. Can you please look into this issue \n\nhttps://b.corp.google.com/issues/419592396\n\nI cannot print any logs from flash.c to further debug this issue. I am looking into this.",
+      "revId": "889fd4d79638a1f104952b56e1ad1c614b19725c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
