@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b67ed41_7708e637",
+        "filename": "zephyr/boards/google/realtek/realtek.dtsi",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T18:04:06Z",
+      "side": 1,
+      "message": "CL:6588953",
+      "parentUuid": "3a4e4af4_8decea67",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "8d793e02335f989698f1ac2597fb773873ef09f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc411bde_b61f3781",
