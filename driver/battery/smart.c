@@ -495,6 +495,29 @@ static bool battery_want_charge(struct batt_params *batt)
 	return false;
 }
 
+// Hack to observe under what conditions I can get the OS to report 0 battery charge.
+// (seems like a failed read shouldn't cause it)
+static bool force_bad_soc;
+
+static int command_badsoc(int argc, const char **argv)
+{
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	char *e;
+	int v = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	force_bad_soc = !!v;
+	ccprintf("Bad SoC forced %s\n", force_bad_soc ? "ON" : "OFF");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(badsoc, command_badsoc,
+			"bad (0 = no, other = force reads to fail)",
+			"Hack battery state-of-charge readings");
+
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
@@ -526,8 +549,8 @@ void battery_get_params(struct batt_params *batt)
 	if (fake_temperature >= 0)
 		batt_new.temperature = fake_temperature;
 
-	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge) &&
-	    fake_state_of_charge < 0)
+	if (force_bad_soc || (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge) &&
+	    fake_state_of_charge < 0))
 		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 
 	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
