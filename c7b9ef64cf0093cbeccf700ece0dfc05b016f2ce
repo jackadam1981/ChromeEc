@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3033a13b_41a01c10",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:45:53Z",
+      "side": 1,
+      "message": "Do you mean add this kind of node in rtk_power_signals.dtsi?\n/ {\n    named-gpios {\n        compatible \u003d \"named-gpios\";\n        en_s5_rails: en_s5_rails {\n            gpios \u003d \u003c\u0026gpiof 9 0\u003e;\n        };\n    };\n\n    en_s5_rails_node: en_s5_rails {\n        compatible \u003d \"intel,ap-pwrseq-gpio\";\n        gpios      \u003d \u003c\u0026gpiof 9 0\u003e;\n        output;\n    };\n};",
+      "parentUuid": "fbb40645_45b02175",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89607ec2_7e3fe924",
         "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
         "patchSetId": 16
@@ -277,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "075295f0_d933e7b7",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abb45d8c_8fe4e747",
+      "range": {
+        "startLine": 157,
+        "startChar": 67,
+        "endLine": 157,
+        "endChar": 68
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38fd6b46_d5fdced3",
@@ -290,6 +338,30 @@
       "writtenOn": "2025-05-23T15:51:04Z",
       "side": 1,
       "message": "Create mapping of RTS5912_GPIO_VOLTAGE_1V8 to the common symbol GPIO_VOLTAGE_1P8.\nThis should be added to zephyr/google/boards/realtek/realtek.dtsi\n\n[Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/google/it8xxx2/it8xxx2.dtsi;l\u003d12;drc\u003d566a871677f71c889a9665287a06bbf0933b4c3d)",
+      "range": {
+        "startLine": 113,
+        "startChar": 39,
+        "endLine": 113,
+        "endChar": 63
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806e9c02_9f788ec5",
+        "filename": "zephyr/program/brox/brtk/rtk_power_signals.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38fd6b46_d5fdced3",
       "range": {
         "startLine": 113,
         "startChar": 39,
