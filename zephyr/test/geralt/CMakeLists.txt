@@ -29,4 +29,5 @@ target_sources_ifdef(CONFIG_TEST_CIRI
 	app PRIVATE
 	src/fakes.c
 	src/board_ciri.c
+	src/ciri_usbc.c
 	${PLATFORM_EC_PROGRAM_DIR}/geralt/ciri/src/board_config.c)
