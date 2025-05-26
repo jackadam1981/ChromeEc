@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8835c308_cc53f5a7",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32530f5d_47fe511a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a604ea4_953fb3c1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7157001c_cd3ff239",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a604ea4_953fb3c1",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09220604_36fe6f74",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-05-23T22:24:37Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5631c257_7938619f",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09220604_36fe6f74",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -107,6 +179,30 @@
           ]
         }
       ],
+      "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0263277_e514343c",
+        "filename": "zephyr/program/brox/brtk/rtk_i2c.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T17:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199b4efc_150be971",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
       "revId": "fd4d9a8329b051db30a91f09a4b8f0da852d1e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
