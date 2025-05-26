@@ -842,6 +842,7 @@ static int x86_non_dsx_s5_entry(void *data)
 
 static int x86_non_dsx_s5_run(void *data)
 {
+	LOG_INF("TEST-S5 Timeout Removed!Retain in S5!");
 	/*
 	 * At this point, lower level action handlers of state machine should
 	 * have already checked that required power rails are OK.
@@ -859,6 +860,7 @@ static int x86_non_dsx_s5_run(void *data)
 		return 0;
 	}
 #endif /* CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND */
+#if 0
 	/* S5 inactivity timeout, go to G3 */
 	if (AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout) == 0) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
@@ -866,7 +868,7 @@ static int x86_non_dsx_s5_run(void *data)
 		/* Timer is expired */
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
 	}
-
+#endif
 	return 0;
 }
 
