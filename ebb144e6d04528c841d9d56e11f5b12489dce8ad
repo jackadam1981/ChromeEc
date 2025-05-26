@@ -46,6 +46,30 @@
       },
       "revId": "ebb144e6d04528c841d9d56e11f5b12489dce8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f413ea_213a56d3",
+        "filename": "zephyr/program/bluey/adc.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-26T11:07:54Z",
+      "side": 1,
+      "message": "Updated, based on quenbi board.",
+      "parentUuid": "676c99d1_43f5c629",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "ebb144e6d04528c841d9d56e11f5b12489dce8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
