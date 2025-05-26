@@ -16,6 +16,20 @@
 #define PDO_FIXED_FLAGS \
 	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
 
+static uint32_t max_current_claimed;
+
+static int count_port_bits(uint32_t bitmask)
+{
+	int i, total = 0;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (bitmask & BIT(i))
+			total++;
+	}
+
+	return total;
+}
+
 static const uint32_t pd_src_pdo_1A5[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
@@ -70,6 +84,54 @@ int dpm_get_source_current(const int port)
 		return 1500;
 	else
 		return 500;
+}
+union sido dpm_get_source_info_msg(int port)
+{
+	/* This implementation makes the following simplifying assumptions:
+	 * 1. The TCPM will only ever offer fixed 5V PDOs in its Source Caps.
+	 * 2. The TCPM will only offer 1.5A or 3A PDOs, so it will not be
+	 *    limited by any cable capabilities.
+	 */
+
+	union sido source_info; /* LCOV_EXCL_LINE: b/375430524 */
+	const uint32_t *pdos; /* LCOV_EXCL_LINE: b/375430524 */
+	int pdo_count = dpm_get_source_pdo(&pdos, port);
+
+	source_info.port_type = PD_SOURCE_PORT_CAPABILITY_MANAGED;
+
+	source_info.reserved = 0;
+
+	/* Max PDP: 5V * 3A = 15W*/
+	source_info.port_maximum_pdp = 15;
+
+	/* Reported PDP: voltage * current offered in Source Caps. */
+	if (pdo_count <= 0) {
+		/* This should never happen, but 0 is the most plausible
+		 * default.
+		 */
+		source_info.port_reported_pdp = 0;
+	} else {
+		uint32_t highest_pdo = pdos[pdo_count - 1];
+
+		source_info.port_reported_pdp = PDO_FIXED_VOLTAGE(highest_pdo) *
+						PDO_FIXED_CURRENT(highest_pdo) /
+						1000000;
+	}
+
+	/* Present PDP:
+	 * Max current allocated to this port: Same as max PDP (and also
+	 * reported PDP)
+	 * Max current not fully allocated: Same as max PDP
+	 * Max current otherwise fully allocated: Same as reported PDP
+	 */
+	if (max_current_claimed & BIT(port) ||
+	    count_port_bits(max_current_claimed) < CONFIG_USB_PD_3A_PORTS) {
+		source_info.port_present_pdp = source_info.port_maximum_pdp;
+	} else {
+		source_info.port_present_pdp = source_info.port_reported_pdp;
+	}
+
+	return source_info;
 }
 
 static int port_status[CONFIG_USB_PD_PORT_MAX_COUNT];
