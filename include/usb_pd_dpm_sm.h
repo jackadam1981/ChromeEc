@@ -211,7 +211,7 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len);
  * @param port		USB-C port number
  * @return Source_Info Data Object
  */
-union sido dpm_get_source_info_msg(int port);
+__override_proto union sido dpm_get_source_info_msg(int port);
 
 /*
  * DPM function to handle a received alert message

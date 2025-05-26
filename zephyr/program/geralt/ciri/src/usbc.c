@@ -71,6 +71,51 @@ int dpm_get_source_current(const int port)
 	else
 		return 500;
 }
+union sido dpm_get_source_info_msg(int port)
+{
+	/* This implementation makes the following simplifying assumptions:
+	 * 1. The TCPM will only ever offer fixed 5V PDOs in its Source Caps.
+	 * 2. The TCPM will only offer 1.5A or 3A PDOs, so it will not be
+	 *    limited by any cable capabilities.
+	 */
+
+	union sido source_info; /* LCOV_EXCL_LINE: b/375430524 */
+	const uint32_t *pdos; /* LCOV_EXCL_LINE: b/375430524 */
+	int pdo_count = dpm_get_source_pdo(&pdos, port);
+
+	source_info.sido1.port_type = PD_SOURCE_PORT_CAPABILITY_MANAGED;
+
+	source_info.sido2.port_type = source_info.sido1.port_type;
+
+	source_info.sido1.reserved = source_info.sido2.reserved = 0;
+
+	/* dps port = 0 */
+	source_info.sido2.dps_port = 0;
+
+	/* Max PDP: 5V * 3A = 15W; 5V * 1.5A = 7.5W */
+	source_info.sido2.port_maximum_pdp =
+		(CONFIG_USB_PD_3A_PORTS > 0) ? PD_SIDO2_15W : PD_SIDO2_7_5W;
+
+	/* Max PDP: 5V * 3A = 15W*/
+	source_info.sido1.port_maximum_pdp = 15;
+
+	/* Guaranteed PDP should be 7.5W */
+	source_info.sido2.port_guaranteed_pdp = PD_SIDO2_7_5W;
+
+	/* Reported PDP: voltage * current offered in Source Caps. */
+	uint32_t highest_pdo = pdos[pdo_count - 1];
+
+	source_info.sido1.port_reported_pdp = PDO_FIXED_VOLTAGE(highest_pdo) *
+					      PDO_FIXED_CURRENT(highest_pdo) /
+					      1000000;
+
+	/* Present PDP is the same as reported PDP as ciri can only source 3A
+	 * out of one port */
+	source_info.sido1.port_present_pdp =
+		source_info.sido1.port_reported_pdp;
+
+	return source_info;
+}
 
 static int port_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int port_pre_status[CONFIG_USB_PD_PORT_MAX_COUNT];
