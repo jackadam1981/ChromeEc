@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ed96927_358cc9b8",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-26T18:30:20Z",
+      "side": 1,
+      "message": "```\n/ {\n    named-gpios {\n        compatible \u003d \"named-gpios\";\n        en_s5_rails: en_s5_rails {\n            gpios \u003d \u003c\u0026gpiof 9 0\u003e;\n        };\n    };\n\n    en_s5_rails_node: en_s5_rails {\n        compatible \u003d \"intel,ap-pwrseq-gpio\";\n        gpios      \u003d \u003c\u0026gpiof 9 0\u003e;\n        output;\n    };\n};\n```",
+      "parentUuid": "3033a13b_41a01c10",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89607ec2_7e3fe924",
         "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
         "patchSetId": 16
