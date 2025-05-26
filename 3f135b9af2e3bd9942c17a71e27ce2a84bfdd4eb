@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3e7b02_92bff87e",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-05-26T02:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3160c0_b68e895f",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2036a3a5_6c9a72fa",
@@ -467,6 +491,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78cf0c92_5f4ac0ba",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-05-26T02:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1840dd81_3e5dfffa",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f3de7f3_ba72cd4c",
@@ -551,6 +599,30 @@
       "side": 1,
       "message": "Because we use \"-nostdlib\" as the option for the linker, so we have to add \"memcpy\" function by our own.",
       "parentUuid": "121e9370_15c336fa",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 51
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c09a897_c9c16ad3",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-05-26T02:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4421581e_918c0308",
       "range": {
         "startLine": 266,
         "startChar": 0,
@@ -810,6 +882,30 @@
       "side": 1,
       "message": "We will leave the macros for the register fields。 Thanks！",
       "parentUuid": "b668620c_69e04c58",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "3f135b9af2e3bd9942c17a71e27ce2a84bfdd4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebfe44da_ecce5eef",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/reg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-05-26T02:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f835645b_076d5654",
       "range": {
         "startLine": 25,
         "startChar": 0,
