@@ -58,6 +58,14 @@ static enum ec_error_list isl9241_discharge_on_ac_unsafe(int chgnum,
 							 int enable);
 static enum ec_error_list isl9241_discharge_on_ac_weak_disable(int chgnum);
 
+static int new_charge_current_limit = 2590;
+static int new_max_sys_voltage = 13410;
+static int new_min_sys_voltage = 9000;
+static int new_adapter_current_limit1 = 11800;
+static int new_adapter_current_limit2 = 12800;
+static int new_ac_proc_hot_curr = 14144;
+static int new_dc_proc_hot_curr = 10560;
+
 static inline enum ec_error_list isl9241_read(int chgnum, int offset,
 					      int *value)
 {
@@ -102,11 +110,13 @@ static enum ec_error_list isl9241_set_input_current_limit(int chgnum,
 {
 	int rv;
 	uint16_t reg = AC_CURRENT_TO_REG(input_current);
+	reg = AC_CURRENT_TO_REG(new_adapter_current_limit1);
 
 	rv = isl9241_write(chgnum, ISL9241_REG_ADAPTER_CUR_LIMIT1, reg);
 	if (rv)
 		return rv;
 
+	reg = AC_CURRENT_TO_REG(new_adapter_current_limit2);
 	return isl9241_write(chgnum, ISL9241_REG_ADAPTER_CUR_LIMIT2, reg);
 }
 
@@ -285,10 +295,9 @@ static enum ec_error_list isl9241_set_mode(int chgnum, int mode)
 	 * Charger inhibit
 	 * MinSystemVoltage 0x00h = disables all battery charging
 	 */
-	rv = isl9241_write(chgnum, ISL9241_REG_MIN_SYSTEM_VOLTAGE,
-			   mode & CHARGE_FLAG_INHIBIT_CHARGE ?
-				   0 :
-				   battery_get_info()->voltage_min);
+	rv = isl9241_write(
+		chgnum, ISL9241_REG_MIN_SYSTEM_VOLTAGE,
+		mode & CHARGE_FLAG_INHIBIT_CHARGE ? 0 : new_min_sys_voltage);
 	if (rv)
 		return rv;
 
@@ -317,6 +326,7 @@ static enum ec_error_list isl9241_get_current(int chgnum, int *current)
 
 static enum ec_error_list isl9241_set_current(int chgnum, int current)
 {
+	current = new_charge_current_limit;
 	return isl9241_write(chgnum, ISL9241_REG_CHG_CURRENT_LIMIT,
 			     BC_CURRENT_TO_REG(current));
 }
@@ -328,6 +338,7 @@ static enum ec_error_list isl9241_get_voltage(int chgnum, int *voltage)
 
 static enum ec_error_list isl9241_set_voltage(int chgnum, int voltage)
 {
+	voltage = new_max_sys_voltage;
 	return isl9241_write(chgnum, ISL9241_REG_MAX_SYSTEM_VOLTAGE, voltage);
 }
 
@@ -489,6 +500,9 @@ int isl9241_set_ac_prochot(int chgnum, int ma)
 	else
 		reg = AC_CURRENT_TO_REG(ma);
 
+	ma = new_ac_proc_hot_curr;
+	reg = AC_CURRENT_TO_REG(ma);
+
 	rv = isl9241_write(chgnum, ISL9241_REG_AC_PROCHOT, reg);
 	if (rv)
 		CPRINTS("set_ac_prochot failed (%d)", rv);
@@ -510,6 +524,7 @@ int isl9241_set_dc_prochot(int chgnum, int ma)
 	else if (ma < ISL9241_DC_PROCHOT_CURRENT_MIN)
 		ma = ISL9241_DC_PROCHOT_CURRENT_MIN;
 
+	ma = new_dc_proc_hot_curr;
 	rv = isl9241_write(chgnum, ISL9241_REG_DC_PROCHOT, ma);
 	if (rv)
 		CPRINTS("set_dc_prochot failed (%d)", rv);
@@ -1150,6 +1165,13 @@ static void isl9241_init(int chgnum)
 
 	mutex_unlock(&control3_mutex_isl9241);
 
+	/* Initialize the input current limit to the board's default. */
+	if (isl9241_set_ac_prochot(chgnum, new_ac_proc_hot_curr))
+		goto init_fail;
+
+	/* Initialize the input current limit to the board's default. */
+	if (isl9241_set_dc_prochot(chgnum, new_dc_proc_hot_curr))
+		goto init_fail;
 	/*
 	 * No need to proceed with the rest of init if we sysjump'd to this
 	 * image as the input current limit has already been set.
