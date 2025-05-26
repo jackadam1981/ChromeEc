@@ -1135,7 +1135,7 @@ int dpm_get_status_msg(int port, uint8_t *msg, uint32_t *len)
 	return EC_SUCCESS;
 }
 
-union sido dpm_get_source_info_msg(int port)
+__overridable union sido dpm_get_source_info_msg(int port)
 {
 	/* This implementation makes the following simplifying assumptions:
 	 * 1. The TCPM will only ever offer fixed 5V PDOs in its Source Caps.
