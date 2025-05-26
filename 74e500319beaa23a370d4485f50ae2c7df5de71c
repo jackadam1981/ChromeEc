@@ -165,6 +165,30 @@
       ],
       "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d925c49_9046f31f",
+        "filename": "zephyr/program/bluey/src/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-26T08:09:53Z",
+      "side": 1,
+      "message": "@brianfields@google.com @ljung@google.com can you please confirm, as per the internal document created by Brian, this value was expected to be around 1v. is there any change to this value ?",
+      "parentUuid": "40c84f38_cb41e17b",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
