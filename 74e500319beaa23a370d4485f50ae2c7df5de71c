@@ -189,6 +189,30 @@
       },
       "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878a9f49_58c186a4",
+        "filename": "zephyr/program/bluey/src/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550739
+      },
+      "writtenOn": "2025-05-27T21:41:21Z",
+      "side": 1,
+      "message": "VPH_PWR can be in the range of 3.3-5V depending on the PMIC configuration and load settings. As this is just a binary power good threshold setting I think something less than 3800mV is appropriate. 1000mV should be fine, and 2970mV would be min spec -10% margin.",
+      "parentUuid": "4d925c49_9046f31f",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
