@@ -121,6 +121,20 @@ int read_rollback(int region, struct rollback_data *data)
  * Return most recent region index on success (>= 0, or 0 if no rollback
  * region is valid), negative value on error.
  */
+
+
+void ft_set_init_data(struct rollback_data *data)
+{
+	data->id = 1;
+	data->rollback_min_version = CONFIG_PLATFORM_EC_ROLLBACK_VERSION,
+#ifdef CONFIG_PLATFORM_EC_ROLLBACK_SECRET_SIZE
+
+	data->secret[0]=1;
+#endif
+	data->cookie = CROS_EC_ROLLBACK_COOKIE;
+}
+
+
 test_mockable_static int get_latest_rollback(struct rollback_data *data)
 {
 	int ret = -1;
@@ -376,6 +390,8 @@ int rollback_update_version(int32_t next_min_version)
 
 int rollback_add_entropy(const uint8_t *data, unsigned int len)
 {
+	//Todo zpx
+	return 0;
 	if (IS_ENABLED(CONFIG_OTP_KEY)) {
 		uint32_t status = EC_ERROR_UNKNOWN;
 
@@ -419,6 +435,7 @@ static int command_rollback_add_entropy(int argc, const char **argv)
 	uint8_t rand[CONFIG_ROLLBACK_SECRET_SIZE];
 	const uint8_t *data;
 	int len;
+	return 0;
 
 	if (argc < 2) {
 		if (!IS_ENABLED(CONFIG_RNG))
@@ -507,6 +524,8 @@ static int command_rollback_info(int argc, const char **argv)
 	int32_t rw_rollback_version;
 	struct rollback_data data;
 
+	return 0;
+
 	min_region = get_latest_rollback(&data);
 
 	if (min_region < 0)
@@ -547,15 +566,21 @@ DECLARE_SAFE_CONSOLE_COMMAND(rollbackinfo, command_rollback_info, NULL,
 static enum ec_status
 host_command_rollback_info(struct host_cmd_handler_args *args)
 {
+	
+
+	
 	int ret = EC_RES_UNAVAILABLE;
 	struct ec_response_rollback_info *r = args->response;
-	int min_region;
+	//int min_region;
 	struct rollback_data data;
 
-	min_region = get_latest_rollback(&data);
+	ft_set_init_data(&data);
+	//return 0;
 
-	if (min_region < 0)
-		goto failed;
+	//min_region = get_latest_rollback(&data);
+
+	//if (min_region < 0)
+	//	goto failed;
 
 	r->id = data.id;
 	r->rollback_min_version = data.rollback_min_version;
@@ -564,8 +589,8 @@ host_command_rollback_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	ret = EC_RES_SUCCESS;
 
-failed:
-	clear_rollback(&data);
+//failed:
+	//clear_rollback(&data);
 	return ret;
 }
 DECLARE_HOST_COMMAND(EC_CMD_ROLLBACK_INFO, host_command_rollback_info,

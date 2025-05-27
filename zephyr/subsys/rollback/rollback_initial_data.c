@@ -10,7 +10,7 @@ struct rollback_data rollback_initial_data = {
 	.id = 0,
 	.rollback_min_version = CONFIG_PLATFORM_EC_ROLLBACK_VERSION,
 #ifdef CONFIG_PLATFORM_EC_ROLLBACK_SECRET_SIZE
-	.secret = { 0 },
+	.secret = { 1 },
 #endif
 	.cookie = CROS_EC_ROLLBACK_COOKIE,
 };

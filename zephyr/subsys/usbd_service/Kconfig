@@ -105,7 +105,7 @@ config USB_DEVICE_VID
 
 config USB_DEVICE_PID
 	hex "USB device Product ID"
-	default 0x0000
+	default 0xface
 	help
 	  USB device Product ID.
 
