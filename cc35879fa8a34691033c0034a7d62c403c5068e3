@@ -87,6 +87,54 @@
       ],
       "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d9e1f3_dc01a8d6",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-27T18:09:41Z",
+      "side": 1,
+      "message": "Acknowledged. Removed it as not defined for microchip.",
+      "parentUuid": "1e59df10_7a1f41e4",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf62c504_ad950b45",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-27T18:09:41Z",
+      "side": 1,
+      "message": "@honscheid@google.com \"pwr-sys-rst-l\" is defined as external power signal so this node will not accept gpio field. Considering this file common across different platforms, I have changed default state. I will separately add support for this signal in further CL.",
+      "parentUuid": "78be25a2_ea950eaa",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
