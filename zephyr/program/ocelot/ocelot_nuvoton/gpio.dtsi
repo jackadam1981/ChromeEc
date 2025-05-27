@@ -1,0 +1,10 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Overrides of the generated.dtsi file needed by the shared
+ * ocelot configuration.
+ */
+bc_acok: &gpio_acok_od {};
+pwrbtn: &gpio_ec_mech_pwr_btn_l{};
