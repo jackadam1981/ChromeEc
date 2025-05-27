@@ -314,6 +314,8 @@ int charger_profile_override(struct charge_state_data *curr)
 
 		state = curr->state;
 		if (state == ST_CHARGE) {
+			int port = charge_manager_get_active_charge_port();
+
 			if (design_capacity == 0) {
 				if (battery_design_capacity(&design_capacity)) {
 					design_capacity =
@@ -336,6 +338,10 @@ int charger_profile_override(struct charge_state_data *curr)
 			if (bat_cell_over_volt_flag) {
 				if (data_v > bat_cell_ovp_volt)
 					data_v = bat_cell_ovp_volt;
+			}
+
+			if (port == CHARGER_SECONDARY) {
+				data_v -= 150;
 			}
 
 			if (curr->requested_current != data_c &&
