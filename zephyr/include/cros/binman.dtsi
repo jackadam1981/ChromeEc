@@ -9,6 +9,12 @@
 	binman: binman {
 		filename = "ec.bin";
 		pad-byte = <0x1d>;
+
+		flash-header {
+			type = "null";
+			size = <0x0>;
+		};
+
 		wp-ro {
 			compatible = "cros-ec,flash-layout";
 			type = "section";
