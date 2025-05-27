@@ -20,7 +20,12 @@
 #define CONFIG_RW_STORAGE_OFF 0x0
 
 #define CONFIG_FLASH_ERASE_SIZE 4096
-/* TODO: what what is usage of it, probably change to 64kb */
-#define CONFIG_FLASH_BANK_SIZE 0x10000
+/*
+ * There is no cleare awnser to this, because flash protection is set accordingto
+ * table in the flash chip documentation. The per block protection is not enabled,
+ * because some chips don't support that. Set the vaule as the smallest possible protection
+ * range which is 1/256 of the 1MB flash.
+ */
+#define CONFIG_FLASH_BANK_SIZE 4096
 
 #endif /* __CROS_EC_FLASH_CHIP_H */
