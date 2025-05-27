@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58553a2a_61fb4a65",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-27T19:47:06Z",
+      "side": 1,
+      "message": "This file is now identical to the zephyr/program/intelrvp/ptlrvp/src/board_id.c except for the static variable to cache the board id.\n\nThis should be moved into it\u0027s own driver code and shared by fatcat and ocelot.\n\nI think a good location would be\n* zephyr/drivers/board_id/board_id_intel_rvp.c\n\nYou could add a devicetree property for the GPIO controller node that needs to be initialized manually.  \n\n```\n\trvp_board_id: rvp-board-id {\n\t\tcompatible \u003d \"intel,rvp-board-id\";\n\t\tdeferred-init-driver \u003d \u003c\u0026pca95xx\u003e;\n```\n\nYou would register the callback on AP_POWER_STATE_S5 only if the `deferred-init-driver` property is not NULL.\n\n```\n    .deferred_init_driver \u003d DT_INST_PROP_OR(0, deferred_init_driver, NULL),\n    \n    ...\n    \nintel_rvp_board_id_init(const device *device)\n{\n    if (config-\u003edeferred_init_driver) {\n        ap_pwrseq_register_state_entry_callback();\n    }\n}\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "0fe528e82c22b75d6df3836bc5169a38cc713ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcbbe8ee_8e910b18",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-27T19:47:06Z",
+      "side": 1,
+      "message": "Is this retry loop still needed when using the pca95xx_deferred_init_cb?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "0fe528e82c22b75d6df3836bc5169a38cc713ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
