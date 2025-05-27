@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97b66cb0_8d93989c",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-27T21:58:20Z",
+      "side": 1,
+      "message": "Just delete the sub-nodes I highlighted from rtk_gpio.dtsi.\n\nThe file rtk_power_signals.dtsi is fine as is, you don\u0027t need to add the nodes you delete from rtk_gpio.dtsi.\n\nrtk_power_signals.dtsi declares the GPIOs used by the AP power sequence driver.  Any GPIOs added to rtk_power_signals.dtsi do not need to be part of `named-gpios`.\n\nYou should also delete `#include \"../power_signals_gpios.dtsi\"` from the brkt/project.overlay file.  This should fix any compile problems for missing DTS node names.",
+      "parentUuid": "9ed96927_358cc9b8",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89607ec2_7e3fe924",
         "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
         "patchSetId": 16

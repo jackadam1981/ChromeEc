@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644afeb9_215a1e86",
+        "filename": "zephyr/program/brox/brtk/project.overlay",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-27T21:58:20Z",
+      "side": 1,
+      "message": "Once you delete the power signal GPIOs from rtk_gpio.dtsi, delete this include to fix build errors.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "84503f07_b1d730ab",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/brtk/project.overlay",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "102883235592b97700625f40966e9a1542eadc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
