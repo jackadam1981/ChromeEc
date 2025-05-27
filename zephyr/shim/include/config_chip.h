@@ -2718,6 +2718,8 @@ BUILD_ASSERT((DT_NUM_INST_STATUS_OKAY(maxim_max695x)) == 1,
 #undef CONFIG_RNG
 #ifdef CONFIG_PLATFORM_EC_RANDOM
 #define CONFIG_RNG
+#else
+#define CONFIG_RNG
 #endif
 
 #undef CONFIG_ROLLBACK
