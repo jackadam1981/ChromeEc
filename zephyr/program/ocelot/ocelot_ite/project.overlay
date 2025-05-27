@@ -27,7 +27,12 @@ i2c_port_charger: &i2c4 {
 i2c_port_ish: &i2c5 {
 };
 
+/* Map ITE specific GPIOs to the names required by the rvp interrupts. */
+bc_acok: &gpio_bc_acok {};
+pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};
+
 #include "../rvp_i2c.dtsi"
+#include "../rvp_interrupts.dtsi"
 
 /* ocelot_ite overrides follow... */
 / {
@@ -45,6 +50,7 @@ i2c_port_ish: &i2c5 {
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
+/delete-node/ &int_power_button;
 
 &pwm1 {
 	status = "disabled";

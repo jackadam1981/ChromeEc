@@ -11,7 +11,8 @@
 
 #include "gpio.dtsi"
 #include "i2c.dtsi"
-#include "interrupts.dtsi"
 #include "power_signals.dtsi"
+
+#include "../rvp_interrupts.dtsi"
 
 /* ocelot_mchp overrides follow... */
