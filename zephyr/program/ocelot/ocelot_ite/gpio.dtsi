@@ -1,0 +1,8 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Map ITE specific GPIOs to the expected name used by the common code. */
+bc_acok: &gpio_bc_acok {};
+pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};

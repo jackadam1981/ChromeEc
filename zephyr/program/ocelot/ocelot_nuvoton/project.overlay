@@ -9,7 +9,9 @@
 
 /* ocelot_nuvoton project DTS includes */
 #include "generated.dtsi"
+#include "gpio.dtsi"
 #include "i2c.dtsi"
+#include "../interrupts.dtsi"
 
 /* ocelot_nuvoton overrides follow... */
 / {
@@ -28,3 +30,4 @@
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
+/delete-node/ &int_power_button;
