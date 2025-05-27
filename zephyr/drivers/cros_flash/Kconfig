@@ -140,6 +140,7 @@ config CROS_FLASH_ANDES_XIP
 	bool "Andes flash xip driver for the Zephyr shim"
 	depends on DT_HAS_ANDESTECH_QSPI_NOR_XIP_CROS_FLASH_ENABLED
 	select PLATFORM_EC_FLASH_CROS
+	select PLATFORM_EC_SPI_FLASH_REGS
 	default y
 	help
 	  Jedec spi nor cros flash driver
