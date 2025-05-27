@@ -72,3 +72,20 @@ helipilot = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x40144)
+ft9001 = register_fpmcu_variant(
+    project_name="ft9001",
+    zephyr_board="ft9001_eval",
+    register_func=register_binman_project,
+    variant_modules=["cmsis", "cmsis_6"],
+    variant_optional_modules=["focaltech"],
+    variant_dts_overlays=[
+        here / "ft9001" / "ft9001.dts",
+    ],
+    variant_kconfig_files=[
+        here / "ft9001" / "prj.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "ft9001" / "dev_key.pem",
+    ),
+)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ft9001", addr=0x7f274)
