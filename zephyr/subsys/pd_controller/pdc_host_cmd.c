@@ -118,7 +118,9 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	}
 
 	r->flags =
-		((status.usb2 || status.usb3_2) ? USB_PD_MUX_USB_ENABLED : 0) |
+		((status.dp ? status.usb3_2 : (status.usb2 || status.usb3_2)) ?
+			 USB_PD_MUX_USB_ENABLED :
+			 0) |
 		(status.dp ? USB_PD_MUX_DP_ENABLED : 0) |
 		(status.conn_ori ? USB_PD_MUX_POLARITY_INVERTED : 0) |
 		(status.dp_irq ? USB_PD_MUX_HPD_IRQ : 0) |
