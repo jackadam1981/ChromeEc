@@ -1,0 +1,19 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_charger {
+			i2c-port = <&charger_i2c>;
+			enum-names = "I2C_PORT_CHARGER";
+		};
+		ec_pd_power {
+			i2c-port = <&pd_pow_i2c>;
+			enum-names = "I2C_PORT_PD";
+		};
+	};
+};

@@ -18,6 +18,7 @@ i2c3ALT: &i2c3 {
 
 #include "generated.dtsi"
 #include "gpio.dtsi"
+#include "i2c.dtsi"
 #include "../interrupts.dtsi"
 
 /* ocelot_ite overrides follow... */
@@ -36,7 +37,6 @@ i2c3ALT: &i2c3 {
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
-/delete-node/ &{/named-i2c-ports};
 /delete-node/ &int_power_button;
 
 &pwm1 {
