@@ -180,6 +180,8 @@ enum panic_arch {
 #define PANIC_DATA_FLAG_SAFE_MODE_STARTED BIT(5)
 /* System safe mode failed to start */
 #define PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS BIT(6)
+/* Panic occurred in RW image */
+#define PANIC_DATA_FLAG_RW_IMAGE BIT(7)
 
 #ifdef __cplusplus
 }

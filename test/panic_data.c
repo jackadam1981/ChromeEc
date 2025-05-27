@@ -54,7 +54,8 @@ test_static int test_panic_data(void)
 
 	/* Check panic flags. */
 	TEST_EQ(pdata->flags,
-		PANIC_DATA_FLAG_FRAME_VALID | PANIC_DATA_FLAG_OLD_HOSTEVENT,
+		PANIC_DATA_FLAG_FRAME_VALID | PANIC_DATA_FLAG_OLD_HOSTEVENT |
+			PANIC_DATA_FLAG_RW_IMAGE,
 		"%02x");
 
 	return EC_SUCCESS;
@@ -88,7 +89,8 @@ test_static int test_panic_data_half(void)
 
 	/* Check panic flags. */
 	TEST_EQ(pdata->flags,
-		PANIC_DATA_FLAG_FRAME_VALID | PANIC_DATA_FLAG_OLD_HOSTEVENT,
+		PANIC_DATA_FLAG_FRAME_VALID | PANIC_DATA_FLAG_OLD_HOSTEVENT |
+			PANIC_DATA_FLAG_RW_IMAGE,
 		"%02x");
 
 	return EC_SUCCESS;
