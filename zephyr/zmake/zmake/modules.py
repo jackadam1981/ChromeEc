@@ -57,6 +57,9 @@ known_modules = {
     "boringssl": lambda name, checkout: (
         checkout / "src" / "third_party" / name
     ),
+    "hal_egis": lambda name, checkout: (
+        checkout / "src" / "third_party" / "zephyrproject" / "modules" / "hal" / "egis"
+    ),
     "hal_stm32": third_party_module,
     "chre": chre_module,
     "cmsis": third_party_module,
@@ -79,6 +82,9 @@ known_modules = {
     "intel_module_private": third_party_module,
     "focaltech_fp": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "focaltech"
+    ),
+    "egis_module": lambda name, checkout: (
+        checkout / "src" / "third_party" / "zephyrproject" / "modules" / "hal" / name
     ),
 }
 
