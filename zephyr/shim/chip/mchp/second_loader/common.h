@@ -6,7 +6,14 @@
 #ifndef _COMMON_h_
 #define _COMMON_h_
 
+#include <zephyr/devicetree.h>
+
 #define SECTOR_SIZE 4096
+
+#if DT_NODE_EXISTS(DT_NODELABEL(cbi_flash))
+#define CBI_FLASH_NODE DT_NODELABEL(cbi_flash)
+#define CBI_FLASH_OFFSET DT_PROP(CBI_FLASH_NODE, offset)
+#endif
 
 enum failure_resp_type {
 	NO_FAILURE = 0,

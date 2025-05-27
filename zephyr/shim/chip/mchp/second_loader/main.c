@@ -284,6 +284,15 @@ enum failure_resp_type verify_program_data(uint8_t *pgm_buff,
 	uint32_t input_data_offset = 0;
 
 	for (sector_address = flash_addr; sector_address < progrm_length;) {
+#ifdef CBI_FLASH_OFFSET
+		/* Check for CBI region and skip it */
+		if (sector_address == CBI_FLASH_OFFSET) {
+			sector_address += SECTOR_SIZE;
+			input_data_offset += SECTOR_SIZE;
+			continue;
+		}
+#endif
+
 		spi_err_flag = spi_splash_check_sector_content_same(
 			sector_address, &status, &pgm_buff[input_data_offset]);
 		if (spi_err_flag != NO_FAILURE) {
@@ -316,6 +325,15 @@ enum failure_resp_type program_data(uint32_t flash_addr, uint8_t *pgm_buffer,
 	 * Perform Erase/Program only if content was different.
 	 */
 	for (sector_address = flash_addr; sector_address < progrm_length;) {
+#ifdef CBI_FLASH_OFFSET
+		/* Check for CBI Region and skip it */
+		if (sector_address == CBI_FLASH_OFFSET) {
+			sector_address += SECTOR_SIZE;
+			input_data_offset += SECTOR_SIZE;
+			continue;
+		}
+#endif
+
 		ret = spi_splash_check_sector_content_same(
 			sector_address, &status,
 			&pgm_buffer[input_data_offset]);
