@@ -121,6 +121,7 @@ extern "C" {
 
 #define INTEL_ALTMODE_REG_DATA_STATUS 0x5F
 #define INTEL_ALTMODE_DATA_STATUS_REG_LEN 5
+#define DATA_STATUS_USB_PRINT(x) (x.dp ? x.usb3_2 : (x.usb2 || x.usb3_2))
 
 union data_status_reg {
 	struct {
