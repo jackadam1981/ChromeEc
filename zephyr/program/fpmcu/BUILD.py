@@ -129,3 +129,28 @@ gwendolin = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="gwendolin", addr=0x40144)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x40144)
+
+et171 = register_fpmcu_variant(
+    project_name="et171",
+    zephyr_board="egis_et171",
+    register_func=register_binman_project,
+    variant_modules=["hal_egis"],
+    variant_optional_modules=["egis"],
+    variant_dts_overlays=[
+        here / "et171" / "et171.dts",
+    ],
+    variant_kconfig_files=[
+        here / "et171" / "prj.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "et171" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="et171", addr=0x80040)
