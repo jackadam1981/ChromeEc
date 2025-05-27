@@ -135,6 +135,30 @@
       },
       "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837f6f7f_be2249d3",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-27T18:21:56Z",
+      "side": 1,
+      "message": "You should be able to to change `pwr-sys-rst-l` from `intel,ap-pwrseq-external` to `intel,ap-pwrseq-gpio`?\n\n`intel,ap-pwrseq-external` is meant to be used when the corresponding power signal needs additional handling beyond reading or writing a single GPIO.  The platform then needs to create the routines `board_power_signal_set` and `board_power_signal_get`.\n\nGPIOs connected to an I/O expander can be handled directly by `intel,ap-pwrseq-gpio`, just like GPIOs connected directly to the EC.",
+      "parentUuid": "cf62c504_ad950b45",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
