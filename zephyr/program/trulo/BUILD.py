@@ -33,6 +33,43 @@ def register_trulo_project(
     )
 
 
+def register_trulo_ite_project(
+    project_name,
+    kconfig_files=None,
+):
+    """Register a variant of trulo."""
+    if kconfig_files is None:
+        kconfig_files = [
+            # Common to all projects.
+            here / "program.conf",
+            # Project-specific KConfig customization.
+            here / project_name / "project.conf",
+        ]
+
+    return register_binman_project(
+        project_name=project_name,
+        zephyr_board="it8xxx2/it82002aw",
+        dts_overlays=[
+            here / project_name / "project.overlay",
+        ],
+        kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
+        modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
+        inherited_from=["trulo"],
+    )
+
+
+register_trulo_ite_project(
+    project_name="kaladin",
+    kconfig_files=[
+        # ite's config
+        here / "ite.conf",
+        # Common to all projects.
+        here / "ite_program.conf",
+        # Parent project's config
+        here / "kaladin" / "project.conf",
+    ],
+)
+
 register_trulo_project(
     project_name="trulo",
     kconfig_files=[
@@ -125,3 +162,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="pujjocento", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="pujjolo", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="trulo-ti", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="uldrenite", addr=0x40144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="kaladin", addr=0x60098)
