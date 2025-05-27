@@ -21,6 +21,10 @@ static const struct fingerprint_algorithm *fp_algorithm;
 
 enum fp_sensor_type fpsensor_detect_get_type(void)
 {
+#ifdef CONFIG_BOARD_SANOK
+	/* TODO: Add Egis sensor type. */
+	return FP_SENSOR_TYPE_ELAN;
+#else
 	enum fp_sensor_type ret = FP_SENSOR_TYPE_UNKNOWN;
 
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(div_highside), 1);
@@ -39,6 +43,7 @@ enum fp_sensor_type fpsensor_detect_get_type(void)
 	 * only needed for initial detection on those boards.
 	 */
 	return ret;
+#endif
 }
 
 static void fp_sensor_irq(const struct device *dev)
