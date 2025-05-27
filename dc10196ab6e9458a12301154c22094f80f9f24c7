@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc94dcbc_da7a8b93",
+        "filename": "zephyr/program/fpmcu/helipilot/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-27T20:11:05Z",
+      "side": 1,
+      "message": "@davidmcross@google.com\n@dawidn@google.com\n\nShall we remove this? node I do not see this in bloonchipper gpio.dtsi file. I can only see definition in bloonchipper.dts file. It is defined in `helipilot.dts`. Please advise",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "79903257_73e9535e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fpmcu/helipilot/gpio.dtsi",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "dc10196ab6e9458a12301154c22094f80f9f24c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
