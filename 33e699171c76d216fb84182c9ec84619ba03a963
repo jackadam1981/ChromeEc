@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264fdd06_678b46b2",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-27T16:30:26Z",
+      "side": 1,
+      "message": "The previous measurement was 70ms. I don\u0027t think it now changes that much. Since you will measure the timing further, longer is better.",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "33e699171c76d216fb84182c9ec84619ba03a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570ed3ab_4bd516cf",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-27T16:30:26Z",
+      "side": 1,
+      "message": "The below lines 553~556 do so.",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 23
+      },
+      "revId": "33e699171c76d216fb84182c9ec84619ba03a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
