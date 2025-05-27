@@ -57,9 +57,11 @@ static int get_rollback_offset(int region)
 
 	rv = crec_flash_bank_start_offset(rollback_start_bank + region);
 	ASSERT(rv >= 0);
+	ccprints("rv: %d", rv);
 	return rv;
 #else
-	return CONFIG_ROLLBACK_OFF + region * CONFIG_FLASH_ERASE_SIZE;
+	return CONFIG_ROLLBACK_OFF +
+	       region * CONFIG_ROLLBACK_SIZE / ROLLBACK_REGIONS;
 #endif
 }
 
