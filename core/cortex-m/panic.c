@@ -315,7 +315,7 @@ void __keep report_panic(void)
 	pdata->struct_size = sizeof(*pdata);
 	pdata->struct_version = 2;
 	pdata->arch = PANIC_ARCH_CORTEX_M;
-	pdata->flags = 0;
+	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 	pdata->reserved = 0;
 
 	/* Choose the right sp (psp or msp) based on EXC_RETURN value */
@@ -492,6 +492,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
 	pdata->struct_version = 2;
+	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 	pdata->arch = PANIC_ARCH_CORTEX_M;
 
 	/* Log panic cause */
