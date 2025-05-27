@@ -57,6 +57,7 @@ known_modules = {
     "boringssl": lambda name, checkout: (
         checkout / "src" / "third_party" / name
     ),
+    "hal_egis": third_party_module,
     "hal_stm32": third_party_module,
     "chre": chre_module,
     "cmsis": third_party_module,
