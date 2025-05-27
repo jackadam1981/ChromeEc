@@ -5,7 +5,11 @@ cmake_minimum_required(VERSION 3.20.1)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
-zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
+if(CONFIG_BOARD_KALADIN)
+  zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/ite_board_power.c")
+else()
+  zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
+endif()
 
 if(DEFINED CONFIG_BOARD_TRULO)
 	project(trulo)
@@ -20,6 +24,11 @@ endif()
 if(DEFINED CONFIG_BOARD_PUJJOLO)
 	project(pujjolo)
 	add_subdirectory(pujjolo)
+endif()
+
+if(DEFINED CONFIG_BOARD_KALADIN)
+	project(kaladin)
+	add_subdirectory(kaladin)
 endif()
 
 if(DEFINED CONFIG_BOARD_ULDRENITE)
