@@ -65,6 +65,12 @@ SHELL_STATIC_SUBCMD_SET_CREATE(sub_altmode_cmds,
 SHELL_CMD_REGISTER(altmode, &sub_altmode_cmds, "PD Altmode commands", NULL);
 
 #ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_PDC_TYPEC
+
+bool pd_altmode_is_usb_enabled(union data_status_reg status)
+{
+	return (status.dp ? status.usb3_2 : (status.usb2 || status.usb3_2));
+}
+
 static int command_typec(const struct shell *sh, int argc, const char **argv)
 {
 	char *e;
@@ -84,7 +90,7 @@ static int command_typec(const struct shell *sh, int argc, const char **argv)
 	shell_fprintf(sh, SHELL_INFO,
 		      "Port %d: USB=%d DP=%d POLARITY=%s HPD_IRQ=%d "
 		      "HPD_LVL=%d TBT=%d USB4=%d\n",
-		      port, (status.usb2 || status.usb3_2), status.dp,
+		      port, pd_altmode_is_usb_enabled(status), status.dp,
 		      status.conn_ori ? "INVERTED" : "NORMAL", status.dp_irq,
 		      status.hpd_lvl, status.tbt, status.usb4);
 
