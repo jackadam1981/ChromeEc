@@ -3,21 +3,6 @@
  * found in the LICENSE file.
  */
 
-/ {
-	named-i2c-ports {
-		compatible = "named-i2c-ports";
-
-		i2c_charger: charger {
-			i2c-port = <&charger_i2c>;
-			enum-names = "I2C_PORT_CHARGER";
-		};
-		ec_pd_power: typec-aic1-power {
-			i2c-port = <&pd_pow_i2c>;
-			enum-names = "I2C_PORT_PD";
-		};
-	};
-};
-
 /* charger */
 charger_i2c: &i2c_smb_0 {
 	label = "I2C_CHARGER";
@@ -37,3 +22,5 @@ pd_pow_i2c: &i2c_smb_1 {
 	port-sel = <6>;
 	status = "okay";
 };
+
+#include "../i2c.dtsi"
