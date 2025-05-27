@@ -21,24 +21,25 @@ static const struct fingerprint_algorithm *fp_algorithm;
 
 enum fp_sensor_type fpsensor_detect_get_type(void)
 {
-	enum fp_sensor_type ret = FP_SENSOR_TYPE_UNKNOWN;
+	// enum fp_sensor_type ret = FP_SENSOR_TYPE_UNKNOWN;
 
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(div_highside), 1);
-	k_usleep(1);
-	switch (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(fp_sensor_sel))) {
-	case 0:
-		ret = FP_SENSOR_TYPE_ELAN;
-		break;
-	case 1:
-		ret = FP_SENSOR_TYPE_FPC;
-		break;
-	}
-	/* We leave GPIO_DIVIDER_HIGHSIDE enabled, since the dragonclaw
-	 * development board use it to enable the AND gate (U10) to CS.
-	 * Production boards could disable this to save power since it's
-	 * only needed for initial detection on those boards.
-	 */
-	return ret;
+	// gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(div_highside), 1);
+	// k_usleep(1);
+	// switch (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(fp_sensor_sel))) {
+	// case 0:
+	// 	ret = FP_SENSOR_TYPE_ELAN;
+	// 	break;
+	// case 1:
+	// 	ret = FP_SENSOR_TYPE_FPC;
+	// 	break;
+	// }
+	// /* We leave GPIO_DIVIDER_HIGHSIDE enabled, since the dragonclaw
+	//  * development board use it to enable the AND gate (U10) to CS.
+	//  * Production boards could disable this to save power since it's
+	//  * only needed for initial detection on those boards.
+	//  */
+	// return ret;
+	return FP_SENSOR_TYPE_ELAN;
 }
 
 static void fp_sensor_irq(const struct device *dev)
