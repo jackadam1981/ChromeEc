@@ -47,6 +47,7 @@ static void check_panic_data(void)
 
 	/* Check panic flags. */
 	zassert_equal(pdata->flags, PANIC_DATA_FLAG_FRAME_VALID |
+					    PANIC_DATA_FLAG_RW_IMAGE |
 					    PANIC_DATA_FLAG_OLD_HOSTEVENT);
 #endif
 }
