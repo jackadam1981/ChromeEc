@@ -138,3 +138,16 @@ config CROS_SYSTEM_REALTEK_INIT_PRIORITY
 	  CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY.
 
 endif # CROS_SYSTEM_REALTEK
+
+config CROS_SYSTEM_FT90
+	bool "FT cros system driver"
+	depends on SOC_SERIES_FT90
+	default y
+
+if CROS_SYSTEM_FT90
+
+config CROS_SYSTEM_FT90_INIT_PRIORITY
+	int "cros_system FT initialization priority"
+	default 10
+
+endif # CROS_SYSTEM_FT90
