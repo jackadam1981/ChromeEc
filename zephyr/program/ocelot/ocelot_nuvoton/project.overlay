@@ -26,8 +26,14 @@ i2c_port_charger: &i2c2_0 {
 i2c_port_ish: &i2c5_0 {
 };
 
+/* Overrides of the generated.dtsi file needed by the shared
+ * rvp interrupt configuration.
+ */
+bc_acok: &gpio_acok_od {};
+pwrbtn: &gpio_ec_mech_pwr_btn_l{};
 
 #include "../rvp_i2c.dtsi"
+#include "../rvp_interrupts.dtsi"
 
 /* ocelot_nuvoton overrides follow... */
 / {
@@ -46,3 +52,4 @@ i2c_port_ish: &i2c5_0 {
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
+/delete-node/ &int_power_button;
