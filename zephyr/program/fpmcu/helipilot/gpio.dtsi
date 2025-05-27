@@ -26,10 +26,6 @@
 			gpios = <&gpiob 0 GPIO_INPUT>;
 		};
 
-		fp_rst_odl {
-			gpios = <&gpiob 10 GPIO_OUTPUT_HIGH>;
-		};
-
 		fp_sensor_sel: fp_sensor_sel {
 			gpios = <&gpio4 4 GPIO_INPUT>;
 		};
