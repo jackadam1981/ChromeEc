@@ -237,6 +237,30 @@
       },
       "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23013d5_8b2f6682",
+        "filename": "zephyr/program/bluey/src/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-28T21:38:50Z",
+      "side": 1,
+      "message": "So, change it to the threshold Brain recommended and update the comment to reflect it.",
+      "parentUuid": "a45e2b77_d30c1a34",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
