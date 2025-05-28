@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10752547_984faa34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-05-28T18:30:22Z",
+      "side": 1,
+      "message": "I can\u0027t see the build errors but I assume the Cq dry run failed due to some board not liking this change so added ifdefs around the new code",
+      "revId": "05f0b6c71497fc3e0b111a37e8fdde595e9a369a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
