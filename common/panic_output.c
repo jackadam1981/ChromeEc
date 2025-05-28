@@ -548,32 +548,47 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, "[clear]",
 static enum ec_status
 host_command_panic_info(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_get_panic_info_v1 *p = args->params;
+	const struct ec_params_get_panic_info_v2 *p = args->params;
 	uint32_t pdata_size = get_panic_data_size();
 	uintptr_t pdata_start = get_panic_data_start();
 	struct panic_data *pdata = panic_get_data();
+	uint32_t read_size = pdata_size;
+	uintptr_t read_start = pdata_start;
 
-	if (pdata_start && pdata_size > 0) {
-		if (pdata_size > args->response_max) {
+	/* No panic data, just return empty success */
+	if (!pdata_start || pdata_size <= 0)
+		return EC_RES_SUCCESS;
+
+	if (args->version >= 2) {
+		if (p->read_offset > pdata_size)
+			return EC_RES_INVALID_PARAM;
+		read_size -= p->read_offset;
+		/* memcpy handles unaligned addresses safely */
+		read_start += p->read_offset;
+	}
+
+	if (read_size > args->response_max) {
+		read_size = args->response_max;
+		if (args->version < 2) {
 			panic_printf("Panic data size %d is too "
 				     "large, truncating to %d\n",
-				     pdata_size, args->response_max);
-			pdata_size = args->response_max;
+				     pdata_size, read_size);
 			if (pdata) {
 				pdata->flags |= PANIC_DATA_FLAG_TRUNCATED;
 			}
 		}
-		memcpy(args->response, (void *)pdata_start, pdata_size);
-		args->response_size = pdata_size;
+	}
+	memcpy(args->response, (void *)read_start, read_size);
+	args->response_size = read_size;
 
-		if (pdata &&
-		    !(args->version > 0 && p->preserve_old_hostcmd_flag)) {
-			/* Data has now been returned */
-			pdata->flags |= PANIC_DATA_FLAG_OLD_HOSTCMD;
-		}
+	if (pdata && !(args->version > 0 && p->preserve_old_hostcmd_flag) &&
+	    /* For version >= 2, only set flag if last byte has been read */
+	    (args->version < 2 || p->read_offset + read_size == pdata_size)) {
+		/* Data has now been returned */
+		pdata->flags |= PANIC_DATA_FLAG_OLD_HOSTCMD;
 	}
 
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PANIC_INFO, host_command_panic_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));

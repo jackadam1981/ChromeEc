@@ -252,8 +252,9 @@ static int write_zephyr_coredump_header(struct panic_data &pdata,
 static int get_panic_info(struct panic_data &pdata)
 {
 	int bytes_read;
-	struct ec_params_get_panic_info_v1 params = {
+	struct ec_params_get_panic_info_v2 params = {
 		.preserve_old_hostcmd_flag = 1,
+		.read_offset = 0,
 	};
 
 	if (verbose)

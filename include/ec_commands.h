@@ -5828,9 +5828,18 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_GET_PANIC_INFO 0x00D3
 
-struct ec_params_get_panic_info_v1 {
+struct ec_params_get_panic_info_v2 {
 	/* Do not modify PANIC_DATA_FLAG_OLD_HOSTCMD when reading panic info */
 	uint8_t preserve_old_hostcmd_flag;
+
+	/* Read panic_data struct from this offset.
+	 * Needed when panic_data size excceeds host command response size.
+	 * Host should keep reading until empty success is returned.
+	 * If read_offset == panic_data.struct_size, response will be empty
+	 * success. If read_offset > panic_data.struct_size, response will be
+	 * error.
+	 */
+	uint16_t read_offset;
 } __ec_align1;
 
 /*****************************************************************************/
