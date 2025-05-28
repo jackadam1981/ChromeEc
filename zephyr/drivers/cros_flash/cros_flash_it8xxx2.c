@@ -465,6 +465,8 @@ static int flash_it8xxx2_init(const struct device *dev)
 
 static struct cros_flash_it8xxx2_data cros_flash_data;
 
+BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
+
 DEVICE_DT_INST_DEFINE(0, flash_it8xxx2_init, NULL, &cros_flash_data, NULL,
-		      POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
+		      POST_KERNEL, CONFIG_CROS_FLASH_INIT_PRIORITY,
 		      &cros_flash_it8xxx2_driver_api);
