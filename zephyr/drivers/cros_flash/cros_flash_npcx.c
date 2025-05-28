@@ -666,11 +666,9 @@ static int flash_npcx_init(const struct device *dev)
 	return EC_SUCCESS;
 }
 
-#if CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY <= CONFIG_FLASH_NPCX_FIU_NOR_INIT
-#error "CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY must be greater than" \
-	"CONFIG_FLASH_NPCX_FIU_NOR_INIT."
-#endif
+BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
+
 static struct cros_flash_npcx_data cros_flash_data;
 DEVICE_DT_INST_DEFINE(0, flash_npcx_init, NULL, &cros_flash_data, NULL,
-		      POST_KERNEL, CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY,
+		      POST_KERNEL, CONFIG_CROS_FLASH_INIT_PRIORITY,
 		      &cros_flash_npcx_driver_api);
