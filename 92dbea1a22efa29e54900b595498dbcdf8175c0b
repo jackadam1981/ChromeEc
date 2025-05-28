@@ -69,6 +69,24 @@
       "parentUuid": "dac71df7_338b8067",
       "revId": "92dbea1a22efa29e54900b595498dbcdf8175c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49373ff9_7ffde9d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-28T16:27:20Z",
+      "side": 1,
+      "message": "I hit send too fast. Specifically, the macro refers to printing, but that\u0027s not always how it\u0027s used. The function could be something like `bool pd_altmode_is_usb_enabled(union data_status_reg)`.",
+      "parentUuid": "a8e31513_326299a6",
+      "revId": "92dbea1a22efa29e54900b595498dbcdf8175c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
