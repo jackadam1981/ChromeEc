@@ -64,6 +64,30 @@
       },
       "revId": "dc10196ab6e9458a12301154c22094f80f9f24c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48df032_eb5ab6f9",
+        "filename": "zephyr/program/fpmcu/helipilot/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-28T14:15:35Z",
+      "side": 1,
+      "message": "ok Thanks, I will remove it in a follow up CL.",
+      "parentUuid": "330ada63_b61580ab",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "dc10196ab6e9458a12301154c22094f80f9f24c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
