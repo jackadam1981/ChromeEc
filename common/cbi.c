@@ -226,6 +226,17 @@ test_mockable int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf,
 
 	d = cbi_find_tag(cbi, tag);
 
+#ifndef CONFIG_SYSTEM_UNLOCKED
+	/*
+	 * These fields are not allowed to be reprogrammed regardless the
+	 * hardware WP state. They're considered as a part of the hardware.
+	 */
+	if (d && (tag == CBI_TAG_BOARD_VERSION || tag == CBI_TAG_OEM_ID)) {
+		CPRINTS("Failed to write tag: %d. System locked", tag);
+		return EC_RES_ACCESS_DENIED;
+	}
+#endif
+
 	/* If we found the entry, but the size doesn't match, delete it */
 	if (d && d->size != size) {
 		cbi_remove_tag(cbi, d);
@@ -312,18 +323,11 @@ common_cbi_set(const struct __ec_align4 ec_params_set_cbi *p)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-#ifndef CONFIG_SYSTEM_UNLOCKED
-	/*
-	 * These fields are not allowed to be reprogrammed regardless the
-	 * hardware WP state. They're considered as a part of the hardware.
-	 */
-	if (p->tag == CBI_TAG_BOARD_VERSION || p->tag == CBI_TAG_OEM_ID) {
-		CPRINTS("Failed to write tag: %d. System locked", p->tag);
-		return EC_RES_ACCESS_DENIED;
-	}
-#endif
-
 	if (p->flag & CBI_SET_INIT) {
+#ifndef CONFIG_SYSTEM_UNLOCKED
+		CPRINTS("Failed to init. System locked");
+		return EC_RES_ACCESS_DENIED;
+#endif
 		memset(cbi, 0, sizeof(cbi));
 		memcpy(head->magic, cbi_magic, sizeof(cbi_magic));
 		head->total_size = sizeof(*head);
