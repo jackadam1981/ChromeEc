@@ -103,7 +103,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 	pdata->arch = PANIC_ARCH_NDS32_N8;
 
@@ -118,7 +118,7 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 	struct panic_data *const pdata = panic_get_data();
 	uint32_t *regs;
 
-	if (pdata && pdata->struct_version == 2) {
+	if (pdata && pdata->struct_version >= 2) {
 		regs = pdata->nds_n8.regs;
 		*exception = pdata->nds_n8.itype;
 		*reason = regs[SOFT_PANIC_GPR_REASON];
@@ -181,10 +181,9 @@ void report_panic(uint32_t *regs, uint32_t itype)
 
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->arch = PANIC_ARCH_NDS32_N8;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
-	pdata->reserved = 0;
 
 	pdata->nds_n8.itype = itype;
 	for (i = 0; i < 16; i++)

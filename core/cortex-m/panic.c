@@ -313,10 +313,9 @@ void __keep report_panic(void)
 
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = sizeof(*pdata);
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->arch = PANIC_ARCH_CORTEX_M;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
-	pdata->reserved = 0;
 
 	/* Choose the right sp (psp or msp) based on EXC_RETURN value */
 	sp = is_frame_in_handler_stack(
@@ -491,7 +490,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 	pdata->arch = PANIC_ARCH_CORTEX_M;
 
@@ -506,7 +505,7 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 	struct panic_data *const pdata = panic_get_data();
 	uint32_t *lregs;
 
-	if (pdata && pdata->struct_version == 2) {
+	if (pdata && pdata->struct_version >= 2) {
 		lregs = pdata->cm.regs;
 		*exception = lregs[CORTEX_PANIC_REGISTER_IPSR];
 		*reason = lregs[CORTEX_PANIC_REGISTER_R4];

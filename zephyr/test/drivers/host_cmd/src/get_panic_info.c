@@ -50,7 +50,6 @@ ZTEST_USER(host_cmd_get_panic_info, test_get_panic_info)
 	pdata->arch = 0;
 	pdata->struct_version = 1;
 	pdata->flags = 2;
-	pdata->reserved = 3;
 	pdata->struct_size = sizeof(struct panic_data);
 	pdata->magic = PANIC_DATA_MAGIC;
 
@@ -60,7 +59,6 @@ ZTEST_USER(host_cmd_get_panic_info, test_get_panic_info)
 	zassert_equal(0, response.arch, NULL);
 	zassert_equal(1, response.struct_version, NULL);
 	zassert_equal(2, response.flags, NULL);
-	zassert_equal(3, response.reserved, NULL);
 	zassert_equal(sizeof(struct panic_data), response.struct_size, NULL);
 	zassert_equal(PANIC_DATA_MAGIC, response.magic, NULL);
 	zassert_equal(pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD,

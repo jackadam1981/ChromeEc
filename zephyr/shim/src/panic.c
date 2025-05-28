@@ -146,7 +146,7 @@ static void copy_esf_to_panic_data(const struct arch_esf *esf,
 {
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
 	pdata->arch = PANIC_ARCH;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->flags |= IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE :
 						    0;
 	pdata->flags |= (PANIC_ARCH == PANIC_ARCH_CORTEX_M) ?
@@ -222,7 +222,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->arch = PANIC_ARCH;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 
@@ -239,7 +239,7 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 
-	if (pdata && pdata->struct_version == 2) {
+	if (pdata && pdata->struct_version >= 2) {
 		*exception = PANIC_REG_EXCEPTION(pdata);
 		*reason = PANIC_REG_REASON(pdata);
 		*info = PANIC_REG_INFO(pdata);

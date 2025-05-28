@@ -279,7 +279,7 @@ static int get_panic_info(struct panic_data &pdata)
 
 	memcpy(&pdata, ec_inbuf, bytes_read);
 
-	if (pdata.struct_version > 2 || pdata.struct_version == 0) {
+	if (pdata.struct_version > 3 || pdata.struct_version == 0) {
 		std::cerr << "Error: Unexpected struct version: "
 			  << pdata.struct_version << std::endl;
 		return -1;
@@ -289,12 +289,6 @@ static int get_panic_info(struct panic_data &pdata)
 		std::cerr
 			<< "Error: Panic info struct_size does not match bytes read"
 			<< std::endl;
-		return -1;
-	}
-
-	if (pdata.reserved != 0) {
-		std::cerr << "Error: Unexpected panic reserved value "
-			  << pdata.reserved << std::endl;
 		return -1;
 	}
 

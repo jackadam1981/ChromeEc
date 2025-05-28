@@ -304,7 +304,7 @@ static void chip_panic_data_restore(void)
 	memset(d, 0, CONFIG_PANIC_DATA_SIZE);
 	d->magic = PANIC_DATA_MAGIC;
 	d->struct_size = CONFIG_PANIC_DATA_SIZE;
-	d->struct_version = 2;
+	d->struct_version = 3;
 	d->arch = PANIC_ARCH_CORTEX_M;
 
 	d->cm.cfsr = bbram_data_read(BKUP_CFSR);
