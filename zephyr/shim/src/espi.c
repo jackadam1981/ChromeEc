@@ -271,8 +271,12 @@ static void lpc_update_wake(host_event_t wake_events)
 	wake_events &= ~EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON);
 
 	/* Signal is asserted low when wake events is non-zero */
+#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_CUSTOM_WAKE_SIGNAL)
+	lpc_wake_signal(wake_events);
+#else
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pch_wake_odl),
 			!wake_events);
+#endif
 }
 
 #if !defined(CONFIG_AP_PWRSEQ)

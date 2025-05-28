@@ -38,4 +38,11 @@ config PLATFORM_EC_HOST_INTERFACE_ESPI_DEFAULT_VW_WIDTH_US
 	  The minimum pulse width of a eSPI/LPC virtual wire signals to the
 	  host. May vary by host chipset.
 
+config PLATFORM_EC_HOST_INTERFACE_ESPI_CUSTOM_WAKE_SIGNAL
+	bool "Enables providing customized LPC wake signal"
+	help
+	  This enable user to sets its own implementation of LPC wake signal
+	  generation utilizing function `lpc_wake_signal`, otherwise gpio
+	  `gpio_ec_pch_wake_odl` must be available in devicetree.
+
 endif # PLATFORM_EC_HOST_INTERFACE_ESPI

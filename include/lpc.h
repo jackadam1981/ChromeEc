@@ -173,6 +173,10 @@ void lpc_init_mask(void);
  */
 void lpc_s3_resume_clear_masks(void);
 
+#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_CUSTOM_WAKE_SIGNAL)
+int lpc_wake_signal(host_event_t wake_events);
+#endif
+
 #ifdef __cplusplus
 }
 #endif
