@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606fc2c7_e7b8bd58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-05-28T06:22:53Z",
+      "side": 1,
+      "message": "```\nobiwan-rev0 ~ # ectool cbi get 6\nAs uint: 1375731712 (0x52000000)\nAs binary: 00 00 00 52\nobiwan-rev0 ~ # ectool inventory\nEC supported features:\n1   : Flash support\n7   : Keyboard support\n10  : Thermal management support\n13  : Host event support\n14  : GPIO support\n15  : I2C controller support\n16  : Charger support\n17  : Simple Battery support\n18  : Smart Battery support\n22  : USB Cros Power Delivery support\n25  : Temporary secure vstore support\n26  : Host-controlled USB-C SS mux support\n32  : Unified wake masks for LPC/eSPI support\n33  : 64-bit host events support\n34  : Execute code in RAM support\n38  : Early Firmware Selection v2 support\n41  : TCPMv2 Type-C commands support\n54  : UCSI PPM support\n55  : Strauss support\n```\n```\nobiwan-rev0 ~ # ectool cbi get 6\nAs uint: 1375731714 (0x52000002)\nAs binary: 02 00 00 52\nobiwan-rev0 ~ # ectool inventory\nEC supported features:\n1   : Flash support\n3   : Keyboard backlight support\n7   : Keyboard support\n10  : Thermal management support\n13  : Host event support\n14  : GPIO support\n15  : I2C controller support\n16  : Charger support\n17  : Simple Battery support\n18  : Smart Battery support\n22  : USB Cros Power Delivery support\n25  : Temporary secure vstore support\n26  : Host-controlled USB-C SS mux support\n32  : Unified wake masks for LPC/eSPI support\n33  : 64-bit host events support\n34  : Execute code in RAM support\n38  : Early Firmware Selection v2 support\n41  : TCPMv2 Type-C commands support\n54  : UCSI PPM support\n55  : Strauss support\n```",
+      "revId": "ce6b88f2bfa99cb585778db91df2675e095ab7a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
