@@ -492,6 +492,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b552b42c_9954990e",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-28T15:22:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "26fdb915_a5a741bb",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ce73b30_3c70bdf6",
@@ -547,6 +571,30 @@
       "side": 1,
       "message": "That is correct. This comment describes the LFCLK hardware inside the NPCX SOC and is RTOS agnostics",
       "parentUuid": "6ce73b30_3c70bdf6",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db106eb_f9c3d8e8",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-28T15:22:55Z",
+      "side": 1,
+      "message": "I ran this test 100 times in both Zephyr and EC and got different statistics. I added the data in https://b.corp.google.com/issues/418830306#comment4\n\n@davidmcross@google.com\n@chlin56@nuvoton.corp-partner.google.com\n\nCan you please review the data and let me know your thoughts",
+      "parentUuid": "26a93d9b_5763463b",
       "range": {
         "startLine": 34,
         "startChar": 1,
