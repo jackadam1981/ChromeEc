@@ -155,7 +155,7 @@ static int test_hostcmd_wrong_struct_version(void)
 	hostcmd_send();
 	TEST_ASSERT(resp->result == EC_RES_INVALID_HEADER);
 
-	req->struct_version = 2;
+	req->struct_version = 3;
 	hostcmd_send();
 	TEST_ASSERT(resp->result == EC_RES_INVALID_HEADER);
 

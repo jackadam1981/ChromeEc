@@ -304,7 +304,7 @@ static void chip_panic_data_restore(void)
 	memset(d, 0, CONFIG_PANIC_DATA_SIZE);
 	d->magic = PANIC_DATA_MAGIC;
 	d->struct_size = CONFIG_PANIC_DATA_SIZE;
-	d->struct_version = 2;
+	d->struct_version = 3;
 	d->arch = PANIC_ARCH_CORTEX_M;
 
 	d->cm.cfsr = bbram_data_read(BKUP_CFSR);
@@ -631,7 +631,7 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	for (i = NPCX_IRQ_0; i < NPCX_IRQ_COUNT; i++)
 		task_clear_pending_irq(i);
 
-	/* Set the timer interrupt for wake up.  */
+		/* Set the timer interrupt for wake up.  */
 #ifdef NPCX_LCT_SUPPORT
 	if (seconds || microseconds) {
 		system_set_lct_alarm(seconds, microseconds);

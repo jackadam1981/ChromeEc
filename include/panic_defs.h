@@ -126,12 +126,19 @@ struct x86_panic_data {
 	uint8_t task_id;
 };
 
+/**
+ * == struct panic_data version change log ==
+ *
+ *   v3: Merged 'reserved' field with 'flags' field.
+ *       'flags' field went from 8 bit to 16 bits.
+ *       Data compatiable if little-endian.
+ *
+ */
 /* Data saved across reboots */
 struct panic_data {
 	uint8_t arch; /* Architecture (PANIC_ARCH_*) */
-	uint8_t struct_version; /* Structure version (currently 2) */
-	uint8_t flags; /* Flags (PANIC_DATA_FLAG_*) */
-	uint8_t reserved; /* Reserved; set 0 */
+	uint8_t struct_version; /* Structure version (set 3) */
+	uint16_t flags; /* Flags (PANIC_DATA_FLAG_*) */
 
 	/* core specific panic data */
 	union {

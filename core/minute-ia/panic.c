@@ -141,7 +141,7 @@ void exception_panic(uint32_t vector, uint32_t error_code, uint32_t eip,
 
 	/* Initialize panic data */
 	pdata->arch = PANIC_ARCH_X86;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 	pdata->magic = PANIC_DATA_MAGIC;
 
@@ -193,7 +193,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
-	pdata->struct_version = 2;
+	pdata->struct_version = 3;
 	pdata->flags = IS_ENABLED(SECTION_IS_RW) ? PANIC_DATA_FLAG_RW_IMAGE : 0;
 	pdata->arch = PANIC_ARCH_X86;
 
@@ -207,7 +207,7 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 
-	if (pdata && pdata->struct_version == 2) {
+	if (pdata && pdata->struct_version >= 2) {
 		*reason = pdata->x86.vector;
 		*info = pdata->x86.error_code;
 		*exception = pdata->x86.eflags;
