@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6918e39_1978cbeb",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-28T17:42:22Z",
+      "side": 1,
+      "message": "The RW image starts at 0x80000.  The EC image header is usually linked first in the image, so that the FWID field in the EC image header is usually at offset 0x98.\n\nThe Realtek image looks to be linking something into the RW image before the EC image header.  Do you know what is getting linked at the beginning of the RW image?",
+      "range": {
+        "startLine": 166,
+        "startChar": 53,
+        "endLine": 166,
+        "endChar": 60
+      },
+      "revId": "8b05c993f65a086a84ac09be0253f55a78730b56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
