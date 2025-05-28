@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d8037d_bb8c32d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-28T17:50:12Z",
+      "side": 1,
+      "message": "Is this change needed?  This change makes the binman RO and RW sections larger, but then overrides this setting in Kconfig.",
+      "revId": "ba638e426a903fdcdf2d5bb3a2b9fedb65b3555a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
