@@ -51,6 +51,24 @@
       "parentUuid": "db98595c_2a26c198",
       "revId": "92dbea1a22efa29e54900b595498dbcdf8175c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e31513_326299a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-28T16:22:41Z",
+      "side": 1,
+      "message": "Nit: The macro is kind of obscure. Can you make it a function that takes a `union data_status_reg` as a parameter, probably in `pdc_pmc_debug.c`?",
+      "parentUuid": "dac71df7_338b8067",
+      "revId": "92dbea1a22efa29e54900b595498dbcdf8175c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
