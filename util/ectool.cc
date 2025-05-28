@@ -4930,7 +4930,10 @@ static int cmd_lightbar(int argc, char **argv)
 #define ST_PRM_SIZE(SUBCMD) \
 	(ST_CMD_SIZE + ST_FLD_SIZE(ec_params_motion_sense, SUBCMD))
 #define ST_RSP_SIZE(SUBCMD) ST_FLD_SIZE(ec_response_motion_sense, SUBCMD)
-#define ST_BOTH_SIZES(SUBCMD) { ST_PRM_SIZE(SUBCMD), ST_RSP_SIZE(SUBCMD) }
+#define ST_BOTH_SIZES(SUBCMD)                            \
+	{                                                \
+		ST_PRM_SIZE(SUBCMD), ST_RSP_SIZE(SUBCMD) \
+	}
 
 /*
  * For ectool only, assume no more than 16 sensors.  More advanced
@@ -6912,31 +6915,50 @@ usage:
 int cmd_panic_info(int argc, char *argv[])
 {
 	int rv;
-	struct ec_params_get_panic_info_v1 params = {
+	/* ec_params_get_panic_info_v2 is a superset of
+	 * ec_params_get_panic_info_v1 */
+	struct ec_params_get_panic_info_v2 params = {
+		/* By default, reading the panic info will set
+		 * PANIC_DATA_FLAG_OLD_HOSTCMD. Prefer to leave this
+		 * flag untouched when supported.
+		 */
 		.preserve_old_hostcmd_flag = 1,
+		.read_offset = 0,
 	};
+	std::vector<uint8_t> data;
 
-	/* By default, reading the panic info will set
-	 * PANIC_DATA_FLAG_OLD_HOSTCMD. Prefer to leave this
-	 * flag untouched when supported.
-	 */
-	if (ec_cmd_version_supported(EC_CMD_GET_PANIC_INFO, 1))
+	if (ec_cmd_version_supported(EC_CMD_GET_PANIC_INFO, 2)) {
+		while (true) {
+			rv = ec_command(EC_CMD_GET_PANIC_INFO, 2, &params,
+					sizeof(params), ec_inbuf,
+					ec_max_insize);
+			/* Read until no more data returned */
+			if (rv <= 0)
+				break;
+			data.insert(data.end(), static_cast<uint8 *>(ec_inbuf),
+				    static_cast<uint8 *>(ec_inbuf) + rv);
+			params.read_offset += rv;
+		};
+	} else if (ec_cmd_version_supported(EC_CMD_GET_PANIC_INFO, 1)) {
 		rv = ec_command(EC_CMD_GET_PANIC_INFO, 1, &params,
 				sizeof(params), ec_inbuf, ec_max_insize);
-	else
+		data.assign(static_cast<uint8_t *>(ec_inbuf),
+			    static_cast<uint8_t *>(ec_inbuf) + rv);
+	} else {
 		rv = ec_command(EC_CMD_GET_PANIC_INFO, 0, NULL, 0, ec_inbuf,
 				ec_max_insize);
+		data.assign(static_cast<uint8_t *>(ec_inbuf),
+			    static_cast<uint8_t *>(ec_inbuf) + rv);
+	}
 
 	if (rv < 0)
 		return rv;
 
-	if (rv == 0) {
+	if (data.empty()) {
 		printf("No panic data.\n");
 		return 0;
 	}
 
-	std::vector<uint8_t> data(static_cast<uint8_t *>(ec_inbuf),
-				  static_cast<uint8_t *>(ec_inbuf) + rv);
 	auto result = ec::ParsePanicInfo(data);
 
 	if (!result.has_value()) {
@@ -8292,7 +8314,7 @@ static int get_battery_command_v2(uint8_t index)
 
 static int get_battery_command_v1(uint8_t index)
 {
-	struct ec_params_battery_static_info static_p{
+	struct ec_params_battery_static_info static_p {
 		.index = index,
 	};
 	struct ec_response_battery_static_info_v1 static_r;
@@ -9930,8 +9952,7 @@ struct param_info {
 
 #define FIELD(fname, field, help_str)                                       \
 	{                                                                   \
-		.name = fname,                                              \
-		.help = help_str,                                           \
+		.name = fname, .help = help_str,                            \
 		.size = sizeof(((struct ec_mkbp_config *)NULL)->field),     \
 		.offset = __builtin_offsetof(struct ec_mkbp_config, field), \
 	}

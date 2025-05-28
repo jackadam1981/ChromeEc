@@ -930,7 +930,7 @@ enum host_event_code {
 };
 
 /* Host event mask */
-#define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code) - 1)
+#define EC_HOST_EVENT_MASK(event_code) BIT_ULL((event_code)-1)
 
 /* clang-format off */
 #define HOST_EVENT_TEXT                                                        \
@@ -5814,9 +5814,16 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_GET_PANIC_INFO 0x00D3
 
-struct ec_params_get_panic_info_v1 {
+struct ec_params_get_panic_info_v2 {
 	/* Do not modify PANIC_DATA_FLAG_OLD_HOSTCMD when reading panic info */
 	uint8_t preserve_old_hostcmd_flag;
+
+	/* panic_data struct read offset. Used to read panic_data struct that
+	 * exceeds single host command response size.
+	 * read_offset == panic_data size will return empty success
+	 * read_offset > panic_data size will return error
+	 */
+	uint16_t read_offset;
 } __ec_align1;
 
 /*****************************************************************************/
