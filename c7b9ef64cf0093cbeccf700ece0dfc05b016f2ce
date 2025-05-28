@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f697805e_5e67e884",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:21:17Z",
+      "side": 1,
+      "message": "I guess acok keep as gpio.",
+      "parentUuid": "97b66cb0_8d93989c",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89607ec2_7e3fe924",
@@ -203,6 +227,30 @@
       "writtenOn": "2025-05-23T15:51:04Z",
       "side": 1,
       "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ee5574_c33130c0",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:21:17Z",
+      "side": 1,
+      "message": "it is used by temp_sensors.dtsi, `power-good-pin \u003d \u003c\u0026gpio_ec_dsw_pwrok\u003e;`.\nso I still keep it here.",
+      "parentUuid": "df114d05_89f181ab",
       "range": {
         "startLine": 60,
         "startChar": 0,
