@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4210a122_802ba216",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35c4198_25eba122",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbb40645_45b02175",
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf33f7fc_d9ed07c0",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89607ec2_7e3fe924",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df114d05_89f181ab",
@@ -188,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43b65bf_c92345d0",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8925dae_fb5081a5",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08644427_207408f5",
@@ -201,6 +273,30 @@
       "writtenOn": "2025-05-23T15:51:04Z",
       "side": 1,
       "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6c6fb7_c092bdbf",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08644427_207408f5",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -234,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a13be5_49fe052e",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac6604d8_ff2ffed7",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4670ed81_8c437fe2",
@@ -247,6 +367,30 @@
       "writtenOn": "2025-05-23T15:51:04Z",
       "side": 1,
       "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "860ab995_093e9a8c",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4670ed81_8c437fe2",
       "range": {
         "startLine": 114,
         "startChar": 0,
@@ -280,6 +424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e6d358_e6f11619",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de76b1a8_ee1fa604",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "365b3749_f7521d20",
@@ -303,6 +471,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5ef68e_c383a46f",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "365b3749_f7521d20",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6917382_9ecb4c0d",
@@ -316,6 +508,30 @@
       "writtenOn": "2025-05-23T15:51:04Z",
       "side": 1,
       "message": "Power sequence signal - delete",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "c7b9ef64cf0093cbeccf700ece0dfc05b016f2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ada0c4_9c828824",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 16
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-28T11:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6917382_9ecb4c0d",
       "range": {
         "startLine": 152,
         "startChar": 0,
