@@ -607,6 +607,45 @@ static int it5xxxx_get_eflash_size(struct common_hnd *chnd,
 	return ret;
 }
 
+/* Get Watchdog */
+static int get_wdt_value(struct common_hnd *chnd,
+                                   uint8_t *watchdog)
+{
+        int ret = 0;
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+        ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
+        ret |= i2c_write_byte(chnd, 0x2e,
+			chnd->instruction_set_v2 ? 0x85 : 0x05);
+        ret |= i2c_read_byte(chnd, 0x30, watchdog);
+
+        if (ret < 0)
+                fprintf(stderr, "Failed to get watchodg value");
+
+        return ret;
+}
+
+/* Set Watchdog */
+static int set_wdt_value(struct common_hnd *chnd,
+                                   uint8_t watchdog)
+{
+        int ret = 0;
+
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+        ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
+        ret |= i2c_write_byte(chnd, 0x2e,
+			chnd->instruction_set_v2 ? 0x85 : 0x05);
+        ret |= i2c_write_byte(chnd, 0x30, watchdog);
+
+        if (ret < 0)
+                fprintf(stderr, "Failed to set watchodg value");
+
+        return ret;
+}
+
+
+
 static int check_flashid(struct common_hnd *chnd)
 {
 	int ret = 0;
@@ -800,18 +839,21 @@ static int dbgr_reset_gpio(struct common_hnd *chnd)
 static int dbgr_disable_watchdog(struct common_hnd *chnd)
 {
 	int ret = 0;
+	uint8_t wdt=0x30;
 
 	printf("Disabling watchdog...\n");
-	if (chnd->dbgr_addr_3bytes)
-		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 
-	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
-	ret |= i2c_write_byte(chnd, 0x2e,
-			      chnd->instruction_set_v2 ? 0x85 : 0x05);
-	ret |= i2c_write_byte(chnd, 0x30, 0x30);
+	ret = set_wdt_value(chnd,wdt);
+	if (ret)
+		return ret;
 
-	if (ret < 0)
+	ret = get_wdt_value(chnd,(uint8_t *)&wdt);
+        if (ret)
+		return ret;
+
+        if(wdt != 0x30) {
 		fprintf(stderr, "DBGR DISABLE WATCHDOG FAILED!\n");
+	}
 
 	return ret;
 }
