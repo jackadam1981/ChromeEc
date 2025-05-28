@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d386eb_0133d3ce",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-28T17:47:32Z",
+      "side": 1,
+      "message": "Can flash protection be added now?  Or is there additional upstream code still needed to implement protection over the entire RO region?",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 0
+      },
+      "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
