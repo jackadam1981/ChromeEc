@@ -174,7 +174,7 @@
 			no-auto-init;
 		};
 		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
-			gpios = <&gpiod 7 GPIO_OUTPUT>;
+			gpios = <&gpioe 6 GPIO_OUTPUT>;
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
@@ -210,7 +210,7 @@
 			<&gpiob 2 0>,
 			<&gpiob 3 0>,
 			<&gpiob 4 0>,
-			<&gpioe 6 0>,
+			<&gpiod 7 0>,
 			<&gpiof 2 0>,
 			<&gpiof 3 0>,
 			<&gpiog 0 0>,
