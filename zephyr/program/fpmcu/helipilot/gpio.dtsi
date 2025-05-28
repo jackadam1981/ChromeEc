@@ -22,10 +22,6 @@
 			gpios = <&gpioa 4 GPIO_INPUT>;
 		};
 
-		fps_int: fps_int {
-			gpios = <&gpiob 0 GPIO_INPUT>;
-		};
-
 		fp_sensor_sel: fp_sensor_sel {
 			gpios = <&gpio4 4 GPIO_INPUT>;
 		};
