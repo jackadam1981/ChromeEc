@@ -459,7 +459,9 @@ static const struct cros_flash_driver_api cros_flash_rtk_driver_api = {
 	.physical_get_status = cros_flash_rtk_get_status,
 };
 
+BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
+
 DEVICE_DT_INST_DEFINE(0, cros_flash_rtk_init, NULL, &cros_flash_data,
 		      &cros_flash_config, POST_KERNEL,
-		      CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
+		      CONFIG_CROS_FLASH_INIT_PRIORITY,
 		      &cros_flash_rtk_driver_api);
