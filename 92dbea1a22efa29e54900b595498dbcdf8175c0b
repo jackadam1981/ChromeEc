@@ -33,6 +33,24 @@
       "message": "Can this logic be broken out into a shared helper function?",
       "revId": "92dbea1a22efa29e54900b595498dbcdf8175c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac71df7_338b8067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-05-28T07:17:25Z",
+      "side": 1,
+      "message": "pdc_host_cmd.c returns the mux flag for ectool and pdc_pmc_debug.c is to print debug info directly. Maybe define a macro instead of a shared helper function ?",
+      "parentUuid": "db98595c_2a26c198",
+      "revId": "92dbea1a22efa29e54900b595498dbcdf8175c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
