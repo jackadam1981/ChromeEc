@@ -320,6 +320,11 @@ config LINK_TEST_SUITE_USBC_DP_MODE
 	help
 	  Include the DP 2.1 test suite in the binary.
 
+config LINK_TEST_SUITE_USBC_DP_MODE_20
+	bool "Link and test the usbc_dp_tests_20"
+	help
+	  Include the DP 2.0 test suite in the binary.
+
 config LINK_TEST_SUITE_USBC_TBT_MODE
 	bool "Link and test the usbc_tbt_mode tests"
 
