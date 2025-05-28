@@ -20,7 +20,7 @@
 #include <builtin/assert.h>
 #include <usbc/ppm.h>
 
-LOG_MODULE_REGISTER(ppm_common, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(ppm_common, LOG_LEVEL_DBG);
 
 enum last_error_type {
 	/* Error came from LPM; GET_ERROR_STATUS should query the LPM for a

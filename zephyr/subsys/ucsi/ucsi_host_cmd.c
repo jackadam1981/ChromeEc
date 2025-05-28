@@ -16,7 +16,7 @@
 
 #include <usbc/ppm.h>
 
-LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(ucsi, LOG_LEVEL_DBG);
 
 static struct ucsi_ppm_device *ppm_dev;
 

@@ -21,7 +21,7 @@
 #include <drivers/pdc.h>
 #include <usbc/ppm.h>
 
-LOG_MODULE_REGISTER(ppm, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(ppm, LOG_LEVEL_DBG);
 
 #define DT_DRV_COMPAT ucsi_ppm
 #define UCSI_7BIT_PORTMASK(p) ((p) & 0x7F)

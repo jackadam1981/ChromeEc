@@ -1401,9 +1401,10 @@ static void handle_connector_status(struct pdc_port_t *port)
 static void trigger_ppm_status_change(struct pdc_port_t *port)
 {
 	union conn_status_change_bits_t status = { .raw_value = 0 };
-
+	LOG_ERR("==================================== CHANGE \n");
 	/* No status change on command error. */
 	if (!port->cmd || port->cmd->error) {
+		LOG_ERR("==================================== ERROR\n");
 		return;
 	}
 
@@ -1425,6 +1426,7 @@ static void trigger_ppm_status_change(struct pdc_port_t *port)
 	 * side-effects to connector status.
 	 */
 	default:
+		LOG_ERR("==================================== DEFAULT\n");
 		return;
 	}
 
