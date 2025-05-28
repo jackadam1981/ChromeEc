@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb73d609_2e0e0d30",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-28T17:36:53Z",
+      "side": 1,
+      "message": "Add `no-auto-init` property to this signal.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "08d3de40_e5b108a7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tno-auto-init;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "59592a6030433bdd66a058566641c552417482e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
