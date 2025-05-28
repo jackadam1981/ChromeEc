@@ -1,0 +1,104 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9dcb5ba_3ab23059",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-28T16:44:49Z",
+      "side": 1,
+      "message": "Nit: It might be a bit cleaner to use something like https://docs.zephyrproject.org/apidoc/latest/group__bitarray__apis.html#ga8dd6d35a082922b17c0efb7808f5e4be. However, if it looks like it will require a painful refactor, don\u0027t worry about it.",
+      "fixSuggestions": [
+        {
+          "fixId": "1d160e45_0d2f24a8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 6,
+                "endChar": 0
+              },
+              "replacement": "#include \u003czephyr/sys/bitarray.h\u003e\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "static uint32_t max_current_claimed_bitmask;\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 127,
+                "startChar": 0,
+                "endLine": 129,
+                "endChar": 0
+              },
+              "replacement": "\tif (BIT(port) \u0026 max_current_claimed_bitmask ||\n\t    bitarray_count_set_bits(\u0026max_current_claimed_bitmask,\n\t\t\t\t    board_get_usb_pd_port_count()) \u003c\n\t\t    CONFIG_USB_PD_3A_PORTS) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17ccff3ffbd0bb9ac0198be090cc3c988077cf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9f6d4d_2e327bb8",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-28T16:44:49Z",
+      "side": 1,
+      "message": "Nit: This function is implemented in this file in terms of `can_supply_max_current`, so you don\u0027t necessarily need to account for the scenario where it returns 0. You could just implement Reported PDP and Present PDP directly in terms of `max_current_claimed`, which might make this function a little simpler. As with the other nit, don\u0027t do this if it ends up being a lot more complicated than I suspected.",
+      "fixSuggestions": [
+        {
+          "fixId": "15b3f143_c899bb8d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": "\tuint32_t highest_pdo \u003d pdos[pdo_count - 1];\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 120,
+                "endChar": 0
+              },
+              "replacement": "\tsource_info.port_reported_pdp \u003d PDO_FIXED_VOLTAGE(highest_pdo) *\n\t\t\t\t\tPDO_FIXED_CURRENT(highest_pdo) /\n\t\t\t\t\t1000000;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17ccff3ffbd0bb9ac0198be090cc3c988077cf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
