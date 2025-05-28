@@ -118,8 +118,7 @@ ZTEST_USER(common_cbi, test_hc_cbi_set_then_get)
 	struct actual_set_params hc_set_params = {
 		.params = {
 		.tag = CBI_TAG_SKU_ID,
-		/* Force a reload */
-		.flag = CBI_SET_INIT,
+		.flag = 0,
 		.size = ARRAY_SIZE(data),
 		},
 	};
@@ -165,8 +164,7 @@ ZTEST_USER(common_cbi, test_hc_cbi_set__bad_size)
 	struct actual_set_params hc_set_params = {
 		.params = {
 		.tag = CBI_TAG_SKU_ID,
-		/* Force a reload */
-		.flag = CBI_SET_INIT,
+		.flag = 0,
 		.size = ARRAY_SIZE(data),
 		},
 	};
@@ -188,8 +186,7 @@ ZTEST_USER(common_cbi, test_hc_cbi_set_then_get__with_too_small_response)
 	struct actual_set_params hc_set_params = {
 		.params = {
 		.tag = CBI_TAG_SKU_ID,
-		/* Force a reload */
-		.flag = CBI_SET_INIT,
+		.flag = 0,
 		.size = ARRAY_SIZE(data),
 		},
 	};
