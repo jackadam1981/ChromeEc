@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d8fd5f_109a14fe",
+        "filename": "zephyr/program/ocelot/ocelot_ite/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-29T19:47:58Z",
+      "side": 1,
+      "message": "Note that the `enum-names` property is only required to be set for when a legacy driver needs to access the I2C bus.\n\nBut setting this on a bus only accessed from Zephyr code causes no harm.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "acba9cb46aaf96391efb4f996584b7d38aa80a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add5bbff_684147f7",
+        "filename": "zephyr/program/ocelot/ocelot_ite/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-29T19:47:58Z",
+      "side": 1,
+      "message": "We may want to assign these labels ins a shared file so that the names are consistent across the ocelot variants.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "acba9cb46aaf96391efb4f996584b7d38aa80a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
