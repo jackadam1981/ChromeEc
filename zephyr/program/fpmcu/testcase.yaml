@@ -166,6 +166,11 @@ tests:
     - CONFIG_PM=n
     extra_conf_files:
     - prj_hw_tests.conf
+  rtc_npcx9:
+    extra_configs:
+    - CONFIG_HW_TEST_RTC_NPCX9=y
+    extra_conf_files:
+    - prj_hw_tests.conf
   sbrk:
     extra_configs:
     - CONFIG_HW_TEST_SBRK=y
