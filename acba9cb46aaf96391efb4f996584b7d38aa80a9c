@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf19572_9856da41",
+        "filename": "zephyr/program/ocelot/ocelot_ite/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-29T19:52:47Z",
+      "side": 1,
+      "message": "You\u0027re correct.  The `enum-names` property of `named-gpios` is not required.",
+      "parentUuid": "f277f8a7_6e829bb3",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "acba9cb46aaf96391efb4f996584b7d38aa80a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "add5bbff_684147f7",
