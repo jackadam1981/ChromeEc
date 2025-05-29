@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "131efbfe_d0da0db3",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-29T23:14:30Z",
+      "side": 1,
+      "message": "Use IS_ENABLED to make this more readable.\n```\n\tconst char *thread_name;\n\tif (IS_ENABLED(CONFIG_THREAD_NAME)) {\n\t\tthread_name \u003d k_thread_name_get(k_current_get());\n\t} else {\n\t\tthread_name \u003d \"(unkonwn)\";\n\t}\n```",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "44de2f4cec61aa2d92e3cadb384ce8a0dac9b623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0712e77_fb50d33c",
         "filename": "zephyr/shim/src/watchdog.c",
         "patchSetId": 3
