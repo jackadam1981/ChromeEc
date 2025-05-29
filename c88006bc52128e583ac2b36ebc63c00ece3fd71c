@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc63c533_23cf5fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-29T23:20:14Z",
+      "side": 1,
+      "message": "Intel, feel free to take this CL or discard/ignore it. We\u0027re making a common I2C dtsi but are missing port configurations for the second PD bus and the ISH/sensor bus, if you want to use it.",
+      "revId": "c88006bc52128e583ac2b36ebc63c00ece3fd71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
