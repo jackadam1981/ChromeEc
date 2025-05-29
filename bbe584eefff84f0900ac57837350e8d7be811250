@@ -16,6 +16,67 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "634b7174_fa472a3e",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-29T23:01:37Z",
+      "side": 1,
+      "message": "@chlin56@nuvoton.com\n@CHChang19@nuvoton.com\n\nWhich configurations I need to turn on to enable `system_get_rtc_alarm` and `system_set_rtc_alarm`\n\nI am currently getting a linker error:\n\n```\nld.lld: error: undefined symbol: system_set_rtc_alarm\n\u003e\u003e\u003e referenced by rtc_npcx9.c:20 (/mnt/host/source/src/platform/ec/zephyr/test/hwtest/src/rtc_npcx9.c:20)\n\u003e\u003e\u003e               modules/ec/zephyr/zephyr_pre0.elf.lto.libec_shim.a(rtc_npcx9.c.obj at 803202).o:(_rtc_npcx9_test_rtc_alarm_fired_wrapper)\nld.lld: error: undefined symbol: system_get_rtc_alarm\n\u003e\u003e\u003e referenced by rtc_npcx9.c:27 (/mnt/host/source/src/platform/ec/zephyr/test/hwtest/src/rtc_npcx9.c:27)\n\u003e\u003e\u003e               modules/ec/zephyr/zephyr_pre0.elf.lto.libec_shim.a(rtc_npcx9.c.obj at 803202).o:(_rtc_npcx9_test_rtc_alarm_fired_wrapper)\nclang++: error: ld.lld command failed with exit code 1 (use -v to see invocation)\nAll failed projects: [\u0027helipilot\u0027]\nERROR:failed to build rtc_npcx9: Command \u0027[\u0027zmake\u0027, \u0027build\u0027, \u0027helipilot\u0027, \u0027--clobber\u0027, \u0027-DOVERLAY_CONFIG\u003d/tmp/test.conf\u0027]\u0027 returned non-zero exit status 1.\nTest \"rtc_npcx9\": FAILED\n```\n\nI tried adding `CONFIG_PLATFORM_EC_RTC`, `CONFIG_PLATFORM_RTC_NPCX`, etc. but I do not think this was sufficient. Please advise.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4d5720f5_dd7dca6c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/hwtest/src/rtc_npcx9.c",
+              "range": {
+                "startLine": 6,
+                "startChar": 0,
+                "endLine": 7,
+                "endChar": 0
+              },
+              "replacement": "#include \"rtc.h\"\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/rtc_npcx9.c",
+              "range": {
+                "startLine": 20,
+                "startChar": 0,
+                "endLine": 21,
+                "endChar": 0
+              },
+              "replacement": "\trtc_set_alarm(rtc_delay_seconds, 0);\n"
+            },
+            {
+              "path": "zephyr/test/hwtest/src/rtc_npcx9.c",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(0, rtc_get_alarm());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
