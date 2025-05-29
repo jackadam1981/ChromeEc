@@ -285,6 +285,30 @@
       },
       "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9128f7_b019247e",
+        "filename": "zephyr/program/bluey/src/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-29T19:09:35Z",
+      "side": 1,
+      "message": "Please add Brain\u0027s comment.",
+      "parentUuid": "75a3e3b5_3928863a",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "74e500319beaa23a370d4485f50ae2c7df5de71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
