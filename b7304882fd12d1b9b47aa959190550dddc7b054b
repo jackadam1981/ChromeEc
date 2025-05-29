@@ -574,6 +574,24 @@
       "parentUuid": "e4b08ad1_2606f3ec",
       "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73dc6dbd_9fb27c68",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_20.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-29T15:17:33Z",
+      "side": 1,
+      "message": "Now I corrected test to keep DP 2.1 and use SVDM version 2.0 from device site. Also I am checking saved SVDM version based on initial communication, I do not think it test keeping this version between different messages in flow, it tests more logic to choose greatest common supported SVDM version. \nI think we could merge it and work on extending this flow in unit test by next messages under new bug. What do you think? Am I right?",
+      "parentUuid": "5a5081bf_9f96124a",
+      "revId": "b7304882fd12d1b9b47aa959190550dddc7b054b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
