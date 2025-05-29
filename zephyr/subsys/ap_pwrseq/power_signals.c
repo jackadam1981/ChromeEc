@@ -89,6 +89,8 @@ static const struct ps_config sig_config[] = {
 static const uint8_t polled_signals[] = { DT_FOREACH_STATUS_OKAY(
 	intel_ap_pwrseq_external, PWR_SIGNAL_POLLED) };
 
+
+__overridable int power_signal_external_init(void) { return 0; }
 /*
  * Bitmasks of power signals. A previous copy is held so that
  * logging of changes can occur if the signal is in the debug mask.
@@ -310,6 +312,9 @@ test_mockable void power_signal_init(void)
 	}
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ_SIGNAL_ADC)) {
 		power_signal_adc_init();
+	}
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ_SIGNAL_EXTERNAL)) {
+		power_signal_external_init();
 	}
 	/*
 	 * Initialise the mask with the current values.

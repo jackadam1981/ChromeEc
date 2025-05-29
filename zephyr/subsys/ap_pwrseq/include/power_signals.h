@@ -39,6 +39,8 @@
 #ifndef __AP_PWRSEQ_POWER_SIGNALS_H__
 #define __AP_PWRSEQ_POWER_SIGNALS_H__
 
+#include "common.h"
+
 #include <zephyr/devicetree.h>
 
 /**
@@ -338,5 +340,9 @@ static inline int power_wait_signals_off_timeout(power_signal_mask_t want,
  * @brief Create a mask from a power signal.
  */
 #define POWER_SIGNAL_MASK(signal) (1 << (signal))
+
+#if defined(CONFIG_AP_PWRSEQ_SIGNAL_EXTERNAL)
+__override_proto int power_signal_external_init(void);
+#endif
 
 #endif /* __AP_PWRSEQ_POWER_SIGNALS_H__ */
