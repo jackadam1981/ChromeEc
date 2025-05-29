@@ -22,6 +22,30 @@
       },
       "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac48eccf_2ed25968",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-29T15:08:08Z",
+      "side": 1,
+      "message": "For RO lock, it will be handle by `flash_write_prot_reg(dev, CONFIG_WP_STORAGE_OFF, CONFIG_WP_STORAGE_SIZE, 1);` to set status register.\nAnd `flash_protect_int_flash(dev, write_protect_is_asserted());` to set WP (only can disable by ec reboot) and lock the status reg.\n\nThe zephyr driver implement is merged, remove the comment.",
+      "parentUuid": "98d386eb_0133d3ce",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 0
+      },
+      "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
