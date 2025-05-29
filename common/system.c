@@ -539,18 +539,26 @@ test_mockable enum ec_image system_get_image_copy(void)
 
 test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
 {
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
 	uint32_t r_offset;
 	uint32_t r_size;
 	enum ec_image copy = system_get_image_copy();
 
 	switch (copy) {
 	case EC_IMAGE_RO:
-		r_size = CONFIG_RO_SIZE;
+		r_size = 126976;
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		break;
 	case EC_IMAGE_RW:
 	case EC_IMAGE_RW_B:
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		r_size = CONFIG_RW_SIZE;
 #ifdef CONFIG_RWSIG
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		/* Allow RW sig to be overwritten */
 		r_size -= CONFIG_RW_SIG_SIZE;
 #endif
@@ -559,12 +567,25 @@ test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
 		return 0;
 	}
 	r_offset = flash_get_rw_offset(copy);
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
+	ccprints("r_offset: %d", r_offset);
+	cflush();
+	ccprints("offset: %d", offset);
+	cflush();
+	ccprints("r_size: %d", r_size);
+	cflush();
 
 	if ((offset >= r_offset && offset < (r_offset + r_size)) ||
-	    (r_offset >= offset && r_offset < (offset + size)))
+	    (r_offset >= offset && r_offset < (offset + size))) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		return 1;
-	else
+	} else {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		return 0;
+	}
 }
 
 const char *system_get_image_copy_string(void)

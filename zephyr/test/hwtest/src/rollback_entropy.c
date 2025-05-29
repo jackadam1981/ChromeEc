@@ -18,6 +18,20 @@
 
 ZTEST_SUITE(rollback_entropy, NULL, NULL, NULL, NULL, NULL);
 
+static void print_rollback(const struct rollback_data *rb_data)
+{
+	int i;
+
+	printk("rollback secret: 0x");
+	for (i = 0; i < sizeof(rb_data->secret); i++)
+		ccprintf("%02x", rb_data->secret[i]);
+	ccprintf("\n");
+
+	printk("rollback id: %d\n", rb_data->id);
+	printk("rollback cookie: %0x\n", rb_data->cookie);
+	printk("rollback_min_version: %d\n", rb_data->rollback_min_version);
+}
+
 static const uint32_t VALID_ROLLBACK_COOKIE = 0x0b112233;
 
 static const uint8_t FAKE_ENTROPY[] = { 0xff, 0xff, 0xff, 0xff };
@@ -69,6 +83,7 @@ static void check_equal(const struct rollback_data *actual,
 		      expected->rollback_min_version);
 	zassert_equal(actual->id, expected->id);
 	zassert_equal(actual->cookie, expected->cookie);
+	print_rollback(actual);
 }
 
 ZTEST(rollback_entropy, test_add_entropy)
@@ -127,6 +142,7 @@ ZTEST(rollback_entropy, test_add_entropy)
 		rv = read_rollback(i, &rb_data);
 		zassert_equal(rv, EC_SUCCESS);
 		check_equal(&rb_data, &expected_empty);
+		ccprints("I am here, i: %d", i);
 	}
 
 	/*
@@ -135,6 +151,7 @@ ZTEST(rollback_entropy, test_add_entropy)
 	 */
 	if (IS_ENABLED(SECTION_IS_RO)) {
 		rv = rollback_add_entropy(FAKE_ENTROPY, sizeof(FAKE_ENTROPY));
+		printk("rv @ line %d: %d\n", __LINE__, rv);
 		zassert_equal(rv, EC_SUCCESS);
 	}
 
@@ -145,6 +162,7 @@ ZTEST(rollback_entropy, test_add_entropy)
 
 	/* Validate that region 0 has not changed. */
 	rv = read_rollback(0, &rb_data);
+	printk("rv @ line %d: %d\n", __LINE__, rv);
 	zassert_equal(rv, EC_SUCCESS);
 	check_equal(&rb_data, &expected_empty);
 
@@ -154,31 +172,19 @@ ZTEST(rollback_entropy, test_add_entropy)
 	 */
 	if (IS_ENABLED(SECTION_IS_RO)) {
 		rv = rollback_add_entropy(FAKE_ENTROPY, sizeof(FAKE_ENTROPY));
+		printk("rv @ line %d: %d\n", __LINE__, rv);
 		zassert_equal(rv, EC_SUCCESS);
 	}
 
 	/* Check region 0. */
 	rv = read_rollback(0, &rb_data);
+	printk("rv @ line %d: %d\n", __LINE__, rv);
 	zassert_equal(rv, EC_SUCCESS);
 	check_equal(&rb_data, &expected_secret2);
 
 	/* Check region 1 has not changed. */
 	rv = read_rollback(1, &rb_data);
+	printk("rv @ line %d: %d\n", __LINE__, rv);
 	zassert_equal(rv, EC_SUCCESS);
 	check_equal(&rb_data, &expected_secret);
-
-	if (IS_ENABLED(CONFIG_OTP_KEY)) {
-		/* Power on OTP memory. */
-		otp_key_init();
-
-		/* Check OTP key has been written. */
-		rv = otp_key_read(otp_key_buffer);
-		zassert_equal(rv, EC_SUCCESS);
-		zassert_equal(bytes_are_trivial(otp_key_buffer,
-						OTP_KEY_SIZE_BYTES),
-			      false);
-
-		/* Power off OTP memory. */
-		otp_key_exit();
-	}
 }

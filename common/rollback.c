@@ -206,8 +206,10 @@ static int get_rollback_erase_size_bytes(int region)
 	int erase_size;
 
 #ifndef CONFIG_FLASH_MULTIPLE_REGION
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
 	erase_size = CONFIG_FLASH_ERASE_SIZE;
 #else
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
 	int rollback_start_bank = crec_flash_bank_index(CONFIG_ROLLBACK_OFF);
 
 	erase_size = crec_flash_bank_erase_size(rollback_start_bank + region);
@@ -272,6 +274,8 @@ failed:
 static int rollback_update(int32_t next_min_version, const uint8_t *entropy,
 			   unsigned int length)
 {
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
 	/*
 	 * When doing flash_write operation, the data needs to be in blocks
 	 * of CONFIG_FLASH_WRITE_SIZE, pad rollback_data as required.
@@ -285,6 +289,8 @@ static int rollback_update(int32_t next_min_version, const uint8_t *entropy,
 	uint32_t key;
 
 	if (crec_flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		ret = EC_ERROR_ACCESS_DENIED;
 		goto out;
 	}
@@ -293,22 +299,35 @@ static int rollback_update(int32_t next_min_version, const uint8_t *entropy,
 	memset(&block[sizeof(*data)], 0xff, sizeof(block) - sizeof(*data));
 
 	region = get_latest_rollback(data);
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
+	ccprints("region: %d\n", region);
+	cflush();
 
 	if (region < 0) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		ret = EC_ERROR_UNKNOWN;
 		goto out;
 	}
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 	if (entropy) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		/* Do not accept to decrease the value. */
 		if (next_min_version < data->rollback_min_version)
 			next_min_version = data->rollback_min_version;
 	} else
 #endif
 	{
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		/* Do not accept to decrease the value. */
 		if (next_min_version < data->rollback_min_version) {
+			ccprints("I am in func %s, line %d", __func__,
+				 __LINE__);
+			cflush();
 			ret = EC_ERROR_INVAL;
 			goto out;
 		}
@@ -322,8 +341,15 @@ static int rollback_update(int32_t next_min_version, const uint8_t *entropy,
 
 	/* Use the other region. */
 	region = (region + 1) % ROLLBACK_REGIONS;
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
+	ccprints("region: %d", region);
+	cflush();
 
 	offset = get_rollback_offset(region);
+	cflush();
+	ccprints("offset: %d", offset);
+	cflush();
 
 	data->id = data->id + 1;
 	data->rollback_min_version = next_min_version;
@@ -333,33 +359,51 @@ static int rollback_update(int32_t next_min_version, const uint8_t *entropy,
 	 * data.secret is left untouched and written back to the other region.
 	 */
 	if (entropy) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		if (!add_entropy(data->secret, data->secret, entropy, length)) {
 			ret = EC_ERROR_UNCHANGED;
 			goto out;
 		}
 	}
 #endif
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
 	data->cookie = CROS_EC_ROLLBACK_COOKIE;
 
 	erase_size = get_rollback_erase_size_bytes(region);
+	ccprints("erase_size: %d", erase_size);
+	cflush();
 
 	if (erase_size < 0) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		ret = EC_ERROR_UNKNOWN;
 		goto out;
 	}
 
+	ccprints("offset: %d", offset);
+	cflush();
+	ccprints("erase_size: %d", erase_size);
+	cflush();
 	/* Offset should never be part of active image. */
 	if (system_unsafe_to_overwrite(offset, erase_size)) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		ret = EC_ERROR_UNKNOWN;
 		goto out;
 	}
 
 	key = unlock_rollback();
 	if (crec_flash_erase(offset, erase_size)) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		ret = EC_ERROR_UNKNOWN;
 		lock_rollback(key);
 		goto out;
 	}
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
 
 	ret = crec_flash_write(offset, sizeof(block), block);
 	lock_rollback(key);
@@ -376,7 +420,11 @@ int rollback_update_version(int32_t next_min_version)
 
 int rollback_add_entropy(const uint8_t *data, unsigned int len)
 {
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
 	if (IS_ENABLED(CONFIG_OTP_KEY)) {
+		ccprints("I am in func %s, line %d", __func__, __LINE__);
+		cflush();
 		uint32_t status = EC_ERROR_UNKNOWN;
 
 		/* Power on OTP memory. */
@@ -391,7 +439,8 @@ int rollback_add_entropy(const uint8_t *data, unsigned int len)
 			return status;
 		}
 	}
-
+	ccprints("I am in func %s, line %d", __func__, __LINE__);
+	cflush();
 	return rollback_update(-1, data, len);
 }
 
