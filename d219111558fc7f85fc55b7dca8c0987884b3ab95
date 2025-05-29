@@ -398,6 +398,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da7ec907_72162b67",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-05-29T15:04:50Z",
+      "side": 1,
+      "message": "That is correct, this line provide extra robustness in case test changed it as I understand.",
+      "parentUuid": "56bb7e30_ae4e643c",
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed353c9f_7f001b1d",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
         "patchSetId": 9
