@@ -1431,7 +1431,7 @@ static bool fetch_header_versions(struct image *image)
 			sections[i].shv.epoch = h.m->security_version;
 			sections[i].shv.major = h.m->version_major;
 			sections[i].shv.minor = h.m->version_minor;
-			sections[i].keyid = 0;
+			sections[i].keyid = be32toh(h.m->modulus[0]);
 		} else {
 			fprintf(stderr, "\nERROR: Unknown image type.\n");
 			exit(update_error);
