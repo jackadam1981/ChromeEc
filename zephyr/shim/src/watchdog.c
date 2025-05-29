@@ -155,7 +155,23 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 
 #ifdef CONFIG_RISCV
 	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
+<<<<<<< HEAD   (0f5649162acaedc11236543f185b8eeb89a3cc70 cros_flash_npcx: Check device is ready before getting status)
 	       (void *)csr_read(mepc), thread_name);
+||||||| BASE   (13c70be0b7ebddaca00583080fcaede52fa07d87 trulo: update VIF)
+	       (void *)exception_address, thread_name);
+=======
+	       (void *)exception_address, thread_name);
+#elif CONFIG_CPU_CORTEX_M
+	struct arch_esf *esf;
+	/*
+	 * Watchdog warning should only be triggered while executing in thread
+	 * context, thus PSP will point to esf.
+	 */
+	__asm__ volatile("mrs %0, psp" : "=r"(esf));
+	printk("WDT pre-warning PC:%p LR:%p THREAD_NAME:%s\n",
+	       (void *)esf->basic.pc, (void *)esf->basic.lr, thread_name);
+	exception_address = esf->basic.pc;
+>>>>>>> CHANGE (8f183a0ecd65be60dc5f6fda14032753c8a7fe1f zephyr/watchdog: Capture PC on cortex-m watchdog warning)
 #else
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
