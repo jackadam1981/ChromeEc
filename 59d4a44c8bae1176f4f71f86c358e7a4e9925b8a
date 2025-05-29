@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa8d634_4c1e3c7f",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-05-29T10:27:20Z",
+      "side": 1,
+      "message": "nit: this fits inline",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8dd0f8cc_e06c806a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/src/CMakeLists.txt",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_STUB usbc_stub.c)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "59d4a44c8bae1176f4f71f86c358e7a4e9925b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
