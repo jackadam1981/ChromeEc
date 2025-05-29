@@ -55,4 +55,7 @@
 		reg = <0x24>;
 		zephyr,deferred-init;
 	};
+	ppm-driver {
+			compatible = "ucsi-ppm";
+		};
 };
