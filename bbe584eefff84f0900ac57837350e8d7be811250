@@ -101,6 +101,30 @@
       },
       "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ba0b08_8adaf1d3",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-29T23:11:49Z",
+      "side": 1,
+      "message": "This leads to another question, which `system_set_rtc_alarm` is relevant here and which one I should test?",
+      "parentUuid": "f8583304_7978e1cf",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
