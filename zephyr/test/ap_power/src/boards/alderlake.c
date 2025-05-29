@@ -20,6 +20,11 @@ static bool signal_PWR_ALL_SYS_PWRGD;
 static bool signal_PWR_DSW_PWROK;
 static bool signal_PWR_PG_PP1P05;
 
+int power_signal_external_init(void)
+{
+	return 0;
+}
+
 int board_power_signal_set(enum power_signal signal, int value)
 {
 	switch (signal) {
