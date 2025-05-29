@@ -16,6 +16,41 @@
       "message": "Should I also add this to the non-machine output?",
       "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4604542e_8e7243ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-05-29T22:11:32Z",
+      "side": 1,
+      "message": "I think you should, this would be useful.",
+      "parentUuid": "e3a483e3_9830b665",
+      "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138cbdb3_b24c9cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-05-29T22:11:32Z",
+      "side": 1,
+      "message": "This looks good to me, but I am not sure if there are any tests which expect the fixed layout of the machine mode output.\n\nMaybe Mary has more insight into this.\n\n\nAlso, I think it would make sense to squash the two patches, the first one is kinda pointless without the second one",
+      "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
