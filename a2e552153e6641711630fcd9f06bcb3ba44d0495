@@ -62,6 +62,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62e3962_33ca9f0d",
+        "filename": "zephyr/program/bluey/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-29T18:32:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "25409625_92265d4c",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "a2e552153e6641711630fcd9f06bcb3ba44d0495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb18b2b2_37f5042b",
@@ -103,6 +127,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a581aa_5e654670",
+        "filename": "zephyr/program/bluey/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-29T18:32:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fb18b2b2_37f5042b",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "a2e552153e6641711630fcd9f06bcb3ba44d0495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "777863f2_11a00fc2",
@@ -126,6 +174,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19262b3b_48114680",
+        "filename": "zephyr/program/bluey/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-29T18:32:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "777863f2_11a00fc2",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "a2e552153e6641711630fcd9f06bcb3ba44d0495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8bbedb_a72bad01",
@@ -139,6 +211,30 @@
       "writtenOn": "2025-05-28T22:02:33Z",
       "side": 1,
       "message": "Why enable this config?",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "a2e552153e6641711630fcd9f06bcb3ba44d0495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f33e0d_650a5372",
+        "filename": "zephyr/program/bluey/program.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-05-29T18:32:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0c8bbedb_a72bad01",
       "range": {
         "startLine": 47,
         "startChar": 19,
