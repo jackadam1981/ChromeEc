@@ -40,6 +40,30 @@
       ],
       "revId": "59592a6030433bdd66a058566641c552417482e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2044c5fd_39697ed3",
+        "filename": "zephyr/program/brox/brtk/rtk_gpio.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-29T08:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb73d609_2e0e0d30",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 38
+      },
+      "revId": "59592a6030433bdd66a058566641c552417482e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
