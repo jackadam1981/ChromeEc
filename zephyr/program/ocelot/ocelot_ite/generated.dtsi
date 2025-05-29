@@ -42,12 +42,6 @@
 			gpios = <&gpioc 0 (GPIO_INPUT)>;
 			enum-name = "GPIO_AC_PRESENT";
 		};
-		gpio_bga_pinb1: bga_pinb1 {
-			gpios = <&gpiof 6 (GPIO_INPUT)>;
-		};
-		gpio_bga_pinc1: bga_pinc1 {
-			gpios = <&gpiof 7 (GPIO_INPUT)>;
-		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			// signal name was manually overriden from "bga_pinm1"
 			gpios = <&gpioe 6 (GPIO_INPUT)>;
@@ -61,11 +55,19 @@
 		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
 			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
+		gpio_c_ec_snr_alrt1: c_ec_snr_alrt1 {
+			// signal name was manually overriden from "bga_pinc1"
+			gpios = <&gpiof 7 (GPIO_INPUT)>;
+		};
+		gpio_c_ec_snr_alrt2: c_ec_snr_alrt2 {
+			// signal name was manually overriden from "bga_pinb1"
+			gpios = <&gpiof 6 (GPIO_INPUT)>;
+		};
 		gpio_c_edp_bklt_en_r: c_edp_bklt_en_r {
 			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		gpio_c_en_pp5000_typea_r: c_en_pp5000_typea_r {
-			gpios = <&gpiof 4 (GPIO_INPUT)>;
+			gpios = <&gpiof 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
 		gpio_c_gsc_ec_pwr_btn_n: c_gsc_ec_pwr_btn_n {
 			// signal name was manually overriden from "bga_pinb4"
