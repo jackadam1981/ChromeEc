@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3195099_f827c1c4",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-29T15:00:34Z",
+      "side": 1,
+      "message": "#define CONFIG_RO_SIZE CONFIG_CROS_EC_RO_SIZE\n\nWe use CONFIG_RO_SIZE to determin the size we need load from flash while jump, and if we keep it as /binman/wp-ro,size, then it will include other part in wp-ro but not needed by ec code.",
+      "revId": "06f6f9c7601341a1f7fa3d94cf0b0599f3fa4a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

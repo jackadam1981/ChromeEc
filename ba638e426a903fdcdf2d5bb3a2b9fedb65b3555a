@@ -39,6 +39,30 @@
       },
       "revId": "ba638e426a903fdcdf2d5bb3a2b9fedb65b3555a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2042f77f_725d9d41",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-29T15:00:34Z",
+      "side": 1,
+      "message": "#define CONFIG_WP_STORAGE_OFF CONFIG_EC_PROTECTED_STORAGE_OFF\n#define CONFIG_WP_STORAGE_SIZE CONFIG_EC_PROTECTED_STORAGE_SIZE\n\n#define _BINMAN_RO_PATH DT_PATH(binman, wp_ro)\n#define _BINMAN_RW_PATH DT_PATH(binman, ec_rw)\n\n#define CONFIG_EC_PROTECTED_STORAGE_OFF DT_PROP(_BINMAN_RO_PATH, offset)\n#define CONFIG_EC_PROTECTED_STORAGE_SIZE DT_PROP(_BINMAN_RO_PATH, size)\n\nwhen we lock RO part, we use CONFIG_WP_STORAGE_OFF and CONFIG_WP_STORAGE_SIZE to determine the lock range, so I am thinking: \n`CROS_EC_RO_SIZE` means ec code size.\n`CONFIG_EC_PROTECTED_STORAGE_SIZE` means the RO size, not only code but also other data we want to store and lock.\n\nIf I am getting those define right, then the /binman/wp-ro,size should be half of flash (assume we agree RO/RW took half of flash each).",
+      "parentUuid": "19556e6c_2efef8ec",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "ba638e426a903fdcdf2d5bb3a2b9fedb65b3555a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
