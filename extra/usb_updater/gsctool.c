@@ -2294,7 +2294,9 @@ static int show_headers_versions(const struct image *image,
 	 * string for each FW section.
 	 */
 	char ro_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
+	uint32_t ro_keyid[kNumSlots];
 	char rw_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
+	uint32_t rw_keyid[kNumSlots];
 
 	uint32_t dev_id0_[kNumSlots];
 	uint32_t dev_id1_[kNumSlots];
@@ -2323,6 +2325,7 @@ static int show_headers_versions(const struct image *image,
 			snprintf(ro_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
 				 "%d.%d.%d", sections[i].shv.epoch,
 				 sections[i].shv.major, sections[i].shv.minor);
+			ro_keyid[slot_idx] = sections[i].keyid;
 			/* No need to read board ID in an RO section. */
 			continue;
 		} else {
@@ -2330,6 +2333,7 @@ static int show_headers_versions(const struct image *image,
 			snprintf(rw_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
 				 "%d.%d.%d", sections[i].shv.epoch,
 				 sections[i].shv.major, sections[i].shv.minor);
+			rw_keyid[slot_idx] = sections[i].keyid;
 		}
 
 		/*
@@ -2396,7 +2400,9 @@ static int show_headers_versions(const struct image *image,
 		print_machine_output("IMAGE_DEVICE_TYPE", "%s",
 				     device_string(image->type));
 		print_machine_output("IMAGE_RO_FW_VER", "%s", ro_fw_ver[0]);
+		print_machine_output("IMAGE_RO_KEYID", "0x%08x", ro_keyid[0]);
 		print_machine_output("IMAGE_RW_FW_VER", "%s", rw_fw_ver[0]);
+		print_machine_output("IMAGE_RW_KEYID", "0x%08x", rw_keyid[0]);
 		print_machine_output("IMAGE_BID_STRING", "%s", bid_string[0]);
 		print_machine_output("IMAGE_BID_MASK", "%08x", bid[0].mask);
 		print_machine_output("IMAGE_BID_FLAGS", "%08x", bid[0].flags);
