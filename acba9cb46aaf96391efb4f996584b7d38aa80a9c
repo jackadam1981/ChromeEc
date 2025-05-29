@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f277f8a7_6e829bb3",
+        "filename": "zephyr/program/ocelot/ocelot_ite/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-29T19:51:15Z",
+      "side": 1,
+      "message": "`named-i2c-port` always requires an enum string; I just declared them all for completeness even though no legacy drivers will operate on many of these.",
+      "parentUuid": "52d8fd5f_109a14fe",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 30
+      },
+      "revId": "acba9cb46aaf96391efb4f996584b7d38aa80a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "add5bbff_684147f7",
         "filename": "zephyr/program/ocelot/ocelot_ite/i2c.dtsi",
         "patchSetId": 2
