@@ -22,6 +22,30 @@
       },
       "revId": "8b05c993f65a086a84ac09be0253f55a78730b56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd6d8b4_1e7dada2",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-05-29T09:05:56Z",
+      "side": 1,
+      "message": "I think it\u0027s the full 0x400-byte Cortex-M interrupt vector table (Initial SP, Reset_Handler, NMI_Handler, HardFault_Handler, and so on). RTS5915 has ~240 irq.",
+      "parentUuid": "e6918e39_1978cbeb",
+      "range": {
+        "startLine": 166,
+        "startChar": 53,
+        "endLine": 166,
+        "endChar": 60
+      },
+      "revId": "8b05c993f65a086a84ac09be0253f55a78730b56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
