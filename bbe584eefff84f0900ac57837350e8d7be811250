@@ -77,6 +77,30 @@
       ],
       "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8583304_7978e1cf",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-29T23:10:34Z",
+      "side": 1,
+      "message": "I see that `system_get_rtc_alarm` is defined in [src/platform/ec/zephyr/shim/src/rtc.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/rtc.c). Based on the [CMakeLists.txt](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/CMakeLists.txt) file, I need to define `CONFIG_PLATFORM_EC_RTC` to include it.\n\nI see your [system_set_rtc_alarm](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_system/cros_system_npcx.c) is utilizing `system_set_rtc_alarm`. Which source file does it use?",
+      "parentUuid": "634b7174_fa472a3e",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
