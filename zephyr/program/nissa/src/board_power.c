@@ -240,6 +240,11 @@ static int board_ap_power_s0_run(void *data)
 AP_POWER_APP_STATE_DEFINE(S0, NULL, board_ap_power_s0_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
+int power_signal_external_init(void)
+{
+	return 0;
+}
+
 int board_power_signal_get(enum power_signal signal)
 {
 	switch (signal) {

@@ -102,6 +102,11 @@ bool board_ap_power_check_power_rails_enabled(void)
 	       power_signal_get(PWR_EC_SOC_DSW_PWROK);
 }
 
+int power_signal_external_init(void)
+{
+	return 0;
+}
+
 int board_power_signal_get(enum power_signal signal)
 {
 	switch (signal) {

@@ -76,6 +76,11 @@ static int board_ap_power_action_g3_run(void *data)
 AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_action_g3_entry,
 			  board_ap_power_action_g3_run, NULL);
 
+int power_signal_external_init(void)
+{
+	return 0;
+}
+
 int board_power_signal_get(enum power_signal signal)
 {
 	switch (signal) {

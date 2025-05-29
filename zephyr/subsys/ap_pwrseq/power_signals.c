@@ -311,6 +311,9 @@ test_mockable void power_signal_init(void)
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ_SIGNAL_ADC)) {
 		power_signal_adc_init();
 	}
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ_SIGNAL_EXTERNAL)) {
+		power_signal_external_init();
+	}
 	/*
 	 * Initialise the mask with the current values.
 	 * This includes the outputs as well.

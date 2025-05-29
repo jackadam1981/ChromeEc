@@ -339,4 +339,6 @@ static inline int power_wait_signals_off_timeout(power_signal_mask_t want,
  */
 #define POWER_SIGNAL_MASK(signal) (1 << (signal))
 
+int power_signal_external_init(void);
+
 #endif /* __AP_PWRSEQ_POWER_SIGNALS_H__ */
