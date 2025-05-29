@@ -157,13 +157,19 @@ DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					       int channel_id)
 {
-	const char *thread_name = k_thread_name_get(k_current_get());
 	uint32_t exception_address = 0;
+	const char *thread_name;
+	if (IS_ENABLED(CONFIG_THREAD_NAME)) {
+		thread_name = k_thread_name_get(k_current_get());
+	} else {
+		thread_name = "unkonwn";
+	}
+	task_id_t task_id = task_get_current();
 
 #ifdef CONFIG_RISCV
 	exception_address = csr_read(mepc);
-	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
-	       (void *)exception_address, thread_name);
+	printk("WDT pre-warning MEPC:%p TASK_ID:%d THREAD_NAME:%s\n",
+	       (void *)exception_address, task_id, thread_name);
 #elif CONFIG_CPU_CORTEX_M
 	struct arch_esf *esf;
 	/*
@@ -171,12 +177,14 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	 * context, thus PSP will point to esf.
 	 */
 	__asm__ volatile("mrs %0, psp" : "=r"(esf));
-	printk("WDT pre-warning PC:%p LR:%p THREAD_NAME:%s\n",
-	       (void *)esf->basic.pc, (void *)esf->basic.lr, thread_name);
+	printk("WDT pre-warning PC:%p LR:%p TASK_ID:%d THREAD_NAME:%s\n",
+	       (void *)esf->basic.pc, (void *)esf->basic.lr, task_id,
+	       thread_name);
 	exception_address = esf->basic.pc;
 #else
 	/* TODO(b/176523207): watchdog warning message */
-	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
+	printk("Watchdog deadline is close! TASK_ID:%d THREAD_NAME:%s\n",
+	       task_id, thread_name);
 #endif
 #ifdef TEST_BUILD
 	wdt_warning_triggered = true;
@@ -192,8 +200,7 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	 * PANIC_SW_WATCHDOG in system_common_pre_init if a watchdog reset
 	 * occurs.
 	 */
-	panic_set_reason(PANIC_SW_WATCHDOG_WARN, exception_address,
-			 task_get_current());
+	panic_set_reason(PANIC_SW_WATCHDOG_WARN, exception_address, task_id);
 }
 
 __maybe_unused static void
