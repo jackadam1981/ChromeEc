@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * This file is auto-generated - do not edit!
+ * This file was auto-generated but contains manual edits
  */
 
 / {
@@ -154,17 +154,6 @@
 			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 		};
 	};
-
-	named-i2c-ports {
-		compatible = "named-i2c-ports";
-
-		i2c_ec_i2c_pd_scl_r: ec_i2c_pd_scl_r {
-			i2c-port = <&i2c0_0>;
-		};
-		i2c_ec_i2c_mi: ec_i2c_mi {
-			i2c-port = <&i2c2_0>;
-		};
-	};
 };
 
 &adc0 {
@@ -182,9 +171,21 @@
 	pinctrl-names = "default";
 };
 
+&i2c1_0 {
+	status = "okay";
+	pinctrl-0 = <&i2c1_0_sda_scl_gp87_90>;
+	pinctrl-names = "default";
+};
+
 &i2c2_0 {
 	status = "okay";
 	pinctrl-0 = <&i2c2_0_sda_scl_gp91_92>;
+	pinctrl-names = "default";
+};
+
+&i2c5_0 {
+	status = "okay";
+	pinctrl-0 = <&i2c5_0_sda_scl_gp33_36>;
 	pinctrl-names = "default";
 };
 
@@ -192,7 +193,15 @@
 	status = "okay";
 };
 
+&i2c_ctrl1 {
+	status = "okay";
+};
+
 &i2c_ctrl2 {
+	status = "okay";
+};
+
+&i2c_ctrl5 {
 	status = "okay";
 };
 

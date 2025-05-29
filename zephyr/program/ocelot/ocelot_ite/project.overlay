@@ -9,14 +9,25 @@
 
 /* ocelot_ite project DTS includes */
 
-/* TODO(b/358612639)
- * Arbitrage generates an incorrect node label when using alternate pins.
- * Create a 2nd node label on I2C3 as a workaround.
+#include "generated.dtsi"
+
+/*
+ * Map I2C buses to common names
  */
-i2c3ALT: &i2c3 {
+
+i2c_port_pd1: &i2c1 {
 };
 
-#include "generated.dtsi"
+i2c_port_pd2: &i2c3 {
+};
+
+i2c_port_charger: &i2c4 {
+};
+
+i2c_port_ish: &i2c5 {
+};
+
+#include "../rvp_i2c.dtsi"
 
 /* ocelot_ite overrides follow... */
 / {
@@ -34,7 +45,6 @@ i2c3ALT: &i2c3 {
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
-/delete-node/ &{/named-i2c-ports};
 
 &pwm1 {
 	status = "disabled";

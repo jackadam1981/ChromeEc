@@ -9,7 +9,25 @@
 
 /* ocelot_nuvoton project DTS includes */
 #include "generated.dtsi"
-#include "i2c.dtsi"
+
+/*
+ * Map I2C buses to common names
+ */
+
+i2c_port_pd1: &i2c0_0 {
+};
+
+i2c_port_pd2: &i2c1_0 {
+};
+
+i2c_port_charger: &i2c2_0 {
+};
+
+i2c_port_ish: &i2c5_0 {
+};
+
+
+#include "../rvp_i2c.dtsi"
 
 /* ocelot_nuvoton overrides follow... */
 / {
