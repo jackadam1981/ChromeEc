@@ -164,6 +164,16 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	exception_address = csr_read(mepc);
 	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
 	       (void *)exception_address, thread_name);
+#elif CONFIG_CPU_CORTEX_M
+	struct arch_esf *esf;
+	/*
+	 * Watchdog warning should only be triggered while executing in thread
+	 * context, thus PSP will point to esf.
+	 */
+	__asm__ volatile("mrs %0, psp" : "=r"(esf));
+	printk("WDT pre-warning PC:%p LR:%p THREAD_NAME:%s\n",
+	       (void *)esf->basic.pc, (void *)esf->basic.lr, thread_name);
+	exception_address = esf->basic.pc;
 #else
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
