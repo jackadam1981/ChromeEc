@@ -51,7 +51,6 @@
 #else
 #define EXTRA_PANIC_REG_LIST(M, M_GPR)
 #endif
-/* TODO(b/245423691): Copy other status registers (e.g. CFSR) when available. */
 #define PANIC_REG_LIST(M, M_GPR)          \
 	M_GPR(basic.r0, cm.frame[0], a1)  \
 	M_GPR(basic.r1, cm.frame[1], a2)  \
@@ -65,6 +64,79 @@
 #define PANIC_REG_EXCEPTION(pdata) pdata->cm.regs[1]
 #define PANIC_REG_REASON(pdata) pdata->cm.regs[3]
 #define PANIC_REG_INFO(pdata) pdata->cm.regs[4]
+
+/* The CFSR is translated into an k_fatal_error_reason_arch reason then cleared.
+ * This function makes a best effort to translate k_fatal_error_reason_arch
+ * reason back into CFSR to align with cortex_panic_data (see b/245423691).
+ */
+uint32_t fatal_error_reason_to_cfsr(enum k_fatal_error_reason_arch reason)
+{
+	switch (reason) {
+	/* Translated in `mem_manage_fault()` */
+	case K_ERR_ARM_MEM_STACKING:
+		return SCB_CFSR_MSTKERR_Msk;
+	case K_ERR_ARM_MEM_UNSTACKING:
+		return SCB_CFSR_MSTKERR_Msk;
+	case K_ERR_ARM_MEM_DATA_ACCESS:
+		return SCB_CFSR_DACCVIOL_Msk;
+	case K_ERR_ARM_MEM_INSTRUCTION_ACCESS:
+		return SCB_CFSR_IACCVIOL_Msk;
+	case K_ERR_ARM_MEM_FP_LAZY_STATE_PRESERVATION:
+		return SCB_CFSR_MLSPERR_Msk;
+	/* Translated in `bus_fault()` */
+	case K_ERR_ARM_BUS_STACKING:
+		return SCB_CFSR_STKERR_Msk;
+	case K_ERR_ARM_BUS_UNSTACKING:
+		return SCB_CFSR_UNSTKERR_Msk;
+	case K_ERR_ARM_BUS_PRECISE_DATA_BUS:
+		return SCB_CFSR_PRECISERR_Msk;
+	case K_ERR_ARM_BUS_IMPRECISE_DATA_BUS:
+		return SCB_CFSR_IMPRECISERR_Msk;
+	case K_ERR_ARM_BUS_INSTRUCTION_BUS:
+		return SCB_CFSR_IBUSERR_Msk;
+	case K_ERR_ARM_BUS_FP_LAZY_STATE_PRESERVATION:
+		return SCB_CFSR_MLSPERR_Msk;
+	/* Translated in `usage_fault()` */
+	case K_ERR_ARM_USAGE_DIV_0:
+		return SCB_CFSR_DIVBYZERO_Msk;
+	case K_ERR_ARM_USAGE_UNALIGNED_ACCESS:
+		return SCB_CFSR_UNALIGNED_Msk;
+	case K_ERR_ARM_USAGE_STACK_OVERFLOW:
+#if defined(CONFIG_ARMV8_M_MAINLINE)
+	case K_ERR_ARM_USAGE_STACK_OVERFLOW:
+		return SCB_CFSR_STKOF_Msk;
+#if defined(CONFIG_BUILTIN_STACK_GUARD)
+	case K_ERR_STACK_CHK_FAIL:
+	return SCB_CFSR_STKOF_Msk
+#endif /* CONFIG_BUILTIN_STACK_GUARD */
+#endif /* CONFIG_ARMV8_M_MAINLINE */
+		case K_ERR_ARM_USAGE_NO_COPROCESSOR:
+		return SCB_CFSR_NOCP_Msk;
+	case K_ERR_ARM_USAGE_ILLEGAL_EXC_RETURN:
+		return SCB_CFSR_INVPC_Msk;
+	case K_ERR_ARM_USAGE_ILLEGAL_EPSR:
+		return SCB_CFSR_INVSTATE_Msk;
+	case K_ERR_ARM_USAGE_UNDEFINED_INSTRUCTION:
+		return SCB_CFSR_UNDEFINSTR_Msk;
+		default:
+			// Return -1 to make it clear cfsr is not valid
+			return -1;
+	}
+}
+
+void set_special_arm_registers(enum k_fatal_error_reason_arch reason,
+			       struct panic_data *pdata)
+{
+	pdata->cm.cfsr = fatal_error_reason_to_cfsr(reason);
+	/* Set these special registers to -1 to make it clear they are not valid
+	 */
+	pdata->cm.bfar = -1;
+	pdata->cm.mfar = -1;
+	pdata->cm.shcsr = -1;
+	pdata->cm.hfsr = -1;
+	pdata->cm.dfsr = -1;
+}
+
 #elif defined(CONFIG_RISCV) && !defined(CONFIG_64BIT)
 /*
  * Not all registers are passed in the context from Zephyr
@@ -142,6 +214,7 @@ void panic_data_print(const struct panic_data *pdata)
 
 #if !defined(CONFIG_ZTEST_FATAL_HOOK)
 static void copy_esf_to_panic_data(const struct arch_esf *esf,
+				   unsigned int reason,
 				   struct panic_data *pdata)
 {
 	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
@@ -155,6 +228,9 @@ static void copy_esf_to_panic_data(const struct arch_esf *esf,
 	pdata->magic = PANIC_DATA_MAGIC;
 
 	PANIC_REG_LIST(PANIC_COPY_REGS, PANIC_COPY_REGS_GPR);
+#if defined(CONFIG_ARM)
+	set_special_arm_registers(reason, pdata);
+#endif
 }
 
 void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
@@ -170,7 +246,7 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 	}
 
 	if ((PANIC_ARCH != PANIC_ARCH_UNSUPPORTED) && esf) {
-		copy_esf_to_panic_data(esf, pdata);
+		copy_esf_to_panic_data(esf, reason, pdata);
 		if (!IS_ENABLED(CONFIG_LOG)) {
 			panic_data_print(panic_get_data());
 		}
