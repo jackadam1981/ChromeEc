@@ -518,6 +518,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bdbe451_5fcbce7c",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-05-29T22:06:46Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t understand this, can you help me understand which bug we\u0027re chasing with this line of questioning? \n\nZephyr should be taking the clock into account when calculating timing, so we shouldn\u0027t need to do any workarounds like this in our code.\n\ni.e., this calculation should correctly calculate the number of microseconds that of two ticks of the sysclock:\n\n```\n\t/* The sleep duration is adjusted to the system tick boundaries. */\n\t/* The maximum error threshold is two ticks. */\n\tint error_threshold \u003d\n\t\t(USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC) * 2;\n```\n\nHave we validated that this is correct when `CONFIG_SYS_CLOCK_TICKS_PER_SEC` is `10000`? If the underlying clock can\u0027t actually do the resolution that we\u0027re specifying in `CONFIG_SYS_CLOCK_TICKS_PER_SEC`, then it may need to have a different value. But according to the comment LFCLK can run at 32768 Hz (ticks / sec), so the value should work. I would double-check that the clock is being configured correctly.",
+      "parentUuid": "b552b42c_9954990e",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "bfc398d7035604c2d5071f5d97e39c3ce10bd833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ce73b30_3c70bdf6",
         "filename": "zephyr/test/hwtest/src/timer.c",
         "patchSetId": 3
