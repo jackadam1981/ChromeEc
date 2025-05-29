@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0712e77_fb50d33c",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-05-29T22:58:50Z",
+      "side": 1,
+      "message": "add task_id",
+      "range": {
+        "startLine": 171,
+        "startChar": 32,
+        "endLine": 171,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d88bdc22_ac0a46be",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/src/watchdog.c",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 172,
+                "endChar": 0
+              },
+              "replacement": "\t       (void *)exception_address, task_id, thread_name);\n"
+            },
+            {
+              "path": "zephyr/shim/src/watchdog.c",
+              "range": {
+                "startLine": 180,
+                "startChar": 0,
+                "endLine": 182,
+                "endChar": 0
+              },
+              "replacement": "\t       (void *)esf-\u003ebasic.pc, (void *)esf-\u003ebasic.lr,\n\t       task_id, thread_name);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "44de2f4cec61aa2d92e3cadb384ce8a0dac9b623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
