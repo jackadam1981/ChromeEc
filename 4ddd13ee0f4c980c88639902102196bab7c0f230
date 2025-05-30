@@ -69,6 +69,24 @@
       "parentUuid": "138cbdb3_b24c9cf9",
       "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94905987_04f345f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-05-30T12:40:32Z",
+      "side": 1,
+      "message": "\u003e would use be pulling out key\u003dvalue between newlines.\n\nI kind of agree. I don\u0027t know of any tests. Just to be safe you could group the KEYID output together above IMAGE_RO_FW_VER.",
+      "parentUuid": "147acbe4_e4744f92",
+      "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
