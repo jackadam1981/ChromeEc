@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb01dff_2c71f434",
+        "filename": "zephyr/test/extpower/src/extpower.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-30T20:53:05Z",
+      "side": 1,
+      "message": "Should this be derived from `CONFIG_PLATFORM_EC_EXTPOWER_DEBOUNCE_MS`?",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "61f5ff1612b8686f30c8664465138cb3fd8283d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
