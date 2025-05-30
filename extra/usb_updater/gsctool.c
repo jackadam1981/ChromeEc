@@ -348,6 +348,66 @@ struct typed_image_header {
 	};
 };
 
+/* Describes a product (e.g. board id) constraint in NT firmware images */
+struct product_constraint {
+	/* The AND mask to apply before validating the value field. */
+	uint32_t mask;
+	/* The value that INFO page must contain after applying AND mask. */
+	uint32_t value;
+};
+
+/*
+ * Describes Integrator Specific Firmware Bindings (ISFB) for NT firmware
+ * that need to be met for it to be valid to run on a chip. This is not
+ * contained within the image header itself.
+ */
+struct isfb_data {
+	/* The id of extension. Should be "ISFB" in ASCII to be valid. */
+	uint32_t id;
+	/* The description of extension. Will be "ISFB" in ASCII. */
+	uint32_t descriptor;
+	/* The 128 rollback bits stores in LE byte order. */
+	uint32_t rollback[4];
+	/* The number of struct product_constraint that follow. */
+	uint32_t product_constraint_count;
+	/* Product constraints required to match to allow image to run. */
+	struct product_constraint constraints[];
+};
+
+/* Returns a pointer within the overall image to the ISFB data if it exists */
+static const struct isfb_data *get_isfb_data(const struct SignedManifest *m)
+{
+	const uint32_t ISFB_ID = 0x42465349; /* ASCII "ISFB" */
+	int i;
+
+	for (i = 0; i < 15; ++i) {
+		/* Find extension with correct ID */
+		if (m->extensions[i].id != ISFB_ID)
+			continue;
+
+		/* That has reasonable offset */
+		if (m->extensions[i].offset >= m->length) {
+			fprintf(stderr, "Bad extension offset 0x%08x\n",
+				m->extensions[i].offset);
+			return NULL;
+		}
+		const struct isfb_data *result =
+			(const struct isfb_data *)((uintptr_t)m +
+						   (uintptr_t)m->extensions[i]
+							   .offset);
+
+		/* And the extension data is also for ISFB */
+		if (result->id != ISFB_ID) {
+			fprintf(stderr, "Bad extension ID 0x%08x\n",
+				result->id);
+			return NULL;
+		}
+		return result;
+	}
+
+	return NULL;
+}
+
 /*
  * Structure used to combine option description used by getopt_long() and help
  * text for the option.
@@ -2364,14 +2424,40 @@ static int show_headers_versions(const struct image *image,
 			dev_id0_[slot_idx] = h.h->dev_id0_;
 			dev_id1_[slot_idx] = h.h->dev_id1_;
 		} else if (h.type == GSC_DEVICE_NT) {
+			/* Constraint order is the same as INFO page order */
+			const struct isfb_data *isfb = get_isfb_data(h.m);
+
 			/*
-			 * TODO(b/341348812): Get BID info from signed manifest
-			 * header.
+			 * Start with will no constraints, and replace if ISFB
+			 * constraint is present
 			 */
-			fprintf(stderr, "BID info not support on NT yet.\n");
-			bid[slot_idx].id = -1;
-			bid[slot_idx].mask = -1;
-			bid[slot_idx].flags = -1;
+			bid[slot_idx].id = 0;
+			bid[slot_idx].mask = 0;
+			bid[slot_idx].flags = 0;
+
+			/* Pull BID mask and values from first constraint */
+			if (isfb != NULL &&
+			    isfb->product_constraint_count >= 1) {
+				bid[slot_idx].id = isfb->constraints[0].value;
+				bid[slot_idx].mask = isfb->constraints[0].mask;
+			}
+
+			/* Pull BID flags from third constraint */
+			if (isfb != NULL &&
+			    isfb->product_constraint_count >= 3) {
+				bid[slot_idx].flags =
+					isfb->constraints[2].mask &
+					isfb->constraints[2].value;
+			} else {
+				/*
+				 * A typical prod and dev image should contain
+				 * all 3 constraints so report an informational
+				 * error even though we correctly treat the
+				 * image as having no constraints.
+				 */
+				fprintf(stderr,
+					"Image did not contain expected constraints\n");
+			}
 
 			/* Check if devid constraints are being enforced */
 			if (h.m->constraint_selector_bits & 0x6) {
