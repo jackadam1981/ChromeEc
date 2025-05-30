@@ -53,11 +53,6 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "extpower_interrupt";
 		};
-		int_ap_bl_en: int_ap_bl_en{
-			irq-pin = <&gpio_ap_bl_en_odl>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "ap_bl_en_interrupt";
-		};
 		int_lid_imu: int-lid-imu {
 			irq-pin = <&gpio_acc_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
@@ -74,9 +69,12 @@
 		compatible = "unused-gpios";
 		unused-gpios =
 			<&gpioa 0 0>,
+			<&gpioc 0 0>,
 			<&gpiod 4 0>,
+			<&gpiof 0 0>,
 			<&gpioh 6 0>,
-			<&gpioj 7 0>;
+			<&gpioj 7 0>,
+			<&gpiom 6 0>;
 	};
 
 	temp_5v: 5v {
