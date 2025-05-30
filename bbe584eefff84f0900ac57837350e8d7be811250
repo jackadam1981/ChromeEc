@@ -125,6 +125,54 @@
       },
       "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439ba78e_a76ad4c0",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-30T05:10:19Z",
+      "side": 1,
+      "message": "it also seems that `CONFIG_PLATFORM_EC_RTC` depends on [\tdepends on $(dt_chosen_enabled,$(CHOSEN_CROS_RTC))](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig;l\u003d807?q\u003dplatform%2Fec%2Fzephyr%2FKcon\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d806-,807,-808). Is this available in the npcx9 board.\n\nEven if I add the Platform_EC_RTC config, it will be overridden if that node did not exist.",
+      "parentUuid": "b0ba0b08_8adaf1d3",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723b6693_405736c2",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-05-30T05:10:19Z",
+      "side": 1,
+      "message": "it looks like the `npcx9` board has the rtc node.\n```\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec/build $ more ./zephyr/npcx9/build-rw/zephyr/.config | grep RTC\nCONFIG_CROS_RTC_NPCX\u003dy\nCONFIG_PLATFORM_EC_CONSOLE_CMD_RTC\u003dy\n# CONFIG_PLATFORM_EC_CONSOLE_CMD_RTC_ALARM is not set\n# CONFIG_PLATFORM_EC_HOSTCMD_RTC is not set\nCONFIG_PLATFORM_EC_RTC\u003dy\n# CONFIG_RTC is not set\n```",
+      "parentUuid": "634b7174_fa472a3e",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
