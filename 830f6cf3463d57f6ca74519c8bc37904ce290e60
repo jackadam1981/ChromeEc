@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b73312_c46077a5",
+        "filename": "zephyr/program/ocelot/ocelot_ite/gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-30T21:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b650acae_b512fe26",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 35
+      },
+      "revId": "830f6cf3463d57f6ca74519c8bc37904ce290e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52f6682b_7fca9624",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd530db_fddfeab3",
+        "filename": "zephyr/program/ocelot/ocelot_ite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-30T21:00:08Z",
+      "side": 1,
+      "message": "This comes from rvp_interrupts.dtsi, so this is needed until power button is added to ITE.",
+      "parentUuid": "52f6682b_7fca9624",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "830f6cf3463d57f6ca74519c8bc37904ce290e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee1d33de_b9a1812d",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-05-30T16:34:28Z",
       "side": 1,
       "message": "Delete from generated.dtsi",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "830f6cf3463d57f6ca74519c8bc37904ce290e60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccd3e91_6d2a6ab3",
+        "filename": "zephyr/program/ocelot/ocelot_nuvoton/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-05-30T21:00:08Z",
+      "side": 1,
+      "message": "This will be dropped once power button is added to Nuvoton",
+      "parentUuid": "ee1d33de_b9a1812d",
       "range": {
         "startLine": 33,
         "startChar": 0,
