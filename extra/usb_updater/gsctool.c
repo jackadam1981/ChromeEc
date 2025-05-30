@@ -1526,6 +1526,19 @@ static void pick_sections(struct transfer_descriptor *td, struct image *image)
 		/* Skip currently active RO section. */
 		if (offset != td->ro_offset)
 			continue;
+
+		/*
+		 * Block NT (Z1/A1 -> A2) RO update via signing keyids.
+		 * TODO(b/409779012): Remove this check after Q3 2025.
+		 */
+		const uint32_t KEYID_NT_A2 = 0xd4fd1f25;
+		const uint32_t KEYID_NT_Z1_A1 = 0x942f7f53;
+
+		if (sections[i].keyid == KEYID_NT_A2 &&
+		    targ.keyid[0] == KEYID_NT_Z1_A1) {
+			printf("NT RO Z1/A1 -> A2 transition skipped\n");
+			continue;
+		}
 		/*
 		 * Ok, this would be the RO section to transfer to the device.
 		 * Is it newer in the new image than the running RO section on
