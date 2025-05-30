@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dde2d66_500f79a2",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-05-30T16:22:14Z",
+      "side": 1,
+      "message": "I think it is would have been pretty safe to check if the running ROM_EXT is Z1_A1, and the new ROM_EXT is not, without using any particular value. Just in case the ROM_EXT signing key changes again.",
+      "revId": "bb19a69c74c3af723b2e8d594052f8dbe526e996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
