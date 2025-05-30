@@ -36,6 +36,7 @@ common-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 common-$(CONFIG_BASE32)+=base32.o
 common-$(CONFIG_BASE64)+=base64.o
+common-${CONFIG_BOARD_ID_FEATURES} += board_id_features.o
 common-$(CONFIG_DETACHABLE_BASE)+=base_state.o
 common-$(CONFIG_CAPSENSE)+=capsense.o
 common-$(CONFIG_CASE_CLOSED_DEBUG_V1)+=ccd_config.o
