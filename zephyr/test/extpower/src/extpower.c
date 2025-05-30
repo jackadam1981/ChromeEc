@@ -23,30 +23,53 @@ static void test_ac_change_hook(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, test_ac_change_hook, HOOK_PRIO_DEFAULT);
 
-static void set_ac(int on)
+static void set_ac(int on, bool wait)
 {
 	gpio_emul_input_set(acok_gpio_dev, acok_pin, on);
-	k_msleep(CONFIG_PLATFORM_EC_EXTPOWER_DEBOUNCE_MS * 10);
+
+	if (wait) {
+		k_msleep(CONFIG_PLATFORM_EC_EXTPOWER_DEBOUNCE_MS * 10);
+	}
 }
 
 ZTEST(extpower, test_extpower_gpio)
 {
-	set_ac(0);
+	set_ac(0, true);
 	ac_hook_count = 0;
 
 	host_clear_events(0xFFFFFFFF);
 
-	set_ac(1);
+	set_ac(1, true);
 	zassert_equal(ac_hook_count, 1);
 	zassert_equal(extpower_is_present(), 1);
 
 	zassert_true(host_is_event_set(EC_HOST_EVENT_AC_CONNECTED));
 
-	set_ac(0);
+	set_ac(0, true);
 	zassert_equal(ac_hook_count, 2);
 	zassert_equal(extpower_is_present(), 0);
 
 	zassert_true(host_is_event_set(EC_HOST_EVENT_AC_DISCONNECTED));
+}
+
+ZTEST(extpower, test_extpower_gpio_debounce)
+{
+	/* Verify that changes to AC OK that are less than the debounce time
+	 * do not generate HOOK or HOSTCMD events.
+	 */
+	set_ac(0, true);
+	ac_hook_count = 0;
+
+	host_clear_events(0xFFFFFFFF);
+
+	set_ac(1, false);
+	k_msleep(CONFIG_PLATFORM_EC_EXTPOWER_DEBOUNCE_MS / 2);
+	set_ac(0, true);
+
+	zassert_equal(ac_hook_count, 0);
+
+	zassert_false(host_is_event_set(EC_HOST_EVENT_AC_CONNECTED));
+	zassert_false(host_is_event_set(EC_HOST_EVENT_AC_DISCONNECTED));
 }
 
 ZTEST_SUITE(extpower, NULL, NULL, NULL, NULL, NULL);
