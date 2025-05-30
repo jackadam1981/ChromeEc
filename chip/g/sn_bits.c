@@ -260,13 +260,13 @@ print_sn_data:
 
 	return rv;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(sn,
-			     command_sn, ""
+DECLARE_CONSOLE_COMMAND(sn,
+			command_sn, ""
 #ifdef CR50_DEV
-			     "[(sn0 sn1 sn2) | (rmainc n)]"
+			"[(sn0 sn1 sn2) | (rmainc n)]"
 #endif
-			     , "Get"
+			, "Get"
 #ifdef CR50_DEV
-			     "/Set"
+			"/Set"
 #endif
-			     " Serial Number Data");
+			" Serial Number Data");
