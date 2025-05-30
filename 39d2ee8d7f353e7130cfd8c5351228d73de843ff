@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cceb2a04_51571148",
+        "filename": "zephyr/program/ocelot/battery.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-30T17:05:25Z",
+      "side": 1,
+      "message": "Let\u0027s call this rvp_battery.dtsi",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 2
+      },
+      "revId": "39d2ee8d7f353e7130cfd8c5351228d73de843ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07b5f04_c38e0e0e",
+        "filename": "zephyr/program/ocelot/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-05-30T17:05:25Z",
+      "side": 1,
+      "message": "Rebase on https://crrev.com/c/6604219/1",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "39d2ee8d7f353e7130cfd8c5351228d73de843ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
