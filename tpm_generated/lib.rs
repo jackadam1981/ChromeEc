@@ -31,11 +31,59 @@ pub mod trunks {
 
         include!("ffi.h");
 
+        /// Encrypts data for an attestation CA. The CA's public key is passed
+        /// in as an input. The output values correspond to the EncryptedData
+        /// protobuf in attestation_ca.proto. Returns true on success and false
+        /// on failure.
+        fn EncryptDataForCa(
+            data: &CxxString,
+            public_key_hex: &CxxString,
+            key_id: &CxxString,
+            wrapped_key: Pin<&mut CxxString>,
+            iv: Pin<&mut CxxString>,
+            mac: Pin<&mut CxxString>,
+            encrypted_data: Pin<&mut CxxString>,
+            wrapping_key_id: Pin<&mut CxxString>,
+        ) -> bool;
+
+        /// Creates a new HmacAuthorizationDelegate. On error, logs an error
+        /// message and returns a null unique_ptr.
+        fn HmacAuthorizationDelegate_New(
+            session_handle: u32,
+            tpm_nonce: &CxxString,
+            caller_nonce: &CxxString,
+            salt: &CxxString,
+            bind_auth_value: &CxxString,
+            enable_parameter_encryption: bool,
+        ) -> UniquePtr<AuthorizationDelegate>;
+
         /// Constructs a new PasswordAuthorizationDelegate with the given
         /// password.
         fn PasswordAuthorizationDelegate_New(
             password: &CxxString,
         ) -> UniquePtr<AuthorizationDelegate>;
+
+        /// Wraps Tpm::SerializeCommand_ActivateCredential. Serializes the
+        /// TPM2_ActivateCredential command.
+        fn SerializeCommand_ActivateCredential(
+            activate_handle: &u32,
+            activate_handle_name: &CxxString,
+            key_handle: &u32,
+            key_handle_name: &CxxString,
+            credential_mac: &CxxString,
+            wrapped_key: &CxxString,
+            secret: &CxxString,
+            serialized_command: Pin<&mut CxxString>,
+            key_authorization: Pin<&mut AuthorizationDelegate>,
+        ) -> u32;
+
+        /// Wraps Tpm::ParseResponse_ActivateCredential. Parses the response of
+        /// a TPM2_ActivateCredential command.
+        fn ParseResponse_ActivateCredential(
+            response: &CxxString,
+            cert_info: Pin<&mut CxxString>,
+            key_authorization: Pin<&mut AuthorizationDelegate>,
+        ) -> u32;
 
         /// See Tpm::SerializeCommand_Create for docs.
         fn SerializeCommand_Create(
@@ -159,6 +207,32 @@ pub mod trunks {
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
+        /// See Tpm::SerializeCommand_PolicySecret for docs.
+        fn SerializeCommand_PolicySecret(
+            auth_handle: &u32,
+            auth_handle_name: &CxxString,
+            policy_session: &u32,
+            policy_session_name: &CxxString,
+            nonce_tpm: &CxxString,
+            cp_hash_a: &CxxString,
+            policy_ref: &CxxString,
+            expiration: &u32,
+            serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: Pin<&mut UniquePtr<AuthorizationDelegate>>,
+        ) -> u32;
+
+        /// Wraps Tpm::ParseResponse_PolicySecret. Parses the response from a
+        /// TPM2_PolicySecret command.
+        /// authorization_delegate is nullable.
+        fn ParseResponse_PolicySecret(
+            response: &CxxString,
+            timeout: Pin<&mut CxxString>,
+            policy_ticket_tag: &mut u16,
+            policy_ticket_hierarchy: &mut u32,
+            policy_ticket_digest: Pin<&mut CxxString>,
+            authorization_delegate: Pin<&mut UniquePtr<AuthorizationDelegate>>,
+        ) -> u32;
+
         /// See Tpm::SerializeCommand_Quote for docs.
         fn SerializeCommand_Quote(
             sign_handle: &u32,
@@ -194,6 +268,28 @@ pub mod trunks {
             authorization_delegate: &UniquePtr<AuthorizationDelegate>,
         ) -> u32;
 
+        /// See Tpm::SerializeCommand_StartAuthSession for docs.
+        fn SerializeCommand_StartAuthSession(
+            tpm_key: &u32,
+            tpm_key_name: &CxxString,
+            bind: &u32,
+            bind_name: &CxxString,
+            nonce_caller: &CxxString,
+            encrypted_salt: &CxxString,
+            session_type: &u8,
+            auth_hash: &u16,
+            serialized_command: Pin<&mut CxxString>,
+            authorization_delegate: Pin<&mut UniquePtr<AuthorizationDelegate>>,
+        ) -> u32;
+
+        /// See Tpm::ParseResponse_StartAuthSession for docs.
+        fn ParseResponse_StartAuthSession(
+            response: &CxxString,
+            session_handle: &mut u32,
+            nonce_tpm: Pin<&mut CxxString>,
+            authorization_delegate: Pin<&mut UniquePtr<AuthorizationDelegate>>,
+        ) -> u32;
+
         /// Returns a serialized representation of the unmodified handle. This
         /// is useful for predefined handle values, like TPM_RH_OWNER. For
         /// details on what types of handles use this name formula see Table 3
@@ -212,8 +308,19 @@ pub mod trunks {
         /// Returns the public area template for the Attestation Identity Key.
         fn AttestationIdentityKeyTemplate() -> UniquePtr<TPM2B_PUBLIC>;
 
+        /// Returns the public area template for the Endorsement Key.
+        fn EndorsementKeyTemplate() -> UniquePtr<TPM2B_PUBLIC>;
+
         /// Returns the public area template for the Storage Root Key.
         fn StorageRootKeyTemplate() -> UniquePtr<TPM2B_PUBLIC>;
+
+        /// Converts a serialized TPM2B_PUBLIC (as returned by
+        /// ParseResponse_Create) into a serialized TPMT_PUBLIC (as required by
+        /// the attestation CA).
+        fn Tpm2bPublicToTpmtPublic(
+            tpm2b_public: &CxxString,
+            tpmt_public: Pin<&mut CxxString>,
+        ) -> u32;
 
         /// Creates a new TPM2B_SENSITIVE_CREATE with the given auth and data
         /// values.
