@@ -105,6 +105,42 @@
       "parentUuid": "94905987_04f345f5",
       "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1bbccf_5296a2fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-05-30T16:40:48Z",
+      "side": 1,
+      "message": "The consensus is to leave the non-machine output untouched as to not break any unknown script that is depending on the format. We can always update later if we feel like we are missing this information.",
+      "parentUuid": "4604542e_8e7243ae",
+      "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c89891_f380ed13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-05-30T16:40:48Z",
+      "side": 1,
+      "message": "Sounds good, thank you.\n\nI will land it as is since I think there is value in having the `RO_*` fields group together and I have already tested this version :)",
+      "parentUuid": "91c5b367_410025f0",
+      "revId": "4ddd13ee0f4c980c88639902102196bab7c0f230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
