@@ -12,5 +12,12 @@ add_subdirectory(${PLATFORM_EC}/zephyr/test/test_utils test_utils)
 
 target_sources(app PRIVATE
   src/main.c
-  src/extpower.c
+  src/acok_emul.c
   )
+
+target_sources_ifdef(CONFIG_LINK_TEST_SUITE_EXTPOWER_DEFAULT app
+  PRIVATE src/extpower.c
+  )
+
+target_sources_ifdef(CONFIG_LINK_TEST_SUITE_EXTPOWER_INIT app
+  PRIVATE src/extpower_init.c)
