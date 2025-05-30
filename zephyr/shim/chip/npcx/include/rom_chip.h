@@ -36,6 +36,10 @@ enum API_RETURN_STATUS_T {
 	API_RET_STATUS_INVALID_EXE_ADDR = 8,
 	/* Bad CRC value */
 	API_RET_STATUS_INVALID_SIGNATURE = 9,
+	/* OTP API succeeded */
+	API_RET_OTP_STATUS_OK = 0xA5A5,
+	/* OTP API failed */
+	API_RET_OTP_STATUS_FAIL = 0x5A5A
 };
 
 /******************************************************************************/
@@ -54,5 +58,28 @@ enum API_RETURN_STATUS_T {
 void download_from_flash(uint32_t src_offset, uint32_t dest_addr, uint32_t size,
 			 enum API_SIGN_OPTIONS_T sign, uint32_t exe_addr,
 			 enum API_RETURN_STATUS_T *status);
+
+/**
+ * @param on true: OTP hardware on, false: OTP hardware off.
+ */
+enum API_RETURN_STATUS_T otpi_power(bool on);
+
+/**
+ * @param address OTP address to read from.
+ * @param data pointer to 8-bit variable to store read data.
+ */
+enum API_RETURN_STATUS_T otpi_read(uint32_t address, uint8_t *data);
+
+/**
+ * @param address OTP address to write to.
+ * @param data 8-bit data value.
+ */
+enum API_RETURN_STATUS_T otpi_write(uint32_t address, uint8_t data);
+
+/**
+ * @param address OTP address to protect, 16B aligned.
+ * @param size Number of bytes to be protected, 16B aligned.
+ */
+enum API_RETURN_STATUS_T otpi_write_protect(uint32_t address, uint32_t size);
 
 #endif /* __CROS_EC_ROM_CHIP_H */
