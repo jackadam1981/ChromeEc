@@ -59,10 +59,6 @@
 		gpio_ec_kb_bl_pwm: ec_kb_bl_pwm {
 			gpios = <&gpioc 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
-		gpio_ec_mech_pwr_btn_l: ec_mech_pwr_btn_l {
-			gpios = <&gpio0 0 (GPIO_INPUT)>;
-			enum-name = "GPIO_POWER_BUTTON_L";
-		};
 		gpio_ec_pch_sys_pwrok: ec_pch_sys_pwrok {
 			gpios = <&gpio9 7 (GPIO_INPUT)>;
 		};
@@ -119,6 +115,11 @@
 		gpio_lid_open: lid_open {
 			gpios = <&gpio0 1 (GPIO_INPUT)>;
 			enum-name = "GPIO_LID_OPEN";
+		};
+		gpio_mech_pwr_btn_odl: mech_pwr_btn_odl {
+			// signal name was manually overriden from "ec_mech_pwr_btn_l"
+			gpios = <&gpio0 0 (GPIO_INPUT)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
 		};
 		gpio_pca_int_l: pca_int_l {
 			gpios = <&gpiod 3 (GPIO_INPUT)>;
