@@ -52,9 +52,6 @@
 		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
 			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
 		};
-		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
-			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
-		};
 		gpio_c_ec_snr_alrt1: c_ec_snr_alrt1 {
 			// signal name was manually overriden from "bga_pinc1"
 			gpios = <&gpiof 7 (GPIO_INPUT)>;
@@ -63,11 +60,11 @@
 			// signal name was manually overriden from "bga_pinb1"
 			gpios = <&gpiof 6 (GPIO_INPUT)>;
 		};
+		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
+			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
 		gpio_c_edp_bklt_en_r: c_edp_bklt_en_r {
 			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
-		};
-		gpio_c_en_pp5000_typea_r: c_en_pp5000_typea_r {
-			gpios = <&gpiof 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
 		gpio_c_gsc_ec_pwr_btn_n: c_gsc_ec_pwr_btn_n {
 			// signal name was manually overriden from "bga_pinb4"
@@ -89,6 +86,10 @@
 		};
 		gpio_ec_slatemode_hallout_snsr_r: ec_slatemode_hallout_snsr_r {
 			gpios = <&gpiod 1 (GPIO_INPUT)>;
+		};
+		gpio_en_pp5000_usba: en_pp5000_usba {
+			// signal name was manually overriden from "c_en_pp5000_typea_r"
+			gpios = <&gpiof 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
 		gpio_en_slp_z_r: en_slp_z_r {
 			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
