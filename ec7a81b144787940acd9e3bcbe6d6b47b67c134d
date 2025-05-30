@@ -56,6 +56,30 @@
       },
       "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c4e8b3_5d3457ab",
+        "filename": "zephyr/program/trulo/trulo/src/suspend_resume.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-05-30T03:22:44Z",
+      "side": 1,
+      "message": "In initial implementation of ISH, EC-SOC GPIO was used to pass the tablet mode information to EC but later due to DSP communication interface implementation this dedicated GPIO is no more needed. Same GPIO is resued as DSP comms interrupt line.\n\nHence Trulo code do not have the device tree node defined with \"compatible \u003d  cros_tabletmode_interrupt\" hence \"cros_tabletmode_interrupt\" driver is not compiled.\n\nPlease let me know your thoughts.",
+      "parentUuid": "ae521513_c82e495f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
