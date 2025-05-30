@@ -159,6 +159,30 @@
       },
       "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffb19dd_72a648bf",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-05-30T19:02:59Z",
+      "side": 1,
+      "message": "Thanks Keith, I have explored that and thinking to keep this CL for board ID support only. I will keep this feedback and upload further CL for system reset support.",
+      "parentUuid": "837f6f7f_be2249d3",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "cc35879fa8a34691033c0034a7d62c403c5068e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
