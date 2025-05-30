@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b28a09f_c9d03daf",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-30T18:41:47Z",
+      "side": 1,
+      "message": "This file has lines over 80 characters, which goes against CrOS EC style.",
+      "fixSuggestions": [
+        {
+          "fixId": "7b5fa493_adba699b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 172,
+                "startChar": 0,
+                "endLine": 178,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP),\n\t\t      SVDM_VER_2_0,\n\t\t      \"Expected SVDM version 2.0 for SOP, got %d\",\n\t\t      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP));\n\tzassert_equal(pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME),\n\t\t      SVDM_VER_2_0,\n\t\t      \"Expected SVDM version 2.0 for SOP\u0027, got %d\",\n\t\t      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME));\n"
+            },
+            {
+              "path": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+              "range": {
+                "startLine": 210,
+                "startChar": 0,
+                "endLine": 216,
+                "endChar": 0
+              },
+              "replacement": "\tzassert_equal(pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP),\n\t\t      SVDM_VER_2_0,\n\t\t      \"Expected SVDM version 2.0 for SOP, got %d\",\n\t\t      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP));\n\tzassert_equal(pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME),\n\t\t      SVDM_VER_2_0,\n\t\t      \"Expected SVDM version 2.0 for SOP\u0027, got %d\",\n\t\t      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "faaf87cec2fa31e5d56ba6d14839606a1b12fc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

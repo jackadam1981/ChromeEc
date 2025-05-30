@@ -64,6 +64,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe8b22a_2d15cc9e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-30T18:41:47Z",
+      "side": 1,
+      "message": "I think you\u0027ve got it. I\u0027d state it a little bit differently: Every platform _that runs the latest version of this code_ implements PD 3.2/SVDM 2.1. If such a platform connects to an older platform that only implements PD 3.1/SVDM 2.0, the only way the newer platform has to figure that out is to send discovery with SVDM 2.1 and see how the older platform responds.",
+      "parentUuid": "021ff722_2516c9da",
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cceb15d9_7912a8dc",
@@ -298,6 +316,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecabc1a2_88b58d8b",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-30T18:41:47Z",
+      "side": 1,
+      "message": "The include guard macro will prevent this file from being included recursively within a single compilation unit, at compile time, but the weird thing that happens here is at link time.\n\nThis header file will be included separately from `usbc_dp_mode_svdm_ver_20.c` and `usbc_dp_mode_svdm_ver_21.c`, and each of those compilation units will contain an object `static struct tcpci_cable_data passive_usb3_32`. Then, `usbc_dp_mode_svdm_ver_20.o` and `usbc_dp_mode_svdm_ver_21.o` will be linked into a single executable, and that executable will have two objects `static struct tcpci_cable_data passive_usb3_32`.\n\nIf you got rid of the `static`, both of these objects would have external linkage, and you would get a linker error for a name conflict during the build. Because of the `static`, the objects have internal linkage, and the name conflict doesn\u0027t prevent linking. It\u0027s just weird and unnecessary to have two objects with the same name and the same contents when the source code only lists one.\n\nThat\u0027s why we generally don\u0027t put any names with linkage in header files.",
+      "parentUuid": "1eb76b35_ea31551e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64243ce9_ec81afa5",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
         "patchSetId": 9
@@ -410,6 +452,24 @@
       "side": 1,
       "message": "That is correct, this line provide extra robustness in case test changed it as I understand.",
       "parentUuid": "56bb7e30_ae4e643c",
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2dcef94_638984c6",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-30T18:41:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "da7ec907_72162b67",
       "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
