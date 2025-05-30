@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd33f376_416194d6",
+        "filename": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-05-30T18:44:52Z",
+      "side": 1,
+      "message": "You should still put the declaration for the function in `intel_altmode.h`. That way, you won\u0027t need `extern`. Otherwise, this looks fine.",
+      "fixSuggestions": [
+        {
+          "fixId": "6f0abee8_55c8090e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/subsys/pd_controller/pdc_host_cmd.c",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 110,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2fc4e809e5fa77ced638e8fc77a0efdb560d64c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
