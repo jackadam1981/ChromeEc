@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "board_id.h"
+#include "board_id_features.h"
 #include "endian.h"
 #include "extension.h"
 #include "flash_info.h"
@@ -225,6 +226,10 @@ static enum vendor_cmd_rc vc_set_board_id(enum vendor_cmd_cc code,
 	/* We care about the LSB only. */
 	*pbuf = write_board_id(&id);
 
+#ifdef CONFIG_BOARD_ID_FEATURES
+	/* Setup features controlled by the board id. */
+	init_board_id_features();
+#endif
 	return *pbuf;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_BOARD_ID, vc_set_board_id);
