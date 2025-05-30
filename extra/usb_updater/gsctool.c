@@ -348,6 +348,47 @@ struct typed_image_header {
 	};
 };
 
+/* Describes a product (e.g. board id) constraint in NT firmware images */
+struct product_constraint {
+	uint32_t mask;
+	uint32_t value;
+};
+
+/*
+ * Describes Integrator Specific Firmware Bindings (ISFB) for NT firmware
+ * that need to be met for it to be valid to run on a chip.
+ */
+struct isfb_data {
+	uint32_t id;
+	uint32_t descriptor;
+	uint32_t rollback[4];
+	uint32_t product_constraint_count;
+	/* Array size is determined by product_constrain_count */
+	struct product_constraint constraints[];
+};
+
+/* Returns a pointer within the overall image to the ISFB data if it exists */
+static const struct isfb_data *get_isfb_data(const struct SignedManifest *m)
+{
+	const uint32_t ISFB_ID = 0x42465349; /* ASCII "ISFB" */
+	int i;
+
+	for (i = 0; i < 15; ++i) {
+		/* Find extension with correct ID and reasonable offset */
+		if (m->extensions[i].id == ISFB_ID &&
+		    m->extensions[i].offset < m->length) {
+			const struct isfb_data *result =
+				(const struct isfb_data
+					 *)((uintptr_t)m +
+					    (uintptr_t)m->extensions[i].offset);
+
+			/* Validate that struct is ISFB data */
+			return result->id == ISFB_ID ? result : NULL;
+		}
+	}
+	return NULL;
+}
+
 /*
  * Structure used to combine option description used by getopt_long() and help
  * text for the option.
@@ -2364,14 +2405,21 @@ static int show_headers_versions(const struct image *image,
 			dev_id0_[slot_idx] = h.h->dev_id0_;
 			dev_id1_[slot_idx] = h.h->dev_id1_;
 		} else if (h.type == GSC_DEVICE_NT) {
-			/*
-			 * TODO(b/341348812): Get BID info from signed manifest
-			 * header.
-			 */
-			fprintf(stderr, "BID info not support on NT yet.\n");
-			bid[slot_idx].id = -1;
-			bid[slot_idx].mask = -1;
-			bid[slot_idx].flags = -1;
+			const struct isfb_data *isfb = get_isfb_data(h.m);
+
+			if (isfb != NULL &&
+			    isfb->product_constraint_count >= 3) {
+				bid[slot_idx].id = isfb->constraints[0].value;
+				bid[slot_idx].mask = isfb->constraints[0].mask;
+				bid[slot_idx].flags =
+					isfb->constraints[2].mask &
+					isfb->constraints[2].value;
+			} else {
+				/* No constraints present */
+				bid[slot_idx].id = 0;
+				bid[slot_idx].mask = 0;
+				bid[slot_idx].flags = 0;
+			}
 
 			/* Check if devid constraints are being enforced */
 			if (h.m->constraint_selector_bits & 0x6) {
