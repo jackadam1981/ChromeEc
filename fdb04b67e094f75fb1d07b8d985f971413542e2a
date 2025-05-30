@@ -39,6 +39,163 @@
       "message": "I want to verify more, but the first verification looks good so far",
       "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e944aaa_d0b10368",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-05-30T19:16:37Z",
+      "side": 1,
+      "message": "let\u0027s add reports of inconsistencies (offset beyond the length of the image, time of the extension body does not match type in the extension entry)",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 48
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9f928f14_4be5ac02",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 379,
+                "startChar": 0,
+                "endLine": 380,
+                "endChar": 0
+              },
+              "replacement": "\t\t    m-\u003eextensions[i].offset \u003c\u003d m-\u003elength) {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 386,
+                "startChar": 0,
+                "endLine": 387,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif (result-\u003eid !\u003d ISFB_ID) {\n\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\"ISFB extension entry points to \"\n\t\t\t\t\t\"invalid data at offset 0x%x\\n\",\n\t\t\t\t\tm-\u003eextensions[i].offset);\n\t\t\t\treturn NULL;\n\t\t\t}\n\t\t\tif (m-\u003eextensions[i].offset + sizeof(*result) \u003e\n\t\t\t    m-\u003elength) {\n\t\t\t\tfprintf(stderr,\n\t\t\t\t\t\"ISFB extension entry points to \"\n\t\t\t\t\t\"truncated data at offset 0x%x\\n\",\n\t\t\t\t\tm-\u003eextensions[i].offset);\n\t\t\t\treturn NULL;\n\t\t\t}\n\t\t\treturn result;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b224078_1ac1d22f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2416,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-05-30T19:16:37Z",
+      "side": 1,
+      "message": "this deserves a comment - why are you checking that there are at least three constraints?\n\nwhat happens to ifsb-\u003econstraints[1]? Is this described anywhere, maybe there is a bug reference?\n\nA log message should be added in case there is not enough entries.",
+      "range": {
+        "startLine": 2411,
+        "startChar": 7,
+        "endLine": 2416,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a5813d69_aa60db9c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 2410,
+                "startChar": 0,
+                "endLine": 2410,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/*\n\t\t\t * The OpenTitan manifest format defines the board ID\n\t\t\t * as the first constraint, and the flags as the third\n\t\t\t * constraint. The second constraint is not used for\n\t\t\t * board ID.\n\t\t\t *\n\t\t\t * See:\n\t\t\t * https://github.com/lowRISC/opentitan/blob/master/hw/ip/kmac/sw/manifest.h\n\t\t\t */\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 2425,
+                "startChar": 0,
+                "endLine": 2425,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/*\n\t\t\t * Constraint selector bits 1 and 2 indicate if the\n\t\t\t * device ID constraints are being enforced.\n\t\t\t *\n\t\t\t * See:\n\t\t\t * https://github.com/lowRISC/opentitan/blob/master/hw/ip/kmac/sw/manifest.h\n\t\t\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50667486_e7f12ca0",
+        "filename": "extra/usb_updater/signed_manifest.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-05-30T19:16:37Z",
+      "side": 1,
+      "message": "why not keep the well commented constraints structure here as well?",
+      "fixSuggestions": [
+        {
+          "fixId": "ce7accf6_8cbddda1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/signed_manifest.h",
+              "range": {
+                "startLine": 12,
+                "startChar": 0,
+                "endLine": 12,
+                "endChar": 0
+              },
+              "replacement": "/*\n * Constraints that are applied to the image.\n */\nstruct Constraints {\n\t/*\n\t * Bitmask of constraint selectors.\n\t * See `constraint_selector_bits` in the manifest.\n\t */\n\tuint32_t selector_bits;\n\t/*\n\t * Device ID constraint.\n\t * See `constraint_device_id` in the manifest.\n\t */\n\tuint32_t device_id[8];\n\t/*\n\t * Manufacturing state constraint for creator.\n\t * See `constraint_manuf_state_creator` in the manifest.\n\t */\n\tuint32_t manuf_state_creator;\n\t/*\n\t * Manufacturing state constraint for owner.\n\t * See `constraint_manuf_state_owner` in the manifest.\n\t */\n\tuint32_t manuf_state_owner;\n\t/*\n\t * Life cycle state constraint.\n\t * See `constraint_life_cycle_state` in the manifest.\n\t */\n\tuint32_t life_cycle_state;\n};\n\n"
+            },
+            {
+              "path": "extra/usb_updater/signed_manifest.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "\tstruct Constraints constraints;\n"
+            },
+            {
+              "path": "extra/usb_updater/signed_manifest.h",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "BUILD_ASSERT(sizeof(struct Constraints) \u003d\u003d 4 * 8 + 4 * 3);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
