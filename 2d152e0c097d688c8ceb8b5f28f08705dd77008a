@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70601df8_3cfc6876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-30T20:59:27Z",
+      "side": 1,
+      "message": "These board special rails (not related to the AP power sequence) are better enabled/disabled in the hooks, e.g. `HOOK_CHIPSET_SUSPEND` and `HOOK_CHIPSET_RESUME`.",
+      "revId": "2d152e0c097d688c8ceb8b5f28f08705dd77008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
