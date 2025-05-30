@@ -37,19 +37,25 @@ ZTEST(extpower, test_extpower_gpio)
 	set_ac(0, true);
 	ac_hook_count = 0;
 
-	host_clear_events(0xFFFFFFFF);
+	if (IS_ENABLED(HAS_TASK_HOSTCMD)) {
+		host_clear_events(0xFFFFFFFF);
+	}
 
 	set_ac(1, true);
 	zassert_equal(ac_hook_count, 1);
 	zassert_equal(extpower_is_present(), 1);
 
-	zassert_true(host_is_event_set(EC_HOST_EVENT_AC_CONNECTED));
+	if (IS_ENABLED(HAS_TASK_HOSTCMD)) {
+		zassert_true(host_is_event_set(EC_HOST_EVENT_AC_CONNECTED));
+	}
 
 	set_ac(0, true);
 	zassert_equal(ac_hook_count, 2);
 	zassert_equal(extpower_is_present(), 0);
 
-	zassert_true(host_is_event_set(EC_HOST_EVENT_AC_DISCONNECTED));
+	if (IS_ENABLED(HAS_TASK_HOSTCMD)) {
+		zassert_true(host_is_event_set(EC_HOST_EVENT_AC_DISCONNECTED));
+	}
 }
 
 ZTEST(extpower, test_extpower_gpio_debounce)
@@ -60,7 +66,9 @@ ZTEST(extpower, test_extpower_gpio_debounce)
 	set_ac(0, true);
 	ac_hook_count = 0;
 
-	host_clear_events(0xFFFFFFFF);
+	if (IS_ENABLED(HAS_TASK_HOSTCMD)) {
+		host_clear_events(0xFFFFFFFF);
+	}
 
 	set_ac(1, false);
 	k_msleep(CONFIG_PLATFORM_EC_EXTPOWER_DEBOUNCE_MS / 2);
@@ -68,8 +76,10 @@ ZTEST(extpower, test_extpower_gpio_debounce)
 
 	zassert_equal(ac_hook_count, 0);
 
-	zassert_false(host_is_event_set(EC_HOST_EVENT_AC_CONNECTED));
-	zassert_false(host_is_event_set(EC_HOST_EVENT_AC_DISCONNECTED));
+	if (IS_ENABLED(HAS_TASK_HOSTCMD)) {
+		zassert_false(host_is_event_set(EC_HOST_EVENT_AC_CONNECTED));
+		zassert_false(host_is_event_set(EC_HOST_EVENT_AC_DISCONNECTED));
+	}
 }
 
 ZTEST_SUITE(extpower, NULL, NULL, NULL, NULL, NULL);

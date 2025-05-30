@@ -3,3 +3,6 @@ common:
     - native_sim
 tests:
   extpower.default: {}
+  extpower.no_hostcmd:
+    extra_configs:
+      - CONFIG_PLATFORM_EC_HOSTCMD=n
