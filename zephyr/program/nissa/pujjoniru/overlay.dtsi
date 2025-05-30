@@ -74,6 +74,8 @@
 		compatible = "unused-gpios";
 		unused-gpios =
 			<&gpioa 0 0>,
+			<&gpiof 0 0>,
+			<&gpiom 6 0>,
 			<&gpiod 4 0>,
 			<&gpioh 6 0>,
 			<&gpioj 7 0>;
