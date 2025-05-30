@@ -8,6 +8,7 @@
 #include "TPM_Types.h"
 #include "NV_fp.h"
 
+#include "board_id_features.h"
 #include "boot_param_platform_cr50.h"
 #include "ccd_config.h"
 #include "console.h"
@@ -25,8 +26,13 @@
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 
 /* Used to control access to NVMEM spaces with different PCR states */
-#define PCR_UPDATE_BOOT_POLICY		BIT(0) /* FWMP/antirollback */
-#define PCR_UPDATE_ENCSTATEFUL		BIT(1) /* EncStateful */
+#define PCR_UPDATE_BOOT_POLICY			BIT(0) /* FWMP/antirollback */
+#define PCR_UPDATE_ENCSTATEFUL			BIT(1) /* EncStateful */
+/*
+ * Block rec+dev mode by triggering an EC reset immediately
+ * Only enabled on certain board ids.
+ */
+#define PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST	BIT(2)
 
 struct pcr_config {
 	/* The PCR digest */
@@ -73,6 +79,16 @@ static const struct pcr_config pcr_configs[] = {
 		},
 		.config = PCR_UPDATE_BOOT_POLICY |
 			PCR_UPDATE_ENCSTATEFUL,
+	},
+	{
+		/* recovery + dev mode (rec=1, dev=1) */
+		.digest = {
+			0x2A, 0x75, 0x80, 0xE5, 0xDA, 0x28, 0x95, 0x46,
+			0xF4, 0xD2, 0xE0, 0x50, 0x9C, 0xC6, 0xDE, 0x15,
+			0x5E, 0xA1, 0x31, 0x81, 0x89, 0x54, 0xD3, 0x6D,
+			0x49, 0xE0, 0x27, 0xFD, 0x42, 0xB8, 0xC8, 0xF8
+		},
+		.config = PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST,
 	},
 	{
 		/* recovery mode (rec=1, dev=0) */
@@ -319,9 +335,31 @@ BOOL _plat__NvUpdateAllowed(uint32_t handle)
 	return TRUE;
 }
 
+#ifdef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC
+/*
+ * Return TRUE if the board id blocks rec+dev with an ecrst, the device is
+ * in rec+dev, and the FWMP is blocking dev mode.
+ */
+static BOOL assert_ecrst_if_pcr_state_not_allowed(void)
+{
+	if (bid_feature_enabled_pcr_ecrst_recdev() &&
+	    pcr_config_enabled(PCR_FWMP_BLOCK_DEV_TRIGGER_ECRST) &&
+	    !board_fwmp_allows_boot_policy_update()) {
+		CPRINTS("pcr: block rec+dev");
+		return TRUE;
+	}
+	return FALSE;
+}
+#endif
+
 void _plat__PCRUpdated(uint32_t index)
 {
 	if (index != 0)
 		return;
 	CPRINTS("PCR0 updated");
+#ifdef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC
+	/* Reset the EC if the PCR is in a blocked state. */
+	if (assert_ecrst_if_pcr_state_not_allowed())
+		board_reboot_ec();
+#endif
 }
