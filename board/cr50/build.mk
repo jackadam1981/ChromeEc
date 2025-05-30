@@ -213,6 +213,7 @@ board-y += tpm2/trusty_storage_mac.o
 board-y += tpm2/virtual_nvmem.o
 board-y += tpm_nvmem_ops.o
 board-y += wp.o
+board-${CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC} += pcr_ecrst.o
 board-$(CONFIG_PINWEAVER)+=pinweaver_tpm_imports.o
 board-$(CONFIG_PLATFORM_PINWEAVER)+=pinweaver_tpm_imports.o
 board-$(CONFIG_PLATFORM_BOOT_PARAM)+=boot_param_platform.o
