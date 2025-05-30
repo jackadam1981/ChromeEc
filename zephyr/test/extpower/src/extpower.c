@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "acok_emul.h"
 #include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -12,25 +13,12 @@
 #include <zephyr/ztest.h>
 
 static int ac_hook_count;
-static const struct device *acok_gpio_dev =
-	DEVICE_DT_GET(DT_GPIO_CTLR(DT_NODELABEL(gpio_acok_od), gpios));
-static const gpio_port_pins_t acok_pin =
-	DT_GPIO_PIN(DT_NODELABEL(gpio_acok_od), gpios);
 
 static void test_ac_change_hook(void)
 {
 	ac_hook_count++;
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, test_ac_change_hook, HOOK_PRIO_DEFAULT);
-
-static void set_ac(int on, bool wait)
-{
-	gpio_emul_input_set(acok_gpio_dev, acok_pin, on);
-
-	if (wait) {
-		k_msleep(500);
-	}
-}
 
 ZTEST(extpower, test_extpower_gpio)
 {
