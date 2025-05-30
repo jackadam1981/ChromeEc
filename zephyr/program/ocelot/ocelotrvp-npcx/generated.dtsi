@@ -105,6 +105,9 @@
 		gpio_en_pp5000_s5: en_pp5000_s5 {
 			gpios = <&gpio7 6 (GPIO_INPUT)>;
 		};
+		gpio_en_pp5000_usba: en_pp5000_usba {
+			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpio4 1 (GPIO_INPUT)>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";

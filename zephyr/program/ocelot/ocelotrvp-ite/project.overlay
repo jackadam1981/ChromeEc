@@ -10,6 +10,7 @@
 /* ocelotrvp-ite project DTS includes */
 
 #include "generated.dtsi"
+#include "../rvp_usba.dtsi"
 
 /*
  * Map I2C buses to common names
