@@ -48,6 +48,10 @@ pwrbtn: &gpio_gsc_ec_pwr_btn_odl{};
 			enum-name = "GPIO_ENTERING_RW";
 		};
 	};
+
+	chosen {
+		cros-ec,keyboard = &kbd;
+	};
 };
 
 /* Disable nodes for features not yet enabled. */
