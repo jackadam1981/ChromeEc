@@ -1336,6 +1336,20 @@
  */
 #undef CONFIG_ENABLE_H1_ALERTS_CONSOLE
 
+/*
+ * Enable controlling features based on the board id.
+ */
+#undef CONFIG_BOARD_ID_FEATURES
+
+
+/*
+ * Enable resetting the EC when the device tries to enter rec+dev mode and it's
+ * blocked by the FWMP.
+ *
+ * This is also restricted by the board id.
+ */
+#undef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC
+
 /*****************************************************************************/
 /*
  * Debugging config
