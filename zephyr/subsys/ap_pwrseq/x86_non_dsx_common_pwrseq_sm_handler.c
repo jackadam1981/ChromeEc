@@ -229,6 +229,7 @@ void request_start_from_g3(void)
 			&x86_non_dsx_timer,
 			K_SECONDS(AP_PWRSEQ_DT_VALUE(s5_inactivity_timeout)),
 			K_NO_WAIT);
+		printk("--reset s5 timer\n");
 		return;
 	}
 
@@ -304,6 +305,7 @@ void ap_power_reset(enum ap_power_shutdown_reason reason)
 
 	report_ap_reset((enum chipset_shutdown_reason)reason);
 
+	printk("--Set PWR_SYS_RST 1 then 0\n");
 	power_signal_set(PWR_SYS_RST, 1);
 	/*
 	 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that period
@@ -335,10 +337,12 @@ void rsmrst_pass_thru_handler(void)
 			 */
 			k_msleep(AP_PWRSEQ_DT_VALUE(rsmrst_delay));
 			LOG_DBG("Deasserting PWR_EC_PCH_RSMRST");
+			printk("--set rsmrst 0\n");
 			power_signal_set(PWR_EC_PCH_RSMRST, 0);
 			update_ap_boot_time(RSMRST);
 		}
 	} else {
+		printk("--set rsmrst 1\n");
 		power_signal_set(PWR_EC_PCH_RSMRST, 1);
 	}
 }

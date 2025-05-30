@@ -286,6 +286,7 @@ static void state_machine(uint64_t tnow)
 			chipset_exit_hard_off();
 			tnext_state = tnow + PWRBTN_INITIAL_US;
 			pwrbtn_state = PWRBTN_STATE_WAS_OFF;
+			printk("--S5 set GPIO_PCH_PWRBTN_L 0\n");
 			set_pwrbtn_to_pch(0, 0);
 		} else {
 			if (power_button_pulse_enabled) {
@@ -302,6 +303,7 @@ static void state_machine(uint64_t tnow)
 	case PWRBTN_STATE_T0:
 		tnext_state = tnow + PWRBTN_DELAY_T1;
 		pwrbtn_state = PWRBTN_STATE_T1;
+		printk("--T0 set GPIO_PCH_PWRBTN_L 1\n");
 		set_pwrbtn_to_pch(1, 0);
 		break;
 	case PWRBTN_STATE_T1:
@@ -312,8 +314,10 @@ static void state_machine(uint64_t tnow)
 		 */
 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 			CPRINTS("PB chipset already off");
-		else
+		else {
+			printk("--T1 set GPIO_PCH_PWRBTN_L 0\n");
 			set_pwrbtn_to_pch(0, 0);
+		}
 		pwrbtn_state = PWRBTN_STATE_HELD;
 		break;
 	case PWRBTN_STATE_RELEASED:
