@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6e3fde_5694af21",
+        "filename": "board/cr50/check_pcr0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-02T16:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85f68c53_327f347e",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4332307_15c87d5f",

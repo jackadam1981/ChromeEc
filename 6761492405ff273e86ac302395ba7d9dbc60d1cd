@@ -22,6 +22,30 @@
       },
       "revId": "6761492405ff273e86ac302395ba7d9dbc60d1cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d30ccb2_c6597c1c",
+        "filename": "board/cr50/check_pcr0.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-02T16:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c27a2e_cc07c0de",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "6761492405ff273e86ac302395ba7d9dbc60d1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
