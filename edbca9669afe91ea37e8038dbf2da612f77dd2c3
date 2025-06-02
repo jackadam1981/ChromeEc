@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9951d7c_cc5c821e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2446,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-02T17:54:41Z",
+      "side": 1,
+      "message": "at this point we already know that ifsb is not NULL",
+      "range": {
+        "startLine": 2446,
+        "startChar": 7,
+        "endLine": 2446,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1d0c38c3_9858ccef",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 2446,
+                "startChar": 0,
+                "endLine": 2448,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif (isfb-\u003eproduct_constraint_count \u003e\u003d 3) {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3704,
+                "startChar": 0,
+                "endLine": 3705,
+                "endChar": 0
+              },
+              "replacement": "\treturn rv \u003d\u003d 6 ? 1 : 0;\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3775,
+                "startChar": 0,
+                "endLine": 3776,
+                "endChar": 0
+              },
+              "replacement": "\t} else {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3787,
+                "startChar": 0,
+                "endLine": 3787,
+                "endChar": 0
+              },
+              "replacement": "\t\tprintf(\"WPDs set\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "edbca9669afe91ea37e8038dbf2da612f77dd2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae9c527_c7326b91",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-02T17:54:41Z",
+      "side": 1,
+      "message": "I am still missing: what\u0027s in ifsb-\u003econstraints[1]? Maybe mention it in the line 373 comment? (looks like AI figured it out :))",
+      "range": {
+        "startLine": 2447,
+        "startChar": 38,
+        "endLine": 2447,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "390527ae_69998809",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 2428,
+                "startChar": 0,
+                "endLine": 2428,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/*\n\t\t\t * The ISFB constraints are stored in the following\n\t\t\t * order:\n\t\t\t *   0: BID mask and value\n\t\t\t *   1: Reserved\n\t\t\t *   2: BID flags\n\t\t\t */\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 2446,
+                "startChar": 0,
+                "endLine": 2448,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif (isfb !\u003d NULL \u0026\u0026 isfb-\u003eproduct_constraint_count \u003e\u003d 3) {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3155,
+                "startChar": 0,
+                "endLine": 3156,
+                "endChar": 0
+              },
+              "replacement": "\t * See ti50_cap_info for full order of V1 capabilities.\n\t * AllowUnverifiedRO is the 11th capability in the list.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "edbca9669afe91ea37e8038dbf2da612f77dd2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
