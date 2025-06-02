@@ -16,6 +16,24 @@
       "message": "CQ fail at `[minimal-realtek:ro] devicetree error: /chosen: undefined node label \u0027sha0\u0027`",
       "revId": "6c086c2ad331f2012fb725d60d25d8149d21d595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1550fbae_daaacfaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-02T05:53:28Z",
+      "side": 1,
+      "message": "Our sha0 is defined at https://github.com/zephyrproject-rtos/zephyr/pull/89263, and it\u0027s not merged yet. Do we need to wait for it?",
+      "parentUuid": "db1dd9fb_b44a575b",
+      "revId": "6c086c2ad331f2012fb725d60d25d8149d21d595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
