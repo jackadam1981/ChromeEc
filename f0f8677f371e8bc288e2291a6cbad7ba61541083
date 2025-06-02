@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f236a4_5de30b7f",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-02T22:59:07Z",
+      "side": 1,
+      "message": "should this remain `(GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)` as on PTL RVP?",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f5b873a7_850ef9fe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/ocelot/ioex_gpio.dtsi",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tgpios \u003d \u003c\u0026ioex_it8801_port1 0 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW)\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f0f8677f371e8bc288e2291a6cbad7ba61541083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
