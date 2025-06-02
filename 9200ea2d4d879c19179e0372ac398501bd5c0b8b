@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8482874b_c8c1c34e",
+        "filename": "board/cr50/check_pcr0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-02T15:03:06Z",
+      "side": 1,
+      "message": "I added some common init bid features code that isn\u0027t compiled in until we add the config option.\n\nI think enabling bid features that are relevant during boot needs to be done in a standard way.\n\nIt caches the features over deep sleep. It reinitializes them after any other type of reset since they\u0027re stored in PWRDN scratch.",
+      "parentUuid": "ff51264a_6874d0d1",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e98ebc3b_49f3f2ea",
         "filename": "board/cr50/tpm2/platform.c",
         "patchSetId": 5
@@ -375,6 +399,30 @@
       "side": 1,
       "message": "even so, let\u0027s still collect it in a single if statement (or nested ifs, but I don\u0027t see a reason) or extract all those there checks in a function (assert_ecrst_if_pcr_state_not_allowed()) and call it from PCR value changed hook. we will have other things that we will need to do in this hook.",
       "parentUuid": "da0b1343_0ea1a7f9",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 60
+      },
+      "revId": "9200ea2d4d879c19179e0372ac398501bd5c0b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c4a8db_13a1d7de",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-02T15:03:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba93763_8b812206",
       "range": {
         "startLine": 349,
         "startChar": 1,
