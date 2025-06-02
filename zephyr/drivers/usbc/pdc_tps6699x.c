@@ -2849,7 +2849,7 @@ static int pdc_init(const struct device *dev)
 
 static void tps_check_and_notify_irq(void)
 {
-	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+	for (int port = 0; port < board_get_usb_pd_port_count(); port++) {
 		struct pdc_data_t *data = pdc_data[port];
 		struct pdc_config_t const *cfg = data->dev->config;
 		union reg_interrupt pdc_interrupt = { 0 };
