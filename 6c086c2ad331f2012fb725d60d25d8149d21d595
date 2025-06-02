@@ -34,6 +34,24 @@
       "parentUuid": "db1dd9fb_b44a575b",
       "revId": "6c086c2ad331f2012fb725d60d25d8149d21d595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af6433fb_c4e4f511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-06-02T09:35:52Z",
+      "side": 1,
+      "message": "Yes, this CL won\u0027t pass CQ.\nbut we can proceed with merging the other patches first.",
+      "parentUuid": "1550fbae_daaacfaa",
+      "revId": "6c086c2ad331f2012fb725d60d25d8149d21d595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
