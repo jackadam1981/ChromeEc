@@ -62,9 +62,9 @@ void print_factory_config(void)
 	rv = read_factory_config(&fc);
 	ccprintf("fc = ");
 	if (rv)
-		ccprintf("invalid (%d)\n", rv);
+		ccprintf("invalid (%d)", rv);
 	else
-		ccprintf("0x%016llx\n", fc);
+		ccprintf("0x%016llx", fc);
 	ccprintf("\n");
 }
 
