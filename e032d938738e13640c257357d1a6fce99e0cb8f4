@@ -1,0 +1,202 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9d7ccb_dcd991b0",
+        "filename": "board/cr50/pcr_ecrst.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:10:22Z",
+      "side": 1,
+      "message": "Need to be initialized otherwise we will return an uninitialized value most of the time\n\n```suggestion\n\tint supported_bid \u003d 0;\n```\n\n---\n\nAnother option would be to avoid the local variable and always `return FALSE;` at the end and within the loop `return TRUE;`",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "e032d938738e13640c257357d1a6fce99e0cb8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c16484e_f40a06b5",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:10:22Z",
+      "side": 1,
+      "message": "Can we rename the function to make it seem like it is a query and not an action. When reading this code at a call site, I thought this function might assert EC reset\n\n```suggestion\nstatic BOOL should_assert_ecrst_if_pcr_state_not_allowed(void)\n```",
+      "range": {
+        "startLine": 343,
+        "startChar": 12,
+        "endLine": 343,
+        "endChar": 49
+      },
+      "revId": "e032d938738e13640c257357d1a6fce99e0cb8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e381a38_f5446e70",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:10:22Z",
+      "side": 1,
+      "message": "why do we need this third condition? Maybe add a comment?",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 42
+      },
+      "revId": "e032d938738e13640c257357d1a6fce99e0cb8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f73f260_8e7859cd",
+        "filename": "common/board_id_features.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:10:22Z",
+      "side": 1,
+      "message": "The logic seems backwards from the comment. If BID is unset, we should early return right?\n\n```suggestion\n\tif ((board_id_features \u0026 BOARD_ID_FEATURES_UNSET_BID))\n```",
+      "revId": "e032d938738e13640c257357d1a6fce99e0cb8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede45b9a_2b43e813",
+        "filename": "common/board_id_features.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:10:22Z",
+      "side": 1,
+      "message": "shouldn\u0027t we start with a `0` value or not start with the initialized value? I am a little confused by this starting value.",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f04e1299_eebb6dce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "common/board_id_features.c",
+              "range": {
+                "startLine": 48,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": "\tuint32_t features \u003d 0;\n"
+            },
+            {
+              "path": "common/board_id_features.c",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 60,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "common/board_id_features.c",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 86,
+                "endChar": 0
+              },
+              "replacement": "\tfeatures |\u003d BOARD_ID_FEATURES_INITIALIZED;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e032d938738e13640c257357d1a6fce99e0cb8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a18efc_eebd7dd4",
+        "filename": "include/board_id_features.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:10:22Z",
+      "side": 1,
+      "message": "These seem like they should be \"private\" to the c implementation and not part of the \"public\" API for this sub-feature",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ef94f569_31104692",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/board_id_features.h",
+              "range": {
+                "startLine": 12,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "include/board_id_features.h",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "int bid_feature_resets_ec_in_recdev(const struct board_id *id);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e032d938738e13640c257357d1a6fce99e0cb8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
