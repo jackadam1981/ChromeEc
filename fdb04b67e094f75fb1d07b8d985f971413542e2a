@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9c444e3a_d8ecef37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T18:10:45Z",
+      "side": 1,
+      "message": "Yes. Updated test line",
+      "parentUuid": "38734e66_e94972e1",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "767d044c_ef667c3f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
