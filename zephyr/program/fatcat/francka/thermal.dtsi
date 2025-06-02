@@ -24,16 +24,29 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory {
+			temp_host_high = <85>;
+			temp_host_halt = <90>;
+			temp_host_release_high = <80>;
 			temp_fan_off = <35>;
-			temp_fan_max = <70>;
+			temp_fan_max = <60>;
 			power-good-pin = <&gpio_pg_pp5000_s5_od>;
 			sensor = <&temp_memory>;
 		};
 		charger {
+			temp_host_high = <95>;
+			temp_host_halt = <100>;
+			temp_host_release_high = <90>;
+			temp_fan_off = <35>;
+			temp_fan_max = <65>;
 			power-good-pin = <&gpio_pg_pp5000_s5_od>;
 			sensor = <&temp_charger>;
 		};
 		ambient {
+			temp_host_high = <85>;
+			temp_host_halt = <90>;
+			temp_host_release_high = <80>;
+			temp_fan_off = <35>;
+			temp_fan_max = <60>;
 			power-good-pin = <&gpio_pg_pp5000_s5_od>;
 			sensor = <&temp_ambient>;
 		};
@@ -46,7 +59,7 @@
 			pwms = <&pwm5 5 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 			rpm_min = <2200>;
 			rpm_start = <2200>;
-			rpm_max = <6900>;
+			rpm_max = <4200>;
 			tach = <&tach2>;
 		};
 	};
