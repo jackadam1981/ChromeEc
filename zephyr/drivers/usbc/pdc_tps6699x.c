@@ -358,7 +358,7 @@ static void tps_check_and_notify_irq(void);
 /**
  * @brief PDC port data used in interrupt handler
  */
-static struct pdc_data_t *pdc_data[NUM_PDC_TPS6699X_PORTS];
+static struct pdc_data_t *pdc_data[NUM_PDC_TPS6699X_PORTS] = { 0 };
 
 static enum state_t get_state(struct pdc_data_t *data)
 {
@@ -2851,20 +2851,24 @@ static void tps_check_and_notify_irq(void)
 {
 	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
 		struct pdc_data_t *data = pdc_data[port];
-		struct pdc_config_t const *cfg = data->dev->config;
-		union reg_interrupt pdc_interrupt = { 0 };
+		if (data) {
+			struct pdc_config_t const *cfg = data->dev->config;
+			union reg_interrupt pdc_interrupt = { 0 };
 
-		if (!gpio_pin_get_dt(&cfg->irq_gpios)) {
-			break;
-		}
-		/* Read the pending interrupt events */
-		tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
-
-		for (int i = 0; i < sizeof(union reg_interrupt); i++) {
-			if (pdc_interrupt.raw_value[i]) {
-				LOG_DBG("C%d pending interrupt detected", port);
-				k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
+			if (!gpio_pin_get_dt(&cfg->irq_gpios)) {
 				break;
+			}
+			/* Read the pending interrupt events */
+			tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
+
+			for (int i = 0; i < sizeof(union reg_interrupt); i++) {
+				if (pdc_interrupt.raw_value[i]) {
+					LOG_DBG("C%d pending interrupt detected",
+						port);
+					k_event_post(&data->pdc_event,
+						     PDC_IRQ_EVENT);
+					break;
+				}
 			}
 		}
 	}
