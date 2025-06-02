@@ -55,6 +55,9 @@ pwrbtn: &gpio_mech_pwr_btn_odl {};
 	};
 };
 
+&sha0 {
+	status = "okay";
+};
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
