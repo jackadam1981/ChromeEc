@@ -26,16 +26,6 @@
 			enum-names = "I2C_PORT_ISH";
 		};
 	};
-	/* TODO: move to a separate file when full PDC support added. */
-	usbc {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		usbc_port0: port0@0 {
-			compatible = "named-usbc-port";
-			reg = <0>;
-			chg = <&charger>;
-		};
-	};
 };
 
 &i2c_port_pd1 {

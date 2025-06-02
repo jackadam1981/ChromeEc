@@ -15,8 +15,18 @@
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_interrupts.dtsi"
+#include "../rvp_usbc.dtsi"
 
 /* ocelot_mchp overrides follow... */
+
+&pdc_c0 {
+	/* TYPEC_EC_SMBUS_ALERT_0_R */
+	irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
+};
+
+/* Use only port C0 */
+/delete-node/ &pdc_c1;
+/delete-node/ &usbc_port1;
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &int_dc_jack_present;

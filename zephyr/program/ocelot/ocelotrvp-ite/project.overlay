@@ -42,6 +42,7 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
+#include "../rvp_usbc.dtsi"
 
 /* ocelotrvp-ite overrides follow... */
 / {
@@ -76,4 +77,12 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 };
 &pwm5 {
 	status = "disabled";
+};
+
+&pdc_c0 {
+	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_c1 {
+	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
 };
