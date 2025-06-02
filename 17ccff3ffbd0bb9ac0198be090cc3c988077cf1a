@@ -56,6 +56,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "192bc978_ec5b5838",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-02T04:55:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9dcb5ba_3ab23059",
+      "revId": "17ccff3ffbd0bb9ac0198be090cc3c988077cf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d9f6d4d_2e327bb8",
@@ -97,6 +115,24 @@
           ]
         }
       ],
+      "revId": "17ccff3ffbd0bb9ac0198be090cc3c988077cf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a1aba6_bdf6db03",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-02T04:55:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9f6d4d_2e327bb8",
       "revId": "17ccff3ffbd0bb9ac0198be090cc3c988077cf1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
