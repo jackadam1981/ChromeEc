@@ -340,6 +340,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4eeb1c1_75ac5e8e",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-06-02T22:20:51Z",
+      "side": 1,
+      "message": "You can check now. I removed static to enable sharing and put common code into new c file.",
+      "parentUuid": "ecabc1a2_88b58d8b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64243ce9_ec81afa5",
         "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_20.c",
         "patchSetId": 9
