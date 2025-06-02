@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24fa63ef_d697e139",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-02T20:45:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t make sense and looks like a copy-paste error. Assuming we need any way to count the max-current ports at all, do we even need this function, or could `dpm_get_source_info_msg` just call `sys_bitarray_popcount_region` directly with no loss of clarity?\n\nBut see below. I don\u0027t think we need any function like this.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "174a5205_67715c41",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "static int count_set_bits(uint32_t bitmask, size_t num_bits)\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "\tfor (int i \u003d 0; i \u003c num_bits; i++) {\n\t\tif (BIT(i) \u0026 bitmask)\n\t\t\ttotal++;\n\t}\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 122,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "\t    count_set_bits(max_current_claimed_bitmask,\n\t\t\t   board_get_usb_pd_port_count()) \u003c\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 171,
+                "endChar": 0
+              },
+              "replacement": "\nstatic void update_max_current_claimed_bitmask(void)\n{\n\tmax_current_claimed_bitmask \u003d 0;\n\tfor (int p \u003d 0; p \u003c board_get_usb_pd_port_count(); p++) {\n\t\tif (port_status[p] \u003d\u003d TYPEC_RP_3A0)\n\t\t\tmax_current_claimed_bitmask |\u003d BIT(p);\n\t}\n}\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 174,
+                "startChar": 0,
+                "endLine": 174,
+                "endChar": 0
+              },
+              "replacement": "\tupdate_max_current_claimed_bitmask();\n"
+            },
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 181,
+                "startChar": 0,
+                "endLine": 181,
+                "endChar": 0
+              },
+              "replacement": "\tupdate_max_current_claimed_bitmask();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cd1836_7ab88bba",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-02T20:45:52Z",
+      "side": 1,
+      "message": "**If this comment is right, the other ones don\u0027t matter.**\n\nIn ciri\u0027s current sourcing policy, as implemented in `dpm_get_source_pdo` above, a port will always offer 3A if it can. There is no scenario where it could offer more current, but it hasn\u0027t yet. Therefore, I think the present PDP should always be equal to the reported PDP, and you don\u0027t need to check anything extra here.\n\nAnother way of putting this: `dpm_get_source_pdo` is already checking exactly what you want to check here, and the added `max_current_claimed_bitmask` logic is just trying to match that existing logic. But we can just rely upon the result of `dpm_get_source_pdo` to reuse the existing logic. Then we wouldn\u0027t need any of the additional logic currently in this CL.\n\nDoes it work to just set `port_present_pdp \u003d port_reported_pdp`?",
+      "fixSuggestions": [
+        {
+          "fixId": "f4e41cb1_64072de8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 121,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "\tif (can_supply_max_current(port)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b815fa_b7eb86b1",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-02T20:45:52Z",
+      "side": 1,
+      "message": "The generic version of this function compares to `CONFIG_USB_PD_3A_PORTS`, because that value is coherent with the generic implementation. The reason we\u0027re making this change is that `CONFIG_USB_PD_3A_PORTS` is 0 for ciri, even though that doesn\u0027t make sense. Consequently, this condition will always be false, and that\u0027s not obvious from looking at it.\n\nSince this is specific to ciri, I\u0027d suggest just removing the checking against `CONFIG_USB_PD_3A_PORTS` and maybe leaving a comment that ciri can only source 3A out of one port. We should probably open a bug to track the weird ciri sourcing behavior itself, and we could link to that bug in the comment.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "195ad198_2113f96d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/geralt/ciri/src/usbc.c",
+              "range": {
+                "startLine": 122,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "\t    bitarray_count_set_bits(\u0026max_current_claimed_bitmask, CONFIG_USB_PD_PORT_MAX_COUNT) \u003c\n"
+            }
+          ]
+        }
+      ],
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
