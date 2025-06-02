@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64cff0a3_81883d36",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2446,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T18:02:52Z",
+      "side": 1,
+      "message": "We don\u0027t actually know in this code path, so we need to check it. I didn\u0027t want to nest another `if` level since this code is already quite nested.",
+      "parentUuid": "a9951d7c_cc5c821e",
+      "range": {
+        "startLine": 2446,
+        "startChar": 7,
+        "endLine": 2446,
+        "endChar": 19
+      },
+      "revId": "edbca9669afe91ea37e8038dbf2da612f77dd2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae9c527_c7326b91",
@@ -129,6 +153,30 @@
           ]
         }
       ],
+      "revId": "edbca9669afe91ea37e8038dbf2da612f77dd2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c43445_078869cd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T18:02:52Z",
+      "side": 1,
+      "message": "Sorry, I forgot to answer that question. It is the Inverted board ID in the info section. I added the comment `Constraint order is the same as INFO page order` to give a breadcrumb to future readers though.\n\nThe NT images are not going to asserts on this INFO constraint word by default.",
+      "parentUuid": "0ae9c527_c7326b91",
+      "range": {
+        "startLine": 2447,
+        "startChar": 38,
+        "endLine": 2447,
+        "endChar": 42
+      },
       "revId": "edbca9669afe91ea37e8038dbf2da612f77dd2c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
