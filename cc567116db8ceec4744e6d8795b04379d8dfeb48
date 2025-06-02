@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a875a47c_dcbdb001",
+        "filename": "zephyr/test/drivers/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-02T20:51:20Z",
+      "side": 1,
+      "message": "Line over 80 columns. Are you running pre-upload checks with `repo upload`?",
+      "fixSuggestions": [
+        {
+          "fixId": "fb68db0f_258207a5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/test/drivers/Kconfig",
+              "range": {
+                "startLine": 326,
+                "startChar": 0,
+                "endLine": 327,
+                "endChar": 0
+              },
+              "replacement": "\t  Include the DP 2.1 test suite in the binary, testing the 2.0\n\t  SVDM version.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc567116db8ceec4744e6d8795b04379d8dfeb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
