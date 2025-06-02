@@ -41,6 +41,7 @@ gpio_lid: &gpio_lid_open {};
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
+#include "../rvp_usbc.dtsi"
 
 /* ocelot_ite overrides follow... */
 / {
@@ -78,4 +79,12 @@ gpio_lid: &gpio_lid_open {};
 };
 &pwm5 {
 	status = "disabled";
+};
+
+&pdc_c0 {
+	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_c1 {
+	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
 };
