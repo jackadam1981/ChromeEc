@@ -25,7 +25,7 @@
 	named-gpios {
 		compatible = "named-gpios";
 
-		bc_acok: bc-acok-ec-in {
+		gpio_acok: bc-acok-ec-in {
 			gpios = <MCHP_GPIO_DECODE_155 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
 		};
@@ -36,11 +36,11 @@
 		cse_early_rec_sw: ec-cse-early-sw {
 			gpios = <MCHP_GPIO_DECODE_064 GPIO_ODR_LOW>;
 		};
-		vol_up_ec: vol-up-ec {
+		gpio_volup: vol-up-ec {
 			gpios = <MCHP_GPIO_DECODE_242 GPIO_INPUT>;
 			enum-name = "GPIO_VOLUME_UP_L";
 		};
-		vol_dn_ec: vol-down-ec {
+		gpio_voldn: vol-down-ec {
 			gpios = <MCHP_GPIO_DECODE_246 GPIO_INPUT>;
 			enum-name = "GPIO_VOLUME_DOWN_L";
 		};
@@ -51,7 +51,7 @@
 		gpio_fan_control: fan-pwr-disable {
 			gpios = <MCHP_GPIO_DECODE_060 GPIO_OUTPUT_LOW>;
 		};
-		std_adp_prsnt: std-adp-prsnt-ec {
+		gpio_dc_jack_present: std_adp_prsnt: std-adp-prsnt-ec {
 			gpios = <MCHP_GPIO_DECODE_243 GPIO_INPUT>;
 		};
 		gpio_ec_pch_wake_odl: smc-wake-sci-ec {
@@ -68,11 +68,11 @@
 			gpios = <MCHP_GPIO_DECODE_162 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};
-		smc_lid: peci-mux-ctrl-er-int {
+		gpio_lid: peci-mux-ctrl-er-int {
 			gpios = <MCHP_GPIO_DECODE_161 GPIO_INPUT>;
 			enum-name = "GPIO_LID_OPEN";
 		};
-		pwrbtn: home-btn-ec-rvp-aep-id {
+		gpio_pwrbtn: home-btn-ec-rvp-aep-id {
 			gpios = <MCHP_GPIO_DECODE_000 GPIO_INPUT>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};

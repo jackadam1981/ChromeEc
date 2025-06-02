@@ -27,12 +27,16 @@ i2c_port_charger: &i2c2_0 {
 i2c_port_ish: &i2c5_0 {
 };
 
-/* Overrides of the generated.dtsi file needed by the shared
- * rvp interrupt configuration.
+/*
+ * Map GPIOs used for interrupts to common names
  */
-bc_acok: &gpio_acok_od {};
-pwrbtn: &gpio_mech_pwr_btn_odl {};
-std_adp_prsnt: &gpio_adp_det {};
+
+gpio_acok: &gpio_acok_od {};
+gpio_dc_jack_present: &gpio_adp_det {};
+gpio_lid: &gpio_lid_open {};
+gpio_pwrbtn: &gpio_mech_pwr_btn_odl {};
+gpio_voldn: &gpio_ec_voldn_btn_odl {};
+gpio_volup: &gpio_ec_volup_btn_odl {};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
@@ -58,5 +62,4 @@ std_adp_prsnt: &gpio_adp_det {};
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
-/delete-node/ &int_power_button;
 /delete-node/ &int_dc_jack_present;
