@@ -51,6 +51,10 @@ std_adp_prsnt: &gpio_std_adp_prsnt_r {};
 	};
 };
 
+&sha0 {
+	status = "okay";
+};
+
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
 /delete-node/ &int_power_button;
