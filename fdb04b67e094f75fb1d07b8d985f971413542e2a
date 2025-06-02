@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e99620_ade99546",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T17:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e944aaa_d0b10368",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 48
+      },
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b224078_1ac1d22f",
@@ -139,6 +163,30 @@
           ]
         }
       ],
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a360de_6d213efc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2416,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T17:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b224078_1ac1d22f",
+      "range": {
+        "startLine": 2411,
+        "startChar": 7,
+        "endLine": 2416,
+        "endChar": 32
+      },
       "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -194,6 +242,24 @@
           ]
         }
       ],
+      "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45533d6a_31fb8aa2",
+        "filename": "extra/usb_updater/signed_manifest.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T17:39:13Z",
+      "side": 1,
+      "message": "I added more comments, but the production_constraint and isfb_data are not actually part of the manifest. They are at the end of the image so I chose to keep them local in gsctool.c file.",
+      "parentUuid": "50667486_e7f12ca0",
       "revId": "fdb04b67e094f75fb1d07b8d985f971413542e2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
