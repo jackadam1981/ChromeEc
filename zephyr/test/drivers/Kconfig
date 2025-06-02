@@ -318,7 +318,12 @@ config LINK_TEST_SUITE_USBC_RETIMER_PS8811
 config LINK_TEST_SUITE_USBC_DP_MODE
 	bool "Link and test the usbc_dp_tests"
 	help
-	  Include the DP 2.1 test suite in the binary.
+	  Include the DP 2.1 test suite in the binary, testing the 2.1 SVDM version.
+
+config LINK_TEST_SUITE_USBC_DP_MODE_20
+	bool "Link and test the usbc_dp_tests_20"
+	help
+	  Include the DP 2.1 test suite in the binary, testing the 2.0 SVDM version.
 
 config LINK_TEST_SUITE_USBC_TBT_MODE
 	bool "Link and test the usbc_tbt_mode tests"
