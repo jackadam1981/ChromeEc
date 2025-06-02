@@ -24,12 +24,13 @@ target_include_directories(npcx_monitor PRIVATE
   "${PLATFORM_EC}/zephyr/shim/chip/npcx/include"
   )
 target_include_directories(npcx_monitor PRIVATE "${zephyr_includes}")
-target_compile_options(npcx_monitor PRIVATE "${zephyr_compile_options}")
+target_compile_options(npcx_monitor PRIVATE "${zephyr_compile_options};$<TARGET_PROPERTY:compiler,prohibit_lto>")
 
 target_link_options(npcx_monitor BEFORE PRIVATE
   -nostdlib
   -g
   -mthumb
+  "$<TARGET_PROPERTY:compiler,prohibit_lto>"
   -Wl,-T,${CMAKE_CURRENT_SOURCE_DIR}/npcx_monitor.ld
   )
 

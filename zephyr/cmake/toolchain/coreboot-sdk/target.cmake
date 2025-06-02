@@ -36,6 +36,15 @@ set(CMAKE_OBJDUMP    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}objdump")
 set(CMAKE_RANLIB     "${TOOLCHAIN_HOME}/${CROSS_COMPILE}ranlib")
 set(CMAKE_READELF    "${TOOLCHAIN_HOME}/${CROSS_COMPILE}readelf")
 
+if(CONFIG_LTO)
+  # Using 'ar' or 'ranlib' alone produces 'plugin needed to handle lto object',
+  # use 'gcc-* ' variants to specify appropriate plugin argument.
+  # For more details see
+  # https://embeddedartistry.com/blog/2020/04/13/prefer-gcc-ar-to-ar-in-your-buildsystems/
+  set(CMAKE_AR         "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcc-ar")
+  set(CMAKE_RANLIB     "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcc-ranlib")
+endif()
+
 if(CONFIG_PICOLIBC AND NOT CONFIG_PICOLIBC_USE_MODULE)
   # Add picolibc
   message(INFO "Setting TOOLCHAIN_HAS_PICOLIBC to support full build.")
