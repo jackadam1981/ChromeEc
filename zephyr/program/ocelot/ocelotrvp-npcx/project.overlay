@@ -41,6 +41,7 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
+#include "../rvp_usbc.dtsi"
 
 /* ocelotrvp-npcx overrides follow... */
 / {
@@ -58,6 +59,14 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 
 &sha0 {
 	status = "okay";
+};
+
+&pdc_c0 {
+	irq-gpios = <&gpiof 0 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_c1 {
+	irq-gpios = <&gpiof 0 GPIO_ACTIVE_LOW>;
 };
 
 /* Disable nodes for features not yet enabled. */

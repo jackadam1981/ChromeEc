@@ -97,8 +97,6 @@
 		unused-gpios =
 			/* kbc-numlock */
 			<MCHP_GPIO_DECODE_154 GPIO_INPUT>,
-			/* typec-ec-smbus-alert */
-			<MCHP_GPIO_DECODE_143 GPIO_INPUT>,
 			/* ps2-kb-clk */
 			<MCHP_GPIO_DECODE_007 GPIO_INPUT>,
 			/* ps2-kb-data */

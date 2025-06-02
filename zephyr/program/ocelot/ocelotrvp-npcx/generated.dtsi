@@ -148,7 +148,7 @@
 			gpios = <&gpio7 4 (GPIO_INPUT | GPIO_PULL_UP)>;
 		};
 		gpio_usb_pd_int_ls_odl: usb_pd_int_ls_odl {
-			gpios = <&gpiof 0 (GPIO_INPUT)>;
+			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_virtual_battery: virtual_battery {
 			gpios = <&gpio8 0 (GPIO_INPUT)>;
