@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ecf9e9_a0be0066",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-02T16:44:00Z",
+      "side": 1,
+      "message": "if FWWP is blocking dev mode how did we get into dev mode (+ rec)? Should we reset here to be safe?",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "65cf7755_1021c147",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 353,
+                "startChar": 0,
+                "endLine": 354,
+                "endChar": 0
+              },
+              "replacement": "\t/*\n\t * Check the FWMP is not allowing boot policy updates. This means that\n\t * the FWMP is set to block dev mode.\n\t */\n"
+            },
+            {
+              "path": "board/cr50/tpm2/platform.c",
+              "range": {
+                "startLine": 357,
+                "startChar": 0,
+                "endLine": 358,
+                "endChar": 0
+              },
+              "replacement": "\tCPRINTS(\"pcr: block rec+dev with ecrst\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "716f7dd29e3e22e2bbdba5e3451d90a81fafee9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
