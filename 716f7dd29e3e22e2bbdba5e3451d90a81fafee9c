@@ -50,6 +50,30 @@
       ],
       "revId": "716f7dd29e3e22e2bbdba5e3451d90a81fafee9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f148245f_8da810f0",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-02T18:07:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7ecf9e9_a0be0066",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 15
+      },
+      "revId": "716f7dd29e3e22e2bbdba5e3451d90a81fafee9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
