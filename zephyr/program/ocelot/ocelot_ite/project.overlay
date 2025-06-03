@@ -30,6 +30,7 @@ i2c_port_ish: &i2c5 {
 /* Map ITE specific GPIOs to the names required by the rvp interrupts. */
 bc_acok: &gpio_bc_acok {};
 pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};
+std_adp_prsnt: &gpio_std_adp_prsnt_r {};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
@@ -52,6 +53,7 @@ pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
 /delete-node/ &int_power_button;
+/delete-node/ &int_dc_jack_present;
 
 &pwm1 {
 	status = "disabled";

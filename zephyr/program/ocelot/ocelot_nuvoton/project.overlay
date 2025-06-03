@@ -31,6 +31,7 @@ i2c_port_ish: &i2c5_0 {
  */
 bc_acok: &gpio_acok_od {};
 pwrbtn: &gpio_ec_mech_pwr_btn_l{};
+std_adp_prsnt: &gpio_adp_det {};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
@@ -54,3 +55,4 @@ pwrbtn: &gpio_ec_mech_pwr_btn_l{};
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
 /delete-node/ &int_power_button;
+/delete-node/ &int_dc_jack_present;
