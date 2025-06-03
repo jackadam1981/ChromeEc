@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246e163d_c9bca5e1",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T03:29:54Z",
+      "side": 1,
+      "message": "The [Nuvoton NPCX9](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/google/npcx9/npcx9_npcx9m7f.dts;l\u003d26;drc\u003d83c4dbdb7b81f38f310bdecbc249d46906e938db) sets the wp-ro region size to 512 KB, but doesn\u0027t override CROS_EC_RO_SIZE.\n\nIs this change needed for the brtk image to function?",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "b65624ce97b8636fff631dc15eb03a71cbacac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a8e725_3ee75d80",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T03:29:54Z",
+      "side": 1,
+      "message": "Simplify this comment to:\n\"The total flash size is 1 MiB.  Set the write protected region to the lower half of flash.\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "b65624ce97b8636fff631dc15eb03a71cbacac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa29515a_948c4e3d",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T03:29:54Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t apply to the RW section.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "b65624ce97b8636fff631dc15eb03a71cbacac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
