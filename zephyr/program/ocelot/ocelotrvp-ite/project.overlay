@@ -7,7 +7,7 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* ocelot_ite project DTS includes */
+/* ocelotrvp-ite project DTS includes */
 
 #include "generated.dtsi"
 
@@ -35,7 +35,7 @@ pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 
-/* ocelot_ite overrides follow... */
+/* ocelotrvp-ite overrides follow... */
 / {
 	aliases {
 		gpio-wp = &gpio_c_ec_wp_odl_r;
