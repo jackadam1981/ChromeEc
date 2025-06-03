@@ -46,6 +46,30 @@
       },
       "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c923514e_8794f3ea",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T03:04:27Z",
+      "side": 1,
+      "message": "The `all` parameter is used to write protect the entire flash - both RO and RW regions until the next boot.\n\nAs currently implemented, if `cros_flash_rtk_protect_now()` or `cros_flash_rtk_protect_at_boot()` are called with \"protect all\", your code only provides a weak software lock on writing flash.\n\nCan you use this?\n```\nflash_write_prot_reg(dev, 0, CONFIG_PLATFORM_EC_FLASH_SIZE_BYTES, 1);\n```",
+      "parentUuid": "ac48eccf_2ed25968",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 0
+      },
+      "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
