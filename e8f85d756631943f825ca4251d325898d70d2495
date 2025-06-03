@@ -40,6 +40,30 @@
       ],
       "revId": "e8f85d756631943f825ca4251d325898d70d2495",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad8c003_22ecd5e1",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-03T16:27:12Z",
+      "side": 1,
+      "message": "Good catch. This technique only applies to cortrex-m. Fixed.",
+      "parentUuid": "d92db4a7_0589211c",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 16
+      },
+      "revId": "e8f85d756631943f825ca4251d325898d70d2495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
