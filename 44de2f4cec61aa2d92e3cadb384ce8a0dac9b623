@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "077419ca_6650d93c",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-03T16:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "131efbfe_d0da0db3",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "44de2f4cec61aa2d92e3cadb384ce8a0dac9b623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0712e77_fb50d33c",
@@ -71,6 +95,30 @@
           ]
         }
       ],
+      "revId": "44de2f4cec61aa2d92e3cadb384ce8a0dac9b623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c66ae4_75c04770",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-03T16:51:08Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "a0712e77_fb50d33c",
+      "range": {
+        "startLine": 171,
+        "startChar": 32,
+        "endLine": 171,
+        "endChar": 36
+      },
       "revId": "44de2f4cec61aa2d92e3cadb384ce8a0dac9b623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
