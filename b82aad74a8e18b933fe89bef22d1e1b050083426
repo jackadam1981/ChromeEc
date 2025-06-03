@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0fcec3d_cf740675",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-06-03T21:51:24Z",
+      "side": 1,
+      "message": "Is this not a RVP?\n\nThis comment does not match the code in the next file.",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "b82aad74a8e18b933fe89bef22d1e1b050083426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a3c28886_d57b5fbd",
@@ -14,6 +37,23 @@
       "writtenOn": "2025-06-03T21:16:35Z",
       "side": 1,
       "message": "Gerrit is displaying an awful diff here, but the project files have simply been renamed/moved.",
+      "revId": "b82aad74a8e18b933fe89bef22d1e1b050083426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83dcddd2_0da6f285",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-06-03T21:51:24Z",
+      "side": 1,
+      "message": "One nit in the commit message.",
       "revId": "b82aad74a8e18b933fe89bef22d1e1b050083426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
