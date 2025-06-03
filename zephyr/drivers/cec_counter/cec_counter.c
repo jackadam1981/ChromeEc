@@ -5,6 +5,7 @@
 
 #include "cec.h"
 #include "cec_bitbang_chip.h"
+#include "console.h"
 #include "driver/cec/bitbang.h"
 #include "ec_tasks.h"
 #include "gpio/gpio_int.h"
@@ -220,3 +221,12 @@ void cros_cec_bitbang_init_timer(int port)
 	__ASSERT(rv == 0, "cec gpio interrupt configuration returned error %d",
 		 rv);
 }
+
+static int command_test(int argc, const char **argv)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 1);
+	k_busy_wait(3 * USEC_PER_MSEC);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 0);
+	return EC_RES_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(test, command_test, NULL, NULL);
