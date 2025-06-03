@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8545fae_475ba152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-06-03T05:19:15Z",
+      "side": 1,
+      "message": "Can generated.dtsi and power_signals.dtsi be a common part for ITE EC board? (Pull them to program/trulo and rename them with ite_ prefix)",
+      "revId": "43cf567c659c8906a1e22bb3f91cd8458428eacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bb1e84f_20e47ff3",
