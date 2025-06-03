@@ -328,6 +328,9 @@ struct section_t {
 	bool update_needed;
 	struct signed_header_version shv;
 	uint32_t keyid;
+	uint32_t bid_value;
+	uint32_t bid_mask;
+	uint32_t bid_flags;
 };
 
 /* Holds a GSC image from disk that can be transfer to a GSC as an update */
@@ -381,22 +384,23 @@ static const struct isfb_data *get_isfb_data(const struct SignedManifest *m)
 	int i;
 
 	for (i = 0; i < 15; ++i) {
-		/* Find extension with correct ID */
-		if (m->extensions[i].id != ISFB_ID)
+		const uint32_t offset = m->extensions[i].offset;
+
+		/* Find extension with correct ID and non-zero offset*/
+		if (m->extensions[i].id != ISFB_ID || offset == 0)
 			continue;
 
-		/* That has reasonable offset */
-		if (m->extensions[i].offset >= m->length) {
+		/* Check that offset is reasonable. */
+		if (offset >= m->length) {
 			fprintf(stderr, "Bad extension offset 0x%08x\n",
-				m->extensions[i].offset);
+				offset);
 			return NULL;
 		}
 		const struct isfb_data *result =
 			(const struct isfb_data *)((uintptr_t)m +
-						   (uintptr_t)m->extensions[i]
-							   .offset);
+						   (uintptr_t)offset);
 
-		/* And the extension data is also for ISFB */
+		/* Check that extension data is also for ISFB */
 		if (result->id != ISFB_ID) {
 			fprintf(stderr, "Bad extension ID 0x%08x\n",
 				result->id);
@@ -517,6 +521,7 @@ struct __attribute__((__packed__)) arv_config_wpds {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
+static int skip_bid_check;
 
 /*
  * List of command line options, ***sorted by the short form***.
@@ -635,6 +640,8 @@ static const struct option_container cmd_line_options[] = {
 	{ { "reboot", optional_argument, NULL, 'z' },
 	  "Tell the GSC to reboot with an optional reset timeout parameter "
 	  "in milliseconds" },
+	{ { "skip_bid_check", no_argument, &skip_bid_check, 1 },
+	  "Skips board id check and sends image to device." },
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -945,13 +952,17 @@ static void usage(int errs)
 		const char *separator;
 
 		/*
-		 * First print the short and long forms of the command line
-		 * option.
+		 * First print the (short and)? long forms of the command line
+		 * option. If the short form isn't a alphanumeric character,
+		 * then there is no short form.
 		 */
-		printed_length = printf(" -%c,--%s",
-					cmd_line_options[i].opt.val,
-					cmd_line_options[i].opt.name);
-
+		if (isalnum(cmd_line_options[i].opt.val))
+			printed_length = printf(" -%c,--%s",
+						cmd_line_options[i].opt.val,
+						cmd_line_options[i].opt.name);
+		else
+			printed_length =
+				printf(" --%s", cmd_line_options[i].opt.name);
 		/*
 		 * If there is something to print immediately after the
 		 * options, print it.
@@ -1452,10 +1463,10 @@ static bool locate_headers(struct image *image)
 }
 
 /*
- * Scan the new image and retrieve versions of all four sections, two RO and
- * two RW, verifying that image size is not too short along the way.
+ * Scan the new image and retrieve all section_t information besides the offset
+ * and size, which were already populated via locate_headers.
  */
-static bool fetch_header_versions(struct image *image)
+static bool fetch_all_section_info(struct image *image)
 {
 	size_t i;
 	struct section_t *const sections = image->sections;
@@ -1487,11 +1498,60 @@ static bool fetch_header_versions(struct image *image)
 			sections[i].shv.major = h.h->major_;
 			sections[i].shv.minor = h.h->minor_;
 			sections[i].keyid = h.h->keyid;
+			sections[i].bid_value = h.h->board_id_type ^
+						SIGNED_HEADER_PADDING;
+			sections[i].bid_mask = h.h->board_id_type_mask ^
+					       SIGNED_HEADER_PADDING;
+			sections[i].bid_flags = h.h->board_id_flags ^
+						SIGNED_HEADER_PADDING;
 		} else if (h.type == GSC_DEVICE_NT) {
+			/* Constraint order is the same as INFO page order */
+			const struct isfb_data *isfb = get_isfb_data(h.m);
+
 			sections[i].shv.epoch = h.m->security_version;
 			sections[i].shv.major = h.m->version_major;
 			sections[i].shv.minor = h.m->version_minor;
 			sections[i].keyid = be32toh(h.m->modulus[0]);
+
+			/*
+			 * Start with will no constraints, and replace if ISFB
+			 * constraint is present.
+			 */
+			sections[i].bid_value = 0;
+			sections[i].bid_mask = 0;
+			sections[i].bid_flags = 0;
+
+			/* Pull BID mask and values from first constraint */
+			if (isfb != NULL &&
+			    isfb->product_constraint_count >= 1) {
+				sections[i].bid_value =
+					isfb->constraints[0].value;
+				sections[i].bid_mask =
+					isfb->constraints[0].mask;
+			}
+
+			/* Pull BID flags from third constraint */
+			if (isfb != NULL &&
+			    isfb->product_constraint_count >= 3) {
+				sections[i].bid_flags =
+					isfb->constraints[2].mask &
+					isfb->constraints[2].value;
+			} else if (i == RW_A || i == RW_B) {
+				/*
+				 * A typical prod and dev image should contain
+				 * all 3 constraints so report an informational
+				 * error even though we correctly treat the
+				 * image as having no constraints.
+				 *
+				 * Note we only warn for RW since RO is not
+				 * expected to have any product constraints.
+				 */
+				fprintf(stderr,
+					"%s did not contain expected number constraints: %d\n",
+					SECTION_NAMES[i],
+					isfb ? isfb->product_constraint_count :
+					       0);
+			}
 		} else {
 			fprintf(stderr, "\nERROR: Unknown image type.\n");
 			exit(update_error);
@@ -1558,8 +1618,7 @@ static void pick_sections(struct transfer_descriptor *td, struct image *image)
 			 * numbers.
 			 * TODO(b/409779012): Remove this check after Q3 2025.
 			 */
-			if (targ.shv[1].major == 36 &&
-			    targ.shv[1].minor < 20 &&
+			if (targ.shv[1].major == 36 && targ.shv[1].minor < 20 &&
 			    sections[i].shv.minor >= 20) {
 				printf("NT Z1 -> A1 transition blocked\n");
 				continue;
@@ -1878,8 +1937,29 @@ static void send_owner_config(struct transfer_descriptor *td,
 	exit(0);
 }
 
+/* Return true if the specified section and device board id are compatible. */
+static bool bid_matches(const struct section_t *const section,
+			const struct board_id *const bid)
+{
+	/* If we skip check or we don't have all data, pass check */
+	if (skip_bid_check || !section || !bid)
+		return true;
+
+	/* Check that bid flags match. */
+	if (((section->bid_flags ^ bid->flags) & section->bid_flags) != 0)
+		return false;
+
+	/* Check that bid value matches. */
+	if (((section->bid_value ^ bid->type) & section->bid_mask) != 0)
+		return false;
+
+	/* All checks passes. */
+	return true;
+}
+
 /* Returns number of successfully transmitted image sections. */
-static int transfer_image(struct transfer_descriptor *td, struct image *image)
+static int transfer_image(struct transfer_descriptor *td, struct image *image,
+			  const struct board_id *const bid)
 {
 	size_t i;
 	int num_txed_sections = 0;
@@ -1915,6 +1995,12 @@ static int transfer_image(struct transfer_descriptor *td, struct image *image)
 			setup_connection(td);
 			/* Pick sections again in case GSC versions changed. */
 			pick_sections(td, image);
+		}
+
+		if (!bid_matches(&sections[sect], bid)) {
+			fprintf(stderr,
+				"\nImage not valid for this device due to board id constraints.\n");
+			exit(update_error);
 		}
 
 		transfer_section(td, image->data + sections[sect].offset,
@@ -2409,56 +2495,19 @@ static int show_headers_versions(const struct image *image,
 			rw_keyid[slot_idx] = sections[i].keyid;
 		}
 
+		/* Reuse previously parsed info. */
+		bid[slot_idx].id = sections[i].bid_value;
+		bid[slot_idx].mask = sections[i].bid_mask;
+		bid[slot_idx].flags = sections[i].bid_flags;
+
 		/*
 		 * For RW sections, retrieves the board ID fields' contents,
 		 * which are stored XORed with a padding value.
 		 */
 		if (h.type == GSC_DEVICE_H1 || h.type == GSC_DEVICE_DT) {
-			bid[slot_idx].id = h.h->board_id_type ^
-					   SIGNED_HEADER_PADDING;
-			bid[slot_idx].mask = h.h->board_id_type_mask ^
-					     SIGNED_HEADER_PADDING;
-			bid[slot_idx].flags = h.h->board_id_flags ^
-					      SIGNED_HEADER_PADDING;
-
 			dev_id0_[slot_idx] = h.h->dev_id0_;
 			dev_id1_[slot_idx] = h.h->dev_id1_;
 		} else if (h.type == GSC_DEVICE_NT) {
-			/* Constraint order is the same as INFO page order */
-			const struct isfb_data *isfb = get_isfb_data(h.m);
-
-			/*
-			 * Start with will no constraints, and replace if ISFB
-			 * constraint is present
-			 */
-			bid[slot_idx].id = 0;
-			bid[slot_idx].mask = 0;
-			bid[slot_idx].flags = 0;
-
-			/* Pull BID mask and values from first constraint */
-			if (isfb != NULL &&
-			    isfb->product_constraint_count >= 1) {
-				bid[slot_idx].id = isfb->constraints[0].value;
-				bid[slot_idx].mask = isfb->constraints[0].mask;
-			}
-
-			/* Pull BID flags from third constraint */
-			if (isfb != NULL &&
-			    isfb->product_constraint_count >= 3) {
-				bid[slot_idx].flags =
-					isfb->constraints[2].mask &
-					isfb->constraints[2].value;
-			} else {
-				/*
-				 * A typical prod and dev image should contain
-				 * all 3 constraints so report an informational
-				 * error even though we correctly treat the
-				 * image as having no constraints.
-				 */
-				fprintf(stderr,
-					"Image did not contain expected constraints\n");
-			}
-
 			/* Check if devid constraints are being enforced */
 			if (h.m->constraint_selector_bits & 0x6) {
 				dev_id0_[slot_idx] =
@@ -3827,6 +3876,17 @@ static int process_get_boot_mode(struct transfer_descriptor *td)
 	return 0;
 }
 
+static size_t get_bid(struct transfer_descriptor *td, struct board_id *bid)
+{
+	size_t response_size;
+
+	response_size = sizeof(*bid);
+	send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid, response_size, bid,
+			    &response_size);
+
+	return response_size;
+}
+
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action, struct board_id *bid,
 		 bool show_machine_output)
@@ -3834,9 +3894,7 @@ void process_bid(struct transfer_descriptor *td,
 	size_t response_size;
 
 	if (bid_action == bid_get) {
-		response_size = sizeof(*bid);
-		send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid,
-				    sizeof(*bid), bid, &response_size);
+		response_size = get_bid(td, bid);
 
 		if (response_size != sizeof(*bid)) {
 			fprintf(stderr,
@@ -5429,7 +5487,7 @@ int main(int argc, char *argv[])
 			if (!locate_headers(&images[i]))
 				exit(update_error);
 
-			if (!fetch_header_versions(&images[i]))
+			if (!fetch_all_section_info(&images[i]))
 				exit(update_error);
 
 			if (binary_vers) {
@@ -5529,6 +5587,10 @@ int main(int argc, char *argv[])
 
 	if (bid_action != bid_none)
 		process_bid(&td, bid_action, &bid, show_machine_output);
+
+	/* Get the board id if there are images and we didn't just get it */
+	if (images && bid_action != bid_get)
+		get_bid(&td, &bid);
 
 	if (get_endorsement_seed)
 		exit(process_endorsement_seed(&td, endorsement_seed_str));
@@ -5672,7 +5734,7 @@ int main(int argc, char *argv[])
 				printf("Using file for update: %s\n",
 				       match->file_path);
 			}
-			transferred_sections = transfer_image(&td, match);
+			transferred_sections = transfer_image(&td, match, &bid);
 		}
 
 		/* Free images */
