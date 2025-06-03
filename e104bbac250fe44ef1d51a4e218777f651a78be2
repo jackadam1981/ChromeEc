@@ -70,6 +70,30 @@
       },
       "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de700d2e_de7b28e6",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-03T13:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c923514e_8794f3ea",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 0
+      },
+      "revId": "e104bbac250fe44ef1d51a4e218777f651a78be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
