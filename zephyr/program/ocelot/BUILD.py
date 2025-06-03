@@ -72,24 +72,24 @@ def register_mec172x_project(
     )
 
 
-# For use on SKU1 and SKU2
+# For use on RVP SKU1 and SKU2
 register_npcx9_project(
-    project_name="ocelot_nuvoton",
+    project_name="ocelotrvp-npcx",
 )
 
-# For use on SKU3
+# For use on RVP SKU3
 register_it8xxx2_project(
-    project_name="ocelot_ite",
+    project_name="ocelotrvp-ite",
 )
 
-# For use on SKU4
+# For use on RVP SKU4
 register_mec172x_project(
-    project_name="ocelot_microchip",
+    project_name="ocelotrvp-mchp",
 )
 
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
-assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_nuvoton", addr=0x80144)
-assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_ite", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="ocelot_microchip", addr=0x40318)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-npcx", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-ite", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-mchp", addr=0x40318)

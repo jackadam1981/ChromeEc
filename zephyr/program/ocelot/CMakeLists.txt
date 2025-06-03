@@ -6,16 +6,16 @@ cmake_minimum_required(VERSION 3.20.5)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
-if(DEFINED CONFIG_BOARD_OCELOT_ITE)
-	project(ocelot_ite)
+if(DEFINED CONFIG_BOARD_OCELOTRVP_ITE)
+	project(ocelotrvp-ite)
 endif()
 
-if(DEFINED CONFIG_BOARD_OCELOT_NUVOTON)
-	project(ocelot_nuvoton)
+if(DEFINED CONFIG_BOARD_OCELOTRVP_NPCX)
+	project(ocelotrvp-npcx)
 endif()
 
-if(DEFINED CONFIG_BOARD_OCELOT_MICROCHIP)
-	project(ocelot_microchip)
+if(DEFINED CONFIG_BOARD_OCELOTRVP_MCHP)
+	project(ocelotrvp-mchp)
 	zephyr_library_sources("src/rvp_board_power.c")
 endif()
 

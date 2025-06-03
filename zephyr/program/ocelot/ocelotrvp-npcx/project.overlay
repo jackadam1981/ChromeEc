@@ -7,39 +7,40 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* ocelot_ite project DTS includes */
-
+/* ocelotrvp-npcx project DTS includes */
 #include "generated.dtsi"
 
 /*
  * Map I2C buses to common names
  */
 
-i2c_port_pd1: &i2c1 {
+i2c_port_pd1: &i2c0_0 {
 };
 
-i2c_port_pd2: &i2c3 {
+i2c_port_pd2: &i2c1_0 {
 };
 
-i2c_port_charger: &i2c4 {
+i2c_port_charger: &i2c2_0 {
 };
 
-i2c_port_ish: &i2c5 {
+i2c_port_ish: &i2c5_0 {
 };
 
-/* Map ITE specific GPIOs to the names required by the rvp interrupts. */
-bc_acok: &gpio_bc_acok {};
-pwrbtn: &gpio_c_gsc_ec_pwr_btn_n{};
-std_adp_prsnt: &gpio_std_adp_prsnt_r {};
+/* Overrides of the generated.dtsi file needed by the shared
+ * rvp interrupt configuration.
+ */
+bc_acok: &gpio_acok_od {};
+pwrbtn: &gpio_ec_mech_pwr_btn_l{};
+std_adp_prsnt: &gpio_adp_det {};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 
-/* ocelot_ite overrides follow... */
+/* ocelotrvp-npcx overrides follow... */
 / {
 	aliases {
-		gpio-wp = &gpio_c_ec_wp_odl_r;
+		gpio-wp = &gpio_wp_odl;
 	};
 
 	named-gpios {
@@ -50,20 +51,8 @@ std_adp_prsnt: &gpio_std_adp_prsnt_r {};
 	};
 };
 
+
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
 /delete-node/ &int_power_button;
 /delete-node/ &int_dc_jack_present;
-
-&pwm1 {
-	status = "disabled";
-};
-&pwm2 {
-	status = "disabled";
-};
-&pwm3 {
-	status = "disabled";
-};
-&pwm5 {
-	status = "disabled";
-};
