@@ -18,6 +18,9 @@
 #define TPS6699X_MAX_REG 0xa4
 #define TPS6699X_REG_SIZE 64
 
+/* Size of bitmap using uint32_t for all TPS registers. 256 / 32 = 8 bytes. */
+#define REG_U32_BITMAP_SIZE 8
+
 struct ti_ccom {
 	uint16_t connector_number : 7;
 	uint16_t cc_operation_mode : 3;
@@ -92,11 +95,30 @@ struct tps6699x_emul_pdc_data {
 
 	struct tps6699x_response response;
 
+	uint32_t fail_reg_reads[REG_U32_BITMAP_SIZE];
+	uint32_t fail_reg_writes[REG_U32_BITMAP_SIZE];
+
+	int fail_next_ucsi_cmd_count;
+	enum ucsi_command_t fail_next_ucsi_cmd;
+	enum std_task_response fail_next_ucsi_cmd_with_response;
+
 	struct emul_pdc_pdo_t pdo;
 	bool cmd_error;
 	struct k_work_delayable aneg_delay_work;
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
 };
+
+/* Fail next register read from given reg. */
+int emul_pdc_fail_reg_read(const struct emul *target, uint8_t reg);
+
+/* Fail next register write to given reg. */
+int emul_pdc_fail_reg_write(const struct emul *target, uint8_t reg);
+
+/* With the next UCSI command sent, fail with the provided response. */
+int emul_pdc_fail_next_ucsi_command(const struct emul *target,
+				    enum ucsi_command_t command,
+				    enum std_task_response with_response,
+				    uint8_t num_times);
 
 #endif /* __EMUL_TPS6699X_H_ */
