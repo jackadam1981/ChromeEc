@@ -2346,7 +2346,11 @@ static void generate_reset_request(struct transfer_descriptor *td)
 				 command_body_size, &response, &response_size);
 
 	if (rv) {
-		fprintf(stderr, "*%s: Error %#x\n", __func__, rv);
+		/*
+		 * Print to stdout here so automated testing can more easily
+		 * detect this failure scenario.
+		 */
+		printf("*%s: Error %#x\n", __func__, rv);
 		exit(update_error);
 	}
 	printf("reboot %s\n", reset_type);
