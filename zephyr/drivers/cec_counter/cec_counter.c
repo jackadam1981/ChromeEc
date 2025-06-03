@@ -142,6 +142,7 @@ void cros_cec_bitbang_tmr_cap_stop(int port)
 
 	gpio_pin_interrupt_configure_dt(gpio_get_dt_spec(drv_config->gpio_in),
 					GPIO_INT_DISABLE);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 0);
 
 	counter_stop(cec_counter_dev);
 }
@@ -158,6 +159,7 @@ void cros_cec_bitbang_debounce_enable(int port)
 
 	gpio_pin_interrupt_configure_dt(gpio_get_dt_spec(drv_config->gpio_in),
 					GPIO_INT_DISABLE);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 0);
 }
 
 void cros_cec_bitbang_debounce_disable(int port)
@@ -165,6 +167,7 @@ void cros_cec_bitbang_debounce_disable(int port)
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 1);
 	gpio_pin_interrupt_configure_dt(gpio_get_dt_spec(drv_config->gpio_in),
 					GPIO_INT_EDGE_BOTH);
 }
@@ -189,6 +192,7 @@ void cros_cec_bitbang_enable_timer(int port)
 	 * Enable gpio interrupts. Timer interrupts will be enabled as needed by
 	 * cec_tmr_cap_start().
 	 */
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 1);
 	gpio_pin_interrupt_configure_dt(gpio_get_dt_spec(drv_config->gpio_in),
 					GPIO_INT_EDGE_BOTH);
 }
@@ -216,6 +220,7 @@ void cros_cec_bitbang_init_timer(int port)
 	gpio_init_callback(&cb, cec_gpio_handler, BIT(gpio_int->pin));
 	gpio_add_callback(gpio_int->port, &cb);
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 0);
 	rv = gpio_pin_interrupt_configure_dt(gpio_int, GPIO_INT_DISABLE);
 	__ASSERT(rv == 0, "cec gpio interrupt configuration returned error %d",
 		 rv);
