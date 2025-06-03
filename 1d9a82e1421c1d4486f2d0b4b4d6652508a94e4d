@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ac9d63e_45d51bf9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-03T18:16:44Z",
+      "side": 1,
+      "message": "This is actually the API that\u0027s not returning \"best_port\" in pdc_power_mgmt in the reported bugs.\n\nScenario: two chargers are connected, then one is disconnected.\n\n1. Upon disconnecting charger, charge_manager selects a new \"best_port\" and updates PDC power mgmt via `board_set_active_charge_port(new_port)`. \n\n2. `board_set_active_charge_port` posts an event, triggering PDC power management thread to go active, while `charge_manager_refresh` goes to sleep mid function. `charge_port` is now stale.\n\n3.  PDC power management queries this API getting the disconnected port, instead of the `new_port` in step 1, leading to the sink path not getting properly enabled.",
+      "parentUuid": "f846ebf3_11abc9f7",
+      "range": {
+        "startLine": 1446,
+        "startChar": 0,
+        "endLine": 1450,
+        "endChar": 0
+      },
+      "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6ea0801_48f1bf3f",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a361acd3_769e9592",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-03T18:16:44Z",
+      "side": 1,
+      "message": "It may not be, but its part of the set of data that is updated in `charge_manager_refresh`, so I want to make sure its protected.\n```\n\tcharge_current \u003d new_charge_current;\n\tcharge_current_uncapped \u003d new_charge_current_uncapped;\n\tcharge_voltage \u003d new_charge_voltage;\n\tcharge_supplier \u003d new_supplier;\n\tcharge_port \u003d new_port;\n```",
+      "parentUuid": "d6ea0801_48f1bf3f",
+      "range": {
+        "startLine": 1465,
+        "startChar": 0,
+        "endLine": 1468,
+        "endChar": 0
+      },
+      "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "faa6d35d_58ecb124",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -77,6 +125,30 @@
       "writtenOn": "2025-06-03T17:54:12Z",
       "side": 1,
       "message": "Same for all these reads that access a single value only.  The mutex lock doesn\u0027t seem necesaary.",
+      "range": {
+        "startLine": 1476,
+        "startChar": 0,
+        "endLine": 1480,
+        "endChar": 0
+      },
+      "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f754da_3db9de1e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-03T18:16:44Z",
+      "side": 1,
+      "message": "`charge_manager_refresh` runs as a system hook, which is the lowest thread priority.  Any thread that queries this data while `charge_manager_refresh` is running, may get stale data.  `charge_manager_refresh` interacts with other modules that may cause their threads to wake-up, as described in earlier scenario.",
+      "parentUuid": "faa6d35d_58ecb124",
       "range": {
         "startLine": 1476,
         "startChar": 0,
