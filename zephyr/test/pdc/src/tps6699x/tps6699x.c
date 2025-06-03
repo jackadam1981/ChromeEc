@@ -22,6 +22,9 @@
 LOG_MODULE_REGISTER(test_tps6699x, LOG_LEVEL_DBG);
 #define SLEEP_MS 200
 
+/* Copy of driver retries for init. */
+#define TPS6699X_INIT_RETRY_MAX 3
+
 #define TPS6699X_NODE DT_NODELABEL(pdc_emul1)
 
 enum port_control_access {
@@ -196,4 +199,32 @@ ZTEST_USER(tps6699x, test_set_uor_tps)
 	emul_pdc_get_data_role_preference(emul, &swap_to_dfp, &swap_to_ufp);
 	zassert_equal(swap_to_ufp, 0);
 	zassert_equal(swap_to_dfp, 1);
+}
+
+/* ST_INIT is being used to initialize critical registers and needs to recover
+ * from a failed SET_NOTIFICATION. Test both the INIT_DONE + retry mechanisms.
+ */
+ZTEST_USER(tps6699x, test_init_state_sequence)
+{
+	/* Make sure we started in an initialized state. */
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Fail all SET_NOTIFICATION attempts as part of init. */
+	emul_pdc_fail_next_ucsi_command(emul, UCSI_SET_NOTIFICATION_ENABLE,
+					TASK_REJECTED, TPS6699X_INIT_RETRY_MAX);
+
+	/* Do a reset which will trigger GAID and restart init. */
+	zassert_ok(pdc_reset(dev));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* PDC should not be init because SET_NOTIFICATION failed. */
+	zassert_false(pdc_is_init_done(dev));
+
+	/* Reset will fail because it's in suspended state. Restore from
+	 * suspended and it should be ok again. */
+	zassert_not_ok(pdc_reset(dev));
+	zassert_ok(pdc_set_comms_state(dev, true));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	zassert_true(pdc_is_init_done(dev));
 }

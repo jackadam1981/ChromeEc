@@ -92,11 +92,21 @@ struct tps6699x_emul_pdc_data {
 
 	struct tps6699x_response response;
 
+	int fail_next_ucsi_cmd_count;
+	enum ucsi_command_t fail_next_ucsi_cmd;
+	enum std_task_response fail_next_ucsi_cmd_with_response;
+
 	struct emul_pdc_pdo_t pdo;
 	bool cmd_error;
 	struct k_work_delayable aneg_delay_work;
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
 };
+
+/* With the next UCSI command sent, fail with the provided response. */
+int emul_pdc_fail_next_ucsi_command(const struct emul *target,
+				    enum ucsi_command_t command,
+				    enum std_task_response with_response,
+				    uint8_t num_times);
 
 #endif /* __EMUL_TPS6699X_H_ */

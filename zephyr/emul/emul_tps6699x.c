@@ -274,6 +274,17 @@ static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 	if (cmd != UCSI_SET_PDOS) {
 		zassert_equal(data_len, 0);
 	}
+
+	if (data->fail_next_ucsi_cmd_count > 0 &&
+	    cmd == data->fail_next_ucsi_cmd) {
+		data_reg[0] = data->fail_next_ucsi_cmd_with_response;
+		data->fail_next_ucsi_cmd_count--;
+		LOG_INF("Fail UCSI command 0x%X (remaining fails: %d)",
+			data->fail_next_ucsi_cmd,
+			data->fail_next_ucsi_cmd_count);
+		return;
+	}
+
 	/* TODO(b/345292002): Validate connector number field. */
 
 	LOG_INF("UCSI command 0x%X", cmd);
@@ -448,6 +459,14 @@ static int tps6699x_emul_handle_sbud(struct tps6699x_emul_pdc_data *data,
 	return 0;
 }
 
+static int tps6699x_emul_handle_gaid(struct tps6699x_emul_pdc_data *data,
+				     uint8_t *data_reg)
+{
+	LOG_INF("GAID TASK");
+	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
+	return 0;
+}
+
 static void delayable_work_handler(struct k_work *w)
 {
 	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
@@ -486,6 +505,9 @@ static void tps6699x_emul_handle_command(struct tps6699x_emul_pdc_data *data,
 		break;
 	case COMMAND_TASK_SBUD:
 		tps6699x_emul_handle_sbud(data, data_reg);
+		break;
+	case COMMAND_TASK_GAID:
+		tps6699x_emul_handle_gaid(data, data_reg);
 		break;
 	default: {
 		char task_str[5] = {
@@ -1253,6 +1275,25 @@ static void emul_tps6699x_reset_feature_flags(const struct emul *target)
 		tps6699x_emul_get_pdc_data(target);
 
 	atomic_clear(data->features);
+}
+
+int emul_pdc_fail_next_ucsi_command(const struct emul *target,
+				    enum ucsi_command_t command,
+				    enum std_task_response with_response,
+				    uint8_t num_times)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (with_response == TASK_COMPLETED_SUCCESSFULLY) {
+		return -EINVAL;
+	}
+
+	data->fail_next_ucsi_cmd = command;
+	data->fail_next_ucsi_cmd_count = num_times;
+	data->fail_next_ucsi_cmd_with_response = with_response;
+
+	return 0;
 }
 /* LCOV_EXCL_STOP */
 
