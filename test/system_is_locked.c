@@ -43,6 +43,7 @@ test_static int test_ensure_no_debugger_detected(void)
 
 test_static int test_ro_protection_enabled(void)
 {
+	ccprints("crec_flash_get_protect(): %d", crec_flash_get_protect());
 	TEST_BITS_SET(crec_flash_get_protect(), EC_FLASH_PROTECT_RO_NOW);
 
 	return EC_SUCCESS;
