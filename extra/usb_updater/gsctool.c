@@ -4613,6 +4613,11 @@ static void print_ti50_misc_status(uint32_t misc_status, uint32_t version)
 		       METRICSV_ALLOW_UNVERIFIED_RO_SHIFT);
 	printf("  is_prod:               %d\n",
 	       (misc_status & METRICSV_IS_PROD_MASK) >> METRICSV_IS_PROD_SHIFT);
+	if (version < 4)
+		return;
+	printf("  rdd_detected:          %d\n",
+	       (misc_status & METRICSV_RDD_IS_DETECTED_MASK) >>
+		       METRICSV_RDD_IS_DETECTED_SHIFT);
 }
 
 static int print_ti50_stats(struct ti50_stats_v0 *stats_v0, size_t size)
