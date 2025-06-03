@@ -69,4 +69,10 @@ config NPCX_RAM_LOCK
 	help
 	  Enable the RAM lock function.
 
+config NPCX_OTP_KEY
+	bool "Enable NPCX OTP Key functionality"
+	default n
+	help
+		Enable the OTP Key functionality
+
 endif # PLATFORM_EC
