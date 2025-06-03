@@ -22,6 +22,9 @@
 LOG_MODULE_REGISTER(test_tps6699x, LOG_LEVEL_DBG);
 #define SLEEP_MS 200
 
+/* Copy of driver retries for init. */
+#define TPS6699X_INIT_RETRY_MAX 3
+
 #define TPS6699X_NODE DT_NODELABEL(pdc_emul1)
 
 enum port_control_access {
@@ -196,4 +199,67 @@ ZTEST_USER(tps6699x, test_set_uor_tps)
 	emul_pdc_get_data_role_preference(emul, &swap_to_dfp, &swap_to_ufp);
 	zassert_equal(swap_to_ufp, 0);
 	zassert_equal(swap_to_dfp, 1);
+}
+
+#define INIT_SLEEP_MS 1000
+/* ST_INIT is being used to initialize critical registers and needs to recover
+ * from a failed SET_NOTIFICATION. Test both the INIT_DONE + retry mechanisms.
+ */
+ZTEST_USER(tps6699x, test_init_state_sequence)
+{
+	/* Make sure we started in an initialized state. */
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Fail all SET_NOTIFICATION attempts as part of init. One failure will
+	 * be due to attempting to read REG_VERSION. */
+	emul_pdc_fail_next_ucsi_command(emul, UCSI_SET_NOTIFICATION_ENABLE,
+					TASK_REJECTED, TPS6699X_INIT_RETRY_MAX);
+
+	/* Do a reset which will trigger GAID and restart init. This takes
+	 * longer than normal to complete since GAID takes >1s.
+	 */
+	zassert_ok(pdc_reset(dev));
+	k_sleep(K_MSEC(INIT_SLEEP_MS * 2));
+
+	/* PDC should not be init because SET_NOTIFICATION failed. */
+	zassert_false(pdc_is_init_done(dev));
+
+	/* Reset will fail because it's in suspended state. Restore from
+	 * suspended and it should be ok again. */
+	zassert_not_ok(pdc_reset(dev));
+	zassert_ok(pdc_set_comms_state(dev, true));
+	k_sleep(K_MSEC(INIT_SLEEP_MS));
+
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Fail register read/writes for some init tasks at least once for
+	 * coverage. These all will cause error handling to trigger.
+	 */
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_MASK_FOR_I2C1);
+	emul_pdc_fail_reg_write(emul, REG_AUTONEGOTIATE_SINK);
+	emul_pdc_fail_reg_write(emul, REG_PORT_CONTROL);
+	emul_pdc_fail_reg_read(emul, REG_BOOT_FLAG);
+	emul_pdc_fail_reg_read(emul, REG_VERSION);
+
+	/* Number of registers fails above / number of retries is how many loop
+	 * iterations it will take to recover to init state.
+	 */
+	const int num_loops = 5 / TPS6699X_INIT_RETRY_MAX + 1;
+
+	/* Do a reset which will trigger GAID and restart init. */
+	zassert_ok(pdc_reset(dev));
+	k_sleep(K_MSEC(INIT_SLEEP_MS));
+
+	int i;
+	for (i = 0; i < num_loops && !pdc_is_init_done(dev); ++i) {
+		/* PDC won't be init because register read/writes failed. */
+		zassert_false(pdc_is_init_done(dev));
+
+		/* Restore from suspended to trigger the init retries. */
+		zassert_ok(pdc_set_comms_state(dev, true));
+		k_sleep(K_MSEC(INIT_SLEEP_MS));
+	}
+
+	zassert_equal(i, num_loops, "I = %d vs num_loops = %d", i, num_loops);
+	zassert_true(pdc_is_init_done(dev));
 }
