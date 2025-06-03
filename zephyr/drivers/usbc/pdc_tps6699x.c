@@ -61,6 +61,10 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
  */
 #define PDC_TI_SET_SINK_PATH_DELAY_MS (1000)
 
+/** @brief The number of times to try to initialize the driver before quitting.
+ */
+#define PDC_INIT_RETRY_MAX 3
+
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
  * written to, or read from, and byte-1 contains the length of said data. The
@@ -223,6 +227,8 @@ struct pdc_data_t {
 	struct pdc_info_t info;
 	/** Init done flag */
 	bool init_done;
+	/* Init attempt counter */
+	int init_attempt;
 	/** Callback data */
 	void *cb_data;
 	/** CCI Event */
@@ -482,6 +488,91 @@ static void tps_notify_new_power_contract(struct k_work *work)
 	}
 }
 
+static int pdc_interrupt_mask_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_interrupt irq_mask = {
+		.pd_hardreset = 1,
+		.plug_insert_or_removal = 1,
+		.power_swap_complete = 1,
+		.fr_swap_complete = 1,
+		.data_swap_complete = 1,
+		.sink_ready = 1,
+		.new_contract_as_consumer = 1,
+		.ucsi_connector_status_change_notification = 1,
+		.power_event_occurred_error = 1,
+		.externl_dcdc_event_received = 1,
+	};
+
+	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
+}
+
+static int pdc_port_control_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_port_control pdc_port_control = {
+		.typec_current = 1,
+		.process_swap_to_sink = 1,
+		.process_swap_to_source = 1,
+		.automatic_cap_request = 1,
+		.auto_alert_enable = 1,
+		.process_swap_to_dfp = 1,
+		.automatic_id_request = 1,
+		.fr_swap_enabled = 1,
+		.deglitch_cnt_lo = 6,
+	};
+
+	return tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
+}
+
+static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
+{
+	union reg_autonegotiate_sink an_snk;
+	struct pdc_config_t const *cfg = data->dev->config;
+	int rv;
+
+	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("Failed to read auto negotiate sink register.");
+		return rv;
+	}
+
+	an_snk.auto_compute_sink_min_power = 0;
+	an_snk.auto_compute_sink_min_voltage = 0;
+	an_snk.auto_compute_sink_max_voltage = 0;
+	an_snk.auto_neg_max_current = 3000 / 10;
+	an_snk.auto_neg_sink_min_required_power = 15000 / 250;
+	an_snk.auto_neg_max_voltage = 5000 / 50;
+	an_snk.auto_neg_min_voltage = 5000 / 50;
+
+	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Failed to write auto negotiate sink register.");
+		return rv;
+	}
+
+	return 0;
+}
+
+static int pdc_exit_dead_battery(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_boot_flags pdc_boot_flags;
+	int rv;
+
+	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
+	if (rv) {
+		LOG_ERR("Read boot flags failed");
+		set_state(data, ST_ERROR_RECOVERY);
+		return rv;
+	}
+
+	if (pdc_boot_flags.dead_battery_flag) {
+		task_dbfg(data);
+	}
+	return 0;
+}
+
 static void st_irq_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -586,6 +677,10 @@ static void st_init_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
+	/* Init is restarted. */
+	data->init_done = false;
+	data->init_attempt++;
+
 	print_current_state(data);
 }
 
@@ -597,6 +692,13 @@ static void st_init_run(void *o)
 
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
+		set_state(data, ST_SUSPENDED);
+		return;
+	}
+
+	/* If we've attempted init too many times, suspend instead. */
+	if (data->init_attempt >= PDC_INIT_RETRY_MAX) {
+		suspend_comms();
 		set_state(data, ST_SUSPENDED);
 		return;
 	}
@@ -615,6 +717,24 @@ static void st_init_run(void *o)
 		PDC_FWVER_GET_MINOR(data->info.fw_version),
 		PDC_FWVER_GET_PATCH(data->info.fw_version));
 
+	/* Setup I2C1 interrupt mask for this port */
+	rv = pdc_interrupt_mask_init(data);
+	if (rv < 0) {
+		LOG_ERR("Write interrupt mask failed");
+	}
+	rv = pdc_autonegotiate_sink_reset(data);
+	if (rv < 0) {
+		LOG_ERR("Reset autonegotiate_sink reg failed");
+	}
+	rv = pdc_port_control_init(data);
+	if (rv < 0) {
+		LOG_ERR("Write port control failed");
+	}
+	rv = pdc_exit_dead_battery(data);
+	if (rv < 0) {
+		LOG_ERR("Clear dead battery flag failed");
+	}
+
 	/* Set PDC notifications */
 	data->cmd = CMD_SET_NOTIFICATION_ENABLE;
 	/*
@@ -626,18 +746,6 @@ static void st_init_run(void *o)
 	/* Transition to the idle state */
 	set_state(data, ST_IDLE);
 	return;
-}
-
-static void st_init_exit(void *o)
-{
-	struct pdc_data_t *data = (struct pdc_data_t *)o;
-
-	/* Inform the driver that the init process is complete */
-	/* TODO: Make sure this makes sense if the next state is suspend. It may
-	 * be possible to remove ST_INIT entirely by doing this in the init
-	 * function.
-	 */
-	data->init_done = true;
 }
 
 static void st_idle_entry(void *o)
@@ -851,8 +959,12 @@ static void st_error_recovery_run(void *o)
 	/* Inform the system of the event */
 	call_cci_event_cb(data);
 
-	/* Transition to idle */
-	set_state(data, ST_IDLE);
+	if (data->init_done) {
+		/* Transition to idle */
+		set_state(data, ST_IDLE);
+	} else {
+		set_state(data, ST_INIT);
+	}
 	return;
 }
 
@@ -881,6 +993,7 @@ static void st_suspended_run(void *o)
 		return;
 	}
 
+	data->init_attempt = 0;
 	set_state(data, ST_INIT);
 }
 
@@ -1943,7 +2056,23 @@ static void st_task_wait_run(void *o)
 		goto data_out;
 	}
 
+	/* After trigger a reset (TASK_COMMAND_GAID), the command register
+	 * should zero out above since we've reset. At this point, we need to
+	 * re-init to recover.
+	 */
+	if (data->cmd == CMD_TRIGGER_PDC_RESET) {
+		data->init_attempt = 0;
+		set_state(data, ST_INIT);
+		return;
+	}
+
 	switch (data->cmd) {
+	case CMD_SET_NOTIFICATION_ENABLE:
+		/* Initialization for driver is done once notifications are
+		 * enabled. This flag is reset when the INIT state is entered.
+		 */
+		data->init_done = true;
+		break;
 	case CMD_SET_RDO:
 		/* Re-set sink enable until after aNEG completes. */
 		atomic_set(&data->sink_enable_possible, 0);
@@ -2038,8 +2167,13 @@ data_out:
 	/* Inform the system of the event */
 	call_cci_event_cb(data);
 
-	/* Transition to idle state */
-	set_state(data, ST_IDLE);
+	if (data->init_done) {
+		/* Transition to idle state */
+		set_state(data, ST_IDLE);
+	} else {
+		/* Re-try init since we didn't complete successfully. */
+		set_state(data, ST_INIT);
+	}
 	return;
 
 error_recovery:
@@ -2049,8 +2183,8 @@ error_recovery:
 /* Populate state table */
 static const struct smf_state states[] = {
 	[ST_IRQ] = SMF_CREATE_STATE(st_irq_entry, st_irq_run, NULL, NULL, NULL),
-	[ST_INIT] = SMF_CREATE_STATE(st_init_entry, st_init_run, st_init_exit,
-				     NULL, NULL),
+	[ST_INIT] =
+		SMF_CREATE_STATE(st_init_entry, st_init_run, NULL, NULL, NULL),
 	[ST_IDLE] = SMF_CREATE_STATE(st_idle_entry, st_idle_run, st_idle_exit,
 				     NULL, NULL),
 	[ST_ERROR_RECOVERY] = SMF_CREATE_STATE(st_error_recovery_entry,
@@ -2666,91 +2800,6 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_ap_power_state = tps_set_ap_power_state,
 };
 
-static int pdc_interrupt_mask_init(struct pdc_data_t *data)
-{
-	struct pdc_config_t const *cfg = data->dev->config;
-	union reg_interrupt irq_mask = {
-		.pd_hardreset = 1,
-		.plug_insert_or_removal = 1,
-		.power_swap_complete = 1,
-		.fr_swap_complete = 1,
-		.data_swap_complete = 1,
-		.sink_ready = 1,
-		.new_contract_as_consumer = 1,
-		.ucsi_connector_status_change_notification = 1,
-		.power_event_occurred_error = 1,
-		.externl_dcdc_event_received = 1,
-	};
-
-	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
-}
-
-static int pdc_port_control_init(struct pdc_data_t *data)
-{
-	struct pdc_config_t const *cfg = data->dev->config;
-	union reg_port_control pdc_port_control = {
-		.typec_current = 1,
-		.process_swap_to_sink = 1,
-		.process_swap_to_source = 1,
-		.automatic_cap_request = 1,
-		.auto_alert_enable = 1,
-		.process_swap_to_dfp = 1,
-		.automatic_id_request = 1,
-		.fr_swap_enabled = 1,
-		.deglitch_cnt_lo = 6,
-	};
-
-	return tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
-}
-
-static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
-{
-	union reg_autonegotiate_sink an_snk;
-	struct pdc_config_t const *cfg = data->dev->config;
-	int rv;
-
-	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_READ);
-	if (rv) {
-		LOG_ERR("Failed to read auto negotiate sink register.");
-		return rv;
-	}
-
-	an_snk.auto_compute_sink_min_power = 0;
-	an_snk.auto_compute_sink_min_voltage = 0;
-	an_snk.auto_compute_sink_max_voltage = 0;
-	an_snk.auto_neg_max_current = 3000 / 10;
-	an_snk.auto_neg_sink_min_required_power = 15000 / 250;
-	an_snk.auto_neg_max_voltage = 5000 / 50;
-	an_snk.auto_neg_min_voltage = 5000 / 50;
-
-	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
-	if (rv) {
-		LOG_ERR("Failed to write auto negotiate sink register.");
-		return rv;
-	}
-
-	return 0;
-}
-
-static int pdc_exit_dead_battery(struct pdc_data_t *data)
-{
-	struct pdc_config_t const *cfg = data->dev->config;
-	union reg_boot_flags pdc_boot_flags;
-	int rv;
-
-	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
-	if (rv) {
-		LOG_ERR("Read boot flags failed");
-		set_state(data, ST_ERROR_RECOVERY);
-		return rv;
-	}
-
-	if (pdc_boot_flags.dead_battery_flag) {
-		task_dbfg(data);
-	}
-	return 0;
-}
-
 static void pdc_interrupt_callback(const struct device *dev,
 				   struct gpio_callback *cb, uint32_t pins)
 {
@@ -2816,28 +2865,6 @@ static int pdc_init(const struct device *dev)
 
 	/* Create the thread for this port */
 	cfg->create_thread(dev);
-
-	/* Setup I2C1 interrupt mask for this port */
-	rv = pdc_interrupt_mask_init(data);
-	if (rv < 0) {
-		LOG_ERR("Write interrupt mask failed");
-		return rv;
-	}
-	rv = pdc_autonegotiate_sink_reset(data);
-	if (rv < 0) {
-		LOG_ERR("Reset autonegotiate_sink reg failed");
-		return rv;
-	}
-	rv = pdc_port_control_init(data);
-	if (rv < 0) {
-		LOG_ERR("Write port control failed");
-		return rv;
-	}
-	rv = pdc_exit_dead_battery(data);
-	if (rv < 0) {
-		LOG_ERR("Clear dead battery flag failed");
-		return rv;
-	}
 
 	/* Trigger an interrupt on startup */
 	k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
