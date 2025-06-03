@@ -69,6 +69,29 @@ static bool register_is_valid(const struct tps6699x_emul_pdc_data *data,
 	return reg < sizeof(data->reg_val) / sizeof(*data->reg_val);
 }
 
+#define REG_BITMAP_INDEX(reg) ((reg) / 32)
+#define REG_BITMAP_OFFSET(reg) ((reg) % 32)
+
+static bool register_read_should_fail(const struct tps6699x_emul_pdc_data *data,
+				      int reg)
+{
+	return data->fail_reg_reads[REG_BITMAP_INDEX(reg)] &
+	       BIT(REG_BITMAP_OFFSET(reg));
+}
+
+static bool
+register_write_should_fail(const struct tps6699x_emul_pdc_data *data, int reg)
+{
+	return data->fail_reg_writes[REG_BITMAP_INDEX(reg)] &
+	       BIT(REG_BITMAP_OFFSET(reg));
+}
+
+static void clear_register_fail_bit(const struct tps6699x_emul_pdc_data *data,
+				    int reg, uint32_t *fail_bitmap)
+{
+	fail_bitmap[REG_BITMAP_INDEX(reg)] &= ~BIT(REG_BITMAP_OFFSET(reg));
+}
+
 /** Check that a register access is valid. A valid access has
  *  1) a valid register address,
  *  2) a byte offset less than the size of that register, and
@@ -274,6 +297,17 @@ static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 	if (cmd != UCSI_SET_PDOS) {
 		zassert_equal(data_len, 0);
 	}
+
+	if (data->fail_next_ucsi_cmd_count > 0 &&
+	    cmd == data->fail_next_ucsi_cmd) {
+		data_reg[0] = data->fail_next_ucsi_cmd_with_response;
+		data->fail_next_ucsi_cmd_count--;
+		LOG_INF("Fail UCSI command 0x%X (remaining fails: %d)",
+			data->fail_next_ucsi_cmd,
+			data->fail_next_ucsi_cmd_count);
+		return;
+	}
+
 	/* TODO(b/345292002): Validate connector number field. */
 
 	LOG_INF("UCSI command 0x%X", cmd);
@@ -448,6 +482,14 @@ static int tps6699x_emul_handle_sbud(struct tps6699x_emul_pdc_data *data,
 	return 0;
 }
 
+static int tps6699x_emul_handle_gaid(struct tps6699x_emul_pdc_data *data,
+				     uint8_t *data_reg)
+{
+	LOG_INF("GAID TASK");
+	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
+	return 0;
+}
+
 static void delayable_work_handler(struct k_work *w)
 {
 	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
@@ -486,6 +528,9 @@ static void tps6699x_emul_handle_command(struct tps6699x_emul_pdc_data *data,
 		break;
 	case COMMAND_TASK_SBUD:
 		tps6699x_emul_handle_sbud(data, data_reg);
+		break;
+	case COMMAND_TASK_GAID:
+		tps6699x_emul_handle_gaid(data, data_reg);
 		break;
 	default: {
 		char task_str[5] = {
@@ -568,6 +613,11 @@ static int tps6699x_emul_start_write(const struct emul *emul, int reg)
 		return -EIO;
 	}
 
+	if (register_write_should_fail(data, reg)) {
+		clear_register_fail_bit(data, reg, data->fail_reg_writes);
+		return -EIO;
+	}
+
 	data->reg_addr = reg;
 
 	return 0;
@@ -635,6 +685,11 @@ static int tps6699x_emul_start_read(const struct emul *emul, int reg)
 	struct tps6699x_emul_pdc_data *data = tps6699x_emul_get_pdc_data(emul);
 
 	if (!register_is_valid(data, reg)) {
+		return -EIO;
+	}
+
+	if (register_read_should_fail(data, reg)) {
+		clear_register_fail_bit(data, reg, data->fail_reg_reads);
 		return -EIO;
 	}
 
@@ -929,7 +984,6 @@ static int emul_tps6699x_set_info(const struct emul *target,
 		(union reg_tx_identity *)data->reg_val[REG_TX_IDENTITY];
 	union reg_customer_use *reg_customer_use =
 		(union reg_customer_use *)data->reg_val[REG_CUSTOMER_USE];
-	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
 
 	reg_version->version = info->fw_version;
 	*((uint16_t *)reg_tx_identity->vendor_id) = info->vid;
@@ -937,8 +991,6 @@ static int emul_tps6699x_set_info(const struct emul *target,
 	memset(reg_customer_use->data, 0, sizeof(reg_customer_use->data));
 	memcpy(reg_customer_use->data, info->project_name,
 	       MIN(sizeof(reg_customer_use->data), strlen(info->project_name)));
-	*((uint32_t *)reg_mode->data) =
-		(info->is_running_flash_code ? REG_MODE_APP0 : 0);
 
 	return 0;
 }
@@ -1015,6 +1067,7 @@ static int emul_tps6699x_reset(const struct emul *target)
 		tps6699x_emul_get_pdc_data(target);
 	const union reg_port_control *pdc_port_control =
 		(const union reg_port_control *)data->reg_val[REG_PORT_CONTROL];
+	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
 
 	memset(data->reg_val, 0, sizeof(data->reg_val));
 
@@ -1029,6 +1082,14 @@ static int emul_tps6699x_reset(const struct emul *target)
 
 	data->frs_configured = false;
 	data->port_control = *pdc_port_control;
+
+	/* Reset failure structures. */
+	memset(data->fail_reg_reads, 0, REG_U32_BITMAP_SIZE);
+	memset(data->fail_reg_writes, 0, REG_U32_BITMAP_SIZE);
+	data->fail_next_ucsi_cmd_count = 0;
+
+	/* Initialize reg_mode to APP0 to indicate running from flash. */
+	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
 
 	return 0;
 }
@@ -1094,6 +1155,8 @@ static int tps6699x_emul_init(const struct emul *emul,
 {
 	struct tps6699x_emul_data *data = emul->data;
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
+	union reg_mode *reg_mode =
+		(union reg_mode *)data->pdc_data.reg_val[REG_MODE];
 	LOG_INF("TPS669X emul init");
 
 	data->common.i2c = parent;
@@ -1106,6 +1169,9 @@ static int tps6699x_emul_init(const struct emul *emul,
 			      delayable_work_handler);
 	k_work_init_delayable(&data->pdc_data.aneg_delay_work,
 			      aneg_delayable_work_handler);
+
+	/* Init register to APP0 */
+	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
 
 	return 0;
 }
@@ -1200,6 +1266,55 @@ static int tps6699x_emul_get_data_role_preference(const struct emul *target,
 
 	*swap_to_dfp = pdc_port_control->initiate_swap_to_dfp;
 	*swap_to_ufp = pdc_port_control->initiate_swap_to_ufp;
+
+	return 0;
+}
+
+int emul_pdc_fail_reg_read(const struct emul *target, uint8_t reg)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (reg > TPS6699X_MAX_REG) {
+		return -EINVAL;
+	}
+
+	data->fail_reg_reads[REG_BITMAP_INDEX(reg)] |=
+		BIT(REG_BITMAP_OFFSET(reg));
+
+	return 0;
+}
+
+int emul_pdc_fail_reg_write(const struct emul *target, uint8_t reg)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (reg > TPS6699X_MAX_REG) {
+		return -EINVAL;
+	}
+
+	data->fail_reg_writes[REG_BITMAP_INDEX(reg)] |=
+		BIT(REG_BITMAP_OFFSET(reg));
+
+	return 0;
+}
+
+int emul_pdc_fail_next_ucsi_command(const struct emul *target,
+				    enum ucsi_command_t command,
+				    enum std_task_response with_response,
+				    uint8_t num_times)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (with_response == TASK_COMPLETED_SUCCESSFULLY) {
+		return -EINVAL;
+	}
+
+	data->fail_next_ucsi_cmd = command;
+	data->fail_next_ucsi_cmd_count = num_times;
+	data->fail_next_ucsi_cmd_with_response = with_response;
 
 	return 0;
 }
