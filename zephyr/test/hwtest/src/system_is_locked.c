@@ -53,6 +53,7 @@ static void test_ensure_no_debugger_detected(void)
 
 static void test_ro_protection_enabled(void)
 {
+	printk("crec_flash_get_protect(): %d", crec_flash_get_protect());
 	zassert_true(crec_flash_get_protect() & EC_FLASH_PROTECT_RO_NOW);
 }
 
