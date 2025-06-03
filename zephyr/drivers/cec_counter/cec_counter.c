@@ -90,7 +90,7 @@ void cec_gpio_handler(const struct device *device,
 	      (expected_cap_edge == CEC_CAP_EDGE_RISING && level == 1))) {
 		return;
 	}
-
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), level);
 	cec_event_cap(port);
 }
 

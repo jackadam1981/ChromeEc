@@ -129,7 +129,7 @@ int cec_process_offline_message(int port, const uint8_t *msg, uint8_t msg_len)
 		return EC_ERROR_INVAL;
 
 	snprintf_hex_buffer(str_buf, sizeof(str_buf), HEX_BUF(msg, msg_len));
-	DEBUG_CPRINTS("CEC%d offline msg: %s", port, str_buf);
+	CPRINTS("CEC%d offline msg: %s", port, str_buf);
 
 	/* Header-only, e.g. a polling message. No command, so nothing to do */
 	if (msg_len == 1)
