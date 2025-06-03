@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb1e84f_20e47ff3",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-06-03T03:04:04Z",
+      "side": 1,
+      "message": "Can you move the body of this function to `register_trulo_project`?",
+      "fixSuggestions": [
+        {
+          "fixId": "63e6376a_c48ca49c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 11,
+                "endChar": 0
+              },
+              "replacement": "    zephyr_board\u003dNone,\n"
+            },
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 15,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": "    if zephyr_board is None:\n        zephyr_board \u003d chip\n"
+            },
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "    if \"it8\" in zephyr_board:\n        register_binman_project(\n            project_name\u003dproject_name,\n            zephyr_board\u003dzephyr_board,\n            dts_overlays\u003d[\n                here / project_name / \"project.overlay\",\n            ],\n            kconfig_files\u003dkconfig_files + [here / \"dsp_comms.conf\"],\n            modules\u003d[\"cmsis\", \"cmsis_6\", \"picolibc\", \"ec\", \"pigweed\", \"nanopb\"],\n            inherited_from\u003d[\"trulo\"],\n            **kwargs,\n        )\n    else:\n        register_npcx_project(\n            project_name\u003dproject_name,\n            zephyr_board\u003dzephyr_board,\n            dts_overlays\u003d[\n                here / project_name / \"project.overlay\",\n            ],\n            kconfig_files\u003dkconfig_files + [here / \"dsp_comms.conf\"],\n            inherited_from\u003d[\"trulo\"],\n            modules\u003d[\"cmsis\", \"cmsis_6\", \"picolibc\", \"ec\", \"pigweed\", \"nanopb\"],\n            **kwargs,\n        )\n"
+            },
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 62,
+                "endChar": 0
+              },
+              "replacement": "register_trulo_project(\n"
+            },
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 63,
+                "endChar": 0
+              },
+              "replacement": "    zephyr_board\u003d\"it8xxx2/it82002aw\",\n"
+            },
+            {
+              "path": "zephyr/program/trulo/BUILD.py",
+              "range": {
+                "startLine": 158,
+                "startChar": 0,
+                "endLine": 158,
+                "endChar": 0
+              },
+              "replacement": "def register_trulo_binman_project(\n    project_name,\n    kconfig_files\u003dNone,\n):\n    \"\"\"Register a variant of trulo.\"\"\"\n    if kconfig_files is None:\n        kconfig_files \u003d [\n            # Common to all projects.\n            here / \"program.conf\",\n            # Project-specific KConfig customization.\n            here / project_name / \"project.conf\",\n        ]\n\n    return register_trulo_project(\n        project_name\u003dproject_name,\n        zephyr_board\u003d\"it8xxx2/it82002aw\",\n        kconfig_files\u003dkconfig_files,\n    )\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "43cf567c659c8906a1e22bb3f91cd8458428eacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4257e2_718ccefd",
+        "filename": "zephyr/program/trulo/ite_trulo.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-06-03T03:04:04Z",
+      "side": 1,
+      "message": "2025",
+      "fixSuggestions": [
+        {
+          "fixId": "96084e7a_69a563ea",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/ite_trulo.dtsi",
+              "range": {
+                "startLine": 1,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": "/* Copyright 2025 The ChromiumOS Authors\n"
+            }
+          ]
+        }
+      ],
+      "revId": "43cf567c659c8906a1e22bb3f91cd8458428eacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa765f0a_87fd8c72",
+        "filename": "zephyr/program/trulo/kaladin/generated.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-06-03T03:04:04Z",
+      "side": 1,
+      "message": "Is it better to merge this file to gpio.dtsi?",
+      "fixSuggestions": [
+        {
+          "fixId": "d6124de4_15cca349",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/trulo/kaladin/generated.dtsi",
+              "range": {
+                "startLine": 205,
+                "startChar": 0,
+                "endLine": 234,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "43cf567c659c8906a1e22bb3f91cd8458428eacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
