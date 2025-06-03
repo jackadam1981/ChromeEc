@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c76dc6d_d525422f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-03T03:03:22Z",
+      "side": 1,
+      "message": "I guess technically we could re-use the code from EC, but that doesn\u0027t seem to be the pattern in the `shim` directory.",
+      "revId": "1a98c0d26631c8524920eb83a4ac59f065ed4615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
