@@ -52,6 +52,24 @@
       "parentUuid": "a875a47c_dcbdb001",
       "revId": "cc567116db8ceec4744e6d8795b04379d8dfeb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca41c58_cfbe671c",
+        "filename": "zephyr/test/drivers/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-03T17:35:57Z",
+      "side": 1,
+      "message": "I messed around with the hook a little, and it will allow lines of up to 87 characters, measured with 8-space tabs. I think the only way that math works is if the script is measuring with 1-space tabs, which I am pretty sure is wrong. This may be somewhat unique to Kconfig files, because in C files, `clang-format` will independently enforce the 80-char limit.\n\nAnyway, lines are supposed to wrap at 80 columns, but since the check doesn\u0027t catch it, this comment a nit at most. Do as you will.",
+      "parentUuid": "af1c5538_f739d278",
+      "revId": "cc567116db8ceec4744e6d8795b04379d8dfeb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
