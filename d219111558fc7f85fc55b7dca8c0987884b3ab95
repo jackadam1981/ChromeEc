@@ -207,6 +207,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "599211e7_f70ced58",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-06-03T09:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628981a1_f55481ce",
+      "revId": "d219111558fc7f85fc55b7dca8c0987884b3ab95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "add0cee0_61862f82",
         "filename": "zephyr/test/drivers/usbc_dp_mode/include/usbc_dp_mode.h",
         "patchSetId": 9
