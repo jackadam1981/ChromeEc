@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7552b3fb_042e4cdf",
+        "filename": "zephyr/app/ec/chip/arm/realtek_rtk/Kconfig.rtk",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-03T11:11:52Z",
+      "side": 1,
+      "message": "Yes.\n\nWe use CONFIG_RO_SIZE to determin the size we need load from flash while jump, and if we keep it as /binman/wp-ro,size, then it will include other part in wp-ro but not needed by ec code, and also, oversize for our code ram.\n\nWe can expand it (limit is 320 kb) later (with b/416020794) but we can\u0027t use the /binman/wp-ro,size.",
+      "parentUuid": "246e163d_c9bca5e1",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "b65624ce97b8636fff631dc15eb03a71cbacac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04a8e725_3ee75d80",
         "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
         "patchSetId": 8
