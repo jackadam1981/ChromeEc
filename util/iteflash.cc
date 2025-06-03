@@ -126,6 +126,7 @@ struct iteflash_config {
 	int usb_vid;
 	int usb_pid;
 	int verify; /* boolean */
+	bool wdt_enable;
 	char *usb_serial;
 	char *i2c_dev_path;
 	const struct i2c_interface *i2c_if;
@@ -644,6 +645,23 @@ static int set_wdt_value(struct common_hnd *chnd,
         return ret;
 }
 
+/* Restart Watchdog */
+static int restart_wdt(struct common_hnd *chnd)
+{
+        int ret = 0;
+
+        if (chnd->dbgr_addr_3bytes)
+                ret = i2c_write_byte(chnd, 0x80, 0xf0);
+        ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
+        ret |= i2c_write_byte(chnd, 0x2e,
+                        chnd->instruction_set_v2 ? 0x87 : 0x07);
+        ret |= i2c_write_byte(chnd, 0x30, 0x5C);
+
+        if (ret < 0)
+                fprintf(stderr, "Failed to re-start watchodg");
+
+        return ret;
+}
 
 
 static int check_flashid(struct common_hnd *chnd)
@@ -842,7 +860,6 @@ static int dbgr_disable_watchdog(struct common_hnd *chnd)
 	uint8_t wdt=0x30;
 
 	printf("Disabling watchdog...\n");
-
 	ret = set_wdt_value(chnd,wdt);
 	if (ret)
 		return ret;
@@ -851,8 +868,11 @@ static int dbgr_disable_watchdog(struct common_hnd *chnd)
         if (ret)
 		return ret;
 
+	printf("wdt=%02x\n",wdt);
         if(wdt != 0x30) {
 		fprintf(stderr, "DBGR DISABLE WATCHDOG FAILED!\n");
+		chnd->conf.wdt_enable = 1;
+		restart_wdt(chnd);
 	}
 
 	return ret;
@@ -880,10 +900,26 @@ static int dbgr_disable_protect_path(struct common_hnd *chnd)
 	return ret;
 }
 
+/* check wdt */
+static int check_wdt(struct common_hnd *chnd)
+{
+        int ret = 0;
+
+        if(chnd->conf.wdt_enable)
+		ret = restart_wdt(chnd);
+        
+
+        return ret;
+}
+
+
+
 /* Enter follow mode and FSCE# high level */
 static int spi_flash_follow_mode(struct common_hnd *chnd, const char *desc)
 {
 	int ret = 0;
+
+	ret |= check_wdt(chnd);
 
 	ret |= i2c_write_byte(chnd, 0x07, 0x7f);
 	ret |= i2c_write_byte(chnd, 0x06, 0xff);
@@ -2430,6 +2466,7 @@ int main(int argc, char **argv)
 			.disable_protect_path = 1,
 			.usb_interface = SERVO_INTERFACE,
 			.verify = 1,
+			.wdt_enable = 0,
 			.i2c_if = &ftdi_i2c_interface,
 		},
 	};
