@@ -17,7 +17,9 @@
 		};
 		i2c_named_i2c_port_charger: named_i2c_port_charger {
 			i2c-port = <&i2c_port_charger>;
-			enum-names = "I2C_PORT_BATTERY", "I2C_PORT_CHARGER";
+			enum-names = "I2C_PORT_BATTERY",
+				"I2C_PORT_CHARGER",
+				"I2C_PORT_PORT80";
 		};
 		i2c_named_i2c_port_ish: named_i2c_port_ish {
 			i2c-port = <&i2c_port_ish>;
@@ -55,6 +57,11 @@
 		compatible = "intersil,isl9241";
 		status = "okay";
 		reg = <0x9>;
+	};
+	seven_seg_display: max695x-seven-seg-display@38 {
+		compatible = "maxim,max695x";
+		reg = <0x38>;
+		label = "MAX695X_SEVEN_SEG_DISPLAY";
 	};
 };
 
