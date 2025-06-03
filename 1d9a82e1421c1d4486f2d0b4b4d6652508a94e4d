@@ -16,6 +16,75 @@
       "message": "Re-assigning to Keith, since he\u0027ll be much more of an expert.\n\nAs an aside, I\u0027ve also uploaded a CL to remove myself from `ec_reviewers`: cl/766730466",
       "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f846ebf3_11abc9f7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T17:54:12Z",
+      "side": 1,
+      "message": "This lock seems unnecessary.",
+      "range": {
+        "startLine": 1446,
+        "startChar": 0,
+        "endLine": 1450,
+        "endChar": 0
+      },
+      "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ea0801_48f1bf3f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T17:54:12Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 1465,
+        "startChar": 0,
+        "endLine": 1468,
+        "endChar": 0
+      },
+      "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa6d35d_58ecb124",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-03T17:54:12Z",
+      "side": 1,
+      "message": "Same for all these reads that access a single value only.  The mutex lock doesn\u0027t seem necesaary.",
+      "range": {
+        "startLine": 1476,
+        "startChar": 0,
+        "endLine": 1480,
+        "endChar": 0
+      },
+      "revId": "1d9a82e1421c1d4486f2d0b4b4d6652508a94e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
