@@ -16,6 +16,260 @@
       "message": "Early validation looks good. I will want to continue testing with this change on a variety of devices/images.",
       "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a91118_85c1eb48",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-03T20:35:21Z",
+      "side": 1,
+      "message": "`m-\u003eextensions[i].offset` could be cached, and it makes logical sense to check for zero first.\n\nJust a nit to your discretion.",
+      "range": {
+        "startLine": 392,
+        "startChar": 6,
+        "endLine": 392,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fd37785d_d260f2de",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 387,
+                "startChar": 0,
+                "endLine": 387,
+                "endChar": 0
+              },
+              "replacement": "\t\tuint32_t offset \u003d m-\u003eextensions[i].offset;\n\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 391,
+                "startChar": 0,
+                "endLine": 391,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (offset \u003d\u003d 0) {\n\t\t\t/* Zero offset is the same as not being present */\n\t\t\tcontinue;\n\t\t}\n\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 392,
+                "startChar": 0,
+                "endLine": 395,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (offset \u003e\u003d m-\u003elength) {\n\t\t\tfprintf(stderr, \"Bad extension offset 0x%08x\\n\", offset);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 396,
+                "startChar": 0,
+                "endLine": 399,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 401,
+                "startChar": 0,
+                "endLine": 404,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t(const struct isfb_data *)((uintptr_t)m + (uintptr_t)offset);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2496ffc_87823b60",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-03T20:35:21Z",
+      "side": 1,
+      "message": "no need in `else` here.",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 396,
+        "endChar": 8
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "931d689e_2596d8b9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 396,
+                "startChar": 0,
+                "endLine": 397,
+                "endChar": 0
+              },
+              "replacement": "\t\t}\n\t\tif (m-\u003eextensions[i].offset \u003d\u003d 0) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d20720d_f0de5765",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-03T20:35:21Z",
+      "side": 1,
+      "message": "I was typing a comment asking what would happen when \u0027help\u0027 is ran on a non-printable short option, and the AI suggested to use `k` ;)\n\nNow I see that you did account for the unprintable character in the `help` output, but still maybe use `k` to keep consistent. If you change it to `k` note that these entries are sorted by the short option.",
+      "range": {
+        "startLine": 645,
+        "startChar": 53,
+        "endLine": 645,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6b54c506_22dce120",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 645,
+                "startChar": 0,
+                "endLine": 646,
+                "endChar": 0
+              },
+              "replacement": "\t{ { \"skip_bid_check\", no_argument, \u0026skip_bid_check, 0x7f },\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 961,
+                "startChar": 0,
+                "endLine": 962,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (isalnum(cmd_line_options[i].opt.val)) {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 965,
+                "startChar": 0,
+                "endLine": 966,
+                "endChar": 0
+              },
+              "replacement": "\t\t} else if (cmd_line_options[i].opt.val) {\n\t\t\tprinted_length \u003d\n\t\t\t\tprintf(\" --%s\", cmd_line_options[i].opt.name);\n\t\t} else {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 968,
+                "startChar": 0,
+                "endLine": 968,
+                "endChar": 0
+              },
+              "replacement": "\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5310ba8b_034569b6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-03T20:35:21Z",
+      "side": 1,
+      "message": "I missed this update during the previous patch review, but I think it is OK to print this multiple times, specifying the image type and how many constraints are there.\n\nThis would almost never happen, but if there is a buggy image it would be much easier to understand what\u0027s wrong.",
+      "range": {
+        "startLine": 1552,
+        "startChar": 7,
+        "endLine": 1552,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b11502aa_72b5b714",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 1541,
+                "startChar": 0,
+                "endLine": 1542,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t} else {\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 1547,
+                "startChar": 0,
+                "endLine": 1550,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 1552,
+                "startChar": 0,
+                "endLine": 1553,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t\t\"\\nImage %s did not contain expected constraints, found %d\\n\",\n\t\t\t\t\tSECTION_NAMES[i],\n\t\t\t\t\tisfb ? isfb-\u003eproduct_constraint_count : 0);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
