@@ -63,4 +63,9 @@ config PLATFORM_EC_CONSOLE_CMD_GPIODBG
 	     12 |* | io52 | unused pin
 	     13 |* | io54 | unused pin
 
+config OTP_KEY
+	bool "Enable NPCX OTP Key functionality"
+	default n
+	help
+		Enable the OTP Key functionality
 endif # PLATFORM_EC
