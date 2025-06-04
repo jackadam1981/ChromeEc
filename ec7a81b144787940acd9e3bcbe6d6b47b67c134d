@@ -80,6 +80,30 @@
       },
       "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b63e559_6d553b49",
+        "filename": "zephyr/program/trulo/trulo/src/suspend_resume.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T15:09:25Z",
+      "side": 1,
+      "message": "So is tabletmode getting communicated over the DSP comms interface?\nShould the DSP comms handle keyboard scan disable/enable?\n\nYuval - what do you think?",
+      "parentUuid": "b1c4e8b3_5d3457ab",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
