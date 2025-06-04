@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75aa6e4_1b2c2290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-04T17:30:36Z",
+      "side": 1,
+      "message": "Can you please try this out on a board w/ RTK PDC and retimer and see if it still enters CTS mode correctly? This old CL needed rebasing and refactoring",
+      "revId": "adb71e5c0d87a7116bad4577752fccdd01d60e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
