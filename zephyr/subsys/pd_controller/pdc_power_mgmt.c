@@ -210,6 +210,8 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_SBU_MUX_MODE,
 	/** CMD_PDC_SET_AP_POWER_STATE */
 	CMD_PDC_SET_AP_POWER_STATE,
+	/** CMD_PDC_SET_BBR_CTS */
+	CMD_PDC_SET_BBR_CTS,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -434,6 +436,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_GET_SBU_MUX_MODE] = "PDC_GET_SBU_MUX_MODE",
 	[CMD_PDC_SET_SBU_MUX_MODE] = "PDC_SET_SBU_MUX_MODE",
 	[CMD_PDC_SET_AP_POWER_STATE] = "PDC_SET_AP_POWER_STATE",
+	[CMD_PDC_SET_BBR_CTS] = "PDC_SET_BBR_CTS",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -822,6 +825,8 @@ struct pdc_port_t {
 	pdc_power_mgmt_board_unattached_cb board_unattach_cb;
 	/** board callback for DP Attention event */
 	pdc_power_mgmt_board_dp_attention_cb board_dp_attention_cb;
+	/** CMD_SET_BBR_CTS temp variable to communicate the desired state */
+	bool bbr_cts_enable;
 };
 
 /**
@@ -2689,6 +2694,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_set_ap_power_state(port->pdc,
 					    port->common_policy.ap_state);
 		break;
+	case CMD_PDC_SET_BBR_CTS:
+		rv = pdc_set_bbr_cts(port->pdc, port->bbr_cts_enable);
+		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
 		return -EIO;
@@ -3593,6 +3601,8 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 	case CMD_PDC_GET_LPM_PPM_INFO:
 		__fallthrough;
 	case CMD_PDC_GET_SBU_MUX_MODE:
+		__fallthrough;
+	case CMD_PDC_SET_BBR_CTS:
 		__fallthrough;
 	case CMD_PDC_SET_SBU_MUX_MODE:
 		return true;
@@ -5215,6 +5225,19 @@ test_mockable int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode)
 	return public_api_block(port, CMD_PDC_SET_SBU_MUX_MODE);
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
+
+test_mockable int pdc_power_mgmt_set_bbr_cts(int port, bool enable)
+{
+	/* Make sure port is in range and that an output buffer is provided */
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	pdc_data[port]->port.bbr_cts_enable = enable;
+
+	/* Block until command completes */
+	return public_api_block(port, CMD_PDC_SET_BBR_CTS);
+}
 
 #ifdef CONFIG_ZTEST
 

@@ -177,6 +177,7 @@ static const struct smbus_cmd_t RTS_UCSI_GET_ATTENTION_VDO = { 0x0E, 0x03,
 							       0x16 };
 __maybe_unused static const struct smbus_cmd_t RTS_SET_SBU_MUX_MODE = { 0x30,
 									0x01 };
+static const struct smbus_cmd_t SET_BBR_CTS = { 0x08, 0x03, 0x27 };
 
 /**
  * @brief States of the main state machine
@@ -303,6 +304,8 @@ enum cmd_t {
 	CMD_GET_SBU_MUX_MODE,
 	/** CMD_SET_SBU_MUX_MODE */
 	CMD_SET_SBU_MUX_MODE,
+	/** Set the Burnside Bridge retimer into CTS test mode */
+	CMD_SET_BBR_CTS,
 };
 
 /**
@@ -442,6 +445,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_ATTENTION_VDO] = "CMD_GET_ATTENTION_VDO",
 	[CMD_GET_SBU_MUX_MODE] = "CMD_GET_SBU_MUX_MODE",
 	[CMD_SET_SBU_MUX_MODE] = "CMD_SET_SBU_MUX_MODE",
+	[CMD_SET_BBR_CTS] = "CMD_SET_BBR_CTS",
 };
 
 /**
@@ -2719,6 +2723,28 @@ static int rts54_set_sbu_mux_mode(const struct device *dev,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
+static int rts54_set_bbr_cts(const struct device *dev, bool enable)
+{
+	const struct pdc_config_t *cfg = dev->config;
+
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		SET_BBR_CTS.cmd,      SET_BBR_CTS.len,
+		SET_BBR_CTS.sub,      0x00, /* Port */
+		enable ? 0x01 : 0x00,
+	};
+
+	LOG_INF("C%d: SET_BBR_CTS = %d", cfg->connector_number, enable);
+
+	return rts54_post_command(dev, CMD_SET_BBR_CTS, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static DEVICE_API(pdc, pdc_driver_api) = {
 	.start_thread = rts54_start_thread,
 	.is_init_done = rts54_is_init_done,
@@ -2764,6 +2790,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.get_sbu_mux_mode = rts54_get_sbu_mux_mode,
 	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,
 #endif /* define(CONFIG_USBC_PDC_DRIVEN_CCD) */
+	.set_bbr_cts = rts54_set_bbr_cts,
 };
 
 static int pdc_init(const struct device *dev)

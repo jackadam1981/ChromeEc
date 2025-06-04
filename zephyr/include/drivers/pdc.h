@@ -253,6 +253,7 @@ typedef int (*pdc_set_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode mode);
 typedef int (*pdc_set_ap_power_state_t)(const struct device *dev,
 					enum power_state state);
+typedef int (*pdc_set_bbr_cts_t)(const struct device *dev, bool enable);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -304,6 +305,7 @@ __subsystem struct pdc_driver_api {
 	pdc_get_sbu_mux_mode_t get_sbu_mux_mode;
 	pdc_set_sbu_mux_mode_t set_sbu_mux_mode;
 	pdc_set_ap_power_state_t set_ap_power_state;
+	pdc_set_bbr_cts_t set_bbr_cts;
 };
 /**
  * @endcond
@@ -1494,6 +1496,27 @@ static inline int pdc_set_ap_power_state(const struct device *dev,
 	}
 
 	return api->set_ap_power_state(dev, state);
+}
+
+/**
+ * @brief Configure PDC for BBR compliance test
+ *
+ * @param dev PDC device structure pointer
+ * @param enable Enable or disable BBR test mode
+ *
+ * @retval 0 on success
+ * @retval -ENOSYS if not implemented
+ */
+static inline int pdc_set_bbr_cts(const struct device *dev, bool enable)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_bbr_cts == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_bbr_cts(dev, enable);
 }
 
 #ifdef __cplusplus

@@ -692,6 +692,35 @@ static int cmd_pdc_srccaps(const struct shell *sh, size_t argc, char **argv)
 	return 0;
 }
 
+static int cmd_pdc_set_bbr_cts(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	bool enable;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strcmp(argv[2], "on")) {
+		enable = true;
+	} else if (!strcmp(argv[2], "off")) {
+		enable = false;
+	} else {
+		shell_error(sh, "Must be on/off");
+		return -EINVAL;
+	}
+
+	rv = pdc_power_mgmt_set_bbr_cts(port, enable);
+
+	if (rv) {
+		shell_error(sh, "SET_BBR_CTS failed on port %u (%d)", port, rv);
+	}
+
+	return rv;
+}
+
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Return a string representation for an `enum pdc_sbu_mux_mode` value
@@ -863,6 +892,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Get Vconn state for a port\n"
 		      "Usage: pdc vconn <port>",
 		      cmd_vconn_state, 2, 0),
+	SHELL_CMD_ARG(set_bbr_cts, NULL,
+		      "Enable/disable BBR compliance test mode\n"
+		      "Usage: pdc set_bbr_cts <port> [on|off]",
+		      cmd_pdc_set_bbr_cts, 3, 0),
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 	SHELL_CMD_ARG(sbumux, &dsub_sbu_mux_modes,
 		      "Get or set the SBU mux mode "

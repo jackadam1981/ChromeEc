@@ -2056,6 +2056,13 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	pdc_power_mgmt_request_source_voltage(TEST_PORT, prev_mv);
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 }
+
+ZTEST_USER(pdc_power_mgmt_api, test_bbr_cts_mode)
+{
+	zassert_ok(pdc_power_mgmt_set_bbr_cts(TEST_PORT, true));
+	zassert_ok(pdc_power_mgmt_set_bbr_cts(TEST_PORT, false));
+}
+
 #endif /* CONFIG_TODO_B_345292002 */
 
 /* Get / set SBU mux mode is only supported on RTK currently */
