@@ -104,6 +104,30 @@
       },
       "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f16d84_262b72b9",
+        "filename": "zephyr/program/trulo/trulo/src/suspend_resume.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-04T16:30:23Z",
+      "side": 1,
+      "message": "DSP comms already handles this at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/dsp_comms/service/dsp_service.cc;l\u003d221 which calls `tablet_set_mode()`\n\nI think that what\u0027s going on is we\u0027re missing the hooks at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/lid_angle.c;l\u003d159. We can just move them from lid_angle.c to lid_angle_common.c. That should solve the issue.",
+      "parentUuid": "7b63e559_6d553b49",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "ec7a81b144787940acd9e3bcbe6d6b47b67c134d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
