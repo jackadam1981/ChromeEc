@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f2a5473_5550bac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-04T00:38:15Z",
+      "side": 1,
+      "message": "Is this CL still needed if the stack https://crrev.com/c/6619773/2 merges? Please mark abandoned if not.",
+      "revId": "0fe528e82c22b75d6df3836bc5169a38cc713ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58553a2a_61fb4a65",
         "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
         "patchSetId": 2
