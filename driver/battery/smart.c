@@ -76,12 +76,17 @@ static bool sb_cutoff_or_in_progress(void)
 	return false;
 }
 
+static bool force_commfail;
+
 test_mockable int sb_read(int cmd, int *param)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 
 	if (sb_cutoff_or_in_progress())
 		return EC_ERROR_ACCESS_DENIED;
+
+	if (force_commfail)
+		return EC_ERROR_BUSY;
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
 	return i2c_read16(I2C_PORT_BATTERY, addr_flags, cmd, param);
@@ -111,6 +116,9 @@ int sb_read_string(int offset, uint8_t *data, int len)
 	if (sb_cutoff_or_in_progress())
 		return EC_ERROR_ACCESS_DENIED;
 
+	if (force_commfail)
+		return EC_ERROR_BUSY;
+
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
 
 	return i2c_read_string(I2C_PORT_BATTERY, addr_flags, offset, data, len);
@@ -123,6 +131,9 @@ int sb_read_sized_block(int offset, uint8_t *data, int len)
 
 	if (sb_cutoff_or_in_progress())
 		return EC_ERROR_ACCESS_DENIED;
+
+	if (force_commfail)
+		return EC_ERROR_BUSY;
 
 	ADDR_FLAGS_FOR_PEC(&addr_flags);
 
@@ -501,6 +512,49 @@ static bool battery_want_charge(struct batt_params *batt)
 	return false;
 }
 
+// Hack to observe under what conditions I can get the OS to report 0 battery
+// charge. (seems like a failed read shouldn't cause it)
+static bool force_bad_soc;
+
+static int command_badsoc(int argc, const char **argv)
+{
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	char *e;
+	int v = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	force_bad_soc = !!v;
+	ccprintf("Bad SoC forced %s\n", force_bad_soc ? "ON" : "OFF");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(badsoc, command_badsoc,
+			"bad (0 = no, other = force reads to fail)",
+			"Hack battery state-of-charge readings");
+
+static int command_battcommfail(int argc, const char **argv)
+{
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	char *e;
+	int v = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	force_commfail = !!v;
+	ccprintf("Battery communications failure fake %s\n",
+		 force_commfail ? "ON" : "OFF");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battcommfail, command_battcommfail,
+			"0|1 (0=normal, 1=force communication failure)",
+			"Fake battery communication failure");
+
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new;
@@ -564,7 +618,8 @@ void battery_get_params(struct batt_params *batt)
 		batt_new.flags |= BATT_FLAG_BAD_STATUS;
 
 	/* If any of those reads worked, the battery is responsive */
-	if ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY)
+	if (!force_commfail &&
+	    ((batt_new.flags & BATT_FLAG_BAD_ANY) != BATT_FLAG_BAD_ANY))
 		batt_new.flags |= BATT_FLAG_RESPONSIVE;
 
 #ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
