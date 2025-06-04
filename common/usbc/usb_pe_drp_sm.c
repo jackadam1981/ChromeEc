@@ -2014,12 +2014,20 @@ static bool pe_send_request_msg(int port)
 	 * waste time, and interfere with some compliance tests. The charge
 	 * manager should not generate such Requests, but sometimes, it does.
 	 * Until the charge manager is fixed, prevent redundant Requests here.
+	 *
+	 * However, still call into charge manager to redundantly set the PD
+	 * current limit to the value that would have been set had the Request
+	 * proceeded. This may trigger a charge manager refresh that should have
+	 * been triggered earlier. This refresh is necessary to start actually
+	 * sourcing the negotiated current.
 	 */
 	if (get_last_state_pe(port) == PE_SNK_READY &&
 	    curr_limit == pe[port].curr_limit &&
 	    supply_voltage == pe[port].supply_voltage) {
 		CPRINTS("C%d: %s: Duplicate Request %u mV, %u mA", port,
 			__func__, supply_voltage, curr_limit);
+		pd_set_input_current_limit(port, pe[port].curr_limit,
+					   pe[port].supply_voltage);
 		return false;
 	}
 
