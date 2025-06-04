@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe06244_13aee63b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Use `fprintf(stderr,` for all error messages instead of writing to a file.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f155541_278cb577",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Use a goto for the errors so the file can be closed in one place.  Do this for the other methods `frame`, `read`, `wp`.\n\n```\ngoto flash_err;\n\n...\n    /* Success path */\n    fclose(file);\n    return 0;\n\nflash_err:\n    fclose(file);\n    return -1;\n\n```",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 16
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58a6b5c_2628cca3",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Use `usleep` instead of the `poll` command to wait.",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 21
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2806c1d_22b7fbd6",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Don\u0027t automatically create a log file.  Users can create their own using `rtkupdate --method flash 2\u003e\u00261 | tee flash_ec_log.text`",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 43
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbc63d8_c2b90fb5",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Delete this line, I\u0027m not sure what you are telling the user with this message.",
+      "range": {
+        "startLine": 963,
+        "startChar": 0,
+        "endLine": 963,
+        "endChar": 56
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15db6f6f_0096e176",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Move the usage to a separate function to improve readability.",
+      "range": {
+        "startLine": 964,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 20
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db27bb5_7d44fbdb",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "This should be \n```\nfprintf(stderr, \"Missing required arguments\\n);\nprint_usage(argv[0]);\n```\n\nIt\u0027s also better to check the arguments individually.\n```\nif (!method) {\n   fprintf(stderr, \"Missing \u0027--method\u0027 argument\\n\");\n   print_usage();\n   return;\n} else if (!uart_device) { \n   fprintf(stderr, \"Missing \u0027--uart_dev\u0027 argument\\n\");\n   print_usage();\n   return;\n}   \n```",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 986,
+        "endChar": 52
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01df9f4c_8d1e7f66",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "The `-f` argument is optional, so this will try to print a NULL string if the user doesn\u0027t specify `-f`.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 0,
+        "endLine": 1012,
+        "endChar": 40
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2a1ead_99a2028e",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Print out usage on all these parameter errors.",
+      "range": {
+        "startLine": 1040,
+        "startChar": 3,
+        "endLine": 1040,
+        "endChar": 9
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae61cf3e_30616b69",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:09:17Z",
+      "side": 1,
+      "message": "Make this 2 separate checks",
+      "range": {
+        "startLine": 1038,
+        "startChar": 0,
+        "endLine": 1040,
+        "endChar": 0
+      },
+      "revId": "a33dfd4c886097901472fb7891ca6260a5fd92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
