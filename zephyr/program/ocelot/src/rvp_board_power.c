@@ -81,6 +81,15 @@ int board_power_signal_get(enum power_signal signal)
 	switch (signal) {
 	case PWR_EC_PCH_SYS_PWROK:
 		return power_signal_get(PWR_PCH_PWROK);
+	case PWR_EN_PP5000_A:
+		/* On AIC enabled boards, PWR_EN_PP5000_A is connected to
+		 * the PWR_EN_PP3300_A signal.
+		 *
+		 * For the microchip board, PWR_EN_PP5000_A is valid, so
+		 * the PWR_EN_PP5000_A is handled by the GPIO power sequence
+		 * drver.
+		 */
+		return power_signal_get(PWR_EN_PP3300_A);
 	default:
 		return -EINVAL;
 	}

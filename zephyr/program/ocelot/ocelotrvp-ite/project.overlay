@@ -10,6 +10,7 @@
 /* ocelotrvp-ite project DTS includes */
 
 #include "generated.dtsi"
+#include "power_signals.dtsi"
 #include "../rvp_usba.dtsi"
 
 /*
@@ -38,6 +39,8 @@ gpio_lid: &gpio_lid_open {};
 gpio_pwrbtn: &gpio_gsc_ec_pwr_btn_odl {};
 gpio_voldn: &gpio_ec_voldn_btn_odl {};
 gpio_volup: &gpio_ec_volup_btn_odl {};
+gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+cse_early_rec_sw: &gpio_c_mecc_cse_early_sw_r{};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
@@ -61,6 +64,10 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 	chosen {
 		cros-ec,keyboard = &kbd;
 	};
+};
+
+&espi0 {
+	status = "okay";
 };
 
 &sha0 {
