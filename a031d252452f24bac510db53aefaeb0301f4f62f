@@ -52,6 +52,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1366527_2d285c1e",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-04T18:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb51715a_b07510bc",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e50d2f38_1b8760ed",
@@ -75,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22a1df9_715ff35c",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-04T18:29:19Z",
+      "side": 1,
+      "message": "It\u0027s used to select our spi controler frequency. We will change name from hz to hz_select.",
+      "parentUuid": "e50d2f38_1b8760ed",
+      "range": {
+        "startLine": 124,
+        "startChar": 32,
+        "endLine": 124,
+        "endChar": 42
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67bf2a33_d950b7d2",
@@ -88,6 +136,30 @@
       "writtenOn": "2025-06-04T00:31:03Z",
       "side": 1,
       "message": "FLASH_PAGE_PROGRAM_SIZE",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 52
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae9c30b_0658eed5",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-04T18:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bf2a33_d950b7d2",
       "range": {
         "startLine": 230,
         "startChar": 23,
@@ -149,6 +221,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "273ff782_775e3833",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-04T18:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10103874_7fb2e176",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 58
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eabe76f_755941e4",
@@ -172,6 +268,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b53422_141bdbc4",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-04T18:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eabe76f_755941e4",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 21
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28d74658_b1d3b1e1",
@@ -185,6 +305,30 @@
       "writtenOn": "2025-06-04T00:31:03Z",
       "side": 1,
       "message": "Typo in the name: I suggest `slowtmr_delay_us`",
+      "range": {
+        "startLine": 366,
+        "startChar": 3,
+        "endLine": 366,
+        "endChar": 18
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886159ea_a92abe93",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-04T18:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28d74658_b1d3b1e1",
       "range": {
         "startLine": 366,
         "startChar": 3,
