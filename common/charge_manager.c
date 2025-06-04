@@ -234,6 +234,28 @@ static void charge_manager_init(void)
 		if (!is_valid_port(i))
 			continue;
 		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j) {
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+			/* For the dedicated charge port, zero initialize the
+			 * other supplier types.  The SUPPLIER_DEDICATED is
+			 * still set to the uninitialized value so board
+			 * code must seed the dedicated supplier. */
+			if (i == DEDICATED_CHARGE_PORT &&
+			    j != CHARGE_SUPPLIER_DEDICATED) {
+				available_charge[j][i].current = 0;
+				available_charge[j][i].voltage = 0;
+				continue;
+			}
+
+			/* For PD ports, zero initialize the dedicated
+			 * supplier.
+			 */
+			if (i != DEDICATED_CHARGE_PORT &&
+			    j == CHARGE_SUPPLIER_DEDICATED) {
+				available_charge[j][i].current = 0;
+				available_charge[j][i].voltage = 0;
+				continue;
+			}
+#endif
 			available_charge[j][i].current =
 				CHARGE_CURRENT_UNINITIALIZED;
 			available_charge[j][i].voltage =
