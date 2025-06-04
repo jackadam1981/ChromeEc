@@ -284,3 +284,83 @@ def test_list_projects(
 
     captured = capsys.readouterr()
     assert captured.out == expected_output
+
+
+def test_find_projects(zmake_factory_from_dir):
+    """Test searching projects using specific names and wildcard expressions"""
+
+    fake_project_names = (
+        "project1",
+        "project2",
+        "project",
+        "some_project",
+        "prj",
+    )
+
+    fake_projects = {
+        name: zmake.project.Project(
+            zmake.project.ProjectConfig(
+                project_name=name,
+                zephyr_board="some_board",
+                supported_toolchains=["coreboot-sdk"],
+                output_packer=zmake.output_packers.RawBinPacker,
+            )
+        )
+        for name in fake_project_names
+    }
+
+    zmk = zmake_factory_from_dir()
+
+    # pylint: disable=W0212
+    with unittest.mock.patch(
+        "zmake.project.find_projects",
+        autospec=True,
+        return_value=fake_projects,
+    ):
+        # Select all projects
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects([], select_all_projects=True)
+        } == set(fake_project_names)
+
+        # Select single project
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["some_project"])
+        } == {"some_project"}
+
+        # Select multiple projects
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["some_project", "project"])
+        } == {"some_project", "project"}
+
+        # Wildcard searches
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["project*"])
+        } == {"project", "project1", "project2"}
+
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["project?"])
+        } == {"project1", "project2"}
+
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["p*r*j*"])
+        } == {"project1", "project2", "project", "prj"}
+
+        # Mixture of wildcard and specific projects
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["project*", "some_project"])
+        } == {"project1", "project2", "project", "some_project"}
+
+        # Invalid names or wildcard strings
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["invalid"])
+
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["bad_wildcard*"])
+
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["invalid", "bad_wildcard*"])
+    # pylint: enable=W0212
