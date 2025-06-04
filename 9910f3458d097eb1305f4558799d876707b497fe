@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b78b049_c316f757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-06-04T00:38:39Z",
+      "side": 1,
+      "message": "Corrected in Patch set 2",
+      "parentUuid": "53985fe1_f484c0bd",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "9910f3458d097eb1305f4558799d876707b497fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fad83fef_59d85dc8",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-04T00:33:38Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Spellchecker: \"varients\" is a possible misspelling of \"variants\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"varients\" is a possible misspelling of \"variants\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "9910f3458d097eb1305f4558799d876707b497fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6da7b6_c5b2b2ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-06-04T00:38:39Z",
+      "side": 1,
+      "message": "Corrected in Patch set2",
+      "parentUuid": "fad83fef_59d85dc8",
       "range": {
         "startLine": 12,
         "startChar": 26,
