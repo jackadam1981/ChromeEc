@@ -4,6 +4,7 @@
  */
 
 #include "charge_state.h"
+#include "charger_test.h"
 
 #include <zephyr/ztest.h>
 
@@ -45,7 +46,8 @@ static void after(void *f)
 		fixture->automatic_power_on;
 }
 
-ZTEST_SUITE(charge_state_prevent_power_on, NULL, setup, before, after, NULL);
+ZTEST_SUITE(charge_state_prevent_power_on, charger_predicate_post_main, setup,
+	    before, after, NULL);
 
 ZTEST(charge_state_prevent_power_on, test_allow_power_on)
 {
