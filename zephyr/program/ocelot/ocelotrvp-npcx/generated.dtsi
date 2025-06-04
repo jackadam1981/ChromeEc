@@ -145,7 +145,7 @@
 			enum-name = "GPIO_PCH_SLP_S0_L";
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
-			gpios = <&gpio7 4 (GPIO_INPUT | GPIO_PULL_UP)>;
+			gpios = <&gpio7 4 (GPIO_INPUT)>;
 		};
 		gpio_usb_pd_int_ls_odl: usb_pd_int_ls_odl {
 			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
