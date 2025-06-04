@@ -8,6 +8,7 @@
 
 import atexit
 import difflib
+import fnmatch
 import functools
 import logging
 import os
@@ -223,7 +224,7 @@ class Zmake:
         """
         projects = self._resolve_projects(
             project_names,
-            all_projects=all_projects,
+            select_all_projects=all_projects,
         )
 
         skipped_projects = set()
@@ -248,23 +249,32 @@ class Zmake:
 
     def _resolve_projects(
         self,
-        project_names,
-        all_projects=False,
+        project_expressions: list,
+        select_all_projects=False,
     ) -> Set[zmake.project.Project]:
         """Finds all projects for the specified command line flags.
 
         Returns a list of projects.
         """
         found_projects = zmake.project.find_projects(self.projects_dirs)
-        if all_projects:
-            projects = set(found_projects.values())
-        else:
-            projects = set()
-            for project_name in project_names:
-                try:
-                    projects.add(found_projects[project_name])
-                except KeyError as e:
-                    raise KeyError(f"No project named {project_name}") from e
+        if select_all_projects:
+            return set(found_projects.values())
+
+        # User wants a subset of projects and has passed one or more exact
+        # project names or Unix-style wildcard expressions to match.
+        projects = set()
+        for project_expr in project_expressions:
+            matches = set()
+            for name, proj in found_projects.items():
+                # For each user-supplied project_expr, match it against each of
+                # the found project names and record matches.
+                if fnmatch.fnmatch(name, project_expr):
+                    matches.add(proj)
+
+            if len(matches) == 0:
+                raise KeyError(f"No project(s) matching '{project_expr}'")
+            projects |= matches
+
         return projects
 
     def configure(
@@ -294,7 +304,7 @@ class Zmake:
 
         projects = self._resolve_projects(
             project_names,
-            all_projects=all_projects,
+            select_all_projects=all_projects,
         )
 
         if len(projects) > 1:
@@ -1027,13 +1037,21 @@ class Zmake:
             raise OSError(get_process_failure_msg(proc))
         return 0
 
-    def list_projects(self, fmt):
+    def list_projects(self, fmt, project_names):
         """List project names known to zmake on stdout.
 
         Args:
             fmt: The formatting string to print projects with.
+            project_expresison_list: user-provided list of project names or
+                wildcard expressions. If empty or None, list all projects.
         """
-        for project in zmake.project.find_projects(self.projects_dirs).values():
+
+        projects = self._resolve_projects(
+            project_names,
+            select_all_projects=not bool(project_names),
+        )
+
+        for project in sorted(projects, key=lambda p: p.config.project_name):
             print(fmt.format(config=project.config), end="")
 
         return 0

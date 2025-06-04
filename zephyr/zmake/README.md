@@ -41,7 +41,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to build |
+| `project_name` | Name(s) of the project(s) to build, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
 
 #### Options
 
@@ -71,7 +71,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to build |
+| `project_name` | Name(s) of the project(s) to build, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
 
 #### Options
 
@@ -101,7 +101,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to build |
+| `project_name` | Name(s) of the project(s) to build, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
 
 #### Options
 
@@ -120,7 +120,13 @@ Chromium OS's meta-build tool for Zephyr
 
 ### zmake list-projects
 
-**Usage:** `zmake list-projects [-h] [--format FMT]`
+**Usage:** `zmake list-projects [-h] [--format FMT] [project_name ...]`
+
+#### Positional Arguments
+
+|   |   |
+|---|---|
+| `project_name` | Name(s) of the project(s) to list, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
 
 #### Options
 

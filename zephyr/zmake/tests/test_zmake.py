@@ -211,21 +211,30 @@ class TestFilters:
 
 
 @pytest.mark.parametrize(
-    ["project_names", "fmt", "search_dir", "expected_output"],
+    [
+        "all_project_names",
+        "project_name_args",
+        "fmt",
+        "search_dir",
+        "expected_output",
+    ],
     [
         (
             ["link", "samus"],
+            [],
             "{config.project_name}\n",
             None,
             "link\nsamus\n",
         ),
         (
             ["link", "samus"],
+            [],
             "{config.project_name}\n",
             pathlib.Path("/foo/bar"),
             "link\nsamus\n",
         ),
         (
+            [],
             [],
             "{config.project_name}\n",
             None,
@@ -233,26 +242,44 @@ class TestFilters:
         ),
         (
             ["link"],
+            [],
             "",
             None,
             "",
         ),
         (
             ["link"],
+            [],
             "{config.zephyr_board}\n",
             None,
             "some_board\n",
         ),
         (
             ["link"],
+            [],
             "{config.project_name} {config.zephyr_board}\n",
             None,
             "link some_board\n",
         ),
+        (
+            ["proj1", "proj2", "proj3", "other_proj"],
+            ["proj1", "proj2"],
+            "{config.project_name}\n",
+            None,
+            "proj1\nproj2\n",
+        ),
+        (
+            ["proj1", "proj2", "proj3", "other_proj"],
+            ["proj*"],
+            "{config.project_name}\n",
+            None,
+            "proj1\nproj2\nproj3\n",
+        ),
     ],
 )
 def test_list_projects(
-    project_names,
+    all_project_names,
+    project_name_args,
     fmt,
     search_dir,
     expected_output,
@@ -269,7 +296,7 @@ def test_list_projects(
                 output_packer=zmake.output_packers.RawBinPacker,
             )
         )
-        for name in project_names
+        for name in all_project_names
     }
 
     zmk = zmake_factory_from_dir(
@@ -280,7 +307,87 @@ def test_list_projects(
         autospec=True,
         return_value=fake_projects,
     ):
-        zmk.list_projects(fmt=fmt)
+        zmk.list_projects(fmt=fmt, project_names=project_name_args)
 
     captured = capsys.readouterr()
     assert captured.out == expected_output
+
+
+def test_find_projects(zmake_factory_from_dir):
+    """Test searching projects using specific names and wildcard expressions"""
+
+    fake_project_names = (
+        "project1",
+        "project2",
+        "project",
+        "some_project",
+        "prj",
+    )
+
+    fake_projects = {
+        name: zmake.project.Project(
+            zmake.project.ProjectConfig(
+                project_name=name,
+                zephyr_board="some_board",
+                supported_toolchains=["coreboot-sdk"],
+                output_packer=zmake.output_packers.RawBinPacker,
+            )
+        )
+        for name in fake_project_names
+    }
+
+    zmk = zmake_factory_from_dir()
+
+    # pylint: disable=W0212
+    with unittest.mock.patch(
+        "zmake.project.find_projects",
+        autospec=True,
+        return_value=fake_projects,
+    ):
+        # Select all projects
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects([], select_all_projects=True)
+        } == set(fake_project_names)
+
+        # Select single project
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["some_project"])
+        } == {"some_project"}
+
+        # Select multiple projects
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["some_project", "project"])
+        } == {"some_project", "project"}
+
+        # Wildcard searches
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["project*"])
+        } == {"project", "project1", "project2"}
+
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["project?"])
+        } == {"project1", "project2"}
+
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["p*r*j*"])
+        } == {"project1", "project2", "project", "prj"}
+
+        # Mixture of wildcard and specific projects
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["project*", "some_project"])
+        } == {"project1", "project2", "project", "some_project"}
+
+        # Invalid names or wildcard strings
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["invalid"])
+
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["bad_wildcard*"])
+
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["invalid", "bad_wildcard*"])
+    # pylint: enable=W0212

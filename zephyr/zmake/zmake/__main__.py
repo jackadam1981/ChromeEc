@@ -243,6 +243,14 @@ def get_argparser():
             "called on this for each project)."
         ),
     )
+    list_projects.add_argument(
+        "project_names",
+        nargs="*",
+        metavar="project_name",
+        help="Name(s) of the project(s) to list, or Unix-style wildcard "
+        "expressions to select multiple projects (e.g. brox-*)",
+        default=[],
+    )
 
     generate_readme = sub.add_parser(
         "generate-readme",
@@ -287,7 +295,8 @@ def add_common_build_args(sub_parser: argparse.ArgumentParser):
         "project_names",
         nargs="*",
         metavar="project_name",
-        help="Name(s) of the project(s) to build",
+        help="Name(s) of the project(s) to build, or Unix-style wildcard "
+        "expressions to select multiple projects (e.g. brox-*)",
         default=[],
     )
 
