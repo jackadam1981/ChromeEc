@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51756409_35b00830",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2351,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-04T19:29:26Z",
+      "side": 1,
+      "message": "Autotest uses the command stderr output for errors.",
+      "range": {
+        "startLine": 2351,
+        "startChar": 0,
+        "endLine": 2351,
+        "endChar": 34
+      },
+      "revId": "ebe99a2586f7eec3d329d9754ef1dbe9a76a781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
