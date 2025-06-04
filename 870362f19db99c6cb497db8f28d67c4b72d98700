@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e155d8a6_f7f3ccb4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-04T19:18:27Z",
+      "side": 1,
+      "message": "I guess the AI is not that smart after all and missed the common case :)",
+      "parentUuid": "349f77e2_e45b91fe",
+      "range": {
+        "startLine": 645,
+        "startChar": 53,
+        "endLine": 645,
+        "endChar": 55
+      },
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5310ba8b_034569b6",
