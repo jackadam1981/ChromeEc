@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7eb4907_9267364c",
+        "filename": "board/dojo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-06-04T22:26:07Z",
+      "side": 1,
+      "message": "let\u0027s extend it for real too, by adding CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION",
+      "fixSuggestions": [
+        {
+          "fixId": "7cf58e80_5f5f2243",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "board/dojo/board.h",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "#define CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b6cd7a309e660b96893544bf60081dffae01a220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
