@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b2a6ea_ee7f52bd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-04T19:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14a91118_85c1eb48",
+      "range": {
+        "startLine": 392,
+        "startChar": 6,
+        "endLine": 392,
+        "endChar": 29
+      },
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2496ffc_87823b60",
@@ -136,6 +160,30 @@
           ]
         }
       ],
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8820b3_64f4c13a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-04T19:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2496ffc_87823b60",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 396,
+        "endChar": 8
+      },
       "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -211,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "349f77e2_e45b91fe",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-04T19:03:49Z",
+      "side": 1,
+      "message": "`k` is already used by `--ccd_lock` so that isn\u0027t available. We decided in the ti50 weekly that this option wouldn\u0027t have a short opt since we have basically run out.",
+      "parentUuid": "0d20720d_f0de5765",
+      "range": {
+        "startLine": 645,
+        "startChar": 53,
+        "endLine": 645,
+        "endChar": 55
+      },
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5310ba8b_034569b6",
@@ -268,6 +340,30 @@
           ]
         }
       ],
+      "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199030c6_c8db7ef7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-04T19:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5310ba8b_034569b6",
+      "range": {
+        "startLine": 1552,
+        "startChar": 7,
+        "endLine": 1552,
+        "endChar": 51
+      },
       "revId": "870362f19db99c6cb497db8f28d67c4b72d98700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
