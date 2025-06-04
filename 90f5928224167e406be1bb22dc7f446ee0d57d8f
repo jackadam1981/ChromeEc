@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f34c733_0cbf781f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-06-04T01:43:59Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com\nTHis CL is not yet +2ed . so cant commit to queue yet. Hence failing I think.\nAlso, 1st CL in dependency order is -\u003e chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6619770 and this must be commited fisrt i think.",
+      "revId": "90f5928224167e406be1bb22dc7f446ee0d57d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
