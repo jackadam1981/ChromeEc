@@ -835,6 +835,21 @@ static void delayable_work_handler(struct k_work *w)
 	set_ping_status(data, CMD_COMPLETE, data->response.byte_count);
 }
 
+static int set_bbr_cts_mode(struct rts5453p_emul_pdc_data *data,
+			    const union rts54_request *req)
+{
+	LOG_INF("SET_BBR_CTS port=%d: enabled=%d", req->set_bbr_cts.port_num,
+		req->set_bbr_cts.enable);
+
+	data->bbr_cts_mode = req->set_bbr_cts.port_num;
+
+	/* No response data */
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
 struct commands {
 	uint8_t code;
 	enum {
@@ -877,7 +892,7 @@ const struct commands sub_cmd_x08[] = {
 	{ .code = 0x23, HANDLER_DEF(unsupported) },
 	{ .code = 0x24, HANDLER_DEF(unsupported) },
 	{ .code = 0x26, HANDLER_DEF(unsupported) },
-	{ .code = 0x27, HANDLER_DEF(unsupported) },
+	{ .code = 0x27, HANDLER_DEF(set_bbr_cts_mode) },
 	{ .code = 0x28, HANDLER_DEF(unsupported) },
 	{ .code = 0x2B, HANDLER_DEF(unsupported) },
 	{ .code = 0x83, HANDLER_DEF(unsupported) },
@@ -1178,6 +1193,7 @@ static int emul_realtek_rts54xx_init_data(const struct emul *target)
 	data->set_ccom_mode.ccom = BIT(2); /* Realtek DRP bit 2 */
 	data->frs_configured = false;
 	data->sbu_mux_mode = 0;
+	data->bbr_cts_mode = false;
 
 	/* Clear any feature flags */
 	emul_realtek_rts54xx_reset_feature_flags(target);

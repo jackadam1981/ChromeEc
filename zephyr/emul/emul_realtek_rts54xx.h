@@ -300,6 +300,12 @@ union rts54_request {
 		struct rts54_subcommand_header header;
 		uint8_t port_num;
 	} get_attention_vdo;
+
+	struct set_bbr_cts {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+		uint8_t enable;
+	} set_bbr_cts;
 };
 
 union rts54_response {
@@ -514,6 +520,7 @@ struct rts5453p_emul_pdc_data {
 	struct pdc_info_t info;
 	struct lpm_ppm_info_t lpm_ppm_info;
 	union cable_property_t cable_property;
+	bool bbr_cts_mode;
 
 	union rts54_request request;
 

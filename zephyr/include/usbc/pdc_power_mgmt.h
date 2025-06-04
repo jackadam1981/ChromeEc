@@ -773,4 +773,14 @@ int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode);
  */
 const struct device *pdc_power_mgmt_get_port_pdc_driver(int port);
 
+/**
+ * @brief Enable/disable BBR retimer test mode
+ *
+ * @param port USB-C port number
+ * @param enable True to enter test mode, false to exit.
+ *
+ * @retval 0 on success, otherwise error code.
+ */
+int pdc_power_mgmt_set_bbr_cts(int port, bool enable);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

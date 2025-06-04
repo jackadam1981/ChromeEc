@@ -1232,3 +1232,44 @@ ZTEST_USER(console_cmd_pdc, test_sbumux)
 	zassert_equal(1, pdc_power_mgmt_set_sbu_mux_mode_fake.call_count);
 	zassert_equal(1, pdc_power_mgmt_set_sbu_mux_mode_fake.arg0_history[0]);
 }
+
+ZTEST_USER(console_cmd_pdc, test_set_bbr_cts)
+{
+	int rv;
+
+	/* Invalid port number */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 99");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Invalid mode */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 invalid");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* API call fails */
+	pdc_power_mgmt_set_bbr_cts_fake.return_val = 1;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 on");
+	zassert_equal(rv, pdc_power_mgmt_set_bbr_cts_fake.return_val,
+		      "Expected %d, but got %d",
+		      pdc_power_mgmt_set_bbr_cts_fake.return_val, rv);
+
+	RESET_FAKE(pdc_power_mgmt_set_bbr_cts);
+
+	/* Successful (on) */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 on");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_bbr_cts_fake.call_count);
+	zassert_equal(0, pdc_power_mgmt_set_bbr_cts_fake.arg0_history[0]);
+	zassert_true(pdc_power_mgmt_set_bbr_cts_fake.arg1_history[0]);
+	RESET_FAKE(pdc_power_mgmt_set_bbr_cts);
+
+	/* Successful (off) */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 off");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_bbr_cts_fake.call_count);
+	zassert_equal(0, pdc_power_mgmt_set_bbr_cts_fake.arg0_history[0]);
+	zassert_false(pdc_power_mgmt_set_bbr_cts_fake.arg1_history[0]);
+}
