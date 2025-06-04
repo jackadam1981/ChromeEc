@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb51715a_b07510bc",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:31:03Z",
+      "side": 1,
+      "message": "Create an enum for these modes.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b0e66340_092c1835",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 55,
+                "endChar": 0
+              },
+              "replacement": "enum spic_mode {\n\tSPIC_MODE_0 \u003d 0, /* POL 0, PHA 0 */\n\tSPIC_MODE_1 \u003d 1, /* POL 0, PHA 1 */\n\tSPIC_MODE_2 \u003d 2, /* POL 1, PHA 0 */\n\tSPIC_MODE_3 \u003d 3, /* POL 1, PHA 1 */\n};\n\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+              "range": {
+                "startLine": 99,
+                "startChar": 0,
+                "endLine": 107,
+                "endChar": 0
+              },
+              "replacement": "\tif (mode \u003e SPIC_MODE_3) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50d2f38_1b8760ed",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_spic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:31:03Z",
+      "side": 1,
+      "message": "Is this really setting the baud rate in Hz?  The spic_flash_upload() calls this with `spi_init(3, 0)`.  The SPI bus must be running at faster than 3 Hz.",
+      "range": {
+        "startLine": 124,
+        "startChar": 32,
+        "endLine": 124,
+        "endChar": 42
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bf2a33_d950b7d2",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:31:03Z",
+      "side": 1,
+      "message": "FLASH_PAGE_PROGRAM_SIZE",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 52
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10103874_7fb2e176",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:31:03Z",
+      "side": 1,
+      "message": "Read in FLASH_PAGE_PROGRAM_SIZE bytes",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a0447b45_1a36ee4f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+              "range": {
+                "startLine": 269,
+                "startChar": 0,
+                "endLine": 270,
+                "endChar": 0
+              },
+              "replacement": "\t/* Read in FLASH_PAGE_PROGRAM_SIZE bytes */\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+              "range": {
+                "startLine": 297,
+                "startChar": 0,
+                "endLine": 298,
+                "endChar": 0
+              },
+              "replacement": "\t/* Read and verify the data per FLASH_PAGE_PROGRAM_SIZE bytes */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eabe76f_755941e4",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:31:03Z",
+      "side": 1,
+      "message": "Delete unused code",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 21
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d74658_b1d3b1e1",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-04T00:31:03Z",
+      "side": 1,
+      "message": "Typo in the name: I suggest `slowtmr_delay_us`",
+      "range": {
+        "startLine": 366,
+        "startChar": 3,
+        "endLine": 366,
+        "endChar": 18
+      },
+      "revId": "a031d252452f24bac510db53aefaeb0301f4f62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
