@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc0fae2_928faa1c",
+        "filename": "zephyr/shim/chip/npcx/npcx_monitor/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-04T20:49:24Z",
+      "side": 1,
+      "message": "FYI, the cleaner way to do this is the `prohibit_lto` property: https://crrev.com/c/6607778 (Zephyr uses these properties to be compiler-agnostic and set the correct flag for the toolchain being used.)",
+      "range": {
+        "startLine": 27,
+        "startChar": 44,
+        "endLine": 27,
+        "endChar": 81
+      },
+      "revId": "91e39221d6c2f784e791e6a1943b27dc5f5f5929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
