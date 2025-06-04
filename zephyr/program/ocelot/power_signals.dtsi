@@ -95,7 +95,10 @@
 		/* Note - gpios property must be set by the board overlay */
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
-	pwr-sys-rst-l {
+	pwr_sys_rst: pwr-sys-rst-l {
+                /* TODO: convert this to "intel,ap-pwrseq-gpio" after the
+                 * required I/O expander support is added to ocelot-mchp.
+                 */
 		compatible = "intel,ap-pwrseq-external";
 		dbg-label = "SYS_RESET# output to PCH";
 		enum-name = "PWR_SYS_RST";

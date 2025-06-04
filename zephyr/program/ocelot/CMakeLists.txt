@@ -10,6 +10,7 @@ if(DEFINED CONFIG_BOARD_OCELOTRVP_ITE)
 	project(ocelotrvp-ite)
 	zephyr_library_sources("src/rvp_keyboard_customization.c")
 	zephyr_library_sources("src/rvp_ite_hibernate.c")
+	zephyr_library_sources("src/rvp_board_power.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_OCELOTRVP_NPCX)
