@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540924c9_0a4f31fc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "You can change the print message to just something like `\"SPI PAL transaction failed: %d\", err`",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "190cb9b6_0033e640",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "You can just use `k_uptime_get`",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e454909_c3962d23",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "You can just use `k_msleep`",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2cf7d6_357f4304",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "Do we not use `tag` and  `file_path` on purpose?",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a06b8d_2aeba735",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "I think we can just use LOG_ERR instead of adding additional string",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba7ffb4_26f4e3a8",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "Add mutex to guard access to a global variable",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f4337b_51d4d90f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "Please do not panic once there is not enough memory. Please, add BUILD_ASSERT to make sure that the heap is big enough.",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

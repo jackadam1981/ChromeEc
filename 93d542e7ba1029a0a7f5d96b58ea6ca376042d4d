@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41d85473_2e7f1ada",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "Discussed offline. We need to guard it, even if we lose some testing possibilities.",
+      "parentUuid": "aac8ee85_367020df",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56a05641_6d6add82",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
         "patchSetId": 54
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "If I guard it, I will lose some ability to do additional testing. Let us discuss strategy to guard it and still test it (same as sensor init)",
       "parentUuid": "56a05641_6d6add82",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98727a5_c9999179",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T07:28:21Z",
+      "side": 1,
+      "message": "Discussed offline. We need to guard it, even if we lose some testing possibilities.",
+      "parentUuid": "6176f76c_35f5a1ec",
       "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
