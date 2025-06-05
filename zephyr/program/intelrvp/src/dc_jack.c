@@ -37,7 +37,7 @@ static void board_dc_jack_handler(struct k_work *dc_jack_work)
 		charge_dc_jack.voltage = DC_JACK_MAX_VOLTAGE_MV;
 	} else {
 		charge_dc_jack.current = 0;
-		charge_dc_jack.voltage = USB_CHARGER_VOLTAGE_MV;
+		charge_dc_jack.voltage = 0;
 	}
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
@@ -51,21 +51,6 @@ void board_dc_jack_interrupt(enum gpio_signal signal)
 
 test_export_static void board_charge_init(void)
 {
-	int port, supplier;
-	struct charge_port_info charge_init = {
-		.current = 0,
-		.voltage = USB_CHARGER_VOLTAGE_MV,
-	};
-
-	/* Initialize all charge suppliers to seed the charge manager */
-	for (port = 0; port < CHARGE_PORT_COUNT; port++) {
-		for (supplier = 0; supplier < CHARGE_SUPPLIER_COUNT;
-		     supplier++) {
-			charge_manager_update_charge(supplier, port,
-						     &charge_init);
-		}
-	}
-
 	k_work_init(&dc_jack_handle, board_dc_jack_handler);
 
 	/* Handler not deffered during Board charge initialization */
