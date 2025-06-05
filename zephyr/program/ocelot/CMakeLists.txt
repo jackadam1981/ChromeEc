@@ -19,4 +19,9 @@ if(DEFINED CONFIG_BOARD_OCELOTRVP_MCHP)
 	zephyr_library_sources("src/rvp_board_power.c")
 endif()
 
+zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
+  "../intelrvp/include")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
+  "../intelrvp/src/dc_jack.c")
+
 add_subdirectory(${PROJECT_NAME})
