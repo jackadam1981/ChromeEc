@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "aa0d6e29133b6c071be4cd6753d3a848d207f82c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c946d4_6ef44e20",
+        "filename": "zephyr/program/trulo/pujjolo/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-05T07:57:16Z",
+      "side": 1,
+      "message": "I think pujjolo use lisdw12 only",
+      "revId": "aa0d6e29133b6c071be4cd6753d3a848d207f82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
