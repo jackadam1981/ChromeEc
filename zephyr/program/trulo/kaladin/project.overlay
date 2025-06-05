@@ -9,5 +9,44 @@
 
 /* Kaladin project DTS includes*/
 #include "gpio.dtsi"
+<<<<<<< PATCH SET (79f552899a0be77a6649b05602a2c009ce4ec9f7 kaladin: Add battery devicetree for kaladin.)
+#include "i2c.dtsi"
+#include "adc.dtsi"
+#include "kaladin.dtsi"
+#include "cbi.dtsi"
+#include "usba.dtsi"
+#include "power_signals.dtsi"
+#include "usb_typec.dtsi"
+#include "battery.dtsi"
+||||||| BASE
+#include "i2c.dtsi"
+#include "adc.dtsi"
+#include "kaladin.dtsi"
+#include "cbi.dtsi"
+#include "usba.dtsi"
+#include "power_signals.dtsi"
+#include "usb_typec.dtsi"
+=======
+>>>>>>> BASE      (812bd23f44a6c39da29b606e8d0ce495f42548c9 starmie: Added G-sensor interrupt control)
 
 /* Kaladin overrides follow... */
+<<<<<<< PATCH SET (79f552899a0be77a6649b05602a2c009ce4ec9f7 kaladin: Add battery devicetree for kaladin.)
+
+/{
+        batteries {
+                default_battery: dynapack_313-2d-32-a {
+                        compatible = "dynapack,313-2d-32-a", "battery-smart";
+                };
+        };
+};
+||||||| BASE
+
+/{
+        batteries {
+                default_battery: dynapack_313-2d-32-a {
+                        compatible = "dynapack,313-2d-32-a", "battery-smart";
+                };
+        };
+};
+=======
+>>>>>>> BASE      (812bd23f44a6c39da29b606e8d0ce495f42548c9 starmie: Added G-sensor interrupt control)
