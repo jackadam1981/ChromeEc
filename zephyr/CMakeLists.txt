@@ -433,6 +433,8 @@ zephyr_library_sources_ifdef(CONFIG_MKBP_PROTOCOL
                                                 "${PLATFORM_EC}/common/mkbp_info.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
                                                 "${PLATFORM_EC}/common/keyboard_mkbp.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_STUB
+                                                "${PLATFORM_EC}/common/keyboard_protocol_stub.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MKBP_INPUT_DEVICES
                                                 "${PLATFORM_EC}/common/mkbp_input_devices.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PWM_KBLIGHT
