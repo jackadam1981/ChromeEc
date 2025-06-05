@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a80a82_1b23123e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-05T19:47:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this change accurately describes anraggar. As far as I can tell, it has typical CrOS sourcing behavior, i.e. 1.5A by default, 3A on one port by demand. Also this CL leaves the shared-capacity/managed capability settings intact, which wouldn\u0027t make sense if the PDOs were invariant.",
+      "revId": "e55c8c0e43f31c6a572a3454cc8a12f3d28723a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
