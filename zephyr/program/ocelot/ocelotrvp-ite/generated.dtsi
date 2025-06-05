@@ -96,6 +96,10 @@
 			// signal name was manually overriden from "c_en_pp5000_typea_r"
 			gpios = <&gpiof 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
+		gpio_en_s5_rails: en_s5_rails {
+			gpios = <&gpioi 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+			enum-name = "GPIO_TEMP_SENSOR_POWER";
+		};
 		gpio_en_slp_z_r: en_slp_z_r {
 			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
