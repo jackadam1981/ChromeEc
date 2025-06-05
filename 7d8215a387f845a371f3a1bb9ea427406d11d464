@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c27d8f_f1e2e811",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 68
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T17:06:00Z",
+      "side": 1,
+      "message": "Can you please move the lock definition next to the guarded buffer or move the array definition here :-)",
+      "revId": "7d8215a387f845a371f3a1bb9ea427406d11d464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
