@@ -822,7 +822,9 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 	     (battery_is_present() == BP_YES &&
 	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL))) {
 		port = charge_port;
-		supplier = charge_supplier;
+		if ((supplier != CHARGE_SUPPLIER_NONE) ||
+		    (best_port_power == -1))
+			supplier = charge_supplier;
 	}
 #endif
 
