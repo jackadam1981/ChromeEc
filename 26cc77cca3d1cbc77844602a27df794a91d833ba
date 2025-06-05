@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddfd99b9_06c70e1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-05T01:09:57Z",
+      "side": 1,
+      "message": "Please update the [README](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/zmake/README.md)",
+      "revId": "26cc77cca3d1cbc77844602a27df794a91d833ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5230ed4a_64927bec",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-05T01:09:57Z",
+      "side": 1,
+      "message": "Could we add this for listing projects as well?",
+      "revId": "26cc77cca3d1cbc77844602a27df794a91d833ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
