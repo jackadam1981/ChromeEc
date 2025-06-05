@@ -42,6 +42,7 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_usbc.dtsi"
+#include "../rvp_keyboard.dtsi"
 
 /* ocelotrvp-npcx overrides follow... */
 / {
@@ -54,6 +55,10 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+	};
+
+	chosen {
+		cros-ec,keyboard = &kbd;
 	};
 };
 

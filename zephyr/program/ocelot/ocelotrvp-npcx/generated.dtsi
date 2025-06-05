@@ -250,6 +250,9 @@
 		&kso12_gp05
 		&kso13_gp04
 		&kso14_gp82
+		&kso15_gp83
+		&kso16_gp03
+		&kso17_gpb1
 	>;
 	pinctrl-1 = <
 		&ksi0_gpio_gp31
@@ -275,8 +278,9 @@
 		&kso12_gpio_gp05
 		&kso13_gpio_gp04
 		&kso14_gpio_gp82
+		&kso15_gpio_gp83
+		&kso16_gpio_gp03
+		&kso17_gpio_gpb1
 	>;
 	pinctrl-names = "default", "sleep";
-	row-size = <8>;
-	col-size = <15>;
 };
