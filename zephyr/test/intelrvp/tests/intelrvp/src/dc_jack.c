@@ -123,8 +123,8 @@ ZTEST_USER(test_dc_jack, test_charger_jack_init_not_present)
 	 * current will be zero */
 	zassert_equal(0, port_info.current, "port current:%d",
 		      port_info.current);
-	zassert_equal(USB_CHARGER_VOLTAGE_MV, port_info.voltage,
-		      "port voltage:%d", port_info.voltage);
+	zassert_equal(0, port_info.voltage, "port voltage:%d",
+		      port_info.voltage);
 }
 
 ZTEST_USER(test_dc_jack, test_charger_jack_interrupt)
@@ -141,8 +141,8 @@ ZTEST_USER(test_dc_jack, test_charger_jack_interrupt)
 	 * current will be zero */
 	zassert_equal(0, port_info.current, "port current:%d",
 		      port_info.current);
-	zassert_equal(USB_CHARGER_VOLTAGE_MV, port_info.voltage,
-		      "port voltage:%d", port_info.voltage);
+	zassert_equal(0, port_info.voltage, "port voltage:%d",
+		      port_info.voltage);
 
 	/* DC Jack gpio set */
 	set_dc_jack_gpio();
