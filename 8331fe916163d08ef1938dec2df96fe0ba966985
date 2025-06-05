@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83428919_5026c31e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T08:49:50Z",
+      "side": 1,
+      "message": "\\n is not needed for `LOG_ERR`",
+      "parentUuid": "540924c9_0a4f31fc",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "190cb9b6_0033e640",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
         "patchSetId": 66
@@ -99,6 +117,41 @@
       "writtenOn": "2025-06-05T07:28:21Z",
       "side": 1,
       "message": "Add mutex to guard access to a global variable",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e8eb13a_c2eb8dc7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T08:49:50Z",
+      "side": 1,
+      "message": "I also just noticed, that strings coming from the lib contains the new line character, which results in 2 new lines for every message. Maybe we should use `LOG_PRINTK` instead?",
+      "fixSuggestions": [
+        {
+          "fixId": "004fad46_887aade8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "\t\tLOG_PRINTK(\"%s\", printf_buffer);\n"
+            }
+          ]
+        }
+      ],
       "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
