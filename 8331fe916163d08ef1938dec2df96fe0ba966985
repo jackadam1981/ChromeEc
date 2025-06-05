@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5098c2_00d74872",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-05T12:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83428919_5026c31e",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "190cb9b6_0033e640",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "073f169b_3a69379b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-05T12:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "190cb9b6_0033e640",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e454909_c3962d23",
@@ -66,6 +102,24 @@
       "writtenOn": "2025-06-05T07:28:21Z",
       "side": 1,
       "message": "You can just use `k_msleep`",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8647c44_d019367d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-05T12:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e454909_c3962d23",
       "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
