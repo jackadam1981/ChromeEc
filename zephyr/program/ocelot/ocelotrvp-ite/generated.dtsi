@@ -310,6 +310,4 @@
 		&kso9_sleep
 	>;
 	pinctrl-names = "default", "sleep";
-	row-size = <7>;
-	col-size = <18>;
 };
