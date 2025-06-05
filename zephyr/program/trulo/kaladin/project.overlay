@@ -27,6 +27,7 @@ i2c3ALT: &i2c3 {
 #include "pwm.dtsi"
 #include "temp_sensors.dtsi"
 #include "usb_typec.dtsi"
+#include "battery.dtsi"
 
 /* Kaladin project DTS includes*/
 
