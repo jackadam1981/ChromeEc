@@ -412,7 +412,7 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_4)
 	ap_power_exit_hardoff();
 	k_msleep(500);
 
-	zassert_equal(0, power_hard_off_count,
+	zassert_equal(1, power_hard_off_count,
 		      "AP_POWER_HARD_OFF event generated");
 	zassert_equal(1, power_shutdown_count,
 		      "AP_POWER_SHUTDOWN event not generated");
@@ -431,7 +431,7 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_5)
 	ap_power_exit_hardoff();
 	k_msleep(500);
 
-	zassert_equal(0, power_hard_off_count,
+	zassert_equal(1, power_hard_off_count,
 		      "AP_POWER_HARD_OFF event generated");
 	zassert_equal(1, power_shutdown_count,
 		      "AP_POWER_SHUTDOWN event not generated");

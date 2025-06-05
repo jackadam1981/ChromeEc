@@ -348,7 +348,17 @@ void rsmrst_pass_thru_handler(void)
 static int common_pwr_sm_run(int state)
 {
 	switch (state) {
-	case SYS_POWER_STATE_G3:
+	case SYS_POWER_STATE_G3: {
+		/* Callback event `AP_POWER_HARD_OFF` event must be generated
+		 * only when entering G3 from any higher power state.
+		 */
+		static bool gen_hard_off_evt = false;
+
+		if (gen_hard_off_evt) {
+			/* Notify power event before we enter G3 */
+			ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+			gen_hard_off_evt = false;
+		}
 		/*
 		 * If the START_FROM_G3 flag is set, begin starting
 		 * the AP. There may be a delay set, so only start
@@ -365,11 +375,12 @@ static int common_pwr_sm_run(int state)
 					" by !is_startup_ok");
 				break;
 			}
+			gen_hard_off_evt = true;
 			return SYS_POWER_STATE_G3S5;
 		}
 
 		break;
-
+	}
 	case SYS_POWER_STATE_G3S5:
 		if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
 		    PWRSEQ_G3S5_UP_VALUE)
@@ -436,9 +447,6 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S5G3:
 		/* Nofity power event after we remove power rails */
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-
-		/* Notify power event before we enter G3 */
-		ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
 		return SYS_POWER_STATE_G3;
 
 	case SYS_POWER_STATE_S5S4:
