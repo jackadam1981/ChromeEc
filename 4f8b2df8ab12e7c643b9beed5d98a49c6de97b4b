@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4f8b2df8ab12e7c643b9beed5d98a49c6de97b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3a2c1b_244f53b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-05T18:20:07Z",
+      "side": 1,
+      "message": "Have you consider reverting https://chromium-review.googlesource.com/1315411?\n\nDoes the comment in the original commit still apply, is Powerd \u0027full factor\u0027 needed?\n\nAnother board have CONFIG_BATT_HOST_FULL_FACTOR at 100 (baseboard/hatch). Should it be fixed there as well?",
+      "revId": "4f8b2df8ab12e7c643b9beed5d98a49c6de97b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
