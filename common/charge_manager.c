@@ -822,7 +822,13 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 	     (battery_is_present() == BP_YES &&
 	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL))) {
 		port = charge_port;
-		supplier = charge_supplier;
+		/*
+		 * Since PDC will reset PDOs when receive new SRC Caps.
+		 * Only keep current charge_supplier when the PDO is none zero.
+		 */
+		if (available_charge[charge_supplier][port].current != 0 ||
+		    available_charge[charge_supplier][port].voltage != 0)
+			supplier = charge_supplier;
 	}
 #endif
 
