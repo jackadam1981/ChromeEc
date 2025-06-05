@@ -158,6 +158,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c51714b7_b7f35568",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-05T08:59:02Z",
+      "side": 1,
+      "message": "I meant there are double new lines for some messsages e.g.:\n```\n[63.990000] \u003cinf\u003e egis630_pal: \u003cegis_finger_match:157\u003e start\n[64.000000] \u003cinf\u003e egis630_pal: \u003cegis_finger_match:182\u003e image to g_verify_feature\n[64.100000] \u003cinf\u003e egis630_pal: \u003cEgis_get_template:563\u003e Egis_get_template\n[64.120000] \u003cinf\u003e egis630_pal: \u003cEgis_get_template:581\u003e g_template[0] to verify_feature\n[64.150000] \u003cinf\u003e egis630_pal: \u003cg3_fake_detect:708\u003e  fkid \u003d 0\n\n[64.170000] \u003cinf\u003e egis630_pal: \u003cg3_fake_detect:710\u003e  asf1 \u003d 152770\n\n[64.200000] \u003cinf\u003e egis630_pal: \u003cg3_fake_detect:712\u003e  asf2 \u003d 233509\n```\nmaybe some log levels add a new line and some don\u0027t. It is something to check",
+      "parentUuid": "6e8eb13a_c2eb8dc7",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85f4337b_51d4d90f",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
         "patchSetId": 66
