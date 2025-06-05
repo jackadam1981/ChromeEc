@@ -76,4 +76,3 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 
 /* Disable nodes for features not yet enabled. */
 /delete-node/ &{/named-adc-channels};
-/delete-node/ &int_dc_jack_present;

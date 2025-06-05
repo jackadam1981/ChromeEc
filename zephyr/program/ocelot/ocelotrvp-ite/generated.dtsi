@@ -159,7 +159,7 @@
 		gpio_std_adpt_cntrl_gpio_r: std_adpt_cntrl_gpio_r {
 			gpios = <&gpioa 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
-		gpio_std_adp_prsnt_r: std_adp_prsnt_r {
+		gpio_std_adp_prsnt_r: std_adp_prsnt: std_adp_prsnt_r {
 			gpios = <&gpioa 6 (GPIO_INPUT)>;
 		};
 		gpio_virtual_battery_r: virtual_battery_r {
