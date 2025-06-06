@@ -785,10 +785,12 @@ add_dependencies(app ec_version_header)
 zephyr_include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
 
 if (DEFINED CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
+  # Using -m pw_tokenizer.database generates a runpy warning
+  # https://pwbug.dev/269622559
   set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
     COMMAND
       /usr/bin/python3.11
-      ${ZEPHYR_PIGWEED_MODULE_DIR}/pw_tokenizer/py/pw_tokenizer/database.py
+      -m pw_tokenizer.database
       create
       --force
       --type binary
