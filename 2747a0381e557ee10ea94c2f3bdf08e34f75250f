@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce42872f_435b5191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T21:03:06Z",
+      "side": 1,
+      "message": "We\u0027re trying to deprecate `named-gpios`. There are only a few remaining legacy drivers that require the `enum gpio_signal` that `named-gpios` defines.  We should create Zephyr drivers on a case by case basis to eliminate the need for the legacy enum.",
+      "revId": "2747a0381e557ee10ea94c2f3bdf08e34f75250f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
