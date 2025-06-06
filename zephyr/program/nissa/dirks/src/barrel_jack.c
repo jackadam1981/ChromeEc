@@ -272,12 +272,20 @@ test_mockable_static int adc_read_ppvar_pwr_in_imon(void)
 			      ADC_GAIN_1, CONFIG_PLATFORM_EC_ADC_RESOLUTION,
 			      &ret);
 	/*
-	 * factor_mul = ADC_MAX_MVOLT * 2 = 3000 * 2
-	 * factor_div = ADC_READ_MAX + 1 = 1023 + 1
+	 * Rshunt = 0.01, Gain = 50
+	 * Vout = (Iload * 0.01) * 50
+	 * Iload = Vout * 2
 	 */
-	ret = (ret * 3000 * 2) / (1023 + 1);
+	ret = ret * 2;
 	return ret;
 }
+
+static int command_imon(int argc, const char **argv)
+{
+	LOG_INF("imon=%d", adc_read_ppvar_pwr_in_imon());
+	return EC_RES_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(imon, command_imon, NULL, NULL);
 
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
