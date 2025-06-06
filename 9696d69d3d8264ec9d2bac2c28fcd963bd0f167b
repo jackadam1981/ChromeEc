@@ -1,0 +1,167 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1bbfb0_42ec50ce",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:06:25Z",
+      "side": 1,
+      "message": "Delete - the RTK packer should copy the flash upload binary to the board output directory.",
+      "range": {
+        "startLine": 1755,
+        "startChar": 0,
+        "endLine": 1757,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "cc77c779_535d67d9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/flash_ec",
+              "range": {
+                "startLine": 1755,
+                "startChar": 0,
+                "endLine": 1757,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b633531b_23de50e9",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:06:25Z",
+      "side": 1,
+      "message": "Fix the indentation.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 0,
+        "endLine": 1814,
+        "endChar": 15
+      },
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b79c3c_8f88170e",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:06:25Z",
+      "side": 1,
+      "message": "Indent",
+      "range": {
+        "startLine": 1838,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "95fd1885_7120990d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/flash_ec",
+              "range": {
+                "startLine": 1838,
+                "startChar": 0,
+                "endLine": 1839,
+                "endChar": 0
+              },
+              "replacement": "\t# Load monitor binary\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5230b1d_51e1d46b",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:06:25Z",
+      "side": 1,
+      "message": "You also need to add code to check for preserved sections.  Reference the preserve code in the `flash_ite_uart` and `flash_npcx_uut` functions.",
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664313bf_b0809c2a",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:06:25Z",
+      "side": 1,
+      "message": "Indent",
+      "range": {
+        "startLine": 1854,
+        "startChar": 0,
+        "endLine": 1854,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "10c5322d_717ef16a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/flash_ec",
+              "range": {
+                "startLine": 1854,
+                "startChar": 0,
+                "endLine": 1855,
+                "endChar": 0
+              },
+              "replacement": "\t# Program EC image.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
