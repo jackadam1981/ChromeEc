@@ -2312,7 +2312,9 @@ static void pdc_snk_attached_run(void *obj)
 	    atomic_test_and_clear_bit(port->snk_policy.flags,
 				      SNK_POLICY_NEW_SRC_CAPS_AVAILABLE)) {
 		port->get_pdo = (struct get_pdo_t){ 0 };
-		invalidate_charger_settings(port, true);
+
+		if (battery_is_present() == BP_YES)
+			invalidate_charger_settings(port, true);
 		/* Update the local state immediately without requiring
 		 * a reschedule of the thread.
 		 */
