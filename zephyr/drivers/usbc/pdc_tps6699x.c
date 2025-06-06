@@ -530,6 +530,7 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.ucsi_connector_status_change_notification = 1,
 		.power_event_occurred_error = 1,
 		.externl_dcdc_event_received = 1,
+		.patch_loaded = 1,
 	};
 
 	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
@@ -630,6 +631,18 @@ static void st_irq_run(void *o)
 	LOG_DBG("\n");
 
 	if (interrupt_pending) {
+		if (pdc_interrupt.patch_loaded) {
+			/* patch_loaded is a shared interrupt bit which is not
+			 * cleared individually so set ST_INIT state to all
+			 * ports to avoid clearing it before handling irq on
+			 * other ports. */
+			for (int port = 0; port < NUM_PDC_TPS6699X_PORTS;
+			     port++) {
+				pdc_data[port]->init_attempt = 0;
+				set_state(pdc_data[port], ST_INIT);
+			}
+			return;
+		}
 		/* Set CCI EVENT for not supported */
 		data->cci_event.not_supported =
 			pdc_interrupt.not_supported_received;
@@ -716,6 +729,7 @@ static void st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_interrupt pdc_interrupt = { .patch_loaded = 1 };
 	int rv;
 
 	/* Do not start executing commands if suspended */
@@ -729,6 +743,12 @@ static void st_init_run(void *o)
 		suspend_comms();
 		set_state(data, ST_SUSPENDED);
 		return;
+	}
+
+	/* We won't see patch_loaded is asserted while handing the IRQ later on
+	 * if boot from dead battery as it is cleared here. */
+	if (tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE)) {
+		LOG_ERR("Clear patch_loaded bit failed.");
 	}
 
 	/* Pre-fetch PDC chip info and save it in the driver struct */
@@ -2107,6 +2127,7 @@ static void st_task_wait_run(void *o)
 		 * enabled. This flag is reset when the INIT state is entered.
 		 */
 		data->init_done = true;
+		k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
 		break;
 	case CMD_SET_RDO:
 		/* Re-set sink enable until after aNEG completes. */
@@ -2912,7 +2933,7 @@ static int pdc_init(const struct device *dev)
 
 static void tps_check_and_notify_irq(void)
 {
-	for (int port = 0; port < board_get_usb_pd_port_count(); port++) {
+	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
 		struct pdc_data_t *data = pdc_data[port];
 		struct pdc_config_t const *cfg = data->dev->config;
 		union reg_interrupt pdc_interrupt = { 0 };
