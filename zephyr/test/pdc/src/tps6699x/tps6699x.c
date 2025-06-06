@@ -241,6 +241,11 @@ ZTEST_USER(tps6699x, test_init_state_sequence)
 	emul_pdc_fail_reg_read(emul, REG_BOOT_FLAG);
 	emul_pdc_fail_reg_read(emul, REG_VERSION);
 
+	/* No error handling triggered by this failure. Only useful for
+	 * coverage.
+	 */
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_CLEAR_FOR_I2C1);
+
 	/* Number of registers fails above / number of retries is how many loop
 	 * iterations it will take to recover to init state.
 	 */
