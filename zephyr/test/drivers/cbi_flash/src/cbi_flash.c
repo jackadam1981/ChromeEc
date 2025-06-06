@@ -4,6 +4,7 @@
  */
 
 #include "cros_board_info.h"
+#include "drivers/cros_flash.h"
 #include "emul/emul_flash.h"
 #include "flash.h"
 #include "host_command.h"
@@ -11,15 +12,30 @@
 #include "test/drivers/test_state.h"
 
 #include <zephyr/devicetree.h>
+#include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
 #define CBI_FLASH_NODE DT_NODELABEL(cbi_flash)
 #define CBI_FLASH_OFFSET DT_PROP(CBI_FLASH_NODE, offset)
 
+#define cros_flash_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_flash_controller))
+
+#define WP_L_GPIO_PATH NAMED_GPIOS_GPIO_NODE(wp_l)
+
+static int gpio_wp_l_set(int value)
+{
+	const struct device *wp_l_gpio_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(WP_L_GPIO_PATH, gpios));
+
+	return gpio_emul_input_set(wp_l_gpio_dev,
+				   DT_GPIO_PIN(WP_L_GPIO_PATH, gpios), value);
+}
+
 FAKE_VALUE_FUNC(int, crec_flash_unprotected_read, int, int, char *);
 
-ZTEST(cbi_flash, test_cbi_flash_is_write_protected)
+ZTEST(cbi_flash, test_cbi_flash_is_write_protected_when_locked)
 {
 	system_is_locked_fake.return_val = 1;
 	zassert_equal(cbi_config->drv->is_protected(), 1);
@@ -41,6 +57,40 @@ ZTEST(cbi_flash, test_cbi_flash_is_write_protected)
 		EC_CMD_CBI_BIN_WRITE, 0, hc_set_params);
 
 	zassert_equal(host_command_process(&set_args), EC_RES_ACCESS_DENIED);
+}
+
+ZTEST(cbi_flash, test_cbi_flash_is_write_protected_when_ro_protected)
+{
+	gpio_wp_l_set(1);
+	cros_flash_init(cros_flash_dev);
+	cros_flash_physical_protect_at_boot(cros_flash_dev,
+					    EC_FLASH_PROTECT_RO_AT_BOOT);
+	zassert_equal(cbi_config->drv->is_protected(), 1);
+
+	const uint8_t data[] = "SKU ABC";
+
+	struct actual_set_params {
+		struct ec_params_set_cbi params;
+		uint8_t actual_data[ARRAY_SIZE(data)];
+	};
+
+	struct actual_set_params hc_set_params = {
+		.params = {
+		.tag = CBI_TAG_SKU_ID,
+		/* Force a reload */
+		.flag = CBI_SET_INIT,
+		.size = ARRAY_SIZE(data),
+		},
+	};
+	struct host_cmd_handler_args set_args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_SET_CROS_BOARD_INFO, 0, hc_set_params);
+
+	memcpy(hc_set_params.params.data, data, ARRAY_SIZE(data));
+
+	zassert_equal(host_command_process(&set_args), EC_RES_ACCESS_DENIED);
+
+	cros_flash_emul_protect_reset();
+	gpio_wp_l_set(0);
 }
 
 ZTEST(cbi_flash, test_cbi_flash_is_write_protected_false)
