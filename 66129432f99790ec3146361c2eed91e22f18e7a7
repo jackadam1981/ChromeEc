@@ -1,0 +1,128 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960da607_3b00fcf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:01:08Z",
+      "side": 1,
+      "message": "This CL should also update the RTKBinmanPacker to copy the rts5915_flash_upload.bin to the output directory of the project.\nSee the `npcx_monitor.bin` handling in the NpcxPacker handler.",
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519c09af_8ac7381c",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:01:08Z",
+      "side": 1,
+      "message": "Delete the unused code, or put behind an ifdef check.  Does rtk_flame initialize a 2nd uart for this debug output?",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 48
+      },
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcaa037_88ab248c",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:01:08Z",
+      "side": 1,
+      "message": "This is an unbounded loop.  Can you add a timeout and propagate an error back to rtkupdate?",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 23
+      },
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04661b9_0f7f485a",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T23:01:08Z",
+      "side": 1,
+      "message": "Don\u0027t use C++ style comments",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "32c77377_7882caa7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+              "range": {
+                "startLine": 327,
+                "startChar": 0,
+                "endLine": 330,
+                "endChar": 0
+              },
+              "replacement": "/*\n * uart_init_pll_115200\n */\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+              "range": {
+                "startLine": 362,
+                "startChar": 0,
+                "endLine": 365,
+                "endChar": 0
+              },
+              "replacement": "/*\n * slowtmr_dealy_us\n */\n"
+            },
+            {
+              "path": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+              "range": {
+                "startLine": 377,
+                "startChar": 0,
+                "endLine": 380,
+                "endChar": 0
+              },
+              "replacement": "/*\n * slowtmr_timeout_reach\n */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
