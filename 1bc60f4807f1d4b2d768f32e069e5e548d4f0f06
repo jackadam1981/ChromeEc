@@ -1,0 +1,333 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87954b78_0b1cbc14",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "You should save the current TTY attributes and then call `tcsetattr(\u0026saved_tty)` before exit.  Be sure that error paths also restore the TTY settings.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b16061_03fa2a90",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "Why is the block of SIGINT needed?  And why is this only done for `send_packet_a`?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 0
+      },
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd34ad16_d62ce2a5",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "Do you need a full 10 seconds for this timeout?  Are there any operations that could take this long.",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 57
+      },
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc2c37e_15e3e321",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "This continues on a timeout.  Is that intentional?",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 60
+      },
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca923b9e_d324d962",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "Please create a macro for the command byte to improve readability.",
+      "range": {
+        "startLine": 495,
+        "startChar": 28,
+        "endLine": 495,
+        "endChar": 32
+      },
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7377f4_1fbce21f",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "\u003cbinary_file\u003e",
+      "range": {
+        "startLine": 919,
+        "startChar": 23,
+        "endLine": 919,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6a9b88e6_512f4af6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 919,
+                "startChar": 0,
+                "endLine": 920,
+                "endChar": 0
+              },
+              "replacement": "\t       \"  -f, --file \u003cbinary_file\u003e: File to program into RAM.\\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f371576_be7ed445",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "0|1",
+      "range": {
+        "startLine": 921,
+        "startChar": 25,
+        "endLine": 921,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "719c47b3_b4b1d60a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 921,
+                "startChar": 0,
+                "endLine": 922,
+                "endChar": 0
+              },
+              "replacement": "\t       \"  -p, --protect \u003c0|1\u003e: should be 0 to program flash.\\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c10bf6_c370f4e3",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "0 to clear write protect, 1 to set write protect",
+      "range": {
+        "startLine": 921,
+        "startChar": 41,
+        "endLine": 921,
+        "endChar": 69
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ca306fe7_26644498",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 921,
+                "startChar": 0,
+                "endLine": 922,
+                "endChar": 0
+              },
+              "replacement": "\t       \"  -p, --protect \u003cwrite protect: should be 0 to clear write protect, 1 to set write protect.\\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be32f73a_19b984f3",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T22:29:28Z",
+      "side": 1,
+      "message": "Each method should print out only the parameters used by the that method.",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "15501e41_043aaefe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 987,
+                "startChar": 0,
+                "endLine": 989,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 990,
+                "startChar": 0,
+                "endLine": 991,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 1024,
+                "startChar": 0,
+                "endLine": 1024,
+                "endChar": 0
+              },
+              "replacement": "\t\tprintf(\"SPI Start: 0x%08X\\n\", spi_start);\n\t\tprintf(\"Binary File: %s\\n\", file_name);\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 1033,
+                "startChar": 0,
+                "endLine": 1033,
+                "endChar": 0
+              },
+              "replacement": "\t\tprintf(\"Binary File: %s\\n\", file_name);\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 1042,
+                "startChar": 0,
+                "endLine": 1042,
+                "endChar": 0
+              },
+              "replacement": "\t\tprintf(\"Protect: 0x%08X\\n\", protect);\n"
+            },
+            {
+              "path": "util/rtkupdate.c",
+              "range": {
+                "startLine": 1065,
+                "startChar": 0,
+                "endLine": 1065,
+                "endChar": 0
+              },
+              "replacement": "\t\tprintf(\"SPI Start: 0x%08X\\n\", spi_start);\n\t\tprintf(\"Binary File: %s\\n\", file_name);\n\t\tprintf(\"Bin Length: 0x%08X\\n\", bin_length);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
