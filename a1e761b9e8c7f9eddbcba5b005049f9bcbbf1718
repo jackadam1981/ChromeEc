@@ -16,6 +16,23 @@
       "message": "The FAFT is passed",
       "revId": "a1e761b9e8c7f9eddbcba5b005049f9bcbbf1718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7e1bd3_dbcb0a33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-06T21:23:21Z",
+      "side": 1,
+      "message": "This CL is still waiting on the upstream change https://github.com/zephyrproject-rtos/zephyr/pull/89263",
+      "revId": "a1e761b9e8c7f9eddbcba5b005049f9bcbbf1718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
