@@ -218,6 +218,7 @@ ZTEST_USER(tps6699x, test_init_state_sequence)
 	/* Fail register read/writes for some init tasks at least once for
 	 * coverage. It shouldn't impact operation.
 	 */
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_CLEAR_FOR_I2C1);
 	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_MASK_FOR_I2C1);
 	emul_pdc_fail_reg_write(emul, REG_AUTONEGOTIATE_SINK);
 	emul_pdc_fail_reg_write(emul, REG_PORT_CONTROL);
