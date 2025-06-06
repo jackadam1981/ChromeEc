@@ -24,6 +24,8 @@ enum emul_pdc_feature_flag {
 	/** Enable support for SBU mux override commands, used on PDC-driven CCD
 	 *  DUTs */
 	EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE,
+	/** Enable support for indicating PDC is booted after power cycling */
+	EMUL_PDC_FEATURE_BOOT_COMPLETED_IRQ,
 	EMUL_PDC_FEATURE_COUNT,
 };
 

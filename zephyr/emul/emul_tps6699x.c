@@ -594,11 +594,21 @@ static void tps6699x_emul_handle_write(struct tps6699x_emul_pdc_data *data,
 			data, (const union reg_port_control *)
 				      data->reg_val[REG_PORT_CONTROL]);
 		break;
-	case REG_INTERRUPT_CLEAR_FOR_I2C1:
+	case REG_INTERRUPT_CLEAR_FOR_I2C1: {
 		/* Interrupts have been cleared */
+		union reg_interrupt *reg_interrupt_event =
+			(union reg_interrupt *)
+				data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
+		union reg_interrupt *reg_interrupt_clear =
+			(union reg_interrupt *)
+				data->reg_val[REG_INTERRUPT_CLEAR_FOR_I2C1];
+		for (int i = 0; i < sizeof(reg_interrupt_clear->raw_value); i++)
+			reg_interrupt_event->raw_value[i] &=
+				~reg_interrupt_clear->raw_value[i];
 		gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin,
 				    1);
 		break;
+	}
 	default:
 		/* No action on write */
 		break;
@@ -1101,23 +1111,28 @@ static int emul_tps6699x_pulse_irq(const struct emul *target)
 		(union reg_interrupt *)
 			data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
 
-	/*
-	 * TODO(b/345292002): Need to enhance how interrupt status bits are
-	 * set/cleared based on emulated connection
-	 * events. plug_insert_or_removal should be based of a change in
-	 * connect_status and not always set. Similarly, the setting of
-	 * sink_ready and new_contract_as_consumer can be moved to
-	 * set_connector_status.
-	 */
-	reg_interrupt->plug_insert_or_removal = 1;
-	/*
-	 * SET_SINK_PATH requires these interrupt status bits to avoid a delay
-	 * in closing the sink FET.
-	 */
-	if (data->connector_status.connect_status &&
-	    !data->connector_status.power_direction) {
-		reg_interrupt->sink_ready = 1;
-		reg_interrupt->new_contract_as_consumer = 1;
+	if (atomic_test_bit(data->features,
+			    EMUL_PDC_FEATURE_BOOT_COMPLETED_IRQ)) {
+		reg_interrupt->patch_loaded = 1;
+	} else {
+		/*
+		 * TODO(b/345292002): Need to enhance how interrupt status bits
+		 * are set/cleared based on emulated connection events.
+		 * plug_insert_or_removal should be based of a change in
+		 * connect_status and not always set. Similarly, the setting of
+		 * sink_ready and new_contract_as_consumer can be moved to
+		 * set_connector_status.
+		 */
+		reg_interrupt->plug_insert_or_removal = 1;
+		/*
+		 * SET_SINK_PATH requires these interrupt status bits to avoid a
+		 * delay in closing the sink FET.
+		 */
+		if (data->connector_status.connect_status &&
+		    !data->connector_status.power_direction) {
+			reg_interrupt->sink_ready = 1;
+			reg_interrupt->new_contract_as_consumer = 1;
+		}
 	}
 	gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin, 1);
 	gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin, 0);
@@ -1318,6 +1333,8 @@ static bool is_feature_flag_supported(enum emul_pdc_feature_flag feature)
 {
 	switch (feature) {
 	case EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE:
+		return true;
+	case EMUL_PDC_FEATURE_BOOT_COMPLETED_IRQ:
 		return true;
 	default:
 		return false;

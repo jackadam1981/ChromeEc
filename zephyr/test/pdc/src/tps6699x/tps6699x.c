@@ -54,6 +54,7 @@ static void tps6699x_before_test(void *data)
 	}
 
 	zassert_ok(emul_pdc_idle_wait(emul));
+	emul_pdc_reset_feature_flags(emul);
 }
 
 static int custom_fake_tps_rw_port_control(const struct i2c_dt_spec *i2c,
@@ -238,6 +239,11 @@ ZTEST_USER(tps6699x, test_init_state_sequence)
 	emul_pdc_fail_reg_read(emul, REG_BOOT_FLAG);
 	emul_pdc_fail_reg_read(emul, REG_VERSION);
 
+	/* No error handling triggered by this failure. Only useful for
+	 * coverage.
+	 */
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_CLEAR_FOR_I2C1);
+
 	/* Number of registers fails above / number of retries is how many loop
 	 * iterations it will take to recover to init state.
 	 */
@@ -258,5 +264,21 @@ ZTEST_USER(tps6699x, test_init_state_sequence)
 	}
 
 	zassert_equal(i, num_loops, "I = %d vs num_loops = %d", i, num_loops);
+	zassert_true(pdc_is_init_done(dev));
+}
+
+ZTEST_USER(tps6699x, test_patch_loaded_interrupt)
+{
+	zassert_true(pdc_is_init_done(dev));
+	zassert_ok(emul_pdc_set_feature_flag(
+		emul, EMUL_PDC_FEATURE_BOOT_COMPLETED_IRQ));
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_MASK_FOR_I2C1);
+	emul_pdc_fail_reg_write(emul, REG_AUTONEGOTIATE_SINK);
+	emul_pdc_fail_reg_write(emul, REG_PORT_CONTROL);
+	zassert_ok(emul_pdc_pulse_irq(emul));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_false(pdc_is_init_done(dev));
+	zassert_ok(pdc_set_comms_state(dev, true));
+	k_sleep(K_MSEC(SLEEP_MS));
 	zassert_true(pdc_is_init_done(dev));
 }
