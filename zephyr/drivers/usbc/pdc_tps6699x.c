@@ -482,6 +482,215 @@ static void tps_notify_new_power_contract(struct k_work *work)
 	}
 }
 
+<<<<<<< HEAD   (5032dc zephyr: update SMF users for API change)
+||||||| BASE
+static int pdc_interrupt_mask_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_interrupt irq_mask = {
+		.pd_hardreset = 1,
+		.plug_insert_or_removal = 1,
+		.power_swap_complete = 1,
+		.fr_swap_complete = 1,
+		.data_swap_complete = 1,
+		.sink_ready = 1,
+		.new_contract_as_consumer = 1,
+		.ucsi_connector_status_change_notification = 1,
+		.power_event_occurred_error = 1,
+		.externl_dcdc_event_received = 1,
+	};
+
+	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
+}
+
+static int pdc_port_control_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_port_control pdc_port_control = {
+		.typec_current = 1,
+		.process_swap_to_sink = 1,
+		.process_swap_to_source = 1,
+		.automatic_cap_request = 1,
+		.auto_alert_enable = 1,
+		.process_swap_to_dfp = 1,
+		.automatic_id_request = 1,
+		.fr_swap_enabled = 1,
+		.deglitch_cnt_lo = 6,
+	};
+
+	return tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
+}
+
+static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
+{
+	union reg_autonegotiate_sink an_snk;
+	struct pdc_config_t const *cfg = data->dev->config;
+	int rv;
+
+	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("Failed to read auto negotiate sink register.");
+		return rv;
+	}
+
+	an_snk.auto_compute_sink_min_power = 0;
+	an_snk.auto_compute_sink_min_voltage = 0;
+	an_snk.auto_compute_sink_max_voltage = 0;
+	an_snk.auto_neg_max_current = 3000 / 10;
+	an_snk.auto_neg_sink_min_required_power = 15000 / 250;
+	an_snk.auto_neg_max_voltage = 5000 / 50;
+	an_snk.auto_neg_min_voltage = 5000 / 50;
+
+	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Failed to write auto negotiate sink register.");
+		return rv;
+	}
+
+	return 0;
+}
+
+static void set_all_ports_to_init(const int delay_ms)
+{
+	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
+		if (!device_is_ready(pdc_data[port]->dev)) {
+			continue;
+		}
+		pdc_data[port]->init_done = false;
+		pdc_data[port]->init_attempt = 0;
+		if (delay_ms) {
+			set_state_delayed_post(pdc_data[port], ST_INIT,
+					       delay_ms);
+		} else {
+			set_state(pdc_data[port], ST_INIT);
+		}
+	}
+}
+
+static int pdc_exit_dead_battery(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_boot_flags pdc_boot_flags;
+	int rv;
+
+	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
+	if (rv) {
+		LOG_ERR("Read boot flags failed");
+		set_state(data, ST_ERROR_RECOVERY);
+		return rv;
+	}
+
+	if (pdc_boot_flags.dead_battery_flag) {
+		task_dbfg(data);
+	}
+	return 0;
+}
+
+=======
+static int pdc_interrupt_mask_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_interrupt irq_mask = {
+		.pd_hardreset = 1,
+		.plug_insert_or_removal = 1,
+		.power_swap_complete = 1,
+		.fr_swap_complete = 1,
+		.data_swap_complete = 1,
+		.sink_ready = 1,
+		.new_contract_as_consumer = 1,
+		.ucsi_connector_status_change_notification = 1,
+		.power_event_occurred_error = 1,
+		.externl_dcdc_event_received = 1,
+		.patch_loaded = 1,
+	};
+
+	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
+}
+
+static int pdc_port_control_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_port_control pdc_port_control = {
+		.typec_current = 1,
+		.process_swap_to_sink = 1,
+		.process_swap_to_source = 1,
+		.automatic_cap_request = 1,
+		.auto_alert_enable = 1,
+		.process_swap_to_dfp = 1,
+		.automatic_id_request = 1,
+		.fr_swap_enabled = 1,
+		.deglitch_cnt_lo = 6,
+	};
+
+	return tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
+}
+
+static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
+{
+	union reg_autonegotiate_sink an_snk;
+	struct pdc_config_t const *cfg = data->dev->config;
+	int rv;
+
+	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("Failed to read auto negotiate sink register.");
+		return rv;
+	}
+
+	an_snk.auto_compute_sink_min_power = 0;
+	an_snk.auto_compute_sink_min_voltage = 0;
+	an_snk.auto_compute_sink_max_voltage = 0;
+	an_snk.auto_neg_max_current = 3000 / 10;
+	an_snk.auto_neg_sink_min_required_power = 15000 / 250;
+	an_snk.auto_neg_max_voltage = 5000 / 50;
+	an_snk.auto_neg_min_voltage = 5000 / 50;
+
+	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Failed to write auto negotiate sink register.");
+		return rv;
+	}
+
+	return 0;
+}
+
+static void set_all_ports_to_init(const int delay_ms)
+{
+	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
+		if (!device_is_ready(pdc_data[port]->dev)) {
+			continue;
+		}
+		pdc_data[port]->init_done = false;
+		pdc_data[port]->init_attempt = 0;
+		if (delay_ms) {
+			set_state_delayed_post(pdc_data[port], ST_INIT,
+					       delay_ms);
+		} else {
+			set_state(pdc_data[port], ST_INIT);
+		}
+	}
+}
+
+static int pdc_exit_dead_battery(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_boot_flags pdc_boot_flags;
+	int rv;
+
+	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
+	if (rv) {
+		LOG_ERR("Read boot flags failed");
+		set_state(data, ST_ERROR_RECOVERY);
+		return rv;
+	}
+
+	if (pdc_boot_flags.dead_battery_flag) {
+		task_dbfg(data);
+	}
+	return 0;
+}
+
+>>>>>>> CHANGE (5630a3 pdc: tps6699x: Re-init PDC driver when PDC is reset)
 static enum smf_state_result st_irq_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -511,6 +720,14 @@ static enum smf_state_result st_irq_run(void *o)
 	LOG_DBG("\n");
 
 	if (interrupt_pending) {
+		if (pdc_interrupt.patch_loaded) {
+			/* patch_loaded is a shared interrupt bit which is not
+			 * cleared individually so set ST_INIT state to all
+			 * ports to avoid clearing it before handling irq on
+			 * other ports. */
+			set_all_ports_to_init(/*delay_ms=*/0);
+			return;
+		}
 		/* Set CCI EVENT for not supported */
 		data->cci_event.not_supported =
 			pdc_interrupt.not_supported_received;
@@ -594,6 +811,7 @@ static enum smf_state_result st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_interrupt pdc_interrupt = { .patch_loaded = 1 };
 	int rv;
 
 	/* Do not start executing commands if suspended */
@@ -602,6 +820,30 @@ static enum smf_state_result st_init_run(void *o)
 		return SMF_EVENT_HANDLED;
 	}
 
+<<<<<<< HEAD   (5032dc zephyr: update SMF users for API change)
+||||||| BASE
+	/* If we've attempted init too many times, suspend instead. */
+	if (data->init_attempt > PDC_INIT_RETRY_MAX) {
+		suspend_comms();
+		set_state(data, ST_SUSPENDED);
+		return SMF_EVENT_HANDLED;
+	}
+
+=======
+	/* If we've attempted init too many times, suspend instead. */
+	if (data->init_attempt > PDC_INIT_RETRY_MAX) {
+		suspend_comms();
+		set_state(data, ST_SUSPENDED);
+		return SMF_EVENT_HANDLED;
+	}
+
+	/* We won't see patch_loaded is asserted while handing the IRQ later on
+	 * if boot from dead battery as it is cleared here. */
+	if (tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE)) {
+		LOG_ERR("Clear patch_loaded bit failed.");
+	}
+
+>>>>>>> CHANGE (5630a3 pdc: tps6699x: Re-init PDC driver when PDC is reset)
 	/* Pre-fetch PDC chip info and save it in the driver struct */
 	rv = cmd_get_ic_status_sync_internal(cfg, &data->info);
 	if (rv) {
@@ -1948,6 +2190,23 @@ static enum smf_state_result st_task_wait_run(void *o)
 	}
 
 	switch (data->cmd) {
+<<<<<<< HEAD   (5032dc zephyr: update SMF users for API change)
+||||||| BASE
+	case CMD_SET_NOTIFICATION_ENABLE:
+		/* Initialization for driver is done once notifications are
+		 * enabled. This flag is reset when the INIT state is entered.
+		 */
+		data->init_done = true;
+		break;
+=======
+	case CMD_SET_NOTIFICATION_ENABLE:
+		/* Initialization for driver is done once notifications are
+		 * enabled. This flag is reset when the INIT state is entered.
+		 */
+		data->init_done = true;
+		k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
+		break;
+>>>>>>> CHANGE (5630a3 pdc: tps6699x: Re-init PDC driver when PDC is reset)
 	case CMD_SET_RDO:
 		/* Re-set sink enable until after aNEG completes. */
 		atomic_set(&data->sink_enable_possible, 0);
@@ -2854,10 +3113,14 @@ static int pdc_init(const struct device *dev)
 
 static void tps_check_and_notify_irq(void)
 {
-	for (int port = 0; port < board_get_usb_pd_port_count(); port++) {
+	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
 		struct pdc_data_t *data = pdc_data[port];
 		struct pdc_config_t const *cfg = data->dev->config;
 		union reg_interrupt pdc_interrupt = { 0 };
+
+		if (!device_is_ready(data->dev)) {
+			continue;
+		}
 
 		if (!gpio_pin_get_dt(&cfg->irq_gpios)) {
 			break;
