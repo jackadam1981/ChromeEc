@@ -16,6 +16,24 @@
       "message": "Note - this CL stack is largely obsolete following the work Google did with our WCL RVP bringup.",
       "revId": "268e0dd3d7b6160a8c69fe549f8f01e7d5cc0e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810a1d1b_2c3f1623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-06-06T22:05:28Z",
+      "side": 1,
+      "message": "I think, With respect to Intel, Now, unless we clear the merge conflicts, it may hinder our bring up. Also, please note my comment in crosbug:422822632 related to one of the CL from Google.",
+      "parentUuid": "ae6112c8_1f89312b",
+      "revId": "268e0dd3d7b6160a8c69fe549f8f01e7d5cc0e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
