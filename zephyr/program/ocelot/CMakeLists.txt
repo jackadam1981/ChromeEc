@@ -23,9 +23,15 @@ endif()
 
 zephyr_include_directories("include/")
 
+# Later to add CONFIG_BOARD_RVP_COMMON condition to include below
 zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
   "../intelrvp/include")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
   "../intelrvp/src/dc_jack.c")
+
+if(DEFINED CONFIG_BOARD_RVP_COMMON)
+	zephyr_library_sources("../intelrvp/src/intel_rvp_board_id.c")
+	zephyr_library_sources("src/rvp_board_id.c")
+endif()
 
 add_subdirectory(${PROJECT_NAME})

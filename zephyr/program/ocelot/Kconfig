@@ -22,6 +22,11 @@ config BOARD_OCELOTRVP_MCHP
 	  Build Microchip EC based Ocelot RVP.
 	  This board is for use with the Intel RVP using the
 	  on board EC.
+config BOARD_RVP_COMMON
+	bool "Google Ocelot RVP common"
+	help
+	  This board is for use with the Intel RVP using both
+	  on board EC and add-in card EC.
 
 module = Oceolot
 module-str = Ocelot board-specific code
