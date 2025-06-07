@@ -452,7 +452,7 @@ int charge_request(bool use_curr, bool is_full)
 		if (is_full)
 			voltage = battery_get_info()->voltage_max;
 		/* And handle dead battery case */
-		voltage = MAX(voltage, battery_get_info()->voltage_normal);
+		voltage = MAX(voltage, battery_get_info()->voltage_min);
 #else
 		voltage = current = 0;
 #endif
