@@ -37,8 +37,13 @@ gpio_lid: &gpio_lid_open {};
 gpio_pwrbtn: &gpio_mech_pwr_btn_odl {};
 gpio_voldn: &gpio_ec_voldn_btn_odl {};
 gpio_volup: &gpio_ec_volup_btn_odl {};
+all_sys_pwrgd: &gpio_all_sys_pwrgd {};
+gpio_fan_control: &gpio_en_pp5000_fan {};
+pwm_fan: &pwm0 {};
+tach_fan: &tach1 {};
 
 #include "../rvp_battery.dtsi"
+#include "../rvp_fan.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_usbc.dtsi"
