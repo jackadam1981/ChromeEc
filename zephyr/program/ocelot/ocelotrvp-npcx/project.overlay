@@ -91,6 +91,12 @@ cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+		
+ 	/* STD_ADPT_CNTRL_GPIO */
+	gpio_adp_en_q: adp_en_q {
+		/* Keep low to prioritize AC brick power source selection */
+		gpios = <&gpio6 6 (GPIO_OUTPUT_LOW)>;
+		};
 	};
 
 	chosen {
