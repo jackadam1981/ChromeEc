@@ -1,0 +1,31 @@
+diff --git a/zephyr/program/trulo/ite_generated.dtsi b/zephyr/program/trulo/ite_generated.dtsi
+index 891ed5a6a2..3d3054acfc 100644
+--- a/zephyr/program/trulo/ite_generated.dtsi
++++ b/zephyr/program/trulo/ite_generated.dtsi
+@@ -39,11 +39,11 @@
+ 			gpios = <&gpioc 0 (GPIO_INPUT)>;
+ 		};
+ 		gpio_acok_od: acok_od {
+-			gpios = <&gpioj 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
++			gpios = <&gpioj 0 (GPIO_INPUT_PULL_UP)>;
+ 			enum-name = "GPIO_AC_PRESENT";
+ 		};
+ 		gpio_all_sys_pwrgd: all_sys_pwrgd {
+-			gpios = <&gpiof 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
++			gpios = <&gpiof 3 (GPIO_INPUT)>;
+ 		};
+ 		gpio_amp_mute_l: amp_mute_l {
+ 			gpios = <&gpiog 6 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+diff --git a/zephyr/program/trulo/ite_power_signals.dtsi b/zephyr/program/trulo/ite_power_signals.dtsi
+index d96ceb258e..8ccc1c12d8 100644
+--- a/zephyr/program/trulo/ite_power_signals.dtsi
++++ b/zephyr/program/trulo/ite_power_signals.dtsi
+@@ -77,7 +77,7 @@
+ 		dbg-label = "VCCST_PWRGD output to PCH";
+ 		enum-name = "PWR_VCCST_PWRGD";
+ 		gpios = <&gpioi 5 GPIO_OPEN_DRAIN>;
+-		output;
++
+ 	};
+ 	pwr-imvp9-vrrdy-od {
+ 		compatible = "intel,ap-pwrseq-gpio";
