@@ -102,3 +102,22 @@ ignore_cmd:
 	p->out_size = 0;
 	return VENDOR_RC_NO_SUCH_COMMAND;
 }
+
+uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
+{
+#ifdef DEBUG_EXTENSION
+	CPRINTS("%s(%d,%s) is=%d os=%d", __func__, p->code,
+		p->flags & VENDOR_CMD_FROM_USB ? "USB" : "AP", p->in_size,
+		p->out_size);
+#endif
+
+	/*
+	 * TODO: implement dispatching based on `p->code`. Not sure if using
+	 * approach with DECLARE_VENDOR_COMMAND makes sense for
+	 * Strongbox-subset.
+	 */
+
+	/* Command not found or not allowed */
+	p->out_size = 0;
+	return VENDOR_RC_NO_SUCH_COMMAND;
+}
