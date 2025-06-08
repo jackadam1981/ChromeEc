@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "bq257x0_regs.h"
+#include "bq24773.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
 #include "charger.h"
@@ -1070,7 +1071,394 @@ static void console_bq25710_dump_regs(int chgnum)
 }
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
+/* BQ24800 test code */
+
+#define CONFIG_CHARGER_BQ24770
+/*
+ * on the I2C version of the charger,
+ * some registers are 8-bit only (eg input current)
+ * and they are shifted by 6 bits compared to the SMBUS version (bq24770).
+ */
+#define REG8_SHIFT 6
+#define R8 (1 << (REG8_SHIFT))
+/* Sense resistor configurations and macros */
+#define DEFAULT_SENSE_RESISTOR 10
+#define R_SNS CONFIG_CHARGER_SENSE_RESISTOR
+#define R_AC (CONFIG_CHARGER_SENSE_RESISTOR_AC)
+#define REG_TO_CURRENT(REG, RS) ((REG) * DEFAULT_SENSE_RESISTOR / (RS))
+#define CURRENT_TO_REG(CUR, RS) ((CUR) * (RS) / DEFAULT_SENSE_RESISTOR)
+#define REG8_TO_CURRENT(REG, RS) ((REG) * DEFAULT_SENSE_RESISTOR / (RS) * R8)
+#define CURRENT_TO_REG8(CUR, RS) ((CUR) * (RS) / DEFAULT_SENSE_RESISTOR / R8)
+
+/* ChargeCurrent Register - 0x14 (mA) */
+#define CHARGE_I_OFF 0
+#define CHARGE_I_MIN 128
+#define CHARGE_I_MAX 8128
+#define CHARGE_I_STEP 64
+
+/* MaxChargeVoltage Register - 0x15 (mV) */
+#define CHARGE_V_MIN 1024
+#define CHARGE_V_MAX 19200
+#define CHARGE_V_STEP 16
+
+/* InputCurrent Register - 0x3f (mA) */
+#define INPUT_I_MIN 128
+#define INPUT_I_MAX 8128
+#define INPUT_I_STEP 64
+
+/* Charger parameters */
+static const struct charger_info bq2477x_charger_info = {
+	.name = CHARGER_NAME,
+	.voltage_max = CHARGE_V_MAX,
+	.voltage_min = CHARGE_V_MIN,
+	.voltage_step = CHARGE_V_STEP,
+	.current_max = REG_TO_CURRENT(CHARGE_I_MAX, R_SNS),
+	.current_min = REG_TO_CURRENT(CHARGE_I_MIN, R_SNS),
+	.current_step = REG_TO_CURRENT(CHARGE_I_STEP, R_SNS),
+	.input_current_max = REG_TO_CURRENT(INPUT_I_MAX, R_AC),
+	.input_current_min = REG_TO_CURRENT(INPUT_I_MIN, R_AC),
+	.input_current_step = REG_TO_CURRENT(INPUT_I_STEP, R_AC),
+};
+
+#ifdef CONFIG_CHARGER_BQ24773
+static inline enum ec_error_list raw_read8(int chgnum, int offset, int *value)
+{
+	return i2c_read8(chg_chips[chgnum].i2c_port,
+			 chg_chips[chgnum].i2c_addr_flags, offset, value);
+}
+
+static inline enum ec_error_list raw_write8(int chgnum, int offset, int value)
+{
+	return i2c_write8(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags, offset, value);
+}
+#endif
+/*
+static inline enum ec_error_list raw_read16(int chgnum, int offset, int *value)
+{
+	return i2c_read16(chg_chips[chgnum].i2c_port,
+			  chg_chips[chgnum].i2c_addr_flags, offset, value);
+}
+
+static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
+{
+	return i2c_write16(chg_chips[chgnum].i2c_port,
+			   chg_chips[chgnum].i2c_addr_flags, offset, value);
+}
+*/
+/* chip specific interfaces */
+
+static enum ec_error_list bq2477x_set_input_current_limit(int chgnum,
+							  int input_current)
+{
+#ifdef CONFIG_CHARGER_BQ24770
+	return raw_write16(chgnum, REG_INPUT_CURRENT,
+			   CURRENT_TO_REG(input_current, R_AC));
+#elif defined(CONFIG_CHARGER_BQ24773)
+	return raw_write8(chgnum, REG_INPUT_CURRENT,
+			  CURRENT_TO_REG8(input_current, R_AC));
+#endif
+}
+
+static enum ec_error_list bq2477x_get_input_current_limit(int chgnum,
+							  int *input_current)
+{
+	int rv;
+	int reg;
+
+#ifdef CONFIG_CHARGER_BQ24770
+	rv = raw_read16(chgnum, REG_INPUT_CURRENT, &reg);
+#elif defined(CONFIG_CHARGER_BQ24773)
+	rv = raw_read8(chgnum, REG_INPUT_CURRENT, &reg);
+#endif
+	if (rv)
+		return rv;
+
+#ifdef CONFIG_CHARGER_BQ24770
+	*input_current = REG_TO_CURRENT(reg, R_AC);
+#elif defined(CONFIG_CHARGER_BQ24773)
+	*input_current = REG8_TO_CURRENT(reg, R_AC);
+#endif
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list bq2477x_manufacturer_id(int chgnum, int *id)
+{
+#ifdef CONFIG_CHARGER_BQ24770
+	return raw_read16(chgnum, REG_MANUFACTURE_ID, id);
+#elif defined(CONFIG_CHARGER_BQ24773)
+	*id = 0x40; /* TI */
+	return EC_SUCCESS;
+#endif
+}
+
+static enum ec_error_list bq2477x_device_id(int chgnum, int *id)
+{
+#ifdef CONFIG_CHARGER_BQ24770
+	return raw_read16(chgnum, REG_DEVICE_ADDRESS, id);
+#elif defined(CONFIG_CHARGER_BQ24773)
+	return raw_read8(chgnum, REG_DEVICE_ADDRESS, id);
+#endif
+}
+
+static enum ec_error_list bq2477x_get_option(int chgnum, int *option)
+{
+	return raw_read16(chgnum, REG_CHARGE_OPTION0, option);
+}
+
+static enum ec_error_list bq2477x_set_option(int chgnum, int option)
+{
+	return raw_write16(chgnum, REG_CHARGE_OPTION0, option);
+}
+
+static enum ec_error_list bq2477x_get_option3(int chgnum, int *option)
+{
+	return raw_read16(chgnum, REG_CHARGE_OPTION3, option);
+}
+
+static enum ec_error_list bq2477x_set_option3(int chgnum, int option)
+{
+	return raw_write16(chgnum, REG_CHARGE_OPTION3, option);
+}
+
+/* Charger interfaces */
+
+static const struct charger_info *bq2477x_get_info(int chgnum)
+{
+	return &bq2477x_charger_info;
+}
+
+static enum ec_error_list bq2477x_get_status(int chgnum, int *status)
+{
+	int rv;
+	int option;
+
+	rv = bq2477x_get_option(chgnum, &option);
+	if (rv)
+		return rv;
+
+	/* Default status */
+	*status = CHARGER_LEVEL_2;
+
+	if (option & OPTION0_CHARGE_INHIBIT)
+		*status |= CHARGER_CHARGE_INHIBITED;
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list bq2477x_set_mode(int chgnum, int mode)
+{
+	int rv;
+	int option;
+
+	rv = bq2477x_get_option(chgnum, &option);
+	if (rv)
+		return rv;
+
+	if (mode & CHARGE_FLAG_INHIBIT_CHARGE)
+		option |= OPTION0_CHARGE_INHIBIT;
+	else
+		option &= ~OPTION0_CHARGE_INHIBIT;
+	return bq2477x_set_option(chgnum, option);
+}
+
+static enum ec_error_list bq2477x_get_current(int chgnum, int *current)
+{
+	int rv;
+	int reg;
+
+	rv = raw_read16(chgnum, REG_CHARGE_CURRENT, &reg);
+
+	if (rv)
+		return rv;
+
+	*current = REG_TO_CURRENT(reg, R_SNS);
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list bq2477x_set_current(int chgnum, int current)
+{
+	current = charger_closest_current(current);
+	return raw_write16(chgnum, REG_CHARGE_CURRENT,
+			   CURRENT_TO_REG(current, R_SNS));
+}
+
+static enum ec_error_list bq2477x_get_voltage(int chgnum, int *voltage)
+{
+	return raw_read16(chgnum, REG_MAX_CHARGE_VOLTAGE, voltage);
+}
+
+static enum ec_error_list bq2477x_set_voltage(int chgnum, int voltage)
+{
+	voltage = charger_closest_voltage(voltage);
+	return raw_write16(chgnum, REG_MAX_CHARGE_VOLTAGE, voltage);
+}
+
+/* Charging power state initialization */
+static void bq2477x_init(int chgnum)
+{
+	int rv, option, option3;
+#ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
+	int option2;
+#endif
+
+	rv = bq2477x_get_option(chgnum, &option);
+
+// 0x12
+// 0x6008
+	option &= ~OPTION0_LEARN_ENABLE;
+
+	option &= ~OPTION0_SWITCHING_FREQ_MASK;
+	option |= OPTION0_SWITCHING_FREQ_600KHZ;
+
+	option &= ~OPTION0_LOWER_POWER_MODE_ENABLE;
+	rv = bq2477x_set_option(chgnum, option);
+
+// 0x3B
+// 0xCA20 as default
+
+	/* Turn off PROCHOT warning */
+	rv = raw_read16(chgnum, REG_PROCHOT_OPTION1, &option);
+
+// 0x37
+// 0x1E01
+	rv = bq2477x_get_option3(chgnum, &option3);
+	option3 |= OPTION3_HYBRID_BOOST_EXIT;
+
+	option3 &= ~OPTION3_HYBRID_BOOST_ENTRY;
+
+	option3 &= ~OPTION3_LSFET_VDS;
+
+	option3 &= ~OPTION3_HSFET_VDS;
+
+	option3 |= OPTION3_EN_ACOC;
+
+	option3 |= OPTION3_ACOK_STAT;
+	rv = bq2477x_set_option3(chgnum, option3);
+
+// 0x3C
+// 0x3249
+	rv = raw_read16(chgnum, REG_PROCHOT_OPTION0, &option);
+	option |= PROCHOT_OPTION0_INOM_VTH;
+
+	option &= ~PROCHOT_OPTION0_PROCHOT_CLEAR;
+
+	option &= ~PROCHOT_OPTION0_PROCHOT_WIDTH_MASK;
+	option |= PROCHOT_OPTION0_PROCHOT_1MS;
+
+	option &= ~PROCHOT_OPTION0_ILIM2_VTH_MASK;
+	option |= PROCHOT_OPTION0_ILIM2_VTH;
+	rv = raw_write16(chgnum, REG_PROCHOT_OPTION0, option);
+
+// 0x3D
+
+	rv = raw_read16(chgnum, REG_PROCHOT_OPTION1, &option);
+	option &= ~PROCHOT_OPTION1_SELECTOR_MASK;
+	rv = raw_write16(chgnum, REG_PROCHOT_OPTION1, option);
+
+// 0x39 as default
+
+#ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
+	/* Read the external ILIM pin enabled flag. */
+	rv = raw_read16(chgnum, REG_CHARGE_OPTION2, &option2);
+	if (rv)
+		return rv;
+
+	/* Set ILIM pin disabled if it is currently enabled. */
+	if (option2 & OPTION2_EN_EXTILIM) {
+		option2 &= ~OPTION2_EN_EXTILIM;
+		rv = raw_write16(chgnum, REG_CHARGE_OPTION2, option2);
+	}
+//	return rv;
+#else
+//	return EC_SUCCESS;
+#endif
+}
+
+static enum ec_error_list bq2477x_post_init(int chgnum)
+{
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list bq2477x_discharge_on_ac(int chgnum, int enable)
+{
+	int rv;
+	int option;
+
+	rv = bq2477x_get_option(chgnum, &option);
+	if (rv)
+		return rv;
+
+	if (enable)
+		rv = bq2477x_set_option(chgnum, option | OPTION0_LEARN_ENABLE);
+	else
+		rv = bq2477x_set_option(chgnum, option & ~OPTION0_LEARN_ENABLE);
+
+	return rv;
+}
+
+static void console_bq24800_dump_regs(int chgnum)
+{
+	int i;
+	int val;
+
+	/* Dump all readable registers on bq24800. */
+	static const uint8_t regs[] = {
+		REG_CHARGE_OPTION0,
+		REG_CHARGE_OPTION1,
+		REG_CHARGE_OPTION2,
+		REG_CHARGE_OPTION3,
+		REG_PROCHOT_OPTION0,
+		REG_PROCHOT_OPTION1,
+		REG_CHARGE_CURRENT,
+		REG_MAX_CHARGE_VOLTAGE,
+		REG_MIN_SYSTEM_VOLTAGE,
+		REG_INPUT_CURRENT,
+		REG_MANUFACTURE_ID,
+		REG_DEVICE_ADDRESS,
+	};
+
+	for (i = 0; i < ARRAY_SIZE(regs); ++i) {
+		if (raw_read16(chgnum, regs[i], &val))
+			continue;
+		ccprintf("BQ24800 REG 0x%02x:  0x%04x\n", regs[i], val);
+	}
+}
+
 const struct charger_drv bq25710_drv = {
+	.init = &bq2477x_init,
+	.post_init = &bq2477x_post_init,
+	.get_info = &bq2477x_get_info,
+	.get_status = &bq2477x_get_status,
+	.set_mode = &bq2477x_set_mode,
+//	.enable_otg_power = &bq25710_enable_otg_power,
+//	.set_otg_current_voltage = &bq25710_set_otg_current_voltage,
+	.get_current = &bq2477x_get_current,
+	.set_current = &bq2477x_set_current,
+	.get_voltage = &bq2477x_get_voltage,
+	.set_voltage = &bq2477x_set_voltage,
+	.discharge_on_ac = &bq2477x_discharge_on_ac,
+#ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+	.get_vbus_voltage = &bq25710_get_vbus_voltage,
+#endif
+	.set_input_current_limit = &bq2477x_set_input_current_limit,
+	.get_input_current_limit = &bq2477x_get_input_current_limit,
+	.get_input_current = &bq2477x_get_input_current_limit,
+	.manufacturer_id = &bq2477x_manufacturer_id,
+	.device_id = &bq2477x_device_id,
+	.get_option = &bq2477x_get_option,
+	.set_option = &bq2477x_set_option,
+#ifdef CONFIG_CHARGE_RAMP_HW
+	.set_hw_ramp = &bq25710_set_hw_ramp,
+	.ramp_is_stable = &bq25710_ramp_is_stable,
+	.ramp_get_current_limit = &bq25710_ramp_get_current_limit,
+#endif /* CONFIG_CHARGE_RAMP_HW */
+//#ifdef CONFIG_CMD_CHARGER_DUMP
+	.dump_registers = &console_bq24800_dump_regs,
+//#endif
+};
+
+const struct charger_drv bq25710_drv_ = {
 	.init = &bq25710_init,
 	.post_init = &bq25710_post_init,
 	.get_info = &bq25710_get_info,

@@ -77,7 +77,7 @@
 		dbg-label = "VCCST_PWRGD output to PCH";
 		enum-name = "PWR_VCCST_PWRGD";
 		gpios = <&gpioi 5 GPIO_OPEN_DRAIN>;
-		output;
+
 	};
 	pwr-imvp9-vrrdy-od {
 		compatible = "intel,ap-pwrseq-gpio";
