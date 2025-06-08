@@ -693,7 +693,12 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 			.flags = flags
 		};
 
-		rc = extension_route_command(&p);
+		if (tpmh->command_code ==
+		    (TPM_CC_VENDOR_STRONGBOX | TPM_CC_VENDOR_BIT_MASK)) {
+			rc = extension_route_strongbox_command(&p);
+		} else {
+			rc = extension_route_command(&p);
+		}
 
 		/* Add the header size back. */
 		*total_size = p.out_size + sizeof(struct tpm_cmd_header);

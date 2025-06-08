@@ -322,6 +322,7 @@ struct user_pres_response {
 #define VENDOR_CC_MASK         0x0000ffff
 /* Our vendor-specific command codes go here */
 #define TPM_CC_VENDOR_CR50         0x0000
+#define TPM_CC_VENDOR_STRONGBOX    0x0001
 
 /*
  * Errors recognized and returned by the VENDOR_CC_SEED_AP_RO_CHECK vendor
