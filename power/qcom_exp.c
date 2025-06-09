@@ -25,6 +25,7 @@
 #include "builtin/assert.h"
 #include "chipset.h"
 #include "common.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -146,6 +147,9 @@ static char power_button_was_pressed;
 /* 1 if lid-open event has been detected */
 static char lid_opened;
 
+/* 1 if ac-on event has been detected */
+static char ac_on;
+
 /* Time where we will power off, if power button still held down */
 static timestamp_t power_off_deadline;
 
@@ -184,6 +188,7 @@ enum power_off_event_t {
 enum power_on_event_t {
 	POWER_ON_CANCEL,
 	POWER_ON_BY_AUTO_POWER_ON,
+	POWER_ON_BY_AC_ON,
 	POWER_ON_BY_LID_OPEN,
 	POWER_ON_BY_POWER_BUTTON_PRESSED,
 	POWER_ON_BY_POWER_REQ_ON,
@@ -255,6 +260,18 @@ static void powerbtn_changed(void)
 	task_wake(TASK_ID_CHIPSET);
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_changed, HOOK_PRIO_DEFAULT);
+
+static void power_ac_changed(void)
+{
+	/* Power task only cares when the external power is connected */
+	if (!extpower_is_present())
+		return;
+
+	ac_on = 1;
+
+	task_wake(TASK_ID_CHIPSET);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, power_ac_changed, HOOK_PRIO_DEFAULT);
 
 /**
  * Wait the switchcap GPIO0 PVC_PG signal asserted.
@@ -543,6 +560,7 @@ static void power_off_seq(uint8_t shutdown_event)
 	}
 
 	lid_opened = 0;
+	ac_on = 0;
 }
 
 /**
@@ -593,6 +611,9 @@ static uint8_t check_for_power_on_event(void)
 	} else if (lid_opened) {
 		/* check lid open */
 		ret = POWER_ON_BY_LID_OPEN;
+	} else if (ac_on) {
+		/* check if external power is connected */
+		ret = POWER_ON_BY_AC_ON;
 	} else if (power_button_is_pressed()) {
 		/* check for power button press */
 		ret = POWER_ON_BY_POWER_BUTTON_PRESSED;
@@ -604,6 +625,7 @@ static uint8_t check_for_power_on_event(void)
 	power_request = POWER_REQ_NONE;
 	auto_power_on = 0;
 	lid_opened = 0;
+	ac_on = 0;
 
 	return ret;
 }
