@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56df646_3927988a",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-09T10:29:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "24fa63ef_d697e139",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72cd1836_7ab88bba",
@@ -143,6 +167,24 @@
           ]
         }
       ],
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6116d3_dbdf1ad3",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-09T10:29:59Z",
+      "side": 1,
+      "message": "Set port_present_pdp \u003d port_reported_pdp and it works.\n\nDoes this mean every other modification can be discarded??",
+      "parentUuid": "72cd1836_7ab88bba",
       "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +226,30 @@
           ]
         }
       ],
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01741e0d_9c19c6d4",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-09T10:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b815fa_b7eb86b1",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 28
+      },
       "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
