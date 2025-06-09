@@ -13,12 +13,11 @@
 /*
  * Set the power good threshold for VPH_PWR(mV).
  *
- * The VPH_PWR voltage can vary between 3.3V and 5V depending on the
- * PMIC configuration and load. This setting is a binary power good
- * threshold. The minimum specification is 3.3V, and a 10% safety
- * margin places the threshold at 2970mV.
+ * The VPH_PWR "power good" signal was measured and observed to be stable at
+ * approximately 2.6V. Consequently, the power good threshold has been
+ * configured to 2.0V
  */
-#define VPH_PWR_THRESHOLD 2970
+#define VPH_PWR_THRESHOLD 2000
 
 void board_set_switchcap_power(int enable)
 {
