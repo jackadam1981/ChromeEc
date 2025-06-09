@@ -78,6 +78,10 @@
 		     &kso17_default>;
 };
 
+&pwm2 {
+	status = "disabled";
+};
+
 &pwm3 {
 	prescaler-cx = <PWM_PRESCALER_C4>;
 };
