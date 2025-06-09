@@ -7,6 +7,7 @@
 import logging
 import os
 import pathlib
+from pathlib import Path
 import re
 from typing import List, Union
 import unittest.mock
@@ -316,24 +317,26 @@ def test_list_projects(
 def test_find_projects(zmake_factory_from_dir):
     """Test searching projects using specific names and wildcard expressions"""
 
-    fake_project_names = (
-        "project1",
-        "project2",
-        "project",
-        "some_project",
-        "prj",
+    fake_names_and_dirs = (
+        # (Project name, project directory)
+        ("project1", "root/program_a/"),
+        ("project2", "root/program_a/"),
+        ("project", "root/program_a/"),
+        ("some_project", "root/program_b/"),
+        ("prj", "root/program_b/"),
     )
 
     fake_projects = {
         name: zmake.project.Project(
             zmake.project.ProjectConfig(
                 project_name=name,
+                project_dir=Path(dir),
                 zephyr_board="some_board",
                 supported_toolchains=["coreboot-sdk"],
                 output_packer=zmake.output_packers.RawBinPacker,
             )
         )
-        for name in fake_project_names
+        for name, dir in fake_names_and_dirs
     }
 
     zmk = zmake_factory_from_dir()
@@ -348,7 +351,7 @@ def test_find_projects(zmake_factory_from_dir):
         assert {
             p.config.project_name
             for p in zmk._resolve_projects([], select_all_projects=True)
-        } == set(fake_project_names)
+        } == {name for name, _ in fake_names_and_dirs}
 
         # Select single project
         assert {
@@ -381,7 +384,21 @@ def test_find_projects(zmake_factory_from_dir):
             for p in zmk._resolve_projects(["project*", "some_project"])
         } == {"project1", "project2", "project", "some_project"}
 
-        # Invalid names or wildcard strings
+        # Select by program name
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["%program_a"])
+        } == {"project1", "project2", "project"}
+
+        assert {
+            p.config.project_name
+            for p in zmk._resolve_projects(["%program_a", "some_project"])
+        } == {"project1", "project2", "project", "some_project"}
+
+        assert {
+            p.config.project_name for p in zmk._resolve_projects(["%program*"])
+        } == {"project1", "project2", "project", "some_project", "prj"}
+
+        # Invalid project names, program names, or wildcard strings
         with pytest.raises(KeyError):
             zmk._resolve_projects(["invalid"])
 
@@ -390,4 +407,7 @@ def test_find_projects(zmake_factory_from_dir):
 
         with pytest.raises(KeyError):
             zmk._resolve_projects(["invalid", "bad_wildcard*"])
+
+        with pytest.raises(KeyError):
+            zmk._resolve_projects(["%invalid"])
     # pylint: enable=W0212

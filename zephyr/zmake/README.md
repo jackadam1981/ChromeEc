@@ -41,7 +41,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to build, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
+| `project_name` | Name(s) of the project(s) to build, Unix-style wildcard expressions to select multiple projects (e.g. brox-*), or program directory names prefixed with '%' (e.g. %nissa) |
 
 #### Options
 
@@ -71,7 +71,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to build, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
+| `project_name` | Name(s) of the project(s) to build, Unix-style wildcard expressions to select multiple projects (e.g. brox-*), or program directory names prefixed with '%' (e.g. %nissa) |
 
 #### Options
 
@@ -101,7 +101,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to build, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
+| `project_name` | Name(s) of the project(s) to build, Unix-style wildcard expressions to select multiple projects (e.g. brox-*), or program directory names prefixed with '%' (e.g. %nissa) |
 
 #### Options
 
@@ -126,7 +126,7 @@ Chromium OS's meta-build tool for Zephyr
 
 |   |   |
 |---|---|
-| `project_name` | Name(s) of the project(s) to list, or Unix-style wildcard expressions to select multiple projects (e.g. brox-*) |
+| `project_name` | Name(s) of the project(s) to list, Unix-style wildcard expressions to select multiple projects (e.g. brox-*), or program directory names prefixed with '%' (e.g. %nissa) |
 
 #### Options
 

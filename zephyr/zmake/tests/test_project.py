@@ -201,6 +201,16 @@ register_raw_project(
 )
 """
 
+# Invalid example
+CONFIG_FILE_3 = """
+register_raw_project(
+    project_name="%invalid_name",
+    zephyr_board="foo",
+    dts_overlays=[here / "gpio.dts"],
+    inherited_from=["root", "myboard"],
+)
+"""
+
 
 def test_find_projects(tmp_path):
     """Test the find_projects method when there are projects."""
@@ -244,6 +254,14 @@ def test_find_projects_name_conflict(tmp_path):
     (cf2_dir / "BUILD.py").write_text(CONFIG_FILE_2)
 
     with pytest.raises(KeyError):
+        zmake.project.find_projects([tmp_path])
+
+
+def test_find_projects_invalid_project_name(tmp_path):
+    """Try to register a project with an invalid name."""
+    (tmp_path / "BUILD.py").write_text(CONFIG_FILE_3)
+
+    with pytest.raises(AssertionError):
         zmake.project.find_projects([tmp_path])
 
 

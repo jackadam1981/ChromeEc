@@ -247,6 +247,10 @@ def load_config_file(path) -> typing.List[Project]:
     projects: typing.List[Project] = []
 
     def register_project(**kwargs) -> ProjectRegistrationHandler:
+        # Project names cannot start with a '%', as this is reserved for passing
+        # program names in the CLI interface.
+        assert not kwargs["project_name"].startswith("%")
+
         config = ProjectConfig(**kwargs)
         projects.append(Project(config))
         return ProjectRegistrationHandler(

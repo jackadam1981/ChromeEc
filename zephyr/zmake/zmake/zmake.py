@@ -261,14 +261,25 @@ class Zmake:
             return set(found_projects.values())
 
         # User wants a subset of projects and has passed one or more exact
-        # project names or Unix-style wildcard expressions to match.
+        # project names, program names (prefixed with '%'), or Unix-style
+        # wildcard expressions to match.
         projects = set()
         for project_expr in project_expressions:
             matches = set()
             for name, proj in found_projects.items():
+                # Check for program name expressions, which are prefixed with
+                # a '%'. For these, match based on the name of the project
+                # directory (the directory containing the BUILD.py). This has the
+                # effect of adding every project in a particular directory and is
+                # more convenient than passing `--projects-dir`.
+                if project_expr.startswith("%") and fnmatch.fnmatch(
+                    proj.config.project_dir.name, project_expr.removeprefix("%")
+                ):
+                    matches.add(proj)
+
                 # For each user-supplied project_expr, match it against each of
                 # the found project names and record matches.
-                if fnmatch.fnmatch(name, project_expr):
+                elif fnmatch.fnmatch(name, project_expr):
                     matches.add(proj)
 
             if len(matches) == 0:
