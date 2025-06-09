@@ -2273,13 +2273,24 @@ bool pdc_is_rdo_valid(const union connector_status_t *cs)
 		cs->power_operation_mode == PD_OPERATION);
 }
 
+static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
+{
+	const struct pdc_config_t *const config = port->dev->config;
+
+	/* Test if battery should be charged from this port */
+	port->sink_path_to_send = charge_manager_get_active_charge_port() ==
+				  config->connector_num;
+	queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+
+	return true;
+}
+
 /**
  * @brief Run sink attached state.
  */
 static void pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
-	const struct pdc_config_t *const config = port->dev->config;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2429,11 +2440,8 @@ static void pdc_snk_attached_run(void *obj)
 				SNK_ATTACHED_GET_CABLE_PROPERTY;
 		}
 
-		/* Test if battery should be charged from this port */
-		port->sink_path_to_send =
-			charge_manager_get_active_charge_port() ==
-			config->connector_num;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		pdc_snk_attached_set_sink_path(port);
+
 		return;
 	case SNK_ATTACHED_GET_SINK_PDO:
 		port->snk_attached_local_state =
