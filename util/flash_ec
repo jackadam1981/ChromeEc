@@ -448,9 +448,9 @@ case "${BOARD}" in
 esac
 
 case "${CHIP}" in
-	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx"|"ite_i2c"|"npcx_uut"|"ite_spi"| \
-			"ite_spi_ccd_i2c"|"ite_spi_ccd_uart"|"ite_uart"|"ite_uart_3m"| \
-			"it8xxx2"|"mchp_int_spi")
+	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx"|"ite_i2c"|"npcx_uut"|"rtk_uart"| \
+			"ite_spi"|"ite_spi_ccd_i2c"|"ite_spi_ccd_uart"|"ite_uart"| \
+			"ite_uart_3m"|"it8xxx2"|"mchp_int_spi")
 		;;
 	*)
 		if [[ -n "${FLAGS_read}" ]]; then
@@ -1732,6 +1732,180 @@ function flash_npcx_jtag() {
 	flash_openocd
 }
 
+
+function flash_rtk_uart() {
+	local RTK_UUT
+	local EC_UART
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	local TOOL_PATH="${EC_DIR}/build/host/util:${PATH}"
+
+	RTK_UUT=$(PATH="${TOOL_PATH}" which rtkupdate)
+	EC_UART="$(servo_ec_uart)"
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
+
+	# Look for rts5915_flash_upload.bin in multiple directories, starting with
+	# the same path as the EC binary.
+	local MON=""
+	for dir in \
+		"$(dirname "${IMG}")" \
+		"build/zephyr/${BOARD}/output" \
+		"$(dirname "${LOCAL_BUILD}")" \
+		"$(dirname "${EMERGE_BUILD}")" \
+		"/usr/share/ec-devutils" ;
+	do
+		if [ -f "${dir}/rts5915_flash_upload.bin" ] ; then
+			MON="${dir}/rts5915_flash_upload.bin"
+			break
+		fi
+	done
+	if [ -z "${MON}" ] ; then
+		die "Failed to find rts5915_flash_upload.bin"
+	fi
+	info "Using RTK image : ${MON}"
+
+	# The start address to restore monitor firmware binary
+	local SPI_OFFSET="0x00000000"
+
+	if [ ! -x "${RTK_UUT}" ]; then
+		die "no RTK UART Update Tool found."
+	fi
+
+	info "Using: RTK UART Update Tool"
+	info "${MCU} UART pty : ${EC_UART}"
+	claim_pty "${EC_UART}"
+
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		# Ti50 does not yet support ccd_keepalive option which
+		# requires ccdstate command on the GSC console.
+		# TODO(b/161483597) remove the check when Ti50 CCD is on par.
+		servo_save_add ccd_keepalive_en
+		dut_control ccd_keepalive_en:on
+	fi
+
+	# Don't let the EC come out of reset after H1 reset
+	dut_control gsc_ec_reset:on
+	sleep 0.1
+	# Force the EC to boot in UART update mode
+	ec_enable_boot0 "uut"
+	sleep 1
+
+	dut_control gsc_ec_reset:off
+
+	# Have to wait a bit for EC boot-up
+	sleep 1
+	# Ensure normal UART operation
+	ec_disable_boot0 "uut"
+	sleep 1
+
+	# Remove the prefix "/dev/" because uartupdatetool will add it.
+	local UUT_ARGS=( "--port=${EC_UART#/dev/}" "--baudrate=115200" )
+	local IMG_READ="${FLAGS_read}"
+
+	local monitor_res=0
+	local wp_res_0=0
+	local wp_res_1=0
+
+	# Write Protect
+	local UUT_WP=(
+			"${RTK_UUT}"  \
+			"--method=wp" \
+			"--protect=0"  \
+			"--uart_device=${EC_UART}")
+
+	print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+		"${UUT_WP[@]}" || wp_res_0=$?
+
+	# Write Protect again, in case the UART mismatch
+	# TODO: b/425716329 Remove once WP issues resolved
+	local UUT_WP=(
+			"${RTK_UUT}"  \
+			"--method=wp" \
+			"--protect=0"  \
+			"--uart_device=${EC_UART}")
+
+	print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+		"${UUT_WP[@]}" || wp_res_1=$?
+
+	if [[ ${wp_res_0} -ne 0 && ${wp_res_1} -ne 0 ]];
+	then
+		die "Failed to disable EC write protect."
+	fi
+
+	# Load monitor binary
+	info "Loading monitor binary."
+	local UUT_MON=(
+			"${RTK_UUT}"  \
+			"--method=frame" \
+			"--file=${MON}" \
+			"--uart_device=${EC_UART}")
+
+	print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_MON[@]}" || monitor_res=$?
+
+	if [[ ${monitor_res} != 0 ]]; then
+		die "Failed to load monitor binary."
+	fi
+
+	# Program EC image.
+	if [[ -z "${IMG_READ}" ]]; then
+
+		info "Programming EC firmware image."
+		if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+			local IMG_CPY
+
+			IMG_CPY="${TEMP_DIR}/ec.new.cpy.bin"
+			cat "${IMG}" > "${IMG_CPY}"
+			IMG="${IMG_CPY}"
+			preserve_sections "rtk_uart" "${IMG}" "${TEMP_DIR}"    \
+				"${RTK_UUT}" "--uart_device=${EC_UART}" || die "${MSG_PROGRAM_FAIL}"
+		fi
+
+		local UUT_WR=(
+				"${RTK_UUT}" \
+				"--method=flash" \
+				"--spi_start=${SPI_OFFSET}" \
+				"--file=${IMG}" \
+				"--uart_device=${EC_UART}")
+
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_WR[@]}" || die "${MSG_PROGRAM_FAIL}"
+
+		# If it is a program-verify request, then make a temporary
+		# directory to store the image.
+		if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+			IMG_READ="${TEMP_DIR}/ec.read.bin"
+		fi
+	fi
+
+	# Read EC image.
+	if [[ -n "${IMG_READ}" ]]; then
+		info "Reading EC firmware image."
+
+		local UUT_RD=(
+				"${RTK_UUT}" \
+				"--method=read_bin" \
+				"--spi_start=${SPI_OFFSET}" \
+				"--file=${IMG_READ}" \
+				"--uart_device=${EC_UART}" \
+				"--bin_length=0x100000")
+
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_RD[@]}" || die "${MSG_READ_FAIL}"
+	fi
+
+	# Verify the flash by comparing the source image to the read image,
+	# only if it was a flash write request.
+	if [[ -z "${FLAGS_read}" && "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+		info "Verifying EC firmware image."
+
+		print_or_run cmp -s -n "${IMG_SIZE}" "${IMG}" "${IMG_READ}" \
+			|| die "${MSG_VERIFY_FAIL}"
+	fi
+}
+
 function flash_npcx_uut() {
 	local NPCX_UUT
 	local EC_UART
@@ -2226,6 +2400,19 @@ function read_chip_partially() {
 			"--extract" "--include=${SECTION}:${FILE_PATH}")
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${FLASHROM_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
+
+	elif [ "${CHIP_TYPE}" == "rtk_uart" ]; then
+
+		UUT_CUR_FMAP_RD=(
+				"${CHIP_CMD_PREFIX[@]}" \
+				"--method=read_bin" \
+				"--spi_start=${OFFSET}" \
+				"--file=${FILE_PATH}" \
+				"--bin_length=${SIZE}")
+		info "${UUT_CUR_FMAP_RD[@]}"
+
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_CUR_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
 	else
 		die "${MSG_CHIP_READ_INVALID}"
 	fi
@@ -2261,7 +2448,14 @@ function read_chip() {
 		UUT_CUR_RD=( "${CHIP_CMD_PREFIX[@]}" "-r" "${FILE_PATH}" )
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
-
+	elif [ "${CHIP_TYPE}" == "rtk_uart" ]; then
+		UUT_CUR_RD=( "${CHIP_CMD_PREFIX[@]}" \
+					"--method=read_bin" \
+					"--spi_start=0x0" \
+					"--file=${FILE_PATH}" \
+					"--bin_length=0x100000")
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
 	elif [ "${CHIP_TYPE}" == "spi" ]; then
 		FLASHROM_RD=( "sudo" "${CHIP_CMD_PREFIX[@]}" "--read=${FILE_PATH}" )
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
