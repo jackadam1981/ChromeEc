@@ -16,6 +16,47 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c1cb54_5ec0d5e0",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-09T23:15:35Z",
+      "side": 1,
+      "message": "Nit: As long as you\u0027re in here, should this be a `bool`?",
+      "range": {
+        "startLine": 182,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 68
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5d2fa950_e7d29f5c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/emul/emul_flash.c",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 183,
+                "endChar": 0
+              },
+              "replacement": "static int cros_flash_emul_protect_now(const struct device *dev, bool all)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
