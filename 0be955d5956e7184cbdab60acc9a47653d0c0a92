@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21d4077_5c3fa4f8",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-09T11:18:32Z",
+      "side": 1,
+      "message": "As far as I know, the FMAP and CBI are more like \"data\" stored in write-protected region; When the ec needs to access them, it goes through `flash_read` instead of accessing them directly from SRAM. \nIn this case, do we still need to copy them into SRAM during sysjump?",
+      "parentUuid": "e0776c7f_83779e30",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "0be955d5956e7184cbdab60acc9a47653d0c0a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff0dd433_ea364e25",
@@ -78,6 +102,30 @@
           ]
         }
       ],
+      "revId": "0be955d5956e7184cbdab60acc9a47653d0c0a92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d97478_92e1eda9",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-09T11:18:32Z",
+      "side": 1,
+      "message": "I believe we can still place CBI at 0x50000, since it\u0027s accessed via flash_read and not constrained by ec-ro (code) size.",
+      "parentUuid": "ff0dd433_ea364e25",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 20
+      },
       "revId": "0be955d5956e7184cbdab60acc9a47653d0c0a92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
