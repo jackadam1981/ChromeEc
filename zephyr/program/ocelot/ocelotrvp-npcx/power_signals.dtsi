@@ -25,3 +25,29 @@
 &pwr_all_sys_pwrgd {
 	gpios = <PWR_ALL_SYS_PWRGD GPIO_ACTIVE_HIGH>;
 };
+
+/*
+ * Because the power signals directly reference the GPIOs,
+ * the correspinding named-gpios need to have no-auto-init set.
+ */
+&en_pp3300_a {
+	no-auto-init;
+};
+&en_pp5000_s5 {
+	no-auto-init;
+};
+&rsmrst_pwrgd {
+	no-auto-init;
+};
+&ec_pch_rsmrst_l {
+	no-auto-init;
+};
+&pch_slp_s0_n {
+	no-auto-init;
+};
+&ec_pch_pwrok_od {
+	no-auto-init;
+};
+&all_sys_pwrgd {
+	no-auto-init;
+};
