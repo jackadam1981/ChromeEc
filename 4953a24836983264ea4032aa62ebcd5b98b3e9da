@@ -16,6 +16,23 @@
       "message": "I will release another devboard service containter once this lands",
       "revId": "4953a24836983264ea4032aa62ebcd5b98b3e9da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4f3211_5ec500ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-09T20:59:22Z",
+      "side": 1,
+      "message": "is this patch fixing problems with verify_ro? Please mention this in the patch description if so.",
+      "revId": "4953a24836983264ea4032aa62ebcd5b98b3e9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
