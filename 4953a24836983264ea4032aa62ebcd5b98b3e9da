@@ -33,6 +33,24 @@
       "message": "is this patch fixing problems with verify_ro? Please mention this in the patch description if so.",
       "revId": "4953a24836983264ea4032aa62ebcd5b98b3e9da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1343520_122c943a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-09T21:01:31Z",
+      "side": 1,
+      "message": "I updated to\n\n\"Fix issue when leaving\nthe board_id struct fields in their transport form instead of converting them to the host endianness. This issue made the new local bid check fail when it should not have.\"\n\nSee also attach bug: b:423619250",
+      "parentUuid": "3e4f3211_5ec500ec",
+      "revId": "4953a24836983264ea4032aa62ebcd5b98b3e9da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
