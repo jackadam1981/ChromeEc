@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "86445447_9cd3a735",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 26
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-06-09T06:19:50Z",
+      "side": 1,
+      "message": "This adc pin is used for charger by project. \nWe plan to modify it in another CL.",
+      "parentUuid": "a0ec512e_8edaa08b",
+      "revId": "7cde2be8b6f319048ca6a97aa38f797bc54fa1f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "314a3a04_cc454776",
         "filename": "zephyr/program/trulo/kaladin/include/keyboard_customization.h",
         "patchSetId": 26
