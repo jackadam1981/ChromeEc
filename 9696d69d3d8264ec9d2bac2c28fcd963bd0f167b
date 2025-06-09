@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3647366_4be7f1f8",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1bbfb0_42ec50ce",
+      "range": {
+        "startLine": 1755,
+        "startChar": 0,
+        "endLine": 1757,
+        "endChar": 0
+      },
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b633531b_23de50e9",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-06-06T23:06:25Z",
       "side": 1,
       "message": "Fix the indentation.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 0,
+        "endLine": 1814,
+        "endChar": 15
+      },
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d62ecf5_a8a9f3e5",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b633531b_23de50e9",
       "range": {
         "startLine": 1814,
         "startChar": 0,
@@ -106,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f874370_8c69bb73",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99b79c3c_8f88170e",
+      "range": {
+        "startLine": 1838,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 21
+      },
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5230b1d_51e1d46b",
@@ -119,6 +191,24 @@
       "writtenOn": "2025-06-06T23:06:25Z",
       "side": 1,
       "message": "You also need to add code to check for preserved sections.  Reference the preserve code in the `flash_ite_uart` and `flash_npcx_uut` functions.",
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3f0d12_3ab24e9e",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1853,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:48:53Z",
+      "side": 1,
+      "message": "We have added this function.",
+      "parentUuid": "d5230b1d_51e1d46b",
       "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -160,6 +250,30 @@
           ]
         }
       ],
+      "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54fcc25_2899b76b",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "664313bf_b0809c2a",
+      "range": {
+        "startLine": 1854,
+        "startChar": 0,
+        "endLine": 1854,
+        "endChar": 19
+      },
       "revId": "9696d69d3d8264ec9d2bac2c28fcd963bd0f167b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
