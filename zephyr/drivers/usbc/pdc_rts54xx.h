@@ -114,4 +114,19 @@ union ping_status_t {
 	uint8_t raw_value;
 };
 
+/**
+ * @brief Sx sleep state values
+ *
+ * The value used to indicate to the PDC the current AP power state
+ */
+enum sx_sleep_state {
+	SX_RSVD = 0,
+	SX_S0 = 1,
+	SX_S3 = 2,
+	SX_S5 = 3,
+	SX_S4 = 4,
+	SX_SOIX = 5,
+
+};
+
 #endif /* __CROS_EC_PDC_RTS54XX_H */
