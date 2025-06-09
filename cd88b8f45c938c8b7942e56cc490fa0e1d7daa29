@@ -81,6 +81,57 @@
       },
       "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a3cf39_cd3059de",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-09T23:59:18Z",
+      "side": 1,
+      "message": "nit: i\u0027d pull `ro_protected` assignment entirely out of the conditional.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1b457614_08b7f07b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/emul/emul_flash.c",
+              "range": {
+                "startLine": 184,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": "\tro_protected \u003d true;\n"
+            },
+            {
+              "path": "zephyr/emul/emul_flash.c",
+              "range": {
+                "startLine": 185,
+                "startChar": 0,
+                "endLine": 188,
+                "endChar": 0
+              },
+              "replacement": "\t\tall_protected \u003d true;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
