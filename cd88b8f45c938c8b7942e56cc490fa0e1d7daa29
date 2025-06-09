@@ -57,6 +57,30 @@
       ],
       "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "826e2060_ae615e27",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-09T23:41:01Z",
+      "side": 1,
+      "message": "Yes, will make it a follow-up CL.",
+      "parentUuid": "c3c1cb54_5ec0d5e0",
+      "range": {
+        "startLine": 182,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 68
+      },
+      "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
