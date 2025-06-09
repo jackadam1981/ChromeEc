@@ -19,9 +19,7 @@ config FPU
 # LLVM toolchains for ARM and RISC-V use newlib as libc, indicate that it's
 # supported. Original config (definied in 'lib/libc/Kconfig') depends on
 # TOOLCHAIN_HAS_NEWLIB == y, which means that TOOLCHAIN_HAS_NEWLIB must be set
-# before Kconfig files are processed. The only place that satisfies this
-# requirement is ${ZEPHYR_BASE}/cmake/toolchain/llvm/generic.cmake, but due to
-# HWMv2 we don't know the architecture at that point. The architecture is
+# before Kconfig files are processed. The architecture is
 # determined while processing Kconfig files, so let's indicate that Newlib is
 # supported here.
 config NEWLIB_LIBC_SUPPORTED
