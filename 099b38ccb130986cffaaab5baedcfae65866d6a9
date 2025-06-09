@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58e3d5c_9f96031d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-09T13:45:30Z",
+      "side": 1,
+      "message": "We will have to duplicate a lot of the checking from usb and board id mismatch logic that\u0027s in extension_route_command.\n\nIt might be better to split handling strongbox commands in the \"Find the command handler\" part of extension_route_command",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 3
+      },
+      "revId": "099b38ccb130986cffaaab5baedcfae65866d6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
