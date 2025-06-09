@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ec512e_8edaa08b",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 26
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-06-09T03:34:03Z",
+      "side": 1,
+      "message": "GPI4 is labeled as I_DCHG_ADC1 with an ADC function in the excel sheet.\nDoes this pin need to be declared as ADC function?",
+      "revId": "7cde2be8b6f319048ca6a97aa38f797bc54fa1f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "314a3a04_cc454776",
