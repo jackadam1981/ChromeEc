@@ -16,6 +16,24 @@
       "message": "```\ncoreboot-utils-0.0.1-r5785: cbmem.c:417:28: error: format specifies type \u0027unsigned long\u0027 but the argument\ncoreboot-utils-0.0.1-r5785:       has type \u0027uint64_t\u0027 (aka \u0027unsigned long long\u0027) [-Werror,-Wformat]\ncoreboot-utils-0.0.1-r5785:   417 |                 debug(\"Found at %#lx\\n\", address + i);\ncoreboot-utils-0.0.1-r5785:       |                                 ~~~~     ^~~~~~~~~~~\ncoreboot-utils-0.0.1-r5785:       |      \n```\nNot related, kick again.",
       "revId": "d74fd26866729e7bd5fa0599218fae3bdefcd700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf9ea15_ca63e125",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-06-09T08:05:12Z",
+      "side": 1,
+      "message": "this is a bug inside coreboot, we\u0027ll need to wait for upstream fix: b/423062223",
+      "parentUuid": "9d0c221d_a06adf6c",
+      "revId": "d74fd26866729e7bd5fa0599218fae3bdefcd700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
