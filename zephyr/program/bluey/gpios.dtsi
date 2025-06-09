@@ -146,8 +146,8 @@
 			enum-name = "GPIO_AP_SUSPEND";
 		};
 		gpio_ec_soc_pwr_btn: ec_soc_pwr_btn {
-			gpios = <&gpioc 1 (GPIO_OUTPUT)>;
-			enum-name = "GPIO_PMIC_KPD_PWR_ODL";
+			gpios = <&gpioc 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
+			enum-name = "GPIO_PMIC_KPD_PWR";
 		};
 		gpio_ec_fan1_tach: ec_fan1_tach {
 			gpios = <&gpio7 3 (GPIO_INPUT)>;
