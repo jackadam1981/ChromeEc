@@ -189,6 +189,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e40609_f02d93eb",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-09T17:55:49Z",
+      "side": 1,
+      "message": "I believe so, yes. I think this extends to `max_current_claimed_bitmask` and its accessors. In patchset 3, this variable is only written to, never read. I think it can be deleted.",
+      "parentUuid": "5d6116d3_dbdf1ad3",
+      "revId": "085656b3935b3fb1314cc28ba3c35bf533e86098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58b815fa_b7eb86b1",
