@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8a8b5d_7aea8e5d",
+        "filename": "zephyr/program/bluey/CMakeLists.txt",
+        "patchSetId": 20
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-09T21:34:46Z",
+      "side": 1,
+      "message": "Just `chipset.c`; all the files there are board-specific.",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "93f5d7ca_ba5ed250",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/bluey/CMakeLists.txt",
+              "range": {
+                "startLine": 14,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": "zephyr_library_sources(\"src/chipset.c\")\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c8548d99478bb5ad5c324aa799e75815ae566ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
