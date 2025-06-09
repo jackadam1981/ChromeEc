@@ -27,7 +27,8 @@
 
 LOG_MODULE_REGISTER(pdc_sink_policy);
 
-DECLARE_FAKE_VALUE_FUNC(int, chipset_in_state, int);
+FAKE_VALUE_FUNC(int, chipset_in_state, int);
+FAKE_VALUE_FUNC(int, sniff_pdc_set_sink_path, const struct device *, bool);
 
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == 2,
 	     "PDC sink policy test suite must supply exactly 2 PDC ports");
@@ -46,6 +47,10 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == 2,
 
 #define TEST_USBC_PORT0 USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_NODE_PORT0)
 #define TEST_USBC_PORT1 USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_NODE_PORT1)
+
+#define IS_ONE_BIT_SET IS_POWER_OF_TWO
+
+static uint8_t sink_path_en_mask;
 
 static void clear_partner_pdos(const struct emul *e, enum pdo_type_t type)
 {
@@ -98,6 +103,33 @@ static struct sink_policy_fixture fixture = {
 	},
 };
 
+static int pdc_dev_to_port(const struct device *dev)
+{
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		if (dev == fixture.pdc[port].dev)
+			return fixture.pdc[port].port;
+	}
+
+	zassert_true(0, "Unable to find port");
+
+	return -1;
+}
+
+static int custom_fake_pdc_set_sink_path(const struct device *dev, bool en)
+{
+	int port = pdc_dev_to_port(dev);
+	uint8_t before = sink_path_en_mask;
+
+	WRITE_BIT(sink_path_en_mask, port, en);
+	LOG_INF("FAKE C%d: pdc_set_sink_path en_mask=0x%X", port,
+		sink_path_en_mask);
+	if (before != sink_path_en_mask && en) {
+		zassert_true(IS_ONE_BIT_SET(sink_path_en_mask));
+	}
+
+	return pdc_set_sink_path(dev, en);
+}
+
 static void *sink_policy_setup(void)
 {
 	return &fixture;
@@ -125,7 +157,11 @@ static int connect_sink(const struct pdc_fixture *pdc)
 static void sink_policy_before(void *f)
 {
 	RESET_FAKE(chipset_in_state);
+	RESET_FAKE(sniff_pdc_set_sink_path);
+
 	chipset_in_state_fake.custom_fake = custom_fake_chipset_in_state;
+	sniff_pdc_set_sink_path_fake.custom_fake =
+		custom_fake_pdc_set_sink_path;
 }
 
 static void sink_policy_after(void *f)
