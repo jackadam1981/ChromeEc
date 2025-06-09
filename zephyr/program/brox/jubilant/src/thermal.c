@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "battery.h"
+#include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "cros_cbi.h"
@@ -125,3 +127,41 @@ test_export_static void fan_init(void)
 	LOG_INF("Fan table is %u", val);
 }
 DECLARE_HOOK(HOOK_INIT, fan_init, HOOK_PRIO_POST_FIRST);
+
+#define TEST_CURRENT_LIMIT 0 /* mA */
+static int current = -1;
+int charger_profile_override(struct charge_state_data *curr)
+{
+	/*
+	 * Precharge must be executed when communication is failed on
+	 * dead battery.
+	 */
+	if (!(curr->batt.flags & BATT_FLAG_RESPONSIVE))
+		return -1;
+
+	/* Don't charge if outside of allowable temperature range */
+	if (current != 0) {
+		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+		if (curr->state != ST_DISCHARGE)
+			curr->state = ST_IDLE;
+	}
+
+	current = TEST_CURRENT_LIMIT;
+
+	if (current >= 0)
+		curr->requested_current = MIN(curr->requested_current, current);
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
