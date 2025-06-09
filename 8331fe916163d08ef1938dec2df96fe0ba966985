@@ -264,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9be5425_9eb2fe1d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T17:05:57Z",
+      "side": 1,
+      "message": "```\n[43.951846 \u003cg3_fake_extract_feature:680\u003e  asf1 \u003d 7754\n]\n[43.951991 \u003cg3_fake_extract_feature:682\u003e  asf2 \u003d 10672\n]\n[43.952110 \u003cegis_get_image_with_mode:462\u003e ret 0]\n[43.952173 [0]Enrolling ...]\n[43.952252 \u003cegis_finger_enroll:329\u003e start]\n[43.952844 \u003cegis_finger_enroll:364\u003e image to g_enroll_feature]\n[44.000213 \u003cemf_enroll:553\u003e  g3_extract ret \u003d 0 \n]\n[44.000356 \u003cemf_enroll:560\u003e _enroll_feature-\u003efinger_voltage \u003d 0\n]\n[44.000477 \u003cemf_add_enroll_feature:434\u003e feat size \u003d 21\n]\n[44.024553 \u003cemf_add_enroll_feature:441\u003e g3_enroll_add_feature ret \u003d 0\n]\n[44.027770 \u003cemf_add_enroll_feature:487\u003e enroll_area \u003d 3016\n]\n[44.027894 \u003cemf_add_enroll_feature:489\u003e g_ee-\u003eresult size \u003d 15\n]\n[44.028024 \u003cemf_add_enroll_feature:492\u003e enroll_area_percent++ \u003d 92\n]\n[44.032777 \u003cemf_add_enroll_feature:519\u003e _enroll_feature-\u003eenroll_template addr \u003d 0x200bd728\n]\n[44.032935 \u003cemf_add_enroll_feature:524\u003e  enroll_percentage \u003d 100\n]\n[44.033076 \u003cemf_add_enroll_feature:526\u003e _enroll_feature-\u003eenroll_cnt \u003d 15\n]\n[44.033202 \u003cegis_finger_enroll:379\u003e emf_enroll ret \u003d 2]\n```",
+      "parentUuid": "11f2b3c8_c4bca9aa",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85f4337b_51d4d90f",
