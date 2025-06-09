@@ -140,6 +140,7 @@ static const struct smbus_cmd_t SET_TPC_RECONNECT = { 0x08, 0x03, 0x1F };
 static const struct smbus_cmd_t FORCE_SET_POWER_SWITCH = { 0x08, 0x03, 0x21 };
 static const struct smbus_cmd_t GET_RDO = { 0x08, 0x02, 0x84 };
 static const struct smbus_cmd_t GET_VDO = { 0x08, 0x03, 0x9A };
+static const struct smbus_cmd_t SET_SYS_PWR_STATE = { 0x08, 0x03, 0x2B };
 static const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02,
 								0xA7 };
 static const struct smbus_cmd_t RTS_SET_FRS_FUNCTION = { 0x08, 0x03, 0xE1 };
@@ -306,6 +307,8 @@ enum cmd_t {
 	CMD_SET_SBU_MUX_MODE,
 	/** Set the Burnside Bridge retimer into CTS test mode */
 	CMD_SET_BBR_CTS,
+	/** CMD_SET_SYS_PWR_STATE */
+	CMD_SET_SYS_PWR_STATE,
 };
 
 /**
@@ -446,6 +449,7 @@ static const char *const cmd_names[] = {
 	[CMD_GET_SBU_MUX_MODE] = "CMD_GET_SBU_MUX_MODE",
 	[CMD_SET_SBU_MUX_MODE] = "CMD_SET_SBU_MUX_MODE",
 	[CMD_SET_BBR_CTS] = "CMD_SET_BBR_CTS",
+	[CMD_SET_SYS_PWR_STATE] = "CMD_SET_SYS_PWR_STATE",
 };
 
 /**
@@ -2361,6 +2365,36 @@ static int rts54_set_frs(const struct device *dev, bool enable)
 				  ARRAY_SIZE(payload), NULL);
 }
 
+static int rts54_set_ap_power_state(const struct device *dev,
+				    enum power_state state)
+{
+	struct pdc_data_t *data = dev->data;
+	int byte;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (state == POWER_S0) {
+		byte = SX_S0;
+	} else if (state == POWER_S5) {
+		byte = SX_S5;
+	} else {
+		return -EINVAL;
+	}
+
+	uint8_t payload[] = {
+		SET_SYS_PWR_STATE.cmd,
+		SET_SYS_PWR_STATE.len,
+		SET_SYS_PWR_STATE.sub,
+		0x00,
+		byte,
+	};
+
+	return rts54_post_command(dev, CMD_SET_SYS_PWR_STATE, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static int rts54_get_identity_discovery(const struct device *dev,
 					bool *disc_state)
 {
@@ -2791,6 +2825,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,
 #endif /* define(CONFIG_USBC_PDC_DRIVEN_CCD) */
 	.set_bbr_cts = rts54_set_bbr_cts,
+	.set_ap_power_state = rts54_set_ap_power_state,
 };
 
 static int pdc_init(const struct device *dev)

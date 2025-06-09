@@ -850,6 +850,18 @@ static int set_bbr_cts_mode(struct rts5453p_emul_pdc_data *data,
 	return 0;
 }
 
+static int set_sys_pwr_state(struct rts5453p_emul_pdc_data *data,
+			     const union rts54_request *req)
+{
+	LOG_INF("SET_SYS_PWR_STATE: %d", req->set_sys_pwr_state.state);
+
+	/* No response data */
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
 struct commands {
 	uint8_t code;
 	enum {
@@ -894,7 +906,7 @@ const struct commands sub_cmd_x08[] = {
 	{ .code = 0x26, HANDLER_DEF(unsupported) },
 	{ .code = 0x27, HANDLER_DEF(set_bbr_cts_mode) },
 	{ .code = 0x28, HANDLER_DEF(unsupported) },
-	{ .code = 0x2B, HANDLER_DEF(unsupported) },
+	{ .code = 0x2B, HANDLER_DEF(set_sys_pwr_state) },
 	{ .code = 0x83, HANDLER_DEF(unsupported) },
 	{ .code = 0x84, HANDLER_DEF(get_rdo) },
 	{ .code = 0x85, HANDLER_DEF(unsupported) },

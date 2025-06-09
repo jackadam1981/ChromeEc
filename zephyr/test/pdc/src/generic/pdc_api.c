@@ -769,6 +769,12 @@ ZTEST_USER(pdc_api, test_get_sbu_mux_mode_access_error)
 	}
 }
 
+ZTEST_USER(pdc_api, test_set_ap_power_state)
+{
+	/* Unsupported power state */
+	zassert_equal(-EINVAL, pdc_set_ap_power_state(dev, POWER_G3));
+}
+
 /*
  * Suspended tests - ensure API calls behave correctly when PDC communication
  * is suspended.
@@ -855,4 +861,10 @@ ZTEST_USER(pdc_api_suspended, test_set_sbu_mux_mode)
 	/* Set should return busy because comms are blocked */
 	zassert_equal(-EBUSY,
 		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_FORCE_DBG));
+}
+
+ZTEST_USER(pdc_api_suspended, test_set_ap_power_state)
+{
+	/* Set should return busy because comms are blocked */
+	zassert_equal(-EBUSY, pdc_set_ap_power_state(dev, POWER_S0));
 }
