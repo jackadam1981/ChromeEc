@@ -3876,42 +3876,39 @@ static int process_get_boot_mode(struct transfer_descriptor *td)
 	return 0;
 }
 
-static size_t get_bid(struct transfer_descriptor *td, struct board_id *bid)
+static void get_bid(struct transfer_descriptor *td, struct board_id *bid)
 {
-	size_t response_size;
+	size_t response_size = sizeof(*bid);
 
-	response_size = sizeof(*bid);
 	send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid, response_size, bid,
 			    &response_size);
 
-	return response_size;
+	if (response_size != sizeof(*bid)) {
+		fprintf(stderr,
+			"Error reading board ID: response size %zd, "
+			"first byte %#02x\n",
+			response_size, response_size ? *(uint8_t *)&bid : -1);
+		exit(update_error);
+	}
+
+	/* Convert BE transport into host encoding */
+	bid->type = be32toh(bid->type);
+	bid->type_inv = be32toh(bid->type_inv);
+	bid->flags = be32toh(bid->flags);
 }
 
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action, struct board_id *bid,
 		 bool show_machine_output)
 {
-	size_t response_size;
-
 	if (bid_action == bid_get) {
-		response_size = get_bid(td, bid);
-
-		if (response_size != sizeof(*bid)) {
-			fprintf(stderr,
-				"Error reading board ID: response size %zd, "
-				"first byte %#02x\n",
-				response_size,
-				response_size ? *(uint8_t *)&bid : -1);
-			exit(update_error);
-		}
+		get_bid(td, bid);
 
 		if (show_machine_output) {
-			print_machine_output("BID_TYPE", "%08x",
-					     be32toh(bid->type));
+			print_machine_output("BID_TYPE", "%08x", bid->type);
 			print_machine_output("BID_TYPE_INV", "%08x",
-					     be32toh(bid->type_inv));
-			print_machine_output("BID_FLAGS", "%08x",
-					     be32toh(bid->flags));
+					     bid->type_inv);
+			print_machine_output("BID_FLAGS", "%08x", bid->flags);
 
 			for (int i = 0; i < 4; i++) {
 				if (!isupper(((const char *)bid)[i])) {
@@ -3921,15 +3918,15 @@ void process_bid(struct transfer_descriptor *td,
 				}
 			}
 
+			/* Print out ASCII RLZ in BE: 0x41424344 is "ABCD" */
 			print_machine_output("BID_RLZ", "%c%c%c%c",
-					     ((const char *)bid)[0],
-					     ((const char *)bid)[1],
+					     ((const char *)bid)[3],
 					     ((const char *)bid)[2],
-					     ((const char *)bid)[3]);
+					     ((const char *)bid)[1],
+					     ((const char *)bid)[0]);
 		} else {
-			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid->type), be32toh(bid->type_inv),
-			       be32toh(bid->flags));
+			printf("Board ID space: %08x:%08x:%08x\n", bid->type,
+			       bid->type_inv, bid->flags);
 		}
 
 		return;
@@ -3937,6 +3934,7 @@ void process_bid(struct transfer_descriptor *td,
 
 	if (bid_action == bid_set) {
 		/* Sending just two fields: type and flags. */
+		size_t response_size;
 		uint32_t command_body[2];
 		uint8_t response;
 
