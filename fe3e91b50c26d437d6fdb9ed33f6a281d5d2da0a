@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf122a9_499531ce",
+        "filename": "zephyr/program/skywalker/anakin/led_pins.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-06-09T01:34:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e719b75b_29da85d5",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "fe3e91b50c26d437d6fdb9ed33f6a281d5d2da0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0839c2f_0b3cadfd",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-06-04T01:37:00Z",
       "side": 1,
       "message": "should be `n` or modify in later CL?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "fe3e91b50c26d437d6fdb9ed33f6a281d5d2da0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86735c2_27490f98",
+        "filename": "zephyr/program/skywalker/anakin/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-06-09T01:34:23Z",
+      "side": 1,
+      "message": "modify in later CL if need.",
+      "parentUuid": "d0839c2f_0b3cadfd",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f617db3a_9c6db9ce",
+        "filename": "zephyr/program/skywalker/anakin/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-06-09T01:34:23Z",
+      "side": 1,
+      "message": "modify in later CL if need.",
+      "parentUuid": "521e23ac_82c23d8d",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "fe3e91b50c26d437d6fdb9ed33f6a281d5d2da0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b437adac_4bffd67e",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-06-04T01:37:00Z",
       "side": 1,
       "message": "should match with `actual-key-mask`",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "fe3e91b50c26d437d6fdb9ed33f6a281d5d2da0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa32ec8_47d72a1d",
+        "filename": "zephyr/program/skywalker/anakin/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-06-09T01:34:23Z",
+      "side": 1,
+      "message": "modify in later CL if need.",
+      "parentUuid": "b437adac_4bffd67e",
       "range": {
         "startLine": 76,
         "startChar": 7,
