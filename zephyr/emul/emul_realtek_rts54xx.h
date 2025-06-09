@@ -306,6 +306,12 @@ union rts54_request {
 		uint8_t port_num;
 		uint8_t enable;
 	} set_bbr_cts;
+
+	struct set_sys_pwr_state {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+		uint8_t state;
+	} set_sys_pwr_state;
 };
 
 union rts54_response {
