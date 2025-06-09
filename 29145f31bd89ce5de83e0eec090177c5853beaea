@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7a74bb_5dc51a5c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3900,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-09T21:54:43Z",
+      "side": 1,
+      "message": "this function is invoked from verify_ro.c:verify_ro() - doesn\u0027t it need to be updated to reflect the change in endianness of bid fields?",
+      "range": {
+        "startLine": 3900,
+        "startChar": 4,
+        "endLine": 3900,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "80913651_563aaa11",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3934,
+                "startChar": 0,
+                "endLine": 3934,
+                "endChar": 0
+              },
+              "replacement": "\n\t/* Convert BE transport into host encoding */\n\tbid-\u003etype \u003d be32toh(bid-\u003etype);\n\tbid-\u003etype_inv \u003d be32toh(bid-\u003etype_inv);\n\tbid-\u003eflags \u003d be32toh(bid-\u003eflags);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3969,
+                "startChar": 0,
+                "endLine": 3969,
+                "endChar": 0
+              },
+              "replacement": "\n\t/* Convert BE transport into host encoding */\n\tbid-\u003etype \u003d be32toh(bid-\u003etype);\n\tbid-\u003etype_inv \u003d be32toh(bid-\u003etype_inv);\n\tbid-\u003eflags \u003d be32toh(bid-\u003eflags);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "29145f31bd89ce5de83e0eec090177c5853beaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc783e7e_3526d844",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3942,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-09T21:54:43Z",
+      "side": 1,
+      "message": "how come this does not have to change? I mean it makes sense to convert host to be32, but before this patch type and flags fields were in the different endianness - was it broken?",
+      "range": {
+        "startLine": 3941,
+        "startChar": 1,
+        "endLine": 3942,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ec20db96_a06f157b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3374,
+                "startChar": 0,
+                "endLine": 3374,
+                "endChar": 0
+              },
+              "replacement": "\tresponse.ro_keyid \u003d be32toh(response.ro_keyid);\n\tresponse.rw_keyid \u003d be32toh(response.rw_keyid);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3378,
+                "startChar": 0,
+                "endLine": 3378,
+                "endChar": 0
+              },
+              "replacement": "\t\tprint_machine_output(\"RO_KEYID\", \"%08x\", response.ro_keyid);\n\t\tprint_machine_output(\"RW_KEYID\", \"%08x\", response.rw_keyid);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3381,
+                "startChar": 0,
+                "endLine": 3381,
+                "endChar": 0
+              },
+              "replacement": "\t\tprintf(\"RO_KEYID: 0x%08x\\n\", response.ro_keyid);\n\t\tprintf(\"RW_KEYID: 0x%08x\\n\", response.rw_keyid);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3895,
+                "startChar": 0,
+                "endLine": 3895,
+                "endChar": 0
+              },
+              "replacement": "\tbid-\u003emask \u003d be32toh(bid-\u003emask);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3908,
+                "startChar": 0,
+                "endLine": 3908,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tprint_machine_output(\"BID_MASK\", \"%08x\", bid-\u003emask);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3928,
+                "startChar": 0,
+                "endLine": 3930,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tprintf(\"Board ID space: %08x:%08x:%08x:%08x\\n\",\n\t\t\t       bid-\u003emask, bid-\u003etype, bid-\u003etype_inv, bid-\u003eflags);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3938,
+                "startChar": 0,
+                "endLine": 3939,
+                "endChar": 0
+              },
+              "replacement": "\t\tuint32_t command_body[3];\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 3941,
+                "startChar": 0,
+                "endLine": 3943,
+                "endChar": 0
+              },
+              "replacement": "\t\tcommand_body[0] \u003d htobe32(bid-\u003emask);\n\t\tcommand_body[1] \u003d htobe32(bid-\u003etype);\n\t\tcommand_body[2] \u003d htobe32(bid-\u003eflags);\n"
+            },
+            {
+              "path": "extra/usb_updater/gsctool.c",
+              "range": {
+                "startLine": 4457,
+                "startChar": 0,
+                "endLine": 4459,
+                "endChar": 0
+              },
+              "replacement": "\t\tuint32_t tstamp_response;\n\t\tmemcpy(\u0026tstamp_response, max_response, sizeof(tstamp_response));\n\t\tprintf(\"Current H1 time is %d\\n\", be32toh(tstamp_response));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "29145f31bd89ce5de83e0eec090177c5853beaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
