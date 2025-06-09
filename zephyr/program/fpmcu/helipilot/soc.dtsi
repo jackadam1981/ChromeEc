@@ -18,11 +18,6 @@
        };
 };
 
-/* DRBG: Deterministic Random Bit Generator */
-&drbg0 {
-	status = "okay";
-};
-
 /*
  * RAM Memory Map used in ECOS Helipilot:
  *
