@@ -33,6 +33,24 @@
       "message": "This CL is still waiting on the upstream change https://github.com/zephyrproject-rtos/zephyr/pull/89263",
       "revId": "a1e761b9e8c7f9eddbcba5b005049f9bcbbf1718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51d313f_54be58ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3956321
+      },
+      "writtenOn": "2025-06-09T02:07:35Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6628712\n\nit\u0027s merged into tot.",
+      "parentUuid": "9a7e1bd3_dbcb0a33",
+      "revId": "a1e761b9e8c7f9eddbcba5b005049f9bcbbf1718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
