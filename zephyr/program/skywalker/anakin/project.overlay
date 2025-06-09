@@ -17,10 +17,6 @@
 #include "motionsense.dtsi"
 
 / {
-	aliases {
-		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
-	};
-
 	batteries {
 		default_battery: dynapack_b140435 {
 			compatible = "dynapack,b140435","battery-smart";
@@ -75,10 +71,7 @@
 		     &kso11_default
 		     &kso12_default
 		     &kso13_default
-		     &kso14_default
-		     &kso15_default
-		     &kso16_default
-		     &kso17_default>;
+		     &kso14_default>;
 };
 
 &pwm2 {
