@@ -1023,7 +1023,6 @@ static void flash_reset(void *data)
 
 	/* Reset the protection flags */
 	cros_flash_emul_protect_reset();
-	zassert_ok(crec_flash_physical_protect_now(0));
 
 	/* Tests modify these banks. Erase them. */
 	zassert_ok(crec_flash_erase(0x10000, 0x10000));

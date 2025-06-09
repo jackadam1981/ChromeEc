@@ -181,7 +181,7 @@ static int cros_flash_emul_protect_at_boot(const struct device *dev,
 
 static int cros_flash_emul_protect_now(const struct device *dev, int all)
 {
-	/* Emulate ALL_NOW only */
+	ro_protected = true;
 	if (all) {
 		all_protected = true;
 	}
