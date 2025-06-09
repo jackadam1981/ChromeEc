@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0cdb50_ad1ceb3a",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-09T21:32:55Z",
+      "side": 1,
+      "message": "The signal pass-through should be done in `set_pmic_pwron()` according to the `power_on_event_t`.",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 54
+      },
+      "revId": "07c47f27b9c0aa3a0fc433748b730bf1fe67c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d6f852_db563b3c",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-09T21:32:55Z",
+      "side": 1,
+      "message": "Don\u0027t use Zephyr APIs outside of the `zephyr/` directory.",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e68bd848_d50019c3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 258,
+                "startChar": 0,
+                "endLine": 260,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tGPIO_EC_PMIC_LID_OPEN_OD,\n\t\t\tgpio_get_level(GPIO_LID_OPEN));\n"
+            },
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 274,
+                "startChar": 0,
+                "endLine": 277,
+                "endChar": 0
+              },
+              "replacement": "\t\tgpio_pin_set_dt(GPIO_EC_SOC_PWR_BTN,\n\t\t\t\tgpio_get_level(GPIO_PWR_BTN_ODL));\n"
+            },
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 287,
+                "startChar": 0,
+                "endLine": 290,
+                "endChar": 0
+              },
+              "replacement": "\t\tgpio_pin_set_dt(GPIO_EC_PMIC_ACOK,\n\t\t\t\tgpio_get_level(GPIO_ACOK_OD_Z5));\n"
+            },
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 423,
+                "startChar": 0,
+                "endLine": 424,
+                "endChar": 0
+              },
+              "replacement": "\t    !gpio_get_level(GPIO_SYS_RST_ODL)) {\n"
+            },
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 438,
+                "startChar": 0,
+                "endLine": 439,
+                "endChar": 0
+              },
+              "replacement": "\t\tif (gpio_get_level(GPIO_SYS_RST_ODL)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "07c47f27b9c0aa3a0fc433748b730bf1fe67c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
