@@ -520,19 +520,19 @@ static int set_pmic_pwron(int enable, uint8_t event)
 	 *
 	 * 1. If power_on due to AC ON, pass-through the ACOK signal to the
 	 *    PMIC.
-	 * 2. Else hold down PMIC_KPD_PWR_ODL, which is a power-on trigger
+	 * 2. Else hold PMIC_KPD_PWR high, which is a power-on trigger
 	 * 3. PMIC supplies power to POWER_GOOD
-	 * 4. Release PMIC_KPD_PWR_ODL
+	 * 4. Release PMIC_KPD_PWR
 	 *
 	 * Power-off sequence:
-	 * 1. Hold down PMIC_KPD_PWR_ODL and PMIC_RESIN_L, which is a power-off
+	 * 1. Hold PMIC_KPD_PWR high and PMIC_RESIN_L low, which is a power-off
 	 *    trigger (requiring reprogramming PMIC registers to make
-	 *    PMIC_KPD_PWR_ODL + PMIC_RESIN_L as a shutdown trigger)
+	 *    PMIC_KPD_PWR + PMIC_RESIN_L as a shutdown trigger)
 	 * 2. PMIC stops supplying power to POWER_GOOD (requiring
 	 *    reprogramming PMIC to set the stage-1 and stage-2 reset timers to
 	 *    0 such that the pull down happens just after the debouncing time
 	 *    of the trigger, like 2ms)
-	 * 3. Release PMIC_KPD_PWR_ODL and PMIC_RESIN_L
+	 * 3. Release PMIC_KPD_PWR and PMIC_RESIN_L
 	 *
 	 * If the above PMIC registers not programmed or programmed wrong, it
 	 * falls back to the next functions, which cuts off the system power.
@@ -542,11 +542,11 @@ static int set_pmic_pwron(int enable, uint8_t event)
 		passthru_ac_on_to_pmic();
 		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
 	} else {
-		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+		gpio_set_level(GPIO_PMIC_KPD_PWR, 1);
 		if (!enable)
 			gpio_set_level(GPIO_PMIC_RESIN_L, 0);
 		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
-		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+		gpio_set_level(GPIO_PMIC_KPD_PWR, 0);
 		if (!enable)
 			gpio_set_level(GPIO_PMIC_RESIN_L, 1);
 	}
