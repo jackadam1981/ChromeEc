@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aaaf167_8f3f51b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "960da607_3b00fcf7",
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "519c09af_8ac7381c",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6d3fa6_a5db2b40",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519c09af_8ac7381c",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 48
+      },
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dcaa037_88ab248c",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-06-06T23:01:08Z",
       "side": 1,
       "message": "This is an unbounded loop.  Can you add a timeout and propagate an error back to rtkupdate?",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 23
+      },
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b4cc44_8339ccb4",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:47:24Z",
+      "side": 1,
+      "message": "We set timeout as 10ms at here.",
+      "parentUuid": "5dcaa037_88ab248c",
       "range": {
         "startLine": 361,
         "startChar": 0,
@@ -121,6 +187,30 @@
           ]
         }
       ],
+      "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ee5be5_dd944b0d",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/spi_upload.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-09T18:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04661b9_0f7f485a",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
       "revId": "66129432f99790ec3146361c2eed91e22f18e7a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
