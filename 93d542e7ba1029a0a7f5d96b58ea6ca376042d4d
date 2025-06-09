@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "915f1065_4e62eae0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T17:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41d85473_2e7f1ada",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a05641_6d6add82",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Discussed offline. We need to guard it, even if we lose some testing possibilities.",
       "parentUuid": "6176f76c_35f5a1ec",
+      "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c1ae43_9f556676",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T17:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c98727a5_c9999179",
       "revId": "93d542e7ba1029a0a7f5d96b58ea6ca376042d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

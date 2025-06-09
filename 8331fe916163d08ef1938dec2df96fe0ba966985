@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db889fa_6c18c6ed",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T17:48:45Z",
+      "side": 1,
+      "message": "I am translating the EC version of the [output_log function](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/egis/platform/src/plat_log_mcu.c;l\u003d26?q\u003dplatform%2Fec%2Fdriver%2Ffingerprint%2Fegis%20LOG_LEVEL%20level#:~:text\u003d25-,26,-27)",
+      "parentUuid": "fb2cf7d6_357f4304",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a06b8d_2aeba735",
@@ -154,6 +172,24 @@
       "writtenOn": "2025-06-05T07:28:21Z",
       "side": 1,
       "message": "I think we can just use LOG_ERR instead of adding additional string",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de068072_605b4f17",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T17:48:45Z",
+      "side": 1,
+      "message": "I am translating the EC version of the [output_log function](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/egis/platform/src/plat_log_mcu.c;l\u003d26?q\u003dplatform%2Fec%2Fdriver%2Ffingerprint%2Fegis%20LOG_LEVEL%20level#:~:text\u003d25-,26,-27)",
+      "parentUuid": "c9a06b8d_2aeba735",
       "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -295,6 +331,24 @@
       "writtenOn": "2025-06-05T07:28:21Z",
       "side": 1,
       "message": "Please do not panic once there is not enough memory. Please, add BUILD_ASSERT to make sure that the heap is big enough.",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a342571b_278048db",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T17:48:45Z",
+      "side": 1,
+      "message": "I added a TODO bug to track this: https://b.corp.google.com/issues/423622893\nI prefer to keep it as is until we have a clear understanding of the required heap size.",
+      "parentUuid": "85f4337b_51d4d90f",
       "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
