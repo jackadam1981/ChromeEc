@@ -173,6 +173,30 @@
       },
       "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9379ff0_50375f50",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-09T23:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "723b6693_405736c2",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "bbe584eefff84f0900ac57837350e8d7be811250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
