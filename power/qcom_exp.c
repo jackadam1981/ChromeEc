@@ -534,14 +534,15 @@ static int set_pmic_pwron(int enable, uint8_t event)
 		mirror_ac_on_to_pmic();
 		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
 	} else {
-		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
 		if (!enable)
 			gpio_set_level(GPIO_PMIC_RESIN_L, 0);
 		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
-		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+		gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
 		if (!enable)
 			gpio_set_level(GPIO_PMIC_RESIN_L, 1);
 	}
+
 	return ret;
 }
 
