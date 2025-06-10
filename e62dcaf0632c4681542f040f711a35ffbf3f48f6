@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648ccb85_200a0af9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-10T18:41:59Z",
+      "side": 1,
+      "message": "Note that this is not a fix. We are going not going to get a useful address in the link register until we figure out how to stop `clang` from outlining the `__ASSERT_NO_MSG` macro.",
+      "revId": "e62dcaf0632c4681542f040f711a35ffbf3f48f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
