@@ -33,6 +33,24 @@
       "message": "Have you consider reverting https://chromium-review.googlesource.com/1315411?\n\nDoes the comment in the original commit still apply, is Powerd \u0027full factor\u0027 needed?\n\nAnother board have CONFIG_BATT_HOST_FULL_FACTOR at 100 (baseboard/hatch). Should it be fixed there as well?",
       "revId": "4f8b2df8ab12e7c643b9beed5d98a49c6de97b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a1f73e_a1dc3642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-10T15:45:08Z",
+      "side": 1,
+      "message": "It is still needed.  As I\u0027ve been digging into the history of these changes and discussing with the previous owner, this value is determined empirically.  Since I have data on nami, in the attached bug, 95 should be a safe value.  \n\nFor powerd, three years after this was set to 100, an algorithm for the display percentage as sharedw between EC and powerd, so this should keep the battery LED and UI in sync.",
+      "parentUuid": "9c3a2c1b_244f53b6",
+      "revId": "4f8b2df8ab12e7c643b9beed5d98a49c6de97b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
