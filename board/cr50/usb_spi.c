@@ -76,14 +76,11 @@ DECLARE_DEFERRED(spi_hash_inactive_timeout);
  * concurrent USB SPI operations over CCD.
  */
 static bool shortcut_active_;
-#ifdef CONFIG_AP_RO_VERIFICATION
 bool usb_spi_shortcut_active(void)
 {
 	return shortcut_active_;
 }
-#endif /* CONFIG_AP_RO_VERIFICATION */
 #endif /* CONFIG_SPI_HASH */
-
 
 /*****************************************************************************/
 /*

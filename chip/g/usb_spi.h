@@ -268,8 +268,8 @@ int usb_spi_interface(struct usb_spi_config const *config,
 int usb_spi_board_enable(int host);
 void usb_spi_board_disable(void);
 
-#ifdef CONFIG_AP_RO_VERIFICATION
-/* Returns true if AP RO verification is in progress. */
+#ifdef CONFIG_SPI_HASH
+/* Returns true if spi hash AP RO verification is in progress. */
 bool usb_spi_shortcut_active(void);
 #else
 /* Make sure other than Cr50 boards build fine. */
