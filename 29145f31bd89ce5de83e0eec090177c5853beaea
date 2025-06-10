@@ -52,6 +52,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f882ca84_d8284375",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3900,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-10T15:06:59Z",
+      "side": 1,
+      "message": "Thank you for catching that; it did need to be updated.",
+      "parentUuid": "5c7a74bb_5dc51a5c",
+      "range": {
+        "startLine": 3900,
+        "startChar": 4,
+        "endLine": 3900,
+        "endChar": 16
+      },
+      "revId": "29145f31bd89ce5de83e0eec090177c5853beaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc783e7e_3526d844",
@@ -169,6 +193,30 @@
           ]
         }
       ],
+      "revId": "29145f31bd89ce5de83e0eec090177c5853beaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4fc2aa_d3823f95",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3942,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-10T15:06:59Z",
+      "side": 1,
+      "message": "This is part of the confusion with the `struct board_id`. When it was an input, it was using the host\u0027s little endian format for fields, but as an output, it was using the transport layer\u0027s bid endian format.\n\nNow whether input or output, the fields use the host endian format for all fields. Which does mean that converting to RLZ string needs a little more care.",
+      "parentUuid": "bc783e7e_3526d844",
+      "range": {
+        "startLine": 3941,
+        "startChar": 1,
+        "endLine": 3942,
+        "endChar": 40
+      },
       "revId": "29145f31bd89ce5de83e0eec090177c5853beaea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
