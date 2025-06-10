@@ -22,6 +22,30 @@
       },
       "revId": "7a3caa6efca7923994fa1338c19a05b9f1149927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e673a30_dc82ef8e",
+        "filename": "extra/usb_updater/verify_ro.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-06-10T15:27:44Z",
+      "side": 0,
+      "message": "Ideally we would be able to use `memcpy_s`. We need to be careful not to go out of bounds for either source or destination. I updated to use min to make it safe for either kinds of change.",
+      "parentUuid": "a44fc996_dce994eb",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 51
+      },
+      "revId": "7a3caa6efca7923994fa1338c19a05b9f1149927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
