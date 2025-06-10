@@ -16,6 +16,23 @@
       "message": "This should be tested on hardware, compilation isn\u0027t sufficient. Please run the rtc unit test (run_device_tests.py) and confirm no regression in application functionality (fpenroll, fpmatch, etc.) before merging",
       "revId": "36e076b3ff94505e9818a4e3e05cfecfd5fd28f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27cb2a1_09bbaa91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-10T05:08:21Z",
+      "side": 1,
+      "message": "Do we know how RTC is used in Helipilot?",
+      "revId": "36e076b3ff94505e9818a4e3e05cfecfd5fd28f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
