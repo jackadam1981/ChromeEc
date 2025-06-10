@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44fc996_dce994eb",
+        "filename": "extra/usb_updater/verify_ro.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-10T15:20:59Z",
+      "side": 0,
+      "message": "I think this is a better way to express it, this guarantees that the destination is not overwritten even if its size and/or `bid_type` size change in the future.",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 51
+      },
+      "revId": "7a3caa6efca7923994fa1338c19a05b9f1149927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
