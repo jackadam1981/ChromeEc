@@ -4,29 +4,14 @@
  */
 
 / {
+	chosen {
+		cros-ec,keyboard = &kbd;
+	};
+
 	kb_bl_pwm {
 		compatible = "cros-ec,kblight-pwm";
 		pwms = <&pwm3 0 PWM_HZ(324) PWM_POLARITY_NORMAL>;
 		status = "okay";
-	};
-
-	cros-keyscan {
-		compatible = "cros-ec,keyscan";
-		actual-key-mask = <
-			0x1c  /* C0 */
-			0xff  /* C1 */
-			0xff  /* C2 */
-			0xff  /* C3 */
-			0xff  /* C4 */
-			0xff  /* C5 */
-			0xff  /* C6 */
-			0xa4  /* C7 */
-			0xff  /* C8 */
-			0xff  /* C9 */
-			0x55  /* C10 */
-			0xfb  /* C11 */
-			0xca  /* C12 */
-		>;
 	};
 };
 
@@ -45,34 +30,79 @@
 	>;
 };
 
-&cros_kb_raw {
+&kbd {
 	status = "okay";
-	/* No KSO2 (it's inverted and implemented by GPIO) */
 	pinctrl-0 = <
-		&ksi0_gp31
-		&ksi1_gp30
-		&ksi2_gp27
-		&ksi3_gp26
-		&ksi4_gp25
-		&ksi5_gp24
-		&ksi6_gp23
-		&ksi7_gp22
-		&kso00_gp21
-		&kso01_gp20
-		&kso03_gp16
-		&kso04_gp15
-		&kso05_gp14
-		&kso06_gp13
-		&kso07_gp12
-		&kso08_gp11
-		&kso09_gp10
-		&kso10_gp07
-		&kso11_gp06
-		&kso12_gp05
-		&kso13_gp04
-		&kso14_gp82
+		&ksi0_gp31 /* KSI0 PIN31 */
+		&ksi1_gp30 /* KSI1 PIN30 */
+		&ksi2_gp27 /* KSI2 PIN27 */
+		&ksi3_gp26 /* KSI3 PIN26 */
+		&ksi4_gp25 /* KSI4 PIN25 */
+		&ksi5_gp24 /* KSI5 PIN24 */
+		&ksi6_gp23 /* KSI6 PIN23 */
+		&ksi7_gp22 /* KSI7 PIN22 */
+		&kso00_gp21 /* KSO00 PIN21 */
+		&kso01_gp20 /* KSO01 PIN20 */
+		&kso02_gp17 /* KSO02 PIN17 */
+		&kso03_gp16 /* KSO03 PIN16 */
+		&kso04_gp15 /* KSO04 PIN15 */
+		&kso05_gp14 /* KSO05 PIN14 */
+		&kso06_gp13 /* KSO06 PIN13 */
+		&kso07_gp12 /* KSO07 PIN12 */
+		&kso08_gp11 /* KSO08 PIN11 */
+		&kso09_gp10 /* KSO09 PIN10 */
+		&kso10_gp07 /* KSO10 PIN07 */
+		&kso11_gp06 /* KSO11 PIN06 */
+		&kso12_gp05 /* KSO12 PIN05 */
 	>;
-	pinctrl-names = "default";
+	pinctrl-1 = <
+		&ksi0_gpio_gp31
+		&ksi1_gpio_gp30
+		&ksi2_gpio_gp27
+		&ksi3_gpio_gp26
+		&ksi4_gpio_gp25
+		&ksi5_gpio_gp24
+		&ksi6_gpio_gp23
+		&ksi7_gpio_gp22
+		&kso00_gpio_gp21
+		&kso01_gpio_gp20
+		&kso02_gpio_gp17
+		&kso03_gpio_gp16
+		&kso04_gpio_gp15
+		&kso05_gpio_gp14
+		&kso06_gpio_gp13
+		&kso07_gpio_gp12
+		&kso08_gpio_gp11
+		&kso09_gpio_gp10
+		&kso10_gpio_gp07
+		&kso11_gpio_gp06
+		&kso12_gpio_gp05
+	>;
+	pinctrl-names = "default", "sleep";
+	row-size = <8>;
+	col-size = <13>;
+
+	kso-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <2>;
+		col-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+	};
+
+	boot-keys {
+		compatible = "cros-ec,boot-keys";
+		down-arrow-rc = <KBD_RC(6, 11)>;
+		esc-rc = <KBD_RC(1, 1)>;
+		left-shift-rc = <KBD_RC(5, 7)>;
+		refresh-rc = <KBD_RC(3, 2)>;
+	};
+
+	runtime-keys {
+		compatible = "cros-ec,runtime-keys";
+		left-alt-rc = <KBD_RC(6, 10)>;
+		right-alt-rc = <KBD_RC(0, 10)>;
+		h-rc = <KBD_RC(1, 6)>;
+		r-rc = <KBD_RC(7, 3)>;
+	};
 };
 
 &pwm3 {
