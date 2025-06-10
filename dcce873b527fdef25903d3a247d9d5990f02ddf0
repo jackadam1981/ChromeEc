@@ -16,6 +16,24 @@
       "message": "You can simply define `CONFIG_RO_SIZE` by overriding `CONFIG_CROS_EC_RO_SIZE` in `zephyr/program/fpmcu/helipilot/prj.conf` without changing this header file.",
       "revId": "dcce873b527fdef25903d3a247d9d5990f02ddf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89afde54_a4bb342d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-10T16:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f181dc_532afa78",
+      "revId": "dcce873b527fdef25903d3a247d9d5990f02ddf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
