@@ -105,7 +105,7 @@ int crec_flash_physical_protect_at_boot(uint32_t new_flags)
 	return cros_flash_physical_protect_at_boot(cros_flash_dev, new_flags);
 }
 
-int crec_flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(bool all)
 {
 	/*
 	 * It is EC specific, so it needs to be implemented in cros_flash driver

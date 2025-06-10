@@ -411,7 +411,7 @@ static int cros_flash_it8xxx2_protect_at_boot(const struct device *dev,
 	return write_bbram_flags(unlock_flags);
 }
 
-static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
+static int cros_flash_it8xxx2_protect_now(const struct device *dev, bool all)
 {
 	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);

@@ -595,7 +595,7 @@ static int cros_flash_npcx_protect_at_boot(const struct device *dev,
 	return ret;
 }
 
-static int cros_flash_npcx_protect_now(const struct device *dev, int all)
+static int cros_flash_npcx_protect_now(const struct device *dev, bool all)
 {
 	if (all) {
 		/*
