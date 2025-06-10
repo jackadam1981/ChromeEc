@@ -560,6 +560,7 @@ static int bq25720_init_vmin_active_protection(int chgnum)
 	return raw_write16(chgnum, BQ25720_REG_VMIN_ACTIVE_PROTECTION, reg);
 }
 
+static enum ec_error_list bq25710_device_id(int chgnum, int *id);
 static void bq25710_init(int chgnum)
 {
 	int reg;
@@ -578,7 +579,9 @@ static void bq25710_init(int chgnum)
 	 * reset is only required when running out of RO and not
 	 * following sysjump to RW.
 	 */
-	if (!system_jumped_late()) {
+	rv = bq25710_device_id(chgnum, &reg);
+	if (!system_jumped_late() && !rv &&
+	    reg != BQ257X0_DEVICE_ID_DEVICE_ID__RT) {
 		rv = bq25710_set_low_power_mode(chgnum, 0);
 		/* Allow enough time for VDDA to be powered */
 		crec_msleep(BQ25710_VDDA_STARTUP_DELAY_MSEC);

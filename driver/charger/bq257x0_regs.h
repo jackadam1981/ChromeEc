@@ -268,6 +268,11 @@
 #define BQ25720_VSYS_MIN_VOLTAGE_BITS 8
 
 /*
+ * DeviceID Register (0xff)
+ */
+#define BQ257X0_DEVICE_ID_DEVICE_ID__RT 0x1c
+
+/*
  * BQ257x0 register field accessor macros.
  */
 
