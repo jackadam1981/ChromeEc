@@ -21,9 +21,25 @@
 				value = <0>;
 			};
 			clamshell {
-			        compatible = "cros-ec,cbi-fw-config-value";
-			        enum-name = "CLAMSHELL";
-			        value = <1>;
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "CLAMSHELL";
+				value = <1>;
+			};
+		};
+		usbc-ports {
+			enum-name = "USBC_PORTS";
+			start = <8>;
+			size = <2>;
+
+			two-ports {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "TWO_PORTS";
+				value = <0>;
+			};
+			one-port {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "ONE_PORT";
+				value = <1>;
 			};
 		};
 	};
@@ -47,7 +63,7 @@
 				};
 		};
 
-	        /* SSFC field to identify LID motion sensor. */
+		/* SSFC field to identify LID motion sensor. */
 		id-sensor {
 			enum-name = "LID_SENSOR";
 			size = <3>;
