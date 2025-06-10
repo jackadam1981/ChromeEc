@@ -16,6 +16,23 @@
       "message": "Fixed the CQ failure: including \u003cstdbool.h\u003e.",
       "revId": "acc3c2e81c97db2f818a23cafdde09f951bb1f4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28276072_e435c51b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-10T22:12:03Z",
+      "side": 1,
+      "message": "Wow, thanks! I figured you would just change the parameter types at the definitions and leave the call sites as implicit conversions. This is great.",
+      "revId": "acc3c2e81c97db2f818a23cafdde09f951bb1f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
