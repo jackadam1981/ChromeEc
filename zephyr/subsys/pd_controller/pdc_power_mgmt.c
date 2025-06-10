@@ -2273,16 +2273,45 @@ bool pdc_is_rdo_valid(const union connector_status_t *cs)
 		cs->power_operation_mode == PD_OPERATION);
 }
 
+/**
+ * @brief Set the sink path handler for SNK_ATTACHED state
+ *
+ * Ensures the sink path is only enabled on one port at a time.
+ *
+ * @return true - Proceed to next state
+ *         false - Remain in current state.
+ */
 static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
+	int selected_port = charge_manager_get_active_charge_port();
+	uint8_t sink_path_mask = pdc_get_snk_path_en_mask();
+	bool enable = selected_port == config->connector_num;
 
-	/* Test if battery should be charged from this port */
-	port->sink_path_to_send = charge_manager_get_active_charge_port() ==
-				  config->connector_num;
-	queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+	LOG_INF("C%d: sink_path_mask=0x%X, selected_port=%d, enable=%d",
+		config->connector_num, sink_path_mask, selected_port, enable);
 
-	return true;
+	if (enable) {
+		if (sink_path_mask == 0) {
+			/* No other ports have sink path enabled,
+			 * proceed to enable */
+			port->sink_path_to_send = true;
+			queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+			return true;
+		} else if (port->sink_path_status) {
+			/* Already enabled proceed to next state */
+			return true;
+		} else {
+			/* Sink path enabled on other ports, stay in current
+			 * state and wait until they are disabled */
+			return false;
+		}
+	} else {
+		/* Disabling sink path, no need to wait */
+		port->sink_path_to_send = false;
+		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		return true;
+	}
 }
 
 /**
@@ -2431,16 +2460,17 @@ static void pdc_snk_attached_run(void *obj)
 				 SNK_ATTACHED_SYNC_CHARGE_MGR);
 		return;
 	case SNK_ATTACHED_SET_SINK_PATH:
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS) &&
-		    port->ccaps.op_mode_drp) {
-			port->snk_attached_local_state =
-				SNK_ATTACHED_GET_SINK_PDO;
-		} else {
-			port->snk_attached_local_state =
-				SNK_ATTACHED_GET_CABLE_PROPERTY;
-		}
 
-		pdc_snk_attached_set_sink_path(port);
+		if (pdc_snk_attached_set_sink_path(port)) {
+			if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS) &&
+			    port->ccaps.op_mode_drp) {
+				port->snk_attached_local_state =
+					SNK_ATTACHED_GET_SINK_PDO;
+			} else {
+				port->snk_attached_local_state =
+					SNK_ATTACHED_GET_CABLE_PROPERTY;
+			}
+		}
 
 		return;
 	case SNK_ATTACHED_GET_SINK_PDO:
