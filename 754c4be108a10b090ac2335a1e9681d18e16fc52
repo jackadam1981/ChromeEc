@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a5455a_6b50caae",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-10T16:43:52Z",
+      "side": 1,
+      "message": "Just for my knowledge: was this the cause of the linking issues?\n\n* https://embeddedartistry.com/blog/2020/04/13/prefer-gcc-ar-to-ar-in-your-buildsystems/\n* https://stackoverflow.com/a/48815662\n\nMight be worth a comment with one of those links to provide more context.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 70
+      },
+      "revId": "754c4be108a10b090ac2335a1e9681d18e16fc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
