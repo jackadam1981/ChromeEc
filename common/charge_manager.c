@@ -284,11 +284,6 @@ bool charge_manager_is_seeded(void)
 		for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
 			if (!is_valid_port(j))
 				continue;
-			if (available_charge[i][j].current ==
-				    CHARGE_CURRENT_UNINITIALIZED ||
-			    available_charge[i][j].voltage ==
-				    CHARGE_VOLTAGE_UNINITIALIZED)
-				return 0;
 		}
 	}
 	is_seeded = true;
