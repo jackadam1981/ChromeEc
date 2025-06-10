@@ -19,8 +19,6 @@
 
 /* PrePVT branch config options. */
 #elif defined(BRANCH_PREPVT)
-/* PrePVT: The spihash console command is available when ccd is locked. */
-#undef CONFIG_SPI_HASH_RESTRICTED
 /* PrePVT: Loosen CCD open requirements Only allowed in prePVT and TOT images */
 #define CONFIG_CCD_OPEN_PREPVT
 /* PrePVT: Remove chargen command. */
@@ -28,8 +26,6 @@
 
 /* TOT branch config options. */
 #elif defined(BRANCH_TOT)
-/* TOT: The spihash console command is available when ccd is locked. */
-#undef CONFIG_SPI_HASH_RESTRICTED
 /* TOT: Loosen CCD open requirements. Only allowed in prePVT and TOT images. */
 #define CONFIG_CCD_OPEN_PREPVT
 /* TOT: DBG: The DBG image doesn't have enough room chargen. */
@@ -580,7 +576,6 @@ enum nvmem_users {
 #define CONFIG_RW_B
 
 #define CONFIG_AP_RO_VERIFICATION
-#define CONFIG_SPI_HASH
 
 /* Firmware upgrade options. */
 #define CONFIG_NON_HC_FW_UPDATE
@@ -678,6 +673,5 @@ enum nvmem_users {
 
 /* Remove features crypto test doesn't use to save space */
 #undef CONFIG_AP_RO_VERIFICATION
-#undef CONFIG_SPI_HASH
 #endif /* CRYPTO_TEST_SETUP */
 #endif /* __CROS_EC_BOARD_H */

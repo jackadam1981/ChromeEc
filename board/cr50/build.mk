@@ -16,15 +16,12 @@ CHIP_VARIANT ?= cr50_fpga
 # MP
 #   - use ec_RW-manifest-MP.json
 #   - restrict ccd open
-#   - restrict spihash command
 # PREPVT
 #   - use ec_RW-manifest-PREPVT.json
 #   - loosen requirements for ccd open
-#   - spihash command is available when ccd is locked
 # TOT
 #   - use ec_RW-manifest-TOT.json
 #   - loosen requirements for ccd open
-#   - spihash command is available when ccd is locked
 #   - added chargen command for testing uart
 #
 # This is the TOT branch.
