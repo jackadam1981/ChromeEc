@@ -132,6 +132,30 @@
       ],
       "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7366b652_ec37e6a9",
+        "filename": "zephyr/emul/emul_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-10T00:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17a3cf39_cd3059de",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "cd88b8f45c938c8b7942e56cc490fa0e1d7daa29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
