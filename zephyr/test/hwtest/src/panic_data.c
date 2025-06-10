@@ -12,18 +12,33 @@
 
 LOG_MODULE_REGISTER(panic_data, LOG_LEVEL_INF);
 
+static void test_crash(void);
+static void crash_system(void);
+
+#ifdef CONFIG_LTO
+static const uint32_t crash_addr = (uint32_t)test_crash;
+#else
+static const uint32_t crash_addr = (uint32_t)crash_system;
+#endif
+
+/* Estimated end of the crash function. */
+static const uint32_t crash_end = crash_addr + 0x20;
+
 static void crash_system(void)
 {
-	__ASSERT_NO_MSG(0);
+	/* TODO(b/423904871): We should be able to use __ASSERT_NO_MSG when LTO
+	 * is enabled; we should prevent __ASSERT_NO_MSG from being outlined. */
+	if (IS_ENABLED(CONFIG_LTO)) {
+		__ASSERT_UNREACHABLE;
+	} else {
+		__ASSERT_NO_MSG(0);
+	}
 }
 
 static void check_panic_data(void)
 {
 	struct panic_data *pdata = panic_get_data();
 #ifdef CONFIG_ARM
-	uint32_t crash_addr = (uint32_t)crash_system;
-	/* Estimated end of the crash_system function. */
-	uint32_t crash_end = (uint32_t)crash_system + 0x20;
 	uint32_t lr = pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_LR];
 
 	/* Make sure Link Register is stored correctly and points at the
