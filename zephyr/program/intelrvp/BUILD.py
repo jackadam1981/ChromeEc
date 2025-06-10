@@ -184,6 +184,7 @@ register_intelrvp_project(
         here / "ptlrvp/ptlrvp_mchp/project.overlay",
     ],
     extra_kconfig_files=[
+        here / "dsp_comms.conf",
         here / "ptlrvp/ptlrvp_mchp/project.conf",
         here / "ptlrvp/pd.conf",
         here / "zephyr_ap_pwrseq.conf",
@@ -211,9 +212,12 @@ register_ish_project(
         here / "ish/ptl-ish/project.overlay",
     ],
     kconfig_files=[
+        here / "dsp_comms.conf",
         here / "ish" / "prj.conf",
+        here / "ish" / "ish_dsp_comm.conf",
         here / "ish" / "motionsense.conf",
     ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
