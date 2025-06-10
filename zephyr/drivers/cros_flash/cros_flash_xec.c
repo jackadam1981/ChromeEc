@@ -589,7 +589,7 @@ static int flash_xec_init(const struct device *dev)
 	return EC_SUCCESS;
 }
 
-BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
+BUILD_ASSERT(CONFIG_SPI_NOR_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
 
 static struct cros_flash_xec_data cros_flash_data;
 DEVICE_DT_INST_DEFINE(0, flash_xec_init, NULL, &cros_flash_data, NULL,
