@@ -1487,13 +1487,14 @@ def get_zephyr_image_path(test: TestConfig, build_board: str):
     """Get a path to a Zephyr built image"""
     if test.zephyr_name is not None:
         # The path to binary differs depending on a test name, path and platform,
-        # so just find the zephyr.bin in the build dir.
+        # so just find the zephyr.npcx.bin or zephyr.bin in the build dir.
         twister_out = os.walk(ZEPHYR_TWISTER_BUILD_DIR)
         image_path = None
         for dirpath, _, filenames in twister_out:
-            for file in filenames:
-                if file == "zephyr.bin":
-                    image_path = os.path.join(dirpath, "zephyr.bin")
+            # b/419617755#comment46: Use version with Nuvoton header if it exists.
+            for filename in ["zephyr.npcx.bin", "zephyr.bin"]:
+                if filename in filenames:
+                    image_path = os.path.join(dirpath, filename)
                     break
             if image_path is not None:
                 break
