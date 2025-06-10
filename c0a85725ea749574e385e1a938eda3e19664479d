@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7f6c4e_fbade859",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-06-10T06:12:44Z",
+      "side": 1,
+      "message": "IIRC, the test: \n1. Clear `interrupt_counter`.\n2. Set rtc alram to 1 second and wait for the timeout.\n3. When the timeout happens, the driver invokes an interrupt handler/ callback to set `interrupt_counter`.\n4. Check if `interrupt_counter` is 1.   \n\nIn the test code, you only implemented step 1, 2 and miss the step 3 because the interrupt callback is [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/rtc.c;l\u003d29) and it doesn\u0027t set `interrupt_counter`\nThis is why the test cannot pass.\nIMO, overriding the callback to set `interrupt_counter` should fix the code to pass the test.",
+      "revId": "c0a85725ea749574e385e1a938eda3e19664479d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
