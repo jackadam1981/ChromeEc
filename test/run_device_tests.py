@@ -1205,6 +1205,9 @@ def build_zephyr_upstream(test_name: str, board_name: str) -> list[str]:
     cmd = cmd + ["-s"] + [test_name]
     cmd = cmd + ["--no-upload-cros-rdb"]
 
+    if board_name == "google_quincy":
+        cmd = cmd + ["--extra-args"] + ["CONFIG_CROS_SYSTEM_NPCX=n"]
+
     return cmd
 
 
