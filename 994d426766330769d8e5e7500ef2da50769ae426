@@ -1,0 +1,109 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba7f962_d22c1378",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-10T18:06:31Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c117809b_28074f4e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "994d426766330769d8e5e7500ef2da50769ae426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea3f52a_6758f32f",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-10T18:06:31Z",
+      "side": 1,
+      "message": "Nit: Long comments like this should be written in complete sentences with proper capitalization.",
+      "range": {
+        "startLine": 872,
+        "startChar": 5,
+        "endLine": 875,
+        "endChar": 32
+      },
+      "revId": "994d426766330769d8e5e7500ef2da50769ae426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1045e1_64075a65",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-10T18:06:31Z",
+      "side": 1,
+      "message": "Nit: Use the single-line style.",
+      "range": {
+        "startLine": 879,
+        "startChar": 2,
+        "endLine": 879,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "20a088fa_91ae1c5e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "power/qcom_exp.c",
+              "range": {
+                "startLine": 879,
+                "startChar": 0,
+                "endLine": 881,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* Initialize components to ready state before AP is up. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "994d426766330769d8e5e7500ef2da50769ae426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
