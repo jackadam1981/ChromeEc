@@ -50,6 +50,24 @@
       "message": "I feel a more natural approach would be `zmake build brox/*`?  Anything before the `/` would be considered the `--projects-dir`. Could we get something like this to work?",
       "revId": "581cb5c384be454ba1a83cd12756cc3aa952361c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bbd475_7886512f",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-10T20:00:35Z",
+      "side": 1,
+      "message": "Another idea: `zmake build program/brox/*`.\n\nI don\u0027t think that globbing multiple program directories is needed, so no need to support `zmake build program/sky*`.",
+      "parentUuid": "98ae10e4_7a2e29f6",
+      "revId": "581cb5c384be454ba1a83cd12756cc3aa952361c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
