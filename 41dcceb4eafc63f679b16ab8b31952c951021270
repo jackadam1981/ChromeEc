@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e88f106_7858326d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 70
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-06-10T05:28:29Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8712508348287257777) is being automatically retried for the following reasons:\n- Some child builders are now retryable:arm-generic-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
