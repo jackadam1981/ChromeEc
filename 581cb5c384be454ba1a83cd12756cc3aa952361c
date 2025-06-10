@@ -68,6 +68,24 @@
       "parentUuid": "98ae10e4_7a2e29f6",
       "revId": "581cb5c384be454ba1a83cd12756cc3aa952361c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41363f55_8f66be13",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-10T22:18:10Z",
+      "side": 1,
+      "message": "I avoided making the expression feel like a path since it doesn\u0027t quite behave like one. I think passing `brox/*` or `program/brox/*` implies you\u0027re referencing a directory relative to CWD (also this might not behave as expected and inadvertently get expanded by shell globbing into a list of files names if not enclosed in quotes), when in reality you\u0027re specifying a filter that is selecting things from an existing search space (and `--projects-dir` is what you use if you need to change that search space to somewhere else). So that was the idea behind using some sentinel like `%` to distinguish the expression from anything else.",
+      "parentUuid": "14bbd475_7886512f",
+      "revId": "581cb5c384be454ba1a83cd12756cc3aa952361c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
