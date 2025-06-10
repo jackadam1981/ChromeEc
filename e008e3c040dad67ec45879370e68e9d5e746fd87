@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81f39fc4_15ccb073",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-10T15:01:40Z",
+      "side": 1,
+      "message": "This change doesn\u0027t actually enable CONFIG_LTO on any projects, correct?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "e008e3c040dad67ec45879370e68e9d5e746fd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56332b09_daa6e278",
         "filename": "zephyr/cmake/toolchain/coreboot-sdk/Kconfig",
         "patchSetId": 7
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "56332b09_daa6e278",
+      "revId": "e008e3c040dad67ec45879370e68e9d5e746fd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849c1cb0_af18ca17",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-10T15:01:40Z",
+      "side": 1,
+      "message": "Indentation should use tabs.",
+      "parentUuid": "2f0441ea_1be63299",
       "revId": "e008e3c040dad67ec45879370e68e9d5e746fd87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
