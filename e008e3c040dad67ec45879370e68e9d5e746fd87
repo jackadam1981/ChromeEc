@@ -16,6 +16,24 @@
       "message": "Waiting for https://github.com/zephyrproject-rtos/zephyr/pull/91150 to be downstreamed",
       "revId": "e008e3c040dad67ec45879370e68e9d5e746fd87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0441ea_1be63299",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-10T14:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56332b09_daa6e278",
+      "revId": "e008e3c040dad67ec45879370e68e9d5e746fd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
