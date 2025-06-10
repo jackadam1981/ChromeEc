@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74603a36_7948ce1d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-10T22:00:36Z",
+      "side": 1,
+      "message": "I think ideally when we build the upstream tests we won\u0027t build any of our custom EC code that we have added on top. Do you know how `CONFIG_CROS_SYSTEM_NPCX` gets pulled in?\n\nI\u0027m wondering if there\u0027s a way split up our [`prj.conf`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/helipilot/prj.conf) so that we have upstream Zephyr Kconfig settings are in one file and EC-specific ones are in another file. Then we only use the upstream version when building the upstream Zephyr tests. Would that require adding a [different \"variant\" in `BUILD.py`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/BUILD.py;l\u003d63-66;drc\u003dd377ac3a87b2fc0e7a9460d981f1f7b7519e37bd)?",
+      "range": {
+        "startLine": 1215,
+        "startChar": 41,
+        "endLine": 1215,
+        "endChar": 64
+      },
+      "revId": "2667c2bbcbaada13a71c38bee879a9055e2eb70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
