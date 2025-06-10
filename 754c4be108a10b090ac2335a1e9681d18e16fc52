@@ -22,6 +22,30 @@
       },
       "revId": "754c4be108a10b090ac2335a1e9681d18e16fc52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d326c7_4ef901cb",
+        "filename": "zephyr/cmake/toolchain/coreboot-sdk/target.cmake",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-10T16:54:58Z",
+      "side": 1,
+      "message": "Yeah, I was seeing these plugin errors.  I found a similar change in [upstream zephyr](https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/main/cmake/bintools/gnu/target.cmake#8) and tried it here. I\"ll link to one of these to help explain why this is needed.",
+      "parentUuid": "d9a5455a_6b50caae",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 70
+      },
+      "revId": "754c4be108a10b090ac2335a1e9681d18e16fc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
