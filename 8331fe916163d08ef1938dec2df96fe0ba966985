@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7564185b_ff20d046",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-10T07:44:52Z",
+      "side": 1,
+      "message": "I see, but EC doesn\u0027t have features like LOG_ERR, so we can do some improvement here.",
+      "parentUuid": "de068072_605b4f17",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cba7ffb4_26f4e3a8",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
         "patchSetId": 66
@@ -318,6 +336,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe1fee8_a960f8ba",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-10T07:44:52Z",
+      "side": 1,
+      "message": "Got you.",
+      "parentUuid": "e9be5425_9eb2fe1d",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85f4337b_51d4d90f",
@@ -349,6 +385,24 @@
       "side": 1,
       "message": "I added a TODO bug to track this: https://b.corp.google.com/issues/423622893\nI prefer to keep it as is until we have a clear understanding of the required heap size.",
       "parentUuid": "85f4337b_51d4d90f",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32bdf5cd_c50c856f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-10T07:44:52Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "a342571b_278048db",
       "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
