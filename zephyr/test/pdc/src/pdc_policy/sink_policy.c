@@ -148,8 +148,7 @@ static int connect_sink(const struct pdc_fixture *pdc)
 	emul_pdc_set_rdo(pdc->emul_pdc, RDO_FIXED(1, 1500, 1500, 0));
 
 	zassert_ok(emul_pdc_connect_partner(pdc->emul_pdc, &cs));
-
-	zassert_ok(pdc_power_mgmt_wait_for_sync(pdc->port, -1));
+	zassert_ok(pdc_power_mgmt_wait_for_sync(pdc->port, 4000));
 
 	return 0;
 }
@@ -158,6 +157,8 @@ static void sink_policy_before(void *f)
 {
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(sniff_pdc_set_sink_path);
+
+	sink_path_en_mask = 0;
 
 	chipset_in_state_fake.custom_fake = custom_fake_chipset_in_state;
 	sniff_pdc_set_sink_path_fake.custom_fake =
