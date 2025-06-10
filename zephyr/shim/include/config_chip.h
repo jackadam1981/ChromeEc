@@ -76,13 +76,6 @@ extern "C" {
 #undef CONFIG_KEYBOARD_KSO_HIGH_DRIVE /* Used by the Chromium EC chip drivers \
 				       */
 #undef CONFIG_STACK_SIZE /* Only used in Chromium EC core init code */
-#ifndef CONFIG_FPU
-#undef CONFIG_FPU /* Used in Zephyr as well, enabled in Kconfig directly */
-#endif
-#ifndef CONFIG_WATCHDOG
-#undef CONFIG_WATCHDOG /* Used in Zephyr as well, enabled in Kconfig directly \
-			*/
-#endif
 
 /*
  * The Zephyr I2C shell command provides the same functionality as the Chromium
