@@ -16,6 +16,24 @@
       "message": "LGTM, but it needs some unit tests.",
       "revId": "4a4ba283e614123a334bb6e9bed8e898ff3c0c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbb34aa_ab628eaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-10T22:52:08Z",
+      "side": 1,
+      "message": "I\u0027m working on a plan for the \"remote_\" hooks since I can\u0027t have both the remote and local variants in the same test image. This will likely end up need to either have a lot of mocks or something more complex like Renode. I\u0027m going to punt this until Uldrenite is done.",
+      "parentUuid": "c96dfe64_3547ea68",
+      "revId": "4a4ba283e614123a334bb6e9bed8e898ff3c0c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
