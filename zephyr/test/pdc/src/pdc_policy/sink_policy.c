@@ -149,8 +149,7 @@ static int connect_sink(const struct pdc_fixture *pdc)
 	emul_pdc_set_rdo(pdc->emul_pdc, RDO_FIXED(1, 1500, 1500, 0));
 
 	zassert_ok(emul_pdc_connect_partner(pdc->emul_pdc, &cs));
-
-	zassert_ok(pdc_power_mgmt_wait_for_sync(pdc->port, -1));
+	zassert_ok(pdc_power_mgmt_wait_for_sync(pdc->port, 4000));
 
 	return 0;
 }
