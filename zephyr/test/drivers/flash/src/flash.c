@@ -494,7 +494,7 @@ ZTEST_USER(flash, test_console_cmd_flashwp__bad_param)
 ZTEST_USER(flash, test_console_cmd_flash_erase__flash_locked)
 {
 	/* Force write protection on */
-	zassert_ok(crec_flash_physical_protect_now(1));
+	zassert_ok(crec_flash_physical_protect_now(true));
 
 	CHECK_CONSOLE_CMD("flasherase 0x1000 0x1000", NULL,
 			  EC_ERROR_ACCESS_DENIED);
@@ -867,7 +867,7 @@ ZTEST_USER(flash, test_console_cmd_flash_write__cbi_1)
 ZTEST_USER(flash, test_console_cmd_flash_write__flash_locked)
 {
 	/* Force write protection on */
-	zassert_ok(crec_flash_physical_protect_now(1));
+	zassert_ok(crec_flash_physical_protect_now(true));
 
 	CHECK_CONSOLE_CMD("flashwrite 0x1000 0x1000", NULL,
 			  EC_ERROR_ACCESS_DENIED);

@@ -397,7 +397,7 @@ static int disable_control_register(const struct device *dev)
 	return EC_SUCCESS;
 }
 
-static int cros_flash_protect_now(const struct device *dev, int all)
+static int cros_flash_protect_now(const struct device *dev, bool all)
 {
 	int err;
 

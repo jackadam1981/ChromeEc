@@ -179,7 +179,7 @@ static int cros_flash_emul_protect_at_boot(const struct device *dev,
 	return EC_SUCCESS;
 }
 
-static int cros_flash_emul_protect_now(const struct device *dev, int all)
+static int cros_flash_emul_protect_now(const struct device *dev, bool all)
 {
 	ro_protected = true;
 	if (all) {

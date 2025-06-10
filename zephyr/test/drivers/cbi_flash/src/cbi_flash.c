@@ -73,7 +73,7 @@ ZTEST(cbi_flash, test_cbi_flash_is_write_protected_when_ro_protected)
 
 	/* HW WP = 0, SW WP = 1 */
 	gpio_wp_l_set(1);
-	zassert_ok(crec_flash_physical_protect_now(0));
+	zassert_ok(crec_flash_physical_protect_now(false));
 	zassert_equal(cbi_config->drv->is_protected(), 1);
 
 	const uint8_t data[] = "SKU ABC";

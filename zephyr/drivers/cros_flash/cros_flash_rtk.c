@@ -440,7 +440,7 @@ static int cros_flash_rtk_protect_at_boot(const struct device *dev,
 	return ret;
 }
 
-static int cros_flash_rtk_protect_now(const struct device *dev, int all)
+static int cros_flash_rtk_protect_now(const struct device *dev, bool all)
 {
 	struct cros_flash_rtk_data *data = DRV_DATA(dev);
 	int ret = EC_SUCCESS;
