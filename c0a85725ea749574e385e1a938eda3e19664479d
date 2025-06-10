@@ -34,6 +34,24 @@
       "parentUuid": "df7f6c4e_fbade859",
       "revId": "c0a85725ea749574e385e1a938eda3e19664479d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f4503c_31959d60",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-10T18:56:44Z",
+      "side": 1,
+      "message": "even if I use `crec_sleep` to match the [EC test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rtc_npcx9.c;drc\u003ddbc158af9769707109d3fa6eb6dbda8e4148a01c;l\u003d47), `system_get_rtc_alarm` is returning 2 for the zephyr test vs. 1 for the EC test. This is for unit test not fired.",
+      "parentUuid": "60ebef7c_37124c36",
+      "revId": "c0a85725ea749574e385e1a938eda3e19664479d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
