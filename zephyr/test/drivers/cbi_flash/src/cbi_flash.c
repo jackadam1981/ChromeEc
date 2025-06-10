@@ -61,10 +61,19 @@ ZTEST(cbi_flash, test_cbi_flash_is_write_protected_when_locked)
 
 ZTEST(cbi_flash, test_cbi_flash_is_write_protected_when_ro_protected)
 {
-	gpio_wp_l_set(1);
 	cros_flash_init(cros_flash_dev);
-	cros_flash_physical_protect_at_boot(cros_flash_dev,
-					    EC_FLASH_PROTECT_RO_AT_BOOT);
+
+	/* HW WP = 0, SW WP = 0 */
+	gpio_wp_l_set(1);
+	zassert_equal(cbi_config->drv->is_protected(), 0);
+
+	/* HW WP = 1, SW WP = 0 */
+	gpio_wp_l_set(0);
+	zassert_equal(cbi_config->drv->is_protected(), 0);
+
+	/* HW WP = 0, SW WP = 1 */
+	gpio_wp_l_set(1);
+	zassert_ok(crec_flash_physical_protect_now(0));
 	zassert_equal(cbi_config->drv->is_protected(), 1);
 
 	const uint8_t data[] = "SKU ABC";
