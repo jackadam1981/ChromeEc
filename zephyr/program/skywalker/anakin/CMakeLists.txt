@@ -5,3 +5,5 @@
 # Anakin Makeifile
 zephyr_include_directories("include")
 zephyr_library_sources("src/sensor.c" "src/board.c")
+zephyr_library_sources_ifdef(
+    CONFIG_PDC_RUNTIME_PORT_CONFIG "src/usbc_runtime.c")
