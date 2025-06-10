@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0255840e_3e445328",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-06-10T04:28:15Z",
+      "side": 1,
+      "message": "This should be tested on hardware, compilation isn\u0027t sufficient. Please run the rtc unit test (run_device_tests.py) and confirm no regression in application functionality (fpenroll, fpmatch, etc.) before merging",
+      "revId": "36e076b3ff94505e9818a4e3e05cfecfd5fd28f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
