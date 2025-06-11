@@ -479,7 +479,7 @@ static void tps_notify_new_power_contract(struct k_work *work)
 	}
 }
 
-static void st_irq_run(void *o)
+static enum smf_state_result st_irq_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -573,10 +573,11 @@ static void st_irq_run(void *o)
 
 	/* All done, transition back to idle state */
 	set_state(data, ST_IDLE);
-	return;
+	return SMF_EVENT_HANDLED;
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_init_entry(void *o)
@@ -586,7 +587,7 @@ static void st_init_entry(void *o)
 	print_current_state(data);
 }
 
-static void st_init_run(void *o)
+static enum smf_state_result st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -595,7 +596,7 @@ static void st_init_run(void *o)
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Pre-fetch PDC chip info and save it in the driver struct */
@@ -604,7 +605,7 @@ static void st_init_run(void *o)
 		LOG_ERR("DR%d: Cannot obtain initial chip info (%d)",
 			cfg->connector_number, rv);
 		set_state(data, ST_ERROR_RECOVERY);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	LOG_INF("DR%d: FW Version %u.%u.%u", cfg->connector_number,
@@ -622,7 +623,7 @@ static void st_init_run(void *o)
 
 	/* Transition to the idle state */
 	set_state(data, ST_IDLE);
-	return;
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_init_exit(void *o)
@@ -652,7 +653,7 @@ static void st_idle_entry(void *o)
 	data->running_ucsi_cmd = 0;
 }
 
-static void st_idle_run(void *o)
+static enum smf_state_result st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	uint32_t events = data->events;
@@ -663,7 +664,7 @@ static void st_idle_run(void *o)
 		 * only needed to wake this thread.
 		 */
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 	if (events & PDC_CMD_COMPLETE_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_CMD_COMPLETE_EVENT);
@@ -676,7 +677,7 @@ static void st_idle_run(void *o)
 		k_event_clear(&data->pdc_event, PDC_IRQ_EVENT);
 		/* Handle interrupt */
 		set_state(data, ST_IRQ);
-		return;
+		return SMF_EVENT_HANDLED;
 	} else if (events & PDC_CMD_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_CMD_EVENT);
 		/* Handle command */
@@ -802,6 +803,8 @@ static void st_idle_run(void *o)
 			cmd_set_sx_app_config(data);
 		}
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_idle_exit(void *o)
@@ -819,14 +822,14 @@ static void st_error_recovery_entry(void *o)
 	print_current_state(data);
 }
 
-static void st_error_recovery_run(void *o)
+static enum smf_state_result st_error_recovery_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Don't continue trying if we are suspending communication */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* TODO: Add proper error recovery */
@@ -841,7 +844,7 @@ static void st_error_recovery_run(void *o)
 
 	/* Transition to idle */
 	set_state(data, ST_IDLE);
-	return;
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_suspended_entry(void *o)
@@ -851,7 +854,7 @@ static void st_suspended_entry(void *o)
 	print_current_state(data);
 }
 
-static void st_suspended_run(void *o)
+static enum smf_state_result st_suspended_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
@@ -866,10 +869,11 @@ static void st_suspended_run(void *o)
 
 	/* Stay here while suspended */
 	if (check_comms_suspended()) {
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	set_state(data, ST_INIT);
+	return SMF_EVENT_HANDLED;
 }
 
 static void cmd_set_drp_mode(struct pdc_data_t *data)
@@ -1875,7 +1879,7 @@ static void tps_check_data_ready(struct k_work *work)
 	k_event_post(&data->pdc_event, PDC_INTERNAL_EVENT);
 }
 
-static void st_task_wait_run(void *o)
+static enum smf_state_result st_task_wait_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -1903,7 +1907,7 @@ static void st_task_wait_run(void *o)
 			PDC_TI_DATA_READY_TIME_MS);
 		k_work_reschedule(&data->data_ready,
 				  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/*
@@ -2028,10 +2032,11 @@ data_out:
 
 	/* Transition to idle state */
 	set_state(data, ST_IDLE);
-	return;
+	return SMF_EVENT_HANDLED;
 
 error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
+	return SMF_EVENT_HANDLED;
 }
 
 /* Populate state table */
