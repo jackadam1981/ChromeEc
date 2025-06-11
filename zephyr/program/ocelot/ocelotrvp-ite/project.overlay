@@ -16,17 +16,10 @@
  * Map I2C buses to common names
  */
 
-i2c_port_pd1: &i2c1 {
-};
-
-i2c_port_pd2: &i2c3 {
-};
-
-i2c_port_charger: &i2c4 {
-};
-
-i2c_port_ish: &i2c5 {
-};
+i2c_port_pd1: &i2c1 {};
+i2c_port_pd2: &i2c3 {};
+i2c_port_charger: &i2c4 {};
+i2c_port_ish: &i2c5 {};
 
 /*
  * Map GPIOs used for interrupts to common names
@@ -38,12 +31,18 @@ gpio_lid: &gpio_lid_open {};
 gpio_pwrbtn: &gpio_gsc_ec_pwr_btn_odl {};
 gpio_voldn: &gpio_ec_voldn_btn_odl {};
 gpio_volup: &gpio_ec_volup_btn_odl {};
+gpio_fan_control: &gpio_ec_fan_pwr_disable_n_r {};
+gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd_r {};
+
+/* Map tachometers to common names */
+tach_fan0: &tach0 {};
 
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_usbc.dtsi"
 #include "../rvp_keyboard.dtsi"
+#include "../rvp_fans.dtsi"
 
 /* ocelotrvp-ite overrides follow... */
 / {
@@ -79,9 +78,8 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 &pwm3 {
 	status = "disabled";
 };
-&pwm5 {
-	status = "disabled";
-};
+
+/* Update board-specific references  */
 
 &pdc_c0 {
 	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
@@ -89,4 +87,8 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 
 &pdc_c1 {
 	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+};
+
+&fan0 {
+	pwms = <&pwm5 PWM_CHANNEL_5 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 };
