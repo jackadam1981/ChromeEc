@@ -114,13 +114,13 @@
 		 * keyboard type.
 		 */
 		kb-type {
-			enum-name = "FW_KB_TYPE";
+			enum-name = "FW_KB_LAYOUT";
 			start = <11>;
 			size = <2>;
 
 			kb-type-default {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_KB_TYPE_DEFAULT";
+				enum-name = "FW_KB_LAYOUT_DEFAULT";
 				value = <0>;
 			};
 			kb-type-us2 {
