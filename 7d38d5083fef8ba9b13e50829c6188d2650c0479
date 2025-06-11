@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "246c1247_308fed5e",
+        "filename": "zephyr/program/fatcat/kinmen/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-11T17:24:49Z",
+      "side": 1,
+      "message": "Yeah, this is an odd bit of Zephyr, GPIO_INPUT isn\u0027t a part of this part of the GPIO configuration.",
+      "parentUuid": "80b1ef28_11cfd4ed",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "7d38d5083fef8ba9b13e50829c6188d2650c0479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff798a3c_9d88e5a0",
@@ -89,6 +113,30 @@
           ]
         }
       ],
+      "revId": "7d38d5083fef8ba9b13e50829c6188d2650c0479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0283e6_24860bad",
+        "filename": "zephyr/program/fatcat/kinmen/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-11T17:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff798a3c_9d88e5a0",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 27
+      },
       "revId": "7d38d5083fef8ba9b13e50829c6188d2650c0479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
