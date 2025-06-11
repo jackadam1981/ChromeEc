@@ -16,6 +16,24 @@
       "message": "Did you test this on other ITE EC chips to make sure it will not break anything?",
       "revId": "fd82ae28148c89dda1254af373be85eb32d8a790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b25d00_b5dfcb69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-06-11T10:05:59Z",
+      "side": 1,
+      "message": "It test ok on 82102. This part will not affect the flash of other chips.\n\n(cr) donald@donald-TT-3437 ~/chromiumos/src/platform/ec $ sudo ./build/host/util/iteflash --i2c-interface\u003dusb --serial 08018056-4cec4146  --send-waveform\u003d1 --erase --write\u003dbuild/zephyr/brox/output/ec.bin \nfinding_device 08018056-4cec4146\nFound device.\nfound interface 5 endpoint 6, chunk_len 64\nREADY\n-------\nfinding_device 08018056-4cec4146\nFound device.\nfound interface 5 endpoint 6, chunk_len 64\nREADY\n-------\nCHIPID 82102, CHIPVER c1, Flash size 1024 kB\nDone with sending special waveform.\nReset GPIOs to default.\nEFLASH TYPE \u003d KGD\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d38 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nDisabling protect path...\nErasing flash...erase size\u003d1048576\n\\100%\nErasing Done.\nWriting 1048576 bytes at 0x00000000.......\n\\100%\nWriting Done.\nVerify 1048576 bytes at 0x00000000\n\\ 99%\nVerify Done.\nExit DBGR mode...",
+      "parentUuid": "24f17eca_78ee194b",
+      "revId": "fd82ae28148c89dda1254af373be85eb32d8a790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
