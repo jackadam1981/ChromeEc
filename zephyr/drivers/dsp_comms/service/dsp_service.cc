@@ -220,8 +220,8 @@ bool cros::dsp::service::Driver::AttemptToDecode() {
 
 void cros::dsp::service::Driver::SetNotebookMode(
     cros_dsp_comms_NotebookMode mode) {
-  // Bail if remote lid angle is not enabled or if the lid isn't open.
-  if (!IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE) || !lid_is_open()) {
+  // Bail if tablet mode is not enabled or if the lid isn't open.
+  if (!IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE) || !lid_is_open()) {
     return;
   }
   switch (mode) {
@@ -328,7 +328,9 @@ pw::Status cros::dsp::service::Driver::Init() {
     }
     /* Poll the GMR states */
     dsp_service_hook_lid_change();
-    dsp_service_hook_tablet_mode_change();
+    if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE)) {
+      dsp_service_hook_tablet_mode_change();
+    }
   }
 
   return pw::OkStatus();
@@ -343,6 +345,7 @@ void dsp_service_hook_lid_change() {
 DECLARE_HOOK(HOOK_LID_CHANGE, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 
+#ifdef CONFIG_PLATFORM_EC_TABLET_MODE
 void dsp_service_hook_tablet_mode_change() {
   bool is_in_tablet_mode = !gpio_get_level(GPIO_TABLET_MODE_L);
   LOG_DBG("is_in_tablet_mode=%d", is_in_tablet_mode);
@@ -354,6 +357,7 @@ extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
   gmr_tablet_switch_isr(signal);
 }
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_tablet_mode_change, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_PLATFORM_EC_TABLET_MODE */
 
 #ifdef CONFIG_TEST
 /*
