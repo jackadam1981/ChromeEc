@@ -32,7 +32,7 @@ void motion_interrupt(enum gpio_signal signal)
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
-	bma4xx_interrupt(signal);
+	lis2dw12_interrupt(signal);
 }
 
 static void motionsense_init(void)

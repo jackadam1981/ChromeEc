@@ -20,6 +20,6 @@
 		compatible = "cros,dsp-client";
 		reg = <0x21>;
 		/* TODO update gpio, this is a place holder*/
-		int-gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+		int-gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
 	};
 };
