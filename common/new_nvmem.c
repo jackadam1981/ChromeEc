@@ -1264,31 +1264,6 @@ static bool is_empty(const void *pcr_base, size_t pcr_size)
 }
 
 /*
- * A convenience function checking if the passed in blob is not empty, and if
- * so - save the blob in the destination memory.
- *
- * Return number of bytes placed in dst or zero, if the blob was empty.
- */
-static size_t copy_pcr(const uint8_t *pcr_base, size_t pcr_size, uint8_t *dst)
-{
-	/*
-	 * We rely on the fact that all 16 PCRs of every PCR bank saved in the
-	 * NVMEM's reserved space are originally set to all zeros.
-	 *
-	 * If all 0xFF is read - this is considered an artifact of trying to
-	 * retrieve PCRs from legacy flash snapshot from the state when PCRs
-	 * were not saved in the reserved space at all, i.e. also indicates an
-	 * empty PCR.
-	 */
-	if (is_empty(pcr_base, pcr_size))
-		return 0; /* No need to save this. */
-
-	memcpy(dst, pcr_base, pcr_size);
-
-	return pcr_size;
-}
-
-/*
  * A convenience structure and array, allowing quick access to PCR banks
  * contained in the STATE_CLEAR_DATA:pcrSave field. This helps when
  * marshailing/unmarshaling PCR contents.
@@ -1309,32 +1284,6 @@ static const struct pcr_descriptor pcr_arrays[] = {
 /* Just in case we ever get to reducing the PCR set one way or another. */
 BUILD_ASSERT(ARRAY_SIZE(pcr_arrays) == 4);
 BUILD_ASSERT(NUM_OF_PCRS == 64);
-/*
- * Iterate over PCRs contained in the STATE_CLEAR_DATA structure in the NVMEM
- * cache and save nonempty ones in the flash.
- */
-static void migrate_pcr(STATE_CLEAR_DATA *scd, size_t array_index,
-			size_t pcr_index, struct nn_container *ch)
-{
-	const struct pcr_descriptor *pdsc;
-	uint8_t *p_container_body;
-	uint8_t *pcr_base;
-	uint8_t reserved_index; /* Unique ID of this PCR in reserved storage. */
-
-	p_container_body = (uint8_t *)(ch + 1);
-	pdsc = pcr_arrays + array_index;
-	pcr_base = (uint8_t *)&scd->pcrSave + pdsc->pcr_array_offset +
-		   pdsc->pcr_size * pcr_index;
-	reserved_index = NV_VIRTUAL_RESERVE_LAST +
-			 array_index * NUM_STATIC_PCR + pcr_index;
-
-	if (!copy_pcr(pcr_base, pdsc->pcr_size, p_container_body + 1))
-		return;
-
-	p_container_body[0] = reserved_index;
-	ch->size = pdsc->pcr_size + 1;
-	save_container(ch);
-}
 
 /*
  * Some NVMEM structures end up in the NVMEM cache with a wrong alignment. If
@@ -1474,121 +1423,6 @@ static uint16_t marshal_state_reset_data(STATE_RESET_DATA *srd, uint8_t *dst)
 	return dst - base;
 }
 
-/*
- * Migrate all reserved objects found in the NVMEM cache after intializing
- * from legacy NVMEM storage.
- */
-static enum ec_error_list migrate_tpm_reserved(struct nn_container *ch)
-{
-	STATE_CLEAR_DATA *scd = NULL;
-	STATE_RESET_DATA *srd;
-	size_t pcr_type_index;
-	uint8_t *p_tpm_nvmem = nvmem_cache_base(NVMEM_TPM);
-	uint8_t *p_container_body = (uint8_t *)(ch + 1);
-	uint8_t index;
-
-	ch->container_type = ch->container_type_copy = NN_OBJ_TPM_RESERVED;
-
-	for (index = 0; index < NV_VIRTUAL_RESERVE_LAST; index++) {
-		NV_RESERVED_ITEM ri;
-		int copy_needed = 1;
-
-		NvGetReserved(index, &ri);
-		p_container_body[0] = index;
-
-		switch (index) {
-		case NV_STATE_CLEAR:
-			scd = (STATE_CLEAR_DATA *)(p_tpm_nvmem + ri.offset);
-			ri.size =
-				marshal_state_clear(scd, p_container_body + 1);
-			copy_needed = 0;
-			break;
-
-		case NV_STATE_RESET:
-			srd = (STATE_RESET_DATA *)(p_tpm_nvmem + ri.offset);
-			ri.size = marshal_state_reset_data(
-				srd, p_container_body + 1);
-			copy_needed = 0;
-			break;
-		}
-
-		if (copy_needed) {
-			/*
-			 * Copy data into the stage area unless already done
-			 * by marshaling function above.
-			 */
-			memcpy(p_container_body + 1, p_tpm_nvmem + ri.offset,
-			       ri.size);
-		}
-
-		ch->size = ri.size + 1;
-		save_container(ch);
-	}
-
-	/*
-	 * Now all components but the PCRs from STATE_CLEAR_DATA have been
-	 * saved, let's deal with those PCR arrays. We want to save each PCR
-	 * in a separate container, as if all PCRs are extended, the total
-	 * combined size of the arrays would exceed flash page size. Also,
-	 * PCRs are most likely to change one or very few at a time.
-	 */
-	for (pcr_type_index = 0; pcr_type_index < ARRAY_SIZE(pcr_arrays);
-	     pcr_type_index++) {
-		size_t pcr_index;
-
-		for (pcr_index = 0; pcr_index < NUM_STATIC_PCR; pcr_index++)
-			migrate_pcr(scd, pcr_type_index, pcr_index, ch);
-	}
-
-	return EC_SUCCESS;
-}
-
-/*
- * Migrate all evictable objects found in the NVMEM cache after intializing
- * from legacy NVMEM storage.
- */
-static enum ec_error_list migrate_objects(struct nn_container *ch)
-{
-	uint32_t next_obj_base;
-	uint32_t obj_base;
-	uint32_t obj_size;
-	uint8_t *obj_addr;
-	uint8_t *const tpm_base = nvmem_cache_base(NVMEM_TPM);
-
-	ch->container_type = ch->container_type_copy = NN_OBJ_TPM_EVICTABLE;
-
-	obj_base = s_evictNvStart;
-	obj_addr = tpm_base + obj_base;
-	memcpy(&next_obj_base, obj_addr, sizeof(next_obj_base));
-
-	while (next_obj_base && (next_obj_base <= s_evictNvEnd)) {
-
-		obj_size = next_obj_base - obj_base - sizeof(obj_size);
-		memcpy(ch + 1, (uint32_t *)obj_addr + 1, obj_size);
-
-		ch->size = obj_size;
-		save_container(ch);
-
-		obj_base = next_obj_base;
-		obj_addr = tpm_base + obj_base;
-
-		memcpy(&next_obj_base, obj_addr, sizeof(next_obj_base));
-	}
-
-	return EC_SUCCESS;
-}
-
-static enum ec_error_list migrate_tpm_nvmem(struct nn_container *ch)
-{
-	/* Call this to initialize NVMEM indices. */
-	NvEarlyStageFindHandle(0);
-
-	migrate_tpm_reserved(ch);
-	migrate_objects(ch);
-
-	return EC_SUCCESS;
-}
-
 static enum ec_error_list save_var(const uint8_t *key, uint8_t key_len,
 				   const uint8_t *val, uint8_t val_len,
 				   struct max_var_container *vc)
@@ -1622,29 +1456,6 @@ static enum ec_error_list save_var(const uint8_t *key, uint8_t key_len,
 		shared_mem_release(vc);
 
 	return rv;
-}
-
-/*
- * Migrate all (key, value) pairs found in the NVMEM cache after intializing
- * from legacy NVMEM storage.
- */
-static enum ec_error_list migrate_vars(struct nn_container *ch)
-{
-	const struct tuple *var;
-
-	/*
-	 * During migration (key, value) pairs need to be manually copied from
-	 * the NVMEM cache.
-	 */
-	set_local_copy();
-	var = NULL;
-	total_var_space = 0;
-
-	while ((var = legacy_getnextvar(var)) != NULL)
-		save_var(var->data_, var->key_len, var->data_ + var->key_len,
-			 var->val_len, (struct max_var_container *)ch);
-
-	return EC_SUCCESS;
 }
 
 static int erase_partition(unsigned int act_partition, int erase_backup)
@@ -1708,9 +1519,6 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 	set_first_page_header();
 
 	ch->generation = 0;
-
-	migrate_vars(ch);
-	migrate_tpm_nvmem(ch);
 
 	shared_mem_release(ch);
 
