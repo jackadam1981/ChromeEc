@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58701e01_e802daa1",
+        "filename": "zephyr/test/pdc/src/pdc_policy/sink_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-11T18:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1763f8a_08e3ecdc",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 11
+      },
+      "revId": "01955426f31509eef97f52199ffda16fe53665e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6051699_7d91ec72",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-10T22:57:43Z",
       "side": 1,
       "message": "Can we just do `zassert_true(IS_ONE_BIT_SET(sink_path_en_mask) || sink_path_en_mask \u003d\u003d 0)` unconditionally, maybe before and after WRITE_BIT, to simply this logic? Or is there some other edge case I\u0027m missing?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 50
+      },
+      "revId": "01955426f31509eef97f52199ffda16fe53665e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6c7488_00da13f1",
+        "filename": "zephyr/test/pdc/src/pdc_policy/sink_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-11T18:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6051699_7d91ec72",
       "range": {
         "startLine": 127,
         "startChar": 2,
