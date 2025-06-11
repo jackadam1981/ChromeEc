@@ -392,7 +392,7 @@ int dptf_get_fan_duty_target(void)
 void dptf_set_fan_duty_target(int pct)
 {
 	int fan;
-
+	return;//
 	if (pct < 0 || pct > 100) {
 		/* TODO(crosbug.com/p/23803) */
 		for (fan = 0; fan < fan_count; fan++)
@@ -687,11 +687,14 @@ static void pwm_fan_start(void)
 	 * Upon booting to S0, if needed AP will disable/throttle it using
 	 * host commands.
 	 */
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON))
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)){
 		pwm_fan_control(1);
+		set_duty_cycle(0, 100);
+	}
 }
 /* On Fizz, CHIPSET_RESUME isn't triggered when AP warm resets.
  * So we hook CHIPSET_RESET instead.
  */
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pwm_fan_start, HOOK_PRIO_FIRST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, pwm_fan_start, HOOK_PRIO_FIRST);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pwm_fan_start, HOOK_PRIO_DEFAULT);
