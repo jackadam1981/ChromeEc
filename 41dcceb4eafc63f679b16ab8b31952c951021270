@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19aabd6b_54615a93",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T17:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c6cb65b_af0401bc",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e9c6374_0a367333",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-06-10T07:44:52Z",
       "side": 1,
       "message": "Same here",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb451c1b_919a78e1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T17:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9c6374_0a367333",
       "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b79932_c04948bd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T17:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e5d897_c3214ebc",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ea376a7_649b15bc",
@@ -82,6 +136,24 @@
       "writtenOn": "2025-06-10T07:44:52Z",
       "side": 1,
       "message": "Don\u0027t we want to just exit when there is no private lib? E.g. in this case you will get `Failed to get EGIS HWID` message, which isn\u0027t 100% correct.",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a8aeb1_c75aa14b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T17:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea376a7_649b15bc",
       "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a287c45_c8507761",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T17:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d0bf7f1_a3656336",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a3dee4_4aba297a",
@@ -116,6 +206,24 @@
       "writtenOn": "2025-06-10T07:44:52Z",
       "side": 1,
       "message": "Why is that needed? Anyway, we shouldn\u0027t use Egis logging functions in out driver.",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92476bf_8093122d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T17:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a3dee4_4aba297a",
       "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
