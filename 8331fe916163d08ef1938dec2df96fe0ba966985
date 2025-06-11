@@ -212,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc853ba_970e497c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T16:04:59Z",
+      "side": 1,
+      "message": "this is coming from the LOG_LEVEL type in the pal header as shown below.\n\n```\ntypedef enum {\n\tLOG_VERBOSE \u003d 2,\n\tLOG_DEBUG \u003d 3,\n\tLOG_INFO \u003d 4,\n\tLOG_WARN \u003d 5,\n\tLOG_ERROR \u003d 6,\n\tLOG_ASSERT \u003d 7,\n} LOG_LEVEL;\n```",
+      "parentUuid": "7564185b_ff20d046",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba7ffb4_26f4e3a8",
