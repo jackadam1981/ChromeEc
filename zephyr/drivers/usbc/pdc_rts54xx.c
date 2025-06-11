@@ -97,7 +97,7 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
  */
 #define TRANSITION_TO_INIT_OR_IDLE_STATE(data)  \
 	transition_to_init_or_idle_state(data); \
-	return
+	return SMF_EVENT_HANDLED
 
 /**
  * @brief IRQ Event set by the interrupt handler.
@@ -743,7 +743,7 @@ static void init_display_error_status(struct pdc_data_t *data)
 	}
 }
 
-static void st_init_run(void *o)
+static enum smf_state_result st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -753,7 +753,7 @@ static void st_init_run(void *o)
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (data->init_local_state) {
@@ -762,58 +762,58 @@ static void st_init_run(void *o)
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_ENABLE)", cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_GET_IC_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_GET_IC_STATUS:
 		rv = rts54_get_info(data->dev, &data->info, true);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_GET_IC_STATUS)", cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
 		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0x0);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_SET_NOTIFICATION_ENABLE)",
 				cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_RESET);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_RESET:
 		rv = rts54_reset(data->dev);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_RESET)", cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_COMPLETE);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_COMPLETE:
 		data->es.pdc_init_failed = 0;
 		/* Init is complete, so transition to Idle state */
 		set_state(data, ST_IDLE);
 		data->init_done = true;
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_ERROR:
 		/* Get error status, and re-start the init process */
 		rts54_get_error_status(data->dev, &data->es);
 		init_write_cmd_and_change_state(data, INIT_PDC_ENABLE);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_CMD_WAIT:
 		/* If PDC_RESET was sent, check the reset_completed flag */
 		if (data->init_local_current_state == INIT_PDC_RESET) {
 			if (!data->cci_event.reset_completed) {
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 		} else if (!data->cci_event.command_completed) {
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 
 		if (data->cci_event.error) {
@@ -823,7 +823,7 @@ static void st_init_run(void *o)
 				LOG_INF("C%d: PDC I2C problem",
 					cfg->connector_number);
 				set_state(data, ST_DISABLE);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			/* PDC not responding to Ping Status reads. Try error
@@ -832,7 +832,7 @@ static void st_init_run(void *o)
 				LOG_INF("C%d: PDC not responding",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			/* PDC not responding to Error Status reads. Try error
@@ -841,7 +841,7 @@ static void st_init_run(void *o)
 				LOG_INF("C%d: PDC error status read fail ",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			/* PDC returned an error */
@@ -860,13 +860,15 @@ static void st_init_run(void *o)
 				} else {
 					set_state(data, ST_DISABLE);
 				}
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			data->init_local_state = data->init_local_next_state;
 		}
 		break;
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 /**
@@ -943,14 +945,14 @@ static void st_idle_entry(void *o)
 	data->active_ucsi_cmd = 0;
 }
 
-static void st_idle_run(void *o)
+static enum smf_state_result st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/*
@@ -963,6 +965,8 @@ static void st_idle_run(void *o)
 	} else if (data->cmd != CMD_NONE) {
 		set_state(data, ST_WRITE);
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_write_entry(void *o)
@@ -985,7 +989,7 @@ static void st_write_entry(void *o)
 	data->cci_event.raw_value = 0;
 }
 
-static void st_write_run(void *o)
+static enum smf_state_result st_write_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	int rv;
@@ -996,12 +1000,14 @@ static void st_write_run(void *o)
 		if (max_i2c_retry_reached(data, I2C_MSG_WRITE)) {
 			set_state(data, ST_ERROR_RECOVERY);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* I2C transaction succeeded. Set timepoint for next ping status. */
 	data->next_ping_status = sys_timepoint_calc(K_MSEC(T_PING_STATUS));
 	set_state(data, ST_PING_STATUS);
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_ping_status_entry(void *o)
@@ -1023,7 +1029,7 @@ static void st_ping_status_entry(void *o)
 	data->cci_event.raw_value = 0;
 }
 
-static void st_ping_status_run(void *o)
+static enum smf_state_result st_ping_status_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -1047,7 +1053,7 @@ static void st_ping_status_run(void *o)
 		if (max_i2c_retry_reached(data, I2C_MSG_READ)) {
 			set_state(data, ST_ERROR_RECOVERY);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (data->ping_status.cmd_sts) {
@@ -1157,8 +1163,10 @@ static void st_ping_status_run(void *o)
 			data->ping_status.raw_value);
 		/* An error occurred, try to recover */
 		set_state(data, ST_ERROR_RECOVERY);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_read_entry(void *o)
@@ -1177,7 +1185,7 @@ static void st_read_entry(void *o)
 	/* Set the port the CCI Event occurred on */
 }
 
-static void st_read_run(void *o)
+static enum smf_state_result st_read_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -1213,7 +1221,7 @@ static void st_read_run(void *o)
 		if (max_i2c_retry_reached(data, I2C_MSG_READ)) {
 			set_state(data, ST_ERROR_RECOVERY);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Get length of data returned */
@@ -1390,6 +1398,8 @@ static void st_read_run(void *o)
 	call_cci_event_cb(data);
 	/* All done, return to Init or Idle state */
 	TRANSITION_TO_INIT_OR_IDLE_STATE(data);
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_error_recovery_entry(void *o)
@@ -1403,19 +1413,19 @@ static void st_error_recovery_entry(void *o)
 	/*TODO: ADD ERROR RECOVERY CODE */
 }
 
-static void st_error_recovery_run(void *o)
+static enum smf_state_result st_error_recovery_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Don't continue trying if we are suspending communication */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (data->error_recovery_counter >= N_MAX_ERROR_RECOVERY_COUNT) {
 		set_state(data, ST_DISABLE);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Current recovery is just delaying and performing a PDC init */
@@ -1423,11 +1433,12 @@ static void st_error_recovery_run(void *o)
 	 */
 	if (data->error_recovery_delay_counter < N_ERROR_RECOVERY_DELAY_COUNT) {
 		data->error_recovery_delay_counter++;
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Perform PDC Init */
 	perform_pdc_init(data);
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_disable_entry(void *o)
@@ -1440,9 +1451,10 @@ static void st_disable_entry(void *o)
 	data->error_status.port_disabled = 1;
 }
 
-static void st_disable_run(void *o)
+static enum smf_state_result st_disable_run(void *o)
 {
 	/* Stay here until reset */
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_suspended_entry(void *o)
@@ -1452,13 +1464,13 @@ static void st_suspended_entry(void *o)
 	print_current_state(data);
 }
 
-static void st_suspended_run(void *o)
+static enum smf_state_result st_suspended_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Stay here while suspended */
 	if (check_comms_suspended()) {
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Otherwise, return back to init state...
@@ -1467,6 +1479,7 @@ static void st_suspended_run(void *o)
 	 * back into a known state (This includes a driver + PDC reset)
 	 */
 	perform_pdc_init(data);
+	return SMF_EVENT_HANDLED;
 }
 
 /* Populate cmd state table */
