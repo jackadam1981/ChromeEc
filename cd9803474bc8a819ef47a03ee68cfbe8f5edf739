@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff2b376_55e1ccc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-11T21:05:32Z",
+      "side": 1,
+      "message": "Long term, I think this logic makes more sense as part of the charge manager, but there\u0027s currently no hooks/callbacks for the charge manager to know when a sink path operation has completed.",
+      "revId": "cd9803474bc8a819ef47a03ee68cfbe8f5edf739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
