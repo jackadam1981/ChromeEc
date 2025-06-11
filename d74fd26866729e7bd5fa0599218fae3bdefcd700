@@ -52,6 +52,24 @@
       "parentUuid": "fcf9ea15_ca63e125",
       "revId": "d74fd26866729e7bd5fa0599218fae3bdefcd700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bee556e_388bf174",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-06-11T00:27:37Z",
+      "side": 1,
+      "message": "Seems CQ turn into green but I don\u0027t see b/423062223 solution yet, kick for a try anyway.",
+      "parentUuid": "34c6dc8b_82f47f36",
+      "revId": "d74fd26866729e7bd5fa0599218fae3bdefcd700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
