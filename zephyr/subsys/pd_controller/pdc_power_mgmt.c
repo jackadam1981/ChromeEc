@@ -1905,7 +1905,7 @@ static void pdc_unattached_entry(void *obj)
 /**
  * @brief Run unattached state
  */
-static void pdc_unattached_run(void *obj)
+static enum smf_state_result pdc_unattached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
@@ -1914,12 +1914,12 @@ static void pdc_unattached_run(void *obj)
 	 */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
 		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (port->unattached_local_state) {
@@ -1927,11 +1927,12 @@ static void pdc_unattached_run(void *obj)
 		port->sink_path_to_send = false;
 		port->unattached_local_state = UNATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
-		return;
+		return SMF_EVENT_HANDLED;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
 		break;
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 /**
@@ -1974,7 +1975,7 @@ static void pdc_src_attached_entry(void *obj)
 /**
  * @brief Run source attached state
  */
-static void pdc_src_attached_run(void *obj)
+static enum smf_state_result pdc_src_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
@@ -1983,22 +1984,22 @@ static void pdc_src_attached_run(void *obj)
 	 */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
 		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_CAM_CHANGE)) {
 		queue_internal_cmd(port, CMD_PDC_GET_PD_VDO_DP_CFG_SELF);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ATTENTION)) {
 		queue_internal_cmd(port, CMD_PDC_GET_ATTENTION_VDO);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* TODO: b/319643480 - Brox: implement SRC policies */
@@ -2009,12 +2010,12 @@ static void pdc_src_attached_run(void *obj)
 		port->src_attached_local_state =
 			SRC_ATTACHED_GET_CONNECTOR_CAPABILITY;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->src_attached_local_state =
 			SRC_ATTACHED_SET_DR_SWAP_POLICY;
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_SET_DR_SWAP_POLICY:
 		port->src_attached_local_state =
 			SRC_ATTACHED_SET_PR_SWAP_POLICY;
@@ -2023,7 +2024,7 @@ static void pdc_src_attached_run(void *obj)
 		port->uor.swap_to_ufp = 0;
 		port->uor.accept_dr_swap = 0;
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_SET_PR_SWAP_POLICY:
 		port->src_attached_local_state = SRC_ATTACHED_READ_POWER_LEVEL;
 		/* TODO: read from DT */
@@ -2036,24 +2037,25 @@ static void pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		atomic_clear_bit(port->src_policy.flags,
 				 SRC_POLICY_UPDATE_ALLOW_PR_SWAP);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_READ_POWER_LEVEL:
 		port->src_attached_local_state = SRC_ATTACHED_GET_VDO;
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_GET_VDO:
 		port->src_attached_local_state =
 			SRC_ATTACHED_GET_CABLE_PROPERTY;
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_GET_CABLE_PROPERTY:
 		port->src_attached_local_state = SRC_ATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
 		break;
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 /**
@@ -2322,7 +2324,7 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 /**
  * @brief Run sink attached state.
  */
-static void pdc_snk_attached_run(void *obj)
+static enum smf_state_result pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
@@ -2331,22 +2333,22 @@ static void pdc_snk_attached_run(void *obj)
 	 */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
 		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_CAM_CHANGE)) {
 		queue_internal_cmd(port, CMD_PDC_GET_PD_VDO_DP_CFG_SELF);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ATTENTION)) {
 		queue_internal_cmd(port, CMD_PDC_GET_ATTENTION_VDO);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* If the attached charger sends new source caps, the PDC will
@@ -2369,7 +2371,7 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
 		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_PR_SWAP_POLICY;
@@ -2378,7 +2380,7 @@ static void pdc_snk_attached_run(void *obj)
 		port->uor.swap_to_ufp = 0;
 		port->uor.accept_dr_swap = 0;
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SET_PR_SWAP_POLICY:
 		port->snk_attached_local_state = SNK_ATTACHED_DISABLE_FRS;
 		/* TODO: read from DT */
@@ -2391,7 +2393,7 @@ static void pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_UPDATE_ALLOW_PR_SWAP);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_DISABLE_FRS:
 		/* Always disable FRS by default. The source policy manager
 		 * is responsible for enabling FRS is the power budget allows.
@@ -2399,11 +2401,11 @@ static void pdc_snk_attached_run(void *obj)
 		port->snk_attached_local_state = SNK_ATTACHED_GET_VDO;
 		port->frs_enable = false;
 		queue_internal_cmd(port, CMD_PDC_SET_FRS);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_GET_VDO:
 		port->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
 		queue_internal_cmd(port, CMD_PDC_GET_VDO);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_GET_PDOS:
 		/* Request up to 4 pdos to honor USCI 6.5.15 Get PDOs - Number
 		 * of PDOs to return starting from the PDO Offset. The number of
@@ -2430,7 +2432,7 @@ static void pdc_snk_attached_run(void *obj)
 		port->get_pdo.pdo_type = SOURCE_PDO;
 		port->get_pdo.pdo_source = PARTNER_PDO;
 		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_EVALUATE_PDOS:
 		/* Remain in EVAL PDOs if more than one PDC has the sink path
 		 * enabled. Once the charge manager is seeded, it will select
@@ -2441,11 +2443,11 @@ static void pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state =
 				SNK_ATTACHED_READ_POWER_LEVEL;
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_READ_POWER_LEVEL:
 		port->snk_attached_local_state = SNK_ATTACHED_SYNC_CHARGE_MGR;
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SYNC_CHARGE_MGR:
 		/* Update Charge Manager with PDO/RDO the PDC has negotiated or
 		 * that PDC Power Mgmt has evaluated. If Charge manager is not
@@ -2463,7 +2465,7 @@ static void pdc_snk_attached_run(void *obj)
 			(charge_manager_is_seeded() ?
 				 SNK_ATTACHED_SET_SINK_PATH :
 				 SNK_ATTACHED_SYNC_CHARGE_MGR);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SET_SINK_PATH:
 
 		if (pdc_snk_attached_set_sink_path(port)) {
@@ -2477,7 +2479,7 @@ static void pdc_snk_attached_run(void *obj)
 			}
 		}
 
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_GET_SINK_PDO:
 		port->snk_attached_local_state =
 			SNK_ATTACHED_GET_CABLE_PROPERTY;
@@ -2499,14 +2501,14 @@ static void pdc_snk_attached_run(void *obj)
 				       SNK_POLICY_EVAL_SNK_FIXED_PDO);
 
 			queue_internal_cmd(port, CMD_PDC_GET_PDOS);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		/* If !CONFIG_PLATFORM_EC_USB_PD_FRS, fallthrough */
 		__fallthrough;
 	case SNK_ATTACHED_GET_CABLE_PROPERTY:
 		port->snk_attached_local_state = SNK_ATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_RUN:
 		/* Hard Reset could disable Sink FET. Re-enable it */
 		if (atomic_get(&port->hard_reset_sent)) {
@@ -2518,6 +2520,7 @@ static void pdc_snk_attached_run(void *obj)
 		}
 		break;
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 static void pdc_send_cmd_start_entry(void *obj)
@@ -2699,7 +2702,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	return rv;
 }
 
-static void pdc_send_cmd_start_run(void *obj)
+static enum smf_state_result pdc_send_cmd_start_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	int rv;
@@ -2728,7 +2731,7 @@ static void pdc_send_cmd_start_run(void *obj)
 		port->cmd->error = -ENOSYS;
 		port->cmd->pending = false;
 		set_pdc_state(port, port->send_cmd_return_state);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 	/* Test if command was successful. If not, try again until max
 	 * retries is reached */
@@ -2742,10 +2745,11 @@ static void pdc_send_cmd_start_run(void *obj)
 			port->cmd->pending = false;
 			set_pdc_state(port, port->send_cmd_return_state);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	set_pdc_state(port, PDC_SEND_CMD_WAIT);
+	return SMF_EVENT_HANDLED;
 }
 
 static void pdc_send_cmd_wait_entry(void *obj)
@@ -2757,7 +2761,7 @@ static void pdc_send_cmd_wait_entry(void *obj)
 	port->send_cmd.resend_counter = 0;
 }
 
-static void pdc_send_cmd_wait_run(void *obj)
+static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
@@ -2772,7 +2776,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 		if (pdc_is_init_done(port->pdc)) {
 			port->cmd->error = 0;
 			set_pdc_state(port, port->send_cmd_return_state);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_BUSY)) {
 		LOG_DBG("CCI_BUSY");
@@ -2805,7 +2809,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 				pdc_cmd_names[port->cmd->cmd]);
 			port->cmd->error = -EBUSY;
 			set_pdc_state(port, port->send_cmd_return_state);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags,
 					     CCI_CMD_COMPLETED)) {
@@ -2814,7 +2818,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 		switch (port->cmd->cmd) {
 		case CMD_PDC_GET_CONNECTOR_STATUS:
 			handle_connector_status(port);
-			return;
+			return SMF_EVENT_HANDLED;
 		case CMD_PDC_GET_ATTENTION_VDO:
 			handle_attention_vdo(port);
 			break;
@@ -2827,7 +2831,7 @@ static void pdc_send_cmd_wait_run(void *obj)
 		}
 
 		set_pdc_state(port, port->send_cmd_return_state);
-		return;
+		return SMF_EVENT_HANDLED;
 		/*
 		 * Note: If the command was CONNECTOR_RESET, and the type of
 		 * reset was a Hard Reset, then it would also make sense to
@@ -2848,14 +2852,15 @@ static void pdc_send_cmd_wait_run(void *obj)
 				 */
 				port->cmd->cmd = CMD_PDC_RESET;
 				set_pdc_state(port, PDC_UNATTACHED);
-				return;
+				return SMF_EVENT_HANDLED;
 			} else {
 				set_pdc_state(port,
 					      port->send_cmd_return_state);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 		}
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 static void pdc_send_cmd_wait_exit(void *obj)
@@ -2935,7 +2940,7 @@ static void pdc_src_typec_only_entry(void *obj)
 	}
 }
 
-static void pdc_src_typec_only_run(void *obj)
+static enum smf_state_result pdc_src_typec_only_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *config = port->dev->config;
@@ -2947,12 +2952,12 @@ static void pdc_src_typec_only_run(void *obj)
 	 * connector status and take the appropriate action. */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
 		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (port->src_typec_attached_local_state) {
@@ -2962,19 +2967,19 @@ static void pdc_src_typec_only_run(void *obj)
 
 		port->sink_path_to_send = false;
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_TYPEC_ATTACHED_DEBOUNCE:
 		if (k_timer_status_get(&port->typec_only_timer) > 0) {
 			port->src_typec_attached_local_state =
 				SRC_TYPEC_ATTACHED_ADD_SINK;
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_TYPEC_ATTACHED_ADD_SINK:
 		port->src_typec_attached_local_state =
 			SRC_TYPEC_READ_POWER_LEVEL;
 		/* Notify DPM that a type-c only port partner is attached */
 		pdc_dpm_add_non_pd_sink(port_number);
-		return;
+		return SMF_EVENT_HANDLED;
 	case SRC_TYPEC_READ_POWER_LEVEL:
 		port->src_typec_attached_local_state = SRC_TYPEC_ATTACHED_RUN;
 		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
@@ -2983,6 +2988,7 @@ static void pdc_src_typec_only_run(void *obj)
 		run_typec_src_policies(port);
 		break;
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 static void pdc_snk_typec_only_entry(void *obj)
@@ -3018,7 +3024,7 @@ static void pdc_snk_typec_only_entry(void *obj)
 	set_attached_pdc_state(port, SNK_ATTACHED_TYPEC_ONLY_STATE);
 }
 
-static void pdc_snk_typec_only_run(void *obj)
+static enum smf_state_result pdc_snk_typec_only_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
@@ -3030,12 +3036,12 @@ static void pdc_snk_typec_only_run(void *obj)
 	 */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ACK)) {
 		queue_internal_cmd(port, CMD_PDC_ACK_CC_CI);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (port->snk_typec_attached_local_state) {
@@ -3044,7 +3050,7 @@ static void pdc_snk_typec_only_run(void *obj)
 			port->snk_typec_attached_local_state =
 				SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT;
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	case SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT:
 		port->snk_typec_attached_local_state =
 			SNK_TYPEC_READ_POWER_LEVEL;
@@ -3077,6 +3083,7 @@ static void pdc_snk_typec_only_run(void *obj)
 		run_typec_snk_policies(port);
 		break;
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 static void pdc_init_entry(void *obj)
@@ -3260,7 +3267,7 @@ static bool pdc_all_ports_ready(void)
 	return true;
 }
 
-static void pdc_init_run(void *obj)
+static enum smf_state_result pdc_init_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
@@ -3269,7 +3276,7 @@ static void pdc_init_run(void *obj)
 	case INIT_WAIT_FOR_READY:
 		if (!pdc_is_init_done(port->pdc)) {
 			/* Still waiting on driver to be ready */
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 
 		LOG_INF("C%d: PDC Subsystem Started", config->connector_num);
@@ -3311,6 +3318,7 @@ static void pdc_init_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		break;
 	}
+	return SMF_EVENT_HANDLED;
 }
 
 static void pdc_suspended_entry(void *obj)
@@ -3320,18 +3328,19 @@ static void pdc_suspended_entry(void *obj)
 	print_current_pdc_state(port);
 }
 
-static void pdc_suspended_run(void *obj)
+static enum smf_state_result pdc_suspended_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
 	if (atomic_get(&port->suspend)) {
 		/* Still suspended. Do nothing. */
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* No longer suspended. Do a full reset. */
 	init_port_variables(port, true);
 	set_pdc_state(port, PDC_INIT);
+	return SMF_EVENT_HANDLED;
 }
 
 /**
