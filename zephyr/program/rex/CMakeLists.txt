@@ -11,6 +11,14 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BATTERY "src/battery_present.c")
 zephyr_library_sources_ifdef(CONFIG_BOARD_REX_USBC_CONFIG "src/usbc_config.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "src/usb_pd_policy.c")
 
+#zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE "src/usbc_tbt_compat.c")
+
+if(DEFINED CONFIG_PLATFORM_EC_USB_PD_TBT_COMPAT_MODE)
+  if(DEFINED CONFIG_PLATFORM_EC_USB_PD_ALT_MODE_UFP)
+    zephyr_library_sources("src/usbc_tbt_compat.c")
+  endif()
+endif()
+
 if(DEFINED CONFIG_BOARD_REX)
 	project(rex)
 	add_subdirectory(rex)
