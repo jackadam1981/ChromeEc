@@ -82,9 +82,17 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 
 /* USBC PPC*/
+<<<<<<< HEAD   (d9dc8b it83xx/watchdog: do not lock access to ETWCFG register)
 #undef CONFIG_SYV682X_HV_ILIM
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
 #define CONFIG_USBC_PPC_SYV682X		/* USBC port C0/C1 */
+||||||| BASE
+#undef CONFIG_SYV682X_HV_ILIM
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
+#define CONFIG_USBC_PPC_SYV682X /* USBC port C0/C1 */
+=======
+#define CONFIG_USBC_PPC_SYV682X /* USBC port C0/C1 */
+>>>>>>> CHANGE (1d16bf syv682: Default OCP threshold to 5.5A)
 #define CONFIG_USB_PD_FRS_PPC
 #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 #undef CONFIG_USB_PD_TCPM_TUSB422

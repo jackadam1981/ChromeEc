@@ -60,9 +60,17 @@
 
 /* Additional PPC second source */
 #define CONFIG_USBC_PPC_SYV682X
+<<<<<<< HEAD   (d9dc8b it83xx/watchdog: do not lock access to ETWCFG register)
 #define	CONFIG_USBC_PPC_DEDICATED_INT
 #undef	CONFIG_SYV682X_HV_ILIM
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
+||||||| BASE
+#define CONFIG_USBC_PPC_DEDICATED_INT
+#undef CONFIG_SYV682X_HV_ILIM
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
+=======
+#define CONFIG_USBC_PPC_DEDICATED_INT
+>>>>>>> CHANGE (1d16bf syv682: Default OCP threshold to 5.5A)
 /* SYV682 isn't connected to CC, so TCPC must provide VCONN */
 #define CONFIG_USBC_PPC_SYV682X_NO_CC
 
