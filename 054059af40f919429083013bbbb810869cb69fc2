@@ -22,6 +22,30 @@
       },
       "revId": "054059af40f919429083013bbbb810869cb69fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a6da951_d1fe6226",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-06-11T11:15:35Z",
+      "side": 1,
+      "message": "Please disregard this comment. This change would likely cause additional failures, as referenced in issue 423953245. Thanks.",
+      "parentUuid": "218dea3e_750c2e2a",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "054059af40f919429083013bbbb810869cb69fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
