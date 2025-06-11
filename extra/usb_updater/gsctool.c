@@ -4871,7 +4871,7 @@ static int process_cr50_get_metrics(struct transfer_descriptor *td,
 	stats.version = be32toh(stats.version);
 	stats.reset_src = be32toh(stats.reset_src);
 	stats.brdprop = be32toh(stats.brdprop);
-	stats.reset_time_s = be64toh(stats.reset_time_s);
+	stats.reset_time_s = be32toh(stats.reset_time_s);
 	stats.cold_reset_time_s = be32toh(stats.cold_reset_time_s);
 	stats.misc_status = be32toh(stats.misc_status);
 
