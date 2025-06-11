@@ -30,6 +30,7 @@ def register_npcx9_project(
 def register_it8xxx2_project(
     project_name,
     extra_kconfig_files=(),
+    extra_modules=(),
 ):
     """Register an it8xxx2 based variant of fatcat."""
     register_binman_project(
@@ -46,6 +47,7 @@ def register_it8xxx2_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        modules=["ec", *extra_modules],
     )
 
 
@@ -76,6 +78,10 @@ register_it8xxx2_project(
 
 register_it8xxx2_project(
     project_name="kinmen",
+    extra_kconfig_files=[
+        here / "dsp_comms.conf",
+    ],
+    extra_modules=["pigweed", "nanopb"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
