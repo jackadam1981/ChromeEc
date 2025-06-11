@@ -1,0 +1,166 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02c2074_34087bf6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T20:32:11Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n\nI believe this might be better:\n\n```\nstatic int egis630_get_info(const struct device *dev,\n                struct fingerprint_info *info)\n{\n    const struct egis630_cfg *cfg \u003d dev-\u003econfig;\n    struct egis630_data *data \u003d dev-\u003edata;\n    uint16_t sensor_id \u003d 0;\n    egis_api_return_t res \u003d EGIS_API_OK;\n\n    memcpy(info, \u0026cfg-\u003einfo, sizeof(struct fingerprint_info));\n\n    if (IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n        res \u003d egis_get_hwid(\u0026sensor_id);\n        }\n\n    if (res !\u003d EGIS_API_OK) {\n        LOG_ERR(\"Failed to get EGIS HWID: %d\", res);\n        return res;\n    }\n\n    info-\u003emodel_id \u003d sensor_id;\n    info-\u003eerrors \u003d data-\u003eerrors;\n\n    return 0;\n}\n```",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "41d4fa53_894ce3ec",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 159,
+                "startChar": 0,
+                "endLine": 163,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 168,
+                "startChar": 0,
+                "endLine": 168,
+                "endChar": 0
+              },
+              "replacement": "\tif (!IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n\t\treturn -ENOTSUP;\n\t}\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "27bf0673136149520d9afa71081c1a2879a6533e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2b8f94_c951c12e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T20:32:11Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n\nHow about this option?\n```\nstatic int egis630_set_mode(const struct device *dev,\n\t\t\t    enum fingerprint_sensor_mode mode)\n{\n\tint rc \u003d 0;\n\n\tswitch (mode) {\n\tcase FINGERPRINT_SENSOR_MODE_DETECT:\n\t  if (IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n\t\tLOG_INF(\"\u003c%s,%d\u003e\", __func__, __LINE__);\n\t\tegis_set_detect_mode();\n\t\trc \u003d egis630_enable_irq(dev);\n\t\t} else {rc \u003d -ENOTSUP;}\n\t  break;\n\n\tcase FINGERPRINT_SENSOR_MODE_LOW_POWER:\n\t   if (IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n\t\tegis_sensor_power_down();\n\t\trc \u003d egis630_disable_irq(dev);\n\t\t} else rc \u003d -ENOTSUP;}\n\t    break;\n\n\tcase FINGERPRINT_SENSOR_MODE_IDLE:\n\t\trc \u003d egis630_disable_irq(dev);\n\t\tbreak;\n\n\tdefault:\n\t\trc \u003d -ENOTSUP;\n\t}\n\n\treturn rc;\n}\n```",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 1
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c473e671_859dff2f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 200,
+                "startChar": 0,
+                "endLine": 204,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 205,
+                "startChar": 0,
+                "endLine": 206,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 225,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": "\n\tif (!IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n\t\treturn -ENOTSUP;\n\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 236,
+                "startChar": 0,
+                "endLine": 236,
+                "endChar": 0
+              },
+              "replacement": "\tint ret \u003d convert_egis_get_image_error_code(\n\t\tegis_get_image_with_mode(image_buf, capture_type));\n\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 240,
+                "startChar": 0,
+                "endLine": 242,
+                "endChar": 0
+              },
+              "replacement": "\treturn ret;\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 246,
+                "startChar": 0,
+                "endLine": 250,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 260,
+                "startChar": 0,
+                "endLine": 260,
+                "endChar": 0
+              },
+              "replacement": "\n\tif (!IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n\t\treturn -ENOTSUP;\n\t}\n"
+            },
+            {
+              "path": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+              "range": {
+                "startLine": 323,
+                "startChar": 0,
+                "endLine": 323,
+                "endChar": 0
+              },
+              "replacement": "\tif (!IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {\n\t\treturn -ENOTSUP;\n\t}\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "27bf0673136149520d9afa71081c1a2879a6533e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
