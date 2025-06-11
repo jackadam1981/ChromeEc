@@ -71,15 +71,16 @@ uint32_t __hw_clock_event_get(void)
 
 uint32_t get_seconds_since_cold_boot(void)
 {
-	uint32_t overflow_s = GREAD_FIELD(TIMELS, SOURCE(STATUS), WRAPPED) ?
-			      OVERFLOW_TIME_S : 0;
-	return (GREG32(PMU, PWRDN_SCRATCH23) + overflow_s +
+	return (GREG32(PMU, PWRDN_SCRATCH23) +
 		(__hw_clock_source_read() / SECOND));
 }
 
-static void save_seconds_since_cold_boot(void)
+static void save_seconds_since_cold_boot(bool overflow)
 {
-	GREG32(PMU, PWRDN_SCRATCH23) = get_seconds_since_cold_boot();
+	uint32_t overflow_s = overflow ? OVERFLOW_TIME_S : 0;
+
+	GREG32(PMU, PWRDN_SCRATCH23) = (get_seconds_since_cold_boot() +
+			overflow_s);
 }
 
 void __hw_clock_event_clear(void)
@@ -145,7 +146,7 @@ void __hw_clock_source_irq(void)
 	GWRITE(TIMELS, SOURCE(WAKEUP_ACK), 1);
 	GWRITE(TIMELS, SOURCE(IAR), 1);
 
-	save_seconds_since_cold_boot();
+	save_seconds_since_cold_boot(1);
 
 	/* Reset the load value */
 	GREG32(TIMELS, SOURCE(LOAD)) = TIMELS_MAX;
@@ -156,6 +157,7 @@ DECLARE_IRQ(GC_IRQNUM_TIMELS0_TIMINT0, __hw_clock_source_irq, 1);
 
 int __hw_clock_source_init(uint32_t start_t)
 {
+	uint32_t flags = system_get_reset_flags();
 
 	if (runlevel_is_high()) {
 		/* Verify the contents of CC_TRIM are valid */
@@ -175,8 +177,8 @@ int __hw_clock_source_init(uint32_t start_t)
 
 
 	/* Save time since deep sleep before resetting the SOURCE timer. */
-	if (system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE)
-		save_seconds_since_cold_boot();
+	if (flags & EC_RESET_FLAG_HIBERNATE)
+		save_seconds_since_cold_boot(flags & EC_RESET_FLAG_RTC_ALARM);
 
 	/* Configure timer0 */
 	GREG32(TIMELS, SOURCE(RELOADVAL)) = TIMELS_MAX;
