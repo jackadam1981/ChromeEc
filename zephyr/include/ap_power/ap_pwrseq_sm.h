@@ -137,23 +137,47 @@ void ap_pwrseq_sm_exec_exit_handler(void *const data,
 				    ap_pwr_state_action_handler handler);
 
 /**
- * @brief Macro to define action handler wrapper function.
+ * @brief Macro to define action handler wrapper function using the
+ * state_method function prototype.
  *
- * @param name Valid enumaration value of state.
+ * @param name Valid enumeration value of state.
  *
  * @param level One of the three AP power sequence levels: arch, chipset or app.
  *
- * @param action One of the three SMF action handlers: entry, run or exit.
+ * @param action One of the SMF action handlers: entry or exit.
  *
  * @param handler Action handler function of type `ap_pwr_state_action_handler`.
  *
  * @retval Defines static wrapper function of handler to be called by AP power
  * sequence state machine.
  **/
-#define AP_POWER_SM_DEF_STATE_HANDLER(name, level, action, handler)            \
+#define AP_POWER_SM_DEF_STATE_METHOD_HANDLER(name, level, action, handler)     \
 	static void ap_pwr_##name##_##level##_##action##_##handler(void *data) \
 	{                                                                      \
 		ap_pwrseq_sm_exec_##action##_handler(data, handler);           \
+	}
+
+/**
+ * @brief Macro to define action handler wrapper function using the
+ * state_execute function prototype.
+ *
+ * @param name Valid enumeration value of state.
+ *
+ * @param level One of the three AP power sequence levels: arch, chipset or app.
+ *
+ * @param action One of the SMF action handlers: entry or exit.
+ *
+ * @param handler Action handler function of type `ap_pwr_state_action_handler`.
+ *
+ * @retval Defines static wrapper function of handler to be called by AP power
+ * sequence state machine.
+ **/
+#define AP_POWER_SM_DEF_STATE_EXECUTE_HANDLER(name, level, handler)           \
+	static enum smf_state_result ap_pwr_##name##_##level##_run_##handler( \
+		void *data)                                                   \
+	{                                                                     \
+		ap_pwrseq_sm_exec_run_handler(data, handler);                 \
+		return SMF_EVENT_PROPAGATE;                                   \
 	}
 
 /**
@@ -175,9 +199,9 @@ void ap_pwrseq_sm_exec_exit_handler(void *const data,
  * sequence state machine.
  **/
 #define AP_POWER_SM_DEF_STATE_HANDLERS(name, level, _entry, _run, _exit) \
-	AP_POWER_SM_DEF_STATE_HANDLER(name, level, entry, _entry)        \
-	AP_POWER_SM_DEF_STATE_HANDLER(name, level, run, _run)            \
-	AP_POWER_SM_DEF_STATE_HANDLER(name, level, exit, _exit)
+	AP_POWER_SM_DEF_STATE_METHOD_HANDLER(name, level, entry, _entry) \
+	AP_POWER_SM_DEF_STATE_EXECUTE_HANDLER(name, level, _run)         \
+	AP_POWER_SM_DEF_STATE_METHOD_HANDLER(name, level, exit, _exit)
 
 /**
  * @brief Macro to assemble action handler wrapper function name.
