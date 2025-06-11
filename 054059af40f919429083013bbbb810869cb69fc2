@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218dea3e_750c2e2a",
+        "filename": "zephyr/program/geralt/ciri/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-06-11T07:00:19Z",
+      "side": 1,
+      "message": "change to 7, and change VIF src cap to 5v1.5A, the TEST.PD.PROT.SRC3.14 and TEST.PD.PROT.SNK.2, So, can we make changes like this? thanks",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "054059af40f919429083013bbbb810869cb69fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
