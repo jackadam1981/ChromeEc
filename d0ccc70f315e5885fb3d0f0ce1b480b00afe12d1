@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb119d1_9d6f2fdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-11T23:07:25Z",
+      "side": 1,
+      "message": "When ISH is used, the ISH still sends the notification to the AP through the sensor fifo, the EC does not.\n\nOnly the EC notifies the AP through the ACPI channel.",
+      "revId": "d0ccc70f315e5885fb3d0f0ce1b480b00afe12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4dcce3_34734078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-11T23:07:25Z",
+      "side": 1,
+      "message": "Add\n```\nFixes: e8cc01ba01e (\"body_detection: Handle runtime disabling of motionsense\")\n```",
+      "revId": "d0ccc70f315e5885fb3d0f0ce1b480b00afe12d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
