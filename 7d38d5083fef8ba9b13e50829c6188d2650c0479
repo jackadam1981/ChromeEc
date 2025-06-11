@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b1ef28_11cfd4ed",
+        "filename": "zephyr/program/fatcat/kinmen/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-11T15:50:38Z",
+      "side": 1,
+      "message": "should this be `(GPIO_INPUT | GPIO_ACTIVE_LOW)` or are the\nrest of the GPIO flags not accepted here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "9bea82e7_2348d2d2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/kinmen/i2c.dtsi",
+              "range": {
+                "startLine": 37,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0
+              },
+              "replacement": "\t\tint-gpios \u003d \u003c\u0026gpioh 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)\u003e;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7d38d5083fef8ba9b13e50829c6188d2650c0479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff798a3c_9d88e5a0",
+        "filename": "zephyr/program/fatcat/kinmen/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-11T15:50:38Z",
+      "side": 1,
+      "message": "should we just move these to dsp_comms?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2e222ff8_032c1496",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/kinmen/project.conf",
+              "range": {
+                "startLine": 97,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "zephyr/program/fatcat/kinmen/project.conf",
+              "range": {
+                "startLine": 103,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": "CONFIG_PIGWEED_CHRONO_SYSTEM_CLOCK\u003dy\nCONFIG_PIGWEED_SYNC_MUTEX\u003dy\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7d38d5083fef8ba9b13e50829c6188d2650c0479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
