@@ -69,6 +69,30 @@
       },
       "revId": "2667c2bbcbaada13a71c38bee879a9055e2eb70e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfba0f6c_28316680",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-11T01:11:19Z",
+      "side": 1,
+      "message": "If I look at the bloonchipper upstream tests, the [CONFIG_CROS_SYSTEM_STM32](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_system/Kconfig;l\u003d97?q\u003d%22config%20CROS_SYSTEM_NPCX%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d96-,97,-98) is not enabled because config `IWDG_STM32` is not enabled. If I delete that dependency, I will get the same error that we used to get for the helipilot upstream tests and I can see that `CONFIG_CROS_SYSTEM_STM32` is enabled.\n\nI believe we can use the same strategy for `helipilot`. We can make config [CROS_SYSTEM_NPCX](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_system/Kconfig;l\u003d5?q\u003d%22config%20CROS_SYSTEM_NPCX%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d4-,5,-6) to depend on config [WDT_NPCX](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/drivers/watchdog/Kconfig.npcx;drc\u003dc9d8655685fbff3680c7679c47492e71801deb27;l\u003d6). The `WDT_NPCX` config is not enabled for the upstream test and will cause `CONFIG_CROS_SYSTEM_NPCX` to be disabled. It is enabled though for the `helipilot` board. I am not sure if this will have any impact on any other NPCX board and whether CQ is enough. However, I believe this is the way to go.",
+      "parentUuid": "83100452_99eea7f7",
+      "range": {
+        "startLine": 1215,
+        "startChar": 41,
+        "endLine": 1215,
+        "endChar": 64
+      },
+      "revId": "2667c2bbcbaada13a71c38bee879a9055e2eb70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
