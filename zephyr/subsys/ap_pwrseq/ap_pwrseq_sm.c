@@ -254,15 +254,26 @@ enum ap_pwrseq_state ap_pwrseq_sm_get_exit_state(void *const data)
 	return sm_data->exit;
 }
 
-#define AP_POWER_SM_HANDLER_DEF(action)                                \
-	void ap_pwrseq_sm_exec_##action##_handler(                     \
-		void *const data, ap_pwr_state_action_handler handler) \
-	{                                                              \
-		struct ap_pwrseq_sm_data *sm_data = data;              \
-		if (handler && !sm_data->action##_handled)             \
-			sm_data->action##_handled = !!handler(data);   \
-	}
+void ap_pwrseq_sm_exec_entry_handler(void *const data,
+				     ap_pwr_state_action_handler handler)
+{
+	struct ap_pwrseq_sm_data *sm_data = data;
+	if (handler && !sm_data->entry_handled)
+		sm_data->entry_handled = !!handler(data);
+}
 
-AP_POWER_SM_HANDLER_DEF(entry)
-AP_POWER_SM_HANDLER_DEF(run)
-AP_POWER_SM_HANDLER_DEF(exit)
+void ap_pwrseq_sm_exec_run_handler(void *const data,
+				   ap_pwr_state_action_handler handler)
+{
+	struct ap_pwrseq_sm_data *sm_data = data;
+	if (handler && !sm_data->run_handled)
+		sm_data->run_handled = !!handler(data);
+}
+
+void ap_pwrseq_sm_exec_exit_handler(void *const data,
+				    ap_pwr_state_action_handler handler)
+{
+	struct ap_pwrseq_sm_data *sm_data = data;
+	if (handler && !sm_data->exit_handled)
+		sm_data->exit_handled = !!handler(data);
+}

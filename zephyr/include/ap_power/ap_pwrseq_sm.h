@@ -129,13 +129,12 @@
 /* User define action handler, each action handler must follow this type. */
 typedef int (*ap_pwr_state_action_handler)(void *data);
 
-#define AP_POWER_SM_HANDLER_DECL(action)           \
-	void ap_pwrseq_sm_exec_##action##_handler( \
-		void *const data, ap_pwr_state_action_handler handler)
-
-AP_POWER_SM_HANDLER_DECL(entry);
-AP_POWER_SM_HANDLER_DECL(run);
-AP_POWER_SM_HANDLER_DECL(exit);
+void ap_pwrseq_sm_exec_entry_handler(void *const data,
+				     ap_pwr_state_action_handler handler);
+void ap_pwrseq_sm_exec_run_handler(void *const data,
+				   ap_pwr_state_action_handler handler);
+void ap_pwrseq_sm_exec_exit_handler(void *const data,
+				    ap_pwr_state_action_handler handler);
 
 /**
  * @brief Macro to define action handler wrapper function.
