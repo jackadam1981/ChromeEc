@@ -39,7 +39,7 @@
  * Seconds to add when the timer wraps. Round up to ensure cr50 doesn't lose
  * time during the wrap around.
  */
-#define OVERFLOW_TIME_S ((MAX_TIME_USEC + SECOND - 1) / SECOND)
+#define OVERFLOW_TIME_S ((MAX_TIME_USEC / SECOND) + 1)
 
 /*
  * The below calculation is lightweight and can be implemented using
