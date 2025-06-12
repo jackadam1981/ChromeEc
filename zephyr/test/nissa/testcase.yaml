@@ -451,3 +451,26 @@ tests:
       - CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042=y
       - CONFIG_PLATFORM_EC_TABLET_MODE=y
       - CONFIG_PLATFORM_EC_GMR_TABLET_MODE=y
+  nissa.epic:
+    extra_dtc_overlay_files:
+      - "boards/epic.dts"
+    extra_conf_files:
+      - "prj.conf"
+    extra_configs:
+      - CONFIG_TEST_NISSA_EPIC=y
+      - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+      - CONFIG_PLATFORM_EC_TCPC_INTERRUPT=n
+      - CONFIG_PLATFORM_EC_ACCEL_BMA4XX=y
+      - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
+      - CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX=y
+      - CONFIG_PLATFORM_EC_DYNAMIC_MOTION_SENSOR_COUNT=y
+      - CONFIG_PLATFORM_EC_TABLET_MODE=y
+      - CONFIG_PLATFORM_EC_GMR_TABLET_MODE=y
+      - CONFIG_PLATFORM_EC_HOSTCMD=y
+      - CONFIG_PLATFORM_EC_VBOOT_HASH=n
+  nissa.epic.sub_board:
+    extra_dtc_overlay_files:
+      - "boards/epic_sub_board.dts"
+    extra_configs:
+      - CONFIG_TEST_EPIC_SUB_BOARD=y
+      - CONFIG_NISSA_BOARD_HAS_HDMI_SUPPORT=y

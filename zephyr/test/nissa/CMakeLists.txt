@@ -380,3 +380,25 @@ if(CONFIG_TEST_NISSA_GUREN)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/guren/src/keyboard.c
     )
 endif()
+
+if(CONFIG_TEST_NISSA_EPIC)
+    target_compile_definitions(app PRIVATE CHARGER_PRIMARY=0 CHARGER_SECONDARY=1)
+    target_sources(
+            app PRIVATE
+            src/epic.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/charger.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/hdmi.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/usbc.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/usb_mux_config.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/form_factor.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/fan.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/thermal.c
+    )
+endif()
+
+target_sources_ifdef(
+        CONFIG_TEST_EPIC_SUB_BOARD
+        app PRIVATE
+        src/epic_sub_board.c
+        src/log_module.c
+        ${PLATFORM_EC_PROGRAM_DIR}/nissa/epic/src/sub_board.c)

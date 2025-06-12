@@ -163,6 +163,17 @@ choice TEST_TARGET
 	  select TEST_DISABLE_INLINE_CHIPSET_IN_STATE
 	  help
 	    The test target that exercises nissa/guren/*.c
+
+	config TEST_NISSA_EPIC
+	  bool "Tests for Epic-specific code"
+	  select TEST_DISABLE_INLINE_CHIPSET_IN_STATE
+	  help
+		The test target that exercises nissa/epic/*.c
+
+	config TEST_EPIC_SUB_BOARD
+		bool "Tests for sub_board.c"
+		help
+		  The test target that exercises nissa/epic/src/sub_board.c
 endchoice
 
 config TEST_DISABLE_INLINE_CHIPSET_IN_STATE
