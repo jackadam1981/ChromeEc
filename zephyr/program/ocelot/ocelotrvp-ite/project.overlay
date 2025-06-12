@@ -10,7 +10,6 @@
 /* ocelotrvp-ite project DTS includes */
 
 #include "generated.dtsi"
-#include "../rvp_usba.dtsi"
 
 /*
  * Map I2C buses to common names
@@ -37,12 +36,14 @@ gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd_r {};
 /* Map tachometers to common names */
 tach_fan0: &tach0 {};
 
+#include "../rvp_usba.dtsi"
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_usbc.dtsi"
 #include "../rvp_keyboard.dtsi"
 #include "../rvp_fans.dtsi"
+#include "../rvp_temp_sensors.dtsi"
 
 /* ocelotrvp-ite overrides follow... */
 / {
@@ -65,9 +66,6 @@ tach_fan0: &tach0 {};
 &sha0 {
 	status = "okay";
 };
-
-/* Disable nodes for features not yet enabled. */
-/delete-node/ &{/named-adc-channels};
 
 &pwm1 {
 	status = "disabled";

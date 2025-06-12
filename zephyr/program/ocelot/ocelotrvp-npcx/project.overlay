@@ -9,7 +9,6 @@
 
 /* ocelotrvp-npcx project DTS includes */
 #include "generated.dtsi"
-#include "../rvp_usba.dtsi"
 
 /*
  * Map I2C buses to common names
@@ -36,12 +35,14 @@ gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd {};
 /* Map tachometers to common names */
 tach_fan0: &tach1 {};
 
+#include "../rvp_usba.dtsi"
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_usbc.dtsi"
 #include "../rvp_keyboard.dtsi"
 #include "../rvp_fans.dtsi"
+#include "../rvp_temp_sensors.dtsi"
 
 /* ocelotrvp-npcx overrides follow... */
 / {
@@ -76,6 +77,3 @@ tach_fan0: &tach1 {};
 &fan0 {
 	pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 };
-
-/* Disable nodes for features not yet enabled. */
-/delete-node/ &{/named-adc-channels};

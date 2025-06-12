@@ -10,6 +10,10 @@
 	named-adc-channels {
 		compatible = "named-adc-channels";
 
+		adc_charger_amon_bmon: charger_amon_bmon {
+			enum-name = "ADC_AMON_BMON";
+			io-channels = <&adc0 5>;
+		};
 		adc_temp_ambient: temp_ambient {
 			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
 			io-channels = <&adc0 0>;
@@ -22,7 +26,7 @@
 			enum-name = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
 			io-channels = <&adc0 10>;
 		};
-		adc_temp_memory: temp_memory {
+		adc_temp_ddr_soc: temp_ddr_soc {
 			enum-name = "ADC_TEMP_SENSOR_1_DDR_SOC";
 			io-channels = <&adc0 3>;
 		};
@@ -165,7 +169,8 @@
 	pinctrl-0 = <&adc0_chan0_gp45
 		&adc0_chan1_gp44
 		&adc0_chan10_gpe0
-		&adc0_chan3_gp42>;
+		&adc0_chan3_gp42
+		&adc0_chan5_gp37>;
 	pinctrl-names = "default";
 };
 
