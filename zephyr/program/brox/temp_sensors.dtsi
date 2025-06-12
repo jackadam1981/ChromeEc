@@ -5,12 +5,12 @@
  #include <cros/thermistor/thermistor.dtsi>
 
  / {
-	 temp_ddr_soc: ddr_soc {
+	 temp_ddr_soc_thermistor: ddr_soc {
 		 compatible = "cros-ec,temp-sensor-thermistor";
 		 thermistor = <&thermistor_3V3_30K9_47K_4050B>;
 		 adc = <&adc_temp_sensor_1>;
 	 };
-	 temp_fan_inlet: temp_fan_inlet {
+	 temp_fan_inlet_thermistor: temp_fan_inlet {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_30K9_47K_4050B>;
 		adc = <&adc_temp_sensor_2>;
@@ -18,24 +18,24 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		ddr_soc {
+		temp_ddr_soc: ddr_soc {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;
 			power-good-pin = <&gpio_ec_dsw_pwrok>;
-			sensor = <&temp_ddr_soc>;
+			sensor = <&temp_ddr_soc_thermistor>;
 		};
 
-		ambient {
+		temp_fan_inlet: ambient {
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;
 			power-good-pin = <&gpio_ec_dsw_pwrok>;
-			sensor = <&temp_fan_inlet>;
+			sensor = <&temp_fan_inlet_thermistor>;
 		};
 	};
 };

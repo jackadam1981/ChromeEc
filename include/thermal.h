@@ -29,7 +29,7 @@ int thermal_fan_percent(int low, int high, int cur);
  * @param tmp Array of temperatures (C) for each temperature sensor (size
  *            TEMP_SENSOR_COUNT)
  */
-void board_override_fan_control(int fan, int *tmp);
+int board_override_fan_control(int fan, const int *temps);
 
 #ifdef __cplusplus
 }
