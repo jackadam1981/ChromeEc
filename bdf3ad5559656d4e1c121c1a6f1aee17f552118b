@@ -16,6 +16,24 @@
       "message": "@patrykd@google.com Does this look ok to you?",
       "revId": "bdf3ad5559656d4e1c121c1a6f1aee17f552118b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6babc81_e2ca1df2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-06-12T07:46:25Z",
+      "side": 1,
+      "message": "It does!\n\nIn https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4556450 I changed this script to use binutils provided by our toolchain, e.g `armv7m-cros-eabi-objdump` as I thought it would be the best option.\n\nFor me, the problem is that `armv7m-cros-eabi` toolchain provides tools that are incompatible.\n\nLLVM is a native cross compiler (which means that one executable can generate code for multiple architectures). This has a huge advantage that we can use standard LLVM binutils. This patch also makes our codebase more aligned with Zephyr which is always good :)",
+      "parentUuid": "46a990e1_36144de6",
+      "revId": "bdf3ad5559656d4e1c121c1a6f1aee17f552118b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
