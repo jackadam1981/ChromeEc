@@ -28,11 +28,15 @@
 		/delete-node/ en_usb_c0_dev_mode;
 		/delete-node/ usb_c0_dp_hpd;
 		/delete-node/ ec_kso_02_inv;
+		/delete-node/ ec_pen_chg_dis_odl;
 		kso16-gp03-default {
 			gpios = <&gpio0 3 (GPIO_OPEN_DRAIN | GPIO_PULL_UP)>;
 		};
 		kso17-gpb1-default {
 			gpios = <&gpiob 1 (GPIO_OPEN_DRAIN | GPIO_PULL_UP)>;
+		};
+		gpio_ec_pen_chg_dis_odl: ec_pen_chg_dis_odl {
+			gpios = <&gpioe 4 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 	};
 
