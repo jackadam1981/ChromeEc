@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47556a3a_805add4a",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:59:20Z",
+      "side": 1,
+      "message": "The `frame` operation now longer this parameter.  Rename to `SPI_OFFSET` to match the actual use.",
+      "range": {
+        "startLine": 1770,
+        "startChar": 0,
+        "endLine": 1772,
+        "endChar": 0
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ad0121_b0fa6e96",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:59:20Z",
+      "side": 1,
+      "message": "You only need to claim the EC UART once.  the EC UART is only released when `flash_ec` exits.",
+      "range": {
+        "startLine": 1812,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 23
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7fcda3_c2a87089",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:59:20Z",
+      "side": 1,
+      "message": "Set the protection parameter directly to 0.\n```suggestion\n\t\t\t\"--protect\u003d0\"  \\\n```",
+      "range": {
+        "startLine": 1817,
+        "startChar": 0,
+        "endLine": 1817,
+        "endChar": 29
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6187f4_394785ac",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:59:20Z",
+      "side": 1,
+      "message": "You are sending the write protect command twice.  This should not be needed.",
+      "range": {
+        "startLine": 1823,
+        "startChar": 0,
+        "endLine": 1831,
+        "endChar": 0
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5f4229_35477465",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:59:20Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\techo \"Failed to disable EC write protect.\"\n```",
+      "range": {
+        "startLine": 1836,
+        "startChar": 0,
+        "endLine": 1836,
+        "endChar": 30
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
