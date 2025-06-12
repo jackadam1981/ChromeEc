@@ -290,9 +290,8 @@
 			no-auto-init;
 		};
 
-		gpio_sb_2: sb-2 {
+		gpio_sb_2: en_sub_usb_a1_vbus {
 			gpios = <&gpiod 4 GPIO_OUTPUT>;
-			no-auto-init;
 		};
 
 		/*
@@ -362,13 +361,6 @@
 		 */
 		gpio-en-usb-a1-vbus = &gpio_sb_2;
 		/*
-		 * HPD pins for HDMI sub-board.
-		 */
-		/*
-		gpio-hdmi-en-odl = &gpio_sb_3;
-		gpio-hpd-odl = &gpio_sb_4;
-		*/
-		/*
 		 * Enable S5 rails for LTE sub-board
 		 */
 		gpio-en-sub-s5-rails = &gpio_sb_2;
@@ -413,6 +405,12 @@
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_sub_charger>;
 		};
+	};
+
+	usba {
+		compatible = "cros-ec,usba-port-enable-pins";
+		enable-pins = <&gpio_sb_2>;
+		status = "okay";
 	};
 
 	usbc {
