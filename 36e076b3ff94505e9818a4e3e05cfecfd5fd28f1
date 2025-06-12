@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c3975a_91df7e7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T22:42:06Z",
+      "side": 1,
+      "message": "I tested fpenroll, fpmatch, fpcapture, fpinfo:\n\n```\nfpmcu:~$ fpcapture\n[7.151700 Waiting for finger ...]\n[8.518000 Capturing ...]\n[8.759900 done (events:80000000)]\n**B00RE for ZModem\nfpmcu:~$ \nfpmcu:~$ fpenroll\n[23.725300 Waiting for finger ...]\n[24.876700 Capturing ...]\n[25.043000 [0]Enrolling ...]\n[25.185000 [0]Enroll \u003d\u003e0 (20%)]\n[25.234800 done (events:88000140)]\n[25.236500 Enroll capture: OK (20%)]\n[26.169100 Waiting for finger ...]\n[26.473500 Capturing ...]\n[26.639700 [0]Enrolling ...]\n[26.783400 [0]Enroll \u003d\u003e0 (40%)]\n[26.874700 done (events:48000280)]\n[26.876500 Enroll capture: OK (40%)]\n[27.607500 Waiting for finger ...]\n[27.818700 Capturing ...]\n[27.984900 [0]Enrolling ...]\n[28.132400 [0]Enroll \u003d\u003e0 (60%)]\n[28.211700 done (events:480003c0)]\n[28.213400 Enroll capture: OK (60%)]\n[29.045600 Waiting for finger ...]\n[29.189300 Capturing ...]\n[29.355600 [0]Enrolling ...]\n[29.505400 [0]Enroll \u003d\u003e0 (80%)]\n[29.549600 done (events:48000500)]\n[29.551300 Enroll capture: OK (80%)]\n[30.282100 Waiting for finger ...]\n[30.446700 Capturing ...]\n[30.613000 [0]Enrolling ...]\n[30.765600 [0]Enroll \u003d\u003e0 (100%)]\n[30.786500 done (events:48000640)]\n[30.788200 Enroll capture: OK (100%)]\nfpmcu:~$ fpmatch\n[33.404300 Waiting for finger ...]\n[34.448900 Capturing ...]\n[34.615200 Matching/1 ...]\n[34.775700 Match \u003d\u003e3 (finger 0)]\n[34.812200 done (events:10000003)]\n[34.813900 Match: YES (3)]\nfpmcu:~$ fpmatch\n[38.729100 Waiting for finger ...]\n[39.774900 Capturing ...]\n[39.941300 Matching/1 ...]\n[40.100700 Match \u003d\u003e3 (finger 0)]\n[40.137200 done (events:10000003)]\n[40.138900 Match: YES (3)]\nfpmcu:~$ fpinfo\n      Vendor ID: 0x20435046 (FPC )\n     Product ID: 0x9\n       Model ID: 0x21B\n        Version: 0x1\n Sensor (w x h): 160 x 160 8bpp\n     Frame Size: 26260\n   Pixel Format: 0x59455247 (GREY)\n    Error State: 0x3FF\n   Sensor Strap: FPC\n ```\n \n to double check correct CL was loaded:\n```\nfsammoura@fsammoura-glaptop:~/chromiumos/src/platform/ec$ git log\ncommit bbe54aa797d64bbdaec22077f5b1386567b2771d (HEAD -\u003e rtc_npcx)\nAuthor: Firas Sammoura \u003cfsammoura@google.com\u003e\nDate:   Thu May 29 15:51:35 2025 -0700\n\n    zephyr: test: add rtc_npcx test\n    \n    BUG\u003db:419026385\n    TEST\u003d./test/run_device_tests.py -b helipilot -f servo_micro -t rtc_npcx9\n         --zephyr\n    \n    Change-Id: I7f31629e9050a8cbfe1c7f8459026ab58c773275\n\ncommit 99219eef3fca6e5b9aa2a6eba7c7c3014bf37b41\nAuthor: Firas Sammoura \u003cfsammoura@google.com\u003e\nDate:   Mon Jun 9 16:15:52 2025 -0700\n\n    helipilot: enable real-time clock (RTC) on helipilot baseboard\n    \n    BUG\u003db:419026385\n    TEST\u003dzmake -D build helipilot; ensure that CONFIG_PLATFORM_EC_RTC is\n         enabled\n    \n    Change-Id: Ic51241d3e9a0149e48fb80b72089970d6ba3f733\n\ncommit f40401275aec2e254556178071033ff81a740e7d (m/main, cros/main, cros/HEAD)\nAuthor: Tom Hughes \u003ctomhughes@chromium.org\u003e\nDate:   Fri May 23 16:07:45 2025 -0700\n\n    zephyr: fpmcu: Enable CONFIG_LTO\n    \n    BUG\u003db:407119021\n    TEST\u003dzmake build --clobber helipilot\n    TEST\u003dzmake build --clobber bloonchipper\n    TEST\u003d./test/run_device_tests.py -b bloonchipper --zephyr\n         Test \"production_app_test\": PASSED\n         Test \"abort\": PASSED\n         Test \"aes\": PASSED\n         Test \"always_memset\": SKIPPED\n         Test \"assert_builtin\": SKIPPED\n         Test \"assert_stdlib\": SKIPPED\n         Test \"benchmark\": PASSED\n     ```",
+      "parentUuid": "0255840e_3e445328",
+      "revId": "36e076b3ff94505e9818a4e3e05cfecfd5fd28f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e27cb2a1_09bbaa91",
