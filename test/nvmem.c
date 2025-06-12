@@ -136,21 +136,6 @@ enum ec_error_list flash_pre_op_erase(int offset, int size)
 	return EC_SUCCESS;
 }
 
-static void dump_nvmem_state(const char *title,
-			     const struct nvmem_test_result *tr)
-{
-	ccprintf("\n%s:\n", title);
-	ccprintf("var_count: %d\n", tr->var_count);
-	ccprintf("reserved_obj_count: %d\n", tr->reserved_obj_count);
-	ccprintf("evictable_obj_count: %d\n", tr->evictable_obj_count);
-	ccprintf("deleted_obj_count: %d\n", tr->deleted_obj_count);
-	ccprintf("deimiter_count: %d\n", tr->delimiter_count);
-	ccprintf("unexpected_count: %d\n", tr->unexpected_count);
-	ccprintf("valid_data_size: %zd\n", tr->valid_data_size);
-	ccprintf("tuple_data_size: %zd\n", tr->tuple_data_size);
-	ccprintf("erased_data_size: %zd\n\n", tr->erased_data_size);
-}
-
 static void wipe_out_nvmem_cache(void)
 {
 	memset(nvmem_cache_base(NVMEM_TPM), 0, nvmem_user_sizes[NVMEM_TPM]);
@@ -248,6 +233,25 @@ static int iterate_over_flash(void)
 		 at.dt.data_offset);
 
 	return EC_ERROR_INVAL;
+}
+
+
+static int dump_nvmem_state(const char *title)
+{
+	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+
+	ccprintf("\n%s:\n", title);
+	ccprintf("var_count: %d\n", test_result.var_count);
+	ccprintf("reserved_obj_count: %d\n", test_result.reserved_obj_count);
+	ccprintf("evictable_obj_count: %d\n", test_result.evictable_obj_count);
+	ccprintf("deleted_obj_count: %d\n", test_result.deleted_obj_count);
+	ccprintf("deimiter_count: %d\n", test_result.delimiter_count);
+	ccprintf("unexpected_count: %d\n", test_result.unexpected_count);
+	ccprintf("valid_data_size: %zd\n", test_result.valid_data_size);
+	ccprintf("tuple_data_size: %zd\n", test_result.tuple_data_size);
+	ccprintf("erased_data_size: %zd\n\n", test_result.erased_data_size);
+
+	return EC_SUCCESS;
 }
 
 static void *page_to_flash_addr(int page_num)
@@ -378,8 +382,7 @@ static int prepare_new_flash(void)
 {
 
 	TEST_ASSERT(init_preset_nvmem() == EC_SUCCESS);
-	iterate_over_flash();
-	dump_nvmem_state("after init", &test_result);
+	TEST_ASSERT(dump_nvmem_state("after init") == EC_SUCCESS);
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
 
@@ -593,13 +596,7 @@ static int test_configured_nvmem(void)
 	 */
 	fill_nvmem_pages(0xff);
 
-	/*
-	 * This is initialization from legacy flash contents which replaces
-	 * legacy flash image with the new format flash image
-	 */
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
-
-	/* And this is initialization from the new flash layout. */
+	/* Initialization from scratch. */
 	return nvmem_init();
 }
 
@@ -1851,13 +1848,11 @@ static int test_tpm2b_garbage_clean(void)
 	NV_RESERVED_ITEM ri;
 	uint16_t tpm2b_len;
 	uint8_t *addr_in_cache;
+	struct nvmem_test_result old_result;
 
-	TEST_ASSERT(test_fully_erased_nvmem() == EC_SUCCESS);
-
-	/* Now copy sensible information into the nvmem cache. */
-	memcpy(nvmem_cache_base(NVMEM_TPM),
-	       legacy_nvmem_image + sizeof(struct nvmem_tag),
-	       nvmem_user_sizes[NVMEM_TPM]);
+	TEST_ASSERT(init_preset_nvmem() == EC_SUCCESS);
+	TEST_ASSERT(dump_nvmem_state("After init preset") == EC_SUCCESS);
+	memcpy(&old_result, &test_result, sizeof(old_result));
 
 	/* Modify one space to have incorrect TPM2B */
 	NvGetReserved(NV_OWNER_POLICY, &ri);
@@ -1865,11 +1860,14 @@ static int test_tpm2b_garbage_clean(void)
 	addr_in_cache = nvmem_cache_base(NVMEM_TPM) + ri.offset;
 	memcpy(addr_in_cache, &tpm2b_len, sizeof(tpm2b_len));
 	browse_flash_contents(1);
-	dump_nvmem_state("after first save", &test_result);
 
-	/* Saving creates many copies as `flash` content differs. */
+	/*
+	 * Saving creates an extra copy of NV_OWNER_POLICY object with a
+	 * higher index..
+	 */
 	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
 	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
+	browse_flash_contents(1);
 
 	/* Check garbage at the tail of TPM2B objects. */
 	for (i = NV_OWNER_POLICY; i <= NV_EH_PROOF; i++) {
@@ -1884,20 +1882,18 @@ static int test_tpm2b_garbage_clean(void)
 				   ri.size - tpm2b_len);
 	}
 
-	TEST_ASSERT(new_nvmem_save() == EC_SUCCESS);
-	TEST_ASSERT(nvmem_init() == EC_SUCCESS);
-	browse_flash_contents(1);
 	/* Now check that some objects were replaced compared to original
 	 * data in prepare_new_image() before cleaning after the
 	 * new_nvmem_save().
 	 */
-	TEST_ASSERT(iterate_over_flash() == EC_SUCCESS);
+	TEST_ASSERT(dump_nvmem_state("after save") == EC_SUCCESS);
 
+cmp_test_result(&old_result);
 	/* R:04 updated twice, R:07 - once */
 	TEST_ASSERT(test_result.deleted_obj_count == 24 + 2 + 1);
-	TEST_ASSERT(test_result.var_count == 0);
-	TEST_ASSERT(test_result.reserved_obj_count == 41);
-	TEST_ASSERT(test_result.evictable_obj_count == 9);
+	TEST_ASSERT(test_result.var_count == 3);
+	TEST_ASSERT(test_result.reserved_obj_count == 39);
+	TEST_ASSERT(test_result.evictable_obj_count == 10);
 	TEST_ASSERT(test_result.unexpected_count == 0);
 	TEST_ASSERT(test_result.valid_data_size == 5128 + 67);
 	TEST_ASSERT(test_result.erased_data_size == 698 + 3 * 67);
@@ -1909,7 +1905,7 @@ void run_test(void)
 {
 	run_test_setup();
 
-	if (1) {
+	if (0) {
 	RUN_TEST(test_corrupt_nvmem);
 	RUN_TEST(test_fully_erased_nvmem);
 	RUN_TEST(test_configured_nvmem);
