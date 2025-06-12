@@ -85,6 +85,24 @@
       "message": "trying cherry pick now\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6638743",
       "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "856ddf4a_5b6dcca0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-12T17:19:46Z",
+      "side": 1,
+      "message": "got it. i\u0027d prefer to cherry-pick patches in the same order as ToT\nto keep things somewhat in sync. if we run into further space issues,\ni guess we\u0027ll pick up the LTO patch next.",
+      "parentUuid": "31a5f491_93a7f2c8",
+      "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
