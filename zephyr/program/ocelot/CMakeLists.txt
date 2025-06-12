@@ -9,6 +9,7 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 if(DEFINED CONFIG_BOARD_OCELOTRVP_ITE)
 	project(ocelotrvp-ite)
 	zephyr_library_sources("src/rvp_keyboard_customization.c")
+	zephyr_library_sources("src/rvp_ite_hibernate.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_OCELOTRVP_NPCX)
