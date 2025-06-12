@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84a69c71_ecaafb3f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "You are mixing things here. I was referring to [LOG_ERR](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/logging/log.h#L48) macro, not Egis LOG_ERROR enum log level. I meant that we can use the `LOG_ERR` macro to print messages that are at `LOG_ERROR` Egis logging level, instead of adding additional string `\"Error~! \"`",
+      "parentUuid": "dcc853ba_970e497c",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cba7ffb4_26f4e3a8",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
         "patchSetId": 66

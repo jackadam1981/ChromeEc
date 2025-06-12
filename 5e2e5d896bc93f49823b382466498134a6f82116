@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c0cff8_f04867c6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "I would do only conversion here, without changing the errors variable. It could also be used by the `convert_egis_get_image_error_code` function. Or event that function wouldn\u0027t be needed at all.",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160687ca_b0d7c793",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "One more thought. Maybe we can reset sensor and return 0 if there is no private libe? What do you think?",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f133c7f9_559e7bdd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "Maybe just return 0 as described in the chat?",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6c814c_48534745",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "If we really need info that sensor changes more to detect just print that instead of function name and a line number",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128cb3a2_9c5a7a25",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "Do we really want to print that every time the status function is called. If it is the case, I would change it to LOG_DBG",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d8f434_2094f502",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure, but this part is probably not needed. Can you check that?",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

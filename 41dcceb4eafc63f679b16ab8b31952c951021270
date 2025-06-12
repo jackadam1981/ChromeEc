@@ -226,6 +226,24 @@
       "parentUuid": "c7a3dee4_4aba297a",
       "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591adaaa_29bac78f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 70
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-06-12T07:57:45Z",
+      "side": 1,
+      "message": "Do we really need that print?",
+      "parentUuid": "b92476bf_8093122d",
+      "revId": "41dcceb4eafc63f679b16ab8b31952c951021270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
