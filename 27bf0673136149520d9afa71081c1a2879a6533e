@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f04444_993ba13b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "yes, everything except the hwid.",
+      "parentUuid": "60a0d727_f4f99615",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "27bf0673136149520d9afa71081c1a2879a6533e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2b8f94_c951c12e",
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "Make sense. We can disable irq even without the private lib. Just please fix formatting.",
       "parentUuid": "8c2b8f94_c951c12e",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 1
+      },
+      "revId": "27bf0673136149520d9afa71081c1a2879a6533e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59107301_10734994",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd2e664_fdfe1d04",
       "range": {
         "startLine": 197,
         "startChar": 0,

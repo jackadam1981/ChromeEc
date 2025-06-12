@@ -248,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b9eb54_bbae850f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 66
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "got it. I modified for the error to use the native Zephyr LOG_ERR",
+      "parentUuid": "84a69c71_ecaafb3f",
+      "revId": "8331fe916163d08ef1938dec2df96fe0ba966985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba7ffb4_26f4e3a8",

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56747c1e_bdcd04ab",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c0cff8_f04867c6",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "160687ca_b0d7c793",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-12T07:57:45Z",
       "side": 1,
       "message": "One more thought. Maybe we can reset sensor and return 0 if there is no private libe? What do you think?",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece709eb_08143724",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "makes sense to me. We can potentially test the reset function that is out implementation.",
+      "parentUuid": "160687ca_b0d7c793",
       "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00735c4_1f0d9f15",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f133c7f9_559e7bdd",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec6c814c_48534745",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-06-12T07:57:45Z",
       "side": 1,
       "message": "If we really need info that sensor changes more to detect just print that instead of function name and a line number",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c30aad42_859ce97e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "Done. Modified it to \"Sensor changes mode to finger detect\"",
+      "parentUuid": "ec6c814c_48534745",
       "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65d51dd_922ebd19",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "I can remove it for now. We can decide if this is something we need.",
+      "parentUuid": "128cb3a2_9c5a7a25",
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2d8f434_2094f502",
@@ -99,6 +189,30 @@
       "writtenOn": "2025-06-12T07:57:45Z",
       "side": 1,
       "message": "I\u0027m not 100% sure, but this part is probably not needed. Can you check that?",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "5e2e5d896bc93f49823b382466498134a6f82116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc3dfda_472537ec",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630_pal.c",
+        "patchSetId": 74
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T21:44:16Z",
+      "side": 1,
+      "message": "It is not needed. I removed it. I though preferred to keep it for symmetry.",
+      "parentUuid": "a2d8f434_2094f502",
       "range": {
         "startLine": 40,
         "startChar": 7,
