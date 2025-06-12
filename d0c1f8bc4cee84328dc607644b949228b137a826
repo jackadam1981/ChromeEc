@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c3f9d9_1a2b49bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-12T11:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82de1f76_7f443266",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "d0c1f8bc4cee84328dc607644b949228b137a826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd495fd3_9785074d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88239b0a_f3739a5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-12T11:21:27Z",
+      "side": 1,
+      "message": "VBUS transition is stable within 4ms",
+      "parentUuid": "dd495fd3_9785074d",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "d0c1f8bc4cee84328dc607644b949228b137a826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66c2e643_acdeb37c",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-06-12T09:56:50Z",
       "side": 1,
       "message": "I hope it\u0027s not affecting any other conditions/tests.",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "d0c1f8bc4cee84328dc607644b949228b137a826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f38325_d9e2e93c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-12T11:21:27Z",
+      "side": 1,
+      "message": "No",
+      "parentUuid": "66c2e643_acdeb37c",
       "range": {
         "startLine": 15,
         "startChar": 10,
@@ -117,6 +189,30 @@
           ]
         }
       ],
+      "revId": "d0c1f8bc4cee84328dc607644b949228b137a826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e3e279_063f6512",
+        "filename": "zephyr/program/nissa/anraggar/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-12T11:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f93048b_6c81b907",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 53
+      },
       "revId": "d0c1f8bc4cee84328dc607644b949228b137a826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
