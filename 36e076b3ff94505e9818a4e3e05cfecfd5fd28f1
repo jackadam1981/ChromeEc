@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1740e6_22c033f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-12T22:42:40Z",
+      "side": 1,
+      "message": "```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      277064 B       320 KB     84.55%\n             RAM:      157440 B       188 KB     81.78%\n        IDT_LIST:          0 GB        32 KB      0.00%\n```",
+      "parentUuid": "d4c3975a_91df7e7a",
+      "revId": "36e076b3ff94505e9818a4e3e05cfecfd5fd28f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e27cb2a1_09bbaa91",
