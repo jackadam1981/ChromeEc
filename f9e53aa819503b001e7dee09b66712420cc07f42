@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2b1630_d60daccc",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:47:46Z",
+      "side": 1,
+      "message": "This should default to 0 as this generates a lot of output.  The tool should print some basic progress information even when debugging is off.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "f9e53aa819503b001e7dee09b66712420cc07f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714a2b04_ecee66b4",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:47:46Z",
+      "side": 1,
+      "message": "To clarify my earlier comment - you should save the TTY settings and restore them when `rtkupdate` completed successfully or with a failure.\n\n```\nstatic termios saved_tty;\nstatic bool tty_changed;\nint configure_uart(int fd)\n    if (tcgetattr(fd, \u0026saved_tty) !\u003d0 )\n        return;\n        \n    tty \u003d saved_tty;\n    tty_changed \u003d true;\n    /* Remaining configure UART *\n    \n \n/* On any program exit */\nif (tty_changed)\n    tcsetattr(saved_tty);",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "f9e53aa819503b001e7dee09b66712420cc07f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f93d1e_803513cd",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:47:46Z",
+      "side": 1,
+      "message": "In this error path, you haven\u0027t changed any TTY setting, so you don\u0027t need to write them back.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "f9e53aa819503b001e7dee09b66712420cc07f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

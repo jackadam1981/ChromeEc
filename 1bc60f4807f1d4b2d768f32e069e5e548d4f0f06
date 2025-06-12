@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7972644a_69da2ff0",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-12T22:47:46Z",
+      "side": 1,
+      "message": "Ff `com_port_wait_read()` never returns data, then `read_temp \u003d\u003d 0`, and the check `elapsed_time \u003c\u003d OPR_TIMEOUT` will break from the loop.  I think you need a timeout check after the loop.\n```\n\t} while ((read_temp \u003c 1) \u0026\u0026 (elapsed_time \u003c\u003d OPR_TIMEOUT));\n\t\n\tif (read_temp \u003c 1)\n\t    /* Timeout */\n\t    return -1;\n```",
+      "parentUuid": "c43e388e_4d9a11f3",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 60
+      },
+      "revId": "1bc60f4807f1d4b2d768f32e069e5e548d4f0f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca923b9e_d324d962",
         "filename": "util/rtkupdate.c",
         "patchSetId": 13
