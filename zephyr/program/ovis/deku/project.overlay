@@ -94,6 +94,7 @@
 		};
 		gpio_poe_cs_out: poe_cs_out {
 			gpios = <&gpio0 6 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_POE_CS_OUT_L";
 		};
 		gpio_poe_check_l: poe_check_l {
 			gpios = <&gpio0 7 GPIO_INPUT>;
