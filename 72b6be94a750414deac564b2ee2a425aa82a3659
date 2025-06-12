@@ -50,6 +50,24 @@
       "message": "maybe this\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6500065",
       "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a5f491_93a7f2c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-12T16:44:19Z",
+      "side": 1,
+      "message": "Hot off the presses, you could also try enabling LTO: https://crrev.com/c/6618307",
+      "parentUuid": "88f3494b_ecd33bbf",
+      "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
