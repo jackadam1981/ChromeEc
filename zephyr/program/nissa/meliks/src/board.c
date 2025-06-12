@@ -137,8 +137,12 @@ static void power_handler(struct ap_power_ev_callback *cb,
 	int ret;
 	static int chip_updated;
 
+	const struct gpio_dt_spec *vbus_rail =
+		GPIO_DT_FROM_ALIAS(gpio_en_usb_a1_vbus);
+
 	switch (data.event) {
 	case AP_POWER_STARTUP:
+		gpio_pin_set_dt(vbus_rail, 1);
 		if (chip_updated == 0) {
 #ifdef CONFIG_PLATFORM_EC_BRINGUP
 			CPRINTS("[mp2964] Attempting to tune mp2964");
@@ -160,6 +164,9 @@ static void power_handler(struct ap_power_ev_callback *cb,
 #endif /* CONFIG_PLATFORM_EC_BRINGUP */
 		}
 		break;
+	case AP_POWER_SHUTDOWN:
+		gpio_pin_set_dt(vbus_rail, 0);
+		break;
 	default:
 		LOG_ERR("Unhandled power event %d", data.event);
 		break;
@@ -170,7 +177,8 @@ test_export_static void meliks_callback_init(void)
 {
 	static struct ap_power_ev_callback meliks_cb;
 
-	ap_power_ev_init_callback(&meliks_cb, power_handler, AP_POWER_STARTUP);
+	ap_power_ev_init_callback(&meliks_cb, power_handler,
+				  AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
 	ap_power_ev_add_callback(&meliks_cb);
 }
 DECLARE_HOOK(HOOK_INIT, meliks_callback_init, HOOK_PRIO_DEFAULT);
