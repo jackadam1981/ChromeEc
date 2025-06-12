@@ -30,6 +30,11 @@
 	named-gpios {
 		/delete-node/ en_usb_c0_dev_mode;
 		/delete-node/ usb_c0_dp_hpd;
+		/delete-node/ ec_pen_chg_dis_odl;
+
+		gpio_ec_pen_chg_dis_odl: ec_pen_chg_dis_odl {
+			gpios = <&gpioe 4 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+		};
 	};
 
 	gpio-interrupts {
