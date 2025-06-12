@@ -33,6 +33,23 @@
       "message": "section `zephyr_shim_hook_HOOK_TICK_area\u0027 will not fit in region `FLASH\u0027\n[nokris:rw] /home/chrome-bot/.cache/coreboot-sdk/arm-eabi/a9e789245bfa4b88b07da734c4bcdcf8eb5348eb/bin/../lib/gcc/arm-eabi/14.2.0/../../../../arm-eabi/bin/ld.bfd: region `FLASH\u0027 overflowed by 76 bytes\n\nmaybe check if there were config change patches for nokris to reduce the\nflash footprint.",
       "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f3494b_ecd33bbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-12T16:39:26Z",
+      "side": 1,
+      "message": "maybe this\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6500065",
+      "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
