@@ -27,7 +27,7 @@
 enum test_failure_mode failure_mode;
 
 static const uint8_t legacy_nvmem_image[] = {
-#include "legacy_nvmem_dump.h"
+#include "nvmem_dump.h"
 };
 
 BUILD_ASSERT(sizeof(legacy_nvmem_image) == NVMEM_PARTITION_SIZE);
