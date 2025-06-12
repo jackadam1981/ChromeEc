@@ -290,9 +290,8 @@
 			no-auto-init;
 		};
 
-		gpio_sb_2: sb-2 {
+		gpio_sb_2: en_sub_usb_a1_vbus {
 			gpios = <&gpiod 4 GPIO_OUTPUT>;
-			no-auto-init;
 		};
 
 		/*
@@ -361,13 +360,6 @@
 		 * Sub-board with type A USB, enable.
 		 */
 		gpio-en-usb-a1-vbus = &gpio_sb_2;
-		/*
-		 * HPD pins for HDMI sub-board.
-		 */
-		/*
-		gpio-hdmi-en-odl = &gpio_sb_3;
-		gpio-hpd-odl = &gpio_sb_4;
-		*/
 		/*
 		 * Enable S5 rails for LTE sub-board
 		 */
