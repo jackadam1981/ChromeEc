@@ -43,10 +43,10 @@
 			filename = "../build-rw/rollback_initial_data.bin";
 		};
 
-		/* 284 kB used for RW - gwendolin ECOS flash size */
+		/* 256 kB used for RW - gwendolin ECOS flash size */
 		ec-rw {
 			offset = <0x40000>;
-			size = <0x47000>;
+			size = <0x40000>;
 			rw-fw {
 				/*
 				 * Clang doesn't emit STT_SECTION symbols (also
@@ -73,16 +73,16 @@
  *           │              │
  *           │              │
  *           │   Data RAM   │
- *           │     224KB    │
+ *           │     252KB    │
  *           │              │
  *           │              │
- * 0x1009F000├──────────────┤0x2009F000
+ * 0x10098000├──────────────┤0x20098000
  *           │              │
  *           │              │
  *           │              │
  *           │              │
  *           │   Code RAM   │
- *           │     284KB    │
+ *           │     256KB    │
  *           │              │
  *           │              │
  *           │              │
@@ -91,15 +91,15 @@
  * 0x10058000└──────────────┘
  */
 &flash0 {
-    reg = <0x10058000 DT_SIZE_K(284)>;
+    reg = <0x10058000 DT_SIZE_K(256)>;
 };
 
 /delete-node/ &sram0;
 
 / {
-	sram0: memory@2009f000 {
+	sram0: memory@20098000{
 		compatible = "mmio-sram";
-		reg = <0x2009F000 DT_SIZE_K(224)>;
+		reg = <0x20098000 DT_SIZE_K(252)>;
 	};
 };
 
