@@ -162,7 +162,7 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	if (IS_ENABLED(CONFIG_THREAD_NAME)) {
 		thread_name = k_thread_name_get(k_current_get());
 	} else {
-		thread_name = "unkonwn";
+		thread_name = "unknown";
 	}
 	task_id_t task_id = task_get_current();
 
