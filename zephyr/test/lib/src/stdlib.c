@@ -448,15 +448,7 @@ ZTEST(stdlib, test_memcpy)
 		ccprintf("Aligned memcpy  : %" PRId64 " us\n",
 			 k_ticks_to_us_near64(t3 - t2));
 
-		/* TODO(b/405230727): Revert this change and restore full timing
-		 * metrics once the helipilot space issues are resolved and we
-		 * can revert the -Oz optimization (blocked by b/407280228). For
-		 * now, we're only printing the timing difference to work around
-		 * the size constraints.
-		 */
-		if (!IS_ENABLED(CONFIG_NEWLIB_LIBC)) {
-			zassert_true((t1 - t0) > (t3 - t2));
-		}
+		zassert_true((t1 - t0) > (t3 - t2));
 	}
 
 	memcpy(buf + dest_offset + 1, buf + 1, len - 1);
@@ -518,12 +510,7 @@ ZTEST(stdlib, test_memset)
 	}
 	ccprintf(" %" PRId64 " us) ", k_ticks_to_us_near64(t3 - t2));
 
-	/* TODO(b/405230727): Revert this change and restore full timing metrics
-	 * once the helipilot space issues are resolved and we can revert the
-	 * -Oz optimization (blocked by b/407280228). For now, we're only
-	 * printing the timing difference to work around the size constraints.
-	 */
-	if (!IS_ENABLED(CONFIG_ARCH_POSIX) && !IS_ENABLED(CONFIG_NEWLIB_LIBC)) {
+	if (!IS_ENABLED(CONFIG_ARCH_POSIX)) {
 		zassert_true((t1 - t0) > (t3 - t2));
 	}
 
