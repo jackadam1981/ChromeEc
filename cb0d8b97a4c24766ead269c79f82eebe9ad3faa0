@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33bc6712_fa181242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-13T21:32:28Z",
+      "side": 1,
+      "message": "before this change:\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      225952 B       284 KB     77.70%\n             RAM:      220032 B       224 KB     95.93%\n        IDT_LIST:          0 GB        32 KB      0.00%\n```",
+      "parentUuid": "e84462d6_8346254b",
+      "revId": "cb0d8b97a4c24766ead269c79f82eebe9ad3faa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62fa034a_da970648",
         "filename": "zephyr/program/fpmcu/helipilot/gwendolin.dts",
         "patchSetId": 1
