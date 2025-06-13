@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e84462d6_8346254b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-13T21:26:13Z",
+      "side": 1,
+      "message": "Showing the before and after versions of this in the commit message would be useful context.",
+      "parentUuid": "650691a9_33331e83",
+      "revId": "cb0d8b97a4c24766ead269c79f82eebe9ad3faa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62fa034a_da970648",
         "filename": "zephyr/program/fpmcu/helipilot/gwendolin.dts",
         "patchSetId": 1
