@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d335674_afae569f",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-13T13:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47556a3a_805add4a",
+      "range": {
+        "startLine": 1770,
+        "startChar": 0,
+        "endLine": 1772,
+        "endChar": 0
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31ad0121_b0fa6e96",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-12T22:59:20Z",
       "side": 1,
       "message": "You only need to claim the EC UART once.  the EC UART is only released when `flash_ec` exits.",
+      "range": {
+        "startLine": 1812,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 23
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654b64fe_dc4d2677",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-13T13:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ad0121_b0fa6e96",
       "range": {
         "startLine": 1812,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc991b3_dc7933fc",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-13T13:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab7fcda3_c2a87089",
+      "range": {
+        "startLine": 1817,
+        "startChar": 0,
+        "endLine": 1817,
+        "endChar": 29
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff6187f4_394785ac",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "189b79b9_105dbf84",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-13T13:50:25Z",
+      "side": 1,
+      "message": "We will do the Write Protect twice to make sure the EC can enter the UART flash mode.",
+      "parentUuid": "ff6187f4_394785ac",
+      "range": {
+        "startLine": 1823,
+        "startChar": 0,
+        "endLine": 1831,
+        "endChar": 0
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5f4229_35477465",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-06-12T22:59:20Z",
       "side": 1,
       "message": "```suggestion\n\t\t\techo \"Failed to disable EC write protect.\"\n```",
+      "range": {
+        "startLine": 1836,
+        "startChar": 0,
+        "endLine": 1836,
+        "endChar": 30
+      },
+      "revId": "ad0ae3673f36a18adbeb10650a04028ee1fa684b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930797ac_4a2b388b",
+        "filename": "util/flash_ec",
+        "patchSetId": 13
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-13T13:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5f4229_35477465",
       "range": {
         "startLine": 1836,
         "startChar": 0,
