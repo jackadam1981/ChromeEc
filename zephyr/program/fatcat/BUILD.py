@@ -97,6 +97,11 @@ register_ish_project(
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
+register_it8xxx2_project(
+    project_name="felino_crkb",
+    extra_kconfig_files=[],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcat_npcx9m7f", addr=0x80144)
@@ -104,3 +109,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="fatcat_it82002aw", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="francka", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="kinmen", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="felino_crkb", addr=0x60098)

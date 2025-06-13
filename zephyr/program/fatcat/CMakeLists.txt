@@ -46,3 +46,11 @@ if(DEFINED CONFIG_BOARD_KINMEN)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"kinmen/src/keyboard_customization.c")
 endif()
+
+if(DEFINED CONFIG_BOARD_FELINO_CRKB)
+	project(felino_crkb)
+	add_subdirectory(felino_crkb)
+	zephyr_include_directories("felino_crkb/include")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"felino_crkb/src/keyboard_customization.c")
+endif()
