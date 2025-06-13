@@ -3878,10 +3878,15 @@ static int process_get_boot_mode(struct transfer_descriptor *td)
 
 static void get_bid(struct transfer_descriptor *td, struct board_id *bid)
 {
+	int rv;
 	size_t response_size = sizeof(*bid);
 
-	send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid, response_size, bid,
-			    &response_size);
+	rv = send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid,
+				 response_size, bid, &response_size);
+	if (rv) {
+		fprintf(stderr, "Error %d reading board id\n", rv);
+		exit(update_error);
+	}
 
 	if (response_size != sizeof(*bid)) {
 		fprintf(stderr,
