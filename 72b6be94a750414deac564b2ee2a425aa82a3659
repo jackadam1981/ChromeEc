@@ -156,6 +156,23 @@
       "parentUuid": "4fff0d17_a86c39ed",
       "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de7db99_348ad602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-13T04:14:53Z",
+      "side": 1,
+      "message": "queuing up more cherry picks to get nissa* to fit in flash. big hammer:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6641779",
+      "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
