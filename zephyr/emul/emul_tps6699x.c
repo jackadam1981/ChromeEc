@@ -577,6 +577,22 @@ tps6699x_emul_handle_port_control(struct tps6699x_emul_pdc_data *data,
 	data->port_control = *pc;
 }
 
+static void
+tps6699x_emul_handle_interrupt_clear(struct tps6699x_emul_pdc_data *data)
+{
+	union reg_interrupt *interrupts =
+		(union reg_interrupt *)
+			data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
+	union reg_interrupt *clear =
+		(union reg_interrupt *)
+			data->reg_val[REG_INTERRUPT_CLEAR_FOR_I2C1];
+
+	for (int i = 0; i < sizeof(union reg_interrupt); ++i) {
+		interrupts->raw_value[i] &= ~clear->raw_value[i];
+		clear->raw_value[i] = 0;
+	}
+}
+
 static void tps6699x_emul_handle_write(struct tps6699x_emul_pdc_data *data,
 				       int reg)
 {
@@ -594,21 +610,12 @@ static void tps6699x_emul_handle_write(struct tps6699x_emul_pdc_data *data,
 			data, (const union reg_port_control *)
 				      data->reg_val[REG_PORT_CONTROL]);
 		break;
-	case REG_INTERRUPT_CLEAR_FOR_I2C1: {
+	case REG_INTERRUPT_CLEAR_FOR_I2C1:
 		/* Interrupts have been cleared */
-		union reg_interrupt *reg_interrupt_event =
-			(union reg_interrupt *)
-				data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
-		union reg_interrupt *reg_interrupt_clear =
-			(union reg_interrupt *)
-				data->reg_val[REG_INTERRUPT_CLEAR_FOR_I2C1];
-		for (int i = 0; i < sizeof(reg_interrupt_clear->raw_value); i++)
-			reg_interrupt_event->raw_value[i] &=
-				~reg_interrupt_clear->raw_value[i];
+		tps6699x_emul_handle_interrupt_clear(data);
 		gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin,
 				    1);
 		break;
-	}
 	default:
 		/* No action on write */
 		break;
@@ -1324,6 +1331,19 @@ int emul_pdc_fail_next_ucsi_command(const struct emul *target,
 	data->fail_next_ucsi_cmd = command;
 	data->fail_next_ucsi_cmd_count = num_times;
 	data->fail_next_ucsi_cmd_with_response = with_response;
+
+	return 0;
+}
+
+int emul_pdc_set_interrupt_patch_loaded(const struct emul *target)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+	union reg_interrupt *reg_interrupt =
+		(union reg_interrupt *)
+			data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
+
+	reg_interrupt->patch_loaded = 1;
 
 	return 0;
 }
