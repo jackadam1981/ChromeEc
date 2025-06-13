@@ -31,6 +31,7 @@ test/ftrapv.c
 test/libc_printf.c
 test/libcxx.cc
 test/malloc.c
+test/otp_key.c
 test/panic_data.c
 test/panic.c
 test/printf.c
