@@ -42,11 +42,8 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 /** @brief Trigger thread to send command complete back to
  *         PDC Power Mgmt thread */
 #define PDC_CMD_COMPLETE_EVENT BIT(4)
-/** @brief Trigger thread to send command error back to
- *         PDC Power Mgmt thread */
-#define PDC_CMD_ERROR_EVENT BIT(5)
 /** @brief Bit mask of all PDC events */
-#define PDC_ALL_EVENTS BIT_MASK(6)
+#define PDC_ALL_EVENTS BIT_MASK(5)
 
 /** @brief Time between checking TI CMDx register for data ready */
 #define PDC_TI_DATA_READY_TIME_MS (10)
@@ -862,15 +859,6 @@ static enum smf_state_result st_idle_run(void *o)
 	}
 	if (events & PDC_CMD_COMPLETE_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_CMD_COMPLETE_EVENT);
-		data->cci_event.command_completed = 1;
-		call_cci_event_cb(data);
-
-		/* Re-enter idle state. */
-		set_state(data, ST_IDLE);
-	} else if (events & PDC_CMD_ERROR_EVENT) {
-		k_event_clear(&data->pdc_event, PDC_CMD_ERROR_EVENT);
-
-		data->cci_event.error = 1;
 		data->cci_event.command_completed = 1;
 		call_cci_event_cb(data);
 
