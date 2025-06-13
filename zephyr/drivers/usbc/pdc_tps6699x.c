@@ -46,7 +46,7 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #define PDC_ALL_EVENTS BIT_MASK(5)
 
 /** @brief Time between checking TI CMDx register for data ready */
-#define PDC_TI_DATA_READY_TIME_MS (10)
+#define PDC_TI_DATA_READY_TIME_MS (50)
 
 /** @brief Delay after "New Contract as Consumer" interrupt bit set that the
  * TPS6699x will accept SRDY to enable the sink path. See b/358274846.
@@ -518,6 +518,7 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.data_swap_complete = 1,
 		.sink_ready = 1,
 		.new_contract_as_consumer = 1,
+		.cmd1_complete = 1,
 		.ucsi_connector_status_change_notification = 1,
 		.power_event_occurred_error = 1,
 		.externl_dcdc_event_received = 1,
@@ -2053,6 +2054,9 @@ static void st_task_wait_run(void *o)
 				  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
 		return;
 	}
+
+	/* Cancel the work if pending since we successfully read command. */
+	k_work_cancel(&data->data_ready);
 
 	/*
 	 * Read status of command for particular port:
