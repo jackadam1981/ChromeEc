@@ -3876,7 +3876,8 @@ static int process_get_boot_mode(struct transfer_descriptor *td)
 	return 0;
 }
 
-static void get_bid(struct transfer_descriptor *td, struct board_id *bid)
+/* Returns true the BID was successfully read from the GSC */
+static bool get_bid(struct transfer_descriptor *td, struct board_id *bid)
 {
 	int rv;
 	size_t response_size = sizeof(*bid);
@@ -3884,6 +3885,14 @@ static void get_bid(struct transfer_descriptor *td, struct board_id *bid)
 	rv = send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid,
 				 response_size, bid, &response_size);
 	if (rv) {
+		/* b/424475170 H1 will return NO_SUCH_COMMAND if there's */
+		/* currently a BID mismatch. */
+		if (gsc_dev == GSC_DEVICE_H1 &&
+		    rv == VENDOR_RC_NO_SUCH_COMMAND) {
+			fprintf(stderr, "error reading board id %d: H1 no "
+					"such VC\n", rv);
+			return false;
+		}
 		fprintf(stderr, "Error %d reading board id\n", rv);
 		exit(update_error);
 	}
@@ -3900,6 +3909,7 @@ static void get_bid(struct transfer_descriptor *td, struct board_id *bid)
 	bid->type = be32toh(bid->type);
 	bid->type_inv = be32toh(bid->type_inv);
 	bid->flags = be32toh(bid->flags);
+	return true;
 }
 
 void process_bid(struct transfer_descriptor *td,
@@ -3907,7 +3917,8 @@ void process_bid(struct transfer_descriptor *td,
 		 bool show_machine_output)
 {
 	if (bid_action == bid_get) {
-		get_bid(td, bid);
+		if (!get_bid(td, bid))
+			exit(update_error);
 
 		if (show_machine_output) {
 			print_machine_output("BID_TYPE", "%08x", bid->type);
@@ -5592,8 +5603,12 @@ int main(int argc, char *argv[])
 		process_bid(&td, bid_action, &bid, show_machine_output);
 
 	/* Get the board id if there are images and we didn't just get it */
-	if (images && bid_action != bid_get)
-		get_bid(&td, &bid);
+	if (images && bid_action != bid_get) {
+		if (!get_bid(&td, &bid)) {
+			printf("unable to read the H1 bid. Skip BID check\n");
+			skip_bid_check = true;
+		}
+	}
 
 	if (get_endorsement_seed)
 		exit(process_endorsement_seed(&td, endorsement_seed_str));
