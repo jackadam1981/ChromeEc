@@ -114,6 +114,12 @@ config HW_TEST_MALLOC
 	help
 	  The test verifies basic malloc operations.
 
+config HW_TEST_OTP_KEY
+	bool "OTP key test"
+	select ZTEST
+	help
+		The test verifies basic OTP key functionality
+
 config HW_TEST_PANIC
 	bool "Panic test"
 	select ZTEST
