@@ -31,11 +31,19 @@ if(DEFINED CONFIG_BOARD_FRANCKA)
 endif()
 
 if(DEFINED CONFIG_BOARD_FELINO)
-	project(felino)
-	add_subdirectory(felino)
-	zephyr_include_directories("felino/include")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-					"felino/src/keyboard_customization.c")
+	if(DEFINED CONFIG_BOARD_FELINO4ES)
+		project(felino4es)
+		add_subdirectory(felino4es)
+		zephyr_include_directories("felino4es/include")
+		zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+						"felino4es/src/keyboard_customization.c")
+	else()
+		project(felino)
+		add_subdirectory(felino)
+		zephyr_include_directories("felino/include")
+		zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+						"felino/src/keyboard_customization.c")
+	endif()
 endif()
 
 if(DEFINED CONFIG_BOARD_KINMEN)
