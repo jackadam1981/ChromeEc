@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8f2f7c_07950cc8",
+        "filename": "zephyr/program/skywalker/program.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-06-13T07:17:45Z",
+      "side": 0,
+      "message": "pdc_power_mgmt driver calls `usb_mux_set` when CONFIG_PDC_POWER_MGMT_USB_MUX is enabled, I am curious why we still need this if there is usb_mux to set",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "e15772fb8f2c4aef405c188cbe4bb6bcb821a2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
