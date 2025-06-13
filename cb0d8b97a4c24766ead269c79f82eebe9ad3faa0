@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ee3a2c_755df40d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-13T21:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2f2f34_2b12292c",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "cb0d8b97a4c24766ead269c79f82eebe9ad3faa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650691a9_33331e83",
@@ -72,6 +96,30 @@
       "writtenOn": "2025-06-13T21:24:53Z",
       "side": 1,
       "message": "Needs to be updated?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "cb0d8b97a4c24766ead269c79f82eebe9ad3faa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de246d4a_c86c2518",
+        "filename": "zephyr/program/fpmcu/helipilot/gwendolin.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-13T21:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fa034a_da970648",
       "range": {
         "startLine": 46,
         "startChar": 2,
