@@ -15,6 +15,7 @@
 		zephyr,host-cmd-shi-backend = &shi0;
 		zephyr,host-cmd-uart-backend = &uart2;
 		zephyr,shell-uart = &uart1;
+		cros,rtc = &mtc;
 	};
 
 	binman {
