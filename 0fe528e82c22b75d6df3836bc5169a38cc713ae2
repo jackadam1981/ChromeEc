@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ca97cb_b485a436",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-13T21:11:37Z",
+      "side": 1,
+      "message": "Here, I have added driver for board_id as keith mentioned. We are internally synced on this. Please review these changes once, accordingly, will rebase the other CL or will mark this abondon.",
+      "parentUuid": "8f2a5473_5550bac7",
+      "revId": "0fe528e82c22b75d6df3836bc5169a38cc713ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58553a2a_61fb4a65",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "630a9174_26712f9e",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-13T21:11:37Z",
+      "side": 1,
+      "message": "Thanks Keith, This approach seems good to me. I am working on changes and will upload the patch once done.",
+      "parentUuid": "58553a2a_61fb4a65",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "0fe528e82c22b75d6df3836bc5169a38cc713ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcbbe8ee_8e910b18",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-05-27T19:47:06Z",
       "side": 1,
       "message": "Is this retry loop still needed when using the pca95xx_deferred_init_cb?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "0fe528e82c22b75d6df3836bc5169a38cc713ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5839457_4fb3576b",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-13T21:11:37Z",
+      "side": 1,
+      "message": "I will confirm this with multiple boot cycles and will take care in further patch.",
+      "parentUuid": "bcbbe8ee_8e910b18",
       "range": {
         "startLine": 87,
         "startChar": 0,
