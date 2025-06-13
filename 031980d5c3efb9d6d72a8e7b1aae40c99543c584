@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ac6e2a_72c831c9",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-06-13T17:05:51Z",
+      "side": 1,
+      "message": "If any of the 4 calls above fail, this CMD is still being sent and init_done will get set if the PDC accepts this command.",
+      "revId": "031980d5c3efb9d6d72a8e7b1aae40c99543c584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
