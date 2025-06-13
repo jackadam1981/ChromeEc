@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bcfed8a_315d654a",
+        "filename": "zephyr/program/fatcat/francka/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-13T20:09:13Z",
+      "side": 1,
+      "message": "i believe we would want to add kso02 here and below now.\nyou can cross reference with `zephyr/program/ocelot/ocelotrvp-npcx/generated.dtsi`",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "fd0932cda5b79824a2b75ea9fe50cc5d7ff912ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
