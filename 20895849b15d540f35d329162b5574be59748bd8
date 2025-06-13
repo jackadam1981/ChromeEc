@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e86e5d_eea3e5a0",
+        "filename": "zephyr/program/ocelot/ioex_gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-13T21:30:07Z",
+      "side": 1,
+      "message": "some of these signals are legacy definitions, right?\nit would be helpful to add a comment for cases where a signal\nis directly available on an EC GPIO or not used (like EEPROM).",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "20895849b15d540f35d329162b5574be59748bd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
