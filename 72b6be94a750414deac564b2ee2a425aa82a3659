@@ -173,6 +173,24 @@
       "message": "queuing up more cherry picks to get nissa* to fit in flash. big hammer:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6641779",
       "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881a1ddf_111819b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-14T00:28:16Z",
+      "side": 1,
+      "message": "oops. yaviks is one of the boards running out of flash space.\nit\u0027s a risc-v core, so the recent LTO patches aren\u0027t applicable.\n\ncherry picked another yaviks space saver:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6644312\n\ni did a local build with the cherry pick and this patch and it actually succeeded!",
+      "parentUuid": "9de7db99_348ad602",
+      "revId": "72b6be94a750414deac564b2ee2a425aa82a3659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
