@@ -2248,6 +2248,7 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 		return false;
 	}
 
+#ifndef CONFIG_PLATFORM_EC_USB_PD_RDO_WO_BATTERY
 	/* if sink path is enabled, battery is not present, and AP is ON,
 	 * do not send RDO. Proceed to seed charge manager with current RDO.
 	 */
@@ -2255,6 +2256,7 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	    !chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
 		return true;
 	}
+#endif
 
 	/* Only one sink path is enabled, safe to update RDO */
 	port->snk_policy.pdo = port->snk_policy.src.pdos[pdo_index];

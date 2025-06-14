@@ -451,6 +451,12 @@ config PLATFORM_EC_USB_PD_INT_STORM_MAX
 	  Maximum rate of interrupts from PD stack (per second) that EC
 	  can support without causing a watchdog.
 
+config PLATFORM_EC_USB_PD_RDO_WO_BATTERY
+	bool "Send RDO w/o battery"
+	default n
+	help
+	  This enables send RDO even battery is not inserted.
+
 rsource "Kconfig.svdm_rsp"
 
 endif  # PLATFORM_EC_USB_POWER_DELIVERY
