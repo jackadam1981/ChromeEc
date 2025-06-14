@@ -16,6 +16,23 @@
       "message": "You\u0027ll need this upstream change in the zephyr repo to go along with this\nhttps://crrev.com/c/6631384",
       "revId": "dc422becf8bbfa0919323598335493e6ca4bf7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02b83d1c_040229ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-14T00:18:52Z",
+      "side": 1,
+      "message": "i need more space on `yaviks` which is a risc-v.\nthis only helps on arm.",
+      "revId": "dc422becf8bbfa0919323598335493e6ca4bf7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
