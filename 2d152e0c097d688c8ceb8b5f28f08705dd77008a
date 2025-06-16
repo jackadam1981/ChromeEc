@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd61c0c3_112022d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:24:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ad1bef31_8e4df229",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "2d152e0c097d688c8ceb8b5f28f08705dd77008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70601df8_3cfc6876",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-05-30T20:59:27Z",
       "side": 1,
       "message": "These board special rails (not related to the AP power sequence) are better enabled/disabled in the hooks, e.g. `HOOK_CHIPSET_SUSPEND` and `HOOK_CHIPSET_RESUME`.",
+      "revId": "2d152e0c097d688c8ceb8b5f28f08705dd77008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a20286f_4d27f79e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:24:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "70601df8_3cfc6876",
       "revId": "2d152e0c097d688c8ceb8b5f28f08705dd77008a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
