@@ -94,6 +94,30 @@
       },
       "revId": "631fb6b4ca9a24dc8a774a0f6178964c6d960ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a709521_51c997e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-16T18:06:41Z",
+      "side": 1,
+      "message": "Actually you can test this, because you have to re-sign the old release with dev keys to prevent wiping nvmem during the update from prod to dev keys.\n\nYou can re-sign 0.3.18 with `./util/re-sign-gsc.sh $DEVIDS cr50.bin.prod` \nFlash it with rescue and then update to the node-locked image with this patch.\n\n0.3.18 is at gs://chromeos-localmirror/distfiles/cr50.r0.0.10.w0.3.18.tbz2",
+      "parentUuid": "53e77854_57cab193",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "631fb6b4ca9a24dc8a774a0f6178964c6d960ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
