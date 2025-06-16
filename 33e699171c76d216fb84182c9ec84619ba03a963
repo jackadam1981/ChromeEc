@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcb6195b_f4178faa",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:23:11Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "264fdd06_678b46b2",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "33e699171c76d216fb84182c9ec84619ba03a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "570ed3ab_4bd516cf",
         "filename": "power/qcom_exp.c",
         "patchSetId": 24
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-27T16:30:26Z",
       "side": 1,
       "message": "The below lines 553~556 do so.",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 23
+      },
+      "revId": "33e699171c76d216fb84182c9ec84619ba03a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3bc60a_bff0235e",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:23:11Z",
+      "side": 1,
+      "message": "Agreed, removed this change.",
+      "parentUuid": "570ed3ab_4bd516cf",
       "range": {
         "startLine": 539,
         "startChar": 0,
