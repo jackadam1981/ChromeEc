@@ -59,7 +59,8 @@ static int get_rollback_offset(int region)
 	ASSERT(rv >= 0);
 	return rv;
 #else
-	return CONFIG_ROLLBACK_OFF + region * CONFIG_FLASH_ERASE_SIZE;
+	return CONFIG_ROLLBACK_OFF +
+	       region * CONFIG_ROLLBACK_SIZE / ROLLBACK_REGIONS;
 #endif
 }
 

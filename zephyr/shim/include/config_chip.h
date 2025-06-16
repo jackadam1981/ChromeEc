@@ -2712,6 +2712,9 @@ BUILD_ASSERT((DT_NUM_INST_STATUS_OKAY(maxim_max695x)) == 1,
 #define CONFIG_ROLLBACK_SIZE                    \
 	(DT_REG_SIZE(DT_NODELABEL(rollback0)) + \
 	 DT_REG_SIZE(DT_NODELABEL(rollback1)))
+BUILD_ASSERT(DT_REG_SIZE(DT_NODELABEL(rollback0)) ==
+		     DT_REG_SIZE(DT_NODELABEL(rollback1)),
+	     "The rollback regions' sizes should be the same");
 #endif
 
 #define CONFIG_ROLLBACK_SECRET_SIZE CONFIG_PLATFORM_EC_ROLLBACK_SECRET_SIZE
