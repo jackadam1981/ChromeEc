@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5997aa_e16c5ada",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:25:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ca0cdb50_ad1ceb3a",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 54
+      },
+      "revId": "07c47f27b9c0aa3a0fc433748b730bf1fe67c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5d6f852_db563b3c",
@@ -101,6 +125,30 @@
           ]
         }
       ],
+      "revId": "07c47f27b9c0aa3a0fc433748b730bf1fe67c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f8242b_78ddfad6",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:25:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f5d6f852_db563b3c",
+      "range": {
+        "startLine": 259,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 18
+      },
       "revId": "07c47f27b9c0aa3a0fc433748b730bf1fe67c7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
