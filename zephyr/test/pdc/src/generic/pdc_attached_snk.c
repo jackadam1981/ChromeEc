@@ -63,6 +63,7 @@ ZTEST_USER_F(pdc_attached_snk, test_new_pd_sink_contract)
 	emul_pdc_set_pdos(fixture->emul_pdc, SOURCE_PDO, PDO_OFFSET_0, 1,
 			  PARTNER_PDO, pdos);
 	emul_pdc_connect_partner(fixture->emul_pdc, &in);
+	k_sleep(K_MSEC(50));
 
 	/* Ensure we are connected */
 	pdc_power_mgmt_wait_for_sync(fixture->port, -1);
@@ -74,9 +75,14 @@ ZTEST_USER_F(pdc_attached_snk, test_new_pd_sink_contract)
 	in_conn_status_change_bits.supported_provider_caps = 1;
 	in.raw_conn_status_change_bits = in_conn_status_change_bits.raw_value;
 	emul_pdc_connect_partner(fixture->emul_pdc, &in);
+	k_sleep(K_MSEC(50));
 
 	/* Pause to allow pdc_power_mgmt to process interrupt and re-settle */
 	pdc_power_mgmt_wait_for_sync(fixture->port, -1);
+
+	/* Simulate the new contract*/
+	emul_pdc_new_contract(fixture->emul_pdc, &in);
+	k_sleep(K_MSEC(50));
 
 	/* Check that the sink path is on again */
 	zassert_ok(emul_pdc_get_sink_path(fixture->emul_pdc, &sink_path_en));

@@ -712,6 +712,21 @@ static inline int emul_pdc_disconnect(const struct emul *target)
 	return 0;
 }
 
+static inline int
+emul_pdc_new_contract(const struct emul *target,
+		      union connector_status_t *connector_status)
+{
+	union conn_status_change_bits_t change_bits = { 0 };
+
+	change_bits.negotiated_power_level = 1;
+	connector_status->connect_status = 1;
+	connector_status->raw_conn_status_change_bits = change_bits.raw_value;
+	emul_pdc_set_connector_status(target, connector_status);
+	emul_pdc_pulse_irq(target);
+
+	return 0;
+}
+
 static inline int emul_pdc_get_frs(const struct emul *target, bool *enabled)
 {
 	if (!target || !target->backend_api) {
