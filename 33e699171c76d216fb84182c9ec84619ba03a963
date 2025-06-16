@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f46b411_f0b03330",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T16:19:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bcb6195b_f4178faa",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "33e699171c76d216fb84182c9ec84619ba03a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "570ed3ab_4bd516cf",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Agreed, removed this change.",
       "parentUuid": "570ed3ab_4bd516cf",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 23
+      },
+      "revId": "33e699171c76d216fb84182c9ec84619ba03a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0128a0dc_9d0a0929",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T16:19:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5b3bc60a_bff0235e",
       "range": {
         "startLine": 539,
         "startChar": 0,
