@@ -909,6 +909,7 @@ static void init_port_variables(struct pdc_port_t *port,
 				bool reset_charge_manager);
 static int pdc_power_mgmt_request_power_swap_intern(int port,
 						    enum pd_power_role role);
+static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo);
 static void pd_chipset_startup(void);
 static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
@@ -1368,6 +1369,17 @@ static void handle_connector_status(struct pdc_port_t *port)
 			set_pdc_state(port, PDC_SRC_ATTACHED);
 			return;
 		} else {
+			if (conn_status_change_bits.negotiated_power_level) {
+				/*
+				 * When we are a sink, if the negotiated power
+				 * level changes. Forward the active PD contract
+				 * to the charge manager.
+				 */
+				uint32_t pdo_index = RDO_POS(status->rdo) - 1;
+				pdc_snk_seed_charge_manager(
+					port,
+					port->snk_policy.src.pdos[pdo_index]);
+			}
 			/* Port partner is a source
 			 * device */
 			set_pdc_state(port, PDC_SNK_ATTACHED);
@@ -2462,9 +2474,9 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		 * invoke set_active_charge_port after being seeded, moving
 		 * PDC Power Mgmt onto SET_SINK_PATH state.
 		 */
-		if (pdc_is_rdo_valid(&port->connector_status)) {
-			uint32_t pdo_index =
-				RDO_POS(port->connector_status.rdo) - 1;
+		if (pdc_is_rdo_valid(&port->connector_status) &&
+		    port->snk_policy.rdo_to_send == port->snk_policy.rdo) {
+			uint32_t pdo_index = RDO_POS(port->snk_policy.rdo) - 1;
 			pdc_snk_seed_charge_manager(
 				port, port->snk_policy.src.pdos[pdo_index]);
 		}
@@ -2830,8 +2842,7 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 			handle_attention_vdo(port);
 			break;
 		case CMD_PDC_SET_RDO:
-			port->connector_status.rdo =
-				port->snk_policy.rdo_to_send;
+			port->snk_policy.rdo = port->snk_policy.rdo_to_send;
 			break;
 		default:
 			break;
