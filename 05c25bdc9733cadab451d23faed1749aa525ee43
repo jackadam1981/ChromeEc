@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8aff54_f5495b2e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx_fwup.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-16T22:27:29Z",
+      "side": 1,
+      "message": "Nit - Zephyr\u0027s existing I2C command uses `\u003cdevice\u003e \u003caddr\u003e`.  For these parameters.  I recommend matching that convention.",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 63
+      },
+      "revId": "05c25bdc9733cadab451d23faed1749aa525ee43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
