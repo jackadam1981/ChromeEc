@@ -51,6 +51,23 @@
       "parentUuid": "173f8ed8_25660f72",
       "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fae2d74_6446fb26",
+        "filename": "zephyr/program/nissa/meliks/overlay.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2025-06-16T11:50:16Z",
+      "side": 1,
+      "message": "QQ: did firmware.ECUSBPorts.usb_pins_on_shutdown and\nfirmware.ECUSBPorts.usb_pins_on_lid_close pass without usba section?",
+      "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
