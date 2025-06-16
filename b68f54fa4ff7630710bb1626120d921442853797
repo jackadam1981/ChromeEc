@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4094672_2ff604bd",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-06-16T04:02:45Z",
+      "side": 1,
+      "message": "The host command EC_CMD_GET_BOARD_VERSION and ec console command \"version\" uses this API. AP firmware reads the board id using this host command during CB init (used to identify LP5/DDR5 memory parts)\n\n@megha.verma@intel.corp-partner.google.com, pls do visit the code again and check.",
+      "parentUuid": "0780ffd3_ada2be9c",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "b68f54fa4ff7630710bb1626120d921442853797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4591a927_f9d48011",
         "filename": "zephyr/program/ocelot/rvp_i2c.dtsi",
         "patchSetId": 3
