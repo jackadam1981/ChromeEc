@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5e28b0_48d83aed",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:21:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4ba7f962_d22c1378",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "994d426766330769d8e5e7500ef2da50769ae426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ea3f52a_6758f32f",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-06-10T18:06:31Z",
       "side": 1,
       "message": "Nit: Long comments like this should be written in complete sentences with proper capitalization.",
+      "range": {
+        "startLine": 872,
+        "startChar": 5,
+        "endLine": 875,
+        "endChar": 32
+      },
+      "revId": "994d426766330769d8e5e7500ef2da50769ae426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caabbe0e_8f13cde7",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:21:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4ea3f52a_6758f32f",
       "range": {
         "startLine": 872,
         "startChar": 5,
@@ -102,6 +150,30 @@
           ]
         }
       ],
+      "revId": "994d426766330769d8e5e7500ef2da50769ae426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1fc8c6_5a3029a6",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-16T12:21:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7e1045e1_64075a65",
+      "range": {
+        "startLine": 879,
+        "startChar": 2,
+        "endLine": 879,
+        "endChar": 5
+      },
       "revId": "994d426766330769d8e5e7500ef2da50769ae426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
