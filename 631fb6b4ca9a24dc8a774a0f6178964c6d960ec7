@@ -22,6 +22,30 @@
       },
       "revId": "631fb6b4ca9a24dc8a774a0f6178964c6d960ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504d9252_2b5acd93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-16T15:46:27Z",
+      "side": 1,
+      "message": "yes, nvmem just gets wiped, this is demonstrated by the unit test of initialization from \u0027corrupted\u0027 flash, where \u0027corrupted\u0027 means anything which does not pass new nvmem integrity verification at startup.\n\nI tried to run 0.3.16 image, but it does not start because of rollback bits, and tried to build my own image of that version, but I don;t have the signing fobs any more.\n\nCan you suggest how I can access a Cr50 capable of EFI, I\u0027d be able to try it then.",
+      "parentUuid": "74867d25_0900fefd",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "631fb6b4ca9a24dc8a774a0f6178964c6d960ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
