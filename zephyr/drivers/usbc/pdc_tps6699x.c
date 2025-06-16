@@ -1404,11 +1404,12 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		max_v = PDO_BATT_MAX_VOLTAGE(pdo);
 		min_v = PDO_BATT_MIN_VOLTAGE(pdo);
-		max_a = CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA / 10;
+		max_a = CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA;
 		min_power = PDO_BATT_MAX_POWER(pdo);
 	} else {
 		max_v = min_v = PDO_FIXED_VOLTAGE(pdo);
-		max_a = PDO_FIXED_CURRENT(pdo);
+		max_a = MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
+			    PDO_FIXED_CURRENT(pdo));
 		min_power = max_v * max_a;
 	}
 
