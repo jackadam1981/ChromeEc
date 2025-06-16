@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e844669_15a4b294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-16T16:02:35Z",
+      "side": 1,
+      "message": "I believe this change will cause a brownout, as during PDC negotiation of new RDO reduces the voltage/power to a safe limit that may not be enough to power the board. @alevkoy@chromium.org @keithshort@chromium.org, can you please confirm?",
+      "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
