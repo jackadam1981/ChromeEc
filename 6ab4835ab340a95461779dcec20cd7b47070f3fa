@@ -50,6 +50,24 @@
       "message": "Why is this needed?",
       "revId": "6ab4835ab340a95461779dcec20cd7b47070f3fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e41a416_7a62994a",
+        "filename": "zephyr/program/nissa/craask/src/charger.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-06-16T22:13:16Z",
+      "side": 1,
+      "message": "I\u0027m actually confused by the inclusion of this it says -0 +0 meaning no change",
+      "parentUuid": "c768f1c6_0eec4ae9",
+      "revId": "6ab4835ab340a95461779dcec20cd7b47070f3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
