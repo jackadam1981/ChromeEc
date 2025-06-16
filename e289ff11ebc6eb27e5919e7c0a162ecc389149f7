@@ -16,6 +16,24 @@
       "message": "I believe this change will cause a brownout, as during PDC negotiation of new RDO reduces the voltage/power to a safe limit that may not be enough to power the board. @alevkoy@chromium.org @keithshort@chromium.org, can you please confirm?",
       "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3411cf51_8e7ea0a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-16T17:56:17Z",
+      "side": 1,
+      "message": "I agree. This _should_ result in the PDC reducing current draw to ~500 mA for ~500 ms. If it doesn\u0027t, that\u0027s probably a PD compliance bug on the part of the PDC.\n\nNote that this spec requirement on PDC behavior only applies for voltage transitions. The PDC _may_ legally renegotiate from 5V/3A to 5V/5A without dropping current draw, if that\u0027s an option. Whether the PDC actually does this probably depends on the PDC.",
+      "parentUuid": "7e844669_15a4b294",
+      "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
