@@ -33,6 +33,24 @@
       "message": "Hi Y Sung,\n\nCould you run `Run ./twister -T zephyr/test/nissa` to test your code?",
       "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0d7fcc_3e261e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2025-06-16T06:29:34Z",
+      "side": 1,
+      "message": "Test code for meliks is not uploaded yet. I should update test code for meliks.\nAnd I can build meliks by local build after updating this change.",
+      "parentUuid": "173f8ed8_25660f72",
+      "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
