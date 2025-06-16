@@ -121,6 +121,8 @@ typedef void (*emul_pdc_reset_feature_flags_t)(const struct emul *target);
 typedef int (*emul_pdc_set_dead_battery_t)(const struct emul *target,
 					   int dead_battery);
 typedef int (*emul_pdc_get_dead_battery_t)(const struct emul *target);
+typedef int (*emul_pdc_get_autoneg_sink_t)(const struct emul *target,
+					   int *max_voltage, int *max_current);
 
 __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_response_delay_t set_response_delay;
@@ -165,6 +167,7 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_reset_feature_flags_t reset_feature_flags;
 	emul_pdc_set_dead_battery_t set_dead_battery;
 	emul_pdc_get_dead_battery_t get_dead_battery;
+	emul_pdc_get_autoneg_sink_t get_autoneg_sink;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -869,6 +872,20 @@ static inline int emul_pdc_get_dead_battery(const struct emul *target)
 	const struct emul_pdc_driver_api *api = target->backend_api;
 	if (api->get_dead_battery) {
 		return api->get_dead_battery(target);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_get_autoneg_sink(const struct emul *target,
+					    int *max_voltage, int *max_current)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->get_autoneg_sink) {
+		return api->get_autoneg_sink(target, max_voltage, max_current);
 	}
 	return -ENOSYS;
 }

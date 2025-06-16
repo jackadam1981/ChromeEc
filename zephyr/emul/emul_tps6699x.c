@@ -1401,6 +1401,22 @@ static void emul_tps6699x_reset_feature_flags(const struct emul *target)
 }
 /* LCOV_EXCL_STOP */
 
+static int emul_tps6699x_get_autoneg_sink(const struct emul *target,
+					  int *max_voltage, int *max_current)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	const union reg_autonegotiate_sink *an_snk =
+		(union reg_autonegotiate_sink *)
+			data->reg_val[REG_AUTONEGOTIATE_SINK];
+
+	*max_voltage = an_snk->auto_neg_max_voltage;
+	*max_current = an_snk->auto_neg_max_current;
+
+	return 0;
+}
+
 static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.reset = emul_tps6699x_reset,
 	.set_response_delay = emul_tps6699x_set_response_delay,
@@ -1435,6 +1451,7 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.set_feature_flag = emul_tps6699x_set_feature_flag,
 	.clear_feature_flag = emul_tps6699x_clear_feature_flag,
 	.reset_feature_flags = emul_tps6699x_reset_feature_flags,
+	.get_autoneg_sink = emul_tps6699x_get_autoneg_sink,
 };
 
 /* clang-format off */
