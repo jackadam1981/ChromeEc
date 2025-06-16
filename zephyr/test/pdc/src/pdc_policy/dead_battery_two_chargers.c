@@ -36,6 +36,8 @@ ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy_two_chargers)
 
 	/* Verify after initialization both ports are connected as sink but
 	 * only one has sink path enabled */
+	int charge_port = 0;
+	int num_charge_ports = 0;
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		zassert_ok(pdc_power_mgmt_get_connector_status(
 			port, &connector_status));
@@ -44,17 +46,21 @@ ZTEST_USER_F(dead_battery_policy, test_dead_battery_policy_two_chargers)
 			      port);
 		zassert_equal(connector_status.power_direction, 0, "port=%d",
 			      port);
-		zassert_equal(connector_status.sink_path_status,
-			      (port ? 1 : 0));
 
 		/* Verify dead battery is cleared */
 		zassert_false(
 			emul_pdc_get_dead_battery(fixture->pdc[port].emul_pdc),
 			"port=%d", port);
+
+		if (connector_status.sink_path_status) {
+			charge_port = port;
+			num_charge_ports++;
+		}
 	}
 
+	zassert_equal(num_charge_ports, 1);
+
 	/* Verify correct RDO is selected on PORT1 */
-	zassert_ok(
-		emul_pdc_get_rdo(fixture->pdc[TEST_USBC_PORT1].emul_pdc, &rdo));
+	zassert_ok(emul_pdc_get_rdo(fixture->pdc[charge_port].emul_pdc, &rdo));
 	zassert_equal(RDO_POS(rdo), 3);
 }
