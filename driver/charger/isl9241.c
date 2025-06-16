@@ -185,18 +185,18 @@ error:
 	return rv;
 }
 
-static enum ec_error_list isl9241_get_option(int chgnum, int *option)
+static enum ec_error_list isl95522_get_option(int chgnum, int *option)
 {
 	int rv;
 	uint32_t controls;
 	int reg;
 
-	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL0, &reg);
+	rv = isl9241_read(chgnum, ISL95522_REG_CONTROL1, &reg);
 	if (rv)
 		return rv;
 
 	controls = reg;
-	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+	rv = isl9241_read(chgnum, ISL95522_REG_CONTROL2, &reg);
 	if (rv)
 		return rv;
 
@@ -205,15 +205,15 @@ static enum ec_error_list isl9241_get_option(int chgnum, int *option)
 	return EC_SUCCESS;
 }
 
-static enum ec_error_list isl9241_set_option(int chgnum, int option)
+static enum ec_error_list isl95522_set_option(int chgnum, int option)
 {
 	int rv;
 
-	rv = isl9241_write(chgnum, ISL9241_REG_CONTROL0, option & 0xFFFF);
+	rv = isl9241_write(chgnum, ISL95522_REG_CONTROL1, option & 0xFFFF);
 	if (rv)
 		return rv;
 
-	return isl9241_write(chgnum, ISL9241_REG_CONTROL1,
+	return isl9241_write(chgnum, ISL95522_REG_CONTROL2,
 			     (option >> 16) & 0xFFFF);
 }
 
@@ -224,13 +224,13 @@ static const struct charger_info *isl9241_get_info(int chgnum)
 
 static enum ec_error_list isl9241_bypass_mode_enabled(int chgnum, int *enabled)
 {
-	int reg, rv;
+//	int reg, rv;
 
-	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL0, &reg);
-	if (rv)
-		return rv;
+//	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL0, &reg);
+//	if (rv)
+//		return rv;
 
-	*enabled = !!(reg & ISL9241_CONTROL0_EN_BYPASS_GATE);
+//	*enabled = !!(reg & ISL9241_CONTROL0_EN_BYPASS_GATE);
 
 	return EC_SUCCESS;
 }
@@ -1133,9 +1133,9 @@ static void isl9241_init(int chgnum)
 		goto init_fail;
 
 #ifndef CONFIG_CHARGE_RAMP_HW
-	if (isl9241_update(chgnum, ISL9241_REG_CONTROL0,
-			   ISL9241_CONTROL0_INPUT_VTG_REGULATION, MASK_SET))
-		goto init_fail;
+//	if (isl9241_update(chgnum, ISL9241_REG_CONTROL0,
+//			   ISL9241_CONTROL0_INPUT_VTG_REGULATION, MASK_SET))
+//		goto init_fail;
 #endif
 
 #ifdef CONFIG_ISL9241_SWITCHING_FREQ
@@ -1282,8 +1282,8 @@ const struct charger_drv isl9241_drv = {
 	.manufacturer_id = &isl9241_manufacturer_id,
 	.device_id = &isl9241_device_id,
 	.set_frequency = &isl9241_set_frequency,
-	.get_option = &isl9241_get_option,
-	.set_option = &isl9241_set_option,
+	.get_option = &isl95522_get_option,
+	.set_option = &isl95522_set_option,
 #ifdef CONFIG_CHARGE_RAMP_HW
 	.set_hw_ramp = &isl9241_set_hw_ramp,
 	.ramp_is_stable = &isl9241_ramp_is_stable,
