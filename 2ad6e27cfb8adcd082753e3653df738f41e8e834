@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97407644_a04df87c",
+        "filename": "zephyr/program/trulo/pujjolo-ish/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-16T15:34:57Z",
+      "side": 1,
+      "message": "This mode is great for bringup since you won\u0027t loose any logs when you view them directly through the UART, but you should eventually swap to the LOG_MODE_MINIMAL since there\u0027s a bug right now that deferred logging doesn\u0027t make it to the /var/log/cros_ish.log file.",
+      "revId": "2ad6e27cfb8adcd082753e3653df738f41e8e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124969a0_24a941c5",
+        "filename": "zephyr/program/trulo/pujjolo-ish/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-16T15:34:57Z",
+      "side": 1,
+      "message": "I would double check this, Intel said there\u0027s some issue with power consumption when using uart1 instead of uart0 for this console/shell.",
+      "revId": "2ad6e27cfb8adcd082753e3653df738f41e8e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69fff999_0c78c7a0",
+        "filename": "zephyr/program/trulo/pujjolo/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-16T15:34:57Z",
+      "side": 1,
+      "message": "Does Pujjolo plan on implementing a version without the ISH? This doesn\u0027t seem necessary.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "2ad6e27cfb8adcd082753e3653df738f41e8e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34360d44_dbbca7f7",
+        "filename": "zephyr/program/trulo/pujjolo/src/sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-16T15:34:57Z",
+      "side": 1,
+      "message": "This can be made much simpler if pujjjolo doesn\u0027t plan on having sensors on the EC. Uldrenite was a bit of an exception because it was brought up with sensors on the EC so we needed a runtime switch until we get all the current boards out of circulation. The same logic in Uldrenite will eventually be removed.",
+      "revId": "2ad6e27cfb8adcd082753e3653df738f41e8e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
