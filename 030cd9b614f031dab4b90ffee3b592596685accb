@@ -68,6 +68,24 @@
       "message": "QQ: did firmware.ECUSBPorts.usb_pins_on_shutdown and\nfirmware.ECUSBPorts.usb_pins_on_lid_close pass without usba section?",
       "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd25a58d_d5bbae7b",
+        "filename": "zephyr/program/nissa/meliks/overlay.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1455860
+      },
+      "writtenOn": "2025-06-16T12:07:38Z",
+      "side": 1,
+      "message": "Yes. I have tested without usba section. And firmware.ECUSBPorts.usb_pins_on_shutdown and\nfirmware.ECUSBPorts.usb_pins_on_lid_close can be passed. I think test can find gpio name(en_sub_usb_a1_vbus).\n\ngpio_sb_2: en_sub_usb_a1_vbus {\n\t\t\tgpios \u003d \u003c\u0026gpiod 4 GPIO_OUTPUT\u003e;\n\t\t};",
+      "parentUuid": "5fae2d74_6446fb26",
+      "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
