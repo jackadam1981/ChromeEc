@@ -2412,21 +2412,23 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_rdo_errors)
  * in the suspended state, when communication with the PDC is not allowed.
  */
 
-static void *pdc_power_mgmt_suspend_setup(void)
-{
-	zassert_ok(pdc_power_mgmt_set_comms_state(false));
-
-	return NULL;
-}
-
 static void pdc_power_mgmt_suspend_before(void *fixture)
 {
+	int rv;
+
 	reset_fakes();
+
+	rv = pdc_power_mgmt_set_comms_state(false);
+	zassert_true(rv == 0 || rv == -EALREADY);
 }
 
 static void pdc_power_mgmt_suspend_after(void *fixture)
 {
+	union error_status_t no_errors = { 0 };
+
 	reset_fakes();
+
+	emul_pdc_set_error_status(emul, &no_errors);
 }
 
 static void pdc_power_mgmt_suspend_teardown(void *fixture)
@@ -2436,7 +2438,7 @@ static void pdc_power_mgmt_suspend_teardown(void *fixture)
 	zassert_ok(emul_pdc_idle_wait(emul));
 }
 
-ZTEST_SUITE(pdc_power_mgmt_api_suspended, NULL, pdc_power_mgmt_suspend_setup,
+ZTEST_SUITE(pdc_power_mgmt_api_suspended, NULL, NULL,
 	    pdc_power_mgmt_suspend_before, pdc_power_mgmt_suspend_after,
 	    pdc_power_mgmt_suspend_teardown);
 
@@ -2449,3 +2451,27 @@ ZTEST_USER(pdc_power_mgmt_api_suspended, test_get_info)
 	zassert_equal(-ENOTCONN, rv, "Expected %d (-ENOTCONN) but got %d",
 		      -ENOTCONN, rv);
 }
+
+/* TODO(b/345292002): The tests below fail with the TPS6699x emulator/driver. */
+#ifndef CONFIG_TODO_B_345292002
+
+/* TI emulator does not support faking error status, so we can't make
+ * initialization fail on-demand. Run this test using only the RTK emulator */
+ZTEST_USER(pdc_power_mgmt_api_suspended,
+	   test_suspend_during_init_with_pdc_error)
+{
+	union error_status_t error = { .unrecognized_command = 1 };
+
+	/* Set an error status on the PDC so that when we come out of suspend
+	 * below, re-initialization fails. */
+	emul_pdc_set_error_status(emul, &error);
+
+	/* Un-suspending sends pdc_power_mgmt back to the init state */
+	zassert_ok(pdc_power_mgmt_set_comms_state(true));
+	zassert_true(wait_state_name(TEST_PORT, PDC_INIT, "PDC Init"));
+
+	/* Because there is an error reported, we should be able to suspend
+	 * again. */
+	zassert_ok(pdc_power_mgmt_set_comms_state(false));
+}
+#endif /* !defined(CONFIG_TODO_B_345292002) */
