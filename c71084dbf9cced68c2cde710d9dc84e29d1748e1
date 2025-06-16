@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3fec87_5c9047b3",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-16T16:58:25Z",
+      "side": 1,
+      "message": "Use `chipset_in_state()` to avoid racing.",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 36
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9448f20a_19e07c0e",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-16T16:58:25Z",
+      "side": 1,
+      "message": "It needs some unit tests to ensure no racing condition. Please file a bug for test coverage and add a TODO here.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0877529_9f68c93a",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-16T16:58:25Z",
+      "side": 1,
+      "message": "If the lid opens and closes very soon, such that the first lid open event hasn\u0027t been processed, the pending lid close event needs to be handled.",
+      "range": {
+        "startLine": 260,
+        "startChar": 4,
+        "endLine": 260,
+        "endChar": 20
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31944e0_e1e74bf5",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-16T16:58:25Z",
+      "side": 1,
+      "message": "How about the lid open event?",
+      "range": {
+        "startLine": 527,
+        "startChar": 15,
+        "endLine": 527,
+        "endChar": 41
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc88d2d8_d32b26e5",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-16T16:58:25Z",
+      "side": 1,
+      "message": "Here is outside of Zephyr; use the CrEC API `gpio_set_level()`.",
+      "range": {
+        "startLine": 528,
+        "startChar": 2,
+        "endLine": 528,
+        "endChar": 17
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
