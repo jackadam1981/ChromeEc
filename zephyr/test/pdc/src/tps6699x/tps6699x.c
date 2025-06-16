@@ -308,3 +308,76 @@ ZTEST_USER(tps6699x, test_handle_irq)
 		zassert_true(pdc_is_init_done(dev2));
 	}
 }
+
+ZTEST_USER(tps6699x, test_set_rdo)
+{
+	uint32_t rdo;
+	uint32_t cached_pdos;
+	int max_voltage, max_current;
+	union connector_status_t conn_status = { 0 };
+	uint32_t pdos[PDO_MAX_OBJECTS] = { 0 };
+
+	access = ACCESS_OK;
+	RESET_FAKE(tps_rw_port_control);
+	tps_rw_port_control_fake.custom_fake = custom_fake_tps_rw_port_control;
+
+	/* Set connector status to allow the PDC driver to set an RDO */
+	conn_status.connect_status = 1;
+	conn_status.power_direction = 0;
+	emul_pdc_set_connector_status(emul, &conn_status);
+	k_sleep(K_MSEC(SLEEP_MS));
+	emul_pdc_pulse_irq(emul);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Test Fixed PDO selection */
+	pdos[PDO_OFFSET_0] = PDO_FIXED(20000, 5000, 0);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos),
+			  PARTNER_PDO, pdos);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Read back PDO for the driver to cache them */
+	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				&cached_pdos));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Set RDO with PDC driver */
+	rdo = RDO_FIXED(1, CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
+			CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 0);
+	zassert_ok(pdc_set_rdo(dev, rdo));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify voltage and current limits from PDC emulator
+	 * autoneg_sink max voltage should be PDO voltage / 50.
+	 * autoneg_sink max current should be the min of PDO current and device
+	 * current / 10.
+	 */
+	emul_pdc_get_autoneg_sink(emul, &max_voltage, &max_current);
+	zassert_equal(max_voltage, 20000 / 50);
+	zassert_equal(max_current,
+		      MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 5000) / 10);
+
+	/* Test Battery PDO selection */
+	pdos[PDO_OFFSET_0] = PDO_BATT(5000, 20000, 45000);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos),
+			  PARTNER_PDO, pdos);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Read back PDO for the driver to cache them */
+	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				&cached_pdos));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Set RDO with PDC driver */
+	rdo = RDO_BATT(1, 45000, 45000, 0);
+	zassert_ok(pdc_set_rdo(dev, rdo));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify voltage and current limits from PDC emulator
+	 * autoneg_sink max voltage should be max PDO voltage / 50.
+	 * autoneg_sink max current should be the device current / 10.
+	 */
+	emul_pdc_get_autoneg_sink(emul, &max_voltage, &max_current);
+	zassert_equal(max_voltage, 20000 / 50);
+	zassert_equal(max_current,
+		      CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA / 10);
+}
