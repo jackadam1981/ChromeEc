@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc1cd9c_7cf884ea",
+        "filename": "zephyr/program/skywalker/yoda/led_pins.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2025-06-16T03:00:37Z",
+      "side": 1,
+      "message": "Did you move the `color_amber` to new position intentionally?  \nIf so, please add a line between `color_green` and `color_amber`.\nIf not, \nOr you was trying to add `color_green` only for zephyr/program/skywalker/yoda/led_policy.dtsi?",
+      "revId": "e79ad86bcc14de98115eb4f9153b025aff6f847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
