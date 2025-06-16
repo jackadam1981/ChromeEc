@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07cd0d68_c6752942",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2025-06-16T05:34:47Z",
+      "side": 1,
+      "message": "build error\n\n[meliks:rw] /mnt/host/source/src/platform/ec/build/zephyr/meliks/modules/ec/common/usb_port_power_smart.c:86:20: error: \u0027GPIO_USB1_ILIM_SEL\u0027 undeclared (first use in this function)\n[meliks:rw]    86 |         ilim_sel \u003d GPIO_USB1_ILIM_SEL;",
+      "revId": "030cd9b614f031dab4b90ffee3b592596685accb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
