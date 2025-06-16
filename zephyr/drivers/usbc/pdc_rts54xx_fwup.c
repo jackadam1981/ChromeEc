@@ -42,7 +42,7 @@ LOG_MODULE_REGISTER(pdc_rts54_fwup, LOG_LEVEL_INF);
 #define RTS54XX_GET_IC_STATUS_SAFE_READ_LEN 20
 
 static struct {
-	const struct device *pdc_dev;
+	bool fwup_session_active;
 	struct i2c_dt_spec pdc_i2c;
 	struct pdc_info_t chip_info;
 	size_t bytes_written;
@@ -307,12 +307,16 @@ static int rts54xx_write_flash_chunk(const struct i2c_dt_spec *i2c,
 	return -1;
 }
 
-static int pdc_rts54xx_fwup_start(const struct device *dev)
+static int pdc_rts54xx_fwup_start(const struct i2c_dt_spec *i2c)
 {
-	struct pdc_hw_config_t hw_config;
 	int rv;
 
-	if (ctx.pdc_dev) {
+	if (i2c == NULL) {
+		LOG_ERR("I2C spec is NULL");
+		return -EINVAL;
+	}
+
+	if (ctx.fwup_session_active) {
 		LOG_ERR("FWUP session already in progress");
 		return -EBUSY;
 	}
@@ -326,14 +330,7 @@ static int pdc_rts54xx_fwup_start(const struct device *dev)
 		return rv;
 	}
 
-	/* Get I2C info */
-	rv = pdc_get_hw_config(dev, &hw_config);
-	if (rv) {
-		LOG_ERR("Cannot get PDC I2C info: %d", rv);
-		return rv;
-	}
-
-	ctx.pdc_i2c = hw_config.i2c;
+	ctx.pdc_i2c = *i2c;
 
 	/* Enable vendor commands */
 	LOG_INF("Enabling vendor commands");
@@ -379,7 +376,7 @@ static int pdc_rts54xx_fwup_start(const struct device *dev)
 
 	/* Ready for FW transfer */
 
-	ctx.pdc_dev = dev;
+	ctx.fwup_session_active = true;
 	ctx.bytes_written = 0;
 
 	return 0;
@@ -392,7 +389,7 @@ static int pdc_rts54xx_fwup_write(uint8_t *buffer, size_t buffer_len)
 	uint8_t flash_bank;
 	int rv;
 
-	if (ctx.pdc_dev == NULL) {
+	if (!ctx.fwup_session_active) {
 		/* Need to start a FWUP session w/ pdc_rts54xx_fwup_start() */
 		LOG_ERR("No FWUP session in progress");
 		return -ENODEV;
@@ -433,7 +430,7 @@ static int pdc_rts54xx_fwup_finish(void)
 {
 	int rv;
 
-	if (ctx.pdc_dev == NULL) {
+	if (!ctx.fwup_session_active) {
 		/* Need to start a FWUP session w/ pdc_rts54xx_fwup_start() */
 		LOG_ERR("No FWUP session in progress");
 		return -ENODEV;
@@ -502,7 +499,7 @@ static int pdc_rts54xx_fwup_abort(void)
 {
 	int rv;
 
-	if (ctx.pdc_dev) {
+	if (ctx.fwup_session_active) {
 		/* Turn off flash access */
 		LOG_INF("Session in progress - disable flash access");
 		rv = rts54xx_disable_flash_access(&ctx.pdc_i2c);
@@ -555,26 +552,89 @@ static int cmd_pdc_rtk_fwup_start(const struct shell *sh, size_t argc,
 				  char **argv)
 {
 	int rv;
-	uint8_t port;
+	struct i2c_dt_spec i2c;
 	const struct device *dev;
 	char *e;
 
-	/* Get PD port number */
-	port = strtoul(argv[1], &e, 0);
-	if (*e || port >= pdc_power_mgmt_get_usb_pd_port_count()) {
-		shell_error(sh, "RTK_FWUP: Invalid port");
-		return -EINVAL;
+	/* A PDC chip can be specified in one of two ways:
+	 *
+	 *  1) By USB-C port number, in which case the updater will look up the
+	 *     associated PDC's I2C bus info through the PDC API.
+	 *  2) By raw I2C bus name and address. The updater will attempt to
+	 *     communicate with a PDC at the provided target address on the
+	 *     specified bus. This is useful if the currently-flashed EC
+	 *     firmware has an inaccurate PDC config in the devicetree.
+	 */
+
+	if (argc == 2) {
+		uint8_t port;
+		struct pdc_hw_config_t hw_config;
+
+		/* User specified a USB-C port number */
+		port = strtoul(argv[1], &e, 0);
+		if (*e || port >= pdc_power_mgmt_get_usb_pd_port_count()) {
+			shell_error(sh, "RTK_FWUP: Invalid port");
+			return -EINVAL;
+		}
+
+		dev = pdc_power_mgmt_get_port_pdc_driver(port);
+		if (dev == NULL) {
+			shell_error(
+				sh,
+				"RTK_FWUP: Cannot locate PDC driver for C%u",
+				port);
+			return -ENOENT;
+		}
+
+		/* Get I2C info for this port. This is the only thing we need
+		 * the PDC driver for. The rest of the update process bypasses
+		 * the driver and makes direct I2C transactions.
+		 */
+		rv = pdc_get_hw_config(dev, &hw_config);
+		if (rv) {
+			LOG_ERR("Cannot get PDC I2C info: %d", rv);
+			return rv;
+		}
+
+		i2c = hw_config.i2c;
+
+	} else if (argc >= 3) {
+		/* User specified an I2C bus and target address */
+
+		uint16_t i2c_addr;
+
+		/* Search for I2C bus driver */
+		dev = shell_device_get_binding(argv[1]);
+		if (!dev) {
+			shell_error(sh, "RTK_FWUP: Cannot find I2C driver '%s'",
+				    argv[1]);
+			return -ENODEV;
+		}
+
+		if (!DEVICE_API_IS(i2c, dev)) {
+			shell_error(
+				sh,
+				"RTK_FWUP: Device '%s' is not an I2C driver.",
+				argv[1]);
+			return -EINVAL;
+		}
+
+		i2c_addr = strtoul(argv[2], &e, 0);
+		if (*e) {
+			shell_error(sh, "RTK_FWUP: Invalid I2C addr or flags");
+			return -EINVAL;
+		}
+
+		i2c = (struct i2c_dt_spec){
+			.bus = dev,
+			.addr = i2c_addr,
+		};
 	}
 
-	dev = pdc_power_mgmt_get_port_pdc_driver(port);
-	if (dev == NULL) {
-		shell_error(sh,
-			    "RTK_FWUP: Cannot locate PDC driver for port C%u",
-			    port);
-		return -ENOENT;
-	}
+	shell_info(sh, "RTK_FWUP: Accessing PDC chip at %s:%02x",
+		   i2c.bus->name ? i2c.bus->name : "(unnamed bus)", i2c.addr);
 
-	rv = pdc_rts54xx_fwup_start(dev);
+	rv = pdc_rts54xx_fwup_start(&i2c);
 	if (rv) {
 		shell_error(sh, "RTK_FWUP: Cannot start: %d", rv);
 		return rv;
@@ -634,8 +694,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_rtk_fwup_cmds,
 	SHELL_CMD_ARG(start, NULL,
 		      "Prepare the PDC for a firmware download\n"
-		      "Usage: pdc_rtk_fwup start <port>",
-		      cmd_pdc_rtk_fwup_start, 2, 0),
+		      "Usage: pdc_rtk_fwup start <port>\n"
+		      "       pdc_rtk_fwup start <device> <addr>\n"
+		      "         (`device` is an I2C bus, likely I2C_PORT_PD)",
+		      cmd_pdc_rtk_fwup_start, 2, 1),
 	SHELL_CMD_ARG(write, NULL,
 		      "Write packets of 29 FW payload bytes to the PDC\n"
 		      "Usage: pdc_rtk_fwup write <base64>",
