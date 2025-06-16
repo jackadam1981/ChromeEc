@@ -22,6 +22,30 @@
       },
       "revId": "fd0932cda5b79824a2b75ea9fe50cc5d7ff912ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce7dac7_42cb6389",
+        "filename": "zephyr/program/fatcat/francka/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-06-16T06:22:57Z",
+      "side": 1,
+      "message": "I\u0027m missing modify this part. Add KSO2 to the list.",
+      "parentUuid": "4bcfed8a_315d654a",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "fd0932cda5b79824a2b75ea9fe50cc5d7ff912ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
