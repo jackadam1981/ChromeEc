@@ -33,6 +33,29 @@
       "message": "Hi Keith,\n\nI was reading through EC documentation on thermal sensors and noticed that some file links are out of date. I tried updating the links but am unsure if all the updates are proper from EC point of view.",
       "revId": "a7b4528bceb22c7dc42b5211bf89bcd2a79a6dfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79dbd093_0b71d949",
+        "filename": "docs/zephyr/zephyr_temperature_sensor.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T20:24:43Z",
+      "side": 1,
+      "message": "This table should be updated to include the drivers defined [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/temp_sensor/temp_sensor.h;l\u003d20;drc\u003dadd5d93913dc112bd472b12b5f611a8cdc141fd6)\n\nAdd pct2075, f75303, and sb_tsi.  You could also point to temp_sensor.h as the source of truth for this list.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "a7b4528bceb22c7dc42b5211bf89bcd2a79a6dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
