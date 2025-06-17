@@ -1930,6 +1930,12 @@
  */
 #define CONFIG_COMMON_RUNTIME
 
+/**
+ * Use a common implementation of mutex that supports recursive
+ * locking within the same task.
+ */
+#undef CONFIG_COMMON_RECURSIVE_MUTEX
+
 /* Allow deferred (async) flash protect*/
 #define CONFIG_FLASH_PROTECT_DEFERRED
 
