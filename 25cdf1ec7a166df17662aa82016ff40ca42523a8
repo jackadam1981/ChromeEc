@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "25cdf1ec7a166df17662aa82016ff40ca42523a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985651bb_b4bbea9e",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-06-17T22:55:06Z",
+      "side": 1,
+      "message": "The equivalent [line of code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/rtc_npcx9.c;l\u003d47) in ECOS expects a value of 1 (rather than 2) to be returned from system_get_rtc_alarm() in this test case. The time remaining after a 0.5s wait should be 1.5s, so this could be a rounding decision issue (up vs. down) but it would be good to understand the reasons behind this difference to understand if there is an underlying bug.",
+      "revId": "25cdf1ec7a166df17662aa82016ff40ca42523a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
