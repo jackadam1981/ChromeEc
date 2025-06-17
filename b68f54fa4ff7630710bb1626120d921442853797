@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67d8619a_4116e5d6",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-17T18:33:50Z",
+      "side": 1,
+      "message": "i have reservations about overloading the board ID to identify\nSKU variations. board ID is typically a monotonically increasing\nnumber to identify board spins.\nhardware differences such as optional add-in cards or components are\ntypically encoded in FW_CONFIG.\nplease define a couple of bits in FW_CONFIG for the memory type.",
+      "parentUuid": "d9a83345_852a465b",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "b68f54fa4ff7630710bb1626120d921442853797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4591a927_f9d48011",
         "filename": "zephyr/program/ocelot/rvp_i2c.dtsi",
         "patchSetId": 3
