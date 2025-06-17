@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecaefc88_fbd6edb5",
+        "filename": "zephyr/program/ocelot/rvp_ioex_gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-17T18:10:13Z",
+      "side": 1,
+      "message": "`H1` is a legacy thing. let\u0027s call it GSC.",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "6d4751fee2bf1de76a7175d7b5b7ec339fc37cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
