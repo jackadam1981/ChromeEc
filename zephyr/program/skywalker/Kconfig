@@ -32,6 +32,12 @@ config BOARD_ANAKIN
 	  Build Google Anakin board. Anakin has MediaTek SoC
 	  with ITE IT82002 EC.
 
+config BOARD_BAZE
+	bool "Google Baze Board"
+	help
+	  Build Google Baze board. Skywalker has MediaTek SoC
+	  with ITE IT82002 EC.
+
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"

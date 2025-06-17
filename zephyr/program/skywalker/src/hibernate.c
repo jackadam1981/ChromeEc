@@ -10,7 +10,8 @@
 
 __override void board_hibernate_late(void)
 {
-#if defined(CONFIG_BOARD_SKYWALKER) || defined(CONFIG_BOARD_LUUKE)
+#if defined(CONFIG_BOARD_SKYWALKER) || defined(CONFIG_BOARD_LUUKE) || \
+	defined(CONFIG_BOARD_BAZE)
 	/* b/283037861, b/397139423:
 	 * Skywalker reference board only, Pre-off the 5V power line for
 	 * hibernate.
