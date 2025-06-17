@@ -17,6 +17,51 @@
 			rpm_deviation = <1>;
 		};
 	};
+
+	named-gpios {
+		gpio_fan_tach: fan-tach {
+			gpios = <&gpiod 7 GPIO_INPUT_PULL_UP>;
+		};
+	};
+
+	fan_steps {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <105 105 49>;
+			temp_off = <105 105 47>;
+			rpm_target = <3200>;
+		};
+		level_1 {
+			temp_on = <105 105 50>;
+			temp_off = <105 105 49>;
+			rpm_target = <3400>;
+		};
+		level_2 {
+			temp_on = <105 105 51>;
+			temp_off = <105 105 50>;
+			rpm_target = <3700>;
+		};
+		level_3 {
+			temp_on = <105 105 52>;
+			temp_off = <105 105 51>;
+			rpm_target = <4000>;
+		};
+		level_4 {
+			temp_on = <105 105 53>;
+			temp_off = <105 105 52>;
+			rpm_target = <4300>;
+		};
+		level_5 {
+			temp_on = <105 105 54>;
+			temp_off = <105 105 53>;
+			rpm_target = <4600>;
+		};
+		level_6 {
+			temp_on = <105 105 55>;
+			temp_off = <105 105 54>;
+			rpm_target = <5000>;
+		};
+	};
 };
 
 /* fan tachometer sensor */
