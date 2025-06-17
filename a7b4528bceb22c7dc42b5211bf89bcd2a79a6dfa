@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a7b4528bceb22c7dc42b5211bf89bcd2a79a6dfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfc613a_a1d2828f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1564607
+      },
+      "writtenOn": "2025-06-17T08:44:15Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nI was reading through EC documentation on thermal sensors and noticed that some file links are out of date. I tried updating the links but am unsure if all the updates are proper from EC point of view.",
+      "revId": "a7b4528bceb22c7dc42b5211bf89bcd2a79a6dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
