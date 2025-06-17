@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8864565d_83c9f80b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T19:27:15Z",
+      "side": 1,
+      "message": "This can be simplified as:\n```suggestion\n\tdo {\n\t\tread_temp \u003d com_port_wait_read(uart_fd);\n\t\telapsed_time \u003d difftime(time(NULL), start);\n\n\t\tif (elapsed_time \u003e OPR_TIMEOUT) {\n\t\t\tfprintf(stderr, \"Timeout waiting for initial byte\");\n\t\t\treturn -1;\n\t\t}\n\t\tDBG_PRINT(\"wait_for_response: get %d.\\n\", read_temp);\n\t} while (read_temp \u003c 1);\n\n\n```",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 0
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13407653_8af01755",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T19:27:15Z",
+      "side": 1,
+      "message": "Fatal errors should always print to the console.  Switch this back to fprintf",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 0
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a123da77_abb891f4",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T19:27:15Z",
+      "side": 1,
+      "message": "use fprintf for fatal errors.",
+      "range": {
+        "startLine": 608,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 0
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4165594_20986893",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T19:27:15Z",
+      "side": 1,
+      "message": "fprintf(stderr, ...",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 63
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1addf8b6_3af62567",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T19:27:15Z",
+      "side": 1,
+      "message": "fprintf(stderr, ...",
+      "range": {
+        "startLine": 666,
+        "startChar": 3,
+        "endLine": 666,
+        "endChar": 9
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
