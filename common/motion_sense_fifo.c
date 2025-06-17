@@ -19,8 +19,6 @@
 
 /**
  * Staged metadata for the fifo queue.
- * @read_ts: The timestamp at which the staged data was read. This value will
- *	serve as the upper bound for spreading
  * @count: The total number of motion_sense_fifo entries that are currently
  *	staged.
  * @sample_count: The total number of sensor readings per sensor that are
@@ -29,7 +27,6 @@
  *	true iff at least one of sample_count[] > 1
  */
 struct fifo_staged {
-	uint32_t read_ts;
 	uint16_t count;
 	uint8_t sample_count[MAX_MOTION_SENSORS];
 	uint8_t requires_spreading;
@@ -421,6 +418,7 @@ void motion_sense_fifo_reset_needed_flags(void)
 			if (!is_new_timestamp(i))
 				ts_last_int[i] = next_timestamp[i].prev;
 	}
+	next_timestamp_initialized = 0;
 	wake_up_needed = 0;
 	bypass_needed = 0;
 }
@@ -451,14 +449,11 @@ void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 	int id = data->sensor_num;
 
 	if (IS_ENABLED(CONFIG_SENSOR_TIGHT_TIMESTAMPS)) {
-		/* First entry, save the time for spreading later. */
-		if (!fifo_staged.count)
-			fifo_staged.read_ts = __hw_clock_source_read();
 		fifo_stage_timestamp(time, data->sensor_num);
 	}
 	/*
 	 * If there is a sensor associated and the AP needs the sensor data and
-	 * the current timestamp is close to the time we need need to trigger an
+	 * the current timestamp is close to the time we need to trigger an
 	 * interrupt to the host, mark it. We need to take in account the fact
 	 * the sensor may poll faster that the host asks for:
 	 *
@@ -466,7 +461,7 @@ void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 	 * |/event      /event      /current event
 	 * |            |           |
 	 * + <-------- ec_rate ---------->
-	 *                      <--------- time allowed for new interrupt
+	 *                      <--------> time allowed for new interrupt
 	 *
 	 * This is the case when the ODR should be increase a little: for
 	 * instance, if we asks samples every 5ms, but the sensor only support
