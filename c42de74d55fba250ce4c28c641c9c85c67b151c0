@@ -3,6 +3,213 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92ed3226_238d3a82",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Please add comments to these constants to explain their purposes.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1901c0_a55a7932",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Unused.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7133364c_e9dc9dbd",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Defined twice.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c4eb29_784306dc",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Defined twice.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 51
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d5e02c_28e8e832",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Please consolidate all the commands in an enum.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8632263_8a24f82a",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t just disable OPOST. It sets all flags except OPOST. Is it your original intention? or use `\u0026\u003d` instead?",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e1f8cb_5d086cde",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "`DBG_PRINT()` already specifies `stderr`. Some other calls below have the same mistake.",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98169aa_6dd1a095",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "It is small; just put it in the stack.",
+      "range": {
+        "startLine": 206,
+        "startChar": 42,
+        "endLine": 206,
+        "endChar": 52
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6416385e_8d5128e6",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "You know the max size, PAGE_SIZE (256) + some fixed value; just put it in the stack.",
+      "range": {
+        "startLine": 280,
+        "startChar": 42,
+        "endLine": 280,
+        "endChar": 63
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8864565d_83c9f80b",
         "filename": "util/rtkupdate.c",
         "patchSetId": 20
@@ -72,6 +279,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33af3bc9_c4ffd47b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Refactor it into a standard loop structure. Using goto for error handling is acceptable practice but not for normal control flow.",
+      "range": {
+        "startLine": 628,
+        "startChar": 1,
+        "endLine": 628,
+        "endChar": 9
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4165594_20986893",
         "filename": "util/rtkupdate.c",
         "patchSetId": 20
@@ -111,6 +341,52 @@
         "startChar": 3,
         "endLine": 666,
         "endChar": 9
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "165dbda0_d67beb8b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "What do you mean for \"stub\"? This function looks like a no-op as no command is sent to the EC.",
+      "range": {
+        "startLine": 687,
+        "startChar": 29,
+        "endLine": 687,
+        "endChar": 35
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca62e24_463c238c",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-17T22:12:26Z",
+      "side": 1,
+      "message": "Implement the sighandler, at least some clean up like:\n```\n    if (g_uart_fd !\u003d -1) {\n        restore_uart(g_uart_fd);\n        close(g_uart_fd);\n    }\n```\n \nNote that it makes `uart_fd` as a global variable.",
+      "range": {
+        "startLine": 970,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 28
       },
       "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
