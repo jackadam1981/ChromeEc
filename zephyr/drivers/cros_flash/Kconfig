@@ -14,6 +14,14 @@ menuconfig CROS_FLASH_NPCX
 	  continue to use most of the existing flash memory processing code in
 	  ECOS.
 
+config CROS_FLASH_NPCX_ERASE_SIZE
+	hex "The NPCX flash erase size."
+	default 0x1000
+	depends on CROS_FLASH_NPCX
+	help
+	  This option sets the NPCX flash erase size. The default value is 0x1000
+	  (4K bytes).
+
 config CROS_FLASH_IT8XXX2
 	bool "ITE IT81202 flash driver for the Zephyr shim"
 	depends on SOC_FAMILY_ITE_EC
