@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a83345_852a465b",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-17T15:10:56Z",
+      "side": 1,
+      "message": "No, currently EC is not relying on this. This function call is based on user request ( using ec \"version\" command or host command for version request ).",
+      "parentUuid": "f4094672_2ff604bd",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "b68f54fa4ff7630710bb1626120d921442853797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4591a927_f9d48011",
@@ -61,6 +85,30 @@
       "writtenOn": "2025-06-13T23:11:30Z",
       "side": 1,
       "message": "The underlying GPIO driver (or drivers?) can be derived from the GPIO properties below. You can query whether the IOEX\u0027s driver has deferred initialization thorough DT macros, or call `device_is_ready()` on it when initializing the board_id driver.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 38
+      },
+      "revId": "b68f54fa4ff7630710bb1626120d921442853797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08628d4_e048a016",
+        "filename": "zephyr/program/ocelot/rvp_i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-17T15:10:56Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com, I have done current driver implementation as per Keith comment as mentioned here \"https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6581119/comment/58553a2a_61fb4a65/\".\n\nAlso I have added device_is_ready() check in board_get_version function call to ensure the same. Is it same you are referring ?",
+      "parentUuid": "4591a927_f9d48011",
       "range": {
         "startLine": 63,
         "startChar": 2,
