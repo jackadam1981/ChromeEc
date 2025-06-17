@@ -19,8 +19,6 @@
 
 /**
  * Staged metadata for the fifo queue.
- * @read_ts: The timestamp at which the staged data was read. This value will
- *	serve as the upper bound for spreading
  * @count: The total number of motion_sense_fifo entries that are currently
  *	staged.
  * @sample_count: The total number of sensor readings per sensor that are
@@ -29,20 +27,9 @@
  *	true iff at least one of sample_count[] > 1
  */
 struct fifo_staged {
-	uint32_t read_ts;
 	uint16_t count;
 	uint8_t sample_count[MAX_MOTION_SENSORS];
 	uint8_t requires_spreading;
-};
-
-/**
- * Timestamp state metadata for maintaining spreading between commits.
- * @prev: The previous timestamp that was added to the FIFO
- * @next: The predicted next timestamp that will be added to the FIFO
- */
-struct timestamp_state {
-	uint32_t prev;
-	uint32_t next;
 };
 
 /** Queue to hold the data to be sent to the AP. */
@@ -63,7 +50,7 @@ static struct fifo_staged fifo_staged;
  * Cached expected timestamp per sensor. If a sensor's timestamp pre-dates this
  * timestamp it will be fast forwarded.
  */
-static struct timestamp_state next_timestamp[MAX_MOTION_SENSORS];
+static uint32_t next_timestamp[MAX_MOTION_SENSORS];
 
 /**
  * Expected data periods:
@@ -272,8 +259,7 @@ fifo_stage_unit(struct ec_response_motion_sensor_data *data,
 	 */
 	if (data->flags & MOTIONSENSE_SENSOR_FLAG_TIMESTAMP &&
 	    is_new_timestamp(data->sensor_num)) {
-		next_timestamp[data->sensor_num].next =
-			next_timestamp[data->sensor_num].prev = data->timestamp;
+		next_timestamp[data->sensor_num] = data->timestamp;
 		next_timestamp_initialized |= BIT(data->sensor_num);
 	}
 
@@ -293,7 +279,7 @@ fifo_stage_unit(struct ec_response_motion_sensor_data *data,
 			    !is_new_timestamp(data->sensor_num))
 				online_calibration_process_data(
 					data, sensor,
-					next_timestamp[data->sensor_num].next);
+					next_timestamp[data->sensor_num]);
 			return;
 		}
 	}
@@ -413,8 +399,9 @@ void motion_sense_fifo_reset_needed_flags(void)
 		 */
 		for (i = 0; i < MAX_MOTION_SENSORS; i++)
 			if (!is_new_timestamp(i))
-				ts_last_int[i] = next_timestamp[i].prev;
+				ts_last_int[i] = next_timestamp[i];
 	}
+	next_timestamp_initialized = 0;
 	wake_up_needed = 0;
 	bypass_needed = 0;
 }
@@ -445,9 +432,6 @@ void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 	int id = data->sensor_num;
 
 	if (IS_ENABLED(CONFIG_SENSOR_TIGHT_TIMESTAMPS)) {
-		/* First entry, save the time for spreading later. */
-		if (!fifo_staged.count)
-			fifo_staged.read_ts = __hw_clock_source_read();
 		fifo_stage_timestamp(time, data->sensor_num);
 	}
 	/*
@@ -559,25 +543,21 @@ commit_data_end:
 		 * ahead.
 		 */
 		if (is_new_timestamp(sensor_num) ||
-		    time_after(data->timestamp,
-			       next_timestamp[sensor_num].next)) {
-			next_timestamp[sensor_num].next = data->timestamp;
+		    time_after(data->timestamp, next_timestamp[sensor_num])) {
+			next_timestamp[sensor_num] = data->timestamp;
 			next_timestamp_initialized |= BIT(sensor_num);
 		}
 
 		/* Spread the timestamp and compute the expected next. */
-		data->timestamp = next_timestamp[sensor_num].next;
-		next_timestamp[sensor_num].prev =
-			next_timestamp[sensor_num].next;
-		next_timestamp[sensor_num].next +=
-			expected_data_periods[sensor_num];
+		data->timestamp = next_timestamp[sensor_num];
+		next_timestamp[sensor_num] += expected_data_periods[sensor_num];
 
 		/* Update online calibration if enabled. */
 		data = peek_fifo_staged(i);
 		if (IS_ENABLED(CONFIG_ONLINE_CALIB))
 			online_calibration_process_data(
 				data, &motion_sensors[sensor_num],
-				next_timestamp[sensor_num].prev);
+				next_timestamp[sensor_num]);
 	}
 
 	/* Advance the tail and clear the staged metadata. */
