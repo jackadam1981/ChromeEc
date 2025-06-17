@@ -14,6 +14,8 @@
 #include "motion_sense_fifo.h"
 #include "timer.h"
 
+#include <zephyr/kernel.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
@@ -174,6 +176,7 @@ enum body_detect_states body_detect_get_state(void)
 static void determine_window_size(int odr)
 {
 	window_size = odr / 1000;
+	printk("odr=%d, window_size=%d\n", odr, window_size);
 	/* Normally, window_size should not exceed MAX_WINDOW_SIZE. */
 	if (window_size > CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE) {
 		/* This will cause window size not enough for 1 second */
@@ -267,6 +270,8 @@ void body_detect_reset(void)
 
 void body_detect(void)
 {
+	static int64_t last_timestamp;
+	int64_t now = k_uptime_get();
 	uint64_t motion_var;
 	int motion_confidence;
 
@@ -282,6 +287,12 @@ void body_detect(void)
 
 	motion_var = get_motion_variance();
 	motion_confidence = calculate_motion_confidence(motion_var);
+	printk("[%lld] motion_state=%d, motion_var=%llu, motion_confidence=%d, "
+	       "stationary_timeframe=%d / (%d * %d)\n",
+	       now - last_timestamp, motion_state, motion_var,
+	       motion_confidence, stationary_timeframe,
+	       CONFIG_BODY_DETECTION_STATIONARY_DURATION, window_size);
+	last_timestamp = now;
 	switch (motion_state) {
 	case BODY_DETECTION_OFF_BODY:
 		if (motion_confidence > CONFIG_BODY_DETECTION_ON_BODY_CON)
