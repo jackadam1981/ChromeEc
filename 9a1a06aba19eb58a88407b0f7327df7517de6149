@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c66b6a_75428a52",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T23:37:20Z",
+      "side": 1,
+      "message": "All constant data needed by this driver should be moved into the `rvp_board_id_config` structure.\n\nYou should also have build assert checks to verify the property list length matches the expected number of GPIOs for each type.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "9a1a06aba19eb58a88407b0f7327df7517de6149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97095e26_d15fd8d8",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T23:37:20Z",
+      "side": 1,
+      "message": "As mentioned in the .yaml descriptor, you can just loop over all the `bom`. `fab`, and `board` GPIOs here.  You shouldn\u0027t use a nodelabel when the device node you\u0027re working with already has the references you need,\n\n```\n    for (int i; i \u003c FAB_GPIOs; i++) {\n        gpio_port \u003d config-\u003efab_gpios[i].port;\n        if (!device_is_ready(gpio_port)) }\n            device_init(gpio_port);\n        }\n    }\n    /* Repeat for bom and board GPIOs */\n```\n\nThe `device_is_ready()` check ensures you don\u0027t initialize the same GPIO port twice.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 51
+      },
+      "revId": "9a1a06aba19eb58a88407b0f7327df7517de6149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615cbefa_7aba01f7",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T23:37:20Z",
+      "side": 1,
+      "message": "A better property name here is `requires-s5` or `defer-until-s5`",
+      "range": {
+        "startLine": 127,
+        "startChar": 13,
+        "endLine": 127,
+        "endChar": 33
+      },
+      "revId": "9a1a06aba19eb58a88407b0f7327df7517de6149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cba070c_0e0f3bc8",
+        "filename": "zephyr/dts/bindings/intel/intel,rvp-board-id.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T23:37:20Z",
+      "side": 1,
+      "message": "In practice, you\u0027re treating this property as a boolean because the driver is directly looking up the nodelabel of pca5xx.  This also assumes that you only need to initialize a single GPIO controller.\n\nI think there 2 viable options here:\n1. Make this property a boolean. This will require that the driver loops through all GPIO driver device handles and checks all of them to see if they are ready.\n2. Make this a `phandles` property so that you can specify multiple GPIO nodes that need deferred initialization.\n\nI think option 1 has the right balance of configurability and simplicity.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "9a1a06aba19eb58a88407b0f7327df7517de6149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7b461a_8ff49c92",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T23:37:20Z",
+      "side": 1,
+      "message": "Move the board specific changes into a separate CL.",
+      "revId": "9a1a06aba19eb58a88407b0f7327df7517de6149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
