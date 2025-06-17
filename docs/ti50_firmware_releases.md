@@ -8,7 +8,8 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.172       | 0.23.160
+[ToT][ToT ebuild]   | 0.24.180       | 0.23.160
+[M138][138 release] | 0.24.172       | 0.23.160
 [M137][137 release] | 0.24.172       | 0.23.160
 [M136][136 release] | 0.24.160       | 0.23.160
 [M135][135 release] | 0.24.160       | 0.23.140
@@ -66,6 +67,7 @@ Reporting external WP assertion fix  | 0.24.131      | 0.23.140         | M133/M
 Build uses Bazel artifacts           | 0.24.140      | 0.23.140         | M133/M134
 Support for NonInverted KSO          | 0.24.140      | 0.23.140         | M133/M134
 Boot param support                   | 0.24.160      | 0.23.160         | M135/M136
+Add `spi_drive` GSC command          | 0.24.180      | 0.23.180         | M139/M140
 
 # RO revisions
 
@@ -2182,6 +2184,31 @@ Build:   0.24.172/ti50_common_prepvt-15974.B:v0.0.454-48da114b
          chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-6y79 2025-04-24 12:05:41
 ```
 
+### 0.24.180 Released on 2025-06-02 in M139
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6613122)
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/78](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/78/overview)
+
+Artifacts:
+[15974.77.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.77.0/)
+
+
+**Features**
+
+*   Add `spi_drive` command to adjust SPI strength when in initial factory mode
+    [b/395751233](https://b.corp.google.com/issues/395751233)
+
+```
+Build:   0.24.180/ti50_common_prepvt-15974.B:v0.0.513-a5fd7035
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-7d2295b47
+         ms-tpm-20-ref:v0.0.330-15f70dc
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-obdd 2025-05-28 13:28:41
+```
+
 <!-- Links -->
 
 [105 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R105-14989.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
@@ -2217,4 +2244,5 @@ Build:   0.24.172/ti50_common_prepvt-15974.B:v0.0.454-48da114b
 [135 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R135-16209.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [136 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R136-16238.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [137 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R137-16267.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[138 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R138-16295.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
