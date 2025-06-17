@@ -18,8 +18,9 @@ ZTEST_USER(console_cmd_gpio, test_read_invoke_success)
 
 ZTEST_USER(console_cmd_gpio, test_read_invoke_fail)
 {
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "gpioget DOES_NOT_EXIST"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(),
+					 "gpioget DOES_NOT_EXIST"),
+		       NULL);
 }
 
 ZTEST_USER(console_cmd_gpio, test_set_gpio)

@@ -881,8 +881,8 @@ ZTEST_USER(bmi3xx, test_date_rate)
 	zassert_false(check_sensor_enabled(MOTIONSENSE_TYPE_GYRO));
 
 	/* test set fail */
-	zassert_ok(!(acc->drv->set_data_rate(acc, 1, 1)));
-	zassert_ok(!(gyr->drv->set_data_rate(gyr, 1, 1)));
+	zassert_not_ok(acc->drv->set_data_rate(acc, 1, 1));
+	zassert_not_ok(gyr->drv->set_data_rate(gyr, 1, 1));
 
 	/* test get value */
 	zassert_equal(0, acc->drv->get_data_rate(acc));
