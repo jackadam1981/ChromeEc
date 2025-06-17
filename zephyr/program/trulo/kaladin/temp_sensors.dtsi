@@ -5,17 +5,17 @@
  #include <cros/thermistor/thermistor.dtsi>
 
  / {
-	 temp_io_port: io_port {
+	 temp_io_port_thermistor: temp_io_port {
 		 compatible = "cros-ec,temp-sensor-thermistor";
 		 thermistor = <&thermistor_3V3_30K9_47K_4050B>;
 		 adc = <&adc_temp_sensor_1>;
 	 };
-	 temp_cpu: cpu {
+	 temp_cpu_thermistor: temp_cpu {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_30K9_47K_4050B>;
 		adc = <&adc_temp_sensor_2>;
 	};
-	 temp_board: board {
+	 temp_board_thermistor: temp_board {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_30K9_47K_4050B>;
 		adc = <&adc_temp_sensor_3>;
@@ -23,34 +23,28 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		io_port {
-			temp_fan_off = <10>;
-			temp_fan_max = <20>;
-			temp_host_high = <95>;
-			temp_host_halt = <100>;
-			temp_host_release_high = <80>;
+		temp_io_port: io_port {
+			temp_host_high = <105>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <95>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
-			sensor = <&temp_io_port>;
+			sensor = <&temp_io_port_thermistor>;
 		};
 
-		cpu {
-			temp_fan_off = <10>;
-			temp_fan_max = <20>;
-			temp_host_high = <95>;
-			temp_host_halt = <100>;
-			temp_host_release_high = <80>;
+		temp_cpu: cpu {
+			temp_host_high = <105>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <95>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
-			sensor = <&temp_cpu>;
+			sensor = <&temp_cpu_thermistor>;
 		};
 
-		board {
-			temp_fan_off = <10>;
-			temp_fan_max = <20>;
-			temp_host_high = <95>;
-			temp_host_halt = <100>;
-			temp_host_release_high = <80>;
+		temp_board: board {
+			temp_host_high = <105>;
+			temp_host_halt = <105>;
+			temp_host_release_high = <95>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
-			sensor = <&temp_board>;
+			sensor = <&temp_board_thermistor>;
 		};
 	};
 };
