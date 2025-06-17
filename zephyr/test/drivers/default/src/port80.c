@@ -140,7 +140,7 @@ ZTEST(port80, test_port80_subcmd)
 		BUILD_HOST_COMMAND(EC_CMD_PORT80_READ, 1, response, params);
 
 	params.subcmd = 0xFFFF;
-	zassert_ok(!host_command_process(&args), NULL);
+	zassert_not_ok(host_command_process(&args), NULL);
 }
 
 /**

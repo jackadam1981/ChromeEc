@@ -417,7 +417,7 @@ ZTEST_USER(flash, test_console_cmd_flash_info)
 ZTEST_USER(flash, test_console_cmd_flashwp__invalid)
 {
 	/* Command requires a 2nd CLI arg */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "flashwp"), NULL);
 }
 
 ZTEST_USER(flash, test_console_cmd_flashwp__now)
@@ -488,7 +488,7 @@ ZTEST_USER(flash, test_console_cmd_flashwp__bool_true)
 
 ZTEST_USER(flash, test_console_cmd_flashwp__bad_param)
 {
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp xyz"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "flashwp xyz"), NULL);
 }
 
 ZTEST_USER(flash, test_console_cmd_flash_erase__flash_locked)
