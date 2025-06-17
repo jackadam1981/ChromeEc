@@ -78,7 +78,12 @@ static void flash_execute_cmd(uint8_t code, uint8_t cts)
 	 * Flash mutex must be held while executing UMA commands after
 	 * task_start().
 	 */
-	ASSERT(!task_start_called() || flash_lock.lock);
+	ASSERT(!task_start_called());
+#ifdef CONFIG_COMMON_RECURSIVE_MUTEX
+	ASSERT(flash_lock.state == MUTEX_R_LOCKED);
+#else
+	ASSERT(flash_lock.lock);
+#endif
 
 	/* set UMA_CODE */
 	NPCX_UMA_CODE = code;
