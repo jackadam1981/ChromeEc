@@ -67,7 +67,7 @@ struct pi3usb9281_config {
 	/* Logic level of mux_gpio to select chip */
 	int mux_gpio_level;
 	/* Mutex to lock access to mux gpio or NULL if no mux exists */
-	struct mutex *mux_lock;
+	mutex_t *mux_lock;
 };
 
 /* Configuration struct defined at board level */
