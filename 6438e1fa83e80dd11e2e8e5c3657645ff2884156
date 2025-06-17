@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cc0b83_b79ad154",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-17T19:51:33Z",
+      "side": 1,
+      "message": "This retry shouldn\u0027t be needed, but is okay for now.  I opened b/425716329 to track this.\n\nPlease add `TODO: b/425716329 Remove once WP issues resolved`",
+      "range": {
+        "startLine": 1822,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 49
+      },
+      "revId": "6438e1fa83e80dd11e2e8e5c3657645ff2884156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
