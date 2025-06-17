@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b1325a_ae22fa34",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-17T09:11:03Z",
+      "side": 1,
+      "message": "50Hz is actually recommended for body detection. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4379150.",
+      "revId": "997f2fd275326bf2f5651de4d18a6f17e4d3a7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
