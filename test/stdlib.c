@@ -19,8 +19,12 @@
 /* This is ugly, but we want to test the functions in builtin/stdlib.c while
  * still depending on the system stdlib.c
  */
+#ifdef BOARD_HOST
 #define snprintf TESTED_snprintf
 #include "../builtin/stdlib.c"
+#else
+#include <stdlib.h>
+#endif
 #endif
 
 __no_optimization static int test_isalpha(void)
@@ -78,7 +82,12 @@ __no_optimization static int test_strstr(void)
 	 * value is always haystack itself.
 	 * TEST_ASSERT(strstr(s1, "") == s1);
 	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strstr(s1, "") == NULL);
+#else
+	TEST_ASSERT(strstr(s1, "") == s1);
+#endif
+
 	TEST_ASSERT(strstr("", "ab") == NULL);
 	TEST_ASSERT(strstr("", "x") == NULL);
 	TEST_ASSERT(strstr(s1, "de") == &s1[3]);
@@ -98,19 +107,12 @@ __no_optimization static int test_strtoull(void)
 	TEST_ASSERT(strtoull("+010", &e, 0) == 8);
 	TEST_ASSERT(e && (*e == '\0'));
 
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 *
-	 * From the man page: The strtoull() function returns either
-	 * the result of the conversion or, if there was a leading
-	 * minus sign, the negation of the result of the conversion
-	 * represented as an unsigned value, unless the original
-	 * (nonnegated) value would overflow
-	 * TEST_ASSERT(strtoull("-010", &e, 0) == 0xFFFFFFFFFFFFFFF8);
-	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strtoull("-010", &e, 0) == 0);
 	TEST_ASSERT(e && (*e == '-'));
+#else
+	TEST_ASSERT(strtoull("-010", &e, 0) == 0xFFFFFFFFFFFFFFF8);
+#endif
 
 	TEST_ASSERT(strtoull("0x1f z", &e, 0) == 31);
 	TEST_ASSERT(e && (*e == ' '));
@@ -123,90 +125,84 @@ __no_optimization static int test_strtoull(void)
 	TEST_ASSERT(strtoull("+0x02C", &e, 16) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(strtoull("-0x02C", &e, 16) == 0xFFFFFFFFFFFFFFD4);
-	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strtoull("-0x02C", &e, 16) == 0);
 	TEST_ASSERT(e && (*e == '-'));
+#else
+	TEST_ASSERT(strtoull("-0x02C", &e, 16) == 0xFFFFFFFFFFFFFFD4);
+#endif
 
 	TEST_ASSERT(strtoull("0x02C", &e, 0) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 	TEST_ASSERT(strtoull("+0x02C", &e, 0) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(strtoull("-0x02C", &e, 0) == 0xFFFFFFFFFFFFFFD4);
-	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strtoull("-0x02C", &e, 0) == 0);
 	TEST_ASSERT(e && (*e == '-'));
+#else
+	TEST_ASSERT(strtoull("-0x02C", &e, 0) == 0xFFFFFFFFFFFFFFD4);
+#endif
 
 	TEST_ASSERT(strtoull("0X02C", &e, 16) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 	TEST_ASSERT(strtoull("+0X02C", &e, 16) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(strtoull("-0X02C", &e, 16) == 0xFFFFFFFFFFFFFFD4);
-	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strtoull("-0X02C", &e, 16) == 0);
 	TEST_ASSERT(e && (*e == '-'));
+#else
+	TEST_ASSERT(strtoull("-0X02C", &e, 16) == 0xFFFFFFFFFFFFFFD4);
+#endif
 
 	TEST_ASSERT(strtoull("0X02C", &e, 0) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 	TEST_ASSERT(strtoull("+0X02C", &e, 0) == 44);
 	TEST_ASSERT(e && (*e == '\0'));
 
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(strtoull("-0X02C", &e, 0) == 0xFFFFFFFFFFFFFFD4);
-	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strtoull("-0X02C", &e, 0) == 0);
 	TEST_ASSERT(e && (*e == '-'));
+#else
+	TEST_ASSERT(strtoull("-0X02C", &e, 0) == 0xFFFFFFFFFFFFFFD4);
+#endif
 
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(strtoull("   -12", &e, 0) == 0xFFFFFFFFFFFFFFF4);
-	 */
+#ifdef BOARD_HOST
 	TEST_ASSERT(strtoull("   -12", &e, 0) == 0);
 	TEST_ASSERT(e && (*e == '-'));
+#else
+	TEST_ASSERT(strtoull("   -12", &e, 0) == 0xFFFFFFFFFFFFFFF4);
+#endif
 
 	TEST_ASSERT(strtoull("!", &e, 0) == 0);
 	TEST_ASSERT(e && (*e == '!'));
 
 	TEST_ASSERT(strtoull("+!", &e, 0) == 0);
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(e && (*e == '+'));
-	 */
+
+#ifdef BOARD_HOST
 	TEST_ASSERT(e && (*e == '!'));
+#else
+	TEST_ASSERT(e && (*e == '+'));
+#endif
 
 	TEST_ASSERT(strtoull("+0!", &e, 0) == 0);
 	TEST_ASSERT(e && (*e == '!'));
-
 	TEST_ASSERT(strtoull("+0x!", &e, 0) == 0);
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(e && (*e == '+'));
-	 */
+
+#ifdef BOARD_HOST
 	TEST_ASSERT(e && (*e == '!'));
+#else
+	TEST_ASSERT(e && (*e == '+'));
+#endif
 
 	TEST_ASSERT(strtoull("+0X!", &e, 0) == 0);
-	/*
-	 * TODO(http://b/243192369): This is incorrect and should be
-	 * fixed.
-	 * TEST_ASSERT(e && (*e == '+'));
-	 */
+
+#ifdef BOARD_HOST
 	TEST_ASSERT(e && (*e == '!'));
+#else
+	TEST_ASSERT(e && (*e == '+'));
+#endif
 
 	return EC_SUCCESS;
 }
