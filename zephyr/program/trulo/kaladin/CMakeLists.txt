@@ -6,3 +6,7 @@ zephyr_include_directories("include")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	"src/keyboard_customization.c"
 )
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CUSTOM_FAN_CONTROL
+	"src/fan.c"
+	"src/thermal.c"
+)
