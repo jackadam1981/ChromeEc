@@ -197,7 +197,7 @@ main () {
              gsc_dir="${SCRIPT_DIR}/../../cr50"
 	     key_name="cr50-hsm-backed-node-locked-key"
              rw_key="${gsc_dir}/util/signer/${key_name}.pem.pub"
-             manifest="${gsc_dir}/util/signer/ec_RW-manifest-dev.json"
+             manifest="${gsc_dir}/util/signer/ec_RW-manifest-TOT.json"
              xml="${gsc_dir}/util/signer/fuses.xml"
              codesigner_params+=(
                --b
