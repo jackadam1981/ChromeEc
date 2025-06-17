@@ -19,8 +19,12 @@
 /* This is ugly, but we want to test the functions in builtin/stdlib.c while
  * still depending on the system stdlib.c
  */
+#ifdef BOARD_HOST
 #define snprintf TESTED_snprintf
 #include "../builtin/stdlib.c"
+#else
+#include <stdlib.h>
+#endif
 #endif
 
 __no_optimization static int test_isalpha(void)
