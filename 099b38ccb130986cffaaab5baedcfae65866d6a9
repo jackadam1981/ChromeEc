@@ -46,6 +46,30 @@
       },
       "revId": "099b38ccb130986cffaaab5baedcfae65866d6a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b852f0_88022db6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-06-17T23:00:34Z",
+      "side": 1,
+      "message": "It is not that easy - I need to add `tpmh-\u003ecommand_code` as a parameter to `extension_route_command()` to differentiate Strongbox commands from other vendor commands and define flag:\n```\nbool is_strongbox \u003d (tpm_command_code \u003d\u003d (TPM_CC_VENDOR_STRONGBOX |\n\t\t\t\t\tTPM_CC_VENDOR_BIT_MASK));\n```\n\nJust using `p-\u003ecode` doesn\u0027t work due to overlap of subcommand codes. The end result is that it is not clear if we save something, but we clutter logic adding `!is_strongbox` to conditions. As for different interfaces it seems that it is easier to add this simple check in a new function than to add more checks into `extension_route_command()`.\n\nInstead, I just added potential logic into `extension_route_strongbox_command()`.",
+      "parentUuid": "d9ceb6a0_e2cd6352",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 3
+      },
+      "revId": "099b38ccb130986cffaaab5baedcfae65866d6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
