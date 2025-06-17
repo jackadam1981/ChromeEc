@@ -72,29 +72,29 @@ ZTEST_F(ps8743, test_init)
 	ps8743_emul_reset_regs(emul);
 
 	i2c_common_emul_set_write_fail_reg(fixture->common, PS8743_REG_MODE);
-	zassert_ok(!mux->driver->init(mux));
+	zassert_not_ok(mux->driver->init(mux));
 	i2c_common_emul_set_write_fail_reg(fixture->common,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  PS8743_REG_REVISION_ID1);
-	zassert_ok(!mux->driver->init(mux));
+	zassert_not_ok(mux->driver->init(mux));
 	i2c_common_emul_set_write_fail_reg(fixture->common,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  PS8743_REG_REVISION_ID2);
-	zassert_ok(!mux->driver->init(mux));
+	zassert_not_ok(mux->driver->init(mux));
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	i2c_common_emul_set_read_fail_reg(fixture->common, PS8743_REG_CHIP_ID1);
-	zassert_ok(!mux->driver->init(mux));
+	zassert_not_ok(mux->driver->init(mux));
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	i2c_common_emul_set_read_fail_reg(fixture->common, PS8743_REG_CHIP_ID2);
-	zassert_ok(!mux->driver->init(mux));
+	zassert_not_ok(mux->driver->init(mux));
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 }
@@ -136,7 +136,7 @@ ZTEST_F(ps8743, test_set_mux)
 
 	/* Write fail */
 	i2c_common_emul_set_write_fail_reg(fixture->common, PS8743_REG_MODE);
-	zassert_ok(!mux->driver->set(mux, USB_PD_MUX_NONE, &ack));
+	zassert_not_ok(mux->driver->set(mux, USB_PD_MUX_NONE, &ack));
 	i2c_common_emul_set_write_fail_reg(fixture->common,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 }
@@ -164,7 +164,7 @@ ZTEST_F(ps8743, test_get_mux)
 
 	/* Read fail */
 	i2c_common_emul_set_read_fail_reg(fixture->common, PS8743_REG_STATUS);
-	zassert_ok(!mux->driver->get(mux, &state));
+	zassert_not_ok(mux->driver->get(mux, &state));
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 }
@@ -178,12 +178,12 @@ ZTEST_F(ps8743, test_check_chip_id)
 
 	/* fail read*/
 	i2c_common_emul_set_read_fail_reg(fixture->common, PS8743_REG_CHIP_ID2);
-	zassert_ok(!ps8743_check_chip_id(mux, &val));
+	zassert_not_ok(ps8743_check_chip_id(mux, &val));
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 
 	i2c_common_emul_set_read_fail_reg(fixture->common, PS8743_REG_CHIP_ID1);
-	zassert_ok(!ps8743_check_chip_id(mux, &val));
+	zassert_not_ok(ps8743_check_chip_id(mux, &val));
 	i2c_common_emul_set_read_fail_reg(fixture->common,
 					  I2C_COMMON_EMUL_NO_FAIL_REG);
 }
