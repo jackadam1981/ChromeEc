@@ -17,6 +17,50 @@
 			rpm_deviation = <1>;
 		};
 	};
+
+		fan_steps {
+		compatible = "cros-ec,fan-steps";
+		level_0 {
+			temp_on = <0xff 48 0xff>;
+			temp_off = <0xff 0xff 0xff>;
+			rpm_target = <0>;
+		};
+		level_1 {
+			temp_on = <0xff 55 0xff>;
+			temp_off = <0xff 53 0xff>;
+			rpm_target = <3200>;
+		};
+		level_2 {
+			temp_on = <0xff 56 0xff>;
+			temp_off = <0xff 55 0xff>;
+			rpm_target = <3400>;
+		};
+		level_3 {
+			temp_on = <0xff 57 0xff>;
+			temp_off = <0xff 56 0xff>;
+			rpm_target = <3700>;
+		};
+		level_4 {
+			temp_on = <0xff 58 0xff>;
+			temp_off = <0xff 57 0xff>;
+			rpm_target = <4000>;
+		};
+		level_5 {
+			temp_on = <0xff 59 0xff>;
+			temp_off = <0xff 58 0xff>;
+			rpm_target = <4300>;
+		};
+		level_6 {
+			temp_on = <0xff 60 0xff>;
+			temp_off = <0xff 59 0xff>;
+			rpm_target = <4600>;
+		};
+		level_7 {
+			temp_on = <0xff 61 0xff>;
+			temp_off = <0xff 60 0xff>;
+			rpm_target = <5000>;
+		};
+	};
 };
 
 /* fan tachometer sensor */
