@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8ff17c_056b5056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-17T17:23:17Z",
+      "side": 1,
+      "message": "Keep .prev/.next. There is just always a period between them, but the code is cleaner with it.",
+      "revId": "5caf3aa04a0d47f0174bfbd270bf7b40ca85b38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
