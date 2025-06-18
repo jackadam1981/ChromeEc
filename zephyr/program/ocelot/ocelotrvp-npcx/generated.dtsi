@@ -42,9 +42,11 @@
 		gpio_adp_det: std_adp_prsnt: adp_det {
 			gpios = <&gpio6 2 (GPIO_INPUT)>;
 		};
+		/* Power sequencing signal needed by fan driver */
 		gpio_all_sys_pwrgd: all_sys_pwrgd {
 			gpios = <&gpio6 3 (GPIO_INPUT)>;
 			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
+			no-auto-init;
 		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpio4 3 (GPIO_INPUT)>;
@@ -69,10 +71,6 @@
 		gpio_ec_prochot_ls_odl: ec_prochot_ls_odl {
 			gpios = <&gpio3 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
-		gpio_ec_rsmrst_odl: ec_rsmrst_odl {
-			gpios = <&gpio7 2 (GPIO_INPUT)>;
-			enum-name = "GPIO_PG_EC_RSMRST_ODL";
-		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
 			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 			enum-name = "GPIO_EC_INT_L";
@@ -83,10 +81,6 @@
 		};
 		gpio_ec_soc_rec_switch_odl: ec_soc_rec_switch_odl {
 			gpios = <&gpiof 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
-		};
-		gpio_ec_soc_rsmrst_l_r: ec_soc_rsmrst_l_r {
-			gpios = <&gpio9 5 (GPIO_INPUT)>;
-			enum-name = "GPIO_PCH_RSMRST_L";
 		};
 		gpio_ec_soc_wake_ls_odl: ec_soc_wake_ls_odl {
 			gpios = <&gpio3 2 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
@@ -108,9 +102,11 @@
 		gpio_en_pp5000_usba: en_pp5000_usba {
 			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
 		};
+		/* Power sequencing signal needed by temp sensor driver */
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpio4 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
+			no-auto-init;
 		};
 		gpio_ioex_kbd_int_odl: ioex_kbd_int_odl {
 			gpios = <&gpio7 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
@@ -136,17 +132,6 @@
 		};
 		gpio_slp_s4_ls_l: slp_s4_ls_l {
 			gpios = <&gpioa 6 (GPIO_INPUT)>;
-		};
-		gpio_soc_pwrok_r: soc_pwrok_r {
-			gpios = <&gpio6 1 (GPIO_INPUT)>;
-			enum-name = "GPIO_PCH_PWROK";
-		};
-		gpio_sys_rst_odl: sys_rst_odl {
-			gpios = <&gpioc 5 (GPIO_INPUT)>;
-		};
-		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
-			gpios = <&gpiob 0 (GPIO_INPUT)>;
-			enum-name = "GPIO_PCH_SLP_S0_L";
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
 			gpios = <&gpio7 4 (GPIO_INPUT)>;
