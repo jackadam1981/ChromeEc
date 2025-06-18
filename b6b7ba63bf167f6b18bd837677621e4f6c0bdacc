@@ -22,6 +22,30 @@
       },
       "revId": "b6b7ba63bf167f6b18bd837677621e4f6c0bdacc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b84b7854_d0d2d7d7",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-06-18T18:39:14Z",
+      "side": 1,
+      "message": "Ok, maybe init should be allowed if is_valid_cbi() is false.\n\nI added some tests also.",
+      "parentUuid": "37ca0f5f_5fcc6717",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 0
+      },
+      "revId": "b6b7ba63bf167f6b18bd837677621e4f6c0bdacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
