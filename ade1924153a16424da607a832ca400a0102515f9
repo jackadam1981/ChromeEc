@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67a210e_4b83bba3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-18T19:40:58Z",
+      "side": 1,
+      "message": "Nit - include the unis in the macro name - PDC_INIT_ERROR_RECOVERY_DELAY_MS",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "ade1924153a16424da607a832ca400a0102515f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c94a41_3a039f9d",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-18T19:40:58Z",
+      "side": 1,
+      "message": "Note, there is an upstream change that modifies the SMF API.\nThe change upstream has merged, but there is a backlog for downstreaming\n\nUpstream change: CL:6653269\nDownstream fix for our use cases: CL:6638730\n\nIf the SMF change merges first, you\u0027ll have to rebase so that all returns from `run` states return `SMF_EVENT_HANDLED`.",
+      "range": {
+        "startLine": 731,
+        "startChar": 2,
+        "endLine": 731,
+        "endChar": 8
+      },
+      "revId": "ade1924153a16424da607a832ca400a0102515f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
