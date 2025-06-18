@@ -70,6 +70,30 @@
       },
       "revId": "099b38ccb130986cffaaab5baedcfae65866d6a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e0bb3b_8b7512c0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-18T13:35:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f8b852f0_88022db6",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 3
+      },
+      "revId": "099b38ccb130986cffaaab5baedcfae65866d6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
