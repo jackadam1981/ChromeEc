@@ -46,6 +46,30 @@
       },
       "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63385680_979dcf06",
+        "filename": "zephyr/program/ocelot/rvp_ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-18T20:08:56Z",
+      "side": 1,
+      "message": "it\u0027s driving something low. input may be a better choice here.",
+      "parentUuid": "eab1f1a8_fe33203e",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
