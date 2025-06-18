@@ -2002,7 +2002,7 @@ static bool pe_send_request_msg(int port)
 		/* The raw vpd_vdo is passed to pd_build_request */
 		vpd_vdo = vpd.raw_value;
 	}
-
+	CPRINTS("L2005-V=%d I=%d\n",supply_voltage,curr_limit);
 	/* Build and send request RDO */
 	pd_build_request(vpd_vdo, &rdo, &curr_limit, &supply_voltage, port);
 
