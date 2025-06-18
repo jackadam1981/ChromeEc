@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a0f47f_bf25e414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-06-18T07:03:40Z",
+      "side": 1,
+      "message": "```\n[yoda:ro] /mnt/host/source/src/platform/ec/build/zephyr/yoda/build-ro/zephyr/include/generated/zephyr/devicetree_generated.h:1245:279: error: excess elements in array initializer [-Werror]\n[yoda:ro]  1245 | #define DT_N_S_cros_keyscan_P_actual_key_mask {8 /* 0x8 */, 255 /* 0xff */, 255 /* 0xff */, 255 /* 0xff */, 255 /* 0xff */, 255 /* 0xff */, 255 /* 0xff */, 160 /* 0xa0 */, 255 /* 0xff */, 255 /* 0xff */, 1 /* 0x1 */, 255 /* 0xff */, 255 /* 0xff */, 64 /* 0x40 */, 10 /* 0xa */, 64 /* 0x40 */, 1 /* 0x1 */, 196 /* 0xc4 */}\n[yoda:ro]       |              \n```",
+      "revId": "c521a60349172bba02d7e1731d29a0f3474c5b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
