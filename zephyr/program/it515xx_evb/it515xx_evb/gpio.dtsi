@@ -131,8 +131,7 @@
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
 			/* gpiog2 */
 			<&gpiog 2 GPIO_INPUT_PULL_DOWN>,
-			/* gpiog6 */
-			<&gpiog 6 GPIO_INPUT_PULL_DOWN>,
+
 
 			/* gpioh0 */
 			<&gpioh 0 GPIO_INPUT_PULL_DOWN>,
@@ -141,10 +140,7 @@
 			<&gpioh 3 GPIO_INPUT_PULL_DOWN>,
 			/* gpioh4 */
 			<&gpioh 4 GPIO_INPUT_PULL_DOWN>,
-			/* gpioh5 */
-			<&gpioh 5 GPIO_INPUT_PULL_DOWN>,
-			/* gpioh6 */
-			<&gpioh 6 GPIO_INPUT_PULL_DOWN>,
+
 			/* gpioh7 */
 			<&gpioh 7 GPIO_INPUT_PULL_DOWN>,
 
