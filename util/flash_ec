@@ -367,6 +367,12 @@ fi
 
 if in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("npcx_spi")
+	# b/419704767#comment10: Upstream Zephyr test binaries do not have an FMAP,
+	# so the --preserve flag does not work with them.
+	if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+		info "Board ${BOARD} is in BOARDS_NPCX_SPI, forcing --no_preserve."
+		FLAGS_no_preserve="${FLAGS_TRUE}"
+	fi
 fi
 
 if in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"; then
