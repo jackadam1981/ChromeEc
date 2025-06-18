@@ -169,8 +169,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 	interrupt_disable_all();
 
 	/* Save and disable interrupts */
-	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC))
-		ite_intc_save_and_disable_interrupts();
+	ite_intc_save_and_disable_interrupts();
 
 	/* bit5: watchdog is disabled. */
 	wdt_base->ETWCTRL |= IT8XXX2_WDT_EWDSCEN;
