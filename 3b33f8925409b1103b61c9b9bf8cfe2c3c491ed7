@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50636c27_80484c6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-06-18T02:47:40Z",
+      "side": 1,
+      "message": "Since these two CLs（[anakin: update LCD bcaklight issue policy](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6654338/1) and [anakin: audio jack solution for optimize the audio performance](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6654339/1)） cannot be verified in time, we need to separate the gpio initialization to ensure that the screen backlight is enabled normally.",
+      "revId": "3b33f8925409b1103b61c9b9bf8cfe2c3c491ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
