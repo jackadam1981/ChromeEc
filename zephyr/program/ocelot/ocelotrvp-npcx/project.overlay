@@ -33,6 +33,9 @@ gpio_volup: &gpio_ec_volup_btn_odl {};
 gpio_fan_control: &gpio_en_pp5000_fan {};
 gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd {};
 
+/*Map GPIOs used to common names */
+cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
+
 /* Map tachometers to common names */
 tach_fan0: &tach1 {};
 
