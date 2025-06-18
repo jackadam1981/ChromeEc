@@ -1991,6 +1991,13 @@ if [[ -z "${FLAGS_read}" ]]; then
 	IMG="$(ec_image)"
 	info "Using ${MCU} image : ${IMG}"
 	IMG_SIZE=$(stat -c%s "${IMG}")
+
+	# Add --no_preserve flag when board is in BOARDS_NPCX_SPI
+	if in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}" && \
+	   [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+		info "Board ${BOARD} is in BOARDS_NPCX_SPI, forcing --no_preserve."
+		FLAGS_no_preserve="${FLAGS_TRUE}"
+	fi
 fi
 
 if [ "${NEED_SERVO}" != "no" ] ; then
