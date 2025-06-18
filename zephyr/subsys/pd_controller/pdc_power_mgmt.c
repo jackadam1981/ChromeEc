@@ -2432,8 +2432,11 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		 */
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_NEW_POWER_REQUEST);
-		atomic_clear_bit(port->snk_policy.flags,
-				 SNK_POLICY_NEW_SRC_CAPS_AVAILABLE);
+		if (atomic_test_and_clear_bit(
+			    port->snk_policy.flags,
+			    SNK_POLICY_NEW_SRC_CAPS_AVAILABLE)) {
+			port->get_pdo.new_caps = true;
+		}
 		if (!port->get_pdo.updating) {
 			port->get_pdo.num_pdos = PDO_NUM;
 			port->get_pdo.pdo_offset = PDO_OFFSET_0;
@@ -2443,10 +2446,12 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
 		} else {
 			port->snk_attached_local_state =
-				(port->sink_path_status ?
+				(port->sink_path_status &&
+						 !port->get_pdo.new_caps ?
 					 SNK_ATTACHED_READ_POWER_LEVEL :
 					 SNK_ATTACHED_EVALUATE_PDOS);
 			port->get_pdo.updating = false;
+			port->get_pdo.new_caps = false;
 		}
 		port->get_pdo.pdo_type = SOURCE_PDO;
 		port->get_pdo.pdo_source = PARTNER_PDO;
@@ -3479,6 +3484,7 @@ static void init_port_variables(struct pdc_port_t *port,
 	atomic_clear(port->cci_flags);
 	port->port_event = ATOMIC_INIT(0);
 	port->get_pdo.updating = false;
+	port->get_pdo.new_caps = false;
 
 	port->last_state = PDC_INIT;
 	port->next_state = PDC_INIT;
