@@ -8,7 +8,7 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | PrePVT version | Prod Version
 ------------------- | -------------- | ------------
-[ToT][ToT ebuild]   | 0.24.180       | 0.23.160
+[ToT][ToT ebuild]   | 0.24.180       | 0.23.180
 [M138][138 release] | 0.24.172       | 0.23.160
 [M137][137 release] | 0.24.172       | 0.23.160
 [M136][136 release] | 0.24.160       | 0.23.160
@@ -67,7 +67,8 @@ Reporting external WP assertion fix  | 0.24.131      | 0.23.140         | M133/M
 Build uses Bazel artifacts           | 0.24.140      | 0.23.140         | M133/M134
 Support for NonInverted KSO          | 0.24.140      | 0.23.140         | M133/M134
 Boot param support                   | 0.24.160      | 0.23.160         | M135/M136
-Add `spi_drive` GSC command          | 0.24.180      | 0.23.180         | M139/M140
+Add `spi_drive` GSC command          | 0.24.180      | 0.23.180         | M139
+Run APRV after WP events             | 0.24.172      | 0.23.180         | M138/M139
 
 # RO revisions
 
@@ -966,6 +967,44 @@ Build:   ti50_common_mp-15980.B:v0.0.328-7c83fd38
          chrome-bot@chromeos-ci-firmware-us-central1-b-x32-0-440b 2025-02-19 16:31:35
 ```
 
+
+### 0.23.180 Released on 2025-06-18 in M139
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6655152)
+
+Builder
+[firmware-ti50-mp-15980.B-branch/74](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/74/overview)
+
+Artifacts:
+[15980.70.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.70.0/)
+
+
+**Features**
+
+*   GSC perform AP RO verification again after select write protection events
+    [b/254309086](https://b.corp.google.com/issues/327197686)
+*   Add `spi_drive` command to adjust SPI strength when in initial factory mode
+    [b/395751233](https://b.corp.google.com/issues/395751233)
+
+**Bug Fixes**
+
+*   Fix EFS2 logic to succeed on first attempt
+    [b/327197686](https://b.corp.google.com/issues/327197686)
+*   Update RSU behavior
+    [b/409307940](https://b.corp.google.com/issues/409307940)
+*   Do not re-read straps upon deep sleep resume
+    [b/401254091](https://b.corp.google.com/issues/401254091)
+*   Fix `ccdstate` capitalization of `CCD Ports Blocked`
+    [b/408488622](https://b.corp.google.com/issues/408488622)
+
+```
+Build:   0.23.180/ti50_common_mp-15980.B:v0.0.506-b6cc639a
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-1f9552cfa
+         ms-tpm-20-ref:v0.0.329-aba1bbb
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-66e2 2025-05-29 06:59:22
+```
 
 ## PrePVT images
 
