@@ -2477,6 +2477,20 @@ static void pdc_snk_attached_run(void *obj)
 	}
 }
 
+static void seed_charge_manager_default(int port)
+{
+	LOG_INF("Seeding charge manager due disabling port");
+	int supplier;
+	struct charge_port_info charge_init = {
+		.current = 0,
+		.voltage = 0,
+	};
+
+	for (supplier = 0; supplier < CHARGE_SUPPLIER_COUNT; supplier++) {
+		charge_manager_update_charge(supplier, port, &charge_init);
+	}
+}
+
 static void pdc_send_cmd_start_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
@@ -3221,6 +3235,7 @@ static void pdc_init_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *const config = port->dev->config;
+	union error_status_t error_status;
 
 	switch (port->init_local_state) {
 	case INIT_WAIT_FOR_READY:
@@ -3242,6 +3257,18 @@ static void pdc_init_run(void *obj)
 		}
 
 		port->init_local_state = INIT_SET_SINK_PDOS;
+
+		/* Check that the pdc driver did not disable the port during
+		 * runtime init. If it did seed the charge manager with 0V/0A
+		 */
+		if (!pdc_get_error_status(port->pdc, &error_status)) {
+			if (error_status.port_disabled) {
+				/* pdc disabled at runtime set default charge
+				 * seed */
+				seed_charge_manager_default(
+					config->connector_num);
+			}
+		}
 
 		/* Proceed directly to next sub-state */
 		__fallthrough;
@@ -3492,6 +3519,9 @@ disable_port:
 	 * driver thread in this code path, so nothing will happen for
 	 * this port. */
 	smf_set_initial(&port->ctx, &pdc_states[PDC_DISABLED]);
+
+	/* Seed charge manager with 0v/0A for the disabled port */
+	seed_charge_manager_default(config->connector_num);
 
 	return -ENODEV;
 }
