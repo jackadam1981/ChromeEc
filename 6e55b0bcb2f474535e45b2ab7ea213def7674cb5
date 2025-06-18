@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965c5922_1a6a1a93",
+        "filename": "zephyr/program/ocelot/rvp_ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-18T19:53:12Z",
+      "side": 1,
+      "message": "is RTC RST ever used on the EC side?\nthis would be needed if `config PLATFORM_EC_POWERSEQ_RTC_RESET`\nwere enabled, but i don\u0027t see this enabled for any RVPs or\nzephyr based boards for that matter.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
