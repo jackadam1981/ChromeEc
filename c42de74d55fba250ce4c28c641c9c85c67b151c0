@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdc30c4e_30d1807f",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-18T00:21:23Z",
+      "side": 1,
+      "message": "More accurately, it is not a CRC; rename it to checksum.",
+      "range": {
+        "startLine": 82,
+        "startChar": 35,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8632263_8a24f82a",
         "filename": "util/rtkupdate.c",
         "patchSetId": 20
@@ -203,6 +226,75 @@
         "startChar": 42,
         "endLine": 280,
         "endChar": 63
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee0874a_3a1126fe",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-18T00:21:23Z",
+      "side": 1,
+      "message": "Separate the packet building from the write function.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 14
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e161294e_c58ddf52",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-18T00:21:23Z",
+      "side": 1,
+      "message": "Unused. Remove it.",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 21
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b8f21e_912a3b1d",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-18T00:21:23Z",
+      "side": 1,
+      "message": "It seems too complicated that I don\u0027t understand. Why not just use `poll` to read exactly the given number of bytes?\n\n```\nint read_exact(int fd, uint8_t *buf, size_t count, int timeout_ms) {\n    size_t total_read \u003d 0;\n    while (total_read \u003c count) {\n        struct pollfd pfd \u003d { .fd \u003d fd, .events \u003d POLLIN };\n        int ret \u003d poll(\u0026pfd, 1, timeout_ms);\n\n        if (ret \u003c 0) {\n            perror(\"poll failed\");\n            return -1;\n        }\n        if (ret \u003d\u003d 0) {\n            fprintf(stderr, \"Read timed out\\n\");\n            return -1;\n        }\n\n        ssize_t bytes_read \u003d read(fd, buf + total_read, count - total_read);\n        if (bytes_read \u003c 0) {\n            perror(\"read failed\");\n            return -1;\n        }\n        if (bytes_read \u003d\u003d 0) { // Should not happen after successful poll\n            fprintf(stderr, \"Read returned 0 (EOF?)\\n\");\n            return -1;\n        }\n        total_read +\u003d bytes_read;\n    }\n    return 0;\n}\n```",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
       },
       "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -364,6 +456,52 @@
         "startChar": 29,
         "endLine": 687,
         "endChar": 35
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8650790f_7310e84c",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-18T00:21:23Z",
+      "side": 1,
+      "message": "It is not guaranteed. Better to have a wrapper, like the above comment, to read exactly the number of bytes.",
+      "range": {
+        "startLine": 879,
+        "startChar": 6,
+        "endLine": 879,
+        "endChar": 39
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f93404b_baa075d8",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-18T00:21:23Z",
+      "side": 1,
+      "message": "Similarly, `read(fd, buf, 2)` doesn\u0027t guarantee returning 2. It could legally returns 1 byte and the next `read()` returns the second byte.",
+      "range": {
+        "startLine": 899,
+        "startChar": 6,
+        "endLine": 899,
+        "endChar": 21
       },
       "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
