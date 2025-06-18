@@ -101,10 +101,12 @@ ZTEST_USER(test_dc_jack, test_charger_jack_init_present)
 	k_sleep(K_MSEC(500));
 
 	/* Since dc jack gpio is set in test_board_is_dc_jack_present port
-	 * current will be non zero */
-	zassert_equal((CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW * 1000) /
-			      DC_JACK_MAX_VOLTAGE_MV,
-		      port_info.current, "port current:%d", port_info.current);
+	 * current will be non zero.  test_charger_jack_interrupt below
+	 * does additional checks to verify the current doesn't exceed
+	 * board limits.
+	 */
+	zassert_not_equal(0, port_info.current, "port current:%d",
+			  port_info.current);
 	zassert_equal(DC_JACK_MAX_VOLTAGE_MV, port_info.voltage,
 		      "port voltage:%d", port_info.voltage);
 }
@@ -129,6 +131,7 @@ ZTEST_USER(test_dc_jack, test_charger_jack_init_not_present)
 
 ZTEST_USER(test_dc_jack, test_charger_jack_interrupt)
 {
+	int port_wattage_uw;
 	charge_manager_update_charge_fake.custom_fake =
 		mock_charge_manager_update_charge;
 
@@ -150,11 +153,20 @@ ZTEST_USER(test_dc_jack, test_charger_jack_interrupt)
 	/* Delay to process interrupt */
 	k_sleep(K_MSEC(500));
 
-	zassert_equal((CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW * 1000) /
-			      DC_JACK_MAX_VOLTAGE_MV,
-		      port_info.current, "port current:%d", port_info.current);
 	zassert_equal(DC_JACK_MAX_VOLTAGE_MV, port_info.voltage,
 		      "port voltage:%d", port_info.voltage);
+
+	/* Confirm the configure current doesn't exceed the board limits. */
+	port_wattage_uw = port_info.voltage * port_info.current;
+	zassert_true(
+		port_info.current <= CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
+		"port current %d exceeds max board current %d",
+		port_info.current, CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA);
+	zassert_true(port_wattage_uw <=
+			     (CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW * 1000),
+		     "port wattage %d uW exceeds board limit %d uW",
+		     port_wattage_uw,
+		     CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW * 1000);
 }
 
 ZTEST_SUITE(test_dc_jack, NULL, NULL, NULL, NULL, NULL);
