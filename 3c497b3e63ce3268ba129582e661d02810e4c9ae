@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83e5e1b_fb361271",
+        "filename": "zephyr/cmake/toolchain/llvm/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-06-18T12:54:13Z",
+      "side": 0,
+      "message": "This comment refers to [generic.cmake from Zephyr](https://github.com/zephyrproject-rtos/zephyr/blob/main/cmake/toolchain/llvm/generic.cmake), because `ZEPHYR_BASE` is used, not `TOOLCHAIN_ROOT`.",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "3c497b3e63ce3268ba129582e661d02810e4c9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
