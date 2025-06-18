@@ -743,6 +743,20 @@ static void init_display_error_status(struct pdc_data_t *data)
 	}
 }
 
+static void seed_charge_manager_default(int port)
+{
+	LOG_INF("Seeding charge manager due disabling port");
+	int supplier;
+	struct charge_port_info charge_init = {
+		.current = 0,
+		.voltage = 0,
+	};
+
+	for (supplier = 0; supplier < CHARGE_SUPPLIER_COUNT; supplier++) {
+		charge_manager_update_charge(supplier, port, &charge_init);
+	}
+}
+
 static void st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
@@ -1433,11 +1447,15 @@ static void st_error_recovery_run(void *o)
 static void st_disable_entry(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
+	const struct pdc_config_t *cfg = data->dev->config;
 
 	print_current_state(data);
 	/* If entering from ST_INIT state */
 	data->init_done = true;
 	data->error_status.port_disabled = 1;
+
+	/* seed charge manager to avoid it being uninitialized */
+	seed_charge_manager_default(cfg->connector_number);
 }
 
 static void st_disable_run(void *o)
