@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37ca0f5f_5fcc6717",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-18T15:49:43Z",
+      "side": 1,
+      "message": "Doesn\u0027t this now prevent an erased flash from setting any CBI fields if the system is locked?\n\nI thought if CBI is blank, it\u0027s required to pass the init flag on the first CBI set operation.",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 0
+      },
+      "revId": "b6b7ba63bf167f6b18bd837677621e4f6c0bdacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
