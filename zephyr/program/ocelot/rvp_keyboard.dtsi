@@ -3,6 +3,13 @@
  * found in the LICENSE file.
  */
 
+/ {
+	kblight: kblight {
+		compatible = "cros-ec,kblight-pwm";
+		status = "okay";
+	};
+};
+
 &vivaldi_kbd {
 	vivaldi-keys = <VIVALDI_KEYS_STRAUSS_T14>;
 

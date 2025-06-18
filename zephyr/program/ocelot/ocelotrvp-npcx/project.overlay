@@ -78,3 +78,7 @@ tach_fan0: &tach1 {};
 &fan0 {
 	pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 };
+
+&kblight {
+	pwms = <&pwm1 1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
+};

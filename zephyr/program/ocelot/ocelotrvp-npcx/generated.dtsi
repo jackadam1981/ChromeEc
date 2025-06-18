@@ -220,6 +220,12 @@
 	pinctrl-names = "default";
 };
 
+&pwm1 {
+	status = "okay";
+	pinctrl-0 = <&pwm1_gpc2>;
+	pinctrl-names = "default";
+};
+
 &tach1 {
 	status = "okay";
 	pinctrl-0 = <&ta1_1_in_gp40>;
