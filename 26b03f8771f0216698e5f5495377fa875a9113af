@@ -16,6 +16,24 @@
       "message": "The seeding should happen in the common pdc_power_mgmt layer, probably at `zephyr/subsys/pd_controller/pdc_power_mgmt.c:3528` (at the `disable_port:` label)",
       "revId": "26b03f8771f0216698e5f5495377fa875a9113af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a8fd9e_bbc4eee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2025-06-18T19:55:34Z",
+      "side": 1,
+      "message": "Good point I will move it there and do some testing. I put it in the pdc driver cause that was where the error was printing from when the port was failing.",
+      "parentUuid": "076ab65a_54a41cec",
+      "revId": "26b03f8771f0216698e5f5495377fa875a9113af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
