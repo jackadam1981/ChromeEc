@@ -112,6 +112,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	}
 
 	pd_extract_pdo_power(pdo, ma, mv, &unused);
+	// CPRINTS("L115-V=%d I=%d\n",*mv,*ma);
 
 	/*
 	 * Adjust VBUS current if CTVPD device was detected.
@@ -141,7 +142,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		else
 			*ma = 750000 / (250 + vpd_vbus_dcr + vpd_gnd_dcr);
 	}
-
+	// CPRINTS("L145-V=%d I=%d\n",*mv,*ma);
 	uw = *ma * *mv;
 	/* Mismatch bit set if less power offered than the operating power */
 	if (uw < (1000 * CONFIG_USB_PD_OPERATING_POWER_MW))
@@ -160,6 +161,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 * power to this minimum level on receipt of a GotoMin Request.
 	 */
 	max_or_min_mw = PD_MIN_POWER_MW;
+	// CPRINTS("L163-max_or_min_mw = %d\n",max_or_min_mw);
 
 	/*
 	 * FIXED or VARIABLE PDO: Inform the source that the sink will
@@ -174,12 +176,15 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	 */
 	max_or_min_ma = *ma;
 	max_or_min_mw = uw / 1000;
+	// CPRINTS("L178-max_or_min_mw = %d\n",max_or_min_mw);
 #endif
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		int mw = uw / 1000;
+		int mw = 15000; //int mw = uw / 1000;
+		// CPRINTS("L183-IF & mw = %d\n",mw);
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
 	} else {
+		// CPRINTS("L186-ELSE\n");
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
 
