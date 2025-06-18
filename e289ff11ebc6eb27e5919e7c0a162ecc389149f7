@@ -34,6 +34,24 @@
       "parentUuid": "7e844669_15a4b294",
       "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b2d92f_6434145f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-18T15:12:54Z",
+      "side": 1,
+      "message": "I also don\u0027t think this should be under a Kconfig flag.  Our set RDO logic should support battery less systems, as well as missing battery systems consistently.",
+      "parentUuid": "3411cf51_8e7ea0a0",
+      "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
