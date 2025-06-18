@@ -70,6 +70,30 @@
       },
       "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8cb8642_fe90ecd0",
+        "filename": "zephyr/program/ocelot/rvp_ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-18T20:09:18Z",
+      "side": 1,
+      "message": "Marked as unresolved.",
+      "parentUuid": "63385680_979dcf06",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
