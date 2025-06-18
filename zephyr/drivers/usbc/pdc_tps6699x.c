@@ -2337,6 +2337,11 @@ static int tps_set_handler_cb(const struct device *dev,
 
 static int tps_read_power_level(const struct device *dev)
 {
+	struct pdc_data_t *data = dev->data;
+	if (!data->cached_conn_status.power_direction) {
+		return -ENOSYS;
+	}
+
 	return tps_post_command(dev, CMD_READ_POWER_LEVEL, NULL);
 }
 
