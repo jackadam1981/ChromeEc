@@ -199,6 +199,7 @@ if (ZEPHYR_PIGWEED_MODULE_DIR)
   endif()
 endif()
 
+add_subdirectory("lib")
 add_subdirectory("subsys")
 
 # CONFIG_PLATFORM_EC files that don't relate to something below should be
