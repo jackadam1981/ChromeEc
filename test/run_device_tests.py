@@ -353,6 +353,12 @@ class Hardware(Platform):
         else:
             logging.error('Unknown flasher: "%s"', flasher)
             return False
+        if image_path.endswith("zephyr.npcx.bin"):
+            cmd.extend(
+                [
+                    "--no_preserve",
+                ]
+            )
         cmd.extend(
             [
                 "--board",
