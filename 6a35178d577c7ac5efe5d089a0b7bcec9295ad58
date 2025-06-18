@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b308e0d0_f5d49a8f",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-06-18T21:11:28Z",
+      "side": 1,
+      "message": "I think the error return here should be ENOSYS so that the PDM won\u0027t keep trying the command. If the return is EINVAL, then the PDM will keep calling this method for PDC_CMD_TIMEOUT_MS (2000) until giving up. The downside of returning ENOSYS is that the EC console will show this command as unimplemented:\nCommand (PDC_READ_POWER_LEVEL) not implemented",
+      "range": {
+        "startLine": 2167,
+        "startChar": 10,
+        "endLine": 2167,
+        "endChar": 16
+      },
+      "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
