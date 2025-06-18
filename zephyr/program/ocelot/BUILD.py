@@ -75,16 +75,25 @@ def register_mec172x_project(
 # For use on RVP SKU1 and SKU2
 register_npcx9_project(
     project_name="ocelotrvp-npcx",
+    extra_kconfig_files=[
+        here / "rvp_power.conf",
+    ],
 )
 
 # For use on RVP SKU3
 register_it8xxx2_project(
     project_name="ocelotrvp-ite",
+    extra_kconfig_files=[
+        here / "rvp_power.conf",
+    ],
 )
 
 # For use on RVP SKU4
 register_mec172x_project(
     project_name="ocelotrvp-mchp",
+    extra_kconfig_files=[
+        here / "rvp_power.conf",
+    ],
 )
 
 
