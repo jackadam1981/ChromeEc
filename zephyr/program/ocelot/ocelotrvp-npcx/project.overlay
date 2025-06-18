@@ -35,6 +35,7 @@ gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd {};
 
 /*Map GPIOs used to common names */
 cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
+gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_ls_odl {};
 
 /* Map tachometers to common names */
 tach_fan0: &tach1 {};
