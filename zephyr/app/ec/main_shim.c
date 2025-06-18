@@ -8,6 +8,9 @@
 
 #include <zephyr/kernel.h>
 
+#include <zephyr/drivers/flash.h>
+static const struct device *const flash_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_flash_controller));;
+
 static struct k_thread tdata2;
 static struct k_thread tdata1;
  struct k_sem sem_thread1;
@@ -107,6 +110,8 @@ int main(void)
 	k_busy_wait(200);
 	printk("delay 200u main\n");
 #endif
+
+	flash_ex_op(flash_dev, 0x3, (uintptr_t)NULL, NULL);
 
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		host_command_main();
