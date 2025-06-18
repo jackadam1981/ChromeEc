@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c8c9a48_75751cf3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-18T21:38:01Z",
+      "side": 1,
+      "message": "Is there an enum available for the power direction? Would prefer for this to explicitly mention source or sink role",
+      "range": {
+        "startLine": 2166,
+        "startChar": 5,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b308e0d0_f5d49a8f",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 1
