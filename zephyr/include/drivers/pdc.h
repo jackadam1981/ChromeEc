@@ -149,6 +149,8 @@ struct get_pdo_t {
 	enum pdo_offset_t pdo_offset;
 	/** flag to indicate retrieving pdo from PDC */
 	bool updating;
+	/** flag to indicate PDC signaled new Src or Snk Caps */
+	bool new_caps;
 };
 
 /**
