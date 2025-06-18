@@ -94,6 +94,30 @@
       },
       "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4c5b7b_203a30d4",
+        "filename": "zephyr/program/ocelot/rvp_ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-18T20:16:23Z",
+      "side": 1,
+      "message": "The EC should drive this low.  This is what we did on [Brox](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/brox/gpio.dtsi;l\u003d81;drc\u003dbb73ffdb6cf947bdc4342aafc5ba062d4ba7baf3).\n\nBefore we made this change, about 50% of the boards failed to get to S0.  \nhttps://crrev.com/c/5230998",
+      "parentUuid": "c8cb8642_fe90ecd0",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "6e55b0bcb2f474535e45b2ab7ea213def7674cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
