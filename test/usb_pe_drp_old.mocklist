@@ -3,5 +3,12 @@
  * found in the LICENSE file.
  */
 
+<<<<<<< HEAD
  #define CONFIG_TEST_MOCK_LIST  \
 	MOCK(USB_PRL)
+=======
+#define CONFIG_TEST_MOCK_LIST \
+	MOCK(USB_PRL)       \
+	MOCK(USB_TC_SM)     \
+	MOCK(USB_PD_DPM)
+>>>>>>> 06a20c15f1 (TCPMv2: Get Sink Caps after Capability Mismatch)
