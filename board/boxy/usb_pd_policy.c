@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 
@@ -20,6 +21,13 @@ int pd_check_vconn_swap(int port)
 	/* Allow VCONN swaps if the AP is on */
 	return gpio_get_level(GPIO_EN_PP5000_U);
 }
+
+static void notify_power_change(void)
+{
+	/* Notify host of power info change. */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+DECLARE_DEFERRED(notify_power_change);
 
 void pd_power_supply_reset(int port)
 {
@@ -38,7 +46,7 @@ void pd_power_supply_reset(int port)
 		pd_set_vbus_discharge(port, 1);
 
 	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	hook_call_deferred(&notify_power_change_data, 0);
 }
 
 int pd_set_power_supply_ready(int port)
@@ -58,7 +66,7 @@ int pd_set_power_supply_ready(int port)
 		return rv;
 
 	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	hook_call_deferred(&notify_power_change_data, 0);
 
 	return EC_SUCCESS;
 }
