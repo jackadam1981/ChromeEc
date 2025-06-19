@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73096b95_dd1be1d6",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-19T15:57:27Z",
+      "side": 1,
+      "message": "Hi @caveh@chromium.org created crosbug \"https://partnerissuetracker.corp.google.com/issues/426139268\" to discuss on the same.",
+      "parentUuid": "67d8619a_4116e5d6",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "b68f54fa4ff7630710bb1626120d921442853797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4591a927_f9d48011",
