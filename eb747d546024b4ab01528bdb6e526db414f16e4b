@@ -22,6 +22,30 @@
       },
       "revId": "eb747d546024b4ab01528bdb6e526db414f16e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295c8f13_bfc2625b",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-19T10:07:23Z",
+      "side": 1,
+      "message": "I tried using pd_extract_pdo_power(). Will it really serve the purpose?",
+      "parentUuid": "1c4fea1a_a22ca7ad",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "eb747d546024b4ab01528bdb6e526db414f16e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
