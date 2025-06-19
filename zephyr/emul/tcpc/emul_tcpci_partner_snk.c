@@ -65,6 +65,21 @@ tcpci_snk_emul_send_capability_msg(struct tcpci_snk_emul_data *data,
 					   data->pdo, pdos, delay);
 }
 
+static int
+tcpci_snk_emul_send_request_msg(struct tcpci_snk_emul_data *data,
+	               struct tcpci_partner_data *common_data,
+	               uint64_t delay)
+{
+	uint32_t rdo = 0;
+	
+    tcpci_snk_emul_create_rdo(1500, 3000, 1);
+
+	/* Expect response for request */
+	tcpci_partner_send_data_msg(common_data, PD_DATA_REQUEST, &rdo,
+		1 /* = data_obj_num */, 0 /* = delay */);
+
+}
+
 /**
  * @brief Check if given source PDO satisfy given sink PDO
  *

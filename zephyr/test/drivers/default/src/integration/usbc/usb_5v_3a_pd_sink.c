@@ -75,7 +75,7 @@ static void usb_attach_5v_3a_pd_sink_after(void *data)
 ZTEST_SUITE(usb_attach_5v_3a_pd_sink, drivers_predicate_post_main,
 	    usb_attach_5v_3a_pd_sink_setup, usb_attach_5v_3a_pd_sink_before,
 	    usb_attach_5v_3a_pd_sink_after, NULL);
-
+		
 ZTEST_F(usb_attach_5v_3a_pd_sink, test_partner_pd_completed)
 {
 	zassert_true(fixture->snk_ext.pd_completed);
