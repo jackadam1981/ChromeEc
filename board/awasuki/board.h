@@ -106,6 +106,9 @@
 #define CONFIG_KEYBOARD_REFRESH_ROW3
 #define CONFIG_KEYBOARD_VIVALDI
 
+/* These boards shipped with locked watchdog timeout (in RO) */
+#define CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
