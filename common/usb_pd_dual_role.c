@@ -177,7 +177,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 #endif
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		int mw = uw / 1000;
+		int mw = PDO_BATT_MAX_POWER(pdo);
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
 	} else {
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
