@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2628125_641f15c1",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd9eb049_7fc23982",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "44cbaa3a0534f91c688059c36df524cb71c7de99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34e4ca97_2baf55df",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13048fd_668e9fbf",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e4ca97_2baf55df",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 19
+      },
+      "revId": "44cbaa3a0534f91c688059c36df524cb71c7de99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccd1ca66_0f04c11d",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-06-17T19:38:50Z",
       "side": 1,
       "message": "This can be simplified.\n```suggestion\n\tdo {\n\t\tsr \u003d (int8_t)flash_read_sr();\n\t\tif (sr \u003c 0)\n\t\t\treturn sr;\n\t\tif (SLWTMR_CNT_HIT_CHECK) {\n\t\t\ttimeout_retry++;\n\t\t\tslowtmr_dealy_us(100);\n\t\t}\n\t\tif (timeout_retry \u003e\u003d 100000) {\n\t\t\treturn -1;\n\t\t}\n\t} while ((sr \u0026 SR_WIP) \u0026\u0026 (timeout_retry \u003c 100000));\n\n\treturn 0;\n}\n```",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 0
+      },
+      "revId": "44cbaa3a0534f91c688059c36df524cb71c7de99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bc6814_7c9eee91",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/flash_map_backend.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd1ca66_0f04c11d",
       "range": {
         "startLine": 362,
         "startChar": 0,
