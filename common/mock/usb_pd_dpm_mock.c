@@ -123,4 +123,8 @@ void dpm_set_pe_ready(int port, bool enable)
 {
 }
 
+void pd_dpm_request(int port, enum pd_dpm_request req)
+{
+}
+
 /* LCOV_EXCL_STOP */
