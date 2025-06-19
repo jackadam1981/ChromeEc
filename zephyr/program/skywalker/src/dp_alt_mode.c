@@ -16,6 +16,16 @@
 
 LOG_MODULE_REGISTER(skywalker_usbc, LOG_LEVEL_INF);
 
+/**
+ * The index of dp_aux_path_sel is hard coded in kernel.
+ * Must not be altered after FSI.
+ *
+ * If this index changed for a new board, update the `mediatek,phy-flip-gpios`
+ * property in arch/arm64/boot/dts/mediatek/mt8189-skywalker-{board}.dts,
+ * And put a compile-time assertion here to to ensure consistency.
+ */
+BUILD_ASSERT(DT_NODE_CHILD_IDX(DT_NODELABEL(gpio_dp_aux_path_sel)) == 7);
+
 uint64_t svdm_hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int active_aux_port = -1;
 
