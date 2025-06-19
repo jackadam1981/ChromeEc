@@ -229,3 +229,7 @@ const struct tcpm_drv mock_tcpc_driver = {
 	.set_frs_enable = &mock_set_frs_enable,
 #endif
 };
+
+__overridable void pd_dpm_request(int port, enum pd_dpm_request req)
+{
+}
