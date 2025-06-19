@@ -31,6 +31,7 @@ LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
 #define RTK_VIVO_BACKUP1_REG (*((volatile uint32_t *)0x40104ffc))
 
 #define BBRAM_KEY_VALUE 0xA5
+#define BBRAM_WP_FLAG_INVALID 0xFF
 
 /* Driver data */
 struct cros_system_rtk_data {
@@ -129,6 +130,7 @@ static int cros_system_rtk_init(const struct device *dev)
 	uint32_t vivo_reg1 = RTK_VIVO_BACKUP1_REG;
 	uint32_t key_val = 0;
 	uint32_t value = 0;
+	uint32_t invalid_value = 0;
 	/* In order to determine if reset from watchdog */
 	uint32_t flag = 0;
 	/* check reset cause */
@@ -167,6 +169,12 @@ static int cros_system_rtk_init(const struct device *dev)
 				    (uint8_t *)&value);
 			system_set_reset_flags(EC_RESET_FLAG_RESET_PIN);
 		}
+
+		/* set wp_at_boot as invalid */
+		invalid_value = BBRAM_WP_FLAG_INVALID;
+		bbram_write(bbram_dev, BBRAM_REGION_OFFSET(wp_at_boot),
+			    BBRAM_REGION_SIZE(wp_at_boot),
+			    (uint8_t *)&invalid_value);
 
 		/* Set key as BBRAM_KEY_VALUE  */
 		key_val = BBRAM_KEY_VALUE;
