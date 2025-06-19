@@ -16,6 +16,23 @@
       "message": "Hi ting \u0026 Cheng.\n\nCould you please help review? We need to release a version next week for testing. Thanks.",
       "revId": "90f933d21d1d7337c9383ea09ae45c9c0a74f872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b4399c_ae2d2e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-06-19T07:29:53Z",
+      "side": 1,
+      "message": "```\n[ptlrvp_mchp:rw] [21/357] Building C object CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/ap_pwrseq.c.obj\n[ocelotrvp-ite:rw] [31/348] Building C object CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c.obj\n[ptlrvp_mchp:ro] [21/357] Building C object CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/ap_pwrseq.c.obj\n[anakin:ro] ERROR: ERROR: property unused-pins/unused-gpios \u003d \u003cgpiof 0 0x20\u003e. Flags don\u0027t match named-gpios 0x800\n[meliks:rw] [21/393] Building C object CMakeFiles/app.dir/mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/signal_adc.c.obj\n[anakin:ro] ERROR: 1 GPIO mismatches found in anakin.\n```",
+      "revId": "90f933d21d1d7337c9383ea09ae45c9c0a74f872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
