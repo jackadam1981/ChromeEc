@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd7e70d_dc1cc0d7",
+        "filename": "zephyr/program/skywalker/src/dp_alt_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1587329
+      },
+      "writtenOn": "2025-06-19T08:27:11Z",
+      "side": 1,
+      "message": "In the final version of kernel patch, the name of the property is not `phy-flip-gpios`. Probably would be `mediatek,phy-flip-gpios`.",
+      "revId": "26a89938bdec4f1d22b33fddd5881ff79af50a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
