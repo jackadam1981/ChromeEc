@@ -946,7 +946,7 @@ ZTEST_USER(console_cmd_pdc, test_srccaps)
 	 *  Src 3: 0201912c FIX          5000mV,  3000mA [           DRD    ]
 	 *  Src 4: 0181912c FIX          5000mV,  3000mA [               FRS]
 	 *  Src 5: 99019096 VAR  5000mV-20000mV,  1500mA
-	 *  Src 6: 590190c8 BAT  5000mV-20000mV, 10000mA
+	 *  Src 6: 590190c8 BAT  5000mV-20000mV,  2500mA
 	 *  Src 7: c12c5a28 AUG  9000mV-15000mV,  2000mA
 	 */
 
@@ -972,10 +972,10 @@ ZTEST_USER(console_cmd_pdc, test_srccaps)
 		outbuffer, "Src 5: 99019096 VAR  5000mV-20000mV,  1500mA"));
 
 	/* Exceeds board current limit but will be reported anyways */
-	zassert_not_null(strstr(
-		outbuffer, "Src 6: 590190c8 BAT  5000mV-20000mV, 10000mA"));
-	zassert_not_null(strstr(
-		outbuffer, "Src 7: c12c5a28 AUG  9000mV-15000mV,  2000mA"));
+	zassert_not_null(strstr(outbuffer,
+				"Src 6: 590190c8 BAT  5000mV-20000mV, 2500mA"));
+	zassert_not_null(strstr(outbuffer,
+				"Src 7: c12c5a28 AUG  9000mV-15000mV, 2000mA"));
 }
 
 /**
