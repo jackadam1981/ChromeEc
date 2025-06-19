@@ -5,4 +5,5 @@
 
  #define CONFIG_TEST_MOCK_LIST  \
 	MOCK(USB_MUX)           \
-	MOCK(TCPC)
+	MOCK(TCPC)              \
+	MOCK(USB_TYPEC_DRP_ACC_TRYSRC)

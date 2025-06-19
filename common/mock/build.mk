@@ -27,3 +27,4 @@ mock-$(HAS_MOCK_USB_PD_DPM) += usb_pd_dpm_mock.o
 mock-$(HAS_MOCK_DP_ALT_MODE) += dp_alt_mode_mock.o
 mock-$(HAS_MOCK_USB_PRL) += usb_prl_mock.o
 mock-$(HAS_MOCK_USB_PE_DRP_SM) += usb_pe_drp_sm_mock.o
+mock-$(HAS_MOCK_USB_TYPEC_DRP_ACC_TRYSRC) += usb_typec_drp_acc_trysrc_mock.o
