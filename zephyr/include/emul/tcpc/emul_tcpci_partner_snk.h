@@ -83,6 +83,17 @@ void tcpci_snk_emul_clear_alert_received(struct tcpci_snk_emul_data *sink_data);
 void tcpci_snk_emul_clear_last_5v_cap(struct tcpci_snk_emul_data *sink_data);
 
 /**
+ * @brief Send request message constructed from USB-C sink emulator PDOs
+ *
+ * @param  data Pointer to USB-C sink emulator
+ * @param  common_data Pointer to common TCPCI partner data
+ * @param  delay Optional delay
+ */
+int tcpci_snk_emul_send_request_msg(struct tcpci_snk_emul_data *data,
+	struct tcpci_partner_data *common_data,
+	uint64_t delay);
+
+/**
  * @}
  */
 
