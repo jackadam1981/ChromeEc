@@ -118,3 +118,7 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 void pe_invalidate_explicit_contract(int port)
 {
 }
+
+void pd_dpm_request(int port, enum pd_dpm_request req)
+{
+}
