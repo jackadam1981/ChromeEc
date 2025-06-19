@@ -17,15 +17,6 @@ LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
 
-#define INCBIN_PREFIX g_
-#define INCBIN_STYLE INCBIN_STYLE_SNAKE
-#include "third_party/incbin/incbin.h"
-
-/* TPS6699X_FW_ROOT is defined in this directory's CMakeLists.txt and points to
- * ${PLATFORM_EC}/zephyr/drivers/usbc
- */
-INCBIN(tps6699x_fw, STRINGIFY(TPS6699X_FW_ROOT) "/tps6699x.bin");
-
 #define TPS_4CC_MAX_DURATION K_MSEC(1200)
 #define TPS_4CC_POLL_DELAY K_USEC(200)
 #define TPS_RESET_DELAY K_MSEC(1000)

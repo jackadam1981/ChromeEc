@@ -2976,22 +2976,6 @@ static void tps_check_and_notify_irq(void)
 	}
 }
 
-/* LCOV_EXCL_START - temporary code */
-#ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
-/* See tps6699x_fwup.c */
-extern int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *dev);
-
-int tps_pdc_do_firmware_update(void)
-{
-	/* Get DT node for first PDC port */
-	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
-	const struct pdc_config_t *cfg = dev->config;
-
-	return tps6699x_do_firmware_update_internal(&cfg->i2c);
-}
-#endif /* CONFIG_USBC_PDC_TPS6699X_FW_UPDATER */
-/* LCOV_EXCL_STOP - temporary code */
-
 static void tps_thread(void *dev, void *unused1, void *unused2)
 {
 	struct pdc_data_t *data = ((const struct device *)dev)->data;
