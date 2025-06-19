@@ -1256,7 +1256,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+	LOG_INF("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
 	if (port->sink_path_status != status->sink_path_status) {
@@ -1339,6 +1339,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 			k_event_post(&port->sm_event, PDC_SM_EVENT);
 		}
 
+		LOG_INF("C%d: power_direction: %d", port_number, status->power_direction);
 		if (status->power_direction) {
 			if (conn_status_change_bits.negotiated_power_level) {
 				/*
@@ -1348,6 +1349,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 				 * This flow is atypical for most sink devices,
 				 * but it is behavior PD testers exercise.
 				 */
+				LOG_INF("Set SRC_POLICY_GET_SINK_CAPS");
 				atomic_set_bit(port->src_policy.flags,
 					       SRC_POLICY_GET_SINK_CAPS);
 			}
@@ -4923,6 +4925,7 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 {
 	struct pdc_port_t *pdc;
 
+	LOG_INF("pdc_power_mgmt_set_current_limit Entry");
 	if (!is_pdc_port_valid(port_num)) {
 		return -ERANGE;
 	}
@@ -4941,6 +4944,7 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 		(current == TC_CURRENT_3_0A) ? "3.0A" : "1.5A");
 
 	/* Further actions depend on the port attached state and power role */
+	LOG_INF("pdc->attached_state = %d", pdc->attached_state);
 	switch (pdc->attached_state) {
 	case SRC_ATTACHED_TYPEC_ONLY_STATE:
 		/*
@@ -4957,6 +4961,7 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 		 */
 
 		/* Set flag to trigger SET_PDOS command to PDC */
+		LOG_INF("trigger SET_PDOS command 1");
 		atomic_set_bit(pdc->src_policy.flags,
 			       SRC_POLICY_UPDATE_SRC_CAPS);
 		break;
@@ -4975,6 +4980,7 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 		atomic_set_bit(pdc->una_policy.flags, UNA_POLICY_TCC);
 
 		/* Set flag to trigger SET_PDOS command to PDC */
+		LOG_INF("trigger SET_PDOS command 2");
 		atomic_set_bit(pdc->una_policy.flags,
 			       UNA_POLICY_UPDATE_SRC_CAPS);
 		break;

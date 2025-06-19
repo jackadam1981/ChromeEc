@@ -76,6 +76,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 	enum usb_typec_current_t rp;
 	int rv;
 
+	printk("pdc_dpm_balance_source_ports Enter\n");
 	rv = k_work_busy_get(&dpm_work.work);
 	/* check if work is delayed work is pending */
 	if (rv && (rv & K_WORK_DELAYED)) {
@@ -99,6 +100,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 		if (count_port_bits(max_current_claimed) <
 		    CONFIG_PLATFORM_EC_USB_PD_3A_PORTS) {
 			max_current_claimed |= BIT(new_max_port);
+			printk("Call set_current_limit 1\n");
 			pdc_power_mgmt_set_current_limit(new_max_port,
 							 TC_CURRENT_3_0A);
 		} else if (non_pd_sink_max_requested & max_current_claimed) {
@@ -108,6 +110,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 
 			rp = pdc_power_mgmt_get_default_current_limit(
 				rem_non_pd);
+			printk("Call set_current_limit 2\n");
 			pdc_power_mgmt_set_current_limit(rem_non_pd, rp);
 			max_current_claimed &= ~BIT(rem_non_pd);
 
@@ -121,6 +124,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 
 			pdc_power_mgmt_frs_enable(rem_frs, false);
 			rp = pdc_power_mgmt_get_default_current_limit(rem_frs);
+			printk("Call set_current_limit 3\n");
 			pdc_power_mgmt_set_current_limit(rem_frs, rp);
 			max_current_claimed &= ~BIT(rem_frs);
 
@@ -144,6 +148,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 			max_current_claimed |= BIT(new_frs_port);
 			/* Enable FRS for this port */
 			pdc_power_mgmt_frs_enable(new_frs_port, true);
+			printk("Call set_current_limit 4\n");
 			pdc_power_mgmt_set_current_limit(new_frs_port,
 							 TC_CURRENT_3_0A);
 		} else if (non_pd_sink_max_requested & max_current_claimed) {
@@ -152,6 +157,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 
 			rp = pdc_power_mgmt_get_default_current_limit(
 				rem_non_pd);
+			printk("Call set_current_limit 5\n");
 			pdc_power_mgmt_set_current_limit(rem_non_pd, rp);
 			max_current_claimed &= ~BIT(rem_non_pd);
 
@@ -173,6 +179,7 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 		if (count_port_bits(max_current_claimed) <
 		    CONFIG_PLATFORM_EC_USB_PD_3A_PORTS) {
 			max_current_claimed |= BIT(new_max_port);
+			printk("Call set_current_limit 6\n");
 			pdc_power_mgmt_set_current_limit(new_max_port,
 							 TC_CURRENT_3_0A);
 		} else {
@@ -183,11 +190,14 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 	}
 unlock:
 	k_mutex_unlock(&max_current_claimed_mtx);
+
+	printk("pdc_dpm_balance_source_ports Exit\n");
 }
 
 /* Process port's first Sink_Capabilities PDO for port current consideration */
 void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 {
+	printk("%s, pdo = %d\n",__func__, vsafe5v_pdo);
 	/* Verify partner supplied valid vSafe5V fixed object first */
 	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
 		return;
@@ -196,6 +206,7 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 		return;
 
 	if (pdc_power_mgmt_get_power_role(port) == PD_ROLE_SOURCE) {
+		printk("PD_ROLE_SOURCE\n");
 		if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
 			return;
 
@@ -207,6 +218,7 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 	} else {
 		int frs_current = vsafe5v_pdo & PDO_FIXED_FRS_CURR_MASK;
 
+		/* CONFIG_PLATFORM_EC_USB_PD_FRS is not set on obiwan */
 		if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS))
 			return;
 
