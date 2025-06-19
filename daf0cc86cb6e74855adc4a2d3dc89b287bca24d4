@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88a64c29_f8db4102",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-06-19T18:32:41Z",
+      "side": 1,
+      "message": "Interestingly, this also doesn\u0027t hold good for battery rdo as our ma calculation is based on minimum voltage and the request is based on maximum voltage. We are doing `ma * mv (max value)` which of course crosses the actual pdo power limitation in most cases and is only limited by board maximum current limitation handled by `pd_extract_pdo_power(...)`.\n\nI think this should also be `uw \u003d (uw \u003c PDO_BATT_MAX_POWER(pdo)) ? uw : PDO_BATT_MAX_POWER(pdo);` and should go inside if in #179.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "daf0cc86cb6e74855adc4a2d3dc89b287bca24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79e2565a_ed9fdd66",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 2
