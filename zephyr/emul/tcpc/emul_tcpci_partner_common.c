@@ -1052,6 +1052,9 @@ tcpi_drp_emul_ps_rdy_handler(struct tcpci_partner_data *data)
 	case PD_CTRL_VCONN_SWAP:
 		return tcpci_partner_common_ps_rdy_vconn_swap_handler(data);
 
+	case PD_CTRL_PS_RDY:
+		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
+
 	default:
 		LOG_ERR("Unhandled current_req=%u in PS_RDY",
 			data->cur_ams_ctrl_req);
@@ -1196,6 +1199,9 @@ tcpci_partner_common_sop_msg_handler(struct tcpci_partner_data *data,
 		return tcpci_partner_common_dr_swap_handler(data);
 
 	case PD_CTRL_PS_RDY:
+		data->cur_ams_ctrl_req = PD_CTRL_PS_RDY; /* when the partner
+							    emulator received
+							    the PS_RDY */
 		return tcpi_drp_emul_ps_rdy_handler(data);
 
 	case PD_CTRL_REJECT:
