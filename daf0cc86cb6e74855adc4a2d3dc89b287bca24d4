@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e2565a_ed9fdd66",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-06-19T18:20:00Z",
+      "side": 1,
+      "message": "This still doesn\u0027t seem correct. Battery RDO has 2 fields - Operational power (first argument(mw) and maximum power(max_or_min_mw)). Now, you are requesting operational power to be the same as max power advertised by the source. Instead what we should be doing is, leave the mW calculation as is, if you see `pd_extract_pdo_power(...)` function called in #114, which subsequently calls `extract_pdo_helper` (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc_utils.c;l\u003d104) we are calculating voltage and current values to request based on PDO type and considering max power advertised to calculate current value in case of BATT PDO.\n\nInstead change `max_or_min_mw` to use `PDO_BATT_MAX_POWER(pdo)` in #176 (only for PDO_TYPE_BATTERY) or find a better alternative which considers `CONFIG_USB_PD_MAX_POWER_MW`.",
+      "range": {
+        "startLine": 180,
+        "startChar": 11,
+        "endLine": 180,
+        "endChar": 29
+      },
+      "revId": "daf0cc86cb6e74855adc4a2d3dc89b287bca24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
