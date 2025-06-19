@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35d0dc0_ad26b9ff",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ed3226_238d3a82",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf1901c0_a55a7932",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-17T22:12:26Z",
       "side": 1,
       "message": "Unused.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 35
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e60e2e_e8ceffd8",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1901c0_a55a7932",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9e82e0_e5a7a5d8",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7133364c_e9dc9dbd",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07c4eb29_784306dc",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-06-17T22:12:26Z",
       "side": 1,
       "message": "Defined twice.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 51
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d14c68_a0559580",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c4eb29_784306dc",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2b461f_dcf5d1c1",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d5e02c_28e8e832",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdc30c4e_30d1807f",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-06-18T00:21:23Z",
       "side": 1,
       "message": "More accurately, it is not a CRC; rename it to checksum.",
+      "range": {
+        "startLine": 82,
+        "startChar": 35,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb423e71_81e80b96",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc30c4e_30d1807f",
       "range": {
         "startLine": 82,
         "startChar": 35,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de1d838_8a044d8f",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "edit comment",
+      "parentUuid": "f8632263_8a24f82a",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e1f8cb_5d086cde",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-06-17T22:12:26Z",
       "side": 1,
       "message": "`DBG_PRINT()` already specifies `stderr`. Some other calls below have the same mistake.",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa694922_b7ea9423",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e1f8cb_5d086cde",
       "range": {
         "startLine": 179,
         "startChar": 5,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7653e27_d5e0d275",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98169aa_6dd1a095",
+      "range": {
+        "startLine": 206,
+        "startChar": 42,
+        "endLine": 206,
+        "endChar": 52
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6416385e_8d5128e6",
@@ -221,6 +437,30 @@
       "writtenOn": "2025-06-17T22:12:26Z",
       "side": 1,
       "message": "You know the max size, PAGE_SIZE (256) + some fixed value; just put it in the stack.",
+      "range": {
+        "startLine": 280,
+        "startChar": 42,
+        "endLine": 280,
+        "endChar": 63
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0487a6_ef8d7651",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6416385e_8d5128e6",
       "range": {
         "startLine": 280,
         "startChar": 42,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4b2794_3543ab24",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee0874a_3a1126fe",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 14
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e161294e_c58ddf52",
@@ -267,6 +531,30 @@
       "writtenOn": "2025-06-18T00:21:23Z",
       "side": 1,
       "message": "Unused. Remove it.",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 21
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6764cb1_d56d8a9f",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e161294e_c58ddf52",
       "range": {
         "startLine": 390,
         "startChar": 4,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32158e4a_5492d508",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b8f21e_912a3b1d",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8864565d_83c9f80b",
@@ -313,6 +625,30 @@
       "writtenOn": "2025-06-17T19:27:15Z",
       "side": 1,
       "message": "This can be simplified as:\n```suggestion\n\tdo {\n\t\tread_temp \u003d com_port_wait_read(uart_fd);\n\t\telapsed_time \u003d difftime(time(NULL), start);\n\n\t\tif (elapsed_time \u003e OPR_TIMEOUT) {\n\t\t\tfprintf(stderr, \"Timeout waiting for initial byte\");\n\t\t\treturn -1;\n\t\t}\n\t\tDBG_PRINT(\"wait_for_response: get %d.\\n\", read_temp);\n\t} while (read_temp \u003c 1);\n\n\n```",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 0
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09106be2_19f0f7fb",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "8864565d_83c9f80b",
       "range": {
         "startLine": 460,
         "startChar": 0,
@@ -346,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2770a42d_8de73c7a",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13407653_8af01755",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 0
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a123da77_abb891f4",
@@ -359,6 +719,30 @@
       "writtenOn": "2025-06-17T19:27:15Z",
       "side": 1,
       "message": "use fprintf for fatal errors.",
+      "range": {
+        "startLine": 608,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 0
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c72adbce_8c9ed1b7",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a123da77_abb891f4",
       "range": {
         "startLine": 608,
         "startChar": 0,
@@ -392,6 +776,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e85d34c_b9668049",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33af3bc9_c4ffd47b",
+      "range": {
+        "startLine": 628,
+        "startChar": 1,
+        "endLine": 628,
+        "endChar": 9
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4165594_20986893",
@@ -405,6 +813,30 @@
       "writtenOn": "2025-06-17T19:27:15Z",
       "side": 1,
       "message": "fprintf(stderr, ...",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 63
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2440a18e_720bbca1",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4165594_20986893",
       "range": {
         "startLine": 648,
         "startChar": 0,
@@ -438,6 +870,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e9cef9_ceb72c66",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1addf8b6_3af62567",
+      "range": {
+        "startLine": 666,
+        "startChar": 3,
+        "endLine": 666,
+        "endChar": 9
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "165dbda0_d67beb8b",
@@ -451,6 +907,30 @@
       "writtenOn": "2025-06-17T22:12:26Z",
       "side": 1,
       "message": "What do you mean for \"stub\"? This function looks like a no-op as no command is sent to the EC.",
+      "range": {
+        "startLine": 687,
+        "startChar": 29,
+        "endLine": 687,
+        "endChar": 35
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b279ff3e_d2d03235",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Typo.\nRemoved it.",
+      "parentUuid": "165dbda0_d67beb8b",
       "range": {
         "startLine": 687,
         "startChar": 29,
@@ -484,6 +964,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2258bf04_452c2539",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8650790f_7310e84c",
+      "range": {
+        "startLine": 879,
+        "startChar": 6,
+        "endLine": 879,
+        "endChar": 39
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f93404b_baa075d8",
@@ -507,6 +1011,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c6fd8d_52408ae6",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f93404b_baa075d8",
+      "range": {
+        "startLine": 899,
+        "startChar": 6,
+        "endLine": 899,
+        "endChar": 21
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca62e24_463c238c",
@@ -520,6 +1048,30 @@
       "writtenOn": "2025-06-17T22:12:26Z",
       "side": 1,
       "message": "Implement the sighandler, at least some clean up like:\n```\n    if (g_uart_fd !\u003d -1) {\n        restore_uart(g_uart_fd);\n        close(g_uart_fd);\n    }\n```\n \nNote that it makes `uart_fd` as a global variable.",
+      "range": {
+        "startLine": 970,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 28
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52abb01d_22fb548b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T08:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca62e24_463c238c",
       "range": {
         "startLine": 970,
         "startChar": 0,
