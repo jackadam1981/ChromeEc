@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe59126b_c7e3233a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1587329
+      },
+      "writtenOn": "2025-06-19T11:01:26Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"addes\" is a possible misspelling of \"adds\" or \"added\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"addes\" is a possible misspelling of \"adds\" or \"added\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "98533f907787465921d5048fd78b2369854fc318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
