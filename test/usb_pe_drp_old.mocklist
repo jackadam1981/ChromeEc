@@ -4,6 +4,6 @@
  */
 
 #define CONFIG_TEST_MOCK_LIST \
-	MOCK(USB_PRL)         \
-	MOCK(USB_TC_SM)       \
+	MOCK(USB_PRL)       \
+	MOCK(USB_TC_SM)     \
 	MOCK(USB_PD_DPM)

@@ -372,3 +372,7 @@ __overridable int typec_update_cc(int port)
 {
 	return EC_SUCCESS;
 }
+
+void pd_dpm_request(int port, enum pd_dpm_request req)
+{
+}
