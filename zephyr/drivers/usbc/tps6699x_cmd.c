@@ -316,14 +316,8 @@ int tps_stream_data(const struct i2c_dt_spec *i2c,
 				TPS_STREAM_CHUNK_SIZE);
 			return rv;
 		}
-
-		/* Periodically print a progress log message */
-		if ((chunk_offset / TPS_STREAM_CHUNK_SIZE) % 32 == 0) {
-			LOG_INF("  Block progress %u / %u", chunk_offset,
-				buf_len);
-		}
 	}
 
-	LOG_INF("  Block complete (%u)", buf_len);
+	LOG_DBG("  Block complete (%u)", buf_len);
 	return 0;
 }
