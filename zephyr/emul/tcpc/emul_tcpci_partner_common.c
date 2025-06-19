@@ -1052,11 +1052,22 @@ tcpi_drp_emul_ps_rdy_handler(struct tcpci_partner_data *data)
 	case PD_CTRL_VCONN_SWAP:
 		return tcpci_partner_common_ps_rdy_vconn_swap_handler(data);
 
+	case 0:
+		if (data->cur_ams_ctrl_req) {
+			LOG_INF("PS_RDY received for sink Request (RDO=0x%08x)",
+				data->cur_ams_ctrl_req);
+			data->cur_ams_ctrl_req = 0;
+			return TCPCI_PARTNER_COMMON_MSG_HANDLED;
+		}
+		break;
+
 	default:
 		LOG_ERR("Unhandled current_req=%u in PS_RDY",
 			data->cur_ams_ctrl_req);
 		return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
 	}
+	/* If we reach here, no valid handler was found */
+	return TCPCI_PARTNER_COMMON_MSG_NOT_HANDLED;
 }
 
 static enum tcpci_partner_handler_res
