@@ -548,7 +548,13 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 	return PD_REV30;
 }
 
-#endif /* !CONFIG_USB_PR_SM */
+void pd_dpm_request(int port, enum pd_dpm_request req)
+{
+}
+
+/* LCOV_EXCL_STOP */
+
+#endif /* !CONFIG_ZEPHYR && !CONFIG_USB_PRL_SM */
 
 #ifndef CONFIG_AP_POWER_CONTROL
 __overridable enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
