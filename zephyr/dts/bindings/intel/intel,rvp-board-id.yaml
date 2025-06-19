@@ -22,3 +22,8 @@ properties:
     required: true
     description: |
      A list contains GPIO pins corresponding to BOARD ID bits.
+
+  defer-until-s5:
+    type: phandle
+    description: |
+     A gpio controller node that need to be intialized.
