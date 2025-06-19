@@ -106,6 +106,9 @@
 #define CONFIG_KEYBOARD_REFRESH_ROW3
 #define CONFIG_KEYBOARD_VIVALDI
 
+#undef CONFIG_SYSTEM_SAFE_MODE
+#undef CONFIG_PANIC_ON_WATCHDOG_WARNING
+
 /* These boards shipped with locked watchdog timeout (in RO) */
 #define CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION
 
