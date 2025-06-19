@@ -182,7 +182,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	} else {
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
-
+	
 	/*
 	 * Ref: USB Power Delivery Specification
 	 * (Revision 3.0, Version 2.0 / Revision 2.0, Version 1.3)
