@@ -7,24 +7,35 @@
  * TI TPS6699X PDC FW update code
  */
 
+#include "drivers/pdc.h"
+#include "tps6699x_cmd.h"
+#include "tps6699x_reg.h"
+#include "usbc/pdc_power_mgmt.h"
+
 #include <string.h>
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/shell/shell.h>
+#include <zephyr/sys/base64.h>
+
 LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
-#include "tps6699x_cmd.h"
-#include "tps6699x_reg.h"
 
 #define TPS_4CC_MAX_DURATION K_MSEC(1200)
 #define TPS_4CC_POLL_DELAY K_USEC(200)
 #define TPS_RESET_DELAY K_MSEC(1000)
-#define TPS_TFUD_BLOCK_DELAY K_MSEC(150)
 #define TPS_TFUI_HEADER_DELAY K_MSEC(200)
 #define TPS_TFUS_BOOTLOADER_ENTRY_DELAY K_MSEC(500)
 
 /* LCOV_EXCL_START - non-shipping code */
+static struct {
+	const struct device *pdc_dev;
+	struct i2c_dt_spec pdc_i2c;
+	size_t bytes_streamed;
+} ctx;
+
 struct tfu_initiate {
 	uint16_t num_blocks;
 	uint16_t data_block_size;
@@ -50,12 +61,21 @@ struct tfu_complete {
 	uint8_t do_copy;
 } __attribute__((__packed__));
 
+#define GAID_MAGIC_VALUE 0xAC
+union gaid_params_t {
+	struct {
+		uint8_t switch_banks;
+		uint8_t copy_banks;
+	} __packed;
+	uint8_t raw[2];
+};
+
 struct tfu_query {
 	uint8_t bank;
 	uint8_t cmd;
 } __attribute__((__packed__));
 
-struct tps6699x_tfu_query_output {
+struct tfu_query_output {
 	uint8_t result;
 	uint8_t tfu_state;
 	uint8_t complete_image;
@@ -67,53 +87,14 @@ struct tps6699x_tfu_query_output {
 	uint8_t num_appconfig_bytes_written;
 } __attribute__((__packed__));
 
-/* Largest chunk we want to read before writing. */
-#define MAX_READ_CHUNK_SIZE 0x4000
-
-/* Send metadata with TFUi */
-#define METADATA_OFFSET 0x4
-#define METADATA_LENGTH 0x8
-
-/* Stream header with i2c_stream AFTER TFUi */
-#define HEADER_BLOCK_OFFSET 0xC
-#define HEADER_BLOCK_LENGTH 0x800
-
-/* Size of fw not including appconfig and header block is at this offset. */
-#define FW_SIZE_OFFSET 0x4F8
-
-/* Stream data blocks after you write metadata with TFUd. */
-#define DATA_REGION_OFFSET 0x80C
-#define DATA_BLOCK_SIZE 0x4000
-#define DATA_METADATA_LENGTH 0x8
-#define DATA_METADATA_OFFSET_AT(block)                        \
-	(((DATA_BLOCK_SIZE + DATA_METADATA_LENGTH) * block) + \
-	 DATA_REGION_OFFSET)
-#define DATA_AT(block) (DATA_METADATA_OFFSET_AT(block) + DATA_METADATA_LENGTH)
-#define TFUD_CHUNK_SIZE (64)
-
-#define MAX_NUM_BLOCKS 12
-
-#define GAID_MAGIC_VALUE 0xAC
-union gaid_params_t {
-	struct {
-		uint8_t switch_banks;
-		uint8_t copy_banks;
-	} __packed;
-	uint8_t raw[2];
-};
-
-static int get_and_print_device_info(const struct i2c_dt_spec *i2c)
-{
-	union reg_version version;
-	int rv;
-
-	rv = tps_rd_version(i2c, &version);
-	if (rv != 0) {
-		return rv;
-	}
-
-	return 0;
-}
+/* The string length of a base64 encoded message including padding. */
+#define BASE64_LENGTH(n) ((4 * ((n) / 3) + 3) & ~3)
+#define LEN_TFUi sizeof(struct tfu_initiate)
+#define LEN_TFUd sizeof(struct tfu_download)
+#define LEN_STREAM (66) /* Broadcast addr + 64-byte data */
+#define BASE64_LEN_TFUi BASE64_LENGTH(LEN_TFUi)
+#define BASE64_LEN_TFUd BASE64_LENGTH(LEN_TFUd)
+#define BASE64_LEN_STREAM BASE64_LENGTH(LEN_STREAM)
 
 /**
  * @brief Convert a 4CC command/task enum to a NUL-terminated printable string
@@ -244,121 +225,6 @@ static int do_reset_pdc(const struct i2c_dt_spec *i2c)
 	return rv;
 }
 
-/* Simply point to the offset in the file */
-static int read_file_offset(int offset, const uint8_t **buf, int len)
-{
-	/* Exceed size of file. */
-	if (offset + len > g_tps6699x_fw_size) {
-		return -1;
-	}
-
-	*buf = &g_tps6699x_fw_data[offset];
-
-	return len;
-}
-
-static int get_appconfig_offsets(uint16_t num_data_blocks, int *metadata_offset,
-				 int *data_block_offset)
-{
-	int bytes_read;
-	uint32_t *fw_size;
-
-	bytes_read = read_file_offset(
-		FW_SIZE_OFFSET, (const uint8_t **)&fw_size, sizeof(fw_size));
-
-	if (bytes_read < 0) {
-		LOG_ERR("Failed to read firmware size from binary: %d",
-			bytes_read);
-		return -1;
-	}
-
-	// The Application Configuration is stored at the following offset
-	// FirmwareImageSize (Which excludes Header and App Config) + 0x800
-	// (Header Block Size)
-	// + (8 (Meta Data for Each Block including Header block) * Number of
-	// Data block + 1)
-	// + 4 (File Identifier)
-	*metadata_offset = *fw_size + HEADER_BLOCK_LENGTH +
-			   (DATA_METADATA_LENGTH * (num_data_blocks + 1)) +
-			   METADATA_OFFSET;
-
-	*data_block_offset = *metadata_offset + DATA_METADATA_LENGTH;
-
-	return 0;
-}
-
-static int tfud_block(const struct i2c_dt_spec *i2c, uint8_t *fbuf,
-		      int metadata_offset, int data_block_offset)
-{
-	struct tfu_download *tfud;
-	union reg_data cmd_data;
-	int bytes_read;
-	uint8_t rbuf[64];
-	int ret;
-
-	/* First read the block metadata. */
-	bytes_read = read_file_offset(metadata_offset, (const uint8_t **)&tfud,
-				      DATA_METADATA_LENGTH);
-
-	if (bytes_read < 0 || bytes_read != DATA_METADATA_LENGTH) {
-		LOG_ERR("Failed to read block metadata. Wanted %d, got %d",
-			DATA_METADATA_LENGTH, bytes_read);
-		return -1;
-	}
-
-	LOG_INF("TFUd Info: nblks=%u, blksize=%u, timeout=%us, addr=%x",
-		tfud->num_blocks, tfud->data_block_size, tfud->timeout_secs,
-		tfud->broadcast_address);
-
-	if (tfud->data_block_size > DATA_BLOCK_SIZE) {
-		LOG_ERR("TFUd block size too big: 0x%x (max is 0x%x)",
-			tfud->data_block_size, DATA_BLOCK_SIZE);
-		return -1;
-	}
-
-	memcpy(&cmd_data.data, tfud, sizeof(*tfud));
-	ret = run_task_sync(i2c, COMMAND_TASK_TFUD, &cmd_data, rbuf);
-
-	if (ret < 0 || rbuf[0] != 0) {
-		LOG_ERR("Failed to run TFUd. Ret=%d, rbuf[0] = %u", ret,
-			rbuf[0]);
-		return -1;
-	}
-
-	bytes_read = read_file_offset(data_block_offset,
-				      (const uint8_t **)&fbuf,
-				      tfud->data_block_size);
-
-	if (bytes_read < 0 || bytes_read != tfud->data_block_size) {
-		LOG_ERR("Failed to read block. Wanted %d, got %d",
-			tfud->data_block_size, bytes_read);
-		return -1;
-	}
-
-	/* Stream the data block */
-	ret = tps_stream_data(i2c, tfud->broadcast_address, fbuf,
-			      tfud->data_block_size);
-	if (ret) {
-		LOG_ERR("Downloading data block failed (%d)", ret);
-		return -1;
-	}
-
-	/* Wait 150ms after each data block. */
-	k_sleep(TPS_TFUD_BLOCK_DELAY);
-
-	return 0;
-}
-
-static int tfuq_run(const struct i2c_dt_spec *i2c, uint8_t *output)
-{
-	union reg_data cmd_data;
-	struct tfu_query *tfuq = (struct tfu_query *)cmd_data.data;
-	tfuq->bank = 0;
-	tfuq->cmd = 0;
-
-	return run_task_sync(i2c, COMMAND_TASK_TFUQ, &cmd_data, output);
-};
-
 static int tfus_run(const struct i2c_dt_spec *i2c)
 {
 	int ret;
@@ -417,128 +283,216 @@ static int tfus_run(const struct i2c_dt_spec *i2c)
 	}
 }
 
-/**
- * @brief Temporary EC-based FW update routine
- *
- * @param dev Device pointer for the PDC to update (needed only once per chip)
- */
-int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
+static int pdc_tps6699x_fwup_start(const struct device *dev)
 {
-	int appconfig_metadata_offset, appconfig_data_offset;
-	struct tfu_initiate *tfui;
+	struct pdc_hw_config_t hw_config;
+	int rv;
+
+	if (ctx.pdc_dev) {
+		LOG_ERR("FWUP session already in progress");
+		return -EBUSY;
+	}
+
+	/* Shut down the PDC stack */
+	rv = pdc_power_mgmt_set_comms_state(false);
+	if (rv == -EALREADY) {
+		LOG_INF("PDC stack already suspended");
+	} else if (rv) {
+		LOG_ERR("Cannot suspend PDC stack: %d", rv);
+		return rv;
+	}
+
+	/* Get I2C info */
+	rv = pdc_get_hw_config(dev, &hw_config);
+	if (rv) {
+		LOG_ERR("Cannot get PDC I2C info: %d", rv);
+		return rv;
+	}
+
+	ctx.pdc_i2c = hw_config.i2c;
+
+	/* Enter bootloader mode */
+	rv = tfus_run(&ctx.pdc_i2c);
+	if (rv) {
+		LOG_ERR("Cannot enter bootloader mode (%d)", rv);
+		return rv;
+	}
+
+	/* Ready for FW transfer */
+	ctx.pdc_dev = dev;
+	ctx.bytes_streamed = 0;
+
+	return 0;
+}
+
+static int pdc_tps6699x_fwup_send_initiate(uint8_t *buffer, size_t buffer_len)
+{
 	union reg_data cmd_data;
-	int bytes_read = 0;
-	uint8_t rbuf[64];
-	int ret = 0;
-	uint8_t *fbuf;
+	union reg_data rbuf;
+	int rv;
 
-	/*
-	 * Flow of operations for firmware update:
-	 *   - TFUs: Start TFU process (puts device into bootloader mode)
-	 *   - TFUi: Initiate firmware update. This also validates header.
-	 *   - TFUd - Loop to download firmware.
-	 *   - TFUc - Complete firmware update.
-	 *
-	 * To cancel or query current status, you can also do the following:
-	 *   - TFUq: Query the TFU process
-	 *   - TFUe: Cancel back to initial download state.
-	 */
-
-	/********************
-	 * TFUs stage - enter bootloader code
-	 */
-
-	ret = tfus_run(i2c);
-	if (ret) {
-		LOG_ERR("Cannot enter bootloader mode (%d)", ret);
-		return ret;
+	if (ctx.pdc_dev == NULL) {
+		LOG_ERR("No FWUP session in progress");
+		return -ENODEV;
 	}
 
-	/********************
-	 * TFUi stage
-	 */
-
-	/* Read metadata header. */
-	bytes_read = read_file_offset(METADATA_OFFSET, (const uint8_t **)&tfui,
-				      METADATA_LENGTH);
-	if (bytes_read < 0) {
-		LOG_ERR("Failed to read metadata. Wanted %d, got %d",
-			METADATA_LENGTH, bytes_read);
-		goto cleanup;
+	if (buffer == NULL || buffer_len != LEN_TFUi) {
+		LOG_ERR("Given data does not match TFUi format");
+		return -EINVAL;
 	}
 
-	LOG_INF("Sending TFUi.");
-
-	/* Write TFUi with header. */
-	memcpy(cmd_data.data, tfui, sizeof(*tfui));
-	ret = run_task_sync(i2c, COMMAND_TASK_TFUI, &cmd_data, rbuf);
-
-	if (ret < 0 || rbuf[0] != 0) {
-		LOG_ERR("Failed to run TFUi. Ret=%d, rbuf[0]=%u", ret, rbuf[0]);
-		goto cleanup;
+	memcpy(cmd_data.data, buffer, buffer_len);
+	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUI, &cmd_data,
+			   rbuf.raw_value);
+	if (rv < 0 || rbuf.data[0] != 0) {
+		LOG_ERR("Failed to run TFUi. rv=%d, rbuf[0]=%u", rv,
+			rbuf.data[0]);
+		return rv;
 	}
 
-	/* Read metadata buffer and stream at address given. */
-	bytes_read = read_file_offset(HEADER_BLOCK_OFFSET,
-				      (const uint8_t **)&fbuf,
-				      HEADER_BLOCK_LENGTH);
-	if (bytes_read < 0 || bytes_read != HEADER_BLOCK_LENGTH) {
-		LOG_ERR("Failed to read header stream. Wanted %d but got %d",
-			HEADER_BLOCK_LENGTH, bytes_read);
-		goto cleanup;
+	/* Reset bytes written so we can track data we're streaming next */
+	ctx.bytes_streamed = 0;
+
+	return 0;
+}
+
+static int pdc_tps6699x_fwup_send_block(uint8_t *buffer, size_t buffer_len)
+{
+	union reg_data cmd_data;
+	union reg_data rbuf;
+	int rv;
+
+	if (ctx.pdc_dev == NULL) {
+		LOG_ERR("No FWUP session in progress");
+		return -ENODEV;
 	}
 
-	LOG_INF("Streaming header to broadcast addr $%x",
-		tfui->broadcast_address);
-
-	ret = tps_stream_data(i2c, tfui->broadcast_address, fbuf,
-			      HEADER_BLOCK_LENGTH);
-	if (ret) {
-		LOG_ERR("Streaming header failed (%d)", ret);
-		goto cleanup;
+	if (buffer == NULL || buffer_len != LEN_TFUd) {
+		LOG_ERR("Given data does not match TFUd format");
+		return -EINVAL;
 	}
 
-	LOG_INF("TFUi complete and header streamed. Number of blocks: %u",
-		tfui->num_blocks);
+	memcpy(cmd_data.data, buffer, buffer_len);
+	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUD, &cmd_data,
+			   rbuf.raw_value);
+	if (rv < 0 || rbuf.data[0] != 0) {
+		LOG_ERR("Failed to run TFUd. rv=%d, rbuf[0]=%u", rv,
+			rbuf.data[0]);
+		return rv;
+	}
 
-	/* Wait 200ms after streaming header to do data block. */
-	k_sleep(TPS_TFUI_HEADER_DELAY);
+	/* Reset bytes written so we can track data we're streaming next */
+	ctx.bytes_streamed = 0;
 
-	/* Iterate through all image blocks. */
-	for (int block = 0; block < tfui->num_blocks; ++block) {
-		LOG_INF("Flashing block %d (%d/%u)", block, block + 1,
-			tfui->num_blocks);
-		ret = tfud_block(i2c, fbuf, DATA_METADATA_OFFSET_AT(block),
-				 DATA_AT(block));
-		if (ret) {
-			LOG_ERR("Error while flashing block (%d)", ret);
-			goto cleanup;
+	return 0;
+}
+
+static int pdc_tps6699x_fwup_stream(uint8_t *buffer, size_t buffer_len)
+{
+	int rv;
+
+	if (ctx.pdc_dev == NULL) {
+		LOG_ERR("No FWUP session in progress");
+		return -ENODEV;
+	}
+
+	if (buffer == NULL) {
+		LOG_ERR("Given data does not match streaming format");
+		return -EINVAL;
+	}
+
+	uint16_t broadcast_address = *(uint16_t *)buffer;
+	uint8_t *data = &buffer[2];
+	size_t data_len = buffer_len - 2;
+
+	rv = tps_stream_data(&ctx.pdc_i2c, broadcast_address, data, data_len);
+	ctx.bytes_streamed += data_len;
+
+	return ctx.bytes_streamed;
+}
+
+static int pdc_tps6699x_tfuq(void)
+{
+	union reg_data cmd_data;
+	union reg_data output;
+	struct tfu_query *tfuq = (struct tfu_query *)cmd_data.data;
+	int rv;
+
+	tfuq->bank = 0;
+	tfuq->cmd = 0;
+
+	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUQ, &cmd_data,
+			   output.data);
+	if (rv < 0) {
+		LOG_ERR("TFUq - Firmware update query failed (%d)", rv);
+		return rv;
+	}
+
+	LOG_HEXDUMP_INF(output.data, sizeof(struct tfu_query_output),
+			"TFUq raw data");
+
+	return 0;
+}
+
+static int pdc_tps6699x_fwup_abort(void)
+{
+	int rv;
+	union reg_data data;
+
+	if (ctx.pdc_dev) {
+		LOG_INF("TFU in progress - run TFUe to reset to normal firmware.");
+
+		rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUE, NULL,
+				   data.raw_value);
+		LOG_INF("TFUe rv=%d, result data byte=0x%02x", rv,
+			data.data[0]);
+
+		rv = do_reset_pdc(&ctx.pdc_i2c);
+		if (rv) {
+			LOG_ERR("PDC reset failed: %d", rv);
+			LOG_ERR("Power cycle your board (battery cutoff and "
+				"all external power)");
+
+			/* Continue even if failed */
 		}
 	}
 
-	LOG_INF("Flashing appconfig to block %d", tfui->num_blocks);
-	if (get_appconfig_offsets(tfui->num_blocks, &appconfig_metadata_offset,
-				  &appconfig_data_offset) < 0) {
-		LOG_ERR("Failed to get appconfig offsets!");
-		goto cleanup;
+	/* Re-enable the PDC stack */
+	LOG_INF("Re-enabling PDC stack");
+	rv = pdc_power_mgmt_set_comms_state(true);
+	if (rv == -EALREADY) {
+		LOG_INF("PDC stack already running");
+	} else if (rv) {
+		LOG_ERR("PDC stack is stopped and cannot restart: %d", rv);
+
+		/* Continue even if failed */
 	}
 
-	ret = tfud_block(i2c, fbuf, appconfig_metadata_offset,
-			 appconfig_data_offset);
-	if (ret) {
-		LOG_ERR("Failed to write appconfig block (%d)", ret);
-		goto cleanup;
+	/* Reset session state */
+	LOG_INF("Ending PDC FWUP session");
+	memset(&ctx, 0, sizeof(ctx));
+
+	return 0;
+}
+
+static int pdc_tps6699x_fwup_complete(void)
+{
+	union reg_data cmd_data;
+	union reg_data rbuf;
+	int rv;
+
+	if (ctx.pdc_dev == NULL) {
+		/* Need to start a FWUP session first */
+		LOG_ERR("No FWUP session in progress");
+		return -ENODEV;
 	}
 
-	/* Check the status with TFUq */
-	ret = tfuq_run(i2c, rbuf);
-	if (ret) {
-		LOG_ERR("Could not query FW update status (%d)", ret);
-		goto cleanup;
+	/* Always dump TFUq before attempting completion. Failure here should
+	 * result in an abort.
+	 */
+	if (pdc_tps6699x_tfuq() != 0) {
+		return pdc_tps6699x_fwup_abort();
 	}
-
-	LOG_HEXDUMP_INF(rbuf, sizeof(struct tps6699x_tfu_query_output),
-			"TFUq raw data");
 
 	/* Finish update with a TFU copy. */
 	struct tfu_complete tfuc;
@@ -548,35 +502,193 @@ int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
 	LOG_INF("Running TFUc [Switch: 0x%02x, Copy: 0x%02x]", tfuc.do_switch,
 		tfuc.do_copy);
 	memcpy(cmd_data.data, &tfuc, sizeof(tfuc));
-	ret = run_task_sync(i2c, COMMAND_TASK_TFUC, &cmd_data, rbuf);
+	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUC, &cmd_data,
+			   rbuf.data);
 
-	if (ret < 0 || rbuf[0] != 0) {
-		LOG_ERR("Failed 4cc task with result %d, rbuf[0] = %d", ret,
-			rbuf[0]);
-		goto cleanup;
+	if (rv < 0 || rbuf.data[0] != 0) {
+		LOG_ERR("Failed 4cc task with result %d, rbuf.data[0] = %d", rv,
+			rbuf.data[0]);
+		return rv;
 	}
 
 	LOG_INF("TFUq bytes [Success: 0x%02x, State: 0x%02x, Complete: 0x%02x]",
-		rbuf[1], rbuf[2], rbuf[3]);
+		rbuf.data[1], rbuf.data[2], rbuf.data[3]);
 
 	/* Wait 1600ms for reset to complete. */
 	k_msleep(1600);
 
-	/* Confirm we're on the new firmware now. */
-	get_and_print_device_info(i2c);
+	/* Re-enable the PDC stack */
+	LOG_INF("Re-enabling PDC stack");
+	rv = pdc_power_mgmt_set_comms_state(true);
+	if (rv) {
+		LOG_ERR("Cannot restart PDC stack: %d", rv);
+		return rv;
+	}
 
+	LOG_INF("PDC FWUP successful");
+
+	/* Reset session state */
+	memset(&ctx, 0, sizeof(ctx));
 	return 0;
-
-cleanup:
-	ret = run_task_sync(i2c, COMMAND_TASK_TFUE, NULL, rbuf);
-
-	LOG_ERR("Cleaning up resulted in ret=%d and result byte=0x%02x", ret,
-		rbuf[0]);
-
-	/* Reset and confirm we restored original firmware. */
-	do_reset_pdc(i2c);
-	get_and_print_device_info(i2c);
-
-	return -1;
 }
+
+static int cmd_pdc_tps_fwup_start(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	int rv;
+	uint8_t port;
+	const struct device *dev;
+	char *e;
+
+	/* Get PD port number */
+	port = strtoul(argv[1], &e, 0);
+	if (*e || port >= pdc_power_mgmt_get_usb_pd_port_count()) {
+		shell_error(sh, "TPS_FWUP: Invalid port");
+		return -EINVAL;
+	}
+
+	dev = pdc_power_mgmt_get_port_pdc_driver(port);
+	if (dev == NULL) {
+		shell_error(sh,
+			    "TI_FWUP: Cannot locate PDC driver for port C%u",
+			    port);
+		return -ENOENT;
+	}
+
+	rv = pdc_tps6699x_fwup_start(dev);
+	if (rv) {
+		shell_error(sh, "TPS_FWUP: Cannot start: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "TPS_FWUP: Started");
+	return 0;
+}
+
+static int cmd_pdc_tps_fwup_send_initiate(const struct shell *sh, size_t argc,
+					  char **argv)
+{
+	uint8_t decode_buffer[BASE64_LEN_TFUi];
+	size_t decoded_byte_count = 0;
+	int rv;
+
+	rv = base64_decode(decode_buffer, sizeof(decode_buffer),
+			   &decoded_byte_count, argv[1], strlen(argv[1]));
+
+	if (rv) {
+		shell_error(sh, "TPS_FWUP: Base64 format error: %d", rv);
+		return rv;
+	}
+
+	rv = pdc_tps6699x_fwup_send_initiate(decode_buffer, decoded_byte_count);
+	if (rv < 0) {
+		shell_error(sh, "TPS_FWUP: Initiate (TFUi) error: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "TPS_FWUP: Send Initiate complete");
+	return 0;
+}
+
+static int cmd_pdc_tps_fwup_send_block(const struct shell *sh, size_t argc,
+				       char **argv)
+{
+	uint8_t decode_buffer[BASE64_LEN_TFUd];
+	size_t decoded_byte_count = 0;
+	int rv;
+
+	rv = base64_decode(decode_buffer, sizeof(decode_buffer),
+			   &decoded_byte_count, argv[1], strlen(argv[1]));
+
+	if (rv) {
+		shell_error(sh, "TPS_FWUP: Base64 format error: %d", rv);
+		return rv;
+	}
+
+	rv = pdc_tps6699x_fwup_send_block(decode_buffer, decoded_byte_count);
+	if (rv < 0) {
+		shell_error(sh, "TPS_FWUP: Data block (TFUd) error: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "TPS_FWUP: Send Block complete");
+	return 0;
+}
+
+static int cmd_pdc_tps_fwup_stream(const struct shell *sh, size_t argc,
+				   char **argv)
+{
+	uint8_t decode_buffer[BASE64_LEN_STREAM];
+	size_t decoded_byte_count = 0;
+	int rv;
+
+	rv = base64_decode(decode_buffer, sizeof(decode_buffer),
+			   &decoded_byte_count, argv[1], strlen(argv[1]));
+
+	if (rv) {
+		shell_error(sh, "TPS_FWUP: Base64 format error: %d", rv);
+		return rv;
+	}
+
+	rv = pdc_tps6699x_fwup_stream(decode_buffer, decoded_byte_count);
+	if (rv < 0) {
+		shell_error(sh, "TPS_FWUP: Streaming error: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "TPS_FWUP: Stream - bytes written: %d", rv);
+	return 0;
+}
+
+static int cmd_pdc_tps_fwup_complete(const struct shell *sh, size_t argc,
+				     char **argv)
+{
+	int rv;
+
+	rv = pdc_tps6699x_fwup_complete();
+	if (rv) {
+		shell_error(sh, "TPS_FWUP: Cannot finish update: %d", rv);
+		return rv;
+	}
+
+	shell_info(sh, "TPS_FWUP: Success");
+	return 0;
+}
+
+static int cmd_pdc_tps_fwup_abort(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	return pdc_tps6699x_fwup_abort();
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(
+	sub_pdc_tps_fwup_cmds,
+	SHELL_CMD_ARG(start, NULL,
+		      "Prepare the PDC for firmware download\n"
+		      "Usage: pdc_tps_fwup start <port>",
+		      cmd_pdc_tps_fwup_start, 2, 0),
+	SHELL_CMD_ARG(send_initiate, NULL,
+		      "Send TFUi command with data to initiate update\n"
+		      "Usage: pdc_tps_fwup send_initiate <base64>",
+		      cmd_pdc_tps_fwup_send_initiate, 2, 0),
+	SHELL_CMD_ARG(send_block, NULL,
+		      "Send TFUd command with data to transfer block data\n"
+		      "Usage: pdc_tps_fwup send_block <base64>",
+		      cmd_pdc_tps_fwup_send_block, 2, 0),
+	SHELL_CMD_ARG(stream, NULL,
+		      "Stream data for TFUi or TFUd after sending the command\n"
+		      "Usage: pdc_tps_fwup stream <base64>",
+		      cmd_pdc_tps_fwup_stream, 2, 0),
+	SHELL_CMD_ARG(complete, NULL,
+		      "Finalize the FW update and restart PD subsystem\n"
+		      "Usage: pdc_tps_fwup complete",
+		      cmd_pdc_tps_fwup_complete, 1, 0),
+	SHELL_CMD_ARG(abort, NULL,
+		      "Recover from a failed or interrupted update session\n"
+		      "Usage: pdc_tps_fwup abort",
+		      cmd_pdc_tps_fwup_abort, 1, 0),
+	SHELL_SUBCMD_SET_END);
+
+SHELL_CMD_REGISTER(pdc_tps_fwup, &sub_pdc_tps_fwup_cmds,
+		   "TI PDC firmware update commands", NULL);
 /* LCOV_EXCL_STOP - non-shipping code */

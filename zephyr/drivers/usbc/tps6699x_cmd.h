@@ -440,6 +440,7 @@ int tps_rd_data_status_reg(const struct i2c_dt_spec *i2c,
  */
 int tps_rd_status_reg(const struct i2c_dt_spec *i2c, union reg_status *status);
 
+#ifdef CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER
 /**
  * @brief Perform bulk transfers to the PDC
  *
@@ -453,5 +454,6 @@ int tps_rd_status_reg(const struct i2c_dt_spec *i2c, union reg_status *status);
 int tps_stream_data(const struct i2c_dt_spec *i2c,
 		    const uint8_t broadcast_address, const uint8_t *buf,
 		    size_t buf_len);
+#endif
 
 #endif /* ZEPHYR_DRIVERS_USBC_TPS6699X_H_ */
