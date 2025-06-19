@@ -177,12 +177,16 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 #endif
 
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
+		uw = (uw < PDO_BATT_MAX_POWER(pdo)) ? uw :
+						      PDO_BATT_MAX_POWER(pdo);
 		int mw = uw / 1000;
+		max_or_min_mw = (max_or_min_mw < CONFIG_USB_PD_MAX_POWER_MW) ?
+					max_or_min_mw :
+					CONFIG_USB_PD_MAX_POWER_MW;
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
 	} else {
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
-
 	/*
 	 * Ref: USB Power Delivery Specification
 	 * (Revision 3.0, Version 2.0 / Revision 2.0, Version 1.3)
