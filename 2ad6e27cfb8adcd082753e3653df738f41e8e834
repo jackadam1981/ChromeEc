@@ -91,6 +91,23 @@
       "message": "This can be made much simpler if pujjjolo doesn\u0027t plan on having sensors on the EC. Uldrenite was a bit of an exception because it was brought up with sensors on the EC so we needed a runtime switch until we get all the current boards out of circulation. The same logic in Uldrenite will eventually be removed.",
       "revId": "2ad6e27cfb8adcd082753e3653df738f41e8e834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74afad9b_18f93b7d",
+        "filename": "zephyr/program/trulo/pujjolo/src/sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-06-19T09:13:38Z",
+      "side": 1,
+      "message": "uldrenite_sensor?",
+      "revId": "2ad6e27cfb8adcd082753e3653df738f41e8e834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
