@@ -9,6 +9,7 @@
 
 /* ocelotrvp-ite project DTS includes */
 
+#include "binman.dtsi"
 #include "generated.dtsi"
 #include "power_signals.dtsi"
 
