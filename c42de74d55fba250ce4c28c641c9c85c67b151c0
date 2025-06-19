@@ -518,6 +518,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb027cc_28c74cbb",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-19T11:21:24Z",
+      "side": 1,
+      "message": "We think this packet send to write function will not be use again, therefore maybe keep it now is OK.",
+      "parentUuid": "8a4b2794_3543ab24",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 14
+      },
+      "revId": "c42de74d55fba250ce4c28c641c9c85c67b151c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e161294e_c58ddf52",
