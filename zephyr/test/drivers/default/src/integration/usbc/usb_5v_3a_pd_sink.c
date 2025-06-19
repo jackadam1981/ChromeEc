@@ -24,6 +24,14 @@ struct usb_attach_5v_3a_pd_sink_fixture {
 	const struct emul *charger_emul;
 };
 
+struct usb_attach_5v_100ma_pd_sink_fixture {
+	struct tcpci_partner_data sink_5v_100ma;
+	struct tcpci_snk_emul_data snk_ext;
+	const struct emul *tcpci_emul;
+	const struct emul *charger_emul;
+};
+
+
 /* Chromebooks only charge PD partners at 5v */
 #define TEST_SRC_PORT_VBUS_MV 5000
 #define TEST_SRC_PORT_TARGET_MA 3000
@@ -72,10 +80,53 @@ static void usb_attach_5v_3a_pd_sink_after(void *data)
 	disconnect_sink_from_port(test_fixture->tcpci_emul);
 }
 
+static void *usb_attach_5v_100ma_pd_sink_setup(void)
+{
+	static struct usb_attach_5v_100ma_pd_sink_fixture test_fixture;
+
+	/* Get references for the emulators */
+	test_fixture.tcpci_emul = EMUL_GET_USBC_BINDING(0, tcpc);
+	test_fixture.charger_emul = EMUL_GET_USBC_BINDING(0, chg);
+
+	return &test_fixture;
+}
+
+static void usb_attach_5v_100ma_pd_sink_before(void *data)
+{
+	struct usb_attach_5v_100ma_pd_sink_fixture *test_fixture = data;
+
+	/* Set chipset to ON, this will set TCPM to DRP */
+	test_set_chipset_to_s0();
+
+	/* TODO(b/214401892): Check why need to give time TCPM to spin */
+	k_sleep(K_SECONDS(1));
+
+	/* Initialized the sink to request 5V and 3A */
+	tcpci_partner_init(&test_fixture->sink_5v_100ma, PD_REV20);
+	test_fixture->sink_5v_100ma.extensions = tcpci_snk_emul_init(
+		&test_fixture->snk_ext, &test_fixture->sink_5v_100ma, NULL);
+	test_fixture->snk_ext.pdo[0] = TEST_INITIAL_SINK_CAP;
+	test_fixture->snk_ext.pdo[1] = TEST_ADDITIONAL_SINK_CAP;
+	connect_sink_to_port(&test_fixture->sink_5v_100ma,
+			     test_fixture->tcpci_emul,
+			     test_fixture->charger_emul);
+}
+
+static void usb_attach_5v_100ma_pd_sink_after(void *data)
+{
+	struct usb_attach_5v_100ma_pd_sink_fixture *test_fixture = data;
+
+	disconnect_sink_from_port(test_fixture->tcpci_emul);
+}
+
 ZTEST_SUITE(usb_attach_5v_3a_pd_sink, drivers_predicate_post_main,
 	    usb_attach_5v_3a_pd_sink_setup, usb_attach_5v_3a_pd_sink_before,
 	    usb_attach_5v_3a_pd_sink_after, NULL);
 
+ZTEST_SUITE(usb_attach_5v_100ma_pd_sink, drivers_predicate_post_main,
+	    usb_attach_5v_100ma_pd_sink_setup, usb_attach_5v_100ma_pd_sink_before,
+		usb_attach_5v_100ma_pd_sink_after, NULL);
+		
 ZTEST_F(usb_attach_5v_3a_pd_sink, test_partner_pd_completed)
 {
 	zassert_true(fixture->snk_ext.pd_completed);
