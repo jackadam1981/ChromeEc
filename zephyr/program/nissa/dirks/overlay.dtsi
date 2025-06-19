@@ -82,29 +82,59 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory {
+<<<<<<< HEAD   (8c2887ae6377deb767fd7151c1d66f1bad2a9b57 epic: prevent 15W adapter to power on in AC only mode)
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;
+||||||| BASE   (18ed66c9945ee27902a503353b8765f06f4c44d1 yoda: Add support batteries)
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+=======
+			temp-host-high = <90>;
+			temp-host-halt = <100>;
+			temp-host-release-high = <85>;
+>>>>>>> CHANGE (caef998df7ad8c6f569f070f5b23ab07b46c17fc Dirks: Update thermal table)
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};
 		charger {
+<<<<<<< HEAD   (8c2887ae6377deb767fd7151c1d66f1bad2a9b57 epic: prevent 15W adapter to power on in AC only mode)
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;
+||||||| BASE   (18ed66c9945ee27902a503353b8765f06f4c44d1 yoda: Add support batteries)
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+=======
+>>>>>>> CHANGE (caef998df7ad8c6f569f070f5b23ab07b46c17fc Dirks: Update thermal table)
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger>;
 		};
 		ambient {
+<<<<<<< HEAD   (8c2887ae6377deb767fd7151c1d66f1bad2a9b57 epic: prevent 15W adapter to power on in AC only mode)
 			temp_fan_off = <35>;
 			temp_fan_max = <60>;
 			temp_host_high = <85>;
 			temp_host_halt = <90>;
 			temp_host_release_high = <80>;
+||||||| BASE   (18ed66c9945ee27902a503353b8765f06f4c44d1 yoda: Add support batteries)
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+=======
+>>>>>>> CHANGE (caef998df7ad8c6f569f070f5b23ab07b46c17fc Dirks: Update thermal table)
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_ambient>;
 		};
