@@ -40,6 +40,7 @@
 		/delete-node/ usb_c0_dp_hpd;
 		/delete-node/ usb_c1_dp_hpd;
 		/delete-node/ en_usb_c0_dev_mode;
+		/delete-node/ ec_kso_02_inv;
 
 		gpio_bl_pwr_pgd: bl_pwr_pgd {
 			gpios = <&gpiof 1 (GPIO_INPUT)>;
@@ -111,6 +112,7 @@
 		     &ksi7_default
 		     &kso0_default
 		     &kso1_default
+		     &kso2_default
 		     &kso3_default
 		     &kso4_default
 		     &kso5_default
