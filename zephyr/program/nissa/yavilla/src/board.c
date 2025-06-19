@@ -4,9 +4,12 @@
  */
 /* yavilla hardware configuration */
 #include "cros_cbi.h"
+#include "driver/accelgyro_bmi260.h"
+#include "driver/accelgyro_bmi323.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
+#include "motionsense_sensors.h"
 #include "nissa_common.h"
 #include "tablet_mode.h"
 #include "task.h"
@@ -21,6 +24,21 @@
 #include <ap_power/ap_power.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+enum base_sensor_type {
+	base_bmi323 = 0,
+	base_bmi260,
+};
+
+static int use_alt_base_sensor;
+
+void base_sensor_interrupt(enum gpio_signal signal)
+{
+	if (use_alt_base_sensor == base_bmi260)
+		bmi260_interrupt(signal);
+	else
+		bmi3xx_interrupt(signal);
+}
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
@@ -63,8 +81,19 @@ static void board_init(void)
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
 				      GPIO_INPUT | GPIO_PULL_DOWN);
 		LOG_INF("Clameshell: Disable motion sensors and gmr sensor!");
-	} else
-		LOG_INF("Convertible!!!");
+	} else {
+		LOG_INF("Convertible: Check sensor type");
+		/* Check base sensor type */
+		if (cros_cbi_ssfc_check_match(
+			    CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)))) {
+			use_alt_base_sensor = base_bmi260;
+			LOG_INF("Base sensor is bmi260");
+		} else {
+			use_alt_base_sensor = base_bmi323;
+			LOG_INF("Base sensor is bmi323");
+		}
+		motion_sensors_check_ssfc();
+	};
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_POST_I2C);
 
