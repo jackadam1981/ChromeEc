@@ -1666,6 +1666,8 @@ bool charge_prevent_power_on(bool power_button_pressed)
 	 */
 	int batt_temp_c =
 		DECI_KELVIN_TO_CELSIUS(current_batt_params->temperature);
+	if (batt_info == NULL)
+		batt_info = battery_get_info();
 	if (battery_too_cold_for_discharge(batt_temp_c)) {
 		prevent_power_on = 1;
 	}
