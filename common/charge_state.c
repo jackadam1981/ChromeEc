@@ -1146,9 +1146,6 @@ static void revive_battery(int *need_static)
 /* Set up the initial state of the charger task */
 static void charger_setup(const struct charger_info *info)
 {
-	/* Get the battery-specific values */
-	batt_info = battery_get_info();
-
 	prev_ac = prev_charge = prev_disp_charge = -1;
 	local_state.chg_ctl_mode = CHARGE_CONTROL_NORMAL;
 	shutdown_target_time.val = 0UL;
@@ -1605,6 +1602,12 @@ int charge_want_shutdown(void)
 	       !(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
 	       (curr.batt.state_of_charge < battery_level_shutdown);
 }
+
+static void init_battery_info(void)
+{
+	batt_info = battery_get_info();
+}
+DECLARE_HOOK(HOOK_INIT, init_battery_info, HOOK_PRIO_POST_BATTERY_INIT);
 
 #ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 test_export_static int charge_prevent_power_on_automatic_power_on = 1;
