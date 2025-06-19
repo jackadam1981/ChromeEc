@@ -557,6 +557,10 @@ int pd_get_rev(int port, enum tcpci_msg_type type)
 	return PD_REV30;
 }
 
+void pd_dpm_request(int port, enum pd_dpm_request req)
+{
+}
+
 /* LCOV_EXCL_STOP */
 
 #endif /* !CONFIG_ZEPHYR && !CONFIG_USB_PRL_SM */
