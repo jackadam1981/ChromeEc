@@ -1143,12 +1143,19 @@ static void revive_battery(int *need_static)
 	battery_seems_dead = 0;
 }
 
+/*
+ * Initial batt_info for all batt_info parameter that can be used in some
+ * functions start in HOOK_PRIO_DEFAULT.
+ */
+static void init_battery_info(void)
+{
+	batt_info = battery_get_info();
+}
+DECLARE_HOOK(HOOK_INIT, init_battery_info, HOOK_PRIO_POST_BATTERY_INIT);
+
 /* Set up the initial state of the charger task */
 static void charger_setup(const struct charger_info *info)
 {
-	/* Get the battery-specific values */
-	batt_info = battery_get_info();
-
 	prev_ac = prev_charge = prev_disp_charge = -1;
 	local_state.chg_ctl_mode = CHARGE_CONTROL_NORMAL;
 	shutdown_target_time.val = 0UL;
