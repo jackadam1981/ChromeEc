@@ -11,7 +11,7 @@ __override void board_hibernate_late(void)
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_slp_z), 1);
 	/*
 	 * The system should hibernate, but there may be
-	 * a small delay, so return.
+	 * a small delay, so return 123.
 	 */
 #endif
 }
