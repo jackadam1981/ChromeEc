@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5107f43_5842857f",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T16:35:04Z",
+      "side": 1,
+      "message": "This needs a test. The [charge_manager_seeding.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/charger/charge/src/charge_manager_seeding.c) is probably a good spot for this.",
+      "range": {
+        "startLine": 3264,
+        "startChar": 0,
+        "endLine": 3264,
+        "endChar": 56
+      },
+      "revId": "87e39a3eb5e640d5f6a61de4e0d7dfd179ddfec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
