@@ -48,13 +48,6 @@ struct asn1 {
 	}                                                                      \
 	while (0)
 
-/* The SHA256 OID, from https://tools.ietf.org/html/rfc5754#section-3.2
- * Only the object bytes below, the DER encoding header ([0x30 0x0d])
- * is verified by the parser. */
-static const uint8_t OID_SHA256_WITH_RSA_ENCRYPTION[13] = {
-	0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d,
-	0x01, 0x01, 0x0b, 0x05, 0x00
-};
 static const uint8_t OID_commonName[3] = {0x55, 0x04, 0x03};
 static const uint8_t OID_ecdsa_with_SHA256[8] = {0x2A, 0x86, 0x48, 0xCE,
 						 0x3D, 0x04, 0x03, 0x02};
@@ -222,7 +215,16 @@ size_t DCRYPTO_asn1_pubp(uint8_t *buf, const p256_int *x, const p256_int *y)
 }
 
 /* ---- ASN.1 Parsing ---- */
+#if defined(CONFIG_CHECK_EK_CERT) || defined(CRYPTO_TEST_SETUP)
 
+/* The SHA256 OID, from https://tools.ietf.org/html/rfc5754#section-3.2
+ * Only the object bytes below, the DER encoding header ([0x30 0x0d])
+ * is verified by the parser.
+ */
+static const uint8_t OID_SHA256_WITH_RSA_ENCRYPTION[13] = {
+	0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d,
+	0x01, 0x01, 0x0b, 0x05, 0x00
+};
 /*
  * An ASN.1 DER (Definite Encoding Rules) parser.
  * Details about the format are available here:
@@ -337,6 +339,7 @@ static size_t asn1_parse_signature_value(const uint8_t **p, size_t *available,
 	return 1;
 }
 
+
 /* This method verifies that the provided X509 certificate was issued
  * by the specified certifcate authority.
  *
@@ -403,6 +406,7 @@ enum dcrypto_result DCRYPTO_x509_verify(const uint8_t *cert, size_t len,
 	return DCRYPTO_rsa_verify(ca_pub_key, digest.b8, sizeof(digest),
 				sig, sig_len, PADDING_MODE_PKCS1, HASH_SHA256);
 }
+#endif
 
 /* ---- Certificate generation ---- */
 

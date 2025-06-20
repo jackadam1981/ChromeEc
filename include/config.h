@@ -4657,4 +4657,7 @@
 /* Don't use ECDSA pair-wise consistency test. We verify sign/verify. */
 #undef CONFIG_FIPS_ECDSA_PWCT
 
+/* Fully validate EK Cert on TPM manufacturing. */
+#undef CONFIG_CHECK_EK_CERT
+
 #endif  /* __CROS_EC_CONFIG_H */

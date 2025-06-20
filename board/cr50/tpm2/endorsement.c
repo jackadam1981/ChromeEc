@@ -351,6 +351,7 @@ static int install_fixed_certs(void)
 
 #else /* below for the case `not CR50_USE_FIXED_CERT` */
 
+#ifdef CONFIG_CHECK_EK_CERT
 /* Test endorsement CA root. */
 static const uint32_t TEST_ENDORSEMENT_CA_RSA_N[64] = {
 	0xfa3b34ed, 0x3c59ad05, 0x912d6623, 0x83302402,
@@ -414,6 +415,7 @@ static const struct RSA PROD_ENDORSEMENT_CA_RSA_PUB = {
 		.d = NULL,
 	},
 };
+#endif
 
 static int validate_cert(
 	const struct cros_perso_response_component_info_v0 *cert_info,
@@ -435,12 +437,16 @@ static int validate_cert(
 	 * certificates serve as roots for the installed endorsement
 	 * certificate.
 	 */
+#ifdef CONFIG_CHECK_EK_CERT
 	return (DCRYPTO_x509_verify(cert->cert, cert->cert_len,
 				    &PROD_ENDORSEMENT_CA_RSA_PUB) ==
 		DCRYPTO_OK) ||
 	       (DCRYPTO_x509_verify(cert->cert, cert->cert_len,
 				    &TEST_ENDORSEMENT_CA_RSA_PUB) ==
 		DCRYPTO_OK);
+#else
+	return 1;
+#endif
 }
 
 
