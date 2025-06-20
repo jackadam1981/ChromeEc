@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d64a592_f226b706",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T17:14:59Z",
+      "side": 1,
+      "message": "This assumes that a design hasn\u0027t mixed PDC vendors.\nBetter to use `DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)` to get the count of TI PDC driver instances.",
+      "range": {
+        "startLine": 639,
+        "startChar": 29,
+        "endLine": 639,
+        "endChar": 56
+      },
+      "revId": "d8c34d2cc0cb02cb28d1918cbe516d51762dbcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
