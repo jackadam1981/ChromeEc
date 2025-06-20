@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1762db57_18eb88cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "c",
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0dc483a_de750532",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Nit - no need to create a typedef. It\u0027s clearer to use `enum command_type`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b98f749_6041f2bf",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Nit - use snake case. Only use lower case and underscores for identifiers.",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 32
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed916bdf_b0cea80a",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "snake case",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbdc8e3a_939a5740",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "You should explicitly enable the flags you need.  But I\u0027m not sure want any of these flags.\n\nSee the \"Raw mode\" section on the [termios documentation](https://www.man7.org/linux/man-pages/man3/termios.3.html).",
+      "range": {
+        "startLine": 138,
+        "startChar": 30,
+        "endLine": 138,
+        "endChar": 47
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fd469d_ceeac9a4",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Use snake case",
+      "range": {
+        "startLine": 280,
+        "startChar": 10,
+        "endLine": 280,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2033eca4_35024112",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "snake case",
+      "range": {
+        "startLine": 323,
+        "startChar": 10,
+        "endLine": 323,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849eaf75_7eab765b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "snake case",
+      "range": {
+        "startLine": 363,
+        "startChar": 10,
+        "endLine": 363,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b403990d_de3815f9",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Just use \u0027\\n`.",
+      "range": {
+        "startLine": 400,
+        "startChar": 6,
+        "endLine": 400,
+        "endChar": 11
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0dd8f83_7d226909",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Use \u0027\\n\u0027",
+      "range": {
+        "startLine": 468,
+        "startChar": 5,
+        "endLine": 468,
+        "endChar": 9
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb67fe8_ebca9e2d",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "\u0027\\n\u0027",
+      "range": {
+        "startLine": 524,
+        "startChar": 5,
+        "endLine": 524,
+        "endChar": 9
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218d0892_f3e99fa3",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Use \u0027\\n\u0027",
+      "range": {
+        "startLine": 812,
+        "startChar": 4,
+        "endLine": 812,
+        "endChar": 9
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2892523_668e1d10",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-20T15:56:03Z",
+      "side": 1,
+      "message": "Create macro that defines the meaning of 0x06 and 0x05.",
+      "range": {
+        "startLine": 815,
+        "startChar": 30,
+        "endLine": 815,
+        "endChar": 34
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
