@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b992584_385c5fe9",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-06-20T06:59:15Z",
+      "side": 1,
+      "message": "I still think your new hook should be moved up here, since it\u0027s not an exported function and it relates to what happens here.",
+      "revId": "c24bac896412e878c78b47b4ae4c11be61c27bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
