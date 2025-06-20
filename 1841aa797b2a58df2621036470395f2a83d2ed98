@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "484904ac_11145463",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-06-20T23:12:47Z",
+      "side": 1,
+      "message": "it saves 1048 bytes. If cert is invalid it won\u0027t be accepted by PCA, and likely will be caught on length check.\n\nCan Cr50 validate its state with other means? E.g. looking at keymgr state? \nThis is the reason I don\u0027t want to land this CL. It is more an experiment.",
+      "parentUuid": "a7d6f514_452ff9d6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "1841aa797b2a58df2621036470395f2a83d2ed98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2da6ae4_cf5ff2a2",
