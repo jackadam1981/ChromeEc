@@ -659,7 +659,7 @@ print-configs:
 clean:
 	-rm -rf $(out)
 	-rm -f /dev/shm/EC_persist*
-	bazel clean
+	-bazel clean
 
 .PHONY: clobber
 clobber:
