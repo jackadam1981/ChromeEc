@@ -61,6 +61,11 @@
 		reg = <0x38>;
 		label = "MAX695X_SEVEN_SEG_DISPLAY";
 	};
+	/* This is the IOEX IC present on GCS AIC */
+	it8801_mfd: it8801@39 {
+		compatible = "ite,it8801-mfd";
+		reg = <0x39>;
+	};
 };
 
 &i2c_port_ish {

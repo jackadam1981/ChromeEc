@@ -49,6 +49,12 @@ tach_fan0: &tach0 {};
 #include "../rvp_keyboard.dtsi"
 #include "../rvp_fans.dtsi"
 #include "../rvp_temp_sensors.dtsi"
+#include "../rvp_ioex_gpio.dtsi"
+#include <ite/it8801-common-cfg.dtsi>
+
+&it8801_mfd {
+        irq-gpios = <&gpioi 6 GPIO_ACTIVE_LOW>;
+};
 
 /* ocelotrvp-ite overrides follow... */
 / {
