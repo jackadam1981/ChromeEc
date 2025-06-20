@@ -51,6 +51,24 @@
       "parentUuid": "985651bb_b4bbea9e",
       "revId": "25cdf1ec7a166df17662aa82016ff40ca42523a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f62b7a_51417f49",
+        "filename": "zephyr/test/hwtest/src/rtc_npcx9.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-06-20T16:35:45Z",
+      "side": 1,
+      "message": "Ok, thanks, please add a comment to explain the difference in the expected test results between the two RTOS\u0027",
+      "parentUuid": "965dfb2c_7924f875",
+      "revId": "25cdf1ec7a166df17662aa82016ff40ca42523a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
