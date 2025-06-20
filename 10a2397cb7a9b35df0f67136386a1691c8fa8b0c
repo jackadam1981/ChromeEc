@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e460c80_3ce54689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-20T17:24:04Z",
+      "side": 1,
+      "message": "You\u0027ll need to add a unit test to cover this condition. I think it should be relatively simple. You\u0027ll just do the normal partner emulator connection routine with 5V/.1A Sink Caps, then change the partner Sink Caps, then send a Request with Mismatch, then wait a second, then check the active Source Caps as seen by the partner.",
+      "revId": "10a2397cb7a9b35df0f67136386a1691c8fa8b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d86dd78_88fe67ac",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-20T17:24:04Z",
+      "side": 1,
+      "message": "See the auto-generated comment below about whitespace. The whitespace on line 209 also looks atypical. You should be able to fix all of these with `cros format`.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 1
+      },
+      "revId": "10a2397cb7a9b35df0f67136386a1691c8fa8b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
