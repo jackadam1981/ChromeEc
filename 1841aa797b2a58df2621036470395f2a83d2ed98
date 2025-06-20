@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d6f514_452ff9d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-20T23:09:59Z",
+      "side": 1,
+      "message": "and? How does this explain what this patch is about?\n\nIs the reason for this patch to save flash space? How much does it save?\n\nWhat happens if the cert does get corrupted in the INFO page for any reason? Also, isn\u0027t the ability to validate the cert the indication of running in PROD for Cr50",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "1841aa797b2a58df2621036470395f2a83d2ed98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2da6ae4_cf5ff2a2",
@@ -14,6 +37,23 @@
       "writtenOn": "2025-06-20T22:37:29Z",
       "side": 1,
       "message": "This fix saves 6664-5616\u003d1048 bytes, but may have unintended consequences and alters FIPS code. Lets not land it for now.",
+      "revId": "1841aa797b2a58df2621036470395f2a83d2ed98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d192796f_e7c0dd2a",
+        "filename": "board/cr50/dcrypto/x509.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-20T23:09:59Z",
+      "side": 1,
+      "message": "extra whitespace",
       "revId": "1841aa797b2a58df2621036470395f2a83d2ed98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
