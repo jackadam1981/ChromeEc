@@ -22,7 +22,7 @@
 
 LOG_MODULE_REGISTER(cros_fingerprint, LOG_LEVEL_INF);
 
-static enum elan_capture_type
+enum elan_capture_type
 convert_fp_capture_type_to_elan_capture_type(enum fingerprint_capture_type mode)
 {
 	switch (mode) {
