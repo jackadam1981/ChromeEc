@@ -52,6 +52,24 @@
       "parentUuid": "3411cf51_8e7ea0a0",
       "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c0cc48_7ff27591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-20T07:23:31Z",
+      "side": 1,
+      "message": "Because for proto board we might not connect battery always.\nAnd we need adapter can provide over than 5V3A.\nWe will use this as workaround for support no battery system.",
+      "parentUuid": "3411cf51_8e7ea0a0",
+      "revId": "e289ff11ebc6eb27e5919e7c0a162ecc389149f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
