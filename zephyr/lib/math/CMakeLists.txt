@@ -20,6 +20,17 @@ pw_add_library(math.iir_filter STATIC
     public
 )
 
+pw_add_library(math.iir_decimator STATIC
+  SOURCES
+    iir_decimator.c
+  HEADERS
+    public/cros/math/iir_decimator.h
+  PUBLIC_INCLUDES
+    public
+  PRIVATE_DEPS
+    math.iir_filter
+)
+
 pw_add_test(math.smoothing_test
   SOURCES
     exp_smoothing_test.cc
@@ -34,6 +45,15 @@ pw_add_test(math.iir_filter_test
     iir_filter_test.cc
   PRIVATE_DEPS
     math.iir_filter
+    pw_unit_test.light
+    pw_unit_test.logging_event_handler
+)
+
+pw_add_test(math.iir_decimator_test
+  SOURCES
+    iir_decimator_test.cc
+  PRIVATE_DEPS
+    math.iir_decimator
     pw_unit_test.light
     pw_unit_test.logging_event_handler
 )
