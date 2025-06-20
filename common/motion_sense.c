@@ -1067,16 +1067,6 @@ static struct motion_sensor_t *host_sensor_id_to_real_sensor(int host_id)
 	return NULL;
 }
 
-static struct motion_sensor_t *host_sensor_id_to_motion_sensor(int host_id)
-{
-	/* Return the info for the first sensor that support some gestures. */
-	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
-	    (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID))
-		return host_sensor_id_to_real_sensor(
-			__builtin_ctz(CONFIG_GESTURE_DETECTION_MASK));
-	return host_sensor_id_to_real_sensor(host_id);
-}
-
 static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
@@ -1089,6 +1079,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	void *out_scale;
 	void *out_offset;
 	int16_t out_temp;
+	size_t host_id;
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
@@ -1124,6 +1115,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_DATA:
+		/*
+		 * The sensor has to exist, be active and in working order for
+		 * the CMD_DATA (that read the sensors) to return success.
+		 */
 		sensor = host_sensor_id_to_real_sensor(
 			in->sensor_odr.sensor_num);
 		if (sensor == NULL)
@@ -1139,10 +1134,39 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_INFO:
-		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
-		if (sensor == NULL)
+		host_id = in->sensor_odr.sensor_num;
+		/* Return the info for the first sensor that support some
+		 * gestures. */
+		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
+		    (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID))
+			host_id = __builtin_ctz(CONFIG_GESTURE_DETECTION_MASK);
+		if (host_id >= motion_sensor_count)
 			return EC_RES_INVALID_PARAM;
+		sensor = &motion_sensors[host_id];
+		if (!SENSOR_ACTIVE(sensor)) {
+			/* Sensor is not used in this power state. */
+			return EC_RES_INVALID_PARAM;
+		}
+		switch (sensor->state) {
+		case SENSOR_READY:
+			/* Sensor is ready for operation. */
+			break;
+		case SENSOR_INIT_ERROR:
+			/* Sensor could not be initialized, can not be used. */
+			return EC_RES_INVALID_PARAM;
+		case SENSOR_NOT_INITIALIZED:
+			/*
+			 * Sensor has not been initialized yet, we are still
+			 * bring it up. Since the sensor is active in this power
+			 * state, this is a transient condition.
+			 */
+		case SENSOR_INITIALIZED:
+			/*
+			 * Sensor is not usable yet, need to try again.
+			 * A transient condition as well.
+			 */
+			return EC_RES_BUSY;
+		}
 
 		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
 		    MOTION_SENSE_ACTIVITY_SENSOR_ID >= 0 &&
