@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3488482_aa419859",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-20T04:38:02Z",
+      "side": 1,
+      "message": "This runs later than HOOK_PRIO_DEFAULT.\nMaybe I should remove it if it already initialized in hook before.",
+      "parentUuid": "d521592c_e83fd301",
+      "revId": "cd1a22b993a3ad8ddb35b43dd0afa87349926112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0db35e7_87b4eb4b",
         "filename": "common/charge_state.c",
         "patchSetId": 2
