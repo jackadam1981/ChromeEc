@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "702bb2d7_ed2c4dd2",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-06-20T04:40:42Z",
+      "side": 1,
+      "message": "Your new hook is running before this would, yes. That\u0027s why I think it should be removed.",
+      "parentUuid": "e3488482_aa419859",
+      "revId": "cd1a22b993a3ad8ddb35b43dd0afa87349926112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0db35e7_87b4eb4b",
         "filename": "common/charge_state.c",
         "patchSetId": 2
