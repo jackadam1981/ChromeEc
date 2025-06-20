@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9965af41_47374045",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-20T17:28:21Z",
+      "side": 1,
+      "message": "should this be `bazel clean || true`\n\nwhy could `basel clean` return an error anyways?",
+      "revId": "eb818a0e8389a1581d4d390c28e46097c229815e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
