@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "c57f43d43b0f98c7f1761b59dd6a70c69fa1ee28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52661787_21c292f3",
+        "filename": "zephyr/test/hwtest/src/timer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-06-20T16:33:13Z",
+      "side": 1,
+      "message": "please quickly remove my grammatical error, either \"from\" or \"with\", probably \"from\", but not both",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "c57f43d43b0f98c7f1761b59dd6a70c69fa1ee28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
