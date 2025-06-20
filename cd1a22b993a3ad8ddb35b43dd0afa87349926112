@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be2a8221_d16690c7",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-20T06:58:05Z",
+      "side": 1,
+      "message": "Yes, init_battery_info will be earlier than charger_setup.",
+      "parentUuid": "702bb2d7_ed2c4dd2",
+      "revId": "cd1a22b993a3ad8ddb35b43dd0afa87349926112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0db35e7_87b4eb4b",
         "filename": "common/charge_state.c",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "writtenOn": "2025-06-20T03:53:50Z",
       "side": 1,
       "message": "Not a public function, so make it `static`.",
+      "revId": "cd1a22b993a3ad8ddb35b43dd0afa87349926112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c722b716_17fd50e0",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-20T06:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0db35e7_87b4eb4b",
       "revId": "cd1a22b993a3ad8ddb35b43dd0afa87349926112",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
