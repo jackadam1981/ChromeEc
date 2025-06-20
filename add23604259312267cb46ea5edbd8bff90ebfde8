@@ -52,6 +52,24 @@
       "parentUuid": "9f14aee5_3f1c4d8a",
       "revId": "add23604259312267cb46ea5edbd8bff90ebfde8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27cb84e4_fc6c470b",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-20T03:39:32Z",
+      "side": 1,
+      "message": "Patch 3 use hook init to init batt_info first in case there\u0027s some other function need to check batt_info in the futrue.",
+      "parentUuid": "df5ab605_4a5c6218",
+      "revId": "add23604259312267cb46ea5edbd8bff90ebfde8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
