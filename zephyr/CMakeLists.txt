@@ -261,8 +261,11 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_FIFO
                                                 "${PLATFORM_EC}/common/motion_sense_fifo.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STB_DUMP
                                                 "${PLATFORM_EC}/driver/amd_stb.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BODY_DETECTION
-                                                "${PLATFORM_EC}/common/body_detection.c")
+if(CONFIG_PLATFORM_EC_BODY_DETECTION_V2)
+  zephyr_library_link_libraries(vsensor.body_detection)
+elseif(CONFIG_PLATFORM_EC_BODY_DETECTION)
+  zephyr_library_sources("${PLATFORM_EC}/common/body_detection.c")
+endif()
 zephyr_library_sources_ifdef(CONFIG_NAMED_ADC_CHANNELS
                                                 "${PLATFORM_EC}/common/adc.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ALS_TCS3400
