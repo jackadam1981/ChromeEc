@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2da6ae4_cf5ff2a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-06-20T22:37:29Z",
+      "side": 1,
+      "message": "This fix saves 6664-5616\u003d1048 bytes, but may have unintended consequences and alters FIPS code. Lets not land it for now.",
+      "revId": "1841aa797b2a58df2621036470395f2a83d2ed98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
