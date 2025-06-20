@@ -15,3 +15,9 @@ tests:
       - TEST_LIB=math.iir_filter_test
     platform_allow:
       - native_sim
+  cros.math.iir_decimator:
+    harness: gtest
+    extra_args:
+      - TEST_LIB=math.iir_decimator_test
+    platform_allow:
+      - native_sim
