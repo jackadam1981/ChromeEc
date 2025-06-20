@@ -16,6 +16,24 @@
       "message": "Is Brox affected by this issue?",
       "revId": "c815239df495d11da662d5a9dfde6bf524d2819b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a03a40_73d4cb62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-20T20:53:32Z",
+      "side": 1,
+      "message": "Yes, because the original change (1c316fc5d23) has been merged in the brox tree.",
+      "parentUuid": "64540919_f72eae36",
+      "revId": "c815239df495d11da662d5a9dfde6bf524d2819b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
