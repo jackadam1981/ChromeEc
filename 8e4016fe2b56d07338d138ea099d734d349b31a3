@@ -16,6 +16,24 @@
       "message": "Build failure is on `pdc.generic.tps6699x`. Looks like our TI emulator doesn\u0027t follow the error status set through the backend API, so all of the PDC commands pass and `pdc_power_mgmt` quickly passes through the init state successfully, so the test isn\u0027t able to check the suspend behavior in `PDC_INIT`. I might need to put this into the set of tests excluded for TI and write a bug to add the error status support, or make the change as part of this stack.",
       "revId": "8e4016fe2b56d07338d138ea099d734d349b31a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e276c39_dad4e137",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-20T18:27:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca6ed75_a1a42bce",
+      "revId": "8e4016fe2b56d07338d138ea099d734d349b31a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
