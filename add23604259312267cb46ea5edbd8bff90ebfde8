@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f73f11_96775455",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-06-20T00:53:30Z",
+      "side": 1,
+      "message": "This should happen inside the functions that read `batt_info`, not here.",
+      "revId": "add23604259312267cb46ea5edbd8bff90ebfde8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
