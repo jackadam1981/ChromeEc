@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b46f2b7a_c133defd",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-06-20T11:38:46Z",
+      "side": 1,
+      "message": "No, we are just not using that value. If necessary we can use it but I don\u0027t see any such requirement.",
+      "parentUuid": "0f74b4e2_38210e0b",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "daf0cc86cb6e74855adc4a2d3dc89b287bca24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79e2565a_ed9fdd66",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 2
