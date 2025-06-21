@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4e2c586_8452a928",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T01:15:39Z",
+      "side": 1,
+      "message": "Choose either approach. When deferring the `_AT_BOOT` flag on the next boot, remove this option. Or you have a way to know if it succeed? So only set the BBRAM flag on error.",
+      "range": {
+        "startLine": 447,
+        "startChar": 9,
+        "endLine": 447,
+        "endChar": 46
+      },
+      "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce789aa5_6bdac010",
         "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
         "patchSetId": 4
@@ -42,6 +65,29 @@
         "startChar": 0,
         "endLine": 530,
         "endChar": 0
+      },
+      "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253c058f_974894f5",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T01:15:39Z",
+      "side": 1,
+      "message": "`ALL_AT_BOOT` is a superset of `RO_AT_BOOT`, so you can prioritize it.",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 530,
+        "endChar": 48
       },
       "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
