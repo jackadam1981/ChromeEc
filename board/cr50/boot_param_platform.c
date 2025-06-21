@@ -77,6 +77,108 @@ bool __platform_hkdf_sha256(
 	return res != 0;
 }
 
+/* Implementation of HKDF-SHA512 algorithm. */
+static int hkdf_sha512_extract(
+	uint8_t *prk,
+	const uint8_t *salt, size_t salt_len,
+	const uint8_t *ikm, size_t ikm_len
+)
+{
+	struct hmac_sha512_ctx ctx;
+
+	if (prk == NULL)
+		return 0;
+	if (salt == NULL && salt_len > 0)
+		return 0;
+	if (ikm == NULL && ikm_len > 0)
+		return 0;
+
+	HMAC_SHA512_sw_init(&ctx, salt, salt_len);
+	HMAC_SHA512_update(&ctx, ikm, ikm_len);
+	memcpy(prk, HMAC_SHA512_final(&ctx), SHA512_DIGEST_SIZE);
+	return 1;
+}
+
+static int hkdf_sha512_expand(
+	uint8_t *okm, size_t okm_len,
+	const uint8_t *prk,
+	const uint8_t *info, size_t info_len
+)
+{
+	uint8_t count = 1;
+	const uint8_t *t = okm;
+	size_t t_len = 0;
+	uint32_t num_blocks = (okm_len / SHA512_DIGEST_SIZE) +
+		(okm_len % SHA512_DIGEST_SIZE ? 1 : 0);
+
+	if (okm == NULL || okm_len == 0)
+		return 0;
+	if (prk == NULL)
+		return 0;
+	if (info == NULL && info_len > 0)
+		return 0;
+	if (num_blocks > 255)
+		return 0;
+
+	while (okm_len > 0) {
+		struct hmac_sha512_ctx ctx;
+		const size_t block_size = okm_len < SHA512_DIGEST_SIZE ?
+			okm_len : SHA512_DIGEST_SIZE;
+
+		HMAC_SHA512_sw_init(&ctx, prk, SHA512_DIGEST_SIZE);
+		HMAC_SHA512_update(&ctx, t, t_len);
+		HMAC_SHA512_update(&ctx, info, info_len);
+		HMAC_SHA512_update(&ctx, &count, sizeof(count));
+		memcpy(okm, HMAC_SHA512_final(&ctx), block_size);
+
+		t += t_len;
+		t_len = SHA512_DIGEST_SIZE;
+		count += 1;
+		okm += block_size;
+		okm_len -= block_size;
+	}
+	return 1;
+}
+
+static int DCRYPTO_hkdf_sha512(
+	uint8_t *okm, size_t okm_len,
+	const uint8_t *salt, size_t salt_len,
+	const uint8_t *ikm, size_t ikm_len,
+	const uint8_t *info, size_t info_len
+)
+{
+	int result;
+	uint8_t prk[SHA512_DIGEST_SIZE];
+
+	if (!hkdf_sha512_extract(prk, salt, salt_len, ikm, ikm_len))
+		return 0;
+
+	result = hkdf_sha512_expand(okm, okm_len, prk, info, info_len);
+	always_memset(prk, 0, sizeof(prk));
+	return result;
+}
+
+/* Perform HKDF-SHA512(ikm, salt, info) */
+bool __platform_hkdf_sha512(
+	/* [IN] input key material */
+	const struct slice_ref_s ikm,
+	/* [IN] salt */
+	const struct slice_ref_s salt,
+	/* [IN] info */
+	const struct slice_ref_s info,
+	/* [IN/OUT] .size sets length for hkdf,
+	 * .data is where the digest will be placed
+	 */
+	const struct slice_mut_s result
+)
+{
+	int res = DCRYPTO_hkdf_sha512(result.data, result.size,
+		salt.data, salt.size,
+		ikm.data, ikm.size,
+		info.data, info.size);
+	return res != 0;
+}
+
 /* Calculate SHA256 for the provided buffer */
 bool __platform_sha256(
 	/* [IN] data to hash */
@@ -341,7 +443,6 @@ static inline void adjust_drbg_bytes(
 	}
 }
 
-
 /* Generate ECDSA P-256 key using HMAC-DRBG initialized by the seed */
 bool __platform_ecdsa_p256_keygen_hmac_drbg(
 	/* [IN] key seed */
@@ -380,6 +481,92 @@ bool __platform_ecdsa_p256_keygen_hmac_drbg(
 	} while (result == DCRYPTO_RETRY &&
 		 attempt < MAX_ECDSA_KEYGEN_ATTEMPTS);
 	drbg_exit(&drbg);
+	if (result != DCRYPTO_OK) {
+		verbose_log("DCRYPTO_p256_key_from_bytes failed");
+		invalidate_g_key_seed();
+		return false;
+	}
+
+	g_key_seed_valid = 1;
+	*key = g_key_seed;
+	return true;
+}
+
+/* Implementation of DRBG used by open-dice called by pvmfw.
+ * This DRBG is used for CDI key/ID generation to ensure that
+ * GSC and pvmfw independently calculate the same values.
+ */
+#define KV_SIZE 64
+
+static void update_k(
+	uint8_t k[KV_SIZE],
+	const uint8_t v[KV_SIZE],
+	uint8_t in2,
+	const uint8_t *in3,
+	unsigned int in3_len)
+{
+	struct hmac_sha512_ctx ctx;
+
+	HMAC_SHA512_sw_init(&ctx, k, KV_SIZE);
+	HMAC_SHA512_update(&ctx, v, KV_SIZE);
+	HMAC_SHA512_update(&ctx, &in2, 1);
+	/* HMAC_SHA512_update() internally checks for
+	 * (in3 == NULL || in3_len == 0), no needto check here.
+	 */
+	HMAC_SHA512_update(&ctx, in3, in3_len);
+	memcpy(k, HMAC_SHA512_final(&ctx), KV_SIZE);
+}
+
+static void update_v(const uint8_t k[KV_SIZE], uint8_t v[KV_SIZE])
+{
+
+	struct hmac_sha512_ctx ctx;
+
+	HMAC_SHA512_sw_init(&ctx, k, KV_SIZE);
+	HMAC_SHA512_update(&ctx, v, KV_SIZE);
+	memcpy(v, HMAC_SHA512_final(&ctx), KV_SIZE);
+}
+
+/* Generate ECDSA P-256 key using HMAC-SHA512-DRBG used by open-dice.
+ * This HKDF is used for CDI key/ID generation to ensure that
+ * GSC and pvmfw independently calculate the same values.
+ */
+bool __platform_ecdsa_p256_keygen_hmac_sha512_opendice_drbg(
+	/* [IN] key seed */
+	const uint8_t seed[DIGEST_BYTES],
+	/* [OUT] ECDSA key handle */
+	const void **key
+)
+{
+	uint8_t v[KV_SIZE];
+	uint8_t k[KV_SIZE];
+	p256_int d;
+	enum dcrypto_result result = DCRYPTO_FAIL;
+	size_t attempt = 0;
+
+	memset(v, 1, KV_SIZE);
+	memset(k, 0, KV_SIZE);
+
+	update_k(k, v, 0x00, seed, DIGEST_BYTES);
+	update_v(k, v);
+	update_k(k, v, 0x01, seed, DIGEST_BYTES);
+
+	*key = NULL;
+	g_key_seed_valid = 0;
+	do {
+		update_v(k, v);
+		update_v(k, v);
+		memcpy(g_key_seed, v, P256_NBYTES);
+		update_k(k, v, 0x00, NULL, 0);
+
+		/* See the description of adjust_drbg_bytes() above */
+		adjust_drbg_bytes(g_key_seed);
+		result = DCRYPTO_p256_key_from_bytes(NULL, NULL,
+						     &d, g_key_seed);
+		attempt++;
+	} while (result == DCRYPTO_RETRY &&
+		 attempt < MAX_ECDSA_KEYGEN_ATTEMPTS);
+
 	if (result != DCRYPTO_OK) {
 		verbose_log("DCRYPTO_p256_key_from_bytes failed");
 		invalidate_g_key_seed();
