@@ -56,6 +56,80 @@ static inline void invalidate_g_key_seed(void)
 	g_key_seed_valid = 0;
 }
 
+// #include "dcrypto.h"
+
+static int hkdf_sha512_extract(uint8_t *PRK, const uint8_t *salt, size_t salt_len,
+			const uint8_t *IKM, size_t IKM_len)
+{
+	struct hmac_sha512_ctx ctx;
+
+	if (PRK == NULL)
+		return 0;
+	if (salt == NULL && salt_len > 0)
+		return 0;
+	if (IKM == NULL && IKM_len > 0)
+		return 0;
+
+	HMAC_SHA512_sw_init(&ctx, salt, salt_len);
+	HMAC_SHA512_update(&ctx, IKM, IKM_len);
+	memcpy(PRK, HMAC_SHA512_final(&ctx), SHA512_DIGEST_SIZE);
+	return 1;
+}
+
+static int hkdf_sha512_expand(uint8_t *OKM, size_t OKM_len, const uint8_t *PRK,
+		const uint8_t *info, size_t info_len)
+{
+	uint8_t count = 1;
+	const uint8_t *T = OKM;
+	size_t T_len = 0;
+	uint32_t num_blocks = (OKM_len / SHA512_DIGEST_SIZE) +
+		(OKM_len % SHA512_DIGEST_SIZE ? 1 : 0);
+
+	if (OKM == NULL || OKM_len == 0)
+		return 0;
+	if (PRK == NULL)
+		return 0;
+	if (info == NULL && info_len > 0)
+		return 0;
+	if (num_blocks > 255)
+		return 0;
+
+	while (OKM_len > 0) {
+		struct hmac_sha512_ctx ctx;
+		const size_t block_size = OKM_len < SHA512_DIGEST_SIZE ?
+			OKM_len : SHA512_DIGEST_SIZE;
+
+		HMAC_SHA512_sw_init(&ctx, PRK, SHA512_DIGEST_SIZE);
+		HMAC_SHA512_update(&ctx, T, T_len);
+		HMAC_SHA512_update(&ctx, info, info_len);
+		HMAC_SHA512_update(&ctx, &count, sizeof(count));
+		memcpy(OKM, HMAC_SHA512_final(&ctx), block_size);
+
+		T += T_len;
+		T_len = SHA512_DIGEST_SIZE;
+		count += 1;
+		OKM += block_size;
+		OKM_len -= block_size;
+	}
+	return 1;
+}
+
+int DCRYPTO_hkdf_sha512(uint8_t *OKM, size_t OKM_len,
+		const uint8_t *salt, size_t salt_len,
+		const uint8_t *IKM, size_t IKM_len,
+		const uint8_t *info, size_t info_len)
+{
+	int result;
+	uint8_t PRK[SHA512_DIGEST_SIZE];
+
+	if (!hkdf_sha512_extract(PRK, salt, salt_len, IKM, IKM_len))
+		return 0;
+
+	result = hkdf_sha512_expand(OKM, OKM_len, PRK, info, info_len);
+	always_memset(PRK, 0, sizeof(PRK));
+	return result;
+}
+
 /* Perform HKDF-SHA256(ikm, salt, info) */
 bool __platform_hkdf_sha256(
 	/* [IN] input key material */
@@ -71,6 +145,27 @@ bool __platform_hkdf_sha256(
 )
 {
 	int res = DCRYPTO_hkdf(result.data, result.size,
+		salt.data, salt.size,
+		ikm.data, ikm.size,
+		info.data, info.size);
+	return res != 0;
+}
+
+/* Perform HKDF-SHA512(ikm, salt, info) */
+bool __platform_hkdf_sha512(
+	/* [IN] input key material */
+	const struct slice_ref_s ikm,
+	/* [IN] salt */
+	const struct slice_ref_s salt,
+	/* [IN] info */
+	const struct slice_ref_s info,
+	/* [IN/OUT] .size sets length for hkdf,
+	 * .data is where the digest will be placed
+	 */
+	const struct slice_mut_s result
+)
+{
+	int res = DCRYPTO_hkdf_sha512(result.data, result.size,
 		salt.data, salt.size,
 		ikm.data, ikm.size,
 		info.data, info.size);
@@ -380,6 +475,186 @@ bool __platform_ecdsa_p256_keygen_hmac_drbg(
 	} while (result == DCRYPTO_RETRY &&
 		 attempt < MAX_ECDSA_KEYGEN_ATTEMPTS);
 	drbg_exit(&drbg);
+	if (result != DCRYPTO_OK) {
+		verbose_log("DCRYPTO_p256_key_from_bytes failed");
+		invalidate_g_key_seed();
+		return false;
+	}
+
+	g_key_seed_valid = 1;
+	*key = g_key_seed;
+	return true;
+}
+
+static void calc_hmac_sha512_from3(uint8_t k[64], uint8_t in1[64], uint8_t in2,
+                 const uint8_t *in3, unsigned int in3_len, uint8_t out[64])
+{
+  	struct hmac_sha512_ctx ctx;
+
+	HMAC_SHA512_sw_init(&ctx, k, 64);
+	HMAC_SHA512_update(&ctx, in1, 64);
+	HMAC_SHA512_update(&ctx, &in2, 1);
+	if (in3 != NULL && in3_len > 0)
+		HMAC_SHA512_update(&ctx, in3, in3_len);
+	memcpy(out, HMAC_SHA512_final(&ctx), 64);
+//   if (1 != HMAC_Init_ex(&ctx, k, 64, EVP_sha512(), NULL /* impl */)) {
+//     goto out;
+//   }
+//   if (1 != HMAC_Update(&ctx, in1, 64)) {
+//     goto out;
+//   }
+//   if (1 != HMAC_Update(&ctx, &in2, 1)) {
+//     goto out;
+//   }
+//   if (in3 != NULL && in3_len > 0) {
+//     if (1 != HMAC_Update(&ctx, in3, in3_len)) {
+//       goto out;
+//     }
+//   }
+//   unsigned int out_len = 64;
+//   ret = HMAC_Final(&ctx, out, &out_len);
+//   HMAC_CTX_cleanup(&ctx);
+
+}
+
+static void calc_hmac_sha512_from1(uint8_t k[64], uint8_t in[64], uint8_t out[64])
+{
+
+  	struct hmac_sha512_ctx ctx;
+
+	HMAC_SHA512_sw_init(&ctx, k, 64);
+	HMAC_SHA512_update(&ctx, in, 64);
+	memcpy(out, HMAC_SHA512_final(&ctx), 64);
+
+//   HMAC_CTX ctx;
+//   HMAC_CTX_init(&ctx);
+//   if (1 != HMAC_Init_ex(&ctx, k, 64, EVP_sha512(), NULL /* impl */)) {
+//     goto out;
+//   }
+//   if (1 != HMAC_Update(&ctx, in, 64)) {
+//     goto out;
+//   }
+//   ret = HMAC_Final(&ctx, out, &out_len);
+//   HMAC_CTX_cleanup(&ctx);
+}
+
+// static bool private_key_is_zero(const uint8_t private_key[32])
+// {
+// 	size_t idx;
+// 	for (idx = 0; idx < 32; idx++) {
+// 		if (private_key[idx] != 0)
+// 			return false;
+// 	}
+// 	return true;
+// }
+
+// static bool private_key_is_beq_group_order(const uint8_t private_key[32])
+// {
+// 	static const uint8_t kP256Order[32] = {
+//     	0xf3, 0xb9, 0xca, 0xc2, 0xfc, 0x63, 0x25, 0x51,
+// 		0xbc, 0xe6, 0xfa, 0xad, 0xa7, 0x17, 0x9e, 0x84,
+// 		0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+//     	0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00
+// 	};	
+// 	size_t idx;
+// 	for (idx = 0; idx < 32; idx++) {
+// 		if (private_key[idx] < kP256Order[idx])
+// 			return false;
+// 		if (private_key[idx] > kP256Order[idx])
+// 			return true;
+// 	}
+// 	return true;
+// }
+
+// // Algorithm from section 3.2 of IETF RFC6979; limited to generating up to 64
+// // byte private keys.
+// static void ecdsa_p256_derive_private_hmac_sha512(const uint8_t *seed,
+//                                 size_t seed_size, uint8_t private_key[32])
+// {
+// 	uint8_t v[64];
+// 	uint8_t k[64];
+// 	memset(v, 1, 64);
+// 	memset(k, 0, 64);
+
+// 	calc_hmac_sha512_from3(k, v, 0x00, seed, seed_size, k);
+// 	calc_hmac_sha512_from1(k, v, v);
+// 	calc_hmac_sha512_from3(k, v, 0x01, seed, seed_size, k);
+// 	do {
+// 		calc_hmac_sha512_from1(k, v, v);
+// 		calc_hmac_sha512_from1(k, v, v);
+// 		memcpy(private_key, v, 32);
+// 		calc_hmac_sha512_from3(k, v, 0x00, NULL, 0, k);
+// 	} while (
+// 		private_key_is_beq_group_order(private_key) ||
+// 		private_key_is_zero(private_key)
+// 	);
+// }
+
+//   if (1 != hmac3(k, v, 0x00, seed, (unsigned int)seed_size, k)) {
+//     goto err;
+//   }
+//   if (1 != hmac(k, v, v, sizeof(v))) {
+//     goto err;
+//   }
+//   if (1 != hmac3(k, v, 0x01, seed, (unsigned int)seed_size, k)) {
+//     goto err;
+//   }
+//   do {
+//     if (1 != hmac(k, v, v, sizeof(v))) {
+//       goto err;
+//     }
+//     if (1 != hmac(k, v, v, sizeof(v))) {
+//       goto err;
+//     }
+//     candidate = BN_bin2bn(v, private_key_len, candidate);
+//     if (!candidate) {
+//       goto err;
+//     }
+//     if (1 != hmac3(k, v, 0x00, NULL, 0, k)) {
+//       goto err;
+//     }
+//   } while (BN_cmp(candidate, EC_GROUP_get0_order(group)) >= 0 ||
+//            BN_is_zero(candidate));
+
+/* Generate ECDSA P-256 key using HMAC-SHA512-DRBG initialized by the seed */
+bool __platform_ecdsa_p256_keygen_hmac_sha512_drbg(
+	/* [IN] key seed */
+	const uint8_t seed[DIGEST_BYTES],
+	/* [OUT] ECDSA key handle */
+	const void **key
+)
+{
+	p256_int d;
+	enum dcrypto_result result = DCRYPTO_FAIL;
+	size_t attempt = 0;
+	const size_t seed_size = DIGEST_BYTES;
+
+	uint8_t v[64];
+	uint8_t k[64];
+	memset(v, 1, 64);
+	memset(k, 0, 64);
+
+	calc_hmac_sha512_from3(k, v, 0x00, seed, seed_size, k);
+	calc_hmac_sha512_from1(k, v, v);
+	calc_hmac_sha512_from3(k, v, 0x01, seed, seed_size, k);
+
+	*key = NULL;
+
+	g_key_seed_valid = 0;
+	do {
+		calc_hmac_sha512_from1(k, v, v);
+		calc_hmac_sha512_from1(k, v, v);
+		memcpy(g_key_seed, v, 32);
+		calc_hmac_sha512_from3(k, v, 0x00, NULL, 0, k);
+
+		/* See the description of adjust_drbg_bytes() above */
+		adjust_drbg_bytes(g_key_seed);
+		result = DCRYPTO_p256_key_from_bytes(NULL, NULL,
+			&d, g_key_seed);
+		attempt++;
+	} while (result == DCRYPTO_RETRY &&
+		 attempt < MAX_ECDSA_KEYGEN_ATTEMPTS);
+
 	if (result != DCRYPTO_OK) {
 		verbose_log("DCRYPTO_p256_key_from_bytes failed");
 		invalidate_g_key_seed();
