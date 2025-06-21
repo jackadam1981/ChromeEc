@@ -112,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d23422c5_f2ee95c2",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Since `read_exact` returns the actual number of bytes read on success, just return 0 here to indicate success. The callers no longer need to check `if (bytes_read \u003d\u003d expected_count)`.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 19
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58fd469d_ceeac9a4",
         "filename": "util/rtkupdate.c",
         "patchSetId": 21
@@ -128,6 +151,52 @@
         "startChar": 10,
         "endLine": 280,
         "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c21b8a_e12da557",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "The caller passes `bytes_read - 1`, which is confusing. Please document it well and remove any unnecessary `-1` and `+1`.",
+      "range": {
+        "startLine": 306,
+        "startChar": 36,
+        "endLine": 306,
+        "endChar": 40
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951b7090_d94a35d4",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Does the toolchain support VLA (Variable Length Array)? A safer option is to use a fixed-size buffer, like:\n```\n#define MAX_PACKET_A_SIZE (PACKET_HEADER_LENGTH + PAGE_SIZE + CHECKSUM_LENGTH)\n\nunsigned char packet[MAX_PACKET_A_SIZE];\n```",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 35
       },
       "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -181,6 +250,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f97b8ad_03c9d734",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Use `timeout_seconds * 1000` here and remove the `while` loop. There is no way to retry.",
+      "range": {
+        "startLine": 392,
+        "startChar": 49,
+        "endLine": 392,
+        "endChar": 53
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abbcfcd1_e5165ebb",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Move it inside the below `if` clause. The `else` clause already prints the response.",
+      "range": {
+        "startLine": 395,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 52
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b403990d_de3815f9",
         "filename": "util/rtkupdate.c",
         "patchSetId": 21
@@ -197,6 +312,29 @@
         "startChar": 6,
         "endLine": 400,
         "endChar": 11
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2e5f1b_5a78c5a8",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Just use an `else` clause here for any errors.",
+      "range": {
+        "startLine": 404,
+        "startChar": 12,
+        "endLine": 404,
+        "endChar": 30
       },
       "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -250,6 +388,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e4e3c69_1e385e2e",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Is it functional? It just sends the data to the EC\u0027s RAM, but nothing will happen, right?",
+      "range": {
+        "startLine": 640,
+        "startChar": 7,
+        "endLine": 640,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3c8087_6bad331c",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "Use a consistent error handling pattern: `goto read_bin_err1`, which is reordered that only `fclose(file)` is called.",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 13
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "218d0892_f3e99fa3",
         "filename": "util/rtkupdate.c",
         "patchSetId": 21
@@ -289,6 +473,29 @@
         "startChar": 30,
         "endLine": 815,
         "endChar": 34
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f82adf2_9112a749",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-21T00:34:37Z",
+      "side": 1,
+      "message": "A convention uses `exit(128 + signum);` to indicate the signal number in the exit status.",
+      "range": {
+        "startLine": 888,
+        "startChar": 1,
+        "endLine": 888,
+        "endChar": 2
       },
       "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
