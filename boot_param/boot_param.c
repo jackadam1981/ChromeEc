@@ -523,6 +523,8 @@ static inline bool fill_cdi_cert_signature(
 					  sig_bstr64->value);
 }
 
+static void debug_hexdump(const char *pfx, const struct slice_ref_s slice);
+
 /* Generates key from UDS or CDI_Attest value.
  */
 static bool generate_key(
@@ -536,13 +538,24 @@ static bool generate_key(
 	const struct slice_ref_s input_slice = digest_as_slice(input);
 	const struct slice_mut_s drbg_seed_slice =
 		digest_as_slice_mut(drbg_seed);
+	const struct slice_ref_s drbg_seed_slice_hexdump =
+		digest_as_slice(drbg_seed);
+	bool res;
 
-	if (!__platform_hkdf_sha256(input_slice, kAsymSaltSlice,
+	if (!__platform_hkdf_sha512(input_slice, kAsymSaltSlice,
+	// if (!__platform_hkdf_sha256(input_slice, kAsymSaltSlice,
 				    kKeyPairLabel, drbg_seed_slice)) {
 		__platform_log_str("ASYM_KDF failed");
 		return false;
 	}
-	return __platform_ecdsa_p256_keygen_hmac_drbg(drbg_seed, key);
+	debug_hexdump("!!! key seed", drbg_seed_slice_hexdump);
+//	return __platform_ecdsa_p256_keygen_hmac_drbg(drbg_seed, key);
+	res = __platform_ecdsa_p256_keygen_hmac_sha512_drbg(drbg_seed, key);
+	if (res) {
+		const struct slice_ref_s key_slice_hexdump = { 32, *key };
+		debug_hexdump("!!! privkey", key_slice_hexdump);
+	}
+	return res;
 }
 
 /* Generates {UDS, CDI}_ID from {UDS, CDI} public key.
@@ -561,7 +574,8 @@ static bool generate_id_from_pub_key(
 		DICE_ID_BYTES, (uint8_t *)dice_id
 	};
 
-	return __platform_hkdf_sha256(pub_key_slice, kIdSaltSlice, kIdLabel,
+	return __platform_hkdf_sha512(pub_key_slice, kIdSaltSlice, kIdLabel,
+	// return __platform_hkdf_sha256(pub_key_slice, kIdSaltSlice, kIdLabel,
 				      dice_id_slice);
 }
 
@@ -601,6 +615,25 @@ static void fill_dice_id_string(
 
 	for (idx = 0; idx < DICE_ID_BYTES; idx++, dice_id_str += 2)
 		hexdump_byte(dice_id[idx], dice_id_str);
+}
+
+static void debug_hexdump(const char *pfx, const struct slice_ref_s slice)
+{
+	char slice_hex[64*2+2+1] = { 0 };
+	char *slice_hex_ptr = slice_hex + 2;
+	size_t idx;
+
+	__platform_log_str(pfx);
+	if (slice.size > 64) {
+		__platform_log_str("  <too long>");
+		return;
+	}
+	slice_hex[0] = ' ';
+	slice_hex[1] = ' ';
+	for (idx = 0; idx < slice.size; idx++, slice_hex_ptr += 2)
+		hexdump_byte(slice.data[idx], slice_hex_ptr);
+	
+	__platform_log_str(slice_hex);
 }
 
 /* Fills COSE_Key structure from pubkey.
