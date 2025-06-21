@@ -46,6 +46,30 @@
       },
       "revId": "d8c34d2cc0cb02cb28d1918cbe516d51762dbcee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a95a9d0_b74bbbb5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-06-21T10:27:49Z",
+      "side": 1,
+      "message": "I am not quite sure if define 2 ports in devicetree but enable just one port with runtime pdc port config, would the status of the second port be \"okay\" or \"disabled\" ? If it\u0027s okay, the invalid port might be accessed.",
+      "parentUuid": "0bec794f_57f44415",
+      "range": {
+        "startLine": 639,
+        "startChar": 29,
+        "endLine": 639,
+        "endChar": 56
+      },
+      "revId": "d8c34d2cc0cb02cb28d1918cbe516d51762dbcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
