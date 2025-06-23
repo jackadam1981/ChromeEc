@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc855f96_96451517",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-23T09:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75551a58_42cd9508",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4e2c586_8452a928",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-21T01:15:39Z",
       "side": 1,
       "message": "Choose either approach. When deferring the `_AT_BOOT` flag on the next boot, remove this option. Or you have a way to know if it succeed? So only set the BBRAM flag on error.",
+      "range": {
+        "startLine": 447,
+        "startChar": 9,
+        "endLine": 447,
+        "endChar": 46
+      },
+      "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ceecdb2_6760d20c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-23T09:47:46Z",
+      "side": 1,
+      "message": "Because in other tast, it will lock/unlock by below follow:\n1. lock/unlock HWWP\n2. reboot EC\n3. exe `flashwp enable/disable` which will set WP_AT_BOOT\n4. start to test\n\nIn this case, we need process WP_AT_BOOT immediately,\nand we also need to change the bbram incase next reboot we did not keep the previous setting.",
+      "parentUuid": "e4e2c586_8452a928",
       "range": {
         "startLine": 447,
         "startChar": 9,
@@ -88,6 +136,54 @@
         "startChar": 2,
         "endLine": 530,
         "endChar": 48
+      },
+      "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf48652a_fc14d98f",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-23T09:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "253c058f_974894f5",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 530,
+        "endChar": 48
+      },
+      "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7d3a8b_b6156808",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-06-23T09:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce789aa5_6bdac010",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 0
       },
       "revId": "aa19d6adde1e550914dc6d08f6b3637bf0af633e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
