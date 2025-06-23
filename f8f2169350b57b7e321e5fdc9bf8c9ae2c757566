@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5cfc277_7c7825c7",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "Nit: remove this part of comment.",
+      "range": {
+        "startLine": 141,
+        "startChar": 30,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "f8f2169350b57b7e321e5fdc9bf8c9ae2c757566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a17e9f5_f69764a7",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "Nit: It doesn\u0027t return the bytes read. It returns the success/fail status now. Change the type and rename it.",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 20
+      },
+      "revId": "f8f2169350b57b7e321e5fdc9bf8c9ae2c757566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57dc4f5a_2edd2fc6",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "Nit: The data size is really `data_size`. This assignment is inconsistent, though this seems to be the protocol that can\u0027t be changed. Please add a comment to note it is off-by-one.",
+      "range": {
+        "startLine": 313,
+        "startChar": 13,
+        "endLine": 313,
+        "endChar": 28
+      },
+      "revId": "f8f2169350b57b7e321e5fdc9bf8c9ae2c757566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aedef5b_5c5f299c",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "Nit: Never reach here. You can remove the above `else` clause and combine them.",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 0
+      },
+      "revId": "f8f2169350b57b7e321e5fdc9bf8c9ae2c757566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c37c726_ed1a9b6c",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "Nit: Rename it to `read_bin_err2` and reorder them as below.\n```\nread_bin_err2:\n\tout_of_read_bin(uart_fd);\nread_bin_err1:\n\tfclose(file);\n\treturn -1;\n```",
+      "range": {
+        "startLine": 848,
+        "startChar": 0,
+        "endLine": 848,
+        "endChar": 12
+      },
+      "revId": "f8f2169350b57b7e321e5fdc9bf8c9ae2c757566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9590221f_6bf29880",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "You still need to `exit` even if `g_uart_fd` not opened (unless you want to ignore the signal). Move it outside.",
+      "range": {
+        "startLine": 884,
+        "startChar": 2,
+        "endLine": 884,
+        "endChar": 21
+      },
+      "revId": "f8f2169350b57b7e321e5fdc9bf8c9ae2c757566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

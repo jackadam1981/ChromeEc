@@ -817,6 +817,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bcdac43_05183c83",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T17:49:09Z",
+      "side": 1,
+      "message": "Please this as a comment.",
+      "parentUuid": "2de780b7_fe897c80",
+      "range": {
+        "startLine": 640,
+        "startChar": 7,
+        "endLine": 640,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b3c8087_6bad331c",
