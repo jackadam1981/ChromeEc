@@ -127,7 +127,7 @@ register_ish_project(
     kconfig_files=[
         here / "pujjolo-ish" / "project.conf",
         # Uncomment the following line for UART support
-        # here / "trulo-ish" / "debug.conf",
+        here / "pujjolo-ish" / "debug.conf",
         here / "dsp_comms.conf",
     ],
     modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
