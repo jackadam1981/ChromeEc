@@ -39,6 +39,30 @@
       },
       "revId": "55b63208396d03c4d16a6ddcee1bdcb0b7f5ae61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b6df2c_5dc3dd3a",
+        "filename": "test/stdlib.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-23T23:14:13Z",
+      "side": 1,
+      "message": "Nevermind, I think it will be too hard to read.",
+      "parentUuid": "a6964cbc_6e99100a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "55b63208396d03c4d16a6ddcee1bdcb0b7f5ae61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
