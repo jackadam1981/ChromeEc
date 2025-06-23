@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "0e3520c5dbcae5ab34738cf8883592eaa5125571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4794cc_a905a00d",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-23T16:21:11Z",
+      "side": 1,
+      "message": "Let\u0027s add two variables here:\n\n```\n/* TODO(b/243192369): EC implementations are broken. */\nstatic bool broken_strstr;\nstatic bool broken_strtoull;\n```\n\nThey should be set to `true` in the `BOARD_HOST` case and `false` otherwise. Then in the tests below we can change the condition from `#ifdef BOARD_HOST` to `if (broken_strstr)` and `if (broken_strtoull)`.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "0e3520c5dbcae5ab34738cf8883592eaa5125571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
