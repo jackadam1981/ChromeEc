@@ -11,6 +11,9 @@
 #include <cros/cbi_flash.dtsi>
 
 &binman {
+	pad-byte = <0xff>;
+	pad-after = <0x30000>;
+
 	wp-ro {
 		/*
 		 * wp-ro must match a block protect region supported by
@@ -56,6 +59,4 @@
 			};
 		};
 	};
-	pad-byte = <0xff>;
-	pad-after = <0x30000>;
 };
