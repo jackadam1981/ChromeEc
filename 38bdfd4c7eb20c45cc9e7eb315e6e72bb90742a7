@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fed7220_feef40fb",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-23T18:09:38Z",
+      "side": 1,
+      "message": "So make it `die`?\n\nIf continue, does it 100% fail at the following actions? If yes, fail here, showing the correct error message.",
+      "parentUuid": "66ed561b_c6154147",
+      "range": {
+        "startLine": 1837,
+        "startChar": 3,
+        "endLine": 1837,
+        "endChar": 7
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddf69f44_c01ea3ed",
         "filename": "util/flash_ec",
         "patchSetId": 18
