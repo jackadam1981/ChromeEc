@@ -72,7 +72,7 @@
 			gpios = <&gpiod 6 GPIO_INPUT>;
 		};
 		gpio_sen_mode2_ec_ish_int_odl: sen_mode2_ec_ish_int_odl {
-			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_OUTPUT)>;
+			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_all_sys_pwrgd: all_sys_pwrgd {
 			gpios = <&gpioa 7 (GPIO_INPUT)>;
