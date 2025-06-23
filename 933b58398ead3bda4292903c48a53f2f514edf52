@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485fad7a_74920e35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-23T20:40:41Z",
+      "side": 1,
+      "message": "You just can add this node into rvp_i2c.dtsi directly (and then update the irq-gpio in each of the board overlays)",
+      "revId": "933b58398ead3bda4292903c48a53f2f514edf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
