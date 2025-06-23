@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2b8940_ed60d9ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-23T16:45:25Z",
+      "side": 1,
+      "message": "Use `zmake compare-builds` for Zephyr targets",
+      "parentUuid": "b1d25530_5c6b6200",
+      "revId": "e07554dc3030ab14c2690332663675da45c5b459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a36e8c37_69fa0731",
