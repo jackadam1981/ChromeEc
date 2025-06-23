@@ -110,6 +110,30 @@
       },
       "revId": "0e3520c5dbcae5ab34738cf8883592eaa5125571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab5a93d_5d9864bd",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-23T23:12:46Z",
+      "side": 1,
+      "message": "Looks like the typo is still there.",
+      "parentUuid": "ae515fa0_c5b88a60",
+      "range": {
+        "startLine": 396,
+        "startChar": 42,
+        "endLine": 396,
+        "endChar": 60
+      },
+      "revId": "0e3520c5dbcae5ab34738cf8883592eaa5125571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

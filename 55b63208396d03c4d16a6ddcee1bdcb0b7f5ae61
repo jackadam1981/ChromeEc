@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "55b63208396d03c4d16a6ddcee1bdcb0b7f5ae61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6964cbc_6e99100a",
+        "filename": "test/stdlib.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-23T23:12:46Z",
+      "side": 1,
+      "message": "Can you move this into the conditionals below? Although it will be a bit harder to read, it makes it clearer that all of these workarounds are for the same issue.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "55b63208396d03c4d16a6ddcee1bdcb0b7f5ae61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
