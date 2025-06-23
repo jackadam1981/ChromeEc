@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee9a202_624cc805",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0dc483a_de750532",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b98f749_6041f2bf",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-06-20T15:56:03Z",
       "side": 1,
       "message": "Nit - use snake case. Only use lower case and underscores for identifiers.",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 32
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e1da2d_f61fbc58",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b98f749_6041f2bf",
       "range": {
         "startLine": 91,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4678d8_615ec343",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed916bdf_b0cea80a",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbdc8e3a_939a5740",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-06-20T15:56:03Z",
       "side": 1,
       "message": "You should explicitly enable the flags you need.  But I\u0027m not sure want any of these flags.\n\nSee the \"Raw mode\" section on the [termios documentation](https://www.man7.org/linux/man-pages/man3/termios.3.html).",
+      "range": {
+        "startLine": 138,
+        "startChar": 30,
+        "endLine": 138,
+        "endChar": 47
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af059fa_0de96f52",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdc8e3a_939a5740",
       "range": {
         "startLine": 138,
         "startChar": 30,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18dfddc_eed28af8",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23422c5_f2ee95c2",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 19
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58fd469d_ceeac9a4",
@@ -146,6 +266,30 @@
       "writtenOn": "2025-06-20T15:56:03Z",
       "side": 1,
       "message": "Use snake case",
+      "range": {
+        "startLine": 280,
+        "startChar": 10,
+        "endLine": 280,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf2d3b7_5215c559",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fd469d_ceeac9a4",
       "range": {
         "startLine": 280,
         "startChar": 10,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e83f4c_58c6864b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c21b8a_e12da557",
+      "range": {
+        "startLine": 306,
+        "startChar": 36,
+        "endLine": 306,
+        "endChar": 40
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "951b7090_d94a35d4",
@@ -192,6 +360,30 @@
       "writtenOn": "2025-06-21T00:34:37Z",
       "side": 1,
       "message": "Does the toolchain support VLA (Variable Length Array)? A safer option is to use a fixed-size buffer, like:\n```\n#define MAX_PACKET_A_SIZE (PACKET_HEADER_LENGTH + PAGE_SIZE + CHECKSUM_LENGTH)\n\nunsigned char packet[MAX_PACKET_A_SIZE];\n```",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 35
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718c91e5_f0f1d7cf",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "951b7090_d94a35d4",
       "range": {
         "startLine": 309,
         "startChar": 22,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ddab5f_022b35fa",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2033eca4_35024112",
+      "range": {
+        "startLine": 323,
+        "startChar": 10,
+        "endLine": 323,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "849eaf75_7eab765b",
@@ -238,6 +454,30 @@
       "writtenOn": "2025-06-20T15:56:03Z",
       "side": 1,
       "message": "snake case",
+      "range": {
+        "startLine": 363,
+        "startChar": 10,
+        "endLine": 363,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac60e87_1b0601d9",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849eaf75_7eab765b",
       "range": {
         "startLine": 363,
         "startChar": 10,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f35569b_8d936bee",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f97b8ad_03c9d734",
+      "range": {
+        "startLine": 392,
+        "startChar": 49,
+        "endLine": 392,
+        "endChar": 53
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abbcfcd1_e5165ebb",
@@ -284,6 +548,30 @@
       "writtenOn": "2025-06-21T00:34:37Z",
       "side": 1,
       "message": "Move it inside the below `if` clause. The `else` clause already prints the response.",
+      "range": {
+        "startLine": 395,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 52
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "101eccc0_3500197d",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abbcfcd1_e5165ebb",
       "range": {
         "startLine": 395,
         "startChar": 3,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c177748_eabcf33b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b403990d_de3815f9",
+      "range": {
+        "startLine": 400,
+        "startChar": 6,
+        "endLine": 400,
+        "endChar": 11
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da2e5f1b_5a78c5a8",
@@ -330,6 +642,30 @@
       "writtenOn": "2025-06-21T00:34:37Z",
       "side": 1,
       "message": "Just use an `else` clause here for any errors.",
+      "range": {
+        "startLine": 404,
+        "startChar": 12,
+        "endLine": 404,
+        "endChar": 30
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3943dd_5e9f0ea1",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2e5f1b_5a78c5a8",
       "range": {
         "startLine": 404,
         "startChar": 12,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "925f5a0c_70af1268",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0dd8f83_7d226909",
+      "range": {
+        "startLine": 468,
+        "startChar": 5,
+        "endLine": 468,
+        "endChar": 9
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eb67fe8_ebca9e2d",
@@ -376,6 +736,30 @@
       "writtenOn": "2025-06-20T15:56:03Z",
       "side": 1,
       "message": "\u0027\\n\u0027",
+      "range": {
+        "startLine": 524,
+        "startChar": 5,
+        "endLine": 524,
+        "endChar": 9
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dbac5b_0274e08a",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb67fe8_ebca9e2d",
       "range": {
         "startLine": 524,
         "startChar": 5,
@@ -409,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de780b7_fe897c80",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "It just used to improve the readability and only sends data to the EC\u0027s RAM.",
+      "parentUuid": "1e4e3c69_1e385e2e",
+      "range": {
+        "startLine": 640,
+        "startChar": 7,
+        "endLine": 640,
+        "endChar": 18
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b3c8087_6bad331c",
@@ -422,6 +830,30 @@
       "writtenOn": "2025-06-21T00:34:37Z",
       "side": 1,
       "message": "Use a consistent error handling pattern: `goto read_bin_err1`, which is reordered that only `fclose(file)` is called.",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 13
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76fe6402_869a8b76",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3c8087_6bad331c",
       "range": {
         "startLine": 743,
         "startChar": 0,
@@ -455,6 +887,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e632b2_a3ba9d06",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "218d0892_f3e99fa3",
+      "range": {
+        "startLine": 812,
+        "startChar": 4,
+        "endLine": 812,
+        "endChar": 9
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2892523_668e1d10",
@@ -478,6 +934,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c6d1bb_605a0f9b",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2892523_668e1d10",
+      "range": {
+        "startLine": 815,
+        "startChar": 30,
+        "endLine": 815,
+        "endChar": 34
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f82adf2_9112a749",
@@ -491,6 +971,30 @@
       "writtenOn": "2025-06-21T00:34:37Z",
       "side": 1,
       "message": "A convention uses `exit(128 + signum);` to indicate the signal number in the exit status.",
+      "range": {
+        "startLine": 888,
+        "startChar": 1,
+        "endLine": 888,
+        "endChar": 2
+      },
+      "revId": "5f38687de4d9b58dabf18334bd65e6ca7e7dd08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9a4878_94089342",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f82adf2_9112a749",
       "range": {
         "startLine": 888,
         "startChar": 1,
