@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aac44a8_ffd80fe7",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b800ff_6385d407",
+      "range": {
+        "startLine": 1765,
+        "startChar": 2,
+        "endLine": 1765,
+        "endChar": 6
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30214e78_01daeb59",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-21T01:38:55Z",
       "side": 1,
       "message": "Should be `dut_control`.",
+      "range": {
+        "startLine": 1796,
+        "startChar": 1,
+        "endLine": 1796,
+        "endChar": 12
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9fce594_268a43ba",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30214e78_01daeb59",
       "range": {
         "startLine": 1796,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4414899a_b91b47a3",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66c4171a_6bd09e82",
+      "range": {
+        "startLine": 1805,
+        "startChar": 45,
+        "endLine": 1805,
+        "endChar": 46
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12f8b48d_95e2dae0",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-06-21T01:38:55Z",
       "side": 1,
       "message": "Combine the nested `if` clauses into one:\n```\nif [[ ${wp_res_0} -ne 0 \u0026\u0026 ${wp_res_1} -ne 0 ]];\n```",
+      "range": {
+        "startLine": 1832,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 28
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bea57c6_44a7916d",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f8b48d_95e2dae0",
       "range": {
         "startLine": 1832,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ed561b_c6154147",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed332843_6a32bca4",
+      "range": {
+        "startLine": 1837,
+        "startChar": 3,
+        "endLine": 1837,
+        "endChar": 7
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf69f44_c01ea3ed",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-06-21T01:38:55Z",
       "side": 1,
       "message": "The image size is hard-coded? Can it be determined automatically?",
+      "range": {
+        "startLine": 2460,
+        "startChar": 19,
+        "endLine": 2460,
+        "endChar": 27
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41cfb18_f961d238",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 2460,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-23T14:32:07Z",
+      "side": 1,
+      "message": "It can\u0027t be determined automatically for now, maybe we can make it become a future work when the demand of the other flash is needed.",
+      "parentUuid": "ddf69f44_c01ea3ed",
       "range": {
         "startLine": 2460,
         "startChar": 19,
