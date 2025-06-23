@@ -18,6 +18,8 @@
 #include "npcx_evb.dtsi"
 
 &binman {
+	pad-byte = <0xff>;
+
 	wp-ro {
 		offset = <0x0>;
 		size = <0x30000>;
@@ -40,7 +42,6 @@
 			};
 		};
 	};
-	pad-byte = <0xff>;
 };
 
 &uart1 {
