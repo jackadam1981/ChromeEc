@@ -152,16 +152,20 @@ static inline void chipset_exit_hard_off(void)
 }
 static inline void chipset_throttle_cpu(int throttle)
 {
+	(void)throttle;
 }
 static inline void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
+	(void)reason;
 }
 
 static inline void chipset_reset(enum chipset_shutdown_reason reason)
 {
+	(void)reason;
 }
 static inline void power_interrupt(enum gpio_signal signal)
 {
+	(void)signal;
 }
 static inline void chipset_handle_espi_reset_assert(void)
 {
@@ -171,18 +175,23 @@ static inline void chipset_handle_reboot(void)
 }
 static inline void chipset_reset_request_interrupt(enum gpio_signal signal)
 {
+	(void)signal;
 }
 static inline void chipset_warm_reset_interrupt(enum gpio_signal signal)
 {
+	(void)signal;
 }
 static inline void chipset_ap_rst_interrupt(enum gpio_signal signal)
 {
+	(void)signal;
 }
 static inline void chipset_power_good_interrupt(enum gpio_signal signal)
 {
+	(void)signal;
 }
 static inline void chipset_watchdog_interrupt(enum gpio_signal signal)
 {
+	(void)signal;
 }
 
 #endif /* !CONFIG_AP_POWER_CONTROL */
