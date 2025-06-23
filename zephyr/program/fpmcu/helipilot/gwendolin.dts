@@ -19,6 +19,8 @@
 	};
 
 	binman {
+		pad-byte = <0xff>;
+
 		/* First 128 kB (uniform 4 kB sectors) used for RO */
 		wp-ro {
 			offset = <0x0>;
@@ -61,7 +63,6 @@
 				};
 			};
 		};
-		pad-byte = <0xff>;
 	};
 };
 

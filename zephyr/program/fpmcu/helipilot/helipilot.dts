@@ -19,6 +19,8 @@
 	};
 
 	binman {
+		pad-byte = <0xff>;
+
 		/* Total Flash size is 1 MB. */
 		size = <0x100000>;
 
@@ -64,7 +66,6 @@
 				};
 			};
 		};
-		pad-byte = <0xff>;
 	};
 };
 
