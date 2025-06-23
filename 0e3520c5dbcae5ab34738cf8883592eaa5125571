@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa323de3_283fdc7b",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-23T22:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d4794cc_a905a00d",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "0e3520c5dbcae5ab34738cf8883592eaa5125571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1e1625f_308e782e",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-06-23T16:53:39Z",
       "side": 1,
       "message": "This should be `USE_BUILTIN_STDLIB`, but I think we won\u0027t need it once https://crrev.com/c/6409117 lands.",
+      "range": {
+        "startLine": 396,
+        "startChar": 42,
+        "endLine": 396,
+        "endChar": 60
+      },
+      "revId": "0e3520c5dbcae5ab34738cf8883592eaa5125571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae515fa0_c5b88a60",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-23T22:58:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f1e1625f_308e782e",
       "range": {
         "startLine": 396,
         "startChar": 42,

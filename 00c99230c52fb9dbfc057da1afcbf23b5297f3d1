@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e695e8a9_82270632",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-23T22:58:39Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0f12771a_b29021b5",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "00c99230c52fb9dbfc057da1afcbf23b5297f3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1956a00_dca24609",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-23T16:21:11Z",
       "side": 0,
       "message": "Can you leave this comment? The comment gives some more context that is helpful.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "00c99230c52fb9dbfc057da1afcbf23b5297f3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa271d63_22a9cdb8",
+        "filename": "test/stdlib.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-23T22:58:39Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a1956a00_dca24609",
       "range": {
         "startLine": 105,
         "startChar": 1,
