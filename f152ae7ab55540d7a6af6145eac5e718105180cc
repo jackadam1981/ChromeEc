@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8daed48_a742e695",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-24T17:21:38Z",
+      "side": 1,
+      "message": "You can also run `zmake compare-builds winterhold skyrim` to validate that there are no changes to platforms using V1 body detection.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "f152ae7ab55540d7a6af6145eac5e718105180cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0f1507_2087964a",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-24T17:21:38Z",
+      "side": 1,
+      "message": "This conflicts with line 352 that directly sets the activity sensor ID to -1.\n\nIn most uses, MOTION_SENSE_ACTIVITY_SENSOR_ID is stored into a `uint8_t` type.  Should you set this to INVALID_SENSOR (0xFF) instead?\n\nYour change seems like it will break checks like [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/motion_sense.c;l\u003d1148;drc\u003d594c3b818ba2a58fb90718fae2f963aa466c14b3)",
+      "range": {
+        "startLine": 346,
+        "startChar": 51,
+        "endLine": 346,
+        "endChar": 63
+      },
+      "revId": "f152ae7ab55540d7a6af6145eac5e718105180cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae207069_ce6d8ccc",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 14
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-24T17:21:38Z",
+      "side": 1,
+      "message": "If you make V1 and V2 a choice symbol, you can simplify the logic here.",
+      "range": {
+        "startLine": 264,
+        "startChar": 3,
+        "endLine": 264,
+        "endChar": 39
+      },
+      "revId": "f152ae7ab55540d7a6af6145eac5e718105180cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0f1a91_0f75264c",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-24T17:21:38Z",
+      "side": 1,
+      "message": "Organize this as a choice symbol so PLATFORM_EC_BODY_DETECTION and PLATFORM_EC_BODY_DETECTION_V2 are mutually exclusive.\n\nYou could do\n```\nchoice BODY_DETECTION_ALGORITHM\n    help\n      Body detection algorithm selection.\n\nconfig BODY_DETECTION_ALOGIRTHM_V1\n\nconfig BODY_DETECTION_ALOGIRTHM_V2\n\nendchoice\n```\nYou don\u0027t need to add this new symbol in the `PLATFORM_EC` namespace because it is only used by Zephyr.",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "f152ae7ab55540d7a6af6145eac5e718105180cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cd1f43_144c1b3a",
+        "filename": "zephyr/program/trulo/uldrenite-ish/project.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-24T17:21:38Z",
+      "side": 1,
+      "message": "Move board specific changes into a separate CL.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "f152ae7ab55540d7a6af6145eac5e718105180cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
