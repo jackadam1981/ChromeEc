@@ -1133,7 +1133,7 @@ static int rts5453p_emul_finish_read(const struct emul *emul, int reg,
 	struct rts5453p_emul_pdc_data *data = rts5453p_emul_get_pdc_data(emul);
 
 	LOG_DBG("finish_read reg=0x%X, bytes=%d", reg, bytes);
-	if (data->read_ping) {
+	if (data->read_ping && data->ping_status.cmd_sts != CMD_DEFERRED) {
 		data->read_ping = false;
 	} else {
 		data->read_offset = 0;
