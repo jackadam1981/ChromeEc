@@ -22,6 +22,30 @@
       },
       "revId": "47553a464d18e70d5f5c8739654c70479cf26501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2af479_e3815538",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2411,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-24T16:29:41Z",
+      "side": 0,
+      "message": "Odd, I think I clobbered my own changes. Fixed.",
+      "parentUuid": "4ea9f91b_5c36d2bd",
+      "range": {
+        "startLine": 2411,
+        "startChar": 0,
+        "endLine": 2411,
+        "endChar": 47
+      },
+      "revId": "47553a464d18e70d5f5c8739654c70479cf26501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

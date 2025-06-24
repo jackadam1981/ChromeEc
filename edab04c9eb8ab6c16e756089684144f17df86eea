@@ -16,6 +16,24 @@
       "message": "Why the change to skyrim and winterhold?\nAll board specific changes should be isolated to separate CLs for an easier revert if required.",
       "revId": "edab04c9eb8ab6c16e756089684144f17df86eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd9d004_993de61c",
+        "filename": "zephyr/program/skyrim/winterhold/motionsense.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-24T16:29:41Z",
+      "side": 1,
+      "message": "Sorry, I thought I removed these.",
+      "parentUuid": "0015ae35_52e6d070",
+      "revId": "edab04c9eb8ab6c16e756089684144f17df86eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
