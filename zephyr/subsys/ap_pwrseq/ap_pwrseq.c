@@ -197,6 +197,8 @@ static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
 
 			ap_pwrseq_send_entry_callback(dev, new_state,
 						      cur_state);
+			LOG_INF("power state %d = %s,", new_state,
+				ap_pwrseq_get_state_str(new_state));
 		}
 	}
 }
