@@ -61,6 +61,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "668f8a99_ea276276",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-24T20:34:25Z",
+      "side": 1,
+      "message": "move this up as well.",
+      "range": {
+        "startLine": 117,
+        "startChar": 41,
+        "endLine": 117,
+        "endChar": 50
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7097fef_83293451",
+        "filename": "zephyr/program/fatcat/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-24T20:34:25Z",
+      "side": 1,
+      "message": "should this be nested?",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a51df6e9_d9d61573",
         "filename": "zephyr/program/fatcat/Kconfig",
         "patchSetId": 5
