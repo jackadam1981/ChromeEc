@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d2e623_11286dd1",
+        "filename": "util/flash_ec",
+        "patchSetId": 18
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-06-24T11:34:42Z",
+      "side": 1,
+      "message": "It has high probability to get fail, I think change to die is needed.",
+      "parentUuid": "6fed7220_feef40fb",
+      "range": {
+        "startLine": 1837,
+        "startChar": 3,
+        "endLine": 1837,
+        "endChar": 7
+      },
+      "revId": "38bdfd4c7eb20c45cc9e7eb315e6e72bb90742a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf69f44_c01ea3ed",
