@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60532bea_0f8e823a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-24T18:44:13Z",
+      "side": 1,
+      "message": "Briefly explain reasoning.",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bc831f_8afc1857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-24T18:44:13Z",
+      "side": 1,
+      "message": "Add b:425486970 and b:427504021",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "68b2cfe3_1f137dcb",
@@ -14,6 +48,40 @@
       "writtenOn": "2025-06-24T18:35:42Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c36101_602c935e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-24T18:44:13Z",
+      "side": 1,
+      "message": "nit: \"recursive\"\n\nAccording to gemini reentrant and recursive are both valid terms here, but recursive is slightly more common and aligns with existing EC code that uses the term \"recursive mutex\".",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f65274d_ee8a35fb",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-06-24T18:44:13Z",
+      "side": 1,
+      "message": "Please add a TODO pointing to b/427504021",
       "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
