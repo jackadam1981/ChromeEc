@@ -115,6 +115,15 @@ static enum dualrole_capabilities dualrole_capability[CHARGE_PORT_COUNT];
 static int save_log[CHARGE_PORT_COUNT];
 #endif
 
+#ifdef CONFIG_ZEPHYR
+#define CM_MUTEX_LOCK(m) mutex_lock(m)
+#define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
+#else
+/* TODO(b/427504021) - Legacy EC mutexes are not recursive */
+#define CM_MUTEX_LOCK(m)
+#define CM_MUTEX_UNLOCK(m)
+#endif /* CONFIG_ZEPHYR */
+
 /* Store current state of port enable / charge current. */
 test_export_static int charge_port = CHARGE_PORT_NONE;
 static int charge_current = CHARGE_CURRENT_UNINITIALIZED;
@@ -362,6 +371,7 @@ static enum charge_supplier get_current_supplier(int port)
 {
 	enum charge_supplier supplier = CHARGE_SUPPLIER_NONE;
 
+	CM_MUTEX_LOCK(&cm_refresh);
 	/* Determine supplier information to show. */
 	if (port == charge_port) {
 		supplier = charge_supplier;
@@ -372,6 +382,7 @@ static enum charge_supplier get_current_supplier(int port)
 			/* Ignore available current */
 			supplier = find_supplier(port, supplier, -1);
 	}
+	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return supplier;
 }
@@ -379,6 +390,9 @@ static enum usb_power_roles
 get_current_power_role(int port, enum charge_supplier supplier)
 {
 	enum usb_power_roles role;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+
 	if (charge_port == port)
 		role = USB_PD_PORT_POWER_SINK;
 	else if (is_connected(port) && !is_sink(port))
@@ -387,6 +401,9 @@ get_current_power_role(int port, enum charge_supplier supplier)
 		role = USB_PD_PORT_POWER_SINK_NOT_CHARGING;
 	else
 		role = USB_PD_PORT_POWER_DISCONNECTED;
+
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
 	return role;
 }
 
@@ -813,14 +830,14 @@ static void charge_manager_refresh(void)
 	int ceil;
 	int power_changed = 0;
 
-	mutex_lock(&cm_refresh);
+	CM_MUTEX_LOCK(&cm_refresh);
 
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_port(&new_port, &new_supplier);
 
 		if (!left_safe_mode && new_port == CHARGE_PORT_NONE) {
-			mutex_unlock(&cm_refresh);
+			CM_MUTEX_UNLOCK(&cm_refresh);
 			return;
 		}
 
@@ -1056,7 +1073,7 @@ static void charge_manager_refresh(void)
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
 
-	mutex_unlock(&cm_refresh);
+	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1318,17 +1335,18 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	if (!is_valid_port(port))
 		return;
 
-	mutex_lock(&cm_refresh);
+	CM_MUTEX_LOCK(&cm_refresh);
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
 			hook_call_deferred(&charge_manager_refresh_data, 0);
 	}
-	mutex_unlock(&cm_refresh);
+	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	CM_MUTEX_LOCK(&cm_refresh);
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.
@@ -1356,6 +1374,7 @@ void charge_manager_force_ceil(int port, int ceil)
 		 */
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD, ceil);
 	}
+	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 
 int charge_manager_set_override(int port)
@@ -1408,7 +1427,13 @@ int charge_manager_get_override(void)
 
 test_mockable int charge_manager_get_active_charge_port(void)
 {
-	return charge_port;
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_port;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
 }
 
 int charge_manager_get_selected_charge_port(void)
@@ -1421,23 +1446,63 @@ int charge_manager_get_selected_charge_port(void)
 
 int charge_manager_get_charger_current(void)
 {
-	return charge_current;
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_current;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
 }
 
 int charge_manager_get_charger_voltage(void)
 {
-	return charge_voltage;
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_voltage;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
 }
 
 enum charge_supplier charge_manager_get_supplier(void)
 {
-	return charge_supplier;
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_supplier;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
+}
+
+void charge_manager_set_supplier(int port, enum charge_supplier supplier)
+{
+	CM_MUTEX_LOCK(&cm_refresh);
+	if (charge_supplier != CHARGE_SUPPLIER_NONE ||
+	    charge_port != CHARGE_PORT_NONE) {
+		CM_MUTEX_UNLOCK(&cm_refresh);
+		return;
+	}
+
+	CPRINTS("Seeding initial charge supplier, port %d, supplier %d", port,
+		supplier);
+
+	charge_port = port;
+	charge_supplier = supplier;
+	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 
 int charge_manager_get_power_limit_uw(void)
 {
-	int current_ma = charge_current;
-	int voltage_mv = charge_voltage;
+	int current_ma = 0;
+	int voltage_mv = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	current_ma = charge_current;
+	voltage_mv = charge_voltage;
+	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	if (current_ma == CHARGE_CURRENT_UNINITIALIZED ||
 	    voltage_mv == CHARGE_VOLTAGE_UNINITIALIZED)
