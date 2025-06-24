@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "916654cd_80d2eab4",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-06-24T04:10:56Z",
+      "side": 1,
+      "message": "how is this address determined? it does not match to `dsp_client: dsp-client@21` defined in `pujjolo-ish/i2c.dtsi`",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "491902da177e6d6ac7f08a5df6a7f76afb77c74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
