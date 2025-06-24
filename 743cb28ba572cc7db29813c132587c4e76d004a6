@@ -16,6 +16,23 @@
       "message": "shall we add this change to the helipilot/gwendolin.dts?",
       "revId": "743cb28ba572cc7db29813c132587c4e76d004a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5dfba5_c6d82d48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-06-24T20:58:01Z",
+      "side": 1,
+      "message": "flash_fp_mcu works with this change, getting past the flashrom error due to size mismatch. Due to b/427468960, host comm failures, it isn\u0027t currently possible to verify further, though the same image with the change works well on dev boards",
+      "revId": "743cb28ba572cc7db29813c132587c4e76d004a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
