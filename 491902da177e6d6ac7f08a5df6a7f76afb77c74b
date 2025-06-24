@@ -22,6 +22,30 @@
       },
       "revId": "491902da177e6d6ac7f08a5df6a7f76afb77c74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4851ab7e_7d14d6ca",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-24T05:23:19Z",
+      "side": 1,
+      "message": "I use i2c scan I2C_SENSOR to check the address and show 0x28.\nBut I have tried 0x21 too and still no function.",
+      "parentUuid": "916654cd_80d2eab4",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "491902da177e6d6ac7f08a5df6a7f76afb77c74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
