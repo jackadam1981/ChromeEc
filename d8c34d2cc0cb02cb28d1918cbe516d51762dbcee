@@ -70,6 +70,30 @@
       },
       "revId": "d8c34d2cc0cb02cb28d1918cbe516d51762dbcee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad837874_4106ba51",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-24T00:08:16Z",
+      "side": 1,
+      "message": "Under runtime PDC config, all of the PDC candidates will have a status of \"okay\" --they just won\u0027t necessarily all get initialized. (If a PDC/port node has status of \"disabled\", it will never be initialized and effectively get removed at compile time)\n\nGenerally we want to use DT macros and `CONFIG_USB_PD_PORT_MAX_COUNT` for the sake of initializing data structures because they represent a worst-case / maximum number of ports that *could* get initialized at runtime. `pdc_power_mgmt_get_usb_pd_port_count()` on the other hand, returns the number of active ports, which could be less than `CONFIG_USB_PD_PORT_MAX_COUNT`. Using `pdc_power_mgmt_get_usb_pd_port_count()` makes sense when range-checking incoming PDC API calls, or looping over port numbers that actually exist.\n\nFor this case (`tps_check_and_notify_irq()`), we definitely should not be iterating over `NUM_PDC_TPS6699X_PORTS`, because it could attempt to access a non-existent / un-initialized PDC chip. It\u0027s probably fine to leave it as `port \u003c board_get_usb_pd_port_count()` since that will reflect active ports (and we do not allow discontinuous port numbers). This will NOT work if we ever do mixed-vendor PDC boards, if that is a consideration. The safest would be to iterate over `NUM_PDC_TPS6699X_PORTS`, but call `device_is_ready()` on each of the device pointers before we do anything in the ISR.",
+      "parentUuid": "0a95a9d0_b74bbbb5",
+      "range": {
+        "startLine": 639,
+        "startChar": 29,
+        "endLine": 639,
+        "endChar": 56
+      },
+      "revId": "d8c34d2cc0cb02cb28d1918cbe516d51762dbcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
