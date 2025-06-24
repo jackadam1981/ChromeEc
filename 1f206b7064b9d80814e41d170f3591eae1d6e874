@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de232ea_a212c01d",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-24T15:21:33Z",
+      "side": 1,
+      "message": "Nit - drop all `\\r` throughout this file.  It is not needed.",
+      "range": {
+        "startLine": 398,
+        "startChar": 49,
+        "endLine": 398,
+        "endChar": 53
+      },
+      "revId": "1f206b7064b9d80814e41d170f3591eae1d6e874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
