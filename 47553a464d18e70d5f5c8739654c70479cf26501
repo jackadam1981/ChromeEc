@@ -16,6 +16,24 @@
       "message": "According to the [C++ style guide](go/cstyle#Function_Declarations_and_Definitions), we should comment out the unused parameters:\n```suggestion\nstatic inline void chipset_throttle_cpu(int /* throttle */)\n```\nbut if this pattern has already been used elsewhere in the code, let\u0027s keep it consistent.",
       "revId": "47553a464d18e70d5f5c8739654c70479cf26501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec9f710_417d14aa",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-24T00:44:07Z",
+      "side": 1,
+      "message": "That only applies if it\u0027s a C++ only header. If you leave out the argument name then this will break in C. Casting to (void) is the way to handle a C/C++ header.",
+      "parentUuid": "37dc1b0a_051bbd25",
+      "revId": "47553a464d18e70d5f5c8739654c70479cf26501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
