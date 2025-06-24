@@ -85,6 +85,11 @@ test_mockable_static_inline int sniff_pdc_set_rdo(const struct device *dev,
 #define PDC_SM_SETTLED_EVENT BIT(2)
 
 /**
+ * @brief Event triggered when get_connector_status from pdc has completed
+ */
+#define PDC_PPM_CONNECTOR_STATUS_READY BIT(3)
+
+/**
  * @brief Time delay before running the state machine loop
  */
 #define LOOP_DELAY_MS 25
@@ -1288,6 +1293,8 @@ static void handle_connector_status(struct pdc_port_t *port)
 		port->overlay_ppm_changes.raw_value |=
 			conn_status_change_bits.raw_value;
 		trigger_ppm_ci(port);
+		k_event_post(&port->settle_event,
+			     PDC_PPM_CONNECTOR_STATUS_READY);
 	}
 
 	if (conn_status_change_bits.pd_reset_complete) {
@@ -3434,6 +3441,13 @@ static void pdc_ci_handler_cb(const struct device *dev,
 	}
 
 	if (cci_event.connector_change == config->connector_num + 1) {
+		/* Clear the status ready event before setting the PPM event
+		 * bit. This will correctly order calls to grab the cached
+		 * connector status in
+		 * |pdc_power_mgmt_get_connector_status_for_ppm|.
+		 */
+		k_event_clear(&port->settle_event,
+			      PDC_PPM_CONNECTOR_STATUS_READY);
 		atomic_set_bit(port->cci_flags, CCI_PPM_EVENT);
 		post_event = true;
 	}
@@ -5140,6 +5154,21 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 	}
 
 	pdc = &pdc_data[port]->port;
+
+	/* If a PPM event is pending, we need to wait for the connector status
+	 * ready event to be set before continuing.
+	 */
+	if (atomic_test_bit(pdc->cci_flags, CCI_PPM_EVENT)) {
+		rv = k_event_wait(&pdc->settle_event,
+				  PDC_PPM_CONNECTOR_STATUS_READY, false,
+				  K_MSEC(PDC_SM_SETTLED_TIMEOUT_MS));
+
+		if (!rv) {
+			return -ETIMEDOUT;
+		}
+
+		k_event_clear(&pdc->settle_event, rv);
+	}
 
 	rv = pdc_power_mgmt_get_connector_status(port, connector_status);
 
