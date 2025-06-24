@@ -49,7 +49,7 @@
 	dsp_service: dsp-service@21 {
 		compatible = "cros,dsp-service";
 		reg = <0x21>;
-		int-gpios = <&gpiob 7 (GPIO_ACTIVE_LOW)>;
+		int-gpios = <&gpiob 7 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)>;
 		allow-runtime-disable;
 	};
 };
