@@ -16,6 +16,7 @@
 #include <zephyr/drivers/emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/sys_clock.h>
 #include <zephyr/ztest.h>
 
 LOG_MODULE_REGISTER(pdc_power_mgmt_api, LOG_LEVEL_INF);
@@ -453,6 +454,44 @@ ZTEST_USER(pdc_power_mgmt_api, test_unattached_public_cmd)
 	memset(&connector_status, 0, sizeof(union connector_status_t));
 
 	run_toggle_test(&connector_status);
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status_for_ppm)
+{
+	union connector_status_t out;
+	k_timepoint_t delayed_irq;
+
+	memset(&out, 0, sizeof(union connector_status_t));
+	zassert_ok(pdc_power_mgmt_get_connector_status(TEST_PORT, &out));
+	emul_pdc_set_connector_status(emul, &out);
+
+	zassert_equal(-ERANGE, pdc_power_mgmt_get_connector_status(
+				       CONFIG_USB_PD_PORT_MAX_COUNT, &out));
+
+	/* Now try increasing the delay and confirming we wait for the result.
+	 * This should still succeed as long as the delay is less than the
+	 * settled timeout.
+	 */
+	emul_pdc_set_response_delay(emul, 250);
+	delayed_irq = sys_timepoint_calc(K_MSEC(250));
+	emul_pdc_pulse_irq(emul);
+	k_msleep(50);
+	zassert_ok(
+		pdc_power_mgmt_get_connector_status_for_ppm(TEST_PORT, &out));
+	zassert_true(sys_timepoint_expired(delayed_irq));
+
+	/* Now try hitting the timeout. */
+	emul_pdc_set_connector_status(emul, &out);
+	emul_pdc_set_response_delay(
+		emul,
+		CONFIG_PDC_POWER_MGMT_STATE_MACHINE_SETTLED_TIMEOUT_MS + 250);
+	emul_pdc_pulse_irq(emul);
+	k_msleep(50);
+	zassert_equal(-ETIMEDOUT, pdc_power_mgmt_get_connector_status_for_ppm(
+					  TEST_PORT, &out));
+
+	/* Reset to zero so subsequent things don't fail. */
+	emul_pdc_set_response_delay(emul, 0);
 }
 
 static void pdc_power_mgmt_connectionless_before(void *fixture)
