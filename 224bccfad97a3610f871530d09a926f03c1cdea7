@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db587e5e_c02ed711",
+        "filename": "zephyr/lib/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-24T16:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5caa4af6_7e56b04d",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "224bccfad97a3610f871530d09a926f03c1cdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1643d8e6_e68fc1f2",
