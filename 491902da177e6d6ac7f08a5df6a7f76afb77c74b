@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3988a97_f4ee479f",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-06-24T09:30:51Z",
+      "side": 1,
+      "message": "Done, change back to 0x21 and it can communicate through dsp",
+      "parentUuid": "4851ab7e_7d14d6ca",
+      "range": {
+        "startLine": 18,
+        "startChar": 33,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "491902da177e6d6ac7f08a5df6a7f76afb77c74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dbd6ef9_d78b6b7b",
