@@ -16,6 +16,92 @@
       "message": "This looks OK to me, but I\u0027m not really an ideal reviewer for battery stuff. I\u0027ll try to find someone more qualified.",
       "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f7d4aa_ca7ff2c0",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-06-24T23:40:26Z",
+      "side": 1,
+      "message": "nit: add a new line between structs",
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6325a0_b2ab55fc",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-06-24T23:40:26Z",
+      "side": 1,
+      "message": "please add a define or comment explaining why \"85\"",
+      "range": {
+        "startLine": 288,
+        "startChar": 17,
+        "endLine": 288,
+        "endChar": 19
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11010326_9e03414f",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-06-24T23:40:26Z",
+      "side": 1,
+      "message": "sorry I don\u0027t follow where is this 10 coming from?",
+      "range": {
+        "startLine": 298,
+        "startChar": 37,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0684d0eb_79ffb88f",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-06-24T23:40:26Z",
+      "side": 1,
+      "message": "nit: this block could be separated to avoid nesting. i.e. place this above line 394: \n```\nif (curr-\u003ebatt.is_present !\u003d BP_YES) {\n\tdesign_capacity \u003d 0;\n\ttemp_zone \u003d NORMAL_TEMP;\n\tbat_drop_voltage \u003d 0;\n\tboard_battery_type \u003d BATTERY_TYPE_COUNT;\n\treturn 0;\n}\n\n```",
+      "range": {
+        "startLine": 460,
+        "startChar": 3,
+        "endLine": 465,
+        "endChar": 2
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
