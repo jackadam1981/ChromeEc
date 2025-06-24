@@ -46,6 +46,29 @@
       },
       "revId": "491902da177e6d6ac7f08a5df6a7f76afb77c74b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbd6ef9_d78b6b7b",
+        "filename": "zephyr/program/trulo/pujjolo/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-06-24T07:16:59Z",
+      "side": 1,
+      "message": "remove this line as Pujjolo always enable ISH, it does not need to runtime disable.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "491902da177e6d6ac7f08a5df6a7f76afb77c74b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
