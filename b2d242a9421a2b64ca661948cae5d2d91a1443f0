@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6612b5fd_53748946",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-24T18:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60532bea_0f8e823a",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78bc831f_8afc1857",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-24T18:44:13Z",
       "side": 1,
       "message": "Add b:425486970 and b:427504021",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50bab12_008ebaac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-24T18:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78bc831f_8afc1857",
       "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,42 @@
       "writtenOn": "2025-06-24T18:44:13Z",
       "side": 1,
       "message": "Please add a TODO pointing to b/427504021",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d3510d_0f109f50",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-24T18:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c36101_602c935e",
+      "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d812adaa_c8537504",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-06-24T18:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f65274d_ee8a35fb",
       "revId": "b2d242a9421a2b64ca661948cae5d2d91a1443f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
