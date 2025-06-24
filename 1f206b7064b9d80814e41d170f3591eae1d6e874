@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef1f140_83efc436",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-24T17:37:15Z",
+      "side": 1,
+      "message": "Just minor nits.",
+      "revId": "1f206b7064b9d80814e41d170f3591eae1d6e874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3065836b_caf4ab84",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-24T17:37:15Z",
+      "side": 1,
+      "message": "Nit: The type should be `int`. Also apply to other `read_exact()` calls below.",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 9
+      },
+      "revId": "1f206b7064b9d80814e41d170f3591eae1d6e874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de232ea_a212c01d",
