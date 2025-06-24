@@ -35,12 +35,12 @@
 			};
 
 			color_red: color-red {
-				led-color = "LED_RED";
+				led-color = "LED_GREEN";
 				led-values = <0 100>;
 			};
 
 			color_green: color-green {
-				led-color = "LED_GREEN";
+				led-color = "LED_RED";
 				led-values = <100 0>;
 			};
 		};
