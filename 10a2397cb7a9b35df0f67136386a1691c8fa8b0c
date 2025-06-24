@@ -63,6 +63,30 @@
       },
       "revId": "10a2397cb7a9b35df0f67136386a1691c8fa8b0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670ba714_3276a0c5",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-24T20:01:22Z",
+      "side": 1,
+      "message": "Huh, I figured it would have added a space in `if(rdo`. I\u0027d still like you to add one, but it\u0027s a nit.",
+      "parentUuid": "ce6f98e8_a51b22b9",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 1
+      },
+      "revId": "10a2397cb7a9b35df0f67136386a1691c8fa8b0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
