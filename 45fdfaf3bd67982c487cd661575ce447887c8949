@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30ba5a1_5f809e28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-06-24T23:21:57Z",
+      "side": 1,
+      "message": "This CL contains a lot of files and code. This could be staged into multiple CLs. A first one that adds support for ITE and minimal number of configs enabled to do get a successful build. Then follow on CLs can be added by function (keyboard, usbc, leds, keyboard, etc). This would be easier to review.",
+      "revId": "45fdfaf3bd67982c487cd661575ce447887c8949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
