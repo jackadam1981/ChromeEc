@@ -6,6 +6,7 @@
 #include "gpio.dtsi"
 #include "gwendolin/rwsig.dtsi"
 #include "soc.dtsi"
+#include "npcx_default_gpio_pinctrl.dtsi"
 
 #include <cros/integrated_fwid.dtsi>
 
@@ -141,4 +142,16 @@
 		irq-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
 	};
+};
+
+&pinctrl {
+        /omit-if-no-ref/ shi_gpio_gp46_47_53_55: periph-shi-gpio {
+               pinmux = <&altc_shi_sl>;
+               pinmux-gpio;
+       };
+};
+
+&shi0 {
+       pinctrl-1 = <&shi_gpio_gp46_47_53_55>;
+       pinctrl-names = "default", "sleep";
 };
