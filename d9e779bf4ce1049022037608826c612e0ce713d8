@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a0323c_ca27593e",
+        "filename": "zephyr/dts/bindings/intel/intel,rvp-board-id.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-25T15:09:06Z",
+      "side": 1,
+      "message": "In practice, is BOM and FAB ID optional, or are these strappings always used?\n\nIf all RVP boards use BOM and FAB ID, you can simplify the code if these properties are required.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "d9e779bf4ce1049022037608826c612e0ce713d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698ab983_ca1ca9cd",
+        "filename": "zephyr/dts/bindings/intel/intel,rvp-board-id.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-25T15:09:06Z",
+      "side": 1,
+      "message": "This description is no longer accurate.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "d9e779bf4ce1049022037608826c612e0ce713d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
