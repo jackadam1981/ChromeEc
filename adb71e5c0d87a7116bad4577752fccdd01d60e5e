@@ -16,6 +16,24 @@
       "message": "Can you please try this out on a board w/ RTK PDC and retimer and see if it still enters CTS mode correctly? This old CL needed rebasing and refactoring",
       "revId": "adb71e5c0d87a7116bad4577752fccdd01d60e5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8494de_5bef6c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-25T22:32:25Z",
+      "side": 1,
+      "message": "Since this has UTs and is based on code that has previously successfully worked on real devices, I\u0027m going to merge this now so the CL does not get stale.\n\nIntel, when you get a chance, please test out this command and verify the retimer enters CTS mode.",
+      "parentUuid": "f75aa6e4_1b2c2290",
+      "revId": "adb71e5c0d87a7116bad4577752fccdd01d60e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
