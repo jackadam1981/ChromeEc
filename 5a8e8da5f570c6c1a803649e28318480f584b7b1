@@ -46,6 +46,30 @@
       },
       "revId": "5a8e8da5f570c6c1a803649e28318480f584b7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352190a2_61fe545b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-25T21:48:52Z",
+      "side": 1,
+      "message": "Hmm, I\u0027d like to see what the diff is. Do you have any more details on the difference in https://crrev.com/c/6648444?\n\nIf we expect `CONFIG_ROLLBACK_SIZE / ROLLBACK_REGIONS` to equal `CONFIG_FLASH_ERASE_SIZE`, then I would expect the binaries to be exactly the same.",
+      "parentUuid": "5a758894_fd3ecdf4",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "5a8e8da5f570c6c1a803649e28318480f584b7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
