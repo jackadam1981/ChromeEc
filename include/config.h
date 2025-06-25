@@ -4096,6 +4096,9 @@
 /* (b/262324344): Enable debugging of EPS state in NVMEM */
 #undef CONFIG_NVMEM_DEBUG_EPS
 
+/* Configure Strongbox command support */
+#undef CONFIG_STRONGBOX
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
@@ -4646,6 +4649,10 @@
 
 #ifdef CONFIG_SMBUS_PEC
 #define CONFIG_CRC8
+#endif
+
+#if defined(CONFIG_STRONGBOX) && !defined(CONFIG_EXTENSION_COMMAND)
+#error "CONFIG_EXTENSION_COMMAND shall be defined for CONFIG_STRONGBOX"
 #endif
 
 /* Don't run RSA 2048 known-answer test (+30 ms). */

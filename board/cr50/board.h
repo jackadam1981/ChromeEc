@@ -229,6 +229,9 @@
 /* Don't use DCRYPTO code from chip/g. */
 #undef CONFIG_DCRYPTO
 
+/* Enable Strongbox for Cr50 */
+#define CONFIG_STRONGBOX
+
 /*
  * This is pretty arbitrary, a rough estimate of what's required for smooth
  * Cr50 operation.

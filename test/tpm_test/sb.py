@@ -10,6 +10,39 @@ import struct
 TPM_SU_CLEAR = 0x0000
 TPM_SU_STATE = 0x0001
 
+SB_DeviceGetHardwareInfo = 0x11
+SB_DeviceAddRngEntropy = 0x12
+SB_DeviceGenerateKey = 0x13
+SB_DeviceImportKey = 0x14
+SB_DeviceImportWrappedKey = 0x15
+SB_DeviceUpgradeKey = 0x16
+SB_DeviceDeleteKey = 0x17
+SB_DeviceDeleteAllKeys = 0x18
+SB_DeviceDestroyAttestationIds = 0x19
+SB_DeviceBegin = 0x1a
+SB_DeviceEarlyBootEnded = 0x1c
+SB_DeviceConvertStorageKeyToEphemeral = 0x1d
+SB_DeviceGetKeyCharacteristics = 0x1e
+SB_OperationUpdateAad = 0x31
+SB_OperationUpdate = 0x32
+SB_OperationFinish = 0x33
+SB_OperationAbort = 0x34
+SB_RpcGetHardwareInfo = 0x41
+SB_RpcGenerateEcdsaP256KeyPair = 0x42
+SB_RpcGenerateCertificateRequest = 0x43
+SB_RpcGenerateCertificateV2Request = 0x44
+SB_SharedSecretGetSharedSecretParameters = 0x51
+SB_SharedSecretComputeSharedSecret = 0x52
+SB_SecureClockGenerateTimeStamp = 0x61
+SB_GetRootOfTrustChallenge = 0x71
+SB_GetRootOfTrust = 0x72
+SB_SendRootOfTrust = 0x73
+SB_SetHalInfo = 0x81
+SB_SetBootInfo = 0x82
+SB_SetAttestationIds = 0x83
+SB_SetHalVersion = 0x84
+SB_SetAdditionalAttestationInfo = 0x91
+
 def tpm2_startup(tpm, state):
     """Send TPM2_Startup command
 
@@ -51,13 +84,6 @@ def tpm2_shutdown(tpm, state):
     response = tpm.command(cmd)
     return response
 
-# TEST_SIGN:
-# OP | CURVE_ID | SIGN_MODE | HASHING | DIGEST_LEN | DIGEST
-#    @returns 0/1 | R_LEN | R | S_LEN | S
-# def sb_cmd(curve_id, hash_func, sign_mode, msg):
-#     digest = hash_func(msg).digest()
-#     return struct.pack('>BBBBH', _ECC_OPCODES['SIGN'], curve_id, sign_mode,
-#                       _HASH['NONE'], len(digest)) + digest
 
 def wrap_sb_command(subcmd_code, cmd_body):
     """Wrap TPM command into extension command header"""
@@ -105,7 +131,7 @@ def unwrap_ext_response(self, expected_subcmd, response):
 def sb_test(tpm):
     """Run TPM2 startup/shutdown in a loop tests"""
     tpm2_startup(tpm, TPM_SU_CLEAR)
-    w_rsp = tpm.command(wrap_sb_command(0x11, b""))
-    rsp = unwrap_ext_response(0x11, w_rsp)
+    w_rsp = tpm.command(wrap_sb_command(SB_DeviceGetHardwareInfo, b""))
+    rsp = tpm.unwrap_ext_response(SB_DeviceGetHardwareInfo, w_rsp)
     print(rsp)
     tpm2_shutdown(tpm, TPM_SU_STATE)

@@ -26,7 +26,7 @@ enum vendor_cmd_flags {
 /* Parameters for vendor commands */
 struct vendor_cmd_params {
 	/* Command code */
-	enum vendor_cmd_cc code;
+	uint32_t code;
 
 	/* On input, data to be processed.  On output, response data. */
 	void *buffer;
@@ -60,17 +60,6 @@ typedef enum vendor_cmd_rc
  */
 uint32_t extension_route_command(struct vendor_cmd_params *p);
 
-
-/**
- * Find handler for an StrongBox extension command.
- *
- * Use the interface specific function call in order to check the policies for
- * handling the commands on that interface.
- *
- * @param p		Parameters for the command
- * @return The return code from processing the command.
- */
-uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p);
 
 /* Pointer table */
 struct extension_command {
