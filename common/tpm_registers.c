@@ -45,6 +45,10 @@
 #include "watchdog.h"
 #include "wp.h"
 
+#ifdef CONFIG_STRONGBOX
+#include "strongbox.h"
+#endif
+
 /****************************************************************************/
 /*
  * CAUTION: Variables defined in this in this file are treated specially.
@@ -696,10 +700,19 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 		case CONFIG_EXTENSION_COMMAND:
 		case TPM_CC_VENDOR_CR50:
 			rc = extension_route_command(&p);
+			/* Flag errors from commands as vendor-specific */
+			if (rc)
+				rc |= VENDOR_RC_ERR;
+
 			break;
+#ifdef CONFIG_STRONGBOX
 		case TPM_CC_VENDOR_STRONGBOX:
 			rc = extension_route_strongbox_command(&p);
+			/* Strongbox errors are in the range -1 .. -1000 */
+			if (rc)
+				rc = 0x400 - rc;
 			break;
+#endif
 		default:
 			break;
 		}
@@ -707,10 +720,6 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 		/* Add the header size back. */
 		*total_size = p.out_size + sizeof(struct tpm_cmd_header);
 		tpmh->size = htobe32(*total_size);
-
-		/* Flag errors from commands as vendor-specific */
-		if (rc)
-			rc |= VENDOR_RC_ERR;
 		tpmh->command_code = htobe32(rc);
 	} else {
 		*total_size = command_size;
