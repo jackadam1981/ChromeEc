@@ -232,6 +232,16 @@ int cbi_set_fw_config(uint32_t fw_config);
 int cbi_set_ssfc(uint32_t ssfc);
 
 /**
+ * Set and update MODEL_ID tag field
+ *
+ * @param model_id updated value for MODEL_ID tag
+ * @return EC_SUCCESS to indicate the field was written correctly.
+ *         EC_ERROR_ACCESS_DENIED to indicate WP is active
+ *         EC_ERROR_UNKNOWN to indicate that the write operation failed
+ */
+int cbi_set_model_id(uint32_t model_id);
+
+/**
  * Initialize CBI cache
  */
 int cbi_create(void);

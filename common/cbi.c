@@ -727,4 +727,28 @@ int cbi_set_ssfc(uint32_t ssfc)
 }
 #endif
 
+int cbi_set_model_id(uint32_t model_id)
+{
+	/* Check write protect status */
+	if (cbi_config->drv->is_protected())
+		return EC_ERROR_ACCESS_DENIED;
+
+	/* Ensure that CBI has been configured */
+	if (cbi_read())
+		cbi_create();
+
+	/* Update the MODEL_ID field */
+	cbi_set_board_info(CBI_TAG_MODEL_ID, (uint8_t *)&model_id,
+			   sizeof(model_id));
+
+	/* Update CRC calculation and write to the storage */
+	head->crc = cbi_crc8(head);
+	if (cbi_write())
+		return EC_ERROR_UNKNOWN;
+
+	dump_cbi();
+
+	return EC_SUCCESS;
+}
+
 #endif /* !HOST_TOOLS_BUILD */
