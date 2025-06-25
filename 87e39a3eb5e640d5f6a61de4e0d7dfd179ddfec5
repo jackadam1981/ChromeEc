@@ -46,6 +46,30 @@
       },
       "revId": "87e39a3eb5e640d5f6a61de4e0d7dfd179ddfec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81050d9f_c35c6724",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-25T15:47:53Z",
+      "side": 1,
+      "message": "Nit - change the check to `if (pdc_get_error_status) \u003d\u003d 0)`.\n\nI don\u0027t agree that there is a test case that causes a PDC port to be disabled at startup.  Without a test we could easily break the charge manager seeding again.\n\nThe flow to test this would be:\n* Add a test case to `charge_manager_seeding_pre_main`\n* In the test setup, force a PDC port to have an error.  This requires a small update to emul_pdc.h to provide a hook to cause init to fail. For the RTK part, this could checked by [vendor_cmd_enable](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/release-firmware/fpmcu-bloonchipper/ec/zephyr/emul/emul_realtek_rts54xx.c;l\u003d82;drc\u003d6273a10f968baec3c678ecc63e7fbae137ed7432)\n* Test trigger ec_app_main\n* Test verifies charge manager seeded.",
+      "parentUuid": "b0d582a5_bc06b47a",
+      "range": {
+        "startLine": 3264,
+        "startChar": 0,
+        "endLine": 3264,
+        "endChar": 56
+      },
+      "revId": "87e39a3eb5e640d5f6a61de4e0d7dfd179ddfec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
