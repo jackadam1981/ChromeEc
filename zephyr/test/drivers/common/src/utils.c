@@ -226,10 +226,11 @@ enum ec_status host_cmd_host_event(enum ec_host_event_action action,
 {
 	enum ec_status ret_val;
 
-	struct ec_params_host_event params = {
-		.action = action,
-		.mask_type = mask_type,
-	};
+	struct ec_params_host_event params;
+	memset(&params, 0, sizeof(params));
+
+	params.action = action;
+	params.mask_type = mask_type;
 
 	ret_val = ec_cmd_host_event(NULL, &params, r);
 
@@ -240,12 +241,11 @@ void host_cmd_motion_sense_dump(int max_sensor_count,
 				struct ec_response_motion_sense *response,
 				size_t response_size)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_DUMP,
-		.dump = {
-			.max_sensor_count = max_sensor_count,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_DUMP;
+	params.dump.max_sensor_count = max_sensor_count;
 
 	struct host_cmd_handler_args args = {
 		.send_response = stub_send_response_callback,
@@ -265,12 +265,11 @@ void host_cmd_motion_sense_dump(int max_sensor_count,
 int host_cmd_motion_sense_data(uint8_t sensor_num,
 			       struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_DATA,
-		.sensor_odr = {
-			.sensor_num = sensor_num,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_DATA;
+	params.sensor_odr.sensor_num = sensor_num;
 
 	return ec_cmd_motion_sense_cmd_v4(NULL, &params, response);
 }
@@ -278,12 +277,12 @@ int host_cmd_motion_sense_data(uint8_t sensor_num,
 int host_cmd_motion_sense_info(uint8_t cmd_version, uint8_t sensor_num,
 			       struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_INFO,
-		.sensor_odr = {
-			.sensor_num = sensor_num,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_INFO;
+	params.sensor_odr.sensor_num = sensor_num;
+
 	struct host_cmd_handler_args args = BUILD_HOST_COMMAND(
 		EC_CMD_MOTION_SENSE_CMD, cmd_version, *response, params);
 	int ret = host_command_process(&args);
@@ -306,13 +305,12 @@ int host_cmd_motion_sense_info(uint8_t cmd_version, uint8_t sensor_num,
 int host_cmd_motion_sense_ec_rate(uint8_t sensor_num, int data_rate_ms,
 				  struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_EC_RATE,
-		.ec_rate = {
-			.sensor_num = sensor_num,
-			.data = data_rate_ms,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_EC_RATE,
+	params.ec_rate.sensor_num = sensor_num;
+	params.ec_rate.data = data_rate_ms;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -320,14 +318,13 @@ int host_cmd_motion_sense_ec_rate(uint8_t sensor_num, int data_rate_ms,
 int host_cmd_motion_sense_odr(uint8_t sensor_num, int32_t odr, bool round_up,
 			      struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_SENSOR_ODR,
-		.sensor_odr = {
-			.sensor_num = sensor_num,
-			.data = odr,
-			.roundup = round_up,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_SENSOR_ODR,
+	params.sensor_odr.sensor_num = sensor_num;
+	params.sensor_odr.data = odr;
+	params.sensor_odr.roundup = round_up;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -336,14 +333,13 @@ int host_cmd_motion_sense_range(uint8_t sensor_num, int32_t range,
 				bool round_up,
 				struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_SENSOR_RANGE,
-		.sensor_range = {
-			.sensor_num = sensor_num,
-			.data = range,
-			.roundup = round_up,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_SENSOR_RANGE;
+	params.sensor_range.sensor_num = sensor_num;
+	params.sensor_range.data = range;
+	params.sensor_range.roundup = round_up;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -353,15 +349,16 @@ int host_cmd_motion_sense_offset(uint8_t sensor_num, uint16_t flags,
 				 int16_t offset_y, int16_t offset_z,
 				 struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_SENSOR_OFFSET,
-		.sensor_offset = {
-			.sensor_num = sensor_num,
-			.flags = flags,
-			.temp = temperature,
-			.offset = { offset_x, offset_y, offset_z },
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_SENSOR_OFFSET;
+	params.sensor_offset.sensor_num = sensor_num;
+	params.sensor_offset.flags = flags;
+	params.sensor_offset.temp = temperature;
+	params.sensor_offset.offset[0] = offset_x;
+	params.sensor_offset.offset[1] = offset_y;
+	params.sensor_offset.offset[2] = offset_z;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -371,15 +368,16 @@ int host_cmd_motion_sense_scale(uint8_t sensor_num, uint16_t flags,
 				int16_t scale_y, int16_t scale_z,
 				struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_SENSOR_SCALE,
-		.sensor_scale = {
-			.sensor_num = sensor_num,
-			.flags = flags,
-			.temp = temperature,
-			.scale = { scale_x, scale_y, scale_z },
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_SENSOR_SCALE,
+	params.sensor_scale.sensor_num = sensor_num;
+	params.sensor_scale.flags = flags;
+	params.sensor_scale.temp = temperature;
+	params.sensor_scale.scale[0] = scale_x;
+	params.sensor_scale.scale[1] = scale_y;
+	params.sensor_scale.scale[2] = scale_z;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -387,13 +385,12 @@ int host_cmd_motion_sense_scale(uint8_t sensor_num, uint16_t flags,
 int host_cmd_motion_sense_calib(uint8_t sensor_num, bool enable,
 				struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_PERFORM_CALIB,
-		.perform_calib = {
-			.sensor_num = sensor_num,
-			.enable = enable,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_PERFORM_CALIB,
+	params.perform_calib.sensor_num = sensor_num;
+	params.perform_calib.enable = enable;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -402,12 +399,11 @@ int host_cmd_motion_sense_fifo_flush(uint8_t sensor_num,
 				     struct ec_response_motion_sense *response,
 				     size_t response_size)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_FIFO_FLUSH,
-		.sensor_odr = {
-			.sensor_num = sensor_num,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_FIFO_FLUSH;
+	params.sensor_odr.sensor_num = sensor_num;
 
 	struct host_cmd_handler_args args = {
 		.send_response = stub_send_response_callback,
@@ -426,9 +422,10 @@ int host_cmd_motion_sense_fifo_flush(uint8_t sensor_num,
 int host_cmd_motion_sense_fifo_info(struct ec_response_motion_sense *response,
 				    size_t response_size)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_FIFO_INFO,
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_FIFO_INFO;
 
 	struct host_cmd_handler_args args = {
 		.send_response = stub_send_response_callback,
@@ -447,12 +444,11 @@ int host_cmd_motion_sense_fifo_info(struct ec_response_motion_sense *response,
 int host_cmd_motion_sense_fifo_read(uint8_t buffer_length,
 				    struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_FIFO_READ,
-		.fifo_read = {
-			.max_data_vector = buffer_length,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_FIFO_READ;
+	params.fifo_read.max_data_vector = buffer_length;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -460,12 +456,11 @@ int host_cmd_motion_sense_fifo_read(uint8_t buffer_length,
 int host_cmd_motion_sense_int_enable(int8_t enable,
 				     struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_FIFO_INT_ENABLE,
-		.fifo_int_enable = {
-			.enable = enable,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_FIFO_INT_ENABLE;
+	params.fifo_int_enable.enable = enable;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -475,14 +470,15 @@ int host_cmd_motion_sense_spoof(uint8_t sensor_num, uint8_t enable,
 				int16_t values2,
 				struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_SPOOF,
-		.spoof = {
-			.sensor_id = sensor_num,
-			.spoof_enable = enable,
-			.components = { values0, values1, values2 },
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_SPOOF;
+	params.spoof.sensor_id = sensor_num;
+	params.spoof.spoof_enable = enable;
+	params.spoof.components[0] = values0;
+	params.spoof.components[1] = values1;
+	params.spoof.components[2] = values2;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -490,21 +486,21 @@ int host_cmd_motion_sense_spoof(uint8_t sensor_num, uint8_t enable,
 int host_cmd_motion_sense_kb_wake_angle(
 	int16_t data, struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_KB_WAKE_ANGLE,
-		.kb_wake_angle = {
-			.data = data,
-		},
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_KB_WAKE_ANGLE,
+	params.kb_wake_angle.data = data;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
 
 int host_cmd_motion_sense_lid_angle(struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense params = {
-		.cmd = MOTIONSENSE_CMD_LID_ANGLE,
-	};
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_LID_ANGLE;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
@@ -513,12 +509,12 @@ int host_cmd_motion_sense_tablet_mode_lid_angle(
 	int16_t lid_angle, int16_t hys_degree,
 	struct ec_response_motion_sense *response)
 {
-	struct ec_params_motion_sense
-		params = { .cmd = MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE,
-			   .tablet_mode_threshold = {
-				   .lid_angle = lid_angle,
-				   .hys_degree = hys_degree,
-			   } };
+	struct ec_params_motion_sense params;
+	memset(&params, 0, sizeof(params));
+
+	params.cmd = MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE;
+	params.tablet_mode_threshold.lid_angle = lid_angle;
+	params.tablet_mode_threshold.hys_degree = hys_degree;
 
 	return ec_cmd_motion_sense_cmd_v1(NULL, &params, response);
 }
