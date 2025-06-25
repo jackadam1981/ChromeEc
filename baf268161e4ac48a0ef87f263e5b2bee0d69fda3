@@ -69,6 +69,30 @@
       },
       "revId": "baf268161e4ac48a0ef87f263e5b2bee0d69fda3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a21684_38674e99",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/usbc_runtime.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-25T18:06:29Z",
+      "side": 1,
+      "message": "correct, the type-c connectors are on the baseboard but they\nare routed through a mezzanine board. in theory, you could swap\nthe board to replace the PDCs, etc. i believe the detect signal\nhere is for the mezzanine board.",
+      "parentUuid": "525d6457_a4456319",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "baf268161e4ac48a0ef87f263e5b2bee0d69fda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
