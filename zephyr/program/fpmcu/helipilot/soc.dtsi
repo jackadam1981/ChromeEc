@@ -5,6 +5,7 @@
 
 #include <cros/nuvoton/npcx9_cros.dtsi>
 #include <nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi>
+#include "npcx_default_gpio_pinctrl.dtsi"
 
 
 / {
@@ -101,4 +102,17 @@
 	 * UART2 Baudrate=3 MHz
 	 */
 	apb4-prescaler = <2>;
+};
+
+
+&pinctrl {
+        /omit-if-no-ref/ shi_gpio_gp46_47_53_55: periph-shi-gpio {
+               pinmux = <&altc_shi_sl>;
+               pinmux-gpio;
+       };
+};
+
+&shi0 {
+       pinctrl-1 = <&shi_gpio_gp46_47_53_55>;
+       pinctrl-names = "default", "sleep";
 };
