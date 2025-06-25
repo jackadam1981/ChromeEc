@@ -70,6 +70,30 @@
       },
       "revId": "87e39a3eb5e640d5f6a61de4e0d7dfd179ddfec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b34641_343fa024",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3264,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-06-25T15:52:44Z",
+      "side": 1,
+      "message": "Ok sounds good I will work on a test case and update the patch",
+      "parentUuid": "81050d9f_c35c6724",
+      "range": {
+        "startLine": 3264,
+        "startChar": 0,
+        "endLine": 3264,
+        "endChar": 56
+      },
+      "revId": "87e39a3eb5e640d5f6a61de4e0d7dfd179ddfec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
