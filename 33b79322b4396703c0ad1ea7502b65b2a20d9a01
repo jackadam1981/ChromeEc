@@ -22,6 +22,30 @@
       },
       "revId": "33b79322b4396703c0ad1ea7502b65b2a20d9a01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53551335_2fec279a",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-25T07:41:34Z",
+      "side": 1,
+      "message": "You\u0027re correct. This is reduntant. I checked with just the `extract_pdo_helper` change and confirmed that the test passes.",
+      "parentUuid": "973557d0_d8c799b6",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 32
+      },
+      "revId": "33b79322b4396703c0ad1ea7502b65b2a20d9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
