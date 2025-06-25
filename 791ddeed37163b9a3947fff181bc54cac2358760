@@ -16,6 +16,24 @@
       "message": "i\u0027m confused. does francka not support the non-inverted KSO02?\nis there a plan to fix this?",
       "revId": "791ddeed37163b9a3947fff181bc54cac2358760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36fc60b_699c5799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-06-25T04:28:56Z",
+      "side": 1,
+      "message": "Compal will try the GSC strapping to verify non-inverted KSO02 and introduce in future orb board if works.",
+      "parentUuid": "cdaf62e4_d7c2916a",
+      "revId": "791ddeed37163b9a3947fff181bc54cac2358760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
