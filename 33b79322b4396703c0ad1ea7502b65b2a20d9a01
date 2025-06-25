@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973557d0_d8c799b6",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-06-25T06:39:05Z",
+      "side": 1,
+      "message": "This becomes redundant if we change `extract_pdo_helper` the way you are doing in this PS. Now that the ma is calculated correctly, it takes care of uw automatically. Please check once and confirm.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 32
+      },
+      "revId": "33b79322b4396703c0ad1ea7502b65b2a20d9a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
