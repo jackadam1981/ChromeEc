@@ -16,6 +16,29 @@
       "message": "Pre-submit error:\n```\n      19:52:19: WARNING: zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt: needs formatting\n      19:53:02: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt\n```",
       "revId": "9be1cb518783304efeb9b66ba33f21b4f84e91fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd659cd_02de68c2",
+        "filename": "zephyr/shim/chip/rtk/CMakeLists.txt",
+        "patchSetId": 23
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-25T11:54:48Z",
+      "side": 1,
+      "message": "This needs a guard against building when coverage is enabled.\n```\nif (NOT DEFINED CONFIG_COVERAGE)\n  add_subdirectory(rtk_flame)\nendif()\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 16
+      },
+      "revId": "9be1cb518783304efeb9b66ba33f21b4f84e91fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
