@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "63cc1861825221b6c720eb5a57af8c18b7773100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175298a6_1f96a03a",
+        "filename": "test/stdlib.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-25T19:04:23Z",
+      "side": 1,
+      "message": "You can remove this",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "63cc1861825221b6c720eb5a57af8c18b7773100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84dd44bd_b41ee37f",
+        "filename": "test/stdlib.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-25T19:04:23Z",
+      "side": 1,
+      "message": "Now that https://crrev.com/c/6409117 is merged, you should be able to remove this. However, I think you\u0027ll need to add a `Cq-Depend: chromium:6409117` to make sure that the CQ run picks it up since it was just merged recently.",
+      "range": {
+        "startLine": 413,
+        "startChar": 31,
+        "endLine": 413,
+        "endChar": 62
+      },
+      "revId": "63cc1861825221b6c720eb5a57af8c18b7773100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
