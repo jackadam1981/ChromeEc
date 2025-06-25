@@ -16,6 +16,24 @@
       "message": "in b/426606407, you mentioned this will break existing test cases.\nis that still a problem?",
       "revId": "7443687d9b84a204577f136ee482e5cbf79943ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e44c1a_9959c094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-06-25T21:14:21Z",
+      "side": 1,
+      "message": "It has ben already handled by changes in `zephyr/test/ap_power/src/ap_pwrseq.c`.",
+      "parentUuid": "1d3c9d4a_695120fb",
+      "revId": "7443687d9b84a204577f136ee482e5cbf79943ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
