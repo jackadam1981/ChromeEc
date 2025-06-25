@@ -48,16 +48,16 @@ void shared_mem_release(void *ptr)
 #ifdef CONFIG_CMD_SHMEM
 static int command_shmem(int argc, const char **argv)
 {
-	struct mallinfo info = mallinfo();
+	struct mallinfo2 info = mallinfo2();
 
 	/* The max size of shared mem region, for a given image. */
 	ccprintf("System Total:     %d\n", shared_mem_size());
 	/* The total size currently reserved from system for malloc. */
-	ccprintf("Malloc Reserved:  %d\n", info.arena);
+	ccprintf("Malloc Reserved:  %zu\n", info.arena);
 	/* The total allocated space, of the reserved space. */
-	ccprintf("Malloc Allocated: %d\n", info.uordblks);
+	ccprintf("Malloc Allocated: %zu\n", info.uordblks);
 	/* The total unused space, of the reserved space. */
-	ccprintf("Malloc Free:      %d\n", info.fordblks + info.fsmblks);
+	ccprintf("Malloc Free:      %zu\n", info.fordblks + info.fsmblks);
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(shmem, command_shmem, NULL,
