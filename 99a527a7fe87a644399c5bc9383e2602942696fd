@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c1f4799_485eb6c3",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2025-06-25T07:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f7d4aa_ca7ff2c0",
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a6325a0_b2ab55fc",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-06-24T23:40:26Z",
       "side": 1,
       "message": "please add a define or comment explaining why \"85\"",
+      "range": {
+        "startLine": 288,
+        "startChar": 17,
+        "endLine": 288,
+        "endChar": 19
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b33fa0_6c6b8939",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2025-06-25T07:57:00Z",
+      "side": 1,
+      "message": "Battery voltage and current for charging are changed by FCC - DC rate to reduce battery stress and extend battery lifetime.\nOur Power team will comment about this in issue tracker",
+      "parentUuid": "5a6325a0_b2ab55fc",
       "range": {
         "startLine": 288,
         "startChar": 17,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4f1f7f_9cd96c6f",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2025-06-25T07:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11010326_9e03414f",
+      "range": {
+        "startLine": 298,
+        "startChar": 37,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0684d0eb_79ffb88f",
@@ -94,6 +160,30 @@
       "writtenOn": "2025-06-24T23:40:26Z",
       "side": 1,
       "message": "nit: this block could be separated to avoid nesting. i.e. place this above line 394: \n```\nif (curr-\u003ebatt.is_present !\u003d BP_YES) {\n\tdesign_capacity \u003d 0;\n\ttemp_zone \u003d NORMAL_TEMP;\n\tbat_drop_voltage \u003d 0;\n\tboard_battery_type \u003d BATTERY_TYPE_COUNT;\n\treturn 0;\n}\n\n```",
+      "range": {
+        "startLine": 460,
+        "startChar": 3,
+        "endLine": 465,
+        "endChar": 2
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d22b0a_8d0a21a0",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2025-06-25T07:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0684d0eb_79ffb88f",
       "range": {
         "startLine": 460,
         "startChar": 3,
