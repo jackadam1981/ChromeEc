@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b964fa_10a032a8",
+        "filename": "test/stdlib.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-25T20:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "175298a6_1f96a03a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "63cc1861825221b6c720eb5a57af8c18b7773100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84dd44bd_b41ee37f",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-06-25T19:04:23Z",
       "side": 1,
       "message": "Now that https://crrev.com/c/6409117 is merged, you should be able to remove this. However, I think you\u0027ll need to add a `Cq-Depend: chromium:6409117` to make sure that the CQ run picks it up since it was just merged recently.",
+      "range": {
+        "startLine": 413,
+        "startChar": 31,
+        "endLine": 413,
+        "endChar": 62
+      },
+      "revId": "63cc1861825221b6c720eb5a57af8c18b7773100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a1006e_2c24c767",
+        "filename": "test/stdlib.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-25T20:01:49Z",
+      "side": 1,
+      "message": "my understanding is `memmove` using `stdlib` does it generate any improvement. This is how we are treating it in the [zephyr test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/lib/src/stdlib.c;l\u003d410?q\u003dzephyr%2Ftest%20stdlib.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d409-,410,-411) that uses stdlib. Please let me know if you believe that it should still be removed.",
+      "parentUuid": "84dd44bd_b41ee37f",
       "range": {
         "startLine": 413,
         "startChar": 31,
