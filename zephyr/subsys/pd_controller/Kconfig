@@ -24,6 +24,12 @@ config PDC_POWER_MGMT_INIT_PRIORITY
 	help
 	  Initialization priority of the USB-C in POST_KERNEL.
 
+config PLATFORM_EC_USB_PDC_RUNTIME_LOG
+	bool "Control pd log at runtime."
+	default n
+	help
+	  Enable this to support configuring pd log at runtime.
+
 config CHARGE_MANAGER_SYS_INIT_PRIORITY
 	int "USB-C stack init priority"
 	default 89
