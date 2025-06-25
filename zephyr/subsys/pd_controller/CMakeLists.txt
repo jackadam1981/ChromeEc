@@ -21,3 +21,5 @@ zephyr_library_sources_ifdef(CONFIG_USBC_PDC_TRACE_MSG
 	pdc_trace_msg.c)
 zephyr_library_sources_ifdef(CONFIG_PDC_RUNTIME_PORT_CONFIG
 	pdc_runtime_port_config.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_PDC_RUNTIME_LOG
+	pdc_runtime_log.c)
