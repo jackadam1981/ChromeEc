@@ -22,6 +22,30 @@
       },
       "revId": "5a8e8da5f570c6c1a803649e28318480f584b7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a758894_fd3ecdf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-25T21:45:25Z",
+      "side": 1,
+      "message": "I can do this. The last attempt on helipilot failed for this [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6648444), even though we\u0027re confident no material changes were introduced.",
+      "parentUuid": "a8698ad9_aa0d4d7a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "5a8e8da5f570c6c1a803649e28318480f584b7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
