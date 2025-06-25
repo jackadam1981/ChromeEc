@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27d164a_4f88a13a",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-25T02:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873df872_a47b869d",
+      "range": {
+        "startLine": 101,
+        "startChar": 18,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "668f8a99_ea276276",
@@ -72,6 +96,30 @@
       "writtenOn": "2025-06-24T20:34:25Z",
       "side": 1,
       "message": "move this up as well.",
+      "range": {
+        "startLine": 117,
+        "startChar": 41,
+        "endLine": 117,
+        "endChar": 50
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54064f93_b4c58ad2",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-25T02:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "668f8a99_ea276276",
       "range": {
         "startLine": 117,
         "startChar": 41,
@@ -105,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f31b9f_625ccd74",
+        "filename": "zephyr/program/fatcat/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-25T02:54:47Z",
+      "side": 1,
+      "message": "Yes, due to felino4es inherits felino\u0027s project.conf, only use this nested can distinguish different keyboard_customization.c.",
+      "parentUuid": "a7097fef_83293451",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a51df6e9_d9d61573",
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d110b5_dbddf863",
+        "filename": "zephyr/program/fatcat/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-25T02:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a51df6e9_d9d61573",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "974cc0b1_5e190633",
@@ -141,6 +237,30 @@
       "writtenOn": "2025-06-24T20:31:41Z",
       "side": 1,
       "message": "battery config can be shared as well, right?\nmaybe a follow-up CL?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "883142aeffb8a6c808a19254cdf8dcfba8550b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1af3d2_be083c76",
+        "filename": "zephyr/program/fatcat/felino4es/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-25T02:54:47Z",
+      "side": 1,
+      "message": "Ok, I will move the batteries to a battery.dtsi file in next CL.",
+      "parentUuid": "974cc0b1_5e190633",
       "range": {
         "startLine": 27,
         "startChar": 1,
