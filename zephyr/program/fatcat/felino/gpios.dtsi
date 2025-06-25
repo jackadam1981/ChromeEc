@@ -178,6 +178,11 @@
 			enum-name = "GPIO_EC_INT_L";
 		};
 	};
+
+	usba-port-enable-list {
+		compatible = "cros-ec,usba-port-enable-pins";
+		enable-pins = <&gpio_en_pp5000_usba>;
+	};
 };
 
 /*
@@ -193,4 +198,13 @@ cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
 	i2c3_data_gph2_default: i2c3_data_gph2_default {
 		gpio-voltage = "1v8";
 	};
+};
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+};
+
+&sha0 {
+	status = "okay";
 };
