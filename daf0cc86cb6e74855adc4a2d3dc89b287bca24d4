@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b987d97_a778e6d8",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-25T05:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46f2b7a_c133defd",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 16
+      },
+      "revId": "daf0cc86cb6e74855adc4a2d3dc89b287bca24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79e2565a_ed9fdd66",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I think the interfaces that this function is based on are somewhat redundant, and that\u0027s contributing to the confusion of this function. I\u0027m  not sure what the side effects of refactoring would be, but if we can do it a little bit, that might help this function be more obviously correct.\n\nIn this function, we call `pd_select_best_pdo`, which does all of the power math for each PDO and discards the intermediate values to just return the PDO index. Then, we call `pd_extract_pdo_power` to do that math again for the specific PDO that was returned. Then, this function does more power math based on the flags. I think this is where we get in trouble. The functions that this function calls are aware of the invariants of different RDO types, but this function isn\u0027t, so it messes up the final power math for the battery RDO.\n\nIt seems like there should be an opportunity to either consolidate all of the power math into this function or for this function to delegate its own power math to some other function that is already RDO-type aware. Since the functions I mentioned have other callers, I don\u0027t know how easy this refactor will be in practice.",
       "parentUuid": "79e2565a_ed9fdd66",
+      "range": {
+        "startLine": 180,
+        "startChar": 11,
+        "endLine": 180,
+        "endChar": 29
+      },
+      "revId": "daf0cc86cb6e74855adc4a2d3dc89b287bca24d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36f6d94_06342ae9",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-06-25T05:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f87516_1f8be97a",
       "range": {
         "startLine": 180,
         "startChar": 11,
