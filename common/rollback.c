@@ -205,12 +205,13 @@ static int get_rollback_erase_size_bytes(int region)
 	int erase_size;
 
 #ifndef CONFIG_FLASH_MULTIPLE_REGION
-	erase_size = CONFIG_FLASH_ERASE_SIZE;
+	erase_size = CONFIG_ROLLBACK_SIZE / ROLLBACK_REGIONS;
 #else
 	int rollback_start_bank = crec_flash_bank_index(CONFIG_ROLLBACK_OFF);
 
 	erase_size = crec_flash_bank_erase_size(rollback_start_bank + region);
 #endif
+	ASSERT(erase_size % CONFIG_FLASH_ERASE_SIZE == 0);
 	ASSERT(erase_size > 0);
 	ASSERT(ROLLBACK_REGIONS * erase_size <= CONFIG_ROLLBACK_SIZE);
 	ASSERT(sizeof(struct rollback_data) <= erase_size);
