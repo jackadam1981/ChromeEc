@@ -6,6 +6,7 @@
 #include "gpio.dtsi"
 #include "gwendolin/rwsig.dtsi"
 #include "soc.dtsi"
+#include "npcx_default_gpio_pinctrl.dtsi"
 
 #include <cros/integrated_fwid.dtsi>
 
