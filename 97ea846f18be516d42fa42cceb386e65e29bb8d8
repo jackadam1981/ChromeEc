@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23837f41_a81fcfe8",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-25T16:29:22Z",
+      "side": 1,
+      "message": "Lets use the Zephyr configs not the legacy config. Should be `CONFIG_PLATFORM_EC_GMR_TABLET_MODE` (I believe)",
+      "range": {
+        "startLine": 355,
+        "startChar": 7,
+        "endLine": 355,
+        "endChar": 29
+      },
+      "revId": "97ea846f18be516d42fa42cceb386e65e29bb8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
