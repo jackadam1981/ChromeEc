@@ -108,8 +108,23 @@ test_export_static void keyboard_matrix_init(void)
 		return;
 	}
 }
-
 DECLARE_HOOK(HOOK_INIT, keyboard_matrix_init, HOOK_PRIO_POST_FIRST);
+
+int8_t board_vivaldi_keybd_idx(void)
+{
+	int kb_status;
+
+	kb_status = key_numpad;
+
+	switch (kb_status) {
+	case FW_KB_NUMERIC_PAD_ABSENT:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	case FW_KB_NUMERIC_PAD_PRESENT:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+	default:
+		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+	}
+}
 
 #ifdef CONFIG_KEYBOARD_DEBUG
 static uint8_t keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
