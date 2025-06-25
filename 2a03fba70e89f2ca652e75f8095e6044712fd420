@@ -22,6 +22,29 @@
       },
       "revId": "2a03fba70e89f2ca652e75f8095e6044712fd420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f46cdb_17a29b70",
+        "filename": "zephyr/program/trulo/pujjolo/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-25T17:52:24Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tgpio_ec_shdf_espi_l: ec_shdf_espi_l {\n\t\t\tgpios \u003d \u003c\u0026gpiod 6 GPIO_INPUT\u003e;\n\t\t};\n\t\tgpio_all_sys_pwrgd: all_sys_pwrgd {\n\t\t\tgpios \u003d \u003c\u0026gpioa 7 (GPIO_INPUT)\u003e;\n\t\t};\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "2a03fba70e89f2ca652e75f8095e6044712fd420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
