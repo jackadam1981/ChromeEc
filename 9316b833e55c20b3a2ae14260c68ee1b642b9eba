@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66ae9ae_94545fb4",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-25T21:20:43Z",
+      "side": 1,
+      "message": "Since we\u0027re already checking `BOARDS_NPCX_SPI` here, does it work if you move your change here?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 2
+      },
+      "revId": "9316b833e55c20b3a2ae14260c68ee1b642b9eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
