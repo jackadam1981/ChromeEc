@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6eaf3c6_86814a1a",
+        "filename": "zephyr/dts/bindings/intel/intel,rvp-board-id.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-26T17:26:52Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.org, We are keeping BOM GPIOs and FAB GPIOs optional as these are not mandatory for all RVP platforms.",
+      "parentUuid": "f4a0323c_ca27593e",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "d9e779bf4ce1049022037608826c612e0ce713d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "698ab983_ca1ca9cd",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-25T15:09:06Z",
       "side": 1,
       "message": "This description is no longer accurate.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "d9e779bf4ce1049022037608826c612e0ce713d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8983f001_a5088342",
+        "filename": "zephyr/dts/bindings/intel/intel,rvp-board-id.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-26T17:26:52Z",
+      "side": 1,
+      "message": "Acknowledged. Modified the description.",
+      "parentUuid": "698ab983_ca1ca9cd",
       "range": {
         "startLine": 29,
         "startChar": 0,
