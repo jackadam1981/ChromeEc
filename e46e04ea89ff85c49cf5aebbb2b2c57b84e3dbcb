@@ -16,6 +16,24 @@
       "message": "I think https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6440878 might solve your issue, can you try it?",
       "revId": "e46e04ea89ff85c49cf5aebbb2b2c57b84e3dbcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e23e0a0_19a291f9",
+        "filename": "zephyr/program/trulo/uldrenite/src/tablet.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-06-26T05:19:33Z",
+      "side": 1,
+      "message": "I chrry-pick also can duplicate issue.",
+      "parentUuid": "8d5af1be_9c1f9eed",
+      "revId": "e46e04ea89ff85c49cf5aebbb2b2c57b84e3dbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
