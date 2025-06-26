@@ -228,10 +228,16 @@ void cros::dsp::service::Driver::SetNotebookMode(
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK:
       LOG_DBG("    NOTEBOOK mode, tablet_get_mode()=%d", tablet_get_mode());
       tablet_set_mode(0, TABLET_TRIGGER_LID);
+      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+        lid_angle_peripheral_enable(1);
+      }
       break;
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_TABLET:
       LOG_DBG("    TABLET mode, tablet_get_mode()=%d", tablet_get_mode());
       tablet_set_mode(1, TABLET_TRIGGER_LID);
+      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+        lid_angle_peripheral_enable(0);
+      }
       break;
     default:
       LOG_WRN("Unsupported notebook mode");
