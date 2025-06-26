@@ -10,6 +10,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "panic.h"
+#include "panic_cbor.h"
 #include "printf.h"
 #include "software_panic.h"
 #include "sysjump.h"
@@ -529,7 +530,16 @@ static int command_panicinfo(int argc, const char **argv)
 				  "" :
 				  "(NEW)"));
 
-		panic_data_print(pdata_ptr);
+		if (IS_ENABLED(CONFIG_PANIC_CBOR)) {
+			if (pdata_ptr->arch == PANIC_ARCH_CBOR)
+				panic_cbor_dump(pdata_ptr);
+			else
+				ccprintf("Unsupported panic arch: %d\n",
+					 pdata_ptr->arch);
+
+		} else {
+			panic_data_print(pdata_ptr);
+		}
 
 		/* Data has now been printed */
 		pdata_ptr->flags |= PANIC_DATA_FLAG_OLD_CONSOLE;

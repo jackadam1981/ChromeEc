@@ -126,6 +126,14 @@ struct x86_panic_data {
 	uint8_t task_id;
 };
 
+struct panic_cbor {
+	uint8_t version; /* Semantic version */
+	uint16_t capacity; /* Total capacity */
+	uint16_t length; /* Encoded length */
+	uint16_t flags; /* PANIC_CBOR_FLAG_* */
+	uint8_t data[CONFIG_PANIC_CBOR_CAPACITY];
+};
+
 /* Data saved across reboots */
 struct panic_data {
 	uint8_t arch; /* Architecture (PANIC_ARCH_*) */
@@ -141,6 +149,9 @@ struct panic_data {
 		struct x86_panic_data x86; /* Intel x86 */
 #ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 		struct rv32i_panic_data riscv; /* RISC-V RV32I */
+#endif
+#ifdef CONFIG_PANIC_CBOR
+		struct panic_cbor cbor; /* CBOR */
 #endif
 	};
 
@@ -161,6 +172,7 @@ enum panic_arch {
 #ifndef CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
 	PANIC_ARCH_RISCV_RV32I = 4, /* RISC-V RV32I */
 #endif
+	PANIC_ARCH_CBOR = 5, /* CBOR */
 };
 
 #define PANIC_ZEPHYR_FATAL_ERROR 0xDEAD6800

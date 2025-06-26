@@ -1858,6 +1858,11 @@
 #undef CONFIG_ZCBOR
 #endif /* !CONFIG_ZEPHYR */
 
+/* Enable CBOR encoding for panic info */
+#undef CONFIG_PANIC_CBOR
+#define CONFIG_PANIC_CBOR_CAPACITY 1024
+#undef CONFIG_PANIC_CBOR_DEBUG
+
 /*
  * noinit_end_of_ram is a memory section placed at the very end
  * of used ram, where it is least likely to overlap with RO ram.
@@ -7497,6 +7502,10 @@
 #error "CONFIG_CBI_FLASH and CONFIG_CBI_GPIO are mutually exclusive."
 #endif
 
+#if defined(CONFIG_PANIC_CBOR) && !defined(CONFIG_ZCBOR)
+#error CONFIG_PANIC_CBOR depends on CONFIG_PANIC_ZCBOR
+#endif
+
 #if !defined(CONFIG_ZEPHYR) && !defined(CONFIG_ACCELGYRO_ICM_COMM_SPI) && \
 	!defined(CONFIG_ACCELGYRO_ICM_COMM_I2C)
 #ifdef I2C_PORT_ACCEL
@@ -7539,7 +7548,7 @@
 
 /* Default to 1024 for end of ram data (panic and jump data) */
 #ifndef CONFIG_PRESERVED_END_OF_RAM_SIZE
-#define CONFIG_PRESERVED_END_OF_RAM_SIZE 1024
+#define CONFIG_PRESERVED_END_OF_RAM_SIZE 2048
 #endif
 
 /* Select CONFIG_IT83XX_EXTENDED_ILM automatically */
