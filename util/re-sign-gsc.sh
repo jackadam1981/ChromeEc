@@ -25,6 +25,8 @@ TMPD="$(mktemp -d "/tmp/${SCRIPT_NAME}.XXXXX")"
 NOCLEAN="${NOCLEAN:-}"
 if [[ -z ${NOCLEAN} ]]; then
   trap 'rm -rf "${TMPD}"' EXIT
+else
+  echo "artifact dir: $TMPD"
 fi
 
 # PKCS11 connector library needed for codesigner to access keys in Cloud KMS.
@@ -81,7 +83,7 @@ update_manifest() {
   echo "RW: ${rw_ver}"
   sed "s/epoch\": [0-9]*/epoch\": ${epoch}/" "${manifest}" -i
   sed "s/major\": [0-9]*/major\": ${major}/" "${manifest}" -i
-  sed "s/minor\": [0-9]*/minor\": ${minor}/" "${manifest}" -i
+  sed -E "s/minor\": (TOKEN_MINOR|[0-9]*)/minor\": ${minor}/" "${manifest}" -i
 }
 
 # Re-sign a single RW section.
