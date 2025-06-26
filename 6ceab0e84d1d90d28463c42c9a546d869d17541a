@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c836d6_c83289ae",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:08:55Z",
+      "side": 1,
+      "message": "we should check that exactly one of these 3 is defined.\ni think that\u0027s a basic assumption in this implementation based on how it evolved.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856df13b_1456cba3",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:08:55Z",
+      "side": 1,
+      "message": "can we define a constant for this and set it to\n`CONFIG_CHARGER_BQ25770_SENSE_RESISTOR` or `CONFIG_CHARGER_BQ25710_SENSE_RESISTOR` as appropriate? everything else in these expressions is the same, right?\n\nwe should also be able to update Kconfig to do this.",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 72
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ce84d0_cc4eda41",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:08:55Z",
+      "side": 1,
+      "message": "i think it\u0027s time we renamed this `bq257x0_charger_info`.\nthere\u0027s no point in #ifdef\u0027ing the name later in the driver.",
+      "range": {
+        "startLine": 177,
+        "startChar": 33,
+        "endLine": 177,
+        "endChar": 53
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53dffa6a_466a2c0f",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:08:55Z",
+      "side": 1,
+      "message": "did you mean \u0026\u0026 ?\n\nmaybe check for CONFIG_CHARGER_BQ25710 instead?\nlooks like the 2 newer chips support these regs but the original chip doesn\u0027t?\n\nneed to double check that CONFIG_CHARGER_BQ25710 isn\u0027t defined\nfor the newer chips",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 541,
+        "endChar": 45
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9907f079_dd89a28c",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:08:55Z",
+      "side": 1,
+      "message": "we should change these constant name prefixes to be chip specific\nand use the macros at the bottom of this file that take a `_chip`\nargument to generate the appropriate\nvalue in the main driver.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
