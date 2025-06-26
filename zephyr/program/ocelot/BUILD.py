@@ -7,8 +7,8 @@
 
 def register_npcx9_project(
     project_name,
-    extra_kconfig_files=(),
     extra_kconfig_base_files=(),
+    extra_kconfig_proj_files=(),
 ):
     """Register an npcx9 based variant of ocelot."""
     register_npcx_project(
@@ -25,15 +25,15 @@ def register_npcx9_project(
             # Project-specific KConfig customization.
             here / project_name / "project.conf",
             # Additional project-specific KConfig customization.
-            *extra_kconfig_files,
+            *extra_kconfig_proj_files,
         ],
     )
 
 
 def register_it8xxx2_project(
     project_name,
-    extra_kconfig_files=(),
     extra_kconfig_base_files=(),
+    extra_kconfig_proj_files=(),
 ):
     """Register an it8xxx2 based variant of ocelot."""
     register_binman_project(
@@ -50,15 +50,15 @@ def register_it8xxx2_project(
             # Project-specific KConfig customization.
             here / project_name / "project.conf",
             # Additional project-specific KConfig customization.
-            *extra_kconfig_files,
+            *extra_kconfig_proj_files,
         ],
     )
 
 
 def register_mec172x_project(
     project_name,
-    extra_kconfig_files=(),
     extra_kconfig_base_files=(),
+    extra_kconfig_proj_files=(),
 ):
     """Register an microchip based variant of ocelot."""
     register_mchp_project(
@@ -75,7 +75,7 @@ def register_mec172x_project(
             # Project-specific KConfig customization.
             here / project_name / "project.conf",
             # Additional project-specific KConfig customization.
-            *extra_kconfig_files,
+            *extra_kconfig_proj_files,
         ],
         modules=["cmsis", "cmsis_6", "ec"],
     )
@@ -84,9 +84,6 @@ def register_mec172x_project(
 # For use on RVP SKU1 and SKU2
 register_npcx9_project(
     project_name="ocelotrvp-npcx",
-    extra_kconfig_files=[
-        here / "rvp_power.conf",
-    ],
     extra_kconfig_base_files=[
         here / "rvp_program.conf",
     ],
@@ -95,9 +92,6 @@ register_npcx9_project(
 # For use on RVP SKU3
 register_it8xxx2_project(
     project_name="ocelotrvp-ite",
-    extra_kconfig_files=[
-        here / "rvp_power.conf",
-    ],
     extra_kconfig_base_files=[
         here / "rvp_program.conf",
     ],
@@ -106,9 +100,6 @@ register_it8xxx2_project(
 # For use on RVP SKU4
 register_mec172x_project(
     project_name="ocelotrvp-mchp",
-    extra_kconfig_files=[
-        here / "rvp_power.conf",
-    ],
     extra_kconfig_base_files=[
         here / "rvp_program.conf",
     ],
