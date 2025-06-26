@@ -8,6 +8,8 @@
 #include "timer.h"
 #include "usbc_config.h"
 
+#define USBC_PD_SRC_OPEN_DETECT_TIME_MS 50
+
 void board_reset_pd_mcu(void)
 {
 	/* Required for build */
@@ -40,4 +42,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		gpio_set_level(control->usb_ls_en_gpio, 0);
 	}
 	return EC_SUCCESS;
+}
+
+__override uint32_t board_get_src_open_detect_time()
+{
+	return (USBC_PD_SRC_OPEN_DETECT_TIME_MS * MSEC);
 }
