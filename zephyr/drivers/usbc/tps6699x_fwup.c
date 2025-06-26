@@ -14,6 +14,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
+#include "miniz.h"
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
 
@@ -24,7 +25,7 @@ LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
 /* TPS6699X_FW_ROOT is defined in this directory's CMakeLists.txt and points to
  * ${PLATFORM_EC}/zephyr/drivers/usbc
  */
-INCBIN(tps6699x_fw, STRINGIFY(TPS6699X_FW_ROOT) "/tps6699x.bin");
+INCBIN(tps6699x_fw, STRINGIFY(TPS6699X_FW_ROOT) "/tps6699x.zlib");
 
 #define TPS_4CC_MAX_DURATION K_MSEC(1200)
 #define TPS_4CC_POLL_DELAY K_USEC(200)
@@ -256,6 +257,7 @@ static int do_reset_pdc(const struct i2c_dt_spec *i2c)
 /* Simply point to the offset in the file */
 static int read_file_offset(int offset, const uint8_t **buf, int len)
 {
+	/* Todo: decompress with uncompress from miniz.h */
 	/* Exceed size of file. */
 	if (offset + len > g_tps6699x_fw_size) {
 		return -1;
