@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand the need to create a separate parallel command channel just for strongbox commands. WHy not use the existing extension command mechanism, you can always use subcommands for different strongbox command.\n\nAdding the parallel command channel seems to be increasing code size and complexitiy for no good reason,",
       "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffe8448_8e5c595d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-06-26T15:32:29Z",
+      "side": 1,
+      "message": "1. These commands need to return different error codes which need special handling.\n2. In Ti50 we added a new Strongbox extension command 0x20000001, so making Cr50 aligned and using same command format.\n3. The overhead is not that high actually, I checked that it is overall +62 bytes, and adding handling for subset of codes won\u0027t be much less.",
+      "parentUuid": "7c45229b_f66857b1",
+      "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
