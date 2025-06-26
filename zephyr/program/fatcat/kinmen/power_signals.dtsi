@@ -47,9 +47,9 @@
 	};
 	pwr-pch-pwrok {
 		compatible = "intel,ap-pwrseq-gpio";
-		dbg-label = "PTL_PWROK output to PCH";
+		dbg-label = "PLT_PWROK output to PCH";
 		enum-name = "PWR_PCH_PWROK";
-		gpios = <&gpioj 1 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+		gpios = <&gpioj 1 GPIO_ACTIVE_HIGH>;
 		output;
 	};
 	pwr-ec-pch-sys-pwrok {
