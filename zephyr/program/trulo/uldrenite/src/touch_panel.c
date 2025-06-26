@@ -43,4 +43,4 @@ static void touchpad_enable_switch(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, touchpad_enable_switch, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, touchpad_enable_switch, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_LID_CHANGE, touchpad_enable_switch, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_LID_CHANGE, touchpad_enable_switch, HOOK_PRIO_POST_FIRST);
