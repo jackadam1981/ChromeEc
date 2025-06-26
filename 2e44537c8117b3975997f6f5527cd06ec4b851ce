@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda6f097_d126b5a0",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-26T07:42:37Z",
+      "side": 1,
+      "message": "please run `cros format zephyr/subsys/ap_pwrseq/ap_pwrseq.c` to fix the formatting. this should also fix the CQ\n\nupload using `repo upload .` to avoid such issues.",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 82
+      },
+      "revId": "2e44537c8117b3975997f6f5527cd06ec4b851ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
