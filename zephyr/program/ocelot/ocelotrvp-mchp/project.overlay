@@ -22,13 +22,19 @@
 
 /* ocelot_mchp overrides follow... */
 
-&pdc_c0 {
+&pdc_rtk_c0 {
+	/* TYPEC_EC_SMBUS_ALERT_0_R */
+	irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_ti_c0 {
 	/* TYPEC_EC_SMBUS_ALERT_0_R */
 	irq-gpios = <MCHP_GPIO_DECODE_143 GPIO_ACTIVE_LOW>;
 };
 
 /* Use only port C0 */
-/delete-node/ &pdc_c1;
+/delete-node/ &pdc_rtk_c1;
+/delete-node/ &pdc_ti_c1;
 /delete-node/ &usbc_port1;
 
 &it8801_mfd {

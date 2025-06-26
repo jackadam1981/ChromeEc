@@ -78,11 +78,19 @@ tach_fan0: &tach1 {};
 	status = "okay";
 };
 
-&pdc_c0 {
+&pdc_rtk_c0 {
 	irq-gpios = <&gpiof 0 GPIO_ACTIVE_LOW>;
 };
 
-&pdc_c1 {
+&pdc_rtk_c1 {
+	irq-gpios = <&gpiof 0 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_ti_c0 {
+	irq-gpios = <&gpiof 0 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_ti_c1 {
 	irq-gpios = <&gpiof 0 GPIO_ACTIVE_LOW>;
 };
 
