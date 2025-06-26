@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6ea7219b_10268d40",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-26T19:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4a2ab0_966ea436",
+      "revId": "5e0915cccd16fbb6517333103e451171229429cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9ab1a37a_c6dc409b",
         "filename": "util/re-sign-gsc.sh",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-26T18:27:57Z",
       "side": 1,
       "message": "\"s/minor\\\":.*/minor\\\": ${minor}/\" would be even simpler. just a thought.",
+      "revId": "5e0915cccd16fbb6517333103e451171229429cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c40794_39e5c11d",
+        "filename": "util/re-sign-gsc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-06-26T19:41:36Z",
+      "side": 1,
+      "message": "I\u0027m going to leave this as is. It makes it pretty clear what the expected minor values are.\n\nAlso .* consumes the \",\" at the end of the Cr50 manifest line. Ti50 doesn\u0027t have a \",\". Handling that makes \".*\" a bit more complicated.",
+      "parentUuid": "9ab1a37a_c6dc409b",
       "revId": "5e0915cccd16fbb6517333103e451171229429cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
