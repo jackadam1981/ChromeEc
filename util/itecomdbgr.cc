@@ -139,6 +139,8 @@ struct itecomdbgr_config {
 	uint8_t G_DBG_BUF[256];
 	uint8_t *g_readbuf;
 	uint8_t *g_writebuf;
+	bool instruction_set_v2;
+	bool wdt_enable;
 };
 
 #define EFLASH_TYPE_8315 0x01
@@ -378,6 +380,104 @@ static uint8_t rd_reg_or_ff(struct itecomdbgr_config *conf,
 	return debug_getc(conf);
 }
 
+/* Get Watchdog */
+static int get_wdt_value(struct itecomdbgr_config *conf, uint8_t *watchdog)
+{
+	int ret = 0;
+	unsigned long addr;
+	int local_wdt;
+
+	if (conf->instruction_set_v2) {
+		addr = 0xF01F85;
+	} else {
+		addr = 0xF01F05;
+	}
+
+	local_wdt = rd_reg_or_ff(conf, addr);
+
+	*watchdog = local_wdt;
+
+	if (ret < 0)
+		fprintf(stderr, "Failed to get watchodg value");
+
+	return ret;
+}
+
+/* Set Watchdog */
+static int set_wdt_value(struct itecomdbgr_config *conf, uint8_t watchdog)
+{
+	int ret = 0;
+	unsigned long addr;
+
+	if (conf->instruction_set_v2) {
+		addr = 0xF01F85;
+	} else {
+		addr = 0xF01F05;
+	}
+
+	wr_reg(conf, addr, watchdog);
+
+	if (ret < 0)
+		fprintf(stderr, "Failed to set watchodg value");
+
+	return ret;
+}
+
+/* Restart Watchdog */
+static int restart_wdt(struct itecomdbgr_config *conf)
+{
+	int ret = 0;
+	unsigned long addr;
+
+	if (conf->instruction_set_v2) {
+		addr = 0xF01F87;
+	} else {
+		addr = 0xF01F07;
+	}
+
+	wr_reg(conf, addr, 0x5C);
+
+	if (ret < 0)
+		fprintf(stderr, "Failed to re-start watchodg");
+
+	return ret;
+}
+
+/* disable watchdog */
+#if 1
+static int dbgr_disable_watchdog(struct itecomdbgr_config *conf)
+{
+	int ret = 0;
+	uint8_t wdt = 0;
+
+	printf("Disabling watchdog...\n");
+	restart_wdt(conf);
+	ret |= set_wdt_value(conf, 0x10);
+	usleep(1000);
+	if (ret)
+		return ret;
+
+	ret |= set_wdt_value(conf, 0x30);
+	usleep(1000);
+	if (ret)
+		return ret;
+
+	ret = get_wdt_value(conf, (uint8_t *)&wdt);
+	if (ret)
+		return ret;
+
+	if (wdt != 0x30) {
+		fprintf(stderr, "DBGR DISABLE WATCHDOG FAILED!\n");
+		printf("wdt=%02x => do restart wdt to avoid wdt interrupt flashing...\n",
+		       wdt);
+		conf->wdt_enable = 1;
+		restart_wdt(conf);
+	}
+
+	return ret;
+}
+#endif
+
 /* disable protect path from DBGR */
 static int dbgr_disable_protect_path(struct itecomdbgr_config *conf)
 {
@@ -392,6 +492,17 @@ static int dbgr_disable_protect_path(struct itecomdbgr_config *conf)
 
 	if (ret < 0)
 		fprintf(stderr, "DISABLE PROTECT PATH FROM DBGR FAILED!\n");
+
+	return ret;
+}
+
+/* Check if need wdt restart */
+static int check_wdt(struct itecomdbgr_config *conf)
+{
+	int ret = 0;
+
+	if (conf->wdt_enable)
+		ret = restart_wdt(conf);
 
 	return ret;
 }
@@ -532,6 +643,9 @@ static int getchipid(struct itecomdbgr_config *conf)
 	printf("Chip ID = %02x %02x %02x", chipid[0], chipid[1], chipid[2]);
 	printf(", Chip Ver = %02x", chipver);
 
+	conf->instruction_set_v2 = true;
+	restart_wdt(conf);
+
 	eflash_size_flag = chipver >> 4;
 	if (eflash_size_flag == 0xC)
 		conf->eflash_size_in_k = 1024;
@@ -638,8 +752,23 @@ static int erase_flash(struct itecomdbgr_config *conf)
 		W_CMD_PORT, DBUS_DATA, W_DATA_PORT, 0x00,
 	};
 
+	int boundary = 0x40000; /* 256K */
+
+	if (conf->wdt_enable)
+		boundary = 0x4000; /* 16K */
+
+	check_wdt(conf);
+
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 	while (start_addr < end_addr) {
+		if (start_addr % boundary) {
+			write_com(conf, disable_follow_mode,
+				  sizeof(disable_follow_mode));
+			write_com(conf, enable_follow_mode,
+				  sizeof(enable_follow_mode));
+			check_wdt(conf);
+		}
+
 		if (spi_sr1_wel(conf) != SUCCESS) {
 			printf("erase_4k:check_status error 1\n");
 			result = FAIL;
@@ -690,6 +819,10 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 	unsigned long start_addr = conf->update_start_addr;
 	unsigned long end_addr = conf->update_end_addr;
 	FILE *pW = NULL;
+	int boundary = 0x40000; /* 256K */
+
+	if (conf->wdt_enable)
+		boundary = 0x4000; /* 16K */
 
 	int total_size = (end_addr - start_addr) / conf->page_size;
 
@@ -708,6 +841,8 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 		}
 	}
 
+	check_wdt(conf);
+
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 
 	int prev_percent = -1;
@@ -715,7 +850,13 @@ static int fast_read_burst_cdata(struct itecomdbgr_config *conf,
 
 	while (start_addr < end_addr) {
 		ssize_t cc;
-
+		if (start_addr % boundary) {
+			write_com(conf, disable_follow_mode,
+				  sizeof(disable_follow_mode));
+			write_com(conf, enable_follow_mode,
+				  sizeof(enable_follow_mode));
+			check_wdt(conf);
+		}
 		if ((end_addr - start_addr) >= conf->page_size)
 			read_count = conf->page_size;
 		else
@@ -847,10 +988,26 @@ static int page_program_burst_v2(struct itecomdbgr_config *conf,
 	int total_pages = (end_addr - start_addr) / conf->page_size;
 	int prev_percent = -1;
 	int progress_percent;
+	int boundary = 0x40000; /* 256K */
+
+	if (conf->wdt_enable) {
+		boundary = 0x4000; /* 16K */
+	}
+
+	check_wdt(conf);
 
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 
 	while (start_addr < end_addr) {
+		if (start_addr % boundary) {
+			write_com(conf, disable_follow_mode,
+				  sizeof(disable_follow_mode));
+			write_com(conf, enable_follow_mode,
+				  sizeof(enable_follow_mode));
+			check_wdt(conf);
+		}
+
+		write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 		if ((end_addr - start_addr) >= conf->page_size)
 			write_count = conf->page_size;
 		else
@@ -995,6 +1152,8 @@ static int uart_app(struct itecomdbgr_config *conf)
 		flush_com(conf);
 		if (conf->g_steps == STEPS_TEST) {
 			enter_uart_dbgr_mode(conf);
+			/* add wdt restart to prevent wdt interrupt flashing */
+			restart_wdt(conf);
 			read_id_2(conf);
 			conf->g_steps = STEPS_EXIT;
 		}
@@ -1005,7 +1164,13 @@ static int uart_app(struct itecomdbgr_config *conf)
 			/* dbgr reset */
 			write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
 
+			/* add wdt restart to prevent wdt interrupt flashing */
+			restart_wdt(conf);
+
 			if (getchipid(conf) == SUCCESS) {
+				/* disable watchdog*/
+				dbgr_disable_watchdog(conf);
+
 				/* Reset UART1*/
 				wr_reg(conf, 0xF02011, 1);
 
