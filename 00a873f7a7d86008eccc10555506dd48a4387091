@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728e0723_eea1a222",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-26T17:57:53Z",
+      "side": 1,
+      "message": "Can we add a `BUILD_ASSERT(erase_size % CONFIG_FLASH_WRITE_SIZE \u003d\u003d 0)` here to make sure that the erase size is a multiple of `CONFIG_FLASH_WRITE_SIZE`? (May need to be runtime `ASSERT` if `BUILD_ASSERT` doesn\u0027t work.)",
+      "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35cd555_d9c58139",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-26T17:57:53Z",
+      "side": 1,
+      "message": "In a followup CL, can you check to see if any of these can be `BUILD_ASSERT`, so they\u0027re checked at compile time instead of runtime?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 52
+      },
+      "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
