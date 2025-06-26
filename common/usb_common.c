@@ -827,8 +827,11 @@ int pd_send_alert_msg(int port, uint32_t ado)
 	 */
 	partner_rmdo = pd_get_partner_rmdo(port);
 	if (partner_rmdo.major_rev == 0) {
+		CPRINTS("\x1b[1;31mpd3.0???\x1b[m");
+		/*
 		ado &= ~(ADO_EXTENDED_ALERT_EVENT |
 			 ADO_EXTENDED_ALERT_EVENT_TYPE);
+		*/
 	}
 
 	if (!ado)
