@@ -792,36 +792,89 @@ static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
-#ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
+#ifdef CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER
 /* LCOV_EXCL_START - non-shipping code */
-extern int tps_pdc_do_firmware_update(void);
+extern void tps6699x_do_firmware_get_query(size_t *offset, size_t *len);
 
-static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
+static int cmd_pdc_ti_get_query(const struct shell *sh, size_t argc,
+				char **argv)
+{
+	size_t offset;
+	size_t len;
+	tps6699x_do_firmware_get_query(&offset, &len);
+	shell_fprintf(sh, SHELL_INFO, "offset = %d, len = %d,\n", offset, len);
+	return 0;
+}
+
+extern int tps6699x_do_firmware_write(const char *str, size_t len);
+
+static int cmd_pdc_ti_write(const struct shell *sh, size_t argc, char **argv)
 {
 	int rv;
+	size_t len = strlen(argv[1]);
+	rv = tps6699x_do_firmware_write(argv[1], len);
+	if (rv) {
+		shell_fprintf(sh, SHELL_ERROR,
+			      "Could not write firmware bytes: %d\n", rv);
+		return rv;
+	}
+	shell_fprintf(sh, SHELL_INFO, "PDC FWUP write successful\n");
+	return 0;
+}
 
+extern int tps_pdc_do_firmware_update_start(int port);
+
+static int cmd_pdc_ti_fwupdate_start(const struct shell *sh, size_t argc,
+				     char **argv)
+{
+	int rv;
+	int port = strtoi(argv[1], NULL, 10);
 	/* Disable all comms before doing update. */
 	rv = pdc_power_mgmt_set_comms_state(/*enable=*/false);
 	if (rv) {
-		shell_fprintf(sh, SHELL_ERROR, "Could not suspend PDC: %d\n",
-			      rv);
+		shell_fprintf(
+			sh, SHELL_ERROR,
+			"PDC FWUP start result: %d. Could not suspend PDC\n",
+			rv);
 		return rv;
 	}
 
-	rv = tps_pdc_do_firmware_update();
+	rv = tps_pdc_do_firmware_update_start(port);
 	if (rv) {
-		shell_fprintf(sh, SHELL_ERROR, "Could not update fw: %d\n", rv);
+		shell_fprintf(
+			sh, SHELL_ERROR,
+			"PDC FWUP start result: %d. Could not update fw\n", rv);
+	} else {
+		shell_fprintf(sh, SHELL_INFO, "PDC FWUP start result: 0.\n");
 	}
+	return rv;
+}
 
+extern int tps_pdc_do_firmware_update_finish(int port);
+
+static int cmd_pdc_ti_fwupdate_finish(const struct shell *sh, size_t argc,
+				      char **argv)
+{
+	int rv;
+	int port = strtoi(argv[1], NULL, 10);
+	rv = tps_pdc_do_firmware_update_finish(port);
 	if (pdc_power_mgmt_set_comms_state(/*enable=*/true)) {
 		shell_fprintf(sh, SHELL_ERROR,
 			      "Could not resume PDC. May want to restart EC.");
 	}
 
+	if (rv) {
+		shell_fprintf(
+			sh, SHELL_ERROR,
+			"PDC FWUP finish result: %d. Could not update fw\n",
+			rv);
+	} else {
+		shell_fprintf(sh, SHELL_INFO, "PDC FWUP finish result: 0.\n");
+	}
 	return rv;
 }
 /* LCOV_EXCL_STOP - non-shipping code */
-#endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
+#endif /* defined(CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER) */
 
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
@@ -903,12 +956,25 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Usage: pdc sbumux [normal|debug]",
 		      cmd_pdc_sbu_mux_mode, 1, 1),
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
-#ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
-	SHELL_CMD_ARG(fwup_ti, NULL,
+#ifdef CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER
+	SHELL_CMD_ARG(fwup_ti_get_query, NULL,
+		      "Return current query TPS6699x firmware "
+		      "offset and length\n"
+		      "Usage: pdc fwup_ti_get_query",
+		      cmd_pdc_ti_get_query, 1, 0),
+	SHELL_CMD_ARG(fwup_ti_write, NULL,
+		      "Write TPS6699x firmware\n"
+		      "Usage: pdc fwup_ti_write <content>",
+		      cmd_pdc_ti_write, 2, 0),
+	SHELL_CMD_ARG(fwup_ti_start, NULL,
 		      "Updates TPS6699x firmware\n"
-		      "Usage pdc fwup_ti",
-		      cmd_pdc_ti_fwupdate, 1, 0),
-#endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
+		      "Usage: pdc fwup_ti_start <port>",
+		      cmd_pdc_ti_fwupdate_start, 2, 0),
+	SHELL_CMD_ARG(fwup_ti_finish, NULL,
+		      "Updates TPS6699x firmware\n"
+		      "Usage: pdc fwup_ti_finish <port>",
+		      cmd_pdc_ti_fwupdate_finish, 2, 0),
+#endif /* defined(CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,
 			   "Dump accumulated PDC trace messages "

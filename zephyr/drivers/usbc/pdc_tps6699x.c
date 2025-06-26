@@ -2886,12 +2886,6 @@ static int pdc_init(const struct device *dev)
 	struct pdc_data_t *data = dev->data;
 	int rv;
 
-	if (cfg->connector_number == 1) {
-		LOG_ERR("Skip device %s not ready port %d", cfg->i2c.bus->name,
-			cfg->connector_number);
-		return -ENODEV;
-	}
-
 	rv = i2c_is_ready_dt(&cfg->i2c);
 	if (rv < 0) {
 		LOG_ERR("device %s not ready", cfg->i2c.bus->name);
@@ -2901,6 +2895,12 @@ static int pdc_init(const struct device *dev)
 	rv = gpio_is_ready_dt(&cfg->irq_gpios);
 	if (rv < 0) {
 		LOG_ERR("device %s not ready", cfg->irq_gpios.port->name);
+		return -ENODEV;
+	}
+
+	if (cfg->connector_number == 1) {
+		LOG_ERR("device %s/%s not ready", cfg->i2c.bus->name,
+			cfg->irq_gpios.port->name);
 		return -ENODEV;
 	}
 
@@ -2983,19 +2983,38 @@ static void tps_check_and_notify_irq(void)
 }
 
 /* LCOV_EXCL_START - temporary code */
-#ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
+#ifdef CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER
 /* See tps6699x_fwup.c */
-extern int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *dev);
+extern int tps6699x_do_firmware_update_start(const struct i2c_dt_spec *dev);
 
-int tps_pdc_do_firmware_update(void)
+int tps_pdc_do_firmware_update_start(int port)
 {
-	/* Get DT node for first PDC port */
-	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
+	const struct device *dev;
+	if (port == 0) {
+		dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
+	} else {
+		dev = DEVICE_DT_GET(DT_INST(1, DT_DRV_COMPAT));
+	}
 	const struct pdc_config_t *cfg = dev->config;
 
-	return tps6699x_do_firmware_update_internal(&cfg->i2c);
+	return tps6699x_do_firmware_update_start(&cfg->i2c);
 }
-#endif /* CONFIG_USBC_PDC_TPS6699X_FW_UPDATER */
+
+extern int tps6699x_do_firmware_update_finish(const struct i2c_dt_spec *dev);
+
+int tps_pdc_do_firmware_update_finish(int port)
+{
+	const struct device *dev;
+	if (port == 0) {
+		dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
+	} else {
+		dev = DEVICE_DT_GET(DT_INST(1, DT_DRV_COMPAT));
+	}
+	const struct pdc_config_t *cfg = dev->config;
+
+	return tps6699x_do_firmware_update_finish(&cfg->i2c);
+}
+#endif /* CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER */
 /* LCOV_EXCL_STOP - temporary code */
 
 static void tps_thread(void *dev, void *unused1, void *unused2)
