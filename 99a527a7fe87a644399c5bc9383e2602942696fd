@@ -171,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab54129f_f4d482eb",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2025-06-26T06:25:43Z",
+      "side": 1,
+      "message": "Battery voltage and current for charging are changed by FCC - DC rate to reduce battery stress and extend battery lifetime.\nOur Power team will comment about this in issue tracker",
+      "parentUuid": "2a3d4017_b3cc3a3b",
+      "range": {
+        "startLine": 298,
+        "startChar": 37,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "99a527a7fe87a644399c5bc9383e2602942696fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0684d0eb_79ffb88f",
