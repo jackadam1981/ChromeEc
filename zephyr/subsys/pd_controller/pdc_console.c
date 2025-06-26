@@ -794,9 +794,46 @@ static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
 
 #ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
 /* LCOV_EXCL_START - non-shipping code */
-extern int tps_pdc_do_firmware_update(void);
+extern int64_t tps_pdc_do_firmware_write(int offset, int len, char *hexInput);
 
-static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
+static int cmd_pdc_ti_write(const struct shell *sh, size_t argc, char **argv)
+{
+	int64_t rv;
+	int offset = strtoi(argv[1], NULL, 10);
+	int len = strtoi(argv[2], NULL, 10);
+	int hexlen = strlen(argv[3]);
+	if (offset == 0 && len == 0 && hexlen == 0) {
+		rv = tps_pdc_do_firmware_write(0, 0, NULL);
+		int query_offset = (int32_t)(rv >> 32);
+		int query_len = (int32_t)(rv & 2147483647);
+		shell_fprintf(sh, SHELL_INFO,
+			      "query_offset = %d, query_len = %d,\n",
+			      query_offset, query_len);
+		return 0;
+	}
+	shell_fprintf(sh, SHELL_INFO, "offset = %d, len = %d, hexlen = %d\n",
+		      offset, len, hexlen);
+	if (hexlen % 2 != 0) {
+		shell_fprintf(sh, SHELL_ERROR,
+			      "argv[3] is not a valid hex string\n");
+		return 1;
+	}
+
+	rv = tps_pdc_do_firmware_write(offset, len, argv[3]);
+	if (rv) {
+		shell_fprintf(sh, SHELL_ERROR,
+			      "Could not tps_pdc_do_firmware_write: %lld\n",
+			      rv);
+		return rv;
+	}
+	shell_fprintf(sh, SHELL_INFO, "PDC FWUP block successful\n");
+	return 0;
+}
+
+extern int tps_pdc_do_firmware_update_start(void);
+
+static int cmd_pdc_ti_fwupdate_start(const struct shell *sh, size_t argc,
+				     char **argv)
 {
 	int rv;
 
@@ -808,16 +845,31 @@ static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
 		return rv;
 	}
 
-	rv = tps_pdc_do_firmware_update();
+	rv = tps_pdc_do_firmware_update_start();
 	if (rv) {
 		shell_fprintf(sh, SHELL_ERROR, "Could not update fw: %d\n", rv);
+	} else {
+		shell_fprintf(sh, SHELL_INFO, "PDC FWUP start successful\n");
+	}
+	return rv;
+}
+
+extern int tps_pdc_do_firmware_update_finish(void);
+
+static int cmd_pdc_ti_fwupdate_finish(const struct shell *sh, size_t argc,
+				      char **argv)
+{
+	int rv = tps_pdc_do_firmware_update_finish();
+	if (rv) {
+		shell_fprintf(sh, SHELL_ERROR, "Could not update fw: %d\n", rv);
+	} else {
+		shell_fprintf(sh, SHELL_INFO, "PDC FWUP finish successful\n");
 	}
 
 	if (pdc_power_mgmt_set_comms_state(/*enable=*/true)) {
 		shell_fprintf(sh, SHELL_ERROR,
 			      "Could not resume PDC. May want to restart EC.");
 	}
-
 	return rv;
 }
 /* LCOV_EXCL_STOP - non-shipping code */
@@ -904,10 +956,18 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      cmd_pdc_sbu_mux_mode, 1, 1),
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 #ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
-	SHELL_CMD_ARG(fwup_ti, NULL,
+	SHELL_CMD_ARG(fwup_ti_write, NULL,
+		      "Write TPS6699x firmware\n"
+		      "Usage pdc fwup_ti_write <offset> <len> <content>",
+		      cmd_pdc_ti_write, 4, 0),
+	SHELL_CMD_ARG(fwup_ti_start, NULL,
 		      "Updates TPS6699x firmware\n"
-		      "Usage pdc fwup_ti",
-		      cmd_pdc_ti_fwupdate, 1, 0),
+		      "Usage pdc fwup_ti_start",
+		      cmd_pdc_ti_fwupdate_start, 1, 0),
+	SHELL_CMD_ARG(fwup_ti_finish, NULL,
+		      "Updates TPS6699x firmware\n"
+		      "Usage pdc fwup_ti_finish",
+		      cmd_pdc_ti_fwupdate_finish, 1, 0),
 #endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,

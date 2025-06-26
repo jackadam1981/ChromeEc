@@ -7,24 +7,16 @@
  * TI TPS6699X PDC FW update code
  */
 
+#include <stdlib.h>
 #include <string.h>
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
-LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
+LOG_MODULE_REGISTER(tps6699xfw, LOG_LEVEL_INF);
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
-
-#define INCBIN_PREFIX g_
-#define INCBIN_STYLE INCBIN_STYLE_SNAKE
-#include "third_party/incbin/incbin.h"
-
-/* TPS6699X_FW_ROOT is defined in this directory's CMakeLists.txt and points to
- * ${PLATFORM_EC}/zephyr/drivers/usbc
- */
-INCBIN(tps6699x_fw, STRINGIFY(TPS6699X_FW_ROOT) "/tps6699x.bin");
 
 #define TPS_4CC_MAX_DURATION K_MSEC(1200)
 #define TPS_4CC_POLL_DELAY K_USEC(200)
@@ -253,17 +245,64 @@ static int do_reset_pdc(const struct i2c_dt_spec *i2c)
 	return rv;
 }
 
+static int64_t query_offset_len = 0;
+
+static int64_t tps6699x_fw_offset_len = 0;
+static uint8_t *tps6699x_fw_data = NULL;
+static int64_t tps6699x_fw_end = 0;
+
 /* Simply point to the offset in the file */
-static int read_file_offset(int offset, const uint8_t **buf, int len)
+static int read_file_offset(int offset, const uint8_t **buf, int len,
+			    const char *name)
 {
-	/* Exceed size of file. */
-	if (offset + len > g_tps6699x_fw_size) {
-		return -1;
+	static const uint32_t read_delay = 2000;
+	int64_t offset_len = ((int64_t)offset << 32) + len;
+	int iteration = 0;
+	while (1) {
+		LOG_ERR("%s read %d time tps6699x_fw_offset_len=%lld tps6699x_fw_end=%lld",
+			name, ++iteration, tps6699x_fw_offset_len,
+			tps6699x_fw_end);
+		if (tps6699x_fw_offset_len == offset_len &&
+		    tps6699x_fw_end == len) {
+			*buf = tps6699x_fw_data;
+			tps6699x_fw_offset_len = 0;
+			tps6699x_fw_data = NULL;
+			tps6699x_fw_end = 0;
+			return len;
+		}
+		query_offset_len = offset_len;
+		k_msleep(read_delay);
 	}
+	return -1;
+}
 
-	*buf = &g_tps6699x_fw_data[offset];
+static const int reverse_hex_table[128] = {
+	['0'] = 0,  ['1'] = 1,	['2'] = 2,  ['3'] = 3,	['4'] = 4,  ['5'] = 5,
+	['6'] = 6,  ['7'] = 7,	['8'] = 8,  ['9'] = 9,	['a'] = 10, ['b'] = 11,
+	['c'] = 12, ['d'] = 13, ['e'] = 14, ['f'] = 15,
+};
 
-	return len;
+int64_t tps6699x_do_firmware_write_internal(const struct i2c_dt_spec *dev,
+					    int offset, int len, char *hexStr)
+{
+	if (offset == 0 && len == 0 && hexStr == NULL) {
+		return query_offset_len;
+	}
+	if (tps6699x_fw_data == NULL) {
+		tps6699x_fw_data = (uint8_t *)malloc(len);
+		if (tps6699x_fw_data == NULL) {
+			return -1;
+		}
+		tps6699x_fw_offset_len = ((int64_t)offset << 32) + len;
+		tps6699x_fw_end = 0;
+	}
+	int append_len = strlen(hexStr) / 2;
+	for (int i = 0; i < append_len; ++i) {
+		tps6699x_fw_data[tps6699x_fw_end++] =
+			(reverse_hex_table[hexStr[2 * i + 0] & 127] << 4) +
+			reverse_hex_table[hexStr[2 * i + 1] & 127];
+	}
+	return 0;
 }
 
 static int get_appconfig_offsets(uint16_t num_data_blocks, int *metadata_offset,
@@ -272,12 +311,14 @@ static int get_appconfig_offsets(uint16_t num_data_blocks, int *metadata_offset,
 	int bytes_read;
 	uint32_t *fw_size;
 
-	bytes_read = read_file_offset(
-		FW_SIZE_OFFSET, (const uint8_t **)&fw_size, sizeof(fw_size));
+	bytes_read = read_file_offset(FW_SIZE_OFFSET,
+				      (const uint8_t **)&fw_size,
+				      sizeof(fw_size), "get_appconfig_offsets");
 
 	if (bytes_read < 0) {
 		LOG_ERR("Failed to read firmware size from binary: %d",
 			bytes_read);
+		free(fw_size);
 		return -1;
 	}
 
@@ -293,6 +334,7 @@ static int get_appconfig_offsets(uint16_t num_data_blocks, int *metadata_offset,
 
 	*data_block_offset = *metadata_offset + DATA_METADATA_LENGTH;
 
+	free(fw_size);
 	return 0;
 }
 
@@ -307,11 +349,13 @@ static int tfud_block(const struct i2c_dt_spec *i2c, uint8_t *fbuf,
 
 	/* First read the block metadata. */
 	bytes_read = read_file_offset(metadata_offset, (const uint8_t **)&tfud,
-				      DATA_METADATA_LENGTH);
+				      DATA_METADATA_LENGTH,
+				      "First read the block metadata.");
 
 	if (bytes_read < 0 || bytes_read != DATA_METADATA_LENGTH) {
 		LOG_ERR("Failed to read block metadata. Wanted %d, got %d",
 			DATA_METADATA_LENGTH, bytes_read);
+		free(tfud);
 		return -1;
 	}
 
@@ -322,6 +366,7 @@ static int tfud_block(const struct i2c_dt_spec *i2c, uint8_t *fbuf,
 	if (tfud->data_block_size > DATA_BLOCK_SIZE) {
 		LOG_ERR("TFUd block size too big: 0x%x (max is 0x%x)",
 			tfud->data_block_size, DATA_BLOCK_SIZE);
+		free(tfud);
 		return -1;
 	}
 
@@ -331,16 +376,19 @@ static int tfud_block(const struct i2c_dt_spec *i2c, uint8_t *fbuf,
 	if (ret < 0 || rbuf[0] != 0) {
 		LOG_ERR("Failed to run TFUd. Ret=%d, rbuf[0] = %u", ret,
 			rbuf[0]);
+		free(tfud);
 		return -1;
 	}
 
 	bytes_read = read_file_offset(data_block_offset,
 				      (const uint8_t **)&fbuf,
-				      tfud->data_block_size);
+				      tfud->data_block_size, "tfud_block");
 
 	if (bytes_read < 0 || bytes_read != tfud->data_block_size) {
 		LOG_ERR("Failed to read block. Wanted %d, got %d",
 			tfud->data_block_size, bytes_read);
+		free(fbuf);
+		free(tfud);
 		return -1;
 	}
 
@@ -349,12 +397,16 @@ static int tfud_block(const struct i2c_dt_spec *i2c, uint8_t *fbuf,
 			      tfud->data_block_size);
 	if (ret) {
 		LOG_ERR("Downloading data block failed (%d)", ret);
+		free(fbuf);
+		free(tfud);
 		return -1;
 	}
 
 	/* Wait 150ms after each data block. */
 	k_sleep(TPS_TFUD_BLOCK_DELAY);
 
+	free(fbuf);
+	free(tfud);
 	return 0;
 }
 
@@ -426,20 +478,45 @@ static int tfus_run(const struct i2c_dt_spec *i2c)
 	}
 }
 
+const struct i2c_dt_spec *i2c_internal = NULL;
+
+int tps6699x_do_firmware_update_start(const struct i2c_dt_spec *i2c)
+{
+	if (i2c_internal != NULL) {
+		return 1;
+	}
+	i2c_internal = i2c;
+	return 0;
+}
+
+int tps6699x_do_firmware_update_finish(const struct i2c_dt_spec *i2c)
+{
+	while (1) {
+		if (i2c_internal == i2c) {
+			k_msleep(1000);
+		} else if (i2c_internal == NULL) {
+			break;
+		} else {
+			return 1;
+		}
+	}
+	return 0;
+}
+
 /**
  * @brief Temporary EC-based FW update routine
  *
  * @param dev Device pointer for the PDC to update (needed only once per chip)
  */
-int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
+static int tps6699x_do_firmware_update_thread(const struct i2c_dt_spec *i2c)
 {
 	int appconfig_metadata_offset, appconfig_data_offset;
-	struct tfu_initiate *tfui;
+	struct tfu_initiate *tfui = NULL;
 	union reg_data cmd_data;
 	int bytes_read = 0;
 	uint8_t rbuf[64];
 	int ret = 0;
-	uint8_t *fbuf;
+	uint8_t *fbuf = NULL;
 
 	/*
 	 * Flow of operations for firmware update:
@@ -469,7 +546,7 @@ int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
 
 	/* Read metadata header. */
 	bytes_read = read_file_offset(METADATA_OFFSET, (const uint8_t **)&tfui,
-				      METADATA_LENGTH);
+				      METADATA_LENGTH, "Read metadata header.");
 	if (bytes_read < 0) {
 		LOG_ERR("Failed to read metadata. Wanted %d, got %d",
 			METADATA_LENGTH, bytes_read);
@@ -488,9 +565,10 @@ int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
 	}
 
 	/* Read metadata buffer and stream at address given. */
-	bytes_read = read_file_offset(HEADER_BLOCK_OFFSET,
-				      (const uint8_t **)&fbuf,
-				      HEADER_BLOCK_LENGTH);
+	bytes_read = read_file_offset(
+		HEADER_BLOCK_OFFSET, (const uint8_t **)&fbuf,
+		HEADER_BLOCK_LENGTH,
+		"Read metadata buffer and stream at address given.");
 	if (bytes_read < 0 || bytes_read != HEADER_BLOCK_LENGTH) {
 		LOG_ERR("Failed to read header stream. Wanted %d but got %d",
 			HEADER_BLOCK_LENGTH, bytes_read);
@@ -574,6 +652,12 @@ int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *i2c)
 	/* Confirm we're on the new firmware now. */
 	get_and_print_device_info(i2c);
 
+	if (fbuf != NULL) {
+		free(fbuf);
+	}
+	if (tfui != NULL) {
+		free(tfui);
+	}
 	return 0;
 
 cleanup:
@@ -586,6 +670,37 @@ cleanup:
 	do_reset_pdc(i2c);
 	get_and_print_device_info(i2c);
 
+	if (fbuf != NULL) {
+		free(fbuf);
+	}
+	if (tfui != NULL) {
+		free(tfui);
+	}
 	return -1;
 }
+
+/* size of stack area used by each thread */
+#define STACKSIZE 4096
+
+/* scheduling priority used by each thread */
+#define PRIORITY 7
+
+static void wait_for_start(void)
+{
+	static const uint32_t sleep_ms = 1000;
+	while (1) {
+		if (i2c_internal != NULL) {
+			break;
+		} else {
+			k_msleep(sleep_ms);
+		}
+	}
+	tps6699x_do_firmware_update_thread(i2c_internal);
+	query_offset_len = ((int64_t)INT_MAX << 32) + INT_MAX;
+	i2c_internal = NULL;
+}
+
+K_THREAD_DEFINE(tps6699x_update_id, STACKSIZE, wait_for_start, NULL, NULL, NULL,
+		PRIORITY, 0, 0);
+
 /* LCOV_EXCL_STOP - non-shipping code */

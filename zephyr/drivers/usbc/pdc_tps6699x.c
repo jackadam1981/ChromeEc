@@ -2856,6 +2856,9 @@ static int pdc_init(const struct device *dev)
 	struct pdc_data_t *data = dev->data;
 	int rv;
 
+	LOG_ERR("bad device %s not ready", cfg->i2c.bus->name);
+	return -ENODEV;
+
 	rv = i2c_is_ready_dt(&cfg->i2c);
 	if (rv < 0) {
 		LOG_ERR("device %s not ready", cfg->i2c.bus->name);
@@ -2948,15 +2951,40 @@ static void tps_check_and_notify_irq(void)
 /* LCOV_EXCL_START - temporary code */
 #ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
 /* See tps6699x_fwup.c */
-extern int tps6699x_do_firmware_update_internal(const struct i2c_dt_spec *dev);
+extern int tps6699x_do_firmware_update_start(const struct i2c_dt_spec *dev);
 
-int tps_pdc_do_firmware_update(void)
+int tps_pdc_do_firmware_update_start(void)
 {
 	/* Get DT node for first PDC port */
 	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
 	const struct pdc_config_t *cfg = dev->config;
 
-	return tps6699x_do_firmware_update_internal(&cfg->i2c);
+	return tps6699x_do_firmware_update_start(&cfg->i2c);
+}
+
+extern int tps6699x_do_firmware_update_finish(const struct i2c_dt_spec *dev);
+
+int tps_pdc_do_firmware_update_finish(void)
+{
+	/* Get DT node for first PDC port */
+	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
+	const struct pdc_config_t *cfg = dev->config;
+
+	return tps6699x_do_firmware_update_finish(&cfg->i2c);
+}
+
+extern int64_t
+tps6699x_do_firmware_write_internal(const struct i2c_dt_spec *dev, int offset,
+				    int len, char *hexStr);
+
+int64_t tps_pdc_do_firmware_write(int offset, int len, char *hexStr)
+{
+	/* Get DT node for first PDC port */
+	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
+	const struct pdc_config_t *cfg = dev->config;
+
+	return tps6699x_do_firmware_write_internal(&cfg->i2c, offset, len,
+						   hexStr);
 }
 #endif /* CONFIG_USBC_PDC_TPS6699X_FW_UPDATER */
 /* LCOV_EXCL_STOP - temporary code */
