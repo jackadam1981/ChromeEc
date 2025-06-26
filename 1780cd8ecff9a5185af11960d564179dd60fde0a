@@ -16,6 +16,98 @@
       "message": "This is still failing the pre-submit check\n```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      19:28:38: WARNING: zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt: needs formatting\n      19:29:21: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt\n```",
       "revId": "1780cd8ecff9a5185af11960d564179dd60fde0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5071f397_fd091fd4",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-26T02:34:51Z",
+      "side": 1,
+      "message": "Use 2 spaces for indent in Cmake files.  This should be fixed if you run `cros format`.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "1780cd8ecff9a5185af11960d564179dd60fde0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab20835a_3dd47fc0",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-26T02:34:51Z",
+      "side": 1,
+      "message": "No spaces before closing parenthesis.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "1780cd8ecff9a5185af11960d564179dd60fde0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ef30ad_427cd475",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-26T02:34:51Z",
+      "side": 1,
+      "message": "2 spaces for indent.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "1780cd8ecff9a5185af11960d564179dd60fde0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ae24eb_d491d39d",
+        "filename": "zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-26T02:34:51Z",
+      "side": 1,
+      "message": "No spaces before `)`",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "1780cd8ecff9a5185af11960d564179dd60fde0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
