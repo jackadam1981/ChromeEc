@@ -34,6 +34,47 @@
       "parentUuid": "7c45229b_f66857b1",
       "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6e8b14_902b266f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-26T15:51:15Z",
+      "side": 1,
+      "message": "well, the fact that Ti50 already uses it is a strong argument. I still don\u0027t see why this was necessary though.",
+      "parentUuid": "4ffe8448_8e5c595d",
+      "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827dd1f6_37ef6d3c",
+        "filename": "test/tpm_test/sb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-26T15:51:15Z",
+      "side": 1,
+      "message": "it would be nice to read the .h file with the C declarations instead...",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
