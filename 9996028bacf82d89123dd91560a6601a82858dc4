@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6a6628_a2abd453",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:28:31Z",
+      "side": 1,
+      "message": "i\u0027m still not convinced we should overload the chromeos board ID\nconcept with RVP hardware configuration details. see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6669681\nand associated discussion in the bug.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9996028bacf82d89123dd91560a6601a82858dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a3cd67_8d732ac2",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:28:31Z",
+      "side": 1,
+      "message": "should `bom_id` be available anywhere other than the EC console?\nseems like a bug that it\u0027s not encoded in the RVP board ID.",
+      "range": {
+        "startLine": 97,
+        "startChar": 25,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "9996028bacf82d89123dd91560a6601a82858dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
