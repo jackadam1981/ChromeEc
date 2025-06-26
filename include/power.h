@@ -183,10 +183,15 @@ void power_set_state(enum power_state new_state);
  */
 #ifdef CONFIG_AP_POWER_CONTROL
 enum power_state power_get_state(void);
+const char *power_get_state_name(void);
 #else
 static inline enum power_state power_get_state(void)
 {
 	return POWER_G3;
+}
+static const char *power_get_state_name(void)
+{
+	return "G3";
 }
 #endif
 

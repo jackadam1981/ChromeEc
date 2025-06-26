@@ -251,6 +251,11 @@ enum power_state power_get_state(void)
 	return state;
 }
 
+const char *power_get_state_name(void)
+{
+	return state_names[state];
+}
+
 #ifdef CONFIG_HOSTCMD_X86
 
 /* If host doesn't program s0ix lazy wake mask, use default s0ix mask */

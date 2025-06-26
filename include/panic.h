@@ -116,11 +116,18 @@ __noreturn
 	void
 	software_panic(uint32_t reason, uint32_t info);
 
+void panic_handle_watchdog_warning(uintptr_t, uintptr_t);
+
 /**
  * Log a panic in the panic log, but don't halt the system. Normally
  * called on the subsequent reboot after panic detection.
  */
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception);
+
+/**
+ * Update just the reason panic info. Nothing else is touched.
+ */
+void panic_update_reason(uint32_t reason);
 
 /**
  * Retrieve the currently stored panic reason + info.

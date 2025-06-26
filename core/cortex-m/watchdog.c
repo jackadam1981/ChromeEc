@@ -44,8 +44,7 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	 * panic may still be collected by the kernel and handled as a
 	 * non-fatal EC panic.
 	 */
-	panic_set_reason(PANIC_SW_WATCHDOG_WARN, stack[STACK_IDX_REG_PC],
-			 task_get_current());
+	panic_handle_watchdog_warning(excep_lr, excep_sp);
 
 	/*
 	 * This is our last breath, the last opportunity to sort out all
