@@ -16,6 +16,24 @@
       "message": "Nit: Does this need to be protected under `CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE`?",
       "revId": "2b0fc89748fd5797f8b59b61a6cf4d47aa8e478b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889d9020_a7bd13f5",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-06-26T19:13:10Z",
+      "side": 1,
+      "message": "Good catch, yes",
+      "parentUuid": "e5343bb8_5c9bb502",
+      "revId": "2b0fc89748fd5797f8b59b61a6cf4d47aa8e478b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
