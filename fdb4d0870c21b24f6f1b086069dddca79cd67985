@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c45229b_f66857b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-06-26T01:40:57Z",
+      "side": 1,
+      "message": "I don\u0027t understand the need to create a separate parallel command channel just for strongbox commands. WHy not use the existing extension command mechanism, you can always use subcommands for different strongbox command.\n\nAdding the parallel command channel seems to be increasing code size and complexitiy for no good reason,",
+      "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
