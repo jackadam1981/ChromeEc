@@ -9,6 +9,7 @@
 #include "host_command.h"
 #include "panic-internal.h"
 #include "panic.h"
+#include "panic_cbor.h"
 #include "printf.h"
 #include "system.h"
 #include "system_safe_mode.h"
@@ -29,6 +30,10 @@ static struct panic_data *const pdata_ptr = PANIC_DATA_PTR;
 
 /* Preceded by stack, rounded down to nearest 64-bit-aligned boundary */
 static const uint32_t pstack_addr = ((uint32_t)pdata_ptr) & ~7;
+
+static bool is_software_panic;
+static uint32_t software_panic_reason;
+static uint32_t software_panic_info;
 
 /**
  * Print the name and value of a register
@@ -226,6 +231,13 @@ static void panic_show_extra(const struct panic_data *pdata)
 	panic_printf("dfsr = %x\n", pdata->cm.dfsr);
 }
 
+static bool is_valid_address_range(uintptr_t addr_start, uintptr_t addr_end)
+{
+	return (addr_start < addr_end) && (addr_start >= CONFIG_RAM_BASE) &&
+	       (addr_end < CONFIG_RAM_BASE + CONFIG_RAM_SIZE) &&
+	       ((addr_start & 3) == 0) && ((addr_end & 3) == 0);
+}
+
 /*
  * Prints process stack contents stored above the exception frame.
  */
@@ -287,6 +299,71 @@ void panic_data_print(const struct panic_data *pdata)
 #endif
 }
 
+#include "lid_switch.h"
+
+__maybe_unused static int fill_cbor_stack(uintptr_t sp, const char *reg)
+{
+	PANIC_CBOR_LABEL_MAP_START(PANIC_CBOR_LABEL_STACK_INFO);
+
+	PANIC_CBOR_LABEL_VALUE("addr", sp);
+	PANIC_CBOR_LABEL_VALUE("reg", reg);
+
+	const size_t stack_capture_count = 16;
+	if (is_valid_address_range(sp, sp + stack_capture_count *
+						       sizeof(uintptr_t))) {
+		PANIC_CBOR_LABEL_ARRAY("data", (uintptr_t *)sp,
+				       stack_capture_count);
+	}
+
+	PANIC_CBOR_MAP_END(); /*  PANIC_CBOR_LABEL_STACK_INFO */
+
+	return EC_SUCCESS;
+}
+
+static int fill_panic_cbor(uintptr_t excep_lr, uintptr_t excep_sp)
+{
+	int rv = panic_cbor_open();
+	if (rv != EC_SUCCESS) {
+		return rv;
+	}
+
+	panic_cbor_fill_common();
+
+	uintptr_t sp;
+	if (is_frame_in_handler_stack(excep_lr)) {
+		sp = excep_sp + BASE_EXCEPTION_FRAME_SIZE_BYTES;
+		fill_cbor_stack(sp, "msp");
+	} else {
+		uintptr_t psp;
+		asm("mrs %0, psp" : "=r"(psp));
+		sp = psp + BASE_EXCEPTION_FRAME_SIZE_BYTES;
+		fill_cbor_stack(sp, "psp");
+	}
+
+	if (is_software_panic) {
+		PANIC_CBOR_LABEL_VALUE(PANIC_CBOR_LABEL_SW_PANIC_REASON,
+				       software_panic_reason);
+		PANIC_CBOR_LABEL_VALUE(PANIC_CBOR_LABEL_SW_PANIC_INFO,
+				       software_panic_info);
+	}
+
+	if (!in_interrupt_context() ||
+	    !is_exception_from_handler_mode(excep_lr)) {
+		PANIC_CBOR_LABEL_VALUE(PANIC_CBOR_LABEL_EXECUTION_CONTEXT,
+				       "thread");
+	} else {
+		PANIC_CBOR_LABEL_VALUE(PANIC_CBOR_LABEL_EXECUTION_CONTEXT,
+				       "handler");
+	}
+
+	extern uint32_t irq_dist[CONFIG_IRQ_COUNT];
+	PANIC_CBOR_LABEL_ARRAY(PANIC_CBOR_LABEL_IRQ_DIST, irq_dist,
+			       CONFIG_IRQ_COUNT);
+
+	panic_cbor_close();
+
+	return EC_SUCCESS;
+}
 /*
  * Handle returning from the exception handler to task context.
  * The task has already been disabled, but may continue to run
@@ -323,6 +400,7 @@ void __keep report_panic(void)
 		     pdata->cm.regs[CORTEX_PANIC_REGISTER_LR]) ?
 		     pdata->cm.regs[CORTEX_PANIC_REGISTER_MSP] :
 		     pdata->cm.regs[CORTEX_PANIC_REGISTER_PSP];
+
 	/* If stack is valid, copy exception frame to pdata */
 	if ((sp & 3) == 0 && sp >= CONFIG_RAM_BASE &&
 	    sp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE -
@@ -352,6 +430,11 @@ void __keep report_panic(void)
 	pdata->cm.shcsr = CPU_NVIC_SHCSR;
 	pdata->cm.hfsr = CPU_NVIC_HFSR;
 	pdata->cm.dfsr = CPU_NVIC_DFSR;
+
+	if (IS_ENABLED(CONFIG_PANIC_CBOR)) {
+		fill_panic_cbor(pdata->cm.regs[CORTEX_PANIC_REGISTER_LR],
+				pdata->cm.regs[CORTEX_PANIC_REGISTER_MSP]);
+	}
 
 #ifdef CONFIG_UART_PAD_SWITCH
 	uart_reset_default_pad_panic();
@@ -470,6 +553,9 @@ void exception_panic(void)
 
 void software_panic(uint32_t reason, uint32_t info)
 {
+	is_software_panic = true;
+	software_panic_reason = reason;
+	software_panic_info = info;
 	__asm__("mov " STRINGIFY(
 			SOFTWARE_PANIC_INFO_REG) ", %0\n"
 						 "mov " STRINGIFY(
@@ -500,18 +586,83 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	lregs[CORTEX_PANIC_REGISTER_R5] = info;
 }
 
+void panic_update_reason(uint32_t reason)
+{
+	struct panic_data *const pdata = panic_get_data();
+
+	if (pdata && pdata->struct_version == 2 &&
+	    pdata->arch == PANIC_ARCH_CORTEX_M) {
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R4] = reason;
+	}
+}
+
 void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 {
 	struct panic_data *const pdata = panic_get_data();
 	uint32_t *lregs;
 
-	if (pdata && pdata->struct_version == 2) {
+	if (pdata && pdata->struct_version == 2 &&
+	    pdata->arch == PANIC_ARCH_CORTEX_M) {
 		lregs = pdata->cm.regs;
 		*exception = lregs[CORTEX_PANIC_REGISTER_IPSR];
 		*reason = lregs[CORTEX_PANIC_REGISTER_R4];
 		*info = lregs[CORTEX_PANIC_REGISTER_R5];
 	} else {
 		*exception = *reason = *info = 0;
+	}
+}
+
+void panic_handle_watchdog_warning(uint32_t excep_lr, uint32_t excep_sp)
+{
+	uintptr_t psp;
+	uintptr_t sp;
+	struct panic_data *const pdata = get_panic_data_write();
+	uint32_t *lregs = pdata->cm.regs;
+
+	asm("mrs %0, psp" : "=r"(psp));
+
+	memset(pdata, 0, CONFIG_PANIC_DATA_SIZE);
+	pdata->magic = PANIC_DATA_MAGIC;
+	pdata->struct_size = CONFIG_PANIC_DATA_SIZE;
+	pdata->struct_version = 2;
+	pdata->arch = PANIC_ARCH_CORTEX_M;
+	pdata->flags = 0;
+	pdata->reserved = 0;
+
+	/* Choose the right sp (psp or msp) based on EXC_RETURN value */
+	sp = is_frame_in_handler_stack(excep_lr) ? excep_sp : psp;
+
+	/* If stack is valid, copy exception frame to pdata */
+	if (is_valid_address_range(sp, sp + BASE_EXCEPTION_FRAME_SIZE_BYTES)) {
+		const uint32_t *sregs = (const uint32_t *)sp;
+		int i;
+
+		/* Skip r0-r3 and r12 registers if necessary */
+		for (i = CORTEX_PANIC_FRAME_REGISTER_R0;
+		     i <= CORTEX_PANIC_FRAME_REGISTER_R12; i++)
+			if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR))
+				pdata->cm.frame[i] = 0;
+			else
+				pdata->cm.frame[i] = sregs[i];
+
+		for (i = CORTEX_PANIC_FRAME_REGISTER_LR;
+		     i < NUM_CORTEX_PANIC_FRAME_REGISTERS; i++)
+			pdata->cm.frame[i] = sregs[i];
+
+		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
+	}
+
+	is_software_panic = true;
+	software_panic_reason = PANIC_SW_WATCHDOG_WARN;
+	software_panic_info = pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_PC];
+
+	/* Fill in legacy exception, info and reason registers */
+	lregs[CORTEX_PANIC_REGISTER_IPSR] = task_get_current();
+	lregs[CORTEX_PANIC_REGISTER_R4] = software_panic_reason;
+	lregs[CORTEX_PANIC_REGISTER_R5] = software_panic_info;
+
+	if (IS_ENABLED(CONFIG_PANIC_CBOR)) {
+		fill_panic_cbor(excep_lr, excep_sp);
 	}
 }
 

@@ -922,12 +922,11 @@ void system_common_pre_init(void)
 		panic_get_reason(&reason, &info, &exception);
 		pdata = panic_get_data();
 
-		/* If the panic reason is a watchdog warning, then change
-		 * the reason to a regular watchdog reason while preserving
-		 * the info and exception from the watchdog warning.
+		/* If the panic reason is a watchdog warning, then update
+		 * the reason to a regular watchdog reason.
 		 */
 		if (reason == PANIC_SW_WATCHDOG_WARN)
-			panic_set_reason(PANIC_SW_WATCHDOG, info, exception);
+			panic_update_reason(PANIC_SW_WATCHDOG);
 		/* The watchdog panic info may have already been initialized by
 		 * the watchdog handler, so only set it here if the panic reason
 		 * is not a watchdog or the panic info has already been read,
