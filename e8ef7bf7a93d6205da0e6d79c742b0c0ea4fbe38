@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06956f8_5caada4c",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-26T17:53:47Z",
+      "side": 1,
+      "message": "We shouldn\u0027t put `rvp_program.conf` into `register_npcx9_project` and `register_it8xxx2_project` since these will later be invoked for non-RVP ocelot projects. \n\nWe probably need to add a new argument to these functions to register kconfig files between the common `program.conf` and the project-specific `project.conf`:\n\n```\nkconfig_files\u003d[\n            # Common to all projects.\n            here / \"program.conf\",\n            # Customization to apply before project-specific config.\n     --\u003e    *extra_kconfig_base_files,\n            # Project-specific KConfig customization.\n            here / project_name / \"project.conf\",\n            # Additional project-specific KConfig customization.\n     --\u003e    *extra_kconfig_proj_files,\n        ],\n```\n\nThen, add `rvp_program.conf` into the declarations on lines 76-97.",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "e8ef7bf7a93d6205da0e6d79c742b0c0ea4fbe38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
