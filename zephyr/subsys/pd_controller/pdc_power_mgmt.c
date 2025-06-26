@@ -102,7 +102,7 @@ test_mockable_static_inline int sniff_pdc_set_rdo(const struct device *dev,
 /**
  * @brief Maximum time to wait for a command to complete.
  */
-#define PDC_CMD_TIMEOUT_MS 2000
+#define PDC_CMD_TIMEOUT_MS 10000
 
 /**
  * @brief Time to wait for typec only devices (Non PD) to settle
@@ -2178,11 +2178,11 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	max_mv = PDO_FIXED_VOLTAGE(pdo);
 	max_mw = max_ma * max_mv / 1000;
 
-	LOG_INF("Available charging on C%d", config->connector_num);
-	LOG_INF("  PDO: %08x", pdo);
-	LOG_INF("  V: %d", max_mv);
-	LOG_INF("  C: %d", max_ma);
-	LOG_INF("  P: %d", max_mw);
+	// LOG_INF("Available charging on C%d", config->connector_num);
+	// LOG_INF("  PDO: %08x", pdo);
+	// LOG_INF("  V: %d", max_mv);
+	// LOG_INF("  C: %d", max_ma);
+	// LOG_INF("  P: %d", max_mw);
 
 	if (port->sink_path_status) {
 		charge_manager_set_supplier(config->connector_num,
@@ -2285,8 +2285,8 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 
 bool pdc_is_rdo_valid(const union connector_status_t *cs)
 {
-	LOG_INF("IS_RDO_VALID: status=%d, power_op_mode=%d, RDO_POS=%d",
-		cs->connect_status, cs->power_operation_mode, RDO_POS(cs->rdo));
+	// LOG_INF("IS_RDO_VALID: status=%d, power_op_mode=%d, RDO_POS=%d",
+	// 	cs->connect_status, cs->power_operation_mode, RDO_POS(cs->rdo));
 
 	return (cs->connect_status == 1 &&
 		cs->power_operation_mode == PD_OPERATION);
