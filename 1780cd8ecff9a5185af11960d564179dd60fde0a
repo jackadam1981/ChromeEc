@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc9117c_b20c90d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-06-26T02:31:02Z",
+      "side": 1,
+      "message": "This is still failing the pre-submit check\n```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      19:28:38: WARNING: zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt: needs formatting\n      19:29:21: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/shim/chip/rtk/rtk_flame/CMakeLists.txt\n```",
+      "revId": "1780cd8ecff9a5185af11960d564179dd60fde0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
