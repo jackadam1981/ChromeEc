@@ -9,6 +9,7 @@
 #include "host_command.h"
 #include "panic-internal.h"
 #include "panic.h"
+#include "panic_cbor.h"
 #include "printf.h"
 #include "system.h"
 #include "system_safe_mode.h"
@@ -26,6 +27,13 @@ static int bus_fault_ignored;
 
 /* Panic data goes at the end of RAM. */
 static struct panic_data *const pdata_ptr = PANIC_DATA_PTR;
+
+#ifdef CONFIG_PANIC_CBOR
+struct cortex_panic_data _cm_panic_data;
+struct cortex_panic_data *cm_panic_data = &_cm_panic_data;
+#else
+struct cortex_panic_data *cm_panic_data = &pdata_ptr->cm;
+#endif
 
 /* Preceded by stack, rounded down to nearest 64-bit-aligned boundary */
 static const uint32_t pstack_addr = ((uint32_t)pdata_ptr) & ~7;
@@ -287,6 +295,69 @@ void panic_data_print(const struct panic_data *pdata)
 #endif
 }
 
+#include "lid_switch.h"
+
+int panic_cbor_fill_cortex_m(struct cortex_panic_data *cm_panic_data,
+			     uint32_t *sp)
+{
+	panic_cbor_enum_label(PANIC_CBOR_LABEL_REGISTERS);
+	panic_cbor_map_start();
+
+	PANIC_CBOR_LABEL_VALUE("psp",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_PSP]);
+	PANIC_CBOR_LABEL_VALUE("ipsr",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_IPSR]);
+	PANIC_CBOR_LABEL_VALUE("lr",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_LR]);
+	PANIC_CBOR_LABEL_VALUE("msp",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_MSP]);
+
+	PANIC_CBOR_LABEL_VALUE("r4",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R4]);
+	PANIC_CBOR_LABEL_VALUE("r5",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R5]);
+	PANIC_CBOR_LABEL_VALUE("r6",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R6]);
+	PANIC_CBOR_LABEL_VALUE("r7",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R7]);
+	PANIC_CBOR_LABEL_VALUE("r8",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R8]);
+	PANIC_CBOR_LABEL_VALUE("r9",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R9]);
+	PANIC_CBOR_LABEL_VALUE("r10",
+			       cm_panic_data->regs[CORTEX_PANIC_REGISTER_R10]);
+
+	PANIC_CBOR_LABEL_VALUE(
+		"r0", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_R0]);
+	PANIC_CBOR_LABEL_VALUE(
+		"r1", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_R1]);
+	PANIC_CBOR_LABEL_VALUE(
+		"r2", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_R2]);
+	PANIC_CBOR_LABEL_VALUE(
+		"r3", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_R3]);
+
+	PANIC_CBOR_LABEL_VALUE(
+		"r12", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_R12]);
+	PANIC_CBOR_LABEL_VALUE(
+		"f_lr", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_LR]);
+	PANIC_CBOR_LABEL_VALUE(
+		"pc", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_PC]);
+	PANIC_CBOR_LABEL_VALUE(
+		"psr", cm_panic_data->frame[CORTEX_PANIC_FRAME_REGISTER_PSR]);
+
+	PANIC_CBOR_LABEL_VALUE("cfsr", cm_panic_data->cfsr);
+	PANIC_CBOR_LABEL_VALUE("bfar", cm_panic_data->bfar);
+	PANIC_CBOR_LABEL_VALUE("mfar", cm_panic_data->mfar);
+	PANIC_CBOR_LABEL_VALUE("shcsr", cm_panic_data->shcsr);
+	PANIC_CBOR_LABEL_VALUE("hfsr", cm_panic_data->hfsr);
+	PANIC_CBOR_LABEL_VALUE("dfsr", cm_panic_data->dfsr);
+
+	/* Close PANIC_CBOR_LABEL_REGISTERS map */
+	panic_cbor_map_end();
+
+	return EC_SUCCESS;
+}
+
 /*
  * Handle returning from the exception handler to task context.
  * The task has already been disabled, but may continue to run
@@ -320,9 +391,10 @@ void __keep report_panic(void)
 
 	/* Choose the right sp (psp or msp) based on EXC_RETURN value */
 	sp = is_frame_in_handler_stack(
-		     pdata->cm.regs[CORTEX_PANIC_REGISTER_LR]) ?
-		     pdata->cm.regs[CORTEX_PANIC_REGISTER_MSP] :
-		     pdata->cm.regs[CORTEX_PANIC_REGISTER_PSP];
+		     cm_panic_data->regs[CORTEX_PANIC_REGISTER_LR]) ?
+		     cm_panic_data->regs[CORTEX_PANIC_REGISTER_MSP] :
+		     cm_panic_data->regs[CORTEX_PANIC_REGISTER_PSP];
+
 	/* If stack is valid, copy exception frame to pdata */
 	if ((sp & 3) == 0 && sp >= CONFIG_RAM_BASE &&
 	    sp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE -
@@ -334,36 +406,46 @@ void __keep report_panic(void)
 		for (i = CORTEX_PANIC_FRAME_REGISTER_R0;
 		     i <= CORTEX_PANIC_FRAME_REGISTER_R12; i++)
 			if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR))
-				pdata->cm.frame[i] = 0;
+				cm_panic_data->frame[i] = 0;
 			else
-				pdata->cm.frame[i] = sregs[i];
+				cm_panic_data->frame[i] = sregs[i];
 
 		for (i = CORTEX_PANIC_FRAME_REGISTER_LR;
 		     i < NUM_CORTEX_PANIC_FRAME_REGISTERS; i++)
-			pdata->cm.frame[i] = sregs[i];
+			cm_panic_data->frame[i] = sregs[i];
 
 		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
 	}
 
 	/* Save extra information */
-	pdata->cm.cfsr = CPU_NVIC_CFSR;
-	pdata->cm.bfar = CPU_NVIC_BFAR;
-	pdata->cm.mfar = CPU_NVIC_MFAR;
-	pdata->cm.shcsr = CPU_NVIC_SHCSR;
-	pdata->cm.hfsr = CPU_NVIC_HFSR;
-	pdata->cm.dfsr = CPU_NVIC_DFSR;
+	cm_panic_data->cfsr = CPU_NVIC_CFSR;
+	cm_panic_data->bfar = CPU_NVIC_BFAR;
+	cm_panic_data->mfar = CPU_NVIC_MFAR;
+	cm_panic_data->shcsr = CPU_NVIC_SHCSR;
+	cm_panic_data->hfsr = CPU_NVIC_HFSR;
+	cm_panic_data->dfsr = CPU_NVIC_DFSR;
 
+	if (IS_ENABLED(CONFIG_PANIC_CBOR)) {
+		if (panic_cbor_open(pdata) == EC_SUCCESS) {
+			panic_cbor_fill_common();
+			panic_cbor_fill_cortex_m(cm_panic_data, &sp);
+			panic_cbor_close(pdata);
+		}
+	}
+
+	if (!IS_ENABLED(CONFIG_PANIC_CBOR)) {
 #ifdef CONFIG_UART_PAD_SWITCH
-	uart_reset_default_pad_panic();
+		uart_reset_default_pad_panic();
 #endif
-	panic_data_print(pdata);
+		panic_data_print(pdata);
 #ifdef CONFIG_DEBUG_EXCEPTIONS
-	panic_show_process_stack(pdata);
-	/*
-	 * TODO(crosbug.com/p/23760): Dump main stack contents as well if the
-	 * exception happened in a handler's context.
-	 */
+		panic_show_process_stack(pdata);
+		/*
+		 * TODO(crosbug.com/p/23760): Dump main stack contents as well
+		 * if the exception happened in a handler's context.
+		 */
 #endif
+	}
 
 	/* Make sure that all changes are saved into RAM */
 	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
@@ -444,7 +526,7 @@ void exception_panic(void)
 		"mov sp, %[pstack]\n"
 		"bl report_panic\n"
 		:
-		: [pregs] "r"(pdata_ptr->cm.regs), [pstack] "r"(pstack_addr)
+		: [pregs] "r"(cm_panic_data->regs), [pstack] "r"(pstack_addr)
 		:
 		/* Constraints protecting these from being clobbered.
 		 * Gcc and Clang should be using r0 & r12 for pregs and
