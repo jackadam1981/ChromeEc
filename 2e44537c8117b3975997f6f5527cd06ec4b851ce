@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c1fca0c_8c347002",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-06-26T07:43:51Z",
+      "side": 1,
+      "message": "Not required.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "2e44537c8117b3975997f6f5527cd06ec4b851ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fda6f097_d126b5a0",
         "filename": "zephyr/subsys/ap_pwrseq/ap_pwrseq.c",
         "patchSetId": 2
