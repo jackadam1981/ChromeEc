@@ -22,6 +22,30 @@
       },
       "revId": "97ea846f18be516d42fa42cceb386e65e29bb8d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c29c8d_4b32f86f",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-06-26T02:44:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "23837f41_a81fcfe8",
+      "range": {
+        "startLine": 355,
+        "startChar": 7,
+        "endLine": 355,
+        "endChar": 29
+      },
+      "revId": "97ea846f18be516d42fa42cceb386e65e29bb8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
