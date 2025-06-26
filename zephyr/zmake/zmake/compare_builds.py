@@ -287,7 +287,9 @@ class CompareBuilds:
         ish_targets = {
             "rex-ish",
             "brox-ish",
+            "kinmen-ish",
             "ptl-ish",
+            "pujjolo-ish",
             "trulo-ish",
             "uldrenite-ish",
         }
