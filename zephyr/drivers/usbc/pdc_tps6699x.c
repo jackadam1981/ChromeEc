@@ -2886,6 +2886,12 @@ static int pdc_init(const struct device *dev)
 	struct pdc_data_t *data = dev->data;
 	int rv;
 
+	if (cfg->connector_number == 1) {
+		LOG_ERR("Skip device %s not ready port %d", cfg->i2c.bus->name,
+			cfg->connector_number);
+		return -ENODEV;
+	}
+
 	rv = i2c_is_ready_dt(&cfg->i2c);
 	if (rv < 0) {
 		LOG_ERR("device %s not ready", cfg->i2c.bus->name);
