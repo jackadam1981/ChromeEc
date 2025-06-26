@@ -23,6 +23,7 @@
 #define CHARGING_VOLTAGE_SDI_4404D57 8600
 #define CHARGING_VOLTAGE_SDI_4404D57M 8700
 #define BAT_SERIES 2
+#define BAT_MAX_SERIES 4
 #define TC_CHARGING_VOLTAGE 8300
 #define CRATE_100 80
 #define CFACT_10 9
@@ -58,7 +59,7 @@ BUILD_ASSERT(ARRAY_SIZE(bat_temp_table) == TEMP_TYPE_COUNT);
 
 static struct charge_state_data *charging_data;
 static int design_capacity = 0;
-static uint16_t bat_cell_volt[BAT_SERIES];
+static uint16_t bat_cell_volt[BAT_MAX_SERIES];
 static uint8_t bat_cell_over_volt_flag;
 static int bat_cell_ovp_volt;
 static int bat_drop_voltage = 0;
@@ -103,7 +104,7 @@ void check_battery_cell_voltage(void)
 	static uint8_t idx = 0;
 	int data;
 	uint16_t max_voltage, min_voltage, delta_voltage;
-	static uint8_t over_volt_count[BAT_SERIES] = {
+	static uint8_t over_volt_count[BAT_MAX_SERIES] = {
 		0,
 	};
 
@@ -119,7 +120,7 @@ void check_battery_cell_voltage(void)
 			over_volt_count[idx]++;
 			if (over_volt_count[idx] >= 4) {
 				max_voltage = min_voltage = bat_cell_volt[idx];
-				for (int i = 0; i < BAT_SERIES; i++) {
+				for (int i = 0; i < BAT_MAX_SERIES; i++) {
 					if (bat_cell_volt[i] > max_voltage)
 						max_voltage = bat_cell_volt[i];
 					if (bat_cell_volt[i] < min_voltage &&
@@ -141,12 +142,12 @@ void check_battery_cell_voltage(void)
 		}
 
 		idx++;
-		if (idx >= BAT_SERIES)
+		if (idx >= BAT_MAX_SERIES)
 			idx = 0;
 	} else {
 		if (cell_check_flag != 0) {
 			cell_check_flag = 0;
-			for (int i = 0; i < BAT_SERIES; i++) {
+			for (int i = 0; i < BAT_MAX_SERIES; i++) {
 				over_volt_count[i] = 0;
 			}
 			bat_cell_over_volt_flag = 0;
@@ -158,7 +159,7 @@ DECLARE_HOOK(HOOK_TICK, check_battery_cell_voltage, HOOK_PRIO_DEFAULT);
 
 int check_ready_for_high_temperature(void)
 {
-	for (int i = 0; i < BAT_SERIES; i++) {
+	for (int i = 0; i < BAT_MAX_SERIES; i++) {
 		if (bat_cell_volt[i] >= BAT_CELL_READY_OVER_VOLT) {
 			return 0;
 		}
