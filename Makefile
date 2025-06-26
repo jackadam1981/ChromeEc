@@ -381,11 +381,12 @@ include test/build.mk
 include third_party/build.mk
 include util/build.mk
 include util/lock/build.mk
-
-
 ifeq ($(CONFIG_BORINGSSL_CRYPTO), y)
 include third_party/boringssl/common/build.mk
 include crypto/build.mk
+endif
+ifeq ($(CONFIG_ZCBOR),y)
+include third_party/zcbor/build.mk
 endif
 
 # Collect all includes.
@@ -411,6 +412,7 @@ all-obj-$(1)+=$(call objs_from_dir_p,chip/$(CHIP),chip,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BASEDIR),baseboard,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BDIR),board,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,feature-x,feature-x,$(1))
+all-obj-$(1)+=$(call objs_from_dir_p,third_party/zcbor,zcbor,$(1))
 ifneq ($(PDIR),)
 all-obj-$(1)+=$(call objs_from_dir_p,$(PDIR),$(PDIR),$(1))
 endif

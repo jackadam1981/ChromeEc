@@ -1853,6 +1853,11 @@
  */
 #undef CONFIG_PANIC_LOG_DEBUG
 
+#ifndef CONFIG_ZEPHYR
+/* Link against zcbor library */
+#undef CONFIG_ZCBOR
+#endif /* !CONFIG_ZEPHYR */
+
 /*
  * noinit_end_of_ram is a memory section placed at the very end
  * of used ram, where it is least likely to overlap with RO ram.

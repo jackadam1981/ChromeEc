@@ -17,6 +17,12 @@
 extern "C" {
 #endif
 
+#ifndef SIZE_MAX
+#ifdef __SIZE_MAX__
+#define SIZE_MAX __SIZE_MAX__
+#endif
+#endif
+
 #define ZCBOR_STRINGIFY_PRE(x) #x
 #define ZCBOR_STRINGIFY(s) ZCBOR_STRINGIFY_PRE(s)
 
