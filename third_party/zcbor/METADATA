@@ -1,0 +1,13 @@
+name: "zcbor CBOR library"
+description:
+    "zcbor is a low footprint CBOR library. The default CBOR library for Zephyr"
+
+third_party {
+  url {
+    type: GIT
+    value: "https://github.com/NordicSemiconductor/zcbor"
+  }
+  version: "33e04241a146a6b94a6ea547c79e53f522c2b530"
+  last_upgrade_date { year: 2025 month: 6 day: 26 }
+  license_type: NOTICE
+}
