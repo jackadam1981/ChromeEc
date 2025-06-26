@@ -75,6 +75,30 @@
       },
       "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9560d8c8_387b30e4",
+        "filename": "test/tpm_test/sb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-06-26T16:11:23Z",
+      "side": 1,
+      "message": "yep, we may come to this stage)",
+      "parentUuid": "827dd1f6_37ef6d3c",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "fdb4d0870c21b24f6f1b086069dddca79cd67985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
