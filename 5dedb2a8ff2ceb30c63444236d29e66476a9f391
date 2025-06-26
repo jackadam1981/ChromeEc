@@ -22,6 +22,30 @@
       },
       "revId": "5dedb2a8ff2ceb30c63444236d29e66476a9f391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3222b28_1df785c4",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/usbc_runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-06-26T17:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a64dd2c_d40dc628",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "5dedb2a8ff2ceb30c63444236d29e66476a9f391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
