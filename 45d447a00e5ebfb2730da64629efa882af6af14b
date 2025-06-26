@@ -22,6 +22,30 @@
       },
       "revId": "45d447a00e5ebfb2730da64629efa882af6af14b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c17719_376272c4",
+        "filename": "zephyr/program/ocelot/rvp_program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-06-26T17:28:31Z",
+      "side": 1,
+      "message": "Added as new commit to handle this change mentioned in CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6681487",
+      "parentUuid": "1c6d2c23_e26636f2",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "45d447a00e5ebfb2730da64629efa882af6af14b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
