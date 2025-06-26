@@ -47,24 +47,28 @@ config AP_X86_INTEL_MTL
 config AP_ARM_MTK_MT8192
 	bool "MediaTek MT8192"
 	select AP_AARCH64
+	select AP_ARM_MTK
 	help
 	  The application processor is a MediaTek MT8192 processor.
 
 config AP_ARM_MTK_MT8186
 	bool "MediaTek MT8186"
 	select AP_AARCH64
+	select AP_ARM_MTK
 	help
 	  The application processor is a MediaTek MT8186 processor.
 
 config AP_ARM_MTK_MT8188
 	bool "MediaTek MT8188"
 	select AP_AARCH64
+	select AP_ARM_MTK
 	help
 	  The application processor is a MediaTek MT8188 processor.
 
 config AP_ARM_MTK_MT8196
 	bool "MediaTek MT8196"
 	select AP_AARCH64
+	select AP_ARM_MTK
 	help
 	  The application processor is a MediaTek MT8196 processor.
 
@@ -113,5 +117,10 @@ config AP_ARM
 	bool
 	help
 	  The application processor (AP) is ARM-like.
+
+config AP_ARM_MTK
+	bool
+	help
+	  The application processor (AP) is a MediaTek processor.
 
 endif # AP

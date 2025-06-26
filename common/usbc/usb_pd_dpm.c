@@ -547,7 +547,8 @@ static void dpm_run_pd_button_sm(int port)
 #ifdef CONFIG_AP_POWER_CONTROL
 	if (!IS_ENABLED(CONFIG_POWER_BUTTON_X86) &&
 	    !IS_ENABLED(CONFIG_CHIPSET_SC7180) &&
-	    !IS_ENABLED(CONFIG_CHIPSET_SC7280)) {
+	    !IS_ENABLED(CONFIG_CHIPSET_SC7280) &&
+	    !IS_ENABLED(CONFIG_AP_ARM_MTK)) {
 		/* Insufficient chipset API support for USB PD power button. */
 		DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_PRESSED);
 		DPM_CLR_FLAG(port, DPM_FLAG_PD_BUTTON_RELEASED);
