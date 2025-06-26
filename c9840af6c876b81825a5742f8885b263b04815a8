@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4ebe77_26a671f0",
+        "filename": "zephyr/program/fatcat/kinmen/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-26T19:43:59Z",
+      "side": 1,
+      "message": "does this need an INIT_HIGH or INIT_LOW?",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "c9840af6c876b81825a5742f8885b263b04815a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
