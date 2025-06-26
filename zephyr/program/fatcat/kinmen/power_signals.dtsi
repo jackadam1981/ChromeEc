@@ -42,7 +42,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SYS_SLP_S0IX_L input from PCH";
 		enum-name = "PWR_SLP_S0";
-		gpios = <&gpioj 5 GPIO_ACTIVE_LOW>;
+		gpios = <&gpioj 5 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-pch-pwrok {
@@ -85,7 +85,7 @@
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "all power good";
 		enum-name = "PWR_ALL_SYS_PWRGD";
-		gpios = <&gpiod 5 GPIO_ACTIVE_HIGH>;
+		gpios = <&gpiod 5 (GPIO_ACTIVE_HIGH | GPIO_VOLTAGE_1P8)>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-sys-rst-l {
