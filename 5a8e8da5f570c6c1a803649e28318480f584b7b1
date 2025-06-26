@@ -94,6 +94,30 @@
       },
       "revId": "5a8e8da5f570c6c1a803649e28318480f584b7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2b6861_c8a88a37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-26T13:39:23Z",
+      "side": 1,
+      "message": "This issue has ben resolved after: https://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/egis/+/8377749",
+      "parentUuid": "cd3990c1_ff9404b7",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "5a8e8da5f570c6c1a803649e28318480f584b7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
