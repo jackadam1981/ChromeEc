@@ -1385,7 +1385,7 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_autonegotiate_sink an_snk;
-	int rv, max_a, max_v, min_v, min_power;
+	int rv, an_max_a, an_max_v, an_min_v, an_min_power, an_cap_mismatch;
 	uint32_t pdo = data->cached_pdos[RDO_POS(data->rdo) - 1];
 
 	if (!atomic_get(&data->set_rdo_possible)) {
@@ -1401,27 +1401,45 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 		LOG_ERR("Failed to read auto negotiate sink register.");
 		goto error_recovery;
 	}
+
+	an_cap_mismatch = CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW / 250;
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
-		max_v = PDO_BATT_MAX_VOLTAGE(pdo);
-		min_v = PDO_BATT_MIN_VOLTAGE(pdo);
-		max_a = CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA;
-		min_power = PDO_BATT_MAX_POWER(pdo);
+		an_max_v = PDO_BATT_MAX_VOLTAGE(pdo) / 50;
+		an_min_v = PDO_BATT_MIN_VOLTAGE(pdo) / 50;
+		an_max_a = CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA / 10;
+		an_min_power = PDO_BATT_MAX_POWER(pdo) / 1000 / 250;
 	} else {
-		max_v = min_v = PDO_FIXED_VOLTAGE(pdo);
-		max_a = MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
-			    PDO_FIXED_CURRENT(pdo));
-		min_power = max_v * max_a;
+		an_max_v = an_min_v = PDO_FIXED_VOLTAGE(pdo) / 50;
+		an_max_a = MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
+			       PDO_FIXED_CURRENT(pdo)) /
+			   10;
+		an_min_power = (an_max_v * an_max_a) / 500;
+	}
+
+	/* If the antonegotiation sink register isn't meaningfully updated,
+	 * exit here. The PDC will have already sent the expected RDO.
+	 */
+	if (an_snk.auto_compute_sink_min_power == 0 &&
+	    an_snk.auto_compute_sink_min_voltage == 0 &&
+	    an_snk.auto_compute_sink_max_voltage == 0 &&
+	    an_snk.auto_neg_max_current == an_max_a &&
+	    an_snk.auto_neg_sink_min_required_power == an_min_power &&
+	    an_snk.auto_neg_max_voltage == an_max_v &&
+	    an_snk.auto_neg_min_voltage == an_min_v &&
+	    an_snk.auto_neg_capabilities_mismach_power == an_cap_mismatch) {
+		set_state(data, ST_TASK_WAIT);
+		return;
 	}
 
 	an_snk.auto_compute_sink_min_power = 0;
 	an_snk.auto_compute_sink_min_voltage = 0;
 	an_snk.auto_compute_sink_max_voltage = 0;
-	an_snk.auto_neg_max_current = max_a / 10;
-	an_snk.auto_neg_sink_min_required_power = min_power / 1000 / 250;
-	an_snk.auto_neg_max_voltage = max_v / 50;
-	an_snk.auto_neg_min_voltage = min_v / 50;
-	an_snk.auto_neg_capabilities_mismach_power =
-		CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW / 250;
+	an_snk.auto_neg_max_current = an_max_a;
+	an_snk.auto_neg_sink_min_required_power = an_min_power;
+	an_snk.auto_neg_max_voltage = an_max_v;
+	an_snk.auto_neg_min_voltage = an_min_v;
+	an_snk.auto_neg_capabilities_mismach_power = an_cap_mismatch;
+
 	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
 	if (rv) {
 		LOG_ERR("Failed to write auto negotiate sink register.");
