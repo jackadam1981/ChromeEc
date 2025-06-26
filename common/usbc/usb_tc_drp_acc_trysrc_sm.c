@@ -3187,7 +3187,9 @@ static void tc_attached_src_run(const int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
 	int rv;
+	int cc_polling_interval;
 
+	cc_polling_interval = board_get_src_open_detect_time();
 	/* Check for connection */
 	if (pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE)) {
 		rv = tcpm_get_cc(port, &cc1, &cc2);
@@ -3200,7 +3202,7 @@ static void tc_attached_src_run(const int port)
 		else
 			tc[port].cc_state = PD_CC_UFP_ATTACHED;
 
-		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, PD_T_SRC_DISCONNECT);
+		pd_timer_enable(port, TC_TIMER_CC_DEBOUNCE, cc_polling_interval);
 		/*
 		 * When the SRC.Open state is detected on the monitored CC pin, a DRP
 		 * shall transition to Unattached.SNK unless it strongly prefers the

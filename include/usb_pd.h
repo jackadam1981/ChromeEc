@@ -3422,6 +3422,17 @@ enum pd_cc_states pd_get_cc_state(enum tcpc_cc_voltage_status cc1,
  */
 __override_proto uint8_t board_get_src_dts_polarity(int port);
 
+/*
+ * Optional, get the board-specific SRC.Open state detect time.
+ *
+ * This function is used for detecting SRC.Open state. The EC polls
+ * TCPC about CC state to detect SRC.Open, this functions allows
+ * board-specific polling interval.
+ *
+ * @return time
+ */
+__override_proto uint32_t board_get_src_open_detect_time();
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

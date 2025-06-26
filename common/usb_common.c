@@ -219,6 +219,11 @@ __overridable uint8_t board_get_usb_pd_port_count(void)
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+__overridable uint32_t board_get_src_open_detect_time(void)
+{
+	return PD_T_SRC_DISCONNECT;
+}
+
 __overridable bool board_is_usb_pd_port_present(int port)
 {
 	/*
