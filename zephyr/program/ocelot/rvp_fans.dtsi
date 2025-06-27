@@ -15,12 +15,12 @@
 		fan0: fan0 {
 			/* Provide pwms in board overlay */
 			tach = <&tach_fan0>;
-			rpm_min = <3000>;
-			rpm_start = <3000>;
-			rpm_max = <9000>;
-			rpm_deviation = <1>;
-			enable_gpio = <&gpio_fan_control>;
-			pgood_gpio = <&gpio_all_sys_pwr_good>;
+			rpm-min = <3000>;
+			rpm-start = <3000>;
+			rpm-max = <9000>;
+			rpm-deviation = <1>;
+			enable-gpio = <&gpio_fan_control>;
+			pgood-gpio = <&gpio_all_sys_pwr_good>;
 		};
 	};
 };
