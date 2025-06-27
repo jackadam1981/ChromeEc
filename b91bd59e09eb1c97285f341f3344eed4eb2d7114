@@ -34,6 +34,24 @@
       "parentUuid": "1d627754_fe16ab35",
       "revId": "b91bd59e09eb1c97285f341f3344eed4eb2d7114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0faa164_914bf21c",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-27T20:22:32Z",
+      "side": 0,
+      "message": "Alas, there is now extra whitespace, which you should be able to fix with `cros format`. I\u0027ll send this to CQ and see what happens, but I think it will probably reject it.",
+      "parentUuid": "c02d2e9d_645fd9ff",
+      "revId": "b91bd59e09eb1c97285f341f3344eed4eb2d7114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
