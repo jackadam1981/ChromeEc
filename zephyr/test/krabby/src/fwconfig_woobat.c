@@ -73,7 +73,7 @@ static int mock_cros_cbi_get_fw_config(enum cbi_fw_config_field_id field_id,
 	}
 }
 
-static void *clamshell_reset(void)
+static void clamshell_reset(void *fixture)
 {
 	uint32_t val;
 
@@ -99,13 +99,11 @@ static void *clamshell_reset(void)
 	zassert_equal(BASE_NONE, val, "val=%d", val);
 	zassert_ok(cros_cbi_get_fw_config(LID_SENSOR, &val), NULL);
 	zassert_equal(LID_NONE, val, "val=%d", val);
-
-	return NULL;
 }
 
 ZTEST_SUITE(woobat_clamshell, NULL, NULL, clamshell_reset, NULL, teardown);
 
-static void *main_sensor_reset(void)
+static void main_sensor_reset(void *fixture)
 {
 	uint32_t val;
 
@@ -138,13 +136,11 @@ static void *main_sensor_reset(void)
 	zassert_equal(BASE_ICM42607, val, "val=%d", val);
 	zassert_ok(cros_cbi_get_fw_config(LID_SENSOR, &val), NULL);
 	zassert_equal(LID_LIS2DWLTR, val, "val=%d", val);
-
-	return NULL;
 }
 
 ZTEST_SUITE(woobat_main_sensor, NULL, NULL, main_sensor_reset, NULL, teardown);
 
-static void *alt_sensor_reset(void)
+static void alt_sensor_reset(void *fixture)
 {
 	uint32_t val;
 
@@ -170,8 +166,6 @@ static void *alt_sensor_reset(void)
 	zassert_equal(BASE_BMI323, val, "val=%d", val);
 	zassert_ok(cros_cbi_get_fw_config(LID_SENSOR, &val), NULL);
 	zassert_equal(LID_BMA422, val, "val=%d", val);
-
-	return NULL;
 }
 
 ZTEST_SUITE(woobat_alt_sensor, NULL, NULL, alt_sensor_reset, NULL, teardown);
