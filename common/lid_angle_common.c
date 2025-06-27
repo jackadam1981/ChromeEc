@@ -38,6 +38,21 @@ __overridable void lid_angle_peripheral_enable(int enable)
 	}
 }
 
+#ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE
+static void reset_tablet_mode(void)
+{
+	/*
+	 * When the lid angle is calculated remotely we may have stale data for
+	 * the lid angle if the user went from tablet -> clamshell or clamshell
+	 * -> tablet while the DSP was off. Since the DSP will boot and assume
+	 * clamshell mode until the lid angle is calculated, we should reset the
+	 * state too.
+	 */
+	tablet_set_mode(0, TABLET_TRIGGER_LID);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reset_tablet_mode, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE */
+
 static void enable_peripherals(void)
 {
 	/*
