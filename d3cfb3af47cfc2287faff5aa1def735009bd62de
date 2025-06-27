@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f318745f_0ca38c26",
+        "filename": "zephyr/program/fatcat/kinmen/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-27T17:37:15Z",
+      "side": 1,
+      "message": "i assume you\u0027re implementing the non-inverted KSO02 on kinmen.\ndo you need anything special for KSO02 here at all?\nthis should be the same as all the other KSO pins, shouldn\u0027t it?",
+      "range": {
+        "startLine": 100,
+        "startChar": 17,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "d3cfb3af47cfc2287faff5aa1def735009bd62de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
