@@ -139,7 +139,10 @@ static int rt1739_emul_init(const struct emul *emul,
 	struct i2c_common_emul_data *common_data = &data->common;
 
 	i2c_common_emul_init(common_data);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-function-pointer-types"
 	i2c_common_emul_set_read_func(common_data, rt1739_emul_read, NULL);
+#pragma clang diagnostic pop
 	i2c_common_emul_set_write_func(common_data, rt1739_emul_write, NULL);
 
 	rt1739_emul_reset(emul);

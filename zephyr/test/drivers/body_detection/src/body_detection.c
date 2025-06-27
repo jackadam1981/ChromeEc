@@ -25,8 +25,8 @@ extern uint64_t var_threshold_scaled, confidence_delta_scaled;
  * two functions that are used during body detection parameters initialization.
  */
 const static struct accelgyro_drv mock_drv = {
-	.get_data_rate = get_data_rate,
-	.get_rms_noise = get_rms_noise,
+	.get_data_rate = (int (*)(const struct motion_sensor_t *))get_data_rate,
+	.get_rms_noise = (int (*)(const struct motion_sensor_t *))get_rms_noise,
 };
 const static struct accelgyro_drv *old_drv;
 

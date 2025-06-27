@@ -113,8 +113,10 @@ ZTEST(cbi_flash_from_eeprom, test_hook_called)
 	int prev_eeprom_reads;
 	int prev_flash_reads;
 
-	eeprom_load_fake.custom_fake = mock_eeprom_read_blank;
-	flash_load_fake.custom_fake = mock_flash_read;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_blank;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read;
 
 	/*
 	 * Verify CBI flash remains invalid if CBI EEPROM is invalid
@@ -140,8 +142,10 @@ ZTEST(cbi_flash_from_eeprom, test_cbi_copy)
 	int prev_eeprom_reads;
 	int prev_flash_reads;
 
-	eeprom_load_fake.custom_fake = mock_eeprom_read_cbi;
-	flash_load_fake.custom_fake = mock_flash_read;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_cbi;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read;
 
 	/*
 	 * trigger cros_cbi_transfer_eeprom_to_flash() call by
@@ -178,8 +182,10 @@ ZTEST(cbi_flash_from_eeprom, test_cbi_copy)
 
 ZTEST(cbi_flash_from_eeprom, test_bad_flash)
 {
-	eeprom_load_fake.custom_fake = mock_eeprom_read_cbi;
-	flash_load_fake.custom_fake = mock_flash_read_error;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_cbi;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read_error;
 
 	/* Re-initialize CBI */
 	cros_cbi_ec_init();
@@ -192,8 +198,10 @@ ZTEST(cbi_flash_from_eeprom, test_bad_flash)
 
 ZTEST(cbi_flash_from_eeprom, test_bad_eeprom)
 {
-	eeprom_load_fake.custom_fake = mock_eeprom_read_error;
-	flash_load_fake.custom_fake = mock_flash_read;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_error;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read;
 
 	/* Re-initialize CBI */
 	cros_cbi_ec_init();
@@ -206,8 +214,10 @@ ZTEST(cbi_flash_from_eeprom, test_bad_eeprom)
 
 ZTEST(cbi_flash_from_eeprom, test_bad_version)
 {
-	eeprom_load_fake.custom_fake = mock_eeprom_read_cbi;
-	flash_load_fake.custom_fake = mock_flash_read_bad_version;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_cbi;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read_bad_version;
 
 	/* Re-initialize CBI */
 	cros_cbi_ec_init();
@@ -220,8 +230,10 @@ ZTEST(cbi_flash_from_eeprom, test_bad_version)
 
 ZTEST(cbi_flash_from_eeprom, test_bad_size)
 {
-	eeprom_load_fake.custom_fake = mock_eeprom_read_cbi;
-	flash_load_fake.custom_fake = mock_flash_read_bad_size;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_cbi;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read_bad_size;
 
 	/* Re-initialize CBI */
 	cros_cbi_ec_init();
@@ -234,8 +246,10 @@ ZTEST(cbi_flash_from_eeprom, test_bad_size)
 
 ZTEST(cbi_flash_from_eeprom, test_bad_crc)
 {
-	eeprom_load_fake.custom_fake = mock_eeprom_read_cbi;
-	flash_load_fake.custom_fake = mock_flash_read_bad_crc;
+	eeprom_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_eeprom_read_cbi;
+	flash_load_fake.custom_fake =
+		(int (*)(int, char *, int))mock_flash_read_bad_crc;
 
 	/* Re-initialize CBI */
 	cros_cbi_ec_init();

@@ -458,6 +458,8 @@ static int bmi3xx_emul_finish_write(uint8_t *regs, const struct emul *emul,
 	return 0;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-function-pointer-types"
 struct bmi_emul_type_data bmi3xx_emul = {
 	.sensortime_follow_config_frame = false,
 	.handle_write = bmi3xx_emul_handle_write,
@@ -479,6 +481,7 @@ struct bmi_emul_type_data bmi3xx_emul = {
 			 BMI_EMUL_FRAME_NONE },
 	.reg_bytes = 2,
 };
+#pragma clang diagnostic pop
 
 const struct bmi_emul_type_data *get_bmi3xx_emul_type_data(void)
 {
