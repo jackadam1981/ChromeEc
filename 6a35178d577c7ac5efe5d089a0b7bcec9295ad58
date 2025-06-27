@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "942c41c0_c46a2241",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-06-27T21:54:17Z",
+      "side": 1,
+      "message": "Doesn\u0027t look like we have an enum currently. Elsewhere in pdc_power_mgmt (handle_connector_status), we just directly check the bit. Let me know if you want me to post an update adding one.",
+      "parentUuid": "8c8c9a48_75751cf3",
+      "range": {
+        "startLine": 2166,
+        "startChar": 5,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b308e0d0_f5d49a8f",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-18T21:11:28Z",
       "side": 1,
       "message": "I think the error return here should be ENOSYS so that the PDM won\u0027t keep trying the command. If the return is EINVAL, then the PDM will keep calling this method for PDC_CMD_TIMEOUT_MS (2000) until giving up. The downside of returning ENOSYS is that the EC console will show this command as unimplemented:\nCommand (PDC_READ_POWER_LEVEL) not implemented",
+      "range": {
+        "startLine": 2167,
+        "startChar": 10,
+        "endLine": 2167,
+        "endChar": 16
+      },
+      "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddaa954a_c4d80fa5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-06-27T21:54:17Z",
+      "side": 1,
+      "message": "Changed to ENOSYS. Should we also be updating the PDM to not repeatedly send commands on an EINVAL response?",
+      "parentUuid": "b308e0d0_f5d49a8f",
       "range": {
         "startLine": 2167,
         "startChar": 10,
