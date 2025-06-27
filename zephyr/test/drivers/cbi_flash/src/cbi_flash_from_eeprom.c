@@ -16,8 +16,8 @@
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
-FAKE_VALUE_FUNC(int, eeprom_load, int, char *, int);
-FAKE_VALUE_FUNC(int, flash_load, int, char *, int);
+FAKE_VALUE_FUNC(int, eeprom_load, int, uint8_t *, int);
+FAKE_VALUE_FUNC(int, flash_load, int, uint8_t *, int);
 
 static int cbi_flash_erase(void)
 {

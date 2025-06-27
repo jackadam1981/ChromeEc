@@ -243,9 +243,10 @@ ZTEST(rt9490_chg, test_misc_info)
 	zassert_equal(status, CHARGER_RES_COLD | CHARGER_RES_UR, NULL);
 }
 
-static void rt9490_chg_setup(void)
+static void *rt9490_chg_setup(void)
 {
 	init_battery_type();
+	return NULL;
 }
 
 static void reset_emul(void *fixture)

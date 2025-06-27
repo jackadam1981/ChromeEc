@@ -14,12 +14,12 @@
 FAKE_VOID_FUNC(motion_sensors_check_ssfc);
 FAKE_VALUE_FUNC(bool, cros_cbi_ssfc_check_match, enum cbi_ssfc_value_id);
 
-static int mock_cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id ssfc)
+static bool mock_cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id ssfc)
 {
 	return true;
 }
 
-static int mock_cros_cbi_ssfc_check_not_match(enum cbi_ssfc_value_id ssfc)
+static bool mock_cros_cbi_ssfc_check_not_match(enum cbi_ssfc_value_id ssfc)
 {
 	return false;
 }

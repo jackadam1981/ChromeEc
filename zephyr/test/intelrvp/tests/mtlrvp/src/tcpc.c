@@ -57,7 +57,7 @@ enum usbc_port {
 };
 
 /* Helper function to reset all fakes */
-static void reset_test_fakes(void)
+static void reset_test_fakes(void *fixture)
 {
 	RESET_FAKE(nct38xx_reset_notify);
 	RESET_FAKE(ccgxxf_reset);

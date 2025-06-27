@@ -24,7 +24,7 @@
 
 FAKE_VALUE_FUNC(int, system_is_locked);
 
-void rollback_before(void)
+void rollback_before(void *fixture)
 {
 	const struct rollback_data data = {
 		.id = 0,
