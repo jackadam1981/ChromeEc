@@ -18,9 +18,10 @@
 
 int chipset_s0_run_count;
 
-static void setup_test(void *fixture)
+static void *setup_test(void)
 {
 	power_signal_init();
+	return NULL;
 }
 
 static void after_test(void *fixture)
