@@ -73,34 +73,34 @@
 	fan_steps: fan-step {
 		compatible = "cros-ec,fan-steps";
 		level_0 {
-			temp_on = <(-1) (-1) 37 (-1) (-1)>;
-			temp_off = <(-1) (-1) 99 (-1) (-1)>;
-			rpm_target = <0>;
+			temp-on = <(-1) (-1) 37 (-1) (-1)>;
+			temp-off = <(-1) (-1) 99 (-1) (-1)>;
+			rpm-target = <0>;
 		};
 		level_1 {
-			temp_on = <(-1) (-1) 45 (-1) (-1)>;
-			temp_off = <(-1) (-1) 38 (-1) (-1)>;
-			rpm_target = <3000>;
+			temp-on = <(-1) (-1) 45 (-1) (-1)>;
+			temp-off = <(-1) (-1) 38 (-1) (-1)>;
+			rpm-target = <3000>;
 		};
 		level_2 {
-			temp_on = <(-1) (-1) 52 (-1) (-1)>;
-			temp_off = <(-1) (-1) 47 (-1) (-1)>;
-			rpm_target = <3500>;
+			temp-on = <(-1) (-1) 52 (-1) (-1)>;
+			temp-off = <(-1) (-1) 47 (-1) (-1)>;
+			rpm-target = <3500>;
 		};
 		level_3 {
-			temp_on = <(-1) (-1) 61 (-1) (-1)>;
-			temp_off = <(-1) (-1) 56 (-1) (-1)>;
-			rpm_target = <4000>;
+			temp-on = <(-1) (-1) 61 (-1) (-1)>;
+			temp-off = <(-1) (-1) 56 (-1) (-1)>;
+			rpm-target = <4000>;
 		};
 		level_4 {
-			temp_on = <(-1) (-1) 70 (-1) (-1)>;
-			temp_off = <(-1) (-1) 68 (-1) (-1)>;
-			rpm_target = <4500>;
+			temp-on = <(-1) (-1) 70 (-1) (-1)>;
+			temp-off = <(-1) (-1) 68 (-1) (-1)>;
+			rpm-target = <4500>;
 		};
 		level_5 {
-			temp_on = <(-1) (-1) 76 (-1) (-1)>;
-			temp_off = <(-1) (-1) 73 (-1) (-1)>;
-			rpm_target = <4800>;
+			temp-on = <(-1) (-1) 76 (-1) (-1)>;
+			temp-off = <(-1) (-1) 73 (-1) (-1)>;
+			rpm-target = <4800>;
 		};
 	};
 
@@ -226,9 +226,9 @@
 /* fan overrides */
 &fan0 {
 	pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
-	rpm_min = <2500>;
-	rpm_start = <2500>;
-	rpm_max = <4800>;
+	rpm-min = <2500>;
+	rpm-start = <2500>;
+	rpm-max = <4800>;
 };
 
 &temp_sensor_cpu {

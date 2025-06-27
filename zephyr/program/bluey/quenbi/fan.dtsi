@@ -9,19 +9,19 @@
 
 		fan1: fan_1 {
 			pwms = <&pwm5 0 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
-			rpm_min = <3850>;
-			rpm_start = <3850>;
-			rpm_max = <7700>;
+			rpm-min = <3850>;
+			rpm-start = <3850>;
+			rpm-max = <7700>;
 			tach = <&tach1>;
-			enable_gpio = <&gpio_ec_en_pp5000>;
+			enable-gpio = <&gpio_ec_en_pp5000>;
 		};
 		fan2: fan_2 {
 			pwms = <&pwm4 0 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
-			rpm_min = <3850>;
-			rpm_start = <3850>;
-			rpm_max = <7700>;
+			rpm-min = <3850>;
+			rpm-start = <3850>;
+			rpm-max = <7700>;
 			tach = <&tach2>;
-			enable_gpio = <&gpio_ec_en_pp5000>;
+			enable-gpio = <&gpio_ec_en_pp5000>;
 		};
 
 	};

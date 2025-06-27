@@ -65,9 +65,9 @@
 				PWM_KHZ(25)
 				PWM_POLARITY_NORMAL>;
 			tach = <&tach0>;
-			rpm_min = <1500>;
-			rpm_start = <1500>;
-			rpm_max = <4000>;
+			rpm-min = <1500>;
+			rpm-start = <1500>;
+			rpm-max = <4000>;
 		};
 	};
 };

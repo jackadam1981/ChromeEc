@@ -166,7 +166,6 @@ def main(argv):
         # Exit early if nothing changed
         return
 
-    # TODO: also enable DevicetreeBindings
     check_compliance.main(
         [
             "--output=",
