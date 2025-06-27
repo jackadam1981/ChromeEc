@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85f0f45_0498e00f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-06-27T06:33:48Z",
+      "side": 1,
+      "message": "Just some question:\n\nI see in zephyr/CMakeLists.txt that power/mt8186.c is used by CONFIG_PLATFORM_EC_POWERSEQ_MT8186, CONFIG_PLATFORM_EC_POWERSEQ_MT8188, and CONFIG_PLATFORM_EC_POWERSEQ_MT8196 but not CONFIG_PLATFORM_EC_POWERSEQ_MT8192. Do we also have to implement chipset_power_on in mt8192.c?",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "e6504cab5a22ecf03392b2d815e4dc0d66ff7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
