@@ -24,19 +24,19 @@ static int cbi_flash_erase(void)
 	return crec_flash_physical_erase(CBI_FLASH_OFFSET, CBI_FLASH_SIZE);
 }
 
-static int mock_flash_read(int offset, uint8_t *data, int len)
+static int mock_flash_read(int offset, char *data, int len)
 {
 	return crec_flash_unprotected_read(CBI_FLASH_OFFSET + offset, len,
-					   (char *)data);
+					   data);
 }
 
-static int mock_eeprom_read_blank(int offset, uint8_t *data, int len)
+static int mock_eeprom_read_blank(int offset, char *data, int len)
 {
 	memset(data, 0x00, len);
 	return EC_SUCCESS;
 }
 
-static int mock_eeprom_read_cbi(int offset, uint8_t *data, int len)
+static int mock_eeprom_read_cbi(int offset, char *data, int len)
 {
 	struct cbi_header *h = (struct cbi_header *)data;
 
@@ -52,17 +52,17 @@ static int mock_eeprom_read_cbi(int offset, uint8_t *data, int len)
 	return EC_SUCCESS;
 }
 
-static int mock_eeprom_read_error(int offset, uint8_t *data, int len)
+static int mock_eeprom_read_error(int offset, char *data, int len)
 {
 	return EC_ERROR_UNKNOWN;
 }
 
-static int mock_flash_read_error(int offset, uint8_t *data, int len)
+static int mock_flash_read_error(int offset, char *data, int len)
 {
 	return EC_ERROR_UNKNOWN;
 }
 
-static int mock_flash_read_bad_version(int offset, uint8_t *data, int len)
+static int mock_flash_read_bad_version(int offset, char *data, int len)
 {
 	struct cbi_header *h = (struct cbi_header *)data;
 
@@ -78,7 +78,7 @@ static int mock_flash_read_bad_version(int offset, uint8_t *data, int len)
 	return EC_SUCCESS;
 }
 
-static int mock_flash_read_bad_size(int offset, uint8_t *data, int len)
+static int mock_flash_read_bad_size(int offset, char *data, int len)
 {
 	struct cbi_header *h = (struct cbi_header *)data;
 
@@ -93,7 +93,7 @@ static int mock_flash_read_bad_size(int offset, uint8_t *data, int len)
 	return EC_SUCCESS;
 }
 
-static int mock_flash_read_bad_crc(int offset, uint8_t *data, int len)
+static int mock_flash_read_bad_crc(int offset, char *data, int len)
 {
 	struct cbi_header *h = (struct cbi_header *)data;
 

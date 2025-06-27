@@ -14,8 +14,8 @@
 #include <zephyr/shell/shell.h>
 #include <zephyr/ztest.h>
 
-FAKE_VALUE_FUNC(int, get_data_rate, struct motion_sensor_t *);
-FAKE_VALUE_FUNC(int, get_rms_noise, struct motion_sensor_t *);
+FAKE_VALUE_FUNC(int, get_data_rate, const struct motion_sensor_t *);
+FAKE_VALUE_FUNC(int, get_rms_noise, const struct motion_sensor_t *);
 
 extern struct motion_sensor_t *body_sensor;
 extern uint64_t var_threshold_scaled, confidence_delta_scaled;
