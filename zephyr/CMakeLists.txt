@@ -486,6 +486,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8186
 # Re-use mt8186.c code
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8188
                                                 "${PLATFORM_EC}/power/mt8186.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8189
+                                                "${PLATFORM_EC}/power/mt8186.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8196
                                                 "${PLATFORM_EC}/power/mt8186.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8192
