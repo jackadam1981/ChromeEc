@@ -33,6 +33,24 @@
       "message": "@Leo,\n\nIs it possible to break down this CL into smaller ones for review? This is an example: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5745938",
       "revId": "45fdfaf3bd67982c487cd661575ce447887c8949",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a09c944_1a3b57e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-06-27T11:18:03Z",
+      "side": 1,
+      "message": "Hi Kyle, We attempted to modify the CL as you suggested in comment but we encountered a build failure.\n\nTo ensure the build passes, I’ve already trimmed my CL as much as possible while keeping it minimal and functional.",
+      "parentUuid": "473a3fb0_20822d05",
+      "revId": "45fdfaf3bd67982c487cd661575ce447887c8949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
