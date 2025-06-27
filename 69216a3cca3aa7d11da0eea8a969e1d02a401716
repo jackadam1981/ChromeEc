@@ -16,6 +16,24 @@
       "message": "what does 0 mean here?",
       "revId": "69216a3cca3aa7d11da0eea8a969e1d02a401716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35a321c_8059c292",
+        "filename": "zephyr/program/fatcat/kinmen/power_signals.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-06-27T06:46:15Z",
+      "side": 1,
+      "message": "It seems 0 is not to set any flags (I am not sure). however, I can set GPIO_ACTIVE_HIGH such as rex board.",
+      "parentUuid": "51f98c0f_93af35a0",
+      "revId": "69216a3cca3aa7d11da0eea8a969e1d02a401716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
