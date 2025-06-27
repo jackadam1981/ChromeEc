@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26161b41_66e55f98",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-27T20:34:11Z",
+      "side": 1,
+      "message": "For purposes of experimentation, this looks good enough to try. It should generalize to any state where we currently poll CC_STATUS and also have this TCPC alert enabled, which is probably everything but the Unattached states. If this works, you should try getting rid of the state check here and config-guarding the polling in other states.",
+      "range": {
+        "startLine": 1794,
+        "startChar": 23,
+        "endLine": 1794,
+        "endChar": 64
+      },
+      "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8834ca8_b01d772c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-27T20:34:11Z",
+      "side": 1,
+      "message": "At least for the sake of experimentation, I don\u0027t think we need to add this config check here. It should be fine to still read this alert bit and check CC if it\u0027s set, even in the case when we\u0027re not going to do anything with it.\n\nIf the experiment works, I\u0027d need to look deeper to see if there are any negative implications of turning this logic off in the polling configuration. I can\u0027t think of any right now. I suppose, theoretically, it should make the polling configuration marginally lower overhead.\n\nYou could try this both ways and see if the behavior changes.",
+      "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
