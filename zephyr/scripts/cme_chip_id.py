@@ -2,6 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# pylint: disable=line-too-long
+# pylint: disable=too-many-lines
 "Dict of component ids for CME"
 
 import collections
@@ -730,12 +732,284 @@ DISAMBIGUATION_DICTIONARY = {
             "realtek,rts5453p",
             None,
             {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
                 "reg": "0x3A",
-                "mask": "0x00",  # chip has variable return information.
-                "value": "0x00",
-                "bytes": 1,
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "00" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030300000000000",
+                "bytes": 38,
             },
             None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "01" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030310000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "03" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030330000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "04" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030340000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "05" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030350000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "06" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030360000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "08" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030380000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "09" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030390000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0B" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030420000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0C" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030430000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0D" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030440000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0E" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030450000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0F" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030460000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0G" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030470000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "0H" on the 31 and 32 byte
+                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
+                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030480000000000",
+                "bytes": 38,
+            },
             None,
             None,
         ),
