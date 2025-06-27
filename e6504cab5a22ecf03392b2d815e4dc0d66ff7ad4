@@ -22,6 +22,30 @@
       },
       "revId": "e6504cab5a22ecf03392b2d815e4dc0d66ff7ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee50c53_ccc50b57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-06-27T06:42:39Z",
+      "side": 1,
+      "message": "no, 8192 uses an old TCPM implementation (common/usb_pd_protocol.c) that does not support alert event at all.",
+      "parentUuid": "e85f0f45_0498e00f",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "e6504cab5a22ecf03392b2d815e4dc0d66ff7ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
