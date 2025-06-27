@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d292f698_f46c166d",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-27T16:30:31Z",
+      "side": 1,
+      "message": "nit: `base_als:` for consistency.",
+      "revId": "d5f84acfdca3e0f3defd0da48b466802afe1c01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e38c1f6_ae1030f8",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-27T16:30:31Z",
+      "side": 1,
+      "message": "there is a mismatch between the name of sensor `base-als` and its location `MOTIONSENSE_LOC_LID`.",
+      "revId": "d5f84acfdca3e0f3defd0da48b466802afe1c01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
