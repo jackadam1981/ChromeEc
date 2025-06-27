@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c4edee_c3e3d8d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-27T20:38:00Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"accomodate\" is a possible misspelling of \"accommodate\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"accomodate\" is a possible misspelling of \"accommodate\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "c2373f9a355ff0e1f7945616be49dbb13daa9d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c53505a_72838a4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-06-27T20:38:00Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"addded\" is a possible misspelling of \"added\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"addded\" is a possible misspelling of \"added\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "c2373f9a355ff0e1f7945616be49dbb13daa9d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
