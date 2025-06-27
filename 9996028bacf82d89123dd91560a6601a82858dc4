@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec225201_2a457412",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-27T17:12:20Z",
+      "side": 1,
+      "message": "Caveh and I discussed this offline. We would prefer that the `board_get_version()` override not be located inside this driver. Instead, could you put the `board_get_version()` override into one of the Ocelot RVP board source files (zephyr/program/ocelot/src/rvp_*.c), and then have that override call a new function in the board_id_intel_rvp driver to get the values?\n\nWe\u0027d like to limit the scope of board overrides and keep them contained to board code (zephyr/program) as much as possible to make the code more readable and traceable.",
+      "parentUuid": "9e6a6628_a2abd453",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9996028bacf82d89123dd91560a6601a82858dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90a3cd67_8d732ac2",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-26T19:28:31Z",
       "side": 1,
       "message": "should `bom_id` be available anywhere other than the EC console?\nseems like a bug that it\u0027s not encoded in the RVP board ID.",
+      "range": {
+        "startLine": 97,
+        "startChar": 25,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "9996028bacf82d89123dd91560a6601a82858dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9f1c6a_f6bbd699",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-27T17:12:20Z",
+      "side": 1,
+      "message": "Intel considers this to be optional, but it would be nice to know how it would be used. If this value never gets used anywhere, can you remove this code?",
+      "parentUuid": "90a3cd67_8d732ac2",
       "range": {
         "startLine": 97,
         "startChar": 25,
