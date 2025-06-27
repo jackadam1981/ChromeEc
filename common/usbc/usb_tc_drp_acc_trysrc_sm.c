@@ -1788,6 +1788,22 @@ void tc_event_check(int port, int evt)
 
 		pd_update_dual_role_config(port);
 	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_EVENT_DRIVEN_SRC_OPEN_DETECT)) {
+		enum tcpc_cc_voltage_status cc1, cc2;
+		if (evt & PD_EVENT_CC && get_state_tc(port) == TC_ATTACHED_SRC) {
+			/* Check for connection */
+			tcpm_get_cc(port, &cc1, &cc2);
+
+			if (polarity_rm_dts(tc[port].polarity))
+				cc1 = cc2;
+
+			if (cc1 == TYPEC_CC_VOLT_OPEN)
+				tc[port].cc_state = PD_CC_NONE;
+			else
+				tc[port].cc_state = PD_CC_UFP_ATTACHED;
+		}
+	}
 }
 
 /*
@@ -3185,18 +3201,20 @@ static void tc_attached_src_entry(const int port)
 
 static void tc_attached_src_run(const int port)
 {
-	enum tcpc_cc_voltage_status cc1, cc2;
+	if(!IS_ENABLED(CONFIG_USB_PD_EVENT_DRIVEN_SRC_OPEN_DETECT)) {
+		enum tcpc_cc_voltage_status cc1, cc2;
 
-	/* Check for connection */
-	tcpm_get_cc(port, &cc1, &cc2);
+		/* Check for connection */
+		tcpm_get_cc(port, &cc1, &cc2);
 
-	if (polarity_rm_dts(tc[port].polarity))
-		cc1 = cc2;
+		if (polarity_rm_dts(tc[port].polarity))
+			cc1 = cc2;
 
-	if (cc1 == TYPEC_CC_VOLT_OPEN)
-		tc[port].cc_state = PD_CC_NONE;
-	else
-		tc[port].cc_state = PD_CC_UFP_ATTACHED;
+		if (cc1 == TYPEC_CC_VOLT_OPEN)
+			tc[port].cc_state = PD_CC_NONE;
+		else
+			tc[port].cc_state = PD_CC_UFP_ATTACHED;
+	}
 
 	/*
 	 * When the SRC.Open state is detected on the monitored CC pin, a DRP
