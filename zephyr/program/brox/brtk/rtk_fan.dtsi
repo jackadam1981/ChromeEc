@@ -9,10 +9,10 @@
 		fan_0 {
 			pwms = <&pwm6 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 			tach = <&tach0>;
-			rpm_min = <1100>;
-			rpm_start = <1100>;
-			rpm_max = <4000>;
-			rpm_deviation = <1>;
+			rpm-min = <1100>;
+			rpm-start = <1100>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
 		};
 	};
 };
