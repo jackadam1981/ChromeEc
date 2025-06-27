@@ -27,6 +27,11 @@ if(DEFINED CONFIG_BOARD_PUJJOLO)
 	endif()
 endif()
 
+if(DEFINED CONFIG_BOARD_KALADIN)
+	project(kaladin)
+	add_subdirectory(kaladin)
+endif()
+
 if(DEFINED CONFIG_BOARD_ULDRENITE)
 	if(DEFINED CONFIG_SOC_FAMILY_INTEL_ISH)
 		project(uldrenite-ish)

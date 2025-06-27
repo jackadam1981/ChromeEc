@@ -1,0 +1,49 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+ / {
+	named-gpios {
+		compatible = "named-gpios";
+
+		gpio_ec_kso_02_inv: ec_kso_02_inv {
+			gpios = <&gpioksol 2 GPIO_OUTPUT_HIGH>;
+		};
+		gpio_ec_touchpad_disable: ec_touchpad_disable {
+			gpios = <&gpiob 6 (GPIO_INPUT)>;
+		};
+		gpio_ec_x360_cs_id: ec_x360_cs_id {
+			gpios = <&gpioe 0 GPIO_INPUT>;
+		};
+		gpio_ec_cpu_id: ec_cpu_id {
+			gpios = <&gpioh 6 GPIO_INPUT>;
+		};
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+
+		unused-gpios =
+			/* EC_GPG3 */
+			<&gpiog 3 0>,
+			/* EC_GPG4 */
+			<&gpiog 4 0>,
+			/* EC_GPG5 */
+			<&gpiog 5 0>,
+			/* EC_GPG7 */
+			<&gpiog 7 0>;
+		};
+};
+
+/* The eSPI shim requires this GPIO nodelabel */
+gpio_ec_pch_wake_odl: &gpio_sen_mode2_ec_pch_int_odl{
+};
+
+/* These GPIOS are initialized by the PDC driver */
+&gpio_i2c_ec_pd_int_odl {
+	no-auto-init;
+};
+&gpio_ec_pmc_pd_int_odl {
+	no-auto-init;
+};
