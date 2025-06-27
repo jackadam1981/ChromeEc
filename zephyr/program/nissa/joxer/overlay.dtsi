@@ -151,29 +151,29 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_memory: memory {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory_thermistor>;
 		};
 		temp_charger: charger {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger_thermistor>;
 		};
 		temp_ambient: ambient {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <70>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <60>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <70>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <60>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_ambient_thermistor>;
 		};

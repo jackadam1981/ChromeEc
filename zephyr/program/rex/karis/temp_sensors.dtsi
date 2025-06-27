@@ -25,26 +25,26 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		ddr_soc {
-			temp_fan_off = <40>;
-			temp_fan_max = <85>;
-			temp_host_high = <75>;
-			temp_host_halt = <85>;
-			temp_host_release_high = <70>;
-			temp_host_release_halt = <80>;
+			temp-fan-off = <40>;
+			temp-fan-max = <85>;
+			temp-host-high = <75>;
+			temp-host-halt = <85>;
+			temp-host-release-high = <70>;
+			temp-host-release-halt = <80>;
 			sensor = <&temp_ddr_soc>;
 		};
 		ambient {
-			temp_host_high = <75>;
-			temp_host_halt = <85>;
-			temp_host_release_high = <70>;
-			temp_host_release_halt = <80>;
+			temp-host-high = <75>;
+			temp-host-halt = <85>;
+			temp-host-release-high = <70>;
+			temp-host-release-halt = <80>;
 			sensor = <&temp_ambient>;
 		};
 		charger {
-			temp_host_high = <75>;
-			temp_host_halt = <85>;
-			temp_host_release_high = <70>;
-			temp_host_release_halt = <80>;
+			temp-host-high = <75>;
+			temp-host-halt = <85>;
+			temp-host-release-high = <70>;
+			temp-host-release-halt = <80>;
 			sensor = <&temp_charger>;
 		};
 	};
