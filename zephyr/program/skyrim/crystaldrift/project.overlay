@@ -56,12 +56,12 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		soc-pct2075 {
-			temp_host_high = <100>;
-			temp_host_halt = <105>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <80>;
-			temp_fan_off = <35>;
-			temp_fan_max = <70>;
+			temp-host-high = <100>;
+			temp-host-halt = <105>;
+			temp-host-release-high = <80>;
+			temp-host-release-halt = <80>;
+			temp-fan-off = <35>;
+			temp-fan-max = <70>;
 			power-good-pin = <&gpio_pg_pwr_s5>;
 			sensor = <&soc_pct2075>;
 		};
@@ -232,12 +232,12 @@
 };
 
 &temp_sensor_cpu {
-	temp_host_warn = <90>;
-	temp_host_high = <102>;
-	temp_host_halt = <104>;
-	temp_host_release_warn = <87>;
-	temp_host_release_high = <92>;
-	temp_host_release_halt = <94>;
-	temp_fan_off = <38>;
-	temp_fan_max = <76>;
+	temp-host-warn = <90>;
+	temp-host-high = <102>;
+	temp-host-halt = <104>;
+	temp-host-release-warn = <87>;
+	temp-host-release-high = <92>;
+	temp-host-release-halt = <94>;
+	temp-fan-off = <38>;
+	temp-fan-max = <76>;
 };

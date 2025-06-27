@@ -41,20 +41,20 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_soc: soc-pct2075 {
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
-			temp_host_release_halt = <70>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
+			temp-host-release-halt = <70>;
 			power-good-pin = <&gpio_pg_pwr_s5>;
 			sensor = <&soc_pct2075>;
 		};
 		temp_amb: amb-pct2075 {
-			temp_host_high = <65>;
-			temp_host_halt = <70>;
-			temp_host_release_high = <55>;
-			temp_host_release_halt = <60>;
-			temp_fan_off = <32>;
-			temp_fan_max = <45>;
+			temp-host-high = <65>;
+			temp-host-halt = <70>;
+			temp-host-release-high = <55>;
+			temp-host-release-halt = <60>;
+			temp-fan-off = <32>;
+			temp-fan-max = <45>;
 			power-good-pin = <&gpio_pg_pwr_s5>;
 			sensor = <&amb_pct2075>;
 		};
@@ -307,25 +307,25 @@
 
 /* temperature sensor overrides */
 &temp_sensor_charger {
-	temp_host_high = <75>;
-	temp_host_halt = <80>;
-	temp_host_release_high = <65>;
-	temp_host_release_halt = <70>;
+	temp-host-high = <75>;
+	temp-host-halt = <80>;
+	temp-host-release-high = <65>;
+	temp-host-release-halt = <70>;
 };
 
 &temp_sensor_memory {
-	temp_host_high = <75>;
-	temp_host_halt = <80>;
-	temp_host_release_high = <65>;
-	temp_host_release_halt = <70>;
+	temp-host-high = <75>;
+	temp-host-halt = <80>;
+	temp-host-release-high = <65>;
+	temp-host-release-halt = <70>;
 };
 
 &temp_sensor_cpu {
-	/delete-property/ temp_host_high;
-	/delete-property/ temp_host_halt;
-	/delete-property/ temp_host_release_high;
-	/delete-property/ temp_fan_off;
-	/delete-property/ temp_fan_max;
+	/delete-property/ temp-host-high;
+	/delete-property/ temp-host-halt;
+	/delete-property/ temp-host-release-high;
+	/delete-property/ temp-fan-off;
+	/delete-property/ temp-fan-max;
 };
 
 /* fan overrides */

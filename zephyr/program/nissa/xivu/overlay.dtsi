@@ -153,34 +153,34 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory {
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <80>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+			temp-host-release-halt = <80>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};
 		ambient {
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <80>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+			temp-host-release-halt = <80>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_ambient>;
 		};
 		charger1 {
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <80>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+			temp-host-release-halt = <80>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger1>;
 		};
 		charger2 {
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
-			temp_host_release_halt = <80>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
+			temp-host-release-halt = <80>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger2>;
 		};

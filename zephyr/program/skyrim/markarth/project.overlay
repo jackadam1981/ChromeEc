@@ -311,26 +311,26 @@
 };
 
 &temp_sensor_cpu {
-	temp_host_warn = <92>;
-	temp_host_high = <95>;
-	temp_host_halt = <100>;
-	temp_host_release_warn = <91>;
-	temp_host_release_high = <80>;
-	temp_host_release_halt = <90>;
+	temp-host-warn = <92>;
+	temp-host-high = <95>;
+	temp-host-halt = <100>;
+	temp-host-release-warn = <91>;
+	temp-host-release-high = <80>;
+	temp-host-release-halt = <90>;
 };
 
 &temp_sensor_charger {
-	/delete-property/ temp_host_high;
-	/delete-property/ temp_host_halt;
-	/delete-property/ temp_host_release_high;
-	/delete-property/ temp_host_release_halt;
+	/delete-property/ temp-host-high;
+	/delete-property/ temp-host-halt;
+	/delete-property/ temp-host-release-high;
+	/delete-property/ temp-host-release-halt;
 };
 
 &temp_sensor_memory {
-	/delete-property/ temp_host_high;
-	/delete-property/ temp_host_halt;
-	/delete-property/ temp_host_release_high;
-	/delete-property/ temp_host_release_halt;
+	/delete-property/ temp-host-high;
+	/delete-property/ temp-host-halt;
+	/delete-property/ temp-host-release-high;
+	/delete-property/ temp-host-release-halt;
 };
 
 /* fan overrides */

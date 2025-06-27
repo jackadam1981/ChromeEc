@@ -24,8 +24,8 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory {
-			temp_fan_off = <35>;
-			temp_fan_max = <70>;
+			temp-fan-off = <35>;
+			temp-fan-max = <70>;
 			power-good-pin = <&gpio_pg_pp5000_s5_od>;
 			sensor = <&temp_memory>;
 		};
