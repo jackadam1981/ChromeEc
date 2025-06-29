@@ -583,7 +583,8 @@ static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
 static void set_all_ports_to_init(const int delay_ms)
 {
 	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
-		if (!device_is_ready(pdc_data[port]->dev)) {
+		if (pdc_data[port]->dev == NULL ||
+		    !device_is_ready(pdc_data[port]->dev)) {
 			continue;
 		}
 		pdc_data[port]->init_done = false;
@@ -2924,7 +2925,7 @@ static void tps_check_and_notify_irq(void)
 		struct pdc_config_t const *cfg = data->dev->config;
 		union reg_interrupt pdc_interrupt = { 0 };
 
-		if (!device_is_ready(data->dev)) {
+		if (data->dev == NULL || !device_is_ready(data->dev)) {
 			continue;
 		}
 
