@@ -9,6 +9,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "keyboard_8042_sharedlib.h"
+#include "keyboard_backlight.h"
 #include "keyboard_config.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -47,6 +48,7 @@ test_export_static void kb_init(void)
 	} else {
 		LOG_INF("CBI FW_CONFIG: FW_KB_BL_NOT_PRESENT.");
 		has_backlight = FW_KB_BL_NOT_PRESENT;
+		kblight_enable(0);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, kb_init, HOOK_PRIO_POST_I2C);
@@ -103,4 +105,16 @@ int board_discharge_on_ac(int enable)
 	}
 
 	return EC_SUCCESS;
+}
+
+__override uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	/*
+	 * Remove keyboard backlight feature for devices that don't support it.
+	 */
+
+	if (has_backlight == FW_KB_BL_NOT_PRESENT)
+		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
+	else
+		return flags0;
 }
