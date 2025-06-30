@@ -50,6 +50,23 @@
       "message": "@honscheid@google.com can you CR+2 this? You\u0027re the only reviewer with owners.",
       "revId": "af4e43c919d3d5580fccce9395c749f8badebf3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a851351_5bdb06b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-06-30T22:36:49Z",
+      "side": 1,
+      "message": "Providing a CR+2 because Robin, who is the EE specializing in charger circuitry, doesn\u0027t have CR+2 rights on the EC repo to do so directly.",
+      "revId": "af4e43c919d3d5580fccce9395c749f8badebf3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
