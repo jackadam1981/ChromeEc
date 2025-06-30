@@ -86,7 +86,7 @@ parameters that may be used, please consult the Twister documentation.
 # >
 # wheel: <
 #   name: "infra/python/wheels/west-py3"
-#   version: "version:0.14.0"
+#   version: "version:1.1.0"
 # >
 # wheel: <
 #   name: "infra/python/wheels/pytest-py3"
@@ -99,6 +99,10 @@ parameters that may be used, please consult the Twister documentation.
 # wheel: <
 #   name: "infra/python/wheels/pluggy-py3"
 #   version: "version:0.13.1"
+# >
+# wheel: <
+#   name: "infra/python/wheels/tabulate-py3"
+#   version: "version:0.9.0"
 # >
 # [VPYTHON:END]
 
