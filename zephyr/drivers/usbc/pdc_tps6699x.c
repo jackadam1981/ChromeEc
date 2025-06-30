@@ -758,11 +758,12 @@ static enum smf_state_result st_init_run(void *o)
 		goto error;
 	}
 
-	LOG_INF("DR%d: FW Version %u.%u.%u (flash=%d)", cfg->connector_number,
+	LOG_INF("DR%d: FW Version %u.%u.%u, config='%s' (flash=%d)",
+		cfg->connector_number,
 		PDC_FWVER_GET_MAJOR(data->info.fw_version),
 		PDC_FWVER_GET_MINOR(data->info.fw_version),
 		PDC_FWVER_GET_PATCH(data->info.fw_version),
-		data->info.is_running_flash_code);
+		data->info.project_name, data->info.is_running_flash_code);
 
 	/* Driver can only run on flash code. ROM code results in errors so it
 	 * should go into a suspended state if it can't initialize.
@@ -1538,11 +1539,11 @@ error_recovery:
  * @brief Helper function for internal use that synchronously obtains FW ver
  *        and TX identity.
  *
- * @param i2c Pointer to the I2C bus DT spec
+ * @param cfg Pointer to the device's config struct
  * @param info Output param for chip info
  * @return 0 on success or an error code
  */
-static int cmd_get_ic_status_sync_internal(struct pdc_config_t const *cfg,
+static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 					   struct pdc_info_t *info)
 {
 	union reg_version version;
@@ -1614,6 +1615,9 @@ static int cmd_get_ic_status_sync_internal(struct pdc_config_t const *cfg,
 		snprintf(info->project_name, sizeof(info->project_name), "TI%d",
 			 customer_val.data[0]);
 	}
+
+	LOG_HEXDUMP_DBG(customer_val.data, sizeof(customer_val.data),
+			"Customer use raw value:");
 
 	/* Fill in the chip type (driver compat string) */
 	strncpy(info->driver_name, STRINGIFY(DT_DRV_COMPAT),
