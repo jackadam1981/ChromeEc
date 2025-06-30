@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b881c3c_8c97b079",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-30T11:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22c836d6_c83289ae",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "856df13b_1456cba3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-26T19:08:55Z",
       "side": 1,
       "message": "can we define a constant for this and set it to\n`CONFIG_CHARGER_BQ25770_SENSE_RESISTOR` or `CONFIG_CHARGER_BQ25710_SENSE_RESISTOR` as appropriate? everything else in these expressions is the same, right?\n\nwe should also be able to update Kconfig to do this.",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 72
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32fd801_107a8a56",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-30T11:08:14Z",
+      "side": 1,
+      "message": "Referring to other charger driver, redefined these macros, and it seems no need to update Kconfig.",
+      "parentUuid": "856df13b_1456cba3",
       "range": {
         "startLine": 130,
         "startChar": 35,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7219b861_48f8bd19",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-30T11:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ce84d0_cc4eda41",
+      "range": {
+        "startLine": 177,
+        "startChar": 33,
+        "endLine": 177,
+        "endChar": 53
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53dffa6a_466a2c0f",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a87cd8_e5a5e4ef",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-30T11:08:14Z",
+      "side": 1,
+      "message": "Yes, now use CONFIG_CHARGER_BQ25710 instead. Check the BQ25710 specification, there is no 0x32 register in it.",
+      "parentUuid": "53dffa6a_466a2c0f",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 541,
+        "endChar": 45
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9907f079_dd89a28c",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-06-26T19:08:55Z",
       "side": 1,
       "message": "we should change these constant name prefixes to be chip specific\nand use the macros at the bottom of this file that take a `_chip`\nargument to generate the appropriate\nvalue in the main driver.",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "6ceab0e84d1d90d28463c42c9a546d869d17541a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba18130_ab6e6692",
+        "filename": "driver/charger/bq257x0_regs.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-06-30T11:08:14Z",
+      "side": 1,
+      "message": "Add the BQ25770_ prefix, but in the main driver, it should use `#if defined` to apply different values.",
+      "parentUuid": "9907f079_dd89a28c",
       "range": {
         "startLine": 233,
         "startChar": 1,
