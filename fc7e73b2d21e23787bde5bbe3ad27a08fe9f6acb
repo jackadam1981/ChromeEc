@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0073186f_794708dd",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-30T18:17:00Z",
+      "side": 1,
+      "message": "Let\u0027s add a link to the discussion: `b/419617755#comment46: Use version with Nuvoton header if it exists.`",
+      "range": {
+        "startLine": 1494,
+        "startChar": 12,
+        "endLine": 1494,
+        "endChar": 40
+      },
+      "revId": "fc7e73b2d21e23787bde5bbe3ad27a08fe9f6acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1941688_bf8cdc84",
         "filename": "test/run_device_tests.py",
         "patchSetId": 9
@@ -19,6 +42,29 @@
         "startChar": 16,
         "endLine": 1495,
         "endChar": 31
+      },
+      "revId": "fc7e73b2d21e23787bde5bbe3ad27a08fe9f6acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ff649e_25f8063a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-30T18:17:00Z",
+      "side": 1,
+      "message": "```suggestion\nfor filename in [\"zephyr.npcx.bin\", \"zephyr.bin\"]:\n    if filename in filenames:\n        image_path \u003d os.path.join(dirpath, filename)\n        break\n```",
+      "range": {
+        "startLine": 1495,
+        "startChar": 0,
+        "endLine": 1500,
+        "endChar": 21
       },
       "revId": "fc7e73b2d21e23787bde5bbe3ad27a08fe9f6acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
