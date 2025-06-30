@@ -1,0 +1,22 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "../rvp_temp_sensors.dtsi"
+
+&temp_sensor_ambient {
+	power-good-pin = <&en_pp3300_a>;
+};
+
+&temp_sensor_ddr_soc {
+	power-good-pin = <&en_pp3300_a>;
+};
+
+&temp_sensor_skin {
+	power-good-pin = <&en_pp3300_a>;
+};
+
+&temp_sensor_vr {
+	power-good-pin = <&en_pp3300_a>;
+};
