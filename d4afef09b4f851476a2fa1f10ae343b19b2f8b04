@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879d36d6_facf8ea1",
+        "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash_from_eeprom.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-30T22:13:46Z",
+      "side": 1,
+      "message": "If this interface needs to change, then the fake on line 19 and the real `epprom_load` should also change. I suspect similar may be true of the other fakes in this file.",
+      "range": {
+        "startLine": 33,
+        "startChar": 46,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24f92ee_352d8bf9",
+        "filename": "zephyr/test/kingler/src/voltorb_dps.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-30T22:13:46Z",
+      "side": 1,
+      "message": "IMO, this function and whatever it\u0027s mocking should return `enum ec_error_list`.",
+      "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
