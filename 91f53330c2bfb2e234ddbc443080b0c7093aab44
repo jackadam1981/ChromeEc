@@ -16,6 +16,24 @@
       "message": "nit: HOOK_PRIO_INIT_I2C + 1 \u003d\u003d HOOK_PRIO_POST_BATTERY_INIT",
       "revId": "91f53330c2bfb2e234ddbc443080b0c7093aab44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b27a388_320bed4b",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2025-06-30T00:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "203b2185_bbd588b0",
+      "revId": "91f53330c2bfb2e234ddbc443080b0c7093aab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
