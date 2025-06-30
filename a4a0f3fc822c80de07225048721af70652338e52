@@ -33,6 +33,52 @@
       "message": "Reassign to reviewers who are more familiar with the subject.",
       "revId": "a4a0f3fc822c80de07225048721af70652338e52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75b064a_ec233aaf",
+        "filename": "common/shared_mem_libc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-30T17:14:31Z",
+      "side": 1,
+      "message": "We have a [helper macro](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/compiler.h;l\u003d70-80;drc\u003dc7e2c8b1beb1ab71a7e020b244bf01c9a52aacbe) for this.\n\n```suggestion\nDISABLE_COMPILER_WARNING(-Wdeprecated-declarations)\n```",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "a4a0f3fc822c80de07225048721af70652338e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80eb81b_2d7b6ed4",
+        "filename": "common/shared_mem_libc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-30T17:14:31Z",
+      "side": 1,
+      "message": "```suggestion\nENABLE_COMPILER_WARNING(-Wdeprecated-declarations)\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "a4a0f3fc822c80de07225048721af70652338e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
