@@ -57,6 +57,24 @@
       "parentUuid": "a8834ca8_b01d772c",
       "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e39ecbd_08e3a172",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-06-30T21:53:08Z",
+      "side": 1,
+      "message": "IIUC, the function of this config check is basically to get rid of the check on line 1306 in the case where the config is enabled? I suspect there\u0027s probably a cleaner way to do that.\n\nI\u0027m particularly wondering about the value of \"some TCPCs\" in the comment. Maybe those TCPCs should have special logic in their alert handlers, instead of the generic handler having an odd exception to its logic.\n\nIf that\u0027s unworkable, we could also keep the polling in the Unattached states but rely upon interrupts in the Attached/AttachWait states in the TC.",
+      "parentUuid": "e09e59fb_f9effc4e",
+      "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
