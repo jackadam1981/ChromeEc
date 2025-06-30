@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43535672_7b6ff877",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-30T01:38:37Z",
+      "side": 1,
+      "message": "do we need to add this assert as well?\n\n```\nASSERT(erase_size % CONFIG_FLASH_ERASE_SIZE \u003d\u003d 0)\n```",
+      "parentUuid": "c4ea53c8_5d30c6e9",
+      "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a35cd555_d9c58139",
         "filename": "common/rollback.c",
         "patchSetId": 4
