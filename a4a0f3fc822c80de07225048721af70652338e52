@@ -16,6 +16,23 @@
       "message": "My first pass at this converted to mallinfo2, but it seems that this code is built in configurations that don\u0027t support mallinfo2 (newlib? llvm-libc?), so I opted to suppress.",
       "revId": "a4a0f3fc822c80de07225048721af70652338e52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92830b9a_1a8a0dd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-06-30T16:18:51Z",
+      "side": 1,
+      "message": "Reassign to reviewers who are more familiar with the subject.",
+      "revId": "a4a0f3fc822c80de07225048721af70652338e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
