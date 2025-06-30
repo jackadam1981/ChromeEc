@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b40e8e_a8970f3a",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-06-30T06:07:59Z",
+      "side": 1,
+      "message": "The CM36781 ALS location is on the Sensor board in the LID. So, modify the naming to lid_als.",
+      "parentUuid": "d292f698_f46c166d",
+      "revId": "d5f84acfdca3e0f3defd0da48b466802afe1c01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e38c1f6_ae1030f8",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-27T16:30:31Z",
       "side": 1,
       "message": "there is a mismatch between the name of sensor `base-als` and its location `MOTIONSENSE_LOC_LID`.",
+      "revId": "d5f84acfdca3e0f3defd0da48b466802afe1c01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e09a283_6cf7fc7a",
+        "filename": "zephyr/program/fatcat/francka/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-06-30T06:07:59Z",
+      "side": 1,
+      "message": "The CM36781 ALS location is on the Sensor board in the LID.",
+      "parentUuid": "1e38c1f6_ae1030f8",
       "revId": "d5f84acfdca3e0f3defd0da48b466802afe1c01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
