@@ -30,7 +30,7 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		ambient {
+		temp_sensor_ambient: ambient {
 			temp-fan-off = <15>;
 			temp-fan-max = <50>;
 			temp-host-high = <75>;
@@ -39,7 +39,7 @@
 			sensor = <&temp_ambient>;
 		};
 
-		ddr_soc {
+		temp_sensor_ddr_soc: ddr_soc {
 			temp-fan-off = <15>;
 			temp-fan-max = <50>;
 			temp-host-high = <75>;
@@ -47,7 +47,7 @@
 			temp-host-release-high = <65>;
 			sensor = <&temp_ddr_soc>;
 		};
-		skin {
+		temp_sensor_skin: skin {
 			temp-fan-off = <15>;
 			temp-fan-max = <50>;
 			temp-host-high = <75>;
@@ -55,7 +55,7 @@
 			temp-host-release-high = <65>;
 			sensor = <&temp_skin>;
 		};
-		vr {
+		temp_sensor_vr: vr {
 			temp-fan-off = <15>;
 			temp-fan-max = <50>;
 			temp-host-high = <75>;
