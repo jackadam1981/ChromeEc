@@ -330,6 +330,9 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s);
  */
 bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 
+/* A sensor ID set to this value is invalid. */
+#define MOTION_SENSE_INVALID_SENSOR_ID (0xff)
+
 /*
  * There are 4 variables that represent the number of sensors:
  * SENSOR_COUNT: The number of available motion sensors in board.
@@ -342,19 +345,21 @@ bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 #if defined(CONFIG_GESTURE_HOST_DETECTION) || defined(CONFIG_ORIENTATION_SENSOR)
 /* Add an extra sensor. We may need to add more */
 #ifdef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
-#define MOTION_SENSE_ACTIVITY_SENSOR_ID \
-	(motion_sensor_count > 0 ? motion_sensor_count : -1)
+#define MOTION_SENSE_ACTIVITY_SENSOR_ID                  \
+	(motion_sensor_count > 0 ? motion_sensor_count : \
+				   MOTION_SENSE_INVALID_SENSOR_ID)
 #else
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
 #endif
 #define MAX_MOTION_SENSORS (SENSOR_COUNT + 1)
 #else
-#define MOTION_SENSE_ACTIVITY_SENSOR_ID (-1)
+#define MOTION_SENSE_ACTIVITY_SENSOR_ID MOTION_SENSE_INVALID_SENSOR_ID
 #define MAX_MOTION_SENSORS (SENSOR_COUNT)
 #endif
-#define ALL_MOTION_SENSORS                            \
-	((int)(MOTION_SENSE_ACTIVITY_SENSOR_ID) > 0 ? \
-		 motion_sensor_count + 1 :            \
+#define ALL_MOTION_SENSORS                                \
+	((int)(MOTION_SENSE_ACTIVITY_SENSOR_ID) ==        \
+			 MOTION_SENSE_INVALID_SENSOR_ID ? \
+		 motion_sensor_count + 1 :                \
 		 motion_sensor_count)
 
 #ifdef CONFIG_ALS_LIGHTBAR_DIMMING
