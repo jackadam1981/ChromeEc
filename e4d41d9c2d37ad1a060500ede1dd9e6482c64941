@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7843d7d4_da89975b",
+        "filename": "zephyr/lib/math/iir_filter.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-06-30T18:50:53Z",
+      "side": 1,
+      "message": "nit: why define argument b before a when other functions use a before b?",
+      "revId": "e4d41d9c2d37ad1a060500ede1dd9e6482c64941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
