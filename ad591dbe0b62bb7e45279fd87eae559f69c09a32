@@ -46,6 +46,30 @@
       },
       "revId": "ad591dbe0b62bb7e45279fd87eae559f69c09a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95820899_c05d215a",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-30T22:12:08Z",
+      "side": 1,
+      "message": "it does since all variables are known at compile time. I modified it to `BUILD_ASSERT` and added a comment.",
+      "parentUuid": "619c8040_79db2c94",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 51
+      },
+      "revId": "ad591dbe0b62bb7e45279fd87eae559f69c09a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
