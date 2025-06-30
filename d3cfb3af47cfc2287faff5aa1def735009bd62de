@@ -87,6 +87,30 @@
       },
       "revId": "d3cfb3af47cfc2287faff5aa1def735009bd62de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad4a51b_0b2fa1f9",
+        "filename": "zephyr/program/fatcat/kinmen/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-06-30T19:25:35Z",
+      "side": 1,
+      "message": "ok so it needs the extra delay, you could increase the delay for all keys but that would waste cpu cycles for no good reasons, let\u0027s go with this, thanks for checking",
+      "parentUuid": "8bfd442a_2a1b3390",
+      "range": {
+        "startLine": 100,
+        "startChar": 17,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "d3cfb3af47cfc2287faff5aa1def735009bd62de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
