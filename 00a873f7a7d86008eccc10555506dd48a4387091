@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ea53c8_5d30c6e9",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-30T01:35:46Z",
+      "side": 1,
+      "message": "I cannot use `BUILD_ASSERT` because `erase_size` is not known at compile time:\n\n```\n CC      RO/common/rollback.o\ncommon/rollback.c:214:15: error: static assertion expression is not an integral constant expression\n  214 |         BUILD_ASSERT(erase_size % CONFIG_FLASH_WRITE_SIZE \u003d\u003d 0);\n      |         ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ninclude/compile_time_macros.h:33:39: note: expanded from macro \u0027BUILD_ASSERT\u0027\n   33 | #define BUILD_ASSERT(cond, ...) _BA0_(cond, __FILE__, __LINE__, __VA_ARGS__)\n      |                                 ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ninclude/compile_time_macros.h:29:35: note: expanded from macro \u0027_BA0_\u0027\n   29 | #define _BA0_(c, f, l, msg) _BA1_(c, f, l, msg)\n      |                             ~~~~~~^~~~~~~~~~~~~\ninclude/compile_time_macros.h:28:17: note: expanded from macro \u0027_BA1_\u0027\n   28 |         _STATIC_ASSERT(cond, file \":\" #line \": \" msg)\n      |                        ^~~~\n1 error generated.\nmake: *** [Makefile.rules:634: build/helipilot/RO/common/rollback.o] Error 1\n```\nI used `ASSERT` instead.",
+      "parentUuid": "728e0723_eea1a222",
+      "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35cd555_d9c58139",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-06-26T17:57:53Z",
       "side": 1,
       "message": "In a followup CL, can you check to see if any of these can be `BUILD_ASSERT`, so they\u0027re checked at compile time instead of runtime?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 52
+      },
+      "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bf20da_680e771d",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-30T01:35:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a35cd555_d9c58139",
       "range": {
         "startLine": 214,
         "startChar": 1,
