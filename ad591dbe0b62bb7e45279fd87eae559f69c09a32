@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5215df0d_6766dffd",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-30T22:04:48Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nI have to move the `ASSERT` to this location. `CONFIG_FLASH_ERASE_SIZE` is not defined to `bloonchipper`, `hatch_fp`, etc.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 51
+      },
+      "revId": "ad591dbe0b62bb7e45279fd87eae559f69c09a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
