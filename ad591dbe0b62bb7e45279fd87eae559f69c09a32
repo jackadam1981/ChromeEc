@@ -22,6 +22,30 @@
       },
       "revId": "ad591dbe0b62bb7e45279fd87eae559f69c09a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619c8040_79db2c94",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-06-30T22:06:19Z",
+      "side": 1,
+      "message": "Ok. Does it work if you make it a `BUILD_ASSERT` here?",
+      "parentUuid": "5215df0d_6766dffd",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 51
+      },
+      "revId": "ad591dbe0b62bb7e45279fd87eae559f69c09a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
