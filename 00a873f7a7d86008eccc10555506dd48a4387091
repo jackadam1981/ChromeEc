@@ -81,6 +81,30 @@
       },
       "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e850d33_caa13d51",
+        "filename": "common/rollback.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-06-30T01:37:02Z",
+      "side": 1,
+      "message": "I do not believe a `BUILD_ASSERT` will work here, because `erase_size` is not known at compile time.",
+      "parentUuid": "f1bf20da_680e771d",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 52
+      },
+      "revId": "00a873f7a7d86008eccc10555506dd48a4387091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
