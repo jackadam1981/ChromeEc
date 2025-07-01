@@ -66,11 +66,6 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "extpower_interrupt";
 		};
-		int_als_status: als_status {
-			irq-pin = <&ec_als_odl>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "door_open_interrupt";
-		};
 		int_jack_detect: jack_detect {
 			irq-pin = <&gpio_jack_detect_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -90,6 +85,7 @@
 			       <&gpioc 0 GPIO_INPUT_PULL_DOWN>,
 			       <&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			       <&gpiob 5 GPIO_INPUT_PULL_DOWN>,
+			       <&gpiol 3 GPIO_INPUT_PULL_DOWN>,
 			       <&gpioj 0 GPIO_INPUT_PULL_DOWN>,
 			       <&gpioj 1 GPIO_INPUT_PULL_DOWN>;
 	};

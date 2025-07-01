@@ -420,7 +420,6 @@ if(DEFINED CONFIG_BOARD_TELTICN50)
 	project(telticn50)
 	zephyr_include_directories("telticn50/include")
 	zephyr_library_sources(
-			"telticn50/src/board_als.c"
 			"telticn50/src/board.c"
 			"telticn50/src/prochot.c"
 	)
