@@ -583,9 +583,12 @@ static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
 static void set_all_ports_to_init(const int delay_ms)
 {
 	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
-		if (!device_is_ready(pdc_data[port]->dev)) {
+		if (pdc_data[port] == NULL ||
+		    !device_is_ready(pdc_data[port]->dev)) {
+			/* Port is not in use. Skip it. */
 			continue;
 		}
+
 		pdc_data[port]->init_done = false;
 		pdc_data[port]->init_attempt = 0;
 		if (delay_ms) {
@@ -2944,12 +2947,15 @@ static void tps_check_and_notify_irq(void)
 {
 	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
 		struct pdc_data_t *data = pdc_data[port];
-		struct pdc_config_t const *cfg = data->dev->config;
+		struct pdc_config_t const *cfg;
 		union reg_interrupt pdc_interrupt = { 0 };
 
-		if (!device_is_ready(data->dev)) {
-			continue;
+		if (data == NULL || !device_is_ready(data->dev)) {
+			/* Port is not in use. Skip it. */
+			continue; /* LCOV_EXCL_LINE - b/406176587 */
 		}
+
+		cfg = data->dev->config;
 
 		if (!gpio_pin_get_dt(&cfg->irq_gpios)) {
 			break;
