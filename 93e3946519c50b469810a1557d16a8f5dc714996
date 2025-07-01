@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1f8306_35f43c3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-01T04:20:48Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "1c832770_ca8f7616",
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc380c69_e26c3df6",
@@ -59,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "774e4aa1_7a9d0cf8",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-01T04:20:48Z",
+      "side": 1,
+      "message": "Supply same detection function but is targeted for Dual port PD Add-In Card. Although TypeC receptacle is on board, all signals are routed through this card.",
+      "parentUuid": "cc380c69_e26c3df6",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e62ad014_22ac36b9",
@@ -72,6 +114,30 @@
       "writtenOn": "2025-07-01T00:02:01Z",
       "side": 1,
       "message": "On WCL-RVP, these pins don\u0027t read properly unless the S5 rails are turned on to enable the pullups, so we cannot detect the cards as the EC powers up.\n\nIs this different on PTL-RVP?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b8b451_09287f8c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-01T04:20:48Z",
+      "side": 1,
+      "message": "That is correct, unfortunately I do not see other way to detect that modular TCSS is connected. Let me check for an alternative, or how tight is the race between reading this pin and reaching S5.",
+      "parentUuid": "e62ad014_22ac36b9",
       "range": {
         "startLine": 58,
         "startChar": 2,
