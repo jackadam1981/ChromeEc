@@ -146,6 +146,30 @@
       },
       "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089b4e23_1b96b88a",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-01T17:25:05Z",
+      "side": 1,
+      "message": "It is not safe to assume that the EC will initiate an AP boot immediately upon power-up. EC expects to be able to talk to the PDC even while the AP is off (G3). \n\nFor WCL, I decided to forego the GPIO detection and do trial I2C transactions against each of the possible PDC options to see what is installed (https://crrev.com/c/6682245) since all the alternatives (GPIOs, AIC EEPROMs) require S5 and because the cards are interchangeable (which means reading a PDC layout from CBI doesn\u0027t make sense either)",
+      "parentUuid": "91b8b451_09287f8c",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
