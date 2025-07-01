@@ -177,7 +177,7 @@
 			gpios = <&gpioc 7 (GPIO_INPUT)>;
 		};
 		gpio_forced_boot: forced_boot {
-			gpios = <&gpio9 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN)>;
+			gpios = <&gpio9 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INACTIVE)>;
 		};
 		gpio_uart_gsc_dbg_tx_ec_rx: uart_gsc_dbg_tx_ec_rx {
 			gpios = <&gpio6 4 (GPIO_INPUT)>;
