@@ -93,6 +93,30 @@
       },
       "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fac1f3_f73b20be",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-01T20:42:02Z",
+      "side": 1,
+      "message": "I think the ENOSYS return value makes more sense here in that this command isn\u0027t really supported when the port is in a SNK role.",
+      "parentUuid": "ddaa954a_c4d80fa5",
+      "range": {
+        "startLine": 2167,
+        "startChar": 10,
+        "endLine": 2167,
+        "endChar": 16
+      },
+      "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
