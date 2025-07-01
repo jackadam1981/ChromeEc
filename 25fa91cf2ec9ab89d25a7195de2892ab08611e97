@@ -16,6 +16,24 @@
       "message": "I would use `tcpc_write` here, although it\u0027s not clear what size this register is yet. Did you try other functions than `i2c_write8` and run into problems?",
       "revId": "25fa91cf2ec9ab89d25a7195de2892ab08611e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa557d0_7c82c802",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-01T07:42:39Z",
+      "side": 1,
+      "message": "Uploaded another patchset to use `tcpc_write` instead of `i2c_write8`.",
+      "parentUuid": "0f3a00ca_fda7fec5",
+      "revId": "25fa91cf2ec9ab89d25a7195de2892ab08611e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
