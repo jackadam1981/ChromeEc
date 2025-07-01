@@ -69,6 +69,24 @@
       "parentUuid": "a912f6d6_6664d8a2",
       "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d03739_a3e7a090",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-01T16:17:26Z",
+      "side": 1,
+      "message": "You can try to avoid the problem by remove `,` in line 82, and adding it back several time here.",
+      "parentUuid": "5068cb18_1cc5cb58",
+      "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
