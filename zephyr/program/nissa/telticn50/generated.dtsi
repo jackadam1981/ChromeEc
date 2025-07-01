@@ -107,9 +107,6 @@
 			gpios = <&gpioc 7 GPIO_OUTPUT_LOW>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
 		};
-		gpio_en_pp5000_fan: en_pp5000_fan {
-			gpios = <&gpioj 7 GPIO_OUTPUT>;
-		};
 		gpio_en_pp5000_s5: en_pp5000_s5 {
 			gpios = <&gpiok 5 GPIO_OUTPUT>;
 		};

@@ -86,6 +86,9 @@
 			       <&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			       <&gpiob 5 GPIO_INPUT_PULL_DOWN>,
 			       <&gpiol 3 GPIO_INPUT_PULL_DOWN>,
+			       <&gpioj 7 GPIO_INPUT_PULL_DOWN>,
+			       <&gpioa 3 GPIO_INPUT_PULL_DOWN>,
+			       <&gpiod 7 GPIO_INPUT_PULL_DOWN>,
 			       <&gpioj 0 GPIO_INPUT_PULL_DOWN>,
 			       <&gpioj 1 GPIO_INPUT_PULL_DOWN>;
 	};
