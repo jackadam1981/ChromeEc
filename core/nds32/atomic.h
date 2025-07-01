@@ -85,45 +85,4 @@ static inline atomic_val_t atomic_and(atomic_t *addr, atomic_val_t bits)
 	return ret;
 }
 
-static inline atomic_val_t atomic_exchange(atomic_t *addr, atomic_val_t value)
-{
-	atomic_val_t ret;
-	atomic_t volatile *ptr = addr;
-	uint32_t int_mask = read_clear_int_mask();
-
-	ret = *ptr;
-	*ptr = value;
-	set_int_mask(int_mask);
-	return ret;
-}
-
-static inline atomic_val_t atomic_compare_exchange(atomic_t *addr,
-						   atomic_val_t *expected,
-						   atomic_val_t new_val)
-{
-	atomic_val_t ret;
-	atomic_t volatile *ptr = addr;
-	uint32_t int_mask = read_clear_int_mask();
-
-	ret = *ptr;
-	if (ret == *expected) {
-		*ptr = new_val;
-	} else {
-		*expected = ret;
-	}
-	set_int_mask(int_mask);
-	return ret;
-}
-
-static inline atomic_val_t atomic_load(atomic_t *addr)
-{
-	atomic_val_t ret;
-	atomic_t volatile *ptr = addr;
-	uint32_t int_mask = read_clear_int_mask();
-
-	ret = *ptr;
-	set_int_mask(int_mask);
-	return ret;
-}
-
 #endif /* __CROS_EC_ATOMIC_H */
