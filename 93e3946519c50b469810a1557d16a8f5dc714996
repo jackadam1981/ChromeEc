@@ -16,6 +16,70 @@
       "message": "Hello @Tristan, should I add test cases for this function definition `board_get_pdc_for_port`?",
       "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c832770_ca8f7616",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-01T00:02:01Z",
+      "side": 1,
+      "message": "That would be preferable",
+      "parentUuid": "b16e319b_4ac6c59d",
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc380c69_e26c3df6",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-01T00:02:01Z",
+      "side": 1,
+      "message": "What is this GPIO compared to `mod-tcss1-detect` and `mod-tcss2-detect`?",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e62ad014_22ac36b9",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-01T00:02:01Z",
+      "side": 1,
+      "message": "On WCL-RVP, these pins don\u0027t read properly unless the S5 rails are turned on to enable the pullups, so we cannot detect the cards as the EC powers up.\n\nIs this different on PTL-RVP?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
