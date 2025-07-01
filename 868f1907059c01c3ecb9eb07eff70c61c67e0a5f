@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7273c80b_f49097d6",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-07-01T05:29:57Z",
+      "side": 1,
+      "message": "CQ failing for following boards careena, twinkie, fizz, elm, coffeecake, atlas with `undefined reference to pd_dpm_request`",
+      "revId": "868f1907059c01c3ecb9eb07eff70c61c67e0a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
