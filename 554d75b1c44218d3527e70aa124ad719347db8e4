@@ -16,6 +16,24 @@
       "message": "Can both be enabled?",
       "revId": "554d75b1c44218d3527e70aa124ad719347db8e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc09f1e_2fb0bfcc",
+        "filename": "zephyr/test/drivers/bmi3xx/prj.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-01T07:49:22Z",
+      "side": 1,
+      "message": "The bmi3xx test just checks that the `get_rms_noise` function is working in the driver. That function is set to `NULL` if on body detection isn\u0027t set. The test doesn\u0027t actually test the on body detection. I only migrated the test in order to have an easier time later deprecating the V1 algorithm (when we\u0027re ready to do it).",
+      "parentUuid": "2ed8aacd_4d378c8a",
+      "revId": "554d75b1c44218d3527e70aa124ad719347db8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
