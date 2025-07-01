@@ -33,6 +33,11 @@
                         compatible = "lgc,ap18c8k", "battery-smart";
                 };
         };
+
+	hibernate_z5: hibernate-z5 {
+		compatible = "cros-ec,hibernate-z5";
+		en-slp-z-gpios = <&gpiob 6 GPIO_ACTIVE_HIGH>;
+	};
 };
 
 /* These GPIOS are initialized by the PDC driver */

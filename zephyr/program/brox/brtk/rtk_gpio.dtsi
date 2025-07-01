@@ -90,6 +90,8 @@
 		};
 		gpio_en_slp_z: en_slp_z {
 			gpios = <&gpiob 6 GPIO_OUTPUT_LOW>;
+			/* GPIO initialized by hibernate_z5 driver. */
+			no-auto-init;
 		};
 		gpio_en_z1_rails_r: en_z1_rails_r {
 			gpios = <&gpioi 3 GPIO_OUTPUT_LOW>;
