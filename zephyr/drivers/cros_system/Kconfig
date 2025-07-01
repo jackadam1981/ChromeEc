@@ -2,6 +2,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+config HIBERNATE_Z5
+	bool "Hibernate to Z5 driver"
+	default y
+	depends on DT_HAS_CROS_EC_HIBERNATE_Z5_ENABLED
+	help
+	  Enable support for putting the board into the Z5 power state
+	  using an EC controlled GPIO
+
 menuconfig CROS_SYSTEM_NPCX
 	bool "Nuvoton NPCX cros system driver"
 	depends on SOC_FAMILY_NPCX
