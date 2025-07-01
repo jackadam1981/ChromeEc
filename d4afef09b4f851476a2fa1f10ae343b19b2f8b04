@@ -81,6 +81,24 @@
       "parentUuid": "c24f92ee_352d8bf9",
       "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8874c4f_e2900860",
+        "filename": "zephyr/test/kingler/src/voltorb_dps.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-01T20:52:12Z",
+      "side": 1,
+      "message": "Alright, let\u0027s take the diff as-is. Thanks for digging.",
+      "parentUuid": "7b878b45_6483230b",
+      "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
