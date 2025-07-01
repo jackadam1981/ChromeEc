@@ -273,10 +273,10 @@ _CROS_EC_CV_F_P_R(EC_CMD_BATTERY_GET_STATIC, 2, battery_get_static_v2,
 _CROS_EC_C0_F_PF_RF(EC_CMD_BATTERY_VENDOR_PARAM, battery_vendor_param);
 _CROS_EC_C0_F_PF(EC_CMD_BUTTON, button);
 _CROS_EC_C0_F_PF_RF(EC_CMD_CEC_GET, cec_get);
+_CROS_EC_C0_F_RF(EC_CMD_CEC_PORT_COUNT, cec_port_count);
+_CROS_EC_C0_F_PF_RF(EC_CMD_CEC_READ_MSG, cec_read);
 _CROS_EC_C0_F_PF(EC_CMD_CEC_SET, cec_set);
 _CROS_EC_C1_F_PF(EC_CMD_CEC_WRITE_MSG, cec_write);
-_CROS_EC_C0_F_PF_RF(EC_CMD_CEC_READ_MSG, cec_read);
-_CROS_EC_C0_F_RF(EC_CMD_CEC_PORT_COUNT, cec_port_count);
 _CROS_EC_C0_F_PF_RF(EC_CMD_CHARGESPLASH, chargesplash);
 _CROS_EC_CV_F_P_R(EC_CMD_CHARGE_CONTROL, 2, charge_control_v2, charge_control,
 		  charge_control);
@@ -300,13 +300,13 @@ _CROS_EC_CV_F_P_R(EC_CMD_FLASH_REGION_INFO, 1, flash_region_info_v1,
 		  flash_region_info, flash_region_info);
 _CROS_EC_C0_F_RF(EC_CMD_FLASH_SPI_INFO, flash_spi_info);
 _CROS_EC_C0_F_PF(EC_CMD_FORCE_LID_OPEN, force_lid_open);
-_CROS_EC_C0_F_PF(EC_CMD_FP_SEED, fp_seed);
+_CROS_EC_C1_F_PF(EC_CMD_FP_CONTEXT, fp_context);
+_CROS_EC_C0_F_RF(EC_CMD_FP_ENC_STATUS, fp_encryption_status);
+_CROS_EC_CV_F_R(EC_CMD_FP_INFO, 1, fp_info, fp_info);
 _CROS_EC_C0_F_PF_RF(EC_CMD_FP_MODE, fp_mode);
 _CROS_EC_C0_F_PF_RF(EC_CMD_FP_READ_MATCH_SECRET, fp_read_match_secret);
-_CROS_EC_C0_F_RF(EC_CMD_FP_ENC_STATUS, fp_encryption_status);
+_CROS_EC_C0_F_PF(EC_CMD_FP_SEED, fp_seed);
 _CROS_EC_C0_F_RF(EC_CMD_FP_STATS, fp_stats);
-_CROS_EC_C1_F_PF(EC_CMD_FP_CONTEXT, fp_context);
-_CROS_EC_CV_F_R(EC_CMD_FP_INFO, 1, fp_info, fp_info);
 _CROS_EC_CV_F_R(EC_CMD_GET_BOARD_VERSION, 0, get_board_version, board_version);
 _CROS_EC_C0_F_RF(EC_CMD_GET_BOOT_TIME, get_boot_time);
 _CROS_EC_C0_F_RF(EC_CMD_GET_CHIP_INFO, get_chip_info);
@@ -316,10 +316,10 @@ _CROS_EC_C0_F_PF_RF(EC_CMD_GET_CMD_VERSIONS, get_cmd_versions);
 _CROS_EC_C0_F_RF(EC_CMD_GET_COMMS_STATUS, get_comms_status);
 _CROS_EC_C0_F_RF(EC_CMD_GET_FEATURES, get_features);
 _CROS_EC_CV_F_R(EC_CMD_GET_KEYBD_CONFIG, 0, get_keybd_config, keybd_config);
+_CROS_EC_CV_F_R(EC_CMD_GET_NEXT_EVENT, 2, get_next_event_v2, get_next_event_v1);
 _CROS_EC_C0_F_RF(EC_CMD_GET_NEXT_EVENT, get_next_event);
 _CROS_EC_C1_F_RF(EC_CMD_GET_NEXT_EVENT, get_next_event);
 _CROS_EC_C3_F_RF(EC_CMD_GET_NEXT_EVENT, get_next_event);
-_CROS_EC_CV_F_R(EC_CMD_GET_NEXT_EVENT, 2, get_next_event_v2, get_next_event_v1);
 _CROS_EC_C0_F_PF_RF(EC_CMD_GET_PD_PORT_CAPS, get_pd_port_caps);
 _CROS_EC_C0_F_RF(EC_CMD_GET_PROTOCOL_INFO, get_protocol_info);
 _CROS_EC_CV_F_R(EC_CMD_GET_UPTIME_INFO, 0, get_uptime_info, uptime_info);
@@ -352,6 +352,8 @@ _CROS_EC_CV_F_P(EC_CMD_HOST_EVENT_SET_WAKE_MASK, 0, host_event_set_wake_mask,
 		host_event_mask);
 _CROS_EC_C0_F_PF(EC_CMD_HOST_SLEEP_EVENT, host_sleep_event);
 _CROS_EC_C1_F_PF_RF(EC_CMD_HOST_SLEEP_EVENT, host_sleep_event);
+_CROS_EC_C0_F_RF(EC_CMD_HOST_SLEEP_SIGNAL_TRANSITIONS,
+		 host_command_host_sleep_signal_transitions);
 _CROS_EC_C0_F_PF_RF(EC_CMD_I2C_CONTROL, i2c_control);
 _CROS_EC_C0_F_PF_RF(EC_CMD_I2C_PASSTHRU_PROTECT, i2c_passthru_protect);
 _CROS_EC_C0_F_RF(EC_CMD_KEYBOARD_FACTORY_TEST, keyboard_factory_test);
@@ -377,12 +379,12 @@ _CROS_EC_C0_F_PF_RF(EC_CMD_PDC_TRACE_MSG_ENABLE, pdc_trace_msg_enable);
 _CROS_EC_C0_F_RF(EC_CMD_PDC_TRACE_MSG_GET_ENTRIES, pdc_trace_msg_get_entries);
 _CROS_EC_CV_F_P(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0, pd_charge_port_override,
 		charge_port_override);
-_CROS_EC_CV_F_P_R(EC_CMD_PD_CHIP_INFO, 3, pd_chip_info_v3, pd_chip_info,
-		  pd_chip_info_v3);
-_CROS_EC_CV_F_P_R(EC_CMD_PD_CHIP_INFO, 2, pd_chip_info_v2, pd_chip_info,
-		  pd_chip_info_v2);
 _CROS_EC_CV_F_P_R(EC_CMD_PD_CHIP_INFO, 1, pd_chip_info_v1, pd_chip_info,
 		  pd_chip_info_v1);
+_CROS_EC_CV_F_P_R(EC_CMD_PD_CHIP_INFO, 2, pd_chip_info_v2, pd_chip_info,
+		  pd_chip_info_v2);
+_CROS_EC_CV_F_P_R(EC_CMD_PD_CHIP_INFO, 3, pd_chip_info_v3, pd_chip_info,
+		  pd_chip_info_v3);
 _CROS_EC_C0_F_PF_RF(EC_CMD_PD_CHIP_INFO, pd_chip_info);
 _CROS_EC_C0_F_PF(EC_CMD_PD_CONTROL, pd_control);
 _CROS_EC_CV_F_R(EC_CMD_PD_HOST_EVENT_STATUS, 0, pd_host_event_status,
@@ -436,6 +438,8 @@ _CROS_EC_C0_F_PF_RF(EC_CMD_TMP006_GET_RAW, tmp006_get_raw);
 _CROS_EC_C0_F_PF(EC_CMD_TYPEC_CONTROL, typec_control);
 _CROS_EC_C0_F_PF_RF(EC_CMD_TYPEC_STATUS, typec_status);
 _CROS_EC_C0_F_PF_RF(EC_CMD_TYPEC_VDM_RESPONSE, typec_vdm_response);
+_CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_GET, ucsi_ppm_get);
+_CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_SET, ucsi_ppm_set);
 _CROS_EC_C0_F_PF(EC_CMD_USB_CHARGE_SET_MODE, usb_charge_set_mode);
 _CROS_EC_C0_F_PF(EC_CMD_USB_MUX, usb_mux);
 _CROS_EC_CV_F_P_R(EC_CMD_USB_PD_CONTROL, 2, usb_pd_control_v2, usb_pd_control,
@@ -450,10 +454,6 @@ _CROS_EC_C0_F_PF(EC_CMD_USB_PD_RW_HASH_ENTRY, usb_pd_rw_hash_entry);
 _CROS_EC_C0_F_PF_RF(EC_CMD_VBOOT_HASH, vboot_hash);
 _CROS_EC_C0_F_PF_RF(EC_CMD_VSTORE_READ, vstore_read);
 _CROS_EC_C0_F_PF(EC_CMD_VSTORE_WRITE, vstore_write);
-_CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_SET, ucsi_ppm_set);
-_CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_GET, ucsi_ppm_get);
-_CROS_EC_C0_F_RF(EC_CMD_HOST_SLEEP_SIGNAL_TRANSITIONS,
-		 host_command_host_sleep_signal_transitions);
 
 #ifdef __cplusplus
 }
