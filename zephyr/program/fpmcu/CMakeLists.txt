@@ -24,4 +24,9 @@ if (DEFINED CONFIG_BASEBOARD_HELIPILOT)
 	project(helipilot)
 endif()
 
+if (DEFINED CONFIG_BOARD_NIEDZICA)
+	add_subdirectory(niedzica)
+	project(niedzica)
+endif()
+
 zephyr_library_sources_ifdef(CONFIG_EC_HOST_CMD "src/fp_transport.c")

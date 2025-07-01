@@ -129,3 +129,24 @@ gwendolin = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="gwendolin", addr=0x40144)
+
+niedzica = register_fpmcu_variant(
+    project_name="niedzica",
+    zephyr_board="32f967_dv",
+    register_func=register_binman_project,
+    variant_modules=["cmsis_6", "elan_zephyr"],
+    variant_optional_modules=["elan"],
+    variant_dts_overlays=[
+        here / "niedzica" / "niedzica.dts",
+    ],
+    variant_kconfig_files=[
+        here / "niedzica" / "prj.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "niedzica" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="niedzica", addr=0x24144)
