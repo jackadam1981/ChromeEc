@@ -16,6 +16,24 @@
       "message": "We\u0027re trying to deprecate `named-gpios`. There are only a few remaining legacy drivers that require the `enum gpio_signal` that `named-gpios` defines.  We should create Zephyr drivers on a case by case basis to eliminate the need for the legacy enum.",
       "revId": "2747a0381e557ee10ea94c2f3bdf08e34f75250f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00286e4a_f49ad979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-01T23:59:08Z",
+      "side": 1,
+      "message": "\u003e We should create Zephyr drivers on a case by case basis to eliminate the need for the legacy enum.\n\nSounds good, is there a plan to decouple pin dt labels as well? CL:6599338 is an example of this. It would be good to get rid of these dependencies for more flexibility.",
+      "parentUuid": "ce42872f_435b5191",
+      "revId": "2747a0381e557ee10ea94c2f3bdf08e34f75250f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
