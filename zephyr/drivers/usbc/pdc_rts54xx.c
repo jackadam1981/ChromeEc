@@ -479,7 +479,7 @@ static int rts54_get_error_status(const struct device *dev,
 /**
  * @brief PDC port data used in interrupt handler
  */
-static struct pdc_data_t *pdc_data[CONFIG_USB_PD_PORT_MAX_COUNT];
+static struct pdc_data_t *const pdc_data[NUM_PDC_RTS54XX_PORTS];
 
 static enum state_t get_state(struct pdc_data_t *data)
 {
@@ -905,7 +905,7 @@ static void handle_irqs(struct pdc_data_t *data)
 		/* Search for port with matching I2C address */
 		for (int j = 0; j < pdc_power_mgmt_get_usb_pd_port_count();
 		     j++) {
-			struct pdc_data_t *pdc_int_data = pdc_data[j];
+			struct pdc_data_t *const pdc_int_data = pdc_data[j];
 
 			if (pdc_int_data == NULL ||
 			    !device_is_ready(pdc_int_data->dev)) {
@@ -2856,13 +2856,10 @@ static int pdc_init(const struct device *dev)
 
 	k_mutex_init(&data->mtx);
 
-	data->dev = dev;
 	data->cmd = CMD_NONE;
 	data->error_recovery_counter = 0;
 	data->init_retry_counter = 0;
 	data->info.fw_version = PDC_FWVER_INVALID;
-
-	pdc_data[cfg->connector_number] = data;
 
 	/* Set initial state */
 	data->init_local_state = INIT_PDC_ENABLE;
@@ -2910,6 +2907,8 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 	}
 }
 
+#define PDC_DATA_STRUCT_NAME(inst) pdc_data_##inst
+
 #define RTS54xx_PDC_DEFINE(inst)                                              \
 	K_THREAD_STACK_DEFINE(rts54xx_thread_stack_area_##inst,               \
 			      CONFIG_USBC_PDC_RTS54XX_STACK_SIZE);            \
@@ -2928,13 +2927,13 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		k_thread_name_set(data->thread, "RTS54XX" STRINGIFY(inst));   \
 	}                                                                     \
                                                                               \
-	static struct pdc_data_t pdc_data_##inst;                             \
+	static struct pdc_data_t PDC_DATA_STRUCT_NAME(inst);                  \
                                                                               \
 	static void pdc_interrupt_callback##inst(const struct device *dev,    \
 						 struct gpio_callback *cb,    \
 						 uint32_t pins)               \
 	{                                                                     \
-		k_event_post(&pdc_data_##inst.driver_event,                   \
+		k_event_post(&PDC_DATA_STRUCT_NAME(inst).driver_event,        \
 			     RTS54XX_IRQ_EVENT);                              \
 	}                                                                     \
                                                                               \
@@ -2966,21 +2965,25 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.callback_handler = pdc_interrupt_callback##inst,             \
 	};                                                                    \
                                                                               \
-	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,         \
-			      &pdc_config##inst, POST_KERNEL,                 \
-			      CONFIG_PDC_DRIVER_INIT_PRIORITY,                \
-			      &pdc_driver_api);
+	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL,                           \
+			      &PDC_DATA_STRUCT_NAME(inst), &pdc_config##inst, \
+			      POST_KERNEL, CONFIG_PDC_DRIVER_INIT_PRIORITY,   \
+			      &pdc_driver_api);                               \
+                                                                              \
+	static struct pdc_data_t PDC_DATA_STRUCT_NAME(inst) = {               \
+		.dev = DEVICE_DT_INST_GET(inst),                              \
+	};
 
 DT_INST_FOREACH_STATUS_OKAY(RTS54xx_PDC_DEFINE)
 
+#define PDC_DATA_PTR_ENTRY(inst) &PDC_DATA_STRUCT_NAME(inst),
+
+/* Populate the pdc_data struct with a pointer to each RTK PDC port's device
+ * struct. */
+static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
+	PDC_DATA_PTR_ENTRY) };
+
 #ifdef CONFIG_ZTEST
-
-struct pdc_data_t;
-
-#define PDC_TEST_DEFINE(inst) &pdc_data_##inst,
-
-static struct pdc_data_t *pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
-	PDC_TEST_DEFINE) };
 
 /*
  * Wait for drivers to become idle.
