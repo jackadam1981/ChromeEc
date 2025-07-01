@@ -222,6 +222,12 @@ config BOARD_EPIC
 	  Build Google Epic reference board. Epic has Intel TWL SoC
 	  with IT81302 EC.
 
+config BOARD_TELTICN50
+	bool "Google Telticn50 Board"
+	help
+	  Build Google Telticn50 reference board. Telticn50 has Intel TWL SoC
+	  with IT81302 EC.
+
 module = NISSA
 module-str = Nissa board-specific code
 source "subsys/logging/Kconfig.template.log_config"

@@ -416,3 +416,17 @@ if(DEFINED CONFIG_BOARD_EPIC)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "epic/src/charger.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "epic/src/fan.c")
 endif()
+if(DEFINED CONFIG_BOARD_TELTICN50)
+	project(telticn50)
+	zephyr_include_directories("telticn50/include")
+	zephyr_library_sources(
+			"telticn50/src/board_als.c"
+			"telticn50/src/board.c"
+			"telticn50/src/prochot.c"
+	)
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "telticn50/src/usbc.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "telticn50/src/charger.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+			"telticn50/src/keyboard_customization.c"
+	)
+endif()
