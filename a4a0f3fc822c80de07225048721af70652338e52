@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5090606_c9299c3d",
+        "filename": "common/shared_mem_libc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-07-01T16:48:04Z",
+      "side": 1,
+      "message": "nice, thanks! clang errors out when quotes are missing though, so i added those",
+      "parentUuid": "d75b064a_ec233aaf",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "a4a0f3fc822c80de07225048721af70652338e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a80eb81b_2d7b6ed4",
@@ -71,6 +95,30 @@
       "writtenOn": "2025-06-30T17:14:31Z",
       "side": 1,
       "message": "```suggestion\nENABLE_COMPILER_WARNING(-Wdeprecated-declarations)\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "a4a0f3fc822c80de07225048721af70652338e52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd2b09a_dfcc251d",
+        "filename": "common/shared_mem_libc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-07-01T16:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a80eb81b_2d7b6ed4",
       "range": {
         "startLine": 61,
         "startChar": 0,
