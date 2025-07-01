@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d02cf75_5ea56b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-01T00:19:04Z",
+      "side": 1,
+      "message": "Removing Zoss vote because it is incorrectly flagging a variable declaration as uncovered code. This host command is called dozens of times in test code and the actual logic inside the HC implementation is showing as covered.",
+      "revId": "05eeff96fb96ac3bc1fbeee6403623302b0b06ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
