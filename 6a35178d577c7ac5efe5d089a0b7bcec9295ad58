@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a7349b_c977d3e5",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2166,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-01T20:53:50Z",
+      "side": 1,
+      "message": "Hey Tristan, I\u0027m resolving this to merge the CL. If you want me to update this check, let me know.",
+      "parentUuid": "942c41c0_c46a2241",
+      "range": {
+        "startLine": 2166,
+        "startChar": 5,
+        "endLine": 2166,
+        "endChar": 46
+      },
+      "revId": "6a35178d577c7ac5efe5d089a0b7bcec9295ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b308e0d0_f5d49a8f",
