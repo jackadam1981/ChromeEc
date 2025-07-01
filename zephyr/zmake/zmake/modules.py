@@ -76,6 +76,9 @@ known_modules = {
     "hal_intel_public": third_party_module,
     "picolibc": third_party_module,
     "intel_module_private": third_party_module,
+    "elan_zephyr": lambda name, checkout: (
+        checkout / "src" / "platform" / "elan-zephyr"
+    ),
 }
 
 
