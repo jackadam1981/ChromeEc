@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084a8351_ed155ed6",
+        "filename": "zephyr/program/skywalker/anakin/src/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-07-01T09:07:36Z",
+      "side": 1,
+      "message": "use `chipset_in_or_transitioning_to_state(POWER_S0)`",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "9362117e499c42cdd36b7b70b97d30011c550902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
