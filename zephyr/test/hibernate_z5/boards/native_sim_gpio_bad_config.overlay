@@ -1,0 +1,13 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Set the en-slp-z1 GPIO to an invalid pin to force an  */
+&gpio0 {
+	ngpios = <2>;
+};
+
+&hibernate_z5 {
+	en-slp-z-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+};
