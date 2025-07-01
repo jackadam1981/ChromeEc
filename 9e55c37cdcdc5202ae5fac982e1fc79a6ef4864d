@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f6c185_2a18e46f",
+        "filename": "zephyr/dts/bindings/motionsense/drvdata/cros-ec,drvdata-cm36781.yaml",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-07-01T08:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7eecee_e845ed98",
+      "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a912f6d6_6664d8a2",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-30T16:08:41Z",
       "side": 1,
       "message": "indentation.",
+      "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5068cb18_1cc5cb58",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-07-01T08:55:27Z",
+      "side": 1,
+      "message": "I have tried to modify this, but cros format check will error.\n```\n      16:01:00: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h\n```\nIt will rollback my changes.",
+      "parentUuid": "a912f6d6_6664d8a2",
       "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
