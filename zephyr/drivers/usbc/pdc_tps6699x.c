@@ -378,7 +378,7 @@ static void tps_check_and_notify_irq(void);
 /**
  * @brief PDC port data used in interrupt handler
  */
-static struct pdc_data_t *pdc_data[NUM_PDC_TPS6699X_PORTS];
+static struct pdc_data_t *const pdc_data[NUM_PDC_TPS6699X_PORTS];
 
 static enum state_t get_state(struct pdc_data_t *data)
 {
@@ -2903,7 +2903,6 @@ static int pdc_init(const struct device *dev)
 
 	data->cmd = CMD_NONE;
 	data->dev = dev;
-	pdc_data[cfg->connector_number] = data;
 	data->init_done = false;
 	data->info.fw_version = PDC_FWVER_INVALID;
 
@@ -3027,6 +3026,8 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 	}
 }
 
+#define PDC_DATA_STRUCT_NAME(inst) pdc_data_##inst
+
 #define TPS6699X_PDC_DEFINE(inst)                                              \
 	K_THREAD_STACK_DEFINE(tps6699x_thread_stack_area_##inst,               \
 			      CONFIG_USBC_PDC_TPS6699X_STACK_SIZE);            \
@@ -3045,7 +3046,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		k_thread_name_set(data->thread, "TPS6699X" STRINGIFY(inst));   \
 	}                                                                      \
                                                                                \
-	static struct pdc_data_t pdc_data_##inst;                              \
+	static struct pdc_data_t PDC_DATA_STRUCT_NAME(inst);                   \
                                                                                \
 	/* TODO(b/345783692): Make sure interrupt enable bits match the events \
 	 * we need to respond to.                                              \
@@ -3077,22 +3078,21 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.ccd = DT_INST_PROP(inst, ccd),                                \
 	};                                                                     \
                                                                                \
-	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,          \
-			      &pdc_config##inst, POST_KERNEL,                  \
-			      CONFIG_PDC_DRIVER_INIT_PRIORITY,                 \
+	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL,                            \
+			      &PDC_DATA_STRUCT_NAME(inst), &pdc_config##inst,  \
+			      POST_KERNEL, CONFIG_PDC_DRIVER_INIT_PRIORITY,    \
 			      &pdc_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(TPS6699X_PDC_DEFINE)
 
+#define PDC_DATA_PTR_ENTRY(inst) &PDC_DATA_STRUCT_NAME(inst),
+
+/* Populate the pdc_data struct with a pointer to each TI PDC port's device
+ * struct. */
+static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
+	PDC_DATA_PTR_ENTRY) };
+
 #ifdef CONFIG_ZTEST
-
-struct pdc_data_t;
-
-#define PDC_TEST_DEFINE(inst) &pdc_data_##inst,
-
-static struct pdc_data_t *pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
-	PDC_TEST_DEFINE) };
-
 /*
  * Wait for drivers to become idle.
  */
