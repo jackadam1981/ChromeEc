@@ -18,7 +18,7 @@ elseif(DEFINED CONFIG_BOARD_BRTK)
 	project(brtk)
 	add_subdirectory(brtk)
 
-	zephyr_library_sources("src/hibernate.c")
+	zephyr_library_sources_ifndef(CONFIG_HIBERNATE_Z1 "src/hibernate.c")
 	zephyr_library_sources("src/suspend_resume.c")
 	zephyr_library_sources("src/usbc.c")
 elseif(DEFINED CONFIG_BOARD_GREENBAYUPOC)
