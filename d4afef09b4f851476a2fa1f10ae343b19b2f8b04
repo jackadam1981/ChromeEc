@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7855c284_9dfdaddd",
+        "filename": "zephyr/test/drivers/cbi_flash/src/cbi_flash_from_eeprom.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-07-01T16:34:13Z",
+      "side": 1,
+      "message": "hrm, you\u0027re right, the `eeprom_load` function has this signature:\n\n```\nshim/src/cbi/cbi_eeprom.c\n30:test_mockable_static int eeprom_load(uint8_t offset, uint8_t *data, int len)\n```\n\nsame for `flash_load`:\n\n```\nshim/src/cbi/cbi_flash.c\n40:test_mockable_static int flash_load(uint8_t offset, uint8_t *data, int len)\n```\n\nso i agree that these mocks\u0027 signatures are wrong - amended",
+      "parentUuid": "879d36d6_facf8ea1",
+      "range": {
+        "startLine": 33,
+        "startChar": 46,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c24f92ee_352d8bf9",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-06-30T22:13:46Z",
       "side": 1,
       "message": "IMO, this function and whatever it\u0027s mocking should return `enum ec_error_list`.",
+      "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b878b45_6483230b",
+        "filename": "zephyr/test/kingler/src/voltorb_dps.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-07-01T16:34:13Z",
+      "side": 1,
+      "message": "i\u0027m all in favor of using types more specific than int, but this looks like a deep refactor would add to the scope quite a bit here - the mocked function is literally `return sb_read(SB_BATTERY_STATUS, status);` in `driver/battery/smart.c`. `sb_read` unfortunately returns an `int`, and there are tons of users of it (\u0026 many other `battery_*` functions that also return ints \u0026 are wrappers around `sb_read`)\n\nto keep this focused on fixing warnings that i hope to un-disable globally, i\u0027d propose either:\n\n- taking this file\u0027s diff as-is\n- shallow refactor of `battery_status` to return the enum, which would leave `battery_status` inconsistent with the other battery functions (in hopes that someone with more time/expertise can do a fuller refactor to move them all to `ec_error_list`)\n\nWDYT?",
+      "parentUuid": "c24f92ee_352d8bf9",
       "revId": "d4afef09b4f851476a2fa1f10ae343b19b2f8b04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

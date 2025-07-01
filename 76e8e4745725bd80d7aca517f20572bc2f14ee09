@@ -16,6 +16,24 @@
       "message": "@peress@google.com was this load-bearing for any pending unit-testing work?",
       "revId": "76e8e4745725bd80d7aca517f20572bc2f14ee09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe4a81a_c8d6710f",
+        "filename": "test/accel_cal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-07-01T16:34:13Z",
+      "side": 0,
+      "message": "if yes btw, seems:\n\n```\nstatic void test_accel_cal_before(void *fixture)\n{\n  const struct ztest_unit_test *test \u003d fixture;\n```\n\nis the way to do it in the CL that adds users of `test`",
+      "parentUuid": "851054e7_f78d5db6",
+      "revId": "76e8e4745725bd80d7aca517f20572bc2f14ee09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
