@@ -1,0 +1,11 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/elan/elan.dtsi>
+
+/* Use 272kB of RAM since it is reserved for hw accelarator which is not used */
+&sram0 {
+        reg = <0x20000000 0x44000>;
+};

@@ -143,3 +143,9 @@ config CROS_FLASH_STM32_EC_JUMP_STRUCTURE
 	  between old and new formats.
 
 endif # CROS_FLASH
+
+config CROS_FLASH_ELAN
+	bool "Elan cros flash driver"
+	depends on DT_HAS_ELAN_EM32F967_CROS_FLASH_ENABLED
+	default y
+	select PLATFORM_EC_FLASH_CROS

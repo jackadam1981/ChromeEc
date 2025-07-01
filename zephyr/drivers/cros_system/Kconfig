@@ -141,4 +141,17 @@ config CROS_SYSTEM_REALTEK_INIT_PRIORITY
 
 endif # CROS_SYSTEM_REALTEK
 
+config CROS_SYSTEM_ELAN
+	bool "ELAN EM32F967 cros system driver"
+	depends on SOC_EM32F967
+	default y
+
+if CROS_SYSTEM_ELAN
+
+config CROS_SYSTEM_ELAN_INIT_PRIORITY
+	int "cros_system Elan initialization priority"
+	default 10
+
+endif # CROS_SYSTEM_ELAN
+
 endif # PLATFORM_EC
