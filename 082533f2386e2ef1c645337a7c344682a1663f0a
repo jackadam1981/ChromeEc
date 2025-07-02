@@ -117,6 +117,30 @@
       },
       "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d36b81_837e6829",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-02T22:08:39Z",
+      "side": 1,
+      "message": "Looks like `shi.c` is built with either [`CONFIG_CROS_SHI_NPCX` or `CONFIG_EC_HOST_CMD_BACKEND_SHI_NPCX`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/chip/npcx/CMakeLists.txt;l\u003d18;drc\u003dd4c08acc8ab9d03f4142fa1cde16eddb4b08e02d), so I guess it needs to be set on both of them.",
+      "parentUuid": "9e6a9528_a5387883",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
