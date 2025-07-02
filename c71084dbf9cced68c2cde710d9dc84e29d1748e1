@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac87b13_aa13613e",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:36:41Z",
+      "side": 1,
+      "message": "what action needs to be taken in that case ?? do we cancel the power-on req ? and turn the system off ?",
+      "parentUuid": "a0877529_9f68c93a",
+      "range": {
+        "startLine": 260,
+        "startChar": 4,
+        "endLine": 260,
+        "endChar": 20
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d31944e0_e1e74bf5",
         "filename": "power/qcom_exp.c",
         "patchSetId": 16
