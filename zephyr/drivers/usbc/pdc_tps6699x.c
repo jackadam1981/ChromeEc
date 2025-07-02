@@ -2500,6 +2500,13 @@ static int tps_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 	 * synchronized.
 	 */
 
+	if (pdos == NULL) {
+		return -EINVAL;
+	}
+
+	/* Note: num_pdos is range-checked by pdc_get_pdos() before
+	 * calling into this driver implementation. */
+
 	data->pdo_type = pdo_type;
 	data->pdo_offset = pdo_offset;
 	data->num_pdos = num_pdos;

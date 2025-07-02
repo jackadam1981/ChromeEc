@@ -619,6 +619,12 @@ ZTEST_USER(pdc_api, test_get_lpm_ppm_info)
 ZTEST_USER(pdc_api, test_get_pdo)
 {
 	uint32_t fixed_pdo = 0;
+	int rv;
+
+	/* Test a bad output pointer. */
+	rv = pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false, NULL);
+	zassert_equal(-EINVAL, rv, "Got %d but expected -EINVAL (%d)", rv,
+		      -EINVAL);
 
 	/* Test source fixed pdo. */
 	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false,
