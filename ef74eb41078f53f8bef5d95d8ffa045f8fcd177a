@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb13c85_a07f262f",
+        "filename": "zephyr/program/ocelot/src/rvp_ite_hibernate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-02T21:26:57Z",
+      "side": 0,
+      "message": "Do we need to put the charger to sleep for WCL-RVP? If so we could keep this file",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 42
+      },
+      "revId": "ef74eb41078f53f8bef5d95d8ffa045f8fcd177a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
