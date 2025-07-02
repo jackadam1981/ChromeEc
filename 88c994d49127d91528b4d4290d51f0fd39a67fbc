@@ -22,6 +22,30 @@
       },
       "revId": "88c994d49127d91528b4d4290d51f0fd39a67fbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77044fa_82bbe821",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-02T18:22:08Z",
+      "side": 1,
+      "message": "Done in  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6701867",
+      "parentUuid": "c2e92121_5c98557a",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "88c994d49127d91528b4d4290d51f0fd39a67fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
