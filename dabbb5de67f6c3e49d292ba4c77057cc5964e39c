@@ -39,6 +39,24 @@
       "message": "When building `helipilot`, does `CONFIG_PLATFORM_EC` get set in the config? It looks like we set it in [some tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/fpmcu/prj.conf;l\u003d10;drc\u003ded4d53f840c54e902758e57c1983ddd03a89b9da), so I just want to understand where we\u0027re using it and where we\u0027re not.",
       "revId": "dabbb5de67f6c3e49d292ba4c77057cc5964e39c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66f2da7_2d52640f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-02T22:31:21Z",
+      "side": 1,
+      "message": "My understanding is that we set `CONFIG_PLATFORM_EC` on any unit test that runs on a hardware.",
+      "parentUuid": "57baa689_9aa4c8b0",
+      "revId": "dabbb5de67f6c3e49d292ba4c77057cc5964e39c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
