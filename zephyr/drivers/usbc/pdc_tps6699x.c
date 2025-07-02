@@ -2133,7 +2133,7 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_data cmd_data;
-	union ucsi_set_pdos_t *ucsi_pdos;
+	union ucsi_set_pdos_t ucsi_pdos;
 	int rv;
 
 	/* Set the currently running UCSI command. */
@@ -2187,15 +2187,18 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 		break;
 	case CMD_SET_PDOS:
 		/* ucsi_set_pdos starts with connector number */
-		ucsi_pdos = (union ucsi_set_pdos_t *)&cmd_data.data[2];
+		memcpy(&ucsi_pdos, cmd_data.data + 2,
+		       sizeof(union ucsi_set_pdos_t));
 		/* SRC or SNK PDO */
-		ucsi_pdos->pdo_type = data->pdo_type;
+		ucsi_pdos.pdo_type = data->pdo_type;
 		/* Number of PDOs being set */
-		ucsi_pdos->number_of_pdos = data->num_pdos;
+		ucsi_pdos.number_of_pdos = data->num_pdos;
 		/* No chunking, so index is always 0 */
-		ucsi_pdos->data_index = 0;
+		ucsi_pdos.data_index = 0;
 		/* No chunking, so always end of message */
-		ucsi_pdos->end_of_message = 1;
+		ucsi_pdos.end_of_message = 1;
+		memcpy(cmd_data.data + 2, &ucsi_pdos,
+		       sizeof(union ucsi_set_pdos_t));
 		/* PDOs to send start at cmd_data[8] */
 		memcpy(&cmd_data.data[8], data->pdos,
 		       data->num_pdos * sizeof(uint32_t));
@@ -2284,8 +2287,9 @@ static enum smf_state_result st_task_wait_run(void *o)
 	 *  2) command is set to "!CMD" for unknown command
 	 */
 	if (cmd.command && cmd.command != COMMAND_TASK_NO_COMMAND) {
-		LOG_INF("TI%d: Data not ready, check again in %d ms",
-			cfg->connector_number, PDC_TI_DATA_READY_TIME_MS);
+		LOG_INF("TI%d: Data not ready for 0x%08x, check again in %d ms",
+			cfg->connector_number, cmd.command,
+			PDC_TI_DATA_READY_TIME_MS);
 		k_work_reschedule(&data->data_ready,
 				  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
 		return SMF_EVENT_HANDLED;
@@ -2308,10 +2312,10 @@ static enum smf_state_result st_task_wait_run(void *o)
 	if (cmd.command || cmd_data.data[0] != 0) {
 		/* Command has completed with error */
 		if (cmd.command == COMMAND_TASK_NO_COMMAND) {
-			LOG_DBG("TI%d: Command %d not supported",
+			LOG_INF("TI%d: Command %d not supported",
 				cfg->connector_number, data->cmd);
 		} else {
-			LOG_DBG("TI%d: Command %d failed. Err : %d",
+			LOG_INF("TI%d: Command %d failed. Err : %d",
 				cfg->connector_number, data->cmd,
 				cmd_data.data[0]);
 		}
@@ -2408,6 +2412,13 @@ static enum smf_state_result st_task_wait_run(void *o)
 			memcpy(data->cached_pdos + data->pdo_offset,
 			       &cmd_data.data[offset], len);
 		}
+		// int num_of_pdos = len / 4;
+		// uint32_t xxx[PDO_MAX_OBJECTS] = {0};
+		// memcpy(xxx, &cmd_data.data[offset], len);
+		// LOG_INF("UCSI_GET_PDOS: num_of_pdos=%d last=%d max=%d",
+		// num_of_pdos, num_of_pdos+data->pdo_offset, PDO_MAX_OBJECTS);
+		// LOG_INF("UCSI_GET_PDOS: 0: 0x%08x 1: 0x%08x 2: 0x%08x 3:
+		// 0x%08x", xxx[0], xxx[1], xxx[2], xxx[3]);
 		break;
 	}
 	default:
@@ -3035,6 +3046,21 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 	cmd_data.data[port_index_on_chip_byte_index] |=
 		cfg->port_index_on_chip & 0x7f;
 
+	switch (ucsi_command) {
+	case UCSI_GET_PDOS: {
+		/* Partner PDO: Byte 2, bits 7 */
+		enum pdo_source_t pdo_source = (cmd_data.data[2] >> 7) & 1;
+		/* PDO Offset: Byte 3, bits 7:0 */
+		enum pdo_offset_t pdo_offset = cmd_data.data[3];
+		/* Number of PDOs: Byte 4, bits 1:0 */
+		uint8_t num_pdos = (cmd_data.data[4] & 3) + 1;
+		/* Source or Sink PDOSs: Byte 4, bits 2 */
+		enum pdo_type_t pdo_type = (cmd_data.data[4] >> 2) & 1;
+		LOG_INF("TI%d pdo_source: %d pdo_offset: %d num_pdos: %d pdo_type: %d",
+			cfg->connector_number, pdo_source, pdo_offset, num_pdos,
+			pdo_type);
+	}
+	}
 	return tps_post_command_with_callback(dev, cmd, &cmd_data, lpm_data_out,
 					      callback);
 }
