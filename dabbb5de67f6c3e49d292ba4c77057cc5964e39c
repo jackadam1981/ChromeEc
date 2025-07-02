@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e4ffab8_5d01bc90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-02T22:29:12Z",
+      "side": 1,
+      "message": "Before submitting, can you make sure all the other unit tests still pass on `helipilot`?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "dabbb5de67f6c3e49d292ba4c77057cc5964e39c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57baa689_9aa4c8b0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
