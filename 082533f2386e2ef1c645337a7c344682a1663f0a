@@ -141,6 +141,30 @@
       },
       "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f3d3a3_8c0a5e28",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-02T22:23:02Z",
+      "side": 1,
+      "message": "I see that `CONFIG_EC_HOST_CMD_BACKEND_SHI_NPCX\u003dy` is enabled, so this enabled `shi.c`.\n\nI see that this [config](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/subsys/mgmt/ec_host_cmd/backends/Kconfig;l\u003d54?q\u003dzephyr%2Fmain%20%22config%20EC_HOST_CMD_BACKEND_SHI_NPCX%22#:~:text\u003d53-,54,-55) it depends on `DT_HAS_NUVOTON_NPCX_SHI_ENABLED`",
+      "parentUuid": "38d36b81_837e6829",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
