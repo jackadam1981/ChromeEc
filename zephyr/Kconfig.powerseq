@@ -319,4 +319,11 @@ config PLATFORM_EC_CONSOLE_CMD_S5_TIMEOUT
 	  transitioning to the G3 state. This command is useful for power
 	  testing.
 
+config PLATFORM_EC_CONSOLE_CMD_BOOTTIME
+	bool "Console command: boottime"
+	default y
+	help
+	  Enable the console command 'boottime'. This command is used to
+	  gather the time from system boot to S5 and S0.
+
 endif # PLATFORM_EC_POWERSEQ
