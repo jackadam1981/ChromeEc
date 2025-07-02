@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6c4c1f_2befd948",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-02T20:54:27Z",
+      "side": 1,
+      "message": "```suggestion\n\t  using an EC controlled GPIO.\n```",
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36132ec4_cc298016",
+        "filename": "zephyr/dts/bindings/misc/cros-ec,hibernate-z5.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-02T20:54:27Z",
+      "side": 1,
+      "message": "\"asserts to logic high\" sounds a bit confusing to me, just \"asserts\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 69
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
