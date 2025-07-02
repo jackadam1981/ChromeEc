@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0370add5_2837f911",
+        "filename": "zephyr/test/hibernate_z5/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-02T21:15:11Z",
+      "side": 1,
+      "message": "NIT - I have a preference for linear test cases and would personally write separate `test_hibernate_z5_assert__normal` and `test_hibernate_z5_assert__init_fail` test functions that are conditionally included based on these kconfigs. as-written, there are multiple \"instances\" of the same-named test but they are checking different things based on what config they are compiled under which might look confusing in a test result listing.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "e83195bfb4f1ed343580c57bc795374b6bb4b9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
