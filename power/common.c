@@ -63,6 +63,9 @@ static uint32_t in_debug; /* Signal values which print debug output */
 static enum power_state state = POWER_G3; /* Current state */
 static int want_g3_exit; /* Should we exit the G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
+static const uint64_t uninitialized_time = -1;
+static uint64_t first_S0_time = uninitialized_time; /* When did we enter S0? */
+static uint64_t first_S5_time = uninitialized_time; /* When did we enter S5? */
 
 #ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
@@ -700,6 +703,12 @@ void chipset_task(void *u)
 		if (this_in_signals != last_in_signals || state != last_state) {
 			CPRINTS("power state %d = %s, in 0x%04x", state,
 				state_names[state], this_in_signals);
+			if (state == POWER_S0 &&
+			    first_S0_time == uninitialized_time)
+				first_S0_time = get_time().val;
+			if (state == POWER_S5 &&
+			    first_S5_time == uninitialized_time)
+				first_S5_time = get_time().val;
 			if (IS_ENABLED(CONFIG_SEVEN_SEG_DISPLAY))
 				display_7seg_write(SEVEN_SEG_EC_DISPLAY, state);
 			last_in_signals = this_in_signals;
@@ -1159,3 +1168,31 @@ static int command_power_fake(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(powerfake, command_power_fake, "S0|disable",
 			"Force power inputs for early board bringup");
 #endif /* defined(CONFIG_POWERSEQ_FAKE_CONTROL) */
+
+static int command_boot_time(int argc, const char **argv)
+{
+	const char *state;
+	uint64_t display_time;
+
+	if (argc != 2) {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	state = argv[1];
+	if (strcmp(state, "S0") == 0) {
+		display_time = first_S0_time;
+	} else if (strcmp(state, "S5") == 0) {
+		display_time = first_S5_time;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	if (display_time == uninitialized_time) {
+		ccprints("last %s: -1ms", state);
+	} else {
+		ccprints("last %s: %llums", state, display_time / MSEC);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boottime, command_boot_time, "<S0|S5>",
+			"Expose boot time for firmware.BootTime.");
