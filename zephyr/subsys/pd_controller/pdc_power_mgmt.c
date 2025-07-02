@@ -133,11 +133,6 @@ test_mockable_static_inline int sniff_pdc_set_rdo(const struct device *dev,
 #define CMD_RESEND_MAX 2
 
 /**
- * @brief maximum number of PDOs
- */
-#define PDO_NUM 7
-
-/**
  * @brief maximum number of VDOs
  */
 #define VDO_NUM 8
@@ -575,7 +570,7 @@ static const char *const attached_state_names[] = {
  */
 struct pdc_pdos_t {
 	/** PDOs */
-	uint32_t pdos[PDO_NUM];
+	uint32_t pdos[PDO_MAX_OBJECTS];
 	/** PDO count */
 	uint8_t pdo_count;
 };
@@ -585,7 +580,7 @@ struct pdc_pdos_t {
  */
 struct set_pdos_t {
 	/** PDOs for SRC or SNK CAPs */
-	uint32_t pdos[PDO_NUM];
+	uint32_t pdos[PDO_MAX_OBJECTS];
 	/** PDO count */
 	uint8_t count;
 	/** SRC or SNK pdo */
@@ -1186,9 +1181,9 @@ static void invalidate_charger_settings(struct pdc_port_t *port,
 
 	/* Invalidate PDOS */
 	port->snk_policy.pdo = 0;
-	memset(port->snk_policy.src.pdos, 0, sizeof(uint32_t) * PDO_NUM);
+	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.snk.pdos));
 	port->snk_policy.src.pdo_count = 0;
-	memset(port->src_policy.snk.pdos, 0, sizeof(uint32_t) * PDO_NUM);
+	memset(port->src_policy.snk.pdos, 0, sizeof(port->src_policy.snk.pdos));
 	port->src_policy.snk.pdo_count = 0;
 }
 
@@ -1781,7 +1776,7 @@ static void run_src_policies(struct pdc_port_t *port)
 		 * PDOs to return is the value in this field plus 1.
 		 */
 		if (!port->get_pdo.updating) {
-			port->get_pdo.num_pdos = PDO_NUM;
+			port->get_pdo.num_pdos = PDO_MAX_OBJECTS;
 			port->get_pdo.pdo_offset = PDO_OFFSET_0;
 			port->get_pdo.updating = true;
 		}
@@ -2108,7 +2103,7 @@ static void pdc_print_pdo_info(int port, struct pdc_pdos_t *pdo)
 {
 	uint32_t max_ma, max_mv, max_mw, unused;
 
-	for (int i = 0; i < PDO_NUM; i++) {
+	for (int i = 0; i < PDO_MAX_OBJECTS; i++) {
 		pd_extract_pdo_power_unclamped(pdo->pdos[i], &max_ma, &max_mv,
 					       &unused);
 		max_mw = max_ma * max_mv / 1000;
@@ -2233,7 +2228,8 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 
 	pdc_print_pdo_info(config->connector_num, &port->snk_policy.src);
 
-	pdo_index = pd_select_best_pdo(PDO_NUM, port->snk_policy.src.pdos,
+	pdo_index = pd_select_best_pdo(PDO_MAX_OBJECTS,
+				       port->snk_policy.src.pdos,
 				       pdc_max_request_mv, &selected_pdo);
 
 	/* No valid PDOs found, move to next state */
@@ -2428,7 +2424,7 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_NEW_SRC_CAPS_AVAILABLE);
 		if (!port->get_pdo.updating) {
-			port->get_pdo.num_pdos = PDO_NUM;
+			port->get_pdo.num_pdos = PDO_MAX_OBJECTS;
 			port->get_pdo.pdo_offset = PDO_OFFSET_0;
 			port->get_pdo.updating = true;
 		}
@@ -2901,7 +2897,7 @@ static void pdc_send_cmd_wait_exit(void *obj)
 		 * after the regular PDOS, so it's safe to exclude them from the
 		 * pdo_count. */
 		/* TODO This is temporary until APDOs can be handled  */
-		for (int i = 0; i < PDO_NUM; i++) {
+		for (int i = 0; i < PDO_MAX_OBJECTS; i++) {
 			if ((pdc_pdos->pdos[i] & PDO_TYPE_MASK) ==
 			    PDO_TYPE_AUGMENTED) {
 				pdc_pdos->pdos[i] = 0;
