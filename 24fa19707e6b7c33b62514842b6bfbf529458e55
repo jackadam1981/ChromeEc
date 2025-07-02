@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad35aed5_cc3b7f2e",
+        "filename": "zephyr/Kconfig.body_detection",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-02T05:02:15Z",
+      "side": 1,
+      "message": "Instead, consider:\n```suggestion\n\tselect FPU\n```\n so that we won\u0027t forget when enabling a device.",
+      "revId": "24fa19707e6b7c33b62514842b6bfbf529458e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
