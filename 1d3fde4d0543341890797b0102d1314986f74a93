@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e59293a4_06c890da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-02T21:12:33Z",
+      "side": 1,
+      "message": "The signal on the PMIC side is active-low (low activates the power-on sequence; high does nothing). Because of the inverter, the signal on the EC side is active-high.",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab1e7ff_9758555d",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-02T21:12:33Z",
+      "side": 1,
+      "message": "Add a line of comment above to emphasis that the signal is actually active-high, which contradicts its name: `_ODL`.\n\nBy any chance, can we modify the GPIO name to remove suffix `_ODL`?",
+      "range": {
+        "startLine": 537,
+        "startChar": 40,
+        "endLine": 537,
+        "endChar": 41
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bf8581_69676620",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-02T21:12:33Z",
+      "side": 1,
+      "message": "Although this attribute has no effect when using the EC API, it should be `GPIO_ACTIVE_HIGH`.",
+      "range": {
+        "startLine": 149,
+        "startChar": 48,
+        "endLine": 149,
+        "endChar": 51
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
