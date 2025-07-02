@@ -165,6 +165,30 @@
       },
       "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f429511_85cfe3bb",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-02T22:33:16Z",
+      "side": 1,
+      "message": "\u003e I see that CONFIG_EC_HOST_CMD_BACKEND_SHI_NPCX\u003dy is enabled, so this enabled shi.c.\n\n\nYep, so I think we need to add `select CONFIG_PM_DEVICE_RUNTIME` on that and ` CONFIG_CROS_SHI_NPCX` liked I mentioned. Maybe there is a better place that Nuvoton could suggest, but this should work.",
+      "parentUuid": "46f3d3a3_8c0a5e28",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
