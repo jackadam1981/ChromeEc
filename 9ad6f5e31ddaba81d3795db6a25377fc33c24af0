@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049587a6_d3ee048a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-02T19:34:46Z",
+      "side": 1,
+      "message": "How does this interact with the `--gcc`, `--llvm`, and `--toolchain` CLI args in the twister_launcher.py script?",
+      "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
