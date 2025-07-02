@@ -22,6 +22,30 @@
       },
       "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbc89de_0cfdfa7e",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-02T20:28:28Z",
+      "side": 1,
+      "message": "Oh, it looks like there is a dependency. Given [this comment](http://b/427468960#comment18), it sounds like there should be a [Kconfig dependency](https://docs.zephyrproject.org/latest/build/kconfig/tips.html#select-statements) that enables `CONFIG_PM_DEVICE_RUNTIME` when [`CONFIG_CROS_NPCX_SHI`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_shi/Kconfig;l\u003d7-17;drc\u003d30c228c1216cef54e125df3996868247a40d3848) is enabled. Then we don\u0027t need `CONFIG_PM_DEVICE_RUNTIME` here.",
+      "parentUuid": "89143639_08672a03",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
