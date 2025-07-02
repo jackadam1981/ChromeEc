@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46a5135_8df6224e",
+        "filename": "zephyr/subsys/ap_pwrseq/include/power_signals.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T20:54:15Z",
+      "side": 1,
+      "message": "This guard isn\u0027t needed.  It\u0027s okay to define prototypes for unused functions.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 45
+      },
+      "revId": "7000c3c3da2b2a148c1b467242bd5cfbc0c0abb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69512188_7ed4c6f2",
+        "filename": "zephyr/subsys/ap_pwrseq/power_signals.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T20:54:15Z",
+      "side": 1,
+      "message": "I think it\u0027s better to make this a required function that the platform must provide if using CONFIG_AP_PWRSEQ_SIGNAL_EXTERNAL.  Then you can drop the weak/override definition.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 64
+      },
+      "revId": "7000c3c3da2b2a148c1b467242bd5cfbc0c0abb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
