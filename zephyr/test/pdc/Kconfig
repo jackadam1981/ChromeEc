@@ -171,6 +171,13 @@ config TEST_PDC_RUNTIME_CONFIG_SCENARIO_TWO_PDCS
 
 endchoice
 
+config TEST_PDC_DISABLE_C1
+	bool "Don't initialize port C1"
+	depends on PDC_RUNTIME_PORT_CONFIG
+	help
+	  Use this when testing runtime port configuration to enable only one
+	  of the two PDC ports.
+
 config TEST_SNIFF_POWER_MGMT_PDC_APIS
 	bool "Enable PDC sniffing APIs in pdc_power_mgmt for tests"
 	help

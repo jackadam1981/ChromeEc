@@ -110,11 +110,29 @@ static void pdc_power_mgmt_after(void *fixture)
 ZTEST_SUITE(pdc_power_mgmt_api, NULL, pdc_power_mgmt_setup,
 	    pdc_power_mgmt_before, pdc_power_mgmt_after, NULL);
 
-ZTEST_USER(pdc_power_mgmt_api, test_get_usb_pd_port_count)
+#ifndef CONFIG_PDC_RUNTIME_PORT_CONFIG
+ZTEST_USER(pdc_power_mgmt_api, test_get_usb_pd_port_count__static_port_config)
 {
 	zassert_equal(CONFIG_USB_PD_PORT_MAX_COUNT,
 		      pdc_power_mgmt_get_usb_pd_port_count());
 }
+#else /* CONFIG_PDC_RUNTIME_PORT_CONFIG */
+
+/* Assume DT has two ports configured */
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == 2);
+
+#ifdef CONFIG_TEST_PDC_DISABLE_C1
+#define EXPECTED_PORT_COUNT 1
+#else
+#define EXPECTED_PORT_COUNT 2
+#endif
+
+ZTEST_USER(pdc_power_mgmt_api, test_get_usb_pd_port_count__runtime_port_config)
+{
+	zassert_equal(EXPECTED_PORT_COUNT,
+		      pdc_power_mgmt_get_usb_pd_port_count());
+}
+#endif /* CONFIG_PDC_RUNTIME_PORT_CONFIG */
 
 ZTEST_USER(pdc_power_mgmt_api, test_connector_reset)
 {

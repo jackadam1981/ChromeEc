@@ -3121,8 +3121,15 @@ bool pdc_tps6699x_test_idle_wait(void)
 
 		k_msleep(100);
 		for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+			if (!device_is_ready(pdc_data[port]->dev)) {
+				/* This port is not in use. Consider it finished
+				 * so we do not wait on it. */
+				num_finished++;
+			}
 			if (get_state(pdc_data[port]) == ST_IDLE &&
 			    pdc_data[port]->cmd == CMD_NONE) {
+				/* Driver is in the idle state with no pending
+				 * commands. */
 				num_finished++;
 			}
 		}
