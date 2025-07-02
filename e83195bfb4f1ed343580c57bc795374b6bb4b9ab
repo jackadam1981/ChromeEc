@@ -22,6 +22,29 @@
       },
       "revId": "e83195bfb4f1ed343580c57bc795374b6bb4b9ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b117c64_ca7f2cc4",
+        "filename": "zephyr/test/hibernate_z5/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-02T21:24:59Z",
+      "side": 1,
+      "message": "Why is `z1` used here while the directory under uses `z5`?",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "e83195bfb4f1ed343580c57bc795374b6bb4b9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
