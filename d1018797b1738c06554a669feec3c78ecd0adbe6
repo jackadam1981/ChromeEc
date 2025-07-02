@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2fc990_3ace567c",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc6c4c1f_2befd948",
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92c2dd36_482ba8e6",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "`k_busy_wait` accepts a delay in micro-seconds.",
       "parentUuid": "92c2dd36_482ba8e6",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5671d1b7_c3eaa840",
+        "filename": "zephyr/drivers/cros_system/hibernate_z5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "02baa9ae_8fe4b958",
       "range": {
         "startLine": 36,
         "startChar": 13,
@@ -112,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0cdaa9_57068535",
+        "filename": "zephyr/drivers/cros_system/hibernate_z5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "affbcc76_9db05d0c",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b8d2bd1_1803adb1",
@@ -125,6 +191,30 @@
       "writtenOn": "2025-07-02T20:59:37Z",
       "side": 1,
       "message": "This is 40 by default. `GPIO_INIT_PRIORITY` also defaults to `KERNEL_INIT_PRIORITY_DEFAULT` in Zephyr, and 41 for mec172x / mec15xx. We should bump this driver a little later and add a build assert to be safe even though it likely won\u0027t need to immediately access the GPIO.",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28eb59f_113b1675",
+        "filename": "zephyr/drivers/cros_system/hibernate_z5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8d2bd1_1803adb1",
       "range": {
         "startLine": 63,
         "startChar": 21,
@@ -172,6 +262,30 @@
       "side": 1,
       "message": "This clarifies logic versus physical high",
       "parentUuid": "36132ec4_cc298016",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 69
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abc1357d_d55507ad",
+        "filename": "zephyr/dts/bindings/misc/cros-ec,hibernate-z5.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "I went with \"assert to logic 1\" which matches Zephyr\u0027s gpio.h.",
+      "parentUuid": "24f1b794_85d8f142",
       "range": {
         "startLine": 16,
         "startChar": 0,
