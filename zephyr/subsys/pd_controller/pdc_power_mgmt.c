@@ -1290,11 +1290,11 @@ static void handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+	LOG_INF("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
 	if (port->sink_path_status != status->sink_path_status) {
-		LOG_DBG("C%d: Sink path status change: %d", port_number,
+		LOG_INF("C%d: Sink path status change: %d", port_number,
 			status->sink_path_status);
 		port->sink_path_status = status->sink_path_status;
 	}
@@ -1335,6 +1335,10 @@ static void handle_connector_status(struct pdc_port_t *port)
 	    conn_status_change_bits.pwr_direction) {
 		port->vbus_expired = sys_timepoint_calc(K_NO_WAIT);
 	}
+
+	LOG_INF("C%d: connect_status: %d, power_operation_mode: %d",
+		port_number, status->connect_status,
+		status->power_operation_mode);
 
 	if (!status->connect_status) {
 		/* Port is not connected */
@@ -2981,9 +2985,9 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 			return SMF_EVENT_HANDLED;
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_BUSY)) {
-		LOG_DBG("C%d: CCI_BUSY", config->connector_num);
+		LOG_INF("C%d: CCI_BUSY", config->connector_num);
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_ERROR)) {
-		LOG_DBG("C%d: CCI_ERROR", config->connector_num);
+		LOG_INF("C%d: CCI_ERROR", config->connector_num);
 		/* The PDC may set both error and complete bit */
 		atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
 
@@ -3016,7 +3020,7 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags,
 					     CCI_CMD_COMPLETED)) {
-		LOG_DBG("C%d: CCI_CMD_COMPLETED", config->connector_num);
+		LOG_INF("C%d: CCI_CMD_COMPLETED", config->connector_num);
 
 		switch (port->cmd->cmd) {
 		case CMD_PDC_GET_CONNECTOR_STATUS:
