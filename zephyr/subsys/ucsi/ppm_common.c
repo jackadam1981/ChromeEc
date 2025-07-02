@@ -382,8 +382,8 @@ static int ppm_common_execute_pending_cmd(struct ucsi_ppm_device *dev)
 	memset(control, 0, sizeof(struct ucsi_control_t));
 
 	if (ret < 0) {
-		LOG_ERR("Error with UCSI command 0x%x. Return was %d",
-			ucsi_command, ret);
+		LOG_ERR("Error with UCSI command %s (0x%x). Return was %d",
+			get_ucsi_command_name(ucsi_command), ucsi_command, ret);
 		clear_last_error(dev);
 		dev->last_error = ERROR_PPM;
 
