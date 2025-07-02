@@ -284,6 +284,52 @@ ZTEST(power_common_no_tasks, test_power_reboot_ap_at_g3)
 	zassert_equal(POWER_G3S5, power_get_state());
 }
 
+/**
+ * Test boot time is set
+ */
+ZTEST(power_common_no_tasks, test_boot_time_set)
+{
+	uint64_t time_S5 = 0;
+	uint64_t time_S0 = 0;
+	timestamp_t fake_time;
+	get_time_mock = &fake_time;
+
+	fake_time.val = 0;
+
+	on_new_signal_or_state(POWER_G3, 0);
+
+	zassert_ok(get_boot_time(POWER_S5, &time_S5));
+	zassert_ok(get_boot_time(POWER_S0, &time_S0));
+	zassert_equal(time_S5, (uint64_t)-1, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, (uint64_t)-1, "time_S0=%llu", time_S0);
+
+	fake_time.val = USEC_PER_SEC;
+	on_new_signal_or_state(POWER_S5, 0);
+
+	zassert_ok(get_boot_time(POWER_S5, &time_S5));
+	zassert_ok(get_boot_time(POWER_S0, &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, (uint64_t)-1, "time_S0=%llu", time_S0);
+
+	fake_time.val = 2 * USEC_PER_SEC;
+	on_new_signal_or_state(POWER_S0, 0);
+
+	zassert_ok(get_boot_time(POWER_S5, &time_S5));
+	zassert_ok(get_boot_time(POWER_S0, &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
+
+	/* Test second time does not overwrite the first time. */
+	fake_time.val = 3 * USEC_PER_SEC;
+	on_new_signal_or_state(POWER_S5, 0);
+
+	zassert_ok(get_boot_time(POWER_S5, &time_S5));
+	zassert_ok(get_boot_time(POWER_S0, &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
+	get_time_mock = NULL;
+}
+
 /** Test setting cutoff and stay-up battery levels through host command */
 ZTEST(power_common, test_power_hc_smart_discharge)
 {
@@ -494,6 +540,30 @@ ZTEST_USER(power_common, test_powerinfo_console_cmd)
 		 power_get_state());
 
 	CHECK_CONSOLE_CMD("powerinfo", expected_buffer, EC_SUCCESS);
+}
+
+/**
+ * Test boottime ec console command
+ */
+ZTEST_USER(power_common, test_boot_time_console_cmd)
+{
+	int64_t time_S5;
+	int64_t time_S0;
+	CHECK_CONSOLE_CMD("boottime", NULL, EC_ERROR_PARAM_COUNT);
+	CHECK_CONSOLE_CMD("boottime 123", NULL, EC_ERROR_PARAM1);
+
+	/*
+	Example output:
+
+	[18296096824.492111 first S5: 1000ms]
+	*/
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+	zassert_not_equal(time_S5, -1);
+	zassert_not_equal(time_S0, -1);
+	zassert_true(time_S5 <= time_S0);
 }
 
 /**
