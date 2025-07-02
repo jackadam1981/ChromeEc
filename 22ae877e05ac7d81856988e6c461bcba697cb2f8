@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "501f8eed_9809abd0",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T10:14:54Z",
+      "side": 1,
+      "message": "One case I can think off where it could fail: \n\ncase3: lets say the power_off_seq is undergoing and the execution is at line number 716 right before `power_request \u003d POWER_REQ_NONE;`, in that case the power_request will be override to NONE and the previous power on state might not be preserved. to solve this I think the power_req clean-up for `POWER_REQ_OFF_LONG_WARM_RESET` needs to be handled separately. \n\ni\u0027ll update that.",
+      "parentUuid": "c7e9c6c0_e4459cf1",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 31
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac4a7c24_e2469a49",
         "filename": "power/qcom_exp.c",
         "patchSetId": 17
