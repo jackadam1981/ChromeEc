@@ -1759,3 +1759,11 @@ tests:
     extra_dtc_overlay_files:
     - ./boards/native_sim.overlay
     - ./tabletmode_interrupt/boards/native_sim.overlay
+  drivers.boot_time:
+    timeout: 360
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_BOOT_TIME=y
+    extra_conf_files:
+    - prj.conf
+    extra_dtc_overlay_files:
+    - default/boards/native_sim.overlay
