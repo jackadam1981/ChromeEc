@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec84a2d2_de7859d1",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-02T13:09:23Z",
+      "side": 1,
+      "message": "Thanks @honscheid@google.com \u0026 @caveh@chromium.org ...I Acknowledged and made the changes accordingly.",
+      "parentUuid": "ec225201_2a457412",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "9996028bacf82d89123dd91560a6601a82858dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90a3cd67_8d732ac2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Intel considers this to be optional, but it would be nice to know how it would be used. If this value never gets used anywhere, can you remove this code?",
       "parentUuid": "90a3cd67_8d732ac2",
+      "range": {
+        "startLine": 97,
+        "startChar": 25,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "9996028bacf82d89123dd91560a6601a82858dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5839b374_fc58d764",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-02T13:09:23Z",
+      "side": 1,
+      "message": "As this is optional field, so for now I am considering it to keep for driver but have removed the usage for ocelot in further CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6581119",
+      "parentUuid": "df9f1c6a_f6bbd699",
       "range": {
         "startLine": 97,
         "startChar": 25,
