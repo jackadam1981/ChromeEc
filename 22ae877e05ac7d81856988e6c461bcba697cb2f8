@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7e9c6c0_e4459cf1",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T10:09:03Z",
+      "side": 1,
+      "message": "I think it should be handled correctly. here is my thought process: \n\ncase 1: when `sys_rst_odl` de-asserts right after the 20*msec boundary and the power_req is marked to turn off  and not yet executed. \nIn this case since the sys_rst_odl has already de-asserted and the power_req will be overridden to power_req_on, if the system was previously on. so the system state will be preserved and nothing needs to be handled.\n\ncase 2: when `sys_rst_odl` de-asserts right after the 20*msec boundary but the power_off req is already executing but not fully turned off. \n\nIn this case as well the system is powering off and once the `sys_rst_odl` desserts the interrupt will mark the state as `power_req_on` if previously ON, in that case the system will power back up. once the power-off sequence is complete. \n\nlet me know your thoughts. \n\nThanks",
+      "parentUuid": "efa84446_b88bb1b3",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 31
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac4a7c24_e2469a49",
         "filename": "power/qcom_exp.c",
         "patchSetId": 17
