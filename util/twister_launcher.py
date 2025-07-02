@@ -107,6 +107,7 @@ parameters that may be used, please consult the Twister documentation.
 # [VPYTHON:END]
 
 import argparse
+import json
 import os
 import pathlib
 from pathlib import Path
@@ -300,6 +301,23 @@ def in_cros_sdk() -> bool:
     return Path("/etc/cros_chroot_version").is_file()
 
 
+def get_coreboot_toolchain_flags(ec_base):
+    """Load the coreboot toolchain and return the twister flags to use it."""
+
+    run_result = subprocess.run(
+        [ec_base / "util" / "coreboot_sdk.py", "-j"],
+        check=True,
+        stdout=subprocess.PIPE,
+    )
+    toolchains = json.loads(run_result.stdout.decode("utf-8"))
+
+    out = []
+    for toolchain, path in toolchains.items():
+        out.append(f"-x{toolchain}={path}")
+
+    return out
+
+
 def main():
     """Run Twister using defaults for the EC project."""
 
@@ -375,6 +393,12 @@ def main():
         const="llvm",
     )
     parser.add_argument(
+        "--coreboot",
+        dest="toolchain",
+        action="store_const",
+        const="coreboot-sdk",
+    )
+    parser.add_argument(
         "-h",
         "--help",
         action="store_true",
@@ -441,6 +465,9 @@ def main():
         twister_cli.extend(["-p", "unit_testing/unit_testing"])
 
     twister_cli.extend(["--outdir", intercepted_args.outdir])
+
+    if in_cros_sdk():
+        twister_cli.extend(get_coreboot_toolchain_flags(ec_base))
 
     # Prepare environment variables for export to Twister. Inherit the parent
     # process's environment, but set some default values if not already set.
