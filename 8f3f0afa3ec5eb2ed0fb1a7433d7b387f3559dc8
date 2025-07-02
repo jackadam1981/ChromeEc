@@ -22,6 +22,30 @@
       },
       "revId": "8f3f0afa3ec5eb2ed0fb1a7433d7b387f3559dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78d6a2a_f5ed6dce",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-02T20:10:45Z",
+      "side": 1,
+      "message": "This is a step towards removing the use of node labels to get a GPIO pins.\n\nAlthough GPIO is what is used as wake signal, overridable function will give us the chance to decide which GPIO to toggle.",
+      "parentUuid": "8993eba8_5d6db11d",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 30
+      },
+      "revId": "8f3f0afa3ec5eb2ed0fb1a7433d7b387f3559dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
