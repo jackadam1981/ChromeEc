@@ -263,23 +263,6 @@ get_fp_mcu_board() {
   echo "${board}"
 }
 
-get_chip() {
-  local board
-  board="$(get_fp_mcu_board)"
-
-  case "${board}" in
-    bloonchipper|dartmonkey|nocturne_fp|nami_fp)
-      echo "STM32"
-      ;;
-    buccaneer|gwendolin|helipilot|rosalia)
-      echo "NPCX"
-      ;;
-    *)
-      echo "Error - Unknown board '${board}'." >&2
-      return "${EXIT_CONFIG}"
-      ;;
-  esac
-}
 
 get_default_fw() {
   local board
@@ -792,10 +775,7 @@ main() {
     echo "See b/188985272." >&2
   fi
 
-  if ! chip_type="$(get_chip)"; then
-    echo "Failed to get chip type." >&2
-    exit "${EXIT_CONFIG}"
-  fi
+  chip_type="STM32"
   echo "Detected chip ${chip_type}."
 
   local ret
