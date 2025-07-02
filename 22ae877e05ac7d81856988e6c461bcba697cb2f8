@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1360d91c_d6672b4c",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "63c68361_bf53bfd8",
+      "range": {
+        "startLine": 160,
+        "startChar": 7,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814f3628_f24e411e",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "40c93a58_f9c9e35d",
+      "range": {
+        "startLine": 160,
+        "startChar": 27,
+        "endLine": 160,
+        "endChar": 31
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e97ac2_b126eadc",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-06-17T18:49:00Z",
       "side": 1,
       "message": "Any other better name? `power_on_before_warm_reset`?",
+      "range": {
+        "startLine": 163,
+        "startChar": 11,
+        "endLine": 163,
+        "endChar": 27
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8280ff_f35cf20c",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "03e97ac2_b126eadc",
       "range": {
         "startLine": 163,
         "startChar": 11,
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30299df1_5be2d3eb",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ac4a7c24_e2469a49",
+      "range": {
+        "startLine": 393,
+        "startChar": 20,
+        "endLine": 393,
+        "endChar": 35
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5df3beb0_6bccca94",
@@ -129,6 +225,30 @@
       "writtenOn": "2025-06-17T18:49:00Z",
       "side": 1,
       "message": "Use the CrEC API.",
+      "range": {
+        "startLine": 404,
+        "startChar": 6,
+        "endLine": 404,
+        "endChar": 21
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1e8c23_44b7d0b9",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5df3beb0_6bccca94",
       "range": {
         "startLine": 404,
         "startChar": 6,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "750cc83b_909da203",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e869803c_d92b1b5f",
+      "range": {
+        "startLine": 407,
+        "startChar": 19,
+        "endLine": 407,
+        "endChar": 31
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe8b3f2e_4e1eea3e",
@@ -175,6 +319,30 @@
       "writtenOn": "2025-06-17T18:49:00Z",
       "side": 1,
       "message": "Use `hook_call_deferred()`.",
+      "range": {
+        "startLine": 420,
+        "startChar": 3,
+        "endLine": 420,
+        "endChar": 16
+      },
+      "revId": "22ae877e05ac7d81856988e6c461bcba697cb2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b915b4e4_6ada20d3",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fe8b3f2e_4e1eea3e",
       "range": {
         "startLine": 420,
         "startChar": 3,
