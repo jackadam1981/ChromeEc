@@ -136,86 +136,6 @@ warn_gpio() {
   fi
 }
 
-# Taken verbatim from
-# https://chromium.googlesource.com/chromiumos/docs/+/HEAD/lsb-release.md#shell
-# This should not be used by anything except get_platform_name.
-# See https://crbug.com/98462.
-lsbval() {
-  local key="$1"
-  local lsbfile="${2:-/etc/lsb-release}"
-
-  if ! echo "${key}" | grep -Eq '^[a-zA-Z0-9_]+$'; then
-    return 1
-  fi
-
-  sed -E -n -e \
-    "/^[[:space:]]*${key}[[:space:]]*=/{
-      s:^[^=]+=[[:space:]]*::
-      s:[[:space:]]+$::
-      p
-    }" "${lsbfile}"
-}
-
-# Get the underlying board (reference design) that we're running on (not the
-# FPMCU or sensor).
-# This may be an extended platform name, like nami-kernelnext, hatch-arc-r,
-# or hatch-borealis.
-get_platform_name() {
-  local platform_name
-
-  # We used to use "cros_config /identity platform-name", but that is specific
-  # to mosys and does not actually provide the board name in all cases.
-  # cros_config intentionally does not provide a way to get the board
-  # name: b/156650654.
-
-  # If there was a way to get the board name from cros_config, it's possible
-  # that it could fail in the following cases:
-  #
-  # 1) We're running on a non-unibuild device (the only one with FP is nocturne)
-  # 2) We're running on a proto device during bringup and the cros_config
-  #    settings haven't yet been setup.
-  #
-  # In all cases we can fall back to /etc/lsb-release. It's not recommended
-  # to do this, but we don't have any other options in this case.
-  echo "Getting platform name from /etc/lsb-release." 1>&2
-  platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
-  if [[ -z "${platform_name}" ]]; then
-    return 1
-  fi
-
-  echo "${platform_name}"
-}
-
-# Get the model name as a string.
-get_model_name() {
-  local model_name
-
-  echo "Getting model name." 1>&2
-  model_name="$(cros_config / name)"
-  if [[ -z "${model_name}" ]]; then
-    return 1
-  fi
-
-  echo "${model_name}"
-}
-
-# Return the board version as a string. The board version corresponds to EVT,
-# DVT, PVT, etc.
-# https://chromium.googlesource.com/chromiumos/docs/+/HEAD/design_docs/cros_board_info.md#board_version
-# NOTE: This doesn't work on all platforms and should only be used for
-# short-term workarounds that are fixed in later hardware.
-get_board_version() {
-  local board_version
-
-  echo "Getting board version." 1>&2
-  board_version="$(ectool cbi get 0 | grep -o '[0-9]\+' | head -n 1)"
-  if [[ -z "${board_version}" ]]; then
-    return 1
-  fi
-
-  echo "${board_version}"
-}
-
 power_cycle_fpmcu() {
   local gpio_pwren="${1}"
 
@@ -226,34 +146,6 @@ power_cycle_fpmcu() {
     sleep 0.5
     gpio 1      "${gpio_pwren}"
   fi
-}
-
-# Given a full platform name, extract the base platform.
-#
-# Tests are also run on modified images, like hatch-arc-r, hatch-borealis, or
-# hatch-kernelnext. These devices still have fingerprint and are expected to
-# pass tests. The full platform name reflects these modifications and might
-# be needed to apply an alternative configuration (kernelnext). Other modified
-# tests (arc-r) just need to default to the base platform config, which is
-# identified by this function.
-# See b/186697064.
-#
-# Examples:
-# * platform_base_name "hatch-kernelnext" --> "hatch"
-# * platform_base_name "hatch-arc-r"      --> "hatch"
-# * platform_base_name "hatch-borealis"   --> "hatch"
-# * platform_base_name "hatch"            --> "hatch"
-# * platform_base_name "strongbad64"      --> "strongbad"
-#
-# Usage: platform_base_name <platform_name>
-platform_base_name() {
-  local platform_name="$1"
-
-  # We remove any suffix starting at the first '-'.
-  local base_name="${platform_name%%-*}"
-
-  # Remove any numbers from the base name.
-  echo "${base_name//[0-9]/}"
 }
 
 # Find processes that have the named file, active or deleted, open.
