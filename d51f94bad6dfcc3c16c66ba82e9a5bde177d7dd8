@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e1bef5_e055bfe2",
+        "filename": "zephyr/program/trulo/uldrenite-ish/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-02T05:03:10Z",
+      "side": 1,
+      "message": "duplicate?",
+      "revId": "d51f94bad6dfcc3c16c66ba82e9a5bde177d7dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f53c2ba_bf8d611f",
+        "filename": "zephyr/program/trulo/uldrenite-ish/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-02T05:03:10Z",
+      "side": 1,
+      "message": "Can CONFIG_FPU be automatically selected by CONFIG_PLATFORM_EC_BODY_DETECTION from KConfig? See comment in parent CL.",
+      "revId": "d51f94bad6dfcc3c16c66ba82e9a5bde177d7dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
