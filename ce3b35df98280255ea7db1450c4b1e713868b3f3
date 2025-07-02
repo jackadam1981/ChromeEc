@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382a5981_8f451090",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T16:40:48Z",
+      "side": 1,
+      "message": "You don\u0027t need to fix it, but the shared file boards/google/mec172x/mec172x.dtsi should not be defining these nodes in the first place.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "ce3b35df98280255ea7db1450c4b1e713868b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37847724_0eb8c4b8",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T16:40:48Z",
+      "side": 1,
+      "message": "Nit - document that this power signal is needed by the temperature sensors as a power good indicator.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "ce3b35df98280255ea7db1450c4b1e713868b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
