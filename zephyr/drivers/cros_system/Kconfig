@@ -4,7 +4,7 @@
 
 menuconfig CROS_SYSTEM_NPCX
 	bool "Nuvoton NPCX cros system driver"
-	depends on SOC_FAMILY_NPCX
+	depends on SOC_FAMILY_NPCX && PLATFORM_EC
 	default y
 	select PINCTRL if DT_HAS_NUVOTON_NPCX_POWER_PSL_ENABLED
 	help
