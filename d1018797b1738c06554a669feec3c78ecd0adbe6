@@ -114,6 +114,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b8d2bd1_1803adb1",
+        "filename": "zephyr/drivers/cros_system/hibernate_z5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-02T20:59:37Z",
+      "side": 1,
+      "message": "This is 40 by default. `GPIO_INIT_PRIORITY` also defaults to `KERNEL_INIT_PRIORITY_DEFAULT` in Zephyr, and 41 for mec172x / mec15xx. We should bump this driver a little later and add a build assert to be safe even though it likely won\u0027t need to immediately access the GPIO.",
+      "range": {
+        "startLine": 63,
+        "startChar": 21,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36132ec4_cc298016",
         "filename": "zephyr/dts/bindings/misc/cros-ec,hibernate-z5.yaml",
         "patchSetId": 1
@@ -125,6 +148,30 @@
       "writtenOn": "2025-07-02T20:54:27Z",
       "side": 1,
       "message": "\"asserts to logic high\" sounds a bit confusing to me, just \"asserts\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 69
+      },
+      "revId": "d1018797b1738c06554a669feec3c78ecd0adbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f1b794_85d8f142",
+        "filename": "zephyr/dts/bindings/misc/cros-ec,hibernate-z5.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-02T20:59:37Z",
+      "side": 1,
+      "message": "This clarifies logic versus physical high",
+      "parentUuid": "36132ec4_cc298016",
       "range": {
         "startLine": 16,
         "startChar": 0,
