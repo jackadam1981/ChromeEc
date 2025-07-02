@@ -16,6 +16,24 @@
       "message": "@abin.roy@7rays.corp-partner.google.com, is this change not needed?",
       "revId": "8e11aeb672c63ab8fb91f1099dfa9c48a7e5e8a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c46897_a8c991f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-07-02T07:27:24Z",
+      "side": 1,
+      "message": "Hi @pranavayn@google.com, This change is required earlier while verifying this test we were facing issue due to incomplete status with tester issue, we put on hold since our priorities changed to another device and now seems like with latest tester binary test is passing",
+      "parentUuid": "7b77c2fd_abb3f9b9",
+      "revId": "8e11aeb672c63ab8fb91f1099dfa9c48a7e5e8a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
