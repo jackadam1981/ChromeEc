@@ -22,6 +22,30 @@
       },
       "revId": "8f5afa2de32bddcd74a3503bf95339552f1f19d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a3caa5_20829382",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2025-07-02T18:59:04Z",
+      "side": 1,
+      "message": "Why would they be eliminated? __platform_log_str becomes ccprintf on Cr50.",
+      "parentUuid": "64cb75a0_5945153c",
+      "range": {
+        "startLine": 684,
+        "startChar": 21,
+        "endLine": 684,
+        "endChar": 47
+      },
+      "revId": "8f5afa2de32bddcd74a3503bf95339552f1f19d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
