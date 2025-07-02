@@ -16,6 +16,24 @@
       "message": "How does this interact with the `--gcc`, `--llvm`, and `--toolchain` CLI args in the twister_launcher.py script?",
       "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2221631c_36a04165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-02T20:08:27Z",
+      "side": 1,
+      "message": "no changes in current behavior, just that one can use `--toolchain\u003dcoreboot-sdk` and it actually works, guess I could add a `--coreboot` but it seems redundant?",
+      "parentUuid": "049587a6_d3ee048a",
+      "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
