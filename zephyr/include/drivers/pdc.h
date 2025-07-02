@@ -731,24 +731,20 @@ static inline int pdc_get_vbus_voltage(const struct device *dev,
 }
 
 /**
- * @brief Gets the Sink or Source PDOs associated with the connector, or its
- *        capabilities.
+ * @brief Gets the Sink or Source PDOs associated with the connector
  * @note CCI Events set
  *           busy: if the PDC is busy
  *           error: the Port is not PD connected
  *           command_commpleted: PDOs have been retrieved
  *
  * @param dev PDC device structure pointer
- * @param partner_pdo true if requesting the PDOs from the attached device
- * @param offset starting offset of the first PDO to be returned. Valid values
- *               are 0 to 7.
- * @param num number of PDOs to return starting from the PDO offset. NOTE: the
- *            number of PDOs returned is num + 1.
- * @param prole Source for source PDOs or Sink for sink PDOs.
- * @param sc request the Source or Sink Capabilities instead of the PDOs. This
- *           parameter is only valid when partner_pdo is false.
- * @param pdos pointer to where the PDOs or Capabilities are stored.
- * @param es pointer where the error status is stored.
+ * @param pdo_type Whether to retrieve source or sink PDOs
+ * @param pdo_offset starting offset of the first PDO to be returned. Valid
+ *        values are 0 to 7.
+ * @param num_pdos number of PDOs to return starting from the PDO offset. NOTE:
+ *        the number of PDOs returned is num + 1. Max is GET_PDOS_MAX_NUM.
+ * @param source Whether to retrieve the LPM's (PDC) or port partner's PDOs.
+ * @param pdos pointer to where the PDOs are outputted to.
  *
  * @retval 0 on success
  * @retval -EBUSY if not ready to execute the command
