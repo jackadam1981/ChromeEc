@@ -63,6 +63,9 @@ static uint32_t in_debug; /* Signal values which print debug output */
 static enum power_state state = POWER_G3; /* Current state */
 static int want_g3_exit; /* Should we exit the G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
+static const uint64_t uninitialized_time = -1;
+static uint64_t first_S0_time = uninitialized_time; /* When did we enter S0? */
+static uint64_t first_S5_time = uninitialized_time; /* When did we enter S5? */
 
 #ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
@@ -679,6 +682,19 @@ void test_power_common_state(void)
 }
 #endif
 
+STATIC_IF_NOT(CONFIG_ZTEST)
+void on_new_signal_or_state(enum power_state state, uint32_t this_in_signals)
+{
+	CPRINTS("power state %d = %s, in 0x%04x", state, state_names[state],
+		this_in_signals);
+	if (state == POWER_S5 && first_S5_time == uninitialized_time)
+		first_S5_time = get_time().val;
+	if (state == POWER_S0 && first_S0_time == uninitialized_time)
+		first_S0_time = get_time().val;
+	if (IS_ENABLED(CONFIG_SEVEN_SEG_DISPLAY))
+		display_7seg_write(SEVEN_SEG_EC_DISPLAY, state);
+}
+
 /*****************************************************************************/
 /* Task function */
 
@@ -698,10 +714,7 @@ void chipset_task(void *u)
 		 */
 		this_in_signals = in_signals;
 		if (this_in_signals != last_in_signals || state != last_state) {
-			CPRINTS("power state %d = %s, in 0x%04x", state,
-				state_names[state], this_in_signals);
-			if (IS_ENABLED(CONFIG_SEVEN_SEG_DISPLAY))
-				display_7seg_write(SEVEN_SEG_EC_DISPLAY, state);
+			on_new_signal_or_state(state, this_in_signals);
 			last_in_signals = this_in_signals;
 			last_state = state;
 		}
@@ -1159,3 +1172,53 @@ static int command_power_fake(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(powerfake, command_power_fake, "S0|disable",
 			"Force power inputs for early board bringup");
 #endif /* defined(CONFIG_POWERSEQ_FAKE_CONTROL) */
+
+STATIC_IF_NOT(CONFIG_ZTEST)
+int get_boot_time(enum power_state state, uint64_t *display_time)
+{
+	switch (state) {
+	case POWER_S0:
+		*display_time = first_S0_time;
+		return 0;
+	case POWER_S5:
+		*display_time = first_S5_time;
+		return 0;
+	default:
+		return EINVAL;
+	}
+}
+
+static int command_boot_time(int argc, const char **argv)
+{
+	int rv;
+	const char *state_name;
+	enum power_state state;
+	uint64_t display_time;
+
+	if (argc != 2) {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	state_name = argv[1];
+	if (strcmp(state_name, "S0") == 0) {
+		state = POWER_S0;
+	} else if (strcmp(state_name, "S5") == 0) {
+		state = POWER_S5;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	rv = get_boot_time(state, &display_time);
+	if (rv != 0) {
+		return rv;
+	}
+
+	if (display_time == uninitialized_time) {
+		ccprints("first %s: -1ms", state_name);
+	} else {
+		ccprints("first %s: %llums", state_name, display_time / MSEC);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boottime, command_boot_time, "<S0|S5>",
+			"Expose boot time for firmware.BootTime.");
