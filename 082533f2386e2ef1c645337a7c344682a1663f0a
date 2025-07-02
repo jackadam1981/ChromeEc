@@ -46,6 +46,29 @@
       },
       "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79655320_af8ac75a",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-02T20:35:22Z",
+      "side": 1,
+      "message": "It\u0027s helpful if you add context on exactly what overflowed so someone looking at this in the future has some idea on why it was increased. You can do something like:\n\n```\n# b/427468960#comment10: sysworkq task overflows when doing XYZ\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
