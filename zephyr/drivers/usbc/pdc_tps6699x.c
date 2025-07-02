@@ -28,8 +28,6 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
 #define DT_DRV_COMPAT ti_tps6699_pdc
 
-/** @brief maximum number of PDOs */
-#define MAX_PDOS 7
 /** @brief PDC IRQ EVENT bit */
 #define PDC_IRQ_EVENT BIT(0)
 /** @brief PDC COMMAND EVENT bit */
@@ -272,12 +270,12 @@ struct pdc_data_t {
 	enum pdo_offset_t pdo_offset;
 	/** Number of PDOS */
 	uint8_t num_pdos;
-	/** PDOS */
-	uint32_t *pdos;
+	/** PDO storage for command processing */
+	uint32_t pdos[PDO_MAX_OBJECTS];
 	/** Port Partner PDO */
 	enum pdo_source_t pdo_source;
 	/** Cached PDOS */
-	uint32_t cached_pdos[MAX_PDOS];
+	uint32_t cached_pdos[PDO_MAX_OBJECTS];
 	/** RDO */
 	uint32_t rdo;
 	/** CCOM */
@@ -2519,13 +2517,13 @@ static int tps_set_pdos(const struct device *dev, enum pdo_type_t type,
 		return -EINVAL;
 	}
 
-	if (count < 1 || count > 7) {
+	if (count <= 0 || count > PDO_MAX_OBJECTS) {
 		return -ERANGE;
 	}
 
 	data->pdo_type = type;
-	data->pdos = pdo;
 	data->num_pdos = count;
+	memcpy(data->pdos, pdo, sizeof(uint32_t) * count);
 
 	return tps_post_command(dev, CMD_SET_PDOS, NULL);
 }
