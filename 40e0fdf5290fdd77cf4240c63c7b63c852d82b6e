@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a31e86_a226a2f9",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T23:01:59Z",
+      "side": 1,
+      "message": "This assumes that all board ID signals share the same GPIO controller.  This also assumes that `defer_until_s5` is true.\n\nReplace this with a check that RVP ID is ready.  You can add a static bool that gets initialized to true once `pca95xx_deferred_init_cb` runs.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
