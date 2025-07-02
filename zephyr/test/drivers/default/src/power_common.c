@@ -21,6 +21,7 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <stdlib.h>
 #include <string.h>
 
 #include <zephyr/drivers/gpio.h>
@@ -109,6 +110,10 @@ static int in_state_test_masks[] = {
 	CHIPSET_STATE_ANY_OFF,
 	CHIPSET_STATE_ANY_SUSPEND,
 	CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_SOFT_OFF,
+};
+
+struct power_common_no_tasks_mock_time_fixture {
+	timestamp_t time;
 };
 
 /** Test chipset_in_state() for each state */
@@ -282,6 +287,78 @@ ZTEST(power_common_no_tasks, test_power_reboot_ap_at_g3)
 	test_power_common_state();
 	zassert_true(k_uptime_delta(&before_time) >= 3000);
 	zassert_equal(POWER_G3S5, power_get_state());
+}
+
+static void *mock_time_setup()
+{
+	struct power_common_no_tasks_mock_time_fixture *fixture =
+		malloc(sizeof(struct power_common_no_tasks_mock_time_fixture));
+	get_time_mock = &fixture->time;
+	return fixture;
+}
+
+static void mock_time_teardown(void *fixture)
+{
+	get_time_mock = NULL;
+	free(fixture);
+	reset_boot_time();
+}
+
+/**
+ * Test boot time is set
+ */
+ZTEST_F(power_common_no_tasks_mock_time, test_boot_time_set)
+{
+	int64_t time_S5;
+	int64_t time_S0;
+
+	/* Test nothing is set. */
+	fixture->time.val = 0;
+	on_new_signal_or_state(POWER_G3, 0);
+
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+
+	zassert_equal(time_S5, -1, "time_S5=%lld", time_S5);
+	zassert_equal(time_S0, -1, "time_S0=%lld", time_S0);
+
+	/* Test time_S5 is set. */
+	fixture->time.val = USEC_PER_SEC;
+	on_new_signal_or_state(POWER_S5, 0);
+
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+
+	zassert_equal(time_S5, MSEC_PER_SEC, "time_S5=%lld", time_S5);
+	zassert_equal(time_S0, -1, "time_S0=%lld", time_S0);
+
+	/* Test time_S0 is set. */
+	fixture->time.val = 2 * USEC_PER_SEC;
+	on_new_signal_or_state(POWER_S0, 0);
+
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+
+	zassert_equal(time_S5, MSEC_PER_SEC, "time_S5=%lld", time_S5);
+	zassert_equal(time_S0, 2 * MSEC_PER_SEC, "time_S0=%lld", time_S0);
+
+	/* Test second time does not overwrite the first time. */
+	fixture->time.val = 3 * USEC_PER_SEC;
+	on_new_signal_or_state(POWER_S5, 0);
+
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+
+	zassert_equal(time_S5, MSEC_PER_SEC, "time_S5=%lld", time_S5);
+	zassert_equal(time_S0, 2 * MSEC_PER_SEC, "time_S0=%lld", time_S0);
 }
 
 /** Test setting cutoff and stay-up battery levels through host command */
@@ -508,6 +585,32 @@ ZTEST_USER(power_common, test_powerindebug_console_cmd)
 	CHECK_CONSOLE_CMD("powerindebug 0", "debug mask: 0x0000", EC_SUCCESS);
 }
 #endif /* CONFIG_CMD_POWERINDEBUG */
+
+/**
+ * Test boottime ec console command
+ */
+ZTEST_USER(power_common, test_boot_time_console_cmd)
+{
+	int64_t time_S5;
+	int64_t time_S0;
+
+	/* Test invalid commands. */
+	CHECK_CONSOLE_CMD("boottime", NULL, EC_ERROR_PARAM_COUNT);
+	CHECK_CONSOLE_CMD("boottime 123", NULL, EC_ERROR_PARAM1);
+
+	/*
+	Example output:
+
+	[18296096824.492111 first S5: 1000ms]
+	*/
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+	zassert_not_equal(time_S5, -1);
+	zassert_not_equal(time_S0, -1);
+	zassert_true(time_S5 <= time_S0);
+}
 
 /**
  * Common setup for hibernation delay tests. Smart discharge zone is setup,
@@ -775,6 +878,9 @@ ZTEST(power_common_bring_up, test_siglog_output)
 
 ZTEST_SUITE(power_common_no_tasks, drivers_predicate_pre_main, NULL, NULL, NULL,
 	    NULL);
+
+ZTEST_SUITE(power_common_no_tasks_mock_time, drivers_predicate_pre_main,
+	    mock_time_setup, NULL, NULL, mock_time_teardown);
 
 ZTEST_SUITE(power_common, drivers_predicate_post_main, NULL, NULL, NULL, NULL);
 
