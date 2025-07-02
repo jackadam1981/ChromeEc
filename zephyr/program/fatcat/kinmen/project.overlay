@@ -15,6 +15,7 @@
 #include "gpios.dtsi"
 #include "i2c.dtsi"
 #include "interrupts.dtsi"
+#include "../ite_hibernate.dtsi"
 #include "keyboard.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
