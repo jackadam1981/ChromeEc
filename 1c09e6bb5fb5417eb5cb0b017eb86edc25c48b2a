@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c85796a5_2028bf75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-02T22:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00de09cd_7029a787",
+      "range": {
+        "startLine": 20,
+        "startChar": 33,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "1c09e6bb5fb5417eb5cb0b017eb86edc25c48b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2607e5ed_9b85f6ce",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2025-07-02T22:11:31Z",
       "side": 1,
       "message": "This looks good. I think we can pull it out into its own CL since it\u0027s technically just a bug that happens with host commands. We\u0027re only now seeing it when we enable SHI, but it\u0027s technically not related.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "1c09e6bb5fb5417eb5cb0b017eb86edc25c48b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b840546a_7a548d9f",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-02T22:37:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "238eea79_f766f1ab",
       "range": {
         "startLine": 70,
         "startChar": 0,
