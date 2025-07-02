@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead6e400_ad561955",
+        "filename": "zephyr/test/hibernate_z5/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0370add5_2837f911",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "e83195bfb4f1ed343580c57bc795374b6bb4b9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b117c64_ca7f2cc4",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-02T21:24:59Z",
       "side": 1,
       "message": "Why is `z1` used here while the directory under uses `z5`?",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "e83195bfb4f1ed343580c57bc795374b6bb4b9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96617167_ecc1775d",
+        "filename": "zephyr/test/hibernate_z5/testcase.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T22:50:08Z",
+      "side": 1,
+      "message": "Good catch - I renamed the driver and missed these instances.",
+      "parentUuid": "4b117c64_ca7f2cc4",
       "range": {
         "startLine": 5,
         "startChar": 13,
