@@ -4,4 +4,3 @@
 
 zephyr_library_sources("../felino/src/board.c")
 zephyr_library_sources("../felino/src/board_power.c")
-zephyr_library_sources("../felino/src/hibernate.c")
