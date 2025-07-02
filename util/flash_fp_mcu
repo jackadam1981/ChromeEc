@@ -711,23 +711,10 @@ main() {
   # /usr/bin installs
   readlink -f "$0"
 
-  # The "platform name" corresponds to the underlying board (reference design)
-  # that we're running on (not the FPMCU or sensor). At the moment all of the
-  # reference designs use the same GPIOs. If for some reason a design differs in
-  # the future, we will want to add a nested check in the config_<platform_name>
-  # function. Doing it in this manner allows us to reduce the number of
-  # configurations that we have to maintain (and reduces the amount of testing
-  # if we're only updating a specific config_<platform_name>).
-  if ! PLATFORM_NAME="$(get_platform_name)"; then
-    echo "Failed to get platform name"
-    exit "${EXIT_CONFIG}"
-  fi
+  PLATFORM_NAME="brya"
   readonly PLATFORM_NAME
 
-  if ! PLATFORM_BASE_NAME="$(platform_base_name "${PLATFORM_NAME}")"; then
-    echo "Failed to get platform base name"
-    exit "${EXIT_CONFIG}"
-  fi
+  PLATFORM_BASE_NAME="brya"
   readonly PLATFORM_BASE_NAME
 
   echo "Platform name is ${PLATFORM_NAME} (${PLATFORM_BASE_NAME})."
