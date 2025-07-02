@@ -34,6 +34,24 @@
       "parentUuid": "049587a6_d3ee048a",
       "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93f4949_921643bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-02T20:23:13Z",
+      "side": 1,
+      "message": "I think we should either add a `--coreboot` shortcut or remove `--llvm` and `--gcc`.\n\nCan we add `choices` onto the toolchain argument so the users know the supported options?",
+      "parentUuid": "2221631c_36a04165",
+      "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
