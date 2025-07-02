@@ -16,6 +16,24 @@
       "message": "Does this duplicate work from Megha on CL:6651661?",
       "revId": "cf6e3b1812ed2e1b8dab0b19c25fa8f8a7285d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff84bdc6_d37acc28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-02T18:39:31Z",
+      "side": 1,
+      "message": "No, that is for obtaining board ID from GPIO\u0027s (legacy). This solution relies on CBI settings to find board ID.",
+      "parentUuid": "094e55e6_9a7198d5",
+      "revId": "cf6e3b1812ed2e1b8dab0b19c25fa8f8a7285d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
