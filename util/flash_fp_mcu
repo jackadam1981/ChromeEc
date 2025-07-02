@@ -257,31 +257,6 @@ platform_base_name() {
   echo "${base_name//[0-9]/}"
 }
 
-get_fp_mcu_board() {
-  local board
-  board="$(cros_config /fingerprint board)"
-
-  echo "${board}"
-}
-
-
-get_default_fw() {
-  local board
-  board="$(get_fp_mcu_board)"
-
-  # If cros_config returns "", that is okay assuming there is only
-  # one firmware file on disk.
-
-  local -a fws
-  mapfile -t fws < <(find /opt/google/biod/fw -maxdepth 1 -name "${board}*.bin")
-
-  if [[ "${#fws[@]}" -ne 1 ]]; then
-    return 1
-  fi
-
-  echo "${fws[0]}"
-}
-
 # Find processes that have the named file, active or deleted, open.
 #
 # Deleted files are important because unbinding/rebinding cros-ec
@@ -725,11 +700,8 @@ main() {
     if [[ "${FLAGS_read}" -eq "${FLAGS_TRUE}" ]]; then
       filename="/tmp/fpmcu-fw-$(date --iso-8601=seconds).bin"
     else
-      # Assume we are "writing" the default firmware to the FPMCU.
-      if ! filename="$(get_default_fw)"; then
-        echo "Failed to identify a default firmware file" >&2
-        exit "${EXIT_CONFIG}"
-      fi
+      echo "Failed to identify a default firmware file" >&2
+      exit "${EXIT_CONFIG}"
     fi
   fi
 
