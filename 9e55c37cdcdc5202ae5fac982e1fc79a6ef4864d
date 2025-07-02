@@ -87,6 +87,24 @@
       "parentUuid": "5068cb18_1cc5cb58",
       "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4af233_87da02b7",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-07-02T10:20:38Z",
+      "side": 1,
+      "message": "I try to remove the line 82 `,` however, modify the line 123~129 still fails at cros format check.",
+      "parentUuid": "24d03739_a3e7a090",
+      "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
