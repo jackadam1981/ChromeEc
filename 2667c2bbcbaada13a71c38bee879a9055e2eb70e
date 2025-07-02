@@ -141,6 +141,30 @@
       },
       "revId": "2667c2bbcbaada13a71c38bee879a9055e2eb70e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3490cdc_392ceb92",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-02T19:11:43Z",
+      "side": 1,
+      "message": "Per our discussion today, can you test the suggestion from the second comment in this thread? (`CONFIG_PLATFORM_EC\u003dn`)",
+      "parentUuid": "e99203a2_ba54610b",
+      "range": {
+        "startLine": 1215,
+        "startChar": 41,
+        "endLine": 1215,
+        "endChar": 64
+      },
+      "revId": "2667c2bbcbaada13a71c38bee879a9055e2eb70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
