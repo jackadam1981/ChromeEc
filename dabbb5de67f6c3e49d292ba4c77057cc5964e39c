@@ -75,6 +75,24 @@
       "parentUuid": "a66f2da7_2d52640f",
       "revId": "dabbb5de67f6c3e49d292ba4c77057cc5964e39c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c03dd9_6f837052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-02T22:43:04Z",
+      "side": 1,
+      "message": "```\n(cr) fsammoura@fsammoura1 /mnt/host/source/src/platform/ec $ more ./build/zephyr/helipilot/build-rw/zephyr/.config | grep CONFIG_PLATFORM_EC\nCONFIG_PLATFORM_EC_RSA_KEY_SIZE\u003d3072\nCONFIG_PLATFORM_EC_RSA_EXPONENT_3\u003dy\nCONFIG_PLATFORM_EC_ADC_RESOLUTION\u003d10\nCONFIG_PLATFORM_EC_ADC_OVERSAMPLING\u003d0\nCONFIG_PLATFORM_EC_LTO\u003dy\nCONFIG_PLATFORM_EC\u003dy\n.\n.\n.\n```",
+      "parentUuid": "f2681ada_5f494d1e",
+      "revId": "dabbb5de67f6c3e49d292ba4c77057cc5964e39c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
