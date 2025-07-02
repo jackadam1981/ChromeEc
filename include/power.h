@@ -450,6 +450,23 @@ void power_5v_enable(task_id_t tid, int enable);
  * chipset_task() would.
  */
 void test_power_common_state(void);
+
+/**
+ * @brief Called when signal or state change in chipset_task.
+ *
+ * @param state: The new state.
+ * @param this_in_signals: The new signals.
+ */
+void on_new_signal_or_state(enum power_state state, uint32_t this_in_signals);
+
+/**
+ * @brief Get the time first time on_new_signal_or_state(state, X) is called.
+ *
+ * @param state: The query state. Only support S0 and S5 now.
+ * @param time: The output time.
+ * @return EINVAL if state is not supported.
+ */
+int get_boot_time(enum power_state state, uint64_t *time);
 #endif
 
 #ifdef CONFIG_POWERSEQ_FAKE_CONTROL
