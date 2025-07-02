@@ -832,11 +832,9 @@ int emul_init_stub(const struct device *dev)
 DT_INST_FOREACH_STATUS_OKAY(EMUL_STUB_DEVICE);
 
 #if defined(CONFIG_SHELL_BACKEND_DUMMY)
-void check_console_cmd(const char *cmd, const char *expected_output,
-		       const int expected_rv, const char *file, const int line)
+static void call_console_cmd(const char *cmd, const int expected_rv,
+			     const char *file, const int line)
 {
-	const char *buffer;
-	size_t buffer_size;
 	int rv;
 
 	shell_backend_dummy_clear_output(get_ec_shell());
@@ -845,12 +843,58 @@ void check_console_cmd(const char *cmd, const char *expected_output,
 	zassert_equal(expected_rv, rv,
 		      "%s:%u \'%s\' - Expected %d, returned %d", file, line,
 		      cmd, expected_rv, rv);
+}
+
+void check_console_cmd(const char *cmd, const char *expected_output,
+		       const int expected_rv, const char *file, const int line)
+{
+	static const size_t copy_buffer_size = 128;
+	char copy_buffer[copy_buffer_size];
+	size_t copy_size = 0;
+	const char *buffer;
+	size_t buffer_size;
+
+	call_console_cmd(cmd, expected_rv, file, line);
 
 	if (expected_output) {
 		buffer = shell_backend_dummy_get_output(get_ec_shell(),
 							&buffer_size);
+		if (!strstr(buffer, expected_output)) {
+			copy_size = MIN(buffer_size, copy_buffer_size);
+			memcpy(copy_buffer, buffer, copy_size);
+		}
 		zassert_true(strstr(buffer, expected_output),
-			     "Invalid console output %s", buffer);
+			     "Invalid console output %.*s", copy_size,
+			     copy_buffer);
 	}
+}
+
+void scan_console_cmd(const char *cmd, const int expected_rv,
+		      const int expected_count, const char *file,
+		      const int line, const char *format, ...)
+{
+	static const size_t copy_buffer_size = 128;
+	char copy_buffer[copy_buffer_size];
+	size_t copy_size = 0;
+	const char *buffer;
+	size_t buffer_size;
+	va_list args;
+
+	call_console_cmd(cmd, expected_rv, file, line);
+
+	zassert_not_null(format);
+	buffer = shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+	va_start(args, format);
+	int count = vsscanf(buffer, format, args);
+	va_end(args);
+	/* zassert_equal overwrites the backend buffer so we copy it first. */
+	if (count != expected_count) {
+		copy_size = MIN(buffer_size, copy_buffer_size);
+		memcpy(copy_buffer, buffer, copy_size);
+	}
+	zassert_equal(
+		expected_count, count,
+		"%s:%u \'%s\' outputs \'%.*s\' which does not match \'%s\'",
+		file, line, cmd, copy_size, copy_buffer, format);
 }
 #endif /* CONFIG_SHELL_BACKEND_DUMMY */
