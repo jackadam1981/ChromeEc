@@ -22,6 +22,30 @@
       },
       "revId": "7893c638631f5e49d7d531300ee67d20e3ab5dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c8d750_486cda90",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:35:29Z",
+      "side": 1,
+      "message": "This is intented, since there is a `NOT` gate before `PMIC_KPD_PWR_ODL`. updated the commit message to properly describe the changes.",
+      "parentUuid": "9eb4768c_de2eaf51",
+      "range": {
+        "startLine": 533,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 16
+      },
+      "revId": "7893c638631f5e49d7d531300ee67d20e3ab5dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
