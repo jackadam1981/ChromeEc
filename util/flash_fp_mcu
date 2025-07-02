@@ -253,16 +253,6 @@ power_cycle_fpmcu() {
   fi
 }
 
-# Test the current running kernel version against a regular expression.
-# Returns 0 if the regex matches.
-match_kernel_regex() {
-  local match_exp=$1
-  local kversion
-  kversion=$(uname -r)
-  [[ ${kversion} =~ ${match_exp} ]]
-  return $?
-}
-
 # Given a full platform name, extract the base platform.
 #
 # Tests are also run on modified images, like hatch-arc-r, hatch-borealis, or
