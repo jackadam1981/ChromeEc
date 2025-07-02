@@ -170,6 +170,30 @@
       },
       "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ec568d7_29c8ecbf",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-02T20:45:07Z",
+      "side": 1,
+      "message": "While the cards are interchangeable, WCL should be using fixed configurations based on the SKU ID.\n\nAnything that varies from the supported SKU configuration can be handled with local changes if the auto-detection is not workable.",
+      "parentUuid": "089b4e23_1b96b88a",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
