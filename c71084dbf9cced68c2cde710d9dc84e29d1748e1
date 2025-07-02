@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7827808_7c92b6cc",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cb3fec87_5c9047b3",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 36
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9448f20a_19e07c0e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-16T16:58:25Z",
       "side": 1,
       "message": "It needs some unit tests to ensure no racing condition. Please file a bug for test coverage and add a TODO here.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac012efb_f6c6d232",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:56Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "9448f20a_19e07c0e",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "901deb07_569732e2",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:56Z",
+      "side": 1,
+      "message": "Please check b/421784159#comment7. \n\n\u003e HALL_INT_AON# comes to PMIC, by default it does\u0027t boot the system up unless PSI is configured. So we\u0027re unlikely using this.",
+      "parentUuid": "d31944e0_e1e74bf5",
+      "range": {
+        "startLine": 527,
+        "startChar": 15,
+        "endLine": 527,
+        "endChar": 41
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc88d2d8_d32b26e5",
@@ -106,6 +178,30 @@
       "writtenOn": "2025-06-16T16:58:25Z",
       "side": 1,
       "message": "Here is outside of Zephyr; use the CrEC API `gpio_set_level()`.",
+      "range": {
+        "startLine": 528,
+        "startChar": 2,
+        "endLine": 528,
+        "endChar": 17
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6508ea06_c2f09eac",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-02T09:34:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cc88d2d8_d32b26e5",
       "range": {
         "startLine": 528,
         "startChar": 2,
