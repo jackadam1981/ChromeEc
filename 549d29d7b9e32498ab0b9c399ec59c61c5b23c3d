@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f4bae6_549258c9",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-02T23:17:57Z",
+      "side": 1,
+      "message": "Why are those BRINGUP-only sections needed?",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 39
+      },
+      "revId": "549d29d7b9e32498ab0b9c399ec59c61c5b23c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
