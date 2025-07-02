@@ -5,6 +5,7 @@
 
 /* ocelot program common DTS includes */
 
+#include <cros/cbi_flash.dtsi>
 #include <cros/integrated_fwid.dtsi>
 
 /* ocelot_mchp project DTS includes */
@@ -39,6 +40,11 @@
 
 &it8801_mfd {
 	irq-gpios = <MCHP_GPIO_DECODE_025 GPIO_ACTIVE_HIGH>;
+};
+
+&cbi_flash {
+       offset = <0x3F000>;
+       size = <0x1000>;
 };
 
 /* Disable nodes for features not yet enabled. */
