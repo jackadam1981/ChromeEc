@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d40ffea_ac00d34d",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/adc.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-02T18:52:04Z",
+      "side": 1,
+      "message": "Acknowledged, Added CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6701967",
+      "parentUuid": "382a5981_8f451090",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "ce3b35df98280255ea7db1450c4b1e713868b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37847724_0eb8c4b8",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-02T16:40:48Z",
       "side": 1,
       "message": "Nit - document that this power signal is needed by the temperature sensors as a power good indicator.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "ce3b35df98280255ea7db1450c4b1e713868b3f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81824f37_fb7a73dd",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/gpio.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-02T18:52:04Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "37847724_0eb8c4b8",
       "range": {
         "startLine": 39,
         "startChar": 0,
