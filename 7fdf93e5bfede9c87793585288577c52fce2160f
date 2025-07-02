@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5430f5b2_aad1b7e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1549192
+      },
+      "writtenOn": "2025-07-02T02:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40c89ccc_5316a565",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "7fdf93e5bfede9c87793585288577c52fce2160f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa4e8826_5fe121ef",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-01T16:17:42Z",
       "side": 1,
       "message": "Remove this, since it\u0027s just repeating the first line",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "7fdf93e5bfede9c87793585288577c52fce2160f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18a48fb_cb3733d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1549192
+      },
+      "writtenOn": "2025-07-02T02:42:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa4e8826_5fe121ef",
       "range": {
         "startLine": 9,
         "startChar": 0,
