@@ -16,5 +16,14 @@
 #include "cbi.dtsi"
 #include "usba.dtsi"
 #include "power_signals.dtsi"
+#include "usb_typec.dtsi"
 
 /* Kaladin overrides follow... */
+
+/{
+        batteries {
+                default_battery: dynapack_313-2d-32-a {
+                        compatible = "dynapack,313-2d-32-a", "battery-smart";
+                };
+        };
+};
