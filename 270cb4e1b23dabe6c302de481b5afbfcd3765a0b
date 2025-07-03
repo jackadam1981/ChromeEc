@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2340c7_9c7b1af7",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-03T00:42:18Z",
+      "side": 1,
+      "message": "`p-\u003eread_offset \u003e\u003d read_size` (there is nothing to be read if they are equal)",
+      "range": {
+        "startLine": 563,
+        "startChar": 6,
+        "endLine": 563,
+        "endChar": 33
+      },
+      "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b43f694_4e5e57f7",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-03T00:42:18Z",
+      "side": 1,
+      "message": "I think this flag is pretty much ignored in the ectool and used to determine if panicinfo is new or old in platform2/libec. I\u0027m not sure if we want to use it for a different meaning. Best way to understand if the chunk is a last one is to check that `PANIC_DATA_FLAG_TRUNCATED` is NOT set.",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 69
+      },
+      "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a884bd26_43afaef9",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-03T00:42:18Z",
+      "side": 1,
+      "message": "Isn\u0027t that flag more suitable to use rather than `PANIC_DATA_FLAG_OLD_HOSTCMD` ?",
+      "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
