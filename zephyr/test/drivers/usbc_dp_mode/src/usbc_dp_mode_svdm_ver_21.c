@@ -501,6 +501,31 @@ ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery)
 		      SVDM_VER_2_1,
 		      "Expected SVDM version 2.1 for SOP', got %d",
 		      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME));
+
+	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	k_sleep(K_MSEC(1000));
+
+	/* Verify we entered DP mode */
+	struct ec_response_typec_status status =
+			host_cmd_typec_status(TEST_PORT);
+	zassert_equal((status.mux_state & USB_MUX_CHECK_MASK),
+					USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED,
+					"Failed to see DP set");
+
+	/* Send attention message from partner */
+	uint32_t vdm_payload[2];
+
+	vdm_payload[0] = VDO(USB_SID_DISPLAYPORT, 1, CMD_ATTENTION | VDO_OPOS(1));
+	/* IRQ, HPD high, MF pref, enabled, UFP_D conn */
+	vdm_payload[1] = VDO_DP_STATUS(1, 1, 0, 0, 1, 1, 0, 2);
+
+	zassert_ok(tcpci_partner_send_data_msg(&fixture->partner,
+					PD_DATA_VENDOR_DEF, vdm_payload, 2, 50), NULL);
+	k_sleep(K_MSEC(100));
+
+	/* Verify attention was processed */
+	zassert_equal(dp_status[TEST_PORT], vdm_payload[1],
+					"DP status not updated after attention");
 }
 
 ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_passive_32)
