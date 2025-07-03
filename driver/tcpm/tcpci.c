@@ -121,6 +121,8 @@ static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Cache our Device Capabilities at init for later reference */
 static int dev_cap_1[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static timestamp_t tcpc_int_ts[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
@@ -1198,6 +1200,11 @@ void tcpci_tcpc_alert(int port)
 	uint32_t pd_event = 0;
 	int retval = 0;
 	bool bist_mode;
+	timestamp_t alert_ts = get_time();
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
+		pd_record_timestamp(port, PD_INTERVAL_INT_TO_INT_TASK, PD_END,
+				    alert_ts);
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1233,6 +1240,11 @@ void tcpci_tcpc_alert(int port)
 			tx_status = TCPC_TX_COMPLETE_DISCARDED;
 		else
 			tx_status = TCPC_TX_COMPLETE_FAILED;
+
+		if (tcpc_int_ts[port].val != 0) {
+			alert_ts = tcpc_int_ts[port];
+			tcpc_int_ts[port].val = 0;
+		}
 
 		pd_transmit_complete(port, tx_status);
 	}

@@ -11,6 +11,7 @@
 #include "config.h"
 #include "ec_commands.h"
 #include "tcpm/tcpm.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 
