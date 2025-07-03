@@ -29,7 +29,13 @@ void board_ap_power_force_shutdown(void)
 	/* Turn off PRIM load switch. */
 	power_signal_set(PWR_EN_PP3300_A, 0);
 
+	/*
+	 * TODO(b/430093425): Remove pwr_en_pp5000_a after moving to
+	 * revised RVP version for onboard EC.
+	 */
+#if DT_NODE_HAS_STATUS(DT_NODELABEL(pwr_en_pp5000_a), okay)
 	power_signal_set(PWR_EN_PP5000_A, 0);
+#endif
 	/* Wait RSMRST to be off. */
 	while (power_signal_get(PWR_RSMRST_PWRGD) && (timeout_ms > 0)) {
 		k_msleep(1);
@@ -53,10 +59,16 @@ static int board_ap_power_action_g3_run(void *data)
 {
 	if (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
 		power_signal_set(PWR_EN_PP3300_A, 1);
+
+		/*
+		 * TODO(b/430093425): Remove pwr_en_pp5000_a after moving to
+		 * revised RVP version for onboard EC.
+		 */
+#if DT_NODE_HAS_STATUS(DT_NODELABEL(pwr_en_pp5000_a), okay)
 		k_msleep(10);
 		/* Turn on the PP5000_PRIM rail. */
 		power_signal_set(PWR_EN_PP5000_A, 1);
-
+#endif
 		/* Indication to soc on recovery boot */
 		if (system_is_manual_recovery()) {
 			gpio_pin_set_dt(
@@ -81,15 +93,6 @@ int board_power_signal_get(enum power_signal signal)
 	switch (signal) {
 	case PWR_EC_PCH_SYS_PWROK:
 		return power_signal_get(PWR_PCH_PWROK);
-	case PWR_EN_PP5000_A:
-		/* On AIC enabled boards, PWR_EN_PP5000_A is connected to
-		 * the PWR_EN_PP3300_A signal.
-		 *
-		 * For the microchip board, PWR_EN_PP5000_A is valid, so
-		 * the PWR_EN_PP5000_A is handled by the GPIO power sequence
-		 * drver.
-		 */
-		return power_signal_get(PWR_EN_PP3300_A);
 	default:
 		return -EINVAL;
 	}
