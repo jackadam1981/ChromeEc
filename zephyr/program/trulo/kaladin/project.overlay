@@ -8,6 +8,41 @@
 /* Trulo ITE program common DTS includes */
 
 /* Kaladin project DTS includes*/
+<<<<<<< PATCH SET (249d67d7f372cd076d04e3243a0243c274b65287 trulo: Add GPIO configuration for trulo ite)
+
+#include "ite_generated.dtsi"
+#include "ite_trulo.dtsi"
+
+/* Kaladin overrides follow... */
+
+/{
+        batteries {
+                default_battery: dynapack_313-2d-32-a {
+                        compatible = "dynapack,313-2d-32-a", "battery-smart";
+                };
+        };
+};
+
+/* Kaladin project DTS includes*/
+
+||||||| BASE
+
+#include "ite_generated.dtsi"
+
+/* Kaladin overrides follow... */
+
+/{
+        batteries {
+                default_battery: dynapack_313-2d-32-a {
+                        compatible = "dynapack,313-2d-32-a", "battery-smart";
+                };
+        };
+};
+
+/* Kaladin project DTS includes*/
+
+=======
 #include "gpio.dtsi"
+>>>>>>> BASE      (642cc273b6ee1b7eac71cff44716ec6d1f679686 pujjocento/pujjoteenlo: Disable charger IDPM when AC only)
 
 /* Kaladin overrides follow... */
