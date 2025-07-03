@@ -52,6 +52,24 @@
       "parentUuid": "2221631c_36a04165",
       "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74cf436_08e1048f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-03T09:54:38Z",
+      "side": 1,
+      "message": "Did some digging, does not seem like the flags were a transition so there\u0027s probably value in them, updated to add `--coreboot`.\n\nNot to keen on limiting the possible value to the `toolchain` one, that one goes straight to twister and is validated by the upstream script and can potentially take values beyond our tree ones (which is how I tested this specifically) so I think there\u0027s value in not filtering it.",
+      "parentUuid": "b93f4949_921643bd",
+      "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
