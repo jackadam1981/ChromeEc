@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a50a39_eb7a57ff",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 29
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:32:49Z",
+      "side": 1,
+      "message": "I\u0027m waiting for Elan to confirm this number",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dba41a8_a6b78df7",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 29
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:32:49Z",
+      "side": 1,
+      "message": "`default n` not needed.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240a4f03_78b8f22e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:32:49Z",
+      "side": 1,
+      "message": "Do we need these logs?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ae0c0d_5c1ed597",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:32:49Z",
+      "side": 1,
+      "message": "Fix the comment.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c2d0ca_76743d0f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:32:49Z",
+      "side": 1,
+      "message": "Is this entry needed?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6465cf2f_e55e696b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:32:49Z",
+      "side": 1,
+      "message": "I think we can use directly our logging function here.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
