@@ -8,6 +8,9 @@
 /* Trulo ITE program common DTS includes */
 
 /* Kaladin project DTS includes*/
+#include "kaladin.dtsi"
 #include "gpio.dtsi"
+#include "i2c.dtsi"
+#include "adc.dtsi"
 
 /* Kaladin overrides follow... */
