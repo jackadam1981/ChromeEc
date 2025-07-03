@@ -22,6 +22,30 @@
       },
       "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3728300_7bfc516d",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-03T16:50:17Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.or, As per current RVP designs, All shares the same GPIO controller so check for each controller is not required. \n\nAs it is not necessary that defer_until_s5 is always defined because this property is optional and this ensures that future RVP designs can be flexible enough to handle power to GPIO controller based on their requirements. \n\nIf in case defer_until_s5 is not there (If PCA95xx can be powered in early boot), pca95xx_deferred_init_cb will not required to be called. So it is not right to make static variable dependency here.",
+      "parentUuid": "42a31e86_a226a2f9",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
