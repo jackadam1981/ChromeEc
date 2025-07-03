@@ -182,6 +182,6 @@
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
     <vif:PID_SOP value="20581">5065</vif:PID_SOP>
     <!--BCD value below is for production FW. The main branch uses different PDC FW.-->
-    <vif:bcdDevice_SOP value="327">0147</vif:bcdDevice_SOP>
+    <vif:bcdDevice_SOP value="39">0027</vif:bcdDevice_SOP>
   </vif:Component>
 </vif:VIF>
