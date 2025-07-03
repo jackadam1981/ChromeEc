@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a279378f_a855b072",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-03T00:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e39e4e0d_be780053",
+      "range": {
+        "startLine": 393,
+        "startChar": 19,
+        "endLine": 393,
+        "endChar": 37
+      },
+      "revId": "fe958e171a4d7233cb6eb750853200f40500062d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6afca2_bda19b54",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-02T23:51:05Z",
       "side": 1,
       "message": "Maybe just `return rv;` here?",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 19
+      },
+      "revId": "fe958e171a4d7233cb6eb750853200f40500062d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199b2a01_b18cb25a",
+        "filename": "board/bugzzy/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-03T00:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6afca2_bda19b54",
       "range": {
         "startLine": 411,
         "startChar": 0,
