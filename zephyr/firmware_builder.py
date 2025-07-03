@@ -53,6 +53,19 @@ SPECIAL_BOARDS = [
     # Nissa variants
     "nereid",
     "nivviks",
+<<<<<<< HEAD   (624abc628e7f410f3fde0e1906aba29ac67380c4 pujjocento: modify Touchpanel sequence)
+||||||| BASE
+    # Trulo variants
+    "trulo",
+    "trulo-ti",
+    "trulo-ish",
+=======
+    # Trulo variants
+    "kaladin",
+    "trulo",
+    "trulo-ti",
+    "trulo-ish",
+>>>>>>> CHANGE (a3a42d77390ad35a4c4e00e953feb22422702648 kaladin: Add initial program files for trulo with ite chip)
     # Skyrim variants
     "winterhold",
     "frostflow",
