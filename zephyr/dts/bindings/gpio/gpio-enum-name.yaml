@@ -94,6 +94,8 @@ properties:
       - GPIO_TABLET_MODE_L
       - GPIO_TEMP_SENSOR_POWER
       - GPIO_TEST
+      - GPIO_TEST_A1
+      - GPIO_TEST_A2_L
       - GPIO_USB_C0_BC12_INT_ODL
       - GPIO_USB_C0_C1_TCPC_INT_ODL
       - GPIO_USB_C0_C1_TCPC_RST_ODL

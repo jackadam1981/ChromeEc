@@ -39,6 +39,14 @@
 		spi0_cs: spi0_cs {
 			gpios = <&gpiom 5 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
+		test_gpa1: test_gpa1 {
+			gpios = <&gpioa 1 GPIO_OUTPUT_HIGH>; /* GPIO_OUTPUT_INIT_HIGH */
+			enum-name = "GPIO_TEST_A1";
+		};
+		test_gpa2_l: test_gpa2_l {
+			gpios = <&gpioa 2 GPIO_ACTIVE_LOW>;
+			enum-name = "GPIO_TEST_A2_L";
+		};
 		/* unimplemented GPIOs */
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
@@ -55,10 +63,6 @@
 		compatible = "unused-gpios";
 
 		unused-gpios =
-			/* gpioa1 */
-			<&gpioa 1 GPIO_INPUT_PULL_DOWN>,
-			/* gpioa2 */
-			<&gpioa 2 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa3 */
 			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
 			/* gpioa4 */
