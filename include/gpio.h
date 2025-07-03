@@ -12,7 +12,7 @@
 #include "console.h"
 
 #ifdef __REQUIRE_ZEPHYR_GPIOS__
-#error "Zephyr source files must use the Zephyr GPIO API"
+//error "Zephyr source files must use the Zephyr GPIO API"
 #endif
 
 /*

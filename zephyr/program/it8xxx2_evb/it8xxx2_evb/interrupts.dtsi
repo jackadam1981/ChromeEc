@@ -22,5 +22,10 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "spi_event";
 		};
+		int_test_gpa2: test_gpa2 {
+			irq-pin = <&test_gpa2_l>;
+			flags = <GPIO_INT_EDGE_FALLING>; /* = GPIO_INT_F_FALLING / GPIO_INT_TRIG_LOW */
+			handler = "test_gpa2_interrupt";
+		};
 	};
 };
