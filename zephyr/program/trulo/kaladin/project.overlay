@@ -9,5 +9,8 @@
 
 /* Kaladin project DTS includes*/
 #include "gpio.dtsi"
+#include "i2c.dtsi"
+#include "kaladin.dtsi"
+#include "adc.dtsi"
 
 /* Kaladin overrides follow... */
