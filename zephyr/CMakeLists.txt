@@ -311,6 +311,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25710
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25720
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RT9478
+                                                "${PLATFORM_EC}/driver/charger/rt9478.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RT9490
                                                 "${PLATFORM_EC}/driver/charger/rt9490.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_SM5803
