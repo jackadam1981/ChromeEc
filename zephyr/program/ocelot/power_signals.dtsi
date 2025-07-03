@@ -23,13 +23,6 @@
 		/* Note - gpios property must be set by the board overlay */
 		output;
 	};
-	pwr_en_pp5000_a: ec-gppc-b14 {
-		compatible = "intel,ap-pwrseq-gpio";
-		dbg-label = "PP5000_S5 enable output to LS";
-		enum-name = "PWR_EN_PP5000_A";
-		/* Note - gpios property must be set by the board overlay */
-		output;
-	};
 	pwr_rsmrst_pwrgd: rsmrst-pwrgd-ec-n {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "RSMRST power good from regulator";
