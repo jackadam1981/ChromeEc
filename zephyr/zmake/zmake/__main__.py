@@ -6,10 +6,10 @@
 
 import argparse
 import inspect
+import json
 import logging
 import os
 import pathlib
-import re
 import subprocess
 import sys
 
@@ -390,18 +390,12 @@ def find_toolchains():
             ).resolve()
             if ec_util_path.is_dir():
                 run_result = subprocess.run(
-                    ["./coreboot_sdk.py"],
+                    ["./coreboot_sdk.py", "-j"],
                     check=True,
                     stdout=subprocess.PIPE,
                     cwd=str(ec_util_path),
                 )
-                # Convert bash associative array to python dict
-                env_vars = dict(
-                    re.findall(
-                        r'\["([^"]*)"\]="([^"]*)"',
-                        run_result.stdout.decode("utf-8"),
-                    )
-                )
+                env_vars = json.loads(run_result.stdout.decode("utf-8"))
                 if env_vars:
                     os.environ.update(env_vars.items())
                 break
