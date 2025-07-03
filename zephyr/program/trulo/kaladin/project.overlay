@@ -11,19 +11,7 @@
 
 #include "ite_generated.dtsi"
 #include "ite_trulo.dtsi"
-
-/* Kaladin overrides follow... */
-
-/{
-        batteries {
-                default_battery: dynapack_313-2d-32-a {
-                        compatible = "dynapack,313-2d-32-a", "battery-smart";
-                };
-        };
-};
-
-/* Kaladin project DTS includes*/
-
+#include "ite_power_signals.dtsi"
 
 /* Kaladin overrides follow... */
 
