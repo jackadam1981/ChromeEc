@@ -968,6 +968,7 @@
 #undef CONFIG_CHARGER_RAA489110
 #undef CONFIG_CHARGER_RT9466
 #undef CONFIG_CHARGER_RT9467
+#undef CONFIG_CHARGER_RT9478
 #undef CONFIG_CHARGER_RT9490
 #undef CONFIG_CHARGER_SM5803
 #undef CONFIG_CHARGER_SY21612
@@ -1124,9 +1125,11 @@
  * to keep the bq25710 in performance mode when the AP is in S0.
  */
 #undef CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA
+#undef CONFIG_CHARGER_RT9478_IDCHG_LIMIT_MA
 
 /* Enable if CONFIG_CHARGER_BQ25720_VSYS_TH2_DV should be applied */
 #undef CONFIG_CHARGER_BQ25720_VSYS_TH2_CUSTOM
+#undef CONFIG_CHARGER_RT9478_VSYS_TH2_CUSTOM
 
 /*
  * This config option is used to set the charger's VSYS voltage
@@ -1137,9 +1140,11 @@
  * 8.0v.
  */
 #undef CONFIG_CHARGER_BQ25720_VSYS_TH2_DV
+#undef CONFIG_CHARGER_RT9478_VSYS_TH2_DV
 
 /* Enable if CONFIG_CHARGER_BQ25720_VSYS_UVP should be applied */
 #undef CONFIG_CHARGER_BQ25720_VSYS_UVP_CUSTOM
+#undef CONFIG_CHARGER_RT9478_VSYS_UVP_CUSTOM
 
 /*
  * This config option is used to set the VSYS under voltage (VSYS_UVP)
@@ -1148,9 +1153,11 @@
  * in the range of 2.4 V to 8.0 V to be specified.
  */
 #undef CONFIG_CHARGER_BQ25720_VSYS_UVP
+#undef CONFIG_CHARGER_RT9478_VSYS_UVP
 
 /* Enable if CONFIG_CHARGER_BQ25720_IDCHG_DEG2 should be applied */
 #undef CONFIG_CHARGER_BQ25720_IDCHG_DEG2_CUSTOM
+#undef CONFIG_CHARGER_RT9478_IDCHG_DEG2_CUSTOM
 
 /*
  * This config option is used to set the 2nd battery discharge current
@@ -1159,9 +1166,11 @@
  * to 12 ms.
  */
 #undef CONFIG_CHARGER_BQ25720_IDCHG_DEG2
+#undef CONFIG_CHARGER_RT9478_IDCHG_DEG2
 
 /* Enable if CONFIG_CHARGER_BQ25720_IDCHG_TH2 should be applied */
 #undef CONFIG_CHARGER_BQ25720_IDCHG_TH2_CUSTOM
+#undef CONFIG_CHARGER_RT9478_IDCHG_TH2_CUSTOM
 
 /*
  * This config option is used to set the charger's 2nd battery discharge
@@ -1170,12 +1179,15 @@
  * 125% to 400%.
  */
 #undef CONFIG_CHARGER_BQ25720_IDCHG_TH2
+#undef CONFIG_CHARGER_RT9478_IDCHG_TH2
 
 /* Value of the bq25710 charge sense resistor, in mOhms */
 #undef CONFIG_CHARGER_BQ25710_SENSE_RESISTOR
+#undef CONFIG_CHARGER_RT9478_SENSE_RESISTOR
 
 /* Value of the bq25710 input current sense resistor, in mOhms */
 #undef CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC
+#undef CONFIG_CHARGER_RT9478_SENSE_RESISTOR_IN
 
 /*
  * This config option is used to enable the PSYS sensing circuit on the
@@ -1185,6 +1197,7 @@
  * enabled for meaningful results.
  */
 #undef CONFIG_CHARGER_BQ25710_PSYS_SENSING
+#undef CONFIG_CHARGER_RT9478_PSYS_SENSING
 
 /*
  * This config option is used to change the charger's internal
@@ -1193,6 +1206,7 @@
  * of 2.3 V.
  */
 #undef CONFIG_CHARGER_BQ25710_CMP_REF_1P2
+#undef CONFIG_CHARGER_RT9478_CMP_REF_1P2
 
 /*
  * This config option is used to change the charger's independent comparator
@@ -1200,9 +1214,11 @@
  * CMPOUT is LOW (internal hysteresis).
  */
 #undef CONFIG_CHARGER_BQ25710_CMP_POL_EXTERNAL
+#undef CONFIG_CHARGER_RT9478_CMP_POL_POSITIVE
 
 /* Enable if CONFIG_CHARGER_BQ25710_PKPWR_TOVLD_DEG should be applied */
 #undef CONFIG_CHARGER_BQ25710_PKPWR_TOVLD_DEG_CUSTOM
+#undef CONFIG_CHARGER_RT9478_PKPWR_TOVLD_DEG_CUSTOM
 
 /*
  * Input overload time when in peak power mode (PKPWR_TOVLD_DEG). This
@@ -1211,6 +1227,7 @@
  * bq25720 1 ms to 10 ms can be encoded.
  */
 #undef CONFIG_CHARGER_BQ25710_PKPWR_TOVLD_DEG
+#undef CONFIG_CHARGER_RT9478_PKPWR_TOVLD_DEG
 
 /*
  * This config option is used to enable the charger's AC over-current
@@ -1218,6 +1235,7 @@
  * reached. The threshold is selected using the ACOC_VTH bit.
  */
 #undef CONFIG_CHARGER_BQ25710_EN_ACOC
+#undef CONFIG_CHARGER_RT9478_EN_IBUS_OCP1
 
 /*
  * This config option selects which ACOC protection threshold is used
@@ -1225,6 +1243,7 @@
  * the default is 200% of ILIM2.
  */
 #undef CONFIG_CHARGER_BQ25710_ACOC_VTH_1P33
+#undef CONFIG_CHARGER_RT9478_IBUS_OCP1_TH_1P33
 
 /*
  * This config option selects the minimum BATOC protection threshold to
@@ -1233,6 +1252,7 @@
  * default threshold is 200% on both chips.
  */
 #undef CONFIG_CHARGER_BQ25710_BATOC_VTH_MINIMUM
+#undef CONFIG_CHARGER_RT9478_BATOC_VTH_MINIMUM
 
 /*
  * This config option sets the PP_INOM bit in Prochot Option 1
@@ -1241,6 +1261,7 @@
  * current setting).
  */
 #undef CONFIG_CHARGER_BQ25710_PP_INOM
+#undef CONFIG_CHARGER_RT9478_PP_INOM
 
 /*
  * This config option sets the PP_BATPRES bit in Prochot Option 1
@@ -1248,6 +1269,7 @@
  * removed.
  */
 #undef CONFIG_CHARGER_BQ25710_PP_BATPRES
+#undef CONFIG_CHARGER_RT9478_PP_BATGONE
 
 /*
  * This config option sets the PP_ACOK in Prochot Option 1
@@ -1255,6 +1277,7 @@
  * removed.
  */
 #undef CONFIG_CHARGER_BQ25710_PP_ACOK
+#undef CONFIG_CHARGER_RT9478_PP_VBUSOK
 
 /*
  * This config option sets the PP_COMP in Prochot Option 1
@@ -1262,6 +1285,7 @@
  * and its PROCHOT profile.
  */
 #undef CONFIG_CHARGER_BQ25710_PP_COMP
+#undef CONFIG_CHARGER_RT9478_PP_COMP
 
 /*
  * This config option sets the PP_IDCHG2 bit in the Charge Option 4
@@ -1269,9 +1293,11 @@
  */
 
 #undef CONFIG_CHARGER_BQ25720_PP_IDCHG2
+#undef CONFIG_CHARGER_RT9478_PP_IDCHG2
 
 /* Enable if CONFIG_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_MV should be applied */
 #undef CONFIG_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_CUSTOM
+#undef CONFIG_CHARGER_RT9478_VSYS_MIN_VOLTAGE_CUSTOM
 
 /*
  * This config option sets the minimum system voltage in
@@ -1282,7 +1308,20 @@
  * battery cells connected in series using the CELL_BATPRESZ strap.
  */
 #undef CONFIG_CHARGER_BQ25710_VSYS_MIN_VOLTAGE_MV
+#undef CONFIG_CHARGER_RT9478_VSYS_MIN_VOLTAGE_MV
 
+/* Enable if CONFIG_CHARGER_RT9478_IAICR2 should be applied */
+#undef CONFIG_CHARGER_RT9478_IAICR2_CUSTOM
+
+/*
+ * This config option sets percentage of IAICR1 as threshold. ICRIT threshold is
+ * set to be 110% of IAICR2. Input overcurrent protection (IBUS_OCP1) threshold
+ * is also 1.33x or 2x of IAICR2 (1.33x or 2x based on IBUS_OCP1_TH field).
+ * 1  - 25: 110% - 230%, step is 5%.
+ * 26 - 30: 250% - 450%, step is 50%.
+ * 31: Out of range (ignored).
+ */
+#undef CONFIG_CHARGER_RT9478_IAICR2
 /*
  * Board specific maximum input current limit, in mA.
  */
@@ -6663,7 +6702,7 @@
 	defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_RT9490) ||   \
 	defined(CONFIG_CHARGER_MT6370) || defined(CONFIG_CHARGER_BQ25710) ||  \
 	defined(CONFIG_CHARGER_BQ25720) || defined(CONFIG_CHARGER_ISL9241) || \
-	defined(CONFIG_CHARGER_RAA489110)
+	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_RT9478)
 #if !defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC) &&              \
 	!defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT) && \
 	!defined(CONFIG_USB_PD_VBUS_MEASURE_BY_BOARD)
@@ -6711,7 +6750,8 @@
 	defined(CONFIG_CHARGER_ISL9238C) || defined(CONFIG_CHARGER_ISL9241) || \
 	defined(CONFIG_CHARGER_RAA489000) || defined(CONFIG_CHARGER_SM5803) || \
 	defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_BQ25720) ||  \
-	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_RT9490)
+	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_RT9490) || \
+	defined(CONFIG_CHARGER_RT9478)
 #define CONFIG_CHARGER_NARROW_VDC
 #endif
 
