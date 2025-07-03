@@ -1,0 +1,56 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	fans {
+		compatible = "cros-ec,fans";
+
+		fan_0 {
+			pwms = <&pwm6 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			tach = <&tach0>;
+			rpm-min = <1100>;
+			rpm-start = <1100>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
+			pgood-gpio = <&gpio_vccprim_io_pgood>;
+		};
+		fan_1 {
+			pwms = <&pwm3 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			tach = <&tach0>;
+			rpm-min = <1100>;
+			rpm-start = <1100>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
+			pgood-gpio = <&gpio_vccprim_io_pgood>;
+		};
+	};
+};
+
+&pwm3 {
+	status = "okay";
+	pinctrl-0 = <&pwm3_gpio026>;
+	pinctrl-names = "default";
+};
+
+&pwm6 {
+	status = "okay";
+	pinctrl-0 = <&pwm6_gpio029>;
+	pinctrl-names = "default";
+};
+
+/* fan tachometer sensor */
+&tach0 {
+	status = "okay";
+	pinctrl-0 = <&tacho0_gpio052>;
+	pinctrl-names = "default";
+	pulses-per-round = <2>;
+};
+
+// &tach1 {
+// 	status = "okay";
+// 	pinctrl-0 = <&tacho1_gpio053>;
+// 	pinctrl-names = "default";
+// 	pulses-per-round = <2>;
+// };
