@@ -1,0 +1,15 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/cbi_flash.dtsi>
+
+/* Trulo ITE program common DTS includes */
+#include "../ite_trulo.dtsi"
+#include "../ite_generated.dtsi"
+
+/* Kaladin project DTS includes*/
+
+
+/* Kaladin overrides follow... */
