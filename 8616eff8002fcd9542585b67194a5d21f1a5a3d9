@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1db3676d_5817c963",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 29
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-03T07:48:34Z",
+      "side": 1,
+      "message": "Does it make any difference how many templates are enrolled?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3dba41a8_a6b78df7",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 29
