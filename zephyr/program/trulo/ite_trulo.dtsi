@@ -61,3 +61,6 @@
 	pinctrl-names = "default";
 };
 
+&espi0 {
+	status = "okay";
+};
