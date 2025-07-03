@@ -10,14 +10,6 @@
          * both the EN1 and EN2 pins on the RT6585 LDO. */
 	gpios = <&gpio4 1 GPIO_ACTIVE_HIGH>;
 };
-&pwr_en_pp5000_a {
-        /* TODO: ec-gppc-b14 is not-connected to V5A_VR_EN for the AICs.
-         * Reconfigure the power signal to external so the shared board power
-         * as a valid reference.
-         */
-        compatible = "intel,ap-pwrseq-external";
-        /delete-property/ output;
-};
 &pwr_rsmrst_pwrgd {
         /* RSMRST_PWRGD_N_R net  */
 	gpios = <&gpio7 2 GPIO_ACTIVE_HIGH>;
