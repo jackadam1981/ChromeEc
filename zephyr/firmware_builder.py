@@ -53,6 +53,8 @@ SPECIAL_BOARDS = [
     # Nissa variants
     "nereid",
     "nivviks",
+    # Trulo variants
+    "kaladin",
     # Skyrim variants
     "winterhold",
     "frostflow",
