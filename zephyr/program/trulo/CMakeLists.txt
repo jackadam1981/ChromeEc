@@ -36,3 +36,8 @@ if(DEFINED CONFIG_BOARD_ULDRENITE)
 		add_subdirectory(uldrenite)
 	endif()
 endif()
+
+if(DEFINED CONFIG_BOARD_KALADIN)
+	project(kaladin)
+	add_subdirectory(kaladin)
+endif()

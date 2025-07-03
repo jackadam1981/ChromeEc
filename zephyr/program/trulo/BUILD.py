@@ -1,4 +1,4 @@
-# Copyright 2024 The ChromiumOS Authors
+# Copyright 2025 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -8,10 +8,45 @@
 def register_trulo_project(
     project_name,
     chip="npcx9/npcx9m3f",
+    zephyr_board=None,
     kconfig_files=None,
     **kwargs,
 ):
     """Register a variant of Trulo."""
+    if zephyr_board is None:
+        zephyr_board = chip
+
+    if "it8" in zephyr_board:
+        register_binman_project(
+            project_name=project_name,
+            zephyr_board=zephyr_board,
+            dts_overlays=[
+                here / project_name / "project.overlay",
+            ],
+            kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
+            modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
+            inherited_from=["trulo"],
+            **kwargs,
+        )
+    else:
+        register_npcx_project(
+            project_name=project_name,
+            zephyr_board=zephyr_board,
+            dts_overlays=[
+                here / project_name / "project.overlay",
+            ],
+            kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
+            inherited_from=["trulo"],
+            modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
+            **kwargs,
+        )
+
+
+def register_trulo_binman_project(
+    project_name,
+    kconfig_files=None,
+):
+    """Register a variant of trulo."""
     if kconfig_files is None:
         kconfig_files = [
             # Common to all projects.
@@ -19,19 +54,25 @@ def register_trulo_project(
             # Project-specific KConfig customization.
             here / project_name / "project.conf",
         ]
-
-    register_npcx_project(
+    return register_trulo_project(
         project_name=project_name,
-        zephyr_board=chip,
-        dts_overlays=[
-            here / project_name / "project.overlay",
-        ],
-        kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
-        inherited_from=["trulo"],
-        modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
-        **kwargs,
+        zephyr_board="it8xxx2/it82002aw",
+        kconfig_files=kconfig_files,
     )
 
+
+register_trulo_project(
+    project_name="kaladin",
+    zephyr_board="it8xxx2/it82002bw",
+    kconfig_files=[
+        # ite's config
+        here / "ite.conf",
+        # Common to all projects.
+        here / "ite_program.conf",
+        # Parent project's config
+        here / "kaladin" / "project.conf",
+    ],
+)
 
 register_trulo_project(
     project_name="trulo",
@@ -139,3 +180,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="pujjocento", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="pujjolo", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="trulo-ti", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="uldrenite", addr=0x40144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="kaladin", addr=0xBFFE0)

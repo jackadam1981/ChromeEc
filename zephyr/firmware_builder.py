@@ -64,6 +64,7 @@ SPECIAL_BOARDS = [
     "nereid",
     "nivviks",
     # Trulo variants
+    "kaladin",
     "trulo",
     "trulo-ti",
     "trulo-ish",
