@@ -113,6 +113,10 @@ register_npcx9_project(
     zephyr_board="npcx9/npcx9m7fb",
 )
 
+register_realtek_project(
+    project_name="frtk",
+)
+
 register_it8xxx2_project(
     project_name="felino",
 )
@@ -181,6 +185,7 @@ register_ish_project(
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="francka", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="frtk", addr=0x80404)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ruby", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino4es", addr=0x60098)
