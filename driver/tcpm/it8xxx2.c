@@ -927,6 +927,7 @@ static int it8xxx2_tcpm_init(int port)
 	return EC_SUCCESS;
 }
 
+extern int print_tc_log;
 __override void tc_update_pd_sleep_mask(int port)
 {
 	int i;
@@ -959,10 +960,17 @@ __override void tc_update_pd_sleep_mask(int port)
 				prevent_deep_sleep = true;
 	}
 
-	if (prevent_deep_sleep)
+	if (prevent_deep_sleep) {
 		disable_sleep(SLEEP_MASK_USB_PD);
-	else
+		//if (print_tc_log == 1) {
+		//	CPRINTS("c%d tcpc hook dis sleep", port);
+		//}
+	} else {
 		enable_sleep(SLEEP_MASK_USB_PD);
+		//if (print_tc_log == 1) {
+		//	CPRINTS("c%d tcpc hook en sleep", port);
+		//}
+	}
 }
 
 static void it8xxx2_tcpm_hook_connect(void)

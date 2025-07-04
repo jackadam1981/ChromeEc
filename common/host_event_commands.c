@@ -298,6 +298,7 @@ host_event_t host_get_events(void)
 	return events;
 }
 
+extern int print_tc_log;
 void host_set_events(host_event_t mask)
 {
 	/* ignore host events the rest of board doesn't care about */
@@ -328,6 +329,9 @@ void host_set_events(host_event_t mask)
 	host_events_atomic_or(&events, mask);
 	host_events_atomic_or(&events_copy_b, mask);
 
+	//if (print_tc_log == 1) {
+	//	printk("bf tx mkbp evt\n");
+	//}
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_set_host_event_state(events);
 #else
@@ -339,6 +343,9 @@ void host_set_events(host_event_t mask)
 	host_events_send_mkbp_event(events);
 #endif /* CONFIG_MKBP_EVENT */
 #endif /* !CONFIG_HOSTCMD_X86 */
+	//if (print_tc_log == 1) {
+	//	printk("tx mkbp evt done\n");
+	//}
 }
 
 void host_set_single_event(enum host_event_code event)
