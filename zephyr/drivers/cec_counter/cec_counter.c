@@ -20,7 +20,7 @@
 
 #include <drivers/cec_counter.h>
 
-LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_WRN);
 
 BUILD_ASSERT(DT_HAS_CHOSEN(cros_ec_cec_counter),
 	     "a cros-ec,cec-counter device must be chosen");
@@ -172,10 +172,10 @@ void cros_cec_bitbang_debounce_disable(int port)
 void cros_cec_bitbang_trigger_send(int port)
 {
 	unsigned int key;
+	key = irq_lock();
 	/* Elevate to interrupt context */
 	transfer_initiated = true;
 
-	key = irq_lock();
 	cec_ext_timer_interrupt(port);
 	irq_unlock(key);
 }
