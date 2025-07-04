@@ -20,10 +20,48 @@
 
 #include <drivers/cec_counter.h>
 
-LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_WRN);
 
 BUILD_ASSERT(DT_HAS_CHOSEN(cros_ec_cec_counter),
 	     "a cros-ec,cec-counter device must be chosen");
+
+/*
+ * CEC state machine states. Each state typically takes action on entry and
+ * timeouts. INITIATIOR states are used for sending, FOLLOWER states are used
+ *  for receiving.
+ */
+enum bitbang_cec_state {
+	CEC_STATE_DISABLED = 0,
+	CEC_STATE_IDLE,
+	CEC_STATE_INITIATOR_FREE_TIME,
+	CEC_STATE_INITIATOR_START_LOW,
+	CEC_STATE_INITIATOR_START_HIGH,
+	CEC_STATE_INITIATOR_HEADER_INIT_LOW,
+	CEC_STATE_INITIATOR_HEADER_INIT_HIGH,
+	CEC_STATE_INITIATOR_HEADER_DEST_LOW,
+	CEC_STATE_INITIATOR_HEADER_DEST_HIGH,
+	CEC_STATE_INITIATOR_DATA_LOW,
+	CEC_STATE_INITIATOR_DATA_HIGH,
+	CEC_STATE_INITIATOR_EOM_LOW,
+	CEC_STATE_INITIATOR_EOM_HIGH,
+	CEC_STATE_INITIATOR_ACK_LOW,
+	CEC_STATE_INITIATOR_ACK_HIGH,
+	CEC_STATE_INITIATOR_ACK_VERIFY,
+	CEC_STATE_FOLLOWER_START_LOW,
+	CEC_STATE_FOLLOWER_START_HIGH,
+	CEC_STATE_FOLLOWER_DEBOUNCE,
+	CEC_STATE_FOLLOWER_HEADER_INIT_LOW,
+	CEC_STATE_FOLLOWER_HEADER_INIT_HIGH,
+	CEC_STATE_FOLLOWER_HEADER_DEST_LOW,
+	CEC_STATE_FOLLOWER_HEADER_DEST_HIGH,
+	CEC_STATE_FOLLOWER_EOM_LOW,
+	CEC_STATE_FOLLOWER_EOM_HIGH,
+	CEC_STATE_FOLLOWER_ACK_LOW,
+	CEC_STATE_FOLLOWER_ACK_VERIFY,
+	CEC_STATE_FOLLOWER_ACK_FINISH,
+	CEC_STATE_FOLLOWER_DATA_LOW,
+	CEC_STATE_FOLLOWER_DATA_HIGH,
+};
 
 /* Timestamp when the most recent interrupt occurred */
 static timestamp_t interrupt_time;
@@ -112,6 +150,18 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 		int timer_count = timeout - delay;
 		struct counter_top_cfg top_cfg;
 
+		switch (cec_get_state(port)) {
+		case CEC_STATE_FOLLOWER_ACK_LOW:
+		case CEC_STATE_FOLLOWER_ACK_VERIFY:
+		case CEC_STATE_FOLLOWER_ACK_FINISH:
+			delay = CEC_US_TO_TICKS(get_time().val -
+						interrupt_time.val + 255);
+			timer_count = timeout - delay;
+			break;
+		default:
+			break;
+		}
+
 		/*
 		 * Handle the case where the delay is greater than the timeout.
 		 * This should never actually happen for typical delay and
@@ -172,10 +222,10 @@ void cros_cec_bitbang_debounce_disable(int port)
 void cros_cec_bitbang_trigger_send(int port)
 {
 	unsigned int key;
+	key = irq_lock();
 	/* Elevate to interrupt context */
 	transfer_initiated = true;
 
-	key = irq_lock();
 	cec_ext_timer_interrupt(port);
 	irq_unlock(key);
 }
