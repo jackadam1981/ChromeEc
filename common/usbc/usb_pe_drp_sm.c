@@ -1466,6 +1466,7 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
+extern int print_tc_log;
 #ifdef TEST_BUILD
 /*
  * Allow unit tests to access this function to clear internal state data between
@@ -1486,11 +1487,15 @@ static void pe_clear_port_data(int port)
 	pd_clear_events(port, GENMASK(31, 0));
 
 	/* But then set disconnected event */
-	pd_notify_event(port, PD_STATUS_EVENT_DISCONNECTED);
-
+	pd_notify_event(port, PD_STATUS_EVENT_DISCONNECTED); //mutex lock
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 pe hook ntfy done");
+	}
 	/* Tell Policy Engine to invalidate the explicit contract */
-	pe_invalidate_explicit_contract(port);
-
+	pe_invalidate_explicit_contract(port); //i2c
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 pe hook ctct done");
+	}
 	/*
 	 * Saved Source and Sink Capabilities are no longer valid on disconnect
 	 */
@@ -1510,10 +1515,18 @@ static void pe_clear_port_data(int port)
 	pd_dfp_discovery_init(port);
 
 	/* Clear any pending alerts */
-	pe_clear_ado(port);
-
-	dpm_remove_sink(port);
-	dpm_remove_source(port);
+	pe_clear_ado(port); //mutex lock
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 pe hook clr ado done");
+	}
+	dpm_remove_sink(port); //while loop & mutex lock
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 pe hook rv snk done");
+	}
+	dpm_remove_source(port); //while loop & mutex lock
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 pe hook rv src done");
+	}
 	dpm_init(port);
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
@@ -1557,6 +1570,9 @@ static void pe_handle_detach(void)
 	const int port = TASK_ID_TO_PD_PORT(task_get_current());
 
 	pe_clear_port_data(port);
+	//if ((port == 1) && (print_tc_log == 1)) {
+	//	CPRINTS("c1 pe hook discon");
+	//}
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 
