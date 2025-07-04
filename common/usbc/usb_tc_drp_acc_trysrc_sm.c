@@ -1736,6 +1736,8 @@ static bool in_ct_state(int port)
 		(get_state_tc(port) == TC_CT_ATTACHED_SNK));
 }
 
+int print_tc_log;
+int print_tc_evt_log;
 void tc_event_check(int port, int evt)
 {
 #ifdef DEBUG_PRINT_FLAG_AND_EVENT_NAMES
@@ -1743,6 +1745,10 @@ void tc_event_check(int port, int evt)
 		print_bits(port, "Event", evt, event_bit_names,
 			   ARRAY_SIZE(event_bit_names));
 #endif
+	if ((port == 1) && (print_tc_evt_log == 1)) {
+		CPRINTS("p%d evt 0x%x", port, evt);
+		print_tc_evt_log = 0;
+	}
 
 	if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
 		TC_SET_FLAG(port, TC_FLAGS_CHECK_CONNECTION);
@@ -1872,6 +1878,9 @@ static void pd_update_dual_role_config(int port)
 		 * in the source disconnected state).
 		 */
 		set_state_tc(port, TC_UNATTACHED_SNK);
+		if ((port == 1) && (print_tc_log == 1)) {
+			CPRINTS("p%d evt update role set unatta snk ", port);
+		}
 	} else if (tc[port].power_role == PD_ROLE_SINK &&
 		   drp_state[port] == PD_DRP_FORCE_SOURCE) {
 		/*
@@ -2211,6 +2220,9 @@ static void tc_unattached_snk_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
 		print_current_state(port);
+		if (port == 1) {
+			print_tc_log = 0;
+		}
 	}
 
 	/*
@@ -2790,6 +2802,9 @@ static void tc_unattached_src_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
 		print_current_state(port);
+		if (port == 1) {
+			print_tc_log = 0;
+		}
 	}
 
 	/*
@@ -3341,6 +3356,8 @@ static void tc_attached_src_run(const int port)
 
 static void tc_attached_src_exit(const int port)
 {
+	if ((port == 1) && (print_tc_log == 1))
+		CPRINTS("p%d tc attached src exit", port);
 	/*
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
 	 * Attached.SRC.
@@ -4084,6 +4101,8 @@ static void pd_chipset_shutdown(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		print_tc_log = 1;
+		print_tc_evt_log = 1;
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i, PD_DRP_FORCE_SINK,
 					   PD_EVENT_UPDATE_DUAL_ROLE |
