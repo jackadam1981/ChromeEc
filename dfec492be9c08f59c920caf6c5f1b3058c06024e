@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41b8694_8e4aa0a1",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-04T12:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3039af4_76042a8c",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5fde3e5_f77d23b8",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-04T09:17:59Z",
       "side": 1,
       "message": "Is `zephyr_board` parameter really necessary? I think using `chip` should be enough.",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a32846c_c14a8a0b",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-04T12:33:35Z",
+      "side": 1,
+      "message": "We need to define this parameter, or else it will fail to build.",
+      "parentUuid": "d5fde3e5_f77d23b8",
       "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91bf9f38_c0cafe1e",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-04T12:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81301886_87c0d5aa",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44dbf5c8_fa20a7ce",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a0a55e_05f67dd5",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-04T12:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44dbf5c8_fa20a7ce",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc86d620_4ec7d309",
@@ -88,6 +166,30 @@
       "writtenOn": "2025-07-04T09:36:29Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have discouraged expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f72e5ff_2099cc4f",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-04T12:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc86d620_4ec7d309",
       "range": {
         "startLine": 5,
         "startChar": 0,
