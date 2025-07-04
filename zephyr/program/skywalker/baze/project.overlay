@@ -17,14 +17,14 @@
 #include "motionsense.dtsi"
 
 / {
-	aliases {
-		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
-	};
-
 	batteries {
 		default_battery: placeholder {
 			compatible = "smp,c31n2005", "battery-smart";
 		};
+	};
+
+	named-gpios {
+		/delete-node/ ec_kso_02_inv;
 	};
 
 	cros-keyscan {
