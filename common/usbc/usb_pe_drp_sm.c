@@ -614,7 +614,6 @@ static struct policy_engine {
 
 	/* ADO - Used to store information about alert messages */
 	uint32_t ado;
-	mutex_t ado_lock;
 
 	/*
 	 * Flag to indicate that the timeout of the current VDM request should
@@ -1527,24 +1526,27 @@ void pe_set_requested_vconn_role(int port, enum pd_vconn_role role)
 
 int pe_set_ado(int port, uint32_t data)
 {
+	unsigned int key;
 	/* return busy error if unable to set ado */
 	int ret = EC_ERROR_BUSY;
 
-	mutex_lock(&pe[port].ado_lock);
+	key = irq_lock();
 	if (pe[port].ado == 0x0) {
 		pe[port].ado = data;
 		ret = EC_SUCCESS;
 	}
 
-	mutex_unlock(&pe[port].ado_lock);
+	irq_unlock(key);
 	return ret;
 }
 
 void pe_clear_ado(int port)
 {
-	mutex_lock(&pe[port].ado_lock);
+	unsigned int key;
+
+	key = irq_lock();
 	pe[port].ado = 0x0;
-	mutex_unlock(&pe[port].ado_lock);
+	irq_unlock(key);
 }
 
 struct rmdo pd_get_partner_rmdo(int port)
@@ -4847,6 +4849,7 @@ static void pe_send_alert_entry(int port)
 {
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 	uint32_t *len = &tx_emsg[port].len;
+	unsigned int key;
 
 	print_current_state(port);
 
@@ -4854,10 +4857,10 @@ static void pe_send_alert_entry(int port)
 		pe_set_ready_state(port);
 	} else {
 		/* Get ADO from PE state, the ADO is a uint32_t */
-		mutex_lock(&pe[port].ado_lock);
+		key = irq_lock();
 		*msg = pe[port].ado;
 		*len = sizeof(pe[port].ado);
-		mutex_unlock(&pe[port].ado_lock);
+		irq_unlock(key);
 	}
 
 	/* Request the Protocol Layer to send Alert Message. */
