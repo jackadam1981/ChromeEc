@@ -28,6 +28,11 @@
 				 0 0 (-1)>;
 		};
 		base_rot_ref: base-rotation-ref {
+			mat33 = <(-1) 0 0
+				 0 (-1) 0
+				 0 0 1>;
+		};
+		alt_base_rot_ref: alt-base-rotation-ref {
 			mat33 = <0 1 0
 				 (-1) 0 0
 				 0 0 1>;
@@ -180,7 +185,7 @@
 			location = "MOTIONSENSE_LOC_BASE";
 			mutex = <&mutex_lsm6dsm_base>;
 			port = <&i2c_ec_i2c_sensor_scl_1v8>;
-			rot-standard-ref = <&base_rot_ref>;
+			rot-standard-ref = <&alt_base_rot_ref>;
 			default-range = <2>;
 			drv-data = <&alt_base_accel_data>;
 			alternate-for = <&base_accel>;
@@ -207,7 +212,7 @@
 			location = "MOTIONSENSE_LOC_BASE";
 			mutex = <&mutex_lsm6dsm_base>;
 			port = <&i2c_ec_i2c_sensor_scl_1v8>;
-			rot-standard-ref = <&base_rot_ref>;
+			rot-standard-ref = <&alt_base_rot_ref>;
 			default-range = <(1000 | ROUND_UP_FLAG)>; /* dps */
 			drv-data = <&alt_base_gyro_data>;
 			alternate-for = <&base_gyro>;

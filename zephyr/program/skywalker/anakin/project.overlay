@@ -141,6 +141,10 @@
 	prescaler-cx = <PWM_PRESCALER_C4>;
 };
 
+&i2c0 {
+	data-hold-time = <10>;
+};
+
 &i2c4 {
 	/delete-node/ ps8747-mux-1@10;
 	/delete-node/ tusb546-mux-0@44;
