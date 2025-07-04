@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ede6ee_3f10c21a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-04T10:19:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e59293a4_06c890da",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab1e7ff_9758555d",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06f3f84a_9225dce4",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-04T10:19:36Z",
+      "side": 1,
+      "message": "possible but will have to add a new entry in the gpio-emul-name.yaml, adding to that file isn\u0027t allowed according to the description. If you think adding is okay for this case let me know. \n\nfor now, I have added a comment to indicate that the signal is active high\n\nThanks",
+      "parentUuid": "9ab1e7ff_9758555d",
+      "range": {
+        "startLine": 537,
+        "startChar": 40,
+        "endLine": 537,
+        "endChar": 41
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75bf8581_69676620",
         "filename": "zephyr/program/bluey/gpios.dtsi",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-02T21:12:33Z",
       "side": 1,
       "message": "Although this attribute has no effect when using the EC API, it should be `GPIO_ACTIVE_HIGH`.",
+      "range": {
+        "startLine": 149,
+        "startChar": 48,
+        "endLine": 149,
+        "endChar": 51
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7adaa0fd_08aa471c",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-04T10:19:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "75bf8581_69676620",
       "range": {
         "startLine": 149,
         "startChar": 48,
