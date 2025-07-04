@@ -253,7 +253,15 @@ typedef int (*pdc_set_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode mode);
 typedef int (*pdc_set_ap_power_state_t)(const struct device *dev,
 					enum power_state state);
+<<<<<<< PATCH SET (4df04b pdc_rts54xx: Add battery status/capability reporting over ve)
+typedef int (*pdc_set_battery_capability_t)(const struct device *dev,
+					uint8_t bcap);
+typedef int (*pdc_set_battery_status_t)(const struct device *dev,
+					uint32_t bstat);
+||||||| BASE
+=======
 typedef int (*pdc_set_bbr_cts_t)(const struct device *dev, bool enable);
+>>>>>>> BASE      (48b062 trulo: update VIF)
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -305,7 +313,13 @@ __subsystem struct pdc_driver_api {
 	pdc_get_sbu_mux_mode_t get_sbu_mux_mode;
 	pdc_set_sbu_mux_mode_t set_sbu_mux_mode;
 	pdc_set_ap_power_state_t set_ap_power_state;
+<<<<<<< PATCH SET (4df04b pdc_rts54xx: Add battery status/capability reporting over ve)
+	pdc_set_battery_capability_t set_battery_capability;
+	pdc_set_battery_status_t set_battery_status;
+||||||| BASE
+=======
 	pdc_set_bbr_cts_t set_bbr_cts;
+>>>>>>> BASE      (48b062 trulo: update VIF)
 };
 /**
  * @endcond
@@ -1499,6 +1513,46 @@ static inline int pdc_set_ap_power_state(const struct device *dev,
 }
 
 /**
+<<<<<<< PATCH SET (4df04b pdc_rts54xx: Add battery status/capability reporting over ve)
+ * @brief Vendor command to set the battery capability
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param bcap Battery capability
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_battery_capability(const struct device *dev,
+					uint8_t bcap)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_battery_capability == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_battery_capability(dev, bcap);
+}
+
+/**
+ * @brief Vendor command to set the battery status
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param bstat Battery status
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_battery_status(const struct device *dev,
+					uint32_t bstat)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_battery_status == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_battery_status(dev, bstat);
+||||||| BASE
+=======
  * @brief Configure PDC for BBR compliance test
  *
  * @param dev PDC device structure pointer
@@ -1517,6 +1571,7 @@ static inline int pdc_set_bbr_cts(const struct device *dev, bool enable)
 	}
 
 	return api->set_bbr_cts(dev, enable);
+>>>>>>> BASE      (48b062 trulo: update VIF)
 }
 
 #ifdef __cplusplus
