@@ -232,7 +232,7 @@ test_export_static void activate_mkbp_with_events(uint32_t events_to_add)
 		skip_interrupt = host_is_sleeping() &&
 				 !(events_to_add & mkbp_event_wake_mask);
 #endif /* CONFIG_MKBP_EVENT_WAKEUP_MASK */
-
+//
 	mutex_lock(&state.lock);
 	state.events |= events_to_add;
 
@@ -266,7 +266,7 @@ test_export_static void activate_mkbp_with_events(uint32_t events_to_add)
 						     INTERRUPT_INACTIVE;
 	}
 	mutex_unlock(&state.lock);
-
+//
 	if (schedule_deferred) {
 		hook_call_deferred(&force_mkbp_if_events_data, SECOND);
 		if (rv != EC_SUCCESS)
