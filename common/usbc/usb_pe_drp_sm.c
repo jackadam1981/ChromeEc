@@ -1552,11 +1552,15 @@ struct rmdo pd_get_partner_rmdo(int port)
 	return pe[port].partner_rmdo;
 }
 
+extern int print_tc_log;
 static void pe_handle_detach(void)
 {
 	const int port = TASK_ID_TO_PD_PORT(task_get_current());
 
 	pe_clear_port_data(port);
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 pe hook discon");
+	}
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 

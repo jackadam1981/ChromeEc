@@ -1013,6 +1013,7 @@ static void it8xxx2_tcpm_hook_connect(void)
 
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, it8xxx2_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
 
+extern int print_tc_log;
 static void it8xxx2_tcpm_hook_disconnect(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
@@ -1052,6 +1053,10 @@ static void it8xxx2_tcpm_hook_disconnect(void)
 	 * turn off pd clock.
 	 */
 	tc_update_pd_sleep_mask(port);
+
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 tcpc hook discon");
+	}
 }
 
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it8xxx2_tcpm_hook_disconnect,
