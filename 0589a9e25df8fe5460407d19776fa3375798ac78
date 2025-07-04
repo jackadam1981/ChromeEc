@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f7a4f91_9d8c0fd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-07-04T01:58:11Z",
+      "side": 1,
+      "message": "Yes, currently EC can\u0027t pull up this pin.\nAfter confirm with EE, it need to change to push pull.\nAnd the detect pin requirement that issue discuss.\nI think we need to confirm is there any needs that need to disable charge when pen is not insert.",
+      "parentUuid": "f4e832fd_b4264e0c",
+      "revId": "0589a9e25df8fe5460407d19776fa3375798ac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ffee559_077d478f",
         "filename": "zephyr/program/skywalker/yoda/project.overlay",
         "patchSetId": 2
