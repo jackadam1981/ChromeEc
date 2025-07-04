@@ -36,8 +36,35 @@ i2c3ALT: &i2c3 {
 
 /{
         batteries {
-                default_battery: lgc_ap18c8k {
-                        compatible = "lgc,ap18c8k", "battery-smart";
+                default_battery: atl_gb-s30-586075-020h {
+                        compatible = "atl,gb-s30-586075-020h", "battery-smart";
+                };
+                atl_gb-s30-636076-010h {
+                        compatible = "atl,gb-s30-636076-010h", "battery-smart";
+                };
+                cosmx_313-ac-38-a {
+                        compatible = "cosmx,313-ac-38-a", "battery-smart";
+                };
+                cosmx_333-ac-3f-a {
+                        compatible = "cosmx,333-ac-3f-a", "battery-smart";
+                };
+                dynapack_313-27-38-a {
+                        compatible = "dynapack,313-27-38-a", "battery-smart";
+                };
+                dynapack_313-27-3f-a {
+                        compatible = "dynapack,313-27-3f-a", "battery-smart";
+                };
+                dynapack_333-2d-38-a {
+                        compatible = "dynapack,333-2d-38-a", "battery-smart";
+                };
+                smp_313-1d-38-a {
+                        compatible = "smp,313-1d-38-a", "battery-smart";
+                };
+                sunwoda_333-cf-38-a {
+                        compatible = "sunwoda,333-cf-38-a", "battery-smart";
+                };
+                sunwoda_333-cf-3f-a {
+                        compatible = "sunwoda,333-cf-3f-a", "battery-smart";
                 };
         };
 };
