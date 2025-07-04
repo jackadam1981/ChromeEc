@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3039af4_76042a8c",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-04T09:36:29Z",
+      "side": 1,
+      "message": "2025",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5fde3e5_f77d23b8",
         "filename": "zephyr/program/trulo/BUILD.py",
         "patchSetId": 6
@@ -14,6 +31,69 @@
       "writtenOn": "2025-07-04T09:17:59Z",
       "side": 1,
       "message": "Is `zephyr_board` parameter really necessary? I think using `chip` should be enough.",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81301886_87c0d5aa",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-04T09:36:29Z",
+      "side": 1,
+      "message": "Let\u0027s remove this since the caller already provides the kconfig_files.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44dbf5c8_fa20a7ce",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-04T09:36:29Z",
+      "side": 1,
+      "message": "2025",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc86d620_4ec7d309",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-04T09:36:29Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have discouraged expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
       "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
