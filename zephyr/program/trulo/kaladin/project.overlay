@@ -13,6 +13,8 @@
 /* Kaladin project DTS includes*/
 
 #include "usb_typec.dtsi"
+#include "i2c.dtsi"
+#include "gpio.dtsi"
 
 /* Kaladin overrides follow... */
 
