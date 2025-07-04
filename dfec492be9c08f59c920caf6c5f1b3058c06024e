@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5fde3e5_f77d23b8",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-04T09:17:59Z",
+      "side": 1,
+      "message": "Is `zephyr_board` parameter really necessary? I think using `chip` should be enough.",
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
