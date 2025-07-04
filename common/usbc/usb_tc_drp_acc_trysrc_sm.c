@@ -28,6 +28,8 @@
 #include "usbc_ppc.h"
 #include "vboot.h"
 
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(usb_pd);
 /*
  * USB Type-C DRP with Accessory and Try.SRC module
  *   See Figure 4-16 in Release 1.4 of USB Type-C Spec.
@@ -739,13 +741,21 @@ static void tc_set_modes_exit(int port)
 	}
 }
 
+int print_tc_log;
+int print_tc_evt_log;
 static void tc_detached(int port)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
 	hook_notify(HOOK_USB_PD_DISCONNECT);
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 unattach snk1");
+	}
 	tc_enable_pd(port, 0);
 	tc_pd_connection(port, 0);
 	tcpm_debug_accessory(port, 0);
+	if ((port == 1) && (print_tc_log == 1)) {
+		CPRINTS("c1 unattach snk2");
+	}
 	set_ccd_mode(port, 0);
 	tc_set_modes_exit(port);
 	if (IS_ENABLED(CONFIG_USB_PRL_SM))
@@ -1740,6 +1750,8 @@ static bool in_ct_state(int port)
 		(get_state_tc(port) == TC_CT_ATTACHED_SNK));
 }
 
+//int tc_event[50];
+//uint8_t array_index = 0;
 void tc_event_check(int port, int evt)
 {
 #ifdef DEBUG_PRINT_FLAG_AND_EVENT_NAMES
@@ -1747,6 +1759,19 @@ void tc_event_check(int port, int evt)
 		print_bits(port, "Event", evt, event_bit_names,
 			   ARRAY_SIZE(event_bit_names));
 #endif
+	//if (/*(port == 1) &&*/ (print_tc_evt_log == 1)) {
+		//if (port == 0) {
+		//	tc_event[array_index] = 0;
+		//} else {
+		//	tc_event[array_index] = 1;
+		//}
+		//array_index++;
+		//tc_event[array_index] = evt;
+		//array_index++;
+
+	//	LOG_ERR("p%d evt 0x%x", port, evt);
+		//CPRINTS("p%d evt 0x%x", port, evt);
+	//}
 
 	if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
 		TC_SET_FLAG(port, TC_FLAGS_CHECK_CONNECTION);
@@ -1881,6 +1906,9 @@ static void pd_update_dual_role_config(int port)
 	    (drp_state[port] == PD_DRP_FORCE_SINK ||
 	     (drp_state[port] == PD_DRP_TOGGLE_OFF &&
 	      get_state_tc(port) == TC_UNATTACHED_SRC))) {
+		//if ((port == 1) && (print_tc_log == 1)) {
+			//LOG_ERR("p%d evt update role set unatta snk ", port);
+		//}
 		/*
 		 * Change to sink if port is currently a source AND (new DRP
 		 * state is force sink OR new DRP state is toggle off and we are
@@ -1911,6 +1939,9 @@ __maybe_unused static void handle_new_power_state(int port)
 			 * boots up
 			 */
 			dpm_set_mode_exit_request(port);
+			//if ((port == 1) && (print_tc_log == 1)) {
+				//LOG_ERR("p%d evt dpm request mode_exit", port);
+			//}
 		}
 	}
 
@@ -2226,6 +2257,10 @@ static void tc_unattached_snk_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
 		print_current_state(port);
+		if (port == 1) {
+			print_tc_log = 0;
+			print_tc_evt_log = 0;
+		}
 	}
 
 	/*
@@ -2805,6 +2840,10 @@ static void tc_unattached_src_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
 		print_current_state(port);
+		if (port == 1) {
+			print_tc_log = 0;
+			print_tc_evt_log = 0;
+		}
 	}
 
 	/*
@@ -3357,6 +3396,9 @@ static void tc_attached_src_run(const int port)
 
 static void tc_attached_src_exit(const int port)
 {
+	//if ((port == 1) && (print_tc_log == 1)) {
+		//LOG_ERR("p%d tc attached src exit", port);
+	//}
 	/*
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
 	 * Attached.SRC.
@@ -4102,6 +4144,9 @@ static void pd_chipset_shutdown(void)
 {
 	int i;
 
+	print_tc_log = 1;
+	print_tc_evt_log = 1;
+
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 		TC_SET_FLAG(i, TC_FLAGS_UPDATE_USB_MUX);
 		pd_set_dual_role_and_event(i, PD_DRP_FORCE_SINK,
@@ -4113,6 +4158,14 @@ static void pd_chipset_shutdown(void)
 						     ADO_POWER_STATE_CHANGE);
 		}
 	}
+
+	//for (uint8_t ii = 0; ii < 50; ii++) {
+	//	CPRINTS("tc_event[%d] = 0x%x", ii, tc_event[ii]);
+	//	tc_event[ii] = 0;
+	//	if ((ii % 2 == 1) && (tc_event[ii + 2] == 0)) {
+	//		break;
+	//	}
+	//}
 
 	CPRINTS("PD:S3->S5");
 }
