@@ -145,6 +145,8 @@ static const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02,
 static const struct smbus_cmd_t RTS_SET_FRS_FUNCTION = { 0x08, 0x03, 0xE1 };
 static const struct smbus_cmd_t GET_TPC_CSD_OPERATION_MODE = { 0x08, 0x02,
 							       0x9D };
+static const struct smbus_cmd_t SET_BATTERY_CAPABILITY = { 0x08, 0x03, 0x32 };
+static const struct smbus_cmd_t SET_BATTERY_STATUS = { 0x08, 0x06, 0x33 };
 static const struct smbus_cmd_t GET_RTK_STATUS = { 0x09, 0x03 };
 static const struct smbus_cmd_t RTS_UCSI_PPM_RESET = { 0x0E, 0x02, 0x01 };
 static const struct smbus_cmd_t RTS_UCSI_CONNECTOR_RESET = { 0x0E, 0x03, 0x03 };
@@ -304,6 +306,10 @@ enum cmd_t {
 	CMD_GET_SBU_MUX_MODE,
 	/** CMD_SET_SBU_MUX_MODE */
 	CMD_SET_SBU_MUX_MODE,
+	/** CMD_SET_BATTERY_CAPABILITY */
+	CMD_SET_BATTERY_CAPABILITY,
+	/** CMD_SET_BATTERY_STATUS */
+	CMD_SET_BATTERY_STATUS,
 	/** Set the Burnside Bridge retimer into CTS test mode */
 	CMD_SET_BBR_CTS,
 };
@@ -445,6 +451,8 @@ static const char *const cmd_names[] = {
 	[CMD_GET_ATTENTION_VDO] = "CMD_GET_ATTENTION_VDO",
 	[CMD_GET_SBU_MUX_MODE] = "CMD_GET_SBU_MUX_MODE",
 	[CMD_SET_SBU_MUX_MODE] = "CMD_SET_SBU_MUX_MODE",
+	[CMD_SET_BATTERY_CAPABILITY] = "SET_BATTERY_CAPABILITY",
+	[CMD_SET_BATTERY_STATUS] = "SET_BATTERY_STATUS",
 	[CMD_SET_BBR_CTS] = "CMD_SET_BBR_CTS",
 };
 
@@ -2723,6 +2731,57 @@ static int rts54_set_sbu_mux_mode(const struct device *dev,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
+static int rts54_set_battery_capability(const struct device *dev, uint16_t *bcap)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		SET_BATTERY_CAPABILITY.cmd,
+		SET_BATTERY_CAPABILITY.len,
+		SET_BATTERY_CAPABILITY.sub,
+		0x00,
+		BYTE0(bcap[0]),
+		BYTE1(bcap[0]),
+		BYTE0(bcap[1]),
+		BYTE1(bcap[1]),
+		BYTE0(bcap[2]),
+		BYTE1(bcap[2]),
+		BYTE0(bcap[3]),
+		BYTE1(bcap[3]),
+		BYTE0(bcap[4])
+	};
+
+	return rts54_post_command(dev, CMD_SET_BATTERY_CAPABILITY, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
+static int rts54_set_battery_status(const struct device *dev, uint32_t bstat)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		SET_BATTERY_STATUS.cmd,
+		SET_BATTERY_STATUS.len,
+		SET_BATTERY_STATUS.sub,
+		0x00,
+		BYTE0(bstat),
+		BYTE1(bstat),
+		BYTE2(bstat),
+		BYTE3(bstat),
+	};
+
+	return rts54_post_command(dev, CMD_SET_BATTERY_STATUS, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static int rts54_set_bbr_cts(const struct device *dev, bool enable)
 {
 	const struct pdc_config_t *cfg = dev->config;
@@ -2786,6 +2845,8 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.get_lpm_ppm_info = rts54_get_lpm_ppm_info,
 	.set_frs = rts54_set_frs,
 	.get_attention_vdo = rts54_get_attention_vdo,
+	.set_battery_capability = rts54_set_battery_capability,
+	.set_battery_status = rts54_set_battery_status,
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 	.get_sbu_mux_mode = rts54_get_sbu_mux_mode,
 	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,

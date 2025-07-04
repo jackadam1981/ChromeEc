@@ -919,6 +919,126 @@ static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
 static void pd_chipset_shutdown(void);
 
+static void pdc_update_battery_status(void)
+{
+	uint32_t bsdo = 0;
+
+	if (battery_is_present()) {
+			uint32_t v;
+			uint32_t c;
+
+			if (battery_design_voltage(&v) != 0 ||
+			    battery_remaining_capacity(&c) != 0) {
+				bsdo |= BSDO_CAP(BSDO_CAP_UNKNOWN);
+			} else {
+				/*
+				 * Wh = (c * v) / 1000000
+				 * 10th of a Wh = Wh * 10
+				 */
+				bsdo |= BSDO_CAP(
+					DIV_ROUND_NEAREST((c * v), 100000));
+			}
+
+			/* Battery is present */
+			bsdo |= BSDO_PRESENT;
+
+			/*
+			 * For drivers that are not smart battery compliant,
+			 * battery_status() returns EC_ERROR_UNIMPLEMENTED and
+			 * the battery is assumed to be idle.
+			 */
+			if (battery_status(&c) != 0) {
+				bsdo |= BSDO_IDLE; /* assume idle */
+			} else {
+				if (c & STATUS_FULLY_CHARGED)
+					/* Fully charged */
+					bsdo |= BSDO_IDLE;
+				else if (c & STATUS_DISCHARGING)
+					/* Discharging */
+					bsdo |= BSDO_DISCHARGING;
+				/* else battery is charging.*/
+			}
+	} else {
+		bsdo = BSDO_CAP(BSDO_CAP_UNKNOWN);
+	}
+
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		const struct device *pdc =
+			pdc_power_mgmt_get_port_pdc_driver(i);
+		if (pdc) {
+			pdc_set_battery_status(pdc, bsdo);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pdc_update_battery_status,
+	     HOOK_PRIO_DEFAULT);
+
+static int pd_update_battery_capability(void)
+{
+
+	uint16_t bcdb[5] = {0, 0, 0, 0, 0};
+
+	/* Set VID */
+	bcdb[0] = USB_VID_GOOGLE;
+
+	/* Set PID */
+	bcdb[1] = CONFIG_USB_PID;
+
+	if (battery_is_present()) {
+		uint32_t v;
+		uint32_t c;
+
+		/*
+			* The Battery Design Capacity field shall return the
+			* Battery’s design capacity in tenths of Wh. If the
+			* Battery is Hot Swappable and is not present, the
+			* Battery Design Capacity field shall be set to 0. If
+			* the Battery is unable to report its Design Capacity,
+			* it shall return 0xFFFF
+			*/
+		bcdb[2] = 0xffff;
+
+		/*
+			* The Battery Last Full Charge Capacity field shall
+			* return the Battery’s last full charge capacity in
+			* tenths of Wh. If the Battery is Hot Swappable and
+			* is not present, the Battery Last Full Charge Capacity
+			* field shall be set to 0. If the Battery is unable to
+			* report its Design Capacity, the Battery Last Full
+			* Charge Capacity field shall be set to 0xFFFF.
+			*/
+		bcdb[3] = 0xffff;
+
+		if (battery_design_voltage(&v) == 0) {
+			if (battery_design_capacity(&c) == 0) {
+				/*
+					* Wh = (c * v) / 1000000
+					* 10th of a Wh = Wh * 10
+					*/
+				bcdb[2] = DIV_ROUND_NEAREST((c * v),
+									100000);
+			}
+
+			if (battery_full_charge_capacity(&c) == 0) {
+				/*
+					* Wh = (c * v) / 1000000
+					* 10th of a Wh = Wh * 10
+					*/
+				bcdb[3] = DIV_ROUND_NEAREST((c * v),
+									100000);
+			}
+		}
+	}
+
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		const struct device *pdc =
+			pdc_power_mgmt_get_port_pdc_driver(i);
+		if (pdc) {
+			pdc_set_battery_capability(pdc, bcap_pct);
+		}
+	}
+}
+
 static bool should_suspend(struct pdc_port_t *port)
 {
 	if (!atomic_get(&port->suspend)) {
@@ -4374,6 +4494,8 @@ static void pd_chipset_resume(void)
 			  PDC_POWER_STATE_DEBOUNCE_S);
 
 	LOG_INF("PD:S3->S0");
+	pdc_update_battery_capability();
+	pdc_update_battery_status();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -4392,6 +4514,8 @@ static void pd_chipset_startup(void)
 			  PDC_POWER_STATE_DEBOUNCE_S);
 
 	LOG_INF("PD:S5->S3");
+	pdc_update_battery_capability();
+	pdc_update_battery_status();
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
