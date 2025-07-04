@@ -76,6 +76,7 @@ void it83xx_Rd_5_1K_only_for_hibernate(int port)
 	    *usbpd_ctrl_regs[port].cc2 == cc_config) {
 		/* Disable PD Tx and Rx PHY */
 		IT83XX_USBPD_PDGCR(port) &= ~USBPD_REG_MASK_BMC_PHY;
+		CPRINTS("p%d hibernate PD PHY dis", port);
 		/* Disable CCs voltage detector */
 		IT83XX_USBPD_CCGCR(port) |=
 			USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
@@ -1001,6 +1002,8 @@ static void it8xxx2_tcpm_hook_connect(void)
 #endif
 	/* Enable PD PHY Tx and Rx module since type-c has connected. */
 	USBPD_ENABLE_BMC_PHY(port);
+	CPRINTS("p%d hook PD PHY en", port);
+
 	/*
 	 * After we're in attached.[SRC, SNK] states and before we receive
 	 * [GoodCRC of SRC_CAP, SRC_CAP] this period time, if EC goes to
@@ -1047,6 +1050,8 @@ static void it8xxx2_tcpm_hook_disconnect(void)
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		sop_prime_en[port] = 0;
 	USBPD_DISABLE_BMC_PHY(port);
+	CPRINTS("p%d hook PD PHY disable", port);
+
 	/*
 	 * Since PD BMC PHY is off, then EC can go to deep doze mode and
 	 * turn off pd clock.

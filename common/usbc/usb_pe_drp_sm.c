@@ -2375,6 +2375,7 @@ static void pe_sender_response_msg_exit(int port)
  */
 static void pe_src_startup_entry(int port)
 {
+	print_pe_log = 0;
 	print_current_state(port);
 
 	/* Reset CapsCounter */
@@ -2924,6 +2925,7 @@ static void pe_src_ready_entry(int port)
 	pe_update_wait_and_add_jitter_timer(port);
 }
 
+int print_pe_log;
 static void pe_src_ready_run(int port)
 {
 	/*
@@ -2999,6 +3001,8 @@ static void pe_src_ready_run(int port)
 			case PD_CTRL_GOOD_CRC:
 				break;
 			case PD_CTRL_NOT_SUPPORTED:
+				CPRINTS("p%d PE Rx Not Support", port);
+				print_pe_log = 1;
 				break;
 			case PD_CTRL_PING:
 				break;
@@ -3131,6 +3135,9 @@ static void pe_src_ready_exit(int port)
 {
 	/* Inform DPM state machine that PE is in ready state */
 	dpm_set_pe_ready(port, false);
+
+	if ((port == 1) && (print_pe_log == 1))
+		CPRINTS("p%d pe src ready exit", port);
 }
 
 /**
@@ -3320,6 +3327,7 @@ static void pe_src_transition_to_default_run(int port)
  */
 static void pe_snk_startup_entry(int port)
 {
+	print_pe_log = 0;
 	print_current_state(port);
 
 	/* Reset the protocol layer */

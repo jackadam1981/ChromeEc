@@ -1859,6 +1859,7 @@ static void set_vconn(int port, int enable)
 	typec_set_vconn(port, enable);
 }
 
+int print_tc_log;
 /* This must only be called from the PD task */
 static void pd_update_dual_role_config(int port)
 {
@@ -1866,12 +1867,14 @@ static void pd_update_dual_role_config(int port)
 	    (drp_state[port] == PD_DRP_FORCE_SINK ||
 	     (drp_state[port] == PD_DRP_TOGGLE_OFF &&
 	      get_state_tc(port) == TC_UNATTACHED_SRC))) {
+		print_tc_log = 1;
 		/*
 		 * Change to sink if port is currently a source AND (new DRP
 		 * state is force sink OR new DRP state is toggle off and we are
 		 * in the source disconnected state).
 		 */
 		set_state_tc(port, TC_UNATTACHED_SNK);
+		CPRINTS("p%d update role set unatta snk ", port);
 	} else if (tc[port].power_role == PD_ROLE_SINK &&
 		   drp_state[port] == PD_DRP_FORCE_SOURCE) {
 		/*
@@ -2211,6 +2214,7 @@ static void tc_unattached_snk_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
 		print_current_state(port);
+		print_tc_log = 0;
 	}
 
 	/*
@@ -2790,6 +2794,7 @@ static void tc_unattached_src_entry(const int port)
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
 		print_current_state(port);
+		print_tc_log = 0;
 	}
 
 	/*
@@ -3341,6 +3346,8 @@ static void tc_attached_src_run(const int port)
 
 static void tc_attached_src_exit(const int port)
 {
+	if ((port == 1) && (print_tc_log == 1))
+		CPRINTS("p%d tc attached src exit", port);
 	/*
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
 	 * Attached.SRC.
