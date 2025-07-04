@@ -20,7 +20,7 @@
 
 #include <drivers/cec_counter.h>
 
-LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_WRN);
 
 BUILD_ASSERT(DT_HAS_CHOSEN(cros_ec_cec_counter),
 	     "a cros-ec,cec-counter device must be chosen");
@@ -33,6 +33,9 @@ static timestamp_t prev_interrupt_time;
 
 /* Flag set when a transfer is initiated from the AP */
 static bool transfer_initiated;
+
+/* Flag set when a gpio interrupt is triggered */
+static bool gpio_in_triggerd;
 
 /* The capture edge we're waiting for */
 static enum cec_cap_edge expected_cap_edge;
@@ -91,6 +94,7 @@ void cec_gpio_handler(const struct device *device,
 		return;
 	}
 
+	gpio_in_triggerd = true;
 	cec_event_cap(port);
 }
 
@@ -112,6 +116,10 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 		int timer_count = timeout - delay;
 		struct counter_top_cfg top_cfg;
 
+		if (gpio_in_triggerd) {
+			delay = CEC_US_TO_TICKS(get_time().val -
+						interrupt_time.val + 250);
+		}
 		/*
 		 * Handle the case where the delay is greater than the timeout.
 		 * This should never actually happen for typical delay and
@@ -172,10 +180,10 @@ void cros_cec_bitbang_debounce_disable(int port)
 void cros_cec_bitbang_trigger_send(int port)
 {
 	unsigned int key;
+	key = irq_lock();
 	/* Elevate to interrupt context */
 	transfer_initiated = true;
 
-	key = irq_lock();
 	cec_ext_timer_interrupt(port);
 	irq_unlock(key);
 }
