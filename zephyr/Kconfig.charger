@@ -181,6 +181,17 @@ config PLATFORM_EC_ISL9238C_INPUT_VOLTAGE_MV
 	  is configured using 341.3 mV steps.  The value specified is rounded
 	  down.
 
+config PLATFORM_EC_CHARGER_ISL95522
+	bool "Use the ISL95522 charger"
+	depends on PLATFORM_EC_I2C
+	help
+	  Enables a driver for the ISL95522 Battery Charger. This is a
+	  highly versatile combination battery charger configurable for
+	  operating as either a Hybrid Power Boost (HPB) charger or a
+	  Narrow VDC (NVDC) charger and switch between the modes under
+	  firmware control, supporting 2-, 3-, or 4-cell batteries.It provides
+	  an I2C interface for configuration.
+
 config PLATFORM_EC_CHARGER_BQ25710
 	bool "Use the BQ25710 charger"
 	depends on PLATFORM_EC_I2C
