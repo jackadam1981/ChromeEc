@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "344c4151_cabeee9b",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 29
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "ok, let us keep it 65,536 for now. I am going to experiment with this next week.",
+      "parentUuid": "57a50a39_eb7a57ff",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1db3676d_5817c963",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-03T07:48:34Z",
       "side": 1,
       "message": "Does it make any difference how many templates are enrolled?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f266de_1148710f",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 29
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "modify it. I do not believe the heap depends on the number of templates, but rather on one template.",
+      "parentUuid": "1db3676d_5817c963",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f07156f_479d691c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 29
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "removed it.",
+      "parentUuid": "3dba41a8_a6b78df7",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "240a4f03_78b8f22e",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-07-03T07:32:49Z",
       "side": 1,
       "message": "Do we need these logs?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca5b40a_3cfea090",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "they are currently logged in the current buccaneer \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d115#:~:text\u003d114-,115,-116",
+      "parentUuid": "240a4f03_78b8f22e",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a664325_4e25c090",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ae0c0d_5c1ed597",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5c2d0ca_76743d0f",
@@ -103,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a747c0_b88814e6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "no it is not. I removed it.",
+      "parentUuid": "f5c2d0ca_76743d0f",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6465cf2f_e55e696b",
@@ -116,6 +224,24 @@
       "writtenOn": "2025-07-03T07:32:49Z",
       "side": 1,
       "message": "I think we can use directly our logging function here.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "557e6cdd_b1ddb103",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-06T03:33:32Z",
+      "side": 1,
+      "message": "ok, I used `LOG_INF`.",
+      "parentUuid": "6465cf2f_e55e696b",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
