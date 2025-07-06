@@ -76,6 +76,7 @@ driver-$(CONFIG_CHARGER_ISL9237)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_ISL9238)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_ISL9238C)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_ISL9241)+=charger/isl9241.o
+driver-$(CONFIG_CHARGER_ISL95522)+=charger/isl95522.o
 driver-$(CONFIG_CHARGER_MT6370)+=charger/rt946x.o
 driver-$(CONFIG_CHARGER_RAA489000)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_RAA489110)+=charger/isl9241.o
