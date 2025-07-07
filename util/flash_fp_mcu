@@ -41,6 +41,8 @@ readonly CROS_EC_FP_SPI_MODALIAS_STR="spi:cros-ec-fp"
 
 readonly CROS_EC_UART_MODALIAS_STR="of:NcrfpTCgoogle,cros-ec-uart"
 
+USE_LEGACY_GPIO_API=1
+
 klog() {
   echo "flash_fp_mcu: $*" > /dev/kmsg
 }
@@ -104,9 +106,8 @@ get_uartid() {
   return 1
 }
 
-# TODO(b/358420799): Replace with libgpiod (gpioget/gpioset).
 # Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
-gpio() {
+_gpio_legacy() {
   local cmd="$1"
   shift
 
@@ -137,6 +138,56 @@ gpio() {
         ;;
     esac
   done
+}
+
+# Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
+_gpio_new() {
+  local cmd="$1"
+  shift
+
+  if [[ -z "${GPIO_CHIP}" ]]; then
+      echo "Error: GPIO_CHIP variable is not set." >&2
+      exit "${EXIT_CONFIG}"
+  fi
+
+  for signal in "$@"; do
+    case "${cmd}" in
+      0|1)
+        local value="${cmd}"
+        klog "Set gpio ${GPIO_CHIP}/${signal} to ${value}"
+        gpioset "${GPIO_CHIP}" "${signal}=${value}"
+        ;;
+      get)
+        klog "Get gpio ${GPIO_CHIP}/${signal}"
+        gpioget "${GPIO_CHIP}" "${signal}"
+        ;;
+      unexport|export|in|out)
+        # no-op
+        ;;
+      *)
+        echo "Invalid gpio command: ${cmd}" >&2
+        exit "${EXIT_RUNTIME}"
+        ;;
+    esac
+  done
+}
+
+# Usage: gpio <0|1|get> <signal> [signal...]
+gpio() {
+  if [[ "${USE_LEGACY_GPIO_API}" -eq 1 ]]; then
+    _gpio_legacy "$@"
+  else
+    _gpio_new "$@"
+  fi
+}
+
+gpio_chip_exists() {
+  if [[ "${USE_LEGACY_GPIO_API}" -eq 1 ]]; then
+    [[ -e "/sys/class/gpio/${GPIO_CHIP}" ]]
+    return
+  fi
+
+  gpioinfo "${GPIO_CHIP}" > /dev/null 2>&1
 }
 
 # Usage: warn_gpio <signal> <expected_value> <msg>
@@ -1317,7 +1368,7 @@ main() {
   fi
 
   # Check that the gpiochip exists
-  if [[ ! -e "/sys/class/gpio/${GPIO_CHIP}" ]]; then
+  if ! gpio_chip_exists; then
     echo "Cannot find GPIO chip: ${GPIO_CHIP}"
     exit "${EXIT_CONFIG}"
   fi
