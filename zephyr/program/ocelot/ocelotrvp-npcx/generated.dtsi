@@ -55,12 +55,17 @@
 		gpio_cpu_c10_gate_l: cpu_c10_gate_l {
 			gpios = <&gpioa 5 (GPIO_INPUT)>;
 		};
+		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
+			gpios = <&gpiod 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
+						GPIO_OUTPUT_INIT_LOGICAL)>;
+		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpiod 4 (GPIO_INPUT)>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};
 		gpio_ec_edp_bl_en: ec_edp_bl_en {
-			gpios = <&gpiob 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpiob 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
+						GPIO_OUTPUT_INIT_LOGICAL)>;
 		};
 		gpio_ec_kb_bl_pwm: ec_kb_bl_pwm {
 			gpios = <&gpioc 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
