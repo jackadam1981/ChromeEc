@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013271f2_5b591068",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-07T23:33:10Z",
+      "side": 1,
+      "message": "this should be zmake build kaladin and it should build successfully prior to being submitted.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3e4460_4729ecff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-07T23:33:10Z",
+      "side": 1,
+      "message": "In order to build kaladin, it needs to be added to ec/zephyr/firmware_builder.py as a Trulo variant.\n\nWe should be able to build this successfully for the initial image submit.",
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f460ef8d_ebe068b2",
+        "filename": "zephyr/program/trulo/kaladin/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-07T23:33:10Z",
+      "side": 1,
+      "message": "I don\u0027t see this files exiting in this CL",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8442ae1f_e647ad15",
+        "filename": "zephyr/program/trulo/kaladin/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-07T23:33:10Z",
+      "side": 1,
+      "message": "similar to above, I don\u0027t see these files in this CL and I don\u0027t think they would all need to be included here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

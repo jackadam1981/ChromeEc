@@ -216,6 +216,29 @@
       },
       "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36def9a9_213b8414",
+        "filename": "zephyr/program/trulo/ite_generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-07T23:33:10Z",
+      "side": 1,
+      "message": "For context the .dts files that are named `generated.dtsi` are generated via arbitrage and are not manually created. The existing generated.dtsi file was created using arbitrage and the trulo reference schematics for the npcx design.\n\nIf we are not able to use arbitrage for this device, then we should just have a gpio.dtsi file in program/trulo/kaladin/ . If there is an ite_generated.dtsi at the program/trulo/ level then it should be based off of the trulo reference schematic and an additional file gpio.dtsi in program/trulo/kaladin that accounts for differences between the trulo reference schematic and the actual kalakin schematic.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "dfec492be9c08f59c920caf6c5f1b3058c06024e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
