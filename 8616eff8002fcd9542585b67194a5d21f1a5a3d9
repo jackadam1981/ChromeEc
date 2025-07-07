@@ -737,6 +737,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d78a63_5f4b8aba",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T18:15:49Z",
+      "side": 1,
+      "message": "where do you mean to add the new line? If I add it after return ret, the formatter will remove it.",
+      "parentUuid": "52aa0eed_ebc478db",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289ccb43_8f6c4984",
