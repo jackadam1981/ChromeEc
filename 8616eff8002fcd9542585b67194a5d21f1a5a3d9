@@ -143,6 +143,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "394bde9d_385559aa",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Please add a include guard.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50ae0c0d_5c1ed597",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 29
@@ -213,6 +230,176 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "499d5289_4ba56add",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Why do we need to memset entire `rx_buf`?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd23ed87_fd66ad79",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Can you modify the log messages to just something like \"Elan write command failed: %d\"?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8381b1e_be9d0062",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95e44e9_4e7926f7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c99d91_b7ac763c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "If you want to use 2 buffers, check size.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec6dddd_59835c26",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "You are memseting tx_buf first, then overwriting it here.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da6da10_0077929a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Why can\u0027t we use tx_data and rx_data directly in elan_spi_transaction_duplex?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e24992_1b290490",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "memset then overwrite.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd3c06f_8bcead23",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e46cf6_626aa414",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Please make sure length is a multiple of 2.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6465cf2f_e55e696b",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 29
@@ -242,6 +429,92 @@
       "side": 1,
       "message": "ok, I used `LOG_INF`.",
       "parentUuid": "6465cf2f_e55e696b",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1e9304_db30b505",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Please resolve the comment once it is done.",
+      "parentUuid": "557e6cdd_b1ddb103",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37bcdb3_89093553",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "k_msleep(1)",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ed140a_3381fc1e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Add a new line.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289ccb43_8f6c4984",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "It is a commonly used patter. Please add a build assert to make sure tx_buff is at lease or equals 2 bytes.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c792abe5_536218da",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-07T06:45:26Z",
+      "side": 1,
+      "message": "Can you use `k_uptime_get_32`?",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
