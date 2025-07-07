@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd3dbe8_dc605636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-07T07:02:45Z",
+      "side": 1,
+      "message": "ISH should be fast enough to support \u003e200Hz minimal frequency.\nThe failed tests point to an issue with timestamping logic.",
+      "revId": "90ae93a740e5c6d5a67539df5047dd1c560f2306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
