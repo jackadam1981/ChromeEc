@@ -1,0 +1,68 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+module(
+    name = "cros_ec",
+    version = "0.0.1",
+)
+
+register_execution_platforms("@local_config_platform//:host")
+
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "pigweed")
+bazel_dep(name = "rules_python", version = "1.2.0")
+
+bazel_dep(name = "rules_doxygen", version = "2.4.0", dev_dependency = True)
+
+git_override(
+    module_name = "pigweed",
+    commit = "3ef922d5cb2b46f9d4a2c038804e252d34190ed5",
+    remote = "https://pigweed.googlesource.com/pigweed/pigweed",
+)
+
+cipd_repository = use_repo_rule(
+    "@pigweed//pw_env_setup/bazel/cipd_setup:cipd_rules.bzl",
+    "cipd_repository",
+)
+
+# Configure Python toolchains and pip dependencies.
+# =================================================
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    # Allows building as root in a docker container. Required by oss-fuzz.
+    ignore_root_user_error = True,
+    is_default = True,
+    python_version = "3.12",
+)
+use_repo(python, "pythons_hub")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pypi",
+    python_version = "3.12",
+    requirements_linux = "//env_setup:requirements.lock",
+)
+use_repo(pip, "pypi")
+
+# Doxygen setup
+# =============
+
+# Get executables.
+cipd_repository(
+    name = "doxygen_linux_amd64",
+    path = "pigweed/third_party/doxygen/linux-amd64",
+    tag = "version:1.9.6-1",
+)
+
+# Configure rules_doxygen to use our executables.
+doxygen_extension = use_extension(
+    "@rules_doxygen//:extensions.bzl",
+    "doxygen_extension",
+    dev_dependency = True,
+)
+doxygen_extension.configuration(
+    executable = "@doxygen_linux_amd64//:bin/doxygen",
+    platform = "linux",
+)
+use_repo(doxygen_extension, "doxygen")
