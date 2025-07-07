@@ -1,0 +1,24 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@rules_python//sphinxdocs:sphinx_docs_library.bzl", "sphinx_docs_library")
+
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "doxygen",
+    srcs = [
+        "public/cros/math/exp_smoothing.h",
+        "public/cros/math/iir_decimator.h",
+        "public/cros/math/iir_filter.h",
+    ],
+)
+
+sphinx_docs_library(
+    name = "docs",
+    srcs = ["docs.rst"],
+    strip_prefix = "zephyr/",
+)
