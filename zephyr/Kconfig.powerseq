@@ -95,7 +95,7 @@ config PLATFORM_EC_POWERSEQ_FAKE_CONTROL
 menuconfig PLATFORM_EC_POWERSEQ_AMD
 	bool "AMD power sequencing"
 	depends on AP_X86_AMD
-	select HAS_TASK_POWERBTN
+	select PLATFORM_EC_POWER_BUTTON_X86
 	default y
 	help
 	  Enable AMD power sequencing code.
@@ -114,7 +114,7 @@ endif  # PLATFORM_EC_POWERSEQ_AMD
 menuconfig PLATFORM_EC_POWERSEQ_INTEL
 	bool "Enable shimming common Intel power sequencing code"
 	depends on AP_X86_INTEL
-	select HAS_TASK_POWERBTN
+	select PLATFORM_EC_POWER_BUTTON_X86
 	default y
 	help
 	  Enable shimming platform/ec AP power sequencing code for

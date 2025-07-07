@@ -224,7 +224,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
 
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG
-zephyr_library_sources_ifdef(CONFIG_HAS_TASK_POWERBTN
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON_X86
                                                 "${PLATFORM_EC}/common/power_button_x86.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_BMA255
                                                 "${PLATFORM_EC}/driver/accel_bma2x2.c")
