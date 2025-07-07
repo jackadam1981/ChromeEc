@@ -46,6 +46,30 @@
       },
       "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f77ffc_e53227c5",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-07T16:45:49Z",
+      "side": 1,
+      "message": "You should only call `device_init()` if the GPIO controller has enabled `zephyr,deferred-init`.\n\nIf `defer_until_s5` is false, then you shouldn\u0027t need to call `device_init()` at all.  If the GPIO controller isn\u0027t ready and `defer_until_s5` is false, then there is an initialization ordering problem that should be fixed.\n\nThe other possible issue is that someone is calling `get_rvp_id_config()` before the `AP_POWER_STATE_S5` callback runs.",
+      "parentUuid": "a3728300_7bfc516d",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
