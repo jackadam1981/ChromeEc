@@ -1,0 +1,13 @@
+{# Copyright 2020 The ChromiumOS Authors
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ #}
+
+{% extends "pydata_sphinx_theme/layout.html" %}
+
+{% block docs_main %}
+  {{ super() }}
+  {# Always load cros_ec.js after Sphinx's search scripts because cros_ec.js
+     relies on classes and data from Sphinx's scripts. #}
+  <script src="{{ pathto('_static/js/cros_ec.js', 1) | e }}"></script>
+{% endblock docs_main %}
