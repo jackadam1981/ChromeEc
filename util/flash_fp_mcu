@@ -890,7 +890,11 @@ flash_fp_mcu_board() {
     # Test it
     klog "Query version and reset flags"
     ectool --name=cros_fp version
-    ectool --name=cros_fp uptimeinfo
+
+    # TODO(b/408245482): re-enable when implemented.
+    if [[ "$(os)" != "android" ]]; then
+      ectool --name=cros_fp uptimeinfo
+    fi
   fi
 }
 
