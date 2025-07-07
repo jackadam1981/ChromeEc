@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f319de58_a3ee1d0d",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-07T17:38:31Z",
+      "side": 1,
+      "message": "I\u0027d prefer to change the GPIO name. Once the name reflects the correct polarity, the comment becomes less important.",
+      "parentUuid": "06f3f84a_9225dce4",
+      "range": {
+        "startLine": 537,
+        "startChar": 40,
+        "endLine": 537,
+        "endChar": 41
+      },
+      "revId": "1d3fde4d0543341890797b0102d1314986f74a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75bf8581_69676620",
         "filename": "zephyr/program/bluey/gpios.dtsi",
         "patchSetId": 3
