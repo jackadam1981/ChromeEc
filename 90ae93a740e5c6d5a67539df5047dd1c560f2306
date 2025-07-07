@@ -16,6 +16,23 @@
       "message": "ISH should be fast enough to support \u003e200Hz minimal frequency.\nThe failed tests point to an issue with timestamping logic.",
       "revId": "90ae93a740e5c6d5a67539df5047dd1c560f2306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0366a1_744481e3",
+        "filename": "zephyr/program/trulo/uldrenite-ish/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-07T15:30:57Z",
+      "side": 1,
+      "message": "This caps the sensor rate at 12.5Hz which isn\u0027t fast enough for on body detection.",
+      "revId": "90ae93a740e5c6d5a67539df5047dd1c560f2306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
