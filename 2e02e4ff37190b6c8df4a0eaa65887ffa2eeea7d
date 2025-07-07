@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a2dcba_35b9eb19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-07T20:20:30Z",
+      "side": 1,
+      "message": "did the keyboard backlight change brightness with the key combos?",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "2e02e4ff37190b6c8df4a0eaa65887ffa2eeea7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f485d8_3ff01ef0",
+        "filename": "zephyr/program/fatcat/kinmen/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-07T20:20:30Z",
+      "side": 1,
+      "message": "is this OK for your LED driver module?\non some systems, we see flicker in some circumstances\nwhen the PWM frequency is too low.",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "2e02e4ff37190b6c8df4a0eaa65887ffa2eeea7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
