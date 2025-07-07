@@ -23,6 +23,9 @@
 #define DEBUG_CPRINTS(...)
 #endif
 
+int cec_index_test __keep;
+uint8_t cec_states_transition_test[4096] __keep;
+
 /*
  * Free time timing (us). Our free-time is calculated from the end of
  * the last bit (not from the start). We compensate by having one
@@ -214,6 +217,12 @@ struct cec_port_data {
 	 */
 	uint8_t addr;
 };
+
+static void cec_record_state(uint8_t value)
+{
+	if (cec_index_test == 4096) return;
+	cec_states_transition_test[cec_index_test++] = value;
+}
 
 /* TODO(b/296813751): Implement a common data structure for CEC drivers */
 static struct cec_port_data cec_port_data[CEC_PORT_COUNT];
@@ -568,6 +577,8 @@ void cec_event_cap(int port)
 	struct cec_port_data *port_data = &cec_port_data[port];
 	int t;
 	int data;
+
+	cec_record_state(port_data->state);
 
 	switch (port_data->state) {
 	case CEC_STATE_IDLE:
