@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801895f3_760cebef",
+        "filename": "zephyr/program/fatcat/kinmen/gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-07T20:42:53Z",
+      "side": 1,
+      "message": "you could do something like\n`(GPIO_OUTPUT_ACTIVE | GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN)`\nthen, you don\u0027t have to invert 0/1 in the code when setting the pin level.",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "3b2f083e5bec8d58cc99f6ed00db05fc198a49a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
