@@ -212,7 +212,7 @@ FUNC_NORETURN static int cros_system_xec_soc_reset(const struct device *dev)
 /* Configure wakeup GPIOs in hibernate (from hibernate-wake-pins). */
 static void system_xec_set_wakeup_gpios_before_hibernate(void)
 {
-#if DT_NODE_EXISTS(SYSTEM_DT_NODE_HIBERNATE_CONFIG)
+#ifdef CONFIG_PLATFORM_EC_HIBERNATE_WAKE_PINS
 
 /*
  * Get the interrupt DTS node for this wakeup pin
@@ -248,7 +248,7 @@ static void system_xec_set_wakeup_gpios_before_hibernate(void)
 #undef WAKEUP_NGPIO
 #undef WAKEUP_SETUP
 
-#endif
+#endif /* CONFIG_PLATFORM_EC_HIBERNATE_WAKE_PINS */
 }
 
 /**

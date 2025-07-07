@@ -208,7 +208,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 		irq_enable(FREE_RUN_TIMER_IRQ);
 	}
 
-#if DT_NODE_EXISTS(SYSTEM_DT_NODE_HIBERNATE_CONFIG)
+#ifdef CONFIG_PLATFORM_EC_HIBERNATE_WAKE_PINS
 
 /*
  * Get the interrupt DTS node for this wakeup pin
@@ -244,7 +244,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 #undef WAKEUP_NGPIO
 #undef WAKEUP_SETUP
 
-#endif
+#endif /* CONFIG_PLATFORM_EC_HIBERNATE_WAKE_PINS */
 
 	/* EC sleep mode */
 	chip_pll_ctrl(CHIP_PLL_SLEEP);
