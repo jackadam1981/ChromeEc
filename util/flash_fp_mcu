@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 
 # shellcheck source=../../../scripts/lib/shflags/shflags
-. "${SHFLAGS:-/usr/share/misc/shflags}" || exit 1
+. "${SHFLAGS:-/tmp/shflags}" || exit 1
 
 readonly DEFAULT_RETRIES=${DEFAULT_RETRIES:-4}
 readonly STM32MON_CONNECT_RETRIES=${STM32MON_CONNECT_RETRIES:-6}
@@ -315,7 +315,7 @@ flash_fp_mcu_stm32() {
 
   local attempt=0
   local cmd_exit_status=1
-  local cmd="stm32mon ${cmd_flags}"
+  local cmd="/tmp/stm32mon_static ${cmd_flags}"
 
   for attempt in $(seq "${FLAGS_retries}"); do
     # Reset sequence to enter bootloader mode
