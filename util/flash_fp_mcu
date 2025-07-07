@@ -60,21 +60,6 @@ check_hardware_write_protect_disabled() {
   fi
 }
 
-# Get the gpiochip base number from sysfs that matches
-# a device path
-get_sysfs_gpiochip_base() {
-  local match="$1"
-
-  for chip in /sys/class/gpio/gpiochip*; do
-    if [[ "$(readlink "${chip}")" =~ ${match} ]]; then
-      echo "${chip#/sys/class/gpio/gpiochip}"
-      return 0
-    fi
-  done
-
-  return 1
-}
-
 # Get the spiid for the fingerprint sensor based on the modalias
 # string: https://crbug.com/955117
 get_spiid() {
@@ -104,32 +89,27 @@ get_uartid() {
   return 1
 }
 
-# TODO(b/358420799): Replace with libgpiod (gpioget/gpioset).
-# Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
+# Usage: gpio <0|1|get> <signal> [signal...]
+# Note: The GPIO_CHIP variable must be set before calling this function.
 gpio() {
   local cmd="$1"
   shift
 
+  if [[ -z "${GPIO_CHIP}" ]]; then
+      echo "Error: GPIO_CHIP variable is not set." >&2
+      exit "${EXIT_CONFIG}"
+  fi
+
   for signal in "$@"; do
     case "${cmd}" in
-      unexport|export)
-        klog "Set gpio ${signal} to ${cmd}"
-        echo "${signal}" > "/sys/class/gpio/${cmd}"
-        ;;
-      in|out)
-        local direction="${cmd}"
-        klog "Set gpio ${signal} direction to ${direction}"
-        echo "${direction}" > "/sys/class/gpio/gpio${signal}/direction"
-        ;;
       0|1)
         local value="${cmd}"
-        klog "Set gpio ${signal} to ${value}"
-        echo "${value}" > "/sys/class/gpio/gpio${signal}/value"
+        klog "Set gpio ${GPIO_CHIP}/${signal} to ${value}"
+        gpioset "${GPIO_CHIP}" "${signal}=${value}"
         ;;
       get)
-        local value="${cmd}"
-        klog "Get gpio ${signal}"
-        cat "/sys/class/gpio/gpio${signal}/value"
+        klog "Get gpio ${GPIO_CHIP}/${signal}"
+        gpioget "${GPIO_CHIP}" "${signal}"
         ;;
       *)
         echo "Invalid gpio command: ${cmd}" >&2
@@ -242,14 +222,10 @@ power_cycle_fpmcu() {
 
   if [[ "${gpio_pwren}" -gt 0 ]]; then
     echo "Power cycling the FPMCU."
-    gpio export "${gpio_pwren}"
-    gpio out    "${gpio_pwren}"
     gpio 0      "${gpio_pwren}"
     # Must outlast hardware soft start, which is typically ~3ms.
     sleep 0.5
     gpio 1      "${gpio_pwren}"
-    # Power enable line is externally pulled down, so leave as output-high.
-    gpio unexport "${gpio_pwren}"
   fi
 }
 
@@ -580,10 +556,6 @@ flash_fp_mcu_board() {
     echo "Flashing ${transport} device ID: ${deviceid}"
   fi
 
-  # Configure the MCU Boot0 and NRST GPIOs
-  gpio export "${gpio_boot0}" "${gpio_nrst}"
-  gpio out    "${gpio_boot0}" "${gpio_nrst}"
-
   # Reset sequence to enter bootloader mode
   gpio 1 "${gpio_boot0}"
   gpio 0 "${gpio_nrst}"
@@ -653,26 +625,11 @@ flash_fp_mcu_board() {
     power_cycle_fpmcu "${gpio_pwren}"
   else
     echo "Reset the FPMCU."
-    gpio out	"${gpio_nrst}"
     gpio 0	"${gpio_nrst}"
     # Make sure that we keep nRST line low long enough.
     sleep 0.01
     gpio 1	"${gpio_nrst}"
   fi
-
-  # Give up GPIO control, unless we need to keep these driving as
-  # outputs because they're not open-drain signals.
-  # TODO(b/179839337): Make this the default and properly support
-  # open-drain outputs on other platforms.
-  if [[ "${PLATFORM_BASE_NAME}" != "strongbad" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "zork" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "myst" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "rauru" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "skyrim" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "skywalker" ]]; then
-    gpio in       "${gpio_boot0}" "${gpio_nrst}"
-  fi
-  gpio unexport "${gpio_boot0}" "${gpio_nrst}"
 
   # Put back cros_fp driver if transport is SPI
   if [[ "${transport}" != "UART" ]]; then
@@ -918,24 +875,15 @@ config_brya() {
   # the pin number is 100 from the pinctrl-tigerlake.c.
   # From the gpio-ranges, the gpio value is 824 + (100-99) = 825
 
-  local gpiochip_dev_path="pci0000:00/INTC1055:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  GPIO_CHIP="gpiochip0"
+  readonly GPIO_CHIP
 
   # FPMCU RST_ODL is on GPP_D1 = 160 + (100 - 99) = 161
-  local gpionrst=161
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
-  # FPMCU BOOT0 is on GPP_D0 = 160 + (99 - 99) = 160
-  local gpioboot=160
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_NRST=161
+  # # FPMCU BOOT0 is on GPP_D0 = 160 + (99 - 99) = 160
+  readonly GPIO_BOOT0=160
   # FP_PWR_EN is on GPP_D2 = 160 + (101 - 99) = 162
-  local gpiopwren=162
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=162
 }
 
 config_brask() {
@@ -1317,7 +1265,7 @@ main() {
   fi
 
   # Check that the gpiochip exists
-  if [[ ! -e "/sys/class/gpio/${GPIO_CHIP}" ]]; then
+  if ! gpioinfo "${GPIO_CHIP}" > /dev/null ; then
     echo "Cannot find GPIO chip: ${GPIO_CHIP}"
     exit "${EXIT_CONFIG}"
   fi
