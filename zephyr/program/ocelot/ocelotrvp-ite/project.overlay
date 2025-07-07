@@ -68,6 +68,9 @@ tach_fan0: &tach0 {};
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+	gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
+			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+		};
 	};
 
 	chosen {
