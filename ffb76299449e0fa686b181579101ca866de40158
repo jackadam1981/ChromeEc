@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f228af0f_09a337cb",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2431,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-07T17:13:18Z",
+      "side": 1,
+      "message": "Non-blocking nit - might be worth a rename of `GET_PDOS_MAX_NUM` to `UCSI_GET_PDOS_MAX_NUM_PDOS` to improve clarity.",
+      "range": {
+        "startLine": 2431,
+        "startChar": 31,
+        "endLine": 2431,
+        "endChar": 47
+      },
+      "revId": "ffb76299449e0fa686b181579101ca866de40158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
