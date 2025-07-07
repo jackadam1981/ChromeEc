@@ -158,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12afa744_8ee6fa69",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394bde9d_385559aa",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50ae0c0d_5c1ed597",
@@ -245,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2eca76d_1a6e05a6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "we will only reading here while transmitting i.e.  `ELAN_SPI_TX_BUF_SIZE` bytes. fixed it.\nthis is how it was done in the EC firmware driver code:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d34#:~:text\u003d33-,34,-35",
+      "parentUuid": "499d5289_4ba56add",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd23ed87_fd66ad79",
@@ -258,6 +294,24 @@
       "writtenOn": "2025-07-07T06:45:26Z",
       "side": 1,
       "message": "Can you modify the log messages to just something like \"Elan write command failed: %d\"?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd50876a_b7b6828b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "All the logs for the SPI transactions are consistent in this file. They mention that SPI transaction filed and identify the function name and the error name. This is how the things are logged in the EC driver firmware.",
+      "parentUuid": "bd23ed87_fd66ad79",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -279,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259d33f3_0a43b8a2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "this is how it is done in the EC firmware driver code:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d34#:~:text\u003d33-,34,-35",
+      "parentUuid": "e8381b1e_be9d0062",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d95e44e9_4e7926f7",
@@ -292,6 +364,24 @@
       "writtenOn": "2025-07-07T06:45:26Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "222e3f0b_98808a5f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "this is how it is done in the EC firmware driver code:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d34#:~:text\u003d33-,34,-35",
+      "parentUuid": "d95e44e9_4e7926f7",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -330,6 +420,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f648da_9879a5df",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "I added \n```\n\tassert(tx_len \u003c\u003d ELAN_SPI_TX_BUF_SIZE);\n\tassert(rx_len \u003c\u003d ELAN_SPI_RX_BUF_SIZE);\n```",
+      "parentUuid": "a6c99d91_b7ac763c",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e2c0c1e_d5ed79ab",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "removed the redundancy.\n\nThis is how it is done in the EC driver firmware:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d65#:~:text\u003d64-,65,-66",
+      "parentUuid": "0ec6dddd_59835c26",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1da6da10_0077929a",
@@ -343,6 +469,24 @@
       "writtenOn": "2025-07-07T06:45:26Z",
       "side": 1,
       "message": "Why can\u0027t we use tx_data and rx_data directly in elan_spi_transaction_duplex?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7283d0_b6a0a688",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "I believe we need to reset the rx_buf. For consistency, let us just copy.",
+      "parentUuid": "1da6da10_0077929a",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -364,6 +508,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abc571d_62fbc089",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "removed redundancy.\n\nThis is how it is done in the EC driver firmware:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d76#:~:text\u003d75-,76,-77",
+      "parentUuid": "e8e24992_1b290490",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dd3c06f_8bcead23",
@@ -381,6 +543,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e82a6e_d5c9238d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "fixed redundancy. This is how it was done in EC driver firmware:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_sensor_pal.c;l\u003d95#:~:text\u003d94-,95,-96",
+      "parentUuid": "7dd3c06f_8bcead23",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86e46cf6_626aa414",
@@ -394,6 +574,24 @@
       "writtenOn": "2025-07-07T06:45:26Z",
       "side": 1,
       "message": "Please make sure length is a multiple of 2.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3112111b_6ba52bd1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "added `assert(length % 2 \u003d\u003d 0);`",
+      "parentUuid": "86e46cf6_626aa414",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -451,6 +649,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13c6d89_69f64741",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca1e9304_db30b505",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c37bcdb3_89093553",
@@ -464,6 +680,24 @@
       "writtenOn": "2025-07-07T06:45:26Z",
       "side": 1,
       "message": "k_msleep(1)",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdedfd62_4fada551",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37bcdb3_89093553",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -485,6 +719,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52aa0eed_ebc478db",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ed140a_3381fc1e",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289ccb43_8f6c4984",
@@ -502,6 +754,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bf2fd1_3daa48f3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "tx_buf is defined in this library to be `static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE];`\n\nELAN_SPI_TX_BUF_SIZE is defined to be 2. \n\nI am not sure what you mean by your comment. Can you please elaborate?",
+      "parentUuid": "289ccb43_8f6c4984",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c792abe5_536218da",
@@ -515,6 +785,24 @@
       "writtenOn": "2025-07-07T06:45:26Z",
       "side": 1,
       "message": "Can you use `k_uptime_get_32`?",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3bc4f9_61ff11f1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-07T17:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c792abe5_536218da",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
