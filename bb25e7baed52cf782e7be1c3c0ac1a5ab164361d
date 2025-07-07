@@ -117,6 +117,24 @@
       "parentUuid": "1e39ecbd_08e3a172",
       "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a87f8c_418f8670",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-07T20:32:47Z",
+      "side": 1,
+      "message": "I won\u0027t say, \"You need to refactor it now,\" but the way this patchset works is a bit unintuitive. I think there should at least be a clarifying comment explaining why the config checks are like this.",
+      "parentUuid": "9058ee9b_6357e93d",
+      "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

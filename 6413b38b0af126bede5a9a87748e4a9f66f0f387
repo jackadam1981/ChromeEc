@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16eec281_08c298ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-07T20:32:47Z",
+      "side": 1,
+      "message": "The implementation looks fine. To the extent that it\u0027s a little unwieldy with all of the config checks, I think we could clean that up eventually, if we want to make most boards use this interrupt mechanism. I don\u0027t think that\u0027s necessary, but it should be fine to do and might buy us some needed headroom in some cases.\n\nThis would probably benefit from some tests exercising the interrupt line and making sure the TC ends up in the right state based on CC_STATUS.",
+      "revId": "6413b38b0af126bede5a9a87748e4a9f66f0f387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
