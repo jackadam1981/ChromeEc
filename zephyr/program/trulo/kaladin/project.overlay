@@ -6,11 +6,13 @@
 #include <cros/cbi_flash.dtsi>
 
 /* Trulo ITE program common DTS includes */
+#include "../binman.dtsi"
 
 /* Kaladin project DTS includes*/
 #include "gpio.dtsi"
 #include "i2c.dtsi"
 #include "adc.dtsi"
 #include "kaladin.dtsi"
+#include "cbi.dtsi"
 
 /* Kaladin overrides follow... */
