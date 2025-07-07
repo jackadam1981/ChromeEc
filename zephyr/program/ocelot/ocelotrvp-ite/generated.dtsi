@@ -55,7 +55,8 @@
 			gpios = <&gpioj 0 (GPIO_INPUT)>;
 		};
 		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
-			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
+						GPIO_OUTPUT_INIT_LOGICAL)>;
 		};
 		gpio_c_ec_snr_alrt1: c_ec_snr_alrt1 {
 			// signal name was manually overriden from "bga_pinc1"
@@ -69,7 +70,8 @@
 			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_c_edp_bklt_en_r: c_edp_bklt_en_r {
-			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
+						GPIO_OUTPUT_INIT_LOGICAL)>;
 		};
 		gpio_c_ioex_kbd_intr_r: c_ioex_kbd_intr_r {
 			gpios = <&gpioi 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
