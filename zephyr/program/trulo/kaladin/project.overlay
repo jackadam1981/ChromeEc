@@ -11,5 +11,6 @@
 #include "gpio.dtsi"
 #include "i2c.dtsi"
 #include "kaladin.dtsi"
+#include "cbi.dtsi"
 
 /* Kaladin overrides follow... */
