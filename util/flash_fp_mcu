@@ -526,15 +526,7 @@ main() {
 
   echo "Platform name is ${PLATFORM_NAME} (${PLATFORM_BASE_NAME})."
 
-  # Check that the config function exists
-  if [[ "$(type -t "config_${PLATFORM_NAME}")" == "function" ]]; then
-    readonly PLATFORM_CONFIG="${PLATFORM_NAME}"
-  elif [[ "$(type -t "config_${PLATFORM_BASE_NAME}")" == "function" ]]; then
-    readonly PLATFORM_CONFIG="${PLATFORM_BASE_NAME}"
-  else
-    echo "No config for platform ${PLATFORM_NAME}." >&2
-    exit "${EXIT_CONFIG}"
-  fi
+  readonly PLATFORM_CONFIG="brya"
 
   echo "Using config for ${PLATFORM_CONFIG}."
 
