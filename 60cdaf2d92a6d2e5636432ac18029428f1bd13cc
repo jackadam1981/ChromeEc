@@ -16,6 +16,23 @@
       "message": "@eherrmann@google.com Sorry to drag you back into this, but I ran across this CL and saw that it has never been picked to the octopus branch. Was it supposed to be?",
       "revId": "60cdaf2d92a6d2e5636432ac18029428f1bd13cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74e98e1_a3b1c4e8",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4077,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-07T23:19:20Z",
+      "side": 1,
+      "message": "I don\u0027t see this config is being used elsewhere. I.e. it isn\u0027t defined in config.h in the octopus firmware branch",
+      "revId": "60cdaf2d92a6d2e5636432ac18029428f1bd13cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
