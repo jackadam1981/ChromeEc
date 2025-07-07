@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69c7923_ec4517c2",
+        "filename": "zephyr/test/pdc/src/generic/pdc_attached_snk.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-07-07T16:27:58Z",
+      "side": 1,
+      "message": "I think `wait_for_sync()` is using a [default value](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/test/pdc/prj.conf#66) of `2500` ms, when `-1` is passed.  Can we increase this timeout value here, instead of adding `k_sleep()`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "7435f2073b66cb9fcec1a8ffd0d281bc431c44eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
