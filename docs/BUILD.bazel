@@ -1,0 +1,112 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+load("@bazel_skylib//rules:copy_directory.bzl", "copy_directory")
+load("@doxygen//:doxygen.bzl", "doxygen")
+load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load("@rules_python//sphinxdocs:sphinx_docs_library.bzl", "sphinx_docs_library")
+
+sphinx_docs_library(
+    name = "sources",
+    srcs = glob(
+        ["**/*.rst"],
+        exclude = ["**/*_template.rst"],
+    ) + [
+        "_static/css/cros_ec.css",
+        "_static/css/dark_cros_ec.css",
+        "_static/img/logo_300px.png",
+        "_static/img/logo_64px.png",
+        "_static/js/cros_ec.js",
+        "layout/layout.html",
+    ],
+    strip_prefix = "docs/",
+)
+
+sphinx_build_binary(
+    name = "sphinx",
+    deps = [
+        "@pypi//breathe",
+        "@pypi//pydata_sphinx_theme",
+        "@pypi//sphinx",
+        "@pypi//sphinx_copybutton",
+        "@pypi//sphinx_design",
+        "@pypi//sphinx_reredirects",
+        "@pypi//sphinx_sitemap",
+        "@pypi//sphinxcontrib_mermaid",
+    ],
+)
+
+sphinx_docs(
+    name = "docs",
+    config = "conf.py",
+    formats = ["html"],
+    sphinx = ":sphinx",
+    strip_prefix = "docs/",
+    deps = [
+        ":doxygen_html",
+        ":doxygen_xml",
+        ":sources",
+        "//zephyr/lib/math:docs",
+    ],
+)
+
+sh_binary(
+    name = "open",
+    srcs = ["open_browser.sh"],
+    args = ["$(location :docs)/index.html"],
+    data = [":docs"],
+)
+
+filegroup(
+    name = "doxygen_srcs",
+    srcs = [
+        "//zephyr/lib/math:doxygen",
+    ],
+)
+
+doxygen(
+    name = "doxygen_build",
+    srcs = [":doxygen_srcs"],
+    outs = [
+        "html",
+        "xml",
+    ],
+    doxyfile_template = "Doxyfile",
+    tags = ["manual"],
+)
+
+filegroup(
+    name = "_doxygen_html_1",
+    srcs = [":doxygen_build"],
+    output_group = "html",
+    tags = ["manual"],
+)
+
+copy_directory(
+    name = "_doxygen_html_2",
+    src = ":_doxygen_html_1",
+    out = "doxygen",
+    tags = ["manual"],
+)
+
+sphinx_docs_library(
+    name = "doxygen_html",
+    srcs = [":_doxygen_html_2"],
+    prefix = "doxygen/",
+    tags = ["manual"],
+)
+
+filegroup(
+    name = "_doxygen_xml",
+    srcs = [":doxygen_build"],
+    output_group = "xml",
+    tags = ["manual"],
+)
+
+sphinx_docs_library(
+    name = "doxygen_xml",
+    srcs = [":_doxygen_xml"],
+    prefix = "_doxygen/",
+    tags = ["manual"],
+)
