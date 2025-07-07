@@ -742,7 +742,7 @@ static inline int pdc_get_vbus_voltage(const struct device *dev,
  * @param pdo_offset starting offset of the first PDO to be returned. Valid
  *        values are 0 to 7.
  * @param num_pdos number of PDOs to return starting from the PDO offset. NOTE:
- *        the number of PDOs returned is num + 1. Max is GET_PDOS_MAX_NUM.
+ *        the number of PDOs returned is num + 1. Max is UCSI_GET_PDOS_MAX_NUM.
  * @param source Whether to retrieve the LPM's (PDC) or port partner's PDOs.
  * @param pdos pointer to where the PDOs are outputted to.
  *
@@ -764,9 +764,9 @@ static inline int pdc_get_pdos(const struct device *dev,
 		return -ENOSYS;
 	}
 
-	__ASSERT(num_pdos <= GET_PDOS_MAX_NUM,
+	__ASSERT(num_pdos <= UCSI_GET_PDOS_MAX_NUM,
 		 "GET_PDOS supports a maximum count of " STRINGIFY(
-			 GET_PDOS_MAX_NUM) " PDOs");
+			 UCSI_GET_PDOS_MAX_NUM) " PDOs");
 
 	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos, source, pdos);
 }
