@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d78d13_1c997e37",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-07T18:49:52Z",
+      "side": 1,
+      "message": "Just delete the `PWR_EN_PP3300_A` and `PWR_EN_PP5000_A` cases.\n\n`PWR_EN_PP3300_A` is always connected to `intel,ap-pwrseq-gpio`, and `board_power_signal_get` is only called for signals connected to `intel,ap-pwrseq-external`.\n\nYou should also move `pwr_en_pp5000_a` node from the shared `power_signals.dtsi` and move this into the MCHP-specific `power_signals.dtsi`.  You can also delete references to `pwr_en_pp5000_a` from the ITE and NPCX versions of the file.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "41558c8a97f1ed6382afa6781633ccb7f6a94b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
