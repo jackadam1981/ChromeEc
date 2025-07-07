@@ -1,0 +1,62 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* ==========================================================================
+   CUSTOM DARK THEME for PyData Sphinx Theme
+   ========================================================================== */
+
+[data-theme="dark"] {
+   /* ==========================================================================
+     Color Variables (Dark Mode)
+     ========================================================================== */
+
+   /* Brand Colors - Adjusted for higher contrast on a dark background */
+   --pst-color-primary: #8ab4f8 !important;
+   /* A lighter, more vibrant Google Blue */
+   --pst-color-secondary: #81c995 !important;
+   /* A lighter Google Green */
+   --pst-color-accent: #fdd663 !important;
+   /* A softer Google Yellow */
+
+   /* Text Colors */
+   --pst-color-text-base: #e8eaed !important;
+   /* Light gray for body text */
+   --pst-color-text-muted: #9aa0a6 !important;
+   /* Darker gray for secondary text */
+   --pst-color-text-header: #f8f9fa !important;
+   /* Almost white for major headings */
+
+   /* Background Colors */
+   --pst-color-background: #121212 !important;
+   /* A deep, dark background */
+   --pst-color-surface: #1e1e1e !important;
+   /* Slightly lighter surface for cards, sidebars */
+   --pst-color-on-surface: var(--pst-color-text-base) !important;
+
+   /* Code Block Colors */
+   --pst-color-code-background: #282a2e !important;
+   /* Dark gray for code block background */
+   --pst-color-code-text: #e8eaed !important;
+   --pst-color-code-link: var(--pst-color-primary) !important;
+
+   /* Border & Rule Colors */
+   --pst-color-border: #3a3f43 !important;
+   /* Dark gray for borders and horizontal rules */
+   --pst-color-shadow: rgba(0, 0, 0, 0.2) !important;
+
+   /* State Colors */
+   --pst-color-info: var(--pst-color-primary) !important;
+   --pst-color-success: #5bb974 !important;
+   /* Lighter Google Green */
+   --pst-color-warning: #fdd663 !important;
+   /* Lighter Google Yellow */
+   --pst-color-danger: #f28b82 !important;
+   /* Lighter, less harsh Google Red */
+
+   /* ==========================================================================
+     Component Customization (Dark Mode)
+     ========================================================================== */
+
+}
