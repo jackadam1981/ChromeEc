@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e763a77_91b47d49",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "I wouldn\u0027t describe this as \"vendor command\" -- other PDCs will need to implement similar capabilities.\n\nSo just:\n```\n@brief Set the battery capability response on the PDC.\n```",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a34d078f_4d51635d",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "Define bcap in `ucsi_v3.h` to match BCDB definition in USB PD spec (USB PD 3.2, Section 6.5.5)\n```\nunion battery_capability_t {\n  struct {\n    uint16_t vid;\n    uint16_t pid;\n    ...\n  };\n  uint8_t raw[9];\n};\n```",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4192a7_dbab6c12",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "Same comment here about \"vendor command\"",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d590587_40bfd196",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "Same comment regarding definition of object. Use BSDO (battery status data object) as defined in USB PD spec (USB PD 3.2, Section 6.4.5)",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7c8869_90b00a92",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "VID:PID is supposed to match the actual battery and not the VID:PID of the system. Is that not available? \n\nKeep a TODO here if you\u0027re not able to easily acquire that information.",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53288490_06e2258b",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "nit: Inconsistent indenting of comment.",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460a1251_97b78de9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-07-07T21:25:10Z",
+      "side": 1,
+      "message": "nit: Inconsistent indenting of comment.",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
