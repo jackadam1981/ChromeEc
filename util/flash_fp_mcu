@@ -9,7 +9,8 @@
 shflags_path=""
 for path in \
   "/usr/share/misc/shflags" \
-  "/system/usr/share/misc/shflags"
+  "/system/usr/share/misc/shflags" \
+  "/tmp/shflags"
 do
   if [ -f "${path}" ]; then
     shflags_path="${path}"
@@ -694,7 +695,7 @@ flash_fp_mcu_stm32() {
 
   local attempt=0
   local cmd_exit_status=1
-  local cmd="stm32mon ${cmd_flags}"
+  local cmd="/tmp/stm32mon_static ${cmd_flags}"
 
   for attempt in $(seq "${FLAGS_retries}"); do
     # Reset sequence to enter bootloader mode
