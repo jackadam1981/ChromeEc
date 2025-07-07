@@ -1022,7 +1022,13 @@ config_brya() {
   readonly USE_LEGACY_GPIO_API=0
 
   readonly TRANSPORT="SPI"
-  readonly DEVICE="/dev/spidev0.0"
+
+  DEVICE="/dev/spidev0.0"
+
+  if [[ "$(os)" == "android" ]]; then
+    DEVICE="/dev/spidev1.0"
+  fi
+  readonly DEVICE
 
   # See kernel/v5.10/drivers/pinctrl/intel/pinctrl-tigerlake.c
   # for pin name and pin number.
