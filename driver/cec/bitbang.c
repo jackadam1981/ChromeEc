@@ -23,6 +23,27 @@
 #define DEBUG_CPRINTS(...)
 #endif
 
+
+#define ECREG(x)         (*((volatile unsigned char *)(x)))
+#define EC_REG_BASE_ADDR 0x00f00000
+
+#define IT81XX2_GPIO_H4_GPCR     ECREG(EC_REG_BASE_ADDR + 0x164c)         // GPIO_H4 Control Register
+#define IT81XX2_GPIO_H4_OUTPUT   ((IT81XX2_GPIO_H4_GPCR & 0x3F) | 0x40)   // GPIO_H4 設定成 Output
+
+#define IT81XX2_GPIO_H4_GPDR     ECREG(EC_REG_BASE_ADDR + 0x1608)         // GPIO_H Data Register
+#define IT81XX2_GPIO_HIGH_H4     (IT81XX2_GPIO_H4_GPDR | (uint8_t)0x10)   // GPIO_H4 拉 High
+#define IT81XX2_GPIO_LOW_H4      (IT81XX2_GPIO_H4_GPDR & (uint8_t)~0x10)  // GPIO_H4 拉 Low
+#define IT81XX2_GPIO_REVERSE_H4  (IT81XX2_GPIO_H4_GPDR ^ (uint8_t)0x10)   // GPIO_H4 反向
+
+
+#define IT81XX2_GPIO_C7_GPCR     ECREG(EC_REG_BASE_ADDR + 0x1627)         // GPIO_C7 Control Register
+#define IT81XX2_GPIO_C7_OUTPUT   ((IT81XX2_GPIO_C7_GPCR & 0x3F) | 0x40)   // GPIO_C7 設定成 Output
+
+#define IT81XX2_GPIO_C7_GPDR     ECREG(EC_REG_BASE_ADDR + 0x1603)         // GPIO_C Data Register
+#define IT81XX2_GPIO_HIGH_C7     (IT81XX2_GPIO_C7_GPDR | (uint8_t)0x80)   // GPIO_C7 拉 High
+#define IT81XX2_GPIO_LOW_C7      (IT81XX2_GPIO_C7_GPDR & (uint8_t)~0x80)  // GPIO_C7拉 Low
+#define IT81XX2_GPIO_REVERSE_C7  (IT81XX2_GPIO_C7_GPDR ^ (uint8_t)0x80)   // GPIO_C7 反向
+
 /*
  * Free time timing (us). Our free-time is calculated from the end of
  * the last bit (not from the start). We compensate by having one
@@ -449,6 +470,11 @@ static void enter_state(int port, enum cec_state new_state)
 
 void cec_event_timeout(int port)
 {
+	// GPIO_H4 反向
+	IT81XX2_GPIO_H4_GPDR = IT81XX2_GPIO_REVERSE_H4;
+	// GPIO_H4 反向
+	IT81XX2_GPIO_H4_GPDR = IT81XX2_GPIO_REVERSE_H4;
+
 	struct cec_port_data *port_data = &cec_port_data[port];
 
 	switch (port_data->state) {
@@ -718,6 +744,16 @@ __overridable void cec_update_interrupt_time(int port)
 
 static int bitbang_cec_init(int port)
 {
+	// 設定 GPIO_H4 為 Output
+	IT81XX2_GPIO_H4_GPCR = IT81XX2_GPIO_H4_OUTPUT;
+	// GPIO_H4 拉 HIGH
+	IT81XX2_GPIO_H4_GPDR = IT81XX2_GPIO_HIGH_H4;
+
+	// 設定 GPIO_C7 為 Output
+	IT81XX2_GPIO_C7_GPCR = IT81XX2_GPIO_C7_OUTPUT;
+	// GPIO_H4 拉 HIGH
+	IT81XX2_GPIO_C7_GPDR = IT81XX2_GPIO_HIGH_C7;
+
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
 
