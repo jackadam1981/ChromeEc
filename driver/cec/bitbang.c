@@ -23,6 +23,10 @@
 #define DEBUG_CPRINTS(...)
 #endif
 
+int cec_index_test __keep;
+uint8_t cec_states_transition_test[4096] __keep;
+uint16_t t_record_test[4096] __keep;
+
 /*
  * Free time timing (us). Our free-time is calculated from the end of
  * the last bit (not from the start). We compensate by having one
@@ -214,6 +218,18 @@ struct cec_port_data {
 	 */
 	uint8_t addr;
 };
+
+static void cec_record_state(uint8_t value)
+{
+	if (cec_index_test == 4096) return;
+	cec_states_transition_test[cec_index_test++] = value;
+}
+
+static void cec_record_t(uint16_t value)
+{
+	if (cec_index_test == 4096) return;
+	t_record_test[cec_index_test++] = value;
+}
 
 /* TODO(b/296813751): Implement a common data structure for CEC drivers */
 static struct cec_port_data cec_port_data[CEC_PORT_COUNT];
@@ -569,6 +585,8 @@ void cec_event_cap(int port)
 	int t;
 	int data;
 
+	cec_record_state(port_data->state);
+
 	switch (port_data->state) {
 	case CEC_STATE_IDLE:
 		/* A falling edge during idle, likely a start bit */
@@ -609,6 +627,7 @@ void cec_event_cap(int port)
 	case CEC_STATE_FOLLOWER_HEADER_DEST_LOW:
 	case CEC_STATE_FOLLOWER_DATA_LOW:
 		t = cec_tmr_cap_get(port);
+		cec_record_t(t);
 		if (VALID_LOW(DATA_ZERO, t)) {
 			port_data->rx.low_ticks = t;
 			cec_transfer_set_bit(&port_data->rx.transfer, 0);
@@ -623,6 +642,7 @@ void cec_event_cap(int port)
 		break;
 	case CEC_STATE_FOLLOWER_HEADER_INIT_HIGH:
 		t = cec_tmr_cap_get(port);
+		cec_record_t(t);
 		data = cec_transfer_get_bit(&port_data->rx.transfer);
 		if (VALID_DATA_HIGH(data, port_data->rx.low_ticks, t)) {
 			cec_transfer_inc_bit(&port_data->rx.transfer);
