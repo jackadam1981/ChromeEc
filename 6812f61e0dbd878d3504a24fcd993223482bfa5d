@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c0c41e_04ce5eb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-08T16:37:09Z",
+      "side": 1,
+      "message": "Ok, so based on http://b/427468960#comment26, `PM_DEVICE_RUNTIME` should be enabled for only `CONFIG_EC_HOST_CMD_BACKEND_SHI_NPCX`",
+      "revId": "6812f61e0dbd878d3504a24fcd993223482bfa5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
