@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8d021f_9fefb382",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-08T19:24:20Z",
+      "side": 1,
+      "message": "can we check if the `pwr_en_pp5000_a` node exists, instead?",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "f925be3523468e6dfbb5fef05d20790ba3f66532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
