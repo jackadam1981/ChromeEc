@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f16fe133_b60066fb",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-08T13:59:56Z",
+      "side": 1,
+      "message": "I\u0027ve reviewed this. Since we\u0027re not using the lid_open GPIO during power-on (we\u0027re using PMIC_KPD_PWR for lid-open), I don\u0027t believe we need to handle a sudden lid-close for signal passthrough. What are your thoughts?",
+      "parentUuid": "2ac87b13_aa13613e",
+      "range": {
+        "startLine": 260,
+        "startChar": 4,
+        "endLine": 260,
+        "endChar": 20
+      },
+      "revId": "c71084dbf9cced68c2cde710d9dc84e29d1748e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d31944e0_e1e74bf5",
         "filename": "power/qcom_exp.c",
         "patchSetId": 16
