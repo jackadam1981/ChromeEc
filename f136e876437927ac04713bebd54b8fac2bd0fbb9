@@ -18,6 +18,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a44ff5_8140e5a6",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-08T11:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e763a77_91b47d49",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e496c8bf_45133c9a",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-08T11:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e763a77_91b47d49",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a34d078f_4d51635d",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-07-07T21:25:10Z",
       "side": 1,
       "message": "Same comment here about \"vendor command\"",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c02330_00afd443",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-08T11:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a4192a7_dbab6c12",
       "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f156bf25_f8d27f02",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-08T11:33:34Z",
+      "side": 1,
+      "message": "It\u0027s the same flow we had for our tcpm implementation, seems that we don\u0027t have an API for it. I added TODO",
+      "parentUuid": "dd7c8869_90b00a92",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53288490_06e2258b",
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea320ec_e0a50aff",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-08T11:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53288490_06e2258b",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "460a1251_97b78de9",
@@ -116,6 +206,24 @@
       "writtenOn": "2025-07-07T21:25:10Z",
       "side": 1,
       "message": "nit: Inconsistent indenting of comment.",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d213d9_ac5c0563",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-08T11:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "460a1251_97b78de9",
       "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
