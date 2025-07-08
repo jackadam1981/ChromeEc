@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "132431ef_a7c068c2",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T19:11:45Z",
+      "side": 1,
+      "message": "The power button should be gated by the EC and not pass through to the PMIC.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 6
+      },
+      "revId": "09243b34a6c52a5ab72f93564f4fc523aeb377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "926f2dd1_09219c49",
         "filename": "zephyr/Kconfig.powerseq",
         "patchSetId": 19
