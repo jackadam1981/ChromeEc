@@ -1095,6 +1095,8 @@ config_ghost() {
 }
 
 config_rex() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
@@ -1105,14 +1107,7 @@ config_rex() {
   # For example: GPP_B11, the pin number is 215 from the pinctrl-meteorlake.c.
   # From the gpio-ranges, the gpio value is 925 + (215-204) = 936
 
-  local gpiochip_dev_path="pci0000:00/INTC1083:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
@@ -1120,25 +1115,19 @@ config_rex() {
     (screebo | screebo4es)
       # Screebo is based off Rex but with different pins for FPMCU
       # FPMCU RST_ODL is on GPP_C21 = 64 + (50 - 29) = 85
-      local gpionrst=85
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=85
       # FPMCU BOOT0 is on GPP_C20 = 64 + (49 - 29) = 84
-      local gpioboot=84
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=84
       # FP_PWR_EN is on GPP_B08 = 352 + (212-204) - 573 = 360
-      local gpiopwren=360
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=360
       ;;
     *)
       # FPMCU RST_ODL is on GPP_C23 = 64 + (52 - 29) = 87
-      local gpionrst=87
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=87
       # FPMCU BOOT0 is on GPP_C22 = 64 + (51 - 29) = 86
-      local gpioboot=86
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=86
       # FP_PWR_EN is on GPP_B11 = 352 + (215-204) = 363
-      local gpiopwren=363
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=363
       ;;
   esac
 }
