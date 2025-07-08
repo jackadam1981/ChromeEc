@@ -24,6 +24,14 @@ config HAS_TASK_CHARGER
 	  requests. If the battery is not full, it enables charging from a
 	  suitable power source.
 
+config TASK_EVENT_SHORT_CIRCUIT
+	bool "Avoid polling on task events if an event is already present"
+	default y if SOC_FAMILY_INTEL_ISH
+	help
+	  When task_wait_event() is called, if there are already events for the task,
+		avoid calling k_poll() and just return the events. See b/427883250 for more
+		details.
+
 if HAS_TASK_CHARGER
 
 config TASK_CHARGER_STACK_SIZE
