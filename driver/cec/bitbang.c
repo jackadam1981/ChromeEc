@@ -223,6 +223,24 @@ __test_only int cec_get_state(int port)
 	return cec_port_data[port].state;
 }
 
+#ifdef CONFIG_ZEPHYR
+bool bitbang_cec_delay_more(int port)
+{
+	bool val = false;
+
+	switch (cec_port_data[port].state) {
+	case CEC_STATE_FOLLOWER_ACK_LOW:
+	case CEC_STATE_FOLLOWER_ACK_VERIFY:
+		val = true;
+		break;
+	default:
+		val = false;
+		break;
+	}
+	return val;
+}
+#endif
+
 static void enter_state(int port, enum cec_state new_state)
 {
 	const struct bitbang_cec_config *drv_config =

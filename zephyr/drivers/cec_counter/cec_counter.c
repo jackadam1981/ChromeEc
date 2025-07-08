@@ -112,6 +112,12 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 		int timer_count = timeout - delay;
 		struct counter_top_cfg top_cfg;
 
+		if (bitbang_cec_delay_more(port)) {
+			delay = CEC_US_TO_TICKS(get_time().val -
+						interrupt_time.val + 270);
+			timer_count = timeout - delay;
+		}
+
 		/*
 		 * Handle the case where the delay is greater than the timeout.
 		 * This should never actually happen for typical delay and
@@ -172,10 +178,10 @@ void cros_cec_bitbang_debounce_disable(int port)
 void cros_cec_bitbang_trigger_send(int port)
 {
 	unsigned int key;
+	key = irq_lock();
 	/* Elevate to interrupt context */
 	transfer_initiated = true;
 
-	key = irq_lock();
 	cec_ext_timer_interrupt(port);
 	irq_unlock(key);
 }
