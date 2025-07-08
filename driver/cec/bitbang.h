@@ -134,4 +134,11 @@ void cec_gpio_interrupt(enum gpio_signal signal);
  */
 __test_only int cec_get_state(int port);
 
+#ifdef CONFIG_ZEPHYR
+/**
+ * Steps needs to increase delay in tmr_cap_start
+ */
+bool bitbang_cec_delay_more(int port);
+#endif
+
 #endif /* __CROS_EC_DRIVER_CEC_BITBANG_H */
