@@ -132,6 +132,6 @@ void cec_gpio_interrupt(enum gpio_signal signal);
 /**
  * Get the current state.
  */
-__test_only int cec_get_state(int port);
+int cec_get_state(int port);
 
 #endif /* __CROS_EC_DRIVER_CEC_BITBANG_H */

@@ -25,6 +25,9 @@ LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_ERR);
 BUILD_ASSERT(DT_HAS_CHOSEN(cros_ec_cec_counter),
 	     "a cros-ec,cec-counter device must be chosen");
 
+#define CEC_STATE_FOLLOWER_ACK_LOW 25
+#define CEC_STATE_FOLLOWER_ACK_VERIFY 26
+
 /* Timestamp when the most recent interrupt occurred */
 static timestamp_t interrupt_time;
 
@@ -111,6 +114,13 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 					    interrupt_time.val + 100);
 		int timer_count = timeout - delay;
 		struct counter_top_cfg top_cfg;
+
+		if (cec_get_state(port) == CEC_STATE_FOLLOWER_ACK_LOW ||
+		    cec_get_state(port) == CEC_STATE_FOLLOWER_ACK_VERIFY) {
+			delay = CEC_US_TO_TICKS(get_time().val -
+						interrupt_time.val + 270);
+			timer_count = timeout - delay;
+		}
 
 		/*
 		 * Handle the case where the delay is greater than the timeout.
