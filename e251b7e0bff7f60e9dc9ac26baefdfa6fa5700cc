@@ -70,6 +70,30 @@
       },
       "revId": "e251b7e0bff7f60e9dc9ac26baefdfa6fa5700cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43135d0e_b7b02d72",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-08T20:34:24Z",
+      "side": 1,
+      "message": "ah, i see `ocelotrvp-npcx/project.overlay` doesn\u0027t have a `fan.dtsi`\nand uses `project.overlay` to define the fan. looks like `ocelotrvp-ite`\nhasn\u0027t gotten as far as enabling the fan.\n\ncan we split `ocelotrvp-npcx` to follow the same structure as mchp?",
+      "parentUuid": "d8dd2219_06ee23f0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "e251b7e0bff7f60e9dc9ac26baefdfa6fa5700cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
