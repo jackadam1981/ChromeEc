@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d636d4_9a55f17c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-08T20:34:25Z",
+      "side": 1,
+      "message": "```suggestion\nAdditionally, `CONFIG_PM_DEVICE_RUNTIME\u003dy` is enabled in `prj.conf`,\nsince it\u0027s used by ec_host_cmd_backend_shi_npcx.c.\nMore details in https://github.com/zephyrproject-rtos/zephyr/pull/92567.\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 68,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "822a1d9a437f8e0aa8e046523cf6a37ad54f94e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29194d7_b87973f3",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-08T20:34:25Z",
+      "side": 1,
+      "message": "```suggestion\n# Used in ec_host_cmd_backend_shi_npcx.c. Also see\n# https://github.com/zephyrproject-rtos/zephyr/pull/92567.\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "822a1d9a437f8e0aa8e046523cf6a37ad54f94e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
