@@ -70,6 +70,30 @@
       },
       "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86721a4_036a9aa3",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-08T17:45:05Z",
+      "side": 1,
+      "message": "Acknowledged. Removed the device_init in this case considering your point as it should be needed only if callback is registered and defer_until_s5 is true.",
+      "parentUuid": "a2f77ffc_e53227c5",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "40e0fdf5290fdd77cf4240c63c7b63c852d82b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
