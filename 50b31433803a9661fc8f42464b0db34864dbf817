@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c45ace1_e76a9102",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-08T00:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b50c5be_b7fcab62",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 60
+      },
+      "revId": "50b31433803a9661fc8f42464b0db34864dbf817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "116a49b5_db52903e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-07T22:43:18Z",
       "side": 1,
       "message": "Delete this comment - you\u0027ve already set the gpios property.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 62
+      },
+      "revId": "50b31433803a9661fc8f42464b0db34864dbf817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a3798e_4c27a0d6",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-08T00:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116a49b5_db52903e",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf5bdb2_8c17deac",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-08T00:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dfa9aac_bd610abd",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "50b31433803a9661fc8f42464b0db34864dbf817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c77aa71_46e04cac",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-07-07T22:43:18Z",
       "side": 1,
       "message": "Same comment as above",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "50b31433803a9661fc8f42464b0db34864dbf817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183ea856_06741c7d",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-08T00:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c77aa71_46e04cac",
       "range": {
         "startLine": 58,
         "startChar": 0,
