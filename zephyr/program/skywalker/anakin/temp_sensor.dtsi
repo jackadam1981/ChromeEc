@@ -14,6 +14,12 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		charger {
+			temp-host-warn = <83>;
+			temp-host-high = <88>;
+			temp-host-halt = <103>;
+			temp-host-release-warn = <80>;
+			temp-host-release-high = <85>;
+			temp-host-release-halt = <98>;
 			sensor = <&temp_charger>;
 		};
 	};
