@@ -213,6 +213,30 @@
       },
       "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacd73fa_038b1f2a",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T20:25:38Z",
+      "side": 1,
+      "message": "based on comments in https://github.com/zephyrproject-rtos/zephyr/pull/92567#issuecomment-3029700717\nNuvoton prefers that we add this config to the specific project.",
+      "parentUuid": "a4b31790_592d2b90",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "082533f2386e2ef1c645337a7c344682a1663f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
