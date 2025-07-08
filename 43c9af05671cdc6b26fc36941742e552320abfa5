@@ -67,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4e684ec_7622c2f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-08T08:55:56Z",
+      "side": 1,
+      "message": "Do you mean adding kaladin to SPECIAL_BOARDS list [firmware_builder.py](https://crsrc.org/o/src/platform/ec/zephyr/firmware_builder.py;l\u003d66;bpv\u003d0)?",
+      "parentUuid": "fc3e4460_4729ecff",
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f460ef8d_ebe068b2",
         "filename": "zephyr/program/trulo/kaladin/project.overlay",
         "patchSetId": 10
