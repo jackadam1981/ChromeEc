@@ -94,6 +94,30 @@
       },
       "revId": "e251b7e0bff7f60e9dc9ac26baefdfa6fa5700cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b422300f_e9250fa7",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-08T20:50:50Z",
+      "side": 1,
+      "message": "Both ITE and NPCX have [fan control enabled](https://crrev.com/c/6635036). The fans are defined in `rvp_fans.dtsi`. The `project.overlay` files for ITE, NPCX just alias the tacho and GPIO nodes and fill in the fan control PWM. Most of what Intel put into their `fan.dtsi` is already handled by our `generated.dtsi`s.",
+      "parentUuid": "43135d0e_b7b02d72",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "e251b7e0bff7f60e9dc9ac26baefdfa6fa5700cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
