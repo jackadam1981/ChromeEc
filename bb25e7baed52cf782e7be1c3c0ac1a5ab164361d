@@ -135,6 +135,24 @@
       "parentUuid": "9058ee9b_6357e93d",
       "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751f8a1d_2f681935",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-07-08T05:49:05Z",
+      "side": 1,
+      "message": "I have added a comment to explain why the config check is here. Thanks.",
+      "parentUuid": "d3a87f8c_418f8670",
+      "revId": "bb25e7baed52cf782e7be1c3c0ac1a5ab164361d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
