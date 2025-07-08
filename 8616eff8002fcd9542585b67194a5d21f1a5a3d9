@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ea75eb_1bc7409b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b282bdb_47ef6d69",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "394bde9d_385559aa",
@@ -242,6 +260,24 @@
       "writtenOn": "2025-07-08T08:32:59Z",
       "side": 1,
       "message": "It is a similar case as in the Egis PAL. These are global buffers, that can be accessed by multiple threads. The access to the buffers has to be synchronized.",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f840287d_5a9067f4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d8e55d9_0417328a",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -334,6 +370,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "219c5626_df44d8a3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "ok, removed the memset.",
+      "parentUuid": "54255830_b5a51afe",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd23ed87_fd66ad79",
@@ -418,6 +472,24 @@
       "side": 1,
       "message": "I see, but we can improve the code. It is memseting ~3k of memory. It\u0027s a lot. It would be better to avoid it, if it is not necessary. The code was added by Elan, so I don\u0027t think it is optimal.",
       "parentUuid": "259d33f3_0a43b8a2",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361d75b6_072ea957",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e658ca30_dfaad9ac",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -576,6 +648,24 @@
       "side": 1,
       "message": "Why do we need to reset the rx_buf (memset to 0)? The coping was done to use the uncachable buffers, but since we don\u0027t use that, do we really still need to copy it?",
       "parentUuid": "8d7283d0_b6a0a688",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eef4e32_b4985ac6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "ok, removed memset for all rx_buf",
+      "parentUuid": "3dcd8473_ab389501",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -862,6 +952,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "747c2971_781c2d3b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281a165b_0042adca",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289ccb43_8f6c4984",
@@ -911,6 +1019,24 @@
       "side": 1,
       "message": "Sure, but please don\u0027t resolve comments, because it disappears.\n\nThis file assumes in places that the tx_buf is at least 2. So I\u0027m thinking about adding something like BUILD_ASSERT(ELAN_SPI_TX_BUF_SIZE \u003e\u003d 2).",
       "parentUuid": "c4bf2fd1_3daa48f3",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e021e2f6_8d8e48bc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T16:40:17Z",
+      "side": 1,
+      "message": "ok. add it after \n\n```\nstatic uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE]; //__uncached;\nstatic uint8_t rx_buf[ELAN_SPI_RX_BUF_SIZE]; // __uncached;\nBUILD_ASSERT(ELAN_SPI_TX_BUF_SIZE \u003e\u003d 2)\n```",
+      "parentUuid": "11a9380f_01d0d8cd",
       "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
