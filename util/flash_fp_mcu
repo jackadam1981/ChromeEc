@@ -739,7 +739,7 @@ config_hatch() {
     return "${EXIT_PRECONDITION}"
   fi
 
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
 
   # FPMCU RST_ODL is on GPP_A12 = 12
   local gpionrst=12
@@ -787,7 +787,7 @@ config_nami() {
     return "${EXIT_PRECONDITION}"
   fi
 
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
 
   # FPMCU RST_ODL is on GPP_C9 = 57
   local gpionrst=57
@@ -893,7 +893,7 @@ config_volteer() {
     return "${EXIT_PRECONDITION}"
   fi
 
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
 
   # FPMCU RST_ODL is on GPP_C23 = 256 + (194 - 171) = 279
   local gpionrst=279
@@ -925,7 +925,7 @@ config_brya() {
     return "${EXIT_PRECONDITION}"
   fi
 
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
 
   # FPMCU RST_ODL is on GPP_D1 = 160 + (100 - 99) = 161
   local gpionrst=161
@@ -1008,7 +1008,7 @@ config_zork() {
     return "${EXIT_PRECONDITION}"
   fi
 
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
 
   # FPMCU RST_ODL is on AGPIO 11
   local gpionrst=11
@@ -1032,7 +1032,7 @@ config_guybrush() {
     return "${EXIT_PRECONDITION}"
   fi
 
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip${gpiobase}"
 
   # FPMCU RST_ODL is on AGPIO 11
   local gpionrst=11
