@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219510d6_f44c944c",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "Add a comment to note this variable is initialized to 0, i.e. `POWER_G3`.",
+      "range": {
+        "startLine": 163,
+        "startChar": 50,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb645ccd_74aecf6b",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "Better to name it to `power_state_before_warm_reset`.",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a42adbf_7e07b6b1",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "The condition is inverted. Its deassertion state is high.",
+      "range": {
+        "startLine": 407,
+        "startChar": 24,
+        "endLine": 407,
+        "endChar": 58
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0805d1f_53bdd1c8",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "The structure can be improved like:\n```\n\tif (!gpio_get_level(...)) {\n\t\t...\n\t} else {\n\t\tif (long_warm_reset) {\n\t\t\t...\n\t\t} else {\n\t\t\t...\n\t\t}\n\t}\n\t\n```",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73533374_80d93da3",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "Similarly, these conditions are also inverted.",
+      "range": {
+        "startLine": 422,
+        "startChar": 6,
+        "endLine": 422,
+        "endChar": 20
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1e30a8_a340efc6",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "Define it as a constant.",
+      "range": {
+        "startLine": 424,
+        "startChar": 8,
+        "endLine": 424,
+        "endChar": 17
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9972339_2566702b",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T18:11:07Z",
+      "side": 1,
+      "message": "Nit: Use the style of multi-line comments.",
+      "range": {
+        "startLine": 717,
+        "startChar": 2,
+        "endLine": 717,
+        "endChar": 5
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
