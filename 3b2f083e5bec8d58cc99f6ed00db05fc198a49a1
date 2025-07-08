@@ -22,6 +22,30 @@
       },
       "revId": "3b2f083e5bec8d58cc99f6ed00db05fc198a49a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b079bee_4c9d1a9b",
+        "filename": "zephyr/program/fatcat/kinmen/gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-07-08T08:46:09Z",
+      "side": 1,
+      "message": "This works on my side. Thank you. However, I want to directly reflect the GPIO pin level. since this may be easier to correspond to schematic. Does it ok?",
+      "parentUuid": "801895f3_760cebef",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "3b2f083e5bec8d58cc99f6ed00db05fc198a49a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
