@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d940fb8_018eb7f4",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T19:07:48Z",
+      "side": 1,
+      "message": "Use the term `passthru` seems more precise than `mirror`.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "09243b34a6c52a5ab72f93564f4fc523aeb377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926f2dd1_09219c49",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 19
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-08T19:07:48Z",
+      "side": 1,
+      "message": "Maybe rename it to `PLATFORM_EC_PMIC_PASSTHRU_POWER_SIGNALS`?",
+      "range": {
+        "startLine": 283,
+        "startChar": 19,
+        "endLine": 283,
+        "endChar": 47
+      },
+      "revId": "09243b34a6c52a5ab72f93564f4fc523aeb377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
