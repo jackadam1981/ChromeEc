@@ -391,11 +391,17 @@ static int it8xxx2_tcpm_release(int port)
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+int abc;
 static int it8xxx2_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 			       enum tcpc_cc_voltage_status *cc2)
 {
 	*cc2 = it8xxx2_get_cc(port, USBPD_CC_PIN_2);
 	*cc1 = it8xxx2_get_cc(port, USBPD_CC_PIN_1);
+
+	if ((print_log == 1) && (abc == 1)) {
+		CPRINTS("p%d get 05h 0x%x(1=Rp, 0=Rd)", port, IT83XX_USBPD_CCCSR(port));
+		abc = 0;
+	}
 
 	return EC_SUCCESS;
 }

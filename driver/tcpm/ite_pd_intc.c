@@ -35,7 +35,7 @@ void chip_pd_irq(enum usbpd_port port)
 	}
 
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
-		printk("c%d Rx Hardreset\n", port);
+		printk("c%d Rx Hardreset, 05h 0x%x bit1\n", port, IT83XX_USBPD_CCCSR(port));
 		print_log = 1;
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;

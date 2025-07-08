@@ -3243,6 +3243,7 @@ static void tc_attached_src_run(const int port)
 	    pd_timer_is_expired(port, TC_TIMER_CC_DEBOUNCE)) {
 		bool tryWait;
 		enum usb_tc_state new_tc_state = TC_UNATTACHED_SNK;
+		extern int abc;
 
 		if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 			tryWait = is_try_src_enabled(port) &&
@@ -3255,6 +3256,8 @@ static void tc_attached_src_run(const int port)
 						 TC_UNATTACHED_SNK;
 
 		CPRINTS("c%d detect cc disconnect", port);
+		abc = 1;
+		tcpm_get_cc(port, &cc1, &cc2);
 		set_state_tc(port, new_tc_state);
 		return;
 	}
