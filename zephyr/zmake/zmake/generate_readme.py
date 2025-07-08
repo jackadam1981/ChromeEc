@@ -101,7 +101,9 @@ def generate_readme():
 
     def _append_argparse_help(parser):
         parser.formatter_class = MarkdownHelpFormatter
-        _append(parser.format_help())
+        # Note - the argparse help text honors %-formatting, replace escaped
+        # percent symbols "%%" with a plain percent "%" in the markdown output.
+        _append(parser.format_help().replace("%%", "%"))
 
     _append("# Zmake")
     _append()

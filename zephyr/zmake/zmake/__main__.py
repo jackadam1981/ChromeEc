@@ -249,7 +249,7 @@ def get_argparser():
         metavar="project_name",
         help="Name(s) of the project(s) to list, Unix-style wildcard "
         "expressions to select multiple projects (e.g. brox-*), or "
-        "program directory names prefixed with '%' (e.g. %nissa)",
+        "program directory names prefixed with '%%' (e.g. %%nissa)",
         default=[],
     )
 
@@ -298,7 +298,7 @@ def add_common_build_args(sub_parser: argparse.ArgumentParser):
         metavar="project_name",
         help="Name(s) of the project(s) to build, Unix-style wildcard "
         "expressions to select multiple projects (e.g. brox-*), or "
-        "program directory names prefixed with '%' (e.g. %nissa)",
+        "program directory names prefixed with '%%' (e.g. %%nissa)",
         default=[],
     )
 
