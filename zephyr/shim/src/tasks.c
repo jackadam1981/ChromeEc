@@ -235,6 +235,18 @@ uint32_t task_wait_event(int timeout_us)
 
 	__ASSERT_NO_MSG(data != NULL);
 
+	/* Before we do anything, check to see if there are events already.
+	 * This is only done for the ISH as it is needed for latency in sensors.
+	 */
+	if (IS_ENABLED(CONFIG_SOC_FAMILY_INTEL_ISH)) {
+		uint32_t events = atomic_set(&data->event_mask, 0);
+		if (events) {
+			k_poll_signal_reset(&data->new_event);
+			k_yield();
+			return events;
+		}
+	}
+
 	const k_timeout_t timeout = (timeout_us == -1) ? K_FOREVER :
 							 K_USEC(timeout_us);
 	const int64_t tick_deadline =
