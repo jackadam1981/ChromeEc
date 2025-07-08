@@ -421,6 +421,7 @@ static void enter_state(int port, enum cec_state new_state)
 			cap_edge = CEC_CAP_EDGE_FALLING;
 			timeout = CAP_DATA_HIGH_TICKS;
 		}
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 1);
 		break;
 	case CEC_STATE_FOLLOWER_DATA_LOW:
 		cap_edge = CEC_CAP_EDGE_RISING;
@@ -535,13 +536,17 @@ void cec_event_timeout(int port)
 			enter_state(port, CEC_STATE_INITIATOR_DATA_LOW);
 		break;
 	case CEC_STATE_FOLLOWER_ACK_LOW:
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 1);
 		enter_state(port, CEC_STATE_FOLLOWER_ACK_VERIFY);
 		break;
 	case CEC_STATE_FOLLOWER_ACK_VERIFY:
-		if (port_data->rx.broadcast_nak)
+		if (port_data->rx.broadcast_nak) {
 			enter_state(port, CEC_STATE_IDLE);
-		else
+		} else {
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 0);
 			enter_state(port, CEC_STATE_FOLLOWER_ACK_FINISH);
+		}
 		break;
 	case CEC_STATE_FOLLOWER_DEBOUNCE:
 		cec_debounce_disable(port);
@@ -667,10 +672,13 @@ void cec_event_cap(int port)
 	case CEC_STATE_FOLLOWER_EOM_HIGH:
 		t = cec_tmr_cap_get(port);
 		data = port_data->rx.eom;
-		if (VALID_DATA_HIGH(data, port_data->rx.low_ticks, t))
+		if (VALID_DATA_HIGH(data, port_data->rx.low_ticks, t)) {
+			gpio_pin_set_dt(
+				GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 0);
 			enter_state(port, CEC_STATE_FOLLOWER_ACK_LOW);
-		else
+		} else {
 			enter_state(port, CEC_STATE_IDLE);
+		}
 		break;
 	case CEC_STATE_FOLLOWER_ACK_LOW:
 		enter_state(port, CEC_STATE_FOLLOWER_ACK_FINISH);
@@ -730,6 +738,8 @@ static int bitbang_cec_init(int port)
 
 	/* Ensure the CEC bus is not pulled low by default on startup. */
 	gpio_set_level(drv_config->gpio_out, 1);
+
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_cec1_int_en), 1);
 
 	return EC_SUCCESS;
 }
