@@ -1328,6 +1328,8 @@ config_fatcat() {
 }
 
 config_nissa() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
@@ -1340,28 +1342,18 @@ config_nissa() {
   # For example: GPP_E7, the pin number is 231 from the pinctrl-alderlake.c.
   # From the gpio-ranges, the gpio value is 320 + (231 - 224) = 327
 
-  local gpiochip_dev_path="pci0000:00/INTC1057:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
   case "${model}" in
     (pujjoniru | pujjoquince)
       # FPMCU RST_ODL is on GPP_E7 = 320 + (231 - 224) = 327
-      local gpionrst=327
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=327
       # FPMCU BOOT0 is on GPP_D0 = 192 + (119 - 119) = 192
-      local gpioboot=192
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=192
       # FP_PWR_EN is on GPP_D2 = 192 + (121-119) = 194
-      local gpiopwren=194
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=194
       ;;
     *)
       echo "FPMCU not supported on model ${model}"
