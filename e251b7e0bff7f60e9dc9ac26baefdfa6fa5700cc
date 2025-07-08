@@ -22,6 +22,30 @@
       },
       "revId": "e251b7e0bff7f60e9dc9ac26baefdfa6fa5700cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af0f814_68294104",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/fan.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-08T19:48:15Z",
+      "side": 1,
+      "message": "`gpio_all_sys_pwr_good` is a common GPIO node label referenced by `rvp_fans.dtsi`",
+      "parentUuid": "a1f1b39f_b707963e",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "e251b7e0bff7f60e9dc9ac26baefdfa6fa5700cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
