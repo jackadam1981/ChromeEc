@@ -88,6 +88,24 @@
       "parentUuid": "b74cf436_08e1048f",
       "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff243eb1_69fa2a38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-08T19:51:14Z",
+      "side": 1,
+      "message": "\u003e I think there\u0027s value in not filtering it.\n\nIn that case, maybe list the currently supported toolchain values in the help text.",
+      "parentUuid": "fb55bd1e_66ccd89e",
+      "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
