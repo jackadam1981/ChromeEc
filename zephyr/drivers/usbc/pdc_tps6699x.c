@@ -431,20 +431,33 @@ static void tps_delayed_post(struct k_work *work)
  * to be tracked per-chip.
  */
 static atomic_t suspend_comms_flag = ATOMIC_INIT(0);
+static const int port_mask_all = BIT_MASK(NUM_PDC_TPS6699X_PORTS);
 
-static void suspend_comms(void)
+static void suspend_comms(int port)
 {
-	atomic_set(&suspend_comms_flag, 1);
+	uint32_t mask;
+	if (port == -1) {
+		mask = port_mask_all;
+	} else {
+		mask = BIT(port);
+	}
+	atomic_or(&suspend_comms_flag, mask);
 }
 
-static void enable_comms(void)
+static void enable_comms(int port)
 {
-	atomic_set(&suspend_comms_flag, 0);
+	uint32_t mask;
+	if (port == -1) {
+		mask = port_mask_all;
+	} else {
+		mask = BIT(port);
+	}
+	atomic_and(&suspend_comms_flag, ~mask);
 }
 
-static bool check_comms_suspended(void)
+static bool check_comms_suspended(int port)
 {
-	return atomic_get(&suspend_comms_flag) != 0;
+	return (atomic_get(&suspend_comms_flag) & BIT(port)) != 0;
 }
 
 static void print_current_state(struct pdc_data_t *data)
@@ -735,14 +748,14 @@ static enum smf_state_result st_init_run(void *o)
 	int rv;
 
 	/* Do not start executing commands if suspended */
-	if (check_comms_suspended()) {
+	if (check_comms_suspended(cfg->connector_number)) {
 		set_state(data, ST_SUSPENDED);
 		return SMF_EVENT_HANDLED;
 	}
 
 	/* If we've attempted init too many times, suspend instead. */
 	if (data->init_attempt > PDC_INIT_RETRY_MAX) {
-		suspend_comms();
+		suspend_comms(cfg->connector_number);
 		set_state(data, ST_SUSPENDED);
 		return SMF_EVENT_HANDLED;
 	}
@@ -834,8 +847,9 @@ static enum smf_state_result st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	uint32_t events = data->events;
+	struct pdc_config_t const *cfg = data->dev->config;
 
-	if (check_comms_suspended()) {
+	if (check_comms_suspended(cfg->connector_number)) {
 		/* Do not start executing commands or processing IRQs if
 		 * suspended. We don't need to check the event flag, it is
 		 * only needed to wake this thread.
@@ -997,9 +1011,10 @@ static void st_error_recovery_entry(void *o)
 static enum smf_state_result st_error_recovery_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
+	struct pdc_config_t const *cfg = data->dev->config;
 
 	/* Don't continue trying if we are suspending communication */
-	if (check_comms_suspended()) {
+	if (check_comms_suspended(cfg->connector_number)) {
 		set_state(data, ST_SUSPENDED);
 		return SMF_EVENT_HANDLED;
 	}
@@ -1033,13 +1048,14 @@ static void st_suspended_entry(void *o)
 static enum smf_state_result st_suspended_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
+	struct pdc_config_t const *cfg = data->dev->config;
 
 	if (data->events & PDC_CMD_SUSPEND_REQUEST_EVENT) {
 		k_event_clear(&data->pdc_event, PDC_CMD_SUSPEND_REQUEST_EVENT);
 	}
 
 	/* Stay here while suspended */
-	if (check_comms_suspended()) {
+	if (check_comms_suspended(cfg->connector_number)) {
 		return SMF_EVENT_HANDLED;
 	}
 
@@ -2714,6 +2730,7 @@ static int tps_get_identity_discovery(const struct device *dev,
 static int tps_set_comms_state(const struct device *dev, bool comms_active)
 {
 	struct pdc_data_t *data = dev->data;
+	const struct pdc_config_t *const cfg = dev->config;
 
 	if (comms_active) {
 		/* Re-enable communications. Clearing the suspend flag will
@@ -2722,7 +2739,7 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 		 * disabled. (Thus, suspending/resuming comms on a disabled
 		 * PDC driver is a no-op)
 		 */
-		enable_comms();
+		enable_comms(cfg->connector_number);
 		k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
 
 	} else {
@@ -2732,7 +2749,7 @@ static int tps_set_comms_state(const struct device *dev, bool comms_active)
 		/* Request communication to be stopped. This allows in-progress
 		 * operations to complete first.
 		 */
-		suspend_comms();
+		suspend_comms(cfg->connector_number);
 
 		/* Signal the driver with the suspend request event in case the
 		 * thread is blocking on an event to process.
@@ -3032,7 +3049,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		if (data->events & PDC_IRQ_EVENT) {
 			k_event_clear(&data->pdc_event, PDC_IRQ_EVENT);
 
-			if (!check_comms_suspended()) {
+			if (!check_comms_suspended(cfg->connector_number)) {
 				irq_pending_for_idle = true;
 			}
 		}

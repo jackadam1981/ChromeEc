@@ -928,7 +928,6 @@ static bool should_suspend(struct pdc_port_t *port)
 	/* Suspend has been requested. Wait until we are in a safe state. */
 
 	enum pdc_state_t current_state = get_pdc_state(port);
-
 	switch (current_state) {
 	/* Safe states to suspend from */
 	case PDC_UNATTACHED:
@@ -942,7 +941,7 @@ static bool should_suspend(struct pdc_port_t *port)
 	 * allows suspending when the the PDC is stuck in a bootloader mode
 	 * and GET_CONNECTOR_STATUS is repeatedly failing. */
 	case PDC_INIT:
-		return (port->cmd->error != 0);
+		return port->cmd != NULL && (port->cmd->error != 0);
 
 	/* Wait for operation to finish. */
 	case PDC_SEND_CMD_START:
@@ -4784,8 +4783,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 
 		/* Wait for each PDC state machine to enter suspended state */
 		for (int p = 0; p < port_count; p++) {
-			if (get_pdc_state(&pdc_data[p]->port) == PDC_DISABLED) {
-				/* Ignore disabled ports */
+			if (!should_suspend(&pdc_data[p]->port)) {
 				continue;
 			}
 
