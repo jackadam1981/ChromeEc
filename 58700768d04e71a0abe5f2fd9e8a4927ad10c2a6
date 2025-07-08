@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cfecf1_f59f3275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-08T15:54:38Z",
+      "side": 1,
+      "message": "Is this adding support for the Realtek MECC card on the RVP, or is this a separate board?\n\nIf this is a separate board, then the project name should not start with `ocelotrvp`.\n\nAlso, this CL is too large and needs to be broken up into smaller CLs.  The project should build at each CL.\n\nI recommend the following:\n1. Add minimal board, update BUILD.py, enable UART only\n1. Add GPIOs\n1. Add power sequencing\n1. Add I2C\n1. Add ADC\n1. Add battery and charging\n1. Add PDC\n1. Add LEDs\n1. Add other features",
+      "revId": "58700768d04e71a0abe5f2fd9e8a4927ad10c2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
