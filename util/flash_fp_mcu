@@ -1230,6 +1230,8 @@ config_myst() {
 }
 
 config_brox() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
@@ -1242,39 +1244,26 @@ config_brox() {
   # For example: GPP_E21, the pin number is 247 from the pinctrl-tigerlake.c.
   # From the gpio-ranges, the gpio value is 832 + (247-226) = 853
 
-  local gpiochip_dev_path="pci0000:00/INTC1055:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
   case "${model}" in
     (lotso)
       # FPMCU RST_ODL is on GPP_E21 = 320 + 21 = 341
-      local gpionrst=341
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=341
       # FPMCU BOOT0 is on GPP_D9 = 160 + 9 = 169
-      local gpioboot=169
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=169
       # FP_PWR_EN is on GPP_E20 = 320 + 20 = 340
-      local gpiopwren=340
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=340
       ;;
     (jubilant|jubileum)
       # FPMCU RST_ODL is on GPP_D15 = 160 + 15 = 175
-      local gpionrst=175
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=175
       # FPMCU BOOT0 is on GPP_D3 = 160 + 3 = 163
-      local gpioboot=163
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=163
       # FP_PWR_EN is on GPP_D2 = 160 + 2 = 162
-      local gpiopwren=162
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=162
       ;;
     *)
       echo "FPMCU not supported on model ${model}"
