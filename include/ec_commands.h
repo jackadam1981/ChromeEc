@@ -6618,6 +6618,11 @@ enum cbi_data_tag {
 	/* CBI_TAG_BATTERY_CONFIG_1 ~ 15 will use 13 ~ 27. */
 	CBI_TAG_BATTERY_CONFIG_15 = 27,
 
+	/* CBI_TAG_PROVISION_MATRIX_VERSION
+	 * Version of the current provision matrix
+	 */
+	CBI_TAG_PROVISION_MATRIX_VERSION = 28, /* uint32_t bit field */
+
 	/* Last entry */
 	CBI_TAG_COUNT,
 };
