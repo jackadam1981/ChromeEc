@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "091daf55_633c6e8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T20:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8d636d4_9a55f17c",
+      "range": {
+        "startLine": 16,
+        "startChar": 68,
+        "endLine": 17,
+        "endChar": 45
+      },
+      "revId": "822a1d9a437f8e0aa8e046523cf6a37ad54f94e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c29194d7_b87973f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-08T20:34:25Z",
       "side": 1,
       "message": "```suggestion\n# Used in ec_host_cmd_backend_shi_npcx.c. Also see\n# https://github.com/zephyrproject-rtos/zephyr/pull/92567.\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "822a1d9a437f8e0aa8e046523cf6a37ad54f94e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce427243_f185c9ba",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-08T20:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c29194d7_b87973f3",
       "range": {
         "startLine": 71,
         "startChar": 0,
