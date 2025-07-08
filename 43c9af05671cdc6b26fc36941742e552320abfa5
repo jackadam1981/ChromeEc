@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9dcd1933_371650b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-08T07:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013271f2_5b591068",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fc3e4460_4729ecff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f19c25a_28952e07",
+        "filename": "zephyr/program/trulo/kaladin/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-08T07:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f460ef8d_ebe068b2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8442ae1f_e647ad15",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-07-07T23:33:10Z",
       "side": 1,
       "message": "similar to above, I don\u0027t see these files in this CL and I don\u0027t think they would all need to be included here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "43c9af05671cdc6b26fc36941742e552320abfa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddd6c5c_36623d64",
+        "filename": "zephyr/program/trulo/kaladin/project.overlay",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-08T07:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8442ae1f_e647ad15",
       "range": {
         "startLine": 16,
         "startChar": 0,
