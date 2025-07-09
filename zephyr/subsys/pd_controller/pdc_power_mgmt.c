@@ -271,12 +271,12 @@ struct send_cmd_t {
 enum snk_attached_local_state_t {
 	/** SNK_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SNK_ATTACHED_GET_CONNECTOR_CAPABILITY,
+	/** SNK_ATTACHED_ADD_PD_SRC */
+	SNK_ATTACHED_ADD_PD_SRC,
 	/** SNK_ATTACHED_SET_DR_SWAP_POLICY */
 	SNK_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SNK_ATTACHED_SET_PR_SWAP_POLICY */
 	SNK_ATTACHED_SET_PR_SWAP_POLICY,
-	/** SNK_ATTACHED_DISABLE_FRS */
-	SNK_ATTACHED_DISABLE_FRS,
 	/** SNK_ATTACHED_GET_PDOS */
 	SNK_ATTACHED_GET_PDOS,
 	/** SNK_ATTACHED_READ_POWER_LEVEL */
@@ -2339,6 +2339,7 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 static enum smf_state_result pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *config = port->dev->config;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2380,9 +2381,22 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 
 	switch (port->snk_attached_local_state) {
 	case SNK_ATTACHED_GET_CONNECTOR_CAPABILITY:
+		port->snk_attached_local_state = SNK_ATTACHED_ADD_PD_SRC;
+		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
+		return SMF_EVENT_HANDLED;
+	case SNK_ATTACHED_ADD_PD_SRC:
 		port->snk_attached_local_state =
 			SNK_ATTACHED_SET_DR_SWAP_POLICY;
-		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
+		/* If FRS is supported, add PD source to max current request.
+		 * The DPM will remove the max current request if it is not
+		 * required for FRS when the partner Sink Caps are evaluated.
+		 */
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS)) {
+			pdc_dpm_add_pd_source(config->connector_num);
+		} else {
+			port->frs_enable = false;
+			queue_internal_cmd(port, CMD_PDC_SET_FRS);
+		}
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SET_DR_SWAP_POLICY:
 		port->snk_attached_local_state =
@@ -2394,7 +2408,7 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_UOR);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SET_PR_SWAP_POLICY:
-		port->snk_attached_local_state = SNK_ATTACHED_DISABLE_FRS;
+		port->snk_attached_local_state = SNK_ATTACHED_GET_VDO;
 		/* TODO: read from DT */
 		port->pdr = (union pdr_t){
 			.accept_pr_swap =
@@ -2405,14 +2419,6 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		atomic_clear_bit(port->snk_policy.flags,
 				 SNK_POLICY_UPDATE_ALLOW_PR_SWAP);
-		return SMF_EVENT_HANDLED;
-	case SNK_ATTACHED_DISABLE_FRS:
-		/* Always disable FRS by default. The source policy manager
-		 * is responsible for enabling FRS is the power budget allows.
-		 */
-		port->snk_attached_local_state = SNK_ATTACHED_GET_VDO;
-		port->frs_enable = false;
-		queue_internal_cmd(port, CMD_PDC_SET_FRS);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_GET_VDO:
 		port->snk_attached_local_state = SNK_ATTACHED_GET_PDOS;
