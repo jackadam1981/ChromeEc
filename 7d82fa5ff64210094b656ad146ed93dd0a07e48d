@@ -94,6 +94,30 @@
       },
       "revId": "7d82fa5ff64210094b656ad146ed93dd0a07e48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc0f061_a93866ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T16:44:22Z",
+      "side": 1,
+      "message": "yes, there are the 6 failing unit tests:\n\nI believe this test should be deprecated because the functions tested are not used in Zephyr\n```\nTest \"flash_physical\": FAILED\n```\n\nI believe this will be resolved when `OTP` code merges:\n``` \nTest \"fpsensor_auth_crypto_stateful_otp\": FAILED\n```\n\nThese tests have not merged yet\n```\nTest \"otp_key\": FAILED\nTest \"ram_lock\": FAILED\n```\n\nThose will pass once buccaneer firmware merges:\n```\nTest \"unaligned_access_buccaneer_v2.0.26328\": FAILED\nTest \"panic_data_buccaneer_v2.0.26328\": FAILED\n```",
+      "parentUuid": "4b214d3c_3eb2d2ce",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "7d82fa5ff64210094b656ad146ed93dd0a07e48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
