@@ -46,6 +46,9 @@ readonly CROS_EC_UART_MODALIAS_STR="of:NcrfpTCgoogle,cros-ec-uart"
 
 USE_LEGACY_GPIO_API=1
 
+# Clean up any remaining gpioset processes on exit.
+trap 'kill "${GPIO_ACTIVE_PIDS[@]}" 2>/dev/null' EXIT
+
 klog() {
   echo "flash_fp_mcu: $*" > /dev/kmsg
 }
@@ -156,12 +159,20 @@ _gpio_new() {
   for signal in "$@"; do
     case "${cmd}" in
       0|1)
-        local value="${cmd}"
-        klog "Set gpio ${GPIO_CHIP}/${signal} to ${value}"
-        gpioset "${GPIO_CHIP}" "${signal}=${value}"
+        # Kill any gpioset processes for this GPIO before spawning a new one.
+        if [[ -n "${GPIO_ACTIVE_PIDS[${signal}]}" ]]; then
+          kill "${GPIO_ACTIVE_PIDS[${signal}]}"
+          unset "GPIO_ACTIVE_PIDS[${signal}]"
+        fi
+
+        # We need to run gpioset as a background process in order to hold the
+        # gpio at a specific value.
+        gpioset --mode=signal "${GPIO_CHIP}" "${signal}=${cmd}" &
+        GPIO_ACTIVE_PIDS[${signal}]=$!
+        klog "Set and hold GPIO ${GPIO_CHIP}/${signal} to ${cmd} (PID: ${GPIO_ACTIVE_PIDS[${signal}]})"
         ;;
       get)
-        klog "Get gpio ${GPIO_CHIP}/${signal}"
+        klog "Get GPIO ${GPIO_CHIP}/${signal}"
         gpioget "${GPIO_CHIP}" "${signal}"
         ;;
       unexport|export|in|out)
@@ -656,13 +667,17 @@ flash_fp_mcu_board() {
   fi
   sleep 0.5
 
-  # We do not expect the drivers to change the pin state when binding.
-  # If you receive this warning, the driver needs to be fixed on this board
-  # and this flash attempt will probably fail.
-  warn_gpio "${gpio_boot0}" 1 \
-    "WARNING: One of the drivers changed BOOT0 pin state on bind attempt."
-  warn_gpio "${gpio_nrst}" 0 \
-    "WARNING: One of the drivers changed NRST pin state on bind attempt."
+  # When using gpioset, we can only do this check if it's not holding the
+  # GPIO.
+  if [[  "${#GPIO_ACTIVE_PIDS[@]}" -eq 0 ]]; then
+    # We do not expect the drivers to change the pin state when binding.
+    # If you receive this warning, the driver needs to be fixed on this board
+    # and this flash attempt will probably fail.
+    warn_gpio "${gpio_boot0}" 1 \
+      "WARNING: One of the drivers changed BOOT0 pin state on bind attempt."
+    warn_gpio "${gpio_nrst}" 0 \
+      "WARNING: One of the drivers changed NRST pin state on bind attempt."
+  fi
 
   if [[ ! -c "${device}" ]]; then
     echo "Failed to bind raw device driver." >&2
