@@ -436,6 +436,8 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 		 */
 	}
 
+	int key = irq_lock();
+
 	if (gpio >= 0) {
 		gpio_set_level(drv_config->gpio_out, gpio);
 		/*
@@ -447,6 +449,7 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 	if (timeout >= 0) {
 		cec_tmr_cap_start(port, cap_edge, timeout);
 	}
+	irq_unlock(key);
 }
 
 __soc_ram_code void cec_event_timeout(int port)
