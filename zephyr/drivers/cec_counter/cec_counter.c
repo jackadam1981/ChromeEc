@@ -12,6 +12,7 @@
 #include "timer.h"
 
 #include <errno.h>
+#include <ilm.h>
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/counter.h>
@@ -37,13 +38,13 @@ static bool transfer_initiated;
 /* The capture edge we're waiting for */
 static enum cec_cap_edge expected_cap_edge;
 
-__override void cec_update_interrupt_time(int port)
+__override __soc_ram_code void cec_update_interrupt_time(int port)
 {
 	prev_interrupt_time = interrupt_time;
 	interrupt_time = get_time();
 }
 
-void cec_ext_timer_interrupt(int port)
+__soc_ram_code void cec_ext_timer_interrupt(int port)
 {
 	if (transfer_initiated) {
 		transfer_initiated = false;
@@ -54,12 +55,12 @@ void cec_ext_timer_interrupt(int port)
 	}
 }
 
-void cec_ext_top_timer_handler(const struct device *dev, void *user_data)
+__soc_ram_code void cec_ext_top_timer_handler(const struct device *dev, void *user_data)
 {
 	cec_ext_timer_interrupt((int)((intptr_t)user_data));
 }
 
-void cec_gpio_handler(const struct device *device,
+__soc_ram_code void cec_gpio_handler(const struct device *device,
 		      struct gpio_callback *callback, gpio_port_pins_t pins)
 {
 	int port;
@@ -94,7 +95,7 @@ void cec_gpio_handler(const struct device *device,
 	cec_event_cap(port);
 }
 
-void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
+__soc_ram_code void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 				    int timeout)
 {
 	expected_cap_edge = edge;
@@ -135,7 +136,7 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 	}
 }
 
-void cros_cec_bitbang_tmr_cap_stop(int port)
+__soc_ram_code void cros_cec_bitbang_tmr_cap_stop(int port)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
@@ -146,12 +147,12 @@ void cros_cec_bitbang_tmr_cap_stop(int port)
 	counter_stop(cec_counter_dev);
 }
 
-int cros_cec_bitbang_tmr_cap_get(int port)
+__soc_ram_code int cros_cec_bitbang_tmr_cap_get(int port)
 {
 	return CEC_US_TO_TICKS(interrupt_time.val - prev_interrupt_time.val);
 }
 
-void cros_cec_bitbang_debounce_enable(int port)
+__soc_ram_code void cros_cec_bitbang_debounce_enable(int port)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
@@ -160,7 +161,7 @@ void cros_cec_bitbang_debounce_enable(int port)
 					GPIO_INT_DISABLE);
 }
 
-void cros_cec_bitbang_debounce_disable(int port)
+__soc_ram_code void cros_cec_bitbang_debounce_disable(int port)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
@@ -169,7 +170,7 @@ void cros_cec_bitbang_debounce_disable(int port)
 					GPIO_INT_EDGE_BOTH);
 }
 
-void cros_cec_bitbang_trigger_send(int port)
+__soc_ram_code void cros_cec_bitbang_trigger_send(int port)
 {
 	unsigned int key;
 	/* Elevate to interrupt context */
@@ -180,7 +181,7 @@ void cros_cec_bitbang_trigger_send(int port)
 	irq_unlock(key);
 }
 
-void cros_cec_bitbang_enable_timer(int port)
+__soc_ram_code void cros_cec_bitbang_enable_timer(int port)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
@@ -193,7 +194,7 @@ void cros_cec_bitbang_enable_timer(int port)
 					GPIO_INT_EDGE_BOTH);
 }
 
-void cros_cec_bitbang_disable_timer(int port)
+__soc_ram_code void cros_cec_bitbang_disable_timer(int port)
 {
 	cec_tmr_cap_stop(port);
 
@@ -201,7 +202,7 @@ void cros_cec_bitbang_disable_timer(int port)
 	prev_interrupt_time.val = 0;
 }
 
-void cros_cec_bitbang_init_timer(int port)
+__soc_ram_code void cros_cec_bitbang_init_timer(int port)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
