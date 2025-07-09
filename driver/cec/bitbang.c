@@ -23,6 +23,10 @@
 #define DEBUG_CPRINTS(...)
 #endif
 
+int cec_index_test __keep;
+uint8_t cec_states_transition_test[4096] __keep;
+uint8_t cec_states_timeout_test[4096] __keep;
+
 /*
  * Free time timing (us). Our free-time is calculated from the end of
  * the last bit (not from the start). We compensate by having one
@@ -451,6 +455,10 @@ void cec_event_timeout(int port)
 {
 	struct cec_port_data *port_data = &cec_port_data[port];
 
+	if (cec_index_test != 4096) {
+		cec_states_timeout_test[cec_index_test++] = port_data->state;
+	}
+
 	switch (port_data->state) {
 	case CEC_STATE_DISABLED:
 	case CEC_STATE_IDLE:
@@ -568,6 +576,10 @@ void cec_event_cap(int port)
 	struct cec_port_data *port_data = &cec_port_data[port];
 	int t;
 	int data;
+
+	if (cec_index_test != 4096) {
+		cec_states_transition_test[cec_index_test++] = port_data->state;
+	}
 
 	switch (port_data->state) {
 	case CEC_STATE_IDLE:
