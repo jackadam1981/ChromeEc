@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82fa85e_ce9231e9",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-09T17:52:32Z",
+      "side": 1,
+      "message": "why ISH only? we have seen latency issues for a while with Zephyr EC and the sensor stack.Could it help on the EC as well?",
+      "revId": "cf280bac46e0a8da773fc7dd49af090f4365a1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c1d1cf_b2a053ce",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-09T17:52:32Z",
+      "side": 1,
+      "message": "Let\u0027s image an interrupt source that regularly sends interrupt. The EC can handle them most of the time, but may need to defer processing sometimes to process timers. Isn\u0027t it a risk here that the timers will never be processed if we always give priority to events already present? We need a way to bail and lower priority events.",
+      "revId": "cf280bac46e0a8da773fc7dd49af090f4365a1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
