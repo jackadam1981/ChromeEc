@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7dab05_91614501",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:30:42Z",
+      "side": 1,
+      "message": "This looks to be a new driver introduced for bluey.\n\nBecause we don\u0027t need legacy (non Zephyr) support, this driver should be updated to use Zephyr\u0027s native GPIOs which directly support an active high/active low setting.\n\nThis also has the advantage of specifying the GPIO configuration directly in devicetree instead.\n\n```\nqcom-exp {\n   compatible \u003d \"pmic,qcom-exp\";\n   kpd-pwr-gpios \u003d \u003c\u0026gpioc 1 (GPIO_ACTIVE_HIGH)\u003e;\n   resin-gpios \u003d \u003c\u0026gpio 9 6 (GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)\u003e;\n   ap-rst \u003d \u003c\u0026gpioa 7 (GPIO_ACTIVE_LOW)\u003e;\n   \n```\n\nThe C code then uses `gpio_pin_set_dt()` and `gpio_pin_get_dt()` to set/get the \"logical\" level of the GPIO, honoring the active high/low setting configured in the devicetree.\n\nThis also makes it easier to add new properties to set RESIN pulse length or other customizations in the future.",
+      "range": {
+        "startLine": 537,
+        "startChar": 17,
+        "endLine": 537,
+        "endChar": 34
+      },
+      "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
