@@ -36,7 +36,8 @@ int __unused periphery_spi_write_read(uint8_t *write, uint32_t write_len,
 				      uint8_t *read, uint32_t read_len)
 {
 	const struct egis630_cfg *cfg = fp_sensor_dev->config;
-	const struct spi_buf tx_buf[] = { { .buf = write, .len = write_len } };
+	const struct spi_buf tx_buf[] = { { .buf = write, .len = write_len },
+					  { .buf = NULL, .len = read_len } };
 	const struct spi_buf rx_buf[] = { { .buf = NULL, .len = write_len },
 					  { .buf = read, .len = read_len } };
 	const struct spi_buf_set tx = { .buffers = tx_buf,
