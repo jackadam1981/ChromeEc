@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7bee4ad_307d9532",
+        "filename": "zephyr/drivers/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-09T20:26:29Z",
+      "side": 1,
+      "message": "Agree. intel would be better as related .yaml file also under name - \u0027intel\u0027 directory.",
+      "parentUuid": "f116eac7_80376559",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8abdb812_ba60f414",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 7
