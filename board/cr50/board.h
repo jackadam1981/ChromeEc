@@ -229,6 +229,9 @@
 /* Don't use DCRYPTO code from chip/g. */
 #undef CONFIG_DCRYPTO
 
+/* Enable Strongbox for Cr50 */
+#define CONFIG_STRONGBOX
+
 /*
  * This is pretty arbitrary, a rough estimate of what's required for smooth
  * Cr50 operation.
@@ -491,9 +494,6 @@ void int_ap_register(void (*func_enable)(void));
 void int_ap_extension_enable(void);
 void int_ap_extension_stop_pulse(void);
 
-/* Moving from legacy versions might require NVMEM transition. */
-int board_nvmem_legacy_check_needed(void);
-
 void set_ap_on(void);
 
 /*
@@ -580,7 +580,6 @@ enum nvmem_users {
 #define CONFIG_RW_B
 
 #define CONFIG_AP_RO_VERIFICATION
-#define CONFIG_SPI_HASH
 
 /* Firmware upgrade options. */
 #define CONFIG_NON_HC_FW_UPDATE
