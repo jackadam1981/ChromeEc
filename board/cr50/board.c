@@ -4,6 +4,7 @@
  */
 #include "ap_ro_integrity_check.h"
 #include "board_id.h"
+#include "board_id_features.h"
 #include "ccd_config.h"
 #include "clock.h"
 #include "closed_source_set1.h"
@@ -937,6 +938,11 @@ static void board_init(void)
 	check_board_id_mismatch();
 	check_board_id_mismatch();
 
+#ifdef CONFIG_BOARD_ID_FEATURES
+	/* Setup features controlled by the board id. */
+	init_board_id_features();
+#endif
+
 	/*
 	 * Start monitoring AC detect to wake Cr50 from deep sleep.  This is
 	 * needed to detect RDD cable changes in deep sleep.  AC detect is also
@@ -1868,6 +1874,9 @@ static int command_board_properties(int argc, char **argv)
 	ccprintf("properties = 0x%x\n", GREG32(PMU, LONG_LIFE_SCRATCH1));
 	ccprintf("tpm board cfg = 0x%x\n", board_cfg_reg_read());
 	print_factory_config();
+#ifdef CONFIG_BOARD_ID_FEATURES
+	print_board_id_features();
+#endif
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(brdprop, command_board_properties,
@@ -1941,19 +1950,6 @@ void board_unwedge_i2cp(void)
 int board_in_prod_mode(void)
 {
 	return in_prod_mode;
-}
-
-int board_nvmem_legacy_check_needed(void)
-{
-	enum system_image_copy_t other_rw;
-	const struct SignedHeader *h;
-
-	other_rw = system_get_image_copy() == SYSTEM_IMAGE_RW ?
-		SYSTEM_IMAGE_RW_B : SYSTEM_IMAGE_RW;
-
-	h = (const struct SignedHeader *)get_program_memory_addr(other_rw);
-
-	return (h->major_ <= 2) || ((h->major_ <= 4) && (h->minor_ <= 18));
 }
 
 /*
