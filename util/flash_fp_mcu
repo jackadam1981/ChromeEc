@@ -1021,26 +1021,24 @@ config_rauru() {
 }
 
 config_strongbad() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev10.0"
 
-  local dev_path="platform/soc@0/3500000.pinctrl/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
   # FPMCU RST_ODL is $(gpiofind FP_RST_L) is gpiochip0 22
-  readonly GPIO_NRST=$((gpiobase + $(gpiofind FP_RST_L|cut -f2 -d" ")))
+  GPIO_NRST=$(gpiofind FP_RST_L|cut -f2 -d" ")
+  readonly GPIO_NRST
   # FPMCU BOOT0 is $(gpiofind FPMCU_BOOT0) is gpiochip0 10
-  readonly GPIO_BOOT0=$((gpiobase + $(gpiofind FPMCU_BOOT0|cut -f2 -d" ")))
+  GPIO_BOOT0=$(gpiofind FPMCU_BOOT0|cut -f2 -d" ")
+  readonly GPIO_BOOT0
 
   # EN FP RAILS is $(gpiofind EN_FP_RAILS) is gpiochip0 74 (if available)
   local en_fp_rails
   if en_fp_rails=$(gpiofind EN_FP_RAILS); then
-    readonly GPIO_PWREN=$((gpiobase + $(echo "${en_fp_rails}"|cut -f2 -d" ")))
+    GPIO_PWREN=$(echo "${en_fp_rails}"|cut -f2 -d" ")
+    readonly GPIO_PWREN
   else
     readonly GPIO_PWREN=-1
   fi
