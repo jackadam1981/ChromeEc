@@ -74,6 +74,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbc1155b_27013bd0",
+        "filename": "zephyr/drivers/board_id/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:17:12Z",
+      "side": 1,
+      "message": "Nit - use `\u003cdriver_type\u003e_\u003cvendor\u003e` pattern to match Zephyr conventions.\n```\nconfig BOARD_ID_INTEL_RVP\n```",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8abdb812_ba60f414",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 7
@@ -113,6 +136,52 @@
         "startChar": 2,
         "endLine": 123,
         "endChar": 9
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650d2adb_ea008dfb",
+        "filename": "zephyr/include/drivers/rvp_board_id.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:17:12Z",
+      "side": 1,
+      "message": "Nit - make this an enum",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf8a8bf_ea11cc35",
+        "filename": "zephyr/include/drivers/rvp_board_id.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:17:12Z",
+      "side": 1,
+      "message": "Add a doxygen header for public functions.  Also don\u0027t use anonymous parameters.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 21
       },
       "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
