@@ -3,6 +3,9 @@
 # found in the LICENSE file.
 
 zephyr_include_directories("include")
+zephyr_library_sources(
+		"src/led_policy.c"
+	)
 zephyr_library_sources_ifdef(
     CONFIG_PDC_RUNTIME_PORT_CONFIG "src/usbc_runtime.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
