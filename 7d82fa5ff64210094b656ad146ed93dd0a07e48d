@@ -22,6 +22,30 @@
       },
       "revId": "7d82fa5ff64210094b656ad146ed93dd0a07e48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aa4d1f4_6be3d38d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T03:25:37Z",
+      "side": 1,
+      "message": "```\nTest \"production_app_test\": PASSED\n\nTest \"abort\": PASSED\n\nTest \"aes\": PASSED\n\nTest \"always_memset\": SKIPPED\n\nTest \"assert_builtin\": SKIPPED\n\nTest \"assert_stdlib\": SKIPPED\n\nTest \"benchmark\": PASSED\n\nTest \"boringssl_crypto\": PASSED\n\nTest \"cortexm_fpu\": PASSED\n\nTest \"crc\": PASSED\n\nTest \"exception\": PASSED\n\nTest \"exit\": PASSED\n\nTest \"flash_physical\": FAILED\n\nTest \"flash_write_protect\": PASSED\n\nTest \"fp_transport_spi_ro\": PASSED\n\nTest \"fp_transport_spi_rw\": PASSED\n\nTest \"fp_transport_uart_ro\": PASSED\n\nTest \"fp_transport_uart_rw\": PASSED\n\nTest \"fpsensor_auth_crypto_stateful\": PASSED\n\nTest \"fpsensor_auth_crypto_stateful_otp\": FAILED\n\nTest \"fpsensor_auth_crypto_stateless\": PASSED\n\nTest \"fpsensor_crypto\": PASSED\n\nTest \"fpsensor_debug\": PASSED\n\nTest \"fpsensor_hw\": PASSED\n\nTest \"fpsensor_utils\": PASSED\n\nTest \"ftrapv\": PASSED\n\nTest \"libc_printf\": PASSED\n\nTest \"global_initialization\": SKIPPED\n\nTest \"libcxx\": PASSED\n\nTest \"malloc\": PASSED\n\nTest \"mpu_ro\": SKIPPED\n\nTest \"mpu_rw\": SKIPPED\n\nTest \"mutex\": SKIPPED\n\nTest \"mutex_trylock\": SKIPPED\n\nTest \"mutex_recursive\": SKIPPED\n\nTest \"otp_key\": FAILED\n\nTest \"panic\": PASSED\n\nTest \"panic_data\": PASSED\n\nTest \"pingpong\": SKIPPED\n\nTest \"printf\": PASSED\n\nTest \"queue\": PASSED\n\nTest \"ram_lock\": FAILED\n\nTest \"restricted_console\": PASSED\n\nTest \"rng_benchmark\": PASSED\n\nTest \"rollback_region0\": PASSED\n\nTest \"rollback_region1\": PASSED\n\nTest \"rollback_entropy\": PASSED\n\nTest \"rtc\": SKIPPED\n\nTest \"rtc_npcx9\": PASSED\n\nTest \"sbrk\": PASSED\n\nTest \"sha256\": PASSED\n\nTest \"sha256_unrolled\": PASSED\n\nTest \"static_if\": PASSED\n\nTest \"stdlib\": PASSED\n\nTest \"std_vector\": PASSED\n\nTest \"system_is_locked_wp_on\": PASSED\n\nTest \"system_is_locked_wp_off\": PASSED\n\nTest \"timer\": PASSED\n\nTest \"timer_dos\": SKIPPED\n\nTest \"tpm_seed_clear\": PASSED\n\nTest \"uart\": SKIPPED\n\nTest \"unaligned_access\": PASSED\n\nTest \"unaligned_access_benchmark\": PASSED\n\nTest \"utils\": PASSED\n\nTest \"utils_str\": PASSED\n\nTest \"watchdog\": PASSED\n\nTest \"power_utilization_idle\": PASSED\n\nTest \"power_utilization_sleep\": PASSED\n\nTest \"unaligned_access_helipilot_v2.0.24337\": PASSED\n\nTest \"unaligned_access_helipilot_v2.0.27609\": PASSED\n\nTest \"unaligned_access_buccaneer_v2.0.26328\": FAILED\n\nTest \"panic_data_helipilot_v2.0.24337\": PASSED\n\nTest \"panic_data_helipilot_v2.0.27609\": PASSED\n\nTest \"panic_data_buccaneer_v2.0.26328\": FAILED\n\nTest \"zephyr_cpp_newlib\": PASSED\n\nTest \"zephyr_drivers_entropy\": PASSED\n\nTest \"zephyr_kernel_poll\": PASSED\n```",
+      "parentUuid": "b7bcdf28_07a573bf",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "7d82fa5ff64210094b656ad146ed93dd0a07e48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
