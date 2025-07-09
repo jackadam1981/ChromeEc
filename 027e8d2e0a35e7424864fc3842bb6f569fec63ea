@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a205f6_90151a2c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "As discussed, please change to \u003d\u003d 2.",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a4e1ee_702fc11f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "you can store `-EIO` in `err`, don\u0027t return here and call `k_sem_give` only once.",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a4ef49_803b8b06",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "Can we check if `regdata` is NULL? Same applies to other functions that take pointer as an argument. It is done only in `elan_fp_maintenance`",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f53ef8e_b6c6b0ef",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "Same here, with additional `else` statement for `*regdata \u003d rx_buf[1];`. The same applies to other functions.",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db0a419_ddedb6a5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "Good practice is to lock the access as close as possible to the use of the locked resource, so I would move the take after assert statements.",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3339c324_c48bb4c7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "You can use k_uptime_get_32() or k_uptime_get() here.",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33b641c_42bcd69e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-09T10:57:46Z",
+      "side": 1,
+      "message": "k_msleep(1)",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
