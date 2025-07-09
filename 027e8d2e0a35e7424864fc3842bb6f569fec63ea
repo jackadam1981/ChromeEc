@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11c9705_99ee8dbf",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T16:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2a205f6_90151a2c",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a4e1ee_702fc11f",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-07-09T10:57:46Z",
       "side": 1,
       "message": "Can we check if `regdata` is NULL? Same applies to other functions that take pointer as an argument. It is done only in `elan_fp_maintenance`",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c25cbba_f2cda32b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T16:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07a4ef49_803b8b06",
       "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43ed1687_f0604875",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T16:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db0a419_ddedb6a5",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3339c324_c48bb4c7",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e1b8c8_b05254e0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T16:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3339c324_c48bb4c7",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e33b641c_42bcd69e",
@@ -116,6 +188,24 @@
       "writtenOn": "2025-07-09T10:57:46Z",
       "side": 1,
       "message": "k_msleep(1)",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa047cda_94e8b5f7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-09T16:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33b641c_42bcd69e",
       "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
