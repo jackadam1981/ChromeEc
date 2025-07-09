@@ -33,6 +33,24 @@
       "message": "Why isn\u0027t 13-27 documented? Technically outside the scope of this CL, but this may cause confusion.",
       "revId": "a4a414b842726209b385475865bda8d241a53417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c24d04_d5a6782d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 9245,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-07-09T16:33:14Z",
+      "side": 1,
+      "message": "Those are tags for battery_configs[1:15], I can add that in a followup CL",
+      "parentUuid": "ef37c0ec_712f0ac4",
+      "revId": "a4a414b842726209b385475865bda8d241a53417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
