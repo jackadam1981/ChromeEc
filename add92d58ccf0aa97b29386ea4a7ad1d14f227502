@@ -16,6 +16,24 @@
       "message": "This change is breaking the `adlrvp-mchp` project:\n\n```\n[adlrvp_mchp:ro] devicetree error: \u0027pinctrl-0\u0027 is marked as required in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/adc/microchip,xec-adc.yaml, but does not appear in \u003cNode /soc/adc@40007c00 in \u0027/mnt/host/source/src/third_party/zephyr/main/misc/empty_file.c\u0027\u003e\n```",
       "revId": "add92d58ccf0aa97b29386ea4a7ad1d14f227502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c3b705_fd240a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-09T09:22:10Z",
+      "side": 1,
+      "message": "Thanks @honscheid@google.com , I have taken care this in CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6716768 now. Please review and approve the same.",
+      "parentUuid": "30139701_1dcd0024",
+      "revId": "add92d58ccf0aa97b29386ea4a7ad1d14f227502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
