@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bde36f_b050b794",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:59:16Z",
+      "side": 1,
+      "message": "Nit - move this hook to be adjacent to the other policy hooks - HOOK_CHIPSET_*",
+      "range": {
+        "startLine": 974,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 64
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c6654a_921fcadc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:59:16Z",
+      "side": 1,
+      "message": "No C++ style comments.  Please run `cros format` on all files and make sure you\u0027re running the pre-submit checks.",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 43
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac472f78_4a6113a4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:59:16Z",
+      "side": 1,
+      "message": "Use the Zephyr namespace, CONFIG_PLATFORM_EC_USB_VID",
+      "range": {
+        "startLine": 984,
+        "startChar": 11,
+        "endLine": 984,
+        "endChar": 25
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da905120_fbf52c56",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:59:16Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_USB_PID",
+      "range": {
+        "startLine": 987,
+        "startChar": 11,
+        "endLine": 987,
+        "endChar": 25
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a62ee73_af2cc686",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4501,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:59:16Z",
+      "side": 1,
+      "message": "This doesn\u0027t belong here. \n\nIt makes more sense to call `pdc_set_battery_capability` and `pdc_set_battery_status` as part of `pdc_init_run` to see the initial battery cap and status.\n\nHOOK_BATTERY_SOC_CHANGE will handle future updates.",
+      "range": {
+        "startLine": 4499,
+        "startChar": 0,
+        "endLine": 4501,
+        "endChar": 0
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
