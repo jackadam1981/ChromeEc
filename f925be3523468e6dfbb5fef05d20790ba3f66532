@@ -46,6 +46,30 @@
       },
       "revId": "f925be3523468e6dfbb5fef05d20790ba3f66532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f513ad7_918b19b5",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-09T20:19:03Z",
+      "side": 1,
+      "message": "Yes, Agree that suggested Condition check is better. Change made in latest patch.",
+      "parentUuid": "8126eb77_e03295e9",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "f925be3523468e6dfbb5fef05d20790ba3f66532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
