@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a4a414b842726209b385475865bda8d241a53417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef37c0ec_712f0ac4",
+        "filename": "util/ectool.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 9245,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-07-09T16:31:31Z",
+      "side": 1,
+      "message": "Why isn\u0027t 13-27 documented? Technically outside the scope of this CL, but this may cause confusion.",
+      "revId": "a4a414b842726209b385475865bda8d241a53417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
