@@ -21,6 +21,7 @@
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
 /* EC Defines */
+#define CONFIG_AP_HANG_DETECT
 #define CONFIG_ADC
 #define CONFIG_BOARD_HAS_RTC_RESET
 #define CONFIG_BOARD_VERSION_CBI
@@ -30,6 +31,7 @@
 #define CONFIG_BOARD_RESET_AFTER_POWER_ON
 /* TODO: (b/143496253) re-enable CEC */
 /* #define CONFIG_CEC */
+#define CONFIG_CMD_AP_RESET_LOG
 #define CONFIG_CRC8
 #define CONFIG_CBI_EEPROM
 #define CONFIG_EMULATED_SYSRQ
