@@ -22,6 +22,30 @@
       },
       "revId": "f925be3523468e6dfbb5fef05d20790ba3f66532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8126eb77_e03295e9",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T17:04:06Z",
+      "side": 1,
+      "message": "Good idea.  `#if DT_NODE_HAS_STATUS(DT_NODELABEL(pwr_en_pp5000_a), okay)` should work.",
+      "parentUuid": "8e8d021f_9fefb382",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "f925be3523468e6dfbb5fef05d20790ba3f66532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
