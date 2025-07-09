@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "395c2c01_19c6a45a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T17:11:55Z",
+      "side": 1,
+      "message": "Nit: Can you say which test it was?",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1d5587ec_2f43f459",
@@ -14,6 +37,91 @@
       "writtenOn": "2025-07-09T09:34:22Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6009c57_06924229",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T17:11:55Z",
+      "side": 1,
+      "message": "Nit: I\u0027d put a comment here about why we\u0027re doing this, since this requirement has not been obvious to most people we\u0027ve discussed this issue with.",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4add1bc_cefdbe4f",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T17:11:55Z",
+      "side": 1,
+      "message": "This test is about discovery. To test other requirements, you should make a new test. Each of the below tests is a different enter-mode scenario.",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef857de_473a78b1",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T17:11:55Z",
+      "side": 1,
+      "message": "Line length. Should be fixed by `cros format`.",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b66aed88_17772111",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T17:11:55Z",
+      "side": 1,
+      "message": "Can you comment the fields here?",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd4bdd7_64262852",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T17:11:55Z",
+      "side": 1,
+      "message": "This covers the scenario in which the first Attention message has the sink connected. It\u0027s not bad to test explicitly, but we were already doing that correctly. The more important scenario here is where the first Attention has nothing connected, and another Attention comes later with the sink connected. We should then see the mux not update until after the second Attention.\n\n(To ultimately pass all the tests, we might also expect to see a Configure enabling USB mode after the first Attention, but this CL doesn\u0027t add that behavior yet.)",
       "revId": "4c0707500b25829cba753cf147999052f6765408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
