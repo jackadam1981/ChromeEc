@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5888686_30ffc209",
+        "filename": "zephyr/program/brox/caboc/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-07-09T01:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0373e6db_af68e8d1",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "53e8d2e5b801777a8d18c886fc602b4657be8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f249fe_7816cae5",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-08T17:41:54Z",
       "side": 1,
       "message": "Does the caboc platform require run-time USBC selection, or is the USB-C topology fixed?\n\nIf run-time support is not needed, this file can be removed.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "53e8d2e5b801777a8d18c886fc602b4657be8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2180c80f_3ca67c66",
+        "filename": "zephyr/program/brox/caboc/src/usbc_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-07-09T01:03:33Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nCurrently caboc does not require run-time USBC selection, while we still need to reserve this feature for future request. I have made some changes in GPIO update config patch set.\n\nThanks!",
+      "parentUuid": "35f249fe_7816cae5",
       "range": {
         "startLine": 5,
         "startChar": 0,
