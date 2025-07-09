@@ -146,6 +146,10 @@ SECTIONS
         KEEP(*(.rodata.extensioncmds))
         __extension_cmds_end = .;
 
+        __strongbox_cmds = .;
+        KEEP(*(.rodata.strongboxcmds))
+        __strongbox_cmds_end = .;
+
         . = ALIGN(4);
         __hcmds = .;
         KEEP(*(SORT(.rodata.hcmds*)))
