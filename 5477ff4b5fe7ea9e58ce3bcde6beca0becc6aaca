@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f65968d_0c57fde1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "This isn\u0027t required for CLs that are only adding .dtsi file or adding configs. This would only be required for files that are added to trulo/kaladin/src or trulo/src etc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6a4080_3c525de8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "I am still reviewing the gpio DT nodes relative to the schematic.",
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df5f04d_5416a4b8",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "generated.dtsi adds this section for ADC, but gpio.dtsi doesn\u0027t need to copy that functionality as it\u0027s being manually created. Probably makes sense to move this to an adc.dtsi file for clarity.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3e8ab9_07400c10",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "I think it\u0027s better to move the i2c DT nodes to i2c.dtsi. Simlar to ADC, you\u0027ll find this in generated.dtsi, but that\u0027s created via the arbitrage tool. As the gpio nodes are manually being added, we don\u0027t need to keep this convention for gpio.dtsi",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f448a98_ad6a7f48",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "Similar to above, the adc stuff doesn\u0027t need to be in gpio.dtsi",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6539184c_62f5bb09",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "Same comment about i2c DT nodes here. The status \u003d \"okay\" lines can be moved to the corresponding \u0026i2c0 in i2c.dtsi",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 5
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1675d8d_02f8d814",
+        "filename": "zephyr/program/trulo/kaladin/kaladin.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-09T22:58:11Z",
+      "side": 1,
+      "message": "nit: 2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
