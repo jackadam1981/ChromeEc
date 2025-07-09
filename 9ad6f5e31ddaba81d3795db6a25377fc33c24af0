@@ -106,6 +106,24 @@
       "parentUuid": "fb55bd1e_66ccd89e",
       "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5d7a58_48c210b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-09T08:31:33Z",
+      "side": 1,
+      "message": "that can\u0027t be done reliably, it depends on\n- what is supported upstream\n- what is extended by the modules\n- what is installed on the local system\n\nand all of those are bound to change over time",
+      "parentUuid": "ff243eb1_69fa2a38",
+      "revId": "9ad6f5e31ddaba81d3795db6a25377fc33c24af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
