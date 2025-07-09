@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ec26e2_0dc19b01",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-09T22:06:57Z",
+      "side": 1,
+      "message": "This ordering makes more sense.",
+      "parentUuid": "c5c8f451_20e08ff0",
+      "range": {
+        "startLine": 3008,
+        "startChar": 0,
+        "endLine": 3013,
+        "endChar": 0
+      },
+      "revId": "408afa5934d6bcb4cfccace8d97adc78ce7443b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "790dae53_0642d45b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-09T16:38:54Z",
       "side": 1,
       "message": "Same comment as the RTK driver.",
+      "range": {
+        "startLine": 3126,
+        "startChar": 0,
+        "endLine": 3126,
+        "endChar": 50
+      },
+      "revId": "408afa5934d6bcb4cfccace8d97adc78ce7443b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1d0980_cbe6d6f9",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-09T22:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790dae53_0642d45b",
       "range": {
         "startLine": 3126,
         "startChar": 0,
