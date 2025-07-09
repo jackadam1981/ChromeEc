@@ -140,7 +140,9 @@ static enum vendor_cmd_rc vc_sn_set_hash(enum vendor_cmd_cc code,
 					 size_t input_size,
 					 size_t *response_size)
 {
+#ifndef CR50_DEV
 	struct board_id bid;
+#endif
 	uint32_t sn_hash[3];
 	uint8_t *pbuf = buf;
 
@@ -151,6 +153,7 @@ static enum vendor_cmd_rc vc_sn_set_hash(enum vendor_cmd_cc code,
 		return VENDOR_RC_BOGUS_ARGS;
 	}
 
+#ifndef CR50_DEV
 	/*
 	 * Only allow writing sn bits if we can successfully verify
 	 * that the board ID type has not been writen yet.
@@ -160,6 +163,7 @@ static enum vendor_cmd_rc vc_sn_set_hash(enum vendor_cmd_cc code,
 		*pbuf = EC_ERROR_ACCESS_DENIED;
 		return VENDOR_RC_NOT_ALLOWED;
 	}
+#endif
 
 	memcpy(&sn_hash, pbuf, sizeof(sn_hash));
 
