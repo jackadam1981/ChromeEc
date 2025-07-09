@@ -60,7 +60,10 @@ class MarkdownHelpFormatter(argparse.HelpFormatter):
             return f"`{_get_metavar(action)}`"
 
         def _get_table_line(action):
-            return f"| {_format_invocation(action)} | {action.help} |"
+            return (
+                f"| {_format_invocation(action)} | "
+                f"{self._expand_help(action) if action.help else None} |"
+            )
 
         table_lines = [
             "|   |   |",
@@ -101,9 +104,7 @@ def generate_readme():
 
     def _append_argparse_help(parser):
         parser.formatter_class = MarkdownHelpFormatter
-        # Note - the argparse help text honors %-formatting, replace escaped
-        # percent symbols "%%" with a plain percent "%" in the markdown output.
-        _append(parser.format_help().replace("%%", "%"))
+        _append(parser.format_help())
 
     _append("# Zmake")
     _append()
