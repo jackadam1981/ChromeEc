@@ -101,6 +101,7 @@ __soc_ram_code void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge e
 	expected_cap_edge = edge;
 
 	if (timeout > 0) {
+		int key = irq_lock();
 		/*
 		 * Take into account the delay from when the interrupt occurs to
 		 * when we actually get here. Since the timing is done in
@@ -131,6 +132,7 @@ __soc_ram_code void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge e
 		top_cfg.user_data = (void *)((intptr_t)port);
 		top_cfg.flags = 0;
 		counter_set_top_value(cec_counter_dev, &top_cfg);
+		irq_unlock(key);
 	} else {
 		counter_stop(cec_counter_dev);
 	}
