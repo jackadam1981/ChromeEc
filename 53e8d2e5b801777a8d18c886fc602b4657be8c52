@@ -93,6 +93,30 @@
       },
       "revId": "53e8d2e5b801777a8d18c886fc602b4657be8c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90f58b3_d21e87c6",
+        "filename": "zephyr/program/brox/caboc/src/usbc_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:27:15Z",
+      "side": 1,
+      "message": "I recommend deleting this file as part of this CL stack.  The logic contained here is specific to the brox reference design and would need modification to work on caboc if runt-time support is needed in the future.",
+      "parentUuid": "2180c80f_3ca67c66",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "53e8d2e5b801777a8d18c886fc602b4657be8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
