@@ -1336,6 +1336,19 @@
  */
 #undef CONFIG_ENABLE_H1_ALERTS_CONSOLE
 
+/*
+ * Enable controlling features based on the board id.
+ */
+#undef CONFIG_BOARD_ID_FEATURES
+
+/*
+ * Enable resetting the EC when the device tries to enter rec+dev mode and it's
+ * blocked by the FWMP.
+ *
+ * This is also restricted by the board id.
+ */
+#undef CONFIG_FWMP_BLOCK_REC_DEV_RESET_EC
+
 /*****************************************************************************/
 /*
  * Debugging config
@@ -4083,6 +4096,9 @@
 /* (b/262324344): Enable debugging of EPS state in NVMEM */
 #undef CONFIG_NVMEM_DEBUG_EPS
 
+/* Configure Strongbox command support */
+#undef CONFIG_STRONGBOX
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
@@ -4633,6 +4649,10 @@
 
 #ifdef CONFIG_SMBUS_PEC
 #define CONFIG_CRC8
+#endif
+
+#if defined(CONFIG_STRONGBOX) && !defined(CONFIG_EXTENSION_COMMAND)
+#error "CONFIG_EXTENSION_COMMAND shall be defined for CONFIG_STRONGBOX"
 #endif
 
 /* Don't run RSA 2048 known-answer test (+30 ms). */
