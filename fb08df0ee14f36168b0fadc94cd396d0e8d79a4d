@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb7b3ce_5fb7cdea",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-09T21:25:00Z",
+      "side": 0,
+      "message": "We might want to keep this (and also do it in the abort path). It contains some debugging data that TI can decode if we ever encounter a FWUP failure.",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 541,
+        "endChar": 20
+      },
+      "revId": "fb08df0ee14f36168b0fadc94cd396d0e8d79a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401ff1e5_e2b0d111",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-09T21:25:00Z",
+      "side": 1,
+      "message": "This function is only used by the FW updater. We can guard it with the Kconfig macro and then apply `/* LCOV_EXCL_START/STOP */` to exempt this from the code coverage requirement since it is for development use only.",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 21
+      },
+      "revId": "a40ce0d7b320787331b86531c66bbaf46257e92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bf8aa5_f4337aa5",
+        "filename": "zephyr/drivers/usbc/tps6699x_fwup.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-09T21:25:00Z",
+      "side": 1,
+      "message": "I added a follow-on feature for RTK where you can also pass a raw I2C bus name and target address, which is useful when the current devicetree doesn\u0027t align with what is actually installed (e.g. strapping resistors are wrong). We don\u0027t need to do this right now but I created a feature request bug to circle back to: http://b/430597425",
+      "range": {
+        "startLine": 619,
+        "startChar": 1,
+        "endLine": 622,
+        "endChar": 38
+      },
+      "revId": "a40ce0d7b320787331b86531c66bbaf46257e92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
