@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd30f34_a7b7c93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-09T16:58:42Z",
+      "side": 1,
+      "message": "This failed to build some legacy EC tests, which you should be able to run locally with `make runhosttests`. Some of the tests are TCPMv2 tests, so I don\u0027t think this is a TCPMv1 vs v2 issue. Many of these tests only link one of the state machines, e.g. the PRL, and have stub implementations of the others, e.g. the DPM, to allow the implementation under test to link. Confusingly, we have a few different ways of doing this. For each test, the fix will probably be to add a stub implementation of `pd_dpm_request` to whichever mechanism that test already uses.\n\nTo make an example out of `usb_prl_noextended`, the first failure:\n1. `test/build.mk` has `usb_prl_noextended-y\u003dusb_prl_noextended.o usb_sm_checks.o fake_usbc.o`.\n2. `test/fake_usbc.c` has lots of stub functions, but `pd_dpm_request` is not one of them.\n3. Add something like `void pd_dpm_request(int port) {}` (but format it nicely), and `make run-usb_prl_noextended` should build (or at least not break in this exact way).\n\nOther tests may be set up differently, so you may have to fix another stub file using the same process. Some tests have their own stubs inside the test file. It\u0027s a bit of a mess.",
+      "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
