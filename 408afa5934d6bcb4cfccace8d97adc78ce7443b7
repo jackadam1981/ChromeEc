@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c8f451_20e08ff0",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T16:38:54Z",
+      "side": 1,
+      "message": "Nit - should the device is ready check be done first?\n```\nif (!device_is_ready())\n    num_finished++;\nelse if (state \u003d\u003d IDLE \u0026\u0026 cmd \u003d\u003d NONE)\n    num_finished++;\n```",
+      "range": {
+        "startLine": 3008,
+        "startChar": 0,
+        "endLine": 3013,
+        "endChar": 0
+      },
+      "revId": "408afa5934d6bcb4cfccace8d97adc78ce7443b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790dae53_0642d45b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T16:38:54Z",
+      "side": 1,
+      "message": "Same comment as the RTK driver.",
+      "range": {
+        "startLine": 3126,
+        "startChar": 0,
+        "endLine": 3126,
+        "endChar": 50
+      },
+      "revId": "408afa5934d6bcb4cfccace8d97adc78ce7443b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
