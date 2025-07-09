@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db696ce5_570fb6b7",
+        "filename": "zephyr/drivers/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T22:11:51Z",
+      "side": 1,
+      "message": "Actually, this matches Zephyr\u0027s convention.  The driver directory name is generic, while the individual drivers include the vendor name.\n\nSo I think using `board_id` for the directory name is fine.  It leaves open the possibility of creating other board ID drivers in the future (for instance `intel,rvp-board-id-v2`).",
+      "parentUuid": "d7bee4ad_307d9532",
+      "range": {
+        "startLine": 5,
+        "startChar": 9,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8abdb812_ba60f414",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 7
