@@ -45,6 +45,10 @@
 #include "watchdog.h"
 #include "wp.h"
 
+#ifdef CONFIG_STRONGBOX
+#include "strongbox.h"
+#endif
+
 /****************************************************************************/
 /*
  * CAUTION: Variables defined in this in this file are treated specially.
@@ -666,13 +670,12 @@ size_t tpm_get_burst_size(void)
 #ifdef CONFIG_EXTENSION_COMMAND
 
 /* Recognize both original extension and new vendor-specific command codes */
-#define IS_CUSTOM_CODE(code)					\
-	((code == CONFIG_EXTENSION_COMMAND) ||			\
-	 (code == TPM_CC_VENDOR_BIT_MASK))
+#define IS_CUSTOM_CODE(code) \
+	((code == CONFIG_EXTENSION_COMMAND) || (code & TPM_CC_VENDOR_BIT_MASK))
 
 static void call_extension_command(struct tpm_cmd_header *tpmh,
 				   size_t *total_size,
-				   uint32_t flags)
+				   uint32_t flags, uint32_t le_command_code)
 {
 	size_t command_size = be32toh(tpmh->size);
 	uint32_t rc;
@@ -692,16 +695,31 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 			.out_size = *total_size - sizeof(struct tpm_cmd_header),
 			.flags = flags
 		};
+		rc = VENDOR_RC_NO_SUCH_SUBCOMMAND;
+		switch (le_command_code) {
+		case CONFIG_EXTENSION_COMMAND:
+		case TPM_CC_VENDOR_CR50:
+			rc = extension_route_command(&p);
+			/* Flag errors from commands as vendor-specific */
+			if (rc)
+				rc |= VENDOR_RC_ERR;
 
-		rc = extension_route_command(&p);
+			break;
+#ifdef CONFIG_STRONGBOX
+		case TPM_CC_VENDOR_STRONGBOX:
+			rc = extension_route_strongbox_command(&p);
+			/* Strongbox errors are in the range -1 .. -1000 */
+			if (rc)
+				rc = 0x400 - rc;
+			break;
+#endif
+		default:
+			break;
+		}
 
 		/* Add the header size back. */
 		*total_size = p.out_size + sizeof(struct tpm_cmd_header);
 		tpmh->size = htobe32(*total_size);
-
-		/* Flag errors from commands as vendor-specific */
-		if (rc)
-			rc |= VENDOR_RC_ERR;
 		tpmh->command_code = htobe32(rc);
 	} else {
 		*total_size = command_size;
@@ -1085,9 +1103,10 @@ void tpm_task(void *u)
 #ifdef CONFIG_EXTENSION_COMMAND
 		if (is_custom_command) {
 			response_size = buffer_size;
-			call_extension_command(tpmh, &response_size,
-					       alt_if_command ?
-					       VENDOR_CMD_FROM_ALT_IF : 0);
+			call_extension_command(
+				tpmh, &response_size,
+				alt_if_command ? VENDOR_CMD_FROM_ALT_IF : 0,
+				command_code);
 		} else
 #endif
 		{

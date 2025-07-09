@@ -26,7 +26,7 @@ enum vendor_cmd_flags {
 /* Parameters for vendor commands */
 struct vendor_cmd_params {
 	/* Command code */
-	enum vendor_cmd_cc code;
+	uint32_t code;
 
 	/* On input, data to be processed.  On output, response data. */
 	void *buffer;
