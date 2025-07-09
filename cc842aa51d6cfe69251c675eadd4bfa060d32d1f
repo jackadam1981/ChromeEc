@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a50af18_2a99cd26",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "Please add a macro for these addresses to improve readability.",
+      "range": {
+        "startLine": 391,
+        "startChar": 9,
+        "endLine": 391,
+        "endChar": 17
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b633b7ba_e0f2af32",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "Nit - no need to sleep before checking the error.  Also you should directly assign `ret` here.\n```suggestion\n\tret \u003d set_wdt_value(conf, 0x10);\n\tif (ret)\n\t\treturn ret;\n\tusleep(1000);\n\n```",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 0
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c695c1_bc3fd870",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2caa29_b6a87ff3",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "Use `true` and `false` for bool types.",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 23
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c21cd7c_36e39ac5",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "`boundary` is only checked if `wdt_enable`.  You can just initialize to 16K unconditionally.",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 0
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc91694d_0aebad4c",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "I think you want\n\n\n```suggestion\n\t\tif (conf-\u003ewdt_enable \u0026\u0026 ((start_addr % boundary) \u003d\u003d 0) {\n\t\t\trestart_wdt(conf);\n\t\t}\n\n```\n\nThe code as is reloads the watchdog on every pass except with the start address aligns to the boundary size.",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 768,
+        "endChar": 0
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d21de31_e453ae0c",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-09T21:57:59Z",
+      "side": 1,
+      "message": "Why not disable the watchdog before calling `getchipid`?  Disable watchdog also calls `restart_wdt`",
+      "range": {
+        "startLine": 1161,
+        "startChar": 4,
+        "endLine": 1161,
+        "endChar": 25
+      },
+      "revId": "cc842aa51d6cfe69251c675eadd4bfa060d32d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
