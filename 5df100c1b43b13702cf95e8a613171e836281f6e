@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1fbe4f25_16cf0dd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-10T13:56:28Z",
+      "side": 1,
+      "message": "Set back to WIP, I can\u0027t get this to pass CTS on the new boards and the tast hardware.SensorIioserviceHard test is flaky. These pass on my reworked boards, so I will need to look into what the delta there might be.",
+      "revId": "5df100c1b43b13702cf95e8a613171e836281f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "55d2a77b_6f8393cb",
         "filename": "zephyr/test/tasks/testcase.yaml",
         "patchSetId": 3
