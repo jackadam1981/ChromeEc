@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578cab2d_9d2d3cb3",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-10T18:06:58Z",
+      "side": 1,
+      "message": "It looks like there is a dependency on the MPU being enabled since the code to initialize it is in `mpu_enable`. Can you add that dependency here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
