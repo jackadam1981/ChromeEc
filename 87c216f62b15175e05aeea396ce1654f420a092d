@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc06e4d7_0236a073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-10T18:13:02Z",
+      "side": 1,
+      "message": "\u003e Hello Tom,\n\n@fsammoura@google.com Please use the @ mentions since it\u0027s not clear which Tom you\u0027re asking.",
+      "parentUuid": "39905573_e105b2eb",
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7099b5a_fe3fa547",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 6
