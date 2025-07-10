@@ -16,6 +16,24 @@
       "message": "Should this also select `PLATFORM_EC_POWER_BUTTON`?",
       "revId": "ab06cbbd080ff50cf978c0f30d47f61b7f1e8278",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af2f3054_ba65df0c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T17:49:25Z",
+      "side": 1,
+      "message": "`PLATFORM_EC_POWER_BUTTON_X86` can be used with either `PLATFORM_EC_POWER_BUTTON` or `INPUT_GPIO_KEYS`.  `INPUT_GPIO_KEYS` is a Zephyr driver that replaces common/power_button.c",
+      "parentUuid": "aeb24b4f_fa70c87f",
+      "revId": "ab06cbbd080ff50cf978c0f30d47f61b7f1e8278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
