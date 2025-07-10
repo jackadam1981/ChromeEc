@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27aaff18_20f2bb14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-10T15:49:42Z",
+      "side": 1,
+      "message": "is compilation a sufficient test for this CL? Shouldn\u0027t you test the gpio change on hardware as well?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "95183eaf76e935f4634775ac611ba000a258b736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
