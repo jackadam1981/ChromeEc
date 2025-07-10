@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f4e68c_40c5c706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T16:09:33Z",
+      "side": 1,
+      "message": "I recommend combining this with the adlrvp change to ensure you can build all projects.  With the CLs split, I think you might have a build error if only the adlrvp change merged.",
+      "revId": "f115e54eb2beb20daa92eab7a830584e076af2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
