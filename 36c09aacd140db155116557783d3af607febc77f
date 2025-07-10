@@ -46,6 +46,30 @@
       },
       "revId": "36c09aacd140db155116557783d3af607febc77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf1968e_4885b547",
+        "filename": "zephyr/program/fatcat/kinmen/kinmen_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-10T22:44:53Z",
+      "side": 1,
+      "message": "Added 5071 PID",
+      "parentUuid": "8fbdbdd0_93903b18",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 80
+      },
+      "revId": "36c09aacd140db155116557783d3af607febc77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
