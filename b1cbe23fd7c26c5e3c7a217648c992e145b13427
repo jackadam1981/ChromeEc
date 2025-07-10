@@ -46,6 +46,30 @@
       },
       "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1052657_d0068d70",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T21:56:38Z",
+      "side": 1,
+      "message": "I agree with this plan.  This driver really belongs under the `zephyr/` directory.  The `zephyr/subsys/ap_pwrseq` subsystem is currently tightly coupled to the x86 architecture, so I think more analysis is needed as to whether qcom support can be added to `ap_pwrseq`.  Another possible path is port `qcom_exp` to `zephyr/drivers/pmic/pmic_qcom_exp.c` as a standalone Zephyr driver.\nPlease open a bug to track this.",
+      "parentUuid": "822a1938_288ee455",
+      "range": {
+        "startLine": 537,
+        "startChar": 17,
+        "endLine": 537,
+        "endChar": 34
+      },
+      "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
