@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7bd8281_d9da486a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-10T07:40:14Z",
+      "side": 1,
+      "message": "It is probably too much ingratiation in the migration process, but I feel like this entire once you start this process, you don\u0027t want to be interrupted e.g. once `FUSE_LOAD` load command is sent, no other thread (e.g. HOST_CMD thread, because host sent fpinfo hc) should interact with the sensor. Is that correct?",
+      "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bfbae8_0d007dab",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-10T07:40:14Z",
+      "side": 1,
+      "message": "Do we know what these values mean? Can we add defines for that?",
+      "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

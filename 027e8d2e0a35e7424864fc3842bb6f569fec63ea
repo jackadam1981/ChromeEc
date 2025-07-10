@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2e5059_d82d5abc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-10T07:40:14Z",
+      "side": 1,
+      "message": "I\u0027m okay with that.",
+      "parentUuid": "a080e1e7_81c053be",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a4ef49_803b8b06",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "same comment as above",
       "parentUuid": "9f53ef8e_b6c6b0ef",
+      "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c419b2d3_79fa7b34",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-10T07:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4d75a0_c4e8e571",
       "revId": "027e8d2e0a35e7424864fc3842bb6f569fec63ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
