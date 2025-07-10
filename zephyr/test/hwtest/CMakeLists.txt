@@ -60,3 +60,4 @@ if(${CONFIG_HW_TEST_EXCEPTION})
 endif()
 
 zephyr_library_sources_ifdef(CONFIG_MOCK_ROLLBACK ${PLATFORM_EC}/common/mock/rollback_mock.c)
+zephyr_library_sources_ifdef(CONFIG_MOCK_OTP ${PLATFORM_EC}/common/mock/otpi_mock.c)
