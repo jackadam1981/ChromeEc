@@ -67,6 +67,7 @@ config HW_TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL
 	bool "FP sensor auth crypto stateful test"
 	select ZTEST
 	select MOCK_ROLLBACK
+	select MOCK_OTP if BASEBOARD_HELIPILOT
 
 config HW_TEST_FPSENSOR_AUTH_CRYPTO_STATELESS
 	bool "FP sensor auth crypto stateless test"
@@ -264,3 +265,6 @@ config HW_TEST_WATCHDOG
 
 config MOCK_ROLLBACK
 	bool "Mock rollback for tests"
+
+config MOCK_OTP
+	bool "Mock OTP for tests"
