@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43d3b7f_4b5f500f",
+        "filename": "driver/charger/isl95522.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-10T23:24:07Z",
+      "side": 1,
+      "message": "i don\u0027t think the `inline` hint is useful these days.\nlet the optimizer figure it out.",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "726447a4d8770141da7d3ac27e62af1a3ea581b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df96427_7dc259b6",
+        "filename": "driver/charger/isl95522.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-10T23:24:07Z",
+      "side": 1,
+      "message": "ISL95522_CONTROL2_SWITCHING_FREQ_SHIFT",
+      "range": {
+        "startLine": 178,
+        "startChar": 17,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "726447a4d8770141da7d3ac27e62af1a3ea581b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd75630_aa5dc3cb",
+        "filename": "driver/charger/isl95522.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-10T23:24:07Z",
+      "side": 1,
+      "message": "do you need `BC_CURRENT_TO_REG` here?",
+      "range": {
+        "startLine": 389,
+        "startChar": 54,
+        "endLine": 389,
+        "endChar": 56
+      },
+      "revId": "726447a4d8770141da7d3ac27e62af1a3ea581b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37492eef_0ce2e960",
+        "filename": "driver/charger/isl95522.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-10T23:24:07Z",
+      "side": 1,
+      "message": "for all of these `ISL95522_REG_..._MASK` style masks,\nit would be useful to also have a corresponding\n`ISL95522_REG_..._SHIFT` definition.",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "726447a4d8770141da7d3ac27e62af1a3ea581b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
