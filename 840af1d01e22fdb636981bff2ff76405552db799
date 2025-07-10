@@ -85,6 +85,30 @@
       },
       "revId": "840af1d01e22fdb636981bff2ff76405552db799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92387f8a_93dc512a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2395,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-10T23:48:42Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I\u0027ll follow up with changes to account for FRS and Src Cap being set by SNK policies.\n\n* I\u0027m not sure if the PDC retains the FRS enable/disable through disconnects.\n\nI think this could depend on the PDC. For TI, FRS is enabled/disabled by updating the Port Control Register (0x29) which I expect persists across disconnections. This change calls `pdc_power_mgmt_frs_enable` in `pdc_dpm_remove_source` to disable FRS, but as you\u0027ve pointed out that wouldn\u0027t run until SNK policies are updated. \n\n* What happens if FRS is enabled and the partner wants 15W, but the source PDO is only 7.5W?\n\nMight depend on the PDC. For TI, it will not FR swap. The PDC also checks the partner\u0027s Snk Caps against our Src Caps. From the FR Swap Enable bit of TPS6699x datasheet:\n\n*\"Assert this bit to enable Fast-Role Swap detection. If the amount of current the Port Partner requires during the Fast-Role Swap process is less than or equal to the current in Transmit Source Capabilities (TXSourcePDO1) when an FRS signal is detected, then the device will perform a Fast-Role swap\"*",
+      "parentUuid": "872a1787_a35ae35c",
+      "range": {
+        "startLine": 2395,
+        "startChar": 3,
+        "endLine": 2395,
+        "endChar": 24
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
