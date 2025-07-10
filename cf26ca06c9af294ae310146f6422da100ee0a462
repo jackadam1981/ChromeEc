@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8fcf7f3_4c1114ae",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T16:41:04Z",
+      "side": 1,
+      "message": "I am not sure what you mean by `It is probably too much ingratiation in the migration process`. This is the first time I hear the word `ingratiation`.\n\nI am not sure I fully understand this comment. Maybe it is easier to discuss it over GVC this evening my time. From my understanding, all SPI communication are now blocked i.e. no other SPI communication can happen without the first one being done and values transferred because we using the `sem_lock` an this is the SPI between MCU / sensor. If HOST command send fpinfo, it needs hwid. that SPI communication can occur in the middle of the `elan_set_hv_chip` for instance, but does it matter? it is just reading a register. Do you issue host commands without getting response of the first command?\n\nI believe you mean a host command interrupting sensor initialization, etc. Can we discuss it over a GVC? I would like to get your perspective and better understand of how this was protected in bloonchipper and dartmonkey.",
+      "parentUuid": "d7bd8281_d9da486a",
+      "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21bfbae8_0d007dab",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 36
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-10T07:40:14Z",
       "side": 1,
       "message": "Do we know what these values mean? Can we add defines for that?",
+      "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861aeb17_4c91abcf",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T16:41:04Z",
+      "side": 1,
+      "message": "I am asking Elan",
+      "parentUuid": "21bfbae8_0d007dab",
       "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
