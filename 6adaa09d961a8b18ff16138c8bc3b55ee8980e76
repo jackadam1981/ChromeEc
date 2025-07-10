@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2398a416_3334ff9a",
+        "filename": "zephyr/drivers/board_id/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-10T10:43:52Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "fbc1155b_27013bd0",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abdb812_ba60f414",
@@ -132,6 +156,30 @@
       "writtenOn": "2025-07-09T19:25:29Z",
       "side": 1,
       "message": "these should probably be `LOG_DBG`.\nthe caller or consumer of this info should decide if it\u0027s worth reporting on the console, specially since there\u0027s no caching here.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c13f0a_2578eb36",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-10T10:43:52Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "8abdb812_ba60f414",
       "range": {
         "startLine": 82,
         "startChar": 2,
@@ -165,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3b69b8_227fd877",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-10T10:43:52Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "6250be98_313d3077",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650d2adb_ea008dfb",
@@ -188,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9fc670_a0937de2",
+        "filename": "zephyr/include/drivers/rvp_board_id.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-10T10:43:52Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "650d2adb_ea008dfb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf8a8bf_ea11cc35",
@@ -201,6 +297,30 @@
       "writtenOn": "2025-07-09T22:17:12Z",
       "side": 1,
       "message": "Add a doxygen header for public functions.  Also don\u0027t use anonymous parameters.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "6adaa09d961a8b18ff16138c8bc3b55ee8980e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039f0442_d24e7c5b",
+        "filename": "zephyr/include/drivers/rvp_board_id.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-10T10:43:52Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "cbf8a8bf_ea11cc35",
       "range": {
         "startLine": 13,
         "startChar": 4,
