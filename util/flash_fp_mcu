@@ -46,6 +46,8 @@ readonly CROS_EC_UART_MODALIAS_STR="of:NcrfpTCgoogle,cros-ec-uart"
 
 USE_LEGACY_GPIO_API=1
 
+readonly GPIOSET_SUPPORTS_HOLD=1
+
 # Clean up any remaining gpioset processes on exit.
 trap 'kill "${GPIO_ACTIVE_PIDS[@]}" 2>/dev/null' EXIT
 
@@ -146,6 +148,34 @@ _gpio_legacy() {
   done
 }
 
+# Usage: _gpioset_hold <gpio_chip> <signal> <value>
+_gpioset_hold() {
+  local gpio_chip="$1"
+  local signal="$2"
+  local value="$3"
+
+  # Kill any gpioset processes for this GPIO before spawning a new one.
+  if [[ -n "${GPIO_ACTIVE_PIDS[${signal}]}" ]]; then
+    kill "${GPIO_ACTIVE_PIDS[${signal}]}"
+    unset "GPIO_ACTIVE_PIDS[${signal}]"
+  fi
+
+  # We need to run gpioset as a background process in order to hold the
+  # gpio at a specific value.
+  gpioset --mode=signal "${gpio_chip}" "${signal}=${value}" &
+  GPIO_ACTIVE_PIDS[${signal}]=$!
+  klog "Set and hold GPIO ${gpio_chip}/${signal} to ${value} (PID: ${GPIO_ACTIVE_PIDS[${signal}]})"
+}
+
+# Usage: _gpioset <gpio_chip> <signal> <value>
+_gpioset() {
+  local gpio_chip="$1"
+  local signal="$2"
+  local value="$3"
+  gpioset "${gpio_chip}" "${signal}=${value}"
+  klog "Set GPIO ${gpio_chip}/${signal} to ${value}"
+}
+
 # Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
 _gpio_new() {
   local cmd="$1"
@@ -159,17 +189,11 @@ _gpio_new() {
   for signal in "$@"; do
     case "${cmd}" in
       0|1)
-        # Kill any gpioset processes for this GPIO before spawning a new one.
-        if [[ -n "${GPIO_ACTIVE_PIDS[${signal}]}" ]]; then
-          kill "${GPIO_ACTIVE_PIDS[${signal}]}"
-          unset "GPIO_ACTIVE_PIDS[${signal}]"
+        if [[ "${GPIOSET_SUPPORTS_HOLD}" -eq 1 ]]; then
+          _gpioset_hold "${GPIO_CHIP}" "${signal}" "${cmd}"
+        else
+          _gpioset "${GPIO_CHIP}" "${signal}" "${cmd}"
         fi
-
-        # We need to run gpioset as a background process in order to hold the
-        # gpio at a specific value.
-        gpioset --mode=signal "${GPIO_CHIP}" "${signal}=${cmd}" &
-        GPIO_ACTIVE_PIDS[${signal}]=$!
-        klog "Set and hold GPIO ${GPIO_CHIP}/${signal} to ${cmd} (PID: ${GPIO_ACTIVE_PIDS[${signal}]})"
         ;;
       get)
         klog "Get GPIO ${GPIO_CHIP}/${signal}"
