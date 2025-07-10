@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eee321cf_2ae7c963",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-10T21:10:39Z",
+      "side": 1,
+      "message": "\u003e It returns empty success. This is how the EC signals to the host that there is no more data to be read.\n\nThat would be a great comment in code",
+      "parentUuid": "58b560bf_f3b69873",
+      "range": {
+        "startLine": 563,
+        "startChar": 6,
+        "endLine": 563,
+        "endChar": 33
+      },
+      "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b43f694_4e5e57f7",
         "filename": "common/panic_output.c",
         "patchSetId": 5
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0755ff33_8da9d6d3",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-10T21:10:39Z",
+      "side": 1,
+      "message": "got it, thanks!",
+      "parentUuid": "a2aef3b5_0d07b485",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 69
+      },
+      "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a884bd26_43afaef9",
@@ -126,6 +174,24 @@
       "side": 1,
       "message": "PANIC_DATA_FLAG_TRUNCATED is set when the panic data is too large for the host command. With v2, this is no longer needed, since the host is expected to keep reading the panic_data until the whole struct is read.",
       "parentUuid": "a884bd26_43afaef9",
+      "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720b718f_468dea72",
+        "filename": "include/panic_defs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-07-10T21:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94dce6cc_adac1bd5",
       "revId": "270cb4e1b23dabe6c302de481b5afbfcd3765a0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
