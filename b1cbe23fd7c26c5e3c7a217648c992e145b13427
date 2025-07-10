@@ -22,6 +22,30 @@
       },
       "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822a1938_288ee455",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-10T17:30:04Z",
+      "side": 1,
+      "message": "For consistency, all `gpio_set_level` and `gpio_get_level` calls need to be changed, and similarly, other APIs, like `hook`, `sleep`, `timer` also require modification. This driver would better be moved under `zephyr/` to fully adapt the Zephyr conversion, similar to the `cbi_flash` driver. As we also introduced the `ap_pwrseq` subsystem to Zephyr, and adapting this subsystem would be more appropriate. As a result, it seems not a small effort and will likely be a follow-up task.",
+      "parentUuid": "6f7dab05_91614501",
+      "range": {
+        "startLine": 537,
+        "startChar": 17,
+        "endLine": 537,
+        "endChar": 34
+      },
+      "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
