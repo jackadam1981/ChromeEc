@@ -16,6 +16,24 @@
       "message": "we either include this with a separate test called OTP, or just add this config to the stateful test.",
       "revId": "136150e212b3d65b7835665d5a1d7d9d5df74e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff364b72_73e068e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T06:40:55Z",
+      "side": 1,
+      "message": "if `CONFIG_OTP_KEY` is enabled for `helipilot` baseboard, `fpsensor_auth_crypto_stateful` unit test will start failing because it will not be able to find `mock_otp`",
+      "parentUuid": "7b4078e1_9a2c741c",
+      "revId": "136150e212b3d65b7835665d5a1d7d9d5df74e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
