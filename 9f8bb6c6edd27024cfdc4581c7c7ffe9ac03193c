@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c3d763_c86e0f7f",
+        "filename": "zephyr/program/trulo/kaladin/i2c.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-10T23:48:11Z",
+      "side": 1,
+      "message": "Nit: I think this can moved to the \u0026i2c0 entry above. Same for the next 2.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 16
+      },
+      "revId": "9f8bb6c6edd27024cfdc4581c7c7ffe9ac03193c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
