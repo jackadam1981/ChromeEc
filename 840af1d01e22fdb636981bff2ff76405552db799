@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e96f8f_34a331a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T17:18:21Z",
+      "side": 1,
+      "message": "This change should also add some unit tests for this new policy.  See zephyr/test/pdc/pdc_policy/src_policy.c",
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a40cf4b_fba811ec",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T17:18:21Z",
+      "side": 1,
+      "message": "`pd_dpm_add_pd_source` already checks for `3A_PORTS \u003d\u003d 0`, so I don\u0027t think it\u0027s possible for FRS to be enabled at this point.\n\nIt would be an error if the port\u0027s `source_frs_max_requested` bit is set.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 0
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a7db8f_bd6df2ab",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T17:18:21Z",
+      "side": 1,
+      "message": "If 3A_PORTS \u003d\u003d 0, then we won\u0027t enable FRS until after evaluating the source caps, even if the FRS partner only wants 1.5A.\n\nThis is the safer thing to do, but it could lead to the same PD compliance failure on a board that doesn\u0027t support sourcing 3A.\n\nThis quirk warrants a comment.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 45
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872a1787_a35ae35c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2395,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T17:18:21Z",
+      "side": 1,
+      "message": "This path needs to send CMD_PDC_SET_FRS, otherwise you won\u0027t enable/disable FRS until the SNK policies are run, which occurs very late.\n\nI\u0027m not sure if the PDC retains the FRS enable/disable through disconnects.\n\nOn a disconnect, we set the Source PDO limit to 7.5W.  We don\u0027t increase the Source PDO setting until we run SNK policies (SNK_POLICY_UPDATE_SRC_CAPS).  What happens if FRS is enabled and the partner wants 15W, but the source PDO is only 7.5W?",
+      "range": {
+        "startLine": 2395,
+        "startChar": 3,
+        "endLine": 2395,
+        "endChar": 24
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
