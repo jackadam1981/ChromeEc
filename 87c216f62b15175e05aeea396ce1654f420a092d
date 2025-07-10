@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39905573_e105b2eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-10T18:10:32Z",
+      "side": 1,
+      "message": "If https://crrev.com/c/6720416 is needed for the `ram_lock` unit test to run, let\u0027s pull it into this CL. Then you can add `./test/run_device_tests.py -b helipilot -f servo_micro -t ram_lock --zephyr` to a `TEST\u003d` line to indicate that you ran the unit tests on device and they passed.",
+      "parentUuid": "68e3003d_6d0d0b8d",
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7099b5a_fe3fa547",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 6
