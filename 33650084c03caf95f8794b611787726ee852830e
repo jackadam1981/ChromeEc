@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ecb662_bf5face8",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T21:17:37Z",
+      "side": 1,
+      "message": "This comment still needs a leading tab indent.\n```suggestion\n\t/* TODO(b/430093425): Remove pwr_en_pp5000_a after moving\n\t * to RVP-rev2\n\t */\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "33650084c03caf95f8794b611787726ee852830e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34372ee5_af894095",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-10T21:17:37Z",
+      "side": 1,
+      "message": "Needs an indent.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 72
+      },
+      "revId": "33650084c03caf95f8794b611787726ee852830e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
