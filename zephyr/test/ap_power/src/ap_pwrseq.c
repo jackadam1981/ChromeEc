@@ -375,6 +375,65 @@ ZTEST(ap_pwrseq, test_ap_pwrseq_2)
 		      "AP_POWER_HARD_OFF event not generated");
 }
 
+#if defined(CONFIG_AP_X86_INTEL_MTL)
+ZTEST(ap_pwrseq, test_ap_pwrseq_3_sleep_reset)
+{
+	struct ec_params_host_sleep_event_v1 host_sleep_ev_p = {
+		.sleep_event = HOST_SLEEP_EVENT_S0IX_SUSPEND,
+		.suspend_params = { EC_HOST_SLEEP_TIMEOUT_DEFAULT },
+	};
+	struct ec_response_host_sleep_event_v1 host_sleep_ev_r;
+	struct host_cmd_handler_args host_sleep_ev_args = BUILD_HOST_COMMAND(
+		EC_CMD_HOST_SLEEP_EVENT, 1, host_sleep_ev_r, host_sleep_ev_p);
+
+	struct ec_params_s0ix_cnt s0ix_cnt_ev_p = {
+		.flags = EC_S0IX_COUNTER_RESET
+	};
+	struct ec_response_s0ix_cnt s0ix_cnt_ev_r;
+	struct host_cmd_handler_args s0ix_cnt_ev_args = BUILD_HOST_COMMAND(
+		EC_CMD_GET_S0IX_COUNTER, 0, s0ix_cnt_ev_r, s0ix_cnt_ev_p);
+
+	/* Verify that counter is set to 0 */
+	zassert_ok(host_command_process(&s0ix_cnt_ev_args),
+		   "Failed to get s0ix counter");
+	zassert_equal(s0ix_cnt_ev_r.s0ix_counter, 0);
+
+	zassert_equal(0,
+		      power_signal_emul_load(EMUL_POWER_SIGNAL_TEST_PLATFORM(
+			      tp_sys_g3_to_sleep_reset_then_power_fail)),
+		      "Unable to load test platform "
+		      "`tp_sys_g3_to_sleep_reset_then_power_fail`");
+
+	ap_power_exit_hardoff();
+	k_msleep(100);
+	s0ix_cnt_ev_p.flags = 0;
+	zassert_ok(host_command_process(&host_sleep_ev_args));
+
+	zassert_ok(host_command_process(&s0ix_cnt_ev_args),
+		   "Failed to get s0ix counter");
+	zassert_equal(s0ix_cnt_ev_r.s0ix_counter, 0);
+
+	k_msleep(100);
+	zassert_ok(host_command_process(&s0ix_cnt_ev_args),
+		   "Failed to get s0ix counter");
+
+	/* Verify that counter has been increased */
+	zassert_equal(s0ix_cnt_ev_r.s0ix_counter, 1);
+
+	/* Trigger reset and later power fail */
+	power_signal_set(PWR_SYS_RST, 1);
+	k_msleep(20);
+	power_signal_set(PWR_SYS_RST, 0);
+
+	k_msleep(100);
+
+	/* Verify power down was detected */
+	zassert_equal(1, power_hard_off_count,
+		      "AP_POWER_HARD_OFF event generated");
+}
+
+#endif /* CONFIG_AP_X86_INTEL_MTL */
+
 #if defined(CONFIG_AP_X86_INTEL_ADL)
 ZTEST(ap_pwrseq, test_ap_pwrseq_3)
 {
