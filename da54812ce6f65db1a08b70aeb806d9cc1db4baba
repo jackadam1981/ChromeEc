@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f738dff_7e8eed10",
+        "filename": "zephyr/program/trulo/pujjocento/src/touchpanel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-10T15:46:18Z",
+      "side": 1,
+      "message": "Please define magic number with \"static const\" and comment explaining the reason for the value.",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "da54812ce6f65db1a08b70aeb806d9cc1db4baba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
