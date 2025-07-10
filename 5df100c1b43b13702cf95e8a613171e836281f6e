@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d2a77b_6f8393cb",
+        "filename": "zephyr/test/tasks/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-10T13:27:28Z",
+      "side": 1,
+      "message": "The side-effect of this CL is that we don\u0027t call poll and there\u0027s no mechanism I could find to verify that behavior. Instead adding this test variant ensures that the behavior is the same in both code paths.",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "5df100c1b43b13702cf95e8a613171e836281f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
