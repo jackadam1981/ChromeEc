@@ -71,6 +71,12 @@ tests:
     - CONFIG_ZTEST_STACK_SIZE=2048
     extra_conf_files:
     - prj_hw_tests.conf
+  fpsensor_auth_crypto_stateful_otp:
+    extra_configs:
+    - CONFIG_HW_TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL_OTP=y
+    - CONFIG_ZTEST_STACK_SIZE=2048
+    extra_conf_files:
+    - prj_hw_tests.conf
   fpsensor_auth_crypto_stateless:
     extra_configs:
     - CONFIG_HW_TEST_FPSENSOR_AUTH_CRYPTO_STATELESS=y
