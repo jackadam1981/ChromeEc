@@ -167,15 +167,20 @@ AP_POWER_CHIPSET_STATE_DEFINE(S0, NULL, x86_non_dsx_mtl_s0_run,
 #if CONFIG_AP_PWRSEQ_S0IX
 static int x86_non_dsx_mtl_s0ix_run(void *data)
 {
-	/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
-	if (power_signals_off(IN_PCH_SLP_S0) &&
-	    power_signals_off(IN_PCH_SLP_S3)) {
-		/* TODO: Make sure ap reset handling is done
-		 * before leaving S0ix.
-		 */
-		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0);
-	} else if (!power_signals_on(POWER_SIGNAL_MASK(PWR_RSMRST_PWRGD))) {
+	if (!power_signals_on(POWER_SIGNAL_MASK(PWR_RSMRST_PWRGD))) {
 		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_G3);
+	}
+
+	if (power_signal_get(PWR_SYS_RST)) {
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S5);
+	}
+
+	/* System in S0 if SLP_S0 and Sleep notification is received. */
+	if (ap_power_sleep_get_notify() == AP_POWER_SLEEP_RESUME &&
+	    /* Since this is a substate of S0, S3 signal is checked on S0
+	       handler. */
+	    power_signals_off(IN_PCH_SLP_S0)) {
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0);
 	}
 
 	return 0;
