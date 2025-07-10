@@ -980,7 +980,7 @@ Artifacts:
 **Features**
 
 *   GSC perform AP RO verification again after select write protection events
-    [b/254309086](https://b.corp.google.com/issues/327197686)
+    [b/254309086](https://b.corp.google.com/issues/254309086)
 *   Add `spi_drive` command to adjust SPI strength when in initial factory mode
     [b/395751233](https://b.corp.google.com/issues/395751233)
 
@@ -2242,7 +2242,7 @@ Artifacts:
 **Features**
 
 *   GSC perform AP RO verification again after select write protection events
-    [b/254309086](https://b.corp.google.com/issues/327197686)
+    [b/254309086](https://b.corp.google.com/issues/254309086)
 
 ```
 Build:   0.24.172/ti50_common_prepvt-15974.B:v0.0.454-48da114b
@@ -2251,6 +2251,42 @@ Build:   0.24.172/ti50_common_prepvt-15974.B:v0.0.454-48da114b
          ms-tpm-20-ref:v0.0.328-4524d01
          chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-6y79 2025-04-24 12:05:41
 ```
+
+### 0.x4.200
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/87](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/87/overview)
+
+Artifacts:
+[15974.86.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.86.0/)
+
+**Features**
+
+*   Add BootParam support
+    [b/428071807](https://b.corp.google.com/issues/428071807)
+
+```
+Build:   0.36.200/ti50_common_tot:v0.0.1949-720cef16
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9681-3f261cccb
+         ms-tpm-20-ref:v0.0.325-096937c
+         jettrink@rink.bld.corp.google.com 2025-07-10 14:03:26
+```
+
+#### 0.24.200 Released on 2025-07-11 in M139
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/)
+
+#### 0.34.200 Released on 2025-07-11 in M139
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/)
+
+**NT Specific Features**
+
+*   Add more debug tracing for dispatcher
+    [b/416491971](https://b.corp.google.com/issues/416491971)
 
 ### 0.24.180 Released on 2025-06-02 in M139
 
