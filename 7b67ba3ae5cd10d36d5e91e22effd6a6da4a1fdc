@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b953ee_4c6a9e4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-10T17:34:39Z",
+      "side": 1,
+      "message": "Hmm, I wonder if we should just disable the non-OTP test for `helipilot`-based boards, [similar to how we don\u0027t run the OTP version of the test on boards without OTP](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d642-644;drc\u003dc9b9833d840846f25238a8fcfd198a9f7a3b506a). Since `helipilot` boards always have OTP enabled, I\u0027m not sure it\u0027s worth testing the non-OTP version on `helipilot`.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
