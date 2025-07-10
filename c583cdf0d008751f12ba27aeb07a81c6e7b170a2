@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d24a007_7d38d7d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-10T19:19:22Z",
+      "side": 1,
+      "message": "This diff doesn\u0027t match the original --it is missing https://crrev.com/c/6430879, which should be applied before this CL:\n\n    pdc_power_mgmt: Wait for connector status result\n    charge_manager: Add mutexing around critical data used in cm_refresh\n    charge_manager: Make sure charge_manager_refresh runs to completion\n\nThank you to Al for spotting this.",
+      "revId": "c583cdf0d008751f12ba27aeb07a81c6e7b170a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
