@@ -52,18 +52,18 @@
 			gpios = <&gpioe 6 (GPIO_INPUT)>;
 		};
 		gpio_cpu_c10_gate_r: cpu_c10_gate_r {
-			gpios = <&gpiob 2 (GPIO_INPUT)>;
+			gpios = <&gpiob 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
 			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_c_ec_snr_alrt1: c_ec_snr_alrt1 {
 			// signal name was manually overriden from "bga_pinc1"
-			gpios = <&gpiof 7 (GPIO_INPUT)>;
+			gpios = <&gpiof 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_c_ec_snr_alrt2: c_ec_snr_alrt2 {
 			// signal name was manually overriden from "bga_pinb1"
-			gpios = <&gpiof 6 (GPIO_INPUT)>;
+			gpios = <&gpiof 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
 			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
@@ -82,10 +82,10 @@
 			gpios = <&gpioc 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_ec_ish_int_odl_c_ec_ish_alert_r: ec_ish_int_odl_c_ec_ish_alert_r {
-			gpios = <&gpioh 6 (GPIO_INPUT)>;
+			gpios = <&gpioh 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_slatemode_hallout_snsr_r: ec_slatemode_hallout_snsr_r {
-			gpios = <&gpiod 1 (GPIO_INPUT)>;
+			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
 			// signal name was manually overriden from "vol_dn_ec_r"
@@ -107,6 +107,9 @@
 		};
 		gpio_en_slp_z_r: en_slp_z_r {
 			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
+		gpio_espi_soc_rst_l: espi_soc_rst_l {
+			gpios = <&gpiod 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_fmiso_r: fmiso_r {
 			gpios = <&gpiog 5 (GPIO_INPUT | GPIO_PULL_UP)>;
@@ -181,10 +184,14 @@
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
-			/* BGA_PINA2 */
-			<&gpiob 4 (GPIO_INPUT | GPIO_PULL_UP)>,
-			/* BGA_PINA5 */
-			<&gpiob 3 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* BGA_PINA2 - unused 1.8V I2C bus - pull down to avoid
+			 * voltage level issues if this AIC is connected to a
+			 * different base RVP board */
+			<&gpiob 4 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+			/* BGA_PINA5 - unused 1.8V I2C bus - pull down to avoid
+			 * voltage level issues if this AIC is connected to a
+			 * different base RVP board */
+			<&gpiob 3 (GPIO_INPUT | GPIO_PULL_DOWN)>,
 			/* BGA_PINM2 */
 			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
 			/* BGA_PINN1 */
