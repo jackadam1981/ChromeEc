@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc21d7f8_ebd99182",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T02:31:12Z",
+      "side": 1,
+      "message": "I am suggesting that this CL gets merged first, then the test, and then David\u0027s [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6552541) with enabling it on helipilot. Let me know you thoughts",
+      "parentUuid": "5188c043_dcb03260",
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7099b5a_fe3fa547",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 6
