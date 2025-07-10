@@ -44,10 +44,6 @@ readonly CROS_EC_FP_SPI_MODALIAS_STR="spi:cros-ec-fp"
 
 readonly CROS_EC_UART_MODALIAS_STR="of:NcrfpTCgoogle,cros-ec-uart"
 
-USE_LEGACY_GPIO_API=1
-
-readonly GPIOSET_SUPPORTS_HOLD=1
-
 # Clean up any remaining gpioset processes on exit.
 trap 'kill "${GPIO_ACTIVE_PIDS[@]}" 2>/dev/null' EXIT
 
@@ -1441,6 +1437,14 @@ main() {
   readlink -f "$0"
 
   echo "OS: $(os)"
+
+  if [[ "$(os)" == "android" ]]; then
+    USE_LEGACY_GPIO_API=0
+    readonly GPIOSET_SUPPORTS_HOLD=0
+  else
+    USE_LEGACY_GPIO_API=1
+    readonly GPIOSET_SUPPORTS_HOLD=1
+  fi
 
   # The "platform name" corresponds to the underlying board (reference design)
   # that we're running on (not the FPMCU or sensor). At the moment all of the
