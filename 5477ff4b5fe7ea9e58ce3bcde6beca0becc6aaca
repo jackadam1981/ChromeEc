@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "94f5828e_1ce6b653",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-10T02:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f65968d_0c57fde1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9f6a4080_3c525de8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "412049d6_618879e1",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-10T02:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7df5f04d_5416a4b8",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f3e8ab9_07400c10",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-07-09T22:58:11Z",
       "side": 1,
       "message": "I think it\u0027s better to move the i2c DT nodes to i2c.dtsi. Simlar to ADC, you\u0027ll find this in generated.dtsi, but that\u0027s created via the arbitrage tool. As the gpio nodes are manually being added, we don\u0027t need to keep this convention for gpio.dtsi",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a773d82_9585a6cb",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-10T02:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f3e8ab9_07400c10",
       "range": {
         "startLine": 201,
         "startChar": 1,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "334add97_7ce6f288",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-10T02:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f448a98_ad6a7f48",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6539184c_62f5bb09",
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da16cb2b_c5626258",
+        "filename": "zephyr/program/trulo/kaladin/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-10T02:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6539184c_62f5bb09",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 5
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1675d8d_02f8d814",
@@ -146,6 +266,30 @@
       "writtenOn": "2025-07-09T22:58:11Z",
       "side": 1,
       "message": "nit: 2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "5477ff4b5fe7ea9e58ce3bcde6beca0becc6aaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff92dd44_470b7857",
+        "filename": "zephyr/program/trulo/kaladin/kaladin.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-10T02:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1675d8d_02f8d814",
       "range": {
         "startLine": 1,
         "startChar": 13,
