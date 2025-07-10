@@ -117,6 +117,30 @@
       },
       "revId": "53e8d2e5b801777a8d18c886fc602b4657be8c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9287b174_daeed2fa",
+        "filename": "zephyr/program/brox/caboc/src/usbc_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-07-10T07:33:49Z",
+      "side": 1,
+      "message": "OK, this file will be deleted in GPIO update patch set (CL:6705025) since this CL is just to init caboc cloned from brox.",
+      "parentUuid": "b90f58b3_d21e87c6",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "53e8d2e5b801777a8d18c886fc602b4657be8c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
