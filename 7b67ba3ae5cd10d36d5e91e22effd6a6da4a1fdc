@@ -22,6 +22,30 @@
       },
       "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e2b553_036fe1ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T17:50:10Z",
+      "side": 1,
+      "message": "We can just remove `fpsensor_auth_crypto_stateful_otp`. `fpsensor_auth_crypto_stateful` will run with `CONFIG_OTP_KEY` for `helipilot` because it is enabled in the baseboard. It will also run without `CONFIG_OTP_KEY` for `bloonchipper` because it is not enabled in the baseboard.\n\nPlease let me know if you are ok with this and I can make this change. We just need `fpsensor_auth_crypto_stateful` unit test.",
+      "parentUuid": "d1b953ee_4c6a9e4a",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
