@@ -76,6 +76,12 @@
 		/delete-node/ tablet_mode;
 		/delete-node/ volume-up;
 		/delete-node/ volume-down;
+
+		int_soc_bl_en: soc_bl_int{
+			irq-pin = <&gpio_soc_bl_en>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "soc_bl_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -85,6 +91,15 @@
 
 		gpio_lcd_bist: lcd_bist {
 			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_ec_tchscr_en: ec_tchscr_en {
+			gpios = <&gpio8 6 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_en_pp3300_tp: en_pp3300_tp {
+			gpios = <&gpio7 5 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_soc_bl_en: soc_bl_en {
+			gpios = <&gpioa 2 (GPIO_INPUT | GPIO_PULL_UP)>;
 		};
 	};
 
@@ -96,15 +111,12 @@
 			<&gpio3 5 0>,
 			<&gpio5 0 0>, /* Reserved for PP1800_TCHPAD_EN */
 			<&gpio6 6 0>,
-			<&gpio7 5 0>,
 			<&gpio7 6 0>,
 			<&gpio8 1 0>,
 			<&gpio8 5 0>,
-			<&gpio8 6 0>,
 			<&gpio9 3 0>,
 			<&gpio9 6 0>,
 			<&gpioa 0 0>,
-			<&gpioa 2 0>,
 			<&gpioa 4 0>,
 			<&gpioa 5 0>, /* Reserved for eSIM erasure */
 			<&gpioa 7 0>,
