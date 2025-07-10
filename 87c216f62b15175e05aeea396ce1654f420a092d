@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5188c043_dcb03260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-07-10T02:21:02Z",
+      "side": 1,
+      "message": "Just to clarify, are you suggesting adding the [change](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6720416) to this CL? Since this CL focuses on the RAM lock implementation in Zephyr, it might be cleaner to submit a separate CL for enabling it on the board side.",
+      "parentUuid": "352c93a6_682cff44",
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7099b5a_fe3fa547",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 6
