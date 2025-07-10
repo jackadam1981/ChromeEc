@@ -33,6 +33,24 @@
       "message": "@tomhughes@chromium.org\n@davidmcross@google.com\n\nI do not believe this change is necessary.\n\nI believe we should delete `fpsensor_auth_crypto_stateful_otp` test. My assumption, it that initially we were only turning on the `CONFIG_OPT_KEY` for the OTP version of the test, which is a symlink of the `fpsensor_auth_crypto_stateful.cc`.\n\nI see that [CONFIG_OTP_KEY](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/helipilot/base_board.h;drc\u003d41b950775beed01afbc7c1ddb2107d5a0e1d1b7b;l\u003d162) is defined for the `helipilot` baseboard. I also see it defined for both tests `fpsensor_auth_crypto_stateful` and `fpsensor_auth_crypto_stateful_otp`:\n\n```\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ more ./build/helipilot/fpsensor_auth_crypto_stateful/.config | grep OTP\nCONFIG_OTP_KEY\u003dy\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ more ./build/helipilot/fpsensor_auth_crypto_stateful_otp/.config | grep OTP\nCONFIG_OTP_KEY\u003dy\n```\n\nThis means that both tests are doing exactly the same thing. Please let me know if my understanding is incorrect. I do not think we should duplicate the tests",
       "revId": "7fecc282d18dc5c11c78d545d40165ba7731f050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26eb8e60_b66f466b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T15:25:13Z",
+      "side": 1,
+      "message": "If we need to run the tests with `CONFIG_OTP_KEY` both enabled and disabled, then we need this [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6720085/1)",
+      "parentUuid": "25f0fedd_83979ce0",
+      "revId": "7fecc282d18dc5c11c78d545d40165ba7731f050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
