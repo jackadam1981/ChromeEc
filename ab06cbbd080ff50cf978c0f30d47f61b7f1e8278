@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb24b4f_fa70c87f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-10T15:09:41Z",
+      "side": 1,
+      "message": "Should this also select `PLATFORM_EC_POWER_BUTTON`?",
+      "revId": "ab06cbbd080ff50cf978c0f30d47f61b7f1e8278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
