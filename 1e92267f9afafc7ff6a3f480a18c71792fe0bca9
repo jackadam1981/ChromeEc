@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04be780_8d526bbe",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-10T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fbff761_7b0223b3",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "1e92267f9afafc7ff6a3f480a18c71792fe0bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1735e0d_eb9e4a0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-10T16:37:41Z",
       "side": 1,
       "message": "Indent",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "1e92267f9afafc7ff6a3f480a18c71792fe0bca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40fe4cc9_843ed2c1",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-07-10T21:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1735e0d_eb9e4a0a",
       "range": {
         "startLine": 60,
         "startChar": 0,
