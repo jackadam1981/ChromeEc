@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ed35e9_f5f4b72c",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-10T08:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c18f1a6_f366da79",
+      "range": {
+        "startLine": 241,
+        "startChar": 16,
+        "endLine": 241,
+        "endChar": 43
+      },
+      "revId": "5ad497562a48f43975ee291916ac700116d44cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6576c3a1_fc77306d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-09T19:44:10Z",
       "side": 1,
       "message": "This path probably needs a test.  I don\u0027t see any existing tests of task_wait_event() in the legacy code so you could use test_event_apis.c in the Zephyr kernel tests for inspiration.",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 15
+      },
+      "revId": "5ad497562a48f43975ee291916ac700116d44cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a92988_5da4cb89",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-10T08:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6576c3a1_fc77306d",
       "range": {
         "startLine": 243,
         "startChar": 0,
