@@ -133,6 +133,10 @@ enum battery_type {
 #define CONFIG_OTP_KEY
 #endif
 
+#if defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL)
+#undef CONFIG_OTP_KEY
+#endif
+
 #if defined(TEST_BORINGSSL_CRYPTO)
 #define CONFIG_BORINGSSL_CRYPTO
 #endif
