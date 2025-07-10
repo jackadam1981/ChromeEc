@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68e3003d_6d0d0b8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-10T15:23:18Z",
+      "side": 1,
+      "message": "Hello Tom,\n\nJust to confirm that my understanding is correct: In order to enable RAM LOCK, we need the below\n\n- We need to enable ramlock0 by making its [status](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6720416/2/zephyr/program/fpmcu/helipilot/soc.dtsi) ok \n- We need to enable `CONFIG_NPCX_RAM_LOCK`\n\nWhy isn\u0027t `CONFIG_NPCX_RAM_LOCK` automatically enabled when `ramlock0` node status is `okay`? I believe you use that strategy for trng. Please confirm.",
+      "parentUuid": "e13dc7f9_89d46bd5",
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7099b5a_fe3fa547",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 6
