@@ -52,7 +52,7 @@
 			gpios = <&gpioe 6 (GPIO_INPUT)>;
 		};
 		gpio_cpu_c10_gate_r: cpu_c10_gate_r {
-			gpios = <&gpioj 0 (GPIO_INPUT)>;
+			gpios = <&gpiob 2 (GPIO_INPUT)>;
 		};
 		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
 			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
