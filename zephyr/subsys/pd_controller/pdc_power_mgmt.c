@@ -2776,6 +2776,8 @@ static void pdc_send_cmd_wait_entry(void *obj)
 static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *config = port->dev->config;
+	int port_number = config->connector_num;
 
 	/* Wait for command status notification from driver */
 
@@ -2791,9 +2793,9 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 			return SMF_EVENT_HANDLED;
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_BUSY)) {
-		LOG_DBG("CCI_BUSY");
+		LOG_DBG("C%d: CCI_BUSY", port_number);
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_ERROR)) {
-		LOG_DBG("CCI_ERROR");
+		LOG_DBG("C%d: CCI_ERROR", port_number);
 		/* The PDC may set both error and complete bit */
 		atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
 
@@ -2817,15 +2819,15 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 				port->send_cmd.resend_counter++;
 			}
 		} else {
-			LOG_ERR("%s resend attempts exceeded!",
-				pdc_cmd_names[port->cmd->cmd]);
+			LOG_ERR("C%d: %s resend attempts exceeded!",
+				port_number, pdc_cmd_names[port->cmd->cmd]);
 			port->cmd->error = -EBUSY;
 			set_pdc_state(port, port->send_cmd_return_state);
 			return SMF_EVENT_HANDLED;
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags,
 					     CCI_CMD_COMPLETED)) {
-		LOG_DBG("CCI_CMD_COMPLETED");
+		LOG_DBG("C%d: CCI_CMD_COMPLETED", port_number);
 
 		switch (port->cmd->cmd) {
 		case CMD_PDC_GET_CONNECTOR_STATUS:
