@@ -70,6 +70,30 @@
       },
       "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01efb210_dc387a5a",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T21:36:52Z",
+      "side": 1,
+      "message": "It does not compile when we make it depend on MPU. It seems it is creating a circular dependency. Based on the gemini analysis, this is how the circular dependency is created:\n\n```\nZTEST (the Zephyr testing framework)\nuparrow (selects)\nHW_TEST_RAM_LOCK\nuparrow (depends on)\nNPCX_RAM_LOCK\nuparrow (depends on)\nMPU\nuparrow (depends on a configuration related to CACHE like XTENSA_MPU which depends on !CACHE)\nCACHE\nuparrow (depends on CACHE_MANAGEMENT)\nCACHE_MANAGEMENT\nuparrow (selects/depends on various drivers, including some related to I2C, FDC2X1X)\nFDC2X1X\nuparrow (selects/depends on I2C)\nI2C\nuparrow (depends on/selects various other features, including REQUIRES_FULL_LIBC indirectly)\nREQUIRES_FULL_LIBC\nuparrow (depends on/selects various features, including HWINFO)\nHWINFO\nuparrow (implies/depends on SHELL)\nSHELL\nuparrow (selects)\nZTEST_SHELL (which then directly selects ZTEST)\n...and back to ZTEST again!\n```",
+      "parentUuid": "bc932b81_da09de5a",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
