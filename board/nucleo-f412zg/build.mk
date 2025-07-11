@@ -22,6 +22,7 @@ test-list-y=\
        libc_printf \
        mpu \
        mutex \
+       null_pointer \
        pingpong \
        printf \
        queue \
