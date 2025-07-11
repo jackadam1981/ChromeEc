@@ -22,6 +22,30 @@
       },
       "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb3d05a_2aeb9b62",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T21:06:58Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nCan you please elaborate more regarding your comment:\n\nIn the quincy board, we enable [CONFIG_ARM_MPU](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/boards/google/quincy/google_quincy_defconfig;l\u003d25#:~:text\u003d24-,25,-26). `config ARM_MPU` selects [MPU](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/arch/common/Kconfig;l\u003d29?q\u003d%22config%20ARM_MPU%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d28-,29,-30) i.e. enables it. Are you suggesting that we add `depends on MPU`, which makes this option unavailable to configure if we do not have `CONFIG_MPU` enabled?\n\n```\nconfig NPCX_RAM_LOCK\n\tbool \"Enable NPCX RAM lock function\"\n\tdepends on MPU\n\tdefault n\n```\n\nby the way, I do not believe we need to specify `default n`. It is n by default for the bool type.",
+      "parentUuid": "578cab2d_9d2d3cb3",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

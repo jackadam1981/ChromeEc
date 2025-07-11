@@ -126,6 +126,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff82463_16a727a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T21:06:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dc06e4d7_0236a073",
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7099b5a_fe3fa547",
@@ -163,6 +181,30 @@
       "side": 1,
       "message": "It is planned to be added to helipilot prj.conf in crrev/c/6552541, part of the chain. I could add the removal from testcase.yaml (here) in that CL as well",
       "parentUuid": "d7099b5a_fe3fa547",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 28
+      },
+      "revId": "87c216f62b15175e05aeea396ce1654f420a092d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2876a01_ce839354",
+        "filename": "zephyr/program/fpmcu/testcase.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T21:06:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fddc3eeb_98c8f2a1",
       "range": {
         "startLine": 149,
         "startChar": 3,
