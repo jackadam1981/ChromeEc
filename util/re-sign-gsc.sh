@@ -79,7 +79,7 @@ update_manifest() {
 	  awk -F= '/IMAGE_RW_FW_VER/ {print $2}')"
   IFS='.' read -r epoch major minor <<<"${rw_ver}"
   echo "RW: ${rw_ver}"
-  sed "s/epoch\": [0-9]*/epoch\": ${epoch}/" "${manifest}" -i
+  sed "s/epoch\": [0-9]*/epoch\": 1/" "${manifest}" -i
   sed "s/major\": [0-9]*/major\": ${major}/" "${manifest}" -i
   sed -E "s/minor\": (TOKEN_MINOR|[0-9]*)/minor\": ${minor}/" "${manifest}" -i
 }
