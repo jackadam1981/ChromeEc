@@ -49,6 +49,7 @@ void cec_ext_timer_interrupt(int port)
 		transfer_initiated = false;
 		cec_event_tx(port);
 	} else {
+		counter_stop(cec_counter_dev);
 		cec_update_interrupt_time(port);
 		cec_event_timeout(port);
 	}
