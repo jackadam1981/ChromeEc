@@ -20,6 +20,11 @@
 #include <algorithm>
 #include <array>
 
+#if defined(BASEBOARD_HELIPILOT)
+BUILD_ASSERT(IS_ENABLED(CONFIG_OTP_KEY),
+	     "OTP_KEY should be enabled for Helipilot baseboard.");
+#endif
+
 namespace
 {
 
