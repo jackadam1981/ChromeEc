@@ -22,6 +22,23 @@
       },
       "revId": "b73741f19f75c06c6eabe26fa3d064a01d451710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eab29bc_6f1a201d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-11T15:51:30Z",
+      "side": 1,
+      "message": "Can you a separate `assert` for each argument. This way we should know which argument was NULL in case of failure. This applies to other functions as well.",
+      "revId": "b73741f19f75c06c6eabe26fa3d064a01d451710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
