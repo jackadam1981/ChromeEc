@@ -1,0 +1,28 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config LED_STRIP_DEMO
+	bool "LED strip demo"
+	help
+	  Demo some effects of LED strip
+
+if LED_STRIP_DEMO
+menu "WS2812 Sample Configuration"
+
+config SAMPLE_LED_UPDATE_DELAY
+	int "Delay between LED updates in ms"
+	default 50
+	help
+	  Delay between LED updates in ms.
+
+config SAMPLE_LED_BRIGHTNESS
+	int "LED brightness"
+	default 16
+	range 1 255
+	help
+	  Brightness level of each LED. Defaults to a low value to make
+	  it easier to distinguish colors.
+
+endmenu
+endif
