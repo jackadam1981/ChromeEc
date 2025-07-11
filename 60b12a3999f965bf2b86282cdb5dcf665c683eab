@@ -142,6 +142,30 @@
       },
       "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "159cc901_164bbb23",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T22:11:39Z",
+      "side": 1,
+      "message": "we can depend on `ARM_MPU`. I added it. \n\nIf we want to use select, I would remove the ARM_MPU from the `quincy` board and make config `NPCX_RAM_LOCK` select `ARM_MPU`. Let me know what you think. `ARM_MPU` selects `MPU` in return.",
+      "parentUuid": "b12a6d4a_64339dfb",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
