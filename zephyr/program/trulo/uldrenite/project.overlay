@@ -4,6 +4,7 @@
  */
 
 #include <cros/cbi_flash.dtsi>
+#include <zephyr/dt-bindings/led/led.h>
 
 /* Trulo program common DTS includes */
 #include "../cbi.dtsi"
@@ -28,6 +29,12 @@
 
 /* Trulo overrides follow... */
 
+/ {
+	aliases {
+		led-strip = &led_strip;
+	};
+};
+
 &cbi_flash {
 	/*
 	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
@@ -48,4 +55,25 @@
 	 */
 	mul = <(791261 / 2)>;
 	div = <(651975 / 2)>;
+};
+
+&spip0 {
+	status = "okay";
+
+	led_strip: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+
+		/* SPI */
+		reg = <0>; /* ignored, but necessary for SPI bindings */
+		spi-max-frequency = <6400000>;
+		frame-format = <32768>; /* SPI_FRAME_FORMAT_TI */
+
+		/* WS2812 */
+		chain-length = <16>; /* arbitrary; change at will */
+		spi-one-frame = <0xf8>;  /* 0b11111000 T1H: 0.781us within 0.650~0.950us */
+		spi-zero-frame = <0xc0>; /* 0b11000000 T0H: 0.312us within 0.250~0.550us */
+		color-mapping = <LED_COLOR_ID_GREEN
+				 LED_COLOR_ID_RED
+				 LED_COLOR_ID_BLUE>;
+	};
 };
