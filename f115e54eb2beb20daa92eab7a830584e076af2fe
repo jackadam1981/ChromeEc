@@ -34,6 +34,23 @@
       "parentUuid": "27f4e68c_40c5c706",
       "revId": "f115e54eb2beb20daa92eab7a830584e076af2fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39b6755_662487c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-11T16:16:32Z",
+      "side": 1,
+      "message": "Build error is on the ocelotrvp-mchp project.  You probably need to re-order the CLs to add ADC support to ocelotrvp-mchp before removing the named-adc from the shared file.\n\n```\n[ocelotrvp-mchp:ro] devicetree error: \u0027pinctrl-0\u0027 is marked as required in \u0027properties:\u0027 in /mnt/host/source/src/third_party/zephyr/main/dts/bindings/adc/microchip,xec-adc.yaml, but does not appear in \u003cNode /soc/adc@40007c00 in \u0027/mnt/host/source/src/third_party/zephyr/main/misc/empty_file.c\u0027\u003e\n```",
+      "revId": "f115e54eb2beb20daa92eab7a830584e076af2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
