@@ -46,6 +46,30 @@
       },
       "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1e6122_8db861de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-11T16:28:43Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. To make sure we don\u0027t accidentally disable OTP for helipilot-based boards, let\u0027s also add some kind of check in the test that `OTP` is enabled when building for `helipilot`. Something like:\n\n```\nif (IS_ENABLED(BASEBOARD_HELIPILOT))\n  BUILD_ASSERT(IS_ENABLED(CONFIG_OTP_KEY));\n```\n\nIf the above doesn\u0027t work, you may need to change to:\n\n```\n#if defined(BASEBOARD_HELIPILOT)\nBUILD_ASSERT(IS_ENABLED(CONFIG_OTP_KEY));\n#endif\n```",
+      "parentUuid": "d3e2b553_036fe1ae",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
