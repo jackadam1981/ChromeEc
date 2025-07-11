@@ -34,6 +34,24 @@
       "parentUuid": "73187a2a_1f30af65",
       "revId": "a23c9de4687fb6f8a809f889f4d2a8555d3a385c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e27899db_653c8a55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-11T17:39:58Z",
+      "side": 1,
+      "message": "The path to remove node labels for GPIOs is it create drivers with a `\u003cname\u003e-gpios` property for each GPIO you want to look up.  \nFor instance: CL:6701827 replaces `GPIO_DT_FROM_NODELABEL(gpio_en_slp_z_r)`.\n\nIf there are a lot of GPIO differences between the RVP and GCS boards, the devicetree model isn\u0027t very well suited to supporting multiple boards.",
+      "parentUuid": "9d9457bc_842461d8",
+      "revId": "a23c9de4687fb6f8a809f889f4d2a8555d3a385c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
