@@ -70,6 +70,8 @@
 		};
 		gpio_en_slp_z: en_slp_z {
 			gpios = <&gpioe 1 GPIO_OUTPUT>;
+			/* GPIO setup by hibernate_z5 driver. */
+			no-auto-init;
 		};
 		gpio_sb_3: sb-3 {
 			gpios = <&gpiof 4 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
