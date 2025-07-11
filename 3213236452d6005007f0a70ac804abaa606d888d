@@ -16,6 +16,24 @@
       "message": "The address shouldn\u0027t be changed.",
       "revId": "3213236452d6005007f0a70ac804abaa606d888d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b5f265_7eae81db",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-07-11T07:38:03Z",
+      "side": 1,
+      "message": "The compiler prompts to change to 0x60098 as below message.\n\n-----------------------------------------------------------------------------\nMarked as resolved.  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/output_packers.py\", line 325, in verify_rw_fwid\n    raise RuntimeError(\nRuntimeError: kaladin: Incorrect RW_FWID, expected 0xbffe0 got 0x60098\nAll failed projects: [\u0027kaladin\u0027]\n(cr) arthurlin@arthurlin-ROG-Strix-",
+      "parentUuid": "7a733bbd_09c94002",
+      "revId": "3213236452d6005007f0a70ac804abaa606d888d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
