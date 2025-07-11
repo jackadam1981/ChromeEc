@@ -255,6 +255,7 @@ motion_angle-y=motion_angle.o motion_angle_data_literals.o motion_common.o
 motion_angle_tablet-y=motion_angle_tablet.o motion_angle_data_literals_tablet.o motion_common.o
 motion_lid-y=motion_lid.o
 motion_sense_fifo-y=motion_sense_fifo.o
+null_pointer-y=null_pointer.o
 nvidia_gpu-y=nvidia_gpu.o
 online_calibration-y=online_calibration.o
 online_calibration_spoof-y=online_calibration_spoof.o gyro_cal_init_for_test.o
