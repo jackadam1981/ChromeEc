@@ -51,6 +51,7 @@ test-list-y = \
        mutex \
        mutex_trylock \
        mutex_recursive \
+       null_pointer \
        otp_key \
        panic \
        panic_data \
