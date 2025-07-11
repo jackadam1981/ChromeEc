@@ -115,6 +115,12 @@ config HW_TEST_MALLOC
 	help
 	  The test verifies basic malloc operations.
 
+config HW_TEST_NULL_POINTER
+	bool "null pointer test"
+	select ZTEST
+	help
+	  The test verifies null pointer de-reference crashes.
+
 config HW_TEST_OTP_KEY
 	bool "OTP key test"
 	select ZTEST
