@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "041a0051_0633b391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-11T19:34:59Z",
+      "side": 1,
+      "message": "The latest patchset creates a \"zephyr/drivers/hibernate\" folder.\n\nI also plan to create another hibernate driver called \"wake-pins\" which is currently duplicated across 3 EC types.",
+      "revId": "447c1ce726099c576534e42e5bfb4db73a84ef7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
