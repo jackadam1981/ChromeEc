@@ -34,6 +34,24 @@
       "parentUuid": "8dd30f34_a7b7c93e",
       "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7701efc_08f7ddea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-11T19:56:06Z",
+      "side": 1,
+      "message": "For usb_typec_vpd and usb_prl_old, I think you probably want to make your changes to fake_usbc.c. usb_sm_checks.c is used in a few other targets, and you may be getting linker errors from those targets. More importantly, fake_usbc.c is clearly made for this purpose, and usb_sm_checks.c is clearly made for a different purpose.\n\nFor usb_typec_drp_acc_trysrc, it looks like the fake mechanism is different. usb_typec_drp_acc_trysrc.mocklist contains a list of modules from common/mock that will be linked into that test. You can see some description of this mechanism in https://crrev.com/45b711edf84263ce7e7eef25f21d76ee43b755ec/common/mock/README.md.\n\nI\u0027d recommend moving your current stub to fake_usbc.c, seeing what the build does, and then seeing what you can do with mocks.",
+      "parentUuid": "9ab5cd95_90a7b021",
+      "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
