@@ -6,9 +6,12 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "i2c.h"
 #include "it5205.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
 #define MUX_STATE_DP_USB_MASK (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED)
 
@@ -81,6 +84,7 @@ static int it5205_init(const struct usb_mux *me)
 		RETURN_ERROR(it5205h_enable_csbu_switch(me, true));
 	}
 
+	CPRINTS("mux%d init power on", me->usb_port);
 	return EC_SUCCESS;
 }
 
@@ -121,6 +125,8 @@ static int it5205_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		reg |= IT5205_POLARITY_INVERTED;
 
+	CPRINTS("mux%d set %d", me->usb_port, mux_state);
+
 	return it5205_write(me, IT5205_REG_MUXCR, reg);
 }
 
@@ -157,6 +163,8 @@ static int it5205_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 static int it5205_enter_low_power_mode(const struct usb_mux *me)
 {
 	int rv;
+
+	CPRINTS("mux%d LPM pwr off", me->usb_port);
 
 	/* Turn off all switches */
 	rv = it5205_write(me, IT5205_REG_MUXCR, 0);
