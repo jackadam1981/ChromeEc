@@ -70,9 +70,9 @@
 			gpios = <&gpioa 15 GPIO_INPUT>;
 			enum-name = "GPIO_CCD_MODE_ODL";
 		};
-		gpio_ish_i2c_ec_scl: ish_i2c_ec_scl {
-			gpios = <&gpioa 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
+		// gpio_ish_i2c_ec_scl: ish_i2c_ec_scl {
+		// 	gpios = <&gpioa 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		// };
 		gpio_en_slp_z: en_slp_z {
 			gpios = <&gpiob 6 GPIO_OUTPUT>;
 		};
@@ -109,18 +109,18 @@
 		gpio_typec_i2c_int_ec: typec_i2c_int_ec {
 			gpios = <&gpiog 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
-		gpio_edp_bklt_en: edp_bklt_en {
-			gpios = <&gpioh 9 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
+		// gpio_edp_bklt_en: edp_bklt_en {
+		// 	gpios = <&gpioh 9 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		// };
 		gpio_ec_edp_bklt_en: ec_edp_bklt_en {
 			gpios = <&gpiog 3 GPIO_OUTPUT>;
 		};
 		gpio_ec_vddq_en: ec_vddq_en {
 			gpios = <&gpiof 4 GPIO_OUTPUT>;
 		};
-		gpio_cpu_c10_gate_l: cpu_c10_gate_l {
-			gpios = <&gpiof 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
-		};
+		// gpio_cpu_c10_gate_l: cpu_c10_gate_l {
+		// 	gpios = <&gpiof 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		// };
 		sys_rst_odl: sys_rst_odl {
 			gpios = <&gpioh 15 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
@@ -165,7 +165,7 @@
 			gpios = <&gpiob 5 GPIO_OUTPUT>;
 		};
 		gpio_led_state_white: led_state_white {
-			gpios = <&gpiob 7 GPIO_OUTPUT>;
+			gpios = <&gpiob 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		gpio_touchpad_en_ec: touchpad_en_ec {
 			gpios = <&gpioc 8 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
