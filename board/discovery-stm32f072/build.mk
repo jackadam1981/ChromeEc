@@ -13,4 +13,5 @@ CHIP_VARIANT:=stm32f07x
 board-y=board.o
 
 test-list-y=\
+	null_pointer \
 	panic \
