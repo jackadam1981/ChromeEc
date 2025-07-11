@@ -46,6 +46,30 @@
       },
       "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc932b81_da09de5a",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-11T21:08:51Z",
+      "side": 1,
+      "message": "\u003e Are you suggesting that we add depends on MPU, which makes this option unavailable to configure if we do not have CONFIG_MPU enabled?\n\nYes.",
+      "parentUuid": "beb3d05a_2aeb9b62",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "60b12a3999f965bf2b86282cdb5dcf665c683eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
