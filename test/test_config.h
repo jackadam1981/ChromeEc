@@ -117,7 +117,6 @@ enum battery_type {
 	defined(TEST_FPSENSOR_DEBUG) || defined(TEST_FPSENSOR_UTILS) || \
 	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATELESS) ||                 \
 	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL) ||                  \
-	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL_OTP) ||              \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS) ||                         \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS_OTP) ||                     \
 	defined(TEST_HOST_COMMAND_FUZZ)
@@ -127,8 +126,7 @@ enum battery_type {
 #define CONFIG_CMD_FPSENSOR_DEBUG
 #endif
 
-#if defined(TEST_FPSENSOR_CRYPTO_WITH_MOCK_OTP) ||         \
-	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL_OTP) || \
+#if defined(TEST_FPSENSOR_CRYPTO_WITH_MOCK_OTP) || \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS_OTP)
 #define CONFIG_OTP_KEY
 #endif
