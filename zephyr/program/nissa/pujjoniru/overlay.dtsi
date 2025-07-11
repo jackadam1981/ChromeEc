@@ -321,10 +321,10 @@
 		     &i2c5_data_gpa5_default>;
 	pinctrl-names = "default";
 
-	chg_port0: bq25710@9 {
-		compatible = "ti,bq25710";
+	chg_port0: device@00 {
+		compatible = "vendor,device";
 		status = "okay";
-		reg = <0x9>;
+		reg = <0x00>;
 	};
 
 	ppc_port0: ppc_syv@40 {
