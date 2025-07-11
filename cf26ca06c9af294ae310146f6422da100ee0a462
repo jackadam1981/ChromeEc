@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2097f3_cd6eff20",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-11T15:48:24Z",
+      "side": 1,
+      "message": "Sorry, I meant \"interference\".\n\nWe discussed this over GVR.\n\nTL;DR: I\u0027m aware a single that single SPI transaction can not be interrupted, but I feel like a series of SPI transactions in this or other functions should not be interrupted as well, but let\u0027s keep it as it is for now and finish the migration process.\n\nDartmonkey or Bloonchipper can actually have similar problem, that it is not that \"seen\", because everything is behind library. The PAL layer is much simpler.\n\nWe may need to follow up with Elan if my feeling is correct.",
+      "parentUuid": "f8fcf7f3_4c1114ae",
+      "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21bfbae8_0d007dab",

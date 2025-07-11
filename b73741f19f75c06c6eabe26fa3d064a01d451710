@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b4be706_59733e1f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-11T15:48:24Z",
+      "side": 1,
+      "message": "Can you add defines of these register addresses?",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "b73741f19f75c06c6eabe26fa3d064a01d451710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
