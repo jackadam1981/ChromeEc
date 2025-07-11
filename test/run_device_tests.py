@@ -676,6 +676,7 @@ class AllTests:
             TestConfig(test_name="mutex", skip_for_zephyr=True),
             TestConfig(test_name="mutex_trylock", skip_for_zephyr=True),
             TestConfig(test_name="mutex_recursive", skip_for_zephyr=True),
+            TestConfig(test_name="null_pointer"),
             TestConfig(
                 test_name="otp_key",
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],
