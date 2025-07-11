@@ -653,17 +653,17 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 	if (cc_config & CC_DETACH)
 		return EC_SUCCESS;
 
-	/* By default disconnect all Rp/Rd resistors from both CC lines */
-	/* Set Rd for CC1/CC2 to High-Z. */
-	DUT_BOTH_CC_OPEN(RD);
-	/* Set Ra for CC1/CC2 to High-Z. */
-	DUT_BOTH_CC_OPEN(RA);
-	/* Set Rp for CC1/CC2 to High-Z. */
-	DUT_BOTH_CC_OPEN(RP3A0);
-	DUT_BOTH_CC_OPEN(RP1A5);
-	DUT_BOTH_CC_OPEN(RPUSB);
-	/* Set TX Hi-Z */
-	DUT_BOTH_CC_OPEN(TX_DATA);
+	// /* By default disconnect all Rp/Rd resistors from both CC lines */
+	// /* Set Rd for CC1/CC2 to High-Z. */
+	// DUT_BOTH_CC_OPEN(RD);
+	// /* Set Ra for CC1/CC2 to High-Z. */
+	// DUT_BOTH_CC_OPEN(RA);
+	// /* Set Rp for CC1/CC2 to High-Z. */
+	// DUT_BOTH_CC_OPEN(RP3A0);
+	// DUT_BOTH_CC_OPEN(RP1A5);
+	// DUT_BOTH_CC_OPEN(RPUSB);
+	// /* Set TX Hi-Z */
+	// DUT_BOTH_CC_OPEN(TX_DATA);
 
 	if (cc_pull == TYPEC_CC_RP) {
 		rv = board_set_rp(rp_value);
