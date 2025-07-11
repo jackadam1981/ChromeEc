@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c694e1a6_12b1d1db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-11T02:34:48Z",
+      "side": 1,
+      "message": "ite_generated.dtsi should be renamed as gpio.dtsi as we did in previous commit.\nSince there\u0027s no ITE devicetree configuration for Trulo program, I think we can merge ite_generated.dtsi (or gpio.dtsi) and ite_trulo.dtsi into one file. It can be divided into two Trulo program devicetree configuration and Kaladin devicetree configuration later.",
+      "revId": "9f8bb6c6edd27024cfdc4581c7c7ffe9ac03193c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08c3d763_c86e0f7f",
         "filename": "zephyr/program/trulo/kaladin/i2c.dtsi",
         "patchSetId": 11
