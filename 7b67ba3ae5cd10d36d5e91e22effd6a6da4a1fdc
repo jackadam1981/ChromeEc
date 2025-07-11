@@ -70,6 +70,30 @@
       },
       "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be530cd1_900652af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T20:14:29Z",
+      "side": 1,
+      "message": "I will abandon this CL in favor of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6729277",
+      "parentUuid": "bf1e6122_8db861de",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "7b67ba3ae5cd10d36d5e91e22effd6a6da4a1fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
