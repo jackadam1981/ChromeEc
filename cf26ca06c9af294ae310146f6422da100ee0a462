@@ -69,6 +69,24 @@
       "parentUuid": "21bfbae8_0d007dab",
       "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ed94ce_b164be1f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-11T03:16:43Z",
+      "side": 1,
+      "message": "added based on the feedback from Elan",
+      "parentUuid": "861aeb17_4c91abcf",
+      "revId": "cf26ca06c9af294ae310146f6422da100ee0a462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
