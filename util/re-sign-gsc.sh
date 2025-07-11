@@ -66,6 +66,8 @@ fi
 update_manifest() {
   local full_bin="${1}"
   local manifest="${2}"
+  local user_epoch="${3}"
+  local user_major="${4}"
   local epoch
   local major
   local minor
@@ -78,8 +80,12 @@ update_manifest() {
   rw_ver="$("${GSCTOOL}" "-M" "-b" "${full_bin}" | \
 	  awk -F= '/IMAGE_RW_FW_VER/ {print $2}')"
   IFS='.' read -r epoch major minor <<<"${rw_ver}"
+  if [[ -n "${user_major}" ]] ; then
+    major="${user_major}"
+  fi
+
   echo "RW: ${rw_ver}"
-  sed "s/epoch\": [0-9]*/epoch\": ${epoch}/" "${manifest}" -i
+  sed "s/epoch\": [0-9]*/epoch\": ${user_epoch}/" "${manifest}" -i
   sed "s/major\": [0-9]*/major\": ${major}/" "${manifest}" -i
   sed -E "s/minor\": (TOKEN_MINOR|[0-9]*)/minor\": ${minor}/" "${manifest}" -i
 }
@@ -147,17 +153,21 @@ main () {
   local xml
 
   full_bin=""
-  if [[ $# -eq 3 ]]; then
-    full_bin="$3"
-  elif [[ $# -ne 2 ]]; then
+  user_major=""
+  if [[ $# -eq 5 ]]; then
+    user_major="$5"
+  elif [[ $# -ne 4 ]]; then
     echo "${SCRIPT_NAME} error:" >&2
-    echo " Two command line arguments are required, dev_id0 and dev_id1" >&2
-    echo " The image path is an optional third argument" >&2
+    echo " Four command line arguments are required, dev_id0 and dev_id1" >&2
+    echo " image path, epoch" >&2
+    echo " major version is optional " >&2
     exit 1
   fi
 
   dev_id0="$1"
   dev_id1="$2"
+  full_bin="$3"
+  user_epoch="$4"
 
   if [[ -z ${full_bin} ]] ; then
     for f in  build/ti50/dauntless/dauntless/full_image.signed.bin \
@@ -268,7 +278,7 @@ main () {
   cp "${manifest}" "${TMPD}/manifest.json"
   # Clear the board id and rollback info mask. Update the manifest to use
   # the same version as the original image.
-  update_manifest "${tmp_file}" "${TMPD}/manifest.json"
+  update_manifest "${tmp_file}" "${TMPD}/manifest.json" "${user_epoch}" "${user_major}"
 
   codesigner_params+=(
       --json "${TMPD}/manifest.json"
