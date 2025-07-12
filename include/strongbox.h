@@ -172,4 +172,262 @@ struct strongbox_command {
  */
 uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p);
 
+/**
+ * @brief Bitfield positions and masks for a 32-bit KeyMint tag.
+ * The Rust code implies a custom serialization format where the tag u32 encodes
+ * the type, the ID, and for variable-length types, the data length. We assume
+ * the following bit layout:
+ * - [31:28] - keymint_tag_bits_t (4 bits)
+ * - [27:20] - Data Length for blobs (8 bits) - THIS IS A CUSTOM PART OF THE
+ * PROTOCOL
+ * - [19:0]  - Tag ID (20 bits)
+ */
+#define KM_TAG_TYPE_SHIFT	   28
+#define KM_TAG_TYPE_BIT_SIZE	   4
+#define KM_TAG_TYPE_MASK_UNSHIFTED ((1U << KM_TAG_TYPE_BIT_SIZE) - 1)
+#define KM_TAG_TYPE_MASK	   (KM_TAG_TYPE_MASK_UNSHIFTED << KM_TAG_TYPE_SHIFT)
+
+#define KM_TAG_ID_SHIFT	   0
+#define KM_TAG_ID_BIT_SIZE 16
+#define KM_TAG_ID_SHIFT	   0
+#define KM_TAG_ID_MASK	   ((1U << KM_TAG_ID_BIT_SIZE) - 1) << KM_TAG_ID_SHIFT
+
+#define KM_TAG_LEN_BITS		  12
+#define KM_TAG_LEN_SHIFT	  16
+#define KM_TAG_LEN_MASK_UNSHIFTED ((1U << KM_TAG_LEN_BITS) - 1)
+#define KM_TAG_LEN_MASK		  (KM_TAG_LEN_MASK_UNSHIFTED << KM_TAG_LEN_SHIFT)
+
+/**
+ * @brief Defines values for the 4-bit field encoding keymint_tag_bits_t.
+ */
+typedef enum {
+	KM_TAG_TYPE_INVALID = 0,
+	KM_TAG_TYPE_ENUM = 1,
+	KM_TAG_TYPE_ENUM_REP = 2,
+	KM_TAG_TYPE_UINT = 3,
+	KM_TAG_TYPE_UINT_REP = 4,
+	KM_TAG_TYPE_ULONG = 5,
+	KM_TAG_TYPE_DATE = 6,
+	KM_TAG_TYPE_BOOL = 7,
+	KM_TAG_TYPE_BIGNUM = 8,
+	KM_TAG_TYPE_BYTES = 9,
+	KM_TAG_TYPE_ULONG_REP = 10,
+} keymint_tag_type_t;
+
+/**
+ * @brief Pre-shifted keymint_tag_bits_t values for easy combination with tag
+ * IDs.
+ */
+typedef enum {
+	KM_TYPE_INVALID = (KM_TAG_TYPE_INVALID << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_ENUM = (KM_TAG_TYPE_ENUM << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_ENUM_REP = (KM_TAG_TYPE_ENUM_REP << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_UINT = (KM_TAG_TYPE_UINT << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_UINT_REP = (KM_TAG_TYPE_UINT_REP << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_ULONG = (KM_TAG_TYPE_ULONG << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_DATE = (KM_TAG_TYPE_DATE << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_BOOL = (KM_TAG_TYPE_BOOL << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_BIGNUM = (KM_TAG_TYPE_BIGNUM << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_BYTES = (KM_TAG_TYPE_BYTES << KM_TAG_TYPE_SHIFT),
+	KM_TYPE_ULONG_REP = (KM_TAG_TYPE_ULONG_REP << KM_TAG_TYPE_SHIFT),
+} keymint_tag_bits_t;
+
+/**
+ * @brief Defines known tags used by KeyMint.
+ * Tags are serialized as 32-bit little-endian unsigned integers.
+ * The value is a combination of a shifted TagType and a tag ID.
+ */
+typedef enum {
+	KM_TAG_INVALID = 0,
+
+	/* Hardware-enforced tags */
+	KM_TAG_PURPOSE = (KM_TYPE_ENUM_REP | 1),
+	KM_TAG_ALGORITHM = (KM_TYPE_ENUM | 2),
+	KM_TAG_KEY_SIZE = (KM_TYPE_UINT | 3),
+	KM_TAG_BLOCK_MODE = (KM_TYPE_ENUM_REP | 4),
+	KM_TAG_DIGEST = (KM_TYPE_ENUM_REP | 5),
+	KM_TAG_PADDING = (KM_TYPE_ENUM_REP | 6),
+	KM_TAG_CALLER_NONCE = (KM_TYPE_BOOL | 7),
+	KM_TAG_MIN_MAC_LENGTH = (KM_TYPE_UINT | 8),
+	KM_TAG_EC_CURVE = (KM_TYPE_ENUM | 10),
+	KM_TAG_RSA_PUBLIC_EXPONENT = (KM_TYPE_ULONG | 200),
+	KM_TAG_INCLUDE_UNIQUE_ID = (KM_TYPE_BOOL | 202),
+	KM_TAG_RSA_OAEP_MGF_DIGEST = (KM_TYPE_ENUM_REP | 203),
+	KM_TAG_BOOTLOADER_ONLY = (KM_TYPE_BOOL | 302),
+	KM_TAG_ROLLBACK_RESISTANCE = (KM_TYPE_BOOL | 303),
+	KM_TAG_HARDWARE_TYPE = (KM_TYPE_ENUM | 304),
+	KM_TAG_EARLY_BOOT_ONLY = (KM_TYPE_BOOL | 305),
+	KM_TAG_MAX_USES_PER_BOOT = (KM_TYPE_UINT | 404),
+	KM_TAG_USAGE_COUNT_LIMIT = (KM_TYPE_UINT | 405),
+	KM_TAG_USER_SECURE_ID = (KM_TYPE_ULONG_REP | 502),
+	KM_TAG_NO_AUTH_REQUIRED = (KM_TYPE_BOOL | 503),
+	KM_TAG_USER_AUTH_TYPE = (KM_TYPE_ENUM | 504),
+	KM_TAG_AUTH_TIMEOUT = (KM_TYPE_UINT | 505),
+	KM_TAG_TRUSTED_USER_PRESENCE_REQUIRED = (KM_TYPE_BOOL | 507),
+	KM_TAG_TRUSTED_CONFIRMATION_REQUIRED = (KM_TYPE_BOOL | 508),
+	KM_TAG_UNLOCKED_DEVICE_REQUIRED = (KM_TYPE_BOOL | 509),
+	KM_TAG_ORIGIN = (KM_TYPE_ENUM | 702),
+	KM_TAG_OS_VERSION = (KM_TYPE_UINT | 705),
+	KM_TAG_OS_PATCHLEVEL = (KM_TYPE_UINT | 706),
+	KM_TAG_UNIQUE_ID = (KM_TYPE_BYTES | 707),
+	KM_TAG_VENDOR_PATCHLEVEL = (KM_TYPE_UINT | 718),
+	KM_TAG_BOOT_PATCHLEVEL = (KM_TYPE_UINT | 719),
+	KM_TAG_DEVICE_UNIQUE_ATTESTATION = (KM_TYPE_BOOL | 720),
+	KM_TAG_IDENTITY_CREDENTIAL_KEY = (KM_TYPE_BOOL | 721),
+	KM_TAG_STORAGE_KEY = (KM_TYPE_BOOL | 722),
+	KM_TAG_MAC_LENGTH = (KM_TYPE_UINT | 1003),
+	KM_TAG_MAX_BOOT_LEVEL = (KM_TYPE_UINT | 1010),
+
+	/* Software-enforced tags */
+	KM_TAG_ACTIVE_DATETIME = (KM_TYPE_DATE | 400),
+	KM_TAG_ORIGINATION_EXPIRE_DATETIME = (KM_TYPE_DATE | 401),
+	KM_TAG_USAGE_EXPIRE_DATETIME = (KM_TYPE_DATE | 402),
+	KM_TAG_USER_ID = (KM_TYPE_UINT | 501),
+	KM_TAG_ALLOW_WHILE_ON_BODY = (KM_TYPE_BOOL | 506),
+	KM_TAG_CREATION_DATETIME = (KM_TYPE_DATE | 701),
+	KM_TAG_ATTESTATION_APPLICATION_ID = (KM_TYPE_BYTES | 709),
+
+	/* Input-only / special tags */
+	KM_TAG_MIN_SECONDS_BETWEEN_OPS = (KM_TYPE_UINT | 403),
+	KM_TAG_APPLICATION_ID = (KM_TYPE_BYTES | 601),
+	KM_TAG_APPLICATION_DATA = (KM_TYPE_BYTES | 700),
+	KM_TAG_ROOT_OF_TRUST = (KM_TYPE_BYTES | 704),
+	KM_TAG_ATTESTATION_CHALLENGE = (KM_TYPE_BYTES | 708),
+	KM_TAG_ATTESTATION_ID_BRAND = (KM_TYPE_BYTES | 710),
+	KM_TAG_ATTESTATION_ID_DEVICE = (KM_TYPE_BYTES | 711),
+	KM_TAG_ATTESTATION_ID_PRODUCT = (KM_TYPE_BYTES | 712),
+	KM_TAG_ATTESTATION_ID_SERIAL = (KM_TYPE_BYTES | 713),
+	KM_TAG_ATTESTATION_ID_IMEI = (KM_TYPE_BYTES | 714),
+	KM_TAG_ATTESTATION_ID_MEID = (KM_TYPE_BYTES | 715),
+	KM_TAG_ATTESTATION_ID_MANUFACTURER = (KM_TYPE_BYTES | 716),
+	KM_TAG_ATTESTATION_ID_MODEL = (KM_TYPE_BYTES | 717),
+	KM_TAG_ATTESTATION_ID_SECOND_IMEI = (KM_TYPE_BYTES | 723),
+	KM_TAG_MODULE_HASH = (KM_TYPE_BYTES | 724),
+	KM_TAG_ASSOCIATED_DATA = (KM_TYPE_BYTES | 1000),
+	KM_TAG_NONCE = (KM_TYPE_BYTES | 1001),
+	KM_TAG_RESET_SINCE_ID_ROTATION = (KM_TYPE_BOOL | 1004),
+	KM_TAG_CONFIRMATION_TOKEN = (KM_TYPE_BYTES | 1005),
+	KM_TAG_CERTIFICATE_SERIAL = (KM_TYPE_BIGNUM | 1006),
+	KM_TAG_CERTIFICATE_SUBJECT = (KM_TYPE_BYTES | 1007),
+	KM_TAG_CERTIFICATE_NOT_BEFORE = (KM_TYPE_DATE | 1008),
+	KM_TAG_CERTIFICATE_NOT_AFTER = (KM_TYPE_DATE | 1009),
+} keymint_tag_t;
+
+// --- Inlined helper functions ---
+
+/// Returns the `keymint_tag_bits_t` of this tag.
+static inline keymint_tag_bits_t tag_get_type(keymint_tag_t tag)
+{
+	return (keymint_tag_bits_t)(tag & KM_TAG_TYPE_MASK);
+}
+
+/// Returns the un-shifted `keymint_tag_type_t` of this tag.
+static inline keymint_tag_type_t tag_get_type_enum(keymint_tag_t tag)
+{
+	return (keymint_tag_type_t)(tag_get_type(tag) >> KM_TAG_TYPE_SHIFT);
+}
+
+/// Returns the tag ID of this tag.
+static inline uint32_t tag_get_id(keymint_tag_t tag)
+{
+	return (tag & KM_TAG_ID_MASK) >> KM_TAG_ID_SHIFT;
+}
+
+/* --- Serialization helpers --- */
+
+/**
+ * @brief Extracts the tag type from a serialized tag word.
+ */
+static inline keymint_tag_type_t prefix_get_tag_type(uint32_t tag_word)
+{
+	return (keymint_tag_type_t)((tag_word & KM_TAG_TYPE_MASK) >>
+				    KM_TAG_TYPE_SHIFT);
+}
+
+/**
+ * @brief Recovers the canonical tag value from a serialized tag word.
+ */
+static inline keymint_tag_t prefix_get_tag(uint32_t tag_word)
+{
+	return (keymint_tag_t)((tag_word & KM_TAG_TYPE_MASK) |
+			       (tag_word & KM_TAG_ID_MASK));
+}
+
+/**
+ * @brief Gets the data length in bytes for a serialized parameter.
+ */
+static inline size_t prefix_get_data_len_bytes(uint32_t tag_word)
+{
+	switch (prefix_get_tag_type(tag_word)) {
+	case KM_TAG_TYPE_ENUM:
+	case KM_TAG_TYPE_ENUM_REP:
+	case KM_TAG_TYPE_UINT:
+	case KM_TAG_TYPE_UINT_REP:
+		return sizeof(uint32_t);
+	case KM_TAG_TYPE_DATE:
+	case KM_TAG_TYPE_ULONG:
+	case KM_TAG_TYPE_ULONG_REP:
+		return sizeof(uint64_t);
+	case KM_TAG_TYPE_BYTES:
+	case KM_TAG_TYPE_BIGNUM:
+		// For variable length types, length is encoded in the tag word.
+		return (tag_word & KM_TAG_LEN_MASK) >> KM_TAG_LEN_SHIFT;
+	default:
+		return 0;
+	}
+}
+
+/**
+ * @brief Gets total length of a serialized parameter in 32-bit words.
+ */
+static inline size_t prefix_get_word_len(uint32_t tag_word)
+{
+	size_t data_len = prefix_get_data_len_bytes(tag_word);
+	// 1 word for the tag + words for the data payload
+	return 1 + (data_len + sizeof(uint32_t) - 1) / sizeof(uint32_t);
+}
+
+// --- Function Prototypes for tag property checks ---
+
+// Other required enums from `crate::enums`
+typedef enum {
+	ALGORITHM_NONE = 0,
+	ALGORITHM_RSA = 1,
+	ALGORITHM_EC = 3,
+	ALGORITHM_AES = 32,
+	ALGORITHM_TDES = 33,
+	ALGORITHM_HMAC = 128,
+} keymint_algorithm_t;
+
+typedef enum {
+	KEY_PURPOSE_ENCRYPT = 0,
+	KEY_PURPOSE_DECRYPT = 1,
+	KEY_PURPOSE_SIGN = 2,
+	KEY_PURPOSE_VERIFY = 3,
+	KEY_PURPOSE_WRAP_KEY = 5,
+	KEY_PURPOSE_AGREE_KEY = 6,
+	KEY_PURPOSE_ATTEST_KEY = 7,
+} keymint_purpose_t;
+
+typedef enum {
+	EC_CURVE_P_224 = 0,
+	EC_CURVE_P_256 = 1,
+	EC_CURVE_P_384 = 2,
+	EC_CURVE_P_521 = 3,
+} keymint_ec_curve_t;
+
+typedef enum {
+	SECURITY_LEVEL_SOFTWARE = 0,
+	SECURITY_LEVEL_TRUSTED_ENVIRONMENT = 1,
+	SECURITY_LEVEL_STRONGBOX = 2,
+	SECURITY_LEVEL_KEYSTORE = 100,
+} keymint_security_level_t;
+
+typedef enum {
+	KEY_ORIGIN_GENERATED = 0,
+	KEY_ORIGIN_IMPORTED = 1,
+	KEY_ORIGIN_UNKNOWN = 2,
+	KEY_ORIGIN_SECURELY_IMPORTED = 3,
+} keymint_key_origin_t;
+
 #endif /* __INCLUDE_STRONGBOX_CMDS_H */
