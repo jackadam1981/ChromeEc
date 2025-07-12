@@ -2580,7 +2580,7 @@ static enum ec_error_list process_object(const struct access_tracker *at,
 	uint32_t flash_type;
 	uint32_t next_obj_base;
 	uint8_t *evict_start;
-	uint8_t *pcache;
+	uint8_t *pcache = NULL;
 	enum ec_error_list rv;
 
 	evict_start = nvmem_cache_base(NVMEM_TPM) + s_evictNvStart;
