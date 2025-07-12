@@ -229,7 +229,10 @@
 #undef CONFIG_DCRYPTO
 
 /* Enable Strongbox for Cr50 */
+/* TODO: enable Strongbox for CR50_DEV too. */
+#if !defined(CR50_DEV) && !defined(CRYPTO_TEST_SETUP)
 #define CONFIG_STRONGBOX
+#endif
 
 /*
  * This is pretty arbitrary, a rough estimate of what's required for smooth
