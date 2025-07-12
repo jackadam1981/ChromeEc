@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708b3eb1_824ce610",
+        "filename": "zephyr/program/fatcat/felino/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-12T00:19:47Z",
+      "side": 1,
+      "message": "what we need here is to extend the `struct charge_drv` to include\na more generic version of:\n\n```\n\tenum ec_error_list (*get_option)(int chgnum, int *option);\n\tenum ec_error_list (*set_option)(int chgnum, int option);\n```\nthat includes a register number. in the meantime, could you implement\n```\nenum ec_error_list bq257x0_get_option_reg(int chgnum, int reg, int *option);\nenum ec_error_list bq257x0_set_option_reg(int chgnum, int reg, int option);\n```\nin the driver to simplify these direct I2C read/write ops?\n\n\nsee driver/charger/bq25710.h:\n```int bq25710_set_min_system_voltage(int chgnum, int mv);```\nfor reference.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "6eb153e5904d1b8c9f80c79a875bf6b32c5075f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
