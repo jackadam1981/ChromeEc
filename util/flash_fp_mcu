@@ -55,6 +55,12 @@ klog() {
   echo "flash_fp_mcu: $*" > /dev/kmsg
 }
 
+# POSIX-compliant helper to check if a name is a defined function.
+# Usage: is_function <function_name>
+is_function() {
+  type "$1" 2>/dev/null | grep -q 'function'
+}
+
 check_hardware_write_protect_disabled() {
   local hardware_write_protect_state
   if ! hardware_write_protect_state="$(crossystem wpsw_cur)"; then
@@ -1379,9 +1385,9 @@ main() {
   echo "Platform name is ${PLATFORM_NAME} (${PLATFORM_BASE_NAME})."
 
   # Check that the config function exists
-  if [[ "$(type -t "config_${PLATFORM_NAME}")" == "function" ]]; then
+  if is_function "config_${PLATFORM_NAME}"; then
     readonly PLATFORM_CONFIG="${PLATFORM_NAME}"
-  elif [[ "$(type -t "config_${PLATFORM_BASE_NAME}")" == "function" ]]; then
+  elif is_function "config_${PLATFORM_BASE_NAME}"; then
     readonly PLATFORM_CONFIG="${PLATFORM_BASE_NAME}"
   else
     echo "No config for platform ${PLATFORM_NAME}." >&2
