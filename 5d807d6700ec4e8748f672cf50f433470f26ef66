@@ -39,6 +39,30 @@
       },
       "revId": "5d807d6700ec4e8748f672cf50f433470f26ef66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8c9b95_b91cbbc1",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-14T20:23:25Z",
+      "side": 1,
+      "message": "it is by default enabled:\n\n[config PLATFORM_EC_HOSTCMD_GET_UPTIME_INFO](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig;l\u003d503?q\u003d%22config%20PLATFORM_EC_HOSTCMD_GET_UPTIME_INFO%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d502-,503,-504) has `PLATFORM_EC_HOSTCMD` as its default value. [PLATFORM_EC_HOSTCMD](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig;l\u003d489?q\u003d%22config%20PLATFORM_EC_HOSTCMD%22#:~:text\u003d488-,489,-490) has a default value `y` if `AP` is enabled. [AP](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/soc/Kconfig;l\u003d5?q\u003dplatform%2Fec%2Fzephyr%20%22config%20AP%22#:~:text\u003d4-,5,-6) has the default value of y if [CROS_EC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig;l\u003d18#:~:text\u003d17-,18,-19) is enabled. [CROS_EC](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/prj.conf;l\u003d56#:~:text\u003d55-,56,-57) is enabled for the fingerprint projects.",
+      "parentUuid": "b63799e4_3b95f932",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "5d807d6700ec4e8748f672cf50f433470f26ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
