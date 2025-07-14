@@ -16,6 +16,29 @@
       "message": "The latest patchset creates a \"zephyr/drivers/hibernate\" folder.\n\nI also plan to create another hibernate driver called \"wake-pins\" which is currently duplicated across 3 EC types.",
       "revId": "447c1ce726099c576534e42e5bfb4db73a84ef7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b84eb2_f2ed3955",
+        "filename": "zephyr/dts/bindings/hibernate/cros-ec,hibernate-z5.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-14T23:37:12Z",
+      "side": 1,
+      "message": "NIT - is it normal to call it gpios (plural) when it only supports one?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "447c1ce726099c576534e42e5bfb4db73a84ef7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
