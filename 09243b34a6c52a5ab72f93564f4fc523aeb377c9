@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff06a6b_7d25879f",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T18:05:22Z",
+      "side": 1,
+      "message": "I have removed the power button passthrough from this patch. \n\nMy understanding is also the same, but the reason I added it is due to the request from hardware folks in b/421784159#comment4. I have added b/421784159#comment14 to understand the rationale behind the request. Will push another patch if there is a justified reasoning behind it. \n\nThanks",
+      "parentUuid": "132431ef_a7c068c2",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 6
+      },
+      "revId": "09243b34a6c52a5ab72f93564f4fc523aeb377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926f2dd1_09219c49",
