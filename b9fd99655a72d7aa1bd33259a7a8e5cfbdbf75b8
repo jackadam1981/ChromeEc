@@ -22,6 +22,30 @@
       },
       "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6514418_3aa96f60",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-14T20:53:14Z",
+      "side": 1,
+      "message": "I see that this is an OR condition.  However, the comment doesn\u0027t explain why entry to S0 is allowed if reset is asserted.",
+      "parentUuid": "abc5e9ef_66916d5d",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
