@@ -16,6 +16,24 @@
       "message": "@CHChang19@nuvoton.com\n\nJust to confirm that my understanding is correct: In order to enable `RAM LOCK`, we need the below\n\n- We need to enable `ramlock0` by making its status ok\n- We need to enable `CONFIG_NPCX_RAM_LOCK`\n\nWhy isn\u0027t `CONFIG_NPCX_RAM_LOCK` automatically enabled when `ramlock0` node status is `okay`? I believe you use that strategy for `trng`. Please confirm.",
       "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d037a9a5_368ce47c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-07-14T03:33:56Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nYour understanding is correct. Enabling RAM LOCK requires both switches to be enabled. Do you prefer that the `CONFIG_NPCX_RAM_LOCK` option be enabled automatically when the `ramlock0` is set to `okay` in the device tree, instead of leaving that decision to the board layer?",
+      "parentUuid": "7869e9bf_03e764d9",
+      "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
