@@ -457,11 +457,19 @@ get_default_fw() {
 proc_open_file() {
   local file_pattern="$1"
 
-  # Avoid overloading kernel max arguments with the number of file names.
-  local -a FDS=( /proc/*/fd/* )
-  xargs ls -l <<<"${FDS[*]}" 2>/dev/null | grep "${file_pattern}" | \
-    awk '{split($9,p,"/"); print "PID", p[3], "->", $11, $12}'
-  return "${PIPESTATUS[1]}"
+  find /proc/ -maxdepth 3 -type l -path '*/fd/*' -exec ls -l {} + 2>/dev/null | \
+  awk -v pattern="${file_pattern}" '
+    $0 ~ pattern {
+      split($9, p, "/")
+      print "PID", p[3], "->", $11, $12
+      found = 1
+    }
+    END {
+      # 0 if found, 1 if not found.
+      exit !found
+    }
+  '
+  return $?
 }
 
 flash_fp_mcu_npcx() {
@@ -1468,7 +1476,7 @@ main() {
   local files_open
   # Ensure no processes have cros_fp device or debug device open.
   # This might be biod and/or timberslide.
-  if files_open=$(proc_open_file "/dev/cros_fp\|/sys/kernel/debug/cros_fp/*")
+  if files_open=$(proc_open_file "/dev/cros_fp|/sys/kernel/debug/cros_fp/.*")
   then
     echo "WARNING: Another process has a cros_fp device file open." >&2
     echo "${files_open}" >&2
