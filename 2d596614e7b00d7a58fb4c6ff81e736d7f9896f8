@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d5d5ec_964c8d8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-14T10:04:11Z",
+      "side": 1,
+      "message": "Re-arranged the CLs list to resolve the build issues for ocelotrvp-mchp, Also added delete nodes for this CL only as getting compilation errors due to conflicts in adc device tree nodes. Taken care removing the same in further CL.",
+      "revId": "2d596614e7b00d7a58fb4c6ff81e736d7f9896f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
