@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24823a3c_38099ff4",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-07-14T06:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26d05810_d1e4ffa0",
+      "range": {
+        "startLine": 861,
+        "startChar": 0,
+        "endLine": 861,
+        "endChar": 52
+      },
+      "revId": "1f4f0f4b7b40f21dc225dc0287defb37bb2c3ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382793f4_be0d9881",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-11T16:43:47Z",
       "side": 1,
       "message": "```suggestion\n\t\tif (conf-\u003ewdt_enable \u0026\u0026 ((start_addr % boundary) \u003d\u003d 0)) {\n```",
+      "range": {
+        "startLine": 1006,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 52
+      },
+      "revId": "1f4f0f4b7b40f21dc225dc0287defb37bb2c3ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85942de2_35e5b395",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-07-14T06:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382793f4_be0d9881",
       "range": {
         "startLine": 1006,
         "startChar": 0,
