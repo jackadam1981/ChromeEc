@@ -19,8 +19,14 @@
 #include "zephyr_console_shim.h"
 #endif
 
+#include "cros_board_info.h"
+#include "cros_cbi.h"
+
 /* Delay in ms when starting from G3 */
 static uint32_t start_from_g3_delay_ms;
+
+/* Delay in ms when resume from S0ix */
+#define S0IX_RESUME_DELAY_MSEC 3
 
 #ifdef CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND
 static bool in_debug_mode;
@@ -347,6 +353,11 @@ void rsmrst_pass_thru_handler(void)
 /* Common power sequencing */
 static int common_pwr_sm_run(int state)
 {
+	int ish_enabled = ISH_DISABLED;
+	if (cros_cbi_get_fw_config(ISH, &ish_enabled) < 0) {
+		LOG_ERR("Failed to load ISH config");
+	}
+
 	switch (state) {
 	case SYS_POWER_STATE_G3: {
 		/* Callback event `AP_POWER_HARD_OFF` event must be generated
@@ -533,6 +544,15 @@ static int common_pwr_sm_run(int state)
 		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
 		if (power_signals_off(IN_PCH_SLP_S0) &&
 		    signals_valid_and_off(IN_PCH_SLP_S3)) {
+			/* WA: to minimize ISH enabled S0ix Signal issue impact */
+			if (ish_enabled == ISH_ENABLED) {
+				/* Add 3ms delay before transitioning */
+				k_msleep(S0IX_RESUME_DELAY_MSEC);
+				/* Re-check condition after delay */
+				if (!(power_signals_off(IN_PCH_SLP_S0) &&
+				    signals_valid_and_off(IN_PCH_SLP_S3)))
+					return SYS_POWER_STATE_S0ix;
+			}
 			/* TODO: Make sure ap reset handling is done
 			 * before leaving S0ix.
 			 */
