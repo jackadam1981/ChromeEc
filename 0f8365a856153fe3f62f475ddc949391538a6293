@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "0f8365a856153fe3f62f475ddc949391538a6293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8bb9c3_407b09e0",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-07-14T07:11:03Z",
+      "side": 1,
+      "message": "Note that was only ad hoc change, that seemed to help. Working on exact change. For sure we need to disconnect not used Rp\u0027s Rd\u0027s, but maybe I am thinking that if we are not changing resistance on specific CC we should not disconnect it. \n\nAlso setting this TX_DATA HiZi and not enabling it back somewhere it this function seems suspect for me.",
+      "revId": "0f8365a856153fe3f62f475ddc949391538a6293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
