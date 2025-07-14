@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78cdb8e9_2cb637df",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cb645ccd_74aecf6b",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb091eb_1a58fde1",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "219510d6_f44c944c",
+      "range": {
+        "startLine": 163,
+        "startChar": 50,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a42adbf_7e07b6b1",
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85013497_c4cdaaf3",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2a42adbf_7e07b6b1",
+      "range": {
+        "startLine": 407,
+        "startChar": 24,
+        "endLine": 407,
+        "endChar": 58
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a451350_f40bc0c3",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d0805d1f_53bdd1c8",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73533374_80d93da3",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-07-08T18:11:07Z",
       "side": 1,
       "message": "Similarly, these conditions are also inverted.",
+      "range": {
+        "startLine": 422,
+        "startChar": 6,
+        "endLine": 422,
+        "endChar": 20
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65c3e01_4b16e0e5",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "73533374_80d93da3",
       "range": {
         "startLine": 422,
         "startChar": 6,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ce759f_1f23bba0",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7a1e30a8_a340efc6",
+      "range": {
+        "startLine": 424,
+        "startChar": 8,
+        "endLine": 424,
+        "endChar": 17
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9972339_2566702b",
@@ -152,6 +296,30 @@
       "writtenOn": "2025-07-08T18:11:07Z",
       "side": 1,
       "message": "Nit: Use the style of multi-line comments.",
+      "range": {
+        "startLine": 717,
+        "startChar": 2,
+        "endLine": 717,
+        "endChar": 5
+      },
+      "revId": "f413c680d65a322a9e0636df61f0cea4cb93c55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ef8d0d_3fe92a0b",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:54:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b9972339_2566702b",
       "range": {
         "startLine": 717,
         "startChar": 2,
