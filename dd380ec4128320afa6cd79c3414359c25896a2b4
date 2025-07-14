@@ -39,6 +39,30 @@
       },
       "revId": "dd380ec4128320afa6cd79c3414359c25896a2b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcb9ec3_ee7e7cb3",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T17:54:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b7f21434_7ad5a755",
+      "range": {
+        "startLine": 436,
+        "startChar": 12,
+        "endLine": 436,
+        "endChar": 25
+      },
+      "revId": "dd380ec4128320afa6cd79c3414359c25896a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
