@@ -13,6 +13,8 @@
 #include "power_signals.h"
 #include "test_mocks.h"
 #include "test_state.h"
+#include "test_utils.h"
+#include "timer.h"
 #include "zephyr/sys/util.h"
 
 #include <zephyr/drivers/espi.h>
@@ -172,6 +174,57 @@ static void verify_ap_inputs(bool in_s0)
 		}
 	}
 }
+
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+/**
+ * Test boottime ec console command pre main
+ */
+ZTEST(ap_pwrseq_pre_main, test_boot_time_set)
+{
+	uint64_t time_S5;
+	uint64_t time_S0;
+
+	/* Test nothing is set. */
+	get_time_mock->val = 0;
+	ap_power_test_on_new_state("G3");
+
+	/* ec_shell returns empty string pre main so we only verify the command
+	 * can be called.
+	 */
+	CHECK_CONSOLE_CMD("boottime S5", NULL, EC_SUCCESS);
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, (uint64_t)-1, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, (uint64_t)-1, "time_S0=%llu", time_S0);
+
+	/* Test time_S5 is set. */
+	get_time_mock->val = USEC_PER_SEC;
+	ap_power_test_on_new_state("S5");
+
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, (uint64_t)-1, "time_S0=%llu", time_S0);
+
+	/* Test time_S0 is set. */
+	get_time_mock->val = 2 * USEC_PER_SEC;
+	ap_power_test_on_new_state("S0");
+
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
+
+	/* Test second time does not overwrite the first time. */
+	get_time_mock->val = 3 * USEC_PER_SEC;
+	ap_power_test_on_new_state("S5");
+
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
+}
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 ZTEST(ap_pwrseq, test_ap_pwrseq_0)
 {
@@ -479,6 +532,33 @@ ZTEST(ap_pwrseq, test_insufficient_power_blocks_s5)
 		chipset_in_or_transitioning_to_state(CHIPSET_STATE_HARD_OFF));
 }
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+/**
+ * Test boottime ec console command - this assumes the test is run after the
+ * test_ap_pwrseq_0.
+ */
+ZTEST_USER(ap_pwrseq, test_boot_time_console_cmd)
+{
+	int64_t time_S5;
+	int64_t time_S0;
+
+	CHECK_CONSOLE_CMD("boottime", NULL, EC_ERROR_PARAM_COUNT);
+	CHECK_CONSOLE_CMD("boottime 123", NULL, EC_ERROR_PARAM1);
+	/*
+	Example output:
+
+	[18296096824.492111 first S5: 1000ms]
+	*/
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+	zassert_not_equal(time_S5, -1);
+	zassert_not_equal(time_S0, -1);
+	zassert_true(time_S5 <= time_S0);
+}
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
+
 void ap_pwrseq_after_test(void *data)
 {
 	power_signal_emul_unload();
@@ -505,3 +585,21 @@ void ap_pwrseq_teardown_suite(void *data)
 
 ZTEST_SUITE(ap_pwrseq, ap_power_predicate_post_main, ap_pwrseq_setup_suite,
 	    NULL, ap_pwrseq_after_test, NULL);
+
+static void *ap_pwrseq_pre_main_setup()
+{
+	static timestamp_t time_mock;
+	get_time_mock = &time_mock;
+	return NULL;
+}
+
+static void ap_pwrseq_pre_main_teardown(void *state)
+{
+	get_time_mock = NULL;
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ_DRIVER)) {
+		ap_power_reset_boot_time();
+	}
+}
+
+ZTEST_SUITE(ap_pwrseq_pre_main, ap_power_predicate_pre_main,
+	    ap_pwrseq_pre_main_setup, NULL, NULL, ap_pwrseq_pre_main_teardown);
