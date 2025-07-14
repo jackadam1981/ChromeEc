@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "5d807d6700ec4e8748f672cf50f433470f26ef66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63799e4_3b95f932",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-14T18:56:18Z",
+      "side": 1,
+      "message": "Is it enabled by default? i.e., can we just remove this line?\n\nI\u0027m guessing that\u0027s the case from `# Disable math util and unnecessary console commands to save space`.\n\nWe may be able to re-enable some of these other commands now that we don\u0027t have space issues, but we can do that separately. (`flash_wp`, `sysinfo`, `sysjump` can be useful for debugging)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "5d807d6700ec4e8748f672cf50f433470f26ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
