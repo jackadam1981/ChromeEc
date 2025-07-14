@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cd3e19_d991a4f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-14T16:24:22Z",
+      "side": 1,
+      "message": "Just one unresolved comment about the power button: It doesn\u0027t need to be passed through. The power button uses a different path to signal the AP, specifically, the ChromeOS-specific MKBP path through the EC host event, instead of the QC way through the PMIC.",
+      "revId": "d53015a96fe599daa69af49d8871df14cb88e636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
