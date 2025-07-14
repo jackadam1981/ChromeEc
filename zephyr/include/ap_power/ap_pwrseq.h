@@ -208,6 +208,25 @@ int ap_pwrseq_register_state_entry_callback(
 int ap_pwrseq_register_state_exit_callback(
 	const struct device *dev, struct ap_pwrseq_state_callback *state_cb);
 
+#ifdef CONFIG_ZTEST
+/**
+ * @brief Called when state change in ap_pwrseq_thread.
+ *
+ * @param state: The new state.
+ * @param this_in_signals: The new signals.
+ */
+void on_new_state(enum ap_pwrseq_state state);
+
+/**
+ * @brief Get the time first time on_new_state(state, X) is called.
+ *
+ * @param state: The query state. Only support S0 and S5 now.
+ * @param time: The output time.
+ * @return EINVAL if state is not supported.
+ */
+int get_boot_time(enum ap_pwrseq_state state, uint64_t *time);
+#endif /* CONFIG_ZTEST */
+
 #ifdef __cplusplus
 }
 #endif
