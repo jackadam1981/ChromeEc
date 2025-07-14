@@ -17,6 +17,7 @@ if (NOT DEFINED CONFIG_EMUL_AP_PWRSEQ_DRIVER)
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER ap_pwrseq.c)
 endif()
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER ap_pwrseq_sm.c)
+zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER command_boot_time.c)
 
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_HOST_SLEEP power_host_sleep.c)
 

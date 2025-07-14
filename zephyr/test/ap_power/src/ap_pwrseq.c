@@ -6,6 +6,8 @@
 #include "ap_power/ap_power.h"
 #include "ap_power/ap_power_interface.h"
 #include "chipset.h"
+#include "command_boot_time.h"
+#include "console_utils.h"
 #include "ec_commands.h"
 #include "emul/emul_power_signals.h"
 #include "host_command.h"
@@ -13,7 +15,10 @@
 #include "power_signals.h"
 #include "test_mocks.h"
 #include "test_state.h"
+#include "timer.h"
 #include "zephyr/sys/util.h"
+
+#include <stdlib.h>
 
 #include <zephyr/drivers/espi.h>
 #include <zephyr/drivers/espi_emul.h>
@@ -34,6 +39,10 @@ static int power_hard_off_count;
 static int power_shutdown_count;
 static int power_shutdown_complete_count;
 static int power_suspend_count;
+
+struct ap_pwrseq_pre_main_fixture {
+	timestamp_t time;
+};
 
 #define S5_INACTIVITY_TIMEOUT_MS                                               \
 	COND_CODE_0(                                                           \
@@ -172,6 +181,57 @@ static void verify_ap_inputs(bool in_s0)
 		}
 	}
 }
+
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+/**
+ * Test boottime ec console command pre main
+ */
+ZTEST_F(ap_pwrseq_pre_main, test_boot_time_set)
+{
+	uint64_t time_S5;
+	uint64_t time_S0;
+
+	/* Test nothing is set. */
+	fixture->time.val = 0;
+	ap_power_test_on_new_state("G3");
+
+	/* ec_shell returns empty string pre main so we only verify the command
+	 * can be called.
+	 */
+	CHECK_CONSOLE_CMD("boottime S5", NULL, EC_SUCCESS);
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, (uint64_t)-1, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, (uint64_t)-1, "time_S0=%llu", time_S0);
+
+	/* Test time_S5 is set. */
+	fixture->time.val = USEC_PER_SEC;
+	ap_power_test_on_new_state("S5");
+
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, (uint64_t)-1, "time_S0=%llu", time_S0);
+
+	/* Test time_S0 is set. */
+	fixture->time.val = 2 * USEC_PER_SEC;
+	ap_power_test_on_new_state("S0");
+
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
+
+	/* Test second time does not overwrite the first time. */
+	fixture->time.val = 3 * USEC_PER_SEC;
+	ap_power_test_on_new_state("S5");
+
+	zassert_ok(ap_power_get_boot_time("S5", &time_S5));
+	zassert_ok(ap_power_get_boot_time("S0", &time_S0));
+	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
+	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
+}
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 ZTEST(ap_pwrseq, test_ap_pwrseq_0)
 {
@@ -538,6 +598,33 @@ ZTEST(ap_pwrseq, test_insufficient_power_blocks_s5)
 		chipset_in_or_transitioning_to_state(CHIPSET_STATE_HARD_OFF));
 }
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+/**
+ * Test boottime ec console command - this assumes the test is run after the
+ * test_ap_pwrseq_0.
+ */
+ZTEST_USER(ap_pwrseq, test_boot_time_console_cmd)
+{
+	int64_t time_S5;
+	int64_t time_S0;
+
+	CHECK_CONSOLE_CMD("boottime", NULL, EC_ERROR_PARAM_COUNT);
+	CHECK_CONSOLE_CMD("boottime 123", NULL, EC_ERROR_PARAM1);
+	/*
+	Example output:
+
+	[18296096824.492111 first S5: 1000ms]
+	*/
+	SCAN_CONSOLE_CMD("boottime S5", EC_SUCCESS, 1, "%*[^f]first S5: %lldms",
+			 &time_S5);
+	SCAN_CONSOLE_CMD("boottime S0", EC_SUCCESS, 1, "%*[^f]first S0: %lldms",
+			 &time_S0);
+	zassert_not_equal(time_S5, -1);
+	zassert_not_equal(time_S0, -1);
+	zassert_true(time_S5 <= time_S0);
+}
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
+
 void ap_pwrseq_after_test(void *data)
 {
 	power_signal_emul_unload();
@@ -564,3 +651,23 @@ void ap_pwrseq_teardown_suite(void *data)
 
 ZTEST_SUITE(ap_pwrseq, ap_power_predicate_post_main, ap_pwrseq_setup_suite,
 	    NULL, ap_pwrseq_after_test, NULL);
+
+static void *ap_pwrseq_pre_main_setup()
+{
+	struct ap_pwrseq_pre_main_fixture *fixture =
+		malloc(sizeof(struct ap_pwrseq_pre_main_fixture));
+	get_time_mock = &fixture->time;
+	return fixture;
+}
+
+static void ap_pwrseq_pre_main_teardown(void *fixture)
+{
+	get_time_mock = NULL;
+	free(fixture);
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ_DRIVER)) {
+		ap_power_reset_boot_time();
+	}
+}
+
+ZTEST_SUITE(ap_pwrseq_pre_main, ap_power_predicate_pre_main,
+	    ap_pwrseq_pre_main_setup, NULL, NULL, ap_pwrseq_pre_main_teardown);
