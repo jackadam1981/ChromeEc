@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6407d937_831357b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-14T16:19:12Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "dd380ec4128320afa6cd79c3414359c25896a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f21434_7ad5a755",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-14T16:19:12Z",
+      "side": 1,
+      "message": "Nit: Correct the capitalization.",
+      "range": {
+        "startLine": 436,
+        "startChar": 12,
+        "endLine": 436,
+        "endChar": 25
+      },
+      "revId": "dd380ec4128320afa6cd79c3414359c25896a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
