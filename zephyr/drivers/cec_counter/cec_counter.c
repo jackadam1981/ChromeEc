@@ -107,11 +107,23 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 		 * interrupt occurs to when the ISR starts. Empirically, this
 		 * seems to be about 100 us, so account for this too.
 		 */
+		/* ITE Deubg - need to re-evaluate 100us for zephyr? */
+#if 1 /* ITE Debug */
+		if (get_time().val < interrupt_time.val) {
+			LOG_ERR("%s ITE Debug %d", __func__, __LINE__);
+		}
+#endif
 		int delay = CEC_US_TO_TICKS(get_time().val -
 					    interrupt_time.val + 100);
 		int timer_count = timeout - delay;
 		struct counter_top_cfg top_cfg;
 
+#if 1 /* ITE Debug */
+		#define cec_counter_dev DEVICE_DT_GET(DT_CHOSEN(cros_ec_cec_counter))
+		if (delay > counter_get_max_top_value(cec_counter_dev)) {
+			LOG_ERR("%s ITE Debug %d", __func__, __LINE__);
+		}
+#endif
 		/*
 		 * Handle the case where the delay is greater than the timeout.
 		 * This should never actually happen for typical delay and
@@ -129,7 +141,10 @@ void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
 		top_cfg.callback = cec_ext_top_timer_handler;
 		top_cfg.user_data = (void *)((intptr_t)port);
 		top_cfg.flags = 0;
-		counter_set_top_value(cec_counter_dev, &top_cfg);
+		int ret = counter_set_top_value(cec_counter_dev, &top_cfg);
+		if (ret) {
+			LOG_ERR("%s ITE Debug %d", __func__, __LINE__);
+		}
 	} else {
 		counter_stop(cec_counter_dev);
 	}

@@ -9,6 +9,14 @@ compatible: "cros-ec,cec-bitbang"
 include: base.yaml
 
 properties:
+  gpio-debug-1:
+    type: phandle
+    required: true
+
+  gpio-debug-2:
+    type: phandle
+    required: true
+
   gpio-out:
     type: phandle
     required: true

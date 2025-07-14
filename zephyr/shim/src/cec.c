@@ -28,6 +28,8 @@ static struct cec_offline_policy default_cec_policy[] = {
 
 #define CEC_DRV_CONFIG_BITBANG(node_id)                                     \
 	static const struct bitbang_cec_config node_id##_bitbang_config = { \
+		.gpio_debug_1 = GPIO_SIGNAL(DT_PHANDLE(node_id, gpio_debug_1)),     \
+		.gpio_debug_2 = GPIO_SIGNAL(DT_PHANDLE(node_id, gpio_debug_2)),     \
 		.gpio_out = GPIO_SIGNAL(DT_PHANDLE(node_id, gpio_out)),     \
 		.gpio_in = GPIO_SIGNAL(DT_PHANDLE(node_id, gpio_in)),       \
 		.gpio_pull_up =                                             \
