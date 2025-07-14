@@ -70,6 +70,30 @@
       },
       "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b00579_e800d3d9",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T11:58:16Z",
+      "side": 1,
+      "message": "Hey Keith \u0026 Tom, \n\nThanks for the suggestion, I agree this is a correct direction for this driver. I have filled a bug to track this further and also updated the relevant ask/suggestions in the description : b/431715716\n\nThanks",
+      "parentUuid": "e1052657_d0068d70",
+      "range": {
+        "startLine": 537,
+        "startChar": 17,
+        "endLine": 537,
+        "endChar": 34
+      },
+      "revId": "b1cbe23fd7c26c5e3c7a217648c992e145b13427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
