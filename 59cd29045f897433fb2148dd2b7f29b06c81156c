@@ -34,6 +34,24 @@
       "parentUuid": "7869e9bf_03e764d9",
       "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29471918_99ca1d9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-14T03:42:25Z",
+      "side": 1,
+      "message": "@CHChang19@nuvoton.com How would you enable this? do you need to use the [Custom KConfig Preprocessor functions](https://docs.zephyrproject.org/latest/build/kconfig/preprocessor-functions.html)?",
+      "parentUuid": "d037a9a5_368ce47c",
+      "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
