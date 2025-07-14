@@ -70,6 +70,30 @@
       },
       "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d4b7dd_026d21f4",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-14T23:00:11Z",
+      "side": 1,
+      "message": "Yes, please update the comment.\n\nIt could help readability to move these checks into a helper routine.\n```\nbool x86_mtl_can_exit_s0ix()\n    /* AP was reset... */\n    if (power_signal_get(PWR_SYS_RST))\n        return true;\n        \n    /* SLP_SO deasserted and AP sent resume command */\n    if (ap_power_sleep \u003d\u003d RESUME \u0026\u0026 power_signals_off(SLP_SO))\n        return true;\n        \n    return false;\n```",
+      "parentUuid": "cacdf95e_60f3be89",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
