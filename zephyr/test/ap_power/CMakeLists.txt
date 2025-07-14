@@ -14,12 +14,14 @@ zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 target_sources(app PRIVATE
   src/ap_pwrseq.c
+  src/boot_time.c
   src/console_command.c
   src/events.c
   src/hibdelay.c
   src/hibernate.c
   src/host_command.c
 	src/test_mocks.c
+  src/test_utils.c
   src/main.c)
 
 # Generic architecture tests
