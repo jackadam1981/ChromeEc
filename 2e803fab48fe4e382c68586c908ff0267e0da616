@@ -16,6 +16,24 @@
       "message": "The mutex is only used in init function. Is there a consideration use separated mutexes instead of one ?",
       "revId": "2e803fab48fe4e382c68586c908ff0267e0da616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcfab34e_fa2617b3",
+        "filename": "driver/charger/isl95522.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-07-14T06:29:26Z",
+      "side": 1,
+      "message": "Modify mutex define and behavior.",
+      "parentUuid": "358377b3_5c7eacab",
+      "revId": "2e803fab48fe4e382c68586c908ff0267e0da616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
