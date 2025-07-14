@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6560ebf_070a7e6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-14T21:23:48Z",
+      "side": 1,
+      "message": "Let\u0027s use the bug that disabled these commands instead. You can find it by using \"git blame\" on the file and checking the CL that added these lines.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "20530b955ad862c8724ad94bf793fd1127d1eceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
