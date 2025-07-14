@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc5e9ef_66916d5d",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-14T20:51:32Z",
+      "side": 1,
+      "message": "This is an active low signal - so this requires that SYS_RST is asserted to go into S0?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c;l\u003d300;drc\u003d360e506e86a7e3d496d36e72d6d100bbfb9b65e8",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
