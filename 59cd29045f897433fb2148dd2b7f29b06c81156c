@@ -52,6 +52,24 @@
       "parentUuid": "d037a9a5_368ce47c",
       "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7c3d23_f3655a87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-07-14T06:16:36Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nConsider using `dt_nodelabel_enabled` in Kconfig to enable `CONFIG_NPCX_RAM_LOCK` automatically.",
+      "parentUuid": "29471918_99ca1d9d",
+      "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
