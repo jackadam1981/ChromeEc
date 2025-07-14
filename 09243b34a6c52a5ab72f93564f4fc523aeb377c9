@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf94c4a_7dad1d1f",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:55:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2d940fb8_018eb7f4",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "09243b34a6c52a5ab72f93564f4fc523aeb377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "132431ef_a7c068c2",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-07-08T19:07:48Z",
       "side": 1,
       "message": "Maybe rename it to `PLATFORM_EC_PMIC_PASSTHRU_POWER_SIGNALS`?",
+      "range": {
+        "startLine": 283,
+        "startChar": 19,
+        "endLine": 283,
+        "endChar": 47
+      },
+      "revId": "09243b34a6c52a5ab72f93564f4fc523aeb377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f14104_519b705b",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 19
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-07-14T13:55:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "926f2dd1_09219c49",
       "range": {
         "startLine": 283,
         "startChar": 19,
