@@ -443,6 +443,15 @@ static void enter_state(int port, enum cec_state new_state)
 		gpio_clear_pending_interrupt(drv_config->gpio_in);
 	}
 	if (timeout >= 0) {
+		/* ITE Debug */
+		static bool debug_gpio_1 = false;
+		if (debug_gpio_1) {
+			debug_gpio_1 = false;
+			gpio_set_level(drv_config->gpio_debug_1, 0);
+		} else {
+			debug_gpio_1 = true;
+			gpio_set_level(drv_config->gpio_debug_1, 1);
+		}
 		cec_tmr_cap_start(port, cap_edge, timeout);
 	}
 }
@@ -451,6 +460,17 @@ void cec_event_timeout(int port)
 {
 	struct cec_port_data *port_data = &cec_port_data[port];
 
+	/* ITE Debug */
+	static bool debug_gpio_2 = false;
+	const struct bitbang_cec_config *drv_config =
+		cec_config[port].drv_config;
+	if (debug_gpio_2) {
+		debug_gpio_2 = false;
+		gpio_set_level(drv_config->gpio_debug_2, 0);
+	} else {
+		debug_gpio_2 = true;
+		gpio_set_level(drv_config->gpio_debug_2, 1);
+	}
 	switch (port_data->state) {
 	case CEC_STATE_DISABLED:
 	case CEC_STATE_IDLE:

@@ -16,6 +16,8 @@ enum cec_cap_edge {
 };
 
 struct bitbang_cec_config {
+	enum gpio_signal gpio_debug_1;
+	enum gpio_signal gpio_debug_2;
 	enum gpio_signal gpio_out;
 	enum gpio_signal gpio_in;
 	enum gpio_signal gpio_pull_up;
