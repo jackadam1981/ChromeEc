@@ -70,6 +70,24 @@
       "parentUuid": "29471918_99ca1d9d",
       "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605b103d_fe0a23b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-14T16:21:09Z",
+      "side": 1,
+      "message": "@CHChang19@nuvoton.com\n\nThanks,\n\nSo we can do the following to enable `CONFIG_NPCX_RAM_LOCK` automatically if `ramlock`` status is set to `okay`. Do you foresee any pros / cons to this approach?\n\n```\nconfig NPCX_RAM_LOCK\n\tbool \"Enable NPCX RAM lock function\"\n\tdepends on ARM_MPU\n\tdefault y if $(dt_nodelabel_enabled,ramlock0)\n\thelp\n\t  Enable the RAM lock function.\n```\n\nPlease advise.",
+      "parentUuid": "2a7c3d23_f3655a87",
+      "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
