@@ -4,15 +4,24 @@
  */
 
 #include "ap_pwrseq_drv_sm.h"
+#include "console.h"
+#include "timer.h"
+#include "zephyr_console_shim.h"
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/atomic.h>
 
+#include <strings.h>
+
 LOG_MODULE_REGISTER(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
 #define AP_PWRSEQ_EVENT_MASK GENMASK(AP_PWRSEQ_EVENT_COUNT - 1, 0)
 #define AP_PWRSEQ_STATES_MASK GENMASK(AP_POWER_STATE_COUNT - 1, 0)
+
+static const uint64_t uninitialized_time = -1;
+static uint64_t first_S0_time = uninitialized_time; /* When did we enter S0? */
+static uint64_t first_S5_time = uninitialized_time; /* When did we enter S5? */
 
 struct ap_pwrseq_cb_list {
 	uint32_t states;
@@ -151,6 +160,18 @@ static uint32_t ap_pwrseq_wait_event(const struct device *dev)
 	return events & AP_PWRSEQ_EVENT_MASK;
 }
 
+static void on_new_state(enum ap_pwrseq_state new_state)
+{
+	LOG_INF("power state %d = %s,", new_state,
+		ap_pwrseq_get_state_str(new_state));
+	if (new_state == AP_POWER_STATE_S5 &&
+	    first_S5_time == uninitialized_time)
+		first_S5_time = get_time().val;
+	if (new_state == AP_POWER_STATE_S0 &&
+	    first_S0_time == uninitialized_time)
+		first_S0_time = get_time().val;
+}
+
 static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
 {
 	struct device *const dev = (struct device *)arg;
@@ -197,8 +218,7 @@ static void ap_pwrseq_thread(void *arg, void *unused1, void *unused2)
 
 			ap_pwrseq_send_entry_callback(dev, new_state,
 						      cur_state);
-			LOG_INF("power state %d = %s,", new_state,
-				ap_pwrseq_get_state_str(new_state));
+			on_new_state(new_state);
 		}
 	}
 }
@@ -315,3 +335,64 @@ int ap_pwrseq_register_state_exit_callback(
 
 	return ap_pwrseq_register_state_callback(state_cb, &data->exit_list);
 }
+
+STATIC_IF_NOT(CONFIG_ZTEST)
+int ap_power_get_boot_time(const char *state_name, uint64_t *output_time)
+{
+	if (strncasecmp(state_name, "S0", sizeof("S0")) == 0) {
+		*output_time = first_S0_time;
+		return 0;
+	} else if (strncasecmp(state_name, "S5", sizeof("S5")) == 0) {
+		*output_time = first_S5_time;
+		return 0;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+}
+
+#ifdef CONFIG_ZTEST
+void ap_power_test_on_new_state(const char *state_name)
+{
+	if (strncasecmp(state_name, "S0", sizeof("S0")) == 0) {
+		on_new_state(AP_POWER_STATE_S0);
+	} else if (strncasecmp(state_name, "S5", sizeof("S5")) == 0) {
+		on_new_state(AP_POWER_STATE_S5);
+	} else {
+		on_new_state(AP_POWER_STATE_G3);
+	}
+}
+
+void ap_power_reset_boot_time()
+{
+	first_S0_time = uninitialized_time;
+	first_S5_time = uninitialized_time;
+}
+#endif
+
+static int command_boot_time(int argc, const char **argv)
+{
+	const char *state_name;
+	uint64_t display_time;
+	int rv;
+
+	if (argc != 2) {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	state_name = argv[1];
+
+	rv = ap_power_get_boot_time(state_name, &display_time);
+	if (rv != 0) {
+		return rv;
+	}
+
+	if (display_time == uninitialized_time) {
+		ccprints("first %s: -1ms", state_name);
+	} else {
+		ccprints("first %s: %llums", state_name,
+			 display_time / USEC_PER_MSEC);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boottime, command_boot_time, "<S0|S5>",
+			"Expose boot time for firmware.BootTime.");
