@@ -94,6 +94,30 @@
       },
       "revId": "da54812ce6f65db1a08b70aeb806d9cc1db4baba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9518c85c_2fec7558",
+        "filename": "zephyr/program/trulo/pujjocento/src/touchpanel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-14T23:44:58Z",
+      "side": 1,
+      "message": "Fair point, resolving since the code is consistent with the main branch",
+      "parentUuid": "80d0cdb2_1b2df8cb",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "da54812ce6f65db1a08b70aeb806d9cc1db4baba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
