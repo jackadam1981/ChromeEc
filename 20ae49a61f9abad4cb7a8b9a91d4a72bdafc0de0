@@ -16,6 +16,24 @@
       "message": "Could you tell me what CONFIG_ZTEST is for?",
       "revId": "20ae49a61f9abad4cb7a8b9a91d4a72bdafc0de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab54468_4398132a",
+        "filename": "zephyr/program/nissa/epic/src/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2025-07-15T07:25:02Z",
+      "side": 1,
+      "message": "LOW_COVERAGE_REASON\u003dTests will be added in b:431870485\nAfter add the tests, it will be removed",
+      "parentUuid": "d3e7f154_4251f494",
+      "revId": "20ae49a61f9abad4cb7a8b9a91d4a72bdafc0de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
