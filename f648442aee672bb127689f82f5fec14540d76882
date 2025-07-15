@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210c0e0f_57d9e9da",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-07-15T11:03:17Z",
+      "side": 1,
+      "message": "#Enable SPI driver support\nCONFIG_SPI\u003dy\n#enable NPCX SPIP interrupt-driven support\nCONFIG_SPI_NPCX_SPIP_INTERRUPT\u003dy",
+      "revId": "f648442aee672bb127689f82f5fec14540d76882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8415b8_e5a1741b",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-07-15T11:03:17Z",
+      "side": 1,
+      "message": "needs to add pinctrl to switch the pins the SPIP function.\n```\n        pinctrl-0 \u003d \u003c\u0026spip_sclk_mosi_miso_gp95_gpa1_gpa3_gpa5_sl                                                                                                                                                                              \n                     \u0026spip_sclk_mosi_miso_gp95_gpa1_gpa3_gpa5_no_spip_inv\u003e;                          \n        pinctrl-names \u003d \"default\";   \n```\n\nConsider to override the interrupt priority from 3 to 2:\nIf 2 is not enough, we can consider to re-arrange all the allocation of interrupt priority for all pheriphrals.\n```\ninterrupts \u003d \u003c57 2\u003e;\n```",
+      "revId": "f648442aee672bb127689f82f5fec14540d76882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc57b24f_5d40c197",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-07-15T11:03:17Z",
+      "side": 1,
+      "message": "Per comment in b:430666352#8, set `spi-max-frequency \u003d \u003c7500000\u003e;`",
+      "revId": "f648442aee672bb127689f82f5fec14540d76882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bed1cb_bd3e981b",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-07-15T11:03:17Z",
+      "side": 1,
+      "message": "Per comment in b:430666352#8, set\n```\nspi-one-frame \u003d \u003c0xfc\u003e;  /* 0b11111100 T1H: 0.8 us within 0.650~0.950us */\nspi-zero-frame \u003d \u003c0xe0\u003e; /* 0b11100000 T0H: 0.4 us within 0.250~0.550us  */\n\n```",
+      "revId": "f648442aee672bb127689f82f5fec14540d76882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
