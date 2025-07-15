@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c091d57_0da3903b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "ok. I removed it. It was need for `fingerprint_fpc1025.c` for [sys_be16_to_cpu](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_fpc1025.c;l\u003d142?q\u003dfingerprint_fpc1025.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d141-,142,-143)",
+      "parentUuid": "1974d87e_88f6fe21",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db527c81_74e3ba03",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "This is an error, so `LOG_ERR`.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed0f2f4_00e4898b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db527c81_74e3ba03",
       "range": {
         "startLine": 57,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a66ac9_52e24314",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f458069_b1dc0d55",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 9
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6496c9_6dcb0a23",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "In the function description we can find that `elan_sensor_acquire_image_with_mode()` returns negative value on error, but there is not information if that negative value is compatible with Zephyr. I think it\u0027s okay to print elan return code in `LOG_ERR()` above and return something like `-EFAULT` here.",
+      "range": {
+        "startLine": 272,
+        "startChar": 9,
+        "endLine": 272,
+        "endChar": 11
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10baf002_d5c849b9",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "The error value is already printed in the LOG_ERR statement. I modified the return to return `-EFAULT` instead.",
+      "parentUuid": "ba6496c9_6dcb0a23",
       "range": {
         "startLine": 272,
         "startChar": 9,
@@ -158,6 +254,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d55abf5f_058ef539",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "confirming with Elan",
+      "parentUuid": "2d7a48f5_2ee9702e",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 60
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a682cad4_f6d09fe2",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -192,6 +312,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Could you add define in `fingerprint_elan80sg_pal.h` for this?",
+      "range": {
+        "startLine": 250,
+        "startChar": 19,
+        "endLine": 250,
+        "endChar": 23
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827f15e2_d441d68c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "asking Elan",
+      "parentUuid": "8546c09a_4804e6e5",
       "range": {
         "startLine": 250,
         "startChar": 19,
@@ -250,6 +394,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99f77e95_35eabb69",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "Checking with Elan",
+      "parentUuid": "aee171d9_8c1df9c1",
+      "range": {
+        "startLine": 262,
+        "startChar": 17,
+        "endLine": 262,
+        "endChar": 30
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8f2050_7a94e0f2",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -261,6 +429,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Look like this is the same every iteration. Can we move this and `k_sem_give()` at the end outside of the loop? You will save time on taking and giving the semaphore and clearing and writing the buffer with the same values.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163d61d2_ea52b4ae",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "I need to run this change on a boardin order to make sure everything will still work.",
+      "parentUuid": "4e8f2050_7a94e0f2",
       "range": {
         "startLine": 263,
         "startChar": 0,
@@ -313,6 +505,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52f87b65_62e96f3b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "Checking with Elan",
+      "parentUuid": "1873a1df_965fb627",
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29cc3968_a77b4c4c",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -324,6 +534,24 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Is this function used by elan library?",
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d652808_d2f86c06",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "checking with Elan",
+      "parentUuid": "29cc3968_a77b4c4c",
       "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -347,6 +575,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "547f50cb_d878e4f7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "Checking with Elan",
+      "parentUuid": "2d92e3d4_6a2b324a",
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1820e294_7e0a64c2",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -358,6 +604,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Both `if` branches end with `k_msleep(1)`, can we move this outside the `if` block?",
+      "range": {
+        "startLine": 389,
+        "startChar": 2,
+        "endLine": 389,
+        "endChar": 14
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65d09c4_a4cf647b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "yes. Done",
+      "parentUuid": "1820e294_7e0a64c2",
       "range": {
         "startLine": 389,
         "startChar": 2,
@@ -393,6 +663,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19523147_11e4c0d7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "asked Elan. Waiting for feedback",
+      "parentUuid": "0f8debba_61639668",
+      "range": {
+        "startLine": 413,
+        "startChar": 34,
+        "endLine": 413,
+        "endChar": 38
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52b187db_a075f8e7",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -404,6 +698,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Could you use `elan_write_register` here?",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 23
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b50e690_3f3a1871",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "yes, `elan_write_register(charge_pump[0], charge_pump[1]);`\n\nwhat is your concern here?",
+      "parentUuid": "52b187db_a075f8e7",
       "range": {
         "startLine": 416,
         "startChar": 2,
@@ -439,6 +757,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07c32413_b464d516",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "asked Elan, waiting for their feedback",
+      "parentUuid": "1a28b326_4b94f190",
+      "range": {
+        "startLine": 418,
+        "startChar": 33,
+        "endLine": 418,
+        "endChar": 37
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44d1226e_d5d4abdc",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -450,6 +792,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Could you use `elan_write_register` here?",
+      "range": {
+        "startLine": 420,
+        "startChar": 2,
+        "endLine": 420,
+        "endChar": 23
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05e2bee_7fd85c3b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:19:24Z",
+      "side": 1,
+      "message": "yes, `elan_write_register(disable_hv[0], disable_hv[1]);`",
+      "parentUuid": "44d1226e_d5d4abdc",
       "range": {
         "startLine": 420,
         "startChar": 2,
