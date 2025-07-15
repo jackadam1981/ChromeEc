@@ -672,6 +672,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e60228d_01422386",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-15T13:31:58Z",
+      "side": 1,
+      "message": "Reopening this comment. There are lots of unnecessary copying to/from `tx_buf`/`rx_buf` which slows down the CPU and auth/enroll overall time.\n\nIt seems like `tx_buf` and `rx_buf` are not special (like marked as `uncacheable` or something similar) and using `tx_data` and `rx_data` should work just fine.\n\nI understand that in EC the elan driver were copying the data, but it doesn\u0027t mean that we should do the same in Zephyr. To build a good product we need to constantly improve things and this CL is an opportunity to do it.\n\nI strongly encourage to play with the driver and check if copying data are really needed. If you decide to remove unnecessary `memcpy()`, please do it in separate patch.\n\nPlease note that you will not be able to get rid of `tx_buf` and `rx_buf` entirely, because they are used `elan_write_cmd()` and `elan_read_cmd()`. What you can do is to significantly reduce size of `rx_buf`, so we will get some SRAM back!\n\nOne of the Google values is to challenge the status quo. It\u0027s necessary to build the best product!",
+      "parentUuid": "4eef4e32_b4985ac6",
+      "revId": "8616eff8002fcd9542585b67194a5d21f1a5a3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8e24992_1b290490",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 29
