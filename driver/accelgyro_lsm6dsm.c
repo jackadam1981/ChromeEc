@@ -372,12 +372,17 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts,
 	return EC_SUCCESS;
 }
 
+uint32_t isr_delta;
+
 /**
  * lsm6dsm_interrupt - interrupt from int1/2 pin of sensor
  */
 test_mockable void lsm6dsm_interrupt(enum gpio_signal signal)
 {
-	last_interrupt_timestamp = __hw_clock_source_read();
+	uint32_t now = __hw_clock_source_read();
+
+	isr_delta = now - last_interrupt_timestamp;
+	last_interrupt_timestamp = now;
 
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_LSM6DSM_INT_EVENT);
 }
@@ -387,6 +392,7 @@ test_mockable void lsm6dsm_interrupt(enum gpio_signal signal)
  */
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
+	static uint32_t last_irq_handler;
 	uint32_t interrupt_timestamp = last_interrupt_timestamp;
 	struct fstatus fsts;
 	int fifo_empty = false;
@@ -395,6 +401,10 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_LSM6DSM_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
+
+	uint32_t now = __hw_clock_source_read();
+	printk("%u,%u,%u\n", now - last_irq_handler, isr_delta, now - interrupt_timestamp);
+	last_irq_handler = now;
 
 	while (!fifo_empty) {
 		/* Read how many data pattern on FIFO to read. */
