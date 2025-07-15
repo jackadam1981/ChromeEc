@@ -103,4 +103,19 @@ static void adapter_voltage_limit(void)
 }
 
 DECLARE_HOOK(HOOK_INIT, adapter_voltage_limit, HOOK_PRIO_DEFAULT - 1);
+<<<<<<< HEAD   (9fcb8d1317edde5e19272cf546619fb4721c0d5e syv682: Default OCP threshold to 5.5A)
+||||||| BASE
+=======
+
+#ifndef CONFIG_ZTEST
+enum battery_present battery_hw_present(void)
+{
+	const struct gpio_dt_spec *batt_pres;
+
+	batt_pres = GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl);
+
+	/* The GPIO is low when the battery is physically present */
+	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+>>>>>>> CHANGE (15afdb98b4e2946d08dece0ac5074d5c32c9968e epic: prevent 15W adapter to power on in AC only mode)
 #endif
