@@ -497,6 +497,19 @@ ZTEST_USER(power_common, test_powerinfo_console_cmd)
 }
 
 /**
+ * Test powerindebug console command
+ */
+#ifdef CONFIG_CMD_POWERINDEBUG
+ZTEST_USER(power_common, test_powerindebug_console_cmd)
+{
+	CHECK_CONSOLE_CMD("powerindebug invalid", NULL, EC_ERROR_PARAM1);
+	CHECK_CONSOLE_CMD("powerindebug 16", "debug mask: 0x0010", EC_SUCCESS);
+	CHECK_CONSOLE_CMD("powerindebug", "debug mask: 0x0010", EC_SUCCESS);
+	CHECK_CONSOLE_CMD("powerindebug 0", "debug mask: 0x0000", EC_SUCCESS);
+}
+#endif /* CONFIG_CMD_POWERINDEBUG */
+
+/**
  * Common setup for hibernation delay tests. Smart discharge zone is setup,
  * battery is set in safe zone (which trigger hibernation), power state is
  * set to G3 and AC is disabled. system_hibernate mock is reset.
