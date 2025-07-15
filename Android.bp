@@ -1,0 +1,15 @@
+genrule {
+    name: "ec_version_h",
+    srcs: ["util/getversion.sh"],
+    out: ["ec_version.h"],
+    cmd: "$(location util/getversion.sh) > $(out)",
+}
+
+cc_binary {
+    name: "stm32mon",
+    srcs: [
+        "util/stm32mon.cc",
+    ],
+    generated_headers: ["ec_version_h"],
+    local_include_dirs: ["include"],
+}
