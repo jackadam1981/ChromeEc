@@ -86,6 +86,23 @@
       "message": "Marked as unresolved.",
       "revId": "bf836060dac022ebad26e7a8787bb89489b682bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3329eef9_fbcb9921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-07-15T07:07:29Z",
+      "side": 1,
+      "message": "Hi Bob, I guess the CQ failures is due to ztest failed,\n\nI can reproduce it with command `./twister -c -T zephyr/test/pdc`\n\n`16 of 18 executed test configurations passed (88.89%), 0 built (not run), 0 failed, 2 errored, with no warnings in 23.02 seconds.`\n\nI fixed the ztest failures in CL:6733038 Patchset 2, the ztest can 100% PASS now.\n\n`18 of 18 executed test configurations passed (100.00%), 0 built (not run), 0 failed, 0 errored, with no warnings in 25.85 seconds`\n\nBut I don\u0027t have permission to CQ dry run.\n\nCould you help trigger a CQ dry run.\n\nThanks.",
+      "revId": "bf836060dac022ebad26e7a8787bb89489b682bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
