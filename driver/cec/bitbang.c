@@ -46,7 +46,7 @@
 #define START_BIT_MAX_LOW_TICKS CEC_US_TO_TICKS(3900)
 #define START_BIT_HIGH_TICKS CEC_US_TO_TICKS(CEC_START_BIT_HIGH_US)
 #define START_BIT_MIN_DURATION_TICKS CEC_US_TO_TICKS(4300)
-#define START_BIT_MAX_DURATION_TICKS CEC_US_TO_TICKS(5700)
+#define START_BIT_MAX_DURATION_TICKS CEC_US_TO_TICKS(5700) // ITE Debug ??
 
 /* Data bit timing */
 #define DATA_ZERO_LOW_TICKS CEC_US_TO_TICKS(CEC_DATA_ZERO_LOW_US)
@@ -262,56 +262,56 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 		gpio = 1;
 		cap_edge = CEC_CAP_EDGE_FALLING;
 		if (port_data->tx.resends)
-			timeout = FREE_TIME_RS_TICKS;
+			timeout = FREE_TIME_RS_TICKS; // 4.8ms
 		else if (port_data->tx.present_initiator)
-			timeout = FREE_TIME_PI_TICKS;
+			timeout = FREE_TIME_PI_TICKS; //14.4ms
 		else
-			timeout = FREE_TIME_NI_TICKS;
+			timeout = FREE_TIME_NI_TICKS; //9.6ms
 		break;
 	case CEC_STATE_INITIATOR_START_LOW:
 		port_data->tx.present_initiator = 1;
 		port_data->tx.transfer.bit = 0;
 		port_data->tx.transfer.byte = 0;
 		gpio = 0;
-		timeout = START_BIT_LOW_TICKS;
+		timeout = START_BIT_LOW_TICKS; // 3.7ms
 		break;
 	case CEC_STATE_INITIATOR_START_HIGH:
 		gpio = 1;
 		cap_edge = CEC_CAP_EDGE_FALLING;
-		timeout = START_BIT_HIGH_TICKS;
+		timeout = START_BIT_HIGH_TICKS; // 0.8ms
 		break;
 	case CEC_STATE_INITIATOR_HEADER_INIT_LOW:
 	case CEC_STATE_INITIATOR_HEADER_DEST_LOW:
 	case CEC_STATE_INITIATOR_DATA_LOW:
 		gpio = 0;
 		timeout =
-			DATA_LOW(cec_transfer_get_bit(&port_data->tx.transfer));
+			DATA_LOW(cec_transfer_get_bit(&port_data->tx.transfer)); // 0.6ms or 1.5ms
 		break;
 	case CEC_STATE_INITIATOR_HEADER_INIT_HIGH:
 		gpio = 1;
 		cap_edge = CEC_CAP_EDGE_FALLING;
 		timeout = DATA_HIGH(
-			cec_transfer_get_bit(&port_data->tx.transfer));
+			cec_transfer_get_bit(&port_data->tx.transfer)); // 1.8ms or 0.9ms
 		break;
 	case CEC_STATE_INITIATOR_HEADER_DEST_HIGH:
 	case CEC_STATE_INITIATOR_DATA_HIGH:
 		gpio = 1;
 		timeout = DATA_HIGH(
-			cec_transfer_get_bit(&port_data->tx.transfer));
+			cec_transfer_get_bit(&port_data->tx.transfer)); // 1.8ms or 0.9ms
 		break;
 	case CEC_STATE_INITIATOR_EOM_LOW:
 		gpio = 0;
 		timeout = DATA_LOW(cec_transfer_is_eom(&port_data->tx.transfer,
-						       port_data->tx.len));
+						       port_data->tx.len)); // 0.6ms or 1.5ms
 		break;
 	case CEC_STATE_INITIATOR_EOM_HIGH:
 		gpio = 1;
 		timeout = DATA_HIGH(cec_transfer_is_eom(&port_data->tx.transfer,
-							port_data->tx.len));
+							port_data->tx.len)); // 1.8ms or 0.9ms
 		break;
 	case CEC_STATE_INITIATOR_ACK_LOW:
 		gpio = 0;
-		timeout = DATA_LOW(1);
+		timeout = DATA_LOW(1); // 0.6ms
 		break;
 	case CEC_STATE_INITIATOR_ACK_HIGH:
 		gpio = 1;
@@ -339,19 +339,19 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 	case CEC_STATE_FOLLOWER_START_LOW:
 		port_data->tx.present_initiator = 0;
 		cap_edge = CEC_CAP_EDGE_RISING;
-		timeout = CAP_START_LOW_TICKS;
+		timeout = CAP_START_LOW_TICKS; // 3.9 + 0.1ms
 		break;
 	case CEC_STATE_FOLLOWER_START_HIGH:
 		port_data->rx.debounce_count = 0;
 		cap_edge = CEC_CAP_EDGE_FALLING;
-		timeout = CAP_START_HIGH_TICKS;
+		timeout = CAP_START_HIGH_TICKS; // 5.7 - 3.5 + 0.1ms
 		break;
 	case CEC_STATE_FOLLOWER_DEBOUNCE:
 		cec_debounce_enable(port);
 		if (port_data->rx.debounce_count >= DEBOUNCE_CUTOFF) {
-			timeout = DEBOUNCE_WAIT_LONG_TICKS;
+			timeout = DEBOUNCE_WAIT_LONG_TICKS; // 0.1ms
 		} else {
-			timeout = DEBOUNCE_WAIT_SHORT_TICKS;
+			timeout = DEBOUNCE_WAIT_SHORT_TICKS; // 0.5ms
 			port_data->rx.debounce_count++;
 		}
 		break;
@@ -359,13 +359,13 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 	case CEC_STATE_FOLLOWER_HEADER_DEST_LOW:
 	case CEC_STATE_FOLLOWER_EOM_LOW:
 		cap_edge = CEC_CAP_EDGE_RISING;
-		timeout = CAP_DATA_LOW_TICKS;
+		timeout = CAP_DATA_LOW_TICKS; // 1.7 + 0.1 = 1.8ms
 		break;
 	case CEC_STATE_FOLLOWER_HEADER_INIT_HIGH:
 	case CEC_STATE_FOLLOWER_HEADER_DEST_HIGH:
 	case CEC_STATE_FOLLOWER_EOM_HIGH:
 		cap_edge = CEC_CAP_EDGE_FALLING;
-		timeout = CAP_DATA_HIGH_TICKS;
+		timeout = CAP_DATA_HIGH_TICKS; // 2.75 - 0.4 - 0.1 = 2.25ms
 		break;
 	case CEC_STATE_FOLLOWER_ACK_LOW:
 		addr = port_data->rx.transfer.buf[0] & 0x0f;
@@ -376,7 +376,7 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 		/* Don't ack broadcast or packets whose destinations aren't us,
 		 * but continue reading.
 		 */
-		timeout = NOMINAL_SAMPLE_TIME_TICKS - SOC_CEC_ISR_LATENCY;
+		timeout = NOMINAL_SAMPLE_TIME_TICKS - SOC_CEC_ISR_LATENCY; // 1.05ms - 0.2ms
 		break;
 	case CEC_STATE_FOLLOWER_ACK_VERIFY:
 		/*
@@ -394,7 +394,7 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 		 * We release the ACK at the end of data zero low
 		 * period (ACK is technically a zero).
 		 */
-		timeout = DATA_ZERO_LOW_TICKS - NOMINAL_SAMPLE_TIME_TICKS - SOC_CEC_ISR_LATENCY;
+		timeout = DATA_ZERO_LOW_TICKS - NOMINAL_SAMPLE_TIME_TICKS - SOC_CEC_ISR_LATENCY; // 1.5 - 1.05 - 0.2ms
 		break;
 	case CEC_STATE_FOLLOWER_ACK_FINISH:
 		gpio = 1;
@@ -420,19 +420,19 @@ __soc_ram_code static void enter_state(int port, enum cec_state new_state)
 				cec_task_set_event(
 					port, CEC_TASK_EVENT_RECEIVED_DATA);
 			}
-			timeout = DATA_ZERO_HIGH_TICKS;
+			timeout = DATA_ZERO_HIGH_TICKS; // 0.9ms
 		} else {
 			cap_edge = CEC_CAP_EDGE_FALLING;
-			timeout = CAP_DATA_HIGH_TICKS;
+			timeout = CAP_DATA_HIGH_TICKS; // 2.75 - 0.4 - 0.1 = 2.25ms
 		}
 		break;
 	case CEC_STATE_FOLLOWER_DATA_LOW:
 		cap_edge = CEC_CAP_EDGE_RISING;
-		timeout = CAP_DATA_LOW_TICKS;
+		timeout = CAP_DATA_LOW_TICKS; // 1.7 + 0.1 = 1.8ms
 		break;
 	case CEC_STATE_FOLLOWER_DATA_HIGH:
 		cap_edge = CEC_CAP_EDGE_FALLING;
-		timeout = CAP_DATA_HIGH_TICKS;
+		timeout = CAP_DATA_HIGH_TICKS; // 2.75 - 0.4 - 0.1 = 2.25ms
 		break;
 		/* No default case, since all states must be handled explicitly
 		 */
