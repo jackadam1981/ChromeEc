@@ -365,6 +365,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba76b67_7d93bd8a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T17:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a682cad4_f6d09fe2",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 12
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8546c09a_4804e6e5",
@@ -425,6 +449,30 @@
       "writtenOn": "2025-07-15T13:31:58Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 257,
+        "startChar": 3,
+        "endLine": 257,
+        "endChar": 13
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c93351d_5663f44d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T17:34:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6154e231_be3a8cd6",
       "range": {
         "startLine": 257,
         "startChar": 3,
