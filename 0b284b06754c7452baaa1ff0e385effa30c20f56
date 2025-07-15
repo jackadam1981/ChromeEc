@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6602ac80_51a7a92e",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-15T11:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0e36e35_a480fb00",
+      "range": {
+        "startLine": 148,
+        "startChar": 65,
+        "endLine": 148,
+        "endChar": 69
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44c6cc54_61bbc8e7",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-11T03:41:41Z",
       "side": 1,
       "message": "Only update on the connected Port. Ref: b/412291685#comment46",
+      "range": {
+        "startLine": 969,
+        "startChar": 2,
+        "endLine": 971,
+        "endChar": 3
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49137fd4_3ab7b892",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-15T11:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c6cc54_61bbc8e7",
       "range": {
         "startLine": 969,
         "startChar": 2,
@@ -116,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc918f6_726ff128",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-15T11:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac472f78_4a6113a4",
+      "range": {
+        "startLine": 984,
+        "startChar": 11,
+        "endLine": 984,
+        "endChar": 25
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da905120_fbf52c56",
@@ -139,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0422b7af_5327ea01",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-15T11:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da905120_fbf52c56",
+      "range": {
+        "startLine": 987,
+        "startChar": 11,
+        "endLine": 987,
+        "endChar": 25
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba42ef4_74531be1",
@@ -152,6 +248,30 @@
       "writtenOn": "2025-07-11T03:41:41Z",
       "side": 1,
       "message": "Only update on the connected Port. Ref: b/412291685#comment46",
+      "range": {
+        "startLine": 1038,
+        "startChar": 2,
+        "endLine": 1040,
+        "endChar": 3
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4382da_7cc9d5dc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-15T11:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba42ef4_74531be1",
       "range": {
         "startLine": 1038,
         "startChar": 2,
