@@ -67,7 +67,7 @@ config HW_TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL
 	bool "FP sensor auth crypto stateful test"
 	select ZTEST
 	select MOCK_ROLLBACK
-	select MOCK_OTP if BASEBOARD_HELIPILOT
+	select MOCK_OTP if NPCX_OTP_KEY
 
 config HW_TEST_FPSENSOR_AUTH_CRYPTO_STATELESS
 	bool "FP sensor auth crypto stateless test"
@@ -181,6 +181,7 @@ config HW_TEST_ROLLBACK
 config HW_TEST_ROLLBACK_ENTROPY
 	bool "Rollback entropy test"
 	select ZTEST
+	select MOCK_OTP if NPCX_OTP_KEY
 	depends on PLATFORM_EC_ROLLBACK
 	help
 	  The test verifies rollback entropy functionality.
