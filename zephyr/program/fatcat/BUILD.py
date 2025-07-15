@@ -106,6 +106,19 @@ register_ish_project(
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
+register_ish_project(
+    project_name="fatcat-ish-idle",
+    zephyr_board="intel_ish_5_8_0",
+    dts_overlays=[
+        here / "fatcat-ish-idle" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "dsp_comms.conf",
+        here / "fatcat-ish-idle" / "project.conf",
+    ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcat_npcx9m7f", addr=0x80144)
