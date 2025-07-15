@@ -88,6 +88,24 @@
       "parentUuid": "2a7c3d23_f3655a87",
       "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ac8963_9c347bc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-07-15T02:36:45Z",
+      "side": 1,
+      "message": "@fsammoura@google.com\nThis approach allows the RAM lock feature to be controlled by a single switch for enabling or disabling. Given that the ramlock0 node is exclusively used for the RAM lock function at the moment, this approach should be safe. The update has been made.",
+      "parentUuid": "605b103d_fe0a23b2",
+      "revId": "59cd29045f897433fb2148dd2b7f29b06c81156c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
