@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "430393a2_413653ea",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:59:49Z",
+      "side": 1,
+      "message": "according to the [fp_acquire_image](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/elan/elan_private.c;l\u003d283#:~:text\u003d282-,283,-284), it returns\n\n```\n * @return\n * - 0 on success\n * - negative value on error\n * - FP_SENSOR_LOW_IMAGE_QUALITY on image captured but quality is too low\n * - FP_SENSOR_TOO_FAST on finger removed before image was captured\n * - FP_SENSOR_LOW_SENSOR_COVERAGE on sensor not fully covered by finger\n ```",
+      "parentUuid": "44c7d1e9_eeafcbd6",
+      "range": {
+        "startLine": 275,
+        "startChar": 8,
+        "endLine": 275,
+        "endChar": 10
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d24638_984aaaf5",
