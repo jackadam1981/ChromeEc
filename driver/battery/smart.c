@@ -309,7 +309,7 @@ int battery_cycle_count(int *count)
 	return sb_read(SB_CYCLE_COUNT, count);
 }
 
-int battery_design_capacity(int *capacity)
+test_mockable int battery_design_capacity(int *capacity)
 {
 	int rv = battery_force_mah_mode();
 	if (rv)

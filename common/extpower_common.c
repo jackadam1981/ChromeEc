@@ -11,7 +11,7 @@ __overridable void board_check_extpower(void)
 {
 }
 
-void extpower_handle_update(int is_present)
+test_mockable void extpower_handle_update(int is_present)
 {
 	uint8_t *memmap_batt_flags;
 
