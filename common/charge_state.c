@@ -1811,7 +1811,7 @@ enum led_pwr_state led_pwr_get_state(void)
 	}
 }
 
-int charge_get_percent(void)
+test_mockable int charge_get_percent(void)
 {
 	/*
 	 * Since there's no way to indicate an error to the caller, we'll just
