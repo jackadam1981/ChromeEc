@@ -12,7 +12,7 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/logging/log.h>
 
-LOG_MODULE_REGISTER(pdc_port_config, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(pdc_port_config, LOG_LEVEL_ERR);
 
 /*
  * When runtime port config is used, all PDC nodes in the devicetree must be
