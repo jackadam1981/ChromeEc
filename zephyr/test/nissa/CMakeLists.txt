@@ -374,3 +374,17 @@ if(CONFIG_TEST_NISSA_GUREN)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/guren/src/keyboard.c
     )
 endif()
+
+if(CONFIG_TEST_NISSA_MELIKS)
+    zephyr_include_directories("${PLATFORM_EC_PROGRAM_DIR}/nissa/meliks/include")
+    target_sources(
+	    app PRIVATE
+	    src/meliks.c
+	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/meliks/src/charger.c
+	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/meliks/src/led.c
+	    ${PLATFORM_EC_PROGRAM_DIR}/nissa/meliks/src/usbc.c
+        ${PLATFORM_EC_PROGRAM_DIR}/nissa/meliks/src/battery.c
+        ${PLATFORM_EC_PROGRAM_DIR}/nissa/meliks/src/board.c
+    )
+endif()
+
