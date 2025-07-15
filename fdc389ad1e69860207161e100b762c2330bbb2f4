@@ -52,6 +52,24 @@
       "parentUuid": "9ab5cd95_90a7b021",
       "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b26b0b_a8c6f8c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-15T16:35:17Z",
+      "side": 1,
+      "message": "Hi Abe, in patchset 10, I have added new mock files and modified in the respective files to pass usb_typec_drp_acc_trysrc. Can you please confirm if this approach is correct?\n\nAfter making these changes usb_typec_drp_acc_trysrc passed and usb_prl is getting failed. I am working on this issue.",
+      "parentUuid": "c7701efc_08f7ddea",
+      "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
