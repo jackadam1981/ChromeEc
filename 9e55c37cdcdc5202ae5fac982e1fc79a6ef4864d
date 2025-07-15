@@ -123,6 +123,24 @@
       "parentUuid": "8c4af233_87da02b7",
       "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69705f66_7b5d408f",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-07-15T09:05:05Z",
+      "side": 1,
+      "message": "It will cause TCS3400 build to fail(zmake build rauru) when add \",\" in line [125-126](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6083356/17..18).\n\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/src/motionsense_sensors.c.obj\nIn file included from /mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_driver/tcs3400-drvinfo.inc:19,\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_driver/sensor_drv_list.inc:50,\n                 from /mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_sensors.c:127:\n/mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h:122:64: error: expected expression before \u0027,\u0027 token\n  122 |                 RGB_CAL_RGB_SET_ONE(DT_CHILD(id, rgb_cal_x), X),      \\\n      |                                                                ^\n/mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_driver/tcs3400-drvinfo.inc:44:32: note: in expansion of macro \u0027ACCELGYRO_RGB_CALIBRATION\u0027\n   44 |                 .calibration \u003d ACCELGYRO_RGB_CALIBRATION(               \\\n      |                                ^~~~~~~~~~~~~~~~~~~~~~~~~\n/mnt/host/source/src/platform/ec/zephyr/shim/src/motionsense_sensors.c:79:9: note: in expansion of macro \u0027CREATE_SENSOR_DATA_TCS3400_RGB\u0027\n   79 |         create_data_macro(DT_INST(inst, compat),     \\\n      |         ^~~~~~~~~~~~~~~~~",
+      "parentUuid": "8bbd1b21_baca655c",
+      "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
