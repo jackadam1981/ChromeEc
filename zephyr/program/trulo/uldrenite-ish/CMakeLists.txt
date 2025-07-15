@@ -3,3 +3,4 @@
 # found in the LICENSE file.
 
 zephyr_library_sources("src/sensor.c")
+zephyr_library_sources("src/ish_uart.c")
