@@ -39,6 +39,30 @@
       },
       "revId": "447c1ce726099c576534e42e5bfb4db73a84ef7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee629512_16fb6339",
+        "filename": "zephyr/dts/bindings/hibernate/cros-ec,hibernate-z5.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-15T14:52:29Z",
+      "side": 1,
+      "message": "This plural `-gpios` suffic required by Zephyr\u0027s devictree model.\nhttps://docs.zephyrproject.org/latest/build/dts/phandles.html#special-case-gpio",
+      "parentUuid": "87b84eb2_f2ed3955",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "447c1ce726099c576534e42e5bfb4db73a84ef7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
