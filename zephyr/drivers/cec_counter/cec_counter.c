@@ -55,8 +55,12 @@ __soc_ram_code void cec_ext_timer_interrupt(int port)
 	}
 }
 
-__soc_ram_code void cec_ext_top_timer_handler(const struct device *dev, void *user_data)
+__soc_ram_code void
+cec_ext_alarm_timer_handler(const struct device *counter_dev, uint8_t chan_id,
+			    uint32_t ticks, void *user_data)
 {
+	ARG_UNUSED(counter_dev);
+
 	cec_ext_timer_interrupt((int)((intptr_t)user_data));
 }
 
@@ -108,10 +112,11 @@ __soc_ram_code void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge e
 		 * interrupt occurs to when the ISR starts. Empirically, this
 		 * seems to be about 100 us, so account for this too.
 		 */
+		int ret;
 		int delay = CEC_US_TO_TICKS(get_time().val -
 					    interrupt_time.val + 100);
 		int timer_count = timeout - delay;
-		struct counter_top_cfg top_cfg;
+		struct counter_alarm_cfg alarm_cfg;
 
 		/*
 		 * Handle the case where the delay is greater than the timeout.
@@ -126,13 +131,16 @@ __soc_ram_code void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge e
 		/*
 		 * Start the timer and enable the timer interrupt
 		 */
-		top_cfg.ticks = timer_count;
-		top_cfg.callback = cec_ext_top_timer_handler;
-		top_cfg.user_data = (void *)((intptr_t)port);
-		top_cfg.flags = 0;
-		counter_set_top_value(cec_counter_dev, &top_cfg);
+		alarm_cfg.flags = 0;
+		alarm_cfg.ticks = timer_count;
+		alarm_cfg.callback = cec_ext_alarm_timer_handler;
+		alarm_cfg.user_data = (void *)((intptr_t)port);
+		ret = counter_set_channel_alarm(cec_counter_dev, port, &alarm_cfg);
+		if (ret) {
+			LOG_WRN("%s ITE Debug %d %d", __func__, __LINE__, ret);
+		}
 	} else {
-		counter_stop(cec_counter_dev);
+		counter_cancel_channel_alarm(cec_counter_dev, port);
 	}
 }
 
@@ -144,7 +152,7 @@ __soc_ram_code void cros_cec_bitbang_tmr_cap_stop(int port)
 	gpio_pin_interrupt_configure_dt(gpio_get_dt_spec(drv_config->gpio_in),
 					GPIO_INT_DISABLE);
 
-	counter_stop(cec_counter_dev);
+	counter_cancel_channel_alarm(cec_counter_dev, port);
 }
 
 __soc_ram_code int cros_cec_bitbang_tmr_cap_get(int port)
