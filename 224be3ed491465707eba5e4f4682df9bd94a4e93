@@ -600,6 +600,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7779ec77_1f95c20c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T17:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a1035ef_06275274",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 12
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1873a1df_965fb627",
@@ -666,6 +690,24 @@
       "side": 1,
       "message": "checking with Elan",
       "parentUuid": "29cc3968_a77b4c4c",
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4d9f30_d1283294",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T17:39:36Z",
+      "side": 1,
+      "message": "is your concern the location of the function and whether we should move it to the driver library?",
+      "parentUuid": "1d652808_d2f86c06",
       "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
