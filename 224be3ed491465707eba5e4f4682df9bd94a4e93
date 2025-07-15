@@ -253,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d9b9d8_8d7aca80",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-15T16:51:32Z",
+      "side": 1,
+      "message": "Done. fyi the elan function returns an enum, so I had to create an enum in the private header.",
+      "parentUuid": "90d24638_984aaaf5",
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d7a48f5_2ee9702e",
