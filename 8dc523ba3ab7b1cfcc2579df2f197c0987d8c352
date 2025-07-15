@@ -39,6 +39,23 @@
       "message": "The code that\u0027s being add looks fine. However, the ordering of this change seems off. When it is built as `zmake build kaladin --clobber` then there are warnings in the build about inconsistent Kconfig settings:\n\nwarning: VCMP_IT8XXX2_WORKQUEUE (defined at drivers/sensor/ite/ite_vcmp_it8xxx2/Kconfig:24) was\nassigned the value \u0027y\u0027 but got the value \u0027n\u0027. Check these unsatisfied dependencies: VCMP_IT8XXX2\n(\u003dn), SENSOR (\u003dn). See",
       "revId": "8dc523ba3ab7b1cfcc2579df2f197c0987d8c352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d9a0cb_b66e27d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-15T23:12:43Z",
+      "side": 1,
+      "message": "I think this CL should be added after \"Enable AP host interface\" and \"add AP power sequencing support\" and then the Kconfig warnings will not be present.",
+      "revId": "8dc523ba3ab7b1cfcc2579df2f197c0987d8c352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
