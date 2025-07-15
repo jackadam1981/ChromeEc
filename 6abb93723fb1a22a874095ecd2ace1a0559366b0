@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2a14b9_86178e85",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80sg_bio_alg.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-15T14:04:44Z",
+      "side": 1,
+      "message": "```suggestion\n/* Copyright 2025 The ChromiumOS Authors\n * Use of this source code is governed by a BSD-style license that can be\n * found in the LICENSE file.\n */\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "6abb93723fb1a22a874095ecd2ace1a0559366b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95966452_4354bbf2",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80sg_bio_alg.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-15T14:04:44Z",
+      "side": 1,
+      "message": "ELAN80SG",
+      "range": {
+        "startLine": 14,
+        "startChar": 65,
+        "endLine": 14,
+        "endChar": 77
+      },
+      "revId": "6abb93723fb1a22a874095ecd2ace1a0559366b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
