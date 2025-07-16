@@ -82,7 +82,7 @@ get_sysfs_gpiochip_base() {
   local match="$1"
 
   for chip in /sys/class/gpio/gpiochip*; do
-    if [[ "$(readlink "${chip}")" =~ ${match} ]]; then
+    if readlink "${chip}" | grep -q "${match}"; then
       echo "${chip#/sys/class/gpio/gpiochip}"
       return 0
     fi
