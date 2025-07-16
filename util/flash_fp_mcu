@@ -408,7 +408,19 @@ platform_base_name() {
 
 get_fp_mcu_board() {
   local board
-  board="$(cros_config /fingerprint board)"
+
+  case "$(os)" in
+    "chromeos")
+      board="$(cros_config /fingerprint board)"
+      ;;
+    "android")
+      board="$(halconfig_runtime Fingerprint board)"
+      ;;
+    *)
+      echo "Unsupported operating system" 1>&2
+      exit "${EXIT_CONFIG}"
+      ;;
+  esac
 
   echo "${board}"
 }
