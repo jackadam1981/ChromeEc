@@ -16,6 +16,24 @@
       "message": "This needs a low coverage bug.  Caveh - is there an existing bug for adding board tests for fatcat?",
       "revId": "bf1b1ce48759f3e386eedb4881390a0a12be21f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a969d46_019deb13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-16T23:11:05Z",
+      "side": 1,
+      "message": "we have b/336751447 which is intel RVP centric and\nb/400587240 which is fatcat (RVP) centric.\nb/391772105 is for francka, b/403136263 for felino, etc.",
+      "parentUuid": "6fe0a892_8fff8f47",
+      "revId": "bf1b1ce48759f3e386eedb4881390a0a12be21f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
