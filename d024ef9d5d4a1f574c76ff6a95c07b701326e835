@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3734a85f_4729c9c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T18:27:26Z",
+      "side": 1,
+      "message": "zmake build kaladin --clobber will show that the configs added in this CL are ultimately being assigned \u0027\u003dn\u0027 because there are missing dependencies.\n\nwarning: VCMP_IT8XXX2_WORKQUEUE (defined at drivers/sensor/ite/ite_vcmp_it8xxx2/Kconfig:24) was\nassigned the value \u0027y\u0027 but got the value \u0027n\u0027. Check these unsatisfied dependencies: VCMP_IT8XXX2\n(\u003dn), SENSOR (\u003dn).\n\nwarning: VCMP_IT8XXX2_WORKQUEUE_PRIORITY (defined at drivers/sensor/ite/ite_vcmp_it8xxx2/Kconfig:32)\nwas assigned the value \u002712\u0027 but got the value \u0027\u0027. Check these unsatisfied dependencies:\nVCMP_IT8XXX2_WORKQUEUE (\u003dn), VCMP_IT8XXX2 (\u003dn), SENSOR (\u003dn)\n\nThe configs being added here should be added after support for power sequencing (the next 2 CLs in this stack). Then the configs being added here will be applied correctly.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "d024ef9d5d4a1f574c76ff6a95c07b701326e835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
