@@ -531,11 +531,10 @@ static int common_pwr_sm_run(int state)
 #if CONFIG_AP_PWRSEQ_S0IX
 	case SYS_POWER_STATE_S0ix:
 		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
-		if (power_signals_off(IN_PCH_SLP_S0) &&
-		    signals_valid_and_off(IN_PCH_SLP_S3)) {
-			/* TODO: Make sure ap reset handling is done
-			 * before leaving S0ix.
-			 */
+		if ((power_signals_off(IN_PCH_SLP_S0) &&
+		     signals_valid_and_off(IN_PCH_SLP_S3) &&
+		     ap_power_sleep_get_notify() == AP_POWER_SLEEP_RESUME) ||
+		    power_signal_get(PWR_SYS_RST)) {
 			return SYS_POWER_STATE_S0ixS0;
 		} else if (!chipset_is_all_power_good())
 			return SYS_POWER_STATE_S0;
