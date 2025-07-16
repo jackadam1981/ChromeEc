@@ -70,6 +70,24 @@
       "parentUuid": "c7701efc_08f7ddea",
       "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b74248ce_3e763805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-16T17:09:00Z",
+      "side": 1,
+      "message": "\u003e Hi Abe, in patchset 10, I have added new mock files and modified in the respective files to pass usb_typec_drp_acc_trysrc. Can you please confirm if this approach is correct?\n\nI think the basic idea is right. I commented a few ways that I think it could be made simpler, basically by reusing the files that are already there.\n\n\u003e After making these changes usb_typec_drp_acc_trysrc passed and usb_prl is getting failed. I am working on this issue.\n\nWithout seeing the error message, it\u0027s hard for me to guess specifically. I think the only thing you did in this patchset that should affect `usb_prl` is adding to `fake_usb.c`. Annoyingly, `usb_prl` uses both `fake_usbc.c` and some mocks in `usb_prl.mocklist`. If you\u0027re getting a linker error about 2 things with the same name, you could check for conflicts between `fake_usbc.c` and the mock files in the list. The fix will depend on what you find.",
+      "parentUuid": "01b26b0b_a8c6f8c7",
+      "revId": "fdc389ad1e69860207161e100b762c2330bbb2f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
