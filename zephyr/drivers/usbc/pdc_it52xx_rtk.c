@@ -1,13 +1,13 @@
-/* Copyright 2023 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /*
- * Realtek RTS545x Power Delivery Controller Driver
+ * ITE it52xx Power Delivery Controller Driver
  */
 #include "drivers/ucsi_v3.h"
-#include "pdc_rts54xx.h"
+#include "pdc_it52xx.h"
 
 #include <assert.h>
 #include <string.h>
@@ -22,13 +22,13 @@
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/sys_clock.h>
-LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
+LOG_MODULE_REGISTER(pdc_it52xx, CONFIG_USBC_LOG_LEVEL);
 #include "usbc/pdc_power_mgmt.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
 
-#define DT_DRV_COMPAT realtek_rts54_pdc
+#define DT_DRV_COMPAT ite_it52xx_pdc
 
 #define BYTE0(n) ((n) & 0xff)
 #define BYTE1(n) (((n) >> 8) & 0xff)
@@ -102,12 +102,12 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 /**
  * @brief IRQ Event set by the interrupt handler.
  */
-#define RTS54XX_IRQ_EVENT BIT(0)
+#define IT52XX_IRQ_EVENT BIT(0)
 
 /**
  * @brief Event set to run next state of state machine.
  */
-#define RTS54XX_NEXT_STATE_READY BIT(1)
+#define IT52XX_NEXT_STATE_READY BIT(1)
 
 /**
  * @brief Number of RTS54XX ports detected
@@ -118,7 +118,7 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
  * @brief SMbus Command struct for Realtek commands
  */
 struct smbus_cmd_t {
-	/* Command ex. CTRL, CCI, ... */
+	/* Command */
 	uint8_t cmd;
 	/* Number of bytes to write */
 	uint8_t len;
@@ -311,6 +311,7 @@ enum cmd_t {
 /**
  * @brief PDC Config object
  */
+//TODO: need to check
 struct pdc_config_t {
 	/** I2C config */
 	struct i2c_dt_spec i2c;
@@ -333,6 +334,7 @@ struct pdc_config_t {
 /**
  * @brief PDC Data object
  */
+//TODO: need to check
 struct pdc_data_t {
 	/** State machine context */
 	struct smf_ctx ctx;
@@ -464,16 +466,16 @@ static const char *const state_names[] = {
 };
 
 static struct gpio_dt_spec
-	rts54xx_irq_list[DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)];
+	it52xx_irq_list[DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)];
 static const struct smf_state states[];
 static int rts54_enable(const struct device *dev);
 static int rts54_reset(const struct device *dev);
 static int rts54_set_notification_enable(const struct device *dev,
 					 union notification_enable_t bits,
 					 uint16_t ext_bits);
-static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
+static int it52xx_get_info(const struct device *dev, struct pdc_info_t *info,
 			  bool live);
-static int rts54_get_error_status(const struct device *dev,
+static int it52xx_get_error_status(const struct device *dev,
 				  union error_status_t *es);
 
 /**
@@ -490,7 +492,7 @@ static void set_state(struct pdc_data_t *data, const enum state_t next_state)
 {
 	data->last_state = get_state(data);
 	smf_set_state(SMF_CTX(data), &states[next_state]);
-	k_event_post(&data->driver_event, RTS54XX_NEXT_STATE_READY);
+	k_event_post(&data->driver_event, IT52XX_NEXT_STATE_READY);
 }
 
 /**
@@ -647,7 +649,7 @@ static int get_ping_status(const struct device *dev)
 	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
 }
 
-static int rts54_i2c_read(const struct device *dev)
+static int it52xx_i2c_read(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 	const struct pdc_config_t *cfg = dev->config;
@@ -679,7 +681,7 @@ static int rts54_i2c_read(const struct device *dev)
 	return rv;
 }
 
-static int rts54_i2c_write(const struct device *dev)
+static int it52xx_i2c_write(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 	const struct pdc_config_t *cfg = dev->config;
@@ -771,7 +773,7 @@ static enum smf_state_result st_init_run(void *o)
 		init_write_cmd_and_change_state(data, INIT_PDC_GET_IC_STATUS);
 		return SMF_EVENT_HANDLED;
 	case INIT_PDC_GET_IC_STATUS:
-		rv = rts54_get_info(data->dev, &data->info, true);
+		rv = it52xx_get_info(data->dev, &data->info, true);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_GET_IC_STATUS)", cnum);
 			set_state(data, ST_DISABLE);
@@ -807,7 +809,7 @@ static enum smf_state_result st_init_run(void *o)
 		return SMF_EVENT_HANDLED;
 	case INIT_ERROR:
 		/* Get error status, and re-start the init process */
-		rts54_get_error_status(data->dev, &data->es);
+		it52xx_get_error_status(data->dev, &data->es);
 		init_write_cmd_and_change_state(data, INIT_PDC_ENABLE);
 		return SMF_EVENT_HANDLED;
 	case INIT_PDC_CMD_WAIT:
@@ -878,6 +880,109 @@ static enum smf_state_result st_init_run(void *o)
 /**
  * @brief Called from the main thread to handle interrupts
  */
+//TODO: rtk driver get PDC command status by polling,
+//      we should change it by read 0xBD reg when it5271 trigger alert
+//      but need to confirm RD 0xBD reg bit[1] means which ucsi event?
+//      if we can't tell events, then do as rtk
+#if 0
+static int handle_irqs(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_interrupt pdc_interrupt;
+	int rv;
+	int i;
+	bool interrupt_pending = false;
+
+	/* Read the pending interrupt events */
+	rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
+	if (rv) {
+		LOG_ERR("Read interrupt events failed");
+		return rv;
+	}
+
+	/* All raw_value data uses byte-0 for contains the register data was
+	 * written too, or read from, and byte-1 contains the length of said
+	 * data. The actual data starts at index 2. */
+	LOG_DBG("IRQ PORT %d", cfg->connector_number);
+	for (i = 0; i < sizeof(union reg_interrupt); i++) {
+		LOG_DBG("Byte%d: %02x", i, pdc_interrupt.raw_value[i]);
+		if (pdc_interrupt.raw_value[i]) {
+			interrupt_pending = true;
+		}
+	}
+	LOG_DBG("\n");
+
+	if (interrupt_pending && pdc_interrupt.patch_loaded) {
+		/* patch_loaded is a shared interrupt bit which is not cleared
+		 * individually so set ST_INIT state to all ports to avoid
+		 * clearing it before handling irq on other ports. */
+		set_all_ports_to_init(/*delay_ms=*/0);
+		return 0;
+	}
+
+	if (!interrupt_pending) {
+		return 0;
+	}
+
+	/* Set CCI EVENT for not supported */
+	data->cci_event.not_supported = pdc_interrupt.not_supported_received;
+
+	/* Set CCI EVENT for vendor defined indicator (informs subsystem
+	 * that an interrupt occurred */
+	data->cci_event.vendor_defined_indicator = 1;
+
+	/* If a UCSI event is seen, stop using the cached connector
+	 * status change bits and re-read from PDC and set CCI_EVENT for
+	 * connector change.
+	 */
+	if (pdc_interrupt.ucsi_connector_status_change_notification) {
+		data->use_cached_conn_status_change = false;
+		data->cci_event.connector_change = cfg->connector_number + 1;
+	}
+
+	if (pdc_interrupt.plug_insert_or_removal) {
+		atomic_set(&data->set_rdo_possible, 0);
+		atomic_set(&data->sink_enable_possible, 0);
+	}
+
+	if (pdc_interrupt.sink_ready) {
+		atomic_set(&data->set_rdo_possible, 1);
+		k_work_reschedule(&data->new_power_contract,
+				  K_MSEC(PDC_TI_NEW_POWER_CONTRACT_DELAY_MS));
+	}
+
+	if (pdc_interrupt.new_contract_as_consumer) {
+		atomic_set(&data->sink_enable_possible, 1);
+		k_work_reschedule(&data->new_power_contract,
+				  K_MSEC(PDC_TI_NEW_POWER_CONTRACT_DELAY_MS));
+	}
+
+	/* TODO(b/345783692): Handle other interrupt bits. */
+
+	/* Clear the pending interrupt events */
+	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Clear interrupt events failed");
+		return rv;
+	}
+
+	/* Inform the subsystem of the event */
+	call_cci_event_cb(data);
+
+	/*
+	 * Check if interrupt is still active from any of the ports.
+	 * It's possible that the PDC will set another bit in the
+	 * interrupt status register of any of the port between the time
+	 * when EC reads this register and clears these status bits
+	 * above. If there is still another interrupt pending, then the
+	 * interrupt line will still be active.
+	 */
+	tps_check_and_notify_irq();
+
+	return 0;
+}
+#endif
+
 static void handle_irqs(struct pdc_data_t *data)
 {
 	uint8_t ara;
@@ -897,6 +1002,7 @@ static void handle_irqs(struct pdc_data_t *data)
 		 * Read the Alert Response Address to determine
 		 * which port generated the interrupt.
 		 */
+		//Alert Response Address seems = 0xBD?
 		rv = get_ara(data->dev, &ara);
 		if (rv) {
 			return;
@@ -933,6 +1039,14 @@ static void handle_irqs(struct pdc_data_t *data)
 				/* Notify system of status change */
 				call_cci_event_cb(pdc_int_data);
 				/* done with this port */
+
+				/* Clear the pending interrupt events */
+				//TODO: change tps_rw_interrupt_clear() to ite
+				rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE);
+				if (rv) {
+					LOG_ERR("Clear interrupt events failed");
+					return rv;
+				}
 				break;
 			}
 		}
@@ -999,7 +1113,7 @@ static enum smf_state_result st_write_run(void *o)
 	int rv;
 
 	/* Write the command */
-	rv = rts54_i2c_write(data->dev);
+	rv = it52xx_i2c_write(data->dev);
 	if (rv < 0) {
 		if (max_i2c_retry_reached(data, I2C_MSG_WRITE)) {
 			set_state(data, ST_ERROR_RECOVERY);
@@ -1220,7 +1334,7 @@ static enum smf_state_result st_read_run(void *o)
 		TRANSITION_TO_INIT_OR_IDLE_STATE(data);
 	}
 
-	rv = rts54_i2c_read(data->dev);
+	rv = it52xx_i2c_read(data->dev);
 	if (rv < 0) {
 		if (max_i2c_retry_reached(data, I2C_MSG_READ)) {
 			set_state(data, ST_ERROR_RECOVERY);
@@ -1239,8 +1353,6 @@ static enum smf_state_result st_read_run(void *o)
 	case CMD_GET_IC_STATUS: {
 		struct pdc_info_t *info = (struct pdc_info_t *)data->user_buf;
 
-		/* Realtek PD Revision: Data Byte22..23 (big-endian) 769 = 0x0301*/
-		/* Realtek PD Version: Data Byte24..25 (big-endian) 262 = 0x0106 */
 		rts54xx_unpack_get_ic_status_response(data->rd_buf, info);
 
 		/* Project name string is supported on version >= 0.3.x */
@@ -1521,7 +1633,7 @@ static const struct smf_state states[] = {
  * @return -EBUSY if command is already pending.
  * @return -ECONNREFUSED if chip communication is disabled
  */
-static int rts54_post_command_with_callback(const struct device *dev,
+static int it52xx_post_command_with_callback(const struct device *dev,
 					    enum cmd_t cmd, const uint8_t *buf,
 					    uint8_t len, uint8_t *user_buf,
 					    struct pdc_callback *callback)
@@ -1567,16 +1679,16 @@ static int rts54_post_command_with_callback(const struct device *dev,
 
 	k_mutex_unlock(&data->mtx);
 	/* Posting the event reduces latency to start executing the command. */
-	k_event_post(&data->driver_event, RTS54XX_NEXT_STATE_READY);
+	k_event_post(&data->driver_event, IT52XX_NEXT_STATE_READY);
 
 	return 0;
 }
 
-static int rts54_post_command(const struct device *dev, enum cmd_t cmd,
+static int it52xx_post_command(const struct device *dev, enum cmd_t cmd,
 			      const uint8_t *buf, uint8_t len,
 			      uint8_t *user_buf)
 {
-	return rts54_post_command_with_callback(dev, cmd, buf, len, user_buf,
+	return it52xx_post_command_with_callback(dev, cmd, buf, len, user_buf,
 						NULL);
 }
 
@@ -1598,10 +1710,10 @@ static int rts54_get_rtk_status(const struct device *dev, uint8_t offset,
 		GET_RTK_STATUS.cmd, GET_RTK_STATUS.len, offset, 0x00, len,
 	};
 
-	return rts54_post_command(dev, cmd, payload, ARRAY_SIZE(payload), buf);
+	return it52xx_post_command(dev, cmd, payload, ARRAY_SIZE(payload), buf);
 }
 
-static int rts54_get_ucsi_version(const struct device *dev, uint16_t *version)
+static int it52xx_get_ucsi_version(const struct device *dev, uint16_t *version)
 {
 	if (version == NULL) {
 		return -EINVAL;
@@ -1612,7 +1724,7 @@ static int rts54_get_ucsi_version(const struct device *dev, uint16_t *version)
 	return 0;
 }
 
-static int rts54_set_handler_cb(const struct device *dev,
+static int it52xx_set_handler_cb(const struct device *dev,
 				struct pdc_callback *callback)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1639,11 +1751,11 @@ static int rts54_enable(const struct device *dev)
 		0x01,
 	};
 
-	return rts54_post_command(dev, CMD_VENDOR_ENABLE, payload,
+	return it52xx_post_command(dev, CMD_VENDOR_ENABLE, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_set_retimer_update_mode(const struct device *dev, bool enable)
+static int it52xx_set_retimer_update_mode(const struct device *dev, bool enable)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -1662,11 +1774,11 @@ static int rts54_set_retimer_update_mode(const struct device *dev, bool enable)
 		enable,
 	};
 
-	return rts54_post_command(dev, CMD_SET_RETIMER_FW_UPDATE_MODE, payload,
+	return it52xx_post_command(dev, CMD_SET_RETIMER_FW_UPDATE_MODE, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_read_power_level(const struct device *dev)
+static int it52xx_read_power_level(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -1690,11 +1802,11 @@ static int rts54_read_power_level(const struct device *dev)
 		0x00,
 	};
 
-	return rts54_post_command(dev, CMD_READ_POWER_LEVEL, payload,
+	return it52xx_post_command(dev, CMD_READ_POWER_LEVEL, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_reconnect(const struct device *dev)
+static int it52xx_reconnect(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -1710,11 +1822,11 @@ static int rts54_reconnect(const struct device *dev)
 		0x01,
 	};
 
-	return rts54_post_command(dev, CMD_SET_TPC_RECONNECT, payload,
+	return it52xx_post_command(dev, CMD_SET_TPC_RECONNECT, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_pdc_reset(const struct device *dev)
+static int it52xx_pdc_reset(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -1727,7 +1839,7 @@ static int rts54_pdc_reset(const struct device *dev)
 		return -EBUSY;
 	}
 
-	return rts54_post_command(dev, CMD_TRIGGER_PDC_RESET, NULL, 0, NULL);
+	return it52xx_post_command(dev, CMD_TRIGGER_PDC_RESET, NULL, 0, NULL);
 }
 
 static int rts54_reset(const struct device *dev)
@@ -1746,11 +1858,11 @@ static int rts54_reset(const struct device *dev)
 		0x00,
 	};
 
-	return rts54_post_command(dev, CMD_PPM_RESET, payload,
+	return it52xx_post_command(dev, CMD_PPM_RESET, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_connector_reset(const struct device *dev,
+static int it52xx_connector_reset(const struct device *dev,
 				 union connector_reset_t reset)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1764,11 +1876,11 @@ static int rts54_connector_reset(const struct device *dev,
 			      RTS_UCSI_CONNECTOR_RESET.sub, 0x00,
 			      reset.raw_value };
 
-	return rts54_post_command(dev, CMD_CONNECTOR_RESET, payload,
+	return it52xx_post_command(dev, CMD_CONNECTOR_RESET, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_set_power_level(const struct device *dev,
+static int it52xx_set_power_level(const struct device *dev,
 				 enum usb_typec_current_t tcc)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1809,11 +1921,11 @@ static int rts54_set_power_level(const struct device *dev,
 		SET_TPC_RP.cmd, SET_TPC_RP.len, SET_TPC_RP.sub, 0x00, byte,
 	};
 
-	return rts54_post_command(dev, CMD_SET_TPC_RP, payload,
+	return it52xx_post_command(dev, CMD_SET_TPC_RP, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_set_sink_path(const struct device *dev, bool en)
+static int it52xx_set_sink_path(const struct device *dev, bool en)
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t byte;
@@ -1836,7 +1948,7 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 		byte,
 	};
 
-	return rts54_post_command(dev, CMD_SET_SINK_PATH, payload,
+	return it52xx_post_command(dev, CMD_SET_SINK_PATH, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
@@ -1863,11 +1975,11 @@ static int rts54_set_notification_enable(const struct device *dev,
 		BYTE1(ext_bits),
 	};
 
-	return rts54_post_command(dev, CMD_SET_NOTIFICATION_ENABLE, payload,
+	return it52xx_post_command(dev, CMD_SET_NOTIFICATION_ENABLE, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_get_capability(const struct device *dev,
+static int it52xx_get_capability(const struct device *dev,
 				struct capability_t *caps)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1887,11 +1999,11 @@ static int rts54_get_capability(const struct device *dev,
 		0x00,
 	};
 
-	return rts54_post_command(dev, CMD_GET_CAPABILITY, payload,
+	return it52xx_post_command(dev, CMD_GET_CAPABILITY, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)caps);
 }
 
-static int rts54_get_connector_capability(const struct device *dev,
+static int it52xx_get_connector_capability(const struct device *dev,
 					  union connector_capability_t *caps)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1912,11 +2024,11 @@ static int rts54_get_connector_capability(const struct device *dev,
 		0x00, /* Connector number --> don't care for Realtek */
 	};
 
-	return rts54_post_command(dev, CMD_GET_CONNECTOR_CAPABILITY, payload,
+	return it52xx_post_command(dev, CMD_GET_CONNECTOR_CAPABILITY, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)caps);
 }
 
-static int rts54_get_connector_status(const struct device *dev,
+static int it52xx_get_connector_status(const struct device *dev,
 				      union connector_status_t *cs)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1937,11 +2049,11 @@ static int rts54_get_connector_status(const struct device *dev,
 		0x00, /* Connector number --> don't care for Realtek */
 	};
 
-	return rts54_post_command(dev, CMD_GET_CONNECTOR_STATUS, payload,
+	return it52xx_post_command(dev, CMD_GET_CONNECTOR_STATUS, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)cs);
 }
 
-static int rts54_get_cable_property(const struct device *dev,
+static int it52xx_get_cable_property(const struct device *dev,
 				    union cable_property_t *cp)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1962,11 +2074,11 @@ static int rts54_get_cable_property(const struct device *dev,
 		0x00,
 	};
 
-	return rts54_post_command(dev, CMD_GET_CABLE_PROPERTY, payload,
+	return it52xx_post_command(dev, CMD_GET_CABLE_PROPERTY, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)cp);
 }
 
-static int rts54_get_error_status(const struct device *dev,
+static int it52xx_get_error_status(const struct device *dev,
 				  union error_status_t *es)
 {
 	struct pdc_data_t *data = dev->data;
@@ -1994,11 +2106,11 @@ static int rts54_get_error_status(const struct device *dev,
 		0x00, /* Connector number --> don't care for Realtek */
 	};
 
-	return rts54_post_command(dev, CMD_GET_ERROR_STATUS, payload,
+	return it52xx_post_command(dev, CMD_GET_ERROR_STATUS, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)es);
 }
 
-static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
+static int it52xx_set_rdo(const struct device *dev, uint32_t rdo)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2011,11 +2123,11 @@ static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
 		BYTE0(rdo),  BYTE1(rdo),  BYTE2(rdo),  BYTE3(rdo),
 	};
 
-	return rts54_post_command(dev, CMD_SET_RDO, payload,
+	return it52xx_post_command(dev, CMD_SET_RDO, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_get_rdo(const struct device *dev, uint32_t *rdo)
+static int it52xx_get_rdo(const struct device *dev, uint32_t *rdo)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2034,11 +2146,11 @@ static int rts54_get_rdo(const struct device *dev, uint32_t *rdo)
 		0x00,
 	};
 
-	return rts54_post_command(dev, CMD_GET_RDO, payload,
+	return it52xx_post_command(dev, CMD_GET_RDO, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)rdo);
 }
 
-static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
+static int it52xx_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 			  enum pdo_offset_t pdo_offset, uint8_t num_pdos,
 			  enum pdo_source_t source, uint32_t *pdos)
 {
@@ -2085,11 +2197,11 @@ static int rts54_get_pdos(const struct device *dev, enum pdo_type_t pdo_type,
 	get_pdo->source_caps = CURRENT_SUPPORTED_SOURCE_CAPS;
 	get_pdo->range = SPR_RANGE;
 
-	return rts54_post_command(dev, CMD_GET_PDOS, payload,
+	return it52xx_post_command(dev, CMD_GET_PDOS, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)pdos);
 }
 
-static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
+static int it52xx_get_info(const struct device *dev, struct pdc_info_t *info,
 			  bool live)
 {
 	const struct pdc_config_t *cfg = dev->config;
@@ -2141,11 +2253,11 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 
 	LOG_DBG("C%d: Get live chip info", cfg->connector_number);
 
-	return rts54_post_command(dev, CMD_GET_IC_STATUS, payload,
+	return it52xx_post_command(dev, CMD_GET_IC_STATUS, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)info);
 }
 
-static int rts54_get_hw_config(const struct device *dev,
+static int it52xx_get_hw_config(const struct device *dev,
 			       struct pdc_hw_config_t *config)
 {
 	const struct pdc_config_t *cfg =
@@ -2162,7 +2274,7 @@ static int rts54_get_hw_config(const struct device *dev,
 	return 0;
 }
 
-static int rts54_get_vbus_voltage(const struct device *dev, uint16_t *voltage)
+static int it52xx_get_vbus_voltage(const struct device *dev, uint16_t *voltage)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2182,11 +2294,11 @@ static int rts54_get_vbus_voltage(const struct device *dev, uint16_t *voltage)
 		0x00, /* Connector number --> don't care for Realtek */
 	};
 
-	return rts54_post_command(dev, CMD_GET_VBUS_VOLTAGE, payload,
+	return it52xx_post_command(dev, CMD_GET_VBUS_VOLTAGE, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)voltage);
 }
 
-static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom)
+static int it52xx_set_ccom(const struct device *dev, enum ccom_t ccom)
 {
 	struct pdc_data_t *data = dev->data;
 	uint16_t conn_opmode = 0;
@@ -2218,11 +2330,11 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom)
 		conn_opmode & 0xff,    (conn_opmode >> 8) & 0xff,
 	};
 
-	return rts54_post_command(dev, CMD_SET_CCOM, payload,
+	return it52xx_post_command(dev, CMD_SET_CCOM, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
+static int it52xx_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t opmode = 0;
@@ -2262,11 +2374,11 @@ static int rts54_set_drp_mode(const struct device *dev, enum drp_mode_t dm)
 		opmode,
 	};
 
-	return rts54_post_command(dev, CMD_SET_DRP_MODE, payload,
+	return it52xx_post_command(dev, CMD_SET_DRP_MODE, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_get_drp_mode(const struct device *dev, enum drp_mode_t *dm)
+static int it52xx_get_drp_mode(const struct device *dev, enum drp_mode_t *dm)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2280,11 +2392,11 @@ static int rts54_get_drp_mode(const struct device *dev, enum drp_mode_t *dm)
 		GET_TPC_CSD_OPERATION_MODE.sub,
 		0x00,
 	};
-	return rts54_post_command(dev, CMD_GET_DRP_MODE, payload,
+	return it52xx_post_command(dev, CMD_GET_DRP_MODE, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)dm);
 }
 
-static int rts54_set_uor(const struct device *dev, union uor_t uor)
+static int it52xx_set_uor(const struct device *dev, union uor_t uor)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2298,11 +2410,11 @@ static int rts54_set_uor(const struct device *dev, union uor_t uor)
 		uor.raw_value & 0xff, (uor.raw_value >> 8) & 0xff
 	};
 
-	return rts54_post_command(dev, CMD_SET_UOR, payload,
+	return it52xx_post_command(dev, CMD_SET_UOR, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_set_pdr(const struct device *dev, union pdr_t pdr)
+static int it52xx_set_pdr(const struct device *dev, union pdr_t pdr)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2316,11 +2428,11 @@ static int rts54_set_pdr(const struct device *dev, union pdr_t pdr)
 		pdr.raw_value & 0xff, (pdr.raw_value >> 8) & 0xff
 	};
 
-	return rts54_post_command(dev, CMD_SET_PDR, payload,
+	return it52xx_post_command(dev, CMD_SET_PDR, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_get_current_pdo(const struct device *dev, uint32_t *pdo)
+static int it52xx_get_current_pdo(const struct device *dev, uint32_t *pdo)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2339,11 +2451,11 @@ static int rts54_get_current_pdo(const struct device *dev, uint32_t *pdo)
 		0x00,
 	};
 
-	return rts54_post_command(dev, CMD_GET_CURRENT_PARTNER_SRC_PDO, payload,
+	return it52xx_post_command(dev, CMD_GET_CURRENT_PARTNER_SRC_PDO, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)pdo);
 }
 
-static int rts54_set_frs(const struct device *dev, bool enable)
+static int it52xx_set_frs(const struct device *dev, bool enable)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2359,11 +2471,11 @@ static int rts54_set_frs(const struct device *dev, bool enable)
 		[4] = enable,
 	};
 
-	return rts54_post_command(dev, CMD_SET_FRS_FUNCTION, payload,
+	return it52xx_post_command(dev, CMD_SET_FRS_FUNCTION, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_get_identity_discovery(const struct device *dev,
+static int it52xx_get_identity_discovery(const struct device *dev,
 					bool *disc_state)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2380,7 +2492,7 @@ static int rts54_get_identity_discovery(const struct device *dev,
 				    (uint8_t *)disc_state);
 }
 
-static int rts54_is_vconn_sourcing(const struct device *dev,
+static int it52xx_is_vconn_sourcing(const struct device *dev,
 				   bool *vconn_sourcing)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2397,7 +2509,7 @@ static int rts54_is_vconn_sourcing(const struct device *dev,
 				    (uint8_t *)vconn_sourcing);
 }
 
-static int rts54_get_pch_data_status(const struct device *dev, uint8_t port_num,
+static int it52xx_get_pch_data_status(const struct device *dev, uint8_t port_num,
 				     uint8_t *status_reg)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2417,26 +2529,26 @@ static int rts54_get_pch_data_status(const struct device *dev, uint8_t port_num,
 		port_num,
 	};
 
-	rts54_post_command(dev, CMD_GET_PCH_DATA_STATUS, payload,
+	it52xx_post_command(dev, CMD_GET_PCH_DATA_STATUS, payload,
 			   ARRAY_SIZE(payload), status_reg);
 	return 0;
 }
 
-static void rts54_start_thread(const struct device *dev)
+static void it52xx_start_thread(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 
 	k_thread_start(data->thread);
 }
 
-static bool rts54_is_init_done(const struct device *dev)
+static bool it52xx_is_init_done(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
 
 	return data->init_done;
 }
 
-static int rts54_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
+static int it52xx_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
 			 uint8_t *vdo_req_list, uint32_t *vdo)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2468,7 +2580,7 @@ static int rts54_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
 	/* Copy the list of VDO types being requested in the cmd message */
 	memcpy(&payload[5], vdo_req_list, vdo_req.num_vdos);
 
-	return rts54_post_command(dev, CMD_GET_VDO, payload,
+	return it52xx_post_command(dev, CMD_GET_VDO, payload,
 				  GET_VDO.len + vdo_req.num_vdos + 2,
 				  (uint8_t *)vdo);
 }
@@ -2476,7 +2588,7 @@ static int rts54_get_vdo(const struct device *dev, union get_vdo_t vdo_req,
 /** Allow 3 seconds for the driver to suspend itself. */
 #define SUSPEND_TIMEOUT_USEC (3 * USEC_PER_SEC)
 
-static int rts54_set_comms_state(const struct device *dev, bool comms_active)
+static int it52xx_set_comms_state(const struct device *dev, bool comms_active)
 {
 	struct pdc_data_t *data = dev->data;
 
@@ -2511,7 +2623,7 @@ static int rts54_set_comms_state(const struct device *dev, bool comms_active)
 	return 0;
 }
 
-static int rts54_set_pdo(const struct device *dev, enum pdo_type_t type,
+static int it52xx_set_pdo(const struct device *dev, enum pdo_type_t type,
 			 uint32_t *pdo, int count)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2536,7 +2648,7 @@ static int rts54_set_pdo(const struct device *dev, enum pdo_type_t type,
 	uint8_t payload[RTS54XX_SET_PD_CMD_MAX_LENGTH] = {
 		SET_PDO.cmd, SET_PDO.len + sizeof(uint32_t) * count,
 		SET_PDO.sub, 0x00,
-		pdo_info,/* next will memcopy pdo to here */
+		pdo_info,
 	};
 
 	/* Compute actual length given number of PDOs being set */
@@ -2547,12 +2659,12 @@ static int rts54_set_pdo(const struct device *dev, enum pdo_type_t type,
 	memcpy(&payload[RTS54XX_SET_PDO_CMD_BASE_LENGTH], pdo,
 	       sizeof(uint32_t) * count);
 
-	return rts54_post_command(dev, CMD_SET_PDO, payload, payload_len, NULL);
+	return it52xx_post_command(dev, CMD_SET_PDO, payload, payload_len, NULL);
 }
 
 #define SMBUS_MAX_BLOCK_SIZE 32
 
-static int rts54_execute_ucsi_cmd(const struct device *dev,
+static int it52xx_execute_ucsi_cmd(const struct device *dev,
 				  uint8_t ucsi_command, uint8_t data_size,
 				  uint8_t *command_specific,
 				  uint8_t *lpm_data_out,
@@ -2587,12 +2699,12 @@ static int rts54_execute_ucsi_cmd(const struct device *dev,
 		break;
 	}
 
-	return rts54_post_command_with_callback(dev, CMD_RAW_UCSI, cmd_buffer,
+	return it52xx_post_command_with_callback(dev, CMD_RAW_UCSI, cmd_buffer,
 						data_size + 4, lpm_data_out,
 						callback);
 }
 
-static int rts54_manage_callback(const struct device *dev,
+static int it52xx_manage_callback(const struct device *dev,
 				 struct pdc_callback *callback, bool set)
 {
 	struct pdc_data_t *const data = dev->data;
@@ -2600,7 +2712,7 @@ static int rts54_manage_callback(const struct device *dev,
 	return pdc_manage_callbacks(&data->ci_cb_list, callback, set);
 }
 
-static int rts54_ack_cc_ci(const struct device *dev,
+static int it52xx_ack_cc_ci(const struct device *dev,
 			   union conn_status_change_bits_t ci, bool cc,
 			   uint16_t vendor_defined)
 {
@@ -2620,11 +2732,11 @@ static int rts54_ack_cc_ci(const struct device *dev,
 			      BYTE1(vendor_defined),
 			      cc };
 
-	return rts54_post_command(dev, CMD_ACK_CC_CI, payload,
+	return it52xx_post_command(dev, CMD_ACK_CC_CI, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
-static int rts54_get_lpm_ppm_info(const struct device *dev,
+static int it52xx_get_lpm_ppm_info(const struct device *dev,
 				  struct lpm_ppm_info_t *info)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2641,11 +2753,11 @@ static int rts54_get_lpm_ppm_info(const struct device *dev,
 			      RTS_UCSI_GET_LPM_PPM_INFO.len,
 			      RTS_UCSI_GET_LPM_PPM_INFO.sub, 0x00, 0x00 };
 
-	return rts54_post_command(dev, CMD_GET_LPM_PPM_INFO, payload,
+	return it52xx_post_command(dev, CMD_GET_LPM_PPM_INFO, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)info);
 }
 
-static int rts54_get_attention_vdo(const struct device *dev,
+static int it52xx_get_attention_vdo(const struct device *dev,
 				   union get_attention_vdo_t *vdo)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2662,12 +2774,12 @@ static int rts54_get_attention_vdo(const struct device *dev,
 			      RTS_UCSI_GET_ATTENTION_VDO.len,
 			      RTS_UCSI_GET_ATTENTION_VDO.sub, 0x00, 0x00 };
 
-	return rts54_post_command(dev, CMD_GET_ATTENTION_VDO, payload,
+	return it52xx_post_command(dev, CMD_GET_ATTENTION_VDO, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)vdo);
 }
 
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
-static int rts54_get_sbu_mux_mode(const struct device *dev,
+static int it52xx_get_sbu_mux_mode(const struct device *dev,
 				  enum pdc_sbu_mux_mode *mode)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2692,11 +2804,11 @@ static int rts54_get_sbu_mux_mode(const struct device *dev,
 		1,
 	};
 
-	return rts54_post_command(dev, CMD_GET_SBU_MUX_MODE, payload,
+	return it52xx_post_command(dev, CMD_GET_SBU_MUX_MODE, payload,
 				  ARRAY_SIZE(payload), (uint8_t *)mode);
 }
 
-static int rts54_set_sbu_mux_mode(const struct device *dev,
+static int it52xx_set_sbu_mux_mode(const struct device *dev,
 				  enum pdc_sbu_mux_mode mode)
 {
 	struct pdc_data_t *data = dev->data;
@@ -2720,12 +2832,12 @@ static int rts54_set_sbu_mux_mode(const struct device *dev,
 	uint8_t payload[] = { RTS_SET_SBU_MUX_MODE.cmd,
 			      RTS_SET_SBU_MUX_MODE.len, setting };
 
-	return rts54_post_command(dev, CMD_SET_SBU_MUX_MODE, payload,
+	return it52xx_post_command(dev, CMD_SET_SBU_MUX_MODE, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
-static int rts54_set_bbr_cts(const struct device *dev, bool enable)
+static int it52xx_set_bbr_cts(const struct device *dev, bool enable)
 {
 	const struct pdc_config_t *cfg = dev->config;
 
@@ -2743,56 +2855,56 @@ static int rts54_set_bbr_cts(const struct device *dev, bool enable)
 
 	LOG_INF("C%d: SET_BBR_CTS = %d", cfg->connector_number, enable);
 
-	return rts54_post_command(dev, CMD_SET_BBR_CTS, payload,
+	return it52xx_post_command(dev, CMD_SET_BBR_CTS, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
 
 static DEVICE_API(pdc, pdc_driver_api) = {
-	.start_thread = rts54_start_thread,
-	.is_init_done = rts54_is_init_done,
-	.get_ucsi_version = rts54_get_ucsi_version,
-	.reset = rts54_pdc_reset,
-	.connector_reset = rts54_connector_reset,
-	.get_capability = rts54_get_capability,
-	.get_connector_capability = rts54_get_connector_capability,
-	.set_ccom = rts54_set_ccom,
-	.set_drp_mode = rts54_set_drp_mode,
-	.get_drp_mode = rts54_get_drp_mode,
-	.set_uor = rts54_set_uor,
-	.set_pdr = rts54_set_pdr,
-	.set_sink_path = rts54_set_sink_path,
-	.get_connector_status = rts54_get_connector_status,
-	.get_pdos = rts54_get_pdos,
-	.get_rdo = rts54_get_rdo,
-	.set_rdo = rts54_set_rdo,
-	.get_error_status = rts54_get_error_status,
-	.get_vbus_voltage = rts54_get_vbus_voltage,
-	.get_current_pdo = rts54_get_current_pdo,
-	.set_handler_cb = rts54_set_handler_cb,
-	.read_power_level = rts54_read_power_level,
-	.get_info = rts54_get_info,
-	.get_hw_config = rts54_get_hw_config,
-	.set_power_level = rts54_set_power_level,
-	.reconnect = rts54_reconnect,
-	.update_retimer = rts54_set_retimer_update_mode,
-	.get_cable_property = rts54_get_cable_property,
-	.get_vdo = rts54_get_vdo,
-	.get_identity_discovery = rts54_get_identity_discovery,
-	.set_comms_state = rts54_set_comms_state,
-	.is_vconn_sourcing = rts54_is_vconn_sourcing,
-	.set_pdos = rts54_set_pdo,
-	.get_pch_data_status = rts54_get_pch_data_status,
-	.execute_ucsi_cmd = rts54_execute_ucsi_cmd,
-	.manage_callback = rts54_manage_callback,
-	.ack_cc_ci = rts54_ack_cc_ci,
-	.get_lpm_ppm_info = rts54_get_lpm_ppm_info,
-	.set_frs = rts54_set_frs,
-	.get_attention_vdo = rts54_get_attention_vdo,
+	.start_thread = it52xx_start_thread,
+	.is_init_done = it52xx_is_init_done,
+	.get_ucsi_version = it52xx_get_ucsi_version,
+	.reset = it52xx_pdc_reset,
+	.connector_reset = it52xx_connector_reset,
+	.get_capability = it52xx_get_capability,
+	.get_connector_capability = it52xx_get_connector_capability,
+	.set_ccom = it52xx_set_ccom,
+	.set_drp_mode = it52xx_set_drp_mode,
+	.get_drp_mode = it52xx_get_drp_mode,
+	.set_uor = it52xx_set_uor,
+	.set_pdr = it52xx_set_pdr,
+	.set_sink_path = it52xx_set_sink_path,
+	.get_connector_status = it52xx_get_connector_status,
+	.get_pdos = it52xx_get_pdos,
+	.get_rdo = it52xx_get_rdo,
+	.set_rdo = it52xx_set_rdo,
+	.get_error_status = it52xx_get_error_status,
+	.get_vbus_voltage = it52xx_get_vbus_voltage,
+	.get_current_pdo = it52xx_get_current_pdo,
+	.set_handler_cb = it52xx_set_handler_cb,
+	.read_power_level = it52xx_read_power_level,
+	.get_info = it52xx_get_info,
+	.get_hw_config = it52xx_get_hw_config,
+	.set_power_level = it52xx_set_power_level,
+	.reconnect = it52xx_reconnect,
+	.update_retimer = it52xx_set_retimer_update_mode,
+	.get_cable_property = it52xx_get_cable_property,
+	.get_vdo = it52xx_get_vdo,
+	.get_identity_discovery = it52xx_get_identity_discovery,
+	.set_comms_state = it52xx_set_comms_state,
+	.is_vconn_sourcing = it52xx_is_vconn_sourcing,
+	.set_pdos = it52xx_set_pdo,
+	.get_pch_data_status = it52xx_get_pch_data_status,
+	.execute_ucsi_cmd = it52xx_execute_ucsi_cmd,
+	.manage_callback = it52xx_manage_callback,
+	.ack_cc_ci = it52xx_ack_cc_ci,
+	.get_lpm_ppm_info = it52xx_get_lpm_ppm_info,
+	.set_frs = it52xx_set_frs,
+	.get_attention_vdo = it52xx_get_attention_vdo,
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
-	.get_sbu_mux_mode = rts54_get_sbu_mux_mode,
-	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,
+	.get_sbu_mux_mode = it52xx_get_sbu_mux_mode,
+	.set_sbu_mux_mode = it52xx_set_sbu_mux_mode,
 #endif /* define(CONFIG_USBC_PDC_DRIVEN_CCD) */
-	.set_bbr_cts = rts54_set_bbr_cts,
+	.set_bbr_cts = it52xx_set_bbr_cts, /* do we? (ti doesn't) */
 };
 
 static int pdc_init(const struct device *dev)
@@ -2816,15 +2928,15 @@ static int pdc_init(const struct device *dev)
 
 	k_event_init(&data->driver_event);
 
-	for (int i = 0; i < ARRAY_SIZE(rts54xx_irq_list); i++) {
-		if (rts54xx_irq_list[i].port == cfg->irq_gpios.port &&
-		    rts54xx_irq_list[i].pin == cfg->irq_gpios.pin) {
+	for (int i = 0; i < ARRAY_SIZE(it52xx_irq_list); i++) {
+		if (it52xx_irq_list[i].port == cfg->irq_gpios.port &&
+		    it52xx_irq_list[i].pin == cfg->irq_gpios.pin) {
 			irq_init_done = true;
 			break;
 		}
 
-		if (rts54xx_irq_list[i].port == NULL) {
-			rts54xx_irq_list[i] = cfg->irq_gpios;
+		if (it52xx_irq_list[i].port == NULL) {
+			it52xx_irq_list[i] = cfg->irq_gpios;
 			break;
 		}
 	}
@@ -2853,7 +2965,7 @@ static int pdc_init(const struct device *dev)
 		}
 
 		/* Trigger IRQ on startup to read any pending interrupts */
-		k_event_post(&data->driver_event, RTS54XX_IRQ_EVENT);
+		k_event_post(&data->driver_event, IT52XX_IRQ_EVENT);
 	}
 
 	k_mutex_init(&data->mtx);
@@ -2870,12 +2982,53 @@ static int pdc_init(const struct device *dev)
 	/* Create the thread for this port */
 	cfg->create_thread(dev);
 
-	LOG_INF("C%d: Realtek RTS545x PDC DRIVER", cfg->connector_number);
+	LOG_INF("C%d: ITE it52xx PDC DRIVER", cfg->connector_number);
 
 	return 0;
 }
 
-static void rts54xx_thread(void *dev, void *unused1, void *unused2)
+#if 0
+static void tps_thread(void *dev, void *unused1, void *unused2)
+{
+	struct pdc_data_t *data = ((const struct device *)dev)->data;
+	const struct pdc_config_t *cfg = ((const struct device *)dev)->config;
+	bool irq_pending_for_idle = false;
+
+	while (1) {
+		smf_run_state(SMF_CTX(data));
+
+		/* Wait for event to handle */
+		data->events = k_event_wait(&data->pdc_event, PDC_ALL_EVENTS,
+					    false, K_FOREVER);
+		LOG_INF("tps_thread[%d][%s]: events=0x%X",
+			cfg->connector_number, state_names[get_state(data)],
+			data->events);
+
+		k_event_clear(&data->pdc_event, PDC_INTERNAL_EVENT);
+
+		if (data->events & PDC_IRQ_EVENT) {
+			k_event_clear(&data->pdc_event, PDC_IRQ_EVENT);
+
+			if (!check_comms_suspended()) {
+				irq_pending_for_idle = true;
+			}
+		}
+
+		/* We only handle IRQs on idle. */
+		if (get_state(data) == ST_IDLE && irq_pending_for_idle) {
+			if (handle_irqs(data) < 0) {
+				k_work_reschedule(
+					&data->delayed_post,
+					K_MSEC(PDC_HANDLE_IRQ_RETRY_DELAY));
+			} else {
+				irq_pending_for_idle = false;
+			}
+		}
+	}
+}
+#endif
+
+static void it52xx_thread(void *dev, void *unused1, void *unused2)
 {
 	const struct pdc_config_t *cfg = ((const struct device *)dev)->config;
 	struct pdc_data_t *data = ((const struct device *)dev)->data;
@@ -2886,11 +3039,12 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		smf_run_state(SMF_CTX(data));
 
 		events = k_event_wait(&data->driver_event,
-				      RTS54XX_IRQ_EVENT |
-					      RTS54XX_NEXT_STATE_READY,
-				      false, K_MSEC(T_PING_STATUS));
+				      IT52XX_IRQ_EVENT |
+					      IT52XX_NEXT_STATE_READY,
+				      false, K_MSEC(T_PING_STATUS)); /* TODO: need others event? */
+								     /* TODO: T_PING_STATUS or K_FOREVER? */
 
-		if (events & RTS54XX_IRQ_EVENT) {
+		if (events & IT52XX_IRQ_EVENT) {
 			irq_pending_for_idle = true;
 		}
 
@@ -2911,22 +3065,22 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 
 #define PDC_DATA_STRUCT_NAME(inst) pdc_data_##inst
 
-#define RTS54xx_PDC_DEFINE(inst)                                              \
-	K_THREAD_STACK_DEFINE(rts54xx_thread_stack_area_##inst,               \
-			      CONFIG_USBC_PDC_RTS54XX_STACK_SIZE);            \
+#define IT52XX_PDC_DEFINE(inst)                                               \
+	K_THREAD_STACK_DEFINE(it52xx_thread_stack_area_##inst,                \
+			      CONFIG_USBC_PDC_IT52XX_STACK_SIZE);             \
                                                                               \
 	static void create_thread_##inst(const struct device *dev)            \
 	{                                                                     \
 		struct pdc_data_t *data = dev->data;                          \
                                                                               \
 		data->thread = k_thread_create(                               \
-			&data->thread_data, rts54xx_thread_stack_area_##inst, \
+			&data->thread_data, it52xx_thread_stack_area_##inst,  \
 			K_THREAD_STACK_SIZEOF(                                \
-				rts54xx_thread_stack_area_##inst),            \
-			rts54xx_thread, (void *)dev, 0, 0,                    \
-			CONFIG_USBC_PDC_RTS54XX_THREAD_PRIORITY, K_ESSENTIAL, \
+				it52xx_thread_stack_area_##inst),             \
+			it52xx_thread, (void *)dev, 0, 0,                     \
+			CONFIG_USBC_PDC_IT52XX_THREAD_PRIORITY, K_ESSENTIAL,  \
 			K_FOREVER);                                           \
-		k_thread_name_set(data->thread, "RTS54XX" STRINGIFY(inst));   \
+		k_thread_name_set(data->thread, "IT52XX" STRINGIFY(inst));    \
 	}                                                                     \
                                                                               \
 	static struct pdc_data_t PDC_DATA_STRUCT_NAME(inst);                  \
@@ -2936,7 +3090,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 						 uint32_t pins)               \
 	{                                                                     \
 		k_event_post(&PDC_DATA_STRUCT_NAME(inst).driver_event,        \
-			     RTS54XX_IRQ_EVENT);                              \
+			     IT52XX_IRQ_EVENT);                               \
 	}                                                                     \
                                                                               \
 	static const struct pdc_config_t pdc_config##inst = {                 \
@@ -2944,10 +3098,10 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.irq_gpios = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),          \
 		.connector_number =                                           \
 			USBC_PORT_FROM_PDC_DRIVER_NODE(DT_DRV_INST(inst)),    \
-		.bits.command_completed = 1,                                  \
+		.bits.command_completed = 1,                                  \ /* ti doesn't */
 		.bits.external_supply_change = 1,                             \
 		.bits.power_operation_mode_change = 1,                        \
-		.bits.attention = 1,                                          \
+		.bits.attention = 1,                                          \ /* ti doesn't */
 		.bits.fw_update_request = 0,                                  \
 		.bits.provider_capability_change_supported = 1,               \
 		.bits.negotiated_power_level_change = 1,                      \
@@ -2960,7 +3114,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.bits.set_retimer_mode = 0,                                   \
 		.bits.connect_change = 1,                                     \
 		.bits.error = 1,                                              \
-		.bits.sink_path_status_change = 1,                            \
+		.bits.sink_path_status_change = 0,                            \ /* it5271 not support so far */
 		.create_thread = create_thread_##inst,                        \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),             \
 		.ccd = DT_INST_PROP(inst, ccd),                               \
@@ -2976,7 +3130,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.dev = DEVICE_DT_INST_GET(inst),                              \
 	};
 
-DT_INST_FOREACH_STATUS_OKAY(RTS54xx_PDC_DEFINE)
+DT_INST_FOREACH_STATUS_OKAY(IT52XX_PDC_DEFINE)
 
 #define PDC_DATA_PTR_ENTRY(inst) &PDC_DATA_STRUCT_NAME(inst),
 
@@ -2991,7 +3145,7 @@ static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
  * Wait for drivers to become idle.
  */
 /* LCOV_EXCL_START */
-bool pdc_rts54xx_test_idle_wait(void)
+bool pdc_it52xx_test_idle_wait(void)
 {
 	int num_finished;
 
