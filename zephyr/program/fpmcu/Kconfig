@@ -71,4 +71,17 @@ config PLATFORM_EC_RSA_KEY_SIZE
 config PLATFORM_EC_RSA_EXPONENT_3
 	default y
 
+# NPCX header options, TODO: have these on the upstream board defconfig
+choice NPCX_HEADER_SPI_MAX_CLOCK_CHOICE
+	default NPCX_HEADER_SPI_MAX_CLOCK_50
+endchoice
+
+choice NPCX_HEADER_SPI_READ_MODE_CHOICE
+	default NPCX_HEADER_SPI_READ_MODE_DUAL
+endchoice
+
+choice NPCX_HEADER_CORE_CLOCK_SPI_CLOCK_RATIO_CHOICE
+	default NPCX_HEADER_CORE_CLOCK_SPI_CLOCK_RATIO_2
+endchoice
+
 source "Kconfig.zephyr"
