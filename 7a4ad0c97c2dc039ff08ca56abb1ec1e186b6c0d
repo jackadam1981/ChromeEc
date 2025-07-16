@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b4607e_d6b85bf1",
+        "filename": "zephyr/program/trulo/kaladin/pwm.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T23:39:29Z",
+      "side": 1,
+      "message": "This the PWM control for the fan and doesn\u0027t appear related to LED support.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "7a4ad0c97c2dc039ff08ca56abb1ec1e186b6c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d31f15f_19a259d2",
+        "filename": "zephyr/program/trulo/kaladin/pwm.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T23:39:29Z",
+      "side": 1,
+      "message": "same comment as above. This should be added with keyboard backlight support.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "7a4ad0c97c2dc039ff08ca56abb1ec1e186b6c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
