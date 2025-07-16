@@ -714,6 +714,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "512e6897_a388a55e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-16T14:33:46Z",
+      "side": 1,
+      "message": "The location. `PAL` stands for Platform Abstraction Layer. And it\u0027s purpose is to make ELAN library OS-independent. The `fingerprint_elan80sg_pal.c` should only contain functions required by ELAN library. Functions that are not used by ELAN library (directly or indirectly), should be moved to `fingerprint_elan80sg.c`. If you are concerned about the readability of the `fingerprint_elan80sg.c` file, you can create some separate file to keep them.",
+      "parentUuid": "8f4d9f30_d1283294",
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d92e3d4_6a2b324a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 39
@@ -878,6 +896,30 @@
       "side": 1,
       "message": "yes, `elan_write_register(charge_pump[0], charge_pump[1]);`\n\nwhat is your concern here?",
       "parentUuid": "52b187db_a075f8e7",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 23
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87791c7a_f6a45f42",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-16T14:33:46Z",
+      "side": 1,
+      "message": "`elan_write_reg_vector()` is used to write to multiple registers in one function call. If you write to one register, you should use `elan_write_register()` instead.",
+      "parentUuid": "1b50e690_3f3a1871",
       "range": {
         "startLine": 416,
         "startChar": 2,
