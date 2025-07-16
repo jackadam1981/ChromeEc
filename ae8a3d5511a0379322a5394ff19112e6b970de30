@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b7fe10_413e9385",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-07-16T07:58:36Z",
+      "side": 1,
+      "message": "Kaladin is built with RTS5453P-VB and we could check if FRS could be supported with the new chip.",
+      "parentUuid": "9f5a2d42_668d88ba",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "ae8a3d5511a0379322a5394ff19112e6b970de30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422c6c80_575d602f",
