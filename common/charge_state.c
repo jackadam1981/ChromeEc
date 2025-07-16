@@ -1524,7 +1524,18 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 
 	/* Wait on the dynamic info until the static info is good. */
 	if (!*need_staticp)
+<<<<<<< HEAD   (81799eb8f2647137d7627a9fac8eb7ee1bf9c5dc Constitution: Enable EC-based watchdog)
 		update_dynamic_battery_info();
+||||||| BASE   (cbd45e97d77d7a73235450db7dbca10394253f8f dts: cbi: Add standard and OEM UFSC schema templates)
+		battery_set_dynamic_info(&curr.batt, curr.ac,
+					 curr.batt_is_charging);
+
+=======
+		battery_set_dynamic_info(&curr.batt, curr.ac,
+					 curr.batt_is_charging,
+					 curr.state == ST_IDLE);
+
+>>>>>>> CHANGE (4f632ff63c939ac97d6d5160bd61ae9a63458915 battery: allow status to be neither charging nor discharging)
 	notify_host_of_low_battery_charge();
 	notify_host_of_low_battery_voltage();
 
