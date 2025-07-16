@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "534ba61c_2709bd5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-16T06:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b1fcd1e_d9e3bc66",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "2832072d1fac2fc4dbe096f3ca08171e8561f189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1779138_07c3f8a9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd585f18_58d183b5",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-16T06:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1779138_07c3f8a9",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "2832072d1fac2fc4dbe096f3ca08171e8561f189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7b379fa_9e68f0ce",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-15T22:24:24Z",
       "side": 1,
       "message": "CBI is being disabled here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "2832072d1fac2fc4dbe096f3ca08171e8561f189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5cbf9f_26218fc7",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-16T06:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b379fa_9e68f0ce",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "617977ba_36e69048",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-16T06:28:37Z",
+      "side": 1,
+      "message": "This config is for lid interrupt feature",
+      "parentUuid": "9eb58453_50b93fac",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "2832072d1fac2fc4dbe096f3ca08171e8561f189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b732711_9d520745",
         "filename": "zephyr/program/trulo/kaladin/kaladin.dtsi",
         "patchSetId": 15
@@ -106,6 +202,30 @@
       "writtenOn": "2025-07-15T22:24:24Z",
       "side": 1,
       "message": "missing newline above here",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "2832072d1fac2fc4dbe096f3ca08171e8561f189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcce5b37_6b2ac3e3",
+        "filename": "zephyr/program/trulo/kaladin/kaladin.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-16T06:28:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b732711_9d520745",
       "range": {
         "startLine": 43,
         "startChar": 1,
