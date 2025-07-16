@@ -408,14 +408,23 @@ get_default_fw() {
   # If cros_config returns "", that is okay assuming there is only
   # one firmware file on disk.
 
-  local -a fws
-  mapfile -t fws < <(find /opt/google/biod/fw -maxdepth 1 -name "${board}*.bin")
+  local tmp_file
+  tmp_file="$(mktemp)"
 
-  if [[ "${#fws[@]}" -ne 1 ]]; then
+  find /opt/google/biod/fw -maxdepth 1 -name "${board}*.bin" 2>/dev/null > "${tmp_file}"
+
+  local num_fw_files
+  num_fw_files="$(wc -l < "${tmp_file}")"
+  local fw_file
+  fw_file="$(head -n 1 "${tmp_file}" 2>/dev/null)"
+
+  rm -f "${tmp_file}"
+
+  if [[ "${num_fw_files}" -ne 1 ]]; then
     return 1
   fi
 
-  echo "${fws[0]}"
+  echo "${fw_file}"
 }
 
 # Find processes that have the named file, active or deleted, open.
