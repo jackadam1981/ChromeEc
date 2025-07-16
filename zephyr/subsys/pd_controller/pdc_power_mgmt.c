@@ -885,16 +885,16 @@ static const uint32_t pdo_snk_fixed_flags =
 	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP);
 
 static const uint32_t pdc_snk_pdos[] = {
-	/* Mandatory fixed 5V PDO */
+	/* Mandatory fixed 5V PDO 5V@3A = 0x2601912C */
 	PDO_FIXED(5000,
 		  MIN((CONFIG_PLATFORM_EC_USB_PD_OPERATING_POWER_MW / 5),
 		      CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA),
 		  pdo_snk_fixed_flags),
-	/* Battery PDO covering 5V-5% to the board maximum voltage and current
+	/* Battery PDO covering 5V-5% to the board maximum voltage and current 20V,15W = 0x59017c3c
 	 */
 	PDO_BATT(4750, CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV,
 		 CONFIG_PLATFORM_EC_USB_PD_OPERATING_POWER_MW),
-	/* Variable PDO covering 5V-5% to the board maximum voltage and current
+	/* Variable PDO covering 5V-5% to the board maximum voltage and current 20V,3.25A = 0x99017d45
 	 */
 	PDO_VAR(4750, CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV,
 		CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA),

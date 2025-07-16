@@ -481,7 +481,7 @@ union error_status_t {
 		/** Reserved and shall be set to zero */
 		uint32_t reserved0 : 1;
 
-		/** Vendor Specific Bits follow */
+		/** Vendor Specific Bits follow */ // use for EC, not read from PDC
 
 		/** I2C communication with PDC succeeds, but the data read is
 		 * invalid */
