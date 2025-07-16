@@ -260,7 +260,8 @@ void battery_poll_dynamic_info(void)
 	ac_present = extpower_is_present();
 	is_charging = ac_present && (batt.current >= 0);
 
-	battery_set_dynamic_info(&batt, ac_present, is_charging);
+	battery_set_dynamic_info(&batt, ac_present, is_charging,
+				 charge_get_status()->state == ST_IDLE);
 }
 
 int update_static_battery_info(void)
@@ -352,7 +353,7 @@ int update_static_battery_info(void)
 }
 
 void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
-			      bool is_charging)
+			      bool is_charging, bool sustainer_idle)
 {
 	static int batt_present;
 	uint8_t tmp;
@@ -422,7 +423,19 @@ void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
 	    battery_is_below_threshold(params, BATT_THRESHOLD_TYPE_SHUTDOWN))
 		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
 
-	tmp |= is_charging ? EC_BATT_FLAG_CHARGING : EC_BATT_FLAG_DISCHARGING;
+	if (!is_charging) {
+		// Sustainer is discharging or there is insufficient power to
+		// charge (including when there is no charger connected).
+		tmp |= EC_BATT_FLAG_DISCHARGING;
+	} else if (sustainer_idle) {
+		// Sustainer is holding state, not charging nor discharging.
+	} else if (params->status & STATUS_FULLY_CHARGED) {
+		// Fully charged, not actually charging (despite
+		// batt_is_charging).
+	} else {
+		// Otherwise, is_charging and no special case applies.
+		tmp |= EC_BATT_FLAG_CHARGING;
+	}
 
 	if (battery_is_cut_off())
 		tmp |= EC_BATT_FLAG_CUT_OFF;
