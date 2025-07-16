@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59b2932_b9fc0402",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-07-16T02:16:51Z",
+      "side": 1,
+      "message": "@Yunshao.Chiang@ite.com.tw\nis this correct? according to the cdc spec, the max start bit duration is 4.7 ms.",
+      "revId": "a7b95b8c44f84e94808c76e4ba185bda7f765c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
