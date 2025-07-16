@@ -61,6 +61,21 @@ is_function() {
   type "$1" 2>/dev/null | grep -q 'function'
 }
 
+os() {
+  if [[ -f "/system/build.prop" ]]; then
+    echo "android"
+    return 0
+  fi
+
+  if [[ -f "/etc/lsb-release" ]] && grep -q "CHROMEOS_RELEASE" "/etc/lsb-release" 2>/dev/null; then
+    echo "chromeos"
+    return 0
+  fi
+
+  echo "unknown"
+  return 1
+}
+
 check_hardware_write_protect_disabled() {
   local hardware_write_protect_state
   if ! hardware_write_protect_state="$(crossystem wpsw_cur)"; then
@@ -1371,6 +1386,8 @@ main() {
   # print out canonical path to differentiate between /usr/local/bin and
   # /usr/bin installs
   readlink -f "$0"
+
+  echo "OS: $(os)"
 
   # The "platform name" corresponds to the underlying board (reference design)
   # that we're running on (not the FPMCU or sensor). At the moment all of the
