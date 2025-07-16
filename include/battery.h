@@ -530,9 +530,39 @@ void battery_validate_params(struct batt_params *batt);
 int update_static_battery_info(void);
 
 /**
+<<<<<<< HEAD   (e217c7e7c539c8fb8245d25e1a2d223ec4344af5 TCPMv2: Increase PD_DRP_SW_TOGGLE_LIMIT to maintain tDRP tim)
  * Read dynamic battery info from a main battery and store it in a cache.
+||||||| BASE   (cbd45e97d77d7a73235450db7dbca10394253f8f dts: cbi: Add standard and OEM UFSC schema templates)
+ * @brief Updates the cached dynamic battery information.
+ *
+ * This function uses the battery parameters and system power
+ * status to refresh the dynamic battery information cache.
+ *
+ * @param params Pointer to the struct containing current battery data.
+ * @param ac_present True if AC power is connected, false otherwise.
+ * @param is_charging True if the battery is currently charging.
+=======
+ * @brief Updates the cached dynamic battery information.
+ *
+ * This function uses the battery parameters and system power
+ * status to refresh the dynamic battery information cache.
+ *
+ * @param params Pointer to the struct containing current battery data.
+ * @param ac_present True if AC power is connected, false otherwise.
+ * @param is_charging True if the battery is currently charging.
+ * @param sustainer_idle True if charge state is ST_IDLE, meaning the battery
+ *                       could be charged but is not currently charging.
+>>>>>>> CHANGE (4f632ff63c939ac97d6d5160bd61ae9a63458915 battery: allow status to be neither charging nor discharging)
  */
+<<<<<<< HEAD   (e217c7e7c539c8fb8245d25e1a2d223ec4344af5 TCPMv2: Increase PD_DRP_SW_TOGGLE_LIMIT to maintain tDRP tim)
 void update_dynamic_battery_info(void);
+||||||| BASE   (cbd45e97d77d7a73235450db7dbca10394253f8f dts: cbi: Add standard and OEM UFSC schema templates)
+void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
+			      bool is_charging);
+=======
+void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
+			      bool is_charging, bool sustainer_idle);
+>>>>>>> CHANGE (4f632ff63c939ac97d6d5160bd61ae9a63458915 battery: allow status to be neither charging nor discharging)
 
 #ifdef __cplusplus
 }
