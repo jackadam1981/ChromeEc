@@ -16,6 +16,24 @@
       "message": "try running twister:\n\n```\nmake[1]: Entering directory \u0027/mnt/host/source/src/platform/ec/twister-out-llvm/native_sim_native/llvm/ap_power/ap_power_drv.alderlake/zephyr\u0027\nld.lld: error: undefined symbol: power_signal_external_init\n````",
       "revId": "5e51a450538c8e25a63aef1e21439e515070c405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc81ccf_fa50ce01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-16T17:18:53Z",
+      "side": 1,
+      "message": "Done. Thanks.",
+      "parentUuid": "f195c750_cfec2fea",
+      "revId": "5e51a450538c8e25a63aef1e21439e515070c405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
