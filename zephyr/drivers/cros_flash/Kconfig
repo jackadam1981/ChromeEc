@@ -4,7 +4,7 @@
 
 menuconfig CROS_FLASH_NPCX
 	bool "Nuvoton NPCX flash driver for the Zephyr shim"
-	default y
+	default y if PLATFORM_EC
 	depends on DT_HAS_NUVOTON_NPCX_CROS_FLASH_ENABLED
 	select PLATFORM_EC_FLASH_CROS
 	select PLATFORM_EC_SPI_FLASH_REGS
@@ -25,7 +25,7 @@ config CROS_FLASH_NPCX_ERASE_SIZE
 config CROS_FLASH_IT8XXX2
 	bool "ITE IT81202 flash driver for the Zephyr shim"
 	depends on SOC_FAMILY_ITE_EC
-	default y
+	default y if PLATFORM_EC
 	select PLATFORM_EC_FLASH_CROS
 	help
 	  This option enables the flash driver for the it8xxx2 chip. We can
@@ -34,7 +34,7 @@ config CROS_FLASH_IT8XXX2
 
 config CROS_FLASH_XEC
 	bool "Microchip XEC flash driver for the Zephyr shim"
-	default y
+	default y if PLATFORM_EC
 	depends on DT_HAS_MICROCHIP_XEC_CROS_FLASH_ENABLED
 	select PLATFORM_EC_FLASH_CROS
 	select PLATFORM_EC_SPI_FLASH_REGS
@@ -47,7 +47,7 @@ config CROS_FLASH_XEC
 config CROS_FLASH_RTK
 	bool "REALTEK RTS5915 flash driver for the Zephyr shim"
 	depends on DT_HAS_REALTEK_RTK_CROS_FLASH_ENABLED
-	default y
+	default y if PLATFORM_EC
 	select PLATFORM_EC_FLASH_CROS
 	select PLATFORM_EC_SPI_FLASH_REGS
 	help
