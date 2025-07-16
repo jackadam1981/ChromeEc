@@ -98,25 +98,6 @@ encrypt_data_in_place(uint16_t version,
 }
 
 /**
- * Encrypt the @p EC_KEY with a specific version of encryption method.
- *
- * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
- * seed, rollback secret and user_id.
- *
- * @param[in] key the private
- * @param[in] version the version of the encryption method
- * @param[in] user_id the user_id used for deriving secret
- * @param[in] tpm_seed the seed from the TPM for deriving secret
- *
- * @return @p fp_encrypted_private_key on success
- * @return std::nullopt on error
- */
-std::optional<fp_encrypted_private_key> create_encrypted_private_key(
-	const EC_KEY &key, uint16_t version,
-	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
-
-/**
  * Decrypt the encrypted data.
  *
  * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
@@ -136,24 +117,6 @@ decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
 	     std::span<const uint8_t> enc_data, std::span<uint8_t> data);
-
-/**
- * Decrypt the encrypted private key.
- *
- * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
- * seed, rollback secret and user_id.
- *
- * @param[in] encrypted_private_key encrypted private key
- * @param[in] user_id the user_id used for deriving secret
- * @param[in] tpm_seed the seed from the TPM for deriving secret
- *
- * @return EC_SUCCESS on success
- * @return EC_ERROR_* on error
- */
-bssl::UniquePtr<EC_KEY> decrypt_private_key(
-	const struct fp_encrypted_private_key &encrypted_private_key,
-	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
 
 /**
  * Generate the ECDH shared secret from private key and public key.

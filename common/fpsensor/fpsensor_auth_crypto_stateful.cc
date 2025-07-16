@@ -53,26 +53,6 @@ encrypt_data(uint16_t version, struct fp_auth_command_encryption_metadata &info,
 	return EC_SUCCESS;
 }
 
-std::optional<fp_encrypted_private_key> create_encrypted_private_key(
-	const EC_KEY &key, uint16_t version,
-	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
-{
-	fp_encrypted_private_key enc_key;
-
-	if (EC_KEY_priv2oct(&key, enc_key.data, sizeof(enc_key.data)) !=
-	    sizeof(enc_key.data)) {
-		return std::nullopt;
-	}
-
-	if (encrypt_data_in_place(version, enc_key.info, user_id, tpm_seed,
-				  enc_key.data) != EC_SUCCESS) {
-		return std::nullopt;
-	}
-
-	return enc_key;
-}
-
 enum ec_error_list
 decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
@@ -104,23 +84,4 @@ decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	}
 
 	return EC_SUCCESS;
-}
-
-bssl::UniquePtr<EC_KEY> decrypt_private_key(
-	const struct fp_encrypted_private_key &encrypted_private_key,
-	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
-{
-	CleanseWrapper<std::array<uint8_t, sizeof(encrypted_private_key.data)> >
-		privkey;
-
-	enum ec_error_list ret =
-		decrypt_data(encrypted_private_key.info, user_id, tpm_seed,
-			     encrypted_private_key.data, privkey);
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to decrypt private key");
-		return nullptr;
-	}
-
-	return create_ec_key_from_privkey(privkey.data(), privkey.size());
 }

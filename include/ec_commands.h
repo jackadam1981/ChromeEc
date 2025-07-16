@@ -8642,7 +8642,6 @@ struct fp_encrypted_private_key {
 
 struct ec_response_fp_establish_pairing_key_keygen {
 	struct fp_elliptic_curve_public_key pubkey;
-	struct fp_encrypted_private_key encrypted_private_key;
 } __ec_align4;
 
 #define FP_PAIRING_KEY_LEN 32
@@ -8656,7 +8655,6 @@ struct ec_fp_encrypted_pairing_key {
 
 struct ec_params_fp_establish_pairing_key_wrap {
 	struct fp_elliptic_curve_public_key peers_pubkey;
-	struct fp_encrypted_private_key encrypted_private_key;
 } __ec_align4;
 
 struct ec_response_fp_establish_pairing_key_wrap {
