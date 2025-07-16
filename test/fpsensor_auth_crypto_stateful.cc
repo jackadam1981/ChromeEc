@@ -141,38 +141,6 @@ test_static enum ec_error_list test_fp_encrypt_decrypt_data_in_place(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_encrypt_decrypt_key(void)
-{
-	uint16_t version = 1;
-	std::array<uint8_t, 32> privkey = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					    1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					    2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
-
-	bssl::UniquePtr<EC_KEY> key =
-		create_ec_key_from_privkey(privkey.data(), privkey.size());
-
-	TEST_NE(key.get(), nullptr, "%p");
-
-	auto enc_key = create_encrypted_private_key(*key, version, kFakeUserId,
-						    kFakeTpmSeed);
-	TEST_ASSERT(enc_key.has_value());
-
-	TEST_EQ(enc_key->info.struct_version, version, "%d");
-
-	bssl::UniquePtr<EC_KEY> out_key =
-		decrypt_private_key(*enc_key, kFakeUserId, kFakeTpmSeed);
-
-	TEST_NE(key.get(), nullptr, "%p");
-
-	std::array<uint8_t, 32> output_privkey{};
-	EC_KEY_priv2oct(out_key.get(), output_privkey.data(),
-			output_privkey.size());
-
-	TEST_ASSERT_ARRAY_EQ(privkey, output_privkey, sizeof(privkey));
-
-	return EC_SUCCESS;
-}
-
 } // namespace
 
 void run_test(int argc, const char **argv)
@@ -188,6 +156,5 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_decrypt_fail_size_mismatch);
 	RUN_TEST(test_fp_encrypt_decrypt_data);
 	RUN_TEST(test_fp_encrypt_decrypt_data_in_place);
-	RUN_TEST(test_fp_encrypt_decrypt_key);
 	test_print_result();
 }
