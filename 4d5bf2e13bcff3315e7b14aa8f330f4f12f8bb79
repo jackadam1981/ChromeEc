@@ -46,6 +46,30 @@
       },
       "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f0abc6_3c7a9dc1",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-16T22:52:36Z",
+      "side": 1,
+      "message": "@peress@google.com - do you anticipate the ISH image being common for all Ocelots or will the RVP need its own?",
+      "parentUuid": "485c5de2_ecdfae85",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
