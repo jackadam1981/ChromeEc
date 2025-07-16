@@ -26,6 +26,9 @@
 #include <utility>
 #include <variant>
 
+/* Pointer to the FPMCU's ECDH private key */
+static bssl::UniquePtr<EC_KEY> ecdh_key;
+
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
@@ -60,22 +63,10 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
+	ecdh_key = generate_elliptic_curve_key();
 	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
-
-	std::optional<fp_encrypted_private_key> encrypted_private_key =
-		create_encrypted_private_key(*ecdh_key,
-					     FP_AES_KEY_ENC_METADATA_VERSION,
-					     global_context.user_id,
-					     global_context.tpm_seed);
-	if (!encrypted_private_key.has_value()) {
-		CPRINTS("pairing_keygen: Failed to fill response encrypted private key");
-		return EC_RES_UNAVAILABLE;
-	}
-
-	r->encrypted_private_key = encrypted_private_key.value();
 
 	std::optional<fp_elliptic_curve_public_key> pubkey =
 		create_pubkey_from_ec_key(*ecdh_key);
@@ -102,14 +93,11 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 
 	CleanseWrapper<std::array<uint8_t, FP_PAIRING_KEY_LEN> > new_pairing_key;
 
-	ScopedFastCpu fast_cpu;
-
-	bssl::UniquePtr<EC_KEY> private_key = decrypt_private_key(
-		params->encrypted_private_key, global_context.user_id,
-		global_context.tpm_seed);
-	if (private_key == nullptr) {
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
+
+	ScopedFastCpu fast_cpu;
 
 	bssl::UniquePtr<EC_KEY> public_key =
 		create_ec_key_from_pubkey(params->peers_pubkey);
@@ -118,7 +106,7 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	}
 
 	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*private_key, *public_key, new_pairing_key.data(),
+		*ecdh_key, *public_key, new_pairing_key.data(),
 		new_pairing_key.size());
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
@@ -131,6 +119,9 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
+
+	/* Deallocate the FPMCU's ECDH private key. */
+	ecdh_key = nullptr;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
