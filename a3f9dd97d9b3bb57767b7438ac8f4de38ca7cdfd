@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c58c88ce_0445e818",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T23:07:12Z",
+      "side": 1,
+      "message": "Did part of the commit message get missed here?",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "a3f9dd97d9b3bb57767b7438ac8f4de38ca7cdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "850871a0_ade49e67",
         "filename": "zephyr/program/trulo/ite_program.conf",
         "patchSetId": 11
