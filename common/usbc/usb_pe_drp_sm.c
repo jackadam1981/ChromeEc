@@ -8493,6 +8493,11 @@ __maybe_unused static void pe_src_give_source_info_entry(int port)
 	tx_emsg[port].len = sizeof(*source_info);
 	*source_info = dpm_get_source_info_msg(port);
 
+	union sido2 *source_info = (union sido2 *)tx_emsg[port].buf;
+	
+	tx_emsg[port].len = sizeof(*source_info);
+	*source_info = dpm_get_source_info_msg(port);
+
 	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_SOURCE_INFO);
 }
 

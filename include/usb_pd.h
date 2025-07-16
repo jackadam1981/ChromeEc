@@ -731,7 +731,7 @@ enum pd_source_port_type {
 	PD_SOURCE_PORT_CAPABILITY_GUARANTEED,
 };
 
-/* PD Source_Info Data Object (SIDO) */
+/* PD Source_Info Data Objects (SIDOs) */
 union sido {
 	struct {
 		/* PDP values are the integer portion (floor) of the relevant
@@ -741,6 +741,22 @@ union sido {
 		uint8_t port_present_pdp;
 		uint8_t port_maximum_pdp;
 		unsigned reserved : 7;
+		/* 0 = Managed Capability, 1 = Guaranteed Capability */
+		unsigned port_type : 1;
+	};
+	uint32_t raw;
+};
+
+union sido2 {
+	struct {
+		/* PDP values are rounded to the nearest 0.5W of the relevant
+		 * PDP rating in W.
+		 */
+		uint8_t port_guaranteed_pdp;
+		uint8_t port_maximum_pdp;
+		unsigned reserved : 12;
+		/* 0 = Non DPS port, 1 = DPS port */
+		unsigned dps_port : 1;
 		/* 0 = Managed Capability, 1 = Guaranteed Capability */
 		unsigned port_type : 1;
 	};
