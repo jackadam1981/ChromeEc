@@ -141,6 +141,24 @@
       "parentUuid": "8bbd1b21_baca655c",
       "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c226f5f_ddfe0311",
+        "filename": "zephyr/shim/src/motionsense_driver/drvdata-accelgyro.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-07-16T02:59:43Z",
+      "side": 1,
+      "message": "Remove , in line 82 and add , in line 125-128 can fix the clang and build TCS3400 successfully.",
+      "parentUuid": "69705f66_7b5d408f",
+      "revId": "9e55c37cdcdc5202ae5fac982e1fc79a6ef4864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
