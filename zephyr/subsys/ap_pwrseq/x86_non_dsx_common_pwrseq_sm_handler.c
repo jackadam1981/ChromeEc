@@ -10,6 +10,7 @@
 #include <zephyr/init.h>
 
 #include <atomic.h>
+#include <strings.h>
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 #else
@@ -677,6 +678,27 @@ static void pwr_seq_set_initial_state(void)
 	pwr_sm_set_state(state);
 }
 
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
+static const uint64_t uninitialized_time = -1;
+static uint64_t first_S5_time = uninitialized_time;
+static uint64_t first_S0_time = uninitialized_time;
+#endif
+
+static void on_new_signal_or_state(enum power_states_ndsx curr_state,
+				   uint32_t this_in_signals)
+{
+	LOG_INF("power state %d = %s, in 0x%04x", curr_state,
+		pwr_sm_get_state_name(curr_state), this_in_signals);
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
+	if (curr_state == SYS_POWER_STATE_S5 &&
+	    first_S5_time == uninitialized_time)
+		first_S5_time = get_time().val;
+	if (curr_state == SYS_POWER_STATE_S0 &&
+	    first_S0_time == uninitialized_time)
+		first_S0_time = get_time().val;
+#endif
+}
+
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
 	enum power_states_ndsx curr_state, new_state;
@@ -702,9 +724,7 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 
 		if (this_in_signals != last_in_signals ||
 		    curr_state != last_state) {
-			LOG_INF("power state %d = %s, in 0x%04x", curr_state,
-				pwr_sm_get_state_name(curr_state),
-				this_in_signals);
+			on_new_signal_or_state(curr_state, this_in_signals);
 			last_in_signals = this_in_signals;
 			last_state = curr_state;
 		}
@@ -980,3 +1000,66 @@ static int disable_force_shutdown(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(debug_mode, disable_force_shutdown, "[enable|disable]",
 			"Prevents force shutdown if enabled");
 #endif /* CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND */
+
+#ifndef CONFIG_AP_PWRSEQ_DRIVER
+STATIC_IF_NOT(CONFIG_ZTEST)
+int ap_power_get_boot_time(const char *state_name, uint64_t *output_time)
+{
+	if (strncasecmp(state_name, "S0", sizeof("S0")) == 0) {
+		*output_time = first_S0_time;
+		return 0;
+	} else if (strncasecmp(state_name, "S5", sizeof("S5")) == 0) {
+		*output_time = first_S5_time;
+		return 0;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+}
+
+#ifdef CONFIG_ZTEST
+void ap_power_test_on_new_state(const char *state_name)
+{
+	if (strncasecmp(state_name, "S0", sizeof("S0")) == 0) {
+		on_new_signal_or_state(SYS_POWER_STATE_S0, 0);
+	} else if (strncasecmp(state_name, "S5", sizeof("S5")) == 0) {
+		on_new_signal_or_state(SYS_POWER_STATE_S5, 0);
+	} else {
+		on_new_signal_or_state(SYS_POWER_STATE_G3, 0);
+	}
+}
+
+void ap_power_reset_boot_time()
+{
+	first_S5_time = uninitialized_time;
+	first_S0_time = uninitialized_time;
+}
+#endif
+
+static int command_boot_time(int argc, const char **argv)
+{
+	const char *state_name;
+	uint64_t display_time;
+	int rv;
+
+	if (argc != 2) {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	state_name = argv[1];
+
+	rv = ap_power_get_boot_time(state_name, &display_time);
+	if (rv != 0) {
+		return rv;
+	}
+
+	if (display_time == uninitialized_time) {
+		ccprints("first %s: -1ms", state_name);
+	} else {
+		ccprints("first %s: %llums", state_name,
+			 display_time / USEC_PER_MSEC);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boottime, command_boot_time, "<S0|S5>",
+			"Expose boot time for firmware.BootTime.");
+#endif /* CONFIG_AP_PWRSEQ_DRIVER */
