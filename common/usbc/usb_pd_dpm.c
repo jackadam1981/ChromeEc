@@ -1145,6 +1145,7 @@ union sido dpm_get_source_info_msg(int port)
 	 */
 
 	union sido source_info; /* LCOV_EXCL_LINE: b/375430524 */
+	// union sido2 source_info2;
 	const uint32_t *pdos; /* LCOV_EXCL_LINE: b/375430524 */
 	int pdo_count = dpm_get_source_pdo(&pdos, port);
 

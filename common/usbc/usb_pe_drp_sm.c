@@ -8489,9 +8489,11 @@ static void pe_snk_epr_mode_exit_received_entry(int port)
 __maybe_unused static void pe_src_give_source_info_entry(int port)
 {
 	union sido *source_info = (union sido *)tx_emsg[port].buf;
+	// union sido2 *source_info2 = (union sido2 *)tx_emsg[port].buf;
 
-	tx_emsg[port].len = sizeof(*source_info);
+	tx_emsg[port].len = sizeof(*source_info);// + sizeof(*source_info2);
 	*source_info = dpm_get_source_info_msg(port);
+	// *source_info2 = dpm_get_source_info_msg(port);
 
 	send_data_msg(port, TCPCI_MSG_SOP, PD_DATA_SOURCE_INFO);
 }
