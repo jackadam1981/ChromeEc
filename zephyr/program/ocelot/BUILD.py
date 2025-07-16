@@ -105,6 +105,17 @@ register_mec172x_project(
     ],
 )
 
+register_ish_project(
+    project_name="ocelotrvp-ish",
+    zephyr_board="intel_ish_5_8_0",
+    dts_overlays=[
+        here / "ocelot-ish" / "ocelotrvp-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "ocelot-ish" / "prj.conf",
+        here / "ocelot-ish" / "motionsense.conf",
+    ],
+)
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
