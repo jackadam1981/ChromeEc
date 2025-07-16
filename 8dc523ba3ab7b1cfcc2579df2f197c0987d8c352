@@ -80,6 +80,24 @@
       "message": "I think this CL should be added after \"Enable AP host interface\" and \"add AP power sequencing support\" and then the Kconfig warnings will not be present.",
       "revId": "8dc523ba3ab7b1cfcc2579df2f197c0987d8c352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875e4cf5_cf4b2517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-16T09:12:15Z",
+      "side": 1,
+      "message": "Hi Leo,\n\nPlease rebase this as requested above.",
+      "parentUuid": "37d9a0cb_b66e27d5",
+      "revId": "8dc523ba3ab7b1cfcc2579df2f197c0987d8c352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
