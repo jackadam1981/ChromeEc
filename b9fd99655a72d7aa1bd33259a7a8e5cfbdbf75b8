@@ -166,6 +166,30 @@
       },
       "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73800f63_b228ba05",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-16T21:39:49Z",
+      "side": 1,
+      "message": "`PWR_SYS_RST` will not trigger anything if system is already on S0, but while on S0ix it will de-assert SLP_S0 signal, this triggers ISR to and post power sequence event to run one iteration that will be caught by `x86_non_dsx_mtl_s0ix_run`. This iteration will give a chance to read `PWR_SYS_RST`.\n\nI would not be too worried about timing, I did some experiments and SLP_S0 gets de-asserted 20 ms after asserting `PWR_SYS_RST`.",
+      "parentUuid": "d29e3008_89e7be91",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
