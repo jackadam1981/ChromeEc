@@ -210,6 +210,8 @@ DEFINE_string token_db "${EC_DIR}/build/tokens.bin" \
 # shellcheck disable=SC2034 # Remove someday when autorepair doesn't use it.
 DEFINE_boolean use_i2c_pseudo "${FLAGS_FALSE}" \
 	"Ignored."
+DEFINE_boolean usbc_charging "${FLAGS_FALSE}" \
+	"For servo_v4p1, switch to USB-C (non-PD) charging during programming."
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -458,6 +460,7 @@ case "${CHIP}" in
 		"npcx_spi"|"npcx_int_spi"|"npcx_uut"| \
 		"it83xx"|"ite_i2c"|"ite_spi"|"ite_spi_ccd_i2c"| \
 		"ite_spi_ccd_uart"|"ite_uart"|"ite_uart_3m"|"it8xxx2"| \
+		"ite_i2c_usbc_charging"| \
 		"mchp_int_spi"| \
 		"rtk_uart")
 		;;
@@ -1510,6 +1513,13 @@ function ite_dfu_mode() {
 #                  chip into debugger/programming mode. This is supported
 #                  by all I2C devices (it83xx and it8xxx2).
 #
+# ite_i2c_usbc_charging
+#                  ITE programming over an I2C bus. Prior to enabling
+#                  the ITE debugger mode, the servo_v4p1 is switched
+#                  to USB-C (non-PD) charging. Use this mode for boards
+#                  without a battery and that use the built in TCPC
+#                  of the ITE chip.
+#
 # ite_spi          ITE programming directly over a SPI interface. Utilizes
 #                  flashrom for the actual programming.
 #
@@ -1584,6 +1594,26 @@ function flash_it83xx() {
 		servo_ec_hard_reset_or_die
 	fi
 
+	if [[ "${SERVO_TYPE}" =~ "servo_v4" && \
+	      "${FLAGS_usbc_charging}" == "${FLAGS_TRUE}" ]]; then
+	      	# Put the EC into reset so we know the AP is off.
+		# This prevents a brown-out when we switch to non-PD
+		# charging.
+		dut_control cold_reset:on
+
+		info "Disable CCD watchdog"
+		dut_control watchdog_remove:"${ACTIVE_DEVICE}"
+		info "Switching servo_v4 to USB-C (non-PD) charging"
+		dut_control usbc_charging:1A5
+		sleep 2
+
+		info "Disconnect/reconnect CC lines to reconnect CCD"
+		dut_control servo_v4p1_uart_cmd:"cc off"
+		dut_control servo_v4p1_uart_cmd:"cc on"
+
+		dut_control cold_reset:off
+	fi
+
 	ite_dfu_mode
 
 	# Build the iteflash command line.
@@ -1638,6 +1668,16 @@ function flash_it83xx() {
 	fi
 
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
+
+	if [[ "${SERVO_TYPE}" =~ "servo_v4" && \
+	      "${FLAGS_usbc_charging}" == "${FLAGS_TRUE}" ]]; then
+		info "Restoring servo_v4 to PD charging"
+		dut_control servo_pd_role:src
+
+		info "Disconnect/reconnect CC lines to reconnect CCD"
+		dut_control servo_v4p1_uart_cmd:"cc off"
+		dut_control servo_v4p1_uart_cmd:"cc on"
+	fi
 }
 
 #
@@ -1735,6 +1775,12 @@ function flash_ite_uart_3m() {
 # Alias for flashing ITE chips over I2C from all servo types.
 function flash_ite_i2c() {
         flash_it83xx
+}
+
+# Flash ITE over I2C, but force servo to switch to USB-C (non-pd) charging.
+function flash_ite_i2c_usbc_charging() {
+	FLAGS_usbc_charging="${FLAGS_TRUE}"
+	flash_it83xx
 }
 
 # Alias for flashing ITE chips over SPI from all servo types.
