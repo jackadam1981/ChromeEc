@@ -18,33 +18,104 @@
 		entering-rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
+		/* pdc port 0 & 1, i2c alert pin, two port use different gpio_int pin, so we can know INT is triggered by which port */
+		gpio_ec_i2c_pdc0_sm_int_odl: ec_i2c_pdc0_sm_int_odl {
+			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		gpio_ec_i2c_pdc1_sm_int_odl: ec_i2c_pdc1_sm_int_odl {
+			gpios = <&gpiof 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
 	};
 
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
+		/*
 		smbus1 {
 			i2c-port = <&i2c1>;
 			enum-names = "I2C_1";
 		};
+		*/
+
+		i2c_ec_i2c_pdc_sm_scl_3v3: ec_i2c_pdc_sm_scl_3v3 {
+			i2c-port = <&i2c1>;
+			enum-names = "I2C_PORT_PDC_SM";
+		};
+	};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		cros_policy: usbc-policy {
+			compatible = "usbc-port-policy";
+			unattached_rp_value = "TC_CURRENT_1_5A";
+			unattached_cc_mode = "CCOM_RD";
+			unattached_try = "DRP_TRY_SRC";
+			/* phandle = < 0xa8 >; */
+		};
+
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger_bq25720>; /* it82002_evb doesn't have charger => try empty charger functions */
+			pdc = <&pdc_power_p0>;
+			policy = <&cros_policy>;
+		};
+
+		usbc_port1: port1@1 {
+			compatible = "named-usbc-port";
+			reg = <1>;
+			pdc = <&pdc_power_p1>;
+			policy = <&cros_policy>;
+		};
+
+		ppm-driver {
+			compatible = "ucsi-ppm";
+		};
 	};
 
 };
-
+/* it82002_evb doesn't have charger => try empty charger functions */
+&i2c0 {
+	charger_bq25720: bq25720@9 {
+		compatible = "ti,bq25710";
+		status = "okay";
+		reg = <0x9>;
+	};
+};
 &i2c1 {
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_STANDARD>;
 	pinctrl-0 = <&i2c1_clk_gpc1_default
 		     &i2c1_data_gpc2_default>;
 	pinctrl-names = "default";
-	label = "I2C_1";
+	/* label = "I2C_1"; */
 
-	rts545x@67 {
-		compatible = "realtek,rts545x";
-		reg = <0x67>;
+	pdc_power_p0: it52xx-pdc@66 {
+		compatible = "ite,it52xx-pdc";
+		reg = < 0x66 >;
+		irq-gpios = < &gpiof 0x5 GPIO_ACTIVE_LOW>;
+		/* phandle = < 0xa7 >; */
+		/* ccd; */
 	};
-	rts545x@68 {
-		compatible = "realtek,rts545x";
-		reg = <0x68>;
+	pdc_power_p1: it52xx-pdc@67 {
+		compatible = "ite,it52xx-pdc";
+		reg = < 0x67 >;
+		irq-gpios = < &gpiof 0x6 GPIO_ACTIVE_LOW>;
+		no-fw-update;
+		/* phandle = < 0xa9 >; */
 	};
+};
+
+/* These GPIOS are initialized by the PDC driver */
+/*
+&gpio_usb_pd_int_odl {
+	no-auto-init;
+};
+*/
+&pdc_power_p0 {
+	zephyr,deferred-init;
+};
+&pdc_power_p1 {
+	zephyr,deferred-init;
 };

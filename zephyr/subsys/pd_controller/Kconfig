@@ -6,6 +6,7 @@ if PLATFORM_EC_USBC
 
 rsource "Kconfig.usbc_altmode"
 
+#it82002 evb doesn't have charger
 menuconfig USB_PDC_POWER_MGMT
 	bool "Configure USB-C PD Controller"
 	depends on PLATFORM_EC_USB_PD_CONTROLLER
