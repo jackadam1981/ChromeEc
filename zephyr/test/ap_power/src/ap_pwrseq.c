@@ -175,7 +175,6 @@ static void verify_ap_inputs(bool in_s0)
 	}
 }
 
-#ifdef CONFIG_AP_PWRSEQ_DRIVER
 /**
  * Test boottime ec console command pre main
  */
@@ -224,7 +223,6 @@ ZTEST(ap_pwrseq_pre_main, test_boot_time_set)
 	zassert_equal(time_S5, USEC_PER_SEC, "time_S5=%llu", time_S5);
 	zassert_equal(time_S0, 2 * USEC_PER_SEC, "time_S0=%llu", time_S0);
 }
-#endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 ZTEST(ap_pwrseq, test_ap_pwrseq_0)
 {
@@ -532,7 +530,6 @@ ZTEST(ap_pwrseq, test_insufficient_power_blocks_s5)
 		chipset_in_or_transitioning_to_state(CHIPSET_STATE_HARD_OFF));
 }
 
-#ifdef CONFIG_AP_PWRSEQ_DRIVER
 /**
  * Test boottime ec console command - this assumes the test is run after the
  * test_ap_pwrseq_0.
@@ -557,7 +554,6 @@ ZTEST_USER(ap_pwrseq, test_boot_time_console_cmd)
 	zassert_not_equal(time_S0, -1);
 	zassert_true(time_S5 <= time_S0);
 }
-#endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 void ap_pwrseq_after_test(void *data)
 {
@@ -596,9 +592,7 @@ static void *ap_pwrseq_pre_main_setup()
 static void ap_pwrseq_pre_main_teardown(void *state)
 {
 	get_time_mock = NULL;
-	if (IS_ENABLED(CONFIG_AP_PWRSEQ_DRIVER)) {
-		ap_power_reset_boot_time();
-	}
+	ap_power_reset_boot_time();
 }
 
 ZTEST_SUITE(ap_pwrseq_pre_main, ap_power_predicate_pre_main,
