@@ -16,6 +16,24 @@
       "message": "@Yunshao.Chiang@ite.com.tw\nhave you ever tried canceling the alarm counter before setting it?",
       "revId": "a49820ad22b4985ed29a00fe3fe7a7d08c4c4625",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c613b31_7e3ca0d7",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3761692
+      },
+      "writtenOn": "2025-07-16T06:52:03Z",
+      "side": 1,
+      "message": "I haven\u0027t tried it before.\n\nI just tried your patch, but it still results in \u0027CEC1 address set to: 255\u0027.\n\nIf we want to find out the reason, I\u0027m not sure whether we need to look into the `chromiumos/src/platform/ec/common/cec.c` file.",
+      "parentUuid": "b42e1cd6_aeebc90f",
+      "revId": "a49820ad22b4985ed29a00fe3fe7a7d08c4c4625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
