@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd07d7e5_5cf23842",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T18:15:13Z",
+      "side": 1,
+      "message": "At this stage of the project, it\u0027s preferable to run `zamke build kaladin --clobber\u0027 to ensure that there are no Kconfig related issues. Specifically if a Confg option is being set to \u0027y\u0027 but gets set to \u0027n\u0027\n\nThe build with this CL has warnings related to the lid switch and the i2c bus feature that is related to ISH to EC communication.\n\nwarning: PLATFORM_EC_TABLET_MODE_SWITCH (defined at\n/mnt/host/source/src/platform/ec/zephyr/Kconfig.tabletmode:15) was assigned the value \u0027y\u0027 but got\nthe value \u0027n\u0027. Check these unsatisfied dependencies: PLATFORM_EC_MKBP_INPUT_DEVICES (\u003dn).",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef79a2c_dc33509a",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T18:15:13Z",
+      "side": 1,
+      "message": "Should have a newline space before this comment for readability",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61e31ef_5f0ace36",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T18:15:13Z",
+      "side": 1,
+      "message": "This config is required for ISH support, but not required for tokenized logging",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddda5052_b51d8661",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T18:15:13Z",
+      "side": 1,
+      "message": "These configs are required for ISH based sensors, but not required for tokenized logging",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf8a38a_3e16a237",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-16T18:15:13Z",
+      "side": 1,
+      "message": "These 2 configs are related to tablet mode and the part of sensors that are detected by the EC even when sensors are being handled in the ISH. But, these are not required for tokenized logging.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
