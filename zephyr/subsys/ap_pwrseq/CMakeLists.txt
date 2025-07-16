@@ -6,6 +6,7 @@ zephyr_library_sources_ifdef(CONFIG_AP_EVENTS ap_events.c)
 
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ
 	ap_power_interface.c
+	command_boot_time.c
 	)
 
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_POWER_SIGNALS power_signals.c)
@@ -17,7 +18,6 @@ if (NOT DEFINED CONFIG_EMUL_AP_PWRSEQ_DRIVER)
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER ap_pwrseq.c)
 endif()
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER ap_pwrseq_sm.c)
-zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER command_boot_time.c)
 
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_HOST_SLEEP power_host_sleep.c)
 
