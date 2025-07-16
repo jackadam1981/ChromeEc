@@ -89,12 +89,10 @@
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr_sys_rst: pwr-sys-rst-l {
-                /* TODO: convert this to "intel,ap-pwrseq-gpio" after the
-                 * required I/O expander support is added to ocelot-mchp.
-                 */
-		compatible = "intel,ap-pwrseq-external";
+		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SYS_RESET# output to PCH";
 		enum-name = "PWR_SYS_RST";
+		output;
 	};
 	ap-power {
 		compatible = "ap-pwrseq-sub-states";

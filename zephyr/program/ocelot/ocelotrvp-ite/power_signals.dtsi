@@ -31,8 +31,6 @@
 	gpios = <&gpiod 5 GPIO_ACTIVE_HIGH>;
 };
 &pwr_sys_rst {
-        compatible = "intel,ap-pwrseq-gpio";
         gpios = <&gpioj 7 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
-        output;
 };
 
