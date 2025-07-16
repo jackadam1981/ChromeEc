@@ -1,0 +1,21 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	aliases {
+		/* Defined alias for all ish i2c buses */
+		i2c-0 = &i2c0;
+		i2c-1 = &i2c1;
+		i2c-2 = &i2c2;
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+		i2c_ish_sensor: ish_sensor {
+			/* Define i2c-port in project overlay */
+			enum-names = "I2C_PORT_SENSOR";
+		};
+	};
+};
