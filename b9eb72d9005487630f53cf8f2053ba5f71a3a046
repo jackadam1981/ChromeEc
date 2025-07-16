@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a226688_87cf6335",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-16T22:54:40Z",
+      "side": 1,
+      "message": "this is never true. you could compare `local_wdt` against 0xff\nif you know that\u0027ll never be a valid reg value.",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 13
+      },
+      "revId": "b9eb72d9005487630f53cf8f2053ba5f71a3a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e879650_0e09d904",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-16T22:54:40Z",
+      "side": 1,
+      "message": "`ret` is not used. maybe check return value of `wr_reg`?",
+      "range": {
+        "startLine": 436,
+        "startChar": 5,
+        "endLine": 436,
+        "endChar": 8
+      },
+      "revId": "b9eb72d9005487630f53cf8f2053ba5f71a3a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710726f4_aa64dae5",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-16T22:54:40Z",
+      "side": 1,
+      "message": "not used.",
+      "range": {
+        "startLine": 445,
+        "startChar": 5,
+        "endLine": 445,
+        "endChar": 8
+      },
+      "revId": "b9eb72d9005487630f53cf8f2053ba5f71a3a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efaa8e03_1d0195a2",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-16T22:54:40Z",
+      "side": 1,
+      "message": "no cast needed, already of this type.",
+      "range": {
+        "startLine": 480,
+        "startChar": 27,
+        "endLine": 480,
+        "endChar": 38
+      },
+      "revId": "b9eb72d9005487630f53cf8f2053ba5f71a3a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed142d47_027b887e",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-16T22:54:40Z",
+      "side": 1,
+      "message": "`restart_wdt` uses `instruction_set_v2` which isn\u0027t set\nuntil `getchipid` is called.\ndoes `STEPS_NORMAL` always run before `STEPS_TEST`?\n\nactually, i don\u0027t see `g_steps` ever set to `STEPS_TEST`.\nam i missing something?",
+      "range": {
+        "startLine": 1155,
+        "startChar": 3,
+        "endLine": 1155,
+        "endChar": 14
+      },
+      "revId": "b9eb72d9005487630f53cf8f2053ba5f71a3a046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
