@@ -16,6 +16,24 @@
       "message": "@Yunshao.Chiang@ite.com.tw\nis this correct? according to the cdc spec, the max start bit duration is 4.7 ms.",
       "revId": "a7b95b8c44f84e94808c76e4ba185bda7f765c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "333ae0cb_96b3ff9c",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3761692
+      },
+      "writtenOn": "2025-07-16T02:35:08Z",
+      "side": 1,
+      "message": "I noticed this earlier, but since the Start bit timing hasn’t caused problems, I ignored the extra 1000 µs for now.\n\nIt remains unclear why Google chose to add an additional 1000 µs.",
+      "parentUuid": "d59b2932_b9fc0402",
+      "revId": "a7b95b8c44f84e94808c76e4ba185bda7f765c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
