@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b251c92_ca156136",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-16T18:25:36Z",
+      "side": 1,
+      "message": "Hi Abe, I have added pd_dpm_request() in tcpc_mock.c file to pass usb_typec_drp_acc_trysrc and usb_prl. However now usb_pe_drp_old failed due to duplicate definition in fake_usbc.c and usbc/usb_pe_drp_sm.c files.",
+      "revId": "7a982c0c12dd528867de3dfbbd549337257f39b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
