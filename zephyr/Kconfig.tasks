@@ -15,6 +15,21 @@ config TASKS_SET_TEST_RUNNER_TID_RULE
 	  new thread created by ztest to access some of the components in the
 	  EC.
 
+config HAS_TASK_PCHG
+	bool "Enable PCHG task"
+	help
+	  Enable support for the Peripheral Charger (PCHG) task.
+
+if HAS_TASK_PCHG
+
+config TASK_PCHG_STACK_SIZE
+	int "PCHG task stack size"
+	default 1024
+	help
+	  The stack size of the PCHG task.
+
+endif # HAS_TASK_PCHG
+
 config HAS_TASK_CHARGER
 	bool
 	depends on PLATFORM_EC_BATTERY
