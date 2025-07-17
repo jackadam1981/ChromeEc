@@ -34,6 +34,24 @@
       "parentUuid": "8b251c92_ca156136",
       "revId": "7a982c0c12dd528867de3dfbbd549337257f39b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f29869_9b1ad3f2",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-17T20:28:48Z",
+      "side": 1,
+      "message": "I think the `__overridable` in this case is probably covering up an inconsistent build organization, and there\u0027s probably a better way to go about this. Note that none of the other functions in `tcpc_mock.c` seem to need `__overridable`. My first guess would be that this might work better with this function defined in the DPM mock as mentioned elsewhere. If that produces a similar linker error to what you\u0027re seeing now, can you paste the error here or otherwise send it to me, and I\u0027ll try to figure out what it\u0027s doing?",
+      "parentUuid": "af9362d1_d86907f7",
+      "revId": "7a982c0c12dd528867de3dfbbd549337257f39b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

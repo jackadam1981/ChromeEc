@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e36c3379_b222e52a",
+        "filename": "common/mock/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-17T20:28:48Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s the correct location. DPM requests aren\u0027t very related to the TCPC. I think the right thing to do is probably to put it in `usb_pd_dpm_mock.c` and add `USB_PD_DPM` to the mock list.",
+      "parentUuid": "d8431f91_22b98d0b",
+      "revId": "2e889dac8ddd1ae35293b0aff6553d2c33b2f9bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a09a072f_e1f13b20",
         "filename": "include/mock/usb_typec_drp_acc_trysrc_mock.h",
         "patchSetId": 10
