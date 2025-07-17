@@ -93,6 +93,9 @@ __soc_ram_code void cec_gpio_handler(const struct device *device,
 		return;
 	}
 
+	// ITE Debug - stop top counter if in_gpio is asserted
+	counter_stop(cec_counter_dev);
+
 	cec_event_cap(port);
 }
 
