@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57c4c55f_f3f006fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-17T23:05:35Z",
+      "side": 1,
+      "message": "Working on unit tests now, I\u0027ll followup with a patchset adding them before submitting this.",
+      "parentUuid": "63e96f8f_34a331a3",
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a40cf4b_fba811ec",
         "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2025-07-10T17:18:21Z",
       "side": 1,
       "message": "`pd_dpm_add_pd_source` already checks for `3A_PORTS \u003d\u003d 0`, so I don\u0027t think it\u0027s possible for FRS to be enabled at this point.\n\nIt would be an error if the port\u0027s `source_frs_max_requested` bit is set.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 0
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "508c5fc3_c5fa9154",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-17T23:05:35Z",
+      "side": 1,
+      "message": "That\u0027s correct, removed these redundancies.",
+      "parentUuid": "8a40cf4b_fba811ec",
       "range": {
         "startLine": 245,
         "startChar": 0,
@@ -54,6 +96,30 @@
       "writtenOn": "2025-07-10T17:18:21Z",
       "side": 1,
       "message": "If 3A_PORTS \u003d\u003d 0, then we won\u0027t enable FRS until after evaluating the source caps, even if the FRS partner only wants 1.5A.\n\nThis is the safer thing to do, but it could lead to the same PD compliance failure on a board that doesn\u0027t support sourcing 3A.\n\nThis quirk warrants a comment.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 45
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1087a2d_6975b596",
+        "filename": "zephyr/subsys/pd_controller/pdc_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-17T23:05:35Z",
+      "side": 1,
+      "message": "Added comment that it can take longer to enable FRS on platforms which can\u0027t source 3A.",
+      "parentUuid": "c0a7db8f_bd6df2ab",
       "range": {
         "startLine": 264,
         "startChar": 0,
@@ -125,6 +191,30 @@
       "side": 1,
       "message": "We should check with RTK.  If they have a similar check, we might be able to unconditionally enable FRS and use our Src Caps to ensure we don\u0027t oversubscribe our sourcing power.",
       "parentUuid": "92387f8a_93dc512a",
+      "range": {
+        "startLine": 2395,
+        "startChar": 3,
+        "endLine": 2395,
+        "endChar": 24
+      },
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0faaa4c0_3e1074de",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2395,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-17T23:05:35Z",
+      "side": 1,
+      "message": "I\u0027ve update this CL to send SET_FRS a few states after requesting 3A. This is in the same place as the current `SNK_ATTACHED_DISABLE_FRS` state.\n\nThe PDC power manager will only add the PD Src to the DPM if FRS is enabled, but will send `CMD_PDC_SET_FRS` regardless. If the DPM hasn\u0027t updated FRS, the PDC power manager defaults to false.\n\n\n\n* What happens if FRS is enabled and the partner wants 15W, but the source PDO is only 7.5W?\n\nBack to this question, it depends on the PDC. RTK says that the PDC will FR Swap anyway (b/431851876). TI\u0027s datasheet states that the PDC will not FRS, but that isn\u0027t the behavior I am seeing. I tried adding a state SNK_ATTACHED_SET_FRS to update SRC Caps, and that broke the compliance test.\n\nWith this version of the update, just updating FRS without sending a Src Cap update until SNK policies, the FRS compliance tests consistently pass.",
+      "parentUuid": "a7e48742_38eef0b8",
       "range": {
         "startLine": 2395,
         "startChar": 3,
