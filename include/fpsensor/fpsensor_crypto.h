@@ -11,6 +11,7 @@
 #include "common.h"
 #include "crypto/cleanse_wrapper.h"
 #include "ec_commands.h"
+#include "openssl/sha.h"
 
 #include <cstdint>
 #include <span>
@@ -23,18 +24,34 @@ BUILD_ASSERT(sizeof(FpEncryptionKey) == 16, "Encryption key must be 128 bits.");
 BUILD_ASSERT(sizeof(FpEncryptionKey) <= CONFIG_ROLLBACK_SECRET_SIZE);
 
 /**
+ * Computes HMAC-SHA256
+ *
+ * Calculate HMAC-SHA256 from data that are not continous.
+ *
+ * @param[in] key the key to use in HMAC
+ * @param[in] inputs the span of inputs that will be hashed
+ * @param[out] output HMAC output
+ * @return EC_SUCCESS on success and error code otherwise.
+ */
+enum ec_error_list
+hmac_sha256(std::span<const uint8_t> key,
+	    std::span<const std::span<const uint8_t> > inputs,
+	    std::span<uint8_t, SHA256_DIGEST_LENGTH> output);
+
+/**
  * Computes HKDF (as specified by RFC 5869) using SHA-256 as the digest.
  *
  * @param[out] out_key buffer to hold output key material. Max size must be less
  * than or equal to 255 * 32 (SHA256_DIGEST_SIZE) bytes = 8160 bytes.
- * @param[in] ikm input keying material.
+ * @param[in] ikms input keying material.
  * @param[in] salt optional salt value (a non-secret random value).
  * @param[in] info optional context and application specific information (can be
  * a zero-length string).
  * @return true on success
  * @return false on failure
  */
-bool hkdf_sha256(std::span<uint8_t> out_key, std::span<const uint8_t> ikm,
+bool hkdf_sha256(std::span<uint8_t> out_key,
+		 std::span<const std::span<const uint8_t> > ikms,
 		 std::span<const uint8_t> salt, std::span<const uint8_t> info);
 
 /**

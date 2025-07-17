@@ -9,7 +9,9 @@
 #include "openssl/aead.h"
 #include "openssl/evp.h"
 #include "openssl/hkdf.h"
+#include "openssl/hmac.h"
 #include "openssl/mem.h"
+#include "openssl/sha.h"
 #include "otp_key.h"
 #include "rollback.h"
 #include "sha256.h"
@@ -34,6 +36,44 @@ BUILD_ASSERT(IKM_SIZE_BYTES == 64);
 #if !defined(CONFIG_BORINGSSL_CRYPTO) || !defined(CONFIG_ROLLBACK_SECRET_SIZE)
 #error "fpsensor requires CONFIG_BORINGSSL_CRYPTO and ROLLBACK_SECRET_SIZE"
 #endif
+
+enum ec_error_list
+hmac_sha256(std::span<const uint8_t> key,
+	    std::span<const std::span<const uint8_t> > inputs,
+	    std::span<uint8_t, SHA256_DIGEST_LENGTH> output)
+{
+	bssl::ScopedHMAC_CTX ctx;
+
+	if (!HMAC_Init_ex(ctx.get(), key.data(), key.size(), EVP_sha256(),
+			  nullptr)) {
+		return EC_ERROR_INVAL;
+	}
+
+	for (const auto &input : inputs) {
+		if (!HMAC_Update(ctx.get(), input.data(), input.size())) {
+			return EC_ERROR_INVAL;
+		}
+	}
+
+	if (!HMAC_Final(ctx.get(), output.data(), nullptr)) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list
+hkdf_sha256_extract(std::span<uint8_t, SHA256_DIGEST_LENGTH> prk,
+		    std::span<const std::span<const uint8_t> > ikms,
+		    std::span<const uint8_t> salt)
+{
+	/*
+	 * As specified by RFC5869, the extract step of HKDF is HMAC of IKM
+	 * (Input Key Material) with salt used as the key. The output of HMAC
+	 * is PRK (Pseudo Random Key).
+	 */
+	return hmac_sha256(salt, ikms, prk);
+}
 
 test_export_static enum ec_error_list
 get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
@@ -90,21 +130,27 @@ get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
 	return EC_SUCCESS;
 }
 
-bool hkdf_sha256_impl(std::span<uint8_t> out_key, std::span<const uint8_t> ikm,
+bool hkdf_sha256_impl(std::span<uint8_t> out_key,
+		      std::span<const std::span<const uint8_t> > ikms,
 		      std::span<const uint8_t> salt,
 		      std::span<const uint8_t> info)
 {
-	return HKDF(out_key.data(), out_key.size(), EVP_sha256(), ikm.data(),
-		    ikm.size(), salt.data(), salt.size(), info.data(),
-		    info.size());
+	CleanseWrapper<std::array<uint8_t, SHA256_DIGEST_LENGTH> > prk;
+
+	if (hkdf_sha256_extract(prk, ikms, salt) != EC_SUCCESS) {
+		return false;
+	}
+
+	return HKDF_expand(out_key.data(), out_key.size(), EVP_sha256(),
+			   prk.data(), prk.size(), info.data(), info.size());
 }
 
 test_mockable bool hkdf_sha256(std::span<uint8_t> out_key,
-			       std::span<const uint8_t> ikm,
+			       std::span<const std::span<const uint8_t> > ikms,
 			       std::span<const uint8_t> salt,
 			       std::span<const uint8_t> info)
 {
-	return hkdf_sha256_impl(out_key, ikm, salt, info);
+	return hkdf_sha256_impl(out_key, ikms, salt, info);
 }
 
 enum ec_error_list derive_positive_match_secret(
@@ -134,7 +180,22 @@ enum ec_error_list derive_positive_match_secret(
 	memcpy(info + strlen(info_prefix), user_id.data(),
 	       user_id.size_bytes());
 
-	if (!hkdf_sha256(output, ikm, input_positive_match_salt, info)) {
+	/*
+	 * The IKM consists of rollback entropy, TPM Seed and
+	 * optional OTP key.
+	 *
+	 * By default, the compiler deduces static extent from built-in arrays
+	 * and std::array, but in the ikms array we can only keep spans with
+	 * dynamic extent. Prevent compiler from deducing static extent by
+	 * providing template arguments (std::dynamic_extent is the default
+	 * value for 'Extent' parameter, so we don't need to specify it
+	 * explicitly). See C++ std::span deduction guide for more details.
+	 */
+	std::array ikms{
+		std::span<const uint8_t>{ ikm },
+	};
+
+	if (!hkdf_sha256(output, ikms, input_positive_match_salt, info)) {
 		CPRINTS("Failed to perform HKDF");
 		return EC_ERROR_UNKNOWN;
 	}
@@ -166,7 +227,22 @@ derive_encryption_key(std::span<uint8_t> out_key, std::span<const uint8_t> salt,
 		return ret;
 	}
 
-	if (!hkdf_sha256(out_key, ikm, salt, info)) {
+	/*
+	 * The IKM consists of rollback entropy, TPM Seed and
+	 * optional OTP key.
+	 *
+	 * By default, the compiler deduces static extent from built-in arrays
+	 * and std::array, but in the ikms array we can only keep spans with
+	 * dynamic extent. Prevent compiler from deducing static extent by
+	 * providing template arguments (std::dynamic_extent is the default
+	 * value for 'Extent' parameter, so we don't need to specify it
+	 * explicitly). See C++ std::span deduction guide for more details.
+	 */
+	std::array ikms{
+		std::span<const uint8_t>{ ikm },
+	};
+
+	if (!hkdf_sha256(out_key, ikms, salt, info)) {
 		CPRINTS("Failed to perform HKDF");
 		return EC_ERROR_UNKNOWN;
 	}
