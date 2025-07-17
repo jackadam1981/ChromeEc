@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc7c380_526e4abb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-17T22:39:23Z",
+      "side": 1,
+      "message": "This will only do an EC build, but you\u0027re changing Zephyr files. If you want to do the equivalent for Zephyr you  need to use `zmake compare-builds`",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "67dc3260b04b9e6b08574474fef364b43a97d99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
