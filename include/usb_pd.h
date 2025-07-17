@@ -372,6 +372,13 @@ enum pdo_augmented_pps {
 /* Power in mW at which we will automatically charge from a DRP partner */
 #define PD_DRP_CHARGE_POWER_MIN 27000
 
+/* SIDO pdp 0.5W steps to 1W steps ( USB PD Dynamic Power Sources (DPS) ECN
+ * Table 6-53) */
+#define PD_SIDO2_15W 30
+#define PD_SIDO2_7_5W 15
+#define PD_PDP_SIDO2_TO_SIDO1(pdp) (pdp) >> 1
+#define SOURCE_INFO_MAX_OBJECTS 2
+
 /* function table for entered mode */
 struct amode_fx {
 	int (*status)(int port, uint32_t *payload);
@@ -731,20 +738,38 @@ enum pd_source_port_type {
 	PD_SOURCE_PORT_CAPABILITY_GUARANTEED,
 };
 
-/* PD Source_Info Data Object (SIDO) */
+/* PD Source_Info Data Objects (SIDOs) */
+struct sido1 {
+	/* PDP values are the integer portion (floor) of the relevant
+	 * PDP rating in W.
+	 */
+	uint8_t port_reported_pdp;
+	uint8_t port_present_pdp;
+	uint8_t port_maximum_pdp;
+	unsigned reserved : 7;
+	/* 0 = Managed Capability, 1 = Guaranteed Capability */
+	unsigned port_type : 1;
+};
+
+struct sido2 {
+	/* PDP values are rounded down to the nearest 0.5W of the
+	 * relevant PDP rating in W.
+	 */
+	unsigned port_guaranteed_pdp : 9;
+	unsigned port_maximum_pdp : 9;
+	unsigned reserved : 12;
+	/* 0 = Non DPS port, 1 = DPS port */
+	unsigned dps_port : 1;
+	/* 0 = Managed Capability, 1 = Guaranteed Capability */
+	unsigned port_type : 1;
+};
+
 union sido {
 	struct {
-		/* PDP values are the integer portion (floor) of the relevant
-		 * PDP rating in W.
-		 */
-		uint8_t port_reported_pdp;
-		uint8_t port_present_pdp;
-		uint8_t port_maximum_pdp;
-		unsigned reserved : 7;
-		/* 0 = Managed Capability, 1 = Guaranteed Capability */
-		unsigned port_type : 1;
+		struct sido1 sido1;
+		struct sido2 sido2;
 	};
-	uint32_t raw;
+	uint32_t raw[SOURCE_INFO_MAX_OBJECTS];
 };
 
 /* PD Rev 3.1 Revision Message Data Object (RMDO) */
