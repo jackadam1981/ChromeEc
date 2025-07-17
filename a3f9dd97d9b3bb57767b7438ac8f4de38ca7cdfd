@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db8c9226_550e69f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-17T00:10:51Z",
+      "side": 1,
+      "message": "nit: This is adding C0 and C1 support. Could just remove C0 from the heading.",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "a3f9dd97d9b3bb57767b7438ac8f4de38ca7cdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c58c88ce_0445e818",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
