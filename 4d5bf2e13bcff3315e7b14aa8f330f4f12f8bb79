@@ -94,6 +94,30 @@
       },
       "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32decb56_cfdfbe9e",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-17T20:04:37Z",
+      "side": 1,
+      "message": "How about something like this structure?\n\n```\nzephyr/program/ocelot\n  |_ ocelot-ish/\n      |_ common (for all WCL) ISH devicetree and config files\n      |_ ocelotrvp-ish/\n      |    |_ RVP-specific ISH stuff / overlays\n      |_ future-wcl-device-ish/\n           |_ board-specific ISH stuff / overlays\n```\n\n--\n\n\u003e Additionally \u0027motionsense.dtsi\u0027 can be maintained as one copy for both EC,ISH sensing.\n\nIn that case, this file could be renamed and located at `zephyr/program/ocelot/rvp_motionsense.dtsi` and be referenced by both the RVP EC build targets and RVP ISH build target.",
+      "parentUuid": "63897666_ef245d33",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
