@@ -48,6 +48,11 @@
 			enum-name = "GPIO_PG_EC_ALL_SYS_PWRGD";
 			no-auto-init;
 		};
+		gpio_amp_mute_odl: amp_mute_odl {
+			gpios = <&gpiod 1 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH |
+						GPIO_OUTPUT_INIT_HIGH | GPIO_OUTPUT_INIT_LOGICAL |
+						GPIO_VOLTAGE_1P8)>;
+		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpio4 3 (GPIO_INPUT)>;
 			enum-name = "GPIO_CCD_MODE_ODL";
@@ -55,9 +60,8 @@
 		gpio_cpu_c10_gate_l: cpu_c10_gate_l {
 			gpios = <&gpioa 5 (GPIO_INPUT)>;
 		};
-		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
-			gpios = <&gpiod 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
-						GPIO_OUTPUT_INIT_LOGICAL)>;
+		gpio_ec_accel_int_l: ec_accel_int_l {
+			gpios = <&gpio3 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpiod 4 (GPIO_INPUT)>;
@@ -66,6 +70,12 @@
 		gpio_ec_edp_bl_en: ec_edp_bl_en {
 			gpios = <&gpiob 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
 						GPIO_OUTPUT_INIT_LOGICAL)>;
+		};
+		gpio_ec_imu_int_l: ec_imu_int_l {
+			gpios = <&gpio6 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		gpio_ec_ish_odl: ec_ish_odl {
+			gpios = <&gpiod 0 (GPIO_OUTPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_kb_bl_pwm: ec_kb_bl_pwm {
 			gpios = <&gpioc 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
@@ -77,7 +87,7 @@
 			gpios = <&gpio3 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
-			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH | GPIO_VOLTAGE_1P8)>;
 			enum-name = "GPIO_EC_INT_L";
 		};
 		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
@@ -85,7 +95,7 @@
 			enum-name = "GPIO_PCH_PWRBTN_L";
 		};
 		gpio_ec_soc_rec_switch_odl: ec_soc_rec_switch_odl {
-			gpios = <&gpiof 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+			gpios = <&gpiof 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_soc_wake_ls_odl: ec_soc_wake_ls_odl {
 			gpios = <&gpio3 2 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
@@ -139,7 +149,7 @@
 			gpios = <&gpioa 6 (GPIO_INPUT)>;
 		};
 		gpio_tablet_mode_l: tablet_mode_l {
-			gpios = <&gpio7 4 (GPIO_INPUT)>;
+			gpios = <&gpio7 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_usb_pd_int_ls_odl: usb_pd_int_ls_odl {
 			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
@@ -151,6 +161,29 @@
 			// signal name was manually overriden from "ec_soc_rtcrst_odl"
 			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
 		};
+
+		/* Set ISH/sensor I2C bus (i2c5_0) voltage thresholds to 1.8V.
+		 * These are not actually GPIOs and will be taken over by the
+		 * I2C controller. */
+		ec_i2c_sensor_scl {
+			gpios = <&gpio3 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		ec_i2c_sensor_sda {
+			gpios = <&gpio3 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			/* BGA_PINF6 - unused 1.8V I2C bus - pull down to avoid
+			 * voltage level issues if this AIC is connected to a
+			 * different base RVP board */
+			<&gpiof 2 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+			/* BGA_PINF5 - unused 1.8V I2C bus - pull down to avoid
+			 * voltage level issues if this AIC is connected to a
+			 * different base RVP board */
+			<&gpiof 3 (GPIO_INPUT | GPIO_PULL_DOWN)>;
 	};
 };
 
