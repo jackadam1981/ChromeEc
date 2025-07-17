@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349c1802_647c5e96",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-17T22:33:55Z",
+      "side": 1,
+      "message": "Is this comment right? We are just disabling null pointer exception, right?",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
