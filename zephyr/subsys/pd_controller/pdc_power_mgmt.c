@@ -40,7 +40,7 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
+LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_DBG);
 
 #ifdef CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS
 /* Faking PDC APIs directly causes compilation errors of the function being
@@ -1269,6 +1269,9 @@ static void handle_connector_status(struct pdc_port_t *port)
 	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
+	LOG_HEXDUMP_INF(status->raw_value, sizeof(status->raw_value),
+			"Raw connector status:");
+
 	if (port->sink_path_status != status->sink_path_status) {
 		LOG_DBG("C%d: Sink path status change: %d", port_number,
 			status->sink_path_status);
@@ -1351,6 +1354,11 @@ static void handle_connector_status(struct pdc_port_t *port)
 			k_event_post(&port->sm_event, PDC_SM_EVENT);
 		}
 
+		LOG_INF("*** C%d: status->power_dir=%d, "
+			"conn_status_change_bits->pwr_dir=%d",
+			config->connector_num, status->power_direction,
+			conn_status_change_bits.pwr_direction);
+
 		if (status->power_direction) {
 			if (conn_status_change_bits.negotiated_power_level) {
 				/*
@@ -1365,11 +1373,15 @@ static void handle_connector_status(struct pdc_port_t *port)
 			}
 			/* Port partner is a sink device
 			 */
+			LOG_INF("C%d: we are now a source",
+				config->connector_num);
 			set_pdc_state(port, PDC_SRC_ATTACHED);
 			return;
 		} else {
 			/* Port partner is a source
 			 * device */
+			LOG_INF("C%d: we are now a sink",
+				config->connector_num);
 			set_pdc_state(port, PDC_SNK_ATTACHED);
 			return;
 		}
