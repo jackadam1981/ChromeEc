@@ -1,0 +1,24 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <zephyr/dt-bindings/led/led.h>
+
+/ {
+	aliases {
+		led-strip = &led_strip_gpio;
+	};
+
+	led_strip_gpio: ws2812 {
+		compatible = "worldsemi,ws2812-gpio";
+
+		chain-length = <16>; /* arbitrary; change at will */
+		color-mapping = <LED_COLOR_ID_GREEN
+				 LED_COLOR_ID_RED
+				 LED_COLOR_ID_BLUE>;
+
+		gpios = <&gpioa 3 0>;
+	};
+};

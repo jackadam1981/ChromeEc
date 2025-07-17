@@ -1,0 +1,51 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/led/led.h>
+#include <dt-bindings/macros.h>
+
+/ {
+	aliases {
+		led-strip = &led_strip_uart;
+	};
+
+	led_strip_uart: ws2812 {
+		status = "okay";
+		compatible = "worldsemi,ws2812-uart";
+		uart = <&uart4>;
+
+		/* WS2812 */
+		chain-length = <8>; /* arbitrary; change at will */
+		one-symbol = <B3(1,1,0)>;  /* 0b110 T1H: xxxus within 0.650~0.950us */
+		zero-symbol = <B3(1,0,0)>; /* 0b100 T0H: xxxus within 0.250~0.550us */
+		bits-per-symbol = <3>;
+		color-mapping = <LED_COLOR_ID_GREEN
+				 LED_COLOR_ID_RED
+				 LED_COLOR_ID_BLUE>;
+	};
+};
+
+&uart4 {
+	status = "okay";
+	current-speed = <2500000>;
+	pinctrl-0 = <&uart4_sout_gp35>;
+	pinctrl-names = "default";
+	tx-invert;
+	data-bits = <7>;
+};
+
+
+&pcc {
+	clock-frequency = <DT_FREQ_M(80)>; /* OFMCLK runs at 80 MHz */
+	core-prescaler = <2>; /* CORE_CLK runs at 40 MHz */
+	apb1-prescaler = <4>; /* APB1_CLK runs at 20 MHz */
+	apb2-prescaler = <4>; /* APB2_CLK runs at 20 MHz */
+	apb3-prescaler = <4>; /* APB3_CLK runs at 20 MHz */
+	/*
+	 * APB4_CLK runs at 40 MHz, required to support
+	 * UART4 Baudrate=2.5 MHz
+	 */
+	apb4-prescaler = <2>;
+};
