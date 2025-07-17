@@ -6,6 +6,7 @@
 #include "atomic.h"
 #include "chipset.h"
 #include "common.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
