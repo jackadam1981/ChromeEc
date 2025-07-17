@@ -838,7 +838,6 @@ flash_fp_mcu_board() {
   # open-drain outputs on other platforms.
   if [[ "${PLATFORM_BASE_NAME}" != "strongbad" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "zork" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "myst" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "rauru" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "skyrim" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "skywalker" ]]; then
@@ -1161,20 +1160,6 @@ config_skyrim() {
   readonly GPIO_BOOT0=130
   # FPMCU PWR_EN is on AGPIO 4
   readonly GPIO_PWREN=4
-}
-
-config_myst() {
-  readonly TRANSPORT="UART"
-
-  readonly DEVICE="/dev/ttyS1"
-
-  readonly GPIO_CHIP="gpiochip768"
-  # FPMCU RST_ODL is on AGPIO 40 = 768 + 40 = 808
-  readonly GPIO_NRST=808
-  # FPMCU BOOT0 is on AGPIO 132 = 768 + 132 = 900
-  readonly GPIO_BOOT0=900
-  # FPMCU PWR_EN is on AGPIO 4 = 768 + 4 = 772
-  readonly GPIO_PWREN=772
 }
 
 config_brox() {
