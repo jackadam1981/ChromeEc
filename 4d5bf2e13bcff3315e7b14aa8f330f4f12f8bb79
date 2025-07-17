@@ -70,6 +70,30 @@
       },
       "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63897666_ef245d33",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-07-17T05:45:59Z",
+      "side": 1,
+      "message": "+1,\n\nthanks for bringing this point.\n\nAll products based on the WCL utilize ISH5.8, allowing for some shared code across projects. However, hardware-specific mappings can vary depending on the project like below.\n\n\u003e I2C lines and sensor interrupt GPIOs between ISH and the sensors.\n\u003e EC-PCH GPIO interrupt mapping for DSP communication.\n\u003e Each platform may select different sensors based on board design.\n\u003e ISH UART port mapping (Intel recommending the use of ISH_UART0 by default)\n\nGiven these variations, certain files can be common across projects?\n\nzephyr/program/ocelot/ocelot-ish/interrupts.dtsi\nzephyr/program/ocelot/ocelot-ish/ish.dtsi\nzephyr/program/ocelot/ocelot-ish/prj.conf\n\nBoard-specific changes, such as ISH GPIOs and I2C sensor mappings, may differ between projects.\nThese can be managed using project-specific overlays OR separate fines?\nzephyr/program/ocelot/ocelot-ish/i2c.dtsi\nzephyr/program/ocelot/ocelot-ish/gpio.dtsi\nzephyr/program/ocelot/ocelot-ish/motionsense.dtsi\n\nAdditionally \u0027motionsense.dtsi\u0027 can be maintained as one copy for both EC,ISH sensing.\n\nLet us know your feedback.",
+      "parentUuid": "e6f0abc6_3c7a9dc1",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
