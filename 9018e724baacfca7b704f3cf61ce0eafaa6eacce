@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37af143a_1229f3ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd07d7e5_5cf23842",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef79a2c_dc33509a",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-16T18:15:13Z",
       "side": 1,
       "message": "Should have a newline space before this comment for readability",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4b64d7d_6be619c3",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef79a2c_dc33509a",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a0a4f9_3d734ab1",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f61e31ef_5f0ace36",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddda5052_b51d8661",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c44f87_99a988d6",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddda5052_b51d8661",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcf8a38a_3e16a237",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-07-16T18:15:13Z",
       "side": 1,
       "message": "These 2 configs are related to tablet mode and the part of sensors that are detected by the EC even when sensors are being handled in the ISH. But, these are not required for tokenized logging.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "9018e724baacfca7b704f3cf61ce0eafaa6eacce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcef3108_56abf363",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf8a38a_3e16a237",
       "range": {
         "startLine": 22,
         "startChar": 0,
