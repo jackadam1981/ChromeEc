@@ -11,6 +11,7 @@
 #include "common.h"
 #include "crypto/cleanse_wrapper.h"
 #include "ec_commands.h"
+#include "openssl/sha.h"
 
 #include <cstdint>
 #include <span>
@@ -21,6 +22,21 @@
 using FpEncryptionKey = CleanseWrapper<std::array<uint8_t, 16> >;
 BUILD_ASSERT(sizeof(FpEncryptionKey) == 16, "Encryption key must be 128 bits.");
 BUILD_ASSERT(sizeof(FpEncryptionKey) <= CONFIG_ROLLBACK_SECRET_SIZE);
+
+/**
+ * Computes HMAC-SHA256
+ *
+ * Calculate HMAC-SHA256 from data that are not continous.
+ *
+ * @param[in] key the key to use in HMAC
+ * @param[in] inputs the span of inputs that will be hashed
+ * @param[out] output HMAC output
+ * @return EC_SUCCESS on success and error code otherwise.
+ */
+enum ec_error_list
+hmac_sha256(std::span<const uint8_t> key,
+	    std::span<const std::span<const uint8_t> > inputs,
+	    std::span<uint8_t, SHA256_DIGEST_LENGTH> output);
 
 /**
  * Computes HKDF (as specified by RFC 5869) using SHA-256 as the digest.
