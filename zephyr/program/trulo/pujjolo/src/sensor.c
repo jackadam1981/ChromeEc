@@ -19,20 +19,36 @@
 
 #include <zephyr/logging/log.h>
 
-#define I2C_PORT_SENSOR 1
-
 LOG_MODULE_REGISTER(uldrenite_sensor, LOG_LEVEL_INF);
 
 static int sensor_fwconfig;
+static int base_use_alt_sensor;
+static int lid_use_alt_sensor;
+
+enum base_sensor_type {
+	base_lis2dw12 = 0,
+	base_bma422,
+};
+
+enum lid_sensor_type {
+	lid_lis2dw12 = 0,
+	lid_bma422,
+};
 
 void motion_interrupt(enum gpio_signal signal)
 {
-	lis2dw12_interrupt(signal);
+	if (lid_use_alt_sensor == lid_lis2dw12)
+		lis2dw12_interrupt(signal);
+	else
+		bma4xx_interrupt(signal);
 }
 
 void lid_accel_interrupt(enum gpio_signal signal)
 {
-	lis2dw12_interrupt(signal);
+	if (base_use_alt_sensor == base_lis2dw12)
+		lis2dw12_interrupt(signal);
+	else
+		bma4xx_interrupt(signal);
 }
 
 static void motionsense_init(void)
@@ -45,3 +61,26 @@ static void motionsense_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, motionsense_init, HOOK_PRIO_DEFAULT);
+
+test_export_static void alt_sensor_init(void)
+{
+	/* Check which motion sensors are used */
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_0)))) {
+		LOG_INF("Base : LIS2DWL");
+		base_use_alt_sensor = base_lis2dw12;
+	} else {
+		LOG_INF("Base : BMA422");
+		base_use_alt_sensor = base_bma422;
+	}
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(lid_sensor_0)))) {
+		LOG_INF("Lid : LIS2DWL");
+		lid_use_alt_sensor = lid_lis2dw12;
+	} else {
+		LOG_INF("Lid : BMA422");
+		lid_use_alt_sensor = lid_bma422;
+	}
+	motion_sensors_check_ssfc();
+}
+DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
