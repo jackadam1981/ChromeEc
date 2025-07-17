@@ -12,6 +12,17 @@ if SOC_FAMILY_NPCX
 config ARM_MPU
 	default y
 
+# Power management options
+config PM
+	default y
+
+config PM_DEVICE
+	default y
+
+choice PM_POLICY
+	default PM_POLICY_CUSTOM
+endchoice
+
 # ADC
 # The resolution and oversamplig values are fixed by the NPCX ADC driver
 config PLATFORM_EC_ADC_RESOLUTION
