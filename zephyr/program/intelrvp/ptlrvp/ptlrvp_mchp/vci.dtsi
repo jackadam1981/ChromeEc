@@ -15,7 +15,7 @@
 		 * VCI_IN1: BATT_ID is enabled to allow system to reset when
 		 *          only battery is power source
 		 *
-		 * Note: Lid is not a wake-up source.
+		 * VCI_IN2: SMC_LID signal
 		*/
 		vci_power_btn: vci_input_0@0 {
 			compatible = "cros-ec,hibernate-vci-pin";
@@ -31,6 +31,13 @@
 			vci-polarity = "Active_Low";
 			vci-latch-enable;
 			preserve;
+			status = "okay";
+		};
+		vci_smc_lid: vci_input_2@2 {
+			compatible = "cros-ec,hibernate-vci-pin";
+			reg = <2>;
+			vci-polarity = "Active_Both";
+			wakeup;
 			status = "okay";
 		};
 	};
