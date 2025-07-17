@@ -18,6 +18,7 @@
 #include "../ite_usbc.dtsi"
 #include "../ite_shi.dtsi"
 #include "thermistor.dtsi"
+#include "led_strip_spi.dtsi"
 
 #include <cros/thermistor/thermistor.dtsi>
 #include <dt-bindings/battery.h>
