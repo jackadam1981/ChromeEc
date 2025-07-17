@@ -52,6 +52,24 @@
       "parentUuid": "ff051a40_44eb22d6",
       "revId": "1a98c0d26631c8524920eb83a4ac59f065ed4615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3dad669_5038c903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-17T22:37:57Z",
+      "side": 1,
+      "message": "Oh, I just meant that rather than creating a second copy of the file, we could just have the CMakeLists.txt refer back to the copy in the EC source. It doesn\u0027t look like that\u0027s the common way this is being done, so it\u0027s fine as a copy.",
+      "parentUuid": "d8807b18_0e8758c2",
+      "revId": "1a98c0d26631c8524920eb83a4ac59f065ed4615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
