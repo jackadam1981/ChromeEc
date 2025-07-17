@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27168b20_239b7214",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db8c9226_550e69f2",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "a3f9dd97d9b3bb57767b7438ac8f4de38ca7cdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c58c88ce_0445e818",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7829d3_18219878",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c58c88ce_0445e818",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "a3f9dd97d9b3bb57767b7438ac8f4de38ca7cdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "850871a0_ade49e67",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-16T23:04:33Z",
       "side": 1,
       "message": "This should be removed as you\u0027re adding i2c nodes in the devicetree for the PDC",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "a3f9dd97d9b3bb57767b7438ac8f4de38ca7cdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8faff5b0_4eef5f62",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-17T05:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "850871a0_ade49e67",
       "range": {
         "startLine": 81,
         "startChar": 0,
