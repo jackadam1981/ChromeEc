@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6fd0c84_2c6d23de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-17T20:07:04Z",
+      "side": 1,
+      "message": "This is the test you\u0027ll want to modify to cover the code: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/integration/usbc/usb_pd_rev3.c;l\u003d628;drc\u003ddb4523b180e192866c13588304d0afb6483acc08",
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b26ef4f_e28cf2ea",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-17T20:07:04Z",
+      "side": 1,
+      "message": "Nit: For brevity, I think you can just do `sido2.port_type \u003d sido1.port_type`. Same for the reserved field.\n\nFor the PDP fields, maybe you could do something like\n```\n#define PD_SIDO2_15W 30\n#define PD_SIDO2_7_5W 15\n#define PD_PDP_SIDO2_TO_SIDO1(pdp) (pdp) \u003e\u003e 1\nsido2.port_maximum_pdp \u003d (CONFIG_USB_PD_3A_PORTS \u003e 0) ? PD_SIDO2_15W : PD_SIDO2_7_5W;\nsido1.port_maximum_pdp \u003d PD_PDP_SIDO2_TO_SIDO1(sido2.port_maximum_pdp);\n```\nIMO, that would be a little terser and clearer.",
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f245524_b0da324f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-17T20:07:04Z",
+      "side": 1,
+      "message": "\"rounded down\"",
+      "range": {
+        "startLine": 749,
+        "startChar": 28,
+        "endLine": 749,
+        "endChar": 29
+      },
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895784ba_5ec530fd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-17T20:07:04Z",
+      "side": 1,
+      "message": "Nit: Instead of putting both of these together in a 64-bit structure, can you just have an `sido1` in 32 bits and an `sido2` in 32 bits. That\u0027s how the PD spec defines data messages, and that\u0027s how we generally set them in multi-data-object messages.",
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
