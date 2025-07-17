@@ -190,6 +190,30 @@
       },
       "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f54002_3ac27a84",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-17T17:48:45Z",
+      "side": 1,
+      "message": "Thanks for the explanation.  Does it make sense to transition to S5 directly instead of S0 if `PWR_SYS_RST` is asserted?",
+      "parentUuid": "73800f63_b228ba05",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
