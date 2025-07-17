@@ -1888,6 +1888,14 @@ int charge_set_input_current_limit(int ma, int mv)
 
 	ma = derate_input_current(ma);
 #ifdef CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT
+	BUILD_ASSERT(
+		((CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT *
+		  CONFIG_USB_PD_MAX_VOLTAGE_MV) /
+			 1000 >=
+		 CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) ||
+			CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT == 0,
+		"Charger minimum input current limit is unreasonably low."
+		" Consider unsetting it, and refer to the Kconfig help for details.");
 	if (CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT > 0) {
 		ma = MAX(ma, CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT);
 	}
