@@ -85,6 +85,7 @@ __soc_ram_code void cec_gpio_handler(const struct device *device,
 		return;
 	}
 
+	unsigned int key = irq_lock();
 	cec_update_interrupt_time(port);
 
 	level = gpio_pin_get_dt(gpio_int);
@@ -93,7 +94,11 @@ __soc_ram_code void cec_gpio_handler(const struct device *device,
 		return;
 	}
 
+	// ITE Debug - stop top counter if in_gpio is asserted
+	counter_stop(cec_counter_dev);
+
 	cec_event_cap(port);
+	irq_unlock(key);
 }
 
 __soc_ram_code void cros_cec_bitbang_tmr_cap_start(int port, enum cec_cap_edge edge,
