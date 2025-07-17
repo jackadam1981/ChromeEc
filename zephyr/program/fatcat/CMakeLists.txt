@@ -6,9 +6,9 @@ cmake_minimum_required(VERSION 3.20.5)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
-if(DEFINED CONFIG_BOARD_FATCAT_NPCX9M7F)
-	project(fatcat_npcx9m7f)
-	add_subdirectory(fatcat_npcx9m7f)
+if(DEFINED CONFIG_BOARD_FATCATRVP_NPCX)
+	project(fatcatrvp-npcx)
+	add_subdirectory(fatcatrvp-npcx)
 endif()
 
 if(DEFINED CONFIG_BOARD_FATCAT_IT82002AW)

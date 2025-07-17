@@ -7,7 +7,7 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* fatcat_npcx9m7f project DTS includes */
+/* fatcatrvp-npcx project DTS includes */
 
 #include <cros/cbi_flash.dtsi>
 
@@ -44,7 +44,7 @@
 	irq-gpios = <&gpio7 0 GPIO_ACTIVE_LOW>;
 };
 
-/* fatcat_npcx9m7f overrides follow... */
+/* fatcatrvp-npcx overrides follow... */
 
 &cbi_flash {
 	/*

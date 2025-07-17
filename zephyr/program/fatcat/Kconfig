@@ -2,8 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-config BOARD_FATCAT_NPCX9M7F
-	bool "Google Fatcat npcx9m7f add-in card"
+config BOARD_FATCATRVP_NPCX
+	bool "Google Fatcat Nuvoton (npcx9m7f) add-in card for the RVP"
 	help
 	  Build Google Nuvoton npcx9m7f based Fatcat add-in card.
 	  This board is for use with the Intel RVP using the
