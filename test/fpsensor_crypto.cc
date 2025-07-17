@@ -146,8 +146,18 @@ test_static int test_hkdf_expand(void)
 		const auto &expected_okm = test_vector.okm;
 		std::vector<uint8_t> actual_okm(expected_okm.size());
 
-		TEST_ASSERT(hkdf_sha256(actual_okm, test_vector.ikm,
-					test_vector.salt, test_vector.info));
+		std::span test_vector_ikm_span{ test_vector.ikm };
+		std::array ikm{
+			test_vector_ikm_span.subspan(0, 1),
+			test_vector_ikm_span.subspan(1, 4),
+			test_vector_ikm_span.subspan(5, 2),
+			test_vector_ikm_span.subspan(7, 5),
+			test_vector_ikm_span.subspan(12, 3),
+			test_vector_ikm_span.subspan(15),
+		};
+
+		TEST_ASSERT(hkdf_sha256(actual_okm, ikm, test_vector.salt,
+					test_vector.info));
 		TEST_ASSERT_ARRAY_EQ(expected_okm.data(), actual_okm.data(),
 				     expected_okm.size());
 	}
@@ -155,8 +165,12 @@ test_static int test_hkdf_expand(void)
 	/* OKM size too big. */
 	std::vector<uint8_t> unused_output(256 * SHA256_DIGEST_SIZE);
 	const auto &test_vector = test_vector1;
-	TEST_ASSERT(!hkdf_sha256(unused_output, test_vector.ikm,
-				 test_vector.salt, test_vector.info));
+	std::array ikm{
+		std::span{ test_vector.ikm },
+	};
+
+	TEST_ASSERT(!hkdf_sha256(unused_output, ikm, test_vector.salt,
+				 test_vector.info));
 
 	return EC_SUCCESS;
 }
