@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c32214_83153b04",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-17T19:13:15Z",
+      "side": 1,
+      "message": "What about the other EC types?  Looks like they have a similar problem.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "b791e138b248881530d8a0a00d0b4cb2e333a111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
