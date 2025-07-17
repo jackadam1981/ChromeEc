@@ -134,7 +134,7 @@
 			gpios = <&gpiog 1 GPIO_INPUT>;
 		};
 		gpio_ec_soc_rec_switch_odl: ec_soc_rec_switch_odl {
-			gpios = <&gpioj 6 (GPIO_INPUT)>;
+			gpios = <&gpioj 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_5va_pwr_mode: 5va_pwr_mode {
 			gpios = <&gpioj 7 GPIO_OUTPUT>;
