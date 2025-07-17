@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b26338a_85751e26",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-17T21:14:53Z",
+      "side": 1,
+      "message": "`instruction_set_v2` is only set to `true`.  Is this intended?\nThis seems like it will break v1 devices.",
+      "range": {
+        "startLine": 645,
+        "startChar": 7,
+        "endLine": 645,
+        "endChar": 25
+      },
+      "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
