@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8431f91_22b98d0b",
+        "filename": "common/mock/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-17T17:43:27Z",
+      "side": 1,
+      "message": "I defined the stub function in tcpc_mock.c and it worked",
+      "parentUuid": "a86e83c7_cb88ab02",
+      "revId": "2e889dac8ddd1ae35293b0aff6553d2c33b2f9bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a09a072f_e1f13b20",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-16T17:09:00Z",
       "side": 1,
       "message": "This is already in `usb_pd.h`. I don\u0027t think you should need to re-declare it here. Does the build fail without this?",
+      "revId": "2e889dac8ddd1ae35293b0aff6553d2c33b2f9bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa14351_07ba7421",
+        "filename": "include/mock/usb_typec_drp_acc_trysrc_mock.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-17T17:43:27Z",
+      "side": 1,
+      "message": "Yes, the build failed.",
+      "parentUuid": "a09a072f_e1f13b20",
       "revId": "2e889dac8ddd1ae35293b0aff6553d2c33b2f9bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
