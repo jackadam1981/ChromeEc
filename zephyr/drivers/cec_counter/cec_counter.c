@@ -26,6 +26,17 @@ LOG_MODULE_REGISTER(cec_counter, LOG_LEVEL_ERR);
 BUILD_ASSERT(DT_HAS_CHOSEN(cros_ec_cec_counter),
 	     "a cros-ec,cec-counter device must be chosen");
 
+#define ECREG(x)         (*((volatile unsigned char *)(x)))
+#define EC_REG_BASE_ADDR 0x00f00000
+
+#define IT81XX2_GPIO_H4_GPCR     ECREG(EC_REG_BASE_ADDR + 0x164c)       // GPIO_H4 Control Register
+#define IT81XX2_GPIO_H4_OUTPUT   ((IT81XX2_GPIO_H4_GPCR & 0x3F) | 0x40) // GPIO_H4 設定成 Output
+
+#define IT81XX2_GPIO_GPDRA       ECREG(EC_REG_BASE_ADDR + 0x1608)      // GPIO_H Data Register
+#define IT81XX2_GPIO_HIGH_H4     (IT81XX2_GPIO_GPDRA | (uint8_t)0x10)  // GPIO_H4 拉 High
+#define IT81XX2_GPIO_LOW_H4      (IT81XX2_GPIO_GPDRA & (uint8_t)~0x10) // GPIO_H4 拉 Low
+#define IT81XX2_GPIO_REVERSE_H4  (IT81XX2_GPIO_GPDRA ^ (uint8_t)0x10)  // GPIO_H4 反向
+
 /* Timestamp when the most recent interrupt occurred */
 static timestamp_t interrupt_time;
 
@@ -94,8 +105,15 @@ __soc_ram_code void cec_gpio_handler(const struct device *device,
 		return;
 	}
 
-	// ITE Debug - stop top counter if in_gpio is asserted
+#if 1
+	// GPIO_H4 反向
+	IT81XX2_GPIO_GPDRA = IT81XX2_GPIO_REVERSE_H4;
+
+	// GPIO_H4 反向
+	IT81XX2_GPIO_GPDRA = IT81XX2_GPIO_REVERSE_H4;
+
 	counter_stop(cec_counter_dev);
+#endif
 
 	cec_event_cap(port);
 	irq_unlock(key);
