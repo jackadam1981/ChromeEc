@@ -214,6 +214,30 @@
       },
       "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1268da46_25e547b5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_mtl_pwrseq_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-17T19:04:29Z",
+      "side": 1,
+      "message": "Yes, reset will de-assert `SLP_Sx` signals and later EC will methodically go back to `S0`.",
+      "parentUuid": "72f54002_3ac27a84",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "b9fd99655a72d7aa1bd33259a7a8e5cfbdbf75b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
