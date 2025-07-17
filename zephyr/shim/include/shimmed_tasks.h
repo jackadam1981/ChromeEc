@@ -81,4 +81,8 @@
 #define HAS_TASK_FPSENSOR 1
 #endif /* CONFIG_HAS_TASK_FPSENSOR */
 
+#ifdef CONFIG_HAS_TASK_PCHG
+#define HAS_TASK_PCHG 1
+#endif /* CONFIG_HAS_TASK_PCHG */
+
 #endif /* __CROS_EC_SHIMMED_TASKS_H */
