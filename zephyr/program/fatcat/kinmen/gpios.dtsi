@@ -5,7 +5,7 @@
 
 / {
 	aliases {
-		gpio-wp = &gpio_ec_wp_odl;
+		gpio-wp = &gpio_ec_wp_od;
 	};
 
 	named-adc-channels {
@@ -82,8 +82,8 @@
 		gpio_amp_mute_odl: amp_mute_odl {
 			gpios = <&gpioh 0 (GPIO_OUTPUT_LOW | GPIO_OPEN_DRAIN)>;
 		};
-		gpio_ec_wp_odl: ec_wp_odl {
-			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		gpio_ec_wp_od: ec_wp_od {
+			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_HIGH)>;
 		};
 		gpio_ec_en_edp_bl: ec_en_edp_bl {
 			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
