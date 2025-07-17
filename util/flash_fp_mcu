@@ -1154,6 +1154,8 @@ config_skyrim() {
 }
 
 config_myst() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="UART"
 
   readonly DEVICE="/dev/ttyS1"
