@@ -19,6 +19,12 @@
 		gpio_ec_cpu_id: ec_cpu_id {
 			gpios = <&gpioh 6 GPIO_INPUT>;
 		};
+		gpio_ec_gpa3: ec_gpa3 {
+			gpios = <&gpioa 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_ec_gpa6: ec_gpa6 {
+			gpios = <&gpioa 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
 	};
 
 	unused-pins {
