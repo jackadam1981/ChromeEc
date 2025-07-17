@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c52b27b_698afa8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-17T23:01:48Z",
+      "side": 1,
+      "message": "It would be nice if we had a test that verifies the NULL pointer dereference behavior, since we do want a crash on all platforms where we don\u0027t have this issue.\n\nIt could be a separate CL. There might be an upstream test that we could just use.",
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "349c1802_647c5e96",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 2
