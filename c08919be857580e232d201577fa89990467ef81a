@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc54ac4_c356949d",
+        "filename": "zephyr/shim/chip/npcx/otp_key.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-17T22:49:50Z",
+      "side": 1,
+      "message": "Is this file and the `otp_key.h` file exactly the same as the current version? \n\nI know I\u0027m bringing up the [same topic that we discussed](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6607777/comments/9c76dc6d_d525422f), but if the versions are truly exactly the same it might be better to just reference the EC version of the code:\n\n```\nzephyr_library_sources_ifdef(CONFIG_OTP_KEY\n        ${PLATFORM_EC}/chip/npcx/otp_key.c)\n```\n\nor make `zephyr/shim/chip/npcx/otp_key.c` a symlink to `chip/npcx/otp_key.c`. (symlink might be slightly better so we\u0027re not mentioning EC in Zephyr code). If we do have to fork in the future, it\u0027s easy enough to turn the symlink into a real copy.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "c08919be857580e232d201577fa89990467ef81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
