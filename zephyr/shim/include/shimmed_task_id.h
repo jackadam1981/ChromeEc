@@ -55,6 +55,7 @@ enum {
 	EC_TASK_PD_INT_C1_PRIO,
 	EC_TASK_PD_INT_C2_PRIO,
 	EC_TASK_PD_INT_C3_PRIO,
+	EC_TASK_PCHG_PRIO,
 	EC_TASK_PRIO_COUNT,
 };
 
@@ -82,6 +83,11 @@ enum {
 		    (CROS_EC_TASK(DPS, dps_task, 0,                        \
 				  CONFIG_TASK_DPS_STACK_SIZE,              \
 				  EC_TASK_DPS_PRIO, 0)),                   \
+		    ())                                                    \
+	COND_CODE_1(HAS_TASK_PCHG,                                         \
+		    (CROS_EC_TASK(PCHG, pchg_task, 0,                      \
+				  CONFIG_TASK_PCHG_STACK_SIZE,             \
+				  EC_TASK_PCHG_PRIO, 0)),                  \
 		    ())                                                    \
 	COND_CODE_1(HAS_TASK_CHARGER,                                      \
 		    (CROS_EC_TASK(CHARGER, charger_task, 0,                \
