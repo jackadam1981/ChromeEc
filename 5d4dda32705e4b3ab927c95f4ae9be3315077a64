@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f15229d_bd4ac6b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-17T23:26:51Z",
+      "side": 1,
+      "message": "Let\u0027s run all the unit tests on helipilot before submitting to make sure enabling this doesn\u0027t inadvertently break one of them.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "5d4dda32705e4b3ab927c95f4ae9be3315077a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f779131_b07ba372",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
