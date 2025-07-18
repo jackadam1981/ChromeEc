@@ -46,6 +46,30 @@
       },
       "revId": "c08919be857580e232d201577fa89990467ef81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae85bec_e6f39a34",
+        "filename": "zephyr/shim/chip/npcx/otp_key.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-18T23:16:28Z",
+      "side": 1,
+      "message": "The only downside to that is the git blame history will be a bit hard to follow since we\u0027ll be renaming the current file. I think adding a new symlink in the Zephyr code to the EC file will be ok.",
+      "parentUuid": "b1263f58_bacd0ac2",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "c08919be857580e232d201577fa89990467ef81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
