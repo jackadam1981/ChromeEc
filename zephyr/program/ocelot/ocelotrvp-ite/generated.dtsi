@@ -89,6 +89,10 @@
 		gpio_ec_slatemode_hallout_snsr_r: ec_slatemode_hallout_snsr_r {
 			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
+		gpio_ec_soc_int_odl: ec_soc_int_odl {
+			gpios = <&gpioj 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_EC_INT_L";
+		};
 		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
 			// signal name was manually overriden from "vol_dn_ec_r"
 			gpios = <&gpioa 0 (GPIO_INPUT)>;
@@ -161,9 +165,6 @@
 		};
 		gpio_rst_push_n_d_r: rst_push_n_d_r {
 			gpios = <&gpioj 7 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
-		};
-		gpio_smc_extsmi_n_c_ec_pch_int_odl_r: smc_extsmi_n_c_ec_pch_int_odl_r {
-			gpios = <&gpioj 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_smc_wake_sci_n_r: smc_wake_sci_n_r {
 			gpios = <&gpiob 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
