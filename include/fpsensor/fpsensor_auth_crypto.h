@@ -164,20 +164,43 @@ decrypt_pairing_key(const struct fp_auth_command_encryption_metadata &info,
 		    std::span<uint8_t, FP_PAIRING_KEY_LEN> data);
 
 /**
- * Generate the ECDH shared secret from private key and public key.
+ * Generate the ECDH shared secret from private key and public key, applying
+ * KDF on the result.
+ *
+ * The KDF depends on the size of output. For 32 bytes, SHA256 is used. Check
+ * BoringSSL documentation for ECDH_compute_key_fips() for more detials.
  *
  * @param[in] private_key the private key of the ECDH
  * @param[in] public_key the public key of the ECDH
- * @param[out] shared_secret the shared secret
- * @param[in] share_secret_size the size of shared secret
+ * @param[out] secret the shared secret
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
 enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 					       const EC_KEY &public_key,
-					       uint8_t *shared_secret,
-					       uint8_t share_secret_size);
+					       std::span<uint8_t> secret);
+
+/**
+ * Generate the ECDH shared secret from private key and public key without
+ * applying any KDF function on the result.
+ *
+ * IMPORTANT NOTE:
+ * The result is not uniformly distributed, so it should not be used for
+ * anything which requires that property, e.g. symmetric ciphers. The result
+ * should be used as an input to a KDF to produce symmetric key.
+ *
+ * @param[in] private_key the private key of the ECDH
+ * @param[in] public_key the public key of the ECDH
+ * @param[out] secret the shared secret
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+enum ec_error_list
+generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
+					const EC_KEY &public_key,
+					std::span<uint8_t> secret);
 
 /**
  * Generate a gsc_session_key that is derived from auth nonce, GSC nonce and
