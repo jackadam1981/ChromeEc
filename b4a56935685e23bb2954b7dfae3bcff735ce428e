@@ -34,6 +34,24 @@
       "parentUuid": "ad11ffc0_86f6e55a",
       "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8130d61_86d02bb8",
+        "filename": "common/mock/usb_pd_dpm_mock.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T20:00:38Z",
+      "side": 1,
+      "message": "OK, yeah, CQ sees what you see. Maybe try `usb_pd_sm_mock.c`. Sorry this isn\u0027t more intuitive.",
+      "parentUuid": "407c5c4f_d9741b8e",
+      "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
