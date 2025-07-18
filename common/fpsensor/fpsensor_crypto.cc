@@ -122,10 +122,10 @@ get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> output)
 }
 #endif
 
-static enum ec_error_list derive_key_with_tpm_seed(
-	std::span<uint8_t> output, std::span<const uint8_t> salt,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-	std::span<const uint8_t> info)
+static enum ec_error_list derive_key(std::span<uint8_t> output,
+				     std::span<const uint8_t> salt,
+				     std::span<const uint8_t> tpm_seed,
+				     std::span<const uint8_t> info)
 {
 	CleanseWrapper<std::array<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> >
 		rollback_entropy;
@@ -134,8 +134,13 @@ static enum ec_error_list derive_key_with_tpm_seed(
 #endif
 	enum ec_error_list ret;
 
+	if (!tpm_seed.empty() && tpm_seed.size() != FP_CONTEXT_TPM_BYTES) {
+		return EC_ERROR_INVAL;
+	}
+
 	/* Make sure TPM Seed is set */
-	if (bytes_are_trivial(tpm_seed.data(), tpm_seed.size_bytes())) {
+	if (!tpm_seed.empty() &&
+	    bytes_are_trivial(tpm_seed.data(), tpm_seed.size_bytes())) {
 		CPRINTS("Seed hasn't been set.");
 		return EC_ERROR_ACCESS_DENIED;
 	}
@@ -153,7 +158,7 @@ static enum ec_error_list derive_key_with_tpm_seed(
 #endif
 
 	/*
-	 * The IKM consists of rollback entropy, TPM Seed and
+	 * The IKM consists of rollback entropy, TPM Seed (if provided) and
 	 * optional OTP key.
 	 *
 	 * By default, the compiler deduces static extent from built-in arrays
@@ -165,7 +170,7 @@ static enum ec_error_list derive_key_with_tpm_seed(
 	 */
 	std::array ikms{
 		std::span<const uint8_t>{ rollback_entropy },
-		std::span<const uint8_t>{ tpm_seed },
+		tpm_seed,
 #ifdef CONFIG_OTP_KEY
 		std::span<const uint8_t>{ otp_key },
 #endif
@@ -199,8 +204,8 @@ enum ec_error_list derive_positive_match_secret(
 	memcpy(info + strlen(info_prefix), user_id.data(),
 	       user_id.size_bytes());
 
-	enum ec_error_list ret = derive_key_with_tpm_seed(
-		output, input_positive_match_salt, tpm_seed, info);
+	enum ec_error_list ret =
+		derive_key(output, input_positive_match_salt, tpm_seed, info);
 	if (ret != EC_SUCCESS) {
 		return ret;
 	}
@@ -224,7 +229,16 @@ derive_encryption_key(std::span<uint8_t> out_key, std::span<const uint8_t> salt,
 		return EC_ERROR_INVAL;
 	}
 
-	return derive_key_with_tpm_seed(out_key, salt, tpm_seed, info);
+	return derive_key(out_key, salt, tpm_seed, info);
+}
+
+enum ec_error_list
+derive_pairing_key_encryption_key(std::span<uint8_t> output,
+				  std::span<const uint8_t> salt)
+{
+	static constexpr uint8_t info[] = "FPMCU & FingerGuard pairing key";
+
+	return derive_key(output, salt, std::span<const uint8_t>{}, info);
 }
 
 enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
