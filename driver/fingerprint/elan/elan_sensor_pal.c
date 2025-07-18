@@ -140,7 +140,13 @@ __staticlib_hook int elan_raw_capture(uint16_t *short_raw)
 		crec_usleep(1000);
 		cnt_timer++;
 		regdata[0] = SENSOR_STATUS;
-		elan_spi_transaction(regdata, 2, regdata, 2);
+		if (elan_spi_transaction(regdata, 2, regdata, 2) < 0) {
+			ret = ELAN_ERROR_SPI;
+			LOGE_SA("%s elan_spi_transaction() failed during polling",
+				__func__);
+			goto exit;
+		}
+
 		if (regdata[0] & 0x04)
 			break;
 
@@ -157,8 +163,14 @@ __staticlib_hook int elan_raw_capture(uint16_t *short_raw)
 		memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
 		memset(rx_buf, 0, ELAN_SPI_RX_BUF_SIZE);
 		tx_buf[0] = START_READ_IMAGE;
-		ret = spi_transaction(&spi_devices[0], tx_buf, 2, rx_buf,
-				      ELAN_SPI_RX_BUF_SIZE);
+
+		if (spi_transaction(&spi_devices[0], tx_buf, 2, rx_buf,
+				    ELAN_SPI_RX_BUF_SIZE) < 0) {
+			ret = ELAN_ERROR_SPI;
+			LOGE_SA("%s spi_transaction() failed at dma loop %d",
+				__func__, i);
+			goto exit;
+		}
 
 		for (int y = 0; y < IMAGE_HEIGHT / ELAN_DMA_LOOP; y++) {
 			for (int x = 0; x < IMAGE_WIDTH; x++) {
@@ -184,8 +196,21 @@ __staticlib_hook int elan_execute_calibration(void)
 	int ret = 0;
 
 	while (retry_time < REK_TIMES) {
-		elan_write_cmd(SRST);
-		elan_write_cmd(FUSE_LOAD);
+		if (elan_write_cmd(SRST) < 0) {
+			LOGE_SA("%s elan_write_cmd(SRST) failed", __func__);
+			ret = ELAN_ERROR_SPI;
+			retry_time++;
+			continue;
+		}
+
+		if (elan_write_cmd(FUSE_LOAD) < 0) {
+			LOGE_SA("%s elan_write_cmd(FUSE_LOAD) failed",
+				__func__);
+			ret = ELAN_ERROR_SPI;
+			retry_time++;
+			continue;
+		}
+
 		elan_register_initialization();
 
 		if (IC_SELECTION == EFSA80SG)
