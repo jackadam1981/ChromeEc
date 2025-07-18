@@ -100,8 +100,8 @@ enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 		return EC_ERROR_INVAL;
 	}
 
-	if (ECDH_compute_key_fips(shared_secret, shared_secret_size,
-				  public_point, &private_key) != 1) {
+	if (ECDH_compute_key(shared_secret, shared_secret_size, public_point,
+			     &private_key, NULL) == -1) {
 		return EC_ERROR_INVAL;
 	}
 
