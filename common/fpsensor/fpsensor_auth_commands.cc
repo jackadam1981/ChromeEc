@@ -105,9 +105,13 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*ecdh_key, *public_key, new_pairing_key.data(),
-		new_pairing_key.size());
+	/*
+	 * The Pairing Key is only used to produce the Session Key.
+	 * It's not used as a key for symmetric encryption. It's okay
+	 * to not apply KDF in this case.
+	 */
+	enum ec_error_list ret = generate_ecdh_shared_secret_without_kdf(
+		*ecdh_key, *public_key, new_pairing_key);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
