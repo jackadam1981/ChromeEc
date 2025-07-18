@@ -43,14 +43,15 @@ hmac_sha256(std::span<const uint8_t> key,
  *
  * @param[out] out_key buffer to hold output key material. Max size must be less
  * than or equal to 255 * 32 (SHA256_DIGEST_SIZE) bytes = 8160 bytes.
- * @param[in] ikm input keying material.
+ * @param[in] ikms input keying material.
  * @param[in] salt optional salt value (a non-secret random value).
  * @param[in] info optional context and application specific information (can be
  * a zero-length string).
  * @return true on success
  * @return false on failure
  */
-bool hkdf_sha256(std::span<uint8_t> out_key, std::span<const uint8_t> ikm,
+bool hkdf_sha256(std::span<uint8_t> out_key,
+		 std::span<const std::span<const uint8_t> > ikms,
 		 std::span<const uint8_t> salt, std::span<const uint8_t> info);
 
 /**
