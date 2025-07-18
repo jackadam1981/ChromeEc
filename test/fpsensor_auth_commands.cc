@@ -680,8 +680,7 @@ test_fp_command_read_match_secret_with_pubkey_succeed(void)
 
 	std::array<uint8_t, SHA256_DIGEST_SIZE> enc_key;
 
-	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey,
-					    enc_key.data(), enc_key.size()),
+	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey, enc_key),
 		EC_SUCCESS, "%d");
 
 	AES_KEY aes_key;
