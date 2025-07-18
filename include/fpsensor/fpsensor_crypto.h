@@ -87,6 +87,17 @@ enum ec_error_list derive_positive_match_secret(
 	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
 
 /**
+ * Derive Pairing Key encryption key
+ *
+ * @param output buffer to store Pairing Key encryption key.
+ * @param salt the salt to use in HKDF.
+ * @return EC_SUCCESS on success and error code otherwise.
+ */
+enum ec_error_list
+derive_pairing_key_encryption_key(std::span<uint8_t> output,
+				  std::span<const uint8_t> salt);
+
+/**
  * Encrypt |plaintext| using AES-GCM128.
  *
  * @param key the key to use in AES.
