@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
- /* Fan - use a prescaler for operation about 324 Hz */
+/* Fan - use a prescaler for operation about 324 Hz */
 /* Fan */
 &pwm7 {
 	status = "okay";
@@ -37,6 +37,14 @@
 	pinctrl-0 = <&pwm2_gpa2_default>;
 	pinctrl-names = "default";
 };
+
+&pwm4 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+	pinctrl-0 = <&pwm4_gpa4_default>;
+	pinctrl-names = "default";
+};
+
 
 &pwm3 {
 	status = "okay";
