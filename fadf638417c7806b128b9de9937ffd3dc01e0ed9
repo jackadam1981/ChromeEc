@@ -46,6 +46,30 @@
       },
       "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bd3bd9_4676064e",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-18T16:03:47Z",
+      "side": 1,
+      "message": "`getchipid()` is always called and always sets `instruction_set_v2 \u003d true`.\n\nAs currently implemented all checks of `if (conf-\u003einstruction_set_v2)` always return true.\n\nShould `instruction_set_v2` be removed, or should it be set based on the result of the chipid/chipver reads below?",
+      "parentUuid": "88c00bf6_3b6e209f",
+      "range": {
+        "startLine": 645,
+        "startChar": 7,
+        "endLine": 645,
+        "endChar": 25
+      },
+      "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
