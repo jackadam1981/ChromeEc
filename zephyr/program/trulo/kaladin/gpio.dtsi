@@ -136,6 +136,7 @@
 		};
 		gpio_en_slp_z: en_slp_z {
 			gpios = <&gpioh 5 GPIO_OUTPUT>;
+			no-auto-init;
 		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
 			gpios = <&gpioc 7 GPIO_INPUT>;
