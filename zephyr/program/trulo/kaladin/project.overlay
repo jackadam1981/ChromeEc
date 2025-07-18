@@ -18,6 +18,8 @@
 #include "power_signals.dtsi"
 #include "usb_typec.dtsi"
 #include "battery.dtsi"
+#include "leds_pins.dtsi"
+#include "pwm.dtsi"
 
 /* Kaladin overrides follow... */
 
