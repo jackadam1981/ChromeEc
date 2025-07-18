@@ -22,6 +22,30 @@
       },
       "revId": "b791e138b248881530d8a0a00d0b4cb2e333a111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82203f04_06bf3f47",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-18T13:21:12Z",
+      "side": 1,
+      "message": "Yeah good point, I\u0027ve been focused on npcx so far, trying to get that right but I just ran a build for ite and yeah it hits this problem first, may as well set it for the other options too.\n\nThe whole EC Kconfig hierarchy needs some more work anyway, bumping into plenty weird issues while trying to reuse the board definition from here (which I want to do mainly so I can also reuse the compiler and firmware loader stuff).\n\nAnyway, updated to include the other too.",
+      "parentUuid": "02c32214_83153b04",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "b791e138b248881530d8a0a00d0b4cb2e333a111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
