@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eac1e518_84137aba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-18T17:49:28Z",
+      "side": 1,
+      "message": "I am running them now. I believe your +2 was lost after I rebased this CL and updated it.",
+      "parentUuid": "9f15229d_bd4ac6b3",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "5d4dda32705e4b3ab927c95f4ae9be3315077a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f779131_b07ba372",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Yes, by 568 bytes (323976 - 323408), 323408 being the baseline image size after cherry picking crrev/c/6552540, the first CL in the chain",
       "parentUuid": "8f779131_b07ba372",
+      "revId": "5d4dda32705e4b3ab927c95f4ae9be3315077a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d960e8_0d140cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-18T17:49:28Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "644bc693_693f2bfb",
       "revId": "5d4dda32705e4b3ab927c95f4ae9be3315077a64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
