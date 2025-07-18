@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8204ac_0a7fa2b0",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-18T16:58:49Z",
+      "side": 1,
+      "message": "BUILD   host-usb_pe_drp_old\n  VERSION ec_version.h\n  CC      RO/common/version.o\n  CC      RO/test/fake_usbc.o\n  EXE     usb_pe_drp_old.exe\nld.lld: error: duplicate symbol: pd_dpm_request\n\u003e\u003e\u003e defined at usb_pe_drp_sm.c:1411 (/mnt/host/source/src/platform/ec/common/usbc/usb_pe_drp_sm.c:1411)\n\u003e\u003e\u003e            build/host/usb_pe_drp_old/RO/common/usbc/usb_pe_drp_sm.o:(pd_dpm_request)\n\u003e\u003e\u003e defined at fake_usbc.c:378 (/mnt/host/source/src/platform/ec/test/fake_usbc.c:378)\n\u003e\u003e\u003e            build/host/usb_pe_drp_old/RO/test/fake_usbc.o:(.text.pd_dpm_request+0x0)\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:628: build/host/usb_pe_drp_old/usb_pe_drp_old.exe] Error 1\nmake: *** [Makefile.rules:366: host-usb_pe_drp_old] Error 2\n\nTo resolve the above error I added __overridable.",
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
