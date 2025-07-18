@@ -146,8 +146,20 @@ test_static int test_hkdf_expand(void)
 		const auto &expected_okm = test_vector.okm;
 		std::vector<uint8_t> actual_okm(expected_okm.size());
 
-		TEST_ASSERT(hkdf_sha256(actual_okm, test_vector.ikm,
-					test_vector.salt, test_vector.info));
+		/*
+		 * By default, the compiler deduces static extent from built-in
+		 * arrays and std::array, but in the ikms array we can only keep
+		 * spans with dynamic extent. Tell explicitly that these spans
+		 * should have dynamic extent. See C++ std::span deduction guide
+		 * for more details.
+		 */
+		std::array ikm{
+			std::span<const uint8_t, std::dynamic_extent>{
+				test_vector.ikm },
+		};
+
+		TEST_ASSERT(hkdf_sha256(actual_okm, ikm, test_vector.salt,
+					test_vector.info));
 		TEST_ASSERT_ARRAY_EQ(expected_okm.data(), actual_okm.data(),
 				     expected_okm.size());
 	}
@@ -155,8 +167,13 @@ test_static int test_hkdf_expand(void)
 	/* OKM size too big. */
 	std::vector<uint8_t> unused_output(256 * SHA256_DIGEST_SIZE);
 	const auto &test_vector = test_vector1;
-	TEST_ASSERT(!hkdf_sha256(unused_output, test_vector.ikm,
-				 test_vector.salt, test_vector.info));
+	std::array ikm{
+		std::span<const uint8_t, std::dynamic_extent>{
+			test_vector.ikm },
+	};
+
+	TEST_ASSERT(!hkdf_sha256(unused_output, ikm, test_vector.salt,
+				 test_vector.info));
 
 	return EC_SUCCESS;
 }
