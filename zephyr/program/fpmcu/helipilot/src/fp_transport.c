@@ -15,6 +15,8 @@
 #include <fpsensor/fpsensor_detect.h>
 #include <gpio_signal.h>
 
+extern void shi_enable(void);
+
 #if !defined(CONFIG_EC_HOST_CMD_BACKEND_SHI) && \
 	!defined(CONFIG_EC_HOST_CMD_BACKEND_UART)
 BUILD_ASSERT(0, "Both backends are not enabled");
@@ -48,6 +50,7 @@ test_export_static int fp_transport_init(void)
 #endif /* CONFIG_EC_HOST_CMD_BACKEND_UART */
 #ifdef CONFIG_EC_HOST_CMD_BACKEND_SHI
 		ec_host_cmd_init(ec_host_cmd_backend_get_shi_npcx());
+		shi_enable();
 #endif /* CONFIG_EC_HOST_CMD_BACKEND_SHI */
 
 		break;
