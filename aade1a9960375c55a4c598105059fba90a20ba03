@@ -33,6 +33,52 @@
       "message": "Hi Keith and Tristan,\n\nWe still need one more CR to satisfy the Review Enforcement, could you help to CR on this CL?\n\nThanks!",
       "revId": "aade1a9960375c55a4c598105059fba90a20ba03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8cc737_f7d96d42",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,333-cf-38-a.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-18T19:40:42Z",
+      "side": 1,
+      "message": "SWD_HP_PM03068XL__TI_3S1P Battery Pack Specification_X0_20250513.pdf data sheet shows 0-45 C for start charging, 0-50 C for continuous charging.",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "aade1a9960375c55a4c598105059fba90a20ba03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa225c96_721f5470",
+        "filename": "zephyr/dts/bindings/battery/sunwoda,333-cf-3f-a.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-18T19:40:42Z",
+      "side": 1,
+      "message": "Datasheet \"SWD_HP RX03056XL_3S1P Battery Pack Specification_A05_20250124.pdf\" shows \"Charge Initiate temperature\" of 0-45 C, and Continuous Charging temp of 0-50 C.",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "aade1a9960375c55a4c598105059fba90a20ba03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
