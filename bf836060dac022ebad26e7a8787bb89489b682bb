@@ -138,6 +138,42 @@
       "message": "Hi reviewers, the CL chain CQ Dry Run PASSED, could you vote CR+2 and CQ+2? Thanks.",
       "revId": "bf836060dac022ebad26e7a8787bb89489b682bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c07a84_b2869be5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-07-18T01:57:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3255cdf4_46bd9470",
+      "revId": "bf836060dac022ebad26e7a8787bb89489b682bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "410e5738_b98b7cae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-07-18T01:57:15Z",
+      "side": 1,
+      "message": "It passed the CQ.",
+      "parentUuid": "3329eef9_fbcb9921",
+      "revId": "bf836060dac022ebad26e7a8787bb89489b682bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
