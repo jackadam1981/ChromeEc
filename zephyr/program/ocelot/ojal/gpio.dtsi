@@ -112,6 +112,10 @@
 		gpio_ec_prochot_odl: ec_prochot_odl {
 			gpios = <&gpioh 10 GPIO_OUTPUT_HIGH>;
 		};
+		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
+			gpios = <&gpioh 12 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
 		gpio_sco_caterr: sco_caterr {
 			gpios = <&gpioh 15 GPIO_INPUT>;
 		};
