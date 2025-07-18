@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcc103f3_d1e5c6c9",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-18T23:22:56Z",
+      "side": 1,
+      "message": "I think I\u0027m just interpreting as written that somehow we\u0027re setting the size to 0x80, but we\u0027re actually disabling it.\n\nSee if this matches your meaning:\n\n```\n# When  HW_STACK_PROTECTION is enabled, the NULL pointer exception page size\n# must have size greater or equal ARM_MPU_REGION_MIN_ALIGN_AND_SIZE (0x80).\n# However that MPU configuration prevents access to the NPCX ROM functions at\n# address 0x40-x0x5c. In order to keep HW_STACK_PROTECTION enabled, disable NULL\n# pointer exception handling.\n```",
+      "parentUuid": "227f0809_e71169ac",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab740f1b_6c1b44d6",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 2
