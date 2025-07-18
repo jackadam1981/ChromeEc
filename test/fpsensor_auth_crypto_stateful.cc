@@ -46,9 +46,8 @@ test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
 	uint16_t version = 1;
 	std::array<uint8_t, 32> data = input;
 
-	TEST_EQ(encrypt_data_in_place(version, info, kFakeUserId, kFakeTpmSeed,
-				      data),
-		EC_SUCCESS, "%d");
+	TEST_EQ(encrypt_pairing_key_in_place(version, info, data), EC_SUCCESS,
+		"%d");
 
 	TEST_EQ(info.struct_version, version, "%d");
 
@@ -56,8 +55,7 @@ test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
 	TEST_ASSERT_ARRAY_NE(data, input, data.size());
 
 	std::array<uint8_t, 32> output;
-	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, data, output),
-		EC_SUCCESS, "%d");
+	TEST_EQ(decrypt_pairing_key(info, data, output), EC_SUCCESS, "%d");
 
 	TEST_ASSERT_ARRAY_EQ(input, output, sizeof(input));
 
