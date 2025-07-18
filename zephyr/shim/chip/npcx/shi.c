@@ -24,7 +24,7 @@ LOG_MODULE_REGISTER(shim_cros_shi, LOG_LEVEL_DBG);
 
 #define SHI_NODE DT_NODELABEL(shi0)
 
-static void shi_enable(void)
+void shi_enable(void)
 {
 	const struct device *cros_shi_dev = DEVICE_DT_GET(SHI_NODE);
 
