@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00676fae_f7b34e8b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:41:42Z",
+      "side": 1,
+      "message": "Nit: \"Dynamic Power Sources (DPS)\"",
+      "range": {
+        "startLine": 375,
+        "startChar": 43,
+        "endLine": 375,
+        "endChar": 44
+      },
+      "revId": "ef95b15508a5a9f0b0851518b6c66fb52f258097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2353a5_5c17fcd2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:41:42Z",
+      "side": 1,
+      "message": "Nit: SOURCE_INFO_MAX_OBJECTS: SIDO would refer to one of the two objects, not all of them.",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 379,
+        "endChar": 24
+      },
+      "revId": "ef95b15508a5a9f0b0851518b6c66fb52f258097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
