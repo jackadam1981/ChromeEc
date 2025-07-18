@@ -112,10 +112,10 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	ret = encrypt_data(FP_AES_KEY_ENC_METADATA_VERSION,
-			   r->encrypted_pairing_key.info,
-			   global_context.user_id, global_context.tpm_seed,
-			   new_pairing_key, r->encrypted_pairing_key.data);
+	ret = encrypt_pairing_key(FP_AES_KEY_ENC_METADATA_VERSION,
+				  r->encrypted_pairing_key.info,
+				  new_pairing_key,
+				  r->encrypted_pairing_key.data);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
@@ -151,9 +151,9 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	ret = decrypt_data(params->encrypted_pairing_key.info,
-			   global_context.user_id, global_context.tpm_seed,
-			   params->encrypted_pairing_key.data, pairing_key);
+	ret = decrypt_pairing_key(params->encrypted_pairing_key.info,
+				  params->encrypted_pairing_key.data,
+				  pairing_key);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("load_pairing_key: Failed to decrypt pairing key");
 		return EC_RES_UNAVAILABLE;

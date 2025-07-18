@@ -141,3 +141,28 @@ ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_decrypt_data_in_place)
 
 	zassert_mem_equal(input.data(), output.data(), sizeof(input));
 }
+
+ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_decrypt_pairing_key)
+{
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, FP_PAIRING_KEY_LEN> input = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2
+	};
+	uint16_t version = 1;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> enc_data{};
+
+	zassert_equal(encrypt_pairing_key(version, info, input, enc_data),
+		      EC_SUCCESS);
+
+	zassert_equal(info.struct_version, version);
+
+	/* The encrypted data should not be the same as the input. */
+	zassert_false(memcmp(enc_data.data(), input.data(), enc_data.size()) ==
+		      0);
+
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> output{};
+	zassert_equal(decrypt_pairing_key(info, enc_data, output), EC_SUCCESS);
+
+	zassert_mem_equal(input.data(), output.data(), sizeof(input));
+}

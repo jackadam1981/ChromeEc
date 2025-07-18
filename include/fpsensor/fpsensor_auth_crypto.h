@@ -98,6 +98,30 @@ encrypt_data_in_place(uint16_t version,
 }
 
 /**
+ * Encrypt the Pairing Key with a specific version of encryption method and
+ * output the metadata and encrypted data.
+ *
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the rollback
+ * secret and optional OTP key.
+ *
+ * Please note that this function SHOULD NOT be used for anything other than
+ * Pairing Key.
+ *
+ * @param[in] version the version of the encryption method
+ * @param[out] info the metadata of the encryption output
+ * @param[in] data the data that need to be encrypted
+ * @param[out] enc_data the encrypted data
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+enum ec_error_list
+encrypt_pairing_key(uint16_t version,
+		    struct fp_auth_command_encryption_metadata &info,
+		    std::span<const uint8_t, FP_PAIRING_KEY_LEN> data,
+		    std::span<uint8_t, FP_PAIRING_KEY_LEN> enc_data);
+
+/**
  * Decrypt the encrypted data.
  *
  * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
@@ -117,6 +141,27 @@ decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
 	     std::span<const uint8_t> enc_data, std::span<uint8_t> data);
+
+/**
+ * Decrypt the encrypted pairing key.
+ *
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the rollback
+ * secret and optional OTP key.
+ *
+ * Please note that this function SHOULD NOT be used for anything other than
+ * Pairing Key.
+ *
+ * @param[in] info the metadata of the encryption output
+ * @param[in] enc_data the encrypted data
+ * @param[out] data the decrypted data
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+enum ec_error_list
+decrypt_pairing_key(const struct fp_auth_command_encryption_metadata &info,
+		    std::span<const uint8_t, FP_PAIRING_KEY_LEN> enc_data,
+		    std::span<uint8_t, FP_PAIRING_KEY_LEN> data);
 
 /**
  * Generate the ECDH shared secret from private key and public key.

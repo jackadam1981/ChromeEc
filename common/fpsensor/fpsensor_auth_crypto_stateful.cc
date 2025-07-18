@@ -54,6 +54,36 @@ encrypt_data(uint16_t version, struct fp_auth_command_encryption_metadata &info,
 }
 
 enum ec_error_list
+encrypt_pairing_key(uint16_t version,
+		    struct fp_auth_command_encryption_metadata &info,
+		    std::span<const uint8_t, FP_PAIRING_KEY_LEN> data,
+		    std::span<uint8_t, FP_PAIRING_KEY_LEN> enc_data)
+{
+	if (version != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	info.struct_version = version;
+	RAND_bytes(info.nonce, sizeof(info.nonce));
+	RAND_bytes(info.encryption_salt, sizeof(info.encryption_salt));
+
+	FpEncryptionKey enc_key;
+	enum ec_error_list ret = derive_pairing_key_encryption_key(
+		enc_key, info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+
+	ret = aes_128_gcm_encrypt(enc_key, data, enc_data, info.nonce,
+				  info.tag);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list
 decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
@@ -74,6 +104,33 @@ decrypt_data(const struct fp_auth_command_encryption_metadata &info,
 	if (enc_data.size() != data.size()) {
 		CPRINTS("Data size mismatch");
 		return EC_ERROR_OVERFLOW;
+	}
+
+	ret = aes_128_gcm_decrypt(enc_key, data, enc_data, info.nonce,
+				  info.tag);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to decipher data");
+		return ret;
+	}
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list
+decrypt_pairing_key(const struct fp_auth_command_encryption_metadata &info,
+		    std::span<const uint8_t, FP_PAIRING_KEY_LEN> enc_data,
+		    std::span<uint8_t, FP_PAIRING_KEY_LEN> data)
+{
+	if (info.struct_version != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	FpEncryptionKey enc_key;
+	enum ec_error_list ret = derive_pairing_key_encryption_key(
+		enc_key, info.encryption_salt);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to derive key");
+		return ret;
 	}
 
 	ret = aes_128_gcm_decrypt(enc_key, data, enc_data, info.nonce,
