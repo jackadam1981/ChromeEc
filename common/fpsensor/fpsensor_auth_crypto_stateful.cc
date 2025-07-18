@@ -20,11 +20,9 @@
 #include <array>
 
 enum ec_error_list
-encrypt_data_in_place(uint16_t version,
-		      struct fp_auth_command_encryption_metadata &info,
-		      std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-		      std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-		      std::span<uint8_t> data)
+encrypt_pairing_key_in_place(uint16_t version,
+			     struct fp_auth_command_encryption_metadata &info,
+			     std::span<uint8_t> data)
 {
 	if (version != 1) {
 		return EC_ERROR_INVAL;
@@ -35,8 +33,8 @@ encrypt_data_in_place(uint16_t version,
 	RAND_bytes(info.encryption_salt, sizeof(info.encryption_salt));
 
 	FpEncryptionKey enc_key;
-	enum ec_error_list ret = derive_encryption_key(
-		enc_key, info.encryption_salt, user_id, tpm_seed);
+	enum ec_error_list ret = derive_pairing_key_encryption_key(
+		enc_key, info.encryption_salt);
 	if (ret != EC_SUCCESS) {
 		return ret;
 	}
@@ -51,18 +49,16 @@ encrypt_data_in_place(uint16_t version,
 }
 
 enum ec_error_list
-decrypt_data(const struct fp_auth_command_encryption_metadata &info,
-	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-	     std::span<const uint8_t> enc_data, std::span<uint8_t> data)
+decrypt_pairing_key(const struct fp_auth_command_encryption_metadata &info,
+		    std::span<const uint8_t> enc_data, std::span<uint8_t> data)
 {
 	if (info.struct_version != 1) {
 		return EC_ERROR_INVAL;
 	}
 
 	FpEncryptionKey enc_key;
-	enum ec_error_list ret = derive_encryption_key(
-		enc_key, info.encryption_salt, user_id, tpm_seed);
+	enum ec_error_list ret = derive_pairing_key_encryption_key(
+		enc_key, info.encryption_salt);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("Failed to derive key");
 		return ret;

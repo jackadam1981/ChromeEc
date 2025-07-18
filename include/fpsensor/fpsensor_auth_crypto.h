@@ -49,37 +49,31 @@ bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 						   size_t privkey_size);
 
 /**
- * Encrypt the data in place with a specific version of encryption method and
- * output the metadata and encrypted data.
+ * Encrypt the Pairing Key in place with a specific version of encryption method
+ * and output the metadata and encrypted data.
  *
- * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
- * seed, rollback secret and user_id.
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the rollback
+ * secret and optional OTP key.
  *
  * @param[in] version the version of the encryption method
  * @param[out] info the metadata of the encryption output
- * @param[in] user_id the user_id used for deriving secret
- * @param[in] tpm_seed the seed from the TPM for deriving secret
  * @param[in,out] data the data that need to be encrypted in place
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
 enum ec_error_list
-encrypt_data_in_place(uint16_t version,
-		      struct fp_auth_command_encryption_metadata &info,
-		      std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-		      std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-		      std::span<uint8_t> data);
+encrypt_pairing_key_in_place(uint16_t version,
+			     struct fp_auth_command_encryption_metadata &info,
+			     std::span<uint8_t> data);
 
 /**
- * Decrypt the encrypted data.
+ * Decrypt the encrypted pairing key.
  *
- * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
- * seed, rollback secret and user_id.
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the rollback
+ * secret and optional OTP key.
  *
  * @param[in] info the metadata of the encryption output
- * @param[in] user_id the user_id used for deriving secret
- * @param[in] tpm_seed the seed from the TPM for deriving secret
  * @param[in] enc_data the encrypted data
  * @param[out] data the decrypted data
  *
@@ -87,10 +81,8 @@ encrypt_data_in_place(uint16_t version,
  * @return EC_ERROR_* on error
  */
 enum ec_error_list
-decrypt_data(const struct fp_auth_command_encryption_metadata &info,
-	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-	     std::span<const uint8_t> enc_data, std::span<uint8_t> data);
+decrypt_pairing_key(const struct fp_auth_command_encryption_metadata &info,
+		    std::span<const uint8_t> enc_data, std::span<uint8_t> data);
 
 /**
  * Generate the ECDH shared secret from private key and public key.
