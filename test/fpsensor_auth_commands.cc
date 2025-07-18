@@ -16,6 +16,7 @@
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/obj_mac.h"
+#include "openssl/sha.h"
 #include "sha256.h"
 #include "test_util.h"
 #include "util.h"
@@ -680,9 +681,11 @@ test_fp_command_read_match_secret_with_pubkey_succeed(void)
 
 	std::array<uint8_t, SHA256_DIGEST_SIZE> enc_key;
 
-	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey,
-					    enc_key.data(), enc_key.size()),
+	TEST_EQ(generate_ecdh_shared_secret_without_kdf(*ecdh_key, *resp_pubkey,
+							enc_key),
 		EC_SUCCESS, "%d");
+
+	SHA256(enc_key.data(), enc_key.size(), enc_key.data());
 
 	AES_KEY aes_key;
 	std::array<uint8_t, FP_CONTEXT_USERID_IV_LEN> aes_iv;

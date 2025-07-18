@@ -11,6 +11,7 @@
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/obj_mac.h"
+#include "openssl/sha.h"
 #include "rollback.h"
 #include "test_util.h"
 #include "util.h"
@@ -127,7 +128,8 @@ test_static enum ec_error_list test_fp_create_ec_key_from_privkey_fail(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_generate_ecdh_shared_secret(void)
+test_static enum ec_error_list
+test_fp_generate_ecdh_shared_secret_without_kdf(void)
 {
 	struct fp_elliptic_curve_public_key pubkey = {
 		.x = {
@@ -158,16 +160,15 @@ test_static enum ec_error_list test_fp_generate_ecdh_shared_secret(void)
 	TEST_NE(private_key.get(), nullptr, "%p");
 
 	std::array<uint8_t, 32> shared_secret;
-	TEST_EQ(generate_ecdh_shared_secret(*private_key, *public_key,
-					    shared_secret.data(),
-					    shared_secret.size()),
+	TEST_EQ(generate_ecdh_shared_secret_without_kdf(
+			*private_key, *public_key, shared_secret),
 		EC_SUCCESS, "%d");
 
 	std::array<uint8_t, 32> expected_result = {
-		0x46, 0x86, 0xca, 0x75, 0xce, 0xa1, 0xde, 0x23,
-		0x48, 0xb3, 0x0b, 0xfc, 0xd7, 0xbe, 0x7a, 0xa0,
-		0x33, 0x17, 0x6c, 0x97, 0xc6, 0xa7, 0x70, 0x7c,
-		0xd4, 0x2c, 0xfd, 0xc0, 0xba, 0xc1, 0x47, 0x01,
+		0x4d, 0x1f, 0x52, 0x54, 0xf8, 0x75, 0xf1, 0xee,
+		0x00, 0x48, 0x6d, 0xe8, 0x50, 0x2f, 0xd6, 0xba,
+		0xc4, 0x9e, 0xa4, 0xd3, 0x2c, 0x33, 0x50, 0x42,
+		0x40, 0x91, 0xaf, 0xe8, 0xdd, 0x07, 0x90, 0x18,
 	};
 
 	TEST_ASSERT_ARRAY_EQ(shared_secret, expected_result,
@@ -332,10 +333,11 @@ test_static enum ec_error_list test_fp_encrypt_data_with_ecdh_key_in_place(void)
 	TEST_NE(output_key.get(), nullptr, "%p");
 
 	std::array<uint8_t, 32> share_secret;
-	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *output_key,
-					    share_secret.data(),
-					    share_secret.size()),
+	TEST_EQ(generate_ecdh_shared_secret_without_kdf(*ecdh_key, *output_key,
+							share_secret),
 		EC_SUCCESS, "%d");
+
+	SHA256(share_secret.data(), share_secret.size(), share_secret.data());
 
 	AES_KEY aes_key;
 	TEST_EQ(AES_set_encrypt_key(share_secret.data(), 256, &aes_key), 0,
@@ -364,7 +366,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_create_ec_key_from_privkey);
 	RUN_TEST(test_fp_create_ec_key_from_privkey_fail);
 	RUN_TEST(test_fp_create_pubkey_from_ec_key);
-	RUN_TEST(test_fp_generate_ecdh_shared_secret);
+	RUN_TEST(test_fp_generate_ecdh_shared_secret_without_kdf);
 	RUN_TEST(test_fp_generate_gsc_session_key);
 	RUN_TEST(test_fp_generate_gsc_session_key_fail);
 	RUN_TEST(test_fp_decrypt_data_with_gsc_session_key_in_place);
