@@ -22,6 +22,30 @@
       },
       "revId": "c08919be857580e232d201577fa89990467ef81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1263f58_bacd0ac2",
+        "filename": "zephyr/shim/chip/npcx/otp_key.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-18T23:12:42Z",
+      "side": 1,
+      "message": "In the name of not mentioning EC in the Zephyr code, how about I make the EC versions symlinks to the Zephyr code instead? Then there is no reference or link to EC in the Zephyr code.",
+      "parentUuid": "7fc54ac4_c356949d",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "c08919be857580e232d201577fa89990467ef81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
