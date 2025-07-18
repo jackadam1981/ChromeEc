@@ -227,6 +227,63 @@ derive_encryption_key(std::span<uint8_t> out_key, std::span<const uint8_t> salt,
 	return derive_key_with_tpm_seed(out_key, salt, tpm_seed, info);
 }
 
+static enum ec_error_list
+derive_key_without_tpm_seed(std::span<uint8_t> output,
+			    std::span<const uint8_t> salt,
+			    std::span<const uint8_t> info)
+{
+	CleanseWrapper<std::array<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> >
+		rollback_entropy;
+#ifdef CONFIG_OTP_KEY
+	CleanseWrapper<std::array<uint8_t, OTP_KEY_SIZE_BYTES> > otp_key;
+#endif
+	enum ec_error_list ret;
+
+	ret = get_rollback_entropy(rollback_entropy);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+
+#ifdef CONFIG_OTP_KEY
+	ret = get_otp_key(otp_key);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+#endif
+
+	/*
+	 * The IKM consists of rollback entropy and optional OTP key.
+	 *
+	 * By default, the compiler deduces static extent from built-in arrays
+	 * and std::array, but in the ikms array we can only keep spans with
+	 * dynamic extent. Tell explicitly that these spans should have dynamic
+	 * extent. See C++ std::span deduction guide for more details.
+	 */
+	std::array ikms{
+		std::span<const uint8_t, std::dynamic_extent>{
+			rollback_entropy },
+#ifdef CONFIG_OTP_KEY
+		std::span<const uint8_t, std::dynamic_extent>{ otp_key },
+#endif
+	};
+
+	if (!hkdf_sha256(output, ikms, salt, info)) {
+		CPRINTS("Failed to perform HKDF");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list
+derive_pairing_key_encryption_key(std::span<uint8_t> output,
+				  std::span<const uint8_t> salt)
+{
+	static constexpr uint8_t info[] = "FPMCU & FingerGuard pairing key";
+
+	return derive_key_without_tpm_seed(output, salt, info);
+}
+
 enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,
 				       std::span<const uint8_t> plaintext,
 				       std::span<uint8_t> ciphertext,
