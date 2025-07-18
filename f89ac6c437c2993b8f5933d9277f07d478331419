@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ec9e51c_2f28bfba",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-18T23:30:59Z",
+      "side": 1,
+      "message": "LGTM and yes, will update after resolving other threads",
+      "parentUuid": "fcc103f3_d1e5c6c9",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab740f1b_6c1b44d6",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 2
