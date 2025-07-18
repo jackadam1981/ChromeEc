@@ -13,7 +13,7 @@
 
 &spi0 {
 	status = "okay";
-	pinctrl-0 = <&spi_smosi_default &spi_smiso_default &spi_ssck_default>;
+	pinctrl-0 = <&spi_ssce0_default &spi_smosi_default>;
 	pinctrl-names = "default";
 
 	led_strip_spi: ws2812@0 {

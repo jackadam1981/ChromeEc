@@ -157,8 +157,6 @@
 			<&gpioh 3 GPIO_ODR_HIGH>,
 			<&gpiod 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
-			<&gpiog 2 GPIO_INPUT_PULL_DOWN>,
-			<&gpioh 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpioi 1 GPIO_INPUT_PULL_DOWN>,
@@ -744,4 +742,8 @@
 &usba_port_enable_list {
 	enable-pins = <&en_pp5000_usb_a0_vbus
 		       &en_pp5000_usb_a1_vbus_x>;
+};
+
+&gpio_ec_cbi_wp {
+	gpios = <&gpioh 0 GPIO_OUTPUT_LOW>;
 };
