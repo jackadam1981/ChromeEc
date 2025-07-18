@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4036c0a_b58a023b",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-07-18T15:11:33Z",
+      "side": 1,
+      "message": "@honscheid@google.com\n\nHi Tristan, this signal GPIOD1 is also open drain; fix on this CL or add to a separate one?",
+      "revId": "ad88da53a2898507f132a3311ecc07503e7996c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
