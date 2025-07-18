@@ -22,6 +22,30 @@
       },
       "revId": "9be2c64a680e079c1ddf2649d88a810c5b038aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828a7ce1_6deac119",
+        "filename": "zephyr/test/hwtest/src/ram_lock.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-18T00:06:23Z",
+      "side": 1,
+      "message": "I believe I lost your +2 after adding the `migrated_files.sh`",
+      "parentUuid": "cbddab1f_42c8f02b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "9be2c64a680e079c1ddf2649d88a810c5b038aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
