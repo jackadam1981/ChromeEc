@@ -16,6 +16,24 @@
       "message": "I\u0027m currently running firmware.SuspendStress.fw_qual (2500 iterations) against this change.  I\u0027ll update the commit message when completed.",
       "revId": "504112453cf4f2af58cb044cae8630c5f51320a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e81602f_aeba2b9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-18T22:39:11Z",
+      "side": 1,
+      "message": "After resolving some network issues, this change has currently passed 640+ iterations of the firmware.SuspendStress.fw_qual with no failures and is still running.",
+      "parentUuid": "56b0539d_2644ea99",
+      "revId": "504112453cf4f2af58cb044cae8630c5f51320a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
