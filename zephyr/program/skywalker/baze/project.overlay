@@ -27,6 +27,12 @@
 		};
 	};
 
+	gpio-interrupts {
+		int_imu: ec-imu {
+			handler = "bma4xx_interrupt";
+		};
+	};
+
 	cros-keyscan {
 		compatible = "cros-ec,keyscan";
 
