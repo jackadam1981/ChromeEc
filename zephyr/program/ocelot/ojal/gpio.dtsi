@@ -28,6 +28,9 @@
         cse_early_rec_sw: ec-cse-early-sw {
             gpios = <&gpioa 15 GPIO_INPUT>; /* need to check input or output and voltage*/
         };
+        gpio_en_pp5000_s5: en_pp5000_s5 { /* ec_5valw_en */
+            gpios = <&gpiob 3 GPIO_OUTPUT_LOW>;
+        };
         gpio_soc_ec_int_l: soc_ec_int_l {
             gpios = <&gpiob 5 GPIO_ODR_HIGH>;
         };
@@ -41,6 +44,9 @@
         gpio_ec_i2c_pd_int_l: ec_i2c_pd_int_l {
             gpios = <&gpiob 11 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
         };
+        gpio_vr_pwrgd: vr_pwrgd {
+            gpios = <&gpiob 12 GPIO_INPUT>;
+        };
         gpio_ec_wp_odl: ec_wp_odl { /* SPI_WP_H1 */
             gpios = <&gpiob 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
         };
@@ -49,6 +55,9 @@
         };
         gpio_en_z1_rails: en_z1_rails {	/* PRIM_VR_EN, EN_PP3300_Z1 */
             gpios = <&gpioc 8 GPIO_OUTPUT_HIGH>;
+        };
+        gpio_en_pp3300_s5: en_pp3300_s5 { /* EC_PRIM_RAIL_EN */
+            gpios = <&gpiod 5 GPIO_ODR_HIGH>;
         };
         gpio_soc_kb_matrix: soc_kb_matrix {
             gpios = <&gpiof 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
@@ -87,12 +96,28 @@
         gpio_ec_batt_led: ec_batt_led { /* PM_BAT_STATUS_LED1 */
             gpios = <&gpiog 1 GPIO_OUTPUT_HIGH>;
         };
+        gpio_all_sys_pwrgd: all_sys_pwrgd {
+            gpios = <&gpiog 3 GPIO_OUTPUT_LOW>;
+        };
+        gpio_sys_rst_odl: sys_rst_odl {
+            gpios = <&gpiog 6 GPIO_ODR_HIGH>;
+        };
         gpio_ccd_mode_odl: ccd_mode_odl {
             gpios = <&gpiog 7 GPIO_INPUT>;
             enum-name = "GPIO_CCD_MODE_ODL";
         };
+        gpio_rsmrst_pwrgd: rsmrst_pwrgd {
+            gpios = <&gpiog 8 GPIO_INPUT>;
+            enum-name = "GPIO_PG_EC_RSMRST_ODL";
+        };
         gpio_ec_fan_en: ec_fan_en {	/* TODO: check HW */
             gpios = <&gpiog 9 GPIO_OUTPUT_LOW>;
+        };
+        gpio_ec_soc_pch_pwrok_od: ec_soc_pch_pwrok_od {
+            gpios = <&gpiog 12 GPIO_OUTPUT_LOW>;
+        };
+        gpio_ec_soc_sys_pwrok: ec_soc_sys_pwrok {
+            gpios = <&gpiog 13 GPIO_OUTPUT_LOW>;
         };
         gpio_soc_enbkl: soc_enbkl {
             gpios = <&gpiog 15 GPIO_INPUT>;
@@ -111,6 +136,16 @@
         };
         gpio_ec_prochot_odl: ec_prochot_odl {
             gpios = <&gpioh 10 GPIO_OUTPUT_HIGH>;
+        };
+        gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
+            gpios = <&gpioh 12 GPIO_ODR_HIGH>;
+            enum-name = "GPIO_PCH_PWRBTN_L";
+        };
+        gpio_slp_s0_l: slp_s0_l {
+            gpios = <&gpioh 13 GPIO_INPUT>;
+        };
+        gpio_ec_soc_rsmrst_l: ec_soc_rsmrst_l {
+            gpios = <&gpioh 14 GPIO_OUTPUT_LOW>;
         };
         gpio_sco_caterr: sco_caterr {
             gpios = <&gpioh 15 GPIO_INPUT>;
