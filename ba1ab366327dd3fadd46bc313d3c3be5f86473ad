@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ce10a9_2beff932",
+        "filename": "docs/zephyr/zephyr_hibernate.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-18T22:57:41Z",
+      "side": 1,
+      "message": "Can we add a clarification that EC hibernation has nothing to do with AP power states (such as S4 hibernation)?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "ba1ab366327dd3fadd46bc313d3c3be5f86473ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
