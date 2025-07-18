@@ -8,6 +8,7 @@
 #include "ec_commands.h"
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
 #include "fpsensor/fpsensor_template_state.h"
 #include "mock/fpsensor_state_mock.h"
@@ -16,6 +17,7 @@
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/obj_mac.h"
+#include "openssl/rand.h"
 #include "sha256.h"
 #include "test_util.h"
 #include "util.h"
@@ -42,6 +44,36 @@ check_seed_set_result(const enum ec_status rv, const uint32_t expected,
 		ccprintf("%s:%s(): rv = %d, seed is set: %d\n", __FILE__,
 			 __func__, rv, actual);
 		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list
+encrypt_data(uint16_t version, struct fp_auth_command_encryption_metadata &info,
+	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
+	     std::span<const uint8_t> data, std::span<uint8_t> enc_data)
+{
+	if (version != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	info.struct_version = version;
+	RAND_bytes(info.nonce, sizeof(info.nonce));
+	RAND_bytes(info.encryption_salt, sizeof(info.encryption_salt));
+
+	FpEncryptionKey enc_key;
+	enum ec_error_list ret = derive_encryption_key(
+		enc_key, info.encryption_salt, user_id, tpm_seed);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+
+	ret = aes_128_gcm_encrypt(enc_key, data, enc_data, info.nonce,
+				  info.tag);
+	if (ret != EC_SUCCESS) {
+		return ret;
 	}
 
 	return EC_SUCCESS;
