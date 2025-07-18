@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d54f10_fb8428ed",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:33:05Z",
+      "side": 1,
+      "message": "I think ideally we wouldn\u0027t need it, because each test would clearly define which stubs it uses. In this test framework, the better way to do that is the `common/mock` files, and `fake_usbc.c` is the old way we\u0027re trying to move away from. You\u0027ll note that the functions in `common/mock` are not generally `__overridable`.\n\nHowever, conversion would take some work, and you can see from the contents of this file that you\u0027re not the first person to run into this. I think ultimately the best thing to do for the tests that use `fake_usbc.c` would be to add mocks to the mock list until we can remove `fake_usbc.o` from the binary. Even better might be to reimplement the tests in the Zephyr framework.\n\nBut if this works, you don\u0027t need to do any of that in this CL.",
+      "parentUuid": "6d8204ac_0a7fa2b0",
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df8592d7_0aa6a3d7",

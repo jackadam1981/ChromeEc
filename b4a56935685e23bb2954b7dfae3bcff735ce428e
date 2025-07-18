@@ -16,6 +16,24 @@
       "message": "BUILD   host-usb_pe_drp\n  VERSION ec_version.h\n  CC      RO/common/mock/tcpc_mock.o\n  CC      RO/common/mock/usb_pd_dpm_mock.o\n  CC      RO/common/version.o\n  EXE     usb_pe_drp.exe\nld.lld: error: duplicate symbol: pd_dpm_request\n\u003e\u003e\u003e defined at usb_pd_dpm_mock.c:128 (/mnt/host/source/src/platform/ec/common/mock/usb_pd_dpm_mock.c:128)\n\u003e\u003e\u003e            build/host/usb_pe_drp/RO/common/mock/usb_pd_dpm_mock.o:(pd_dpm_request)\n\u003e\u003e\u003e defined at usb_pe_drp_sm.c:1411 (/mnt/host/source/src/platform/ec/common/usbc/usb_pe_drp_sm.c:1411)\n\u003e\u003e\u003e            build/host/usb_pe_drp/RO/common/usbc/usb_pe_drp_sm.o:(.text.pd_dpm_request+0x0)\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:628: build/host/usb_pe_drp/usb_pe_drp.exe] Error 1\nmake: *** [Makefile.rules:366: host-usb_pe_drp] Error 2\n\nOn adding __overridable the above error is getting resolved, is it fine to add here?",
       "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407c5c4f_d9741b8e",
+        "filename": "common/mock/usb_pd_dpm_mock.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:33:05Z",
+      "side": 1,
+      "message": "I\u0027m assuming that this particular `__overridable` was ultimately unnecessary. If it is necessary, I think that\u0027s probably a clue that this file is still not the right place for this function. In the test that fails to link, the PE is the unit under test, and this file helps it build. But the PE contains the real definition of this function. Maybe `common/mock/usb_pe_sm_mock.c` would be more appropriate?",
+      "parentUuid": "ad11ffc0_86f6e55a",
+      "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
