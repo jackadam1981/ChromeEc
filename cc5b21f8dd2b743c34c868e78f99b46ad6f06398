@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b7a4e54_3065a305",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-18T21:41:52Z",
+      "side": 1,
+      "message": "I think you can leave MKBP enabled, but you need to set the delivery mechanism to `CONFIG_PLATFORM_EC_MKBP_USE_GPIO_AND_HOST_EVENT`.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "cc5b21f8dd2b743c34c868e78f99b46ad6f06398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
