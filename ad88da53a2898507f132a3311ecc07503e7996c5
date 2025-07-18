@@ -16,6 +16,24 @@
       "message": "@honscheid@google.com\n\nHi Tristan, this signal GPIOD1 is also open drain; fix on this CL or add to a separate one?",
       "revId": "ad88da53a2898507f132a3311ecc07503e7996c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320e8d40_bfda1c02",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-18T18:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4036c0a_b58a023b",
+      "revId": "ad88da53a2898507f132a3311ecc07503e7996c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
