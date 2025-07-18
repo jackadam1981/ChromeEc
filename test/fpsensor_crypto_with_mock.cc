@@ -22,12 +22,6 @@
 #include <algorithm>
 #include <array>
 
-#ifdef CONFIG_OTP_KEY
-constexpr size_t IKM_SIZE_BYTES = 96;
-#else
-constexpr size_t IKM_SIZE_BYTES = 64;
-#endif
-
 extern enum ec_error_list
 get_rollback_entropy(std::span<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> output);
 
@@ -35,10 +29,6 @@ get_rollback_entropy(std::span<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> output);
 extern enum ec_error_list
 get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> output);
 #endif
-
-extern enum ec_error_list
-get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
 
 #include <stdbool.h>
 
@@ -225,90 +215,6 @@ test_static int test_get_otp_success(void)
 #else
 int test_get_otp_success(void);
 #endif
-
-test_static int test_get_ikm_failure_seed_not_set(void)
-{
-	std::array<uint8_t, IKM_SIZE_BYTES> ikm;
-	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed{};
-
-	TEST_ASSERT(get_ikm(ikm, tpm_seed) == EC_ERROR_ACCESS_DENIED);
-	return EC_SUCCESS;
-}
-
-test_static int test_get_ikm_failure_cannot_get_rollback_secret(void)
-{
-	std::array<uint8_t, IKM_SIZE_BYTES> ikm;
-
-	/* Given that the TPM seed has been set. */
-	TEST_ASSERT(!bytes_are_trivial(default_fake_tpm_seed,
-				       sizeof(default_fake_tpm_seed)));
-
-	/* GIVEN that reading the rollback secret will fail. */
-	mock_ctrl_rollback.get_secret_fail = true;
-
-	/* THEN get_ikm should fail. */
-	TEST_ASSERT(get_ikm(ikm, default_fake_tpm_seed) ==
-		    EC_ERROR_HW_INTERNAL);
-
-	/*
-	 * Enable get_rollback_secret to succeed before returning from this
-	 * test function.
-	 */
-	mock_ctrl_rollback.get_secret_fail = false;
-
-	return EC_SUCCESS;
-}
-
-test_static int test_get_ikm_success(void)
-{
-	std::array<uint8_t, IKM_SIZE_BYTES> ikm;
-
-#ifdef CONFIG_OTP_KEY
-	/*
-	 * Expected ikm is the concatenation of the rollback secret, the
-	 * seed from the TPM and the OTP key.
-	 */
-	constexpr std::array<uint8_t, IKM_SIZE_BYTES> expected_ikm = {
-		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
-		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
-		0xca, 0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d,
-		0x59, 0x14, 0xd9, 0x71, 0xaf, 0xc4, 0xcd, 0x36, 0xe3, 0x60,
-		0xf8, 0x5a, 0xa0, 0xa6, 0x2c, 0xb3, 0xf5, 0xe2, 0xeb, 0xb9,
-		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
-		0xcc, 0x23, 0xb9, 0xe7, 0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3,
-		0x85, 0xc7, 0x6b, 0x78, 0xd4, 0x6e, 0x0d, 0x6c, 0xcc, 0x75,
-		0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7, 0x80, 0x10, 0x79, 0xfa,
-		0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d
-	};
-#else
-	/*
-	 * Expected ikm is the concatenation of the rollback secret and
-	 * the seed from the TPM.
-	 */
-	constexpr std::array<uint8_t, IKM_SIZE_BYTES> expected_ikm = {
-		0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f, 0x0d, 0xb6,
-		0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1,
-		0xca, 0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d,
-		0x59, 0x14, 0xd9, 0x71, 0xaf, 0xc4, 0xcd, 0x36, 0xe3, 0x60,
-		0xf8, 0x5a, 0xa0, 0xa6, 0x2c, 0xb3, 0xf5, 0xe2, 0xeb, 0xb9,
-		0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79, 0x82, 0xce, 0x06, 0x3f,
-		0xcc, 0x23, 0xb9, 0xe7
-	};
-#endif
-
-	/* GIVEN that the TPM seed has been set. */
-	TEST_ASSERT(!bytes_are_trivial(default_fake_tpm_seed,
-				       sizeof(default_fake_tpm_seed)));
-
-	/* GIVEN that reading the rollback secret will succeed. */
-	mock_ctrl_rollback.get_secret_fail = false;
-
-	/* THEN get_ikm will succeed. */
-	TEST_ASSERT(get_ikm(ikm, default_fake_tpm_seed) == EC_SUCCESS);
-	TEST_ASSERT_ARRAY_EQ(ikm, expected_ikm, IKM_SIZE_BYTES);
-
-	return EC_SUCCESS;
-}
 
 test_static int test_derive_encryption_key_failure_seed_not_set(void)
 {
@@ -838,8 +744,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_derive_positive_match_secret_fail_seed_not_set);
 	RUN_TEST(test_get_rollback_entropy_failure_cannot_get_rollback_secret);
 	RUN_TEST(test_get_rollback_entropy_success);
-	RUN_TEST(test_get_ikm_failure_seed_not_set);
-	RUN_TEST(test_get_ikm_failure_cannot_get_rollback_secret);
 
 	/*
 	 * Set the OTP key here since the following tests require it.
@@ -850,7 +754,6 @@ void run_test(int argc, const char **argv)
 		RUN_TEST(test_get_otp_success);
 	}
 
-	RUN_TEST(test_get_ikm_success);
 	RUN_TEST(test_derive_new_pos_match_secret);
 	RUN_TEST(test_derive_positive_match_secret_fail_rollback_fail);
 	RUN_TEST(test_derive_positive_match_secret_fail_salt_trivial);
