@@ -50,20 +50,20 @@
 		/*
 		 * FW_CONFIG field to difined the number of mainboard type-c port.
 		 */
-		mb_usb_c {
-			enum-name = "FW_MB_USB_C";
+		usbc-ports {
+			enum-name = "USBC_PORTS";
 			start = <2>;
 			size = <1>;
 
-			mb_usb_c_1 {
+			one-port {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_MB_USB_C_PORT_1";
+				enum-name = "ONE_PORT";
 				value = <0>;
 				default;
 			};
-			mb_usb_c_2 {
+			two-ports {
 				compatible = "cros-ec,cbi-fw-config-value";
-				enum-name = "FW_MB_USB_C_PORT_2";
+				enum-name = "TWO_PORTS";
 				value = <1>;
 			};
 		};
