@@ -118,6 +118,30 @@
       },
       "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fae6395_999ade33",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-18T05:36:25Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com, the proposed structure looks good to me and this change will be align with other comments too. \n@caveh@chromium.org, @keithshort@chromium.org, @deepti.deshatty@intel.corp-partner.google.com, please share your thoughts on the same.",
+      "parentUuid": "32decb56_cfdfbe9e",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
