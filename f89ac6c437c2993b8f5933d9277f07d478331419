@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "227f0809_e71169ac",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-18T23:17:15Z",
+      "side": 1,
+      "message": "Re-reading and going back through b/421472949, yes, I still think it is accurate. Please correct if I\u0027m wrong. You could also argue there is too much detail, but my understanding of the complete dependency chain is described as simply as possible. Open to suggesion on wording changes or condensing",
+      "parentUuid": "349c1802_647c5e96",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab740f1b_6c1b44d6",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 2
