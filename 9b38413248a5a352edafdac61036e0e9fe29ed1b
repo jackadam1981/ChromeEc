@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d387bd0_67739551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:20:56Z",
+      "side": 1,
+      "message": "This looks right to me. Let\u0027s see what the builder says.",
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d8204ac_0a7fa2b0",
@@ -14,6 +31,52 @@
       "writtenOn": "2025-07-18T16:58:49Z",
       "side": 1,
       "message": "BUILD   host-usb_pe_drp_old\n  VERSION ec_version.h\n  CC      RO/common/version.o\n  CC      RO/test/fake_usbc.o\n  EXE     usb_pe_drp_old.exe\nld.lld: error: duplicate symbol: pd_dpm_request\n\u003e\u003e\u003e defined at usb_pe_drp_sm.c:1411 (/mnt/host/source/src/platform/ec/common/usbc/usb_pe_drp_sm.c:1411)\n\u003e\u003e\u003e            build/host/usb_pe_drp_old/RO/common/usbc/usb_pe_drp_sm.o:(pd_dpm_request)\n\u003e\u003e\u003e defined at fake_usbc.c:378 (/mnt/host/source/src/platform/ec/test/fake_usbc.c:378)\n\u003e\u003e\u003e            build/host/usb_pe_drp_old/RO/test/fake_usbc.o:(.text.pd_dpm_request+0x0)\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:628: build/host/usb_pe_drp_old/usb_pe_drp_old.exe] Error 1\nmake: *** [Makefile.rules:366: host-usb_pe_drp_old] Error 2\n\nTo resolve the above error I added __overridable.",
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8592d7_0aa6a3d7",
+        "filename": "test/usb_prl.mocklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:20:56Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have discouraged expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f692af_f30591f2",
+        "filename": "test/usb_typec_drp_acc_trysrc.mocklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-18T18:20:56Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have discouraged expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
       "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
