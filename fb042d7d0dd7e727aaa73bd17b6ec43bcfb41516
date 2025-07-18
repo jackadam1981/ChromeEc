@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe35ad40_25e9cc54",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-07-18T03:16:18Z",
+      "side": 1,
+      "message": "Unnecessary irq locking. (The cec_gpio_handler() is called in the interrupt content.)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 31
+      },
+      "revId": "fb042d7d0dd7e727aaa73bd17b6ec43bcfb41516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
