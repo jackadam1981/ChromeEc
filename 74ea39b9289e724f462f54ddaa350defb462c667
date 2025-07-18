@@ -22,6 +22,30 @@
       },
       "revId": "74ea39b9289e724f462f54ddaa350defb462c667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc35ea98_41a4dfb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-18T18:08:18Z",
+      "side": 1,
+      "message": "I just realized that the errors are not being handled properly for these cases while working on porting the buccaneer driver to zephyr.",
+      "parentUuid": "10b8b6cf_8da26a40",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "74ea39b9289e724f462f54ddaa350defb462c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
