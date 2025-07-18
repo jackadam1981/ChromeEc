@@ -8,7 +8,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		/**
-		 * Plaform supports two wake-up sources:
+		 * Platform supports two wake-up sources:
 		 * VCI_IN0: Power Button
 		 * VCI_OVRD_IN: AC Present (using default register values)
 		 *
