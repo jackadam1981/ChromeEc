@@ -24,6 +24,9 @@
 		default_battery: b300049 {
 			compatible = "celxpert,b300049", "battery-smart";
 		};
+		smp_b300049 {
+			compatible = "smp,b300049", "battery-smart";
+		};
 	};
 	gpio-interrupts {
 		int_base_imu: base_imu {
