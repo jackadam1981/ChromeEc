@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dcd0c6_9fe10009",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-07-18T09:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b26ef4f_e28cf2ea",
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f245524_b0da324f",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5b1ca6_0249f6d4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-07-18T09:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f245524_b0da324f",
+      "range": {
+        "startLine": 749,
+        "startChar": 28,
+        "endLine": 749,
+        "endChar": 29
+      },
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "895784ba_5ec530fd",
@@ -71,6 +113,24 @@
       "writtenOn": "2025-07-17T20:07:04Z",
       "side": 1,
       "message": "Nit: Instead of putting both of these together in a 64-bit structure, can you just have an `sido1` in 32 bits and an `sido2` in 32 bits. That\u0027s how the PD spec defines data messages, and that\u0027s how we generally set them in multi-data-object messages.",
+      "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f06b74_1471e5c3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-07-18T09:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "895784ba_5ec530fd",
       "revId": "8ca85f7fad163603a3306b2af2476e552eb1ce0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
