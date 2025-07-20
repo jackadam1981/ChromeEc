@@ -424,7 +424,6 @@ static void isl95522_init(int chgnum)
 	 */
 	ctl_val = 0;
 	ctl_val |= ISL95522_REG_CONTROL1_WOCP;
-	ctl_val |= ISL95522_REG_CONTROL1_ENABLE_CHARGING;
 	if (isl95522_write(chgnum, ISL95522_REG_CONTROL1, ctl_val))
 		rv = 1;
 	mutex_unlock(&control1_mutex_isl95522);

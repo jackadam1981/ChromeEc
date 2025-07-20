@@ -11,20 +11,20 @@
 #include "driver/charger/isl95522_public.h"
 
 #define CHARGER_NAME "ISL95522"
-#define CHARGE_V_MAX 18304
+#define CHARGE_V_MAX 18432
 #define CHARGE_V_MIN 64
-#define CHARGE_V_STEP 8
+#define CHARGE_V_STEP 16
 /*
  * When the default sense resistor value is used, register values
  * represent mA. For other sense resistors values, register
  * values must be scaled accordingly to convert to mA.
  */
-#define CHARGE_I_MAX 6140
-#define CHARGE_I_MIN 4
-#define CHARGE_I_STEP 4
-#define INPUT_I_MAX 6140
-#define INPUT_I_MIN 4
-#define INPUT_I_STEP 4
+#define CHARGE_I_MAX 8160
+#define CHARGE_I_MIN 32
+#define CHARGE_I_STEP 32
+#define INPUT_I_MAX 8064
+#define INPUT_I_MIN 128
+#define INPUT_I_STEP 128
 
 /* Registers */
 
@@ -114,7 +114,7 @@
 #define ISL95522_REG_DEVICE_ID 0xFF
 
 /* Sense resistor default values in milli Ohm */
-#define ISL95522_DEFAULT_RS1 20 /* Input current sense resistor */
+#define ISL95522_DEFAULT_RS1 10 /* Input current sense resistor */
 #define ISL95522_DEFAULT_RS2 10 /* Battery charge current sense resistor */
 
 #define BOARD_RS1 CONFIG_CHARGER_SENSE_RESISTOR_AC
