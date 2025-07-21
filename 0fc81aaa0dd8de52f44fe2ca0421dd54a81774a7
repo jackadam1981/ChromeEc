@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39814c66_54439fbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T18:16:23Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s some way to make this clear in the code. We don\u0027t want to someone to accidentally call `generate_ecdh_shared_secret` and use the result without applying a KDF. Maybe rename this function to `generate_ecdh_raw_shared_secret` and add doxygen about needing to use KDF on it before using it with a symmetric cipher?",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
