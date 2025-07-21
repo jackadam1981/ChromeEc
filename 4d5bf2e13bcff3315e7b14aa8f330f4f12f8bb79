@@ -166,6 +166,30 @@
       },
       "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8edaa2_4790bdd6",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-21T08:54:36Z",
+      "side": 1,
+      "message": "Yeah @caveh@chromium.org, I am align with this thought. We can leave common files in ocelot-ish level. I will update patch based on current alignment.",
+      "parentUuid": "bef18e59_3ae3adf7",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "4d5bf2e13bcff3315e7b14aa8f330f4f12f8bb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
