@@ -156,6 +156,12 @@
 		gpio_ec_cpu_id: ec_cpu_id {
 			gpios = <&gpioh 6 GPIO_INPUT>;
 		};
+		gpio_usb_c0_hv_disable: usb_c0_hv_disable {
+			gpios = <&gpioa 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_usb_c1_hv_disable: usb_c1_hv_disable {
+			gpios = <&gpioa 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
 	};
 	unused-pins {
 		compatible = "unused-gpios";
