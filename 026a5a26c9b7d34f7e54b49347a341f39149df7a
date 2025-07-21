@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af528f10_72a6c8fb",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T17:53:31Z",
+      "side": 0,
+      "message": "We use [`get_ikm` in `fpsensor_crypto_with_mock.cc`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/fpsensor_crypto_with_mock.cc;l\u003d32-33;drc\u003d570363661fce2baf3a9a65675bfe2fc261388e01). Does it still work with this change?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "026a5a26c9b7d34f7e54b49347a341f39149df7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
