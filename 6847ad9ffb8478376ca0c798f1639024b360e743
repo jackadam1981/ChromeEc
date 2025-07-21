@@ -16,6 +16,24 @@
       "message": "did the uldrenite boot loop issue that prompted the initial revert get resolved?",
       "revId": "6847ad9ffb8478376ca0c798f1639024b360e743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b48d078d_66423b37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-07-21T21:49:42Z",
+      "side": 1,
+      "message": "I\u0027m checking a potential fix for it in this patch...should I upload as a new patch instead of a reland?",
+      "parentUuid": "a2322391_ed623793",
+      "revId": "6847ad9ffb8478376ca0c798f1639024b360e743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
