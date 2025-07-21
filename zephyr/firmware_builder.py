@@ -57,7 +57,7 @@ SPECIAL_BOARDS = [
     "rauru",
     # Fatcat/Felino variants
     "fatcatrvp-npcx",
-    "fatcat_it82002aw",
+    "fatcatrvp-ite",
     "felino",
     "francka",
     # Nissa variants
