@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "221b13e6_3e0415e1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T22:32:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the compiler will correctly optimize this out when the Kconfig is disabled.\n\nYou may need to convert this to a macro.",
+      "range": {
+        "startLine": 1065,
+        "startChar": 0,
+        "endLine": 1065,
+        "endChar": 40
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15714d9b_fe9f21ee",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T22:32:58Z",
+      "side": 1,
+      "message": "Nit \n```suggestion\n    bool \"Disable power management when sensor sample rates are high\"\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f68613_d1e13d54",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T22:32:58Z",
+      "side": 1,
+      "message": "Nit \n```suggestion\nconfig PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD\n```",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f69833a_0f1f797b",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T22:32:58Z",
+      "side": 1,
+      "message": "microseconds",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5b64ba_5f88465a",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T22:32:58Z",
+      "side": 1,
+      "message": "```suggestion\n      disable PM. By default we use 6000 microseconds (~166Hz).\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a120ca0f_170aa36e",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T22:32:58Z",
+      "side": 1,
+      "message": "`zephyr_library_sources_ifdef(CONFIG_PM, pm_state.c)`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
