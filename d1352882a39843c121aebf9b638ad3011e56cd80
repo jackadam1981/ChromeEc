@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c4f8ee_58596c5b",
+        "filename": "zephyr/program/trulo/kaladin/leds_pins.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-21T09:35:43Z",
+      "side": 1,
+      "message": "Only white LED is assigned to leds. It should be like leds \u003d \u003c\u0026pwm_led_x \u0026pwm_led_y \u0026pwm_led_z\u003e\n\nAnd the child LED nodes should be added.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "d1352882a39843c121aebf9b638ad3011e56cd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
