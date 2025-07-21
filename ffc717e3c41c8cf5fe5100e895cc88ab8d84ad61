@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c80ef73b_aa08dde5",
+        "filename": "zephyr/program/trulo/kaladin/project.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-21T07:00:25Z",
+      "side": 1,
+      "message": "Separate sensor related configs to #sensor section\n```suggestion\n\n# Sensors\nCONFIG_PLATFORM_EC_TABLET_MODE\u003dy\nCONFIG_PLATFORM_EC_TABLET_MODE_SWITCH\u003dy\n\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "ffc717e3c41c8cf5fe5100e895cc88ab8d84ad61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
