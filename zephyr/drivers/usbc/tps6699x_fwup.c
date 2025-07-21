@@ -25,7 +25,7 @@ LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
 #define TPS_4CC_MAX_DURATION K_MSEC(1200)
 #define TPS_4CC_POLL_DELAY K_USEC(200)
-#define TPS_RESET_DELAY K_MSEC(1000)
+#define TPS_RESET_DELAY K_MSEC(2000)
 #define TPS_TFUI_HEADER_DELAY K_MSEC(200)
 #define TPS_TFUS_BOOTLOADER_ENTRY_DELAY K_MSEC(500)
 
@@ -514,8 +514,8 @@ static int pdc_tps6699x_fwup_complete(void)
 	LOG_INF("TFUq bytes [Success: 0x%02x, State: 0x%02x, Complete: 0x%02x]",
 		rbuf.data[1], rbuf.data[2], rbuf.data[3]);
 
-	/* Wait 1600ms for reset to complete. */
-	k_msleep(1600);
+	/* Wait TPS_RESET_DELAY for reset to complete. */
+	k_sleep(TPS_RESET_DELAY);
 
 	/* Re-enable the PDC stack */
 	LOG_INF("Re-enabling PDC stack");

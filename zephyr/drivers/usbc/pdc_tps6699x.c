@@ -62,8 +62,10 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #define PDC_INIT_ERROR_RECOVERY_DELAY_MS (250)
 
 /* After executing GAID, the system is typically unavailable for 1s as the
- * system resets according to the reference manual. In fwupdate, this value was
- * closer to 1600 so using the larger value here.
+ * system resets according to the reference manual. However, it has been seen to
+ * be upwards of 2s when doing firmware update. The delay here is a value less
+ * than the state machine timeout in |pdc_power_mgmt.c| but greater than the
+ * minimum 1s as described in the reference manual (based on experimentation).
  */
 #define PDC_TI_GAID_DELAY_MS (1600)
 
