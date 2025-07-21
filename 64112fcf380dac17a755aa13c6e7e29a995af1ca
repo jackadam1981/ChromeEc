@@ -50,6 +50,24 @@
       "message": "@davidmcross@google.com\nIt looks like shi_enable() needs to be added at this point. It is incorrect to add it at line 44.",
       "revId": "64112fcf380dac17a755aa13c6e7e29a995af1ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0771d1_6b592195",
+        "filename": "zephyr/program/fpmcu/helipilot/src/fp_transport.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-21T22:42:38Z",
+      "side": 1,
+      "message": "Thanks, done",
+      "parentUuid": "a9e16e9a_19c7bbfa",
+      "revId": "64112fcf380dac17a755aa13c6e7e29a995af1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
