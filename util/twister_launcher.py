@@ -466,6 +466,9 @@ def main():
 
     twister_cli.extend(["--outdir", intercepted_args.outdir])
 
+    # Look for board yaml files in the EC zephyr/boards directory
+    twister_cli.extend(["--board-root", str(ec_base / "zephyr" / "boards")])
+
     if in_cros_sdk():
         twister_cli.extend(get_coreboot_toolchain_flags(ec_base))
 
