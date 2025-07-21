@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2b537f_38903c8a",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T18:02:30Z",
+      "side": 1,
+      "message": "What if you just created another buffer and copied the `tpm_seed` and `otp_key` as needed into it before calling `hkdf_sha256`? Then you wouldn\u0027t need https://crrev.com/c/6771312 since you would have a contiguous buffer.\n\nSlightly less efficient, but I think the code is a bit simpler.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "94fba52d13ffebf528fec5f90f0d5906394b6a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
