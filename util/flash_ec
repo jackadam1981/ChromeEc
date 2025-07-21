@@ -1493,6 +1493,38 @@ function ite_dfu_mode() {
 	fi
 }
 
+#
+# ITE (it83xx and it8xxx2) flash mechanisms.
+#
+# Chip type:       Description:
+#
+# it83xx           Deprecated alias for the "ite_i2c" chip type.
+#
+# it8xxx2          Deprecated alias for the "ite_spi_ccd_i2c" chip type.
+#
+# ite_i2c          ITE programming over an I2C bus. This method sends a
+#                  special waveform on the I2C bus that switches the ITE
+#                  chip into debugger/programming mode. This is supported
+#                  by all I2C devices (it83xx and it8xxx2).
+#
+# ite_spi          ITE programming directly over a SPI interface. Utilizes
+#                  flashrom for the actual programming.
+#
+# ite_spi_ccd_i2c  ITE programming over SPI when a CCD connection is used,
+#                  otherwise uses I2C programming.
+#
+# ite_spi_ccd_uart ITE programming over SPI when a CCD connection is used,
+#                  otheriwse uses UART programming.
+#
+# ite_uart         ITE programming over a UART interface using a 115200 baud
+#                  rate. This is only supported by it8xxx2 manufactured
+#                  later than June of 2024. Check the datasheet for the ITE
+#                  chip to confirm.
+#
+# ite_uart_3m      ITE programming over a UART interface using a 3 MHz baud
+#                  rate. When using CCD, this automatically falls back to
+#                  115200 baud due to limitations of the GSC.
+
 function flash_it83xx() {
 	local TOOL_PATH="${EC_DIR}/build/host/util:${PATH}"
 	local ITEFLASH_BIN
@@ -1605,6 +1637,13 @@ function flash_it83xx() {
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
 }
 
+#
+# Common handler for flashing ITE devices (it8xxx2) using a UART inteface with
+# a programmable baud rate.
+#
+# This utilizes the ITE tool "itecomdbgr" to first enable debugger/programming
+# mode and to then program a new EC binary.
+#
 function flash_ite_uart_common() {
 	local BAUDRATE=$1
 	local TOOL_PATH
@@ -1671,9 +1710,16 @@ function flash_ite_uart_common() {
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
 }
 
+#
+# Flash ITE devices (it8xxx2) using a UART inteface using a 115200 baud rate.
+#
 function flash_ite_uart() {
 	flash_ite_uart_common 115200
 }
+
+#
+# Flash ITE devices (it8xxx2) using a UART inteface using a 3M baud rate.
+#
 function flash_ite_uart_3m() {
 	if servo_is_ccd ; then
 		# Servo only supports 115200
@@ -1716,7 +1762,7 @@ function flash_ite_spi_ccd_uart() {
 }
 
 # Flash ITE chips over SPI when using the servod debug connector
-# and over I2C whn using CCD.
+# and over I2C when using CCD.
 function flash_it8xxx2() {
 	flash_ite_spi_ccd_i2c
 }
