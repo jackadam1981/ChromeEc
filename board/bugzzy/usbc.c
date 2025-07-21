@@ -19,6 +19,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#include <stdint.h>
+
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
@@ -141,8 +143,8 @@ int board_set_active_charge_port(int port)
 	/* Disable all ports. */
 	if (port == CHARGE_PORT_NONE) {
 		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
-			tcpc_write(i, TCPC_REG_COMMAND,
-				   TCPC_REG_COMMAND_SNK_CTRL_LOW);
+			if (tcpm_set_snk_ctrl(i, false))
+				CPRINTS("p%d: sink path disable failed.", i);
 			raa489000_enable_asgate(i, false);
 		}
 
@@ -163,8 +165,7 @@ int board_set_active_charge_port(int port)
 		if (i == port)
 			continue;
 
-		if (tcpc_write(i, TCPC_REG_COMMAND,
-			       TCPC_REG_COMMAND_SNK_CTRL_LOW))
+		if (tcpm_set_snk_ctrl(i, false))
 			CPRINTS("p%d: sink path disable failed.", i);
 		raa489000_enable_asgate(i, false);
 	}
@@ -178,8 +179,7 @@ int board_set_active_charge_port(int port)
 
 	/* Enable requested charge port. */
 	if (raa489000_enable_asgate(port, true) ||
-	    tcpc_write(port, TCPC_REG_COMMAND,
-		       TCPC_REG_COMMAND_SNK_CTRL_HIGH)) {
+	    tcpm_set_snk_ctrl(port, true)) {
 		CPRINTS("p%d: sink path enable failed.", port);
 		charger_discharge_on_ac(0);
 		return EC_ERROR_UNKNOWN;
@@ -207,7 +207,7 @@ int pd_set_power_supply_ready(int port)
 		return EC_ERROR_INVAL;
 
 	/* Disable charging. */
-	rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_LOW);
+	rv = tcpm_set_snk_ctrl(port, false);
 	if (rv)
 		return rv;
 
@@ -216,7 +216,7 @@ int pd_set_power_supply_ready(int port)
 		return EC_ERROR_NOT_POWERED;
 
 	/* Provide Vbus. */
-	rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_HIGH);
+	rv = tcpm_set_src_ctrl(port, true);
 	if (rv)
 		return rv;
 
@@ -233,7 +233,8 @@ int pd_set_power_supply_ready(int port)
 void pd_power_supply_reset(int port)
 {
 	/* Disable VBUS */
-	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
+	if (tcpm_set_src_ctrl(port, false) != EC_RES_SUCCESS)
+		CPRINTS("p%d: Source path disable failed", port);
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
