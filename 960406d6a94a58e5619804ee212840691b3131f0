@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebaa31ae_39ff33d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T17:24:43Z",
+      "side": 1,
+      "message": "What\u0027s the motivation? Is it required or just a simplification?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fb3cf7_c7bfc96c",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T17:24:43Z",
+      "side": 1,
+      "message": "Any risks to having this key stick around longer in memory? If the EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP command is never called, it will never be cleared, though I don\u0027t see any obvious issues with that.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7839bbf3_b7e2ffa8",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T17:24:43Z",
+      "side": 1,
+      "message": "nit: I usually use `\u003d nullptr` for clarity.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 18
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
