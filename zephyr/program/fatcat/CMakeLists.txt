@@ -11,9 +11,9 @@ if(DEFINED CONFIG_BOARD_FATCATRVP_NPCX)
 	add_subdirectory(fatcatrvp-npcx)
 endif()
 
-if(DEFINED CONFIG_BOARD_FATCAT_IT82002AW)
-	project(fatcat_it82002aw)
-	add_subdirectory(fatcat_it82002aw)
+if(DEFINED CONFIG_BOARD_FATCATRVP_ITE)
+	project(fatcatrvp-ite)
+	add_subdirectory(fatcatrvp-ite)
 endif()
 
 if(DEFINED CONFIG_BOARD_FRANCKA)
