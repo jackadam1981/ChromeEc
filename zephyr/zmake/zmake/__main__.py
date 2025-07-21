@@ -452,7 +452,9 @@ def main(argv=None):
                     ", ".join(failed_projects),
                 )
         if zmake.failed_projects:
-            logging.error("All failed projects: %s", zmake.failed_projects)
+            logging.error(
+                "All failed projects: %s", " ".join(zmake.failed_projects)
+            )
 
 
 if __name__ == "__main__":
