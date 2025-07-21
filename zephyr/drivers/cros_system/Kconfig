@@ -2,9 +2,11 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+if PLATFORM_EC
+
 menuconfig CROS_SYSTEM_NPCX
 	bool "Nuvoton NPCX cros system driver"
-	depends on SOC_FAMILY_NPCX && PLATFORM_EC
+	depends on SOC_FAMILY_NPCX
 	default y
 	select PINCTRL if DT_HAS_NUVOTON_NPCX_POWER_PSL_ENABLED
 	help
@@ -138,3 +140,5 @@ config CROS_SYSTEM_REALTEK_INIT_PRIORITY
 	  CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY.
 
 endif # CROS_SYSTEM_REALTEK
+
+endif # PLATFORM_EC
