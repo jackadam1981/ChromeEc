@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbf52943_b858eae4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-21T18:06:31Z",
+      "side": 1,
+      "message": "Just a simplification. I don\u0027t see a reason to copy encrypted private key to AP and back to FPMCU. The private key is used only once.\n\nIt could save few bytes of SRAM if the operations are performed in place, on the host command buffer, but I\u0027m more concerned about leaking content of that buffer due to buggy hardware/drivers, since we use it for DMA.",
+      "parentUuid": "ebaa31ae_39ff33d3",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32fb3cf7_c7bfc96c",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-21T17:24:43Z",
       "side": 1,
       "message": "Any risks to having this key stick around longer in memory? If the EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP command is never called, it will never be cleared, though I don\u0027t see any obvious issues with that.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f322ab9c_7272b04a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-21T18:06:31Z",
+      "side": 1,
+      "message": "With this private key, the attacker could obtain pairing key, so this is the same problem as protecting pairing key which we also have in memory.",
+      "parentUuid": "32fb3cf7_c7bfc96c",
       "range": {
         "startLine": 29,
         "startChar": 0,
