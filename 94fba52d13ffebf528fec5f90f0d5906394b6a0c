@@ -46,6 +46,30 @@
       },
       "revId": "94fba52d13ffebf528fec5f90f0d5906394b6a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa14533_87f93b7c",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-21T23:36:28Z",
+      "side": 1,
+      "message": "I was trying to see if we could do it in a way that lets us use the BoringSSL APIs as written. The change in https://crrev.com/c/6771312 looks like it\u0027s probably fine, but I always try to avoid writing crypto code if I have to. We used to have some custom HKDF code in there before switching to the BoringSSL. IIRC, we had some crypto experts review it. As long as we do that with https://crrev.com/c/6771312, I\u0027m fine with it.",
+      "parentUuid": "dabd4ecb_49a59d2c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "94fba52d13ffebf528fec5f90f0d5906394b6a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
