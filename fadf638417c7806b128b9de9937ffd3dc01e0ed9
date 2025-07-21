@@ -94,6 +94,30 @@
       },
       "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a816d5d3_0ba9ec3b",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-21T16:02:08Z",
+      "side": 1,
+      "message": "The code never sets `instruction_set_v2 \u003d false`.  If only V2 devices need the WDT check, I suggest doing the following.\n\n```\n    /* Always attempt to restart the WDT.  For V1 devices this\n     * does nothing.\n     */\n    conf-\u003einstruction_set_v2 \u003d true;\n    restart_wdt(conf);\n    \n    /* Read chip-id */\n    ...\n    \n    if (chip_id_is_v2)\n        conf-\u003einstruction_set_v2 \u003d true;\n    else\n        conf-\u003einstruction_set_v1 \u003d false;",
+      "parentUuid": "6a033f90_dc7d2155",
+      "range": {
+        "startLine": 645,
+        "startChar": 7,
+        "endLine": 645,
+        "endChar": 25
+      },
+      "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
