@@ -70,6 +70,30 @@
       },
       "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a033f90_dc7d2155",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-07-21T06:07:06Z",
+      "side": 1,
+      "message": "It should be determined based on the chip ID. However, I am afraid that it will be interrupted by wdt before reading the chip ID, so I will default to instruction set 2 to restart wdt first.",
+      "parentUuid": "54bd3bd9_4676064e",
+      "range": {
+        "startLine": 645,
+        "startChar": 7,
+        "endLine": 645,
+        "endChar": 25
+      },
+      "revId": "fadf638417c7806b128b9de9937ffd3dc01e0ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
