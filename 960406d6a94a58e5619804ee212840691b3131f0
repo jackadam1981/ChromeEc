@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75ee28b6_19dfc3e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-22T12:30:15Z",
+      "side": 1,
+      "message": "The fact is that tests in `test/fpsensor_auth_commands.cc` always call `EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN`, copy encrypted key, then call `EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP`. This change doesn\u0027t introduce any regressions in tests.",
+      "parentUuid": "000afd8c_08fa1d7e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32fb3cf7_c7bfc96c",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 1
