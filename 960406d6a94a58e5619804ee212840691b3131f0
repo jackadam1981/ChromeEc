@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df06720f_52236adf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T17:01:45Z",
+      "side": 1,
+      "message": "Ok, let\u0027s just add \"As a simplification\" to the commit message:\n\n```suggestion\nAs a simplification, let\u0027s keep ECDH private key in the FPMCU and deallocate it when Pairing\nKey generation process is finished.\n```",
+      "parentUuid": "75ee28b6_19dfc3e9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32fb3cf7_c7bfc96c",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "With this private key, the attacker could obtain pairing key, so this is the same problem as protecting pairing key which we also have in memory.",
       "parentUuid": "32fb3cf7_c7bfc96c",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "960406d6a94a58e5619804ee212840691b3131f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4542c0_e6be9a0e",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T17:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f322ab9c_7272b04a",
       "range": {
         "startLine": 29,
         "startChar": 0,
