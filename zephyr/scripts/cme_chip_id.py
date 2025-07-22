@@ -938,7 +938,7 @@ DISAMBIGUATION_DICTIONARY = {
             None,
         ),
         CompatibleInfo(
-            "realtek,rts5452p",
+            "realtek,rts5453p",
             None,
             {
                 # the combined command string is 0x3A 0x3 0x0 0x0 0x26
@@ -957,7 +957,7 @@ DISAMBIGUATION_DICTIONARY = {
             None,
         ),
         CompatibleInfo(
-            "realtek,rts5453p",
+            "realtek,rts5452p",
             None,
             {
                 # the combined command string is 0x3A 0x3 0x0 0x0 0x26
@@ -976,7 +976,7 @@ DISAMBIGUATION_DICTIONARY = {
             None,
         ),
         CompatibleInfo(
-            "realtek,rts5453p",
+            "realtek,rts5452p",
             None,
             {
                 # the combined command string is 0x3A 0x3 0x0 0x0 0x26

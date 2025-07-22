@@ -44,7 +44,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,jhl8040",
+            "realtek,jhl9040",
             "mux",
             None,
             {
@@ -62,7 +62,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,jhl8040",
+            "realtek,jhl9040",
             "mux",
             None,
             {
@@ -116,7 +116,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,jhl8040",
+            "realtek,jhl9040",
             "mux",
             None,
             {
