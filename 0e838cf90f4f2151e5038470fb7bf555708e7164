@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a61343a3_b464147d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-22T16:20:29Z",
+      "side": 1,
+      "message": "Needs a `__maybe_unused` annotation.",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 6
+      },
+      "revId": "0e838cf90f4f2151e5038470fb7bf555708e7164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f02a56ba_6ad0ddbd",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Not really, this driver is a bit of a mess honestly. So `fifo_disable()` really just writes 0 to the FIFO_CTRL5 register which basically sets the watermark to \"off\". So `fifo_disable()` really means \"disable interrupts from the FIFO\". `fifo_enable()` similarly sets the watermark interrupt but has to do a little more because the driver needs to also figure out the decimation (if we run accel 2x faster than gyro we need to know to expect AAG pattern of data in the FIFO). So when we enable the FIFO we also do some extra calculations beyond just setting the watermark.\n\nEither way, fifo_enable/disable just really means enabling the interrupt and configuring how we\u0027ll read the data from the FIFO.\n\nRegarding enabling the FIFO without interrupts. Yes, but we don\u0027t use it. I think this driver would do well with a good clean-up. It seems that we enable the FIFO regardless of polling or interrupt mode, but we only read from the FIFO if we\u0027re using interrupts. The reason for keeping with the `fifo_enable`/`fifo_disable` here is because that fits in with how the rest of the driver works, we don\u0027t configure the INT1_CTRL when we change the ODR, we disable the FIFO (which sets the watermark to 0 and effectively does the same thing) then we enable the FIFO again. I think I would feel better keeping the same pattern until we can spend the time to clean up this driver.",
       "parentUuid": "f02a56ba_6ad0ddbd",
+      "range": {
+        "startLine": 551,
+        "startChar": 21,
+        "endLine": 551,
+        "endChar": 40
+      },
+      "revId": "0e838cf90f4f2151e5038470fb7bf555708e7164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c2dad17_786ac7c7",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-22T16:20:29Z",
+      "side": 1,
+      "message": "Please add a short comment that notes this choice.  disabling the FIFO effectively disables the interrupt.",
+      "parentUuid": "19ca31bc_d0ebf5b6",
       "range": {
         "startLine": 551,
         "startChar": 21,
