@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b803cba9_a48acb86",
+        "filename": "common/mock/usb_pe_sm_mock.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-22T18:30:30Z",
+      "side": 1,
+      "message": "After adding definition for pd_dpm_request, I am getting below errors.\n\nBUILD   host-usb_typec_drp_acc_trysrc\n  VERSION ec_version.h\n  CC      RO/common/mock/usb_pe_sm_mock.o\n  CC      RO/common/version.o\n  EXE     usb_typec_drp_acc_trysrc.exe\nld.lld: error: duplicate symbol: pd_get_src_caps\n\u003e\u003e\u003e defined at usb_pe_sm_mock.c:97 (/mnt/host/source/src/platform/ec/common/mock/usb_pe_sm_mock.c:97)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/mock/usb_pe_sm_mock.o:(pd_get_src_caps)\n\u003e\u003e\u003e defined at usb_tc_drp_acc_trysrc_sm.c:533 (/mnt/host/source/src/platform/ec/common/usbc/usb_tc_drp_acc_trysrc_sm.c:533)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/usbc/usb_tc_drp_acc_trysrc_sm.o:(.text.pd_get_src_caps+0x0)\n \nld.lld: error: duplicate symbol: pd_get_src_cap_cnt\n\u003e\u003e\u003e defined at usb_pe_sm_mock.c:102 (/mnt/host/source/src/platform/ec/common/mock/usb_pe_sm_mock.c:102)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/mock/usb_pe_sm_mock.o:(pd_get_src_cap_cnt)\n\u003e\u003e\u003e defined at usb_tc_drp_acc_trysrc_sm.c:538 (/mnt/host/source/src/platform/ec/common/usbc/usb_tc_drp_acc_trysrc_sm.c:538)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/usbc/usb_tc_drp_acc_trysrc_sm.o:(.text.pd_get_src_cap_cnt+0x0)\n \nld.lld: error: duplicate symbol: pd_set_src_caps\n\u003e\u003e\u003e defined at usb_pe_sm_mock.c:107 (/mnt/host/source/src/platform/ec/common/mock/usb_pe_sm_mock.c:107)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/mock/usb_pe_sm_mock.o:(pd_set_src_caps)\n\u003e\u003e\u003e defined at usb_tc_drp_acc_trysrc_sm.c:553 (/mnt/host/source/src/platform/ec/common/usbc/usb_tc_drp_acc_trysrc_sm.c:553)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/usbc/usb_tc_drp_acc_trysrc_sm.o:(.text.pd_set_src_caps+0x0)\n \nld.lld: error: duplicate symbol: pd_get_rev\n\u003e\u003e\u003e defined at usb_pe_sm_mock.c:115 (/mnt/host/source/src/platform/ec/common/mock/usb_pe_sm_mock.c:115)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/mock/usb_pe_sm_mock.o:(pd_get_rev)\n\u003e\u003e\u003e defined at usb_tc_drp_acc_trysrc_sm.c:557 (/mnt/host/source/src/platform/ec/common/usbc/usb_tc_drp_acc_trysrc_sm.c:557)\n\u003e\u003e\u003e            build/host/usb_typec_drp_acc_trysrc/RO/common/usbc/usb_tc_drp_acc_trysrc_sm.o:(.text.pd_get_rev+0x0)\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile.rules:628: build/host/usb_typec_drp_acc_trysrc/usb_typec_drp_acc_trysrc.exe] Error 1\nmake: *** [Makefile.rules:366: host-usb_typec_drp_acc_trysrc] Error 2",
+      "revId": "6439d5a082b52e4b0d0252fbfe098e956658d468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
