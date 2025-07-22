@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07447be_a1a93d8b",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T19:09:53Z",
+      "side": 1,
+      "message": "You can leave this part out since `std::dynamic_extent` is the default; same in other places.",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 46
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
