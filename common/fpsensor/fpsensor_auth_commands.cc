@@ -100,6 +100,8 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	auto *r = static_cast<ec_response_fp_establish_pairing_key_wrap *>(
 		args->response);
 
+	CleanseWrapper<std::array<uint8_t, FP_PAIRING_KEY_LEN> > new_pairing_key;
+
 	ScopedFastCpu fast_cpu;
 
 	bssl::UniquePtr<EC_KEY> private_key = decrypt_private_key(
@@ -116,17 +118,16 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	}
 
 	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*private_key, *public_key, r->encrypted_pairing_key.data,
-		sizeof(r->encrypted_pairing_key.data));
+		*private_key, *public_key, new_pairing_key.data(),
+		new_pairing_key.size());
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	ret = encrypt_data_in_place(FP_AES_KEY_ENC_METADATA_VERSION,
-				    r->encrypted_pairing_key.info,
-				    global_context.user_id,
-				    global_context.tpm_seed,
-				    r->encrypted_pairing_key.data);
+	ret = encrypt_data(FP_AES_KEY_ENC_METADATA_VERSION,
+			   r->encrypted_pairing_key.info,
+			   global_context.user_id, global_context.tpm_seed,
+			   new_pairing_key, r->encrypted_pairing_key.data);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}

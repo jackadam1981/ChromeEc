@@ -49,6 +49,29 @@ bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 						   size_t privkey_size);
 
 /**
+ * Encrypt the data with a specific version of encryption method and output
+ * the metadata and encrypted data.
+ *
+ * version 1 is 128 bit AES-GCM, and the encryption key is bound to the TPM
+ * seed, rollback secret and user_id.
+ *
+ * @param[in] version the version of the encryption method
+ * @param[out] info the metadata of the encryption output
+ * @param[in] user_id the user_id used for deriving secret
+ * @param[in] tpm_seed the seed from the TPM for deriving secret
+ * @param[in] data the data that need to be encrypted
+ * @param[out] enc_data the encrypted data
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+enum ec_error_list
+encrypt_data(uint16_t version, struct fp_auth_command_encryption_metadata &info,
+	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
+	     std::span<const uint8_t> data, std::span<uint8_t> enc_data);
+
+/**
  * Encrypt the data in place with a specific version of encryption method and
  * output the metadata and encrypted data.
  *
@@ -64,12 +87,15 @@ bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
-enum ec_error_list
+__maybe_unused static enum ec_error_list
 encrypt_data_in_place(uint16_t version,
 		      struct fp_auth_command_encryption_metadata &info,
 		      std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 		      std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-		      std::span<uint8_t> data);
+		      std::span<uint8_t> data)
+{
+	return encrypt_data(version, info, user_id, tpm_seed, data, data);
+}
 
 /**
  * Encrypt the @p EC_KEY with a specific version of encryption method.

@@ -47,9 +47,78 @@ void *setup_suite(void)
 
 ZTEST_SUITE(fpsensor_auth_crypto_stateful, NULL, setup_suite, NULL, NULL, NULL);
 
+ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_fail_size_mismatch)
+{
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+
+	std::array<uint8_t, 31> too_small_buffer{};
+	zassert_equal(encrypt_data(1, info, kFakeUserId, kFakeTpmSeed, input,
+				   too_small_buffer),
+		      EC_ERROR_OVERFLOW);
+
+	std::array<uint8_t, 33> too_big_buffer{};
+	zassert_equal(encrypt_data(1, info, kFakeUserId, kFakeTpmSeed, input,
+				   too_big_buffer),
+		      EC_ERROR_OVERFLOW);
+}
+
+ZTEST(fpsensor_auth_crypto_stateful, test_fp_decrypt_fail_size_mismatch)
+{
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	uint16_t version = 1;
+	std::array<uint8_t, 32> enc_data{};
+
+	zassert_equal(encrypt_data(version, info, kFakeUserId, kFakeTpmSeed,
+				   input, enc_data),
+		      EC_SUCCESS);
+
+	std::array<uint8_t, 31> too_small_buffer{};
+	zassert_equal(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data,
+				   too_small_buffer),
+		      EC_ERROR_OVERFLOW);
+
+	std::array<uint8_t, 33> too_big_buffer{};
+	zassert_equal(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data,
+				   too_big_buffer),
+		      EC_ERROR_OVERFLOW);
+}
+
 ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_decrypt_data)
 {
-	struct fp_auth_command_encryption_metadata info;
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	uint16_t version = 1;
+	std::array<uint8_t, 32> enc_data{};
+
+	zassert_equal(encrypt_data(version, info, kFakeUserId, kFakeTpmSeed,
+				   input, enc_data),
+		      EC_SUCCESS);
+
+	zassert_equal(info.struct_version, version);
+
+	/* The encrypted data should not be the same as the input. */
+	zassert_false(memcmp(enc_data.data(), input.data(), enc_data.size()) ==
+		      0);
+
+	std::array<uint8_t, 32> output{};
+	zassert_equal(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data,
+				   output),
+		      EC_SUCCESS);
+
+	zassert_mem_equal(input.data(), output.data(), sizeof(input));
+}
+
+ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_decrypt_data_in_place)
+{
+	struct fp_auth_command_encryption_metadata info{};
 	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
 						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
@@ -65,7 +134,7 @@ ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_decrypt_data)
 	/* The encrypted data should not be the same as the input. */
 	zassert_false(memcmp(data.data(), input.data(), data.size()) == 0);
 
-	std::array<uint8_t, 32> output;
+	std::array<uint8_t, 32> output{};
 	zassert_equal(decrypt_data(info, kFakeUserId, kFakeTpmSeed, data,
 				   output),
 		      EC_SUCCESS);
@@ -96,7 +165,7 @@ ZTEST(fpsensor_auth_crypto_stateful, test_fp_encrypt_decrypt_key)
 
 	zassert_not_equal(key.get(), nullptr);
 
-	std::array<uint8_t, 32> output_privkey;
+	std::array<uint8_t, 32> output_privkey{};
 	EC_KEY_priv2oct(out_key.get(), output_privkey.data(),
 			output_privkey.size());
 
