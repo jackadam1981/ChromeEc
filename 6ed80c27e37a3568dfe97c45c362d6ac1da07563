@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7e78e1_45ef3fc4",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-07-22T17:41:31Z",
+      "side": 1,
+      "message": "This will avoid bouncing between S0 and S0ix in case reset button is hold.",
+      "range": {
+        "startLine": 599,
+        "startChar": 6,
+        "endLine": 599,
+        "endChar": 37
+      },
+      "revId": "6ed80c27e37a3568dfe97c45c362d6ac1da07563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
