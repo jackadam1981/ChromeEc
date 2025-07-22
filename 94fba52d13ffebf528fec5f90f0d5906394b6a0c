@@ -70,6 +70,30 @@
       },
       "revId": "94fba52d13ffebf528fec5f90f0d5906394b6a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb09d74_4a7e408d",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-22T12:45:49Z",
+      "side": 1,
+      "message": "\u003e The change in https://crrev.com/c/6771312 looks like it\u0027s probably fine\n\nYeah. I implemented `hmac_sha256()` using [`BoringSSL HMAC public API`](https://commondatastorage.googleapis.com/chromium-boringssl-docs/hmac.h.html). I used it, to implement extract step of HKDF ([RFC5869 page 3](https://www.rfc-editor.org/rfc/rfc5869.html)) and used expand step from [BoringSSL HKDF public API](https://commondatastorage.googleapis.com/chromium-boringssl-docs/hkdf.h.html).",
+      "parentUuid": "0aa14533_87f93b7c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "94fba52d13ffebf528fec5f90f0d5906394b6a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
