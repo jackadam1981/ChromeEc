@@ -75,6 +75,9 @@
 		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
 			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
 		};
+		gpio_ec_mute_l: ec_mute_l {
+			gpios = <&gpiod 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
+		};
 	};
 	gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";
@@ -115,7 +118,6 @@
 			<&gpioc 0 0>,
 			<&gpioc 6 0>,
 			<&gpiod 5 0>,
-			<&gpiod 6 0>,
 			<&gpiod 7 0>,
 			<&gpioe 2 0>,
 			<&gpioe 4 0>,
