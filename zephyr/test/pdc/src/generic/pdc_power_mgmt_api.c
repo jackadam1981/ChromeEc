@@ -1052,6 +1052,32 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_up)
 				   PDC_TEST_TIMEOUT));
 }
 
+#ifndef CONFIG_USB_PD_ONLY_FIXED_PDOS
+/* Only run this test if battery PDOs are allowed */
+ZTEST_USER(pdc_power_mgmt_api, test_get_partner_battery_pdo)
+{
+	uint32_t rdo;
+	union connector_status_t connector_status = { 0 };
+	const uint32_t pdos_up[] = {
+		PDO_FIXED(5000, 3000, 0),
+		PDO_BATT(5000, 20000, 100000),
+	};
+
+	emul_pdc_configure_snk(emul, &connector_status);
+	clear_partner_pdos(emul, SOURCE_PDO);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos_up),
+			  PARTNER_PDO, pdos_up);
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	zassert_ok(pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
+
+	/* Confirm battery PDO selected */
+	zassert_equal(2, RDO_POS(rdo));
+}
+#endif /* !defined(CONFIG_USB_PD_ONLY_FIXED_PDOS) */
+
 ZTEST_USER(pdc_power_mgmt_api, test_get_vbus_voltage)
 {
 /* Keep in line with |pdc_power_mgmt_api.c|. */
