@@ -20,7 +20,13 @@
 #include "battery.dtsi"
 #include "leds_pins.dtsi"
 #include "pwm.dtsi"
+<<<<<<< PATCH SET (58f4882923f3e659dc57f6bd1d903e2324c9c410 kaladin: Update customization fan behavior)
+#include "fan.dtsi"
+#include "temp_sensors.dtsi"
+||||||| BASE
+=======
 #include "hibernate.dtsi"
+>>>>>>> BASE      (6e455708c8062c42eed1886a00e9834e0d65ca42 kaladin: Add dynamic typec port count)
 
 /* Kaladin overrides follow... */
 
