@@ -22,6 +22,75 @@
       },
       "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46469ba_4265a592",
+        "filename": "test/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T20:31:40Z",
+      "side": 1,
+      "message": "Can we add a test that exercises the new API with multiple IKMs? For example, you could take given `test_vector.ikm` and split it into multiple spans and verify that you still get the same output that the test vector.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 47
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beca5e4f_c42cf5fa",
+        "filename": "test/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T20:31:40Z",
+      "side": 1,
+      "message": "`test_vector.ikm` is a `std::vector`, not built-in array.\n\nI think the issue is that the inner type (`std::vector`) cannot be deduced as `std::span`. In this case, you should be able to simplify as:\n\n```\nstd::array ikm{\n  std::span{ test_vector.ikm },\n};\n```",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5822cb4e_b66e163e",
+        "filename": "test/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T20:31:40Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 3
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
