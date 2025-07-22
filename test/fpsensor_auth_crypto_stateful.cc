@@ -44,19 +44,19 @@ test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
 						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
 	uint16_t version = 1;
-	std::array<uint8_t, 32> data = input;
+	std::array<uint8_t, 32> enc_data;
 
-	TEST_EQ(encrypt_data_in_place(version, info, kFakeUserId, kFakeTpmSeed,
-				      data),
+	TEST_EQ(encrypt_data(version, info, kFakeUserId, kFakeTpmSeed, input,
+			     enc_data),
 		EC_SUCCESS, "%d");
 
 	TEST_EQ(info.struct_version, version, "%d");
 
 	/* The encrypted data should not be the same as the input. */
-	TEST_ASSERT_ARRAY_NE(data, input, data.size());
+	TEST_ASSERT_ARRAY_NE(enc_data, input, enc_data.size());
 
 	std::array<uint8_t, 32> output;
-	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, data, output),
+	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data, output),
 		EC_SUCCESS, "%d");
 
 	TEST_ASSERT_ARRAY_EQ(input, output, sizeof(input));

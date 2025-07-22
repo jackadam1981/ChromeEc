@@ -20,11 +20,10 @@
 #include <array>
 
 enum ec_error_list
-encrypt_data_in_place(uint16_t version,
-		      struct fp_auth_command_encryption_metadata &info,
-		      std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
-		      std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
-		      std::span<uint8_t> data)
+encrypt_data(uint16_t version, struct fp_auth_command_encryption_metadata &info,
+	     std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
+	     std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
+	     std::span<const uint8_t> data, std::span<uint8_t> enc_data)
 {
 	if (version != 1) {
 		return EC_ERROR_INVAL;
@@ -41,8 +40,8 @@ encrypt_data_in_place(uint16_t version,
 		return ret;
 	}
 
-	/* Encrypt the secret blob in-place. */
-	ret = aes_128_gcm_encrypt(enc_key, data, data, info.nonce, info.tag);
+	ret = aes_128_gcm_encrypt(enc_key, data, enc_data, info.nonce,
+				  info.tag);
 	if (ret != EC_SUCCESS) {
 		return ret;
 	}
@@ -62,8 +61,9 @@ std::optional<fp_encrypted_private_key> create_encrypted_private_key(
 		return std::nullopt;
 	}
 
-	if (encrypt_data_in_place(version, enc_key.info, user_id, tpm_seed,
-				  enc_key.data) != EC_SUCCESS) {
+	/* Encrypt data in place */
+	if (encrypt_data(version, enc_key.info, user_id, tpm_seed, enc_key.data,
+			 enc_key.data) != EC_SUCCESS) {
 		return std::nullopt;
 	}
 
