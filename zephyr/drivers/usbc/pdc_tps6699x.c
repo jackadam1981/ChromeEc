@@ -380,6 +380,35 @@ static void tps_check_and_notify_irq(void);
  */
 static struct pdc_data_t *const pdc_data[NUM_PDC_TPS6699X_PORTS];
 
+static int to_ucsi_number(const struct pdc_config_t *port)
+{
+	static int chip_type = 0;
+	if (chip_type == 0) {
+		bool one_chip = false;
+		for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
+			if (pdc_data[port] == NULL) {
+				/* Port is not in use. Skip it. */
+				continue;
+			}
+			one_chip |= ((const struct pdc_config_t *)pdc_data[port]
+					     ->dev->config)
+					    ->no_fw_update;
+		}
+		if (one_chip) {
+			chip_type = 1;
+		} else {
+			chip_type = 2;
+		}
+	}
+	if (chip_type == 1) {
+		/* This is an one chip X ports device. */
+		return port->connector_number + 1;
+	} else {
+		/* This is a N chips N ports device. */
+		return 1;
+	}
+}
+
 static enum state_t get_state(struct pdc_data_t *data)
 {
 	return data->ctx.current - &states[0];
@@ -671,7 +700,7 @@ static int handle_irqs(struct pdc_data_t *data)
 	 */
 	if (pdc_interrupt.ucsi_connector_status_change_notification) {
 		data->use_cached_conn_status_change = false;
-		data->cci_event.connector_change = cfg->connector_number + 1;
+		data->cci_event.connector_change = to_ucsi_number(cfg);
 	}
 
 	if (pdc_interrupt.plug_insert_or_removal) {
@@ -1963,7 +1992,7 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 	/* Byte 1: Data length per UCSI spec */
 	cmd_data.data[1] = 0;
 	/* Connector Number: Byte 2, bits 6:0. Bit 7 is reserved */
-	cmd_data.data[2] = cfg->connector_number + 1;
+	cmd_data.data[2] = to_ucsi_number(cfg);
 
 	/* TODO(b/345783692): The bit shifts in this function come from the
 	 * awkward mapping between the structures in ucsi_v3.h and the TI
@@ -2827,7 +2856,7 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 	 * required (and will be on Byte 3, bits 14:8).
 	 */
 	if (ucsi_command != UCSI_GET_ALTERNATE_MODES) {
-		cmd_data.data[2] |= (cfg->connector_number + 1) & 0x7f;
+		cmd_data.data[2] |= to_ucsi_number(cfg) & 0x7f;
 	}
 
 	return tps_post_command_with_callback(dev, cmd, &cmd_data, lpm_data_out,
