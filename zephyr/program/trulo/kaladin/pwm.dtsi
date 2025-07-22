@@ -44,18 +44,3 @@
 	pinctrl-0 = <&pwm4_gpa4_default>;
 	pinctrl-names = "default";
 };
-
-
-&pwm3 {
-	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm3_gpa3_default>;
-	pinctrl-names = "default";
-};
-
-&pwm6 {
-	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm6_gpa6_default>;
-	pinctrl-names = "default";
-};
