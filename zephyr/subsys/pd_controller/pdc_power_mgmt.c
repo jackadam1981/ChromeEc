@@ -2222,7 +2222,9 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	max_mv = PDO_FIXED_VOLTAGE(pdo);
 	max_mw = max_ma * max_mv / 1000;
 
-	LOG_INF("Available charging on C%d", config->connector_num);
+	LOG_INF("C%d: Available charging (%sconstrained)",
+		config->connector_num,
+		(pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
 	LOG_INF("  PDO: %08x", pdo);
 	LOG_INF("  V: %d", max_mv);
 	LOG_INF("  C: %d", max_ma);
@@ -2242,9 +2244,31 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	     (!(pdo & PDO_FIXED_GET_DRP) ||
 	      (pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
 	    (max_mw >= PD_DRP_CHARGE_POWER_MIN)) {
+		/* Port partner is a robust power source, meeting one or more of
+		 * these conditions:
+		 *
+		 *  1) Able to provide PD_DRP_CHARGE_POWER_MIN watts or more,
+		 *     which defaults to 27W. This is likely a dock or large
+		 *     battery bank.
+		 *  2) Partner advertised unconstrained power and is not DRP
+		 *     (this can only be determined from fixed PDOs). This is
+		 *     likely an AC power adapter.
+		 */
+
+		LOG_INF("C%d: Partner is a robust source (CAP_DEDICATED)",
+			config->connector_num);
 		charge_manager_update_dualrole(config->connector_num,
 					       CAP_DEDICATED);
 	} else {
+		/* Port partner is a weak power source, such as a phone or small
+		 * battery power bank. Charge manager may not initiate charging
+		 * unless the user opts in to through the UI, or `chgoverride`
+		 * is sent on the EC console.
+		 */
+
+		LOG_INF("C%d: Partner is a weak source (CAP_DUALROLE). Charging "
+			"may not start automatically!",
+			config->connector_num);
 		charge_manager_update_dualrole(config->connector_num,
 					       CAP_DUALROLE);
 	}
