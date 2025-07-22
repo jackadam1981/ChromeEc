@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f0804c1_46d25a83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T20:36:47Z",
+      "side": 1,
+      "message": "@lziest@google.com Do you think we need a crypto review on this change or are you ok with it assuming we have a [unit test for the multiple IKM case](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6771312/comments/8ed8a40a_3408a24d)?",
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14f61744_f03997b6",
         "filename": "common/fpsensor/fpsensor_crypto.cc",
         "patchSetId": 4
