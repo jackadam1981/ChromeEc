@@ -329,6 +329,10 @@ struct pdc_data_t {
 	union reg_data raw_ucsi_cmd_data;
 	/* Current AP power state */
 	uint8_t sx_state;
+	/* Number of ports in the chip */
+	atomic_t total_num_ports;
+	/* Index of port in the chip */
+	uint8_t ucsi_index;
 };
 
 /**
@@ -378,6 +382,78 @@ static void tps_check_and_notify_irq(void);
  * @brief PDC port data used in interrupt handler
  */
 static struct pdc_data_t *const pdc_data[NUM_PDC_TPS6699X_PORTS];
+
+static int pdc_fetch_total_num_port(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_boot_flags pdc_boot_flags;
+	int rv;
+
+	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
+	if (rv != 0) {
+		return rv;
+	}
+	atomic_set(&data->total_num_ports, pdc_boot_flags.total_num_ports);
+	return 0;
+}
+
+/**
+ * @brief Cauculate index for ucsi for this port.
+ *
+ * |Type       |list of total_num_ports|list of ucsi_index|
+ * |:---------:|:---------------------:|:----------------:|
+ * |1x 1       |{1}                    |{1}               |
+ * |2x 1       |{1, 1}                 |{1, 1}            |
+ * |2x 1       |{2, 2}                 |{1, 2}            |
+ * |1x 1 + 2x 1|{1, 2, 2}              |{1, 1, 2}         |
+ * |2x 1 + 1x 1|{2, 2, 1}              |{1, 2, 1}         |
+ * |2x 2       |{2, 2, 2, 2}           |{1, 2, 1, 2}      |
+ */
+static int pdc_calculate_ucsi_index(struct pdc_data_t *data)
+{
+	bool last_is_double = false;
+	bool first_of_double = false;
+	int total_num_ports;
+	if (atomic_get(&data->total_num_ports) == 1) {
+		data->ucsi_index = 1;
+		return 0;
+	}
+	for (int port = 0; port < NUM_PDC_TPS6699X_PORTS; port++) {
+		if (pdc_data[port] == NULL) {
+			continue;
+		}
+		total_num_ports = atomic_get(&pdc_data[port]->total_num_ports);
+		switch (total_num_ports) {
+		case 0:
+			/* Index depends on previous ports so we retry. */
+			return -1;
+		case 1:
+			last_is_double = false;
+			break;
+		case 2:
+			if (last_is_double) {
+				first_of_double ^= true;
+			} else {
+				first_of_double = true;
+			}
+			last_is_double = true;
+			break;
+		default:
+			/* Unsupported total_num_ports. */
+			return -2;
+		}
+		if (pdc_data[port] == data) {
+			if (first_of_double) {
+				data->ucsi_index = 1;
+			} else {
+				data->ucsi_index = 2;
+			}
+			return 0;
+		}
+	}
+	/* Unreachable. */
+	return -2;
+}
 
 static enum state_t get_state(struct pdc_data_t *data)
 {
@@ -670,7 +746,7 @@ static int handle_irqs(struct pdc_data_t *data)
 	 */
 	if (pdc_interrupt.ucsi_connector_status_change_notification) {
 		data->use_cached_conn_status_change = false;
-		data->cci_event.connector_change = cfg->connector_number + 1;
+		data->cci_event.connector_change = data->ucsi_index;
 	}
 
 	if (pdc_interrupt.plug_insert_or_removal) {
@@ -744,6 +820,26 @@ static enum smf_state_result st_init_run(void *o)
 		suspend_comms();
 		set_state(data, ST_SUSPENDED);
 		return SMF_EVENT_HANDLED;
+	}
+
+	rv = pdc_fetch_total_num_port(data);
+	if (rv) {
+		LOG_ERR("C%d Fetch total_num_port failed",
+			cfg->connector_number);
+		goto error;
+	}
+
+	rv = pdc_calculate_ucsi_index(data);
+	if (rv == -1) {
+		LOG_INF("C%d Wait for previous ports to fetch their total_num_port",
+			cfg->connector_number);
+		set_state(data, ST_INIT);
+		return SMF_EVENT_HANDLED;
+	}
+	if (rv) {
+		LOG_ERR("C%d Calculate ucsi index failed: %d",
+			cfg->connector_number, rv);
+		goto error;
 	}
 
 	/* We won't see patch_loaded is asserted while handing the IRQ later on
@@ -1962,7 +2058,7 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 	/* Byte 1: Data length per UCSI spec */
 	cmd_data.data[1] = 0;
 	/* Connector Number: Byte 2, bits 6:0. Bit 7 is reserved */
-	cmd_data.data[2] = cfg->connector_number + 1;
+	cmd_data.data[2] = data->ucsi_index;
 
 	/* TODO(b/345783692): The bit shifts in this function come from the
 	 * awkward mapping between the structures in ucsi_v3.h and the TI
@@ -2802,7 +2898,7 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 				uint8_t *lpm_data_out,
 				struct pdc_callback *callback)
 {
-	struct pdc_config_t const *cfg = dev->config;
+	struct pdc_data_t const *data = dev->data;
 	union reg_data cmd_data;
 	enum cmd_t cmd = CMD_RAW_UCSI;
 
@@ -2826,7 +2922,7 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 	 * required (and will be on Byte 3, bits 14:8).
 	 */
 	if (ucsi_command != UCSI_GET_ALTERNATE_MODES) {
-		cmd_data.data[2] |= (cfg->connector_number + 1) & 0x7f;
+		cmd_data.data[2] |= data->ucsi_index & 0x7f;
 	}
 
 	return tps_post_command_with_callback(dev, cmd, &cmd_data, lpm_data_out,
