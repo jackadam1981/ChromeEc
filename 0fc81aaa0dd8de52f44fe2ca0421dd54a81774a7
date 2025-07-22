@@ -46,6 +46,30 @@
       },
       "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb29681_67394a57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T17:14:07Z",
+      "side": 1,
+      "message": "\u003e but how someone could accidentally use it?\n\nFor example, if some new developer 5 years from now starts working on this code and sees that a `generate_ecdh_shared_secret` function exists, they might want to use it for some new feature. As it\u0027s currently written and documented, they might assume that they can directly use the generated shared secret.",
+      "parentUuid": "16ccb1c5_617c6724",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
