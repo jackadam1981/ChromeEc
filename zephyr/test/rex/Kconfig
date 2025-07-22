@@ -82,6 +82,11 @@ config TEST_PROGRAM_USB_PD_POLICY
 	help
 	  Include usb_pd_policy.c into the binary and test their functions.
 
+config TEST_PROGRAM_USBC_TBT_COMPAT
+	bool "Run the tests intended for usbc_tbt_compat"
+	help
+	  Include usbc_tbt_compat.c into the binary and test its functions.
+
 config TEST_ENABLE_USB_PD_DISCHARGE
 	bool "Enable CONFIG_USB_PD_DISCHARGE"
 	help
