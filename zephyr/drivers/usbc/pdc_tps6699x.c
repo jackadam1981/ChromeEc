@@ -219,6 +219,8 @@ struct pdc_config_t {
 	bool no_fw_update;
 	/** Whether or not this port supports CCD */
 	bool ccd;
+	/** The index of the port on chip */
+	uint8_t port_index_on_chip;
 };
 
 /**
@@ -672,7 +674,7 @@ static int handle_irqs(struct pdc_data_t *data)
 	 */
 	if (pdc_interrupt.ucsi_connector_status_change_notification) {
 		data->use_cached_conn_status_change = false;
-		data->cci_event.connector_change = cfg->connector_number + 1;
+		data->cci_event.connector_change = cfg->port_index_on_chip;
 	}
 
 	if (pdc_interrupt.plug_insert_or_removal) {
@@ -1368,7 +1370,7 @@ static void cmd_is_vconn_sourcing(struct pdc_data_t *data)
 		LOG_ERR("Failed to power path status");
 		goto error_recovery;
 	}
-	ext_vconn_sw = cfg->connector_number == 0 ?
+	ext_vconn_sw = cfg->port_index_on_chip == 1 ?
 			       pdc_power_path_status.pa_vconn_sw :
 			       pdc_power_path_status.pb_vconn_sw;
 
@@ -1829,7 +1831,7 @@ static void task_srdy(struct pdc_data_t *data)
 		goto error_recovery;
 	}
 
-	ext_vbus_sw = (cfg->connector_number == 0 ?
+	ext_vbus_sw = (cfg->port_index_on_chip == 1 ?
 			       pdc_power_path_status.pa_ext_vbus_sw :
 			       pdc_power_path_status.pb_ext_vbus_sw);
 	cur_sink_enabled = (ext_vbus_sw == EXT_VBUS_SWITCH_ENABLED_INPUT);
@@ -1849,11 +1851,11 @@ static void task_srdy(struct pdc_data_t *data)
 		}
 
 		/* TODO(b/358274846) - Check whether this can be moved to
-		 * appconfig so we don't have to select by connector number.
+		 * appconfig so we don't have to select by port index on chip.
 		 */
-		cmd_data.data[0] = cfg->connector_number ?
-					   SWITCH_SELECT_PP_EXT1 :
-					   SWITCH_SELECT_PP_EXT2;
+		cmd_data.data[0] = cfg->port_index_on_chip == 1 ?
+					   SWITCH_SELECT_PP_EXT2 :
+					   SWITCH_SELECT_PP_EXT1;
 		/* Enable Sink FET */
 		rv = write_task_cmd(cfg, COMMAND_TASK_SRDY, &cmd_data);
 	} else if (!data->snk_fet_en && cur_sink_enabled) {
@@ -1964,7 +1966,7 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 	/* Byte 1: Data length per UCSI spec */
 	cmd_data.data[1] = 0;
 	/* Connector Number: Byte 2, bits 6:0. Bit 7 is reserved */
-	cmd_data.data[2] = cfg->connector_number + 1;
+	cmd_data.data[2] = cfg->port_index_on_chip;
 
 	/* TODO(b/345783692): The bit shifts in this function come from the
 	 * awkward mapping between the structures in ucsi_v3.h and the TI
@@ -2807,6 +2809,7 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 	struct pdc_config_t const *cfg = dev->config;
 	union reg_data cmd_data;
 	enum cmd_t cmd = CMD_RAW_UCSI;
+	int port_index_on_chip_byte_index;
 
 	memset(cmd_data.data, 0, sizeof(cmd_data.data));
 	/* Byte 0: UCSI Command Code */
@@ -2821,15 +2824,18 @@ static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 		memcpy(&cmd_data.data[2], command_specific, data_size);
 	}
 
-	/* TI UCSI tasks always require a connector number even when the UCSI
+	/* TI UCSI tasks always require a port index on chip even when the UCSI
 	 * spec doesn't require it. Except GET_ALTERNATE_MODES, all other
-	 * commands will fit the connector number on Byte 2, bits 6:0. There's
-	 * no need to modify it for GET_ALTERNATE_MODES since it is always
-	 * required (and will be on Byte 3, bits 14:8).
+	 * commands will fit the port index on chip on Byte 2, bits 6:0. For
+	 * GET_ALTERNATE_MODES, it is required and should be on Byte 3, bits
+	 * 14:8.
 	 */
-	if (ucsi_command != UCSI_GET_ALTERNATE_MODES) {
-		cmd_data.data[2] |= (cfg->connector_number + 1) & 0x7f;
-	}
+
+	port_index_on_chip_byte_index =
+		2 + (ucsi_command == UCSI_GET_ALTERNATE_MODES);
+	cmd_data.data[port_index_on_chip_byte_index] &= ~0x7f;
+	cmd_data.data[port_index_on_chip_byte_index] |=
+		cfg->port_index_on_chip & 0x7f;
 
 	return tps_post_command_with_callback(dev, cmd, &cmd_data, lpm_data_out,
 					      callback);
@@ -3073,6 +3079,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.create_thread = create_thread_##inst,                         \
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),              \
 		.ccd = DT_INST_PROP(inst, ccd),                                \
+		.port_index_on_chip = DT_INST_PROP(inst, port_index_on_chip),  \
 	};                                                                     \
                                                                                \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL,                            \
