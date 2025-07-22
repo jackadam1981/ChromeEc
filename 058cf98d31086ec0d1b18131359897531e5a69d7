@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e6283d_53493c22",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T18:34:53Z",
+      "side": 0,
+      "message": "Is there a test case that covers the case where `derive_key_with_tpm_seed` is called without the TPM seed being set?",
+      "range": {
+        "startLine": 767,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 45
+      },
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
