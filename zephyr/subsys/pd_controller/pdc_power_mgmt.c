@@ -2101,14 +2101,63 @@ static void pdc_snk_attached_entry(void *obj)
 
 static void pdc_print_pdo_info(int port, struct pdc_pdos_t *pdo)
 {
-	uint32_t max_ma, max_mv, max_mw, unused;
+	uint32_t max_ma, max_mv, max_mw, min_mv;
+	const char *type_str;
+
+	/* Prints a table of PDOs with key fields extracted
+	 *
+	 *   C0:       Raw       Type  mV    mA   mW     DRP UP  USB DRD FRS
+	 *   C0: PDO1: 20019000, FIX   5000  0    0      Y   -   -   -   -
+	 *   C0: PDO2: 00000000, FIX   0     0    0      -   -   -   -   -
+	 *   ...
+	 */
+
+	LOG_INF("C%d:       Raw       Type  mV    mA   mW     "
+		"DRP UP  USB DRD FRS",
+		port);
 
 	for (int i = 0; i < PDO_MAX_OBJECTS; i++) {
-		pd_extract_pdo_power_unclamped(pdo->pdos[i], &max_ma, &max_mv,
-					       &unused);
+		uint32_t p = pdo->pdos[i];
+
+		pd_extract_pdo_power_unclamped(p, &max_ma, &max_mv, &min_mv);
 		max_mw = max_ma * max_mv / 1000;
-		LOG_INF("C%d: PDO%d: %08x, %d %d %d", port, i + 1, pdo->pdos[i],
-			max_mv, max_ma, max_mw);
+
+		switch (p & PDO_TYPE_MASK) {
+		case PDO_TYPE_FIXED:
+			if (p == 0) {
+				/* Empty PDO */
+				LOG_INF("C%d: PDO%d: %08x", port, i + 1, p);
+				continue;
+			}
+
+			type_str = "FIX";
+			LOG_INF("C%d: PDO%d: %08x, %s   %-5u %-4u %-6u "
+				"%c   %c   %c   %c   %c",
+				port, i + 1, p, type_str, max_mv, max_ma,
+				max_mw, p & PDO_FIXED_DUAL_ROLE ? 'Y' : '-',
+				p & PDO_FIXED_UNCONSTRAINED ? 'Y' : '-',
+				p & PDO_FIXED_COMM_CAP ? 'Y' : '-',
+				p & PDO_FIXED_DATA_SWAP ? 'Y' : '-',
+				p & PDO_FIXED_FRS_CURR_MASK ? 'Y' : '-');
+			continue;
+		case PDO_TYPE_BATTERY:
+			type_str = "BAT";
+			break;
+		case PDO_TYPE_VARIABLE:
+			type_str = "VAR";
+			break;
+		/* LCOV_EXCL_START - unreachable as we filter augmented PDOs */
+		case PDO_TYPE_AUGMENTED:
+			type_str = "AUG";
+			break;
+		}
+		/* LCOV_EXCL_STOP */
+
+		/* Battery, variable, and augmented PDOs have voltage
+		 * ranges but no flags.
+		 */
+		LOG_INF("C%d: PDO%d: %08x, %s   %-5umV-%-5umV, %-5umA", port,
+			i + 1, p, type_str, min_mv, max_mv, max_ma);
 	}
 }
 
