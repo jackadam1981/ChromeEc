@@ -70,6 +70,24 @@
       "parentUuid": "e8130d61_86d02bb8",
       "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8faa648b_194deaf0",
+        "filename": "common/mock/usb_pd_dpm_mock.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-22T19:27:37Z",
+      "side": 1,
+      "message": "I think I did mean usb_pe_sm_mock.c. Let me take a closer look at this.",
+      "parentUuid": "1acd1430_9b2fab2e",
+      "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
