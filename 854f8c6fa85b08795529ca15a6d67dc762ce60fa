@@ -33,6 +33,24 @@
       "message": "This is a common file and i2c2 mapping is specific to platform and can change for other projects.\nCould you please make it generic? like below implementation https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/ocelot/rvp_i2c.dtsi",
       "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a67eb3e_807e3a1d",
+        "filename": "zephyr/program/ocelot/ocelot-ish/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-22T16:13:42Z",
+      "side": 1,
+      "message": "I agree - use this file to assign the `i2c-port` to an node label for the sensor bus. Then the board specific file associates the node label with the actual I2C bus.",
+      "parentUuid": "05c1ea67_c4764c93",
+      "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
