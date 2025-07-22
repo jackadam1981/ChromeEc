@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ed8a40a_3408a24d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T20:33:47Z",
+      "side": 1,
+      "message": "Can we add a test that exercises the new API with multiple IKMs? For example, in `test/fpsensor_crypto.cc`, you could take the `test_vector.ikm` and split it into multiple spans and verify that you still get the same output that the test vector expects.",
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14f61744_f03997b6",
         "filename": "common/fpsensor/fpsensor_crypto.cc",
         "patchSetId": 4
