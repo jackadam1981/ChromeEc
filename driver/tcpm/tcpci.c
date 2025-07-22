@@ -115,6 +115,21 @@ struct get_cc_values last_get_cc[CONFIG_USB_PD_PORT_MAX_COUNT];
  */
 static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* The state of a behavior controlled via the COMMAND register. Changes to these
+ * behaviors take place via commands, not read-modify-write sequences. In the
+ * case of redundant settings, the driver must cache the previously set value in
+ * order to optimize out the write. To avoid unexpected behavior in the
+ * uninitialized case, the driver defaults these values to an unknown state and
+ * always performs what it perceives to be the first state change.
+ */
+enum tcpci_command_status {
+	TCPCI_COMMAND_UNKNOWN = 0,
+	TCPCI_COMMAND_ENABLED,
+	TCPCI_COMMAND_DISABLED,
+};
+
+enum tcpci_command_status cached_src_path_status[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /* Cached RP role values */
 static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -621,6 +636,15 @@ int tcpci_tcpm_set_src_ctrl(int port, int enable)
 	int cmd = enable ? TCPC_REG_COMMAND_SRC_CTRL_HIGH :
 			   TCPC_REG_COMMAND_SRC_CTRL_LOW;
 
+	CPRINTS("C%d: Setting source path to %d", port, enable);
+
+	/* Avoid a redundant write if possible. */
+	if ((enable && cached_src_path_status[port] == TCPCI_COMMAND_ENABLED) ||
+	    (!enable && cached_src_path_status[port] == TCPCI_COMMAND_DISABLED))
+		return EC_SUCCESS;
+
+	CPRINTS("C%d: Cached source path %d, actually setting", port,
+		cached_src_path_status[port]);
 	return tcpc_write(port, TCPC_REG_COMMAND, cmd);
 }
 
@@ -1584,6 +1608,11 @@ int tcpci_tcpm_init(int port)
 
 	/* Cache our device capabilities for future reference */
 	tcpc_read16(port, TCPC_REG_DEV_CAP_1, &dev_cap_1[port]);
+
+	/* Treat the source path status as unknown until the first set.
+	 */
+	CPRINTS("Resetting cached source path status");
+	cached_src_path_status[port] = TCPCI_COMMAND_UNKNOWN;
 
 	return EC_SUCCESS;
 }
