@@ -16,6 +16,24 @@
       "message": "The try job shows build failures in\ndrivers.default\ndrivers.default.bring_up\ndrivers.default.bring_up.ec_host_cmd\ndrivers.default.dp21\ndrivers.default.ec_host_cmd\ndrivers.default.mock_power\ndrivers.default.mock_power.ec_host_cmd\n\nYou should be able to repro these locally as with the first failure I mentioned. You should be able to repro all failures with something like `twister -T zephyr/test`. All of these are in `drivers`, so maybe start with just `twister -T zephyr/test/drivers`.",
       "revId": "ed9f4d4df7c2036aab079f6572dc59656c6bb49a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65191e0_db0627d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-07-22T05:39:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f668c1f8_bb55b78e",
+      "revId": "ed9f4d4df7c2036aab079f6572dc59656c6bb49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
