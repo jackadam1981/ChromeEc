@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a990a7_abc20548",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T13:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "221b13e6_3e0415e1",
+      "range": {
+        "startLine": 1065,
+        "startChar": 0,
+        "endLine": 1065,
+        "endChar": 40
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15714d9b_fe9f21ee",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-21T22:32:58Z",
       "side": 1,
       "message": "Nit \n```suggestion\n    bool \"Disable power management when sensor sample rates are high\"\n```",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a59ca7_ddadaa70",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T13:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15714d9b_fe9f21ee",
       "range": {
         "startLine": 28,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13366ad4_b421ebfb",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T13:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1f68613_d1e13d54",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f69833a_0f1f797b",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-07-21T22:32:58Z",
       "side": 1,
       "message": "microseconds",
+      "range": {
+        "startLine": 38,
+        "startChar": 23,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "563f26dc_86073b63",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T13:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f69833a_0f1f797b",
       "range": {
         "startLine": 38,
         "startChar": 23,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d8f953_443d5dac",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T13:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5b64ba_5f88465a",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a120ca0f_170aa36e",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-07-21T22:32:58Z",
       "side": 1,
       "message": "`zephyr_library_sources_ifdef(CONFIG_PM, pm_state.c)`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "1b5fb9bb9f59228ad29fbd441524f23677884d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2c4382_4ee9e29b",
+        "filename": "zephyr/shim/src/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T13:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a120ca0f_170aa36e",
       "range": {
         "startLine": 9,
         "startChar": 0,
