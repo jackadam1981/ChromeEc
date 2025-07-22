@@ -22,6 +22,30 @@
       },
       "revId": "d436694c7121f028f310424bce5ff238fbbc887c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48106add_31232bcc",
+        "filename": "driver/charger/isl95522.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-07-22T09:50:31Z",
+      "side": 1,
+      "message": "modify INPUT_I_MAX,MIN,STEP",
+      "parentUuid": "2bf2a8fd_ac638f58",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "d436694c7121f028f310424bce5ff238fbbc887c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
