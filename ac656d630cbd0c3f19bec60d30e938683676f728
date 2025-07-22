@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22890406_4ed7c269",
+        "filename": "test/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-22T20:38:41Z",
+      "side": 1,
+      "message": "Actually, I think it would be better to do it in https://crrev.com/c/6771312.",
+      "parentUuid": "f46469ba_4265a592",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 47
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beca5e4f_c42cf5fa",
