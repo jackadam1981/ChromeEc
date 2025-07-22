@@ -98,7 +98,7 @@ sync the LLVM source by adding the [`toolchain` group], since it's marked as
 [`notdefault`] in the `repo` manifest:
 
 ```bash
-(outside) repo init -g toolchain -g default
+(outside) repo init -g toolchain,default
 ```
 
 For example, if you change some compiler flags in the [`compiler-rt` ebuild],
