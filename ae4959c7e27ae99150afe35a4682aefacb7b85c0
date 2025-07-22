@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b775a8a_7b20a077",
+        "filename": "zephyr/program/trulo/kaladin/src/hibernate.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-22T20:02:42Z",
+      "side": 1,
+      "message": "This file and function should not be required. Please enable the common hibernate_z5 driver as is now being done for trulo https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6729658",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "ae4959c7e27ae99150afe35a4682aefacb7b85c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
