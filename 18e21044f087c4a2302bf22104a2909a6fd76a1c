@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0327de6_6d8ddfcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-22T20:36:02Z",
+      "side": 1,
+      "message": "this patch is unstable on fatcat with the ITE EC (`Chip:   ite it82102 bx`).\n\nbesides the `DBGR DISABLE WATCHDOG FAILED!` issue,\nflashing fails on the 1st attempt after a system power cycle.\n\nit\u0027ll get as far as:\n```\nErasing...       :  16%check_status timeout exit!\n```\n\non another attempt, it got stuck at\n```\nErasing...       :  25%\n```",
+      "revId": "18e21044f087c4a2302bf22104a2909a6fd76a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a473de9_fa9fd20b",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-22T20:36:02Z",
+      "side": 1,
+      "message": "i\u0027ve been testing this patch on fatcat with the ITE EC (`Chip:   ite it82102 bx`)\nand hitting this case consistently. is that expected?",
+      "range": {
+        "startLine": 486,
+        "startChar": 12,
+        "endLine": 486,
+        "endChar": 16
+      },
+      "revId": "18e21044f087c4a2302bf22104a2909a6fd76a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
