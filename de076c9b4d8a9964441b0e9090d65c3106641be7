@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fbc178_e2a6165a",
+        "filename": "zephyr/program/trulo/kaladin/leds_pins.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-22T06:49:12Z",
+      "side": 1,
+      "message": "Remove these.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "de076c9b4d8a9964441b0e9090d65c3106641be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7464393a_f118fb65",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-22T06:49:12Z",
+      "side": 1,
+      "message": "This results in build error with previous change. It should be removed.",
+      "revId": "de076c9b4d8a9964441b0e9090d65c3106641be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
