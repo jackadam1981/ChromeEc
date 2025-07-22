@@ -22,6 +22,30 @@
       },
       "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ccb1c5_617c6724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-22T13:04:28Z",
+      "side": 1,
+      "message": "\u003e We don\u0027t want to someone to accidentally call generate_ecdh_shared_secret and use the result without applying a KDF.\n\nOkay, but how someone could accidentally use it? To perform ECDH, you need to generate private key locally and get public key of the other side (other side also need to start ECDH procedure).\n\nAnother question is why somebody would need to use it? In the new Fingerprint Auth protocol, ECDH is performed only once per powerwash, when generating pairing key. It\u0027s never used for anything other than calculating session key using HMAC-SHA256.",
+      "parentUuid": "39814c66_54439fbf",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
