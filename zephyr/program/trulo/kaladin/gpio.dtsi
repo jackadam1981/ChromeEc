@@ -36,7 +36,7 @@
 			gpios = <&gpioa 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_ec_prochot_odl: ec_prochot_odl {
-			gpios = <&gpioi 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpioc 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_ec_soc_dsw_pwrok: ec_soc_dsw_pwrok {
 			gpios = <&gpioj 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
@@ -138,7 +138,7 @@
 			gpios = <&gpioh 5 GPIO_OUTPUT>;
 		};
 		gpio_ec_batt_pres_odl: ec_batt_pres_odl {
-			gpios = <&gpioc 7 GPIO_INPUT>;
+			gpios = <&gpiog 5 GPIO_INPUT>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};
 		gpio_bat_disconnect_ec_odl: bat_disconnect_ec_odl {
@@ -156,6 +156,12 @@
 		gpio_ec_cpu_id: ec_cpu_id {
 			gpios = <&gpioh 6 GPIO_INPUT>;
 		};
+		gpio_usb_c0_hv_disable: usb_c0_hv_disable {
+			gpios = <&gpioa 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_usb_c1_hv_disable: usb_c1_hv_disable {
+			gpios = <&gpioa 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
 	};
 	unused-pins {
 		compatible = "unused-gpios";
@@ -165,8 +171,6 @@
 			<&gpiog 3 0>,
 			/* EC_GPG4 */
 			<&gpiog 4 0>,
-			/* EC_GPG5 */
-			<&gpiog 5 0>,
 			/* EC_GPG7 */
 			<&gpiog 7 0>;
 		};
