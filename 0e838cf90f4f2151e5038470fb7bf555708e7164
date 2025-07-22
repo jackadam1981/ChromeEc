@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bab9f0d_ae0160bc",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a61343a3_b464147d",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 6
+      },
+      "revId": "0e838cf90f4f2151e5038470fb7bf555708e7164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f02a56ba_6ad0ddbd",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Please add a short comment that notes this choice.  disabling the FIFO effectively disables the interrupt.",
       "parentUuid": "19ca31bc_d0ebf5b6",
+      "range": {
+        "startLine": 551,
+        "startChar": 21,
+        "endLine": 551,
+        "endChar": 40
+      },
+      "revId": "0e838cf90f4f2151e5038470fb7bf555708e7164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c896b6_916da063",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-22T20:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c2dad17_786ac7c7",
       "range": {
         "startLine": 551,
         "startChar": 21,
