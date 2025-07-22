@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ee65c8_0f6abd14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-07-22T03:52:08Z",
+      "side": 1,
+      "message": "can we split the CL\u0027s like push common files separately and then rvp specific files?",
+      "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c1ea67_c4764c93",
+        "filename": "zephyr/program/ocelot/ocelot-ish/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-07-22T03:52:08Z",
+      "side": 1,
+      "message": "This is a common file and i2c2 mapping is specific to platform and can change for other projects.\nCould you please make it generic? like below implementation https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/ocelot/rvp_i2c.dtsi",
+      "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
