@@ -47,7 +47,7 @@ static int cros_flash_spi_nor_protect_at_boot(const struct device *dev,
 	return 0;
 }
 
-static int cros_flash_spi_nor_protect_now(const struct device *dev, int all)
+static int cros_flash_spi_nor_protect_now(const struct device *dev, bool all)
 {
 	return 0;
 }
