@@ -1078,6 +1078,14 @@ static void emul_tps6699x_default_port_control(union reg_port_control *pc)
 	pc->reserved4 = 0;
 }
 
+static void
+emul_tps6699x_set_total_num_ports(struct tps6699x_emul_pdc_data *data)
+{
+	union reg_boot_flags *boot_flags =
+		(union reg_boot_flags *)&data->reg_val[REG_BOOT_FLAG];
+	boot_flags->total_num_ports = 2;
+}
+
 static int emul_tps6699x_reset(const struct emul *target)
 {
 	struct tps6699x_emul_pdc_data *data =
@@ -1087,6 +1095,8 @@ static int emul_tps6699x_reset(const struct emul *target)
 	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
 
 	memset(data->reg_val, 0, sizeof(data->reg_val));
+
+	emul_tps6699x_set_total_num_ports(data);
 
 	/* Reset PDOs. */
 	emul_pdc_pdo_reset(&data->pdo);
@@ -1178,6 +1188,8 @@ static int tps6699x_emul_init(const struct emul *emul,
 
 	data->common.i2c = parent;
 	data->common.cfg = cfg;
+
+	emul_tps6699x_set_total_num_ports(&data->pdc_data);
 
 	i2c_common_emul_init(&data->common);
 	gpio_emul_input_set(data->pdc_data.irq_gpios.port,
