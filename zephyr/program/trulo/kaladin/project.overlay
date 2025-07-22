@@ -20,6 +20,8 @@
 #include "battery.dtsi"
 #include "leds_pins.dtsi"
 #include "pwm.dtsi"
+#include "fan.dtsi"
+#include "temp_sensors.dtsi"
 #include "hibernate.dtsi"
 
 /* Kaladin overrides follow... */

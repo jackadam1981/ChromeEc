@@ -5,3 +5,7 @@
 zephyr_library_sources("src/led.c")
 zephyr_library_sources_ifdef(
     CONFIG_PDC_RUNTIME_PORT_CONFIG "src/usbc_runtime.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CUSTOM_FAN_CONTROL
+	"src/fan.c"
+	"src/thermal.c"
+)
