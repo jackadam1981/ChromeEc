@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9607be_606bd006",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-23T20:15:06Z",
+      "side": 1,
+      "message": "Does `1A5` work in your case? `1A5` is the Susy-Q advertisement, and it\u0027s better that Servo v4 and Susy-Q are aligned.",
+      "range": {
+        "startLine": 1607,
+        "startChar": 28,
+        "endLine": 1607,
+        "endChar": 31
+      },
+      "revId": "da7cde9f73fc6cb138847ddfd49addcd31fd69f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
