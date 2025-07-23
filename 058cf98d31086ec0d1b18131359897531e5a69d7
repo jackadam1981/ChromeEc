@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eacaef63_9d1c8260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed8a40a_3408a24d",
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f61744_f03997b6",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-07-22T20:22:58Z",
       "side": 1,
       "message": "nit: indentation",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 5
+      },
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d8b8bf_06f29905",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f61744_f03997b6",
       "range": {
         "startLine": 69,
         "startChar": 2,
