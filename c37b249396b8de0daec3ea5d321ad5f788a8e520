@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba72576_fae361eb",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-23T23:56:55Z",
+      "side": 1,
+      "message": "nit: probably good to make sure these are all initialized\n\n```suggestion\n\tstruct fp_auth_command_encryption_metadata info{};\n\tconst std::array\u003cuint8_t, 32\u003e input \u003d { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,\n\t\t\t\t\t\t1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,\n\t\t\t\t\t\t2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };\n\tstd::array\u003cuint8_t, 31\u003e too_small_buffer{};\n```",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "c37b249396b8de0daec3ea5d321ad5f788a8e520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bb0d90_efea59e1",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-23T23:56:55Z",
+      "side": 1,
+      "message": "Same here:\n\n```suggestion\n\tstruct fp_auth_command_encryption_metadata info{};\n\tconst std::array\u003cuint8_t, 32\u003e input \u003d { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,\n\t\t\t\t\t\t1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,\n\t\t\t\t\t\t2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };\n\n\tuint16_t version \u003d 1;\n\tstd::array\u003cuint8_t, 32\u003e enc_data{};\n\tTEST_EQ(encrypt_data(version, info, kFakeUserId, kFakeTpmSeed, input,\n\t\t\t     enc_data),\n\t\tEC_SUCCESS, \"%d\");\n\n\tstd::array\u003cuint8_t, 31\u003e too_small_buffer{};\n\tTEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, input,\n\t\t\t     too_small_buffer),\n\t\tEC_ERROR_OVERFLOW, \"%d\");\n\n\tstd::array\u003cuint8_t, 33\u003e too_big_buffer{};\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "c37b249396b8de0daec3ea5d321ad5f788a8e520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bc25f2_c965c140",
+        "filename": "test/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-23T23:56:55Z",
+      "side": 1,
+      "message": "Can we also have a version that tests `encrypt_data_in_place`?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "c37b249396b8de0daec3ea5d321ad5f788a8e520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
