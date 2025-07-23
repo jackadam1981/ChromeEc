@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_MOTION_SENSE_H
 #define __CROS_EC_MOTION_SENSE_H
 
+#include "accelgyro.h"
 #include "atomic.h"
 #include "body_detection.h"
 #include "chipset.h"

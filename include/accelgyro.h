@@ -7,6 +7,7 @@
 #define __CROS_EC_ACCELGYRO_H
 
 #include "common.h"
+#include "ec_commands.h"
 #include "math_util.h"
 #include "motion_sense.h"
 
@@ -23,6 +24,9 @@ extern "C" {
  */
 #define MOTION_SCALING_FACTOR (1 << 15)
 #define MOTION_ONE_G (9.80665f)
+
+/* Forward declare for pointers. */
+struct motion_sensor_t;
 
 struct accelgyro_drv {
 	/**
