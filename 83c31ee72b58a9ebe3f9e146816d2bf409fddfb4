@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b710619_6fbe1002",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89fa5b7_5ee6b0db",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "83c31ee72b58a9ebe3f9e146816d2bf409fddfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "654ba9a1_4814197c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-22T17:00:06Z",
       "side": 1,
       "message": "How about keeping `encrypt_data_in_place` and just make it call `encrypt_data`? Then we can keep the existing calls to `encrypt_data_in_place` as is and it\u0027s very clear where we are doing in-place vs not.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 66
+      },
+      "revId": "83c31ee72b58a9ebe3f9e146816d2bf409fddfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d12a8fc0_4c6ffd05",
+        "filename": "include/fpsensor/fpsensor_auth_crypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:42:04Z",
+      "side": 1,
+      "message": "Good idea. Thanks!",
+      "parentUuid": "654ba9a1_4814197c",
       "range": {
         "startLine": 68,
         "startChar": 0,
