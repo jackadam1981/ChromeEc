@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502cdc80_8f3443a8",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T15:56:41Z",
+      "side": 1,
+      "message": "My understanding is that test skips should be avoided.  Just wrap this test with an #ifdef.",
+      "range": {
+        "startLine": 1064,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 0
+      },
+      "revId": "4b940eead2b604f3255f8a603f5535b42d8f4afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
