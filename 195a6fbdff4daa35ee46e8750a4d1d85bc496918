@@ -39,6 +39,30 @@
       },
       "revId": "195a6fbdff4daa35ee46e8750a4d1d85bc496918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc06f968_3923c5c5",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-23T21:58:36Z",
+      "side": 1,
+      "message": "Thanks, this is a good suggestion. I\u0027ve switched to using `zassert_true(TEST_WAIT_FOR...`",
+      "parentUuid": "9d841ba6_907293e8",
+      "range": {
+        "startLine": 808,
+        "startChar": 10,
+        "endLine": 808,
+        "endChar": 26
+      },
+      "revId": "195a6fbdff4daa35ee46e8750a4d1d85bc496918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
