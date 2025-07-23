@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e942f1_b6611358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-07-23T00:47:39Z",
+      "side": 1,
+      "message": "Added unit test to check the following cases\n\n1) FRS is enabled early, then disabled after Snk Caps are evaluated.\n2) FRS is disabled early, the enabled after Snk Caps are evaluated.\n\nThis should cover both enabling/disabling FRS from the SNK_ATTACHED_SET_FRS state. And, FRS settings from the DPM are covered by existing tests. Let me know if you want me to add any other test cases.",
+      "parentUuid": "57c4c55f_f3f006fb",
+      "revId": "840af1d01e22fdb636981bff2ff76405552db799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a40cf4b_fba811ec",
