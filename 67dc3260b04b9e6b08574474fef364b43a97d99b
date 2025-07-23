@@ -46,6 +46,30 @@
       },
       "revId": "67dc3260b04b9e6b08574474fef364b43a97d99b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1fdb0b2_de2a3b92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-23T00:36:25Z",
+      "side": 1,
+      "message": "Thanks, Jun, for this: b:421472949#comment21. I\u0027ve manually verified the same increase in the status byte on some other boards as well (Karis, Screebo). Interestingly, helipilot itself passes the compare-builds test, very likely due to compiler optimization differences between clang and gcc",
+      "parentUuid": "ef93c883_c240ed47",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "67dc3260b04b9e6b08574474fef364b43a97d99b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
