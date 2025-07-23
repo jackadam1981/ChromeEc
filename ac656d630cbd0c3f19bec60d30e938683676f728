@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c04778a_aa735fcd",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07447be_a1a93d8b",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 46
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f46469ba_4265a592",
@@ -94,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a985bcc1_82a7efa9",
+        "filename": "test/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:58:17Z",
+      "side": 1,
+      "message": "Fixed in crrev/c/6771312",
+      "parentUuid": "beca5e4f_c42cf5fa",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5822cb4e_b66e163e",
@@ -107,6 +155,30 @@
       "writtenOn": "2025-07-22T20:31:40Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 3
+      },
+      "revId": "ac656d630cbd0c3f19bec60d30e938683676f728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc872539_950d56df",
+        "filename": "test/fpsensor_crypto.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:58:17Z",
+      "side": 1,
+      "message": "Fixed in crrev/c/6771312",
+      "parentUuid": "5822cb4e_b66e163e",
       "range": {
         "startLine": 170,
         "startChar": 0,

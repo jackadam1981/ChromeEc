@@ -22,6 +22,30 @@
       },
       "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76692090_c75b3025",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T18:58:17Z",
+      "side": 0,
+      "message": "`test_derive_encryption_key_failure_seed_not_set()` checks it. It calls `derive_encryption_key()` which calls `derive_key_with_tpm_seed()`.",
+      "parentUuid": "b2e6283d_53493c22",
+      "range": {
+        "startLine": 767,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 45
+      },
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
