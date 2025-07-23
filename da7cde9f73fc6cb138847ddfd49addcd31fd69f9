@@ -22,6 +22,29 @@
       },
       "revId": "da7cde9f73fc6cb138847ddfd49addcd31fd69f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea8a72c_9d6a11f2",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-07-23T20:18:38Z",
+      "side": 1,
+      "message": "Restore it back to \"PD\" charging?",
+      "range": {
+        "startLine": 1674,
+        "startChar": 30,
+        "endLine": 1674,
+        "endChar": 44
+      },
+      "revId": "da7cde9f73fc6cb138847ddfd49addcd31fd69f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
