@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='utf8'?>
-<vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
-  <vif:VIF_Specification>3.32</vif:VIF_Specification>
+<?xml version="1.0" encoding="utf-8"?>
+<vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
+  <vif:VIF_Specification>3.34</vif:VIF_Specification>
   <vif:VIF_App>
     <vif:Vendor>USB-IF</vif:Vendor>
     <vif:Name>VIF Editor</vif:Name>
-    <vif:Version>3.10.0.0</vif:Version>
+    <vif:Version>3.12.1.0</vif:Version>
   </vif:VIF_App>
   <vif:Vendor_Name>Google</vif:Vendor_Name>
   <vif:Model_Part_Number>Kinmen</vif:Model_Part_Number>
@@ -17,8 +17,8 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB4® Product-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:USB4_Num_Internal_Host_Controllers value="1">1 host controller</vif:USB4_Num_Internal_Host_Controllers>
-    <vif:USB4_Num_PCIe_DN_Bridges value="0">0 PCIe DN bridges</vif:USB4_Num_PCIe_DN_Bridges>
+    <vif:USB4_Num_Internal_Host_Controllers value="3">3 host controllers</vif:USB4_Num_Internal_Host_Controllers>
+    <vif:USB4_Num_PCIe_DN_Bridges value="3">3 PCIe DN bridges</vif:USB4_Num_PCIe_DN_Bridges>
     <!--Bundle: USB4RouterList-->
     <vif:USB4RouterList>
       <vif:Usb4Router>
@@ -27,23 +27,23 @@
         <vif:USB4_Router_ID value="0">0</vif:USB4_Router_ID>
         <vif:USB4_Silicon_VID value="32903">8087</vif:USB4_Silicon_VID>
         <vif:USB4_Num_Lane_Adapters value="4">4 lane adapters</vif:USB4_Num_Lane_Adapters>
-        <vif:USB4_Num_USB3_DN_Adapters value="1">1 USB3 DN adapter</vif:USB4_Num_USB3_DN_Adapters>
-        <vif:USB4_Num_DP_IN_Adapters value="1">1 DP IN adapter</vif:USB4_Num_DP_IN_Adapters>
-        <vif:USB4_Num_DP_OUT_Adapters value="0">0 DP OUT adapters</vif:USB4_Num_DP_OUT_Adapters>
+        <vif:USB4_Num_USB3_DN_Adapters value="4">4 USB3 DN adapters</vif:USB4_Num_USB3_DN_Adapters>
+        <vif:USB4_Num_DP_IN_Adapters value="4">4 DP IN adapters</vif:USB4_Num_DP_IN_Adapters>
+        <vif:USB4_Num_DP_OUT_Adapters value="4">4 DP OUT adapters</vif:USB4_Num_DP_OUT_Adapters>
         <vif:USB4_Num_PCIe_DN_Adapters value="4">4 PCIe DN adapters</vif:USB4_Num_PCIe_DN_Adapters>
-        <vif:USB4_TBT3_Not_Supported value="1">Not TBT3 Compatible</vif:USB4_TBT3_Not_Supported>
+        <vif:USB4_TBT3_Not_Supported value="0">TBT3 Compatible</vif:USB4_TBT3_Not_Supported>
         <vif:USB4_PCIe_Wake_Supported value="true" />
         <vif:USB4_USB3_Wake_Supported value="false" />
-        <vif:USB4_Num_Unused_Adapters value="0">0 unused adapters</vif:USB4_Num_Unused_Adapters>
+        <vif:USB4_Num_Unused_Adapters value="4">4 unused adapters</vif:USB4_Num_Unused_Adapters>
         <vif:USB4_TBT3_VID value="32903">8087</vif:USB4_TBT3_VID>
-        <vif:USB4_PCIe_Switch_Vendor_ID value="32902">8086</vif:USB4_PCIe_Switch_Vendor_ID>
-        <vif:USB4_PCIe_Switch_Device_ID value="39451">9A1B</vif:USB4_PCIe_Switch_Device_ID>
+        <vif:USB4_PCIe_Switch_Vendor_ID value="32903">8087</vif:USB4_PCIe_Switch_Vendor_ID>
+        <vif:USB4_PCIe_Switch_Device_ID value="32903">8087</vif:USB4_PCIe_Switch_Device_ID>
         <vif:USB4_Time_Sync_Protocol_Supported value="true" />
-        <vif:USB4_ID_Time_Sync_Supported value="false" />
+        <vif:USB4_ID_Time_Sync_Supported value="true" />
         <vif:USB4_Num_Vendor_Specific_Adapters value="0">0 vendor specific adapters</vif:USB4_Num_Vendor_Specific_Adapters>
         <vif:USB4_PCIe_MPS value="128">128 bytes</vif:USB4_PCIe_MPS>
-        <vif:USB4_PCIe_Host_Wake_Enumerated value="false" />
-        <vif:USB4_Host_Is_Standalone_AIC value="false" />
+        <vif:USB4_PCIe_Host_Wake_Enumerated value="true" />
+        <vif:USB4_Host_Is_Standalone_AIC value="true" />
       </vif:Usb4Router>
     </vif:USB4RouterList>
   </vif:Product>
@@ -59,7 +59,7 @@
     <vif:USB_PD_Support value="true" />
     <vif:PD_Port_Type value="4">DRP</vif:PD_Port_Type>
     <vif:Type_C_State_Machine value="2">DRP</vif:Type_C_State_Machine>
-    <vif:Port_Battery_Powered value="true" />
+    <vif:Port_Battery_Powered value="false" />
     <vif:BC_1_2_Support value="0">None</vif:BC_1_2_Support>
     <vif:Captive_Cable value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -77,7 +77,7 @@
     <vif:SOP_PP_Debug_Capable value="false" />
     <vif:Manufacturer_Info_Supported_Port value="true" />
     <vif:Manufacturer_Info_VID_Port value="6353">18D1</vif:Manufacturer_Info_VID_Port>
-    <vif:Manufacturer_Info_PID_Port value="20593">5071</vif:Manufacturer_Info_PID_Port>
+    <vif:Manufacturer_Info_PID_Port value="20581">506C</vif:Manufacturer_Info_PID_Port>
     <vif:Chunking_Implemented_SOP value="true" />
     <vif:Unchunked_Extended_Messages_Supported value="true" />
     <vif:Security_Msgs_Supported_SOP value="false" />
@@ -114,8 +114,8 @@
     <vif:Type_C_Port_On_Hub value="false" />
     <vif:Type_C_Power_Source value="2">Both</vif:Type_C_Power_Source>
     <vif:Type_C_Sources_VCONN value="true" />
-    <vif:Type_C_Is_Alt_Mode_Controller value="true" />
-    <vif:Type_C_Is_Alt_Mode_Adapter value="false" />
+    <vif:Type_C_Is_Alt_Mode_Controller value="false" />
+    <vif:Type_C_Is_Alt_Mode_Adapter value="true" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB4® Port-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -124,14 +124,14 @@
     <vif:USB4_DFP_Supported value="true" />
     <vif:USB4_UFP_Supported value="false" />
     <vif:USB4_USB3_Tunneling_Supported value="true" />
-    <vif:USB4_Max_USB3_Tunneling_Speed value="4">USB 3.2 Gen 2x2</vif:USB4_Max_USB3_Tunneling_Speed>
+    <vif:USB4_Max_USB3_Tunneling_Speed value="2">USB 3.2 Gen 2x1</vif:USB4_Max_USB3_Tunneling_Speed>
     <vif:USB4_DP_Tunneling_Supported value="true" />
     <vif:USB4_PCIe_Tunneling_Supported value="true" />
-    <vif:USB4_TBT3_Compatibility_Supported value="false" />
+    <vif:USB4_TBT3_Compatibility_Supported value="true" />
     <vif:USB4_CL0s_State_Supported value="true" />
     <vif:USB4_CL1_State_Supported value="true" />
     <vif:USB4_CL2_State_Supported value="true" />
-    <vif:USB4_Num_Retimers value="1">1 retimer</vif:USB4_Num_Retimers>
+    <vif:USB4_Num_Retimers value="0">0 retimers</vif:USB4_Num_Retimers>
     <vif:USB4_DP_Bit_Rate value="3">HBR3</vif:USB4_DP_Bit_Rate>
     <vif:USB4_Num_DP_Lanes value="4">4 Lanes</vif:USB4_Num_DP_Lanes>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -162,6 +162,7 @@
     <vif:Master_Port value="true" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
+    <vif:DPS_Supported value="false" />
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="2">Both</vif:PD_OCP_Method>
@@ -173,11 +174,11 @@
         <vif:Src_PDO_Peak_Current value="0">100% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
         <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
-        <vif:Src_PD_OCP_OC_Debounce value="0">0 msec</vif:Src_PD_OCP_OC_Debounce>
-        <vif:Src_PD_OCP_OC_Threshold value="310">3100 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
-        <vif:Src_PD_OCP_UV_Debounce value="0">0 msec</vif:Src_PD_OCP_UV_Debounce>
+        <vif:Src_PD_OCP_OC_Debounce value="10">10 msec</vif:Src_PD_OCP_OC_Debounce>
+        <vif:Src_PD_OCP_OC_Threshold value="345">3450 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_UV_Debounce value="10">10 msec</vif:Src_PD_OCP_UV_Debounce>
         <vif:Src_PD_OCP_UV_Threshold_Type value="1">Percentage</vif:Src_PD_OCP_UV_Threshold_Type>
-        <vif:Src_PD_OCP_UV_Threshold value="95">95 %</vif:Src_PD_OCP_UV_Threshold>
+        <vif:Src_PD_OCP_UV_Threshold value="70">70 %</vif:Src_PD_OCP_UV_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -187,9 +188,9 @@
     <vif:EPR_Supported_As_Snk value="false" />
     <vif:No_USB_Suspend_May_Be_Set value="true" />
     <vif:GiveBack_May_Be_Set value="false" />
-    <vif:Higher_Capability_Set value="false" />
-    <vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="0">FR_Swap not supported</vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
-    <vif:Num_Snk_PDOs value="3">3 Snk PDOs</vif:Num_Snk_PDOs>
+    <vif:Higher_Capability_Set value="true" />
+    <vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="3">3A @ 5V</vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
+    <vif:Num_Snk_PDOs value="2">2 Snk PDOs</vif:Num_Snk_PDOs>
     <!--Bundle: SnkPdoList-->
     <vif:SnkPdoList>
       <vif:SnkPDO>
@@ -200,17 +201,9 @@
       </vif:SnkPDO>
       <vif:SnkPDO>
         <!--Sink PDO 2-->
-        <vif:Snk_PDO_Supply_Type value="1">Battery</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Op_Power value="60">15000 mW (Factor = 250)</vif:Snk_PDO_Op_Power>
-        <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
-        <vif:Snk_PDO_Max_Voltage value="300">15000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
-      </vif:SnkPDO>
-      <vif:SnkPDO>
-        <!--Sink PDO 3-->
-        <vif:Snk_PDO_Supply_Type value="2">Variable</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Op_Current value="500">5000 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
-        <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
-        <vif:Snk_PDO_Max_Voltage value="400">20000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
+        <vif:Snk_PDO_Supply_Type value="0">Fixed</vif:Snk_PDO_Supply_Type>
+        <vif:Snk_PDO_Voltage value="400">20000 mV (Factor = 50)</vif:Snk_PDO_Voltage>
+        <vif:Snk_PDO_Op_Current value="325">3250 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
       </vif:SnkPDO>
     </vif:SnkPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -224,16 +217,64 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;SOP Discover ID-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:XID_SOP value="0">0</vif:XID_SOP>
+    <vif:XID_SOP value="1105">1105</vif:XID_SOP>
     <vif:Data_Capable_As_USB_Host_SOP value="true" />
     <vif:Data_Capable_As_USB_Device_SOP value="false" />
-    <vif:Product_Type_UFP_SOP value="0">Undefined</vif:Product_Type_UFP_SOP>
+    <vif:Product_Type_UFP_SOP value="2">PDUSB Peripheral</vif:Product_Type_UFP_SOP>
     <vif:Product_Type_DFP_SOP value="2">PDUSB Host</vif:Product_Type_DFP_SOP>
     <vif:DFP_VDO_Port_Number value="0">0</vif:DFP_VDO_Port_Number>
-    <vif:Modal_Operation_Supported_SOP value="false" />
+    <vif:Modal_Operation_Supported_SOP value="true" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
     <vif:PID_SOP value="20593">5071</vif:PID_SOP>
     <vif:bcdDevice_SOP value="4880">1310</vif:bcdDevice_SOP>
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <!--;SOP Modes-->
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <vif:SVID_Fixed_SOP value="true" />
+    <vif:Num_SVIDs_Min_SOP value="2">2</vif:Num_SVIDs_Min_SOP>
+    <vif:Num_SVIDs_Max_SOP value="2">2</vif:Num_SVIDs_Max_SOP>
+    <!--Bundle: SOPSVIDList-->
+    <vif:SOPSVIDList>
+      <vif:SOPSVID>
+        <!--SOP SVID 1-->
+        <vif:SVID_SOP value="32903">8087</vif:SVID_SOP>
+        <vif:SVID_Modes_Fixed_SOP value="true" />
+        <vif:SVID_Num_Modes_Min_SOP value="1">1</vif:SVID_Num_Modes_Min_SOP>
+        <vif:SVID_Num_Modes_Max_SOP value="1">1</vif:SVID_Num_Modes_Max_SOP>
+        <!--Bundle: SOPSVIDModeList-->
+        <vif:SOPSVIDModeList>
+          <vif:SOPSVIDMode>
+            <!--SOP SVID Mode 1-->
+            <vif:SVID_Mode_Enter_SOP value="true" />
+            <vif:SVID_Mode_Recog_Value_SOP value="1">00000001</vif:SVID_Mode_Recog_Value_SOP>
+          </vif:SOPSVIDMode>
+        </vif:SOPSVIDModeList>
+      </vif:SOPSVID>
+      <vif:SOPSVID>
+        <!--SOP SVID 2-->
+        <vif:SVID_SOP value="65281">FF01</vif:SVID_SOP>
+        <vif:SVID_Modes_Fixed_SOP value="true" />
+        <vif:SVID_Num_Modes_Min_SOP value="1">1</vif:SVID_Num_Modes_Min_SOP>
+        <vif:SVID_Num_Modes_Max_SOP value="1">1</vif:SVID_Num_Modes_Max_SOP>
+        <!--Bundle: SOPSVIDModeList-->
+        <vif:SOPSVIDModeList>
+          <vif:SOPSVIDMode>
+            <!--SOP SVID Mode 1-->
+            <vif:SVID_Mode_Enter_SOP value="true" />
+            <vif:SVID_Mode_Recog_Value_SOP value="786501">000C0045</vif:SVID_Mode_Recog_Value_SOP>
+          </vif:SOPSVIDMode>
+        </vif:SOPSVIDModeList>
+      </vif:SOPSVID>
+    </vif:SOPSVIDList>
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <!--;AMA-->
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <vif:AMA_HW_Vers value="1">1</vif:AMA_HW_Vers>
+    <vif:AMA_FW_Vers value="1">1</vif:AMA_FW_Vers>
+    <vif:AMA_VCONN_Reqd value="true" />
+    <vif:AMA_VCONN_Power value="0">1W</vif:AMA_VCONN_Power>
+    <vif:AMA_VBUS_Reqd value="true" />
+    <vif:AMA_Superspeed_Support value="2">USB 3.2 Gen 2</vif:AMA_Superspeed_Support>
   </vif:Component>
   <vif:Component>
     <!--Component 1: Port 1-->
@@ -247,7 +288,7 @@
     <vif:USB_PD_Support value="true" />
     <vif:PD_Port_Type value="4">DRP</vif:PD_Port_Type>
     <vif:Type_C_State_Machine value="2">DRP</vif:Type_C_State_Machine>
-    <vif:Port_Battery_Powered value="true" />
+    <vif:Port_Battery_Powered value="false" />
     <vif:BC_1_2_Support value="0">None</vif:BC_1_2_Support>
     <vif:Captive_Cable value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -265,7 +306,7 @@
     <vif:SOP_PP_Debug_Capable value="false" />
     <vif:Manufacturer_Info_Supported_Port value="true" />
     <vif:Manufacturer_Info_VID_Port value="6353">18D1</vif:Manufacturer_Info_VID_Port>
-    <vif:Manufacturer_Info_PID_Port value="20593">5071</vif:Manufacturer_Info_PID_Port>
+    <vif:Manufacturer_Info_PID_Port value="20581">506C</vif:Manufacturer_Info_PID_Port>
     <vif:Chunking_Implemented_SOP value="true" />
     <vif:Unchunked_Extended_Messages_Supported value="true" />
     <vif:Security_Msgs_Supported_SOP value="false" />
@@ -302,8 +343,8 @@
     <vif:Type_C_Port_On_Hub value="false" />
     <vif:Type_C_Power_Source value="2">Both</vif:Type_C_Power_Source>
     <vif:Type_C_Sources_VCONN value="true" />
-    <vif:Type_C_Is_Alt_Mode_Controller value="true" />
-    <vif:Type_C_Is_Alt_Mode_Adapter value="false" />
+    <vif:Type_C_Is_Alt_Mode_Controller value="false" />
+    <vif:Type_C_Is_Alt_Mode_Adapter value="true" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB4® Port-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -312,14 +353,14 @@
     <vif:USB4_DFP_Supported value="true" />
     <vif:USB4_UFP_Supported value="false" />
     <vif:USB4_USB3_Tunneling_Supported value="true" />
-    <vif:USB4_Max_USB3_Tunneling_Speed value="4">USB 3.2 Gen 2x2</vif:USB4_Max_USB3_Tunneling_Speed>
+    <vif:USB4_Max_USB3_Tunneling_Speed value="2">USB 3.2 Gen 2x1</vif:USB4_Max_USB3_Tunneling_Speed>
     <vif:USB4_DP_Tunneling_Supported value="true" />
     <vif:USB4_PCIe_Tunneling_Supported value="true" />
-    <vif:USB4_TBT3_Compatibility_Supported value="false" />
+    <vif:USB4_TBT3_Compatibility_Supported value="true" />
     <vif:USB4_CL0s_State_Supported value="true" />
     <vif:USB4_CL1_State_Supported value="true" />
     <vif:USB4_CL2_State_Supported value="true" />
-    <vif:USB4_Num_Retimers value="1">1 retimer</vif:USB4_Num_Retimers>
+    <vif:USB4_Num_Retimers value="0">0 retimers</vif:USB4_Num_Retimers>
     <vif:USB4_DP_Bit_Rate value="3">HBR3</vif:USB4_DP_Bit_Rate>
     <vif:USB4_Num_DP_Lanes value="4">4 Lanes</vif:USB4_Num_DP_Lanes>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -333,7 +374,7 @@
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:Host_Supports_USB_Data value="true" />
-    <vif:Host_Speed value="2">USB 3.2 Gen 2x1</vif:Host_Speed>
+    <vif:Host_Speed value="4">USB 3.2 Gen 2x2</vif:Host_Speed>
     <vif:Host_Contains_Captive_Retimer value="true" />
     <vif:Host_Truncates_DP_For_tDHPResponse value="false" />
     <vif:Host_Is_Embedded value="false" />
@@ -350,6 +391,7 @@
     <vif:Master_Port value="true" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
+    <vif:DPS_Supported value="false" />
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="2">Both</vif:PD_OCP_Method>
@@ -361,11 +403,11 @@
         <vif:Src_PDO_Peak_Current value="0">100% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
         <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
-        <vif:Src_PD_OCP_OC_Debounce value="0">0 msec</vif:Src_PD_OCP_OC_Debounce>
-        <vif:Src_PD_OCP_OC_Threshold value="310">3100 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
-        <vif:Src_PD_OCP_UV_Debounce value="0">0 msec</vif:Src_PD_OCP_UV_Debounce>
+        <vif:Src_PD_OCP_OC_Debounce value="10">10 msec</vif:Src_PD_OCP_OC_Debounce>
+        <vif:Src_PD_OCP_OC_Threshold value="345">3450 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_UV_Debounce value="10">10 msec</vif:Src_PD_OCP_UV_Debounce>
         <vif:Src_PD_OCP_UV_Threshold_Type value="1">Percentage</vif:Src_PD_OCP_UV_Threshold_Type>
-        <vif:Src_PD_OCP_UV_Threshold value="95">95 %</vif:Src_PD_OCP_UV_Threshold>
+        <vif:Src_PD_OCP_UV_Threshold value="70">70 %</vif:Src_PD_OCP_UV_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -375,9 +417,9 @@
     <vif:EPR_Supported_As_Snk value="false" />
     <vif:No_USB_Suspend_May_Be_Set value="true" />
     <vif:GiveBack_May_Be_Set value="false" />
-    <vif:Higher_Capability_Set value="false" />
-    <vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="0">FR_Swap not supported</vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
-    <vif:Num_Snk_PDOs value="3">3 Snk PDOs</vif:Num_Snk_PDOs>
+    <vif:Higher_Capability_Set value="true" />
+    <vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="3">3A @ 5V</vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
+    <vif:Num_Snk_PDOs value="2">2 Snk PDOs</vif:Num_Snk_PDOs>
     <!--Bundle: SnkPdoList-->
     <vif:SnkPdoList>
       <vif:SnkPDO>
@@ -388,17 +430,9 @@
       </vif:SnkPDO>
       <vif:SnkPDO>
         <!--Sink PDO 2-->
-        <vif:Snk_PDO_Supply_Type value="1">Battery</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Op_Power value="60">15000 mW (Factor = 250)</vif:Snk_PDO_Op_Power>
-        <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
-        <vif:Snk_PDO_Max_Voltage value="300">15000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
-      </vif:SnkPDO>
-      <vif:SnkPDO>
-        <!--Sink PDO 3-->
-        <vif:Snk_PDO_Supply_Type value="2">Variable</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Op_Current value="500">5000 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
-        <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
-        <vif:Snk_PDO_Max_Voltage value="400">20000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
+        <vif:Snk_PDO_Supply_Type value="0">Fixed</vif:Snk_PDO_Supply_Type>
+        <vif:Snk_PDO_Voltage value="400">20000 mV (Factor = 50)</vif:Snk_PDO_Voltage>
+        <vif:Snk_PDO_Op_Current value="325">3250 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
       </vif:SnkPDO>
     </vif:SnkPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -412,15 +446,63 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;SOP Discover ID-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:XID_SOP value="0">0</vif:XID_SOP>
+    <vif:XID_SOP value="1105">1105</vif:XID_SOP>
     <vif:Data_Capable_As_USB_Host_SOP value="true" />
     <vif:Data_Capable_As_USB_Device_SOP value="false" />
-    <vif:Product_Type_UFP_SOP value="0">Undefined</vif:Product_Type_UFP_SOP>
+    <vif:Product_Type_UFP_SOP value="2">PDUSB Peripheral</vif:Product_Type_UFP_SOP>
     <vif:Product_Type_DFP_SOP value="2">PDUSB Host</vif:Product_Type_DFP_SOP>
     <vif:DFP_VDO_Port_Number value="1">1</vif:DFP_VDO_Port_Number>
-    <vif:Modal_Operation_Supported_SOP value="false" />
+    <vif:Modal_Operation_Supported_SOP value="true" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
     <vif:PID_SOP value="20593">5071</vif:PID_SOP>
     <vif:bcdDevice_SOP value="4880">1310</vif:bcdDevice_SOP>
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <!--;SOP Modes-->
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <vif:SVID_Fixed_SOP value="true" />
+    <vif:Num_SVIDs_Min_SOP value="2">2</vif:Num_SVIDs_Min_SOP>
+    <vif:Num_SVIDs_Max_SOP value="2">2</vif:Num_SVIDs_Max_SOP>
+    <!--Bundle: SOPSVIDList-->
+    <vif:SOPSVIDList>
+      <vif:SOPSVID>
+        <!--SOP SVID 1-->
+        <vif:SVID_SOP value="32903">8087</vif:SVID_SOP>
+        <vif:SVID_Modes_Fixed_SOP value="true" />
+        <vif:SVID_Num_Modes_Min_SOP value="1">1</vif:SVID_Num_Modes_Min_SOP>
+        <vif:SVID_Num_Modes_Max_SOP value="1">1</vif:SVID_Num_Modes_Max_SOP>
+        <!--Bundle: SOPSVIDModeList-->
+        <vif:SOPSVIDModeList>
+          <vif:SOPSVIDMode>
+            <!--SOP SVID Mode 1-->
+            <vif:SVID_Mode_Enter_SOP value="true" />
+            <vif:SVID_Mode_Recog_Value_SOP value="1">00000001</vif:SVID_Mode_Recog_Value_SOP>
+          </vif:SOPSVIDMode>
+        </vif:SOPSVIDModeList>
+      </vif:SOPSVID>
+      <vif:SOPSVID>
+        <!--SOP SVID 2-->
+        <vif:SVID_SOP value="65281">FF01</vif:SVID_SOP>
+        <vif:SVID_Modes_Fixed_SOP value="true" />
+        <vif:SVID_Num_Modes_Min_SOP value="1">1</vif:SVID_Num_Modes_Min_SOP>
+        <vif:SVID_Num_Modes_Max_SOP value="1">1</vif:SVID_Num_Modes_Max_SOP>
+        <!--Bundle: SOPSVIDModeList-->
+        <vif:SOPSVIDModeList>
+          <vif:SOPSVIDMode>
+            <!--SOP SVID Mode 1-->
+            <vif:SVID_Mode_Enter_SOP value="true" />
+            <vif:SVID_Mode_Recog_Value_SOP value="786501">000C0045</vif:SVID_Mode_Recog_Value_SOP>
+          </vif:SOPSVIDMode>
+        </vif:SOPSVIDModeList>
+      </vif:SOPSVID>
+    </vif:SOPSVIDList>
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <!--;AMA-->
+    <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+    <vif:AMA_HW_Vers value="1">1</vif:AMA_HW_Vers>
+    <vif:AMA_FW_Vers value="1">1</vif:AMA_FW_Vers>
+    <vif:AMA_VCONN_Reqd value="true" />
+    <vif:AMA_VCONN_Power value="0">1W</vif:AMA_VCONN_Power>
+    <vif:AMA_VBUS_Reqd value="true" />
+    <vif:AMA_Superspeed_Support value="2">USB 3.2 Gen 2</vif:AMA_Superspeed_Support>
   </vif:Component>
 </vif:VIF>
