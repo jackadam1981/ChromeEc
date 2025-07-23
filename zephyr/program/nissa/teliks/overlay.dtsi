@@ -25,6 +25,10 @@
 		dynapack_b140435 {
 			compatible = "dynapack,b140435","battery-smart";
 		};
+		/* Made by Dynapack, sharing the same model and device name. */
+		celxpert_b340442 {
+			compatible = "celxpert,b340442","battery-smart";
+		};
 	};
 
 	hibernate-wake-pins {
