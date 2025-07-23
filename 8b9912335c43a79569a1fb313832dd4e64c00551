@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d02da2b_d90e6e15",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateful.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-23T19:04:40Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org this function is only used for encrypting pairing key. It\u0027s special because it derives key only from rollback entropy (and OTP).\n\nI wonder if I should move that code to pairing key host commands to reduce possibility of using it accidentally for other purposes. What do you think?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "8b9912335c43a79569a1fb313832dd4e64c00551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
