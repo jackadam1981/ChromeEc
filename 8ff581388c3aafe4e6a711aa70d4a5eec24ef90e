@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d7ad79_623e149f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-23T15:23:24Z",
+      "side": 1,
+      "message": "This seems fine as far as the baseboard goes. We\u0027ve already added this to some individual boards, so you will probably need to remove those as well as your most recent change to magolor.\n\nIMO, the easiest way to find all the dedede EC builds is something like\n```\ngrep --files-with-matches dedede board/*/build.mk | cut -d / -n 2\n```\nThen you can run each of those builds to check for linker errors from duplicate definitions.",
+      "revId": "8ff581388c3aafe4e6a711aa70d4a5eec24ef90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
