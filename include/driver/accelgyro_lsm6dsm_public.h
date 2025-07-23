@@ -15,6 +15,8 @@
 /* LSM6DS3 */
 #define LSM6DS3_WHO_AM_I 0x69
 
+/* FIFO decimator registers and bitmask */
+#define LSM6DSM_FIFO_CTRL1_ADDR 0x06
 #define LSM6DSM_FIFO_CTRL2_ADDR 0x07
 
 #define LSM6DSM_FIFO_CTRL5_ADDR 0x0a
@@ -53,8 +55,21 @@ enum lsm6dsm_status {
 #define LSM6DSM_STS_XLDA_MASK 0x01
 #define LSM6DSM_STS_GDA_MASK 0x02
 
+#define LSM6DSM_FIFO_STS1_ADDR 0x3a
+#define LSM6DSM_FIFO_STS2_ADDR 0x3b
+#define LSM6DSM_FIFO_STS3_ADDR 0x3c
+#define LSM6DSM_FIFO_STS4_ADDR 0x3d
+
 /* Out data register */
 #define LSM6DSM_FIFO_DATA_ADDR 0x3e
+
+/*
+ * Note: The specific number of samples to discard depends on the filters
+ * configured for the chip, as well as the ODR being set.  For most of our
+ * allowed ODRs, 5 should suffice.
+ * See: ST's LSM6DSM application notes (AN4987) Tables 17 and 19 for details
+ */
+#define LSM6DSM_DISCARD_SAMPLES 5
 
 #ifdef CONFIG_ZEPHYR
 
