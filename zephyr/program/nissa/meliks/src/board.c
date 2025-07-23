@@ -54,6 +54,19 @@ test_export_static void panel_power_detect_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, panel_power_detect_init, HOOK_PRIO_DEFAULT);
 
+test_export_static void disable_pfm_mode(void)
+{
+	uint8_t val;
+	int rv;
+
+	rv = i2c_reg_read_byte_dt(&lcdctrl, ISL98607_REG_VBST_CNTRL, &val);
+
+	if (!rv) {
+		val |= ISL98607_VBST_PFM_MODE_DISABLE;
+		i2c_reg_write_byte_dt(&lcdctrl, ISL98607_REG_VBST_CNTRL, val);
+	}
+}
+
 /**
  * Handle VPN / VSN for mipi display.
  */
@@ -63,6 +76,7 @@ test_export_static void panel_power_change_deferred(void)
 		GPIO_DT_FROM_NODELABEL(gpio_ec_en_pp1800_panel_x));
 
 	if (signal != 0) {
+		disable_pfm_mode();
 		i2c_reg_write_byte_dt(&lcdctrl, ISL98607_REG_VBST_OUT,
 				      ISL98607_VBST_OUT_5P65);
 
