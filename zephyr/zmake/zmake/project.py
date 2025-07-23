@@ -55,6 +55,7 @@ class ProjectConfig:
         default_factory=list
     )
     signer: signers.BaseSigner = signers.NullSigner()
+    skip_build_all: bool = False
 
     @property
     def full_name(self) -> str:

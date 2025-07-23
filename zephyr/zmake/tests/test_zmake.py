@@ -338,6 +338,19 @@ def test_find_projects(zmake_factory_from_dir):
         )
         for name, dir in fake_names_and_dirs
     }
+    # Add this filtered project separately, since it's not in fake_names_and_dirs
+    # it should not be a part of the expected list when passing
+    # select_all_projects=True
+    fake_projects["filtered_project"] = zmake.project.Project(
+        zmake.project.ProjectConfig(
+            project_name="filtered_project",
+            project_dir=Path("root/program_c/"),
+            zephyr_board="some_board",
+            supported_toolchains=["coreboot-sdk"],
+            output_packer=zmake.output_packers.RawBinPacker,
+            skip_build_all=True,
+        )
+    )
 
     zmk = zmake_factory_from_dir()
 
@@ -396,7 +409,14 @@ def test_find_projects(zmake_factory_from_dir):
 
         assert {
             p.config.project_name for p in zmk._resolve_projects(["%program*"])
-        } == {"project1", "project2", "project", "some_project", "prj"}
+        } == {
+            "filtered_project",
+            "project1",
+            "project2",
+            "project",
+            "some_project",
+            "prj",
+        }
 
         # Invalid project names, program names, or wildcard strings
         with pytest.raises(KeyError):

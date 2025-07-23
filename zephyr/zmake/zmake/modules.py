@@ -4,6 +4,8 @@
 
 """Registry of known Zephyr modules."""
 
+import os
+
 from zmake import build_config
 from zmake import util
 
@@ -21,6 +23,33 @@ def third_party_module(name, checkout):
     return checkout / "src" / "third_party" / "zephyr" / name
 
 
+def chre_module(name, checkout):
+    """Special handler for CHRE to allow internal testing
+
+    By default this function will resolve to the public CHRE repo, but if the
+    environment variable PLATFORM_EC_USE_INTERNAL_CHRE is set, then the internal
+    manifest's checkout of CHRE is returned.
+
+    Args:
+        name: The name of the module.
+        checkout: The path to the chromiumos source.
+
+    Return:
+        The path to the module module.
+    """
+    if "PLATFORM_EC_USE_INTERNAL_CHRE" in os.environ:
+        name += "_internal"
+    return (
+        checkout
+        / "src"
+        / "third_party"
+        / "android"
+        / "platform"
+        / "system"
+        / name
+    )
+
+
 known_modules = {
     # TODO(b/384581513): boringssl is not officially recognized by Zephyr,
     # since it doesn't have a zephyr/module.yaml. That doesn't prevent us from
@@ -29,6 +58,7 @@ known_modules = {
         checkout / "src" / "third_party" / name
     ),
     "hal_stm32": third_party_module,
+    "chre": chre_module,
     "cmsis": third_party_module,
     "cmsis_6": third_party_module,
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
