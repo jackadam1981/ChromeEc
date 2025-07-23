@@ -421,6 +421,10 @@ const struct tcpm_drv raa489000_tcpm_drv = {
 	.drp_toggle = &tcpci_tcpc_drp_toggle,
 #endif
 	.get_chip_info = &tcpci_get_chip_info,
+	.get_snk_ctrl = &tcpci_tcpm_get_snk_ctrl,
+	.set_snk_ctrl = &tcpci_tcpm_set_snk_ctrl,
+	.get_src_ctrl = &tcpci_tcpm_get_src_ctrl,
+	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode = &raa489000_enter_low_power_mode,
 	.wake_low_power_mode = &tcpci_wake_low_power_mode,
