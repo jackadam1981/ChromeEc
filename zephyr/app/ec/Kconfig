@@ -170,6 +170,7 @@ config SHIMMED_TASKS
 	default y if HAS_TASK_TOUCHPAD
 	default y if HAS_TASK_PD_C0
 	default y if HAS_TASK_PD_INT_C0
+        imply POLL
 	help
 	  When this option is enabled, a shimmed_tasks.h header with the
 	  CROS_EC_TASK_LIST defined needs to be included for the project to

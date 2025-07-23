@@ -44,6 +44,7 @@ menuconfig PLATFORM_EC
 	imply CRC
 	imply PRINTK
 	imply SHELL
+    imply POLL # k_poll used in shim/src/console.c
 	help
 	  The platform/ec Zephyr module allows some code from the
 	  existing Chromium OS EC project to be "shimmed" into Zephyr. With
