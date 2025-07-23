@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "195a6fbdff4daa35ee46e8750a4d1d85bc496918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d841ba6_907293e8",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T21:26:00Z",
+      "side": 1,
+      "message": "This needs a timeout. If the PDC fails to set FRS, this will hang the test.\n\nYou can use TEST_WAIT_FOR to poll every 100ms\n```\nzassert_true(TEST_WAIT_FOR(emul_pdc_get_frs() \u003d\u003d 0, \u003ctimeout_in_ms\u003e)));\n```\n\nIf you want to keep the 10ms poll, use WAIT_FOR directly\n\n```\nzassert_true(\n    WAIT_FOR(emul_pdc_get_frs() \u003d\u003d 0, \u003ctimeout us\u003e), k_msleep(10)));\n```",
+      "range": {
+        "startLine": 808,
+        "startChar": 10,
+        "endLine": 808,
+        "endChar": 26
+      },
+      "revId": "195a6fbdff4daa35ee46e8750a4d1d85bc496918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
