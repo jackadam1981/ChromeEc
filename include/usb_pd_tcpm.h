@@ -50,8 +50,9 @@ enum tcpc_cc_pull {
 FORWARD_DECLARE_ENUM(tcpc_rp_value){
 	TYPEC_RP_USB = 0,
 	TYPEC_RP_1A5 = 1,
-	TYPEC_RP_3A0 = 2,
-	TYPEC_RP_RESERVED = 3,
+	TYPEC_RP_2A0 = 2,
+	TYPEC_RP_3A0 = 3,
+	TYPEC_RP_RESERVED = 4,
 };
 
 /* DRP (dual-role-power) setting */

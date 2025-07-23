@@ -539,6 +539,10 @@ static int syv682x_set_vbus_source_current_limit(int port,
 		limit = SYV682X_5V_ILIM_1_75;
 		break;
 
+	case TYPEC_RP_2A0:
+		limit = SYV682X_5V_ILIM_2_25;
+		break;
+
 	case TYPEC_RP_USB:
 	default:
 		/* 1.25 A is lowest current limit setting for SVY682 */
