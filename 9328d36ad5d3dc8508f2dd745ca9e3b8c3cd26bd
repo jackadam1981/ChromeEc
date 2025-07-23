@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40c04bd_c348931d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "n",
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4376384e_693df221",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "Also needs `select EMUL_COMMON_I2C`",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 14
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9bb9725_6505432d",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "This emulator does a mix of indexing into the `reg[]` array with magic numbers and with macro values.  Switch everything to macros for readability.",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a412f006_0b2210b3",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "I don\u0027t see register offset 0x3c in the current driver.  Should this be 0x3a `LSM6DSM_FIFO_STS1_ADDR`?",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10498a68_1e77e450",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "Nit - the actual driver doesn\u0027t use the GPIO_ACTIVE_LOW/GPIO_ACTIVE_HIGH flag, so the emulator probably shouldn\u0027t either.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e041d5_ce41c098",
+        "filename": "zephyr/test/drivers/lsm6dsm/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "Can you check that motionsense didn\u0027t read a sample instead?  The interrupt gets deasserted by the emulator once the FIFO is read.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fb11633_5dd37955",
+        "filename": "zephyr/test/drivers/lsm6dsm/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T17:15:37Z",
+      "side": 1,
+      "message": "Same here - I think a better check is to verify motionsense received the sample.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
