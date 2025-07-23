@@ -362,6 +362,7 @@ if(CONFIG_TEST_NISSA_DIRKS)
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/dirks/src/barrel_jack.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/dirks/src/led.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/dirks/src/hdmi.c
+            ${PLATFORM_EC_PROGRAM_DIR}/nissa/dirks/src/thermal.c
             ${PLATFORM_EC_PROGRAM_DIR}/nissa/dirks/src/usbc.c
     )
 endif()
