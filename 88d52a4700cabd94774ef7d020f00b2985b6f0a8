@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6563210_f2f28c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-23T18:07:55Z",
+      "side": 1,
+      "message": "The change looks good, but I think some additional comments should be added.",
+      "revId": "88d52a4700cabd94774ef7d020f00b2985b6f0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704019fa_b8c47f46",
+        "filename": "zephyr/program/trulo/uldrenite/src/codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-23T18:07:55Z",
+      "side": 1,
+      "message": "I think it would be useful to add a brief comment that ec muting or unmuting. I think it\u0027s being unmuted here since it\u0027s in the chip resume hook. But the gpio signal name is gpio_ec_mute which implies that that it\u0027s active high based on the absence of the \u0027_l\u0027 suffix. I think this signal is the equivalent of amp_mute_l from the trulo reference design.",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "88d52a4700cabd94774ef7d020f00b2985b6f0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d359f7b9_e1ff541a",
+        "filename": "zephyr/program/trulo/uldrenite/src/codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-23T18:07:55Z",
+      "side": 1,
+      "message": "Where does 7 usec come from? It\u0027s a specific number which I assume came from a measurement.",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "88d52a4700cabd94774ef7d020f00b2985b6f0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
