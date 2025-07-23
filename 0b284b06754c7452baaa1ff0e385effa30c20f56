@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84691af_c6544ecc",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-23T12:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9bde36f_b050b794",
+      "range": {
+        "startLine": 974,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 64
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c6654a_921fcadc",
@@ -131,6 +155,54 @@
       "writtenOn": "2025-07-09T22:59:16Z",
       "side": 1,
       "message": "No C++ style comments.  Please run `cros format` on all files and make sure you\u0027re running the pre-submit checks.",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 43
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4370b1f_8cb266ff",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-23T12:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c6654a_921fcadc",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 43
+      },
+      "revId": "0b284b06754c7452baaa1ff0e385effa30c20f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118c6254_204d0fb8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-23T12:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c6654a_921fcadc",
       "range": {
         "startLine": 982,
         "startChar": 0,

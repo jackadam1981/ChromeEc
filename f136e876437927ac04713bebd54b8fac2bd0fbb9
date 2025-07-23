@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a84faa8_52ef65f4",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-23T12:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a34d078f_4d51635d",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a4192a7_dbab6c12",
@@ -119,6 +137,24 @@
       "writtenOn": "2025-07-07T21:25:10Z",
       "side": 1,
       "message": "Same comment regarding definition of object. Use BSDO (battery status data object) as defined in USB PD spec (USB PD 3.2, Section 6.4.5)",
+      "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a229762_fca149fe",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-23T12:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d590587_40bfd196",
       "revId": "f136e876437927ac04713bebd54b8fac2bd0fbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
