@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9385d33d_1bde5e03",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T20:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9607be_606bd006",
+      "range": {
+        "startLine": 1607,
+        "startChar": 28,
+        "endLine": 1607,
+        "endChar": 31
+      },
+      "revId": "da7cde9f73fc6cb138847ddfd49addcd31fd69f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea8a72c_9d6a11f2",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-23T20:18:38Z",
       "side": 1,
       "message": "Restore it back to \"PD\" charging?",
+      "range": {
+        "startLine": 1674,
+        "startChar": 30,
+        "endLine": 1674,
+        "endChar": 44
+      },
+      "revId": "da7cde9f73fc6cb138847ddfd49addcd31fd69f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e573466_99513e63",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-23T20:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea8a72c_9d6a11f2",
       "range": {
         "startLine": 1674,
         "startChar": 30,
