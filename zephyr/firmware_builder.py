@@ -65,9 +65,8 @@ SPECIAL_BOARDS = [
     "nivviks",
     # Trulo variants
     "kaladin",
-    "trulo",
-    "trulo-ti",
-    "trulo-ish",
+    "uldrenite",
+    "uldrenite-ish",
     # Skyrim variants
     "winterhold",
     "frostflow",
