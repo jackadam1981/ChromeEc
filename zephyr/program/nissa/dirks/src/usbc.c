@@ -16,6 +16,7 @@
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "system.h"
+#include "temp_sensor/temp_sensor.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
@@ -176,3 +177,105 @@ void usba_retimer_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, usba_retimer_init, HOOK_PRIO_DEFAULT);
+
+struct typec_ilim_step {
+	int str0_on;
+	int str0_off;
+	int str1_on;
+	int str1_off;
+	enum tcpc_rp_value typec_rp;
+};
+
+static const struct typec_ilim_step typec_ilim_table[] = {
+	{ .str0_on = 83,
+	  .str0_off = 80,
+	  .str1_on = 83,
+	  .str1_off = 80,
+	  .typec_rp = TYPEC_RP_3A0 },
+	{ .str0_on = 85,
+	  .str0_off = 82,
+	  .str1_on = 85,
+	  .str1_off = 82,
+	  .typec_rp = TYPEC_RP_1A5 },
+	{ .str0_on = 88,
+	  .str0_off = 84,
+	  .str1_on = 88,
+	  .str1_off = 84,
+	  .typec_rp = TYPEC_RP_USB },
+};
+
+#define NUM_TYPEC_ILIM_LEVELS ARRAY_SIZE(typec_ilim_table)
+
+#define TYPE_C_THROT BIT(0)
+#define TYPE_C_RELEASE BIT(1)
+
+static void typec_ilim_control(void)
+{
+	int rv;
+	int temp_c_0;
+	int temp_c_1;
+	int thermal_sensor0;
+	int thermal_sensor1;
+	bool level_changed = false;
+	static int current_level;
+	static int prev_tmp_0;
+	static int prev_tmp_1;
+	uint32_t new_state = 0;
+
+	/* Read temperature from STR0 */
+	rv = temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_memory)),
+			      &thermal_sensor0);
+	temp_c_0 = K_TO_C(thermal_sensor0);
+
+	if (rv != EC_SUCCESS)
+		return;
+
+	/* Read temperature from STR1 */
+	rv = temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
+			      &thermal_sensor1);
+	temp_c_1 = K_TO_C(thermal_sensor1);
+
+	if (rv != EC_SUCCESS)
+		return;
+
+	if (temp_c_0 < prev_tmp_0 || temp_c_1 < prev_tmp_1) {
+		if (temp_c_0 <= typec_ilim_table[current_level].str0_off &&
+		    temp_c_1 <= typec_ilim_table[current_level].str1_off)
+			new_state |= TYPE_C_RELEASE;
+	}
+
+	if (temp_c_0 > prev_tmp_0 || temp_c_1 > prev_tmp_1) {
+		if (temp_c_0 >= typec_ilim_table[current_level + 1].str0_on &&
+		    temp_c_1 >= typec_ilim_table[current_level + 1].str1_on)
+			new_state |= TYPE_C_THROT;
+	}
+
+	if (new_state | TYPE_C_RELEASE) {
+		current_level = current_level - 1;
+		if (current_level < 0)
+			current_level = 0;
+		else
+			level_changed = true;
+	} else if (new_state | TYPE_C_THROT) {
+		current_level = current_level + 1;
+		if (current_level >= NUM_TYPEC_ILIM_LEVELS)
+			current_level = NUM_TYPEC_ILIM_LEVELS - 1;
+		else
+			level_changed = true;
+	}
+
+	prev_tmp_0 = temp_c_0;
+	prev_tmp_1 = temp_c_1;
+
+	if (ppc_is_sourcing_vbus(0) && level_changed) {
+		enum tcpc_rp_value rp =
+			typec_ilim_table[current_level].typec_rp;
+
+		LOG_INF("Temp changed! STR0=%dC STR1=%dC TYPE-C Rp=%d",
+			temp_c_0, temp_c_1, rp);
+		ppc_set_vbus_source_current_limit(0, rp);
+		tcpm_select_rp_value(0, rp);
+		pd_update_contract(0);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, typec_ilim_control, HOOK_PRIO_TEMP_SENSOR_DONE);
