@@ -258,7 +258,13 @@ class Zmake:
         """
         found_projects = zmake.project.find_projects(self.projects_dirs)
         if select_all_projects:
-            return set(found_projects.values())
+            return set(
+                {
+                    p
+                    for p in found_projects.values()
+                    if not p.config.skip_build_all
+                }
+            )
 
         # User wants a subset of projects and has passed one or more exact
         # project names, program names (prefixed with '%'), or Unix-style
