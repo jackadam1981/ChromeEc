@@ -30,9 +30,6 @@
 #define LSM6DSM_FUNC_CFG_EN 0x80
 #define LSM6DSM_FUNC_CFG_EN_B 0x20
 
-/* FIFO decimator registers and bitmask */
-#define LSM6DSM_FIFO_CTRL1_ADDR 0x06
-
 /* Output data rate registers and masks */
 #define LSM6DSM_ODR_REG(_sensor) (LSM6DSM_CTRL1_ADDR + _sensor)
 #define LSM6DSM_ODR_MASK 0xf0
@@ -92,8 +89,6 @@
 
 #define LSM6DSM_SENSORHUB1_REG 0x2e
 
-#define LSM6DSM_FIFO_STS1_ADDR 0x3a
-#define LSM6DSM_FIFO_STS2_ADDR 0x3b
 #define LSM6DSM_FIFO_DIFF_MASK 0x0fff
 #define LSM6DSM_FIFO_EMPTY 0x1000
 #define LSM6DSM_FIFO_FULL 0x2000
@@ -326,14 +321,6 @@ struct lsm6dsm_data {
 	((struct lsm6dsm_data){                               \
 		.accel_fifo_state = LSM6DSM_ACCEL_FIFO_STATE, \
 	})
-
-/*
- * Note: The specific number of samples to discard depends on the filters
- * configured for the chip, as well as the ODR being set.  For most of our
- * allowed ODRs, 5 should suffice.
- * See: ST's LSM6DSM application notes (AN4987) Tables 17 and 19 for details
- */
-#define LSM6DSM_DISCARD_SAMPLES 5
 
 #define LSM6DSM_ST_DATA(g, type) (&(&(g))->st_data[(type)])
 
