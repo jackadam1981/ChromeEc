@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5adc2b86_b6191692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-07-23T09:01:19Z",
+      "side": 1,
+      "message": "Doubel confirm ok.\n\n(cr) donald@donald-TT-3437 ~/chromiumos/src/platform/ec $ sudo ./util/flash_ec --image\u003dbuild/ec_turlo_kaladin_01.bin --chip ite_uart\nINFO: Using servo_micro.\nINFO: Using ec image : build/ec_turlo_kaladin_01.bin\nINFO: Flashing chip ite_uart.\nINFO: Programming EC firmware using ITE UART interface\nINFO: ITE tool \u003d /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr\nINFO: EC UART \u003d /dev/pts/7\nINFO: Using 115200 baudrate\nINFO: Reading FMAP section from EC chip\nINFO: sudo -- /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr -d /dev/pts/7 -b 115200 -r /tmp/tmp.D3jSuMGaFl/ec.cur.fmap.bin -R 384000 518\nDisabling watchdog...\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nFlash ID \u003d c8 65 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\nSaving...        : 100%\nINFO: FMAP read is successful from EC flash\nINFO: Reading CBI section from EC chip\nINFO: sudo -- /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr -d /dev/pts/7 -b 115200 -r /tmp/tmp.D3jSuMGaFl/ec.cur.CBI.bin -R 385024 4096\nDisabling watchdog...\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nFlash ID \u003d c8 65 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\nSaving...        : 100%\nINFO: Preserving CBI section in new image\nDisabling watchdog...\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d 1024 KB\nFlash ID \u003d c8 65 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\nErasing...       : 100%\nProgramming...   : 100%\nINFO: Flashing done.\nINFO: Restoring servo settings...",
+      "parentUuid": "c0327de6_6d8ddfcd",
+      "revId": "18e21044f087c4a2302bf22104a2909a6fd76a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a473de9_fa9fd20b",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-07-22T20:36:02Z",
       "side": 1,
       "message": "i\u0027ve been testing this patch on fatcat with the ITE EC (`Chip:   ite it82102 bx`)\nand hitting this case consistently. is that expected?",
+      "range": {
+        "startLine": 486,
+        "startChar": 12,
+        "endLine": 486,
+        "endChar": 16
+      },
+      "revId": "18e21044f087c4a2302bf22104a2909a6fd76a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db12dfe9_ee00cc5a",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-07-23T09:01:19Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8a473de9_fa9fd20b",
       "range": {
         "startLine": 486,
         "startChar": 12,
