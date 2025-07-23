@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_ACCELGYRO_LSM6DSM_H
 #define __CROS_EC_ACCELGYRO_LSM6DSM_H
 
+#include "driver/accelgyro_lsm6dsm_public.h"
 #include "mag_bmm150.h"
 #include "mag_cal.h"
 #include "mag_lis2mdl.h"
@@ -36,8 +37,6 @@
 #define LSM6DSM_ODR_REG(_sensor) (LSM6DSM_CTRL1_ADDR + _sensor)
 #define LSM6DSM_ODR_MASK 0xf0
 
-#define LSM6DSM_FIFO_CTRL2_ADDR 0x07
-
 #define LSM6DSM_FIFO_CTRL3_ADDR 0x08
 #define LSM6DSM_FIFO_DEC_XL_OFF 0
 #define LSM6DSM_FIFO_DEC_G_OFF 3
@@ -51,35 +50,16 @@
 #define LSM6DSM_MAX_FIFO_SIZE 4096
 #define LSM6DSM_MAX_FIFO_LENGTH (LSM6DSM_MAX_FIFO_SIZE / OUT_XYZ_SIZE)
 
-#define LSM6DSM_FIFO_CTRL5_ADDR 0x0a
-#define LSM6DSM_FIFO_CTRL5_ODR_OFF 3
-#define LSM6DSM_FIFO_CTRL5_ODR_MASK (0xf << LSM6DSM_FIFO_CTRL5_ODR_OFF)
-#define LSM6DSM_FIFO_CTRL5_MODE_MASK 0x07
-
 #define LSM6DSM_INT1_CTRL 0x0d
 #define LSM6DSM_INT_FIFO_TH 0x08
 #define LSM6DSM_INT_FIFO_OVR 0x10
 #define LSM6DSM_INT_FIFO_FULL 0x20
 #define LSM6DSM_INT_SIGMO 0x40
 
-/* Who Am I */
-#define LSM6DSM_WHO_AM_I_REG 0x0f
-/* LSM6DSM/LSM6DSL/LSM6DS3TR-C */
-#define LSM6DSM_WHO_AM_I 0x6a
-/* LSM6DS3 */
-#define LSM6DS3_WHO_AM_I 0x69
-
 #define LSM6DSM_CTRL1_ADDR 0x10
 #define LSM6DSM_XL_ODR_MASK 0xf0
 
 #define LSM6DSM_CTRL2_ADDR 0x11
-#define LSM6DSM_CTRL3_ADDR 0x12
-#define LSM6DSM_SW_RESET 0x01
-#define LSM6DSM_IF_INC 0x04
-#define LSM6DSM_PP_OD 0x10
-#define LSM6DSM_H_L_ACTIVE 0x20
-#define LSM6DSM_BDU 0x40
-#define LSM6DSM_BOOT 0x80
 
 #define LSM6DSM_CTRL4_ADDR 0x13
 #define LSM6DSM_INT2_ON_INT1_MASK 0x20
@@ -105,8 +85,6 @@
 #define LSM6DSM_STAP_DETECT 0x20
 #define LSM6DSM_DTAP_DETECT 0x10
 
-#define LSM6DSM_STATUS_REG 0x1e
-
 #define LSM6DSM_OUT_TEMP_L_ADDR 0x20
 
 #define LSM6DSM_GYRO_OUT_X_L_ADDR 0x22
@@ -122,9 +100,6 @@
 #define LSM6DSM_FIFO_DATA_OVR 0x4000
 #define LSM6DSM_FIFO_WATERMARK 0x8000
 #define LSM6DSM_FIFO_NODECIM 0x01
-
-/* Out data register */
-#define LSM6DSM_FIFO_DATA_ADDR 0x3e
 
 /* Registers value for supported FIFO mode */
 #define LSM6DSM_FIFO_MODE_BYPASS_VAL 0x00
@@ -210,9 +185,6 @@ struct fstatus {
 /* Full Scale range value and gain for Acc */
 #define LSM6DSM_FS_LIST_NUM 4
 
-#define LSM6DSM_ACCEL_FS_ADDR 0x10
-#define LSM6DSM_ACCEL_FS_MASK 0x0c
-
 #define LSM6DSM_ACCEL_FS_2G_VAL 0x00
 #define LSM6DSM_ACCEL_FS_4G_VAL 0x02
 #define LSM6DSM_ACCEL_FS_8G_VAL 0x03
@@ -254,16 +226,6 @@ struct fstatus {
 /* FS register address/mask for Acc/Gyro sensors */
 #define LSM6DSM_RANGE_REG(_sensor) (LSM6DSM_ACCEL_FS_ADDR + (_sensor))
 #define LSM6DSM_RANGE_MASK 0x0c
-
-/* Status register bitmask for Acc/Gyro data ready */
-enum lsm6dsm_status {
-	LSM6DSM_STS_DOWN = 0x00,
-	LSM6DSM_STS_XLDA_UP = 0x01,
-	LSM6DSM_STS_GDA_UP = 0x02
-};
-
-#define LSM6DSM_STS_XLDA_MASK 0x01
-#define LSM6DSM_STS_GDA_MASK 0x02
 
 /* Sensor resolution in number of bits: fixed 16 bit */
 #define LSM6DSM_RESOLUTION 16
@@ -385,22 +347,5 @@ struct lsm6dsm_data {
 #endif
 
 int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd);
-
-#if defined(CONFIG_ZEPHYR)
-/* Get the motion sensor ID of the LSM6DSM sensor that generates the
- * interrupt. The interrupt is converted to the event and transferred to
- * motion sense task that actually handles the interrupt.
- *
- * Here we use an alias (lsm6dsm_int) to get the motion sensor ID. This alias
- * MUST be defined for this driver to work.
- * aliases {
- *   lsm6dsm-int = &lid_accel;
- * };
- */
-#if DT_NODE_EXISTS(DT_ALIAS(lsm6dsm_int))
-#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_ID(DT_ALIAS(lsm6dsm_int)))
-#endif
-#endif
 
 #endif /* __CROS_EC_ACCELGYRO_LSM6DSM_H */
