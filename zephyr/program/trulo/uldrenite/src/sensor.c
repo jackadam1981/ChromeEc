@@ -21,7 +21,7 @@
 
 #define I2C_PORT_SENSOR 1
 
-LOG_MODULE_REGISTER(uldrenite_sensor, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(kaladin_sensor, LOG_LEVEL_INF);
 
 enum base_sensor_type {
 	base_lis2dw12 = 0,
