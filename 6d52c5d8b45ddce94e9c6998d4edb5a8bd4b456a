@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a66b0a_fdc1e9a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-23T20:07:17Z",
+      "side": 1,
+      "message": "i\u0027m still seeing strange behavior with this patch on fatcat.\nwhile flashing the EC, the AP suddenly tries to boot up\nabout 30 seconds into the programming step. is there\na 30 second watchdog or something that\u0027s causing the EC\nto boot in the middle of flashing - i can\u0027t think of\nanother reason why the AP would boot in the middle\nof flashing the EC.",
+      "revId": "6d52c5d8b45ddce94e9c6998d4edb5a8bd4b456a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
