@@ -173,6 +173,19 @@ register_ish_project(
     ],
     modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
 )
+
+register_ish_project(
+    project_name="kaladin-ish",
+    zephyr_board="intel_ish_5_4_1",
+    dts_overlays=[
+        here / "kaladin-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "kaladin-ish" / "project.conf",
+        here / "dsp_comms.conf",
+    ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+)
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="trulo", addr=0x40144)
