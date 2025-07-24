@@ -739,9 +739,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "00" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030300000000000",
+                # the ascii characters "GOOG00" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730300000000000",
                 "bytes": 38,
             },
             None,
@@ -758,9 +758,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "01" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030310000000000",
+                # the ascii characters "GOOG01" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730310000000000",
                 "bytes": 38,
             },
             None,
@@ -777,9 +777,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "03" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030330000000000",
+                # the ascii characters "GOOG03" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730330000000000",
                 "bytes": 38,
             },
             None,
@@ -796,9 +796,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "04" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030340000000000",
+                # the ascii characters "GOOG04" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730340000000000",
                 "bytes": 38,
             },
             None,
@@ -815,9 +815,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "05" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030350000000000",
+                # the ascii characters "GOOG05" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730350000000000",
                 "bytes": 38,
             },
             None,
@@ -834,9 +834,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "06" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030360000000000",
+                # the ascii characters "GOOG06" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730360000000000",
                 "bytes": 38,
             },
             None,
@@ -853,9 +853,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "08" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030380000000000",
+                # the ascii characters "GOOG08" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730380000000000",
                 "bytes": 38,
             },
             None,
@@ -872,9 +872,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "09" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030390000000000",
+                # the ascii characters "GOOG09" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730390000000000",
                 "bytes": 38,
             },
             None,
@@ -891,9 +891,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0B" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030420000000000",
+                # the ascii characters "GOOG0B" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730420000000000",
                 "bytes": 38,
             },
             None,
@@ -910,9 +910,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0C" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030430000000000",
+                # the ascii characters "GOOG0C" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730430000000000",
                 "bytes": 38,
             },
             None,
@@ -929,9 +929,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0D" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030440000000000",
+                # the ascii characters "GOOG0D" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730440000000000",
                 "bytes": 38,
             },
             None,
@@ -948,9 +948,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0E" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030450000000000",
+                # the ascii characters "GOOG0E" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730450000000000",
                 "bytes": 38,
             },
             None,
@@ -967,9 +967,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0F" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030460000000000",
+                # the ascii characters "GOOG0F" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730460000000000",
                 "bytes": 38,
             },
             None,
@@ -986,9 +986,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0G" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030470000000000",
+                # the ascii characters "GOOG0G" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730470000000000",
                 "bytes": 38,
             },
             None,
@@ -1005,9 +1005,9 @@ DISAMBIGUATION_DICTIONARY = {
             },
             {
                 "reg": "0x80",
-                # the ascii characters "0H" on the 31 and 32 byte
-                "multi_byte_mask": "0x00000000000000000000000000000000000000000000000000000000000000ffff0000000000",
-                "multi_byte_value": "0x0000000000000000000000000000000000000000000000000000000000000030480000000000",
+                # the ascii characters "GOOG0H" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730480000000000",
                 "bytes": 38,
             },
             None,
