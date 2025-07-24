@@ -73,8 +73,14 @@ void audio_jack_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_audio_jack_data, INT_RECHECK_US);
 }
 
+#include <soc_common.h>
+#include <zephyr/pm/policy.h>
 static void board_setup_init()
 {
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_jd1));
+
+	/* Permit to enter power policy and idle mode. */
+	chip_block_idle();
+	pm_policy_state_lock_get(PM_STATE_STANDBY, PM_ALL_SUBSTATES);
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
