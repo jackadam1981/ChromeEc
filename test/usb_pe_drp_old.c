@@ -48,39 +48,10 @@ int board_vbus_source_enabled(int port)
 {
 	return 0;
 }
-void tc_request_power_swap(int port)
-{
-	/* Do nothing */
-}
 
 void pd_set_vbus_discharge(int port, int enable)
 {
 	gpio_set_level(GPIO_USB_C0_DISCHARGE, enable);
-}
-
-test_static uint8_t tc_enabled = 1;
-
-uint8_t tc_get_pd_enabled(int port)
-{
-	return tc_enabled;
-}
-
-void pd_comm_enable(int port, int enable)
-{
-	tc_enabled = !!enable;
-}
-
-bool pd_alt_mode_capable(int port)
-{
-	return 1;
-}
-
-void pd_set_suspend(int port, int suspend)
-{
-}
-
-void pd_set_error_recovery(int port)
-{
 }
 
 /* Skip discovery (and the corresponding DRS and VCS sequences) by default. A
