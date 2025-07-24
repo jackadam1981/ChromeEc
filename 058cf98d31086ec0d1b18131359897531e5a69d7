@@ -46,6 +46,30 @@
       },
       "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b916cb6e_3ee8fe7f",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-24T00:20:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "76692090_c75b3025",
+      "range": {
+        "startLine": 767,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 45
+      },
+      "revId": "058cf98d31086ec0d1b18131359897531e5a69d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

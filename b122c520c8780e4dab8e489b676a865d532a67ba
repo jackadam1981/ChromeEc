@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec861d7_b512bc9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-24T00:20:04Z",
+      "side": 1,
+      "message": "For diffing and go/smallcl purposes, do you think you could add an intermediate CL that keeps `get_ikm` and adds `get_rollback_entropy` and `get_otp_key`, with `get_ikm` using it? The unit tests for `get_rollback_entropy` and `get_otp_key` can be in that CL.",
+      "revId": "b122c520c8780e4dab8e489b676a865d532a67ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e60bf2_04968b1d",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-24T00:20:04Z",
+      "side": 1,
+      "message": "extra blank line",
+      "revId": "b122c520c8780e4dab8e489b676a865d532a67ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
