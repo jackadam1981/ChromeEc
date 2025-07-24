@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9b2740_3ea74f89",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 4538,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-24T16:49:51Z",
+      "side": 1,
+      "message": "You need to use the sink policy flags to actually send the command to the PDC.  On a battery status change, you need to set the policy flag to let the sink policy handler send the actual command.\n\nSee `enum policy_snk_attached_t`.\n\n```\npdc_battery_status_change()\n{\n    /* Potentially cache new battery status and capabilities in the\n     * PDC subsystem here\n     */\n    for (all PDC ports) {\n        if (pdc is SNK_ATTACHED)\n            atomic_set_bit(snk_policy.flags, SNK_UPDATE_BATTERY_STATUS);\n    }\n}\n```\n\nTest the new policy flag and send the actual command to the PDC in `run_snk_policies()`.",
+      "range": {
+        "startLine": 4538,
+        "startChar": 0,
+        "endLine": 4538,
+        "endChar": 64
+      },
+      "revId": "e2840597f3d0122866d958a4dd6afb3ae315aaba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
