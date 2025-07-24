@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1bcd09_f82c617c",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T17:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a16460_6e90e833",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "2b9553fe4a195b337fd256341673a8bb8c36f31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cbf3ebe_e9d5fd7b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-24T00:11:40Z",
       "side": 1,
       "message": "nit: you can use `auto` here (I\u0027m fine either way in this case):\n\n```suggestion\n\tfor (const auto \u0026input : inputs) {\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "2b9553fe4a195b337fd256341673a8bb8c36f31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48749a46_66b128b7",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T17:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbf3ebe_e9d5fd7b",
       "range": {
         "startLine": 52,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b320c94a_e38436e0",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T17:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f31b951_d9f07089",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "2b9553fe4a195b337fd256341673a8bb8c36f31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "314afdc8_5739d1c2",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-07-24T00:11:40Z",
       "side": 1,
       "message": "Since we\u0027re adding a new function, it would be nice to have a unit test for it. I know we test it indirectly in `test_hkdf_expand`, but with a unit test we can make sure the error cases are handled. There should be some test vectors in boringssl or the RFC like we have for HKDF.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "2b9553fe4a195b337fd256341673a8bb8c36f31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0a8b9b_6516f837",
+        "filename": "include/fpsensor/fpsensor_crypto.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T17:57:28Z",
+      "side": 1,
+      "message": "Used test vectors from RFC4231.",
+      "parentUuid": "314afdc8_5739d1c2",
       "range": {
         "startLine": 36,
         "startChar": 0,
