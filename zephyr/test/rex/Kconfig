@@ -100,6 +100,14 @@ config TEST_DISABLE_INLINE_CHIPSET_IN_STATE
 	  This is used to not define chipset_in_state method as inline
 	  function.
 
+config TEST_DISABLE_INLINE_CHIPSET_FUNCTIONS
+	bool "Enable mocking of inline chipset functions"
+	help
+	  Many chipset functions are defined as static inline which
+	  precludes mocking. This is achieved by converting static
+	  inline function definitions in chipset.h to prototypes. Tests
+	  will need to provide definitions for affected functions.
+
 config TEST_PROGRAM_BATTERY_PRESENT
 	bool "Tests battery presence detect"
 	help

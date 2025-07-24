@@ -142,10 +142,14 @@ static inline int chipset_in_state(int state_mask)
 
 #endif
 
+#ifdef CONFIG_TEST_DISABLE_INLINE_CHIPSET_FUNCTIONS
+int chipset_in_or_transitioning_to_state(int state_mask);
+#else
 static inline int chipset_in_or_transitioning_to_state(int state_mask)
 {
 	return state_mask & CHIPSET_STATE_ANY_OFF;
 }
+#endif /* CONFIG_TEST_DISABLE_INLINE_CHIPSET_FUNCTIONS */
 
 static inline void chipset_exit_hard_off(void)
 {
