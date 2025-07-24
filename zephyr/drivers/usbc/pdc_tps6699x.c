@@ -2080,7 +2080,7 @@ static enum smf_state_result st_task_wait_run(void *o)
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_command cmd;
 	union reg_data cmd_data;
-	uint8_t offset;
+	uint8_t src_offset, dest_offset;
 	uint32_t len = 0;
 	int rv;
 
@@ -2148,9 +2148,10 @@ static enum smf_state_result st_task_wait_run(void *o)
 
 	switch (data->running_ucsi_cmd) {
 	case UCSI_GET_CAPABILITY:
-		offset = 1;
+		src_offset = 1;
+		dest_offset = 0;
 		struct capability_t *cp =
-			(struct capability_t *)&cmd_data.data[offset];
+			(struct capability_t *)&cmd_data.data[src_offset];
 		/*
 		 * TODO(b/414863461) get_pd_message is not being set by the PDC,
 		 * but this is required for the kernel UCSI driver to trigger it
@@ -2161,13 +2162,15 @@ static enum smf_state_result st_task_wait_run(void *o)
 		len = sizeof(struct capability_t);
 		break;
 	case UCSI_GET_CONNECTOR_CAPABILITY:
-		offset = 1;
+		src_offset = 1;
+		dest_offset = 0;
 		len = sizeof(union connector_capability_t);
 		break;
 	case UCSI_GET_CONNECTOR_STATUS: {
-		offset = 1;
+		src_offset = 1;
+		dest_offset = 0;
 		union connector_status_t *cs =
-			(union connector_status_t *)&cmd_data.data[offset];
+			(union connector_status_t *)&cmd_data.data[src_offset];
 		if (data->cmd == CMD_GET_VBUS_VOLTAGE) {
 			uint16_t *voltage = (uint16_t *)data->user_buf;
 			len = 0;
@@ -2196,20 +2199,62 @@ static enum smf_state_result st_task_wait_run(void *o)
 		break;
 	}
 	case UCSI_GET_CABLE_PROPERTY:
-		offset = 1;
+		src_offset = 1;
+		dest_offset = 0;
 		len = sizeof(union cable_property_t);
 		break;
 	case UCSI_GET_ERROR_STATUS:
-		offset = 2;
+		src_offset = 2;
+		dest_offset = 0;
 		len = cmd_data.data[1];
 		break;
 	case UCSI_GET_PDOS: {
 		len = cmd_data.data[1];
-		offset = 2;
+		src_offset = 2;
+		dest_offset = 0;
 		memcpy(data->cached_pdos + data->pdo_offset,
-		       &cmd_data.data[offset], len);
+		       &cmd_data.data[src_offset], len);
 		break;
 	}
+	case UCSI_GET_PD_MESSAGE:
+		src_offset = 2;
+		union get_pd_message_t get_pd_message_cmd;
+		memcpy(&get_pd_message_cmd,
+		       &data->raw_ucsi_cmd_data.data[src_offset],
+		       sizeof(union get_pd_message_t));
+		switch (get_pd_message_cmd.response_message_type) {
+		case GET_PD_MESSAGE_SINK_CAP_EXT:
+			dest_offset = 0;
+			len = 25;
+			break;
+		case GET_PD_MESSAGE_SRC_CAP_EXT:
+			dest_offset = 0;
+			len = 24;
+			break;
+		case GET_PD_MESSAGE_BATTERY_CAP:
+			dest_offset = 0;
+			len = 9;
+			break;
+		case GET_PD_MESSAGE_DISC_ID:
+			/* TODO(b/433340561): Offset the GET_PD_MESSAGE response
+			 * and only copy 6 VDOs to account for the missing VDM
+			 * header with TI PDCs.
+			 */
+			dest_offset = sizeof(uint32_t);
+			len = sizeof(uint32_t) *
+			      (PDC_DISC_IDENTITY_VDO_COUNT - 1);
+			break;
+		case GET_PD_MESSAGE_BATTERY_STATUS:
+		case GET_PD_MESSAGE_REVISION:
+			dest_offset = 0;
+			len = sizeof(uint32_t);
+			break;
+		default:
+			/* Unsupported GET_PD_MESSAGE command */
+			dest_offset = 0;
+			len = 0;
+		}
+		break;
 	default:
 		/* No data for this command */
 		len = 0;
@@ -2221,7 +2266,8 @@ data_out:
 			memset(data->user_buf, 0, len);
 		} else {
 			/* No preprocessing needed for the user data */
-			memcpy(data->user_buf, &cmd_data.data[offset], len);
+			memcpy(data->user_buf + dest_offset,
+			       &cmd_data.data[src_offset], len);
 		}
 	}
 
