@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a52993a_1f7da04c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-24T23:37:21Z",
+      "side": 1,
+      "message": "\u003e that would be eventually removed in this CL.\n\nKind of. It looks like `get_ikm` turns into `derive_key_with_tpm_seed`. \n\n\u003e add two functions (40 lines in total)\n\nIt\u0027s also adding the unit tests for those two functions. Having that in a separate CL makes it easier for me to focus on those two functions and the associated tests. I want to be thorough reviewing these CLs since they are crypto-related.\n\nYou can go ahead and submit the CLs earlier in the chain since they have +2. (You don\u0027t need to wait on these.)",
+      "parentUuid": "597d73f4_9eabff95",
+      "revId": "b122c520c8780e4dab8e489b676a865d532a67ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01e60bf2_04968b1d",
         "filename": "common/fpsensor/fpsensor_crypto.cc",
         "patchSetId": 6
