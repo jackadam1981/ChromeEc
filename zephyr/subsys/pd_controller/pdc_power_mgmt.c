@@ -213,6 +213,8 @@ enum pdc_cmd_t {
 	/** CMD_PDC_SET_BBR_CTS */
 	CMD_PDC_SET_BBR_CTS,
 	/** CMD_PDC_COUNT */
+	CMD_PDC_RECONNECT,
+	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
 
@@ -437,6 +439,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_SBU_MUX_MODE] = "PDC_SET_SBU_MUX_MODE",
 	[CMD_PDC_SET_AP_POWER_STATE] = "PDC_SET_AP_POWER_STATE",
 	[CMD_PDC_SET_BBR_CTS] = "PDC_SET_BBR_CTS",
+	[CMD_PDC_RECONNECT] = "PDC_RECONNECT",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -827,6 +830,7 @@ struct pdc_port_t {
 	pdc_power_mgmt_board_dp_attention_cb board_dp_attention_cb;
 	/** CMD_SET_BBR_CTS temp variable to communicate the desired state */
 	bool bbr_cts_enable;
+	bool do_reconnect;
 };
 
 /**
@@ -1907,6 +1911,7 @@ static void pdc_unattached_entry(void *obj)
 			port->board_unattach_cb(port_number);
 		}
 	}
+	port->do_reconnect = false;
 }
 
 /**
@@ -1970,6 +1975,9 @@ static void pdc_src_attached_entry(void *obj)
 				port_number, USB_PD_MUX_USB_ENABLED,
 				USB_SWITCH_CONNECT,
 				pdc_power_mgmt_pd_get_polarity(port_number));
+		}
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+			port->do_reconnect = true;
 		}
 	}
 
@@ -2060,6 +2068,10 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
+		if (chipset_in_state(CHIPSET_STATE_ON) && port->do_reconnect) {
+			queue_internal_cmd(port, CMD_PDC_RECONNECT);
+			port->do_reconnect = false;
+		}
 		break;
 	}
 	return SMF_EVENT_HANDLED;
@@ -2095,6 +2107,10 @@ static void pdc_snk_attached_entry(void *obj)
 				port_number, USB_PD_MUX_USB_ENABLED,
 				USB_SWITCH_CONNECT,
 				pdc_power_mgmt_pd_get_polarity(port_number));
+		}
+
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+			port->do_reconnect = true;
 		}
 	}
 }
@@ -2526,6 +2542,10 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		} else {
 			run_snk_policies(port);
 		}
+		if (chipset_in_state(CHIPSET_STATE_ON) && port->do_reconnect) {
+			queue_internal_cmd(port, CMD_PDC_RECONNECT);
+			port->do_reconnect = false;
+		}
 		break;
 	}
 	return SMF_EVENT_HANDLED;
@@ -2700,6 +2720,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_SET_BBR_CTS:
 		rv = pdc_set_bbr_cts(port->pdc, port->bbr_cts_enable);
+		break;
+	case CMD_PDC_RECONNECT:
+		rv = pdc_reconnect(port->pdc);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
