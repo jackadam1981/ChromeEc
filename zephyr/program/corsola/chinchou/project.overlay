@@ -52,6 +52,9 @@
 		dynapack_b140435 {
 			compatible = "dynapack,b140435","battery-smart";
 		};
+		celxpert_b340442 {
+			compatible = "celxpert,b340442","battery-smart";
+		};
 	};
 	/* Rotation matrix used by drivers. */
 	motionsense-rotation-ref {
