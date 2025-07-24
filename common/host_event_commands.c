@@ -19,7 +19,7 @@
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_EVENTS, outstr)
-#define CPRINTS(format, args...) cprints(CC_EVENTS, format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 
 /*
  * This is used to avoid 64-bit shifts which might require a new library
@@ -336,6 +336,7 @@ void host_set_events(host_event_t mask)
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 #error "Config error: MKBP must not be on top of host event"
 #endif
+	HOST_EVENT_CPRINTS("send mkbp event from host_set_events", mask);
 	host_events_send_mkbp_event(events);
 #endif /* CONFIG_MKBP_EVENT */
 #endif /* !CONFIG_HOSTCMD_X86 */

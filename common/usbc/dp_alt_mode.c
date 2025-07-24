@@ -647,13 +647,20 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 
 	dp_status[port] = payload[1];
 
-	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl))
+	CPRINTS("[svdm_dp_attention] lvl: %d, irq: %d, dp_status: %x, chipset_in_state: %d",
+		lvl, irq, dp_status[port],
+		chipset_in_state(CHIPSET_STATE_ANY_SUSPEND));
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl)) {
 		/*
 		 * Wake up the AP.  IRQ or level high indicates a DP sink is now
 		 * present.
 		 */
-		if (IS_ENABLED(CONFIG_MKBP_EVENT))
+		if (IS_ENABLED(CONFIG_MKBP_EVENT)) {
+			CPRINTS("[svdm_dp_attention] pd_notify_dp_alt_mode_entry");
 			pd_notify_dp_alt_mode_entry(port);
+		}
+	}
 
 	/* Its initial DP status message prior to config */
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
