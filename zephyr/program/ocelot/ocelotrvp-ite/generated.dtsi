@@ -111,11 +111,6 @@
 			gpios = <&gpioi 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
 		};
-		gpio_en_slp_z_r: en_slp_z_r {
-			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
-			/* This is handled by the hibernate_z5 driver. */
-			no-auto-init;
-		};
 		gpio_espi_soc_rst_l: espi_soc_rst_l {
 			gpios = <&gpiod 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
