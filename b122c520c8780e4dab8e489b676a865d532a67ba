@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "597d73f4_9eabff95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T18:03:56Z",
+      "side": 1,
+      "message": "I can, but please keep in mind that every rework like this could introduce bug that could be not found. For example, I forgot to remove `std::dynamic_extent` yesterday 😊\n\n\u003e CL that keeps get_ikm and adds get_rollback_entropy and get_otp_key, with get_ikm using it?\n\nSo I would just add two functions (40 lines in total) and change implementation of `get_ikm()` that would be eventually removed in this CL.",
+      "parentUuid": "6ec861d7_b512bc9f",
+      "revId": "b122c520c8780e4dab8e489b676a865d532a67ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01e60bf2_04968b1d",
         "filename": "common/fpsensor/fpsensor_crypto.cc",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-24T00:20:04Z",
       "side": 1,
       "message": "extra blank line",
+      "revId": "b122c520c8780e4dab8e489b676a865d532a67ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c39326_da5a4fca",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T18:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e60bf2_04968b1d",
       "revId": "b122c520c8780e4dab8e489b676a865d532a67ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
