@@ -22,6 +22,30 @@
       },
       "revId": "1ca2fa7a6eac2b1f0a099ee1bb471ee531a30b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c01f65_ed55a5ce",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-24T21:07:46Z",
+      "side": 1,
+      "message": "Yep - this option is auto-enabled based on devicetree now.",
+      "parentUuid": "b381a403_d4ed3e96",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "1ca2fa7a6eac2b1f0a099ee1bb471ee531a30b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
