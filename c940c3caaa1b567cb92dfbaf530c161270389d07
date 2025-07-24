@@ -16,6 +16,24 @@
       "message": "Reverting these changes, moving this code to dedede baseboard to which helps in ACK Discovery Response for all boards under the umbrella of dedede",
       "revId": "c940c3caaa1b567cb92dfbaf530c161270389d07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e1f584_5f47f26e",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-24T16:51:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d010c29a_1afb90ff",
+      "revId": "c940c3caaa1b567cb92dfbaf530c161270389d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
