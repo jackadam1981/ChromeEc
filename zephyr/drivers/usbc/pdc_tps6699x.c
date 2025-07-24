@@ -9,6 +9,7 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <zephyr/devicetree.h>
@@ -17,6 +18,7 @@
 #include <zephyr/drivers/smbus.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/shell/shell.h>
 #include <zephyr/smf.h>
 LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #include "tps6699x_cmd.h"
@@ -3089,6 +3091,53 @@ DT_INST_FOREACH_STATUS_OKAY(TPS6699X_PDC_DEFINE)
  * struct. */
 static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
 	PDC_DATA_PTR_ENTRY) };
+
+static int cmd_pdc_tps_info(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	const struct device *dev;
+	struct pdc_config_t const *cfg;
+	union reg_boot_flags pdc_boot_flags;
+	char *e;
+
+	/* Get PD port number */
+	port = strtoul(argv[1], &e, 0);
+	if (*e || port >= board_get_usb_pd_port_count()) {
+		shell_error(sh, "TPS_INFO: Invalid port");
+		return -EINVAL;
+	}
+
+	dev = pdc_data[port]->dev;
+	if (dev == NULL) {
+		shell_error(sh,
+			    "TPS_INFO: Cannot locate PDC driver for port C%u",
+			    port);
+		return -ENOENT;
+	}
+	cfg = dev->config;
+
+	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
+	if (rv) {
+		shell_error(sh, "TPS_INFO: Read boot flags failed");
+		return rv;
+	}
+	shell_info(sh, "total_num_ports: %u", pdc_boot_flags.total_num_ports);
+	shell_info(sh, "active_bank: %u", pdc_boot_flags.active_bank);
+	shell_info(sh, "dead_battery_flag: %u",
+		   pdc_boot_flags.dead_battery_flag);
+	return 0;
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(sub_pdc_tps_cmds,
+			       SHELL_CMD_ARG(info, NULL,
+					     "Show tps specific info\n"
+					     "Usage: pdc_tps info <port>",
+					     cmd_pdc_tps_info, 2, 0),
+			       SHELL_SUBCMD_SET_END);
+
+SHELL_CMD_REGISTER(pdc_tps, &sub_pdc_tps_cmds,
+		   "TI PDC firmware update commands", NULL);
 
 #ifdef CONFIG_ZTEST
 /*
