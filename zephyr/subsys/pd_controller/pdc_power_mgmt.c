@@ -218,6 +218,8 @@ enum pdc_cmd_t {
 	/** CMD_PDC_SET_BATTERY_CAPABILITY*/
 	CMD_PDC_SET_BATTERY_CAPABILITY,
 	/** CMD_PDC_COUNT */
+	CMD_PDC_RECONNECT,
+	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
 
@@ -446,6 +448,7 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_BBR_CTS] = "PDC_SET_BBR_CTS",
 	[CMD_PDC_SET_BATTERY_STATUS] = "PDC_SET_BATTERY_STATUS",
 	[CMD_PDC_SET_BATTERY_CAPABILITY] = "PDC_SET_BATTERY_CAPABILITY",
+	[CMD_PDC_RECONNECT] = "PDC_RECONNECT",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -848,6 +851,7 @@ struct pdc_port_t {
 	union battery_status_t bstat;
 	/** Battery capability */
 	union battery_capability_t bcap;
+	bool do_reconnect;
 };
 
 /**
@@ -1974,6 +1978,7 @@ static void pdc_unattached_entry(void *obj)
 			port->board_unattach_cb(port_number);
 		}
 	}
+	port->do_reconnect = false;
 }
 
 /**
@@ -2042,6 +2047,9 @@ static void pdc_src_attached_entry(void *obj)
 		/* Update the PDC with the correct battery status. */
 		pdc_update_battery_capability(port);
 		pdc_update_battery_status(port);
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+			port->do_reconnect = true;
+		}
 	}
 
 	/* Clear a piece of sink policy as it is no longer relevant in the
@@ -2127,6 +2135,10 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
+		if (chipset_in_state(CHIPSET_STATE_ON) && port->do_reconnect) {
+			queue_internal_cmd(port, CMD_PDC_RECONNECT);
+			port->do_reconnect = false;
+		}
 		break;
 	}
 	return SMF_EVENT_HANDLED;
@@ -2167,6 +2179,9 @@ static void pdc_snk_attached_entry(void *obj)
 		/* Update the PDC with the correct battery status. */
 		pdc_update_battery_capability(port);
 		pdc_update_battery_status(port);
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+			port->do_reconnect = true;
+		}
 	}
 }
 
@@ -2689,6 +2704,10 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		} else {
 			run_snk_policies(port);
 		}
+		if (chipset_in_state(CHIPSET_STATE_ON) && port->do_reconnect) {
+			queue_internal_cmd(port, CMD_PDC_RECONNECT);
+			port->do_reconnect = false;
+		}
 		break;
 	}
 	return SMF_EVENT_HANDLED;
@@ -2889,6 +2908,9 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_SET_BATTERY_CAPABILITY:
 		rv = pdc_set_battery_capability(port->pdc, &port->bcap);
+		break;
+	case CMD_PDC_RECONNECT:
+		rv = pdc_reconnect(port->pdc);
 		break;
 	default:
 		LOG_ERR("C%d: Invalid command: %d", config->connector_num,
