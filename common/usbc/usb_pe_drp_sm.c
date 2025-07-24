@@ -5529,40 +5529,46 @@ static void pe_prs_snk_src_source_on_entry(int port)
 {
 	print_current_state(port);
 
-	/*
-	 * VBUS was enabled when the TypeC state machine entered
-	 * Attached.SRC state
-	 */
-	pd_timer_enable(port, PE_TIMER_PS_SOURCE,
-			PD_POWER_SUPPLY_TURN_ON_DELAY);
+	if (!pe_in_frs_mode(port)) {
+		/*
+		 * For PRS: wait for power supply turn-on delay.
+		 */
+		pd_timer_enable(port, PE_TIMER_PS_SOURCE,
+				PD_POWER_SUPPLY_TURN_ON_DELAY);
+	} else {
+		/*
+		 * For FRS: VBUS is already on, send PS_RDY immediately.
+		 */
+		pe[port].power_role = pd_get_power_role(port);
+		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_PS_RDY);
+	}
 }
 
 static void pe_prs_snk_src_source_on_run(int port)
 {
-	/* Wait until power supply turns on */
-	if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE)) {
-		if (!pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
-			return;
+	if (!pe_in_frs_mode(port)) {
+		/* For PRS: Wait until power supply turns on */
+		if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE)) {
+			if (!pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
+				return;
 
-		/* update pe power role */
-		pe[port].power_role = pd_get_power_role(port);
-		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_PS_RDY);
-		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
-		pd_timer_disable(port, PE_TIMER_PS_SOURCE);
+			/* update pe power role */
+			pe[port].power_role = pd_get_power_role(port);
+			send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_PS_RDY);
+			/* reset timer so PD_CTRL_PS_RDY isn't sent again */
+			pd_timer_disable(port, PE_TIMER_PS_SOURCE);
+		}
 	}
 
 	/*
 	 * Transition to ErrorRecovery state when:
 	 *   1) On protocol error
 	 */
-	else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
-	}
-
-	else if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-
 		/* Run swap source timer on entry to pe_src_startup */
 		PE_SET_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
 		set_state_pe(port, PE_SRC_STARTUP);
