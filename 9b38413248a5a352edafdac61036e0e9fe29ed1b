@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ad484d_d42edee8",
+        "filename": "test/usb_prl.mocklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-24T03:12:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df8592d7_0aa6a3d7",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f692af_f30591f2",
@@ -89,6 +113,30 @@
       "writtenOn": "2025-07-18T18:20:56Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have discouraged expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "9b38413248a5a352edafdac61036e0e9fe29ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bafe51eb_152e4cb0",
+        "filename": "test/usb_typec_drp_acc_trysrc.mocklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-24T03:12:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "54f692af_f30591f2",
       "range": {
         "startLine": 10,
         "startChar": 0,

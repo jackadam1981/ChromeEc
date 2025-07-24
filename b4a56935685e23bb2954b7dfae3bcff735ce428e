@@ -88,6 +88,24 @@
       "parentUuid": "1acd1430_9b2fab2e",
       "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca51f37_874773bd",
+        "filename": "common/mock/usb_pd_dpm_mock.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-24T03:12:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8faa648b_194deaf0",
+      "revId": "b4a56935685e23bb2954b7dfae3bcff735ce428e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
