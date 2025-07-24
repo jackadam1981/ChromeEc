@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a36916_03210900",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-24T18:15:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4376384e_693df221",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 14
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9bb9725_6505432d",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ad6427_2cdc4edc",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-24T18:15:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9bb9725_6505432d",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a412f006_0b2210b3",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-07-23T17:15:37Z",
       "side": 1,
       "message": "I don\u0027t see register offset 0x3c in the current driver.  Should this be 0x3a `LSM6DSM_FIFO_STS1_ADDR`?",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb315d0_776a796d",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-24T18:15:29Z",
+      "side": 1,
+      "message": "Yeah, the driver mashed some registers together. I\u0027ll make this more verbose.",
+      "parentUuid": "a412f006_0b2210b3",
       "range": {
         "startLine": 56,
         "startChar": 11,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "167c1b90_3ca4ee07",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-24T18:15:29Z",
+      "side": 1,
+      "message": "The datasheet has CTRL3_C register (0x12) can set H_LACTIVE to 0 for active high and 1 for active low. Also Zephyr\u0027s devicetree does allow this so I didn\u0027t want to ignore it if someone set it ACTIVE_HIGH in devicetree.",
+      "parentUuid": "10498a68_1e77e450",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11e041d5_ce41c098",
         "filename": "zephyr/test/drivers/lsm6dsm/main.c",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2025-07-23T17:15:37Z",
       "side": 1,
       "message": "Can you check that motionsense didn\u0027t read a sample instead?  The interrupt gets deasserted by the emulator once the FIFO is read.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7c92fe_a4ffa79d",
+        "filename": "zephyr/test/drivers/lsm6dsm/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-24T18:15:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e041d5_ce41c098",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -146,6 +266,30 @@
       "writtenOn": "2025-07-23T17:15:37Z",
       "side": 1,
       "message": "Same here - I think a better check is to verify motionsense received the sample.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b87af21f_f2ad5ec2",
+        "filename": "zephyr/test/drivers/lsm6dsm/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-24T18:15:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fb11633_5dd37955",
       "range": {
         "startLine": 54,
         "startChar": 0,
