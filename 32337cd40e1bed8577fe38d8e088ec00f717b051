@@ -16,6 +16,24 @@
       "message": "Is this battery passed AVL qualification?",
       "revId": "32337cd40e1bed8577fe38d8e088ec00f717b051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a938e8_ecaca3da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1503442
+      },
+      "writtenOn": "2025-07-24T03:20:18Z",
+      "side": 1,
+      "message": "Still did not pass AVL, we need the FW to do AVL test and other battery related test, we will not release this Fw to factory until the AVL is pass and also no issue found by our test team and after the fw qual pass.",
+      "parentUuid": "25df096c_68fed96d",
+      "revId": "32337cd40e1bed8577fe38d8e088ec00f717b051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
