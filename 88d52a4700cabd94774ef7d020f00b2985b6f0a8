@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf913fff_3888a8f2",
+        "filename": "zephyr/program/trulo/uldrenite/src/codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-07-24T02:33:00Z",
+      "side": 1,
+      "message": "I correct the ec mute pin name, the ec mute is low active.",
+      "parentUuid": "704019fa_b8c47f46",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "88d52a4700cabd94774ef7d020f00b2985b6f0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d359f7b9_e1ff541a",
@@ -71,6 +95,30 @@
       "writtenOn": "2025-07-23T18:07:55Z",
       "side": 1,
       "message": "Where does 7 usec come from? It\u0027s a specific number which I assume came from a measurement.",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "88d52a4700cabd94774ef7d020f00b2985b6f0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5131f6_64b43ca2",
+        "filename": "zephyr/program/trulo/uldrenite/src/codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-07-24T02:33:00Z",
+      "side": 1,
+      "message": "Yes, it came from waveform. The EC mute need set high after HDA_RST signal, but the HDA_RST signal is notconnected to the EC, so we use waveform to find delay time.",
+      "parentUuid": "d359f7b9_e1ff541a",
       "range": {
         "startLine": 17,
         "startChar": 54,
