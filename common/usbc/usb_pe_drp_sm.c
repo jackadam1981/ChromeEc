@@ -682,7 +682,7 @@ test_export_static void set_state_pe(const int port,
 				     const enum usb_pe_state new_state);
 static void pe_set_dpm_curr_request(const int port, const int request);
 
-int pd_get_rev(int port, enum tcpci_msg_type type)
+test_mockable int pd_get_rev(int port, enum tcpci_msg_type type)
 {
 	return prl_get_rev(port, type);
 }
