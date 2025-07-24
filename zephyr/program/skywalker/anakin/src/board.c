@@ -73,8 +73,10 @@ void audio_jack_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_audio_jack_data, INT_RECHECK_US);
 }
 
+#include <soc_common.h>
 static void board_setup_init()
 {
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_jd1));
+	chip_block_idle();
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
