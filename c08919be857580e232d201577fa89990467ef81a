@@ -70,6 +70,30 @@
       },
       "revId": "c08919be857580e232d201577fa89990467ef81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b62e881_90ae4524",
+        "filename": "zephyr/shim/chip/npcx/otp_key.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-24T23:00:24Z",
+      "side": 1,
+      "message": "The git blame history here is much shorter than the helipilot board files were when they were copied to baseboard: IIUC it can be OK to sacrifice git blame for a cleaner code structure. That said, I\u0027ve symlinked into the Zephyr shim for now and added #if defined(CONFIG_ZEPHYR) to otp_key.c where needed. IS_ENABLED(CONFIG_ZEPHYR) cause EC compilation issues with make BOARD\u003dhelipilot since k_oops wasn\u0027t sufficiently hidden from the compiler and errored out as undefined. PTAL",
+      "parentUuid": "4ae85bec_e6f39a34",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "c08919be857580e232d201577fa89990467ef81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
