@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b679ab_927fc44d",
+        "filename": "zephyr/program/ocelot/ocelot-ish/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-24T19:00:27Z",
+      "side": 1,
+      "message": "Not getting used currently. I have removed for now. Will define later if needed.",
+      "parentUuid": "4d8804c4_81eaba0e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "d70e468bf3aa7b53b38eb813dcf6d693c42fb199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c922b2e_c8f9e571",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-23T15:43:45Z",
       "side": 1,
       "message": "Nit - the devicetree style is to use underscore for node labels and dashes for node-names.\n\n```\nnode_label: node-name {\n};\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "d70e468bf3aa7b53b38eb813dcf6d693c42fb199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ebac76_c5827ffb",
+        "filename": "zephyr/program/ocelot/ocelot-ish/i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-24T19:00:27Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "1c922b2e_c8f9e571",
       "range": {
         "startLine": 16,
         "startChar": 18,
