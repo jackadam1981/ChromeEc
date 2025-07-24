@@ -70,6 +70,30 @@
       },
       "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d431d289_80fc9867",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-24T17:52:38Z",
+      "side": 1,
+      "message": "As I mentioned, in ECDH procedure there must be other peer and must use the same KDF (if used), curve parameters, etc. My point is that, it won\u0027t work if you misuse it on one end, but if you do the same on both ends then you are designing crypto protocol and you should know what you are doing.\n\n\u003e they might assume that they can directly use the generated shared secret.\n\nI tried to find some recommendations like \"never use ECDH result directly\", but it seems like KDF is applied when you need key of some specific size (ECDH produces 32 byte result). If you find some recommendations, please share 😊\n\nWhat BoringSSL does in `ECDH_compute_key_fips()` is to apply hashing function depending on output size. Hashing could help if the distribution of ECDH results was not uniform (probably need to take a look at some scientific paper on that topic). But hashing has also downsizes, that\u0027s why there are so many KDF functions.\n\nThat said, I think it would be good to change the name to `generate_ecdh_shared_secret_without_kdf`, to indicate that no KDF function is applied, but I\u0027m not sure about putting some recommendations in doxygen.",
+      "parentUuid": "eeb29681_67394a57",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
