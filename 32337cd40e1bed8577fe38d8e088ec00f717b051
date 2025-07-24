@@ -34,6 +34,23 @@
       "parentUuid": "25df096c_68fed96d",
       "revId": "32337cd40e1bed8577fe38d8e088ec00f717b051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc4a342_eb6e21a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2025-07-24T08:20:36Z",
+      "side": 1,
+      "message": "Although this is not AVL qualified yet, partner need the code for AVL test. SIE will CR+2 this CL and use HWID as the final gate keeper.",
+      "revId": "32337cd40e1bed8577fe38d8e088ec00f717b051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
