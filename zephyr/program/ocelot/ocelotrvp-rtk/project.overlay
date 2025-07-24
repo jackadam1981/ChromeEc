@@ -4,11 +4,10 @@
  */
 
 /* ocelot program common DTS includes */
-
 #include <cros/integrated_fwid.dtsi>
 
-/* ocelot_rtk project DTS includes */
 
+/* ocelot_rtk project DTS includes */
 #include "gpio.dtsi"
 #include "power_signals.dtsi"
 #include "i2c.dtsi"
@@ -17,7 +16,16 @@
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
 
+
+#include "../rvp_keyboard.dtsi"
+
+
 /* ocelot_rtk overrides follow... */
+/ {
+	chosen {
+		cros-ec,keyboard = &kbd;
+	};
+};
 
 &espi0 {
 	status = "okay";
@@ -26,4 +34,73 @@
 				&espi_io1_gpio007 &espi_io0_gpio008
 				&espi_clk_gpio009 &espi_reset_gpio020>;
 	pinctrl-names = "default";
+};
+
+&kbd {
+	status = "okay";
+	pinctrl-0 = <
+		&ksi0_gpio064
+		&ksi1_gpio065
+		&ksi2_gpio066
+		&ksi3_gpio067
+		&ksi4_gpio068
+		&ksi5_gpio069
+		&ksi6_gpio070
+		&ksi7_gpio071
+		&kso0_gpio041
+		&kso1_gpio042
+		&kso3_gpio044
+		&kso4_gpio045
+		&kso5_gpio046
+		&kso6_gpio047
+		&kso7_gpio048
+		&kso8_gpio049
+		&kso9_gpio050
+		&kso10_gpio051
+		&kso11_gpio055
+		&kso12_gpio056
+		&kso13_gpio057
+		&kso14_gpio058
+		&kso15_gpio059
+		&kso16_gpio060
+		&kso17_gpio061
+	>;
+	pinctrl-names = "default";
+
+	actual-key-mask = <
+		0x08  /* C0 */
+		0xff  /* C1 */
+		0xff  /* C2 */
+		0xff  /* C3 */
+		0xff  /* C4 */
+		0xf7  /* C5 */
+		0xff  /* C6 */
+		0xa5  /* C7 */
+		0xff  /* C8 */
+		0xff  /* C9 */
+		0x01  /* C10 */
+		0xfe  /* C11 */
+		0xfe  /* C12 */
+		0x40  /* C13 */
+		0x0a  /* C14 */
+		0x40  /* C15 */
+		0x01  /* C16 */
+		0xd4  /* C17 */
+	>;
+
+	kso-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <2>;
+		col-gpios = <&gpioc 11 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&pwm1 {
+	status = "okay";
+	pinctrl-0 = <&pwm1_gpio023>;
+	pinctrl-names = "default";
+};
+
+&kblight {
+	pwms = <&pwm1 1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
 };
