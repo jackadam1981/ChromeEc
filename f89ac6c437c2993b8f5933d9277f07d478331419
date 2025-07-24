@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "281f48fc_ccf70681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-24T22:56:53Z",
+      "side": 1,
+      "message": "This CL is simple enough that I think adding a null pointer test case to it makes sense and I\u0027ve done that now. PTAL",
+      "parentUuid": "5c52b27b_698afa8a",
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "349c1802_647c5e96",
         "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
         "patchSetId": 2
@@ -113,6 +131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71503b3_1b2ca7ad",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-24T22:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec9e51c_2f28bfba",
+      "range": {
+        "startLine": 63,
+        "startChar": 46,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab740f1b_6c1b44d6",
@@ -126,6 +168,30 @@
       "writtenOn": "2025-07-17T23:06:56Z",
       "side": 1,
       "message": "It looks like there\u0027s also [`NULL_POINTER_EXCEPTION_DETECTION_DWT`](https://github.com/zephyrproject-rtos/zephyr/blob/8fa515419c9df96a69e92ab379cff678d52a614c/arch/arm/core/cortex_m/Kconfig#L475-L491). There\u0027s a comment about [not enabling it by default due to an OpenOCD issue](https://github.com/zephyrproject-rtos/zephyr/blob/8fa515419c9df96a69e92ab379cff678d52a614c/arch/arm/core/cortex_m/Kconfig#L459C12-L459C48), but if I\u0027m reading that right it doesn\u0027t affect us.\n\nCan you try enabling it and see if it works? (not just compilation, but [see if it  crashes when attempting to access address `0x0`](http://b/406946889#comment41)).",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23585d6b_5645579c",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-24T22:56:53Z",
+      "side": 1,
+      "message": "This is a log excerpt of the build failure when enabling NULL_POINTER_EXCEPTION_DETECTION_DWT in helipilot/prj.conf\n\n```\n-- Zephyr version: 4.2.99 (/mnt/host/source/src/third_party/zephyr/main)\n-- Zephyr version: 4.2.99 (/mnt/host/source/src/third_party/zephyr/main)\nFAILED: zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj \n/mnt/host/source/src/third_party/zephyr/main/arch/arm/core/cortex_m/prep_c.c:218:2: error: call to undeclared function \u0027z_arm_debug_enable_null_pointer_detection\u0027; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n  218 |         z_arm_debug_enable_null_pointer_detection();\n      |         ^\n1 error generated.\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-rw\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 383, in _run_fn\n    result \u003d func()\n             ^^^^^^\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 962, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-rw\n```",
+      "parentUuid": "ab740f1b_6c1b44d6",
       "range": {
         "startLine": 68,
         "startChar": 0,
