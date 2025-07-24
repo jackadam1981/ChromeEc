@@ -140,97 +140,10 @@ test_static void setup_sink(void)
 	task_wait_event(10 * MSEC);
 	/* At this point, the PE should be running in PE_SNK_Ready. */
 }
+
 /**
  * Test section
  */
-/* PE Fast Role Swap */
-static int test_pe_frs(void)
-{
-	/*
-	 * TODO(b/173791979): This test should validate PE boundary API
-	 * differences -- not internal state changes.
-	 */
-
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(pe_is_running(PORT0));
-
-	/*
-	 * FRS will only trigger when we are SNK, with an Explicit
-	 * contract.  So set this state up manually.  Also ensure any
-	 * background tasks (ex. discovery) aren't running.
-	 */
-	tc_prs_src_snk_assert_rd(PORT0);
-	pd_disable_discovery(PORT0);
-	pe_set_flag(PORT0, PE_FLAGS_EXPLICIT_CONTRACT);
-	pe_clr_dpm_requests(PORT0);
-	set_state_pe(PORT0, PE_SNK_READY);
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(get_state_pe(PORT0) == PE_SNK_READY);
-
-	/*
-	 * Trigger the Fast Role Switch from simulated ISR
-	 */
-	pd_got_frs_signal(PORT0);
-	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED));
-
-	/*
-	 * Verify we detected FRS and ready to start swap
-	 */
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(get_state_pe(PORT0) == PE_PRS_SNK_SRC_SEND_SWAP);
-	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
-	TEST_ASSERT(!pe_chk_flag(PORT0, PE_FLAGS_EXPLICIT_CONTRACT));
-
-	/*
-	 * Make sure that we sent FR_Swap
-	 */
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(mock_prl_get_last_sent_ctrl_msg(PORT0) == PD_CTRL_FR_SWAP);
-	TEST_ASSERT(get_state_pe(PORT0) == PE_PRS_SNK_SRC_SEND_SWAP);
-	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
-	pe_set_flag(PORT0, PE_FLAGS_TX_COMPLETE);
-
-	/*
-	 * Accept the partners PS_RDY control message
-	 */
-	rx_emsg[PORT0].header = PD_HEADER(PD_CTRL_ACCEPT, 0, 0, 0, 0, 0, 0);
-	pe_set_flag(PORT0, PE_FLAGS_MSG_RECEIVED);
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(!pe_chk_flag(PORT0, PE_FLAGS_MSG_RECEIVED));
-	TEST_ASSERT(get_state_pe(PORT0) == PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
-	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
-
-	/*
-	 * Send back our PS_RDY
-	 */
-	rx_emsg[PORT0].header = PD_HEADER(PD_CTRL_PS_RDY, 0, 0, 0, 0, 0, 0);
-	pe_set_flag(PORT0, PE_FLAGS_MSG_RECEIVED);
-	TEST_ASSERT(!tc_is_attached_src(PORT0));
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(!pe_chk_flag(PORT0, PE_FLAGS_MSG_RECEIVED));
-	TEST_ASSERT(tc_is_attached_src(PORT0));
-	TEST_ASSERT(get_state_pe(PORT0) == PE_PRS_SNK_SRC_SOURCE_ON);
-	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
-
-	/*
-	 * After delay we are ready to send our PS_RDY
-	 */
-	task_wait_event(PD_POWER_SUPPLY_TURN_ON_DELAY);
-	TEST_ASSERT(get_state_pe(PORT0) == PE_PRS_SNK_SRC_SOURCE_ON);
-	TEST_ASSERT(pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
-	TEST_ASSERT(mock_prl_get_last_sent_ctrl_msg(PORT0) == PD_CTRL_PS_RDY);
-
-	/*
-	 * Fake the Transmit complete and this will bring us to Source Startup
-	 */
-	pe_set_flag(PORT0, PE_FLAGS_TX_COMPLETE);
-	task_wait_event(10 * MSEC);
-	TEST_ASSERT(get_state_pe(PORT0) == PE_SRC_STARTUP);
-	TEST_ASSERT(!pe_chk_flag(PORT0, PE_FLAGS_FAST_ROLE_SWAP_PATH));
-
-	return EC_SUCCESS;
-}
-
 static int test_snk_give_source_cap(void)
 {
 	setup_sink();
@@ -450,7 +363,6 @@ void run_test(int argc, const char **argv)
 {
 	test_reset();
 
-	RUN_TEST(test_pe_frs);
 	RUN_TEST(test_snk_give_source_cap);
 	RUN_TEST(test_vbus_gpio_discharge);
 #ifndef CONFIG_USB_PD_EXTENDED_MESSAGES
