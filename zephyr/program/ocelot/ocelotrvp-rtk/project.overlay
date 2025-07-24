@@ -18,8 +18,18 @@
 #include "led_policy.dtsi"
 
 
-#include "../rvp_keyboard.dtsi"
+/*
+ * Map GPIOs used to common names
+ */
+gpio_fan_control: &gpio_ec_fan_en {};
+gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd {};
 
+/* Map tachometers to common names */
+tach_fan0: &tach0 {};
+
+
+#include "../rvp_keyboard.dtsi"
+#include "../rvp_fans.dtsi"
 
 /* ocelot_rtk overrides follow... */
 / {
@@ -104,4 +114,26 @@
 
 &kblight {
 	pwms = <&pwm1 0 PWM_HZ(324) PWM_POLARITY_NORMAL>;
+};
+
+/* fan tachometer sensor */
+&tach0 {
+	status = "okay";
+	pinctrl-0 = <&tacho0_gpio052>;
+	pinctrl-names = "default";
+	pulses-per-round = <2>;
+};
+
+&pwm2 {
+	status = "okay";
+	pinctrl-0 = <&pwm2_gpio025>;
+	pinctrl-names = "default";
+};
+
+&fan0 {
+	pwms = <&pwm2 0 PWM_KHZ(2) PWM_POLARITY_NORMAL>;
+	rpm-min = <2600>;
+	rpm-start = <2000>;
+	rpm-max = <5000>;
+	rpm-deviation = <2>;
 };
