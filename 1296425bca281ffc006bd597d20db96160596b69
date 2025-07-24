@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5782f519_bdad4195",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-24T09:46:04Z",
+      "side": 1,
+      "message": "Replace `trulo-ish` with `kaladin-ish`",
+      "revId": "1296425bca281ffc006bd597d20db96160596b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9d1f93_b4933c92",
+        "filename": "zephyr/program/trulo/kaladin-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-24T09:46:04Z",
+      "side": 1,
+      "message": "Add `CONFIG_BOARD_KALADIN\u003dy`\nAlso add `kaladin-ish` project in [CMakeLists.txt](https://crsrc.org/o/src/platform/ec/zephyr/program/trulo/CMakeLists.txt) using `pujjolo-ish` as an example.",
+      "revId": "1296425bca281ffc006bd597d20db96160596b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c147e667_083dab83",
+        "filename": "zephyr/program/trulo/kaladin-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-24T09:46:04Z",
+      "side": 1,
+      "message": "Update sensor config using [project.conf](https://crsrc.org/o/src/platform/ec/zephyr/program/trulo/uldrenite-ish/project.conf;l\u003d56?q\u003duldrenite-ish%2Fproject.conf\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch) as an example.",
+      "revId": "1296425bca281ffc006bd597d20db96160596b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f10b7ae_364f1272",
+        "filename": "zephyr/program/trulo/kaladin-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-24T09:46:04Z",
+      "side": 1,
+      "message": "Replace this section with `Body detection configuration\u0027 in [project.conf](https://crsrc.org/o/src/platform/ec/zephyr/program/trulo/uldrenite-ish/project.conf;l\u003d72?q\u003duldrenite-ish%2Fproject.conf\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch)",
+      "revId": "1296425bca281ffc006bd597d20db96160596b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4311bb_29b3858a",
+        "filename": "zephyr/program/trulo/kaladin-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-24T09:46:04Z",
+      "side": 1,
+      "message": "This is not required.",
+      "revId": "1296425bca281ffc006bd597d20db96160596b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d87a322_59f4eead",
+        "filename": "zephyr/program/trulo/kaladin-ish/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-24T09:46:04Z",
+      "side": 1,
+      "message": "Replace this with [project.conf](https://crsrc.org/o/src/platform/ec/zephyr/program/trulo/uldrenite-ish/project.conf;l\u003d96?q\u003duldrenite-ish%2Fproject.conf\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch)",
+      "revId": "1296425bca281ffc006bd597d20db96160596b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
