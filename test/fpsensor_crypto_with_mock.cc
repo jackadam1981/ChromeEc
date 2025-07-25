@@ -29,6 +29,14 @@ constexpr size_t IKM_SIZE_BYTES = 64;
 #endif
 
 extern enum ec_error_list
+get_rollback_entropy(std::span<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> output);
+
+#ifdef CONFIG_OTP_KEY
+extern enum ec_error_list
+get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> output);
+#endif
+
+extern enum ec_error_list
 get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
 	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed);
 
@@ -152,6 +160,70 @@ static constexpr std::array<uint8_t, FP_POSITIVE_MATCH_SECRET_BYTES>
 		0x8a, 0xd3, 0xcf, 0x0b, 0xc4, 0x5a, 0x5f, 0x4d,
 		0x54, 0xeb, 0x7b, 0xad, 0x5d, 0x1b, 0xbe, 0x30,
 	};
+#endif
+
+test_static int
+test_get_rollback_entropy_failure_cannot_get_rollback_secret(void)
+{
+	std::array<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> entropy{};
+
+	/* GIVEN that reading the rollback secret will fail. */
+	mock_ctrl_rollback.get_secret_fail = true;
+
+	/* THEN get_rollback_entropy should fail. */
+	TEST_ASSERT(get_rollback_entropy(entropy) == EC_ERROR_HW_INTERNAL);
+
+	/*
+	 * Enable get_rollback_secret to succeed before returning from this
+	 * test function.
+	 */
+	mock_ctrl_rollback.get_secret_fail = false;
+
+	return EC_SUCCESS;
+}
+
+test_static int test_get_rollback_entropy_success(void)
+{
+	std::array<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> entropy{};
+
+	constexpr std::array<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE>
+		expected_entropy = { 0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2,
+				     0x0f, 0x0d, 0xb6, 0x02, 0xa9, 0x68, 0xba,
+				     0x2a, 0x61, 0x86, 0x2a, 0x85, 0xd1, 0xca,
+				     0x09, 0x54, 0x8a, 0x6b, 0xe2, 0xe3, 0x38,
+				     0xde, 0x5d, 0x59, 0x14 };
+
+	/* GIVEN that reading the rollback secret will succeed. */
+	mock_ctrl_rollback.get_secret_fail = false;
+
+	/* THEN get_rollback_entropy will succeed. */
+	TEST_ASSERT(get_rollback_entropy(entropy) == EC_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(entropy, expected_entropy,
+			     CONFIG_ROLLBACK_SECRET_SIZE);
+
+	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_OTP_KEY
+test_static int test_get_otp_success(void)
+{
+	std::array<uint8_t, OTP_KEY_SIZE_BYTES> otp{};
+
+	constexpr std::array<uint8_t, OTP_KEY_SIZE_BYTES> expected_otp = {
+		0x46, 0x71, 0x32, 0x2d, 0x02, 0xe3, 0x85, 0xc7,
+		0x6b, 0x78, 0xd4, 0x6e, 0x0d, 0x6c, 0xcc, 0x75,
+		0x83, 0x62, 0x35, 0x3a, 0x53, 0xb7, 0x80, 0x10,
+		0x79, 0xfa, 0x9a, 0xe4, 0xdb, 0x97, 0x96, 0x6d
+	};
+
+	/* The get_otp_key will succeed. */
+	TEST_ASSERT(get_otp_key(otp) == EC_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(otp, expected_otp, OTP_KEY_SIZE_BYTES);
+
+	return EC_SUCCESS;
+}
+#else
+int test_get_otp_success(void);
 #endif
 
 test_static int test_get_ikm_failure_seed_not_set(void)
@@ -764,6 +836,8 @@ void run_test(int argc, const char **argv)
 {
 	RUN_TEST(test_derive_encryption_key_failure_seed_not_set);
 	RUN_TEST(test_derive_positive_match_secret_fail_seed_not_set);
+	RUN_TEST(test_get_rollback_entropy_failure_cannot_get_rollback_secret);
+	RUN_TEST(test_get_rollback_entropy_success);
 	RUN_TEST(test_get_ikm_failure_seed_not_set);
 	RUN_TEST(test_get_ikm_failure_cannot_get_rollback_secret);
 
@@ -773,6 +847,7 @@ void run_test(int argc, const char **argv)
 	if (IS_ENABLED(CONFIG_OTP_KEY)) {
 		std::ranges::copy(default_fake_otp_key,
 				  mock_otp.otp_key_buffer);
+		RUN_TEST(test_get_otp_success);
 	}
 
 	RUN_TEST(test_get_ikm_success);
