@@ -94,6 +94,30 @@
       },
       "revId": "c08919be857580e232d201577fa89990467ef81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e120a8f_ace96bb9",
+        "filename": "zephyr/shim/chip/npcx/otp_key.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T21:58:46Z",
+      "side": 1,
+      "message": "Looks good now. Just a few minor things left as separate comments.",
+      "parentUuid": "9b62e881_90ae4524",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "c08919be857580e232d201577fa89990467ef81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

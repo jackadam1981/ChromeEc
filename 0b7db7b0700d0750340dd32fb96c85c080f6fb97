@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74bdade_3a446554",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T21:58:46Z",
+      "side": 1,
+      "message": "You don\u0027t need to change this. It\u0027s supposed to be the date the file was first created.",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0b7db7b0700d0750340dd32fb96c85c080f6fb97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945ae738_75d10608",
+        "filename": "include/otp_key.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T21:58:46Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0b7db7b0700d0750340dd32fb96c85c080f6fb97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

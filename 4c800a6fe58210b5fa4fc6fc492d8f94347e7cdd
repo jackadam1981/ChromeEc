@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f221ccee_2fa3ec45",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T21:58:46Z",
+      "side": 0,
+      "message": "Shouldn\u0027t this stay the same? We\u0027re still using it in EC, right?",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
