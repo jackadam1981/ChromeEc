@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a447d759_a01d4794",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3761692
+      },
+      "writtenOn": "2025-07-25T08:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e3083c_84fc1504",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "985d53e5b6a9ef482f2c747d53362e8c451a9ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6e6063_b172e85d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7551ad6b_dc30b649",
+        "filename": "driver/cec/bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3761692
+      },
+      "writtenOn": "2025-07-25T08:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6e6063_b172e85d",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "985d53e5b6a9ef482f2c747d53362e8c451a9ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce08997_b8acf6e1",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-25T06:19:36Z",
       "side": 1,
       "message": "ilm.h header and __soc_ram_code macro are it8xxx2 chip-specified.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "985d53e5b6a9ef482f2c747d53362e8c451a9ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8acdc28f_19146575",
+        "filename": "zephyr/drivers/cec_counter/cec_counter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3761692
+      },
+      "writtenOn": "2025-07-25T08:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce08997_b8acf6e1",
       "range": {
         "startLine": 22,
         "startChar": 0,
