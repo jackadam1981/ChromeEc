@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b076558d_30d2042a",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-25T19:59:34Z",
+      "side": 1,
+      "message": "The driver currently unconditionally sets active low operation, so the test will break if someone clears the `GPIO_ACTIVE_LOW` flag in the test\u0027s devicetree.\n\nIf you keep this, then you should have a build assert to verify `GPIO_ACTIVE_LOW` is set.",
+      "parentUuid": "167c1b90_3ca4ee07",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11e041d5_ce41c098",
         "filename": "zephyr/test/drivers/lsm6dsm/main.c",
         "patchSetId": 2

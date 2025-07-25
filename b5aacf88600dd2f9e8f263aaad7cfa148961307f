@@ -16,6 +16,29 @@
       "message": "The error was caused by an upstream change that broke the console output so the tests were not being parsed by the twister handler.",
       "revId": "b5aacf88600dd2f9e8f263aaad7cfa148961307f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe2c5ec_635549fd",
+        "filename": "zephyr/test/drivers/lsm6dsm/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-25T19:59:34Z",
+      "side": 1,
+      "message": "Thanks for making the change.  The emulator now better matches the actual hardware and makes the test better.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 42
+      },
+      "revId": "b5aacf88600dd2f9e8f263aaad7cfa148961307f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
