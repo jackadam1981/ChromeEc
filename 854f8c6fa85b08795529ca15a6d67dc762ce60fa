@@ -69,6 +69,23 @@
       "parentUuid": "8a67eb3e_807e3a1d",
       "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc5fd20_9f179b7a",
+        "filename": "zephyr/program/ocelot/ocelot-ish/motionsense.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-07-25T03:40:14Z",
+      "side": 1,
+      "message": "Sensor configs are more of board specific, please move this file to RVP specific directory. Only the Prj.cnf file, which includes the common configurations can be placed in the common folder.",
+      "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
