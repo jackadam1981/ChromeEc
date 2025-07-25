@@ -3,8 +3,11 @@
  * found in the LICENSE file.
  */
 /* Quandiso hardware configuration */
+#include "charger.h"
+#include "driver/charger/bq257x0_regs.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "usb_pd.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
@@ -68,3 +71,11 @@ static void pen_init(void)
 	ap_power_ev_add_callback(&cb);
 }
 DECLARE_HOOK(HOOK_INIT, pen_init, HOOK_PRIO_INIT_I2C);
+
+#define BQ25710_MIN_INPUT_VOLTAGE_MV 0x240
+static void bq25710_min_input_voltage(void)
+{
+	i2c_write16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
+		    BQ25710_REG_INPUT_VOLTAGE, BQ25710_MIN_INPUT_VOLTAGE_MV);
+}
+DECLARE_HOOK(HOOK_INIT, bq25710_min_input_voltage, HOOK_PRIO_DEFAULT);
