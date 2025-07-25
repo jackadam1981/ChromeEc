@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88eb45ca_0268ea43",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T16:51:52Z",
+      "side": 1,
+      "message": "0x40000 bytes is not 320 kB",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c95ebe_576934fa",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T16:51:52Z",
+      "side": 1,
+      "message": "Is this correct?",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20591861_49f0a2a8",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi",
+        "patchSetId": 31
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T16:51:52Z",
+      "side": 1,
+      "message": "```\ndump_fmap -h ../release-firmware/fpmcu-firmware-binaries/buccaneer/buccaneer_v2.0.26328-821504380b-RO_v2.0.28107-258bcf04b5-RW.bin \n# name                     start       end         size  // address relative to base\u003d0x10058000\nEC_RW                      00040000    00090000    00050000\n  SIG_RW                     0008fc00    00090000    00000400\n  RW_RBVER                   00040168    0004016c    00000004\n  RW_FWID                    00040144    00040164    00000020\nWP_RO                      00000000    00020000    00020000\n  EC_RO                      00000000    0001f040    0001f040\n    FR_MAIN                    00000040    0001f040    0001f000\n      KEY_RO                     0001ec40    0001f040    00000400\n      FMAP                       0000d600    0000d7dc    000001dc\n      RO_FRID                    00000184    000001a4    00000020\n```\n\nRO expects RW signature at `0x8fc00`. With current offset the signature will be placed at `0x7fc00`.\n\nCould you also test if EC RO can successfully verify and boot Zephyr RW?",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
