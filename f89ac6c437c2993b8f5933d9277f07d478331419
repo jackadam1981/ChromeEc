@@ -200,6 +200,30 @@
       },
       "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3989fb_e67569fe",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:08:04Z",
+      "side": 1,
+      "message": "[Searching the Zephyr code for this function](https://github.com/search?q\u003drepo%3Azephyrproject-rtos%2Fzephyr%20z_arm_debug_enable_null_pointer_detection\u0026type\u003dcode), it looks like there is a definition for `z_arm_debug_enable_null_pointer_detection`, but no declaration in a header file for it. Try adding a declaration in `arch/arm/core/cortex_m/prep_c.c` for it and see if that compiles:\n\n```\nint z_arm_debug_enable_null_pointer_detection(void);\n```",
+      "parentUuid": "23585d6b_5645579c",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
