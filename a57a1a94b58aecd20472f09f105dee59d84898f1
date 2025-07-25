@@ -16,6 +16,24 @@
       "message": "Hi Sue,\nWith this CL, can you pass the factory test?",
       "revId": "a57a1a94b58aecd20472f09f105dee59d84898f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe0a328_9158fa98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-07-25T08:10:35Z",
+      "side": 1,
+      "message": "Yes. I tried 1000 times with this CL and the counter driver changed CL:6733748. I got 100% pass.",
+      "parentUuid": "713952cb_f32df278",
+      "revId": "a57a1a94b58aecd20472f09f105dee59d84898f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
