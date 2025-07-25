@@ -16,6 +16,24 @@
       "message": "isn\u0027t this change affect all trulo platform wide?",
       "revId": "2d95d74ee8e813dfc9bb66fab8e6f82d1bc2651a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c527370_3fd47574",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-07-25T03:32:08Z",
+      "side": 0,
+      "message": "It\u0027s fine to enable it by default for projects with ITE EC. Board level could disable it if no need.",
+      "parentUuid": "969dd8d9_df8795e7",
+      "revId": "2d95d74ee8e813dfc9bb66fab8e6f82d1bc2651a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
