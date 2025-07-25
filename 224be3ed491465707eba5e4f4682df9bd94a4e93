@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e24848f_94beb416",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T15:48:20Z",
+      "side": 1,
+      "message": "Marked as unresolved.\n\nThese are only names. How can we know that FP_SENSOR_LOW_IMAGE_QUALITY is actually `1` (the value of `FP_SENSOR_SCAN_LOW_IMAGE_QUALITY`)?",
+      "parentUuid": "430393a2_413653ea",
+      "range": {
+        "startLine": 275,
+        "startChar": 8,
+        "endLine": 275,
+        "endChar": 10
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90d24638_984aaaf5",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
         "patchSetId": 39
@@ -602,6 +626,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "493da003_e05e385a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T15:48:20Z",
+      "side": 1,
+      "message": "\u003e The purpose of this design is to save rx_buf space and free up enough RAM.\n\nOkay, so basically we do this because we don\u0027t want to have big rx buffer.",
+      "parentUuid": "16b04645_c15d6c2d",
+      "range": {
+        "startLine": 262,
+        "startChar": 17,
+        "endLine": 262,
+        "endChar": 30
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8f2050_7a94e0f2",
@@ -663,6 +711,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "163d61d2_ea52b4ae",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d523ba8d_9dedb489",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T15:48:20Z",
+      "side": 1,
+      "message": "Marked as unresolved.\n\nI was also thinking about moving\n```\nmemset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);\ntx_buf[0] \u003d START_READ_IMAGE;\n```\nbefore the loop.",
+      "parentUuid": "d670a3a9_e67574df",
       "range": {
         "startLine": 263,
         "startChar": 0,
