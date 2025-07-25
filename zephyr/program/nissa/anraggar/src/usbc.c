@@ -15,6 +15,7 @@
 #include "nissa_sub_board.h"
 #include "system.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
 #include "usbc_ppc.h"
 
 #include <stdint.h>
