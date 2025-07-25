@@ -16,6 +16,24 @@
       "message": "Verified all boards under dedede, looks like Discover Identity response ACK added only for Awasuki board. Since Definition is now already added in baseboard to avoid multiple definition error removing from Awasuki file",
       "revId": "468ec37272c04deb68c33c7d596919f4f6673eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe104b8b_064d63a1",
+        "filename": "board/awasuki/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-25T02:38:19Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "f793f83f_fc5f9edb",
+      "revId": "468ec37272c04deb68c33c7d596919f4f6673eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
