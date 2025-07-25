@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11bc43e_312e797e",
+        "filename": "zephyr/program/trulo/kaladin-ish/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-25T16:57:45Z",
+      "side": 1,
+      "message": "Is kaladin testing out EC based sensors? If not, motionsense.dtsi should just live in kaladin-ish/. Uldrenite had an issue early on that enabled sensors on EC so we had to work around that. Newer boards should avoid that mistake.",
+      "revId": "37faffd44af7f77db80fd031fb6e218a96b4e410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d17ac5_8d63c58e",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-25T16:57:45Z",
+      "side": 1,
+      "message": "If you\u0027re going to re-use this sensor.c we should name the logger trulo_sensor so it\u0027s the parent project name.",
+      "revId": "37faffd44af7f77db80fd031fb6e218a96b4e410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
