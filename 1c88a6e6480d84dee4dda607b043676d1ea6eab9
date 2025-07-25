@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad52e05_2c3a5105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-25T19:21:20Z",
+      "side": 1,
+      "message": "We have a `test_mockable_static_inline` keyword that changes between `static inline` (normal use) and `__attribute__((weak))` while testing. (`include/common.h`, lines 296 and 314). Would that work here instead of the #if..#else?",
+      "revId": "1c88a6e6480d84dee4dda607b043676d1ea6eab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
