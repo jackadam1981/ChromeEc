@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0380087c_49423f5f",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-25T17:02:52Z",
+      "side": 1,
+      "message": "you\u0027ll need to add the nanopb and pigweed modules for DSP comms (see uldrenite-ish for reference)",
+      "revId": "1bd88d4ab81f9043951f2c3bd2032d55dd02be85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6514ee_d99a5f3a",
+        "filename": "zephyr/program/ocelot/ocelot-ish/ocelotrvp-ish/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-25T17:02:52Z",
+      "side": 1,
+      "message": "You should also enable DSP comms, See uldrenite for the server side and uldrenite-ish for the client side.",
+      "revId": "1bd88d4ab81f9043951f2c3bd2032d55dd02be85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
