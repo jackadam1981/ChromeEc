@@ -50,6 +50,8 @@
 };
 
 &i2c_3 {
+	label = "I2C_PORT_PD";
+	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
 	pinctrl-0 = <&i2c03_clk_gpio100
 		     &i2c03_data_gpio101>;
 	pinctrl-names = "default";

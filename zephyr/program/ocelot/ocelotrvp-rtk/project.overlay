@@ -25,10 +25,12 @@ gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd {};
 
 /* Map tachometers to common names */
 tach_fan0: &tach0 {};
-
+i2c_port_pd1: &i2c_3 {};
+i2c_port_pd2: &i2c_3 {};
 
 #include "../rvp_keyboard.dtsi"
 #include "../rvp_fans.dtsi"
+#include "../rvp_usbc.dtsi"
 
 /* ocelot_rtk overrides follow... */
 / {
@@ -135,4 +137,20 @@ tach_fan0: &tach0 {};
 	rpm-start = <2000>;
 	rpm-max = <5000>;
 	rpm-deviation = <2>;
+};
+
+&pdc_rtk_c0 {
+	irq-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_rtk_c1 {
+	irq-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_ti_c0 {
+	irq-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
+};
+
+&pdc_ti_c1 {
+	irq-gpios = <&gpiob 11 GPIO_ACTIVE_LOW>;
 };
