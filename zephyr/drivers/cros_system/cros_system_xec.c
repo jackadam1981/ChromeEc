@@ -129,26 +129,32 @@ static int cros_system_xec_get_reset_cause(const struct device *dev)
 }
 
 #ifdef CONFIG_PLATFORM_EC_HIBERNATE_VCI
+enum vci_polarity {
+	VCI_POLARITY_ACTIVE_LOW,
+	VCI_POLARITY_ACTIVE_HIGH,
+	VCI_POLARITY_ACTIVE_BOTH,
+};
+
 /* get VCI pins and configurations from board design */
 struct app_vci_pin {
 	uint8_t vci_info;
 };
 
-/* bit[0] = Preserve after wakeup
- * bit[1] = 0(active low), 1(active high)
- * bit[2] = 0(do not enable latching), 1(enable latching)
- * bit[3] = 0(node is not enabled), 1(node is enabled)
+/* bit[0]   = Preserve after wakeup
+ * bit[1-2] = 0(active low), 1(active high), 2(active both)
+ * bit[3]   = 0(do not enable latching), 1(enable latching)
+ * bit[4]   = 0(wakeup is not enabled), 1(wakeup is enabled)
  */
 #define MCHP_VCI_INFO_GET_PRESERVE(v) (((v) >> 0) & 0x1u)
-#define MCHP_VCI_INFO_GET_POLARITY(v) (((v) >> 1) & 0x1u)
-#define MCHP_VCI_INFO_GET_LATCH_EN(v) (((v) >> 2) & 0x1u)
-#define MCHP_VCI_INFO_WAKEUP_EN(v) (((v) >> 3) & 0x1u)
+#define MCHP_VCI_INFO_GET_POLARITY(v) (((v) >> 1) & 0x3u)
+#define MCHP_VCI_INFO_GET_LATCH_EN(v) (((v) >> 3) & 0x1u)
+#define MCHP_VCI_INFO_WAKEUP_EN(v) (((v) >> 4) & 0x1u)
 
 #define MCHP_DT_VCI_INFO(nid)                                           \
 	((uint8_t)((DT_PROP(nid, preserve) & 0x1) << 0) |               \
-	 (uint8_t)((DT_ENUM_IDX(nid, vci_polarity) & 0x1) << 1) |       \
-	 (uint8_t)((DT_PROP_OR(nid, vci_latch_enable, 0) & 0x1) << 2) | \
-	 (uint8_t)((DT_PROP(nid, wakeup) & 0x1) << 3))
+	 (uint8_t)((DT_ENUM_IDX(nid, vci_polarity) & 0x3) << 1) |       \
+	 (uint8_t)((DT_PROP_OR(nid, vci_latch_enable, 0) & 0x1) << 3) | \
+	 (uint8_t)((DT_PROP(nid, wakeup) & 0x1) << 4))
 
 #define HIB_VCI_ENTRY(nid)                         \
 	[DT_REG_ADDR(nid)] = {                     \
@@ -351,16 +357,25 @@ static void cros_system_xec_vci_init(void)
 
 	for (size_t id = 0; id < ARRAY_SIZE(app_vci_table); id++) {
 		const struct app_vci_pin *pvci = &app_vci_table[id];
-		uint8_t vci_polarity =
+		enum vci_polarity polarity =
 			MCHP_VCI_INFO_GET_POLARITY(pvci->vci_info);
 		uint8_t vci_latch_en =
 			MCHP_VCI_INFO_GET_LATCH_EN(pvci->vci_info);
 
 		/* configure VCI register per board design */
-		if (vci_polarity) {
-			vci->POLARITY |= BIT(id);
-		} else {
+		switch (polarity) {
+		case VCI_POLARITY_ACTIVE_LOW:
 			vci->POLARITY &= ~BIT(id);
+			break;
+		case VCI_POLARITY_ACTIVE_HIGH:
+			vci->POLARITY |= BIT(id);
+			break;
+		case VCI_POLARITY_ACTIVE_BOTH:
+			if ((vci->CONFIG & BIT(id)) == 0) {
+				/* VCI_INx# is asserted, invert input polarity
+				 */
+				vci->POLARITY ^= BIT(id);
+			}
 		}
 
 		if (vci_latch_en) {
@@ -384,9 +399,19 @@ static void cros_system_xec_configure_vci_in(void)
 		const struct app_vci_pin *pvci = &app_vci_table[id];
 		uint8_t vci_wakeup_en = MCHP_VCI_INFO_WAKEUP_EN(pvci->vci_info);
 		uint8_t vci_clear = !MCHP_VCI_INFO_GET_PRESERVE(pvci->vci_info);
+		enum vci_polarity polarity =
+			MCHP_VCI_INFO_GET_POLARITY(pvci->vci_info);
 
 		if (vci_clear) {
 			vci->LATCH_RST |= BIT(id);
+		}
+
+		if (polarity == VCI_POLARITY_ACTIVE_BOTH) {
+			if ((vci->CONFIG & BIT(id)) == 0) {
+				/* VCI_INx# is asserted, invert input polarity
+				 */
+				vci->POLARITY ^= BIT(id);
+			}
 		}
 
 		/* Only disable those without `wakeup` flag */
