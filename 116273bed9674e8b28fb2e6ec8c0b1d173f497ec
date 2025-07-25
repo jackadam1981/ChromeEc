@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48fbf0b_071c5af3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-07-25T12:57:30Z",
+      "side": 1,
+      "message": "Please add the second buf entry as [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6718827). Some drivers may not handle that properly.",
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
