@@ -16,6 +16,24 @@
       "message": "We have a `test_mockable_static_inline` keyword that changes between `static inline` (normal use) and `__attribute__((weak))` while testing. (`include/common.h`, lines 296 and 314). Would that work here instead of the #if..#else?",
       "revId": "1c88a6e6480d84dee4dda607b043676d1ea6eab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28268266_9e75f04e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-25T19:35:37Z",
+      "side": 1,
+      "message": "i tried that. what i discovered is that the compiler doesn\u0027t let you\ndefine a weak function and a regular function in the same compilation unit.\nso, if you\u0027re in a situation where you need to include `chipset.h` to get\nrelevant declarations and want to override those `static inline` functions,\nit\u0027s a no-go. `weak` is a linker directive.\n\ni\u0027m half tempted to deprecate `test_mockable_static_inline` since it doesn\u0027t\ndo what we want in many cases.\n\ni suspect this is why `TEST_DISABLE_INLINE_CHIPSET_IN_STATE` was implemented\nsome time ago.\ni\u0027d be OK folding that one into `TEST_DISABLE_INLINE_CHIPSET_FUNCTIONS`\nin the future.",
+      "parentUuid": "dad52e05_2c3a5105",
+      "revId": "1c88a6e6480d84dee4dda607b043676d1ea6eab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
