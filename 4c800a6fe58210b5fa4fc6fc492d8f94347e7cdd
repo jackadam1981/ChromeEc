@@ -22,6 +22,30 @@
       },
       "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9dc2993_d47b33c5",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-25T22:04:10Z",
+      "side": 0,
+      "message": "Without this change, both \"make BOARD\u003dhelipilot\" and CQ failed with the following [error](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6619373?tab\u003dcomments#:~:text\u003dChromeos-,LUCI,-This%20CL%20has%20failed): \n```\n\"The following options are now in Kconfig:\n\nCONFIG_OTP_KEY\n\nPlease run this to update the list of allowed ad-hoc CONFIGs and include this\nupdate in your CL:\n\n   cp /tmp/new_config_allowed.txt util/config_allowed.txt\"\n```",
+      "parentUuid": "f221ccee_2fa3ec45",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
