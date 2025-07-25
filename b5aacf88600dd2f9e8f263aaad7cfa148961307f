@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f189fb_a84e2092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-25T16:41:27Z",
+      "side": 1,
+      "message": "The error was caused by an upstream change that broke the console output so the tests were not being parsed by the twister handler.",
+      "revId": "b5aacf88600dd2f9e8f263aaad7cfa148961307f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
