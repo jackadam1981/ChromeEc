@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a0d0dd_b99c6547",
+        "filename": "chip/npcx/otp_key.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-25T22:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a74bdade_3a446554",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0b7db7b0700d0750340dd32fb96c85c080f6fb97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "945ae738_75d10608",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-25T21:58:46Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0b7db7b0700d0750340dd32fb96c85c080f6fb97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a849dd6_abf1fe5a",
+        "filename": "include/otp_key.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-25T22:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945ae738_75d10608",
       "range": {
         "startLine": 1,
         "startChar": 16,
