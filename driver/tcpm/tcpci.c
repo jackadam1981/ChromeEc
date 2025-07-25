@@ -121,6 +121,13 @@ static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Cache our Device Capabilities at init for later reference */
 static int dev_cap_1[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static timestamp_t tcpc_int_ts[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+void tcpci_tcpm_set_int_ts(int port, timestamp_t ts)
+{
+	tcpc_int_ts[port] = ts;
+}
+
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
@@ -1235,6 +1242,11 @@ void tcpci_tcpc_alert(int port)
 			tx_status = TCPC_TX_COMPLETE_DISCARDED;
 		else
 			tx_status = TCPC_TX_COMPLETE_FAILED;
+
+		if (tcpc_int_ts[port].val != 0) {
+			alert_ts = tcpc_int_ts[port];
+			tcpc_int_ts[port].val = 0;
+		}
 
 		pd_transmit_complete(port, tx_status, &alert_ts);
 	}
