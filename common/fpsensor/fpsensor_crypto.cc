@@ -75,61 +75,6 @@ hkdf_sha256_extract(std::span<uint8_t, SHA256_DIGEST_LENGTH> prk,
 	return hmac_sha256(salt, ikms, prk);
 }
 
-test_export_static enum ec_error_list
-get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
-{
-	if (bytes_are_trivial(tpm_seed.data(), tpm_seed.size_bytes())) {
-		CPRINTS("Seed hasn't been set.");
-		return EC_ERROR_ACCESS_DENIED;
-	}
-
-	/*
-	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
-	 * anti-rollback blocks.
-	 */
-	enum ec_error_list ret = rollback_get_secret(ikm.data());
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to read rollback secret: %d", ret);
-		return EC_ERROR_HW_INTERNAL;
-	}
-	/*
-	 * IKM is the concatenation of the rollback secret and the seed from
-	 * the TPM.
-	 */
-	memcpy(ikm.data() + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed.data(),
-	       tpm_seed.size_bytes());
-
-#ifdef CONFIG_OTP_KEY
-	uint8_t otp_key[OTP_KEY_SIZE_BYTES] = { 0 };
-
-	otp_key_init();
-	ret = (enum ec_error_list)otp_key_read(otp_key);
-	otp_key_exit();
-
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to read OTP key with ret=%d", ret);
-		return EC_ERROR_HW_INTERNAL;
-	}
-
-	if (bytes_are_trivial(otp_key, sizeof(otp_key))) {
-		CPRINTS("ERROR: bytes read from OTP are trivial!");
-		return EC_ERROR_HW_INTERNAL;
-	}
-
-	/*
-	 * IKM is now the concatenation of the rollback secret, the seed
-	 * from the TPM and the key stored in OTP
-	 */
-	memcpy(ikm.data() + IKM_OTP_OFFSET_BYTES, otp_key, sizeof(otp_key));
-	BUILD_ASSERT((IKM_SIZE_BYTES - IKM_OTP_OFFSET_BYTES) ==
-		     sizeof(otp_key));
-	OPENSSL_cleanse(otp_key, OTP_KEY_SIZE_BYTES);
-#endif
-
-	return EC_SUCCESS;
-}
-
 bool hkdf_sha256_impl(std::span<uint8_t> out_key,
 		      std::span<const std::span<const uint8_t> > ikms,
 		      std::span<const uint8_t> salt,
@@ -151,6 +96,85 @@ test_mockable bool hkdf_sha256(std::span<uint8_t> out_key,
 			       std::span<const uint8_t> info)
 {
 	return hkdf_sha256_impl(out_key, ikms, salt, info);
+}
+
+test_export_static enum ec_error_list
+get_rollback_entropy(std::span<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> output)
+{
+	enum ec_error_list ret = rollback_get_secret(output.data());
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to read rollback secret: %d", ret);
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_OTP_KEY
+test_export_static enum ec_error_list
+get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> output)
+{
+	enum ec_error_list ret;
+
+	otp_key_init();
+	ret = (enum ec_error_list)otp_key_read(output.data());
+	otp_key_exit();
+
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to read OTP key with ret=%d", ret);
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	if (bytes_are_trivial(output.data(), output.size())) {
+		CPRINTS("ERROR: bytes read from OTP are trivial!");
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	return EC_SUCCESS;
+}
+#endif
+
+test_export_static enum ec_error_list
+get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
+{
+	enum ec_error_list ret;
+
+	/* Make sure TPM Seed is set */
+	if (bytes_are_trivial(tpm_seed.data(), tpm_seed.size_bytes())) {
+		CPRINTS("Seed hasn't been set.");
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	/*
+	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
+	 * anti-rollback blocks.
+	 */
+	ret = get_rollback_entropy(
+		ikm.subspan<0, CONFIG_ROLLBACK_SECRET_SIZE>());
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+
+	/*
+	 * IKM is the concatenation of the rollback secret and the seed from
+	 * the TPM.
+	 */
+	memcpy(ikm.data() + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed.data(),
+	       tpm_seed.size_bytes());
+
+#ifdef CONFIG_OTP_KEY
+	BUILD_ASSERT(IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES ==
+		     IKM_SIZE_BYTES);
+	ret = get_otp_key(
+		ikm.subspan<IKM_OTP_OFFSET_BYTES, OTP_KEY_SIZE_BYTES>());
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+#endif
+
+	return EC_SUCCESS;
 }
 
 enum ec_error_list derive_positive_match_secret(
