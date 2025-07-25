@@ -31,7 +31,7 @@ target_include_directories(second_loader PRIVATE
   )
 target_include_directories(second_loader PRIVATE "${zephyr_includes}")
 
-target_compile_options(second_loader PRIVATE "${zephyr_compile_options}")
+target_compile_options(second_loader PRIVATE "${zephyr_compile_options};$<TARGET_PROPERTY:compiler,prohibit_lto>")
 target_compile_definitions(second_loader PRIVATE
     __NO_SYSTEM_INIT=1
     __STACK_SIZE=0x000007FC
@@ -41,6 +41,7 @@ target_link_options(second_loader BEFORE PRIVATE
   -nostdlib
   -g
   -mthumb
+  "$<TARGET_PROPERTY:compiler,prohibit_lto>"
   -Wl,-Map=${CMAKE_CURRENT_BINARY_DIR}/final.map,-T${CMAKE_CURRENT_SOURCE_DIR}/second_loader.ld
   )
 
