@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95441685_98e12d6a",
+        "filename": "zephyr/program/skywalker/yoda/src/sensor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-07-25T09:23:42Z",
+      "side": 1,
+      "message": "nit: use capital variable name (e.g. BASE_LIS2DW12)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "7f4f4fcf2166d2cb72f6eeba9b076dcf68968e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
