@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa175c7_ce334bc1",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T23:25:04Z",
+      "side": 1,
+      "message": "One other option would be to keep a single `derive_key` function, but have `std::optional\u003cstd::span\u003cconst uint8_t, FP_CONTEXT_TPM_BYTES\u003e\u003e tpm_seed` and use it conditionally. You could use a `std::vector` of spans for `ikms` instead of `std::array`.\n\nIt might make the code more complicated to read though. What do you think?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 37
+      },
+      "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
