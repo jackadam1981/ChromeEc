@@ -118,6 +118,30 @@
       },
       "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b504fa0a_5c626a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-25T15:58:36Z",
+      "side": 1,
+      "message": "Yeah. The result is only uniformly distributed within some range, that\u0027s why it should not be used directly as a key.\n\nI changed the name and added a note. Also I added call to `SHA256()` in places where the result was used as a key (these functions will be probably removed by let\u0027s keep them correct).",
+      "parentUuid": "891d7977_0ec0c547",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "0fc81aaa0dd8de52f44fe2ca0421dd54a81774a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
