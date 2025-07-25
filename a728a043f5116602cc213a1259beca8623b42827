@@ -40,6 +40,30 @@
       },
       "revId": "a728a043f5116602cc213a1259beca8623b42827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a9f565_aeb8cf37",
+        "filename": "zephyr/drivers/hibernate/hibernate_z5.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-25T16:31:05Z",
+      "side": 1,
+      "message": "This waits 1 full second which should be sufficient for the regulator to discharge.\n\nIf there is a platform that needs more time for discharge, we can increase the delay for all boards.  I don\u0027t see a need to make this configurable.",
+      "parentUuid": "0c4c24b8_bd359680",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "a728a043f5116602cc213a1259beca8623b42827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
