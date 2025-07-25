@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "374facec_2a605629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:50:51Z",
+      "side": 1,
+      "message": "Thanks 😎",
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1f8db2_f7fe2757",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:50:51Z",
+      "side": 1,
+      "message": "How about a BUILD_ASSERT to make sure we\u0027re within bounds?\n\n```\nBUILD_ASSERT(IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES \u003d\u003d IKM_SIZE_BYTES);\n```",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 59
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f2c052_70643805",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:50:51Z",
+      "side": 1,
+      "message": "nit: Let\u0027s initialize all the arrays\n\n```suggestion\n\tstd::array\u003cuint8_t, CONFIG_ROLLBACK_SECRET_SIZE\u003e entropy{};\n```",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 58
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024db922_252752e6",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:50:51Z",
+      "side": 1,
+      "message": "```suggestion\n\tstd::array\u003cuint8_t, CONFIG_ROLLBACK_SECRET_SIZE\u003e entropy{};\n```",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 58
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc07d2b_b2e0b3e8",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:50:51Z",
+      "side": 1,
+      "message": "```suggestion\n\tstd::array\u003cuint8_t, OTP_KEY_SIZE_BYTES\u003e otp{};\n```",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 45
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
