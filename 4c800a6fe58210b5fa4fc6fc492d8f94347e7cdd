@@ -46,6 +46,30 @@
       },
       "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debda45d_9d7accf6",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-25T22:14:03Z",
+      "side": 0,
+      "message": "I think it\u0027s because we\u0027re [missing an `#undef OTP_KEY` in `include/config.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/config.h;l\u003d3792-3794;drc\u003d4d03a89ff26debd05cd30782558e0cc37621b740). All configs for EC are supposed to be listed there. If that works, go ahead and put it in a separate CL.",
+      "parentUuid": "e9dc2993_d47b33c5",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
