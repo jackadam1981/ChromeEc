@@ -284,6 +284,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23597fb2_9968e307",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T04:44:12Z",
+      "side": 1,
+      "message": "added definition in the private header and build assert in the source file.",
+      "parentUuid": "6e24848f_94beb416",
+      "range": {
+        "startLine": 275,
+        "startChar": 8,
+        "endLine": 275,
+        "endChar": 10
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d24638_984aaaf5",
@@ -735,6 +759,30 @@
       "side": 1,
       "message": "Marked as unresolved.\n\nI was also thinking about moving\n```\nmemset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);\ntx_buf[0] \u003d START_READ_IMAGE;\n```\nbefore the loop.",
       "parentUuid": "d670a3a9_e67574df",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "224be3ed491465707eba5e4f4682df9bd94a4e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a651b691_35c3ad9f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T04:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d523ba8d_9dedb489",
       "range": {
         "startLine": 263,
         "startChar": 0,

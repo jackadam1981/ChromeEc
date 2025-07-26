@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7232e323_e1d36370",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T04:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f48fbf0b_071c5af3",
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e9b169c_42d2fd9a",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a41303_9c7a4f60",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T04:44:12Z",
+      "side": 1,
+      "message": "I created a preprocessor macro",
+      "parentUuid": "3e9b169c_42d2fd9a",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "727d7dfc_7ad17535",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-07-25T15:48:20Z",
       "side": 1,
       "message": "Could you change it to\n```suggestion\n\t\telan_write_register(HV_CONTROL, CHARGE_PUMP_HVIC);\n\t\telan_write_register(HV_ENABLE, VOLTAGE_HVIC);\n```",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 52
+      },
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f781244_d30a9a25",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T04:44:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "727d7dfc_7ad17535",
       "range": {
         "startLine": 367,
         "startChar": 0,
