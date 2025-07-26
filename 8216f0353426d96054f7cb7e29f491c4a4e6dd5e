@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e84e97e_00972a0e",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T05:26:29Z",
+      "side": 1,
+      "message": "this is 256kB. fixed it.",
+      "parentUuid": "88eb45ca_0268ea43",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94c95ebe_576934fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-25T16:51:52Z",
       "side": 1,
       "message": "Is this correct?",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bdb555_95a64638",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-26T05:26:29Z",
+      "side": 1,
+      "message": "nope. This is 0x10098000. fixed it.",
+      "parentUuid": "94c95ebe_576934fa",
       "range": {
         "startLine": 83,
         "startChar": 3,
