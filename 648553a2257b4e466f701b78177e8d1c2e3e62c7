@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5d5aab2_f15d97a9",
+        "filename": "zephyr/program/trulo/kaladin/include/keyboard_customization.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-28T15:07:36Z",
+      "side": 1,
+      "message": "these should not be needed, that information is in the boot-keys and runtime-keys nodes",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "648553a2257b4e466f701b78177e8d1c2e3e62c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2a53cd4_0d9e1824",
         "filename": "zephyr/program/trulo/kaladin/src/board.c",
         "patchSetId": 7
