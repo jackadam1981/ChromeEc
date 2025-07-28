@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d191d15_177e4f03",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2025-07-28T01:10:14Z",
+      "side": 0,
+      "message": "kaladin project.conf explicitly enabled this feature. do we expect other trulo platform implicitly enable this feature?",
+      "revId": "7bdd236afedb7a8e959821c276503d06f0d45c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
