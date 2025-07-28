@@ -2201,9 +2201,9 @@ static void tc_unattached_snk_entry(const int port)
 {
 	enum pd_data_role prev_data_role;
 
+	print_current_state(port);
 	if (get_last_state_tc(port) != TC_UNATTACHED_SRC) {
 		tc_detached(port);
-		print_current_state(port);
 	}
 
 	/*
@@ -2286,6 +2286,7 @@ static void tc_unattached_snk_run(const int port)
 	 */
 	if (cc_is_rp(cc1) || cc_is_rp(cc2)) {
 		/* Connection Detected */
+		CPRINTS("C%d: CP_attach_wait_snk", port);
 		set_state_tc(port, TC_ATTACH_WAIT_SNK);
 		return;
 	}
@@ -2295,8 +2296,10 @@ static void tc_unattached_snk_run(const int port)
 	 * status valid. Before that, CC open is reported by default. Wait
 	 * to make sure the CC is really open. Reuse the role toggle timer.
 	 */
-	if (!pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP))
+	if (!pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP)) {
+		CPRINTS("C%d: CP_next_role_swap_timer", port);
 		return;
+	}
 
 	/*
 	 * Initialize type-C supplier current limits to 0. The charge
@@ -2312,15 +2315,19 @@ static void tc_unattached_snk_run(const int port)
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
 	    drp_state[port] == PD_DRP_TOGGLE_ON &&
 	    tcpm_auto_toggle_supported(port)) {
+		CPRINTS("C%d: CP_auto_toggle", port);
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 	} else if (drp_state[port] == PD_DRP_TOGGLE_ON) {
 		/* DRP Toggle. The timer was checked above. */
+		CPRINTS("C%d: CP_unattached_src", port);
 		set_state_tc(port, TC_UNATTACHED_SRC);
 	} else if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
 		   (drp_state[port] == PD_DRP_FORCE_SINK ||
 		    drp_state[port] == PD_DRP_TOGGLE_OFF)) {
+		CPRINTS("C%d: CP_low_power_mode", port);
 		set_state_tc(port, TC_LOW_POWER_MODE);
 	}
+	CPRINTS("C%d: CP_no_next_state", port);
 }
 
 static void tc_unattached_snk_exit(const int port)
@@ -2780,9 +2787,9 @@ static void tc_unattached_src_entry(const int port)
 {
 	enum pd_data_role prev_data_role;
 
+	print_current_state(port);
 	if (get_last_state_tc(port) != TC_UNATTACHED_SNK) {
 		tc_detached(port);
-		print_current_state(port);
 	}
 
 	/*
