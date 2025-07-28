@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ed3b19_e336e2a9",
+        "filename": "common/usb_common.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-28T22:46:45Z",
+      "side": 1,
+      "message": "Here\u0027s the basic idea of what a test like this would look like, and you can probably add your test in this file as well:\n* [Connect the partner emulator with sink caps we can meet](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c;l\u003d61;drc\u003d51e48d6c7b72e44791f0c96baeb5605027cbb314)\n* [Check that the received sink caps match those initial sink caps](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c;l\u003d102;drc\u003d51e48d6c7b72e44791f0c96baeb5605027cbb314)\n* Change the partner\u0027s sink caps so that they ask for more than 3A, similar to first step\n* Trigger the partner emulator to send another Request, this time with Cap Mismatch set; [you might have to add a function in the partner emulator to do this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/tcpc/emul_tcpci_partner_snk.c;l\u003d174;drc\u003d2e289a5e4366001abcb414b0d29d835c6c29fb9e)\n* Wait a second\n* Check that the received sink caps now match the new ones you set",
+      "revId": "5d95e3e8ab529457944b3b4349d09946a904b93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
