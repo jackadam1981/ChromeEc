@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e136cd95_ccc15ce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-07-28T06:54:16Z",
+      "side": 1,
+      "message": "If the gpio is different, override it in board specific devicetree instead of changing the baseboard.",
+      "revId": "2d0b7bae240aef15d4e3021b03b938508fe7eeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
