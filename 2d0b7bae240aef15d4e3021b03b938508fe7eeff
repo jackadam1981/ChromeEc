@@ -16,6 +16,24 @@
       "message": "If the gpio is different, override it in board specific devicetree instead of changing the baseboard.",
       "revId": "2d0b7bae240aef15d4e3021b03b938508fe7eeff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa81645f_a0bd2ecf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-07-28T07:01:46Z",
+      "side": 1,
+      "message": "Our schematic is the same as baseboard (fatcatrvp-ite), only felino is different to other boards. so I created override for felino.",
+      "parentUuid": "e136cd95_ccc15ce5",
+      "revId": "2d0b7bae240aef15d4e3021b03b938508fe7eeff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
