@@ -22,6 +22,30 @@
       },
       "revId": "e13d9470c0ff423c7fdf8593310d8a327f0f6a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d740b12a_96e9160e",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T09:42:20Z",
+      "side": 1,
+      "message": "SHA256_DIGEST_LENGTH is defined in [BoringSSL\u0027s `sha.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/include/openssl/sha.h;l\u003d172;drc\u003d251ee0b761b165ce815c760065dba4b5721e8d06) while SHA256_DIGEST_SIZE is from [EC\u0027s `sha256.h`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/sha256.h;l\u003d13;drc\u003d6757ebe2dce2a23e2cd3149eb82b32faa4f16908).\n\nThis change is intentional. I think it\u0027s better to use BoringSSL\u0027s defines.",
+      "parentUuid": "9d558bc1_945e180a",
+      "range": {
+        "startLine": 222,
+        "startChar": 20,
+        "endLine": 222,
+        "endChar": 40
+      },
+      "revId": "e13d9470c0ff423c7fdf8593310d8a327f0f6a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
