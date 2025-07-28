@@ -17,7 +17,7 @@
 #include "../felino/fan.dtsi"
 #include "../felino/i2c.dtsi"
 #include "../felino/interrupts.dtsi"
-#include "../ite_hibernate.dtsi"
+#include "../felino/hibernate.dtsi"
 #include "keyboard.dtsi"
 #include "../felino/led_pins.dtsi"
 #include "../felino/led_policy.dtsi"
