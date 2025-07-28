@@ -21,6 +21,7 @@
 LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
+#include "usbc/pdc_utils.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -3089,6 +3090,13 @@ DT_INST_FOREACH_STATUS_OKAY(TPS6699X_PDC_DEFINE)
  * struct. */
 static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
 	PDC_DATA_PTR_ENTRY) };
+
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+/* If PDC-driven CCD is used, one of the PDC driver nodes for each driver compat
+ * type must be marked with the `ccd` property.
+ */
+CHECK_ONE_CCD_PORT_COUNT_FOR_DRIVER();
+#endif /* CONFIG_USBC_PDC_DRIVEN_CCD */
 
 #ifdef CONFIG_ZTEST
 /*

@@ -24,6 +24,7 @@
 #include <zephyr/sys_clock.h>
 LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 #include "usbc/pdc_power_mgmt.h"
+#include "usbc/pdc_utils.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -3017,6 +3018,13 @@ DT_INST_FOREACH_STATUS_OKAY(RTS54xx_PDC_DEFINE)
  * struct. */
 static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
 	PDC_DATA_PTR_ENTRY) };
+
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+/* If PDC-driven CCD is used, one of the PDC driver nodes for each driver compat
+ * type must be marked with the `ccd` property.
+ */
+CHECK_ONE_CCD_PORT_COUNT_FOR_DRIVER();
+#endif /* CONFIG_USBC_PDC_DRIVEN_CCD */
 
 #ifdef CONFIG_ZTEST
 

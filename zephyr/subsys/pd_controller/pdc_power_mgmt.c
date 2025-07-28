@@ -5284,6 +5284,7 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 	return rv;
 }
 
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 int pdc_power_mgmt_get_ccd_port(void)
 {
 	struct pdc_hw_config_t pdc_hw_config;
@@ -5296,10 +5297,12 @@ int pdc_power_mgmt_get_ccd_port(void)
 		}
 	}
 
-	return -1;
+	/* This is unreachable since compile-time checks in the PDC driver
+	 * sources ensure that one port (per PDC type) is tagged as CCD when
+	 * CONFIG_USBC_PDC_DRIVEN_CCD is enabled. */
+	return -1; /* LCOV_EXCL_LINE */
 }
 
-#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 test_mockable int pdc_power_mgmt_get_sbu_mux_mode(enum pdc_sbu_mux_mode *mode,
 						  int *port_num)
 {
@@ -5309,10 +5312,7 @@ test_mockable int pdc_power_mgmt_get_sbu_mux_mode(enum pdc_sbu_mux_mode *mode,
 
 	int port = pdc_power_mgmt_get_ccd_port();
 
-	if (port < 0) {
-		LOG_ERR("%s: No CCD port specified in devicetree", __func__);
-		return -ENOTSUP;
-	}
+	__ASSERT(port >= 0, "No CCD port specified in devicetree");
 
 	if (port_num) {
 		*port_num = port;
@@ -5331,10 +5331,7 @@ test_mockable int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode)
 {
 	int port = pdc_power_mgmt_get_ccd_port();
 
-	if (port < 0) {
-		LOG_ERR("%s: No CCD port specified in devicetree", __func__);
-		return -ENOTSUP;
-	}
+	__ASSERT(port >= 0, "No CCD port specified in devicetree");
 
 	pdc_data[port]->port.sbu_mux_mode = mode;
 
