@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d080120_678500f4",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T11:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de1f8db2_f7fe2757",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 59
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f2c052_70643805",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-07-25T22:50:51Z",
       "side": 1,
       "message": "nit: Let\u0027s initialize all the arrays\n\n```suggestion\n\tstd::array\u003cuint8_t, CONFIG_ROLLBACK_SECRET_SIZE\u003e entropy{};\n```",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 58
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e6e032_8d710822",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T11:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f2c052_70643805",
       "range": {
         "startLine": 168,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "548e52a8_cd980958",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T11:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024db922_252752e6",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 58
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efc07d2b_b2e0b3e8",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-07-25T22:50:51Z",
       "side": 1,
       "message": "```suggestion\n\tstd::array\u003cuint8_t, OTP_KEY_SIZE_BYTES\u003e otp{};\n```",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 45
+      },
+      "revId": "14e5441d57dad1c73a4679d645393d64b3e3e557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a684f276_fe69fcc1",
+        "filename": "test/fpsensor_crypto_with_mock.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T11:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc07d2b_b2e0b3e8",
       "range": {
         "startLine": 210,
         "startChar": 0,
