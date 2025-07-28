@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43d2d82d_1c7ac048",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T16:10:22Z",
+      "side": 1,
+      "message": "Marked as unresolved.\n\nThis avoids repeating message multiple times, but AFAIK it does not save flash space actually (If I\u0027m wrong, please share the numbers).\n\nInitially I was thinking about moving `LOG_ERR()` to `elan_spi_transaction_*()` functions, but you will lose information about function that called `elan_spi_transaction_*()`.\n\nYou could do something like\n```\nstatic const char *spi_write_fail_msg \u003d \"spi_write FAILED: in func: %s with retval \u003d %d\\n\";\n```\nand use it in LOG_ERR(), but I\u0027m not sure if it looks good for you.",
+      "parentUuid": "45a41303_9c7a4f60",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d7dfc_7ad17535",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 47
