@@ -140,6 +140,30 @@
       },
       "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5c1dda_e3bc0c16",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi",
+        "patchSetId": 31
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-28T17:42:15Z",
+      "side": 1,
+      "message": "I have not tested whether we can jump to RW with the EC RO yet. However, this issue can be resolved with the below patch:\n\n1) limit number of enrollment to 3 to align with EC. This will reduce data RAM\n2) Reduce heap allocation to 36kB. I have tested and found that 31 kB is sufficient and is consistent amongst all enrollments\n3) Reconfigure memory partition to allocation 320kB to code data and 188 to data RAM\n I have confirmed that this works with 3 fingers enrolled.\n\n```\nfsammoura@fsammoura-glaptop:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/drivers/fingerprint/Kconfig.elan b/zephyr/drivers/fingerprint/Kconfig.elan\nindex 081a3312da..9e11b4e770 100644\n--- a/zephyr/drivers/fingerprint/Kconfig.elan\n+++ b/zephyr/drivers/fingerprint/Kconfig.elan\n@@ -16,12 +16,12 @@ if FINGERPRINT_SENSOR_ELAN80SG\n \n config FINGERPRINT_SENSOR_ELAN80SG_HEAP_SIZE\n        int \"Size of heap for ELAN80SG driver\"\n-       default 65536\n+       default 36864\n        help\n          Size of heap to be used by ELAN private library. The heap must have\n          enough space to facilitate the generation of the finger templates\n          during the enrollment process and to enable efficient runtime matching\n-         operations. For these operations, a 64KB heap is sufficient.\n+         operations. For these operations, a 36KB heap is sufficient.\n \n config FINGERPRINT_SENSOR_ELAN80SG_PAL\n        bool \"Platform Abstraction Layer for ELAN private library\"\ndiff --git a/zephyr/program/fpmcu/helipilot/buccaneer.dts b/zephyr/program/fpmcu/helipilot/buccaneer.dts\nindex 28037818f6..dd96f404b9 100644\n--- a/zephyr/program/fpmcu/helipilot/buccaneer.dts\n+++ b/zephyr/program/fpmcu/helipilot/buccaneer.dts\n@@ -51,7 +51,7 @@\n                /* 256 kB used for RW - buccaneer ECOS flash size */\n                ec-rw {\n                        offset \u003d \u003c0x40000\u003e;\n-                       size \u003d \u003c0x40000\u003e;\n+                       size \u003d \u003c0x50000\u003e;\n                        rw-fw {\n                                /*\n                                 * Clang doesn\u0027t emit STT_SECTION symbols (also\n@@ -70,23 +70,23 @@\n };\n \n /*\n- *           ┌──────────────┐\n+*           ┌──────────────┐\n  *           │   Reserved   │\n  *           │     4KB      │\n  *           ├──────────────┤0x200D7000\n  *           │              │\n  *           │              │\n  *           │   Data RAM   │\n- *           │     252KB    │\n+ *           │     188KB    │\n  *           │              │\n  *           │              │\n- * 0x10098000├──────────────┤0x20098000\n+ * 0x100A8000├──────────────┤0x200A8000\n  *           │              │\n  *           │              │\n  *           │              │\n  *           │              │\n  *           │   Code RAM   │\n- *           │     256KB    │\n+ *           │     320KB    │\n  *           │              │\n  *           │              │\n  *           │              │\n@@ -95,15 +95,15 @@\n  * 0x10058000└──────────────┘\n  */\n \u0026flash0 {\n-    reg \u003d \u003c0x10058000 DT_SIZE_K(256)\u003e;\n+    reg \u003d \u003c0x10058000 DT_SIZE_K(320)\u003e;\n };\n \n /delete-node/ \u0026sram0;\n \n / {\n-       sram0: memory@20098000 {\n+       sram0: memory@200a8000 {\n                compatible \u003d \"mmio-sram\";\n-               reg \u003d \u003c0x20098000 DT_SIZE_K(252)\u003e;\n+               reg \u003d \u003c0x200A8000 DT_SIZE_K(188)\u003e;\n        };\n };\n \ndiff --git a/zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi b/zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi\nindex 1d963a47c3..0abe432dc2 100644\n--- a/zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi\n+++ b/zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi\n@@ -30,7 +30,7 @@\n                        };\n                        sig-rw {\n                                type \u003d \"section\";\n-                               offset \u003d \u003c0x3fc00\u003e;\n+                               offset \u003d \u003c0x4fc00\u003e;\n                                size \u003d \u003c0x400\u003e;\n                        };\n                        pad-byte \u003d \u003c0xff\u003e;\ndiff --git a/zephyr/subsys/fingerprint/alg/Kconfig b/zephyr/subsys/fingerprint/alg/Kconfig\nindex 9f9a0ff853..801056b043 100644\n--- a/zephyr/subsys/fingerprint/alg/Kconfig\n+++ b/zephyr/subsys/fingerprint/alg/Kconfig\n@@ -51,6 +51,7 @@ config FP_MAX_FINGER_COUNT\n          default 5 if FINGERPRINT_SENSOR_FPC1025 \u0026\u0026 FP_FPC_BEP_ALGORITHM\n          default 5 if FINGERPRINT_SENSOR_FPC1145 \u0026\u0026 FP_FPC_LIBFP_ALGORITHM\n          default 3 if FINGERPRINT_SENSOR_EGIS630 \u0026\u0026 FP_EGIS_EGIS630_ALGORITHM\n+         default 3 if FINGERPRINT_SENSOR_ELAN80SG \u0026\u0026 FP_ELAN_ELAN80SG_ALGORITHM\n          default 5\n          help\n                Max number of templates stored / matched against. This limit comes\n```",
+      "parentUuid": "d24f6fbc_88258875",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
