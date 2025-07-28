@@ -16,6 +16,24 @@
       "message": "Enable it from board level.",
       "revId": "d8d312c222a4e1e7deae081e51b47885b3435f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e58b7dc_9109a4e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-07-28T08:12:44Z",
+      "side": 1,
+      "message": "My experiment showed that when a flag was set to \u0027n\u0027 at the board level and \u0027y\u0027 at the project level, the system failed to boot into the OS. As a result, I set the flag to \u0027y\u0027 at the board level and removed the project-level setting.",
+      "parentUuid": "b9ab9b3b_5586c041",
+      "revId": "d8d312c222a4e1e7deae081e51b47885b3435f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
