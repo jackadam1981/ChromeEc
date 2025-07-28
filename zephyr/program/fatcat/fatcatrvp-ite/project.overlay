@@ -46,7 +46,7 @@ i2c3ALT: &i2c3 {
 #include "gpios.dtsi"
 #include "hibernate.dtsi"
 #include "i2c.dtsi"
-#include "interrupts.dtsi"
+#include "../rvp_interrupts.dtsi"
 #include "keyboard.dtsi"
 #include "pwm.dtsi"
 #include "temp_sensors.dtsi"
