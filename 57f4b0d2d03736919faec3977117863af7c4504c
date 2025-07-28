@@ -22,6 +22,30 @@
       },
       "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8760d8e_f9522b0c",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-28T10:40:31Z",
+      "side": 1,
+      "message": "I don\u0027t think it will make code more complicated. Also the function will be `static` and will be only used by `derive_encryption_key()` and `derive_pairing_encryption_key()`, so the risk of accidental misuse would be rather minimal.\n\nI don\u0027t have strong opinion but I would like to avoid allocations on heap. I wonder if it could be possible to achieve it without complicating code too much.",
+      "parentUuid": "5fa175c7_ce334bc1",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 37
+      },
+      "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
