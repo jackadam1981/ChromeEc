@@ -16,6 +16,24 @@
       "message": "```\nchromeos-zephyr-0.0.1-r5252: zephyr/include/generated/zephyr/devicetree_generated.h:68653:118: error: \u0027DT_N_S_batteries_S_celxpert_b340442_P_device_name\u0027 undeclared here (not in a function); did you mean \u0027DT_N_S_batteries_S_celxpert_b340442_PINCTRL_NUM\u0027?\nchromeos-zephyr-0.0.1-r5252: 68653 | #define DT_FOREACH_OKAY_battery_smart(fn) fn(DT_N_S_batteries_S_c31n2005) fn(DT_N_S_batteries_S_dynapack_b140435) fn(DT_N_S_batteries_S_celxpert_b340442)\nchromeos-zephyr-0.0.1-r5252:       \n```",
       "revId": "c486ee191ef7f43c46c9d78ab124a97441bd7504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e178fc_3d3e7c3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-07-28T07:08:55Z",
+      "side": 1,
+      "message": "It seems that the battery model does not exist in the 15194FW branch, and the related [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6791667) has been cut into the 15194 branch.",
+      "parentUuid": "78a3cd55_703c8ad4",
+      "revId": "c486ee191ef7f43c46c9d78ab124a97441bd7504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
