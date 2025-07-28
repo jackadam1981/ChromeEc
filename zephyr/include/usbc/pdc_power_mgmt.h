@@ -736,6 +736,7 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port);
 int pdc_power_mgmt_get_connector_status_for_ppm(
 	int port, union connector_status_t *connector_status);
 
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Find an active port with CCD enabled based on devicetree properties
  *
@@ -744,7 +745,6 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
  */
 int pdc_power_mgmt_get_ccd_port(void);
 
-#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Reads the current SBU mux operating mode. This targets the port with
  *        the `ccd` property in the devicetree.

@@ -27,10 +27,6 @@ if (DEFINED CONFIG_TEST_SUITE_PDC_GENERIC)
 		app PRIVATE src/board_runtime_config.c)
 endif()
 
-if (DEFINED CONFIG_TEST_SUITE_PDC_SBU_MUX_NO_CCD)
-	target_sources(app PRIVATE src/generic/pdc_power_mgmt_api_no_ccd.c)
-endif()
-
 if (DEFINED CONFIG_TEST_SUITE_PDC_UTILS)
 	target_sources(app PRIVATE src/generic/usb_utils.c)
 endif()
