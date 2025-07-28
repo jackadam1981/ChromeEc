@@ -46,6 +46,30 @@
       },
       "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a448c5_3e6d8c55",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-28T23:03:58Z",
+      "side": 1,
+      "message": "One way to avoid heap allocation would be to put an empty span as a placeholder in the `std:array` and then replace it with the `tpm_seed` if it\u0027s available. (Assuming that the empty span is handled correctly by `hkdf_sha256` in the case where `tpm_seed` is not set.)",
+      "parentUuid": "d8760d8e_f9522b0c",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 37
+      },
+      "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
