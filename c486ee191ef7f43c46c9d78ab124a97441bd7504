@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a3cd55_703c8ad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525237
+      },
+      "writtenOn": "2025-07-28T05:07:43Z",
+      "side": 1,
+      "message": "```\nchromeos-zephyr-0.0.1-r5252: zephyr/include/generated/zephyr/devicetree_generated.h:68653:118: error: \u0027DT_N_S_batteries_S_celxpert_b340442_P_device_name\u0027 undeclared here (not in a function); did you mean \u0027DT_N_S_batteries_S_celxpert_b340442_PINCTRL_NUM\u0027?\nchromeos-zephyr-0.0.1-r5252: 68653 | #define DT_FOREACH_OKAY_battery_smart(fn) fn(DT_N_S_batteries_S_c31n2005) fn(DT_N_S_batteries_S_dynapack_b140435) fn(DT_N_S_batteries_S_celxpert_b340442)\nchromeos-zephyr-0.0.1-r5252:       \n```",
+      "revId": "c486ee191ef7f43c46c9d78ab124a97441bd7504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
