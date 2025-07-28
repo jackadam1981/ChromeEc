@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4748dab0_773191e0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-28T17:09:37Z",
+      "side": 1,
+      "message": "I can also do it this way:\n\n```\n#define LOG_SPI_WRITE_FAIL(func_name, err_val)                                 \\\n\tLOG_ERR(\"spi_write FAILED: in func: %s with retval \u003d %d\\n\", func_name, \\\n\t\terr_val)\n```\n\nagain this will not save flash. by the way, my concern is not flash here. if we need to reconfigure the memory to give code RAM 320 kB instead of 256kB, I have plenty of flash to deal with.",
+      "parentUuid": "c8ca0320_72fb025c",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d7dfc_7ad17535",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 47
