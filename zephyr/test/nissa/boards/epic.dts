@@ -51,6 +51,10 @@
 			gpios = <&gpiol 7 GPIO_OUTPUT>;
 			no-auto-init;
 		};
+		gpio_ec_battery_pres_odl: ec_battery_pres_odl {
+			gpios = <&gpioi 4 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
 	};
 
 	gpio-interrupts {

@@ -103,7 +103,6 @@ static void adapter_voltage_limit(void)
 
 DECLARE_HOOK(HOOK_INIT, adapter_voltage_limit, HOOK_PRIO_DEFAULT - 1);
 
-#ifndef CONFIG_ZTEST
 enum battery_present battery_hw_present(void)
 {
 	const struct gpio_dt_spec *batt_pres;
@@ -113,4 +112,3 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
 }
-#endif

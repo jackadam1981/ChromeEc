@@ -747,3 +747,18 @@ ZTEST(epic, test_board_override_fan_control)
 	zassert_equal(fan_get_rpm_mode(0), 1);
 	zassert_equal(fan_get_rpm_target(0), 0);
 }
+ZTEST(epic, test_battery_hw_present)
+{
+	const struct device *batt_pres_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_ec_battery_pres_odl), gpios));
+	const gpio_port_pins_t batt_pres_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_ec_battery_pres_odl), gpios);
+
+	zassert_not_null(batt_pres_gpio, NULL);
+
+	zassert_ok(gpio_emul_input_set(batt_pres_gpio, batt_pres_pin, 0));
+	zassert_equal(BP_YES, battery_hw_present());
+
+	zassert_ok(gpio_emul_input_set(batt_pres_gpio, batt_pres_pin, 1));
+	zassert_equal(BP_NO, battery_hw_present());
+}
