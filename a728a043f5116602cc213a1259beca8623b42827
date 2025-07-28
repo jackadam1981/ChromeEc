@@ -64,6 +64,30 @@
       },
       "revId": "a728a043f5116602cc213a1259beca8623b42827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "691c77fd_9a172365",
+        "filename": "zephyr/drivers/hibernate/hibernate_z5.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-07-28T03:27:37Z",
+      "side": 1,
+      "message": "Thank you. 1 second is ok for this. Currently fatcat/kinmen EC hibernate is broken because of incorrect pin assignment. I updated the patch to fix this.",
+      "parentUuid": "67a9f565_aeb8cf37",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "a728a043f5116602cc213a1259beca8623b42827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
