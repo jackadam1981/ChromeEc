@@ -18,7 +18,7 @@
 #include "i2c.dtsi"
 #include "temp_sensors.dtsi"
 
-#include "../fatcatrvp-ite/interrupts.dtsi"
+#include "../rvp_interrupts.dtsi"
 
 /* Power Signals */
 #define PWR_EN_PP3300_S5 &gpio4 1
