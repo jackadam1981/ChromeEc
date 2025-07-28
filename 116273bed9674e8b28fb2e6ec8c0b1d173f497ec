@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8ca0320_72fb025c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-28T17:03:48Z",
+      "side": 1,
+      "message": "The flash size does not change when you use the macro. I confirmed it. I do not believe the approacj of using `static const char *spi_write_fail_msg \u003d \"spi_write FAILED: in func: %s with retval \u003d %d\\n\";` does not work here:\n\nI tried:\n\n```\nstatic const char *spi_write_fail_msg \u003d \"spi_write FAILED: in func: %s with retval \u003d %d\\n\";\n\n\t\tLOG_ERR(spi_write_fail_msg, __func__, err);\n```\n\nHowever, I get the below compiler error:\n\n```\n/mnt/host/source/src/platform/ec/zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c:95:11: error: expected \u0027)\u0027\n   95 |                 LOG_ERR(spi_write_fail_msg, __func__, err);\n      |                         ^\n/mnt/host/source/src/platform/ec/zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c:95:3: note: to match this \u0027(\u0027\n   95 |                 LOG_ERR(spi_write_fail_msg, __func__, err);\n      |                 ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/logging/log.h:48:25: note: expanded from macro \u0027LOG_ERR\u0027\n   48 | #define LOG_ERR(...)    Z_LOG(LOG_LEVEL_ERR, __VA_ARGS__)\n      |                         ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/logging/log_core.h:318:44: note: expanded from macro \u0027Z_LOG\u0027\n  318 | #define Z_LOG(_level, ...)                 Z_LOG2(_level, 0, Z_LOG_CURRENT_DATA(), __VA_ARGS__)\n      |                                            ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/logging/log_core.h:297:4: note: expanded from macro \u0027Z_LOG2\u0027\n  297 |                         Z_LOG_TO_PRINTK(_level, __VA_ARGS__);                                      \\\n      |                         ^\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/logging/log_core.h:221:22: note: expanded from macro \u0027Z_LOG_TO_PRINTK\u0027\n  221 |         z_log_minimal_printk(\"%c: \" fmt \"\\n\", \\\n      |                             ^\n1 error generated.\n```\n\nThe Zephyr logging macros (like LOG_ERR, LOG_WRN, LOG_INF, etc.) are designed to work with a string literal as their first argument, followed by the variadic arguments for that format string.\n\nWhen we write:\n\n```\nstatic const char *spi_write_fail_msg \u003d \"spi_write FAILED: in func: %s with retval \u003d %d\\n\";\nLOG_ERR(spi_write_fail_msg, __func__, err);\n```\n\nThe preprocessor expands LOG_ERR in several steps:\n\nLOG_ERR(spi_write_fail_msg, __func__, err) becomes:\nZ_LOG(LOG_LEVEL_ERR, spi_write_fail_msg, __func__, err)\n\nThis then expands further into Z_LOG2 and eventually Z_LOG_TO_PRINTK. The Z_LOG_TO_PRINTK macro, as seen in the error output, expects a format string literal directly as its second argument (the fmt in z_log_minimal_printk(\"%c: \" fmt \"\\n\", ...)).\n\nThe problem is that spi_write_fail_msg is a variable (a const char *) holding the string literal, not the string literal itself. When the preprocessor expands the macros, it needs the literal string to properly build the printk call, not a variable that points to the string at runtime. The compiler sees spi_write_fail_msg where it expects the actual format string, leading to a parsing error that manifests as \"expected \u0027)\u0027\" because it can\u0027t correctly interpret the arguments following the variable.",
+      "parentUuid": "43d2d82d_1c7ac048",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "116273bed9674e8b28fb2e6ec8c0b1d173f497ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d7dfc_7ad17535",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_pal.c",
         "patchSetId": 47
