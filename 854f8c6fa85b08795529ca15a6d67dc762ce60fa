@@ -86,6 +86,24 @@
       "message": "Sensor configs are more of board specific, please move this file to RVP specific directory. Only the Prj.cnf file, which includes the common configurations can be placed in the common folder.",
       "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a899a9f4_4cb316c2",
+        "filename": "zephyr/program/ocelot/ocelot-ish/motionsense.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-29T20:20:14Z",
+      "side": 1,
+      "message": "Yeah, `zephyr/program/ocelot/rvp_motionsense.dtsi` was the path we agreed on in [this comment thread](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6762272/comment/485c5de2_ecdfae85/)",
+      "parentUuid": "6bc5fd20_9f179b7a",
+      "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
