@@ -122,6 +122,24 @@
       "parentUuid": "972a1cb6_d3c68838",
       "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283619ca_de48c535",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-07-29T18:57:46Z",
+      "side": 1,
+      "message": "In line 1061, we will set wait_us to 0 if time_diff is 0.",
+      "parentUuid": "bd43cca6_323bea23",
+      "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
