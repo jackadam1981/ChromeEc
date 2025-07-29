@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303111d9_6c8370ec",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-29T23:15:25Z",
+      "side": 1,
+      "message": "@abin.roy@7rays.corp-partner.google.com Per discussion on the bugzzy bug, can you try adding back 5-10 ms in these constants and see if it still passes on magma?",
+      "revId": "4ec8388640023c366a42775c46267fae287c981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
