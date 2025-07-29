@@ -2883,9 +2883,8 @@ static void tc_unattached_src_run(const int port)
 	 * Transition to AttachWait.SRC when:
 	 *   1) The SRC.Rd state is detected on either CC1 or CC2 pin or
 	 *   2) The SRC.Ra state is detected on both the CC1 and CC2 pins.
-	 *
-	 * A DRP shall transition to Unattached.SNK within tDRPTransition
-	 * after dcSRC.DRP ∙ tDRP
+	 * TODO(b/436338613): TC_UNATTACHED_SRC transition to T_DRP_AUTO_TOGGLE
+	 * with no additional delay.
 	 */
 	if (cc_is_at_least_one_rd(tc[port].cc1, tc[port].cc2) ||
 	    cc_is_audio_acc(tc[port].cc1, tc[port].cc2))
@@ -2894,13 +2893,17 @@ static void tc_unattached_src_run(const int port)
 		 drp_state[port] != PD_DRP_FORCE_SOURCE &&
 		 drp_state[port] != PD_DRP_FREEZE)
 		set_state_tc(port, TC_UNATTACHED_SNK);
+
+	if (!pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP))
+		return;
+
 	/*
 	 * Attempt TCPC auto DRP toggle
 	 */
-	else if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
-		 drp_state[port] == PD_DRP_TOGGLE_ON &&
-		 tcpm_auto_toggle_supported(port) &&
-		 cc_is_open(tc[port].cc1, tc[port].cc2))
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
+	    drp_state[port] == PD_DRP_TOGGLE_ON &&
+	    tcpm_auto_toggle_supported(port) &&
+	    cc_is_open(tc[port].cc1, tc[port].cc2))
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 	else if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
 		 (drp_state[port] == PD_DRP_FORCE_SOURCE ||
@@ -3450,14 +3453,6 @@ __maybe_unused static void tc_drp_auto_toggle_entry(const int port)
 		assert(0);
 
 	print_current_state(port);
-
-	/*
-	 * We need to ensure that we are waiting in the previous Rd or Rp state
-	 * for the minimum of DRP SNK or SRC so the first toggle cause by
-	 * transition into auto toggle doesn't violate spec timing.
-	 */
-	pd_timer_enable(port, TC_TIMER_TIMEOUT,
-			MAX(PD_T_DRP_SNK, PD_T_DRP_SRC));
 }
 
 __maybe_unused static void tc_drp_auto_toggle_run(const int port)
@@ -3466,17 +3461,12 @@ __maybe_unused static void tc_drp_auto_toggle_run(const int port)
 		assert(0);
 
 	/*
-	 * A timer is running, but if a connection comes in while waiting
-	 * then allow that to take higher priority.
+	 * TODO(b/436338613): This flag will probably never be set.
+	 * If so, remove this check and simplify this state.
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_CHECK_CONNECTION))
 		check_drp_connection(port);
-
-	else if (!pd_timer_is_disabled(port, TC_TIMER_TIMEOUT)) {
-		if (!pd_timer_is_expired(port, TC_TIMER_TIMEOUT))
-			return;
-
-		pd_timer_disable(port, TC_TIMER_TIMEOUT);
+	else {
 		tcpm_enable_drp_toggle(port);
 
 		if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
@@ -3487,7 +3477,6 @@ __maybe_unused static void tc_drp_auto_toggle_run(const int port)
 
 __maybe_unused static void tc_drp_auto_toggle_exit(const int port)
 {
-	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 }
 
 __maybe_unused static void tc_low_power_mode_entry(const int port)

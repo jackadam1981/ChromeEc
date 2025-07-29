@@ -209,6 +209,24 @@ __maybe_unused static int test_power_role_set(void)
 	return EC_SUCCESS;
 }
 
+__maybe_unused static int test_auto_toggle(void)
+{
+	/* We need to allow auto toggling */
+	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_ON);
+
+	/* Update CC lines*/
+	mock_tcpc.cc1 = TYPEC_CC_VOLT_OPEN;
+	mock_tcpc.cc2 = TYPEC_CC_VOLT_OPEN;
+	task_set_event(TASK_ID_PD_C0, PD_EVENT_CC);
+
+	task_wait_event(10 * SECOND);
+
+	/* We are in Unattached.SNK. The mux should have detached */
+	TEST_EQ(mock_usb_mux.state, USB_PD_MUX_NONE, "%d");
+
+	return EC_SUCCESS;
+}
+
 __maybe_unused static int test_polarity_cc1_default(void)
 {
 	/* Update CC lines send state machine event to process */
@@ -719,15 +737,10 @@ __maybe_unused static int test_auto_toggle_delay(void)
 	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_ON);
 	time = get_time().val;
 
-	/*
-	 * Ensure we do not transition to auto toggle from Rd or Rp in less time
-	 * than tDRP minimum (50 ms) * dcSRC.DRP minimum (30%) = 15 ms.
-	 * Otherwise we can confuse external partners with the first transition
-	 * to auto toggle.
-	 */
+	/* Ensure transition to auto toggle from Rd or Rp in with no delay */
 	task_wait_event(SECOND);
 	TEST_GT(mock_tcpc.first_call_to_enable_auto_toggle - time,
-		(uint64_t)15 * MSEC, "%" PRIu64);
+		(uint64_t)0 * MSEC, "%" PRIu64);
 
 	return EC_SUCCESS;
 }
@@ -872,6 +885,7 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_cc_open_on_normal_reset);
 	RUN_TEST(test_cc_rd_on_por_reset);
+	RUN_TEST(test_auto_toggle);
 	RUN_TEST(test_auto_toggle_delay);
 	RUN_TEST(test_auto_toggle_delay_early_connect);
 
