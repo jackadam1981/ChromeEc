@@ -22,6 +22,30 @@
       },
       "revId": "cad50ba315d71dc06c34aae5abdff5076c294c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76dad3e_92882570",
+        "filename": "zephyr/program/trulo/kaladin/usb_typec.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-07-29T07:14:27Z",
+      "side": 1,
+      "message": "Please help to review below CL. Thanks.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6796913",
+      "parentUuid": "69abaabd_cbefe611",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "cad50ba315d71dc06c34aae5abdff5076c294c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
