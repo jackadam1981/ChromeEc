@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c43a2f_69856cc8",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2228,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-07-29T23:37:25Z",
+      "side": 1,
+      "message": "Are these message lengths already defined somewhere such as usb_pd.h? That would be preferable to having them hardcoded in the driver here.",
+      "range": {
+        "startLine": 2228,
+        "startChar": 3,
+        "endLine": 2228,
+        "endChar": 12
+      },
+      "revId": "7b8cbc490ba6060b93ee4e9854091e350dac105b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
