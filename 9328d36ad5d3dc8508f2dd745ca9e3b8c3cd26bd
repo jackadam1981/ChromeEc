@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc06d4c_3029631e",
+        "filename": "zephyr/emul/emul_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-29T16:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b076558d_30d2042a",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "9328d36ad5d3dc8508f2dd745ca9e3b8c3cd26bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11e041d5_ce41c098",
