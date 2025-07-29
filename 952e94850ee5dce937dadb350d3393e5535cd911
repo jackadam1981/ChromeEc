@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bd7487_c7d066cb",
+        "filename": "zephyr/program/trulo/kaladin/src/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-29T03:54:08Z",
+      "side": 1,
+      "message": "The logic for gpio pin values can be reduced to something like:\nint co_hv_disable \u003d enable \u0026\u0026 port \u003d\u003d 0;\nint c1_hv_disable \u003d enable \u0026\u0026 port \u003d\u003d 1;\ngpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_hv_disable), co_hv_disable);\ngpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c1_hv_disable), c1_hv_disable);",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "952e94850ee5dce937dadb350d3393e5535cd911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
