@@ -760,6 +760,7 @@ add_subdirectory("emul")
 add_subdirectory("fake")
 add_subdirectory("libc")
 add_subdirectory("mock")
+add_subdirectory("chip")
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 add_subdirectory_ifdef(CONFIG_HW_TEST_ON "test/hwtest")
 
