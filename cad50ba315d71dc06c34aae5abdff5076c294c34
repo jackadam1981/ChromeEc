@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69abaabd_cbefe611",
+        "filename": "zephyr/program/trulo/kaladin/usb_typec.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-07-29T02:34:43Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the binding `intersil,isl95522.yaml` in ToT. Have you created and submitted it?",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "cad50ba315d71dc06c34aae5abdff5076c294c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
