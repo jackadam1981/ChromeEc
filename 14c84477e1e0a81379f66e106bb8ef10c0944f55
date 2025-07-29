@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa9dee7_6435e31e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-29T23:27:47Z",
+      "side": 1,
+      "message": "```suggestion\nfpsensor: Add function to skip hashing the key produced by ECDH procedure\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "14c84477e1e0a81379f66e106bb8ef10c0944f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c46c797_91b57631",
+        "filename": "include/fpsensor/fpsensor_auth_crypto.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-29T23:27:47Z",
+      "side": 1,
+      "message": "```suggestion\n * Generate the ECDH shared secret from private key and public key, applying\n * KDF on the result.\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 67,
+        "endLine": 160,
+        "endChar": 18
+      },
+      "revId": "14c84477e1e0a81379f66e106bb8ef10c0944f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
