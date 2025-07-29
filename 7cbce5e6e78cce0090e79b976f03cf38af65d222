@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2eeae1_ee08ffab",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3031,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-29T21:49:45Z",
+      "side": 1,
+      "message": "Yes, it refused to break between `..._COMPAT)` and `\" PDC nod...` so I had to split the string literal later in order to fit it in \u003c\u003d80",
+      "parentUuid": "0de9beb2_c0a14349",
+      "range": {
+        "startLine": 3031,
+        "startChar": 0,
+        "endLine": 3031,
+        "endChar": 38
+      },
+      "revId": "7cbce5e6e78cce0090e79b976f03cf38af65d222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "402c7378_5d0a4907",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10facb34_80b74e0e",
+        "filename": "zephyr/include/usbc/pdc_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-29T21:49:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "402c7378_5d0a4907",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "7cbce5e6e78cce0090e79b976f03cf38af65d222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac99dcdd_6e067769",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-29T17:17:36Z",
       "side": 1,
       "message": "\"at least one port is tagged as CCD.\"",
+      "range": {
+        "startLine": 5301,
+        "startChar": 24,
+        "endLine": 5301,
+        "endChar": 57
+      },
+      "revId": "7cbce5e6e78cce0090e79b976f03cf38af65d222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea75f820_bd5a9d18",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5301,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-29T21:49:45Z",
+      "side": 1,
+      "message": "*one port is tagged as CCD",
+      "parentUuid": "ac99dcdd_6e067769",
       "range": {
         "startLine": 5301,
         "startChar": 24,
