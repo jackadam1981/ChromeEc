@@ -70,6 +70,30 @@
       },
       "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4651a52c_e8d970bc",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-29T12:31:22Z",
+      "side": 1,
+      "message": "Done. I also added appropriate test for `hmac_sha256()` in crrev.com/c/6771312",
+      "parentUuid": "45a448c5_3e6d8c55",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 37
+      },
+      "revId": "57f4b0d2d03736919faec3977117863af7c4504c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
