@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b54ef56a_5ff43ca4",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5044,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-07-29T23:34:17Z",
+      "side": 1,
+      "message": "This does need to be mentioned in this file. That was an error in the CL that introduced this config item. However, it should be off by default, so this line should be `#undef`.\n\nThe `#define` should be in `board/magma/board.h`.",
+      "revId": "4ec8388640023c366a42775c46267fae287c981e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "303111d9_6c8370ec",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
