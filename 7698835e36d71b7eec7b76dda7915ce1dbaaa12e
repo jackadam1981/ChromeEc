@@ -140,6 +140,24 @@
       "parentUuid": "bd43cca6_323bea23",
       "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb409a35_73c26427",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-29T19:17:06Z",
+      "side": 1,
+      "message": "Right, but the `break;` on line 1057 will skip past that. So do you want to change that line and remove the `break` so we still loop through the remaining sensors?",
+      "parentUuid": "283619ca_de48c535",
+      "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
