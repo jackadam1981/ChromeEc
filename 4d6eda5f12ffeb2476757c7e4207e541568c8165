@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d16b67_acfe77bc",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-29T23:23:29Z",
+      "side": 1,
+      "message": "One other thought: would it be simpler if we pass `std::span\u003cconst uint8_t\u003e` here? Then we could pass an empty span for the \"no TPM seed\" case.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 66
+      },
+      "revId": "4d6eda5f12ffeb2476757c7e4207e541568c8165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
