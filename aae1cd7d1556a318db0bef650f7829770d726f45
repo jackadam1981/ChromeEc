@@ -22,6 +22,30 @@
       },
       "revId": "aae1cd7d1556a318db0bef650f7829770d726f45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e21ed6_7d50f640",
+        "filename": "common/fpsensor/fpsensor_auth_crypto_stateless.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-29T11:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9dd8191_7edf1964",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 39
+      },
+      "revId": "aae1cd7d1556a318db0bef650f7829770d726f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
