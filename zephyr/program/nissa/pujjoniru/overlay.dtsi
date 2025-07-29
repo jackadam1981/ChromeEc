@@ -321,8 +321,8 @@
 		     &i2c5_data_gpa5_default>;
 	pinctrl-names = "default";
 
-	chg_port0: bq25710@9 {
-		compatible = "ti,bq25710";
+	chg_port0: rt9478@9 {
+		compatible = "richtek,rt9478";
 		status = "okay";
 		reg = <0x9>;
 	};
