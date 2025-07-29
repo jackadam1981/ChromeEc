@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af95c13_3a65df60",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-29T17:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ce5c33_3ca9870f",
+      "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b91fb79_231e7325",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "245405c5_bd8d6664",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-29T17:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b91fb79_231e7325",
+      "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "972a1cb6_d3c68838",
@@ -66,6 +102,24 @@
       "writtenOn": "2025-07-29T14:47:16Z",
       "side": 1,
       "message": "nit: should be\n```suggestion\ntime_diff \u003d 0;\n```",
+      "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd43cca6_323bea23",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-29T17:36:04Z",
+      "side": 1,
+      "message": "But if we change time_diff to 0 and not wait_us, then the break; right after will still have the current wait_us and we will sleep.",
+      "parentUuid": "972a1cb6_d3c68838",
       "revId": "7698835e36d71b7eec7b76dda7915ce1dbaaa12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
