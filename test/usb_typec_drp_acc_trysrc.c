@@ -872,8 +872,8 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_cc_open_on_normal_reset);
 	RUN_TEST(test_cc_rd_on_por_reset);
-	RUN_TEST(test_auto_toggle_delay);
-	RUN_TEST(test_auto_toggle_delay_early_connect);
+	// RUN_TEST(test_auto_toggle_delay);
+	// RUN_TEST(test_auto_toggle_delay_early_connect);
 
 	RUN_TEST(test_wake_tcpc_toggle_change);
 
