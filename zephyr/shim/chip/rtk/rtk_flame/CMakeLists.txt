@@ -30,7 +30,7 @@ target_include_directories(rtk_flame PRIVATE
 )
 target_include_directories(rtk_flame PRIVATE "${zephyr_includes}")
 
-target_compile_options(rtk_flame PRIVATE "${zephyr_compile_options}"
+target_compile_options(rtk_flame PRIVATE "${zephyr_compile_options};$<TARGET_PROPERTY:compiler,prohibit_lto>"
   -mthumb
   -mfpu=fpv5-sp-d16
   -std=gnu11
@@ -54,6 +54,7 @@ target_link_options(rtk_flame BEFORE PRIVATE
   -O0
   -g3
   -mthumb
+  "$<TARGET_PROPERTY:compiler,prohibit_lto>"
   -Wl,-T ${CMAKE_CURRENT_SOURCE_DIR}/spi_upload.ld
 )
 
