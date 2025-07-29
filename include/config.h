@@ -5040,6 +5040,9 @@
 /* Save power by waking up on VBUS rather than polling CC */
 #define CONFIG_USB_PD_LOW_POWER
 
+/* Event-driven CC detection */
+#undef CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE
+
 /* Allow chip to go into low power idle even when a PD device is attached */
 #undef CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED
 

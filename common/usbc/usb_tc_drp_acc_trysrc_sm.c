@@ -3448,12 +3448,10 @@ __maybe_unused static void tc_drp_auto_toggle_entry(const int port)
 	print_current_state(port);
 
 	/*
-	 * We need to ensure that we are waiting in the previous Rd or Rp state
-	 * for the minimum of DRP SNK or SRC so the first toggle cause by
-	 * transition into auto toggle doesn't violate spec timing.
+	 * We need to ensure that we transition from the previous Rd or Rp state
+	 * into auto toggle without any delay.
 	 */
-	pd_timer_enable(port, TC_TIMER_TIMEOUT,
-			MAX(PD_T_DRP_SNK, PD_T_DRP_SRC));
+	pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_AUTO_TOGGLE);
 }
 
 __maybe_unused static void tc_drp_auto_toggle_run(const int port)
