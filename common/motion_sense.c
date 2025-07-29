@@ -81,11 +81,11 @@ test_export_static int wait_us;
  * 2. We're about to wait indefinitely
  * 3. The fastest collection rate is faster than the threshold
  */
-#define DISABLE_PM_POLICY_WHILE_WAITING(fastest_collection_rate)               \
+#define DISABLE_PM_POLICY_WHILE_WAITING(wait_us_, collection_rate_)            \
 	(IS_ENABLED(                                                           \
 		 CONFIG_PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM) && \
-	 wait_us == -1 &&                                                      \
-	 fastest_collection_rate <=                                            \
+	 wait_us_ == -1 &&                                                     \
+	 collection_rate_ <=                                                   \
 		 CONFIG_PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD)
 
 STATIC_IF(CONFIG_ACCEL_SPOOF_MODE) void print_spoof_mode_status(int id);
@@ -1069,11 +1069,13 @@ void motion_sense_task(void *u)
 			wait_us = motion_min_interval;
 		}
 
-		if (DISABLE_PM_POLICY_WHILE_WAITING(fastest_collection_rate)) {
+		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
+						    fastest_collection_rate)) {
 			pm_policy_state_lock_get_all();
 		}
 		event = task_wait_event(wait_us);
-		if (DISABLE_PM_POLICY_WHILE_WAITING(fastest_collection_rate)) {
+		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
+						    fastest_collection_rate)) {
 			pm_policy_state_lock_put_all();
 		}
 	}
