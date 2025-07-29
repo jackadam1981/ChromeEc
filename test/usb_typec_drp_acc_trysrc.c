@@ -719,15 +719,10 @@ __maybe_unused static int test_auto_toggle_delay(void)
 	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_ON);
 	time = get_time().val;
 
-	/*
-	 * Ensure we do not transition to auto toggle from Rd or Rp in less time
-	 * than tDRP minimum (50 ms) * dcSRC.DRP minimum (30%) = 15 ms.
-	 * Otherwise we can confuse external partners with the first transition
-	 * to auto toggle.
-	 */
+	/* Ensure transition to auto toggle from Rd or Rp in with no delay */
 	task_wait_event(SECOND);
 	TEST_GT(mock_tcpc.first_call_to_enable_auto_toggle - time,
-		(uint64_t)15 * MSEC, "%" PRIu64);
+		(uint64_t)0 * MSEC, "%" PRIu64);
 
 	return EC_SUCCESS;
 }
