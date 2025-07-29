@@ -248,6 +248,30 @@
       },
       "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35bb85e_29bfcf9c",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-29T21:31:39Z",
+      "side": 1,
+      "message": "\u003e do we need that implementation to gate the merge of this patch?\n\nLet\u0027s go ahead and submit upstream first. Otherwise it won\u0027t ever be done.\n\nI can go ahead and create the upstream patch, since I know the upstream process.\n\nIn the meantime, if you split out the NULL pointer test into its own CL, we can go ahead and submit that one.",
+      "parentUuid": "062501c1_03f63f8d",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
