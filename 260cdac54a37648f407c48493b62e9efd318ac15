@@ -33,6 +33,24 @@
       "message": "Does it run out of space? If not, I\u0027d hesitate to enable it. LTO makes debugging challenging.",
       "revId": "260cdac54a37648f407c48493b62e9efd318ac15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc99104_2b5947eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-29T19:58:07Z",
+      "side": 1,
+      "message": "Note that we have had LTO enabled by default for our EC application for quite some time via the `CONFIG_PLATFORM_EC_LTO` option.  That option did not enable LTO on the Zephyr kernel\n\nThis change takes advantage of fixes upstream to enable LTO on the kernel files and our application code.\n\nI think it\u0027s better to enable LTO early in the project to make sure we have the maximum of test time with the shipping configuration.\nEnabling LTO only when needed runs the risk of introducing compiler bugs only after the project has run low on space and could block FW qual efforts.",
+      "parentUuid": "7c7c4fb2_cab18863",
+      "revId": "260cdac54a37648f407c48493b62e9efd318ac15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
