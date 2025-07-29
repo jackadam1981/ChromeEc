@@ -94,6 +94,30 @@
       },
       "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97514766_b6b688b7",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-29T19:12:08Z",
+      "side": 0,
+      "message": "If I back out the config_allowed.txt changes and add the below diff per your suggestion, I get the same error message listed previously when building ECOS helipilot, please let me know if I\u0027ve misunderstood. As a minore not, to get past the CQ failures, think we\u0027d be required to add the changes to get past them to this CL and not another one...unless you are thinking I keep the config_allowed changes in this CL and then back them out in the the next CL in the chain which also fixes the CQ and EC compilation failures?\n\n```\ndiff --git a/include/config.h b/include/config.h\nindex 166a27676f..d4f76aee09 100644\n--- a/include/config.h\n+++ b/include/config.h\n@@ -3792,6 +3792,9 @@\n /* Support One Time Protection structure */\n #undef CONFIG_OTP\n \n+/* Support additional key in OTP memory */\n+#undef CONFIG_OTP_KEY\n+\n```",
+      "parentUuid": "c37e7e79_4f0725c8",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
