@@ -164,6 +164,30 @@
       },
       "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426e2207_0c8395b5",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer/rwsig.dtsi",
+        "patchSetId": 31
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-29T08:37:44Z",
+      "side": 1,
+      "message": "Changing code/data split may be the only option here.\n\nAs far as I know, when RO is jumping to RW, it loads RW to SRAM basing on offsets and sizes that RO has. It means that we can\u0027t magically increase code size of RW because RO will load only part of RW.",
+      "parentUuid": "7d5c1dda_e3bc0c16",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "8216f0353426d96054f7cb7e29f491c4a4e6dd5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
