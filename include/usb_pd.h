@@ -282,9 +282,9 @@ enum pdo_augmented_pps {
 #define PD_T_ERROR_RECOVERY (240 * MSEC) /* min 240ms if sourcing VConn */
 #define PD_T_CC_DEBOUNCE (100 * MSEC) /* between 100ms and 200ms */
 /* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
-#define PD_T_DRP_SNK (40 * MSEC) /* toggle time for sink DRP */
+#define PD_T_DRP_SNK (25 * MSEC) /* toggle time for sink DRP */
 #define PD_T_DRP_SRC (30 * MSEC) /* toggle time for source DRP */
-#define PD_T_DEBOUNCE (15 * MSEC) /* between 10ms and 20ms */
+#define PD_T_DEBOUNCE (10 * MSEC) /* between 10ms and 20ms */
 #define PD_T_TRY_CC_DEBOUNCE (15 * MSEC) /* between 10ms and 20ms */
 #define PD_T_SINK_ADJ (55 * MSEC) /* between tPDDebounce and 60ms */
 #define PD_T_SRC_RECOVER (760 * MSEC) /* between 660ms and 1000ms */
