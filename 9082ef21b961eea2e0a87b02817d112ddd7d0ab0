@@ -16,6 +16,24 @@
       "message": "don\u0027t you also need:\n```\n\u0026gpio_en_slp_z {\n\tno-auto-init;\n};\n```\n\ni wonder if it makes more sense to remove the\n`en-slp-z-gpios` property from `ite_hibernate.dtsi`\nand have variants provide it.",
       "revId": "9082ef21b961eea2e0a87b02817d112ddd7d0ab0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f672fd72_ca42d2ca",
+        "filename": "zephyr/program/fatcat/felino/hibernate.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-07-29T04:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4348c8da_caf88366",
+      "revId": "9082ef21b961eea2e0a87b02817d112ddd7d0ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
