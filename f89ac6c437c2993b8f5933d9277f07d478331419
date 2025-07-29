@@ -224,6 +224,30 @@
       },
       "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062501c1_03f63f8d",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-29T21:03:12Z",
+      "side": 1,
+      "message": "@tomhughes@google.com Thanks, this compiles with the below git diff. In addition, I\u0027ve corrected/enhanced the null pointer unit test to work with or without the exception happening. This was done after confirming the null_pointer unit test trapped with the below git diff and CONFIG_NULL_POINTER_EXCEPTION_DETECTION_DWT in helipilot. The CONFIG_NULL_POINTER_EXCEPTION_DETECTION_DWT implementation is better but requires an upstream patch. I can submit that so we can enable CONFIG_NULL_POINTER_EXCEPTION_DETECTION_DWT down the road, do we need that implementation to gate the merge of this patch? \n\n```\ndiff --git a/arch/arm/core/cortex_m/prep_c.c b/arch/arm/core/cortex_m/prep_c.c\nindex 632fc142003..2aada2fec75 100644\n\n--- a/arch/arm/core/cortex_m/prep_c.c\n+++ b/arch/arm/core/cortex_m/prep_c.c\n@@ -52,6 +52,8 @@ Z_GENERIC_SECTION(.vt_pointer_section) __attribute__((used)) void *_vector_table\n #define VTOR_MASK SCB_VTOR_TBLOFF_Msk\n #endif\n \n+int z_arm_debug_enable_null_pointer_detection(void);\n+\n void __weak relocate_vector_table(void)\n {\n #ifdef CONFIG_SRAM_VECTOR_TABLE\n```",
+      "parentUuid": "4c3989fb_e67569fe",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
