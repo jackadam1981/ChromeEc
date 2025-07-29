@@ -56,6 +56,7 @@ register_npcx9_project(
     extra_kconfig_files=[
         here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
         here / ".." / "intelrvp" / "ptlrvp" / "pd.conf",
+        here / "rvp_program.conf",
     ],
 )
 
@@ -64,6 +65,7 @@ register_it8xxx2_project(
     extra_kconfig_files=[
         here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
         here / ".." / "intelrvp" / "ptlrvp" / "pd.conf",
+        here / "rvp_program.conf",
     ],
 )
 
