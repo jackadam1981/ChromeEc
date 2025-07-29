@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f2b2f5_93b8b1f5",
+        "filename": "zephyr/program/npcx_evb/npcx_monitor/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-29T17:26:33Z",
+      "side": 0,
+      "message": "this was basically there to bypass the PLATFORM_EC dependency so it\u0027s not needed anymore, the include was probably never needed",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 79
+      },
+      "revId": "3a8036c1f8f9a563c688694245d0fc0b83b50b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
