@@ -320,6 +320,30 @@
       },
       "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50761efe_90a03fc3",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-30T23:36:58Z",
+      "side": 1,
+      "message": "The null pointer test is really board agnostic, so we\u0027d be submitting/testing it against the other boards, where it should pass. We can keep it disabled on `helipilot` in that CL (see [this example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d700;drc\u003db2e822655639b194daedc95f006571d2ae5fd24a)) and then re-enable it in this CL.",
+      "parentUuid": "43dc7935_5039baa1",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
