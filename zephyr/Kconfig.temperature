@@ -14,6 +14,7 @@ if PLATFORM_EC_TEMP_SENSOR
 
 config PLATFORM_EC_TEMP_SENSOR_POWER
 	bool "Temperature sensors are not always powered on"
+	depends on !$(dt_compat_any_has_prop,cros_ec_temp_sensors,power-good-pin)
 	help
 	  If enabled, temperature sensors require enabling power rail before
 	  being read. Enabling it requires to define a pin enabling the power

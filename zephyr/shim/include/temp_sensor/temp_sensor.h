@@ -42,6 +42,12 @@ extern "C" {
 #define ANY_INST_HAS_POWER_GOOD_PIN \
 	(DT_FOREACH_CHILD(TEMP_SENSORS_NODEID, HAS_POWER_GOOD_PIN) 0)
 
+#if ANY_INST_HAS_POWER_GOOD_PIN
+BUILD_ASSERT(!IS_ENABLED(CONFIG_PLATFORM_EC_TEMP_SENSOR_POWER),
+	     "CONFIG_PLATFORM_EC_TEMP_SENSOR_POWER is redundant when "
+	     "using power-good-pin in cros-ec,temp-sensors");
+#endif /* ANY_INST_HAS_POWER_GOOD_PIN */
+
 /*
  * Get the enum temp_sensor_id value from a child node under
  * "cros-ec,temp-sensors".
