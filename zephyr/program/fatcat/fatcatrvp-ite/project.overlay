@@ -17,7 +17,15 @@ i2c3ALT: &i2c3 {
 };
 
 #include "generated.dtsi"
-#include "include/board.h"
+
+/* Power Signals */
+#define PWR_EN_PP3300_S5 &gpioi 7
+#define PWR_EN_PP5000_S5 &gpiog 1
+#define PWR_RSMRST_PWRGD &gpiof 0
+#define PWR_EC_PCH_RSMRST &gpioj 0
+#define PWR_SLP_S0 &gpioj 5
+#define PWR_PCH_PWROK &gpioj 1
+#define PWR_ALL_SYS_PWRGD &gpiod 5
 
 #define PD_POW_IRQ_GPIO &gpiof 5
 
