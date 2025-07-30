@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c832fae2_4d58d1f2",
+        "filename": "zephyr/drivers/cros_system/cros_system_xec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T19:22:52Z",
+      "side": 1,
+      "message": "Nit - make this an enum.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "cea030eb241059c3095f26a6e953ece6c0330274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
