@@ -8,7 +8,6 @@
 #
 
 cmake_minimum_required (VERSION 3.20)
-include(RTKToolChain.cmake)
 zephyr_get_include_directories_for_lang(C zephyr_includes STRIP_PREFIX)
 
 add_executable(rtk_flame)
