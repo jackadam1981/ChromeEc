@@ -460,7 +460,7 @@ static void print_current_state(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 
-	LOG_INF("DR%d: %s", cfg->connector_number,
+	LOG_INF("TI%d: %s", cfg->connector_number,
 		state_names[get_state(data)]);
 }
 
@@ -469,7 +469,7 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 	const struct pdc_config_t *cfg = data->dev->config;
 	const union cci_event_t cci = data->cci_event;
 
-	LOG_INF("C%d: CCI=0x%x", cfg->connector_number, cci.raw_value);
+	LOG_INF("TI%d: CCI=0x%x", cfg->connector_number, cci.raw_value);
 
 	/*
 	 * CC and CI events are separately reported. So, we need to call only
@@ -568,7 +568,8 @@ static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
 
 	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Failed to read auto negotiate sink register.");
+		LOG_ERR("TI%d: Failed to read auto negotiate sink register.",
+			cfg->connector_number);
 		return rv;
 	}
 
@@ -582,7 +583,8 @@ static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data)
 
 	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Failed to write auto negotiate sink register.");
+		LOG_ERR("TI%d: Failed to write auto negotiate sink register.",
+			cfg->connector_number);
 		return rv;
 	}
 
@@ -617,7 +619,8 @@ static int pdc_exit_dead_battery(struct pdc_data_t *data)
 
 	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
 	if (rv) {
-		LOG_ERR("Read boot flags failed");
+		LOG_ERR("TI%d: Read boot flags failed (%d)",
+			cfg->connector_number, rv);
 		set_state(data, ST_ERROR_RECOVERY);
 		return rv;
 	}
@@ -639,16 +642,18 @@ static int handle_irqs(struct pdc_data_t *data)
 	/* Read the pending interrupt events */
 	rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
 	if (rv) {
-		LOG_ERR("Read interrupt events failed");
+		LOG_ERR("TI%d: Read interrupt events failed (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
 	/* All raw_value data uses byte-0 for contains the register data was
 	 * written too, or read from, and byte-1 contains the length of said
 	 * data. The actual data starts at index 2. */
-	LOG_DBG("IRQ PORT %d", cfg->connector_number);
+	LOG_DBG("TI%d: IRQ", cfg->connector_number);
 	for (i = 0; i < sizeof(union reg_interrupt); i++) {
-		LOG_DBG("Byte%d: %02x", i, pdc_interrupt.raw_value[i]);
+		LOG_DBG("TI%d: Byte%d: %02x", cfg->connector_number, i,
+			pdc_interrupt.raw_value[i]);
 		if (pdc_interrupt.raw_value[i]) {
 			interrupt_pending = true;
 		}
@@ -705,7 +710,8 @@ static int handle_irqs(struct pdc_data_t *data)
 	/* Clear the pending interrupt events */
 	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Clear interrupt events failed");
+		LOG_ERR("TI%d: Clear interrupt events failed (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
@@ -758,19 +764,21 @@ static enum smf_state_result st_init_run(void *o)
 
 	/* We won't see patch_loaded is asserted while handing the IRQ later on
 	 * if boot from dead battery as it is cleared here. */
-	if (tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE)) {
-		LOG_ERR("Clear patch_loaded bit failed.");
+	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("TI%d: Clear patch_loaded bit failed (%d)",
+			cfg->connector_number, rv);
 	}
 
 	/* Pre-fetch PDC chip info and save it in the driver struct */
 	rv = cmd_get_ic_status_sync_internal(cfg, &data->info);
 	if (rv) {
-		LOG_ERR("DR%d: Cannot obtain initial chip info (%d)",
+		LOG_ERR("TI%d: Cannot obtain initial chip info (%d)",
 			cfg->connector_number, rv);
 		goto error;
 	}
 
-	LOG_INF("DR%d: FW Version %u.%u.%u, config='%s' (flash=%d)",
+	LOG_INF("TI%d: FW Version %u.%u.%u, config='%s' (flash=%d)",
 		cfg->connector_number,
 		PDC_FWVER_GET_MAJOR(data->info.fw_version),
 		PDC_FWVER_GET_MINOR(data->info.fw_version),
@@ -787,22 +795,26 @@ static enum smf_state_result st_init_run(void *o)
 	/* Setup I2C1 interrupt mask for this port */
 	rv = pdc_interrupt_mask_init(data);
 	if (rv < 0) {
-		LOG_ERR("Write interrupt mask failed");
+		LOG_ERR("TI%d: Write interrupt mask failed (%d)",
+			cfg->connector_number, rv);
 		goto error;
 	}
 	rv = pdc_autonegotiate_sink_reset(data);
 	if (rv < 0) {
-		LOG_ERR("Reset autonegotiate_sink reg failed");
+		LOG_ERR("TI%d: Reset autonegotiate_sink reg failed (%d)",
+			cfg->connector_number, rv);
 		goto error;
 	}
 	rv = pdc_port_control_init(data);
 	if (rv < 0) {
-		LOG_ERR("Write port control failed");
+		LOG_ERR("TI%d: Write port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error;
 	}
 	rv = pdc_exit_dead_battery(data);
 	if (rv < 0) {
-		LOG_ERR("Clear dead battery flag failed");
+		LOG_ERR("TI%d: Clear dead battery flag failed (%d)",
+			cfg->connector_number, rv);
 		goto error;
 	}
 
@@ -1067,7 +1079,8 @@ static void cmd_set_drp_mode(struct pdc_data_t *data)
 	rv = tps_rw_port_configuration(&cfg->i2c, &pdc_port_configuration,
 				       I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Read port configuration failed");
+		LOG_ERR("TI%d: Read port configuration failed (%d)",
+			cfg->connector_number, rv);
 		set_state(data, ST_ERROR_RECOVERY);
 		return;
 	}
@@ -1079,7 +1092,7 @@ static void cmd_set_drp_mode(struct pdc_data_t *data)
 		pdc_port_configuration.typec_support_options = data->drp_mode;
 		break;
 	default:
-		LOG_ERR("Unsupported DRP mode");
+		LOG_ERR("TI%d: Unsupported DRP mode", cfg->connector_number);
 		set_state(data, ST_IDLE);
 		return;
 	}
@@ -1088,7 +1101,8 @@ static void cmd_set_drp_mode(struct pdc_data_t *data)
 	rv = tps_rw_port_configuration(&cfg->i2c, &pdc_port_configuration,
 				       I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Write port configuration failed");
+		LOG_ERR("TI%d: Write port configuration failed (%d)",
+			cfg->connector_number, rv);
 		set_state(data, ST_ERROR_RECOVERY);
 		return;
 	}
@@ -1112,7 +1126,8 @@ static void cmd_set_drs(struct pdc_data_t *data)
 	/* Read PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Read port control failed");
+		LOG_ERR("TI%d: Read port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1151,7 +1166,8 @@ static void cmd_set_drs(struct pdc_data_t *data)
 	/* Write PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Write port control failed");
+		LOG_ERR("TI%d: Write port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1200,7 +1216,8 @@ static void cmd_set_tpc_rp(struct pdc_data_t *data)
 	/* Read PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Read port control failed");
+		LOG_ERR("TI%d: Read port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1209,7 +1226,8 @@ static void cmd_set_tpc_rp(struct pdc_data_t *data)
 	/* Write PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Write port control failed");
+		LOG_ERR("TI%d: Write port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1235,17 +1253,20 @@ static void cmd_set_frs(struct pdc_data_t *data)
 	/* Read PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Read port control failed");
+		LOG_ERR("TI%d: Read port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
-	LOG_INF("SET FRS %d", data->fast_role_swap);
+	LOG_INF("TI%d: SET FRS %d", cfg->connector_number,
+		data->fast_role_swap);
 	pdc_port_control.fr_swap_enabled = data->fast_role_swap;
 
 	/* Write PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Write port control failed");
+		LOG_ERR("TI%d: Write port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1270,13 +1291,15 @@ static void cmd_get_rdo(struct pdc_data_t *data)
 	int rv;
 
 	if (data->user_buf == NULL) {
-		LOG_ERR("Null buffer; can't read RDO");
+		LOG_ERR("TI%d: Null buffer; can't read RDO",
+			cfg->connector_number);
 		goto error_recovery;
 	}
 
 	rv = tps_rd_active_rdo_contract(&cfg->i2c, &active_rdo_contract);
 	if (rv) {
-		LOG_ERR("Failed to read active RDO");
+		LOG_ERR("TI%d: Failed to read active RDO (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1304,13 +1327,15 @@ static void cmd_get_current_pdo(struct pdc_data_t *data)
 	int rv;
 
 	if (data->user_buf == NULL) {
-		LOG_ERR("Null buffer; can't read PDO");
+		LOG_ERR("TI%d: Null buffer; can't read PDO",
+			cfg->connector_number);
 		goto error_recovery;
 	}
 
 	rv = tps_rd_active_pdo_contract(&cfg->i2c, &active_pdo_contract);
 	if (rv) {
-		LOG_ERR("Failed to read active PDO");
+		LOG_ERR("TI%d: Failed to read active PDO (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1337,7 +1362,8 @@ static void cmd_update_retimer(struct pdc_data_t *data)
 	/* Read PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Read port control failed");
+		LOG_ERR("TI%d: Read port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1346,7 +1372,8 @@ static void cmd_update_retimer(struct pdc_data_t *data)
 	/* Write PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Write port control failed");
+		LOG_ERR("TI%d: Write port control failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1373,7 +1400,8 @@ static void cmd_is_vconn_sourcing(struct pdc_data_t *data)
 
 	rv = tps_rd_power_path_status(&cfg->i2c, &pdc_power_path_status);
 	if (rv) {
-		LOG_ERR("Failed to power path status");
+		LOG_ERR("TI%d: Failed to power path status (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 	ext_vconn_sw = is_first_port_on_chip(data) ?
@@ -1411,7 +1439,8 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 
 	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Failed to read auto negotiate sink register.");
+		LOG_ERR("TI%d: Failed to read auto negotiate sink register (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1455,7 +1484,8 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 
 	rv = tps_rw_autonegotiate_sink(&cfg->i2c, &an_snk, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Failed to write auto negotiate sink register.");
+		LOG_ERR("TI%d: Failed to write auto negotiate sink register (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1477,19 +1507,21 @@ static void cmd_get_vdo(struct pdc_data_t *data)
 		rv = tps_rd_received_sop_identity_data_object(
 			&cfg->i2c, &received_identity_data_object);
 		if (rv) {
-			LOG_ERR("Failed to read partner identity ACK");
+			LOG_ERR("TI%d: Failed to read partner identity ACK (%d)",
+				cfg->connector_number, rv);
 			goto error_recovery;
 		}
 	} else if (data->vdo_req.vdo_origin == VDO_ORIGIN_SOP_PRIME) {
 		rv = tps_rd_received_sop_prime_identity_data_object(
 			&cfg->i2c, &received_identity_data_object);
 		if (rv) {
-			LOG_ERR("Failed to read cable identity ACK");
+			LOG_ERR("TI%d: Failed to read cable identity ACK (%d)",
+				cfg->connector_number, rv);
 			goto error_recovery;
 		}
 	} else {
 		/* Unsupported */
-		LOG_ERR("Unsupported VDO origin");
+		LOG_ERR("TI%d: Unsupported VDO origin", cfg->connector_number);
 		goto error_recovery;
 	}
 
@@ -1533,19 +1565,21 @@ static void cmd_get_identity_discovery(struct pdc_data_t *data)
 		rv = tps_rd_received_sop_identity_data_object(
 			&cfg->i2c, &received_identity_data_object);
 		if (rv) {
-			LOG_ERR("Failed to read partner VDO");
+			LOG_ERR("TI%d: Failed to read partner VDO (%d)",
+				cfg->connector_number, rv);
 			goto error_recovery;
 		}
 	} else if (data->vdo_req.vdo_origin == VDO_ORIGIN_SOP_PRIME) {
 		rv = tps_rd_received_sop_prime_identity_data_object(
 			&cfg->i2c, &received_identity_data_object);
 		if (rv) {
-			LOG_ERR("Failed to read cable VDO");
+			LOG_ERR("TI%d: Failed to read cable VDO (%d)",
+				cfg->connector_number, rv);
 			goto error_recovery;
 		}
 	} else {
 		/* Unsupported */
-		LOG_ERR("Unsupported VDO origin");
+		LOG_ERR("TI%d: Unsupported VDO origin", cfg->connector_number);
 		goto error_recovery;
 	}
 
@@ -1588,25 +1622,29 @@ static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 
 	rv = tps_rd_version(&cfg->i2c, &version);
 	if (rv) {
-		LOG_ERR("Failed to read version");
+		LOG_ERR("TI%d: Failed to read version (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
 	rv = tps_rw_customer_use(&cfg->i2c, &customer_val, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Failed to read customer register");
+		LOG_ERR("TI%d: Failed to read customer register (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
 	rv = tps_rw_tx_identity(&cfg->i2c, &tx_identity, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Failed to read Tx identity");
+		LOG_ERR("TI%d: Failed to read Tx identity (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
 	rv = tps_rd_mode(&cfg->i2c, &mode_reg);
 	if (rv) {
-		LOG_ERR("Failed to read mode");
+		LOG_ERR("TI%d: Failed to read mode (%d)", cfg->connector_number,
+			rv);
 		return rv;
 	}
 
@@ -1667,7 +1705,8 @@ static void cmd_get_ic_status(struct pdc_data_t *data)
 
 	rv = cmd_get_ic_status_sync_internal(cfg, info);
 	if (rv) {
-		LOG_ERR("Could not get chip info (%d)", rv);
+		LOG_ERR("TI%d: Could not get chip info (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1695,13 +1734,15 @@ static void cmd_get_pdc_data_status_reg(struct pdc_data_t *data)
 	int rv;
 
 	if (data->user_buf == NULL) {
-		LOG_ERR("Null user buffer; can't read data status reg");
+		LOG_ERR("TI%d: Null user buffer; can't read data status reg",
+			cfg->connector_number);
 		goto error_recovery;
 	}
 
 	rv = tps_rd_data_status_reg(&cfg->i2c, &data_status);
 	if (rv) {
-		LOG_ERR("Failed to read data status reg (%d)", rv);
+		LOG_ERR("TI%d: Failed to read data status reg (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1729,7 +1770,8 @@ static void cmd_get_sbu_mux_mode(struct pdc_data_t *data)
 
 	rv = tps_rd_status_reg(&cfg->i2c, &status);
 	if (rv) {
-		LOG_ERR("Failed to read status reg (%d)", rv);
+		LOG_ERR("TI%d: Failed to read status reg (%d)",
+			cfg->connector_number, rv);
 		*mode = PDC_SBU_MUX_MODE_INVALID;
 		goto error_recovery;
 	}
@@ -1757,7 +1799,8 @@ static void cmd_set_sx_app_config(struct pdc_data_t *data)
 	/* Read PDC sx app config */
 	rv = tps_rw_sx_app_config(&cfg->i2c, &pdc_sx_app_config, I2C_MSG_READ);
 	if (rv) {
-		LOG_ERR("Read sx app config failed");
+		LOG_ERR("TI%d: Read sx app config failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1767,7 +1810,8 @@ static void cmd_set_sx_app_config(struct pdc_data_t *data)
 	/* Write PDC sx app config */
 	rv = tps_rw_sx_app_config(&cfg->i2c, &pdc_sx_app_config, I2C_MSG_WRITE);
 	if (rv) {
-		LOG_ERR("Write sx app config failed");
+		LOG_ERR("TI%d: Write sx app config failed (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1833,7 +1877,8 @@ static void task_srdy(struct pdc_data_t *data)
 
 	rv = tps_rd_power_path_status(&cfg->i2c, &pdc_power_path_status);
 	if (rv) {
-		LOG_ERR("Failed to power path status");
+		LOG_ERR("TI%d: Failed to power path status (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -1879,7 +1924,8 @@ static void task_srdy(struct pdc_data_t *data)
 	}
 
 	if (rv) {
-		LOG_ERR("Failed to write command");
+		LOG_ERR("TI%d: Failed to write command (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -2044,7 +2090,8 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 
 	rv = write_task_cmd(cfg, COMMAND_TASK_UCSI, &cmd_data);
 	if (rv) {
-		LOG_ERR("Failed to write command");
+		LOG_ERR("TI%d: Failed to write UCSI command 0x%02x (%d)",
+			cfg->connector_number, ucsi_command, rv);
 		set_state(data, ST_ERROR_RECOVERY);
 		return;
 	}
@@ -2099,7 +2146,8 @@ static enum smf_state_result st_task_wait_run(void *o)
 	rv = tps_rw_command_for_i2c1(&cfg->i2c, &cmd, I2C_MSG_READ);
 	if (rv) {
 		/* I2C transaction failed */
-		LOG_ERR("Failed to read command");
+		LOG_ERR("TI%d: Failed to read command (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -2109,8 +2157,8 @@ static enum smf_state_result st_task_wait_run(void *o)
 	 *  2) command is set to "!CMD" for unknown command
 	 */
 	if (cmd.command && cmd.command != COMMAND_TASK_NO_COMMAND) {
-		LOG_INF("Data not ready, check again in %d ms",
-			PDC_TI_DATA_READY_TIME_MS);
+		LOG_INF("TI%d: Data not ready, check again in %d ms",
+			cfg->connector_number, PDC_TI_DATA_READY_TIME_MS);
 		k_work_reschedule(&data->data_ready,
 				  K_MSEC(PDC_TI_DATA_READY_TIME_MS));
 		return SMF_EVENT_HANDLED;
@@ -2124,7 +2172,8 @@ static enum smf_state_result st_task_wait_run(void *o)
 	rv = tps_rw_data_for_cmd1(&cfg->i2c, &cmd_data, I2C_MSG_READ);
 	if (rv) {
 		/* I2C transaction failed */
-		LOG_ERR("Failed to read command");
+		LOG_ERR("TI%d: Failed to read command (%d)",
+			cfg->connector_number, rv);
 		goto error_recovery;
 	}
 
@@ -2132,9 +2181,11 @@ static enum smf_state_result st_task_wait_run(void *o)
 	if (cmd.command || cmd_data.data[0] != 0) {
 		/* Command has completed with error */
 		if (cmd.command == COMMAND_TASK_NO_COMMAND) {
-			LOG_DBG("Command %d not supported", data->cmd);
+			LOG_DBG("TI%d: Command %d not supported",
+				cfg->connector_number, data->cmd);
 		} else {
-			LOG_DBG("Command %d failed. Err : %d", data->cmd,
+			LOG_DBG("TI%d: Command %d failed. Err : %d",
+				cfg->connector_number, data->cmd,
 				cmd_data.data[0]);
 		}
 		data->cci_event.error = 1;
@@ -2404,6 +2455,7 @@ static int tps_set_power_level(const struct device *dev,
 			       enum usb_typec_current_t tcc)
 {
 	struct pdc_data_t *data = dev->data;
+	const struct pdc_config_t *cfg = data->dev->config;
 
 	/* Sanitize and convert input */
 	switch (tcc) {
@@ -2418,7 +2470,8 @@ static int tps_set_power_level(const struct device *dev,
 		break;
 	case TC_CURRENT_PPM_DEFINED:
 	default:
-		LOG_ERR("Unsupported type: %u", tcc);
+		LOG_ERR("TI%d: Unsupported Type-C current: %u",
+			cfg->connector_number, tcc);
 		return -EINVAL;
 	}
 
@@ -2576,7 +2629,7 @@ static int tps_get_info(const struct device *dev, struct pdc_info_t *info,
 		*info = data->info;
 		k_mutex_unlock(&data->mtx);
 
-		LOG_DBG("DR%d: Use cached chip info (%u.%u.%u)",
+		LOG_DBG("TI%d: Use cached chip info (%u.%u.%u)",
 			cfg->connector_number,
 			PDC_FWVER_GET_MAJOR(data->info.fw_version),
 			PDC_FWVER_GET_MINOR(data->info.fw_version),
@@ -2682,7 +2735,8 @@ static int tps_get_current_flash_bank(const struct device *dev, uint8_t *bank)
 
 	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
 	if (rv) {
-		LOG_ERR("Read boot flags failed");
+		LOG_ERR("TI%d: Read boot flags failed (%d)",
+			cfg->connector_number, rv);
 		*bank = 0xff;
 		return rv;
 	}
@@ -2909,13 +2963,15 @@ static int pdc_init(const struct device *dev)
 
 	rv = i2c_is_ready_dt(&cfg->i2c);
 	if (rv < 0) {
-		LOG_ERR("device %s not ready", cfg->i2c.bus->name);
+		LOG_ERR("TI%d: device %s not ready", cfg->connector_number,
+			cfg->i2c.bus->name);
 		return -ENODEV;
 	}
 
 	rv = gpio_is_ready_dt(&cfg->irq_gpios);
 	if (rv < 0) {
-		LOG_ERR("device %s not ready", cfg->irq_gpios.port->name);
+		LOG_ERR("TI%d: device %s not ready", cfg->connector_number,
+			cfg->irq_gpios.port->name);
 		return -ENODEV;
 	}
 
@@ -2932,7 +2988,8 @@ static int pdc_init(const struct device *dev)
 
 	rv = gpio_pin_configure_dt(&cfg->irq_gpios, GPIO_INPUT);
 	if (rv < 0) {
-		LOG_ERR("Unable to configure GPIO");
+		LOG_ERR("TI%d: Unable to configure GPIO (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
@@ -2941,14 +2998,16 @@ static int pdc_init(const struct device *dev)
 
 	rv = gpio_add_callback(cfg->irq_gpios.port, &data->gpio_cb);
 	if (rv < 0) {
-		LOG_ERR("Unable to add callback");
+		LOG_ERR("TI%d: Unable to add callback (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
 	rv = gpio_pin_interrupt_configure_dt(&cfg->irq_gpios,
 					     GPIO_INT_EDGE_FALLING);
 	if (rv < 0) {
-		LOG_ERR("Unable to configure interrupt");
+		LOG_ERR("TI%d: Unable to configure interrupt (%d)",
+			cfg->connector_number, rv);
 		return rv;
 	}
 
@@ -2961,7 +3020,8 @@ static int pdc_init(const struct device *dev)
 	/* Trigger an interrupt on startup */
 	k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
 
-	LOG_INF("TI TPS6699X PDC DRIVER FOR PORT %d", cfg->connector_number);
+	LOG_INF("TI%d: TI TPS6699X PDC driver instantiated",
+		cfg->connector_number);
 
 	return 0;
 }
@@ -2989,7 +3049,8 @@ static void tps_check_and_notify_irq(void)
 
 		for (int i = 0; i < sizeof(union reg_interrupt); i++) {
 			if (pdc_interrupt.raw_value[i]) {
-				LOG_DBG("C%d pending interrupt detected", port);
+				LOG_DBG("TI%d: pending interrupt detected",
+					port);
 				k_event_post(&data->pdc_event, PDC_IRQ_EVENT);
 				break;
 			}
@@ -3009,9 +3070,8 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		/* Wait for event to handle */
 		data->events = k_event_wait(&data->pdc_event, PDC_ALL_EVENTS,
 					    false, K_FOREVER);
-		LOG_INF("tps_thread[%d][%s]: events=0x%X",
-			cfg->connector_number, state_names[get_state(data)],
-			data->events);
+		LOG_INF("TI%d: state=%s events=0x%X", cfg->connector_number,
+			state_names[get_state(data)], data->events);
 
 		k_event_clear(&data->pdc_event, PDC_INTERNAL_EVENT);
 
