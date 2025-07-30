@@ -296,6 +296,30 @@
       },
       "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43dc7935_5039baa1",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-30T04:16:48Z",
+      "side": 1,
+      "message": "Thanks for submitting the upstream patch. What would you think about submitting this patch with NULL pointer exception detection disabled and a TODO to a bug that depends on the upstream patch to enable CONFIG_NULL_POINTER_EXCEPTION_DETECTION_DWT? While this CL passes verification without any changes to helipilot prj.conf, that is because we use the mock OTP in the unit test and that avoids triggering the MPU fault and this [issue](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6619373/comment/f221ccee_2fa3ec45/) which prevents the otp_key functions from being executed in the application. My concern is that if we submit the CL as suggested, just the null pointer test on its own, either executing the unit test on HW or fixing the application issue will trigger the MPU fault",
+      "parentUuid": "b35bb85e_29bfcf9c",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "f89ac6c437c2993b8f5933d9277f07d478331419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
