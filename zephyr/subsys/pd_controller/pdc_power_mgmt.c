@@ -12,6 +12,7 @@
 #define DT_DRV_COMPAT named_usbc_port
 
 #include "battery.h"
+#include "battery_smart.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "drivers/ucsi_v3.h"
@@ -212,6 +213,10 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_AP_POWER_STATE,
 	/** CMD_PDC_SET_BBR_CTS */
 	CMD_PDC_SET_BBR_CTS,
+	/** CMD_PDC_SET_BATTERY_STATUS */
+	CMD_PDC_SET_BATTERY_STATUS,
+	/** CMD_PDC_SET_BATTERY_CAPABILITY*/
+	CMD_PDC_SET_BATTERY_CAPABILITY,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -437,6 +442,8 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_SBU_MUX_MODE] = "PDC_SET_SBU_MUX_MODE",
 	[CMD_PDC_SET_AP_POWER_STATE] = "PDC_SET_AP_POWER_STATE",
 	[CMD_PDC_SET_BBR_CTS] = "PDC_SET_BBR_CTS",
+	[CMD_PDC_SET_BATTERY_STATUS] = "PDC_SET_BATTERY_STATUS",
+	[CMD_PDC_SET_BATTERY_CAPABILITY] = "PDC_SET_BATTERY_CAPABILITY",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -537,6 +544,10 @@ enum policy_snk_attached_t {
 	SNK_POLICY_UPDATE_FRS,
 	/** TypeC sink only */
 	SNK_POLICY_UPDATE_TYPEC_CURRENT,
+	/** Update battery status */
+	SNK_POLICY_UPDATE_BATTERY_STATUS,
+	/** Update battery capability */
+	SNK_POLICY_UPDATE_BATTERY_CAPABILITY,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -634,6 +645,10 @@ enum policy_src_attached_t {
 	SRC_POLICY_GET_RDO,
 	/** Triggers an update of the allow_pr_swap bit in CMD_SET_DRP */
 	SRC_POLICY_UPDATE_ALLOW_PR_SWAP,
+	/** Update battery status */
+	SRC_POLICY_UPDATE_BATTERY_STATUS,
+	/** Update battery capability */
+	SRC_POLICY_UPDATE_BATTERY_CAPABILITY,
 
 	/** SRC_POLICY_COUNT */
 	SRC_POLICY_COUNT
@@ -827,6 +842,10 @@ struct pdc_port_t {
 	pdc_power_mgmt_board_dp_attention_cb board_dp_attention_cb;
 	/** CMD_SET_BBR_CTS temp variable to communicate the desired state */
 	bool bbr_cts_enable;
+	/** Battery status */
+	union battery_status_t bstat;
+	/** Battery capability */
+	union battery_capability_t bcap;
 };
 
 /**
@@ -913,6 +932,9 @@ static void pd_chipset_startup(void);
 static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
 static void pd_chipset_shutdown(void);
+
+static void pdc_update_battery_status(int port);
+static void pdc_update_battery_capability(int port);
 
 static bool should_suspend(struct pdc_port_t *port)
 {
@@ -1662,6 +1684,17 @@ static void run_snk_policies(struct pdc_port_t *port)
 
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_BATTERY_STATUS)) {
+		/* Update the PDC with the correct battery status. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_STATUS);
+		return;
+	} else if (atomic_test_and_clear_bit(
+			   port->snk_policy.flags,
+			   SNK_POLICY_UPDATE_BATTERY_CAPABILITY)) {
+		/* Update the PDC with the correct battery capabilities. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_CAPABILITY);
+		return;
 	}
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS)) {
@@ -1824,6 +1857,17 @@ static void run_src_policies(struct pdc_port_t *port)
 			port->src_policy.accept_power_role_swap;
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_UPDATE_BATTERY_STATUS)) {
+		/* Update the PDC with the correct battery status. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_STATUS);
+		return;
+	} else if (atomic_test_and_clear_bit(
+			   port->snk_policy.flags,
+			   SRC_POLICY_UPDATE_BATTERY_CAPABILITY)) {
+		/* Update the PDC with the correct battery capabilities. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_CAPABILITY);
+		return;
 	}
 
 	send_pending_public_commands(port);
@@ -1973,6 +2017,10 @@ static void pdc_src_attached_entry(void *obj)
 		}
 	}
 
+	/* Update the PDC with the correct battery status. */
+	pdc_update_battery_capability(port_number);
+	pdc_update_battery_status(port_number);
+
 	/* Clear a piece of sink policy as it is no longer relevant in the
 	 * sourcing state.
 	 */
@@ -2071,6 +2119,7 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 static void pdc_snk_attached_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	int port_number = port->dev->config->connector_num;
 
 	print_current_pdc_state(port);
 	set_attached_pdc_state(port, SNK_ATTACHED_STATE);
@@ -2097,6 +2146,10 @@ static void pdc_snk_attached_entry(void *obj)
 				pdc_power_mgmt_pd_get_polarity(port_number));
 		}
 	}
+
+	/* Update the PDC with the correct battery status. */
+	pdc_update_battery_capability(port_number);
+	pdc_update_battery_status(port_number);
 }
 
 static void pdc_print_pdo_info(int port, struct pdc_pdos_t *pdo)
@@ -2700,6 +2753,12 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_SET_BBR_CTS:
 		rv = pdc_set_bbr_cts(port->pdc, port->bbr_cts_enable);
+		break;
+	case CMD_PDC_SET_BATTERY_STATUS:
+		rv = pdc_set_battery_status(port->pdc, &port->bstat);
+		break;
+	case CMD_PDC_SET_BATTERY_CAPABILITY:
+		rv = pdc_set_battery_capability(port->pdc, &port->bcap);
 		break;
 	default:
 		LOG_ERR("Invalid command: %d", port->cmd->cmd);
@@ -4405,6 +4464,141 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, pd_chipset_shutdown,
 #else
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
 #endif
+
+static void pdc_battery_status_changed(void)
+{
+	for (int port = 0; port < CONFIG_USBC_PORT_COUNT; port++) {
+		pdc_update_battery_status(port);
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pdc_battery_status_changed,
+	     HOOK_PRIO_DEFAULT);
+
+static void pdc_update_battery_status(int port)
+{
+	union battery_status_t bsdo = { 0 };
+
+	if (battery_is_present()) {
+		uint32_t v;
+		uint32_t c;
+
+		if (battery_design_voltage(&v) != 0 ||
+		    battery_remaining_capacity(&c) != 0) {
+			bsdo.present_capacity = BSDO_CAP_UNKNOWN;
+		} else {
+			/*
+			 * Wh = (c * v) / 1000000
+			 * 10th of a Wh = Wh * 10
+			 */
+			bsdo.present_capacity =
+				DIV_ROUND_NEAREST((c * v), 100000);
+		}
+
+		/* Battery is present */
+		bsdo.battery_present = 1;
+
+		/*
+		 * For drivers that are not smart battery compliant,
+		 * battery_status() returns EC_ERROR_UNIMPLEMENTED and
+		 * the battery is assumed to be idle.
+		 */
+		if (battery_status(&c) != 0) {
+			/* Assume idle if battery status is not available. */
+			bsdo.battery_state = BSDO_BATTERY_STATE_IDLE;
+		} else {
+			if (c & STATUS_FULLY_CHARGED) {
+				/* Fully charged */
+				bsdo.battery_state = BSDO_BATTERY_STATE_IDLE;
+			} else if (c & STATUS_DISCHARGING) {
+				/* Discharging */
+				bsdo.battery_state =
+					BSDO_BATTERY_STATE_DISCHARGING;
+			} else {
+				/* Else battery is charging.*/
+				bsdo.battery_state =
+					BSDO_BATTERY_STATE_CHARGING;
+			}
+		}
+	} else {
+		bsdo.present_capacity = BSDO_CAP_UNKNOWN;
+	}
+
+	pdc_data[port]->port.bstat = bsdo;
+	if (pdc_power_mgmt_is_sink_connected(port)) {
+		atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+			       SNK_POLICY_UPDATE_BATTERY_STATUS);
+	} else if (pdc_power_mgmt_is_source_connected(port)) {
+		atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+			       SRC_POLICY_UPDATE_BATTERY_STATUS);
+	}
+}
+
+static void pdc_update_battery_capability(int port)
+{
+	union battery_capability_t bcdb = { 0 };
+
+	/* TODO: Replace with proper VID:PID API */
+	/* Set VID */
+	bcdb.vid = CONFIG_PLATFORM_EC_USB_VID;
+
+	/* Set PID */
+	bcdb.pid = CONFIG_PLATFORM_EC_USB_PID;
+
+	if (battery_is_present()) {
+		uint32_t v;
+		uint32_t c;
+
+		/*
+		 * The Battery Design Capacity field shall return the
+		 * Battery’s design capacity in tenths of Wh. If the
+		 * Battery is Hot Swappable and is not present, the
+		 * Battery Design Capacity field shall be set to 0. If
+		 * the Battery is unable to report its Design Capacity,
+		 * it shall return 0xFFFF
+		 */
+		bcdb.design_capacity = 0xffff;
+
+		/*
+		 * The Battery Last Full Charge Capacity field shall
+		 * return the Battery’s last full charge capacity in
+		 * tenths of Wh. If the Battery is Hot Swappable and
+		 * is not present, the Battery Last Full Charge Capacity
+		 * field shall be set to 0. If the Battery is unable to
+		 * report its Design Capacity, the Battery Last Full
+		 * Charge Capacity field shall be set to 0xFFFF.
+		 */
+		bcdb.last_full_charge_capacity = 0xffff;
+
+		if (battery_design_voltage(&v) == 0) {
+			if (battery_design_capacity(&c) == 0) {
+				/*
+				 * Wh = (c * v) / 1000000
+				 * 10th of a Wh = Wh * 10
+				 */
+				bcdb.design_capacity =
+					DIV_ROUND_NEAREST((c * v), 100000);
+			}
+
+			if (battery_full_charge_capacity(&c) == 0) {
+				/*
+				 * Wh = (c * v) / 1000000
+				 * 10th of a Wh = Wh * 10
+				 */
+				bcdb.last_full_charge_capacity =
+					DIV_ROUND_NEAREST((c * v), 100000);
+			}
+		}
+	}
+
+	pdc_data[port]->port.bcap = bcdb;
+	if (pdc_power_mgmt_is_sink_connected(port)) {
+		atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+			       SNK_POLICY_UPDATE_BATTERY_CAPABILITY);
+	} else if (pdc_power_mgmt_is_source_connected(port)) {
+		atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+			       SRC_POLICY_UPDATE_BATTERY_CAPABILITY);
+	}
+}
 
 test_mockable int pdc_power_mgmt_get_drp_mode(int port,
 					      enum drp_mode_t *drp_mode)
