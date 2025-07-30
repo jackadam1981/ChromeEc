@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a21b5b9d_5c705f43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-07-30T18:51:14Z",
+      "side": 1,
+      "message": "probably...I didn\u0027t realize this never got merged back in March. I don\u0027t want to try to merge it now as we are close to our Alpha milestone and I don\u0027t want to introduce that variance. I will update it post alpha and get it landed.",
+      "parentUuid": "5f48826c_2a1c2a1f",
+      "revId": "0e7af0b7029afe486f20210369acf0a7c4b30fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c464f586_fccdf9fe",
         "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
         "patchSetId": 6
