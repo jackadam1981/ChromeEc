@@ -16,6 +16,24 @@
       "message": "Are these public-facing APIs PDC console commands? I\u0027m wondering if it makes more sense to update [cmd_get_pd_port](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/subsys/pd_controller/pdc_console.c#20), so the queries in [cmd_pdc_get_status](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/subsys/pd_controller/pdc_console.c#33) bails out earlier instead of possibly dumping an error code.",
       "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfeb53f7_995c2c5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-30T19:32:20Z",
+      "side": 1,
+      "message": "Many of these functions are called by console commands. We do a good job at checking the port argument from the shell and printing a shell error message (including `pdc status`), but pdc_power_mgmt should still be defensive as its public API can be called from anywhere, especially as we support variable port count boards.",
+      "parentUuid": "4b0601c5_9adec331",
+      "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
