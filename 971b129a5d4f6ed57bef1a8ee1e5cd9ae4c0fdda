@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "800d3b71_eacd9803",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T12:19:04Z",
+      "side": 1,
+      "message": "You should also run \n```cros workon --host start zephyr-npcx-monitor \u0026\u0026 sudo ebuild zephyr-npcx-monitor`",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "971b129a5d4f6ed57bef1a8ee1e5cd9ae4c0fdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fcdde8ab_0688a024",
@@ -55,6 +78,30 @@
       "side": 1,
       "message": "no strong opinion, would rather keep this compact then create a full hierarchy, it\u0027s not like we\u0027ll have more than a handful for these\n\nthat said, is there a good reason not to upstream these?",
       "parentUuid": "fec1e73d_8b89f74b",
+      "range": {
+        "startLine": 763,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 24
+      },
+      "revId": "971b129a5d4f6ed57bef1a8ee1e5cd9ae4c0fdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3faca46b_11fd1fa6",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T12:19:04Z",
+      "side": 1,
+      "message": "These probably should be upstream.  `chip` is fine.",
+      "parentUuid": "b1c2a38d_fd3315f1",
       "range": {
         "startLine": 763,
         "startChar": 0,
