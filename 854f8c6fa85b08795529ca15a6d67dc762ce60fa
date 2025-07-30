@@ -104,6 +104,24 @@
       "parentUuid": "6bc5fd20_9f179b7a",
       "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0441fae_5a1282ff",
+        "filename": "zephyr/program/ocelot/ocelot-ish/motionsense.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-30T17:15:25Z",
+      "side": 1,
+      "message": "Hi @deepti.deshatty@intel.corp-partner.google.com and @honscheid@google.com ...Do you mean to have only two config file ....one which is common and placed inside ocelot-ish/ as project.conf file and the other one is having project specific config ( including motion sensor configs ) and placed inside ocelot-ish/ocelotrvp-ish/ as prj.conf. Please confirm on this.",
+      "parentUuid": "a899a9f4_4cb316c2",
+      "revId": "854f8c6fa85b08795529ca15a6d67dc762ce60fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

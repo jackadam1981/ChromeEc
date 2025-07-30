@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1e85f9_889b2a0e",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-30T17:15:25Z",
+      "side": 1,
+      "message": "Thanks, I am working on changes to enable dsp-comm.",
+      "parentUuid": "0380087c_49423f5f",
+      "revId": "1bd88d4ab81f9043951f2c3bd2032d55dd02be85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db6514ee_d99a5f3a",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-25T17:02:52Z",
       "side": 1,
       "message": "You should also enable DSP comms, See uldrenite for the server side and uldrenite-ish for the client side.",
+      "revId": "1bd88d4ab81f9043951f2c3bd2032d55dd02be85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71382916_92ac5f6a",
+        "filename": "zephyr/program/ocelot/ocelot-ish/ocelotrvp-ish/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-07-30T17:15:25Z",
+      "side": 1,
+      "message": "Sure Yuval, I am working on changes to enable dsp-comm.",
+      "parentUuid": "db6514ee_d99a5f3a",
       "revId": "1bd88d4ab81f9043951f2c3bd2032d55dd02be85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
