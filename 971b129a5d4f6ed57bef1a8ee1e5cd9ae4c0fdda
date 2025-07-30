@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e288b31_506c0a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-30T12:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800d3b71_eacd9803",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "971b129a5d4f6ed57bef1a8ee1e5cd9ae4c0fdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fcdde8ab_0688a024",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "These probably should be upstream.  `chip` is fine.",
       "parentUuid": "b1c2a38d_fd3315f1",
+      "range": {
+        "startLine": 763,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 24
+      },
+      "revId": "971b129a5d4f6ed57bef1a8ee1e5cd9ae4c0fdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41efabca_8db3a33f",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-30T12:58:31Z",
+      "side": 1,
+      "message": "ok let\u0027s keep it as a followup",
+      "parentUuid": "3faca46b_11fd1fa6",
       "range": {
         "startLine": 763,
         "startChar": 0,
