@@ -55,6 +55,7 @@ i2c3ALT: &i2c3 {
 #include "hibernate.dtsi"
 #include "i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
+#include "../rvp_keyboard.dtsi"
 #include "keyboard.dtsi"
 #include "pwm.dtsi"
 #include "temp_sensors.dtsi"
