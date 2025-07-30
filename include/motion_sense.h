@@ -358,7 +358,7 @@ bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 #define MAX_MOTION_SENSORS (SENSOR_COUNT)
 #endif
 #define ALL_MOTION_SENSORS                                \
-	((int)(MOTION_SENSE_ACTIVITY_SENSOR_ID) ==        \
+	((int)(MOTION_SENSE_ACTIVITY_SENSOR_ID) !=        \
 			 MOTION_SENSE_INVALID_SENSOR_ID ? \
 		 motion_sensor_count + 1 :                \
 		 motion_sensor_count)
