@@ -118,6 +118,30 @@
       },
       "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15283ff2_54f7476a",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-07-30T04:08:57Z",
+      "side": 0,
+      "message": "Update: This looks like this could be symptomatic of a deeper issue. I\u0027ve found that this [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/rollback.c;l\u003d380) in rollback_add_entropy doesn\u0027t execute behind\\\n\"if (IS_ENABLED(CONFIG_OTP_KEY)) {\"\\\nin the Zephyr helipilot image. This remains true if the style is changed to\\\n\"#if defined(CONFIG_OTP_KEY)\"\\\n, even though the appropriate CONFIG is enabled in the build output (log below). Debugging further.\n```\n~/chromiumos/src/platform/ec/build/zephyr/helipilot$ grep -rI CONFIG_OTP_KEY *\nbuild-ro/zephyr/include/generated/zephyr/autoconf.h:#define CONFIG_OTP_KEY 1\nbuild-ro/zephyr/.config:CONFIG_OTP_KEY\u003dy\nbuild-ro/zephyr/misc/generated/configs.c:GEN_ABSOLUTE_SYM_KCONFIG(CONFIG_OTP_KEY, 1);\nbuild-rw/zephyr/include/generated/zephyr/autoconf.h:#define CONFIG_OTP_KEY 1\nbuild-rw/zephyr/.config:CONFIG_OTP_KEY\u003dy\nbuild-rw/zephyr/misc/generated/configs.c:GEN_ABSOLUTE_SYM_KCONFIG(CONFIG_OTP_KEY, 1);\noutput/ec.config:CONFIG_OTP_KEY\u003dy\n\n```",
+      "parentUuid": "97514766_b6b688b7",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
