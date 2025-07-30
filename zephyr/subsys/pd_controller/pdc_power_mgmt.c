@@ -2178,6 +2178,7 @@ static void
 pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
 			      struct pdc_snk_attached_policy_t *snk_policy)
 {
+	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t max_ma, max_mv, max_mw, max_mw_pdo, unused;
 	uint32_t flags = RDO_COMM_CAP;
 
@@ -2209,8 +2210,9 @@ pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
 			RDO_FIXED(snk_policy->pdo_index, max_ma, max_ma, flags);
 	}
 
-	LOG_INF("Send RDO: %d, battery_is_present=%d",
-		RDO_POS(snk_policy->rdo_to_send), battery_is_present());
+	LOG_INF("C%d: Send RDO: %d, battery_is_present=%d",
+		config->connector_num, RDO_POS(snk_policy->rdo_to_send),
+		battery_is_present());
 	queue_internal_cmd(port, CMD_PDC_SET_RDO);
 }
 
@@ -2354,9 +2356,9 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	return true;
 }
 
-bool pdc_is_rdo_valid(const union connector_status_t *cs)
+static bool pdc_is_rdo_valid(const union connector_status_t *cs)
 {
-	LOG_INF("IS_RDO_VALID: status=%d, power_op_mode=%d, RDO_POS=%d",
+	LOG_INF("%s: status=%d, power_op_mode=%d, RDO_POS=%d", __func__,
 		cs->connect_status, cs->power_operation_mode, RDO_POS(cs->rdo));
 
 	return (cs->connect_status == 1 &&
@@ -2795,13 +2797,15 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_set_bbr_cts(port->pdc, port->bbr_cts_enable);
 		break;
 	default:
-		LOG_ERR("Invalid command: %d", port->cmd->cmd);
+		LOG_ERR("C%d: Invalid command: %d", config->connector_num,
+			port->cmd->cmd);
 		return -EIO;
 	}
 
 	if (rv) {
-		LOG_DBG("Unable to send command: %s rv=%d",
-			pdc_cmd_names[port->cmd->cmd], rv);
+		LOG_DBG("C%d: Unable to send command: %s rv=%d",
+			config->connector_num, pdc_cmd_names[port->cmd->cmd],
+			rv);
 	}
 
 	return rv;
@@ -2810,12 +2814,14 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 static enum smf_state_result pdc_send_cmd_start_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *const config = port->dev->config;
 	int rv;
 
 	rv = send_pdc_cmd(port);
 	if (rv) {
-		LOG_DBG("Unable to send command: %s, rv=%d",
-			pdc_cmd_names[port->cmd->cmd], rv);
+		LOG_DBG("C%d: Unable to send command: %s, rv=%d",
+			config->connector_num, pdc_cmd_names[port->cmd->cmd],
+			rv);
 	}
 
 	/*
@@ -2831,8 +2837,8 @@ static enum smf_state_result pdc_send_cmd_start_run(void *obj)
 
 	/* Command not implemented, no need to retry, return immediately */
 	if (rv == -ENOSYS) {
-		LOG_INF("Command (%s) not implemented",
-			pdc_cmd_names[port->cmd->cmd]);
+		LOG_INF("C%d: Command (%s) not implemented",
+			config->connector_num, pdc_cmd_names[port->cmd->cmd]);
 		port->cmd->error = -ENOSYS;
 		port->cmd->pending = false;
 		set_pdc_state(port, port->send_cmd_return_state);
@@ -2844,7 +2850,8 @@ static enum smf_state_result pdc_send_cmd_start_run(void *obj)
 		port->send_cmd.wait_counter++;
 		if (port->send_cmd.wait_counter > WAIT_MAX) {
 			/* Could not send command: TODO handle error */
-			LOG_INF("Command (%s) retry timeout",
+			LOG_INF("C%d: Command (%s) retry timeout",
+				config->connector_num,
 				pdc_cmd_names[port->cmd->cmd]);
 			port->cmd->error = rv;
 			port->cmd->pending = false;
@@ -2869,6 +2876,7 @@ static void pdc_send_cmd_wait_entry(void *obj)
 static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *const config = port->dev->config;
 
 	/* Wait for command status notification from driver */
 
@@ -2884,9 +2892,9 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 			return SMF_EVENT_HANDLED;
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_BUSY)) {
-		LOG_DBG("CCI_BUSY");
+		LOG_DBG("C%d: CCI_BUSY", config->connector_num);
 	} else if (atomic_test_and_clear_bit(port->cci_flags, CCI_ERROR)) {
-		LOG_DBG("CCI_ERROR");
+		LOG_DBG("C%d: CCI_ERROR", config->connector_num);
 		/* The PDC may set both error and complete bit */
 		atomic_clear_bit(port->cci_flags, CCI_CMD_COMPLETED);
 
@@ -2910,7 +2918,8 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 				port->send_cmd.resend_counter++;
 			}
 		} else {
-			LOG_ERR("%s resend attempts exceeded!",
+			LOG_ERR("C%d: %s resend attempts exceeded!",
+				config->connector_num,
 				pdc_cmd_names[port->cmd->cmd]);
 			port->cmd->error = -EBUSY;
 			set_pdc_state(port, port->send_cmd_return_state);
@@ -2918,7 +2927,7 @@ static enum smf_state_result pdc_send_cmd_wait_run(void *obj)
 		}
 	} else if (atomic_test_and_clear_bit(port->cci_flags,
 					     CCI_CMD_COMPLETED)) {
-		LOG_DBG("CCI_CMD_COMPLETED");
+		LOG_DBG("C%d: CCI_CMD_COMPLETED", config->connector_num);
 
 		switch (port->cmd->cmd) {
 		case CMD_PDC_GET_CONNECTOR_STATUS:
@@ -3630,7 +3639,8 @@ static int pdc_subsys_init(const struct device *dev)
 	port->ci_cb.handler = pdc_ci_handler_cb;
 	rv = pdc_add_ci_callback(port->pdc, &port->ci_cb);
 	if (rv)
-		LOG_ERR("Failed to add CI callback (%d)", rv);
+		LOG_ERR("C%d: Failed to add CI callback (%d)",
+			config->connector_num, rv);
 
 	/* Initialize state machine run event */
 	k_event_init(&port->sm_event);
@@ -3776,7 +3786,7 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	}
 
 	if (public_cmd->error) {
-		LOG_ERR("Public API command %s not sent, err=%d",
+		LOG_ERR("C%d: Public API command %s not sent, err=%d", port,
 			pdc_cmd_names[public_cmd->cmd], public_cmd->error);
 		return public_cmd->error;
 	}
@@ -3881,7 +3891,8 @@ int pdc_power_mgmt_set_new_power_request(int port)
 	if (!pdc_power_mgmt_is_sink_connected(port)) {
 		return -ENOTCONN;
 	}
-	LOG_INF("%s: port=%d", __func__, port);
+
+	LOG_INF("C%d: New power request", port);
 
 	atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
 		       SNK_POLICY_NEW_POWER_REQUEST);
@@ -4012,10 +4023,20 @@ static int pdc_power_mgmt_request_data_swap_intern(int port,
 
 test_mockable void pdc_power_mgmt_request_data_swap(int port)
 {
-	if (pdc_power_mgmt_pd_get_data_role(port) == PD_ROLE_DFP) {
+	enum pd_data_role data_role = pdc_power_mgmt_pd_get_data_role(port);
+
+	switch (data_role) {
+	case PD_ROLE_DFP:
+		LOG_INF("C%d: Attempt data role swap from DFP to UFP", port);
 		pdc_power_mgmt_request_data_swap_intern(port, PD_ROLE_UFP);
-	} else if (pdc_power_mgmt_pd_get_data_role(port) == PD_ROLE_UFP) {
+		break;
+	case PD_ROLE_UFP:
+		LOG_INF("C%d: Attempt data role swap from UFP to DFP", port);
 		pdc_power_mgmt_request_data_swap_intern(port, PD_ROLE_DFP);
+		break;
+	default:
+		LOG_ERR("C%d: Cannot data role swap: port is disconnected or invalid",
+			port);
 	}
 }
 
@@ -4024,8 +4045,12 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
+		LOG_ERR("C%d: Cannot swap power role: port disconnected", port);
 		return 1;
 	}
+
+	LOG_INF("C%d: Attempt power role swap to %s", port,
+		(role == PD_ROLE_SINK ? "sink" : "source"));
 
 	/* Set PR accept swap policy */
 	if (role == PD_ROLE_SOURCE) {
@@ -4443,7 +4468,7 @@ test_mockable int pdc_power_mgmt_set_trysrc(int port, bool enable)
 		return -ERANGE;
 	}
 
-	LOG_INF("PD setting TrySrc=%d", enable);
+	LOG_INF("C%d: PD setting TrySrc=%d", port, enable);
 
 	pdc_data[port]->port.drp = (enable ? DRP_TRY_SRC : DRP_NORMAL);
 
@@ -4483,7 +4508,7 @@ static void pd_chipset_resume(void)
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
 			  PDC_POWER_STATE_DEBOUNCE_S);
 
-	LOG_INF("PD:S3->S0");
+	LOG_INF("PD: S3->S0");
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -4492,7 +4517,7 @@ static void pd_chipset_suspend(void)
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
 			  PDC_POWER_STATE_DEBOUNCE_S);
 
-	LOG_INF("PD:S0->S3");
+	LOG_INF("PD: S0->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -4501,7 +4526,7 @@ static void pd_chipset_startup(void)
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
 			  PDC_POWER_STATE_DEBOUNCE_S);
 
-	LOG_INF("PD:S5->S3");
+	LOG_INF("PD: S5->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -4510,7 +4535,7 @@ static void pd_chipset_shutdown(void)
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
 			  PDC_POWER_STATE_DEBOUNCE_S);
 
-	LOG_INF("PD:S3->S5");
+	LOG_INF("PD: S3->S5");
 }
 #ifdef CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, pd_chipset_shutdown,
@@ -5027,6 +5052,8 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port)
 
 void pdc_power_mgmt_set_max_voltage(unsigned int mv)
 {
+	LOG_INF("PD: New maximum voltage: %dmV", mv);
+
 	pdc_max_request_mv = mv;
 }
 
@@ -5037,12 +5064,21 @@ test_mockable unsigned int pdc_power_mgmt_get_max_voltage(void)
 
 test_mockable void pdc_power_mgmt_request_source_voltage(int port, int mv)
 {
+	if (!is_pdc_port_valid(port)) {
+		LOG_ERR("%s: Invalid port parameter %d", __func__, port);
+		return;
+	}
+
 	pdc_power_mgmt_set_max_voltage(mv);
 
 	if (pdc_power_mgmt_is_sink_connected(port)) {
 		pdc_power_mgmt_set_new_power_request(port);
-	} else {
+	} else if (pdc_power_mgmt_is_source_connected(port)) {
 		pdc_power_mgmt_request_swap_to_snk(port);
+	} else {
+		LOG_ERR("C%d: Port is disconnected. New source voltage "
+			"will take effect on next connection",
+			port);
 	}
 }
 
@@ -5461,4 +5497,4 @@ bool pdc_power_mgmt_is_pd_attached(int port)
 }
 /* LCOV_EXCL_STOP */
 
-#endif
+#endif /* CONFIG_ZTEST */
