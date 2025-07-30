@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4f98c8_697b2993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-30T13:37:21Z",
+      "side": 1,
+      "message": "The code looks good. Waiting for confirmation that Zephyr RW can be booted from EC RO.",
+      "revId": "964e03859abcb25f91b238ec6934f78c2d8b6312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54f39db_718bc234",
+        "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
+        "patchSetId": 34
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-30T13:37:21Z",
+      "side": 1,
+      "message": "Thinking about code/data split once again.\n\nI wrongly assumed that you want to increase code size, but your intention is to increase data size (decrease code size). I think it would be very hacky, but it could work if you change code/data split to 256/252 and NOT change anything in binman and rwsig.\n\nWhy I think it would work:\n- If you set smaller size for code (in `flash0` node), but keep 320kB `EC_RW` size, then the RW binary will have 256kB size and binman should pad remaining 64kB with 0xFF.\n- The signature will be placed at correct offset.\n- RWSIG should also work, because it takes RW size from signature, and checks if the unused and unverified space between RW and the signature is 0xFF.\n\nAgain this is very hacky and depends on many implementation details. If you decide to implement this, please do it in a separate CL.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "964e03859abcb25f91b238ec6934f78c2d8b6312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
