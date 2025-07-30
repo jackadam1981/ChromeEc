@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4f788b_0ed435aa",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-07-30T17:52:45Z",
+      "side": 1,
+      "message": "Hi Abe, here is my understanding on the unit test to be written.\n\n1. As we can meet 5v/100mA so first connect the partner emulator with 5V/100mA sink caps. which I added here.\n2. To check the received sink caps match with initial sink caps, which is doing already in this file, do we need to check it again?\n3. Change the partner\u0027s sink caps so that they ask for more than 3A, similar to first step, how to implement this?",
+      "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
