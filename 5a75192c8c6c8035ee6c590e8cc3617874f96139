@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad23368_e11b964c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "This is looking better.  Note that you also need to create some unit tests for this new functionality.  Existing tests for this module are located [here](https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/zephyr/test/pdc/)",
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0458c606_1512643e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "Do we need to update battery status when the DUT is acting as a source on the connection?",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26356eeb_8770958d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "These routines update the battery cap/status on both ports.  I don\u0027t think you want that.\n\nYou should change these routines to pass in a `struct pdc_port` parameter and only update the specified port.",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2021,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7162c047_f63e8357",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "This should only update one port.",
+      "range": {
+        "startLine": 2148,
+        "startChar": 0,
+        "endLine": 2150,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc6cf6a5_0149fc0a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4499,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "Always use `{}` around all conditional blocks, even 1 line blocks.",
+      "range": {
+        "startLine": 4499,
+        "startChar": 0,
+        "endLine": 4499,
+        "endChar": 32
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb5e9f9_dd61c5d8",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4519,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "This indentation isn\u0027t correct.  Please make sure you are running the pre-submit checks which should catch this.",
+      "range": {
+        "startLine": 4516,
+        "startChar": 0,
+        "endLine": 4519,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f55e8ec_1e392dc7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4528,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:41:16Z",
+      "side": 1,
+      "message": "You should create a separate function for responding the battery change hook.\n\n```\npdc_battery_status_changed()\n{\n    for (port in pdc_ports) {\n        pdc_update_battery_status(port);\n        pdc_update_battery_capability(port);\n}\n```",
+      "range": {
+        "startLine": 4525,
+        "startChar": 0,
+        "endLine": 4528,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
