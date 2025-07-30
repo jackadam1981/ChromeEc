@@ -4068,6 +4068,10 @@ test_mockable void pdc_power_mgmt_request_power_swap(int port)
 
 test_mockable enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port)
 {
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
 	if (pdc_data[port]->port.connector_status.orientation) {
 		return POLARITY_CC2;
 	}
@@ -4250,6 +4254,10 @@ test_mockable int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo)
 		return -EINVAL;
 	}
 
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
 	/* Make sure port is sink connected and in the run sub-state */
 	if (!(pdc_data[port]->port.attached_state == SNK_ATTACHED_STATE &&
 	      pdc_data[port]->port.snk_attached_local_state ==
@@ -4403,6 +4411,10 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 				       SNK_POLICY_SWAP_TO_SRC);
 		}
 		break;
+	default:
+		LOG_INF("C%d: Invalid dual-role state %d. Ignoring.", port,
+			state);
+		return;
 	}
 
 	/* Trigger updates to the power role swap allow bit */
@@ -4416,6 +4428,10 @@ test_mockable void pdc_power_mgmt_set_dual_role(int port,
 
 test_mockable enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port)
 {
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
 
 	return port_data->dual_role_state;
@@ -4423,6 +4439,10 @@ test_mockable enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port)
 
 test_mockable int pdc_power_mgmt_set_trysrc(int port, bool enable)
 {
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
 	LOG_INF("PD setting TrySrc=%d", enable);
 
 	pdc_data[port]->port.drp = (enable ? DRP_TRY_SRC : DRP_NORMAL);
@@ -4586,6 +4606,10 @@ test_mockable int pdc_power_mgmt_get_lpm_ppm_info(int port,
 int pdc_power_mgmt_get_hw_config(int port,
 				 struct pdc_hw_config_t *pdc_hw_config)
 {
+	if (!is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
 	/* This operation is handled synchronously within the driver based on
 	 * compile-time data. No need to block or go through the state machine.
 	 */
@@ -5359,6 +5383,8 @@ test_mockable int pdc_power_mgmt_set_bbr_cts(int port, bool enable)
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)
 {
+	__ASSERT(is_pdc_port_valid(port), "Invalid USB-C port");
+
 	LOG_INF("RPZ SRC %d",
 		pdc_data[port]->port.snk_typec_attached_local_state);
 	return pdc_data[port]->port.snk_typec_attached_local_state ==
@@ -5367,6 +5393,8 @@ bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)
 
 bool test_pdc_power_mgmt_is_src_typec_attached_run(int port)
 {
+	__ASSERT(is_pdc_port_valid(port), "Invalid USB-C port");
+
 	LOG_INF("RPZ SRC %d",
 		pdc_data[port]->port.src_typec_attached_local_state);
 	return pdc_data[port]->port.src_typec_attached_local_state ==
@@ -5415,6 +5443,8 @@ bool pdc_power_mgmt_test_wait_unattached(void)
 /* LCOV_EXCL_START */
 bool pdc_power_mgmt_is_pd_attached(int port)
 {
+	__ASSERT(is_pdc_port_valid(port), "Invalid USB-C port");
+
 	if ((pdc_data[port]->port.attached_state == SNK_ATTACHED_STATE) &&
 	    (pdc_data[port]->port.snk_attached_local_state ==
 	     SNK_ATTACHED_RUN)) {
