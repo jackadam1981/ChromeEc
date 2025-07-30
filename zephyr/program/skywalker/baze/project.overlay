@@ -12,6 +12,7 @@
 #include "../ite_usbc.dtsi"
 #include "../power_signal.dtsi"
 #include "../usba.dtsi"
+#include "cbi.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
 #include "motionsense.dtsi"
@@ -25,12 +26,38 @@
 
 	named-gpios {
 		/delete-node/ ec_kso_02_inv;
+		/delete-node/ en_pp5000_z1;
+
+		gpio_edp_bl_en_3v3: edp_bl_en_3v3 {
+			gpios = <&gpiob 6 GPIO_INPUT>;
+		};
+		gpio_ec_tchscr_report_en: ec_tchscr_report_en {
+			gpios = <&gpioh 3 GPIO_OUTPUT>;
+		};
 	};
 
 	gpio-interrupts {
 		int_imu: ec-imu {
 			handler = "bma4xx_interrupt";
 		};
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			<&gpiob 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpiog 3 GPIO_OUTPUT_HIGH>,
+			<&gpiog 4 GPIO_OUTPUT_HIGH>,
+			<&gpiog 5 GPIO_OUTPUT_HIGH>,
+			<&gpiog 7 GPIO_OUTPUT_HIGH>,
+			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 1 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
+			<&gpioj 2 GPIO_INPUT_PULL_DOWN>;
 	};
 
 	cros-keyscan {
