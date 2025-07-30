@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefcad6d_d076a1db",
+        "filename": "zephyr/boards/google/npcx9/npcx9_npcx9m7f.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:13:10Z",
+      "side": 1,
+      "message": "Is this the size of each image, or the total size of flash?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "996000d19b283c50e316361e9b4889e212e87671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6793e4_bbc7fc42",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-07-30T15:13:10Z",
+      "side": 1,
+      "message": "I think this is only 63KB because of space reserved by the bootrom.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "996000d19b283c50e316361e9b4889e212e87671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
