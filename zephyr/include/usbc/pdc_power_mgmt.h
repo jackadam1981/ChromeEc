@@ -101,12 +101,14 @@ uint8_t pdc_power_mgmt_get_usb_pd_port_count(void);
 int pdc_power_mgmt_set_active_charge_port(int charge_port);
 
 /**
- * @brief Get CC polarity of the port
+ * @brief Get CC polarity of the port. Note: the result may not be valid if the
+ *        port is not connected.
  *
  * @param port USB-C port number
  *
- * @retval (POLARITY_CC1 or POLARITY_CC1_DTS) for non-flipped connection or
- * (POLARITY_CC2 or POLARITY_CC2_DTS)
+ * @retval POLARITY_CC1 for non-flipped connection
+ * @retval POLARITY_CC2 for flipped connection
+ * @retval -ERANGE if the port is invalid.
  */
 enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port);
 
@@ -296,7 +298,10 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port);
  *
  * @param port USB-C port number
  * @param rdo Output parameter for RDO object
- * @retval 0 on success, -EINVAL if \p rdo is NULL, -ENODATA if not sinking.
+ * @retval 0 on success
+ * @retval -ERANGE if \p port is invalid
+ * @retval -EINVAL if \p rdo is NULL
+ * @retval -ENODATA if not sinking.
  */
 int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo);
 
@@ -329,7 +334,8 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state);
  * @brief Get the previously set dual role state
  *
  * @param port USB-C port number
- * @return most recently-set dual role state, or -1 if never set.
+ * @return most recently-set dual role state
+ * @return -ERANGE if \p port is invalid
  */
 enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port);
 
@@ -610,11 +616,23 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable);
  * @brief Enable/Disable PDC TrySRC on a port
  *
  * @param port USB-C port number
- * @param enable enable or disable TrySRC on port
+ * @param enable enable or disable TrySRC on port. True sets DRP_TRY_SRC and
+ *        false sets DRP_NORMAL
  *
- * @retval 0 if successful or error code
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
  */
 int pdc_power_mgmt_set_trysrc(int port, bool enable);
+
+/**
+ * @brief Query current dual-role power (DRP) setting
+ *
+ * @param port USB-C port number
+ * @param drp_mode output param for DRP mode enum
+ *
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
+ */
 int pdc_power_mgmt_get_drp_mode(int port, enum drp_mode_t *drp_mode);
 
 /*
@@ -633,7 +651,8 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status);
  * @param port USB-C port number
  * @param info Pointer to user-supplied output location for response
  *
- * @retval 0 if successful or error code
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
  */
 int pdc_power_mgmt_get_lpm_ppm_info(int port, struct lpm_ppm_info_t *info);
 

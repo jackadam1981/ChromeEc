@@ -550,8 +550,30 @@ ZTEST_USER(pdc_power_mgmt_api_connectionless, test_get_pch_data_status)
 
 ZTEST_USER(pdc_power_mgmt_api_connectionless, test_set_trysrc)
 {
+	enum drp_mode_t drp_mode = 0;
+
 	LOG_INF("Sending SET DRP");
+
+	zassert_equal(-ERANGE, pdc_power_mgmt_set_trysrc(
+				       CONFIG_USB_PD_PORT_MAX_COUNT, true));
+
+	/* Enable TrySrc */
 	zassert_ok(pdc_power_mgmt_set_trysrc(TEST_PORT, true));
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	zassert_ok(emul_pdc_get_drp_mode(emul, &drp_mode));
+
+	zassert_equal(DRP_TRY_SRC, drp_mode);
+
+	/* Disable TrySrc */
+	zassert_ok(pdc_power_mgmt_set_trysrc(TEST_PORT, false));
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	zassert_ok(emul_pdc_get_drp_mode(emul, &drp_mode));
+
+	zassert_equal(DRP_NORMAL, drp_mode);
 }
 
 ZTEST_USER(pdc_power_mgmt_api_connectionless, test_get_drp)
@@ -566,6 +588,10 @@ ZTEST_USER(pdc_power_mgmt_api_connectionless, test_get_lpm_ppm_info)
 {
 	struct lpm_ppm_info_t lpm_ppm_info;
 	int rv;
+
+	zassert_equal(-ERANGE,
+		      pdc_power_mgmt_get_lpm_ppm_info(
+			      CONFIG_USB_PD_PORT_MAX_COUNT, &lpm_ppm_info));
 
 	LOG_INF("Sending GET LPM PPM INFO");
 	rv = pdc_power_mgmt_get_lpm_ppm_info(TEST_PORT, &lpm_ppm_info);
@@ -1350,6 +1376,19 @@ ZTEST_USER(pdc_power_mgmt_api, test_set_dual_role)
 				      test[i].e.cc_mode, ccom);
 		}
 	}
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_get_dual_role)
+{
+	/* The normal path for pdc_power_mgmt_get_dual_role() is tested in the
+	 * above test, pdc_power_mgmt_api::test_set_dual_role by calling into
+	 * a shimmed function.
+	 *
+	 * This test checks the error paths of pdc_power_mgmt_get_dual_role()
+	 */
+
+	zassert_equal(-ERANGE, pdc_power_mgmt_get_dual_role(
+				       CONFIG_USB_PD_PORT_MAX_COUNT));
 }
 
 ZTEST_USER(pdc_power_mgmt_api, test_chipset_suspend)
@@ -2493,10 +2532,52 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_rdo_errors)
 
 	uint32_t rdo;
 
+	zassert_equal(-ERANGE, pdc_power_mgmt_get_rdo(
+				       CONFIG_USB_PD_PORT_MAX_COUNT, &rdo));
 	zassert_equal(-EINVAL, pdc_power_mgmt_get_rdo(TEST_PORT, NULL));
 	zassert_equal(-ENODATA, pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
 }
 #endif
+
+ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_pd_get_polarity)
+{
+	union connector_status_t connector_status = { 0 };
+	const uint32_t pdos_up[] = {
+		PDO_FIXED(5000, 3000, 0),
+	};
+
+	clear_partner_pdos(emul, SOURCE_PDO);
+
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos_up),
+			  PARTNER_PDO, pdos_up);
+
+	/* Invalid port number */
+	zassert_equal(-ERANGE, pdc_power_mgmt_pd_get_polarity(
+				       CONFIG_USB_PD_PORT_MAX_COUNT));
+
+	/* Connect a port partner with CC1 polarity */
+	connector_status.orientation = 0;
+
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	zassert_equal(POLARITY_CC1, pdc_power_mgmt_pd_get_polarity(TEST_PORT));
+
+	emul_pdc_disconnect(emul);
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	/* Repeat with CC2 polarity */
+	connector_status.orientation = 1;
+
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	zassert_equal(POLARITY_CC2, pdc_power_mgmt_pd_get_polarity(TEST_PORT));
+}
 
 /*
  * Suspended PDC - These tests take place with the PDC Power Mgmt subsystem
