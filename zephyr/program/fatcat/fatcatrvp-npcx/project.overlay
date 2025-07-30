@@ -16,6 +16,7 @@
 #include "fan.dtsi"
 #include "gpios.dtsi"
 #include "i2c.dtsi"
+#include "keyboard.dtsi"
 #include "temp_sensors.dtsi"
 
 #include "../rvp_interrupts.dtsi"
@@ -36,7 +37,6 @@
 #include "../../intelrvp/ptlrvp/battery.dtsi"
 #include "../../intelrvp/ptlrvp/ioex_gpio.dtsi"
 #include "../../intelrvp/ptlrvp/ptlrvp_npcx/psl.dtsi"
-#include "../../intelrvp/ptlrvp/ptlrvp_npcx/keyboard.dtsi"
 #include "../../intelrvp/ptlrvp/pd.dtsi"
 #include "../../intelrvp/ptlrvp/usbc.dtsi"
 
