@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab049671_cf39b3b6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-30T23:51:53Z",
+      "side": 1,
+      "message": "They would be fine as if nothing is connected only the struct would be updated - but it will be cleaner if they handle specific port.\n\nInstead of the struct I will pass `int port` as all other functions in this file do.",
+      "parentUuid": "26356eeb_8770958d",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2021,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7162c047_f63e8357",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 23
@@ -101,6 +125,30 @@
       "writtenOn": "2025-07-30T15:41:16Z",
       "side": 1,
       "message": "This should only update one port.",
+      "range": {
+        "startLine": 2148,
+        "startChar": 0,
+        "endLine": 2150,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bf32e5_131211b3",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-30T23:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7162c047_f63e8357",
       "range": {
         "startLine": 2148,
         "startChar": 0,
@@ -124,6 +172,54 @@
       "writtenOn": "2025-07-30T15:41:16Z",
       "side": 1,
       "message": "Always use `{}` around all conditional blocks, even 1 line blocks.",
+      "range": {
+        "startLine": 4499,
+        "startChar": 0,
+        "endLine": 4499,
+        "endChar": 32
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb4ef6c_d254b75a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4499,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-30T23:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6cf6a5_0149fc0a",
+      "range": {
+        "startLine": 4499,
+        "startChar": 0,
+        "endLine": 4499,
+        "endChar": 32
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68118d16_8d60cf86",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4499,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-30T23:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6cf6a5_0149fc0a",
       "range": {
         "startLine": 4499,
         "startChar": 0,
@@ -170,6 +266,54 @@
       "writtenOn": "2025-07-30T15:41:16Z",
       "side": 1,
       "message": "You should create a separate function for responding the battery change hook.\n\n```\npdc_battery_status_changed()\n{\n    for (port in pdc_ports) {\n        pdc_update_battery_status(port);\n        pdc_update_battery_capability(port);\n}\n```",
+      "range": {
+        "startLine": 4525,
+        "startChar": 0,
+        "endLine": 4528,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c76283a_18c05965",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4528,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-30T23:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f55e8ec_1e392dc7",
+      "range": {
+        "startLine": 4525,
+        "startChar": 0,
+        "endLine": 4528,
+        "endChar": 0
+      },
+      "revId": "5a75192c8c6c8035ee6c590e8cc3617874f96139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17d30fd_27b1a288",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 4528,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-07-30T23:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f55e8ec_1e392dc7",
       "range": {
         "startLine": 4525,
         "startChar": 0,
