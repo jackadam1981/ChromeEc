@@ -52,5 +52,30 @@
 				default;
 			};
 		};
+
+				/*
+		 * FW_CONFIG field to enable fan or not.
+		 */
+		typec {
+			enum-name = "TYPEC";
+			start = <0>;
+			size = <2>;
+
+			realtek_5452 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "REALTEK_5452";
+				value = <0>;
+			};
+			ti_66993 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "TI_66993";
+				value = <1>;
+				/*
+				 * Set as default so that unprovisioned
+				 * configs will run the fan regardless.
+				 */
+				default;
+			};
+		};
 	};
 };
