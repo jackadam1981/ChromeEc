@@ -39,6 +39,30 @@
       },
       "revId": "971b129a5d4f6ed57bef1a8ee1e5cd9ae4c0fdda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c2a38d_fd3315f1",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-07-30T10:36:25Z",
+      "side": 1,
+      "message": "no strong opinion, would rather keep this compact then create a full hierarchy, it\u0027s not like we\u0027ll have more than a handful for these\n\nthat said, is there a good reason not to upstream these?",
+      "parentUuid": "fec1e73d_8b89f74b",
+      "range": {
+        "startLine": 763,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 24
+      },
+      "revId": "971b129a5d4f6ed57bef1a8ee1e5cd9ae4c0fdda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
