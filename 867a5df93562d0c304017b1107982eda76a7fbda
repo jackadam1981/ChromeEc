@@ -52,6 +52,24 @@
       "parentUuid": "bfeb53f7_995c2c5d",
       "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdd9f64_6b64e499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-07-31T02:13:24Z",
+      "side": 1,
+      "message": "I hit send too quickly, actually the state will indicate `PDC DISABLED` for this scenario",
+      "parentUuid": "328e8645_c72b226f",
+      "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
