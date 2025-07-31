@@ -5,8 +5,11 @@
 description: |
   Keyboard matrix device GPIO column drive
 
-  This can be used to handle a specific keyboard matrix column using a GPIO.
+  This can be used to handle specific keyboard matrix columns using GPIOs.
   Instantiate as a child node of the keyboard matrix device itself.
+
+  The 'col-num', 'col-gpios', and 'settle-time-us' properties must all have
+  the same number of elements.
 
   Example configuration:
 
@@ -16,6 +19,7 @@ description: |
           compatible = "cros-ec,col-gpio";
           col-num = <2>;
           col-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+          settle-time-us = <30>;
       };
   };
 
@@ -25,18 +29,18 @@ include: base.yaml
 
 properties:
   col-num:
-    type: int
+    type: array
     required: true
-    description: Column number to handle
+    description: Array of column numbers to handle
 
   col-gpios:
     type: phandle-array
     required: true
-    description: GPIO to use to handle the column
+    description: Array of GPIOs to use to handle the corresponding columns
 
   settle-time-us:
-    type: int
-    default: 30
+    type: array
+    required: true
     description: |
-      Extra delay after changing the column state, note that this adds up to
-      the parent device settle-time-us.
+      Array of extra delays after changing the column state, note that this
+      adds up to the parent device settle-time-us.
