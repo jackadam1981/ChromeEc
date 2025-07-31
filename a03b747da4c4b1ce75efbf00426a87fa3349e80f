@@ -87,6 +87,24 @@
       "parentUuid": "937f85a4_fe459f9c",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c752f95_1c9e6969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-31T22:33:53Z",
+      "side": 1,
+      "message": "even with those 2 changes combined, I cannot establish host communication after flashing a zephyr helipilot firmware on an omniknight device",
+      "parentUuid": "2ee6431a_747b2247",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
