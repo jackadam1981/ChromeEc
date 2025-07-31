@@ -38,6 +38,12 @@ config BOARD_BAZE
 	  Build Google Baze board. Skywalker has MediaTek SoC
 	  with ITE IT82002 EC.
 
+config BOARD_TARKIN
+	bool "Google Tarkin Board"
+	help
+	  Build Google Tarkin board. Tarkin has MediaTek SoC
+	  with ITE IT82002 EC.
+
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"
