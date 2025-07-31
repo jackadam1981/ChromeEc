@@ -141,6 +141,51 @@
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger>;
 		};
+		temp_apl6012_ch1: apl6012-ch1 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch1>;
+		};
+		temp_apl6012_ch2: apl6012-ch2 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch2>;
+		};
+		temp_apl6012_ch3: apl6012-ch3 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch3>;
+		};
+		temp_apl6012_ch5: apl6012-ch5 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch5>;
+		};
+		temp_apl6012_ch7: apl6012-ch7 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch7>;
+		};
+
+		temp_apl6012_ch10: apl6012-ch10 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch10>;
+		};
+		temp_apl6012_ch11: apl6012-ch11 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch11>;
+		};
+		temp_apl6012_ch12: apl6012-ch12 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch12>;
+		};
+		temp_apl6012_ch13: apl6012-ch13 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch13>;
+		};
+		temp_apl6012_ch14: apl6012-ch14 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch14>;
+		};
+		temp_apl6012_ch15: apl6012-ch15 {
+			// power-good-pin = <&gpio_pg_pwr_s5>;
+			sensor = <&apl6012_ch15>;
+		};
 	};
 
 	usba {
@@ -274,6 +319,74 @@
 	pinctrl-0 = <&i2c1_clk_gpc1_default
 		     &i2c1_data_gpc2_default>;
 	pinctrl-names = "default";
+
+	apl6012_ch1: apl6012-ch1@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH1";
+		thermistor = <&apl_NTC_3V3_12K_100K>;		
+	};
+	apl6012_ch2: apl6012-ch2@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH2";
+		thermistor = <&apl_NTC_3V3_12K_100K>;		
+	};
+	apl6012_ch3: apl6012-ch3@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH3";
+		thermistor = <&apl_NTC_3V3_12K_100K>;	
+	};
+	apl6012_ch5: apl6012-ch5@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH5";
+		thermistor = <&apl_NTC_3V3_12K_100K>;	
+	};
+	apl6012_ch7: apl6012-ch7@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH7";
+		thermistor = <&apl_NTC_3V3_12K_100K>;	
+	};
+
+	apl6012_ch10: apl6012-ch10@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH10";
+		thermistor = <&apl_NTC_3V3_12K_47K>;	
+	};
+	apl6012_ch11: apl6012-ch11@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH11";
+		thermistor = <&apl_NTC_3V3_12K_47K>;	
+	};
+	apl6012_ch12: apl6012-ch12@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH12";
+		thermistor = <&apl_NTC_3V3_12K_47K>;	
+	};
+	apl6012_ch13: apl6012-ch13@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH13";
+		thermistor = <&apl_NTC_3V3_12K_47K>;	
+	};
+	apl6012_ch14: apl6012-ch14@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH14";
+		thermistor = <&apl_NTC_3V3_12K_47K>;	
+	};
+	apl6012_ch15: apl6012-ch15@38 {
+		compatible = "cros-ec,temp-sensor-apl6012";
+		reg = <0x38>;
+		temperature-type = "APL6012_IDX_CH15";
+		thermistor = <&apl_NTC_3V3_12K_47K>;	
+	};
 };
 
 &i2c0 {

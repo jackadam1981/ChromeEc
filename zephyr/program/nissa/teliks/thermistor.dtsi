@@ -1,0 +1,178 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	apl_NTC_3V3_12K_100K: apl-NTC-3V3-12K-100K {
+		status = "okay";
+		compatible = "cros-ec,thermistor";
+		scaling-factor = <13>;
+		num-pairs = <13>;
+		steinhart-reference-mv = <3300>;
+		steinhart-reference-res = <12000>;
+
+		sample-datum-0 {
+			milivolt = <(3194 / 13)>;
+			temp = <0>;
+			sample-index = <0>;
+		};
+
+		sample-datum-1 {
+			milivolt = <(3122 / 13)>;
+			temp = <10>;
+			sample-index = <1>;
+		};
+
+		sample-datum-2 {
+			milivolt = <(3016 / 13)>;
+			temp = <20>;
+			sample-index = <2>;
+		};
+
+		sample-datum-3 {
+			milivolt = <(2865 / 13)>;
+			temp = <30>;
+			sample-index = <3>;
+		};
+
+		sample-datum-4 {
+			milivolt = <(2667 / 13)>;
+			temp = <40>;
+			sample-index = <4>;
+		};
+
+		sample-datum-5 {
+			milivolt = <(2424 / 13)>;
+			temp = <50>;
+			sample-index = <5>;
+		};
+
+		sample-datum-6 {
+			milivolt = <(2147 / 13)>;
+			temp = <60>;
+			sample-index = <6>;
+		};
+
+		sample-datum-7 {
+			milivolt = <(1856 / 13)>;
+			temp = <70>;
+			sample-index = <7>;
+		};
+
+		sample-datum-8 {
+			milivolt = <(1568 / 13)>;
+			temp = <80>;
+			sample-index = <8>;
+		};
+
+		sample-datum-9 {
+			milivolt = <(1431 / 13)>;
+			temp = <85>;
+			sample-index = <9>;
+		};
+
+		sample-datum-10 {
+			milivolt = <(1300 / 13)>;
+			temp = <90>;
+			sample-index = <10>;
+		};
+		sample-datum-11 {
+			milivolt = <(1176 / 13)>;
+			temp = <95>;
+			sample-index = <11>;
+		};
+
+		sample-datum-12 {
+			milivolt = <(1061 / 13)>;
+			temp = <100>;
+			sample-index = <12>;
+		};
+	};
+
+	apl_NTC_3V3_12K_47K: apl-NTC-3V3-12K-47K {
+		status = "okay";
+		compatible = "cros-ec,thermistor";
+		scaling-factor = <13>;
+		num-pairs = <13>;
+		steinhart-reference-mv = <3300>;
+		steinhart-reference-res = <12000>;
+
+		sample-datum-0 {
+			milivolt = <(3068 / 13)>;
+			temp = <0>;
+			sample-index = <0>;
+		};
+
+		sample-datum-1 {
+			milivolt = <(2932 / 13)>;
+			temp = <10>;
+			sample-index = <1>;
+		};
+
+		sample-datum-2 {
+			milivolt = <(2743 / 13)>;
+			temp = <20>;
+			sample-index = <2>;
+		};
+
+		sample-datum-3 {
+			milivolt = <(2502 / 13)>;
+			temp = <30>;
+			sample-index = <3>;
+		};
+
+		sample-datum-4 {
+			milivolt = <(2217 / 13)>;
+			temp = <40>;
+			sample-index = <4>;
+		};
+
+		sample-datum-5 {
+			milivolt = <(1907 / 13)>;
+			temp = <50>;
+			sample-index = <5>;
+		};
+
+		sample-datum-6 {
+			milivolt = <(1598 / 13)>;
+			temp = <60>;
+			sample-index = <6>;
+		};
+
+		sample-datum-7 {
+			milivolt = <(1309 / 13)>;
+			temp = <70>;
+			sample-index = <7>;
+		};
+
+		sample-datum-8 {
+			milivolt = <(1054 / 13)>;
+			temp = <80>;
+			sample-index = <8>;
+		};
+
+		sample-datum-9 {
+			milivolt = <(942 / 13)>;
+			temp = <85>;
+			sample-index = <9>;
+		};
+
+		sample-datum-10 {
+			milivolt = <(839 / 13)>;
+			temp = <90>;
+			sample-index = <10>;
+		};
+		sample-datum-11 {
+			milivolt = <(747 / 13)>;
+			temp = <95>;
+			sample-index = <11>;
+		};
+
+		sample-datum-12 {
+			milivolt = <(664 / 13)>;
+			temp = <100>;
+			sample-index = <12>;
+		};
+	};
+};
