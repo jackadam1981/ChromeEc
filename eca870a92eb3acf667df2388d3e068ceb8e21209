@@ -16,6 +16,24 @@
       "message": "i\u0027m still seeing the AP try to boot up somewhere around 30 - 40 seconds\ninto the flashing process. looking at our ITE EC board, one difference\ni can see is that with this patch, LED D2 goes off briefly during the\nflashing process but is on most of the time. with the original code,\nthe LED D2 stays off until flashing is complete.\n\nLED D2 seems to be turned on by +V3.3S which is an input to the board,\nso this is a symptom of what\u0027s happening and not the root cause.",
       "revId": "eca870a92eb3acf667df2388d3e068ceb8e21209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1315b82f_aaf061b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-07-31T08:35:32Z",
+      "side": 1,
+      "message": "I don\u0027t have your board at hand, so I can\u0027t replicate your issue. I think the code might not have been stopped. I\u0027ll fix the stopping part to restore the original code, and you can try again.",
+      "parentUuid": "7772681d_0569ca27",
+      "revId": "eca870a92eb3acf667df2388d3e068ceb8e21209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
