@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05cf457_39ca8296",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-07-31T16:10:22Z",
+      "side": 1,
+      "message": "I think we should just go ahead and remove the Kconfig from Zephyr. There are a couple of impacted boards that have it enabled, and they will need a simple change to the DT to add power-good-pin",
+      "revId": "2eb9990ea4dc5bf1ad0e4424bb2b62773abd198a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
