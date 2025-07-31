@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c266b6d4_95bf066a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-31T14:54:10Z",
+      "side": 1,
+      "message": "The purpose of this CL is to use raw ECDH result as a pairing key. In the message I added info that we introduce new function for this purpose.",
+      "parentUuid": "baa9dee7_6435e31e",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "14c84477e1e0a81379f66e106bb8ef10c0944f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c46c797_91b57631",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-29T23:27:47Z",
       "side": 1,
       "message": "```suggestion\n * Generate the ECDH shared secret from private key and public key, applying\n * KDF on the result.\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 67,
+        "endLine": 160,
+        "endChar": 18
+      },
+      "revId": "14c84477e1e0a81379f66e106bb8ef10c0944f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a257ff9_ca802b8d",
+        "filename": "include/fpsensor/fpsensor_auth_crypto.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-31T14:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c46c797_91b57631",
       "range": {
         "startLine": 159,
         "startChar": 67,
