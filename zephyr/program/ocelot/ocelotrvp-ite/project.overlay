@@ -34,6 +34,7 @@ gpio_voldn: &gpio_ec_voldn_btn_odl {};
 gpio_volup: &gpio_ec_volup_btn_odl {};
 gpio_fan_control: &gpio_ec_fan_pwr_disable_n_r {};
 gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd_r {};
+gpio_temp_sensor_power_good: &gpio_en_s5_rails {};
 
 /* Power sequencing */
 gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};

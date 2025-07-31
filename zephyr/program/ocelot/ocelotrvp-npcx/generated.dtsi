@@ -120,7 +120,6 @@
 		/* Power sequencing signal needed by temp sensor driver */
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpio4 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
-			enum-name = "GPIO_TEMP_SENSOR_POWER";
 			no-auto-init;
 		};
 		gpio_ioex_kbd_int_odl: ioex_kbd_int_odl {

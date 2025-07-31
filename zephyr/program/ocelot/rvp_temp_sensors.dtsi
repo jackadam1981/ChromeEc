@@ -37,6 +37,7 @@
 			temp-host-halt = <80>;
 			temp-host-release-high = <65>;
 			sensor = <&temp_ambient>;
+			power-good-pin = <&gpio_temp_sensor_power_good>;
 		};
 
 		temp_sensor_ddr_soc: ddr_soc {
@@ -46,6 +47,7 @@
 			temp-host-halt = <80>;
 			temp-host-release-high = <65>;
 			sensor = <&temp_ddr_soc>;
+			power-good-pin = <&gpio_temp_sensor_power_good>;
 		};
 		temp_sensor_skin: skin {
 			temp-fan-off = <15>;
@@ -54,6 +56,7 @@
 			temp-host-halt = <80>;
 			temp-host-release-high = <65>;
 			sensor = <&temp_skin>;
+			power-good-pin = <&gpio_temp_sensor_power_good>;
 		};
 		temp_sensor_vr: vr {
 			temp-fan-off = <15>;
@@ -62,6 +65,7 @@
 			temp-host-halt = <80>;
 			temp-host-release-high = <65>;
 			sensor = <&temp_vr>;
+			power-good-pin = <&gpio_temp_sensor_power_good>;
 		};
 	};
 };
