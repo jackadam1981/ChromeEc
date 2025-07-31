@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fdb9c0_f7ffe0cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-31T21:59:07Z",
+      "side": 1,
+      "message": "A) The zephyr `rng_benchmark` test results are:\n\n1) with this change\n```\nDEBUG:Running TESTSUITE rng_benchmark\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_std_rand\nDEBUG:------------------------------\nDEBUG:Benchmark: std::rand\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 1300\nDEBUG: Min (us):     0\nDEBUG: Max (us):     100\nDEBUG: Avg (us):     2\nDEBUG: PASS - test_std_rand in 0.993 seconds\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_trng_rand_bytes\nDEBUG:------------------------------\nDEBUG:Benchmark: trng\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 1112600\nDEBUG: Min (us):     100\nDEBUG: Max (us):     256900\nDEBUG: Avg (us):     2225\n```\n\n2) without this change:\n```\nDEBUG:START - test_std_rand\nDEBUG:------------------------------\nDEBUG:Benchmark: std::rand\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 1700\nDEBUG: Min (us):     0\nDEBUG: Max (us):     100\nDEBUG: Avg (us):     3\nDEBUG: PASS - test_std_rand in 0.992 seconds\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_trng_rand_bytes\nDEBUG:------------------------------\nDEBUG:Benchmark: trng\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 1112400\nDEBUG: Min (us):     100\nDEBUG: Max (us):     256900\nDEBUG: Avg (us):     2224\nDEBUG: PASS - test_trng_rand_bytes in 2.015 seconds\n```\n\nB) The EC `rng_benchmark` test results are:\n\n```\nDEBUG:Benchmark: trng\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 82508\nDEBUG: Min (us):     165\nDEBUG: Max (us):     166\nDEBUG: Avg (us):     165\nDEBUG:OK\n\nDEBUG:Benchmark: std::rand\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 730\nDEBUG: Min (us):     1\nDEBUG: Max (us):     2\nDEBUG: Avg (us):     1\n```\n\nbased on the results, there seems significant difference between zephyr and non-zephyr rng benchnark results",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
