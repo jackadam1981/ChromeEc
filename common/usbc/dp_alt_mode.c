@@ -300,6 +300,12 @@ enum dpm_msg_setup_status dp_setup_next_vdm(int port, int *vdo_count,
 		if (!get_dp_pin_mode(port))
 			return MSG_SETUP_ERROR;
 
+		if (!PD_VDO_DPSTS_SINK_DEVICE_CONNECTED(dp_status[port])) {
+			CPRINTS("C%d: No UFP connected", port);
+			return MSG_SETUP_MUX_WAIT;
+		}
+		CPRINTS("C%d: UFP connected", port);
+
 		dp_state[port] = DP_PREPARE_CONFIG;
 
 		/*
