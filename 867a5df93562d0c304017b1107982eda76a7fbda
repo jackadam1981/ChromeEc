@@ -34,6 +34,24 @@
       "parentUuid": "4b0601c5_9adec331",
       "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328e8645_c72b226f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-07-31T02:11:06Z",
+      "side": 1,
+      "message": "Ack - I couldn\u0027t find any definitive Google best practices regarding untrusted inputs as folks tend to lean either way.  \n\nSince these APIs can now potentially return error codes, this needs to be handled by the caller appropriately now. Will there be a follow-up CL for this? \n\nFor example `pdc status 1` if `get_polarity` returns `-ERANGE(34)` the output would looks something like \n```\nPort1 CC-33, Disable - Role:SRC-UFP PDC State:PDC Init\n```",
+      "parentUuid": "bfeb53f7_995c2c5d",
+      "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
