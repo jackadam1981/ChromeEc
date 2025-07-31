@@ -5,4 +5,13 @@
 
 #include "battery.h"
 
+#include <zephyr/fff.h>
+
+DECLARE_FAKE_VALUE_FUNC(int, battery_design_voltage, uint32_t *);
+DECLARE_FAKE_VALUE_FUNC(int, battery_remaining_capacity, uint32_t *);
+DECLARE_FAKE_VALUE_FUNC(int, battery_status, uint32_t *);
+DECLARE_FAKE_VALUE_FUNC(int, battery_design_capacity, uint32_t *);
+DECLARE_FAKE_VALUE_FUNC(int, battery_full_charge_capacity, uint32_t *);
+
 void set_battery_present(enum battery_present bp);
+
