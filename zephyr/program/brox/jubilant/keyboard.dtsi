@@ -147,10 +147,16 @@
 	>;
 	kso-ignore-mask = <04>;
 
-	kso-gpio {
+	kso2-gpio {
 		compatible = "cros-ec,col-gpio";
 		col-num = <2>;
 		col-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
+	};
+	kso16-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <16>;
+		col-gpios = <&gpiod 1 GPIO_ACTIVE_HIGH>;
+		settle-time-us = <0>;
 	};
 
 	boot-keys {
