@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0ae4b6_cc94bc67",
+        "filename": "zephyr/program/trulo/BUILD.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-07-31T01:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7badb4cd_685fa801",
+      "revId": "1f2f1991cb482aac089db1964ea115c96b2be7d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba49ea5_09e4aed2",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-30T08:54:38Z",
       "side": 1,
       "message": "Move this file to `kaladin-ish/src` since it\u0027s only used by `kaladin-ish`.",
+      "revId": "1f2f1991cb482aac089db1964ea115c96b2be7d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d397f6_0db7dc04",
+        "filename": "zephyr/program/trulo/kaladin/src/sensor.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-07-31T01:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba49ea5_09e4aed2",
       "revId": "1f2f1991cb482aac089db1964ea115c96b2be7d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
