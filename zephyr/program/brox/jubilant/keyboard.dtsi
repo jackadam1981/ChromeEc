@@ -89,9 +89,7 @@
 		&kso12_default
 		&kso13_default
 		&kso14_default
-		&kso15_default
-		&kso16_default
-		&kso17_default>;
+		&kso15_default>;
 	pinctrl-1 = <
 		&ksi0_sleep
 		&ksi1_sleep
@@ -116,9 +114,7 @@
 		&kso12_sleep
 		&kso13_sleep
 		&kso14_sleep
-		&kso15_sleep
-		&kso16_sleep
-		&kso17_sleep>;
+		&kso15_sleep>;
 
 	pinctrl-names = "default", "sleep";
 	row-size = <8>;
@@ -145,12 +141,26 @@
 		0xff  /* C16 */
 		0xff  /* C17 */
 	>;
-	kso-ignore-mask = <04>;
+	kso-ignore-mask = <0x30004>;
 
-	kso-gpio {
+	kso2-gpio {
 		compatible = "cros-ec,col-gpio";
 		col-num = <2>;
 		col-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
+	};
+
+	kso16-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <16>;
+		col-gpios = <&gpioa 5 (GPIO_OPEN_DRAIN | GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		settle-time-us = <0>;
+	};
+
+	kso17-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <17>;
+		col-gpios = <&gpioc 5 (GPIO_OPEN_DRAIN | GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		settle-time-us = <0>;
 	};
 
 	boot-keys {
