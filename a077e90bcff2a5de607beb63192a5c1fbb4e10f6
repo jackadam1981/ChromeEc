@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7e2bb5_4abf029f",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-31T22:20:55Z",
+      "side": 1,
+      "message": "LED D2 turns and the AP tries to boot right after this.",
+      "range": {
+        "startLine": 473,
+        "startChar": 7,
+        "endLine": 473,
+        "endChar": 20
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8bf58c_9e8338b2",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-31T22:20:55Z",
+      "side": 1,
+      "message": "you can use `check_wdt()` which already checks `conf-\u003ewdt_enable`.",
+      "range": {
+        "startLine": 781,
+        "startChar": 3,
+        "endLine": 781,
+        "endChar": 14
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a3cd9d_3d8c84be",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-31T22:20:55Z",
+      "side": 1,
+      "message": "no need to check.",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 21
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ac845e_ce2890d3",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-07-31T22:20:55Z",
+      "side": 1,
+      "message": "no need to check.",
+      "range": {
+        "startLine": 1001,
+        "startChar": 5,
+        "endLine": 1001,
+        "endChar": 21
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
