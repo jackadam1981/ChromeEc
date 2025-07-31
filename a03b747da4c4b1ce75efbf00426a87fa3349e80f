@@ -105,6 +105,24 @@
       "parentUuid": "2ee6431a_747b2247",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b015bb2_a6e39f76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-31T23:01:56Z",
+      "side": 1,
+      "message": "by the way, the EC `trng_benchmark` is very consistent ~165. The zephyr one is scattered 100-200. \n\n@chlin56@nuvoton.com\n@CHChang19@nuvoton.com\nAny reason?",
+      "parentUuid": "8c752f95_1c9e6969",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
