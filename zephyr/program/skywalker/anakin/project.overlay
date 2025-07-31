@@ -199,3 +199,16 @@
 		};
 	};
 };
+
+&kbd {
+	/delete-property/ kso16-gpios;
+};
+
+&spi0 {
+	status = "okay";
+
+	pinctrl-0 = <&spi_ssce0_default &spi_smosi_default>;
+
+	pinctrl-names = "default";
+};
+
