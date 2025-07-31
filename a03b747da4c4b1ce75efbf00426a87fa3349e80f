@@ -69,6 +69,24 @@
       "parentUuid": "33bda2d9_ef0bcfd2",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee6431a_747b2247",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-31T22:24:32Z",
+      "side": 1,
+      "message": "it is worth mentioning that [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6775705) alone can achieve the below results:\n\n```\nDEBUG:Benchmark: std::rand\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 2000\nDEBUG: Min (us):     0\nDEBUG: Max (us):     100\nDEBUG: Avg (us):     4\nDEBUG: PASS - test_std_rand in 0.993 seconds\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_trng_rand_bytes\nDEBUG:------------------------------\nDEBUG:Benchmark: trng\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 85400\nDEBUG: Min (us):     100\nDEBUG: Max (us):     200\nDEBUG: Avg (us):     170\nDEBUG: PASS - test_trng_rand_bytes in 0.992 seconds\n```",
+      "parentUuid": "937f85a4_fe459f9c",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
