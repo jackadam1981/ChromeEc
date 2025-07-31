@@ -81,6 +81,7 @@
 *   [Code Reviews](./code_reviews.md)
 *   [IDE Support](./ide-support.md)
 *   [Parallel Uprevs for ebuilds](./pupr.md)
+*   [ECTool Rust Porting Guide](./ectool_rust_porting.md)
 
 [1]:https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging.md
 [2]:https://chromium.googlesource.com/chromiumos/platform/ec/+/cr50_stab/docs/case_closed_debugging_cr50.md
