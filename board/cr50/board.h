@@ -35,6 +35,7 @@
 /* TOT: DBG: The DBG image doesn't have enough room chargen. */
 #ifndef CR50_DEV
 #define CONFIG_CMD_CHARGEN
+#define CONFIG_U2F
 #endif
 
 #else
@@ -128,9 +129,6 @@
 
 /* Enable debug cable detection */
 #define CONFIG_RDD
-
-/* Also use the cr50 as a second factor authentication */
-#define CONFIG_U2F
 
 /* Additional FIPS KAT tests. */
 #define CONFIG_FIPS_RSA2048
