@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdad7347_d16e3735",
+        "filename": "zephyr/program/trulo/kaladin-ish/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-31T15:41:42Z",
+      "side": 1,
+      "message": "Map directly to `bmi260_interrupt`",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2745360_0ff93833",
+        "filename": "zephyr/program/trulo/kaladin-ish/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-31T15:41:42Z",
+      "side": 1,
+      "message": "Map directly to `bma4xx_interrupt`",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a745318_96b90f23",
+        "filename": "zephyr/program/trulo/kaladin-ish/project.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-31T15:41:42Z",
+      "side": 1,
+      "message": "You don\u0027t need dynamic sensor count if you\u0027re not turning off sensors based on CBI values.",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14045ed8_074d0047",
+        "filename": "zephyr/program/trulo/kaladin-ish/src/sensor.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-07-31T15:41:42Z",
+      "side": 1,
+      "message": "This file isn\u0027t doing anything, you can just map the interrupts directly to bmi260_interrupt and bma4xx_interrupt.",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
