@@ -75,6 +75,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3190bd_b582709e",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-07-31T14:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4add1bc_cefdbe4f",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef857de_473a78b1",
@@ -109,6 +127,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe6a0ec_57e61145",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-07-31T14:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b66aed88_17772111",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acd4bdd7_64262852",
@@ -122,6 +158,24 @@
       "writtenOn": "2025-07-09T17:11:55Z",
       "side": 1,
       "message": "This covers the scenario in which the first Attention message has the sink connected. It\u0027s not bad to test explicitly, but we were already doing that correctly. The more important scenario here is where the first Attention has nothing connected, and another Attention comes later with the sink connected. We should then see the mux not update until after the second Attention.\n\n(To ultimately pass all the tests, we might also expect to see a Configure enabling USB mode after the first Attention, but this CL doesn\u0027t add that behavior yet.)",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3110a1_aeef911e",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-07-31T14:03:32Z",
+      "side": 1,
+      "message": "I added two attention messages based on my understanding, one with bits set disconnected and second with bits set connected. However mux changes from 7 to 31 after first attention message.\n\nWhat is the expected after first attention message?",
+      "parentUuid": "acd4bdd7_64262852",
       "revId": "4c0707500b25829cba753cf147999052f6765408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
