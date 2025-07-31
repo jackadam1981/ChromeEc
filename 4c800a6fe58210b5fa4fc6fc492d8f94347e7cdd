@@ -142,6 +142,30 @@
       },
       "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17836ab9_14fa3a73",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-07-31T00:13:31Z",
+      "side": 0,
+      "message": "I looked at the [kconfig_check.py](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/kconfig_check.py) script and it looks like we do need to remove it once we add a Kconfig for it.\n\nFor completeness (orthogonal to this), I created a CL to add to `config.h`: https://crrev.com/c/6804361.\n\nSounds like you\u0027re still debugging, but when you change `config_allowed.txt`, please only change `CONFIG_OTP_KEY` (don\u0027t re-order `CONFIG_CHIPSET_QC_EXP`).",
+      "parentUuid": "15283ff2_54f7476a",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
