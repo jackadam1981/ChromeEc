@@ -22,6 +22,30 @@
       },
       "revId": "4d6eda5f12ffeb2476757c7e4207e541568c8165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4542a1d0_cfb1edfe",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-07-31T14:51:42Z",
+      "side": 1,
+      "message": "Yeah, I think this is more readable. I also added check for the size of the tpm_seed span to avoid accidents.",
+      "parentUuid": "55d16b67_acfe77bc",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 66
+      },
+      "revId": "4d6eda5f12ffeb2476757c7e4207e541568c8165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
