@@ -364,7 +364,7 @@ config PLATFORM_EC_CROS_FWID_VERSION
 
 config PLATFORM_EC_DEBUG_ASSERT
 	bool "Enable assertion failures"
-	default n
+	default y
 	select ASSERT
 	help
 	  Assertion failures are used to flag conditions which should not occur
