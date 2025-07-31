@@ -3792,6 +3792,9 @@
 /* Support One Time Protection structure */
 #undef CONFIG_OTP
 
+/* Use OTP as a source of key material. */
+#undef CONFIG_OTP_KEY
+
 /*
  * Address to store persistent panic data at. By default, this will be
  * at the end of RAM, and have a size of sizeof(struct panic_data)
