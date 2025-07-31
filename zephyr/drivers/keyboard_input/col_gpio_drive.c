@@ -11,10 +11,18 @@
 
 LOG_MODULE_REGISTER(col_gpio_drive, CONFIG_INPUT_LOG_LEVEL);
 
-BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(cros_ec_col_gpio) == 1,
+#define DT_DRV_COMPAT cros_ec_col_gpio
+#define COL_GPIO_NODE DT_DRV_INST(0)
+#define NUM_COLS DT_INST_PROP_LEN(0, col_gpios)
+
+BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "only one cros-ec,col-gpio compatible node can be supported");
 
-#define COL_GPIO_NODE DT_INST(0, cros_ec_col_gpio)
+BUILD_ASSERT(NUM_COLS > 0, "col-gpios must not be empty");
+BUILD_ASSERT(DT_INST_PROP_LEN(0, col_num) == NUM_COLS,
+	     "col-num and col-gpios must have the same length");
+BUILD_ASSERT(DT_INST_PROP_LEN(0, settle_time_us) == NUM_COLS,
+	     "settle-time-us and col-gpios must have the same length");
 
 #if CONFIG_DT_HAS_ITE_IT8XXX2_KBD_ENABLED
 BUILD_ASSERT(DT_PROP(DT_PARENT(COL_GPIO_NODE), kso_ignore_mask) != 0,
@@ -24,20 +32,22 @@ BUILD_ASSERT(DT_PROP(DT_PARENT(COL_GPIO_NODE), kso_ignore_mask) != 0,
 
 struct col_gpio_config {
 	const struct device *kbd_dev;
-	struct gpio_dt_spec gpio;
-	int col;
-	uint32_t settle_time_us;
+	const struct gpio_dt_spec gpios[NUM_COLS];
+	const int cols[NUM_COLS];
+	const uint32_t settle_times_us[NUM_COLS];
 };
 
 struct col_gpio_data {
-	bool state;
+	bool states[NUM_COLS];
 };
 
 static const struct col_gpio_config col_gpio_cfg_0 = {
 	.kbd_dev = DEVICE_DT_GET(DT_PARENT(COL_GPIO_NODE)),
-	.gpio = GPIO_DT_SPEC_GET(COL_GPIO_NODE, col_gpios),
-	.col = DT_PROP(COL_GPIO_NODE, col_num),
-	.settle_time_us = DT_PROP(COL_GPIO_NODE, settle_time_us),
+	.gpios = { DT_INST_FOREACH_PROP_ELEM_SEP(0, col_gpios,
+						GPIO_DT_SPEC_GET_BY_IDX,
+						(, )) },
+	.cols = DT_INST_PROP(0, col_num),
+	.settle_times_us = DT_INST_PROP(0, settle_time_us),
 };
 
 static struct col_gpio_data col_gpio_data_0;
@@ -46,43 +56,51 @@ void input_kbd_matrix_drive_column_hook(const struct device *dev, int col)
 {
 	const struct col_gpio_config *cfg = &col_gpio_cfg_0;
 	struct col_gpio_data *data = &col_gpio_data_0;
-	bool state;
 
 	if (dev != cfg->kbd_dev) {
 		return;
 	}
 
-	if (col == INPUT_KBD_MATRIX_COLUMN_DRIVE_ALL || col == cfg->col) {
-		gpio_pin_set_dt(&cfg->gpio, 1);
-		state = true;
-	} else {
-		gpio_pin_set_dt(&cfg->gpio, 0);
-		state = false;
-	}
+	for (int i = 0; i < NUM_COLS; i++) {
+		bool new_state;
 
-	if (state != data->state) {
-		data->state = state;
-		k_busy_wait(cfg->settle_time_us);
+		if (col == INPUT_KBD_MATRIX_COLUMN_DRIVE_ALL ||
+		    col == cfg->cols[i]) {
+			gpio_pin_set_dt(&cfg->gpios[i], 1);
+			new_state = true;
+		} else {
+			gpio_pin_set_dt(&cfg->gpios[i], 0);
+			new_state = false;
+		}
+
+		if (new_state != data->states[i]) {
+			data->states[i] = new_state;
+			k_busy_wait(cfg->settle_times_us[i]);
+		}
 	}
 }
 
 static int col_gpio_init(const struct device *dev)
 {
 	const struct col_gpio_config *cfg = dev->config;
-	struct col_gpio_data *data = &col_gpio_data_0;
-	int ret;
+	struct col_gpio_data *data = dev->data;
 
-	if (!gpio_is_ready_dt(&cfg->gpio)) {
-		return -ENODEV;
+	for (int i = 0; i < NUM_COLS; i++) {
+		if (!gpio_is_ready_dt(&cfg->gpios[i])) {
+			LOG_ERR("GPIO controller for col %d not ready",
+				cfg->cols[i]);
+			return -ENODEV;
+		}
+
+		int ret = gpio_pin_configure_dt(&cfg->gpios[i],
+						GPIO_OUTPUT_ACTIVE);
+		if (ret != 0) {
+			LOG_ERR("Pin configuration for col %d failed: %d",
+				cfg->cols[i], ret);
+			return ret;
+		}
+		data->states[i] = true;
 	}
-
-	ret = gpio_pin_configure_dt(&cfg->gpio, GPIO_OUTPUT_ACTIVE);
-	if (ret != 0) {
-		LOG_ERR("Pin configuration failed: %d", ret);
-		return ret;
-	}
-
-	data->state = true;
 
 	return 0;
 }
