@@ -51,6 +51,24 @@
       "parentUuid": "d8fdb9c0_f7ffe0cc",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937f85a4_fe459f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-07-31T22:23:25Z",
+      "side": 1,
+      "message": "with this additional [change](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6775705), the `rng_banchmark` output becomes:\n```\nDEBUG:START - test_std_rand\nDEBUG:------------------------------\nDEBUG:Benchmark: std::rand\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 1500\nDEBUG: Min (us):     0\nDEBUG: Max (us):     100\nDEBUG: Avg (us):     3\nDEBUG: PASS - test_std_rand in 0.992 seconds\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_trng_rand_bytes\nDEBUG:------------------------------\nDEBUG:Benchmark: trng\nDEBUG:------------------------------\nDEBUG: Iterations:   500\nDEBUG: Elapsed (us): 84500\nDEBUG: Min (us):     100\nDEBUG: Max (us):     200\nDEBUG: Avg (us):     169\n```\n\nThe results for `trng_rand_bytes` are now consistent.",
+      "parentUuid": "33bda2d9_ef0bcfd2",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
