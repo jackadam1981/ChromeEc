@@ -51,6 +51,23 @@
       "message": "@Yunshao.Chiang@ite.com.tw please click the CQ button.",
       "revId": "5498b82a5707a99442ac1330e0d8ce1ec8e405d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f7dd64_a4ca4971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-08-01T01:14:03Z",
+      "side": 1,
+      "message": "I did create a bug b/414662955 for tracking the ztest for cec drivers. Could we add \"LOW_COVERAGE_REASON\u003db/414662955 tracking ztest.\" to let the CQ pass? The test code will be uploaded in the future.",
+      "revId": "5498b82a5707a99442ac1330e0d8ce1ec8e405d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
