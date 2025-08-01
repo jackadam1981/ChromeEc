@@ -41,3 +41,7 @@ if(DEFINED CONFIG_BOARD_KALADIN)
 	project(kaladin)
 	add_subdirectory(kaladin)
 endif()
+
+if(CONFIG_TRULO_CHRE_EXPERIMENT)
+	target_link_libraries(app PRIVATE chre)
+endif()
