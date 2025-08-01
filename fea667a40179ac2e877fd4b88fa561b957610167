@@ -22,6 +22,30 @@
       },
       "revId": "fea667a40179ac2e877fd4b88fa561b957610167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84430a8f_1fc2fc6b",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-01T23:45:49Z",
+      "side": 1,
+      "message": "yes, it\u0027s intentional to keep things simple in this patch.\nwe don\u0027t have a use case for overriding anything in `rvp_program.conf`\nfor fatcat at this point. we can add ocelot\u0027s ordering scheme as needed.",
+      "parentUuid": "5fe1de6c_ae25a367",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "fea667a40179ac2e877fd4b88fa561b957610167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
