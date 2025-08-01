@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87647bbf_a32fb93c",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T21:03:22Z",
+      "side": 1,
+      "message": "You can improve readability by using reference-style links.\n\n```\nHost commands are defined in [`ec_commands.h`], ...\n...\n/* Links collected at the end of the file */\n[`ec_commands.h`]:https://chromium.googlesource.com/chromiumos/platform/ec/+/main/include/ec_commands.h\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 105
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "374f3ce6_f5e2de5a",
         "filename": "docs/ectool_rust_porting.md",
         "patchSetId": 1
@@ -31,6 +54,29 @@
       "writtenOn": "2025-08-01T15:46:28Z",
       "side": 1,
       "message": "Nit: Space required between rust and implementation.",
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ececd33b_aecc8864",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T21:03:22Z",
+      "side": 1,
+      "message": "Nit - space after period",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 37
+      },
       "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -53,6 +99,69 @@
         "startChar": 0,
         "endLine": 14,
         "endChar": 18
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f02e63f_185b70ae",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T21:03:22Z",
+      "side": 1,
+      "message": "Include the language types:\n```suggestion\n```c\n```",
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c821d3_6fd1ca53",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T21:03:22Z",
+      "side": 1,
+      "message": "A link to the this source would be helpful.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccc9bc1_5ad74f49",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T21:03:22Z",
+      "side": 1,
+      "message": "Add the rust language to all the remaining code blocks.\n```suggestion\n```rust\n```\n\nNote that the inline code blocks don\u0027t support a language unfortunately.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
       },
       "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
