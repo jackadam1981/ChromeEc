@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8b287982_426b14a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-01T22:02:08Z",
+      "side": 1,
+      "message": "after creating the combined firmware using the above outlined method, I am able to jump to RW:\n\n```\nRebooting!\n\n\n\n\n--- UART initialized after reboot ---\n[Image: RO, buccaneer_v2.0.28836-74ca9fc9b3 boringssl:v0.0.8282-3e89a7e8d cryptoc:v1.9308_26_0.14-0dd6790 ec-private:v0.0.172-6b3194a elan:]\n[Reset cause: soft]\n[0.000395 Inits done]\n[0.000446 TRANSPORT_SEL: SPI]\n[0.000497 TRANSPORT_SEL: SPI]\nConsole is enabled; type HELP for help.\n\u003e [0.258443 event set 0x0000000000002000]\n[0.258503 hostcmd init 0x0000000000002000]\n[0.258654 Verifying RW image...]\n[0.399429 RW verify OK]\n[1.259479 MKBP not cleared within threshold, toggling.]\n[1.400596 Jumping to image RW (0x00000020)]\n[1.404578 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n\nfpmcu:~$ [0.000000] \u003cwrn\u003e host_cmd_handler: Host Command handler provided unused buffer\nfpmcu:~$ *** Booting Zephyr OS build 4.2.99 ***\nfpmcu:~$ \n[0.011800 UART initialized after sysjump]\n[Image: RW, buccaneer-0.0.0-74ca9fc+ 2025-08-01 20:32:01 root@fsammoura1.c.googlers.com]\n[Reset cause: soft sysjump]                            +-----------------------------+\n[0.098200 event set 0x0000000000002000]                |                             |\n[0.100400 hostcmd init 0x0000000000002000]             |  Cannot open /dev/pts/13!   |\n[0.104200 Inits done]                                  |                             |\n[0.106000] \u003cinf\u003e shim_cros_shi: shi_enable             +-----------------------------+\nfpmcu:~$ [0.106400 FP_SENSOR_SEL: ELAN]\nelan_alg_param_setting\nfpmcu:~$ ELAN_ALG_VERSION 34001\nfpmcu:~$ [0.126000] \u003cinf\u003e cros_fingerprint: ELAN HWID 0x4f4f\nfpmcu:~$ elan_calibration DAC \u003d 0x 0, Max \u003d  9602, Min \u003d  8750, Mean \u003d  8844\nfpmcu:~$ elan_calibration DAC \u003d 0x40, Max \u003d   512, Min \u003d     2, Mean \u003d     9\nfpmcu:~$ elan_calibration DAC \u003d 0x20, Max \u003d  5026, Min \u003d  4142, Mean \u003d  4248\nfpmcu:~$ elan_calibration DAC \u003d 0x30, Max \u003d  2742, Min \u003d  1846, Mean \u003d  1972\nfpmcu:~$ elan_calibration DAC \u003d 0x28, Max \u003d  3882, Min \u003d  2974, Mean \u003d  3100\nfpmcu:~$ elan_calibration DAC \u003d 0x2c, Max \u003d  3304, Min \u003d  2416, Mean \u003d  2546\nfpmcu:~$ elan_calibration DAC \u003d 0x2a, Max \u003d  3570, Min \u003d  2688, Mean \u003d  2821\nfpmcu:~$ elan_calibration DAC \u003d 0x29, Max \u003d  3702, Min \u003d  2834, Mean \u003d  2960\nfpmcu:~$ elan_calibration Finished\nfpmcu:~$ Best DAC \u003d 0x29, TargetDistance \u003d 40, CalMean \u003d 2960\nfpmcu:~$ Diff_dac 1 / Diff_mean 139\nfpmcu:~$ [elan_calibration] VCB_Target \u003d 0x1 / elan_WOE_dac 0x6 / elan_sensing_dac 0x29\nfpmcu:~$ [1.100500 MKBP not cleared within threshold, toggling.]\n[2.105100 MKBP: The AP is failing to respond because it is sleeping or off]\n```",
+      "parentUuid": "3357d61b_7086371f",
+      "revId": "964e03859abcb25f91b238ec6934f78c2d8b6312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c54f39db_718bc234",
         "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
         "patchSetId": 34
