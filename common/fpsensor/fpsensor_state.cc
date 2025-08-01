@@ -99,7 +99,7 @@ void fp_reset_context()
 	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(global_context.user_id.data(),
 			sizeof(global_context.user_id));
-	OPENSSL_cleanse(auth_nonce.data(), auth_nonce.size());
+	OPENSSL_cleanse(session_nonce.data(), session_nonce.size());
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
 }

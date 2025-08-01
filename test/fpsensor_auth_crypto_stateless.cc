@@ -224,9 +224,10 @@ test_fp_generate_ecdh_shared_secret_without_kdf(void)
 
 test_static enum ec_error_list test_fp_generate_gsc_session_key(void)
 {
-	std::array<uint8_t, 32> auth_nonce = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					       1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					       2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
+						  8, 9, 0, 1, 2, 3, 4, 5,
+						  6, 7, 8, 9, 0, 1, 2, 3,
+						  4, 5, 6, 7, 8, 9, 1, 2 };
 	std::array<uint8_t, 32> gsc_nonce = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
 					      1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 					      2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
@@ -236,7 +237,7 @@ test_static enum ec_error_list test_fp_generate_gsc_session_key(void)
 
 	std::array<uint8_t, 32> gsc_session_key;
 
-	TEST_EQ(generate_gsc_session_key(auth_nonce, gsc_nonce, pairing_key,
+	TEST_EQ(generate_gsc_session_key(session_nonce, gsc_nonce, pairing_key,
 					 gsc_session_key),
 		EC_SUCCESS, "%d");
 
@@ -255,9 +256,10 @@ test_static enum ec_error_list test_fp_generate_gsc_session_key(void)
 
 test_static enum ec_error_list test_fp_generate_gsc_session_key_fail(void)
 {
-	std::array<uint8_t, 32> auth_nonce = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					       1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					       2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
+						  8, 9, 0, 1, 2, 3, 4, 5,
+						  6, 7, 8, 9, 0, 1, 2, 3,
+						  4, 5, 6, 7, 8, 9, 1, 2 };
 	std::array<uint8_t, 32> gsc_nonce = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
 					      1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 					      2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
@@ -268,7 +270,7 @@ test_static enum ec_error_list test_fp_generate_gsc_session_key_fail(void)
 	/* Wrong gsc_session_key size. */
 	std::array<uint8_t, 30> gsc_session_key;
 
-	TEST_NE(generate_gsc_session_key(auth_nonce, gsc_nonce, pairing_key,
+	TEST_NE(generate_gsc_session_key(session_nonce, gsc_nonce, pairing_key,
 					 gsc_session_key),
 		EC_SUCCESS, "%d");
 

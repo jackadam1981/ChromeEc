@@ -203,19 +203,19 @@ generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
 					std::span<uint8_t> secret);
 
 /**
- * Generate a gsc_session_key that is derived from auth nonce, GSC nonce and
+ * Generate a gsc_session_key that is derived from session nonce, GSC nonce and
  * pairing key.
  *
- * @param[in] auth_nonce the auth nonce
- * @param[in] gsc_nonce the auth nonce
- * @param[in] pairing_key the auth nonce
+ * @param[in] session_nonce the session nonce
+ * @param[in] gsc_nonce the session nonce
+ * @param[in] pairing_key the session nonce
  * @param[in,out] gsc_session_key the output key
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
 enum ec_error_list
-generate_gsc_session_key(std::span<const uint8_t> auth_nonce,
+generate_gsc_session_key(std::span<const uint8_t> session_nonce,
 			 std::span<const uint8_t> gsc_nonce,
 			 std::span<const uint8_t> pairing_key,
 			 std::span<uint8_t> gsc_session_key);

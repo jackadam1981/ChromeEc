@@ -32,15 +32,15 @@ static bssl::UniquePtr<EC_KEY> ecdh_key;
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
-/* The auth nonce for GSC session key. */
-std::array<uint8_t, FP_CK_AUTH_NONCE_LEN> auth_nonce;
+/* The session nonce for GSC session key. */
+std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
 
 enum ec_error_list check_context_cleared()
 {
 	for (uint8_t partial : global_context.user_id)
 		if (partial != 0)
 			return EC_ERROR_ACCESS_DENIED;
-	for (uint8_t partial : auth_nonce)
+	for (uint8_t partial : session_nonce)
 		if (partial != 0)
 			return EC_ERROR_ACCESS_DENIED;
 	if (global_context.templ_valid != 0)
@@ -182,11 +182,11 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 		fp_reset_context();
 	}
 
-	RAND_bytes(auth_nonce.data(), auth_nonce.size());
+	RAND_bytes(session_nonce.data(), session_nonce.size());
 
-	std::ranges::copy(auth_nonce, r->nonce);
+	std::ranges::copy(session_nonce, r->nonce);
 
-	global_context.fp_encryption_status |= FP_CONTEXT_AUTH_NONCE_SET;
+	global_context.fp_encryption_status |= FP_CONTEXT_SESSION_NONCE_SET;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -201,8 +201,8 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 		static_cast<const ec_params_fp_nonce_context *>(args->params);
 
 	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_AUTH_NONCE_SET)) {
-		CPRINTS("No existing auth nonce");
+	      FP_CONTEXT_SESSION_NONCE_SET)) {
+		CPRINTS("No existing session nonce");
 		return EC_RES_ACCESS_DENIED;
 	}
 
@@ -210,7 +210,7 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 
 	std::array<uint8_t, SHA256_DIGEST_SIZE> gsc_session_key;
 	enum ec_error_list ret = generate_gsc_session_key(
-		auth_nonce, p->gsc_nonce, pairing_key, gsc_session_key);
+		session_nonce, p->gsc_nonce, pairing_key, gsc_session_key);
 
 	if (ret != EC_SUCCESS) {
 		return EC_RES_INVALID_PARAM;

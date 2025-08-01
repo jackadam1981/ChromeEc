@@ -8579,8 +8579,8 @@ struct ec_params_fp_seed {
 #define FP_CONTEXT_STATUS_NONCE_CONTEXT_SET BIT(1)
 /* FP match had been processed or not */
 #define FP_CONTEXT_STATUS_MATCH_PROCESSED_SET BIT(2)
-/* FP auth_nonce had been set or not*/
-#define FP_CONTEXT_AUTH_NONCE_SET BIT(3)
+/* FP session_nonce had been set or not*/
+#define FP_CONTEXT_SESSION_NONCE_SET BIT(3)
 /* FP user_id had been set or not*/
 #define FP_CONTEXT_USER_ID_SET BIT(4)
 /* FP templates are unlocked for nonce context or not */
@@ -8666,11 +8666,11 @@ struct ec_response_fp_establish_pairing_key_wrap {
 typedef struct ec_response_fp_establish_pairing_key_wrap
 	ec_params_fp_load_pairing_key;
 
-#define FP_CK_AUTH_NONCE_LEN 32
+#define FP_CK_SESSION_NONCE_LEN 32
 
 #define EC_CMD_FP_GENERATE_NONCE 0x0413
 struct ec_response_fp_generate_nonce {
-	uint8_t nonce[FP_CK_AUTH_NONCE_LEN];
+	uint8_t nonce[FP_CK_SESSION_NONCE_LEN];
 } __ec_align4;
 
 #define FP_CONTEXT_USERID_LEN 32
@@ -8679,7 +8679,7 @@ struct ec_response_fp_generate_nonce {
 
 #define EC_CMD_FP_NONCE_CONTEXT 0x0414
 struct ec_params_fp_nonce_context {
-	uint8_t gsc_nonce[FP_CK_AUTH_NONCE_LEN];
+	uint8_t gsc_nonce[FP_CK_SESSION_NONCE_LEN];
 	uint8_t enc_user_id[FP_CONTEXT_USERID_LEN];
 	uint8_t enc_user_id_iv[FP_CONTEXT_USERID_IV_LEN];
 } __ec_align4;

@@ -203,9 +203,10 @@ ZTEST(fpsensor_auth_crypto_stateless,
 
 ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key)
 {
-	std::array<uint8_t, 32> auth_nonce = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					       1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					       2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
+						  8, 9, 0, 1, 2, 3, 4, 5,
+						  6, 7, 8, 9, 0, 1, 2, 3,
+						  4, 5, 6, 7, 8, 9, 1, 2 };
 	std::array<uint8_t, 32> gsc_nonce = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
 					      1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 					      2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
@@ -215,7 +216,7 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key)
 
 	std::array<uint8_t, 32> gsc_session_key;
 
-	zassert_equal(generate_gsc_session_key(auth_nonce, gsc_nonce,
+	zassert_equal(generate_gsc_session_key(session_nonce, gsc_nonce,
 					       pairing_key, gsc_session_key),
 		      EC_SUCCESS);
 
@@ -233,9 +234,10 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key)
 
 ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key_fail)
 {
-	std::array<uint8_t, 32> auth_nonce = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					       1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					       2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
+						  8, 9, 0, 1, 2, 3, 4, 5,
+						  6, 7, 8, 9, 0, 1, 2, 3,
+						  4, 5, 6, 7, 8, 9, 1, 2 };
 	std::array<uint8_t, 32> gsc_nonce = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
 					      1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 					      2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
@@ -246,7 +248,7 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key_fail)
 	/* Wrong gsc_session_key size. */
 	std::array<uint8_t, 30> gsc_session_key;
 
-	zassert_not_equal(generate_gsc_session_key(auth_nonce, gsc_nonce,
+	zassert_not_equal(generate_gsc_session_key(session_nonce, gsc_nonce,
 						   pairing_key,
 						   gsc_session_key),
 			  EC_SUCCESS);
