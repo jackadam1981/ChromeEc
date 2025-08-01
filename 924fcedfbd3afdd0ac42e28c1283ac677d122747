@@ -16,6 +16,24 @@
       "message": "How about using [fixture](https://docs.zephyrproject.org/latest/develop/test/ztest.html)?",
       "revId": "924fcedfbd3afdd0ac42e28c1283ac677d122747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5974386b_6f3a3b97",
+        "filename": "zephyr/test/drivers/default/src/power_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-01T07:29:11Z",
+      "side": 1,
+      "message": "Move the state into fixture and use ZTEST_F.",
+      "parentUuid": "ad12a4a7_f38f1096",
+      "revId": "924fcedfbd3afdd0ac42e28c1283ac677d122747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
