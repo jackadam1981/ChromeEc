@@ -86,6 +86,14 @@
 		gpio_lcd_bist: lcd_bist {
 			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
+		gpio_ec_gpio76: ec_gpio76 {
+			gpios = <&gpio7 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_GPIO76";
+		};
+		gpio_ec_gpiof2: ec_gpiof2 {
+			gpios = <&gpiof 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_GPIOF2";
+		};
 	};
 
 	unused-pins {
@@ -97,7 +105,6 @@
 			<&gpio5 0 0>, /* Reserved for PP1800_TCHPAD_EN */
 			<&gpio6 6 0>,
 			<&gpio7 5 0>,
-			<&gpio7 6 0>,
 			<&gpio8 1 0>,
 			<&gpio8 5 0>,
 			<&gpio8 6 0>,
@@ -112,7 +119,6 @@
 			<&gpioc 7 0>,
 			<&gpioe 2 0>,
 			<&gpiod 5 0>,
-			<&gpiof 2 0>,
 			<&gpiof 3 0>,
 			<&gpiof 4 0>,
 			<&gpiof 5 0>;
