@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0c6a00_6a4bedd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-01T21:05:29Z",
+      "side": 1,
+      "message": "Yes, I think that a new DT property is the simplest solution and can be implemented quickly. The PDC driver nodes can have an optional `ucsi-index` property than can be applied to commands at the driver layer (if unspecified we can fall back on using connector_num for backwards-compatibility). UCSI port number is really a property of the hardware and has no bearing on our port numbering scheme, so it makes sense to just specify this in the devicetree explicitly. This gives the most flexibility when using runtime port config, as well, and will be safer because the information will be available statically.\n\nI have an action item this quarter to refactor how we represent the PDCs in the devicetree since these situations keep causing us headaches. One thing I want to do is keep track of what ports/driver nodes belong to what physical chip. That would help problems like this. But for now, let\u0027s do the above approach to unblock quickly.",
+      "parentUuid": "b09beaa7_3aa56ea9",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fab80012_7181786c",
