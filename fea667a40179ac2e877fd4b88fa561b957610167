@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe1de6c_ae25a367",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-01T23:14:12Z",
+      "side": 1,
+      "message": "Note that this applies rvp_program.conf *after* the board-specific config. Is this intentional?\n\nOcelot\u0027s BUILD.py adds an additional argument so the final ordering is program.conf, rvp_program.conf, board-specific conf.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "fea667a40179ac2e877fd4b88fa561b957610167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
