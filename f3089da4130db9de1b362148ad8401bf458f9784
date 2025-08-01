@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caa2f1c_317ac76a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-08-01T13:35:50Z",
+      "side": 1,
+      "message": "I think we probably could know the port is A or B based on the \"Table 2-3. I2C Default Target Address for I2C1\" in datasheet: PortA - 20, 21, 22, PortB - 24, 25, 26. It will not limit the PDCs has to be from the same vendor as well.",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fab80012_7181786c",
@@ -20,6 +37,40 @@
         "endLine": 407,
         "endChar": 53
       },
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec6aa61_f0501d1b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-08-01T13:35:50Z",
+      "side": 1,
+      "message": "I am thinking that the \"connector_number\" here needs to be the ucsi_idx as well. Maybe we should just naming it something like port index on chip ?",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db956b17_3f4525e7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1926,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-08-01T13:35:50Z",
+      "side": 1,
+      "message": "Same as in cmd_is_vconn_sourcing.",
       "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
