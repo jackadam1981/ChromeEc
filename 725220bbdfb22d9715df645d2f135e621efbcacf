@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fe32fb_42f4dbb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-01T13:34:55Z",
+      "side": 1,
+      "message": "CQ fails because skyrim doesn\u0027t have enough flash space after adding this command... We may need to guard this command with a config and only enable it optionally.",
+      "revId": "725220bbdfb22d9715df645d2f135e621efbcacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
