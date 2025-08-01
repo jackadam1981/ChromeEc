@@ -10,6 +10,7 @@
 
 #include "ec_commands.h"
 #include "openssl/ec.h"
+#include "openssl/sha.h"
 
 #include <optional>
 #include <span>
@@ -203,22 +204,22 @@ generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
 					std::span<uint8_t> secret);
 
 /**
- * Generate a gsc_session_key that is derived from session nonce, GSC nonce and
- * pairing key.
+ * Generate a session key that is derived from FPMCU nonce, peer nonce and
+ * the Pairing Key.
  *
- * @param[in] session_nonce the session nonce
- * @param[in] gsc_nonce the session nonce
- * @param[in] pairing_key the session nonce
- * @param[in,out] gsc_session_key the output key
+ * @param[in] fpmcu_nonce the session nonce on FPMCU side
+ * @param[in] peer_nonce the session nonce on peer side
+ * @param[in] pairing_key the Pairing Key
+ * @param[in,out] session_key the output key
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
-enum ec_error_list
-generate_gsc_session_key(std::span<const uint8_t> session_nonce,
-			 std::span<const uint8_t> gsc_nonce,
-			 std::span<const uint8_t> pairing_key,
-			 std::span<uint8_t> gsc_session_key);
+enum ec_error_list generate_session_key(
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> peer_nonce,
+	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key);
 
 /**
  * Decrypt the data in place with a GSC session key.

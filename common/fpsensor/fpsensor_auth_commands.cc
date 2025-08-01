@@ -32,7 +32,7 @@ static bssl::UniquePtr<EC_KEY> ecdh_key;
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
-/* The session nonce for GSC session key. */
+/* The session nonce for session key. */
 std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
 
 enum ec_error_list check_context_cleared()
@@ -209,7 +209,7 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 	ScopedFastCpu fast_cpu;
 
 	std::array<uint8_t, SHA256_DIGEST_SIZE> gsc_session_key;
-	enum ec_error_list ret = generate_gsc_session_key(
+	enum ec_error_list ret = generate_session_key(
 		session_nonce, p->gsc_nonce, pairing_key, gsc_session_key);
 
 	if (ret != EC_SUCCESS) {

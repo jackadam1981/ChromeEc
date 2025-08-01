@@ -8,13 +8,13 @@
 #include "crypto/elliptic_curve_key.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_crypto.h"
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/ecdh.h"
 #include "openssl/obj_mac.h"
 #include "openssl/rand.h"
-#include "sha256.h"
 
 #include <algorithm>
 #include <array>
@@ -125,27 +125,18 @@ generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
 	return EC_SUCCESS;
 }
 
-enum ec_error_list
-generate_gsc_session_key(std::span<const uint8_t> session_nonce,
-			 std::span<const uint8_t> gsc_nonce,
-			 std::span<const uint8_t> pairing_key,
-			 std::span<uint8_t> gsc_session_key)
+enum ec_error_list generate_session_key(
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> peer_nonce,
+	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key)
 {
-	if (session_nonce.size() != 32 || gsc_nonce.size() != 32 ||
-	    pairing_key.size() != 32 ||
-	    gsc_session_key.size() != SHA256_DIGEST_SIZE) {
-		return EC_ERROR_INVAL;
-	}
-	CleanseWrapper<struct sha256_ctx> ctx;
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, session_nonce.data(), session_nonce.size());
-	SHA256_update(&ctx, gsc_nonce.data(), gsc_nonce.size());
-	SHA256_update(&ctx, pairing_key.data(), pairing_key.size());
-	std::span result(SHA256_final(&ctx), SHA256_DIGEST_SIZE);
+	std::array inputs{
+		std::span<const uint8_t>{ fpmcu_nonce },
+		std::span<const uint8_t>{ peer_nonce },
+	};
 
-	std::ranges::copy(result, gsc_session_key.begin());
-
-	return EC_SUCCESS;
+	return hmac_sha256(pairing_key, inputs, session_key);
 }
 
 enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
@@ -202,7 +193,7 @@ enum ec_error_list encrypt_data_with_ecdh_key_in_place(
 		return EC_ERROR_MEMORY_ALLOCATION;
 	}
 
-	CleanseWrapper<std::array<uint8_t, SHA256_DIGEST_SIZE> > enc_key;
+	CleanseWrapper<std::array<uint8_t, SHA256_DIGEST_LENGTH> > enc_key;
 
 	enum ec_error_list ret =
 		generate_ecdh_shared_secret(*private_key, *public_key, enc_key);

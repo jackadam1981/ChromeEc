@@ -222,7 +222,7 @@ test_fp_generate_ecdh_shared_secret_without_kdf(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_generate_gsc_session_key(void)
+test_static enum ec_error_list test_fp_generate_session_key(void)
 {
 	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
 						  8, 9, 0, 1, 2, 3, 4, 5,
@@ -237,42 +237,19 @@ test_static enum ec_error_list test_fp_generate_gsc_session_key(void)
 
 	std::array<uint8_t, 32> gsc_session_key;
 
-	TEST_EQ(generate_gsc_session_key(session_nonce, gsc_nonce, pairing_key,
-					 gsc_session_key),
+	TEST_EQ(generate_session_key(session_nonce, gsc_nonce, pairing_key,
+				     gsc_session_key),
 		EC_SUCCESS, "%d");
 
 	std::array<uint8_t, 32> expected_gsc_session_key = {
-		0X1A, 0X1A, 0X3C, 0X33, 0X7F, 0XAE, 0XF9, 0X3E,
-		0XA8, 0X7C, 0XE4, 0XEC, 0XD9, 0XFF, 0X45, 0X8A,
-		0XB6, 0X2F, 0X75, 0XD5, 0XEA, 0X25, 0X93, 0X36,
-		0X60, 0XF1, 0XAB, 0XD2, 0XF4, 0X9F, 0X22, 0X89,
+		0x50, 0x98, 0xde, 0xbd, 0x86, 0xb5, 0xc9, 0x2b,
+		0x21, 0xea, 0x0e, 0x6f, 0x47, 0x25, 0x9d, 0x25,
+		0x92, 0x09, 0x5c, 0xbe, 0x0a, 0x57, 0x8b, 0xc8,
+		0x8c, 0x03, 0xa3, 0x2f, 0x39, 0x08, 0x02, 0x4b,
 	};
 
 	TEST_ASSERT_ARRAY_EQ(gsc_session_key, expected_gsc_session_key,
 			     gsc_session_key.size());
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list test_fp_generate_gsc_session_key_fail(void)
-{
-	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
-						  8, 9, 0, 1, 2, 3, 4, 5,
-						  6, 7, 8, 9, 0, 1, 2, 3,
-						  4, 5, 6, 7, 8, 9, 1, 2 };
-	std::array<uint8_t, 32> gsc_nonce = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					      1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					      2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
-	std::array<uint8_t, 32> pairing_key = { 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
-
-	/* Wrong gsc_session_key size. */
-	std::array<uint8_t, 30> gsc_session_key;
-
-	TEST_NE(generate_gsc_session_key(session_nonce, gsc_nonce, pairing_key,
-					 gsc_session_key),
-		EC_SUCCESS, "%d");
 
 	return EC_SUCCESS;
 }
@@ -414,8 +391,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_create_pubkey_from_ec_key);
 	RUN_TEST(test_fp_generate_ecdh_shared_secret);
 	RUN_TEST(test_fp_generate_ecdh_shared_secret_without_kdf);
-	RUN_TEST(test_fp_generate_gsc_session_key);
-	RUN_TEST(test_fp_generate_gsc_session_key_fail);
+	RUN_TEST(test_fp_generate_session_key);
 	RUN_TEST(test_fp_decrypt_data_with_gsc_session_key_in_place);
 	RUN_TEST(test_fp_decrypt_data_with_gsc_session_key_in_place_fail);
 	RUN_TEST(test_fp_encrypt_data_with_ecdh_key_in_place);

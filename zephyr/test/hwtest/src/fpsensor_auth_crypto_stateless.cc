@@ -201,7 +201,7 @@ ZTEST(fpsensor_auth_crypto_stateless,
 			  shared_secret.size());
 }
 
-ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key)
+ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_session_key)
 {
 	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
 						  8, 9, 0, 1, 2, 3, 4, 5,
@@ -216,42 +216,20 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key)
 
 	std::array<uint8_t, 32> gsc_session_key;
 
-	zassert_equal(generate_gsc_session_key(session_nonce, gsc_nonce,
-					       pairing_key, gsc_session_key),
+	zassert_equal(generate_session_key(session_nonce, gsc_nonce,
+					   pairing_key, gsc_session_key),
 		      EC_SUCCESS);
 
 	std::array<uint8_t, 32> expected_gsc_session_key = {
-		0x1a, 0x1a, 0x3c, 0x33, 0x7f, 0xae, 0xf9, 0x3e,
-		0xa8, 0x7c, 0xe4, 0xec, 0xd9, 0xff, 0x45, 0x8a,
-		0xb6, 0x2f, 0x75, 0xd5, 0xea, 0x25, 0x93, 0x36,
-		0x60, 0xf1, 0xab, 0xd2, 0xf4, 0x9f, 0x22, 0x89,
+		0x50, 0x98, 0xde, 0xbd, 0x86, 0xb5, 0xc9, 0x2b,
+		0x21, 0xea, 0x0e, 0x6f, 0x47, 0x25, 0x9d, 0x25,
+		0x92, 0x09, 0x5c, 0xbe, 0x0a, 0x57, 0x8b, 0xc8,
+		0x8c, 0x03, 0xa3, 0x2f, 0x39, 0x08, 0x02, 0x4b,
 	};
 
 	zassert_mem_equal(gsc_session_key.data(),
 			  expected_gsc_session_key.data(),
 			  gsc_session_key.size());
-}
-
-ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_gsc_session_key_fail)
-{
-	std::array<uint8_t, 32> session_nonce = { 0, 1, 2, 3, 4, 5, 6, 7,
-						  8, 9, 0, 1, 2, 3, 4, 5,
-						  6, 7, 8, 9, 0, 1, 2, 3,
-						  4, 5, 6, 7, 8, 9, 1, 2 };
-	std::array<uint8_t, 32> gsc_nonce = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					      1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					      2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
-	std::array<uint8_t, 32> pairing_key = { 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
-
-	/* Wrong gsc_session_key size. */
-	std::array<uint8_t, 30> gsc_session_key;
-
-	zassert_not_equal(generate_gsc_session_key(session_nonce, gsc_nonce,
-						   pairing_key,
-						   gsc_session_key),
-			  EC_SUCCESS);
 }
 
 ZTEST(fpsensor_auth_crypto_stateless,
