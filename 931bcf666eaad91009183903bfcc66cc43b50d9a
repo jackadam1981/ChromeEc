@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a47179_dcc53fa7",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-01T10:39:19Z",
+      "side": 1,
+      "message": "hey thanks for the test with the flash/ram numbers, very interesting, not quite what I expected, so since there\u0027s only one instance here these can be fixed size arrays rather than pointers, curious to see how the numbers compares in that case, so can you try to:\n\nchange these to fixes size:\n\n```\nstruct gpio_dt_spec gpio[NUM_COLS];\nint col[NUM_COLS];\nuint32_t settle_time_us[NUM_COLS];\n```\n\ndrop `num_gpios` and instead use `NUM_COLS` directly in the loops below, that should allow the compiler to optimize the loops out and save back some flash.\n\nWe are splitting hairs but at this point it\u0027s interesting to see how it all behaves.",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a37675_093efb5c",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-01T10:39:19Z",
+      "side": 1,
+      "message": "`z_impl_k_busy_wait` has an early exit path for `usec_to_wait \u003d\u003d 0`, no need for this check",
+      "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
