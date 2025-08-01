@@ -9,6 +9,10 @@
 #include "boot_param.h"
 #include "boot_param_platform.h"
 
+#if BOOT_PARAM_VERSION == 1
+#include "res_mem.h"
+#endif /* BOOT_PARAM_VERSION */
+
 /* Common structure to build Sig_structure or DICE Handover structure
  */
 
@@ -45,26 +49,48 @@ _Static_assert(
 	"dice_handover_s != dice_handover_hdr_s + DICE_CHAIN_SIZE"
 );
 
+#if BOOT_PARAM_VERSION == 1
+/* BootParam = {
+ *   1  : uint,               ; structure version (1)
+ *   4  : AndroidDiceHandoverBstr,
+ *   5  : ReservedMemBstr,
+ * }
+ */
+
+#else /* BOOT_PARAM_VERSION == 0 */
 /* BootParam = {
  *   1  : uint,               ; structure version (0)
  *   2  : GSCBootParam,
  *   3  : AndroidDiceHandover,
  * }
  */
-#define BOOT_PARAM_VERSION 0
+#endif /* BOOT_PARAM_VERSION */
+
 struct boot_param_s {
 	/* Map header: 3 entries */
 	uint8_t map_hdr;
 	/* 1. Version: uint(1, 0bytes) => uint(BOOT_PARAM_VERSION, 0bytes) */
 	uint8_t version_label;
 	uint8_t version;
+#if BOOT_PARAM_VERSION == 1
+	/* 2. AndroidDiceHandover: uint(4, 0bytes) => AndroidDiceHandoverBstr */
+	uint8_t dice_handover_bstr_label;
+	uint8_t dice_handover_bstr_hdr[3];
+	struct dice_handover_s dice_handover;
+	/* 3. ReservedMem: uint(5, 0bytes) => ReservedMemBstr */
+	uint8_t res_mem_bstr_label;
+	uint8_t res_mem_bstr_hdr[3];
+	struct res_mem_s res_mem;
+#else /* BOOT_PARAM_VERSION == 0 */
 	/* 2. GSCBootParam: uint(2, 0bytes) => GSCBootParam */
 	uint8_t gsc_boot_param_label;
 	struct gsc_boot_param_s gsc_boot_param;
 	/* 3. AndroidDiceHandover: uint(3, 0bytes) => AndroidDiceHandover */
 	uint8_t dice_handover_label;
 	struct dice_handover_s dice_handover;
+#endif /* BOOT_PARAM_VERSION */
 };
+
 _Static_assert(
 	sizeof(struct boot_param_s) == BOOT_PARAM_SIZE,
 	"boot_param_s != BOOT_PARAM_SIZE"
@@ -865,6 +891,47 @@ static inline bool generate_dice_handover(
 		fill_uds_details(ctx);
 }
 
+#if BOOT_PARAM_VERSION == 1
+/* Fills ReservedMem. */
+static inline bool fill_res_mem(
+	struct res_mem_s *res_mem /* [IN/OUT] ReservedMem */
+)
+{
+	__platform_memcpy(&res_mem->hdrs, &res_mem_hdrs,
+			  sizeof(struct res_mem_hdrs_s));
+	set_res_mem_string(res_mem, desktop_trusty_name);
+	set_res_mem_string(res_mem, early_entropy_compat);
+	set_res_mem_string(res_mem, session_key_seed_compat);
+	set_res_mem_string(res_mem, auth_token_key_seed_compat);
+	set_res_mem_string(res_mem, versioned_seed_compat);
+
+	if (!__platform_get_gsc_boot_param(
+			res_mem->blobs.early_entropy,
+			res_mem->blobs.session_key_seed,
+			res_mem->blobs.auth_token_key_seed)) {
+		__platform_log_str("Failed to get GSC boot param");
+		return false;
+	}
+	__platform_memset(&res_mem->blobs.versioned_seed, 0,
+			  sizeof(struct versioned_seed_s));
+	return true;
+}
+
+/* Fills the header of a BSTR with 2-byte length field. */
+static inline void set_cbor_bstr_hdr16(
+	/* [OUT] header to be filled */
+	uint8_t hdr[3],
+	/* [IN] size of bstr value */
+	size_t size
+)
+{
+	hdr[0] = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES2);
+	hdr[1] = (uint8_t)(((size) & 0xFF00) >> 8);
+	hdr[2] = (uint8_t)((size) & 0x00FF);
+}
+
+#else /* BOOT_PARAM_VERSION == 0 */
+
 /* Fills GSCBootParam. */
 static inline bool fill_gsc_boot_param(
 	struct gsc_boot_param_s *gsc_boot_param /* [IN/OUT] GSCBootParam */
@@ -907,6 +974,8 @@ static inline bool fill_gsc_boot_param(
 	return true;
 }
 
+#endif /* BOOT_PARAM_VERSION */
+
 /* Fills GSCBootParam and BootParam header in struct dice_ctx_s. */
 /* Doesn't touch DICE handover structure */
 static inline bool fill_boot_param(
@@ -920,7 +989,28 @@ static inline bool fill_boot_param(
 	 * uint(1, 0bytes) => uint(BOOT_PARAM_VERSION, 0bytes)
 	 */
 	ctx->output.version_label = CBOR_UINT0(1);
-	ctx->output.version = CBOR_UINT0(0);
+	ctx->output.version = CBOR_UINT0(BOOT_PARAM_VERSION);
+
+#if BOOT_PARAM_VERSION == 1
+	/* BootParam entry 2: AndroidDiceHandover:
+	 * uint(4, 0bytes) => AndroidDiceHandoverBstr
+	 * (value not touched in this func)
+	 */
+	ctx->output.dice_handover_bstr_label = CBOR_UINT0(4);
+	set_cbor_bstr_hdr16(ctx->output.dice_handover_bstr_hdr,
+			    sizeof(struct dice_handover_s));
+
+
+	/* BootParam entry 3: ReservedMem:
+	 * uint(5, 0bytes) => ReservedMemBstr
+	 * (value filled below in this func)
+	 */
+	ctx->output.res_mem_bstr_label = CBOR_UINT0(5);
+	set_cbor_bstr_hdr16(ctx->output.res_mem_bstr_hdr,
+			    sizeof(struct res_mem_s));
+
+	return fill_res_mem(&ctx->output.res_mem);
+#else /* BOOT_PARAM_VERSION == 0 */
 
 	/* BootParam entry 2: GSCBootParam:
 	 * uint(2, 0bytes) => GSCBootParam (filled in fill_gsc_boot_param)
@@ -933,6 +1023,7 @@ static inline bool fill_boot_param(
 	ctx->output.dice_handover_label = CBOR_UINT0(3);
 
 	return fill_gsc_boot_param(&ctx->output.gsc_boot_param);
+#endif /* BOOT_PARAM_VERSION */
 }
 
 /* Get (part of) BootParam structure: [offset .. offset + size). */

@@ -14,8 +14,15 @@
 extern "C" {
 #endif
 
+/* BootParam structure version */
+#define BOOT_PARAM_VERSION 0
+
 /* Size of BootParam structure in bytes */
+#if BOOT_PARAM_VERSION == 1
+#define BOOT_PARAM_SIZE 1045
+#else /* BOOT_PARAM_VERSION == 0 */
 #define BOOT_PARAM_SIZE 820
+#endif /* BOOT_PARAM_VERSION */
 
 /* Get (part of) BootParam structure: [offset .. offset + size) */
 size_t get_boot_param_bytes(
