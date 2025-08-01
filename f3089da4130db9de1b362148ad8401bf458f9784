@@ -61,6 +61,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce577fbf_c46f6575",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T20:38:04Z",
+      "side": 1,
+      "message": "This implementation assumes that the 2 port devices are processed in the correct order.  The devicetree doesn\u0027t guarantee the order of nodes with the same compatible, so this code could break.\n\nThe Boot Flags Register has fields for the I2C addresses assigned to port A and port B.\n\nCan we just do a simple lookup of the I2C address and see if matches the I2C address assigned by the devicetree?\n\n```\nif (cfg-\u003ei2c.addr \u003d\u003d boot_flags.porta_i2c1_trgt_addr)\n    connector_num \u003d 1;\nelse if (cfg-\u003ei2c.addr \u003d\u003d boot_flags.portb_i2c1_trgt_addr)\n    connector_num \u003d 2;\n```\n\nThe boot flags also has `port[a|b]_i2c2_trgt_addr` and `port[a|b]_i2c4_trgt_addr`, so I\u0027m not sure how all these fields are set by the PDC.",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 60
+      },
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ec6aa61_f0501d1b",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 8
