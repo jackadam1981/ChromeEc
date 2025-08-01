@@ -16,6 +16,24 @@
       "message": "I tested this change with `flash_ec` and it seems to work.",
       "revId": "50159a77310e3da9fc4daeba13f986fbd8d97e83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a2594f_05d35c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-01T20:45:34Z",
+      "side": 1,
+      "message": "Thanks, guess these were a leftover of that loader in a previous buildsystem and slipped in.",
+      "parentUuid": "1d0212ef_10e08a10",
+      "revId": "50159a77310e3da9fc4daeba13f986fbd8d97e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
