@@ -11,6 +11,9 @@ separate_arguments(EXTRA_EC_VERSION_FLAGS_LIST UNIX_COMMAND
 if("${dir_pw_third_party_nanopb}" STREQUAL "")
   set(dir_pw_third_party_nanopb "${ZEPHYR_NANOPB_MODULE_DIR}" CACHE PATH "" FORCE)
 endif()
+if("${dir_pw_third_party_chre}" STREQUAL "")
+  set(dir_pw_third_party_chre "${ZEPHYR_CHRE_MODULE_DIR}" CACHE PATH "" FORCE)
+endif()
 
 # One time setup: Zephyr does some strange handling of nanopb by linking the
 # sources directly into Zephyr instead of creating a static library which we
