@@ -22,6 +22,30 @@
       },
       "revId": "11436a03e56e4db85cbe7d001b0f6915350e6fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321a46f0_68bf1ba6",
+        "filename": "docs/case_closed_debugging_gsc.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-08-01T17:55:37Z",
+      "side": 1,
+      "message": "or may be \"(Caution: Exits from initial factory mode forever. As a result, cannot modify features like spi drive strength later.)\"",
+      "parentUuid": "5dac734a_00947906",
+      "range": {
+        "startLine": 346,
+        "startChar": 44,
+        "endLine": 346,
+        "endChar": 75
+      },
+      "revId": "11436a03e56e4db85cbe7d001b0f6915350e6fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
