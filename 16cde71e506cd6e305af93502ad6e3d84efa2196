@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18940cde_1896e5b3",
+        "filename": "zephyr/program/trulo/kaladin-ish/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-01T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdad7347_d16e3735",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2745360_0ff93833",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-31T15:41:42Z",
       "side": 1,
       "message": "Map directly to `bma4xx_interrupt`",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619eed6f_819defc4",
+        "filename": "zephyr/program/trulo/kaladin-ish/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-01T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2745360_0ff93833",
       "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c76c7e1_ec19aa96",
+        "filename": "zephyr/program/trulo/kaladin-ish/project.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-01T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a745318_96b90f23",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14045ed8_074d0047",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-07-31T15:41:42Z",
       "side": 1,
       "message": "This file isn\u0027t doing anything, you can just map the interrupts directly to bmi260_interrupt and bma4xx_interrupt.",
+      "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67d1b92_b45032e9",
+        "filename": "zephyr/program/trulo/kaladin-ish/src/sensor.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-01T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14045ed8_074d0047",
       "revId": "16cde71e506cd6e305af93502ad6e3d84efa2196",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
