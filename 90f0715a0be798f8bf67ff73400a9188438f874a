@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e3c2a5_cd41c7ff",
+        "filename": "zephyr/program/nissa/dirks/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-08-01T02:19:47Z",
+      "side": 1,
+      "message": "Suggestion: check `ppc_is_sourcing_vbus(0)` at the beginning of the function, return if ppc is not sourcing power.",
+      "revId": "90f0715a0be798f8bf67ff73400a9188438f874a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
