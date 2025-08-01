@@ -16,6 +16,46 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374f3ce6_f5e2de5a",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-01T15:46:28Z",
+      "side": 1,
+      "message": "Nit: Space required between rust and implementation.",
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbdd542a_591c3361",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-01T15:46:28Z",
+      "side": 1,
+      "message": "There is an action item on me to add Dynamically Sized Types which should translate to zero length arrays.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
