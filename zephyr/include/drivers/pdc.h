@@ -167,6 +167,38 @@ enum pdc_sbu_mux_mode {
 	PDC_SBU_MUX_MODE_MAX,
 };
 
+/**
+ * Used with pdc_set_pdr to describe the desired power policy / behavior
+ */
+enum pdc_power_policy {
+	/** Transition to or remain in the sink role, and allow external power
+	    role swap requests */
+	PDC_POWER_POLICY_SINK_ALLOW_SWAP,
+	/** Transition to or remain in the sink role, and block external power
+	    role swap requests */
+	PDC_POWER_POLICY_SINK_DISALLOW_SWAP,
+	/** Transition to or remain in the source role, and allow external power
+	    role swap requests */
+	PDC_POWER_POLICY_SOURCE_ALLOW_SWAP,
+	/** Transition to or remain in the source role, and block external power
+	    role swap requests */
+	PDC_POWER_POLICY_SOURCE_DISALLOW_SWAP,
+};
+
+/** Helper macro to set the policy to sink and allow or disallow external swaps
+ *  based on a boolean argument.
+ */
+#define PDC_POWER_POLICY_SINK(external_swap)                  \
+	((external_swap) ? PDC_POWER_POLICY_SINK_ALLOW_SWAP : \
+			   PDC_POWER_POLICY_SINK_DISALLOW_SWAP)
+
+/** Helper macro to set the policy to source and allow or disallow external
+ *  swaps based on a boolean argument.
+ */
+#define PDC_POWER_POLICY_SOURCE(external_swap)                  \
+	((external_swap) ? PDC_POWER_POLICY_SOURCE_ALLOW_SWAP : \
+			   PDC_POWER_POLICY_SOURCE_DISALLOW_SWAP)
+
 struct pdc_callback;
 
 /**
@@ -673,13 +705,41 @@ static inline int pdc_set_uor(const struct device *dev, union uor_t uor)
  *
  * @retval 0 on success
  * @retval -EBUSY if not ready to execute the command
+ * @retval -EINVAL if \p policy is invalid
  */
-static inline int pdc_set_pdr(const struct device *dev, union pdr_t pdr)
+static inline int pdc_set_pdr(const struct device *dev,
+			      enum pdc_power_policy policy)
 {
 	const struct pdc_driver_api *api =
 		(const struct pdc_driver_api *)dev->api;
+	union pdr_t pdr = { 0 };
 
 	__ASSERT(api->set_pdr != NULL, "SET_PDR is not optional");
+
+	switch (policy) {
+	case PDC_POWER_POLICY_SINK_ALLOW_SWAP:
+		pdr.swap_to_src = 0;
+		pdr.swap_to_snk = 1;
+		pdr.accept_pr_swap = 1;
+		break;
+	case PDC_POWER_POLICY_SINK_DISALLOW_SWAP:
+		pdr.swap_to_src = 0;
+		pdr.swap_to_snk = 1;
+		pdr.accept_pr_swap = 0;
+		break;
+	case PDC_POWER_POLICY_SOURCE_ALLOW_SWAP:
+		pdr.swap_to_src = 1;
+		pdr.swap_to_snk = 0;
+		pdr.accept_pr_swap = 1;
+		break;
+	case PDC_POWER_POLICY_SOURCE_DISALLOW_SWAP:
+		pdr.swap_to_src = 1;
+		pdr.swap_to_snk = 0;
+		pdr.accept_pr_swap = 0;
+		break;
+	default:
+		return -EINVAL;
+	}
 
 	return api->set_pdr(dev, pdr);
 }
