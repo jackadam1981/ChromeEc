@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c207e5c_94af62f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-01T00:12:36Z",
+      "side": 1,
+      "message": "Can we add unit tests for the new functions? It looks like they\u0027re tested indirectly with the auth commands test, but it would be nice to have some direct tests.",
+      "revId": "d0ff1fe2d80eef8b9713e2f27ae9e309a0639f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
