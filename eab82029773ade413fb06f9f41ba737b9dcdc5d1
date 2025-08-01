@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06a021e_8c9334a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2025-08-01T23:53:49Z",
+      "side": 1,
+      "message": "Thanks! Refactoring LGTM.",
+      "revId": "eab82029773ade413fb06f9f41ba737b9dcdc5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f20a4027_bc2d7649",
+        "filename": "common/fpsensor/fpsensor_crypto.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2025-08-01T23:53:49Z",
+      "side": 1,
+      "message": "Where do we define IKM_SIZE_BYTES and IKM_OTP_OFFSET_BYTES? The assumption is\nif OTP_KEY is available, then IKM_SIZE_BYTES \u003d CONFIG_ROLLBACK_SECRET_SIZE + TPM_SEED_SIZE + OTP_KEY_SIZE_BYTES.\nelse IKM_SIZE_BYTES \u003d CONFIG_ROLLBACK_SECRET_SIZE + TPM_SEED_SIZE.\n\nSo KIM_OTP_OFFSET_BYTES should always be CONFIG_ROLLBACK_SECRET_SIZE + TPM_SEED_SIZE. \n\nTheoretically, get_otp_key may overlap with tpm_seed or leave a gap between tpm_seed and otp_key.\n\nIt is probably good to have one comment on what get_otp_key meant to do.",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 21
+      },
+      "revId": "eab82029773ade413fb06f9f41ba737b9dcdc5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
