@@ -20,6 +20,9 @@ config TEST_SUITE_PDC_POLICY
 config TEST_SUITE_PDC_POLICY_SINK
 	bool "Enable PDC policy sink tests"
 
+config TEST_SUITE_PDC_BATTERY_STATUS
+  bool "Enable PDC battery status tests"
+
 config TEST_SUITE_PDC_POLICY_DEAD_BATTERY
 	bool "Enable PDC Dead Battery policy tests"
 
