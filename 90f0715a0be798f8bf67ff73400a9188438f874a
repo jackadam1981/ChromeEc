@@ -34,6 +34,24 @@
       "parentUuid": "34e3c2a5_cd41c7ff",
       "revId": "90f0715a0be798f8bf67ff73400a9188438f874a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3121c608_bb0692d4",
+        "filename": "zephyr/program/nissa/dirks/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2025-08-01T11:22:07Z",
+      "side": 1,
+      "message": "I\u0027ve updated the test code in this CL so I remove the LOW_COVERAGE_REASON.",
+      "parentUuid": "4567adea_34fc6333",
+      "revId": "90f0715a0be798f8bf67ff73400a9188438f874a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
