@@ -31,10 +31,20 @@
 	};
 };
 
+&pinctrl {
+	i2c0_clk_gpb3_default: i2c0_clk_gpb3_default {
+		gpio-voltage = "1v8";
+	};
+	i2c0_data_gpb4_default: i2c0_data_gpb4_default {
+		gpio-voltage = "1v8";
+	};
+};
+
 &i2c0 {
 	pinctrl-0 = <&i2c0_clk_gpb3_default
 		     &i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
+	target-enable;
 
 	label = "I2C_SENSOR";
 	clock-frequency = <I2C_BITRATE_FAST>;
