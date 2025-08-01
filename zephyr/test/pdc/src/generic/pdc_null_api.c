@@ -119,9 +119,9 @@ ZTEST(pdc_api_null_check, test_pdc_set_uor)
 
 ZTEST(pdc_api_null_check, test_pdc_set_pdr)
 {
-	union pdr_t pdr = { 0 };
+	enum pdc_power_policy policy = 0;
 
-	EXPECT_ASSERT(pdc_set_pdr(&fake_pdc, pdr));
+	EXPECT_ASSERT(pdc_set_pdr(&fake_pdc, policy));
 }
 
 ZTEST(pdc_api_null_check, test_pdc_set_cc_callback)
