@@ -16,6 +16,190 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4fe5793995e738e75204b980997fc60621ecd136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9865ae_41c78b23",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "This API is not used.  `SET_BATTERY_CAP` is invoked using the real driver code.\n\n`struct emul_pdc_driver_api` is a backend API for the emulator.  The backend API provides hooks to manipulate the emulator state to mock real events (e.g. connect a device) or to read out the hardware state.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 58
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94db5f1d_d5f9e26c",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "Also not used.",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 30
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8fdd90c_f881d00a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 4470,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tpdc_update_battery_status(\u0026pdc_data[i]-\u003eport);\n```",
+      "range": {
+        "startLine": 4470,
+        "startChar": 2,
+        "endLine": 4470,
+        "endChar": 27
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07caa8db_09d10667",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 4476,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "Don\u0027t use the port number index. Pass the `struct pdc_port_t *` directly.",
+      "range": {
+        "startLine": 4476,
+        "startChar": 38,
+        "endLine": 4476,
+        "endChar": 46
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b50f473_24982738",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 4535,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "Use `struct pdc_port_t *`",
+      "range": {
+        "startLine": 4535,
+        "startChar": 42,
+        "endLine": 4535,
+        "endChar": 50
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fae754d_8f935bdd",
+        "filename": "zephyr/test/pdc/src/generic/pdc_battery_status.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "Move this to the setup function so both test can share this.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8e6fcb_64a07d83",
+        "filename": "zephyr/test/pdc/src/generic/pdc_battery_status.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "Use `pdc_power_mgmt_wait_for_sync()` instead.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44934fb0_2354daa8",
+        "filename": "zephyr/test/pdc/src/generic/pdc_battery_status.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-01T18:09:28Z",
+      "side": 1,
+      "message": "`pdc_power_mgmt_wait_for_sync()`",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
