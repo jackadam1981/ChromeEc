@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0160ed6a_0766fa89",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-08-01T09:34:04Z",
+      "side": 0,
+      "message": "Is this not applicable anymore or are we ensuring this condition by some other means?",
+      "range": {
+        "startLine": 723,
+        "startChar": 4,
+        "endLine": 726,
+        "endChar": 19
+      },
+      "revId": "b5cf5fc62528e1299010b2b2a96b517c6b7af1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
