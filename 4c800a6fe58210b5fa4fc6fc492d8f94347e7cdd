@@ -166,6 +166,30 @@
       },
       "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f3f494_8d868586",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-02T04:35:24Z",
+      "side": 0,
+      "message": "With the latest patchset, there is no ned to change config_allowed.txt and I\u0027ve verified that the OTP_KEY code in rollback_add_entropy executes successfully. PTAL and let me know of concerns or help to mark resolved",
+      "parentUuid": "17836ab9_14fa3a73",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 14
+      },
+      "revId": "4c800a6fe58210b5fa4fc6fc492d8f94347e7cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
