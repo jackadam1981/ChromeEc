@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8530b040_de3c9b77",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-08-02T04:15:29Z",
+      "side": 1,
+      "message": "I think i2c1 and i2c4 are configured by ADCIN strapping. i2c2 now is configured by appconfig as 0x69/0x68 to align realtek PDC.",
+      "parentUuid": "ce577fbf_c46f6575",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 60
+      },
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ec6aa61_f0501d1b",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 8
