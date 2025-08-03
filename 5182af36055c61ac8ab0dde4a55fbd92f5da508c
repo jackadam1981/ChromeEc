@@ -16,6 +16,40 @@
       "message": "Ran the test using both Ellisys and GRL testers in Magma",
       "revId": "5182af36055c61ac8ab0dde4a55fbd92f5da508c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327e1053_be2b34f9",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-03T18:29:38Z",
+      "side": 1,
+      "message": "Nit: I think this change and the config.h change should be their own CL.",
+      "revId": "5182af36055c61ac8ab0dde4a55fbd92f5da508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48f467e_a51c5fa8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3454,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-03T18:29:38Z",
+      "side": 1,
+      "message": "I think the current patchset is experimental on some level, but if we actually don\u0027t need to delay here, then there\u0027s no reason to start and check a 0-ms timer. We should just be able to enable auto toggle immediately.\n\nThat being said, you might still need to do something here, depending on the way the other states are structured. It\u0027s kind of long to explain, so I\u0027ll say more on the bug.",
+      "revId": "5182af36055c61ac8ab0dde4a55fbd92f5da508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

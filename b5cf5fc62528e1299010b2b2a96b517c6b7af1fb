@@ -22,6 +22,30 @@
       },
       "revId": "b5cf5fc62528e1299010b2b2a96b517c6b7af1fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6431c9_17c79e73",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-03T18:29:38Z",
+      "side": 0,
+      "message": "The underlying requirement here is that we follow the type-C DRP toggle timing. The cycle must take 50-100 ms, and the port must present Rp for 30-70% of that cycle. \n\nAs implemented with DRP Autotoggle, we enter into an unattached state, then wait, then enable Autotoggle in the TCPC, which has its own configuration for the cycle parameters. The first full cycle while detached is partly managed by the EC and partly by the TCPC. In order for that cycle to be correct, the initial delay in the unattached state, plus the TCPC\u0027s delay in the first part of Autotoggle, must add up to a compliant cycle. As I will describe elsewhere, the structure of the first part of the delay was unnecessarily complicated.\n\nThis test was and is kind of a weird way to test that requirement. It changes our active policy rather than transitioning from an attached state to an unattached state, and it checks the second part of the cycle but not the first. However, I don\u0027t think we necessarily need to fix that in this CL. A better test would directly check the CC line state, but our test environment doesn\u0027t simulate that, so we\u0027d have to make do with checking something like the TCPC registers, and Autotoggle would still make that a little complicated.",
+      "parentUuid": "0160ed6a_0766fa89",
+      "range": {
+        "startLine": 723,
+        "startChar": 4,
+        "endLine": 726,
+        "endChar": 19
+      },
+      "revId": "b5cf5fc62528e1299010b2b2a96b517c6b7af1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
