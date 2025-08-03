@@ -22,6 +22,30 @@
       },
       "revId": "7a2b92291ba2e6b351682b70f97e5ecd3b97ba20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb872f8_f2b3719f",
+        "filename": "board/bugzzy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-03T17:50:09Z",
+      "side": 1,
+      "message": "I think you could argue that it was never true for bugzzy, since this file was copied from a different model. However, the value in the file _is_ approximately 20% higher than what I think is the minimum it could possibly be and still always work.\n\nNevertheless, I think I can come up with a more meaningful comment here.",
+      "parentUuid": "ffef4da8_7b1e4e93",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 37
+      },
+      "revId": "7a2b92291ba2e6b351682b70f97e5ecd3b97ba20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
