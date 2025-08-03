@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c0f2d9_349d248f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-03T19:11:06Z",
+      "side": 1,
+      "message": "It looks like this is a copy of CL:6112739, but it\u0027s hard to tell what you changed. Can you download that branch, fix up this commit, and then re-upload, so we can see the newest changes? (What you upload should have the same change ID as that linked CL. The upload will then create a new patchset of that CL.)",
+      "revId": "2645ebb2dbe84c392834ee0649c720255c02b57d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
