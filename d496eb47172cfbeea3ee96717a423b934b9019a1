@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fbef9a7_4e897c47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:53:14Z",
+      "side": 1,
+      "message": "Let\u0027s change this to `zephyr`, since it\u0027s a generic Zephyr test, not specific to `helipilot`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8c0d8f_daaa120a",
+        "filename": "zephyr/program/fpmcu/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:53:14Z",
+      "side": 1,
+      "message": "Not part of NULL pointer test",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548ed90a_2d1d7113",
+        "filename": "zephyr/test/hwtest/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:53:14Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7523cc9c_e6913066",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:53:14Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 47
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a57e78_120ee81d",
+        "filename": "zephyr/test/hwtest/src/null_pointer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:53:14Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and remove this conditional since we\u0027re going to always be enabling the null pointer exception detection.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c71493_6e513ff3",
+        "filename": "zephyr/test/hwtest/src/null_pointer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:53:14Z",
+      "side": 1,
+      "message": "We can remove this since the assert itself should log.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
