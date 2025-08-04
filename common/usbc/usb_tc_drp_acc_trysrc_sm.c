@@ -3483,6 +3483,7 @@ __maybe_unused static void tc_drp_auto_toggle_run(const int port)
 
 __maybe_unused static void tc_drp_auto_toggle_exit(const int port)
 {
+	/* rebase 2 */
 	pd_timer_disable(port, TC_TIMER_TIMEOUT);
 }
 
