@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0109c7f_564187b4",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T22:07:21Z",
+      "side": 1,
+      "message": "Let\u0027s make it more explicit, since it\u0027s not obvious why we have to use this feature:\n\n```suggestion\n# When HW_STACK_PROTECTION is enabled, the NULL pointer exception page size\n# (CONFIG_CORTEX_M_NULL_POINTER_EXCEPTION_PAGE_SIZE)\n# must have size greater or equal ARM_MPU_REGION_MIN_ALIGN_AND_SIZE (0x80).\n# However that MPU configuration prevents access to the NPCX ROM functions at\n# address 0x40-x0x5c.\n#\n# In order to keep HW_STACK_PROTECTION enabled, enable NULL pointer exception detection via the Data Watchpoint and Trace (DWT) unit.\n```",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 60
+      },
+      "revId": "10c810d8e82ab08d3e3e516c6e455c96428e9149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
