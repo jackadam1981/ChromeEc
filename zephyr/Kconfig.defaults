@@ -56,4 +56,8 @@ config SHELL_BACKEND_SERIAL_INIT_PRIORITY
 config I2C_ALLOW_NO_STOP_TRANSACTIONS
 	default y
 
-orsource "Kconfig.defaults-$(ARCH)"
+config LTO
+	default y if !X86 && !SOC_POSIX
+
+config ISR_TABLES_LOCAL_DECLARATION
+	default y
