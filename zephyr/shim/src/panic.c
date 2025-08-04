@@ -213,6 +213,23 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 }
 #endif /* CONFIG_ZTEST_FATAL_HOOK */
 
+#ifdef CONFIG_ASSERT_NO_FILE_INFO
+__override void assert_post_action(void)
+{
+	panic_set_reason(PANIC_SW_ASSERT, -1, task_get_current());
+	panic_reboot();
+	__ASSERT_UNREACHABLE;
+}
+#else
+__override void assert_post_action(const char *file, unsigned int line)
+{
+	ARG_UNUSED(file);
+	panic_set_reason(PANIC_SW_ASSERT, (line & 0xffff), task_get_current());
+	panic_reboot();
+	__ASSERT_UNREACHABLE;
+}
+#endif
+
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 {
 	struct panic_data *const pdata = get_panic_data_write();
