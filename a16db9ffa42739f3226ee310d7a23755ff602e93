@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304652d3_7ab6ad22",
+        "filename": "zephyr/program/nissa/dirks/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-04T10:32:24Z",
+      "side": 1,
+      "message": "could you not merge these two conditions? and the one on the else below",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "a16db9ffa42739f3226ee310d7a23755ff602e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
