@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8704d69e_d80d9d4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-04T16:59:21Z",
+      "side": 1,
+      "message": "Looks like this test is failing the Renode CQ:\n\n```\nTest \"null_pointer\": FAILED\n```\n\n```\nDEBUG:Running command: \"make BOARD\u003dbloonchipper -j test-null_pointer\"\nmake: *** No rule to make target \u0027test-null_pointer\u0027.  Stop.\nERROR:failed to build null_pointer: Command \u0027[\u0027make\u0027, \u0027BOARD\u003dbloonchipper\u0027, \u0027-j\u0027, \u0027test-null_pointer\u0027]\u0027 returned non-zero exit status 2.\nDEBUG:Running command: \"make BOARD\u003dbloonchipper -j test-panic\"\n```\n\nI think the issue is that it\u0027s trying to build the EC version of the test. Right now the `run_device_tests.py` script assumes that there is an EC test for every Zephyr test (except for the upstream Zephyr tests).",
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd8c0d8f_daaa120a",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 3
