@@ -160,6 +160,21 @@ register_ish_project(
 )
 
 register_ish_project(
+    project_name="pujjocento-ish",
+    zephyr_board="intel_ish_5_4_1",
+    dts_overlays=[
+        here / "pujjocento-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "pujjocento-ish" / "project.conf",
+        # Uncomment the following line for UART support
+        # here / "pujjocento-ish" / "debug.conf",
+        here / "dsp_comms.conf",
+    ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+)
+
+register_ish_project(
     project_name="pujjolo-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
