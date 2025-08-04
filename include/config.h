@@ -5040,6 +5040,9 @@
 /* The size in bytes of the FIFO used for event logging */
 #define CONFIG_EVENT_LOG_SIZE 512
 
+/* Event-driven CC detection */
+#undef CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE
+
 /* Save power by waking up on VBUS rather than polling CC */
 #define CONFIG_USB_PD_LOW_POWER
 
