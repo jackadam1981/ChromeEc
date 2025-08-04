@@ -16,6 +16,24 @@
       "message": "Does this affect latency? in S0? Would it be possible to attach this to the PM subsystem so we can throttle the hooks based on the current PM state?",
       "revId": "4201632974b7532093dbe6393989c89365fade92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352674d6_6f698b30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-08-04T05:35:55Z",
+      "side": 1,
+      "message": "Yes as per the experiments done any activities from ISH when system is in suspended state triggers wake leading to SLP_S0 assertion for short interval.",
+      "parentUuid": "0a119d2c_9518774c",
+      "revId": "4201632974b7532093dbe6393989c89365fade92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
