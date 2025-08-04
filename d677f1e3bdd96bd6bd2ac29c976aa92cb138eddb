@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f579ddbe_0069e2bc",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-04T16:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87647bbf_a32fb93c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 105
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "374f3ce6_f5e2de5a",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4a84cb_052c2f9b",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-04T16:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374f3ce6_f5e2de5a",
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ececd33b_aecc8864",
@@ -88,6 +130,30 @@
       "writtenOn": "2025-08-01T21:03:22Z",
       "side": 1,
       "message": "Nit - space after period",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d528cadc_df6b950c",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-04T16:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ececd33b_aecc8864",
       "range": {
         "startLine": 13,
         "startChar": 22,
@@ -138,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06815de4_3b64f81d",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-04T16:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f02e63f_185b70ae",
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2c821d3_6fd1ca53",
@@ -163,6 +247,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "577d9d03_cff5967e",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-04T16:58:34Z",
+      "side": 1,
+      "message": "Since this is in android\u0027s internal private repo, I\u0027m not sure if I should add links here as it won\u0027t be accessible to folks not working on Android.",
+      "parentUuid": "e2c821d3_6fd1ca53",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ccc9bc1_5ad74f49",
         "filename": "docs/ectool_rust_porting.md",
         "patchSetId": 1
@@ -174,6 +282,30 @@
       "writtenOn": "2025-08-01T21:03:22Z",
       "side": 1,
       "message": "Add the rust language to all the remaining code blocks.\n```suggestion\n```rust\n```\n\nNote that the inline code blocks don\u0027t support a language unfortunately.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "d677f1e3bdd96bd6bd2ac29c976aa92cb138eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654ab1d9_99310c41",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-04T16:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccc9bc1_5ad74f49",
       "range": {
         "startLine": 46,
         "startChar": 0,
