@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "459bd988_3b7eaff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-04T08:59:32Z",
+      "side": 1,
+      "message": "Add a new property in the latest patch set. An example usage is CL:6678297.",
+      "parentUuid": "8b0c6a00_6a4bedd7",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fab80012_7181786c",
@@ -141,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "835db1e4_9b1e0693",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-04T08:59:32Z",
+      "side": 1,
+      "message": "Rename ucsi_idx as port_index_on_chip.",
+      "parentUuid": "5ec6aa61_f0501d1b",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db956b17_3f4525e7",
@@ -154,6 +190,24 @@
       "writtenOn": "2025-08-01T13:35:50Z",
       "side": 1,
       "message": "Same as in cmd_is_vconn_sourcing.",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647e5c27_856b9182",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1926,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-04T08:59:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db956b17_3f4525e7",
       "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
