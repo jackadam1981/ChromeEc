@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba784e36_659b0ea4",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-04T02:30:15Z",
+      "side": 1,
+      "message": "Set Bit4 means WDT can be stop by Bit 5.\nMaybe I can skip this step.",
+      "parentUuid": "ef7e2bb5_4abf029f",
+      "range": {
+        "startLine": 473,
+        "startChar": 7,
+        "endLine": 473,
+        "endChar": 20
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c8bf58c_9e8338b2",
         "filename": "util/itecomdbgr.cc",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-31T22:20:55Z",
       "side": 1,
       "message": "you can use `check_wdt()` which already checks `conf-\u003ewdt_enable`.",
+      "range": {
+        "startLine": 781,
+        "startChar": 3,
+        "endLine": 781,
+        "endChar": 14
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2448703_c442da19",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-04T02:30:15Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "7c8bf58c_9e8338b2",
       "range": {
         "startLine": 781,
         "startChar": 3,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6b926a9_4a88cacd",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-04T02:30:15Z",
+      "side": 1,
+      "message": "Add this for change boundary from 256K to 4K.",
+      "parentUuid": "12a3cd9d_3d8c84be",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 21
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19ac845e_ce2890d3",
         "filename": "util/itecomdbgr.cc",
         "patchSetId": 16
@@ -83,6 +155,30 @@
       "writtenOn": "2025-07-31T22:20:55Z",
       "side": 1,
       "message": "no need to check.",
+      "range": {
+        "startLine": 1001,
+        "startChar": 5,
+        "endLine": 1001,
+        "endChar": 21
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fbc91b_663cb53e",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-04T02:30:15Z",
+      "side": 1,
+      "message": "Add this for change boundary from 256K to 4K.",
+      "parentUuid": "19ac845e_ce2890d3",
       "range": {
         "startLine": 1001,
         "startChar": 5,
