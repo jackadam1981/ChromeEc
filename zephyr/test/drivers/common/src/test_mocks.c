@@ -16,7 +16,6 @@ DEFINE_FAKE_VALUE_FUNC(int, init_rom_copy, int, int, int);
 DEFINE_FAKE_VALUE_FUNC(int, system_jumped_late);
 DEFINE_FAKE_VALUE_FUNC(int, system_is_locked);
 DEFINE_FAKE_VOID_FUNC(system_reset, int);
-DEFINE_FAKE_VOID_FUNC(assert_post_action, const char *, unsigned int);
 
 /* Mocks for common/lid_angle.c */
 DEFINE_FAKE_VOID_FUNC(lid_angle_peripheral_enable, int);
@@ -43,7 +42,6 @@ static void fff_reset_rule_before(const struct ztest_unit_test *test,
 	RESET_FAKE(system_jumped_late);
 	RESET_FAKE(system_is_locked);
 	RESET_FAKE(system_reset);
-	RESET_FAKE(assert_post_action);
 	RESET_FAKE(lid_angle_peripheral_enable);
 	RESET_FAKE(gpio_config_unused_pins);
 	RESET_FAKE(gpio_configure_port_pin);
