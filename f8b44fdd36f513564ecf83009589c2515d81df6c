@@ -16,6 +16,70 @@
       "message": "Hi Abe, here is my understanding on the unit test to be written.\n\n1. As we can meet 5v/100mA so first connect the partner emulator with 5V/100mA sink caps. which I added here.\n2. To check the received sink caps match with initial sink caps, which is doing already in this file, do we need to check it again?\n3. Change the partner\u0027s sink caps so that they ask for more than 3A, similar to first step, how to implement this?",
       "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5141860a_01d42eca",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-04T21:57:53Z",
+      "side": 1,
+      "message": "\u003e 1. As we can meet 5v/100mA so first connect the partner emulator with 5V/100mA sink caps. which I added here.\n\nCorrect, but your code reuses the existing 5V/3A caps. You\u0027ll need to define new ones for the purpose of this 5V/100 mA test.\n\n\u003e 2. To check the received sink caps match with initial sink caps, which is doing already in this file, do we need to check it again?\n\nThis will be a new test with new sink caps, so yes. You can reuse the existing code or copy it, whichever makes more sense. You\u0027ll need to compare for the sink caps for this test.\n\n\u003e 3. Change the partner\u0027s sink caps so that they ask for more than 3A, similar to first step, how to implement this?\n\nChanging the partner sink caps would just be copying the PDO assignment lines from the before function but with 3A PDOs. I think `TEST_INITIAL_SINK_CAP` would be fine here.\n\nThen you need to get the partner to send a new Request with Cap Mismatch set. Right now, the partner emulator has [code to send a Request](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/tcpc/emul_tcpci_partner_snk.c;l\u003d299;drc\u003d2e289a5e4366001abcb414b0d29d835c6c29fb9e), but it\u0027s only inside the Source Cap handling. You\u0027ll need to make a small externally visible function to send a Request and then call that from the test. It will probably look like the function to [send Source Caps](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/tcpc/emul_tcpci_partner_snk.c;l\u003d54;drc\u003d2e289a5e4366001abcb414b0d29d835c6c29fb9e), but with a Request message instead.\n\nThen, the PE should send Get Sink Caps and Source Caps again.",
+      "parentUuid": "3e4f788b_0ed435aa",
+      "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086a3344_ce792d28",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-04T21:57:53Z",
+      "side": 1,
+      "message": "These sink caps are for the existing 5V/3A test. You\u0027ll need to add new 5V/100mA sink caps for this test.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 57
+      },
+      "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fcf2ddc_9ad876b9",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-04T21:57:53Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `ali...\n\nPlease remove the trailing whitespace.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
