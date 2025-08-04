@@ -3479,6 +3479,8 @@ __maybe_unused static void tc_drp_auto_toggle_run(const int port)
 			set_state_tc(port, TC_LOW_POWER_MODE);
 		}
 	}
+
+	/* rebase 1*/
 }
 
 __maybe_unused static void tc_drp_auto_toggle_exit(const int port)
