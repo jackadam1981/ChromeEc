@@ -289,6 +289,7 @@ class CompareBuilds:
             "brox-ish",
             "kinmen-ish",
             "ptl-ish",
+            "pujjocento-ish",
             "pujjolo-ish",
             "trulo-ish",
             "uldrenite-ish",
