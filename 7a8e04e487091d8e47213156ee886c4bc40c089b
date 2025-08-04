@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be03476c_c7c9d379",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2900,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-04T23:54:09Z",
+      "side": 1,
+      "message": "The previous logic\n```\n\telse if (pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP) \u0026\u0026\n\t\t drp_state[port] !\u003d PD_DRP_FORCE_SOURCE \u0026\u0026\n\t\t drp_state[port] !\u003d PD_DRP_FREEZE)\n\t\tset_state_tc(port, TC_UNATTACHED_SNK);\n```\nwould have gone directly to `TC_UNATTACHED_SNK` in the case of `PD_DRP_FORCE_SINK` or `PD_DRP_TOGGLE_OFF`. With the new code, I think it will go through low power mode and then to Unattached.SNK in the case of toggle off, which is probably fine. In the case of force sink, the new code will stay in Unattached.SRC, which is wrong.\n\nI would think that a better formulation of this code would more obviously exhaust the `PD_DRP_` values in this `if`/`else`. For now, how about leaving the check on this condition the same as it was before and adding a TODO referencing the cleanup bug I created?",
+      "revId": "7a8e04e487091d8e47213156ee886c4bc40c089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23b3f8a_52f8b97d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3463,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-04T23:54:09Z",
+      "side": 1,
+      "message": "I think this could probably also be removed, but I\u0027m not totally sure. Can you replace the comment here with a TODO like, \"TODO(b/436338613): This flag will probably never be set. If so, remove this check and simplify this state.\"",
+      "range": {
+        "startLine": 3459,
+        "startChar": 0,
+        "endLine": 3463,
+        "endChar": 29
+      },
+      "revId": "7a8e04e487091d8e47213156ee886c4bc40c089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124997b0_23e645ac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3464,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-04T23:54:09Z",
+      "side": 1,
+      "message": "Nit: Remove blank line",
+      "revId": "7a8e04e487091d8e47213156ee886c4bc40c089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
