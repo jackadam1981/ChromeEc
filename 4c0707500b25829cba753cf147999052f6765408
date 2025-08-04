@@ -58,6 +58,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b1e0a5_3f4c3a47",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-08-04T10:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6009c57_06924229",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305dd647_c8559203",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-08-04T10:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6009c57_06924229",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4add1bc_cefdbe4f",
@@ -106,6 +142,60 @@
       "writtenOn": "2025-07-09T17:11:55Z",
       "side": 1,
       "message": "Line length. Should be fixed by `cros format`.",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78d8584_852dc796",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-08-04T10:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef857de_473a78b1",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca93b3e5_efd61783",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-08-04T10:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef857de_473a78b1",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ac006a_8076a3c2",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-08-04T10:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef857de_473a78b1",
       "revId": "4c0707500b25829cba753cf147999052f6765408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
