@@ -135,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c81733_287e24cf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 4470,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-08-04T10:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8fdd90c_f881d00a",
+      "range": {
+        "startLine": 4470,
+        "startChar": 2,
+        "endLine": 4470,
+        "endChar": 27
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07caa8db_09d10667",
@@ -171,6 +195,30 @@
       "writtenOn": "2025-08-01T18:09:28Z",
       "side": 1,
       "message": "Use `struct pdc_port_t *`",
+      "range": {
+        "startLine": 4535,
+        "startChar": 42,
+        "endLine": 4535,
+        "endChar": 50
+      },
+      "revId": "4fe5793995e738e75204b980997fc60621ecd136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f920ea_b4ea6564",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 4535,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-08-04T10:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b50f473_24982738",
       "range": {
         "startLine": 4535,
         "startChar": 42,
