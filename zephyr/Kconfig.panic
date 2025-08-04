@@ -47,13 +47,6 @@ config PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED
 	  Calling the crash console command with multiple crash arguments
 	  will result in nested crashes in the order specified.
 
-config PLATFORM_EC_DEBUG_ASSERT_BRIEF
-	bool "Enable brief panic messages"
-	default n
-	help
-	  On assertion failure, prints only the file name and the line number.
-	  Boards typically define this option in order to reduce image size.
-
 config PLATFORM_EC_PANIC_STRIP_GPR
 	bool "Strip general purpose registers"
 	help
