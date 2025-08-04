@@ -35,6 +35,15 @@
 #define CPRINTS(format, args...)
 #endif
 
+#define DP_STATUS_HPD_IRQ BIT(0)
+#define DP_STATUS_HPD_LVL BIT(1)
+#define DP_STATUS_EXIT_DP_MODE_REQ BIT(2)
+#define DP_STATUS_USB_CONFIG_REQ BIT(3)
+#define DP_STATUS_UFP_D_CONNECTED BIT(5)
+#define IS_DISCONNECTED(status) !(status & DP_STATUS_UFP_D_CONNECTED)
+#define HPD_LOW(status) (status & (DP_STATUS_HPD_LVL | DP_STATUS_HPD_IRQ)) == 0
+#define EXIT_REQUESTED(status) \
+	(status & (DP_STATUS_EXIT_DP_MODE_REQ | DP_STATUS_USB_CONFIG_REQ))
 /*
  * Note: the following DP-related variables must be kept as-is since
  * some boards are using them in their board-specific code.
@@ -644,8 +653,9 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	mux_state_t mux_state;
+	uint32_t status = payload[1];
 
-	dp_status[port] = payload[1];
+	dp_status[port] = status;
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl))
 		/*
@@ -659,6 +669,16 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		return 1;
+	}
+
+	/*
+	 * The UFP can request to exit DP mode, switch to USB, or signal a
+	 * disconnect. HPD low and IRQ low also indicates a disconnect.
+	 */
+	if (EXIT_REQUESTED(status) || IS_DISCONNECTED(status) ||
+	    HPD_LOW(status)) {
+		pd_dpm_request(port, DPM_REQUEST_EXIT_MODES);
 		return 1;
 	}
 
