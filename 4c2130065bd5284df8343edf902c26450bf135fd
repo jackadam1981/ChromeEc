@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c20e167_8ebfb317",
+        "filename": "power/common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-04T05:37:10Z",
+      "side": 1,
+      "message": "Unify format string can save 12 bytes.",
+      "range": {
+        "startLine": 1206,
+        "startChar": 11,
+        "endLine": 1206,
+        "endChar": 29
+      },
+      "revId": "4c2130065bd5284df8343edf902c26450bf135fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
