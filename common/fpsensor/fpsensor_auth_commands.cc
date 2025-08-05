@@ -200,6 +200,9 @@ fp_command_establish_session(struct host_cmd_handler_args *args)
 {
 	const auto *p = static_cast<const ec_params_fp_establish_session *>(
 		args->params);
+	static constexpr uint8_t tpm_seed_aad[] = { 't', 'p', 'm', '_',
+						    's', 'e', 'e', 'd' };
+	constexpr auto aad = std::span{ tpm_seed_aad };
 
 	if (!(global_context.fp_encryption_status &
 	      FP_CONTEXT_SESSION_NONCE_SET)) {
@@ -215,21 +218,21 @@ fp_command_establish_session(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	}
 
-	static_assert(sizeof(global_context.user_id) == sizeof(p->enc_user_id));
-	std::array<uint8_t, sizeof(global_context.user_id)> raw_user_id;
+	static_assert(sizeof(global_context.tpm_seed) ==
+		      sizeof(p->enc_tpm_seed));
+	CleanseWrapper<std::array<uint8_t, sizeof(global_context.tpm_seed)> >
+		tpm_seed;
 
-	ret = decrypt_data_with_session_key(session_key, p->enc_user_id,
-					    raw_user_id, p->nonce, p->tag,
-					    std::span<const uint8_t>{});
+	ret = decrypt_data_with_session_key(session_key, p->enc_tpm_seed,
+					    tpm_seed, p->nonce, p->tag, aad);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_ERROR;
 	}
 
-	/* Set the user_id. */
-	std::ranges::copy(raw_user_id, global_context.user_id.begin());
-
-	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	global_context.fp_encryption_status |= FP_CONTEXT_USER_ID_SET;
+	/* Set the TPM Seed. */
+	std::ranges::copy(tpm_seed, global_context.tpm_seed.begin());
+	global_context.fp_encryption_status |= FP_ENC_STATUS_SEED_SET;
+	global_context.fp_encryption_status &= ~FP_CONTEXT_SESSION_NONCE_SET;
 	global_context.fp_encryption_status |=
 		FP_CONTEXT_STATUS_SESSION_ESTABLISHED;
 
