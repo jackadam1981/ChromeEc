@@ -16,6 +16,24 @@
       "message": "Nit: This function is not directly related to motion sensors. Maybe rename it to something more generic, like sensor_init()?",
       "revId": "2b11c0a01e877e3118b90dd4ad3cdd94e073d84b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68eec857_55d6f541",
+        "filename": "zephyr/program/trulo/kaladin/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-05T04:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "053d9ae7_459081b5",
+      "revId": "2b11c0a01e877e3118b90dd4ad3cdd94e073d84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
