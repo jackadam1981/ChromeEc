@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20970b1_988e828b",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-08-05T15:38:51Z",
+      "side": 1,
+      "message": "I think these should be added to /trulo/kaladin/project.conf as it\u0027s a battery specific behavior and may not apply to all future trulo ITE devices.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "9595b823ab3c59eefbb012fb01ae81d817b179b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
