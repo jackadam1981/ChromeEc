@@ -34,6 +34,24 @@
       "parentUuid": "0a119d2c_9518774c",
       "revId": "4201632974b7532093dbe6393989c89365fade92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b18b978_cdb91f73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T16:29:50Z",
+      "side": 1,
+      "message": "It should be possible to alter the tick interval at run-time.  The interval get\u0027s reloaded every time the [tick runs](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/hooks.c;l\u003d86;drc\u003d9c9df9c7d40daf7f77f8b4132aa959ab024b219c)",
+      "parentUuid": "352674d6_6f698b30",
+      "revId": "4201632974b7532093dbe6393989c89365fade92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
