@@ -254,63 +254,86 @@ test_static enum ec_error_list test_fp_generate_session_key(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list
-test_fp_decrypt_data_with_gsc_session_key_in_place(void)
+test_static enum ec_error_list test_fp_decrypt_data_with_session_key(void)
 {
-	std::array<uint8_t, 32> gsc_session_key = {
-		0X1A, 0X1A, 0X3C, 0X33, 0X7F, 0XAE, 0XF9, 0X3E,
-		0XA8, 0X7C, 0XE4, 0XEC, 0XD9, 0XFF, 0X45, 0X8A,
-		0XB6, 0X2F, 0X75, 0XD5, 0XEA, 0X25, 0X93, 0X36,
-		0X60, 0XF1, 0XAB, 0XD2, 0XF4, 0X9F, 0X22, 0X89,
+	std::array<uint8_t, 32> session_key = {
+		0x1a, 0x1a, 0x3c, 0x33, 0x7f, 0xae, 0xf9, 0x3e,
+		0xa8, 0x7c, 0xe4, 0xec, 0xd9, 0xff, 0x45, 0x8a,
+		0xb6, 0x2f, 0x75, 0xd5, 0xea, 0x25, 0x93, 0x36,
+		0x60, 0xf1, 0xab, 0xd2, 0xf4, 0x9f, 0x22, 0x89,
 	};
 
-	std::array<uint8_t, 16> iv = {
-		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+	std::array<uint8_t, 12> nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
 
-	std::array<uint8_t, 32> data = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					 2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> input = {
+		0x44, 0x13, 0xb6, 0xb2, 0xc9, 0x6d, 0x22, 0x40,
+		0xdc, 0x5e, 0x70, 0x63, 0x26, 0xcc, 0x4b, 0x0e,
+		0x25, 0xc6, 0xa0, 0x25, 0x9e, 0x9e, 0x8c, 0x91,
+		0xf6, 0x88, 0xa9, 0x81, 0xdf, 0xc2, 0x5c, 0x4b,
+	};
 
-	TEST_EQ(decrypt_data_with_gsc_session_key_in_place(gsc_session_key, iv,
-							   data),
+	std::array<uint8_t, 9> aad = {
+		't', 'e', 's', 't', '_', 'd', 'a', 't', 'a',
+	};
+
+	std::array<uint8_t, 16> tag = {
+		0xd7, 0x37, 0xe2, 0x08, 0x39, 0x48, 0x75, 0x9e,
+		0x51, 0x20, 0x44, 0xc7, 0xeb, 0x78, 0xf4, 0x43,
+	};
+
+	std::array<uint8_t, 32> output{};
+
+	TEST_EQ(decrypt_data_with_session_key(session_key, input, output, nonce,
+					      tag, aad),
 		EC_SUCCESS, "%d");
 
-	std::array<uint8_t, 32> expected_data = {
-		0X6D, 0XED, 0XAD, 0X04, 0XF8, 0XDB, 0XAE, 0X51,
-		0XF8, 0XEE, 0X94, 0X7E, 0XDB, 0X12, 0X14, 0X22,
-		0X38, 0X32, 0X27, 0XC5, 0X19, 0X72, 0XA3, 0X60,
-		0X67, 0X71, 0X25, 0XE8, 0X27, 0X56, 0XC6, 0X35,
-	};
+	std::array<uint8_t, 32> expected_output = { 0, 1, 2, 3, 4, 5, 6, 7,
+						    8, 9, 0, 1, 2, 3, 4, 5,
+						    6, 7, 8, 9, 0, 1, 2, 3,
+						    4, 5, 6, 7, 8, 9, 1, 2 };
 
-	TEST_ASSERT_ARRAY_EQ(data, expected_data, data.size());
+	TEST_ASSERT_ARRAY_EQ(output, expected_output, output.size());
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list
-test_fp_decrypt_data_with_gsc_session_key_in_place_fail(void)
+test_static enum ec_error_list test_fp_decrypt_data_with_session_key_fail(void)
 {
-	std::array<uint8_t, 32> gsc_session_key = {
-		0X1A, 0X1A, 0X3C, 0X33, 0X7F, 0XAE, 0XF9, 0X3E,
-		0XA8, 0X7C, 0XE4, 0XEC, 0XD9, 0XFF, 0X45, 0X8A,
-		0XB6, 0X2F, 0X75, 0XD5, 0XEA, 0X25, 0X93, 0X36,
-		0X60, 0XF1, 0XAB, 0XD2, 0XF4, 0X9F, 0X22, 0X89,
+	std::array<uint8_t, 32> session_key = {
+		0x1a, 0x1a, 0x3c, 0x33, 0x7f, 0xae, 0xf9, 0x3e,
+		0xa8, 0x7c, 0xe4, 0xec, 0xd9, 0xff, 0x45, 0x8a,
+		0xb6, 0x2f, 0x75, 0xd5, 0xea, 0x25, 0x93, 0x36,
+		0x60, 0xf1, 0xab, 0xd2, 0xf4, 0x9f, 0x22, 0x89,
 	};
 
-	/* Wrong IV size. */
-	std::array<uint8_t, 32> iv = {
-		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
-		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+	std::array<uint8_t, 12> nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
 
-	std::array<uint8_t, 32> data = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					 2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> input = {
+		0x44, 0x13, 0xb6, 0xb2, 0xc9, 0x6d, 0x22, 0x40,
+		0xdc, 0x5e, 0x70, 0x63, 0x26, 0xcc, 0x4b, 0x0e,
+		0x25, 0xc6, 0xa0, 0x25, 0x9e, 0x9e, 0x8c, 0x91,
+		0xf6, 0x88, 0xa9, 0x81, 0xdf, 0xc2, 0x5c, 0x4b,
+	};
 
-	TEST_NE(decrypt_data_with_gsc_session_key_in_place(gsc_session_key, iv,
-							   data),
-		EC_SUCCESS, "%d");
+	std::array<uint8_t, 9> aad = {
+		't', 'e', 's', 't', '_', 'd', 'a', 't', 'a',
+	};
+
+	std::array<uint8_t, 16> tag = {
+		0xd7, 0x37, 0xe2, 0x08, 0x39, 0x48, 0x75, 0x9e,
+		0x51, 0x20, 0x44, 0xc7, 0xeb, 0x78, 0xf4, 0x43,
+	};
+
+	/* Output buffer size does not match input buffer size. */
+	std::array<uint8_t, 31> output{};
+
+	TEST_EQ(decrypt_data_with_session_key(session_key, input, output, nonce,
+					      tag, aad),
+		EC_ERROR_OVERFLOW, "%d");
 
 	return EC_SUCCESS;
 }
@@ -327,7 +350,7 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_generate_ecdh_shared_secret);
 	RUN_TEST(test_fp_generate_ecdh_shared_secret_without_kdf);
 	RUN_TEST(test_fp_generate_session_key);
-	RUN_TEST(test_fp_decrypt_data_with_gsc_session_key_in_place);
-	RUN_TEST(test_fp_decrypt_data_with_gsc_session_key_in_place_fail);
+	RUN_TEST(test_fp_decrypt_data_with_session_key);
+	RUN_TEST(test_fp_decrypt_data_with_session_key_fail);
 	test_print_result();
 }

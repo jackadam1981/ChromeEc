@@ -232,59 +232,83 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_session_key)
 			  gsc_session_key.size());
 }
 
-ZTEST(fpsensor_auth_crypto_stateless,
-      test_fp_decrypt_data_with_gsc_session_key_in_place)
+ZTEST(fpsensor_auth_crypto_stateless, test_fp_decrypt_data_with_session_key)
 {
-	std::array<uint8_t, 32> gsc_session_key = {
+	std::array<uint8_t, 32> session_key = {
 		0x1a, 0x1a, 0x3c, 0x33, 0x7f, 0xae, 0xf9, 0x3e,
 		0xa8, 0x7c, 0xe4, 0xec, 0xd9, 0xff, 0x45, 0x8a,
 		0xb6, 0x2f, 0x75, 0xd5, 0xea, 0x25, 0x93, 0x36,
 		0x60, 0xf1, 0xab, 0xd2, 0xf4, 0x9f, 0x22, 0x89,
 	};
 
-	std::array<uint8_t, 16> iv = {
-		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+	std::array<uint8_t, 12> nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
 
-	std::array<uint8_t, 32> data = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					 2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> input = {
+		0x44, 0x13, 0xb6, 0xb2, 0xc9, 0x6d, 0x22, 0x40,
+		0xdc, 0x5e, 0x70, 0x63, 0x26, 0xcc, 0x4b, 0x0e,
+		0x25, 0xc6, 0xa0, 0x25, 0x9e, 0x9e, 0x8c, 0x91,
+		0xf6, 0x88, 0xa9, 0x81, 0xdf, 0xc2, 0x5c, 0x4b,
+	};
 
-	zassert_equal(decrypt_data_with_gsc_session_key_in_place(
-			      gsc_session_key, iv, data),
+	std::array<uint8_t, 9> aad = {
+		't', 'e', 's', 't', '_', 'd', 'a', 't', 'a',
+	};
+
+	std::array<uint8_t, 16> tag = {
+		0xd7, 0x37, 0xe2, 0x08, 0x39, 0x48, 0x75, 0x9e,
+		0x51, 0x20, 0x44, 0xc7, 0xeb, 0x78, 0xf4, 0x43,
+	};
+
+	std::array<uint8_t, 32> output{};
+
+	zassert_equal(decrypt_data_with_session_key(session_key, input, output,
+						    nonce, tag, aad),
 		      EC_SUCCESS);
 
-	std::array<uint8_t, 32> expected_data = {
-		0x6d, 0xed, 0xad, 0x04, 0xf8, 0xdb, 0xae, 0x51,
-		0xf8, 0xee, 0x94, 0x7e, 0xdb, 0x12, 0x14, 0x22,
-		0x38, 0x32, 0x27, 0xc5, 0x19, 0x72, 0xa3, 0x60,
-		0x67, 0x71, 0x25, 0xe8, 0x27, 0x56, 0xc6, 0x35,
-	};
+	std::array<uint8_t, 32> expected_output = { 0, 1, 2, 3, 4, 5, 6, 7,
+						    8, 9, 0, 1, 2, 3, 4, 5,
+						    6, 7, 8, 9, 0, 1, 2, 3,
+						    4, 5, 6, 7, 8, 9, 1, 2 };
 
-	zassert_mem_equal(data.data(), expected_data.data(), data.size());
+	zassert_mem_equal(output.data(), expected_output.data(), output.size());
 }
 
 ZTEST(fpsensor_auth_crypto_stateless,
-      test_fp_decrypt_data_with_gsc_session_key_in_place_fail)
+      test_fp_decrypt_data_with_session_key_fail)
 {
-	std::array<uint8_t, 32> gsc_session_key = {
+	std::array<uint8_t, 32> session_key = {
 		0x1a, 0x1a, 0x3c, 0x33, 0x7f, 0xae, 0xf9, 0x3e,
 		0xa8, 0x7c, 0xe4, 0xec, 0xd9, 0xff, 0x45, 0x8a,
 		0xb6, 0x2f, 0x75, 0xd5, 0xea, 0x25, 0x93, 0x36,
 		0x60, 0xf1, 0xab, 0xd2, 0xf4, 0x9f, 0x22, 0x89,
 	};
 
-	/* Wrong IV size. */
-	std::array<uint8_t, 32> iv = {
-		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
-		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+	std::array<uint8_t, 12> nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
 
-	std::array<uint8_t, 32> data = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					 2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 32> input = {
+		0x44, 0x13, 0xb6, 0xb2, 0xc9, 0x6d, 0x22, 0x40,
+		0xdc, 0x5e, 0x70, 0x63, 0x26, 0xcc, 0x4b, 0x0e,
+		0x25, 0xc6, 0xa0, 0x25, 0x9e, 0x9e, 0x8c, 0x91,
+		0xf6, 0x88, 0xa9, 0x81, 0xdf, 0xc2, 0x5c, 0x4b,
+	};
 
-	zassert_not_equal(decrypt_data_with_gsc_session_key_in_place(
-				  gsc_session_key, iv, data),
-			  EC_SUCCESS);
+	std::array<uint8_t, 9> aad = {
+		't', 'e', 's', 't', '_', 'd', 'a', 't', 'a',
+	};
+
+	std::array<uint8_t, 16> tag = {
+		0xd7, 0x37, 0xe2, 0x08, 0x39, 0x48, 0x75, 0x9e,
+		0x51, 0x20, 0x44, 0xc7, 0xeb, 0x78, 0xf4, 0x43,
+	};
+
+	/* Output buffer size does not match input buffer size. */
+	std::array<uint8_t, 31> output{};
+
+	zassert_equal(decrypt_data_with_session_key(session_key, input, output,
+						    nonce, tag, aad),
+		      EC_ERROR_OVERFLOW);
 }
