@@ -131,7 +131,7 @@ static bool authenticate_fp_match_state(void)
 	/* The rate limit is only meanful for the nonce context, and we don't
 	 * have rate limit for the legacy FP user unlock flow. */
 	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
 		return true;
 	}
 
@@ -730,7 +730,7 @@ fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)
 	 * nonce sessions. No point to call this outside a nonce context.
 	 */
 	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
 		return EC_RES_ACCESS_DENIED;
 	}
 

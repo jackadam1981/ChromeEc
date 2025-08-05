@@ -402,11 +402,11 @@ initialize_pairing_key(std::span<uint8_t, FP_PAIRING_KEY_LEN> pairing_key)
 	return EC_SUCCESS;
 }
 
-static enum ec_error_list generate_valid_nonce_context_request(
+static enum ec_error_list generate_valid_establish_session_request(
 	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
 	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
 	std::span<const uint8_t, FP_CONTEXT_USERID_LEN> userid,
-	struct ec_params_fp_nonce_context *nonce_params)
+	struct ec_params_fp_establish_session *session_params)
 {
 	/* Get our session nonce */
 	std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce = {
@@ -420,43 +420,44 @@ static enum ec_error_list generate_valid_nonce_context_request(
 		fpmcu_nonce, session_nonce, pairing_key, session_key);
 	TEST_EQ(ret, EC_SUCCESS, "%d");
 
-	TEST_EQ(userid.size(), sizeof(nonce_params->enc_user_id), "%zu");
+	TEST_EQ(userid.size(), sizeof(session_params->enc_user_id), "%zu");
 
 	std::array<uint8_t, FP_AES_KEY_NONCE_BYTES> nonce = {
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
-	TEST_EQ(nonce.size(), sizeof(nonce_params->nonce), "%zu");
-	memcpy(nonce_params->nonce, nonce.data(), FP_AES_KEY_NONCE_BYTES);
+	TEST_EQ(nonce.size(), sizeof(session_params->nonce), "%zu");
+	memcpy(session_params->nonce, nonce.data(), FP_AES_KEY_NONCE_BYTES);
 
 	/* Encrypt userid using session key */
 	bssl::ScopedEVP_AEAD_CTX ctx;
 	int aead_ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_256_gcm(),
 					 session_key.data(), session_key.size(),
-					 sizeof(nonce_params->tag), nullptr);
+					 sizeof(session_params->tag), nullptr);
 	TEST_EQ(aead_ret, 1, "%d");
 
 	size_t tag_bytes_written = 0;
 	aead_ret = EVP_AEAD_CTX_seal_scatter(
-		ctx.get(), nonce_params->enc_user_id, nonce_params->tag,
-		&tag_bytes_written, sizeof(nonce_params->tag),
-		nonce_params->nonce, sizeof(nonce_params->nonce), userid.data(),
-		userid.size(), /* extra_in = */ nullptr, /* extra_in_len = */ 0,
+		ctx.get(), session_params->enc_user_id, session_params->tag,
+		&tag_bytes_written, sizeof(session_params->tag),
+		session_params->nonce, sizeof(session_params->nonce),
+		userid.data(), userid.size(), /* extra_in = */ nullptr,
+		/* extra_in_len = */ 0,
 		/* ad = */ nullptr, /* ad_len = */ 0);
 	TEST_EQ(aead_ret, 1, "%d");
-	TEST_EQ(tag_bytes_written, sizeof(nonce_params->tag), "%zu");
+	TEST_EQ(tag_bytes_written, sizeof(session_params->tag), "%zu");
 
 	/* Copy our session nonce to the structure */
-	std::ranges::copy(session_nonce, nonce_params->peer_nonce);
+	std::ranges::copy(session_nonce, session_params->peer_nonce);
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context(void)
+test_static enum ec_error_list test_fp_command_establish_session(void)
 {
 	enum ec_status rv;
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	uint32_t status;
 	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
@@ -480,13 +481,14 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
 	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
@@ -498,12 +500,12 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
+test_static enum ec_error_list test_fp_command_establish_session_deny(void)
 {
 	enum ec_status rv;
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
@@ -514,8 +516,9 @@ test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	// Nonce context without generate nonce should fail.
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
@@ -526,13 +529,14 @@ test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
@@ -550,16 +554,17 @@ test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 }
 
 test_static enum ec_error_list
-test_fp_command_nonce_context_limit_without_generated_nonce(void)
+test_fp_command_establish_session_limit_without_generated_nonce(void)
 {
 	enum ec_status rv;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 
 	fp_reset_and_clear_context();
 
 	/* Call nonce context without generated nonce should fail. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
@@ -567,7 +572,7 @@ test_fp_command_nonce_context_limit_without_generated_nonce(void)
 }
 
 test_static enum ec_error_list
-test_fp_command_nonce_context_limit_normal_context(void)
+test_fp_command_establish_session_limit_normal_context(void)
 {
 	enum ec_status rv;
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
@@ -575,7 +580,7 @@ test_fp_command_nonce_context_limit_normal_context(void)
 		.action = FP_CONTEXT_GET_RESULT,
 	};
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
@@ -597,26 +602,28 @@ test_fp_command_nonce_context_limit_normal_context(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
 	/* Call nonce context with generated nonce should success. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_1(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_limit_twice_1(void)
 {
 	enum ec_status rv;
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
@@ -631,31 +638,34 @@ test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_1(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	/* Call nonce context twice should fail. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_2(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_limit_twice_2(void)
 {
 	enum ec_status rv;
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
@@ -675,31 +685,34 @@ test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_2(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	/* Call nonce context twice should fail even we generated two nonces. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_load_pk_deny(void)
 {
 	enum ec_status rv;
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
 	struct ec_params_fp_establish_pairing_key_wrap wrap_params {
 		.peers_pubkey = {
@@ -759,13 +772,14 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
@@ -843,19 +857,19 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 		global_context.template_states[0]));
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -965,19 +979,19 @@ test_static enum ec_error_list test_fp_command_unlock_template(void)
 		EC_RES_ACCESS_DENIED, "%d");
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid1, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid1,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1092,13 +1106,13 @@ test_static enum ec_error_list test_fp_command_unlock_template(void)
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid2, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid2,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1182,19 +1196,19 @@ test_fp_command_unlock_template_pre_encrypted_fail(void)
 		global_context.template_states[0]));
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1226,19 +1240,19 @@ test_fp_command_unlock_template_pre_encrypted(void)
 		global_context.template_states[0]));
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid1, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid1,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1312,13 +1326,13 @@ test_fp_command_unlock_template_pre_encrypted(void)
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid2, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid2,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1616,19 +1630,19 @@ test_fp_command_migrate_template_to_nonce_context(void)
 		EC_RES_ACCESS_DENIED, "%d");
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1663,19 +1677,19 @@ test_fp_command_migrate_template_to_nonce_context_failure(void)
 		migrate_params = {};
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
-						     nonce_response.nonce,
-						     userid, &nonce_params),
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, userid,
+			&session_params),
 		EC_SUCCESS, "%d");
 
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
@@ -1719,13 +1733,14 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_fp_command_establish_and_load_pairing_key);
 	RUN_TEST(test_fp_command_load_pairing_key_fail);
-	RUN_TEST(test_fp_command_nonce_context);
-	RUN_TEST(test_fp_command_nonce_context_deny);
-	RUN_TEST(test_fp_command_nonce_context_limit_without_generated_nonce);
-	RUN_TEST(test_fp_command_nonce_context_limit_normal_context);
-	RUN_TEST(test_fp_command_nonce_context_limit_twice_1);
-	RUN_TEST(test_fp_command_nonce_context_limit_twice_2);
-	RUN_TEST(test_fp_command_nonce_context_load_pk_deny);
+	RUN_TEST(test_fp_command_establish_session);
+	RUN_TEST(test_fp_command_establish_session_deny);
+	RUN_TEST(
+		test_fp_command_establish_session_limit_without_generated_nonce);
+	RUN_TEST(test_fp_command_establish_session_limit_normal_context);
+	RUN_TEST(test_fp_command_establish_session_limit_twice_1);
+	RUN_TEST(test_fp_command_establish_session_limit_twice_2);
+	RUN_TEST(test_fp_command_establish_session_load_pk_deny);
 	RUN_TEST(test_fp_command_template_encrypted);
 	RUN_TEST(test_fp_command_template_decrypted);
 	RUN_TEST(test_fp_command_unlock_template);
