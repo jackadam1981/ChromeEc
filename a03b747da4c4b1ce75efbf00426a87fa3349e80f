@@ -123,6 +123,24 @@
       "parentUuid": "8c752f95_1c9e6969",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "249e836a_c90867ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3306924
+      },
+      "writtenOn": "2025-08-05T07:07:16Z",
+      "side": 1,
+      "message": "The timing here is calculated using ticks as the unit. Currently, CONFIG_SYS_CLOCK_TICKS_PER_SEC is set to 10,000, which means each tick represents 100 microseconds. This explains the observed result. For higher timing precision, consider adjusting the value of CONFIG_SYS_CLOCK_TICKS_PER_SEC.",
+      "parentUuid": "6b015bb2_a6e39f76",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
