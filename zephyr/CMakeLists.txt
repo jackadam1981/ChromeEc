@@ -820,3 +820,12 @@ if (NOT DEFINED CONFIG_BOARD_NATIVE_POSIX AND NOT DEFINED CONFIG_BOARD_NATIVE_SI
       --delete
   )
 endif()
+
+if (DEFINED CONFIG_SOC_INTEL_ISH_5_8_0)
+  set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
+    COMMAND
+      ${PLATFORM_EC}/util/ish/sign_ish_main.sh
+      ${PROJECT_BINARY_DIR}
+      ${PLATFORM_EC}/third_party/ish/ish_header_5_8.bin
+  )
+endif()
