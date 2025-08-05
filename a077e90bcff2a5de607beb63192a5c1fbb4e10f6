@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc976105_d72c9b70",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-05T09:58:16Z",
+      "side": 1,
+      "message": "As long as the program is successfully written, there should be no problem. However, we can still see if resetting gpio can avoid this problem.",
+      "parentUuid": "3e14a704_c77bab4d",
+      "range": {
+        "startLine": 473,
+        "startChar": 7,
+        "endLine": 473,
+        "endChar": 20
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c8bf58c_9e8338b2",
         "filename": "util/itecomdbgr.cc",
         "patchSetId": 16
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "`boundary` is only used if `conf-\u003ewdt_enable` is true.",
       "parentUuid": "a6b926a9_4a88cacd",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 21
+      },
+      "revId": "a077e90bcff2a5de607beb63192a5c1fbb4e10f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8942fa72_49724fff",
+        "filename": "util/itecomdbgr.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-05T09:58:16Z",
+      "side": 1,
+      "message": "Yes. When WDT can be turned off normally, we will not change the original boundary settings.\nBut when WDT cannot be turned off, in order to prevent WDT from happening, we shorten the boundary.",
+      "parentUuid": "336bf0c0_df4c57f5",
       "range": {
         "startLine": 836,
         "startChar": 5,
