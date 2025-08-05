@@ -1567,6 +1567,14 @@ int tcpci_tcpm_init(int port)
 	if (error)
 		return error;
 
+	/* Enable/disable voltage alarm by the flag */
+	error = tcpc_update8(
+		port, TCPC_REG_POWER_CTRL, TCPC_REG_POWER_CTRL_VOLT_ALARM_DIS,
+		tcpc_config[port].flags & TCPC_FLAGS_VOLTAGE_ALARM ? MASK_CLR :
+								     MASK_SET);
+	if (error)
+		return error;
+
 	/*
 	 * Force an update to the VBUS status in case the TCPC doesn't send a
 	 * power status changed interrupt later.
