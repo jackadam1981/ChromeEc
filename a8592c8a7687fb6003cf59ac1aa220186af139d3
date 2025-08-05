@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736321a1_377d8586",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 3077,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T16:15:26Z",
+      "side": 1,
+      "message": "port_index should be required, which will simplify this assignment.",
+      "range": {
+        "startLine": 3077,
+        "startChar": 0,
+        "endLine": 3077,
+        "endChar": 59
+      },
+      "revId": "a8592c8a7687fb6003cf59ac1aa220186af139d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7149fd4c_08f21cdf",
+        "filename": "zephyr/dts/bindings/usbc/pdc/pdc-device.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T16:15:26Z",
+      "side": 1,
+      "message": "This should made a required property, or at least required for the TI PDC by moving this to the ti,tps6699-pdc.yaml file.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "a8592c8a7687fb6003cf59ac1aa220186af139d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
