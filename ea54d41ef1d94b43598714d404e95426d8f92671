@@ -110,6 +110,30 @@
       },
       "revId": "ea54d41ef1d94b43598714d404e95426d8f92671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c202161_01d4c6f3",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-05T13:44:50Z",
+      "side": 1,
+      "message": "I tried this originally, but it results in a dependency loop. Imply also fails.\n\n```\n ISR_TABLES_LOCAL_DECLARATION (defined at arch/Kconfig:461), with definition...\nconfig ISR_TABLES_LOCAL_DECLARATION\n\tbool \"ISR tables created locally and placed by linker\"\n\tdepends on ISR_TABLES_LOCAL_DECLARATION_SUPPORTED\n\thelp\n\t  Enable new scheme of interrupt tables generation.\n\t  This is totally different generator that would create tables entries locally\n\t  where the IRQ_CONNECT macro is called and then use the linker script to position it\n\t  in the right place in memory.\n\t  The most important advantage of such approach is that the generated interrupt tables\n\t  are LTO compatible.\n\t  The drawback is that the support on the architecture port is required.\n(select-related dependencies: LTO \u0026\u0026 PLATFORM_EC)\n...depends on LTO (defined at /mnt/host/source/src/platform/ec/zephyr/Kconfig.defaults:62, Kconfig.zephyr:524), with definition...\nconfig LTO\n\tbool\n\tdefault y\n\tselect ISR_TABLES_LOCAL_DECLARATION\n\tdepends on PLATFORM_EC\nconfig LTO\n\tbool \"Link Time Optimization\"\n\tdepends on (!(GEN_ISR_TABLES || GEN_IRQ_VECTOR_TABLE) || ISR_TABLES_LOCAL_DECLARATION) \u0026\u0026 !NATIVE_LIBRARY \u0026\u0026 !CODE_DATA_RELOCATION\n\thelp\n\t  This option enables Link Time Optimization.\n...depends again on ISR_TABLES_LOCAL_DECLARATION (defined at arch/Kconfig:461)\n```",
+      "parentUuid": "94a9a9e5_a8439321",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "ea54d41ef1d94b43598714d404e95426d8f92671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
