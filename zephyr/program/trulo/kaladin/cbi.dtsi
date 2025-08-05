@@ -16,12 +16,12 @@
 			start = <0>;
 			size = <1>;
 
-			present {
+			absent {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_TABLET_ABSENT";
 				value = <0>;
 			};
-			absent {
+			present {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_TABLET_PRESENT";
 				value = <1>;
