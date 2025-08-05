@@ -16,6 +16,93 @@
       "message": "The PDC sink_policy tests are failing with this change.  You can run these tests locally using `./twister -ivc -T zephyr/test/pdc`",
       "revId": "e70fb19c40ef792db41547bef2bf803636601334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659ba47c_37c39207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 47
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T22:25:09Z",
+      "side": 1,
+      "message": "The failing test may be fixed by just increasing the timeout passed to `pdc_power_mgmt_wait_for_sync()`.  Your changes add additional policy flags which will cause the PDC thread to take more time to reach steady state.",
+      "parentUuid": "9e01fd2e_d642b033",
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba11f98_0bcc7f60",
+        "filename": "zephyr/include/emul/emul_pdc.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T22:25:09Z",
+      "side": 1,
+      "message": "Unused",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229db623_6d0bb995",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T22:25:09Z",
+      "side": 1,
+      "message": "Nit - line length",
+      "range": {
+        "startLine": 1687,
+        "startChar": 0,
+        "endLine": 1689,
+        "endChar": 0
+      },
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b535658_7962fee7",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T22:25:09Z",
+      "side": 1,
+      "message": "Nit - line length",
+      "range": {
+        "startLine": 1860,
+        "startChar": 0,
+        "endLine": 1862,
+        "endChar": 0
+      },
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
