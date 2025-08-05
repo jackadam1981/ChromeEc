@@ -264,7 +264,7 @@ int battery_state_of_charge_abs(int *percent)
 	return sb_read(SB_ABSOLUTE_STATE_OF_CHARGE, percent);
 }
 
-int battery_remaining_capacity(int *capacity)
+test_mockable int battery_remaining_capacity(int *capacity)
 {
 	int rv = battery_force_mah_mode();
 	if (rv)
@@ -273,7 +273,7 @@ int battery_remaining_capacity(int *capacity)
 	return sb_read(SB_REMAINING_CAPACITY, capacity);
 }
 
-int battery_full_charge_capacity(int *capacity)
+test_mockable int battery_full_charge_capacity(int *capacity)
 {
 	int rv = battery_force_mah_mode();
 	if (rv)
@@ -309,7 +309,7 @@ int battery_cycle_count(int *count)
 	return sb_read(SB_CYCLE_COUNT, count);
 }
 
-int battery_design_capacity(int *capacity)
+test_mockable int battery_design_capacity(int *capacity)
 {
 	int rv = battery_force_mah_mode();
 	if (rv)
@@ -321,7 +321,7 @@ int battery_design_capacity(int *capacity)
 /* Designed battery output voltage
  * unit: mV
  */
-int battery_design_voltage(int *voltage)
+test_mockable int battery_design_voltage(int *voltage)
 {
 	return sb_read(SB_DESIGN_VOLTAGE, voltage);
 }
