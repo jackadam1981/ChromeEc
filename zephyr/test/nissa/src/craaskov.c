@@ -172,11 +172,21 @@ ZTEST(craaskov, test_tcpc_get_alert_status)
 	/* Both IRQs are asserted */
 	gpio_emul_input_set(c0_int->port, c0_int->pin, 0);
 
+	/* Enable all TCPC Alerts */
+	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_MASK_ALL);
+
 	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT, 1);
 	zassert_equal(tcpc_get_alert_status(), PD_STATUS_TCPC_ALERT_0);
 
 	/* Bit 14 is ignored */
 	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT, 0x4000);
+	zassert_equal(tcpc_get_alert_status(), 0);
+
+	/* Disable all TCPC Alerts */
+	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT_MASK, 0);
+
+	/* Expect no alert status when alert mask is 0 */
+	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT, 0xffff);
 	zassert_equal(tcpc_get_alert_status(), 0);
 }
 

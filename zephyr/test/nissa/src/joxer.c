@@ -263,6 +263,9 @@ ZTEST(joxer, test_tcpc_get_alert_status)
 	/* GPIO is normally configured by code not tested in this case */
 	zassert_ok(gpio_pin_configure_dt(c1_int, GPIO_INPUT));
 
+	/* Enable all TCPC Alerts */
+	tcpci_emul_set_reg(TCPC1, TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_MASK_ALL);
+
 	tcpci_emul_set_reg(TCPC1, TCPC_REG_ALERT, TCPC_REG_ALERT_CC_STATUS);
 
 	/* Nothing if the IRQ line isn't asserted */
@@ -272,6 +275,13 @@ ZTEST(joxer, test_tcpc_get_alert_status)
 	/* Alert active if it is and the alert register has bits set */
 	zassert_ok(gpio_emul_input_set(c1_int->port, c1_int->pin, 0));
 	zassert_equal(tcpc_get_alert_status(), PD_STATUS_TCPC_ALERT_1);
+
+	/* Disable all TCPC Alerts */
+	tcpci_emul_set_reg(TCPC1, TCPC_REG_ALERT_MASK, 0);
+
+	/* Expect no alert status when alert mask is 0 */
+	tcpci_emul_set_reg(TCPC1, TCPC_REG_ALERT, 0xffff);
+	zassert_equal(tcpc_get_alert_status(), 0);
 }
 
 ZTEST(joxer, test_pd_power_supply_reset)
