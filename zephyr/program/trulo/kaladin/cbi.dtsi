@@ -16,12 +16,12 @@
 			start = <0>;
 			size = <1>;
 
-			present {
+			absent {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_TABLET_ABSENT";
 				value = <0>;
 			};
-			absent {
+			present {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_TABLET_PRESENT";
 				value = <1>;
@@ -85,6 +85,27 @@
 			ish-enabled {
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "ISH_ENABLED";
+				value = <1>;
+			};
+		};
+
+		/*
+		 * FW_CONFIG field to defined panel type.
+		 */
+		panel {
+			enum-name = "FW_PANEL";
+			start = <4>;
+			size = <1>;
+
+			panel-top {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "PANEL_TOP";
+				value = <0>;
+				default;
+			};
+			panel-dbts {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "PANEL_DBTS";
 				value = <1>;
 			};
 		};
