@@ -32,46 +32,6 @@
 namespace
 {
 
-enum ec_error_list
-check_seed_set_result(const enum ec_status rv, const uint32_t expected,
-		      const struct ec_response_fp_encryption_status *resp)
-{
-	const uint32_t actual = resp->status & FP_ENC_STATUS_SEED_SET;
-
-	if (rv != EC_RES_SUCCESS || expected != actual) {
-		ccprintf("%s:%s(): rv = %d, seed is set: %d\n", __FILE__,
-			 __func__, rv, actual);
-		return EC_ERROR_UNKNOWN;
-	}
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list test_set_fp_tpm_seed(void)
-{
-	enum ec_status rv;
-	struct ec_params_fp_seed params;
-	struct ec_response_fp_encryption_status resp = { 0 };
-
-	params.struct_version = FP_TEMPLATE_FORMAT_VERSION;
-	memcpy(params.seed, default_fake_tpm_seed,
-	       sizeof(default_fake_tpm_seed));
-
-	rv = test_send_host_command(EC_CMD_FP_SEED, 0, &params, sizeof(params),
-				    NULL, 0);
-	if (rv != EC_RES_SUCCESS) {
-		ccprintf("%s:%s(): rv = %d, set seed failed\n", __FILE__,
-			 __func__, rv);
-		return EC_ERROR_UNKNOWN;
-	}
-
-	/* Now seed should have been set. */
-	rv = test_send_host_command(EC_CMD_FP_ENC_STATUS, 0, NULL, 0, &resp,
-				    sizeof(resp));
-
-	return check_seed_set_result(rv, FP_ENC_STATUS_SEED_SET, &resp);
-}
-
 static enum ec_error_list get_fp_encryption_status(uint32_t *status)
 {
 	struct ec_response_fp_encryption_status resp = { 0 };
@@ -404,9 +364,13 @@ initialize_pairing_key(std::span<uint8_t, FP_PAIRING_KEY_LEN> pairing_key)
 static enum ec_error_list generate_valid_establish_session_request(
 	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
 	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
-	std::span<const uint8_t, FP_CONTEXT_USERID_LEN> userid,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
 	struct ec_params_fp_establish_session *session_params)
 {
+	static constexpr uint8_t tpm_seed_aad[] = { 't', 'p', 'm', '_',
+						    's', 'e', 'e', 'd' };
+	constexpr auto aad = std::span{ tpm_seed_aad };
+
 	/* Get our session nonce */
 	std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce = {
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
@@ -419,7 +383,7 @@ static enum ec_error_list generate_valid_establish_session_request(
 		fpmcu_nonce, session_nonce, pairing_key, session_key);
 	TEST_EQ(ret, EC_SUCCESS, "%d");
 
-	TEST_EQ(userid.size(), sizeof(session_params->enc_user_id), "%zu");
+	TEST_EQ(tpm_seed.size(), sizeof(session_params->enc_tpm_seed), "%zu");
 
 	std::array<uint8_t, FP_AES_KEY_NONCE_BYTES> nonce = {
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
@@ -427,7 +391,7 @@ static enum ec_error_list generate_valid_establish_session_request(
 	TEST_EQ(nonce.size(), sizeof(session_params->nonce), "%zu");
 	memcpy(session_params->nonce, nonce.data(), FP_AES_KEY_NONCE_BYTES);
 
-	/* Encrypt userid using session key */
+	/* Encrypt tpm_seed using session key */
 	bssl::ScopedEVP_AEAD_CTX ctx;
 	int aead_ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_256_gcm(),
 					 session_key.data(), session_key.size(),
@@ -436,12 +400,11 @@ static enum ec_error_list generate_valid_establish_session_request(
 
 	size_t tag_bytes_written = 0;
 	aead_ret = EVP_AEAD_CTX_seal_scatter(
-		ctx.get(), session_params->enc_user_id, session_params->tag,
+		ctx.get(), session_params->enc_tpm_seed, session_params->tag,
 		&tag_bytes_written, sizeof(session_params->tag),
 		session_params->nonce, sizeof(session_params->nonce),
-		userid.data(), userid.size(), /* extra_in = */ nullptr,
-		/* extra_in_len = */ 0,
-		/* ad = */ nullptr, /* ad_len = */ 0);
+		tpm_seed.data(), tpm_seed.size(), /* extra_in = */ nullptr,
+		/* extra_in_len = */ 0, aad.data(), aad.size());
 	TEST_EQ(aead_ret, 1, "%d");
 	TEST_EQ(tag_bytes_written, sizeof(session_params->tag), "%zu");
 
@@ -458,7 +421,7 @@ test_static enum ec_error_list test_fp_command_establish_session(void)
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_establish_session session_params;
 	uint32_t status;
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -468,7 +431,7 @@ test_static enum ec_error_list test_fp_command_establish_session(void)
 	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
+	TEST_BITS_CLEARED((int)status, FP_ENC_STATUS_SEED_SET);
 
 	global_context.templ_valid = 1;
 
@@ -478,10 +441,10 @@ test_static enum ec_error_list test_fp_command_establish_session(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
+	TEST_BITS_CLEARED((int)status, FP_ENC_STATUS_SEED_SET);
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -492,7 +455,7 @@ test_static enum ec_error_list test_fp_command_establish_session(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_SET((int)status, FP_CONTEXT_USER_ID_SET);
+	TEST_BITS_SET((int)status, FP_ENC_STATUS_SEED_SET);
 
 	TEST_EQ(global_context.templ_valid, 1u, "%d");
 
@@ -505,7 +468,7 @@ test_static enum ec_error_list test_fp_command_establish_session_deny(void)
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_establish_session session_params;
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -529,7 +492,7 @@ test_static enum ec_error_list test_fp_command_establish_session_deny(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -580,7 +543,7 @@ test_fp_command_establish_session_limit_normal_context(void)
 	};
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_establish_session session_params;
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -602,7 +565,7 @@ test_fp_command_establish_session_limit_normal_context(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -623,7 +586,7 @@ test_fp_command_establish_session_limit_twice_1(void)
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_establish_session session_params;
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -638,7 +601,7 @@ test_fp_command_establish_session_limit_twice_1(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -665,7 +628,7 @@ test_fp_command_establish_session_limit_twice_2(void)
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_establish_session session_params;
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -685,7 +648,7 @@ test_fp_command_establish_session_limit_twice_2(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -729,7 +692,7 @@ test_fp_command_establish_session_load_pk_deny(void)
 			},
 		},
 	};
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -772,7 +735,7 @@ test_fp_command_establish_session_load_pk_deny(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -794,7 +757,7 @@ test_fp_command_establish_session_load_pk_deny(void)
 test_static enum ec_error_list test_fp_command_template_decrypted(void)
 {
 	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
-	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
 		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
 		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
@@ -811,7 +774,7 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 		EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(generate_valid_establish_session_request(
-			pairing_key, nonce_response.nonce, userid,
+			pairing_key, nonce_response.nonce, tpm_seed,
 			&session_params),
 		EC_SUCCESS, "%d");
 
@@ -1092,10 +1055,6 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_fp_command_establish_pairing_key_fail);
 	RUN_TEST(test_fp_command_establish_pairing_key_keygen);
-
-	// All tests after this require the TPM seed to be set.
-	RUN_TEST(test_set_fp_tpm_seed);
-
 	RUN_TEST(test_fp_command_establish_and_load_pairing_key);
 	RUN_TEST(test_fp_command_load_pairing_key_fail);
 	RUN_TEST(test_fp_command_establish_session);
