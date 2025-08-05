@@ -96,6 +96,7 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 	int regval;
+	int alert_mask;
 
 	/*
 	 * The interrupt line is shared between the TCPC and BC1.2 detector IC.
@@ -103,11 +104,13 @@ uint16_t tcpc_get_alert_status(void)
 	 * alert status.
 	 */
 	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_int_odl))) {
-		if (!tcpc_read16(0, TCPC_REG_ALERT, &regval)) {
+		if (!tcpc_read16(0, TCPC_REG_ALERT, &regval) &&
+		    !tcpc_read16(0, TCPC_REG_ALERT_MASK, &alert_mask)) {
 			/* The TCPCI Rev 1.0 spec says to ignore bits 14:12. */
 			if (!(tcpc_config[0].flags & TCPC_FLAGS_TCPCI_REV2_0))
 				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
+			/* Only care about alerts that are in the alert mask */
+			regval &= alert_mask;
 			if (regval)
 				status |= PD_STATUS_TCPC_ALERT_0;
 		}
@@ -115,11 +118,13 @@ uint16_t tcpc_get_alert_status(void)
 
 	if (board_get_usb_pd_port_count() == 2 &&
 	    !gpio_pin_get_dt(GPIO_DT_FROM_ALIAS(gpio_usb_c1_int_odl))) {
-		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
+		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval) &&
+		    !tcpc_read16(1, TCPC_REG_ALERT_MASK, &alert_mask)) {
 			/* TCPCI spec Rev 1.0 says to ignore bits 14:12. */
 			if (!(tcpc_config[1].flags & TCPC_FLAGS_TCPCI_REV2_0))
 				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
+			/* Only care about alerts that are in the alert mask */
+			regval &= alert_mask;
 			if (regval)
 				status |= PD_STATUS_TCPC_ALERT_1;
 		}
