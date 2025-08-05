@@ -35,6 +35,8 @@ static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 /* The session nonce for session key. */
 std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
 
+static std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key;
+
 enum ec_error_list check_context_cleared()
 {
 	for (uint8_t partial : global_context.user_id)
@@ -150,8 +152,8 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 	}
 
 	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
-		CPRINTS("load_pairing_key: In an nonce context");
+	    FP_CONTEXT_STATUS_SESSION_ESTABLISHED) {
+		CPRINTS("load_pairing_key: Session already established");
 		return EC_RES_ACCESS_DENIED;
 	}
 
@@ -176,7 +178,7 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 	ScopedFastCpu fast_cpu;
 
 	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
+	    FP_CONTEXT_STATUS_SESSION_ESTABLISHED) {
 		/* Invalidate the existing context and templates to prevent
 		 * leaking the existing template. */
 		fp_reset_context();
@@ -195,10 +197,10 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 		     EC_VER_MASK(0));
 
 static enum ec_status
-fp_command_nonce_context(struct host_cmd_handler_args *args)
+fp_command_establish_session(struct host_cmd_handler_args *args)
 {
-	const auto *p =
-		static_cast<const ec_params_fp_nonce_context *>(args->params);
+	const auto *p = static_cast<const ec_params_fp_establish_session *>(
+		args->params);
 
 	if (!(global_context.fp_encryption_status &
 	      FP_CONTEXT_SESSION_NONCE_SET)) {
@@ -208,7 +210,6 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	std::array<uint8_t, SHA256_DIGEST_SIZE> session_key;
 	enum ec_error_list ret = generate_session_key(
 		session_nonce, p->peer_nonce, pairing_key, session_key);
 	if (ret != EC_SUCCESS) {
@@ -231,10 +232,11 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
 	global_context.fp_encryption_status |= FP_CONTEXT_USER_ID_SET;
 	global_context.fp_encryption_status |=
-		FP_CONTEXT_STATUS_NONCE_CONTEXT_SET;
+		FP_CONTEXT_STATUS_SESSION_ESTABLISHED;
+
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_SESSION, fp_command_establish_session,
 		     EC_VER_MASK(0));
 
 static enum ec_status unlock_template(uint16_t idx)
@@ -309,7 +311,7 @@ fp_command_unlock_template(struct host_cmd_handler_args *args)
 	ScopedFastCpu fast_cpu;
 
 	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
 		return EC_RES_ACCESS_DENIED;
 	}
 
