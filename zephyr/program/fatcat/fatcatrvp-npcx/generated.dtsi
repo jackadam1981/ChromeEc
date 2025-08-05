@@ -151,7 +151,7 @@
 		};
 		gpio_wp_odl: wp_odl {
 			// signal name was manually overriden from "ec_soc_rtcrst_odl"
-			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 	};
 
