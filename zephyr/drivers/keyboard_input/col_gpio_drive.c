@@ -81,11 +81,12 @@ static int col_gpio_init(const struct device *dev)
 }
 
 #if CONFIG_DT_HAS_ITE_IT8XXX2_KBD_ENABLED
-#define ITE_KBD_PARENT_CHECK(inst)                                             \
-	BUILD_ASSERT(DT_PROP(DT_PARENT(DT_DRV_INST(inst)), kso_ignore_mask) != \
-			     0,                                                \
-		     "kso-ignore-mask must be specified on ITE devices for "   \
-		     "ec-col-gpio to work correctly")
+#define ITE_KBD_PARENT_CHECK(inst)                                            \
+	BUILD_ASSERT(                                                         \
+		(DT_PROP(DT_PARENT(DT_DRV_INST(inst)), kso_ignore_mask) &     \
+		 (1U << DT_INST_PROP(inst, col_num))),                        \
+		"For 'cros-ec,col-gpio', the bit corresponding to 'col-num' " \
+		"must be set in the parent's 'kso-ignore-mask'.")
 #else
 #define ITE_KBD_PARENT_CHECK(inst)
 #endif
