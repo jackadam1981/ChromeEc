@@ -151,7 +151,7 @@ uint16_t tcpc_get_alert_status(void)
 	 * present.
 	 */
 	uint16_t status = 0;
-	int regval;
+	int regval, alert_mask;
 
 	/* Is the C1 port present and its IRQ line asserted? */
 	if (board_get_usb_pd_port_count() == 2 &&
@@ -160,8 +160,10 @@ uint16_t tcpc_get_alert_status(void)
 		 * C1 IRQ is shared between BC1.2 and TCPC; poll TCPC to see if
 		 * it asserted the IRQ.
 		 */
-		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
-			if (regval)
+		if (!tcpc_read16(1, TCPC_REG_ALERT, &regval) &&
+		    !tcpc_read16(1, TCPC_REG_ALERT_MASK, &alert_mask)) {
+			/* Ignore alerts that are not in the alert mask */
+			if (regval & alert_mask)
 				status = PD_STATUS_TCPC_ALERT_1;
 		}
 	}

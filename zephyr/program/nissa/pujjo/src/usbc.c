@@ -94,7 +94,7 @@ int board_set_active_charge_port(int port)
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
-	int regval;
+	int regval, alert_mask;
 
 	/*
 	 * The interrupt line is shared between the TCPC and BC1.2 detector IC.
@@ -102,12 +102,13 @@ uint16_t tcpc_get_alert_status(void)
 	 * alert status.
 	 */
 	if (!gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_usb_c0_int_odl))) {
-		if (!tcpc_read16(0, TCPC_REG_ALERT, &regval)) {
+		if (!tcpc_read16(0, TCPC_REG_ALERT, &regval) &&
+		    !tcpc_read16(0, TCPC_REG_ALERT_MASK, &alert_mask)) {
 			/* The TCPCI Rev 1.0 spec says to ignore bits 14:12. */
 			if (!(tcpc_config[0].flags & TCPC_FLAGS_TCPCI_REV2_0))
 				regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
-			if (regval)
+			/* Ignore alerts that are not in the alert mask */
+			if (regval & alert_mask)
 				status |= PD_STATUS_TCPC_ALERT_0;
 		}
 	}
