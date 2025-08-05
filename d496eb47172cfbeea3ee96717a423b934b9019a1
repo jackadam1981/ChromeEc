@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69d368a3_d7fadaaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "I\u0027ve changed to hwtest since I\u0027m now also adding a (trivial) ECOS test and that name seems more fitting in light of the recent change. Thoughts?",
+      "parentUuid": "5fbef9a7_4e897c47",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8704d69e_d80d9d4f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8368e7f4_8df3b37b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "I\u0027ve added a trivial ECOS test to this CL. It works, but it just shows that null pointer de-reference doesn\u0027t trigger an exception. PTAL",
+      "parentUuid": "8704d69e_d80d9d4f",
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd8c0d8f_daaa120a",
         "filename": "zephyr/program/fpmcu/testcase.yaml",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2025-08-04T16:53:14Z",
       "side": 1,
       "message": "Not part of NULL pointer test",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbaaa4a2_614a2d91",
+        "filename": "zephyr/program/fpmcu/testcase.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8c0d8f_daaa120a",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17c157c_3afd4be6",
+        "filename": "zephyr/test/hwtest/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "548ed90a_2d1d7113",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7523cc9c_e6913066",
@@ -100,6 +190,30 @@
       "writtenOn": "2025-08-04T16:53:14Z",
       "side": 1,
       "message": "Same",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 47
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d2924e_a920ba29",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7523cc9c_e6913066",
       "range": {
         "startLine": 124,
         "startChar": 0,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02f9024_ce2adf8c",
+        "filename": "zephyr/test/hwtest/src/null_pointer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a57e78_120ee81d",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72c71493_6e513ff3",
@@ -146,6 +284,30 @@
       "writtenOn": "2025-08-04T16:53:14Z",
       "side": 1,
       "message": "We can remove this since the assert itself should log.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d496eb47172cfbeea3ee96717a423b934b9019a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd993c6f_cb8701bd",
+        "filename": "zephyr/test/hwtest/src/null_pointer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-05T22:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72c71493_6e513ff3",
       "range": {
         "startLine": 22,
         "startChar": 0,
