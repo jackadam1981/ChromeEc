@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9f82c6_81978734",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-08-05T08:05:16Z",
+      "side": 1,
+      "message": "The 360SKU have this sensor.\nWe could find bma422 with `ectool --name\u003dcros_ish motionsense info` on uldrenite 360SKU",
+      "parentUuid": "6d4c802c_c79a41e1",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480fd68c_7f8b8db1",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e1bf73_1f76dd3c",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-08-05T08:05:16Z",
+      "side": 1,
+      "message": "Since the traditional EC sensor architecture has been replaced by ISH, the current modification to 10Hz will only affect uldrenite-ish.",
+      "parentUuid": "480fd68c_7f8b8db1",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de4cf58f_806d81b7",
@@ -66,6 +102,24 @@
       "writtenOn": "2025-08-04T18:53:23Z",
       "side": 1,
       "message": "this code must go: there are no gyroscope anymore, since the lsm6dsm IMU has been replaced by the lis2dw12 accelerometer.",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccf8549_a4404240",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-08-05T08:05:16Z",
+      "side": 1,
+      "message": "The uldrenite have 180SKU and 360SKU, the 180SKU is use lis2dw12, 360SKU use lsm6dsm.\nIt maybe affect ISH(360SKU) when removing this code.",
+      "parentUuid": "de4cf58f_806d81b7",
       "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
