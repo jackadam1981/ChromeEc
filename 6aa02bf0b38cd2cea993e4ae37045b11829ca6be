@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b581d231_c5ccedfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T00:55:47Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"redundent\" is a possible misspelling of \"redundant\".\n\nTo bypass Spellchecker, a...\n\n\"redundent\" is a possible misspelling of \"redundant\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "6aa02bf0b38cd2cea993e4ae37045b11829ca6be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
