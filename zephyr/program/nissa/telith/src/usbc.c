@@ -12,10 +12,12 @@
 #include "driver/tcpm/tcpci.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "nissa_sub_board.h"
+#include "task.h"
+#include "telith_typec_num.h"
 #include "system.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
+#include "cros_cbi.h"
 
 #include <zephyr/logging/log.h>
 
@@ -198,3 +200,69 @@ void board_reset_pd_mcu(void)
 	 */
 }
 /* LCOV_EXCL_STOP */
+
+static uint8_t cached_usb_pd_port_count;
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	__ASSERT(cached_usb_pd_port_count != 0,
+		 "sub-board detection did not run before a port count request");
+	/* LCOV_EXCL_START - will not happen due to board_init is
+	 * HOOK_PRIO_DEFAULT
+	 */
+	if (cached_usb_pd_port_count == 0)
+		LOG_WRN("USB PD Port count not initialized!");
+	/* LCOV_EXCL_STOP */
+	return cached_usb_pd_port_count;
+}
+
+test_export_static enum telith_typec_num nissa_cached_sub_board =
+	TELITH_TYPEC_UNKNOWN;
+
+enum telith_typec_num telith_get_typec_num(void)
+{
+	int ret;
+	uint32_t val;
+
+	/*
+	 * Return cached value.
+	 */
+	if (nissa_cached_sub_board != TELITH_TYPEC_UNKNOWN)
+		return nissa_cached_sub_board;
+
+	nissa_cached_sub_board = TELITH_TYPEC_NONE; /* Defaults to none */
+	ret = cros_cbi_get_fw_config(FW_SUB_BOARD, &val);
+	if (ret != 0) {
+		LOG_WRN("Error retrieving CBI FW_CONFIG field %d",
+			FW_SUB_BOARD);
+		return nissa_cached_sub_board;
+	}
+	switch (val) {
+	default:
+		LOG_WRN("No sub-board defined");
+		break;
+	case FW_SUB_BOARD_1:
+		nissa_cached_sub_board = TELITH_TYPEC_ONE;
+		LOG_INF("Only one USB type C");
+		break;
+	}
+	return nissa_cached_sub_board;
+}
+
+test_export_static void board_usb_pd_count_init(void)
+{
+	/* Check CBI to determine actual port count */
+	switch (telith_get_typec_num()) {
+	default:
+		cached_usb_pd_port_count = 2;
+		break;
+
+	case TELITH_TYPEC_ONE:
+		cached_usb_pd_port_count = 1;
+		break;
+	}
+}
+/*
+ * Make sure setup is done after EEPROM is readable.
+ */
+DECLARE_HOOK(HOOK_INIT, board_usb_pd_count_init, HOOK_PRIO_INIT_I2C);
