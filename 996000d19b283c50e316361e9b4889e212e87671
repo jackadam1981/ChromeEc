@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "286e9acc_0ebc7170",
+        "filename": "zephyr/boards/google/npcx9/npcx9_npcx9m7f.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-05T16:48:02Z",
+      "side": 1,
+      "message": "I think it\u0027s only used to compare against the `min_flash` of testcases and used to skip tests without even trying to build them, currently our npcx base board is setup to expose 320kB of flash, at least that\u0027s what shows up in the builds:\n\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:       54788 B       320 KB     16.72%\n             RAM:       15024 B        64 KB     22.92%\n        IDT_LIST:           0 B        32 KB      0.00%\n``",
+      "parentUuid": "aefcad6d_d076a1db",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "996000d19b283c50e316361e9b4889e212e87671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec6793e4_bbc7fc42",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-30T15:13:10Z",
       "side": 1,
       "message": "I think this is only 63KB because of space reserved by the bootrom.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "996000d19b283c50e316361e9b4889e212e87671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38cbacc1_5b097909",
+        "filename": "zephyr/boards/google/realtek/realtek_rts5912.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-05T16:48:02Z",
+      "side": 1,
+      "message": "hey thanks, I think I copy pasted these and forgot to update them, checked a build and it\u0027s 63k RAM 256k flash, updated",
+      "parentUuid": "ec6793e4_bbc7fc42",
       "range": {
         "startLine": 9,
         "startChar": 5,
