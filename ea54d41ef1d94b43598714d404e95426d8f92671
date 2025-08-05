@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10b6c807_ce7a56fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-05T00:40:32Z",
+      "side": 1,
+      "message": "410079388",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "ea54d41ef1d94b43598714d404e95426d8f92671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7186d250_b2966dd5",
         "filename": "zephyr/Kconfig.defaults",
         "patchSetId": 1
