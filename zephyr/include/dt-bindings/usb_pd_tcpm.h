@@ -23,6 +23,7 @@
  * Bit 6 --> TCPC controls VCONN (even when CONFIG_USB_PD_TCPC_VCONN is off)
  * Bit 7 --> TCPC controls FRS (even when CONFIG_USB_PD_FRS_TCPC is off)
  * Bit 8 --> TCPC enable VBUS monitoring
+ * Bit 10 --> TCPC enable voltage alarm
  */
 #define TCPC_FLAGS_ALERT_ACTIVE_HIGH BIT(0)
 #define TCPC_FLAGS_ALERT_OD BIT(1)
@@ -34,5 +35,6 @@
 #define TCPC_FLAGS_CONTROL_FRS BIT(7)
 #define TCPC_FLAGS_VBUS_MONITOR BIT(8)
 #define TCPC_FLAGS_SET_VCONN_IN_SYNC BIT(9)
+#define TCPC_FLAGS_VOLTAGE_ALARM BIT(10)
 
 #endif
