@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0ce956_d0b6ab80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T00:58:18Z",
+      "side": 1,
+      "message": "Please also delete all references to PLATFORM_EC_LTO.\n\nTristan verified that if `CONFIG_LTO\u003dy`, that the setting of `CONFIG_PLATFORM_EC_LTO` doesn\u0027t change the image size.",
+      "revId": "ea54d41ef1d94b43598714d404e95426d8f92671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7186d250_b2966dd5",
@@ -37,6 +54,30 @@
       "writtenOn": "2025-08-05T00:39:20Z",
       "side": 1,
       "message": "should we just select `ISR_TABLES_LOCAL_DECLARATION` under `LTO`\nto satisfy `main/Kconfig.zephyr`:\n```\nconfig LTO\n\tbool \"Link Time Optimization\"\n\tdepends on !(GEN_ISR_TABLES || GEN_IRQ_VECTOR_TABLE) || ISR_TABLES_LOCAL_DECLARATION\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "ea54d41ef1d94b43598714d404e95426d8f92671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a163c871_2756bbae",
+        "filename": "zephyr/Kconfig.defaults",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-05T00:58:18Z",
+      "side": 1,
+      "message": "+1, adding `select ISR_TABLES_LOCAL_DECLARATION` at line 64 should be enough.",
+      "parentUuid": "7186d250_b2966dd5",
       "range": {
         "startLine": 65,
         "startChar": 7,
