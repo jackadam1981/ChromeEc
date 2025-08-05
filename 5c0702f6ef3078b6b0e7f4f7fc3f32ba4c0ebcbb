@@ -39,6 +39,40 @@
       },
       "revId": "5c0702f6ef3078b6b0e7f4f7fc3f32ba4c0ebcbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d34e30_f55d107d",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-05T23:23:57Z",
+      "side": 1,
+      "message": "Probably should have section about command versions. Maybe an example of how to support two versions of a command and a blurb about dropping support for versions (or entire commands) if they will not be needed on Android.",
+      "revId": "5c0702f6ef3078b6b0e7f4f7fc3f32ba4c0ebcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa339d1_c8917eaf",
+        "filename": "docs/ectool_rust_porting.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-05T23:23:57Z",
+      "side": 1,
+      "message": "Maybe mention the intent is to keep the input and output identical to ectool.cc when feasible.",
+      "revId": "5c0702f6ef3078b6b0e7f4f7fc3f32ba4c0ebcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
