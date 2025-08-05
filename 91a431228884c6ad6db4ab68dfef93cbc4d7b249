@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e6cc0a_08ed77c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-05T22:21:06Z",
+      "side": 1,
+      "message": "```suggestion\nhwtest: add null pointer dereference unit test to Zephyr and EC\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0f61f8_8c89ef19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-05T22:21:06Z",
+      "side": 1,
+      "message": "Since we\u0027re adding the test to EC, let\u0027s add it to `util/migrated_files.sh`.",
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558fec71_666239f7",
+        "filename": "baseboard/bloonchipper/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-05T22:21:06Z",
+      "side": 1,
+      "message": "You\u0027ll also need to add it for the other boards. grep for `test-list-y` to find them all.",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752b6c90_c5f01527",
+        "filename": "test/null_pointer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-05T22:21:06Z",
+      "side": 1,
+      "message": "```suggestion\n\t/* No null pointer checking in EC. */\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14f9185_51a8bf4e",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-05T22:21:06Z",
+      "side": 1,
+      "message": "```suggestion\n\t  The test verifies null pointer dereference crashes.\n```",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
