@@ -2976,6 +2976,9 @@ static void tc_attach_wait_src_run(const int port)
 	 * state is detected on both the CC1 and CC2 pins for at least
 	 * tCCDebounce.
 	 */
+
+	// Hello
+
 	if (pd_check_vbus_level(port, VBUS_SAFE0V)) {
 		if (new_cc_state == PD_CC_UFP_ATTACHED) {
 			set_state_tc(port, TC_ATTACHED_SRC);
