@@ -15,6 +15,7 @@
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
+#include "openssl/evp.h"
 #include "openssl/obj_mac.h"
 #include "sha256.h"
 #include "test_util.h"
@@ -346,14 +347,125 @@ test_static enum ec_error_list test_fp_command_generate_nonce(void)
 	return EC_SUCCESS;
 }
 
+static enum ec_error_list
+initialize_pairing_key(std::span<uint8_t, FP_PAIRING_KEY_LEN> pairing_key)
+{
+	enum ec_status rv;
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+	struct ec_params_fp_establish_pairing_key_wrap wrap_params;
+	ec_response_fp_establish_pairing_key_wrap wrap_response;
+	ec_params_fp_load_pairing_key load_params;
+
+	/* Ask FPMCU for its public key */
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Convert FPMCU public key to more useful form */
+	bssl::UniquePtr<EC_KEY> fpmcu_public_key =
+		create_ec_key_from_pubkey(keygen_response.pubkey);
+	TEST_NE(fpmcu_public_key.get(), nullptr, "%p");
+
+	/* Generate ECDH private key on our side */
+	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
+	TEST_NE(ecdh_key.get(), nullptr, "%p");
+
+	/* Get public key from that key */
+	std::optional<fp_elliptic_curve_public_key> pubkey =
+		create_pubkey_from_ec_key(*ecdh_key);
+	TEST_ASSERT(pubkey.has_value());
+
+	wrap_params.peers_pubkey = pubkey.value();
+
+	/* Generate Pairing Key on our side */
+	enum ec_error_list ret = generate_ecdh_shared_secret_without_kdf(
+		*ecdh_key, *fpmcu_public_key, pairing_key);
+	TEST_EQ(ret, EC_SUCCESS, "%d");
+
+	/*
+	 * Send our public key to the FPMCU. FPMCU will return encrypted
+	 * Pairing Key.
+	 */
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
+				    &wrap_params, sizeof(wrap_params),
+				    &wrap_response, sizeof(wrap_response));
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	load_params.encrypted_pairing_key = wrap_response.encrypted_pairing_key;
+
+	/* Load Pairing Key to the FPMCU */
+	rv = test_send_host_command(EC_CMD_FP_LOAD_PAIRING_KEY, 0, &load_params,
+				    sizeof(load_params), nullptr, 0);
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list generate_valid_nonce_context_request(
+	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
+	std::span<const uint8_t, FP_CONTEXT_USERID_LEN> userid,
+	struct ec_params_fp_nonce_context *nonce_params)
+{
+	/* Get our session nonce */
+	std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
+	/* Obtain session key on our side */
+	std::array<uint8_t, SHA256_DIGEST_SIZE> session_key;
+	enum ec_error_list ret = generate_session_key(
+		fpmcu_nonce, session_nonce, pairing_key, session_key);
+	TEST_EQ(ret, EC_SUCCESS, "%d");
+
+	TEST_EQ(userid.size(), sizeof(nonce_params->enc_user_id), "%zu");
+
+	std::array<uint8_t, FP_AES_KEY_NONCE_BYTES> nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+	TEST_EQ(nonce.size(), sizeof(nonce_params->nonce), "%zu");
+	memcpy(nonce_params->nonce, nonce.data(), FP_AES_KEY_NONCE_BYTES);
+
+	/* Encrypt userid using session key */
+	bssl::ScopedEVP_AEAD_CTX ctx;
+	int aead_ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_256_gcm(),
+					 session_key.data(), session_key.size(),
+					 sizeof(nonce_params->tag), nullptr);
+	TEST_EQ(aead_ret, 1, "%d");
+
+	size_t tag_bytes_written = 0;
+	aead_ret = EVP_AEAD_CTX_seal_scatter(
+		ctx.get(), nonce_params->enc_user_id, nonce_params->tag,
+		&tag_bytes_written, sizeof(nonce_params->tag),
+		nonce_params->nonce, sizeof(nonce_params->nonce), userid.data(),
+		userid.size(), /* extra_in = */ nullptr, /* extra_in_len = */ 0,
+		/* ad = */ nullptr, /* ad_len = */ 0);
+	TEST_EQ(aead_ret, 1, "%d");
+	TEST_EQ(tag_bytes_written, sizeof(nonce_params->tag), "%zu");
+
+	/* Copy our session nonce to the structure */
+	std::ranges::copy(session_nonce, nonce_params->peer_nonce);
+
+	return EC_SUCCESS;
+}
+
 test_static enum ec_error_list test_fp_command_nonce_context(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_nonce_context nonce_params;
 	uint32_t status;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
 	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
@@ -367,6 +479,11 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
 	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
 				    sizeof(nonce_params), NULL, 0);
@@ -384,10 +501,17 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_nonce_context nonce_params;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	// Nonce context without generate nonce should fail.
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
@@ -401,6 +525,11 @@ test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 				    &nonce_response, sizeof(nonce_response));
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
 				    sizeof(nonce_params), NULL, 0);
@@ -441,13 +570,20 @@ test_static enum ec_error_list
 test_fp_command_nonce_context_limit_normal_context(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_params_fp_context_v1 ctx_params = {
 		.action = FP_CONTEXT_GET_RESULT,
 	};
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_nonce_context nonce_params;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				    &nonce_response, sizeof(nonce_response));
@@ -461,6 +597,11 @@ test_fp_command_nonce_context_limit_normal_context(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	/* Call nonce context with generated nonce should success. */
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
 				    sizeof(nonce_params), NULL, 0);
@@ -473,15 +614,27 @@ test_fp_command_nonce_context_limit_normal_context(void)
 test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_1(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_nonce_context nonce_params;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				    &nonce_response, sizeof(nonce_response));
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
 				    sizeof(nonce_params), NULL, 0);
@@ -500,20 +653,32 @@ test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_1(void)
 test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_2(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_nonce_context nonce_params;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
 
-	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				    &nonce_response, sizeof(nonce_response));
-
-	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				    &nonce_response, sizeof(nonce_response));
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
 				    sizeof(nonce_params), NULL, 0);
@@ -532,6 +697,7 @@ test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_2(void)
 test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_nonce_context nonce_params;
 	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
@@ -551,11 +717,17 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 			},
 		},
 	};
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	ec_response_fp_establish_pairing_key_wrap wrap_response;
 	ec_params_fp_load_pairing_key load_params;
 
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
 				    NULL, 0, &keygen_response,
@@ -586,6 +758,11 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 				    &nonce_response, sizeof(nonce_response));
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
 				    sizeof(nonce_params), NULL, 0);
@@ -652,7 +829,16 @@ test_static enum ec_error_list test_fp_command_template_encrypted(void)
 
 test_static enum ec_error_list test_fp_command_template_decrypted(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
 	TEST_ASSERT(std::holds_alternative<std::monostate>(
 		global_context.template_states[0]));
 
@@ -662,6 +848,12 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -749,7 +941,20 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 
 test_static enum ec_error_list test_fp_command_unlock_template(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid1 = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid2 = {
+		2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
 	TEST_ASSERT(std::holds_alternative<std::monostate>(
 		global_context.template_states[0]));
 
@@ -765,6 +970,12 @@ test_static enum ec_error_list test_fp_command_unlock_template(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid1, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -880,6 +1091,12 @@ test_static enum ec_error_list test_fp_command_unlock_template(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid2, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -923,11 +1140,16 @@ test_fp_command_unlock_template_pre_encrypted_fail(void)
 	constexpr size_t params_size =
 		head_size + metadata_size + template_size + salt_size;
 
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	std::array<uint8_t, params_size> params = {};
 	std::span head(params.begin(), head_size);
 	std::span enc_metadata(head.end(), metadata_size);
 	std::span template_data(enc_metadata.end(), template_size);
 	std::span salt_data(template_data.end(), salt_size);
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	struct ec_params_fp_template head_data = {
 		.offset = 0,
@@ -949,6 +1171,7 @@ test_fp_command_unlock_template_pre_encrypted_fail(void)
 	std::ranges::fill(salt_data, 0xab);
 
 	fp_reset_and_clear_context();
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 	TEST_ASSERT(std::holds_alternative<std::monostate>(
 		global_context.template_states[0]));
 
@@ -964,6 +1187,12 @@ test_fp_command_unlock_template_pre_encrypted_fail(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -981,7 +1210,18 @@ test_fp_command_unlock_template_pre_encrypted_fail(void)
 test_static enum ec_error_list
 test_fp_command_unlock_template_pre_encrypted(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid1 = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid2 = {
+		2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 	TEST_ASSERT(std::holds_alternative<std::monostate>(
 		global_context.template_states[0]));
 
@@ -991,6 +1231,12 @@ test_fp_command_unlock_template_pre_encrypted(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid1, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -1065,6 +1311,12 @@ test_fp_command_unlock_template_pre_encrypted(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid2, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -1287,7 +1539,15 @@ test_static enum ec_error_list test_fp_command_commit_without_seed(void)
 test_static enum ec_error_list
 test_fp_command_migrate_template_to_nonce_context(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	/* Prepare an uncommitted template. */
 	TEST_ASSERT(std::holds_alternative<std::monostate>(
@@ -1361,6 +1621,12 @@ test_fp_command_migrate_template_to_nonce_context(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),
@@ -1379,7 +1645,15 @@ test_fp_command_migrate_template_to_nonce_context(void)
 test_static enum ec_error_list
 test_fp_command_migrate_template_to_nonce_context_failure(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_USERID_LEN> userid = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	/* Prepare an uncommitted template. */
 	TEST_ASSERT(std::holds_alternative<std::monostate>(
@@ -1394,6 +1668,12 @@ test_fp_command_migrate_template_to_nonce_context_failure(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_nonce_context_request(pairing_key,
+						     nonce_response.nonce,
+						     userid, &nonce_params),
+		EC_SUCCESS, "%d");
+
 	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
 				       &nonce_params, sizeof(nonce_params),
 				       NULL, 0),

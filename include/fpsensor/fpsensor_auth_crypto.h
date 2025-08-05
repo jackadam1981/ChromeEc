@@ -222,18 +222,23 @@ enum ec_error_list generate_session_key(
 	std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key);
 
 /**
- * Decrypt the data in place with a GSC session key.
- * Note: The GSC session key is equal to the CK in the original design doc.
+ * Decrypt the data with a session key.
  *
- * @param[in] gsc_session_key the GSC session key
- * @param[in] iv the IV of the encrypted data
- * @param[in,out] data the encrypted data
+ * @param[in] session_key the session key
+ * @param[in] input the encrypted data
+ * @param[out] output the decrypted data
+ * @param[in] nonce the AES256-GCM nonce
+ * @param[in] tag the AES256-GCM tag
+ * @param[in] aad the AES256-GCM additional auth data
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
-enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
-	std::span<const uint8_t> gsc_session_key, std::span<const uint8_t> iv,
-	std::span<uint8_t> data);
+enum ec_error_list decrypt_data_with_session_key(
+	std::span<const uint8_t, 32> session_key,
+	std::span<const uint8_t> input, std::span<uint8_t> output,
+	std::span<const uint8_t, FP_AES_KEY_NONCE_BYTES> nonce,
+	std::span<const uint8_t, FP_AES_KEY_TAG_BYTES> tag,
+	std::span<const uint8_t> aad);
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_AUTH_CRYPTO_H */
