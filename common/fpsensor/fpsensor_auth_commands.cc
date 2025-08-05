@@ -208,21 +208,19 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	std::array<uint8_t, SHA256_DIGEST_SIZE> gsc_session_key;
+	std::array<uint8_t, SHA256_DIGEST_SIZE> session_key;
 	enum ec_error_list ret = generate_session_key(
-		session_nonce, p->gsc_nonce, pairing_key, gsc_session_key);
-
+		session_nonce, p->peer_nonce, pairing_key, session_key);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_INVALID_PARAM;
 	}
 
 	static_assert(sizeof(global_context.user_id) == sizeof(p->enc_user_id));
 	std::array<uint8_t, sizeof(global_context.user_id)> raw_user_id;
-	std::ranges::copy(p->enc_user_id, raw_user_id.begin());
 
-	ret = decrypt_data_with_gsc_session_key_in_place(
-		gsc_session_key, p->enc_user_id_iv, raw_user_id);
-
+	ret = decrypt_data_with_session_key(session_key, p->enc_user_id,
+					    raw_user_id, p->nonce, p->tag,
+					    std::span<const uint8_t>{});
 	if (ret != EC_SUCCESS) {
 		return EC_RES_ERROR;
 	}

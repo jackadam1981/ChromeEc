@@ -9,6 +9,7 @@
 #include "ec_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
 #include "fpsensor/fpsensor_crypto.h"
+#include "openssl/aead.h"
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
@@ -139,28 +140,32 @@ enum ec_error_list generate_session_key(
 	return hmac_sha256(pairing_key, inputs, session_key);
 }
 
-enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
-	std::span<const uint8_t> gsc_session_key, std::span<const uint8_t> iv,
-	std::span<uint8_t> data)
+enum ec_error_list decrypt_data_with_session_key(
+	std::span<const uint8_t, 32> session_key,
+	std::span<const uint8_t> input, std::span<uint8_t> output,
+	std::span<const uint8_t, FP_AES_KEY_NONCE_BYTES> nonce,
+	std::span<const uint8_t, FP_AES_KEY_TAG_BYTES> tag,
+	std::span<const uint8_t> aad)
 {
-	if (gsc_session_key.size() != 32 || iv.size() != AES_BLOCK_SIZE) {
+	if (input.size() != output.size()) {
+		return EC_ERROR_OVERFLOW;
+	}
+
+	bssl::ScopedEVP_AEAD_CTX ctx;
+	int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_256_gcm(),
+				    session_key.data(), session_key.size(),
+				    tag.size(), nullptr);
+	if (!ret) {
 		return EC_ERROR_INVAL;
 	}
 
-	CleanseWrapper<AES_KEY> aes_key;
-	int res = AES_set_encrypt_key(gsc_session_key.data(), 256, &aes_key);
-	if (res) {
-		return EC_ERROR_INVAL;
+	ret = EVP_AEAD_CTX_open_gather(ctx.get(), output.data(), nonce.data(),
+				       nonce.size(), input.data(), input.size(),
+				       tag.data(), tag.size(), aad.data(),
+				       aad.size());
+	if (!ret) {
+		return EC_ERROR_UNKNOWN;
 	}
-
-	std::array<uint8_t, AES_BLOCK_SIZE> aes_iv;
-	std::ranges::copy(iv, aes_iv.begin());
-
-	/* The AES CTR uses the same function for encryption & decryption. */
-	unsigned int block_num = 0;
-	std::array<uint8_t, AES_BLOCK_SIZE> ecount_buf;
-	AES_ctr128_encrypt(data.data(), data.data(), data.size(), &aes_key,
-			   aes_iv.data(), ecount_buf.data(), &block_num);
 
 	return EC_SUCCESS;
 }
