@@ -6,7 +6,6 @@
 #include "fingerprint_elan80sg.h"
 #include "fingerprint_elan80sg_pal.h"
 #include "fingerprint_elan80sg_private.h"
-#include "zephyr/drivers/fingerprint/fingerprint_egis630_pal.h"
 
 #include <assert.h>
 #include <stdio.h>
