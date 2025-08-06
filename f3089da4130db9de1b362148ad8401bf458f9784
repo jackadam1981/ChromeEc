@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2894310f_1a639109",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459bd988_3b7eaff6",
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fab80012_7181786c",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 8
@@ -155,6 +173,30 @@
       "writtenOn": "2025-08-06T18:21:47Z",
       "side": 1,
       "message": "We decided that the devicetree property is preferred over auto-detection.",
+      "parentUuid": "8530b040_de3c9b77",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 60
+      },
+      "revId": "f3089da4130db9de1b362148ad8401bf458f9784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477a6599_eca31b76",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "Marked as resolved since we\u0027re taking the devicetree property option.",
       "parentUuid": "8530b040_de3c9b77",
       "range": {
         "startLine": 421,

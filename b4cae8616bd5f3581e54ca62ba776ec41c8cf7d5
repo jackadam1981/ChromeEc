@@ -16,6 +16,115 @@
       "message": "You also need to update the devicetrees used by the unit tests.\n\nRun `./twister -ivc -T zephyr/test/pdc` to see the build failures.",
       "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e433cb_e2b29eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "Thanks, this is off to a great start. Will need to update the devicetrees under `zephyr/test/pdc` as well to fix some test build errors. You\u0027ll want to run the full `./twister -T zephyr/test/pdc` to exercise all of the test cases.",
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07511f1f_e9adef17",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "NIT - Can we do `cfg-\u003eport_index_on_chip \u003d\u003d 1` and adjust the operands for consistency with the above logic?",
+      "range": {
+        "startLine": 1856,
+        "startChar": 2,
+        "endLine": 1858,
+        "endChar": 30
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c3377f_6807df2c",
+        "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "Should this be called `ucsi-index-on-chip`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57f7316_c1be7f35",
+        "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "Add an `enum` entry with allowed values of `1` and `2` since these are the only legal values (See https://docs.zephyrproject.org/latest/build/dts/bindings-syntax.html#example-property-definitions)",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed9ba75_fd23bb62",
+        "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T23:25:31Z",
+      "side": 1,
+      "message": "Please elaborate this comment and describe how the value is inserted into UCSI commands and what values should be used for dual- and single-port PDCs.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 73
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
