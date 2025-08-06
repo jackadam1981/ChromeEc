@@ -2849,6 +2849,7 @@ static void tc_unattached_src_entry(const int port)
 #endif
 
 	pd_timer_enable(port, TC_TIMER_NEXT_ROLE_SWAP, PD_T_DRP_SRC);
+	pd_timer_enable(port, TC_TIMER_PD_DEBOUNCE, PD_T_PD_DEBOUNCE);
 }
 
 static void tc_unattached_src_run(const int port)
@@ -2874,6 +2875,10 @@ static void tc_unattached_src_run(const int port)
 	/* Check for connection */
 	if (!IS_ENABLED(CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE))
 		tcpm_get_cc(port, &tc[port].cc1, &tc[port].cc2);
+
+	/* Wait for PD debounce */
+	if (!pd_timer_is_expired(port, PD_T_PD_DEBOUNCE))
+		return;
 
 	/*
 	 * Transition to AttachWait.SRC when:
@@ -2907,6 +2912,7 @@ static void tc_unattached_src_run(const int port)
 static void tc_unattached_src_exit(const int port)
 {
 	pd_timer_disable(port, TC_TIMER_NEXT_ROLE_SWAP);
+	pd_timer_disable(port, PD_T_PD_DEBOUNCE);
 }
 
 /**
