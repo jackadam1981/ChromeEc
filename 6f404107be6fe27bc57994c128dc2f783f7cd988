@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff4d761_d3fb4b48",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2651,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-08-06T22:33:10Z",
+      "side": 1,
+      "message": "This one is already in the standard format, but for a long time I\u0027ve been thinking this should be chagned to LOG_INF. Without this, the log just shows the PDM is sending a command, but doesn\u0027t say which command.",
+      "range": {
+        "startLine": 2651,
+        "startChar": 1,
+        "endLine": 2651,
+        "endChar": 9
+      },
+      "revId": "6f404107be6fe27bc57994c128dc2f783f7cd988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
