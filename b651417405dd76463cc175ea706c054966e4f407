@@ -34,6 +34,24 @@
       "parentUuid": "c698dcb9_cea3f047",
       "revId": "b651417405dd76463cc175ea706c054966e4f407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4179c6_94a4e3eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-06T23:38:28Z",
+      "side": 1,
+      "message": "I see the same thing with the deleted file:\n\nhttps://screenshot.googleplex.com/8EAgJcY2LdTkJCV\n\nwhen I diff againt the auto-merge.",
+      "parentUuid": "b519a01a_3a9f2eb9",
+      "revId": "b651417405dd76463cc175ea706c054966e4f407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
