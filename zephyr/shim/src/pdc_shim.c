@@ -226,3 +226,13 @@ void pd_request_source_voltage(int port, int mv)
 {
 	pdc_power_mgmt_request_source_voltage(port, mv);
 }
+
+uint32_t pd_get_requested_voltage(int port)
+{
+	return pdc_power_mgmt_get_requested_voltage(port);
+}
+
+uint32_t pd_get_requested_current(int port)
+{
+	return pdc_power_mgmt_get_requested_current(port);
+}

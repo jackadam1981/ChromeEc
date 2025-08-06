@@ -171,6 +171,7 @@ ZTEST_USER(pdc_api, test_get_connector_status)
 	in.rdo = 0x01234567;
 
 	zassert_ok(emul_pdc_set_connector_status(emul, &in));
+	zassert_ok(emul_pdc_set_rdo(emul, in.rdo));
 
 	zassert_ok(pdc_get_connector_status(dev, &out),
 		   "Failed to get connector capability");
@@ -618,6 +619,12 @@ ZTEST_USER(pdc_api, test_get_lpm_ppm_info)
 ZTEST_USER(pdc_api, test_get_pdo)
 {
 	uint32_t fixed_pdo = 0;
+	int rv;
+
+	/* Test a bad output pointer. */
+	rv = pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false, NULL);
+	zassert_equal(-EINVAL, rv, "Got %d but expected -EINVAL (%d)", rv,
+		      -EINVAL);
 
 	/* Test source fixed pdo. */
 	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false,
@@ -762,6 +769,12 @@ ZTEST_USER(pdc_api, test_get_sbu_mux_mode_access_error)
 	}
 }
 
+ZTEST_USER(pdc_api, test_set_ap_power_state)
+{
+	/* Unsupported power state */
+	zassert_equal(-EINVAL, pdc_set_ap_power_state(dev, POWER_G3));
+}
+
 /*
  * Suspended tests - ensure API calls behave correctly when PDC communication
  * is suspended.
@@ -848,4 +861,10 @@ ZTEST_USER(pdc_api_suspended, test_set_sbu_mux_mode)
 	/* Set should return busy because comms are blocked */
 	zassert_equal(-EBUSY,
 		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_FORCE_DBG));
+}
+
+ZTEST_USER(pdc_api_suspended, test_set_ap_power_state)
+{
+	/* Set should return busy because comms are blocked */
+	zassert_equal(-EBUSY, pdc_set_ap_power_state(dev, POWER_S0));
 }

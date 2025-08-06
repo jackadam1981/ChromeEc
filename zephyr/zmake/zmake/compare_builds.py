@@ -287,9 +287,11 @@ class CompareBuilds:
         ish_targets = {
             "rex-ish",
             "brox-ish",
-            "orisa-ish",
+            "kinmen-ish",
             "ptl-ish",
+            "pujjolo-ish",
             "trulo-ish",
+            "uldrenite-ish",
         }
 
         output_dir1 = self.checkouts[0].modules_dir / output_path

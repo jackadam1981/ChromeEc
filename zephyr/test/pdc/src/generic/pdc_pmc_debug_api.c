@@ -73,14 +73,15 @@ ZTEST_USER(pdc_pmc_debug_api, test_data_connection)
 
 ZTEST_USER(pdc_pmc_debug_api, test_typec_console_cmd_invalid_arg)
 {
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "typec"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "typec 2"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "typec"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "typec 2"), NULL);
 }
 
 ZTEST_USER(pdc_pmc_debug_api, test_altmode_console_cmd_invalid_arg)
 {
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "altmode read"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "altmode read 2"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "altmode read"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "altmode read 2"),
+		       NULL);
 }
 
 #endif /* CONFIG_TODO_B_345292002 */

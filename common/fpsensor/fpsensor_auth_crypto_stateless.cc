@@ -92,16 +92,33 @@ bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 
 enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 					       const EC_KEY &public_key,
-					       uint8_t *shared_secret,
-					       uint8_t shared_secret_size)
+					       std::span<uint8_t> secret)
 {
 	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
 	if (public_point == nullptr) {
 		return EC_ERROR_INVAL;
 	}
 
-	if (ECDH_compute_key_fips(shared_secret, shared_secret_size,
-				  public_point, &private_key) != 1) {
+	if (ECDH_compute_key_fips(secret.data(), secret.size(), public_point,
+				  &private_key) != 1) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list
+generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
+					const EC_KEY &public_key,
+					std::span<uint8_t> secret)
+{
+	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
+	if (public_point == nullptr) {
+		return EC_ERROR_INVAL;
+	}
+
+	if (ECDH_compute_key(secret.data(), secret.size(), public_point,
+			     &private_key, NULL) == -1) {
 		return EC_ERROR_INVAL;
 	}
 
@@ -187,8 +204,8 @@ enum ec_error_list encrypt_data_with_ecdh_key_in_place(
 
 	CleanseWrapper<std::array<uint8_t, SHA256_DIGEST_SIZE> > enc_key;
 
-	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*private_key, *public_key, enc_key.data(), enc_key.size());
+	enum ec_error_list ret =
+		generate_ecdh_shared_secret(*private_key, *public_key, enc_key);
 	if (ret != EC_SUCCESS) {
 		return ret;
 	}

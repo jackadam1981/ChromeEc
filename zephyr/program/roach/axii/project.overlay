@@ -210,11 +210,11 @@
 		/* TODO: find a way to probe touchpad parameters
 		 * dynamically.
 		 */
-		logical_max_x = <2925>;
-		logical_max_y = <1440>;
-		physical_max_x = <929>;
-		physical_max_y = <457>;
-		max_pressure = <511>;
+		logical-max-x = <2925>;
+		logical-max-y = <1440>;
+		physical-max-x = <929>;
+		physical-max-y = <457>;
+		max-pressure = <511>;
 	};
 
 };

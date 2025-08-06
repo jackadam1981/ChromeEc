@@ -6,16 +6,38 @@ cmake_minimum_required(VERSION 3.20.5)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
-if(DEFINED CONFIG_BOARD_OCELOT_ITE)
-	project(ocelot_ite)
+if(DEFINED CONFIG_BOARD_OCELOTRVP_ITE)
+	project(ocelotrvp-ite)
+	zephyr_library_sources("src/rvp_board_id.c")
+	zephyr_library_sources("src/rvp_keyboard_customization.c")
+	zephyr_library_sources("src/rvp_board_power.c")
+	zephyr_library_sources("src/rvp_usbc_runtime.c")
 endif()
 
-if(DEFINED CONFIG_BOARD_OCELOT_NUVOTON)
-	project(ocelot_nuvoton)
+if(DEFINED CONFIG_BOARD_OCELOTRVP_NPCX)
+	project(ocelotrvp-npcx)
+	zephyr_library_sources("src/rvp_board_id.c")
+	zephyr_library_sources("src/rvp_keyboard_customization.c")
+	zephyr_library_sources("src/rvp_board_power.c")
+	zephyr_library_sources("src/rvp_usbc_runtime.c")
 endif()
 
-if(DEFINED CONFIG_BOARD_OCELOT_MICROCHIP)
-	project(ocelot_microchip)
+if(DEFINED CONFIG_BOARD_OCELOTRVP_MCHP)
+	project(ocelotrvp-mchp)
+	zephyr_library_sources("src/rvp_board_id.c")
+	zephyr_library_sources("src/rvp_board_power.c")
+	zephyr_library_sources("src/rvp_usbc_runtime.c")
+endif()
+
+zephyr_include_directories("include/")
+
+zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
+  "../intelrvp/include")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
+  "../intelrvp/src/dc_jack.c")
+
+if(DEFINED CONFIG_BOARD_INTEL_ISH_5_8_0)
+	project(ocelot-ish)
 endif()
 
 add_subdirectory(${PROJECT_NAME})

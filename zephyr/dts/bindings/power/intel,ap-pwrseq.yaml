@@ -77,3 +77,11 @@ properties:
     default: 10
     description: |
       Timeout in seconds for dropping back from S5 to G3.
+
+  s0ix-entry-timeout:
+    type: int
+    default: 10
+    description: |
+      Maximum time allowed for entering S0ix, in seconds. Replaces
+      CONFIG_SLEEP_TIMEOUT_MS when using the Zephyr Intel power sequencing
+      driver.
