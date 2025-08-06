@@ -181,6 +181,8 @@ enum cmd_t {
 	CMD_SET_DRS,
 	/** Set Sx App Config register (AP power state) */
 	CMD_SET_SX_APP_CONFIG,
+	/** Set intel retimer compliance mode */
+	CMD_SET_BBR_CTS,
 };
 
 /**
@@ -261,8 +263,8 @@ struct pdc_data_t {
 	bool fast_role_swap;
 	/** Sink FET enable */
 	bool snk_fet_en;
-	/** Update retimer enable */
-	bool retimer_update_en;
+	/** retimer feature enable */
+	bool retimer_feature_en;
 	/** Connector reset type */
 	union connector_reset_t connector_reset;
 	/** PDO Type */
@@ -362,6 +364,7 @@ static void cmd_update_retimer(struct pdc_data_t *data);
 static void cmd_get_current_pdo(struct pdc_data_t *data);
 static void cmd_is_vconn_sourcing(struct pdc_data_t *data);
 static void cmd_set_sx_app_config(struct pdc_data_t *data);
+static void cmd_set_bbr_cts(struct pdc_data_t *data);
 static void task_gaid(struct pdc_data_t *data);
 static void task_srdy(struct pdc_data_t *data);
 static void task_dbfg(struct pdc_data_t *data);
@@ -972,6 +975,9 @@ static enum smf_state_result st_idle_run(void *o)
 			break;
 		case CMD_SET_SX_APP_CONFIG:
 			cmd_set_sx_app_config(data);
+			break;
+		case CMD_SET_BBR_CTS:
+			cmd_set_bbr_cts(data);
 		}
 	}
 
@@ -1331,7 +1337,7 @@ static void cmd_update_retimer(struct pdc_data_t *data)
 		goto error_recovery;
 	}
 
-	pdc_port_control.retimer_fw_update = data->retimer_update_en;
+	pdc_port_control.retimer_fw_update = data->retimer_feature_en;
 
 	/* Write PDC port control */
 	rv = tps_rw_port_control(&cfg->i2c, &pdc_port_control, I2C_MSG_WRITE);
@@ -1758,6 +1764,42 @@ static void cmd_set_sx_app_config(struct pdc_data_t *data)
 	rv = tps_rw_sx_app_config(&cfg->i2c, &pdc_sx_app_config, I2C_MSG_WRITE);
 	if (rv) {
 		LOG_ERR("Write sx app config failed");
+		goto error_recovery;
+	}
+
+	/* Command has completed */
+	data->cci_event.command_completed = 1;
+	/* Inform the system of the event */
+	call_cci_event_cb(data);
+
+	/* Transition to idle state */
+	set_state(data, ST_IDLE);
+	return;
+
+error_recovery:
+	set_state(data, ST_ERROR_RECOVERY);
+}
+
+static void cmd_set_bbr_cts(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_thunderbolt_configuration pdc_thunderbolt_config;
+	int rv;
+
+	rv = tps_rw_thunderbolt_configuration(
+		&cfg->i2c, &pdc_thunderbolt_config, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("Read thunderbolt config failed");
+		goto error_recovery;
+	}
+
+	pdc_thunderbolt_config.retimer_compliance_support =
+		data->retimer_feature_en;
+
+	rv = tps_rw_thunderbolt_configuration(
+		&cfg->i2c, &pdc_thunderbolt_config, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Write thunderbolt config failed");
 		goto error_recovery;
 	}
 
@@ -2647,7 +2689,7 @@ static int tps_update_retimer_mode(const struct device *dev, bool enable)
 {
 	struct pdc_data_t *data = dev->data;
 
-	data->retimer_update_en = enable;
+	data->retimer_feature_en = enable;
 
 	return tps_post_command(dev, CMD_UPDATE_RETIMER, NULL);
 }
@@ -2797,6 +2839,15 @@ static int tps_set_ap_power_state(const struct device *dev,
 	return tps_post_command(dev, CMD_SET_SX_APP_CONFIG, NULL);
 }
 
+static int tps_set_bbr_cts(const struct device *dev, bool enable)
+{
+	struct pdc_data_t *data = dev->data;
+
+	data->retimer_feature_en = enable;
+
+	return tps_post_command(dev, CMD_SET_BBR_CTS, NULL);
+}
+
 static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 				uint8_t data_size, uint8_t *command_specific,
 				uint8_t *lpm_data_out,
@@ -2876,6 +2927,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_sbu_mux_mode = tps_set_sbu_mux_mode,
 	.get_sbu_mux_mode = tps_get_sbu_mux_mode,
 	.set_ap_power_state = tps_set_ap_power_state,
+	.set_bbr_cts = tps_set_bbr_cts,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
