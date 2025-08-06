@@ -17,7 +17,7 @@
 		};
 		i2c_ec_i2c_adsp: ec_i2c_adsp {
 			i2c-port = <&i2c5_0>;
-			enum-names = "I2C_PORT_ADSP";
+			enum-names = "I2C_PORT_ADSP", "I2C_PORT_BATTERY";
 		};
 	};
 };
