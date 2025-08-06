@@ -56,19 +56,17 @@ SPECIAL_BOARDS = [
     "brox-sku4",
     "rauru",
     # Fatcat/Felino variants
-    "fatcat_npcx9m7f",
-    "fatcat_it82002aw",
+    "fatcatrvp-npcx",
+    "fatcatrvp-ite",
     "felino",
     "francka",
     # Nissa variants
     "nereid",
     "nivviks",
-    "orisa",
-    "orisa-ish",
     # Trulo variants
-    "trulo",
-    "trulo-ti",
-    "trulo-ish",
+    "kaladin",
+    "uldrenite",
+    "uldrenite-ish",
     # Skyrim variants
     "winterhold",
     "frostflow",

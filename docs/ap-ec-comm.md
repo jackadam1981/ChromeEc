@@ -24,6 +24,8 @@ the following sections.
 `ectool` contains wrapper functions for the host commands exposed by the EC,
 providing a CLI. They call one of the transport-specific `ec_command`
 implementations in the `util/comm-*.c` files to send and receive from the EC.
+Any changes to the C++ implementation, should be ported to the rust
+implementation. See [rust porting guide].
 
 #### Stress test
 
@@ -201,4 +203,6 @@ after receiving a host packet and before it has a response ready.
 [host command task]: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/common/host_command.c
 [Transport-specific details]: #Transport_specific-details
 [ec_commands.h]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/ec/google/chromeec/ec_commands.h
-[upstream instructions]: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/kernel_development.md#Upstream-development.
+[upstream instructions]:
+    https://chromium.googlesource.com/chromiumos/docs/+/HEAD/kernel_development.md#Upstream-development.
+[rust porting guide]: ./ectool_rust_porting.md

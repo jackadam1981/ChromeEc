@@ -7,9 +7,14 @@
 
 def register_brox_project(
     project_name,
+    chip="it8xxx2/it82002aw",
     kconfig_files=None,
 ):
     """Register a variant of brox."""
+    register_func = register_binman_project
+    if chip.startswith("realtek"):
+        register_func = register_rtk_project
+
     if kconfig_files is None:
         kconfig_files = [
             # Common to all projects.
@@ -18,9 +23,9 @@ def register_brox_project(
             here / project_name / "project.conf",
         ]
 
-    return register_binman_project(
+    return register_func(
         project_name=project_name,
-        zephyr_board="it8xxx2/it82002aw",
+        zephyr_board=chip,
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
@@ -34,8 +39,23 @@ brox = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
+        # Common sensor configs
+        here / "motionsense.conf",
+    ],
+)
+
+brtk = register_brox_project(
+    project_name="brtk",
+    chip="realtek/rts5912",
+    kconfig_files=[
+        # Common to all projects.
+        here / "program.conf",
+        # Parent project's config
+        here / "brtk" / "project.conf",
         # Common sensor configs
         here / "motionsense.conf",
     ],
@@ -46,6 +66,8 @@ register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
         # Project-specific KConfig customization.
@@ -58,6 +80,8 @@ brox_sku4 = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "brox" / "project.conf",
         # Project-specific KConfig customization.
@@ -95,11 +119,27 @@ register_ish_project(
     ],
 )
 
+caboc = register_brox_project(
+    project_name="caboc",
+    kconfig_files=[
+        # Common to all projects.
+        here / "program.conf",
+        # ite's config
+        here / "ite.conf",
+        # Parent project's config
+        here / "caboc" / "project.conf",
+        # Common sensor configs
+        here / "motionsense.conf",
+    ],
+)
+
 greenbayupoc = register_brox_project(
     project_name="greenbayupoc",
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Parent project's config
         here / "greenbayupoc" / "project.conf",
     ],
@@ -110,6 +150,8 @@ jubilant = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Project-specific config
         here / "jubilant" / "project.conf",
         # Common sensor configs
@@ -122,6 +164,8 @@ lotso = register_brox_project(
     kconfig_files=[
         # Common to all projects.
         here / "program.conf",
+        # ite's config
+        here / "ite.conf",
         # Common sensor configs
         here / "motionsense.conf",
         # Project-specific config
@@ -133,8 +177,10 @@ lotso = register_brox_project(
 # must not change after the first RO release. Not needed for brox-ish since it
 # doesn't use RO+RW
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brtk", addr=0x80404)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-ish-ec", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brox-tokenized", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="caboc", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="greenbayupoc", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="jubilant", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="lotso", addr=0x60098)

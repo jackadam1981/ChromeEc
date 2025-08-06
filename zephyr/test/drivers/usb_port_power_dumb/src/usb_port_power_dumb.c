@@ -48,8 +48,8 @@ ZTEST(usb_port_power_dumb, test_console_command__noargs)
 	outbuffer =
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
-	zassert_ok(!strstr(outbuffer, "Port " STRINGIFY(PORT_ID) ": off"),
-		   "Actual: '%s'", outbuffer);
+	zassert_not_null(strstr(outbuffer, "Port " STRINGIFY(PORT_ID) ": off"),
+			 "Actual: '%s'", outbuffer);
 
 	zassert_false(check_gpio_status_for_port(PORT_ID), NULL);
 }
@@ -67,8 +67,8 @@ ZTEST(usb_port_power_dumb, test_console_command__modify_port_status)
 	outbuffer =
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
-	zassert_ok(!strstr(outbuffer, "Port " STRINGIFY(PORT_ID) ": on"),
-		   "Actual: '%s'", outbuffer);
+	zassert_not_null(strstr(outbuffer, "Port " STRINGIFY(PORT_ID) ": on"),
+			 "Actual: '%s'", outbuffer);
 
 	zassert_true(check_gpio_status_for_port(PORT_ID), NULL);
 }
@@ -76,12 +76,12 @@ ZTEST(usb_port_power_dumb, test_console_command__modify_port_status)
 ZTEST(usb_port_power_dumb, test_console_command__invalid)
 {
 	/* Various bad input */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "usbchargemode NaN"),
-		   NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "usbchargemode -1"),
-		   NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "usbchargemode 10000"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "usbchargemode NaN"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "usbchargemode -1"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "usbchargemode 10000"),
+		       NULL);
 	zassert_ok(
 		!shell_execute_cmd(get_ec_shell(),
 				   "usbchargemode " STRINGIFY(PORT_ID) " abc"),

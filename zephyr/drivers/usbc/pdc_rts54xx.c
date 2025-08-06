@@ -24,6 +24,7 @@
 #include <zephyr/sys_clock.h>
 LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 #include "usbc/pdc_power_mgmt.h"
+#include "usbc/pdc_utils.h"
 #include "usbc/utils.h"
 
 #include <drivers/pdc.h>
@@ -97,7 +98,7 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
  */
 #define TRANSITION_TO_INIT_OR_IDLE_STATE(data)  \
 	transition_to_init_or_idle_state(data); \
-	return
+	return SMF_EVENT_HANDLED
 
 /**
  * @brief IRQ Event set by the interrupt handler.
@@ -140,6 +141,7 @@ static const struct smbus_cmd_t SET_TPC_RECONNECT = { 0x08, 0x03, 0x1F };
 static const struct smbus_cmd_t FORCE_SET_POWER_SWITCH = { 0x08, 0x03, 0x21 };
 static const struct smbus_cmd_t GET_RDO = { 0x08, 0x02, 0x84 };
 static const struct smbus_cmd_t GET_VDO = { 0x08, 0x03, 0x9A };
+static const struct smbus_cmd_t SET_SYS_PWR_STATE = { 0x08, 0x03, 0x2B };
 static const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02,
 								0xA7 };
 static const struct smbus_cmd_t RTS_SET_FRS_FUNCTION = { 0x08, 0x03, 0xE1 };
@@ -177,6 +179,7 @@ static const struct smbus_cmd_t RTS_UCSI_GET_ATTENTION_VDO = { 0x0E, 0x03,
 							       0x16 };
 __maybe_unused static const struct smbus_cmd_t RTS_SET_SBU_MUX_MODE = { 0x30,
 									0x01 };
+static const struct smbus_cmd_t SET_BBR_CTS = { 0x08, 0x03, 0x27 };
 
 /**
  * @brief States of the main state machine
@@ -303,6 +306,10 @@ enum cmd_t {
 	CMD_GET_SBU_MUX_MODE,
 	/** CMD_SET_SBU_MUX_MODE */
 	CMD_SET_SBU_MUX_MODE,
+	/** Set the Burnside Bridge retimer into CTS test mode */
+	CMD_SET_BBR_CTS,
+	/** CMD_SET_SYS_PWR_STATE */
+	CMD_SET_SYS_PWR_STATE,
 };
 
 /**
@@ -442,6 +449,8 @@ static const char *const cmd_names[] = {
 	[CMD_GET_ATTENTION_VDO] = "CMD_GET_ATTENTION_VDO",
 	[CMD_GET_SBU_MUX_MODE] = "CMD_GET_SBU_MUX_MODE",
 	[CMD_SET_SBU_MUX_MODE] = "CMD_SET_SBU_MUX_MODE",
+	[CMD_SET_BBR_CTS] = "CMD_SET_BBR_CTS",
+	[CMD_SET_SYS_PWR_STATE] = "CMD_SET_SYS_PWR_STATE",
 };
 
 /**
@@ -475,7 +484,7 @@ static int rts54_get_error_status(const struct device *dev,
 /**
  * @brief PDC port data used in interrupt handler
  */
-static struct pdc_data_t *pdc_data[CONFIG_USB_PD_PORT_MAX_COUNT];
+static struct pdc_data_t *const pdc_data[NUM_PDC_RTS54XX_PORTS];
 
 static enum state_t get_state(struct pdc_data_t *data)
 {
@@ -743,7 +752,7 @@ static void init_display_error_status(struct pdc_data_t *data)
 	}
 }
 
-static void st_init_run(void *o)
+static enum smf_state_result st_init_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -753,7 +762,7 @@ static void st_init_run(void *o)
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (data->init_local_state) {
@@ -762,58 +771,58 @@ static void st_init_run(void *o)
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_ENABLE)", cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_GET_IC_STATUS);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_GET_IC_STATUS:
 		rv = rts54_get_info(data->dev, &data->info, true);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_GET_IC_STATUS)", cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
 		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0x0);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_SET_NOTIFICATION_ENABLE)",
 				cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_RESET);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_RESET:
 		rv = rts54_reset(data->dev);
 		if (rv) {
 			LOG_ERR("C:%d, Internal(INIT_PDC_RESET)", cnum);
 			set_state(data, ST_DISABLE);
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_COMPLETE);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_COMPLETE:
 		data->es.pdc_init_failed = 0;
 		/* Init is complete, so transition to Idle state */
 		set_state(data, ST_IDLE);
 		data->init_done = true;
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_ERROR:
 		/* Get error status, and re-start the init process */
 		rts54_get_error_status(data->dev, &data->es);
 		init_write_cmd_and_change_state(data, INIT_PDC_ENABLE);
-		return;
+		return SMF_EVENT_HANDLED;
 	case INIT_PDC_CMD_WAIT:
 		/* If PDC_RESET was sent, check the reset_completed flag */
 		if (data->init_local_current_state == INIT_PDC_RESET) {
 			if (!data->cci_event.reset_completed) {
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 		} else if (!data->cci_event.command_completed) {
-			return;
+			return SMF_EVENT_HANDLED;
 		}
 
 		if (data->cci_event.error) {
@@ -823,7 +832,7 @@ static void st_init_run(void *o)
 				LOG_INF("C%d: PDC I2C problem",
 					cfg->connector_number);
 				set_state(data, ST_DISABLE);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			/* PDC not responding to Ping Status reads. Try error
@@ -832,7 +841,7 @@ static void st_init_run(void *o)
 				LOG_INF("C%d: PDC not responding",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			/* PDC not responding to Error Status reads. Try error
@@ -841,7 +850,7 @@ static void st_init_run(void *o)
 				LOG_INF("C%d: PDC error status read fail ",
 					cfg->connector_number);
 				set_state(data, ST_ERROR_RECOVERY);
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			/* PDC returned an error */
@@ -860,13 +869,15 @@ static void st_init_run(void *o)
 				} else {
 					set_state(data, ST_DISABLE);
 				}
-				return;
+				return SMF_EVENT_HANDLED;
 			}
 
 			data->init_local_state = data->init_local_next_state;
 		}
 		break;
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 /**
@@ -899,7 +910,7 @@ static void handle_irqs(struct pdc_data_t *data)
 		/* Search for port with matching I2C address */
 		for (int j = 0; j < pdc_power_mgmt_get_usb_pd_port_count();
 		     j++) {
-			struct pdc_data_t *pdc_int_data = pdc_data[j];
+			struct pdc_data_t *const pdc_int_data = pdc_data[j];
 
 			if (pdc_int_data == NULL ||
 			    !device_is_ready(pdc_int_data->dev)) {
@@ -943,14 +954,14 @@ static void st_idle_entry(void *o)
 	data->active_ucsi_cmd = 0;
 }
 
-static void st_idle_run(void *o)
+static enum smf_state_result st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/*
@@ -963,6 +974,8 @@ static void st_idle_run(void *o)
 	} else if (data->cmd != CMD_NONE) {
 		set_state(data, ST_WRITE);
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_write_entry(void *o)
@@ -985,7 +998,7 @@ static void st_write_entry(void *o)
 	data->cci_event.raw_value = 0;
 }
 
-static void st_write_run(void *o)
+static enum smf_state_result st_write_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	int rv;
@@ -996,12 +1009,14 @@ static void st_write_run(void *o)
 		if (max_i2c_retry_reached(data, I2C_MSG_WRITE)) {
 			set_state(data, ST_ERROR_RECOVERY);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* I2C transaction succeeded. Set timepoint for next ping status. */
 	data->next_ping_status = sys_timepoint_calc(K_MSEC(T_PING_STATUS));
 	set_state(data, ST_PING_STATUS);
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_ping_status_entry(void *o)
@@ -1023,7 +1038,7 @@ static void st_ping_status_entry(void *o)
 	data->cci_event.raw_value = 0;
 }
 
-static void st_ping_status_run(void *o)
+static enum smf_state_result st_ping_status_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -1047,7 +1062,7 @@ static void st_ping_status_run(void *o)
 		if (max_i2c_retry_reached(data, I2C_MSG_READ)) {
 			set_state(data, ST_ERROR_RECOVERY);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	switch (data->ping_status.cmd_sts) {
@@ -1157,8 +1172,10 @@ static void st_ping_status_run(void *o)
 			data->ping_status.raw_value);
 		/* An error occurred, try to recover */
 		set_state(data, ST_ERROR_RECOVERY);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_read_entry(void *o)
@@ -1177,7 +1194,7 @@ static void st_read_entry(void *o)
 	/* Set the port the CCI Event occurred on */
 }
 
-static void st_read_run(void *o)
+static enum smf_state_result st_read_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 	const struct pdc_config_t *cfg = data->dev->config;
@@ -1213,7 +1230,7 @@ static void st_read_run(void *o)
 		if (max_i2c_retry_reached(data, I2C_MSG_READ)) {
 			set_state(data, ST_ERROR_RECOVERY);
 		}
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Get length of data returned */
@@ -1390,6 +1407,8 @@ static void st_read_run(void *o)
 	call_cci_event_cb(data);
 	/* All done, return to Init or Idle state */
 	TRANSITION_TO_INIT_OR_IDLE_STATE(data);
+
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_error_recovery_entry(void *o)
@@ -1403,19 +1422,19 @@ static void st_error_recovery_entry(void *o)
 	/*TODO: ADD ERROR RECOVERY CODE */
 }
 
-static void st_error_recovery_run(void *o)
+static enum smf_state_result st_error_recovery_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Don't continue trying if we are suspending communication */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	if (data->error_recovery_counter >= N_MAX_ERROR_RECOVERY_COUNT) {
 		set_state(data, ST_DISABLE);
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Current recovery is just delaying and performing a PDC init */
@@ -1423,11 +1442,12 @@ static void st_error_recovery_run(void *o)
 	 */
 	if (data->error_recovery_delay_counter < N_ERROR_RECOVERY_DELAY_COUNT) {
 		data->error_recovery_delay_counter++;
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Perform PDC Init */
 	perform_pdc_init(data);
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_disable_entry(void *o)
@@ -1440,9 +1460,10 @@ static void st_disable_entry(void *o)
 	data->error_status.port_disabled = 1;
 }
 
-static void st_disable_run(void *o)
+static enum smf_state_result st_disable_run(void *o)
 {
 	/* Stay here until reset */
+	return SMF_EVENT_HANDLED;
 }
 
 static void st_suspended_entry(void *o)
@@ -1452,13 +1473,13 @@ static void st_suspended_entry(void *o)
 	print_current_state(data);
 }
 
-static void st_suspended_run(void *o)
+static enum smf_state_result st_suspended_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
 	/* Stay here while suspended */
 	if (check_comms_suspended()) {
-		return;
+		return SMF_EVENT_HANDLED;
 	}
 
 	/* Otherwise, return back to init state...
@@ -1467,6 +1488,7 @@ static void st_suspended_run(void *o)
 	 * back into a known state (This includes a driver + PDC reset)
 	 */
 	perform_pdc_init(data);
+	return SMF_EVENT_HANDLED;
 }
 
 /* Populate cmd state table */
@@ -2344,6 +2366,36 @@ static int rts54_set_frs(const struct device *dev, bool enable)
 				  ARRAY_SIZE(payload), NULL);
 }
 
+static int rts54_set_ap_power_state(const struct device *dev,
+				    enum power_state state)
+{
+	struct pdc_data_t *data = dev->data;
+	int byte;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (state == POWER_S0) {
+		byte = SX_S0;
+	} else if (state == POWER_S5) {
+		byte = SX_S5;
+	} else {
+		return -EINVAL;
+	}
+
+	uint8_t payload[] = {
+		SET_SYS_PWR_STATE.cmd,
+		SET_SYS_PWR_STATE.len,
+		SET_SYS_PWR_STATE.sub,
+		0x00,
+		byte,
+	};
+
+	return rts54_post_command(dev, CMD_SET_SYS_PWR_STATE, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static int rts54_get_identity_discovery(const struct device *dev,
 					bool *disc_state)
 {
@@ -2706,6 +2758,28 @@ static int rts54_set_sbu_mux_mode(const struct device *dev,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
+static int rts54_set_bbr_cts(const struct device *dev, bool enable)
+{
+	const struct pdc_config_t *cfg = dev->config;
+
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		SET_BBR_CTS.cmd,      SET_BBR_CTS.len,
+		SET_BBR_CTS.sub,      0x00, /* Port */
+		enable ? 0x01 : 0x00,
+	};
+
+	LOG_INF("C%d: SET_BBR_CTS = %d", cfg->connector_number, enable);
+
+	return rts54_post_command(dev, CMD_SET_BBR_CTS, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static DEVICE_API(pdc, pdc_driver_api) = {
 	.start_thread = rts54_start_thread,
 	.is_init_done = rts54_is_init_done,
@@ -2751,6 +2825,8 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.get_sbu_mux_mode = rts54_get_sbu_mux_mode,
 	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,
 #endif /* define(CONFIG_USBC_PDC_DRIVEN_CCD) */
+	.set_bbr_cts = rts54_set_bbr_cts,
+	.set_ap_power_state = rts54_set_ap_power_state,
 };
 
 static int pdc_init(const struct device *dev)
@@ -2816,13 +2892,10 @@ static int pdc_init(const struct device *dev)
 
 	k_mutex_init(&data->mtx);
 
-	data->dev = dev;
 	data->cmd = CMD_NONE;
 	data->error_recovery_counter = 0;
 	data->init_retry_counter = 0;
 	data->info.fw_version = PDC_FWVER_INVALID;
-
-	pdc_data[cfg->connector_number] = data;
 
 	/* Set initial state */
 	data->init_local_state = INIT_PDC_ENABLE;
@@ -2870,6 +2943,8 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 	}
 }
 
+#define PDC_DATA_STRUCT_NAME(inst) pdc_data_##inst
+
 #define RTS54xx_PDC_DEFINE(inst)                                              \
 	K_THREAD_STACK_DEFINE(rts54xx_thread_stack_area_##inst,               \
 			      CONFIG_USBC_PDC_RTS54XX_STACK_SIZE);            \
@@ -2888,13 +2963,13 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		k_thread_name_set(data->thread, "RTS54XX" STRINGIFY(inst));   \
 	}                                                                     \
                                                                               \
-	static struct pdc_data_t pdc_data_##inst;                             \
+	static struct pdc_data_t PDC_DATA_STRUCT_NAME(inst);                  \
                                                                               \
 	static void pdc_interrupt_callback##inst(const struct device *dev,    \
 						 struct gpio_callback *cb,    \
 						 uint32_t pins)               \
 	{                                                                     \
-		k_event_post(&pdc_data_##inst.driver_event,                   \
+		k_event_post(&PDC_DATA_STRUCT_NAME(inst).driver_event,        \
 			     RTS54XX_IRQ_EVENT);                              \
 	}                                                                     \
                                                                               \
@@ -2926,21 +3001,32 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 		.callback_handler = pdc_interrupt_callback##inst,             \
 	};                                                                    \
                                                                               \
-	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL, &pdc_data_##inst,         \
-			      &pdc_config##inst, POST_KERNEL,                 \
-			      CONFIG_PDC_DRIVER_INIT_PRIORITY,                \
-			      &pdc_driver_api);
+	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL,                           \
+			      &PDC_DATA_STRUCT_NAME(inst), &pdc_config##inst, \
+			      POST_KERNEL, CONFIG_PDC_DRIVER_INIT_PRIORITY,   \
+			      &pdc_driver_api);                               \
+                                                                              \
+	static struct pdc_data_t PDC_DATA_STRUCT_NAME(inst) = {               \
+		.dev = DEVICE_DT_INST_GET(inst),                              \
+	};
 
 DT_INST_FOREACH_STATUS_OKAY(RTS54xx_PDC_DEFINE)
 
+#define PDC_DATA_PTR_ENTRY(inst) &PDC_DATA_STRUCT_NAME(inst),
+
+/* Populate the pdc_data struct with a pointer to each RTK PDC port's device
+ * struct. */
+static struct pdc_data_t *const pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
+	PDC_DATA_PTR_ENTRY) };
+
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+/* If PDC-driven CCD is used, one of the PDC driver nodes for each driver compat
+ * type must be marked with the `ccd` property.
+ */
+CHECK_ONE_CCD_PORT_COUNT_FOR_DRIVER();
+#endif /* CONFIG_USBC_PDC_DRIVEN_CCD */
+
 #ifdef CONFIG_ZTEST
-
-struct pdc_data_t;
-
-#define PDC_TEST_DEFINE(inst) &pdc_data_##inst,
-
-static struct pdc_data_t *pdc_data[] = { DT_INST_FOREACH_STATUS_OKAY(
-	PDC_TEST_DEFINE) };
 
 /*
  * Wait for drivers to become idle.
@@ -2956,8 +3042,15 @@ bool pdc_rts54xx_test_idle_wait(void)
 
 		k_msleep(100);
 		for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
+			if (!device_is_ready(pdc_data[port]->dev)) {
+				/* This port is not in use. Consider it finished
+				 * so we do not wait on it. */
+				num_finished++;
+			}
 			if (get_state(pdc_data[port]) == ST_IDLE &&
 			    pdc_data[port]->cmd == CMD_NONE) {
+				/* Driver is in the idle state with no pending
+				 * commands. */
 				num_finished++;
 			}
 		}
