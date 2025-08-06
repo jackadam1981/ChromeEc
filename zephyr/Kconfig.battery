@@ -360,4 +360,8 @@ config PLATFORM_EC_BATT_HOST_FULL_FACTOR
 	  Today, EC's PLATFORM_EC_BATT_HOST_FULL_FACTOR is the source of truth.
 	  Powerd gets the value from the EC over EC_CMD_DISPLAY_SOC.
 
+config PLATFORM_EC_BATTERY_AP_OFFLOAD_CHARGING
+	bool "Battery charging is offloaded to Application Processor"
+	default n
+
 endif # PLATFORM_EC_BATTERY
