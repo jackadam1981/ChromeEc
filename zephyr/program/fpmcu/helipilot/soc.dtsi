@@ -5,22 +5,19 @@
 
 #include <cros/nuvoton/npcx9_cros.dtsi>
 #include <nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi>
+#include "npcx_default_gpio_pinctrl.dtsi"
 
 
 / {
-       soc {
-              itim5: timer@400b8000 {
-                     compatible = "nuvoton,npcx-itim-timer";
-                     reg = <0x400b8000 0x2000>;
-                     clocks = <&pcc NPCX_CLOCK_BUS_LFCLK NPCX_PWDWN_CTL6 1>;
-                     interrupts = <44 1>; /* Event timer interrupt */
-              };
-       };
-};
-
-/* DRBG: Deterministic Random Bit Generator */
-&drbg0 {
-	status = "okay";
+	soc {
+		itim5: timer@400b8000 {
+			compatible = "nuvoton,npcx-itim-timer";
+			reg = <0x400b8000 0x2000>;
+			clocks = <&pcc NPCX_CLOCK_BUS_LFCLK NPCX_PWDWN_CTL6 1>;
+			interrupts = <44 1>; /* Event timer interrupt */
+			clock-frequency = <15000000>; /* Set for SYS_CLOCK_HW_CYCLES_PER_SEC */
+		};
+	};
 };
 
 /*
@@ -51,7 +48,7 @@
  * 0x10058000└──────────────┘
  */
 &flash0 {
-    reg = <0x10058000 DT_SIZE_K(352)>;
+	reg = <0x10058000 DT_SIZE_K(352)>;
 };
 
 /delete-node/ &sram0;
@@ -74,10 +71,10 @@
 
 /* UART2: AP UART (Host Commands and MKBP) */
 &uart2 {
-       pinctrl-0 = <&uart2_sin_gp75
-                        &uart2_sout_gp86>;
-       pinctrl-names = "default";
-       current-speed = <3000000>;
+	pinctrl-0 = <&uart2_sin_gp75
+		     &uart2_sout_gp86>;
+	pinctrl-names = "default";
+	current-speed = <3000000>;
 };
 
 /*
@@ -105,4 +102,21 @@
 	 * UART2 Baudrate=3 MHz
 	 */
 	apb4-prescaler = <2>;
+};
+
+
+&pinctrl {
+        /omit-if-no-ref/ shi_gpio_gp46_47_53_55: periph-shi-gpio {
+               pinmux = <&altc_shi_sl>;
+               pinmux-gpio;
+       };
+};
+
+&shi0 {
+       pinctrl-1 = <&shi_gpio_gp46_47_53_55>;
+       pinctrl-names = "default", "sleep";
+};
+
+&ramlock0 {
+    status = "okay";
 };

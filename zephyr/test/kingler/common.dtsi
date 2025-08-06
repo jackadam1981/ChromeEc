@@ -97,6 +97,7 @@
 
 			active-mask = "SENSOR_ACTIVE_S0_S3_S5";
 			location = "MOTIONSENSE_LOC_BASE";
+			port = <&i2c_sensor>;
 			drv-data = <&bmi160_data>;
 			default-range = <4>;
 			i2c-spi-addr-flags = "BMI160_ADDR0_FLAGS";
@@ -107,6 +108,7 @@
 
 			active-mask = "SENSOR_ACTIVE_S0_S3_S5";
 			location = "MOTIONSENSE_LOC_BASE";
+			port = <&i2c_sensor>;
 			drv-data = <&bmi160_data>;
 			default-range = <4>;
 			i2c-spi-addr-flags = "BMI160_ADDR0_FLAGS";

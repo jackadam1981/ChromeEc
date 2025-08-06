@@ -23,6 +23,8 @@ ZTEST_USER(hc_test_protocol, test_echo_max_buffer_size)
 	params.buf[0] = 0x1;
 	params.buf[ARRAY_SIZE(params.buf) - 1] = 0x2;
 
+	memset(&response, 0, sizeof(response));
+
 	zassert_ok(ec_cmd_test_protocol(&args, &params, &response));
 	zassert_equal(args.response_size, sizeof(response));
 
@@ -47,6 +49,8 @@ ZTEST_USER(hc_test_protocol, test_echo_min_buffer_size_failing_command)
 	 */
 	params.buf[0] = 0x1;
 	params.buf[ARRAY_SIZE(params.buf) - 1] = 0x2;
+
+	memset(&response, 0, sizeof(response));
 
 	zassert_equal(ec_cmd_test_protocol(&args, &params, &response),
 		      params.ec_result);

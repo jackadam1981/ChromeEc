@@ -20,6 +20,11 @@
 #include <algorithm>
 #include <array>
 
+#if defined(BASEBOARD_HELIPILOT)
+BUILD_ASSERT(IS_ENABLED(CONFIG_OTP_KEY),
+	     "OTP_KEY should be enabled for Helipilot baseboard.");
+#endif
+
 namespace
 {
 
@@ -37,9 +42,81 @@ constexpr std::array<uint8_t, 32> kFakeUserId = {
 };
 static_assert(kFakeUserId.size() == FP_CONTEXT_USERID_BYTES);
 
+test_static enum ec_error_list test_fp_encrypt_fail_size_mismatch(void)
+{
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, 31> too_small_buffer{};
+	TEST_EQ(encrypt_data(1, info, kFakeUserId, kFakeTpmSeed, input,
+			     too_small_buffer),
+		EC_ERROR_OVERFLOW, "%d");
+
+	std::array<uint8_t, 33> too_big_buffer{};
+	TEST_EQ(encrypt_data(1, info, kFakeUserId, kFakeTpmSeed, input,
+			     too_big_buffer),
+		EC_ERROR_OVERFLOW, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_decrypt_fail_size_mismatch(void)
+{
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+
+	uint16_t version = 1;
+	std::array<uint8_t, 32> enc_data{};
+	TEST_EQ(encrypt_data(version, info, kFakeUserId, kFakeTpmSeed, input,
+			     enc_data),
+		EC_SUCCESS, "%d");
+
+	std::array<uint8_t, 31> too_small_buffer{};
+	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data,
+			     too_small_buffer),
+		EC_ERROR_OVERFLOW, "%d");
+
+	std::array<uint8_t, 33> too_big_buffer{};
+	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data,
+			     too_big_buffer),
+		EC_ERROR_OVERFLOW, "%d");
+
+	return EC_SUCCESS;
+}
+
 test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
 {
-	struct fp_auth_command_encryption_metadata info;
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	uint16_t version = 1;
+	std::array<uint8_t, 32> enc_data{};
+
+	TEST_EQ(encrypt_data(version, info, kFakeUserId, kFakeTpmSeed, input,
+			     enc_data),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(info.struct_version, version, "%d");
+
+	/* The encrypted data should not be the same as the input. */
+	TEST_ASSERT_ARRAY_NE(enc_data, input, enc_data.size());
+
+	std::array<uint8_t, 32> output{};
+	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, enc_data, output),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(input, output, sizeof(input));
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_encrypt_decrypt_data_in_place(void)
+{
+	struct fp_auth_command_encryption_metadata info{};
 	const std::array<uint8_t, 32> input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
 						1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 						2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
@@ -55,7 +132,7 @@ test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
 	/* The encrypted data should not be the same as the input. */
 	TEST_ASSERT_ARRAY_NE(data, input, data.size());
 
-	std::array<uint8_t, 32> output;
+	std::array<uint8_t, 32> output{};
 	TEST_EQ(decrypt_data(info, kFakeUserId, kFakeTpmSeed, data, output),
 		EC_SUCCESS, "%d");
 
@@ -64,34 +141,28 @@ test_static enum ec_error_list test_fp_encrypt_decrypt_data(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_encrypt_decrypt_key(void)
+test_static enum ec_error_list test_fp_encrypt_decrypt_pairing_key(void)
 {
+	struct fp_auth_command_encryption_metadata info{};
+	const std::array<uint8_t, FP_PAIRING_KEY_LEN> input = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2
+	};
 	uint16_t version = 1;
-	std::array<uint8_t, 32> privkey = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
-					    1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
-					    2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> enc_data{};
 
-	bssl::UniquePtr<EC_KEY> key =
-		create_ec_key_from_privkey(privkey.data(), privkey.size());
+	TEST_EQ(encrypt_pairing_key(version, info, input, enc_data), EC_SUCCESS,
+		"%d");
 
-	TEST_NE(key.get(), nullptr, "%p");
+	TEST_EQ(info.struct_version, version, "%d");
 
-	auto enc_key = create_encrypted_private_key(*key, version, kFakeUserId,
-						    kFakeTpmSeed);
-	TEST_ASSERT(enc_key.has_value());
+	/* The encrypted data should not be the same as the input. */
+	TEST_ASSERT_ARRAY_NE(enc_data, input, enc_data.size());
 
-	TEST_EQ(enc_key->info.struct_version, version, "%d");
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> output{};
+	TEST_EQ(decrypt_pairing_key(info, enc_data, output), EC_SUCCESS, "%d");
 
-	bssl::UniquePtr<EC_KEY> out_key =
-		decrypt_private_key(*enc_key, kFakeUserId, kFakeTpmSeed);
-
-	TEST_NE(key.get(), nullptr, "%p");
-
-	std::array<uint8_t, 32> output_privkey;
-	EC_KEY_priv2oct(out_key.get(), output_privkey.data(),
-			output_privkey.size());
-
-	TEST_ASSERT_ARRAY_EQ(privkey, output_privkey, sizeof(privkey));
+	TEST_ASSERT_ARRAY_EQ(input, output, sizeof(input));
 
 	return EC_SUCCESS;
 }
@@ -107,7 +178,10 @@ void run_test(int argc, const char **argv)
 		std::ranges::copy(default_fake_otp_key,
 				  mock_otp.otp_key_buffer);
 	}
+	RUN_TEST(test_fp_encrypt_fail_size_mismatch);
+	RUN_TEST(test_fp_decrypt_fail_size_mismatch);
 	RUN_TEST(test_fp_encrypt_decrypt_data);
-	RUN_TEST(test_fp_encrypt_decrypt_key);
+	RUN_TEST(test_fp_encrypt_decrypt_data_in_place);
+	RUN_TEST(test_fp_encrypt_decrypt_pairing_key);
 	test_print_result();
 }

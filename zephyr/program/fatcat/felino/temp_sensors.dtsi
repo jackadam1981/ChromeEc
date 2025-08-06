@@ -31,38 +31,38 @@
 		compatible = "cros-ec,temp-sensors";
 
 		ambient {
-			temp_fan_off = <15>;
-			temp_fan_max = <50>;
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <15>;
+			temp-fan-max = <50>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_vccprim_io_pgood>;
 			sensor = <&temp_ambient>;
 		};
 		charger {
-			temp_fan_off = <15>;
-			temp_fan_max = <50>;
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <15>;
+			temp-fan-max = <50>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_vccprim_io_pgood>;
 			sensor = <&temp_charger>;
 		};
 		cpu {
-			temp_fan_off = <15>;
-			temp_fan_max = <50>;
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <15>;
+			temp-fan-max = <50>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_vccprim_io_pgood>;
 			sensor = <&temp_cpu>;
 		};
 		typec0 {
-			temp_fan_off = <15>;
-			temp_fan_max = <50>;
-			temp_host_high = <75>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <15>;
+			temp-fan-max = <50>;
+			temp-host-high = <75>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_vccprim_io_pgood>;
 			sensor = <&temp_typec0>;
 		};

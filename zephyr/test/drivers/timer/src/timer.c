@@ -72,8 +72,9 @@ ZTEST(timer, test_console_cmd_gettime)
 	outbuffer =
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
-	zassert_ok(!strstr(outbuffer, "Time: 0x0000000000000064 = 0.000100 s"),
-		   "Actual: '%s'", outbuffer);
+	zassert_not_null(strstr(outbuffer,
+				"Time: 0x0000000000000064 = 0.000100 s"),
+			 "Actual: '%s'", outbuffer);
 }
 
 ZTEST(timer, test_console_cmd_timerinfo)
@@ -92,9 +93,10 @@ ZTEST(timer, test_console_cmd_timerinfo)
 	outbuffer =
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
-	zassert_ok(!strstr(outbuffer,
-			   "Time:     0x0000000000000064 us,    0.000100 s"),
-		   "Actual: '%s'", outbuffer);
+	zassert_not_null(
+		strstr(outbuffer,
+		       "Time:     0x0000000000000064 us,    0.000100 s"),
+		"Actual: '%s'", outbuffer);
 
 	/* Task timer information not printed here if running in a Zephyr EC */
 }

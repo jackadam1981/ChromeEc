@@ -40,6 +40,12 @@ constexpr const struct gpio_dt_spec kLidOpenInterruptSpec = {
     .pin = DT_GPIO_PIN_BY_IDX(DT_ALIAS(test_lid_open), gpios, 0),
     .dt_flags = 0,
 };
+constexpr const struct gpio_dt_spec KTabletModeInterruptSpec = {
+    .port = DEVICE_DT_GET(
+        DT_GPIO_CTLR_BY_IDX(DT_ALIAS(test_tablet_mode), gpios, 0)),
+    .pin = DT_GPIO_PIN_BY_IDX(DT_ALIAS(test_tablet_mode), gpios, 0),
+    .dt_flags = 0,
+};
 
 constexpr const struct gpio_dt_spec kClientInterruptSpec =
     GPIO_DT_SPEC_GET(DT_ALIAS(test_dsp_client), int_gpios);
@@ -419,8 +425,9 @@ TEST_F(DspComms, LidPosition) {
   gpio_remove_callback_dt(&kServiceInterruptSpec, &gpio_callbacks_);
   // Emulate lid open
   gpio_emul_input_set(kLidOpenInterruptSpec.port, kLidOpenInterruptSpec.pin, 1);
-  // Emulate clamshell mode
-  tablet_set_mode(0, TABLET_TRIGGER_LID);
+  // Emulate clamshell mode (uses a low active)
+  gpio_emul_input_set(
+      KTabletModeInterruptSpec.port, KTabletModeInterruptSpec.pin, 1);
   hook_notify(HOOK_INIT);
   auto status = ReadStatus();
   ASSERT_TRUE(

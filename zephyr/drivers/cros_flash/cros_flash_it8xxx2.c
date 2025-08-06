@@ -301,19 +301,17 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 		return -EACCES;
 	}
 	/*
-	 * Before the flash erasing, the interrupts should be disabled. In
-	 * the flash erasing loop, the SHI interrupt should be enabled to
-	 * handle AP's command, so irq_lock() is not used here.
-	 */
-	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC)) {
-		ite_intc_save_and_disable_interrupts();
-	}
-	/*
 	 * EC still need to handle AP's EC_CMD_GET_COMMS_STATUS command
 	 * during erasing.
 	 */
 	if (IS_ENABLED(HAS_TASK_HOSTCMD) &&
 	    IS_ENABLED(CONFIG_HOST_COMMAND_STATUS)) {
+		/*
+		 * Before the flash erasing, the interrupts should be disabled.
+		 * In the flash erasing loop, the SHI interrupt should be
+		 * enabled to handle AP's command
+		 */
+		ite_intc_save_and_disable_interrupts();
 		irq_enable(DT_IRQN(DT_NODELABEL(shi0)));
 	}
 	/* Always use sector erase command */
@@ -332,7 +330,8 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 			watchdog_reload();
 	}
 	/* Restore interrupts */
-	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC)) {
+	if (IS_ENABLED(HAS_TASK_HOSTCMD) &&
+	    IS_ENABLED(CONFIG_HOST_COMMAND_STATUS)) {
 		ite_intc_restore_interrupts();
 	}
 
@@ -411,7 +410,7 @@ static int cros_flash_it8xxx2_protect_at_boot(const struct device *dev,
 	return write_bbram_flags(unlock_flags);
 }
 
-static int cros_flash_it8xxx2_protect_now(const struct device *dev, int all)
+static int cros_flash_it8xxx2_protect_now(const struct device *dev, bool all)
 {
 	struct gctrl_it8xxx2_regs *const gctrl_base = GCTRL_IT8XXX2_REG_BASE;
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
@@ -465,6 +464,8 @@ static int flash_it8xxx2_init(const struct device *dev)
 
 static struct cros_flash_it8xxx2_data cros_flash_data;
 
+BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
+
 DEVICE_DT_INST_DEFINE(0, flash_it8xxx2_init, NULL, &cros_flash_data, NULL,
-		      POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
+		      POST_KERNEL, CONFIG_CROS_FLASH_INIT_PRIORITY,
 		      &cros_flash_it8xxx2_driver_api);

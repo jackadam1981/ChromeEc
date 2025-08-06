@@ -433,7 +433,7 @@ void task_disable_task(task_id_t tskid)
  */
 void task_clear_pending_irq(int irq)
 {
-#if CONFIG_ITE_IT8XXX2_INTC
+#if CONFIG_HAS_ITE_INTC
 	ite_intc_isr_clear(irq);
 #endif
 }
