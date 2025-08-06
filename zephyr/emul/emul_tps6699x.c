@@ -407,6 +407,13 @@ static void tps6699x_emul_handle_sryr(struct tps6699x_emul_pdc_data *data,
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 }
 
+static void tps6699x_emul_handle_trig(struct tps6699x_emul_pdc_data *data,
+				      uint8_t *data_reg)
+{
+	LOG_INF("TRIG TASK");
+	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
+}
+
 static void aneg_delayable_work_handler(struct k_work *w)
 {
 	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
@@ -537,6 +544,9 @@ static void tps6699x_emul_handle_command(struct tps6699x_emul_pdc_data *data,
 		break;
 	case COMMAND_TASK_GAID:
 		tps6699x_emul_handle_gaid(data, data_reg);
+		break;
+	case COMMAND_TASK_TRIG:
+		tps6699x_emul_handle_trig(data, data_reg);
 		break;
 	default: {
 		char task_str[5] = {

@@ -145,6 +145,19 @@ enum tps_mode {
 };
 
 /**
+ * @brief Command "Trig" gpio input events
+ */
+enum trig_gpio_events {
+	FALLING_EDGE = 0x0,
+	RISING_EDGE = 0x1,
+	EVENT_MRESET = 0x45,
+	EVENT_I2C3_CNTLR_IRQ = 0x38,
+	EVENT_RETIMER_SOC_OVR_FORCE_PWR = 0x2A,
+	EVENT_FAULT_INPUT_EVENT_PORT2 = 0x22,
+	EVENT_FAULT_INPUT_EVENT_PORT1 = 0x21,
+};
+
+/**
  * @brief 4.1 Vendor ID Register (Offset = 0x00)
  *
  * Intel-assigned Thunderbolt Vendor ID
@@ -1395,6 +1408,37 @@ union reg_received_identity_data_object {
 		uint32_t vdo[6];
 	} __packed;
 	uint8_t raw_value[28];
+};
+
+/**
+ * @brief 4.56 Thunderbolt Configuration Register (Offset 0x52)
+ */
+
+union reg_thunderbolt_configuration {
+	struct {
+		uint32_t thunderbolt_vid_enabled : 1;
+		uint32_t thunderbolt_mode_enabled : 1;
+		uint32_t advertise_900ma_implicit_contract : 1;
+		uint32_t i2c3_power_on_delay : 4;
+		uint32_t pl4_handling_enabled : 1;
+		uint32_t reserved0 : 1;
+		uint32_t tbt_emarker_override : 1;
+		uint32_t an_min_power_required : 1;
+		uint32_t reserved1 : 1;
+		uint32_t dual_tbt_retimer_present : 1;
+		uint32_t tbt_retimer_present : 1;
+		uint32_t data_status_hpd_events : 1;
+		uint32_t retimer_compliance_support : 1;
+		uint32_t legacy_tbt_adapter : 1;
+		uint32_t reserved2 : 9;
+		uint32_t vpro_support : 1;
+		uint32_t reseved3 : 22;
+		uint32_t thunderbolt_auto_entry_allowed : 1;
+		uint32_t reserved4 : 5;
+		uint32_t legacy_override_data_status : 1;
+		uint32_t source_vconn_delay : 8;
+	} __packed;
+	uint8_t raw_value[8];
 };
 
 /**

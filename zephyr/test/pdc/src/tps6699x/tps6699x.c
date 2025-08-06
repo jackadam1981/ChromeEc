@@ -44,6 +44,16 @@ static const struct emul *emul = EMUL_DT_GET(TPS6699X_NODE);
 static const struct device *dev = DEVICE_DT_GET(TPS6699X_NODE);
 static const struct device *dev2 = DEVICE_DT_GET(TPS6699X_NODE2);
 static enum port_control_access access;
+static bool test_cc_cb_called;
+static union cci_event_t test_cc_cb_cci;
+
+static void test_cc_cb(const struct device *dev,
+		       const struct pdc_callback *callback,
+		       union cci_event_t cci_event)
+{
+	test_cc_cb_called = true;
+	test_cc_cb_cci = cci_event;
+}
 
 static void tps6699x_before_test(void *data)
 {
@@ -56,6 +66,9 @@ static void tps6699x_before_test(void *data)
 	}
 
 	zassert_ok(emul_pdc_idle_wait(emul));
+
+	test_cc_cb_called = false;
+	test_cc_cb_cci.raw_value = 0;
 }
 
 static int custom_fake_tps_rw_port_control(const struct i2c_dt_spec *i2c,
@@ -380,4 +393,24 @@ ZTEST_USER(tps6699x, test_set_rdo)
 	zassert_equal(max_voltage, 20000 / 50);
 	zassert_equal(max_current,
 		      CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA / 10);
+}
+
+ZTEST_USER(tps6699x, test_set_bbr_cts)
+{
+	struct pdc_callback callback;
+
+	callback.handler = test_cc_cb;
+	pdc_set_cc_callback(dev, &callback);
+	emul_pdc_fail_reg_write(emul, REG_THUNDERBOLT_CONFIGURATION);
+	emul_pdc_fail_reg_write(emul, REG_COMMAND_FOR_I2C1);
+	for (int i = 0; i < 2; i++) {
+		test_cc_cb_cci.raw_value = 0;
+		test_cc_cb_called = false;
+		pdc_set_bbr_cts(dev, true);
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_true(test_cc_cb_called);
+		zassert_true(test_cc_cb_cci.command_completed);
+		zassert_true(test_cc_cb_cci.error);
+	}
+	pdc_set_cc_callback(dev, NULL);
 }
