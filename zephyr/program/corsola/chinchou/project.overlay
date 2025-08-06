@@ -52,6 +52,9 @@
 		dynapack_b140435 {
 			compatible = "dynapack,b140435","battery-smart";
 		};
+		celxpert_b340442 {
+			compatible = "celxpert,b340442","battery-smart";
+		};
 	};
 	/* Rotation matrix used by drivers. */
 	motionsense-rotation-ref {
@@ -187,11 +190,11 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_sensor_1 {
-			temp_host_halt = <75>;
+			temp-host-halt = <75>;
 			sensor = <&temp_sensor_1_thermistor>;
 		};
 		temp_charger: charger {
-			temp_host_halt = <88>;
+			temp-host-halt = <88>;
 			sensor = <&charger_bc12_port1>;
 		};
 	};

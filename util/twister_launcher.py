@@ -86,7 +86,7 @@ parameters that may be used, please consult the Twister documentation.
 # >
 # wheel: <
 #   name: "infra/python/wheels/west-py3"
-#   version: "version:0.14.0"
+#   version: "version:1.1.0"
 # >
 # wheel: <
 #   name: "infra/python/wheels/pytest-py3"
@@ -100,9 +100,14 @@ parameters that may be used, please consult the Twister documentation.
 #   name: "infra/python/wheels/pluggy-py3"
 #   version: "version:0.13.1"
 # >
+# wheel: <
+#   name: "infra/python/wheels/tabulate-py3"
+#   version: "version:0.9.0"
+# >
 # [VPYTHON:END]
 
 import argparse
+import json
 import os
 import pathlib
 from pathlib import Path
@@ -135,6 +140,18 @@ ZEPHYR_TEST_PATHS = [
     Path("tests/lib/cpp/cxx"),
     Path("tests/subsys/pm"),
     Path("tests/subsys/shell"),
+]
+
+# List of modules to use from the src/third_party/zephyr directory
+THIRD_PARTY_MODULES = [
+    "intel_module_private",
+    "cmsis",
+    "cmsis_6",
+    "picolibc",
+    "ish",
+    "hal_stm32",
+    "hal_intel_public",
+    "nanopb",
 ]
 
 
@@ -203,16 +220,6 @@ def find_paths():
             ) from err
 
     return ec_base, zephyr_base, zephyr_modules_dir, pigweed_dir
-
-
-def find_modules(mod_dir: Path) -> list:
-    """Find Zephyr modules in the given directory `dir`."""
-
-    modules = []
-    for child in mod_dir.iterdir():
-        if child.is_dir() and (child / "zephyr" / "module.yml").exists():
-            modules.append(child.resolve())
-    return modules
 
 
 def is_tool(name):
@@ -294,14 +301,36 @@ def in_cros_sdk() -> bool:
     return Path("/etc/cros_chroot_version").is_file()
 
 
+def get_coreboot_toolchain_flags(ec_base):
+    """Load the coreboot toolchain and return the twister flags to use it."""
+
+    run_result = subprocess.run(
+        [ec_base / "util" / "coreboot_sdk.py", "-j"],
+        check=True,
+        stdout=subprocess.PIPE,
+    )
+    toolchains = json.loads(run_result.stdout.decode("utf-8"))
+
+    out = []
+    for toolchain, path in toolchains.items():
+        out.append(f"-x{toolchain}={path}")
+
+    return out
+
+
 def main():
     """Run Twister using defaults for the EC project."""
 
     # Get paths for the build.
     ec_base, zephyr_base, zephyr_modules_dir, pigweed_dir = find_paths()
-
     zephyr_base = zephyr_base.resolve()
-    zephyr_modules = find_modules(zephyr_modules_dir)
+
+    zephyr_modules = []
+
+    # Add all third_pary modules
+    for module_name in THIRD_PARTY_MODULES:
+        module_path = zephyr_modules_dir / module_name
+        zephyr_modules.append(module_path.resolve())
 
     # Add the EC dir as a module if not already included (resolve all paths to
     # account for symlinked or relative paths)
@@ -362,6 +391,12 @@ def main():
         dest="toolchain",
         action="store_const",
         const="llvm",
+    )
+    parser.add_argument(
+        "--coreboot",
+        dest="toolchain",
+        action="store_const",
+        const="coreboot-sdk",
     )
     parser.add_argument(
         "-h",
@@ -430,6 +465,12 @@ def main():
         twister_cli.extend(["-p", "unit_testing/unit_testing"])
 
     twister_cli.extend(["--outdir", intercepted_args.outdir])
+
+    # Look for board yaml files in the EC zephyr/boards directory
+    twister_cli.extend(["--board-root", str(ec_base / "zephyr" / "boards")])
+
+    if in_cros_sdk():
+        twister_cli.extend(get_coreboot_toolchain_flags(ec_base))
 
     # Prepare environment variables for export to Twister. Inherit the parent
     # process's environment, but set some default values if not already set.

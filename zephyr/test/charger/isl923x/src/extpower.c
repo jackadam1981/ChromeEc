@@ -4,6 +4,7 @@
  */
 
 #include "charger.h"
+#include "charger_test.h"
 #include "extpower.h"
 #include "mock/isl923x.h"
 
@@ -19,7 +20,8 @@ static void test_before(void *fixture)
 	RESET_FAKE(pd_set_external_voltage_limit);
 }
 
-ZTEST_SUITE(isl923x_extpower, NULL, NULL, test_before, NULL, NULL);
+ZTEST_SUITE(isl923x_extpower, charger_predicate_post_main, NULL, test_before,
+	    NULL, NULL);
 
 ZTEST(isl923x_extpower, test_extpower_error)
 {

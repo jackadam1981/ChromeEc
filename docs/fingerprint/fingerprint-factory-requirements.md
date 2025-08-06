@@ -421,6 +421,28 @@ The RMA process should either run `bio_wash` without any arguments or re-flash
 the FPMCU firmware and then run `bio_wash --factory_init` to make sure that the
 entropy has been reset.
 
+## HWID
+
+Information about the FPMCU and sensor, such as
+[FPMCU name, sensor vendor, and sensor model][hwid info], is recorded in [HWID].
+For more background, see http://b/178615012.
+
+[hwid info]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/py/probe/functions/generic_fingerprint.py;l=45-48;drc=5f33632698d1eef279591f77eed69d1af44c0141
+[HWID]: https://chromium.googlesource.com/chromiumos/platform/factory/+/HEAD/py/hwid/README.md
+
+## RO Firmware Verification
+
+Factory tools [calculate a SHA256 hash of the RO section][hash] of the
+fingerprint firmware using the firmware in the FSI image. The hash is [recorded]
+and saved in [HWID]. See [this CL] for an example of what the HWID result looks
+like. The [design doc][hash design] and http://b/181174798 provides more
+background.
+
+[hash]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/py/probe/functions/chromeos_firmware.py;l=281-283;drc=f48606e4350bba403810ff284885a5739b3e7bf8
+[hash design]: http://go/cros-fp-factory-fw-verification
+[recorded]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/py/tools/finalize_bundle.py;l=1140-1142;drc=693f7d8c280e71bc906275c5735df1c2435ee6dc
+[this CL]: https://crrev.com/i/8224896
+
 ## Miscellaneous Commands for Test Implementations
 
 ### FPMCU Image Version

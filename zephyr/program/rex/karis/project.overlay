@@ -174,9 +174,9 @@
 
 &fan0 {
 	pwms = <&pwm5 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
-	rpm_min = <2500>;
-	rpm_start = <2500>;
-	rpm_max = <6000>;
+	rpm-min = <2500>;
+	rpm-start = <2500>;
+	rpm-max = <6000>;
 };
 
 &cbi_flash {
