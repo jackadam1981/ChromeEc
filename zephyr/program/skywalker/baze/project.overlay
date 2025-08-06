@@ -22,6 +22,9 @@
 		default_battery: cosmx_ap25cbk {
 			compatible = "cosmx,ap25cbk", "battery-smart";
 		};
+		smp_ap25c7k_batt: smp_ap25c7k {
+			compatible = "smp,ap25c7k", "battery-smart";
+		};
 	};
 
 	named-gpios {
