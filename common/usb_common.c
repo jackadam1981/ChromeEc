@@ -868,6 +868,35 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
 	"Invalid interval",
+	[PD_INTERVAL_UNATTACHED_SRC_ENTRY] = "Unattached.SRC Entry",
+	[PD_INTERVAL_UNATTACHED_SRC_RUN] = "Unattached.SRC Run",
+	[PD_INTERVAL_UNATTACHED_SRC_EXIT] = "Unattached.SRC Exit",
+
+	[PD_INTERVAL_UNATTACHED_SNK_ENTRY] = "Unattached.SNK Entry",
+	[PD_INTERVAL_UNATTACHED_SNK_RUN] = "Unattached.SNK Run",
+	[PD_INTERVAL_UNATTACHED_SNK_EXIT] = "Unattached.SNK Exit",
+
+	[PD_INTERVAL_ATTACHWAIT_SRC_ENTRY] = "AttachWait.SRC Entry",
+	[PD_INTERVAL_ATTACHWAIT_SRC_RUN] = "AttachWait.SRC Run",
+	[PD_INTERVAL_ATTACHWAIT_SRC_EXIT] = "AttachWait.SRC Exit",
+
+	[PD_INTERVAL_ATTACHWAIT_SNK_ENTRY] = "AttachWait.SNK Entry",
+	[PD_INTERVAL_ATTACHWAIT_SNK_RUN] = "AttachWait.SNK Run",
+	[PD_INTERVAL_ATTACHWAIT_SNK_EXIT] = "AttachWait.SNK Exit",
+
+	[PD_INTERVAL_ATTACHED_SRC_ENTRY] = "Attached.SRC Entry",
+	[PD_INTERVAL_ATTACHED_SRC_RUN] = "Attached.SRC Run",
+	[PD_INTERVAL_ATTACHED_SRC_EXIT] = "Attached.SRC Exit",
+
+	[PD_INTERVAL_ATTACHED_SNK_ENTRY] = "Attached.SNK Entry",
+	[PD_INTERVAL_ATTACHED_SNK_RUN] = "Attached.SNK Run",
+	[PD_INTERVAL_ATTACHED_SNK_EXIT] = "Attached.SNK Exit",
+
+	[PD_INTERVAL_TSRC_DISCONNECT] = "tSRCDisconnect",
+	[PD_INTERVAL_CC_DETECT_RD] = "tCCRdDetect",
+	[PD_INTERVAL_ATTACHWAIT_SRC_CC_OPEN] = "tAttachWaitSrcCCOpen",
+	[PD_INTERVAL_ATTACHWAIT_SRC_DEBOUNCE] = "tAttachWaitSrcDebounce",
+
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 
