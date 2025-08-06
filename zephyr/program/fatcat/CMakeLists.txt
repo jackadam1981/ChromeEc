@@ -54,3 +54,11 @@ if(DEFINED CONFIG_BOARD_KINMEN)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"kinmen/src/keyboard_customization.c")
 endif()
+
+if(DEFINED CONFIG_BOARD_LAPIS)
+	project(lapis)
+	add_subdirectory(lapis)
+	zephyr_include_directories("lapis/include")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"lapis/src/keyboard_customization.c")
+endif()

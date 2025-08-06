@@ -1,0 +1,20 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Keyboard backlight - use a prescaler for operation about 324 Hz */
+/* KB_LED_PWM */
+&pwm6 {
+	status = "okay";
+	pinctrl-0 = <&pwm6_gpio029>;
+	pinctrl-names = "default";
+};
+
+/* Fan - use a separate prescaler for Fan, b:358312912 */
+/* FAN1_PWM */
+&pwm5 {
+	status = "okay";
+	pinctrl-0 = <&pwm5_gpio028>;
+	pinctrl-names = "default";
+};

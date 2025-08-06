@@ -1,0 +1,83 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+
+/* lapis program common DTS includes */
+
+#include <cros/integrated_fwid.dtsi>
+
+/* lapis project DTS includes */
+
+#include "gpios.dtsi"
+
+/* lapis overrides follow... */
+
+/* Power Signals */
+#define PWR_EN_PP3300_S5 &gpiof 11
+#define PWR_EN_PP5000_S5 &gpiof 11
+#define PWR_RSMRST_PWRGD &gpioa 13
+#define PWR_EC_PCH_RSMRST &gpiog 6
+#define PWR_SLP_S0 &gpioe 15
+#define PWR_PCH_PWROK &gpiog 8
+#define PWR_ALL_SYS_PWRGD &gpioe 12
+
+#define PD_POW_IRQ_GPIO &gpiof 3
+
+/ {
+	named-gpios {
+		/*
+		 * Aliases for power signal names
+		 */
+		en_pp3300_a: en_ds3_r_en_s5_rails {};
+		en_pp5000_s5: gpio_en_pp5000_s5 {};
+		rsmrst_pwrgd: rsmrst_pwrgd_n_r {};
+		/*
+		 * TODO: b/386856132 - update schematics net names
+		 */
+		ec_pch_rsmrst_l: cpu_c10_gate_r {};
+		pch_slp_s0_n: pch_slp_s0_n_r {};
+		ec_pch_pwrok_od: pch_pwrok_ec_r {};
+		all_sys_pwrgd: all_sys_pwrgd_r {};
+		pwrbtn: c_gsc_ec_pwr_btn_n {};
+	};
+};
+
+/*
+ * Aliases to common names
+ */
+gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+gpio_pdc_pow_irq: &gpio_wc_usbc_pd_alrt_aic1_r {};
+bc_acok: &gpio_bc_acok {};
+gpio_en_slp_z: &gpio_en_slp_z_r {};
+
+#include "adc.dtsi"
+#include "console.dtsi"
+#include "fan.dtsi"
+#include "gpios.dtsi"
+#include "hibernate.dtsi"
+#include "i2c.dtsi"
+#include "interrupts.dtsi"
+#include "keyboard.dtsi"
+#include "pwm.dtsi"
+#include "temp_sensors.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
+#include "usb_typec.dtsi"
+#include "usba.dtsi"
+
+#include "power_signals.dtsi"
+#include "battery.dtsi"
+
+/* these need to be promoted to program.conf */
+
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+};
+
+&sha0 {
+	status = "okay";
+};
