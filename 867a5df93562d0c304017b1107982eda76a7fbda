@@ -70,6 +70,24 @@
       "parentUuid": "328e8645_c72b226f",
       "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be59d9e_5bc55de4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-06T16:10:46Z",
+      "side": 1,
+      "message": "get_polarity and get_dual_role are the functions that previously returned an enum but can now also return `-ERANGE`. I did an audit of where these are called (including through `pdc_shim.c`), and all usages are protected by a prior port range check or are called with a static value (`config-\u003econnector_num`). The console commands also check port range.",
+      "parentUuid": "9bdd9f64_6b64e499",
+      "revId": "867a5df93562d0c304017b1107982eda76a7fbda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
