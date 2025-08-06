@@ -1,0 +1,37 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+ * Define nodelabel aliases needed for fan devicetree.
+ */
+gpio_fan_control: &gpio_ec_fan_pwr_disable_n_r {};
+pwm_fan: &pwm5 {};
+tach_fan: &tach0 {};
+
+/ {
+	fans {
+		compatible = "cros-ec,fans";
+		fan_0 {
+            /* FAN1_PWM */
+			pwms = <&pwm5 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			tach = <&tach0>;
+			rpm-min = <1100>;
+			rpm-start = <1100>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
+            pgood-gpio = <&all_sys_pwrgd>;
+			enable-gpio = <&gpio_fan_control>;
+		};
+	};
+};
+
+/* fan tachometer sensor */
+/* FAN1_TACH */
+&tach0 {
+	status = "okay";
+	pinctrl-0 = <&tacho0_gpio052>;
+	pinctrl-names = "default";
+	pulses-per-round = <2>;
+};

@@ -1,0 +1,141 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	aliases {
+		gpio-wp = &gpio_c_ec_wp_odl_r;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		/* unimplemented GPIOs */
+		entering-rw {
+			enum-name = "GPIO_ENTERING_RW";
+		};
+
+		/* ALL_SYSTEM_PWRGD */
+		gpio_all_sys_pwrgd_r: all_sys_pwrgd_r {
+			gpios = <&gpioe 12 (GPIO_INPUT)>;
+		};
+		/* AC_IN_OC#_EC */
+		gpio_bc_acok: bc_acok {
+		// signal name was manually overriden from "bga_pine5"
+			gpios = <&gpioh 5 (GPIO_INPUT)>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+		/* CPU_C10_GATE# */
+		gpio_cpu_c10_gate_r: cpu_c10_gate_r {
+			gpios = <&gpiob 0 (GPIO_INPUT)>;
+		};
+		/* EC_WP_ODL */
+		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
+			gpios = <&gpiof 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		/* LCD_BACKOFF# */
+		gpio_c_edp_bklt_en_r: c_edp_bklt_en_r {
+			gpios = <&gpioa 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+		};
+		/* SUSC_EC# */
+		gpio_en_pp5000_usba: en_pp5000_usba {
+			gpios = <&gpiof 14 GPIO_OUTPUT>;
+		};
+		/* PWR_SW# */
+		gpio_c_gsc_ec_pwr_btn_n: c_gsc_ec_pwr_btn_n {
+			// signal name was manually overriden from "bga_pinb4"
+			gpios = <&gpioh 3 (GPIO_INPUT)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		/* SUSB_EC# */
+		gpio_ec_fan_pwr_disable_n_r: ec_fan_pwr_disable_n_r {
+			gpios = <&gpiob 1 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+		};
+		/* 5VSUS_ON */
+		gpio_en_ds3_r_en_s5_rails: en_ds3_r_en_s5_rails {
+			// signal name was manually overriden from "ec_ds3_r"
+			gpios = <&gpiof 11 (GPIO_INPUT)>;
+			enum-name = "GPIO_TEMP_SENSOR_POWER";
+		};
+		/* PS_ON_EC */
+		gpio_en_slp_z_r: en_slp_z_r {
+			gpios = <&gpioi 3 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
+		/* PM_PWROK */
+		gpio_pch_pwrok_ec_r: pch_pwrok_ec_r {
+			gpios = <&gpiog 8 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		/* SYS_SLP_S0IX# */
+		gpio_pch_slp_s0_n_r: pch_slp_s0_n_r {
+			gpios = <&gpioe 15 (GPIO_INPUT)>;
+		};
+		/* PM_PWRBTN# */
+		gpio_pm_pwrbtn_n_r: pm_pwrbtn_n_r {
+			gpios = <&gpioi 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+		/* PM_SUSB#_EC */
+		gpio_pm_slp_s3_n_r: pm_slp_s3_n_r {
+			gpios = <&gpiog 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		/* PM_SUSC#_EC */
+		gpio_pm_slp_s4_n_r: pm_slp_s4_n_r {
+			gpios = <&gpiof 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		/* THRO_CPU# */
+		gpio_prochot_ec_n_r: prochot_ec_n_r {
+			gpios = <&gpiob 2 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		/* VCCPRIM_IO_PWRGD */
+		gpio_rsmrst_pwrgd_n_r: rsmrst_pwrgd_n_r {
+			gpios = <&gpioa 13 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		/* PM_SYSRST_R# */
+		gpio_sys_rst_odl: sys_rst_odl {
+			gpios = <&gpioh 15 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_SYS_RST_ODL";
+			no-auto-init;
+		};
+		/* ESPI_ALERT0#_EC, EC_SOC_INT_ODL */
+		gpio_smc_extsmi_n_c_ec_pch_int_odl_r: smc_extsmi_n_c_ec_pch_int_odl_r {
+			gpios = <&gpioa 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_EC_INT_L";
+		};
+		/* LID_SW# */
+		gpio_smc_lid_r: smc_lid_r {
+			gpios = <&gpioh 0 (GPIO_INPUT)>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		/* SOC_WAKE# */
+		gpio_smc_wake_sci_n_r: smc_wake_sci_n_r {
+			gpios = <&gpiof 15 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+		};
+		/* PM_SYSPWROK */
+		gpio_sys_pwrok_ec_r: sys_pwrok_ec_r {
+			gpios = <&gpiog 9 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+		};
+		/* PD_INT1# */
+		gpio_wc_usbc_pd_alrt_aic1_r: wc_usbc_pd_alrt_aic1_r {
+			gpios = <&gpiof 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+		};
+		/* EC_GSC_PACKET_MODE */
+		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
+			gpios = <&gpiof 7 GPIO_OUTPUT>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
+		// CHG_LED
+		gpio_led_1_l: led_1_l {
+			gpios = <&gpioa 15 GPIO_OUTPUT_LOW>;
+		};
+		// CHG_FULL_LED
+		gpio_led_2_l: led_2_l {
+			gpios = <&gpiob 7 GPIO_OUTPUT_LOW>;
+		};
+		/* PM_RSMRST# */
+		gpio_ec_soc_rsmrst_l_r: ec_soc_rsmrst_l_r {
+			gpios = <&gpiog 6 (GPIO_INPUT)>;
+			enum-name = "GPIO_PCH_RSMRST_L";
+		};
+	};
+};
