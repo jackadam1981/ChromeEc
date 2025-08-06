@@ -66,6 +66,9 @@ SPECIAL_BOARDS = [
     "kaladin",
     "uldrenite",
     "uldrenite-ish",
+    # Ocelot variants
+    "ocelotrvp-npcx",
+    "ocelotrvp-ite",
 ]
 
 BINARY_SIZE_REGIONS = [
