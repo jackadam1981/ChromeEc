@@ -4,7 +4,7 @@
 
 menuconfig PLATFORM_EC_USBC
 	bool "USB Type-C"
-	default y if PLATFORM_EC_BATTERY
+	default y if PLATFORM_EC_BATTERY && !PLATFORM_EC_BATTERY_CHARGING_OFFLOAD_TO_AP
 	depends on PLATFORM_EC_MATH_UTIL
 	help
 	  Enable this to support various USB Type-C features chosen by the
