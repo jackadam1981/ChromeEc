@@ -55,7 +55,6 @@ __soc_ram_code void cec_ext_timer_interrupt(int port)
 		transfer_initiated = false;
 		cec_event_tx(port);
 	} else {
-		counter_stop(cec_counter_dev);
 		cec_update_interrupt_time(port);
 		cec_event_timeout(port);
 	}
@@ -99,8 +98,6 @@ __soc_ram_code void cec_gpio_handler(const struct device *device,
 	      (expected_cap_edge == CEC_CAP_EDGE_RISING && level == 1))) {
 		return;
 	}
-
-	counter_stop(cec_counter_dev);
 
 	cec_event_cap(port);
 }
