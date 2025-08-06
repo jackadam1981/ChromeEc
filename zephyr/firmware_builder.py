@@ -45,7 +45,6 @@ DEFAULT_BUNDLE_METADATA_FILE = "/tmp/artifact_bundle_metadata"
 # Boards that we want to track the coverage of our own files specifically.
 SPECIAL_BOARDS = [
     "krabby",
-    "skyrim",
     "kingler",
     "rex",
     "geralt",
@@ -67,11 +66,6 @@ SPECIAL_BOARDS = [
     "kaladin",
     "uldrenite",
     "uldrenite-ish",
-    # Skyrim variants
-    "winterhold",
-    "frostflow",
-    "crystaldrift",
-    "markarth",
 ]
 
 BINARY_SIZE_REGIONS = [
