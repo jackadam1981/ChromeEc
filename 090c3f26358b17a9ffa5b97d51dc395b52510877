@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "923d7400_e3b711c5",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-08-06T13:32:55Z",
+      "side": 1,
+      "message": "I\u0027d put this before the function, like on line 50, defines inside functions look odd",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "090c3f26358b17a9ffa5b97d51dc395b52510877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
