@@ -9,7 +9,7 @@
 #include "temp_sensor/temp_sensor.h"
 
 #define POLL_COUNT 3
-#define LIMIT_LEVELS 3
+#define LIMIT_LEVELS 4
 
 static uint8_t limit_level = 0;
 static uint8_t trigger_cnt = 0;
@@ -17,6 +17,7 @@ static uint8_t release_cnt = 0;
 
 typedef enum {
 	LIMIT_NONE = 9999,
+	LIMIT_3500 = 3500,
 	LIMIT_3000 = 3000,
 	LIMIT_2000 = 2000
 } charge_limit_t;
@@ -26,20 +27,17 @@ typedef struct {
 	uint8_t release_temp;
 } temp_limit_t;
 
-static const charge_limit_t limit_table[LIMIT_LEVELS] = { LIMIT_NONE,
-							  LIMIT_3000,
-							  LIMIT_2000 };
+static const charge_limit_t limit_table[LIMIT_LEVELS] = {
+	LIMIT_NONE, LIMIT_3500, LIMIT_3000, LIMIT_2000
+};
 
-static const temp_limit_t ap_temp_limits[LIMIT_LEVELS - 1] = { { 47, 47 },
-							       { 52, 52 } };
-
-static const temp_limit_t charge_temp_limits[LIMIT_LEVELS - 1] = { { 58, 55 },
-								   { 62, 59 } };
+static const temp_limit_t charge_temp_limits[LIMIT_LEVELS - 1] = { { 47, 43 },
+								   { 52, 47 },
+								   { 56, 52 } };
 
 static void update_charge_limit(void)
 {
 	int charger_temp_k, charger_temp;
-	int ap_temp_k, ap_temp;
 
 	if (power_get_state() != POWER_S0) {
 		limit_level = 0;
@@ -50,18 +48,13 @@ static void update_charge_limit(void)
 
 	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
 			 &charger_temp_k);
-	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_ap)),
-			 &ap_temp_k);
 
 	charger_temp = K_TO_C(charger_temp_k);
-	ap_temp = K_TO_C(ap_temp_k);
 
 	if (limit_level < LIMIT_LEVELS - 1) {
-		temp_limit_t ap = ap_temp_limits[limit_level];
 		temp_limit_t chg = charge_temp_limits[limit_level];
 
-		if (ap_temp >= ap.trigger_temp &&
-		    charger_temp >= chg.trigger_temp) {
+		if (charger_temp >= chg.trigger_temp) {
 			if (++trigger_cnt >= POLL_COUNT) {
 				limit_level++;
 				trigger_cnt = 0;
@@ -73,11 +66,9 @@ static void update_charge_limit(void)
 	}
 
 	if (limit_level > 0) {
-		temp_limit_t ap = ap_temp_limits[limit_level - 1];
 		temp_limit_t chg = charge_temp_limits[limit_level - 1];
 
-		if (ap_temp < ap.release_temp ||
-		    charger_temp < chg.release_temp) {
+		if (charger_temp < chg.release_temp) {
 			if (++release_cnt >= POLL_COUNT) {
 				limit_level--;
 				trigger_cnt = 0;
