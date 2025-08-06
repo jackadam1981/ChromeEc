@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf2d2481_e050fd84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-06T03:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e6cc0a_08ed77c0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d0f61f8_8c89ef19",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8334d10_0e3b3278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-06T03:05:06Z",
+      "side": 1,
+      "message": "Added, but this triggered the warning below from hook scripts (needed --no-verify) and this may cause issues with the CQ\n\n```\n[FAILED] chromiumos/platform/ec: migrated_files\n    Hook script \"util/migrated_files.sh ${PRESUBMIT_FILES}\" failed with code 1:\n      WARNING: test/null_pointer.c is not used in Zephyr EC. The test has been migrated to Zephyr. Make sure you apply the same fix for the Zephyr version in zephyr/test directory.\n```",
+      "parentUuid": "0d0f61f8_8c89ef19",
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "558fec71_666239f7",
         "filename": "baseboard/bloonchipper/build.mk",
         "patchSetId": 4
@@ -54,6 +96,30 @@
       "writtenOn": "2025-08-05T22:21:06Z",
       "side": 1,
       "message": "You\u0027ll also need to add it for the other boards. grep for `test-list-y` to find them all.",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb355ac_38dba511",
+        "filename": "baseboard/bloonchipper/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-06T03:05:06Z",
+      "side": 1,
+      "message": "The list is quite long and includes FPS boards which I\u0027ve added:\nbaseboard/bloonchipper/\nbaseboard/helipilot/\nboard/nocturne_fp/\nboard/nucleo-dartmonkey/\n\nServo boards that I\u0027m not sure should be added:\nboard/servo_v4/build.mk:test-list-y\u003d\nboard/servo_v4p1/build.mk:test-list-y\u003d\n\nDevelopment boards that I\u0027m not sure should be added:\nboard/discovery-stm32f072/build.mk:test-list-y\u003d\\\nboard/nucleo-h743zi/build.mk:test-list-y\u003d\\\nboard/nucleo-h743zi/README.md:`test-list-y` variable.\nboard/nucleo-f412zg/build.mk:test-list-y\u003d\\\nboard/nucleo-f412zg/README.md:`test-list-y` variable.\n\nAnd boards/chips I\u0027m unfamiliar with and hesitant to modify:\nboard/coffeecake/build.mk:test-list-y\u003d\nboard/hammer/build.mk:test-list-y\u003dentropy rsa3 sha256 sha256_unrolled x25519\nboard/prism/build.mk:test-list-y\u003dentropy rsa3 sha256 sha256_unrolled x25519\nchip/ish/build.mk:test-list-y\u003d\n\nDo the FPS boards added include the \"other boards\" required or do I need to add some/all of the others mentioned?",
+      "parentUuid": "558fec71_666239f7",
       "range": {
         "startLine": 54,
         "startChar": 7,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4810fa_12a44fca",
+        "filename": "test/null_pointer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-06T03:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "752b6c90_c5f01527",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c14f9185_51a8bf4e",
@@ -100,6 +190,30 @@
       "writtenOn": "2025-08-05T22:21:06Z",
       "side": 1,
       "message": "```suggestion\n\t  The test verifies null pointer dereference crashes.\n```",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b564d33_2040e68f",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-06T03:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c14f9185_51a8bf4e",
       "range": {
         "startLine": 122,
         "startChar": 34,
