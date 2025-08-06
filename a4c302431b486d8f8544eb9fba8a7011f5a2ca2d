@@ -16,6 +16,24 @@
       "message": "Please also delete `config PLATFORM_EC_LTO` from zephyr/app/ec/Kconfig and remove the checks of PLATFORM_EC_LTO from the main CMake file.",
       "revId": "a4c302431b486d8f8544eb9fba8a7011f5a2ca2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751b205e_c719e7d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-06T00:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d83cb8ae_8f675f13",
+      "revId": "a4c302431b486d8f8544eb9fba8a7011f5a2ca2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
