@@ -204,5 +204,5 @@ after receiving a host packet and before it has a response ready.
 [Transport-specific details]: #Transport_specific-details
 [ec_commands.h]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/ec/google/chromeec/ec_commands.h
 [upstream instructions]:
-    https://chromium.googlesource.com/chromiumos/docs/+/HEAD/kernel_development.md#Upstream-development.
+    https://www.chromium.org/chromium-os/developer-library/guides/kernel/kernel-development/#upstream-development
 [rust porting guide]: ./ectool_rust_porting.md
