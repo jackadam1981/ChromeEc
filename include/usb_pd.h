@@ -3709,6 +3709,18 @@ __override_proto int svdm_tbt_compat_attention(int port, uint32_t *payload);
 __override_proto enum ec_pd_port_location board_get_pd_port_location(int port);
 
 /**
+ * @brief Called to check if a USB-C port number is valid. The default
+ *        implementation does a range check based on
+ *        board_get_usb_pd_port_count(). Boards or different PD architectures
+ *        may override this with a different/additional check.
+ *
+ * @param port Port number to check
+ * @return true if the port exists and PD operations may be performed against it
+ * @return false otherwise
+ */
+__override_proto bool board_pd_port_num_is_valid(int port);
+
+/**
  * Called when EC_CMD_USB_PD_CONTROL host command is received
  *
  * @param port  The PD port number
