@@ -783,4 +783,16 @@ const struct device *pdc_power_mgmt_get_port_pdc_driver(int port);
  */
 int pdc_power_mgmt_set_bbr_cts(int port, bool enable);
 
+/**
+ * @brief Used to validate port numbers passed into the public API functions
+ *
+ * @note  Do not use for internal checks since port counts are not known until
+ *        all pdc_power_mgmt devices initialize.
+ *
+ * @param port Port number to check
+ * @return true if the port exists and is active
+ * @return false otherwise
+ */
+bool pdc_power_mgmt_is_pdc_port_valid(int port);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

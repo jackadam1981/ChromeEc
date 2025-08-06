@@ -3479,12 +3479,10 @@ static const struct smf_state pdc_states[] = {
 };
 
 /**
- * @brief Used to validate port numbers passed into the public API functions
- *
- *        Do not use for internal checks since port counts are not known until
- *        all pdc_power_mgmt devices initialize.
+ * Do not use for internal checks since port counts are not known until all
+ * pdc_power_mgmt devices initialize.
  */
-static bool is_pdc_port_valid(int port)
+bool pdc_power_mgmt_is_pdc_port_valid(int port)
 {
 	return (port >= 0) && (port < pdc_power_mgmt_get_usb_pd_port_count()) &&
 	       (get_pdc_state(&pdc_data[port]->port) != PDC_DISABLED);
@@ -3666,7 +3664,7 @@ disable_port:
 void pdc_subsys_start(void)
 {
 	for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
-		if (!is_pdc_port_valid(port)) {
+		if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 			/* Skip over inactive ports */
 			continue;
 		}
@@ -3789,7 +3787,7 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
  */
 static bool pdc_power_mgmt_is_sink_connected(int port)
 {
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return false;
 	}
 
@@ -3798,7 +3796,7 @@ static bool pdc_power_mgmt_is_sink_connected(int port)
 
 static bool pdc_power_mgmt_is_source_connected(int port)
 {
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return false;
 	}
 
@@ -3807,7 +3805,7 @@ static bool pdc_power_mgmt_is_source_connected(int port)
 
 test_mockable bool pdc_power_mgmt_is_connected(int port)
 {
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return false;
 	}
 
@@ -4206,7 +4204,7 @@ test_mockable int pdc_power_mgmt_reset(int port)
 {
 	int rv;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4312,7 +4310,7 @@ test_mockable const char *pdc_power_mgmt_get_task_state_name(int port)
 test_mockable void pdc_power_mgmt_set_dual_role(int port,
 						enum pd_dual_role_states state)
 {
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		LOG_ERR("%s called with bad port C%d.", __func__, port);
 		return;
 	}
@@ -4505,7 +4503,7 @@ test_mockable int pdc_power_mgmt_get_drp_mode(int port,
 	int ret;
 
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4528,7 +4526,7 @@ test_mockable int pdc_power_mgmt_get_info(int port, struct pdc_info_t *pdc_info,
 	int ret;
 
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4565,7 +4563,7 @@ test_mockable int pdc_power_mgmt_get_lpm_ppm_info(int port,
 	int ret;
 
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4684,7 +4682,7 @@ test_mockable int
 pdc_power_mgmt_connector_reset(int port, enum connector_reset reset_type)
 {
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4705,7 +4703,7 @@ static int pdc_run_get_discovery(int port)
 	int ret;
 
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4737,7 +4735,7 @@ uint16_t pdc_power_mgmt_get_identity_vid(int port)
 	uint16_t vid = 0;
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return vid;
 	}
 
@@ -4771,7 +4769,7 @@ uint16_t pdc_power_mgmt_get_identity_pid(int port)
 	uint16_t pid = 0;
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return pid;
 	}
 
@@ -4793,7 +4791,7 @@ uint8_t pdc_power_mgmt_get_product_type(int port)
 	uint8_t ptype = 0;
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return ptype;
 	}
 
@@ -4922,7 +4920,7 @@ pdc_power_mgmt_get_connector_status(int port,
 {
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4942,7 +4940,7 @@ test_mockable int pdc_power_mgmt_get_last_status_change(
 {
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -4963,7 +4961,7 @@ uint8_t pdc_power_mgmt_get_dp_pin_mode(int port)
 	uint8_t pin_mode;
 
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		LOG_ERR("get_dp_pin_mode: invalid port %d", port);
 		return 0;
 	}
@@ -5025,7 +5023,7 @@ test_mockable void pdc_power_mgmt_request_source_voltage(int port, int mv)
 test_mockable int
 pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop)
 {
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -5051,7 +5049,7 @@ int pdc_power_mgmt_set_current_limit(int port_num,
 {
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port_num)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port_num)) {
 		return -ERANGE;
 	}
 
@@ -5115,7 +5113,7 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable)
 {
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port_num)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port_num)) {
 		return -ERANGE;
 	}
 
@@ -5132,7 +5130,7 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable)
 
 test_mockable int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status)
 {
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -5156,7 +5154,7 @@ int pdc_power_mgmt_wait_for_sync(int port, int timeout_ms)
 	int rv;
 	int ktime = (timeout_ms == -1 ? PDC_SM_SETTLED_TIMEOUT_MS : timeout_ms);
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -5185,7 +5183,7 @@ int pdc_power_mgmt_ppm_ack_status_change(int port,
 {
 	struct pdc_port_t *pdc;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -5249,7 +5247,7 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
 	struct pdc_port_t *pdc;
 	int rv;
 
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
@@ -5345,7 +5343,7 @@ test_mockable int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode)
 test_mockable int pdc_power_mgmt_set_bbr_cts(int port, bool enable)
 {
 	/* Make sure port is in range and that an output buffer is provided */
-	if (!is_pdc_port_valid(port)) {
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
 		return -ERANGE;
 	}
 
