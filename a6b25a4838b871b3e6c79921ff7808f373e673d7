@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand why \n\"run_device_tests.py -b bloonchipper -t null_pointer --zephyr\"\n\npasses locally but fails in CQ, even when run locally from a FW prompt with `ztest run-all` as the CQ does. Adding a debug print on the addresses around the assertion failure and resubmitting to CQ to debug",
       "revId": "a6b25a4838b871b3e6c79921ff7808f373e673d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ea55d8e_6c9753d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-06T18:50:40Z",
+      "side": 1,
+      "message": "The CQ is running the tests with Renode, not on a real device.\n\nFrom the [logs](https://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-ec-renode-cq/b8707274834111874081/overview), it looks like the failure is:\n\n```\nDEBUG:    Assertion failed at EC_BASE/ec/zephyr/test/hwtest/src/null_pointer.c:38: test_panic_data: (dereference_addr \u003c\u003d pc) \u0026\u0026 (dereference_end \u003e\u003d pc) is false\n```\n\nYou can run the same test locally by adding the `--renode` flag when using `run_device_tests.py`.",
+      "parentUuid": "21a9ee11_39254b2e",
+      "revId": "a6b25a4838b871b3e6c79921ff7808f373e673d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
