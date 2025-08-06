@@ -22,6 +22,30 @@
       },
       "revId": "fca6e3c43140374f6f2e8f3321ae1caebbdc98bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700b351b_0c00f4ac",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-06T21:53:55Z",
+      "side": 1,
+      "message": "\"have_alerts\" is used in pd_shared_alert_task, so I decided to stay consistent.",
+      "parentUuid": "6b51a2e2_0ec0a2b1",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "fca6e3c43140374f6f2e8f3321ae1caebbdc98bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
