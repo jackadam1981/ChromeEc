@@ -51,6 +51,23 @@
       "message": "+Keith for comment as well.",
       "revId": "8253fe923381803722a0de0fde5ba1f33723b327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97d940d_bf062ac9",
+        "filename": "util/ish/ish_header_5_8.bin",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-06T18:31:37Z",
+      "side": 1,
+      "message": "this file may be better placed in $EC/third_party/intel/...\n\nsimilar to what we did here\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2086534",
+      "revId": "8253fe923381803722a0de0fde5ba1f33723b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
