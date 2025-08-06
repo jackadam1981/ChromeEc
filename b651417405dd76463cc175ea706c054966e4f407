@@ -16,6 +16,24 @@
       "message": "@tomhughes@chromium.org\n\nIs the presubmit error something related to the recent changes done to the `flash_fp_mcu` file?\n\n```\n[FAILED] chromiumos/platform/ec: cros lint\n    Hook script \"cros lint --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      15:29:35: NOTICE: Install staticcheck for additional go linting.\n      15:29:35: NOTICE: Install staticcheck for additional go linting.\n      \n      In util/flash_fp_mcu line 10:\n      . \"${SHFLAGS:-/usr/share/misc/shflags}\" || exit 1\n        ^-- SC1091 (info): Not following: ../../../scripts/lib/shflags/shflags: openBinaryFile: does not exist (No such file or directory)\n      \n      For more information:\n        https://www.shellcheck.net/wiki/SC1091 -- Not following: ../../../scripts/l...\n      15:29:40: ERROR: Found lint errors in 1 files in 33.778s.\n```",
       "revId": "b651417405dd76463cc175ea706c054966e4f407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b519a01a_3a9f2eb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-06T22:57:04Z",
+      "side": 1,
+      "message": "It looks like it\u0027s complaining about the shellcheck annotation that has a relative path. Since this code is checked out in a different location, it needs a different relative path. You can make a CL before this that fixes that path in the branch and then rebase this on top of it.",
+      "parentUuid": "c698dcb9_cea3f047",
+      "revId": "b651417405dd76463cc175ea706c054966e4f407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
