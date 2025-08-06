@@ -22,6 +22,30 @@
       },
       "revId": "9015b2684a8b7c64937d206c2cd5b8ea8f45ee82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5eaa5cf_c7b301db",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-06T22:54:57Z",
+      "side": 0,
+      "message": "These annotations are from the merge and shouldn\u0027t be committed. Can you see if they\u0027re really in the branch (look in codesearch) or if somehow you added it with this CL and gerrit is displaying it in a weird way?",
+      "parentUuid": "f8c6eb3e_a4f48319",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "9015b2684a8b7c64937d206c2cd5b8ea8f45ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
