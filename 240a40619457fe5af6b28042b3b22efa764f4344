@@ -16,6 +16,29 @@
       "message": "If the change is to apply 65W as default for all ITE projects and kaladin inherits from it, the title should be something like \"Configure max power to 65W for device with ITE EC\" rather than kaladin.",
       "revId": "240a40619457fe5af6b28042b3b22efa764f4344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85eb874b_29d86ec3",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-08-06T22:18:36Z",
+      "side": 1,
+      "message": "We usually define the max vcltage/current when it\u0027s different than the default max power as well.\n\nCONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV\u003d21000\nCONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA\u003d3250",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "240a40619457fe5af6b28042b3b22efa764f4344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
