@@ -231,3 +231,13 @@ uint32_t pd_get_requested_current(int port)
 {
 	return pdc_power_mgmt_get_requested_current(port);
 }
+
+/**
+ * @brief PDC-specific implementation of board_pd_port_num_is_valid(). Does a
+ *        range check and also verifies that the port is not disabled.
+ */
+__override bool board_pd_port_num_is_valid(int port)
+{
+	return (port >= 0 && port < pdc_power_mgmt_get_usb_pd_port_count() &&
+		pdc_power_mgmt_get_task_state(port) != PDC_DISABLED);
+}
