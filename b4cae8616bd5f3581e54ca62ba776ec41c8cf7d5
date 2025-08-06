@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c49f6e_3a696adf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-06T18:21:47Z",
+      "side": 1,
+      "message": "You also need to update the devicetrees used by the unit tests.\n\nRun `./twister -ivc -T zephyr/test/pdc` to see the build failures.",
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
