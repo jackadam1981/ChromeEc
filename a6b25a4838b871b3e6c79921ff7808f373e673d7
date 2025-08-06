@@ -34,6 +34,24 @@
       "parentUuid": "21a9ee11_39254b2e",
       "revId": "a6b25a4838b871b3e6c79921ff7808f373e673d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b633607_0e113bde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-06T18:55:31Z",
+      "side": 1,
+      "message": "This is probably the same underlying Renode bug as http://b/388327673 (see http://b/388327673#comment2). For now file a bug and add it with a `TODO` to the [list of skipped Renode tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d445;drc\u003db2e822655639b194daedc95f006571d2ae5fd24a).",
+      "parentUuid": "8ea55d8e_6c9753d5",
+      "revId": "a6b25a4838b871b3e6c79921ff7808f373e673d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
