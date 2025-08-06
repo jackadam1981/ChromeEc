@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c6eb3e_a4f48319",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-06T22:41:09Z",
+      "side": 0,
+      "message": "@tomhughes@chromium.org\nIt seems that the presubmit check is complaining about removing this line. Was their a specific reason this was removed?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "9015b2684a8b7c64937d206c2cd5b8ea8f45ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
