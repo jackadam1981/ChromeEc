@@ -4,6 +4,17 @@
 
 if SOC_SERIES_RTS5912
 
+# Power management options
+config PM
+	default y
+
+config PM_DEVICE
+	default y
+
+choice PM_POLICY
+	default PM_POLICY_CUSTOM
+endchoice
+
 #
 # RTS5915:
 #	384 kb total SRAM:
