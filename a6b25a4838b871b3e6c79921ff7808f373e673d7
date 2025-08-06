@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a9ee11_39254b2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-06T18:00:59Z",
+      "side": 1,
+      "message": "I don\u0027t understand why \n\"run_device_tests.py -b bloonchipper -t null_pointer --zephyr\"\n\npasses locally but fails in CQ, even when run locally from a FW prompt with `ztest run-all` as the CQ does. Adding a debug print on the addresses around the assertion failure and resubmitting to CQ to debug",
+      "revId": "a6b25a4838b871b3e6c79921ff7808f373e673d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
