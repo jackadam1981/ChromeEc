@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b151dd9_c7c89747",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-06T22:46:02Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"explicity\" is a possible misspelling of \"explicitly\".\n\nTo bypass Spellchecker, ...\n\n\"explicity\" is a possible misspelling of \"explicitly\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a305ac_a5f8c13b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-06T22:46:02Z",
+      "side": 1,
+      "message": "Nit: I\u0027d distinguish between a bit in the ALERT register asserting, and the ALERT signal asserting. This will cause the former but not the latter.",
+      "range": {
+        "startLine": 15,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1cbab7_163665b2",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-06T22:46:02Z",
+      "side": 1,
+      "message": "Nit: I\u0027m not sure whether this needs to be a flag or configurable at all. Typically, we use flags for things that could plausibly change between firmware configs or models that use the same EC image. If we expect to know this value at build time, it could be a `CONFIG_` item. Based on our previous conversation, I\u0027m not sure we know of any models at all that use this. If there are none, we could just set the bit unconditionally.",
+      "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
