@@ -219,9 +219,6 @@ static void led_set_battery(void)
 	static bool battery_low_triggeied = 0;
 	static bool battery_critical_triggeied = 0;
 	battery_ticks++;
-	ccprintf("LED Control: Current Power State = %d\n",
-		 led_pwr_get_state());
-	ccprintf("current_percent = %d%%\n", charge_get_percent());
 
 	switch (led_pwr_get_state()) {
 	case LED_PWRS_CHARGE:
