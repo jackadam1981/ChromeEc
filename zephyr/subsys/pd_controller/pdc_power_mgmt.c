@@ -1507,7 +1507,9 @@ static bool run_common_policies(struct pdc_port_t *port)
 	if (atomic_test_and_clear_bit(port->common_policy.flags,
 				      COMMON_POLICY_SET_POWER_STATE)) {
 		/* Send new AP power state to PDC */
-		queue_internal_cmd(port, CMD_PDC_SET_AP_POWER_STATE);
+		// queue_internal_cmd(port, CMD_PDC_SET_AP_POWER_STATE);
+		LOG_INF("*****Skipping sending power state to PDC (%d)",
+			port->common_policy.ap_state);
 		return true;
 	}
 
