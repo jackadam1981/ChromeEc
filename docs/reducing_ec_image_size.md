@@ -112,28 +112,28 @@ value in order to store two images (RO+RW).
 
 #### Other Zephyr utilities
 
-The Cmake system utilized by Zephyr provides two build targets `rom_report` and
-`ram_report` which generate a list of all the compiled objects in tabular form.
-This can be useful for identifying particular modules that contribute to the
-image size.
+The CMake system utilized by Zephyr provides two build targets
+[`rom_report` and `ram_report`][3] which generate a list of all the compiled
+objects in tabular form. This can be useful for identifying particular modules
+that contribute to the image size.
 
-The `rom_report` and `ram_report` targets are currently only supported when
-working outside the chroot. Follow the [instructions][1] for building zephyr-ec
-images outside chroot before running the commands below.
+**Build the target board**:
 
-```
-# Configure the Herobrine zephyr project, storing the build files in /tmp/zephyr-herobrine
-$ zmake configure -B /tmp/zephyr-herobrine herobrine
-
-# Build the RO image
-$ ninja -C /tmp/zephyr-herobrine/herobrine/build-ro
-
-# Generate the ROM report, report sent to stdout
-$ ninja -C /tmp/zephyr-herobrine/herobrine/build-ro rom_report
+```bash
+(chroot) $ zmake build --clobber helipilot
 ```
 
-Please refer to the [Zephyr Optimization Tools][3] documentation for details on
-the `rom_report` and `ram_report` targets.
+**Generate the ROM report for the RO image**:
+
+```bash
+(chroot) $ ninja -C ~/chromiumos/src/platform/ec/build/zephyr/helipilot/build-ro rom_report
+```
+
+**Generate the ROM report for the RW image**:
+
+```bash
+(chroot) $ ninja -C ~/chromiumos/src/platform/ec/build/zephyr/helipilot/build-rw rom_report
+```
 
 ## Checking a board's config
 
@@ -458,7 +458,6 @@ Note that there are some [FAFT tests][5] that rely on the GPIO name. If you
 enable this option, you may also need to change firmware testing configuration
 [file][6].
 
-[1]:./zephyr/zephyr_build.md#Working-outside-the-chroot
 [2]:https://github.com/zephyrproject-rtos/zephyr/blob/main/subsys/shell/Kconfig
 [3]:https://docs.zephyrproject.org/latest/guides/optimizations/tools.html
 [4]:https://github.com/zephyrproject-rtos/zephyr/issues/2112

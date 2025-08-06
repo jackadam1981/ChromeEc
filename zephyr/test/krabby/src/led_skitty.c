@@ -109,10 +109,11 @@ ZTEST(skitty_led, test_led_control)
 	zassert_not_equal(0, ztest_duty_amber);
 }
 
-static void skitty_led_test_init(void *fixture)
+static void *skitty_led_test_init(void)
 {
 	test_state = LED_PWRS_CHARGE;
 	test_chg_percent = 100;
+	return NULL;
 }
 
 ZTEST_SUITE(skitty_led, NULL, skitty_led_test_init, NULL, NULL, NULL);

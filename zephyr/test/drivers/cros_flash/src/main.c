@@ -367,7 +367,7 @@ ZTEST_USER(cros_flash, test_protect_now)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect RO now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 0);
+	cros_flash_physical_protect_now(cros_flash_dev, false);
 
 	/* Check that only option bytes are disabled. */
 	zassert_equal(flash_block_protection_changes_fake.call_count, 1);
@@ -379,7 +379,7 @@ ZTEST_USER(cros_flash, test_protect_now_all)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect ALL now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 1);
+	cros_flash_physical_protect_now(cros_flash_dev, true);
 
 	/* Check that only option bytes are disabled. */
 	zassert_equal(flash_block_protection_changes_fake.call_count, 1);
@@ -391,7 +391,7 @@ ZTEST_USER(cros_flash, test_protect_at_boot_protection_changes_blocked)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect RO now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 0);
+	cros_flash_physical_protect_now(cros_flash_dev, false);
 
 	/* Check that protect at boot fails */
 	zassert_equal(cros_flash_physical_protect_at_boot(
@@ -516,7 +516,7 @@ ZTEST_USER(cros_flash, test_get_protect_flags_control_disabled)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect ALL now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 1);
+	cros_flash_physical_protect_now(cros_flash_dev, true);
 
 	/* Check that ALL_NOW is reported. */
 	zassert_equal(cros_flash_physical_get_protect_flags(cros_flash_dev),
@@ -540,7 +540,7 @@ ZTEST_USER(cros_flash, test_get_protect_flags_rdp_enabled_control_disabled)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect ALL now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 1);
+	cros_flash_physical_protect_now(cros_flash_dev, true);
 
 	/* Enable RDP. */
 	rdp_enabled = true;
@@ -578,7 +578,7 @@ ZTEST_USER(cros_flash, test_get_protect_control_disabled)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect ALL now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 1);
+	cros_flash_physical_protect_now(cros_flash_dev, true);
 
 	/* Check that protection is enabled inside and outside WP region. */
 	zassert_true(cros_flash_physical_get_protect(cros_flash_dev, 0));
@@ -640,7 +640,7 @@ ZTEST_USER(cros_flash, test_write_control_disabled)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect ALL now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 1);
+	cros_flash_physical_protect_now(cros_flash_dev, true);
 
 	uint32_t some_value = 42;
 
@@ -655,7 +655,7 @@ ZTEST_USER(cros_flash, test_erase_control_disabled)
 	cros_flash_init(cros_flash_dev);
 
 	/* Protect ALL now. */
-	cros_flash_physical_protect_now(cros_flash_dev, 1);
+	cros_flash_physical_protect_now(cros_flash_dev, true);
 
 	zassert_equal(
 		cros_flash_physical_erase(cros_flash_dev, 0x4000,

@@ -3,8 +3,6 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT cros_dsp_service
-
 #include <pb_decode.h>
 #include <pb_encode.h>
 #include <zephyr/drivers/i2c.h>
@@ -20,12 +18,18 @@
 #include "cros/dsp/service/cros_transport.hh"
 #include "cros/dsp/service/driver.hh"
 #include "cros_board_info.h"
+#include "cros_cbi.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "lid_angle.h"
 #include "lid_switch.h"
 #include "proto/ec_dsp.pb.h"
 #include "pw_assert/check.h"
 #include "tablet_mode.h"
+
+#define DT_DRV_COMPAT cros_dsp_service
+
+LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
 
 static_assert(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
               "Must have exactly 1 cros,dsp-service");
@@ -68,8 +72,6 @@ static int init_driver() {
 }
 
 SYS_INIT(init_driver, APPLICATION, 50);
-
-LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
 
 static inline int ParseGetCbiFlagsRequest(
     const cros_dsp_comms_GetCbiFlagsRequest& request,
@@ -218,18 +220,24 @@ bool cros::dsp::service::Driver::AttemptToDecode() {
 
 void cros::dsp::service::Driver::SetNotebookMode(
     cros_dsp_comms_NotebookMode mode) {
-  // Bail if remote lid angle is not enabled or if the lid isn't open.
-  if (!IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE) || !lid_is_open()) {
+  // Bail if tablet mode is not enabled or if the lid isn't open.
+  if (!IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE) || !lid_is_open()) {
     return;
   }
   switch (mode) {
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK:
       LOG_DBG("    NOTEBOOK mode, tablet_get_mode()=%d", tablet_get_mode());
       tablet_set_mode(0, TABLET_TRIGGER_LID);
+      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+        lid_angle_peripheral_enable(1);
+      }
       break;
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_TABLET:
       LOG_DBG("    TABLET mode, tablet_get_mode()=%d", tablet_get_mode());
       tablet_set_mode(1, TABLET_TRIGGER_LID);
+      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+        lid_angle_peripheral_enable(0);
+      }
       break;
     default:
       LOG_WRN("Unsupported notebook mode");
@@ -274,7 +282,20 @@ bool cros::dsp::service::Driver::HandleDecodedRequest() {
 }
 
 pw::Status cros::dsp::service::Driver::Init() {
-  int rc;
+  int rc = 0;
+#if DT_PROP(DT_DRV_INST(0), allow_runtime_disable)
+  // Check if the FW config is set to the disable value
+  uint32_t ish_enabled;
+
+  rc |= cros_cbi_get_fw_config(ISH, &ish_enabled);
+  PW_CHECK_INT_EQ(rc, 0);
+
+  if (ish_enabled == ISH_DISABLED) {
+    // Match, disable the service
+    LOG_INF("Disabling DSP comms service");
+    return pw::OkStatus();
+  }
+#endif
   k_work_init(&get_cbi_flags_work_, dsp_service_handle_get_cbi_flags_request);
 
   rc = k_sem_init(&data_processing_semaphore_, 1, 1);
@@ -313,7 +334,9 @@ pw::Status cros::dsp::service::Driver::Init() {
     }
     /* Poll the GMR states */
     dsp_service_hook_lid_change();
-    dsp_service_hook_tablet_mode_change();
+    if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE)) {
+      dsp_service_hook_tablet_mode_change();
+    }
   }
 
   return pw::OkStatus();
@@ -328,16 +351,21 @@ void dsp_service_hook_lid_change() {
 DECLARE_HOOK(HOOK_LID_CHANGE, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 
+#ifdef CONFIG_PLATFORM_EC_TABLET_MODE
 void dsp_service_hook_tablet_mode_change() {
-  bool is_in_tablet_mode = tablet_get_mode() != 0;
+  bool is_in_tablet_mode = !gpio_get_level(GPIO_TABLET_MODE_L);
   LOG_DBG("is_in_tablet_mode=%d", is_in_tablet_mode);
   cros::dsp::service::driver.transport_.SetStatusBit(
       cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE, is_in_tablet_mode);
 }
-DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE,
-             dsp_service_hook_tablet_mode_change,
-             HOOK_PRIO_DEFAULT);
+#ifdef CONFIG_PLATFORM_EC_GMR_TABLET_MODE
+extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
+  dsp_service_hook_tablet_mode_change();
+  gmr_tablet_switch_isr(signal);
+}
+#endif
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_tablet_mode_change, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_PLATFORM_EC_TABLET_MODE */
 
 #ifdef CONFIG_TEST
 /*

@@ -39,8 +39,6 @@
 #define CONFIG_USBC_RETIMER_INTEL_BB
 
 #define CONFIG_USBC_PPC_SYV682X
-#undef CONFIG_SYV682X_HV_ILIM
-#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
 
 /* TODO: b/177608416 - measure and check these values on brya */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */
@@ -138,6 +136,7 @@
  * to check the sensor value and adjust the fan speed.
  */
 #define CONFIG_FANS FAN_CH_COUNT
+#define CONFIG_CUSTOM_FAN_CONTROL
 
 /* Include math_util for bitmask_uint64 used in pd_timers */
 #define CONFIG_MATH_UTIL
