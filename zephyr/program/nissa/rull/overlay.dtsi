@@ -31,6 +31,12 @@
 		smp_ap23a7l {
 			compatible = "smp,ap23a7l", "battery-smart";
 		};
+		smp_ap25c7k {
+			compatible = "smp,ap25c7k", "battery-smart";
+		};
+		cosmx_ap25cbk {
+			compatible = "cosmx,ap25cbk", "battery-smart";
+		};
 	};
 
 	hibernate-wake-pins {
