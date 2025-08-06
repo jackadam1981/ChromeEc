@@ -124,12 +124,15 @@ static int ft9865_enroll_step(const struct fingerprint_algorithm *const alg,
 		else
 		{
 			LOG_ERR("enroll failed: %d", enroll_index);
+			*completion = (data->max_enroll_samples - data->remain) * 100 / data->max_enroll_samples;
 			return FP_ENROLLMENT_RESULT_LOW_QUALITY;
 		}
 	}
 	else
 	{
 		LOG_ERR("focal_getfeature failed: ret = %d", ret);
+		*completion = (data->max_enroll_samples - data->remain) * 100 / data->max_enroll_samples;
+		return FP_ENROLLMENT_RESULT_LOW_QUALITY;
 	}
 	
 	return FP_ENROLLMENT_RESULT_INTERNAL_ERROR;

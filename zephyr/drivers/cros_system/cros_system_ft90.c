@@ -80,8 +80,21 @@ static int cros_system_ft_soc_reset(const struct device *dev)
 static int cros_system_ft_init(const struct device *dev)
 {
 	struct cros_system_ft_data *data = DRV_DATA(dev);
+	uint32_t reset_cause;
 
 	data->reset = UNKNOWN_RST;
+	hwinfo_get_reset_cause(&reset_cause);
+
+	if (reset_cause & RESET_WATCHDOG) {
+		data->reset = WATCHDOG_RST;
+	} else if (reset_cause & RESET_SOFTWARE) {
+		/* Use DEBUG_RST because it maps to EC_RESET_FLAG_SOFT. */
+		data->reset = DEBUG_RST;
+	} else if (reset_cause & RESET_POR) {
+		data->reset = POWERUP;
+	} else if (reset_cause & RESET_PIN) {
+		data->reset = VCC1_RST_PIN;
+	}
 	
 	return 0;
 }
