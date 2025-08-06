@@ -116,10 +116,10 @@ int crec_flash_physical_get_protect(int bank)
  *
  * This is always successful, and only emulates "now" protection
  *
- * @param all      Protect all (=1) or just read-only
+ * @param all      Protect all (=true) or just read-only
  * @return         non-zero if error.
  */
-int crec_flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(bool all)
 {
 	if (all)
 		entire_flash_locked = 1;

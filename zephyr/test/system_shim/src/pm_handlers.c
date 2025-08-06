@@ -11,6 +11,8 @@ void pm_state_set(enum pm_state state, uint8_t substate_id)
 {
 	ARG_UNUSED(substate_id);
 	ARG_UNUSED(state);
+
+	k_cpu_idle();
 }
 
 void pm_state_exit_post_ops(enum pm_state state, uint8_t substate_id)

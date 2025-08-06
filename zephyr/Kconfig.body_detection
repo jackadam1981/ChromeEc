@@ -14,6 +14,28 @@ menuconfig PLATFORM_EC_BODY_DETECTION
 
 if PLATFORM_EC_BODY_DETECTION
 
+choice BODY_DETECTION_ALGORITHM
+	prompt "Select on-body detection algorithm"
+	default BODY_DETECTION_ALOGIRTHM_V1
+
+config BODY_DETECTION_ALOGIRTHM_V1
+	bool "Legacy version of the on-body detection"
+	help
+	  Leverages a basic calculation of variance to detect spikes in the
+	  accelerometer. This algorithm is sensitive to the sample rate as it
+	  doesn't include any decimation. Sample rates should be at 50Hz for this
+	  algorithm to work well.
+
+config BODY_DETECTION_ALOGIRTHM_V2
+	bool "New on-body detection algorithm"
+	select FPU
+	help
+	  Update the on-body detection algorithm to leverage smoothing and
+	  decimation of the sample rate when it doesn't match the algorithm's
+	  desired rate.
+
+endchoice
+
 config PLATFORM_EC_BODY_DETECTION_MAX_WINDOW_SIZE
 	int "Maximal sensor data rate"
 	default 250
@@ -23,23 +45,29 @@ config PLATFORM_EC_BODY_DETECTION_MAX_WINDOW_SIZE
 
 config PLATFORM_EC_BODY_DETECTION_VAR_THRESHOLD
 	int "The threshold of acceleration variance for confidence calculation"
+	default 4000 if BODY_DETECTION_ALOGIRTHM_V2
 	default 550
 	help
-	  The unit is (mm/s^2)^2
+	  This thresholding is under migration, the unit is (mm/s^2)^2 for the
+	  legacy on-body detection, while the unit is uG for the V2.
 
-	  The motion confidence is calculated if the variance is within
-	  variance_threshold +/- confidence_delta. Otherwise, if variance is
-	  too high/low, confidence will be 100%/0%
+	  The motion confidence is calculated if the variance estimator is
+	  within variance_threshold +/- confidence_delta. Otherwise, if
+	  variance estimator is too high/low, confidence will be 100%/0%
 
 config PLATFORM_EC_BODY_DETECTION_CONFIDENCE_DELTA
 	int "The delta of acceleration variance for confidence calculation"
+	default 3000 if BODY_DETECTION_ALOGIRTHM_V2
 	default 525
 	help
-	  The unit is (mm/s^2)^2
+	  This thresholding is under migration, the unit is (mm/s^2)^2 for the
+	  legacy on-body detection, while the unit is uG for the V2.
 
-	  The motion confidence is calculated if the variance is within
-	  variance_threshold +/- confidence_delta. Otherwise, if variance is
-	  too high/low, confidence will be 100%/0%
+	  The value of hysteresis applied to threshold-based detection.
+	  Once the variance estimator exceeded variance_threshold +
+	  confidence_delta and on-body state was activated it needs to
+	  fall below variance_threshold - confidence_delta to return to
+	  off-body state.
 
 config PLATFORM_EC_BODY_DETECTION_VAR_NOISE_FACTOR
 	int "How much noise affects the threshold of variance"
@@ -54,6 +82,7 @@ config PLATFORM_EC_BODY_DETECTION_VAR_NOISE_FACTOR
 
 config PLATFORM_EC_BODY_DETECTION_ON_BODY_CON
 	int "The confidence limit of on_body"
+	default 90 if BODY_DETECTION_ALOGIRTHM_V2
 	default 50
 	help
 	  The unit is percentage

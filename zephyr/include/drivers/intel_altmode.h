@@ -318,6 +318,14 @@ static inline void z_impl_pd_altmode_set_result_cb(const struct device *dev,
 	api->set_result_cb(dev, cb);
 }
 
+/**
+ * @brief Check if usb is enabled in Intel Altmode data status register
+ *
+ * @param status Value of data status register
+ * @retval true if usb is enabled else false
+ */
+bool pd_altmode_is_usb_enabled(union data_status_reg status);
+
 #ifdef __cplusplus
 }
 #endif

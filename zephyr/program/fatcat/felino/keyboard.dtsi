@@ -10,45 +10,27 @@
 };
 
 &vivaldi_kbd {
-	vivaldi-keys = <
-		KBD_RC(1, 1)    /* T1 */
-		KBD_RC(1, 5)    /* T2 */
-		KBD_RC(0, 5)    /* T3 */
-		KBD_RC(1, 7)    /* T4 */
-		KBD_RC(0, 7)    /* T5 */
-		KBD_RC(0, 8)    /* T6 */
-		KBD_RC(0, 9)    /* T7 */
-		KBD_RC(1, 10)   /* T8 */
-		KBD_RC(0, 10)   /* T9 */
-		KBD_RC(0, 12)   /* T10 */
-		KBD_RC(0, 13)   /* T11 */
-		KBD_RC(1, 13)   /* T12 */
-		KBD_RC(1, 15)   /* T13 */
-		KBD_RC(7, 11)   /* T14 */
-		KBD_RC(0, 14)   /* T15 */
- 	>;
+	vivaldi-keys = <VIVALDI_KEYS_STRAUSS_T14>;
 
 	kbd_config_0: kbd-config-0{
 		vivaldi-codes = <
-			VIVALDI_TK_MENU                 /* T1 */
-			VIVALDI_TK_BRIGHTNESS_DOWN      /* T2 */
-			VIVALDI_TK_BRIGHTNESS_UP        /* T3 */
-			VIVALDI_TK_FULLSCREEN           /* T4 */
-			VIVALDI_TK_OVERVIEW             /* T5 */
-			VIVALDI_TK_VOL_MUTE             /* T6 */
-			VIVALDI_TK_VOL_DOWN             /* T7 */
-			VIVALDI_TK_VOL_UP               /* T8 */
-			VIVALDI_TK_FORWARD              /* T9 */
-			VIVALDI_TK_SNAPSHOT             /* T10 */
-			VIVALDI_TK_MICMUTE              /* T11 */
-			VIVALDI_TK_PREV_TRACK           /* T12 */
-			VIVALDI_TK_PLAY_PAUSE           /* T13 */
-			VIVALDI_TK_NEXT_TRACK           /* T14 */
-			VIVALDI_TK_BACK                 /* T15 */
+			VIVALDI_TK_BACK               /* T1 */
+			VIVALDI_TK_REFRESH            /* T2 */
+			VIVALDI_TK_FULLSCREEN         /* T3 */
+			VIVALDI_TK_OVERVIEW           /* T4 */
+			VIVALDI_TK_SNAPSHOT           /* T5 */
+			VIVALDI_TK_BRIGHTNESS_DOWN    /* T6 */
+			VIVALDI_TK_BRIGHTNESS_UP      /* T7 */
+			VIVALDI_TK_KBD_BKLIGHT_TOGGLE /* T8 */
+			VIVALDI_TK_MICMUTE            /* T9 */
+			VIVALDI_TK_VOL_MUTE           /* T10 */
+			VIVALDI_TK_VOL_DOWN           /* T11 */
+			VIVALDI_TK_VOL_UP             /* T12 */
+			VIVALDI_TK_ACCESSIBILITY      /* T13 */
+			VIVALDI_TK_DICTATE            /* T14 */
 		>;
 		capabilities = < (VIVALDI_KEYBD_CAP_FUNCTION_KEYS |
 				VIVALDI_KEYBD_CAP_SCRNLOCK_KEY |
-				VIVALDI_KEYBD_CAP_NUMERIC_KEYPAD |
 				VIVALDI_KEYBD_CAP_ASSISTANT_KEY) >;
 	};
 };
@@ -87,11 +69,11 @@
 	pinctrl-names = "default";
 	row-size = <8>;
 	col-size = <18>;
-	settle-time-us = <80>;
 	debounce-down-ms = <15>;
 	debounce-up-ms = <15>;
-	actual-key-mask = <0x9b 0xff 0x5f 0x9f 0x08 0xff 0x7b 0xff
-			   0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff>;
+	actual-key-mask = <0x08 0xff 0xff 0xff 0xff 0xff 0xff 0xa0
+			   0xff 0xff 0x01 0xff 0xff 0x40 0x0a 0x40
+			   0x01 0xc4>;
 	kso-ignore-mask = <04>;
 
 	kso-gpio {
@@ -102,17 +84,17 @@
 
 	boot-keys {
 		compatible = "cros-ec,boot-keys";
-		down-arrow-rc = <KBD_RC(6, 15)>;
-		esc-rc = <KBD_RC(0, 1)>;
-		left-shift-rc = <KBD_RC(1, 2)>;
+		down-arrow-rc = <KBD_RC(6, 11)>;
+		esc-rc = <KBD_RC(1, 1)>;
+		left-shift-rc = <KBD_RC(5, 7)>;
 		refresh-rc = <KBD_RC(3, 2)>;
 	};
 
 	runtime-keys {
 		compatible = "cros-ec,runtime-keys";
-		left-alt-rc = <KBD_RC(5, 6)>;
-		right-alt-rc = <KBD_RC(6, 6)>;
-		h-rc = <KBD_RC(4, 9)>;
-		r-rc = <KBD_RC(3, 8)>;
+		left-alt-rc = <KBD_RC(6, 13)>;
+		right-alt-rc = <KBD_RC(0, 10)>;
+		h-rc = <KBD_RC(1, 6)>;
+		r-rc = <KBD_RC(7, 9)>;
 	};
 };

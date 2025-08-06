@@ -6,10 +6,10 @@
 
 import argparse
 import inspect
+import json
 import logging
 import os
 import pathlib
-import re
 import subprocess
 import sys
 
@@ -243,6 +243,15 @@ def get_argparser():
             "called on this for each project)."
         ),
     )
+    list_projects.add_argument(
+        "project_names",
+        nargs="*",
+        metavar="project_name",
+        help="Name(s) of the project(s) to list, Unix-style wildcard "
+        "expressions to select multiple projects (e.g. brox-*), or "
+        "program directory names prefixed with '%%' (e.g. %%nissa)",
+        default=[],
+    )
 
     generate_readme = sub.add_parser(
         "generate-readme",
@@ -287,7 +296,9 @@ def add_common_build_args(sub_parser: argparse.ArgumentParser):
         "project_names",
         nargs="*",
         metavar="project_name",
-        help="Name(s) of the project(s) to build",
+        help="Name(s) of the project(s) to build, Unix-style wildcard "
+        "expressions to select multiple projects (e.g. brox-*), or "
+        "program directory names prefixed with '%%' (e.g. %%nissa)",
         default=[],
     )
 
@@ -379,18 +390,12 @@ def find_toolchains():
             ).resolve()
             if ec_util_path.is_dir():
                 run_result = subprocess.run(
-                    ["./coreboot_sdk.py"],
+                    ["./coreboot_sdk.py", "-j"],
                     check=True,
                     stdout=subprocess.PIPE,
                     cwd=str(ec_util_path),
                 )
-                # Convert bash associative array to python dict
-                env_vars = dict(
-                    re.findall(
-                        r'\["([^"]*)"\]="([^"]*)"',
-                        run_result.stdout.decode("utf-8"),
-                    )
-                )
+                env_vars = json.loads(run_result.stdout.decode("utf-8"))
                 if env_vars:
                     os.environ.update(env_vars.items())
                 break
@@ -447,7 +452,9 @@ def main(argv=None):
                     ", ".join(failed_projects),
                 )
         if zmake.failed_projects:
-            logging.error("All failed projects: %s", zmake.failed_projects)
+            logging.error(
+                "All failed projects: %s", " ".join(zmake.failed_projects)
+            )
 
 
 if __name__ == "__main__":

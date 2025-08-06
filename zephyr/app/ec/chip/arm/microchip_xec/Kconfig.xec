@@ -23,4 +23,10 @@ config PLATFORM_EC_ADC_OVERSAMPLING
 config SYS_CLOCK_HW_CYCLES_PER_SEC
 	default 32768
 
+# Initialize the onboard SPI flash earlier than the upstream Zephyr default
+# of 80. This makes the SPI flash available early enough for the CrOS flash
+# and CBI drivers. (b/423808174)
+config SPI_NOR_INIT_PRIORITY
+	default 54
+
 endif # SOC_FAMILY_MICROCHIP_MEC

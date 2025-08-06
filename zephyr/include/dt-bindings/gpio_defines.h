@@ -8,6 +8,9 @@
 
 #include <zephyr/dt-bindings/gpio/gpio.h>
 
+#ifndef BIT
+#define BIT(n) (1UL << (n))
+#endif
 /*
  * The GPIO_INPUT and GPIO_OUTPUT defines are normally not available to
  * the device tree. For GPIOs that are controlled by the platform/ec module, we
@@ -21,19 +24,19 @@
  */
 
 /** Enables pin as input. */
-#define GPIO_INPUT (1U << 16)
+#define GPIO_INPUT BIT(16)
 
 /** Enables pin as output, no change to the output state. */
-#define GPIO_OUTPUT (1U << 17)
+#define GPIO_OUTPUT BIT(17)
 
 /* Initializes output to a low state. */
-#define GPIO_OUTPUT_INIT_LOW (1U << 18)
+#define GPIO_OUTPUT_INIT_LOW BIT(18)
 
 /* Initializes output to a high state. */
-#define GPIO_OUTPUT_INIT_HIGH (1U << 19)
+#define GPIO_OUTPUT_INIT_HIGH BIT(19)
 
 /* Initializes output based on logic level */
-#define GPIO_OUTPUT_INIT_LOGICAL (1U << 20)
+#define GPIO_OUTPUT_INIT_LOGICAL BIT(20)
 
 /* Configures GPIO pin as output and initializes it to a low state. */
 #define GPIO_OUTPUT_LOW (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)
@@ -69,17 +72,17 @@
  */
 
 /** Disables GPIO pin interrupt. */
-#define GPIO_INT_DISABLE (1U << 21)
+#define GPIO_INT_DISABLE BIT(21)
 
 /* Enables GPIO pin interrupt. */
-#define GPIO_INT_ENABLE (1U << 22)
+#define GPIO_INT_ENABLE BIT(22)
 
 /* GPIO interrupt is sensitive to logical levels.
  *
  * This is a component flag that should be combined with other
  * `GPIO_INT_*` flags to produce a meaningful configuration.
  */
-#define GPIO_INT_LEVELS_LOGICAL (1U << 23)
+#define GPIO_INT_LEVELS_LOGICAL BIT(23)
 
 /* GPIO interrupt is edge sensitive.
  *
@@ -88,7 +91,7 @@
  * This is a component flag that should be combined with other
  * `GPIO_INT_*` flags to produce a meaningful configuration.
  */
-#define GPIO_INT_EDGE (1U << 24)
+#define GPIO_INT_EDGE BIT(24)
 
 /* Trigger detection when input state is (or transitions to) physical low or
  * logical 0 level.
@@ -96,7 +99,7 @@
  * This is a component flag that should be combined with other
  * `GPIO_INT_*` flags to produce a meaningful configuration.
  */
-#define GPIO_INT_LOW_0 (1U << 25)
+#define GPIO_INT_LOW_0 BIT(25)
 
 /* Trigger detection on input state is (or transitions to) physical high or
  * logical 1 level.
@@ -104,7 +107,7 @@
  * This is a component flag that should be combined with other
  * `GPIO_INT_*` flags to produce a meaningful configuration.
  */
-#define GPIO_INT_HIGH_1 (1U << 26)
+#define GPIO_INT_HIGH_1 BIT(26)
 
 /** Configures GPIO interrupt to be triggered on pin rising edge and enables it.
  */

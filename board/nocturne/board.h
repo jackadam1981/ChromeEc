@@ -71,7 +71,6 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 128
-#define CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT 128
 #define CONFIG_CHARGER_ISL9238
 /*
  * Nocturne seems to overdraw its set input current limit by about 5%.
