@@ -16,6 +16,23 @@
       "message": "Ran the test in Magma with Ellisys and GRL testers and verified the result.",
       "revId": "89f1911c0323ae3469d36900140d9e703583367a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77ace60_1dfb620f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T06:06:24Z",
+      "side": 1,
+      "message": "I think this is self-consistent enough to submit as-is and clean up the TODOs later.",
+      "revId": "89f1911c0323ae3469d36900140d9e703583367a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
