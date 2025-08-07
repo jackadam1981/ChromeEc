@@ -90,6 +90,27 @@
 		};
 
 		/*
+		 * FW_CONFIG field to difined panel type.
+		 */
+		panel {
+			enum-name = "FW_PANEL";
+			start = <4>;
+			size = <1>;
+
+			panel-top {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "PANEL_TOP";
+				value = <0>;
+				default;
+			};
+			panel-dbts {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "PANEL_DBTS";
+				value = <1>;
+			};
+		};
+
+		/*
 		 * FW_CONFIG field to enable KB backlight or not.
 		 */
 		kb-bl {
