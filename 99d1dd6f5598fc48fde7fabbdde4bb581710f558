@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f740ba6_9fdeb9d9",
+        "filename": "zephyr/zmake/zmake/compare_builds.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-07T18:52:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we can make this assumption in the next few months.  Yuval and I are attempting to enable CHRE by creating an `uldrenite-ish-chre` target.  Maybe check if it contains `-ish` instead?",
+      "revId": "99d1dd6f5598fc48fde7fabbdde4bb581710f558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
