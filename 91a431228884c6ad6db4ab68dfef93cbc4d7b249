@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ce8201_5929312c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-07T17:26:13Z",
+      "side": 1,
+      "message": "It also passed the CQ dry run, so LGTM, thanks",
+      "parentUuid": "713c8282_d97f1510",
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "558fec71_666239f7",
@@ -162,6 +180,30 @@
       "side": 1,
       "message": "The only additional ones to add are the nucleo development boards (build.mk and README.md). We haven\u0027t done a good job keeping those in sync, but we should be adding new tests to those.",
       "parentUuid": "3cb355ac_38dba511",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "91a431228884c6ad6db4ab68dfef93cbc4d7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99543e8b_c1ef9212",
+        "filename": "baseboard/bloonchipper/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-07T17:26:13Z",
+      "side": 1,
+      "message": "OK, I\u0027ve added test to the development boards.",
+      "parentUuid": "26965313_c951e5db",
       "range": {
         "startLine": 54,
         "startChar": 7,
