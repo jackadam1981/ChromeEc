@@ -8,6 +8,8 @@
 / {
 	usb0: usb0 {
 	};
+
+	/delete-node/ udc0;
 };
 
 #include "../program/roach/axii/project.overlay"
