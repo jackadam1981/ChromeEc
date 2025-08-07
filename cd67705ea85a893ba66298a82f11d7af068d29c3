@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c4725f_0a9e8076",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T05:02:23Z",
+      "side": 1,
+      "message": "This reads like a bug report. I might suggest a commit message similar to\n```\nTCPMv2: Disable interrupts while accessing Alert Data Object\n\nWhile setting or clearing the pending Alert Data Object, disable\ninterrupts as opposed to just acquiring a mutex. Avoid a deadlock when the\nport connection state changes in response to a board power state change.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7bd3256d_e39c00b5",
@@ -14,6 +37,40 @@
       "writtenOn": "2025-08-07T01:43:52Z",
       "side": 1,
       "message": "This is a critical issue and required to be fixed by our customer and quality team asap.Could you please help to review, thanks.",
+      "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bcf895_365caba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T05:02:23Z",
+      "side": 1,
+      "message": "I think I understand what you\u0027re going for here. I have some questions about the specific race condition to be avoided, which I\u0027ll post to the bug. We use `irq_lock` quite rarely, and I suspect there might be a less extreme action that would still avoid the race condition.\n\nCC Keith for insight on the consequences of disabling interrupts.",
+      "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8de224_ff6c6a81",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T05:02:23Z",
+      "side": 1,
+      "message": "If you\u0027re getting rid of all of the accesses to `ado_lock`, you should also get rid of the `ado_lock` declaration in `struct pe`.",
       "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
