@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59cf02b_b5260223",
+        "filename": "third_party/ish/METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-07T22:33:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2129b685_b47b638c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "d7655aca58cd398a3a50e987e021eb6a992693a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f350d9_72957338",
@@ -77,6 +101,30 @@
       "writtenOn": "2025-08-07T19:30:36Z",
       "side": 1,
       "message": "How is the binary generated?  Is this created from the hal_intel repo?\nhttps://github.com/zephyrproject-rtos/hal_intel",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 88
+      },
+      "revId": "d7655aca58cd398a3a50e987e021eb6a992693a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be056311_a9183a09",
+        "filename": "third_party/ish/METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-07T22:33:29Z",
+      "side": 1,
+      "message": "Details is here: b:404810012#comment13\nThis is not generated from hal_intel.",
+      "parentUuid": "31f350d9_72957338",
       "range": {
         "startLine": 12,
         "startChar": 0,
