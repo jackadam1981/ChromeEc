@@ -36,12 +36,23 @@
 	};
 
 	named-gpios {
+		/delete-node/ usb_c0_bc12_int_odl;
+
  		en_pp5000_usb_a1_vbus: en_pp5000_usb_a1_vbus_x {
 			gpios = <&gpiof 5 GPIO_OUTPUT_LOW>;
 		};
 		usb_a1_fault_odl {
 			gpios = <&gpiof 4 GPIO_INPUT>;
 		};
+	};
+
+	unused-pins {
+		unused-gpios =
+			<&gpio8 3 0>;
+	};
+
+	gpio-interrupts {
+		/delete-node/ usb_c0_bc12;
 	};
 
 	batteries {
@@ -178,6 +189,16 @@
 			0xcb	/* C12 */
 			>;
 	};
+
+	usbc {
+		port0@0 {
+			/delete-property/ bc12;
+		};
+
+		port1@1 {
+			/delete-property/ bc12;
+		};
+	};
 };
 
 /* inherit the rot_ref from Kingler and overwrite it */
@@ -197,4 +218,12 @@
 &usba_port_enable_list {
 	enable-pins = <&en_pp5000_usb_a0_vbus
 		       &en_pp5000_usb_a1_vbus>;
+};
+
+&i2c1_0 {
+	/delete-node/ pi3usb9201@5f;
+};
+
+&i2c2_0 {
+	/delete-node/ rt1718s-bc12@40;
 };
