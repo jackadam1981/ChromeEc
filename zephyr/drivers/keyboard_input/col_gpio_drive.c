@@ -80,6 +80,26 @@ static int col_gpio_init(const struct device *dev)
 }
 
 #if CONFIG_DT_HAS_ITE_IT8XXX2_KBD_ENABLED
+/*
+ * On ITE chips, the SSPI pins (SMOSI/SMISO) for spi0 are shared with the
+ * KSO16/KSO17 keyboard matrix pins. If spi0 is enabled in the devicetree,
+ * we must ensure that the keyboard controller is configured to ignore
+ * KSO16 and KSO17 to prevent pin conflicts.
+ */
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_col_gpio)
+#define KSO16_KSO17_MASK (BIT(16) | BIT(17))
+#define KBD_NODE DT_PARENT(DT_DRV_INST(0))
+
+BUILD_ASSERT(!DT_NODE_HAS_STATUS(DT_NODELABEL(spi0), okay) ||
+		     ((DT_PROP(KBD_NODE, kso_ignore_mask) & KSO16_KSO17_MASK) ==
+		      KSO16_KSO17_MASK),
+	     "spi0 is enabled, so KSO16 and KSO17 must be set in the keybaord "
+	     "controller's kso-ignore-mask to prevent pin conflicts.");
+
+#undef KSO16_KSO17_MASK
+#undef KBD_NODE
+#endif /* DT_HAS_COMPAT_STATUS_OKAY(cros_ec_col_gpio) */
+
 #define ITE_KBD_PARENT_CHECK(inst)                                            \
 	BUILD_ASSERT(                                                         \
 		IS_BIT_SET(DT_PROP(DT_PARENT(DT_DRV_INST(inst)),              \
