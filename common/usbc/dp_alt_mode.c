@@ -35,6 +35,8 @@
 #define CPRINTS(format, args...)
 #endif
 
+#define DP_STATUS_USB_CONFIG_REQ BIT(3)
+
 /*
  * Note: the following DP-related variables must be kept as-is since
  * some boards are using them in their board-specific code.
@@ -644,8 +646,9 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	mux_state_t mux_state;
+	uint32_t status = payload[1];
 
-	dp_status[port] = payload[1];
+	dp_status[port] = status;
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl))
 		/*
@@ -660,6 +663,15 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
 		return 1;
+	}
+
+	if (status & DP_STATUS_USB_CONFIG_REQ) {
+			/*
+				* UFP is requesting a change to the USB/DP pin configuration.
+				* This is handled by re-sending the DP_Configure message.
+				*/
+			dp_state[port] = DP_PREPARE_CONFIG;
+			return 1;
 	}
 
 	if (dp_hpd_gpio_set(port, lvl, irq) != EC_SUCCESS)
