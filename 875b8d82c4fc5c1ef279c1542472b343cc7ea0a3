@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9062da_9ea3e4bc",
+        "filename": "zephyr/shim/src/pdc_shim.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-07T15:22:51Z",
+      "side": 1,
+      "message": "Should we just expose `is_pdc_port_valid` in pdc_power_mgmt and call it here?",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 55
+      },
+      "revId": "875b8d82c4fc5c1ef279c1542472b343cc7ea0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
