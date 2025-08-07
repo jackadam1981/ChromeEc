@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1461494_a8deb1da",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-07T10:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07511f1f_e9adef17",
+      "range": {
+        "startLine": 1856,
+        "startChar": 2,
+        "endLine": 1858,
+        "endChar": 30
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a188022f_5f65b99e",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97d2cb3_3b38880b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-07T10:15:00Z",
+      "side": 1,
+      "message": "Set the index for GET_ALTERNATE_MODES on Byte 3.",
+      "parentUuid": "a188022f_5f65b99e",
+      "range": {
+        "startLine": 2828,
+        "startChar": 63,
+        "endLine": 2830,
+        "endChar": 48
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0f1f559_8fd0f228",
@@ -94,6 +142,30 @@
       "writtenOn": "2025-08-06T23:32:11Z",
       "side": 1,
       "message": "We should probably clear the connector number (bits 6:0) before setting it.",
+      "range": {
+        "startLine": 2833,
+        "startChar": 2,
+        "endLine": 2833,
+        "endChar": 53
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f865db1_fe2cae11",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2833,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-07T10:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f1f559_8fd0f228",
       "range": {
         "startLine": 2833,
         "startChar": 2,
