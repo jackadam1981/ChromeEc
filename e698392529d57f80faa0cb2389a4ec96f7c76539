@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea00630_46afde63",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-08-07T17:41:09Z",
+      "side": 1,
+      "message": "Keep using connector_number here. Anytime you communicate back a number to the PPM, it should be the contiguous connector number.",
+      "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f548d82_a9e57bb3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-08-07T17:41:09Z",
+      "side": 1,
+      "message": "I\u0027d replace this with an inline function for clarity.\n\nI.e.\n```\ninline bool is_first_port_on_chip(struct pdc_data_t *data) {\n  struct pdc_config_t const *cfg \u003d data-\u003edev-\u003econfig;\n  return cfg-\u003eport_index_on_chip \u003d\u003d 1;\n}\n```",
+      "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0d7f86_843db793",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2834,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2025-08-07T17:41:09Z",
+      "side": 1,
+      "message": "nit: `ucsi_command \u003d\u003d UCSI_GET_ALTERNATE_MODES ? 3 : 2` is clearer.",
+      "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
