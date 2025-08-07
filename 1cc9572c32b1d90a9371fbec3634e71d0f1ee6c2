@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b321749_b69595eb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T07:08:30Z",
+      "side": 1,
+      "message": "I think the structure of this timer should look similar to that in the AttachWait states: Start the timer when CC changes and restart it whenever CC changes again. Don\u0027t react to a new CC value until it\u0027s been stable for tPDDebounce.",
+      "revId": "1cc9572c32b1d90a9371fbec3634e71d0f1ee6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
