@@ -224,6 +224,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5dfd9ef_6e30c8d8",
+        "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-07T10:50:39Z",
+      "side": 1,
+      "message": "This index is not only used in ucsi command but also used in power switch tasks (srdy) so I remove the ucsi in the name.",
+      "parentUuid": "c7c3377f_6807df2c",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d9b93d_0e94e3d2",
+        "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-07T10:50:39Z",
+      "side": 1,
+      "message": "I didn\u0027t know that the chip supported up to 2 ports and there is enum in properties.\n\nAdd enum in the latest patch set.",
+      "parentUuid": "d57f7316_c1be7f35",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ed9ba75_fd23bb62",
         "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
         "patchSetId": 11
@@ -235,6 +283,30 @@
       "writtenOn": "2025-08-06T23:25:31Z",
       "side": 1,
       "message": "Please elaborate this comment and describe how the value is inserted into UCSI commands and what values should be used for dual- and single-port PDCs.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 73
+      },
+      "revId": "b4cae8616bd5f3581e54ca62ba776ec41c8cf7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a32ff9b_e3610c37",
+        "filename": "zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-07T10:50:39Z",
+      "side": 1,
+      "message": "Update the description.",
+      "parentUuid": "3ed9ba75_fd23bb62",
       "range": {
         "startLine": 21,
         "startChar": 0,
