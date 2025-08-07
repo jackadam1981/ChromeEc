@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "808fb291_99dae5f0",
+        "filename": "util/ish/ish_header_5_8.bin",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-07T19:21:52Z",
+      "side": 1,
+      "message": "Moved. Script file is kept in util/ish. Shall I move it to third party too?",
+      "parentUuid": "d02965f0_ded06816",
+      "revId": "8253fe923381803722a0de0fde5ba1f33723b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "161acb66_dff84ce3",
         "filename": "util/ish/sign_ish_main.sh",
         "patchSetId": 1
@@ -101,6 +119,30 @@
       "writtenOn": "2025-08-06T20:36:27Z",
       "side": 1,
       "message": "Create a temporary file for output using `mktemp`",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "8253fe923381803722a0de0fde5ba1f33723b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "998f6180_61e2305b",
+        "filename": "util/ish/sign_ish_main.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-07T19:21:52Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "161acb66_dff84ce3",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -136,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1563371_fb8ff9e8",
+        "filename": "util/ish/sign_ish_main.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-07T19:21:52Z",
+      "side": 1,
+      "message": "Done, pass directly.",
+      "parentUuid": "a0da28f5_480e92c0",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 57
+      },
+      "revId": "8253fe923381803722a0de0fde5ba1f33723b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3149162c_d3463186",
         "filename": "util/ish/sign_ish_main.sh",
         "patchSetId": 1
@@ -147,6 +213,30 @@
       "writtenOn": "2025-08-06T20:36:27Z",
       "side": 1,
       "message": "Make the output filename another parameter.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "8253fe923381803722a0de0fde5ba1f33723b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10fe26f_b5ec61dc",
+        "filename": "util/ish/sign_ish_main.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-07T19:21:52Z",
+      "side": 1,
+      "message": "Output file overwrites the input, so final image is still ish_fw.bin in   `build/zephyr/\u003cxxx-ish\u003e/build-singleimage/zephyr`, and be updated in`build/zephyr/\u003cxxx-ish\u003e/output` too.",
+      "parentUuid": "3149162c_d3463186",
       "range": {
         "startLine": 42,
         "startChar": 0,
