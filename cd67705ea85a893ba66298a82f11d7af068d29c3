@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "15aa325f_495f41d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-08-07T06:56:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5c4725f_0a9e8076",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7bd3256d_e39c00b5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -71,6 +95,24 @@
       "writtenOn": "2025-08-07T05:02:23Z",
       "side": 1,
       "message": "If you\u0027re getting rid of all of the accesses to `ado_lock`, you should also get rid of the `ado_lock` declaration in `struct pe`.",
+      "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e40f923_bd5af1be",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-08-07T06:56:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c8de224_ff6c6a81",
       "revId": "cd67705ea85a893ba66298a82f11d7af068d29c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
