@@ -16,6 +16,75 @@
       "message": "I have to add license header to LICENSE and METADATA too; cros_license_check reported error if not there.",
       "revId": "d7655aca58cd398a3a50e987e021eb6a992693a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51dd19dd_0a158bdb",
+        "filename": "third_party/ish/LICENSE",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-07T19:30:36Z",
+      "side": 1,
+      "message": "Delete this and just use the Intel copyright.\n\nIf this binary is generated from https://github.com/zephyrproject-rtos/hal_intel, then it would make sense to add the LICENSE file from that project instead.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "d7655aca58cd398a3a50e987e021eb6a992693a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2129b685_b47b638c",
+        "filename": "third_party/ish/METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-07T19:30:36Z",
+      "side": 1,
+      "message": "Delete - the METADATA file doesn\u0027t need a copyright header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "d7655aca58cd398a3a50e987e021eb6a992693a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f350d9_72957338",
+        "filename": "third_party/ish/METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-07T19:30:36Z",
+      "side": 1,
+      "message": "How is the binary generated?  Is this created from the hal_intel repo?\nhttps://github.com/zephyrproject-rtos/hal_intel",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 88
+      },
+      "revId": "d7655aca58cd398a3a50e987e021eb6a992693a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
