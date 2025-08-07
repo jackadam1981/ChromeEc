@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88755911_b4a9ecaa",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-07T17:15:46Z",
+      "side": 1,
+      "message": "but the SKU180 does not, so it should be addressed somehow.",
+      "parentUuid": "1c9f82c6_81978734",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "480fd68c_7f8b8db1",
         "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
         "patchSetId": 8
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "The uldrenite have 180SKU and 360SKU, the 180SKU is use lis2dw12, 360SKU use lsm6dsm.\nIt maybe affect ISH(360SKU) when removing this code.",
       "parentUuid": "de4cf58f_806d81b7",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bc7596_554021c2",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-07T17:15:46Z",
+      "side": 1,
+      "message": "It needs to addressed: 180SKU does not have gyroscope yet one is defined for them in the device tree.",
+      "parentUuid": "1ccf8549_a4404240",
       "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
