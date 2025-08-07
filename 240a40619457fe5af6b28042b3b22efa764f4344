@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "644274c7_8c6d566a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-07T00:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414b8c36_ebc0394d",
+      "revId": "240a40619457fe5af6b28042b3b22efa764f4344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85eb874b_29d86ec3",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-08-06T22:18:36Z",
       "side": 1,
       "message": "We usually define the max vcltage/current when it\u0027s different than the default max power as well.\n\nCONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV\u003d21000\nCONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA\u003d3250",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "240a40619457fe5af6b28042b3b22efa764f4344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4cac6b8_00e4fa66",
+        "filename": "zephyr/program/trulo/ite_program.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-08-07T00:49:05Z",
+      "side": 1,
+      "message": "USB_PD_MAX_VOLTAGE_MV and USB_PD_MAX_CURRENT_MA setting will upload another CL for kaladin board only.",
+      "parentUuid": "85eb874b_29d86ec3",
       "range": {
         "startLine": 105,
         "startChar": 0,
