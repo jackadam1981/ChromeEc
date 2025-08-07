@@ -284,22 +284,13 @@ class CompareBuilds:
             / pathlib.Path(project.config.project_name)
             / "output"
         )
-        ish_targets = {
-            "rex-ish",
-            "brox-ish",
-            "kinmen-ish",
-            "ptl-ish",
-            "pujjolo-ish",
-            "trulo-ish",
-            "uldrenite-ish",
-        }
 
         output_dir1 = self.checkouts[0].modules_dir / output_path
         output_dir2 = self.checkouts[1].modules_dir / output_path
 
         # The rex-ish and similar ish targets create an ish_fw.bin artifact
         # instead of ec.bin
-        if project.config.project_name in ish_targets:
+        if os.path.isfile(output_dir1 / "ish_fw.bin"):
             bin_name = "ish_fw.bin"
         else:
             bin_name = "ec.bin"
