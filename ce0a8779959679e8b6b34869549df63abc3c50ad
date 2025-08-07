@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074eb093_21df595b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-07T17:06:56Z",
+      "side": 0,
+      "message": "This mutex was never initialized.\n\nSee b/429961698#comment41",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 18
+      },
+      "revId": "ce0a8779959679e8b6b34869549df63abc3c50ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
