@@ -116,3 +116,19 @@ void board_chipset_shutdown_complete(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, board_chipset_shutdown_complete,
 	     HOOK_PRIO_DEFAULT);
+
+static int command_apshutdown_offmode(int argc, const char **argv)
+{
+	if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)) {
+		chip_save_reset_flags(chip_read_reset_flags() |
+				      EC_RESET_FLAG_AP_IDLE);
+		system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
+		CPRINTS("off mode charging");
+	}
+
+	shutdown_for_offmode_charging = 1;
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(apshutdown_offmode, command_apshutdown_offmode, NULL,
+			"Force AP shutdown for offmode charging");
