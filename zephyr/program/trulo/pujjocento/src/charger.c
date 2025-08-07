@@ -34,14 +34,27 @@ static void set_bq25710_charge_option(void)
 {
 	int reg;
 	int rv;
+	int data;
 
 	rv = i2c_read16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
 			BQ25710_REG_CHARGE_OPTION_0, &reg);
-	/* Disable IDPM when AC only */
-	if (rv == EC_SUCCESS && !battery_is_present()) {
-		reg = SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_0, EN_IDPM, 0, reg);
-		i2c_write16(chg_chips[0].i2c_port, chg_chips[0].i2c_addr_flags,
-			    BQ25710_REG_CHARGE_OPTION_0, reg);
+	if (rv == EC_SUCCESS) {
+		data = reg;
+		/* if AC only, disable IDPM,
+		 * because it will cause charger keep asserting PROCHOT
+		 */
+		if (!battery_is_present())
+			reg = SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_0, EN_IDPM, 0,
+					   reg);
+		else
+			reg = SET_BQ_FIELD(BQ257X0, CHARGE_OPTION_0, EN_IDPM, 1,
+					   reg);
+
+		if (reg != data)
+			i2c_write16(chg_chips[0].i2c_port,
+				    chg_chips[0].i2c_addr_flags,
+				    BQ25710_REG_CHARGE_OPTION_0, reg);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, set_bq25710_charge_option, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, set_bq25710_charge_option,
+	     HOOK_PRIO_DEFAULT);
