@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54d1e24_02450a30",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-07T20:43:28Z",
+      "side": 1,
+      "message": "I uploaded the patch for reference.",
+      "parentUuid": "3df881db_df422110",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a37675_093efb5c",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Got it. BTW, it doesn\u0027t add/reduce any ROM size. The compiler is smart enough.",
       "parentUuid": "07a37675_093efb5c",
+      "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f60ed3_15048734",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-07T20:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535eaa43_b9e6e3b7",
       "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
