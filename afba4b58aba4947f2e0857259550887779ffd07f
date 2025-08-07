@@ -16,6 +16,24 @@
       "message": "i encountered this today:\n```\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d0a \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d 2a 2a 2a\nInvalid EFLASH TYPE\n```\nbut i was able to flash the chip on 2nd attempt.",
       "revId": "afba4b58aba4947f2e0857259550887779ffd07f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b17b6f6_a5a4f354",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-07T03:21:33Z",
+      "side": 1,
+      "message": "It should be that WDT has occurred. \nAdding a restart wdt should be able to avoid this situation.",
+      "parentUuid": "c068abfd_4c0ed88a",
+      "revId": "afba4b58aba4947f2e0857259550887779ffd07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
