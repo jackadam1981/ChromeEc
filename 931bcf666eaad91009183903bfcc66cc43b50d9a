@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3df881db_df422110",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-07T20:38:45Z",
+      "side": 1,
+      "message": "Sorry, I missed your comment. Looks like the WIP changes didn\u0027t notify me for new comments.\n\nPutting the arrays directly there helps, it saves 16-byte of ROM. These are the new numbers:\n\n|Method                   |nCols   |ROM Used        |RAM Used     |\n|-------------------------|--------|----------------|-------------| \n|Base                     |1       |259928 B        |84480 B      |\n|Multi-instance method    |1       |259928 B        |84480 B      |\n|Array method (old)       |1       |260000 B        |84480 B      |\n|Array method (new)       |1       |259984 B        |84480 B      |\n|Multi-instance method    |2       |260008 B        |84480 B      |\n|Array method (old)       |2       |260016 B        |84480 B      |\n|Array method (new)       |2       |260000 B        |84480 B      |",
+      "parentUuid": "48a47179_dcc53fa7",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07a37675_093efb5c",
         "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2025-08-01T10:39:19Z",
       "side": 1,
       "message": "`z_impl_k_busy_wait` has an early exit path for `usec_to_wait \u003d\u003d 0`, no need for this check",
+      "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535eaa43_b9e6e3b7",
+        "filename": "zephyr/drivers/keyboard_input/col_gpio_drive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-07T20:38:45Z",
+      "side": 1,
+      "message": "Got it. BTW, it doesn\u0027t add/reduce any ROM size. The compiler is smart enough.",
+      "parentUuid": "07a37675_093efb5c",
       "revId": "931bcf666eaad91009183903bfcc66cc43b50d9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
