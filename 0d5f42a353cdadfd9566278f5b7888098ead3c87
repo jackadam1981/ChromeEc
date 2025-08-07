@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "681f5f1d_2e6ce808",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "I don\u0027t see this in the CL. Either remove this line from the commit message or implement this handling of the UFP bit in this CL.",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de222e2_592b66b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "Nit: In the CL in its current state, we\u0027re switching DisplayPort Configurations, not Exiting DisplayPort mode. Can you clarify the commit message?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300f2460_4f4eb36d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "I don\u0027t see this in the CL.",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0bdc6a9a_d8681a58",
@@ -14,6 +71,91 @@
       "writtenOn": "2025-08-07T15:49:30Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5346020_e5c73c69",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "Redundant with header file?",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30112666_b2288d0f",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "Line length/indentation",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eefa4529_0c283713",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "IIRC, you have not yet implemented the USB configuration, so this bit would result in re-sending the DP Configuration, which isn\u0027t what the partner wanted. However, I\u0027m OK with this as an incremental improvement.",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4c4b1a_66f43179",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "Isn\u0027t this bit 5 in the spec?",
+      "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d95f3f1_f865da09",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-07T21:22:11Z",
+      "side": 1,
+      "message": "Nit: I\u0027d stick this in the same stack with your don\u0027t-send-Configure CL, since you\u0027re modifying this same list of bits. You can resolve the merge conflict now or after you submit the other CL. Doing it now would make it a bit easier to understand the overall change.",
       "revId": "0d5f42a353cdadfd9566278f5b7888098ead3c87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
