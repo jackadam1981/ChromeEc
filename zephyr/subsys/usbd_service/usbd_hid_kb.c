@@ -218,9 +218,10 @@ static void kb_set_protocol(const struct device *dev, uint8_t protocol)
 		(protocol == HID_PROTOCOL_BOOT) ? "boot" : "report");
 }
 
-static void kb_in_ready(const struct device *dev)
+static void kb_in_ready(const struct device *dev, const uint8_t *const report)
 {
 	ARG_UNUSED(dev);
+	ARG_UNUSED(report);
 
 	atomic_clear_bit(&keyboard.state, HID_EP_IN_BUSY);
 }

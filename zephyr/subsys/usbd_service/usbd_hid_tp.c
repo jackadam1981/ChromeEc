@@ -380,9 +380,10 @@ static int tp_get_report(const struct device *dev, const uint8_t type,
 	return -ENOTSUP;
 }
 
-static void tp_in_ready(const struct device *dev)
+static void tp_in_ready(const struct device *dev, const uint8_t *const report)
 {
 	ARG_UNUSED(dev);
+	ARG_UNUSED(report);
 
 	atomic_clear_bit(&touchpad.state, HID_EP_IN_BUSY);
 }
