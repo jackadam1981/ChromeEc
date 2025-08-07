@@ -16,6 +16,24 @@
       "message": "I think you already did this, but it\u0027s important to check that this change doesn\u0027t regress other compliance tests, particularly ones that also exercise tCCDebounce. The range is pretty wide, so this should be safe.\n\nLooking through the type-C functional test spec, I notice that TD 4.10.4 appears to fake the UUT out by transitioning to Unattached.SNK for exactly tCCDebounce. That might be a good one to try as a smoke test.\n\nReally, though, it would be good to rerun the entire type-C functional suite.",
       "revId": "c16aaa0b96a7679b1debbf4e1f4567ba7f7b62ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66accd0_69cbe615",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-08-07T06:16:50Z",
+      "side": 1,
+      "message": "Ran TD.4.10.4 and it passed. Reran the entire type-C functiona suite and did not observe any new failures.",
+      "parentUuid": "8901d5f7_4af8e7d5",
+      "revId": "c16aaa0b96a7679b1debbf4e1f4567ba7f7b62ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
