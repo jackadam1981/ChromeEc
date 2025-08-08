@@ -263,7 +263,7 @@ enum pdo_augmented_pps {
 #define PD_T_SENDER_RESPONSE (30 * MSEC) /* between 24ms and 30ms */
 #else
 /* PD R2.0 V1.3: between 24ms and 30ms */
-#define PD2_T_SENDER_RESPONSE (26 * MSEC)
+#define PD2_T_SENDER_RESPONSE (27 * MSEC)
 /*
  * PD R3.1 V1.5: between 26ms and 32ms
  * PD R3.2 V1.0: between 27ms and 33ms
