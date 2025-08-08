@@ -27,6 +27,10 @@
 		};
 	};
 
+	named-adc-channels {
+		/delete-node/ usbc_sub_detect;
+	};
+
 	named-gpios {
 		/delete-node/ ec_kso_02_inv;
 		/delete-node/ en_pp5000_z1;
