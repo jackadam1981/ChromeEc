@@ -7,6 +7,7 @@
 
 zephyr_library_sources("src/power.c")
 zephyr_library_sources("src/platform.c")
+zephyr_library_sources("src/flash_ram.c")
 
 if(DEFINED CONFIG_CROS_EC_RO)
 
