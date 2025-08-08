@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c9c396_3c10e010",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-08T09:56:47Z",
+      "side": 1,
+      "message": "Revert the change.",
+      "parentUuid": "fea00630_46afde63",
+      "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f548d82_a9e57bb3",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39a54ef_9ca24fe2",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-08T09:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f548d82_a9e57bb3",
+      "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a0d7f86_843db793",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-07T17:41:09Z",
       "side": 1,
       "message": "nit: `ucsi_command \u003d\u003d UCSI_GET_ALTERNATE_MODES ? 3 : 2` is clearer.",
+      "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6f2e2b_d48896b3",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2834,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-08T09:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a0d7f86_843db793",
       "revId": "e698392529d57f80faa0cb2389a4ec96f7c76539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
