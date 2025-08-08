@@ -14,7 +14,7 @@
 			pwms = <&pwm5 5 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 			rpm-min = <2500>;
 			rpm-start = <2500>;
-			rpm-max = <6800>;
+			rpm-max = <6100>;
 			tach = <&tach1>;
 			rpm-deviation = <1>;
 		};
