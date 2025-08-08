@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e92da4bc_68fb46e3",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-08T14:47:38Z",
+      "side": 1,
+      "message": "I don\u0027t see this on the schematic v0.7.  The I2C address shows a battery (0x0b), charger (0x09), and VR (0x26).\n\nIs the 7-segment display accessed through the debug connector (JDB6)?",
+      "parentUuid": "c08704c1_1cd56488",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "2ff3aa8552ce51950c26e0adcb4a0b4a9f57659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd08c39d_54dbe39b",
         "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
         "patchSetId": 5
