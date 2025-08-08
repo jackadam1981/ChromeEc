@@ -239,46 +239,6 @@ fp_command_nonce_context(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
 		     EC_VER_MASK(0));
 
-static enum ec_status
-fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
-{
-	const auto *params =
-		static_cast<const ec_params_fp_read_match_secret_with_pubkey *>(
-			args->params);
-	auto *response =
-		static_cast<ec_response_fp_read_match_secret_with_pubkey *>(
-			args->response);
-	int8_t fgr = params->fgr;
-
-	ScopedFastCpu fast_cpu;
-
-	static_assert(sizeof(response->enc_secret) ==
-		      FP_POSITIVE_MATCH_SECRET_BYTES);
-
-	CleanseWrapper<std::array<uint8_t, FP_POSITIVE_MATCH_SECRET_BYTES> >
-		secret;
-
-	enum ec_status status = fp_read_match_secret(fgr, secret);
-	if (status != EC_RES_SUCCESS) {
-		return status;
-	}
-
-	enum ec_error_list ret = encrypt_data_with_ecdh_key_in_place(
-		params->pubkey, secret, response->iv, response->pubkey);
-
-	if (ret != EC_SUCCESS) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	std::ranges::copy(secret, response->enc_secret);
-
-	args->response_size = sizeof(*response);
-
-	return EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
-		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
-
 static enum ec_status unlock_template(uint16_t idx)
 {
 	auto *dec_state = std::get_if<fp_decrypted_template_state>(

@@ -601,110 +601,6 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list
-test_fp_command_read_match_secret_with_pubkey_succeed(void)
-{
-	struct ec_response_fp_read_match_secret_with_pubkey response = {};
-	/* Create valid param with 0 <= fgr < 5 */
-	uint16_t matched_fgr = 1;
-	struct ec_params_fp_read_match_secret_with_pubkey params = {
-		.fgr = matched_fgr,
-	};
-
-	/*
-	 * Expected positive_match_secret same as in
-	 * test/fpsensor_crypto_with_mock.cc.
-	 */
-#ifdef CONFIG_OTP_KEY
-	static const uint8_t
-		expected_positive_match_secret_for_empty_user_id[] = {
-			0x2f, 0x78, 0x2d, 0xd2, 0x0a, 0xa9, 0xa2, 0x17,
-			0xc6, 0x4d, 0xa3, 0x1a, 0x02, 0xef, 0x4e, 0x2c,
-			0xf9, 0x23, 0xe1, 0x2d, 0x12, 0x3e, 0xa9, 0xe3,
-			0xc9, 0x16, 0x6f, 0x98, 0x39, 0x8b, 0x0e, 0xc5,
-		};
-#else
-	static const uint8_t
-		expected_positive_match_secret_for_empty_user_id[] = {
-			0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72,
-			0xd6, 0xdd, 0xa1, 0x4c, 0xb8, 0xa1, 0x76, 0x2b,
-			0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4, 0x74, 0x51,
-			0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
-		};
-#endif
-
-	/* Create positive secret match state with valid deadline value,
-	 * readable state, and correct template matched
-	 */
-	struct positive_match_secret_state test_state_1 = {
-		.template_matched = matched_fgr,
-		.readable = true,
-		.deadline = { .val = get_time().val + (5 * SECOND) },
-	};
-
-	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
-
-	TEST_NE(ecdh_key.get(), nullptr, "%p");
-
-	std::optional<fp_elliptic_curve_public_key> pubkey =
-		create_pubkey_from_ec_key(*ecdh_key);
-
-	TEST_ASSERT(pubkey.has_value());
-
-	params.pubkey = pubkey.value();
-
-	global_context.positive_match_secret_state = test_state_1;
-	/* Set fp_positive_match_salt to the default fake positive match salt */
-	for (auto &fp_positive_match_salt :
-	     global_context.fp_positive_match_salt) {
-		std::ranges::copy(default_fake_fp_positive_match_salt,
-				  fp_positive_match_salt);
-	}
-
-	/* Initialize an empty user_id to compare positive_match_secret */
-	std::ranges::fill(global_context.user_id, 0);
-
-	TEST_ASSERT(fp_tpm_seed_is_set());
-	/* Test with the correct matched finger state and the default fake
-	 * fp_positive_match_salt
-	 */
-	TEST_ASSERT(
-		test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
-				       0, &params, sizeof(params), &response,
-				       sizeof(response)) == EC_RES_SUCCESS);
-
-	bssl::UniquePtr<EC_KEY> resp_pubkey =
-		create_ec_key_from_pubkey(response.pubkey);
-
-	TEST_NE(resp_pubkey.get(), nullptr, "%p");
-
-	std::array<uint8_t, SHA256_DIGEST_SIZE> enc_key;
-
-	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey, enc_key),
-		EC_SUCCESS, "%d");
-
-	AES_KEY aes_key;
-	std::array<uint8_t, FP_CONTEXT_USERID_IV_LEN> aes_iv;
-	std::array<uint8_t, 16> ecount_buf = {};
-	unsigned int block_num = 0;
-
-	TEST_EQ(AES_set_encrypt_key(enc_key.data(), 256, &aes_key), 0, "%d");
-
-	std::ranges::copy(response.iv, aes_iv.begin());
-
-	/* The AES CTR uses the same function for encryption & decryption. */
-	AES_ctr128_encrypt(response.enc_secret, response.enc_secret,
-			   FP_CONTEXT_USERID_LEN, &aes_key, aes_iv.data(),
-			   ecount_buf.data(), &block_num);
-
-	TEST_ASSERT_ARRAY_EQ(
-		response.enc_secret,
-		expected_positive_match_secret_for_empty_user_id,
-		sizeof(expected_positive_match_secret_for_empty_user_id));
-
-	return EC_SUCCESS;
-}
-
 test_static enum ec_error_list test_fp_command_template_encrypted(void)
 {
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
@@ -1550,7 +1446,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_nonce_context_limit_twice_1);
 	RUN_TEST(test_fp_command_nonce_context_limit_twice_2);
 	RUN_TEST(test_fp_command_nonce_context_load_pk_deny);
-	RUN_TEST(test_fp_command_read_match_secret_with_pubkey_succeed);
 	RUN_TEST(test_fp_command_template_encrypted);
 	RUN_TEST(test_fp_command_template_decrypted);
 	RUN_TEST(test_fp_command_unlock_template);
