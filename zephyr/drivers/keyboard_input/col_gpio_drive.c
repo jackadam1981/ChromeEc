@@ -80,15 +80,16 @@ static int col_gpio_init(const struct device *dev)
 }
 
 #if CONFIG_DT_HAS_ITE_IT8XXX2_KBD_ENABLED
+#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_col_gpio)
+#define KBD_NODE DT_PARENT(DT_DRV_INST(0))
+
 /*
  * On ITE chips, the SSPI pins (SMOSI/SMISO) for spi0 are shared with the
  * KSO16/KSO17 keyboard matrix pins. If spi0 is enabled in the devicetree,
  * we must ensure that the keyboard controller is configured to ignore
  * KSO16 and KSO17 to prevent pin conflicts.
  */
-#if DT_HAS_COMPAT_STATUS_OKAY(cros_ec_col_gpio)
 #define KSO16_KSO17_MASK (BIT(16) | BIT(17))
-#define KBD_NODE DT_PARENT(DT_DRV_INST(0))
 
 BUILD_ASSERT(!DT_NODE_HAS_STATUS(DT_NODELABEL(spi0), okay) ||
 		     ((DT_PROP(KBD_NODE, kso_ignore_mask) & KSO16_KSO17_MASK) ==
@@ -97,23 +98,28 @@ BUILD_ASSERT(!DT_NODE_HAS_STATUS(DT_NODELABEL(spi0), okay) ||
 	     "controller's kso-ignore-mask to prevent pin conflicts.");
 
 #undef KSO16_KSO17_MASK
+
+/*
+ * The bits set in the parent keyboard controller's kso-ignore-mask property
+ * must correspond exactly to the col-num properties of the cros-ec,col-gpio
+ * child nodes.
+ */
+#define COL_GPIO_COL_NUM_BIT_OR(inst) | BIT(DT_INST_PROP(inst, col_num))
+#define COL_GPIO_COL_NUM_MASK \
+	(0 DT_INST_FOREACH_STATUS_OKAY(COL_GPIO_COL_NUM_BIT_OR))
+
+BUILD_ASSERT(COL_GPIO_COL_NUM_MASK == DT_PROP(KBD_NODE, kso_ignore_mask),
+	     "kso-ignore-mask must match the set of col-gpio nodes. Every "
+	     "ignored column must have a corresponding col-gpio node, and "
+	     "every col-gpio node must have its column ignored.");
+
+#undef COL_GPIO_COL_NUM_MASK
+#undef COL_GPIO_COL_NUM_BIT_OR
 #undef KBD_NODE
 #endif /* DT_HAS_COMPAT_STATUS_OKAY(cros_ec_col_gpio) */
-
-#define ITE_KBD_PARENT_CHECK(inst)                                            \
-	BUILD_ASSERT(                                                         \
-		IS_BIT_SET(DT_PROP(DT_PARENT(DT_DRV_INST(inst)),              \
-				   kso_ignore_mask),                          \
-			   DT_INST_PROP(inst, col_num)),                      \
-		"For 'cros-ec,col-gpio', the bit corresponding to 'col-num' " \
-		"must be set in the parent's 'kso-ignore-mask'.")
-#else
-#define ITE_KBD_PARENT_CHECK(inst)
 #endif
 
 #define COL_GPIO_DEVICE_INIT(inst)                                            \
-	ITE_KBD_PARENT_CHECK(inst);                                           \
-                                                                              \
 	static const struct col_gpio_config col_gpio_config_##inst = {        \
 		.kbd_dev = DEVICE_DT_GET(DT_PARENT(DT_DRV_INST(inst))),       \
 		.gpio = GPIO_DT_SPEC_INST_GET(inst, col_gpios),               \
