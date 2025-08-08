@@ -16,6 +16,24 @@
       "message": "The polling period configuration may cause touchpad latency validation failure. For the legacy USB stack, the polling interval is set to 1 ms.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5722430\n[Related issue] https://partnerissuetracker.corp.google.com/u/2/issues/339757474",
       "revId": "e00c01ecb6c83782b7f278c6c8b723f0e6f819ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33bb5e07_e04f43ea",
+        "filename": "zephyr/program/roach/axii/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-08T04:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3dcb0fd_1939cd6a",
+      "revId": "e00c01ecb6c83782b7f278c6c8b723f0e6f819ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
