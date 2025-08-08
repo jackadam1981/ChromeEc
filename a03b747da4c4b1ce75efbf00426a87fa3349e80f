@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "431aeceb_ff58ba8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-08T23:17:42Z",
+      "side": 1,
+      "message": "My in system testing with Karis shows that this patch allows host communication to succeed about half thet time. Please fix up the commit message (suggestion below) so we can get this merged.\n```\nhelipilot: enable SHA hardware accelerator\n\nBUG\u003db:427468960\nTEST\u003dflash_fp_mcu {Zephyr helipilot binary}\n```",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7857ff00_9250831c",
