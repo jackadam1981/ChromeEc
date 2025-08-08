@@ -52,6 +52,24 @@
       "parentUuid": "352674d6_6f698b30",
       "revId": "4201632974b7532093dbe6393989c89365fade92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52792948_77d7151c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-08-08T11:00:47Z",
+      "side": 1,
+      "message": "Thank you for the pointers; I was looking for this information.\n\nIt appears that the hook type HOOK_TICK is not utilized in the ISH code, as no APIs are registered with this hook type. Based on the existing code comments, it seems this hook type is intended to meet the sleep requirements of the EC chipset.\n\nFor ISH, this looks is not relevant. I plan to set this to the maximum microseconds, conduct some basic tests, and then submit the change.",
+      "parentUuid": "7b18b978_cdb91f73",
+      "revId": "4201632974b7532093dbe6393989c89365fade92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
