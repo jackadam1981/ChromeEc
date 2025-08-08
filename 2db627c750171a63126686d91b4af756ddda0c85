@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9049cd0_3b370816",
+        "filename": "zephyr/program/ocelot/ojal/power_signals.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-08T15:38:52Z",
+      "side": 1,
+      "message": "Use the `GPIO_VOLTAGE_1V8` macro in all cased in this file.",
+      "range": {
+        "startLine": 46,
+        "startChar": 46,
+        "endLine": 46,
+        "endChar": 70
+      },
+      "revId": "2db627c750171a63126686d91b4af756ddda0c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
