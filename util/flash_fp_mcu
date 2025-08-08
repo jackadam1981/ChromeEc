@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 
 # shellcheck disable=SC1091
-# shellcheck source=../../../scripts/lib/shflags/shflags
+# shellcheck source=../../../../scripts/lib/shflags/shflags
 . "${SHFLAGS:-/usr/share/misc/shflags}" || exit 1
 
 readonly DEFAULT_RETRIES=${DEFAULT_RETRIES:-4}
