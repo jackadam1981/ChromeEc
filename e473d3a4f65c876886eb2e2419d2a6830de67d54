@@ -22,6 +22,30 @@
       },
       "revId": "e473d3a4f65c876886eb2e2419d2a6830de67d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc98237_a7a29647",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-08T10:25:23Z",
+      "side": 1,
+      "message": "Removed the RVP specific file.",
+      "parentUuid": "72fb18f3_c2f4374c",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 34
+      },
+      "revId": "e473d3a4f65c876886eb2e2419d2a6830de67d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
