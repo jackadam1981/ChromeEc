@@ -52,3 +52,9 @@ static int enable_qspi(void)
 	return ret;
 }
 SYS_INIT(enable_qspi, POST_KERNEL, 51);
+
+int fp_vendor_commad(uint32_t param, uint8_t *buf, size_t buf_size)
+{
+	printk("DN buf_size: %d\n", buf_size);
+	return 0;
+}
