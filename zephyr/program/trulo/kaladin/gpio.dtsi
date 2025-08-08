@@ -77,7 +77,7 @@
 		gpio_en_pp5000_s5: en_pp5000_s5 {
 			gpios = <&gpioh 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
-		gpio_en_pp5000_vbus: en_pp5000_vbus {
+		gpio_en_usb_a0_vbus: en_usb_a0_vbus {
 			gpios = <&gpiof 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
