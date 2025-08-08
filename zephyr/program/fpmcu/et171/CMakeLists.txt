@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 zephyr_library_sources("src/platform.c")
+zephyr_library_sources("src/helper_cc.c")
 
 if(DEFINED CONFIG_CROS_EC_RO)
 
