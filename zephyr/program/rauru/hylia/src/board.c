@@ -29,7 +29,7 @@ static void board_setup_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
-static enum battery_present cached_batt_state = BP_NO;
+static enum battery_present cached_batt_state = BP_YES;
 
 /*
  * I2C read register to detect battery
@@ -43,7 +43,8 @@ static void update_battery_state_cache(void)
 	 *  To detect a bad battery, need to read the 0x00 register.
 	 *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.
 	 */
-	if (sb_read(SB_MANUFACTURER_ACCESS, &state)) {
+	if (gpio_get_level(GPIO_BATT_PRES_ODL) ||
+	    sb_read(SB_MANUFACTURER_ACCESS, &state)) {
 		cached_batt_state = BP_NO;
 		return;
 	}
