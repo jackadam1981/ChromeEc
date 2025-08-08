@@ -52,3 +52,31 @@ static int enable_qspi(void)
 	return ret;
 }
 SYS_INIT(enable_qspi, POST_KERNEL, 51);
+
+int fp_vendor_commad(uint32_t param, uint8_t *buf, size_t buf_size)
+{
+	printk("DN buf_size: %d\n", buf_size);
+	return 0;
+}
+
+static int wp_custom = 0;
+int write_protect_is_asserted_custom(void)
+{
+	return wp_custom;
+}
+
+static int command_wp1(int argc, const char **argv)
+{
+	wp_custom = 1;
+
+	return 0;
+};
+DECLARE_CONSOLE_COMMAND(wp1, command_wp1, "", "");
+
+static int command_wp0(int argc, const char **argv)
+{
+	wp_custom = 0;
+
+	return 0;
+};
+DECLARE_CONSOLE_COMMAND(wp0, command_wp0, "", "");

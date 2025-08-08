@@ -55,8 +55,3 @@ static __ramfunc int command_usb(int argc, const char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(usb, command_usb,
 			     "[ save | restore | <mask> | <name> ]",
 			     "Save, restore, get or set console channel mask");
-
-int write_protect_is_asserted_custom(void)
-{
-	return 0;
-}
