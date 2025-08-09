@@ -7,6 +7,7 @@
 #include "cros_cbi.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "motion_sense.h"
 #include "tablet_mode.h"
 #include "zephyr/kernel.h"
 
@@ -72,7 +73,7 @@ static int mock_cros_cbi_get_fw_config(enum cbi_fw_config_field_id field_id,
 	}
 }
 
-static void *clamshell_reset(void)
+static void clamshell_reset(void *fixture)
 {
 	uint32_t val;
 
@@ -98,13 +99,11 @@ static void *clamshell_reset(void)
 	zassert_equal(BASE_NONE, val, "val=%d", val);
 	zassert_ok(cros_cbi_get_fw_config(LID_SENSOR, &val), NULL);
 	zassert_equal(LID_NONE, val, "val=%d", val);
-
-	return NULL;
 }
 
 ZTEST_SUITE(tentacruel_clamshell, NULL, NULL, clamshell_reset, NULL, teardown);
 
-static void *main_sensor_reset(void)
+static void main_sensor_reset(void *fixture)
 {
 	uint32_t val;
 
@@ -120,6 +119,13 @@ static void *main_sensor_reset(void)
 	fake_base_sensor = BASE_ICM42607;
 	fake_lid_sensor = LID_LIS2DWLTR;
 
+	/* zephyr/program/corsola/tentacruel/src/sensor.c will set the sensor
+	 * count to 0 if the CBI fw config is set to CLAMSHELL, but there's no
+	 * way to recover the previous sensor count. Before calling hook_notify,
+	 * we should reset the sensor count manually.
+	 */
+	motion_sensor_count = DT_CHILD_NUM_STATUS_OKAY(SENSOR_NODE);
+
 	/* Run init hooks to initialize cbi. */
 	hook_notify(HOOK_INIT);
 
@@ -130,14 +136,12 @@ static void *main_sensor_reset(void)
 	zassert_equal(BASE_ICM42607, val, "val=%d", val);
 	zassert_ok(cros_cbi_get_fw_config(LID_SENSOR, &val), NULL);
 	zassert_equal(LID_LIS2DWLTR, val, "val=%d", val);
-
-	return NULL;
 }
 
 ZTEST_SUITE(tentacruel_main_sensor, NULL, NULL, main_sensor_reset, NULL,
 	    teardown);
 
-static void *alt_sensor_reset(void)
+static void alt_sensor_reset(void *fixture)
 {
 	uint32_t val;
 
@@ -163,8 +167,6 @@ static void *alt_sensor_reset(void)
 	zassert_equal(BASE_BMI323, val, "val=%d", val);
 	zassert_ok(cros_cbi_get_fw_config(LID_SENSOR, &val), NULL);
 	zassert_equal(LID_BMA422, val, "val=%d", val);
-
-	return NULL;
 }
 
 ZTEST_SUITE(tentacruel_alt_sensor, NULL, NULL, alt_sensor_reset, NULL,

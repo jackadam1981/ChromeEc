@@ -2,24 +2,24 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-config BOARD_OCELOT_ITE
-	bool "Google Ocelot ITE (it82002) add-in card"
+config BOARD_OCELOTRVP_ITE
+	bool "Google Ocelot ITE (it82002) add-in card for the RVP"
 	help
 	  Build Google ITE it82002 based Ocelot add-in card.
 	  This board is for use with the Intel RVP using the
 	  MECC 2.1 connector.
 
-config BOARD_OCELOT_NUVOTON
-	bool "Google Ocelot Nuvoton (npcx9m7f) add-in card"
+config BOARD_OCELOTRVP_NPCX
+	bool "Google Ocelot Nuvoton (npcx9m7f) add-in card for the RVP"
 	help
 	  Build Google Nuvoton npcx9m7f based Ocelot add-in card.
 	  This board is for use with the Intel RVP using the
 	  MECC 2.1 connector.
 
-config BOARD_OCELOT_MICROCHIP
-	bool "Google Ocelot with microchip (mec1727) EC"
+config BOARD_OCELOTRVP_MCHP
+	bool "Google Ocelot with microchip (mec1727) EC for the RVP"
 	help
-	  Build Microchip EC based Ocelot.
+	  Build Microchip EC based Ocelot RVP.
 	  This board is for use with the Intel RVP using the
 	  on board EC.
 

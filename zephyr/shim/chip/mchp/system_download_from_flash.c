@@ -89,7 +89,7 @@ void system_download_from_flash(uint32_t srcAddr, uint32_t dstAddr,
 		(START_QSPI_IN_SRAM_FP)(__lfw_sram_start | 0x01);
 
 	/* Check valid address for jumpiing */
-	__ASSERT_NO_MSG(exeAddr != 0x0);
+	__ASSERT_NO_MSG(resetVectAddr != 0x0);
 
 #ifdef CONFIG_FLASH_EX_OP_ENABLED
 	/* flash registers reset before starting DMA */

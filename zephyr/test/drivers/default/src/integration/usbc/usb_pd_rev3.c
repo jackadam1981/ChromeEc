@@ -626,10 +626,13 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_sink_cap_ext)
 ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_source_info)
 {
 	const union sido expected_sido = {
-		.port_type = 0,
-		.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
-		.port_present_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
-		.port_reported_pdp = 7,
+		.sido1.port_type = 0,
+		.sido2.port_type = 0,
+		.sido1.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.sido2.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 30 : 15,
+		.sido1.port_present_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.sido1.port_reported_pdp = 7,
+		.sido2.port_guaranteed_pdp = 15,
 	};
 
 	tcpci_partner_send_control_msg(&fixture->source_5v_3a,
@@ -637,20 +640,32 @@ ZTEST_F(usb_attach_5v_3a_pd_source_rev3, test_give_source_info)
 	k_sleep(K_SECONDS(2));
 
 	const union sido *actual_sido = &fixture->source_5v_3a.tcpm_sido;
-	zexpect_equal(actual_sido->port_type, expected_sido.port_type,
-		      "Unexpected port type %u", actual_sido->port_type);
-	zexpect_equal(actual_sido->port_maximum_pdp,
-		      expected_sido.port_maximum_pdp,
+	zexpect_equal(actual_sido->sido1.port_type,
+		      expected_sido.sido1.port_type, "Unexpected port type %u",
+		      actual_sido->sido1.port_type);
+	zexpect_equal(actual_sido->sido2.port_type,
+		      expected_sido.sido2.port_type, "Unexpected port type %u",
+		      actual_sido->sido2.port_type);
+	zexpect_equal(actual_sido->sido2.port_maximum_pdp,
+		      expected_sido.sido2.port_maximum_pdp,
 		      "Unexpected maximum PDP %u",
-		      actual_sido->port_maximum_pdp);
-	zexpect_equal(actual_sido->port_present_pdp,
-		      expected_sido.port_present_pdp,
+		      actual_sido->sido2.port_maximum_pdp);
+	zexpect_equal(actual_sido->sido1.port_maximum_pdp,
+		      expected_sido.sido1.port_maximum_pdp,
+		      "Unexpected maximum PDP %u",
+		      actual_sido->sido1.port_maximum_pdp);
+	zexpect_equal(actual_sido->sido1.port_present_pdp,
+		      expected_sido.sido1.port_present_pdp,
 		      "Unexpected present PDP %u",
-		      actual_sido->port_present_pdp);
-	zexpect_equal(actual_sido->port_reported_pdp,
-		      expected_sido.port_reported_pdp,
+		      actual_sido->sido1.port_present_pdp);
+	zexpect_equal(actual_sido->sido1.port_reported_pdp,
+		      expected_sido.sido1.port_reported_pdp,
 		      "Unexpected reported PDP %u",
-		      actual_sido->port_reported_pdp);
+		      actual_sido->sido1.port_reported_pdp);
+	zexpect_equal(actual_sido->sido2.port_guaranteed_pdp,
+		      expected_sido.sido2.port_guaranteed_pdp,
+		      "Unexpected guaranteed PDP %u",
+		      actual_sido->sido2.port_guaranteed_pdp);
 }
 
 struct usb_attach_pd_sink_rev3_fixture {
@@ -717,10 +732,13 @@ ZTEST_SUITE(usb_attach_pd_sink_rev3, drivers_predicate_post_main,
 ZTEST_F(usb_attach_pd_sink_rev3, test_give_source_info)
 {
 	const union sido expected_sido = {
-		.port_type = 0,
-		.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
-		.port_present_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
-		.port_reported_pdp = 7,
+		.sido1.port_type = 0,
+		.sido2.port_type = 0,
+		.sido1.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.sido2.port_maximum_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 30 : 15,
+		.sido1.port_present_pdp = CONFIG_USB_PD_3A_PORTS > 0 ? 15 : 7,
+		.sido1.port_reported_pdp = 7,
+		.sido2.port_guaranteed_pdp = 15,
 	};
 
 	tcpci_partner_send_control_msg(&fixture->sink, PD_CTRL_GET_SOURCE_INFO,
@@ -728,18 +746,30 @@ ZTEST_F(usb_attach_pd_sink_rev3, test_give_source_info)
 	k_sleep(K_SECONDS(2));
 
 	const union sido *actual_sido = &fixture->sink.tcpm_sido;
-	zexpect_equal(actual_sido->port_type, expected_sido.port_type,
-		      "Unexpected port type %u", actual_sido->port_type);
-	zexpect_equal(actual_sido->port_maximum_pdp,
-		      expected_sido.port_maximum_pdp,
+	zexpect_equal(actual_sido->sido1.port_type,
+		      expected_sido.sido1.port_type, "Unexpected port type %u",
+		      actual_sido->sido1.port_type);
+	zexpect_equal(actual_sido->sido2.port_type,
+		      expected_sido.sido2.port_type, "Unexpected port type %u",
+		      actual_sido->sido2.port_type);
+	zexpect_equal(actual_sido->sido2.port_maximum_pdp,
+		      expected_sido.sido2.port_maximum_pdp,
 		      "Unexpected maximum PDP %u",
-		      actual_sido->port_maximum_pdp);
-	zexpect_equal(actual_sido->port_present_pdp,
-		      expected_sido.port_present_pdp,
+		      actual_sido->sido2.port_maximum_pdp);
+	zexpect_equal(actual_sido->sido1.port_maximum_pdp,
+		      expected_sido.sido1.port_maximum_pdp,
+		      "Unexpected maximum PDP %u",
+		      actual_sido->sido1.port_maximum_pdp);
+	zexpect_equal(actual_sido->sido1.port_present_pdp,
+		      expected_sido.sido1.port_present_pdp,
 		      "Unexpected present PDP %u",
-		      actual_sido->port_present_pdp);
-	zexpect_equal(actual_sido->port_reported_pdp,
-		      expected_sido.port_reported_pdp,
+		      actual_sido->sido1.port_present_pdp);
+	zexpect_equal(actual_sido->sido1.port_reported_pdp,
+		      expected_sido.sido1.port_reported_pdp,
 		      "Unexpected reported PDP %u",
-		      actual_sido->port_reported_pdp);
+		      actual_sido->sido1.port_reported_pdp);
+	zexpect_equal(actual_sido->sido2.port_guaranteed_pdp,
+		      expected_sido.sido2.port_guaranteed_pdp,
+		      "Unexpected guaranteed PDP %u",
+		      actual_sido->sido2.port_guaranteed_pdp);
 }

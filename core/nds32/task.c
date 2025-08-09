@@ -630,7 +630,9 @@ static void ivic_init_irqs(void)
 	set_int_priority(all_priorities);
 }
 
-void __ram_code mutex_lock(struct mutex *mtx)
+#ifndef CONFIG_COMMON_RECURSIVE_MUTEX
+
+void __ram_code mutex_lock(struct mutex_nr *mtx)
 {
 	uint32_t id = 1 << task_get_current();
 
@@ -657,7 +659,7 @@ void __ram_code mutex_lock(struct mutex *mtx)
 	}
 }
 
-void __ram_code mutex_unlock(struct mutex *mtx)
+void __ram_code mutex_unlock(struct mutex_nr *mtx)
 {
 	uint32_t waiters;
 	task_ *tsk = current_task;
@@ -686,6 +688,8 @@ void __ram_code mutex_unlock(struct mutex *mtx)
 	/* Ensure no event is remaining from mutex wake-up */
 	atomic_clear_bits(&tsk->events, TASK_EVENT_MUTEX);
 }
+
+#endif /* !CONFIG_COMMON_RECURSIVE_MUTEX */
 
 void task_print_list(void)
 {

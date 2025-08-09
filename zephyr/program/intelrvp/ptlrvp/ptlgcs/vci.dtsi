@@ -8,7 +8,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		/**
-		 * Plaform supports three wake-up sources:
+		 * Platform supports three wake-up sources:
 		 * VCI_IN0: Power Button
 		 * VCI_IN1: Batt ID - Not applicable for chrome
 		 * VCI_OVRD_IN: AC Present
@@ -24,4 +24,3 @@
 		};
 	};
 };
-

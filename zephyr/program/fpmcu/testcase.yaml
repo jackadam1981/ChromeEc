@@ -120,6 +120,11 @@ tests:
     - CONFIG_PM=n
     extra_conf_files:
     - prj_hw_tests.conf
+  otp_key:
+    extra_configs:
+    - CONFIG_HW_TEST_OTP_KEY=y
+    extra_conf_files:
+    - prj_hw_tests.conf
   panic:
     extra_configs:
     - CONFIG_HW_TEST_PANIC=y
@@ -143,6 +148,11 @@ tests:
     - CONFIG_HW_TEST_QUEUE=y
     extra_conf_files:
     - prj_hw_tests.conf
+  ram_lock:
+    extra_configs:
+    - CONFIG_HW_TEST_RAM_LOCK=y
+    extra_conf_files:
+    - prj_hw_tests.conf
   restricted_console:
     extra_configs:
     - CONFIG_HW_TEST_RESTRICTED_CONSOLE=y
@@ -151,6 +161,7 @@ tests:
   rng_benchmark:
     extra_configs:
     - CONFIG_HW_TEST_RNG_BENCHMARK=y
+    - CONFIG_ZTEST_STACK_SIZE=2048
     extra_conf_files:
     - prj_hw_tests.conf
   rollback:
@@ -163,6 +174,11 @@ tests:
     - CONFIG_HW_TEST_ROLLBACK_ENTROPY=y
     # Added to reduce RO flash usage
     - CONFIG_PM=n
+    extra_conf_files:
+    - prj_hw_tests.conf
+  rtc_npcx9:
+    extra_configs:
+    - CONFIG_HW_TEST_RTC_NPCX9=y
     extra_conf_files:
     - prj_hw_tests.conf
   sbrk:

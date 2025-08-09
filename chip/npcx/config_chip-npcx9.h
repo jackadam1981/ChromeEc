@@ -121,12 +121,12 @@
  * Three blocks of data RAM - reserve 4KB for ROM utilities and
  *data ram size is 92KB
  */
-#define CONFIG_DATA_RAM_SIZE (96 * 1024 - 0x1000)
-#define CONFIG_RAM_SIZE CONFIG_DATA_RAM_SIZE
+#define CONFIG_DATA_RAM_SIZE (96 * 1024)
+#define CONFIG_RAM_SIZE (CONFIG_DATA_RAM_SIZE - 0x1000)
 
 /* Override default NPCX_RAM_SIZE because we're excluding a block. */
 #undef NPCX_RAM_SIZE
-#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
+#define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE)
 #else
 #error "Unsupported chip variant"
 #endif

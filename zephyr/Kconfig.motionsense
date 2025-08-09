@@ -24,6 +24,25 @@ config PLATFORM_EC_SENSOR_EC_RATE_FORCE_MODE
       Enable this to toggle interrupt mode sensors to force mode at specific low
       intervals in order to save power in low power states (S3 and S5)
 
+config PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM
+    bool "Disable power management when sensor sample rates are high"
+    depends on PM
+    default y if SOC_FAMILY_INTEL_ISH
+    help
+      When the sensors are being sampled quickly, the delay of waking up the CPU
+      might cause ISR scheduling delays. When these delays happen, the CPU will
+      miss samples. Enable this config to prevent the CPU from going below the
+      PM_STATE_ACTIVE when sample rates are high.
+
+config PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD
+    int "Threshold (in microseconds) for disabling power management"
+    depends on PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM
+    default 6000
+    help
+      Set this threshold to control when PM will be disabled during the sensor
+      loop. Lower values mean that we require high sample rates in order to
+      disable PM. By default we use 6000 microseconds (~166Hz).
+
 config PLATFORM_EC_ACCEL_FIFO
     bool "Sensor FIFO"
     help
