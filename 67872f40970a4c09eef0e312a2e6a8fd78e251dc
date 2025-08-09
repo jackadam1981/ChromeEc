@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a9292e_3bc46cc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-09T19:46:35Z",
+      "side": 1,
+      "message": "You can\u0027t vote Code Coverage +1 for yourself. If you need to bypass the coverage requirement, you do it by amending the commit message: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/chromeos-ec-firmware-test-requirements.md#bypassing-the-code-coverage-requirement",
+      "revId": "67872f40970a4c09eef0e312a2e6a8fd78e251dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31d3c82_8c563bd7",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-09T19:46:35Z",
+      "side": 1,
+      "message": "I\u0027m OK with adding new legacy EC tests from a coverage point of view. You may find this framework challenging to work with. You might find it slightly more convenient to write tests in the Zephyr framework similar to the `usb_hard_reset` [tests](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/integration/usbc/usb_hard_reset.c). These are among our older Zephyr tests, so they\u0027re not super polished, e.g. checking the reported TC state directly via an internal function rather than using a host command or the TCPC registers. But they do have access to the Zephyr test framework. Just a thought.",
+      "revId": "67872f40970a4c09eef0e312a2e6a8fd78e251dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
