@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886db3cd_bf147f8c",
+        "filename": "zephyr/program/bluey/common.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-09T13:58:44Z",
+      "side": 1,
+      "message": "nit, to avoid future platform doesn\u0027t run into the same issue, can we move this inside the zephyr/boards/google/npcx7/npcx7.dts and guard again the Kconfig (RTC)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "de3f0d9f0970461a0452b17528ccd1c94713d311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
