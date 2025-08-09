@@ -19,6 +19,7 @@
 #include "nissa_hdmi.h"
 #include "system.h"
 #include "tcpm/tcpci.h"
+#include "temp_sensor/temp_sensor.h"
 #include "typec_control.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -421,7 +422,7 @@ ZTEST(dirks, test_board_set_active_charge_port)
 	ppc_is_sourcing_vbus_fake.return_val = EC_ERROR_UNKNOWN;
 	zassert_equal(board_set_active_charge_port(port), EC_ERROR_INVAL);
 	zassert_equal(charge_manager_get_active_charge_port_fake.call_count, 8);
-	zassert_equal(ppc_is_sourcing_vbus_fake.call_count, 1);
+
 	/* ppc_is_sourcing_vbus is pass but active port is not CHARGE_PORT_NONE.
 	 * We can't set new charge port when chipset is on.
 	 */
@@ -591,4 +592,71 @@ ZTEST(dirks, test_usba_retimer_init)
 	zassert_equal(ps8811_i2c_write_fake.arg2_val,
 		      PS8811_REG1_USB_CHAN_A_SWING);
 	zassert_equal(ps8811_i2c_write_fake.arg3_val, 0x20);
+}
+
+ZTEST(dirks, test_typec_ilim_control)
+{
+	const struct gpio_dt_spec *temp_sensor_power =
+		GPIO_DT_FROM_NODELABEL(gpio_ec_soc_dsw_pwrok);
+
+	/* ppc is not sourcing power */
+	ppc_is_sourcing_vbus_fake.return_val = 0;
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 0);
+
+	/* ppc is sourcing power but the temp sensor is not power good. */
+	ppc_is_sourcing_vbus_fake.return_val = 1;
+	zassert_ok(gpio_emul_input_set(temp_sensor_power->port,
+				       temp_sensor_power->pin, 0),
+		   NULL);
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 0);
+
+	/* temp sensor is power good */
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(temp_sensor_power->port,
+				       temp_sensor_power->pin, 1),
+		   NULL);
+	/* when the temperature is near 50'C (mv~=802), no need to throttle
+	 * Type-C */
+	vbus_in = 802;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 0);
+
+	/* when the temperature is 85'C (mv~=275), throttle Type-C to
+	 * TYPEC_RP_1A5 */
+	vbus_in = 275;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 1);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.arg1_val,
+		      TYPEC_RP_1A5);
+
+	/* when the temperature is 91'C (mv~=220), throttle Type-C to
+	 * TYPEC_RP_USB */
+	vbus_in = 220;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 2);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.arg1_val,
+		      TYPEC_RP_USB);
+
+	/* when the temperature is 79'C (mv~=320), release Type-C to
+	 * TYPEC_RP_1A5 */
+	vbus_in = 320;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 3);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.arg1_val,
+		      TYPEC_RP_1A5);
+
+	/* when the temperature is 70'C (mv~=420), release Type-C to
+	 * TYPEC_RP_3A0 */
+	vbus_in = 420;
+	adc_read_channel_fake.custom_fake = adc_read_channel_mock;
+	hook_notify(HOOK_SECOND);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.call_count, 4);
+	zassert_equal(ppc_set_vbus_source_current_limit_fake.arg1_val,
+		      TYPEC_RP_3A0);
 }

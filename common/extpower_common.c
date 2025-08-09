@@ -13,9 +13,13 @@ __overridable void board_check_extpower(void)
 
 void extpower_handle_update(int is_present)
 {
-	uint8_t *memmap_batt_flags;
-
 	hook_notify(HOOK_AC_CHANGE);
+
+	if (!IS_ENABLED(HAS_TASK_HOSTCMD)) {
+		return;
+	}
+
+	uint8_t *memmap_batt_flags;
 	memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 
 	/* Forward notification to host */

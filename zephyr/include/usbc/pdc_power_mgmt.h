@@ -301,6 +301,22 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port);
 int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo);
 
 /**
+ * @brief Get the voltage requested from the charger while in sink mode
+ *
+ * @param port USB-C port number
+ * @return uint32_t voltage in millivolts
+ */
+uint32_t pdc_power_mgmt_get_requested_voltage(int port);
+
+/**
+ * @brief Get the current requested from the charger while in sink mode
+ *
+ * @param port USB-C port number
+ * @return uint32_t current in milliamps
+ */
+uint32_t pdc_power_mgmt_get_requested_current(int port);
+
+/**
  * @brief Set dual role state, from among enum pd_dual_role_states
  *
  * @param port USB-C port number
@@ -720,6 +736,7 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port);
 int pdc_power_mgmt_get_connector_status_for_ppm(
 	int port, union connector_status_t *connector_status);
 
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Find an active port with CCD enabled based on devicetree properties
  *
@@ -728,7 +745,6 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
  */
 int pdc_power_mgmt_get_ccd_port(void);
 
-#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Reads the current SBU mux operating mode. This targets the port with
  *        the `ccd` property in the devicetree.
@@ -756,5 +772,15 @@ int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode);
  * @return Device pointer on success
  */
 const struct device *pdc_power_mgmt_get_port_pdc_driver(int port);
+
+/**
+ * @brief Enable/disable BBR retimer test mode
+ *
+ * @param port USB-C port number
+ * @param enable True to enter test mode, false to exit.
+ *
+ * @retval 0 on success, otherwise error code.
+ */
+int pdc_power_mgmt_set_bbr_cts(int port, bool enable);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

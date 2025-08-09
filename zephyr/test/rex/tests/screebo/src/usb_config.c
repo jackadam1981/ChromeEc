@@ -84,6 +84,8 @@ static void usb_config_before(void *fixture)
 	RESET_FAKE(nx20p348x_interrupt);
 	RESET_FAKE(syv682x_interrupt);
 
+	board_version = 0;
+
 	memcpy(bb_controls_saved, bb_controls,
 	       sizeof(struct bb_usb_control) * ARRAY_SIZE(bb_controls_saved));
 
@@ -104,6 +106,7 @@ static void usb_config_after(void *fixture)
 
 ZTEST_USER(usb_config, test_setup_db_usb3)
 {
+	cbi_get_board_version_fake.custom_fake = mock_cbi_get_board_version;
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_db_usb3;
 	hook_notify(HOOK_INIT);
@@ -121,6 +124,7 @@ ZTEST_USER(usb_config, test_setup_db_usb3)
 
 ZTEST_USER(usb_config, test_setup_mb_usb3)
 {
+	cbi_get_board_version_fake.custom_fake = mock_cbi_get_board_version;
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_mb_usb3;
 	hook_notify(HOOK_INIT);
@@ -135,6 +139,7 @@ ZTEST_USER(usb_config, test_setup_mb_usb3)
 
 ZTEST_USER(usb_config, test_setup_mb_usb4)
 {
+	cbi_get_board_version_fake.custom_fake = mock_cbi_get_board_version;
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_mb_usb4;
 	hook_notify(HOOK_INIT);
@@ -148,6 +153,7 @@ ZTEST_USER(usb_config, test_setup_mb_usb4)
 
 ZTEST_USER(usb_config, test_setup_usb_db_error_reading_cbi)
 {
+	cbi_get_board_version_fake.custom_fake = mock_cbi_get_board_version;
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_error;
 	hook_notify(HOOK_INIT);
@@ -160,6 +166,8 @@ ZTEST_USER(usb_config, test_setup_usb_db_error_reading_cbi)
 
 ZTEST_USER(usb_config, test_ppc_interrupt)
 {
+	cbi_get_board_version_fake.custom_fake = mock_cbi_get_board_version;
+
 	/* Test TBT SKU ppc interrupt */
 	cros_cbi_get_fw_config_fake.custom_fake =
 		mock_cros_cbi_get_fw_config_mb_usb4;
@@ -181,6 +189,8 @@ ZTEST_USER(usb_config, test_ppc_interrupt)
 
 ZTEST_USER(usb_config, test_board_reset_pd_mcu)
 {
+	cbi_get_board_version_fake.custom_fake = mock_cbi_get_board_version;
+
 	/* Default TBT SKU */
 	board_reset_pd_mcu();
 	zassert_equal(2, reset_nct38xx_port_fake.call_count);

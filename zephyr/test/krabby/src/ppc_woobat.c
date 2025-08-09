@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "cros_cbi.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -16,12 +17,28 @@
 
 FAKE_VOID_FUNC(ppc_chip_0_interrupt, int);
 
+DECLARE_FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config,
+			enum cbi_fw_config_field_id, uint32_t *);
+
+static int cros_cbi_get_fw_config_mock(enum cbi_fw_config_field_id field_id,
+				       uint32_t *value)
+{
+	if (field_id != FORM_FACTOR)
+		return -EINVAL;
+
+	*value = CONVERTIBLE;
+
+	return 0;
+}
+
 ZTEST(ppc_woobat, test_ppc_init)
 {
 	const struct device *ppc_int_gpio = DEVICE_DT_GET(
 		DT_GPIO_CTLR(DT_NODELABEL(usb_c0_ppc_int_odl), gpios));
 	const gpio_port_pins_t ppc_int_pin =
 		DT_GPIO_PIN(DT_NODELABEL(usb_c0_ppc_int_odl), gpios);
+
+	cros_cbi_get_fw_config_fake.custom_fake = cros_cbi_get_fw_config_mock;
 
 	hook_notify(HOOK_INIT);
 	zassert_ok(gpio_emul_input_set(ppc_int_gpio, ppc_int_pin, 1), NULL);
@@ -49,5 +66,6 @@ static void *ppc_woobat_init(void)
 static void ppc_woobat_before(void *fixture)
 {
 	RESET_FAKE(ppc_chip_0_interrupt);
+	RESET_FAKE(cros_cbi_get_fw_config);
 }
 ZTEST_SUITE(ppc_woobat, NULL, ppc_woobat_init, ppc_woobat_before, NULL, NULL);
