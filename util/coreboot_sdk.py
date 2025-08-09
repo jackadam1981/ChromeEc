@@ -10,6 +10,8 @@ Initialize the coreboot-sdk subtools and provide environment variables
 to the caller to indicate the extracted location.
 """
 
+import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -170,15 +172,33 @@ def init_toolchain() -> Dict[str, str]:
     return get_toolchains_shell(portage_toolchains)
 
 
-def main():
+def _parse_args(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-j",
+        "--json",
+        action="store_true",
+        help="Output results in JSON format",
+    )
+    args = parser.parse_args(argv)
+    return args
+
+
+def main(argv):
     """Main calling function for the script"""
+    args = _parse_args(argv)
     env_vars = init_toolchain()
-    # Return a formatted string which can be declared as an associative array in bash
     if env_vars:
-        print(
-            " ".join(f'["{key}"]="{value}"' for key, value in env_vars.items())
-        )
+        if args.json:
+            print(json.dumps(env_vars))
+        else:
+            # Return a formatted string which can be declared as an associative array in bash
+            print(
+                " ".join(
+                    f'["{key}"]="{value}"' for key, value in env_vars.items()
+                )
+            )
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main(sys.argv[1:]))

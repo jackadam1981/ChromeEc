@@ -333,7 +333,8 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	int i;
 
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
-	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
+	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)) ||
+	    motion_sensor_in_forced_mode(s))
 		return EC_ERROR_NOT_HANDLED;
 
 	/*
@@ -411,6 +412,29 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		motion_sense_fifo_commit_data();
 
 	return EC_SUCCESS;
+}
+
+static int bmi3xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	int ret;
+	uint8_t reg_data[6] = { 0 };
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	if (enable)
+		return config_interrupt(s);
+
+	mutex_lock(s->mutex);
+
+	/* disable INT1_OUTPUT_EN */
+	ret = bmi3_read_n(s, BMI3_REG_IO_INT_CTRL, reg_data, 4);
+	reg_data[2] = BMI3_SET_BITS(reg_data[2], BMI3_INT1_OUTPUT_EN,
+				    BMI3_INT_OUTPUT_DISABLE);
+	ret = bmi3_write_n(s, BMI3_REG_IO_INT_CTRL, &reg_data[2], 2);
+
+	mutex_unlock(s->mutex);
+	return ret;
 }
 #endif /* ACCELGYRO_BMI3XX_INT_ENABLE */
 
@@ -1104,6 +1128,8 @@ const struct accelgyro_drv bmi3xx_drv = {
 	.read_temp = read_temp,
 #ifdef ACCELGYRO_BMI3XX_INT_ENABLE
 	.irq_handler = irq_handler,
+	.enable_interrupt = bmi3xx_enable_interrupt,
+	.interrupt = bmi3xx_interrupt,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	.list_activities = bmi_list_activities,

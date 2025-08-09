@@ -68,17 +68,19 @@ static int cros_flash_npcx_wait_ready(const struct device *dev)
 	do {
 		uint8_t reg;
 
-		cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR, &reg);
-		if ((reg & SPI_NOR_WIP_BIT) == 0)
-			break;
+		int ret = cros_flash_npcx_get_status_reg(dev, SPI_NOR_CMD_RDSR,
+							 &reg);
+		if (ret != 0) {
+			return ret;
+		}
+
+		if ((reg & SPI_NOR_WIP_BIT) == 0) {
+			return 0;
+		}
 		k_usleep(wait_period);
 	} while (--timeout); /* Wait for busy bit clear */
 
-	if (timeout) {
-		return 0;
-	} else {
-		return -ETIMEDOUT;
-	}
+	return -ETIMEDOUT;
 }
 
 /* Check the BUSY bit is cleared and WE bit is set */
@@ -593,7 +595,7 @@ static int cros_flash_npcx_protect_at_boot(const struct device *dev,
 	return ret;
 }
 
-static int cros_flash_npcx_protect_now(const struct device *dev, int all)
+static int cros_flash_npcx_protect_now(const struct device *dev, bool all)
 {
 	if (all) {
 		/*
@@ -664,11 +666,9 @@ static int flash_npcx_init(const struct device *dev)
 	return EC_SUCCESS;
 }
 
-#if CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY <= CONFIG_FLASH_NPCX_FIU_NOR_INIT
-#error "CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY must be greater than" \
-	"CONFIG_FLASH_NPCX_FIU_NOR_INIT."
-#endif
+BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
+
 static struct cros_flash_npcx_data cros_flash_data;
 DEVICE_DT_INST_DEFINE(0, flash_npcx_init, NULL, &cros_flash_data, NULL,
-		      POST_KERNEL, CONFIG_CROS_FLASH_NPCX_INIT_PRIORITY,
+		      POST_KERNEL, CONFIG_CROS_FLASH_INIT_PRIORITY,
 		      &cros_flash_npcx_driver_api);
