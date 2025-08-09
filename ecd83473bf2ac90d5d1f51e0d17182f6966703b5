@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ca44f2_389e2faa",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-09T20:05:17Z",
+      "side": 1,
+      "message": "You should be able to replace this whole block with `pd_get_cc_state`. I the effect of this will be to get rid of `PD_CC_UFP_NONE` here and just use `PD_CC_NONE`, and you\u0027ll need to make the same change down on line 2950. I believe this is the correct value for the open condition.\n\nIt looks like the existing codebase never makes use of `PD_CC_UFP_NONE`. I think this would correspond to the case where an emarked cable is connected, but there\u0027s nothing on the other end. This is not a very interesting condition, and I think we functionally treat it the same as CC open/`PD_CC_NONE`, which is what we would see if nothing was attached or if a legacy, non-emarked cable was attached with nothing on the other end.",
+      "revId": "ecd83473bf2ac90d5d1f51e0d17182f6966703b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
