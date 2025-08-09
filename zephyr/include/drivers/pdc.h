@@ -12,6 +12,7 @@
 #define ZEPHYR_INCLUDE_DRIVERS_PDC_H_
 
 #include "ec_commands.h"
+#include "power.h"
 #include "ucsi_v3.h"
 #include "usb_pd.h"
 #include "usbc/utils.h"
@@ -250,6 +251,9 @@ typedef int (*pdc_get_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode *mode);
 typedef int (*pdc_set_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode mode);
+typedef int (*pdc_set_ap_power_state_t)(const struct device *dev,
+					enum power_state state);
+typedef int (*pdc_set_bbr_cts_t)(const struct device *dev, bool enable);
 
 /**
  * @cond INTERNAL_HIDDEN
@@ -300,6 +304,8 @@ __subsystem struct pdc_driver_api {
 	pdc_get_attention_vdo_t get_attention_vdo;
 	pdc_get_sbu_mux_mode_t get_sbu_mux_mode;
 	pdc_set_sbu_mux_mode_t set_sbu_mux_mode;
+	pdc_set_ap_power_state_t set_ap_power_state;
+	pdc_set_bbr_cts_t set_bbr_cts;
 };
 /**
  * @endcond
@@ -725,24 +731,20 @@ static inline int pdc_get_vbus_voltage(const struct device *dev,
 }
 
 /**
- * @brief Gets the Sink or Source PDOs associated with the connector, or its
- *        capabilities.
+ * @brief Gets the Sink or Source PDOs associated with the connector
  * @note CCI Events set
  *           busy: if the PDC is busy
  *           error: the Port is not PD connected
  *           command_commpleted: PDOs have been retrieved
  *
  * @param dev PDC device structure pointer
- * @param partner_pdo true if requesting the PDOs from the attached device
- * @param offset starting offset of the first PDO to be returned. Valid values
- *               are 0 to 7.
- * @param num number of PDOs to return starting from the PDO offset. NOTE: the
- *            number of PDOs returned is num + 1.
- * @param prole Source for source PDOs or Sink for sink PDOs.
- * @param sc request the Source or Sink Capabilities instead of the PDOs. This
- *           parameter is only valid when partner_pdo is false.
- * @param pdos pointer to where the PDOs or Capabilities are stored.
- * @param es pointer where the error status is stored.
+ * @param pdo_type Whether to retrieve source or sink PDOs
+ * @param pdo_offset starting offset of the first PDO to be returned. Valid
+ *        values are 0 to 7.
+ * @param num_pdos number of PDOs to return starting from the PDO offset. NOTE:
+ *        the number of PDOs returned is num + 1. Max is UCSI_GET_PDOS_MAX_NUM.
+ * @param source Whether to retrieve the LPM's (PDC) or port partner's PDOs.
+ * @param pdos pointer to where the PDOs are outputted to.
  *
  * @retval 0 on success
  * @retval -EBUSY if not ready to execute the command
@@ -762,9 +764,9 @@ static inline int pdc_get_pdos(const struct device *dev,
 		return -ENOSYS;
 	}
 
-	__ASSERT(num_pdos <= GET_PDOS_MAX_NUM,
+	__ASSERT(num_pdos <= UCSI_GET_PDOS_MAX_NUM,
 		 "GET_PDOS supports a maximum count of " STRINGIFY(
-			 GET_PDOS_MAX_NUM) " PDOs");
+			 UCSI_GET_PDOS_MAX_NUM) " PDOs");
 
 	return api->get_pdos(dev, pdo_type, pdo_offset, num_pdos, source, pdos);
 }
@@ -1470,6 +1472,47 @@ static inline int pdc_set_sbu_mux_mode(const struct device *dev,
 	}
 
 	return api->set_sbu_mux_mode(dev, mode);
+}
+
+/**
+ * @brief Notify the PDC of the current AP power state
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param power_state New AP power state
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_ap_power_state(const struct device *dev,
+					 enum power_state state)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_ap_power_state == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_ap_power_state(dev, state);
+}
+
+/**
+ * @brief Configure PDC for BBR compliance test
+ *
+ * @param dev PDC device structure pointer
+ * @param enable Enable or disable BBR test mode
+ *
+ * @retval 0 on success
+ * @retval -ENOSYS if not implemented
+ */
+static inline int pdc_set_bbr_cts(const struct device *dev, bool enable)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_bbr_cts == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_bbr_cts(dev, enable);
 }
 
 #ifdef __cplusplus

@@ -56,4 +56,7 @@ config SHELL_BACKEND_SERIAL_INIT_PRIORITY
 config I2C_ALLOW_NO_STOP_TRANSACTIONS
 	default y
 
+config COMMON_LIBC_MALLOC
+	default n
+
 orsource "Kconfig.defaults-$(ARCH)"

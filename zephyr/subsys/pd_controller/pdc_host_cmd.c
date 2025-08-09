@@ -117,14 +117,14 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		return rv;
 	}
 
-	r->flags =
-		((status.usb2 || status.usb3_2) ? USB_PD_MUX_USB_ENABLED : 0) |
-		(status.dp ? USB_PD_MUX_DP_ENABLED : 0) |
-		(status.conn_ori ? USB_PD_MUX_POLARITY_INVERTED : 0) |
-		(status.dp_irq ? USB_PD_MUX_HPD_IRQ : 0) |
-		(status.hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
-		(status.tbt ? USB_PD_MUX_TBT_COMPAT_ENABLED : 0) |
-		(status.usb4 ? USB_PD_MUX_USB4_ENABLED : 0);
+	r->flags = (pd_altmode_is_usb_enabled(status) ? USB_PD_MUX_USB_ENABLED :
+							0) |
+		   (status.dp ? USB_PD_MUX_DP_ENABLED : 0) |
+		   (status.conn_ori ? USB_PD_MUX_POLARITY_INVERTED : 0) |
+		   (status.dp_irq ? USB_PD_MUX_HPD_IRQ : 0) |
+		   (status.hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
+		   (status.tbt ? USB_PD_MUX_TBT_COMPAT_ENABLED : 0) |
+		   (status.usb4 ? USB_PD_MUX_USB4_ENABLED : 0);
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
