@@ -1,0 +1,17 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config CROS_IMVP_RT3645
+	bool
+	default y if DT_HAS_RICHTEK_RT3645_ENABLED
+	help
+	  Enable support for richtek RT3645 IMVP.
+
+if CROS_IMVP_RT3645
+
+config CROS_IMVP_RT3645_CONSOLE
+	bool "Enable IMVP console commands"
+	help
+	  Enable support for accessing IMVP using console commands.
+endif # CROS_IMVP_RT3645
