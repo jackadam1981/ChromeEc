@@ -53,7 +53,7 @@ const struct power_signal_info power_signal_list[] = {
 	},
 	[QC_EXP_POWER_GOOD] = {
 		GPIO_POWER_GOOD,
-		POWER_SIGNAL_ACTIVE_HIGH,
+		POWER_SIGNAL_ACTIVE_LOW,
 		"POWER_GOOD",
 	},
 	[QC_EXP_AP_SUSPEND] = {
