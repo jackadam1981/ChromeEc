@@ -38,6 +38,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "01907feb_6692a8a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-10T02:16:33Z",
+      "side": 1,
+      "message": "@abin.roy@7rays.corp-partner.google.com @harikrishna.m@7rays.corp-partner.google.com I think this CL might interact oddly with CL:6824243. They both touch the same code, and there\u0027s a merge conflict. Also, they both add timeout escapes to the same state. It\u0027s probably a good idea to develop them together.",
+      "revId": "67872f40970a4c09eef0e312a2e6a8fd78e251dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f31d3c82_8c563bd7",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 18
