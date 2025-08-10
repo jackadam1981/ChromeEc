@@ -2924,7 +2924,7 @@ static void tc_unattached_src_run(const int port)
 		return;
 	}
 
-	/* Wait for tPDDebounce to transition to AttachWait.SRC
+	/* Wait for tPDDebounce to transition to AttachWait.SRC. */
 	if (!pd_timer_is_expired(port, TC_TIMER_PD_DEBOUNCE))
 		return;
 
@@ -2938,10 +2938,6 @@ static void tc_unattached_src_run(const int port)
 	if (new_cc_state == PD_CC_UFP_ATTACHED ||
 	    new_cc_state == PD_CC_UFP_AUDIO_ACC)
 		set_state_tc(port, TC_ATTACH_WAIT_SRC);
-	else if (pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP) &&
-		 drp_state[port] != PD_DRP_FORCE_SOURCE &&
-		 drp_state[port] != PD_DRP_FREEZE)
-		set_state_tc(port, TC_UNATTACHED_SNK);
 
 	if (!pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP))
 		return;
@@ -2949,10 +2945,13 @@ static void tc_unattached_src_run(const int port)
 	/*
 	 * Attempt TCPC auto DRP toggle
 	 */
-	else if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
-		 drp_state[port] == PD_DRP_TOGGLE_ON &&
-		 tcpm_auto_toggle_supported(port) && new_cc_state == PD_CC_NONE)
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
+	    drp_state[port] == PD_DRP_TOGGLE_ON &&
+	    tcpm_auto_toggle_supported(port))
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
+	else if (drp_state[port] != PD_DRP_FORCE_SOURCE &&
+		 drp_state[port] != PD_DRP_FREEZE)
+		set_state_tc(port, TC_UNATTACHED_SNK);
 	else if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
 		 (drp_state[port] == PD_DRP_FORCE_SOURCE ||
 		  drp_state[port] == PD_DRP_TOGGLE_OFF))
