@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed036857_7e48e1c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-11T18:26:55Z",
+      "side": 1,
+      "message": "I believe the RTC should be retrieved from the PMIC. Getting it from the EC can be a temporary solution if the driver isn\u0027t ready yet, but keep in mind that the EC\u0027s RTC doesn\u0027t have the accuracy we require; better to file a bug for TODO.",
+      "revId": "cb89261ab4d9dad45a2eebbf034a2c9d6f079c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
