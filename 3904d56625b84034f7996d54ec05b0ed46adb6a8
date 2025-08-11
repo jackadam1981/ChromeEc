@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1db13e_708b41da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-11T09:04:35Z",
+      "side": 1,
+      "message": "How is this supposed to work? What is the purpose of this change?\n\nIIRC we are calling EC\u0027s software implementation of SHA256, enabling SHA accelerator won\u0027t automagically improve SHA256 calculation time.\n\nAlso, RNG benchmark is not a suitable benchmark for the SHA256 calculation time.\n\nEven if you can get SHA accelerator working, you will only gain some improvement in RW signature verification which takes place in RO.",
+      "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b651495a_4c1978b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-11T09:04:35Z",
+      "side": 1,
+      "message": "Marked as unresolved.\n\n\u003e My in system testing with Karis shows that this patch allows host communication to succeed about half thet time.\n\nDo I understand correctly that this patch breaks host commands communication?",
+      "parentUuid": "ab4c5b7f_4855a660",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7857ff00_9250831c",
