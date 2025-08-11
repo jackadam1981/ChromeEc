@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d840d75_0d094ef8",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-11T18:55:03Z",
+      "side": 1,
+      "message": "\u003e the motion sensor\u0027s structure cannot be configured with just a single sensor\n\nNot true: there are existing plaform with only one sensor: for instance, in board/nami/board.c, we decrease the number of sensor by 2 for clamshell. We can change the motion_sensors array at init time when CONFIG_DYNAMIC_MOTION_SENSOR_COUNT is set.",
+      "parentUuid": "3c4f8794_11b5c03b",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "480fd68c_7f8b8db1",
         "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
         "patchSetId": 8
@@ -192,6 +210,24 @@
       "side": 1,
       "message": "Perhaps we need to create a new motion sensor architecture specifically for the 180 SKU?",
       "parentUuid": "76bc7596_554021c2",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac4bd152_18132ac6",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-11T18:55:03Z",
+      "side": 1,
+      "message": "Since the same ISH firmware image is for all Uldrenite devices, we have to dynamically alter the motion_sensors array.",
+      "parentUuid": "e87c2324_f9a3109e",
       "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
