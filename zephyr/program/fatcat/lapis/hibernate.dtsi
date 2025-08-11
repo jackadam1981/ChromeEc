@@ -9,7 +9,7 @@
 /{
 	hibernate_z5: hibernate-z5 {
 		compatible = "cros-ec,hibernate-z5";
-		en-slp-z-gpios = <&gpioi 3 GPIO_ACTIVE_HIGH>;
+		en-slp-z-gpios = <&gpioi 3 GPIO_ACTIVE_LOW>;
 	};
 };
 
