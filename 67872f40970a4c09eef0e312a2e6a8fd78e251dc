@@ -73,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0061e68d_b57d1711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-11T16:23:22Z",
+      "side": 1,
+      "message": "I attempted to reconcile them in a WIP stack at CL:6834885. The CL immediately after that makes the Unattached functions more similar to each other, so I can more easily convince myself that they make sense. I don\u0027t necessarily know that that\u0027s the best way to do integrate these CLs, but feel free to take a look.",
+      "parentUuid": "408e699f_4155b4c5",
+      "revId": "67872f40970a4c09eef0e312a2e6a8fd78e251dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f31d3c82_8c563bd7",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 18
