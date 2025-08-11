@@ -60,17 +60,12 @@
 		int_imu: ec-imu {
 			irq-pin = <&gpio_imu_int_ec_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "lis2dw12_interrupt";
+			handler = "motion_interrupt";
 		};
 		int_lid_imu: lid-imu {
 			irq-pin = <&gpio_lid_accel_int_ec_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "lis2dw12_interrupt";
-		};
-		int_lid_accel: lid-accel {
-			irq-pin = <&gpio_lid_accel_int_ec_l>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "lis2dw12_interrupt";
+			handler = "lid_accel_interrupt";
 		};
 	};
 
