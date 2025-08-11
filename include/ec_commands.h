@@ -8583,8 +8583,6 @@ struct ec_params_fp_seed {
 #define FP_CONTEXT_SESSION_NONCE_SET BIT(3)
 /* FP user_id had been set or not*/
 #define FP_CONTEXT_USER_ID_SET BIT(4)
-/* FP templates are unlocked for nonce context or not */
-#define FP_CONTEXT_TEMPLATE_UNLOCKED_SET BIT(5)
 
 struct ec_response_fp_encryption_status {
 	/* Used bits in encryption engine status */
@@ -8682,13 +8680,6 @@ struct ec_params_fp_establish_session {
 	uint8_t enc_user_id[FP_CONTEXT_USERID_LEN];
 	uint8_t nonce[FP_AES_KEY_NONCE_BYTES];
 	uint8_t tag[FP_AES_KEY_TAG_BYTES];
-} __ec_align4;
-
-/* Unlock the fpsensor template with the current nonce context */
-#define EC_CMD_FP_UNLOCK_TEMPLATE 0x0417
-
-struct ec_params_fp_unlock_template {
-	uint16_t fgr_num;
 } __ec_align4;
 
 /*****************************************************************************/
