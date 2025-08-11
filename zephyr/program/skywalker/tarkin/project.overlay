@@ -31,6 +31,8 @@
 		/delete-node/ lid-accel;
 		/delete-node/ ec-imu;
 		/delete-node/ tablet_mode;
+		/delete-node/ volume-up;
+		/delete-node/ volume-down;
 		int_jd1: jd1 {
 			irq-pin = <&gpio_jd1>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -48,6 +50,8 @@
 		/delete-node/ imu_int_ec_l;
 		/delete-node/ lid_accel_int_ec_l;
 		/delete-node/ lid_360_l;
+		/delete-node/ ec_voldn_btn_odl;
+		/delete-node/ ec_volup_btn_odl;
 
 		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
 			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
@@ -79,6 +83,8 @@
 			<&gpiod 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
