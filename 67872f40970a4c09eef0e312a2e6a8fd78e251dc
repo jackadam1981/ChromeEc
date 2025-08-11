@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "408e699f_4155b4c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-08-11T03:52:21Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "01907feb_6692a8a7",
+      "revId": "67872f40970a4c09eef0e312a2e6a8fd78e251dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f31d3c82_8c563bd7",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 18
