@@ -525,13 +525,12 @@ static int set_pmic_pwron(int enable, uint8_t event)
 	 * 4. Release PMIC_KPD_PWR
 	 *
 	 * Power-off sequence:
-	 * 1. Hold PMIC_KPD_PWR high and PMIC_RESIN_L low, which is a power-off
+	 * 1. Hold PMIC_KPD_PWR and PMIC_RESIN_L high, which is a power-off
 	 *    trigger (requiring reprogramming PMIC registers to make
 	 *    PMIC_KPD_PWR + PMIC_RESIN_L as a shutdown trigger)
-	 * 2. PMIC stops supplying power to POWER_GOOD (requiring
-	 *    reprogramming PMIC to set the stage-1 and stage-2 reset timers to
-	 *    0 such that the pull down happens just after the debouncing time
-	 *    of the trigger, like 2ms)
+	 * 2. PMIC stops supplying power to POWER_GOOD (This requires
+	 *    reprogramming the PMIC to set the stage-1 reset timer to 0
+	 *    and the stage-2 reset timer to 10ms for debouncing)
 	 * 3. Release PMIC_KPD_PWR and PMIC_RESIN_L
 	 *
 	 * If the above PMIC registers not programmed or programmed wrong, it
@@ -544,11 +543,11 @@ static int set_pmic_pwron(int enable, uint8_t event)
 	} else {
 		gpio_set_level(GPIO_PMIC_KPD_PWR, 1);
 		if (!enable)
-			gpio_set_level(GPIO_PMIC_RESIN_L, 0);
+			gpio_set_level(GPIO_PMIC_RESIN_L, 1);
 		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
 		gpio_set_level(GPIO_PMIC_KPD_PWR, 0);
 		if (!enable)
-			gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+			gpio_set_level(GPIO_PMIC_RESIN_L, 0);
 	}
 	return ret;
 }
