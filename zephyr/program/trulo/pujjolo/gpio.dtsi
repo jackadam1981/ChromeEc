@@ -29,6 +29,7 @@
 		/delete-node/ all_sys_pwrgd;
 		/delete-node/ ec_pwr_btn_odl;
 		/delete-node/ imvp91_vrrdy_r_od;
+		/delete-node/ en_pp5000_vbus;
 
 		gpio_ec_acok_od: ec_acok_od {
 			gpios = <&gpio0 1 GPIO_INPUT_PULL_UP>;
@@ -39,7 +40,7 @@
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 		};
 		gpio_en_usb_a0_vbus: en_usb_a0_vbus {
-			gpios = <&gpio9 1 GPIO_OUTPUT>;
+			gpios = <&gpiod 4 GPIO_OUTPUT>;
 		};
 		gpio_i2c_ec_pd1_int_odl: i2c_ec_pd1_int_odl {
 			gpios = <&gpioe 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
