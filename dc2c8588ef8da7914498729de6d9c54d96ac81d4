@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c4f8794_11b5c03b",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-08-11T00:51:41Z",
+      "side": 1,
+      "message": "The current architecture uses a device tree to create the sensor\u0027s structure. Previously, the 180SKU did not require a sensor structure to be generated. However, because the 180SKU now also supports Body Detection, it needs this sensor structure to function.\n\nThe issue is that the 180SKU only has one physical sensor, and it appears that the motion sensor\u0027s structure cannot be configured with just a single sensor. This is why a 360 sensor is being used on the 180SKU",
+      "parentUuid": "88755911_b4a9ecaa",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "480fd68c_7f8b8db1",
         "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
         "patchSetId": 8
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "It needs to addressed: 180SKU does not have gyroscope yet one is defined for them in the device tree.",
       "parentUuid": "1ccf8549_a4404240",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87c2324_f9a3109e",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-08-11T00:51:41Z",
+      "side": 1,
+      "message": "Perhaps we need to create a new motion sensor architecture specifically for the 180 SKU?",
+      "parentUuid": "76bc7596_554021c2",
       "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
