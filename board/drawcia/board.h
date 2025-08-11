@@ -102,9 +102,19 @@
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
 
+<<<<<<< PATCH SET (b838a83d88eaaccb5ccd4e47751c2f879c040e72 Revert "drawcia: improve stability")
+||||||| BASE      (7437e1a649bb3784ec169deb47c837efcc859c31 drawcia: improve stability)
 /* Always enable pre-WDT interrupt */
 #define CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
 
+/* These boards shipped with locked watchdog timeout (in RO) */
+#define CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION
+
+=======
+/* Always enable pre-WDT interrupt */
+#define CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+
+>>>>>>> BASE      (52ce00b1384c961c933d1f7e1bb481f46b376e5b dedede: extend locked watchdog timer)
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
