@@ -135,12 +135,6 @@ static bool authenticate_fp_match_state(void)
 		return true;
 	}
 
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_TEMPLATE_UNLOCKED_SET)) {
-		CPRINTS("Cannot process match without unlock template");
-		return false;
-	}
-
 	if (global_context.fp_encryption_status &
 	    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
 		CPRINTS("Cannot process match twice in nonce context");
@@ -638,38 +632,30 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 		templ.data(),
 		templ.size_bytes() + positive_match_salt.size_bytes());
 
-	if (global_context.fp_encryption_status & FP_CONTEXT_USER_ID_SET) {
-		FpEncryptionKey key;
-		enum ec_error_list ret =
-			derive_encryption_key(key, enc_info->encryption_salt,
-					      context, global_context.tpm_seed);
-		if (ret != EC_SUCCESS) {
-			CPRINTS("fgr%d: Failed to derive key", idx);
-			return EC_RES_UNAVAILABLE;
-		}
-
-		/* Decrypt the secret blob in-place. */
-		ret = aes_128_gcm_decrypt(
-			key, encrypted_template_and_positive_match_salt,
-			encrypted_template_and_positive_match_salt,
-			enc_info->nonce, enc_info->tag);
-		if (ret != EC_SUCCESS) {
-			CPRINTS("fgr%d: Failed to decipher template", idx);
-			/* Don't leave bad data in the template buffer
-			 */
-			fp_clear_finger_context(idx);
-			return EC_RES_UNAVAILABLE;
-		}
-		global_context.template_states[idx] =
-			fp_decrypted_template_state{
-				.user_id = global_context.user_id,
-			};
-	} else {
-		global_context.template_states[idx] =
-			fp_encrypted_template_state{
-				.enc_metadata = *enc_info,
-			};
+	FpEncryptionKey key;
+	enum ec_error_list ret =
+		derive_encryption_key(key, enc_info->encryption_salt, context,
+				      global_context.tpm_seed);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("fgr%d: Failed to derive key", idx);
+		return EC_RES_UNAVAILABLE;
 	}
+
+	/* Decrypt the secret blob in-place. */
+	ret = aes_128_gcm_decrypt(key,
+				  encrypted_template_and_positive_match_salt,
+				  encrypted_template_and_positive_match_salt,
+				  enc_info->nonce, enc_info->tag);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("fgr%d: Failed to decipher template", idx);
+		/* Don't leave bad data in the template buffer
+		 */
+		fp_clear_finger_context(idx);
+		return EC_RES_UNAVAILABLE;
+	}
+	global_context.template_states[idx] = fp_decrypted_template_state{
+		.user_id = global_context.user_id,
+	};
 
 	std::ranges::copy(templ, fp_template[idx]);
 	if (bytes_are_trivial(positive_match_salt.data(),
