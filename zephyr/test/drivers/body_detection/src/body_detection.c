@@ -163,6 +163,9 @@ static void body_detect_init_before(void *state)
 	/* RMS noise of LIS2DW12 with ODR set to 50Hz */
 	get_rms_noise_fake.return_val = 636;
 
+	/* Reset body detection to make sure the body_sensor is valid */
+	body_detect_reset();
+
 	old_drv = body_sensor->drv;
 	body_sensor->drv = &mock_drv;
 	body_sensor->bd_params = NULL;
@@ -172,6 +175,8 @@ static void body_detect_init_before(void *state)
 static void body_detect_init_after(void *state)
 {
 	ARG_UNUSED(state);
+	motion_sense_set_on_body_sensor_index(
+		SENSOR_ID(DT_ALIAS(default_on_body_sensor)));
 
 	body_sensor->drv = old_drv;
 	body_sensor->bd_params = NULL;
@@ -220,6 +225,15 @@ ZTEST_USER(bodydetectinit, test_customparams)
 	zassert_equal(confidence_delta, 2900);
 	zassert_equal(var_threshold, 3000);
 	zassert_equal(3, get_data_rate_fake.call_count);
+}
+
+ZTEST_USER(bodydetectinit, test_change_sensor_index)
+{
+	zassert_not_equal(MOTION_SENSE_INVALID_SENSOR_ID,
+			  motion_sense_get_on_body_sensor_index());
+	motion_sense_set_on_body_sensor_index(MOTION_SENSE_INVALID_SENSOR_ID);
+	zassert_equal(MOTION_SENSE_INVALID_SENSOR_ID,
+		      motion_sense_get_on_body_sensor_index());
 }
 
 ZTEST_SUITE(bodydetectinit, drivers_predicate_post_main, NULL,
