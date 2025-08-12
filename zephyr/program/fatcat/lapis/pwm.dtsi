@@ -12,7 +12,6 @@
 };
 
 /* Fan - use a separate prescaler for Fan, b:358312912 */
-/* FAN1_PWM */
 &pwm5 {
 	status = "okay";
 	pinctrl-0 = <&pwm5_gpio028>;

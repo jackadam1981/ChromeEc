@@ -24,8 +24,7 @@ test_mockable int extpower_is_present(void)
  */
 static void extpower_deferred(void)
 {
-	/* WA: ACOK is low active */
-	int extpower_presence = !gpio_get_level(GPIO_AC_PRESENT);
+	int extpower_presence = gpio_get_level(GPIO_AC_PRESENT);
 
 	if (extpower_presence == debounced_extpower_presence)
 		return;
@@ -44,8 +43,7 @@ void extpower_interrupt(enum gpio_signal signal)
 
 static void extpower_init(void)
 {
-	/* WA: ACOK is low active */
-	debounced_extpower_presence = !gpio_get_level(GPIO_AC_PRESENT);
+	debounced_extpower_presence = gpio_get_level(GPIO_AC_PRESENT);
 
 	if (IS_ENABLED(HAS_TASK_HOSTCMD)) {
 		uint8_t *memmap_batt_flags =
