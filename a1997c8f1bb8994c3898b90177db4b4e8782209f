@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4200acad_c54e0c88",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-12T16:25:28Z",
+      "side": 1,
+      "message": "Can we log this once at the end?\n```\nLOG_INF(\"SET_CCOM: %s\", get_ccom_name(data-\u003eccom));\n```\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/drivers/usbc/ucsi_v3.c#79",
+      "revId": "a1997c8f1bb8994c3898b90177db4b4e8782209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e05757_392e57e5",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-12T16:25:28Z",
+      "side": 1,
+      "message": "Nit: Print in hex as its easier to decipher set bits.\nalso `req-\u003eset_ccom.port_and_ccom.ccom`?",
+      "revId": "a1997c8f1bb8994c3898b90177db4b4e8782209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
