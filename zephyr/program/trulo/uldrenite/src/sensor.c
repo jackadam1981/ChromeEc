@@ -25,7 +25,6 @@ LOG_MODULE_REGISTER(uldrenite_sensor, LOG_LEVEL_INF);
 
 enum base_sensor_type {
 	base_lis2dw12 = 0,
-	base_lsm6ds3tr,
 	base_bmi323,
 };
 
@@ -36,10 +35,10 @@ void motion_interrupt(enum gpio_signal signal)
 {
 	if (base_use_alt_sensor == base_lis2dw12)
 		lis2dw12_interrupt(signal);
-	else if (base_use_alt_sensor == base_lsm6ds3tr)
-		lsm6dsm_interrupt(signal);
 	else if (base_use_alt_sensor == base_bmi323)
 		bmi3xx_interrupt(signal);
+	else
+		lsm6dsm_interrupt(signal);
 }
 
 void lid_accel_interrupt(enum gpio_signal signal)
@@ -101,6 +100,7 @@ static void motionsense_init(void)
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
 				      GPIO_INPUT | GPIO_PULL_UP);
 		LOG_INF("Board is Clamshell");
+		motion_sensor_count = 1;
 	} else if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE) {
 		LOG_INF("Board is Convertible");
 	}
@@ -115,14 +115,11 @@ static void alt_sensor_init(void)
 		LOG_INF("BASE ACCEL IS lis2dw12");
 	} else if (cros_cbi_ssfc_check_match(
 			   CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)))) {
-		base_use_alt_sensor = base_lsm6ds3tr;
-		LOG_INF("BASE ACCEL IS lsm6ds3tr");
-	} else if (cros_cbi_ssfc_check_match(
-			   CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_2)))) {
 		base_use_alt_sensor = base_bmi323;
 		LOG_INF("BASE ACCEL IS bmi323");
+	} else {
+		LOG_INF("BASE ACCEL IS lsm6ds3tr");
 	}
-
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
