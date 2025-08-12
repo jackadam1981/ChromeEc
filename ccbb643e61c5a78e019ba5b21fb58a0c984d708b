@@ -16,6 +16,24 @@
       "message": "Nit: Can you call this something like `ciri_usbc.c`?",
       "revId": "ccbb643e61c5a78e019ba5b21fb58a0c984d708b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f87146_2164df76",
+        "filename": "zephyr/test/geralt/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-08-12T17:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "890ec184_4dafc513",
+      "revId": "ccbb643e61c5a78e019ba5b21fb58a0c984d708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
