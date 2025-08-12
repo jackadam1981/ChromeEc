@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61dff71d_9edeffae",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-12T16:52:10Z",
+      "side": 1,
+      "message": "Should we keep `ALLOW_SWAP` and `DISALLOW_SWAP` as separate enums?",
+      "revId": "153c6d036d98b222611a779dfeeaf46d473a0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2bc00b_21a76684",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-12T16:52:10Z",
+      "side": 1,
+      "message": "Nit: Update for `-EINVAL`",
+      "revId": "153c6d036d98b222611a779dfeeaf46d473a0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eaf976f0_8a5e59b7",
