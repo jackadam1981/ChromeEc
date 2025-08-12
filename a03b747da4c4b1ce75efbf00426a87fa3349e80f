@@ -283,6 +283,24 @@
       "parentUuid": "c9938e7a_4dfc5223",
       "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae69579a_7d8d4b5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-12T06:33:58Z",
+      "side": 1,
+      "message": "FYI you can use `sys_clock_cycle_get_64` function instead, to get accurate time. Please use `CONFIG_SYS_CLOCK_HW_CYCLES_PER_SEC` to get frequency of this clock.",
+      "parentUuid": "3a9d120e_db60150a",
+      "revId": "a03b747da4c4b1ce75efbf00426a87fa3349e80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
