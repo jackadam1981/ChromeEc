@@ -5961,6 +5961,13 @@ struct ec_params_panic_log_read {
  * host_cmd_handler_args.response and host_cmd_handler_args.response_size.
  */
 
+/*
+ * Enter bootloader mode
+ *
+ * This command requests EC to enter bootloader mode.
+ */
+#define EC_CMD_ENTER_BOOTLOADER 0x00E2
+
 /*****************************************************************************/
 /*
  * PD commands
