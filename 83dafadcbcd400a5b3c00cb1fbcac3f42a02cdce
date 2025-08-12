@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff63bcb8_fbb382d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-12T16:08:00Z",
+      "side": 1,
+      "message": "Alternatively we could make the `enum ccom_t` values BIT(0), BIT(1), BIT(2) instead of using the switch block but then I have to check the other uses of this enum.",
+      "revId": "83dafadcbcd400a5b3c00cb1fbcac3f42a02cdce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
