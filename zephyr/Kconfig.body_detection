@@ -36,6 +36,14 @@ config BODY_DETECTION_ALOGIRTHM_V2
 
 endchoice
 
+config PLATFORM_EC_BODY_DETECTION_DYNAMIC_INDEX
+	bool "Decide at runtime which sensor will be used for on-body-detection"
+	help
+	  By default (when disabled) use the alias on-body-sensor to select the
+	  body detection sensor. When enabled, the board should notify the
+	  sensor stack which sensor to use by calling
+	  motion_sense_set_on_body_sensor_index().
+
 config PLATFORM_EC_BODY_DETECTION_MAX_WINDOW_SIZE
 	int "Maximal sensor data rate"
 	default 250
