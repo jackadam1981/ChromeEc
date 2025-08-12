@@ -212,7 +212,7 @@ static int cmd_get_current_cam(const struct shell *sh, int argc, char **argv)
 	const struct device *dev = get_ppm_dev();
 	const struct ucsi_pd_driver *ppm_api;
 	uint8_t port;
-	uint8_t resp[8] = { 0 };
+	uint8_t resp[63] = { 0 };
 	int rv;
 
 	__ASSERT(dev, "PPM device is not ready");
