@@ -5,6 +5,7 @@
 
 #include "usb_pd.h"
 #include "usbc/pdc_power_mgmt.h"
+#include "zephyr/sys/atomic.h"
 
 #include <zephyr/device.h>
 #include <zephyr/logging/log.h>
@@ -197,19 +198,32 @@ unlock:
 void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 {
 	/* Verify partner supplied valid vSafe5V fixed object first */
-	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
-		return;
+	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED) {
+		atomic_clear_bit(&sink_max_pdo_requested, port);
+		goto balance;
+	}
 
-	if (PDO_FIXED_VOLTAGE(vsafe5v_pdo) != 5000)
-		return;
+	if (PDO_FIXED_VOLTAGE(vsafe5v_pdo) != 5000) {
+		atomic_clear_bit(&sink_max_pdo_requested, port);
+		goto balance;
+	}
 
 	if (pdc_power_mgmt_get_power_role(port) == PD_ROLE_SOURCE) {
 		if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
 			return;
 
 		/* Valid PDO to process, so evaluate whether >1.5A is needed */
-		if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500)
+		if (PDO_FIXED_CURRENT(vsafe5v_pdo) <= 1500) {
+			atomic_clear_bit(&sink_max_pdo_requested, port);
+			goto balance;
+		}
+
+		if (atomic_test_bit(&sink_max_pdo_requested, port)) {
+			/* We've already provided a 3A source PDO, nothing more
+			 * to do.
+			 */
 			return;
+		}
 
 		atomic_set_bit(&sink_max_pdo_requested, port);
 	} else {
@@ -252,6 +266,20 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 	}
 
 balance:
+	pdc_dpm_balance_source_ports(&dpm_work.work);
+}
+
+void pdc_dpm_add_pd_sink(int port)
+{
+	/* Attempt to pre-allocate 3A to a new attached PD sink
+	 * as a workaround for out of spec TBT devices.
+	 * We'll revoke the the 3A source cap after evaluating the
+	 * partner sink caps if the partner doesn't need 3A.
+	 */
+	if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
+		return;
+
+	atomic_set_bit(&sink_max_pdo_requested, port);
 	pdc_dpm_balance_source_ports(&dpm_work.work);
 }
 

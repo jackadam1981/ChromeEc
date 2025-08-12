@@ -302,6 +302,8 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_SET_SINK_PATH_OFF,
 	/** SRC_ATTACHED_GET_CONNECTOR_CAPABILITY */
 	SRC_ATTACHED_GET_CONNECTOR_CAPABILITY,
+	SRC_ATTACHED_ADD_PD_SNK,
+	SRC_ATTACHED_SET_SRC_PDOS,
 	/** SRC_ATTACHED_SET_DR_SWAP_POLICY */
 	SRC_ATTACHED_SET_DR_SWAP_POLICY,
 	/** SRC_ATTACHED_SET_PR_SWAP_POLICY */
@@ -1987,6 +1989,7 @@ static void pdc_src_attached_entry(void *obj)
 static enum smf_state_result pdc_src_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *config = port->dev->config;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2021,10 +2024,37 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_GET_CONNECTOR_CAPABILITY:
-		port->src_attached_local_state =
-			SRC_ATTACHED_SET_DR_SWAP_POLICY;
+		port->src_attached_local_state = SRC_ATTACHED_ADD_PD_SNK;
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_CAPABILITY);
 		return SMF_EVENT_HANDLED;
+	case SRC_ATTACHED_ADD_PD_SNK:
+		/* Preemptivally try to allocated 3A to the attached sink,
+		 * even before we know it's sink caps.
+		 */
+		port->src_attached_local_state = SRC_ATTACHED_SET_SRC_PDOS;
+		pdc_dpm_add_pd_sink(config->connector_num);
+		return SMF_EVENT_HANDLED;
+	case SRC_ATTACHED_SET_SRC_PDOS:
+		port->src_attached_local_state =
+			SRC_ATTACHED_SET_DR_SWAP_POLICY;
+
+		atomic_clear_bit(port->src_policy.flags,
+				 SRC_POLICY_UPDATE_SRC_CAPS);
+		/* Update the PDC SRC_CAP message */
+		port->set_pdos = (struct set_pdos_t){
+			.count = 1,
+			.type = SOURCE_PDO,
+			.pdos = { port->src_policy.lpm_src_pdo },
+		};
+
+		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
+		/*
+		 * After sending new SRC_CAP message, get the RDO from the port
+		 * partner to see if the current limit can be adjusted.
+		 */
+		atomic_set_bit(port->src_policy.flags, SRC_POLICY_GET_RDO);
+		return SMF_EVENT_HANDLED;
+
 	case SRC_ATTACHED_SET_DR_SWAP_POLICY:
 		port->src_attached_local_state =
 			SRC_ATTACHED_SET_PR_SWAP_POLICY;
