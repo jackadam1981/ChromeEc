@@ -120,24 +120,6 @@ static uint32_t fp_process_enroll(void)
 	       (percent << EC_MKBP_FP_ENROLL_PROGRESS_OFFSET);
 }
 
-static bool authenticate_fp_match_state(void)
-{
-	/* The rate limit is only meanful for the nonce context, and we don't
-	 * have rate limit for the legacy FP user unlock flow. */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
-		return true;
-	}
-
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
-		CPRINTS("Cannot process match twice in nonce context");
-		return false;
-	}
-
-	return true;
-}
-
 static uint32_t fp_process_match(void)
 {
 	timestamp_t t0 = get_time();
@@ -148,20 +130,6 @@ static uint32_t fp_process_match(void)
 	/* match finger against current templates */
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
-
-	if (!authenticate_fp_match_state()) {
-		res = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
-		return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res) |
-		       ((fgr << EC_MKBP_FP_MATCH_IDX_OFFSET) &
-			EC_MKBP_FP_MATCH_IDX_MASK);
-	}
-
-	/* The match processed state will be used to prevent the template unlock
-	 * operation after match processed in a nonce context. If we don't do
-	 * that, the attacker can unlock template multiple times in a single
-	 * nonce context. */
-	global_context.fp_encryption_status |=
-		FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
 
 	CPRINTS("Matching/%d ...", global_context.templ_valid);
 	if (global_context.templ_valid) {
