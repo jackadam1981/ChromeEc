@@ -178,7 +178,7 @@ static void tps699x_emul_set_uor(struct tps6699x_emul_pdc_data *data,
 static void tps699x_emul_set_pdr(struct tps6699x_emul_pdc_data *data,
 				 const union pdr_t *pdr)
 {
-	LOG_INF("SET_PDR port=%d, swap_to_src=%d, swap_to_snk=%d, accept_pr_swap=%d}",
+	LOG_INF("SET_PDR port=%d, swap_to_src=%d, swap_to_snk=%d, accept_pr_swap=%d",
 		pdr->connector_number, pdr->swap_to_src, pdr->swap_to_snk,
 		pdr->accept_pr_swap);
 	data->response.result = TASK_COMPLETED_SUCCESSFULLY;
@@ -186,11 +186,13 @@ static void tps699x_emul_set_pdr(struct tps6699x_emul_pdc_data *data,
 	data->pdr = *pdr;
 
 	if (data->connector_status.power_operation_mode == PD_OPERATION &&
-	    data->connector_status.connect_status && data->ccom == BIT(2)) {
+	    data->connector_status.connect_status && data->ccom == CCOM_DRP) {
 		if (data->pdr.swap_to_snk) {
 			data->connector_status.power_direction = 0;
+			LOG_INF("SET_PDR: PDC power role set to sink (0)");
 		} else if (data->pdr.swap_to_src) {
 			data->connector_status.power_direction = 1;
+			LOG_INF("SET_PDR: PDC power role set to source (1)");
 		}
 	}
 }
@@ -202,19 +204,23 @@ static void tps699x_emul_set_ccom(struct tps6699x_emul_pdc_data *data,
 	data->response.result = TASK_COMPLETED_SUCCESSFULLY;
 
 	switch (ccom->cc_operation_mode) {
-	case 1:
+	case BIT(CCOM_RP):
 		data->ccom = CCOM_RP;
 		break;
-	case 2:
+	case BIT(CCOM_RD):
 		data->ccom = CCOM_RD;
 		break;
-	case 4:
+	case BIT(CCOM_DRP):
 		data->ccom = CCOM_DRP;
 		break;
 	default:
-		LOG_ERR("Unexpected ccom = %u", ccom->cc_operation_mode);
+		LOG_ERR("SET_CCOM: Unexpected CCOM (0x%02x). "
+			"Keep existing value.",
+			ccom->cc_operation_mode);
 		break;
 	}
+
+	LOG_INF("SET_CCOM: %s (%d)", get_ccom_name(data->ccom), data->ccom);
 }
 
 static void tps699x_emul_get_pdos(struct tps6699x_emul_pdc_data *data,
@@ -1092,7 +1098,7 @@ static int emul_tps6699x_reset(const struct emul *target)
 	emul_pdc_pdo_reset(&data->pdo);
 
 	/* Default DRP enabled */
-	data->ccom = BIT(2);
+	data->ccom = CCOM_DRP;
 
 	emul_tps6699x_default_port_control(
 		(union reg_port_control *)data->reg_val[REG_PORT_CONTROL]);
