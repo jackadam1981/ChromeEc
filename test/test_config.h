@@ -221,10 +221,12 @@ enum battery_type {
 #define CONFIG_TEMP_CACHE_STALE_THRES (1 * SECOND)
 #endif /* CONFIG_ONLINE_CALIB && !CONFIG_TEMP_CACHE_STALE_THRES */
 
-#if defined(CONFIG_ONLINE_CALIB) || defined(TEST_BODY_DETECTION) ||        \
-	defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
-	defined(TEST_MOTION_LID) || defined(TEST_MOTION_SENSE_FIFO) ||     \
-	defined(TEST_TABLET_BROKEN_SENSOR)
+#if defined(TEST_ONLINE_CALIBRATION) || defined(TEST_STILLNESS_DETECTOR) || \
+	defined(TEST_ONLINE_CALIBRATION_SPOOF) || defined(TEST_GYRO_CAL) || \
+	defined(TEST_KASA) || defined(TEST_NEWTON_FIT) ||                   \
+	defined(TEST_BODY_DETECTION) || defined(TEST_MOTION_ANGLE) ||       \
+	defined(TEST_MOTION_ANGLE_TABLET) || defined(TEST_MOTION_LID) ||    \
+	defined(TEST_MOTION_SENSE_FIFO) || defined(TEST_TABLET_BROKEN_SENSOR)
 enum sensor_id {
 	BASE,
 	LID,

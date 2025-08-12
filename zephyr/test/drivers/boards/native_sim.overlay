@@ -37,7 +37,7 @@
 		 * sensor driver (accel_bma2x2.c) does not support body
 		 * detection, since it's missing get_rms_noise().
 		 */
-		on-body-sensor = &ms_lis2dw12_accel;
+		default-on-body-sensor = &ms_lis2dw12_accel;
 	};
 
 	ec-console {
