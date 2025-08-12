@@ -193,6 +193,18 @@ register_ish_project(
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
     inherited_from=["nissa"],
 )
+
+register_ish_project(
+    project_name="lite-ish",
+    zephyr_board="intel_ish_5_4_1",
+    dts_overlays=[
+        here / "lite-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "lite-ish" / "project.conf",
+    ],
+    modules=["ec", "cmsis", "hal_intel_public"],
+)
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="trulo", addr=0x40144)
