@@ -89,14 +89,6 @@ static void skywalker_dp_attention(int port, uint32_t vdo_dp_status)
 		set_dp_path_sel(port);
 	}
 
-	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl)) {
-		/*
-		 * Wake up the AP.  IRQ or level high indicates a DP sink is now
-		 * present.
-		 */
-		pd_notify_dp_alt_mode_entry(port);
-	}
-
 	if (irq && !lvl) {
 		/*
 		 * IRQ can only be generated when the level is high, because
