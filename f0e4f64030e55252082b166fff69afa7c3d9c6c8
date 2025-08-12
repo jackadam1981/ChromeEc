@@ -16,6 +16,24 @@
       "message": "Seems to be a new field w/ v3.35. Any idea what tests use this?",
       "revId": "f0e4f64030e55252082b166fff69afa7c3d9c6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a4557d_45c7057c",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-08-12T12:11:13Z",
+      "side": 1,
+      "message": "I don\u0027t think any of the tests use this.\nI think this corresponds to the [sido2.port_guaranteed_pdp](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pd_dpm.c;drc\u003db168742832ac0a884842f72e70b22b774d711ed4;l\u003d1172)",
+      "parentUuid": "38147221_5bba29aa",
+      "revId": "f0e4f64030e55252082b166fff69afa7c3d9c6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
