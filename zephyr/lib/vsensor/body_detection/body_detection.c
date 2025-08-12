@@ -38,8 +38,7 @@ LOG_MODULE_REGISTER(body_detection, CONFIG_LOG_DEFAULT_LEVEL);
 test_export_static float var_threshold;
 test_export_static float confidence_delta;
 
-test_export_static struct motion_sensor_t *body_sensor =
-	&motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
+test_export_static struct motion_sensor_t *body_sensor;
 
 static const struct body_detect_params default_body_detect_params = {
 	.var_threshold = CONFIG_BODY_DETECTION_VAR_THRESHOLD,
@@ -196,6 +195,7 @@ static void body_detect_init(float x0, float y0, float z0)
 
 	body_detect_initialized = true;
 }
+
 test_export_static void body_detect_step(float x, float y, float z,
 					 uint64_t curtime)
 {
@@ -332,6 +332,12 @@ void body_detect(void)
 	}
 
 	/*
+	 * This should never happen, but asserts are only enabled in tests so we
+	 * should verify this.
+	 */
+	__ASSERT_NO_MSG(body_sensor != NULL);
+
+	/*
 	 * Motion sensor returns 16-bit RAW value with 1-bit sign. Convert
 	 * to mG using formula:
 	 *               value_RAW * range[G] * 1000
@@ -347,6 +353,9 @@ void body_detect(void)
 
 void body_detect_reset(void)
 {
+	/* Need to refresh body_sensor on reset to make sure it's valid below */
+	body_sensor = &motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
+
 	int odr = body_sensor->drv->get_data_rate(body_sensor);
 
 	LOG_DBG("Resetting body detection");
