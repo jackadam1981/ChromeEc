@@ -520,7 +520,7 @@ struct rts5453p_emul_pdc_data {
 	union error_status_t error;
 	union tpc_rp_t tpc_rp;
 	union csd_op_mode_t csd_op_mode;
-	union port_and_ccom_t set_ccom_mode;
+	enum ccom_t ccom;
 	struct force_set_power_switch_t set_power_switch_data;
 	uint8_t set_tpc_reconnect_param;
 	struct pdc_info_t info;

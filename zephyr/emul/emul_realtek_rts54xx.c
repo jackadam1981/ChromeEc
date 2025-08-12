@@ -473,19 +473,20 @@ static int set_uor(struct rts5453p_emul_pdc_data *data,
 static int set_pdr(struct rts5453p_emul_pdc_data *data,
 		   const union rts54_request *req)
 {
-	LOG_INF("SET_PDR port=%d, swap_to_src=%d, swap_to_snk=%d, accept_pr_swap=%d}",
+	LOG_INF("SET_PDR port=%d, swap_to_src=%d, swap_to_snk=%d, accept_pr_swap=%d",
 		req->set_pdr.pdr.connector_number, req->set_pdr.pdr.swap_to_src,
 		req->set_pdr.pdr.swap_to_snk, req->set_pdr.pdr.accept_pr_swap);
 
 	data->pdr = req->set_pdr.pdr;
 
 	if (data->connector_status.power_operation_mode == PD_OPERATION &&
-	    data->connector_status.connect_status &&
-	    data->set_ccom_mode.ccom == BIT(2)) {
+	    data->connector_status.connect_status && data->ccom == CCOM_DRP) {
 		if (data->pdr.swap_to_snk) {
 			data->connector_status.power_direction = 0;
+			LOG_INF("SET_PDR: PDC power role set to sink (0)");
 		} else if (data->pdr.swap_to_src) {
 			data->connector_status.power_direction = 1;
+			LOG_INF("SET_PDR: PDC power role set to source (1)");
 		}
 	}
 
@@ -586,9 +587,25 @@ static int get_tpc_csd_operation_mode(struct rts5453p_emul_pdc_data *data,
 static int set_ccom(struct rts5453p_emul_pdc_data *data,
 		    const union rts54_request *req)
 {
-	LOG_INF("SET_CCOM port=%d", req->set_ccom.port_and_ccom.port_num);
+	switch (req->set_ccom.port_and_ccom.ccom) {
+	case BIT(CCOM_RP):
+		data->ccom = CCOM_RP;
+		break;
+	case BIT(CCOM_RD):
+		data->ccom = CCOM_RD;
+		break;
+	case BIT(CCOM_DRP):
+		data->ccom = CCOM_DRP;
+		break;
+	default:
+		LOG_ERR("SET_CCOM: Unexpected CCOM (%u, raw=%04x). "
+			"Keep existing value.",
+			req->set_ccom.port_and_ccom.ccom,
+			req->set_ccom.port_and_ccom.raw_value);
+		break;
+	}
 
-	data->set_ccom_mode = req->set_ccom.port_and_ccom;
+	LOG_INF("SET_CCOM: %s (%d)", get_ccom_name(data->ccom), data->ccom);
 
 	memset(&data->response, 0, sizeof(data->response));
 	send_response(data);
@@ -1202,7 +1219,7 @@ static int emul_realtek_rts54xx_init_data(const struct emul *target)
 	emul_pdc_pdo_reset(&data->pdo);
 
 	memset(&data->connector_status, 0, sizeof(data->connector_status));
-	data->set_ccom_mode.ccom = BIT(2); /* Realtek DRP bit 2 */
+	data->ccom = CCOM_DRP;
 	data->frs_configured = false;
 	data->sbu_mux_mode = 0;
 	data->bbr_cts_mode = false;
@@ -1476,20 +1493,7 @@ static int emul_realtek_rts54xx_get_ccom(const struct emul *target,
 	struct rts5453p_emul_pdc_data *data =
 		rts5453p_emul_get_pdc_data(target);
 
-	switch (data->set_ccom_mode.ccom) {
-	case BIT(0):
-		*ccom = CCOM_RP;
-		break;
-	case BIT(1):
-		*ccom = CCOM_RD;
-		break;
-	case BIT(2):
-		*ccom = CCOM_DRP;
-		break;
-	default:
-		LOG_ERR("Invalid ccom mode 0x%X", data->set_ccom_mode.ccom);
-		return -EINVAL;
-	}
+	*ccom = data->ccom;
 
 	return 0;
 }

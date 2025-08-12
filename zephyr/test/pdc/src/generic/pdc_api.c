@@ -298,19 +298,30 @@ ZTEST_USER(pdc_api, test_get_bus_voltage)
 
 ZTEST_USER(pdc_api, test_set_ccom)
 {
-	int i;
-	enum ccom_t ccom_in[] = { CCOM_RP, CCOM_RD, CCOM_DRP };
 	enum ccom_t ccom_out;
 
 	k_sleep(K_MSEC(SLEEP_MS));
 
-	for (i = 0; i < ARRAY_SIZE(ccom_in); i++) {
-		zassert_ok(pdc_set_ccom(dev, ccom_in[i]));
+	zassert_ok(pdc_set_ccom(dev, CCOM_RD));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_RD, ccom_out);
 
-		k_sleep(K_MSEC(SLEEP_MS));
-		zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
-		zassert_equal(ccom_in[i], ccom_out);
-	}
+	zassert_ok(pdc_set_ccom(dev, CCOM_RP));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_RP, ccom_out);
+
+	zassert_ok(pdc_set_ccom(dev, CCOM_DRP));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_DRP, ccom_out);
+
+	/* Illegal value. Should retain previous CCOM */
+	pdc_set_ccom(dev, 9999);
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_DRP, ccom_out);
 }
 
 ZTEST_USER(pdc_api, test_set_drp_mode)
