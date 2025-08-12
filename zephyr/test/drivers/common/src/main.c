@@ -5,6 +5,7 @@
 
 #include "ec_app_main.h"
 #include "hooks.h"
+#include "motionsense_sensors.h"
 #include "test/drivers/test_state.h"
 
 #include <zephyr/kernel.h>
@@ -39,6 +40,13 @@ bool drivers_predicate_post_main(const void *state)
 void test_main(void)
 {
 	k_sem_init(&init_hooks_completed, 0, 1);
+
+	/* Initialize the on-body sensor index if needed */
+#if DT_NODE_EXISTS(DT_ALIAS(default_on_body_sensor)) && \
+	IS_ENABLED(CONFIG_PLATFORM_EC_BODY_DETECTION_DYNAMIC_INDEX)
+	motion_sense_set_on_body_sensor_index(
+		SENSOR_ID(DT_ALIAS(default_on_body_sensor)));
+#endif
 
 	struct test_state state = {
 		.ec_app_main_run = false,
