@@ -479,5 +479,20 @@ void motion_sensors_check_ssfc(void){
 	COND_CODE_1(DT_NODE_HAS_PROP(id, int_signal), (DEF_MOTION_ISR(id)), ())
 
 #if DT_NODE_EXISTS(SENSOR_NODE)
-DT_FOREACH_CHILD(SENSOR_NODE, DEF_MOTION_CHECK_ISR)
+DT_FOREACH_CHILD(SENSOR_NODE, DEF_MOTION_CHECK_ISR);
+#endif
+
+#ifdef CONFIG_PLATFORM_EC_BODY_DETECTION_DYNAMIC_INDEX
+
+static int motion_sense_on_body_sensor_index = MOTION_SENSE_INVALID_SENSOR_ID;
+
+int motion_sense_get_on_body_sensor_index(void)
+{
+	return motion_sense_on_body_sensor_index;
+}
+
+void motion_sense_set_on_body_sensor_index(int idx)
+{
+	motion_sense_on_body_sensor_index = idx;
+}
 #endif
