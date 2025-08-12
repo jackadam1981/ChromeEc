@@ -461,6 +461,7 @@ _CROS_EC_C0_F_PF_RF(EC_CMD_VSTORE_READ, vstore_read);
 _CROS_EC_C0_F_PF(EC_CMD_VSTORE_WRITE, vstore_write);
 _CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_SET, ucsi_ppm_set);
 _CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_GET, ucsi_ppm_get);
+_CROS_EC_C0_F_PF(EC_CMD_ENTER_BOOTLOADER, enter_bootloader);
 
 #ifdef __cplusplus
 }
