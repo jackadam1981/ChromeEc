@@ -1555,8 +1555,18 @@ static void run_unattached_policies(struct pdc_port_t *port)
 		port->set_pdos = (struct set_pdos_t){
 			.count = 1,
 			.type = SOURCE_PDO,
-			.pdos = { port->src_policy.lpm_src_pdo },
+			/* FIXME - for testing only. Set SRC CAPS for next
+			 * attach to 3A unconditionally.
+			 *
+			 * Note - do now connect multiple PD SNKs simultaneously
+			 * with this change in place.
+			 */
+			.pdos = { pdc_src_pdo_max },
 		};
+
+		const struct pdc_config_t *config = port->dev->config;
+		LOG_INF("C%d: set UNATTACHED policy to 3A",
+			config->connector_num);
 
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		return;
@@ -1910,6 +1920,9 @@ static void pdc_unattached_entry(void *obj)
 		if (port->board_unattach_cb) {
 			port->board_unattach_cb(port_number);
 		}
+
+		atomic_set_bit(port->una_policy.flags,
+			       UNA_POLICY_UPDATE_SRC_CAPS);
 	}
 }
 
