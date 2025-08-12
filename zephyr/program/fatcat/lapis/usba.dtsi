@@ -6,7 +6,7 @@
  / {
 	usba-port-enable-list {
 		compatible = "cros-ec,usba-port-enable-pins";
-		enable-pins = <&gpio_en_pp5000_usba>;
+		enable-pins = <&gpio_susc_ec>;
 	};
  };
  

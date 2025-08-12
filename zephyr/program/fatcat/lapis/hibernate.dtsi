@@ -14,6 +14,6 @@
 };
 
 /* This GPIO is initialized by the hibernate z5 driver. */
-&gpio_en_slp_z {
+&gpio_ps_on_ec {
 	no-auto-init;
 };

@@ -3,13 +3,6 @@
  * found in the LICENSE file.
  */
 
-/*
- * Define nodelabel aliases needed for fan devicetree.
- */
-gpio_fan_control: &gpio_ec_fan_pwr_disable_n_r {};
-pwm_fan: &pwm5 {};
-tach_fan: &tach0 {};
-
 / {
 	fans {
 		compatible = "cros-ec,fans";
@@ -21,8 +14,8 @@ tach_fan: &tach0 {};
 			rpm-start = <1100>;
 			rpm-max = <4000>;
 			rpm-deviation = <1>;
-            pgood-gpio = <&all_sys_pwrgd>;
-			enable-gpio = <&gpio_fan_control>;
+            pgood-gpio = <&gpio_all_sys_pwrgd>;
+			// enable-gpio = <&gpio_ec_susb_ec>;
 		};
 	};
 };
