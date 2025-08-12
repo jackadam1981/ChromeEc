@@ -49,7 +49,7 @@
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
 		/* SUSB_EC# */
-		gpio_ec_fan_pwr_disable_n_r: ec_fan_pwr_disable_n_r {
+		gpio_ec_susb_ec: ec_susb_ec {
 			gpios = <&gpiob 1 (GPIO_OUTPUT)>;
 		};
 		/* 5VSUS_ON */
