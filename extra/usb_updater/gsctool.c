@@ -1706,6 +1706,10 @@ static void get_version(struct transfer_descriptor *td, bool leave_pending)
 	if (td->ep_type == usb_xfer) {
 		struct update_pdu updu;
 
+		/* First clear any stale buffered incoming data */
+		usb_clear_in_buffer(&td->uep);
+
+		/* Then send first update packet to get version info */
 		memset(&updu, 0, sizeof(updu));
 		updu.block_size = htobe32(sizeof(updu));
 		do_xfer(&td->uep, &updu, sizeof(updu), &start_resp,
