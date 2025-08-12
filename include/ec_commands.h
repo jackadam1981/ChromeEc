@@ -8577,12 +8577,10 @@ struct ec_params_fp_seed {
 #define FP_ENC_STATUS_SEED_SET BIT(0)
 /* Session was established or not */
 #define FP_CONTEXT_STATUS_SESSION_ESTABLISHED BIT(1)
-/* FP match had been processed or not */
-#define FP_CONTEXT_STATUS_MATCH_PROCESSED_SET BIT(2)
 /* FP session_nonce had been set or not*/
-#define FP_CONTEXT_SESSION_NONCE_SET BIT(3)
+#define FP_CONTEXT_SESSION_NONCE_SET BIT(2)
 /* FP user_id had been set or not*/
-#define FP_CONTEXT_USER_ID_SET BIT(4)
+#define FP_CONTEXT_USER_ID_SET BIT(3)
 
 struct ec_response_fp_encryption_status {
 	/* Used bits in encryption engine status */
