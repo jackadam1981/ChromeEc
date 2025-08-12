@@ -6,9 +6,7 @@
 /*
  * Define nodelabel aliases needed for fan devicetree.
  */
-gpio_fan_control: &gpio_ec_fan_pwr_disable_n_r {};
-pwm_fan: &pwm5 {};
-tach_fan: &tach0 {};
+gpio_fan_control: &gpio_ec_susb_ec {};
 
 / {
 	fans {
@@ -22,7 +20,7 @@ tach_fan: &tach0 {};
 			rpm-max = <4000>;
 			rpm-deviation = <1>;
             pgood-gpio = <&all_sys_pwrgd>;
-			enable-gpio = <&gpio_fan_control>;
+			// enable-gpio = <&gpio_fan_control>;
 		};
 	};
 };
