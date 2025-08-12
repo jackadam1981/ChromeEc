@@ -101,7 +101,14 @@ static void motionsense_init(void)
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
 				      GPIO_INPUT | GPIO_PULL_UP);
 		LOG_INF("Board is Clamshell");
+		motion_sense_set_on_body_sensor_index(
+			SENSOR_ID(DT_NODELABEL(lid_accel)));
+		motion_sensor_count = 1;
 	} else if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE) {
+		/* Convertibles use the bma4xx alternate as the lid sensor */
+		ENABLE_ALT_MOTION_SENSOR(DT_NODELABEL(alt_lid_accel));
+		motion_sense_set_on_body_sensor_index(
+			SENSOR_ID(DT_ALIAS(on_body_sensor)));
 		LOG_INF("Board is Convertible");
 	}
 }
