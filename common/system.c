@@ -1819,6 +1819,28 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC, host_command_reboot, EC_VER_MASK(0));
 
+#ifdef CONFIG_HOST_COMMAND_ENTER_BOOTLOADER
+static enum ec_status host_command_bootloader(struct host_cmd_handler_args *args)
+{
+	// TODO clear secrets in RAM, ideally entire RAM, because it can store secrets indirectly e.g. via saved registers on stack
+	// TODO clear secret in flash
+
+#ifndef CONFIG_EC_HOST_CMD
+	args->result = EC_RES_SUCCESS;
+	host_send_response(args);
+#else
+	ec_host_cmd_send_response(EC_HOST_CMD_SUCCESS, (struct ec_host_cmd_handler_args *)args);
+#endif
+
+	chip_enter_bootloader();
+
+	// TODO add unreachable
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_ENTER_BOOTLOADER, host_command_bootloader, EC_VER_MASK(0));
+#endif /* CONFIG_HOST_COMMAND_ENTER_BOOTLOADER */
+
 test_mockable int system_can_boot_ap(void)
 {
 	int soc = -1;
