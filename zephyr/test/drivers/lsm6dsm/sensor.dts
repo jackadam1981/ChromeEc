@@ -12,7 +12,7 @@
 		/delete-property/ bmi160-int;
 		/delete-property/ bmi260-int;
 		/delete-property/ tcs3400-int;
-		/delete-property/ on-body-sensor;
+		/delete-property/ default-on-body-sensor;
   };
 
   motionsense-mutex {
