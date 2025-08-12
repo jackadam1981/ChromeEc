@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20512936_12fd3d5d",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-12T21:24:43Z",
+      "side": 1,
+      "message": "I\u0027d rather keep it as one single set of options lest people try to treat them independently again.",
+      "parentUuid": "61dff71d_9edeffae",
+      "revId": "153c6d036d98b222611a779dfeeaf46d473a0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2bc00b_21a76684",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-12T16:52:10Z",
       "side": 1,
       "message": "Nit: Update for `-EINVAL`",
+      "revId": "153c6d036d98b222611a779dfeeaf46d473a0c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45cffe2_3c717989",
+        "filename": "zephyr/include/drivers/pdc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-12T21:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a2bc00b_21a76684",
       "revId": "153c6d036d98b222611a779dfeeaf46d473a0c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
