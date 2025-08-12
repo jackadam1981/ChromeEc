@@ -14,17 +14,6 @@
 
 /* lapis overrides follow... */
 
-/* Power Signals */
-#define PWR_EN_PP3300_S5 &gpiof 11
-#define PWR_EN_PP5000_S5 &gpiof 11
-#define PWR_RSMRST_PWRGD &gpioa 13
-#define PWR_EC_PCH_RSMRST &gpiog 6
-#define PWR_SLP_S0 &gpioe 15
-#define PWR_PCH_PWROK &gpiog 8
-#define PWR_ALL_SYS_PWRGD &gpioe 12
-
-#define PD_POW_IRQ_GPIO &gpiof 3
-
 / {
 	named-gpios {
 		/*
