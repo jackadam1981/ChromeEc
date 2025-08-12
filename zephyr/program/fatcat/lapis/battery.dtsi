@@ -5,8 +5,8 @@
 
 / {
     batteries {
-		default_battery: smp-ap23b7q {
-			compatible = "smp,ap23b7q", "battery-smart";
+		default_battery: b300049 {
+			compatible = "celxpert,b300049", "battery-smart";
 		};
 	};
 };

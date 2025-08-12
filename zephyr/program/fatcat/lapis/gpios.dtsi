@@ -16,13 +16,8 @@
 			enum-name = "GPIO_ENTERING_RW";
 		};
 
-		/* ALL_SYSTEM_PWRGD */
-		gpio_all_sys_pwrgd_r: all_sys_pwrgd_r {
-			gpios = <&gpioe 12 (GPIO_INPUT)>;
-		};
 		/* AC_IN_OC#_EC */
 		gpio_bc_acok: bc_acok {
-		// signal name was manually overriden from "bga_pine5"
 			gpios = <&gpioh 5 (GPIO_INPUT)>;
 			enum-name = "GPIO_AC_PRESENT";
 		};
@@ -38,29 +33,35 @@
 		gpio_c_edp_bklt_en_r: c_edp_bklt_en_r {
 			gpios = <&gpioa 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
 		};
-		/* SUSC_EC# */
-		gpio_en_pp5000_usba: en_pp5000_usba {
-			gpios = <&gpiof 14 GPIO_OUTPUT>;
-		};
 		/* PWR_SW# */
 		gpio_c_gsc_ec_pwr_btn_n: c_gsc_ec_pwr_btn_n {
-			// signal name was manually overriden from "bga_pinb4"
 			gpios = <&gpioh 3 (GPIO_INPUT)>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
-		/* SUSB_EC# */
-		gpio_ec_fan_pwr_disable_n_r: ec_fan_pwr_disable_n_r {
-			gpios = <&gpiob 1 (GPIO_OUTPUT)>;
+		/* PS_ON_EC */
+		gpio_en_slp_z_r: en_slp_z_r {
+			gpios = <&gpioi 3 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 		/* 5VSUS_ON */
-		gpio_en_ds3_r_en_s5_rails: en_ds3_r_en_s5_rails {
-			// signal name was manually overriden from "ec_ds3_r"
+		gpio_en_5vsus_on: en_5vsus_on {
 			gpios = <&gpiof 11 (GPIO_OUTPUT)>;
 			enum-name = "GPIO_TEMP_SENSOR_POWER";
 		};
-		/* PS_ON_EC */
-		gpio_en_slp_z_r: en_slp_z_r {
-			gpios = <&gpioi 3 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+		/* VSUS_ON_EC */
+		gpio_ec_vsus_on_ec: ec_vsus_on_ec {
+			gpios = <&gpiof 13 (GPIO_OUTPUT)>;
+		};
+		/* 3VSUS_PWRGD_EC */
+		gpio_ec_3vsus_pwrgd_ec: ec_3vsus_pwrgd_ec {
+			gpios = <&gpioe 11 (GPIO_INPUT)>;
+		};
+		/* SUSB_EC# */
+		gpio_ec_susb_ec: ec_susb_ec {
+			gpios = <&gpiob 1 (GPIO_OUTPUT)>;
+		};
+		/* SUSC_EC# */
+		gpio_en_pp5000_usba: en_pp5000_usba {
+			gpios = <&gpiof 14 GPIO_OUTPUT>;
 		};
 		/* PM_PWROK */
 		gpio_pch_pwrok_ec_r: pch_pwrok_ec_r {
@@ -83,18 +84,21 @@
 		gpio_pm_slp_s4_n_r: pm_slp_s4_n_r {
 			gpios = <&gpiof 1 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
 		};
+		/* ALL_SYSTEM_PWRGD */
+		gpio_all_sys_pwrgd_r: all_sys_pwrgd_r {
+			gpios = <&gpioe 12 (GPIO_INPUT)>;
+		};
 		/* THRO_CPU# */
 		gpio_prochot_ec_n_r: prochot_ec_n_r {
 			gpios = <&gpiob 2 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		/* VCCPRIM_IO_PWRGD */
 		gpio_rsmrst_pwrgd_n_r: rsmrst_pwrgd_n_r {
-			gpios = <&gpioa 13 (GPIO_INPUT)>; // 有外部3VSUS外部上拉，不用 1P8
+			gpios = <&gpioa 13 (GPIO_INPUT)>;
 		};
 		/* PM_SYSRST_R#, ROM_ID */
 		gpio_sys_rst_odl: sys_rst_odl {
 			gpios = <&gpioh 15 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
-			// enum-name = "GPIO_SYS_RST_ODL";  不是MTK平台，不用enum
 			no-auto-init;
 		};
 		/* ESPI_ALERT0#_EC, EC_SOC_INT_ODL */
@@ -186,10 +190,6 @@
 		gpio_ec_vdd2_en: ec_vdd2_en {
 			gpios = <&gpiof 16 (GPIO_OUTPUT)>;
 		};
-		/* 3VSUS_PWRGD_EC */
-		gpio_ec_3vsus_pwrgd_ec: ec_3vsus_pwrgd_ec {
-			gpios = <&gpioe 11 (GPIO_INPUT)>;
-		};
 		/* IMVP9.3_PWRGD */
 		gpio_ec_imvp_pwrgd: ec_imvp_pwrgd {
 			gpios = <&gpioe 13 (GPIO_INPUT)>;
@@ -201,6 +201,10 @@
 		/* SSD_PLN */
 		gpio_ec_ssd_pln: ec_ssd_pln {
 			gpios = <&gpiof 8 (GPIO_OUTPUT)>;
+		};
+		/* VR_ON */
+		gpio_ec_vr_on: ec_vr_on {
+			gpios = <&gpioe 10 (GPIO_OUTPUT)>;
 		};
 	};
 };
