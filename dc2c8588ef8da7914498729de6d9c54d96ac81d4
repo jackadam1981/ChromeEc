@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70221ef0_f637fcf0",
+        "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-08-12T06:12:14Z",
+      "side": 1,
+      "message": "So, let me make sure I\u0027ve got this right. You\u0027re suggesting we create two separate device trees for the 360 and 180 SKUs based on their sensor counts, and use CBI to pick the right one, kind of like `CONFIG_PDC_RUNTIME_PORT_CONFIG`.But the current code doesn\u0027t seem to have the logic for this kind of dynamic selection for motionsense.\n\nIf so, should we file a tracker so we can track this?",
+      "parentUuid": "4d840d75_0d094ef8",
+      "revId": "dc2c8588ef8da7914498729de6d9c54d96ac81d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "480fd68c_7f8b8db1",
         "filename": "zephyr/program/trulo/uldrenite/motionsense.dtsi",
         "patchSetId": 8
