@@ -7,6 +7,7 @@
 #define __CROS_EC_MOTIONSENSE_SENSORS_H
 
 #include "motion_sense.h"
+#include "motionsense_sensors_defs.h"
 
 #include <zephyr/devicetree.h>
 
@@ -75,6 +76,10 @@ void motion_sensors_check_ssfc(void);
 		if (!motion_sense_probe(SENSOR_ID(DT_NODELABEL(nodelabel)))) \
 			ENABLE_ALT_MOTION_SENSOR(DT_NODELABEL(nodelabel));   \
 	} while (0)
+
+int motion_sense_get_on_body_sensor_index(void);
+
+void motion_sense_set_on_body_sensor_index(int idx);
 
 #ifdef __cplusplus
 }
