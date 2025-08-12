@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9109fd6_15be733c",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-12T21:24:34Z",
+      "side": 1,
+      "message": "Didn\u0027t know we already had a function for this.",
+      "parentUuid": "4200acad_c54e0c88",
+      "revId": "a1997c8f1bb8994c3898b90177db4b4e8782209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47e05757_392e57e5",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-12T16:25:28Z",
       "side": 1,
       "message": "Nit: Print in hex as its easier to decipher set bits.\nalso `req-\u003eset_ccom.port_and_ccom.ccom`?",
+      "revId": "a1997c8f1bb8994c3898b90177db4b4e8782209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe81863f_87652bd7",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-12T21:24:34Z",
+      "side": 1,
+      "message": "Printing CCOM and raw value",
+      "parentUuid": "47e05757_392e57e5",
       "revId": "a1997c8f1bb8994c3898b90177db4b4e8782209f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
