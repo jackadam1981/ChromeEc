@@ -76,6 +76,10 @@ void motion_sensors_check_ssfc(void);
 			ENABLE_ALT_MOTION_SENSOR(DT_NODELABEL(nodelabel));   \
 	} while (0)
 
+int motion_sense_get_on_body_sensor_index(void);
+
+void motion_sense_set_on_body_sensor_index(int idx);
+
 #ifdef __cplusplus
 }
 #endif

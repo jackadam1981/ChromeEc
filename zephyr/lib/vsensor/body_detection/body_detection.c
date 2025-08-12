@@ -38,8 +38,7 @@ LOG_MODULE_REGISTER(body_detection, CONFIG_LOG_DEFAULT_LEVEL);
 test_export_static float var_threshold;
 test_export_static float confidence_delta;
 
-test_export_static struct motion_sensor_t *body_sensor =
-	&motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
+test_export_static struct motion_sensor_t *body_sensor;
 
 static const struct body_detect_params default_body_detect_params = {
 	.var_threshold = CONFIG_BODY_DETECTION_VAR_THRESHOLD,
@@ -72,6 +71,7 @@ static uint64_t get_curtime(void)
 
 static void body_detect_get_params(void)
 {
+	body_sensor = &motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
 	/* If body detection params haven't been set, use the default ones. */
 	if (!body_sensor->bd_params) {
 		body_sensor->bd_params = &default_body_detect_params;
@@ -173,6 +173,8 @@ static void body_detect_set_update_rate(int odr)
 static void body_detect_init(float x0, float y0, float z0)
 {
 	int ret;
+
+	body_sensor = &motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
 
 	/* Initialize X,Y,Z averaging filters */
 	exp_smooth_init(&smooth_x, 0.95, x0);
@@ -331,6 +333,8 @@ void body_detect(void)
 		return;
 	}
 
+	body_sensor = &motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
+
 	/*
 	 * Motion sensor returns 16-bit RAW value with 1-bit sign. Convert
 	 * to mG using formula:
@@ -347,6 +351,7 @@ void body_detect(void)
 
 void body_detect_reset(void)
 {
+	body_sensor = &motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
 	int odr = body_sensor->drv->get_data_rate(body_sensor);
 
 	LOG_DBG("Resetting body detection");
