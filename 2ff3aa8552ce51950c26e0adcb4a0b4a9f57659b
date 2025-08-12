@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b18076f8_3b0eb02e",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-08-12T06:36:34Z",
+      "side": 1,
+      "message": "Yes, the 7-segment display via the JDB6.",
+      "parentUuid": "e92da4bc_68fb46e3",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "2ff3aa8552ce51950c26e0adcb4a0b4a9f57659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd08c39d_54dbe39b",
         "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
         "patchSetId": 5
