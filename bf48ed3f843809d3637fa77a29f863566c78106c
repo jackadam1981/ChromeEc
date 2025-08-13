@@ -51,6 +51,24 @@
       "message": "I\u0027ve written a patch for the existing LED driver to support caboc LED behavior: crrev.com/c/6844172 Could someone verify it works correctly? I don\u0027t have a caboc on my desk.",
       "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558d789e_b156317c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-08-13T04:22:58Z",
+      "side": 1,
+      "message": "Hi Keith and Jason,\n\nThanks Jason for working on CL:6844172. It works on Caboc except that command like `ectool led power white\u003d50` cannot set the brightness to 50% duty white always set to 100% duty instead.\nHowever, from my point of view, since our OEM specific feature of LED behaviors may change by date such as Yavilla  (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/nissa/yavilla/src/led.c#216) and Domika (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/nissa/domika/src/led.c#216), which will override battery LED to power LED when system suspend for CS SKU. I\u0027m not sure if Caboc has such special OEM feature in the future which is hard to set as Zephyr common shared driver. I think if would be better to keep led policy as project level change.\n\nThanks!",
+      "parentUuid": "1dd0f4e3_9607f562",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
