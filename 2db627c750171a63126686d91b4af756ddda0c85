@@ -22,6 +22,30 @@
       },
       "revId": "2db627c750171a63126686d91b4af756ddda0c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d739ef_f061b6be",
+        "filename": "zephyr/program/ocelot/ojal/power_signals.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T07:45:05Z",
+      "side": 1,
+      "message": "Changed to GPIO_VOLTAGE_1P8.",
+      "parentUuid": "e9049cd0_3b370816",
+      "range": {
+        "startLine": 46,
+        "startChar": 46,
+        "endLine": 46,
+        "endChar": 70
+      },
+      "revId": "2db627c750171a63126686d91b4af756ddda0c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
