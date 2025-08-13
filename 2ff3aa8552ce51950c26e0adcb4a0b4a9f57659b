@@ -117,6 +117,30 @@
       },
       "revId": "2ff3aa8552ce51950c26e0adcb4a0b4a9f57659b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836df189_970f5fa1",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T07:47:44Z",
+      "side": 1,
+      "message": "Moved \"I2C_PORT_CHARGER\" to last.",
+      "parentUuid": "bd08c39d_54dbe39b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "2ff3aa8552ce51950c26e0adcb4a0b4a9f57659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
