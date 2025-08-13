@@ -16,6 +16,24 @@
       "message": "LGTM - can you also add a README with instructions for using the how one can generate the header using the `build_is_firmware.py` script upstream?",
       "revId": "983a8e3f492c3c4a87aae1922a332999f1515a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88dca57a_16485603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-08-13T21:31:34Z",
+      "side": 1,
+      "message": "The header required by CSE is generated with MEU tool. I could upload MEU and xml to a private repo and add README. I have created a separate issue tracker b:438514572 for this.",
+      "parentUuid": "049151b8_35fdc7e8",
+      "revId": "983a8e3f492c3c4a87aae1922a332999f1515a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
