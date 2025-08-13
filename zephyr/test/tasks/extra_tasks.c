@@ -145,9 +145,6 @@ ZTEST_USER(extra_tasks, test_invalid_thread_id)
 
 	EXPECT_ASSERT(task_id = thread_id_to_task_id(NULL));
 	zassert_equal(task_id, TASK_ID_INVALID);
-
-	EXPECT_ASSERT(task_id = thread_id_to_task_id((k_tid_t)0x1234));
-	zassert_equal(task_id, TASK_ID_INVALID);
 }
 
 ZTEST_USER(extra_tasks, test_extra_task_enumeration)

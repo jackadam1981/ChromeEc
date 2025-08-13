@@ -197,6 +197,10 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		}
 	}
 
+	if (thread_id->base.thread_state & _THREAD_DUMMY) {
+		return TASK_ID_INVALID;
+	}
+
 	__ASSERT(false, "Failed to map thread to task");
 	return TASK_ID_INVALID;
 }
