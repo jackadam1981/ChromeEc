@@ -71,6 +71,11 @@ ZTEST(led_pwm_fade, test_led_fade)
 	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
 	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
 
+	int old_duty = pwm_mock_get_duty(pwm_blue_left, 0);
+	k_sleep(K_MSEC(50));
+	/* Even in small time increments, color changes slightly */
+	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) < old_duty, NULL);
+
 	test_set_chipset_to_power_level(POWER_S3);
 	k_sleep(K_SECONDS(4));
 	/* right LED should be at about 1% white */
