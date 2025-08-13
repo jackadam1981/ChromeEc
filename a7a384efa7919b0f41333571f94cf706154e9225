@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb5511ae_e5f11b68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T23:04:31Z",
+      "side": 1,
+      "message": "We already have unit tests for transitions in `drivers.led_pwm_fade`. But I\u0027ll add a little bit more for sub 250ms testing.",
+      "parentUuid": "bf4582a0_b4636ef3",
+      "revId": "a7a384efa7919b0f41333571f94cf706154e9225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "787bd26b_aa399e05",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-13T20:35:35Z",
       "side": 1,
       "message": "Board specific changes should be in their on CL.",
+      "revId": "a7a384efa7919b0f41333571f94cf706154e9225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd87a3e_c4954526",
+        "filename": "zephyr/program/brox/caboc/led_pins.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T23:04:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "787bd26b_aa399e05",
       "revId": "a7a384efa7919b0f41333571f94cf706154e9225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf41feaa_70c53828",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T23:04:31Z",
+      "side": 1,
+      "message": "I changed the apply color name to `led_asynchronous_apply_color` to support ongoing efforts for led strips.",
+      "parentUuid": "18847ddd_9fdffe03",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 26
+      },
+      "revId": "a7a384efa7919b0f41333571f94cf706154e9225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a17f96a_1bd3cb41",
@@ -71,6 +131,30 @@
       "writtenOn": "2025-08-13T20:35:35Z",
       "side": 1,
       "message": "This parameter indicates that platform uses linear transitions. This better named `has_linear_transitions`.",
+      "range": {
+        "startLine": 290,
+        "startChar": 32,
+        "endLine": 290,
+        "endChar": 47
+      },
+      "revId": "a7a384efa7919b0f41333571f94cf706154e9225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0542fa_5732e257",
+        "filename": "zephyr/shim/src/led_driver/led_pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T23:04:31Z",
+      "side": 1,
+      "message": "I\u0027m planning to update the transition framework for all non-step transitions (i.e. exponential and future support for led strips as well). Just doing linear first so I don\u0027t have to test everything all at once.\n\nI\u0027ve added a TODO to track this.",
+      "parentUuid": "7a17f96a_1bd3cb41",
       "range": {
         "startLine": 290,
         "startChar": 32,
