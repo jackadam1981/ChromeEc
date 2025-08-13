@@ -1111,8 +1111,8 @@ static int emul_tps6699x_reset(const struct emul *target)
 	memset(data->fail_reg_writes, 0, REG_U32_BITMAP_SIZE);
 	data->fail_next_ucsi_cmd_count = 0;
 
-	/* Initialize reg_mode to APP0 to indicate running from flash. */
-	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
+	/* Initialize reg_mode to APP1 to indicate running from flash. */
+	*((uint32_t *)reg_mode->data) = REG_MODE_APP1;
 
 	return 0;
 }
@@ -1193,8 +1193,8 @@ static int tps6699x_emul_init(const struct emul *emul,
 	k_work_init_delayable(&data->pdc_data.aneg_delay_work,
 			      aneg_delayable_work_handler);
 
-	/* Init register to APP0 */
-	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
+	/* Init register to APP1 */
+	*((uint32_t *)reg_mode->data) = REG_MODE_APP1;
 
 	return 0;
 }
