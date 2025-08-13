@@ -251,7 +251,7 @@ static int match_node(int node_idx)
 	return node_idx;
 }
 
-static bool board_led_set_color(void)
+static bool led_set_all_colors(void)
 {
 	bool found_node = false;
 	bool has_transitions = false;
@@ -287,8 +287,10 @@ static bool board_led_set_color(void)
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
 static void led_tick(void)
 {
-	bool has_transitions = board_led_set_color();
-	board_led_apply_color(has_transitions);
+	bool has_transitions = led_set_all_colors();
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_LED_DT_PWM)) {
+		led_asynchronous_apply_color(has_transitions);
+	}
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
@@ -316,7 +318,7 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 
 	if (state == LED_STATE_RESET) {
 		led_auto_control(led_id, 1);
-		board_led_set_color();
+		led_set_all_colors();
 		return;
 	}
 

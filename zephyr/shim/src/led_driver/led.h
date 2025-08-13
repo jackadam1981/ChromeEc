@@ -165,7 +165,7 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *led);
  * @param has_transitions		Whether the policy has a transition
  * pattern
  */
-void board_led_apply_color(bool has_transitions);
+void led_asynchronous_apply_color(bool has_transitions);
 
 #ifdef TEST_BUILD
 const struct led_pins_node_t *led_get_node(enum led_color color,
