@@ -7,6 +7,7 @@
 #define ZEPHYR_TEST_DRIVERS_INCLUDE_UTILS_H_
 
 #include "charger.h"
+#include "console_utils.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "extpower.h"
 #include "host_command.h"
@@ -743,28 +744,6 @@ void test_free(void *mem);
  *
  */
 void test_set_chipset_to_g3_then_transition_to_s5(void);
-
-/**
- * @brief Checks console command with expected console output and expected
- * return value
- *
- */
-#define CHECK_CONSOLE_CMD(cmd, expected_output, expected_rv)                 \
-	check_console_cmd((cmd), (expected_output), (expected_rv), __FILE__, \
-			  __LINE__)
-void check_console_cmd(const char *cmd, const char *expected_output,
-		       const int expected_rv, const char *file, const int line);
-
-/**
- * @brief Checks console command and reads it.
- *
- */
-#define SCAN_CONSOLE_CMD(cmd, expected_rv, expected_count, format, ...)    \
-	scan_console_cmd((cmd), (expected_rv), (expected_count), __FILE__, \
-			 __LINE__, (format), __VA_ARGS__)
-void scan_console_cmd(const char *cmd, const int expected_rv,
-		      const int expected_count, const char *file,
-		      const int line, const char *format, ...);
 
 /* The upstream struct ec_host_cmd_handler_args omits the result field, so skip
  * checks of the result when using the upstream host commands.
