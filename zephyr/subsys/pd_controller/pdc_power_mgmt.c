@@ -2678,12 +2678,12 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		rv = pdc_set_power_level(port->pdc, port->una_policy.tcc);
 		break;
 	case CMD_PDC_SET_CCOM:
-		LOG_DBG("C%d: SET_CCOM=%s", config->connector_num,
+		LOG_INF("C%d: SET_CCOM=%s", config->connector_num,
 			get_ccom_name(port->una_policy.cc_mode));
 		rv = pdc_set_ccom(port->pdc, port->una_policy.cc_mode);
 		break;
 	case CMD_PDC_SET_DRP:
-		LOG_DBG("C%d: SET_DRP_MODE=%s", config->connector_num,
+		LOG_INF("C%d: SET_DRP_MODE=%s", config->connector_num,
 			get_drp_mode_name(port->drp));
 		rv = pdc_set_drp_mode(port->pdc, port->drp);
 		break;
