@@ -174,7 +174,7 @@ static struct usb_hid_keyboard_report report;
 
 static struct queue const report_queue =
 	QUEUE_NULL(32, struct usb_hid_keyboard_report);
-static struct k_mutex *report_queue_mutex;
+static K_MUTEX_DEFINE(report_queue_mutex);
 static void hid_kb_proc_queue(void);
 DECLARE_DEFERRED(hid_kb_proc_queue);
 
@@ -333,7 +333,7 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 			}
 		}
 
-		mutex_lock(report_queue_mutex);
+		k_mutex_lock(&report_queue_mutex, K_FOREVER);
 		if (queue_is_full(&report_queue)) {
 			if (print_full)
 				LOG_WRN("keyboard queue full\n");
@@ -344,7 +344,7 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 			print_full = 1;
 		}
 		queue_add_unit(&report_queue, &report);
-		mutex_unlock(report_queue_mutex);
+		k_mutex_unlock(&report_queue_mutex);
 
 		hook_call_deferred(&hid_kb_proc_queue_data, 0);
 	}
@@ -356,13 +356,13 @@ static void hid_kb_proc_queue(void)
 	int ret;
 	size_t size;
 
-	mutex_lock(report_queue_mutex);
+	k_mutex_lock(&report_queue_mutex, K_FOREVER);
 
 	/* clear queue if the usb dc status is reset or disconected */
 	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
 		queue_remove_units(&report_queue, NULL,
 				   queue_count(&report_queue));
-		mutex_unlock(report_queue_mutex);
+		k_mutex_unlock(&report_queue_mutex);
 		return;
 	} else if (check_usb_is_suspended()) {
 		if (!request_usb_wake()) {
@@ -371,7 +371,7 @@ static void hid_kb_proc_queue(void)
 	}
 
 	if (queue_is_empty(&report_queue)) {
-		mutex_unlock(report_queue_mutex);
+		k_mutex_unlock(&report_queue_mutex);
 		return;
 	}
 
@@ -391,7 +391,7 @@ static void hid_kb_proc_queue(void)
 	}
 
 next:
-	mutex_unlock(report_queue_mutex);
+	k_mutex_unlock(&report_queue_mutex);
 	hook_call_deferred(&hid_kb_proc_queue_data, 1 * USEC_PER_MSEC);
 }
 

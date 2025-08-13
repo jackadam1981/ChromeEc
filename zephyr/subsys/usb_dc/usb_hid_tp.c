@@ -27,7 +27,7 @@ BUILD_ASSERT(DT_NODE_EXISTS(TP_NODE),
 static const struct device *hid_dev;
 static struct queue const report_queue =
 	QUEUE_NULL(8, struct usb_hid_touchpad_report);
-static struct k_mutex *report_queue_mutex;
+static K_MUTEX_DEFINE(report_queue_mutex);
 static ATOMIC_DEFINE(hid_ep_in_busy, 1);
 
 #define HID_EP_BUSY_FLAG 0
@@ -366,19 +366,19 @@ __overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
 		return;
 	}
 
-	mutex_lock(report_queue_mutex);
+	k_mutex_lock(&report_queue_mutex, K_FOREVER);
 
 	if (!check_usb_is_suspended()) {
 		if (queue_is_empty(&report_queue)) {
 			if (write_tp_report(report) == -EBUSY) {
 				goto add_queue;
 			}
-			mutex_unlock(report_queue_mutex);
+			k_mutex_unlock(&report_queue_mutex);
 			return;
 		}
 	} else {
 		if (!request_usb_wake()) {
-			mutex_unlock(report_queue_mutex);
+			k_mutex_unlock(&report_queue_mutex);
 			return;
 		}
 	}
@@ -395,7 +395,7 @@ add_queue:
 	}
 	queue_add_unit(&report_queue, report);
 
-	mutex_unlock(report_queue_mutex);
+	k_mutex_unlock(&report_queue_mutex);
 
 	hook_call_deferred(&hid_tp_proc_queue_data, 0);
 }
@@ -404,13 +404,13 @@ static void hid_tp_proc_queue(void)
 {
 	struct usb_hid_touchpad_report report;
 
-	mutex_lock(report_queue_mutex);
+	k_mutex_lock(&report_queue_mutex, K_FOREVER);
 
 	/* clear queue if the usb dc status is reset or disconected */
 	if (!check_usb_is_configured() && !check_usb_is_suspended()) {
 		queue_remove_units(&report_queue, NULL,
 				   queue_count(&report_queue));
-		mutex_unlock(report_queue_mutex);
+		k_mutex_unlock(&report_queue_mutex);
 		return;
 	} else if (check_usb_is_suspended()) {
 		if (!request_usb_wake()) {
@@ -419,7 +419,7 @@ static void hid_tp_proc_queue(void)
 	}
 
 	if (queue_is_empty(&report_queue)) {
-		mutex_unlock(report_queue_mutex);
+		k_mutex_unlock(&report_queue_mutex);
 		return;
 	}
 
@@ -430,7 +430,7 @@ static void hid_tp_proc_queue(void)
 	}
 
 next:
-	mutex_unlock(report_queue_mutex);
+	k_mutex_unlock(&report_queue_mutex);
 	hook_call_deferred(&hid_tp_proc_queue_data, 1 * USEC_PER_MSEC);
 }
 

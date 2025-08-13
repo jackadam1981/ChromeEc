@@ -52,7 +52,7 @@ struct hid_dev_t {
 	uint8_t report_protocol;
 
 	struct queue const report_queue;
-	struct k_mutex *report_queue_mutex;
+	struct k_mutex report_queue_mutex;
 };
 
 struct google_desc {
