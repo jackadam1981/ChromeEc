@@ -34,6 +34,24 @@
       "parentUuid": "aa1db13e_708b41da",
       "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1894e44d_409420a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-13T23:54:49Z",
+      "side": 1,
+      "message": "Patryk,\n\nI booted the firmware w/ this CL (SHA HW ACCELERATOR) and w/o this CL to compare the timestamp delta between `Verifying RW image` and `RW verify OK`.\n\nThe [performance](https://screenshot.googleplex.com/48EbwvRWpEmCZDN) without this CL vs. the [performance](https://screenshot.googleplex.com/BXnz92pqysn8X3R) with this CL show that the delta between `Verifying RW image` and `RW verify OK` improves from a mean of 471.9 msecs to 146.1 msecs. The rebooting of the firmware was repeated 9 times. This is a significant improvement.",
+      "parentUuid": "cc175c06_a0ca392b",
+      "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
