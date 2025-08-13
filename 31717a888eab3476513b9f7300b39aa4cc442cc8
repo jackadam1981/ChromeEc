@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9855c097_497d08ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 50
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-13T17:00:40Z",
+      "side": 1,
+      "message": "It looks like we\u0027re failing in `test_sink_policy_detach_better_charger`, one of the ports becomes goes unattached but the sink_path bits in the test code doesn\u0027t get updated as it doesn\u0027t call `pdc_set_sink_path` in the detach flow.  We need to update `sink_path_en_mask` in the test code when this happens.\n\n```\n[00:00:15.440,000] \u003cdbg\u003e pdc_power_mgmt: pdc_send_cmd_wait_run: CCI_CMD_COMPLETED\n[00:00:15.440,000] \u003cdbg\u003e pdc_power_mgmt: handle_connector_status: C1: Connector Change: 0x0000\n[00:00:15.440,000] \u003cinf\u003e pdc_power_mgmt: C1: Unattached\n[00:00:15.450,000] \u003cinf\u003e pdc_power_mgmt: C0: sink_path_mask\u003d0x0, selected_port\u003d0, enable\u003d1\n[00:00:15.450,000] \u003cinf\u003e pdc_power_mgmt: C0: SendCmdStart\n[00:00:15.450,000] \u003cdbg\u003e pdc_power_mgmt: send_pdc_cmd: C0: Send PDC_SET_SINK_PATH (10) internal\n[00:00:15.450,000] \u003cinf\u003e pdc_power_mgmt: C0: sink_path_to_send\u003d1, chg_mgr_active_charge_port\u003d0\n[00:00:15.450,000] \u003cinf\u003e pdc_sink_policy: FAKE C0: pdc_set_sink_path en_mask\u003d0x3\n\n    Assertion failed at CMAKE_SOURCE_DIR/src/pdc_policy/sink_policy.c:129: custom_fake_pdc_set_sink_path: IS_ONE_BIT_SET(sink_path_en_mask) || sink_path_en_mask \u003d\u003d 0 is false\n```",
+      "parentUuid": "ea12ac2f_d7321809",
+      "revId": "31717a888eab3476513b9f7300b39aa4cc442cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52c2506e_4e2392da",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 50
