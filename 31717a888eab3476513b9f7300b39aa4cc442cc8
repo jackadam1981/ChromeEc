@@ -33,6 +33,40 @@
       "message": "Al - these changes are causing the multiple sink path check to trip during the PDC source policy tests.\n\nCan you help troubleshoot?  I think the changes are just altering some timing and exposing a latent bug in the sink path handling.",
       "revId": "31717a888eab3476513b9f7300b39aa4cc442cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c2506e_4e2392da",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-13T15:48:44Z",
+      "side": 1,
+      "message": "Might be worthwhile check `is_pdc_port_valid(i)` here as the port could be in `PDC_DISABLED` state.",
+      "revId": "31717a888eab3476513b9f7300b39aa4cc442cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e38633_280730bc",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 50
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-13T15:48:44Z",
+      "side": 1,
+      "message": "Do we need this for TI PDC?",
+      "revId": "31717a888eab3476513b9f7300b39aa4cc442cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
