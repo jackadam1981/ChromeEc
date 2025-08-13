@@ -154,7 +154,7 @@ const struct led_pins_node_t *led_get_node(enum led_color color,
 #endif /* TEST_BUILD */
 
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
-void board_led_apply_color(bool tmp)
+void led_asynchronous_apply_color(bool tmp)
 {
 	/*
 	 * GPIO LEDs can be applied when they are set and does not need to be
