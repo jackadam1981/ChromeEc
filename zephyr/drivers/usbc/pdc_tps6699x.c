@@ -18,6 +18,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/smf.h>
+#include <zephyr/spinlock.h>
 LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #include "tps6699x_cmd.h"
 #include "tps6699x_reg.h"
@@ -78,6 +79,10 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 /** @brief The number of times to try to initialize the driver before quitting.
  */
 #define PDC_INIT_RETRY_MAX 3
+
+/** @brief  When initializing, delay waiting for PDC to entering APP1 mode.
+ */
+#define PDC_INIT_MODE_APP1_DELAY (50)
 
 /**
  * @brief All raw_value data uses byte-0 for contains the register data was
@@ -221,6 +226,8 @@ struct pdc_config_t {
 	bool ccd;
 	/** The index of the port on chip */
 	uint8_t port_index_on_chip;
+	/** The I2C2 target address */
+	uint8_t pmc_address;
 };
 
 /**
@@ -533,6 +540,7 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.data_swap_complete = 1,
 		.sink_ready = 1,
 		.new_contract_as_consumer = 1,
+		.pd_status_updated = 1,
 		.ucsi_connector_status_change_notification = 1,
 		.power_event_occurred_error = 1,
 		.externl_dcdc_event_received = 1,
@@ -631,10 +639,83 @@ static int pdc_exit_dead_battery(struct pdc_data_t *data)
 	return 0;
 }
 
+static bool pdc_info_is_app1(const struct pdc_data_t *data)
+{
+	return data->info.running_in_flash_bank == REG_MODE_APP1;
+}
+
+/**
+ * Atomic flag to guard global system configuration write.
+ *
+ * This flag is shared across driver instances.
+ *
+ * TODO: We could make per-chip flag to improve performance.
+ */
+static struct k_spinlock global_system_configuration_spinlock;
+
+static int pdc_pmc_address_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_global_system_configuration global_system_configuration;
+	uint8_t current_pmc_address;
+	int rv;
+
+	/* Global system configuration is shared for dual-port PDCs so use a
+	lock to guard read/write. */
+	K_SPINLOCK(&global_system_configuration_spinlock)
+	{
+		rv = tps_rw_global_system_configuration(
+			&cfg->i2c, &global_system_configuration, I2C_MSG_READ);
+		if (rv) {
+			LOG_ERR("TI%d: Read global system configuration failed (%d)",
+				cfg->connector_number, rv);
+			K_SPINLOCK_BREAK;
+		}
+
+		if (is_first_port_on_chip(data)) {
+			current_pmc_address =
+				global_system_configuration
+					.port1_i2c2_target_address;
+		} else {
+			current_pmc_address =
+				global_system_configuration
+					.port2_i2c2_target_address;
+		}
+
+		if (cfg->pmc_address == current_pmc_address) {
+			LOG_INF("TI%d: PMC address unchanged: %02x",
+				cfg->connector_number, current_pmc_address);
+			K_SPINLOCK_BREAK;
+		} else {
+			LOG_INF("TI%d: Set PMC address %02x -> %02x",
+				cfg->connector_number, current_pmc_address,
+				cfg->pmc_address);
+		}
+
+		if (is_first_port_on_chip(data)) {
+			global_system_configuration.port1_i2c2_target_address =
+				cfg->pmc_address;
+		} else {
+			global_system_configuration.port2_i2c2_target_address =
+				cfg->pmc_address;
+		}
+
+		rv = tps_rw_global_system_configuration(
+			&cfg->i2c, &global_system_configuration, I2C_MSG_WRITE);
+		if (rv) {
+			LOG_ERR("TI%d: Write global system configuration failed (%d)",
+				cfg->connector_number, rv);
+			K_SPINLOCK_BREAK;
+		}
+	}
+	return rv;
+}
+
 static int handle_irqs(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_interrupt pdc_interrupt;
+	union reg_pd_status pdc_pd_status;
 	int rv;
 	int i;
 	bool interrupt_pending = false;
@@ -703,6 +784,18 @@ static int handle_irqs(struct pdc_data_t *data)
 		atomic_set(&data->sink_enable_possible, 1);
 		k_work_reschedule(&data->new_power_contract,
 				  K_MSEC(PDC_TI_NEW_POWER_CONTRACT_DELAY_MS));
+	}
+
+	if (pdc_interrupt.pd_status_updated) {
+		rv = tps_rd_pd_status(&cfg->i2c, &pdc_pd_status);
+		if (rv) {
+			LOG_ERR("TI%d: tps_rd_pd_status failed (%d)",
+				cfg->connector_number, rv);
+		} else {
+			LOG_INF("TI%d: PD status updated recovery details: 0x%02x",
+				cfg->connector_number,
+				pdc_pd_status.error_recovery_details);
+		}
 	}
 
 	/* TODO(b/345783692): Handle other interrupt bits. */
@@ -778,12 +871,13 @@ static enum smf_state_result st_init_run(void *o)
 		goto error;
 	}
 
-	LOG_INF("TI%d: FW Version %u.%u.%u, config='%s' (flash=%d)",
+	LOG_INF("TI%d: FW Version %u.%u.%u, config='%s' (flash=%d, app1=%d)",
 		cfg->connector_number,
 		PDC_FWVER_GET_MAJOR(data->info.fw_version),
 		PDC_FWVER_GET_MINOR(data->info.fw_version),
 		PDC_FWVER_GET_PATCH(data->info.fw_version),
-		data->info.project_name, data->info.is_running_flash_code);
+		data->info.project_name, data->info.is_running_flash_code,
+		pdc_info_is_app1(data));
 
 	/* Driver can only run on flash code. ROM code results in errors so it
 	 * should go into a suspended state if it can't initialize.
@@ -796,6 +890,19 @@ static enum smf_state_result st_init_run(void *o)
 	rv = pdc_interrupt_mask_init(data);
 	if (rv < 0) {
 		LOG_ERR("TI%d: Write interrupt mask failed (%d)",
+			cfg->connector_number, rv);
+		goto error;
+	}
+	/* Driver can only run after we set the PMC address, which
+	 * should be set in app1 mode. */
+	if (!pdc_info_is_app1(data)) {
+		set_state_delayed_post(data, ST_INIT, PDC_INIT_MODE_APP1_DELAY);
+		return SMF_EVENT_HANDLED;
+	}
+	/* Setup PMC address for this port */
+	rv = pdc_pmc_address_init(data);
+	if (rv < 0) {
+		LOG_ERR("TI%d: Init PMC address failed (%d)",
 			cfg->connector_number, rv);
 		goto error;
 	}
@@ -1653,6 +1760,9 @@ static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 	info->is_running_flash_code =
 		(mode == REG_MODE_APP0 || mode == REG_MODE_APP1);
 
+	/* Store mode in the running_in_flash_bank field */
+	info->running_in_flash_bank = mode;
+
 	/* TI FW main version */
 	info->fw_version = version.version;
 
@@ -1661,9 +1771,6 @@ static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 
 	/* TI PID (little-endian) */
 	info->pid = *(uint16_t *)tx_identity.product_id;
-
-	/* TI Running flash bank offset */
-	info->running_in_flash_bank = 0;
 
 	/* TI PD Revision (big-endian) */
 	info->pd_revision = 0x0000;
@@ -3149,6 +3256,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),              \
 		.ccd = DT_INST_PROP(inst, ccd),                                \
 		.port_index_on_chip = DT_INST_PROP(inst, port_index_on_chip),  \
+		.pmc_address = DT_INST_PROP(inst, pmc_address),                \
 	};                                                                     \
                                                                                \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL,                            \
