@@ -221,6 +221,8 @@ struct pdc_config_t {
 	bool ccd;
 	/** The index of the port on chip */
 	uint8_t port_index_on_chip;
+	/** The I2C2 target address */
+	uint8_t pmc_address;
 };
 
 /**
@@ -628,6 +630,65 @@ static int pdc_exit_dead_battery(struct pdc_data_t *data)
 	return 0;
 }
 
+static bool pdc_info_is_app1(const struct pdc_data_t *data)
+{
+	return data->info.extra & 1;
+}
+
+static int pdc_pmc_address_init(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_global_system_configuration global_system_configuration;
+	uint8_t current_pmc_address;
+	int iteration = 1;
+	int rv;
+
+	/* tps_rw_global_system_configuration is not atomic so we may need to do
+	 * this NUM_PDC_TPS6699X_PORTS times.*/
+	for (; iteration <= NUM_PDC_TPS6699X_PORTS + 1; ++iteration) {
+		rv = tps_rw_global_system_configuration(
+			&cfg->i2c, &global_system_configuration, I2C_MSG_READ);
+		if (rv) {
+			LOG_ERR("Read global system configuration failed");
+			return rv;
+		}
+
+		if (is_first_port_on_chip(data)) {
+			current_pmc_address =
+				global_system_configuration
+					.port1_i2c2_target_address;
+			global_system_configuration.port1_i2c2_target_address =
+				cfg->pmc_address;
+		} else {
+			current_pmc_address =
+				global_system_configuration
+					.port2_i2c2_target_address;
+			global_system_configuration.port2_i2c2_target_address =
+				cfg->pmc_address;
+		}
+
+		LOG_INF("C%d: Set PMC address (%d) %u -> %u",
+			cfg->connector_number, iteration, current_pmc_address,
+			cfg->pmc_address);
+
+		if (cfg->pmc_address == current_pmc_address) {
+			return 0;
+		}
+
+		if (iteration == NUM_PDC_TPS6699X_PORTS + 1) {
+			return -1;
+		}
+
+		rv = tps_rw_global_system_configuration(
+			&cfg->i2c, &global_system_configuration, I2C_MSG_WRITE);
+		if (rv) {
+			LOG_ERR("Write global system configuration failed");
+			return rv;
+		}
+	}
+	return -1;
+}
+
 static int handle_irqs(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
@@ -770,20 +831,26 @@ static enum smf_state_result st_init_run(void *o)
 		goto error;
 	}
 
-	LOG_INF("DR%d: FW Version %u.%u.%u, config='%s' (flash=%d)",
+	LOG_INF("DR%d: FW Version %u.%u.%u, config='%s' (flash=%d, app1=%d)",
 		cfg->connector_number,
 		PDC_FWVER_GET_MAJOR(data->info.fw_version),
 		PDC_FWVER_GET_MINOR(data->info.fw_version),
 		PDC_FWVER_GET_PATCH(data->info.fw_version),
-		data->info.project_name, data->info.is_running_flash_code);
+		data->info.project_name, data->info.is_running_flash_code,
+		pdc_info_is_app1(data));
 
-	/* Driver can only run on flash code. ROM code results in errors so it
-	 * should go into a suspended state if it can't initialize.
-	 */
-	if (!data->info.is_running_flash_code) {
+	/* Driver can only run after we set the PMC address, which should be set
+	 * in app1 mode. */
+	if (!pdc_info_is_app1(data)) {
 		goto error;
 	}
 
+	/* Setup PMC address for this port */
+	rv = pdc_pmc_address_init(data);
+	if (rv < 0) {
+		LOG_ERR("Init PMC address failed");
+		goto error;
+	}
 	/* Setup I2C1 interrupt mask for this port */
 	rv = pdc_interrupt_mask_init(data);
 	if (rv < 0) {
@@ -1655,6 +1722,9 @@ static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 	info->driver_name[sizeof(info->driver_name) - 1] = '\0';
 
 	info->no_fw_update = cfg->no_fw_update;
+
+	/* If we are in mode APP1. */
+	info->extra = mode == REG_MODE_APP1;
 
 	return 0;
 }
@@ -3087,6 +3157,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.no_fw_update = DT_INST_PROP(inst, no_fw_update),              \
 		.ccd = DT_INST_PROP(inst, ccd),                                \
 		.port_index_on_chip = DT_INST_PROP(inst, port_index_on_chip),  \
+		.pmc_address = DT_INST_PROP(inst, pmc_address),                \
 	};                                                                     \
                                                                                \
 	DEVICE_DT_INST_DEFINE(inst, pdc_init, NULL,                            \
