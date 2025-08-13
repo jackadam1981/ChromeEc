@@ -16,6 +16,24 @@
       "message": "How is this supposed to work? What is the purpose of this change?\n\nIIRC we are calling EC\u0027s software implementation of SHA256, enabling SHA accelerator won\u0027t automagically improve SHA256 calculation time.\n\nAlso, RNG benchmark is not a suitable benchmark for the SHA256 calculation time.\n\nEven if you can get SHA accelerator working, you will only gain some improvement in RW signature verification which takes place in RO.",
       "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc175c06_a0ca392b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-13T05:27:06Z",
+      "side": 1,
+      "message": "Hello Patryk and Dawid,\n\nWe have been observing host communication failure mainly on `helipilot` and very less on `buccaneer` when running the zephyr firmware version.\n\nWe have been working with `Nuvoton` to understand why it is taken so long to initialize the zephyr helipilot firmware. The idea of SHA HW accelerator was proposed by Nuvoton to speed up the driver initialization. We have observed that the success rate of establishing host communications after flashing the firmware increases to 50%. I have observed that the host communications get established on karis directly after flashing the firmware on 1x devices. Sometimes, it get lost after a system reboot. \n\nDo you have any insight about the below:\n\n- Can the fingerprint library block host communication: does NVIC have anything to do with this? Nuvoton has a theory that FPC library is disabling the NVIC for sometime.\n\n- When does the kernel AP start successfully talking to the fingerprint sensor? After booting to RO, RW, etc.? Can we increase the number of retries? \n\n- In this [CL](https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/6218201/2/drivers/platform/chrome/cros_ec_proto.c#310), what is the difference between `RWSIG_CONTINUE_RETRIES` and `RWSIG_CONTINUE_MAX_ERRORS_IN_ROW`?\n\n- Could having the private fpc binary as part of the firmware impact the host communication? David observed that removing the private fpc library always leads to proper host communications.\n\nAny further thoughts to debug or solve this issue?\n\nBest",
+      "parentUuid": "aa1db13e_708b41da",
+      "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
