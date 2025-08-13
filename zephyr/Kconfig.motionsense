@@ -185,6 +185,7 @@ config PLATFORM_EC_GESTURE_DETECTION
 
 config PLATFORM_EC_GESTURE_HOST_DETECTION
 	bool "Gesture host detection"
+	select PLATFORM_EC_GESTURE_DETECTION
 	help
 	  Enable gesture host interface
 
