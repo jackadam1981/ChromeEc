@@ -16,6 +16,41 @@
       "message": "Jason - can this LED support be modeled by the existing devicetree enabled code?",
       "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a67faad_90a45726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T02:58:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "da3ec693_edd0ccd2",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd0f4e3_9607f562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T02:58:33Z",
+      "side": 1,
+      "message": "I\u0027ve written a patch for the existing LED driver to support caboc LED behavior: crrev.com/c/6844172 Could someone verify it works correctly? I don\u0027t have a caboc on my desk.",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
