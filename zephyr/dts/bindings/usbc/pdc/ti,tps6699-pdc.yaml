@@ -25,3 +25,14 @@ properties:
       used as connector number in UCSI 4CC tasks. For single-port PDCs, the
       index must be 1. For dual-port PDCs, one of the index should be 1 and the
       other should be 2.
+  pmc-address:
+    type: int
+    enum:
+      - 0x50
+      - 0x51
+      - 0x52
+      - 0x68
+      - 0x69
+    required: true
+    description: |
+      This is the I2C2 target address.
