@@ -22,6 +22,30 @@
       },
       "revId": "81b6d8af786455295fb94a6b40bb7059c57ead45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5eea7e_862d6120",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Changed to gpio_ec_smc_wake_l.",
+      "parentUuid": "1f488b24_18c0e19a",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "81b6d8af786455295fb94a6b40bb7059c57ead45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

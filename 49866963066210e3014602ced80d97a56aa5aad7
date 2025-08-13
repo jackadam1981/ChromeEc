@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c199ed5_262e16f5",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "25e649d3_8b63a88c",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbd40c92_a190e75b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-08T15:37:13Z",
       "side": 1,
       "message": "Delete - power sequence GPIO.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d802db_9b5e0ad1",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "fbd40c92_a190e75b",
       "range": {
         "startLine": 47,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5b0686_2ac16d9d",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Changed to GPIO_VOLTAGE_1P8.",
+      "parentUuid": "4d92c7f5_436205dc",
+      "range": {
+        "startLine": 54,
+        "startChar": 45,
+        "endLine": 54,
+        "endChar": 69
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5077142f_c8ddeb18",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-08-08T15:37:13Z",
       "side": 1,
       "message": "Power sequence signal - remove",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c470c3a7_3378e478",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "5077142f_c8ddeb18",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba22972_f309ce8a",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Changed to GPIO_VOLTAGE_1P8.",
+      "parentUuid": "b063335d_85faded0",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc41471f_6ca55ba8",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-08-08T15:37:13Z",
       "side": 1,
       "message": "Delete - power sequence GPIO.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dee6904_d0831f1c",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "cc41471f_6ca55ba8",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59387d16_279126d7",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "df30d223_4f64db2a",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 10
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0d0836c_6d3e1eff",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-08-08T15:37:13Z",
       "side": 1,
       "message": "This signal (GPIO107) is shown as a test point only in the schematic.  Setting this to an input to prevent leakage.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c34e64_4719e3d9",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Set GPIO107 to unused-gpios.",
+      "parentUuid": "f0d0836c_6d3e1eff",
       "range": {
         "startLine": 116,
         "startChar": 2,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eadc29b_765dfd47",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "761b682c_4344f1ee",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a268e318_c5d901f6",
@@ -221,6 +437,30 @@
       "writtenOn": "2025-08-08T15:37:13Z",
       "side": 1,
       "message": "Delete - power sequence GPIOs.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "49866963066210e3014602ced80d97a56aa5aad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20f8738_09841d4f",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:47:32Z",
+      "side": 1,
+      "message": "Removed the power sequence GPIOs.",
+      "parentUuid": "a268e318_c5d901f6",
       "range": {
         "startLine": 143,
         "startChar": 0,
