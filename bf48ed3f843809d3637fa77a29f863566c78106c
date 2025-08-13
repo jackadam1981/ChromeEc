@@ -69,6 +69,24 @@
       "parentUuid": "1dd0f4e3_9607f562",
       "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ffd3dd_fc23562c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-13T20:16:47Z",
+      "side": 1,
+      "message": "Hi Tommy,\n\nSome Nissa boards do not use the common led driver because the Nissa baseboard was designed before the common led driver existed, so nissa boards may choose to stick to the reference instead of implementing the new driver.\n\nAs for special LED features: while the led is a \"common driver\", it is coded in our shim layer and not upstreamed to Zephyr. So you don\u0027t have to worry about difficulty in supporting changes. There is no difference in the effort required for us to change the led driver vs changing board code, and we\u0027re constantly adding new features to the LED driver all the time. Whereas if you made the LED driver board specific, you will also have to write an emulated board for testing the driver to maintain our test coverage standard, and you will have to repeat this effort for every SKU afterwards.\n\nFor ectools, I see that the driver right now only has on/off options and has not implemented brightness. I can add support for it as well.",
+      "parentUuid": "558d789e_b156317c",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
