@@ -1575,15 +1575,23 @@ static bool should_swap_to_source(struct pdc_port_t *port)
 	 */
 
 	if (port->snk_policy.src.pdo_count == 0) {
+		LOG_INF("C%d: %s: Remain sink because partner has no source caps",
+			port_num, __func__);
 		return false;
 	}
 
 	if (port->snk_policy.pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR ||
 	    !(port->snk_policy.pdo & PDO_FIXED_DUAL_ROLE)) {
+		LOG_INF("C%d: %s: Remain sink because partner has unconstrained "
+			"power or is not DRP-capable (PDO=0x%08x)",
+			port_num, __func__, port->snk_policy.pdo);
 		return false;
 	}
 
 	if (charge_manager_get_active_charge_port() == port_num) {
+		LOG_INF("C%d: %s: Remain sink because this is the active "
+			"charging port",
+			port_num, __func__);
 		return false;
 	}
 
@@ -1641,11 +1649,16 @@ static void run_snk_policies(struct pdc_port_t *port)
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_EVAL_SWAP_TO_SRC)) {
-		if (should_swap_to_source(port)) {
+		bool should_swap = should_swap_to_source(port);
+
+		if (should_swap) {
 			atomic_set_bit(
 				pdc_data[port_num]->port.snk_policy.flags,
 				SNK_POLICY_SWAP_TO_SRC);
 		}
+
+		LOG_INF("C%d: SNK_POLICY_EVAL_SWAP_TO_SRC: Prefer %s role.",
+			config->connector_num, should_swap ? "source" : "sink");
 		return;
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_ALLOW_PR_SWAP)) {
