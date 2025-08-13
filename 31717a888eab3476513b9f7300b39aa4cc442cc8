@@ -67,6 +67,24 @@
       "message": "Do we need this for TI PDC?",
       "revId": "31717a888eab3476513b9f7300b39aa4cc442cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa35dea_f3a1f782",
+        "filename": "zephyr/test/pdc/testcase.yaml",
+        "patchSetId": 50
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-08-13T16:09:32Z",
+      "side": 1,
+      "message": "Right now the battery status/capabilities is rtk only",
+      "parentUuid": "f1e38633_280730bc",
+      "revId": "31717a888eab3476513b9f7300b39aa4cc442cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
