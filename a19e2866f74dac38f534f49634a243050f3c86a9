@@ -22,6 +22,30 @@
       },
       "revId": "a19e2866f74dac38f534f49634a243050f3c86a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "177bfed7_f021a376",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-08-13T06:43:36Z",
+      "side": 1,
+      "message": "Changed to GPIO_VOLTAGE_1P8.",
+      "parentUuid": "2b745686_fae6d186",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "a19e2866f74dac38f534f49634a243050f3c86a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
