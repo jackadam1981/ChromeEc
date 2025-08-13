@@ -268,7 +268,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	if (!color_set)
 		led_set_color(LED_OFF, led_id);
 
-	board_led_apply_color(false);
+	led_asynchronous_apply_color(false);
 	return EC_SUCCESS;
 }
 
@@ -287,7 +287,7 @@ __override int led_is_supported(enum ec_led_id led_id)
 }
 
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
-void board_led_apply_color(bool has_transitions)
+void led_asynchronous_apply_color(bool has_transitions)
 {
 	if (has_transitions) {
 		k_work_schedule(&led_tick_control_data, K_NO_WAIT);
