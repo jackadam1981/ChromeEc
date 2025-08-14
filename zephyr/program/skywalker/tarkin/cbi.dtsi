@@ -11,6 +11,23 @@
 		 * FW_CONFIG field to indicate the device is clamshell
 		 * or convertible.
 		 */
+		kb_bl {
+			enum-name = "FW_KB_BL";
+			start = <1>;
+			size = <1>;
+			kb-bl-not-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_NOT_PRESENT";
+				value = <0>;
+			};
+			kb-bl-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_PRESENT";
+				value = <1>;
+                		default;
+			};
+		};
+		
 		form_factor {
 			enum-name = "FORM_FACTOR";
 			start = <28>;

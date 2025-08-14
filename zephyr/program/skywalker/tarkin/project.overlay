@@ -115,6 +115,11 @@
 			0x0a    /* C14 */
 		>;
 	};
+
+	kblight {
+		compatible = "cros-ec,kblight-pwm";
+		pwms = <&pwm3 0 PWM_HZ(100) PWM_POLARITY_NORMAL>;
+	};
 };
 
 &cros_kb_raw {
