@@ -70,6 +70,30 @@
       },
       "revId": "9015b2684a8b7c64937d206c2cd5b8ea8f45ee82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335770a2_c398db4a",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T21:38:55Z",
+      "side": 0,
+      "message": "I\u0027m not why gerrit shows it like this, but I checked it out with git and it looks like you removed the `# shellcheck disable\u003dSC1091` line in `flash_fp_mcu` when doing the merge. This would [explain why shellcheck is complaining](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6833339/comments/0910a500_25153069).",
+      "parentUuid": "17bb87fb_297ea4b5",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "9015b2684a8b7c64937d206c2cd5b8ea8f45ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
