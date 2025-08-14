@@ -108,6 +108,13 @@ bool charge_manager_is_seeded(void);
 void charge_manager_update_charge(int supplier, int port,
 				  const struct charge_port_info *charge);
 
+/**
+ * @brief Invalidate suppliers for given port
+ *
+ * @param port
+ */
+void charge_manager_invalidate_suppliers(int port);
+
 /* Partner port dualrole capabilities */
 enum dualrole_capabilities {
 	CAP_UNKNOWN,
