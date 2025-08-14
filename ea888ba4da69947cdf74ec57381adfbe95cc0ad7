@@ -87,6 +87,24 @@
       "parentUuid": "a9fb2232_4871b4d8",
       "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1c66b5_8004903c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T21:37:04Z",
+      "side": 1,
+      "message": "Looking back at the `git blame` history, it looks like `# shellcheck disable\u003dSC1091` was added in https://crrev.com/c/5660957. That will silence the warning from shellcheck.\n\nI think the issue is that in [the merge](https://crrev.com/c/6825683) you [removed that line in `flash_fp_mcu` when resolving the conflicts](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6825683/2/util/flash_fp_mcu).",
+      "parentUuid": "fe26e1d7_094e27fd",
+      "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
