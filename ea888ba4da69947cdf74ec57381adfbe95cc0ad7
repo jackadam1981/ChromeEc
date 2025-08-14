@@ -16,6 +16,23 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8707062615442953265) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.volmar.hw.fingerprint-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0910a500_25153069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T20:46:58Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and submit this one before the merge in https://crrev.com/c/6825683. Once this one is submitted, you can re-run the merge script (starting from scratch) and you shouldn\u0027t have any presubmit errors when uploading.",
+      "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
