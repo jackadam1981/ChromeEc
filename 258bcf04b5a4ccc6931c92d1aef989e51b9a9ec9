@@ -70,6 +70,30 @@
       },
       "revId": "258bcf04b5a4ccc6931c92d1aef989e51b9a9ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e332fe_89653c04",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-14T21:35:36Z",
+      "side": 0,
+      "message": "The SC1091 is what was removed in the main with the recent changes and this is why this error started happening.",
+      "parentUuid": "cb01302f_a8c055fd",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "258bcf04b5a4ccc6931c92d1aef989e51b9a9ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
