@@ -52,6 +52,24 @@
       "parentUuid": "8b17b6f6_a5a4f354",
       "revId": "afba4b58aba4947f2e0857259550887779ffd07f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd373a9_1cc8a943",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-14T02:13:19Z",
+      "side": 1,
+      "message": "not really, it can still happen:\n```\nINFO: EC build system didn\u0027t recognize fatcatrvp-ite. Assuming no baseboard.\nINFO: Using servo_v4p1_with_ccd_gsc.\nINFO: Using ec image : /mnt/host/source/src/platform/ec/build/zephyr/fatcatrvp-ite/output/ec.bin\nINFO: Flashing chip ite_uart.\nINFO: Programming EC firmware using ITE UART interface\nINFO: ITE tool \u003d /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr\nINFO: EC UART \u003d /dev/pts/13\nWARNING: You might want to run this tool in a chroot that was entered with \u0027cros_sdk --no-ns-pid\u0027 (see crbug.com/444931 for details)\nINFO: Using 115200 baudrate\nINFO: Reading FMAP section from EC chip\nINFO: sudo -- /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr -d /dev/pts/13 -b 115200 -r /tmp/tmp.Mmi5CPihEr/ec.cur.fmap.bin -R 384000 518\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d90 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d f2 22 a5\nInvalid EFLASH TYPE\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d90 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d 90 f2 8d\nInvalid EFLASH TYPE\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d00 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d 59 f2 22\nInvalid EFLASH TYPE\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003de8 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d 90 f2 22\nInvalid EFLASH TYPE\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d90 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d f2 22 a5\nInvalid EFLASH TYPE\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nDBGR DISABLE WATCHDOG FAILED!\nwdt\u003d90 \u003d\u003e do restart wdt to avoid wdt interrupt flashing...\nFlash ID \u003d f2 22 a5\nInvalid EFLASH TYPE\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nFlash ID \u003d ef 40 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\n```",
+      "parentUuid": "fddbf9fb_e1578432",
+      "revId": "afba4b58aba4947f2e0857259550887779ffd07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
