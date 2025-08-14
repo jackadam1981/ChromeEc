@@ -52,6 +52,24 @@
       "parentUuid": "cc175c06_a0ca392b",
       "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419b2368_df45f13a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-14T07:36:45Z",
+      "side": 1,
+      "message": "\u003e Can the fingerprint library block host communication: does NVIC have anything to do with this? Nuvoton has a theory that FPC library is disabling the NVIC for sometime.\n\nIMO it is unlikely. We would need check ASM code to make sure. However the FP lib is called only in RW. Shouldn\u0027t SHI be initialized at this point? \n\n\u003e When does the kernel AP start successfully talking to the fingerprint sensor? After booting to RO, RW, etc.? Can we increase the number of retries?\n\nDiscussed in the call\n\n\u003e In this CL, what is the difference between RWSIG_CONTINUE_RETRIES and RWSIG_CONTINUE_MAX_ERRORS_IN_ROW?\n\nDiscussed in the call\n\n\u003e Could having the private fpc binary as part of the firmware impact the host communication? David observed that removing the private fpc library always leads to proper host communications.\n\nMaybe check if the FP initialization happens after or before fully enabling Host Communication.",
+      "parentUuid": "1894e44d_409420a2",
+      "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
