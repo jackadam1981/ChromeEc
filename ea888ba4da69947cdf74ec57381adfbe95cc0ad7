@@ -69,6 +69,24 @@
       "parentUuid": "8758ad4f_b961d5f0",
       "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe26e1d7_094e27fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T21:26:42Z",
+      "side": 1,
+      "message": "\u003e I am creating the branch from ~/chromiumos/src/platform/ec\n\nHmm, then I think this change shouldn\u0027t be necessary, since the path is correct:\n\n```\n~/chromiumos/src/platform/ec/util$ ls ../../../scripts/lib/shflags/shflags \n../../../scripts/lib/shflags/shflags\n```",
+      "parentUuid": "a9fb2232_4871b4d8",
+      "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
