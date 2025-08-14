@@ -101,6 +101,11 @@ typedef int (*emul_pdc_set_vdo_t)(const struct emul *target, uint8_t num_vdos,
 
 typedef int (*emul_pdc_get_frs_t)(const struct emul *target, bool *enabled);
 
+typedef int (*emul_pdc_get_battery_status_t)(const struct emul *target,
+					     union battery_status_t *bstat);
+typedef int (*emul_pdc_get_battery_capability_t)(
+	const struct emul *target, union battery_capability_t *bcap);
+
 typedef int (*emul_pdc_idle_wait_t)(const struct emul *target);
 
 typedef int (*emul_pdc_set_vconn_sourcing_t)(const struct emul *target,
@@ -168,6 +173,8 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_dead_battery_t set_dead_battery;
 	emul_pdc_get_dead_battery_t get_dead_battery;
 	emul_pdc_get_autoneg_sink_t get_autoneg_sink;
+	emul_pdc_get_battery_capability_t get_battery_capability;
+	emul_pdc_get_battery_status_t get_battery_status;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -848,6 +855,36 @@ static inline int emul_pdc_reset_feature_flags(const struct emul *target)
 	return -ENOSYS;
 }
 /* LCOV_EXCL_STOP - Internal emulator feature */
+
+static inline int emul_pdc_get_battery_status(const struct emul *target,
+					      union battery_status_t *bstat)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+
+	if (api->get_battery_status) {
+		return api->get_battery_status(target, bstat);
+	}
+	return -ENOSYS;
+}
+
+static inline int
+emul_pdc_get_battery_capability(const struct emul *target,
+				union battery_capability_t *bcap)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->get_battery_capability) {
+		return api->get_battery_capability(target, bcap);
+	}
+	return -ENOSYS;
+}
 
 static inline int emul_pdc_set_dead_battery(const struct emul *target,
 					    int dead_battery)
