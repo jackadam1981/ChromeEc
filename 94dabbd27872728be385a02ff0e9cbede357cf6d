@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9a1272_8752791f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8680,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T22:47:37Z",
+      "side": 1,
+      "message": "If you wanted, you could create a followup CL to make the commands sequential (looks like we removed `0x0415` and `0x0416`). Either way is fine with me.",
+      "range": {
+        "startLine": 8680,
+        "startChar": 32,
+        "endLine": 8680,
+        "endChar": 38
+      },
+      "revId": "94dabbd27872728be385a02ff0e9cbede357cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
