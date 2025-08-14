@@ -47,6 +47,12 @@
 
 /* fatcatrvp-npcx overrides follow... */
 
+/ {
+	aliases {
+		gpio-wp = &gpio_wp_odl;
+	};
+};
+
 &cbi_flash {
 	/*
 	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
