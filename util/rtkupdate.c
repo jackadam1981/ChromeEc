@@ -440,7 +440,7 @@ int send_pages(int uart_fd, FILE *file, uint32_t sram_address,
 	}
 
 	/* try again */
-	if (retry == 1) {
+	while (retry == 1) {
 		sleep(1);
 		tcflush(uart_fd, TCIOFLUSH);
 
@@ -457,7 +457,9 @@ int send_pages(int uart_fd, FILE *file, uint32_t sram_address,
 			fprintf(stderr,
 				"\nFailed to retry expected response for data page %zu\n",
 				*page + 1);
-			return -1;
+			// return -1;
+		} else {
+			retry = 0;
 		}
 	}
 	*total_bytes_sent += bytes_read;
