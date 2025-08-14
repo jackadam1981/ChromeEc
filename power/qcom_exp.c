@@ -594,14 +594,20 @@ enum power_state power_chipset_init(void)
 	 * TODO(b/201099749): EC bootloader: Give RO chance to run EFS after
 	 * shutdown from recovery screen
 	 */
-	if (reset_flags & EC_RESET_FLAG_AP_OFF)
+	if (IS_ENABLED(CONFIG_BRINGUP)) {
 		auto_power_on = 0;
-	else if (!(reset_flags & EC_RESET_FLAG_EFS) &&
-		 (reset_flags & EC_RESET_FLAG_SYSJUMP))
+	} else if (reset_flags & EC_RESET_FLAG_AP_OFF) {
 		auto_power_on = 0;
+	} else if (!(reset_flags & EC_RESET_FLAG_EFS) &&
+		   (reset_flags & EC_RESET_FLAG_SYSJUMP)) {
+		auto_power_on = 0;
+	}
 
-	if (auto_power_on)
+	if (auto_power_on) {
 		CPRINTS("auto_power_on set due to reset flags");
+	} else {
+		CPRINTS("auto_power_on disabled");
+	}
 
 	return init_power_state;
 }
