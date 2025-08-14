@@ -9,3 +9,4 @@ zephyr_library_sources_ifdef(CONFIG_CROS_FLASH	        cros_flash.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_FLASH_BACKEND_STM32
 	                                                cros_flash_stm32_backend.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_FLASH_RTK cros_flash_rtk.c)
+zephyr_library_sources_ifdef(CONFIG_CROS_FLASH_RTKFP cros_flash_rtkfp.c)
