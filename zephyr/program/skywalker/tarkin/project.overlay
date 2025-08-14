@@ -52,6 +52,8 @@
 		/delete-node/ lid_360_l;
 		/delete-node/ ec_voldn_btn_odl;
 		/delete-node/ ec_volup_btn_odl;
+		/delete-node/ ec_pen_chg_dis_odl;
+		/delete-node/ en_pp5000_z1;
 
 		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
 			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
@@ -61,9 +63,6 @@
 		};
 		gpio_5p0va_pwr_mode: 5p0va_pwr_mode {
 			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
-		};
-		gpio_pen_eject: pen_eject {
-			gpios = <&gpiof 4 (GPIO_INPUT | GPIO_PULL_UP)>;
 		};
 	};
 
@@ -88,8 +87,11 @@
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 3 GPIO_INPUT_PULL_DOWN>,
 			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpioj 2 GPIO_INPUT_PULL_DOWN>;
 	};
