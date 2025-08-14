@@ -95,7 +95,9 @@ SYS_INIT(init_mkbp_mutex, POST_KERNEL, 50);
 	defined(CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT)
 static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 {
+#if 0
 	uint32_t lock_key;
+#endif
 	/*
 	 * If we want to take a timestamp, then disable interrupts temporarily
 	 * to ensure that the timestamp is as close as possible to the setting
@@ -103,7 +105,9 @@ static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 	 * taking the timestamp and setting the gpio)
 	 */
 	if (timestamp) {
+#if 0
 		lock_key = irq_lock();
+#endif
 		*timestamp = __hw_clock_source_read();
 	}
 
@@ -112,18 +116,22 @@ static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 	else
 		gpio_set_level(GPIO_EC_INT_L, !active);
 
-	if (timestamp)
+	if (timestamp) {
+#if 0
 		irq_unlock(lock_key);
+#endif
+	}
 
 #ifdef CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
 	/*
-	 * In case EC_INT_L is not a wake pin, make sure that we also attempt to
-	 * wake the AP via a host event.  Only use this second notification
-	 * interface in suspend since MKBP events are a part of the
-	 * HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK. This can cause an MKBP host
-	 * event to be set in S0, but not triggering an SCI since the event is
-	 * not in the SCI mask.  This would also cause the board to prematurely
-	 * wake up when suspending due to the lingering event.
+	 * In case EC_INT_L is not a wake pin, make sure that we also
+	 * attempt to wake the AP via a host event.  Only use this
+	 * second notification interface in suspend since MKBP events
+	 * are a part of the HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK. This
+	 * can cause an MKBP host event to be set in S0, but not
+	 * triggering an SCI since the event is not in the SCI mask.
+	 * This would also cause the board to prematurely wake up when
+	 * suspending due to the lingering event.
 	 */
 	if (active && chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
 		host_set_single_event(EC_HOST_EVENT_MKBP);
@@ -136,7 +144,8 @@ static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 static int mkbp_set_host_active_via_event(int active, uint32_t *timestamp)
 {
-	/* This should be moved into host_set_single_event for more accuracy */
+	/* This should be moved into host_set_single_event for more
+	 * accuracy */
 	if (timestamp)
 		*timestamp = __hw_clock_source_read();
 	if (active)
@@ -155,15 +164,15 @@ static int mkbp_set_host_active_via_heci(int active, uint32_t *timestamp)
 #endif
 
 /*
- * This communicates to the AP whether an MKBP event is currently available
- * for processing.
+ * This communicates to the AP whether an MKBP event is currently
+ * available for processing.
  *
- * NOTE: When active is 0 this function CANNOT de-schedule. It must be very
- * simple like toggling a GPIO or no-op
+ * NOTE: When active is 0 this function CANNOT de-schedule. It must be
+ * very simple like toggling a GPIO or no-op
  *
  * @param active  1 if there is an event, 0 otherwise
- * @param timestamp, if non-null this variable will be written as close to the
- *			hardware interrupt from EC->AP as possible.
+ * @param timestamp, if non-null this variable will be written as close
+ * to the hardware interrupt from EC->AP as possible.
  */
 static int mkbp_set_host_active(int active, uint32_t *timestamp)
 {
@@ -182,8 +191,9 @@ static int mkbp_set_host_active(int active, uint32_t *timestamp)
 #if defined(CONFIG_MKBP_EVENT_WAKEUP_MASK) || \
 	defined(CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK)
 /**
- * Check if the host is sleeping. Check our power state in addition to the
- * self-reported sleep state of host (CONFIG_POWER_TRACK_HOST_SLEEP_STATE).
+ * Check if the host is sleeping. Check our power state in addition to
+ * the self-reported sleep state of host
+ * (CONFIG_POWER_TRACK_HOST_SLEEP_STATE).
  */
 static inline int host_is_sleeping(void)
 {
@@ -200,9 +210,9 @@ static inline int host_is_sleeping(void)
 #endif /* CONFIG_MKBP_(HOST_EVENT_)?WAKEUP_MASK */
 
 /*
- * This is the deferred function that ensures that we attempt to set the MKBP
- * interrupt again if there was a failure in the system (EC or AP) and the AP
- * never called mkbp_fifo_get_next_event.
+ * This is the deferred function that ensures that we attempt to set the
+ * MKBP interrupt again if there was a failure in the system (EC or AP)
+ * and the AP never called mkbp_fifo_get_next_event.
  */
 static void force_mkbp_if_events(void);
 DECLARE_DEFERRED(force_mkbp_if_events);
@@ -216,8 +226,9 @@ test_export_static void activate_mkbp_with_events(uint32_t events_to_add)
 #ifdef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK
 	/*
 	 * Check to see if this host event should wake the system.
-	 * Use == instead of & here since we don't want to apply the host event
-	 * skipping logic if we are adding a host event and something else.
+	 * Use == instead of & here since we don't want to apply the
+	 * host event skipping logic if we are adding a host event and
+	 * something else.
 	 */
 	if (events_to_add == BIT(EC_MKBP_EVENT_HOST_EVENT) ||
 	    events_to_add == BIT(EC_MKBP_EVENT_HOST_EVENT64))
@@ -236,7 +247,8 @@ test_export_static void activate_mkbp_with_events(uint32_t events_to_add)
 	mutex_lock(&state.lock);
 	state.events |= events_to_add;
 
-	/* To skip the interrupt, we cannot have the EC_MKBP_EVENT_KEY_MATRIX */
+	/* To skip the interrupt, we cannot have the
+	 * EC_MKBP_EVENT_KEY_MATRIX */
 	skip_interrupt = skip_interrupt &&
 			 !(state.events & BIT(EC_MKBP_EVENT_KEY_MATRIX));
 
@@ -275,9 +287,9 @@ test_export_static void activate_mkbp_with_events(uint32_t events_to_add)
 }
 
 /*
- * This is the deferred function that ensures that we attempt to set the MKBP
- * interrupt again if there was a failure in the system (EC or AP) and the AP
- * never called mkbp_fifo_get_next_event.
+ * This is the deferred function that ensures that we attempt to set the
+ * MKBP interrupt again if there was a failure in the system (EC or AP)
+ * and the AP never called mkbp_fifo_get_next_event.
  */
 static void force_mkbp_if_events(void)
 {
@@ -287,34 +299,36 @@ static void force_mkbp_if_events(void)
 	mutex_lock(&state.lock);
 	if (state.interrupt == INTERRUPT_INACTIVE) {
 		/*
-		 * When this function is called with state of interrupt set
-		 * to INACTIVE, it means that EC failed to send MKBP interrupt
-		 * to AP. In this case we are going to send interrupt once
-		 * again (without limits).
+		 * When this function is called with state of interrupt
+		 * set to INACTIVE, it means that EC failed to send MKBP
+		 * interrupt to AP. In this case we are going to send
+		 * interrupt once again (without limits).
 		 */
 		send_mkbp_interrupt = 1;
 	} else if (state.interrupt == INTERRUPT_ACTIVE) {
 		/*
-		 * When this function is called with state of interrupt set
-		 * to ACTIVE, it means that AP failed to respond.
+		 * When this function is called with state of interrupt
+		 * set to ACTIVE, it means that AP failed to respond.
 		 *
-		 * It is safe to mark interrupt state as INACTIVE, because
-		 * force_mkbp_with_events() function can be only scheduled by
-		 * activate_mkbp_with_event() which will set interrupt state
-		 * to ACTIVE (and allow to increment failed_attempts counter).
-		 * After 3 attempts, we are setting interrupt state to INACTIVE
-		 * but we are not going to call activate_mkbp_with_events().
-		 * This was meant to unblock MKBP interrupt mechanism for new
+		 * It is safe to mark interrupt state as INACTIVE,
+		 * because force_mkbp_with_events() function can be only
+		 * scheduled by activate_mkbp_with_event() which will
+		 * set interrupt state to ACTIVE (and allow to increment
+		 * failed_attempts counter). After 3 attempts, we are
+		 * setting interrupt state to INACTIVE but we are not
+		 * going to call activate_mkbp_with_events(). This was
+		 * meant to unblock MKBP interrupt mechanism for new
 		 * events.
 		 */
 		state.interrupt = INTERRUPT_INACTIVE;
 		/*
-		 * Failed attempts counter is cleared only when AP pulls all
-		 * of events or we exceed number of attempts, so marking
-		 * interrupt as INACTIVE doesn't affect failed_attempts counter.
-		 * If we need to send interrupt once again
-		 * activate_mkbp_with_events() will set interrupt state to
-		 * ACTIVE before this function will be called.
+		 * Failed attempts counter is cleared only when AP pulls
+		 * all of events or we exceed number of attempts, so
+		 * marking interrupt as INACTIVE doesn't affect
+		 * failed_attempts counter. If we need to send interrupt
+		 * once again activate_mkbp_with_events() will set
+		 * interrupt state to ACTIVE before this function will
+		 * be called.
 		 */
 		++ap_comm_failure_count;
 		if (++state.failed_attempts < 3) {
@@ -322,14 +336,15 @@ static void force_mkbp_if_events(void)
 			toggled = 1;
 		} else {
 			/*
-			 * If we exceed maximum number of failed attempts we
-			 * will stop trying to send MKBP interrupt for current
-			 * event (send_mkbp_interrupt == 0), but leaving
-			 * possibility to send MKBP interrupts for future
-			 * events (state of interrupt makred as inactive).
-			 * Future events should have a chance to be sent
-			 * 3 times, so we should clear failed attempts
-			 * counter now
+			 * If we exceed maximum number of failed
+			 * attempts we will stop trying to send MKBP
+			 * interrupt for current event
+			 * (send_mkbp_interrupt == 0), but leaving
+			 * possibility to send MKBP interrupts for
+			 * future events (state of interrupt makred as
+			 * inactive). Future events should have a chance
+			 * to be sent 3 times, so we should clear failed
+			 * attempts counter now
 			 */
 			state.failed_attempts = 0;
 		}
@@ -338,8 +353,9 @@ static void force_mkbp_if_events(void)
 
 	if (toggled) {
 		/**
-		 * Don't spam the EC logs when the AP is hung. Instead, log the
-		 * first few failures, and then indicate the AP is likely hung.
+		 * Don't spam the EC logs when the AP is hung. Instead,
+		 * log the first few failures, and then indicate the AP
+		 * is likely hung.
 		 */
 		if (ap_comm_failure_count < ap_comm_failure_threshold) {
 			CPRINTS("MKBP not cleared within threshold, toggling.");
@@ -373,7 +389,8 @@ static int set_inactive_if_no_events(void)
 	if (interrupt_cleared) {
 		state.interrupt = INTERRUPT_INACTIVE;
 		state.failed_attempts = 0;
-		/* Only simple tasks (i.e. gpio set or no-op) allowed here */
+		/* Only simple tasks (i.e. gpio set or no-op) allowed
+		 * here */
 		mkbp_set_host_active(0, NULL);
 	}
 	mutex_unlock(&state.lock);
@@ -383,7 +400,8 @@ static int set_inactive_if_no_events(void)
 		hook_call_deferred(&force_mkbp_if_events_data, -1);
 		/**
 		 * This AP communication was successful.
-		 * Reset the count to log the next AP communication failure.
+		 * Reset the count to log the next AP communication
+		 * failure.
 		 */
 		ap_comm_failure_count = 0;
 	}
@@ -432,8 +450,8 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 	memset(args->response, 0, args->response_max);
 	do {
 		/*
-		 * Find the next event to service.  We do this in a round-robin
-		 * way to make sure no event gets starved.
+		 * Find the next event to service.  We do this in a
+		 * round-robin way to make sure no event gets starved.
 		 */
 		mutex_lock(&state.lock);
 		for (i = 0; i < EC_MKBP_EVENT_COUNT; ++i)
@@ -458,12 +476,13 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		r->event_type = evt;
 
 		/*
-		 * get_data() can return -EC_ERROR_BUSY which indicates that the
-		 * next element in the keyboard FIFO does not match what we were
-		 * called with.  For example, get_data is expecting a keyboard
-		 * matrix, however the next element in the FIFO is a button
-		 * event instead.  Therefore, we have to service that button
-		 * event first.
+		 * get_data() can return -EC_ERROR_BUSY which indicates
+		 * that the next element in the keyboard FIFO does not
+		 * match what we were called with.  For example,
+		 * get_data is expecting a keyboard matrix, however the
+		 * next element in the FIFO is a button event instead.
+		 * Therefore, we have to service that button event
+		 * first.
 		 */
 		data_size = src->get_data((uint8_t *)&r->data);
 		if (data_size == -EC_ERROR_BUSY) {
@@ -474,8 +493,8 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 	} while (data_size == -EC_ERROR_BUSY);
 
 	/*
-	 * Drop last columns if we send a key matrix with numpad to a v0 or v1
-	 * request.
+	 * Drop last columns if we send a key matrix with numpad to a v0
+	 * or v1 request.
 	 */
 	if (r->event_type == EC_MKBP_EVENT_KEY_MATRIX) {
 		size_t max_size;
@@ -497,7 +516,8 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		data_size = MIN(data_size, max_size);
 	}
 
-	/* If there are no more events and we support the "more" flag, set it */
+	/* If there are no more events and we support the "more" flag,
+	 * set it */
 	if (!set_inactive_if_no_events() && args->version >= 2)
 		r->event_type |= EC_MKBP_HAS_MORE_EVENTS;
 
