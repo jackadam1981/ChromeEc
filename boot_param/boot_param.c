@@ -172,8 +172,10 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 			CFG_DESCR_BSTR_HDR,
 			/* struct cfg_descr_s */
 			{
-				/* Map header: 6 entries */
-				CBOR_HDR1(CBOR_MAJOR_MAP, 6),
+				/* Map header: */
+				/* 6 (stage1) or 10 (stage2) entries */
+				CBOR_HDR1(CBOR_MAJOR_MAP,
+					BOOT_PARAM_CFG_DESCR_MAP_COUNT),
 				/* 1. Comp name: nint(-70002, 4bytes) =>
 				 * tstr("CrOS AP FW")
 				 */
@@ -204,6 +206,28 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 				/* bstr(PCR10, 32bytes) */
 				CFG_DESCR_LABEL_AP_FW_VERSION,
 				CBOR_BSTR32_EMPTY, /* VARIABLE */
+#if BOOT_PARAM_CFG_DESCR_STAGE == 2
+				/* 7. DICE chain ID: */
+				/* nint(-71003, 4bytes) => */
+				/* uint(chain_id, 0byte) */
+				CFG_DESCR_LABEL_DICE_CHAIN_ID,
+				CBOR_UINT8_ZERO, /* VARIABLE */
+				/* 8. GSC type: */
+				/* nint(-71004, 4bytes) => */
+				/* uint(gsc_type, 0byte) */
+				CFG_DESCR_LABEL_GSC_TYPE,
+				CBOR_UINT8_ZERO, /* VARIABLE */
+				/* 9. BoardID flags: */
+				/* nint(-71005, 4bytes) => */
+				/* uint(bid_flags, 4bytes) */
+				CFG_DESCR_LABEL_BOARD_ID_FLAGS,
+				CBOR_UINT32_ZERO, /* VARIABLE */
+				/* 10. BoardID type: */
+				/* nint(-71006, 4bytes) => */
+				/* uint(bid_type, 4bytes) */
+				CFG_DESCR_LABEL_BOARD_ID_TYPE,
+				CBOR_UINT32_ZERO, /* VARIABLE */
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE == 2 */
 			},
 		},
 		/* 6. Auth Hash: nint(-4670549, 4bytes) => bstr(32bytes) */
@@ -852,6 +876,12 @@ static inline bool fill_config_details(
 			  DIGEST_BYTES);
 	__platform_memcpy(cfg_descr->ap_fw_version.value, ctx->cfg.pcr10,
 			  DIGEST_BYTES);
+#if BOOT_PARAM_CFG_DESCR_STAGE == 2
+	cfg_descr->dice_chain_id.value = 0;
+	cfg_descr->gsc_type.value = ctx->cfg.gsc_type;
+	set_cbor_u32(ctx->cfg.board_id_flags, &cfg_descr->board_id_flags);
+	set_cbor_u32(ctx->cfg.board_id_type, &cfg_descr->board_id_type);
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE */
 
 	/* Calculate Cfg Descriptor digest */
 	if (!__platform_sha256(cfg_descr_slice, cwt_claims->cfg_hash.value)) {
