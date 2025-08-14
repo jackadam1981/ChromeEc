@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc03371f_bc78ce9a",
+        "filename": "include/fpsensor/fpsensor_template_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T23:09:57Z",
+      "side": 1,
+      "message": "It looks like after this change `global_context.template_states` is only written and not read anywhere. Can we remove this whole file and references to it? Separate CL is fine.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "478060baff9acc3f5a3d804522c229836ac92e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
