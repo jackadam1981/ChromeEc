@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f420a45_9a33b94b",
+        "filename": "zephyr/test/hwtest/src/fpsensor_auth_crypto_stateless.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T22:53:21Z",
+      "side": 1,
+      "message": "Should we check that the return value is `EC_ERROR_OVERFLOW` to make sure we\u0027re hitting that specific error and not another error, such as decryption failing due to the wrong key?",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 17
+      },
+      "revId": "d64c4fb2f1ab7f0f1af49e3ba615c0fa98a297b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
