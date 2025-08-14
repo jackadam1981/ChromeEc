@@ -72,18 +72,25 @@ static void lock_rollback(uint32_t key)
 {
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
 	mpu_lock_rollback(1);
+#if 0
 	irq_unlock(key);
+#endif
 #endif
 }
 
 static uint32_t unlock_rollback(void)
 {
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
+#if 1
+	mpu_lock_rollback(0);
+	return 0;
+#else
 	uint32_t key;
 
 	key = irq_lock();
 	mpu_lock_rollback(0);
 	return key;
+#endif
 #else
 	return 0;
 #endif
