@@ -87,6 +87,24 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8707062615442953265) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.volmar.hw.fingerprint-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "b651417405dd76463cc175ea706c054966e4f407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5b6743_140982e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T20:50:30Z",
+      "side": 1,
+      "message": "I think I see what is happening. See [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6833339/comments/0910a500_25153069).",
+      "parentUuid": "12fa7171_feb29b31",
+      "revId": "b651417405dd76463cc175ea706c054966e4f407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
