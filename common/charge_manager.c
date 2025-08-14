@@ -738,6 +738,18 @@ static int get_candidate_port_power(int supplier, int port)
 
 	return candidate_port_power;
 }
+
+static bool is_dualrole_charging_capable(int port)
+{
+#ifdef CONFIG_CHARGE_MANAGER_DRP_CHARGING
+	return true;
+#else
+	return (dualrole_capability[port] == CAP_DEDICATED ||
+		override_port == port ||
+		charge_manager_spoof_dualrole_capability());
+#endif
+}
+
 /**
  * Select the best charge port or the override port, as defined by the supplier
  * hierarchy and the available power.
@@ -791,16 +803,12 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			    override_port != port_idx)
 				continue;
 
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 			/*
 			 * Don't charge from a dual-role port unless
 			 * it is our override port.
 			 */
-			if (dualrole_capability[port_idx] != CAP_DEDICATED &&
-			    override_port != port_idx &&
-			    !charge_manager_spoof_dualrole_capability())
+			if (!is_dualrole_charging_capable(port_idx))
 				continue;
-#endif
 
 			candidate_port_power =
 				get_candidate_port_power(sup_idx, port_idx);
