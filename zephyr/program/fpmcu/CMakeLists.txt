@@ -19,6 +19,11 @@ if (DEFINED CONFIG_BOARD_BLOONCHIPPER)
 	project(bloonchipper)
 endif()
 
+if (DEFINED CONFIG_BOARD_REALTEKFP)
+	add_subdirectory(realtekfp)
+	project(realtekfp)
+endif()
+
 if (DEFINED CONFIG_BASEBOARD_HELIPILOT)
 	add_subdirectory(helipilot)
 	project(helipilot)
