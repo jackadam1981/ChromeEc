@@ -360,6 +360,24 @@ ZTEST(pdc_api_null_check, test_pdc_set_bbr_cts)
 		      -ENOSYS);
 }
 
+ZTEST(pdc_api_null_check, test_pdc_battery_status)
+{
+	union battery_status_t bs = { 0 };
+	int rv = pdc_set_battery_status(&fake_pdc, &bs);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
+ZTEST(pdc_api_null_check, test_pdc_battery_capability)
+{
+	union battery_capability_t bc = { 0 };
+	int rv = pdc_set_battery_capability(&fake_pdc, &bc);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
 ZTEST(pdc_api_null_check, test_completeness)
 {
 	/* Count the number of PDC API methods supported */
