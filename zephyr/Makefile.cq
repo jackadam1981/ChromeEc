@@ -93,11 +93,11 @@ zephyr_check_compliance_unittest:
 
 twister_host $(PLATFORM_EC)/twister-out-host/coverage.info: TOOLCHAIN=host
 twister_host $(PLATFORM_EC)/twister-out-host/coverage.info:
-	+$(TWISTER_COMMAND)
+	$(TWISTER_COMMAND)
 
 twister_llvm $(PLATFORM_EC)/twister-out-llvm/coverage.info: TOOLCHAIN=llvm
 twister_llvm $(PLATFORM_EC)/twister-out-llvm/coverage.info:
-	+$(TWISTER_COMMAND)
+	$(TWISTER_COMMAND)
 
 $(BUILD)/coverage/lcov.info:
 	$(MAKE) -C .. test-coverage
