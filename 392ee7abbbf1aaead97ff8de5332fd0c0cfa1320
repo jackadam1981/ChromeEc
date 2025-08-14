@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d76cb03_d32dd41a",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T22:40:57Z",
+      "side": 1,
+      "message": "Alternatively, you could write it like this and you wouldn\u0027t need to create the `aad` `span`:\n\n```\nstatic constexpr uint8_t tpm_seed_aad[] \u003d { \u0027t\u0027, \u0027p\u0027, \u0027m\u0027, \u0027_\u0027, \u0027s\u0027, \u0027e\u0027, \u0027e\u0027, \u0027d\u0027 };\n```",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 54
+      },
+      "revId": "392ee7abbbf1aaead97ff8de5332fd0c0cfa1320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897db612_49efe9b3",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T22:40:57Z",
+      "side": 1,
+      "message": "nit: you could use `auto` here since the type is obvious from the initializer.",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 20
+      },
+      "revId": "392ee7abbbf1aaead97ff8de5332fd0c0cfa1320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51a4610_dd8eca00",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-14T22:40:57Z",
+      "side": 1,
+      "message": "Same comments as other file with this.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 54
+      },
+      "revId": "392ee7abbbf1aaead97ff8de5332fd0c0cfa1320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
