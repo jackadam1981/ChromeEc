@@ -51,6 +51,24 @@
       "parentUuid": "0910a500_25153069",
       "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9fb2232_4871b4d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-14T21:02:40Z",
+      "side": 1,
+      "message": "I am creating the branch from `~/chromiumos/src/platform/ec` by following the instructions in this [doc](https://g3doc.corp.google.com/company/teams/chromeos-fingerprint/reference/Fingerprint_Firmware_Branching_and_Signing.md?cl\u003dhead).\n\nI lost your +2 after rebasing.",
+      "parentUuid": "8758ad4f_b961d5f0",
+      "revId": "ea888ba4da69947cdf74ec57381adfbe95cc0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
