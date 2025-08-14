@@ -8,6 +8,11 @@
  * 3D digital accelerometer & 3D digital gyroscope
  */
 
+/* FIXME - clang-tidy checker needs enhancement to ignore mutex uses
+ * if the mutex is defined by another file.
+ */
+// NOLINTBEGIN(zephyr-uninitialized-mutex)
+
 #include "accelgyro.h"
 #include "accelgyro_bmi323.h"
 #include "accelgyro_bmi_common.h"
@@ -1138,3 +1143,5 @@ const struct accelgyro_drv bmi3xx_drv = {
 	.get_rms_noise = get_rms_noise,
 #endif
 };
+
+// NOLINTEND(zephyr-uninitialized-mutex)

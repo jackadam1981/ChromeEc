@@ -9,6 +9,11 @@
  * Supported: BMA422
  */
 
+/* FIXME - clang-tidy checker needs enhancement to ignore mutex uses
+ * if the mutex is defined by another file.
+ */
+// NOLINTBEGIN(zephyr-uninitialized-mutex)
+
 #include "accel_bma422.h"
 #include "accelgyro.h"
 #include "builtin/assert.h"
@@ -730,3 +735,4 @@ const struct accelgyro_drv bma4_accel_drv = {
 	.irq_handler = irq_handler,
 #endif
 };
+// NOLINTEND(zephyr-uninitialized-mutex)

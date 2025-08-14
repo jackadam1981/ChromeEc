@@ -15,6 +15,11 @@
 #include "task.h"
 #include "util.h"
 
+/* FIXME - clang-tidy checker needs enhancement to ignore mutex uses
+ * if the mutex is defined by another file.
+ */
+// NOLINTBEGIN(zephyr-uninitialized-mutex)
+
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
 
 /**
@@ -708,3 +713,4 @@ static int motion_sense_read_fifo(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(fiforead, motion_sense_read_fifo, "id",
 			"Read Fifo sensor");
 #endif /* defined(CONFIG_CMD_ACCEL_FIFO) */
+// NOLINTEND(zephyr-uninitialized-mutex)
