@@ -79,6 +79,34 @@ static int unsupported(struct rts5453p_emul_pdc_data *data,
 	return -EINVAL;
 }
 
+static int set_battery_capability(struct rts5453p_emul_pdc_data *data,
+				  const union rts54_request *req)
+{
+	LOG_INF("SET_BATTERY_CAPABILITY");
+
+	memcpy(&data->battery_capability, &req->set_battery_capability.bcap,
+	       sizeof(union battery_capability_t));
+
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
+static int set_battery_status(struct rts5453p_emul_pdc_data *data,
+			      const union rts54_request *req)
+{
+	LOG_INF("SET_BATTERY_STATUS");
+
+	memcpy(&data->battery_status, &req->set_battery_status.bstat,
+	       sizeof(union battery_status_t));
+
+	memset(&data->response, 0, sizeof(union rts54_response));
+	send_response(data);
+
+	return 0;
+}
+
 static int vendor_cmd_enable(struct rts5453p_emul_pdc_data *data,
 			     const union rts54_request *req)
 {
@@ -924,6 +952,8 @@ const struct commands sub_cmd_x08[] = {
 	{ .code = 0x27, HANDLER_DEF(set_bbr_cts_mode) },
 	{ .code = 0x28, HANDLER_DEF(unsupported) },
 	{ .code = 0x2B, HANDLER_DEF(set_sys_pwr_state) },
+	{ .code = 0x32, HANDLER_DEF(set_battery_capability) },
+	{ .code = 0x33, HANDLER_DEF(set_battery_status) },
 	{ .code = 0x83, HANDLER_DEF(unsupported) },
 	{ .code = 0x84, HANDLER_DEF(get_rdo) },
 	{ .code = 0x85, HANDLER_DEF(unsupported) },
@@ -1737,6 +1767,27 @@ static int emul_realtek_rts54xx_get_dead_battery(const struct emul *target)
 	return data->dead_battery;
 }
 
+static int
+emul_realtek_rts54xx_get_battery_capability(const struct emul *target,
+					    union battery_capability_t *bcap)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	*bcap = data->battery_capability;
+	return 0;
+}
+
+static int
+emul_realtek_rts54xx_get_battery_status(const struct emul *target,
+					union battery_status_t *bstat)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	*bstat = data->battery_status;
+	return 0;
+}
 static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.reset = emul_realtek_rts54xx_reset,
 	.set_response_delay = emul_realtek_rts54xx_set_response_delay,
@@ -1774,6 +1825,8 @@ static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.reset_feature_flags = emul_realtek_rts54xx_reset_feature_flags,
 	.set_dead_battery = emul_realtek_rts54xx_set_dead_battery,
 	.get_dead_battery = emul_realtek_rts54xx_get_dead_battery,
+	.get_battery_capability = emul_realtek_rts54xx_get_battery_capability,
+	.get_battery_status = emul_realtek_rts54xx_get_battery_status,
 };
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \

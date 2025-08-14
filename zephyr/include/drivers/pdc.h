@@ -285,6 +285,10 @@ typedef int (*pdc_set_sbu_mux_mode_t)(const struct device *dev,
 				      enum pdc_sbu_mux_mode mode);
 typedef int (*pdc_set_ap_power_state_t)(const struct device *dev,
 					enum power_state state);
+typedef int (*pdc_set_battery_capability_t)(const struct device *dev,
+					    union battery_capability_t *bcap);
+typedef int (*pdc_set_battery_status_t)(const struct device *dev,
+					union battery_status_t *bstat);
 typedef int (*pdc_set_bbr_cts_t)(const struct device *dev, bool enable);
 
 /**
@@ -337,6 +341,8 @@ __subsystem struct pdc_driver_api {
 	pdc_get_sbu_mux_mode_t get_sbu_mux_mode;
 	pdc_set_sbu_mux_mode_t set_sbu_mux_mode;
 	pdc_set_ap_power_state_t set_ap_power_state;
+	pdc_set_battery_capability_t set_battery_capability;
+	pdc_set_battery_status_t set_battery_status;
 	pdc_set_bbr_cts_t set_bbr_cts;
 };
 /**
@@ -1552,6 +1558,46 @@ static inline int pdc_set_ap_power_state(const struct device *dev,
 	}
 
 	return api->set_ap_power_state(dev, state);
+}
+
+/**
+ * @brief Set the battery capability response on PDC.
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param bcap Battery capability
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_battery_capability(const struct device *dev,
+					     union battery_capability_t *bcap)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_battery_capability == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_battery_capability(dev, bcap);
+}
+
+/**
+ * @brief Set the battery status response on PDC.
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param bstat Battery status
+ * @return 0 on success, negative errno otherwise
+ */
+static inline int pdc_set_battery_status(const struct device *dev,
+					 union battery_status_t *bstat)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->set_battery_status == NULL) {
+		return -ENOSYS;
+	}
+
+	return api->set_battery_status(dev, bstat);
 }
 
 /**
