@@ -7,6 +7,23 @@
 	tarkin-fw-config {
 		compatible = "cros-ec,cbi-fw-config";
 
+		kb_bl {
+			enum-name = "FW_KB_BL";
+			start = <1>;
+			size = <1>;
+			kb-bl-not-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_NOT_PRESENT";
+				value = <0>;
+			};
+			kb-bl-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_BL_PRESENT";
+				value = <1>;
+                		default;
+			};
+		};
+
 		usbc-ports {
 			enum-name = "USBC_PORTS";
 			start = <8>;
