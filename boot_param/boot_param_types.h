@@ -63,6 +63,17 @@ struct dice_config_s {
 	uint8_t pcr0[DIGEST_BYTES];
 	/* PCR10 value */
 	uint8_t pcr10[DIGEST_BYTES];
+
+	/* The fields below are only used for
+	 * BOOT_PARAM_CFG_DESCR_STAGE >= 2
+	 */
+
+	/* BoardID Flags */
+	uint32_t board_id_flags;
+	/* BoardID Type */
+	uint32_t board_id_type;
+	/* GSC type */
+	uint8_t gsc_type;
 };
 
 #ifdef __cplusplus
