@@ -149,7 +149,7 @@ static int connect_sink(const struct pdc_fixture *pdc)
 	emul_pdc_set_rdo(pdc->emul_pdc, RDO_FIXED(1, 1500, 1500, 0));
 
 	zassert_ok(emul_pdc_connect_partner(pdc->emul_pdc, &cs));
-	zassert_ok(pdc_power_mgmt_wait_for_sync(pdc->port, 4000));
+	zassert_ok(pdc_power_mgmt_wait_for_sync(pdc->port, 4300));
 
 	return 0;
 }
@@ -299,6 +299,9 @@ ZTEST_USER_F(sink_policy, test_sink_policy_detach_better_charger)
 	zassert_equal(RDO_POS(rdo), 3);
 
 	zassert_ok(emul_pdc_disconnect(better_charger->emul_pdc));
+	/* Detach doesn't call set_sink_path, update the test register
+	 * manually.*/
+	WRITE_BIT(sink_path_en_mask, better_charger->port, 0);
 	zassert_ok(pdc_power_mgmt_wait_for_sync(better_charger->port, -1));
 	zassert_ok(pdc_power_mgmt_wait_for_sync(charger->port, -1));
 

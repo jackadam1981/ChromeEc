@@ -41,6 +41,10 @@ if (DEFINED CONFIG_TEST_SUITE_PDC_POLICY_SINK)
 	target_sources(app PRIVATE src/pdc_policy/sink_policy.c)
 endif()
 
+if (DEFINED CONFIG_TEST_SUITE_PDC_BATTERY_STATUS)
+	target_sources(app PRIVATE src/generic/pdc_battery_status.c)
+endif()
+
 if (DEFINED CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS)
 	target_sources(app PRIVATE src/pdc_policy/dead_battery_policy.c)
 	target_sources(app PRIVATE src/pdc_policy/dead_battery_two_chargers.c)
