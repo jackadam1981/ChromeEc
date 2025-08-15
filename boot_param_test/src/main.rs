@@ -254,9 +254,18 @@ fn extract_dice_handover(verbose: bool, boot_param_input: &[u8]) -> Result<Vec<u
     let boot_param = boot_param
         .as_map()
         .ok_or(anyhow!("BootParam is not a map"))?;
-    let dice_handover =
-        value_for_key(boot_param, 3).ok_or(anyhow!("BootParam doesn't contain DICE handover"))?;
-    cbor_util::serialize(dice_handover).map_err(Error::new)
+
+    if let Some(dice_handover) = value_for_key(boot_param, 3) {
+        return cbor_util::serialize(dice_handover)
+            .map_err(Error::new);
+    }
+    if let Some(dice_handover) = value_for_key(boot_param, 4) {
+        return dice_handover
+            .as_bytes()
+            .map(Vec::clone)
+            .ok_or(anyhow!("DICE handover is not BSTR"));
+    }
+    Err(anyhow!("BootParam doesn't contain DICE handover"))
 }
 
 fn dice_chain_structure_check(handover: &[u8]) -> Result<PublicKey> {
