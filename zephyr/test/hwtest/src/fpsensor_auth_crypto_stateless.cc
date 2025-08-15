@@ -140,8 +140,7 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_ecdh_shared_secret)
 
 	std::array<uint8_t, 32> shared_secret;
 	zassert_equal(generate_ecdh_shared_secret(*private_key, *public_key,
-						  shared_secret.data(),
-						  shared_secret.size()),
+						  shared_secret),
 		      EC_SUCCESS);
 
 	std::array<uint8_t, 32> expected_result = {
@@ -149,6 +148,53 @@ ZTEST(fpsensor_auth_crypto_stateless, test_fp_generate_ecdh_shared_secret)
 		0x48, 0xb3, 0x0b, 0xfc, 0xd7, 0xbe, 0x7a, 0xa0,
 		0x33, 0x17, 0x6c, 0x97, 0xc6, 0xa7, 0x70, 0x7c,
 		0xd4, 0x2c, 0xfd, 0xc0, 0xba, 0xc1, 0x47, 0x01,
+	};
+
+	zassert_mem_equal(shared_secret.data(), expected_result.data(),
+			  shared_secret.size());
+}
+
+ZTEST(fpsensor_auth_crypto_stateless,
+      test_fp_generate_ecdh_shared_secret_without_kdf)
+{
+	struct fp_elliptic_curve_public_key pubkey = {
+		.x = {
+			0x85, 0xad, 0x35, 0x23, 0x05, 0x1e, 0x33, 0x3f,
+			0xca, 0xa7, 0xea, 0xa5, 0x88, 0x33, 0x12, 0x95,
+			0xa7, 0xb5, 0x98, 0x9f, 0x32, 0xef, 0x7d, 0xe9,
+			0xf8, 0x70, 0x14, 0x5e, 0x89, 0xcb, 0xde, 0x1f,
+		},
+		.y = {
+			0xd1, 0xdc, 0x91, 0xc6, 0xe6, 0x5b, 0x1e, 0x3c,
+			0x01, 0x6c, 0xe6, 0x50, 0x25, 0x5d, 0x89, 0xcf,
+			0xb7, 0x8d, 0x88, 0xb9, 0x0d, 0x09, 0x41, 0xf1,
+			0x09, 0x4f, 0x61, 0x55, 0x6c, 0xc4, 0x96, 0x6b,
+		},
+	};
+
+	bssl::UniquePtr<EC_KEY> public_key = create_ec_key_from_pubkey(pubkey);
+
+	zassert_not_equal(public_key.get(), nullptr);
+
+	std::array<uint8_t, 32> privkey = { 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
+					    1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+					    2, 3, 4, 5, 6, 7, 8, 9, 1, 2 };
+
+	bssl::UniquePtr<EC_KEY> private_key =
+		create_ec_key_from_privkey(privkey.data(), privkey.size());
+
+	zassert_not_equal(private_key.get(), nullptr);
+
+	std::array<uint8_t, 32> shared_secret;
+	zassert_equal(generate_ecdh_shared_secret_without_kdf(
+			      *private_key, *public_key, shared_secret),
+		      EC_SUCCESS);
+
+	std::array<uint8_t, 32> expected_result = {
+		0x4d, 0x1f, 0x52, 0x54, 0xf8, 0x75, 0xf1, 0xee,
+		0x00, 0x48, 0x6d, 0xe8, 0x50, 0x2f, 0xd6, 0xba,
+		0xc4, 0x9e, 0xa4, 0xd3, 0x2c, 0x33, 0x50, 0x42,
+		0x40, 0x91, 0xaf, 0xe8, 0xdd, 0x07, 0x90, 0x18,
 	};
 
 	zassert_mem_equal(shared_secret.data(), expected_result.data(),
@@ -309,8 +355,7 @@ ZTEST(fpsensor_auth_crypto_stateless,
 
 	std::array<uint8_t, 32> share_secret;
 	zassert_equal(generate_ecdh_shared_secret(*ecdh_key, *output_key,
-						  share_secret.data(),
-						  share_secret.size()),
+						  share_secret),
 		      EC_SUCCESS);
 
 	AES_KEY aes_key;

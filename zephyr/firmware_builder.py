@@ -45,7 +45,6 @@ DEFAULT_BUNDLE_METADATA_FILE = "/tmp/artifact_bundle_metadata"
 # Boards that we want to track the coverage of our own files specifically.
 SPECIAL_BOARDS = [
     "krabby",
-    "skyrim",
     "kingler",
     "rex",
     "geralt",
@@ -56,24 +55,20 @@ SPECIAL_BOARDS = [
     "brox-sku4",
     "rauru",
     # Fatcat/Felino variants
-    "fatcat_npcx9m7f",
-    "fatcat_it82002aw",
+    "fatcatrvp-npcx",
+    "fatcatrvp-ite",
     "felino",
     "francka",
     # Nissa variants
     "nereid",
     "nivviks",
-    "orisa",
-    "orisa-ish",
     # Trulo variants
-    "trulo",
-    "trulo-ti",
-    "trulo-ish",
-    # Skyrim variants
-    "winterhold",
-    "frostflow",
-    "crystaldrift",
-    "markarth",
+    "kaladin",
+    "uldrenite",
+    "uldrenite-ish",
+    # Ocelot variants
+    "ocelotrvp-npcx",
+    "ocelotrvp-ite",
 ]
 
 BINARY_SIZE_REGIONS = [

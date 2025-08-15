@@ -769,3 +769,122 @@ ZTEST_USER_F(src_policy, test_src_policy_frs_sink_pdo_errors)
 				    &frs_enabled));
 	zassert_true(frs_enabled);
 }
+
+/* Verify FRS is initially enabled by the PDC power manager when 3A is
+ * available.
+ */
+ZTEST_USER_F(src_policy, test_src_policy_early_frs_enable)
+{
+	union connector_status_t frs_partner_connector_status = { 0 };
+	uint32_t frs_partner_src_pdo =
+		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE);
+	uint32_t frs_partner_snk_pdo =
+		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE);
+	union connector_capability_t frs_ccaps = {
+		.op_mode_drp = 1,
+		.partner_pd_revision = PD_REV30,
+	};
+	bool frs_enabled;
+
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS)) {
+		ztest_test_skip();
+	}
+
+	/* Connect a non-FRS partner to port 0 */
+	zassert_ok(emul_pdc_set_connector_capability(
+		fixture->emul_pdc[TEST_USBC_PORT0], &frs_ccaps));
+	emul_pdc_configure_snk(fixture->emul_pdc[TEST_USBC_PORT0],
+			       &frs_partner_connector_status);
+	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT0],
+				     SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				     &frs_partner_src_pdo));
+	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT0],
+				     SINK_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				     &frs_partner_snk_pdo));
+	zassert_ok(emul_pdc_connect_partner(fixture->emul_pdc[TEST_USBC_PORT0],
+					    &frs_partner_connector_status));
+
+	/* Wait for FRS to be set by the PDC power manager */
+	zassert_true(TEST_WAIT_FOR(
+		emul_pdc_get_frs(fixture->emul_pdc[TEST_USBC_PORT0],
+				 &frs_enabled) == 0,
+		1000));
+
+	/* FRS is initially enabled */
+	zassert_true(frs_enabled);
+
+	/* After the DPM has checked partner SNK caps, it disables FRS for the
+	 * non-FRS partner
+	 */
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
+	zassert_ok(emul_pdc_get_frs(fixture->emul_pdc[TEST_USBC_PORT0],
+				    &frs_enabled));
+	zassert_false(frs_enabled);
+}
+
+/* Verify FRS is initially disable by the PDC power manager when 3A is not
+ * available.
+ */
+ZTEST_USER_F(src_policy, test_src_policy_early_frs_disable)
+{
+	union connector_status_t snk_partner_connector_status = { 0 };
+	union connector_status_t frs_partner_connector_status = { 0 };
+	uint32_t snk_partner_snk_pdo =
+		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE);
+	uint32_t frs_partner_src_pdo =
+		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE);
+	uint32_t frs_partner_snk_pdo = PDO_FIXED(
+		5000, 3000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_FRS_CURR_1A5_AT_5V);
+	union connector_capability_t frs_ccaps = {
+		.op_mode_drp = 1,
+		.partner_pd_revision = PD_REV30,
+	};
+	bool frs_enabled;
+
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS)) {
+		ztest_test_skip();
+	}
+
+	/* Connect a PD sink at 3.0A to Port 0. */
+	emul_pdc_configure_src(fixture->emul_pdc[TEST_USBC_PORT0],
+			       &snk_partner_connector_status);
+	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT0],
+				     SINK_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				     &snk_partner_snk_pdo));
+	zassert_ok(emul_pdc_connect_partner(fixture->emul_pdc[TEST_USBC_PORT0],
+					    &snk_partner_connector_status));
+
+	/* Wait for connection to settle and source policies to run. */
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
+
+	/* Connect an FRS source that needs 1.5A to port 1 */
+	zassert_ok(emul_pdc_set_connector_capability(
+		fixture->emul_pdc[TEST_USBC_PORT1], &frs_ccaps));
+	emul_pdc_configure_snk(fixture->emul_pdc[TEST_USBC_PORT1],
+			       &frs_partner_connector_status);
+	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT1],
+				     SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				     &frs_partner_src_pdo));
+	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT1],
+				     SINK_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				     &frs_partner_snk_pdo));
+	zassert_ok(emul_pdc_connect_partner(fixture->emul_pdc[TEST_USBC_PORT1],
+					    &frs_partner_connector_status));
+
+	/* Wait for FRS to be set by the PDC power manager */
+	zassert_true(TEST_WAIT_FOR(
+		emul_pdc_get_frs(fixture->emul_pdc[TEST_USBC_PORT1],
+				 &frs_enabled) == 0,
+		1000));
+
+	/* Initially, FRS is disabled */
+	zassert_false(frs_enabled);
+
+	/* After the DPM has checked partner SNK caps, it enables FRS for the
+	 * 1.5 A FRS partner.
+	 */
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT1, -1));
+	zassert_ok(emul_pdc_get_frs(fixture->emul_pdc[TEST_USBC_PORT1],
+				    &frs_enabled));
+	zassert_true(frs_enabled);
+}

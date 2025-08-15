@@ -18,6 +18,7 @@
 #include "../brox.dtsi"
 
 #include "gpio.dtsi"
+#include "../hibernate.dtsi"
 #include "../i2c.dtsi"
 #include "../interrupts.dtsi"
 #include "../power_signals.dtsi"

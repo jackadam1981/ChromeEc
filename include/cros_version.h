@@ -43,6 +43,14 @@ struct image_data {
  */
 BUILD_ASSERT(offsetof(struct image_data, version) == 4);
 
+/*
+ * The offsets are used in
+ * src/platform/vboot_reference/scripts/image_signing/swap_ec_rw.
+ */
+BUILD_ASSERT(offsetof(struct image_data, cookie1) == 0);
+BUILD_ASSERT(offsetof(struct image_data, size) == 36);
+BUILD_ASSERT(offsetof(struct image_data, cookie2) == 44);
+
 extern const struct image_data current_image_data;
 extern const char build_info[];
 extern const char __image_data_offset[];

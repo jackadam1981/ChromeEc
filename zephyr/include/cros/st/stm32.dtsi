@@ -26,6 +26,8 @@
 	};
 
 	binman {
+		pad-byte = <0xff>;
+
 		wp-ro {
 			offset = <0x0>;
 			size = <0x20000>;
@@ -46,6 +48,5 @@
 				};
 			};
 		};
-		pad-byte = <0xff>;
 	};
 };

@@ -227,8 +227,11 @@ static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 {
 	const auto *p = static_cast<const ec_params_fp_mode *>(args->params);
 	auto *r = static_cast<ec_response_fp_mode *>(args->response);
+	uint32_t mode_out;
 
-	enum ec_status ret = fp_set_sensor_mode(p->mode, &r->mode);
+	enum ec_status ret = fp_set_sensor_mode(p->mode, &mode_out);
+
+	r->mode = mode_out;
 
 	if (ret == EC_RES_SUCCESS)
 		args->response_size = sizeof(*r);

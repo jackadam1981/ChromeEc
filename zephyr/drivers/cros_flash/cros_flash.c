@@ -397,7 +397,7 @@ static int disable_control_register(const struct device *dev)
 	return EC_SUCCESS;
 }
 
-static int cros_flash_protect_now(const struct device *dev, int all)
+static int cros_flash_protect_now(const struct device *dev, bool all)
 {
 	int err;
 
@@ -587,10 +587,7 @@ static int flash_init(const struct device *dev)
 
 static struct cros_flash_data cros_flash_data;
 
-#if CONFIG_CROS_FLASH_INIT_PRIORITY <= CONFIG_FLASH_INIT_PRIORITY
-#error "CONFIG_CROS_FLASH_INIT_PRIORITY must be greater than" \
-	"CONFIG_FLASH_INIT_PRIORITY."
-#endif
+BUILD_ASSERT(CONFIG_FLASH_INIT_PRIORITY < CONFIG_CROS_FLASH_INIT_PRIORITY);
 
 DEVICE_DT_INST_DEFINE(0, flash_init, NULL, &cros_flash_data, NULL, POST_KERNEL,
 		      CONFIG_CROS_FLASH_INIT_PRIORITY, &cros_flash_driver_api);
