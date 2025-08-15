@@ -184,7 +184,7 @@ test_static int test_ram_fetch_protect(uint32_t addr)
 	};
 
 	/* Copy test_function to assigned address */
-	memcpy(__ram_test_addr, test_function, sizeof(test_function));
+	memcpy((void *)__ram_test_addr, test_function, sizeof(test_function));
 
 	/* Execute instruction and it can be run */
 	TEST_EQ(__test_fptr(), EC_SUCCESS, "%d");

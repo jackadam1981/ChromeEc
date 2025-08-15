@@ -348,7 +348,17 @@ void rsmrst_pass_thru_handler(void)
 static int common_pwr_sm_run(int state)
 {
 	switch (state) {
-	case SYS_POWER_STATE_G3:
+	case SYS_POWER_STATE_G3: {
+		/* Callback event `AP_POWER_HARD_OFF` event must be generated
+		 * only when entering G3 from any higher power state.
+		 */
+		static bool gen_hard_off_evt = false;
+
+		if (gen_hard_off_evt) {
+			/* Notify power event before we enter G3 */
+			ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
+			gen_hard_off_evt = false;
+		}
 		/*
 		 * If the START_FROM_G3 flag is set, begin starting
 		 * the AP. There may be a delay set, so only start
@@ -365,11 +375,12 @@ static int common_pwr_sm_run(int state)
 					" by !is_startup_ok");
 				break;
 			}
+			gen_hard_off_evt = true;
 			return SYS_POWER_STATE_G3S5;
 		}
 
 		break;
-
+	}
 	case SYS_POWER_STATE_G3S5:
 		if ((power_get_signals() & PWRSEQ_G3S5_UP_SIGNAL) ==
 		    PWRSEQ_G3S5_UP_VALUE)
@@ -436,9 +447,6 @@ static int common_pwr_sm_run(int state)
 	case SYS_POWER_STATE_S5G3:
 		/* Nofity power event after we remove power rails */
 		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-
-		/* Notify power event before we enter G3 */
-		ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
 		return SYS_POWER_STATE_G3;
 
 	case SYS_POWER_STATE_S5S4:
@@ -523,11 +531,10 @@ static int common_pwr_sm_run(int state)
 #if CONFIG_AP_PWRSEQ_S0IX
 	case SYS_POWER_STATE_S0ix:
 		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
-		if (power_signals_off(IN_PCH_SLP_S0) &&
-		    signals_valid_and_off(IN_PCH_SLP_S3)) {
-			/* TODO: Make sure ap reset handling is done
-			 * before leaving S0ix.
-			 */
+		if ((power_signals_off(IN_PCH_SLP_S0) &&
+		     signals_valid_and_off(IN_PCH_SLP_S3) &&
+		     ap_power_sleep_get_notify() == AP_POWER_SLEEP_RESUME) ||
+		    power_signal_get(PWR_SYS_RST)) {
 			return SYS_POWER_STATE_S0ixS0;
 		} else if (!chipset_is_all_power_good())
 			return SYS_POWER_STATE_S0;
@@ -586,9 +593,10 @@ static int common_pwr_sm_run(int state)
 			 * in the idle scenario. Ignore the SLP_S0 assertions in
 			 * idle scenario by checking the host sleep state.
 			 */
-		} else if (ap_power_sleep_get_notify() ==
-				   AP_POWER_SLEEP_SUSPEND &&
-			   power_signals_on(IN_PCH_SLP_S0)) {
+		} else if ((ap_power_sleep_get_notify() ==
+				    AP_POWER_SLEEP_SUSPEND &&
+			    power_signals_on(IN_PCH_SLP_S0)) &&
+			   !power_signal_get(PWR_SYS_RST)) {
 			return SYS_POWER_STATE_S0S0ix;
 		} else if (ap_power_sleep_get_notify() ==
 			   AP_POWER_SLEEP_RESUME) {
@@ -824,8 +832,8 @@ static int x86_non_dsx_g3_exit(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_G3, x86_non_dsx_g3_entry,
-			   x86_non_dsx_g3_run, x86_non_dsx_g3_exit);
+AP_POWER_ARCH_STATE_DEFINE(G3, x86_non_dsx_g3_entry, x86_non_dsx_g3_run,
+			   x86_non_dsx_g3_exit);
 
 static int x86_non_dsx_s5_entry(void *data)
 {
@@ -880,8 +888,8 @@ static int x86_non_dsx_s5_exit(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S5, x86_non_dsx_s5_entry,
-			   x86_non_dsx_s5_run, x86_non_dsx_s5_exit);
+AP_POWER_ARCH_STATE_DEFINE(S5, x86_non_dsx_s5_entry, x86_non_dsx_s5_run,
+			   x86_non_dsx_s5_exit);
 
 static int x86_non_dsx_s4_run(void *data)
 {
@@ -904,7 +912,7 @@ static int x86_non_dsx_s4_run(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S4, NULL, x86_non_dsx_s4_run, NULL);
+AP_POWER_ARCH_STATE_DEFINE(S4, NULL, x86_non_dsx_s4_run, NULL);
 
 static int x86_non_dsx_s3_run(void *data)
 {
@@ -925,7 +933,7 @@ static int x86_non_dsx_s3_run(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S3, NULL, x86_non_dsx_s3_run, NULL);
+AP_POWER_ARCH_STATE_DEFINE(S3, NULL, x86_non_dsx_s3_run, NULL);
 
 static int x86_non_dsx_s0_run(void *data)
 {
@@ -935,7 +943,7 @@ static int x86_non_dsx_s0_run(void *data)
 #if CONFIG_AP_PWRSEQ_S0IX
 	if (ap_power_sleep_get_notify() == AP_POWER_SLEEP_SUSPEND &&
 	    power_signals_on(IN_PCH_SLP_S0)) {
-		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0IX);
+		return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S0ix);
 	} else if (ap_power_sleep_get_notify() == AP_POWER_SLEEP_RESUME) {
 		ap_power_sleep_notify_transition(AP_POWER_SLEEP_RESUME);
 	}
@@ -944,7 +952,7 @@ static int x86_non_dsx_s0_run(void *data)
 	return 0;
 }
 
-AP_POWER_ARCH_STATE_DEFINE(AP_POWER_STATE_S0, NULL, x86_non_dsx_s0_run, NULL);
+AP_POWER_ARCH_STATE_DEFINE(S0, NULL, x86_non_dsx_s0_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
 #ifdef CONFIG_AP_PWRSEQ_DEBUG_MODE_COMMAND

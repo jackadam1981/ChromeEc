@@ -47,7 +47,8 @@ ZTEST_F(console_cmd_hash, test_get_rw)
 	snprintf_hex_buffer(hash_buf, sizeof(hash_buf),
 			    HEX_BUF(fixture->rw_hash, SHA256_DIGEST_SIZE));
 
-	zassert_ok(!strstr(outbuffer, hash_buf), "Output was: `%s`", outbuffer);
+	zassert_not_null(strstr(outbuffer, hash_buf), "Output was: `%s`",
+			 outbuffer);
 }
 
 ZTEST_F(console_cmd_hash, test_get_ro)
@@ -73,7 +74,8 @@ ZTEST_F(console_cmd_hash, test_get_ro)
 	snprintf_hex_buffer(hash_buf, sizeof(hash_buf),
 			    HEX_BUF(fixture->ro_hash, SHA256_DIGEST_SIZE));
 
-	zassert_ok(!strstr(outbuffer, hash_buf), "Output was: `%s`", outbuffer);
+	zassert_not_null(strstr(outbuffer, hash_buf), "Output was: `%s`",
+			 outbuffer);
 }
 
 ZTEST_F(console_cmd_hash, test_abort)
@@ -136,8 +138,8 @@ ZTEST_F(console_cmd_hash, test_custom_range)
 	snprintf_hex_buffer(hash_buf, sizeof(hash_buf),
 			    HEX_BUF(hash, SHA256_DIGEST_SIZE));
 
-	zassert_ok(!strstr(outbuffer, hash_buf), "Output was: `%s`. Actual: %s",
-		   outbuffer, hash_buf);
+	zassert_not_null(strstr(outbuffer, hash_buf),
+			 "Output was: `%s`. Actual: %s", outbuffer, hash_buf);
 }
 
 ZTEST_F(console_cmd_hash, test_custom_range_with_nonce)
@@ -179,19 +181,19 @@ ZTEST_F(console_cmd_hash, test_custom_range_with_nonce)
 	snprintf_hex_buffer(hash_buf, sizeof(hash_buf),
 			    HEX_BUF(hash, SHA256_DIGEST_SIZE));
 
-	zassert_ok(!strstr(outbuffer, hash_buf), "Output was: `%s`. Actual: %s",
-		   outbuffer, hash_buf);
+	zassert_not_null(strstr(outbuffer, hash_buf),
+			 "Output was: `%s`. Actual: %s", outbuffer, hash_buf);
 }
 
 ZTEST(console_cmd_hash, test_invalid)
 {
 	/* Invalid subcommand */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "hash foo"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "hash foo"));
 
 	/* For custom ranges, non-numbers are invalid */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "hash a b"));
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "hash 1 b"));
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "hash 1 2 c"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "hash a b"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "hash 1 b"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "hash 1 2 c"));
 }
 
 static void *setup(void)
