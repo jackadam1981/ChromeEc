@@ -23,6 +23,7 @@
 	status = "okay";
 	pinctrl-0 = <&uart_rx_gpio113 &uart_tx_gpio114>;
 	pinctrl-names = "default";
+	rx-wakeup-pin = <113>;
 };
 
 &espi0 {
