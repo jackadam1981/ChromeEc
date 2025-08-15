@@ -100,6 +100,11 @@ static void motionsense_init(void)
 		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
 		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
 				      GPIO_INPUT | GPIO_PULL_UP);
+		/* Clamshell only has 1 sensor, we need to make sure it's in the
+		 * [0] position and set the motion_sensor_count to 1.
+		 */
+		__ASSERT_NO_MSG(SENSOR_ID(DT_NODELABEL(base_accel)) == 0);
+		motion_sensor_count = 1;
 		LOG_INF("Board is Clamshell");
 	} else if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE) {
 		LOG_INF("Board is Convertible");
