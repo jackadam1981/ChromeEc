@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a669aa_49029e5a",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:52:29Z",
+      "side": 1,
+      "message": "Refactor this to match my suggestion in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6363759/comment/37abc0f8_469373a7/).",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "1204029958e71ec5769cd497507a84f20ef48aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
