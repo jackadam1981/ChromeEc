@@ -778,6 +778,34 @@ add_custom_target(
 )
 add_dependencies(app ec_version_header)
 
+if(CMAKE_RUN_CLANG_TIDY)
+  set(RUN_CLANG_TIDY_SCRIPT /home/keithshort/src/llvm-project/clang-tools-extra/clang-tidy/tool/run-clang-tidy.py)
+  set(CLANG_TIDY_BIN /home/keithshort/src/llvm-project/build/bin/clang-tidy)
+
+  # set_property(
+  #   GLOBAL APPEND PROPERTY extra_post_build_commands
+  #   COMMAND
+  #     ${RUN_CLANG_TIDY_SCRIPT}
+  #     -j 16
+  #     -p ${CMAKE_CURRENT_BINARY_DIR}
+  #     -clang-tidy-binary ${CLANG_TIDY_BIN}
+  #     -check='-*,zephyr-uninitialized-mutex'
+  # )
+  execute_process(
+    COMMAND ls -la ${CMAKE_BINARY_DIR}
+    OUTPUT_VARIABLE echo_output
+  )
+  message(WARNING "Execute process output = ${echo_output}")
+  execute_process(
+    COMMAND
+      ${RUN_CLANG_TIDY_SCRIPT}
+      -j 16
+      -p ${CMAKE_BINARY_DIR}
+      -clang-tidy-binary ${CLANG_TIDY_BIN}
+      -checks='-*,zephyr-uninitialized-mutex'
+  )
+endif()
+
 # Include the directory containing the generated header.
 zephyr_include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
 

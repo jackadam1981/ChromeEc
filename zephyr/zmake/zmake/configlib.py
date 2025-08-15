@@ -33,7 +33,7 @@ def register_host_project(**kwargs):
 
 def register_raw_project(**kwargs):
     """Register a project that uses RawBinPacker."""
-    kwargs.setdefault("supported_toolchains", ["coreboot-sdk", "zephyr"])
+    kwargs.setdefault("supported_toolchains", ["coreboot-sdk", "zephyr", "llvm"])
     kwargs.setdefault("output_packer", zmake.output_packers.RawBinPacker)
     return _register_project(**kwargs)
 

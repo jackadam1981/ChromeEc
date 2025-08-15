@@ -177,6 +177,12 @@ def get_argparser():
     )
     sub.required = True
 
+    clang_tidy = sub.add_parser(
+        "clang-tidy",
+        help="Run the static analysis tool clang-tidy. Build files located under ./build/clang-tidy",
+    )
+    add_clang_tidy_args(clang_tidy)
+
     configure = sub.add_parser(
         "configure",
         help="Set up a build directory to be built later by the build subcommand",
@@ -273,6 +279,33 @@ def get_argparser():
     )
 
     return parser, sub
+
+
+def add_clang_tidy_args(sub_parser: argparse.ArgumentParser):
+    """Adds argugments for the clang-tidy subcommand"""
+    group = sub_parser.add_mutually_exclusive_group(required=True)
+    group.add_argument(
+        "-a",
+        "--all",
+        action="store_true",
+        dest="all_projects",
+        help="Select all projects",
+    )
+    group.add_argument(
+        "project_names",
+        nargs="*",
+        metavar="project_name",
+        help="Name(s) of the project(s) to build, Unix-style wildcard "
+        "expressions to select multiple projects (e.g. brox-*), or "
+        "program directory names prefixed with '%%' (e.g. %%nissa)",
+        default=[],
+    )
+    sub_parser.add_argument(
+        "--clobber",
+        action="store_true",
+        dest="clobber",
+        help="Delete existing build directories, even if configuration is unchanged",
+    )
 
 
 def add_common_build_args(sub_parser: argparse.ArgumentParser):
