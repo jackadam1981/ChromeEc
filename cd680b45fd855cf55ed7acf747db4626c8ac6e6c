@@ -16,6 +16,115 @@
       "message": "The changes are tested w/ ti50, but we don\u0027t enable them until APFW is ready.\nUntil we switch #define BOOT_PARAM_VERSION from 0 to 1, this change is functional nop.",
       "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897b87e1_23c7ad02",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-15T21:09:39Z",
+      "side": 1,
+      "message": "what does the numbers 4 and 5 mean? Should they be 2 and 3 instead?\n\n---\n\nAlso what do you think about making only two sections here and redefining comment structure completely instead of doing it piecemeal?",
+      "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484af6ce_5a49ccfa",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-15T21:09:39Z",
+      "side": 1,
+      "message": "or maybe this should be a `4` here since that seems to be the CBOR field id.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535752f9_7e8b690c",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-15T21:09:39Z",
+      "side": 1,
+      "message": "let\u0027s specify that field is encoded in big endian",
+      "range": {
+        "startLine": 920,
+        "startChar": 35,
+        "endLine": 920,
+        "endChar": 55
+      },
+      "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27b63ce_9cd56d4a",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-15T21:09:39Z",
+      "side": 1,
+      "message": "why not take in `uint16_t` here so it is clear that is the max value we can encode?",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 7
+      },
+      "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ded23d_8e22d602",
+        "filename": "boot_param/boot_param.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-15T21:09:39Z",
+      "side": 1,
+      "message": "thoughts about:\n\n```\n#elif BOOT_PARAM_VERSION \u003d\u003d 0 \nBOOT_PARAM_SIZE 820\n#else\n#error \"Unsupported BOOT_PARAM_VERSION\"\n#endif\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
