@@ -39,18 +39,6 @@ choice ESPI_LOG_LEVEL_CHOICE
 	default ESPI_LOG_LEVEL_ERR
 endchoice
 
-config PLATFORM_EC_LTO
-	bool "Link Time Optimization (LTO)"
-	default y if !SOC_POSIX
-	help
-	  Enable the Link Time Optimization (LTO) feature for the toolchain.
-	  LTO expands the scope of optimizations to encompass the whole program,
-	  reducing the image size.
-
-	  At this time, LTO is only enabled for Chromium OS source files and
-	  is not enabled for the Zephyr kernel or drivers due.
-	  https://github.com/zephyrproject-rtos/zephyr/issues/2112
-
 choice CBPRINTF_IMPLEMENTATION
 	default CBPRINTF_NANO
 
@@ -170,6 +158,7 @@ config SHIMMED_TASKS
 	default y if HAS_TASK_TOUCHPAD
 	default y if HAS_TASK_PD_C0
 	default y if HAS_TASK_PD_INT_C0
+        imply POLL
 	help
 	  When this option is enabled, a shimmed_tasks.h header with the
 	  CROS_EC_TASK_LIST defined needs to be included for the project to

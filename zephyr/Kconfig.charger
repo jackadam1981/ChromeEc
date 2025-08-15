@@ -8,7 +8,7 @@ menuconfig PLATFORM_EC_CHARGER
 	select HAS_TASK_CHARGER
 	select PLATFORM_EC_EXTPOWER
 	select PLATFORM_EC_CHARGE_MANAGER
-	depends on PLATFORM_EC_BATTERY
+	depends on PLATFORM_EC_BATTERY && !PLATFORM_EC_BATTERY_CHARGING_OFFLOAD_TO_AP
 	help
 	  Enable the EC charging task.
 
@@ -180,6 +180,17 @@ config PLATFORM_EC_ISL9238C_INPUT_VOLTAGE_MV
 	  the default setting defined by the chip.  The ISL9238C input voltage
 	  is configured using 341.3 mV steps.  The value specified is rounded
 	  down.
+
+config PLATFORM_EC_CHARGER_ISL95522
+	bool "Use the ISL95522 charger"
+	depends on PLATFORM_EC_I2C
+	help
+	  Enables a driver for the ISL95522 Battery Charger. This is a
+	  highly versatile combination battery charger configurable for
+	  operating as either a Hybrid Power Boost (HPB) charger or a
+	  Narrow VDC (NVDC) charger and switch between the modes under
+	  firmware control, supporting 2-, 3-, or 4-cell batteries.It provides
+	  an I2C interface for configuration.
 
 config PLATFORM_EC_CHARGER_BQ25710
 	bool "Use the BQ25710 charger"
@@ -862,6 +873,66 @@ config PLATFORM_EC_CHARGE_MANAGER
 	  Note that the charge manager assumes that at least one USB-C power
 	  source is available on the hardware, so cannot be built without
 	  PLATFORM_EC_USBC.
+
+if PLATFORM_EC_CHARGE_MANAGER
+
+config PLATFORM_EC_CHARGER_DEFAULT_CURRENT_LIMIT
+	int "Charger input current in mA"
+	default 512
+	help
+	  Default input current limit for the board in mA.
+
+	  This value should depend on external power adapter, designed charging
+	  voltage, and the maximum power of the running system. For type-C
+	  chargers, this should be set to no more than 512 mA in order to not
+	  brown-out low-current USB charge ports in accordance with USB-PD r3.0
+	  Sec. 7.3.
+
+config PLATFORM_EC_CHARGER_MIN_INPUT_CURRENT_LIMIT
+	int "Minimum charger input current limit in mA"
+	default 0
+	help
+	  Minimum current limit in mA that will ever be set for chargers, even if a
+	  lower limit is requested.
+
+	  If set, this should usually be set to no more than 2.5W divided by the
+	  maximum supported input voltage in order to satisfy USB-PD pSnkStdby
+	  requirements. Higher values may help devices stay alive under low-battery
+	  conditions at the cost of violating standby power limits.
+
+	  Many boards set this to large values, since historically this number was
+	  usually equal to the default current limit. New boards should avoid doing
+	  so if possible, and usually leave this unset: customization of
+	  board_set_charge_limit() should be considered instead if a device sometimes
+	  requires amounts of power in violation of specs, to limit those violations
+	  only to situations where they are necessary.
+
+config PLATFORM_EC_CHARGER_INPUT_CURRENT_DERATE_PCT
+	int "Charger input current derating percentage"
+	default 5
+	help
+	  Setting this to a nonzero value causes actual charger current limits
+	  to be adjusted by the given percentage. For example, setting this to
+	  4 and requesting a current limit of 1000 mA causes the charge manager
+	  to program an actual current limit of 960 mA.
+
+	  This is useful if a charger consistently draws more current than the
+	  programmed limit, or if it is desired to derate for other
+	  safety-related reasons. If a more complex (non-linear) adjustment is
+	  required, boards should override the board_set_charge_limit()
+	  function instead of configuring this option.
+
+	  The default value is set to prevent most overcurrent conditions during
+	  load transients, because power supplies vary in their tolerance to
+	  such short-lived overcurrent conditions and many chargers respond
+	  slowly to those transients.
+
+	  Projects SHOULD characterize system behavior to tune for system
+	  behavior and charger response in order to optimize this (allowing the
+	  derating to be reduced) and ensure transients do not exceed the range
+	  of acceptable current (which might require greater derating).
+
+endif # PLATFORM_EC_CHARGE_MANAGER
 
 # TODO(b/229236582): Move this to devicetree
 config PLATFORM_EC_DEDICATED_CHARGE_PORT

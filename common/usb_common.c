@@ -22,6 +22,7 @@
 #include "stdbool.h"
 #include "system.h"
 #include "task.h"
+#include "timer.h"
 #include "typec_control.h"
 #include "usb_api.h"
 #include "usb_common.h"
@@ -861,3 +862,52 @@ __overridable void pd_notify_dp_alt_mode_entry(int port)
 		mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
 	}
 }
+
+#ifdef CONFIG_USB_PD_DEBUG_INTERVALS
+struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
+				[PD_INTERVAL_COUNT] = { 0 };
+const char *pd_ts_name[] = {
+	"Invalid interval",
+};
+BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts)
+{
+	struct pd_debug_timestamps *debug_ts = &pd_ts[port][interval];
+
+	if (point == PD_START)
+		debug_ts->start = ts;
+	else
+		debug_ts->end = ts;
+}
+
+inline void pd_record_timestamp_start(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_START, get_time());
+}
+
+inline void pd_record_timestamp_end(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_END, get_time());
+}
+
+void pd_print_timestamps(int port)
+{
+	/* Do not use the PD console channel, so that this output will print
+	 * even when that channel has been disabled for performance reasons.
+	 */
+	ccprintf("C%d timestamps:\n", port);
+
+	for (int i = 0; i < PD_INTERVAL_COUNT; ++i) {
+		uint32_t start = pd_ts[port][i].start.le.lo;
+		uint32_t end = pd_ts[port][i].end.le.lo;
+		int delta = time_until(start, end);
+
+		ccprintf("%s: %u to %u = %d (%dms)\n", pd_ts_name[i], start,
+			 end, delta, delta / 1000);
+	}
+
+	memset(&pd_ts[port], 0, sizeof(pd_ts[port]));
+}
+#endif /* CONFIG_USB_PD_DEBUG_INTERVALS */

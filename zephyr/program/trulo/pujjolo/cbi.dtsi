@@ -4,7 +4,7 @@
  */
 
 / {
-/* Orisa-specific fw_config fields. */
+/* Pujjolo-specific fw_config fields. */
 	trulo-fw-config {
 		/*
 		 * FW_CONFIG field to defined for THERMAL SOLUTION.
@@ -38,6 +38,103 @@
 				compatible = "cros-ec,cbi-fw-config-value";
 				enum-name = "FW_KB_TYPE_DEFAULT";
 				value = <0>;
+			};
+		};
+
+		/*
+		 * FW_CONFIG field to indicate which keyboard numeric
+		 * pad should be used.
+		 */
+		kb-numeric-pad {
+			enum-name = "FW_KB_NUMERIC_PAD";
+			start = <23>;
+			size = <1>;
+
+			no-kb-numpad {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_NUMERIC_PAD_ABSENT";
+				value = <0>;
+				default;
+			};
+			kb-numpad-present {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KB_NUMERIC_PAD_PRESENT";
+				value = <1>;
+			};
+		};
+
+		ish {
+			enum-name = "ISH";
+			start = <2>;
+			size = <1>;
+
+			ish-disabled {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "ISH_DISABLED";
+				value = <0>;
+				default;
+			};
+			ish-enabled {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "ISH_ENABLED";
+				value = <1>;
+			};
+		};
+
+		form-factor {
+			enum-name = "FORM_FACTOR";
+			start = <3>;
+			size = <1>;
+
+			form-factor-clamshell {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FORM_FACTOR_CLAMSHELL";
+				value = <0>;
+				default;
+			};
+			form-factor-convertible {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FORM_FACTOR_CONVERTIBLE";
+				value = <1>;
+			};
+		};
+	};
+	cbi-ssfc {
+		compatible = "cros-ec,cbi-ssfc";
+		/*
+		 * SSFC field to identify BASE motion sensor.
+		 */
+		base-sensor {
+			enum-name = "BASE_SENSOR";
+			size = <1>;
+			base_sensor_0: lis2dw12 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+				default;
+			};
+			base_sensor_1: bma422 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+			};
+		};
+		/*
+		 * SSFC field to identify LID motion sensor.
+		 */
+		lid-sensor {
+			enum-name = "LID_SENSOR";
+			size = <1>;
+			lid_sensor_0: lis2dw12 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+				default;
+			};
+			lid_sensor_1: bma422 {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
 			};
 		};
 	};

@@ -30,6 +30,7 @@ def register_npcx9_project(
 def register_it8xxx2_project(
     project_name,
     extra_kconfig_files=(),
+    extra_modules=(),
 ):
     """Register an it8xxx2 based variant of fatcat."""
     register_binman_project(
@@ -46,22 +47,25 @@ def register_it8xxx2_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        modules=["ec", *extra_modules],
     )
 
 
 register_npcx9_project(
-    project_name="fatcat_npcx9m7f",
+    project_name="fatcatrvp-npcx",
     extra_kconfig_files=[
         here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
         here / ".." / "intelrvp" / "ptlrvp" / "pd.conf",
+        here / "rvp_program.conf",
     ],
 )
 
 register_it8xxx2_project(
-    project_name="fatcat_it82002aw",
+    project_name="fatcatrvp-ite",
     extra_kconfig_files=[
         here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
         here / ".." / "intelrvp" / "ptlrvp" / "pd.conf",
+        here / "rvp_program.conf",
     ],
 )
 
@@ -71,17 +75,44 @@ register_npcx9_project(
 
 register_it8xxx2_project(
     project_name="felino",
-    extra_kconfig_files=[],
+)
+
+register_it8xxx2_project(
+    project_name="felino4es",
+    extra_kconfig_files=[
+        # Parent project's config
+        here / "felino" / "project.conf",
+        # Project-specific KConfig customization.
+        here / "felino4es" / "project.conf",
+    ],
 )
 
 register_it8xxx2_project(
     project_name="kinmen",
+    extra_kconfig_files=[
+        here / "dsp_comms.conf",
+    ],
+    extra_modules=["pigweed", "nanopb"],
+)
+
+register_ish_project(
+    project_name="kinmen-ish",
+    zephyr_board="intel_ish_5_8_0",
+    dts_overlays=[
+        here / "kinmen-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "dsp_comms.conf",
+        here / "kinmen-ish" / "project.conf",
+    ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
-assert_rw_fwid_DO_NOT_EDIT(project_name="fatcat_npcx9m7f", addr=0x80144)
-assert_rw_fwid_DO_NOT_EDIT(project_name="fatcat_it82002aw", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-npcx", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="francka", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="felino4es", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="kinmen", addr=0x60098)

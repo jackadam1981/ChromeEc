@@ -26,7 +26,7 @@ static void set_rtc_host_event(void)
 DECLARE_DEFERRED(set_rtc_host_event);
 #endif
 
-void rtc_callback(const struct device *dev)
+__overridable void rtc_callback(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 

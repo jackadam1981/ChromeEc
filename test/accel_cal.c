@@ -40,8 +40,7 @@ static bool accumulate(float x, float y, float z, float temperature)
 	       accel_cal_accumulate(&cal, 1000 * MSEC, x, y, z, temperature);
 }
 
-static void test_accel_cal_before(const struct ztest_unit_test *test,
-				  void *fixture)
+static void test_accel_cal_before(void *fixture)
 {
 	cal.still_det = STILL_DET(0.00025f, 800 * MSEC, 1200 * MSEC, 5);
 	accel_cal_reset(&cal);

@@ -48,7 +48,16 @@ void shared_mem_release(void *ptr)
 #ifdef CONFIG_CMD_SHMEM
 static int command_shmem(int argc, const char **argv)
 {
+	/* This function is deprecated in glibc, in preference for mallinfo2,
+	 * since mallinfo2 provides information as a series of `size_t`s instead
+	 * of `int`s.
+	 *
+	 * We needn't worry about reporting for GB of RAM, so ignore the
+	 * deprecation warning here.
+	 */
+	DISABLE_COMPILER_WARNING("-Wdeprecated-declarations")
 	struct mallinfo info = mallinfo();
+	ENABLE_COMPILER_WARNING("-Wdeprecated-declarations")
 
 	/* The max size of shared mem region, for a given image. */
 	ccprintf("System Total:     %d\n", shared_mem_size());

@@ -14,6 +14,8 @@
 #include <zephyr/drivers/bbram.h>
 #include <zephyr/fff.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/pm/policy.h>
+#include <zephyr/pm/state.h>
 #include <zephyr/shell/shell_dummy.h>
 #include <zephyr/ztest_assert.h>
 #include <zephyr/ztest_test.h>
@@ -292,4 +294,30 @@ ZTEST(system, test_init_cause_watchdog_rst)
 
 	zassert_ok(system_preinitialize(NULL));
 	zassert_equal(EC_RESET_FLAG_WATCHDOG, system_get_reset_flags());
+}
+
+ZTEST(system, test_lock_all_power_states)
+{
+	const struct pm_state_info *cpu_states;
+	uint8_t num_cpu_states = pm_state_cpu_get_all(0U, &cpu_states);
+
+	pm_policy_state_lock_get_all();
+
+	for (uint8_t i = 0; i < num_cpu_states; ++i) {
+		zassert_false(
+			pm_policy_state_is_available(cpu_states[i].state,
+						     cpu_states[i].substate_id),
+			"Expected CPU state %d to be unavailable (%d::%d)", i,
+			cpu_states[i].state, cpu_states[i].substate_id);
+	}
+
+	pm_policy_state_lock_put_all();
+
+	for (uint8_t i = 0; i < num_cpu_states; ++i) {
+		zassert_true(
+			pm_policy_state_is_available(cpu_states[i].state,
+						     cpu_states[i].substate_id),
+			"Expected CPU state %d to be ailable (%d::%d)", i,
+			cpu_states[i].state, cpu_states[i].substate_id);
+	}
 }

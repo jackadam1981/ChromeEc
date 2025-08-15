@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "timer.h"
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_vdo.h"
@@ -251,9 +252,9 @@ enum pdo_augmented_pps {
 #define PD_T_ENTER_EPR (500 * MSEC) /* between 450ms and 550ms */
 /*
  * Adjusting for TCPMv2 PD2 Compliance. In tests like TEST.PD.PROT.SRC.2 this
- * value is the duration before the Hard Reset can be sent. Setting the
- * timer value to the minimum to ensure that the TCPM actually sends any Hard
- * Reset between tSenderResponse min and max.
+ * value is the duration before the Hard Reset can be sent.
+ * The timer value was experimentally determined to pass TEST.PD.PROT.SNK.5 and
+ * TEST.PD.PROT.SRC.3 on various boards.
  * Leaving TCPMv1 as it was as there are no current requests to adjust
  * for compliance on the old stack and making this change breaks the
  * usb_pd unit test.
@@ -262,12 +263,14 @@ enum pdo_augmented_pps {
 #define PD_T_SENDER_RESPONSE (30 * MSEC) /* between 24ms and 30ms */
 #else
 /* PD R2.0 V1.3: between 24ms and 30ms */
-#define PD2_T_SENDER_RESPONSE (24 * MSEC)
+#define PD2_T_SENDER_RESPONSE (26 * MSEC)
 /*
  * PD R3.1 V1.5: between 26ms and 32ms
  * PD R3.2 V1.0: between 27ms and 33ms
+ * This value was experimentally determined to pass TEST.PD.PROT.SNK.5 and
+ * TEST.PD.PROT.SRC.3 on various boards.
  */
-#define PD3_T_SENDER_RESPONSE (27 * MSEC)
+#define PD3_T_SENDER_RESPONSE (29 * MSEC)
 #endif
 #define PD_T_PS_TRANSITION (500 * MSEC) /* between 450ms and 550ms */
 /*
@@ -277,7 +280,7 @@ enum pdo_augmented_pps {
 #define PD_T_PS_SOURCE_OFF (835 * MSEC) /* between 750ms and 920ms */
 #define PD_T_PS_HARD_RESET (25 * MSEC) /* between 25ms and 35ms */
 #define PD_T_ERROR_RECOVERY (240 * MSEC) /* min 240ms if sourcing VConn */
-#define PD_T_CC_DEBOUNCE (100 * MSEC) /* between 100ms and 200ms */
+#define PD_T_CC_DEBOUNCE (130 * MSEC) /* between 100ms and 200ms */
 /* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
 #define PD_T_DRP_SNK (40 * MSEC) /* toggle time for sink DRP */
 #define PD_T_DRP_SRC (30 * MSEC) /* toggle time for source DRP */
@@ -298,14 +301,14 @@ enum pdo_augmented_pps {
  * Try.SRC being as low as 549 ms. As a workaround, increase it slightly.
  * Ideally, timers should be at least millisecond-accurate.
  */
-#define PD_T_TRY_TIMEOUT (560 * MSEC) /* between 550ms and 1100ms */
+#define PD_T_TRY_TIMEOUT (570 * MSEC) /* between 550ms and 1100ms */
 #define PD_T_TRY_WAIT (600 * MSEC) /* Wait time for TryWait.SNK */
 #define PD_T_SINK_REQUEST (100 * MSEC) /* 100ms before next request */
 #define PD_T_PD_DEBOUNCE (15 * MSEC) /* between 10ms and 20ms */
 #define PD_T_CHUNK_SENDER_RESPONSE (25 * MSEC) /* 25ms */
 #define PD_T_CHUNK_SENDER_REQUEST (25 * MSEC) /* 25ms */
 #define PD_T_SWAP_SOURCE_START (25 * MSEC) /* Min of 20ms */
-#define PD_T_RP_VALUE_CHANGE (20 * MSEC) /* 20ms */
+#define PD_T_RP_VALUE_CHANGE (15 * MSEC) /* 10 to 20ms */
 #define PD_T_SRC_DISCONNECT (15 * MSEC) /* 15ms */
 #define PD_T_SRC_TRANSITION (25 * MSEC) /* 25ms to 35 ms */
 #define PD_T_VCONN_STABLE (50 * MSEC) /* 50ms */
@@ -368,6 +371,13 @@ enum pdo_augmented_pps {
 
 /* Power in mW at which we will automatically charge from a DRP partner */
 #define PD_DRP_CHARGE_POWER_MIN 27000
+
+/* SIDO pdp 0.5W steps to 1W steps ( USB PD Dynamic Power Sources (DPS) ECN
+ * Table 6-53) */
+#define PD_SIDO2_15W 30
+#define PD_SIDO2_7_5W 15
+#define PD_PDP_SIDO2_TO_SIDO1(pdp) (pdp) >> 1
+#define SOURCE_INFO_MAX_OBJECTS 2
 
 /* function table for entered mode */
 struct amode_fx {
@@ -728,20 +738,38 @@ enum pd_source_port_type {
 	PD_SOURCE_PORT_CAPABILITY_GUARANTEED,
 };
 
-/* PD Source_Info Data Object (SIDO) */
+/* PD Source_Info Data Objects (SIDOs) */
+struct sido1 {
+	/* PDP values are the integer portion (floor) of the relevant
+	 * PDP rating in W.
+	 */
+	uint8_t port_reported_pdp;
+	uint8_t port_present_pdp;
+	uint8_t port_maximum_pdp;
+	unsigned reserved : 7;
+	/* 0 = Managed Capability, 1 = Guaranteed Capability */
+	unsigned port_type : 1;
+};
+
+struct sido2 {
+	/* PDP values are rounded down to the nearest 0.5W of the
+	 * relevant PDP rating in W.
+	 */
+	unsigned port_guaranteed_pdp : 9;
+	unsigned port_maximum_pdp : 9;
+	unsigned reserved : 12;
+	/* 0 = Non DPS port, 1 = DPS port */
+	unsigned dps_port : 1;
+	/* 0 = Managed Capability, 1 = Guaranteed Capability */
+	unsigned port_type : 1;
+};
+
 union sido {
 	struct {
-		/* PDP values are the integer portion (floor) of the relevant
-		 * PDP rating in W.
-		 */
-		uint8_t port_reported_pdp;
-		uint8_t port_present_pdp;
-		uint8_t port_maximum_pdp;
-		unsigned reserved : 7;
-		/* 0 = Managed Capability, 1 = Guaranteed Capability */
-		unsigned port_type : 1;
+		struct sido1 sido1;
+		struct sido2 sido2;
 	};
-	uint32_t raw;
+	uint32_t raw[SOURCE_INFO_MAX_OBJECTS];
 };
 
 /* PD Rev 3.1 Revision Message Data Object (RMDO) */
@@ -3681,12 +3709,115 @@ __override_proto int svdm_tbt_compat_attention(int port, uint32_t *payload);
 __override_proto enum ec_pd_port_location board_get_pd_port_location(int port);
 
 /**
+ * @brief Called to check if a USB-C port number is valid. The default
+ *        implementation does a range check based on
+ *        board_get_usb_pd_port_count(). Boards or different PD architectures
+ *        may override this with a different/additional check.
+ *
+ * @param port Port number to check
+ * @return true if the port exists and PD operations may be performed against it
+ * @return false otherwise
+ */
+__override_proto bool board_pd_port_num_is_valid(int port);
+
+/**
  * Called when EC_CMD_USB_PD_CONTROL host command is received
  *
  * @param port  The PD port number
  * @return      Information related connected port partner and cable
  */
 uint8_t get_pd_control_flags(int port);
+
+/* Use interval debugging to time register accesses, state transitions,
+ * effective timeouts, etc. within the TCPM.
+ * 1. Enable CONFIG_USB_PD_DEBUG_INTERVALS for the target.
+ * 2. Add named intervals to enum pd_debug_interval and pd_ts_name.
+ * 3. Add calls to pd_record_timestamp{,_start,_end} at locations bounding each
+ *    of those intervals.
+ * 4. Call pd_print_timestamps at a location that will not disturb the typical
+ *    timing of the TCPM.
+ * Notes:
+ * * Be careful that no intervals will be invalidated by further recording
+ *   between the time of original recording and the time of printing.
+ * * It may not be practical to call pd_record_timestamp_{start,end} at the
+ *   exact time of an event, perhaps because it will not be clear until later
+ *   whether this was the looked-for event. In that case, it may be helpful to
+ *   speculatively save the result of get_time() and then pass that value into
+ *   pd_record_timestamp when its significance is clear.
+ * * On Nuvoton ECs running Zephyr, recorded timestamps have a granularity of
+ *   100 us. Empirically, recording multiple timestamps at a certain location
+ *   does not take long enough to affect the recorded timestamps.
+ * * This framework assumes that the lo-order word of the timer value has not
+ *   rolled over during the measured intervals. At the above granularity, this
+ *   happens approximately once every 1 hour and 11 minutes.
+ */
+
+/* The list of intervals that may be used in timestamp instrumentation. Each
+ * interval should represent an event, the beginning and end of which may be
+ * observed at specific points in the code. Each interval must have a
+ * corresponding string in pd_ts_name.
+ */
+enum pd_debug_interval {
+	/* This interval is unused, but it keeps the size assertion on
+	 * pd_ts_name valid.
+	 */
+	PD_INTERVAL_INVALID,
+	PD_INTERVAL_COUNT,
+};
+
+/* Each validly recorded interval will have a start timestamp and an end
+ * timestamp.
+ */
+enum pd_interval_point {
+	PD_START,
+	PD_END,
+};
+
+struct pd_debug_timestamps {
+	timestamp_t start;
+	timestamp_t end;
+};
+
+/* Record the start of an interval. This is equivalent to
+ * pd_record_timestamp(port, interval, PD_START, get_time()). This function
+ * should be called at the point in the code when the event to be measured
+ * is observed to start.
+ *
+ * @param port     USB-C port number
+ * @param interval The interval to record
+ */
+void pd_record_timestamp_start(int port, enum pd_debug_interval interval);
+
+/* Record the end of an interval. This is equivalent to
+ * pd_record_timestamp(port, interval, PD_END, get_time()). This function should
+ * be called at the point in the code where the event to be measured is observed
+ * to end.
+ *
+ * @param port     USB-C port number
+ * @param interval The interval to record
+ */
+void pd_record_timestamp_end(int port, enum pd_debug_interval interval);
+
+/* Record the start or end of an interval. This function may be called at a
+ * point in the code after the event to be measured starts or ends, based on a
+ * previously noted timestamp.
+ *
+ * @param port     USB-C port number
+ * @param interval The interval to record
+ * @param point    The start or end of the interval
+ * @param ts       The timestamp to record for the start or end
+ */
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts);
+
+/* Print out the recorded intervals for a port. Clear the recorded intervals
+ * after printing. This function should be called at a point in the code where
+ * printing the results will not disturb the intervals to be measured or the
+ * normal operation of the system.
+ *
+ * @param port USB-C port number
+ */
+void pd_print_timestamps(int port);
 
 /****************************************************************************
  * TCPC CC/Rp Management

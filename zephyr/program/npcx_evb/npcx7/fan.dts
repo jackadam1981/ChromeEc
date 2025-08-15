@@ -9,11 +9,11 @@
 
 		fan_0 {
 			pwms = <&pwm0 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
-			rpm_min = <1000>;
-			rpm_start = <1000>;
-			rpm_max = <5200>;
+			rpm-min = <1000>;
+			rpm-start = <1000>;
+			rpm-max = <5200>;
 			tach = <&tach1>;
-			pgood_gpio = <&gpio_pgood_fan>;
+			pgood-gpio = <&gpio_pgood_fan>;
 		};
 	};
 };

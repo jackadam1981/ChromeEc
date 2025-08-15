@@ -16,8 +16,11 @@ void ap_pwrseq_wake(void);
 extern "C" {
 #endif
 
+#define AP_POWER_SUB_STATE_ENUM_DEF_WITH_COMMA_(id) DT_CAT(AP_POWER_STATE_, id),
+
 #define AP_POWER_SUB_STATE_ENUM_DEF_WITH_COMMA(node_id, prop, idx) \
-	DT_CAT6(node_id, _P_, prop, _IDX_, idx, _STRING_UPPER_TOKEN),
+	AP_POWER_SUB_STATE_ENUM_DEF_WITH_COMMA_(                   \
+		DT_CAT6(node_id, _P_, prop, _IDX_, idx, _STRING_TOKEN))
 
 #define AP_PWRSEQ_EACH_SUB_STATE_ENUM_DEF(node_id)                              \
 	COND_CODE_1(                                                            \

@@ -22,7 +22,11 @@
 LOG_MODULE_REGISTER(test_tps6699x, LOG_LEVEL_DBG);
 #define SLEEP_MS 200
 
+/* Copy of driver retries for init. */
+#define TPS6699X_INIT_RETRY_MAX 3
+
 #define TPS6699X_NODE DT_NODELABEL(pdc_emul1)
+#define TPS6699X_NODE2 DT_NODELABEL(pdc_emul2)
 
 enum port_control_access {
 	ACCESS_OK,
@@ -38,6 +42,7 @@ test_mockable_static int tps_xfer_reg(const struct i2c_dt_spec *i2c,
 
 static const struct emul *emul = EMUL_DT_GET(TPS6699X_NODE);
 static const struct device *dev = DEVICE_DT_GET(TPS6699X_NODE);
+static const struct device *dev2 = DEVICE_DT_GET(TPS6699X_NODE2);
 static enum port_control_access access;
 
 static void tps6699x_before_test(void *data)
@@ -196,4 +201,183 @@ ZTEST_USER(tps6699x, test_set_uor_tps)
 	emul_pdc_get_data_role_preference(emul, &swap_to_dfp, &swap_to_ufp);
 	zassert_equal(swap_to_ufp, 0);
 	zassert_equal(swap_to_dfp, 1);
+}
+
+#define INIT_SLEEP_MS 1000
+/* ST_INIT is being used to initialize critical registers and needs to recover
+ * from a failed SET_NOTIFICATION. Test both the INIT_DONE + retry mechanisms.
+ */
+ZTEST_USER(tps6699x, test_init_state_sequence)
+{
+	/* Make sure we started in an initialized state. */
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Fail all SET_NOTIFICATION attempts as part of init. One failure will
+	 * be due to attempting to read REG_VERSION. */
+	emul_pdc_fail_next_ucsi_command(emul, UCSI_SET_NOTIFICATION_ENABLE,
+					TASK_REJECTED, TPS6699X_INIT_RETRY_MAX);
+
+	/* Do a reset which will trigger GAID and restart init. This takes
+	 * longer than normal to complete since GAID takes >1s.
+	 */
+	zassert_ok(pdc_reset(dev));
+	k_sleep(K_MSEC(INIT_SLEEP_MS * 2));
+
+	/* PDC should not be init because SET_NOTIFICATION failed. */
+	zassert_false(pdc_is_init_done(dev));
+
+	/* Reset will fail because it's in suspended state. Restore from
+	 * suspended and it should be ok again. */
+	zassert_not_ok(pdc_reset(dev));
+	zassert_ok(pdc_set_comms_state(dev, true));
+	k_sleep(K_MSEC(INIT_SLEEP_MS));
+
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Fail register read/writes for some init tasks at least once for
+	 * coverage. These all will cause error handling to trigger.
+	 */
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_MASK_FOR_I2C1);
+	emul_pdc_fail_reg_write(emul, REG_AUTONEGOTIATE_SINK);
+	emul_pdc_fail_reg_write(emul, REG_PORT_CONTROL);
+	emul_pdc_fail_reg_read(emul, REG_BOOT_FLAG);
+	emul_pdc_fail_reg_read(emul, REG_VERSION);
+
+	/* No error handling triggered by this failure. Only useful for
+	 * coverage.
+	 */
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_CLEAR_FOR_I2C1);
+
+	/* Number of registers fails above / number of retries is how many loop
+	 * iterations it will take to recover to init state.
+	 */
+	const int num_loops = 5 / TPS6699X_INIT_RETRY_MAX + 1;
+
+	/* Do a reset which will trigger GAID and restart init. */
+	zassert_ok(pdc_reset(dev));
+	k_sleep(K_MSEC(INIT_SLEEP_MS));
+
+	int i;
+	for (i = 0; i < num_loops && !pdc_is_init_done(dev); ++i) {
+		/* PDC won't be init because register read/writes failed. */
+		zassert_false(pdc_is_init_done(dev));
+
+		/* Restore from suspended to trigger the init retries. */
+		zassert_ok(pdc_set_comms_state(dev, true));
+		k_sleep(K_MSEC(INIT_SLEEP_MS));
+	}
+
+	zassert_equal(i, num_loops, "I = %d vs num_loops = %d", i, num_loops);
+	zassert_true(pdc_is_init_done(dev));
+}
+
+/* Cover various branches of handle irq including failures. */
+ZTEST_USER(tps6699x, test_handle_irq)
+{
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Set up some failures to read/write interrupt registers and make sure
+	 * that the irq handling is eventually retried.
+	 */
+	emul_pdc_fail_reg_read(emul, REG_INTERRUPT_EVENT_FOR_I2C1);
+	emul_pdc_fail_reg_write(emul, REG_INTERRUPT_CLEAR_FOR_I2C1);
+
+	zassert_ok(emul_pdc_pulse_irq(emul));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Fail all SET_NOTIFICATION attempts as part of init. One failure will
+	 * be due to attempting to read REG_VERSION. */
+	emul_pdc_fail_next_ucsi_command(emul, UCSI_SET_NOTIFICATION_ENABLE,
+					TASK_REJECTED, TPS6699X_INIT_RETRY_MAX);
+
+	emul_pdc_set_interrupt_patch_loaded(emul);
+	zassert_ok(emul_pdc_pulse_irq(emul));
+	k_sleep(K_MSEC(SLEEP_MS));
+	/* We should have reset into suspend state due to failing init. */
+	zassert_false(pdc_is_init_done(dev));
+
+	/* Recover to idle. */
+	zassert_ok(pdc_set_comms_state(dev, true));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_true(pdc_is_init_done(dev));
+
+	/* Second dev may also be in a stuck state so recover it. */
+	if (!pdc_is_init_done(dev2)) {
+		zassert_ok(pdc_set_comms_state(dev2, true));
+		k_sleep(K_MSEC(SLEEP_MS));
+		zassert_true(pdc_is_init_done(dev2));
+	}
+}
+
+ZTEST_USER(tps6699x, test_set_rdo)
+{
+	uint32_t rdo;
+	uint32_t cached_pdos;
+	int max_voltage, max_current;
+	union connector_status_t conn_status = { 0 };
+	uint32_t pdos[PDO_MAX_OBJECTS] = { 0 };
+
+	access = ACCESS_OK;
+	RESET_FAKE(tps_rw_port_control);
+	tps_rw_port_control_fake.custom_fake = custom_fake_tps_rw_port_control;
+
+	/* Set connector status to allow the PDC driver to set an RDO */
+	conn_status.connect_status = 1;
+	conn_status.power_direction = 0;
+	emul_pdc_set_connector_status(emul, &conn_status);
+	k_sleep(K_MSEC(SLEEP_MS));
+	emul_pdc_pulse_irq(emul);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Test Fixed PDO selection */
+	pdos[PDO_OFFSET_0] = PDO_FIXED(20000, 5000, 0);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos),
+			  PARTNER_PDO, pdos);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Read back PDO for the driver to cache them */
+	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				&cached_pdos));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Set RDO with PDC driver */
+	rdo = RDO_FIXED(1, CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
+			CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 0);
+	zassert_ok(pdc_set_rdo(dev, rdo));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify voltage and current limits from PDC emulator
+	 * autoneg_sink max voltage should be PDO voltage / 50.
+	 * autoneg_sink max current should be the min of PDO current and device
+	 * current / 10.
+	 */
+	emul_pdc_get_autoneg_sink(emul, &max_voltage, &max_current);
+	zassert_equal(max_voltage, 20000 / 50);
+	zassert_equal(max_current,
+		      MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 5000) / 10);
+
+	/* Test Battery PDO selection */
+	pdos[PDO_OFFSET_0] = PDO_BATT(5000, 20000, 45000);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos),
+			  PARTNER_PDO, pdos);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Read back PDO for the driver to cache them */
+	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				&cached_pdos));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Set RDO with PDC driver */
+	rdo = RDO_BATT(1, 45000, 45000, 0);
+	zassert_ok(pdc_set_rdo(dev, rdo));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify voltage and current limits from PDC emulator
+	 * autoneg_sink max voltage should be max PDO voltage / 50.
+	 * autoneg_sink max current should be the device current / 10.
+	 */
+	emul_pdc_get_autoneg_sink(emul, &max_voltage, &max_current);
+	zassert_equal(max_voltage, 20000 / 50);
+	zassert_equal(max_current,
+		      CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA / 10);
 }

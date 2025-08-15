@@ -6,6 +6,7 @@ zephyr_library_sources(console.c)
 zephyr_library_sources(crc.c)
 zephyr_library_sources(gpio.c)
 zephyr_library_sources(gpio_int.c)
+zephyr_library_sources_ifdef(CONFIG_PM pm_state.c)
 
 add_subdirectory("buttons")
 add_subdirectory("cbi")
@@ -102,6 +103,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_SHA256_HW_ZEPHYR
 	                                                    sha256_hw.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP
 	                                                    register_memory_dump.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_STUB   usbc_stub.c)
 if (DEFINED CONFIG_HOST_SERVICE)
 zephyr_library_sources_ifdef(CONFIG_HECI
                                                             host_command_heci.c)

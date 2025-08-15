@@ -9,22 +9,22 @@ compatible: "cros-ec,fans"
 child-binding:
   description: Fan's child node
   properties:
-    rpm_min:
+    rpm-min:
       required: true
       type: int
       description:
         Minimum fan speed (in RPM) to keep turning
-    rpm_start:
+    rpm-start:
       required: true
       type: int
       description:
         Fan speed (in RPM) to begin turning
-    rpm_max:
+    rpm-max:
       required: true
       type: int
       description:
         Maximum fan speed (in RPM)
-    rpm_deviation:
+    rpm-deviation:
       default: 7
       type: int
       description:
@@ -38,20 +38,20 @@ child-binding:
       type: phandle
       description:
         Tachometer to measure the fan speed
-    not_use_rpm_mode:
+    not-use-rpm-mode:
       type: boolean
       description:
         Disable automatic RPM control using tachometer input
-    use_fast_start:
+    use-fast-start:
       type: boolean
       description:
         Fan requires a higher duty cycle to start up than to keep
         running
-    pgood_gpio:
+    pgood-gpio:
       type: phandle
       description:
         Active high input GPIO which signals the power is good
-    enable_gpio:
+    enable-gpio:
       type: phandle
       description:
         Active high output GPIO to enable the power

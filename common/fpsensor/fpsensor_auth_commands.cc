@@ -26,6 +26,9 @@
 #include <utility>
 #include <variant>
 
+/* Pointer to the FPMCU's ECDH private key */
+static bssl::UniquePtr<EC_KEY> ecdh_key;
+
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
@@ -60,22 +63,10 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
+	ecdh_key = generate_elliptic_curve_key();
 	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
-
-	std::optional<fp_encrypted_private_key> encrypted_private_key =
-		create_encrypted_private_key(*ecdh_key,
-					     FP_AES_KEY_ENC_METADATA_VERSION,
-					     global_context.user_id,
-					     global_context.tpm_seed);
-	if (!encrypted_private_key.has_value()) {
-		CPRINTS("pairing_keygen: Failed to fill response encrypted private key");
-		return EC_RES_UNAVAILABLE;
-	}
-
-	r->encrypted_private_key = encrypted_private_key.value();
 
 	std::optional<fp_elliptic_curve_public_key> pubkey =
 		create_pubkey_from_ec_key(*ecdh_key);
@@ -100,14 +91,13 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	auto *r = static_cast<ec_response_fp_establish_pairing_key_wrap *>(
 		args->response);
 
-	ScopedFastCpu fast_cpu;
+	CleanseWrapper<std::array<uint8_t, FP_PAIRING_KEY_LEN> > new_pairing_key;
 
-	bssl::UniquePtr<EC_KEY> private_key = decrypt_private_key(
-		params->encrypted_private_key, global_context.user_id,
-		global_context.tpm_seed);
-	if (private_key == nullptr) {
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
+
+	ScopedFastCpu fast_cpu;
 
 	bssl::UniquePtr<EC_KEY> public_key =
 		create_ec_key_from_pubkey(params->peers_pubkey);
@@ -115,21 +105,27 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*private_key, *public_key, r->encrypted_pairing_key.data,
-		sizeof(r->encrypted_pairing_key.data));
+	/*
+	 * The Pairing Key is only used to produce the Session Key.
+	 * It's not used as a key for symmetric encryption. It's okay
+	 * to not apply KDF in this case.
+	 */
+	enum ec_error_list ret = generate_ecdh_shared_secret_without_kdf(
+		*ecdh_key, *public_key, new_pairing_key);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	ret = encrypt_data_in_place(FP_AES_KEY_ENC_METADATA_VERSION,
-				    r->encrypted_pairing_key.info,
-				    global_context.user_id,
-				    global_context.tpm_seed,
-				    r->encrypted_pairing_key.data);
+	ret = encrypt_pairing_key(FP_AES_KEY_ENC_METADATA_VERSION,
+				  r->encrypted_pairing_key.info,
+				  new_pairing_key,
+				  r->encrypted_pairing_key.data);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
+
+	/* Deallocate the FPMCU's ECDH private key. */
+	ecdh_key = nullptr;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -159,9 +155,9 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	ret = decrypt_data(params->encrypted_pairing_key.info,
-			   global_context.user_id, global_context.tpm_seed,
-			   params->encrypted_pairing_key.data, pairing_key);
+	ret = decrypt_pairing_key(params->encrypted_pairing_key.info,
+				  params->encrypted_pairing_key.data,
+				  pairing_key);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("load_pairing_key: Failed to decrypt pairing key");
 		return EC_RES_UNAVAILABLE;
