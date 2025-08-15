@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "keyboard_config.h"
 #include "keyboard_scan.h"
+#include "motion_sense.h"
 #include "tablet_mode.h"
 #include "zephyr/kernel.h"
 
@@ -44,6 +45,12 @@ FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 
 static void reset(void)
 {
+	/* zephyr/program/corsola/ponyta/src/board.c will set the sensor count
+	 * to 0 if the CBI fw config is set to CLAMSHELL, but there's no way to
+	 * recover the previous sensor count. Before calling hook_notify, we
+	 * should reset the sensor count manually.
+	 */
+	motion_sensor_count = DT_CHILD_NUM_STATUS_OKAY(SENSOR_NODE);
 	/* Re-initialize CBI */
 	cros_cbi_ec_init();
 

@@ -127,7 +127,7 @@ ZTEST(corsola_usb_pd_policy, test_pd_set_power_supply_ready_fail1)
 	ppc_vbus_sink_enable_fake.return_val = 1;
 	ppc_vbus_source_enable_fake.return_val = 0;
 
-	zassert_ok(!pd_set_power_supply_ready(port));
+	zassert_not_ok(pd_set_power_supply_ready(port));
 }
 
 ZTEST(corsola_usb_pd_policy, test_pd_set_power_supply_ready_fail2)
@@ -137,7 +137,7 @@ ZTEST(corsola_usb_pd_policy, test_pd_set_power_supply_ready_fail2)
 	ppc_vbus_sink_enable_fake.return_val = 0;
 	ppc_vbus_source_enable_fake.return_val = 1;
 
-	zassert_ok(!pd_set_power_supply_ready(port));
+	zassert_not_ok(pd_set_power_supply_ready(port));
 }
 
 ZTEST(corsola_usb_pd_policy, test_pd_check_vconn_swap)

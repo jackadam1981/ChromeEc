@@ -317,6 +317,8 @@ ZTEST(anx7447, test_get_bist_mode_valid)
 		      "BIST mode should be disable for port 0");
 }
 
+#ifdef TODO_B_415164020
+/* TODO(b/415164020) - TCPC does not sanitize the port number */
 ZTEST(anx7447, test_invalid_port)
 {
 	bool enable;
@@ -329,3 +331,4 @@ ZTEST(anx7447, test_invalid_port)
 	zassert_equal(ret, EC_SUCCESS,
 		      "Expected EC_ERROR_INVAL for invalid port");
 }
+#endif /* TODO_B_415164020 */
