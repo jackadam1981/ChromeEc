@@ -128,16 +128,6 @@ if(DEFINED CONFIG_BOARD_YAVISTA)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "yavista/src/charger.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "yavista/src/fan.c")
 endif()
-if(DEFINED CONFIG_BOARD_XIVUR)
-	project(xivur)
-	zephyr_library_sources(
-			"xivur/src/led.c"
-			"xivur/src/board.c"
-	)
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "xivur/src/fan.c")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "xivur/src/usbc.c")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "xivur/src/charger.c")
-endif()
 if(DEFINED CONFIG_BOARD_ULDREN)
 	project(uldren)
 	zephyr_library_sources(
