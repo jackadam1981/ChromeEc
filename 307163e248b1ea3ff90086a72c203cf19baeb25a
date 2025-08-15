@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4b975c_e2db645a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T22:20:43Z",
+      "side": 1,
+      "message": "```suggestion\nfpsensor: Modify get_sensor_bpp to use fp_info_v2\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a04e4be_94fbbaac",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T22:20:43Z",
+      "side": 1,
+      "message": "Where does this come from? Are you trying to allocate space for the maximum number of capture types? If so, it should be a constant. Also, why the `sizeof(uint32_t)`? \n\nComparing to [this code](https://crrev.com/c/6354365):\n\n```\n\targs-\u003eresponse_size \u003d sizeof(struct ec_response_fp_info_v2) +\n\t\t\t      (r-\u003esensor_info.num_capture_types) *\n\t\t\t\t      sizeof(struct fp_image_frame_params);\n```",
+      "range": {
+        "startLine": 132,
+        "startChar": 41,
+        "endLine": 132,
+        "endChar": 62
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d8c408_e1898df9",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T22:20:43Z",
+      "side": 1,
+      "message": "The memory from `malloc` is not `free`\u0027d here.\n\nSince this is a C++ file, you can use [RAII](https://en.cppreference.com/w/cpp/language/raii.html) instead of `malloc`/`free`:\n\n```\nauto info \u003d std::make_unique\u003cec_response_fp_info_v2\u003e(fp_sensor_get_info_v2_size);\n```",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6c0526_307cb7f8",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T22:20:43Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 38
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13297a34_9f059595",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T22:20:43Z",
+      "side": 1,
+      "message": "This is a separate change from \"Modify get_sensor_bpp to use fp_info_v2\", so let\u0027s put it in a different CL.",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 41
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b9bcd4_b32a02d7",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T22:20:43Z",
+      "side": 1,
+      "message": "Unrelated change",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 5
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
