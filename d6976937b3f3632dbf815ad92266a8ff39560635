@@ -46,6 +46,30 @@
       },
       "revId": "d6976937b3f3632dbf815ad92266a8ff39560635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7551a205_ff35814d",
+        "filename": "zephyr/program/fpmcu/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:26:52Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure if we need that since our ebuild ends up copying the binary:\n\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/eclass/cros-zephyr-fpmcu.eclass\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-firmware/chromeos-fpmcu-release-bloonchipper/chromeos-fpmcu-release-bloonchipper-9999.ebuild\n\nIf this is just maintaining the status quo, we it as-is in this CL and then try removing it separately.",
+      "parentUuid": "5ed9b77b_ebd22db3",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "d6976937b3f3632dbf815ad92266a8ff39560635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
