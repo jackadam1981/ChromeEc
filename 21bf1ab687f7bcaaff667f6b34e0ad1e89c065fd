@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc30dbf_797ffa2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-08-15T20:58:41Z",
+      "side": 1,
+      "message": "This change is deliberately not under #ifdef to simplify Rust integration. It needs to be landed before corresponding ti50/cr50 changes, after which the next CL in this chain, which actually uses those fields (and is tested) can go in.",
+      "revId": "21bf1ab687f7bcaaff667f6b34e0ad1e89c065fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
