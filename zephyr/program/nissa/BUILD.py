@@ -4,7 +4,7 @@
 
 """Define zmake projects for nissa."""
 
-# Nivviks and Craask, Pujjo, Xivu, Xivur, Uldren has NPCX993F, Nereid
+# Nivviks and Craask, Pujjo, Xivu, Uldren has NPCX993F, Nereid
 # and Joxer, Yaviks, Yavilla, Yavista, Quandiso, Quandiso2, Domika has
 # ITE81302
 
@@ -103,11 +103,6 @@ pujjogatwin = register_nissa_project(
 
 xivu = register_nissa_project(
     project_name="xivu",
-    chip="npcx9/npcx9m3f",
-)
-
-xivur = register_nissa_project(
-    project_name="xivur",
     chip="npcx9/npcx9m3f",
 )
 
@@ -235,7 +230,6 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="quandiso", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="quandiso2", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="uldren", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="xivu", addr=0x7FFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="xivur", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yaviks", addr=0xAFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yavilla", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="glassway", addr=0x7FFE0)
