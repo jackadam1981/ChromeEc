@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a22d4e6_095ba8f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 47
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-08-15T09:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b92075e7_0f4e05db",
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ba11f98_0bcc7f60",
@@ -165,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6de0148_d0c8d6dd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-08-15T09:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c4c8ea2_da3a7944",
+      "range": {
+        "startLine": 1687,
+        "startChar": 0,
+        "endLine": 1689,
+        "endChar": 0
+      },
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b535658_7962fee7",
@@ -202,6 +244,30 @@
       "side": 1,
       "message": "That\u0027s what \u0027cros format\u0027 does - it\u0027s enforced by presubmit hooks",
       "parentUuid": "9b535658_7962fee7",
+      "range": {
+        "startLine": 1860,
+        "startChar": 0,
+        "endLine": 1862,
+        "endChar": 0
+      },
+      "revId": "e70fb19c40ef792db41547bef2bf803636601334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2199b27_007e4d3c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 3322325
+      },
+      "writtenOn": "2025-08-15T09:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0c74e1a_a8595123",
       "range": {
         "startLine": 1860,
         "startChar": 0,
