@@ -123,7 +123,6 @@ parse-boards() {
     gwendolin
     helipilot
     nucleo-dartmonkey
-    nucleo-h743zi
     rosalia
   )
 
