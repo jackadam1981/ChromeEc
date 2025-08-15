@@ -11,6 +11,7 @@
 		 * motion sense's <>_INT_EVENT is handled by alias. Using the
 		 * alias, each driver creates its own <>_INT_EVENT.
 		 */
+		bmi3xx-int = &base_accel;
 		bma4xx-int = &lid_accel;
 	};
 
@@ -61,7 +62,6 @@
 			mutex = <&mutex_bma4xx_lid>;
 			port = <&i2c_ish_sensor>;
 			rot-standard-ref = <&lid_rot_ref>;
-			default-range = <2>;
 			drv-data = <&lid_data>;
 			i2c-spi-addr-flags = "BMA4_I2C_ADDR_SECONDARY";
 			configs {
@@ -86,7 +86,6 @@
 			mutex = <&mutex_bmi323_base>;
 			port = <&i2c_ish_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
-			default-range = <2>;
 			drv-data = <&base_data>;
 			i2c-spi-addr-flags = "BMI3_ADDR_I2C_SEC";
 			configs {
@@ -124,9 +123,8 @@
 		 * List of GPIO interrupts that have to be enabled at initial
 		 * stage.
 		 */
-		sensor-irqs = <&int_lid_accel>;
+		sensor-irqs = <&int_base_accel &int_lid_accel>;
 
 		/* List of sensors in force mode */
-		accel-force-mode-sensors = <&base_accel>;
 	};
 };

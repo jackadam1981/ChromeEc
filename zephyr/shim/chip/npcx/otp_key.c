@@ -1,0 +1,1 @@
+../../../../chip/npcx/otp_key.c

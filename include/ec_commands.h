@@ -268,6 +268,16 @@ extern "C" {
 #define EC_BATT_FLAG_INVALID_DATA 0x20
 #define EC_BATT_FLAG_CUT_OFF 0x40
 
+/*
+ * Value written to EC_MEMMAP_BATT_DCAP, EC_MEMMAP_BATT_DVLT, EC_MEMMAP_CCNT,
+ * EC_MEMMAP_BATT_VOLT, EC_MEMMAP_BATT_RATE, EC_MEMMAP_BATT_CAP, and
+ * EC_MEMMAP_BATT_LFCC if the actual value is unknown.
+ *
+ * This corresponds with the unknown value specified by ACPI release 6.5
+ * §10.2.2 (and earlier versions), to match expectations of ACPI firmware.
+ */
+#define EC_MEMMAP_BATT_UNKNOWN_VALUE (-1)
+
 /* Switch flags at EC_MEMMAP_SWITCHES */
 #define EC_SWITCH_LID_OPEN 0x01
 #define EC_SWITCH_POWER_BUTTON_PRESSED 0x02
@@ -1761,6 +1771,10 @@ enum ec_feature_code {
 	 * The EC supports Strauss keyboard.
 	 */
 	EC_FEATURE_STRAUSS = 55,
+	/*
+	 * The EC supports PoE.
+	 */
+	EC_FEATURE_POE = 56,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -6597,29 +6611,20 @@ enum cbi_data_tag {
 	/* Second Source Factory Cache */
 	CBI_TAG_SSFC = 8, /* uint32_t bit field */
 	CBI_TAG_REWORK_ID = 9, /* uint64_t or smaller */
-	CBI_TAG_FACTORY_CALIBRATION_DATA = 10, /* uint32_t bit field */
-
-	/*
-	 * A uint32_t field reserved for controlling common features at runtime.
-	 * It shouldn't be used at board-level. See union ec_common_control for
-	 * the bit definitions.
-	 */
-	CBI_TAG_COMMON_CONTROL = 11,
-
+	CBI_TAG_FACTORY_CALIBRATION_DATA = 10, /* Deprecated */
+	CBI_TAG_COMMON_CONTROL = 11, /* Deprecated */
 	/* struct board_batt_params */
 	CBI_TAG_BATTERY_CONFIG = 12,
 	/* CBI_TAG_BATTERY_CONFIG_1 ~ 15 will use 13 ~ 27. */
 	CBI_TAG_BATTERY_CONFIG_15 = 27,
 
+	/* CBI_TAG_PROVISION_MATRIX_VERSION
+	 * Version of the current provision matrix
+	 */
+	CBI_TAG_PROVISION_MATRIX_VERSION = 28, /* uint32_t bit field */
+
 	/* Last entry */
 	CBI_TAG_COUNT,
-};
-
-union ec_common_control {
-	struct {
-		uint32_t ucsi_enabled : 1;
-	};
-	uint32_t raw_value;
 };
 
 /*
@@ -8247,6 +8252,13 @@ struct pdc_trace_msg_entry {
 	uint8_t pdc_data[FLEXIBLE_ARRAY_MEMBER_SIZE];
 } __ec_align1;
 
+/* Enable/disable Ethernet POE power */
+#define EC_CMD_SWITCH_ENABLE_POE 0x0145
+
+struct ec_params_switch_enable_poe {
+	uint8_t enabled;
+} __ec_align1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
@@ -8630,7 +8642,6 @@ struct fp_encrypted_private_key {
 
 struct ec_response_fp_establish_pairing_key_keygen {
 	struct fp_elliptic_curve_public_key pubkey;
-	struct fp_encrypted_private_key encrypted_private_key;
 } __ec_align4;
 
 #define FP_PAIRING_KEY_LEN 32
@@ -8644,7 +8655,6 @@ struct ec_fp_encrypted_pairing_key {
 
 struct ec_params_fp_establish_pairing_key_wrap {
 	struct fp_elliptic_curve_public_key peers_pubkey;
-	struct fp_encrypted_private_key encrypted_private_key;
 } __ec_align4;
 
 struct ec_response_fp_establish_pairing_key_wrap {

@@ -577,6 +577,20 @@ union reg_sx_config {
 };
 
 /**
+ * @brief Sx sleep state values
+ *
+ * The value used to indicate to the PDC the current AP power state
+ */
+enum sx_sleep_state {
+	SX_S0 = 0,
+	SX_S3 = 1,
+	SX_S4 = 2,
+	SX_S5 = 3,
+	SX_SOIX = 4,
+	SX_RSVD = 5,
+};
+
+/**
  * @brief 4.22 SX App Config Register (Offset = 0x20)
  *
  * Configuration based on system state. The Host may write the current system

@@ -53,7 +53,7 @@ ZTEST(pdc_usb_utils, test_pd_extract_pdo_power_unclamped)
 	pd_extract_pdo_power_unclamped(pdo, &ma, &max_mv, &min_mv);
 	zassert_equal(5000, min_mv);
 	zassert_equal(20000, max_mv);
-	zassert_equal(2000, ma);
+	zassert_equal(500, ma);
 }
 
 ZTEST_SUITE(pdc_usb_utils, NULL, NULL, NULL, NULL, NULL);

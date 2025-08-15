@@ -224,9 +224,9 @@
 
 &fan0 {
 	pwms = <&pwm5 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
-	rpm_min = <1710>;
-	rpm_start = <1710>;
-	rpm_max = <5700>;
+	rpm-min = <1710>;
+	rpm-start = <1710>;
+	rpm-max = <5700>;
 };
 
 &i2c7_0 {

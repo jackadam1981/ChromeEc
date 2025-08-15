@@ -10,6 +10,7 @@
 		size = <0x3e000>;
 
 		ec-ro {
+			pad-byte = <0xff>;
 			size = <0x3e000>;
 
 			fmap {
@@ -25,7 +26,6 @@
 				offset = <(0x3e000 - 1024)>;
 				size = <1024>;
 			};
-			pad-byte = <0xff>;
 		};
 
 		/delete-node/ pstate;
@@ -45,6 +45,11 @@
 
 	ec-rw {
 		rw-fw {
+			/* rwsig assumes the padding bytes between zephyr-rw and
+			 * sig-rw are filled with 0xff.
+			 */
+			pad-byte = <0xff>;
+
 			rw-rbver {
 				size = <4>;
 				type = "section";
@@ -61,11 +66,6 @@
 				offset = <(0x40000 - 1024)>;
 				size = <1024>;
 			};
-
-			/* rwsig assumes the padding bytes between zephyr-rw and
-			 * sig-rw are filled with 0xff.
-			 */
-			pad-byte = <0xff>;
 		};
 	};
 };

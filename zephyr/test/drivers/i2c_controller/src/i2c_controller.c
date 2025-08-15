@@ -193,14 +193,14 @@ ZTEST_F(i2c_controller, test_read_offset16__two_bytes_be)
 ZTEST_F(i2c_controller, test_read_offset16__invalid)
 {
 	/* Check length limits */
-	zassert_ok(
-		!i2c_read_offset16(fixture->port, fixture->addr, 0, NULL, 3));
-	zassert_ok(
-		!i2c_read_offset16(fixture->port, fixture->addr, 0, NULL, -1));
+	zassert_not_ok(
+		i2c_read_offset16(fixture->port, fixture->addr, 0, NULL, 3));
+	zassert_not_ok(
+		i2c_read_offset16(fixture->port, fixture->addr, 0, NULL, -1));
 
 	/* Failed intermediate write due to bad address */
-	zassert_ok(!i2c_read_offset16(fixture->port, fixture->addr + 1, 0, NULL,
-				      1));
+	zassert_not_ok(i2c_read_offset16(fixture->port, fixture->addr + 1, 0,
+					 NULL, 1));
 }
 
 ZTEST_F(i2c_controller, test_write_offset16__one_byte)
@@ -262,8 +262,10 @@ ZTEST_F(i2c_controller, test_write_offset16__two_bytes_be)
 ZTEST_F(i2c_controller, test_write_offset16__invalid)
 {
 	/* Check length limits */
-	zassert_ok(!i2c_write_offset16(fixture->port, fixture->addr, 0, 0, 3));
-	zassert_ok(!i2c_write_offset16(fixture->port, fixture->addr, 0, 0, -1));
+	zassert_not_ok(
+		i2c_write_offset16(fixture->port, fixture->addr, 0, 0, 3));
+	zassert_not_ok(
+		i2c_write_offset16(fixture->port, fixture->addr, 0, 0, -1));
 }
 
 ZTEST_F(i2c_controller, test_read_offset16_block)

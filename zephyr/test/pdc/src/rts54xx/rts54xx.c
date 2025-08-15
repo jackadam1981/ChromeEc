@@ -146,7 +146,7 @@ ZTEST_USER(rts54xx, test_emul_pdos)
 ZTEST_USER(rts54xx, test_pdos)
 {
 	uint32_t pdos[PDO_OFFSET_MAX];
-	int num_pdos = GET_PDOS_MAX_NUM;
+	int num_pdos = UCSI_GET_PDOS_MAX_NUM;
 
 	memset(pdos, 0, sizeof(pdos));
 	zassert_ok(emul_set_src_pdos(PDO_OFFSET_1, 6, spr_pdos));

@@ -70,7 +70,7 @@ struct gpio_pin_t {
 struct pwm_data_t {
 	struct pwm_dt_spec pwm_spec;
 	uint32_t pulse_ns;
-	enum led_transition transition;
+	int32_t pulse_step_ns;
 };
 
 /*
@@ -87,6 +87,7 @@ struct pwm_pin_t {
 	 * the current pulse_ns to calculate the new pulse_ns.
 	 */
 	int32_t pulse_ns;
+	int32_t pulse_step_ns;
 };
 
 /*
@@ -160,8 +161,11 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *led);
  * the data is applied to the pin using this function. This allows the pwm LEDs
  * to be set and applied at different timings, allowing for a smoother
  * transition of pwm color without repeatedly checking the policy.
+ *
+ * @param has_transitions		Whether the policy has a transition
+ * pattern
  */
-void board_led_apply_color(void);
+void board_led_apply_color(bool has_transitions);
 
 #ifdef TEST_BUILD
 const struct led_pins_node_t *led_get_node(enum led_color color,

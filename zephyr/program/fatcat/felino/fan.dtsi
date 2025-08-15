@@ -10,20 +10,20 @@
 		fan_0 {
 			pwms = <&pwm6 PWM_CHANNEL_6 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 			tach = <&tach0>;
-			rpm_min = <1100>;
-			rpm_start = <1100>;
-			rpm_max = <4000>;
-			rpm_deviation = <1>;
-			pgood_gpio = <&gpio_vccprim_io_pgood>;
+			rpm-min = <1100>;
+			rpm-start = <1100>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
+			pgood-gpio = <&gpio_vccprim_io_pgood>;
 		};
 		fan_1 {
 			pwms = <&pwm3 PWM_CHANNEL_3 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 			tach = <&tach1>;
-			rpm_min = <1100>;
-			rpm_start = <1100>;
-			rpm_max = <4000>;
-			rpm_deviation = <1>;
-			pgood_gpio = <&gpio_vccprim_io_pgood>;
+			rpm-min = <1100>;
+			rpm-start = <1100>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
+			pgood-gpio = <&gpio_vccprim_io_pgood>;
 		};
 	};
 };
