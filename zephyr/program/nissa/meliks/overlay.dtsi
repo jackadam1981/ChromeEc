@@ -50,7 +50,11 @@
 	};
 
 	batteries {
-		default_battery: sdi {
+		sdi_4404d57m {
+			compatible = "sdi,4404d57m", "battery-smart";
+		};
+
+		default_battery: sdi_4404d57 {
 			compatible = "sdi,4404d57", "battery-smart";
 		};
 	};
@@ -278,7 +282,7 @@
 			gpios = <&gpio6 3 GPIO_OUTPUT_LOW>;
 		};
 		gpio_lcd_rst_n: lcd_rst_n {
-			gpios = <&gpioa 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			gpios = <&gpioa 0 GPIO_INPUT>;
 		};
 
 		gpio_sb_1: sb-1 {
@@ -286,9 +290,8 @@
 			no-auto-init;
 		};
 
-		gpio_sb_2: sb-2 {
+		gpio_sb_2: en_sub_usb_a1_vbus {
 			gpios = <&gpiod 4 GPIO_OUTPUT>;
-			no-auto-init;
 		};
 
 		/*
@@ -357,13 +360,6 @@
 		 * Sub-board with type A USB, enable.
 		 */
 		gpio-en-usb-a1-vbus = &gpio_sb_2;
-		/*
-		 * HPD pins for HDMI sub-board.
-		 */
-		/*
-		gpio-hdmi-en-odl = &gpio_sb_3;
-		gpio-hpd-odl = &gpio_sb_4;
-		*/
 		/*
 		 * Enable S5 rails for LTE sub-board
 		 */

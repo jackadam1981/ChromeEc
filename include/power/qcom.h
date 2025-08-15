@@ -20,9 +20,24 @@ enum power_signal {
 };
 #endif
 
+#if defined(CONFIG_CHIPSET_QC_EXP)
+enum power_signal {
+	QC_EXP_AP_RST_ASSERTED = 0,
+	QC_EXP_PS_HOLD,
+	QC_EXP_POWER_GOOD,
+	QC_EXP_AP_SUSPEND,
+	POWER_SIGNAL_COUNT,
+};
+#endif
+
 /* Swithcap functions */
 void board_set_switchcap_power(int enable);
 int board_is_switchcap_enabled(void);
 int board_is_switchcap_power_good(void);
+
+#if defined(CONFIG_PLATFORM_EC_PMIC_PASSTHRU_POWER_SIGNALS)
+void passthru_lid_open_to_pmic(void);
+void passthru_ac_on_to_pmic(void);
+#endif
 
 #endif /* __CROS_EC_POWER_QCOM_H_ */

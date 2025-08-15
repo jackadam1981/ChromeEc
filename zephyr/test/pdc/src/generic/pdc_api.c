@@ -171,6 +171,7 @@ ZTEST_USER(pdc_api, test_get_connector_status)
 	in.rdo = 0x01234567;
 
 	zassert_ok(emul_pdc_set_connector_status(emul, &in));
+	zassert_ok(emul_pdc_set_rdo(emul, in.rdo));
 
 	zassert_ok(pdc_get_connector_status(dev, &out),
 		   "Failed to get connector capability");
@@ -218,21 +219,66 @@ ZTEST_USER(pdc_api, test_set_uor)
 
 ZTEST_USER(pdc_api, test_set_pdr)
 {
-	union pdr_t in, out;
+	union pdr_t out;
+	int rv;
 
-	in.raw_value = 0;
-	out.raw_value = 0;
+	struct {
+		enum pdc_power_policy policy_in;
+		bool expected_swap_to_src;
+		bool expected_swap_to_sink;
+		bool expected_accept_pr_swap;
+	} test_cases[] = {
+		{
+			.policy_in = PDC_POWER_POLICY_SINK_ALLOW_SWAP,
+			.expected_accept_pr_swap = true,
+			.expected_swap_to_sink = true,
+			.expected_swap_to_src = false,
+		},
+		{
+			.policy_in = PDC_POWER_POLICY_SINK_DISALLOW_SWAP,
+			.expected_accept_pr_swap = false,
+			.expected_swap_to_sink = true,
+			.expected_swap_to_src = false,
+		},
+		{
+			.policy_in = PDC_POWER_POLICY_SOURCE_ALLOW_SWAP,
+			.expected_accept_pr_swap = true,
+			.expected_swap_to_sink = false,
+			.expected_swap_to_src = true,
+		},
+		{
+			.policy_in = PDC_POWER_POLICY_SOURCE_DISALLOW_SWAP,
+			.expected_accept_pr_swap = false,
+			.expected_swap_to_sink = false,
+			.expected_swap_to_src = true,
+		},
+	};
 
-	in.accept_pr_swap = 1;
-	in.swap_to_src = 1;
-	in.connector_number = connector_number;
+	for (int i = 0; i < ARRAY_SIZE(test_cases); i++) {
+		/* Set power policy */
+		rv = pdc_set_pdr(dev, test_cases[i].policy_in);
+		zassert_ok(rv, "Failed to set PDR (i=%d, rv=%d)", i, rv);
 
-	zassert_ok(pdc_set_pdr(dev, in), "Failed to set pdr");
+		k_sleep(K_MSEC(SLEEP_MS));
+		rv = emul_pdc_get_pdr(emul, &out);
+		zassert_ok(rv, "Failed to read PDR (i=%d, rv=%d)", i, rv);
 
-	k_sleep(K_MSEC(SLEEP_MS));
-	zassert_ok(emul_pdc_get_pdr(emul, &out));
-
-	zassert_equal(out.raw_value, in.raw_value);
+		zassert_equal(
+			out.accept_pr_swap,
+			test_cases[i].expected_accept_pr_swap,
+			"accept_pr_swap does not match. Got %d, expected %d (i=%d)",
+			out.accept_pr_swap,
+			test_cases[i].expected_accept_pr_swap, i);
+		zassert_equal(
+			out.swap_to_snk, test_cases[i].expected_swap_to_sink,
+			"swap_to_snk does not match. Got %d, expected %d (i=%d)",
+			out.swap_to_snk, test_cases[i].expected_swap_to_sink,
+			i);
+		zassert_equal(
+			out.swap_to_src, test_cases[i].expected_swap_to_src,
+			"swap_to_src does not match. Got %d, expected %d (i=%d)",
+			out.swap_to_src, test_cases[i].expected_swap_to_src, i);
+	}
 }
 
 /* TODO(b/345292002): TPS6699x driver set_rdo is not supported yet. */
@@ -297,19 +343,30 @@ ZTEST_USER(pdc_api, test_get_bus_voltage)
 
 ZTEST_USER(pdc_api, test_set_ccom)
 {
-	int i;
-	enum ccom_t ccom_in[] = { CCOM_RP, CCOM_RD, CCOM_DRP };
 	enum ccom_t ccom_out;
 
 	k_sleep(K_MSEC(SLEEP_MS));
 
-	for (i = 0; i < ARRAY_SIZE(ccom_in); i++) {
-		zassert_ok(pdc_set_ccom(dev, ccom_in[i]));
+	zassert_ok(pdc_set_ccom(dev, CCOM_RD));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_RD, ccom_out);
 
-		k_sleep(K_MSEC(SLEEP_MS));
-		zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
-		zassert_equal(ccom_in[i], ccom_out);
-	}
+	zassert_ok(pdc_set_ccom(dev, CCOM_RP));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_RP, ccom_out);
+
+	zassert_ok(pdc_set_ccom(dev, CCOM_DRP));
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_DRP, ccom_out);
+
+	/* Illegal value. Should retain previous CCOM */
+	pdc_set_ccom(dev, 9999);
+	k_sleep(K_MSEC(SLEEP_MS));
+	zassert_ok(emul_pdc_get_ccom(emul, &ccom_out));
+	zassert_equal(CCOM_DRP, ccom_out);
 }
 
 ZTEST_USER(pdc_api, test_set_drp_mode)
@@ -618,6 +675,12 @@ ZTEST_USER(pdc_api, test_get_lpm_ppm_info)
 ZTEST_USER(pdc_api, test_get_pdo)
 {
 	uint32_t fixed_pdo = 0;
+	int rv;
+
+	/* Test a bad output pointer. */
+	rv = pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false, NULL);
+	zassert_equal(-EINVAL, rv, "Got %d but expected -EINVAL (%d)", rv,
+		      -EINVAL);
 
 	/* Test source fixed pdo. */
 	zassert_ok(pdc_get_pdos(dev, SOURCE_PDO, PDO_OFFSET_0, 1, false,
@@ -762,6 +825,12 @@ ZTEST_USER(pdc_api, test_get_sbu_mux_mode_access_error)
 	}
 }
 
+ZTEST_USER(pdc_api, test_set_ap_power_state)
+{
+	/* Unsupported power state */
+	zassert_equal(-EINVAL, pdc_set_ap_power_state(dev, POWER_G3));
+}
+
 /*
  * Suspended tests - ensure API calls behave correctly when PDC communication
  * is suspended.
@@ -848,4 +917,10 @@ ZTEST_USER(pdc_api_suspended, test_set_sbu_mux_mode)
 	/* Set should return busy because comms are blocked */
 	zassert_equal(-EBUSY,
 		      pdc_set_sbu_mux_mode(dev, PDC_SBU_MUX_MODE_FORCE_DBG));
+}
+
+ZTEST_USER(pdc_api_suspended, test_set_ap_power_state)
+{
+	/* Set should return busy because comms are blocked */
+	zassert_equal(-EBUSY, pdc_set_ap_power_state(dev, POWER_S0));
 }

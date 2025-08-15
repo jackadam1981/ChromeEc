@@ -5,6 +5,7 @@
 
 #include "chipset.h"
 #include "common.h"
+#include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_angle.h"
 #include "tablet_mode.h"
@@ -36,3 +37,39 @@ __overridable void lid_angle_peripheral_enable(int enable)
 		}
 	}
 }
+
+#ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE
+static void reset_tablet_mode(void)
+{
+	/*
+	 * When the lid angle is calculated remotely we may have stale data for
+	 * the lid angle if the user went from tablet -> clamshell or clamshell
+	 * -> tablet while the DSP was off. Since the DSP will boot and assume
+	 * clamshell mode until the lid angle is calculated, we should reset the
+	 * state too.
+	 */
+	tablet_set_mode(0, TABLET_TRIGGER_LID);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reset_tablet_mode, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE */
+
+static void enable_peripherals(void)
+{
+	/*
+	 * Make sure lid angle is not disabling peripherals when AP is running.
+	 */
+	lid_angle_peripheral_enable(1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_peripherals, HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_TABLET_MODE
+static void suspend_peripherals(void)
+{
+	/*
+	 * Make sure peripherals are disabled in S3 in tablet mode.
+	 */
+	if (tablet_get_mode())
+		lid_angle_peripheral_enable(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, suspend_peripherals, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_TABLET_MODE */

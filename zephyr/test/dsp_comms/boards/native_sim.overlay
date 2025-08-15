@@ -19,6 +19,7 @@
         test-dsp-client = &dsp_client;
         test-dsp-service = &dsp_service;
         test-lid-open = &gpio_lid_open;
+        test-tablet-mode = &gpio_tablet_mode_l;
     };
 
     named-i2c-ports {
