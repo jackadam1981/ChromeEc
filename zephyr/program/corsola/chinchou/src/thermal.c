@@ -65,6 +65,8 @@ static void average_tempature(void)
 	enum power_state chipset_state = power_get_state();
 	static int temperature_increase;
 
+	if (!extpower_is_present())
+		return;
 	/*
 	 * Keep track of battery temperature range:
 	 *
@@ -81,6 +83,9 @@ static void average_tempature(void)
 
 	charger_temp_c = K_TO_C(charger_temp);
 
+	if ((charger_temp_c >= 125) || (charger_temp_c <= -30))
+		return;
+	CPRINTS("---charger_temp_c :%d---",charger_temp_c);
 	thermals[thermal_cyc] = charger_temp_c;
 	thermal_cyc = (thermal_cyc + 1) % 5;
 	for (int i = 0; i < 5; i++)
