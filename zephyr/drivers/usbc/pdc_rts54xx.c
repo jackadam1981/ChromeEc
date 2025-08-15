@@ -37,7 +37,12 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 #define BYTE3(n) (((n) >> 24) & 0xff)
 
 /**
- * @brief Time before sending a ping status
+ * @brief Time from writing command to first ping status
+ */
+#define T_INITIAL_PING_STATUS 5
+
+/**
+ * @brief Polling interval for subsequent ping status checks
  */
 #define T_PING_STATUS 20
 
@@ -1021,7 +1026,8 @@ static enum smf_state_result st_write_run(void *o)
 	}
 
 	/* I2C transaction succeeded. Set timepoint for next ping status. */
-	data->next_ping_status = sys_timepoint_calc(K_MSEC(T_PING_STATUS));
+	data->next_ping_status =
+		sys_timepoint_calc(K_MSEC(T_INITIAL_PING_STATUS));
 	set_state(data, ST_PING_STATUS);
 
 	return SMF_EVENT_HANDLED;
