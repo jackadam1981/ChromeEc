@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16014161_df83571b",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:51:37Z",
+      "side": 1,
+      "message": "Refactor this to match my suggestion in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6363759/comment/37abc0f8_469373a7/).",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "2e301ec910ad260e51060ca88cae4cb3eeae157c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
