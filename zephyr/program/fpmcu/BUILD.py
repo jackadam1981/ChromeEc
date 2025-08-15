@@ -14,6 +14,7 @@ def register_fpmcu_variant(
     variant_dts_overlays=(),
     variant_kconfig_files=(),
     signer=(),
+    **kwargs,
 ):
     """Register an fpmcu variant"""
     return register_func(
@@ -25,6 +26,7 @@ def register_fpmcu_variant(
         dts_overlays=[*variant_dts_overlays],
         kconfig_files=[here / "prj.conf", *variant_kconfig_files],
         signer=signer,
+        **kwargs,
     )
 
 
@@ -45,6 +47,7 @@ bloonchipper = register_fpmcu_variant(
     signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
         here / "bloonchipper" / "dev_key.pem",
     ),
+    inherited_from=["brox", "brya", "fatcat", "guybrush", "rex", "skyrim"],
 )
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
@@ -67,6 +70,15 @@ buccaneer = register_fpmcu_variant(
     signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
         here / "helipilot" / "buccaneer" / "dev_key.pem",
     ),
+    inherited_from=[
+        "brox",
+        "brya",
+        "fatcat",
+        "nissa",
+        "rauru",
+        "rex",
+        "skywalker",
+    ],
 )
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
@@ -89,6 +101,7 @@ helipilot = register_fpmcu_variant(
     signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
         here / "helipilot" / "dev_key.pem",
     ),
+    inherited_from=["brya", "fatcat", "rauru", "rex"],
 )
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY

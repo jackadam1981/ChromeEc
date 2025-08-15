@@ -10,11 +10,14 @@ def register_trulo_project(
     chip="npcx9/npcx9m3f",
     zephyr_board=None,
     kconfig_files=None,
+    inherited_from=None,
     **kwargs,
 ):
     """Register a variant of Trulo."""
     if zephyr_board is None:
         zephyr_board = chip
+    if inherited_from is None:
+        inherited_from = ["nissa"]
 
     if "it8" in zephyr_board:
         register_binman_project(
@@ -25,7 +28,7 @@ def register_trulo_project(
             ],
             kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
             modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
-            inherited_from=["trulo"],
+            inherited_from=inherited_from,
             **kwargs,
         )
     else:
@@ -36,7 +39,7 @@ def register_trulo_project(
                 here / project_name / "project.overlay",
             ],
             kconfig_files=kconfig_files + [here / "dsp_comms.conf"],
-            inherited_from=["trulo"],
+            inherited_from=inherited_from,
             modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
             **kwargs,
         )
@@ -142,6 +145,7 @@ register_ish_project(
         here / "dsp_comms.conf",
     ],
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    inherited_from=["nissa"],
 )
 
 register_ish_project(
@@ -157,6 +161,7 @@ register_ish_project(
         here / "dsp_comms.conf",
     ],
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    inherited_from=["nissa"],
 )
 
 register_ish_project(
@@ -172,6 +177,7 @@ register_ish_project(
         here / "dsp_comms.conf",
     ],
     modules=["ec", "cmsis", "hal_intel_public", "pigweed", "nanopb"],
+    inherited_from=["nissa"],
 )
 
 register_ish_project(
@@ -185,6 +191,7 @@ register_ish_project(
         here / "dsp_comms.conf",
     ],
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    inherited_from=["nissa"],
 )
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.

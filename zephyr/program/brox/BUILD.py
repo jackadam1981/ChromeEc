@@ -117,6 +117,7 @@ register_ish_project(
         here / "brox-ish" / "prj.conf",
         here / "motionsense.conf",
     ],
+    inherited_from=["brox"],
 )
 
 caboc = register_brox_project(

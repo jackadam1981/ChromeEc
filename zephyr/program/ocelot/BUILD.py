@@ -9,8 +9,12 @@ def register_npcx9_project(
     project_name,
     extra_kconfig_base_files=(),
     extra_kconfig_proj_files=(),
+    inherited_from=None,
 ):
     """Register an npcx9 based variant of ocelot."""
+    if inherited_from is None:
+        inherited_from = ["ocelot"]
+
     register_npcx_project(
         project_name=project_name,
         zephyr_board="npcx9/npcx9m7f",
@@ -27,6 +31,7 @@ def register_npcx9_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_proj_files,
         ],
+        inherited_from=inherited_from,
     )
 
 
@@ -34,8 +39,12 @@ def register_it8xxx2_project(
     project_name,
     extra_kconfig_base_files=(),
     extra_kconfig_proj_files=(),
+    inherited_from=None,
 ):
     """Register an it8xxx2 based variant of ocelot."""
+    if inherited_from is None:
+        inherited_from = ["ocelot"]
+
     register_binman_project(
         project_name=project_name,
         zephyr_board="it8xxx2/it82002aw",
@@ -52,6 +61,7 @@ def register_it8xxx2_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_proj_files,
         ],
+        inherited_from=inherited_from,
     )
 
 
@@ -59,8 +69,12 @@ def register_mec172x_project(
     project_name,
     extra_kconfig_base_files=(),
     extra_kconfig_proj_files=(),
+    inherited_from=None,
 ):
     """Register an microchip based variant of ocelot."""
+    if inherited_from is None:
+        inherited_from = ["ocelot"]
+
     register_mchp_project(
         project_name=project_name,
         zephyr_board="mec172x/mec172x_nsz/mec1727",
@@ -78,6 +92,7 @@ def register_mec172x_project(
             *extra_kconfig_proj_files,
         ],
         modules=["cmsis", "cmsis_6", "ec"],
+        inherited_from=inherited_from,
     )
 
 

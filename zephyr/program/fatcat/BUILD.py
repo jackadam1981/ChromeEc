@@ -8,8 +8,12 @@
 def register_npcx9_project(
     project_name,
     extra_kconfig_files=(),
+    inherited_from=None,
 ):
     """Register an npcx9 based variant of fatcat."""
+    if inherited_from is None:
+        inherited_from = ["fatcat"]
+
     register_npcx_project(
         project_name=project_name,
         zephyr_board="npcx9/npcx9m7f",
@@ -24,6 +28,7 @@ def register_npcx9_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        inherited_from=inherited_from,
     )
 
 
@@ -31,8 +36,12 @@ def register_it8xxx2_project(
     project_name,
     extra_kconfig_files=(),
     extra_modules=(),
+    inherited_from=None,
 ):
     """Register an it8xxx2 based variant of fatcat."""
+    if inherited_from is None:
+        inherited_from = ["fatcat"]
+
     register_binman_project(
         project_name=project_name,
         zephyr_board="it8xxx2/it82002aw",
@@ -48,6 +57,7 @@ def register_it8xxx2_project(
             *extra_kconfig_files,
         ],
         modules=["ec", *extra_modules],
+        inherited_from=inherited_from,
     )
 
 
@@ -106,6 +116,7 @@ register_ish_project(
         here / "kinmen-ish" / "project.conf",
     ],
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    inherited_from=["fatcat"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses

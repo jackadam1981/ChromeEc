@@ -5,9 +5,11 @@
 """Define zmake projects for roach."""
 
 
-def register_variant(project_name, rwsig_sign=True):
+def register_variant(project_name, rwsig_sign=True, inherited_from=None):
     """Register a variant of Roach."""
 
+    if inherited_from is None:
+        inherited_from = ["roach"]
     signer_kwarg = {}
     if rwsig_sign:
         # pylint: disable=undefined-variable
@@ -21,14 +23,17 @@ def register_variant(project_name, rwsig_sign=True):
             here / "program.conf",
             here / project_name / "project.conf",
         ],
+        inherited_from=inherited_from,
         **signer_kwarg,
     )
 
 
-register_variant("roach")
-register_variant("axii", rwsig_sign=False)
-register_variant("kelpie")
-register_variant("spikyrock")
+# Keyboard tester
+register_variant("axii", rwsig_sign=False, inherited_from=[])
+# Detachable keyboards
+register_variant("roach", inherited_from=["geralt"])
+register_variant("kelpie", inherited_from=["geralt"])
+register_variant("spikyrock", inherited_from=["staryu"])
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
