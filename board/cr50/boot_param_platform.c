@@ -320,6 +320,10 @@ bool __platform_get_dice_config(
 		return false;
 	}
 
+    cfg->gsc_type = 0x00; /* H1 */
+    cfg->board_id_flags = 0x7f7f; /* CrOS Pre-PVT Single-stage */
+    cfg->board_id_type = 0x434C5159; /* CLQY for redrix */
+
 	return true;
 }
 
