@@ -7,6 +7,6 @@
 register_raw_project(
     project_name="npcx_monitor",
     zephyr_board="npcx_evb/npcx9m6f",
-    modules=["ec", "cmsis"],
+    modules=["ec", "cmsis", "cmsis_6"],
     dts_overlays=["prj.dts"],
 )

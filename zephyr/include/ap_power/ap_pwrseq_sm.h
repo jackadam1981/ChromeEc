@@ -129,32 +129,55 @@
 /* User define action handler, each action handler must follow this type. */
 typedef int (*ap_pwr_state_action_handler)(void *data);
 
-#define AP_POWER_SM_HANDLER_DECL(action)           \
-	void ap_pwrseq_sm_exec_##action##_handler( \
-		void *const data, ap_pwr_state_action_handler handler)
-
-AP_POWER_SM_HANDLER_DECL(entry);
-AP_POWER_SM_HANDLER_DECL(run);
-AP_POWER_SM_HANDLER_DECL(exit);
+void ap_pwrseq_sm_exec_entry_handler(void *const data,
+				     ap_pwr_state_action_handler handler);
+void ap_pwrseq_sm_exec_run_handler(void *const data,
+				   ap_pwr_state_action_handler handler);
+void ap_pwrseq_sm_exec_exit_handler(void *const data,
+				    ap_pwr_state_action_handler handler);
 
 /**
- * @brief Macro to define action handler wrapper function.
+ * @brief Macro to define action handler wrapper function using the
+ * state_method function prototype.
  *
- * @param name Valid enumaration value of state.
+ * @param name Valid enumeration value of state.
  *
  * @param level One of the three AP power sequence levels: arch, chipset or app.
  *
- * @param action One of the three SMF action handlers: entry, run or exit.
+ * @param action One of the SMF action handlers: entry or exit.
  *
  * @param handler Action handler function of type `ap_pwr_state_action_handler`.
  *
  * @retval Defines static wrapper function of handler to be called by AP power
  * sequence state machine.
  **/
-#define AP_POWER_SM_DEF_STATE_HANDLER(name, level, action, handler)            \
+#define AP_POWER_SM_DEF_STATE_METHOD_HANDLER(name, level, action, handler)     \
 	static void ap_pwr_##name##_##level##_##action##_##handler(void *data) \
 	{                                                                      \
 		ap_pwrseq_sm_exec_##action##_handler(data, handler);           \
+	}
+
+/**
+ * @brief Macro to define action handler wrapper function using the
+ * state_execute function prototype.
+ *
+ * @param name Valid enumeration value of state.
+ *
+ * @param level One of the three AP power sequence levels: arch, chipset or app.
+ *
+ * @param action One of the SMF action handlers: entry or exit.
+ *
+ * @param handler Action handler function of type `ap_pwr_state_action_handler`.
+ *
+ * @retval Defines static wrapper function of handler to be called by AP power
+ * sequence state machine.
+ **/
+#define AP_POWER_SM_DEF_STATE_EXECUTE_HANDLER(name, level, handler)           \
+	static enum smf_state_result ap_pwr_##name##_##level##_run_##handler( \
+		void *data)                                                   \
+	{                                                                     \
+		ap_pwrseq_sm_exec_run_handler(data, handler);                 \
+		return SMF_EVENT_PROPAGATE;                                   \
 	}
 
 /**
@@ -176,9 +199,9 @@ AP_POWER_SM_HANDLER_DECL(exit);
  * sequence state machine.
  **/
 #define AP_POWER_SM_DEF_STATE_HANDLERS(name, level, _entry, _run, _exit) \
-	AP_POWER_SM_DEF_STATE_HANDLER(name, level, entry, _entry)        \
-	AP_POWER_SM_DEF_STATE_HANDLER(name, level, run, _run)            \
-	AP_POWER_SM_DEF_STATE_HANDLER(name, level, exit, _exit)
+	AP_POWER_SM_DEF_STATE_METHOD_HANDLER(name, level, entry, _entry) \
+	AP_POWER_SM_DEF_STATE_EXECUTE_HANDLER(name, level, _run)         \
+	AP_POWER_SM_DEF_STATE_METHOD_HANDLER(name, level, exit, _exit)
 
 /**
  * @brief Macro to assemble action handler wrapper function name.
@@ -278,7 +301,7 @@ AP_POWER_SM_HANDLER_DECL(exit);
 		.actions =                                                    \
 			AP_POWER_SM_CREATE_STATE(name, app, entry, run, exit, \
 						 &chipset_##name##_actions),  \
-		.state = name                                                 \
+		.state = AP_POWER_STATE_##name                                \
 	}
 
 /**
@@ -304,7 +327,7 @@ AP_POWER_SM_HANDLER_DECL(exit);
 		.actions = AP_POWER_SM_CREATE_STATE(name, chipset, entry, run, \
 						    exit,                      \
 						    &arch_##parent##_actions), \
-		.state = name                                                  \
+		.state = AP_POWER_STATE_##name                                 \
 	}
 
 /**
@@ -330,7 +353,7 @@ AP_POWER_SM_HANDLER_DECL(exit);
 		.actions =                                                     \
 			AP_POWER_SM_CREATE_STATE(name, app, entry, run, exit,  \
 						 &chipset_##parent##_actions), \
-		.state = name                                                  \
+		.state = AP_POWER_STATE_##name                                 \
 	}
 
 /**

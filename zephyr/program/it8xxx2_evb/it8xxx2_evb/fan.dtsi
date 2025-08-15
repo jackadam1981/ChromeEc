@@ -10,9 +10,9 @@
 		fan_0 {
 			pwms = <&pwm7 PWM_CHANNEL_7 PWM_KHZ(30) PWM_POLARITY_NORMAL>;
 			tach = <&tach0>;
-			rpm_min = <1500>;
-			rpm_start = <1500>;
-			rpm_max = <6500>;
+			rpm-min = <1500>;
+			rpm-start = <1500>;
+			rpm-max = <6500>;
 		};
 	};
 };

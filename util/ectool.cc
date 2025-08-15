@@ -21,6 +21,16 @@
 #include "tablet_mode.h"
 #include "usb_pd.h"
 
+/* TODO(b/395723202): These macros from timer.h, included transitively in
+ * usb_pd.h, conflict with constants declared in json_reader.h below. Ideally,
+ * timer.h should use namespaced variables instead of macros to avoid
+ * collisions. Until then, avoid build failures by undefining the conflicting
+ * macros. ectool.cc does not depend on them specifically.
+ */
+#undef SECOND
+#undef MINUTE
+#undef HOUR
+
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
@@ -661,6 +671,7 @@ static const char *const ec_feature_names[] = {
 	[EC_FEATURE_MEMORY_DUMP] = "Memory Dump",
 	[EC_FEATURE_UCSI_PPM] = "UCSI PPM",
 	[EC_FEATURE_STRAUSS] = "Strauss",
+	[EC_FEATURE_POE] = "POE",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -7585,6 +7596,30 @@ int cmd_lcd_backlight(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_poe(int argc, char *argv[])
+{
+	struct ec_params_switch_enable_poe p;
+	char *e;
+	int rv;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <0|1>\n", argv[0]);
+		return -1;
+	}
+	p.enabled = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad value.\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_SWITCH_ENABLE_POE, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	printf("Success.\n");
+	return 0;
+}
+
 static void cmd_basestate_help(void)
 {
 	fprintf(stderr, "Usage: ectool basestate [attach | detach | reset]\n");
@@ -9206,7 +9241,8 @@ static void cmd_cbi_help(char *cmd)
 		"      9: REWORK_ID\n"
 		"      10: FACTORY_CALIBRATION_DATA\n"
 		"      11: COMMON_CONTROL\n"
-		"      12: BATTERY_CONFIG (hex)\n"
+		"      [12:27]: BATTERY_CONFIG_[0:15] (hex)\n"
+		"      28: PROVISION_MATRIX_VERSION\n"
 		"    <size> is the size of the data in byte. It should be zero for\n"
 		"      string types.\n"
 		"    <value/string> is an integer or a string to be set\n"
@@ -12963,6 +12999,7 @@ const struct command commands[] = {
 	{ "wireless", cmd_wireless,
 	  "<flags> [<mask> [<suspend_flags> <suspend_mask>]]\n"
 	  "\tEnable/disable WLAN/Bluetooth radio." },
+	{ "poe", cmd_poe, "<enabled>\n\tEnable/disable Power over Ethernet." },
 	{ NULL, NULL }
 };
 

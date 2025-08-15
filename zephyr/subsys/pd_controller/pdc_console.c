@@ -22,7 +22,7 @@ static int cmd_get_pd_port(const struct shell *sh, char *arg_val, uint8_t *port)
 	char *e;
 
 	*port = strtoul(arg_val, &e, 0);
-	if (*e || *port >= pdc_power_mgmt_get_usb_pd_port_count()) {
+	if (*e || !pdc_power_mgmt_is_pdc_port_valid(*port)) {
 		shell_error(sh, "Invalid port");
 		return -EINVAL;
 	}
@@ -692,6 +692,35 @@ static int cmd_pdc_srccaps(const struct shell *sh, size_t argc, char **argv)
 	return 0;
 }
 
+static int cmd_pdc_set_bbr_cts(const struct shell *sh, size_t argc, char **argv)
+{
+	int rv;
+	uint8_t port;
+	bool enable;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strcmp(argv[2], "on")) {
+		enable = true;
+	} else if (!strcmp(argv[2], "off")) {
+		enable = false;
+	} else {
+		shell_error(sh, "Must be on/off");
+		return -EINVAL;
+	}
+
+	rv = pdc_power_mgmt_set_bbr_cts(port, enable);
+
+	if (rv) {
+		shell_error(sh, "SET_BBR_CTS failed on port %u (%d)", port, rv);
+	}
+
+	return rv;
+}
+
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Return a string representation for an `enum pdc_sbu_mux_mode` value
@@ -763,37 +792,6 @@ static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
-#ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
-/* LCOV_EXCL_START - non-shipping code */
-extern int tps_pdc_do_firmware_update(void);
-
-static int cmd_pdc_ti_fwupdate(const struct shell *sh, size_t argc, char **argv)
-{
-	int rv;
-
-	/* Disable all comms before doing update. */
-	rv = pdc_power_mgmt_set_comms_state(/*enable=*/false);
-	if (rv) {
-		shell_fprintf(sh, SHELL_ERROR, "Could not suspend PDC: %d\n",
-			      rv);
-		return rv;
-	}
-
-	rv = tps_pdc_do_firmware_update();
-	if (rv) {
-		shell_fprintf(sh, SHELL_ERROR, "Could not update fw: %d\n", rv);
-	}
-
-	if (pdc_power_mgmt_set_comms_state(/*enable=*/true)) {
-		shell_fprintf(sh, SHELL_ERROR,
-			      "Could not resume PDC. May want to restart EC.");
-	}
-
-	return rv;
-}
-/* LCOV_EXCL_STOP - non-shipping code */
-#endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
-
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -863,6 +861,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Get Vconn state for a port\n"
 		      "Usage: pdc vconn <port>",
 		      cmd_vconn_state, 2, 0),
+	SHELL_CMD_ARG(set_bbr_cts, NULL,
+		      "Enable/disable BBR compliance test mode\n"
+		      "Usage: pdc set_bbr_cts <port> [on|off]",
+		      cmd_pdc_set_bbr_cts, 3, 0),
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 	SHELL_CMD_ARG(sbumux, &dsub_sbu_mux_modes,
 		      "Get or set the SBU mux mode "
@@ -870,12 +872,6 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Usage: pdc sbumux [normal|debug]",
 		      cmd_pdc_sbu_mux_mode, 1, 1),
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
-#ifdef CONFIG_USBC_PDC_TPS6699X_FW_UPDATER
-	SHELL_CMD_ARG(fwup_ti, NULL,
-		      "Updates TPS6699x firmware\n"
-		      "Usage pdc fwup_ti",
-		      cmd_pdc_ti_fwupdate, 1, 0),
-#endif /* defined(CONFIG_USBC_PDC_TPS6699X_FW_UPDATER) */
 	SHELL_COND_CMD_ARG(IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG_CONSOLE_CMD),
 			   trace, NULL,
 			   "Dump accumulated PDC trace messages "

@@ -28,6 +28,7 @@
 #include "power.h"
 #include "printf.h"
 #include "queue.h"
+#include "system.h"
 #include "tablet_mode.h"
 #include "task.h"
 #include "timer.h"
@@ -69,6 +70,24 @@ test_export_static enum chipset_state_mask sensor_active;
  */
 test_export_static int wait_us;
 
+/* Make sure the threshold is set for legacy boards that don't use kconfig. */
+#ifndef CONFIG_PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD
+#define CONFIG_PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD 0
+#endif
+
+/**
+ * Check if:
+ * 1. We enabled PM control on high throughput sensors
+ * 2. We're about to wait indefinitely
+ * 3. The fastest collection rate is faster than the threshold
+ */
+#define DISABLE_PM_POLICY_WHILE_WAITING(wait_us_, collection_rate_)            \
+	(IS_ENABLED(                                                           \
+		 CONFIG_PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM) && \
+	 wait_us_ == -1 &&                                                     \
+	 collection_rate_ <=                                                   \
+		 CONFIG_PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD)
+
 STATIC_IF(CONFIG_ACCEL_SPOOF_MODE) void print_spoof_mode_status(int id);
 STATIC_IF(CONFIG_GESTURE_DETECTION)
 void check_and_queue_gestures(uint32_t *event);
@@ -98,7 +117,6 @@ __attribute__((weak)) int sensor_board_is_lid_angle_available(void)
 }
 #endif
 
-STATIC_IF_NOT(CONFIG_TEST)
 enum sensor_config motion_sense_get_ec_config(void)
 {
 	switch (sensor_active) {
@@ -1006,12 +1024,19 @@ void motion_sense_task(void *u)
 
 		ts_end_task = get_time();
 		wait_us = -1;
+		uint32_t fastest_collection_rate = UINT32_MAX;
 
 		for (i = 0; i < motion_sensor_count; i++) {
 			struct motion_sensor_t *sensor = &motion_sensors[i];
 			enum sensor_config cfg_index =
 				motion_sense_get_ec_config();
 			int ec_rate = 0;
+
+			if (sensor->collection_rate > 0 &&
+			    sensor->collection_rate < fastest_collection_rate) {
+				fastest_collection_rate =
+					sensor->collection_rate;
+			}
 
 			if (!motion_sensor_in_forced_mode(sensor) ||
 			    sensor->collection_rate == 0)
@@ -1044,7 +1069,15 @@ void motion_sense_task(void *u)
 			wait_us = motion_min_interval;
 		}
 
+		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
+						    fastest_collection_rate)) {
+			pm_policy_state_lock_get_all();
+		}
 		event = task_wait_event(wait_us);
+		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
+						    fastest_collection_rate)) {
+			pm_policy_state_lock_put_all();
+		}
 	}
 }
 
@@ -1068,16 +1101,6 @@ static struct motion_sensor_t *host_sensor_id_to_real_sensor(int host_id)
 	return NULL;
 }
 
-static struct motion_sensor_t *host_sensor_id_to_motion_sensor(int host_id)
-{
-	/* Return the info for the first sensor that support some gestures. */
-	if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
-	    (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID))
-		return host_sensor_id_to_real_sensor(
-			__builtin_ctz(CONFIG_GESTURE_DETECTION_MASK));
-	return host_sensor_id_to_real_sensor(host_id);
-}
-
 static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
@@ -1090,10 +1113,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	void *out_scale;
 	void *out_offset;
 	int16_t out_temp;
-
-	if (motion_sensor_count == 0) {
-		return EC_RES_INVALID_COMMAND;
-	}
+	size_t host_id;
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
@@ -1129,6 +1149,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_DATA:
+		/*
+		 * The sensor has to exist, be active and in working order for
+		 * the CMD_DATA (that read the sensors) to return success.
+		 */
 		sensor = host_sensor_id_to_real_sensor(
 			in->sensor_odr.sensor_num);
 		if (sensor == NULL)
@@ -1144,13 +1168,43 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_INFO:
-		sensor = host_sensor_id_to_motion_sensor(
-			in->sensor_odr.sensor_num);
-		if (sensor == NULL)
+		host_id = in->sensor_odr.sensor_num;
+		/* Return the info for the first sensor that support some
+		 * gestures. */
+		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
+		    (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID))
+			host_id = __builtin_ctz(CONFIG_GESTURE_DETECTION_MASK);
+		if (host_id >= motion_sensor_count)
 			return EC_RES_INVALID_PARAM;
+		sensor = &motion_sensors[host_id];
+		if (!SENSOR_ACTIVE(sensor)) {
+			/* Sensor is not used in this power state. */
+			return EC_RES_INVALID_PARAM;
+		}
+		switch (sensor->state) {
+		case SENSOR_READY:
+			/* Sensor is ready for operation. */
+			break;
+		case SENSOR_INIT_ERROR:
+			/* Sensor could not be initialized, can not be used. */
+			return EC_RES_INVALID_PARAM;
+		case SENSOR_NOT_INITIALIZED:
+			/*
+			 * Sensor has not been initialized yet, we are still
+			 * bring it up. Since the sensor is active in this power
+			 * state, this is a transient condition.
+			 */
+		case SENSOR_INITIALIZED:
+			/*
+			 * Sensor is not usable yet, need to try again.
+			 * A transient condition as well.
+			 */
+			return EC_RES_BUSY;
+		}
 
 		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
-		    MOTION_SENSE_ACTIVITY_SENSOR_ID >= 0 &&
+		    MOTION_SENSE_ACTIVITY_SENSOR_ID !=
+			    MOTION_SENSE_INVALID_SENSOR_ID &&
 		    (in->sensor_odr.sensor_num ==
 		     MOTION_SENSE_ACTIVITY_SENSOR_ID))
 			out->info.type = MOTIONSENSE_TYPE_ACTIVITY;
@@ -1493,7 +1547,8 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	case MOTIONSENSE_CMD_SPOOF: {
 		/* spoof activity if it is activity sensor */
 		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION) &&
-		    MOTION_SENSE_ACTIVITY_SENSOR_ID >= 0 &&
+		    MOTION_SENSE_ACTIVITY_SENSOR_ID !=
+			    MOTION_SENSE_INVALID_SENSOR_ID &&
 		    in->spoof.sensor_id == MOTION_SENSE_ACTIVITY_SENSOR_ID) {
 			switch (in->spoof.activity_num) {
 #ifdef CONFIG_BODY_DETECTION
