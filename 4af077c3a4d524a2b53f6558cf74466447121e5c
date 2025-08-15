@@ -34,6 +34,24 @@
       "parentUuid": "bb40050b_fe8a8daf",
       "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032133cb_a1fcd395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:32:47Z",
+      "side": 1,
+      "message": "Oh wait, the get_info needs to fill in the `fp_image_frame_params` too. In that case let\u0027s add this for now:\n\n```\n__overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)\n{\n    *resp \u003d {\n        .sensor_info \u003d  { .vendor_id \u003d 0,\n                  .product_id \u003d 0,\n                  .model_id \u003d 0,\n                  .version \u003d 0,\n                  .num_capture_types \u003d 0,\n                  .errors \u003d 0 },\n    };\n    return EC_SUCCESS;\n}\n```\n\nAt the end of this CL chain, I think it may make sense to move `fp_image_frame_params` into `fp_sensor_info`. Don\u0027t make that change just yet, but let\u0027s keep it in mind.",
+      "parentUuid": "a20c6470_b5da6215",
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
