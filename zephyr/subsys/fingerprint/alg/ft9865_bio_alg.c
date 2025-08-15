@@ -16,8 +16,8 @@
 LOG_MODULE_REGISTER(ft9865_bio_alg, LOG_LEVEL_INF);
 
 uint8_t ff_algo_buf[FF_ALGO_SIZE] __attribute__ ((aligned(4))); // Algo buffer
-static uint8_t g_feature[FT_TPL_SUBTPL_SIZE]; //feature data for one image
-static uint8_t g_finger_template_data[FT_TPL_HEAD_SIZE + FT_TPL_SUBTPL_SIZE * SINGLE_FINGER_ENROLL_NUM] __attribute__ ((aligned(4))); //template data for one finger
+static uint8_t g_feature[FT_TPL_SUBTPL_SIZE] __attribute__((section("DTCM"))); //feature data for one image
+static uint8_t g_finger_template_data[FT_TPL_HEAD_SIZE + FT_TPL_SUBTPL_SIZE * SINGLE_FINGER_ENROLL_NUM] __attribute__((section("DTCM"), aligned(4))); //template data for one finger
 
 
 static int ft9865_algorithm_init(const struct fingerprint_algorithm *const alg)
@@ -43,7 +43,8 @@ static int ft9865_algorithm_init(const struct fingerprint_algorithm *const alg)
 			.gen_feat_quality_thr = 30,
 			.gen_feat_area_thr = 75,
 			.print_func_impl = NULL,
-			.finger_template_read_type = 0,
+			.finger_template_read_type = 0, 
+			.use_harware_acc = 0,
 		};
 
 	data->cols = algo_params.cols;

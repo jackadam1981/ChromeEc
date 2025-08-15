@@ -28,7 +28,7 @@ config FP_ALGORITHM_TEMPLATE_SIZE
 	default 5092 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	default 47552 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
 	default 16384 if FINGERPRINT_SENSOR_EGIS630 && FP_EGIS_EGIS630_ALGORITHM
-	default 32768 if FP_FT9865_ALGORITHM
+	default 26624 if FP_FT9865_ALGORITHM
 	default 0
 	help
 	  Constant value corresponding to the maximum template size.
@@ -44,7 +44,7 @@ config FP_MAX_FINGER_COUNT
 	  default 5 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	  default 5 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
 	  default 3 if FINGERPRINT_SENSOR_EGIS630 && FP_EGIS_EGIS630_ALGORITHM
-	  default 1
+	  default 3
 	  help
 		Max number of templates stored / matched against. This limit comes
 		from memory constraints and matching time.

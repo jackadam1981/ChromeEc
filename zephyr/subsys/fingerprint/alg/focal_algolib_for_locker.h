@@ -7,10 +7,11 @@
 extern "C" {
 #endif
 
-#define LIBFP_API_LOCKER_VERSION "v3.0.6"
+#define LIBFP_API_LOCKER_VERSION "v3.0.27"
 
     typedef void (*PRINT_FUNC)(const char* tag, int level, const char* file, int line, const char* format, ...);
     typedef void (*FLASH_COPY_FUNC)(uint8_t* ram_addr, uint8_t* flash_addr, int size);
+    typedef void (*HARDWARE_ACC_FUNC)(uint8_t *samp_data ,uint8_t *temp_data ,uint8_t*out_data,uint16_t*out_num,uint32_t v1, uint32_t v2 , uint32_t v3 ,uint32_t config ,uint32_t config2);
 
     typedef struct
     {
@@ -19,6 +20,8 @@ extern "C" {
         uint32_t cols;
         uint32_t algo_size_limit;                   // 最大算法可用空間 (bytes) (minimum. 140 * 1024)
         uint32_t flash_size_limit;                  // Flash可以給算法使用的空間 , flash_size_limit = 0 手動支持適配sensor ,目前支持1.9349 & 100 手指  2.9365 & 10 手指 
+        uint32_t sub_tpl_size;                      // 樣板預期使用的大小，sub_tpl_size = 0 為使用預設值，以Btye為單位輸入大小(ex. 1024) // add in v3.0.27
+        
         uint8_t max_finger_num;
         uint8_t enroll_template_num; 				// enroll_template_num <= max_template_num
 
@@ -38,9 +41,13 @@ extern "C" {
         //if finger size is too large , the following parameters need to be set to dive the fingerprint template into smaller sections
         uint8_t  finger_template_read_type; // 0 = without segmented excution , 1 = with segmented excution
         uint8_t* ram_interim_addr;          // ram address
-        int  ram_interim_size;              // ram size, 至少一个模板头+1个子模板的大小
+        int  ram_interim_size;              // ram size
         FLASH_COPY_FUNC flash_copy_impl;    // callback function ,implementing the process of copying the finger_template from flash to ram
 
+
+        // hardware_acc
+        uint8_t use_harware_acc;
+        HARDWARE_ACC_FUNC hardware_acc_impl;
         /*==================== ZB Variables ====================*/
         uint8_t enroll_reject_thr;                  //total reject numbers
         uint8_t enroll_continue_fail_thr;
@@ -272,6 +279,7 @@ extern "C" {
     int focal_feature_match_ps( uint8_t* feat1, uint8_t* feat2, int32_t height, uint8_t width, int* overlap_area );
 
     int focal_cut_image( uint8_t* p_src, int h, int w, uint8_t* p_dst, int dst_h, int dst_w );
+
 
 #ifdef __cplusplus
 }
