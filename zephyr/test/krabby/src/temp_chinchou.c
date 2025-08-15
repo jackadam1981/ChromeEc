@@ -5,15 +5,19 @@
 
 #include "battery.h"
 #include "charger_profile_override.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "power.h"
 
 #include <zephyr/drivers/adc/adc_emul.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 
 #define DEFAULT_CURRENT 5000
+#define GPIO_ACOK_OD_NODE DT_NODELABEL(ac_present)
+#define GPIO_ACOK_OD_PIN DT_GPIO_PIN(GPIO_ACOK_OD_NODE, gpios)
 
 static void set_adc_emul_read_voltage(int voltage, const struct device *adc_dev,
 				      uint8_t channel_id)
@@ -37,6 +41,18 @@ static void ignore_first_minute(void)
 	}
 }
 
+static inline void set_ac_enabled(bool enabled)
+{
+	const struct device *acok_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_ACOK_OD_NODE, gpios));
+
+	zassert_ok(gpio_emul_input_set(acok_dev, GPIO_ACOK_OD_PIN, enabled),
+		   NULL);
+
+	k_sleep(K_MSEC(CONFIG_EXTPOWER_DEBOUNCE_MS + 1000));
+	zassert_equal(enabled, extpower_is_present(), NULL);
+}
+
 static void test_table(uint16_t batt, uint16_t chgv1, uint16_t chgv2,
 		       uint16_t current, enum power_state power)
 {
@@ -45,6 +61,16 @@ static void test_table(uint16_t batt, uint16_t chgv1, uint16_t chgv2,
 		DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_charger));
 	struct charge_state_data curr;
 
+<<<<<<< HEAD   (3144cebee2388319678ceb312716a0c41d08a0b3 ponyta: remove bc1.2)
+||||||| BASE   (680586297fd857e7fb1527ca05f6d44b8c9d82ce caboc: use common hibernate Z5 driver)
+	memset(&curr, 0, sizeof(curr));
+
+=======
+	memset(&curr, 0, sizeof(curr));
+	/* Tests assume AC is initially connected. */
+	set_ac_enabled(true);
+	zassert_true(extpower_is_present());
+>>>>>>> CHANGE (cdafc73b8d9d737c9470a02e140bd35e9f99d39a chinchou:don't execute thermal policy when no ac)
 	power_set_state(power);
 	curr.batt.flags = batt;
 	set_adc_emul_read_voltage(chgv1, adc_dev, charger_adc_channel);
