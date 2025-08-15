@@ -33,6 +33,24 @@
       "message": "This should be LED_WHITE",
       "revId": "bec079bf9929330394335b179b9fe3d205fecb69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e0bbbe_1670e883",
+        "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-15T21:19:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eea34dd_056e37ae",
+      "revId": "bec079bf9929330394335b179b9fe3d205fecb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
