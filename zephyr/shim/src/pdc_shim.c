@@ -88,11 +88,6 @@ bool pd_capable(int port)
 	return pdc_power_mgmt_pd_capable(port);
 }
 
-enum pd_dual_role_states pd_get_dual_role(int port)
-{
-	return pdc_power_mgmt_get_dual_role(port);
-}
-
 void pd_set_dual_role(int port, enum pd_dual_role_states state)
 {
 	pdc_power_mgmt_set_dual_role(port, state);
@@ -225,4 +220,23 @@ unsigned int pd_get_max_voltage(void)
 void pd_request_source_voltage(int port, int mv)
 {
 	pdc_power_mgmt_request_source_voltage(port, mv);
+}
+
+uint32_t pd_get_requested_voltage(int port)
+{
+	return pdc_power_mgmt_get_requested_voltage(port);
+}
+
+uint32_t pd_get_requested_current(int port)
+{
+	return pdc_power_mgmt_get_requested_current(port);
+}
+
+/**
+ * @brief PDC-specific implementation of board_pd_port_num_is_valid(). Does a
+ *        range check and also verifies that the port is not disabled.
+ */
+__override bool board_pd_port_num_is_valid(int port)
+{
+	return pdc_power_mgmt_is_pdc_port_valid(port);
 }

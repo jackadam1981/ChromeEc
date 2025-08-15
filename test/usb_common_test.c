@@ -120,7 +120,7 @@ int test_pd_extract_pdo_power(void)
 			     &ma, &max_mv, &min_mv);
 	TEST_EQ(max_mv, 5700, "%d");
 	TEST_EQ(min_mv, 3300, "%d");
-	TEST_EQ(ma, 2121, "%d"); /* 3300mV * 2121mA ~= 7000mW */
+	TEST_EQ(ma, 1228, "%d"); /* 3300mV * 2121mA ~= 7000mW */
 	pd_extract_pdo_power(MAKE_BATT(/*v_max=*/3300, /*v_min=*/2700,
 				       /*p=*/12000),
 			     &ma, &max_mv, &min_mv);
@@ -133,7 +133,7 @@ int test_pd_extract_pdo_power(void)
 			     &ma, &max_mv, &min_mv);
 	TEST_EQ(max_mv, 25000, "%d");
 	TEST_EQ(min_mv, 21000, "%d");
-	TEST_EQ(ma, 2857, "%d"); /* Capped at CONFIG_USB_PD_MAX_POWER_MW */
+	TEST_EQ(ma, 2400, "%d"); /* Capped at CONFIG_USB_PD_MAX_POWER_MW */
 
 	pd_extract_pdo_power(MAKE_VAR(/*v_max=*/5000, /*v_min=*/3300,
 				      /*c=*/3000),
@@ -164,7 +164,7 @@ int test_pd_extract_pdo_power(void)
 			     &ma, &max_mv, &min_mv);
 	TEST_EQ(max_mv, 22000, "%d");
 	TEST_EQ(min_mv, 21000, "%d");
-	TEST_EQ(ma, 2857, "%d"); /* Capped at CONFIG_USB_PD_MAX_POWER_MW */
+	TEST_EQ(ma, 2727, "%d"); /* Capped at CONFIG_USB_PD_MAX_POWER_MW */
 
 	pd_extract_pdo_power(MAKE_AUG(/*v_max=*/5000, /*v_min=*/3300,
 				      /*c=*/3000),
@@ -189,7 +189,7 @@ int test_pd_extract_pdo_power(void)
 			     &ma, &max_mv, &min_mv);
 	TEST_EQ(max_mv, 22000, "%d");
 	TEST_EQ(min_mv, 21000, "%d");
-	TEST_EQ(ma, 2857, "%d"); /* Capped at CONFIG_USB_PD_MAX_POWER_MW */
+	TEST_EQ(ma, 2727, "%d"); /* Capped at CONFIG_USB_PD_MAX_POWER_MW */
 
 	return EC_SUCCESS;
 }

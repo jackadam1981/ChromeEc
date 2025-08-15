@@ -55,7 +55,7 @@ typedef int (*cros_flash_api_physical_protect_at_boot)(const struct device *dev,
 						       uint32_t new_flags);
 
 typedef int (*cros_flash_api_physical_protect_now)(const struct device *dev,
-						   int all);
+						   bool all);
 
 typedef int (*cros_flash_api_physical_get_jedec_id)(const struct device *dev,
 						    uint8_t *manufacturer,
@@ -241,16 +241,16 @@ z_impl_cros_flash_physical_protect_at_boot(const struct device *dev,
  * @brief Protect now physical flash.
  *
  * @param dev Pointer to the device structure for the flash driver instance.
- * @param all	Protect all (=1) or just read-only and pstate (=0).
+ * @param all	Protect all (=true) or just read-only and pstate (=false).
  *
  * @return 0 If successful.
  * @retval -ENOTSUP Not supported api function.
  */
 __syscall int cros_flash_physical_protect_now(const struct device *dev,
-					      int all);
+					      bool all);
 
 static inline int
-z_impl_cros_flash_physical_protect_now(const struct device *dev, int all)
+z_impl_cros_flash_physical_protect_now(const struct device *dev, bool all)
 {
 	const struct cros_flash_driver_api *api =
 		(const struct cros_flash_driver_api *)dev->api;

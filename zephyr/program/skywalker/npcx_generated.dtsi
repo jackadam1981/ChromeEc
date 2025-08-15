@@ -82,7 +82,7 @@
 			gpios = <&gpio4 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_ec_flash_wp_odl: ec_flash_wp_odl {
-			gpios = <&gpioe 3 (GPIO_INPUT)>;
+			gpios = <&gpioe 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 		gpio_ec_gsc_packet_mode_en: ec_gsc_packet_mode_en {
 			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;

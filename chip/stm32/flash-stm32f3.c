@@ -122,7 +122,7 @@ uint32_t crec_flash_physical_get_protect_flags(void)
 	return flags;
 }
 
-int crec_flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(bool all)
 {
 	if (all) {
 		disable_flash_control_register();

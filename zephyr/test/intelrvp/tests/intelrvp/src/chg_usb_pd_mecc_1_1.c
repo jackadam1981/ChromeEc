@@ -78,7 +78,7 @@ static int set_snk_ctrl(int port, int enable)
 }
 
 /* Helper function to reset all fakes */
-static void reset_test_fakes(void)
+static void reset_test_fakes(void *fixture)
 {
 	RESET_FAKE(board_port_has_ppc);
 	RESET_FAKE(ppc_vbus_sink_enable);
