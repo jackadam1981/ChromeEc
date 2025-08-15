@@ -51,6 +51,7 @@ register_intelrvp_project(
     project_name="adlrvp_mchp",
     chip="mec172x/mec172x_nsz/mec1727",
     extra_dts_overlays=[
+        here / "adlrvp/adlrvp_mchp/adc.dts",
         here / "adlrvp/adlrvp_mchp/adlrvp_mchp.dts",
         here / "adlrvp/adlrvp_mchp/gpio.dts",
         here / "adlrvp/adlrvp_mchp/interrupts.dts",

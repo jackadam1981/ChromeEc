@@ -33,16 +33,17 @@ struct mock_ctrl_fpsensor_crypto mock_ctrl_fpsensor_crypto =
 	MOCK_CTRL_DEFAULT_FPSENSOR_CRYPTO;
 
 extern bool hkdf_sha256_impl(std::span<uint8_t> out_key,
-			     std::span<const uint8_t> ikm,
+			     std::span<const std::span<const uint8_t> > ikms,
 			     std::span<const uint8_t> salt,
 			     std::span<const uint8_t> info);
 
-bool hkdf_sha256(std::span<uint8_t> out_key, std::span<const uint8_t> ikm,
+bool hkdf_sha256(std::span<uint8_t> out_key,
+		 std::span<const std::span<const uint8_t> > ikms,
 		 std::span<const uint8_t> salt, std::span<const uint8_t> info)
 {
 	switch (mock_ctrl_fpsensor_crypto.output_type) {
 	case MOCK_CTRL_FPSENSOR_CRYPTO_HKDF_SHA256_TYPE_REAL:
-		return hkdf_sha256_impl(out_key, ikm, salt, info);
+		return hkdf_sha256_impl(out_key, ikms, salt, info);
 	case MOCK_CTRL_FPSENSOR_CRYPTO_HKDF_SHA256_TYPE_ZEROS:
 		std::ranges::fill(out_key, 0);
 		return true;

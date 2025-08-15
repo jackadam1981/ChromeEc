@@ -977,6 +977,6 @@ ZTEST(host_cmd_motion_sense, test_tablet_mode_lid_angle__invalid)
 {
 	struct ec_response_motion_sense response;
 
-	zassert_ok(!host_cmd_motion_sense_tablet_mode_lid_angle(-100, -100,
-								&response));
+	zassert_not_ok(host_cmd_motion_sense_tablet_mode_lid_angle(-100, -100,
+								   &response));
 }

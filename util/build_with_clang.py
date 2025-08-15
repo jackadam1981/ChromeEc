@@ -278,7 +278,6 @@ RISCV_BOARDS = [
     "dojo",
     "geralt_scp",
     "geralt_scp_core1",
-    "goroh",
     "hayato",
     "icarus",
     "it8xxx2_evb",

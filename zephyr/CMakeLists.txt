@@ -92,20 +92,7 @@ if(DEFINED CONFIG_PLATFORM_EC)
 
   include(fpu.cmake)
 
-  # When LTO is enabled, enable only for the "app" library, which compiles
-  # and links all Chromium OS sources.
-  # TODO: Enable LTO for all sources when Zephyr supports it.
-  # See https://github.com/zephyrproject-rtos/zephyr/issues/2112
-  if (DEFINED CONFIG_PLATFORM_EC_LTO)
-    # The Zephyr toolchain generates linker errors if both CONFIG_LTO and
-    # CONFIG_FPU are used. See b/184302085.
-    if(("${ZEPHYR_TOOLCHAIN_VARIANT}" STREQUAL "zephyr") AND
-     (DEFINED CONFIG_FPU))
-      message(STATUS "Zephyr toolchain and CONFIG_FPU detected: disabling LTO")
-    else()
-      set_property(TARGET app PROPERTY INTERPROCEDURAL_OPTIMIZATION True)
-    endif()
-  endif()
+  include(malloc.cmake)
 endif()
 
 # Set extra compiler flags.
@@ -197,6 +184,7 @@ if (ZEPHYR_PIGWEED_MODULE_DIR)
   endif()
 endif()
 
+add_subdirectory("lib")
 add_subdirectory("subsys")
 
 # CONFIG_PLATFORM_EC files that don't relate to something below should be
@@ -222,7 +210,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC
 
 # Now include files that depend on or relate to other CONFIG options, sorted by
 # CONFIG
-zephyr_library_sources_ifdef(CONFIG_HAS_TASK_POWERBTN
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWER_BUTTON_X86
                                                 "${PLATFORM_EC}/common/power_button_x86.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_BMA255
                                                 "${PLATFORM_EC}/driver/accel_bma2x2.c")
@@ -258,8 +246,12 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ACCEL_FIFO
                                                 "${PLATFORM_EC}/common/motion_sense_fifo.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_AMD_STB_DUMP
                                                 "${PLATFORM_EC}/driver/amd_stb.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_BODY_DETECTION
+# On body detection implementation
+zephyr_library_sources_ifdef(CONFIG_BODY_DETECTION_ALOGIRTHM_V1
                                                 "${PLATFORM_EC}/common/body_detection.c")
+zephyr_library_link_libraries_ifdef(CONFIG_BODY_DETECTION_ALOGIRTHM_V2
+                                                vsensor.body_detection)
+
 zephyr_library_sources_ifdef(CONFIG_NAMED_ADC_CHANNELS
                                                 "${PLATFORM_EC}/common/adc.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ALS_TCS3400
@@ -304,6 +296,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RAA489000
                                                 "${PLATFORM_EC}/driver/charger/isl923x.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_ISL9241
                                                 "${PLATFORM_EC}/driver/charger/isl9241.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_ISL95522
+                                                "${PLATFORM_EC}/driver/charger/isl95522.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25710
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25720
@@ -431,6 +425,8 @@ zephyr_library_sources_ifdef(CONFIG_MKBP_PROTOCOL
                                                 "${PLATFORM_EC}/common/mkbp_info.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
                                                 "${PLATFORM_EC}/common/keyboard_mkbp.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_STUB
+                                                "${PLATFORM_EC}/common/keyboard_protocol_stub.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MKBP_INPUT_DEVICES
                                                 "${PLATFORM_EC}/common/mkbp_input_devices.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PWM_KBLIGHT
@@ -482,6 +478,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8186
 # Re-use mt8186.c code
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8188
                                                 "${PLATFORM_EC}/power/mt8186.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8189
+                                                "${PLATFORM_EC}/power/mt8186.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8196
                                                 "${PLATFORM_EC}/power/mt8186.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_MT8192
@@ -490,6 +488,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_SC7180
                                                 "${PLATFORM_EC}/power/qcom.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_SC7280
                                                 "${PLATFORM_EC}/power/qcom.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ_QC_EXP
+                                                "${PLATFORM_EC}/power/qcom_exp.c")
 if (CONFIG_PLATFORM_EC_HIBERNATE AND CONFIG_AP_PWRSEQ AND NOT DEFINED CONFIG_EMUL_AP_PWRSEQ_DRIVER)
 	zephyr_library_sources(			"${PLATFORM_EC}/power/hibernate.c")
 endif ()
@@ -745,6 +745,7 @@ add_subdirectory("emul")
 add_subdirectory("fake")
 add_subdirectory("libc")
 add_subdirectory("mock")
+add_subdirectory("chip")
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 add_subdirectory_ifdef(CONFIG_HW_TEST_ON "test/hwtest")
 
@@ -781,10 +782,12 @@ add_dependencies(app ec_version_header)
 zephyr_include_directories("${CMAKE_CURRENT_BINARY_DIR}/include")
 
 if (DEFINED CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
+  # Using -m pw_tokenizer.database generates a runpy warning
+  # https://pwbug.dev/269622559
   set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
     COMMAND
       /usr/bin/python3.11
-      ${ZEPHYR_PIGWEED_MODULE_DIR}/pw_tokenizer/py/pw_tokenizer/database.py
+      -m pw_tokenizer.database
       create
       --force
       --type binary

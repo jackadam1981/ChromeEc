@@ -13,9 +13,12 @@
 #define CONFIG_LTO
 #define CONFIG_PRESERVE_LOGS
 
-/* Watchdog period in ms */
+/*
+ * Watchdog count was locked in shipped RO, it can never be
+ * changed from 1600ms on Dojo (b/416109671).
+ */
 #undef CONFIG_WATCHDOG_PERIOD_MS
-#define CONFIG_WATCHDOG_PERIOD_MS 2500
+#define CONFIG_WATCHDOG_PERIOD_MS 1600
 
 /*
  * TODO: Remove this option once the VBAT no longer keeps high when

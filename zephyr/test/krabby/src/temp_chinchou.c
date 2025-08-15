@@ -45,6 +45,8 @@ static void test_table(uint16_t batt, uint16_t chgv1, uint16_t chgv2,
 		DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_charger));
 	struct charge_state_data curr;
 
+	memset(&curr, 0, sizeof(curr));
+
 	power_set_state(power);
 	curr.batt.flags = batt;
 	set_adc_emul_read_voltage(chgv1, adc_dev, charger_adc_channel);

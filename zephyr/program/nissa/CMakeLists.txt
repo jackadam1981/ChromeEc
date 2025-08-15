@@ -189,19 +189,6 @@ if(DEFINED CONFIG_BOARD_CRAASKOV)
 	"craaskov/src/keyboard_customization.c"
 	)
 endif()
-if(DEFINED CONFIG_BOARD_ORISA)
-	project(orisa)
-	zephyr_include_directories("orisa/include")
-	zephyr_library_sources(
-			"orisa/src/usbc.c"
-			"orisa/src/sub_board.c"
-			"orisa/src/touch_panel.c"
-	)
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-	"orisa/src/keyboard.c"
-	"orisa/src/keyboard_customization.c"
-	)
-endif()
 if(DEFINED CONFIG_BOARD_QUANDISO)
 	project(quandiso)
 	zephyr_library_sources(
@@ -395,10 +382,6 @@ if(DEFINED CONFIG_BOARD_GUREN)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "guren/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "guren/src/charger.c")
 endif()
-if(DEFINED CONFIG_BOARD_INTEL_ISH_5_4_1)
-	project(orisa-ish)
-	add_subdirectory(orisa-ish)
-endif()
 if(DEFINED CONFIG_BOARD_DIRKS)
 	project(dirks)
 	zephyr_include_directories("dirks/include")
@@ -406,6 +389,7 @@ if(DEFINED CONFIG_BOARD_DIRKS)
 			"dirks/src/barrel_jack.c"
 			"dirks/src/led.c"
 			"dirks/src/hdmi.c"
+			"dirks/src/thermal.c"
 	)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "dirks/src/usbc.c")
 endif()

@@ -3,14 +3,14 @@
 # found in the LICENSE file.
 
 description: "COSMX L25X3PG1"
-compatible: "COSMX,l25x3pg1"
+compatible: "cosmx,l25x3pg1"
 
 include: battery-smart.yaml
 
 properties:
   enum-name:
     type: string
-    default: "COSMX,l25x3pg1"
+    default: "cosmx,l25x3pg1"
 
   # Fuel gauge
   manuf_name:

@@ -12,6 +12,18 @@
 #include "task.h"
 #include "util.h"
 
+#ifdef CONFIG_SOC_IT8XXX2
+#include <ilm.h>
+#else
+#define __soc_ram_code
+#endif
+
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_SOC_IT8XXX2)
+#define SOC_CEC_ISR_LATENCY CEC_US_TO_TICKS(150)
+#else
+#define SOC_CEC_ISR_LATENCY 0
+#endif
+
 #define CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CEC, format, ##args)
 
@@ -223,7 +235,7 @@ __test_only int cec_get_state(int port)
 	return cec_port_data[port].state;
 }
 
-static void enter_state(int port, enum cec_state new_state)
+__soc_ram_code static void enter_state(int port, enum cec_state new_state)
 {
 	const struct bitbang_cec_config *drv_config =
 		cec_config[port].drv_config;
@@ -330,7 +342,8 @@ static void enter_state(int port, enum cec_state new_state)
 		 * We are at the safe sample time. Wait
 		 * until the end of this bit
 		 */
-		timeout = NOMINAL_BIT_TICKS - NOMINAL_SAMPLE_TIME_TICKS;
+		timeout = NOMINAL_BIT_TICKS - NOMINAL_SAMPLE_TIME_TICKS -
+			  SOC_CEC_ISR_LATENCY;
 		break;
 	case CEC_STATE_FOLLOWER_START_LOW:
 		port_data->tx.present_initiator = 0;
@@ -372,7 +385,7 @@ static void enter_state(int port, enum cec_state new_state)
 		/* Don't ack broadcast or packets whose destinations aren't us,
 		 * but continue reading.
 		 */
-		timeout = NOMINAL_SAMPLE_TIME_TICKS;
+		timeout = NOMINAL_SAMPLE_TIME_TICKS - SOC_CEC_ISR_LATENCY;
 		break;
 	case CEC_STATE_FOLLOWER_ACK_VERIFY:
 		/*
@@ -390,7 +403,8 @@ static void enter_state(int port, enum cec_state new_state)
 		 * We release the ACK at the end of data zero low
 		 * period (ACK is technically a zero).
 		 */
-		timeout = DATA_ZERO_LOW_TICKS - NOMINAL_SAMPLE_TIME_TICKS;
+		timeout = DATA_ZERO_LOW_TICKS - NOMINAL_SAMPLE_TIME_TICKS -
+			  SOC_CEC_ISR_LATENCY;
 		break;
 	case CEC_STATE_FOLLOWER_ACK_FINISH:
 		gpio = 1;
@@ -447,7 +461,7 @@ static void enter_state(int port, enum cec_state new_state)
 	}
 }
 
-void cec_event_timeout(int port)
+__soc_ram_code void cec_event_timeout(int port)
 {
 	struct cec_port_data *port_data = &cec_port_data[port];
 
@@ -563,7 +577,7 @@ void cec_event_timeout(int port)
 	}
 }
 
-void cec_event_cap(int port)
+__soc_ram_code void cec_event_cap(int port)
 {
 	struct cec_port_data *port_data = &cec_port_data[port];
 	int t;
@@ -696,7 +710,7 @@ void cec_event_cap(int port)
 	}
 }
 
-void cec_event_tx(int port)
+__soc_ram_code void cec_event_tx(int port)
 {
 	/*
 	 * If we have an ongoing receive, this transfer
@@ -734,14 +748,14 @@ static int bitbang_cec_init(int port)
 	return EC_SUCCESS;
 }
 
-static int bitbang_cec_get_enable(int port, uint8_t *enable)
+__soc_ram_code static int bitbang_cec_get_enable(int port, uint8_t *enable)
 {
 	*enable = cec_port_data[port].state == CEC_STATE_DISABLED ? 0 : 1;
 
 	return EC_SUCCESS;
 }
 
-static int bitbang_cec_set_enable(int port, uint8_t enable)
+__soc_ram_code static int bitbang_cec_set_enable(int port, uint8_t enable)
 {
 	/* Enabling when already enabled? */
 	if (enable && cec_port_data[port].state != CEC_STATE_DISABLED)
@@ -768,14 +782,16 @@ static int bitbang_cec_set_enable(int port, uint8_t enable)
 	return EC_SUCCESS;
 }
 
-static int bitbang_cec_get_logical_addr(int port, uint8_t *logical_addr)
+__soc_ram_code static int bitbang_cec_get_logical_addr(int port,
+						       uint8_t *logical_addr)
 {
 	*logical_addr = cec_port_data[port].addr;
 
 	return EC_SUCCESS;
 }
 
-static int bitbang_cec_set_logical_addr(int port, uint8_t logical_addr)
+__soc_ram_code static int bitbang_cec_set_logical_addr(int port,
+						       uint8_t logical_addr)
 {
 	cec_port_data[port].addr = logical_addr;
 	CPRINTS("CEC%d address set to: %u", port, logical_addr);
@@ -783,7 +799,8 @@ static int bitbang_cec_set_logical_addr(int port, uint8_t logical_addr)
 	return EC_SUCCESS;
 }
 
-static int bitbang_cec_send(int port, const uint8_t *msg, uint8_t len)
+__soc_ram_code static int bitbang_cec_send(int port, const uint8_t *msg,
+					   uint8_t len)
 {
 	char str_buf[hex_str_buf_size(len)];
 
@@ -805,8 +822,8 @@ static int bitbang_cec_send(int port, const uint8_t *msg, uint8_t len)
 	return EC_SUCCESS;
 }
 
-static int bitbang_cec_get_received_message(int port, uint8_t **msg,
-					    uint8_t *len)
+__soc_ram_code static int
+bitbang_cec_get_received_message(int port, uint8_t **msg, uint8_t *len)
 {
 	if (!cec_port_data[port].rx.received_message_available)
 		return EC_ERROR_UNAVAILABLE;

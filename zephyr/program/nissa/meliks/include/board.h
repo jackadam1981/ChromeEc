@@ -22,3 +22,6 @@
 /* VP Voltage Adjustment */
 #define ISL98607_REG_VP_OUT 0x09
 #define ISL98607_VP_OUT_5P5 0x0a
+
+#define ISL98607_REG_VBST_CNTRL 0x0D
+#define ISL98607_VBST_PFM_MODE_DISABLE (1 << 3)

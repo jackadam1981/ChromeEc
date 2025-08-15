@@ -13,14 +13,3 @@ __override void board_hibernate(void)
 	isl9238c_hibernate(CHARGER_SOLO);
 #endif
 }
-
-__override void board_hibernate_late(void)
-{
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_slp_z), 1);
-
-	/*
-	 * Ensure the GPIO is asserted long enough to discharge the
-	 * the PP3300_Z1 regulator.
-	 */
-	k_busy_wait(10 * 1000); /* 10,000 us */
-}

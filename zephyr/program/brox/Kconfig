@@ -8,6 +8,12 @@ config BOARD_BROX
 	  Build Google Brox reference board.  This board uses an Intel RPL SoC
 	  and ITE EC
 
+config BOARD_CABOC
+	bool "Google Caboc Board"
+	help
+	  Build Google Caboc variant board.  This board uses an Intel RPL SoC
+	  and ITE EC
+
 config BOARD_GREENBAYUPOC
 	bool "Google Greenbayupoc Board"
 	help
@@ -26,6 +32,12 @@ config BOARD_LOTSO
 	  Build Google Lotso variant board. This board uses an Intel RPL SoC
 	  and ITE EC
 
+config BOARD_BRTK
+	bool "Google Brtk Board"
+	help
+	  Build Google Brtk reference board.  This board uses an Intel RPL SoC
+	  and RTK EC
+
 module = Brox
 module-str = Brox board-specific code
 source "subsys/logging/Kconfig.template.log_config"
@@ -34,8 +46,10 @@ choice PLATFORM_EC_USBC_STACK
 	default PLATFORM_EC_USB_PD_CONTROLLER
 endchoice
 
-# Use access to the fuel gauge over I2C only to determine battery presence.
+# Caboc and lotso provide a GPIO for battery presence. All other boards read
+# the fuel gauge over I2C to determine battery presence.
 choice PLATFORM_EC_BATTERY_PRESENT_MODE
+	default PLATFORM_EC_BATTERY_PRESENT_GPIO if BOARD_CABOC || BOARD_LOTSO
 	default PLATFORM_EC_BATTERY_PRESENT_NONE
 endchoice
 

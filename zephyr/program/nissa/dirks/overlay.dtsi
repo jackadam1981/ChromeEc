@@ -40,11 +40,6 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "adp_connect_interrupt";
 		};
-		int_cec_bitbang: cec_bitbang {
-			irq-pin = <&gpio_hdmi2_cec_in>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "cec_gpio_interrupt";
-		};
 	};
 
 	unused-pins {
@@ -81,29 +76,17 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp-host-high = <90>;
+			temp-host-halt = <100>;
+			temp-host-release-high = <85>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};
 		charger {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger>;
 		};
 		ambient {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_ambient>;
 		};

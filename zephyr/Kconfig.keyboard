@@ -64,8 +64,8 @@ config CROS_EC_KEYSCAN
 	  be defined.
 
 choice PLATFORM_EC_KEYBOARD_PROTOCOL_MODE
+	optional
 	prompt "Select the keyboard protocol to use"
-	depends on AP
 	help
 	  Select the keyboard protocol used to communicate key presses to the
 	  AP. PLATFORM_EC_KEYBOARD_PROTOCOL_8042 is supported by x86-compatible
@@ -74,6 +74,7 @@ choice PLATFORM_EC_KEYBOARD_PROTOCOL_MODE
 
 config PLATFORM_EC_KEYBOARD_PROTOCOL_8042
 	bool "i8042"
+	depends on AP
 	select HAS_TASK_KEYPROTO
 	help
 	  Use the i8042 protocol to communicate with the AP. This dates from the
@@ -85,12 +86,19 @@ config PLATFORM_EC_KEYBOARD_PROTOCOL_8042
 
 config PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP
 	bool "mkbp"
+	depends on AP
 	select MKBP_PROTOCOL
 	help
 	  Use the MKBP protocol to communicate with the AP. This protocol is
 	  usually used on ARM-based platforms. It sends the raw scan code, like
 	  (row, col), to the AP and the kernel driver will map this scan code to
 	  a key.
+
+config PLATFORM_EC_KEYBOARD_PROTOCOL_STUB
+	bool "stub"
+	help
+	  Use a stub keyboard protocol handler that does not send key presses
+	  anywhere. Useful for AP-less bringup.
 
 endchoice # PLATFORM_EC_KEYBOARD_PROTOCOL_MODE
 

@@ -119,9 +119,9 @@ ZTEST(pdc_api_null_check, test_pdc_set_uor)
 
 ZTEST(pdc_api_null_check, test_pdc_set_pdr)
 {
-	union pdr_t pdr = { 0 };
+	enum pdc_power_policy policy = 0;
 
-	EXPECT_ASSERT(pdc_set_pdr(&fake_pdc, pdr));
+	EXPECT_ASSERT(pdc_set_pdr(&fake_pdc, policy));
 }
 
 ZTEST(pdc_api_null_check, test_pdc_set_cc_callback)
@@ -339,6 +339,22 @@ ZTEST(pdc_api_null_check, test_pdc_get_sbu_mux_mode)
 ZTEST(pdc_api_null_check, test_pdc_set_sbu_mux_mode)
 {
 	int rv = pdc_set_sbu_mux_mode(&fake_pdc, PDC_SBU_MUX_MODE_NORMAL);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
+ZTEST(pdc_api_null_check, test_pdc_set_ap_power_state)
+{
+	int rv = pdc_set_ap_power_state(&fake_pdc, 0);
+
+	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
+		      -ENOSYS);
+}
+
+ZTEST(pdc_api_null_check, test_pdc_set_bbr_cts)
+{
+	int rv = pdc_set_bbr_cts(&fake_pdc, 0);
 
 	zassert_equal(-ENOSYS, rv, "Got %d, expected -ENOSYS (%d)", rv,
 		      -ENOSYS);

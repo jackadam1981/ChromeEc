@@ -154,28 +154,6 @@ test_static enum ec_error_list test_fp_command_check_context_cleared(void)
 }
 
 test_static enum ec_error_list
-test_fp_command_establish_pairing_key_without_seed(void)
-{
-	enum ec_status rv;
-	struct ec_response_fp_encryption_status resp = { 0 };
-	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
-
-	/* Seed shouldn't have been set. */
-	rv = test_send_host_command(EC_CMD_FP_ENC_STATUS, 0, NULL, 0, &resp,
-				    sizeof(resp));
-
-	TEST_EQ(check_seed_set_result(rv, 0, &resp), EC_SUCCESS, "%d");
-
-	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
-				    NULL, 0, &keygen_response,
-				    sizeof(keygen_response));
-
-	TEST_NE(rv, EC_RES_SUCCESS, "%d");
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list
 test_fp_command_establish_pairing_key_keygen(void)
 {
 	enum ec_status rv;
@@ -228,14 +206,6 @@ test_fp_command_establish_and_load_pairing_key(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	memcpy(&wrap_params.encrypted_private_key.info,
-	       &keygen_response.encrypted_private_key.info,
-	       sizeof(keygen_response.encrypted_private_key.info));
-
-	memcpy(wrap_params.encrypted_private_key.data,
-	       keygen_response.encrypted_private_key.data,
-	       sizeof(keygen_response.encrypted_private_key.data));
-
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
 				    &wrap_response, sizeof(wrap_response));
@@ -261,7 +231,6 @@ test_fp_command_establish_and_load_pairing_key(void)
 test_static enum ec_error_list test_fp_command_establish_pairing_key_fail(void)
 {
 	enum ec_status rv;
-	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
 	struct ec_params_fp_establish_pairing_key_wrap wrap_params {
 		.peers_pubkey = {
 			.x = {
@@ -279,20 +248,6 @@ test_static enum ec_error_list test_fp_command_establish_pairing_key_fail(void)
 		},
 	};
 	struct ec_response_fp_establish_pairing_key_wrap wrap_response;
-
-	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
-				    NULL, 0, &keygen_response,
-				    sizeof(keygen_response));
-
-	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
-
-	/* No encryption info. */
-	memset(&wrap_params.encrypted_private_key.info, 0,
-	       sizeof(wrap_params.encrypted_private_key.info));
-
-	memcpy(wrap_params.encrypted_private_key.data,
-	       keygen_response.encrypted_private_key.data,
-	       sizeof(keygen_response.encrypted_private_key.data));
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
@@ -333,14 +288,6 @@ test_static enum ec_error_list test_fp_command_load_pairing_key_fail(void)
 				    sizeof(keygen_response));
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
-
-	memcpy(&wrap_params.encrypted_private_key.info,
-	       &keygen_response.encrypted_private_key.info,
-	       sizeof(keygen_response.encrypted_private_key.info));
-
-	memcpy(wrap_params.encrypted_private_key.data,
-	       keygen_response.encrypted_private_key.data,
-	       sizeof(keygen_response.encrypted_private_key.data));
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
@@ -616,14 +563,6 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	memcpy(&wrap_params.encrypted_private_key.info,
-	       &keygen_response.encrypted_private_key.info,
-	       sizeof(keygen_response.encrypted_private_key.info));
-
-	memcpy(wrap_params.encrypted_private_key.data,
-	       keygen_response.encrypted_private_key.data,
-	       sizeof(keygen_response.encrypted_private_key.data));
-
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
 				    &wrap_params, sizeof(wrap_params),
 				    &wrap_response, sizeof(wrap_response));
@@ -741,8 +680,7 @@ test_fp_command_read_match_secret_with_pubkey_succeed(void)
 
 	std::array<uint8_t, SHA256_DIGEST_SIZE> enc_key;
 
-	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey,
-					    enc_key.data(), enc_key.size()),
+	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey, enc_key),
 		EC_SUCCESS, "%d");
 
 	AES_KEY aes_key;
@@ -1585,7 +1523,6 @@ test_fp_command_migrate_template_to_nonce_context_failure(void)
 
 void run_test(int argc, const char **argv)
 {
-	RUN_TEST(test_fp_command_establish_pairing_key_without_seed);
 	RUN_TEST(test_fp_command_check_context_cleared);
 	RUN_TEST(test_fp_command_generate_nonce);
 	RUN_TEST(test_fp_command_commit_without_seed);
@@ -1598,11 +1535,12 @@ void run_test(int argc, const char **argv)
 				  mock_otp.otp_key_buffer);
 	}
 
+	RUN_TEST(test_fp_command_establish_pairing_key_fail);
+	RUN_TEST(test_fp_command_establish_pairing_key_keygen);
+
 	// All tests after this require the TPM seed to be set.
 	RUN_TEST(test_set_fp_tpm_seed);
 
-	RUN_TEST(test_fp_command_establish_pairing_key_keygen);
-	RUN_TEST(test_fp_command_establish_pairing_key_fail);
 	RUN_TEST(test_fp_command_establish_and_load_pairing_key);
 	RUN_TEST(test_fp_command_load_pairing_key_fail);
 	RUN_TEST(test_fp_command_nonce_context);

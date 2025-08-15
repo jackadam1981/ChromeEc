@@ -1273,7 +1273,7 @@ union pdr_t {
 	uint16_t raw_value;
 };
 
-#define GET_PDOS_MAX_NUM 4
+#define UCSI_GET_PDOS_MAX_NUM 4
 /**
  * @brief GET_PDOS command format
  */

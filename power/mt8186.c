@@ -241,12 +241,12 @@ void chipset_force_shutdown_button(void)
 }
 DECLARE_DEFERRED(chipset_force_shutdown_button);
 
-static void mt8186_exit_off(void)
+void chipset_power_on(void)
 {
 	is_exiting_off = true;
 	chipset_exit_hard_off();
 }
-DECLARE_DEFERRED(mt8186_exit_off);
+DECLARE_DEFERRED(chipset_power_on);
 
 static void reset_flag_deferred(void)
 {
@@ -383,11 +383,11 @@ enum power_state power_chipset_init(void)
 	if (exit_hard_off && init_state == POWER_G3) {
 		/* Auto-power on */
 #if CONFIG_PLATFORM_EC_PP3700_DISCHARGE_TIME_MS
-		hook_call_deferred(&mt8186_exit_off_data,
+		hook_call_deferred(&chipset_power_on_data,
 				   CONFIG_PLATFORM_EC_PP3700_DISCHARGE_TIME_MS *
 					   MSEC);
 #else
-		mt8186_exit_off();
+		chipset_power_on();
 #endif
 	}
 
@@ -450,7 +450,7 @@ enum power_state power_handle_state(enum power_state state)
 						    PG_PP4200_S5_DELAY))
 			return POWER_S5G3;
 #endif
-		mt8186_exit_off();
+		chipset_power_on();
 		return POWER_S5;
 
 	case POWER_S5S3:
@@ -593,7 +593,7 @@ static void power_button_changed(void)
 {
 	if (power_button_is_pressed()) {
 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-			mt8186_exit_off();
+			chipset_power_on();
 		/* Delayed power down from S0/S3, cancel on PB release */
 		hook_call_deferred(&chipset_force_shutdown_button_data,
 				   FORCED_SHUTDOWN_DELAY);
@@ -661,7 +661,7 @@ static void lid_changed(void)
 {
 	/* Power-up from off on lid open */
 	if (lid_is_open() && chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		mt8186_exit_off();
+		chipset_power_on();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lid_changed, HOOK_PRIO_DEFAULT);
 #endif
