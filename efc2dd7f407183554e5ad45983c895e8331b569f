@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf36fa86_78474ce1",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:48:42Z",
+      "side": 1,
+      "message": "Looks like this is here twice",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37abc0f8_469373a7",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:48:42Z",
+      "side": 1,
+      "message": "You can simplify this as:\n\n```suggestion\n#define EGIS_DEFAULT_IMAGE_PARAMS                                         \\\n\t.bpp \u003d FP_SENSOR_DEFAULT_BPP_EGIS,                                \\\n\t.frame_size \u003d FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS,        \\\n\t.pixel_format \u003d V4L2_PIX_FMT_GREY, .width \u003d FP_SENSOR_RES_X_EGIS, \\\n\t.height \u003d FP_SENSOR_RES_Y_EGIS\n\n#define EGIS_TEST_IMAGE_PARAMS                                            \\\n\t.bpp \u003d FP_SENSOR_TEST_BPP_EGIS,                                   \\\n\t.frame_size \u003d FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *       \\\n\t\t      sizeof(uint16_t),                                   \\\n\t.pixel_format \u003d V4L2_PIX_FMT_GREY, .width \u003d FP_SENSOR_RES_X_EGIS, \\\n\t.height \u003d FP_SENSOR_RES_Y_EGIS\n\nstatic const struct fp_image_frame_params egis_image_frame_params[] \u003d {\n\t[EGIS_CAPTURE_NORMAL_FORMAT] \u003d\n\t{\n\t\tEGIS_DEFAULT_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_SIMPLE_IMAGE,\n\t},\n\t[EGIS_CAPTURE_BLACK_PXL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_PATTERN0,\n\t},\n\t[EGIS_CAPTURE_WHITE_PXL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_PATTERN1,\n\t},\n\t[EGIS_CAPTURE_DEFECT_PXL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_DEFECT_PXL_TEST,\n\t},\n\t[EGIS_CAPTURE_NOISE_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_NOISE_TEST,\n\t},\n\t[EGIS_CAPTURE_ABNORMAL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_ABNORMAL_TEST,\n\t},\n\t[EGIS_CAPTURE_RV_INT_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_QUALITY_TEST,\n\t},\n};\n\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4cffa3_a60d7219",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:48:42Z",
+      "side": 1,
+      "message": "Can we split this and the related `convert_fp_capture_type_to_egis_capture_type` into a separate CL?\n\nThat keeps this CL focused on the \"egis implementation for fpinfo v2\"",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 2
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ef15bb_55f8a945",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:48:42Z",
+      "side": 1,
+      "message": "Looks like an unrelated change",
+      "range": {
+        "startLine": 933,
+        "startChar": 0,
+        "endLine": 933,
+        "endChar": 62
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
