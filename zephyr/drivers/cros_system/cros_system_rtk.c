@@ -68,13 +68,29 @@ static const char *cros_system_rtk_get_chip_vendor(const struct device *dev)
 
 #define RTK_CHIP_INFO_BASE 0x40010B80
 #define CHIP_ID_OFFSET 0x70
+#define RTK_PUF_INFO_BASE 0x40010800UL
+#define OTP_OFFSET_BASE 0x680UL
+#define OTP_CTRL_REGISTER 0x24
+#define OTP_STS_REGISTER 0x20
+#define OTP_STS_BUSY_MSK 0x01
+#define OTP_STS_PDSTB_MSK 0x04
+#define RTK_OTP_CTRL_REG \
+	(RTK_PUF_INFO_BASE + OTP_OFFSET_BASE + OTP_CTRL_REGISTER)
+#define RTK_OTP_STS_REG (RTK_PUF_INFO_BASE + OTP_OFFSET_BASE + OTP_STS_REGISTER)
 static uint32_t system_get_chip_id(void)
 {
 	/* [31:16] main id */
+	// PUF
+	*(volatile uint32_t *)RTK_OTP_CTRL_REG = 1ul;
+	while (OTP_STS_PDSTB_MSK != (*(volatile uint32_t *)RTK_OTP_STS_REG &
+				     (OTP_STS_BUSY_MSK | OTP_STS_PDSTB_MSK))));
+
 	volatile uint32_t *chip_info_address =
 		(volatile uint32_t *)(RTK_CHIP_INFO_BASE + CHIP_ID_OFFSET);
 	uint32_t raw_id = *chip_info_address;
 	uint16_t main_id = (raw_id >> 16) & 0xFFFF;
+
+	*(volatile uint32_t *)RTK_OTP_CTRL_REG = 0ul;
 
 	return main_id;
 }
@@ -82,11 +98,17 @@ static uint32_t system_get_chip_id(void)
 static uint8_t system_get_chip_version(void)
 {
 	/* [15:8] chip version */
+	*(volatile uint32_t *)RTK_OTP_CTRL_REG = 1ul;
+	while (OTP_STS_PDSTB_MSK != (*(volatile uint32_t *)RTK_OTP_STS_REG &
+				     (OTP_STS_BUSY_MSK | OTP_STS_PDSTB_MSK)))
+		;
+
 	volatile uint32_t *chip_info_address =
 		(volatile uint32_t *)(RTK_CHIP_INFO_BASE + CHIP_ID_OFFSET);
 	uint32_t raw_id = *chip_info_address;
 	uint16_t sub_id = (raw_id >> 8) & 0xFF;
 
+	*(volatile uint32_t *)RTK_OTP_CTRL_REG = 0ul;
 	return sub_id;
 }
 
