@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4cdcfb_fe45213f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-08-15T20:56:45Z",
+      "side": 1,
+      "message": "The changes are tested w/ ti50, but we don\u0027t enable them until APFW is ready.\nUntil we switch #define BOOT_PARAM_VERSION from 0 to 1, this change is functional nop.",
+      "revId": "cd680b45fd855cf55ed7acf747db4626c8ac6e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
