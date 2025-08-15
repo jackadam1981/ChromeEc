@@ -70,6 +70,24 @@
       "parentUuid": "fddbf9fb_e1578432",
       "revId": "afba4b58aba4947f2e0857259550887779ffd07f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7bc5c5c_5a8161c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-08-15T05:54:30Z",
+      "side": 1,
+      "message": "We don\u0027t have a fatcat board, and we\u0027re currently unable to replicate the issue using the boards we have. Is there any chance you could lend us one?\n＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝\n\n(cr) donald@donald-TT-3437 ~/chromiumos/src/platform/ec $ ./util/flash_ec --image\u003dbuild/ec_turlo_kaladin_01.bin --chip ite_uart\nINFO: Using servo_v4_with_ccd_gsc.\nINFO: Using ec image : build/ec_turlo_kaladin_01.bin\nINFO: Flashing chip ite_uart.\nINFO: Programming EC firmware using ITE UART interface\nINFO: ITE tool \u003d /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr\nINFO: EC UART \u003d /dev/pts/4\nINFO: Using 115200 baudrate\nINFO: Reading FMAP section from EC chip\nINFO: sudo -- /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr -d /dev/pts/4 -b 115200 -r /tmp/tmp.DFPueC2Dg8/ec.cur.fmap.bin -R 384000 518\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nFlash ID \u003d ef 40 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\nSaving...        : 100%\nINFO: FMAP read is successful from EC flash\nINFO: Reading CBI section from EC chip\nINFO: sudo -- /mnt/host/source/src/platform/ec/build/host/util/itecomdbgr -d /dev/pts/4 -b 115200 -r /tmp/tmp.DFPueC2Dg8/ec.cur.CBI.bin -R 385024 4096\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d    0 KB\nDisabling watchdog...\nFlash ID \u003d ef 40 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\nSaving...        : 100%\nINFO: Preserving CBI section in new image\nChip ID \u003d 08 21 02, Chip Ver \u003d c1, eflash size \u003d 1024 KB, file size \u003d 1024 KB\nDisabling watchdog...\nFlash ID \u003d ef 40 14\nFLASH TYPE \u003d KGD\nDisabling protect path...\nErasing...       : 100%\nProgramming...   : 100%\nINFO: Flashing done.\nINFO: Restoring servo settings...",
+      "parentUuid": "8dd373a9_1cc8a943",
+      "revId": "afba4b58aba4947f2e0857259550887779ffd07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
