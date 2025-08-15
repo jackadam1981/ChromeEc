@@ -284,7 +284,7 @@ int crec_flash_physical_protect_at_boot(uint32_t new_flags)
 	return EC_SUCCESS;
 }
 
-int crec_flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(bool all)
 {
 	/* nothing to do here */
 	return EC_SUCCESS;

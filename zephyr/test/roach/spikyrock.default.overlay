@@ -7,7 +7,14 @@
 
 / {
 	usb0: usb0 {
+		compatible = "zephyr,udc-virtual";
+		num-bidir-endpoints = <2>;
+		num-in-endpoints = <2>;
+		num-out-endpoints = <2>;
+		maximum-speed = "high-speed";
 	};
+
+	/delete-node/ udc0;
 };
 
 #include "../program/roach/axii/project.overlay"

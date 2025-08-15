@@ -210,7 +210,7 @@ ZTEST(printf, test_vsnprintf_long32_enabled)
 
 	if (IS_ENABLED(CONFIG_BOARD_BLOONCHIPPER) ||
 	    IS_ENABLED(CONFIG_BOARD_DARTMONKEY) ||
-	    IS_ENABLED(CONFIG_BOARD_HELIPILOT))
+	    IS_ENABLED(CONFIG_BASEBOARD_HELIPILOT))
 		zassert_true(use_l32);
 	else
 		zassert_true(!use_l32);

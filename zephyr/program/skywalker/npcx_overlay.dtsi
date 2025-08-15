@@ -118,3 +118,19 @@
 &pwm2_gpc4 {
 	drive-open-drain;
 };
+
+&pwm0 {
+	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+};
+
+&pwm1 {
+	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+};
+
+&pwm2 {
+	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+};
+
+&pwm3 {
+	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+};

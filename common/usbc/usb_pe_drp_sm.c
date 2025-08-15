@@ -682,7 +682,7 @@ test_export_static void set_state_pe(const int port,
 				     const enum usb_pe_state new_state);
 static void pe_set_dpm_curr_request(const int port, const int request);
 
-int pd_get_rev(int port, enum tcpci_msg_type type)
+test_mockable int pd_get_rev(int port, enum tcpci_msg_type type)
 {
 	return prl_get_rev(port, type);
 }
@@ -794,6 +794,20 @@ static void pe_init(int port)
 	else
 		set_state_pe(port, PE_SNK_STARTUP);
 }
+
+#ifdef CONFIG_ZEPHYR
+static int init_pe_drp_sm_mutexes(void)
+{
+	int port;
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		k_mutex_init(&pe[port].ado_lock);
+	}
+
+	return 0;
+}
+SYS_INIT(init_pe_drp_sm_mutexes, POST_KERNEL, 50);
+#endif /* CONFIG_ZEPHYR */
 
 int pe_is_running(int port)
 {

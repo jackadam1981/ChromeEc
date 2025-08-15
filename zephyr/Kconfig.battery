@@ -166,6 +166,12 @@ config PLATFORM_EC_BATTERY_CUTOFF_TIMEOUT_MSEC
 	  After the EC executes battery cutoff, it'll wait for this amount of
 	  time in msec before deciding the cutoff failed.
 
+config PLATFORM_EC_BATTERY_CUTOFF_VOL_UP_DISABLED
+	bool "Disable Volume Up button sequence for battery cutoff"
+	default n
+	help
+	  Disable volume up button sequence to trigger battery cutoff.
+
 config PLATFORM_EC_BATTERY_FUEL_GAUGE
 	bool "Board supplies battery info"
 	help
@@ -353,5 +359,12 @@ config PLATFORM_EC_BATT_HOST_FULL_FACTOR
 	help
 	  Today, EC's PLATFORM_EC_BATT_HOST_FULL_FACTOR is the source of truth.
 	  Powerd gets the value from the EC over EC_CMD_DISPLAY_SOC.
+
+config PLATFORM_EC_BATTERY_CHARGING_OFFLOAD_TO_AP
+	bool "The Application Processor is handling battery charging"
+	default n
+	help
+	  Enabling this setting offloads battery charging to the Application Processor,
+	  which disables the charging configuration for the EC.
 
 endif # PLATFORM_EC_BATTERY
