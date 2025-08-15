@@ -255,11 +255,7 @@ common-$(call not_cfg,$(CONFIG_SHARED_MALLOC))+=shared_mem.o
 endif
 endif
 
-ifeq ($(CTS_MODULE),)
 common-$(TEST_BUILD)+=test_util.o
-else
-common-y+=test_util.o
-endif
 
 ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
