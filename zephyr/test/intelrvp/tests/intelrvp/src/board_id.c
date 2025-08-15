@@ -39,7 +39,7 @@ static void configure_board_id_gpios_input(void)
 				   (GPIO_INPUT | GPIO_ACTIVE_HIGH));
 }
 
-static void test_set_board_id_gpios(void)
+static int test_set_board_id_gpios(void)
 {
 	configure_board_id_gpios_input();
 	gpio_emul_input_set(bom_id_config[0].port, bom_id_config[0].pin, 0);
@@ -61,7 +61,7 @@ static void test_set_board_id_gpios(void)
 	gpio_emul_input_set(board_id_config[4].port, board_id_config[4].pin, 1);
 	gpio_emul_input_set(board_id_config[5].port, board_id_config[5].pin, 1);
 
-	return;
+	return 0;
 }
 
 ZTEST(board_version_tests, test_board_get_version)
@@ -92,8 +92,7 @@ static int board_ap_power_action_g3_run(void *data)
 {
 	return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S5);
 }
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL,
-			      board_ap_power_action_g3_run, NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(G3, NULL, board_ap_power_action_g3_run, NULL);
 
 static void ap_change_state_to_s5(void)
 {

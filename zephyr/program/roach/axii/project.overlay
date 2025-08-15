@@ -198,7 +198,7 @@
 	status = "disabled";
 };
 
-&usb0 {
+zephyr_udc0: &usb0 {
 	status = "okay";
 	pinctrl-0 = <&usb0_dm_gph5_default
 		     &usb0_dp_gph6_default>;
@@ -210,13 +210,33 @@
 		/* TODO: find a way to probe touchpad parameters
 		 * dynamically.
 		 */
-		logical_max_x = <2925>;
-		logical_max_y = <1440>;
-		physical_max_x = <929>;
-		physical_max_y = <457>;
-		max_pressure = <511>;
+		logical-max-x = <2925>;
+		logical-max-y = <1440>;
+		physical-max-x = <929>;
+		physical-max-y = <457>;
+		max-pressure = <511>;
 	};
 
+	hid_kb_dev: hid-kb-dev {
+		compatible = "zephyr,hid-device";
+		label = "spikyrock keyboard";
+		protocol-code = "keyboard";
+		out-report-size = <64>;
+		out-polling-period-us = <1000>;
+		in-report-size = <64>;
+		in-polling-period-us = <1000>;
+	};
+
+	hid_tp_dev: hid-tp-dev {
+		compatible = "zephyr,hid-device";
+		label = "spikyrock keyboard";
+		protocol-code = "mouse";
+		/* device cert (256 bytes) + some overhead */
+		out-report-size = <280>;
+		out-polling-period-us = <1000>;
+		in-report-size = <64>;
+		in-polling-period-us = <1000>;
+	};
 };
 
 &one_wire_uart {

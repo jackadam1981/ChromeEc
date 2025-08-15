@@ -8,6 +8,12 @@ config BOARD_BLUEY
 	  Build Google Bluey reference board.  The board uses Nuvoton
 	  NPCX9 chip as the EC.
 
+config BOARD_QUENBI
+	bool "Google Quenbi baseboard"
+	help
+	  Build Google Quenbi reference board. The board uses Nuvoton
+	  NPCX9 chip as the EC.
+
 module = Bluey
 module-str = Bluey board-specific code
 source "subsys/logging/Kconfig.template.log_config"

@@ -46,6 +46,8 @@ ZTEST_USER(ap_hang_detect, test_cancel)
 	struct ec_response_hang_detect resp;
 	struct host_cmd_handler_args args;
 
+	memset(&req, 0, sizeof(req));
+
 	/* Confirm the AP booted normally */
 	req.command = EC_HANG_DETECT_CMD_GET_STATUS;
 	zassert_ok(ec_cmd_hang_detect(&args, &req, &resp));
@@ -74,6 +76,8 @@ static void reload_and_get_status(void)
 	struct ec_response_hang_detect resp;
 	struct host_cmd_handler_args args;
 
+	memset(&req, 0, sizeof(req));
+
 	/* Confirm the AP booted noramlly */
 	req.command = EC_HANG_DETECT_CMD_GET_STATUS;
 	zassert_ok(ec_cmd_hang_detect(&args, &req, &resp));
@@ -101,6 +105,8 @@ ZTEST_USER(ap_hang_detect, test_clear_status)
 	struct ec_params_hang_detect req;
 	struct ec_response_hang_detect resp;
 	struct host_cmd_handler_args args;
+
+	memset(&req, 0, sizeof(req));
 
 	/* re-use reload_and_get_status() to set
 	 * EC_HANG_DETECT_AP_BOOT_EC_WDT status

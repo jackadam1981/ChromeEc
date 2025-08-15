@@ -2,6 +2,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+add_subdirectory(board_id)
 add_subdirectory(cec_counter)
 add_subdirectory(cros_displight)
 add_subdirectory(cros_flash)
@@ -13,6 +14,7 @@ add_subdirectory(cros_shi)
 add_subdirectory(cros_system)
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC_DSP_COMMS dsp_comms)
 add_subdirectory(fingerprint)
+add_subdirectory(hibernate)
 add_subdirectory(keyboard_input)
 add_subdirectory(keyboard_factory_test)
 add_subdirectory(one_wire_uart)

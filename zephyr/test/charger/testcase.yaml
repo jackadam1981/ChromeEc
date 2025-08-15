@@ -86,3 +86,18 @@ tests:
       - CONFIG_LINK_TEST_SUITE_CHARGE=y
       - CONFIG_TEST_CHARGE_STATE_PREVENT_POWER_ON=y
       - CONFIG_TEST_BOARD_NATIVE_SIM=y
+
+  charge.seeding:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+    extra_configs:
+      - CONFIG_LINK_TEST_SUITE_CHARGE=y
+      - CONFIG_TEST_CHARGE_MANAGER_SEEDING=y
+
+  charge.seeding.dedicated:
+    extra_dtc_overlay_files:
+      - boards/native_sim.overlay
+    extra_configs:
+      - CONFIG_LINK_TEST_SUITE_CHARGE=y
+      - CONFIG_TEST_CHARGE_MANAGER_SEEDING=y
+      - CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT=y

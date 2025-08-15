@@ -100,13 +100,12 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 
 	switch (entry) {
 	case AP_POWER_STATE_G3:
-		if (exit == AP_POWER_STATE_S5) {
-			ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
-		} else if (exit > AP_POWER_STATE_S5) {
+		if (exit > AP_POWER_STATE_S5) {
 			/* This may be a forced shutdown */
 			ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN);
 			ap_power_ev_send_callbacks(AP_POWER_SHUTDOWN_COMPLETE);
 		}
+		ap_power_ev_send_callbacks(AP_POWER_HARD_OFF);
 		break;
 
 	case AP_POWER_STATE_S5:
@@ -140,7 +139,7 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 		break;
 
 #if CONFIG_AP_PWRSEQ_S0IX
-	case AP_POWER_STATE_S0IX:
+	case AP_POWER_STATE_S0ix:
 		/*
 		 * Check sleep state and notify listeners of S0ix suspend if
 		 * HC already set sleep suspend state.
@@ -176,7 +175,7 @@ static void x86_non_dsx_chipset_state_exit_cb(const struct device *dev,
 	case AP_POWER_STATE_S0:
 		if (entry == AP_POWER_STATE_S3
 #if CONFIG_AP_PWRSEQ_S0IX
-		    || entry == AP_POWER_STATE_S0IX
+		    || entry == AP_POWER_STATE_S0ix
 #endif
 		) {
 			ap_power_ev_send_callbacks(AP_POWER_SUSPEND);
@@ -184,7 +183,7 @@ static void x86_non_dsx_chipset_state_exit_cb(const struct device *dev,
 		break;
 
 #if CONFIG_AP_PWRSEQ_S0IX
-	case AP_POWER_STATE_S0IX:
+	case AP_POWER_STATE_S0ix:
 		/*
 		 * Disable idle task deep sleep. This means that the low
 		 * power idle task will not go into deep sleep while in S0.
@@ -215,7 +214,7 @@ static int x86_non_dsx_chipset_init_events(void)
 		(BIT(AP_POWER_STATE_G3) | BIT(AP_POWER_STATE_S3) |
 		 BIT(AP_POWER_STATE_S0) | BIT(AP_POWER_STATE_S5)
 #if CONFIG_AP_PWRSEQ_S0IX
-		 | BIT(AP_POWER_STATE_S0IX)
+		 | BIT(AP_POWER_STATE_S0ix)
 #endif
 		);
 
@@ -226,7 +225,7 @@ static int x86_non_dsx_chipset_init_events(void)
 	ap_pwrseq_exit_cb.states_bit_mask =
 		(BIT(AP_POWER_STATE_G3) | BIT(AP_POWER_STATE_S0)
 #if CONFIG_AP_PWRSEQ_S0IX
-		 | BIT(AP_POWER_STATE_S0IX)
+		 | BIT(AP_POWER_STATE_S0ix)
 #endif
 		);
 
