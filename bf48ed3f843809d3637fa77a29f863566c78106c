@@ -105,6 +105,24 @@
       "parentUuid": "c6ffd3dd_fc23562c",
       "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7e8b42_07b0149a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-08-15T09:32:59Z",
+      "side": 1,
+      "message": "ACK!\nWhile I still have concerns that AFAIK, our current OEM feature has case that for CS SKU, the battery LED will be overridden to power LED when system is discharged in suspend (it will blink or breath white), but it will stay as battery LED when system is charged in suspend (it will show amber on with 100% duty). It should be determined whether the DUT is CS SKU by FW_config as well as if the system is discharged in suspend mode. Is current led driver support such case?",
+      "parentUuid": "89e91d5c_db00d69d",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
