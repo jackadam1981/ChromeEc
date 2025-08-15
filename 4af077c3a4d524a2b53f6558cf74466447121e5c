@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb40050b_fe8a8daf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:12:36Z",
+      "side": 1,
+      "message": "Let\u0027s make it so that this commit compiles on its own. To do that we need a default implementation for `fp_sensor_get_info_v2`. You can add something like the following to `fpsensor.cc`:\n\n```\n__overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)\n{\n\t*resp \u003d {\n\t\t.sensor_info \u003d  { .vendor_id \u003d 0,\n\t\t\t      .product_id \u003d 0,\n\t\t\t      .model_id \u003d 0,\n\t\t\t      .version \u003d 0,\n\t\t\t      .num_capture_types \u003d 0,\n\t\t\t      .errors \u003d 0 },\n\t\t.template_info \u003d {\n\t\t\t.template_size \u003d 0,\n\t\t\t.template_max \u003d 0,\n\t\t\t.template_valid \u003d 0,\n\t\t\t.template_dirty \u003d 0,\n\t\t\t.template_version \u003d 0,\n\t\t},\n\t};\n\treturn EC_SUCCESS;\n}\n```",
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
