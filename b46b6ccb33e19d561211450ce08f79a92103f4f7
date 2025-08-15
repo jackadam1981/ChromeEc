@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f2f395_b89e76f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:56:55Z",
+      "side": 1,
+      "message": "Update description after making change below",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fa8062_912fb762",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:56:55Z",
+      "side": 1,
+      "message": "I think we can push this into https://crrev.com/c/6354365 so that Zephyr compiles for that CL. Then we\u0027ll be able to submit that CL by itself while making changes to these other CLs.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
