@@ -93,11 +93,6 @@ nokris = register_nissa_project(
     chip="npcx9/npcx9m3f",
 )
 
-naktal = register_nissa_project(
-    project_name="naktal",
-    chip="it8xxx2/it81302bx",
-)
-
 craask = register_nissa_project(
     project_name="craask",
     chip="npcx9/npcx9m3f",
@@ -241,7 +236,6 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="craaskov", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="dirks", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="gothrax", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="joxer", addr=0xBFFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="naktal", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nereid", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nereid_cx", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nivviks", addr=0x7FFE0)
