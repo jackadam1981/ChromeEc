@@ -123,6 +123,24 @@
       "parentUuid": "89e91d5c_db00d69d",
       "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dbb2dca_dad51f38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-15T21:15:10Z",
+      "side": 1,
+      "message": "The LED driver can match any number of conditions to any number of LEDs: see [rex](https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/program/rex/rex/led_policy.dtsi) for example that swaps which LED to use depending on port. So it should cover any use case you may have.\n\nIf you need the policies modified it can be accomplished by the Zephyr devicetree override functionality. I\u0027m not familiar enough with how different SKUs are defined in the project to say where the override will be, I\u0027ll probably need Keith to comment on that. But suffice to say there are multiple ways to select different devicetrees as needed within Zephyr.",
+      "parentUuid": "7e7e8b42_07b0149a",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
