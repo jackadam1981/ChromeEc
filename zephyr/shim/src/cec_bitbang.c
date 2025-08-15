@@ -49,5 +49,5 @@ void cec_disable_timer(int port)
 
 void cec_init_timer(int port)
 {
-	/* Do nothing. */
+	cros_cec_bitbang_init_timer(port);
 }

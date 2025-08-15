@@ -41,7 +41,7 @@ static uint8_t saved_sr2;
 #endif
 
 /* Ensure only one task is accessing flash at a time. */
-static struct mutex flash_lock;
+static mutex_t flash_lock;
 
 /* The previous write protect state before sys jump */
 struct flash_wp_state {
@@ -78,7 +78,13 @@ static void flash_execute_cmd(uint8_t code, uint8_t cts)
 	 * Flash mutex must be held while executing UMA commands after
 	 * task_start().
 	 */
+#ifdef CONFIG_COMMON_RECURSIVE_MUTEX
+	ASSERT(!task_start_called() ||
+	       (flash_lock.state == MUTEX_R_LOCKED ||
+		flash_lock.state == MUTEX_R_LOCKED_WAITING));
+#else
 	ASSERT(!task_start_called() || flash_lock.lock);
+#endif
 
 	/* set UMA_CODE */
 	NPCX_UMA_CODE = code;
@@ -677,7 +683,7 @@ uint32_t crec_flash_physical_get_protect_flags(void)
 	return flags;
 }
 
-int crec_flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(bool all)
 {
 	if (all) {
 		/*

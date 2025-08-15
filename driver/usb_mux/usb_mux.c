@@ -657,7 +657,7 @@ static enum ec_error_list try_usb_mux_get(int port, mux_state_t *mux_state)
 			     USB_MUX_GET_MODE, mux_state);
 }
 
-mux_state_t usb_mux_get(int port)
+test_mockable mux_state_t usb_mux_get(int port)
 {
 	mux_state_t mux_state;
 	enum ec_status rv;

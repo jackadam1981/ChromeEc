@@ -126,6 +126,7 @@ struct iteflash_config {
 	int usb_vid;
 	int usb_pid;
 	int verify; /* boolean */
+	bool wdt_enable;
 	char *usb_serial;
 	char *i2c_dev_path;
 	const struct i2c_interface *i2c_if;
@@ -607,6 +608,58 @@ static int it5xxxx_get_eflash_size(struct common_hnd *chnd,
 	return ret;
 }
 
+/* Get Watchdog */
+static int get_wdt_value(struct common_hnd *chnd, uint8_t *watchdog)
+{
+	int ret = 0;
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
+	ret |= i2c_write_byte(chnd, 0x2e,
+			      chnd->instruction_set_v2 ? 0x85 : 0x05);
+	ret |= i2c_read_byte(chnd, 0x30, watchdog);
+
+	if (ret < 0)
+		fprintf(stderr, "Failed to get watchodg value");
+
+	return ret;
+}
+
+/* Set Watchdog */
+static int set_wdt_value(struct common_hnd *chnd, uint8_t watchdog)
+{
+	int ret = 0;
+
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
+	ret |= i2c_write_byte(chnd, 0x2e,
+			      chnd->instruction_set_v2 ? 0x85 : 0x05);
+	ret |= i2c_write_byte(chnd, 0x30, watchdog);
+
+	if (ret < 0)
+		fprintf(stderr, "Failed to set watchodg value");
+
+	return ret;
+}
+
+/* Restart Watchdog */
+static int restart_wdt(struct common_hnd *chnd)
+{
+	int ret = 0;
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
+	ret |= i2c_write_byte(chnd, 0x2e,
+			      chnd->instruction_set_v2 ? 0x87 : 0x07);
+	ret |= i2c_write_byte(chnd, 0x30, 0x5C);
+
+	if (ret < 0)
+		fprintf(stderr, "Failed to re-start watchodg");
+
+	return ret;
+}
+
 static int check_flashid(struct common_hnd *chnd)
 {
 	int ret = 0;
@@ -800,18 +853,32 @@ static int dbgr_reset_gpio(struct common_hnd *chnd)
 static int dbgr_disable_watchdog(struct common_hnd *chnd)
 {
 	int ret = 0;
+	uint8_t wdt = 0;
 
 	printf("Disabling watchdog...\n");
-	if (chnd->dbgr_addr_3bytes)
-		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 
-	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
-	ret |= i2c_write_byte(chnd, 0x2e,
-			      chnd->instruction_set_v2 ? 0x85 : 0x05);
-	ret |= i2c_write_byte(chnd, 0x30, 0x30);
+	restart_wdt(chnd);
+	ret |= set_wdt_value(chnd, 0x10);
+	usleep(1000);
+	if (ret)
+		return ret;
 
-	if (ret < 0)
+	ret |= set_wdt_value(chnd, 0x30);
+	usleep(1000);
+	if (ret)
+		return ret;
+
+	ret = get_wdt_value(chnd, (uint8_t *)&wdt);
+	if (ret)
+		return ret;
+
+	if (wdt != 0x30) {
 		fprintf(stderr, "DBGR DISABLE WATCHDOG FAILED!\n");
+		printf("wdt=%02x => do restart wdt to avoid wdt interrupt flashing...\n",
+		       wdt);
+		chnd->conf.wdt_enable = 1;
+		restart_wdt(chnd);
+	}
 
 	return ret;
 }
@@ -838,10 +905,23 @@ static int dbgr_disable_protect_path(struct common_hnd *chnd)
 	return ret;
 }
 
+/* Check if need wdt restart */
+static int check_wdt(struct common_hnd *chnd)
+{
+	int ret = 0;
+
+	if (chnd->conf.wdt_enable)
+		ret = restart_wdt(chnd);
+
+	return ret;
+}
+
 /* Enter follow mode and FSCE# high level */
 static int spi_flash_follow_mode(struct common_hnd *chnd, const char *desc)
 {
 	int ret = 0;
+
+	ret |= check_wdt(chnd);
 
 	ret |= i2c_write_byte(chnd, 0x07, 0x7f);
 	ret |= i2c_write_byte(chnd, 0x06, 0xff);
@@ -1209,6 +1289,9 @@ static int spi_send_cmd_fast_read(struct common_hnd *chnd, uint32_t addr)
 	int ret = 0;
 	uint8_t cmd = 0x9;
 
+	/* Check if need wdt restart */
+	check_wdt(chnd);
+
 	/* Fast Read command */
 	ret = spi_flash_command_short(chnd, SPI_CMD_FAST_READ, "fast read");
 	/* Send address */
@@ -1231,6 +1314,13 @@ static int command_read_pages(struct common_hnd *chnd, uint32_t address,
 	int res = -EIO;
 	uint32_t remaining = size;
 	int cnt;
+
+	/* Normal We need to resend fast read command at 256KB boundary. */
+	/* if wdt_enable , we need to reduce to 4K to avoid the wdt interrupt*/
+	int boundary = 0x40000; /* 256K */
+
+	if (chnd->conf.wdt_enable)
+		boundary = 0x1000; /* 4K */
 
 	if (address & 0xFF) {
 		fprintf(stderr,
@@ -1262,7 +1352,7 @@ static int command_read_pages(struct common_hnd *chnd, uint32_t address,
 		buffer += cnt;
 
 		/* We need to resend fast read command at 256KB boundary. */
-		if (!(address % 0x40000) && remaining) {
+		if (!(address % boundary) && remaining) {
 			if (spi_send_cmd_fast_read(chnd, address) < 0)
 				goto failed_read;
 		}
@@ -1370,6 +1460,8 @@ static int command_write_pages(struct common_hnd *chnd, uint32_t address,
 		remaining -= cnt;
 	}
 	draw_spinner(remaining, size);
+	/* Check if need wdt restart */
+	check_wdt(chnd);
 	/* No error so far */
 	res = size;
 failed_write:
@@ -1467,6 +1559,8 @@ static int command_erase(struct common_hnd *chnd, uint32_t len, uint32_t off)
 		if (spi_flash_set_erase_page(chnd, page, "sector erase") < 0)
 			goto failed_erase;
 
+		/* Check if need wdt restart */
+		check_wdt(chnd);
 	wait_busy_cleared:
 		if (spi_poll_busy(chnd, "erase") < 0)
 			goto failed_erase;
@@ -1554,6 +1648,8 @@ static int command_erase2(struct common_hnd *chnd, uint32_t len, uint32_t off,
 					    "write disable for erase") < 0)
 			goto failed_erase;
 
+		/* Check if need wdt restart */
+		check_wdt(chnd);
 		if (reset) {
 			printf("\n\rreset to prevent the watchdog reset...\n");
 			break;
@@ -1705,6 +1801,12 @@ static int write_flash2(struct common_hnd *chnd, const char *filename,
 	uint8_t addr_h, addr_m, addr_l, data_ff = 0xff;
 	uint8_t *buffer = (uint8_t *)malloc(size);
 
+	/* Normal We need to resend fast read command at 256KB boundary. */
+	/* if wdt_enable , we need to reduce to 4K to avoid the wdt interrupt*/
+	int boundary = 0x40000; /* 256K */
+	if (chnd->conf.wdt_enable)
+		boundary = 0x1000; /* 4K */
+
 	if (!buffer) {
 		fprintf(stderr, "%s: Cannot allocate %d bytes\n", __func__,
 			size);
@@ -1742,6 +1844,9 @@ __send_aai_cmd:
 	addr_h = (offset >> 16) & 0xff;
 	addr_m = (offset >> 8) & 0xff;
 	addr_l = offset & 0xff;
+
+	/* Check if need wdt restart */
+	check_wdt(chnd);
 
 	/* write enable command */
 	ret = spi_flash_command_short(chnd, SPI_CMD_WRITE_ENABLE, "SPI WE");
@@ -1787,7 +1892,7 @@ __send_aai_cmd:
 		draw_spinner(res, res + offset);
 
 		/* We need to resend aai write command at 256KB boundary. */
-		if (!(offset % 0x40000) && res) {
+		if (!(offset % boundary) && res) {
 			/* disable quick AAI mode */
 			i2c_byte_transfer(chnd, I2C_DATA_ADDR, &data_ff, 1, 1);
 			i2c_write_byte(chnd, 0x10, 0x00);
@@ -1885,6 +1990,9 @@ static int write_flash3(struct common_hnd *chnd, const char *filename,
 		res -= cnt;
 		offset += cnt;
 		draw_spinner(res, res + offset);
+
+		/* Check if need wdt restart */
+		check_wdt(chnd);
 	}
 
 failed_write:
@@ -2388,6 +2496,7 @@ int main(int argc, char **argv)
 			.disable_protect_path = 1,
 			.usb_interface = SERVO_INTERFACE,
 			.verify = 1,
+			.wdt_enable = 0,
 			.i2c_if = &ftdi_i2c_interface,
 		},
 	};
@@ -2439,6 +2548,9 @@ int main(int argc, char **argv)
 	dbgr_reset_gpio(&chnd);
 
 	check_flashid(&chnd);
+
+	/* add wdt restart to prevent wdt interrupt flashing */
+	restart_wdt(&chnd);
 
 	ret = post_waveform_work(&chnd);
 	if (ret)
