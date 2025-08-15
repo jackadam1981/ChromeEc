@@ -300,6 +300,18 @@ union rts54_request {
 		struct rts54_subcommand_header header;
 		uint8_t port_num;
 	} get_attention_vdo;
+
+	struct set_bbr_cts {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+		uint8_t enable;
+	} set_bbr_cts;
+
+	struct set_sys_pwr_state {
+		struct rts54_subcommand_header header;
+		uint8_t port_num;
+		uint8_t state;
+	} set_sys_pwr_state;
 };
 
 union rts54_response {
@@ -508,12 +520,13 @@ struct rts5453p_emul_pdc_data {
 	union error_status_t error;
 	union tpc_rp_t tpc_rp;
 	union csd_op_mode_t csd_op_mode;
-	union port_and_ccom_t set_ccom_mode;
+	enum ccom_t ccom;
 	struct force_set_power_switch_t set_power_switch_data;
 	uint8_t set_tpc_reconnect_param;
 	struct pdc_info_t info;
 	struct lpm_ppm_info_t lpm_ppm_info;
 	union cable_property_t cable_property;
+	bool bbr_cts_mode;
 
 	union rts54_request request;
 
@@ -538,6 +551,7 @@ struct rts5453p_emul_pdc_data {
 	uint8_t sbu_mux_mode;
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
+	int dead_battery;
 };
 
 /**

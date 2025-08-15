@@ -133,6 +133,7 @@
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -153,8 +154,8 @@
 				compatible = "cros-ec,motionsense-bodydetect";
 				status = "okay";
 				var_noise_factor = <150>;
-				var_threshold = <3000>;
-				confidence_delta = <2900>;
+				var_threshold = <4000>;
+				confidence_delta = <3000>;
 			};
 			configs {
 				compatible =
@@ -165,6 +166,7 @@
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -200,17 +202,18 @@
 				compatible = "cros-ec,motionsense-bodydetect";
 				status = "okay";
 				var_noise_factor = <150>;
-				var_threshold = <3000>;
-				confidence_delta = <2900>;
+				var_threshold = <4000>;
+				confidence_delta = <3000>;
 			};
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
+					odr = <(50000 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -246,17 +249,18 @@
 				compatible = "cros-ec,motionsense-bodydetect";
 				status = "okay";
 				var_noise_factor = <150>;
-				var_threshold = <3000>;
-				confidence_delta = <2900>;
+				var_threshold = <4000>;
+				confidence_delta = <3000>;
 			};
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
-					odr = <(10000 | ROUND_UP_FLAG)>;
+					odr = <(50000 | ROUND_UP_FLAG)>;
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};

@@ -251,9 +251,10 @@ static int match_node(int node_idx)
 	return node_idx;
 }
 
-static void board_led_set_color(void)
+static bool board_led_set_color(void)
 {
 	bool found_node = false;
+	bool has_transitions = false;
 
 	/*
 	 * Find all the nodes that match the current state of the system and
@@ -267,19 +268,27 @@ static void board_led_set_color(void)
 		if (match_node(i) != -1) {
 			found_node = true;
 
+			// TODO: has_transitions should support all non-step
+			// patterns
+			if (node_array[i].led_patterns->transition ==
+			    LED_TRANSITION_LINEAR)
+				has_transitions = true;
+
 			set_color(i);
 		}
 	}
 
 	if (!found_node)
 		LOG_ERR("Node with matching prop not found");
+
+	return has_transitions;
 }
 
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
 static void led_tick(void)
 {
-	board_led_set_color();
-	board_led_apply_color();
+	bool has_transitions = board_led_set_color();
+	board_led_apply_color(has_transitions);
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 

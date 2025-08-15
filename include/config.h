@@ -602,6 +602,11 @@
 #define CONFIG_BATTERY_CUTOFF_TIMEOUT_MSEC 8000
 
 /*
+ * Disable VolumeUp + AC disconnect battery cutoff sequence.
+ */
+#undef CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED
+
+/*
  * The board-specific battery.c implements get and set functions to read and
  * write arbirary vendor-specific parameters stored in the battery.
  * See include/battery.h for prototypes.
@@ -957,6 +962,7 @@
 #undef CONFIG_CHARGER_ISL9238 /* For ISL9238 A/B */
 #undef CONFIG_CHARGER_ISL9238C
 #undef CONFIG_CHARGER_ISL9241
+#undef CONFIG_CHARGER_ISL95522
 #undef CONFIG_CHARGER_MT6370
 #undef CONFIG_CHARGER_RAA489000
 #undef CONFIG_CHARGER_RAA489110
@@ -1524,6 +1530,7 @@
 #undef CONFIG_CHIPSET_SKYLAKE /* Intel Skylake (x86) */
 #undef CONFIG_CHIPSET_SC7180 /* Qualcomm SC7180 */
 #undef CONFIG_CHIPSET_SC7280 /* Qualcomm SC7280 */
+#undef CONFIG_CHIPSET_QC_EXP /* Qualcomm QC_EXP */
 #undef CONFIG_CHIPSET_SDM845 /* Qualcomm SDM845 */
 #undef CONFIG_CHIPSET_STONEY /* AMD Stoney (x86)*/
 #undef CONFIG_CHIPSET_TIGERLAKE /* Intel Tigerlake (x86) */
@@ -1923,6 +1930,12 @@
  * You want this unless you are doing a really tiny firmware.
  */
 #define CONFIG_COMMON_RUNTIME
+
+/**
+ * Use a common implementation of mutex that supports recursive
+ * locking within the same task.
+ */
+#undef CONFIG_COMMON_RECURSIVE_MUTEX
 
 /* Allow deferred (async) flash protect*/
 #define CONFIG_FLASH_PROTECT_DEFERRED
@@ -3138,6 +3151,12 @@
 #undef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
 
 /*
+ * For IT83xx boards shipped with Watchdog timer locked in RO this config
+ * allows to extend the duration of Watchdog timer by resetting it once.
+ */
+#undef CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION
+
+/*
  * Support the standard integer multiplication and division instruction
  * extension.
  */
@@ -3772,6 +3791,9 @@
 
 /* Support One Time Protection structure */
 #undef CONFIG_OTP
+
+/* Use OTP as a source of key material. */
+#undef CONFIG_OTP_KEY
 
 /*
  * Address to store persistent panic data at. By default, this will be
@@ -4873,6 +4895,13 @@
  */
 #undef CONFIG_USB_PD_DEBUG_LEVEL
 
+/* Build a framework to record custom time intervals and print them out at
+ * convenient points with respect to each USB-C port. This config does not
+ * directly enable any recording. The developer must define the intervals and
+ * choose when to print the results.
+ */
+#undef CONFIG_USB_PD_DEBUG_INTERVALS
+
 /*
  * Set to a nonzero value to delay PD task startup by the given
  * amount of time.
@@ -5010,6 +5039,9 @@
 
 /* The size in bytes of the FIFO used for event logging */
 #define CONFIG_EVENT_LOG_SIZE 512
+
+/* Event-driven CC detection */
+#undef CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE
 
 /* Save power by waking up on VBUS rather than polling CC */
 #define CONFIG_USB_PD_LOW_POWER
@@ -5461,10 +5493,11 @@
 #undef CONFIG_USBC_PPC_SYV682X_OVP_SET_15V
 
 /*
- * SYV682x PPC high voltage power path current limit.  Default limit is
- * 3.3A.  See the syv682x header file for permissible values.
+ * SYV682x PPC high voltage power path current limit. The hardware default is
+ * 3.3A, but this results in spurious OCP events. Default to 5.5A in software.
+ * See b/349015641 for details. See the syv682x header file for possible values.
  */
-#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_3_30
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
 
 /* SYV682 does not pass through CC, instead it bypasses to the TCPC */
 #undef CONFIG_USBC_PPC_SYV682X_NO_CC
@@ -6539,6 +6572,11 @@
 #define CONFIG_BATTERY
 #endif
 
+#if defined(CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED) && \
+	!defined(CONFIG_VOLUME_BUTTONS)
+#error "VOLUME_BUTTONS must be defined to use BATTERY_CUTOFF_VOL_UP_DISABLED"
+#endif
+
 #if defined(CONFIG_CBI_EEPROM) || defined(CONFIG_CBI_FLASH)
 #if defined(CONFIG_BATTERY) && defined(CONFIG_BATTERY_FUEL_GAUGE)
 #define CONFIG_BATTERY_CONFIG_IN_CBI
@@ -6968,7 +7006,8 @@
 #error "Must enable CONFIG_POWER_TRACK_HOST_SLEEP_STATE for S0ix"
 #endif
 
-#if defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280)
+#if defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280) || \
+	defined(CONFIG_CHIPSET_QC_EXP)
 #if defined(CONFIG_POWER_SLEEP_FAILURE_DETECTION) && \
 	!defined(CONFIG_CHIPSET_RESUME_INIT_HOOK)
 #error "Require resume init hook to enable sleep failure detection"
