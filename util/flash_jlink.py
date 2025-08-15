@@ -76,11 +76,9 @@ HELIPILOT_CONFIG = BoardConfig(
 BOARD_CONFIGS = {
     "dragonclaw": DRAGONCLAW_CONFIG,
     "bloonchipper": DRAGONCLAW_CONFIG,
-    "nucleo-f412zg": DRAGONCLAW_CONFIG,
     "dartmonkey": ICETOWER_CONFIG,
     "icetower": ICETOWER_CONFIG,
     "nucleo-dartmonkey": ICETOWER_CONFIG,
-    "nucleo-h743zi": ICETOWER_CONFIG,
     "helipilot": HELIPILOT_CONFIG,
 }
 

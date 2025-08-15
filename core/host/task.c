@@ -63,7 +63,6 @@ static void task_enable_all_tasks_callback(void);
 #define TASK(n, r, d, s) void r(void *);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
-CONFIG_CTS_TASK_LIST
 #undef TASK
 
 /* usleep that uses OS functions, instead of emulated timer. */
@@ -100,16 +99,14 @@ void _run_test(void *d)
 #define TASK(n, r, d, s) { r, d },
 const struct task_args task_info[TASK_ID_COUNT] = {
 	{ __idle, NULL },
-	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST{ _run_test,
-								     NULL },
+	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST{ _run_test, NULL },
 };
 #undef TASK
 
 #define TASK(n, r, d, s) #n,
 static const char *const task_names[] = {
 	"<< idle >>",
-	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
-	"<< test runner >>",
+	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST "<< test runner >>",
 };
 #undef TASK
 
