@@ -9,12 +9,12 @@
 
 		fan_0 {
 			pwms = <&pwm3 0 PWM_KHZ(30) PWM_POLARITY_NORMAL>;
-			rpm_min = <3000>;
-			rpm_start = <3000>;
-			rpm_max = <10000>;
+			rpm-min = <3000>;
+			rpm-start = <3000>;
+			rpm-max = <10000>;
 			tach = <&tach2>;
-			pgood_gpio = <&all_sys_pwrgd>;
-			enable_gpio = <&gpio_fan_control>;
+			pgood-gpio = <&all_sys_pwrgd>;
+			enable-gpio = <&gpio_fan_control>;
 		};
 	};
 };

@@ -66,12 +66,17 @@
 		};
 		gpio_en_slp_z: en_slp_z {
 			gpios = <&gpioe 1 GPIO_OUTPUT>;
+			/* GPIO setup by hibernate_z5 driver. */
+			no-auto-init;
 		};
 		gpio_tchpad_lid_close: tchpad_lid_close {
 			gpios = <&gpio6 3 GPIO_OUTPUT>;
 		};
 		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
 			gpios = <&gpiob 0 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_ec_mute_l: ec_mute_l {
+			gpios = <&gpiod 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_OUTPUT_INIT_LOW)>;
 		};
 	};
 	gpio-interrupts {
@@ -93,16 +98,14 @@
 		int_tablet_mode: tablet_mode {
 			irq-pin = <&gpio_tablet_mode_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "gmr_tablet_switch_isr";
+			handler = "dsp_service_gmr_tablet_switch_isr";
 		};
 	};
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
 			<&gpio3 2 0>,
-			<&gpio3 3 0>,
 			<&gpio3 5 0>,
-			<&gpio3 6 0>,
 			<&gpio6 6 0>,
 			<&gpio7 3 0>,
 			<&gpio8 6 0>,
@@ -112,11 +115,9 @@
 			<&gpioa 0 0>,
 			<&gpioa 2 0>,
 			<&gpioa 3 0>,
-			<&gpiob 7 0>,
 			<&gpioc 0 0>,
 			<&gpioc 6 0>,
 			<&gpiod 5 0>,
-			<&gpiod 6 0>,
 			<&gpiod 7 0>,
 			<&gpioe 2 0>,
 			<&gpioe 4 0>,

@@ -134,7 +134,7 @@ static void extract_pdo_helper(uint32_t pdo, uint32_t *ma, uint32_t *max_mv,
 		*ma = PDO_VAR_MAX_CURRENT(pdo);
 	} else {
 		mw = PDO_BATT_MAX_POWER(pdo);
-		*ma = 1000 * mw / PROCESS_ZERO_DIVISOR(*min_mv);
+		*ma = 1000 * mw / PROCESS_ZERO_DIVISOR(*max_mv);
 	}
 }
 
@@ -154,7 +154,7 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *max_mv,
 		uint32_t board_limit_ma =
 			MIN(CONFIG_USB_PD_MAX_CURRENT_MA,
 			    CONFIG_USB_PD_MAX_POWER_MW * 1000 /
-				    PROCESS_ZERO_DIVISOR(*min_mv));
+				    PROCESS_ZERO_DIVISOR(*max_mv));
 
 		*ma = MIN(*ma, board_limit_ma);
 	}
