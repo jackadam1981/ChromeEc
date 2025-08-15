@@ -90,8 +90,9 @@ ZTEST(keyboard_backlight, test_console_command__noargs)
 	outbuffer =
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
-	zassert_ok(!strstr(outbuffer, "Keyboard backlight: 70% enabled: 1"),
-		   "Actual string: `%s`", outbuffer);
+	zassert_not_null(strstr(outbuffer,
+				"Keyboard backlight: 70% enabled: 1"),
+			 "Actual string: `%s`", outbuffer);
 }
 
 ZTEST(keyboard_backlight, test_console_command__set_on)

@@ -511,7 +511,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_BUSY;
 		encryption_deadline.val = now.val + (1 * SECOND);
 
-		memset(&fp_enc_buffer, 0, sizeof(fp_enc_buffer));
+		fp_enc_buffer = {};
 		/*
 		 * The beginning of the buffer contains nonce, encryption_salt
 		 * and tag.

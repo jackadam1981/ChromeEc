@@ -36,9 +36,9 @@ ZTEST(keyboard_8042, test_console_cmd__typematic__status)
 
 	/* Check for some expected lines based off default typematic state */
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "From host:   0x2b"));
-	zassert_ok(!strstr(outbuffer, "First delay: 500 ms"));
-	zassert_ok(!strstr(outbuffer, "Inter delay:  91 ms"));
+	zassert_not_null(strstr(outbuffer, "From host:   0x2b"));
+	zassert_not_null(strstr(outbuffer, "First delay: 500 ms"));
+	zassert_not_null(strstr(outbuffer, "Inter delay:  91 ms"));
 	zassert_ok(
 		!strstr(outbuffer, "Repeat scan code: {0x01, 0x02, 0x03, }"));
 }
@@ -56,8 +56,8 @@ ZTEST(keyboard_8042, test_console_cmd__typematic__set_delays)
 
 	/* Check for some expected lines */
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "First delay: 123 ms"));
-	zassert_ok(!strstr(outbuffer, "Inter delay: 456 ms"));
+	zassert_not_null(strstr(outbuffer, "First delay: 123 ms"));
+	zassert_not_null(strstr(outbuffer, "Inter delay: 456 ms"));
 }
 
 ZTEST(keyboard_8042, test_console_cmd__codeset__set_codeset1)
@@ -72,7 +72,7 @@ ZTEST(keyboard_8042, test_console_cmd__codeset__set_codeset1)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "Set: 1"));
+	zassert_not_null(strstr(outbuffer, "Set: 1"));
 }
 
 ZTEST(keyboard_8042, test_console_cmd__codeset__set_invalid)
@@ -93,7 +93,7 @@ ZTEST(keyboard_8042, test_console_cmd__ram__writeread)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "31 = 0xaa"));
+	zassert_not_null(strstr(outbuffer, "31 = 0xaa"));
 }
 
 ZTEST(keyboard_8042, test_console_cmd__ram__invalid)
@@ -119,7 +119,7 @@ ZTEST(keyboard_8042, test_console_cmd__enable__true)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "Enabled: 1"));
+	zassert_not_null(strstr(outbuffer, "Enabled: 1"));
 }
 
 ZTEST(keyboard_8042, test_console_cmd__enable__invalid)
@@ -146,15 +146,16 @@ ZTEST(keyboard_8042, test_console_cmd__internal)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "keyboard_enabled=0"));
-	zassert_ok(!strstr(outbuffer, "i8042_keyboard_irq_enabled=0"));
-	zassert_ok(!strstr(outbuffer, "i8042_aux_irq_enabled=0"));
-	zassert_ok(!strstr(outbuffer, "keyboard_enabled=0"));
-	zassert_ok(!strstr(outbuffer, "keystroke_enabled=0"));
-	zassert_ok(!strstr(outbuffer, "aux_chan_enabled=0"));
-	zassert_ok(!strstr(outbuffer, "controller_ram_address=0x00"));
-	zassert_ok(!strstr(outbuffer, "resend_command[]={0x07, 0x08, 0x09, }"));
-	zassert_ok(!strstr(outbuffer, "A20_status=0"));
+	zassert_not_null(strstr(outbuffer, "keyboard_enabled=0"));
+	zassert_not_null(strstr(outbuffer, "i8042_keyboard_irq_enabled=0"));
+	zassert_not_null(strstr(outbuffer, "i8042_aux_irq_enabled=0"));
+	zassert_not_null(strstr(outbuffer, "keyboard_enabled=0"));
+	zassert_not_null(strstr(outbuffer, "keystroke_enabled=0"));
+	zassert_not_null(strstr(outbuffer, "aux_chan_enabled=0"));
+	zassert_not_null(strstr(outbuffer, "controller_ram_address=0x00"));
+	zassert_not_null(
+		strstr(outbuffer, "resend_command[]={0x07, 0x08, 0x09, }"));
+	zassert_not_null(strstr(outbuffer, "A20_status=0"));
 }
 
 ZTEST(keyboard_8042, test_console_cmd__invalid)
@@ -180,11 +181,11 @@ ZTEST(keyboard_8042, test_console_cmd__all)
 	 */
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "- Typematic:"));
-	zassert_ok(!strstr(outbuffer, "- Codeset:"));
-	zassert_ok(!strstr(outbuffer, "- Control RAM:"));
-	zassert_ok(!strstr(outbuffer, "- Keyboard:"));
-	zassert_ok(!strstr(outbuffer, "- Internal:"));
+	zassert_not_null(strstr(outbuffer, "- Typematic:"));
+	zassert_not_null(strstr(outbuffer, "- Codeset:"));
+	zassert_not_null(strstr(outbuffer, "- Control RAM:"));
+	zassert_not_null(strstr(outbuffer, "- Keyboard:"));
+	zassert_not_null(strstr(outbuffer, "- Internal:"));
 }
 
 FAKE_VOID_FUNC(chipset_reset, enum chipset_shutdown_reason);
@@ -237,7 +238,7 @@ ZTEST(keyboard_8042, test_command__a20)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "A20_status=1"));
+	zassert_not_null(strstr(outbuffer, "A20_status=1"));
 
 	/* Disable A20 */
 	keyboard_host_write(I8042_DISABLE_A20, true);
@@ -252,7 +253,7 @@ ZTEST(keyboard_8042, test_command__a20)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "A20_status=0"));
+	zassert_not_null(strstr(outbuffer, "A20_status=0"));
 }
 
 ZTEST(keyboard_8042, test_command__pulse)
@@ -273,7 +274,7 @@ ZTEST(keyboard_8042, test_command__pulse)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "A20_status=1"));
+	zassert_not_null(strstr(outbuffer, "A20_status=1"));
 }
 
 ZTEST(keyboard_8042, test_command__invalid)

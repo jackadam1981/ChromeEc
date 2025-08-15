@@ -73,6 +73,8 @@ tests:
     extra_configs:
     - CONFIG_TEST_BOARD_CRYSTALDRIFT=y
     - CONFIG_TEST_BOARD_FORM_FACTOR=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
     extra_dtc_overlay_files:
     - ./boards/skyrim/skyrim.dtsi
 
@@ -134,6 +136,8 @@ tests:
     extra_configs:
     - CONFIG_TEST_BOARD_SKYRIM=y
     - CONFIG_TEST_BOARD_FORM_FACTOR=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
     extra_dtc_overlay_files:
     - ./boards/skyrim/skyrim.dtsi
 

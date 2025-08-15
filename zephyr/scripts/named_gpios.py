@@ -135,6 +135,9 @@ def verify_gpios_flags_match(edtlib, edt, project_name):
     errors = 0
     count = 0
     for node in edt.nodes:
+        if node.status == "disabled":
+            # Do not consider disabled nodes.
+            continue
         for prop_name in node.props.keys():
             if prop_name.endswith("-gpios"):
                 gpios = node.props[prop_name].val

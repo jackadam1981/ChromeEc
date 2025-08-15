@@ -8,11 +8,11 @@
 		compatible = "cros-ec,hid-i2c-touchpad";
 
 		reg = <0x56>;
-		max_pressure = <255>;
-		logical_max_x = <2925>;
-		logical_max_y = <1426>;
-		physical_max_x = <929>;
-		physical_max_y = <457>;
+		max-pressure = <255>;
+		logical-max-x = <2925>;
+		logical-max-y = <1426>;
+		physical-max-x = <929>;
+		physical-max-y = <457>;
 
 		vid = <0x1111>;
 		pid = <0x2222>;

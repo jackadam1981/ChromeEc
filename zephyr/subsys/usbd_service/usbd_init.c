@@ -12,7 +12,7 @@
 #include <zephyr/sys/iterable_sections.h>
 #include <zephyr/usb/usbd.h>
 
-LOG_MODULE_DECLARE(usb_device_init, LOG_LEVEL_INF);
+LOG_MODULE_DECLARE(usbd_init, LOG_LEVEL_INF);
 
 USBD_DEVICE_DEFINE(usb_device, DEVICE_DT_GET(DT_NODELABEL(zephyr_udc0)),
 		   CONFIG_USB_DEVICE_VID, CONFIG_USB_DEVICE_PID);
