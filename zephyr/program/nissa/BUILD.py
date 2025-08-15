@@ -76,18 +76,6 @@ nereid = register_nissa_project(
     chip="it8xxx2/it81302bx",
 )
 
-nereid_cx = register_binman_project(
-    project_name="nereid_cx",
-    zephyr_board="it8xxx2/it81302cx",
-    dts_overlays=[here / "nereid" / "project.overlay"],
-    kconfig_files=[
-        here / "program.conf",
-        here / "it8xxx2_program.conf",
-        here / "it8xxx2cx_program.conf",
-        here / "nereid" / "project.conf",
-    ],
-)
-
 nokris = register_nissa_project(
     project_name="nokris",
     chip="npcx9/npcx9m3f",
@@ -243,7 +231,6 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="gothrax", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="joxer", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="naktal", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nereid", addr=0xBFFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="nereid_cx", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nivviks", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nokris", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="pirrha", addr=0xBFFE0)
