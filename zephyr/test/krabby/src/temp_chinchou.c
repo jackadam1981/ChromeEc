@@ -5,15 +5,19 @@
 
 #include "battery.h"
 #include "charger_profile_override.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "power.h"
 
 #include <zephyr/drivers/adc/adc_emul.h>
+#include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 
 #define DEFAULT_CURRENT 5000
+#define GPIO_ACOK_OD_NODE DT_NODELABEL(ac_present)
+#define GPIO_ACOK_OD_PIN DT_GPIO_PIN(GPIO_ACOK_OD_NODE, gpios)
 
 static void set_adc_emul_read_voltage(int voltage, const struct device *adc_dev,
 				      uint8_t channel_id)
@@ -37,6 +41,18 @@ static void ignore_first_minute(void)
 	}
 }
 
+static inline void set_ac_enabled(bool enabled)
+{
+	const struct device *acok_dev =
+		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_ACOK_OD_NODE, gpios));
+
+	zassert_ok(gpio_emul_input_set(acok_dev, GPIO_ACOK_OD_PIN, enabled),
+		   NULL);
+
+	k_sleep(K_MSEC(CONFIG_EXTPOWER_DEBOUNCE_MS + 1000));
+	zassert_equal(enabled, extpower_is_present(), NULL);
+}
+
 static void test_table(uint16_t batt, uint16_t chgv1, uint16_t chgv2,
 		       uint16_t current, enum power_state power)
 {
@@ -46,7 +62,9 @@ static void test_table(uint16_t batt, uint16_t chgv1, uint16_t chgv2,
 	struct charge_state_data curr;
 
 	memset(&curr, 0, sizeof(curr));
-
+	/* Tests assume AC is initially connected. */
+	set_ac_enabled(true);
+	zassert_true(extpower_is_present());
 	power_set_state(power);
 	curr.batt.flags = batt;
 	set_adc_emul_read_voltage(chgv1, adc_dev, charger_adc_channel);
