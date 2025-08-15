@@ -429,6 +429,113 @@ class Zmake:
             save_temps=save_temps,
         )
 
+    def clang_tidy(
+        self,
+        project_names,
+        all_projects,
+        clobber,
+    ):
+        """Run clang-tidy on one or more projects"""
+        projects, project_names, all_projects = self._filter_projects(
+            project_names, all_projects
+        )
+
+        if (len(project_names)) == 0 and not all_projects:
+            self.logger.info("No projects specified, exiting.")
+            return 0
+
+        if len(project_names) > 1:
+            # Turn on job names for multi-project comparisons so build logs
+            # can be clearly distinguished.
+            zmake.multiproc.LogWriter.set_job_name_logging(True)
+
+        self.logger.info("Running clang-tidy, configuring builds first")
+
+        build_dir = self.module_paths["ec"] / "build" / "clang_tidy"
+        self.configure(
+            project_names,
+            build_dir=build_dir,
+            toolchain="llvm",
+            clobber=clobber,
+            bringup=False,
+            coverage=False,
+            cmake_defs=None,
+            cmake_trace=None,
+            allow_warnings=False,
+            all_projects=all_projects,
+            extra_cflags=None,
+            # The configure step creates the compile_commands.json file
+            # needed by clang-tidy, but we have to run the full build to
+            # get the all the generated include files.
+            # TODO - figure out if gen_syscalls.py can be triggered without
+            # a full build.
+            build_after_configure=True,
+            delete_intermediates=True,
+            wait_for_executor=True,
+        )
+
+        # TODO - we ignore the build result since we're building the EC
+        # using LLVM and this can fail.
+        # Purge failed projects list and repopulate with clang-tidy result.
+        list.clear(self.failed_projects)
+
+        for project in projects:
+            self.logger.info(
+                f"Running clang-tidy on {project.config.project_name}"
+            )
+
+            project_build_dir = (
+                pathlib.Path(build_dir) / project.config.project_name
+            )
+
+            project_failed = False
+            for build_name, _ in project.iter_builds():
+                build_dir = project_build_dir / f"build-{build_name}"
+
+                run_clang_tidy_script = "/home/keithshort/src/llvm-project/clang-tools-extra/clang-tidy/tool/run-clang-tidy.py"
+                clang_tidy_bin = (
+                    "/home/keithshort/src/llvm-project/build/bin/clang-tidy"
+                )
+
+                # Note - clang-tidy check restricted to platform/ec repo. Our
+                # Zephyr EC projects do not compile cleanly using LLVM, and this
+                # causes clang-tidy to generate compilation errors on upstream
+                # files.
+
+                # Note - do not pass any single quotes through to run-clang-tidy
+                # on the command line. The single quotes do not get passed
+                # correctly and cause run-clang-tidy to ignore the corresponding
+                # parameter.
+                cmd = [
+                    run_clang_tidy_script,
+                    "-clang-tidy-binary",
+                    clang_tidy_bin,
+                    "-j",
+                    "16",
+                    "-checks=-*,zephyr-uninitialized-mutex",
+                    "-source-filter=.*/platform/ec/.*",
+                    "-p",
+                    str(build_dir),
+                    "-warnings-as-errors=*",
+                ]
+
+                # HACK - because the LLVM build fails to complete, the generated
+                # file isr_tables.c is never created.  Just create an empty file
+                # to avoid a false error.
+                isr_tables = build_dir / "zephyr" / "isr_tables.c"
+                if not isr_tables.exists():
+                    isr_tables.touch()
+
+                result = subprocess.run(cmd, shell=False)
+
+                if result.returncode:
+                    project_failed = True
+
+            if project_failed:
+                self.failed_projects.append(project.config.project_name)
+
+        return 0
+
     def compare_builds(
         self,
         ref1,
