@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc890ca2_7d98a0f8",
+        "filename": "util/ectool.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:50:35Z",
+      "side": 1,
+      "message": "Let\u0027s use the libec version. You can move this higher up in the CL chain so we can go ahead and submit the other changes in the meantime.",
+      "range": {
+        "startLine": 2093,
+        "startChar": 1,
+        "endLine": 2095,
+        "endChar": 12
+      },
+      "revId": "bd8c08fcc4aabc6089b2d09bb8788fbaa60d68e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
