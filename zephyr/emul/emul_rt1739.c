@@ -91,7 +91,7 @@ static void add_set_reg_history_entry(struct rt1739_data *data, int reg,
 	sys_slist_append(&data->set_private_reg_history, &entry->node);
 }
 
-static int rt1739_emul_read(const struct emul *emul, int reg, uint16_t *val,
+static int rt1739_emul_read(const struct emul *emul, int reg, uint8_t *val,
 			    int bytes, void *unused_data)
 {
 	struct rt1739_data *data = emul->data;

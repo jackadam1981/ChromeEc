@@ -20,11 +20,4 @@ config FINGERPRINT_SHELL
 	  This option adds fingerprint console commands that can be used to
 	  verify fingerpint functionality.
 
-config FP_MAX_FINGER_COUNT
-	int "Maximum number of loaded finger templates"
-	default 5
-	help
-	  Max number of templates stored / matched against. This limit comes
-	  from memory constraints and matching time.
-
 endif # PLATFORM_EC_FINGERPRINT
