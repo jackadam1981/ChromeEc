@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f04aa24_30ad8627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-08-15T06:41:33Z",
+      "side": 1,
+      "message": "Hi Gwendal, you cherry-picked `1c316fc5d23 (\"motion_sense_fifo: Spread using the expected period\")` to `firmware-ec-R132-16093.3.B-main` in CL:6539712, so we should cherry-pick this fix CL to `firmware-ec-R132-16093.3.B-main` too.\n\nCould you help check if we missed any other CLs?",
+      "revId": "3b6adff1cbd2a829fac9ebf0be6ca374ac90e43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
