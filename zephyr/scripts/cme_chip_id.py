@@ -1013,5 +1013,62 @@ DISAMBIGUATION_DICTIONARY = {
             None,
             None,
         ),
+        CompatibleInfo(
+            "realtek,rts5453p-vb",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0L" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304C0000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p-vb",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0N" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304E0000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p-vb",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0O" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304F0000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
     ],
 }
