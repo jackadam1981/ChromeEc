@@ -16,6 +16,24 @@
       "message": "Let\u0027s make it so that this commit compiles on its own. To do that we need a default implementation for `fp_sensor_get_info_v2`. You can add something like the following to `fpsensor.cc`:\n\n```\n__overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp)\n{\n\t*resp \u003d {\n\t\t.sensor_info \u003d  { .vendor_id \u003d 0,\n\t\t\t      .product_id \u003d 0,\n\t\t\t      .model_id \u003d 0,\n\t\t\t      .version \u003d 0,\n\t\t\t      .num_capture_types \u003d 0,\n\t\t\t      .errors \u003d 0 },\n\t\t.template_info \u003d {\n\t\t\t.template_size \u003d 0,\n\t\t\t.template_max \u003d 0,\n\t\t\t.template_valid \u003d 0,\n\t\t\t.template_dirty \u003d 0,\n\t\t\t.template_version \u003d 0,\n\t\t},\n\t};\n\treturn EC_SUCCESS;\n}\n```",
       "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a20c6470_b5da6215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-15T21:21:05Z",
+      "side": 1,
+      "message": "Actually, we are only filling in the sensor info, so let\u0027s make it clearer by changing the argument to only pass the sensor info struct:\n\n```\ndiff --git a/common/fpsensor/fpsensor.cc b/common/fpsensor/fpsensor.cc\nindex f6b9efee49..f8020a4dcb 100644\n--- a/common/fpsensor/fpsensor.cc\n+++ b/common/fpsensor/fpsensor.cc\n@@ -423,7 +423,7 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)\n                static_cast\u003cec_response_fp_info_v2 *\u003e(args-\u003eresponse);\n \n #ifdef HAVE_FP_PRIVATE_DRIVER\n-       if (fp_sensor_get_info_v2(r) \u003c 0)\n+       if (fp_sensor_get_info_v2(\u0026r-\u003esensor_info) \u003c 0)\n #endif\n                return EC_RES_UNAVAILABLE;\n \n@@ -808,3 +808,16 @@ fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)\n DECLARE_HOST_COMMAND(EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT,\n                     fp_command_migrate_template_to_nonce_context,\n                     EC_VER_MASK(0));\n+\n+__overridable int fp_sensor_get_info_v2(struct fp_sensor_info *info)\n+{\n+       *info \u003d {\n+               .vendor_id \u003d 0,\n+               .product_id \u003d 0,\n+               .model_id \u003d 0,\n+               .version \u003d 0,\n+               .num_capture_types \u003d 0,\n+               .errors \u003d 0,\n+       };\n+       return EC_SUCCESS;\n+}\ndiff --git a/include/fpsensor/fpsensor.h b/include/fpsensor/fpsensor.h\nindex 5399f269ad..640aba6e29 100644\n--- a/include/fpsensor/fpsensor.h\n+++ b/include/fpsensor/fpsensor.h\n@@ -103,12 +103,12 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp);\n  * Fills both the static information and information read from the sensor at\n  * runtime such as sensor_id, errors, etc.\n  *\n- * @param[out] resp sensor info\n+ * @param[out] sensor_info sensor info\n  *\n  * @return EC_SUCCESS on success\n  * @return EC_RES_ERROR on error\n  */\n-int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp);\n+int fp_sensor_get_info_v2(struct fp_sensor_info *sensor_info);\n \n /**\n  * Put the sensor in its lowest power state.\n\n```",
+      "parentUuid": "bb40050b_fe8a8daf",
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
