@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b2b69a_f0b8ff76",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:20:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b18076f8_3b0eb02e",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "2ff3aa8552ce51950c26e0adcb4a0b4a9f57659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd08c39d_54dbe39b",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Moved \"I2C_PORT_CHARGER\" to last.",
       "parentUuid": "bd08c39d_54dbe39b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "2ff3aa8552ce51950c26e0adcb4a0b4a9f57659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fd45d3_bd20d089",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:20:44Z",
+      "side": 1,
+      "message": "See my latest comment. No need to keep the other label property settings.",
+      "parentUuid": "836df189_970f5fa1",
       "range": {
         "startLine": 57,
         "startChar": 0,
