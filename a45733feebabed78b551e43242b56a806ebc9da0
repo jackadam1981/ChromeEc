@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce35f287_7bad3ef3",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete - this signal is handled by the power sequencing driver and the setup done in power_signals.dtsi.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6eee9b_a7ed55cd",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965a63fe_66d4af90",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete.  This code was also setting the default state for EN_PP3300 to high which will start the power sequencing before the EC completes battery and charging initialization.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d353a97_ce22bc06",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd614ea1_c2cf4747",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7034e7b7_7090b982",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6995e539_43775a59",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Note - the setup of GPIO_PCH_PWRBTN_L needs to stay in this file, but the other power sequencing signals should be deleted from this file.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc36a33e_805bdaf3",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfbdea1_1356dd20",
+        "filename": "zephyr/program/ocelot/ojal/power_signals.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Nit - there should be a space before the \"(\".  Please update all uses.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746dce4b_37e0adf3",
+        "filename": "zephyr/program/ocelot/ojal/power_signals.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "No need to or in \"0\" which does nothing.  Please fix another instances in this file.\n```suggestion\n\t\tgpios \u003d \u003c\u0026gpiog 12 (GPIO_VOLTAGE_1P8)\u003e;\n```",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d00af02c_a1d3735f",
+        "filename": "zephyr/program/ocelot/ojal/project.overlay",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-08-16T18:18:38Z",
+      "side": 1,
+      "message": "Delete - these are the default pin settings setup by the common Realtek [board code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/boards/google/realtek/realtek.dtsi;l\u003d37;drc\u003ddb477d2de51f0766fdcfadfc7372355b01c417e5)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "a45733feebabed78b551e43242b56a806ebc9da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
