@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91803233_17926fe0",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-17T18:00:43Z",
+      "side": 1,
+      "message": "I believe because both Capture Simple and Vendor format translate to `Egis_Capture_Normal_Format`.",
+      "parentUuid": "cf36fa86_78474ce1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37abc0f8_469373a7",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-15T21:48:42Z",
       "side": 1,
       "message": "You can simplify this as:\n\n```suggestion\n#define EGIS_DEFAULT_IMAGE_PARAMS                                         \\\n\t.bpp \u003d FP_SENSOR_DEFAULT_BPP_EGIS,                                \\\n\t.frame_size \u003d FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS,        \\\n\t.pixel_format \u003d V4L2_PIX_FMT_GREY, .width \u003d FP_SENSOR_RES_X_EGIS, \\\n\t.height \u003d FP_SENSOR_RES_Y_EGIS\n\n#define EGIS_TEST_IMAGE_PARAMS                                            \\\n\t.bpp \u003d FP_SENSOR_TEST_BPP_EGIS,                                   \\\n\t.frame_size \u003d FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS *       \\\n\t\t      sizeof(uint16_t),                                   \\\n\t.pixel_format \u003d V4L2_PIX_FMT_GREY, .width \u003d FP_SENSOR_RES_X_EGIS, \\\n\t.height \u003d FP_SENSOR_RES_Y_EGIS\n\nstatic const struct fp_image_frame_params egis_image_frame_params[] \u003d {\n\t[EGIS_CAPTURE_NORMAL_FORMAT] \u003d\n\t{\n\t\tEGIS_DEFAULT_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_SIMPLE_IMAGE,\n\t},\n\t[EGIS_CAPTURE_BLACK_PXL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_PATTERN0,\n\t},\n\t[EGIS_CAPTURE_WHITE_PXL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_PATTERN1,\n\t},\n\t[EGIS_CAPTURE_DEFECT_PXL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_DEFECT_PXL_TEST,\n\t},\n\t[EGIS_CAPTURE_NOISE_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_NOISE_TEST,\n\t},\n\t[EGIS_CAPTURE_ABNORMAL_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_ABNORMAL_TEST,\n\t},\n\t[EGIS_CAPTURE_RV_INT_TEST] \u003d\n\t{\n\t\tEGIS_TEST_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_QUALITY_TEST,\n\t},\n};\n\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d3a773_bb1d0615",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-17T18:00:43Z",
+      "side": 1,
+      "message": "I modified it. This matrix has 7 entries vs. original one that has 8. I believe there was a reason why I repeated the first entry twice. I believe the vendor and simple both translate to the egis normal. Let me see what error I get when I test it and debug it.",
+      "parentUuid": "37abc0f8_469373a7",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "writtenOn": "2025-08-15T21:48:42Z",
       "side": 1,
       "message": "Looks like an unrelated change",
+      "range": {
+        "startLine": 933,
+        "startChar": 0,
+        "endLine": 933,
+        "endChar": 62
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c494e3_5094f2cb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-17T18:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ef15bb_55f8a945",
       "range": {
         "startLine": 933,
         "startChar": 0,
