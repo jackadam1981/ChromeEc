@@ -70,6 +70,29 @@
       "parentUuid": "1894e44d_409420a2",
       "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414bf58c_bd4edfc5",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-17T20:39:14Z",
+      "side": 1,
+      "message": "The comment and the `CONFIG_PLATFORM_EC_SHA256_UNROLLED\u003dy` should also be moved.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "3904d56625b84034f7996d54ec05b0ed46adb6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
