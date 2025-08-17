@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00101097_cf51303b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-17T18:28:53Z",
+      "side": 1,
+      "message": "ok, will do this. For now, I have added the overridable `fp_sensor_get_info_v2` function. The CL can now compile by itself.",
+      "parentUuid": "032133cb_a1fcd395",
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bbf2a81_ee3a40c6",
@@ -67,6 +85,30 @@
       "writtenOn": "2025-08-15T22:19:36Z",
       "side": 1,
       "message": "If we hit this case, I think the `fp_sensor_get_info_v2` function call above will have written memory out of bounds.",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d392443_6deb71c4",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-17T18:28:53Z",
+      "side": 1,
+      "message": "are you suggesting that I remove this check?",
+      "parentUuid": "5bbf2a81_ee3a40c6",
       "range": {
         "startLine": 440,
         "startChar": 0,
