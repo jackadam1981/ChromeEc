@@ -13,8 +13,10 @@
 #include "util.h"
 
 #include <assert.h>
+#include <errno.h>
 #include <stddef.h>
 #include <stdint.h>
+
 #define LOG_TAG "RBS-rapwer"
 
 /* recorded error flags */
@@ -50,6 +52,32 @@ static int convert_egis_get_image_error_code(egis_api_return_t code)
 	default:
 		assert(code < 0);
 		return code;
+	}
+}
+
+static egis_capture_mode_t
+convert_fp_capture_type_to_egis_capture_type(enum fp_capture_type capture_type)
+{
+	switch (capture_type) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+	case FP_CAPTURE_SIMPLE_IMAGE:
+		return EGIS_CAPTURE_NORMAL_FORMAT;
+	case FP_CAPTURE_PATTERN0:
+		return EGIS_CAPTURE_BLACK_PXL_TEST;
+	case FP_CAPTURE_PATTERN1:
+		return EGIS_CAPTURE_WHITE_PXL_TEST;
+	case FP_CAPTURE_QUALITY_TEST:
+		return EGIS_CAPTURE_RV_INT_TEST;
+	case FP_CAPTURE_DEFECT_PXL_TEST:
+		return EGIS_CAPTURE_DEFECT_PXL_TEST;
+	case FP_CAPTURE_ABNORMAL_TEST:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FP_CAPTURE_NOISE_TEST:
+		return EGIS_CAPTURE_NOISE_TEST;
+	/*  Egis does not support the reset test. */
+	case FP_CAPTURE_RESET_TEST:
+	default:
+		return EGIS_CAPTURE_TYPE_INVALID;
 	}
 }
 
@@ -164,8 +192,15 @@ int fp_maintenance(void)
 
 int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type)
 {
+	egis_capture_mode_t rc =
+		convert_fp_capture_type_to_egis_capture_type(capture_type);
+
+	if (rc == EGIS_CAPTURE_TYPE_INVALID) {
+		CPRINTS("Unsupported capture_type %d provided", capture_type);
+		return -EINVAL;
+	}
 	return convert_egis_get_image_error_code(
-		egis_get_image_with_mode(image_data, capture_type));
+		egis_get_image_with_mode(image_data, rc));
 }
 
 enum finger_state fp_finger_status(void)
