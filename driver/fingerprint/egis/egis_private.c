@@ -250,8 +250,15 @@ int fp_maintenance(void)
 
 int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type)
 {
+	egis_capture_mode_t rc =
+		convert_fp_capture_type_to_egis_capture_type(capture_type);
+
+	if (rc == EGIS_CAPTURE_TYPE_INVALID) {
+		CPRINTS("Unsupported capture_type %d provided", capture_type);
+		return -EINVAL;
+	}
 	return convert_egis_get_image_error_code(
-		egis_get_image_with_mode(image_data, capture_type));
+		egis_get_image_with_mode(image_data, rc));
 }
 
 enum finger_state fp_finger_status(void)
