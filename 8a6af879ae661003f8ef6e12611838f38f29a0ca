@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd379156_a0baa015",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T17:34:28Z",
+      "side": 1,
+      "message": "Once we [change this function to pass the size of the buffer](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6354365/comment/5bbf2a81_ee3a40c6/), we should check that these will fit.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 41
+      },
+      "revId": "8a6af879ae661003f8ef6e12611838f38f29a0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
