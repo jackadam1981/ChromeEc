@@ -2269,8 +2269,10 @@ static enum smf_state_result st_task_wait_run(void *o)
 	case UCSI_GET_PDOS: {
 		len = cmd_data.data[1];
 		offset = 2;
-		memcpy(data->cached_pdos + data->pdo_offset,
-		       &cmd_data.data[offset], len);
+		if (data->cmd == CMD_GET_PDOS) {
+			memcpy(data->cached_pdos + data->pdo_offset,
+			       &cmd_data.data[offset], len);
+		}
 		break;
 	}
 	default:
