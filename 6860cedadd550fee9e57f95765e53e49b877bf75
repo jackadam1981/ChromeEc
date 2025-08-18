@@ -22,6 +22,30 @@
       },
       "revId": "6860cedadd550fee9e57f95765e53e49b877bf75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25011d77_75fe394b",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:15:31Z",
+      "side": 1,
+      "message": "same response as in other CL",
+      "parentUuid": "c2ab0c74_77821d90",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 44
+      },
+      "revId": "6860cedadd550fee9e57f95765e53e49b877bf75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
