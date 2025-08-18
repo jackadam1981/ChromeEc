@@ -70,7 +70,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "staff",
     "star",
     "tigertail",
-    "twinkie",
     "wand",
     "whitebeard",
     "zed",
