@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a976abf_f8517338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-18T23:27:36Z",
+      "side": 1,
+      "message": "Split the CL in 2: one for adding dynamic on-body sensor selection, another one to add it to uldrenite.",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b11f4d_10fcf881",
+        "filename": "zephyr/lib/vsensor/body_detection/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-18T23:27:36Z",
+      "side": 1,
+      "message": "once it is set in body_detect_init(), it does not have to be set again, it is not a local variable.",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30d2504_30e2e6ce",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-18T23:27:36Z",
+      "side": 1,
+      "message": "for consistency with the clamshell mode, can we mention `base_accel`? If so we can remove `on-body-sensor` altogether: it is conflicting with the new dynamic method.\nIdeally, add a #error if `on-body-sensor` is defined when CONFIG_PLATFORM_EC_BODY_DETECTION_DYNAMIC_INDEX is.\n\n\n```suggestion\n\t\t\tSENSOR_ID(DT_NODELABEL(base_accel)));\n```",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9f91a9_cbe07ba9",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-18T23:27:36Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
