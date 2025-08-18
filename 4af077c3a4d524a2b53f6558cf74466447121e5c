@@ -117,6 +117,30 @@
       },
       "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec149d0_74a41a8b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T16:52:43Z",
+      "side": 1,
+      "message": "No, we need some way of checking the bounds when we can potentially write outside of the buffer. Since `fp_sensor_get_info_v2` is writing to the buffer, and the size of the buffer is dynamic (not known at compile time), we probably need to pass the size as an argument to `fp_sensor_get_info_v2` and then check inside that function call that we\u0027re not writing outside the bounds.",
+      "parentUuid": "8d392443_6deb71c4",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
