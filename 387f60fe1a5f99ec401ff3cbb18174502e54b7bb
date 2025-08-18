@@ -16,6 +16,24 @@
       "message": "Hi Jeremy,\n\nWe still keep some rauru proto boards in case there\u0027s a need to debug on the rauru proto boards. Please do not send this to the CQ.",
       "revId": "387f60fe1a5f99ec401ff3cbb18174502e54b7bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cdabc2_5ff5820e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-08-18T14:56:51Z",
+      "side": 1,
+      "message": "I can\u0027t find any ChromeOS config.star or model.yaml file that includes this.",
+      "parentUuid": "f454bd47_ba9cca79",
+      "revId": "387f60fe1a5f99ec401ff3cbb18174502e54b7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
