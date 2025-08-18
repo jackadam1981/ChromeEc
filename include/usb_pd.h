@@ -3761,7 +3761,10 @@ enum pd_debug_interval {
 	/* This interval is unused, but it keeps the size assertion on
 	 * pd_ts_name valid.
 	 */
-	PD_INTERVAL_INVALID,
+	 PD_INTERVAL_SRC_CAPS_SEND_REQUEST,
+	 PD_INTERVAL_WAIT_PRL_START,
+	 PD_INTERVAL_WAIT_VBUS,
+	 PD_INTERVAL_WAIT_CAPS,
 	PD_INTERVAL_COUNT,
 };
 

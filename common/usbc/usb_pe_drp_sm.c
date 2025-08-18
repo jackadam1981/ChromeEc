@@ -675,6 +675,10 @@ static struct policy_engine {
 
 	/* Last received Revision Message Data Object (RMDO) from the partner */
 	struct rmdo partner_rmdo;
+
+	/* Timestamps for debugging */
+	/* When received message is available to PE */
+	timestamp_t rx_ts;
 } pe[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 test_export_static enum usb_pe_state get_state_pe(const int port);
@@ -910,6 +914,15 @@ int pe_is_explicit_contract(int port)
 
 void pe_message_received(int port)
 {
+	/* In general, the port might receive another message while it is still
+	 * processing a previous message. Avoid overwriting the Rx timestamp
+	 * while it may still be read. This is very unlikely to occur after a
+	 * Request during a compliance test.
+	 */
+	 if (pe[port].rx_ts.val == 0) {
+		pe[port].rx_ts = get_time();
+	}
+
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
@@ -3421,6 +3434,7 @@ static void pe_snk_startup_entry(int port)
 	 * revision 3.0
 	 */
 	pd_dpm_request(port, DPM_REQUEST_GET_REVISION);
+	pd_record_timestamp_start(port, PD_INTERVAL_WAIT_PRL_START);
 }
 
 static void pe_snk_startup_run(int port)
@@ -3428,6 +3442,7 @@ static void pe_snk_startup_run(int port)
 	/* Wait until protocol layer is running */
 	if (!prl_is_running(port))
 		return;
+	pd_record_timestamp_end(port, PD_INTERVAL_WAIT_PRL_START);
 
 	/*
 	 * Once the reset process completes, the Policy Engine Shall
@@ -3442,6 +3457,7 @@ static void pe_snk_startup_run(int port)
 static void pe_snk_discovery_entry(int port)
 {
 	print_current_state(port);
+	pd_record_timestamp_start(port, PD_INTERVAL_WAIT_VBUS);
 }
 
 static void pe_snk_discovery_run(int port)
@@ -3450,8 +3466,11 @@ static void pe_snk_discovery_run(int port)
 	 * Transition to the PE_SNK_Wait_for_Capabilities state when:
 	 *   1) VBUS has been detected
 	 */
-	if (!pd_check_vbus_level(port, VBUS_REMOVED))
+	if (!pd_check_vbus_level(port, VBUS_REMOVED)){
+		pd_record_timestamp_end(port, PD_INTERVAL_WAIT_VBUS);
+		pd_record_timestamp_start(port, PD_INTERVAL_WAIT_CAPS);
 		set_state_pe(port, PE_SNK_WAIT_FOR_CAPABILITIES);
+	}
 }
 
 /**
@@ -3485,6 +3504,17 @@ static void pe_snk_wait_for_capabilities_run(int port)
 		payload = (uint32_t *)rx_emsg[port].buf;
 
 		if ((ext == 0) && (cnt > 0) && (type == PD_DATA_SOURCE_CAP)) {
+			/* FIXME: When these recordings were using rx_ts, set in
+			 * pe_message_received, it seems like they were being
+			 * set to a time from the previous Source Caps exchange,
+			 * producing unusable intervals.
+			 */
+			pd_record_timestamp(port, PD_INTERVAL_WAIT_CAPS, PD_END,
+				get_time());
+	        pd_record_timestamp(port,
+				PD_INTERVAL_SRC_CAPS_SEND_REQUEST,
+				PD_START, get_time());
+	        pe[port].rx_ts.val = 0;
 			set_state_pe(port, PE_SNK_EVALUATE_CAPABILITY);
 			return;
 		} else if (ext > 0) {
@@ -3575,6 +3605,9 @@ static void pe_snk_select_capability_entry(int port)
 		set_state_pe(port, PE_SNK_READY);
 		return;
 	}
+
+	pd_record_timestamp_end(port, PD_INTERVAL_SRC_CAPS_SEND_REQUEST);
+
 	pe_sender_response_msg_entry(port);
 
 	/* We are PD Connected */
@@ -3723,6 +3756,8 @@ static void pe_snk_select_capability_run(int port)
 void pe_snk_select_capability_exit(int port)
 {
 	pe_sender_response_msg_exit(port);
+
+	pd_print_timestamps(port);
 }
 
 /**
@@ -5535,6 +5570,54 @@ static void pe_prs_snk_src_source_on_exit(int port)
 {
 	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port, PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
+}
+
+
+struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
+				[PD_INTERVAL_COUNT] = { 0 };
+const char *pd_ts_name[] = {
+	"Source Caps PE to Request TCPC",
+	"PE wait for PRL",
+	"PE wait for VBUS",
+	"PE wait for Source Caps",
+};
+BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
+
+void pd_record_timestamp(int port, enum pd_debug_interval interval,
+			 enum pd_interval_point point, timestamp_t ts)
+{
+	struct pd_debug_timestamps *debug_ts = &pd_ts[port][interval];
+
+	if (point == PD_START)
+		debug_ts->start = ts;
+	else
+		debug_ts->end = ts;
+}
+
+inline void pd_record_timestamp_start(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_START, get_time());
+}
+
+inline void pd_record_timestamp_end(int port, enum pd_debug_interval interval)
+{
+	pd_record_timestamp(port, interval, PD_END, get_time());
+}
+
+void pd_print_timestamps(int port)
+{
+	ccprintf("C%d timestamps:\n", port);
+
+	for (int i = 0; i < PD_INTERVAL_COUNT; ++i) {
+		uint32_t start = pd_ts[port][i].start.le.lo;
+		uint32_t end = pd_ts[port][i].end.le.lo;
+		int delta = time_until(start, end);
+
+		ccprintf("%s: %u to %u = %d (%dms)\n", pd_ts_name[i], start,
+			 end, delta, delta / 1000);
+	}
+
+	memset(&pd_ts[port], 0, sizeof(pd_ts[port]));
 }
 
 /**
