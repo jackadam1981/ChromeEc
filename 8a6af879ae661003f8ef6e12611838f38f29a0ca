@@ -46,6 +46,30 @@
       },
       "revId": "8a6af879ae661003f8ef6e12611838f38f29a0ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd346613_f8f9670a",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:18:11Z",
+      "side": 1,
+      "message": "What you added is what I had in mind.",
+      "parentUuid": "2c6b37ff_d918cb14",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 41
+      },
+      "revId": "8a6af879ae661003f8ef6e12611838f38f29a0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

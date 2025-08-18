@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ab1028_97577bd1",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:18:11Z",
+      "side": 1,
+      "message": "nit: let\u0027s add a linebreak here\n\n```suggestion\n\tif (resp_size \u003e sizeof(struct ec_response_fp_info_v2) +\n\t\t\t\tsizeof(egis_image_frame_params)) {\n\t\treturn EC_RES_OVERFLOW;\n\t}\n\n\tuint16_t sensor_id;\n```",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
