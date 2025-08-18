@@ -236,7 +236,6 @@ NDS32_BOARDS = [
     "ampton",
     "awasuki",
     "beadrix",
-    "beetley",
     "blipper",
     "boten",
     "boxy",
