@@ -174,7 +174,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "nuwani",
     "omnigul",
     "osiris",
-    "palkia",
     "pazquel",
     "phaser",
     "pompom",
