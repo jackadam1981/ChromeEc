@@ -78,6 +78,9 @@ static void skywalker_dp_attention(int port, uint32_t vdo_dp_status)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(vdo_dp_status);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(vdo_dp_status);
 
+	LOG_INF("skywalker_dp_attention lvl=%d irq=%d"
+		"**************************************************************",
+		lvl, irq);
 	if (!is_dp_muxable(port)) {
 		LOG_INF("p%d: The other port is already muxed.", port);
 		return;

@@ -183,6 +183,8 @@ enum cmd_t {
 	CMD_SET_DRS,
 	/** Set Sx App Config register (AP power state) */
 	CMD_SET_SX_APP_CONFIG,
+	/** Todo Todo Todo */
+	CMD_GET_ATTENTION_VDO,
 };
 
 /**
@@ -368,6 +370,7 @@ static void cmd_update_retimer(struct pdc_data_t *data);
 static void cmd_get_current_pdo(struct pdc_data_t *data);
 static void cmd_is_vconn_sourcing(struct pdc_data_t *data);
 static void cmd_set_sx_app_config(struct pdc_data_t *data);
+static void cmd_get_attention_vdo(struct pdc_data_t *data);
 static void task_gaid(struct pdc_data_t *data);
 static void task_srdy(struct pdc_data_t *data);
 static void task_dbfg(struct pdc_data_t *data);
@@ -1118,6 +1121,9 @@ static enum smf_state_result st_idle_run(void *o)
 			break;
 		case CMD_SET_SX_APP_CONFIG:
 			cmd_set_sx_app_config(data);
+			break;
+		case CMD_GET_ATTENTION_VDO:
+			cmd_get_attention_vdo(data);
 		}
 	}
 
@@ -1948,6 +1954,49 @@ static void cmd_set_sx_app_config(struct pdc_data_t *data)
 	call_cci_event_cb(data);
 
 	/* Transition to idle state */
+	set_state(data, ST_IDLE);
+	return;
+
+error_recovery:
+	set_state(data, ST_ERROR_RECOVERY);
+}
+
+static void cmd_get_attention_vdo(struct pdc_data_t *data)
+{
+	union reg_received_attention_vdm received_attention_vdm;
+	struct pdc_config_t const *cfg = data->dev->config;
+
+	if (data->user_buf == NULL) {
+		LOG_ERR("TI%d: Null user buffer; can't read attention reg",
+			cfg->connector_number);
+		goto error_recovery;
+	}
+
+	int rv;
+	rv = tps_rd_received_attention_vdm(&cfg->i2c, &received_attention_vdm);
+	if (rv) {
+		goto error_recovery;
+	}
+	LOG_INF("TI%d: number_valid_vdos=%u sequence_number=%u "
+		"vdm_heade=%08x vdo=%08x",
+		cfg->connector_number, received_attention_vdm.number_valid_vdos,
+		received_attention_vdm.sequence_number,
+		received_attention_vdm.vdm_heade, received_attention_vdm.vdo);
+	union get_attention_vdo_t get_attention_vdo = {
+		.alt_mode_index = 0,
+		.num_vdos = received_attention_vdm.number_valid_vdos,
+		.sequence_number = received_attention_vdm.sequence_number,
+		.vdm_heade = received_attention_vdm.vdm_heade,
+		.vdo = received_attention_vdm.vdo,
+	};
+	memcpy(data->user_buf, &get_attention_vdo,
+	       sizeof(union get_attention_vdo_t));
+
+	/* Command has completed */
+	data->cci_event.command_completed = 1;
+	/* Inform the system of the event */
+	call_cci_event_cb(data);
+
 	set_state(data, ST_IDLE);
 	return;
 
@@ -3010,6 +3059,12 @@ static int tps_set_ap_power_state(const struct device *dev,
 	return tps_post_command(dev, CMD_SET_SX_APP_CONFIG, NULL);
 }
 
+static int tps_get_attention_vdo(const struct device *dev,
+				 union get_attention_vdo_t *vdo)
+{
+	return tps_post_command(dev, CMD_GET_ATTENTION_VDO, vdo);
+}
+
 static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 				uint8_t data_size, uint8_t *command_specific,
 				uint8_t *lpm_data_out,
@@ -3108,6 +3163,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_sbu_mux_mode = tps_set_sbu_mux_mode,
 	.get_sbu_mux_mode = tps_get_sbu_mux_mode,
 	.set_ap_power_state = tps_set_ap_power_state,
+	.get_attention_vdo = tps_get_attention_vdo,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
@@ -3292,7 +3348,7 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 		.bits.command_completed = 0, /* Reserved on TI */              \
 		.bits.external_supply_change = 1,                              \
 		.bits.power_operation_mode_change = 1,                         \
-		.bits.attention = 0,                                           \
+		.bits.attention = 1,                                           \
 		.bits.fw_update_request = 0,                                   \
 		.bits.provider_capability_change_supported = 1,                \
 		.bits.negotiated_power_level_change = 1,                       \
