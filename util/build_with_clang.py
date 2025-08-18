@@ -216,7 +216,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voema",
     "volet",
     "volmar",
-    "volteer_npcx797fc",
     "voxel",
     "voxel_ecmodeentry",
     "voxel_npcx797fc",
