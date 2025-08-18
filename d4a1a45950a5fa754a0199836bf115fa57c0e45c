@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad3810e_3e56d868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-18T22:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b151dd9_c7c89747",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6a305ac_a5f8c13b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3eb967_fe124f22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-18T22:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a305ac_a5f8c13b",
+      "range": {
+        "startLine": 15,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a1cbab7_163665b2",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-08-06T22:46:02Z",
       "side": 1,
       "message": "Nit: I\u0027m not sure whether this needs to be a flag or configurable at all. Typically, we use flags for things that could plausibly change between firmware configs or models that use the same EC image. If we expect to know this value at build time, it could be a `CONFIG_` item. Based on our previous conversation, I\u0027m not sure we know of any models at all that use this. If there are none, we could just set the bit unconditionally.",
+      "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59c314d_2b5cc201",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-08-18T22:39:47Z",
+      "side": 1,
+      "message": "I generally agree, but I still think the flag is cleaner, aligns with the existing pattern, and is more discoverable.",
+      "parentUuid": "8a1cbab7_163665b2",
       "revId": "d4a1a45950a5fa754a0199836bf115fa57c0e45c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
