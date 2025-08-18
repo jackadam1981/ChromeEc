@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cef9f288_d23ab82f",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T16:56:55Z",
+      "side": 1,
+      "message": "Can you move everything except `fp_sensor_get_info_v2` and `egis_image_frame_params` into that CL? It looks like those are the only two things that are needed for \"egis implementation for fpinfo v2\", which is what this CL is about.",
+      "parentUuid": "1318fd79_7ef6abd5",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 2
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08ef15bb_55f8a945",
         "filename": "include/ec_commands.h",
         "patchSetId": 29
