@@ -456,4 +456,7 @@ int tps_stream_data(const struct i2c_dt_spec *i2c,
 		    size_t buf_len);
 #endif
 
+int tps_rd_received_attention_vdm(
+	const struct i2c_dt_spec *i2c,
+	union reg_received_attention_vdm *received_attention_vdm);
 #endif /* ZEPHYR_DRIVERS_USBC_TPS6699X_H_ */

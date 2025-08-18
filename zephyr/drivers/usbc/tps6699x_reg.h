@@ -1398,6 +1398,21 @@ union reg_received_identity_data_object {
 };
 
 /**
+ * @brief 4.52 Received Attention VDM Register (Offset = 4Eh)
+ */
+union reg_received_attention_vdm {
+	struct {
+		uint8_t number_valid_vdos : 3;
+		uint8_t reserved0 : 2;
+		uint8_t sequence_number : 3;
+
+		uint32_t vdm_heade;
+		uint32_t vdo;
+	} __packed;
+	uint8_t raw_value[9];
+};
+
+/**
  * @brief 4.62 Data Status Register (Offset 0x5f)
  */
 union reg_data_status {
@@ -1415,7 +1430,7 @@ union reg_data_status {
 		uint8_t dp_source_sink : 1;
 		uint8_t dp_pin_assignment : 2;
 		uint8_t debug_accessory_mode : 1;
-		uint8_t reserved0 : 1;
+		uint8_t irq_ack : 1;
 		uint8_t hpd_irq_sticky : 1;
 		uint8_t hpd_level : 1;
 
