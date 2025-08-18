@@ -83,7 +83,6 @@ BOARDS_STM32_PROG_EN=(
 
 BOARDS_STM32_DFU=(
 	c2d2
-	dingdong
 	hoho
 	twinkie
 	discovery
@@ -439,7 +438,7 @@ case "${BOARD}" in
 				 nami_fp|nocturne_fp|rosalia )
 		MCU="fpmcu"
 		;;
-	dingdong|hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
+	hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
