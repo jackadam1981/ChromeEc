@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af4d5eb_0898cd48",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:36:04Z",
+      "side": 1,
+      "message": "I think you can use `ARRAY_SIZE(egis_image_frame_params)` here. See [`ARRAY_SIZE`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/compile_time_macros.h;l\u003d50-59;drc\u003dc4c64c80b0a83f646515629312cc67ffa59b4daa).",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 39
+      },
+      "revId": "7cd3f8768307d65b52c73a0a6e2873aadb2ac3c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
