@@ -40,7 +40,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "hyperdebug",
     "nocturne_fp",
     "panqueque",
-    "polyberry",
     "quiche",
     "sweetberry",
     # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
