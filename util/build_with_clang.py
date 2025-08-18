@@ -212,7 +212,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voxel",
     "voxel_ecmodeentry",
     "voxel_npcx797fc",
-    "waddledoo2",
     "whiskers",
     "woomax",
     "wormdingler",
