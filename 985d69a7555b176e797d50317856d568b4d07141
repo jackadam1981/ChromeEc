@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fffd8f04_f7db7f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-18T20:46:18Z",
+      "side": 1,
+      "message": "The latest run failed with `cros format` errors. Make sure you\u0027re uploading with `repo upload` and fixing all of the errors and warnings (except for this-file-is-not-used-in-Zephyr).",
+      "revId": "985d69a7555b176e797d50317856d568b4d07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa7f1ec_b9f4a9e0",
