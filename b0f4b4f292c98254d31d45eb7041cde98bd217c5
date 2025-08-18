@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc4427f4_6138a13d",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:39:44Z",
+      "side": 1,
+      "message": "nit: declare variable just before it\u0027s used\n\n\n```suggestion\n\tmemcpy(\u0026resp-\u003esensor_info, \u0026fpc1025_sensor_info,\n\t       sizeof(struct fp_sensor_info));\n\n\tmemcpy(\u0026resp-\u003eimage_frame_params, \u0026fpc1025_image_frame_params,\n\t       sizeof(fpc1025_image_frame_params));\n\n\tuint16_t sensor_id;\n\tif (fpc_get_hwid(\u0026sensor_id))\n\t\treturn EC_RES_ERROR;\n```",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 22
+      },
+      "revId": "b0f4b4f292c98254d31d45eb7041cde98bd217c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48140854_eaa8d45b",
         "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
         "patchSetId": 15
