@@ -22,6 +22,30 @@
       },
       "revId": "7dde902fb8925ca2c9d5a136f2f32a0daba5af4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d097147_496c563b",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:15:02Z",
+      "side": 1,
+      "message": "is this comment still valid. I am checking if we are going to overflow and returning at the beginning of the function.",
+      "parentUuid": "a26e23fb_2ca961fc",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 44
+      },
+      "revId": "7dde902fb8925ca2c9d5a136f2f32a0daba5af4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
