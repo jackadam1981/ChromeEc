@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfbe473_fa0d47f8",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T18:05:18Z",
+      "side": 1,
+      "message": "Oops, my suggestion was bad. I forgot about the flexible array member. I think this won\u0027t work correctly because it\u0027s allocating with `new[]`, but the destructor called will be `delete`, not `delete[]`.\n\nLet\u0027s go back to what you had before, but make sure to call `free` in the early return path.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "38209f6706c80332e83ef25a1e4723834c6c87bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
