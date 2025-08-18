@@ -16,6 +16,24 @@
       "message": "Phoenix - can you test this on axii?  Please mark verified if functionality works.",
       "revId": "defa862874a181aa3aa07e27216316af56a5f05d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a96f85_1e428cd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-18T09:32:58Z",
+      "side": 1,
+      "message": "Verified on Axii proto board with usbd_service (usb_dc is deprecated), EC can send keyboard HID reports to the host.",
+      "parentUuid": "f7b7916d_105d8869",
+      "revId": "defa862874a181aa3aa07e27216316af56a5f05d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
