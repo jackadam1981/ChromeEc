@@ -296,7 +296,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "krane",
     "makomo",
     "oak",
-    "stern",
     "terrador",
     "waddledoo",
 ]
