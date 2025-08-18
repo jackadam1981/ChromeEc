@@ -69,6 +69,30 @@
       },
       "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd41e1e9_9b1b23c1",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T17:39:59Z",
+      "side": 1,
+      "message": "You ran the CQ with *only* that CL? It looks like it\u0027s [currently running with a stack of CLs](https://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-zephyr-cq/b8706180824293711809/overview): https://screenshot.googleplex.com/9kZBCGb2rEb44mX",
+      "parentUuid": "93fbd02e_515371b4",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
