@@ -263,8 +263,6 @@ RISCV_BOARDS = [
     "asurada",
     "asurada_scp",
     "cherry",
-    "cherry_scp",
-    "cherry_scp_core1",
     "cozmo",
     "dojo",
     "geralt_scp",
