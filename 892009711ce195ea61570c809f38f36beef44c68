@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c59cedd_ddb3751d",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:01:30Z",
+      "side": 1,
+      "message": "`size_t` as mentioned [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6363759/comment/caceab3b_2700af37/).",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "892009711ce195ea61570c809f38f36beef44c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
