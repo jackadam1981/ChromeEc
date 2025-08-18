@@ -20,6 +20,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbd09a8f_bb5d49f4",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-18T23:09:17Z",
+      "side": 1,
+      "message": "This works for the test that you\u0027re currently making with a 5V/1.5A PDO. But it wouldn\u0027t make sense for a 5V/3A PDO, for instance. To make it reusable, I\u0027d suggest making the target current and cap mismatch bit parameters that the caller can set.\n\n(I don\u0027t think you need to make the object position a parameter right now, unless you want to test what we do with an invalid object position. I expect 1 to be the only valid value for the foreseeable future.)",
+      "revId": "985d69a7555b176e797d50317856d568b4d07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72927a0a_54be5d21",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-18T23:09:17Z",
+      "side": 1,
+      "message": "Nit: This can just be one line.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "985d69a7555b176e797d50317856d568b4d07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7966eb5_c52dee1d",
+        "filename": "zephyr/include/emul/tcpc/emul_tcpci_partner_snk.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-18T23:09:17Z",
+      "side": 1,
+      "message": "If they were to be constructed from PDOs, it would make sense to construct them from the PDOs that the TCPM sent as Source. However, I think the current implementation just hard-codes a particular RDO without reference to any PDO. So I\u0027d suggest either changing this comment to match the implementation or vice versa.",
+      "range": {
+        "startLine": 86,
+        "startChar": 31,
+        "endLine": 86,
+        "endChar": 72
+      },
+      "revId": "985d69a7555b176e797d50317856d568b4d07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fa7f1ec_b9f4a9e0",
         "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_100ma_pd_sink.c",
         "patchSetId": 27
