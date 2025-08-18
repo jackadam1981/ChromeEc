@@ -45,6 +45,30 @@
       },
       "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93fbd02e_515371b4",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T02:41:57Z",
+      "side": 1,
+      "message": "https://crrev.com/c/6354365 pass the CQ as is. It does not require this change.",
+      "parentUuid": "40fa8062_912fb762",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
