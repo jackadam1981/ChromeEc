@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfed9a1_1f9ef3e7",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:25:30Z",
+      "side": 1,
+      "message": "Looks like this function is missing from this CL?",
+      "range": {
+        "startLine": 254,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 46
+      },
+      "revId": "e06aaa9f5de343769120bfbcbfb78073348a836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
