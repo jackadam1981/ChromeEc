@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b784c0_1c50a349",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T23:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094b3953_5c951f8f",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "13ab5237b6ed1a0151dfb3dab73734c54f0b58d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54bc430a_0eb039a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-18T23:10:51Z",
       "side": 1,
       "message": "If Egis doesn\u0027t support the reset test, let\u0027s add a comment here just to make it clear this was intentional.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "13ab5237b6ed1a0151dfb3dab73734c54f0b58d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ec6034_aff5a529",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T23:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54bc430a_0eb039a5",
       "range": {
         "startLine": 137,
         "startChar": 1,
