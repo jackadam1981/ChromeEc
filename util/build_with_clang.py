@@ -46,7 +46,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     #   'CHIP_FAMILY:=stm32f0' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "c2d2",
     "coffeecake",
-    "dingdong",
     "discovery-stm32f072",
     "don",
     "duck",
