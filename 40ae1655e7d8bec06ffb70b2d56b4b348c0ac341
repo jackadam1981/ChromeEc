@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c34f0b_1953a69e",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-08-18T15:17:48Z",
+      "side": 1,
+      "message": "Unrelated to this change, but we seemed to have hit this infinite assert loop again in Zephyr downstreaming.  This happens when a non-test thread, that\u0027s also not a defined EC task `ASSERT`s, like the PDC threads, or in the recent downstreaming case, UART driver.",
+      "revId": "40ae1655e7d8bec06ffb70b2d56b4b348c0ac341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
