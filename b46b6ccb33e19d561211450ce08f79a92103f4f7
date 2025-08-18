@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec1d39af_25c7778b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:16:20Z",
+      "side": 1,
+      "message": "shall we close on this comment and keep this CL as is?",
+      "parentUuid": "51f2f395_b89e76f2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40fa8062_912fb762",
         "filename": "zephyr/shim/src/fpsensor.c",
         "patchSetId": 6
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Ah, it was because we added the `__overridable int fp_sensor_get_info_v2` in that CL.",
       "parentUuid": "f131202c_9da274be",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9652b24d_c6565538",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:16:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c1b43ab0_717c5853",
       "range": {
         "startLine": 123,
         "startChar": 0,
