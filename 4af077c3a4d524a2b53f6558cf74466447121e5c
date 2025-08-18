@@ -141,6 +141,30 @@
       },
       "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a809e924_aa5cea64",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T18:29:18Z",
+      "side": 1,
+      "message": "The `fp_sensor_get_info_v2` function is called from within the `fp_command_info_v2`. Any parameter that I need to pass to `fp_sensor_get_info_v2` has to be inside `fp_command_info_v2`. I can make the fpinfo command to take an input param, but this will crate another layer of complexity.\n\nAnother proposal is that I create an overloadable function that returns the expected_size and call `fp_sensor_get_info_v2(r, get_expected_size())`\n\nPlease let me know your thoughts.",
+      "parentUuid": "fec149d0_74a41a8b",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
