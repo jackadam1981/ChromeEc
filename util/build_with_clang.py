@@ -203,7 +203,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "voema",
     "volet",
     "volmar",
-    "volteer_npcx797fc",
     "voxel",
     "whiskers",
     "woomax",
