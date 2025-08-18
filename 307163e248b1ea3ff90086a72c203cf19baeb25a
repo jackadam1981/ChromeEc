@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e867031_858e3952",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T03:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4b975c_e2db645a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a04e4be_94fbbaac",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-15T22:20:43Z",
       "side": 1,
       "message": "Where does this come from? Are you trying to allocate space for the maximum number of capture types? If so, it should be a constant. Also, why the `sizeof(uint32_t)`? \n\nComparing to [this code](https://crrev.com/c/6354365):\n\n```\n\targs-\u003eresponse_size \u003d sizeof(struct ec_response_fp_info_v2) +\n\t\t\t      (r-\u003esensor_info.num_capture_types) *\n\t\t\t\t      sizeof(struct fp_image_frame_params);\n```",
+      "range": {
+        "startLine": 132,
+        "startChar": 41,
+        "endLine": 132,
+        "endChar": 62
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c657ad0_a9b547a0",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T03:46:24Z",
+      "side": 1,
+      "message": "yes, I am trying to allocate the maximum number of capture types and I am using 8. I removed `sizeof(uint32_t)`.",
+      "parentUuid": "0a04e4be_94fbbaac",
       "range": {
         "startLine": 132,
         "startChar": 41,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5762304_6f027c49",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T03:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d8c408_e1898df9",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f6c0526_307cb7f8",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-08-15T22:20:43Z",
       "side": 1,
       "message": "Same comment as above",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 38
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f3fe8a_87c11a50",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T03:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f6c0526_307cb7f8",
       "range": {
         "startLine": 316,
         "startChar": 0,
@@ -129,6 +225,30 @@
       "writtenOn": "2025-08-15T22:20:43Z",
       "side": 1,
       "message": "Unrelated change",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 5
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cfc1bd_520d9508",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T03:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b9bcd4_b32a02d7",
       "range": {
         "startLine": 410,
         "startChar": 0,
