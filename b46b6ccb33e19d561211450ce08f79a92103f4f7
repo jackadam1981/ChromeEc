@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb445e58_297a631a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:29:16Z",
+      "side": 1,
+      "message": "This CL is still doing two different things:\n\n1. Adding \"fp_sensor_get_info_v2\" to Zephyr shim\n2. Adding \"fp_sensor_get_info_v2\" to the mock\n\nI would split them into two separate CLs.",
+      "parentUuid": "ec1d39af_25c7778b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40fa8062_912fb762",
         "filename": "zephyr/shim/src/fpsensor.c",
         "patchSetId": 6
