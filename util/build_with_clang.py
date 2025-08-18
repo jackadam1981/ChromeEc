@@ -247,7 +247,6 @@ NDS32_BOARDS = [
     "kracko",
     "lantis",
     "pirika",
-    "reef_it8320",
     "sasukette",
     "shotzo",
     "storo",
