@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8940ed25_f97372a3",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:20:29Z",
+      "side": 1,
+      "message": "This looks like it changes the `frame_size` in `egis_fp_sensor_info` (v1). Is that intended? It looks like the 16-bpp is only for test images, not regular images.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52ab1028_97577bd1",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 35
