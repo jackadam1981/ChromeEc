@@ -1101,7 +1101,9 @@ static int emul_tps6699x_reset(const struct emul *target)
 	const union reg_port_control *pdc_port_control =
 		(const union reg_port_control *)data->reg_val[REG_PORT_CONTROL];
 	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
-
+	union reg_received_attention_vdm *attention_vdm =
+		(union reg_received_attention_vdm *)
+			data->reg_val[REG_RECEIVED_ATTENTION_VDM];
 	memset(data->reg_val, 0, sizeof(data->reg_val));
 
 	/* Reset PDOs. */
@@ -1123,6 +1125,12 @@ static int emul_tps6699x_reset(const struct emul *target)
 
 	/* Initialize reg_mode to APP0 to indicate running from flash. */
 	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
+
+	/* Init received attention vdm */
+	attention_vdm->number_valid_vdos = 2;
+	attention_vdm->sequence_number = 1;
+	attention_vdm->vdm_header = 0;
+	attention_vdm->vdo = 0x1;
 
 	return 0;
 }
@@ -1190,6 +1198,9 @@ static int tps6699x_emul_init(const struct emul *emul,
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
 	union reg_mode *reg_mode =
 		(union reg_mode *)data->pdc_data.reg_val[REG_MODE];
+	union reg_received_attention_vdm *attention_vdm =
+		(union reg_received_attention_vdm *)
+			data->pdc_data.reg_val[REG_RECEIVED_ATTENTION_VDM];
 	LOG_INF("TPS669X emul init");
 
 	data->common.i2c = parent;
@@ -1205,6 +1216,12 @@ static int tps6699x_emul_init(const struct emul *emul,
 
 	/* Init register to APP0 */
 	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
+
+	/* Init received attention vdm */
+	attention_vdm->number_valid_vdos = 2;
+	attention_vdm->sequence_number = 1;
+	attention_vdm->vdm_header = 0;
+	attention_vdm->vdo = 0x1;
 
 	return 0;
 }

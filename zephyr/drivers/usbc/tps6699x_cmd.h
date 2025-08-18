@@ -469,4 +469,15 @@ int tps_stream_data(const struct i2c_dt_spec *i2c,
 		    size_t buf_len);
 #endif
 
+/**
+ * @brief Read the received attention VDM register (0x4E)
+ *
+ * @param i2c device pointer to i2c device
+ * @param received_attention_vdm pointer where data is stored
+ *
+ * @return 0 on success, else -EIO
+ */
+int tps_rd_received_attention_vdm(
+	const struct i2c_dt_spec *i2c,
+	union reg_received_attention_vdm *received_attention_vdm);
 #endif /* ZEPHYR_DRIVERS_USBC_TPS6699X_H_ */
