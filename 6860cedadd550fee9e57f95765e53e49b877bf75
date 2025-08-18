@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ab0c74_77821d90",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T17:34:58Z",
+      "side": 1,
+      "message": "Once we [change this function to pass the size of the buffer](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6354365/comment/5bbf2a81_ee3a40c6/), we should check that these will fit.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 44
+      },
+      "revId": "6860cedadd550fee9e57f95765e53e49b877bf75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
