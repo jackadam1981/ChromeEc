@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caceab3b_2700af37",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T21:33:01Z",
+      "side": 1,
+      "message": "Let\u0027s go ahead and use `size_t` here because that is the generic type for sizes. e.g., we will be passing `size_t` [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6440543/13/common/fpsensor/fpsensor_debug.cc).",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "c4bb35804b8d1b8175519ea29a3aa664bf5270a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e2f4aa8_e8116813",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 33
@@ -14,6 +37,30 @@
       "writtenOn": "2025-08-18T21:24:34Z",
       "side": 1,
       "message": "@tomhughes@chromium.org\nCan you please check if this is what you are looking for?\nIf this is what you are looking for, I will generalize it to the other boards.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "c4bb35804b8d1b8175519ea29a3aa664bf5270a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40e0ff7_aacbde26",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T21:33:01Z",
+      "side": 1,
+      "message": "Yes, though I think you can simplify it to `sizeof(struct ec_response_fp_info_v2) + sizeof(egis_image_frame_params)`. (double-check that the resulting size is the same)",
+      "parentUuid": "2e2f4aa8_e8116813",
       "range": {
         "startLine": 165,
         "startChar": 0,
