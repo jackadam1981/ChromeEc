@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89f7ed7e_5de7f4eb",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T02:51:41Z",
+      "side": 1,
+      "message": "for the Egis normal entry, it modified it in order to avoid redundancy:\n\n```\n\n\t[EGIS_CAPTURE_NORMAL_FORMAT] \u003d\n\t{\n\t\tEGIS_DEFAULT_IMAGE_PARAMS,\n\t\t.fp_capture_type \u003d FP_CAPTURE_SIMPLE_IMAGE | FP_CAPTURE_VENDOR_FORMAT,\n\t},\n```\n\nby the way, once I start using `[EGIS_CAPTURE_NORMAL_FORMAT] \u003d`, I cannot use `cros format` to format the file.",
+      "parentUuid": "c8d3a773_bb1d0615",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "efc2dd7f407183554e5ad45983c895e8331b569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d4cffa3_a60d7219",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 29
