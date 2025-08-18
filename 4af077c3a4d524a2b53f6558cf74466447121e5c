@@ -189,6 +189,30 @@
       },
       "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042940c4_8c48f8f4",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T19:04:14Z",
+      "side": 1,
+      "message": "Based on [this file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/host_command.h;l\u003d35-42;drc\u003d9c9df9c7d40daf7f77f8b4132aa959ab024b219c), `response_max` is the size of the `response` buffer, so that is what you would pass as the `resp_size` when calling `fp_sensor_get_info_v2` from `fp_command_info_v2`.",
+      "parentUuid": "c071fd66_22c9b65b",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "4af077c3a4d524a2b53f6558cf74466447121e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
