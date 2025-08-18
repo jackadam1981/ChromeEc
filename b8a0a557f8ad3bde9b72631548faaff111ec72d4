@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef228b8_d903935e",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:24:13Z",
+      "side": 1,
+      "message": "yes, Egis wants the test images to be 16 bit resolution.",
+      "parentUuid": "8940ed25_f97372a3",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37c3fd50_e6a8919f",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-08-18T22:18:11Z",
       "side": 1,
       "message": "nit: let\u0027s add a linebreak here\n\n```suggestion\n\tif (resp_size \u003e sizeof(struct ec_response_fp_info_v2) +\n\t\t\t\tsizeof(egis_image_frame_params)) {\n\t\treturn EC_RES_OVERFLOW;\n\t}\n\n\tuint16_t sensor_id;\n```",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86bc4252_7c9406c4",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ab1028_97577bd1",
       "range": {
         "startLine": 167,
         "startChar": 0,
