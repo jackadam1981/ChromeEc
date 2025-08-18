@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f861fa0_0daf4b32",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T17:35:21Z",
+      "side": 1,
+      "message": "Once we [change this function to pass the size of the buffer](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6354365/comment/5bbf2a81_ee3a40c6/), we should check that these will fit.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 41
+      },
+      "revId": "b8779d88c02851fe055192bc41ed2b41a328dcfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
