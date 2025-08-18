@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d55a5340_2ac3d89e",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:32:58Z",
+      "side": 1,
+      "message": "Yes, but this means you\u0027re changing *all* sizes (including non-test) to 16bpp for v1 of the command, right? i.e., you\u0027re changing the behavior of the current (v1) command.",
+      "parentUuid": "7ef228b8_d903935e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37c3fd50_e6a8919f",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 35
