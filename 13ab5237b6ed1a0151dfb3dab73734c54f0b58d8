@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094b3953_5c951f8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T23:10:51Z",
+      "side": 1,
+      "message": "```suggestion\nTEST\u003duse fpcapture\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "13ab5237b6ed1a0151dfb3dab73734c54f0b58d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bc430a_0eb039a5",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T23:10:51Z",
+      "side": 1,
+      "message": "If Egis doesn\u0027t support the reset test, let\u0027s add a comment here just to make it clear this was intentional.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "13ab5237b6ed1a0151dfb3dab73734c54f0b58d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
