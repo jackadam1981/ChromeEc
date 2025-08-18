@@ -97,7 +97,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "max32660-eval",
     # Boards that use CHIP:=npcx
     # git grep --name-only 'CHIP:=npcx' | sed 's#^board/\(.*\)/build.mk#"\1",#'
-    "adlrvpp_npcx",
     "akemi",
     "aleena",
     "ambassador",
