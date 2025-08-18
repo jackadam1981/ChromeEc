@@ -34,6 +34,29 @@
       "parentUuid": "8b833acf_14e118dc",
       "revId": "ee4076ee713cf463de66d0f94543d007e51c7e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935d80bc_0046aa92",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T16:46:15Z",
+      "side": 1,
+      "message": "You should still exclude `helipilot` here since it\u0027s going to fail on Zephyr until https://crrev.com/c/6729502 is merged.",
+      "range": {
+        "startLine": 680,
+        "startChar": 12,
+        "endLine": 683,
+        "endChar": 14
+      },
+      "revId": "ee4076ee713cf463de66d0f94543d007e51c7e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
