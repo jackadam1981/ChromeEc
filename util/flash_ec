@@ -82,7 +82,6 @@ BOARDS_STM32_PROG_EN=(
 BOARDS_STM32_DFU=(
 	c2d2
 	hoho
-	twinkie
 	discovery
 	servo_v4
 	servo_v4p1
@@ -435,7 +434,7 @@ case "${BOARD}" in
 				 nami_fp|nocturne_fp|rosalia )
 		MCU="fpmcu"
 		;;
-	hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
+	hoho ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
