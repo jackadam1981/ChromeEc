@@ -23,7 +23,6 @@ baseboard-$(VARIANT_INTELRVP_EC_NPCX)+=npcx_ec.o
 
 #Common board specific files
 ifneq ($(filter y,$(BOARD_ADLRVPP_ITE) $(BOARD_ADLRVPM_ITE) \
-		$(BOARD_ADLRVPP_MCHP1521) \
 		$(BOARD_ADLRVPP_MCHP1727)),)
 baseboard-y+=adlrvp.o
 baseboard-$(CONFIG_BATTERY_SMART)+=adlrvp_battery.o
