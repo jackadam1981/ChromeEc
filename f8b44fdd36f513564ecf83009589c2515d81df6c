@@ -80,6 +80,30 @@
       },
       "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120003e1_2fd1e745",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_3a_pd_sink.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-08-18T17:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fcf2ddc_9ad876b9",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "f8b44fdd36f513564ecf83009589c2515d81df6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

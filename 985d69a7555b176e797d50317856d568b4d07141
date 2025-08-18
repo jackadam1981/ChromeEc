@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa7f1ec_b9f4a9e0",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_100ma_pd_sink.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-08-18T17:53:24Z",
+      "side": 1,
+      "message": "Hi Abe, I executed ./twister -T zephyr/test/drivers, all test suites are passed, however not able to run the individual test suite. Can you please share the command for running individual test suite.",
+      "revId": "985d69a7555b176e797d50317856d568b4d07141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
