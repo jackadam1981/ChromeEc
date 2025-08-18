@@ -34,6 +34,24 @@
       "parentUuid": "f454bd47_ba9cca79",
       "revId": "387f60fe1a5f99ec401ff3cbb18174502e54b7bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf31c7c_81992611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-08-18T17:23:26Z",
+      "side": 1,
+      "message": "This is never built for the latest image, but we might need it for local testing.",
+      "parentUuid": "e2cdabc2_5ff5820e",
+      "revId": "387f60fe1a5f99ec401ff3cbb18174502e54b7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
