@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c663ced_2ce6ec51",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T23:53:34Z",
+      "side": 1,
+      "message": "The `gwendolin` project has not been released. The reserved buffer was increased to accommodate  both the `test` and `default` image capture. The fpinfo v1 is just going to return the new buffer size.",
+      "parentUuid": "d55a5340_2ac3d89e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37c3fd50_e6a8919f",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 35
