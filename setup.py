@@ -8,20 +8,6 @@ from setuptools import setup
 
 
 setup(
-    name="powerlog",
-    version="1.0",
-    author="Nick Sanders",
-    author_email="nsanders@chromium.org",
-    url="https://www.chromium.org/chromium-os/ec-development",
-    package_dir={"": "extra/usb_power"},
-    py_modules=["powerlog", "stats_manager"],
-    entry_points={
-        "console_scripts": ["powerlog=powerlog:main"],
-    },
-    description="Sweetberry power logger.",
-)
-
-setup(
     name="console",
     version="1.0",
     author="Nick Sanders",
