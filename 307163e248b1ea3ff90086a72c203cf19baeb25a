@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f034e212_6e0788c1",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T04:02:20Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6856899/1",
+      "parentUuid": "13297a34_9f059595",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 41
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46b9bcd4_b32a02d7",
