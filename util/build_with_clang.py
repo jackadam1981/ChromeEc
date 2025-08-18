@@ -257,7 +257,6 @@ NDS32_BOARDS = [
     "storo",
     "taranza",
     "waddledee",
-    "wheelie",
 ]
 
 RISCV_BOARDS = [
