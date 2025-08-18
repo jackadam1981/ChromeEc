@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2f4aa8_e8116813",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T21:24:34Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nCan you please check if this is what you are looking for?\nIf this is what you are looking for, I will generalize it to the other boards.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "c4bb35804b8d1b8175519ea29a3aa664bf5270a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
