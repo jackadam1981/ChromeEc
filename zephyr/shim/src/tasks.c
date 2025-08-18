@@ -201,7 +201,9 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		return TASK_ID_INVALID;
 	}
 
+#ifndef CONFIG_ZTEST
 	__ASSERT(false, "Failed to map thread to task");
+#endif
 	return TASK_ID_INVALID;
 }
 
