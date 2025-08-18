@@ -68,7 +68,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "servo_v4p1",
     "staff",
     "star",
-    "twinkie",
     "whitebeard",
     "zed",
     # Boards that use CHIP:=mchp

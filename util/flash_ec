@@ -76,7 +76,6 @@ BOARDS_STM32=(
 BOARDS_STM32_DFU=(
 	c2d2
 	dingdong
-	twinkie
 	servo_v4
 	servo_v4p1
 	servo_micro
@@ -414,7 +413,7 @@ case "${BOARD}" in
 				 nami_fp|nocturne_fp|rosalia )
 		MCU="fpmcu"
 		;;
-	dingdong|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
+	dingdong ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
