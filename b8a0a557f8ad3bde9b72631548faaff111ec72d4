@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c40ce1_45bb66a5",
+        "filename": "driver/fingerprint/egis/egis_private.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-18T22:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52194f8c_4883236e",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52ab1028_97577bd1",
