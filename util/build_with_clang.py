@@ -63,7 +63,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "kukui",
     "magnemite",
     "masterball",
-    "minimuffin",
     "moonball",
     "prism",
     "servo_micro",
@@ -75,7 +74,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "twinkie",
     "whitebeard",
     "zed",
-    "zinger",
     # Boards that use CHIP:=mchp
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "adlrvpp_mchp1727",
