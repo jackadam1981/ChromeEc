@@ -205,8 +205,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "volet",
     "volmar",
     "voxel",
-    "voxel_ecmodeentry",
-    "voxel_npcx797fc",
     "whiskers",
     "woomax",
     "wormdingler",
