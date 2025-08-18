@@ -205,7 +205,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "corsola_scp",
     "kukui_scp",
     # Boards that use CORE:=minute-ia
-    "adl_ish_lite",
     "arcada_ish",
     "drallion_ish",
     "tglrvp_ish",
