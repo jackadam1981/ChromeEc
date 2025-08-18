@@ -40,7 +40,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "nocturne_fp",
     "panqueque",
     "quiche",
-    "sweetberry",
     # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
     # git grep  --name-only 'CHIP:=stm32' | xargs grep -L \
     #   'CHIP_FAMILY:=stm32f0' | sed 's#board/\(.*\)/build.mk#"\1",#'
