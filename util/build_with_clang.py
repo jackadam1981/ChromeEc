@@ -35,7 +35,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # git grep  --name-only 'CHIP:=stm32' | xargs grep -L \
     #   'CHIP_FAMILY:=stm32f0' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "baklava",
-    "gingerbread",
     "hatch_fp",
     "hyperdebug",
     "nocturne_fp",
