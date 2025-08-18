@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad56c83_f14f1ae6",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:46:45Z",
+      "side": 1,
+      "message": "This isn\u0027t a new issue, but how do we tell `EC_ERROR_UNKNOWN` from a valid bpp?\n\nLet\u0027s try to fix in a follow-up CL.",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7250d9_82710b25",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-18T22:46:45Z",
+      "side": 1,
+      "message": "I would just return here. Then if we get to the end of the function, we should return an error.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
