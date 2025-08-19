@@ -57,6 +57,30 @@
       },
       "revId": "ee4076ee713cf463de66d0f94543d007e51c7e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250bc00e_a26cb408",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-08-19T01:00:07Z",
+      "side": 1,
+      "message": "I had initially planned to set skip_for_zephyr (rather than excluding completely), but during verification of this CL (only), I saw that the test was passing on Zephyr since null pointer detection was never disabled in helipilot on ToT but only in draft CL\u0027s. The verification passes as expected without https://crrev.com/c/6729502",
+      "parentUuid": "935d80bc_0046aa92",
+      "range": {
+        "startLine": 680,
+        "startChar": 12,
+        "endLine": 683,
+        "endChar": 14
+      },
+      "revId": "ee4076ee713cf463de66d0f94543d007e51c7e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
