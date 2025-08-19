@@ -16,6 +16,24 @@
       "message": "This is still under development",
       "revId": "f50e54f25abefc40317da3ef62d30ea2d2d40ed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b648278d_34ef210c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-08-19T21:13:21Z",
+      "side": 1,
+      "message": "There is a copy under platform/ec/zephyr/program/fpmcu also. Are both of them under development?",
+      "parentUuid": "d9c88ac8_31dccc9d",
+      "revId": "f50e54f25abefc40317da3ef62d30ea2d2d40ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
