@@ -33,6 +33,24 @@
       "message": "It doesn\u0027t necessarily need to be in this change, but you\u0027ll need to update `ciri_vif.xml` to match this behavior. The source PDOs should say 1.5A instead of the present 3A.",
       "revId": "b9e1c27fc5df48cf4f73da340add0ae5eb0fde9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d1102b_ec061b56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-19T17:27:22Z",
+      "side": 1,
+      "message": "And the power fields will need to be updated accordingly. Each port can do 7.5W, the whole product can source 15W, and the ports are now assured/guaranteed supply.",
+      "parentUuid": "03eb02c2_cfc9f4f9",
+      "revId": "b9e1c27fc5df48cf4f73da340add0ae5eb0fde9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
