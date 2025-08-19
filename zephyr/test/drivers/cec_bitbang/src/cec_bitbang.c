@@ -11,7 +11,14 @@
 #include "test/drivers/utils.h"
 #include "timer.h"
 
+#include <zephyr/drivers/pinctrl.h>
+#include <zephyr/fff.h>
 #include <zephyr/ztest.h>
+
+FAKE_VALUE_FUNC(int, pinctrl_lookup_state, const struct pinctrl_dev_config *,
+		uint8_t, const struct pinctrl_state **);
+FAKE_VALUE_FUNC(int, pinctrl_configure_pins, const pinctrl_soc_pin_t *, uint8_t,
+		uintptr_t);
 
 #define CEC_GPIO_PORT(name) \
 	DEVICE_DT_GET(DT_GPIO_CTLR(NAMED_GPIOS_GPIO_NODE(name), gpios))

@@ -8,10 +8,14 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/drivers/pinctrl.h>
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
-FAKE_VOID_FUNC(it8xxx2_cec_alt_func_enable, int);
+FAKE_VALUE_FUNC(int, pinctrl_lookup_state, const struct pinctrl_dev_config *,
+		uint8_t, const struct pinctrl_state **);
+FAKE_VALUE_FUNC(int, pinctrl_configure_pins, const pinctrl_soc_pin_t *, uint8_t,
+		uintptr_t);
 FAKE_VOID_FUNC(it8xxx2_cec_clock_enable_peripheral, int);
 
 /* From chip/it83xx/intc.h, but that file has inline assembly. */
@@ -28,6 +32,10 @@ struct mock_it83xx_cec_regs mock_it83xx_cec_regs;
 static void cec_it83xx_after(void *fixture)
 {
 	const struct cec_drv *drv = cec_config[TEST_PORT].drv;
+
+	RESET_FAKE(pinctrl_lookup_state);
+	RESET_FAKE(pinctrl_configure_pins);
+	RESET_FAKE(it8xxx2_cec_clock_enable_peripheral);
 
 	/* Disable CEC after each test to reset driver state */
 	drv->set_enable(TEST_PORT, 0);
@@ -672,6 +680,58 @@ ZTEST_USER(cec_it83xx, test_error_while_receiving)
 	zassert_ok(host_cmd_cec_read(TEST_PORT, &response));
 	zassert_equal(response.msg_len, msg2_len);
 	zassert_ok(memcmp(response.msg, msg2, msg2_len));
+}
+
+ZTEST_USER(cec_it83xx, test_setup_for_it8xxx2)
+{
+	const struct cec_drv *drv = cec_config[TEST_PORT].drv;
+	uint8_t enable;
+
+	drv->set_enable(TEST_PORT, 1);
+	zassert_equal(pinctrl_lookup_state_fake.call_count, 1);
+	zassert_equal(pinctrl_lookup_state_fake.arg1_val,
+		      PINCTRL_STATE_DEFAULT);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.call_count, 1);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.arg0_val, 1);
+	drv->get_enable(TEST_PORT, &enable);
+	zassert_equal(enable, 1);
+
+	drv->set_enable(TEST_PORT, 0);
+	zassert_equal(pinctrl_lookup_state_fake.call_count, 2);
+	zassert_equal(pinctrl_lookup_state_fake.arg1_val, PINCTRL_STATE_SLEEP);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.call_count, 2);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.arg0_val, 0);
+	drv->get_enable(TEST_PORT, &enable);
+	zassert_equal(enable, 0);
+
+	/* Enabling when enabled */
+	drv->set_enable(TEST_PORT, 1);
+	zassert_equal(pinctrl_lookup_state_fake.call_count, 3);
+	zassert_equal(pinctrl_lookup_state_fake.arg1_val,
+		      PINCTRL_STATE_DEFAULT);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.call_count, 3);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.arg0_val, 1);
+	drv->get_enable(TEST_PORT, &enable);
+	zassert_equal(enable, 1);
+	drv->set_enable(TEST_PORT, 1);
+	zassert_equal(pinctrl_lookup_state_fake.call_count, 3);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.call_count, 3);
+	drv->get_enable(TEST_PORT, &enable);
+	zassert_equal(enable, 1);
+
+	/* Disabling when disabled */
+	drv->set_enable(TEST_PORT, 0);
+	zassert_equal(pinctrl_lookup_state_fake.call_count, 4);
+	zassert_equal(pinctrl_lookup_state_fake.arg1_val, PINCTRL_STATE_SLEEP);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.call_count, 4);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.arg0_val, 0);
+	drv->get_enable(TEST_PORT, &enable);
+	zassert_equal(enable, 0);
+	drv->set_enable(TEST_PORT, 0);
+	zassert_equal(pinctrl_lookup_state_fake.call_count, 4);
+	zassert_equal(it8xxx2_cec_clock_enable_peripheral_fake.call_count, 4);
+	drv->get_enable(TEST_PORT, &enable);
+	zassert_equal(enable, 0);
 }
 
 ZTEST_SUITE(cec_it83xx, drivers_predicate_post_main, NULL, NULL,

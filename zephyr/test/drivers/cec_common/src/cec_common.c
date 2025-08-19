@@ -10,8 +10,14 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/drivers/pinctrl.h>
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
+
+FAKE_VALUE_FUNC(int, pinctrl_lookup_state, const struct pinctrl_dev_config *,
+		uint8_t, const struct pinctrl_state **);
+FAKE_VALUE_FUNC(int, pinctrl_configure_pins, const pinctrl_soc_pin_t *, uint8_t,
+		uintptr_t);
 
 #define TEST_PORT 0
 #define TEST_PORT_1 1
