@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716eb6e9_98d9e063",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-19T21:20:24Z",
+      "side": 1,
+      "message": "The FP team still uses the Nucleo boards listed here: https://crrev.com/c/6785810 (except for `board/discovery-stm32f072/build.mk`, which looks like it was accidentally included in that CL)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "479deb3d7e262d9f9f7deb713df4c71b4dfb343c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
