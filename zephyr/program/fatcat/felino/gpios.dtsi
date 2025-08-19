@@ -20,7 +20,8 @@
 			enum-name = "GPIO_ENTERING_RW";
 		};
 		gpio_ec_wp_odl: ec_wp_odl {
-			gpios = <&gpioj 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			/*gpios = <&gpioj 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;*/
+			gpios = <&gpioj 3 (GPIO_OUTPUT)>;
 		};
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpiof 2 GPIO_OUTPUT>;
