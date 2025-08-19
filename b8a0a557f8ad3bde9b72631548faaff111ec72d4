@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cedea99_d3386a0d",
+        "filename": "driver/fingerprint/egis/egis_api.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-19T16:17:01Z",
+      "side": 1,
+      "message": "Ok, let\u0027s pull this line into a separate CL and add a comment that this needs to be the size of the largest image since it\u0027s used for the image buffer.",
+      "parentUuid": "1c663ced_2ce6ec51",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "b8a0a557f8ad3bde9b72631548faaff111ec72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37c3fd50_e6a8919f",
         "filename": "driver/fingerprint/egis/egis_private.c",
         "patchSetId": 35
