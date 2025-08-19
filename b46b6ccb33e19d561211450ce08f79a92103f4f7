@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2620cd67_9ba26635",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T03:46:01Z",
+      "side": 1,
+      "message": "separated them into 2 CLs:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6858117/1",
+      "parentUuid": "bb445e58_297a631a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "b46b6ccb33e19d561211450ce08f79a92103f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40fa8062_912fb762",
