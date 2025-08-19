@@ -16,6 +16,24 @@
       "message": "Looking into the DLM, It is still used:\nhttps://chromeos.google.com/partner/dlm/device/542/product/684",
       "revId": "1ede83d268992f7546d8f85190317a638fc64c87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c40d0c3_fd2208a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-08-19T21:22:08Z",
+      "side": 1,
+      "message": "The model exists, but not this firmware image.  See https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/project/dedede/blipper/fw_version_config.star;l\u003d14;drc\u003d3abdef3572066ee7d6ea32a88230953fd18d9f6f\n\nBoth blipper and beetley use the same firmware.",
+      "parentUuid": "cd452e0e_fe41b4a1",
+      "revId": "1ede83d268992f7546d8f85190317a638fc64c87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
