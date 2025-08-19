@@ -60,6 +60,8 @@ FAKE_VOID_FUNC(set_pwm_led_color, enum pwm_led_id, int);
 FAKE_VALUE_FUNC(enum battery_present, battery_is_present);
 FAKE_VOID_FUNC(lpc_keyboard_resume_irq);
 
+FAKE_VOID_FUNC(bmi3xx_interrupt, enum gpio_signal);
+
 static void test_before(void *fixture)
 {
 	RESET_FAKE(cros_cbi_get_fw_config);
@@ -73,6 +75,7 @@ static void test_before(void *fixture)
 	RESET_FAKE(chipset_in_state);
 	RESET_FAKE(charger_discharge_on_ac);
 	RESET_FAKE(set_pwm_led_color);
+	RESET_FAKE(bmi3xx_interrupt);
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 
@@ -634,4 +637,90 @@ ZTEST(riven, test_keyboard_type)
 	keyboard_ca_fr = true;
 	kb_init();
 	zassert_equal(get_scancode_set2(3, 14), forwardslash_pipe_key);
+}
+
+static int ssfc_data;
+
+static int cbi_get_ssfc_mock(uint32_t *ssfc)
+{
+	*ssfc = ssfc_data;
+	return 0;
+}
+
+ZTEST(riven, test_alt_sensor_base_bma422)
+{
+	const int BASE_ACCEL = SENSOR_ID(DT_NODELABEL(base_accel));
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+
+	/* Default is 3: lid_accel, base_accel and base_gyro */
+	motion_sensor_count = 3;
+
+	/* Initial ssfc data for BMA422 base sensor. */
+	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
+	ssfc_data = 0x00;
+	cros_cbi_ssfc_init();
+
+	/* sensor_enable_irqs enable the interrupt int_imu */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	clamshell_mode = false;
+	hook_notify(HOOK_INIT);
+
+	zassert_equal(motion_sensors[BASE_ACCEL].chip, MOTIONSENSE_CHIP_BMA422);
+	zassert_equal(motion_sensor_count, 2);
+
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	bma4xx_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 0);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 1);
+}
+
+ZTEST(riven, test_alt_sensor_base_bmi323)
+{
+	const int BASE_ACCEL = SENSOR_ID(DT_NODELABEL(base_accel));
+	const int BASE_GYRO = SENSOR_ID(DT_NODELABEL(base_gyro));
+	const struct device *base_imu_gpio = DEVICE_DT_GET(
+		DT_GPIO_CTLR(DT_NODELABEL(gpio_imu_int_l), gpios));
+	const gpio_port_pins_t base_imu_pin =
+		DT_GPIO_PIN(DT_NODELABEL(gpio_imu_int_l), gpios);
+
+	/* Default is 3: lid_accel, base_accel and base_gyro */
+	motion_sensor_count = 3;
+
+	/* Initial ssfc data for BMI323 base sensor. */
+	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
+	ssfc_data = 0x04;
+	cros_cbi_ssfc_init();
+
+	/* sensor_enable_irqs enable the interrupt int_imu */
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+
+	clamshell_mode = false;
+	hook_notify(HOOK_INIT);
+
+	zassert_equal(motion_sensors[BASE_ACCEL].chip, MOTIONSENSE_CHIP_BMI323);
+	zassert_equal(motion_sensors[BASE_GYRO].chip, MOTIONSENSE_CHIP_BMI323);
+	zassert_equal(motion_sensor_count, 3);
+
+	/* Clear base_imu_irq call count before test */
+	bmi3xx_interrupt_fake.call_count = 0;
+	bma4xx_interrupt_fake.call_count = 0;
+
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
+	k_sleep(K_MSEC(100));
+	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);
+	k_sleep(K_MSEC(100));
+
+	zassert_equal(bmi3xx_interrupt_fake.call_count, 1);
+	zassert_equal(bma4xx_interrupt_fake.call_count, 0);
 }

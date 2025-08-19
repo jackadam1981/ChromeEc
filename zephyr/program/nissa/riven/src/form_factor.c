@@ -7,6 +7,7 @@
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "driver/accel_bma4xx.h"
+#include "driver/accelgyro_bmi323.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "motion_sense.h"
@@ -17,6 +18,21 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+enum base_sensor_type {
+	base_bma422 = 0,
+	base_bmi323,
+};
+
+static int base_alt_sensor;
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (base_alt_sensor == base_bmi323)
+		bmi3xx_interrupt(signal);
+	else
+		bma4xx_interrupt(signal);
+}
 
 test_export_static void clamshell_init(void)
 {
@@ -40,3 +56,37 @@ test_export_static void clamshell_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, clamshell_init, HOOK_PRIO_POST_DEFAULT);
+
+static void alt_sensor_init(void)
+{
+	int ret;
+	uint32_t val;
+
+	/* Check if it's clamshell or convertible */
+
+	ret = cros_cbi_get_fw_config(FORM_FACTOR, &val);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FORM_FACTOR);
+		return;
+	}
+	if (val == CLAMSHELL)
+		return;
+
+	/* check which motion sensors are used */
+	if (cros_cbi_ssfc_check_match(
+		    CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)))) {
+		base_alt_sensor = base_bmi323;
+		ccprints("BASE ACCEL IS BMI323");
+	} else {
+		base_alt_sensor = base_bma422;
+		ccprints("BASE ACCEL IS BMA422");
+	}
+
+	motion_sensors_check_ssfc();
+
+	if (base_alt_sensor == base_bma422) {
+		/* BMA422 not support base gyro. */
+		motion_sensor_count = 2;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C + 1);
