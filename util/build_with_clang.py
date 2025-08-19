@@ -35,7 +35,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # git grep  --name-only 'CHIP:=stm32' | xargs grep -L \
     #   'CHIP_FAMILY:=stm32f0' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "baklava",
-    "discovery",
     "gingerbread",
     "hatch_fp",
     "hyperdebug",
@@ -50,7 +49,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "c2d2",
     "coffeecake",
     "dingdong",
-    "discovery-stm32f072",
     "don",
     "duck",
     "eel",
@@ -67,7 +65,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "masterball",
     "minimuffin",
     "moonball",
-    "pdeval-stm32f072",
     "prism",
     "servo_micro",
     "servo_v4",
