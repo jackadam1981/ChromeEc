@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9400ab_7b8cc87c",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T20:07:26Z",
+      "side": 1,
+      "message": "I created def `FP_MAX_CAPTURE_TYPES` in `ec_commands.h` and used it here.",
+      "parentUuid": "a68131b2_bdcd0952",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "036147383e0323ac79a9f1afd4a4d4a96036edb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e40aae7_9c655d2e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-19T16:28:09Z",
       "side": 1,
       "message": "You need to call `free` in the error return path",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "036147383e0323ac79a9f1afd4a4d4a96036edb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ace991f_e2408559",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T20:07:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e40aae7_9c655d2e",
       "range": {
         "startLine": 139,
         "startChar": 0,

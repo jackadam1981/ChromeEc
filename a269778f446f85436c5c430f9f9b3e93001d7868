@@ -117,6 +117,30 @@
       },
       "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44929642_f2652627",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T20:07:26Z",
+      "side": 1,
+      "message": "I am checking if bpp \u003d 0 and return an invalid error.",
+      "parentUuid": "0b51d664_2e598a3a",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
