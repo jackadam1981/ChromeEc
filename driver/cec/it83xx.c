@@ -18,12 +18,10 @@
 #include "system.h"
 
 #include <zephyr/device.h>
-#include <zephyr/irq.h>
-#ifndef CONFIG_TEST
 #include <zephyr/drivers/pinctrl.h>
+#include <zephyr/irq.h>
 
 #include <chip_chipregs.h>
-#endif
 #endif
 
 #define CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
@@ -42,7 +40,7 @@
 #if DT_NODE_EXISTS(IT8XXX2_CEC_NODE)
 PINCTRL_DT_DEFINE(IT8XXX2_CEC_NODE);
 #endif
-test_mockable_static void it8xxx2_cec_alt_func_enable(int enable)
+static void it8xxx2_cec_alt_func_enable(int enable)
 {
 #if DT_NODE_EXISTS(IT8XXX2_CEC_NODE)
 	const struct pinctrl_dev_config *pcfg =
@@ -483,10 +481,15 @@ void cec_interrupt(void)
 	task_clear_pending_irq(IT83XX_IRQ_CEC);
 }
 
-#if defined(CONFIG_ZEPHYR) && !defined(CONFIG_TEST)
-static void it83xx_cec_isr(const void *user)
+#ifdef CONFIG_ZEPHYR
+static void it8xxx2_cec_isr(const void *user)
 {
 	cec_interrupt();
+}
+
+test_mockable_static void it8xxx2_cec_irq_connect(void)
+{
+	IRQ_CONNECT(IT83XX_IRQ_CEC, 0, it8xxx2_cec_isr, 0, 0);
 }
 #endif
 
@@ -540,8 +543,8 @@ static int it83xx_cec_set_enable(int port, uint8_t enable)
 
 		/* Enable CEC interrupt */
 		task_clear_pending_irq(IT83XX_IRQ_CEC);
-#if defined(CONFIG_ZEPHYR) && !defined(CONFIG_TEST)
-		IRQ_CONNECT(IT83XX_IRQ_CEC, 0, it83xx_cec_isr, 0, 0);
+#ifdef CONFIG_ZEPHYR
+		it8xxx2_cec_irq_connect();
 #endif
 		task_enable_irq(IT83XX_IRQ_CEC);
 
