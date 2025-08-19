@@ -93,6 +93,30 @@
       },
       "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b51d664_2e598a3a",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-19T16:28:09Z",
+      "side": 1,
+      "message": "I see. But you still need to return an error in the case where you don\u0027t find the capture type.",
+      "parentUuid": "2d2c5200_0c1d4ad5",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
