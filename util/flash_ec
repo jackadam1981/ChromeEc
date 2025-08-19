@@ -110,7 +110,6 @@ BOARDS_NPCX_SPI=(
 	buccaneer
 	gwendolin
 	helipilot
-	rosalia
 )
 
 BOARDS_NPCX_INT_SPI=(
@@ -436,7 +435,7 @@ case "${BOARD}" in
 	oak_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
 	bloonchipper|buccaneer|dartmonkey|gwendolin|hatch_fp|helipilot| \
-				 nami_fp|nocturne_fp|rosalia )
+				 nami_fp|nocturne_fp )
 		MCU="fpmcu"
 		;;
 	dingdong|hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;

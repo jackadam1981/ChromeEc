@@ -124,7 +124,6 @@ parse-boards() {
     helipilot
     nucleo-dartmonkey
     nucleo-h743zi
-    rosalia
   )
 
   # Board groups
