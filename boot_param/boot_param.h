@@ -18,10 +18,12 @@ extern "C" {
 #define BOOT_PARAM_VERSION 0
 
 /* Size of BootParam structure in bytes */
-#if BOOT_PARAM_VERSION == 1
-#define BOOT_PARAM_SIZE 1045
-#else /* BOOT_PARAM_VERSION == 0 */
+#if BOOT_PARAM_VERSION == 0
 #define BOOT_PARAM_SIZE 820
+#elif BOOT_PARAM_VERSION == 1
+#define BOOT_PARAM_SIZE 1045
+#else /* BOOT_PARAM_VERSION */
+#error "Unsupported BOOT_PARAM_VERSION"
 #endif /* BOOT_PARAM_VERSION */
 
 /* Get (part of) BootParam structure: [offset .. offset + size) */

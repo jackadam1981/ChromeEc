@@ -922,7 +922,7 @@ static inline void set_cbor_bstr_hdr16(
 	/* [OUT] header to be filled */
 	uint8_t hdr[3],
 	/* [IN] size of bstr value */
-	size_t size
+	uint16_t size
 )
 {
 	hdr[0] = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES2);
