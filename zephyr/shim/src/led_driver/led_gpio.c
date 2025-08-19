@@ -71,8 +71,11 @@ void led_set_color_with_node(const struct led_pins_node_t *pins_node)
 
 /*
  * Iterate through LED pins nodes to find the color matching node.
+ * brightness unused, do not use brightness = 0 to turn LED off, use color =
+ * LED_OFF
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id)
+void led_set_color(enum led_color color, enum ec_led_id led_id,
+		   uint8_t brightness)
 {
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		if ((pins_node[i]->led_color == color) &&
@@ -110,13 +113,13 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 		if ((br_color != EC_LED_COLOR_INVALID) &&
 		    (brightness[br_color] != 0)) {
 			color_set = true;
-			led_set_color(pins_node[i]->led_color, led_id);
+			led_set_color(pins_node[i]->led_color, led_id, 100);
 		}
 	}
 
 	/* If no color was set, turn off the LED */
 	if (!color_set)
-		led_set_color(LED_OFF, led_id);
+		led_set_color(LED_OFF, led_id, 100);
 
 	return EC_SUCCESS;
 }

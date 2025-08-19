@@ -82,10 +82,11 @@ const struct led_pins_node_t *pins_node[] = {
  * converted to duty cycle in ns (pulse_ns)
  */
 void led_set_color_with_pins(const struct pwm_pin_t *pwm_pins,
-			     uint8_t pins_count)
+			     uint8_t pins_count, uint8_t brightness)
 {
 	for (int j = 0; j < pins_count; j++) {
-		pwm_pins[j].pwm->pulse_ns = pwm_pins[j].pulse_ns;
+		pwm_pins[j].pwm->pulse_ns =
+			pwm_pins[j].pulse_ns * brightness / 100;
 		pwm_pins[j].pwm->pulse_step_ns = pwm_pins[j].pulse_step_ns;
 	}
 }
@@ -93,13 +94,15 @@ void led_set_color_with_pins(const struct pwm_pin_t *pwm_pins,
 /*
  * Iterate through LED pins nodes to find the color matching node.
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id)
+void led_set_color(enum led_color color, enum ec_led_id led_id,
+		   uint8_t brightness)
 {
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		if ((pins_node[i]->led_color == color) &&
 		    (pins_node[i]->led_id == led_id)) {
 			led_set_color_with_pins(pins_node[i]->pwm_pins,
-						pins_node[i]->pins_count);
+						pins_node[i]->pins_count,
+						brightness);
 			break;
 		}
 	}
@@ -224,7 +227,7 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 		}
 	}
 
-	led_set_color_with_pins(cur_color, pins_count);
+	led_set_color_with_pins(cur_color, pins_count, 100);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
@@ -258,13 +261,14 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 		if (br_color != EC_LED_COLOR_INVALID &&
 		    brightness[br_color] != 0) {
 			color_set = true;
-			led_set_color(pins_node[i]->led_color, led_id);
+			led_set_color(pins_node[i]->led_color, led_id,
+				      brightness[br_color]);
 		}
 	}
 
 	/* If no color was set, turn off the LED */
 	if (!color_set)
-		led_set_color(LED_OFF, led_id);
+		led_set_color(LED_OFF, led_id, 0);
 
 	led_asynchronous_apply_color(false);
 	return EC_SUCCESS;
