@@ -120,6 +120,12 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	return 0;
 }
 
+/* TODO(b/398899644): implement fp_sensor_get_info_v2 in zephyr */
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size)
+{
+	return 0;
+}
+
 void fp_configure_detect(void)
 {
 	fingerprint_set_mode(fp_sensor_dev, FINGERPRINT_SENSOR_MODE_DETECT);
