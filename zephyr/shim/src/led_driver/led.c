@@ -332,5 +332,5 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 
 	led_auto_control(led_id, 0);
 
-	led_set_color(color, led_id);
+	led_set_color(color, led_id, 100);
 }
