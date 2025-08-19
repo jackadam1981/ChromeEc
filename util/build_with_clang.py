@@ -65,7 +65,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "staff",
     "star",
     "tigertail",
-    "wand",
     "whitebeard",
     "zed",
     # Boards that use CHIP:=mchp
