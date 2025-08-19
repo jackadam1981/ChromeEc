@@ -142,10 +142,12 @@ struct led_pattern_node_t {
 /**
  * Set LED color using color enum
  *
- * @param color		LED Color to enable
- * @param led_id	LED ID to set the color for
+ * @param color			LED Color to enable
+ * @param led_id		LED ID to set the color for
+ * @param brightness	Brightness to set the color to
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id);
+void led_set_color(enum led_color color, enum ec_led_id led_id,
+		   uint8_t brightness);
 
 /**
  * Set LED color using pattern node
