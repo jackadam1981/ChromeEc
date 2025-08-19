@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2fb322a_ef4ae030",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-19T16:20:24Z",
+      "side": 1,
+      "message": "Still there",
+      "parentUuid": "3ea9d7de_5e72df13",
+      "range": {
+        "startLine": 59,
+        "startChar": 66,
+        "endLine": 59,
+        "endChar": 67
+      },
+      "revId": "a9a515878ca3a63b8e432ecb5cb0f8217aeffee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b73ab77_200ff858",
         "filename": "driver/fingerprint/elan/elan_private.c",
         "patchSetId": 15
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-18T22:41:35Z",
       "side": 1,
       "message": "```suggestion\n\tCPRINTF(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d%s\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\n\", __func__);\n\tmemcpy(\u0026resp-\u003esensor_info, \u0026elan_sensor_info,\n\t       sizeof(struct fp_sensor_info));\n\n\tmemcpy(\u0026resp-\u003eimage_frame_params, \u0026elan_image_frame_params,\n\t       sizeof(elan_image_frame_params));\n\n\tuint16_t id \u003d 0;\n\tif (elan_get_hwid(\u0026id)) {\n\t\treturn EC_RES_ERROR;\n\t}\n```",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "a9a515878ca3a63b8e432ecb5cb0f8217aeffee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4143ad74_eb3a7c6e",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-19T16:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b73ab77_200ff858",
       "range": {
         "startLine": 227,
         "startChar": 0,
