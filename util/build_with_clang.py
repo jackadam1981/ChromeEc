@@ -303,7 +303,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     "krane",
     "mushu",
     "makomo",
-    "oak",
     "terrador",
     "waddledoo",
 ]
