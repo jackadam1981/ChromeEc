@@ -139,7 +139,7 @@ int charge_keep_power_off(void);
  * This API is being deprecated. It has been used only for LED control and is
  * being replaced by led_pwr_get_state.
  */
-#if defined(BOARD_ELM) || defined(BOARD_REEF_MCHP) || defined(TEST_BUILD)
+#if defined(BOARD_ELM) || defined(TEST_BUILD)
 uint32_t charge_get_led_flags(void);
 #endif
 
