@@ -207,7 +207,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # Boards that use CORE:=minute-ia
     "arcada_ish",
     "drallion_ish",
-    "tglrvp_ish",
 ]
 
 NDS32_BOARDS = [
