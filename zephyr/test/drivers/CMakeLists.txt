@@ -114,6 +114,10 @@ add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_WATCHDOG_HELPER watchdog_helper)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_LED_PWM_FADE led_pwm_fade)
 add_subdirectory_ifdef(CONFIG_LINK_TEST_SUITE_TABLETMODE_INTERRUPT tabletmode_interrupt)
 
+zephyr_include_directories_ifdef(CONFIG_LINK_TEST_SUITE_CEC_COMMON "cec_common/include")
+zephyr_include_directories_ifdef(CONFIG_LINK_TEST_SUITE_CEC_BITBANG "cec_common/include")
+zephyr_include_directories_ifdef(CONFIG_LINK_TEST_SUITE_CEC_IT83XX "cec_common/include")
+
 get_target_property(TEST_SOURCES_NEW app SOURCES)
 
 # Check to make sure at least one suite was added
