@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "937422bc_897513e0",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T23:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfdc1ff5_65c50966",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 38
+      },
+      "revId": "89c75ff097853f415ebbe9983721384f4892ecef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff528ce_13a97de3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-19T23:01:00Z",
       "side": 1,
       "message": "You need to call `free` in this case to avoid leaking",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 330,
+        "endChar": 26
+      },
+      "revId": "89c75ff097853f415ebbe9983721384f4892ecef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ba53ad_4fc1f4c7",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T23:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff528ce_13a97de3",
       "range": {
         "startLine": 330,
         "startChar": 2,
