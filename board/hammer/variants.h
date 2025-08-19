@@ -35,8 +35,6 @@
 #define CONFIG_USB_PID 0x502b
 #elif defined(BOARD_STAR)
 #define CONFIG_USB_PID 0x5052
-#elif defined(BOARD_WAND)
-#define CONFIG_USB_PID 0x502d
 #elif defined(BOARD_WHISKERS)
 #define CONFIG_USB_PID 0x5030
 #elif defined(BOARD_WHITEBEARD)
@@ -50,7 +48,7 @@
 #ifdef SECTION_IS_RW
 
 /* Touchpad interface, firmware size and physical dimension. */
-#if defined(BOARD_HAMMER) || defined(BOARD_WAND)
+#if defined(BOARD_HAMMER)
 #define HAS_I2C_TOUCHPAD
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
@@ -177,14 +175,13 @@
 #endif
 
 /* Assistant key */
-#if defined(BOARD_HAMMER) || defined(BOARD_WAND) || defined(BOARD_WHISKERS)
+#if defined(BOARD_HAMMER) || defined(BOARD_WHISKERS)
 
 #define CONFIG_KEYBOARD_ASSISTANT_KEY
 #endif
 
 /* Backlight */
-#if defined(BOARD_HAMMER) || defined(BOARD_STAFF) || defined(BOARD_WAND) || \
-	defined(BOARD_WHISKERS)
+#if defined(BOARD_HAMMER) || defined(BOARD_STAFF) || defined(BOARD_WHISKERS)
 /*
  * Even with this option, we detect the backlight presence using a PU/PD on the
  * PWM pin. Not defining this totally disables support.
@@ -201,7 +198,7 @@
 #define KBLIGHT_PWM_FREQ 50000 /* Hz */
 #endif
 
-#endif /* BOARD_HAMMER/WAND/WHISKERS */
+#endif /* BOARD_HAMMER/WHISKERS */
 
 /* GMR sensor for tablet mode detection */
 #if defined(BOARD_DON) || defined(BOARD_MASTERBALL) ||        \
