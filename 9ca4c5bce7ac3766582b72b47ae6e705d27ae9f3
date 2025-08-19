@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed49707f_a01990ba",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 33
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T21:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9c43aa_9ac1dc59",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "9ca4c5bce7ac3766582b72b47ae6e705d27ae9f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a1732fa_8400e4ce",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-19T21:14:25Z",
       "side": 1,
       "message": "```suggestion\n#define FP_MAX_CAPTURE_TYPES 9\n```",
+      "range": {
+        "startLine": 8356,
+        "startChar": 0,
+        "endLine": 8356,
+        "endChar": 31
+      },
+      "revId": "9ca4c5bce7ac3766582b72b47ae6e705d27ae9f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8687ddb6_c3b2c6de",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 8356,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T21:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1732fa_8400e4ce",
       "range": {
         "startLine": 8356,
         "startChar": 0,
