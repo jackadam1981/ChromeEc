@@ -51,7 +51,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "duck",
     "eel",
     "elm",
-    "fluffy",
     "hammer",
     "jewel",
     "kakadu",
