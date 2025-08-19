@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce13f3a_cee67852",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T04:03:38Z",
+      "side": 1,
+      "message": "I believe in final implementation, we need to return the corresponding `image_frame_param` because it contains the frame size as well. \n\n```\ntest_export_static uint8_t\nget_image_frame_params(struct fp_image_frame_params \u0026image_frame_params)\n```\n\nThis is done in a later CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6515354/21",
+      "parentUuid": "dad56c83_f14f1ae6",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a7250d9_82710b25",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-18T22:46:45Z",
       "side": 1,
       "message": "I would just return here. Then if we get to the end of the function, we should return an error.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "a269778f446f85436c5c430f9f9b3e93001d7868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2c5200_0c1d4ad5",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T04:03:38Z",
+      "side": 1,
+      "message": "I believe I did that to free the `info` buffer before returning.",
+      "parentUuid": "2a7250d9_82710b25",
       "range": {
         "startLine": 147,
         "startChar": 3,

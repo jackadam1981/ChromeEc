@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "488aefc8_4724f857",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-19T04:03:38Z",
+      "side": 1,
+      "message": "added `constexpr uint16_t kMaxCaptureTypes \u003d 8;`",
+      "parentUuid": "6321724a_b74e2705",
+      "range": {
+        "startLine": 132,
+        "startChar": 41,
+        "endLine": 132,
+        "endChar": 62
+      },
+      "revId": "307163e248b1ea3ff90086a72c203cf19baeb25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d8c408_e1898df9",
