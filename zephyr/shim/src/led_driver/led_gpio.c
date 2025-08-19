@@ -153,6 +153,7 @@ const struct led_pins_node_t *led_get_node(enum led_color color,
 }
 #endif /* TEST_BUILD */
 
+// LCOV_EXCL_START
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
 void led_asynchronous_apply_color(bool tmp)
 {
@@ -161,3 +162,4 @@ void led_asynchronous_apply_color(bool tmp)
 	 * applied asynchronously. This function is left empty on purpose.
 	 */
 }
+// LCOV_EXCL_STOP
