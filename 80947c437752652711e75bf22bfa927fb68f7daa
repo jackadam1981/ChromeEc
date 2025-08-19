@@ -51,6 +51,24 @@
       "parentUuid": "fd7dc419_4dfaf221",
       "revId": "80947c437752652711e75bf22bfa927fb68f7daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9b5d7c_cc767b24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-08-19T09:37:12Z",
+      "side": 1,
+      "message": "Thanks. I cherry-picked it under this CL. I’m getting the source of the `firmware-skywalker-16378.B` branch and setting up the chroot. I will try to build this change locally in my Skywalker chroot once it’s ready.",
+      "parentUuid": "b7182bb0_ce006fe3",
+      "revId": "80947c437752652711e75bf22bfa927fb68f7daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
