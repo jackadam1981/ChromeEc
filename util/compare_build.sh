@@ -122,7 +122,6 @@ parse-boards() {
     buccaneer
     helipilot
     nucleo-dartmonkey
-    rosalia
   )
 
   # Board groups

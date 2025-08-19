@@ -44,8 +44,7 @@ CLANG_BOARDS:= \
 	helipilot \
 	nami_fp \
 	nocturne_fp \
-	nucleo-dartmonkey \
-	rosalia \
+	nucleo-dartmonkey
 
 ifeq ($(filter $(BOARD), $(CLANG_BOARDS)), $(BOARD))
 CROSS_COMPILE_CC_NAME=clang
