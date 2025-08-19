@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bab1597_2ca4123e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-19T16:54:15Z",
+      "side": 1,
+      "message": "```suggestion\nThe `FP_SENSOR_IMAGE_SIZE_EGIS` macro has been updated to correctly\ncalculate the required size for the image buffer. This new size is based\non the largest possible test images.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 45
+      },
+      "revId": "14d31a3814d8ade5763799d0bf14a55c1727ba2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
