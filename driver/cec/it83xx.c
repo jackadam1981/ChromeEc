@@ -18,12 +18,10 @@
 #include "system.h"
 
 #include <zephyr/device.h>
-#include <zephyr/irq.h>
-#ifndef CONFIG_TEST
 #include <zephyr/drivers/pinctrl.h>
+#include <zephyr/irq.h>
 
 #include <chip_chipregs.h>
-#endif
 #endif
 
 #define CPRINTF(format, args...) cprintf(CC_CEC, format, ##args)
@@ -42,7 +40,7 @@
 #if DT_NODE_EXISTS(IT8XXX2_CEC_NODE)
 PINCTRL_DT_DEFINE(IT8XXX2_CEC_NODE);
 #endif
-test_mockable_static void it8xxx2_cec_alt_func_enable(int enable)
+static void it8xxx2_cec_alt_func_enable(int enable)
 {
 #if DT_NODE_EXISTS(IT8XXX2_CEC_NODE)
 	const struct pinctrl_dev_config *pcfg =

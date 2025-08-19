@@ -8,10 +8,14 @@
 #include "test/drivers/test_state.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/drivers/pinctrl.h>
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
 
-FAKE_VOID_FUNC(it8xxx2_cec_alt_func_enable, int);
+FAKE_VALUE_FUNC(int, pinctrl_lookup_state, const struct pinctrl_dev_config *,
+		uint8_t, const struct pinctrl_state **);
+FAKE_VALUE_FUNC(int, pinctrl_configure_pins, const pinctrl_soc_pin_t *, uint8_t,
+		uintptr_t);
 FAKE_VOID_FUNC(it8xxx2_cec_clock_enable_peripheral, int);
 
 /* From chip/it83xx/intc.h, but that file has inline assembly. */
@@ -28,6 +32,9 @@ struct mock_it83xx_cec_regs mock_it83xx_cec_regs;
 static void cec_it83xx_after(void *fixture)
 {
 	const struct cec_drv *drv = cec_config[TEST_PORT].drv;
+
+	RESET_FAKE(pinctrl_lookup_state);
+	RESET_FAKE(pinctrl_configure_pins);
 
 	/* Disable CEC after each test to reset driver state */
 	drv->set_enable(TEST_PORT, 0);
