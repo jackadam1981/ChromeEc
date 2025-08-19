@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c905ad5_a04a5a93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-19T19:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a976abf_f8517338",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1b11f4d_10fcf881",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-18T23:27:36Z",
       "side": 1,
       "message": "once it is set in body_detect_init(), it does not have to be set again, it is not a local variable.",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a39990_3970054e",
+        "filename": "zephyr/lib/vsensor/body_detection/body_detection.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-19T19:25:16Z",
+      "side": 1,
+      "message": "This is one of the reasons I set this to a WIP. I didn\u0027t have the time yet to verify that init was actually called before all the other functions. I found the right place for this now.",
+      "parentUuid": "b1b11f4d_10fcf881",
       "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d87ca767_9d39cb5c",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-19T19:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b30d2504_30e2e6ce",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea9f91a9_cbe07ba9",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-08-18T23:27:36Z",
       "side": 1,
       "message": "nit: indentation",
+      "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e1fc7c_a9034376",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-19T19:25:16Z",
+      "side": 1,
+      "message": "Oh, it looks like the previous DT_FOREACH_CHILD not ending with `;` was causing clang-format to indent this line.",
+      "parentUuid": "ea9f91a9_cbe07ba9",
       "revId": "298dd55173300aacdcd4d88dbae8ea4856c11736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
