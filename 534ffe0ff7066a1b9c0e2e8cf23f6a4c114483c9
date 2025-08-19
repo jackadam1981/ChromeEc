@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "081a5893_a201efe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-19T19:47:42Z",
+      "side": 1,
+      "message": "You might want to mention in this commit message that SKU2 exists, just to make it slightly less likely that someone comes by in the future and reverts this change to align with SKU2, instead of creating another VIF like they should.",
+      "revId": "534ffe0ff7066a1b9c0e2e8cf23f6a4c114483c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "957a9071_f1d61111",
