@@ -18,7 +18,14 @@ extern "C" {
 #define FP_SENSOR_HWID_EGIS 630
 #define FP_SENSOR_RES_X_EGIS 80
 #define FP_SENSOR_RES_Y_EGIS 64
-#define FP_SENSOR_IMAGE_SIZE_EGIS (FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS)
+/**
+ * @brief Largest image size
+ *
+ * Since this is used to size the buffer that holds images, this must be the
+ * largest possible image size, which is the 16-bpp test image.
+ */
+#define FP_SENSOR_IMAGE_SIZE_EGIS \
+	(FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS * sizeof(uint16_t))
 #define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024)
 #define FP_MAX_FINGER_COUNT_EGIS 3
 #define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 15
