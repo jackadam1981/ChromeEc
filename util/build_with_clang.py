@@ -48,7 +48,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "eel",
     "elm",
     "hammer",
-    "hoho",
     "jewel",
     "kakadu",
     "kappa",
