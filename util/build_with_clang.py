@@ -80,7 +80,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "banshee",
     "berknip",
     "bloog",
-    "boldar",
     "brask",
     "brya",
     "bugzzy",
