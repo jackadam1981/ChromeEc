@@ -250,8 +250,6 @@ RISCV_BOARDS = [
 ]
 
 BOARDS_THAT_FAIL_WITH_CLANG = [
-    # Boards that use CHIP:=stm32 *and* CHIP_FAMILY:=stm32f0
-    "chocodile_vpdmcu",  # compilation error: b/254710459
     # Boards that use CHIP:=npcx
     "garg",
     # Boards that don't fit in flash with clang
