@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bdce1f_16726d32",
+        "filename": "zephyr/program/ocelot/ojal/project.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-20T22:33:48Z",
+      "side": 1,
+      "message": "Suggest adding `CONFIG_USBC_PDC_RTS54XX_CONSOLE_FW_UPDATER\u003dy` for easy PDC FW update during development. (https://chromium.googlesource.com/chromiumos/platform/pdc/+/refs/heads/main/docs/pdc_ec_console_updater.md)",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "566d0659013fca75a0d69b58515c9aeea1466424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
