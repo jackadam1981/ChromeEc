@@ -15,6 +15,7 @@
 #include "battery_smart.h"
 #include "charge_manager.h"
 #include "chipset.h"
+#include "dps.h"
 #include "drivers/ucsi_v3.h"
 #include "ec_commands.h"
 #include "hooks.h"
@@ -2369,12 +2370,16 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	int pdo_index = 0, selected_port;
 	uint32_t selected_pdo;
+	int max_request_mv = pdc_max_request_mv;
 
 	pdc_print_pdo_info(config->connector_num, &port->snk_policy.src);
 
+	if (IS_ENABLED(CONFIG_USB_PD_DPS) && dps_is_enabled())
+		max_request_mv = MIN(max_request_mv, dps_get_dynamic_voltage());
+
 	pdo_index = pd_select_best_pdo(PDO_MAX_OBJECTS,
 				       port->snk_policy.src.pdos,
-				       pdc_max_request_mv, &selected_pdo);
+				       max_request_mv, &selected_pdo);
 
 	/* No valid PDOs found, move to next state */
 	if (pdo_index == -1) {
@@ -2609,6 +2614,10 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state =
 				SNK_ATTACHED_READ_POWER_LEVEL;
 		}
+#ifdef HAS_TASK_DPS
+		/* Wake DPS task to evaluate the SrcCaps */
+		task_wake(TASK_ID_DPS);
+#endif
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_READ_POWER_LEVEL:
 		port->snk_attached_local_state = SNK_ATTACHED_SYNC_CHARGE_MGR;

@@ -95,8 +95,9 @@ test_export_static void dps_enable(bool en)
 
 	if (!is_enabled) {
 		/* issue a new PD request for a default voltage */
-		if (dps_port != CHARGE_PORT_NONE)
-			pd_dpm_request(dps_port, DPM_REQUEST_NEW_POWER_LEVEL);
+		if (dps_port != CHARGE_PORT_NONE) {
+			pd_set_new_power_request(dps_port);
+		}
 	}
 }
 
@@ -541,7 +542,7 @@ void dps_task(void *u)
 		if (sample_count == dps_config.k_sample) {
 			dynamic_mv = curr_cand.mv;
 			dps_port = curr_cand.port;
-			pd_dpm_request(dps_port, DPM_REQUEST_NEW_POWER_LEVEL);
+			pd_set_new_power_request(dps_port);
 			sample_count = 0;
 			atomic_clear_bits(&flag, (DPS_FLAG_SAMPLED |
 						  DPS_FLAG_NEED_MORE_PWR));
