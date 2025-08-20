@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0258eea_81bbd27b",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-20T22:08:16Z",
+      "side": 1,
+      "message": "(GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)",
+      "range": {
+        "startLine": 29,
+        "startChar": 22,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "976b6f113c65aa5a0fe5cb744f7efd1797c26c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2e887a_cff78552",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-20T22:08:16Z",
+      "side": 1,
+      "message": "should this be `GPIO_OUTPUT_INIT_HIGH` instead?",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "976b6f113c65aa5a0fe5cb744f7efd1797c26c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15469bd0_bf5333a7",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-20T22:08:16Z",
+      "side": 1,
+      "message": "should this be an INPUT? the EC typically monitors PROCHOT rather than asserting it.",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "976b6f113c65aa5a0fe5cb744f7efd1797c26c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7945d99_030342cb",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-20T22:08:16Z",
+      "side": 1,
+      "message": "soc_caterr?",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 29
+      },
+      "revId": "976b6f113c65aa5a0fe5cb744f7efd1797c26c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
