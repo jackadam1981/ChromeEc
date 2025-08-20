@@ -4,22 +4,35 @@
  */
 
 #include "charge_state.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "power.h"
 #include "temp_sensor/temp_sensor.h"
+#include "usb_pd.h"
 
 #define POLL_COUNT 3
-#define LIMIT_LEVELS 4
+#define CHARGER_LIMIT_LEVELS 4
+#define TYPEC_LIMIT_LEVELS 3
+#define TEMP_MAX 120
+#define TEMP_MIN 0
 
-static uint8_t limit_level = 0;
-static uint8_t trigger_cnt = 0;
-static uint8_t release_cnt = 0;
+static int current_limit;
+
+static uint8_t charger_limit_level = 0;
+static uint8_t charger_trigger_cnt = 0;
+static uint8_t charger_release_cnt = 0;
+
+static uint8_t typec_limit_level = 0;
+static uint8_t typec_trigger_cnt = 0;
+static uint8_t typec_release_cnt = 0;
 
 typedef enum {
 	LIMIT_NONE = 9999,
 	LIMIT_3500 = 3500,
 	LIMIT_3000 = 3000,
-	LIMIT_2000 = 2000
+	LIMIT_2000 = 2000,
+	LIMIT_1000 = 1000,
+	LIMIT_500 = 500
 } charge_limit_t;
 
 typedef struct {
@@ -27,64 +40,164 @@ typedef struct {
 	uint8_t release_temp;
 } temp_limit_t;
 
-static const charge_limit_t limit_table[LIMIT_LEVELS] = {
+static const charge_limit_t charger_limit_table[CHARGER_LIMIT_LEVELS] = {
 	LIMIT_NONE, LIMIT_3500, LIMIT_3000, LIMIT_2000
 };
 
-static const temp_limit_t charge_temp_limits[LIMIT_LEVELS - 1] = { { 47, 43 },
-								   { 52, 47 },
-								   { 56, 52 } };
+static const charge_limit_t typec_limit_table[TYPEC_LIMIT_LEVELS] = {
+	LIMIT_NONE, LIMIT_1000, LIMIT_500
+};
+
+static const temp_limit_t charge_temp_limits[CHARGER_LIMIT_LEVELS - 1] = {
+	{ 47, 43 },
+	{ 52, 47 },
+	{ 56, 52 }
+};
+
+static const temp_limit_t typec_5v_temp_limits[TYPEC_LIMIT_LEVELS - 1] = {
+	{ 68, 65 },
+	{ 73, 70 }
+};
+
+static const temp_limit_t typec_chg_temp_limits[TYPEC_LIMIT_LEVELS - 1] = {
+	{ 60, 58 },
+	{ 65, 62 }
+};
+
+static bool temp_is_valid(int temp)
+{
+	return temp > TEMP_MIN && temp < TEMP_MAX;
+}
 
 static void update_charge_limit(void)
 {
 	int charger_temp_k, charger_temp;
-
-	if (power_get_state() != POWER_S0) {
-		limit_level = 0;
-		trigger_cnt = 0;
-		release_cnt = 0;
-		return;
-	}
 
 	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
 			 &charger_temp_k);
 
 	charger_temp = K_TO_C(charger_temp_k);
 
-	if (limit_level < LIMIT_LEVELS - 1) {
-		temp_limit_t chg = charge_temp_limits[limit_level];
+	if (!temp_is_valid(charger_temp)) {
+		return;
+	}
+
+	if (charger_limit_level < CHARGER_LIMIT_LEVELS - 1) {
+		temp_limit_t chg = charge_temp_limits[charger_limit_level];
 
 		if (charger_temp >= chg.trigger_temp) {
-			if (++trigger_cnt >= POLL_COUNT) {
-				limit_level++;
-				trigger_cnt = 0;
-				release_cnt = 0;
+			if (++charger_trigger_cnt >= POLL_COUNT) {
+				charger_limit_level++;
+				charger_trigger_cnt = 0;
+				charger_release_cnt = 0;
 			}
 		} else {
-			trigger_cnt = 0;
+			charger_trigger_cnt = 0;
 		}
 	}
 
-	if (limit_level > 0) {
-		temp_limit_t chg = charge_temp_limits[limit_level - 1];
+	if (charger_limit_level > 0) {
+		temp_limit_t chg = charge_temp_limits[charger_limit_level - 1];
 
 		if (charger_temp < chg.release_temp) {
-			if (++release_cnt >= POLL_COUNT) {
-				limit_level--;
-				trigger_cnt = 0;
-				release_cnt = 0;
+			if (++charger_release_cnt >= POLL_COUNT) {
+				charger_limit_level--;
+				charger_trigger_cnt = 0;
+				charger_release_cnt = 0;
 			}
 		} else {
-			release_cnt = 0;
+			charger_release_cnt = 0;
 		}
 	}
 }
-DECLARE_HOOK(HOOK_SECOND, update_charge_limit, HOOK_PRIO_TEMP_SENSOR_DONE);
+
+static void update_typec_limit(void)
+{
+	int typec_5v_temp_k, typec_5v_temp;
+	int typec_chg_temp_k, typec_chg_temp;
+
+	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_5v)),
+			 &typec_5v_temp_k);
+	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
+			 &typec_chg_temp_k);
+
+	typec_5v_temp = K_TO_C(typec_5v_temp_k);
+	typec_chg_temp = K_TO_C(typec_chg_temp_k);
+
+	if (!temp_is_valid(typec_5v_temp) || !temp_is_valid(typec_chg_temp)) {
+		return;
+	}
+
+	if (typec_limit_level < TYPEC_LIMIT_LEVELS - 1) {
+		temp_limit_t typec_5v = typec_5v_temp_limits[typec_limit_level];
+		temp_limit_t typec_chg =
+			typec_chg_temp_limits[typec_limit_level];
+
+		if (typec_5v_temp >= typec_5v.trigger_temp &&
+		    typec_chg_temp >= typec_chg.trigger_temp) {
+			if (++typec_trigger_cnt >= POLL_COUNT) {
+				typec_limit_level++;
+				typec_trigger_cnt = 0;
+				typec_release_cnt = 0;
+			}
+		} else {
+			typec_trigger_cnt = 0;
+		}
+	}
+
+	if (typec_limit_level > 0) {
+		temp_limit_t typec_5v =
+			typec_5v_temp_limits[typec_limit_level - 1];
+		temp_limit_t typec_chg =
+			typec_chg_temp_limits[typec_limit_level - 1];
+
+		if (typec_5v_temp < typec_5v.release_temp ||
+		    typec_chg_temp < typec_chg.release_temp) {
+			if (++typec_release_cnt >= POLL_COUNT) {
+				typec_limit_level--;
+				typec_trigger_cnt = 0;
+				typec_release_cnt = 0;
+			}
+		} else {
+			typec_release_cnt = 0;
+		}
+	}
+}
+
+static void update_current_limit(void)
+{
+	int i;
+	bool any_port_is_source = false;
+
+	if (extpower_is_present() && power_get_state() == POWER_S0) {
+		update_charge_limit();
+
+		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+			if (pd_get_power_role(i) == PD_ROLE_SOURCE) {
+				update_typec_limit();
+				any_port_is_source = true;
+			}
+		}
+
+		if (!any_port_is_source) {
+			typec_limit_level = 0;
+			typec_trigger_cnt = 0;
+			typec_release_cnt = 0;
+		}
+	} else {
+		charger_limit_level = typec_limit_level = 0;
+		charger_trigger_cnt = typec_trigger_cnt = 0;
+		charger_release_cnt = typec_release_cnt = 0;
+	}
+
+	current_limit = MIN(charger_limit_table[charger_limit_level],
+			    typec_limit_table[typec_limit_level]);
+}
+DECLARE_HOOK(HOOK_SECOND, update_current_limit, HOOK_PRIO_TEMP_SENSOR_DONE);
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	curr->requested_current =
-		MIN(curr->requested_current, limit_table[limit_level]);
+	curr->requested_current = MIN(curr->requested_current, current_limit);
 
 	return EC_SUCCESS;
 }
