@@ -258,6 +258,14 @@ int tps_rd_received_sop_identity_data_object(
 			    I2C_MSG_READ);
 }
 
+int tps_rw_thunderbolt_configuration(const struct i2c_dt_spec *i2c,
+                     union reg_thunderbolt_configuration *buf,
+                     int flag)
+{
+    return tps_xfer_reg(i2c, REG_THUNDERBOLT_CONFIGURATION, buf->raw_value,
+                sizeof(union reg_thunderbolt_configuration), flag);
+}
+
 int tps_rd_received_sop_prime_identity_data_object(
 	const struct i2c_dt_spec *i2c,
 	union reg_received_identity_data_object *buf)

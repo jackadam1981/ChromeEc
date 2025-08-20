@@ -1392,6 +1392,55 @@ union reg_received_identity_data_object {
 };
 
 /**
+ * @brief 4.52 Thunderbolt Configuration Register (Offset = 0x52)
+ *
+ * Thunderbolt configuration settings and capabilities
+ */
+union reg_thunderbolt_configuration {
+    struct {
+        /* Bits 0 - 7 */
+        uint8_t thunderbolt_vid_enabled : 1;
+        uint8_t thunderbolt_mode_enabled : 1;
+        uint8_t advertise_900ma_implicit_contract : 1;
+        uint8_t i2c3_configurable_delay : 4;
+        uint8_t pl4_handling_enabled : 1;
+
+        /* Bits 8 - 15 */
+        uint8_t reserved0 : 1;
+        uint8_t tbt_emarker_override : 1;
+        uint8_t an_min_power_required : 1;
+        uint8_t reserved1 : 1;
+        uint8_t dual_tbt_retimer_present : 1;
+        uint8_t tbt_retimer_present : 1;
+        uint8_t data_status_hpd_events : 1;
+        uint8_t retimer_compliance_support : 1;
+
+        /* Bits 16 - 23 */
+        uint8_t legacy_tbt_adapter : 1;
+        uint8_t reserved2 : 7;
+
+        /* Bits 24 - 31 */
+        uint8_t reserved3 : 3;
+        uint8_t reserved4 : 1;
+        uint8_t reserved5 : 4;
+
+        /* Bits 32 - 39 */
+        uint8_t reserved6 : 8;
+
+        /* Bits 40 - 47 */
+        uint8_t reserved7 : 8;
+
+        /* Bits 48 - 55 */
+        uint8_t thunderbolt_auto_entry_allowed : 1;
+        uint8_t reserved8 : 7;
+
+        /* Bits 56 - 63 */
+        uint8_t source_vconn_delay : 8;
+    } __packed;
+    uint8_t raw_value[8];
+};
+
+/**
  * @brief 4.62 Data Status Register (Offset 0x5f)
  */
 union reg_data_status {

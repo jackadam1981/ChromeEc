@@ -384,6 +384,18 @@ int tps_rd_received_sop_identity_data_object(
 	union reg_received_identity_data_object *buf);
 
 /**
+ * @brief Read or Write Thunderbolt Configuration
+ *
+ * @param i2c device pointer to i2c device
+ * @param buf pointer where data is stored
+ * @param flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ *
+ * @return 0 on success, else -EIO
+ */
+int tps_rw_thunderbolt_configuration(const struct i2c_dt_spec *i2c,
+                     union reg_thunderbolt_configuration *buf,
+                     int flag);
+/**
  * @brief Read Received SOP Prime Identity data object
  *
  * @param i2c device pointer to i2c device

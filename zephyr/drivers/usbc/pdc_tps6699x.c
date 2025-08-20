@@ -183,6 +183,8 @@ enum cmd_t {
 	CMD_SET_DRS,
 	/** Set Sx App Config register (AP power state) */
 	CMD_SET_SX_APP_CONFIG,
+	/** Set the Burnside Bridge retimer into CTS test mode */
+	CMD_SET_BBR_CTS,
 };
 
 /**
@@ -331,6 +333,8 @@ struct pdc_data_t {
 	union reg_data raw_ucsi_cmd_data;
 	/* Current AP power state */
 	uint8_t sx_state;
+	/* retimer cts mode support*/
+	bool retimer_compliance_support;
 };
 
 /**
@@ -375,6 +379,7 @@ static void task_ucsi(struct pdc_data_t *data,
 static void task_raw_ucsi(struct pdc_data_t *data);
 static int pdc_autonegotiate_sink_reset(struct pdc_data_t *data);
 static void tps_check_and_notify_irq(void);
+static void cmd_set_bbr_cts(struct pdc_data_t *data);
 
 /**
  * @brief PDC port data used in interrupt handler
@@ -974,6 +979,9 @@ static enum smf_state_result st_idle_run(void *o)
 			break;
 		case CMD_SET_SX_APP_CONFIG:
 			cmd_set_sx_app_config(data);
+			break;
+		case CMD_SET_BBR_CTS:
+			cmd_set_bbr_cts(data);
 		}
 	}
 
@@ -1349,6 +1357,44 @@ static void cmd_update_retimer(struct pdc_data_t *data)
 
 	/* Transition to idle state */
 	set_state(data, ST_IDLE);
+	return;
+
+error_recovery:
+	set_state(data, ST_ERROR_RECOVERY);
+}
+
+static void cmd_set_bbr_cts(struct pdc_data_t *data)
+{
+	struct pdc_config_t const *cfg = data->dev->config;
+	union reg_thunderbolt_configuration pdc_tbt_config;
+	int rv;
+
+	LOG_ERR("**** tps: cmd_set_bbr_cts:enter \n");
+
+	/* Read PDC port control */
+	rv = tps_rw_thunderbolt_configuration(&cfg->i2c, &pdc_tbt_config, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("Read port TBT CONFIG control failed");
+		goto error_recovery;
+	}
+
+	pdc_tbt_config.retimer_compliance_support = data->retimer_compliance_support;
+
+	/* Write PDC port control */
+	rv = tps_rw_thunderbolt_configuration(&cfg->i2c, &pdc_tbt_config, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("Write port TBT CONFIG failed");
+		goto error_recovery;
+	}
+
+	/* Command has completed */
+	data->cci_event.command_completed = 1;
+	/* Inform the system of the event */
+	call_cci_event_cb(data);
+
+	/* Transition to idle state */
+	set_state(data, ST_IDLE);
+	LOG_ERR("**** tps: cmd_set_bbr_cts:successful \n");
 	return;
 
 error_recovery:
@@ -2799,6 +2845,21 @@ static int tps_set_ap_power_state(const struct device *dev,
 	return tps_post_command(dev, CMD_SET_SX_APP_CONFIG, NULL);
 }
 
+static int tps_set_bbr_cts(const struct device *dev, bool enable)
+{
+	const struct pdc_config_t *cfg = dev->config;
+
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	data->retimer_compliance_support = enable;
+	LOG_ERR("**** C%d: SET_BBR_CTS = %d", cfg->connector_number, enable);
+	return tps_post_command(dev, CMD_SET_BBR_CTS, NULL);
+}
+
 static int tps_execute_ucsi_cmd(const struct device *dev, uint8_t ucsi_command,
 				uint8_t data_size, uint8_t *command_specific,
 				uint8_t *lpm_data_out,
@@ -2878,6 +2939,7 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_sbu_mux_mode = tps_set_sbu_mux_mode,
 	.get_sbu_mux_mode = tps_get_sbu_mux_mode,
 	.set_ap_power_state = tps_set_ap_power_state,
+	.set_bbr_cts = tps_set_bbr_cts,
 };
 
 static void pdc_interrupt_callback(const struct device *dev,
