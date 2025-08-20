@@ -34,6 +34,24 @@
       "parentUuid": "50c7f579_3df40747",
       "revId": "41bb1883867d00b3a4d7766110886c999fa5ee2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513b83dc_7524733d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-08-20T17:14:00Z",
+      "side": 1,
+      "message": "There is no build dependency on these files. Are they compiled by hand and the binaries copied manually into GCS?",
+      "parentUuid": "ffe31471_b2e4080b",
+      "revId": "41bb1883867d00b3a4d7766110886c999fa5ee2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
