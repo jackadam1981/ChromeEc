@@ -162,7 +162,7 @@ child-binding:
           description: |
             In case of blinking LEDs, amount of time in msecs the LED
             color is active. This value must be a multiple of
-            HOOK_TICK_INTERVAL_MS.
+            HOOK_TICK_INTERVAL_MS for gpio LEDs.
             e.g.
             power-state-error {
                charge-state = "LED_PWRS_ERROR";
