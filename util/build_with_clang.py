@@ -78,10 +78,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     # Boards that use CHIP:=mchp
     # git grep --name-only 'CHIP:=mchp' | sed 's#board/\(.*\)/build.mk#"\1",#'
     "adlrvpp_mchp1727",
-    "mchpevb1",
-    # Boards that use CHIP:=max32660
-    # git grep --name-only 'CHIP:=max32660' | sed 's#board/\(.*\)/build.mk#"\1",#'
-    "max32660-eval",
     # Boards that use CHIP:=npcx
     # git grep --name-only 'CHIP:=npcx' | sed 's#^board/\(.*\)/build.mk#"\1",#'
     "akemi",
@@ -168,8 +164,6 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "nipperkin",
     "nocturne",
     "nova",
-    "npcx9_evb",
-    "npcx_evb",
     "nuwani",
     "omnigul",
     "osiris",
@@ -230,7 +224,6 @@ NDS32_BOARDS = [
     "galtic",
     "gooey",
     "haboki",
-    "it83xx_evb",
     "kracko",
     "lantis",
     "pirika",
@@ -253,8 +246,6 @@ RISCV_BOARDS = [
     "geralt_scp_core1",
     "hayato",
     "icarus",
-    "it8xxx2_evb",
-    "it8xxx2_pdevb",
     "pico",
     "spherion",
     "tomato",
