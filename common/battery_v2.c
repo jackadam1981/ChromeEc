@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "math_util.h"
@@ -100,6 +101,8 @@ static void battery_update(enum battery_index i)
 }
 
 #ifdef CONFIG_HOSTCMD_BATTERY_V2
+
+#ifdef CONFIG_CHARGER
 static enum ec_status
 host_command_battery_get_static(struct host_cmd_handler_args *args)
 {
@@ -176,8 +179,55 @@ host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
+#else /* ! CONFIG_CHARGER */
+static enum ec_status
+host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_battery_dynamic_info *p = args->params;
+	struct ec_response_battery_dynamic_info *r = args->response;
+	struct batt_params batt;
+	uint8_t tmp = 0;
+
+	battery_get_params(&batt);
+
+	if (p->index >= CONFIG_BATTERY_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	if (battery_is_present() == BP_YES) {
+		tmp |= EC_BATT_FLAG_BATT_PRESENT;
+
+		if (extpower_is_present()) {
+			tmp |= EC_BATT_FLAG_AC_PRESENT;
+			if (batt.current > 0)
+				tmp |= EC_BATT_FLAG_CHARGING;
+		} else
+			tmp |= EC_BATT_FLAG_DISCHARGING;
+
+		if (battery_is_cut_off())
+			tmp |= EC_BATT_FLAG_CUT_OFF;
+
+		if (batt.state_of_charge <=
+		    CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE)
+			tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
+	}
+	/* Since Charging is not enabled we can't determine if the battery is
+	 * charging or discharging keep both of them 0 */
+	r->actual_voltage = batt.voltage;
+	r->actual_current = batt.current;
+	r->remaining_capacity = batt.state_of_charge;
+	r->full_capacity = batt.full_capacity;
+	r->flags = tmp;
+	r->desired_voltage = batt.desired_voltage;
+	r->desired_current = batt.desired_current;
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+#endif /* CONFIG_CHARGER */
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_DYNAMIC,
 		     host_command_battery_get_dynamic, EC_VER_MASK(0));
+
 #endif /* CONFIG_HOSTCMD_BATTERY_V2 */
 
 void battery_memmap_refresh(enum battery_index index)
