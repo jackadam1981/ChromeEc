@@ -52,12 +52,10 @@ die() {
 BOARDS_IT83XX=(
 	adlrvpm_ite
 	adlrvpp_ite
-	it83xx_evb
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
 	it8xxx2_evb
-	it8xxx2_pdevb
 )
 
 BOARDS_STM32=(
@@ -78,8 +76,6 @@ BOARDS_STM32=(
 	strago_pd
 	zinger
 )
-BOARDS_STM32_PROG_EN=(
-)
 
 BOARDS_STM32_DFU=(
 	c2d2
@@ -97,12 +93,6 @@ BOARDS_STM32_DFU=(
 
 BOARDS_NPCX_5M5G_JTAG=(
 	npcx_evb
-)
-
-BOARDS_NPCX_5M6G_JTAG=(
-)
-
-BOARDS_NPCX_7M6X_JTAG=(
 )
 
 BOARDS_NPCX_SPI=(
@@ -344,14 +334,6 @@ fi
 
 if in_array "${BOARDS_NPCX_5M5G_JTAG[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("npcx_5m5g_jtag")
-fi
-
-if in_array "${BOARDS_NPCX_5M6G_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_5m6g_jtag")
-fi
-
-if in_array "${BOARDS_NPCX_7M6X_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_7m6x_jtag")
 fi
 
 if in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"; then
@@ -642,11 +624,6 @@ servo_sh_boot0() {
 ec_switch_boot0() {
 	local on_value=$1
 	# Enable programming GPIOs
-	if in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"; then
-		servo_save_add "prog_en"
-
-		dut_control prog_en:yes
-	fi
 	if servo_is_ccd ; then
 		stype=ccd
 	elif [[ "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
@@ -2157,13 +2134,6 @@ function flash_npcx_5m5g_jtag() {
 	flash_npcx_jtag
 }
 
-function flash_npcx_5m6g_jtag() {
-	flash_npcx_jtag
-}
-
-function flash_npcx_7m6x_jtag() {
-	flash_npcx_jtag
-}
 
 function flash_npcx_spi() {
 	flash_flashrom
