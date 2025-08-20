@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a621e370_daa639ab",
+        "filename": "zephyr/program/trulo/kaladin/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-08-20T07:06:47Z",
+      "side": 1,
+      "message": "Setting for this register is not accumulated with the enabled bits so what\u0027s the consideration to assign to 0 and then OR the debounce time ?",
+      "revId": "8f620c5e75b6003b5095d744b4b6c2c3418bf148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fdd5c3b_86db667a",
+        "filename": "zephyr/program/trulo/kaladin/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-08-20T07:06:47Z",
+      "side": 1,
+      "message": "Do you need to set the AC prochot default value in init function as well or the charge_manager will notify power supply change everytime after EC boot/reboot ?",
+      "revId": "8f620c5e75b6003b5095d744b4b6c2c3418bf148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
