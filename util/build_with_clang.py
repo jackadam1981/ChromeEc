@@ -259,7 +259,6 @@ BOARDS_THAT_FAIL_WITH_CLANG = [
     # Boards that use CHIP:=npcx
     "garg",
     # Boards that don't fit in flash with clang
-    "bellis",
     "cerise",
     "cret",
     "munna",
