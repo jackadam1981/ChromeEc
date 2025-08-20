@@ -44,6 +44,19 @@ config BOARD_TARKIN
 	  Build Google Tarkin board. Tarkin has MediaTek SoC
 	  with ITE IT82002 EC.
 
+config BOARD_PADME
+	bool "Google Padme Board"
+	help
+	  Build Google Padme board. Padme has MediaTek SoC
+	  with ITE IT82002 EC.
+
+config BOARD_SKYWALKER_SINGLE_USB_TYPEC
+	bool "Boards have only one USB-C port"
+	default n
+	help
+	Enable board code for managing DP alt mode on
+	the board which has a single USB-C port.
+
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"
