@@ -25,6 +25,12 @@
 		celxpert_b340442 {
 			compatible = "celxpert,b340442","battery-smart";
 		};
+		celxpert_p360644 {
+			compatible = "celxpert,p360644","battery-smart";
+		};
+		smp_c31n2313 {
+			compatible = "smp,c31n2313","battery-smart";
+		};
 	};
 
 	gpio-interrupts {
