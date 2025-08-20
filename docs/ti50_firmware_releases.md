@@ -8,7 +8,8 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | DT PrePVT version | DT Prod Version | NT PrePVT version | NT Prod Version
 ------------------- | ----------------- | --------------- | ----------------- | ---------------
-[ToT][ToT ebuild]   | 0.24.200          | 0.23.180        | 0.34.200          | 0.33.190
+[ToT][ToT ebuild]   | 0.24.210          | 0.23.210        | 0.34.210          | 0.33.210
+[M140][140 release] | 0.24.210          | 0.23.190        | 0.33.210          | 0.33.210
 [M139][139 release] | 0.24.180          | 0.23.180        | 0.33.190          | 0.33.190
 [M138][138 release] | 0.24.172          | 0.23.160        | 0.33.190          | 0.33.190
 [M137][137 release] | 0.24.172          | 0.23.160        | 0.36.170          | 0.36.170
@@ -1004,18 +1005,25 @@ Build:   0.23.180/ti50_common_mp-15980.B:v0.0.506-b6cc639a
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-66e2 2025-05-29 06:59:22
 ```
 
-### 0.x3.190
+### 0.x3.190 Released in DT-M140 NT-M139
 
-#### 0.33.190 Released on 2025-06-20 in M139 (cherry-picked to M138)
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6720151)
 
-Release
-[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6663579)
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6656117)
+cherry-picked to M138
 
 Builder
 [firmware-ti50-mp-15980.B-branch/78](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/78/overview)
 
 Artifacts:
 [15980.74.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.74.0/)
+
+**DT Specific Bug Fixes**
+
+*   REPLACE_DT
+    [b/421946421](https://b.corp.google.com/issues/421946421)
 
 **NT Specific Bug Fixes**
 
@@ -1030,14 +1038,51 @@ Artifacts:
     [b/419186818](https://b.corp.google.com/issues/419186818)
 
 ```
-Build:   0.33.190/ti50_common_mp-15980.B:v0.0.535-c900b8e5
+Build:   0.{23,33}.190/ti50_common_mp-15980.B:v0.0.535-c900b8e5
          libtock-rs:v0.0.925-1213708
          tock:v0.0.9685-1f9552cfa
          ms-tpm-20-ref:v0.0.329-aba1bbb
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-s2pw 2025-06-20 10:24:48
 ```
 
-#### 0.23.190 Unreleased
+### 0.x3.210 Released in DT-M141 NT-M141
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6859392)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6850870)
+cherry-picked to M140
+
+Builder
+[firmware-ti50-mp-15980.B-branch/86](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/86/infra)
+
+Artifacts:
+[15980.83.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.83.0/)
+
+**Features**
+
+*   REPLACE_FEATURE
+    [b/428071807](https://b.corp.google.com/issues/428071807)
+
+**DT Specific Bug Fixes**
+
+*   REPLACE_DT
+    [b/421946421](https://b.corp.google.com/issues/421946421)
+
+**NT Specific Bug Fixes**
+
+*   Fix `gpioset EN_I2C_DBG_PWR_L` to toggle correct GPIO
+    [b/419186818](https://b.corp.google.com/issues/419186818)
+
+
+```
+Build:   0.{23,33}.210/ti50_common_mp-15980.B:v0.0.572-b52baab4
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-1f9552cfa
+         ms-tpm-20-ref:v0.0.331-b94c999
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-riy1 2025-07-31 12:50:28
+```
 
 ## PrePVT images
 
@@ -2277,7 +2322,48 @@ Build:   0.24.180/ti50_common_prepvt-15974.B:v0.0.513-a5fd7035
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-obdd 2025-05-28 13:28:41
 ```
 
-### 0.x4.200
+### 0.x4.190 Released in DT-M140 NT-M140
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6696789)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6656117)
+cherry-picked to M138 and M139
+
+Artifacts:
+[15974.82.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.82.0/)
+
+**Features**
+
+*   REPLACE_FEATURE
+    [b/428071807](https://b.corp.google.com/issues/428071807)
+
+**DT Specific Bug Fixes**
+
+*   REPLACE_DT
+    [b/421946421](https://b.corp.google.com/issues/421946421)
+
+**NT Specific Bug Fixes**
+
+*   REPLACE_NT
+    [b/419186818](https://b.corp.google.com/issues/419186818)
+
+```
+Build:  0.{24,34}.190/ti50_common_prepvt-15974.B:v0.0.541-e283804f
+        libtock-rs:v0.0.925-1213708
+        tock:v0.0.9685-7d2295b47
+        ms-tpm-20-ref:v0.0.330-15f70dc
+        chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-e0b1 2025-06-17 13:55:43
+```
+
+### 0.x4.200 Released in DT-M140 NT-M140
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728460)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728571)
 
 Builder
 [firmware-ti50-prepvt-15974.B-branch/87](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/87/overview)
@@ -2290,23 +2376,10 @@ Artifacts:
 *   Use new KDF for CDI in BootParam
     [b/428071807](https://b.corp.google.com/issues/428071807)
 
-#### 0.24.200 Released on 2025-07-11 in M139
 
-Release
-[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728460)
+**DT Specific Features**
 
-```
-Build:   0.24.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
-         libtock-rs:v0.0.925-1213708
-         tock:v0.0.9685-7d2295b47
-         ms-tpm-20-ref:v0.0.332-c2ce15c
-         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-boua 2025-07-09 16:02:26
-```
-
-#### 0.34.200 Released on 2025-07-11 in M139
-
-Release
-[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728571)
+*   N/A
 
 **NT Specific Features**
 
@@ -2314,11 +2387,49 @@ Release
     [b/416491971](https://b.corp.google.com/issues/416491971)
 
 ```
-Build:   0.34.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
+Build:   0.{24,34}.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
          libtock-rs:v0.0.925-1213708
          tock:v0.0.9685-7d2295b47
          ms-tpm-20-ref:v0.0.332-c2ce15c
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-boua 2025-07-09 16:02:26
+```
+
+### 0.x4.210 Released in DT-M141 NT-M141
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6818875)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6819323)
+cherry-picked to M140
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/92](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/92/overview)
+
+Artifacts:
+[15974.91.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.91.0/)
+
+**Features**
+
+*   REPLACE_FEATURE
+    [b/428071807](https://b.corp.google.com/issues/428071807)
+
+**DT Specific Bug Fixes**
+
+*   REPLACE_DT
+    [b/421946421](https://b.corp.google.com/issues/421946421)
+
+**NT Specific Bug Fixes**
+
+*   REPLACE_NT
+    [b/419186818](https://b.corp.google.com/issues/419186818)
+
+```
+Build:  0.{24,34}.210/ti50_common_prepvt-15974.B:v0.0.579-e62e5c78
+        libtock-rs:v0.0.925-1213708
+        tock:v0.0.9685-7d2295b47
+        ms-tpm-20-ref:v0.0.332-c2ce15c
+        chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-1-3u1y 2025-07-31 10:35:58
 ```
 
 <!-- Links -->
@@ -2358,4 +2469,5 @@ Build:   0.34.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
 [137 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R137-16267.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [138 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R138-16295.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [139 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R139-16328.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[140 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R140-16371.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
