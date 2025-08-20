@@ -157,7 +157,8 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 {
 	uint8_t pins_count = pattern->pattern_color[pattern->cur_color]
 				     .led_color_node->pins_count;
-	uint8_t duration = pattern->pattern_color[pattern->cur_color].duration;
+	int32_t duration_ms =
+		pattern->pattern_color[pattern->cur_color].duration_ms;
 	struct pwm_pin_t *next_color =
 		pattern->pattern_color[pattern->cur_color]
 			.led_color_node->pwm_pins;
@@ -167,25 +168,21 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 	struct pwm_pin_t *prev_color =
 		pattern->pattern_color[prev_color_idx].led_color_node->pwm_pins;
 	struct pwm_pin_t cur_color[pins_count];
-	int32_t next_tick_pulse_ns;
 
 	for (int i = 0; i < pins_count; i++) {
 		cur_color[i].pwm = next_color[i].pwm;
 
-		if (pattern->transition == LED_TRANSITION_LINEAR) {
+		if (pattern->transition == LED_TRANSITION_LINEAR &&
+		    duration_ms != 0) {
 			cur_color[i].pulse_ns = (next_color[i].pulse_ns -
-						 prev_color[i].pulse_ns) *
-							pattern->ticks /
-							duration +
+						 prev_color[i].pulse_ns) /
+							duration_ms *
+							pattern->elapsed_ms +
 						prev_color[i].pulse_ns;
-			next_tick_pulse_ns = (next_color[i].pulse_ns -
-					      prev_color[i].pulse_ns) *
-						     (pattern->ticks + 1) /
-						     duration +
-					     prev_color[i].pulse_ns;
-			cur_color[i].pulse_step_ns =
-				(next_tick_pulse_ns - cur_color[i].pulse_ns) *
-				LED_STEP_TIME_MS / HOOK_TICK_INTERVAL_MS;
+			cur_color[i].pulse_step_ns = (next_color[i].pulse_ns -
+						      prev_color[i].pulse_ns) /
+						     duration_ms *
+						     LED_STEP_TIME_MS;
 		}
 		/*
 		 * This algorithm first finds the ratio of the starting and end
@@ -198,15 +195,16 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 		 * multiplication or division by a power of 2 can by calculated
 		 * by simply bit shifting by the power of 2 exponent).
 		 */
-		else if (pattern->transition == LED_TRANSITION_EXPONENTIAL) {
+		else if (pattern->transition == LED_TRANSITION_EXPONENTIAL &&
+			 duration_ms != 0) {
 			if (next_color[i].pulse_ns > prev_color[i].pulse_ns) {
 				int32_t scale =
 					next_color[i].pulse_ns /
 					MAX(prev_color[i].pulse_ns, PWM_MIN_NS);
 				cur_color[i].pulse_ns =
 					MAX(prev_color[i].pulse_ns, PWM_MIN_NS)
-					<< (MSB(scale) * pattern->ticks /
-					    duration);
+					<< (MSB(scale) * pattern->elapsed_ms /
+					    duration_ms);
 			} else if (next_color[i].pulse_ns <
 				   prev_color[i].pulse_ns) {
 				int32_t scale =
@@ -214,8 +212,8 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 					MAX(next_color[i].pulse_ns, PWM_MIN_NS);
 				cur_color[i].pulse_ns =
 					prev_color[i].pulse_ns >>
-					(MSB(scale) * pattern->ticks /
-					 duration);
+					(MSB(scale) * pattern->elapsed_ms /
+					 duration_ms);
 			} else {
 				cur_color[i].pulse_ns = next_color[i].pulse_ns;
 			}
