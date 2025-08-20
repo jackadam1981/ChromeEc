@@ -1064,7 +1064,8 @@ static int handle_pending_reboot(struct ec_params_reboot_ec *p)
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
 	case EC_REBOOT_COLD_AP_OFF:
-		if (IS_ENABLED(CONFIG_AP_X86_INTEL))
+		if (IS_ENABLED(CONFIG_AP_X86_INTEL) ||
+		    IS_ENABLED(CONFIG_AP_ARM_QUALCOMM_QC_EXP))
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
 
 		/*
