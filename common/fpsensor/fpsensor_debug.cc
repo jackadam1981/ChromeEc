@@ -147,7 +147,7 @@ __maybe_unused test_export_static uint8_t get_sensor_bpp_v2(void)
 		malloc(fp_sensor_get_info_v2_size));
 
 	if (info == nullptr) {
-		return EC_ERROR_OVERFLOW;
+		return EC_ERROR_MEMORY_ALLOCATION;
 	}
 
 	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) < 0) {
