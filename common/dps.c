@@ -119,6 +119,9 @@ static void dps_reset(void)
 {
 	dynamic_mv = CONFIG_USB_PD_MAX_VOLTAGE_MV;
 	dps_port = CHARGE_PORT_NONE;
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER)) {
+		pd_set_max_voltage(CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV);
+	}
 }
 
 /*
@@ -541,7 +544,13 @@ void dps_task(void *u)
 		if (sample_count == dps_config.k_sample) {
 			dynamic_mv = curr_cand.mv;
 			dps_port = curr_cand.port;
-			pd_dpm_request(dps_port, DPM_REQUEST_NEW_POWER_LEVEL);
+			if (IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER)) {
+				pd_set_max_voltage(dynamic_mv);
+				pd_set_new_power_request(dps_port);
+			} else {
+				pd_dpm_request(dps_port,
+					       DPM_REQUEST_NEW_POWER_LEVEL);
+			}
 			sample_count = 0;
 			atomic_clear_bits(&flag, (DPS_FLAG_SAMPLED |
 						  DPS_FLAG_NEED_MORE_PWR));

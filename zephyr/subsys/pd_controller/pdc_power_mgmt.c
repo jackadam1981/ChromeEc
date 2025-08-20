@@ -15,6 +15,7 @@
 #include "battery_smart.h"
 #include "charge_manager.h"
 #include "chipset.h"
+#include "dps.h"
 #include "drivers/ucsi_v3.h"
 #include "ec_commands.h"
 #include "hooks.h"
@@ -2609,6 +2610,10 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 			port->snk_attached_local_state =
 				SNK_ATTACHED_READ_POWER_LEVEL;
 		}
+#ifdef HAS_TASK_DPS
+		/* Wake DPS task to evaluate the SrcCaps */
+		task_wake(TASK_ID_DPS);
+#endif
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_READ_POWER_LEVEL:
 		port->snk_attached_local_state = SNK_ATTACHED_SYNC_CHARGE_MGR;
