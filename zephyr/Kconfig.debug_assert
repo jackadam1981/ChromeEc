@@ -16,8 +16,6 @@ config PLATFORM_EC_DEBUG_ASSERT_REBOOTS
 	bool "Reboot"
 	help
 	  Prints a message and reboot if an assert() macro fails at runtime.
-	  If PLATFORM_EC_SOFTWARE_PANIC is enabled then the information is
-	  written to the panic log before rebooting.
 
 config PLATFORM_EC_DEBUG_ASSERT_BREAKPOINT
 	bool "Generate a breakpoint"
