@@ -16,6 +16,24 @@
       "message": "Hi Thomas,\n\nCan you confirm that Xivur EC firmware build target is no longer needed?",
       "revId": "08d62bf0806ab65a25300e3035d00ebf02bf110e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff77855_79233c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1569577
+      },
+      "writtenOn": "2025-08-20T08:43:51Z",
+      "side": 1,
+      "message": "Yes, Xivur was cancelled. So we can remove Xivur from the EC builder.",
+      "parentUuid": "a18b4459_ca62ce12",
+      "revId": "08d62bf0806ab65a25300e3035d00ebf02bf110e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
