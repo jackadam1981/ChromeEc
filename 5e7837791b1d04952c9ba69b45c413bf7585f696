@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbbeb424_b14e5192",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-20T22:51:19Z",
+      "side": 1,
+      "message": "do you plan to enable `CONFIG_AP_PWRSEQ_DRIVER` in the future?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "5e7837791b1d04952c9ba69b45c413bf7585f696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
