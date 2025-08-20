@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e670e36_6c2a9fe6",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 37
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-20T23:29:30Z",
+      "side": 1,
+      "message": "Looks like we\u0027re missing a `free(info)` here.\n\nAlternatively, I think it would be clearer if you moved this code inside the `#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)`:\n\n```\n\tsize_t fp_sensor_get_info_v2_size \u003d\n\t\tsizeof(struct ec_response_fp_info_v2) +\n\t\tsizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;\n\tec_response_fp_info_v2 *info \u003d static_cast\u003cec_response_fp_info_v2 *\u003e(\n\t\tmalloc(fp_sensor_get_info_v2_size));\n\n\tif (info \u003d\u003d nullptr) {\n\t\treturn EC_ERROR_MEMORY_ALLOCATION;\n\t}\n```\n\nThen you don\u0027t need to have the `free(info)` call in the `#else` case.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 25
+      },
+      "revId": "cebb72432f395a90db901a7eb1f1a028ed9a2960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
