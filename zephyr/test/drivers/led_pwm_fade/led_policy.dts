@@ -87,6 +87,10 @@
 					led-color = "LED_OFF";
 					period-ms = <4000>;
 				};
+				// color will stay off instead of cycling
+				color-3 {
+					led-color = "LED_OFF";
+				};
 			};
 		};
 	};

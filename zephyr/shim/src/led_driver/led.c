@@ -43,13 +43,12 @@ DT_FOREACH_CHILD_STATUS_OKAY_VARGS(
 #define PINS_NODE_FROM_POLICY(led_id, color_token) \
 	DT_CAT4(PIN_NODE_, led_id, _COLOR_, color_token)
 
-#define SET_PATTERN_COLOR_ARRAY(id)                                           \
-	{                                                                     \
-		.led_color_node = &PINS_NODE_FROM_POLICY(                     \
-			GET_PROP(DT_PARENT(id), led_id),                      \
-			GET_PROP(id, led_color)),                             \
-		.duration =                                                   \
-			DT_PROP_OR(id, period_ms, 0) / HOOK_TICK_INTERVAL_MS, \
+#define SET_PATTERN_COLOR_ARRAY(id)                          \
+	{                                                    \
+		.led_color_node = &PINS_NODE_FROM_POLICY(    \
+			GET_PROP(DT_PARENT(id), led_id),     \
+			GET_PROP(id, led_color)),            \
+		.duration_ms = DT_PROP_OR(id, period_ms, 0), \
 	},
 
 #define PATTERN_COLOR_ARRAY(id) DT_CAT(PATTERN_COLOR_, id)
@@ -65,7 +64,7 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, DT_FOREACH_CHILD_VARGS,
 #define LED_PATTERN_INIT(node_id, fn)                          \
 	{                                                      \
 		.cur_color = 0,                                \
-		.ticks = 0,                                    \
+		.elapsed_ms = 0,                               \
 		.transition = GET_PROP(node_id, transition),   \
 		.pattern_len = 0 fn(node_id, PLUS_ONE),        \
 		.pattern_color = PATTERN_COLOR_ARRAY(node_id), \
@@ -154,17 +153,26 @@ static void set_color(int node_idx)
 
 		led_set_color_with_pattern(&patterns[i]);
 
-		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0)
-			patterns[i].ticks++;
+		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0) {
+			patterns[i].elapsed_ms += HOOK_TICK_INTERVAL_MS;
 
-		if (patterns[i].ticks >=
-		    GET_DURATION(patterns[i], patterns[i].cur_color)) {
-			patterns[i].cur_color++;
-			patterns[i].ticks = 0;
-		}
+			while (patterns[i].elapsed_ms >=
+			       GET_DURATION(patterns[i],
+					    patterns[i].cur_color)) {
+				patterns[i].elapsed_ms -= GET_DURATION(
+					patterns[i], patterns[i].cur_color);
+				patterns[i].cur_color++;
 
-		if (patterns[i].cur_color >= patterns[i].pattern_len) {
-			patterns[i].cur_color = 0;
+				if (patterns[i].cur_color >=
+				    patterns[i].pattern_len) {
+					patterns[i].cur_color = 0;
+				}
+
+				if (GET_DURATION(patterns[i],
+						 patterns[i].cur_color) == 0) {
+					break;
+				}
+			}
 		}
 	}
 }
@@ -236,16 +244,16 @@ static int match_node(int node_idx)
 			return -1;
 		}
 	}
+#endif /* CONFIG_PLATFORM_EC_CHARGE_MANAGER */
 
 	/* reset the color counter if pattern just activated */
 	if (node_array[node_idx].state_active == false) {
 		node_array[node_idx].state_active = true;
 		for (int i = 0; i < node_array[node_idx].num_patterns; i++) {
 			node_array[node_idx].led_patterns[i].cur_color = 0;
-			node_array[node_idx].led_patterns[i].ticks = 0;
+			node_array[node_idx].led_patterns[i].elapsed_ms = 0;
 		}
 	}
-#endif /* CONFIG_PLATFORM_EC_CHARGE_MANAGER */
 
 	/* We found the node that matches the current system state */
 	return node_idx;

@@ -162,4 +162,11 @@ ZTEST(led_pwm_fade, test_led_fade)
 	zassert_true(pwm_mock_get_duty(pwm_amber_right, 0) > 40, NULL);
 	zassert_true(pwm_mock_get_duty(pwm_amber_right, 0) < 60, NULL);
 	zassert_true(pwm_mock_get_duty(pwm_white_right, 0) < 20, NULL);
+
+	k_sleep(K_SECONDS(3));
+	/* right LED should be off */
+	zassert_equal(pwm_mock_get_duty(pwm_blue_left, 0), 0, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_white_left, 0), 0, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
 }
