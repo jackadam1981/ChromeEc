@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acf2fbc_940625dd",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-21T20:12:27Z",
+      "side": 1,
+      "message": "Nit: At least in the public API, it seems like \"invalidation\" is a new concept, and it\u0027s not obvious to me exactly what this is expected to do or when it would be appropriate to use it. As we\u0027ve discussed OOB, the way that charge manager currently handles a port with multiple possible suppliers doesn\u0027t totally make sense.\n\nCan you provide some description and guidance in this comment?",
+      "revId": "d3724ea9744a4ae2ad84d6e4f6890d9cb596d9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c22c25_69ccf718",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-21T20:12:27Z",
+      "side": 1,
+      "message": "Nit: Describe this as in other functions",
+      "revId": "d3724ea9744a4ae2ad84d6e4f6890d9cb596d9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
