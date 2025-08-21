@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb847efc_dee9020c",
+        "filename": "zephyr/program/skywalker/padme/src/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-21T09:47:38Z",
+      "side": 1,
+      "message": "If the device only have one type-C port, common implementation (usbc/dp_alt_mode.c) should work, no need to fork the HPD workaround.",
+      "revId": "4051a60d1d453b50ffc3ccc670931b1962ffdc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
