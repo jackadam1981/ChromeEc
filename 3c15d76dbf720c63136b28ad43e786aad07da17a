@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a7e42b_f77a3da9",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-21T20:53:00Z",
+      "side": 1,
+      "message": "How about adding the the actual values? e.g, (width (80) x height (160) x bytes_per_pixel (2)) (these aren\u0027t correct, just an example)",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 76
+      },
+      "revId": "3c15d76dbf720c63136b28ad43e786aad07da17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
