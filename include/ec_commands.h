@@ -8922,6 +8922,7 @@ struct ec_response_get_boot_time {
 	uint16_t cnt;
 } __ec_align4;
 
+#define EC_CMD_AP_SHUTDOWN 0x0605
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
