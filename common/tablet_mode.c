@@ -129,7 +129,7 @@ void tablet_set_mode(int mode, uint32_t trigger)
 		return;
 	}
 
-	if (IS_ENABLED(CONFIG_GMR_TABLET_MODE) &&
+	if (IS_ENABLED(GMR_TABLET_MODE) &&
 	    ((gmr_sensor_at_360 && !mode) || (gmr_sensor_at_0 && mode))) {
 		/*
 		 * If tablet mode is being forced by the user, then this logging
@@ -192,16 +192,15 @@ void tablet_disable(void)
 		notify_tablet_mode_change();
 }
 
-/* This ifdef can be removed once we clean up past projects which do own init */
-#ifdef CONFIG_GMR_TABLET_MODE
-#ifdef CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR
-#error The board has GMR sensor
-#endif
-static void gmr_tablet_switch_interrupt_debounce(void)
+#ifdef GMR_TABLET_MODE
+void gmr_tablet_switch_isr_handler(void)
 {
-	gmr_sensor_at_360 = IS_ENABLED(CONFIG_GMR_TABLET_MODE_CUSTOM) ?
-				    board_sensor_at_360() :
-				    !gpio_get_level(GPIO_TABLET_MODE_L);
+	gmr_sensor_at_360 =
+#ifdef CONFIG_GMR_TABLET_MODE_CUSTOM
+		board_sensor_at_360();
+#else
+		!gpio_get_level(GPIO_TABLET_MODE_L);
+#endif
 
 	/*
 	 * DPTF table is updated only when the board enters/exits completely
@@ -254,7 +253,14 @@ static void gmr_tablet_switch_interrupt_debounce(void)
 		lid_angle_peripheral_enable(0);
 	}
 }
-DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
+DECLARE_DEFERRED(gmr_tablet_switch_isr_handler);
+#endif /* GMR_TABLET_MODE */
+
+/* This ifdef can be removed once we clean up past projects which do own init */
+#ifdef CONFIG_GMR_TABLET_MODE
+#if defined(CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR)
+#error The board has GMR sensor
+#endif
 
 /*
  * Debounce time for gmr sensor tablet mode interrupt
@@ -270,10 +276,9 @@ DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
 
 void gmr_tablet_switch_isr(enum gpio_signal signal)
 {
-	hook_call_deferred(&gmr_tablet_switch_interrupt_debounce_data,
+	hook_call_deferred(&gmr_tablet_switch_isr_handler_data,
 			   CONFIG_GMR_SENSOR_DEBOUNCE_US);
 }
-
 /*
  * tablet gmr sensor() calls tablet_set_mode() to go in tablet mode
  * when we know for sure the tablet is in tablet mode,
@@ -311,7 +316,7 @@ static void gmr_tablet_switch_init(void)
 	 * Ensure tablet mode is initialized according to the hardware state
 	 * so that the cached state reflects reality.
 	 */
-	gmr_tablet_switch_interrupt_debounce();
+	gmr_tablet_switch_isr_handler();
 	if (IS_ENABLED(CONFIG_LID_ANGLE) && IS_ENABLED(CONFIG_LID_SWITCH))
 		tablet_mode_lid_event();
 }
@@ -321,7 +326,7 @@ void gmr_tablet_switch_disable(void)
 {
 	gpio_disable_interrupt(GPIO_TABLET_MODE_L);
 	/* Cancel any pending debounce calls */
-	hook_call_deferred(&gmr_tablet_switch_interrupt_debounce_data, -1);
+	hook_call_deferred(&gmr_tablet_switch_isr_handler_data, -1);
 	tablet_disable();
 }
 #endif /* CONFIG_GMR_TABLET_MODE */
