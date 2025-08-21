@@ -313,6 +313,11 @@ static void dsp_client_read_status(struct k_work* item) {
   if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH)) {
     remote_tablet_switch_set(is_360);
   }
+  if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE) &&
+      (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_SWITCH) ||
+       IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH))) {
+    gmr_tablet_switch_isr_handler();
+  }
 }
 
 static int dsp_client_gpio_init(const struct device* dev) {
