@@ -26,11 +26,6 @@ extern "C" {
 		DT_CHOSEN(cros_fp_fingerprint_sensor))
 #endif
 
-#define FP_SENSOR_RES_X \
-	FINGERPRINT_SENSOR_RES_X(DT_CHOSEN(cros_fp_fingerprint_sensor))
-#define FP_SENSOR_RES_Y \
-	FINGERPRINT_SENSOR_RES_Y(DT_CHOSEN(cros_fp_fingerprint_sensor))
-
 /*
  * Tell fpsensor code that private driver is present, even if this is a public
  * build. If the build is public, we will provide mocks.
