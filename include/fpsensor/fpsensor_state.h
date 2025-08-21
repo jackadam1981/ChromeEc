@@ -14,7 +14,6 @@
 #include "fpsensor_driver.h"
 #include "fpsensor_matcher.h"
 #include "fpsensor_state_driver.h"
-#include "fpsensor_template_state.h"
 #include "link_defs.h"
 #include "timer.h"
 
@@ -87,8 +86,6 @@ struct fpsensor_context {
 	/** Salt used in derivation of positive match secret. */
 	uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				      [FP_POSITIVE_MATCH_SALT_BYTES];
-	/** The states for different fingers. */
-	std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
 };
 
 extern struct fpsensor_context global_context;
