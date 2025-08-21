@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ec6e4d8_40d718cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-21T21:18:01Z",
+      "side": 1,
+      "message": "seems Duckie made an error:\n\n```\ncommon/fpsensor/fpsensor_debug.cc:158:3: error: cannot jump from this goto statement to its label\n  158 |                 goto cleanup;\n      |                 ^\ncommon/fpsensor/fpsensor_debug.cc:161:7: note: jump bypasses variable initialization\n  161 |         bool found \u003d false;\n      |              ^\n1 error generated.\nmake: *** [Makefile.rules:613: build/gwendolin/RW/common/fpsensor/fpsensor_debug.o] Error 1\nmake: *** Waiting for unfinished jobs....\n\n```",
+      "revId": "fae1e206ec60fd40ab47b78bcad79e92fad30120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35246efd_990b9ffa",
         "filename": "common/fpsensor/fpsensor_debug.cc",
         "patchSetId": 4
