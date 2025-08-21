@@ -22,6 +22,30 @@
       },
       "revId": "94dabbd27872728be385a02ff0e9cbede357cf6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afba0265_95629f8f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8680,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-21T16:58:28Z",
+      "side": 1,
+      "message": "`0x0418` is removed in https://crrev.com/c/6839789\n`0x0417` is removed in https://crrev.com/c/6839790\n\nI don\u0027t think we need to make these sequential, because I\u0027m removing these commands anyway.",
+      "parentUuid": "7d9a1272_8752791f",
+      "range": {
+        "startLine": 8680,
+        "startChar": 32,
+        "endLine": 8680,
+        "endChar": 38
+      },
+      "revId": "94dabbd27872728be385a02ff0e9cbede357cf6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
