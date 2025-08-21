@@ -352,20 +352,21 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo,
 
 int host_command_panic_info(struct host_cmd_handler_args *args)
 {
-	uint32_t pdata_size = get_panic_data_size();
-	uintptr_t pdata_start = get_panic_data_start();
-	struct panic_data * pdata;
+	uint32_t pdata_size = pdata_ptr->struct_size;
 
-	if (pdata_start && pdata_size > 0) {
-		ASSERT(pdata_size <= args->response_max);
-		memcpy(args->response, (void *)pdata_start, pdata_size);
+	if (pdata_ptr->magic == PANIC_DATA_MAGIC) {
+		if (pdata_size > args->response_max) {
+			panic_printf("Panic data size %d is too "
+				     "large, truncating to %d\n",
+				     pdata_size, args->response_max);
+			pdata_size = args->response_max;
+			pdata_ptr->flags |= PANIC_DATA_FLAG_TRUNCATED;
+		}
+		memcpy(args->response, pdata_ptr, pdata_size);
 		args->response_size = pdata_size;
 
-		pdata = panic_get_data();
-		if (pdata) {
-			/* Data has now been returned */
-			pdata->flags |= PANIC_DATA_FLAG_OLD_HOSTCMD;
-		}
+		/* Data has now been returned */
+		pdata_ptr->flags |= PANIC_DATA_FLAG_OLD_HOSTCMD;
 	}
 
 	return EC_RES_SUCCESS;
