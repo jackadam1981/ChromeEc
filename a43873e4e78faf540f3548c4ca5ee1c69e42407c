@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400ab544_48a220d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-21T18:32:15Z",
+      "side": 1,
+      "message": "```suggestion\non-body: Allow dynamic on-body sensor ID\n```",
+      "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4774a6_76b1a844",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-21T18:32:15Z",
+      "side": 1,
+      "message": "Only after the next CL is merged. Unit test?",
+      "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781bfbc6_f3521624",
+        "filename": "zephyr/lib/vsensor/body_detection/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-21T18:32:15Z",
+      "side": 1,
+      "message": "it is not supposed to append since body_detect_reset() happens before each ODR, which we do when the sensors are initialized.",
+      "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
