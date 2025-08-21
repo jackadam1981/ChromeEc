@@ -154,20 +154,51 @@ extern "C" {
  * This structure holds information that is constant after sensor
  * initialization, except for the errors field which can change at runtime.
  */
-/** Fingerprint sensor information structure. */
-struct fingerprint_info {
-	/* Sensor identification */
+struct fingerprint_sensor_info {
+	/** @brief Sensor vendor ID. */
 	uint32_t vendor_id;
+	/** @brief Sensor product ID. */
 	uint32_t product_id;
+	/** @brief Sensor model ID. */
 	uint32_t model_id;
+	/** @brief Sensor hardware/firmware version. */
 	uint32_t version;
-	/* Image frame characteristics */
-	uint32_t frame_size;
-	uint32_t pixel_format; /* using V4L2_PIX_FMT_ */
-	uint16_t width;
-	uint16_t height;
-	uint16_t bpp;
+	/**
+	 * @brief Number of image capture types supported by the sensor.
+	 * @see enum fingerprint_capture_type
+	 */
+	uint16_t num_capture_types;
+	/** @brief Current sensor error flags (bitmask of FINGERPRINT_ERROR_*).
+	 */
 	uint16_t errors;
+};
+
+/**
+ * @brief Parameters for a single fingerprint image frame.
+ *
+ * This structure describes the properties of a captured image frame.
+ */
+struct fingerprint_image_frame_params {
+	/** @brief Total size of the frame data in bytes. */
+	uint32_t frame_size;
+	/**
+	 * @brief Pixel format of the image.
+	 * It is recommended to use V4L2_PIX_FMT_* definitions where applicable.
+	 */
+	uint32_t pixel_format;
+	/** @brief Image width in pixels. */
+	uint16_t width;
+	/** @brief Image height in pixels. */
+	uint16_t height;
+	/** @brief Bits per pixel for the image. */
+	uint16_t bpp;
+	/**
+	 * @brief Type of image capture.
+	 * @see enum fingerprint_capture_type
+	 */
+	uint8_t fp_capture_type;
+	/** @brief Reserved for padding and alignment. Should be zero. */
+	uint8_t reserved;
 };
 
 /** Fingerprint sensor operation mode. */
