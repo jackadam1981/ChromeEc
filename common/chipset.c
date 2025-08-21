@@ -50,6 +50,24 @@ DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown, NULL,
 
 #endif
 
+#ifdef CONFIG_HOSTCMD_AP_SHUTDOWN
+static enum ec_status
+host_command_apshutdown(struct host_cmd_handler_args *args)
+{
+	if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)) {
+		chip_save_reset_flags(chip_read_reset_flags() |
+				      EC_RESET_FLAG_AP_IDLE);
+		system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
+	}
+
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_HOST_CMD);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_AP_SHUTDOWN, host_command_apshutdown,
+		     EC_VER_MASK(0));
+
+#endif
+
 #ifdef CONFIG_HOSTCMD_AP_RESET
 static enum ec_status host_command_apreset(struct host_cmd_handler_args *args)
 {
