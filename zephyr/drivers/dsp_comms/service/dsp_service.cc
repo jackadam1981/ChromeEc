@@ -358,6 +358,12 @@ void dsp_service_hook_tablet_mode_change() {
   cros::dsp::service::driver.transport_.SetStatusBit(
       cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE, is_in_tablet_mode);
 }
+<<<<<<< HEAD   (bb8ea4e5aba6be95931b6ec88147274bc0b956fb body_detection: Allow dynamic body sensor index)
+||||||| BASE   (a393ba4bb7b0a5839d057e3a44fe3a7bd49bbc34 common: queue: use the single call MIN)
+#ifdef CONFIG_PLATFORM_EC_GMR_TABLET_MODE
+=======
+#ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH
+>>>>>>> CHANGE (17decbfee28048ceace150f3814348105c1acd15 uldrenite: Fix "stuck in tablet mode")
 extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
   dsp_service_hook_tablet_mode_change();
   gmr_tablet_switch_isr(signal);
