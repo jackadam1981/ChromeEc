@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88727ae4_fb2fcd3f",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-21T17:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d76cb03_d32dd41a",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 54
+      },
+      "revId": "392ee7abbbf1aaead97ff8de5332fd0c0cfa1320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "897db612_49efe9b3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4708979_91023762",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-21T17:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897db612_49efe9b3",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 20
+      },
+      "revId": "392ee7abbbf1aaead97ff8de5332fd0c0cfa1320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51a4610_dd8eca00",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-08-14T22:40:57Z",
       "side": 1,
       "message": "Same comments as other file with this.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 54
+      },
+      "revId": "392ee7abbbf1aaead97ff8de5332fd0c0cfa1320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8818310c_30746f32",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-21T17:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e51a4610_dd8eca00",
       "range": {
         "startLine": 377,
         "startChar": 0,
