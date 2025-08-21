@@ -22,6 +22,30 @@
       },
       "revId": "cebb72432f395a90db901a7eb1f1a028ed9a2960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b69578_be404752",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 37
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-21T03:35:06Z",
+      "side": 1,
+      "message": "I ran it through `Duckie/`.\n\nThis is the proposed code:\n\n```\nstatic int command_fpinfo_v2(int argc, const char **argv)\n{\n#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)\n    size_t fp_sensor_get_info_v2_size \u003d\n        sizeof(struct ec_response_fp_info_v2) +\n        sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;\n    ec_response_fp_info_v2 *info \u003d static_cast\u003cec_response_fp_info_v2 *\u003e(\n        malloc(fp_sensor_get_info_v2_size));\n\n    if (info \u003d\u003d nullptr) {\n        ccprintf(\"Failed to allocate memory for fpinfo_v2\\n\");\n        return EC_ERROR_MEMORY_ALLOCATION;\n    }\n\n    int ret \u003d fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size);\n    if (ret \u003c 0) {\n        ccprintf(\"Failed to get fp_info_v2: %d\\n\", ret);\n        free(info);\n        return ret; // Propagate error code\n    }\n\n    constexpr int align \u003d 15;\n\n    ccprintf(\"%*s: 0x%X (%s)\\n\", align, \"Vendor ID\",\n         info-\u003esensor_info.vendor_id,\n         fourcc_to_string(info-\u003esensor_info.vendor_id).c_str());\n    ccprintf(\"%*s: 0x%X\\n\", align, \"Product ID\",\n         info-\u003esensor_info.product_id);\n    ccprintf(\"%*s: 0x%X\\n\", align, \"Model ID\", info-\u003esensor_info.model_id);\n    ccprintf(\"%*s: 0x%X\\n\", align, \"Version\", info-\u003esensor_info.version);\n\n    ccprintf(\"%*s: 0x%X\\n\", align, \"Error State\", info-\u003esensor_info.errors);\n\n    ccprintf(\"%*s: %s\\n\", align, \"Sensor Strap\",\n         fp_sensor_type_to_str(fpsensor_detect_get_type()));\n\n    for (uint16_t i \u003d 0; i \u003c info-\u003esensor_info.num_capture_types; ++i) {\n        ccprintf(\"FP Capture Type: %d\\n\",\n             info-\u003eimage_frame_params[i].fp_capture_type);\n        ccprintf(\"  %*s: %u x %u %ubpp\\n\", align, \"Sensor (w x h)\",\n             info-\u003eimage_frame_params[i].width,\n             info-\u003eimage_frame_params[i].height,\n             info-\u003eimage_frame_params[i].bpp);\n        ccprintf(\"  %*s: %u\\n\", align, \"Frame Size\",\n             info-\u003eimage_frame_params[i].frame_size);\n        ccprintf(\"  %*s: 0x%X (%s)\\n\", align, \"Pixel Format\",\n             info-\u003eimage_frame_params[i].pixel_format,\n             fourcc_to_string(\n                 info-\u003eimage_frame_params[i].pixel_format)\n                 .c_str());\n    }\n    free(info);\n\n    return EC_SUCCESS;\n#else\n    ccprintf(\"fpinfo2 command not supported on this build.\\n\");\n    return EC_ERROR_ACCESS_DENIED; // Or a more appropriate error\n#endif\n}\nDECLARE_SAFE_CONSOLE_COMMAND(fpinfo2, command_fpinfo_v2, nullptr,\n             \"Print fingerprint system info (V2)\");\n```\n\nI believe the differences are mainly error improvement. However, I believe here it is not proper to propagete the error because the info_v2 function return errors using a different error code.",
+      "parentUuid": "3e670e36_6c2a9fe6",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 25
+      },
+      "revId": "cebb72432f395a90db901a7eb1f1a028ed9a2960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
