@@ -21,15 +21,10 @@ extern "C" {
 #ifdef CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE
 #define FP_SENSOR_IMAGE_SIZE CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE
 #else
-#define FP_SENSOR_IMAGE_SIZE                \
+#define FP_SENSOR_IMAGE_SIZE(idx)           \
 	FINGERPRINT_SENSOR_REAL_IMAGE_SIZE( \
-		DT_CHOSEN(cros_fp_fingerprint_sensor))
+		DT_CHOSEN(cros_fp_fingerprint_sensor), idx)
 #endif
-
-#define FP_SENSOR_RES_X \
-	FINGERPRINT_SENSOR_RES_X(DT_CHOSEN(cros_fp_fingerprint_sensor))
-#define FP_SENSOR_RES_Y \
-	FINGERPRINT_SENSOR_RES_Y(DT_CHOSEN(cros_fp_fingerprint_sensor))
 
 /*
  * Tell fpsensor code that private driver is present, even if this is a public
