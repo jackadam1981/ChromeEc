@@ -8,7 +8,8 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | DT PrePVT version | DT Prod Version | NT PrePVT version | NT Prod Version
 ------------------- | ----------------- | --------------- | ----------------- | ---------------
-[ToT][ToT ebuild]   | 0.24.200          | 0.23.180        | 0.34.200          | 0.33.190
+[ToT][ToT ebuild]   | 0.24.210          | 0.23.210        | 0.34.210          | 0.33.210
+[M140][140 release] | 0.24.210          | 0.23.190        | 0.33.210          | 0.33.210
 [M139][139 release] | 0.24.180          | 0.23.180        | 0.33.190          | 0.33.190
 [M138][138 release] | 0.24.172          | 0.23.160        | 0.33.190          | 0.33.190
 [M137][137 release] | 0.24.172          | 0.23.160        | 0.36.170          | 0.36.170
@@ -56,22 +57,23 @@ this. It only has information for features completed after 0.22.6.
 CCD, EC-EFS2, Factory Mode, Pinweaver, U2F, and Board ID are all supported in
 0.22.6. The were added before 0.22.6, so they aren't included in the table.
 
-Feature Description                  | Feature Added | Feature Complete | Release Landed
------------------------------------- | ------------- | ---------------- | --------------
-ZTE Serial Number                    |               | 0.22.6           | M107
-CCD Open preserved across deep sleep |               | 0.22.6           | M107
-AP RO WP Sense                       | 0.22.6        |                  | M107
-AP RO Verification (without reset)   | 0.24.0        | 0.23.0           | M108
-Fix updates after PoR and deep sleep | 0.24.14       | 0.23.14          | M113
-AP RO Verification Enforcement       | 0.24.61       | 0.23.71          | M122
-Reporting external WP assertion fix  | 0.24.131      | 0.23.140         | M133/M134
-Build uses Bazel artifacts           | 0.24.140      | 0.23.140         | M133/M134
-Support for NonInverted KSO          | 0.24.140      | 0.23.140         | M133/M134
-Boot param support                   | 0.24.160      | 0.23.160         | M135/M136
-Add `spi_drive` GSC command          | 0.24.180      | 0.23.180         | M139
-Run APRV after WP events             | 0.24.172      | 0.23.180         | M138/M139
+Feature Description                  | Feature Added       | Feature Complete    | Release Landed
+------------------------------------ | ------------------- | ------------------- | --------------
+ZTE Serial Number                    |                     | 0.22.6              | M107
+CCD Open preserved across deep sleep |                     | 0.22.6              | M107
+AP RO WP Sense                       | 0.22.6              |                     | M107
+AP RO Verification (without reset)   | 0.24.0              | 0.23.0              | M108
+Fix updates after PoR and deep sleep | 0.24.14             | 0.23.14             | M113
+AP RO Verification Enforcement       | 0.24.61             | 0.23.71             | M122
+Reporting external WP assertion fix  | 0.24.131            | 0.23.140            | M133/M134
+Build uses Bazel artifacts           | 0.24.140            | 0.23.140            | M133/M134
+Support for NonInverted KSO          | 0.24.140            | 0.23.140            | M133/M134
+Boot param support                   | 0.24.160            | 0.23.160            | M135/M136
+Add `spi_drive` GSC command          | 0.24.180            | 0.23.180            | M139
+Run APRV after WP events             | 0.24.172            | 0.23.180            | M138/M139
+NT - Image BID checks                | RO .108 RW 0.33.190 | RO .113 RW 0.33.210 | M138/M140
 
-# RO revisions
+# DT RO revisions
 
 ## 0.0.32
 
@@ -132,6 +134,29 @@ Released with RW 0.24.81
 Released with RW 0.24.112 and 0.23.112
 
 *   New dev image keys
+
+# NT RO revisions
+
+The notes start with 0.0.108, but there were releases before that. The first
+NT devices were manufactured with 0.0.113. Devices released to consumers run
+0.0.113 or newer.
+
+This just covers general features. See the ROM\_EXT release notes for more
+information.
+
+## 0.0.108 released on 06/24/2025 in M138
+
+Released with 0.33.190 in M140. It was cherry-picked back to M138.
+
+*   BID image checks
+
+## 0.0.113 released on 08/20/2025 M140
+
+Image used in first consumer devices.
+Released with RW 0.33.210 in M141. It was cherry-picked back to M140.
+
+*   Only check BID type bits that are 1 in the BID type mask, so we can sign
+    images with "FFFF" for the BID type. ex: FFFF:0:0x10
 
 # RW revisions
 
@@ -1004,18 +1029,29 @@ Build:   0.23.180/ti50_common_mp-15980.B:v0.0.506-b6cc639a
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-66e2 2025-05-29 06:59:22
 ```
 
-### 0.x3.190
+### 0.x3.190 Released in DT-M140 NT-M138
 
-#### 0.33.190 Released on 2025-06-20 in M139 (cherry-picked to M138)
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6720151)
 
-Release
-[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6663579)
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6656117)
+Landed M140 Cherry-picked to M139 and M138
 
 Builder
 [firmware-ti50-mp-15980.B-branch/78](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/78/overview)
 
 Artifacts:
 [15980.74.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.74.0/)
+
+**Features**
+
+*   Add rdd detected to GSC metrics
+    [b/419041345](https://b.corp.google.com/issues/419041345)
+
+**DT Specific Bug Fixes**
+
+*   N/A
 
 **NT Specific Bug Fixes**
 
@@ -1030,14 +1066,58 @@ Artifacts:
     [b/419186818](https://b.corp.google.com/issues/419186818)
 
 ```
-Build:   0.33.190/ti50_common_mp-15980.B:v0.0.535-c900b8e5
+Build:   0.{23,33}.190/ti50_common_mp-15980.B:v0.0.535-c900b8e5
          libtock-rs:v0.0.925-1213708
          tock:v0.0.9685-1f9552cfa
          ms-tpm-20-ref:v0.0.329-aba1bbb
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-s2pw 2025-06-20 10:24:48
 ```
 
-#### 0.23.190 Unreleased
+### 0.x3.210 Released in DT-M141 NT-M140
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6859392)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6850870)
+Landed M141 Cherry-picked to M140
+
+Builder
+[firmware-ti50-mp-15980.B-branch/86](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/86/infra)
+
+Artifacts:
+[15980.83.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.83.0/)
+
+**Features**
+
+*   Use new KDF for CDI in BootParam
+    [b/428071807](https://b.corp.google.com/issues/428071807)
+*   Add vnvmem space for CrOS UDS cert
+    [b/431293004](https://b.corp.google.com/issues/431293004)
+*   Add more debug tracing for dispatcher
+    [b/416491971](https://b.corp.google.com/issues/416491971)
+
+**DT Specific Features**
+
+*   Fixed failure after too many GSC reboots
+    [b/423582304](https://b.corp.google.com/issues/423582304)
+
+**NT Specific Features**
+
+*   "Console Busy!" fix
+    [b/416491971](https://b.corp.google.com/issues/416491971)
+*   Sign images with "FFFF" for the board id type
+    [b/390488411](https://b.corp.google.com/issues/390488411)
+*   Use 2 for the TPM model
+    [b/429217185](https://b.corp.google.com/issues/429217185)
+
+```
+Build:   0.{23,33}.210/ti50_common_mp-15980.B:v0.0.572-b52baab4
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-1f9552cfa
+         ms-tpm-20-ref:v0.0.331-b94c999
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-riy1 2025-07-31 12:50:28
+```
 
 ## PrePVT images
 
@@ -2277,7 +2357,35 @@ Build:   0.24.180/ti50_common_prepvt-15974.B:v0.0.513-a5fd7035
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-obdd 2025-05-28 13:28:41
 ```
 
-### 0.x4.200
+### 0.24.190 Released on 2025-07-01 in M140
+
+
+Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6696789)
+
+Artifacts:
+[15974.82.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.82.0/)
+
+**Features**
+
+*   Add rdd detected to GSC metrics
+    [b/419041345](https://b.corp.google.com/issues/419041345)
+
+```
+Build:  0.24.190/ti50_common_prepvt-15974.B:v0.0.541-e283804f
+        libtock-rs:v0.0.925-1213708
+        tock:v0.0.9685-7d2295b47
+        ms-tpm-20-ref:v0.0.330-15f70dc
+        chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-e0b1 2025-06-17 13:55:43
+```
+
+### 0.x4.200 Released in DT-M140 NT-M140
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728460)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728571)
 
 Builder
 [firmware-ti50-prepvt-15974.B-branch/87](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/87/overview)
@@ -2289,36 +2397,65 @@ Artifacts:
 
 *   Use new KDF for CDI in BootParam
     [b/428071807](https://b.corp.google.com/issues/428071807)
-
-#### 0.24.200 Released on 2025-07-11 in M139
-
-Release
-[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728460)
-
-```
-Build:   0.24.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
-         libtock-rs:v0.0.925-1213708
-         tock:v0.0.9685-7d2295b47
-         ms-tpm-20-ref:v0.0.332-c2ce15c
-         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-boua 2025-07-09 16:02:26
-```
-
-#### 0.34.200 Released on 2025-07-11 in M139
-
-Release
-[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6728571)
-
-**NT Specific Features**
-
 *   Add more debug tracing for dispatcher
     [b/416491971](https://b.corp.google.com/issues/416491971)
 
+
+**DT Specific Features**
+
+*   N/A
+
+**NT Specific Features**
+
+*   Use 2 for the TPM model
+    [b/429217185](https://b.corp.google.com/issues/429217185)
+
 ```
-Build:   0.34.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
+Build:   0.{24,34}.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
          libtock-rs:v0.0.925-1213708
          tock:v0.0.9685-7d2295b47
          ms-tpm-20-ref:v0.0.332-c2ce15c
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-boua 2025-07-09 16:02:26
+```
+
+### 0.x4.210 Released in DT-M141 NT-M140
+
+DT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6818875)
+
+NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6819323)
+Landed M141 Cherry-picked to M140
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/92](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/92/overview)
+
+Artifacts:
+[15974.91.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.91.0/)
+
+**Features**
+
+*   Add vnvmem space for CrOS UDS cert
+    [b/431293004](https://b.corp.google.com/issues/431293004)
+
+**DT Specific Bug Fixes**
+
+*   Fixed failure after too many GSC reboots
+    [b/423582304](https://b.corp.google.com/issues/423582304)
+
+**NT Specific Bug Fixes**
+
+*   "Console Busy!" fix
+    [b/416491971](https://b.corp.google.com/issues/416491971)
+*   Sign images with "FFFF" for the board id type
+    [b/390488411](https://b.corp.google.com/issues/390488411)
+
+```
+Build:  0.{24,34}.210/ti50_common_prepvt-15974.B:v0.0.579-e62e5c78
+        libtock-rs:v0.0.925-1213708
+        tock:v0.0.9685-7d2295b47
+        ms-tpm-20-ref:v0.0.332-c2ce15c
+        chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-1-3u1y 2025-07-31 10:35:58
 ```
 
 <!-- Links -->
@@ -2358,4 +2495,5 @@ Build:   0.34.200/ti50_common_prepvt-15974.B:v0.0.557-7f06e53e
 [137 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R137-16267.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [138 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R138-16295.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [139 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R139-16328.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[140 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R140-16371.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild

@@ -343,7 +343,10 @@ This will also permanently disable write protect. To reset write protect run
 (gsc) > wp follow_batt_pres atboot
 ```
 
-To reset capabilities to Default run
+To reset capabilities back to `Default`, run the following command. Note this
+will exit factory mode and restrict which operations you can perform; e.g.
+adjusting `spi_drive` strength will no longer be permitted.
+
 
 ```
 (gsc) > ccd reset
