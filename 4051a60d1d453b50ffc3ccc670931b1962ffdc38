@@ -16,6 +16,47 @@
       "message": "If the device only have one type-C port, common implementation (usbc/dp_alt_mode.c) should work, no need to fork the HPD workaround.",
       "revId": "4051a60d1d453b50ffc3ccc670931b1962ffdc38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e36f3a_3b7ef2b3",
+        "filename": "zephyr/program/skywalker/padme/src/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-21T10:23:29Z",
+      "side": 1,
+      "message": "I thought there\u0027s common code available but apparently not.\n\nLet\u0027s merge this first, and add support for svdm_dp_post_config in PDC later.",
+      "parentUuid": "bb847efc_dee9020c",
+      "revId": "4051a60d1d453b50ffc3ccc670931b1962ffdc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20dbcb10_67bf69a9",
+        "filename": "zephyr/program/skywalker/padme/src/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-21T10:23:29Z",
+      "side": 1,
+      "message": "remove this.\nwe just changed skywalker common code to not wake AP (CL:6839659)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "4051a60d1d453b50ffc3ccc670931b1962ffdc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
