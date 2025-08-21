@@ -16,6 +16,24 @@
       "message": "Willing to try this as an experiment. RTK believes that a single 5ms initial ping would not cause excessive load on their internal threading, but they will do more stress testing internally. Should we wait on that?",
       "revId": "0a3427e58dc7f78e114c3e5089e0b51f245543a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79c2d07_bc552e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-21T07:04:45Z",
+      "side": 1,
+      "message": "Experiment seems finished? b/414703854#comment10\n\nIf they are still running other experiment, yes we should wait.",
+      "parentUuid": "4e22f249_a7d006a3",
+      "revId": "0a3427e58dc7f78e114c3e5089e0b51f245543a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
