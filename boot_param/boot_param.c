@@ -745,12 +745,42 @@ static inline bool fill_cdi_details_with_key(
 	return true;
 }
 
+/* Updates hidden_digest for the requested chain ID.
+ * Assumes that ctx->cfg is already filled.
+ */
+static inline bool set_hidden_digest_for_chain(
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
+)
+{
+	uint8_t bytes[DIGEST_BYTES + 1];
+	const struct slice_ref_s slice = { DIGEST_BYTES + 1, bytes };
+
+	/* For AP chain keep the hidden digest as-is to avoid
+	 * changing sealing CDIs for already used devices.
+	 */
+	if (chain_id == BOOT_PARAM_DICE_CHAIN_AP)
+		return true;
+
+	/* For all other chains:
+	 * hidden_digest = sha256(hidden_digest | chain_id)
+	 */
+	__platform_memcpy(bytes, ctx->cfg.hidden_digest, DIGEST_BYTES);
+	bytes[DIGEST_BYTES] = chain_id;
+
+	return __platform_sha256(slice, ctx->cfg.hidden_digest);
+}
+
 /* Fills CDI_attest pubkey, CDI_ID in the CDI certificate.
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline bool fill_cdi_details(
 	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	const void *cdi_key;
@@ -759,6 +789,10 @@ static inline bool fill_cdi_details(
 
 	__platform_memcpy(hdr, &kDiceHandoverHdrTemplate,
 			  sizeof(struct dice_handover_hdr_s));
+	if (!set_hidden_digest_for_chain(ctx, chain_id)) {
+		__platform_log_str("Failed to set chain digest");
+		return false;
+	}
 	if (!calc_cdi_attest(ctx, hdr->cdi_attest.value)) {
 		__platform_log_str("Failed to calc CDI_attest");
 		return false;
@@ -856,7 +890,10 @@ static inline void set_cbor_u32(
 
 /* Fills CfgDescr, CfgDescr digest and boot mode in CDI certificate */
 static inline bool fill_config_details(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	struct cwt_claims_bstr_s *payload = &ctx->output.dice_handover.payload;
@@ -877,7 +914,7 @@ static inline bool fill_config_details(
 	__platform_memcpy(cfg_descr->ap_fw_version.value, ctx->cfg.pcr10,
 			  DIGEST_BYTES);
 #if BOOT_PARAM_CFG_DESCR_STAGE == 2
-	cfg_descr->dice_chain_id.value = 0;
+	cfg_descr->dice_chain_id.value = chain_id;
 	cfg_descr->gsc_type.value = ctx->cfg.gsc_type;
 	set_cbor_u32(ctx->cfg.board_id_flags, &cfg_descr->board_id_flags);
 	set_cbor_u32(ctx->cfg.board_id_type, &cfg_descr->board_id_type);
@@ -904,7 +941,10 @@ static inline bool fill_config_details(
 /* Fills DICE handover structure in struct dice_ctx_s. */
 /* Assumes ctx.cfg is already filled */
 static inline bool generate_dice_handover(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	/* 1. Fill device configuration details in CDI certificate: CfgDescr and
@@ -916,15 +956,18 @@ static inline bool generate_dice_handover(
 	 * be filled already.
 	 */
 
-	return fill_config_details(ctx) &&
-		fill_cdi_details(ctx) &&
+	return fill_config_details(ctx, chain_id) &&
+		fill_cdi_details(ctx, chain_id) &&
 		fill_uds_details(ctx);
 }
 
 #if BOOT_PARAM_VERSION == 1
 /* Fills ReservedMem. */
 static inline bool fill_res_mem(
-	struct res_mem_s *res_mem /* [IN/OUT] ReservedMem */
+	/* [IN/OUT] ReservedMem */
+	struct res_mem_s *res_mem,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	__platform_memcpy(&res_mem->hdrs, &res_mem_hdrs,
@@ -964,7 +1007,10 @@ static inline void set_cbor_bstr_hdr16(
 
 /* Fills GSCBootParam. */
 static inline bool fill_gsc_boot_param(
-	struct gsc_boot_param_s *gsc_boot_param /* [IN/OUT] GSCBootParam */
+	/* [IN/OUT] GSCBootParam */
+	struct gsc_boot_param_s *gsc_boot_param,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	/* GSCBootParam: Map header: 3 entries */
@@ -1009,7 +1055,10 @@ static inline bool fill_gsc_boot_param(
 /* Fills GSCBootParam and BootParam header in struct dice_ctx_s. */
 /* Doesn't touch DICE handover structure */
 static inline bool fill_boot_param(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	/* BootParam: Map header: 3 entries */
@@ -1039,7 +1088,7 @@ static inline bool fill_boot_param(
 	set_cbor_bstr_hdr16(ctx->output.res_mem_bstr_hdr,
 			    sizeof(struct res_mem_s));
 
-	return fill_res_mem(&ctx->output.res_mem);
+	return fill_res_mem(&ctx->output.res_mem, chain_id);
 #else /* BOOT_PARAM_VERSION == 0 */
 
 	/* BootParam entry 2: GSCBootParam:
@@ -1052,18 +1101,22 @@ static inline bool fill_boot_param(
 	 */
 	ctx->output.dice_handover_label = CBOR_UINT0(3);
 
-	return fill_gsc_boot_param(&ctx->output.gsc_boot_param);
+	return fill_gsc_boot_param(&ctx->output.gsc_boot_param, chain_id);
 #endif /* BOOT_PARAM_VERSION */
 }
 
-/* Get (part of) BootParam structure: [offset .. offset + size). */
-size_t get_boot_param_bytes(
+/* Get (part of) BootParam structure for the specific chain:
+ * [offset .. offset + size).
+ */
+size_t get_boot_param_bytes_for_chain(
 	/* [OUT] destination buffer to fill */
 	uint8_t *dest,
 	/* [IN] starting offset in the BootParam struct */
 	size_t offset,
 	/* [IN] size of the BootParam struct to copy */
-	size_t size
+	size_t size,
+	/* [IN] chain ID */
+	uint8_t chain_id
 )
 {
 	struct dice_ctx_s ctx;
@@ -1078,10 +1131,10 @@ size_t get_boot_param_bytes(
 		__platform_log_str("Failed to get DICE config");
 		return 0;
 	}
-	if (!generate_dice_handover(&ctx))
+	if (!generate_dice_handover(&ctx, chain_id))
 		return 0;
 
-	if (!fill_boot_param(&ctx))
+	if (!fill_boot_param(&ctx, chain_id))
 		return 0;
 
 	__platform_memcpy(dest, src + offset, size);
@@ -1089,14 +1142,18 @@ size_t get_boot_param_bytes(
 	return size;
 }
 
-/* Get (part of) DiceChain structure: [offset .. offset + size) */
-size_t get_dice_chain_bytes(
+/* Get (part of) DiceChain structure for the specific chain:
+ * [offset .. offset + size).
+ */
+size_t get_dice_chain_bytes_for_chain(
 	/* [OUT] destination buffer to fill */
 	uint8_t *dest,
 	/* [IN] starting offset in the DiceChain struct */
 	size_t offset,
 	/* [IN] size of the data to copy */
-	size_t size
+	size_t size,
+	/* [IN] chain ID */
+	uint8_t chain_id
 )
 {
 	struct dice_ctx_s ctx;
@@ -1111,10 +1168,59 @@ size_t get_dice_chain_bytes(
 		__platform_log_str("Failed to get DICE config");
 		return 0;
 	}
-	if (!generate_dice_handover(&ctx))
+	if (!generate_dice_handover(&ctx, chain_id))
 		return 0;
 
 	__platform_memcpy(dest, src + offset, size);
 	__platform_memset(&ctx, 0, sizeof(struct dice_ctx_s)); /* zeroize */
 	return size;
+}
+
+/* Sign data with attestation CDI key for the specific chain.
+ */
+bool sign_with_cdi_key(
+	/* [IN] chain ID */
+	uint8_t chain_id,
+	/* [IN] data to sign */
+	const struct slice_ref_s data_to_sign,
+	/* [OUT] resulting signature */
+	uint8_t signature[ECDSA_SIG_BYTES]
+)
+{
+	struct dice_ctx_s ctx;
+	uint8_t cdi[DIGEST_BYTES];
+	const void *cdi_key;
+	bool result;
+
+	if (!__platform_get_dice_config(&ctx.cfg)) {
+		__platform_log_str("Failed to get DICE config");
+		return false;
+	}
+	if (!fill_config_details(&ctx, chain_id)) {
+		__platform_log_str("Failed to fill config details");
+		return false;
+	}
+
+	if (!set_hidden_digest_for_chain(&ctx, chain_id)) {
+		__platform_log_str("Failed to set chain digest");
+		return false;
+	}
+	if (!calc_cdi_attest(&ctx, cdi)) {
+		__platform_log_str("Failed to calc CDI_attest");
+		return false;
+	}
+	if (!generate_cdi_key(cdi, &cdi_key)) {
+		__platform_log_str("Failed to generate CDI key");
+		return false;
+	}
+
+	result = __platform_ecdsa_p256_sign(cdi_key, data_to_sign,
+					    signature);
+	if (!result) {
+		__platform_log_str("Failed to sign with CDI key");
+		return false;
+	}
+	__platform_ecdsa_p256_free(cdi_key);
+
+	return result;
 }
