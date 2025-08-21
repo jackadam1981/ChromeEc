@@ -137,9 +137,14 @@ test_export_static uint8_t get_sensor_bpp(void)
 #endif
 }
 
-__maybe_unused test_export_static uint8_t get_sensor_bpp_v2(void)
+__maybe_unused test_export_static int
+get_image_frame_params(struct fp_image_frame_params *image_frame_params)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
+	if (image_frame_params == nullptr) {
+		return EC_ERROR_INVAL;
+	}
+
 	size_t fp_sensor_get_info_v2_size =
 		sizeof(struct ec_response_fp_info_v2) +
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
@@ -155,22 +160,23 @@ __maybe_unused test_export_static uint8_t get_sensor_bpp_v2(void)
 		return EC_ERROR_UNKNOWN;
 	}
 
-	uint8_t bpp = 0;
+	bool found = false;
 	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
 		if (info->image_frame_params[i].fp_capture_type ==
 		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
-			bpp = info->image_frame_params[i].bpp;
+			*image_frame_params = info->image_frame_params[i];
+			found = true;
 			break;
 		}
 	}
 
 	free(info);
 
-	if (bpp == 0) {
+	if (!found) {
 		return EC_ERROR_INVAL;
 	}
 
-	return bpp;
+	return EC_RES_SUCCESS;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
