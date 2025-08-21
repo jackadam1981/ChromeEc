@@ -57,22 +57,23 @@ this. It only has information for features completed after 0.22.6.
 CCD, EC-EFS2, Factory Mode, Pinweaver, U2F, and Board ID are all supported in
 0.22.6. The were added before 0.22.6, so they aren't included in the table.
 
-Feature Description                  | Feature Added | Feature Complete | Release Landed
------------------------------------- | ------------- | ---------------- | --------------
-ZTE Serial Number                    |               | 0.22.6           | M107
-CCD Open preserved across deep sleep |               | 0.22.6           | M107
-AP RO WP Sense                       | 0.22.6        |                  | M107
-AP RO Verification (without reset)   | 0.24.0        | 0.23.0           | M108
-Fix updates after PoR and deep sleep | 0.24.14       | 0.23.14          | M113
-AP RO Verification Enforcement       | 0.24.61       | 0.23.71          | M122
-Reporting external WP assertion fix  | 0.24.131      | 0.23.140         | M133/M134
-Build uses Bazel artifacts           | 0.24.140      | 0.23.140         | M133/M134
-Support for NonInverted KSO          | 0.24.140      | 0.23.140         | M133/M134
-Boot param support                   | 0.24.160      | 0.23.160         | M135/M136
-Add `spi_drive` GSC command          | 0.24.180      | 0.23.180         | M139
-Run APRV after WP events             | 0.24.172      | 0.23.180         | M138/M139
+Feature Description                  | Feature Added       | Feature Complete    | Release Landed
+------------------------------------ | ------------------- | ------------------- | --------------
+ZTE Serial Number                    |                     | 0.22.6              | M107
+CCD Open preserved across deep sleep |                     | 0.22.6              | M107
+AP RO WP Sense                       | 0.22.6              |                     | M107
+AP RO Verification (without reset)   | 0.24.0              | 0.23.0              | M108
+Fix updates after PoR and deep sleep | 0.24.14             | 0.23.14             | M113
+AP RO Verification Enforcement       | 0.24.61             | 0.23.71             | M122
+Reporting external WP assertion fix  | 0.24.131            | 0.23.140            | M133/M134
+Build uses Bazel artifacts           | 0.24.140            | 0.23.140            | M133/M134
+Support for NonInverted KSO          | 0.24.140            | 0.23.140            | M133/M134
+Boot param support                   | 0.24.160            | 0.23.160            | M135/M136
+Add `spi_drive` GSC command          | 0.24.180            | 0.23.180            | M139
+Run APRV after WP events             | 0.24.172            | 0.23.180            | M138/M139
+NT - Image BID checks                | RO .108 RW 0.33.190 | RO .113 RW 0.33.210 | M138/M140
 
-# RO revisions
+# DT RO revisions
 
 ## 0.0.32
 
@@ -133,6 +134,29 @@ Released with RW 0.24.81
 Released with RW 0.24.112 and 0.23.112
 
 *   New dev image keys
+
+# NT RO revisions
+
+The notes start with 0.0.108, but there were releases before that. The first
+NT devices were manufactured with 0.0.113. Devices released to consumers run
+0.0.113 or newer.
+
+This just covers general features. See the ROM\_EXT release notes for more
+information.
+
+## 0.0.108 released on 06/24/2025 in M138
+
+Released with 0.33.190 in M140. It was cherry-picked back to M138.
+
+*   BID image checks
+
+## 0.0.113 released on 08/20/2025 M140
+
+Image used in first consumer devices.
+Released with RW 0.33.210 in M141. It was cherry-picked back to M140.
+
+*   Only check BID type bits that are 1 in the BID type mask, so we can sign
+    images with "FFFF" for the BID type. ex: FFFF:0:0x10
 
 # RW revisions
 
