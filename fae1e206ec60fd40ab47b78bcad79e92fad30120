@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8576498_24dcf38b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-21T21:25:26Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d1e78375_c1794bb8",
+      "revId": "fae1e206ec60fd40ab47b78bcad79e92fad30120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35246efd_990b9ffa",
@@ -49,6 +67,30 @@
       "writtenOn": "2025-08-21T21:17:47Z",
       "side": 1,
       "message": "Does this work?\n\n```suggestion\n\tint result \u003d EC_ERROR_INVAL;\n\n\tif (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) \u003c 0) {\n\t\tresult \u003d EC_ERROR_UNKNOWN;\n\t\tgoto cleanup;\n\t}\n\n\tfor (uint8_t i \u003d 0; i \u003c info-\u003esensor_info.num_capture_types; ++i) {\n\t\tif (info-\u003eimage_frame_params[i].fp_capture_type \u003d\u003d\n\t\t    FP_CAPTURE_TYPE(global_context.sensor_mode)) {\n\t\t\timage_frame_params \u003d info-\u003eimage_frame_params[i];\n\t\t\tresult \u003d EC_RES_SUCCESS;\n\t\t\tbreak;\n\t\t}\n\t}\n\ncleanup:\n\tfree(info);\n\treturn result;\n```",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 15
+      },
+      "revId": "fae1e206ec60fd40ab47b78bcad79e92fad30120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4785188_679c5325",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-21T21:25:26Z",
+      "side": 1,
+      "message": "yes. done",
+      "parentUuid": "35246efd_990b9ffa",
       "range": {
         "startLine": 154,
         "startChar": 0,
