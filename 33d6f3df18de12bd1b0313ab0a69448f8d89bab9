@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fdcabd_778f0894",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-21T20:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bb821ac_4b4f4c1a",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "33d6f3df18de12bd1b0313ab0a69448f8d89bab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6159af61_7b3e13a9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6996842f_437bdaa4",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-21T20:58:38Z",
+      "side": 1,
+      "message": "Leaving a record of our offline discussion: currently the LED policy manager is still verifying all power status metrics at 250ms TICK intervals. Only the LED colors change at faster rates.\n\nFor future use cases where LED policy manager may need to update to faster response times, we may change the LED manager to a interrupt driven system.",
+      "parentUuid": "6159af61_7b3e13a9",
+      "range": {
+        "startLine": 165,
+        "startChar": 12,
+        "endLine": 165,
+        "endChar": 33
+      },
+      "revId": "33d6f3df18de12bd1b0313ab0a69448f8d89bab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98ed4615_890822c9",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-08-21T16:37:51Z",
       "side": 1,
       "message": "I believe you will update this tick hook, right?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 53
+      },
+      "revId": "33d6f3df18de12bd1b0313ab0a69448f8d89bab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f0f6ba_345c4f93",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-21T20:58:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "98ed4615_890822c9",
       "range": {
         "startLine": 303,
         "startChar": 0,
