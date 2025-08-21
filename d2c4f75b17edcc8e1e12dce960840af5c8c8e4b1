@@ -22,6 +22,30 @@
       },
       "revId": "d2c4f75b17edcc8e1e12dce960840af5c8c8e4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c4d9cf_653151fc",
+        "filename": "include/fpsensor/fpsensor_auth_crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-21T16:51:38Z",
+      "side": 1,
+      "message": "Yeah. I fixed it in [the next CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6839785). Is that okay for you?",
+      "parentUuid": "ce9f30a5_c362c547",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 43
+      },
+      "revId": "d2c4f75b17edcc8e1e12dce960840af5c8c8e4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
