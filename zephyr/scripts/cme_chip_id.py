@@ -339,16 +339,25 @@ DISAMBIGUATION_DICTIONARY = {
             {
                 "reg": "0x02",
                 "mask": "0xff",
-                "value": "0x45",
+                "value": "0x15",
                 "bytes": 1,
             },
             {
                 "reg": "0x03",
                 "mask": "0xff",
-                "value": "0x87",
+                "value": "0x88",
                 "bytes": 1,
             },
-            None,
+            {
+                "reg": "0x2c",
+                # this mask is untriggerable on purpose to indicate the use of overrides
+                "mask": "0x00",
+                "value": "0x01",
+                "override_addr": "0x8",
+                "override_mask": "0x02",
+                "override_value": "0x02",
+                "bytes": 1,
+            },
             None,
         ),
         CompatibleInfo(
@@ -425,7 +434,16 @@ DISAMBIGUATION_DICTIONARY = {
                 "value": "0x88",
                 "bytes": 1,
             },
-            None,
+            {
+                "reg": "0x2c",
+                # the default value is auto pass
+                "mask": "0x00",
+                "value": "0x00",
+                "override_addr": "0x8",
+                "override_mask": "0x02",
+                "override_value": "0x00",
+                "bytes": 1,
+            },
             None,
         ),
     ],
