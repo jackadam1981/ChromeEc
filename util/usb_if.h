@@ -38,6 +38,14 @@ int usb_trx(struct usb_endpoint *uep, void *outbuf, int outlen, void *inbuf,
 	    int inlen, int allow_less, size_t *rxed_count);
 
 /*
+ * This function clears any pending incoming data from endpoint that may be
+ * leftover from previous transactions. The data may either be in the host
+ * kernel buffer or the GSC outgoing buffer. Either way; this should clear all
+ * of the buffered incoming data. Useful before starting new transactions.
+ */
+void usb_clear_in_buffer(struct usb_endpoint *uep);
+
+/*
  * This function should be called for graceful tear down of the USB interface
  * when the program exits, either normally or due to error. This is required
  * only after USB connection was established, i.e. after successful invocation
