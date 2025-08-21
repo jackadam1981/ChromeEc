@@ -137,7 +137,8 @@ test_export_static uint8_t get_sensor_bpp(void)
 #endif
 }
 
-__maybe_unused test_export_static uint8_t get_sensor_bpp_v2(void)
+__maybe_unused test_export_static int
+get_image_frame_params(struct fp_image_frame_params &image_frame_params)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
 	size_t fp_sensor_get_info_v2_size =
@@ -150,27 +151,25 @@ __maybe_unused test_export_static uint8_t get_sensor_bpp_v2(void)
 		return EC_ERROR_MEMORY_ALLOCATION;
 	}
 
+	int result = EC_ERROR_INVAL;
+
 	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) < 0) {
-		free(info);
-		return EC_ERROR_UNKNOWN;
+		result = EC_ERROR_UNKNOWN;
+		goto cleanup;
 	}
 
-	uint8_t bpp = 0;
 	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
 		if (info->image_frame_params[i].fp_capture_type ==
 		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
-			bpp = info->image_frame_params[i].bpp;
+			image_frame_params = info->image_frame_params[i];
+			result = EC_RES_SUCCESS;
 			break;
 		}
 	}
 
+cleanup:
 	free(info);
-
-	if (bpp == 0) {
-		return EC_ERROR_INVAL;
-	}
-
-	return bpp;
+	return result;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
