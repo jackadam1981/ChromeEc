@@ -2729,6 +2729,9 @@
 /* Command to issue AP reset */
 #undef CONFIG_HOSTCMD_AP_RESET
 
+/* Command to issue AP shutdown */
+#undef CONFIG_HOSTCMD_AP_SHUTDOWN
+
 /*
  * Support voltage regulator host command
  * If defined, the board should also implement board functions defined in
