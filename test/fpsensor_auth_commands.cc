@@ -9,7 +9,6 @@
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "mock/fpsensor_state_mock.h"
 #include "mock/otpi_mock.h"
 #include "openssl/aes.h"
@@ -804,9 +803,6 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 
 	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
 	struct ec_response_fp_generate_nonce nonce_response;
 	struct ec_params_fp_establish_session session_params = {};
 
@@ -878,16 +874,12 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 		EC_RES_SUCCESS, "%d");
 
 	uint32_t status;
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
 
 	return EC_SUCCESS;
@@ -897,9 +889,6 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 test_static enum ec_error_list test_fp_command_commit_v3(void)
 {
 	fp_reset_and_clear_context();
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
 
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =
@@ -964,9 +953,6 @@ test_static enum ec_error_list test_fp_command_commit_trivial_salt(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
 				       sizeof(ctx_params), NULL, 0),
 		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
 
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =
@@ -1035,9 +1021,6 @@ test_static enum ec_error_list test_fp_command_commit_without_seed(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
 				       sizeof(ctx_params), NULL, 0),
 		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
 
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =

@@ -12,7 +12,6 @@
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "fpsensor_driver.h"
 #include "fpsensor_matcher.h"
 #include "host_command.h"
@@ -64,7 +63,6 @@ struct fpsensor_context global_context = {
 			.val = 0,
 		}},
 	.fp_positive_match_salt = {{0}},
-	.template_states = {},
 };
 
 int fp_tpm_seed_is_set(void)
@@ -87,7 +85,6 @@ void fp_clear_finger_context(uint16_t idx)
 	OPENSSL_cleanse(fp_template[idx], sizeof(fp_template[0]));
 	OPENSSL_cleanse(global_context.fp_positive_match_salt[idx],
 			sizeof(global_context.fp_positive_match_salt[0]));
-	global_context.template_states[idx] = std::monostate();
 }
 
 void fp_reset_context()

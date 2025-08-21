@@ -12,7 +12,6 @@
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "openssl/mem.h"
 #include "openssl/rand.h"
 #include "scoped_fast_cpu.h"

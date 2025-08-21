@@ -17,7 +17,6 @@
 #include "fpsensor/fpsensor_detect.h"
 #include "fpsensor/fpsensor_modes.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "gpio.h"
 #include "host_command.h"
@@ -112,11 +111,6 @@ static uint32_t fp_process_enroll(void)
 			fp_enable_positive_match_secret(
 				global_context.templ_valid,
 				&global_context.positive_match_secret_state);
-			global_context
-				.template_states[global_context.templ_valid] =
-				fp_decrypted_template_state{
-					.user_id = global_context.user_id,
-				};
 			global_context.templ_valid++;
 		}
 		global_context.sensor_mode &= ~FP_MODE_ENROLL_SESSION;
@@ -653,9 +647,6 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 		fp_clear_finger_context(idx);
 		return EC_RES_UNAVAILABLE;
 	}
-	global_context.template_states[idx] = fp_decrypted_template_state{
-		.user_id = global_context.user_id,
-	};
 
 	std::ranges::copy(templ, fp_template[idx]);
 	if (bytes_are_trivial(positive_match_salt.data(),
