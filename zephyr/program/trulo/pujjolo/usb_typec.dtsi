@@ -36,6 +36,7 @@
 		status = "okay";
 		reg = <0x66>;
 		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+		ccd;
 	};
 
 	pdc_power_p1: rts54-pdc@67 {
