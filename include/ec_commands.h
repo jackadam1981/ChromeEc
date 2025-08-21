@@ -6785,6 +6785,8 @@ enum chipset_shutdown_reason {
 	CHIPSET_SHUTDOWN_THERMAL,
 	/* Force a chipset shutdown from the power button through EC */
 	CHIPSET_SHUTDOWN_BUTTON,
+	/* Force a chipset shutdown, because the AP wants to. */
+	CHIPSET_SHUTDOWN_HOST_CMD,
 
 	CHIPSET_SHUTDOWN_COUNT, /* End of shutdown reasons. */
 };
@@ -8881,6 +8883,7 @@ struct ec_response_get_boot_time {
 	uint16_t cnt;
 } __ec_align4;
 
+#define EC_CMD_AP_SHUTDOWN 0x0605
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
