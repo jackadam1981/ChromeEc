@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b4b399_712f53dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-21T13:52:12Z",
+      "side": 1,
+      "message": "Thank you very much for updating the notes! I like the formatting you went with.",
+      "revId": "e2cecc24fa7b6ab64d11fbbcdb709c4d13e6a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480aa276_3e74a486",
@@ -19,6 +36,76 @@
         "startChar": 36,
         "endLine": 1008,
         "endChar": 40
+      },
+      "revId": "e2cecc24fa7b6ab64d11fbbcdb709c4d13e6a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a60f3dd_4d4bc58a",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-21T13:52:12Z",
+      "side": 1,
+      "message": "I think earliest contiguous released version, for example if in  120LTS, 123, and 124, we should put 123 even if it was a cherry pick to 123 (and 120)\n\n--\n\nSo M138 for both (at least according to the table)?",
+      "parentUuid": "480aa276_3e74a486",
+      "range": {
+        "startLine": 1008,
+        "startChar": 36,
+        "endLine": 1008,
+        "endChar": 40
+      },
+      "revId": "e2cecc24fa7b6ab64d11fbbcdb709c4d13e6a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4046b7_2a3762c8",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-21T13:52:12Z",
+      "side": 1,
+      "message": "Maybe \"Fixed failure after too many GSC reboots\" or something like that. A partner actually ran into this a few days ago",
+      "range": {
+        "startLine": 1076,
+        "startChar": 4,
+        "endLine": 1076,
+        "endChar": 29
+      },
+      "revId": "e2cecc24fa7b6ab64d11fbbcdb709c4d13e6a510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a07cb5f_e88acf78",
+        "filename": "docs/ti50_firmware_releases.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-08-21T13:52:12Z",
+      "side": 1,
+      "message": "this could be moved to the general features section as it applies and is helpful for both",
+      "range": {
+        "startLine": 1081,
+        "startChar": 0,
+        "endLine": 1082,
+        "endChar": 61
       },
       "revId": "e2cecc24fa7b6ab64d11fbbcdb709c4d13e6a510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
