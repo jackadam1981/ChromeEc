@@ -129,7 +129,7 @@ void tablet_set_mode(int mode, uint32_t trigger)
 		return;
 	}
 
-	if (IS_ENABLED(CONFIG_GMR_TABLET_MODE) &&
+	if (IS_ENABLED(GMR_TABLET_MODE) &&
 	    ((gmr_sensor_at_360 && !mode) || (gmr_sensor_at_0 && mode))) {
 		/*
 		 * If tablet mode is being forced by the user, then this logging
@@ -193,15 +193,19 @@ void tablet_disable(void)
 }
 
 /* This ifdef can be removed once we clean up past projects which do own init */
-#ifdef CONFIG_GMR_TABLET_MODE
-#ifdef CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR
+#ifdef GMR_TABLET_MODE
+#if defined(CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR) && \
+	!defined(USE_REMOTE_GMR_TABLET_SWITCH)
 #error The board has GMR sensor
 #endif
 static void gmr_tablet_switch_interrupt_debounce(void)
 {
-	gmr_sensor_at_360 = IS_ENABLED(CONFIG_GMR_TABLET_MODE_CUSTOM) ?
-				    board_sensor_at_360() :
-				    !gpio_get_level(GPIO_TABLET_MODE_L);
+	gmr_sensor_at_360 =
+#ifdef CONFIG_GMR_TABLET_MODE_CUSTOM
+		board_sensor_at_360();
+#else
+		!gpio_get_level(GPIO_TABLET_MODE_L);
+#endif
 
 	/*
 	 * DPTF table is updated only when the board enters/exits completely
@@ -270,10 +274,18 @@ DECLARE_DEFERRED(gmr_tablet_switch_interrupt_debounce);
 
 void gmr_tablet_switch_isr(enum gpio_signal signal)
 {
-	hook_call_deferred(&gmr_tablet_switch_interrupt_debounce_data,
-			   CONFIG_GMR_SENSOR_DEBOUNCE_US);
+	if (in_interrupt_context()) {
+		/* We're in an interrupt, call the debounce via a hook */
+		hook_call_deferred(&gmr_tablet_switch_interrupt_debounce_data,
+				   CONFIG_GMR_SENSOR_DEBOUNCE_US);
+	} else {
+		/* We're in a thread, just pass the call to the handler */
+		gmr_tablet_switch_interrupt_debounce()
+	}
 }
+#endif /* GMR_TABLET_MODE */
 
+#ifdef CONFIG_GMR_TABLET_MODE
 /*
  * tablet gmr sensor() calls tablet_set_mode() to go in tablet mode
  * when we know for sure the tablet is in tablet mode,
