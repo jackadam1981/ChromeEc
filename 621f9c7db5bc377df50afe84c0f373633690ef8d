@@ -140,6 +140,24 @@
       "parentUuid": "4d2b5d0b_e9c6f86e",
       "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae872d4e_68439771",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4141,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-22T17:40:07Z",
+      "side": 1,
+      "message": "Assuming CONFIG_HOSTCMD_X86 is not defined, host event are sent over MKBP, not over HECI directly. See `host_set_events()` in `common/host_event_commands.c`.",
+      "parentUuid": "af31597c_f7c16abd",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
