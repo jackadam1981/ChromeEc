@@ -33,9 +33,10 @@
 			};
 		};
 
-		power-state-discharge {
+		power-state-discharge-kbl {
 			charge-state = "LED_PWRS_DISCHARGE";
 			batt-lvl = <BATTERY_LEVEL_LOW BATTERY_LEVEL_FULL>;
+			fw-config = <0 1>;
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
@@ -46,10 +47,11 @@
 			};
 		};
 
-		power-state-discharge-batt-low {
+		power-state-discharge-batt-low-kbl {
 			charge-state = "LED_PWRS_DISCHARGE";
 			batt-lvl = <BATTERY_LEVEL_EMPTY
 				    (BATTERY_LEVEL_LOW - 1)>;
+			fw-config = <0 1>;
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
@@ -57,6 +59,100 @@
 				/* Amber 1 sec, off 1 sec */
 				color-0 {
 					led-color = "LED_AMBER";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+
+		power-state-discharge-chipset-state-s0-nkbl {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
+			batt-lvl = <BATTERY_LEVEL_LOW BATTERY_LEVEL_FULL>;
+			fw-config = <0 0>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_OFF";
+				};
+			};
+		};
+
+		power-state-discharge-chipset-state-s5-nkbl {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S5";
+			batt-lvl = <BATTERY_LEVEL_LOW BATTERY_LEVEL_FULL>;
+			fw-config = <0 0>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_OFF";
+				};
+			};
+		};
+
+		power-state-discharge-chipset-state-s0-batt-low-nkbl {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
+			batt-lvl = <BATTERY_LEVEL_EMPTY
+				    (BATTERY_LEVEL_LOW - 1)>;
+			fw-config = <0 0>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+
+		power-state-discharge-chipset-state-s5-batt-low-nkbl {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S5";
+			batt-lvl = <BATTERY_LEVEL_EMPTY
+				    (BATTERY_LEVEL_LOW - 1)>;
+			fw-config = <0 0>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_AMBER";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+
+		power-state-discharge-chipset-state-s3-nkbl {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S3";
+			fw-config = <0 0>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_WHITE";
 					period-ms = <1000>;
 				};
 				color-1 {

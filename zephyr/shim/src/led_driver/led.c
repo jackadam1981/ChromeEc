@@ -78,6 +78,7 @@ struct node_prop_t {
 	int batt_state;
 	int8_t batt_lvl[2];
 	int8_t charge_port;
+	int32_t fw_config[2];
 	struct led_pattern_node_t *led_patterns;
 	uint8_t num_patterns;
 	bool state_active;
@@ -112,6 +113,9 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, GEN_PATTERN_NODE_ARRAY,
 		.charge_port =                                                \
 			COND_CODE_1(DT_NODE_HAS_PROP(state_id, charge_port),  \
 				    (DT_PROP(state_id, charge_port)), (-1)),  \
+		.fw_config = COND_CODE_1(DT_NODE_HAS_PROP(state_id, fw_config), \
+					(DT_PROP(state_id, fw_config)),       \
+					({ -1, -1})),                         \
 		.led_patterns = PATTERN_NODE_ARRAY(state_id),                 \
 		.num_patterns = 0 fn(state_id, PLUS_ONE),                     \
 		.state_active = false,                                        \
@@ -246,6 +250,22 @@ static int match_node(int node_idx)
 		}
 	}
 #endif /* CONFIG_PLATFORM_EC_CHARGE_MANAGER */
+
+#if (IS_ENABLED(CONFIG_PLATFORM_EC_CBI_EEPROM) || \
+	 IS_ENABLED(CONFIG_PLATFORM_EC_CBI_FLASH))
+#undef DT_DRV_COMPAT
+#include "cros_cbi.h"
+	uint32_t val;
+	if (node_array[node_idx].fw_config[0] != -1) {
+		if (!cros_cbi_get_fw_config(node_array[node_idx].fw_config[0], &val)) {
+			if (val != node_array[node_idx].fw_config[1]) {
+				node_array[node_idx].state_active = false;
+				return -1;
+			}
+		}
+	}
+#define DT_DRV_COMPAT cros_ec_led_policy
+#endif /* CONFIG_PLATFORM_EC_CBI_EEPROM | CONFIG_PLATFORM_EC_CBI_FLASH */
 
 	/* We found the node that matches the current system state */
 	return node_idx;

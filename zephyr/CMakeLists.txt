@@ -34,16 +34,6 @@ if(DEFINED CONFIG_PLATFORM_EC AND EXISTS "${EDT_PICKLE}")
     message(FATAL_ERROR "named_gpios.py failed with return code: ${ret}")
   endif()
 
-  set(LED_POLICY_SCRIPT ${PLATFORM_EC}/zephyr/scripts/led_policy.py)
-  set(CMD_LED_POLICY ${PYTHON_EXECUTABLE} ${LED_POLICY_SCRIPT}
-    --zephyr-base ${ZEPHYR_BASE}
-    --edt-pickle ${EDT_PICKLE}
-  )
-  execute_process(COMMAND ${CMD_LED_POLICY} RESULT_VARIABLE ret)
-  if(NOT "${ret}" STREQUAL "0")
-    message(FATAL_ERROR "led_policy.py failed with return code: ${ret}")
-  endif()
-
   if(NOT DEFINED CONFIG_PLATFORM_EC_DETACHABLE_BASE AND
     NOT DEFINED CONFIG_FINGERPRINT_SENSOR AND
     DEFINED CONFIG_PLATFORM_EC_I2C)

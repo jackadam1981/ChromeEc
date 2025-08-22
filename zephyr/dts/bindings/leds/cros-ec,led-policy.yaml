@@ -130,6 +130,12 @@ child-binding:
              range of BATTERY_LEVEL_EMPTY to BATTERY_LEVEL_LOW inclusive.
       type: array
 
+    fw-config:
+      description: |
+        If the LED color depends on fw-config of the board, this property
+        is used to describe fw-config field and value.
+      type: array
+
   child-binding:
     properties:
       led-id:
