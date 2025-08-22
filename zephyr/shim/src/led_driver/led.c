@@ -77,6 +77,7 @@ struct node_prop_t {
 	int batt_state;
 	int8_t batt_lvl[2];
 	int8_t charge_port;
+	int8_t board_led_alt_policy_label;
 	struct led_pattern_node_t *led_patterns;
 	uint8_t num_patterns;
 	bool state_active;
@@ -111,6 +112,11 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, GEN_PATTERN_NODE_ARRAY,
 		.charge_port =                                                \
 			COND_CODE_1(DT_NODE_HAS_PROP(state_id, charge_port),  \
 				    (DT_PROP(state_id, charge_port)), (-1)),  \
+		.board_led_alt_policy_label = COND_CODE_1(                    \
+			DT_NODE_HAS_PROP(state_id,                            \
+					 board_led_alt_policy_label),         \
+			(DT_PROP(state_id, board_led_alt_policy_label)),      \
+			(-1)),                                                \
 		.led_patterns = PATTERN_NODE_ARRAY(state_id),                 \
 		.num_patterns = 0 fn(state_id, PLUS_ONE),                     \
 		.state_active = false,                                        \
@@ -177,6 +183,14 @@ static void set_color(int node_idx)
 	}
 }
 
+/* LCOV_EXCL_START */
+__overridable int board_led_alt_policy(void)
+{
+	/* Default no led alt policy */
+	return -1;
+}
+/* LCOV_EXCL_STOP */
+
 /*
  * The script zephyr/scripts/led_policy.py is used to verify that all
  * power/battery states are covered by the cros-ec,led-policy devicetree.
@@ -212,6 +226,15 @@ static int match_node(int node_idx)
 		enum power_state chipset_state = get_chipset_state();
 
 		if (node_array[node_idx].chipset_state != chipset_state) {
+			node_array[node_idx].state_active = false;
+			return -1;
+		}
+	}
+
+	/* Check if this node depends on board alt policy */
+	if (node_array[node_idx].board_led_alt_policy_label != -1) {
+		if (node_array[node_idx].board_led_alt_policy_label !=
+		    board_led_alt_policy()) {
 			node_array[node_idx].state_active = false;
 			return -1;
 		}
