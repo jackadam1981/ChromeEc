@@ -122,6 +122,24 @@
       "parentUuid": "dab0f50e_2c92afc5",
       "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af31597c_f7c16abd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4141,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-22T17:15:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the technical limitation is, but when we tried it over the HECI bus it would crash the ISH and we would need to cold reboot the device to recover. We can loop Intel back into this to ask.",
+      "parentUuid": "4d2b5d0b_e9c6f86e",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
