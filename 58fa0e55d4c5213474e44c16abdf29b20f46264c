@@ -16,6 +16,24 @@
       "message": "I think you need to add this file to `src/platform/ec/zephyr/test/drivers/default/CMakeLists.txt`. Right now, your emulator change has 0% coverage, and I think this would fix that.",
       "revId": "58fa0e55d4c5213474e44c16abdf29b20f46264c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d53689_04e7ca93",
+        "filename": "zephyr/test/drivers/default/src/integration/usbc/usb_5v_100ma_pd_sink.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-08-22T14:55:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0367ebab_5af2eec2",
+      "revId": "58fa0e55d4c5213474e44c16abdf29b20f46264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
