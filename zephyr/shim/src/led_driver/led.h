@@ -53,6 +53,14 @@ enum led_transition {
 	LED_TRANSITION_COUNT
 };
 
+/*
+ * Board specific override that allows the board to define its own alt
+ * led policies at run time.
+ *
+ * @return>-int to represent the label of each board-led-alt-policy.
+ */
+__overridable int board_led_alt_policy(void);
+
 #define LED_ENUM(id, enum_name) DT_STRING_TOKEN(id, enum_name)
 #define LED_ENUM_WITH_COMMA(id, enum_name)           \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name), \
