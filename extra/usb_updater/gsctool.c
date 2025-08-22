@@ -1097,7 +1097,7 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 
 	/* Now get the reply. */
 	r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80, (void *)&reply,
-				 sizeof(reply), &actual, 1000);
+				 sizeof(reply), &actual, 10000);
 	if (r) {
 		if (r == -7) {
 			fprintf(stderr, "Timeout!\n");
@@ -1706,6 +1706,10 @@ static void get_version(struct transfer_descriptor *td, bool leave_pending)
 	if (td->ep_type == usb_xfer) {
 		struct update_pdu updu;
 
+		/* First clear any stale buffered incoming data */
+		usb_clear_in_buffer(&td->uep);
+
+		/* Then send first update packet to get version info */
 		memset(&updu, 0, sizeof(updu));
 		updu.block_size = htobe32(sizeof(updu));
 		do_xfer(&td->uep, &updu, sizeof(updu), &start_resp,
