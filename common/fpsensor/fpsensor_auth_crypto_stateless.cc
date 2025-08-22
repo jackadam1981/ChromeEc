@@ -169,3 +169,20 @@ enum ec_error_list decrypt_data_with_session_key(
 
 	return EC_SUCCESS;
 }
+
+enum ec_error_list compute_message_signature(
+	std::span<const uint8_t, SHA256_DIGEST_LENGTH> session_key,
+	std::span<const uint8_t> context, std::span<const uint8_t> sender,
+	std::span<const uint8_t> operation,
+	std::span<const uint8_t, FP_CHALLENGE_SIZE> challenge,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> signature)
+{
+	std::array inputs{
+		std::span<const uint8_t>{ challenge },
+		context,
+		sender,
+		operation,
+	};
+
+	return hmac_sha256(session_key, inputs, signature);
+}

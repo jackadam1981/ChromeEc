@@ -338,6 +338,41 @@ test_static enum ec_error_list test_fp_decrypt_data_with_session_key_fail(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list test_fp_compute_message_signature(void)
+{
+	constexpr std::array<uint8_t, 32> session_key = {
+		0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
+		0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10,
+		0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18,
+		0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20,
+	};
+	constexpr std::array<uint8_t, 4> user_id = { 0x0a, 0x00, 0x00, 0x00 };
+	constexpr std::array<uint8_t, 5> sender = { 'f', 'p', 'm', 'c', 'u' };
+	constexpr std::array<uint8_t, 6> operation = { 'e', 'n', 'r',
+						       'o', 'l', 'l' };
+	constexpr std::array<uint8_t, 32> challenge = {
+		1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+		8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5,
+	};
+	constexpr std::array<uint8_t, 32> expected_signature = {
+		0x54, 0x3b, 0x7b, 0xca, 0x07, 0xeb, 0xa4, 0x03,
+		0xc5, 0x3f, 0xdb, 0x88, 0x8a, 0x98, 0x42, 0x84,
+		0xdf, 0x02, 0x2f, 0x28, 0x97, 0x7b, 0xef, 0xee,
+		0x0a, 0x5b, 0xd4, 0x26, 0x58, 0x60, 0x76, 0xab,
+	};
+	std::array<uint8_t, 32> actual_signature{};
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation, challenge,
+					  actual_signature),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(expected_signature, actual_signature,
+			     expected_signature.size());
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 void run_test(int argc, const char **argv)
@@ -352,5 +387,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_generate_session_key);
 	RUN_TEST(test_fp_decrypt_data_with_session_key);
 	RUN_TEST(test_fp_decrypt_data_with_session_key_fail);
+	RUN_TEST(test_fp_compute_message_signature);
 	test_print_result();
 }
