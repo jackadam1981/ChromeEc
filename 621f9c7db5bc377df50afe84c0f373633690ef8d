@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ab72a20_f5effedd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-22T17:03:30Z",
+      "side": 1,
+      "message": "The ISH can\u0027t send host events.",
+      "parentUuid": "0950f0f7_a07c1e7e",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e87d0e62_e1cb19b7",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-22T15:18:11Z",
       "side": 1,
       "message": "The host has free will :-) : \"Indicate a crash report is available. Upon reception, AP can collect he panic log information.\"",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb3ba6e_8c456ad3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4140,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-22T17:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e87d0e62_e1cb19b7",
       "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-22T15:18:11Z",
       "side": 1,
       "message": "Redundant with EC_HOST_EVENT_PANIC:\n\nThe ISH could raise this host event, that will raise a EC_MKBP_EVENT_HOST_EVENT.",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab0f50e_2c92afc5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4141,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-22T17:03:30Z",
+      "side": 1,
+      "message": "The ISH can\u0027t send host events though.",
+      "parentUuid": "0b8e02cf_962b53f4",
       "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
