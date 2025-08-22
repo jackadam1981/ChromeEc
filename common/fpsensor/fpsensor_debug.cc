@@ -151,14 +151,12 @@ get_image_frame_params(struct fp_image_frame_params &image_frame_params)
 		if (info->image_frame_params[i].fp_capture_type ==
 		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
 			image_frame_params = info->image_frame_params[i];
-			result = EC_RES_SUCCESS;
 			break;
 		}
 	}
 
-cleanup:
 	free(info);
-	return result;
+	return EC_RES_SUCCESS;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
