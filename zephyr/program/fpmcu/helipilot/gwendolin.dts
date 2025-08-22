@@ -133,10 +133,15 @@
 		reg = <0>;
 		spi-max-frequency = <4000000>;
 
-		width = <80>;
-		height = <64>;
-		bits-per-pixel = <8>;
-		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+		width = <80 80 80 80 80 80 80>;
+		height = <64 64 64 64 64 64 64>;
+		bits-per-pixel = <8 16 16 16 16 16 16>;
+		frame-size = <5120 10240 10240 10240 10240 10240 10240>;
+		capture-type = <4 8 12 1 2 3 16>;
+		v4l2-pixel-format = "V4L2_PIX_FMT_GREY", "V4L2_PIX_FMT_GREY", \
+							"V4L2_PIX_FMT_GREY", "V4L2_PIX_FMT_GREY", \
+							"V4L2_PIX_FMT_GREY", "V4L2_PIX_FMT_GREY", \
+							"V4L2_PIX_FMT_GREY";
 
 		irq-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
