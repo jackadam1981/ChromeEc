@@ -267,6 +267,7 @@ extern "C" {
 /* Set if some of the static/dynamic data is invalid (or outdated). */
 #define EC_BATT_FLAG_INVALID_DATA 0x20
 #define EC_BATT_FLAG_CUT_OFF 0x40
+#define EC_BATT_FLAG_TEMP_CRITICAL 0x80
 
 /*
  * Value written to EC_MEMMAP_BATT_DCAP, EC_MEMMAP_BATT_DVLT, EC_MEMMAP_CCNT,

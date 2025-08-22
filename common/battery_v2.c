@@ -100,6 +100,21 @@ static void battery_update(enum battery_index i)
 	*memmap_flags = battery_dynamic[i].flags;
 }
 
+int is_battery_temperature_critical(int temperature)
+{
+	const struct battery_info *batt_info = battery_get_info();
+	int batt_temp_c = DECI_KELVIN_TO_CELSIUS(temperature);
+	int max_c, min_c;
+
+	max_c = batt_info->charging_max_c;
+	min_c = batt_info->charging_min_c;
+
+	if ((batt_temp_c >= max_c) || (batt_temp_c <= min_c))
+		return 1;
+
+	return 0;
+}
+
 #ifdef CONFIG_HOSTCMD_BATTERY_V2
 
 #ifdef CONFIG_CHARGER
@@ -209,6 +224,9 @@ host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 		if (batt.state_of_charge <=
 		    CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE)
 			tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
+
+		if (is_battery_temperature_critical(batt.temperature))
+			tmp |= EC_BATT_FLAG_TEMP_CRITICAL;
 	}
 	/* Since Charging is not enabled we can't determine if the battery is
 	 * charging or discharging keep both of them 0 */
