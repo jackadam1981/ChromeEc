@@ -65,7 +65,7 @@
 
 		ish {
 			enum-name = "ISH";
-			start = <2>;
+			start = <29>;
 			size = <1>;
 
 			ish-disabled {
@@ -83,7 +83,7 @@
 
 		form-factor {
 			enum-name = "FORM_FACTOR";
-			start = <3>;
+			start = <15>;
 			size = <1>;
 
 			form-factor-clamshell {

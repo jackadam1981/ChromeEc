@@ -59,6 +59,23 @@ static void motionsense_init(void)
 		LOG_ERR("error retriving CBI config: %d", ret);
 		return;
 	}
+
+	if (sensor_fwconfig == FORM_FACTOR_CLAMSHELL) {
+		if (!IS_ENABLED(CONFIG_SOC_FAMILY_INTEL_ISH)) {
+			/* Only valid in EC */
+			gmr_tablet_switch_disable();
+		}
+		motion_sensor_count = 0;
+		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
+		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_acc_int_l),
+				      GPIO_INPUT | GPIO_PULL_UP);
+		gpio_pin_configure_dt(GPIO_DT_FROM_NODELABEL(gpio_imu_int_l),
+				      GPIO_INPUT | GPIO_PULL_UP);
+		LOG_INF("Board is Clamshell");
+	} else if (sensor_fwconfig == FORM_FACTOR_CONVERTIBLE) {
+		LOG_INF("Board is Convertible");
+	}
 }
 DECLARE_HOOK(HOOK_INIT, motionsense_init, HOOK_PRIO_DEFAULT);
 
