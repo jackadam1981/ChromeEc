@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a0d06fc_443cad1a",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-22T11:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "638aa0b6_e74ad77c",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 58
+      },
+      "revId": "b224d8394db12a09a6da2c174ce1244c271acf67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa47f5e8_2a2c6fe4",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-21T22:37:27Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\t    sizeof(load_params), nullptr, 0);\n```",
+      "range": {
+        "startLine": 405,
+        "startChar": 29,
+        "endLine": 405,
+        "endChar": 33
+      },
+      "revId": "b224d8394db12a09a6da2c174ce1244c271acf67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cfd9b33_ce82ac86",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-22T11:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa47f5e8_2a2c6fe4",
       "range": {
         "startLine": 405,
         "startChar": 29,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae50d6fd_bbd1e220",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-22T11:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "859dbc95_74190ccd",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 37
+      },
+      "revId": "b224d8394db12a09a6da2c174ce1244c271acf67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51653b9f_2d253593",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-08-21T22:37:27Z",
       "side": 1,
       "message": "```suggestion\n\tstd::ranges::copy(session_nonce, nonce_params-\u003epeer_nonce);\n```",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 33
+      },
+      "revId": "b224d8394db12a09a6da2c174ce1244c271acf67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96994f71_eb4693b8",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-08-22T11:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51653b9f_2d253593",
       "range": {
         "startLine": 455,
         "startChar": 0,
