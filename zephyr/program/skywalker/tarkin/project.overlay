@@ -182,13 +182,6 @@
 	status = "okay";
 };
 
-&pdc_power_p0 {
-	zephyr,deferred-init;
-};
-&pdc_power_p1 {
-	zephyr,deferred-init;
-};
-
 /*
  * When CBI in flash is enabled, setup RO flash layout as follows:
  *   RO binary:    0x00000:0x5DFFF
