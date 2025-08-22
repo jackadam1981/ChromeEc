@@ -14,6 +14,14 @@
 extern "C" {
 #endif
 
+enum pwr_led_sup {
+	PWR_LED_UNKNOWN,
+	PWR_LED_ABSENT,
+	PWR_LED_PRESENT,
+};
+
+__override_proto enum pwr_led_sup pwr_led_support_check(void);
+
 struct board_led_pwm_dt_channel {
 	const struct device *dev;
 	uint32_t channel;
