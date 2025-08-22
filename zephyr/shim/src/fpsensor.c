@@ -96,33 +96,46 @@ int fp_sensor_deinit(void)
 	return 0;
 }
 
-int fp_sensor_get_info(struct ec_response_fp_info *resp)
+int fp_sensor_get_info(struct ec_response_fp_info_v2 *resp, size_t resp_size)
 {
-	struct fingerprint_info info;
-	int rc;
+	if (resp == NULL) {
+		return -EINVAL;
+	}
 
-	rc = fingerprint_get_info(fp_sensor_dev, &info);
+	const size_t expected_min_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		NUM_IMAGE_CAPTURE_TYPES *
+			sizeof(struct fingerprint_image_frame_params);
+
+	if (resp_size < expected_min_size) {
+		return -EOVERFLOW;
+	}
+
+	// Zero-initialize in case fingerprint_get_info doesn't fill all fields.
+	struct fingerprint_sensor_info sensor_info = { 0 };
+	struct fingerprint_image_frame_params
+		image_frame_params_array[NUM_IMAGE_CAPTURE_TYPES] = { 0 };
+
+	int rc = fingerprint_get_info(fp_sensor_dev, &sensor_info,
+				      image_frame_params_array);
 	if (rc) {
 		return rc;
 	}
 
-	resp->vendor_id = info.vendor_id;
-	resp->product_id = info.product_id;
-	resp->model_id = info.model_id;
-	resp->version = info.version;
-	resp->frame_size = info.frame_size;
-	resp->pixel_format = info.pixel_format;
-	resp->width = info.width;
-	resp->height = info.height;
-	resp->bpp = info.bpp;
-	resp->errors = info.errors;
+	if (sensor_info.num_capture_types < 0 ||
+	    sensor_info.num_capture_types > NUM_IMAGE_CAPTURE_TYPES) {
+		return -EINVAL;
+	}
 
-	return 0;
-}
+	/* Copy sensor info */
+	memcpy(&resp->sensor_info, &sensor_info,
+	       sizeof(struct fingerprint_sensor_info));
 
-/* TODO(b/398899644): implement fp_sensor_get_info_v2 in zephyr */
-int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size)
-{
+	/* Copy image frame parameters. */
+	size_t copy_size = (size_t)sensor_info.num_capture_types *
+			   sizeof(struct fingerprint_image_frame_params);
+	memcpy(&resp->image_frame_params, &image_frame_params_array, copy_size);
+
 	return 0;
 }
 
