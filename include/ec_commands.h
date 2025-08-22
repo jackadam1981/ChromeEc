@@ -4137,6 +4137,9 @@ enum ec_mkbp_event {
 	/* Peripheral device charger event */
 	EC_MKBP_EVENT_PCHG = 12,
 
+	/* Request the host to submit a non fatal crash report. */
+	EC_MKBP_EVENT_SOFT_CRASH_REPORT = 13,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
