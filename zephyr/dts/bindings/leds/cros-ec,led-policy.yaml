@@ -131,6 +131,15 @@ child-binding:
              range of BATTERY_LEVEL_EMPTY to BATTERY_LEVEL_LOW inclusive.
       type: array
 
+    pwr-led-support:
+      description: |
+        If the LED color depends on whether power LED is supported, this
+        property is used to describe it.
+      type: string
+      enum:
+        - PWR_LED_ABSENT
+        - PWR_LED_PRESENT
+
   child-binding:
     properties:
       led-id:
