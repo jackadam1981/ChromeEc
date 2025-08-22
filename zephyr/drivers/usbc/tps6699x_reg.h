@@ -884,8 +884,14 @@ union reg_port_configuration {
 		uint8_t sbu_mux_default_setting : 3;
 		uint8_t sbu_mux_usage : 2;
 
+		uint8_t reserved7 : 1;
+		uint8_t epr_supported_as_sink : 1;
+		uint8_t flip_crossbar_dbg : 1;
+		uint8_t flip_crossbar_aux : 1;
+		uint8_t flip_crossbar_sbtx : 1;
+
 	} __packed;
-	uint8_t raw_value[17];
+	uint8_t raw_value[18];
 };
 
 enum port_control_typec_current_t {
