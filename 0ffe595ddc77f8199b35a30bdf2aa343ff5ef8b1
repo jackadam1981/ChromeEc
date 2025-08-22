@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d8c3c9_d2e94c17",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-22T22:44:53Z",
+      "side": 1,
+      "message": "This should be 15000 mW. Two ports, each 7500 mW.",
+      "revId": "0ffe595ddc77f8199b35a30bdf2aa343ff5ef8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67423780_1113caf1",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-22T22:44:53Z",
+      "side": 1,
+      "message": "I think this should still be true. Before, they could vary, so it should have been false.",
+      "revId": "0ffe595ddc77f8199b35a30bdf2aa343ff5ef8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
