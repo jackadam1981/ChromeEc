@@ -81,7 +81,7 @@ update_manifest() {
   echo "RW: ${rw_ver}"
   sed "s/epoch\": [0-9]*/epoch\": ${epoch}/" "${manifest}" -i
   sed "s/major\": [0-9]*/major\": ${major}/" "${manifest}" -i
-  sed "s/minor\": [0-9]*/minor\": ${minor}/" "${manifest}" -i
+  sed -E "s/minor\": (TOKEN_MINOR|[0-9]*)/minor\": ${minor}/" "${manifest}" -i
 }
 
 # Re-sign a single RW section.
