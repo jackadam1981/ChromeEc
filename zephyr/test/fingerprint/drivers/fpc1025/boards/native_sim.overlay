@@ -18,6 +18,8 @@
 		width = <160>;
 		height = <160>;
 		bits-per-pixel = <8>;
+		frame-size = <25600 25600 25600 25600 25600 25600>;
+		capture-type = <0
 		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 
 		irq-gpios = <&gpio0 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
