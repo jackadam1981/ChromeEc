@@ -933,6 +933,9 @@ enum host_event_code {
 	/* Body detect (lap/desk) change event */
 	EC_HOST_EVENT_BODY_DETECT_CHANGE = 33,
 
+	/* EC encountered a non-fatal panic, report it, but don't reset */
+	EC_HOST_EVENT_NON_FATAL_PANIC = 34,
+
 	/*
 	 * Only 64 host events are supported. This enum uses 1-based counting so
 	 * it can skip 0 (NONE), so the last legal host event number is 64.
