@@ -53,6 +53,18 @@ enum led_transition {
 	LED_TRANSITION_COUNT
 };
 
+enum pwr_led_sup {
+	PWR_LED_UNKNOWN,
+	PWR_LED_ABSENT,
+	PWR_LED_PRESENT,
+};
+
+/**
+ * Board specific override that allows the board to swap between led policies
+ * at run time based on whether this particular SKU has power LED support.
+ */
+__overridable enum pwr_led_sup pwr_led_support_check(void);
+
 #define LED_ENUM(id, enum_name) DT_STRING_TOKEN(id, enum_name)
 #define LED_ENUM_WITH_COMMA(id, enum_name)           \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name), \
