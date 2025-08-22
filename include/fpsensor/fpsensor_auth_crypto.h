@@ -241,4 +241,24 @@ enum ec_error_list decrypt_data_with_session_key(
 	std::span<const uint8_t, FP_AES_KEY_TAG_BYTES> tag,
 	std::span<const uint8_t> aad);
 
+/**
+ * Compute session message signature
+ *
+ * @param[in] session_key the session key
+ * @param[in] context the context e.g. user id
+ * @param[in] sender the sender name, e.g. "fpmcu"
+ * @param[in] operation the authenticated operation
+ * @param[in] challenge the challenge
+ * @param[out] signature the message signature
+ *
+ * @return EC_SUCCESS on success
+ * @return EC_ERROR_* on error
+ */
+enum ec_error_list compute_message_signature(
+	std::span<const uint8_t, SHA256_DIGEST_LENGTH> session_key,
+	std::span<const uint8_t> context, std::span<const uint8_t> sender,
+	std::span<const uint8_t> operation,
+	std::span<const uint8_t, FP_CHALLENGE_SIZE> challenge,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> signature);
+
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_AUTH_CRYPTO_H */

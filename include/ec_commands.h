@@ -8709,6 +8709,8 @@ struct ec_params_fp_establish_session {
 	uint8_t tag[FP_AES_KEY_TAG_BYTES];
 } __ec_align4;
 
+#define FP_CHALLENGE_SIZE 32
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
