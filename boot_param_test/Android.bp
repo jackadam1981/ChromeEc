@@ -1,0 +1,29 @@
+// Copyright 2025 The ChromiumOS Authors
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package {
+    default_team: "trendy_team_desktop_hwsec",
+}
+
+rust_binary_host {
+    name: "boot_param_test",
+    defaults: ["boot_param_test.defaults"],
+    srcs: [
+        "src/main.rs"
+    ],
+    rustlibs: [
+        "libanyhow",
+        "libcbor_util",
+        "libciborium",
+        "libcoset",
+        "libdiced_open_dice_multialg",
+        "libhwtrust",
+    ],
+}
+
+rust_defaults {
+    name: "boot_param_test.defaults",
+    defaults: ["avf_build_flags_rust"],
+    prefer_rlib: true,
+}
