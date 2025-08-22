@@ -133,10 +133,57 @@
 		reg = <0>;
 		spi-max-frequency = <4000000>;
 
-		width = <80>;
-		height = <80>;
-		bits-per-pixel = <16>;
-		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+		configs {
+			compatible = "fingerprint-sensor,image-frame-params";
+			config0 {
+				width = <80>;
+				height = <80>;
+				bits-per-pixel = <14>;
+				frame-size = <12800>;
+				capture-type = <0>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config1 {
+				width = <80>;
+				height = <80>;
+				bits-per-pixel = <14>;
+				frame-size = <12800>;
+				capture-type = <4>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config2 {
+				width = <80>;
+				height = <80>;
+				bits-per-pixel = <14>;
+				frame-size = <12800>;
+				capture-type = <8>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config3 {
+				width = <80>;
+				height = <80>;
+				bits-per-pixel = <14>;
+				frame-size = <12800>;
+				capture-type = <12>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config4 {
+				width = <80>;
+				height = <80>;
+				bits-per-pixel = <14>;
+				frame-size = <12800>;
+				capture-type = <16>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config5 {
+				width = <80>;
+				height = <80>;
+				bits-per-pixel = <14>;
+				frame-size = <12800>;
+				capture-type = <20>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+		};
 
 		irq-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
 		reset-gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
