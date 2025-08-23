@@ -234,15 +234,34 @@ test_static int test_command_fpenroll(void)
 }
 
 #if defined(SECTION_IS_RW)
-enum ec_error_list upload_pgm_image(uint8_t *frame, uint8_t bpp);
+enum ec_error_list
+upload_pgm_image(uint8_t *frame,
+		 const struct fp_image_frame_params &image_frame_params);
 
 test_static int test_upload_pgm_image_wrong_bpp(void)
 {
-	std::array<uint8_t, 100> frame{};
+	std::array<uint8_t, 100> frame{}; // Zero-initialized frame
 
-	TEST_EQ(upload_pgm_image(frame.data(), 0), EC_ERROR_UNKNOWN, "%d");
-	TEST_EQ(upload_pgm_image(frame.data(), 17), EC_ERROR_UNKNOWN, "%d");
-	TEST_EQ(upload_pgm_image(frame.data(), 23), EC_ERROR_UNKNOWN, "%d");
+	// Test with bpp = 0
+	struct fp_image_frame_params fp_image_frame_params_bpp_0 = {
+		.bpp = 0,
+	};
+	TEST_EQ(upload_pgm_image(frame.data(), fp_image_frame_params_bpp_0),
+		EC_ERROR_UNKNOWN, "%d");
+
+	// Test with bpp = 17
+	struct fp_image_frame_params fp_image_frame_params_bpp_17 = {
+		.bpp = 17,
+	};
+	TEST_EQ(upload_pgm_image(frame.data(), fp_image_frame_params_bpp_17),
+		EC_ERROR_UNKNOWN, "%d");
+
+	// Test with bpp = 23
+	struct fp_image_frame_params fp_image_frame_params_bpp_23 = {
+		.bpp = 23,
+	};
+	TEST_EQ(upload_pgm_image(frame.data(), fp_image_frame_params_bpp_23),
+		EC_ERROR_UNKNOWN, "%d");
 
 	return EC_SUCCESS;
 }
