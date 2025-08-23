@@ -38,6 +38,10 @@
 			enum-name = "ADC_EVB_CH_2";
 			io-channels = <&adc0 0>;
 		};
+		adc-base-det {
+			enum-name = "ADC_BASE_DET";
+			io-channels = <&adc0 5>;
+		};
 	};
 
 	batteries {
@@ -55,6 +59,11 @@
 			irq-pin = <&gpio_imu_int_ec_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bmi3xx_interrupt";
+		};
+		pogo_prsnt_int: pogo-prsnt-int {
+			irq-pin = <&pogo_prsnt_int_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "base_detect_interrupt";
 		};
 	};
 
@@ -149,6 +158,10 @@
 			compatible = "ucsi-ppm";
 		};
 	};
+};
+
+&adc0{
+	pinctrl-0 = <&adc0_ch5_gpi5_default>;
 };
 
 &pwm2 {
