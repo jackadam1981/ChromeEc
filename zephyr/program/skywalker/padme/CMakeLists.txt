@@ -4,3 +4,6 @@
 
 # Padme Makeifile
 zephyr_library_sources("src/board.c" "src/dp_alt_mode.c")
+
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DETACHABLE_BASE
+			"src/base_detect.c")
