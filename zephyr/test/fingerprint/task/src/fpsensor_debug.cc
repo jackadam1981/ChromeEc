@@ -174,20 +174,35 @@ ZTEST(fpsensor_debug, test_command_fpenroll)
 	zassert_equal(rv, EC_ERROR_ACCESS_DENIED);
 }
 
-enum ec_error_list upload_pgm_image(uint8_t *frame, uint8_t bpp);
+enum ec_error_list
+upload_pgm_image(uint8_t *frame,
+		 const struct fp_image_frame_params &image_frame_params);
 
 ZTEST(fpsensor_debug, test_upload_pgm_image_wrong_bpp)
 {
 	std::array<uint8_t, 100> frame{};
 
-	zassert_equal(upload_pgm_image(frame.data(), 0), EC_ERROR_UNKNOWN);
-	zassert_equal(upload_pgm_image(frame.data(), 17), EC_ERROR_UNKNOWN);
-	zassert_equal(upload_pgm_image(frame.data(), 24), EC_ERROR_UNKNOWN);
-}
+	// Test with bpp = 0
+	struct fp_image_frame_params fp_image_frame_params_bpp_0 = {
+		.bpp = 0,
+	};
+	zassert_equal(upload_pgm_image(frame.data(),
+				       fp_image_frame_params_bpp_0),
+		      EC_ERROR_UNKNOWN);
 
-uint8_t get_sensor_bpp(void);
+	// Test with bpp = 17
+	struct fp_image_frame_params fp_image_frame_params_bpp_17 = {
+		.bpp = 17,
+	};
+	zassert_equal(upload_pgm_image(frame.data(),
+				       fp_image_frame_params_bpp_17),
+		      EC_ERROR_UNKNOWN);
 
-ZTEST(fpsensor_debug, test_get_sensor_bpp)
-{
-	zassert_equal(get_sensor_bpp(), 8);
+	// Test with bpp = 23
+	struct fp_image_frame_params fp_image_frame_params_bpp_23 = {
+		.bpp = 23,
+	};
+	zassert_equal(upload_pgm_image(frame.data(),
+				       fp_image_frame_params_bpp_23),
+		      EC_ERROR_UNKNOWN);
 }
