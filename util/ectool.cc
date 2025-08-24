@@ -48,11 +48,11 @@
 #include <iostream>
 #include <libchrome/base/json/json_reader.h>
 #include <libec/add_entropy_command.h>
+#include <libec/ec_command_factory.h>
 #include <libec/ec_command_version_supported.h>
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/fingerprint/fp_frame_command.h>
-#include <libec/flash_protect_command.h>
 #include <libec/mkbp_event.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
@@ -1514,61 +1514,53 @@ int cmd_flash_protect(int argc, char *argv[])
 			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	// TODO(b/287519577) Use FlashProtectCommandFactory after removing its
-	// dependency on CrosFpDeviceInterface.
-	uint32_t version = 1;
-	ec::VersionsCommand flash_protect_versions_command(
-		EC_CMD_FLASH_PROTECT);
+	ec::EcCommandFactory ec_command_factory;
+	ec::EcCommandVersionSupported ec_cmd_ver_supported;
+	auto flash_protect_command = ec_command_factory.FlashProtectCommand(
+		&ec_cmd_ver_supported, flags, mask);
 
-	if (!flash_protect_versions_command.RunWithMultipleAttempts(
-		    comm_get_fd(), 20)) {
-		fprintf(stderr, "Flash Protect Versions Command failed:\n");
+	if (!flash_protect_command) {
+		fprintf(stderr, "Failed to create FlashProtectCommand.\n");
 		return -1;
 	}
 
-	if (flash_protect_versions_command.IsVersionSupported(2) ==
-	    ec::EcCmdVersionSupportStatus::SUPPORTED) {
-		version = 2;
-	}
-
-	ec::FlashProtectCommand flash_protect_command(flags, mask, version);
-	if (!flash_protect_command.Run(comm_get_fd())) {
-		int rv = -EECRESULT - flash_protect_command.Result();
+	if (!flash_protect_command->Run(comm_get_fd())) {
+		int rv = -EECRESULT - flash_protect_command->Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
 		return rv;
 	}
 
 	/* Print returned flags */
 	printf("Flash protect flags: 0x%08x%s\n",
-	       static_cast<int>(flash_protect_command.GetFlags()),
+	       static_cast<int>(flash_protect_command->GetFlags()),
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetFlags()))
+			flash_protect_command->GetFlags()))
 		       .c_str());
 	printf("Valid flags:         0x%08x%s\n",
-	       static_cast<int>(flash_protect_command.GetValidFlags()),
+	       static_cast<int>(flash_protect_command->GetValidFlags()),
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetValidFlags()))
+			flash_protect_command->GetValidFlags()))
 		       .c_str());
 	printf("Writable flags:      0x%08x%s\n",
-	       static_cast<int>(flash_protect_command.GetWritableFlags()),
+	       static_cast<int>(flash_protect_command->GetWritableFlags()),
 
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetWritableFlags()))
+			flash_protect_command->GetWritableFlags()))
 		       .c_str());
 
 	/* Check if we got all the flags we asked for */
-	if ((flash_protect_command.GetFlags() & mask) != (flags & mask)) {
+	if ((flash_protect_command->GetFlags() & mask) != (flags & mask)) {
 		fprintf(stderr,
 			"Unable to set requested flags "
 			"(wanted mask 0x%08x flags 0x%08x)\n",
 			static_cast<int>(mask), static_cast<int>(flags));
-		if ((mask & ~flash_protect_command.GetWritableFlags()) !=
+		if ((mask & ~flash_protect_command->GetWritableFlags()) !=
 		    ec::flash_protect::Flags::kNone)
 			fprintf(stderr,
 				"Which is expected, because writable "
 				"mask is 0x%08x.\n",
 				static_cast<int>(flash_protect_command
-							 .GetWritableFlags()));
+							 ->GetWritableFlags()));
 
 		return -1;
 	}
