@@ -48,6 +48,7 @@
 #include <iostream>
 #include <libchrome/base/json/json_reader.h>
 #include <libec/add_entropy_command.h>
+#include <libec/ec_command_version_supported.h>
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/fingerprint/fp_frame_command.h>
@@ -119,6 +120,37 @@ int ascii_mode;
 static int verbose = 0;
 
 const command *commands_find(const char *name);
+
+namespace ec
+{
+
+class EcCommandVersionSupported : public EcCommandVersionSupportedInterface {
+    public:
+	EcCommandVersionSupported() = default;
+	EcCommandVersionSupported(const EcCommandVersionSupported &) = delete;
+	EcCommandVersionSupported &
+	operator=(const EcCommandVersionSupported &) = delete;
+	~EcCommandVersionSupported() override = default;
+
+	EcCmdVersionSupportStatus EcCmdVersionSupported(uint16_t cmd,
+							uint32_t ver) override;
+};
+
+EcCmdVersionSupportStatus
+EcCommandVersionSupported::EcCmdVersionSupported(uint16_t cmd, uint32_t ver)
+{
+	constexpr int kMaxIoAttempts = 20;
+	VersionsCommand versions_cmd(cmd);
+	if (!versions_cmd.RunWithMultipleAttempts(comm_get_fd(),
+						  kMaxIoAttempts)) {
+		fprintf(stderr, "Failed to get version info for command %d\n",
+			cmd);
+		return EcCmdVersionSupportStatus::UNKNOWN;
+	}
+	return versions_cmd.IsVersionSupported(ver);
+}
+
+} // namespace ec
 
 /* Check SBS numerical value range */
 int is_battery_range(int val)
