@@ -928,8 +928,6 @@ static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static void init_port_variables(struct pdc_port_t *port,
 				bool reset_charge_manager);
-static int pdc_power_mgmt_request_power_swap_intern(int port,
-						    enum pd_power_role role);
 static void pd_chipset_startup(void);
 static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
@@ -4075,40 +4073,25 @@ test_mockable void pdc_power_mgmt_request_data_swap(int port)
 	}
 }
 
-static int pdc_power_mgmt_request_power_swap_intern(int port,
-						    enum pd_power_role role)
-{
-	/* Make sure port is connected */
-	if (!pdc_power_mgmt_is_connected(port)) {
-		return 1;
-	}
-
-	/* Set PR accept swap policy */
-	if (role == PD_ROLE_SOURCE) {
-		/* Attempt to swap to SOURCE */
-		pdc_data[port]->port.pdr.swap_to_snk = 0;
-		pdc_data[port]->port.pdr.swap_to_src = 1;
-	} else {
-		/* Attempt to swap to SINK */
-		pdc_data[port]->port.pdr.swap_to_snk = 1;
-		pdc_data[port]->port.pdr.swap_to_src = 0;
-	}
-
-	/* Block until command completes */
-	if (public_api_block(port, CMD_PDC_SET_PDR)) {
-		/* something went wrong */
-		return 1;
-	}
-
-	return EC_SUCCESS;
-}
-
 test_mockable void pdc_power_mgmt_request_power_swap(int port)
 {
 	if (pdc_power_mgmt_is_sink_connected(port)) {
-		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+		LOG_INF("C%d: Request power role swap to source", port);
+
+		atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+			       SNK_POLICY_SWAP_TO_SRC);
+		k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+		LOG_INF("C%d: Request power role swap to sink", port);
+
+		atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+			       SRC_POLICY_SWAP_TO_SNK);
+		k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+	} else {
+		LOG_ERR("C%d: Cannot swap power role: "
+			"port not PD-attached or invalid",
+			port);
 	}
 }
 
