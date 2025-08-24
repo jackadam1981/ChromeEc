@@ -934,6 +934,36 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap)
 	}
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap__invalid)
+{
+	union connector_status_t connector_status = { 0 };
+
+	/* Invalid port is ignored */
+	pd_request_power_swap(99);
+
+	/* Attach a type-c only partner. Without PD support, a power role swap
+	 * request will be ignored. */
+	emul_pdc_configure_snk(emul, &connector_status);
+	connector_status.power_operation_mode = USB_DEFAULT_OPERATION;
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+	zassert_equal(PDC_SNK_TYPEC_ONLY,
+		      pdc_power_mgmt_get_task_state(TEST_PORT));
+
+	/* This should be a no-op. */
+	pd_request_power_swap(TEST_PORT);
+
+	/* The above should not trigger any pdc_power_mgmt state machine
+	 * action. To be sure, wait a fixed delay too. */
+	TEST_WORKING_DELAY(PDC_POWER_STABLE_TIMEOUT);
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	/* Role should be unchanged */
+	zassert_equal(PDC_SNK_TYPEC_ONLY,
+		      pdc_power_mgmt_get_task_state(TEST_PORT));
+}
+
 ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 {
 	int i;
