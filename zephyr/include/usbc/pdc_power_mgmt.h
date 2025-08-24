@@ -312,7 +312,7 @@ enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port);
 const char *pdc_power_mgmt_get_task_state_name(int port);
 
 /**
- * @brief Request a power role swap
+ * @brief Request a power role swap, non-blocking
  *
  * @param port USB-C port number
  */

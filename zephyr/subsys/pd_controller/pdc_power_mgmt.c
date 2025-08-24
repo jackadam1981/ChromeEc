@@ -928,8 +928,6 @@ static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static void init_port_variables(struct pdc_port_t *port,
 				bool reset_charge_manager);
-static int pdc_power_mgmt_request_power_swap_intern(int port,
-						    enum pd_power_role role);
 static void pd_chipset_startup(void);
 static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
@@ -4127,54 +4125,25 @@ test_mockable void pdc_power_mgmt_request_data_swap(int port)
 	}
 }
 
-static int pdc_power_mgmt_request_power_swap_intern(int port,
-						    enum pd_power_role role)
-{
-	/* Make sure port is connected */
-	if (!pdc_power_mgmt_is_connected(port)) {
-		LOG_ERR("C%d: Cannot swap power role: port disconnected", port);
-		return 1;
-	}
-
-	LOG_INF("C%d: Attempt power role swap to %s", port,
-		(role == PD_ROLE_SINK ? "sink" : "source"));
-
-	bool current_external_swap_policy = false;
-
-	if (pdc_power_mgmt_is_sink_connected(port)) {
-		current_external_swap_policy =
-			pdc_data[port]->port.snk_policy.accept_power_role_swap;
-	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		current_external_swap_policy =
-			pdc_data[port]->port.src_policy.accept_power_role_swap;
-	}
-
-	/* Set PR accept swap policy */
-	if (role == PD_ROLE_SOURCE) {
-		/* Attempt to swap to SOURCE */
-		pdc_data[port]->port.pdr_policy =
-			PDC_POWER_POLICY_SOURCE(current_external_swap_policy);
-	} else {
-		/* Attempt to swap to SINK */
-		pdc_data[port]->port.pdr_policy =
-			PDC_POWER_POLICY_SINK(current_external_swap_policy);
-	}
-
-	/* Block until command completes */
-	if (public_api_block(port, CMD_PDC_SET_PDR)) {
-		/* something went wrong */
-		return 1;
-	}
-
-	return EC_SUCCESS;
-}
-
 test_mockable void pdc_power_mgmt_request_power_swap(int port)
 {
 	if (pdc_power_mgmt_is_sink_connected(port)) {
-		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+		LOG_INF("C%d: Request power role swap to source", port);
+
+		atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+			       SNK_POLICY_SWAP_TO_SRC);
+		k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+		LOG_INF("C%d: Request power role swap to sink", port);
+
+		atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+			       SRC_POLICY_SWAP_TO_SNK);
+		k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+	} else {
+		LOG_ERR("C%d: Cannot swap power role: "
+			"port not PD-attached or invalid",
+			port);
 	}
 }
 
