@@ -486,7 +486,7 @@ ZTEST_USER(fpsensor_match, test_match_success_template_updated_dirty_template)
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
+	struct ec_response_fp_info_v2 info;
 
 	/* Load example template. */
 	zassert_ok(ec_cmd_fp_template(
@@ -522,7 +522,7 @@ ZTEST_USER(fpsensor_match, test_match_success_template_updated_dirty_template)
 
 	/* Confirm that dirty templates bitmap is correct. */
 	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_dirty, 0x1);
+	zassert_equal(info.template_info.template_dirty, 0x1);
 }
 
 ZTEST_USER(fpsensor_match,
@@ -533,7 +533,7 @@ ZTEST_USER(fpsensor_match,
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
+	struct ec_response_fp_info_v2 info;
 
 	/* Load example template. */
 	zassert_ok(ec_cmd_fp_template(
@@ -569,7 +569,7 @@ ZTEST_USER(fpsensor_match,
 
 	/* Confirm that dirty templates bitmap is correct. */
 	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_dirty, 0x0);
+	zassert_equal(info.template_info.template_dirty, 0x0);
 }
 
 ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
@@ -579,7 +579,7 @@ ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
+	struct ec_response_fp_info_v2 info;
 
 	/* Load example template. */
 	zassert_ok(ec_cmd_fp_template(
@@ -615,7 +615,7 @@ ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
 
 	/* Confirm that dirty templates bitmap is correct. */
 	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_dirty, 0x0);
+	zassert_equal(info.template_info.template_dirty, 0x0);
 }
 
 ZTEST_USER(fpsensor_match,
