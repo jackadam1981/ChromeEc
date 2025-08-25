@@ -62,6 +62,10 @@ void mock_charge_manager_set_vbus_voltage(int voltage_mv)
 	mock_ctrl_charge_manager.vbus_voltage_mv = voltage_mv;
 }
 
+void charge_manager_invalidate_suppliers(int port)
+{
+}
+
 void typec_set_input_current_limit(int port, uint32_t max_ma,
 				   uint32_t supply_voltage)
 {
