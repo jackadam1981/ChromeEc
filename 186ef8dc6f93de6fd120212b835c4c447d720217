@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91a66484_290033da",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4134,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-25T19:50:25Z",
+      "side": 1,
+      "message": "I\u0027m actually reworking this right now to delete `pdc_power_mgmt_request_swap_to_src` and `pdc_power_mgmt_request_swap_to_snk`. They have one caller, each, and in both cases are already confirming the current role before calling. Both uses can be replaced with a call to `pdc_power_mgmt_request_power_swap()` and its implementation can just go to the opposite role.",
+      "parentUuid": "3282e5a0_a2e1bb0f",
+      "revId": "186ef8dc6f93de6fd120212b835c4c447d720217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27917b2a_9b883d9e",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2025-08-25T19:43:27Z",
       "side": 1,
       "message": "In both cases, we should also call \n```\nk_event_post(\u0026port-\u003esm_event, PDC_SM_EVENT);\n``` \nto wake the thread up to handle the request ASAP.",
+      "revId": "186ef8dc6f93de6fd120212b835c4c447d720217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "087a5b79_6bc2bac4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4136,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-25T19:50:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "27917b2a_9b883d9e",
       "revId": "186ef8dc6f93de6fd120212b835c4c447d720217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
