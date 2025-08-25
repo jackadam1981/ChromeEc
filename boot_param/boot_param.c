@@ -1224,3 +1224,97 @@ bool sign_with_cdi_key(
 
 	return result;
 }
+
+/* Get CDI key and its ID for the specific chain.
+ */
+static bool get_cdi_key_and_id(
+	/* [IN] chain ID */
+	uint8_t chain_id,
+	/* [OUT] resulting signature */
+	struct cose_key_ecdsa_s *cdi_pubkey,
+	/* [OUT] resulting signature */
+	uint8_t cdi_id[40]
+)
+{
+	struct dice_ctx_s ctx;
+
+	if (!__platform_get_dice_config(&ctx.cfg)) {
+		__platform_log_str("Failed to get DICE config");
+		return false;
+	}
+	if (!generate_dice_handover(&ctx, chain_id))
+		return false;
+
+	__platform_memcpy(cdi_pubkey,
+		&ctx.output.dice_handover.payload.data.subject_pk.data,
+		sizeof(struct cose_key_ecdsa_s));
+	__platform_memcpy(cdi_id,
+		ctx.output.dice_handover.payload.data.sub.value,
+		DICE_ID_BYTES);
+	return true;
+}
+
+/* Get (part of) DiceChain structure for the modified DICE chain.
+ * Use GSC CDI as UDS key for AP DICE.
+ * For DEBUG purposes only.
+ */
+size_t get_dice_chain_bytes_dbg(
+	/* [OUT] destination buffer to fill */
+	uint8_t *dest,
+	/* [IN] starting offset in the DiceChain struct */
+	size_t offset,
+	/* [IN] size of the data to copy */
+	size_t size
+)
+{
+	struct dice_handover_nvmem_s {
+		struct dice_cert_chain_hdr_s cert_chain;
+		struct cdi_cert_hdr_s cert;
+		struct cwt_claims_bstr_s payload;
+		struct cbor_bstr64_s signature;
+	};
+	struct cert_to_sign_s {
+		struct cdi_sig_struct_hdr_s hdr;
+		struct cwt_claims_bstr_s payload;
+	};
+
+	struct dice_handover_nvmem_s *dice_handover =
+		(struct dice_handover_nvmem_s *)dest;
+	struct cert_to_sign_s cert_to_sign;
+	const struct slice_ref_s data_to_sign = {
+		CDI_SIG_STRUCT_LEN, (const uint8_t *)&cert_to_sign
+	};
+
+	/* Don't know how to deal with incomplete nvmem for DBG purposes */
+	if (offset != 0 || size != DICE_CHAIN_SIZE)
+		return 0;
+
+	/* First get the UDS-signed AP chain with AP CDI cert */
+	if (get_dice_chain_bytes(dest, offset, size) != size)
+		return 0;
+
+	/* Replace UDS and UDS_ID with GSC CDI and CDI_ID */
+	if (!get_cdi_key_and_id(BOOT_PARAM_DICE_CHAIN_GSC,
+		&dice_handover->cert_chain.uds_pub_key,
+		dice_handover->payload.data.iss.value
+	))
+		return 0;
+
+	/* Re-sign AP CDI cert with GSC CDI */
+
+	/* 1. Fill the to-sign structure */
+	__platform_memcpy(&cert_to_sign.hdr, &kSigStructFixedHdr,
+			  sizeof(struct cdi_sig_struct_hdr_s));
+	__platform_memcpy(&cert_to_sign.payload,
+		&dice_handover->payload,
+		sizeof(struct cwt_claims_bstr_s));
+
+	/* 2. Sign with GSC CDI */
+	if (!sign_with_cdi_key(BOOT_PARAM_DICE_CHAIN_GSC,
+		data_to_sign,
+		dice_handover->signature.value
+	))
+		return 0;
+
+	return size;
+}
