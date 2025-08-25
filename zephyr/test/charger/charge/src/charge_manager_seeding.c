@@ -19,7 +19,7 @@ ZTEST_SUITE(charge_manager_seeding_pre_main, charger_predicate_pre_main, NULL,
  * to happen after the EC main application so that EFS2 runs before
  * most drivers and subsystems initialize.
  */
-ZTEST_USER(charge_manager_seeding_pre_main, test_uneeeded)
+ZTEST_USER(charge_manager_seeding_pre_main, test_unseeded)
 {
 	zassert_false(charge_manager_is_seeded());
 }

@@ -161,11 +161,13 @@ static int test_initialization(void)
 	/* Verify no active charge port, since all pairs haven't updated */
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port == CHARGE_PORT_NONE);
+	TEST_ASSERT(!charge_manager_has_active_charge_port());
 
 	/* Update last pair and verify a charge port has been selected */
 	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, 0, &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port != CHARGE_PORT_NONE);
+	TEST_ASSERT(charge_manager_has_active_charge_port());
 
 	return EC_SUCCESS;
 }

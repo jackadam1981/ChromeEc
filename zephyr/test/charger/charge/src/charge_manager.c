@@ -5,9 +5,15 @@
 
 #include "charge_manager.h"
 #include "charger_test.h"
+#include "drivers/ucsi_v3.h"
 #include "ec_commands.h"
+#include "emul/emul_pdc.h"
+#include "usbc/pdc_power_mgmt.h"
 
 #include <zephyr/ztest.h>
+
+#define RTS5453P_NODE DT_NODELABEL(pdc_emul1)
+static const struct emul *emul = EMUL_DT_GET(RTS5453P_NODE);
 
 ZTEST_SUITE(charge_manager, charger_predicate_post_main, NULL, NULL, NULL,
 	    NULL);
@@ -55,4 +61,21 @@ ZTEST_USER(charge_manager, test_default_charge_port_is_sink)
 	zassert_true(board_charge_port_is_sink(0));
 	zassert_true(board_charge_port_is_sink(1));
 	zassert_true(board_charge_port_is_sink(500));
+}
+
+ZTEST_USER(charge_manager, test_has_no_active_charge_port)
+{
+	union connector_status_t connector_status = {};
+
+	charge_manager_leave_safe_mode();
+	zassert_false(charge_manager_has_active_charge_port());
+
+	emul_pdc_configure_snk(emul, &connector_status);
+	emul_pdc_connect_partner(emul, &connector_status);
+	pdc_power_mgmt_wait_for_sync(0, -1);
+	zassert_true(charge_manager_has_active_charge_port());
+
+	emul_pdc_disconnect(emul);
+	pdc_power_mgmt_wait_for_sync(0, -1);
+	zassert_false(charge_manager_has_active_charge_port());
 }
