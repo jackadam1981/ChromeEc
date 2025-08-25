@@ -226,6 +226,27 @@ int charge_manager_get_override(void);
 int charge_manager_get_active_charge_port(void);
 
 /**
+ * Get the current active charge port, as determined by charge manager.
+ *  ** WARNING **
+ *    This API does not use mutex locking,
+ *    make sure your code can handle a stale charge port.
+ *
+ * @return	Current active charge port.
+ */
+int charge_manager_get_active_charge_port_no_lock(void);
+
+/**
+ * Return true/false if active charge port.
+ *  ** WARNING **
+ *    This API does not use mutex locking,
+ *    make sure your code can handle a stale charge port.
+ *
+ * @return true 	when valid charge port is active
+ * @return false 	no valid charge port is active
+ */
+bool charge_manager_has_active_charge_port(void);
+
+/**
  * Get the current selected charge port, as determined by charge manager.
  * This is the charge port that is either active or that we may be
  * transitioning to because a better choice has been given as an option
