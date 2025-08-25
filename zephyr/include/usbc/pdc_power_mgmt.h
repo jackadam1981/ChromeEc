@@ -140,24 +140,6 @@ void pdc_power_mgmt_request_swap_to_src(int port);
 void pdc_power_mgmt_request_swap_to_snk(int port);
 
 /**
- * @brief Request data swap to UFP
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_ufp(int port);
-
-/**
- * @brief Request data swap to DFP
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_dfp(int port);
-
-/**
  * @brief Signal power request to indicate a charger update that affects the
  * port.
  *
