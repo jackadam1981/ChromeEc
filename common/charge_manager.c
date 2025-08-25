@@ -108,8 +108,24 @@ static int save_log[CHARGE_PORT_COUNT];
 
 #ifdef CONFIG_ZEPHYR
 K_MUTEX_DEFINE(cm_refresh);
+#define CM_MUTEX_DEBUG
+#ifdef CM_MUTEX_DEBUG
+#define CM_MUTEX_LOCK(m)                                                      \
+	{                                                                     \
+		mutex_lock(m);                                                \
+		const char *thread_name = k_thread_name_get(k_current_get()); \
+		printf("%s-%s MLOCKED\n", thread_name, __func__);             \
+	}
+#define CM_MUTEX_UNLOCK(m)                                                    \
+	{                                                                     \
+		const char *thread_name = k_thread_name_get(k_current_get()); \
+		printf("%s-%s MUNLOCKING\n", thread_name, __func__);          \
+		mutex_unlock(m);                                              \
+	}
+#else
 #define CM_MUTEX_LOCK(m) mutex_lock(m)
 #define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
+#endif /* MUTEX_DEBUG */
 #else
 /* TODO(b/427504021) - Legacy EC mutexes are not recursive */
 #define CM_MUTEX_LOCK(m)
@@ -1398,8 +1414,12 @@ void charge_manager_leave_safe_mode(void)
 	 * input FETs.
 	 */
 	crec_msleep(board_get_leave_safe_mode_delay_ms());
+
+	// CM_MUTEX_LOCK(&cm_refresh);
 	CPRINTS("%s()", __func__);
 	left_safe_mode = 1;
+	// CM_MUTEX_UNLOCK(&cm_refresh);
+
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
 }
