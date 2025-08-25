@@ -92,11 +92,12 @@ void fp_reset_context()
 	global_context.templ_valid = 0;
 	global_context.templ_dirty = 0;
 	global_context.template_newly_enrolled = FP_NO_SUCH_TEMPLATE;
-	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
+	global_context.fp_encryption_status &=
+		FP_ENC_STATUS_SEED_SET | FP_CONTEXT_SESSION_NONCE_SET |
+		FP_CONTEXT_STATUS_SESSION_ESTABLISHED;
 	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
 	OPENSSL_cleanse(global_context.user_id.data(),
 			sizeof(global_context.user_id));
-	OPENSSL_cleanse(session_nonce.data(), session_nonce.size());
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
 }
