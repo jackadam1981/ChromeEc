@@ -38,11 +38,26 @@
 	};
 
 	fpsensor_sim: fpsensor-sim {
-		compatible = "cros-ec,fingerprint-sensor-sim";
-		width = <160>;
-		height = <160>;
-		bits-per-pixel = <8>;
-		v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
+		configs {
+				compatible = "fingerprint-sensor,image-frame-params";
+				config0 {
+						width = <160>;
+						height = <80>;
+						bits-per-pixel = <8>;
+						frame-size = <25600>;
+						capture-type = <4>;
+						v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+				};
+				config1 {
+						width = <80>;
+						height = <80>;
+						bits-per-pixel = <16>;
+						frame-size = <12800>;
+						capture-type = <8>;
+						v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+				};
+		};
 	};
 };
 
