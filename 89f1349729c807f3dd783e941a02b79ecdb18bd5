@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c2d82b_fe72a6b1",
+        "filename": "zephyr/program/bluey/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-25T17:53:45Z",
+      "side": 1,
+      "message": "It is the rail of sourcing power to the USB-A port, right? In our policies, sourcing power to the USB ports depends on the AP power state, so it should be placed in a chipset hook. Initializing it as high here means depending on the EC power state, i.e. turning on in G3.",
+      "range": {
+        "startLine": 50,
+        "startChar": 34,
+        "endLine": 50,
+        "endChar": 57
+      },
+      "revId": "89f1349729c807f3dd783e941a02b79ecdb18bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
