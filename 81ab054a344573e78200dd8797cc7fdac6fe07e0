@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df62fb5_3da5e331",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-08-25T06:05:20Z",
+      "side": 0,
+      "message": "about the FRS function test many fails, can we set this fied as false?\n\nTEST.PD.FRS.SNK3.1 Normal Conditions​\nTEST.PD.FRS.SNK3.3 FR_Swap Not Sent​\nTEST.PD.FRS.SNK3.4 SendResponseTimer Timeout​\nTEST.PD.FRS.SNK3.5 PSSourceOffTimer Deadline​\nTEST.PD.FRS.SNK3.6 PSSourceOffTimer Timeout​\nTEST.PD.FRS.SNK3.7 GoodCRC Not Sent in Response to PS_RDY​\n\nthanks.",
+      "range": {
+        "startLine": 275,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 58
+      },
+      "revId": "81ab054a344573e78200dd8797cc7fdac6fe07e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

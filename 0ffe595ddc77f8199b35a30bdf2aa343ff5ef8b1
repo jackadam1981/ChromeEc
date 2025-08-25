@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba04a88_4d8ae4a4",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-08-25T06:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6d8c3c9_d2e94c17",
+      "revId": "0ffe595ddc77f8199b35a30bdf2aa343ff5ef8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67423780_1113caf1",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-22T22:44:53Z",
       "side": 1,
       "message": "I think this should still be true. Before, they could vary, so it should have been false.",
+      "revId": "0ffe595ddc77f8199b35a30bdf2aa343ff5ef8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da61d688_c3cf9ac1",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-08-25T06:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67423780_1113caf1",
       "revId": "0ffe595ddc77f8199b35a30bdf2aa343ff5ef8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
