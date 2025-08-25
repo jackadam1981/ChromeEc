@@ -20,7 +20,3 @@ zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_FT9865
 			     fingerprint_ft9865.c)
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_FT9865
 			     fingerprint_ft9865_pal.c)		
-
-find_library(FOCAL_SENSOR_LIB chips93xx ${CMAKE_CURRENT_SOURCE_DIR} NO_DEFALUT_PATH)
-
-target_link_libraries(app PUBLIC  ${FOCAL_SENSOR_LIB})			 

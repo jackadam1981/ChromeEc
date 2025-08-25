@@ -138,7 +138,7 @@ ft9001 = register_fpmcu_variant(
     zephyr_board="ft9001_eval",
     register_func=register_binman_project,
     variant_modules=["cmsis_6"],
-    variant_optional_modules=["focaltech"],
+    variant_optional_modules=["focaltech", "focaltech_lib"],
     variant_dts_overlays=[
         here / "ft9001" / "ft9001.dts",
     ],
