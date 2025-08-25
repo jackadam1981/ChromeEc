@@ -22,6 +22,30 @@
       },
       "revId": "81ab054a344573e78200dd8797cc7fdac6fe07e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab091b6_3870160c",
+        "filename": "zephyr/program/geralt/ciri/ciri_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-25T17:50:34Z",
+      "side": 0,
+      "message": "IMO, we should only set this to false if we intend to actually disable FRS as a feature. At the moment, I don\u0027t think we want to do that. In any case, this change would be unrelated to the removal of the ciri-specific sourcing behavior in the previous CL. If we do end up changing the FRS fields, we should do it in another CL.",
+      "parentUuid": "5df62fb5_3da5e331",
+      "range": {
+        "startLine": 275,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 58
+      },
+      "revId": "81ab054a344573e78200dd8797cc7fdac6fe07e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
