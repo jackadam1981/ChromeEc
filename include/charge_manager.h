@@ -223,7 +223,12 @@ int charge_manager_get_override(void);
  *
  * @return	Current active charge port.
  */
-int charge_manager_get_active_charge_port(void);
+#define charge_manager_get_active_charge_port() \
+	charge_manager_get_active_charge_port_(__FILE__, __func__)
+int charge_manager_get_active_charge_port_(const char *file, const char *func);
+int charge_manager_get_active_charge_port_no_lock();
+
+void charge_manager_dump_mutex();
 
 /**
  * Get the current selected charge port, as determined by charge manager.

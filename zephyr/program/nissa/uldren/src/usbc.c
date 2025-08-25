@@ -31,28 +31,36 @@ int board_set_active_charge_port(int port)
 	int i;
 	int old_port;
 
+	// printf("uldren HERE 0\n");
+
 	if (!is_real_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
 
+	// printf("uldren HERE 1\n");
 	old_port = charge_manager_get_active_charge_port();
 
+	printf("uldren HERE 2: old_port=%d\n", old_port);
 	/* Disable all ports. */
 	if (port == CHARGE_PORT_NONE) {
+		printf("uldren HERE 2.2\n");
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
 			tcpc_write(i, TCPC_REG_COMMAND,
 				   TCPC_REG_COMMAND_SNK_CTRL_LOW);
 			raa489000_enable_asgate(i, false);
 		}
 
+		// printf("uldren HERE 2.5\n");
 		return EC_SUCCESS;
 	}
 
+	// printf("uldren HERE 3\n");
 	/* Check if port is sourcing VBUS. */
 	if (board_is_sourcing_vbus(port)) {
 		LOG_WRN("Skip enable p%d", port);
 		return EC_ERROR_INVAL;
 	}
 
+	// printf("uldren HERE 4\n");
 	/*
 	 * Turn off the other ports' sink path FETs, before enabling the
 	 * requested charge port.
@@ -67,6 +75,7 @@ int board_set_active_charge_port(int port)
 		raa489000_enable_asgate(i, false);
 	}
 
+	// printf("uldren HERE 5\n");
 	/*
 	 * Stop the charger IC from switching while changing ports.  Otherwise,
 	 * we can overcurrent the adapter we're switching to. (crbug.com/926056)
@@ -83,6 +92,7 @@ int board_set_active_charge_port(int port)
 		return EC_ERROR_UNKNOWN;
 	}
 
+	// printf("uldren HERE 6\n");
 	/* Allow the charger IC to begin/continue switching. */
 	charger_discharge_on_ac(0);
 

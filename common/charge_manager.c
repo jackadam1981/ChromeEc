@@ -108,8 +108,103 @@ static int save_log[CHARGE_PORT_COUNT];
 
 #ifdef CONFIG_ZEPHYR
 K_MUTEX_DEFINE(cm_refresh);
+#include <zephyr/spinlock.h>
+#include <zephyr/sys/ring_buffer.h>
+
+// Define the structure for each event
+typedef struct {
+	uint32_t timestamp;
+	const struct k_mutex *mutex;
+	k_tid_t thread_id;
+	uint8_t event_type; // 0: lock, 1: unlock, 2: try_lock, etc.
+} mutex_event_log_t;
+
+#define MUTEX_HISTORY_SIZE 32 // Number of events to keep
+#define EVENT_SIZE sizeof(mutex_event_log_t)
+
+// Define the ring buffer instance
+RING_BUF_ITEM_DECLARE(mutex_event_rb, EVENT_SIZE *MUTEX_HISTORY_SIZE);
+
+// Spinlock to protect ring buffer access
+static struct k_spinlock rb_lock;
+
+enum mutex_event {
+	LOCKING = 0,
+	LOCKED = 1,
+	UNLOCKED = 2,
+};
+
+// Function to log a mutex event, overwriting the oldest if full
+void log_mutex_event(const struct k_mutex *mutex, uint8_t type)
+{
+	mutex_event_log_t event = { .timestamp =
+					    k_cycle_get_32(), // Or
+							      // k_uptime_get()
+				    .mutex = mutex,
+				    .thread_id = k_current_get(),
+				    .event_type = type };
+
+	k_spinlock_key_t key = k_spin_lock(&rb_lock);
+
+	// Check if space is available
+	size_t space = ring_buf_space_get(&mutex_event_rb);
+
+	if (space < EVENT_SIZE) {
+		// Not enough space, drop the oldest event to make room
+		uint8_t temp[EVENT_SIZE];
+		ring_buf_get(&mutex_event_rb, temp, EVENT_SIZE);
+	}
+
+	// Put the new event
+	ring_buf_put(&mutex_event_rb, (const uint8_t *)&event, EVENT_SIZE);
+
+	k_spin_unlock(&rb_lock, key);
+}
+
+void dump_mutex_history(void)
+{
+	mutex_event_log_t event;
+	k_spinlock_key_t key = k_spin_lock(&rb_lock);
+
+	printk("Mutex Event History:\n");
+	while (ring_buf_get(&mutex_event_rb, (uint8_t *)&event, EVENT_SIZE) ==
+	       EVENT_SIZE) {
+		printk("  TS: %u, Mutex: %p, Thread: %s, Type: %u\n",
+		       event.timestamp, event.mutex,
+		       k_thread_name_get(event.thread_id), event.event_type);
+	}
+
+	k_spin_unlock(&rb_lock, key);
+	// Note: This empties the buffer. For non-destructive reading, use
+	// ring_buf_peek.
+}
+
+void charge_manager_dump_mutex()
+{
+	const char *thread_name = k_thread_name_get(cm_refresh.owner);
+	printf("charge_manager: Owner: %s, Count=%d\n", thread_name,
+	       cm_refresh.lock_count);
+
+	dump_mutex_history();
+}
+
+// #define CM_MUTEX_DEBUG
+#ifdef CM_MUTEX_DEBUG
+#define CM_MUTEX_LOCK(m)                     \
+	{                                    \
+		log_mutex_event(m, LOCKING); \
+		mutex_lock(m);               \
+		log_mutex_event(m, LOCKED);  \
+	}
+#define CM_MUTEX_UNLOCK(m)                    \
+	{                                     \
+		mutex_unlock(m);              \
+		log_mutex_event(m, UNLOCKED); \
+	}
+#else
 #define CM_MUTEX_LOCK(m) mutex_lock(m)
 #define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
+#endif /* MUTEX_DEBUG */
 #else
 /* TODO(b/427504021) - Legacy EC mutexes are not recursive */
 #define CM_MUTEX_LOCK(m)
@@ -896,17 +991,22 @@ static void charge_manager_refresh(void)
 	int ceil;
 	int power_changed = 0;
 
+	// printf("HERE 0.1\n");
 	CM_MUTEX_LOCK(&cm_refresh);
 
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_port(&new_port, &new_supplier);
 
+		// printf("HERE 0.2\n");
+
 		if (!left_safe_mode && new_port == CHARGE_PORT_NONE) {
+			printf("HERE 0.25\n");
 			CM_MUTEX_UNLOCK(&cm_refresh);
 			return;
 		}
 
+		printf("HERE 0.3\n");
 		/*
 		 * If the port and the supplier are the same, don't (attempt to)
 		 * switch to the port unless active charge port hasn't been set.
@@ -924,13 +1024,17 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
+		printf("HERE 0.4\n");
 		/*
 		 * A different port or a supplier was selected. Make an attempt
 		 * to switch to the port.
 		 */
 		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
-			if (IS_ENABLED(CONFIG_EXTPOWER))
+			printf("HERE 0.45\n");
+			if (IS_ENABLED(CONFIG_EXTPOWER)) {
 				board_check_extpower();
+			}
+			// printf("HERE 0.5\n");
 			break;
 		}
 
@@ -957,6 +1061,7 @@ static void charge_manager_refresh(void)
 	if (override_port >= 0 && override_port != new_port)
 		override_port = OVERRIDE_OFF;
 
+	// printf("HERE 1\n");
 	if (new_supplier == CHARGE_SUPPLIER_NONE) {
 #ifdef CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT
 		new_charge_current = CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT;
@@ -990,6 +1095,7 @@ static void charge_manager_refresh(void)
 			available_charge[new_supplier][new_port].voltage;
 	}
 
+	// printf("HERE 2\n");
 	/*
 	 * Record the PD current limit to prevent from over-sinking
 	 * the charger.
@@ -1030,6 +1136,7 @@ static void charge_manager_refresh(void)
 		if (IS_ENABLED(CONFIG_EXTPOWER))
 			board_check_extpower();
 	}
+	// printf("HERE 3\n");
 
 	/*
 	 * Signal new power request only if the port changed, the voltage
@@ -1057,6 +1164,7 @@ static void charge_manager_refresh(void)
 	charge_supplier = new_supplier;
 	charge_port = new_port;
 
+	// printf("HERE 4\n");
 #ifdef CONFIG_USB_PD_LOGGING
 	/*
 	 * Write a log under the following conditions:
@@ -1131,6 +1239,7 @@ static void charge_manager_refresh(void)
 			pd_set_new_power_request(updated_new_port);
 		}
 	}
+	// printf("HERE 5\n");
 	if (is_pd_port(updated_old_port))
 		pd_set_new_power_request(updated_old_port);
 
@@ -1140,6 +1249,7 @@ static void charge_manager_refresh(void)
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
 
+	// printf("HERE 6\n");
 	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
@@ -1398,8 +1508,12 @@ void charge_manager_leave_safe_mode(void)
 	 * input FETs.
 	 */
 	crec_msleep(board_get_leave_safe_mode_delay_ms());
+
+	CM_MUTEX_LOCK(&cm_refresh);
 	CPRINTS("%s()", __func__);
 	left_safe_mode = 1;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
 }
@@ -1500,15 +1614,21 @@ int charge_manager_get_override(void)
 	return override_port;
 }
 
-int charge_manager_get_active_charge_port(void)
+int charge_manager_get_active_charge_port_(const char *file, const char *func)
 {
-	int retval = 0;
+	int retval = charge_port;
 
 	CM_MUTEX_LOCK(&cm_refresh);
+	printf("%s:%s -> get_active_charge_port\n", file, func);
 	retval = charge_port;
 	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return retval;
+}
+
+int charge_manager_get_active_charge_port_no_lock()
+{
+	return charge_port;
 }
 
 int charge_manager_get_selected_charge_port(void)
