@@ -77,6 +77,7 @@ i2c3ALT: &i2c3 {
                 reg = <0x20>;
                 irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
                 port-index-on-chip = <0x1>;
+                pmc-address = <0x69>;
 		zephyr,deferred-init;
         };
 
@@ -85,6 +86,7 @@ i2c3ALT: &i2c3 {
                 reg = <0x24>;
                 irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
                 port-index-on-chip = <0x2>;
+                pmc-address = <0x68>;
                 no-fw-update;
 		zephyr,deferred-init;
         };
