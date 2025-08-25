@@ -36,6 +36,10 @@ static std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
 
 static std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key;
 
+/* Current challenge */
+static std::array<uint8_t, FP_CHALLENGE_SIZE> challenge;
+test_export_static timestamp_t challenge_ctime;
+
 enum ec_error_list check_context_cleared()
 {
 	for (uint8_t partial : global_context.user_id)
@@ -248,3 +252,97 @@ fp_command_establish_session(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_SESSION, fp_command_establish_session,
 		     EC_VER_MASK(0));
+
+static enum ec_status
+fp_cmd_generate_challenge(struct host_cmd_handler_args *args)
+{
+	auto *r = static_cast<ec_response_fp_generate_challenge *>(
+		args->response);
+
+	/* The Session Key is used to sign messages. Let's make sure
+	 * it's available. */
+	if (!(global_context.fp_encryption_status &
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	ScopedFastCpu fast_cpu;
+
+	RAND_bytes(challenge.data(), challenge.size());
+	std::ranges::copy(challenge, r->challenge);
+
+	timestamp_t now = get_time();
+	challenge_ctime.val = now.val;
+
+	global_context.fp_encryption_status |= FP_AUTH_CHALLENGE_SET;
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_CHALLENGE, fp_cmd_generate_challenge,
+		     EC_VER_MASK(0));
+
+enum ec_error_list
+validate_request(std::span<const uint8_t> context,
+		 std::span<const uint8_t> operation,
+		 std::span<const uint8_t, SHA256_DIGEST_LENGTH> mac)
+{
+	/* We expect the message to come from Fingerguard. */
+	static constexpr uint8_t sender_str[] = {
+		'f', 'i', 'n', 'g', 'e', 'r', '_', 'g', 'u', 'a', 'r', 'd'
+	};
+	static constexpr std::span sender = sender_str;
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> computed_mac{};
+
+	/* Make sure new challenge was generated. */
+	if (!(global_context.fp_encryption_status & FP_AUTH_CHALLENGE_SET)) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	/* Remove the bit so the challenge is not reused. */
+	global_context.fp_encryption_status &= ~FP_AUTH_CHALLENGE_SET;
+
+	/* Make sure the challenge has not expired. */
+	timestamp_t now = get_time();
+	if (now.val > challenge_ctime.val + (5 * SECOND)) {
+		return EC_ERROR_TIMEOUT;
+	}
+
+	/* Compute expected signature. */
+	if (compute_message_signature(session_key, context, sender, operation,
+				      challenge, computed_mac) != EC_SUCCESS) {
+		return EC_ERROR_INVAL;
+	}
+
+	/* Compare computed signature with received one. */
+	static_assert(mac.size() == computed_mac.size());
+	if (CRYPTO_memcmp(mac.data(), computed_mac.data(), mac.size())) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	return EC_SUCCESS;
+}
+
+enum ec_error_list
+sign_message(std::span<const uint8_t> context,
+	     std::span<const uint8_t> operation,
+	     std::span<const uint8_t, FP_CHALLENGE_SIZE> peer_challenge,
+	     std::span<uint8_t, SHA256_DIGEST_LENGTH> output)
+{
+	static constexpr uint8_t sender_str[] = { 'f', 'p', 'm', 'c', 'u' };
+	static constexpr std::span sender = sender_str;
+
+	/* The Session Key is used to sign messages. Let's make sure
+	 * it's available. */
+	if (!(global_context.fp_encryption_status &
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	if (compute_message_signature(session_key, context, sender, operation,
+				      peer_challenge, output) != EC_SUCCESS) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
