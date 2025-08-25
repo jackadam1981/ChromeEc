@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd41c92_0e021824",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "115eb0ae_5665ef44",
+      "range": {
+        "startLine": 651,
+        "startChar": 2,
+        "endLine": 651,
+        "endChar": 9
+      },
+      "revId": "165b9e8c355a56c650d7cea7323d72eef210d12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e76e16_15a4d452",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-22T22:17:03Z",
       "side": 1,
       "message": "NIT - don\u0027t add extra dividers and symbols to logs --it makes them more cluttered",
+      "range": {
+        "startLine": 812,
+        "startChar": 3,
+        "endLine": 812,
+        "endChar": 61
+      },
+      "revId": "165b9e8c355a56c650d7cea7323d72eef210d12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb0bf86_3fb4e629",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "I added this to help locating this log in ec console when developing. Removed in latest patchset.",
+      "parentUuid": "81e76e16_15a4d452",
       "range": {
         "startLine": 812,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbdffc70_5db239b6",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1781,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9613106_2f4e09af",
+      "range": {
+        "startLine": 1781,
+        "startChar": 0,
+        "endLine": 1781,
+        "endChar": 37
+      },
+      "revId": "165b9e8c355a56c650d7cea7323d72eef210d12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab08884_3e4c02d5",
@@ -83,6 +155,24 @@
       "writtenOn": "2025-08-22T22:17:03Z",
       "side": 1,
       "message": "Move each of the program DT changes into their own CLs for a cleaner git history",
+      "revId": "165b9e8c355a56c650d7cea7323d72eef210d12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be57c87a_60ae0be0",
+        "filename": "zephyr/program/skywalker/skywalker-tps6699x/project.overlay",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "Made five more changes, one for each program modified and make pmc-address optional until the all programs set their pmc address.",
+      "parentUuid": "1ab08884_3e4c02d5",
       "revId": "165b9e8c355a56c650d7cea7323d72eef210d12d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

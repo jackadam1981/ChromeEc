@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38855a0d_a3a9abe2",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "Guard both read and write with a lock in patch set 9.",
+      "parentUuid": "89129245_1cdcf35b",
+      "range": {
+        "startLine": 665,
+        "startChar": 2,
+        "endLine": 666,
+        "endChar": 20
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "504703fe_616b9612",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "658352f5_9424767a",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "Use spinlock in patch set 9.",
+      "parentUuid": "504703fe_616b9612",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 66
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a4194a5_24c88bd5",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-08-22T22:17:03Z",
       "side": 1,
       "message": "Does this interrupt fire after appconfig has been (re)loaded, e.g. a PDC chip reset? Do we need to re-configure the PMC addresses when this happens?",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 39
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99557d4f_8124d3a0",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-08-25T12:07:44Z",
+      "side": 1,
+      "message": "My interpretation of https://b.corp.google.com/issues/383656687#comment8 is if host(EC) change global system configuration, then PDC will issue a reset on both port itself and we will receive an interrupt with pdc_pd_status.error_recovery_details \u003d\u003d 0x23 to indicate the completion.\n\nIn my test, we only receive this interrupt until we plun in a dongle or a charger.",
+      "parentUuid": "0a4194a5_24c88bd5",
       "range": {
         "startLine": 806,
         "startChar": 0,
