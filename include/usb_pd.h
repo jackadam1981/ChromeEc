@@ -480,6 +480,11 @@ enum hpd_event {
 #define DP_FLAGS_DP_ON BIT(0) /* Display port mode is on */
 #define DP_FLAGS_HPD_HI_PENDING BIT(1) /* Pending HPD_HI */
 
+/* USB Mux HPD states */
+#define USB_PD_MUX_HPD_ASSERTED (USB_PD_MUX_HPD_LVL)
+#define USB_MUX_HPD_MASK (USB_PD_MUX_HPD_LVL | USB_PD_MUX_HPD_IRQ)
+#define USB_PD_MUX_HPD_DEASSERTED 0
+
 /* Discover Identity ACK contents after headers */
 union disc_ident_ack {
 	struct {
@@ -985,6 +990,7 @@ struct pd_cable {
 #define PD_VDO_DPSTS_HPD_IRQ(x) (((x) >> 8) & 1)
 #define PD_VDO_DPSTS_HPD_LVL(x) (((x) >> 7) & 1)
 #define PD_VDO_DPSTS_MF_PREF(x) (((x) >> 4) & 1)
+#define PD_VDO_DPSTS_SINK_DEVICE_CONNECTED(x) (((x) >> 1) & 1)
 
 /* Per DisplayPort Spec v1.3 Section 3.3 */
 #define HPD_USTREAM_DEBOUNCE_LVL (2 * MSEC)
