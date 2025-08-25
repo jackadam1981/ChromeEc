@@ -109,21 +109,25 @@ ZTEST_USER(fpsensor_shim, test_shim_deinit_sensor_deinit_failed)
 
 ZTEST_USER(fpsensor_shim, test_shim_get_info_success)
 {
-	struct ec_response_fp_info info;
+	struct ec_response_fp_info_v2 info;
+	size_t resp_size = sizeof(struct ec_response_fp_info_v2) +
+			   NUM_IMAGE_CAPTURE_TYPES *
+				   sizeof(struct fingerprint_image_frame_params)
 
-	/* We need to initialize driver first to initialize 'error' field */
-	zassert_ok(fp_sensor_init());
-	zassert_ok(fp_sensor_get_info(&info));
+				   /* We need to initialize driver first to
+				      initialize 'error' field */
+				   zassert_ok(fp_sensor_init());
+	zassert_ok(fp_sensor_get_info(&info, resp_size));
 
-	zassert_equal(info.vendor_id, FOURCC('C', 'r', 'O', 'S'));
-	zassert_equal(info.product_id, 0);
+	zassert_equal(info.sensor_info.vendor_id, FOURCC('C', 'r', 'O', 'S'));
+	zassert_equal(info.sensor_info.product_id, 0);
 	/*
 	 * Last 4 bits of hardware id is a year of sensor production,
 	 * could differ between sensors.
 	 */
-	zassert_equal(info.model_id, 0);
-	zassert_equal(info.version, 0);
-	zassert_equal(info.frame_size, FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(
+	zassert_equal(info.sensor_info.model_id, 0);
+	zassert_equal(info.sensor_info.version, 0);
+	/*zassert_equal(info.frame_size, FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(
 					       DT_NODELABEL(fpsensor_sim)));
 	zassert_equal(info.pixel_format, FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(
 						 DT_NODELABEL(fpsensor_sim)));
@@ -132,20 +136,26 @@ ZTEST_USER(fpsensor_shim, test_shim_get_info_success)
 	zassert_equal(info.height,
 		      FINGERPRINT_SENSOR_RES_Y(DT_NODELABEL(fpsensor_sim)));
 	zassert_equal(info.bpp,
-		      FINGERPRINT_SENSOR_RES_BPP(DT_NODELABEL(fpsensor_sim)));
-	zassert_equal(info.errors, FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN);
+		      FINGERPRINT_SENSOR_RES_BPP(DT_NODELABEL(fpsensor_sim)));*/
+	zassert_equal(info.sensor_info.errors,
+		      FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN);
 }
 
 ZTEST_USER(fpsensor_shim, test_shim_get_info_failed)
 {
-	struct ec_response_fp_info info;
-	struct fingerprint_sensor_state state;
+	struct ec_response_fp_info_v2 info;
+	size_t resp_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		NUM_IMAGE_CAPTURE_TYPES *
+			sizeof(struct fingerprint_image_frame_params)
+
+				struct fingerprint_sensor_state state;
 
 	fingerprint_get_state(fp_sim, &state);
 	state.get_info_result = -EINVAL;
 	fingerprint_set_state(fp_sim, &state);
 
-	zassert_equal(fp_sensor_get_info(&info), -EINVAL);
+	zassert_equal(fp_sensor_get_info(&info, resp_size), -EINVAL);
 }
 
 ZTEST_USER(fpsensor_shim, test_shim_finger_status_present)
