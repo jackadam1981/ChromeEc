@@ -28,12 +28,11 @@ properties:
   pmc-address:
     type: int
     enum:
-      - 0
       - 0x50
       - 0x51
       - 0x52
       - 0x68
       - 0x69
-    default: 0
+    required: true
     description: |
-      This is the I2C2 target address. Set to 0 to use address from appconfig.
+      This is the I2C2 target address.
