@@ -8613,6 +8613,8 @@ struct ec_params_fp_seed {
 #define FP_CONTEXT_SESSION_NONCE_SET BIT(2)
 /* FP user_id had been set or not*/
 #define FP_CONTEXT_USER_ID_SET BIT(3)
+/* The operation authentication challenge was generated */
+#define FP_AUTH_CHALLENGE_SET BIT(4)
 
 struct ec_response_fp_encryption_status {
 	/* Used bits in encryption engine status */
@@ -8710,6 +8712,11 @@ struct ec_params_fp_establish_session {
 } __ec_align4;
 
 #define FP_CHALLENGE_SIZE 32
+
+#define EC_CMD_FP_GENERATE_CHALLENGE 0x0415
+struct ec_response_fp_generate_challenge {
+	uint8_t challenge[FP_CHALLENGE_SIZE];
+} __ec_align4;
 
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */

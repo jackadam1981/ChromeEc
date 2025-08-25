@@ -32,6 +32,9 @@
 /* Function used to cleanup session secrets and flags. */
 void reset_session(void);
 
+/* Challenge creation time. */
+extern timestamp_t challenge_ctime;
+
 namespace
 {
 
@@ -1135,6 +1138,268 @@ test_static enum ec_error_list test_fp_command_commit_without_seed(void)
 	return EC_SUCCESS;
 }
 
+static enum ec_error_list
+establish_session(std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key)
+{
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key{};
+	constexpr std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
+	struct ec_response_fp_generate_nonce nonce_response{};
+	struct ec_params_fp_establish_session session_params{};
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, nullptr, 0,
+				       &nonce_response, sizeof(nonce_response)),
+		EC_RES_SUCCESS, "%d");
+
+	/*
+	 * This is the same nonce as the one hardcoded in
+	 * generate_valid_establish_session_request.
+	 */
+	constexpr std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> peer_nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
+	TEST_EQ(generate_session_key(nonce_response.nonce, peer_nonce,
+				     pairing_key, session_key),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
+				       nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_generate_challenge(void)
+{
+	struct ec_response_fp_generate_challenge challenge_response{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	uint32_t status;
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_CLEARED((int)status, FP_AUTH_CHALLENGE_SET);
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_SET((int)status, FP_AUTH_CHALLENGE_SET);
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_command_generate_challenge_fail_no_session(void)
+{
+	struct ec_response_fp_generate_challenge challenge_response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_validate_request(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	uint32_t status;
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_SET((int)status, FP_AUTH_CHALLENGE_SET);
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation,
+					  challenge_response.challenge, mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac), EC_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_CLEARED((int)status, FP_AUTH_CHALLENGE_SET);
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_validate_request_fail_no_challenge(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac = { 0 };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac),
+		EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_validate_request_fail_invalid_signature(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac = { 0 };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac),
+		EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_validate_request_fail_timeout(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	challenge_ctime.val -= 6 * SECOND;
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation,
+					  challenge_response.challenge, mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac), EC_ERROR_TIMEOUT,
+		"%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_message(void)
+{
+	constexpr std::array<const uint8_t, FP_CHALLENGE_SIZE> challenge = {
+		1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+		8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5,
+	};
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 5> sender = { 'f', 'p', 'm', 'c',
+							  'u' };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> expected_mac{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(sign_message(user_id, operation, challenge, mac), EC_SUCCESS,
+		"%d");
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation, challenge, expected_mac),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(mac, expected_mac, mac.size());
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_message_fail_no_session(void)
+{
+	constexpr std::array<const uint8_t, FP_CHALLENGE_SIZE> challenge = { 0 };
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(sign_message(user_id, operation, challenge, mac),
+		EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 void run_test(int argc, const char **argv)
@@ -1167,5 +1432,13 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_command_template_decrypted);
 	RUN_TEST(test_fp_command_commit_v3);
 	RUN_TEST(test_fp_command_commit_trivial_salt);
+	RUN_TEST(test_fp_command_generate_challenge);
+	RUN_TEST(test_fp_command_generate_challenge_fail_no_session);
+	RUN_TEST(test_fp_validate_request);
+	RUN_TEST(test_fp_validate_request_fail_no_challenge);
+	RUN_TEST(test_fp_validate_request_fail_invalid_signature);
+	RUN_TEST(test_fp_validate_request_fail_timeout);
+	RUN_TEST(test_fp_sign_message);
+	RUN_TEST(test_fp_sign_message_fail_no_session);
 	test_print_result();
 }
