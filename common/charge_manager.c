@@ -121,6 +121,7 @@ MUTEX_HISTORY_DECLARE(mutex_event_rb, MUTEX_HISTORY_SIZE);
 // Call from watchdog timeout handler
 void charge_manager_dump_mutex_history()
 {
+	MUTEX_HISTORY_DROP_CRUMB(&mutex_event_rb);
 	mutex_history_dump(&mutex_event_rb);
 }
 
@@ -1304,8 +1305,11 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	 * to our charge port until we are certain we know what is
 	 * attached.
 	 */
-	if (charge_manager_is_seeded())
+	if (charge_manager_is_seeded()) {
+		CM_MUTEX_LOCK(&cm_refresh);
 		hook_call_deferred(&charge_manager_refresh_data, 0);
+		CM_MUTEX_UNLOCK(&cm_refresh);
+	}
 }
 
 void charge_manager_invalidate_suppliers(int port)
@@ -1497,6 +1501,8 @@ int charge_manager_set_override(int port)
 	if (delayed_override_port != OVERRIDE_OFF)
 		return EC_ERROR_BUSY;
 
+	CM_MUTEX_LOCK(&cm_refresh);
+
 	/* Set the override port if it's a sink. */
 	if (port < 0 || is_sink(port)) {
 		if (override_port != port) {
@@ -1518,8 +1524,11 @@ int charge_manager_set_override(int port)
 				   POWER_SWAP_TIMEOUT);
 		pd_request_power_swap(port);
 		/* Can't charge from requested port -- return error. */
-	} else
+	} else {
 		retval = EC_ERROR_INVAL;
+	}
+
+	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return retval;
 }
@@ -1538,6 +1547,11 @@ int charge_manager_get_active_charge_port(void)
 	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return retval;
+}
+
+bool charge_manager_no_active_charge_port(void)
+{
+	return charge_port != CHARGE_PORT_NONE;
 }
 
 int charge_manager_get_selected_charge_port(void)

@@ -223,7 +223,15 @@ int charge_manager_get_override(void);
  *
  * @return	Current active charge port.
  */
-int charge_manager_get_active_charge_port(void);
+int charge_manager_get_active_charge_port(const char *fn);
+
+/**
+ * Return true/false if no active charge port.
+ *
+ * @return true
+ * @return false
+ */
+bool charge_manager_no_active_charge_port(void);
 
 /**
  * Get the current selected charge port, as determined by charge manager.
