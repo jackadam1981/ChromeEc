@@ -107,7 +107,7 @@ struct pdc_info_t {
 	/** Set to 1 if running from flash code (optional) */
 	uint8_t is_running_flash_code;
 	/** Set to the currently used flash bank (optional) */
-	uint8_t running_in_flash_bank;
+	uint32_t running_in_flash_bank;
 	/** 12-byte program name string plus NUL terminator */
 	char project_name[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
 	/** Compat string of driver */
