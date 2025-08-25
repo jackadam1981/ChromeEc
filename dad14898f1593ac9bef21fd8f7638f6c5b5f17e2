@@ -51,6 +51,24 @@
       "parentUuid": "a1a4f8cc_fdc57f5a",
       "revId": "dad14898f1593ac9bef21fd8f7638f6c5b5f17e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de23d608_77701dd1",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-25T16:57:24Z",
+      "side": 1,
+      "message": "I did not see that code. Only when CONFIG_ORIENTATION_SENSOR is enabled. Should it be a separate CL?",
+      "parentUuid": "ddd97636_02cebac2",
+      "revId": "dad14898f1593ac9bef21fd8f7638f6c5b5f17e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
