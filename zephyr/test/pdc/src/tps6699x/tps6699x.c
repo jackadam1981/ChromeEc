@@ -242,6 +242,10 @@ ZTEST_USER(tps6699x, test_init_state_sequence)
 	emul_pdc_fail_reg_write(emul, REG_PORT_CONTROL);
 	emul_pdc_fail_reg_read(emul, REG_BOOT_FLAG);
 	emul_pdc_fail_reg_read(emul, REG_VERSION);
+	/* tps_rw_global_system_configuration with I2C_MSG_READ triggers both
+	 * start_write and start_read so we can not test the write failure with
+	 * emul_pdc_fail_reg_write(emul, REG_GLOBAL_SYSTEM_CONFIGURATION). */
+	emul_pdc_fail_reg_read(emul, REG_GLOBAL_SYSTEM_CONFIGURATION);
 
 	/* No error handling triggered by this failure. Only useful for
 	 * coverage.
