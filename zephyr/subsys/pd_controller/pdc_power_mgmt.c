@@ -4169,16 +4169,6 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 	return EC_SUCCESS;
 }
 
-void pdc_power_mgmt_request_swap_to_src(int port)
-{
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
-}
-
-void pdc_power_mgmt_request_swap_to_snk(int port)
-{
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
-}
-
 test_mockable void pdc_power_mgmt_request_power_swap(int port)
 {
 	if (pdc_power_mgmt_is_sink_connected(port)) {
@@ -5308,7 +5298,11 @@ test_mockable void pdc_power_mgmt_request_source_voltage(int port, int mv)
 	if (pdc_power_mgmt_is_sink_connected(port)) {
 		pdc_power_mgmt_set_new_power_request(port);
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		pdc_power_mgmt_request_swap_to_snk(port);
+		/* We are a source, swap to sink */
+		LOG_INF("C%d: Swapping to sink role to request new "
+			"source voltage",
+			port);
+		pdc_power_mgmt_request_power_swap(port);
 	} else {
 		LOG_ERR("C%d: Port is disconnected. New source voltage "
 			"will take effect on next connection",

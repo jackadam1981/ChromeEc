@@ -122,24 +122,6 @@ enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port);
 enum pd_data_role pdc_power_mgmt_pd_get_data_role(int port);
 
 /**
- * @brief Request power swap to Source
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_src(int port);
-
-/**
- * @brief Request power swap to Sink
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_snk(int port);
-
-/**
  * @brief Signal power request to indicate a charger update that affects the
  * port.
  *
