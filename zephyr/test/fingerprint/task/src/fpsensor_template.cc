@@ -8,6 +8,7 @@
 #define _XOPEN_SOURCE 500
 #endif
 
+#include "command_helper.h"
 #include "mock_fingerprint_algorithm.h"
 
 #include <stdlib.h>
@@ -322,7 +323,11 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_success)
 	const size_t data_size =
 		FP_TEMPLATE_PARAMS_BUFFER_SIZE - sizeof(*params);
 	uint8_t *data = params_buffer + sizeof(*params);
-	struct ec_response_fp_info info;
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;
+	ec_response_fp_info_v2 *info = static_cast<ec_response_fp_info_v2 *>(
+		k_malloc(fp_sensor_get_info_v2_size));
 	size_t offset = 0;
 
 	memcpy(encrypted_template, &expected_enc_info,
@@ -350,8 +355,8 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_success)
 	}
 
 	/* Confirm that there is 1 valid template. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_valid, 1);
+	zassert_ok(fpinfo_cmd_helper(info));
+	zassert_equal(info->template_info.template_valid, 1);
 }
 
 ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
@@ -363,7 +368,11 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
 	const size_t data_size =
 		FP_TEMPLATE_PARAMS_BUFFER_SIZE - sizeof(*params);
 	uint8_t *data = params_buffer + sizeof(*params);
-	struct ec_response_fp_info info;
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;
+	ec_response_fp_info_v2 *info = static_cast<ec_response_fp_info_v2 *>(
+		k_malloc(fp_sensor_get_info_v2_size));
 	size_t offset = 0;
 
 	struct ec_fp_template_encryption_metadata enc_info_with_invalid_tag =
@@ -403,8 +412,8 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
 	}
 
 	/* Confirm that there is no valid template. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_valid, 0);
+	zassert_ok(fpinfo_cmd_helper(info));
+	zassert_equal(info->template_info.template_valid, 0);
 }
 
 static void *fpsensor_setup(void)
