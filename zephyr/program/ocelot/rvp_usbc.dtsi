@@ -48,6 +48,7 @@
 		compatible = "ti,tps6699-pdc";
 		reg = <0x20>;
 		port-index-on-chip = <0x1>;
+		pmc-address = <0x69>;
 		ccd;
 		zephyr,deferred-init;
 	};
@@ -55,6 +56,7 @@
 		compatible = "ti,tps6699-pdc";
 		reg = <0x24>;
 		port-index-on-chip = <0x2>;
+		pmc-address = <0x68>;
 		zephyr,deferred-init;
 	};
 };
