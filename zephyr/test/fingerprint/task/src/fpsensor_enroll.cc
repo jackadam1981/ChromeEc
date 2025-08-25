@@ -11,6 +11,7 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
+#include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
@@ -380,6 +381,15 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_failed)
 	zassert_false(response.mode & FP_MODE_ENROLL_SESSION);
 }
 
+static uint16_t fpinfo_cmd_helper(struct ec_response_fp_info_v2 *response)
+{
+	struct host_cmd_handler_args args =
+		BUILD_HOST_COMMAND_RESPONSE(EC_CMD_FP_INFO, 2, *response);
+	args.response_max = 500;
+
+	return host_command_process(&args);
+}
+
 ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 {
 	struct ec_params_fp_mode params = {
@@ -387,7 +397,12 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) *
+			4; // NUM_IMAGE_CAPTURE_TYPES;
+	ec_response_fp_info_v2 *info = static_cast<ec_response_fp_info_v2 *>(
+		k_malloc(fp_sensor_get_info_v2_size));
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
@@ -446,10 +461,10 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 	zassert_false(response.mode & FP_MODE_ENROLL_SESSION);
 
 	/* Confirm that there is 1 valid template. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_valid, 1);
+	zassert_ok(fpinfo_cmd_helper(info));
+	zassert_equal(info->template_info.template_valid, 1);
 	/* Don't forget that template_dirty is a bitmask. */
-	zassert_equal(info.template_dirty, 0x1);
+	zassert_equal(info->template_info.template_dirty, 0x1);
 }
 
 static void *fpsensor_setup(void)
