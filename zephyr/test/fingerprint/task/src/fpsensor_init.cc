@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "command_helper.h"
 #include "mock_fingerprint_algorithm.h"
 
 #include <zephyr/device.h>
@@ -11,6 +12,7 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
+#include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
@@ -26,6 +28,11 @@ DEFINE_FFF_GLOBALS;
 FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
 
 #define fp_sim DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
+
+static ec_response_fp_info_v2 *test_info_buffer = NULL;
+static const size_t test_info_buffer_size =
+	sizeof(struct ec_response_fp_info_v2) +
+	sizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;
 
 ZTEST_USER(fpsensor_init, test_tpm_seed_init)
 {
@@ -113,15 +120,15 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_3)
 		.mode = FP_MODE_SENSOR_MAINTENANCE,
 	};
 	struct ec_response_fp_mode response;
-	struct ec_response_fp_info info;
 	struct fingerprint_sensor_state state;
 
 	const int dead_pixels = 3;
 
 	/* Confirm that number of dead pixels is unknown. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(FP_ERROR_DEAD_PIXELS(info.errors),
-		      FP_ERROR_DEAD_PIXELS_UNKNOWN);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(
+		FP_ERROR_DEAD_PIXELS(test_info_buffer->sensor_info.errors),
+		FP_ERROR_DEAD_PIXELS_UNKNOWN);
 
 	fingerprint_get_state(fp_sim, &state);
 	state.bad_pixels = dead_pixels;
@@ -139,8 +146,10 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_3)
 	zassert_true(state.maintenance_ran);
 
 	/* Confirm that number of dead pixels is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(FP_ERROR_DEAD_PIXELS(info.errors), dead_pixels);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(
+		FP_ERROR_DEAD_PIXELS(test_info_buffer->sensor_info.errors),
+		dead_pixels);
 
 	/*
 	 * Confirm that maintenance flag is not set after the maintenance
@@ -157,7 +166,6 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_max_plus_2)
 		.mode = FP_MODE_SENSOR_MAINTENANCE,
 	};
 	struct ec_response_fp_mode response;
-	struct ec_response_fp_info info;
 	struct fingerprint_sensor_state state;
 
 	fingerprint_get_state(fp_sim, &state);
@@ -176,9 +184,10 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_max_plus_2)
 	zassert_true(state.maintenance_ran);
 
 	/* Confirm that number of dead pixels is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(FP_ERROR_DEAD_PIXELS(info.errors),
-		      FP_ERROR_DEAD_PIXELS_MAX);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(
+		FP_ERROR_DEAD_PIXELS(test_info_buffer->sensor_info.errors),
+		FP_ERROR_DEAD_PIXELS_MAX);
 
 	/*
 	 * Confirm that maintenance flag is not set after the maintenance
@@ -195,7 +204,6 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_max)
 		.mode = FP_MODE_SENSOR_MAINTENANCE,
 	};
 	struct ec_response_fp_mode response;
-	struct ec_response_fp_info info;
 	struct fingerprint_sensor_state state;
 
 	fingerprint_get_state(fp_sim, &state);
@@ -214,9 +222,10 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_max)
 	zassert_true(state.maintenance_ran);
 
 	/* Confirm that number of dead pixels is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(FP_ERROR_DEAD_PIXELS(info.errors),
-		      FP_ERROR_DEAD_PIXELS_MAX);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(
+		FP_ERROR_DEAD_PIXELS(test_info_buffer->sensor_info.errors),
+		FP_ERROR_DEAD_PIXELS_MAX);
 
 	/*
 	 * Confirm that maintenance flag is not set after the maintenance
@@ -233,7 +242,6 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_max_minus_1)
 		.mode = FP_MODE_SENSOR_MAINTENANCE,
 	};
 	struct ec_response_fp_mode response;
-	struct ec_response_fp_info info;
 	struct fingerprint_sensor_state state;
 
 	fingerprint_get_state(fp_sim, &state);
@@ -252,9 +260,10 @@ ZTEST_USER(fpsensor_init, test_maintenance_mode_dead_pixel_max_minus_1)
 	zassert_true(state.maintenance_ran);
 
 	/* Confirm that number of dead pixels is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(FP_ERROR_DEAD_PIXELS(info.errors),
-		      FP_ERROR_DEAD_PIXELS_MAX - 1);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(
+		FP_ERROR_DEAD_PIXELS(test_info_buffer->sensor_info.errors),
+		FP_ERROR_DEAD_PIXELS_MAX - 1);
 
 	/*
 	 * Confirm that maintenance flag is not set after the maintenance
@@ -302,6 +311,18 @@ static void fpsensor_before(void *f)
 
 	fingerprint_set_state(fp_sim, &state);
 	RESET_FAKE(mkbp_send_event);
+	test_info_buffer =
+		(ec_response_fp_info_v2 *)k_malloc(test_info_buffer_size);
+	zassert_not_null(test_info_buffer, "Failed to allocate info buffer");
+	memset(test_info_buffer, 0, test_info_buffer_size); // or k_calloc above
+							    // if it exists}
 }
 
-ZTEST_SUITE(fpsensor_init, NULL, fpsensor_setup, fpsensor_before, NULL, NULL);
+static void fpsensor_after(void *f)
+{
+	k_free(test_info_buffer);
+	test_info_buffer = NULL;
+}
+
+ZTEST_SUITE(fpsensor_init, NULL, fpsensor_setup, fpsensor_before,
+	    fpsensor_after, NULL);
