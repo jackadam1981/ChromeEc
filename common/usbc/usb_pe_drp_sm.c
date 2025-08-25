@@ -3846,22 +3846,9 @@ static void pe_snk_transition_sink_run(int port)
 			 * sink to draw pSnkSusp (25mW).
 			 * This also can pass PD CTS TEST.PD.PS.SNK.1#11.
 			 */
-			if (pe[port].curr_limit == 0) {
-				pd_set_input_current_limit(port, 0, 0);
-
-				if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
-					typec_set_input_current_limit(port, 0,
-								      0);
-					charge_manager_set_ceil(
-						port, CEIL_REQUESTOR_PD,
-						CHARGE_CEIL_NONE);
-
-#ifdef CONFIG_USB_CHARGER
-					charge_manager_update_charge(
-						CHARGE_SUPPLIER_VBUS, port,
-						NULL);
-#endif
-				}
+			if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
+			    pe[port].curr_limit == 0) {
+				charge_manager_invalidate_suppliers(port);
 			} else {
 				/*
 				 * Per PD r3.1 v1.8 ss 8.3.3.3.6, the PE should
