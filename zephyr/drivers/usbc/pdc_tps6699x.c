@@ -876,21 +876,18 @@ static enum smf_state_result st_init_run(void *o)
 			cfg->connector_number, rv);
 		goto error;
 	}
-	if (cfg->pmc_address != 0) {
-		/* Driver can only run after we set the PMC address, which
-		 * should be set in app1 mode. */
-		if (!pdc_info_is_app1(data)) {
-			set_state_delayed_post(data, ST_INIT,
-					       PDC_INIT_MODE_APP1_DELAY);
-			return SMF_EVENT_HANDLED;
-		}
-		/* Setup PMC address for this port */
-		rv = pdc_pmc_address_init(data);
-		if (rv < 0) {
-			LOG_ERR("TI%d: Init PMC address failed (%d)",
-				cfg->connector_number, rv);
-			goto error;
-		}
+	/* Driver can only run after we set the PMC address, which
+	 * should be set in app1 mode. */
+	if (!pdc_info_is_app1(data)) {
+		set_state_delayed_post(data, ST_INIT, PDC_INIT_MODE_APP1_DELAY);
+		return SMF_EVENT_HANDLED;
+	}
+	/* Setup PMC address for this port */
+	rv = pdc_pmc_address_init(data);
+	if (rv < 0) {
+		LOG_ERR("TI%d: Init PMC address failed (%d)",
+			cfg->connector_number, rv);
+		goto error;
 	}
 	rv = pdc_autonegotiate_sink_reset(data);
 	if (rv < 0) {
