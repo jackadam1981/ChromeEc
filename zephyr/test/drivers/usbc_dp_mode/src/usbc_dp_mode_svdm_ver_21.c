@@ -503,6 +503,184 @@ ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery)
 		      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME));
 }
 
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery_send_config)
+{
+	setup_passive_cable(&fixture->partner);
+	/* But with DP mode response and modal operation set to true */
+	fixture->partner.cable->identity_vdm[VDO_INDEX_IDH] |=
+		VDO_MODAL_OPERATION_BIT;
+	fixture->partner.cable->svids_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_PD, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_SVID) |
+		VDO_SVDM_VERS(SVDM_VER_2_1);
+	fixture->partner.cable->svids_vdm[VDO_INDEX_HDR + 1] =
+		VDO_SVID(USB_SID_DISPLAYPORT, 0);
+	fixture->partner.cable->svids_vdos = VDO_INDEX_HDR + 2;
+	fixture->partner.cable->modes_vdm[VDO_INDEX_HDR] =
+		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_MODES) |
+		VDO_SVDM_VERS(SVDM_VER_2_1);
+	fixture->partner.cable->modes_vdm[VDO_INDEX_HDR + 1] =
+		VDO_MODE_DP(MODE_DP_PIN_C | MODE_DP_PIN_D, 0, 1,
+			    CABLE_RECEPTACLE, MODE_DP_GEN2, MODE_DP_SNK) |
+		DPAM_VER_VDO(0x1);
+	fixture->partner.cable->modes_vdos = VDO_INDEX_HDR + 2;
+
+	connect_sink_to_port(&fixture->partner, fixture->tcpci_emul,
+			     fixture->charger_emul);
+
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+	struct ec_response_typec_discovery *discovery =
+		(struct ec_response_typec_discovery *)response_buffer;
+
+	/* Verify SOP discovery */
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	/* The host command does not count the VDM header in identity_count. */
+	zassert_equal(discovery->identity_count,
+		      fixture->partner.identity_vdos - 1,
+		      "Expected %d identity VDOs, got %d",
+		      fixture->partner.identity_vdos - 1,
+		      discovery->identity_count);
+	zassert_mem_equal(
+		discovery->discovery_vdo, fixture->partner.identity_vdm + 1,
+		discovery->identity_count * sizeof(*discovery->discovery_vdo),
+		"Discovered SOP identity ACK did not match");
+	zassert_equal(discovery->svid_count, 1, "Expected 1 SVID, got %d",
+		      discovery->svid_count);
+	zassert_equal(discovery->svids[0].svid, USB_SID_DISPLAYPORT,
+		      "Expected SVID 0x%04x, got 0x%04x", USB_SID_DISPLAYPORT,
+		      discovery->svids[0].svid);
+	zassert_equal(discovery->svids[0].mode_count, 1,
+		      "Expected 1 DP mode, got %d",
+		      discovery->svids[0].mode_count);
+	zassert_equal(discovery->svids[0].mode_vdo[0],
+		      fixture->partner.modes_vdm[1],
+		      "DP mode VDOs did not match");
+
+	/* Verify SOP' discovery */
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP_PRIME,
+				 response_buffer, sizeof(response_buffer));
+
+	/* The host command does not count the VDM header in identity_count. */
+	zassert_equal(discovery->identity_count,
+		      fixture->partner.cable->identity_vdos - 1,
+		      "Expected %d identity VDOs, got %d",
+		      fixture->partner.cable->identity_vdos - 1,
+		      discovery->identity_count);
+	zassert_mem_equal(discovery->discovery_vdo,
+			  fixture->partner.cable->identity_vdm + 1,
+			  discovery->identity_count *
+				  sizeof(*discovery->discovery_vdo),
+			  "Discovered SOP identity ACK did not match");
+	zassert_equal(discovery->svid_count, 1, "Expected 1 SVID, got %d",
+		      discovery->svid_count);
+	zassert_equal(discovery->svids[0].svid, USB_SID_DISPLAYPORT,
+		      "Expected SVID 0x%04x, got 0x%04x", USB_SID_DISPLAYPORT,
+		      discovery->svids[0].svid);
+	zassert_equal(discovery->svids[0].mode_count, 1,
+		      "Expected 1 DP mode, got %d",
+		      discovery->svids[0].mode_count);
+	zassert_equal(discovery->svids[0].mode_vdo[0],
+		      fixture->partner.cable->modes_vdm[1],
+		      "DP mode VDOs did not match");
+
+	/* Verify established SVDM version */
+	zassert_equal(pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP), SVDM_VER_2_1,
+		      "Expected SVDM version 2.1 for SOP, got %d",
+		      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP));
+	zassert_equal(pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME),
+		      SVDM_VER_2_1,
+		      "Expected SVDM version 2.1 for SOP', got %d",
+		      pd_get_vdo_ver(TEST_PORT, TCPCI_MSG_SOP_PRIME));
+
+	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	k_sleep(K_MSEC(1000));
+
+	/* Verify we entered DP mode */
+	struct ec_response_typec_status status =
+		host_cmd_typec_status(TEST_PORT);
+	zassert_equal((status.mux_state & USB_MUX_CHECK_MASK),
+		      USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED,
+		      "Failed to see DP set");
+
+	/* Construct attention message from partner with UFP_D disconnected */
+	uint32_t vdm_payload[2];
+
+	vdm_payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
+			     CMD_ATTENTION | VDO_OPOS(1)); /* OPos 1 for DP
+							      Status */
+	vdm_payload[1] = VDO_DP_STATUS(1, /* hpd_state: HPD High */
+				       1, /* irq_hpd: IRQ asserted */
+				       0, /* mf_pref: Multi-function preferred:
+					     No */
+				       0, /* ufp_d_connected: No DFP_D or UFP_D
+					     connected */
+				       0, /* ufp_c_connected: No DFP_C or UFP_C
+					     connected */
+				       1, /* dp_gen_cap: DP General Capabilities
+					     (e.g., Gen1) */
+				       0, /* is_dfp_d: Not DFP_D */
+				       0 /* is_ufp_d: Is UFP_D */
+	);
+
+	/* Save mux state */
+	status = host_cmd_typec_status(TEST_PORT);
+	uint8_t mux_state = status.mux_state;
+
+	/* Send attention message from partner */
+	zassert_ok(tcpci_partner_send_data_msg(&fixture->partner,
+					       PD_DATA_VENDOR_DEF, vdm_payload,
+					       2, 50),
+		   NULL);
+	k_sleep(K_MSEC(20));
+
+	/* Verify mux state did not change */
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_equal(status.mux_state, mux_state,
+		      "Mux state changed incorrectly");
+
+	zassert_equal((status.mux_state & USB_MUX_HPD_MASK),
+					USB_PD_MUX_HPD_DEASSERTED,
+					"HPD did not deassert");
+
+	/* Send second attention message from partner with sink connected */
+	vdm_payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
+			     CMD_ATTENTION | VDO_OPOS(1)); /* OPos 1 for DP
+							      Status */
+	vdm_payload[1] = VDO_DP_STATUS(1, /* hpd_state: HPD High */
+				       1, /* irq_hpd: IRQ asserted */
+				       0, /* mf_pref: Multi-function preferred:
+					     No */
+				       1, /* ufp_d_connected: UFP_D connected */
+				       0, /* ufp_c_connected: No DFP_C or UFP_C
+					     connected */
+				       1, /* dp_gen_cap: DP General Capabilities
+					     (e.g., Gen1) */
+				       0, /* is_dfp_d: Not DFP_D */
+				       1 /* is_ufp_d: Is UFP_D */
+	);
+
+	zassert_ok(tcpci_partner_send_data_msg(&fixture->partner,
+					       PD_DATA_VENDOR_DEF, vdm_payload,
+					       2, 50),
+		   NULL);
+	k_sleep(K_MSEC(20));
+
+	/* Verify mux state changed to USB_PD_MUX_USB_ENABLED |
+	 * USB_PD_MUX_DP_ENABLED */
+	status = host_cmd_typec_status(TEST_PORT);
+	zassert_equal(
+		(status.mux_state & USB_MUX_CHECK_MASK),
+		USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED,
+		"Mux state did not change to USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED");
+
+	zassert_equal((status.mux_state & USB_MUX_HPD_MASK),
+				USB_PD_MUX_HPD_ASSERTED,
+				"HPD did not assert");
+}
+
 ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_passive_32)
 {
 	setup_passive_cable(&fixture->partner);
