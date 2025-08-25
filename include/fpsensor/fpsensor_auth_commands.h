@@ -12,9 +12,6 @@
 
 #include <array>
 
-/* The session nonce for GSC session key. */
-extern std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
-
 /**
  * Check the context has been cleared or not.
  *

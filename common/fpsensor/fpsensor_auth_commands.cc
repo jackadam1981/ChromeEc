@@ -32,16 +32,13 @@ static bssl::UniquePtr<EC_KEY> ecdh_key;
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
 /* The session nonce for session key. */
-std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
+static std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
 
 static std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key;
 
 enum ec_error_list check_context_cleared()
 {
 	for (uint8_t partial : global_context.user_id)
-		if (partial != 0)
-			return EC_ERROR_ACCESS_DENIED;
-	for (uint8_t partial : session_nonce)
 		if (partial != 0)
 			return EC_ERROR_ACCESS_DENIED;
 	if (global_context.templ_valid != 0)
@@ -168,6 +165,17 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PAIRING_KEY, fp_command_load_pairing_key,
 		     EC_VER_MASK(0));
+
+__maybe_unused test_export_static void reset_session(void)
+{
+	OPENSSL_cleanse(session_nonce.data(), session_nonce.size());
+	OPENSSL_cleanse(session_key.data(), session_key.size());
+	OPENSSL_cleanse(global_context.tpm_seed.data(),
+			global_context.tpm_seed.size());
+	global_context.fp_encryption_status &= ~(
+		FP_CONTEXT_SESSION_NONCE_SET |
+		FP_CONTEXT_STATUS_SESSION_ESTABLISHED | FP_ENC_STATUS_SEED_SET);
+}
 
 static enum ec_status
 fp_command_generate_nonce(struct host_cmd_handler_args *args)
