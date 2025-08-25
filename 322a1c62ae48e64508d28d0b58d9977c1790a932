@@ -39,6 +39,30 @@
       },
       "revId": "322a1c62ae48e64508d28d0b58d9977c1790a932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c3c164_e4b67704",
+        "filename": "boot_param/boot_param.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-08-25T22:08:41Z",
+      "side": 1,
+      "message": "yes, GSC",
+      "parentUuid": "e854bfff_9149d23f",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "322a1c62ae48e64508d28d0b58d9977c1790a932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
