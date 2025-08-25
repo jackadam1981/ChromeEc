@@ -387,7 +387,7 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
+	struct ec_response_fp_info_v2 info;
 	uint32_t fp_events;
 
 	/* Switch mode to enroll. */
@@ -447,9 +447,9 @@ ZTEST_USER(fpsensor_enroll, test_enroll_step_finish_success)
 
 	/* Confirm that there is 1 valid template. */
 	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_valid, 1);
+	zassert_equal(info.template_info.template_valid, 1);
 	/* Don't forget that template_dirty is a bitmask. */
-	zassert_equal(info.template_dirty, 0x1);
+	zassert_equal(info.template_info.template_dirty, 0x1);
 }
 
 static void *fpsensor_setup(void)
