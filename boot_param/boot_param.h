@@ -95,6 +95,19 @@ bool sign_with_cdi_key(
 	uint8_t signature[ECDSA_SIG_BYTES]
 );
 
+/* Get (part of) DiceChain structure for the modified DICE chain.
+ * Use GSC CDI as UDS key for AP DICE.
+ * For DEBUG purposes only.
+ */
+size_t get_dice_chain_bytes_dbg(
+	/* [OUT] destination buffer to fill */
+	uint8_t *dest,
+	/* [IN] starting offset in the DiceChain struct */
+	size_t offset,
+	/* [IN] size of the data to copy */
+	size_t size
+);
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
