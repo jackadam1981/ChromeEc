@@ -1387,9 +1387,44 @@ int charge_manager_get_override(void)
 	return override_port;
 }
 
+<<<<<<< HEAD   (50e2bd802d0f1a4c57cd87935cfdd43216cb62c6 flash_fp_mcu: Add pujjoquince to config_nissa)
 int charge_manager_get_active_charge_port(void)
+||||||| BASE   (82c9126d273f92827d5102fd61692bffb5a90d15 padme: enable uart)
+test_mockable int charge_manager_get_active_charge_port(void)
+=======
+int charge_manager_get_active_charge_port_no_lock(void)
 {
 	return charge_port;
+}
+
+test_mockable int charge_manager_get_active_charge_port(void)
+>>>>>>> CHANGE (5503913369b2607dec528608f43f3440334fb069 charge_manager: Fix mutex deadlock)
+{
+<<<<<<< HEAD   (50e2bd802d0f1a4c57cd87935cfdd43216cb62c6 flash_fp_mcu: Add pujjoquince to config_nissa)
+	return charge_port;
+||||||| BASE   (82c9126d273f92827d5102fd61692bffb5a90d15 padme: enable uart)
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_port;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
+=======
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_manager_get_active_charge_port_no_lock();
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
+>>>>>>> CHANGE (5503913369b2607dec528608f43f3440334fb069 charge_manager: Fix mutex deadlock)
+}
+
+bool charge_manager_has_active_charge_port(void)
+{
+	return charge_manager_get_active_charge_port_no_lock() !=
+	       CHARGE_PORT_NONE;
 }
 
 int charge_manager_get_selected_charge_port(void)
