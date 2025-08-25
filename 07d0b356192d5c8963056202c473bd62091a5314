@@ -22,6 +22,30 @@
       },
       "revId": "07d0b356192d5c8963056202c473bd62091a5314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ad799a_00008a9b",
+        "filename": "zephyr/shim/src/led_driver/led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-25T20:40:59Z",
+      "side": 1,
+      "message": "I think it\u0027s because gerrit uses 8 space tabs but we use 4 space tabs in code. It looks aligned in VS code.",
+      "parentUuid": "955c630a_fe8a5280",
+      "range": {
+        "startLine": 145,
+        "startChar": 17,
+        "endLine": 145,
+        "endChar": 18
+      },
+      "revId": "07d0b356192d5c8963056202c473bd62091a5314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
