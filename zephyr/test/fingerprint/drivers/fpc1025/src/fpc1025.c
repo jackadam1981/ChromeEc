@@ -12,6 +12,7 @@
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/sys/util.h>
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
@@ -42,6 +43,30 @@ static void *fpc1025_setup(void)
 /* Converts capture types from the ec domain to the fpc domain. */
 int convert_fp_capture_type_to_fpc_capture_type(int mode);
 
+static uint8_t capture_types[] = { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+					   FINGERPRINT_SENSOR_CAPTURE_TYPE,
+					   (, ), DT_NODELABEL(fpc1025)) };
+
+static uint16_t width[] = { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+				    FINGERPRINT_SENSOR_RES_X, (, ),
+				    DT_NODELABEL(fpc1025)) };
+
+static uint16_t height[] = { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+				     FINGERPRINT_SENSOR_RES_Y, (, ),
+				     DT_NODELABEL(fpc1025)) };
+
+static uint16_t bpp[] = { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+				  FINGERPRINT_SENSOR_RES_BPP, (, ),
+				  DT_NODELABEL(fpc1025)) };
+
+static uint32_t pixel_format[] = { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+					   FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT,
+					   (, ), DT_NODELABEL(fpc1025)) };
+
+static uint32_t frame_size[] = { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+					 FINGERPRINT_SENSOR_FRAME_SIZE, (, ),
+					 DT_NODELABEL(fpc1025)) };
+
 ZTEST_SUITE(fpc1025, NULL, fpc1025_setup, NULL, NULL, NULL);
 
 ZTEST_F(fpc1025, test_init_success)
@@ -63,30 +88,37 @@ ZTEST_F(fpc1025, test_deinit_success)
 
 ZTEST_F(fpc1025, test_get_info)
 {
-	struct fingerprint_info info;
+	struct fingerprint_sensor_info sensor_info;
+	struct fingerprint_image_frame_params
+		image_frame_params_array[NUM_IMAGE_CAPTURE_TYPES];
 
 	/* We need to initialize driver first to initialize 'error' field */
 	zassert_ok(fingerprint_init(fixture->dev));
-	zassert_ok(fingerprint_get_info(fixture->dev, &info));
+	zassert_ok(fingerprint_get_info(fixture->dev, &sensor_info,
+					image_frame_params_array));
 
-	zassert_equal(info.vendor_id, FOURCC('F', 'P', 'C', ' '));
-	zassert_equal(info.product_id, 9);
+	zassert_equal(sensor_info.vendor_id, FOURCC('F', 'P', 'C', ' '));
+	zassert_equal(sensor_info.product_id, 9);
 	/*
 	 * Last 4 bits of hardware id is a year of sensor production,
 	 * could differ between sensors.
 	 */
-	zassert_equal(info.model_id >> 4, 0x021);
-	zassert_equal(info.version, 1);
-	zassert_equal(info.frame_size, CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE);
-	zassert_equal(info.pixel_format, FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(
-						 DT_NODELABEL(fpc1025)));
-	zassert_equal(info.width,
-		      FINGERPRINT_SENSOR_RES_X(DT_NODELABEL(fpc1025)));
-	zassert_equal(info.height,
-		      FINGERPRINT_SENSOR_RES_Y(DT_NODELABEL(fpc1025)));
-	zassert_equal(info.bpp,
-		      FINGERPRINT_SENSOR_RES_BPP(DT_NODELABEL(fpc1025)));
-	zassert_equal(info.errors, FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN);
+	zassert_equal(sensor_info.model_id >> 4, 0x021);
+	zassert_equal(sensor_info.version, 1);
+	zassert_equal(sensor_info.errors,
+		      FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN);
+
+	for (int i = 0; i < NUM_IMAGE_CAPTURE_TYPES; ++i) {
+		zassert_equal(image_frame_params_array[i].frame_size,
+			      frame_size[i]);
+		zassert_equal(image_frame_params_array[i].pixel_format,
+			      pixel_format[i]);
+		zassert_equal(image_frame_params_array[i].width, width[i]);
+		zassert_equal(image_frame_params_array[i].height, height[i]);
+		zassert_equal(image_frame_params_array[i].bpp, bpp[i]);
+		zassert_equal(image_frame_params_array[i].fp_capture_type,
+			      capture_types[i]);
+	}
 }
 
 ZTEST_F(fpc1025, test_enter_low_power_mode)
