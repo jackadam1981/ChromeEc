@@ -1425,7 +1425,7 @@ int charge_manager_get_override(void)
 	return override_port;
 }
 
-test_mockable int charge_manager_get_active_charge_port(void)
+int charge_manager_get_active_charge_port_no_lock(void)
 {
 	int retval = 0;
 
@@ -1434,6 +1434,35 @@ test_mockable int charge_manager_get_active_charge_port(void)
 	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return retval;
+}
+
+test_mockable int charge_manager_get_active_charge_port(void)
+{
+<<<<<<< HEAD   (22da525121e5dedc1bfa92f9040d56614c585fba Meliks: Initial zephyr test code)
+	return charge_port;
+||||||| BASE   (82c9126d273f92827d5102fd61692bffb5a90d15 padme: enable uart)
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_port;
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
+=======
+	int retval = 0;
+
+	CM_MUTEX_LOCK(&cm_refresh);
+	retval = charge_manager_get_active_charge_port_no_lock();
+	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	return retval;
+>>>>>>> CHANGE (5503913369b2607dec528608f43f3440334fb069 charge_manager: Fix mutex deadlock)
+}
+
+bool charge_manager_has_active_charge_port(void)
+{
+	return charge_manager_get_active_charge_port_no_lock() !=
+	       CHARGE_PORT_NONE;
 }
 
 int charge_manager_get_selected_charge_port(void)
