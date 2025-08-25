@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50dd53e_2a1df856",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-25T15:16:49Z",
+      "side": 1,
+      "message": "if (!ret \u0026\u0026 cfg-\u003ecalibration_data_addr !\u003d 0)??",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "27f80624189fbcb17c4289acbe47ccbf982b930e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f078571_792f9ff6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-25T15:16:49Z",
+      "side": 1,
+      "message": "are you handling this error?",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 6
+      },
+      "revId": "27f80624189fbcb17c4289acbe47ccbf982b930e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff16180_bf3b46be",
+        "filename": "zephyr/dts/bindings/fingerprint/egis,egis630.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-25T15:16:49Z",
+      "side": 1,
+      "message": "something better for address?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "27f80624189fbcb17c4289acbe47ccbf982b930e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28050f85_156b283a",
+        "filename": "zephyr/dts/bindings/fingerprint/egis,egis630.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-25T15:16:49Z",
+      "side": 1,
+      "message": "if this is an absolute memory address or an offset within a flash device",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "27f80624189fbcb17c4289acbe47ccbf982b930e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
