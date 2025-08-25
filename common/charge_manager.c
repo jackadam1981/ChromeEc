@@ -108,8 +108,98 @@ static int save_log[CHARGE_PORT_COUNT];
 
 #ifdef CONFIG_ZEPHYR
 K_MUTEX_DEFINE(cm_refresh);
+
+// #define CM_MUTEX_DEBUG
+#ifdef CM_MUTEX_DEBUG
+#include <zephyr/spinlock.h>
+#include <zephyr/sys/ring_buffer.h>
+
+// Define the structure for each event
+typedef struct {
+	uint32_t timestamp;
+	const struct k_mutex *mutex;
+	k_tid_t thread_id;
+	uint8_t event_type; // 0: lock, 1: unlock, 2: try_lock, etc.
+	const char *func;
+} mutex_event_log_t;
+
+#define MUTEX_HISTORY_SIZE 32 // Number of events to keep
+#define EVENT_SIZE sizeof(mutex_event_log_t)
+
+// Define the ring buffer instance
+RING_BUF_ITEM_DECLARE(mutex_event_rb, EVENT_SIZE *MUTEX_HISTORY_SIZE);
+
+// Spinlock to protect ring buffer access
+static struct k_spinlock rb_lock;
+
+enum mutex_event {
+	LOCKING = 0,
+	LOCKED = 1,
+	UNLOCKED = 2,
+};
+
+// Function to log a mutex event, overwriting the oldest if full
+void log_mutex_event(const struct k_mutex *mutex, uint8_t type,
+		     const char *func)
+{
+	mutex_event_log_t event = {
+		.timestamp = k_cycle_get_32(),
+		.mutex = mutex,
+		.thread_id = k_current_get(),
+		.event_type = type,
+		.func = func,
+	};
+
+	k_spinlock_key_t key = k_spin_lock(&rb_lock);
+
+	// Check if space is available
+	size_t space = ring_buf_space_get(&mutex_event_rb);
+
+	if (space < EVENT_SIZE) {
+		// Not enough space, drop the oldest event to make room
+		uint8_t temp[EVENT_SIZE];
+		ring_buf_get(&mutex_event_rb, temp, EVENT_SIZE);
+	}
+
+	// Put the new event
+	ring_buf_put(&mutex_event_rb, (const uint8_t *)&event, EVENT_SIZE);
+
+	k_spin_unlock(&rb_lock, key);
+}
+
+// Call this from watchdog timeout
+void dump_mutex_history(void)
+{
+	mutex_event_log_t event;
+	k_spinlock_key_t key = k_spin_lock(&rb_lock);
+
+	printk("Mutex Event History:\n");
+	while (ring_buf_get(&mutex_event_rb, (uint8_t *)&event, EVENT_SIZE) ==
+	       EVENT_SIZE) {
+		printk("  TS: %u, Mutex: %p, Thread: %s, Func: %s, Type: %u\n",
+		       event.timestamp, event.mutex,
+		       k_thread_name_get(event.thread_id), event.func,
+		       event.event_type);
+	}
+
+	k_spin_unlock(&rb_lock, key);
+}
+
+#define CM_MUTEX_LOCK(m)                               \
+	{                                              \
+		log_mutex_event(m, LOCKING, __func__); \
+		mutex_lock(m);                         \
+		log_mutex_event(m, LOCKED, __func__);  \
+	}
+#define CM_MUTEX_UNLOCK(m)                              \
+	{                                               \
+		mutex_unlock(m);                        \
+		log_mutex_event(m, UNLOCKED, __func__); \
+	}
+#else
 #define CM_MUTEX_LOCK(m) mutex_lock(m)
 #define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
+#endif /* MUTEX_DEBUG */
 #else
 /* TODO(b/427504021) - Legacy EC mutexes are not recursive */
 #define CM_MUTEX_LOCK(m)
@@ -1383,6 +1473,7 @@ void charge_manager_leave_safe_mode(void)
 	if (left_safe_mode)
 		return;
 
+	CM_MUTEX_LOCK(&cm_refresh);
 	/*
 	 * Sometimes the fuel gauge will report that it has
 	 * sufficient state of charge and remaining capacity,
@@ -1402,6 +1493,8 @@ void charge_manager_leave_safe_mode(void)
 	left_safe_mode = 1;
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
+
+	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 #endif
 
