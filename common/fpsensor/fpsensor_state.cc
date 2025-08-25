@@ -260,12 +260,6 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 		if (global_context.sensor_mode & FP_MODE_RESET_SENSOR)
 			return EC_RES_BUSY;
 
-		if (global_context.fp_encryption_status &
-		    FP_CONTEXT_STATUS_SESSION_ESTABLISHED) {
-			/* Reject the request to prevent downgrade attack. */
-			return EC_RES_ACCESS_DENIED;
-		}
-
 		memcpy(global_context.user_id.data(), p->userid,
 		       sizeof(global_context.user_id));
 
