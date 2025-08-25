@@ -2691,6 +2691,8 @@ enum ec_led_id {
 	EC_LED_ID_RECOVERY_HW_REINIT_LED,
 	/* LED to indicate sysrq debug mode. */
 	EC_LED_ID_SYSRQ_DEBUG_LED,
+	/* LED strip for advanced patterns. */
+	EC_LED_ID_LIGHTBAR_LED,
 
 	EC_LED_ID_COUNT,
 };

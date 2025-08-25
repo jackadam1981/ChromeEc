@@ -107,10 +107,10 @@ static const char *const led_color_names[] = { "red",	 "green", "blue",
 BUILD_ASSERT(ARRAY_SIZE(led_color_names) == EC_LED_COLOR_COUNT);
 
 /* Note: depends on enum ec_led_id */
-static const char *const led_names[] = { "battery",    "power",
-					 "adapter",    "left",
-					 "right",      "recovery_hwreinit",
-					 "sysrq debug" };
+static const char *const led_names[] = { "battery",	"power",
+					 "adapter",	"left",
+					 "right",	"recovery_hwreinit",
+					 "sysrq debug", "lightbar" };
 BUILD_ASSERT(ARRAY_SIZE(led_names) == EC_LED_ID_COUNT);
 
 /* ASCII mode for printing, default off */
@@ -4819,6 +4819,9 @@ static int cmd_lightbar(int argc, char **argv)
 	int i, r;
 	struct ec_params_lightbar param;
 	struct ec_response_lightbar resp;
+
+	printf("warning: ectool lightbar is depricated. "
+	       "Use ectool led lightbar instead.\n");
 
 	if (1 == argc) { /* no args = dump 'em all */
 		r = lb_do_cmd(LIGHTBAR_CMD_DUMP, &param, &resp);
