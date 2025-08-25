@@ -106,6 +106,7 @@ static int egis630_init(const struct device *dev)
 	const struct egis630_cfg *cfg = dev->config;
 	struct egis630_data *data = dev->data;
 	egis_api_return_t ret;
+	struct egis630_calibration_data *calibration_data;
 
 	data->errors = FINGERPRINT_ERROR_DEAD_PIXELS_UNKNOWN;
 
@@ -124,6 +125,14 @@ static int egis630_init(const struct device *dev)
 	if (int_pin_value == gpio_pin_get_dt(&cfg->interrupt)) {
 		LOG_ERR("Sensor IRQ not ready");
 		data->errors |= FINGERPRINT_ERROR_NO_IRQ;
+	}
+
+	if (!ret && (cfg->calibration_data_addr != 0)) {
+		calibration_data = (struct egis630_calibration_data
+					    *)(cfg->calibration_data_addr);
+		ret = egis_apply_calibration_data(calibration_data->data,
+						  calibration_data->size);
+		data->errors |= convert_egis_sensor_init_error_code(ret);
 	}
 
 	return 0;
@@ -346,6 +355,8 @@ static int egis630_init_driver(const struct device *dev)
 		.interrupt = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),           \
 		.reset_pin = GPIO_DT_SPEC_INST_GET(inst, reset_gpios),         \
 		.info = EGIS630_SENSOR_INFO(inst),                             \
+		.calibration_data_addr =                                       \
+			DT_INST_PROP_OR(inst, calibration_data_addr, 0),       \
 	};                                                                     \
 	BUILD_ASSERT(                                                          \
 		CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE >=                        \

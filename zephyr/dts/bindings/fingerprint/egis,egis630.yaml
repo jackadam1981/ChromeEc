@@ -20,3 +20,9 @@ properties:
     required: true
     description: |
       This property specifies the connection for sensor reset.
+
+  calibration-data-addr:
+    type: int
+    description: |
+      An absolute address where calibration data are stored. The first 4 bytes
+      are size of the calibration data, then actual data.
