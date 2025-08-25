@@ -22,6 +22,7 @@
                 reg = <0x20>;
                 irq-gpios = <&gpiof 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
                 port-index-on-chip = <0x1>;
+                pmc-address = <0x69>;
                 ccd;
         };
 
@@ -30,5 +31,6 @@
                 reg = <0x24>;
                 irq-gpios = <&gpiof 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
                 port-index-on-chip = <0x2>;
+                pmc-address = <0x68>;
         };
 };
