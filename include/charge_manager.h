@@ -226,6 +226,14 @@ int charge_manager_get_override(void);
 int charge_manager_get_active_charge_port(void);
 
 /**
+ * Return true/false if active charge port.
+ *
+ * @return true 	when valid charge port is active
+ * @return false 	no valid charge port is active
+ */
+bool charge_manager_has_active_charge_port(void);
+
+/**
  * Get the current selected charge port, as determined by charge manager.
  * This is the charge port that is either active or that we may be
  * transitioning to because a better choice has been given as an option

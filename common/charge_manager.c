@@ -1540,6 +1540,11 @@ test_mockable int charge_manager_get_active_charge_port(void)
 	return retval;
 }
 
+bool charge_manager_has_active_charge_port(void)
+{
+	return charge_port != CHARGE_PORT_NONE;
+}
+
 int charge_manager_get_selected_charge_port(void)
 {
 	int port, supplier;
