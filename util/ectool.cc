@@ -1910,29 +1910,42 @@ int cmd_apreset(int argc, char *argv[])
  * @returns a vector<uint8_t> containing the the requested frame.
  */
 static std::unique_ptr<std::vector<uint8_t> >
-fp_download_frame(struct ec_response_fp_info *info, int index)
+fp_download_frame(struct SensorImage &sensor_image, int index)
 {
-	int rv = 0;
-	size_t size;
-	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
-	int rsize = cmdver == 1 ? sizeof(*info) :
-				  sizeof(struct ec_response_fp_info_v0);
+	ec::EcCommandFactory ec_command_factory;
+	ec::EcCommandVersionSupported ec_cmd_ver_supported;
+	auto fp_info_command =
+		ec_command_factory.FpInfoCommand(&ec_cmd_ver_supported);
 
-	/* templates not supported in command v0 */
-	if (index > 0 && cmdver == 0)
+	if (!fp_info_command && !fp_info_command->Run(comm_get_fd())) {
+		fprintf(stderr, "Failed to Run FpInfoCommand.\n");
 		return NULL;
+	}
 
-	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, info, rsize);
-	if (rv < 0)
+	auto template_info = fp_info_command->template_info();
+
+	bool found = false;
+	for (auto image : fp_info_command->sensor_image()) {
+		if (image.fp_capture_type ==
+		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
+			sensor_image = image;
+			found = true;
+			break;
+		}
+	}
+
+	if (!found) {
 		return NULL;
+	}
 
 	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
-		size = (size_t)info->width * info->bpp / 8 * info->height;
+		size = (size_t)sensor_image.width * sensor_image.bpp / 8 *
+		       sensor_image.height;
 		index = FP_FRAME_INDEX_RAW_IMAGE;
 	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
-		size = info->frame_size;
+		size = sensor_image.frame_size;
 	} else {
-		size = info->template_size;
+		size = template_info.template_size;
 	}
 
 	auto frame_cmd = ec::FpFrameCommand::Create(index, size, ec_max_insize);
@@ -2184,25 +2197,26 @@ int cmd_fp_enc_status(int argc, char *argv[])
 
 int cmd_fp_frame(int argc, char *argv[])
 {
-	struct ec_response_fp_info r;
+	struct SensorImage sensor_image = { 0 };
 	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
 			  FP_FRAME_INDEX_RAW_IMAGE :
 			  FP_FRAME_INDEX_SIMPLE_IMAGE;
-	auto fp_frame = fp_download_frame(&r, idx);
+	auto fp_frame = fp_download_frame(&sensor_image, idx);
 	if (!fp_frame) {
 		fprintf(stderr, "Failed to get FP sensor frame\n");
 		return -1;
 	}
 
 	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
-		assert(fp_frame->size() == r.frame_size);
-		fwrite(fp_frame->data(), r.frame_size, 1, stdout);
+		assert(fp_frame->size() == sensor_image.frame_size);
+		fwrite(fp_frame->data(), sensor_image.frame_size, 1, stdout);
 		return 0;
 	}
 
 	auto frame_to_pgm = ec::FpFrameCommand::FrameToPgm(
-		*fp_frame,
-		{ .bpp = r.bpp, .width = r.width, .height = r.height });
+		*fp_frame, { .bpp = sensor_image.bpp,
+			     .width = sensor_image.width,
+			     .height = sensor_image.height });
 
 	if (!frame_to_pgm.has_value()) {
 		fprintf(stderr, "Error: Failed to convert frame to PGM.\n");
@@ -2214,7 +2228,7 @@ int cmd_fp_frame(int argc, char *argv[])
 
 int cmd_fp_template(int argc, char *argv[])
 {
-	struct ec_response_fp_info r;
+	struct SensorImage sensor_image = { 0 };
 	struct ec_params_fp_template *p =
 		(struct ec_params_fp_template *)(ec_outbuf);
 	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
@@ -2234,13 +2248,13 @@ int cmd_fp_template(int argc, char *argv[])
 
 	idx = strtol(argv[1], &e, 0);
 	if (!(e && *e)) {
-		auto fp_frame = fp_download_frame(&r, idx + 1);
+		auto fp_frame = fp_download_frame(&sensor_image, idx + 1);
 		if (!fp_frame) {
 			fprintf(stderr, "Failed to get FP template %d\n", idx);
 			return -1;
 		}
-		assert(fp_frame->size() == r.template_size);
-		fwrite(fp_frame->data(), r.template_size, 1, stdout);
+		assert(fp_frame->size() == sensor_image.template_size);
+		fwrite(fp_frame->data(), sensor_image.template_size, 1, stdout);
 		return 0;
 	}
 	/* not an index, is it a filename ? */
