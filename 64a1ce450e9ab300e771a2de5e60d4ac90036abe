@@ -39,6 +39,30 @@
       },
       "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25578361_08464b38",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-26T16:03:25Z",
+      "side": 1,
+      "message": "From what I remember the return codes in `ectool` are kind of a mess. I see the same pattern that you are using in `cmd_fp_context` and `cmd_fp_enc-status`, so we should probably be consistent.\n\nHow does the function that calls `cmd_fp_info` use the return code?",
+      "parentUuid": "66914340_b7192833",
+      "range": {
+        "startLine": 2093,
+        "startChar": 0,
+        "endLine": 2098,
+        "endChar": 2
+      },
+      "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
