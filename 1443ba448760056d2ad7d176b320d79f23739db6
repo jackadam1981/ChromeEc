@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb4f469_c1629ffc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-26T18:54:55Z",
+      "side": 1,
+      "message": "check on all uldrenite360 sensors configuration as well. I am not sure `alt_base_\u003cSENSOR\u003e_2` removal matches the CBI settings anymore.",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a8bb6a_d7049684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-26T18:54:55Z",
+      "side": 1,
+      "message": "You could have use commit I2d3ee07440c15263971d2a5643bfea09190ab5f1 for this split CL.",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfbdf4c_cbb9a2d0",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-08-26T18:54:55Z",
+      "side": 1,
+      "message": "still needed since we are moving to dynamic body sensor setting?",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
