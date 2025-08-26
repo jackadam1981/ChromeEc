@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56b4dcc_0e9fac9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400ab544_48a220d8",
+      "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e4774a6_76b1a844",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45892348_1e84333e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T18:53:25Z",
+      "side": 1,
+      "message": "Unit test is now added.",
+      "parentUuid": "0e4774a6_76b1a844",
+      "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "781bfbc6_f3521624",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-21T18:32:15Z",
       "side": 1,
       "message": "it is not supposed to append since body_detect_reset() happens before each ODR, which we do when the sensors are initialized.",
+      "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccf75ea_ca402e4a",
+        "filename": "zephyr/lib/vsensor/body_detection/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T18:53:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "781bfbc6_f3521624",
       "revId": "a43873e4e78faf540f3548c4ca5ee1c69e42407c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
