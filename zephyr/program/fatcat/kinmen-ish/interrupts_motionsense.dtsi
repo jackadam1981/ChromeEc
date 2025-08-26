@@ -10,7 +10,7 @@
 		int_lid_accel: ec_lid_accel  {
 			irq-pin = <&gpio_acc_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "bma4xx_interrupt";
+			handler = "lis2dw12_interrupt";
 		};
 	};
 };
