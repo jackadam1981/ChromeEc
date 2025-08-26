@@ -22,6 +22,30 @@
       },
       "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9005da81_1236f3c5",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-26T18:12:05Z",
+      "side": 1,
+      "message": "\u003e This implementation issues a few I2C commands to the battery. When the AP boots up and the EC switches to be a I2C slave, I am not sure what happens to these I2C commands, still driving the bus and resulting conflicts, or being blocked in the API level.\n\u003e \n\u003e Anyway, I think better to not issue any I2C commands.\n\nWe\u0027re planning to implement a host command to inform the Embedded Controller (EC) when to release the I2C bus from the AP side. These commands are useful because we don\u0027t plan to load the ADSP Lite firmware on all boot paths. Instead, once the EC receives a special host command from the Application Processor (AP) before the AP loads the ADSP Lite firmware, the EC will release the bus. The same logic would apply when the AP hands off to the operating system (OS). In that case, we\u0027d send a special command to let the EC know that it needs to release the I2C bus.",
+      "parentUuid": "7b6f98c4_c29b3b86",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
