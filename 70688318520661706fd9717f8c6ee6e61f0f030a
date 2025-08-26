@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68b32f0e_9e7e3de5",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-26T18:31:12Z",
+      "side": 1,
+      "message": "Can you point me to where this fw-config is stored in the project files? There should be a way we can reference the config directly instead of hardcoding the values.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35b881f9_44e98cf8",
         "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
         "patchSetId": 1
