@@ -74,6 +74,7 @@
 
 	named-i2c-ports {
 		/delete-node/ ec_i2c_pdc_s_scl_3v3;
+		/delete-node/ ec_i2c_sensor_scl_1v8;
 	};
 
 	unused-pins {
@@ -81,6 +82,8 @@
 		unused-gpios =
 			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpioc 7 GPIO_INPUT_PULL_DOWN>,
@@ -176,6 +179,10 @@
 	/delete-node/ tusb546-mux-0@44;
 
 	status = "disabled";
+};
+
+&i2c3 {
+    status = "disabled";
 };
 
 &sha0 {
