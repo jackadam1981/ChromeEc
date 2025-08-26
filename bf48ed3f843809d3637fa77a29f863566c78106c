@@ -141,6 +141,24 @@
       "parentUuid": "7e7e8b42_07b0149a",
       "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9747e7aa_b4a3bded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-08-26T08:34:49Z",
+      "side": 1,
+      "message": "Hi Jason,\n\nI have uploaded CL:6883378 to test on overriding LED behavior depend on fw-config. Could you help to take a look if you are available?\n\nThanks!",
+      "parentUuid": "1dbb2dca_dad51f38",
+      "revId": "bf48ed3f843809d3637fa77a29f863566c78106c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
