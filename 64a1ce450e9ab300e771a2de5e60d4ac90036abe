@@ -63,6 +63,30 @@
       },
       "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0800ad14_a188514e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-26T17:38:19Z",
+      "side": 1,
+      "message": "I believe this is the only place ectool version of [fpinfo](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/go.chromium.org/tast-tests/cros/remote/firmware/fingerprint/ectool.go;l\u003d230?q\u003dfpinfo\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\u0026start\u003d41#:~:text\u003d229-,230,-231) command is used. I do not see that the exact error is checked. I",
+      "parentUuid": "25578361_08464b38",
+      "range": {
+        "startLine": 2093,
+        "startChar": 0,
+        "endLine": 2098,
+        "endChar": 2
+      },
+      "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
