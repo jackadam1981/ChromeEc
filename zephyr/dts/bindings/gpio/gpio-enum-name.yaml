@@ -59,6 +59,7 @@ properties:
       - GPIO_LID_ACCEL_INT_L
       - GPIO_LID_OPEN
       - GPIO_PACKET_MODE_EN
+      - GPIO_PCH_BKLTEN
       - GPIO_PCH_DSW_PWROK
       - GPIO_PCH_PWRBTN_L
       - GPIO_PCH_PWROK

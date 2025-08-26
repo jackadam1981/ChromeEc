@@ -171,6 +171,13 @@ config PLATFORM_EC_BACKLIGHT_LID_ACTIVE_LOW
 	  Support controlling the backlight with an active low GPIO signal.
           This config option expects a GPIO_ENABLE_BACKLIGHT_L defined.
 
+config PLATFORM_EC_BACKLIGHT_REQ_GPIO
+	bool "Passing display backlight enable from the AP through EC"
+	help
+	  If defined, EC will enable the backlight signal only if this GPIO is
+	  asserted AND the lid is open.  This supports passing the backlight-enable
+	  signal from the AP through EC.
+
 config PLATFORM_EC_BOARD_RESET_AFTER_POWER_ON
 	bool "Work around H1 reset issue"
 	help
