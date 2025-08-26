@@ -9,6 +9,7 @@
 
 /* kinmen project DTS includes */
 #include "adc.dtsi"
+#include "cbi.dtsi"
 #include "binman.dtsi"
 #include "console.dtsi"
 #include "fan.dtsi"
