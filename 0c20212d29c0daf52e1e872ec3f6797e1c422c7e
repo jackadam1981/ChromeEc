@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc51d45_396d2a02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T19:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ef1c9b_121f60f0",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "0c20212d29c0daf52e1e872ec3f6797e1c422c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01d2257b_d87ced39",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-08-21T17:12:32Z",
       "side": 1,
       "message": "nit: Add a Fixes: entry to link both CLs.",
+      "revId": "0c20212d29c0daf52e1e872ec3f6797e1c422c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45a6039_80a50781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T19:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d2257b_d87ced39",
       "revId": "0c20212d29c0daf52e1e872ec3f6797e1c422c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
