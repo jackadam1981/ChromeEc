@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70eeb5a_58d75617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-08-26T03:36:34Z",
+      "side": 1,
+      "message": "The charger\u0027s NTC is disabled when there is no AC, so we need to modify the policy to avoid it taking effect when there is no AC.",
+      "revId": "9ab0ce499e8a60eca49d3c4b6dcb89e71f7970f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
