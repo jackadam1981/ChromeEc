@@ -65,6 +65,11 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "base_detect_interrupt";
 		};
+		int_wpc: wpc{
+			irq-pin = <&gpio_wpc_irq>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pchg_irq";
+		};
 	};
 
 	named-gpios {
@@ -115,6 +120,16 @@
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			gpios = <&gpioe 5 (GPIO_INPUT)>;
 		};
+
+		gpio_wpc_irq: gpio_wpc_irq{
+			gpios = <&gpioh 1 (GPIO_INPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_WPC_IRQ";
+		};
+
+		gpio_wpc_rst: gpio_wpc_rst{
+			gpios = <&gpioj 2 GPIO_INPUT>;
+			enum-name = "GPIO_QI_RESET_L";
+		};
 	};
 
 	named-i2c-ports {
@@ -135,9 +150,9 @@
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
-			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
-			<&gpioi 2 GPIO_INPUT_PULL_DOWN>,
-			<&gpioj 2 GPIO_INPUT_PULL_DOWN>;
+			//<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
+			//<&gpioj 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpioi 2 GPIO_INPUT_PULL_DOWN>;
 	};
 
 	usbc {
@@ -188,9 +203,19 @@
 	/delete-node/ rts54-pdc@67;
 };
 
+&i2c3 {
+	scl-gpios = < &gpiob 0x2 0x0 >;
+	sda-gpios = < &gpiob 0x5 0x0 >;
+};
+
 &i2c4 {
 	/delete-node/ ps8747-mux-1@10;
 	/delete-node/ tusb546-mux-0@44;
+	scp8200@41 {
+		compatible = "convenientpower,cps8200";
+		reg = <0x41>;
+		irq-gpios=<&gpioh 1 (GPIO_INPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+	};
 };
 
 &sha0 {
