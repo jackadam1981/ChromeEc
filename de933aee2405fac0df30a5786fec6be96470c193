@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6519f1d8_34195e1d",
+        "filename": "common/chipset.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-26T17:38:55Z",
+      "side": 1,
+      "message": "Guard it with `CONFIG_HOSTCMD_AP_SHUTDOWN` instead of `CONFIG_CMD_POWER_AP`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "de933aee2405fac0df30a5786fec6be96470c193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e41e86e_2568f904",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8885,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-26T17:38:55Z",
+      "side": 1,
+      "message": "Add a comment for this host command.",
+      "range": {
+        "startLine": 8885,
+        "startChar": 0,
+        "endLine": 8885,
+        "endChar": 0
+      },
+      "revId": "de933aee2405fac0df30a5786fec6be96470c193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
