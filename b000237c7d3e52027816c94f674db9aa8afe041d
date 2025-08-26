@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0a235a0_4c9b4fe2",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-26T22:20:20Z",
+      "side": 1,
+      "message": "Do we need to take any action here? Right now it the code appears to just log the PD status register and move on unless I am missing something.",
+      "parentUuid": "99557d4f_8124d3a0",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 39
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14142a5f_3f0d7b2f",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 8
