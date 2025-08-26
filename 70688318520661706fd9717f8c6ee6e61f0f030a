@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0806970_74c2b5ff",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-26T21:24:48Z",
+      "side": 1,
+      "message": "To clarify, I see that we\u0027re retrieving the fw-config from the cbi. What I mean is, is there a file or setting somewhere that the cbi is getting the fw-config from?\n\nI\u0027m wondering if it\u0027s possible to put this information in the init or pre-compile so that we don\u0027t have to repeatedly check the cbi at runtime.",
+      "parentUuid": "68b32f0e_9e7e3de5",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35b881f9_44e98cf8",
         "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
         "patchSetId": 1
