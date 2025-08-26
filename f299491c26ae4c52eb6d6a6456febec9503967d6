@@ -94,6 +94,30 @@
       },
       "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d624e6_3e4607be",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-26T18:44:39Z",
+      "side": 1,
+      "message": "\u003e This new host command of switching I2C bus ownership is new to me. I don\u0027t see it in the original proposal. Adding an extra software state complicates the design and I am not sure if all corner cases have been considered.\n\u003e \n\u003e Actually, you can use `host_command_battery_get_static` instead of `host_command_battery_get_dynamic`. It by design uses the cached values.\n\nYou\u0027re right about using static values as described in the design document, which aligns with the ADSP Lite solution. However, until the ADSP Lite solution is available (Q1\u002726), we need to use something meaningful to charge the battery and monitor its status. The dynamic solution is a temporary measure, and we\u0027ll only use the ADSP Lite-based solution once it\u0027s available (static/cached data will be in use in such scenario).",
+      "parentUuid": "87a01e6b_72cc06e7",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
