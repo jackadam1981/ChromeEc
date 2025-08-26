@@ -1602,11 +1602,15 @@ static bool should_swap_to_source(struct pdc_port_t *port)
 		return false;
 	}
 
-	if (port->snk_policy.pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR ||
-	    !(port->snk_policy.pdo & PDO_FIXED_DUAL_ROLE)) {
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
+	if (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR ||
+	    !(vsafe_5v_pdo & PDO_FIXED_GET_DRP)) {
 		LOG_INF("C%d: %s: Remain sink because partner has unconstrained "
-			"power or is not DRP-capable (PDO=0x%08x)",
-			port_num, __func__, port->snk_policy.pdo);
+			"power or is not DRP-capable (vSafe5v PDO=0x%08x, "
+			"active PDO=0x%08x)",
+			port_num, __func__, vsafe_5v_pdo, port->snk_policy.pdo);
 		return false;
 	}
 
@@ -2311,9 +2315,12 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	charge_manager_set_ceil(config->connector_num, CEIL_REQUESTOR_PD,
 				max_ma);
 
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
 	if (((PDO_GET_TYPE(pdo) == PDO_TYPE_FIXED) &&
-	     (!(pdo & PDO_FIXED_GET_DRP) ||
-	      (pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
+	     (!(vsafe_5v_pdo & PDO_FIXED_GET_DRP) ||
+	      (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
 	    (max_mw >= PD_DRP_CHARGE_POWER_MIN)) {
 		/* Port partner is a robust power source, meeting one or more of
 		 * these conditions:
@@ -4067,8 +4074,10 @@ bool pdc_power_mgmt_get_partner_unconstr_power(int port)
 		return false;
 	}
 
-	return (pdc_data[port]->port.snk_policy.pdo &
-		PDO_FIXED_GET_UNCONSTRAINED_PWR);
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = pdc_data[port]->port.snk_policy.src.pdos[0];
+
+	return (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR);
 }
 
 static int pdc_power_mgmt_request_data_swap_intern(int port,

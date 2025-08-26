@@ -301,10 +301,6 @@ tcpci_src_emul_connect_to_tcpci(struct tcpci_partner_extension *ext,
 	return 0;
 }
 
-#define PDO_FIXED_FLAGS_MASK                                                  \
-	(PDO_FIXED_DUAL_ROLE | PDO_FIXED_UNCONSTRAINED | PDO_FIXED_COMM_CAP | \
-	 PDO_FIXED_DATA_SWAP)
-
 enum check_pdos_res tcpci_src_emul_check_pdos(struct tcpci_src_emul_data *data)
 {
 	int volt_i_min;
