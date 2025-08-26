@@ -111,6 +111,30 @@
       },
       "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407df67a_1ced8bf1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-26T17:46:18Z",
+      "side": 1,
+      "message": "it is only used in [fp_download_frame](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/ectool.cc;l\u003d1912?q\u003dectool.cc\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d1911-,1912,-1913). We probably change it also there. I see that it is only checking whether the return is negative",
+      "parentUuid": "0800ad14_a188514e",
+      "range": {
+        "startLine": 2093,
+        "startChar": 0,
+        "endLine": 2098,
+        "endChar": 2
+      },
+      "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
