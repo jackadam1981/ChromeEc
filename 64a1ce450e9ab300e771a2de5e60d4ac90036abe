@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66914340_b7192833",
+        "filename": "util/ectool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-26T05:26:40Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n\nDuckie is proposing this:\n\n```\nif (!fp_info_command-\u003eRun(comm_get_fd())) {\n    fprintf(stderr, \"Fp info command failed with EC result: %d\\n\",\n            fp_info_command-\u003eResult());\n    return -1; // Simplified error return\n}\n```\n\nIs there a specific reason why we are returning `int rv \u003d -EECRESULT - fp_info_command-\u003eResult()`. I found it in the FlashProtectCommand.",
+      "range": {
+        "startLine": 2093,
+        "startChar": 0,
+        "endLine": 2098,
+        "endChar": 2
+      },
+      "revId": "64a1ce450e9ab300e771a2de5e60d4ac90036abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
