@@ -118,6 +118,30 @@
       },
       "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1d5e78_434f35cb",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-26T20:21:12Z",
+      "side": 1,
+      "message": "From what you have described, there seems to be interactions of battery \u003c-\u003e EC \u003c-\u003e AP (mini-PD) and SMB charger \u003c-\u003e AP (mini-PD) at the same time, right? I\u0027d like to better understand the details of these interactions, like what battery information the mini-PD needs and how they are used. We may have other better approaches, like virtual battery, I2C tunneling, than using `host_command_battery_get_dynamic` and overloading it with extra features.",
+      "parentUuid": "32d624e6_3e4607be",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
