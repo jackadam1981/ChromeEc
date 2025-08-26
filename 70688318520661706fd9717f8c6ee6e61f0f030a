@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33cf26c_0110e2e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-08-26T07:50:27Z",
+      "side": 1,
+      "message": "To implement overriding LED behavior depend on fw_config as discussing in CL:6718707, take fw_config field \"FW_KB_BL\" for test that for \"FW_KB_BL_ABSENT\" SKU, blink battery led white 1s on/off when charge-state discharge and chipset-state S3.",
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
