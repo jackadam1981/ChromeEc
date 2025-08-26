@@ -34,6 +34,24 @@
       "parentUuid": "24ca44f2_389e2faa",
       "revId": "ecd83473bf2ac90d5d1f51e0d17182f6966703b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "430bd609_78dd4e07",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-08-26T10:53:35Z",
+      "side": 1,
+      "message": "Done, removed PD_CC_UFP_NONE just used PD_CC_NONE state and updated same to switch TC_DRP_AUTO_TOGGLE",
+      "parentUuid": "d6ef53f8_71b383ab",
+      "revId": "ecd83473bf2ac90d5d1f51e0d17182f6966703b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

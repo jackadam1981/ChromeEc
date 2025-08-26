@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "184ffeec_43615452",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-08-26T10:53:35Z",
+      "side": 1,
+      "message": "Acknowledged, I will adapt this in next patch set",
+      "parentUuid": "ba020c67_5f37d57d",
+      "revId": "1cc9572c32b1d90a9371fbec3634e71d0f1ee6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b321749_b69595eb",
@@ -64,6 +82,24 @@
         "id": 1305927
       },
       "writtenOn": "2025-08-07T23:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b321749_b69595eb",
+      "revId": "1cc9572c32b1d90a9371fbec3634e71d0f1ee6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21557675_c468484e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-08-26T10:53:35Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "7b321749_b69595eb",
