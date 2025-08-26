@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7119063b_2efc56f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T19:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab72a20_f5effedd",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e87d0e62_e1cb19b7",
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "Assuming CONFIG_HOSTCMD_X86 is not defined, host event are sent over MKBP, not over HECI directly. See `host_set_events()` in `common/host_event_commands.c`.",
       "parentUuid": "af31597c_f7c16abd",
+      "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b0a176_a3d867c3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4141,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-26T19:13:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae872d4e_68439771",
       "revId": "621f9c7db5bc377df50afe84c0f373633690ef8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
