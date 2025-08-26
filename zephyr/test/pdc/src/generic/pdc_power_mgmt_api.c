@@ -1022,8 +1022,11 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_src)
 		PDO_FIXED(5000, 3000,
 			  PDO_FIXED_DUAL_ROLE |
 				  PDO_FIXED_GET_UNCONSTRAINED_PWR),
+		PDO_FIXED(9000, 3000, 0),
+		PDO_FIXED(12000, 3000, 0),
 	};
 
+	/* Invalid port number */
 	zassert_false(
 		pd_get_partner_unconstr_power(CONFIG_USB_PD_PORT_MAX_COUNT));
 
@@ -1032,8 +1035,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_src)
 	 */
 	emul_pdc_configure_src(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
-			  pdos_up);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos_up),
+			  PARTNER_PDO, pdos_up);
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_false(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
@@ -1045,12 +1048,14 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_no_up)
 	union connector_status_t connector_status = {};
 	const uint32_t pdos_no_up[] = {
 		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE),
+		PDO_FIXED(9000, 3000, 0),
+		PDO_FIXED(12000, 3000, 0),
 	};
 
 	emul_pdc_configure_snk(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
-			  pdos_no_up);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0,
+			  ARRAY_SIZE(pdos_no_up), PARTNER_PDO, pdos_no_up);
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_false(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
@@ -1064,6 +1069,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_up)
 		PDO_FIXED(5000, 3000,
 			  PDO_FIXED_DUAL_ROLE |
 				  PDO_FIXED_GET_UNCONSTRAINED_PWR),
+		PDO_FIXED(9000, 3000, 0),
+		PDO_FIXED(12000, 3000, 0),
 	};
 
 	/* If the port is in Attached.SNK, unconstrained power should be the
@@ -1071,8 +1078,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_up)
 	 */
 	emul_pdc_configure_snk(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
-			  pdos_up);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos_up),
+			  PARTNER_PDO, pdos_up);
 	emul_pdc_connect_partner(emul, &connector_status);
 	zassert_true(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
 				   PDC_TEST_TIMEOUT));
@@ -1447,7 +1454,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_resume_drp_partner)
 
 	emul_pdc_configure_snk(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_1, 1, PARTNER_PDO, pdos);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO, pdos);
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_true(
