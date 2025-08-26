@@ -13,7 +13,11 @@
 extern "C" {
 #endif
 
+#if DT_NODE_EXISTS(DT_NODELABEL(lid_accel))
 #define LID_ACCEL SENSOR_ID(DT_NODELABEL(lid_accel))
+#else
+#define LID_ACCEL MOTION_SENSE_INVALID_SENSOR_ID
+#endif
 
 #define SENSOR_NODE DT_PATH(motionsense_sensor)
 #define SENSOR_INFO_NODE DT_PATH(motionsense_sensor_info)
