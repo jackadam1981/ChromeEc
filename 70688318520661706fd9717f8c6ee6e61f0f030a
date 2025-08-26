@@ -16,6 +16,40 @@
       "message": "To implement overriding LED behavior depend on fw_config as discussing in CL:6718707, take fw_config field \"FW_KB_BL\" for test that for \"FW_KB_BL_ABSENT\" SKU, blink battery led white 1s on/off when charge-state discharge and chipset-state S3.",
       "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bcf4843_b83b542c",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-08-26T07:58:20Z",
+      "side": 1,
+      "message": "Delete these lines before adding fw-config check in led_policy.py for build",
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b881f9_44e98cf8",
+        "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-08-26T07:58:20Z",
+      "side": 1,
+      "message": "It seems if we wanna take tokens for use such as \u003cFW_KB_BL FW_KB_BL_PRESENT\u003e for this line, some efforts have to put on making header file in include/dt-bindings that is similar to cros_cbi.h in shim/include.",
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
