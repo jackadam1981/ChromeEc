@@ -16,6 +16,24 @@
       "message": "This works\n```\n#define FINGERPRINT_SENSOR_CAPTURE_TYPEE(idx, node_id) \\\n\tDT_PROP_BY_IDX(node_id, capture_type, idx)\n\n\tuint8_t capture_types[] \u003d { LISTIFY(NUM_IMAGE_CAPTURE_TYPES,\n\t\t\t\t\t    FINGERPRINT_SENSOR_CAPTURE_TYPEE,\n\t\t\t\t\t    (, ), DT_NODELABEL(fpc1145)) };\n```",
       "revId": "5a41b8e186e82b402e22d41587f4402a985d4a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61997255_8b47e5a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-26T05:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8f0cbde_87b99005",
+      "revId": "5a41b8e186e82b402e22d41587f4402a985d4a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
