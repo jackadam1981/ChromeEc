@@ -16,6 +16,24 @@
       "message": "Do we have to set these addresses on boards with single PDC chips? The main CL implies that this optional and not specifying `pmc-address` will leave the appconfig addresses in place.\n\nI can help you identify boards with more than one TI PDC",
       "revId": "ff262a1bf8aeb811c77987b23c07cbfc96b04b5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4409d01_ff6e2cdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-08-26T20:44:40Z",
+      "side": 1,
+      "message": "Okay, I see you have another CL at the top of the stack to make it mandatory (https://crrev.com/c/6879908/2).",
+      "parentUuid": "28840160_f0d39dd5",
+      "revId": "ff262a1bf8aeb811c77987b23c07cbfc96b04b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
