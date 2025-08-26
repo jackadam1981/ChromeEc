@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dcd62f_2420a4ee",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-26T16:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c4f62b_5bebbbc4",
+      "revId": "33b9b22d25a20eb5fdf8ba44d73014f1e61500bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78f39114_7ed12ded",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa5fcaa_6fbde3a4",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-26T16:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78f39114_7ed12ded",
+      "revId": "33b9b22d25a20eb5fdf8ba44d73014f1e61500bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a05d03e5_0b3ef61c",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-07-16T10:50:26Z",
       "side": 1,
       "message": "Add `data-bits \u003d \u003c7\u003e;` to enable the 7-Bits data mode.\nNote this setting relies on the UART driver patch in b:430666352#15",
+      "revId": "33b9b22d25a20eb5fdf8ba44d73014f1e61500bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf08736_37b51957",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-26T16:35:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a05d03e5_0b3ef61c",
       "revId": "33b9b22d25a20eb5fdf8ba44d73014f1e61500bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
