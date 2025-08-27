@@ -4504,6 +4504,7 @@
 #undef CONFIG_TEMP_SENSOR_TMP432 /* TI TMP432 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP468 /* TI TMP468 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_F75303 /* Fintek  F75303 sensor, on I2C bus */
+#undef CONFIG_TEMP_SENSOR_APL6012 /* ANPEC APL6012 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_AMD_R19ME4070 /* AMD_R19ME4070 sensor, on I2C bus */
 
 /* Compile common code for thermistor support */
