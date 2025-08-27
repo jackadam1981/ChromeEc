@@ -11,7 +11,7 @@
 				compatible = "cros-ec,flash-layout";
 				type = "section";
 				/* At the end of RO, before h_f */
-				offset = <(0x7d000 - 0x400 - 32)>;
+				offset = <(0x7e000 - 0x400 - 32)>;
 				size = <0x400>;
 			};
 		};
