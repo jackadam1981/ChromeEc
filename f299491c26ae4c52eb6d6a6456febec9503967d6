@@ -190,6 +190,30 @@
       },
       "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aeeb436_f9d381d4",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-27T16:58:57Z",
+      "side": 1,
+      "message": "\u003e Since it is a new design (or a temporary design) which has not been mentioned in the original proposal, I think it would be better to discuss in some kind of documents. Commenting this design decision in a CL seems not very efficient. Could you do that?\n\nSure, I will add a small section as a short-term solution in the design doc (go/purwa-ap-batt-manager). This was not planned because the timeline for ADSP-lite was unknown, and even now we feel it might be close to next year Q1 2026. Therefore, we need a solution to enable battery reading. If you have strong reservations about the dynamic battery API then I will have to explore how to fetch this information from the PMIC using SPMI.",
+      "parentUuid": "6229c64d_64b6d74e",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
