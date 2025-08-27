@@ -137,7 +137,7 @@
 		/* SOC_WAKE#, use EC_MSPI_CS instead, need EE confirm design */
 		gpio_soc_wake_odl: soc_wake_odl {
 			gpios = <&gpiof 15 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
-		}; 
+		};
 		/* EC_RTC_RST */
 		gpio_ec_rtc_rst: ec_rtc_rst {
 			gpios = <&gpiod 13 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;

@@ -3,10 +3,9 @@
  * found in the LICENSE file.
  */
 
- / {
+/ {
 	usba-port-enable-list {
 		compatible = "cros-ec,usba-port-enable-pins";
 		enable-pins = <&gpio_susc_ec>;
 	};
- };
- 
+};
