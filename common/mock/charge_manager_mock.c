@@ -18,6 +18,8 @@
 #error "Mocks should only be in the test build."
 #endif
 
+/* LCOV_EXCL_START - These mocks just avoid linker errors with stubs. */
+
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
 {
 }
@@ -67,3 +69,5 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 
 struct mock_ctrl_charge_manager mock_ctrl_charge_manager =
 	MOCK_CTRL_DEFAULT_CHARGE_MANAGER;
+
+/* LCOV_EXCL_STOP */
