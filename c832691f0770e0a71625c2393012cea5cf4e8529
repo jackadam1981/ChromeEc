@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d494f7_ab42c0e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-27T04:13:25Z",
+      "side": 1,
+      "message": "When I check out this branch and try to run Zephyr tests with `cros_sdk ../platform/ec/twister -c --inline-logs -x\u003d\u0027CONFIG_ZTEST_SUMMARY\u003dn\u0027 -O ../platform/ec/twister-out -s drivers.default`, I get a CMake error different than the emulator runtime errors you described. This is likely because I\u0027ve recently run `repo sync`, and my `third_party/zephyr/main` checkout is newer than yours. This branch is ~300 commits behind my `platform/ec` checkout from a few days ago.\n\nWhen I rebase this branch, I can pass `drivers.default` and the entire `zephyr/test/drivers` directory.\n\nI wasn\u0027t able to reproduce the emulator errors you were seeing, but I suspect that they are the result of either a `platform/ec` that is newer or older than `third_party/zephyr` or a transient incompatibility at ToT. Either way, I think a full `repo sync` of your SDK and a `git rebase` of this branch will probably get rid of it.",
+      "revId": "c832691f0770e0a71625c2393012cea5cf4e8529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a038a16_584b7352",
