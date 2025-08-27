@@ -149,4 +149,4 @@ ft9001 = register_fpmcu_variant(
         here / "ft9001" / "dev_key.pem",
     ),
 )
-assert_rw_fwid_DO_NOT_EDIT(project_name="ft9001", addr=0x7f274)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ft9001", addr=0x80274)
