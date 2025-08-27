@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5fc7a5_fe70ff73",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "Can we use `STATIC_IF_NOT(CONFIG_ZTEST)`?",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5f8188_455442de",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "Tests are not using `egis630_stop/start_x` functions at all. Wasn\u0027t our goal to verify with the emulator if the `egis_fp_reset_sensor` function works correctly?",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0542d695_8ec6333b",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "You can use `k_uptime_get`, as in the pal",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30b3fc1_ac2e71bb",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "Please use Zephyr functions to get time.",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f3b58e_df6397b4",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "Please use `begin_time_msec` instead of 30.",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e58e005_a832c4bb",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "`t1` can be lower than 30. Please get `begin_time_msec`, then wait a bit, then get `t1`.",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeff9a50_981af82f",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "Not entire `expected_printf_buffer` is initialized",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b15fb2a0_0148c0e1",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to test `CPRINTx` here",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41397619_8cde3fc6",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:37Z",
+      "side": 1,
+      "message": "What is this?",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
