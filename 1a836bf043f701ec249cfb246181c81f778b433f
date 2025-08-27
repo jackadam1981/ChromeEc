@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee6bab8_df10c863",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-27T06:00:13Z",
+      "side": 1,
+      "message": "keep the list sorted\n```suggestion\n      - \"celxpert,b300049\"\n      - \"celxpert,b340442\"\n      - \"celxpert,c235-41\"\n      - \"celxpert,c340152\"\n      - \"celxpert,l22c3pg0\"\n      - \"celxpert,p360644\"\n```",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "1a836bf043f701ec249cfb246181c81f778b433f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
