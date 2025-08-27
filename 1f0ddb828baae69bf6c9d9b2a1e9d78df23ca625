@@ -22,6 +22,30 @@
       },
       "revId": "1f0ddb828baae69bf6c9d9b2a1e9d78df23ca625",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0997aef_36a17717",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-27T03:24:00Z",
+      "side": 1,
+      "message": "\u003e How will this flag be used?\n\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6880007/5/src/board/bluey/board.c#192",
+      "parentUuid": "47fba3de_78fa1f98",
+      "range": {
+        "startLine": 229,
+        "startChar": 10,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "1f0ddb828baae69bf6c9d9b2a1e9d78df23ca625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
