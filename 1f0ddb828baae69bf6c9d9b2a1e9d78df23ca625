@@ -46,6 +46,30 @@
       },
       "revId": "1f0ddb828baae69bf6c9d9b2a1e9d78df23ca625",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cdbc15e_a25536c5",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-27T20:15:08Z",
+      "side": 1,
+      "message": "To clarify, is it used for temperature_critical or for thermal management?\n\nIf it is for temperature_critical, better to respect the `OVER_TEMP_ALARM` bit of the BatteryStatus() command, as reported by the smart battery. However, in the CrosEC implementation, we use custom thresholds (but the threshold is `discharging_max_c`) instead. I am not familiar with the background using the custom thresholds; this may be due to historical reasons to support batteries that are not smart-battery compliant.\n\nIn this CL implementation, I think it is more like for thermal management (passive). When the temperature reaches the `charging_max_c` (or `start_charging_max_c`), it pauses the charging routine so the battery can cool down. Once the temperature returns to normal, it resumes charging. If this is the case, maybe change the flag name to reflect it.",
+      "parentUuid": "d0997aef_36a17717",
+      "range": {
+        "startLine": 229,
+        "startChar": 10,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "1f0ddb828baae69bf6c9d9b2a1e9d78df23ca625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
