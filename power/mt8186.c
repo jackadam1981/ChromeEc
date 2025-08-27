@@ -71,7 +71,7 @@
  * A delay for distinguish a WDT reset or a normal shutdown. It usually takes
  * 90ms to pull AP_IN_SLEEP_L low in a normal shutdown.
  */
-#define NORMAL_SHUTDOWN_DELAY (150 * MSEC)
+#define NORMAL_SHUTDOWN_DELAY (400 * MSEC)
 #define RESET_FLAG_TIMEOUT (2 * SECOND)
 
 #if defined(CONFIG_PLATFORM_EC_POWERSEQ_MTK_S5_EN_CONTROL) && \
@@ -176,9 +176,13 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&reset_request_interrupt_deferred_data, 0);
 }
 
+static bool first_wdt_received = false;
+
 static void watchdog_interrupt_deferred(void)
 {
 	uint32_t flags = IN_AP_RST;
+
+	first_wdt_received = false;
 
 	if (!IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_ALLOW_S3_WDT)) {
 		flags |= IN_SUSPEND_ASSERTED;
@@ -200,9 +204,19 @@ void chipset_watchdog_interrupt(enum gpio_signal signal)
 	 * 2. If a warm reset request or AP shutdown is processing, then this
 	 *    interrupt tirgger is a fake WDT interrupt, we should skip it.
 	 */
-	if (!is_resetting && !is_shutdown)
-		hook_call_deferred(&watchdog_interrupt_deferred_data,
-				   NORMAL_SHUTDOWN_DELAY);
+	if (!is_resetting && !is_shutdown) {
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT) &&
+		    !first_wdt_received) {
+			/* first WDT is from kernel, wait for coreboot to send
+			 * another WDT */
+			first_wdt_received = true;
+			hook_call_deferred(&watchdog_interrupt_deferred_data,
+					   SECOND);
+		} else {
+			hook_call_deferred(&watchdog_interrupt_deferred_data,
+					   NORMAL_SHUTDOWN_DELAY);
+		}
+	}
 }
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
