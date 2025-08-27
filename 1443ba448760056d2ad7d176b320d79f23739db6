@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59e120ec_8c544c2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-27T15:44:10Z",
+      "side": 1,
+      "message": "Waiting for someone with a DUT that has the bmi323 to finish testing this.",
+      "parentUuid": "1bb4f469_c1629ffc",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6a8bb6a_d7049684",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-26T18:54:55Z",
       "side": 1,
       "message": "You could have use commit I2d3ee07440c15263971d2a5643bfea09190ab5f1 for this split CL.",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7753cd_fb4d05ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-27T15:44:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e6a8bb6a_d7049684",
       "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-26T18:54:55Z",
       "side": 1,
       "message": "still needed since we are moving to dynamic body sensor setting?",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e6f2da5_1878be65",
+        "filename": "zephyr/program/trulo/uldrenite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-08-27T15:44:10Z",
+      "side": 1,
+      "message": "It\u0027s needed in `uldrenite` since it still compiles the sensor stack, but it\u0027s moved from `motionsense.dtsi` so that the ISH build doesn\u0027t include it. I need to clean up the `uldrenite` build so it doesn\u0027t have sensors, I just haven\u0027t had time for it yet.",
+      "parentUuid": "9dfbdf4c_cbb9a2d0",
       "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
