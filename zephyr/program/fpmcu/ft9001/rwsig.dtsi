@@ -10,7 +10,7 @@
 			key-ro {
 				compatible = "cros-ec,flash-layout";
 				type = "section";
-				offset = <0x7cc00>;
+				offset = <(0x7d000 - 0x400)>;
 				size = <0x400>;
 			};
 		};
@@ -30,7 +30,7 @@
 			};
 			sig-rw {
 				type = "section";
-				offset = <0x7fc00>;
+				offset = <(0x80000 - 0x400)>;
 				size = <0x400>;
 			};
 			pad-byte = <0xff>;

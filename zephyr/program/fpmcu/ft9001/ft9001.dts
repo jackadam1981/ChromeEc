@@ -46,28 +46,37 @@
 	binman {
 		/* The binary is flashed at 0x1000 offset. The first 0x1000 of flash are for boot data */
 		wp-ro {
-			size = <0x7d000>;
+			size = <0x7e000>;
 			ec-ro {
-				pad-byte = <0xff>;
+				size = <0x7e000>;
+				config-page {
+					offset = <0x0>;
+					size = <0x1000>;
+					type = "blob";
+					filename = "../build-ro/config_page.bin";
+				};
+				ro-fw {
+					offset = <0x1000>;
+				};
 			};
 		};
 
 		rollback0 {
-			offset = <0x7d000>;
-			size = <0x1000>;
-			type = "blob";
-			filename = "../build-rw/rollback_initial_data.bin";
-		};
-
-		rollback1 {
 			offset = <0x7e000>;
 			size = <0x1000>;
 			type = "blob";
 			filename = "../build-rw/rollback_initial_data.bin";
 		};
 
-		ec-rw {
+		rollback1 {
 			offset = <0x7f000>;
+			size = <0x1000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		ec-rw {
+			offset = <0x80000>;
 			size = <0x80000>;
 			rw-fw {
 				/*
@@ -100,7 +109,7 @@
 
 		rollback1: partition@7f000 {
 			label = "rollback1";
-			reg = <0x7e000 DT_SIZE_K(4)>;
+			reg = <0x7f000 DT_SIZE_K(4)>;
 		};
 	};
 };

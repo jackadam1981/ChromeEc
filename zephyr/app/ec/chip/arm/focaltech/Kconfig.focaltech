@@ -18,20 +18,16 @@ config CROS_EC_DATA_RAM_SIZE
 config CROS_EC_RAM_SIZE
 	default $(dt_chosen_reg_size_hex,$(DT_CHOSEN_Z_SRAM))
 
-# First 0x1000 bytes of the flash is for boot data
-#config CROS_EC_RO_MEM_OFF
-#	default 0x1000
-
 config CROS_EC_RO_SIZE
 	default $(dt_node_int_prop_hex,/binman/wp-ro,size)
 
-#config CROS_EC_RW_MEM_OFF
-#	default $(dt_node_int_prop_hex,/binman/ec-rw,offset)
+config CROS_EC_RW_MEM_OFF
+	default $(dt_node_int_prop_hex,/binman/ec-rw,offset)
 
 # Tell the linker where the RO/RW part starts.
 config FLASH_LOAD_OFFSET
-	default 0x1000 if CROS_EC_RO
-	default 0x80000 if CROS_EC_RW
+	default CROS_EC_RO_MEM_OFF if CROS_EC_RO
+	default CROS_EC_RW_MEM_OFF if CROS_EC_RW
 
 # Tell the linker is it can use flash till the end.
 config FLASH_LOAD_SIZE

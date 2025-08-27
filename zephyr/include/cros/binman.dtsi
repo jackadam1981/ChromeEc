@@ -19,6 +19,10 @@
 			ec-ro {
 				type = "section";
 				pad-byte = <0xff>;
+				config-page {
+					type = "null";
+					size = <0x0>;
+				};
 				ro-fw {
 					type = "blob";
 					filename = "zephyr_ro.bin";
