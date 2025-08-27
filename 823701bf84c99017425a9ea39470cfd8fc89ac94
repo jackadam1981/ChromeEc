@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424eaca6_5c4266c8",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:50Z",
+      "side": 1,
+      "message": "Low power mode is not handled by the driver. I don\u0027t there is any point to have it.",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c99415b_effb90ff",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:50Z",
+      "side": 1,
+      "message": "`target_rx_buf-\u003elen` can be bigger than the size of `resp`. I think the calling function should check size of the rx buf before calling this function, because it can cause a buffer overflow.\n\nOr pass size of `resp` as an argument to this function and check the sizes here.",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e41878_d1c799b8",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:50Z",
+      "side": 1,
+      "message": "Please do not handle SPI transactions if the reset pin is asserted.",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd82b11e_6b4f46cb",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:50Z",
+      "side": 1,
+      "message": "It just means that the interrupt pin is asserted after reset?",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1071e42e_386ab4d8",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-27T12:08:50Z",
+      "side": 1,
+      "message": "You are adding a callback to the `reset_pin` called `egis630_emul_gpio_irq`. IMO, it is confusing. Can you rename?",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
