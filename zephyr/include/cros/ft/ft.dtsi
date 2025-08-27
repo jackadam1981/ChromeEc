@@ -16,29 +16,4 @@
 			compatible = "ft,ft9001-cros-flash";
 		};
 	};
-
-	binman {
-		wp-ro {
-			offset = <0x0>;
-			size = <0x7d000>;
-		};
-
-		ec-rw {
-			offset = <0x80000>;
-			size = <0x80000>;
-			rw-fw {
-				rw-fwid {
-					/* Fix the location of the FWID to the
-					 * last 32 bytes of the flash. This
-					 * ensures the RW entries in the FMAP
-					 * stored in the RO section of flash
-					 * are always correct.
-					 */
-					offset = <(0x80000 - 32)>;
-				};
-			};
-		};
-		pad-byte = <0xff>;
-	};
-
 };
