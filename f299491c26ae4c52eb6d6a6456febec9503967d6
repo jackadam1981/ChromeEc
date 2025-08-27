@@ -142,6 +142,30 @@
       },
       "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7fa17ec_f1ff72d5",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-27T03:35:53Z",
+      "side": 1,
+      "message": "\u003e From what you have described, there seems to be interactions of battery \u003c-\u003e EC \u003c-\u003e AP (mini-PD) and SMB charger \u003c-\u003e AP (mini-PD) at the same time, right? I\u0027d like to better understand the details of these interactions, like what battery information the mini-PD needs and how they are used. We may have other better approaches, like virtual battery, I2C tunneling, than using `host_command_battery_get_dynamic` and overloading it with extra features.\n\nMini-PD enables USB-C PD capability determination and VSYS activation for booting without charging. Additionally, in the absence of ADSP Lite-based charging, PMIC/SPMI-based charging at 5V/1A is enabled in AP FW to ensure minimal device charging and prevent dead battery situations. For this latter case, when charging is enabled in AP FW using PMIC programming, a solution is needed to define the desired charging duration, possibly up to 60% of battery capacity. This requires reliance on dynamic battery information commands. As mentioned, this logic will eventually be replaced by ADSP IPC. In the meantime, this temporary solution is useful until an ADSP Lite-based solution is ready to enable low-battery and off-mode charging use cases.\n\nSince we don\u0027t have an ADSP lite solution in AP FW, the EC still manages the battery. But when booting to the OS, we might want to release the battery ownership since the ADSP OS driver might be ready before us. So we\u0027re looking for a host command that AP FW can send to EC to ensure we release the bus before handing it off to the OS.\n\nNote: None of the QC AP FW drivers or logic can or should communicate with the battery pack unless ADSP lite is ready. This means we won\u0027t have any issues with the bus being dual-owned until ADSP lite-based logic is implemented and AP FW has loaded ADSP lite FW. We won\u0027t load ADSP lite FW in all boot scenarios (only limited to low-battery charging and off-mode charging). Hence, the enabling of PMIC-based charging solutions aka slow charging and knowing the battery status from AP FW would remain useful to us. Before we load ADSP lite FW and/or hand off to OS, we\u0027ll ask EC to release its bus ownership.",
+      "parentUuid": "ea1d5e78_434f35cb",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
