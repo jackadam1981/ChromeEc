@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9627f5f1_a3691290",
+        "filename": "zephyr/shim/include/wpc/scp8200.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-27T06:11:34Z",
+      "side": 1,
+      "message": "no need since there\u0027s no function declaration here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "442243f99b51520411dd1bc28ce6d4058e15d6af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
