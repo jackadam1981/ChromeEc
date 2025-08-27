@@ -52,6 +52,24 @@
       "parentUuid": "15faed4e_9a45feaa",
       "revId": "45f4d01d98993c34dc7d6fefa54419c33489474f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f7dd14_83ce3112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-08-27T22:37:26Z",
+      "side": 1,
+      "message": "Looks like the manifest is pulling the correct HEAD for the branch:\n\n\u003cproject name\u003d\"chromiumos/platform/ec\" path\u003d\"src/platform/ec\" revision\u003d\"f2de271297c6e1a5e07cca97886e07bf4c66b36f\" upstream\u003d\"refs/heads/firmware-brya-14505.B-main\" dest-branch\u003d\"refs/heads/firmware-brya-14505.B-main\" groups\u003d\"firmware\"/\u003e\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/f2de271297c6e1a5e07cca97886e07bf4c66b36f\n\nFor some reason it appears to be attempting to cherry-pick the change twice",
+      "parentUuid": "029d564e_b72aeb7f",
+      "revId": "45f4d01d98993c34dc7d6fefa54419c33489474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
