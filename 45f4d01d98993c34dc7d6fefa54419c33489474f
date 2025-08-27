@@ -88,6 +88,24 @@
       "parentUuid": "67f7dd14_83ce3112",
       "revId": "45f4d01d98993c34dc7d6fefa54419c33489474f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0d777c_cf85f670",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-08-27T22:45:32Z",
+      "side": 1,
+      "message": "rrangel@ pointed out that It\u0027s trying to apply it to the bloonchipper repo:\n\nchromiumos_workspace/src/platform/release-firmware/fpmcu-bloonchipper\n\nI think a new CL would have the same issue",
+      "parentUuid": "627c2b48_e0ef8af6",
+      "revId": "45f4d01d98993c34dc7d6fefa54419c33489474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
