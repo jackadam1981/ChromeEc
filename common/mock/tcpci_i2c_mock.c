@@ -17,6 +17,8 @@
 #define BUFFER_SIZE 100
 #define VERIFY_TIMEOUT (5 * SECOND)
 
+/* LCOV_EXCL_START - These mocks just avoid linker errors with stubs. */
+
 struct tcpci_reg {
 	uint8_t offset;
 	uint8_t size;
@@ -194,6 +196,8 @@ static bool debug_accessory_indicator_supported(void)
 {
 	return true;
 }
+
+/* LCOV_EXCL_STOP */
 
 static int verify_transmit(enum tcpci_msg_type want_tx_type, int want_tx_retry,
 			   enum pd_ctrl_msg_type want_ctrl_msg,

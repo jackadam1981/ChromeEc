@@ -6,6 +6,8 @@
 #include "battery.h"
 #include "string.h"
 
+/* LCOV_EXCL_START - These mocks just avoid linker errors with stubs. */
+
 /*****************************************************************************
  * Battery functions needed to enable CONFIG_BATTERY
  */
@@ -221,3 +223,5 @@ void battery_get_params(struct batt_params *batt)
 
 	memcpy(batt, &batt_new, sizeof(*batt));
 }
+
+/* LCOV_EXCL_STOP */

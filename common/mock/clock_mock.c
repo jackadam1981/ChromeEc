@@ -9,6 +9,8 @@
 #error "Mocks should only be in the test build."
 #endif
 
+/* LCOV_EXCL_START - These mocks just avoid linker errors with stubs. */
+
 static int fast_cpu_state;
 
 void clock_enable_module(enum module_id module, int enable)
@@ -22,3 +24,5 @@ int get_mock_fast_cpu_status(void)
 {
 	return fast_cpu_state;
 }
+
+/* LCOV_EXCL_STOP */
