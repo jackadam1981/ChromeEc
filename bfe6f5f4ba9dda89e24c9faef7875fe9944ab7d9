@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83daeca5_a2364db9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-27T16:51:31Z",
+      "side": 1,
+      "message": "Can you say more here about the practical effect of these changes?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059237af_eb02c64c",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-27T16:51:31Z",
+      "side": 1,
+      "message": "1. Can you move this to a separate CL in this chain? It\u0027s helpful to keep CLs to a single component.\n2. Can you comment in that CL on the change in behavior from this specific change?",
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408e9feb_c436a5d3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-27T16:51:31Z",
+      "side": 1,
+      "message": "Can you define a macro at the top of the file for the max number of software toggles?",
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d4f438_0d6b272a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3085,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-08-27T16:51:31Z",
+      "side": 1,
+      "message": "Instead of setting this to 0 on entry to the Attached states, I\u0027d set it to 0 on exit from the DRPAutotoggle and LPM states and on entry to the AttachWait states. The scenarios that we\u0027re trying to avoid should involve us almost making it to an Attached state but not quite. Basically, we want to stay in software toggling as long as something interesting is happening on the CC line, even if it\u0027s not a real attach.",
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
