@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4a0e54_33185bc2",
+        "filename": "common/power_button.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-28T03:59:08Z",
+      "side": 1,
+      "message": "is it possible to use something like\n```\n#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN\n    if (tablet_get_mode() and chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON))\n        return 0;\n#endif \n```\n\nto replace the `tablet_mode_disable_power_button` hook below?",
+      "revId": "5f5816b2e51f1fc09c8ae85be39e729f81483f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
