@@ -53,8 +53,8 @@
 			gpios = <&gpiob 2 (GPIO_INPUT)>;
 			enum-name = "GPIO_BATT_PRES_ODL";
 		};
-		gpio_ec_enavdd: ec_enavdd {
-			gpios = <&gpio6 7 (GPIO_OUTPUT)>;
+		gpio_ec_en_ppvar_oled: ec_en_ppvar_oled {
+			gpios = <&gpio6 7 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		/* Reserve only: write-protect from SOC */
 		gpio_ec_wp_odl: ec_wp_odl {
