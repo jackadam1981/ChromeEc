@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c8261b_ace67ec6",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-08-28T17:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a038a16_584b7352",
+      "revId": "c832691f0770e0a71625c2393012cea5cf4e8529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa89a02d_d02e7744",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-08-27T03:45:43Z",
       "side": 1,
       "message": "I think this is probably not what you want to do. In the general case, there will already be an active value of `cur_ams_ctrl_req`, e.g. `PD_CTRL_VCONN_SWAP`, and changing that value would affect the subsequent handling. If you\u0027re trying to add special handling for the Request/Accept/PS_RDY sequence initiated by the emulator, that may take some refactoring or at least a quick hack. See my comment elsewhere.",
+      "revId": "c832691f0770e0a71625c2393012cea5cf4e8529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c722327_fb5c0022",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_common.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-08-28T17:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa89a02d_d02e7744",
       "revId": "c832691f0770e0a71625c2393012cea5cf4e8529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
