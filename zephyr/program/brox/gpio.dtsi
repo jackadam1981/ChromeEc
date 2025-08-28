@@ -115,7 +115,9 @@
 			<&gpiof 0 1>,
 			<&gpiof 1 1>,
 			<&gpioe 1 1>,
-			<&gpioe 2 1>;
+			<&gpioe 2 1>,
+			/* Debug gpioa3 */
+			<&gpioa 3 GPIO_OUTPUT_LOW>;
 		};
 };
 

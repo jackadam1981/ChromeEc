@@ -53,13 +53,13 @@ static int rts54xx_ping_status(const struct i2c_dt_spec *i2c,
 
 	__ASSERT(status_byte, "status_byte cannot be NULL");
 
-	ping_msg.buf = &status_byte->raw_value;
-	ping_msg.len = 1;
 	ping_msg.flags = I2C_MSG_READ | I2C_MSG_STOP;
 
 	timeout = sys_timepoint_calc(RTS54XX_PING_STATUS_TIMEOUT);
 
 	while (1) {
+		ping_msg.buf = &status_byte->raw_value;
+		ping_msg.len = 1;
 		k_sleep(RTS54XX_PING_STATUS_INTERVAL);
 
 		rv = i2c_transfer_dt(i2c, &ping_msg, 1);
