@@ -9,6 +9,8 @@
 #include "task.h"
 #include "watchdog.h"
 
+#include <stdio.h>
+
 #include <zephyr/device.h>
 #include <zephyr/drivers/watchdog.h>
 #include <zephyr/kernel.h>
@@ -154,6 +156,53 @@ void watchdog_reload(void)
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
+static uint32_t get_stack_ptr(const struct k_thread *thread)
+{
+#if defined(CONFIG_ARM64)
+	/* We are assuming that the SP of interest is SP_EL1 */
+	return thread->callee_saved.sp_elx;
+#elif defined(CONFIG_ARM)
+	return thread->callee_saved.psp;
+#elif defined(CONFIG_X86)
+#if defined(CONFIG_X86_64)
+	return thread->callee_saved.rsp;
+#else
+	return thread->callee_saved.esp;
+#endif
+#elif defined(CONFIG_RISCV)
+	return thread->callee_saved.sp;
+#endif
+}
+
+static void log_thread_info(const struct k_thread *thread, void *user_data)
+{
+	uint32_t sp = get_stack_ptr(thread);
+	struct arch_esf *esf = (struct arch_esf *)sp;
+	char thread_name[16];
+
+#ifdef CONFIG_THREAD_NAME
+	snprintf(thread_name, sizeof(thread_name), "%s", thread->name);
+#else
+	snprintf(thread_name, sizeof(thread_name), "%p", (void *)thread);
+#endif
+
+#if defined(CONFIG_ARM)
+	printk("%s [SP=%p, PC=%p, LR=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->basic.pc, (void *)esf->basic.lr);
+#elif defined(CONFIG_X86)
+#if defined(CONFIG_X86_64)
+	printk("%s [SP=%p, PC=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->rip);
+#else
+	printk("%s [SP=%p, PC=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->eip);
+#endif
+#elif defined(CONFIG_RISCV)
+	printk("%s [SP=%p, PC=%p, RA=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->mepc, (void *)esf->ra);
+#endif
+}
+
 __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					       int channel_id)
 {
@@ -194,6 +243,8 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					  int channel_id);
 	cros_chip_wdt_handler(wdt_dev, channel_id);
 #endif
+
+	k_thread_foreach(log_thread_info, NULL);
 
 	/* Save the current task id in panic info.
 	 * The PANIC_SW_WATCHDOG_WARN reason will be changed to a regular
