@@ -3560,6 +3560,20 @@ __maybe_unused static void tc_drp_auto_toggle_run(const int port)
 		check_drp_connection(port);
 
 	else if (!pd_timer_is_disabled(port, TC_TIMER_TIMEOUT)) {
+		/*
+		 * FAST PATH: To detect partner disable (Rd removed) for 4.6.5
+		 * and Rd detection during CVS Unattached.Accessory state
+		 * for 4.6.6
+		 */
+		enum tcpc_cc_voltage_status cc1, cc2;
+		tcpm_get_cc(port, &cc1, &cc2);
+		if (cc_is_pwred_cbl_without_snk(cc1, cc2) ||
+		    cc_is_src_dbg_acc(cc1, cc2)) {
+			pd_timer_disable(port, TC_TIMER_TIMEOUT);
+			set_state_tc(port, TC_UNATTACHED_SNK);
+			return;
+		}
+
 		if (!pd_timer_is_expired(port, TC_TIMER_TIMEOUT))
 			return;
 
