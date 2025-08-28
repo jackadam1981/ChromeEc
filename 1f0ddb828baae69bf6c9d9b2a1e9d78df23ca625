@@ -94,6 +94,30 @@
       },
       "revId": "1f0ddb828baae69bf6c9d9b2a1e9d78df23ca625",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1ad7f6_bdb777c6",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-08-28T10:28:37Z",
+      "side": 1,
+      "message": "\u003e Yes Correct, The CL implementation is looking to pause/stop the charging routine when the temp is critical. I have only checked for the `charging_max_c` and `charging_min_c`. since our only concern is to check if charging the battery is okay or not. \n\u003e \n\u003e I\u0027ll rename the flag to `EC_BATT_FLAG_CHARGING_TEMP_CRITICAL`\n\nhonestly we are not aiming to use this because we are not planning to use dynamic battery API anymore.",
+      "parentUuid": "44e082f1_1a1002cb",
+      "range": {
+        "startLine": 229,
+        "startChar": 10,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "1f0ddb828baae69bf6c9d9b2a1e9d78df23ca625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
