@@ -5999,7 +5999,7 @@ static void pe_vdm_send_request_run(int port)
 	 * messages and reacting appropriately to unexpected messages.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_VDM_RESPONSE)) {
-		CPRINTF("VDM %s Response Timeout\n",
+		CPRINTS("C%d: VDM %s Response Timeout", port,
 			pe[port].tx_type == TCPCI_MSG_SOP ? "Port" : "Cable");
 
 		/*
