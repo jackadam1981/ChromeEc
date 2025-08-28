@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32bc39d3_12051e2f",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-28T03:04:45Z",
+      "side": 1,
+      "message": "OK I see. Seems like the config is not determinable at compile time and the only value we care about is the `FW_KB_BL`.\n\nWe require the LED policy to fully cover all possible status values once and exactly once so that there\u0027s no run-time errors that can be difficult to discover and debug. (as you\u0027ve noticed you had to disable the precompile script to build)\n\nIn this case I suggest you add the property `Keyboard_backlight` with enums `FW_KB_BL_ABSENT` and `FW_KB_BL_PRESENT` and use that instead. Then you can add `Keyboard_backlight` to the precompile script.",
+      "parentUuid": "be10de8e_1701355c",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35b881f9_44e98cf8",
         "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
         "patchSetId": 1
@@ -143,6 +167,24 @@
       "writtenOn": "2025-08-26T07:58:20Z",
       "side": 1,
       "message": "It seems if we wanna take tokens for use such as \u003cFW_KB_BL FW_KB_BL_PRESENT\u003e for this line, some efforts have to put on making header file in include/dt-bindings that is similar to cros_cbi.h in shim/include.",
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d95dfd_72e71f7d",
+        "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-08-28T03:04:45Z",
+      "side": 1,
+      "message": "don\u0027t make it a token, make it a enum like `charge-state`. \n\nAlso does the first value `0` matter? We require all possible values of LED policy to be defined. So if this value can vary you have to define the LED policy for `fw-config \u003d \u003c1 0\u003e` and `\u003c1 1\u003e` as well. If not then just remove it.",
+      "parentUuid": "35b881f9_44e98cf8",
       "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
