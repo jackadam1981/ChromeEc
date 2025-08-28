@@ -93,6 +93,30 @@
       },
       "revId": "de933aee2405fac0df30a5786fec6be96470c193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17802679_4829a427",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8885,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-28T18:39:22Z",
+      "side": 1,
+      "message": "I didn\u0027t see the comment. The comment is for consistency with others. Something like this is fine:\n```\n/* Issue AP shutdown */\n```",
+      "parentUuid": "afb94f79_186fa79f",
+      "range": {
+        "startLine": 8885,
+        "startChar": 0,
+        "endLine": 8885,
+        "endChar": 0
+      },
+      "revId": "de933aee2405fac0df30a5786fec6be96470c193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
