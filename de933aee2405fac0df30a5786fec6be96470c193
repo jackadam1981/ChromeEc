@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c4d068_d71e43b0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8885,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-08-28T18:46:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "17802679_4829a427",
+      "range": {
+        "startLine": 8885,
+        "startChar": 0,
+        "endLine": 8885,
+        "endChar": 0
+      },
+      "revId": "de933aee2405fac0df30a5786fec6be96470c193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f003313_553ae348",
@@ -132,6 +156,30 @@
       "writtenOn": "2025-08-28T18:40:37Z",
       "side": 1,
       "message": "And add a new line to separate the next host commands.",
+      "range": {
+        "startLine": 8887,
+        "startChar": 0,
+        "endLine": 8887,
+        "endChar": 1
+      },
+      "revId": "de933aee2405fac0df30a5786fec6be96470c193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc790029_dc37c356",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8887,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-08-28T18:46:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5f003313_553ae348",
       "range": {
         "startLine": 8887,
         "startChar": 0,
