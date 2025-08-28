@@ -16,3 +16,4 @@ endif()
 
 zephyr_library_sources("src/switchcap.c")
 zephyr_library_sources("src/chipset.c")
+zephyr_library_sources("src/adsp_i2c_mode.c")
