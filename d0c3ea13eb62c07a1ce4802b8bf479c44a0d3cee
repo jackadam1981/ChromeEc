@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab006aa_86d6db2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-28T18:35:27Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "d0c3ea13eb62c07a1ce4802b8bf479c44a0d3cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541df41d_f515f1d5",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-28T18:35:27Z",
+      "side": 1,
+      "message": "Nit: Use 2 spaces for this indentation.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "d0c3ea13eb62c07a1ce4802b8bf479c44a0d3cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
