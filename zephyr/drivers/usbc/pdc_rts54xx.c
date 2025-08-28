@@ -652,6 +652,7 @@ static void transition_to_init_or_idle_state(struct pdc_data_t *data)
 	}
 }
 
+#include "chip_chipregs.h"
 static int get_ping_status(const struct device *dev)
 {
 	struct pdc_data_t *data = dev->data;
@@ -662,7 +663,12 @@ static int get_ping_status(const struct device *dev)
 	msg.len = 1;
 	msg.flags = I2C_MSG_READ | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	int status = i2c_transfer_dt(&cfg->i2c, &msg, 1);
+
+	ECREG(0xf01601) |= BIT(3);
+	ECREG(0xf01601) &= ~BIT(3);
+
+	return status;
 }
 
 static int rts54_i2c_read(const struct device *dev)
@@ -686,6 +692,9 @@ static int rts54_i2c_read(const struct device *dev)
 		return rv;
 	}
 
+	ECREG(0xf01601) |= BIT(3);
+	ECREG(0xf01601) &= ~BIT(3);
+
 	data->rd_buf_len = data->ping_status.data_len;
 
 	if (IS_ENABLED(CONFIG_USBC_PDC_TRACE_MSG)) {
@@ -707,7 +716,12 @@ static int rts54_i2c_write(const struct device *dev)
 	msg.len = data->wr_buf_len;
 	msg.flags = I2C_MSG_WRITE | I2C_MSG_STOP;
 
-	return i2c_transfer_dt(&cfg->i2c, &msg, 1);
+	int status = i2c_transfer_dt(&cfg->i2c, &msg, 1);
+
+	ECREG(0xf01601) |= BIT(3);
+	ECREG(0xf01601) &= ~BIT(3);
+
+	return status;
 }
 
 static void st_init_entry(void *o)
@@ -1837,11 +1851,13 @@ static int rts54_set_sink_path(const struct device *dev, bool en)
 {
 	struct pdc_data_t *data = dev->data;
 	uint8_t byte;
+	const struct pdc_config_t *cfg = data->dev->config;
 
 	if (get_state(data) != ST_IDLE) {
 		return -EBUSY;
 	}
 
+	LOG_INF("tim-C%d: SET_SINK_PATH = %d", cfg->connector_number, en);
 	if (en) {
 		byte = VBSIN_EN_ON;
 	} else {
@@ -3001,6 +3017,9 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			irq_pending_for_idle = true;
 		}
 
+		if (data->cmd == CMD_GET_CONNECTOR_STATUS) {
+			LOG_INF("tim-C%d: wr_buf = %x", cfg->connector_number, data->wr_buf[0]);
+		}
 		k_event_clear(&data->driver_event, events);
 
 		/* We only handle irq on idle. */
