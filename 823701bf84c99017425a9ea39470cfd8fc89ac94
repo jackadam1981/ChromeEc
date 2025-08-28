@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9acb2a_7ade47d0",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T20:23:22Z",
+      "side": 1,
+      "message": "removed it",
+      "parentUuid": "424eaca6_5c4266c8",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c99415b_effb90ff",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2828223_e20dd17c",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T20:23:22Z",
+      "side": 1,
+      "message": "I have added this check. I am passing the `ARRAY_SIZE(resp)` as a parameter in the `target_rx_buf-\u003elen` function and comparing it to `target_rx_buf-\u003elen`.",
+      "parentUuid": "0c99415b_effb90ff",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e41878_d1c799b8",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-27T12:08:50Z",
       "side": 1,
       "message": "Please do not handle SPI transactions if the reset pin is asserted.",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2febea7_ff98ee53",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T20:23:22Z",
+      "side": 1,
+      "message": "added this check:\n```\n\tif (gpio_pin_get_dt(\u0026cfg-\u003ereset_pin) \u003d\u003d 0) {\n\t\treturn -EAGAIN;\n\t}\n```",
+      "parentUuid": "63e41878_d1c799b8",
       "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
