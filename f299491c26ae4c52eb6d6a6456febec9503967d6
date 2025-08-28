@@ -214,6 +214,30 @@
       },
       "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8610cf85_c0d14418",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-08-28T16:25:28Z",
+      "side": 1,
+      "message": "This EC implementation doesn\u0027t follow the original design we approved. You may update the design first and we may consider other alternative options like what I mentioned. Since this is a temporary design, a transition plan may also be included in the document.\n\nI will hold on reviewing the implementation until the design is updated.",
+      "parentUuid": "1aeeb436_f9d381d4",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "f299491c26ae4c52eb6d6a6456febec9503967d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
