@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a99e4e2d_47fcd7e4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "this does not work. I can use `COND_CODE_1(CONFIG_ZTEST, (), (static))`",
+      "parentUuid": "9e5fc7a5_fe70ff73",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc5f8188_455442de",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3dd9004_8efaada2",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0542d695_8ec6333b",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f30b3fc1_ac2e71bb",
@@ -65,6 +101,24 @@
       "writtenOn": "2025-08-27T12:08:37Z",
       "side": 1,
       "message": "Please use Zephyr functions to get time.",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92693655_9b008afa",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "Done. here and in the below test.",
+      "parentUuid": "f30b3fc1_ac2e71bb",
       "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d7becd_9b2d629f",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f3b58e_df6397b4",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e58e005_a832c4bb",
@@ -99,6 +171,24 @@
       "writtenOn": "2025-08-27T12:08:37Z",
       "side": 1,
       "message": "`t1` can be lower than 30. Please get `begin_time_msec`, then wait a bit, then get `t1`.",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a5f0da_7c4f57e4",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "modified it to:\n```\n\tuint64_t begin_time_msec;\n\tuint64_t time_delta_msecs;\n\tuint64_t t1;\n\n\tbegin_time_msec \u003d k_uptime_get();\n\tk_msleep(30);\n\tt1 \u003d k_uptime_get();\n\ttime_delta_msecs \u003d egis630_plat_get_diff_time(begin_time_msec);\n\n\tzassert_equal(time_delta_msecs, t1 - begin_time_msec);\n```",
+      "parentUuid": "2e58e005_a832c4bb",
       "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0165f063_4437408f",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "I modified the way I initialize it",
+      "parentUuid": "aeff9a50_981af82f",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b15fb2a0_0148c0e1",
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "483de209_7a1f5b26",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "I removed this test",
+      "parentUuid": "b15fb2a0_0148c0e1",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41397619_8cde3fc6",
@@ -150,6 +276,24 @@
       "writtenOn": "2025-08-27T12:08:37Z",
       "side": 1,
       "message": "What is this?",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d32d955_25eec32a",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-28T18:00:58Z",
+      "side": 1,
+      "message": "most likely, I was trying to print the log but asserting something false. It might have been `zassert_true(0)` to cause the test to fail and print the output logs.",
+      "parentUuid": "41397619_8cde3fc6",
       "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
