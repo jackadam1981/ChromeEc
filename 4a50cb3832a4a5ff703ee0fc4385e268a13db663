@@ -16,6 +16,24 @@
       "message": "IMO this would be lower priority (i.e. 1 line above) than EC_TASK_CHG_RAMP_PRIO",
       "revId": "4a50cb3832a4a5ff703ee0fc4385e268a13db663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308c50dc_519647e9",
+        "filename": "zephyr/shim/include/shimmed_task_id.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-08-28T06:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a38d182_12fd2ff2",
+      "revId": "4a50cb3832a4a5ff703ee0fc4385e268a13db663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
