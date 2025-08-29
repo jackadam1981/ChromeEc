@@ -16,6 +16,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <vector>
+
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/shell/shell.h>
 #endif
@@ -144,32 +146,21 @@ get_image_frame_params(struct fp_image_frame_params &image_frame_params)
 	size_t fp_sensor_get_info_v2_size =
 		sizeof(struct ec_response_fp_info_v2) +
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
-	ec_response_fp_info_v2 *info = static_cast<ec_response_fp_info_v2 *>(
-		malloc(fp_sensor_get_info_v2_size));
+	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
+	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
 
-	if (info == nullptr) {
-		return EC_ERROR_MEMORY_ALLOCATION;
-	}
-
-	int result = EC_ERROR_INVAL;
-
-	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) < 0) {
-		result = EC_ERROR_UNKNOWN;
-		goto cleanup;
+	if (fp_sensor_get_info_v2(info, buffer.size()) < 0) {
+		return EC_ERROR_UNKNOWN;
 	}
 
 	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
 		if (info->image_frame_params[i].fp_capture_type ==
 		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
 			image_frame_params = info->image_frame_params[i];
-			result = EC_RES_SUCCESS;
-			break;
+			return EC_RES_SUCCESS;
 		}
 	}
-
-cleanup:
-	free(info);
-	return result;
+	return EC_ERROR_INVAL;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
