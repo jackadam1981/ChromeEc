@@ -22,6 +22,30 @@
       },
       "revId": "5b25a1fe39816fb68884ee05504b889174b811df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4085d0c9_0630eea3",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T22:40:59Z",
+      "side": 1,
+      "message": "\u003e an exception will be thrown\n\nWe have exceptions disabled, so [attempting to thrown an exception will trigger a reboot](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/exception.cc).",
+      "parentUuid": "a51619f8_00cb1475",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 2
+      },
+      "revId": "5b25a1fe39816fb68884ee05504b889174b811df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
