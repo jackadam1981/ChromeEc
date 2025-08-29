@@ -103,6 +103,24 @@
       "message": "I think this function ought to set `cur_ams_ctrl_req`, which will dictate the handling of subsequent messages in `tcpci_partner_common_sop_msg_handler`. Since this is a different module, you should probably use `tcpci_partner_common_set_ams_ctrl_req`. If you set it here, you shouldn\u0027t need to change it later, inside `tcpci_partner_common_sop_msg_handler`.\n\nThe value presents a problem. This variable typically contains the value of the message that initiated the AMS currently under way. The ones we\u0027ve used up to this point have been control messages, e.g. _VCONN_Swap_ or _DR_Swap_. In this case, that would be _Request_, but _Request_ isn\u0027t a control message. The control message with the same value as _Request_ is _GotoMin_. _GotoMin_ is deprecated, so we probably won\u0027t use it in the emulator, but that would be a pretty subtle incorrectness to introduce into the emulator. I\u0027d prefer not to.\n\nThere might be another problem, which is that this field doesn\u0027t distinguish who started the AMS, and that could affect emulator behavior. For instance, it gets set to the same value when the emulator [sends a _VCONN_Swap_](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/tcpc/emul_tcpci_partner_common.c;l\u003d412;drc\u003d3586725c4530e22602279e796af6008de0f1f484) and when it [receives a _VCONN_Swap_](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/tcpc/emul_tcpci_partner_common.c;l\u003d957;drc\u003d3586725c4530e22602279e796af6008de0f1f484). VCONN Swaps involve both sides sending _PS_RDY_, so there\u0027s potential for confusion. This might be rickety, but I presume it works right now.\n\nHere\u0027s what I might suggest: For now, set this to `PD_CTRL_PS_RDY`, like you have been doing, but set it here, so it only applies to the _Request/Accept/PS_RDY_ AMS. You shouldn\u0027t have to worry about anybody overlapping you, because _PS_RDY_ can\u0027t start an AMS. Leave a big to do comment that says this should really be `PD_DATA_REQUEST`, but this is a control-message-typed variable.\n\nThen, after you get this test working and this CL ready to submit, implement a more proper solution. Replace `cur_ams_ctrl_req` with a struct containing a `uint8_t` for the message type and an enum-typed field that can represent control, data, or extended messages, and replace the accessor functions as well. In `tcpci_partner_send_control_msg`, use that function to set the new struct field to a control message type. In `tcpci_partner_send_data_msg`, use that function to set the new struct field to a data message type. Remove the now-redundant setting in this function.",
       "revId": "c832691f0770e0a71625c2393012cea5cf4e8529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6e4b19_1bb7cad5",
+        "filename": "zephyr/emul/tcpc/emul_tcpci_partner_snk.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-08-29T17:39:12Z",
+      "side": 1,
+      "message": "I will implement it in a separate CL.",
+      "parentUuid": "74f16de0_43713302",
+      "revId": "c832691f0770e0a71625c2393012cea5cf4e8529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
