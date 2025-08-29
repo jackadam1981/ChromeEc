@@ -106,6 +106,24 @@
       "parentUuid": "627c2b48_e0ef8af6",
       "revId": "45f4d01d98993c34dc7d6fefa54419c33489474f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ad57de_2f9e4f3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-08-29T15:51:27Z",
+      "side": 1,
+      "message": "should work now since the recipe revert (6884099) is merged",
+      "parentUuid": "1e0d777c_cf85f670",
+      "revId": "45f4d01d98993c34dc7d6fefa54419c33489474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
