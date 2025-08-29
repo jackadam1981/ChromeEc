@@ -80,7 +80,6 @@
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
-			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 5 GPIO_INPUT_PULL_DOWN>,
@@ -132,7 +131,7 @@
 
 	kblight {
 		compatible = "cros-ec,kblight-pwm";
-		pwms = <&pwm3 0 PWM_HZ(100) PWM_POLARITY_NORMAL>;
+		pwms = <&pwm3 PWM_CHANNEL_3 PWM_HZ(100) PWM_POLARITY_NORMAL>;
 	};
 };
 
