@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeaa30c9_9fa210eb",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:28:19Z",
+      "side": 1,
+      "message": "it does.\ncreated this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6901076",
+      "parentUuid": "e0f7dbdf_78b084b0",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 15
+      },
+      "revId": "e5246804f67c65e5119b120fd3177bf1782e56d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22c5ecf4_e504ae3b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c09bca_4f24ad72",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22c5ecf4_e504ae3b",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 58
+      },
+      "revId": "e5246804f67c65e5119b120fd3177bf1782e56d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40ae43fc_5705f235",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-08-29T17:17:39Z",
       "side": 1,
       "message": "Since this is C++, it\u0027s more idiomatic to do:\n\n\n```suggestion\n\tstruct fp_image_frame_params image_frame_params{};\n```",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 57
+      },
+      "revId": "e5246804f67c65e5119b120fd3177bf1782e56d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdecd2ff_d9d0bd88",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:28:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ae43fc_5705f235",
       "range": {
         "startLine": 252,
         "startChar": 0,
