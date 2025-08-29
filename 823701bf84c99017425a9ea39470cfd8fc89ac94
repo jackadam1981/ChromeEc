@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ceacd6_dd1aae75",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-08-29T08:27:14Z",
+      "side": 1,
+      "message": "Why 0? `gpio_pin_get_dt` gets logical level of the GPIO. I would assume `1` means reset is active, not `0`. Can you explain?",
+      "parentUuid": "b2febea7_ff98ee53",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd82b11e_6b4f46cb",
