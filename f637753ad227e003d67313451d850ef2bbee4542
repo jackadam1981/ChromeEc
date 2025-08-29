@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d02aace_5f9b3834",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T02:52:00Z",
+      "side": 1,
+      "message": "const struct fpc1025_cfg *cfg \u003d dev-\u003econfig;\n\t\n\tif (image_buf_size \u003c cfg-\u003esensor_image_configs[capture_type].frame_size)\n\t     return -EINVAL;",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 17
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
