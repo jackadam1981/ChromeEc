@@ -330,17 +330,11 @@ static int command_fpinfo_v2(int argc, const char **argv)
 	size_t fp_sensor_get_info_v2_size =
 		sizeof(struct ec_response_fp_info_v2) +
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
-	ec_response_fp_info_v2 *info = static_cast<ec_response_fp_info_v2 *>(
-		malloc(fp_sensor_get_info_v2_size));
-
-	if (info == nullptr) {
-		ccprintf("Failed to allocate memory for fpinfo_v2\n");
-		return EC_ERROR_MEMORY_ALLOCATION;
-	}
+	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
+	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
 
 	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) < 0) {
 		ccprintf("Failed to get fp_info_v2\n");
-		free(info);
 		return EC_ERROR_UNKNOWN;
 	}
 
@@ -374,7 +368,6 @@ static int command_fpinfo_v2(int argc, const char **argv)
 				 info->image_frame_params[i].pixel_format)
 				 .c_str());
 	}
-	free(info);
 
 	return EC_SUCCESS;
 #else
