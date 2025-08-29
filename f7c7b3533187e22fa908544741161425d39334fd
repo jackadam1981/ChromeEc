@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb725d4_1fd881fb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T19:25:08Z",
+      "side": 1,
+      "message": "Use `nullptr` instead of `NULL` everywhere since this is C++",
+      "range": {
+        "startLine": 1924,
+        "startChar": 9,
+        "endLine": 1924,
+        "endChar": 13
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5be188_2f0bedf2",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T19:25:08Z",
+      "side": 1,
+      "message": "Avoid making copies:\n\n```\nfor (const auto\u0026 image : fp_info_command-\u003esensor_image()) {\n```",
+      "range": {
+        "startLine": 1942,
+        "startChar": 0,
+        "endLine": 1942,
+        "endChar": 54
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad69db36_a546f65b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T19:25:08Z",
+      "side": 1,
+      "message": "This is a `std::optional` type, right? You need to check that it has a value before dereferencing:\n\n\n\n```suggestion\n  if (!image.fp_capture_type.has_value()) {\n    // log since this is unexpected\n    continue;\n  }\n\n  if (*image.fp_capture_type \u003d\u003d current_fp_capture_type) {\n```",
+      "range": {
+        "startLine": 1943,
+        "startChar": 7,
+        "endLine": 1943,
+        "endChar": 29
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfcfaa7_a023471e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2217,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T19:25:08Z",
+      "side": 1,
+      "message": "More idiomatic for C++:\n\n\n\n```suggestion\n\tstruct SensorImage sensor_image{};\n\tstruct TemplateInfo template_info{};\n```",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2217,
+        "endChar": 43
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabcacc5_c65e843a",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T19:25:08Z",
+      "side": 1,
+      "message": "More idiomatic for C++:\n\n\n\n```suggestion\n\tstruct SensorImage sensor_image{};\n\tstruct TemplateInfo template_info{};\n```",
+      "range": {
+        "startLine": 2249,
+        "startChar": 0,
+        "endLine": 2250,
+        "endChar": 43
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
