@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e8572d_3344e7fd",
+        "filename": "zephyr/include/dt-bindings/macros.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-08-29T23:53:35Z",
+      "side": 1,
+      "message": "can you define these as\n`_BINARY8(b7, ...) (((b7) \u003c\u003c 7) | _BINARY7(__VA_ARGS__))`?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "b6b8fc2ef1fde59ce74eac6adc5c56c567ff08a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
