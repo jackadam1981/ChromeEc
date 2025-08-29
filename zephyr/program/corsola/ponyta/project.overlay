@@ -62,6 +62,9 @@
 		ult_u485496phr {
 			compatible = "utl,hq24u3s1p3i", "battery-smart";
 		};
+		gfl_hq71101003dj0 {
+			compatible = "gfl,hq71101003dj0", "battery-smart";
+		};
 	};
 
 
