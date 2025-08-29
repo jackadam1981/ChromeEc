@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fa9edf_a1bd970b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 79
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T18:41:22Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n\nwhy this does not work?\n\n```\nfsammoura@fsammoura1:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/emul/emul_egis630.c b/zephyr/emul/emul_egis630.c\nindex f5e60c6ace..8d3dd7497b 100644\n--- a/zephyr/emul/emul_egis630.c\n+++ b/zephyr/emul/emul_egis630.c\n@@ -40,6 +40,13 @@ void egis630_stop_irq(const struct emul *target)\n        data-\u003estop_irq \u003d true;\n }\n \n+void egis630_set_reset_pin(const struct emul *target, int value)\n+{\n+       const struct egis630_emul_cfg *cfg \u003d target-\u003ecfg;\n+\n+       gpio_emul_input_set(cfg-\u003ereset_pin.port, cfg-\u003ereset_pin.pin, value);\n+}\n+\n void egis630_stop_spi(const struct emul *target)\n {\n        struct egis630_emul_data *data \u003d target-\u003edata;\n@@ -161,7 +168,9 @@ static void egis630_emul_gpio_irq(const struct device *dev,\n        if (!data-\u003estop_irq) {\n                gpio_emul_input_set(cfg-\u003einterrupt_pin.port,\n                                    cfg-\u003einterrupt_pin.pin, 1);\n+\n        }\n+       \n }\n \n static int egis630_emul_init(const struct emul *target,\ndiff --git a/zephyr/include/emul/emul_egis630.h b/zephyr/include/emul/emul_egis630.h\nindex 517deb9d33..28e998e7bb 100644\n--- a/zephyr/include/emul/emul_egis630.h\n+++ b/zephyr/include/emul/emul_egis630.h\n@@ -6,6 +6,8 @@\n #ifndef ZEPHYR_INCLUDE_EMUL_EMUL_EGIS630_H_\n #define ZEPHYR_INCLUDE_EMUL_EMUL_EGIS630_H_\n \n+void egis630_set_reset_pin(const struct emul *target, int value);\n+\n /**\n  * Stop handling IRQ gpio\n  *\ndiff --git a/zephyr/test/fingerprint/drivers/egis630/src/egis630.c b/zephyr/test/fingerprint/drivers/egis630/src/egis630.c\nindex 6f906a81e0..6dc67eb092 100644\n--- a/zephyr/test/fingerprint/drivers/egis630/src/egis630.c\n+++ b/zephyr/test/fingerprint/drivers/egis630/src/egis630.c\n@@ -261,6 +261,17 @@ ZTEST_F(egis630, test_periphery_spi_write_read_spi_stopped)\n                      -EIO);\n }\n \n+ZTEST_F(egis630, test_periphery_spi_write_read_reset_asserted)\n+{\n+       uint8_t tx_buf[1] \u003d { 0xFD };\n+       uint8_t rx_buf[3] \u003d { 0 };\n+\n+       egis630_set_reset_pin(fixture-\u003etarget, 1);\n+       zassert_equal(egis630_periphery_spi_write_read(tx_buf, sizeof(tx_buf),\n+                                                      rx_buf, sizeof(rx_buf)),\n+                     -EIO);\n+}\n+\n ZTEST_F(egis630, test_output_log_success_info)\n {\n        char expected_printf_buffer[sizeof(printf_buffer)];\n```",
+      "revId": "75eb9ffd546d7aa29145c3fad8b66921eb17d11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
