@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19533f4_ad260b9c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fb725d4_1fd881fb",
+      "range": {
+        "startLine": 1924,
+        "startChar": 9,
+        "endLine": 1924,
+        "endChar": 13
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da5be188_2f0bedf2",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-29T19:25:08Z",
       "side": 1,
       "message": "Avoid making copies:\n\n```\nfor (const auto\u0026 image : fp_info_command-\u003esensor_image()) {\n```",
+      "range": {
+        "startLine": 1942,
+        "startChar": 0,
+        "endLine": 1942,
+        "endChar": 54
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bcb6dc_83547073",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1942,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5be188_2f0bedf2",
       "range": {
         "startLine": 1942,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3aa0597_41cd3e3e",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad69db36_a546f65b",
+      "range": {
+        "startLine": 1943,
+        "startChar": 7,
+        "endLine": 1943,
+        "endChar": 29
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adfcfaa7_a023471e",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7384f249_5056658f",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2217,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfcfaa7_a023471e",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2217,
+        "endChar": 43
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dabcacc5_c65e843a",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-08-29T19:25:08Z",
       "side": 1,
       "message": "More idiomatic for C++:\n\n\n\n```suggestion\n\tstruct SensorImage sensor_image{};\n\tstruct TemplateInfo template_info{};\n```",
+      "range": {
+        "startLine": 2249,
+        "startChar": 0,
+        "endLine": 2250,
+        "endChar": 43
+      },
+      "revId": "f7c7b3533187e22fa908544741161425d39334fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0391afbe_1c33f135",
+        "filename": "util/ectool.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T19:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dabcacc5_c65e843a",
       "range": {
         "startLine": 2249,
         "startChar": 0,
