@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0786b752_ff536ec1",
+        "filename": "zephyr/shim/include/fpsensor_driver.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T02:43:35Z",
+      "side": 0,
+      "message": "```static const uint32_t my_sensor_frame_sizes[NUM_IMAGE_CAPTURE_TYPES] \u003d { LISTIFY(\n\tNUM_IMAGE_CAPTURE_TYPES, FINGERPRINT_SENSOR_FRAME_SIZE, (, ),\n\tDT_CHOSEN(cros_fp_fingerprint_sensor)) };\n\nstatic inline uint32_t find_max_frame_size(void) {\n    uint32_t max_val \u003d my_sensor_frame_sizes[0];\n    for (int i \u003d 1; i \u003c NUM_IMAGE_CAPTURE_TYPES; ++i) {\n        if (my_sensor_frame_sizes[i] \u003e max_val) {\n            max_val \u003d my_sensor_frame_sizes[i];\n        }\n    }\n    return max_val;\n}\n\n#define FIRAS find_max_frame_size()\n```\n\nwe can calculate the largest `frame_size` from the `device tree`",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
