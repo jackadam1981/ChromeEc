@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "803f695f_bfc079d3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:09:02Z",
+      "side": 1,
+      "message": "This can just be an assignment:\n\n```suggestion\n        sensor_info \u003d cfg-\u003esensor_info;\n```",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 48
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a7a553_0e0392c7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:09:02Z",
+      "side": 1,
+      "message": "You should only copy the the number of valid elements (`cfg-\u003esensor_info.num_capture_types`), I think.\n\nAlso, it would be nice to have a `BUILD_ASSERT` that the devicetree doesn\u0027t have more configs than `NUM_IMAGE_CAPTURE_TYPES`. See comment below.",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 37
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d02aace_5f9b3834",
         "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
         "patchSetId": 10
@@ -19,6 +65,29 @@
         "startChar": 1,
         "endLine": 362,
         "endChar": 17
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ccf9fe_6bf641ca",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:09:02Z",
+      "side": 1,
+      "message": "We can add a check to make sure that the configs don\u0027t exceed what we expect:\n\n```\n    BUILD_ASSERT(FINGERPRINT_SENSOR_NUM_CONFIGS(DT_DRV_INST(inst)) \u003c\u003d NUM_IMAGE_CAPTURE_TYPES, \\\n                 \"FPC1025: Number of image configs exceeds NUM_IMAGE_CAPTURE_TYPES\"); \\\n```",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 50
       },
       "revId": "f637753ad227e003d67313451d850ef2bbee4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
