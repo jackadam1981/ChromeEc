@@ -16,6 +16,24 @@
       "message": "Did you mean to have this in the middle of the chain? (There are no reviewers set.)",
       "revId": "bea28c329933c2d7c406143d377656ee945d33d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa0cfdc_09a38ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T18:57:48Z",
+      "side": 1,
+      "message": "I will abandon this CL.\n\nThese 2 CLs should be the final integration and should work with v1 or v2.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6883297\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6886157",
+      "parentUuid": "317624db_ffd187ba",
+      "revId": "bea28c329933c2d7c406143d377656ee945d33d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
