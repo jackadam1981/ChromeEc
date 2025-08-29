@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "727416ff_c1b197d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T21:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f0b535_cf787e22",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "23ddf39b18c35feacc75a133a62fca5ed0251be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c9867a1_421be530",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-08-29T21:00:42Z",
       "side": 1,
       "message": "```suggestion\n\t\treturn nullptr;\n```",
+      "range": {
+        "startLine": 1924,
+        "startChar": 0,
+        "endLine": 1924,
+        "endChar": 14
+      },
+      "revId": "23ddf39b18c35feacc75a133a62fca5ed0251be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f94ef8_a58cce9c",
+        "filename": "util/ectool.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-08-29T21:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c9867a1_421be530",
       "range": {
         "startLine": 1924,
         "startChar": 0,
