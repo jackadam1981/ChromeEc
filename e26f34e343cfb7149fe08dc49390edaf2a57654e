@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d5b6eb_8abadba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:23:03Z",
+      "side": 1,
+      "message": "This isn\u0027t going to be backward compatible. For the transition, can we have two versions (old and new) and choose which one to use, similar to what was done in EC with the new command?",
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a198a24f_d1d082c4",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:23:03Z",
+      "side": 1,
+      "message": "Is this needed or can it just be calculated from w x h x bpp?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010eecd3_ac37ccbd",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:23:03Z",
+      "side": 1,
+      "message": "It would be better to group them together rather than arrays of individual properties. Does something like this work?\n\n```\nproperties:\n  configs:\n    type: array\n    required: true\n    description: Array of supported sensor configurations/modes.\n    items:\n      type: object\n      properties:\n        width:\n          type: int\n          required: true\n          description: Fingerprint sensor width in pixels for this mode.\n        height:\n          type: int\n          required: true\n          description: Fingerprint sensor height in pixels for this mode.\n        bits-per-pixel:\n          type: int\n          required: true\n          description: Pixel resolution in bits for this mode.\n        v4l2-pixel-format:\n          type: string\n          required: true\n          description: |\n            Video4Linux2 pixel format type for this mode.\n            See https://docs.kernel.org/userspace-api/media/v4l/pixfmt.html\n          enum:\n            - \"V4L2_PIX_FMT_GREY\"\n            # Add other common formats\n        capture-type:\n          type: int\n          required: true\n          description: |\n            Type of image capture.\n            # Define the enum fp_capture_type values here\n      required:\n        - width\n        - height\n        - bits-per-pixel\n        - v4l2-pixel-format\n        - capture-type\n\n  # Other top-level properties if needed (e.g., interrupts, regs)\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
