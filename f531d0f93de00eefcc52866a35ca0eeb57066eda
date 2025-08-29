@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202afd65_3414681d",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:54:51Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 3
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2dd73d_023b2478",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:54:51Z",
+      "side": 1,
+      "message": "You can use initialization to achieve this, which is slightly easier to read:\n\n```suggestion\n        // Zero-initialize in case fingerprint_get_info doesn\u0027t fill all fields.\n\tstruct fingerprint_sensor_info sensor_info \u003d {0};\n\tstruct fingerprint_image_frame_params\n\t\timage_frame_params_array[NUM_IMAGE_CAPTURE_TYPES] \u003d {0};\n```",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 71
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b3f907_28ca7a77",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:54:51Z",
+      "side": 1,
+      "message": "Do we need to convert the error code to the Zephyr equivalent?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cdc46c4_f30ff04d",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:54:51Z",
+      "side": 1,
+      "message": "```suggestion\n    resp-\u003esensor_info \u003d sensor_info;\n```",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ee340d_57200526",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T17:54:51Z",
+      "side": 1,
+      "message": "Check isn\u0027t necessary, since [`memcpy`](https://en.cppreference.com/w/c/string/byte/memcpy) will work if the size is 0.\n\n\n```suggestion\n\tmemcpy(\u0026resp-\u003eimage_frame_params, \u0026image_frame_params_array,\n\t       copy_size);\n```",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
