@@ -36,6 +36,7 @@
 		reg = <0x66>;
 		irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
 		zephyr,deferred-init;
+		ccd;
 	};
 	pdc_power_p1: rts54-pdc@67 {
 		compatible = "realtek,rts54-pdc";
