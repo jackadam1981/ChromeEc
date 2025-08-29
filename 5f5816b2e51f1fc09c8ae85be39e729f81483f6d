@@ -16,6 +16,24 @@
       "message": "is it possible to use something like\n```\n#ifdef CONFIG_TABLET_MODE_DISABLE_POWERBTN\n    if (tablet_get_mode() and chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON))\n        return 0;\n#endif \n```\n\nto replace the `tablet_mode_disable_power_button` hook below?",
       "revId": "5f5816b2e51f1fc09c8ae85be39e729f81483f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2135c3c0_9220a9f7",
+        "filename": "common/power_button.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-08-29T01:46:59Z",
+      "side": 1,
+      "message": "Unlikely. The `tablet_mode_disable_power_button` hook primarily handles the case where you long-press the power button to switch to tablet mode. At this point, `power_button_interrupt` is disabled, so it can\u0027t be handled in `raw_power_button_pressed` . In this case, we need to clear `debounced_power_pressed` . Otherwise, if you release the power button in tablet mode and switch back to clamshell mode, the first press of the power button will have no effect.",
+      "parentUuid": "0d4a0e54_33185bc2",
+      "revId": "5f5816b2e51f1fc09c8ae85be39e729f81483f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
