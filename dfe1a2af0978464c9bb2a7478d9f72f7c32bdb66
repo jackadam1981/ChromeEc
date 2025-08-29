@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db57529f_abbd3dcb",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:32:37Z",
+      "side": 1,
+      "message": "Same as these comments: https://crrev.com/c/6876367",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "dfe1a2af0978464c9bb2a7478d9f72f7c32bdb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f73603f_e562456d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:32:37Z",
+      "side": 1,
+      "message": "This pattern is going to leak. It would be better to use the `before`/`after` functionality to allocate/free:\n\n```\nstatic ec_response_fp_info_v2 *test_info_buffer \u003d NULL;\nstatic const size_t test_info_buffer_size \u003d sizeof(struct ec_response_fp_info_v2) +\n    sizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;\n\nstatic void fpsensor_before_suite(void *data)\n{\n    test_info_buffer \u003d (ec_response_fp_info_v2 *)k_malloc(test_info_buffer_size);\n    zassert_not_null(test_info_buffer, \"Failed to allocate info buffer\");\n    memset(test_info_buffer, 0, test_info_buffer_size); // or k_calloc above if it exists\n}\n\nstatic void fpsensor_after_suite(void *data)\n{\n    k_free(test_info_buffer);\n    test_info_buffer \u003d NULL;\n}\n\nZTEST_SUITE(fpsensor_enroll, NULL, fpsensor_setup, fpsensor_before_suite,\n            fpsensor_after_suite, NULL);\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "dfe1a2af0978464c9bb2a7478d9f72f7c32bdb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
