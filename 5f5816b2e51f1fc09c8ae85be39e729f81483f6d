@@ -34,6 +34,24 @@
       "parentUuid": "0d4a0e54_33185bc2",
       "revId": "5f5816b2e51f1fc09c8ae85be39e729f81483f6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea07e9b_3d43a9c7",
+        "filename": "common/power_button.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-08-29T08:27:13Z",
+      "side": 1,
+      "message": "You don\u0027t need to disable power button interrupt, power_button_change_deferred uses the result from raw_power_button_pressed so the button press will be ignored.",
+      "parentUuid": "2135c3c0_9220a9f7",
+      "revId": "5f5816b2e51f1fc09c8ae85be39e729f81483f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
