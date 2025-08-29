@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a71935b_95310e00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:20:50Z",
+      "side": 1,
+      "message": "If it works, you could consider moving this to right after https://crrev.com/c/6872807 since it\u0027s directly related. Not sure if there are some dependencies in between that are need though.",
+      "revId": "a93dada3571da36440e625396e36483ae916aeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d63e179_c2c2bfaa",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:20:50Z",
+      "side": 1,
+      "message": "This is a nice improvement for readability. My only nit is that the comments are redundant since the variable names and designated initializers are descriptive:\n\n\n\n```suggestion\n\tconst std::array\u003cuint8_t, 100\u003e frame{};\n\n\tstruct fp_image_frame_params fp_image_frame_params_bpp_0 \u003d {\n\t\t.bpp \u003d 0,\n\t};\n\tTEST_EQ(upload_pgm_image(frame.data(), fp_image_frame_params_bpp_0),\n\t\tEC_ERROR_UNKNOWN, \"%d\");\n\n\tstruct fp_image_frame_params fp_image_frame_params_bpp_17 \u003d {\n\t\t.bpp \u003d 17,\n\t};\n\tTEST_EQ(upload_pgm_image(frame.data(), fp_image_frame_params_bpp_17),\n\t\tEC_ERROR_UNKNOWN, \"%d\");\n\n\tstruct fp_image_frame_params fp_image_frame_params_bpp_23 \u003d {\n\t\t.bpp \u003d 23,\n\t};\n\tTEST_EQ(upload_pgm_image(frame.data(), fp_image_frame_params_bpp_23),\n\t\tEC_ERROR_UNKNOWN, \"%d\");\n```",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "a93dada3571da36440e625396e36483ae916aeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a289696e_f2d4c3c9",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-08-29T18:20:50Z",
+      "side": 1,
+      "message": "```suggestion\n\tconst std::array\u003cuint8_t, 100\u003e frame{};\n\n\tstruct fp_image_frame_params fp_image_frame_params_bpp_0 \u003d {\n\t\t.bpp \u003d 0,\n\t};\n\tzassert_equal(upload_pgm_image(frame.data(),\n\t\t\t\t       fp_image_frame_params_bpp_0),\n\t\t      EC_ERROR_UNKNOWN);\n\n\tstruct fp_image_frame_params fp_image_frame_params_bpp_17 \u003d {\n\t\t.bpp \u003d 17,\n\t};\n\tzassert_equal(upload_pgm_image(frame.data(),\n\t\t\t\t       fp_image_frame_params_bpp_17),\n\t\t      EC_ERROR_UNKNOWN);\n\n\tstruct fp_image_frame_params fp_image_frame_params_bpp_23 \u003d {\n\t\t.bpp \u003d 23,\n\t};\n\tzassert_equal(upload_pgm_image(frame.data(),\n\t\t\t\t       fp_image_frame_params_bpp_23),\n\t\t      EC_ERROR_UNKNOWN);\n```",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 26
+      },
+      "revId": "a93dada3571da36440e625396e36483ae916aeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
