@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13b62dc_c5814776",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-08-29T17:40:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t describe what was wrong. The LED control code was adapted from, or copied directly, from another project for the same OEM. Was that then modified for kaladin?\n\nIt does seem like setting those static variables to 0 always in the discharge state was wrong, but it would be helpful to include a description of what the issue was that is being fixed.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "93435f4312320e61f3ec25c0cd60a75b5f8c1c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
