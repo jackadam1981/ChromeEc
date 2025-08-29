@@ -132,7 +132,9 @@ static int egis630_init(const struct device *dev)
 					    *)(cfg->calibration_data_addr);
 		ret = egis_apply_calibration_data(calibration_data->data,
 						  calibration_data->size);
-		data->errors |= convert_egis_sensor_init_error_code(ret);
+		if (ret != EGIS_API_OK) {
+			LOG_WRN("Failed to apply calibration data from flash");
+		}
 	}
 
 	return 0;
