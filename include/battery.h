@@ -112,6 +112,7 @@ struct battery_static_info {
 #ifdef CONFIG_BATTERY_VENDOR_PARAM
 	uint8_t vendor_param[SBS_MAX_STR_OBJ_SIZE];
 #endif
+	uint16_t flags;
 };
 
 extern struct battery_static_info battery_static[];
