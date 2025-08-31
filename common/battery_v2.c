@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "math_util.h"
@@ -304,8 +305,10 @@ int update_static_battery_info(void)
 	       sizeof(battery_dynamic[BATT_IDX_MAIN]));
 	battery_dynamic[BATT_IDX_MAIN].flags = EC_BATT_FLAG_INVALID_DATA;
 
+#ifdef CONFIG_CHARGER
 	if (rv)
 		charge_problem(PR_STATIC_UPDATE, rv);
+#endif
 
 #ifdef HAS_TASK_HOSTCMD
 	battery_memmap_refresh(BATT_IDX_MAIN);
@@ -314,6 +317,7 @@ int update_static_battery_info(void)
 	return rv;
 }
 
+#ifdef CONFIG_CHARGER
 void update_dynamic_battery_info(void)
 {
 	static int batt_present;
@@ -412,3 +416,41 @@ void update_dynamic_battery_info(void)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 #endif
 }
+#else /* !CONFIG_CHARGER */
+void update_dynamic_battery_info(void)
+{
+	struct ec_response_battery_dynamic_info *const bd =
+		&battery_dynamic[BATT_IDX_MAIN];
+	struct batt_params batt;
+	uint8_t tmp = 0;
+
+	battery_get_params(&batt);
+
+	if (battery_is_present() == BP_YES) {
+		tmp |= EC_BATT_FLAG_BATT_PRESENT;
+
+		if (extpower_is_present()) {
+			tmp |= EC_BATT_FLAG_AC_PRESENT;
+			if (batt.current > 0)
+				tmp |= EC_BATT_FLAG_CHARGING;
+		} else
+			tmp |= EC_BATT_FLAG_DISCHARGING;
+
+		if (battery_is_cut_off())
+			tmp |= EC_BATT_FLAG_CUT_OFF;
+
+		if (batt.state_of_charge <=
+		    CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE)
+			tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
+	}
+	/* Since Charging is not enabled we can't determine if the battery is
+	 * charging or discharging keep both of them 0 */
+	bd->actual_voltage = batt.voltage;
+	bd->actual_current = batt.current;
+	bd->remaining_capacity = batt.state_of_charge;
+	bd->full_capacity = batt.full_capacity;
+	bd->flags = tmp;
+	bd->desired_voltage = batt.desired_voltage;
+	bd->desired_current = batt.desired_current;
+}
+#endif /* CONFIG_CHARGER */
