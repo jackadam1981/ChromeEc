@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "math_util.h"
@@ -226,6 +227,33 @@ static int is_battery_string_reliable(const char *buf)
 	return 1;
 }
 
+static uint16_t get_static_battery_flags(void)
+{
+	struct batt_params batt;
+	uint16_t tmp = 0;
+
+	battery_get_params(&batt);
+
+	if (battery_is_present() == BP_YES) {
+		tmp |= EC_BATT_FLAG_BATT_PRESENT;
+
+		if (extpower_is_present()) {
+			tmp |= EC_BATT_FLAG_AC_PRESENT;
+			if (batt.current > 0)
+				tmp |= EC_BATT_FLAG_CHARGING;
+		} else
+			tmp |= EC_BATT_FLAG_DISCHARGING;
+
+		if (battery_is_cut_off())
+			tmp |= EC_BATT_FLAG_CUT_OFF;
+
+		if (batt.state_of_charge <=
+		    CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE)
+			tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
+	}
+	return tmp;
+}
+
 int update_static_battery_info(void)
 {
 	int batt_serial;
@@ -304,8 +332,11 @@ int update_static_battery_info(void)
 	       sizeof(battery_dynamic[BATT_IDX_MAIN]));
 	battery_dynamic[BATT_IDX_MAIN].flags = EC_BATT_FLAG_INVALID_DATA;
 
+	bs->flags = get_static_battery_flags();
+#ifdef CONFIG_CHARGER
 	if (rv)
 		charge_problem(PR_STATIC_UPDATE, rv);
+#endif
 
 #ifdef HAS_TASK_HOSTCMD
 	battery_memmap_refresh(BATT_IDX_MAIN);
