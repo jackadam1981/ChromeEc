@@ -1,0 +1,21 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* bluey program common DTS includes */
+
+#include <cros/integrated_fwid.dtsi>
+
+/* quartz project DTS includes */
+
+#include "../gpios.dtsi"
+#include "../interrupts.dtsi"
+#include "../adc.dtsi"
+#include "../i2c.dtsi"
+#include "../common.dtsi"
+#include "../battery.dtsi"
+
+#include "fan.dtsi"
+
+/* quartz overrides follow... */
