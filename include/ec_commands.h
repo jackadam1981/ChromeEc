@@ -8745,6 +8745,7 @@ struct ec_params_battery_static_info {
  * @serial: Battery Serial Number String
  * @type: Battery Type String
  * @cycle_count: Battery Cycle Count
+ * @flags: Provides the cached battery flags in the static command
  */
 struct ec_response_battery_static_info {
 	uint16_t design_capacity;
@@ -8755,6 +8756,7 @@ struct ec_response_battery_static_info {
 	char type[EC_COMM_TEXT_MAX];
 	/* TODO(crbug.com/795991): Consider moving to dynamic structure. */
 	uint32_t cycle_count;
+	int16_t flags;
 } __ec_align4;
 
 /**
@@ -8768,6 +8770,7 @@ struct ec_response_battery_static_info {
  * @model_ext: battery model string
  * @serial_ext: battery serial number string
  * @type_ext: battery type string
+ * @flags: Provides the cached battery flags in the static command
  */
 struct ec_response_battery_static_info_v1 {
 	uint16_t design_capacity;
@@ -8777,6 +8780,7 @@ struct ec_response_battery_static_info_v1 {
 	char model_ext[12];
 	char serial_ext[12];
 	char type_ext[12];
+	int16_t flags;
 } __ec_align4;
 
 /**
@@ -8794,6 +8798,7 @@ struct ec_response_battery_static_info_v1 {
  * @device_name: battery model string
  * @serial: battery serial number string
  * @chemistry: battery type string
+ * @flags: Provides the cached battery flags in the static command
  */
 struct ec_response_battery_static_info_v2 {
 	uint16_t design_capacity;
@@ -8803,6 +8808,7 @@ struct ec_response_battery_static_info_v2 {
 	char device_name[SBS_MAX_STR_OBJ_SIZE];
 	char serial[SBS_MAX_STR_OBJ_SIZE];
 	char chemistry[SBS_MAX_STR_OBJ_SIZE];
+	int16_t flags;
 } __ec_align4;
 
 /*
