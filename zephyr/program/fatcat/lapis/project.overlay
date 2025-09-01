@@ -69,6 +69,7 @@ gpio_en_slp_z: &gpio_en_slp_z_r {};
 
 #include "power_signals.dtsi"
 #include "battery.dtsi"
+#include "led_strip_spi.dtsi"
 
 /* these need to be promoted to program.conf */
 
