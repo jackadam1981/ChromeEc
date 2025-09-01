@@ -359,6 +359,7 @@ class KconfigCheck:
 
             # generate few more stub files
             (pathlib.Path(temp_dir) / "Kconfig.dts").touch()
+            (pathlib.Path(temp_dir) / "kconfig_module_dirs.env").touch()
             (pathlib.Path(temp_dir) / "soc").mkdir()
             (pathlib.Path(temp_dir) / "soc" / "Kconfig.soc").touch()
             (pathlib.Path(temp_dir) / "soc" / "Kconfig.defconfig").touch()
@@ -372,6 +373,7 @@ class KconfigCheck:
             os.environ["ARCH"] = "*"
             os.environ["HWM_SCHEME"] = "v2"
             os.environ["BOARD"] = "boards"
+            os.environ["ENV_FILE"] = f"{temp_dir}/kconfig_module_dirs.env"
 
             if srcdir:
                 filename = os.path.join(srcdir, "Kconfig")

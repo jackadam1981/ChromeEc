@@ -153,6 +153,7 @@ class KconfigCheck:
 
             # generate few more stub files
             (pathlib.Path(temp_dir) / "Kconfig.dts").touch()
+            (pathlib.Path(temp_dir) / "kconfig_module_dirs.env").touch()
             (pathlib.Path(temp_dir) / "soc").mkdir()
             (pathlib.Path(temp_dir) / "soc" / "Kconfig.soc").touch()
             (pathlib.Path(temp_dir) / "soc" / "Kconfig.defconfig").touch()
@@ -166,6 +167,7 @@ class KconfigCheck:
             os.environ["ARCH"] = "*"
             os.environ["HWM_SCHEME"] = "v2"
             os.environ["BOARD_DIR"] = "boards/posix/native_posix"
+            os.environ["ENV_FILE"] = f"{temp_dir}/kconfig_module_dirs.env"
 
             if not filename:
                 filename = os.path.join(ZEPHYR_BASE, "Kconfig")
