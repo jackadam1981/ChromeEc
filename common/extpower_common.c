@@ -7,6 +7,11 @@
 #include "hooks.h"
 #include "host_command.h"
 
+#define EC_HOST_EVENT_AC_CONNECTED_MASK \
+	EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_CONNECTED)
+#define EC_HOST_EVENT_AC_DISCONNECTED_MASK \
+	EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_DISCONNECTED)
+
 __overridable void board_check_extpower(void)
 {
 }
@@ -26,8 +31,12 @@ void extpower_handle_update(int is_present)
 	if (is_present) {
 		*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 		host_set_single_event(EC_HOST_EVENT_AC_CONNECTED);
+		host_clear_events_b(EC_HOST_EVENT_AC_DISCONNECTED_MASK);
+		host_clear_events(EC_HOST_EVENT_AC_DISCONNECTED_MASK);
 	} else {
 		*memmap_batt_flags &= ~EC_BATT_FLAG_AC_PRESENT;
 		host_set_single_event(EC_HOST_EVENT_AC_DISCONNECTED);
+		host_clear_events_b(EC_HOST_EVENT_AC_CONNECTED_MASK);
+		host_clear_events(EC_HOST_EVENT_AC_CONNECTED_MASK);
 	}
 }
