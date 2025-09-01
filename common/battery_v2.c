@@ -118,6 +118,7 @@ host_command_battery_get_static(struct host_cmd_handler_args *args)
 		r->design_capacity = bs->design_capacity;
 		r->design_voltage = bs->design_voltage;
 		r->cycle_count = bs->cycle_count;
+		r->flags = battery_dynamic[p->index].flags;
 
 		strzcpy(r->manufacturer, bs->manufacturer_ext,
 			sizeof(r->manufacturer));
@@ -132,6 +133,7 @@ host_command_battery_get_static(struct host_cmd_handler_args *args)
 		r->design_capacity = bs->design_capacity;
 		r->design_voltage = bs->design_voltage;
 		r->cycle_count = bs->cycle_count;
+		r->flags = battery_dynamic[p->index].flags;
 
 		strzcpy(r->manufacturer_ext, bs->manufacturer_ext,
 			sizeof(r->manufacturer_ext));
@@ -146,6 +148,7 @@ host_command_battery_get_static(struct host_cmd_handler_args *args)
 		r->design_capacity = bs->design_capacity;
 		r->design_voltage = bs->design_voltage;
 		r->cycle_count = bs->cycle_count;
+		r->flags = battery_dynamic[p->index].flags;
 
 		strzcpy(r->manufacturer, bs->manufacturer_ext,
 			sizeof(r->manufacturer));
