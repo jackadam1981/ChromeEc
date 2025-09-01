@@ -409,7 +409,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_HOST_EVENT64, host_get_next_event64);
  * @param mask          Event bits to clear (use EC_HOST_EVENT_MASK()).
  *                      Write 1 to a bit to clear it.
  */
-static void host_clear_events_b(host_event_t mask)
+void host_clear_events_b(host_event_t mask)
 {
 	/* Only print if something's about to change */
 	if (events_copy_b & mask)
