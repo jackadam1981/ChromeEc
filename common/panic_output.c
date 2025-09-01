@@ -334,6 +334,7 @@ test_mockable struct panic_data *get_panic_data_write(void)
 
 static void panic_init(void)
 {
+	printk("[panic]pdata_ptr=%p\n",pdata_ptr);
 #ifdef CONFIG_HOSTCMD_EVENTS
 	struct panic_data *addr = panic_get_data();
 

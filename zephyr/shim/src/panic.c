@@ -185,6 +185,8 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 		pdata->flags = flags;
 	}
 
+	printk("[panic]k_sys_fatal_error_handler reason=%x,pdata=%p\n",
+		reason, pdata);
 	LOG_PANIC();
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
@@ -213,6 +215,11 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 }
 #endif /* CONFIG_ZTEST_FATAL_HOOK */
 
+//struct rv32i_panic_data {
+//	uint32_t regs[31]; /* sp, ra, gp, tp, a0-a7, t0-t6, s0-s11 */
+//	uint32_t mepc; /* mepc */
+//	uint32_t mcause; /* mcause */
+//};
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 {
 	struct panic_data *const pdata = get_panic_data_write();
@@ -228,6 +235,10 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	PANIC_REG_EXCEPTION(pdata) = exception;
 	PANIC_REG_REASON(pdata) = reason;
 	PANIC_REG_INFO(pdata) = info;
+
+	pdata->riscv.mepc = info;
+
+	//printk("[panic]panic_set_reason reason=%x,pdata=%p\n",reason, pdata);
 
 	/* Allow architecture specific logic */
 	arch_panic_set_reason(reason, info, exception);
