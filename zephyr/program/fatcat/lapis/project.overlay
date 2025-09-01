@@ -23,6 +23,7 @@
 #include "usb_typec.dtsi"
 #include "usba.dtsi"
 #include "rtk_ulpm.dtsi"
+#include "led_strip_spi.dtsi"
 
 /*
  * Aliases to common names
