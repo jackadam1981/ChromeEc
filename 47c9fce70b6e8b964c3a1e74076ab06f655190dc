@@ -16,6 +16,24 @@
       "message": "Please fix the unittest by running twister -p native_sim/native -s drivers.default.mock_power.ec_host_cmd",
       "revId": "47c9fce70b6e8b964c3a1e74076ab06f655190dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefc91b1_8ae74191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-01T03:01:48Z",
+      "side": 1,
+      "message": "Hi Ivan, for the short term, we will rollback the `#define ALS_CALIBRATION_SET(id)` and `als_channel_scale` in the device, then set it to 0. Let CM36781 build PASS.  \nAnd common code `#define ALS_CALIBRATION_SET(id)` can Google help to modify it, if the driver does not need the `als_channel_scale`?",
+      "parentUuid": "dce37ad6_7e1b67b9",
+      "revId": "47c9fce70b6e8b964c3a1e74076ab06f655190dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
