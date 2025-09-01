@@ -26,8 +26,12 @@ void extpower_handle_update(int is_present)
 	if (is_present) {
 		*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 		host_set_single_event(EC_HOST_EVENT_AC_CONNECTED);
+		host_clear_events_b(
+			EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_DISCONNECTED));
 	} else {
 		*memmap_batt_flags &= ~EC_BATT_FLAG_AC_PRESENT;
 		host_set_single_event(EC_HOST_EVENT_AC_DISCONNECTED);
+		host_clear_events_b(
+			EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_CONNECTED));
 	}
 }
