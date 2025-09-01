@@ -20,6 +20,9 @@
 
 #define VOL_UP_KEY_ROW 0
 #define VOL_UP_KEY_COL 11
+#define STABLE_THRESHOLD 3
+#define BAD_DELAY (500 * USEC_PER_MSEC)
+#define GOOD_DELAY (120 * 1000 * USEC_PER_MSEC)
 
 LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
@@ -30,30 +33,43 @@ static void board_setup_init(void)
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
 static enum battery_present cached_batt_state = BP_NO;
-
+static enum battery_present raw_state = BP_NO;
+static int stable_count;
 /*
  * I2C read register to detect battery
  */
 static void update_battery_state_cache(void)
 {
 	int state;
+	int rv;
+	enum battery_present current;
 
 	/*
 	 *  According to the battery manufacturer's reply:
 	 *  To detect a bad battery, need to read the 0x00 register.
 	 *  If the 12th bit(Permanently Failure) is 1, it means a bad battery.
 	 */
-	if (sb_read(SB_MANUFACTURER_ACCESS, &state)) {
-		cached_batt_state = BP_NO;
-		return;
+	rv = sb_read(SB_MANUFACTURER_ACCESS, &state);
+
+	if (rv || (state & BIT(12)))
+		current = BP_NO;
+	else
+		current = BP_YES;
+
+	if (current == raw_state) {
+		if (stable_count < STABLE_THRESHOLD)
+			stable_count++;
+	} else {
+		raw_state = current;
+		stable_count = 1;
 	}
 
-	/* Detect the 12th bit value */
-	if (state & BIT(12)) {
-		cached_batt_state = BP_NO;
-	} else {
-		cached_batt_state = BP_YES;
-	}
+	if (stable_count >= STABLE_THRESHOLD)
+		cached_batt_state = raw_state;
+
+	hook_call_deferred(&update_battery_state_cache_data,
+			   (cached_batt_state == BP_NO) ? BAD_DELAY :
+							  GOOD_DELAY);
 }
 /*
  *  i2c read takes 3.5ms. Battery_is_present is called continuously
@@ -62,7 +78,7 @@ static void update_battery_state_cache(void)
  *  update_battery_state_cache and call it once every 1S to
  *  record the register status.
  */
-DECLARE_HOOK(HOOK_SECOND, update_battery_state_cache, HOOK_PRIO_DEFAULT);
+DECLARE_DEFERRED(update_battery_state_cache);
 DECLARE_HOOK(HOOK_INIT, update_battery_state_cache, HOOK_PRIO_DEFAULT);
 
 enum battery_present battery_is_present(void)
