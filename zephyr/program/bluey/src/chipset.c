@@ -6,6 +6,7 @@
 /* Bluey chipset-specific configuration */
 
 #include "common.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "power/qcom.h"
@@ -14,6 +15,9 @@ void board_chipset_startup(void)
 {
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_usb_en), 1);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_3v_s3_en), 1);
+
+	/* Update the AC event during boot */
+	extpower_handle_update(gpio_get_level(GPIO_AC_PRESENT));
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
