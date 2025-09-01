@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d43209f_4b1ab27a",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-09-01T06:17:18Z",
+      "side": 1,
+      "message": "There is a difference between logical state and physical state. \n\nBy `GPIO_ACTIVE_LOW` you define that the logical state is high. when physical state is low.",
+      "parentUuid": "95bc9946_d16c020c",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd82b11e_6b4f46cb",
         "filename": "zephyr/emul/emul_egis630.c",
         "patchSetId": 73
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "I believe this should be resolved with the other fix?",
       "parentUuid": "bd82b11e_6b4f46cb",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbdba37b_77d6c9f5",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-09-01T06:17:18Z",
+      "side": 1,
+      "message": "It was fine for FPC, not sure for EC630.\n\nFor FPC sensors, the IRQ pin was set after reset. Is this the same for EC630?\n\nThis functionality was used to verify that the driver sends a command to [clear interrupts](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/emul_fpc1145.c;l\u003d136), after reset.",
+      "parentUuid": "9c2598b0_3cd33774",
       "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -208,6 +244,24 @@
       "side": 1,
       "message": "I fixed it. It seems that there is a typo in this [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/emul_fpc1145.c;l\u003d203?q\u003dzephyr%2Femul%2Femul_FPC1145.C\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d202-,203,-204). \n\nCan you please confirm?",
       "parentUuid": "1071e42e_386ab4d8",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f09dd84_7102e944",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-09-01T06:17:18Z",
+      "side": 1,
+      "message": "I think the name in this code is [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/emul_fpc1145.c;l\u003d203), but the logic is fine. IRQ pin is set to active after reset pin is de-asserted (unless `stop_irq` is set). \n\nNow, you changed the logic of the code.",
+      "parentUuid": "78993205_fa84eebd",
       "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
