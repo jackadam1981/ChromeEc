@@ -31,6 +31,7 @@ gpio_ec_pch_wake_odl: &gpio_soc_wake_odl {};
 #include "usb_typec.dtsi"
 #include "usba.dtsi"
 #include "rtk_ulpm.dtsi"
+#include "led_strip_spi.dtsi"
 
 /* AP interface */
 &espi0 {
