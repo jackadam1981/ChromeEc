@@ -8469,6 +8469,9 @@ struct ec_response_fp_info_v2 {
 } __ec_align4;
 BUILD_ASSERT(sizeof(struct ec_response_fp_info_v2) == 36);
 
+/*jump to ft9001 secure ROM*/
+#define EC_CMD_FT9001_SECURE_BOOT 0x00E2
+
 /* Get the last captured finger frame or a template content */
 #define EC_CMD_FP_FRAME 0x0404
 

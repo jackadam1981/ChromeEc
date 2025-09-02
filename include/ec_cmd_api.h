@@ -332,6 +332,7 @@ _CROS_EC_CV_F_P_R(EC_CMD_GSV_PAUSE_IN_S5, 0, gsv_pause_in_s5, get_set_value,
 		  get_set_value);
 _CROS_EC_C0_F_PF_RF(EC_CMD_HANG_DETECT, hang_detect);
 _CROS_EC_C0_F_PF_RF(EC_CMD_HELLO, hello);
+_CROS_EC_C0_F_PF_RF(EC_CMD_FT9001_SECURE_BOOT, ft9001_secure_boot);
 _CROS_EC_C0_F_PF_RF(EC_CMD_HIBERNATION_DELAY, hibernation_delay);
 _CROS_EC_C0_F_PF_RF(EC_CMD_HOST_EVENT, host_event);
 _CROS_EC_CV_F_P(EC_CMD_HOST_EVENT_CLEAR, 0, host_event_clear, host_event_mask);

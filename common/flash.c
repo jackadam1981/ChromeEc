@@ -1676,6 +1676,32 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase,
 #endif
 );
 
+struct ft90_secure_info{
+	unsigned int mcu_type;
+	unsigned int magic;
+};
+
+static enum ec_status ft9001_secure_boot(struct host_cmd_handler_args *args)
+{
+#define FT9001_SECURE_ROM_ADDR 0x0
+#define FT9001_SECURE_ROM_SIZE 4096    	
+#define FT90_TYPE (('F'<<24)|('T'<<16)|('9'<<8)|('0'))
+#define FT90_MAGIC (('F'<<24)|('P'<<16)|0x9865)	 
+	
+	const struct ft90_secure_info *p = (const struct ft90_secure_info*)args->params;
+        
+	if(p->mcu_type==FT90_TYPE&&p->magic==FT90_MAGIC){
+		printk("%s enter,offset=%x,size=%x \n",__func__,p->mcu_type,p->magic);
+
+		crec_flash_physical_erase(FT9001_SECURE_ROM_ADDR,FT9001_SECURE_ROM_SIZE);
+	}else{
+		//To prevent communication errors from causing misrouted jump instructions, verification of MCU information is required.
+		printk("%s enter,cmd not accept\n",__func__);
+	} 
+        return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FT9001_SECURE_BOOT, ft9001_secure_boot, EC_VER_MASK(0));
+
 #ifdef CONFIG_FLASH_PROTECT_DEFERRED
 struct flash_protect_async {
 	uint32_t mask;
