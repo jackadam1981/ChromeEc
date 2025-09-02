@@ -16,6 +16,24 @@
       "message": "In a previous change, event-driven CC detection was enabled for magolor to improve compliance in some way. What was the benefit of that change, and what might we be losing by reverting it? Is there a tradeoff here?",
       "revId": "199275408ce48ef20efb552aa40982d77d25a7bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44ab21b_475f8b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-02T05:37:26Z",
+      "side": 1,
+      "message": "It was enabled during discussion of 4.6.2 (https://issuetracker.google.com/412562298), But now current change fixes 4.6.2 \u0026 4.6.6 on GRL, As far as i know we might not loose anything by reverting it. but Ellisys failures are still present which might need to address in the next change",
+      "parentUuid": "10b6fc10_ca53db44",
+      "revId": "199275408ce48ef20efb552aa40982d77d25a7bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
