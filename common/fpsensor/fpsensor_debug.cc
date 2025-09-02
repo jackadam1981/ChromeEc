@@ -132,7 +132,7 @@ test_export_static int
 get_image_frame_params(struct fp_image_frame_params &image_frame_params)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	size_t fp_sensor_get_info_size =
+	size_t fp_sensor_get_info_v2_size =
 		sizeof(struct ec_response_fp_info_v2) +
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
 	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
@@ -295,7 +295,7 @@ DECLARE_CONSOLE_COMMAND(fpenroll, command_fpenroll, nullptr,
 static int command_fpinfo(int argc, const char **argv)
 {
 #if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
-	size_t fp_sensor_get_info_size =
+	size_t fp_sensor_get_info_v2_size =
 		sizeof(struct ec_response_fp_info_v2) +
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
 	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
