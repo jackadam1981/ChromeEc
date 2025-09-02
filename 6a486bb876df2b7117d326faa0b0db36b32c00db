@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b62d62_54fb2e32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-09-02T10:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ff232d_5b3db2d6",
+      "revId": "6a486bb876df2b7117d326faa0b0db36b32c00db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415785a8_e6c6e30a",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-09-01T09:46:07Z",
       "side": 1,
       "message": "What is this range?",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "6a486bb876df2b7117d326faa0b0db36b32c00db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dac6eae_f940eafb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-09-02T10:32:02Z",
+      "side": 1,
+      "message": "So transition from Try.SRC to Attached.SRC should be completed with in 150-425ms. But in as per failure report it is completed before 150ms.",
+      "parentUuid": "415785a8_e6c6e30a",
       "range": {
         "startLine": 12,
         "startChar": 21,
