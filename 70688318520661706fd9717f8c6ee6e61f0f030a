@@ -178,6 +178,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85168c55_84a4cb61",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-09-02T23:55:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d57f9edb_d419342c",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b881f9_44e98cf8",
@@ -209,6 +233,24 @@
       "side": 1,
       "message": "don\u0027t make it a token, make it a enum like `charge-state`. \n\nAlso does the first value `0` matter? We require all possible values of LED policy to be defined. So if this value can vary you have to define the LED policy for `fw-config \u003d \u003c1 0\u003e` and `\u003c1 1\u003e` as well. If not then just remove it.",
       "parentUuid": "35b881f9_44e98cf8",
+      "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ac73f0_f7dce730",
+        "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-09-02T23:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d95dfd_72e71f7d",
       "revId": "70688318520661706fd9717f8c6ee6e61f0f030a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
