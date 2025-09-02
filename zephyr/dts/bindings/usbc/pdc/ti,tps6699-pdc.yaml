@@ -33,6 +33,7 @@ properties:
       - 0x52
       - 0x68
       - 0x69
+      - 0xFF
     required: true
     description: |
       This is the I2C2 target address.
