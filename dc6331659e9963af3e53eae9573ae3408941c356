@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40bb4c5_89f8379f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-02T18:58:46Z",
+      "side": 1,
+      "message": "The flags are not quite static actually. I think it would be better to refactor the code to support the cached status. Let me think about it first. I would appreciate your input on it.",
+      "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
