@@ -32,9 +32,15 @@ enum ap_pwrseq_state chipset_pwr_seq_get_state(void);
 const char *const pwr_sm_get_state_name(enum ap_pwrseq_state state);
 #endif
 void request_start_from_g3(void);
-void apshutdown(void);
 void ap_pwrseq_handle_chipset_reset(void);
 void set_start_from_g3_delay_seconds(uint32_t d_time);
+void start_start_from_g3_timer(void);
+uint32_t get_remaining_start_from_g3_timer(void);
+void start_s5_inactive_timer(void);
+uint32_t get_remaining_s5_inactive_timer(void);
+void stop_s5_inactive_timer(void);
+int rsmrst_power_is_good(void);
+void rsmrst_pass_thru_handler(void);
 
 /**
  * @brief Check if primary AP power rail is good.
@@ -57,4 +63,9 @@ bool chipset_is_vw_power_good(void);
  * @return true if all AP power rails are good, and false otherwise.
  */
 bool chipset_is_all_power_good(void);
+
+bool ap_power_in_debug_mode(void);
+
+void ap_power_set_start_from_g3_delay_seconds(uint32_t d_time);
+
 #endif /* __X86_NON_DSX_COMMON_PWRSEQ_SM_HANDLER_H__ */
