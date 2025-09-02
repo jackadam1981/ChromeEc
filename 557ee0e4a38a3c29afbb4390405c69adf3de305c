@@ -16,6 +16,29 @@
       "message": "I think we had increased this before anyway so looks good to me",
       "revId": "557ee0e4a38a3c29afbb4390405c69adf3de305c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c02708_7262aacf",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-02T20:55:42Z",
+      "side": 1,
+      "message": "How about switching this to use `timestamp_expired()` to make this easier to read?\n\n```\n#define BB_RETIMER_RETRY_TIMEOUT_US (200 \u0026 MSEC)\ntimestamp_t deadline.val \u003d get_time().val + BB_RETIMER_RETRY_TIMEOUT_US;\nwhile (1)\n    ...\n    if (timestamp_expired(deadline, NULL))\n        /* ERROR */\n        return rv;\n```",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "557ee0e4a38a3c29afbb4390405c69adf3de305c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
