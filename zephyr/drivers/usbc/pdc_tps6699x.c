@@ -2372,6 +2372,25 @@ static enum smf_state_result st_task_wait_run(void *o)
 		}
 		break;
 	}
+	case UCSI_GET_PD_MESSAGE:
+		offset = 2;
+		union get_pd_message_t get_pd_message_cmd;
+		memcpy(&get_pd_message_cmd,
+		       &data->raw_ucsi_cmd_data.data[offset],
+		       sizeof(union get_pd_message_t));
+		switch (get_pd_message_cmd.response_message_type) {
+		case GET_PD_MESSAGE_DISC_ID:
+			len = sizeof(uint32_t) * PDC_DISC_IDENTITY_VDO_COUNT;
+			break;
+		case GET_PD_MESSAGE_REVISION:
+			len = sizeof(uint32_t);
+			break;
+		default:
+			/* Unsupported GET_PD_MESSAGE command */
+			offset = 0;
+			len = 0;
+		}
+		break;
 	default:
 		/* No data for this command */
 		len = 0;
