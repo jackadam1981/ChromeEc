@@ -158,6 +158,18 @@ register_ish_project(
     ],
 )
 
+register_ish_project(
+    project_name="matsu-ish",
+    zephyr_board="intel_ish_5_8_0",
+    dts_overlays=[
+        here / "matsu-ish" / "matsu-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "matsu-ish" / "prj.conf",
+        here / "matsu-ish" / "motionsense.conf",
+    ],
+)
+
 # For realtek
 register_rtk59_project(
     project_name="ojal",
