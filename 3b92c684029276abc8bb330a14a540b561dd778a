@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef35a738_f675b05c",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-02T20:46:07Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think you should need to explicitly disable this. It\u0027s disabled by default.",
+      "revId": "3b92c684029276abc8bb330a14a540b561dd778a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
