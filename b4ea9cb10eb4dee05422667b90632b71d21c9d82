@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55cb5d3c_1e9e8e3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-02T08:12:16Z",
+      "side": 1,
+      "message": "`zmake build quartz`\n```\nINFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/quartz/build-ro/modules/ec/zephyr/include/ec_version.h\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      114532 B       256 KB     43.69%\n             RAM:       19752 B       128 KB     15.07%\n        IDT_LIST:           0 B        32 KB      0.00%\nGenerating files from /mnt/host/source/src/platform/ec/build/zephyr/quartz/build-ro/zephyr/zephyr.elf for board: npcx9\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      115460 B       256 KB     44.04%\n             RAM:       19960 B       128 KB     15.23%\n        IDT_LIST:           0 B        32 KB      0.00%\n```\n\n`zmake build bluey`\n```\nINFO:root:Writing header to /mnt/host/source/src/platform/ec/build/zephyr/bluey/build-rw/modules/ec/zephyr/include/ec_version.h\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      113632 B       320 KB     34.68%\n             RAM:       19440 B        64 KB     29.66%\n        IDT_LIST:           0 B        32 KB      0.00%\nGenerating files from /mnt/host/source/src/platform/ec/build/zephyr/bluey/build-rw/zephyr/zephyr.elf for board: npcx9\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      112712 B       320 KB     34.40%\n             RAM:       19232 B        64 KB     29.35%\n        IDT_LIST:           0 B        32 KB      0.00%\n```",
+      "revId": "b4ea9cb10eb4dee05422667b90632b71d21c9d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
