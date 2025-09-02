@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbce55a6_7e08482b",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-02T11:24:10Z",
+      "side": 1,
+      "message": "From this change https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6627956, it looks like pdc_interrupt.patch_loaded is already used as the pdc reboot indicator and call set_all_ports_to_init and pmc address is reset in st_init_run so we don\u0027t need do extra step. Will remove the pd_status_updated related code from this change.",
+      "parentUuid": "99557d4f_8124d3a0",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 39
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14142a5f_3f0d7b2f",
         "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
         "patchSetId": 8
