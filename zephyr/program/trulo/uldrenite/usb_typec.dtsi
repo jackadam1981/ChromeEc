@@ -39,7 +39,7 @@
 		/* EC_PD_INT */
 		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
 		port-index-on-chip = <0x1>;
-		pmc-address = <0x69>;
+		pmc-address = <0xFF>;
 		zephyr,deferred-init;
 	};
 	pdc_power_p1: tps6699-pdc@24 {
@@ -48,7 +48,7 @@
 		/* EC_PD_INT */
 		irq-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
 		port-index-on-chip = <0x2>;
-		pmc-address = <0x68>;
+		pmc-address = <0xFF>;
 		no-fw-update;
 		zephyr,deferred-init;
 	};
