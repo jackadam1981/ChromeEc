@@ -373,7 +373,9 @@ class KconfigCheck:
             os.environ["ARCH"] = "*"
             os.environ["HWM_SCHEME"] = "v2"
             os.environ["BOARD"] = "boards"
-            os.environ["ENV_FILE"] = f"{temp_dir}/kconfig_module_dirs.env"
+            os.environ["KCONFIG_ENV_FILE"] = (
+                f"{temp_dir}/kconfig_module_dirs.env"
+            )
 
             if srcdir:
                 filename = os.path.join(srcdir, "Kconfig")
