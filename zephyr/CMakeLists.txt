@@ -740,6 +740,7 @@ set(ZEPHYR_CURRENT_LIBRARY ec_shim)
 
 add_subdirectory(linker)
 add_subdirectory("app")
+add_subdirectory("debug")
 add_subdirectory("drivers")
 add_subdirectory("emul")
 add_subdirectory("fake")
