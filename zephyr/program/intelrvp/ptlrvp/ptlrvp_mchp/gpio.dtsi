@@ -358,7 +358,7 @@
 		ec-spi-cs0-n {
 			gpios = <MCHP_GPIO_DECODE_055 GPIO_INPUT>;
 		};
-		ec-spi-clk {
+		mchp_wp_ex: ec-spi-clk {
 			gpios = <MCHP_GPIO_DECODE_056 GPIO_INPUT>;
 		};
 		ec-pd-usbc-i2c-int-n {
@@ -432,6 +432,9 @@
 			gpios = <MCHP_GPIO_DECODE_073 GPIO_INPUT>;
 		};
 		**/
+		mchp_wp: mchp-wp {
+			gpios = <MCHP_GPIO_DECODE_076 GPIO_OUTPUT_HIGH>;
+		};
 		prwbtn: pm-pwrbtn-n-r {
 			gpios = <MCHP_GPIO_DECODE_011 GPIO_ODR_HIGH>;
 			enum-name = "GPIO_PCH_PWRBTN_L";
