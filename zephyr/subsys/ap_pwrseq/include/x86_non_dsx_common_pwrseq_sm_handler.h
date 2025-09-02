@@ -35,6 +35,8 @@ void request_start_from_g3(void);
 void apshutdown(void);
 void ap_pwrseq_handle_chipset_reset(void);
 void set_start_from_g3_delay_seconds(uint32_t d_time);
+int rsmrst_power_is_good(void);
+void rsmrst_pass_thru_handler(void);
 
 /**
  * @brief Check if primary AP power rail is good.
@@ -57,4 +59,6 @@ bool chipset_is_vw_power_good(void);
  * @return true if all AP power rails are good, and false otherwise.
  */
 bool chipset_is_all_power_good(void);
+
+bool ap_power_in_debug_mode(void);
 #endif /* __X86_NON_DSX_COMMON_PWRSEQ_SM_HANDLER_H__ */
