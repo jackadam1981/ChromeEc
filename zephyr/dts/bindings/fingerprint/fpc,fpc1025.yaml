@@ -5,8 +5,7 @@
 description: FPC1025 fingerprint sensor
 
 compatible: "fpc,fpc1025"
-
-include: [spi-device.yaml, fingerprint-sensor.yaml]
+include: [spi-device.yaml]
 
 properties:
   irq-gpios:
@@ -20,3 +19,10 @@ properties:
     required: true
     description: |
       This property specifies the connection for sensor reset.
+
+  configs:
+    type: array
+    required: true
+    description: Node to hold supported sensor configurations.
+    child-binding:
+      compatible: "fingerprint-sensor"

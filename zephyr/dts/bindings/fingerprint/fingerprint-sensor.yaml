@@ -4,46 +4,38 @@
 
 # Common fields for fingerprint sensors
 
+description: Fingerprint sensor configuration node properties.
+compatible: "fingerprint-sensor"
+
 properties:
   width:
-    type: array
+    type: int
     required: true
-    description: |
-      List of supported fingerprint sensor widths in pixels.
-      Represents different modes or configurations.
+    description: Fingerprint sensor width in pixels.
 
   height:
-    type: array
+    type: int
     required: true
-    description: |
-      List of supported fingerprint sensor heights in pixels.
-      Represents different modes or configurations.
+    description: Fingerprint sensor height in pixels.
 
   bits-per-pixel:
-    type: array
+    type: int
     required: true
-    description: |
-      Pixel resolution in bits.
+    description: Pixel resolution in bits.
 
   frame-size:
-    type: array
+    type: int
     required: true
-    description: |
-      Frame size of captured fingerprint image.
-
-  capture-type:
-    type: array
-    required: true
-    description: |
-      Type of image capture from enum fp_capture_type
+    description: Frame size of captured fingerprint image.
 
   v4l2-pixel-format:
-    type: string-array
+    type: string
     required: true
-    description: |
-      List of supported Video4Linux2 pixel format types.
-      Each entry in the array must be a string representing a valid V4L2 format.
-      Allowed values include (but may not be limited to):
-        - "V4L2_PIX_FMT_GREY"
-      Full list can be found at:
-      https://docs.kernel.org/userspace-api/media/v4l/pixfmt.html.
+    enum:
+      - V4L2_PIX_FMT_GREY
+    description: Video4Linux2 pixel format type.
+
+  capture-type:
+    type: int
+    required: true
+    description: Type of image capture.
