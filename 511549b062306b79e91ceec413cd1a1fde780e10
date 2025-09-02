@@ -16,6 +16,24 @@
       "message": "Thanks for taking care of this in advance.",
       "revId": "511549b062306b79e91ceec413cd1a1fde780e10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df96f3e4_6322444e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-09-02T08:07:40Z",
+      "side": 1,
+      "message": "Yeah well maybe I went a bit too fast, was meaning to wait until the change was merged and then merge this, forgot, merged, and in the meantime the upstream change was modified to use a different variable name. The funny part is that I\u0027m the one who asked the name to be changed upstream. Anyway https://crrev.com/c/6905247",
+      "parentUuid": "de3e586b_76ed7bc9",
+      "revId": "511549b062306b79e91ceec413cd1a1fde780e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
