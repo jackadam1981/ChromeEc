@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c269580_da0709ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "can you please run \u0027zmake build lapis --clobber\u0027 and ensure there are no Kconfig option mismatches where some option was set to \u0027y\u0027 but got assigned \u0027n\u0027.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d73d801_f40f46c6",
+        "filename": "zephyr/program/fatcat/lapis/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "nit: Remove extra space and use tab",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490abdb9_fcddb103",
+        "filename": "zephyr/program/fatcat/lapis/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "nit: should use a tab here instead of white space",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90825677_e44f5922",
+        "filename": "zephyr/program/fatcat/lapis/gpios.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "please use /* */ comment format to be consistent with other entries and for the following led node.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 12
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63e9e44_e6955df2",
+        "filename": "zephyr/program/fatcat/lapis/i2c.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "Should have a b/\u003cissue number\u003e entry here for tracking",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8f7696_e337533f",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "This could be grouped with the other AP  power sequence related configs starting on line 26",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "decd6748_d1a8bbf3",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "Should move this out of this group as it is being used.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1741fe33_b0ec7dc5",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "Should this be \u0027\u003dy\u0027. This devicetree for the usbc ports indicate that the usci_ppm driver is being used.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aab25e6_ace10778",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "nit: please add new line here for readability",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63995d5_582ef0bc",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "Is the minimum power requirement without battery 65W. My initial response is that this seems higher than should be required.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed6c3ce_c5ac8dc3",
+        "filename": "zephyr/program/fatcat/lapis/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb3abf1_d33da032",
+        "filename": "zephyr/program/fatcat/lapis/usb_typec.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-02T23:08:56Z",
+      "side": 1,
+      "message": "Why is this commented out? Same comment for port C1",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
