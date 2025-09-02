@@ -33,7 +33,7 @@ extern "C" {
  * @return Sensor width.
  */
 #define FINGERPRINT_SENSOR_RES_X(idx, node_id) \
-	DT_PROP_BY_IDX(node_id, width, idx)
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), width)
 
 /**
  * @brief Get fingerprint sensor height for a given configuration index.
@@ -43,7 +43,7 @@ extern "C" {
  * @return Sensor height.
  */
 #define FINGERPRINT_SENSOR_RES_Y(idx, node_id) \
-	DT_PROP_BY_IDX(node_id, height, idx)
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), height)
 
 /**
  * @brief Get fingerprint sensor resolution (bits per pixel) for a given
@@ -53,8 +53,9 @@ extern "C" {
  * @param node_id Devicetree node identifier for the sensor.
  * @return Sensor bits per pixel.
  */
-#define FINGERPRINT_SENSOR_RES_BPP(idx, node_id) \
-	DT_PROP_BY_IDX(node_id, bits_per_pixel, idx)
+#define FINGERPRINT_SENSOR_RES_BPP(idx, node_id)                   \
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), \
+		bits_per_pixel)
 
 /**
  * @brief Get fingerprint sensor capture type for a given configuration index.
@@ -64,7 +65,7 @@ extern "C" {
  * @return Sensor capture type (enum fp_capture_type).
  */
 #define FINGERPRINT_SENSOR_CAPTURE_TYPE(idx, node_id) \
-	DT_PROP_BY_IDX(node_id, capture_type, idx)
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), capture_type)
 
 /**
  * @brief Get fingerprint sensor pixel format for a given configuration index.
@@ -73,8 +74,9 @@ extern "C" {
  * @param node_id Devicetree node identifier for the sensor.
  * @return Sensor V4L2 pixel format token.
  */
-#define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(idx, node_id) \
-	DT_STRING_TOKEN_BY_IDX(node_id, v4l2_pixel_format, idx)
+#define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(idx, node_id)                 \
+	DT_STRING_TOKEN(DT_CHILD(DT_CHILD(node_id, configs), config##idx), \
+			v4l2_pixel_format)
 
 /**
  * @brief Get size of raw fingerprint frame size (in bytes) for a given
@@ -87,7 +89,7 @@ extern "C" {
  * @return Frame size in bytes.
  */
 #define FINGERPRINT_SENSOR_FRAME_SIZE(idx, node_id) \
-	DT_PROP_BY_IDX(node_id, frame_size, idx)
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), frame_size)
 
 /**
  * @brief Get the number of capture configurations defined for a fingerprint
@@ -103,7 +105,8 @@ extern "C" {
  * @return The number of distinct capture configurations available for the
  * sensor.
  */
-#define FINGERPRINT_SENSOR_NUM_CONFIGS(node_id) DT_PROP_LEN(node_id, width)
+#define FINGERPRINT_SENSOR_NUM_CONFIGS(node_id) \
+	DT_CHILD_NUM(DT_CHILD(node_id, configs))
 
 /**
  * @brief Get the number of image capture configurations for the system's
@@ -276,6 +279,61 @@ enum fingerprint_sensor_scan {
 };
 
 /**
+ * @brief Fingerprint sensor identification.
+ *
+ * This structure holds information that is constant after sensor
+ * initialization, except for the errors field which can change at runtime.
+ */
+struct fingerprint_sensor_info {
+	/** @brief Sensor vendor ID. */
+	uint32_t vendor_id;
+	/** @brief Sensor product ID. */
+	uint32_t product_id;
+	/** @brief Sensor model ID. */
+	uint32_t model_id;
+	/** @brief Sensor hardware/firmware version. */
+	uint32_t version;
+	/**
+	 * @brief Number of image capture types supported by the sensor.
+	 * @see enum fingerprint_capture_type
+	 */
+	uint16_t num_capture_types;
+	/** @brief Current sensor error flags (bitmask of
+	 * FINGERPRINT_ERROR_*).
+	 */
+	uint16_t errors;
+};
+
+/**
+ * @brief Parameters for a single fingerprint image frame.
+ *
+ * This structure describes the properties of a captured image frame.
+ */
+struct fingerprint_image_frame_params {
+	/** @brief Total size of the frame data in bytes. */
+	uint32_t frame_size;
+	/**
+	 * @brief Pixel format of the image.
+	 * It is recommended to use V4L2_PIX_FMT_* definitions where
+	 * applicable.
+	 */
+	uint32_t pixel_format;
+	/** @brief Image width in pixels. */
+	uint16_t width;
+	/** @brief Image height in pixels. */
+	uint16_t height;
+	/** @brief Bits per pixel for the image. */
+	uint16_t bpp;
+	/**
+	 * @brief Type of image capture.
+	 * @see enum fingerprint_capture_type
+	 */
+	uint8_t fp_capture_type;
+	/** @brief Reserved for padding and alignment. Should be zero. */
+	uint8_t reserved;
+};
+
+/**
  * @typedef fingerprint_callback_t
  * @brief Fingerprint callback for fingerprint events
  *
@@ -314,8 +372,8 @@ typedef int (*fingerprint_api_config_t)(const struct device *dev,
  * @brief Callback API for getting information about fingerprint sensor.
  *
  * @param dev Fingerprint sensor device.
- * @param sensor_info Pointer to a struct where the sensor's static information
- * will be stored.
+ * @param sensor_info Pointer to a struct where the sensor's static
+ * information will be stored.
  * @param image_frame_params Pointer to a struct where the sensor's
  * image frame parameters (e.g., width, height, format) will be stored.
  */
@@ -381,8 +439,8 @@ __subsystem struct fingerprint_driver_api {
 /**
  * @brief Initialize fingerprint sensor.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  *
  * @retval 0 If successful.
  * @retval -ENOTSUP Not supported api function.
@@ -405,8 +463,8 @@ static inline int z_impl_fingerprint_init(const struct device *dev)
 /**
  * @brief Deinitialize fingerprint sensor.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  *
  * @retval 0 If successful.
  * @retval -ENOTSUP Not supported api function.
@@ -429,8 +487,8 @@ static inline int z_impl_fingerprint_deinit(const struct device *dev)
 /**
  * @brief Configure fingerprint sensor.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  * @param cb  Callback executed on fingerprint event.
  *
  * @retval 0 If successful.
@@ -455,8 +513,8 @@ static inline int z_impl_fingerprint_config(const struct device *dev,
 /**
  * @brief Get information about fingerprint sensor.
  *
- * @param dev  Pointer to the device structure for the fingerprint sensor driver
- *	       instance.
+ * @param dev  Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  * @param sensor_info Pointer to 'fingerprint_sensor_info' structure where the
  * sensor's static information will be stored.
  * @param image_frame_params Pointer to 'fingerprint_image_frame_params'
@@ -487,8 +545,8 @@ static inline int z_impl_fingerprint_get_info(
 /**
  * @brief Start fingerprint maintenance operation.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  *
  * @retval 0 If successful.
  * @retval -ENOTSUP Not supported api function.
@@ -514,8 +572,8 @@ static inline int z_impl_fingerprint_maintenance(const struct device *dev,
 /**
  * @brief Change fingerprint sensor mode.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  * @param mode Target fingerprint sensor mode.
  *
  * @retval 0 If successful.
@@ -541,8 +599,8 @@ static inline int z_impl_fingerprint_set_mode(const struct device *dev,
 /**
  * @brief Acquire image of a finger.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  * @param capture_type One of the capture types from fingerprint_capture_type
  *                     enum.
  * @param image Pointer to buffer where image should be stored.
@@ -577,8 +635,8 @@ z_impl_fingerprint_acquire_image(const struct device *dev,
 /**
  * @brief Get status of the finger on the sensor.
  *
- * @param dev Pointer to the device structure for the fingerprint sensor driver
- *	      instance.
+ * @param dev Pointer to the device structure for the fingerprint sensor
+ *driver instance.
  * @param status Pointer to variable where status should be written
  *
  * @retval 0 or positive values, representing fingerprint_finger_state enum,
