@@ -1,97 +1,15 @@
-/* Copyright 2022 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-#ifdef CONFIG_AP_PWRSEQ_DRIVER
 #include <ap_power/ap_power_events.h>
 #include <ap_power/ap_pwrseq_sm.h>
-#endif
 #include <x86_common_pwrseq.h>
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
-/**
- * Determine the current state of the CPU from the
- * power signals.
- */
-#ifndef CONFIG_AP_PWRSEQ_DRIVER
-enum power_states_ndsx chipset_pwr_seq_get_state(void)
-{
-	/*
-	 * Chip is shut down, G3 state.
-	 */
-	if (!chipset_is_prim_power_good()) {
-		LOG_DBG("Primary power rails off, G3 state");
-		return SYS_POWER_STATE_G3;
-	}
-	/*
-	 * Not enough power rails up to read VW signals.
-	 * Force a shutdown.
-	 */
-	if (!chipset_is_vw_power_good()) {
-		LOG_ERR("Not enough power signals on (%#x), forcing shutdown",
-			(unsigned int)power_get_signals());
-		ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-		return SYS_POWER_STATE_G3;
-	}
-
-	/*
-	 * Enough power signals are up, so
-	 * wait for virtual wire signals to become available.
-	 * Not sure how long to wait? 5 seconds total.
-	 */
-	for (int delay = 0; delay < 500; k_msleep(10), delay++) {
-#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S3)
-		if (power_signal_get(PWR_SLP_S3) < 0)
-			continue;
-#endif
-#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S4)
-		if (power_signal_get(PWR_SLP_S4) < 0)
-			continue;
-#endif
-#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S5)
-		if (power_signal_get(PWR_SLP_S5) < 0)
-			continue;
-#endif
-		/*
-		 * All signals valid.
-		 */
-		LOG_DBG("All VW signals valid after %d ms", delay * 10);
-		break;
-	}
-
-	/*
-	 * S0, all power OK, no suspend or sleep on.
-	 */
-	if (chipset_is_all_power_good()) {
-		LOG_DBG("CPU in S0 state");
-		return SYS_POWER_STATE_S0;
-	}
-	/*
-	 * S3, all power OK, PWR_SLP_S3 on.
-	 */
-	if (chipset_is_vw_power_good() && power_signal_get(PWR_SLP_S3) == 1) {
-		LOG_DBG("CPU in S3 state");
-		return SYS_POWER_STATE_S3;
-	}
-	/*
-	 * S5, some power signals on, PWR_SLP_S5 on.
-	 */
-	if (chipset_is_vw_power_good() && power_signal_get(PWR_SLP_S5) == 1) {
-		LOG_DBG("CPU in S5 state");
-		return SYS_POWER_STATE_S5;
-	}
-	/*
-	 * Unable to determine state, force to G3.
-	 */
-	LOG_INF("Unable to determine CPU state (%#x), forcing shutdown",
-		(unsigned int)power_get_signals());
-	ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
-	return SYS_POWER_STATE_G3;
-}
-#else
 static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 					       const enum ap_pwrseq_state entry,
 					       const enum ap_pwrseq_state exit)
@@ -239,6 +157,10 @@ static int x86_non_dsx_chipset_init_events(void)
 SYS_INIT(x86_non_dsx_chipset_init_events, APPLICATION,
 	 CONFIG_APPLICATION_INIT_PRIORITY);
 
+/**
+ * Determine the current state of the CPU from the
+ * power signals.
+ */
 enum ap_pwrseq_state chipset_pwr_seq_get_state(void)
 {
 	/*
@@ -313,4 +235,3 @@ enum ap_pwrseq_state chipset_pwr_seq_get_state(void)
 	ap_power_force_shutdown(AP_POWER_SHUTDOWN_G3);
 	return AP_POWER_STATE_G3;
 }
-#endif /* CONFIG_AP_PWRSEQ_DRIVER */
