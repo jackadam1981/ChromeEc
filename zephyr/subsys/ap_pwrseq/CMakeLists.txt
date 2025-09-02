@@ -20,9 +20,17 @@ zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_DRIVER ap_pwrseq_sm.c)
 
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_HOST_SLEEP power_host_sleep.c)
 
-zephyr_library_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ
+if (DEFINED CONFIG_X86_NON_DSX_PWRSEQ)
+if (DEFINED CONFIG_AP_PWRSEQ_DRIVER)
+zephyr_library_sources(
+	x86_non_dsx_common_pwrseq_drv_sm_handler.c
+	x86_non_dsx_chipset_power_drv_state.c)
+else ()
+zephyr_library_sources(
 	x86_non_dsx_common_pwrseq_sm_handler.c
 	x86_non_dsx_chipset_power_state.c)
+endif ()
+endif ()
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ_S0IX_ERROR_RECOVERY
 	x86_non_dsx_common_pwrseq_host_sleep.c)
 zephyr_library_sources_ifdef(CONFIG_X86_NON_DSX_PWRSEQ_CONSOLE

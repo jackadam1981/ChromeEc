@@ -84,40 +84,6 @@ K_TIMER_DEFINE(x86_non_dsx_timer, x86_non_dsx_timer_handler, NULL);
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
-/*
- * Returns true if all signals in mask are valid.
- * This is only done for virtual wire signals.
- */
-static inline bool signals_valid(power_signal_mask_t signals)
-{
-#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S3)
-	if ((signals & POWER_SIGNAL_MASK(PWR_SLP_S3)) &&
-	    power_signal_get(PWR_SLP_S3) < 0)
-		return false;
-#endif
-#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S4)
-	if ((signals & POWER_SIGNAL_MASK(PWR_SLP_S4)) &&
-	    power_signal_get(PWR_SLP_S4) < 0)
-		return false;
-#endif
-#if defined(CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S5)
-	if ((signals & POWER_SIGNAL_MASK(PWR_SLP_S5)) &&
-	    power_signal_get(PWR_SLP_S5) < 0)
-		return false;
-#endif
-	return true;
-}
-
-static inline bool signals_valid_and_on(power_signal_mask_t signals)
-{
-	return signals_valid(signals) && power_signals_on(signals);
-}
-
-static inline bool signals_valid_and_off(power_signal_mask_t signals)
-{
-	return signals_valid(signals) && power_signals_off(signals);
-}
-
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 enum power_states_ndsx pwr_sm_get_state(void)
 {
