@@ -97,6 +97,13 @@ config USB_DEVICE_SN
 	help
 	  Placeholder for USB device serial number string.
 
+config USB_DEVICE_SN_HWINFO
+	bool "Use hwinfo driver for USB device serial number"
+	depends on HWINFO
+	help
+	  Use hwinfo driver to get USB device serial number,
+	  instead of a hardcoded string via USB_DEVICE_SN config.
+
 config USB_DEVICE_VID
 	hex "USB device Vendor ID"
 	default 0x18D1
