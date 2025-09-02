@@ -130,6 +130,10 @@ typedef int (*emul_pdc_get_autoneg_sink_t)(const struct emul *target,
 					   int *max_voltage, int *max_current);
 typedef int (*emul_pdc_get_sys_power_state_t)(const struct emul *target,
 					      enum power_state *state);
+typedef int (*emul_pdc_set_identity_t)(const struct emul *target,
+				       uint32_t *vdos);
+typedef int (*emul_pdc_set_revision_t)(const struct emul *target,
+				       uint32_t rmdo);
 
 __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_response_delay_t set_response_delay;
@@ -178,6 +182,8 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_get_battery_capability_t get_battery_capability;
 	emul_pdc_get_battery_status_t get_battery_status;
 	emul_pdc_get_sys_power_state_t get_sys_power_state;
+	emul_pdc_set_identity_t set_identity;
+	emul_pdc_set_revision_t set_revision;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -940,6 +946,35 @@ static inline int emul_pdc_get_sys_power_state(const struct emul *target,
 	const struct emul_pdc_driver_api *api = target->backend_api;
 	if (api->get_sys_power_state) {
 		return api->get_sys_power_state(target, state);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_identity(const struct emul *target,
+					uint32_t *identity)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->set_identity) {
+		return api->set_identity(target, identity);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_revision(const struct emul *target,
+					const uint32_t rmdo)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+
+	if (api->set_revision) {
+		return api->set_revision(target, rmdo);
 	}
 	return -ENOSYS;
 }
