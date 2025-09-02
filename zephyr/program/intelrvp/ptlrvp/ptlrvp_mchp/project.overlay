@@ -32,6 +32,9 @@
 };
 
 / {
+	aliases {
+		gpio-wp = &mchp_wp_ex;
+	};
 	chosen {
 		cros-ec,sha = &symcr;
 	};
