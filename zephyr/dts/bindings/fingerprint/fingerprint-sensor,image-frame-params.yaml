@@ -1,0 +1,47 @@
+# Copyright 2023 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Common fields for fingerprint sensors
+
+description: Common fields for a single fingerprint sensor configuration.
+
+compatible: "fingerprint-sensor,image-frame-params"
+
+child-binding:
+  properties:
+    width:
+      type: int
+      required: true
+      description: Fingerprint sensor width in pixels for this mode.
+
+    height:
+      type: int
+      required: true
+      description: Fingerprint sensor height in pixels for this mode.
+
+    bits-per-pixel:
+      type: int
+      required: true
+      description: Pixel resolution in bits for this mode.
+
+    frame-size:
+      type: int
+      required: true
+      description: Frame size of captured fingerprint image.
+
+    v4l2-pixel-format:
+      type: string
+      required: true
+      description: |
+        Video4Linux2 pixel format type for this mode.
+        See https://docs.kernel.org/userspace-api/media/v4l/pixfmt.html
+      enum:
+        - "V4L2_PIX_FMT_GREY"
+        # Add other common formats
+
+    capture-type:
+      type: int
+      required: true
+      description: |
+        Type of image capture.
