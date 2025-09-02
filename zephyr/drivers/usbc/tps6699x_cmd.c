@@ -211,6 +211,16 @@ int tps_rw_sx_app_config(const struct i2c_dt_spec *i2c,
 			    sizeof(union reg_sx_app_config), flag);
 }
 
+int tps_rw_global_system_configuration(
+	const struct i2c_dt_spec *i2c,
+	union reg_global_system_configuration *buf, int flag)
+{
+	return tps_xfer_reg(i2c, REG_GLOBAL_SYSTEM_CONFIGURATION,
+			    buf->raw_value,
+			    sizeof(union reg_global_system_configuration),
+			    flag);
+}
+
 int tps_rd_active_rdo_contract(const struct i2c_dt_spec *i2c,
 			       union reg_active_rdo_contract *buf)
 {

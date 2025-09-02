@@ -838,7 +838,8 @@ union reg_global_system_configuration {
 		uint8_t source_policy_mode_bit1 : 1;
 		uint8_t enable_hbretimer_startup : 1;
 		uint8_t s4_or_s5_retimer_power_saving : 2;
-		uint8_t reserved10 : 4;
+		uint8_t allow_i2c4_access : 1;
+		uint8_t reserved10 : 3;
 	} __packed;
 	uint8_t raw_value[14];
 };

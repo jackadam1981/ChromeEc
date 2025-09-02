@@ -9,6 +9,7 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include <zephyr/devicetree.h>
@@ -17,6 +18,7 @@
 #include <zephyr/drivers/smbus.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/shell/shell.h>
 #include <zephyr/smf.h>
 LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
 #include "tps6699x_cmd.h"
@@ -3347,3 +3349,84 @@ bool pdc_tps6699x_test_idle_wait(void)
 /* LCOV_EXCL_STOP */
 
 #endif /* CONFIG_ZTEST */
+
+static int cmd_pdc_tps_set_pmc_address(const struct shell *sh, size_t argc,
+				       char **argv)
+{
+	union reg_global_system_configuration global_system_configuration;
+	int current_pmc_address[2];
+	int address[2] = { -1, -1 };
+	int port;
+	int rv;
+	char *e;
+	if (argc != 2 && argc != 4) {
+		shell_error(sh, "pmc: argc != 2 && argc != 4");
+		return -EINVAL;
+	}
+
+	port = strtoul(argv[1], &e, 0);
+	if (*e || port >= board_get_usb_pd_port_count()) {
+		shell_error(sh, "pmc: Invalid port");
+		return -EINVAL;
+	}
+
+	if (argc != 2) {
+		for (int i = 0; i < 2; ++i) {
+			address[i] = strtoul(argv[2 + i], &e, 0);
+			if (*e) {
+				shell_error(sh, "pmc: Invalid address");
+				return -EINVAL;
+			}
+		}
+	}
+
+	struct pdc_data_t *data = pdc_data[port];
+	struct pdc_config_t const *cfg = data->dev->config;
+	rv = tps_rw_global_system_configuration(
+		&cfg->i2c, &global_system_configuration, I2C_MSG_READ);
+	if (rv) {
+		LOG_ERR("TI%d: Read global system configuration failed (%d)",
+			cfg->connector_number, rv);
+		return rv;
+	}
+
+	current_pmc_address[0] =
+		global_system_configuration.port1_i2c2_target_address;
+	current_pmc_address[1] =
+		global_system_configuration.port2_i2c2_target_address;
+
+	LOG_INF("TI%d: i2c2_target_address: 0x%02x 0x%02x",
+		cfg->connector_number, current_pmc_address[0],
+		current_pmc_address[1]);
+
+	if (argc == 2) {
+		return 0;
+	}
+
+	global_system_configuration.port1_i2c2_target_address = address[0];
+	global_system_configuration.port2_i2c2_target_address = address[1];
+
+	LOG_INF("TI%d: Set PMC address 0x%02x 0x%02x -> 0x%02x 0x%02x",
+		cfg->connector_number, current_pmc_address[0],
+		current_pmc_address[1], address[0], address[1]);
+
+	rv = tps_rw_global_system_configuration(
+		&cfg->i2c, &global_system_configuration, I2C_MSG_WRITE);
+	if (rv) {
+		LOG_ERR("TI%d: Write global system configuration failed (%d)",
+			cfg->connector_number, rv);
+	}
+
+	return rv;
+}
+
+SHELL_STATIC_SUBCMD_SET_CREATE(
+	sub_pdc_tps_debug_cmds,
+	SHELL_CMD_ARG(pmc, NULL,
+		      "Set address in global system configuration. "
+		      "Usage: pdc_tps_debug pmc <port> [address_0 address_1]",
+		      cmd_pdc_tps_set_pmc_address, 2, 2),
+	SHELL_SUBCMD_SET_END);
+
+SHELL_CMD_REGISTER(pdc_tps_debug, &sub_pdc_tps_debug_cmds,
+		   "TI PDC debug commands", NULL);
