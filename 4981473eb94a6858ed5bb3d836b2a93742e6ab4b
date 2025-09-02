@@ -22,6 +22,30 @@
       },
       "revId": "4981473eb94a6858ed5bb3d836b2a93742e6ab4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55c25c5_87afea48",
+        "filename": "zephyr/Kconfig.debug_assert",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-02T18:26:17Z",
+      "side": 1,
+      "message": "ASSERT_NO_FILE_INFO does use more memory. However that option does not align with the description of PLATFORM_EC_DEBUG_ASSERT_BRIEF. This option removes message and condition info and only displays file and line number.",
+      "parentUuid": "a23e2224_1a7e9a9d",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "4981473eb94a6858ed5bb3d836b2a93742e6ab4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
