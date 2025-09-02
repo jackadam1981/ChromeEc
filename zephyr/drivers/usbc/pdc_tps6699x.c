@@ -1507,10 +1507,33 @@ static void cmd_get_vdo(struct pdc_data_t *data)
 {
 	struct pdc_config_t const *cfg = data->dev->config;
 	union reg_received_identity_data_object received_identity_data_object;
+	union reg_display_port_config display_port_config;
 	uint32_t *vdo = (uint32_t *)data->user_buf;
 	int rv;
 
-	if (data->vdo_req.vdo_origin == VDO_ORIGIN_SOP) {
+	switch (data->vdo_req.vdo_origin) {
+	case VDO_ORIGIN_PORT:
+		rv = tps_rd_display_port_config(&cfg->i2c,
+						&display_port_config);
+		if (rv) {
+			LOG_ERR("TI%d: Failed to read data status ACK (%d)",
+				cfg->connector_number, rv);
+			goto error_recovery;
+		}
+		for (int i = 0; i < data->vdo_req.num_vdos; i++) {
+			if (data->vdo_req_list[i] == VDO_PD_DP_CFG) {
+				vdo[i] = VDO_DP_CFG(
+					display_port_config.ufpd_pin_assignment,
+					display_port_config
+						.dp_transport_signalling,
+					display_port_config.dfpd_ufpd_connected);
+			} else {
+				/* Unsupported */
+				vdo[i] = 0;
+			}
+		}
+		goto get_vdo_return;
+	case VDO_ORIGIN_SOP:
 		rv = tps_rd_received_sop_identity_data_object(
 			&cfg->i2c, &received_identity_data_object);
 		if (rv) {
@@ -1518,7 +1541,8 @@ static void cmd_get_vdo(struct pdc_data_t *data)
 				cfg->connector_number, rv);
 			goto error_recovery;
 		}
-	} else if (data->vdo_req.vdo_origin == VDO_ORIGIN_SOP_PRIME) {
+		break;
+	case VDO_ORIGIN_SOP_PRIME:
 		rv = tps_rd_received_sop_prime_identity_data_object(
 			&cfg->i2c, &received_identity_data_object);
 		if (rv) {
@@ -1526,7 +1550,8 @@ static void cmd_get_vdo(struct pdc_data_t *data)
 				cfg->connector_number, rv);
 			goto error_recovery;
 		}
-	} else {
+		break;
+	default:
 		/* Unsupported */
 		LOG_ERR("TI%d: Unsupported VDO origin", cfg->connector_number);
 		goto error_recovery;
@@ -1549,6 +1574,7 @@ static void cmd_get_vdo(struct pdc_data_t *data)
 		}
 	}
 
+get_vdo_return:
 	data->cci_event.command_completed = 1;
 	/* Inform the system of the event */
 	call_cci_event_cb(data);

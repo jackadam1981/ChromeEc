@@ -1413,6 +1413,37 @@ union reg_received_attention_vdm {
 };
 
 /**
+ * @brief 4.54 Display Port Configuration Register (Offset = 51h)
+ */
+union reg_display_port_config {
+	struct {
+		uint8_t enable_dp_sid : 1;
+		uint8_t dp_mode : 1;
+		uint8_t reserved0 : 6;
+
+		uint8_t dp_port_cap : 2;
+		uint8_t dp_transport_signalling : 4;
+		uint8_t reserved1 : 1;
+		uint8_t usb_signalling_not_used : 1;
+
+		uint8_t dfpd_pin_assignment;
+		uint8_t ufpd_pin_assignment;
+
+		uint8_t multi_function_preferred : 1;
+		uint8_t reserved2 : 2;
+		uint8_t dfpd_ufpd_connected : 2;
+		uint8_t dp_vdo_version : 2;
+		uint8_t reserved3 : 1;
+
+		uint8_t dp_mode_auto_entry_allowed : 1;
+		uint8_t reserved4 : 7;
+
+		uint32_t dp_mode_data_tx_sopp;
+	} __packed;
+	uint8_t raw_value[10];
+};
+
+/**
  * @brief 4.62 Data Status Register (Offset 0x5f)
  */
 union reg_data_status {
