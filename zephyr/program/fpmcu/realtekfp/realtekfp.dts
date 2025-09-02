@@ -15,6 +15,7 @@
 		zephyr,flash-controller = &quadspi;
 		cros-ec,flash = &flash0;
 		cros-ec,flash-controller = &flash_controller;
+		cros-ec,watchdog = &watchdog;
 	};
 
 	flash_controller: cros-flash {
