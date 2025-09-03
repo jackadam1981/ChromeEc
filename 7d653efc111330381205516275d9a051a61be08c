@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2f0a66_e087a534",
+        "filename": "zephyr/debug/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-03T16:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d2b6fe_e7ac789d",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11150da6_d0c65979",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-03T15:38:19Z",
       "side": 1,
       "message": "Could the Zephyr \"Mutex Tracing APIs\" but used instead?",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c438fd6e_9a1480c5",
+        "filename": "zephyr/debug/mutex_history.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-03T16:20:58Z",
+      "side": 1,
+      "message": "I\u0027ll need to look into this more, as far as I can tell from their [documentation](https://docs.zephyrproject.org/latest/services/tracing/index.html#), you\u0027ll need third party tools to analyze the buffer, or need to have a coredump of sorts.",
+      "parentUuid": "11150da6_d0c65979",
       "revId": "7d653efc111330381205516275d9a051a61be08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "740afa5c_47304d36",
+        "filename": "zephyr/debug/mutex_history.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-03T16:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc59fec2_794c47bf",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cbd556a_d88e289a",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-09-03T15:38:19Z",
       "side": 1,
       "message": "It may be possible to declare the ring buffer in __noinit_end_of_ram so it\u0027s preserved across resets. It will complicate the init and dumping, so maybe not worth it if preserving isn\u0027t needed for your use case.",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd412730_6a264306",
+        "filename": "zephyr/debug/mutex_history.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-03T16:20:58Z",
+      "side": 1,
+      "message": "Currently dumping the mutex history in the watchdog timeout works for me.  I do think preserving this can be useful. \n\nAs this is disabled by default, the intent is for a developer to enable this when a repeatable issue is observed, and log their mutex of interest.  Dump history when a potential deadlock may be occurring.",
+      "parentUuid": "6cbd556a_d88e289a",
       "revId": "7d653efc111330381205516275d9a051a61be08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
