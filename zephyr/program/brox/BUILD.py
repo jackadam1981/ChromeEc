@@ -7,7 +7,8 @@
 
 def register_brox_project(
     project_name,
-    chip="it8xxx2/it82002aw",
+    #chip="it8xxx2/it82002aw",
+    chip="it8xxx2/it82000bw",
     kconfig_files=None,
 ):
     """Register a variant of brox."""
