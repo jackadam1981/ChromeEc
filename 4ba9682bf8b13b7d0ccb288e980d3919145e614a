@@ -22,6 +22,30 @@
       },
       "revId": "4ba9682bf8b13b7d0ccb288e980d3919145e614a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b8f6da_b468cf8c",
+        "filename": "zephyr/program/bluey/src/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-03T22:31:03Z",
+      "side": 1,
+      "message": "The purpose here is to mark at least one of the states, either AC connected or disconnected. \n\nsince we don\u0027t have the charger enabled this check needs to be done manually.",
+      "parentUuid": "5fac6551_049caecd",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "4ba9682bf8b13b7d0ccb288e980d3919145e614a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
