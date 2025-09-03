@@ -3618,44 +3618,6 @@
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
 
-/* Include sensor online calibration (requires CONFIG_FPU) */
-#undef CONFIG_ONLINE_CALIB
-
-/*
- * Spoof the data for online calibration. When this flag is enabled, every
- * reading with the flag MOTIONSENSE_FLAG_IN_SPOOF_MODE will be treated as a
- * new calibration point. This should be used in conjunction with
- * CONFIG_ACCEL_SPOOF_MODE. To trigger an accelerometer calibration for
- * example, enable both config flags, connect to the cr50 terminal and run:
- * $ accelspoof id on X Y Z
- * This will spoof a reading of (X, Y, Z) from the sensor and treat those
- * values as the calibration result (bypassing the calibration for the given
- * sensor ID).
- */
-#undef CONFIG_ONLINE_CALIB_SPOOF_MODE
-
-/*
- * Duration after which an entry in the temperature cache is considered stale.
- * Defaults to 5 minutes if not set.
- */
-#undef CONFIG_TEMP_CACHE_STALE_THRES
-
-/* Set minimum temperature for accelerometer calibration. */
-#undef CONFIG_ACCEL_CAL_MIN_TEMP
-
-/* Set maximum temperature for accelerometer calibration. */
-#undef CONFIG_ACCEL_CAL_MAX_TEMP
-
-/* Set threshold radius for using the Kasa algorithm in accelerometer bias
- * calculation (g).
- */
-#undef CONFIG_ACCEL_CAL_KASA_RADIUS_THRES
-
-/* Set threshold radius for using the Newton fit algorithm in accelerometer
- * bias calculation (g).
- */
-#undef CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES
-
 /* Include code to do online compass calibration */
 #undef CONFIG_MAG_CALIBRATE
 
@@ -7273,22 +7235,6 @@
 #error "Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES"
 #endif
 
-#ifndef CONFIG_TEMP_CACHE_STALE_THRES
-#ifdef CONFIG_ONLINE_CALIB
-/*
- * Boards may choose to leave this to default and just turn on online
- * calibration, in which case we'll set the threshold to 5 minutes.
- */
-#define CONFIG_TEMP_CACHE_STALE_THRES (5 * MINUTE)
-#else
-/*
- * Boards that use the FIFO and not the online calibration can just leave this
- * at 0.
- */
-#define CONFIG_TEMP_CACHE_STALE_THRES 0
-#endif /* CONFIG_ONLINE_CALIB */
-#endif /* !CONFIG_TEMP_CACHE_STALE_THRES */
-
 #endif /* CONFIG_ACCEL_FIFO */
 
 /*
@@ -7329,29 +7275,6 @@
 #ifdef CONFIG_SMBUS_PEC
 #define CONFIG_CRC8
 #endif
-
-#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_FPU)
-#error "Online calibration requires CONFIG_FPU"
-#endif
-
-/* Set default values for accelerometer calibration if not defined. */
-#ifdef CONFIG_ONLINE_CALIB
-#ifndef CONFIG_ACCEL_CAL_MIN_TEMP
-#define CONFIG_ACCEL_CAL_MIN_TEMP 0.0f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_MAX_TEMP
-#define CONFIG_ACCEL_CAL_MAX_TEMP 45.0f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_KASA_RADIUS_THRES
-#define CONFIG_ACCEL_CAL_KASA_RADIUS_THRES 0.001f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES
-#define CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES 0.001f
-#endif
-#endif /* CONFIG_ONLINE_CALIB */
 
 /*
  *  Vivaldi keyboard code to be enabled only if board has selected

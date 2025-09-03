@@ -24,7 +24,6 @@
 #include "motion_orientation.h"
 #include "motion_sense.h"
 #include "motion_sense_fifo.h"
-#include "online_calibration.h"
 #include "power.h"
 #include "printf.h"
 #include "queue.h"
@@ -1109,7 +1108,6 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	int i, ret = EC_RES_INVALID_PARAM, reported;
 	const void *in_offset;
 	const void *in_scale;
-	void *out_calib_read;
 	void *out_scale;
 	void *out_offset;
 	int16_t out_temp;
@@ -1226,10 +1224,6 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			args->response_size = sizeof(out->info_3);
 		}
 		if (args->version >= 4) {
-			if (IS_ENABLED(CONFIG_ONLINE_CALIB) &&
-			    sensor->drv->read_temp)
-				out->info_4.flags |=
-					MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB;
 			args->response_size = sizeof(out->info_4);
 		}
 		break;
@@ -1455,19 +1449,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 		break;
 	case MOTIONSENSE_CMD_ONLINE_CALIB_READ:
-		if (!IS_ENABLED(CONFIG_ONLINE_CALIB))
-			return EC_RES_INVALID_PARAM;
-		sensor = host_sensor_id_to_real_sensor(
-			in->online_calib_read.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-		out_calib_read = &out->online_calib_read;
-		args->response_size =
-			online_calibration_read(sensor, out_calib_read) ?
-				sizeof(struct ec_response_online_calibration_data) :
-				0;
-		break;
+		return EC_RES_INVALID_PARAM;
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	case MOTIONSENSE_CMD_LIST_ACTIVITIES: {
 		uint32_t enabled, disabled, mask, i;
