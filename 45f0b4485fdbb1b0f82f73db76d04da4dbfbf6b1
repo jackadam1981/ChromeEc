@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91de541b_4b250dc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c269580_da0709ca",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d73d801_f40f46c6",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-02T23:08:56Z",
       "side": 1,
       "message": "nit: Remove extra space and use tab",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb94613_962b19e1",
+        "filename": "zephyr/program/fatcat/lapis/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d73d801_f40f46c6",
       "range": {
         "startLine": 17,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad33cdac_d025908e",
+        "filename": "zephyr/program/fatcat/lapis/fan.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "490abdb9_fcddb103",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90825677_e44f5922",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-09-02T23:08:56Z",
       "side": 1,
       "message": "please use /* */ comment format to be consistent with other entries and for the following led node.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 12
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "479fc203_1aa9ad5f",
+        "filename": "zephyr/program/fatcat/lapis/gpios.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90825677_e44f5922",
       "range": {
         "startLine": 127,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1772a2_2b13837a",
+        "filename": "zephyr/program/fatcat/lapis/i2c.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "The \u0026i2c_3 is not needed, delete it.",
+      "parentUuid": "b63e9e44_e6955df2",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcb229f3_972073a9",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-09-03T09:30:44Z",
       "side": 1,
       "message": "these can go, they are inferred from devicetree",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96718feb_95b212d8",
+        "filename": "zephyr/program/fatcat/lapis/include/keyboard_customization.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb229f3_972073a9",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c155b5_e56e2afd",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8f7696_e337533f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "decd6748_d1a8bbf3",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-09-02T23:08:56Z",
       "side": 1,
       "message": "Should move this out of this group as it is being used.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8208a13_0adf3699",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "decd6748_d1a8bbf3",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a479787_4aab2fae",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1741fe33_b0ec7dc5",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aab25e6_ace10778",
@@ -221,6 +437,30 @@
       "writtenOn": "2025-09-02T23:08:56Z",
       "side": 1,
       "message": "nit: please add new line here for readability",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b240da35_284ea999",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aab25e6_ace10778",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20b1633_6b8b1b9a",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Confirm with our power RD, 45W is enough.",
+      "parentUuid": "a63995d5_582ef0bc",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aed6c3ce_c5ac8dc3",
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe86ca3b_de309502",
+        "filename": "zephyr/program/fatcat/lapis/project.overlay",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed6c3ce_c5ac8dc3",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcb3abf1_d33da032",
@@ -290,6 +578,30 @@
       "writtenOn": "2025-09-02T23:08:56Z",
       "side": 1,
       "message": "Why is this commented out? Same comment for port C1",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a966ba3_158ab862",
+        "filename": "zephyr/program/fatcat/lapis/usb_typec.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-03T12:11:10Z",
+      "side": 1,
+      "message": "Lapis has no runtime selection of PDC drivers, so this comment can be deleted.",
+      "parentUuid": "fcb3abf1_d33da032",
       "range": {
         "startLine": 40,
         "startChar": 2,
