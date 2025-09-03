@@ -140,6 +140,7 @@
 
 		/* The new configs node to hold an array of configurations */
 		configs {
+			compatible = "fingerprint-sensor";
 			config0 {
 				width = <160>;
 				height = <160>;
@@ -154,6 +155,38 @@
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
 				capture-type = <4>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config2 {
+				width = <160>;
+				height = <160>;
+				bits-per-pixel = <8>;
+				frame-size = <25600>;
+				capture-type = <8>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config3 {
+				width = <160>;
+				height = <160>;
+				bits-per-pixel = <8>;
+				frame-size = <25600>;
+				capture-type = <12>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config4 {
+				width = <160>;
+				height = <160>;
+				bits-per-pixel = <8>;
+				frame-size = <25600>;
+				capture-type = <16>;
+				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+			};
+			config5 {
+				width = <160>;
+				height = <160>;
+				bits-per-pixel = <8>;
+				frame-size = <25600>;
+				capture-type = <20>;
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 		};

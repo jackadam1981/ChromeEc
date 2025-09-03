@@ -26,24 +26,16 @@ extern "C" {
 #endif
 
 /**
- * @brief Get the nth child node of the given parent node.
- *
- * @param node_id Devicetree node identifier for the parent.
- * @param idx Index of the child node to retrieve.
- * @return Node identifier of the nth child.
- */
-#define DT_CHILD_BY_IDX(node_id, idx) DT_CAT(DT_CAT(node_id, _CHILD_), idx)
-
-/**
  * @brief Get fingerprint sensor width for a given configuration index.
  *
  * @param node_id Devicetree node identifier for the sensor.
  * @param idx Index of the configuration to retrieve the width from.
  * @return Sensor width.
  */
-#define FINGERPRINT_SENSOR_RES_X(node_id, idx) \
-	DT_PROP(DT_CHILD_BY_IDX(DT_CHILD(node_id, configs), idx), width)
+#define FINGERPRINT_SENSOR_RES_X(idx, node_id) \
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), width)
 
+//	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config0), width)
 /**
  * @brief Get fingerprint sensor height for a given configuration index.
  *
@@ -51,8 +43,8 @@ extern "C" {
  * @param idx Index of the configuration to retrieve the height from.
  * @return Sensor height.
  */
-#define FINGERPRINT_SENSOR_RES_Y(node_id, idx) \
-	DT_PROP(DT_CHILD_BY_IDX(DT_CHILD(node_id, configs), idx), height)
+#define FINGERPRINT_SENSOR_RES_Y(idx, node_id) \
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), height)
 
 /**
  * @brief Get fingerprint sensor resolution (bits per pixel) for a given
@@ -62,8 +54,8 @@ extern "C" {
  * @param idx Index of the configuration to retrieve the bits per pixel from.
  * @return Sensor bits per pixel.
  */
-#define FINGERPRINT_SENSOR_RES_BPP(node_id, idx)                  \
-	DT_PROP(DT_CHILD_BY_IDX(DT_CHILD(node_id, configs), idx), \
+#define FINGERPRINT_SENSOR_RES_BPP(idx, node_id)                   \
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), \
 		bits_per_pixel)
 
 /**
@@ -73,8 +65,8 @@ extern "C" {
  * @param idx Index of the configuration to retrieve the capture type from.
  * @return Sensor capture type (enum fp_capture_type).
  */
-#define FINGERPRINT_SENSOR_CAPTURE_TYPE(node_id, idx) \
-	DT_PROP(DT_CHILD_BY_IDX(DT_CHILD(node_id, configs), idx), capture_type)
+#define FINGERPRINT_SENSOR_CAPTURE_TYPE(idx, node_id) \
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), capture_type)
 
 /**
  * @brief Get fingerprint sensor pixel format for a given configuration index.
@@ -83,9 +75,9 @@ extern "C" {
  * @param idx Index of the configuration to retrieve the pixel format from.
  * @return Sensor V4L2 pixel format token.
  */
-#define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(node_id, idx)        \
-	DT_PROP(DT_CHILD_BY_IDX(DT_CHILD(node_id, configs), idx), \
-		v4l2_pixel_format)
+#define FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(idx, node_id)                 \
+	DT_STRING_TOKEN(DT_CHILD(DT_CHILD(node_id, configs), config##idx), \
+			v4l2_pixel_format)
 
 /**
  * @brief Get size of raw fingerprint frame size (in bytes) for a given
@@ -97,8 +89,8 @@ extern "C" {
  * @param idx Index of the configuration to retrieve the frame size from.
  * @return Frame size in bytes.
  */
-#define FINGERPRINT_SENSOR_FRAME_SIZE(node_id, idx) \
-	DT_PROP(DT_CHILD_BY_IDX(DT_CHILD(node_id, configs), idx), frame_size)
+#define FINGERPRINT_SENSOR_FRAME_SIZE(idx, node_id) \
+	DT_PROP(DT_CHILD(DT_CHILD(node_id, configs), config##idx), frame_size)
 
 /**
  * @brief Get the number of capture configurations defined for a fingerprint
@@ -114,7 +106,8 @@ extern "C" {
  * @return The number of distinct capture configurations available for the
  * sensor.
  */
-#define FINGERPRINT_SENSOR_NUM_CONFIGS(node_id) DT_PROP_LEN(node_id, configs)
+#define FINGERPRINT_SENSOR_NUM_CONFIGS(node_id) \
+	DT_CHILD_NUM(DT_CHILD(node_id, configs))
 
 /**
  * @brief Get the number of image capture configurations for the system's
@@ -134,11 +127,7 @@ extern "C" {
 	FINGERPRINT_SENSOR_NUM_CONFIGS(DT_CHOSEN(cros_fp_fingerprint_sensor))
 
 /** Get size of raw fingerprint image (in bytes). */
-#define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id) \
-	((FINGERPRINT_SENSOR_RES_X(0, node_id) *    \
-	  FINGERPRINT_SENSOR_RES_Y(0, node_id) *    \
-	  FINGERPRINT_SENSOR_RES_BPP(0, node_id)) / \
-	 8)
+#define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id) 25600
 
 /** Dead pixels bitmask. */
 #define FINGERPRINT_ERROR_DEAD_PIXELS_MASK GENMASK(9, 0)

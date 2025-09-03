@@ -9,16 +9,6 @@ compatible: "fpc,fpc1025"
 include: [spi-device.yaml]
 
 properties:
-  configs:
-    type: array
-    required: true
-    description: Container for supported sensor configurations/modes.
-    child-binding:
-      # This specifies that children of 'configs' must have a compatible property
-      # that uses the 'fingerprint-sensor' binding.
-      compatible: "fingerprint-sensor"
-
-properties:
   irq-gpios:
     type: phandle-array
     required: true
