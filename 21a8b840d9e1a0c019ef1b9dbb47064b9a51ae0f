@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa359d2_4680fb88",
+        "filename": "zephyr/boards/google/it8xxx2/it8xxx2_it82000bw.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-09-03T02:53:48Z",
+      "side": 1,
+      "message": "Please also override gpios property. (uart rx / gpioc 7)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "21a8b840d9e1a0c019ef1b9dbb47064b9a51ae0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
