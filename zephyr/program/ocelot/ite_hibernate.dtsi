@@ -6,8 +6,25 @@
 /* Platform based hibernate support triggered using the EN_SLP_Z signal */
 
 /{
+	/*
 	hibernate_z5: hibernate-z5 {
 		compatible = "cros-ec,hibernate-z5";
 		en-slp-z-gpios = <&gpiod 4 GPIO_ACTIVE_HIGH>;
 	};
+	*/
+};
+
+&power_ctrl_elpm {
+	status = "okay";
+	pinctrl-0 = <&xlpin0_gpq0_default &xlpin1_gpq1_default
+		     &xlpin2_gpq2_default &xlpin4_gpq4_default>;
+	pinctrl-names = "default";
+
+	/* XLPIN[4]: enabled, high-rising
+	 * XLPIN[3]: disabled, there is no xlpin[3] on it82000.bw soc
+	 * XLPIN[2]: enabled, high-rising
+	 * XLPIN[1]: enabled, low-falling
+	 * XLPIN[0]: enabled, high-rising
+	 */
+	xlpins-polarity = "high-rising", "low-falling", "high-rising", "default", "high-rising";
 };
