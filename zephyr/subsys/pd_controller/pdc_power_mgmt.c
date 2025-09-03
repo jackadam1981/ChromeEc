@@ -4668,12 +4668,14 @@ static void pdc_update_battery_status(struct pdc_port_t *port)
 	}
 
 	port->bstat = bsdo;
-	if (pdc_power_mgmt_is_sink_connected(port_number)) {
-		atomic_set_bit(port->snk_policy.flags,
-			       SNK_POLICY_UPDATE_BATTERY_STATUS);
-	} else if (pdc_power_mgmt_is_source_connected(port_number)) {
-		atomic_set_bit(port->src_policy.flags,
-			       SRC_POLICY_UPDATE_BATTERY_STATUS);
+	if (pdc_support_set_battery_status(port->pdc)) {
+		if (pdc_power_mgmt_is_sink_connected(port_number)) {
+			atomic_set_bit(port->snk_policy.flags,
+				       SNK_POLICY_UPDATE_BATTERY_STATUS);
+		} else if (pdc_power_mgmt_is_source_connected(port_number)) {
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_UPDATE_BATTERY_STATUS);
+		}
 	}
 }
 
