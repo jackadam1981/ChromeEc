@@ -46,6 +46,30 @@
       },
       "revId": "4ba9682bf8b13b7d0ccb288e980d3919145e614a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95cd74c_f7cb5e18",
+        "filename": "zephyr/program/bluey/src/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-03T23:19:07Z",
+      "side": 1,
+      "message": "Does the interrupt handler of the AC_PRESENT pin set the event?",
+      "parentUuid": "e7b8f6da_b468cf8c",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "4ba9682bf8b13b7d0ccb288e980d3919145e614a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
