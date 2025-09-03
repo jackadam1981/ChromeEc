@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750f24b8_8520d86d",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:04:54Z",
+      "side": 1,
+      "message": "Fix/remove this comment since it will never happen, ISH has its own init.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6724dc_e7860007",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:04:54Z",
+      "side": 1,
+      "message": "is this change needed? IS_ENABLED() does the same thing.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820452f7_5fe70cac",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:04:54Z",
+      "side": 1,
+      "message": "In the case of the ISH and its remove GMR sensors, we don\u0027t need to call gmr_tablet_switch_interrupt_debounce_data() through a hook defered call, we are not under interrupt.\nCan we call gmr_tablet_switch_interrupt_debounce() directly? (renaming it if necesary).",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6ea853_dde94a5d",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:04:54Z",
+      "side": 1,
+      "message": "I would move `#endif /* GMR_TABLET_MODE */` from line 333 to line 280 (or above) to limit the #ifdef nesting. You can also move the #ifdef/error code line 197 here.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
