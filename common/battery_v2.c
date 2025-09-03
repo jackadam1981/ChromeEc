@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "math_util.h"
@@ -247,6 +248,19 @@ bool battery_is_below_threshold(const struct batt_params *batt,
 	}
 
 	return batt->state_of_charge <= get_battery_threshold_percent(type);
+}
+
+void battery_poll_dynamic_info(void)
+{
+	struct batt_params batt;
+	bool ac_present;
+	bool is_charging;
+
+	battery_get_params(&batt);
+	ac_present = extpower_is_present();
+	is_charging = ac_present && (batt.current >= 0);
+
+	battery_set_dynamic_info(&batt, ac_present, is_charging);
 }
 
 int update_static_battery_info(void)
