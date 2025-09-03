@@ -16,6 +16,23 @@
       "message": "This should get reviewed by FP team. Adding current on-call engineers.",
       "revId": "38e845f4aa4cc828574b934ca00071817f693f35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a752bc7_525de8b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-03T20:29:12Z",
+      "side": 1,
+      "message": "What is the memory savings from disabling this config?",
+      "revId": "38e845f4aa4cc828574b934ca00071817f693f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
