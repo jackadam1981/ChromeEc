@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d2b6fe_e7ac789d",
+        "filename": "zephyr/debug/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:38:19Z",
+      "side": 1,
+      "message": "Should this be PLATFORM_EC_MUTEX_HISTORY?",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11150da6_d0c65979",
+        "filename": "zephyr/debug/mutex_history.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:38:19Z",
+      "side": 1,
+      "message": "Could the Zephyr \"Mutex Tracing APIs\" but used instead?",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc59fec2_794c47bf",
+        "filename": "zephyr/debug/mutex_history.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:38:19Z",
+      "side": 1,
+      "message": "Maybe log init too since that\u0027s a known failure condition. Using a mutex before initialization will deadlock.",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cbd556a_d88e289a",
+        "filename": "zephyr/debug/mutex_history.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:38:19Z",
+      "side": 1,
+      "message": "It may be possible to declare the ring buffer in __noinit_end_of_ram so it\u0027s preserved across resets. It will complicate the init and dumping, so maybe not worth it if preserving isn\u0027t needed for your use case.",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
