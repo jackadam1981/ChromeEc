@@ -104,8 +104,7 @@ config PLATFORM_EC_ALS
     help
       Enable this to indicate there's at least one or more ALS devices available.
       If PLATFORM_EC_MOTION_FILL_LPC_SENSE_DATA is set, then motion task updates
-      the designated part of EC memmap with the ALS data. The updating EC memmap
-      can be also done by the dedicated ALS task with HAS_ALS_TASK set.
+      the designated part of EC memmap with the ALS data.
       Number of ALS entries reserved in EC memmap are defined by EC_ALS_ENTRIES
       in ec_commands.h.
 

@@ -631,7 +631,7 @@ static void update_sense_data(uint8_t *lpc_status, int *psample_id)
 			lpc_data[1 + i + 3 * d] =
 				ec_motion_sensor_clamp_i16(sensor->xyz[i]);
 	}
-	if (!IS_ENABLED(HAS_TASK_ALS) && IS_ENABLED(CONFIG_ALS)) {
+	if (IS_ENABLED(CONFIG_ALS)) {
 		uint16_t *lpc_als = (uint16_t *)host_get_memmap(EC_MEMMAP_ALS);
 
 		for (i = 0; i < EC_ALS_ENTRIES && i < ALS_COUNT; i++)

@@ -334,11 +334,6 @@
  * Some ALS modules may be connected to the EC. We need the command, and
  * specific drivers for each module.
  */
-#ifdef HAS_TASK_ALS
-#define CONFIG_ALS
-#else
-#undef CONFIG_ALS
-#endif
 #undef CONFIG_ALS_AL3010
 #undef CONFIG_ALS_BH1730
 /*
