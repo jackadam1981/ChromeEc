@@ -1600,6 +1600,13 @@ static inline int pdc_set_battery_status(const struct device *dev,
 	return api->set_battery_status(dev, bstat);
 }
 
+static inline bool pdc_support_set_battery_status(const struct device *dev)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+	return api->set_battery_status != NULL;
+}
+
 /**
  * @brief Configure PDC for BBR compliance test
  *
