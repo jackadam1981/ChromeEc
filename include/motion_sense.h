@@ -149,28 +149,6 @@ struct motion_data_t {
  */
 #define MOTIONSENSE_FLAG_IN_SPOOF_MODE BIT(1)
 
-struct online_calib_data {
-	/**
-	 * Type specific data.
-	 * - For Accelerometers use struct accel_cal.
-	 * - For Gyroscopes (not yet implemented).
-	 * - For Magnetormeters (not yet implemented).
-	 */
-	void *type_specific_data;
-
-	/**
-	 * Cached calibration values from the latest successful calibration
-	 * pass.
-	 */
-	int16_t cache[3];
-
-	/** The latest temperature reading in K, negative if not set. */
-	int last_temperature;
-
-	/** Timestamp for the latest temperature reading. */
-	uint32_t last_temperature_timestamp;
-};
-
 struct motion_sensor_t {
 	/* RO fields */
 	uint32_t active_mask;
@@ -182,9 +160,6 @@ struct motion_sensor_t {
 	/* One mutex per physical chip. */
 	mutex_t *mutex;
 	void *drv_data;
-	/* Data used for online calibraiton, must match the sensor type. */
-	struct online_calib_data
-		online_calib_data[__cfg_select(CONFIG_ONLINE_CALIB, 1, 0)];
 
 	/* i2c port */
 	uint8_t port;

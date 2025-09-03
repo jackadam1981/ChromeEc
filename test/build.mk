@@ -87,10 +87,7 @@ test-list-host += motion_sense_fifo
 test-list-host += mutex
 test-list-host += mutex_recursive
 test-list-host += mutex_trylock
-test-list-host += newton_fit
 test-list-host += nvidia_gpu
-test-list-host += online_calibration
-test-list-host += online_calibration_spoof
 test-list-host += otp_key
 test-list-host += pingpong
 test-list-host += power_button
@@ -150,7 +147,6 @@ test-list-host += utils_str
 test-list-host += vboot
 test-list-host += version
 test-list-host += x25519
-test-list-host += stillness_detector
 -include ../ec-private/test/build.mk
 endif
 
@@ -169,7 +165,7 @@ cov-dont-test += version
 cov-dont-test += interrupt
 # Flaky tests. The number of covered lines changes from run to run
 # b/213374060
-cov-dont-test += accel_cal entropy flash float kb_mkbp kb_scan_strict
+cov-dont-test += entropy flash float kb_mkbp kb_scan_strict
 cov-dont-test += rsa
 
 cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
@@ -257,10 +253,7 @@ motion_lid-y=motion_lid.o
 motion_sense_fifo-y=motion_sense_fifo.o
 null_pointer-y=null_pointer.o
 nvidia_gpu-y=nvidia_gpu.o
-online_calibration-y=online_calibration.o
-online_calibration_spoof-y=online_calibration_spoof.o gyro_cal_init_for_test.o
 rgb_keyboard-y=rgb_keyboard.o
-kasa-y=kasa.o
 ifeq ($(USE_BUILTIN_STDLIB), 0)
 libc_printf-y=libc_printf.o
 endif
@@ -269,7 +262,6 @@ mpu-y=mpu.o
 mutex-y=mutex.o
 mutex_trylock-y=mutex_trylock.o
 mutex_recursive-y=mutex_recursive.o
-newton_fit-y=newton_fit.o
 otp_key-y=otp_key.o
 panic-y=panic.o
 panic_data-y=panic_data.o
@@ -361,7 +353,6 @@ watchdog-y=watchdog.o
 float-y=fp.o
 fp-y=fp.o
 x25519-y=x25519.o
-stillness_detector-y=stillness_detector.o
 
 host-is_enabled_error: TEST_SCRIPT=is_enabled_error.sh
 is_enabled_error-y=is_enabled_error.o.cmd
