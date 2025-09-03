@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62dc4174_5a728d5a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-03T18:26:25Z",
+      "side": 1,
+      "message": "There are other boards that still need this and have their own init. Searching boards/ for board.h files that don\u0027t contain CONFIG_GMR_TABLET_MODE there seem to be a lot.",
+      "parentUuid": "750f24b8_8520d86d",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6724dc_e7860007",
         "filename": "common/tablet_mode.c",
         "patchSetId": 9
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-03T18:04:54Z",
       "side": 1,
       "message": "is this change needed? IS_ENABLED() does the same thing.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f70aee_475785bf",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-03T18:26:25Z",
+      "side": 1,
+      "message": "It\u0027s almost the same, but on the ISH `GPIO_TABLET_MODEL_L` isn\u0027t defined.",
+      "parentUuid": "0d6724dc_e7860007",
       "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "558b7372_a8a1e9cc",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-03T18:26:25Z",
+      "side": 1,
+      "message": "Done, I added a check for `in_interrupt_context()` and just called the debounce function directly.",
+      "parentUuid": "820452f7_5fe70cac",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d6ea853_dde94a5d",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-09-03T18:04:54Z",
       "side": 1,
       "message": "I would move `#endif /* GMR_TABLET_MODE */` from line 333 to line 280 (or above) to limit the #ifdef nesting. You can also move the #ifdef/error code line 197 here.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b471d0_ef7d7496",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-03T18:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d6ea853_dde94a5d",
       "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
