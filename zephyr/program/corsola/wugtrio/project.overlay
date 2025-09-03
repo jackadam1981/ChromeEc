@@ -26,6 +26,9 @@
 		default_battery: nb0346-427689 {
 			compatible = "gfl,nb0346-427689", "battery-smart";
 		};
+		scud_g71c000pk110 {
+			compatible =  "scud,g71c000pk110", "battery-smart";
+		};
 	};
 
 	gpio-interrupts {
