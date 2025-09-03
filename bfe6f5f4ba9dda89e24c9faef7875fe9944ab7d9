@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d8f1f7_fe4bdf65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-03T04:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb3d350_52f179b0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "059237af_eb02c64c",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "updated mentioned change, with separate CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6893331/1",
       "parentUuid": "059237af_eb02c64c",
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1066e639_fe05c367",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-03T04:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa22ea2_7902ded9",
       "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59a281e_7218b95f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-03T04:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9556d434_fa9715df",
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6d4f438_0d6b272a",
@@ -149,6 +209,24 @@
       "side": 1,
       "message": "Done, Adjusted as per suggested Counter Reset position",
       "parentUuid": "a6d4f438_0d6b272a",
+      "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca716fc_411092be",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3085,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-03T04:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2db1d4d9_14669d5a",
       "revId": "bfe6f5f4ba9dda89e24c9faef7875fe9944ab7d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
