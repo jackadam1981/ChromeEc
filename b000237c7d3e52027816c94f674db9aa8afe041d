@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf47177_8c0641c4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-03T11:43:43Z",
+      "side": 1,
+      "message": "Remove handling pd_status_updated in patch set 12.",
+      "parentUuid": "dbce55a6_7e08482b",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 39
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14142a5f_3f0d7b2f",
@@ -203,6 +227,30 @@
       "writtenOn": "2025-08-22T22:17:03Z",
       "side": 1,
       "message": "I don\u0027t think this is an error; it just means we need to wait for the chip to intialize. I think we could move this check near the top and do `set_state_delayed_post(ST_INIT, ...)` if not in APP1 so we try again after a ~10ms delay. That will cause the check to run again next",
+      "range": {
+        "startLine": 915,
+        "startChar": 1,
+        "endLine": 917,
+        "endChar": 2
+      },
+      "revId": "b000237c7d3e52027816c94f674db9aa8afe041d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e32c158_a41566e7",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-03T11:43:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14142a5f_3f0d7b2f",
       "range": {
         "startLine": 915,
         "startChar": 1,
