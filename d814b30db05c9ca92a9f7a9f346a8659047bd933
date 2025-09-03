@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd6daaf_ec948f5d",
+        "filename": "util/symbolize_log.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:21:10Z",
+      "side": 1,
+      "message": "Please provide an example input and output.",
+      "revId": "d814b30db05c9ca92a9f7a9f346a8659047bd933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e1e602_c4548c0a",
+        "filename": "util/symbolize_log.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:21:10Z",
+      "side": 1,
+      "message": "It may be worth making this tool more liberal so it can handle panicinfo dumps as well.",
+      "revId": "d814b30db05c9ca92a9f7a9f346a8659047bd933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61863e10_5e66cf83",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-03T15:21:10Z",
+      "side": 1,
+      "message": "Task id is more useful than thread address here.",
+      "revId": "d814b30db05c9ca92a9f7a9f346a8659047bd933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
