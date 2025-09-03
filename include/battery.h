@@ -522,7 +522,8 @@ int update_static_battery_info(void);
 /**
  * Read dynamic battery info from a main battery and store it in a cache.
  */
-void update_dynamic_battery_info(void);
+void battery_update_dynamic_info(const struct batt_params *params,
+				 bool ac_present, bool is_charging);
 
 #ifdef __cplusplus
 }
