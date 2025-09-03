@@ -520,9 +520,17 @@ void battery_validate_params(struct batt_params *batt);
 int update_static_battery_info(void);
 
 /**
- * Read dynamic battery info from a main battery and store it in a cache.
+ * @brief Updates the cached dynamic battery information.
+ *
+ * This function uses the battery parameters and system power
+ * status to refresh the dynamic battery information cache.
+ *
+ * @param params Pointer to the struct containing current battery data.
+ * @param ac_present True if AC power is connected, false otherwise.
+ * @param is_charging True if the battery is currently charging.
  */
-void update_dynamic_battery_info(void);
+void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
+			      bool is_charging);
 
 #ifdef __cplusplus
 }

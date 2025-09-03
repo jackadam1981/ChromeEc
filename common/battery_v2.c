@@ -314,22 +314,21 @@ int update_static_battery_info(void)
 	return rv;
 }
 
-void update_dynamic_battery_info(void)
+void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
+			      bool is_charging)
 {
 	static int batt_present;
 	uint8_t tmp;
 	__maybe_unused int send_batt_status_event = 0;
 	__maybe_unused int send_batt_info_event = 0;
-	struct charge_state_data *curr;
 	struct ec_response_battery_dynamic_info *const bd =
 		&battery_dynamic[BATT_IDX_MAIN];
 
-	curr = charge_get_status();
 	tmp = 0;
-	if (curr->ac)
+	if (ac_present)
 		tmp |= EC_BATT_FLAG_AC_PRESENT;
 
-	if (curr->batt.is_present == BP_YES) {
+	if (params->is_present == BP_YES) {
 		tmp |= EC_BATT_FLAG_BATT_PRESENT;
 		batt_present = 1;
 		/* Tell the AP to read battery info if it is newly present. */
@@ -347,50 +346,46 @@ void update_dynamic_battery_info(void)
 		batt_present = 0;
 	}
 
-	if (curr->batt.flags & BATT_FLAG_BAD_ANY)
+	if (params->flags & BATT_FLAG_BAD_ANY)
 		tmp |= EC_BATT_FLAG_INVALID_DATA;
 
-	if (!(curr->batt.flags & BATT_FLAG_BAD_VOLTAGE))
-		bd->actual_voltage = curr->batt.voltage;
+	if (!(params->flags & BATT_FLAG_BAD_VOLTAGE))
+		bd->actual_voltage = params->voltage;
 
-	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT))
-		bd->actual_current = curr->batt.current;
+	if (!(params->flags & BATT_FLAG_BAD_CURRENT))
+		bd->actual_current = params->current;
 
-	if (!(curr->batt.flags & BATT_FLAG_BAD_DESIRED_VOLTAGE))
-		bd->desired_voltage = curr->batt.desired_voltage;
+	if (!(params->flags & BATT_FLAG_BAD_DESIRED_VOLTAGE))
+		bd->desired_voltage = params->desired_voltage;
 
-	if (!(curr->batt.flags & BATT_FLAG_BAD_DESIRED_CURRENT))
-		bd->desired_current = curr->batt.desired_current;
+	if (!(params->flags & BATT_FLAG_BAD_DESIRED_CURRENT))
+		bd->desired_current = params->desired_current;
 
-	if (!(curr->batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY)) {
+	if (!(params->flags & BATT_FLAG_BAD_REMAINING_CAPACITY)) {
 		/*
 		 * If we're running off the battery, it must have some charge.
 		 * Don't report zero charge, as that has special meaning
 		 * to Chrome OS powerd.
 		 */
-		if (curr->batt.remaining_capacity == 0 &&
-		    !curr->batt_is_charging)
+		if (params->remaining_capacity == 0 && !is_charging)
 			bd->remaining_capacity = 1;
 		else
-			bd->remaining_capacity = curr->batt.remaining_capacity;
+			bd->remaining_capacity = params->remaining_capacity;
 	}
 
-	if (!(curr->batt.flags & BATT_FLAG_BAD_FULL_CAPACITY) &&
-	    (curr->batt.full_capacity <=
-		     (bd->full_capacity - LFCC_EVENT_THRESH) ||
-	     curr->batt.full_capacity >=
+	if (!(params->flags & BATT_FLAG_BAD_FULL_CAPACITY) &&
+	    (params->full_capacity <= (bd->full_capacity - LFCC_EVENT_THRESH) ||
+	     params->full_capacity >=
 		     (bd->full_capacity + LFCC_EVENT_THRESH))) {
-		bd->full_capacity = curr->batt.full_capacity;
+		bd->full_capacity = params->full_capacity;
 		/* Poke the AP if the full_capacity changes. */
 		send_batt_info_event++;
 	}
-
-	if (curr->batt.is_present == BP_YES &&
+	if (params->is_present == BP_YES &&
 	    battery_is_below_threshold(BATT_THRESHOLD_TYPE_SHUTDOWN, false))
 		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
 
-	tmp |= curr->batt_is_charging ? EC_BATT_FLAG_CHARGING :
-					EC_BATT_FLAG_DISCHARGING;
+	tmp |= is_charging ? EC_BATT_FLAG_CHARGING : EC_BATT_FLAG_DISCHARGING;
 
 	if (battery_is_cut_off())
 		tmp |= EC_BATT_FLAG_CUT_OFF;
