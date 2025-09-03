@@ -47,7 +47,8 @@ def register_it8xxx2_project(
 
     register_binman_project(
         project_name=project_name,
-        zephyr_board="it8xxx2/it82002aw",
+        #zephyr_board="it8xxx2/it82002aw",
+        zephyr_board="it8xxx2/it82000bw",
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
