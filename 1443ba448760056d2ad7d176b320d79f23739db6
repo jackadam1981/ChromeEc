@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bf7298b_2cd8e476",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T17:03:04Z",
+      "side": 1,
+      "message": "let\u0027s remvoe bmi323 support in a parent CL, to make sure the configuration is not supported at all.",
+      "parentUuid": "01c6e6fc_1ea4f3c1",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6a8bb6a_d7049684",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
