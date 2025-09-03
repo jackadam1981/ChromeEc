@@ -86,6 +86,30 @@
       },
       "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae2a224_4a2a94f6",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-03T20:22:08Z",
+      "side": 1,
+      "message": "Please check this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6909771\n\nIt is a demonstration of creating the `configs` array using `child-binding`. If this is what you are expecting, I can easily modify the rest of the code.",
+      "parentUuid": "010eecd3_ac37ccbd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
