@@ -52,6 +52,24 @@
       "parentUuid": "1044227b_9a13bc4e",
       "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018b8b04_67ddb5cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-09-03T18:40:04Z",
+      "side": 1,
+      "message": "\u003e Please check the refactoring proposal: http://go/ec-battery-refactoring-2025.\n\u003e \n\u003e Free feel to comment.\n\nsorry for rushing in but can we have a short term and long term plan. we need to support charging usecase (which has dependency over low-battery mode detection) for HP design by 09/15 PO. So, appreciate if we have a short term approach and allow to have some time for long term implementation which relies on the design doc alignment and feedback.",
+      "parentUuid": "260aa123_6d6dda1a",
+      "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
