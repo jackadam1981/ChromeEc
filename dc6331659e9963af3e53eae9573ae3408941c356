@@ -70,6 +70,24 @@
       "parentUuid": "260aa123_6d6dda1a",
       "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bce453c_c6ef2578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-03T20:32:34Z",
+      "side": 1,
+      "message": "I think there are parts of this refactor that are important for the charging support and some parts which can be taken up later. \n\nlet me share the patches for the parts which will affect the charging solution first and we will discuss and take up the other parts of the design doc in a day or two. \n\nThis way we can unblock the HP design.",
+      "parentUuid": "018b8b04_67ddb5cd",
+      "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
