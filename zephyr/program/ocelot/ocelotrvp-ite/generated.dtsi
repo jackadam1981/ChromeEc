@@ -49,7 +49,8 @@
 		};
 		gpio_ccd_mode_odl: ccd_mode_odl {
 			// signal name was manually overriden from "bga_pinm1"
-			gpios = <&gpioe 6 (GPIO_INPUT)>;
+			/* ITE Debug: gpioe6 is configured as uart1 tx */
+			/* gpios = <&gpioe 6 (GPIO_INPUT)>; */
 		};
 		gpio_cpu_c10_gate_r: cpu_c10_gate_r {
 			gpios = <&gpiob 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
@@ -194,9 +195,15 @@
 			 * different base RVP board */
 			<&gpiob 3 (GPIO_INPUT | GPIO_PULL_DOWN)>,
 			/* BGA_PINM2 */
-			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* ITE Debug: gpioc7 is configured as uart1 rx */
+			/* <&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>, */
 			/* BGA_PINN1 */
-			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* ITE Debug: gpiob[1:0]/gpiob[4:3]/gpiog[1] are nc */
+			<&gpiob 0 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+			<&gpiob 1 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+			<&gpiog 1 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+
 	};
 };
 
