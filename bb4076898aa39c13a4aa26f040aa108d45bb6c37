@@ -16,6 +16,24 @@
       "message": "Ok, a couple of things. `board_led.h` is the older and mostly deprecated driver, the driver responsible for `led_policy.dtsi` is `led_driver/led.h`. Also just having the enum in the `.h` file is enough, you don\u0027t need a separate `#define`.\n\nI\u0027ve taken the liberty of fixing the includes and I\u0027ve added twister coverage to the new property. You should double check to make sure it\u0027s still working after the changes.\n\nOtherwise, this LGTM.",
       "revId": "bb4076898aa39c13a4aa26f040aa108d45bb6c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d532dd_c0f880c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-09-03T11:09:31Z",
+      "side": 1,
+      "message": "It seems `led_driver/led.h` cannot be included by board variant source code (`caboc/src/led_customization.c`). That\u0027s reason I made the declaration in `board_led.h`.\nSo if it goes this way, we have to make declaration in board variant include lib which has to be same as in `led_driver/led.h` when we need to override `pwr_led_support_check` like I did in CL:6904307?",
+      "parentUuid": "fddd4cdc_c5b436d6",
+      "revId": "bb4076898aa39c13a4aa26f040aa108d45bb6c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
