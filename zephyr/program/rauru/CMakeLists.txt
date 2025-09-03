@@ -33,4 +33,8 @@ elseif(DEFINED CONFIG_BOARD_NAVI)
 elseif(DEFINED CONFIG_BOARD_HYLIA)
 	project(hylia)
 	add_subdirectory(hylia)
+
+elseif(DEFINED CONFIG_BOARD_SAPPHIRE)
+	project(sapphire)
+	add_subdirectory(sapphire)
 endif()

@@ -40,6 +40,12 @@ config BOARD_HYLIA
 	  Build Google Hylia board. Hylia has MediaTek SoC
 	  with ITE it82202-ax EC.
 
+config BOARD_SAPPHIRE
+	bool "Google Sapphire Board"
+	help
+	  Build Google Sapphire board. Sapphire has MediaTek SoC
+	  with ITE it82202-ax EC.
+
 config RAURU_BOARD_PANEL_BACKLIGHT_SEQUENCE_CUSTOM
 	bool "Rauru Platform Board Panel Backlight Sequence Customization"
 	default n
