@@ -16,6 +16,24 @@
       "message": "@asemjonovs@google.com\n@keithshort@chromium.org\n@tomhughes@chromium.org\n\nI am trying to create an array of an object that contain fingerprint sensor configs (width, height, bbp, etc.). I did some modification to the below files. In order to compile the code, I am running `sudo zmake -D build helipilot --clobber`\n\nI am getting an error. The code before this CL compiles properly. The only difference is that the previous code define an array of width, an array of heights, an array of bbp, etc.\n\nThe goal is to group these config paramaters in an object and create an array of it.\n\nThe error that I am seeing is here: https://paste.googleplex.com/4754165334802432\n\nThe error points out that I am defining wrong macros to extract the parameters from the device tree. However, I am not sure if I have defined the yaml files correctly to begin with.\n\nCan you please let me know your feedback and point me to any reference that can help closing on the loop.",
       "revId": "357683d8a840849c9e5b030ee9652410f1aa20a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d121638c_499a7697",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-03T01:28:48Z",
+      "side": 1,
+      "message": "I think you can template your changes off of EC\u0027s motion sense config parsing. \nSee the following files.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/program/brox/motionsense.dtsi#68\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/dts/bindings/motionsense/cros-ec,motionsense-sensor-config.yaml#22\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/main/zephyr/shim/src/motionsense_sensors.c#209\n\nI\u0027m suspecting you may need your `zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml` defined using `child-binding` like in `motion-sensor-config.yaml`",
+      "parentUuid": "deed8aca_b56c2b56",
+      "revId": "357683d8a840849c9e5b030ee9652410f1aa20a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
