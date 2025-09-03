@@ -1,0 +1,25 @@
+/*
+ * Copyright (c) ITE, All Rights Reserved
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+#include <ite/it82xx2.dtsi>
+#include "it8xxx2.dtsi"
+#include <ite/it82000.dtsi>
+#include <ite/it82000-pinctrl-map.dts>
+
+/ {
+    model = "IT82XX2 IT82000.BW EV-Board";
+};
+
+&i2c0 {
+    pinctrl-0 = <&i2c0_clk_gpf2_default
+             &i2c0_data_gpf3_default>;
+};
+
+&ite_uart1_wrapper {
+    pinctrl-0 = <&uart1_rx_gpc7_default
+             &uart1_tx_gpe6_default>;
+};
