@@ -16,6 +16,24 @@
       "message": "The flags are not quite static actually. I think it would be better to refactor the code to support the cached status. Let me think about it first. I would appreciate your input on it.",
       "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1044227b_9a13bc4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-03T10:39:45Z",
+      "side": 1,
+      "message": "\u003e The flags are not quite static actually\n\nThe flags in question are identical to those found in the update_dynamic_battery_info function. We can therefore use the existing dynamic information and mark it as cached to convey the proper status. This allows us to cache both static and dynamic data before the Application Processor (AP) is powered on. A mock implementation of this approach is provided below: \n\n- https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6903520/6\n- https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6903521/5\n\n\u003eI think it would be better to refactor the code to support the cached status. Let me think about it first. I would appreciate your input on it.\n\nto mark the data as cached we can use the 8th bit in `flags` (which is free) to have something like `EC_BATT_FLAG_BATT_PARAM_CACHED` and mark it cached using the function calls for static and dynamic info update. \n\nSomething similar to this -\u003e\n\n```\n*/\nvoid update_dynamic_battery_info(bool is_cached)\n{\n\t//update bd-\u003eflags to mark cached\n\tif (is_cached){\n\t\tbd-\u003eflags |\u003d EC_BATT_FLAG_BATT_PARAM_CACHE;\n\t}\n}\n``` \n\nWDYT?",
+      "parentUuid": "b40bb4c5_89f8379f",
+      "revId": "dc6331659e9963af3e53eae9573ae3408941c356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
