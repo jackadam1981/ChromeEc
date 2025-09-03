@@ -37,10 +37,6 @@ common-$(CONFIG_TEMP_SENSOR_PCT2075)+=math_util.o
 common-$(CONFIG_CMD_ADC)+=adc.o
 common-$(HAS_TASK_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
-common-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
-common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
-common-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
-common-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 common-$(CONFIG_BASE32)+=base32.o
 common-$(CONFIG_BLINK)+=blink.o
@@ -228,9 +224,6 @@ common-$(CONFIG_HOST_COMMAND_MEMORY_DUMP)+=host_command_memory_dump.o
 common-$(CONFIG_PRESERVED_RING_BUF)+=preserved_ring_buf.o
 common-$(CONFIG_PANIC_LOG)+=panic_log.o
 
-ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
-common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
-endif
 
 ifeq ($(USE_BUILTIN_STDLIB), 0)
 common-$(CONFIG_SHARED_MALLOC)+=shmalloc.o

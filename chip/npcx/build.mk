@@ -27,9 +27,6 @@ chip-y+=gpio-$(CHIP_FAMILY).o
 
 # Optional chip modules
 chip-$(CONFIG_ADC)+=adc.o
-chip-$(CONFIG_AUDIO_CODEC)+=apm.o wov.o
-chip-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
-chip-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o i2c-$(CHIP_FAMILY).o

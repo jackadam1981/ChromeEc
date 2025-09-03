@@ -418,28 +418,6 @@
  */
 #undef CONFIG_ASSEMBLY_MULA32
 
-#ifndef CONFIG_ZEPHYR
-/* Support audio codec. */
-#undef CONFIG_AUDIO_CODEC
-#endif /* CONFIG_ZEPHYR */
-/* Audio codec caps. */
-#undef CONFIG_AUDIO_CODEC_CAP_WOV_AUDIO_SHM
-#undef CONFIG_AUDIO_CODEC_CAP_WOV_LANG_SHM
-/* Support audio codec on DMIC. */
-#undef CONFIG_AUDIO_CODEC_DMIC
-/* Support audio codec software gain on DMIC. */
-#undef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
-#undef CONFIG_AUDIO_CODEC_DMIC_MAX_SOFTWARE_GAIN
-/* Support audio codec on I2S RX. */
-#undef CONFIG_AUDIO_CODEC_I2S_RX
-/* Support audio codec on WoV. */
-#undef CONFIG_AUDIO_CODEC_WOV
-/* Audio codec buffers. */
-#undef CONFIG_AUDIO_CODEC_WOV_AUDIO_BUF_LEN
-#undef CONFIG_AUDIO_CODEC_WOV_AUDIO_BUF_TYPE
-#undef CONFIG_AUDIO_CODEC_WOV_LANG_BUF_LEN
-#undef CONFIG_AUDIO_CODEC_WOV_LANG_BUF_TYPE
-
 /*
  * Support controlling the display backlight based on the state of the lid
  * switch.  The EC will disable the backlight when the lid is closed.
@@ -7319,11 +7297,6 @@
 #ifndef CONFIG_CHARGESPLASH_MAX_REQUESTS_PER_PERIOD
 #define CONFIG_CHARGESPLASH_MAX_REQUESTS_PER_PERIOD 5
 #endif
-#endif
-
-/* EC Codec Wake-on-Voice related definitions */
-#ifdef CONFIG_AUDIO_CODEC_WOV
-#define CONFIG_SHA256_SW
 #endif
 
 #ifdef CONFIG_SMBUS_PEC
