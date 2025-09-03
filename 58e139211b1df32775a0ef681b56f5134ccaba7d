@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d790b67_2f437c2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-03T20:55:41Z",
+      "side": 1,
+      "message": "This CL combines several different changes, and I\u0027m getting a little confused about which parts are critical to which changes and what the individual effect of each change is. As noted in another comment, it seems like this CL loses the effect of the earlier CL:6796691.\n\nI want to make this suggestion carefully, because we\u0027re already deep into the review. You should push back on it if you think it will make things more confusing.\n\nBut the tPDDebounce addition and the software toggle counter aspects of this change make sense to me, and I think they\u0027re probably ready for submission modulo unit testing. The tDRP changes from the previous CL don\u0027t make sense to me. If it make sense to split those things up, you could move the tDRP changes to a separate CL in this stack leave the other changes in this CL to finish the review. **Again, split it up that way only if they make sense to you as separate changes with independent effects.**",
+      "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0610b883_9a52dd39",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-03T20:55:41Z",
+      "side": 1,
+      "message": "Nit: Can you add a little bit here to explain that this ensures consistent toggle timing during marginal partner behavior, such as compliance tests.",
+      "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27590829_0bdf5d1f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3562,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-03T20:55:41Z",
+      "side": 1,
+      "message": "I\u0027m confused by the scope of this CL. I thought it was supposed to incorporate CL:6796691, which removes this timer set/check and adds a replacement one in `tc_unattached_src_run`. The result was that when transitioning from Unattached.SNK or Unattached.SRC to DRPAutoToggle, only a single iteration of tDRP was applied.\n\nThis CL appears to add the delay to Unattached.SRC (among other things), but at least superficially, it leaves the redundant delay in DRPAutoToggle. then, it adds the below \"fast path\" exception that I don\u0027t fully understand yet.\n\nWas the timer change in the previous CL incorrect? If so, can you explain at a high level the timer change intended in this CL?",
+      "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
