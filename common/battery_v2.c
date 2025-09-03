@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "math_util.h"
@@ -224,6 +225,19 @@ static int is_battery_string_reliable(const char *buf)
 	}
 
 	return 1;
+}
+
+void battery_poll(void)
+{
+	struct batt_params batt;
+	bool ac_present;
+	bool is_charging;
+
+	battery_get_params(&batt);
+	ac_present = extpower_is_present();
+	is_charging = ac_present && (batt.current >= 0);
+
+	battery_update_dynamic_info(&batt, ac_present, is_charging);
 }
 
 int update_static_battery_info(void)

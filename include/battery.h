@@ -513,6 +513,13 @@ __override_proto void board_battery_compensate_params(struct batt_params *batt);
 void battery_validate_params(struct batt_params *batt);
 
 /**
+ * Poll for the battery dynamic information, This function can be
+ * called inside project specific code. meant for projects which doesn't
+ * have CONFIG_CHARGER enabled
+ */
+void battery_poll(void);
+
+/**
  * Read static battery info from a main battery and store it in a cache.
  *
  * @return EC_SUCCESS or EC_ERROR_*.
