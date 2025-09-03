@@ -540,6 +540,13 @@ bool battery_is_below_threshold(const struct batt_params *batt,
 				enum batt_threshold_type type);
 
 /**
+ * This function polls for dynamic battery information and is designed to be
+ * called from program/project-specific code, especially that do not have
+ * the CONFIG_CHARGER option enabled.
+ */
+void battery_poll_dynamic_info(void);
+
+/**
  * Read static battery info from a main battery and store it in a cache.
  *
  * @return EC_SUCCESS or EC_ERROR_*.
