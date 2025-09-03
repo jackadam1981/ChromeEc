@@ -46,6 +46,30 @@
       },
       "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8945a17a_8ab2c2f3",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-03T23:35:09Z",
+      "side": 1,
+      "message": "What I understand is that the main `event` is for ACPI, while the `event_b` is for other purposes (the use of coreboot is this case). Setting an event set both copies but clearing it needs to be done separately.\n\nTherefore, you need to clear both copies by calling `host_clear_events()` and `host_clear_events_b()`.",
+      "parentUuid": "9e8a752e_f0cad543",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
