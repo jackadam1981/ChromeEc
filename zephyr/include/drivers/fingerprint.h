@@ -127,11 +127,7 @@ extern "C" {
 	FINGERPRINT_SENSOR_NUM_CONFIGS(DT_CHOSEN(cros_fp_fingerprint_sensor))
 
 /** Get size of raw fingerprint image (in bytes). */
-#define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id) \
-	((FINGERPRINT_SENSOR_RES_X(0, node_id) *    \
-	  FINGERPRINT_SENSOR_RES_Y(0, node_id) *    \
-	  FINGERPRINT_SENSOR_RES_BPP(0, node_id)) / \
-	 8)
+#define FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(node_id) 25600
 
 /** Dead pixels bitmask. */
 #define FINGERPRINT_ERROR_DEAD_PIXELS_MASK GENMASK(9, 0)
