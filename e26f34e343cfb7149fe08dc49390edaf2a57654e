@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b586c298_43f3780c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-03T20:23:50Z",
+      "side": 1,
+      "message": "I believe we need to rename this file `fingerprint-sensor,image-frame-params.yaml`",
+      "parentUuid": "a0d5b6eb_8abadba9",
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a198a24f_d1d082c4",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "Please check this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6909771\n\nIt is a demonstration of creating the `configs` array using `child-binding`. If this is what you are expecting, I can easily modify the rest of the code.",
       "parentUuid": "010eecd3_ac37ccbd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9557ce6b_92b42715",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-03T20:23:50Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "8ae2a224_4a2a94f6",
       "range": {
         "startLine": 7,
         "startChar": 0,
