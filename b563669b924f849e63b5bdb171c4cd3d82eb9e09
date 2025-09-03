@@ -22,6 +22,30 @@
       },
       "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8a752e_f0cad543",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-03T22:35:14Z",
+      "side": 1,
+      "message": "`host_clear_events_b()` is based on the observation that the host event was only applying to `Event-B`\n\n```\n25-09-03 22:07:56.487 ec:\u003e hostevent\n25-09-03 22:33:20.381 Events:              0x0000000000402484\n25-09-03 22:33:20.383 Events-B:            0x0000000000000000\n```",
+      "parentUuid": "ba95f7cf_d76eb0c1",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
