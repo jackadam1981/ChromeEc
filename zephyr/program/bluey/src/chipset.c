@@ -5,10 +5,23 @@
 
 /* Bluey chipset-specific configuration */
 
+#include "battery.h"
 #include "common.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "power/qcom.h"
+
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+
+void board_chipset_pre_init(void)
+{
+	/* Cache the battery parameters before AP power on */
+	if (battery_is_present() == BP_YES) {
+		battery_poll();
+		CPRINTS("battery parameters cached");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 
 void board_chipset_startup(void)
 {
