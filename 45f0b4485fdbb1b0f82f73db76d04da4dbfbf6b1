@@ -118,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcb229f3_972073a9",
+        "filename": "zephyr/program/fatcat/lapis/include/keyboard_customization.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-09-03T09:30:44Z",
+      "side": 1,
+      "message": "these can go, they are inferred from devicetree",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "45f0b4485fdbb1b0f82f73db76d04da4dbfbf6b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f8f7696_e337533f",
         "filename": "zephyr/program/fatcat/lapis/project.conf",
         "patchSetId": 7
