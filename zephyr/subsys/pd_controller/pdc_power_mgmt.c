@@ -281,8 +281,6 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_SET_FRS,
 	/** SNK_ATTACHED_GET_PDOS */
 	SNK_ATTACHED_GET_PDOS,
-	/** SNK_ATTACHED_READ_POWER_LEVEL */
-	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_GET_VDO */
 	SNK_ATTACHED_GET_VDO,
 	/** SNK_ATTACHED_SYNC_CHARGE_MGR */
@@ -295,6 +293,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_GET_SINK_PDO,
 	/** SNK_ATTACHED_GET_CABLE_PROPERTY */
 	SNK_ATTACHED_GET_CABLE_PROPERTY,
+	/** SNK_ATTACHED_READ_POWER_LEVEL */
+	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_RUN */
 	SNK_ATTACHED_RUN,
 };
@@ -2596,7 +2596,7 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		} else {
 			port->snk_attached_local_state =
 				(port->sink_path_status ?
-					 SNK_ATTACHED_READ_POWER_LEVEL :
+					 SNK_ATTACHED_SYNC_CHARGE_MGR :
 					 SNK_ATTACHED_EVALUATE_PDOS);
 			port->get_pdo.updating = false;
 		}
@@ -2612,12 +2612,8 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		 */
 		if (pdc_snk_attached_evaluate_pdos(port)) {
 			port->snk_attached_local_state =
-				SNK_ATTACHED_READ_POWER_LEVEL;
+				SNK_ATTACHED_SYNC_CHARGE_MGR;
 		}
-		return SMF_EVENT_HANDLED;
-	case SNK_ATTACHED_READ_POWER_LEVEL:
-		port->snk_attached_local_state = SNK_ATTACHED_SYNC_CHARGE_MGR;
-		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SYNC_CHARGE_MGR:
 		/* Update Charge Manager with PDO/RDO the PDC has negotiated or
@@ -2677,8 +2673,12 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		/* If !CONFIG_PLATFORM_EC_USB_PD_FRS, fallthrough */
 		__fallthrough;
 	case SNK_ATTACHED_GET_CABLE_PROPERTY:
-		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		port->snk_attached_local_state = SNK_ATTACHED_READ_POWER_LEVEL;
 		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		return SMF_EVENT_HANDLED;
+	case SNK_ATTACHED_READ_POWER_LEVEL:
+		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_RUN:
 		/* Hard Reset could disable Sink FET. Re-enable it */
