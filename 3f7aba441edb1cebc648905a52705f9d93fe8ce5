@@ -38,6 +38,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d04757a_2d039a19",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:32:35Z",
+      "side": 1,
+      "message": "Remove the comment line 195 then, it won\u0027t happen.",
+      "parentUuid": "62dc4174_5a728d5a",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5393c626_d88f5b95",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:32:35Z",
+      "side": 1,
+      "message": "move this code line 282, to simplify the #ifdef test statement.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d6724dc_e7860007",
         "filename": "common/tablet_mode.c",
         "patchSetId": 9
@@ -137,6 +172,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "3d6ea853_dde94a5d",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e465f13_560a52f3",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:32:35Z",
+      "side": 1,
+      "message": "see comment line 197.",
+      "parentUuid": "78b471d0_ef7d7496",
       "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

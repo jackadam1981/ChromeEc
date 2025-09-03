@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59ea37b_05701273",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-03T18:32:35Z",
+      "side": 1,
+      "message": "Instead of adding code, why not calling `gmr_tablet_switch_interrupt_debounce()` directly, renaming it `gmr_tablet_switch_interrupt_processing()` or soemthing like that. Bonus point, the ifdef line 288 can move higher.",
+      "revId": "1ab8582c9ffa0b580b0e9442c362fda9cd81ee32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
