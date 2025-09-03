@@ -52,7 +52,7 @@
 		/* Note - gpios property must be set by the board overlay */
 		output;
 	};
-	pwr-ec-pch-sys-pwrok {
+	pwr_ec_pch_sys_pwrok: pwr-ec-pch-sys-pwrok {
 		compatible = "intel,ap-pwrseq-external";
 		dbg-label = "SYS_PWROK output to PCH";
 		enum-name = "PWR_EC_PCH_SYS_PWROK";
