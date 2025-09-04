@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3289c621_68187748",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-04T21:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4ecaced_f8bf8ba3",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 31
+      },
+      "revId": "d5d547a2eb2cf31c0b8199b03c29ff0e2019f9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ed41150_f06b4555",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-04T15:32:28Z",
       "side": 1,
       "message": "This is using the legacy GPIO named-gpios under the Zephyr directory. \n\nPlease create a stub driver to specify the GPIOs needed for write protect\n```\nmchp-wp {\n   compatible \u003d \"mchp,write-protect\";\n   wp-gpios \u003d \u003c\u003e;\n   wp-ex-gpios \u003d \u003c\u003e;\n```",
+      "range": {
+        "startLine": 201,
+        "startChar": 18,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "d5d547a2eb2cf31c0b8199b03c29ff0e2019f9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53dbf6dd_4e03ebfa",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-04T21:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed41150_f06b4555",
       "range": {
         "startLine": 201,
         "startChar": 18,
