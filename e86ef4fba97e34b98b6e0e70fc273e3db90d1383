@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5deeb8fe_5c981f4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-04T13:54:08Z",
+      "side": 1,
+      "message": "\"the device might not even notice.\"\nNot true: as it stands today, if the ISH restarts while the host was collecting sensor data, the collection will stop and never resume. Unless we expect the ISH to crash often, we should reboot the host when the ISH crashes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "e86ef4fba97e34b98b6e0e70fc273e3db90d1383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
