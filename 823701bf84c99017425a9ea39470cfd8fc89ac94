@@ -264,6 +264,24 @@
       "parentUuid": "78993205_fa84eebd",
       "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424bc3bc_50efcc94",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 73
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-04T17:34:33Z",
+      "side": 1,
+      "message": "removed per our discussion. marking this comment as resolved.",
+      "parentUuid": "9f09dd84_7102e944",
+      "revId": "823701bf84c99017425a9ea39470cfd8fc89ac94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
