@@ -46,6 +46,30 @@
       },
       "revId": "f5cbcac997e0d0323e426c1f64bb8e3752379d07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf53144_e8a02479",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-09-04T18:59:45Z",
+      "side": 1,
+      "message": "\u003e Acknowledged\n\nI guess Tom is asking to use a local variable to hold the value and not necessarily use a macro. this would avoid regeneration of the macro value which is eventually same in both lines",
+      "parentUuid": "539356f2_5de1d142",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "f5cbcac997e0d0323e426c1f64bb8e3752379d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
