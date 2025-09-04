@@ -30,6 +30,7 @@ static const char auth_token_key_seed_compat_str[] =
 static const char versioned_seed_compat_str[] =
 	"google,versioned-seed";
 
+/* All values in the structure below are little-endian. */
 struct res_mem_hdr_s {
 	uint8_t vm_name_offset[4];
 	uint8_t blob_offset[4];
@@ -40,7 +41,7 @@ struct res_mem_hdr_s {
 
 struct res_mem_s {
 	struct res_mem_hdrs_s {
-		/* The number of reserved blobs in the entry */
+		/* The number of reserved blobs in the entry, little-endian */
 		uint8_t count[4]; /* equal to 4 */
 
 		/*
@@ -85,45 +86,45 @@ struct res_mem_s {
 	} strings;
 };
 
-#define BE32_VALUE(value) \
+#define LE32_VALUE(value) \
 { \
-	(uint8_t)(((value) & 0xFF000000) >> 24), \
-	(uint8_t)(((value) & 0x00FF0000) >> 16), \
+	(uint8_t)((value) & 0x000000FF),         \
 	(uint8_t)(((value) & 0x0000FF00) >> 8),  \
-	(uint8_t)((value) & 0x000000FF)          \
+	(uint8_t)(((value) & 0x00FF0000) >> 16), \
+	(uint8_t)(((value) & 0xFF000000) >> 24)  \
 }
 
 #define STRING_OFFSET(name) \
-	BE32_VALUE( \
+	LE32_VALUE( \
 		sizeof(struct res_mem_blobs_s) + \
 		offsetof(struct res_mem_strings_s, name) \
 	)
 
 #define BLOB_OFFSET(name) \
-	BE32_VALUE(offsetof(struct res_mem_blobs_s, name))
+	LE32_VALUE(offsetof(struct res_mem_blobs_s, name))
 
-#define BE32_FLAGS { 0, 0, 0, 1 }
+#define LE32_FLAGS LE32_VALUE(1)
 
 #define RES_MEM_HDR_WITH_TYPE(blob_name, blob_type, compat_name) \
 { \
 	STRING_OFFSET(desktop_trusty_name), \
 	BLOB_OFFSET(blob_name), \
-	BE32_VALUE(sizeof(blob_type)), \
+	LE32_VALUE(sizeof(blob_type)), \
 	STRING_OFFSET(compat_name), \
-	BE32_FLAGS \
+	LE32_FLAGS \
 }
 
 #define RES_MEM_HDR_WITH_SIZE(blob_name, blob_size, compat_name) \
 { \
 	STRING_OFFSET(desktop_trusty_name), \
 	BLOB_OFFSET(blob_name), \
-	BE32_VALUE(blob_size), \
+	LE32_VALUE(blob_size), \
 	STRING_OFFSET(compat_name), \
-	BE32_FLAGS \
+	LE32_FLAGS \
 }
 
 static const struct res_mem_hdrs_s res_mem_hdrs = {
-	BE32_VALUE(4), /* count */
+	LE32_VALUE(4), /* count */
 	RES_MEM_HDR_WITH_SIZE(early_entropy, EARLY_ENTROPY_BYTES,
 			      early_entropy_compat),
 	RES_MEM_HDR_WITH_SIZE(session_key_seed, KEY_SEED_BYTES,
