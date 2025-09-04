@@ -8,7 +8,7 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | DT PrePVT version | DT Prod Version | NT PrePVT version | NT Prod Version
 ------------------- | ----------------- | --------------- | ----------------- | ---------------
-[ToT][ToT ebuild]   | 0.24.210          | 0.23.210        | 0.34.210          | 0.33.210
+[ToT][ToT ebuild]   | 0.24.220          | 0.23.210        | 0.34.220          | 0.33.210
 [M140][140 release] | 0.24.210          | 0.23.190        | 0.33.210          | 0.33.210
 [M139][139 release] | 0.24.180          | 0.23.180        | 0.33.190          | 0.33.190
 [M138][138 release] | 0.24.172          | 0.23.160        | 0.33.190          | 0.33.190
@@ -137,8 +137,8 @@ Released with RW 0.24.112 and 0.23.112
 
 # NT RO revisions
 
-The notes start with 0.0.108, but there were releases before that. The first
-NT devices were manufactured with 0.0.113. Devices released to consumers run
+The notes start with 0.0.108, but there were releases before that. The first NT
+devices were manufactured with 0.0.113. Devices released to consumers run
 0.0.113 or newer.
 
 This just covers general features. See the ROM\_EXT release notes for more
@@ -152,8 +152,8 @@ Released with 0.33.190 in M140. It was cherry-picked back to M138.
 
 ## 0.0.113 released on 08/20/2025 M140
 
-Image used in first consumer devices.
-Released with RW 0.33.210 in M141. It was cherry-picked back to M140.
+Image used in first consumer devices. Released with RW 0.33.210 in M141. It was
+cherry-picked back to M140.
 
 *   Only check BID type bits that are 1 in the BID type mask, so we can sign
     images with "FFFF" for the BID type. ex: FFFF:0:0x10
@@ -177,13 +177,14 @@ The below tables lists a row for every rollback era. Once both images slots on
 GSC progress to a lower row, then FW versions in previous rows are
 unavailable -- even with the rescue tool. All versions are **inclusive**.
 
-Bits | Lowest MP | Highest MP | Lowest PrePVT | Highest PrePVT | Reason
----- | --------- | ---------- | ------------- | -------------- | ------
-0    | N/A       | N/A        | 0.0.4         | 0.0.16         | Initial development
-1    | 0.21.0    | 0.21.1     | 0.22.0        | 0.22.9         | Initial GUC Factory release
-2    | 0.23.0    | 0.23.14    | 0.24.0        | 0.24.14        | First MP image shipping on devices
-3    | 0.23.20   | 0.23.71    | 0.24.20       | 0.24.71        | Image header fixes
-4    | 0.23.74   | current    | 0.24.81       | current        | Enable AP RO verification by default
+Bits | Lowest MP     | Highest MP | Lowest PrePVT | Highest PrePVT | Reason
+---- | ------------- | ---------- | ------------- | -------------- | ------
+0    | N/A           | N/A        | 0.0.4         | 0.0.16         | Initial development
+1    | 0.21.0        | 0.21.1     | 0.22.0        | 0.22.9         | Initial GUC Factory release
+2    | 0.23.0        | 0.23.14    | 0.24.0        | 0.24.14        | First MP image shipping on devices
+3    | 0.23.20       | 0.23.71    | 0.24.20       | 0.24.71        | Image header fixes
+4    | 0.23.74       | 0.23.210   | 0.24.81       | 0.24.210       | Enable AP RO verification by default
+5    | 0.{23,33}.220 | current    | 0.{24,34}.220 | current        | Annual rollback progression. Also NT initial release FW FSI
 
 ## MP images
 
@@ -2359,7 +2360,6 @@ Build:   0.24.180/ti50_common_prepvt-15974.B:v0.0.513-a5fd7035
 
 ### 0.24.190 Released on 2025-07-01 in M140
 
-
 Release
 [CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6696789)
 
@@ -2399,7 +2399,6 @@ Artifacts:
     [b/428071807](https://b.corp.google.com/issues/428071807)
 *   Add more debug tracing for dispatcher
     [b/416491971](https://b.corp.google.com/issues/416491971)
-
 
 **DT Specific Features**
 
@@ -2456,6 +2455,42 @@ Build:  0.{24,34}.210/ti50_common_prepvt-15974.B:v0.0.579-e62e5c78
         tock:v0.0.9685-7d2295b47
         ms-tpm-20-ref:v0.0.332-c2ce15c
         chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-1-3u1y 2025-07-31 10:35:58
+```
+
+### 0.x4.220 Released in DT-M141 NT-M141
+
+DT/NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6900103)
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/96](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/96/overview)
+
+Artifacts:
+[15974.95.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.95.0/)
+
+**Features**
+
+*   Improve concurrent storage access reliability
+    [b/440146847](https://b.corp.google.com/issues/440146847)
+*   Increase TPM stack size for boot params
+    [b/425687205](https://b.corp.google.com/issues/425687205)
+
+**NT Specific Bug Fixes**
+
+*   Attach internal pull down to unused PWM3 as advertised
+    [b/428015277](https://b.corp.google.com/issues/428015277)
+*   Improve I2C-based TPM handling when AP asks for data and none is available
+    [b/437174404](https://b.corp.google.com/issues/437174404)
+    [b/432676100](https://b.corp.google.com/issues/432676100)
+*   Fix general release bid flags to `0:0:0` from `FFFF:0:0`
+    [b/438710823](https://b.corp.google.com/issues/438710823)
+
+```
+Build:   0.{24,34}.220/ti50_common_prepvt-15974.B:v0.0.608-1cbeaea7
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-7d2295b47
+         ms-tpm-20-ref:v0.0.334-cb16056
+         chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-9cy4 2025-08-21 11:00:58
 ```
 
 <!-- Links -->
