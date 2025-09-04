@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2300cf_ea3115f7",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-04T17:01:19Z",
+      "side": 1,
+      "message": "Use a variable to save this mask such that the following call can reuse it.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "f5cbcac997e0d0323e426c1f64bb8e3752379d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
