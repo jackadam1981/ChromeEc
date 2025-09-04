@@ -155,7 +155,9 @@ register_ish_project(
     kconfig_files=[
         here / "ocelot-ish" / "prj.conf",
         here / "ocelot-ish" / "motionsense.conf",
+        here / "dsp_comms.conf",
     ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
 )
 
 # For realtek
