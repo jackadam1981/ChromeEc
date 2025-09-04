@@ -422,6 +422,78 @@ static void aneg_delayable_work_handler(struct k_work *w)
 	gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin, 0);
 }
 
+static const k_timeout_t APP0_DELAY_MS = K_MSEC(250 / 10 * 11);
+static const int BOOT_PORT1_TARGET_ADDRESS = 0x10;
+static const int BOOT_PORT2_TARGET_ADDRESS = 0x14;
+static const int APP_CONFIG_PORT1_TARGET_ADDRESS = 0x50;
+static const int APP_CONFIG_PORT2_TARGET_ADDRESS = 0x52;
+
+static inline bool tps6699x_emul_is_shared_reg(int reg)
+{
+	return reg == REG_GLOBAL_SYSTEM_CONFIGURATION || reg == REG_MODE;
+}
+
+static uint8_t (*tps6699x_emul_get_reg_address(
+	struct tps6699x_emul_pdc_data *data, int reg))[TPS6699X_REG_SIZE]
+{
+	if (tps6699x_emul_is_shared_reg(reg)) {
+		return &data->shared_data->reg_val[reg];
+	}
+	return &data->reg_val[reg];
+}
+
+static void mode_delayable_work_handler(struct k_work *w)
+{
+	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
+	struct tps6699x_emul_pdc_data *data = CONTAINER_OF(
+		dwork, struct tps6699x_emul_pdc_data, mode_delay_work);
+	union reg_mode *reg_mode =
+		(union reg_mode *)tps6699x_emul_get_reg_address(data, REG_MODE);
+	enum tps_mode *tps_mode = (enum tps_mode *)reg_mode->data;
+	union reg_global_system_configuration *global_system_configuration;
+	switch (*tps_mode) {
+	case REG_MODE_BOOT:
+		*tps_mode = REG_MODE_APP0;
+		/* To test driver handling pdc not reaching APP1, we halt in
+		APP0 for APP0_DELAY_MS = PDC_INIT_ERROR_RECOVERY_DELAY_MS * 1.1
+		because driver retries init in REG_MODE_BOOT with a delay of
+		PDC_INIT_ERROR_RECOVERY_DELAY_MS.
+		*/
+		k_work_schedule(&data->mode_delay_work, APP0_DELAY_MS);
+		break;
+	case REG_MODE_APP0:
+		global_system_configuration =
+			(union reg_global_system_configuration *)
+				tps6699x_emul_get_reg_address(
+					data, REG_GLOBAL_SYSTEM_CONFIGURATION);
+		global_system_configuration->port1_i2c2_target_address =
+			APP_CONFIG_PORT1_TARGET_ADDRESS;
+		global_system_configuration->port2_i2c2_target_address =
+			APP_CONFIG_PORT2_TARGET_ADDRESS;
+		*tps_mode = REG_MODE_APP1;
+		break;
+	default:
+		*tps_mode = REG_MODE_APP1;
+	}
+}
+
+static void tps6699x_reset_mode(struct tps6699x_emul_pdc_data *data)
+{
+	union reg_mode *reg_mode =
+		(union reg_mode *)tps6699x_emul_get_reg_address(data, REG_MODE);
+	union reg_global_system_configuration *global_system_configuration =
+		(union reg_global_system_configuration *)
+			tps6699x_emul_get_reg_address(
+				data, REG_GLOBAL_SYSTEM_CONFIGURATION);
+	global_system_configuration->port1_i2c2_target_address =
+		BOOT_PORT1_TARGET_ADDRESS;
+	global_system_configuration->port2_i2c2_target_address =
+		BOOT_PORT2_TARGET_ADDRESS;
+	/* Init register to boot and set to APP0 later */
+	*((uint32_t *)reg_mode->data) = REG_MODE_BOOT;
+	k_work_schedule(&data->mode_delay_work, K_MSEC(1));
+}
+
 static void tps6699x_emul_handle_aneg(struct tps6699x_emul_pdc_data *data,
 				      uint8_t *data_reg)
 {
@@ -492,6 +564,7 @@ static int tps6699x_emul_handle_gaid(struct tps6699x_emul_pdc_data *data,
 				     uint8_t *data_reg)
 {
 	LOG_INF("GAID TASK");
+	tps6699x_reset_mode(data);
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 	return 0;
 }
@@ -650,6 +723,8 @@ static int tps6699x_emul_write_byte(const struct emul *emul, int reg,
 				    uint8_t val, int bytes)
 {
 	struct tps6699x_emul_pdc_data *data = tps6699x_emul_get_pdc_data(emul);
+	uint8_t (*reg_val)[TPS6699X_REG_SIZE] =
+		tps6699x_emul_get_reg_address(data, reg);
 	/* Byte 0 of a write is the register address. Byte 1 (if present) is the
 	 * number of bytes to be written.
 	 */
@@ -668,7 +743,7 @@ static int tps6699x_emul_write_byte(const struct emul *emul, int reg,
 		return -EIO;
 	}
 
-	data->reg_val[reg][data_bytes] = val;
+	(*reg_val)[data_bytes] = val;
 
 	return 0;
 }
@@ -725,14 +800,15 @@ static int tps6699x_emul_read_byte(const struct emul *emul, int reg,
 				   uint8_t *val, int bytes)
 {
 	struct tps6699x_emul_pdc_data *data = tps6699x_emul_get_pdc_data(emul);
-
+	uint8_t (*reg_val)[TPS6699X_REG_SIZE] =
+		tps6699x_emul_get_reg_address(data, reg);
 	/*
 	 * Response byte 0 is always the number of bytes in the register.
 	 * Remaining bytes are read starting at offset. Note that the byte
 	 * following the number of bytes is considered to be at offset 0.
 	 */
 	if (bytes == 0) {
-		*val = sizeof(data->reg_val[reg]);
+		*val = sizeof(*reg_val);
 		data->transaction_bytes = *val;
 
 	} else {
@@ -741,7 +817,7 @@ static int tps6699x_emul_read_byte(const struct emul *emul, int reg,
 		if (!register_access_is_valid(data, reg, data_bytes)) {
 			return -EIO;
 		}
-		*val = data->reg_val[reg][data_bytes];
+		*val = (*reg_val)[data_bytes];
 	}
 
 	return 0;
@@ -1090,9 +1166,10 @@ static int emul_tps6699x_reset(const struct emul *target)
 		tps6699x_emul_get_pdc_data(target);
 	const union reg_port_control *pdc_port_control =
 		(const union reg_port_control *)data->reg_val[REG_PORT_CONTROL];
-	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
 
 	memset(data->reg_val, 0, sizeof(data->reg_val));
+	memset(data->shared_data->reg_val, 0,
+	       sizeof(data->shared_data->reg_val));
 
 	/* Reset PDOs. */
 	emul_pdc_pdo_reset(&data->pdo);
@@ -1111,9 +1188,7 @@ static int emul_tps6699x_reset(const struct emul *target)
 	memset(data->fail_reg_writes, 0, REG_U32_BITMAP_SIZE);
 	data->fail_next_ucsi_cmd_count = 0;
 
-	/* Initialize reg_mode to APP0 to indicate running from flash. */
-	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
-
+	tps6699x_reset_mode(data);
 	return 0;
 }
 
@@ -1178,8 +1253,6 @@ static int tps6699x_emul_init(const struct emul *emul,
 {
 	struct tps6699x_emul_data *data = emul->data;
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
-	union reg_mode *reg_mode =
-		(union reg_mode *)data->pdc_data.reg_val[REG_MODE];
 	LOG_INF("TPS669X emul init");
 
 	data->common.i2c = parent;
@@ -1192,10 +1265,10 @@ static int tps6699x_emul_init(const struct emul *emul,
 			      delayable_work_handler);
 	k_work_init_delayable(&data->pdc_data.aneg_delay_work,
 			      aneg_delayable_work_handler);
+	k_work_init_delayable(&data->pdc_data.mode_delay_work,
+			      mode_delayable_work_handler);
 
-	/* Init register to APP0 */
-	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
-
+	tps6699x_reset_mode(&data->pdc_data);
 	return 0;
 }
 
@@ -1304,7 +1377,6 @@ int emul_pdc_fail_reg_read(const struct emul *target, uint8_t reg)
 
 	data->fail_reg_reads[REG_BITMAP_INDEX(reg)] |=
 		BIT(REG_BITMAP_OFFSET(reg));
-
 	return 0;
 }
 
@@ -1319,7 +1391,6 @@ int emul_pdc_fail_reg_write(const struct emul *target, uint8_t reg)
 
 	data->fail_reg_writes[REG_BITMAP_INDEX(reg)] |=
 		BIT(REG_BITMAP_OFFSET(reg));
-
 	return 0;
 }
 
@@ -1460,6 +1531,8 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.get_autoneg_sink = emul_tps6699x_get_autoneg_sink,
 };
 
+struct tps6699x_emul_pdc_shared_data tps6699x_emul_pdc_shared_data;
+
 /* clang-format off */
 #define TPS6699X_EMUL_DEFINE(n) \
 	static struct tps6699x_emul_data tps6699x_emul_data_##n = { \
@@ -1474,6 +1547,7 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 		}, \
 		.pdc_data = { \
 			.irq_gpios = GPIO_DT_SPEC_INST_GET(n, irq_gpios), \
+			.shared_data = &tps6699x_emul_pdc_shared_data, \
 		}, \
 		.port = USBC_PORT_FROM_PDC_DRIVER_NODE(DT_DRV_INST(n)), \
 	}; \
