@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "931db296_438047de",
+        "filename": "zephyr/debug/mutex_history.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-04T16:57:12Z",
+      "side": 1,
+      "message": "As far as I can tell, the Zephyr tracing API only captures the mutex being acted upon.  No info on which thread or function locking the mutex. I think the info I have here is more useful for root causing deadlock scenarios.",
+      "parentUuid": "c438fd6e_9a1480c5",
+      "revId": "7d653efc111330381205516275d9a051a61be08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc59fec2_794c47bf",
         "filename": "zephyr/debug/mutex_history.h",
         "patchSetId": 1
