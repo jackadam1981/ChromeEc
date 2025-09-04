@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e97a56_41e97907",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-04T17:11:25Z",
+      "side": 1,
+      "message": "There\u0027s already a mutex lock inside charge_manager_refresh. Why is a mutex lock also needed here?",
+      "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
