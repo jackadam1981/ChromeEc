@@ -34,6 +34,24 @@
       "parentUuid": "91e97a56_41e97907",
       "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f14b3af_6673b9d6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-04T17:21:05Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why the mutex here is needed. Shouldn\u0027t sysworkq just get blocked on the mutex inside charge_manager_refresh until the mutex is released by the charger task? Is there a deadlock between charge manager and sysworkq, i.e. is charger manager waiting for something from sysworkq?",
+      "parentUuid": "4e6e83db_421a06ca",
+      "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
