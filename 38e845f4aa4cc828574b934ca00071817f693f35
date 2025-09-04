@@ -51,6 +51,24 @@
       "parentUuid": "0a752bc7_525de8b1",
       "revId": "38e845f4aa4cc828574b934ca00071817f693f35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95336c14_bd132e6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-04T16:47:12Z",
+      "side": 1,
+      "message": "About a reduction of 2k\n\nBEFORE\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:       96724 B       320 KB     29.52%\n             RAM:       32256 B       188 KB     16.76%\n        IDT_LIST:          0 GB        32 KB      0.00%\nGenerating files from /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-ro/zephyr/zephyr.elf for board: google_quincy\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      296064 B       320 KB     90.35%\n             RAM:      158976 B       188 KB     82.58%\n        IDT_LIST:          0 GB        32 KB      0.00%\nGenerating files from /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-rw/zephyr/zephyr.elf for board: google_quincy\n/mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/source.dts:1909.21-1916.5: Warning (unique_unit_address): /soc/kbd@400a3000: duplicate unit-address (also used in node /soc/cros-kb-raw@400a3000)\nWARNING: copy_to_area: area KEY_RO: /mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/key.vbpubk2 size (832) smaller than area size 1024; erasing remaining data to 0xff\nWARNING: copy_to_area: area SIG_RW: /mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/ec.sig size (440) smaller than area size 1024; erasing remaining data to 0xff\n```\n\nAFTER\n```\nMemory region         Used Size  Region Size  %age Used\n           FLASH:       94428 B       320 KB     28.82%\n             RAM:       32128 B       188 KB     16.69%\n        IDT_LIST:          0 GB        32 KB      0.00%\nGenerating files from /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-ro/zephyr/zephyr.elf for board: google_quincy\nMemory region         Used Size  Region Size  %age Used\n           FLASH:      293768 B       320 KB     89.65%\n             RAM:      158848 B       188 KB     82.51%\n        IDT_LIST:          0 GB        32 KB      0.00%\nGenerating files from /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-rw/zephyr/zephyr.elf for board: google_quincy\n/mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/source.dts:1909.21-1916.5: Warning (unique_unit_address): /soc/kbd@400a3000: duplicate unit-address (also used in node /soc/cros-kb-raw@400a3000)\nWARNING: copy_to_area: area KEY_RO: /mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/key.vbpubk2 size (832) smaller than area size 1024; erasing remaining data to 0xff\nWARNING: copy_to_area: area SIG_RW: /mnt/host/source/src/platform/ec/build/zephyr/helipilot/packer/ec.sig size (440) smaller than area size 1024; erasing remaining data to 0xff\n```",
+      "parentUuid": "2e85813b_b8c9f6d1",
+      "revId": "38e845f4aa4cc828574b934ca00071817f693f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
