@@ -52,6 +52,24 @@
       "parentUuid": "4e6e83db_421a06ca",
       "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869bda7d_c6a99cf0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-04T17:30:27Z",
+      "side": 1,
+      "message": "I\u0027m also a little confused by this. `hook_call_deferred()` will return immediately after scheduling the refresh work on the `sysworkq` thread, so this lock will only be held very briefly, and then the refresh routine will acquire it on its own once running. I am assuming the intent here is to delay scheduling of the refresh routine until charge_manager is stabilized, so that we aren\u0027t blocking `sysworkq`? If so I wonder if events or semaphores would be a better choice for synchronizing these steps.",
+      "parentUuid": "91e97a56_41e97907",
+      "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
