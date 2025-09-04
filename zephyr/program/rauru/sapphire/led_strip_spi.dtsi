@@ -1,0 +1,36 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/led/led.h>
+
+/ {
+	aliases {
+		led-strip = &led_strip_spi;
+	};
+};
+
+/* light bar */
+&spi0 {
+	status = "okay";
+	pinctrl-0 = <&spi_ssce0_default &spi_smosi_default>;
+	pinctrl-names = "default";
+
+	led_strip_spi: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+
+		/* SPI */
+		reg = <0>; /* ignored, but necessary for SPI bindings */
+		spi-max-frequency = <6000000>;
+		frame-format = <32768>; /* SPI_FRAME_FORMAT_TI */
+
+		/* WS2812 */
+		chain-length = <8>; /* arbitrary; change at will */
+		spi-one-frame = <0xf8>;  /* 0b11111000 T1H: 0.833us within 0.650~0.950us */
+		spi-zero-frame = <0xc0>; /* 0b11000000 T0H: 0.333us within 0.250~0.550us */
+		color-mapping = <LED_COLOR_ID_GREEN
+				 LED_COLOR_ID_RED
+				 LED_COLOR_ID_BLUE>;
+	};
+};

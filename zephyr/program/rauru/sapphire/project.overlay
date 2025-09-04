@@ -21,6 +21,7 @@
 #include "motionsense.dtsi"
 #include "temp.dtsi"
 #include "../pdc.dtsi"
+#include "led_strip_spi.dtsi"
 
 / {
 	gpio-interrupts {
