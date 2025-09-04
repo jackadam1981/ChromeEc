@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaaefc65_a97833ca",
+        "filename": "zephyr/program/fatcat/kinmen/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-04T16:43:14Z",
+      "side": 1,
+      "message": "The third port is a standalone TPS66993 single-port PDC, correct? If so you probably want to have FW updates enabled.\n\nIf we aren\u0027t ready for that yet, add a TODO comment to enable FW update later.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "1f15fc1adeaffb6dfd5804f222e4b6f507aa8f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
