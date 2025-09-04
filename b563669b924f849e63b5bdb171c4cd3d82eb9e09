@@ -70,6 +70,30 @@
       },
       "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724ab939_1bdeeb78",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-09-04T02:58:54Z",
+      "side": 1,
+      "message": "\u003e What I understand is that the main `event` is for ACPI, while the `event_b` is for other purposes (the use of coreboot is this case). Setting an event set both copies but clearing it needs to be done separately.\n\u003e \n\u003e Therefore, you need to clear both copies by calling `host_clear_events()` and `host_clear_events_b()`.\n\nI will try to clear host_clear_events and host_clear_events_b because Tom is right, the priority is with host_clear_events_b. meaning if I\u0027m clearing host_clear_events and not host_clear_events_b then the stickyness of `_b` is again reflected for other host event register hence, better to clear both but `host_clear_events_b` looks master for wake event clear like AC present.",
+      "parentUuid": "8945a17a_8ab2c2f3",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
