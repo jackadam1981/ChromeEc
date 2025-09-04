@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5928d219_11f36e4a",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-04T22:26:22Z",
+      "side": 1,
+      "message": "@asemjonovs@google.com\n@keithshort@chromium.org\n@dawidn\n\nI\u0027m trying to understand the Zephyr emulation process as it relates to the two referenced CLs.\n\n1) When the tests are executed, do they exclusively initialize the emulated EGIS630 driver? Specifically, does the [DT_INST_FOREACH_STATUS_OKAY(EGIS630_EMUL)](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6344813/79/zephyr/emul/emul_egis630.c#157:~:text\u003dDT_INST_FOREACH_STATUS_OKAY(EGIS630_EMUL)%3B) macro call `egis630_emul_init`, and does this process prevent the real driver initialization [egis630_init_driver](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c;l\u003d298?q\u003dfingerprint_egis630.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d297-,298,-299) from being called via [DT_INST_FOREACH_STATUS_OKAY(EGIS630_DEFINE)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c;l\u003d373?q\u003dfingerprint_egis630.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d372-,373,-Code%20panel%20%2D%20press)?\n\n\n2) Why does the Zephyr build system automatically apply the [native_sim.overlay](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6344652/82/zephyr/test/fingerprint/drivers/egis630/boards/native_sim.overlay) file during testing, and where is the correct location for this file?\n\n3) I am trying to understand the default value of the `reset_pin`. I am defining the reset_pin as `GPIO_OUTPUT_INACTIVE`. I expect it to be `logical 0` by default. However, this is not the case. I experimented with its definition as `GPIO_ACTIVE_LOW` in `native_sim.overlay` \n\n```\na) GPIO_ACTIVE_HIGH \u0026 GPIO_OUTPUT_INACTIVE: will return 0\nb) GPIO_ACTIVE_LOW \u0026 GPIO_OUTPUT_INACTIVE: will return 1\nc) GPIO_ACTIVE_LOW \u0026 GPIO_OUTPUT_ACTIVE: will return 1\nd) GPIO_ACTIVE_HIGH \u0026 GPIO_OUTPUT_ACTIVE: will return 0\n```\n\nIt seems that the definition of `GPIO_OUTPUT_INACTIVE` or `GPIO_OUTPUT_ACTIVE` has no impact of the output of `gpio_emul_output_get(cfg-\u003ereset_pin.port, cfg-\u003ereset_pin.pin)`, or [gpio_pin_get_dt(\u0026cfg-\u003ereset_pin)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/drivers/gpio.h;l\u003d1629?q\u003dgpio_pin_get_dt\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d1628-,1629,-1630), which I expect to return the logical level of the reset pin (0 as it is configured as output, inactive).\n\nI am surprised that the `GPIO_ACTIVE_HIGH` / `GPIO_ACTIVE_LOW` has the impact here. My understanding is those should only impact the physical level i.e. if it is `GPIO_OUTPUT_INACTIVE` and `GPIO_ACTIVE_HIGH`, its physical value is low voltage. By the same token, if it is `GPIO_OUTPUT_INACTIVE` and `GPIO_ACTIVE_LOW`, it physical value is high voltage.\n\nAm I missing something? Please advise.",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
