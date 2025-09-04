@@ -70,6 +70,30 @@
       },
       "revId": "4ba9682bf8b13b7d0ccb288e980d3919145e614a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9f7c49_6b34ccd5",
+        "filename": "zephyr/program/bluey/src/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-09-04T02:55:50Z",
+      "side": 1,
+      "message": "\u003e Does the interrupt handler of the AC_PRESENT pin set the event?\n\nunless update during the boot, the AC event state information might be stale. Actually the host event update is taking effect (inside extpower_handle_update) after checking the AC_PRESENT GPIO state. So, source of truth is still the same EC AC present GPIO.",
+      "parentUuid": "b95cd74c_f7cb5e18",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "4ba9682bf8b13b7d0ccb288e980d3919145e614a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
