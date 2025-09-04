@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85aedf0b_b9703c84",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 78
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-04T17:49:01Z",
+      "side": 1,
+      "message": "@dawidn@google.com, one question, we we run the test, it is initializing only the emulated driver `DT_INST_FOREACH_STATUS_OKAY(EGIS630_EMUL)` i.e. using the `egis630_emul_init` along with its data and config and not using [DT_INST_FOREACH_STATUS_OKAY(EGIS630_DEFINE)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c;l\u003d373?q\u003dfingerprint_egis630.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d372-,373,-Code%20panel%20%2D%20press), which technically call the real driver initialization (egis630_init_driver). \n\nHow does the test make this distinction and use the native_sim.overlay?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "59d1f6c91903cdc1c07060385501ebed186ae8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
