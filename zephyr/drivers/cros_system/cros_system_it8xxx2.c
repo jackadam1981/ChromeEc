@@ -12,6 +12,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/pinctrl.h>
 #include <zephyr/logging/log.h>
 
 #include <soc.h>
@@ -159,9 +160,9 @@ void wake_isr(enum gpio_signal signal)
 {
 }
 
-static int cros_system_it8xxx2_hibernate(const struct device *dev,
-					 uint32_t seconds,
-					 uint32_t microseconds)
+static int system_it8xxx2_hibernate_by_manual(const struct device *dev,
+					      uint32_t seconds,
+					      uint32_t microseconds)
 {
 	struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
 
@@ -256,6 +257,76 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 	system_reset(SYSTEM_RESET_HIBERNATE);
 
 	return 0;
+}
+
+#if DT_NODE_HAS_STATUS(DT_NODELABEL(power_ctrl_elpm), okay)
+#define ELPM_BASE_ADDR DT_REG_ADDR(DT_NODELABEL(power_ctrl_elpm))
+
+#define ELPMF1_WAKE_UP_CTRL3 0xF1
+#define FIRMWARE_CTRL_ENABLE BIT(1)
+#define XLPOUT_VALUE BIT(0)
+
+#define ELPMF5_XLPIN_INPUT_ENABLE 0xF5
+
+PINCTRL_DT_DEFINE(DT_NODELABEL(power_ctrl_elpm));
+static int system_it8xxx2_hibernate_by_elpm(const struct device *dev,
+					    uint32_t seconds,
+					    uint32_t microseconds)
+{
+	ARG_UNUSED(dev);
+	uint8_t reg_val = 0;
+
+	const struct pinctrl_dev_config *elpm_pcfg =
+		PINCTRL_DT_DEV_CONFIG_GET(DT_NODELABEL(power_ctrl_elpm));
+
+	LOG_WRN("%s ITE Debug %d", __func__, __LINE__);
+	/* apply xlpins pinctrl */
+	pinctrl_apply_state(elpm_pcfg, PINCTRL_STATE_DEFAULT);
+
+	/* disable xlpout */
+	sys_write8(FIRMWARE_CTRL_ENABLE, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+	sys_write8(sys_read8(ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3) &
+			   ~XLPOUT_VALUE,
+		   ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+	sys_write8(sys_read8(ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3) &
+			   ~FIRMWARE_CTRL_ENABLE,
+		   ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+
+	/* TODO: enable xlpin */
+#if 1 /* TODO: THINK */
+	uint8_t xlpin[5] = { 1, 1, 1, 0, 1 };
+	for (uint8_t i = 0; i < 4; i++) {
+		if (xlpin[i] == 1) {
+			reg_val |= BIT(i);
+		}
+	}
+#endif
+	sys_write8(reg_val, ELPM_BASE_ADDR + ELPMF5_XLPIN_INPUT_ENABLE);
+
+	/* TODO: handle seconds/microseconds? */
+
+	return 0;
+}
+#else
+static int system_it8xxx2_hibernate_by_elpm(const struct device *dev,
+					    uint32_t seconds,
+					    uint32_t microseconds)
+{
+	return -EINVAL;
+}
+#endif /* DT_NODE_HAS_STATUS(DT_NODELABEL(power_ctrl_elpm), okay) */
+
+static int cros_system_it8xxx2_hibernate(const struct device *dev,
+					 uint32_t seconds,
+					 uint32_t microseconds)
+{
+	/* enter hibernate mode */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HIBERNATE_ELPM)) {
+		return system_it8xxx2_hibernate_by_elpm(dev, seconds,
+							microseconds);
+	}
+
+	return system_it8xxx2_hibernate_by_manual(dev, seconds, microseconds);
 }
 
 static DEVICE_API(cros_system, cros_system_driver_it8xxx2_api) = {
