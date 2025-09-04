@@ -61,6 +61,8 @@ static void average_tempature(void)
 	int charger_temp_sum = 0;
 	static int temperature_increase;
 
+	if (!extpower_is_present())
+		return;
 	/*
 	 * Keep track of battery temperature range:
 	 *
@@ -76,6 +78,9 @@ static void average_tempature(void)
 		&charger_temp);
 
 	charger_temp_c = K_TO_C(charger_temp);
+	/* Abnormal value processing, maintain previous strategy */
+	if (charger_temp_c > 120)
+		return;
 
 	thermals[thermal_cyc] = charger_temp_c;
 	thermal_cyc = (thermal_cyc + 1) % 5;
