@@ -12,6 +12,7 @@
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/pinctrl.h>
 #include <zephyr/logging/log.h>
 
 #include <soc.h>
@@ -159,10 +160,11 @@ void wake_isr(enum gpio_signal signal)
 {
 }
 
-static int cros_system_it8xxx2_hibernate(const struct device *dev,
-					 uint32_t seconds,
-					 uint32_t microseconds)
+static int system_it8xxx2_hibernate_by_deep_doze(const struct device *dev,
+						 uint32_t seconds,
+						 uint32_t microseconds)
 {
+#if 0 /* TODO: ITE Debug */
 	struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
 
 	/* Disable all interrupts. */
@@ -187,6 +189,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 		chip_save_reset_flags(EC_RESET_FLAG_HIBERNATE);
 		board_hibernate_late();
 	}
+#endif
 
 	if (seconds || microseconds) {
 		/*
@@ -256,6 +259,142 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 	system_reset(SYSTEM_RESET_HIBERNATE);
 
 	return 0;
+}
+
+#define ELPM_NODE DT_NODELABEL(power_ctrl_elpm)
+#if DT_NODE_HAS_STATUS(ELPM_NODE, okay)
+#define ELPM_BASE_ADDR DT_REG_ADDR(ELPM_NODE)
+
+#define ELPMF1_WAKE_UP_CTRL3 0xF1
+#define XLPINS_BYPASS_EN     BIT(2)
+
+#define ELPMF3_XLPIN_RISING_EDGE_STS  0xF3
+#define ELPMF4_XLPIN_FALLING_EDGE_STS 0xF4
+#define ELPMF5_XLPIN_INPUT_ENABLE     0xF5
+#define ELPMF7_XLPIN_POLARITY_CTRL    0xF7
+
+PINCTRL_DT_DEFINE(ELPM_NODE);
+
+#define XLPIN_ENTRY(child) [DT_REG_ADDR(child)] = DT_ENUM_IDX(child, polarity),
+
+enum elpm_xlpin_polarity {
+	ELPM_POL_DEFAULT = 0, /* default, disable xlpin */
+	ELPM_POL_LOW,         /* low falling */
+	ELPM_POL_HIGH,        /* high rising */
+};
+
+static int system_it8xxx2_hibernate_by_elpm(const struct device *dev,
+					    uint32_t seconds,
+					    uint32_t microseconds)
+{
+	ARG_UNUSED(dev);
+	/* TODO: need to check: xlpout control by rtc */
+	ARG_UNUSED(seconds);
+	ARG_UNUSED(microseconds);
+	const struct pinctrl_dev_config *elpm_pcfg =
+		PINCTRL_DT_DEV_CONFIG_GET(ELPM_NODE);
+	const enum elpm_xlpin_polarity xlpin_polarities[] = {
+		DT_FOREACH_CHILD(ELPM_NODE, XLPIN_ENTRY)};
+	uint8_t xlpins_enable = 0, polarity_ctrl_val = 0;
+	int ret;
+
+	/* apply xlpins pinctrl */
+	ret = pinctrl_apply_state(elpm_pcfg, PINCTRL_STATE_DEFAULT);
+	if (ret) {
+		LOG_ERR("failed to apply elpm pinctrl, ret %d", ret);
+		return ret;
+	}
+
+	for (uint8_t i = 0; i < ARRAY_SIZE(xlpin_polarities); i++) {
+		switch (xlpin_polarities[i]) {
+		case ELPM_POL_DEFAULT:
+			/* ignored as xlpin[i] is disabled */
+			break;
+		case ELPM_POL_HIGH:
+			polarity_ctrl_val |= BIT(i);
+			__fallthrough;
+		case ELPM_POL_LOW:
+			xlpins_enable |= BIT(i);
+			break;
+		default:
+			LOG_ERR("unknown polarity control(%d) setting",
+				xlpin_polarities[i]);
+			break;
+		};
+	}
+	if (xlpins_enable == 0) {
+		LOG_WRN("no xlpins are enabled");
+		return -EINVAL;
+	}
+
+	/* TODO: remove */
+	LOG_WRN("%s ITE Debug %d - xlpins enable 0x%x, polarity 0x%x", __func__,
+		__LINE__, xlpins_enable, polarity_ctrl_val);
+
+	/* enable bypass mode (non-debounced) */
+	sys_write8(XLPINS_BYPASS_EN, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+
+	/* clear xlpins status before enabling them */
+	sys_write8(xlpins_enable,
+		   ELPM_BASE_ADDR + ELPMF3_XLPIN_RISING_EDGE_STS);
+	sys_write8(xlpins_enable,
+		   ELPM_BASE_ADDR + ELPMF4_XLPIN_FALLING_EDGE_STS);
+
+	/* configure xlpins polarity and enable them */
+	sys_write8(polarity_ctrl_val,
+		   ELPM_BASE_ADDR + ELPMF7_XLPIN_POLARITY_CTRL);
+	sys_write8(xlpins_enable, ELPM_BASE_ADDR + ELPMF5_XLPIN_INPUT_ENABLE);
+
+	return 0;
+}
+#else
+static int system_it8xxx2_hibernate_by_elpm(const struct device *dev,
+					    uint32_t seconds,
+					    uint32_t microseconds)
+{
+	return -EINVAL;
+}
+#endif /* DT_NODE_HAS_STATUS(DT_NODELABEL(power_ctrl_elpm), okay) */
+
+static int cros_system_it8xxx2_hibernate(const struct device *dev,
+					 uint32_t seconds,
+					 uint32_t microseconds)
+{
+#if 1 /* TODO: ITE Debug */
+	struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
+
+	/* Disable all interrupts. */
+	interrupt_disable_all();
+
+	/* Save and disable interrupts */
+	ite_intc_save_and_disable_interrupts();
+
+	/* bit5: watchdog is disabled. */
+	wdt_base->ETWCTRL |= IT8XXX2_WDT_EWDSCEN;
+
+	/*
+	 * Setup GPIOs for hibernate. On some boards, it's possible that this
+	 * may not return at all. On those boards, power to the EC is likely
+	 * being turn off entirely.
+	 */
+	if (board_hibernate_late) {
+		/*
+		 * Set reset flag in case board_hibernate_late() doesn't
+		 * return.
+		 */
+		chip_save_reset_flags(EC_RESET_FLAG_HIBERNATE);
+		board_hibernate_late();
+	}
+#endif
+
+	/* enter hibernate mode */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HIBERNATE_ELPM)) {
+		return system_it8xxx2_hibernate_by_elpm(dev, seconds,
+							microseconds);
+	}
+
+	return system_it8xxx2_hibernate_by_deep_doze(dev, seconds,
+						     microseconds);
 }
 
 static DEVICE_API(cros_system, cros_system_driver_it8xxx2_api) = {
