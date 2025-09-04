@@ -758,3 +758,27 @@ fp_command_confirm_template(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_CONFIRM_TEMPLATE, fp_command_confirm_template,
 		     EC_VER_MASK(0));
+
+#ifdef CONFIG_PLATFORM_EC_FINGERPRINT_VENDOR_COMMAND
+static enum ec_status fp_command_vendor(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const struct ec_params_fp_vendor *>(args->params);
+	int ret;
+
+	if (system_is_locked()) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	ret = fp_vendor_commad(params->param1, (uint8_t *)args->response,
+			       args->response_max);
+	if (ret < 0) {
+		return EC_RES_ERROR;
+	}
+	/* Too big response is handled by the host command subsystem. */
+	args->response_size = ret;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_VENDOR, fp_command_vendor, EC_VER_MASK(0));
+#endif /* CONFIG_PLATFORM_EC_FINGERPRINT_VENDOR_COMMAND */
