@@ -705,6 +705,42 @@ static enum ec_status hc_usb_pd_dps_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DPS_CONTROL, hc_usb_pd_dps_control,
 		     EC_VER_MASK(0));
 
+static enum ec_status hc_usb_pd_dps_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_usb_pd_dps_status *r = args->response;
+	int port = charge_manager_get_active_charge_port();
+
+	memset(r, 0, sizeof(*r));
+
+	args->response_size = sizeof(*r);
+	r->is_enabled = is_enabled;
+	r->port = port;
+
+	if (!is_enabled || port == CHARGE_PORT_NONE) {
+		return EC_RES_SUCCESS;
+	}
+
+	if (!(flag & DPS_FLAG_NO_SRCCAP)) {
+		r->requested_voltage = pd_get_requested_voltage(port);
+		r->requested_current = pd_get_requested_current(port);
+	}
+
+	int input_voltage, input_current, battery_voltage;
+	r->input_power =
+		get_desired_input_power(&input_voltage, &input_current);
+	r->input_voltage = input_voltage;
+	r->input_current = input_current;
+	r->efficient_voltage = get_efficient_voltage();
+	if (!get_battery_target_voltage(&battery_voltage)) {
+		r->battery_voltage = battery_voltage;
+	}
+	r->max_voltage = pd_get_max_voltage();
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DPS_STATUS, hc_usb_pd_dps_status,
+		     EC_VER_MASK(0));
+
 #ifdef TEST_BUILD
 __test_only bool dps_is_fake_enabled(void)
 {
