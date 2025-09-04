@@ -46,6 +46,12 @@ config BOARD_LAPIS
 	  Build Google Lapis board. Lapis has Intel PTL SoC
 	  with rts5915 EC.
 
+config BOARD_MOONSTONE
+	bool "Google moonstone"
+	help
+	  Build Google Moonstone board. Moonstone has Intel PTL SoC
+	  with it82002aw EC.
+
 module = Fatcat
 module-str = Fatcat board-specific code
 source "subsys/logging/Kconfig.template.log_config"
