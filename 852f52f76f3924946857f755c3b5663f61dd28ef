@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d17d873_75552cc1",
+        "filename": "zephyr/test/fingerprint/drivers/egis630/src/egis630.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-04T15:59:21Z",
+      "side": 1,
+      "message": "we agreed yesterday during our GVC meeting that this is not possible. I am resolving this comment.",
+      "parentUuid": "980077a5_0bec4a03",
+      "revId": "852f52f76f3924946857f755c3b5663f61dd28ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0542d695_8ec6333b",
