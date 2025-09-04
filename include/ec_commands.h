@@ -6216,6 +6216,24 @@ struct ec_params_usb_pd_dps_control {
 	uint8_t enable;
 } __ec_align1;
 
+/*
+ * This command return the status of dynamic PDO selection.
+ */
+#define EC_CMD_USB_PD_DPS_STATUS 0x0107
+
+struct ec_response_usb_pd_dps_status {
+	int is_enabled;
+	int port;
+	int requested_voltage;
+	int requested_current;
+	int input_power;
+	int input_voltage;
+	int input_current;
+	int efficient_voltage;
+	int battery_voltage;
+	int max_voltage;
+};
+
 /* Write USB-PD device FW */
 #define EC_CMD_USB_PD_FW_UPDATE 0x0110
 

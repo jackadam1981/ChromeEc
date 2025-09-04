@@ -6302,34 +6302,72 @@ int cmd_usb_pd(int argc, char *argv[])
 	return 0;
 }
 
-int cmd_usb_pd_dps(int argc, char *argv[])
+static int usb_pd_dps_control(bool en)
 {
 	struct ec_params_usb_pd_dps_control p;
-	int rv;
 
+	p.enable = en;
+	int rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0, &p, sizeof(p), NULL,
+			    0);
+	if (rv < 0)
+		return rv;
+
+	return 0;
+}
+
+static int usb_pd_dps_status(void)
+{
+	struct ec_response_usb_pd_dps_status r;
+
+	int rv =
+		ec_command(EC_CMD_USB_PD_DPS_STATUS, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (!r.is_enabled) {
+		printf("DPS Disabled\n");
+		return 0;
+	}
+
+	if (r.port < 0) {
+		printf("No charger attached\n");
+		return 0;
+	}
+
+	printf("C%d DPS Enabled\n"
+	       "Requested: %dmV/%dmA\n"
+	       "Measured:  %dmV/%dmA/%dmW\n"
+	       "Efficient: %dmV\n"
+	       "Batt:      %dmv\n"
+	       "PDMaxMV:   %dmV\n",
+	       r.port, r.requested_voltage, r.requested_current,
+	       r.input_voltage, r.input_current, r.input_power,
+	       r.efficient_voltage, r.battery_voltage, r.max_voltage);
+
+	return 0;
+}
+
+int cmd_usb_pd_dps(int argc, char *argv[])
+{
 	/*
 	 * Set up requested flags.  If no flags were specified, p.mask will
 	 * be 0 and nothing will change.
 	 */
 	if (argc < 1) {
-		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
+		fprintf(stderr, "Usage: %s [enable|disable|status]\n", argv[0]);
 		return -1;
 	}
 
 	if (!strcasecmp(argv[1], "enable")) {
-		p.enable = 1;
+		return usb_pd_dps_control(true);
 	} else if (!strcasecmp(argv[1], "disable")) {
-		p.enable = 0;
+		return usb_pd_dps_control(false);
+	} else if (!strcasecmp(argv[1], "status")) {
+		return usb_pd_dps_status();
 	} else {
 		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
 		return -1;
 	}
-
-	rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0, &p, sizeof(p), NULL, 0);
-	if (rv < 0)
-		return rv;
-
-	return 0;
 }
 
 static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
