@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8f24c9_c5fe44a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-04T16:52:46Z",
+      "side": 1,
+      "message": "Thanks for the careful feedback. You’re right that this CL mixes a few threads. To avoid confusion, I’ve limited this CL to the debounce and software toggle counter changes, which are self-contained and ready. The tDRP handling has been adjusted so it only lives in Unattached.SRC, the redundant path in DRP_AUTO_TOGGLE removed and the fast path are dropped here and I’ll handle any further cleanup in a follow-up CL.This way i will split the change with independent effects.",
+      "parentUuid": "0d790b67_2f437c2b",
+      "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0610b883_9a52dd39",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a6dc0c_63d53c06",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-04T16:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0610b883_9a52dd39",
+      "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27590829_0bdf5d1f",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-09-03T20:55:41Z",
       "side": 1,
       "message": "I\u0027m confused by the scope of this CL. I thought it was supposed to incorporate CL:6796691, which removes this timer set/check and adds a replacement one in `tc_unattached_src_run`. The result was that when transitioning from Unattached.SNK or Unattached.SRC to DRPAutoToggle, only a single iteration of tDRP was applied.\n\nThis CL appears to add the delay to Unattached.SRC (among other things), but at least superficially, it leaves the redundant delay in DRPAutoToggle. then, it adds the below \"fast path\" exception that I don\u0027t fully understand yet.\n\nWas the timer change in the previous CL incorrect? If so, can you explain at a high level the timer change intended in this CL?",
+      "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d99da0_700c850c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3562,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-04T16:52:46Z",
+      "side": 1,
+      "message": "Sorry for confusion \u0026 Thanks for raising this. The timer change in CL:6796691 was correct — the intent is that only a single tDRP in Unattached.SRC is needed, Now In this CL I’ve adjusted the implementation so that tDRP is limited to Unattached.SRC tied to the drp_sw_toggle_count logic and removed both the redundant tDRP in DRP_AUTO_TOGGLE and the experimental fast path. Those additions were only used while debugging TD.4.6.5/4.6.6 timing issues may be not required for spec alignment.\n\nWith the current change, TD.4.6.2 passes consistently. TD.4.6.6, however, only passes if an extra tDRP is also present in DRP_AUTO_TOGGLE. Since that looks like a compliance quirk, I plan to keep the scope clean here and handle further investigation/cleanup in a follow-up CL. The debounce and software toggle counter changes remain here.",
+      "parentUuid": "27590829_0bdf5d1f",
       "revId": "58e139211b1df32775a0ef681b56f5134ccaba7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
