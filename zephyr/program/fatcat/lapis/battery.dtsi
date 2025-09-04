@@ -5,8 +5,8 @@
 
 / {
     batteries {
-		default_battery: smp-ap23b7q {
-			compatible = "smp,ap23b7q", "battery-smart";
+		default_battery: cosmx-c22n2505 {
+			compatible = "cosmx,c22n2505", "battery-smart";
 		};
 	};
 };
