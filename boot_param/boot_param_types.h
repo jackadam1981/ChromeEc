@@ -28,6 +28,17 @@ extern "C" {
 #define DICE_ID_BYTES	  20
 #define DICE_ID_HEX_BYTES (DICE_ID_BYTES * 2)
 
+/* Format of Cfg Descriptor used for BootParam CDI */
+#define BOOT_PARAM_CFG_DESCR_STAGE 1
+
+#if BOOT_PARAM_CFG_DESCR_STAGE == 1
+#define BOOT_PARAM_CFG_DESCR_MAP_COUNT 6
+#define BOOT_PARAM_CFG_DESCR_EXTRA_STAGE_SIZE 0
+#elif BOOT_PARAM_CFG_DESCR_STAGE == 2
+#define BOOT_PARAM_CFG_DESCR_MAP_COUNT 10
+#define BOOT_PARAM_CFG_DESCR_EXTRA_STAGE_SIZE 34
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE */
+
 struct slice_mut_s {
 	size_t size;
 	uint8_t *data;
