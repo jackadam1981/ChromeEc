@@ -70,6 +70,24 @@
       "parentUuid": "91e97a56_41e97907",
       "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bc712d_12bacaf7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-04T18:15:34Z",
+      "side": 1,
+      "message": "The suspicion and its difficult to confirm is that invoking `hook_call_deferred` while `charge_manager_refresh` is running, is somehow aborting `charge_manager_refresh` leaving the mutex in a locked state. So adding the mutexing around `hook_call_deferred` here helps guarantee that we don\u0027t reschedule while its currently running.\n\nHere\u0027s a snippet of the mutex history. Showing `charge_manager_refresh` never releasing the mutex and `PD_C0` waiting for the mutex.\n```\n25-08-28 12:35:31.114   TS: 13340547, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_refresh, Type: 0\n25-08-28 12:35:31.124   TS: 13341010, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_refresh, Type: 1\n25-08-28 12:35:31.131   TS: 13344450, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_refresh, Type: 2\n25-08-28 12:35:31.136   TS: 14341930, Mutex: 0x200c10e8, Thread: POWERBTN, Func: charge_manager_get_charger_current, Type: 0\n25-08-28 12:35:31.147   TS: 14342393, Mutex: 0x200c10e8, Thread: POWERBTN, Func: charge_manager_get_charger_current, Type: 1\n25-08-28 12:35:31.155   TS: 14342869, Mutex: 0x200c10e8, Thread: POWERBTN, Func: charge_manager_get_charger_current, Type: 2\n25-08-28 12:35:31.164   TS: 15105329, Mutex: 0x200c10e8, Thread: PD_C0, Func: charge_manager_get_active_charge_port_, Type: 0\n25-08-28 12:35:31.171   TS: 15105792, Mutex: 0x200c10e8, Thread: PD_C0, Func: charge_manager_get_active_charge_port_, Type: 1\n25-08-28 12:35:31.183   TS: 15232738, Mutex: 0x200c10e8, Thread: PD_C0, Func: charge_manager_get_active_charge_port_, Type: 2\n25-08-28 12:35:31.223   TS: 17165003, Mutex: 0x200c10e8, Thread: CHARGER, Func: charge_manager_leave_safe_mode, Type: 0\n25-08-28 12:35:31.227   TS: 17165466, Mutex: 0x200c10e8, Thread: CHARGER, Func: charge_manager_leave_safe_mode, Type: 1\n25-08-28 12:35:31.229   TS: 17181644, Mutex: 0x200c10e8, Thread: CHARGER, Func: charge_manager_leave_safe_mode, Type: 2\n25-08-28 12:35:31.229   TS: 17184578, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_refresh, Type: 0\n25-08-28 12:35:31.230   TS: 17187472, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_refresh, Type: 1\n25-08-28 12:35:31.231   TS: 17638715, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_get_active_charge_port_, Type: 0\n25-08-28 12:35:31.241   TS: 17639183, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_get_active_charge_port_, Type: 1\n25-08-28 12:35:31.251   TS: 17833029, Mutex: 0x200c10e8, Thread: sysworkq, Func: charge_manager_get_active_charge_port_, Type: 2\n25-08-28 12:35:31.259   TS: 18135989, Mutex: 0x200c10e8, Thread: PD_C0, Func: charge_manager_get_active_charge_port_, Type: 0\n```",
+      "parentUuid": "869bda7d_c6a99cf0",
+      "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
