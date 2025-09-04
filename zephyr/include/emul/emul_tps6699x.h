@@ -68,6 +68,11 @@ struct tps6699x_response {
 	} data;
 } __packed;
 
+struct tps6699x_emul_pdc_shared_data {
+	/* Some registers are shared. */
+	uint8_t reg_val[TPS6699X_MAX_REG][TPS6699X_REG_SIZE];
+};
+
 struct tps6699x_emul_pdc_data {
 	struct gpio_dt_spec irq_gpios;
 	uint32_t delay_ms;
@@ -80,6 +85,7 @@ struct tps6699x_emul_pdc_data {
 	 * TODO(b/345292002): Define a real data structure for registers.
 	 */
 	uint8_t reg_val[TPS6699X_MAX_REG][TPS6699X_REG_SIZE];
+	struct tps6699x_emul_pdc_shared_data *shared_data;
 
 	union connector_status_t connector_status;
 	union connector_reset_t reset_cmd;
@@ -105,6 +111,7 @@ struct tps6699x_emul_pdc_data {
 	struct emul_pdc_pdo_t pdo;
 	bool cmd_error;
 	struct k_work_delayable aneg_delay_work;
+	struct k_work_delayable mode_delay_work;
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
 };
