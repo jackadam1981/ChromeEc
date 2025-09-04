@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da323193_75e7a29f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-04T20:18:35Z",
+      "side": 1,
+      "message": "Nit: \"Introduce a PD debounce timer and\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc84417b_0698caeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-04T20:18:35Z",
+      "side": 1,
+      "message": "Only nits",
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25159323_2584dc8c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 3554,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-04T20:18:35Z",
+      "side": 1,
+      "message": "Nit: If we proceed without waiting, there may not be a point to this check. I think that can remain out of scope for now, but maybe leave a TODO here.",
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a06ead_ed3ac744",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-04T20:18:35Z",
+      "side": 1,
+      "message": "Nit: I\u0027m pretty sure this is a no-op. It may not be possible for the time difference to actually be 0.\n\nGiven the newly understood requirement, it might be more meaningful to test that the time was less than 30 ms. That\u0027s a somewhat arbitrary amount of time, but it\u0027s the minimum amount of time for CC to be stable during toggling, and given our intended CC stability time, if we accidentally added an amount of time less than 30 ms, we\u0027d still technically be below the maximum time.",
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
