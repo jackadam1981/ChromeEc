@@ -29,6 +29,12 @@ config BOARD_OJAL
 	  Build Google Ojal reference board.
 	  This board uses an Intel WCL SoC and RTK EC.
 
+config BOARD_MATSU
+	bool "Google Ocelot with ITE (it82002) EC"
+	help
+	  Build Google Matsu reference board.
+	  This board uses an Intel WCL SoC and ITE EC.
+
 module = Oceolot
 module-str = Ocelot board-specific code
 source "subsys/logging/Kconfig.template.log_config"
