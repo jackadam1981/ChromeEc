@@ -6,6 +6,8 @@
 #include "builtin/stdio.h"
 #include "console.h"
 #include "dps.h"
+#include "ec_commands.h"
+#include "host_command.h"
 #include "test/drivers/test_state.h"
 #include "timer.h"
 
@@ -268,6 +270,35 @@ ZTEST(dps_config, test_console_cmd__invalid)
 	/* Non-existent subcommand should fail */
 	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps foobar xyz"),
 		       NULL);
+}
+
+ZTEST(dps_config, test_host_cmd)
+{
+	/* Enable */
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_USB_PD_DPS_CONTROL, 0,
+		(struct ec_params_usb_pd_dps_control){ .enable = 1 });
+	struct ec_response_usb_pd_dps_status r;
+
+	zassert_ok(host_command_process(&args));
+	zassert_true(dps_is_enabled());
+
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_USB_PD_DPS_STATUS, 0, r);
+	zassert_ok(host_command_process(&args));
+	zassert_true(r.is_enabled);
+
+	/* Disable */
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_USB_PD_DPS_CONTROL, 0,
+		(struct ec_params_usb_pd_dps_control){ .enable = 0 });
+
+	zassert_ok(host_command_process(&args));
+	zassert_false(dps_is_enabled());
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_USB_PD_DPS_STATUS, 0, r);
+	zassert_ok(host_command_process(&args));
+	zassert_false(r.is_enabled);
 }
 
 ZTEST_SUITE(dps_config, drivers_predicate_pre_main, dps_config_setup,
