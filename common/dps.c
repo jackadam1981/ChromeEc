@@ -705,6 +705,74 @@ static enum ec_status hc_usb_pd_dps_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DPS_CONTROL, hc_usb_pd_dps_control,
 		     EC_VER_MASK(0));
 
+/*
+ *
+		uint32_t last_ma = 0, last_mv = 0;
+		int batt_mv;
+
+		ccprintf("flag=0x%x k_more=%d k_less=%d k_sample=%d k_win=%d\n",
+			 (int)flag, dps_config.k_more_pwr,
+			 dps_config.k_less_pwr, dps_config.k_sample,
+			 dps_config.k_window);
+		ccprintf("t_stable=%d t_check=%d\n",
+			 dps_config.t_stable / SECOND,
+			 dps_config.t_check / SECOND);
+		if (!is_enabled) {
+			ccprintf("DPS Disabled\n");
+			return EC_SUCCESS;
+		}
+
+		if (port == CHARGE_PORT_NONE) {
+			ccprintf("No charger attached\n");
+			return EC_SUCCESS;
+		}
+
+		get_battery_target_voltage(&batt_mv);
+		input_pwr = get_desired_input_power(&vbus, &input_curr);
+		if (!(flag & DPS_FLAG_NO_SRCCAP)) {
+			last_mv = pd_get_requested_voltage(port);
+			last_ma = pd_get_requested_current(port);
+		}
+		ccprintf("C%d DPS Enabled\n"
+			 "Requested: %dmV/%dmA\n"
+			 "Measured:  %dmV/%dmA/%dmW\n"
+			 "Efficient: %dmV\n"
+			 "Batt:      %dmv\n"
+			 "PDMaxMV:   %dmV\n",
+			 port, last_mv, last_ma, vbus, input_curr, input_pwr,
+			 get_efficient_voltage(), batt_mv,
+			 pd_get_max_voltage());
+*/
+
+static enum ec_status hc_usb_pd_dps_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_usb_pd_dps_status *r = args->response;
+	int port = charge_manager_get_active_charge_port();
+
+	memset(r, 0, sizeof(*r));
+
+	r->is_enabled = is_enabled;
+	r->port = port;
+
+	if (!is_enabled || port == CHARGE_PORT_NONE) {
+		return EC_RES_SUCCESS;
+	}
+
+	if (!(flag & DPS_FLAG_NO_SRCCAP)) {
+		r->requested_voltage = pd_get_requested_voltage(port);
+		r->requested_current = pd_get_requested_current(port);
+	}
+	r->input_power =
+		get_desired_input_power(&r->input_voltage, &r->input_current);
+	r->efficient_voltage = get_efficient_voltage();
+	get_battery_target_voltage(&r->battery_voltage);
+	r->max_voltage = pd_get_max_voltage();
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DPS_STATUS, hc_usb_pd_dps_status,
+		     EC_VER_MASK(0));
+
 #ifdef TEST_BUILD
 __test_only bool dps_is_fake_enabled(void)
 {
