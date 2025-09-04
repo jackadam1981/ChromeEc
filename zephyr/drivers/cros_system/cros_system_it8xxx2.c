@@ -159,9 +159,9 @@ void wake_isr(enum gpio_signal signal)
 {
 }
 
-static int cros_system_it8xxx2_hibernate(const struct device *dev,
-					 uint32_t seconds,
-					 uint32_t microseconds)
+static void system_it8xxx2_hibernate_by_manual(const struct device *dev,
+					       uint32_t seconds,
+					       uint32_t microseconds)
 {
 	struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
 
@@ -254,6 +254,25 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 
 	/* Reset EC when wake up from sleep mode (system hibernate) */
 	system_reset(SYSTEM_RESET_HIBERNATE);
+}
+
+static void system_it8xxx2_hibernate_by_elpm(const struct device *dev,
+					     uint32_t seconds,
+					     uint32_t microseconds)
+{
+	LOG_WRN("%s ITE Debug %d", __func__, __LINE__);
+}
+
+static int cros_system_it8xxx2_hibernate(const struct device *dev,
+					 uint32_t seconds,
+					 uint32_t microseconds)
+{
+	/* enter hibernate mode */
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HIBERNATE_ELPM)) {
+		system_it8xxx2_hibernate_by_elpm(dev, seconds, microseconds);
+	} else {
+		system_it8xxx2_hibernate_by_manual(dev, seconds, microseconds);
+	}
 
 	return 0;
 }
