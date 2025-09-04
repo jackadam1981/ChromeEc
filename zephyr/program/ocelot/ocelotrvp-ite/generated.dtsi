@@ -88,6 +88,7 @@
 		};
 		gpio_ec_slatemode_hallout_snsr_r: ec_slatemode_hallout_snsr_r {
 			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_TABLET_MODE_L";
 		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
 			gpios = <&gpioj 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;

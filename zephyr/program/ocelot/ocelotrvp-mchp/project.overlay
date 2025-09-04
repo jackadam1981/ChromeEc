@@ -52,3 +52,4 @@
 };
 
 /* Disable nodes for features not yet enabled. */
+/delete-node/ &int_tablet_mode;

@@ -22,7 +22,7 @@
 				"I2C_PORT_PORT80";
 		};
 		i2c_named_i2c_port_ish: named_i2c_port_ish {
-			i2c-port = <&i2c_port_ish>;
+			/* Define i2c-port in project overlay */
 			enum-names = "I2C_PORT_ISH";
 		};
 	};
@@ -88,9 +88,4 @@
 		compatible = "ite,it8801-mfd";
 		reg = <0x39>;
 	};
-};
-
-&i2c_port_ish {
-	label = "I2C_PORT_ISH";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
 };

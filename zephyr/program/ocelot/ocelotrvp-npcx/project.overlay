@@ -119,3 +119,19 @@ tach_fan0: &tach1 {};
 	offset = <0x50000>;
 	size = <0x1000>;
 };
+
+/delete-node/ &gpio_ec_ish_odl;
+
+&i2c_named_i2c_port_ish {
+	i2c-port = <&i2c5_0>;
+};
+
+&i2c5_0 {
+	label = "I2C_PORT_ISH";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	dsp_service: dsp-service@29 {
+		compatible = "cros,dsp-service";
+		reg = <0x29>;
+		int-gpios = <&gpiod 0 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
+	};
+};
