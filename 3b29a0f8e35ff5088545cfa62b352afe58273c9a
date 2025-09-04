@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b7ffb1_d164040e",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-04T16:54:15Z",
+      "side": 1,
+      "message": "Maybe `battery_poll_dynamic_info()` is more descriptive, as the target is only the dynamic info, but not the static info.",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 17
+      },
+      "revId": "3b29a0f8e35ff5088545cfa62b352afe58273c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1224014_2580ed5c",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-04T16:54:15Z",
+      "side": 1,
+      "message": "Please correct the uppercase/lowercase and the period/comma.",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 30
+      },
+      "revId": "3b29a0f8e35ff5088545cfa62b352afe58273c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
