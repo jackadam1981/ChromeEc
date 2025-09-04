@@ -94,6 +94,30 @@
       },
       "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b4b144_d7ea7161",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-09-04T06:15:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "724ab939_1bdeeb78",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "b563669b924f849e63b5bdb171c4cd3d82eb9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
