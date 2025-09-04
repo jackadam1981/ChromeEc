@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb9113a_7a49077a",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-09-04T01:21:26Z",
+      "side": 1,
+      "message": "change this to instead look for the largest value of `alt_policy` that exists in the devicetree and loop `range(alt_policy)`.",
+      "range": {
+        "startLine": 211,
+        "startChar": 8,
+        "endLine": 211,
+        "endChar": 28
+      },
+      "revId": "a2efd38af76555c9671010e20ddde372a7416bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

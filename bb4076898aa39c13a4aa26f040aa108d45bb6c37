@@ -34,6 +34,24 @@
       "parentUuid": "fddd4cdc_c5b436d6",
       "revId": "bb4076898aa39c13a4aa26f040aa108d45bb6c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8bbd58_eec98d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-09-04T01:21:26Z",
+      "side": 1,
+      "message": "Ok, sorry I didn\u0027t consider board file access.\n\nHow about this, let\u0027s just change the value to `int8_t board_alt_policy` and not use enums. This will also allow the value to be general enough that other boards can use this function with other criteria.\n\nYou\u0027ll also have to update the precompile script and twister tests to match this change.",
+      "parentUuid": "f7d532dd_c0f880c3",
+      "revId": "bb4076898aa39c13a4aa26f040aa108d45bb6c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
