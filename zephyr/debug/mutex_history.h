@@ -20,12 +20,14 @@ enum mutex_event {
 	LOCKED = 1,
 	UNLOCKED = 2,
 	INIT = 3,
+	BREADCRUMB = 4,
 };
 
 // Define the structure for each event
 typedef struct {
 	uint32_t timestamp;
 	const struct k_mutex *mutex;
+	k_tid_t owner;
 	k_tid_t thread_id;
 	enum mutex_event event_type;
 	const char *func;
@@ -57,6 +59,13 @@ void mutex_history_log(struct ring_buf *rb, const struct k_mutex *mutex,
 /* Helper macro for logging mutex history */
 #define MUTEX_HISTORY_LOG(rb, mutex, type) \
 	mutex_history_log(rb, mutex, type, __func__)
+
+#define MUTEX_HISTORY_LOG_CRUMB(rb, str) \
+	mutex_history_log(rb, NULL, BREADCRUMB, STRINGIFY(__LINE__) ": " str)
+
+#define MUTEX_HISTORY_DROP_CRUMB(rb)            \
+	mutex_history_log(rb, NULL, BREADCRUMB, \
+			  __FILE__ ":" STRINGIFY(__LINE__))
 
 /**
  * @brief Dump the contents of mutex history buffer to console

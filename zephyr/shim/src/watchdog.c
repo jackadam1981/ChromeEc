@@ -210,6 +210,7 @@ static void log_thread_info(const struct k_thread *thread, void *user_data)
 #endif
 }
 
+extern void charge_manager_dump_mutex_history();
 __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					       int channel_id)
 {
@@ -255,6 +256,7 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 		k_thread_foreach(log_thread_info, NULL);
 	}
 
+	charge_manager_dump_mutex_history();
 	/* Save the current task id in panic info.
 	 * The PANIC_SW_WATCHDOG_WARN reason will be changed to a regular
 	 * PANIC_SW_WATCHDOG in system_common_pre_init if a watchdog reset

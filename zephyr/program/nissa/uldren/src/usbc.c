@@ -12,10 +12,14 @@
 #include "hooks.h"
 #include "system.h"
 #include "usb_mux.h"
+#include "zephyr/sys/ring_buffer.h"
 
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+#include <debug/mutex_history.h>
+extern struct ring_buf refresh_log;
 
 int board_is_sourcing_vbus(int port)
 {
@@ -34,16 +38,23 @@ int board_set_active_charge_port(int port)
 	if (!is_real_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
 
+	MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 	old_port = charge_manager_get_active_charge_port();
+	MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 
 	/* Disable all ports. */
 	if (port == CHARGE_PORT_NONE) {
+		MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+			printk("tcpc_write %d\n", i);
 			tcpc_write(i, TCPC_REG_COMMAND,
 				   TCPC_REG_COMMAND_SNK_CTRL_LOW);
+			MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 			raa489000_enable_asgate(i, false);
+			MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 		}
 
+		MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 		return EC_SUCCESS;
 	}
 
@@ -53,6 +64,7 @@ int board_set_active_charge_port(int port)
 		return EC_ERROR_INVAL;
 	}
 
+	MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 	/*
 	 * Turn off the other ports' sink path FETs, before enabling the
 	 * requested charge port.
@@ -67,6 +79,7 @@ int board_set_active_charge_port(int port)
 		raa489000_enable_asgate(i, false);
 	}
 
+	MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 	/*
 	 * Stop the charger IC from switching while changing ports.  Otherwise,
 	 * we can overcurrent the adapter we're switching to. (crbug.com/926056)
@@ -83,9 +96,11 @@ int board_set_active_charge_port(int port)
 		return EC_ERROR_UNKNOWN;
 	}
 
+	MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 	/* Allow the charger IC to begin/continue switching. */
 	charger_discharge_on_ac(0);
 
+	MUTEX_HISTORY_DROP_CRUMB(&refresh_log);
 	return EC_SUCCESS;
 }
 

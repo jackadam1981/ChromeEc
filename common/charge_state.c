@@ -1769,6 +1769,7 @@ uint32_t charge_get_led_flags(void)
 	return flags;
 }
 
+extern int charge_manager_get_active_charge_port_no_lock(void);
 enum led_pwr_state led_pwr_get_state(void)
 {
 	uint32_t chflags = charge_get_led_flags();
@@ -1793,7 +1794,8 @@ enum led_pwr_state led_pwr_get_state(void)
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
-		    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE)
+		    charge_manager_get_active_charge_port_no_lock() ==
+			    CHARGE_PORT_NONE)
 			return LED_PWRS_DISCHARGE;
 		else if (battery_near_full())
 			return LED_PWRS_CHARGE_NEAR_FULL;

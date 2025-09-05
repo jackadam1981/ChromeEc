@@ -109,7 +109,7 @@ static int save_log[CHARGE_PORT_COUNT];
 #ifdef CONFIG_ZEPHYR
 K_MUTEX_DEFINE(cm_refresh);
 
-// #define CM_MUTEX_DEBUG
+#define CM_MUTEX_DEBUG
 #if defined(CM_MUTEX_DEBUG) && defined(CONFIG_PLATFORM_EC_MUTEX_HISTORY)
 #include <debug/mutex_history.h>
 
@@ -117,10 +117,13 @@ K_MUTEX_DEFINE(cm_refresh);
 
 // Define the ring buffer instance
 MUTEX_HISTORY_DECLARE(mutex_event_rb, MUTEX_HISTORY_SIZE);
+MUTEX_HISTORY_DECLARE(refresh_log, 32);
 
 // Call from watchdog timeout handler
 void charge_manager_dump_mutex_history()
 {
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "");
+	mutex_history_dump(&refresh_log);
 	mutex_history_dump(&mutex_event_rb);
 }
 
@@ -926,16 +929,19 @@ static void charge_manager_refresh(void)
 	int power_changed = 0;
 
 	CM_MUTEX_LOCK(&cm_refresh);
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE0");
 
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_port(&new_port, &new_supplier);
 
 		if (!left_safe_mode && new_port == CHARGE_PORT_NONE) {
+			MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE0.5");
 			CM_MUTEX_UNLOCK(&cm_refresh);
 			return;
 		}
 
+		MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE1");
 		/*
 		 * If the port and the supplier are the same, don't (attempt to)
 		 * switch to the port unless active charge port hasn't been set.
@@ -953,11 +959,13 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
+		MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE2");
 		/*
 		 * A different port or a supplier was selected. Make an attempt
 		 * to switch to the port.
 		 */
 		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
+			MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE2.5");
 			if (IS_ENABLED(CONFIG_EXTPOWER))
 				board_check_extpower();
 			break;
@@ -977,6 +985,7 @@ static void charge_manager_refresh(void)
 		}
 	}
 
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE3");
 	active_charge_port_initialized = 1;
 
 	/*
@@ -1049,6 +1058,7 @@ static void charge_manager_refresh(void)
 
 		power_changed = 1;
 
+		MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE4");
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
 
@@ -1086,6 +1096,7 @@ static void charge_manager_refresh(void)
 	charge_supplier = new_supplier;
 	charge_port = new_port;
 
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE5");
 #ifdef CONFIG_USB_PD_LOGGING
 	/*
 	 * Write a log under the following conditions:
@@ -1169,7 +1180,9 @@ static void charge_manager_refresh(void)
 		pd_send_host_event(PD_EVENT_POWER_CHANGE);
 	}
 
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE6");
 	CM_MUTEX_UNLOCK(&cm_refresh);
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "HERE7");
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1415,7 +1428,7 @@ void charge_manager_leave_safe_mode(void)
 	if (left_safe_mode)
 		return;
 
-	CM_MUTEX_LOCK(&cm_refresh);
+	// CM_MUTEX_LOCK(&cm_refresh);
 	/*
 	 * Sometimes the fuel gauge will report that it has
 	 * sufficient state of charge and remaining capacity,
@@ -1430,13 +1443,17 @@ void charge_manager_leave_safe_mode(void)
 	 * CHARGE_PORT_NONE around init time and not cut off the
 	 * input FETs.
 	 */
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "leave_safe_mode");
 	crec_msleep(board_get_leave_safe_mode_delay_ms());
 	CPRINTS("%s()", __func__);
 	left_safe_mode = 1;
-	if (charge_manager_is_seeded())
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "leave_safe_mode");
+	if (charge_manager_is_seeded()) {
 		hook_call_deferred(&charge_manager_refresh_data, 0);
+	}
+	MUTEX_HISTORY_LOG_CRUMB(&refresh_log, "leave_safe_mode");
 
-	CM_MUTEX_UNLOCK(&cm_refresh);
+	// CM_MUTEX_UNLOCK(&cm_refresh);
 }
 #endif
 
@@ -1540,10 +1557,16 @@ int charge_manager_get_override(void)
 	return override_port;
 }
 
-int charge_manager_get_active_charge_port(void)
+int charge_manager_get_active_charge_port_no_lock(void)
+{
+	return charge_port;
+}
+
+int charge_manager_get_active_charge_port_(const char *fn)
 {
 	int retval = 0;
 
+	printk("get_active_charge_port -> %s\n", fn);
 	CM_MUTEX_LOCK(&cm_refresh);
 	retval = charge_port;
 	CM_MUTEX_UNLOCK(&cm_refresh);
