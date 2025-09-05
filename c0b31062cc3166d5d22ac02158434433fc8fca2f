@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fec6228_67af1c60",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-05T18:08:23Z",
+      "side": 1,
+      "message": "should I remove them completely from the gpio dts file then? I assumed that those configs still stayed but now that I think about it that is probably wrong. In any case the internal pin is an output high and the external pin is an input I configured them as such here",
+      "parentUuid": "1dd04231_ac0cc325",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "c0b31062cc3166d5d22ac02158434433fc8fca2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb524fc5_a71fda79",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-05T16:47:33Z",
       "side": 1,
       "message": "Note that the `-gpios` (plural) suffix is required by some of Zephyr\u0027s devictree support.  It doesn\u0027t require that you support multiple GPIOs on the property.\n\nIn this case you\u0027re doing a hard-coded lookup at index 0, so you can drop the FOREACH stuff.\n\n\n\n```suggestion\n\t.wp_gpios \u003d GPIO_DT_SPEC_GET(DT_DRV_INST(0), wp_gpios),\n\t.ex_wp_gpios \u003d GPIO_DT_SPEC_GET(DT_DRV_INST(0), ex_wp_gpios),\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "c0b31062cc3166d5d22ac02158434433fc8fca2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d531a18_5e3c756c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-05T18:08:23Z",
+      "side": 1,
+      "message": "ack set it to only add the first instance",
+      "parentUuid": "cb524fc5_a71fda79",
       "range": {
         "startLine": 50,
         "startChar": 0,
