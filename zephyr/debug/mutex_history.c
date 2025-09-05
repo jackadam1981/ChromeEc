@@ -7,6 +7,7 @@
 
 #include <zephyr/spinlock.h>
 #include <zephyr/sys/ring_buffer.h>
+#include <zephyr/sys/time_units.h>
 
 // Spinlock to protect ring buffer access
 static struct k_spinlock rb_lock;
@@ -16,7 +17,7 @@ void mutex_history_log(struct ring_buf *rb, const struct k_mutex *mutex,
 		       enum mutex_event type, const char *func)
 {
 	mutex_event_log_t event = {
-		.timestamp = k_cycle_get_32(),
+		.timestamp = k_cyc_to_us_near32(k_cycle_get_32()),
 		.mutex = mutex,
 		.thread_id = k_current_get(),
 		.event_type = type,
@@ -49,7 +50,7 @@ void mutex_history_dump(struct ring_buf *rb)
 	printk("Mutex Event History:\n");
 	while (ring_buf_get(rb, (uint8_t *)&event, MUTEX_EVENT_TYPE_SIZE) ==
 	       MUTEX_EVENT_TYPE_SIZE) {
-		printk("  TS: %u, Mutex: %p, Thread: %s, Func: %s, Type: %u\n",
+		printk("  TS: %8u us, Mutex: %p, Thread: %s, Func: %s, Type: %u\n",
 		       event.timestamp, event.mutex,
 		       k_thread_name_get(event.thread_id), event.func,
 		       event.event_type);
