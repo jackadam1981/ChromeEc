@@ -22,6 +22,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a6755f_9bf47c2e",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-05T01:55:22Z",
+      "side": 1,
+      "message": "per this experiment:\n```\nfsammoura@fsammoura2:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/drivers/fingerprint/fingerprint_egis630.c b/zephyr/drivers/fingerprint/fingerprint_egis630.c\nindex 4535d8b5da..280b4851f3 100644\n--- a/zephyr/drivers/fingerprint/fingerprint_egis630.c\n+++ b/zephyr/drivers/fingerprint/fingerprint_egis630.c\n@@ -313,7 +313,7 @@ static int egis630_init_driver(const struct device *dev)\n                return -EINVAL;\n        }\n \n-       ret \u003d gpio_pin_configure_dt(\u0026cfg-\u003ereset_pin, GPIO_OUTPUT_INACTIVE);\n+       ret \u003d gpio_pin_configure_dt(\u0026cfg-\u003ereset_pin, GPIO_INPUT);\n        if (ret \u003c 0) {\n                LOG_ERR(\"Can\u0027t configure sensor reset pin\");\n                return ret;\ndiff --git a/zephyr/emul/emul_egis630.c b/zephyr/emul/emul_egis630.c\nindex 97a0fb341c..6bfa765d53 100644\n--- a/zephyr/emul/emul_egis630.c\n+++ b/zephyr/emul/emul_egis630.c\n@@ -65,6 +65,10 @@ static int egis630_emul_io(const struct emul *target,\n        if (data-\u003estop_spi) {\n                return -EINVAL;\n        }\n+       gpio_emul_input_set(cfg-\u003ereset_pin.port, cfg-\u003ereset_pin.pin, 1);\n+       LOG_INF(\"Value1: %d\", gpio_pin_get_dt(\u0026cfg-\u003ereset_pin));\n+       gpio_emul_input_set(cfg-\u003ereset_pin.port, cfg-\u003ereset_pin.pin, 0);\n+       LOG_INF(\"Value2: %d\", gpio_pin_get_dt(\u0026cfg-\u003ereset_pin));\n \n        if (gpio_emul_output_get(cfg-\u003ereset_pin.port, cfg-\u003ereset_pin.pin) \u003d\u003d\n            0) {\n@@ -133,14 +137,14 @@ ZTEST_RULE(egis630_emul_reset, NULL, egis630_emul_reset_rule_after);\n static int egis630_emul_init(const struct emul *target,\n                             const struct device *parent)\n {\n-       const struct egis630_emul_cfg *cfg \u003d target-\u003ecfg;\n+       //const struct egis630_emul_cfg *cfg \u003d target-\u003ecfg;\n        struct egis630_emul_data *data \u003d target-\u003edata;\n        ARG_UNUSED(parent);\n \n        data-\u003etarget \u003d target;\n \n        egis630_emul_reset(target);\n-       gpio_pin_configure_dt(\u0026cfg-\u003ereset_pin, GPIO_OUTPUT_INACTIVE);\n+       //gpio_pin_configure_dt(\u0026cfg-\u003ereset_pin, GPIO_INPUT);\n \n        return 0;\n }\ndiff --git a/zephyr/test/fingerprint/drivers/egis630/src/egis630.c b/zephyr/test/fingerprint/drivers/egis630/src/egis630.c\nindex 6f906a81e0..307fb8658d 100644\n--- a/zephyr/test/fingerprint/drivers/egis630/src/egis630.c\n+++ b/zephyr/test/fingerprint/drivers/egis630/src/egis630.c\n@@ -248,6 +248,7 @@ ZTEST_F(egis630, test_periphery_spi_write_read_success)\n                                                    rx_buf, sizeof(rx_buf)));\n        zassert_mem_equal(rx_buf, expeceted_rx_buf, sizeof(expeceted_rx_buf),\n                          \"Received data does not match sent data\");\n+                         zassert_true(0);\n }\n \n ZTEST_F(egis630, test_periphery_spi_write_read_spi_stopped)\n```\n\nIt seems that the actual driver init function is the one that sets the actual input or output state. With the change that I made, I am now configuring the reset pin as gpio input, where I can use `emul_input_set` function. It set it first to logic high, but get 0. It seems that the dt_get is returning the voltage??\n\n```\nSTART - test_periphery_spi_write_read_success\n[00:00:00.120,000] \u003cinf\u003e emul_egis630: Value1: 0\n[00:00:00.120,000] \u003cinf\u003e emul_egis630: Value2: 1\n[00:00:00.120,000] \u003cerr\u003e egis630_pal: SPI PAL transaction failed: -11\n\n    Assertion failed at CMAKE_SOURCE_DIR/src/egis630.c:248: egis630_test_periphery_spi_write_read_success: egis630_periphery_spi_write_read(tx_buf, sizeof(tx_buf), rx_buf, sizeof(rx_buf)) is non-zero\n\n FAIL - test_periphery_spi_write_read_success in 0.000 seconds\n ```",
+      "parentUuid": "5928d219_11f36e4a",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
