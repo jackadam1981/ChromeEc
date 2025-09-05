@@ -25,8 +25,7 @@ const static struct body_detect_params default_body_detect_params = {
 	.confidence_delta = CONFIG_BODY_DETECTION_CONFIDENCE_DELTA,
 };
 
-test_export_static struct motion_sensor_t *body_sensor =
-	&motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
+test_export_static struct motion_sensor_t *body_sensor;
 
 static int window_size = CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE;
 test_export_static uint64_t var_threshold_scaled, confidence_delta_scaled;
@@ -218,6 +217,9 @@ static void determine_threshold_scale(int range, int rms_noise,
 
 void body_detect_reset(void)
 {
+	/* Need to refresh body_sensor on reset to make sure it's valid below */
+	body_sensor = &motion_sensors[CONFIG_BODY_DETECTION_SENSOR];
+
 	int odr = body_sensor->drv->get_data_rate(body_sensor);
 	int rms_noise = body_sensor->drv->get_rms_noise(body_sensor);
 	int var_threshold, confidence_delta, var_noise_factor;

@@ -28,11 +28,6 @@
 
 
 /* Trulo overrides follow... */
-/ {
-	aliases {
-		on-body-sensor = &base_accel;
-	};
-};
 
 &cbi_flash {
 	/*
