@@ -231,6 +231,12 @@
 	named-gpios {
 		/delete-node/ gsc_ec_voldn_btn_odl;
 		/delete-node/ gsc_ec_volup_btn_odl;
+		/delete-node/ pen_int_odl;
+		/delete-node/ pen_rst_l;
+		/delete-node/ ec_gpg1;
+		/delete-node/ ec_led1_odl;
+		/delete-node/ ec_led2_odl;
+		/delete-node/ ec_gpd3;
 
 		gpio_gsc_ec_voldn_btn_odl: gsc_ec_voldn_btn_odl {
 			gpios = <&gpioe 3 (GPIO_INPUT | GPIO_PULL_UP)>;
@@ -239,6 +245,40 @@
 		gpio_gsc_ec_volup_btn_odl: gsc_ec_volup_btn_odl {
 			gpios = <&gpioe 4 (GPIO_INPUT | GPIO_PULL_UP)>;
 			enum-name = "GPIO_VOLUME_UP_L";
+		};
+		gpio_pen_int_odl: pen_int_odl {
+			gpios = <&gpiog 0 GPIO_INPUT>;
+			enum-name = "GPIO_WPC_IRQ";
+		};
+		gpio_pen_rst_l: pen_rst_l {
+			gpios = <&gpiog 3 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_WLC_NRST_CONN";
+		};
+		gpio_pen_pres: pen_pres_odl {
+			gpios = <&gpiog 1 (GPIO_INPUT)>;
+		};
+		// not use
+		//gpio_pp5000_wlc_en: pp5000_wlc_en {
+		//	gpios = <&gpioa 0 (GPIO_OUTPUT)>;
+		//};
+		gpio_pp5000_wlc_en: pp5000_wlc_en {
+			gpios = <&gpiod 3 (GPIO_OUTPUT)>;
+		};
+		gpio_pp1800_wlc_en: pp1800_wlc_en {
+			gpios = <&gpioa 1 (GPIO_OUTPUT)>;
+		};
+	};
+
+	gpio-interrupts {
+		int_wpc: wpc{
+			irq-pin = <&gpio_pen_int_odl>;
+			flags = <GPIO_INT_EDGE_RISING>;
+			handler = "pchg_irq";
+		};
+		int_pen_pres: pen_pres{
+			irq-pin = <&gpio_pen_pres>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pen_pres_irq";
 		};
 	};
 
@@ -303,4 +343,12 @@
 
 &thermistor_3V3_51K1_47K_4050B {
 	status = "okay";
+};
+
+&i2c0 {
+	ctn730@28 {
+		compatible = "nxp,ctn730";
+		reg = <0x28>;
+		irq-gpios=<&gpiog 0 GPIO_INPUT>;
+	};
 };
