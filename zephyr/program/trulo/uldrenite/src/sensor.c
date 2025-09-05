@@ -126,3 +126,21 @@ static void alt_sensor_init(void)
 	motion_sensors_check_ssfc();
 }
 DECLARE_HOOK(HOOK_INIT, alt_sensor_init, HOOK_PRIO_POST_I2C);
+
+static void sensor_int_disable(void)
+{
+	if (IS_ENABLED(CONFIG_SENSOR_EC_RATE_FORCE_MODE)) {
+		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+		gpio_disable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, sensor_int_disable, HOOK_PRIO_POST_I2C);
+
+static void sensor_int_enable(void)
+{
+	if (IS_ENABLED(CONFIG_SENSOR_EC_RATE_FORCE_MODE)) {
+		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_imu));
+		gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_lid_imu));
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, sensor_int_enable, HOOK_PRIO_POST_I2C);
