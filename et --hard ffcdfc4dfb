@@ -1,0 +1,230 @@
+[33m5d0e64c7f6[m[33m ([m[1;36mHEAD -> [m[1;32mciri[m[33m)[m HEAD@{0}: reset: moving to HEAD~15
+[33mffcdfc4dfb[m HEAD@{1}: reset: moving to HEAD
+[33mffcdfc4dfb[m HEAD@{2}: reset: moving to HEAD
+[33mffcdfc4dfb[m HEAD@{3}: rebase (finish): returning to refs/heads/ciri
+[33mffcdfc4dfb[m HEAD@{4}: rebase (pick): sapphire: modify default battery
+[33m2621da2639[m HEAD@{5}: rebase (pick): battery: add support for sunwoda,l25d2pxx battery pack
+[33m23170fba30[m HEAD@{6}: rebase (pick): sapphire: Add second source for motion sensor
+[33mff4159df8f[m HEAD@{7}: rebase (pick): sapphire: Enable cbi function
+[33m76e37d665b[m HEAD@{8}: rebase (pick): sapphire: add pdc firmware udpate function
+[33m5cb2dce233[m HEAD@{9}: rebase (pick): sapphire: modify vol button config
+[33m4d8453b327[m HEAD@{10}: rebase (pick): sapphire: enable bl control logic
+[33mba7a405db8[m HEAD@{11}: rebase (pick): sapphire: enable thermal sensor function
+[33mfb9eec1d7d[m HEAD@{12}: rebase (pick): sapphire: enable nfc ctn730 function
+[33m6e090090d6[m HEAD@{13}: rebase (pick): zephyr: nfc: port nfc ctn730 to zephyr
+[33mfd3616f685[m HEAD@{14}: rebase (pick): sapphire: init zephyr board
+[33me0a0c257ed[m HEAD@{15}: rebase (start): checkout HEAD~12
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{16}: rebase (finish): returning to refs/heads/ciri
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{17}: rebase (start): checkout HEAD~3
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{18}: rebase (finish): returning to refs/heads/ciri
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{19}: rebase (start): checkout HEAD~15
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{20}: reset: moving to HEAD^
+[33mb9930a8e89[m HEAD@{21}: revert: Revert "zephyr: use single evaluation versions for min, max and clamp"
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{22}: reset: moving to HEAD^
+[33m860e25d2d7[m HEAD@{23}: cherry-pick: Hack: Led strip demo
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{24}: reset: moving to HEAD^^
+[33m04eb5210d8[m HEAD@{25}: commit (cherry-pick): [test_only]sapphire: lightbar demo testing
+[33mcb73ef20e2[m HEAD@{26}: cherry-pick: Hack: Led strip demo
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{27}: reset: moving to HEAD^
+[33mae347e6a85[m HEAD@{28}: reset: moving to HEAD
+[33mae347e6a85[m HEAD@{29}: commit (cherry-pick): led: add lightbar policy
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{30}: reset: moving to HEAD^
+[33ma546f2d0dc[m HEAD@{31}: reset: moving to HEAD^
+[33m0286857743[m HEAD@{32}: commit (cherry-pick): [test_only]sapphire: lightbar demo testing
+[33ma546f2d0dc[m HEAD@{33}: cherry-pick: Hack: Led strip demo
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{34}: rebase (continue) (finish): returning to refs/heads/ciri
+[33md486f5079a[m[33m ([m[mrefs/published/ciri[m[33m, [m[1;32mbackup-before-swap[m[33m)[m HEAD@{35}: rebase (continue) (pick): sapphire: modify default battery
+[33m67318a30ab[m HEAD@{36}: rebase (continue) (pick): battery: add support for sunwoda,l25d2pxx battery pack
+[33m082830578f[m HEAD@{37}: rebase (continue) (pick): sapphire: Add second source for motion sensor
+[33me35dc12e50[m HEAD@{38}: rebase (continue) (pick): sapphire: Enable cbi function
+[33m6c25f71e46[m HEAD@{39}: rebase (continue) (pick): sapphire: add pdc firmware udpate function
+[33m2c46255f9c[m HEAD@{40}: rebase (continue) (pick): sapphire: modify vol button config
+[33mb3bf9c4c1d[m HEAD@{41}: rebase (continue) (pick): sapphire: enable bl control logic
+[33meb58e609c5[m HEAD@{42}: rebase (continue) (pick): sapphire: enable thermal sensor function
+[33mc0c9b48f26[m HEAD@{43}: rebase (continue) (pick): sapphire: enable nfc ctn730 function
+[33m94384b5556[m HEAD@{44}: rebase (continue) (pick): sapphire: init zephyr board
+[33m24387b5bdd[m HEAD@{45}: rebase (continue) (pick): zephyr: nfc: port nfc ctn730 to zephyr
+[33me0a0c257ed[m HEAD@{46}: commit (amend): tanjiro: add dp alt mode config
+[33m2368455fe4[m HEAD@{47}: rebase: fast-forward
+[33m2dd8a22d38[m HEAD@{48}: rebase (start): checkout HEAD~12
+[33mde5b2a6f29[m HEAD@{49}: reset: moving to HEAD
+[33mde5b2a6f29[m HEAD@{50}: cherry-pick: sapphire: modify default battery
+[33m4758f03c61[m HEAD@{51}: cherry-pick: battery: add support for sunwoda,l25d2pxx battery pack
+[33m22299d2abf[m HEAD@{52}: cherry-pick: sapphire: Add second source for motion sensor
+[33mc521988934[m HEAD@{53}: cherry-pick: sapphire: Enable cbi function
+[33ma666498b5d[m HEAD@{54}: cherry-pick: sapphire: add pdc firmware udpate function
+[33m187fa1e44a[m HEAD@{55}: cherry-pick: sapphire: modify vol button config
+[33m543e1e7a0e[m HEAD@{56}: cherry-pick: sapphire: enable bl control logic
+[33m9b98fa6824[m HEAD@{57}: cherry-pick: sapphire: enable thermal sensor function
+[33mde34dae9bb[m HEAD@{58}: cherry-pick: sapphire: enable nfc ctn730 function
+[33mbb7e5f3d82[m HEAD@{59}: cherry-pick: sapphire: init zephyr board
+[33m23ed157a20[m HEAD@{60}: cherry-pick: zephyr: nfc: port nfc ctn730 to zephyr
+[33m2368455fe4[m HEAD@{61}: commit (amend): tanjiro: add dp alt mode config
+[33m401dfa8b8e[m HEAD@{62}: commit (amend): tanjiro: add dp alt mode config
+[33mfdda676419[m HEAD@{63}: reset: moving to HEAD^
+[33m1150d8464b[m HEAD@{64}: cherry-pick: zephyr: nfc: port nfc ctn730 to zephyr
+[33mfdda676419[m HEAD@{65}: cherry-pick: tanjiro: add dp alt mode config
+[33m2dd8a22d38[m HEAD@{66}: commit: tanjiro: Modify the interrupt pin of PDC C1
+[33m744e96a466[m[33m ([m[1;31mcros/main[m[33m)[m HEAD@{67}: pull: Fast-forward
+[33m293ec9d5e7[m HEAD@{68}: reset: moving to HEAD^^^^^^^
+[33m65a9f205ea[m HEAD@{69}: reset: moving to HEAD^^^^^^^
+[33m46dd49aead[m HEAD@{70}: reset: moving to HEAD
+[33m46dd49aead[m HEAD@{71}: reset: moving to HEAD^
+[33m912c69577d[m HEAD@{72}: reset: moving to HEAD^^
+[33m820fd94050[m HEAD@{73}: reset: moving to HEAD
+[33m820fd94050[m HEAD@{74}: commit (cherry-pick): [test_only]sapphire: lightbar demo testing
+[33m8dd84b53a7[m HEAD@{75}: commit: pdc function and int
+[33m912c69577d[m HEAD@{76}: cherry-pick: Hack: Led strip demo
+[33m46dd49aead[m HEAD@{77}: cherry-pick: sapphire: modify default battery
+[33me5773ee581[m HEAD@{78}: commit (amend): battery: add support for sunwoda,l25d2pxx battery pack
+[33mcff4cfbc03[m HEAD@{79}: reset: moving to HEAD^
+[33m4297f0e18c[m HEAD@{80}: commit: sapphire: modify default battery
+[33mcff4cfbc03[m HEAD@{81}: commit (amend): battery: add support for sunwoda,l25d2pxx battery pack
+[33m136963f397[m HEAD@{82}: commit: ttery: add support for atl,313-b7-2d-a battery pack
+[33m47749038de[m HEAD@{83}: cherry-pick: sapphire: Add second source for motion sensor
+[33me33f4130d9[m HEAD@{84}: cherry-pick: sapphire: Enable cbi function
+[33m8db240e7a4[m HEAD@{85}: cherry-pick: sapphire: add pdc firmware udpate function
+[33m7a2acd624a[m HEAD@{86}: cherry-pick: sapphire: modify vol button config
+[33m18627ea765[m HEAD@{87}: cherry-pick: sapphire: enable bl control logic
+[33m65a9f205ea[m HEAD@{88}: cherry-pick: sapphire: enable thermal sensor function
+[33me7ad7af3e9[m HEAD@{89}: cherry-pick: sapphire: enable nfc ctn730 function
+[33maa048b0b0f[m HEAD@{90}: cherry-pick: sapphire: init zephyr board
+[33mdc3491414d[m HEAD@{91}: commit (cherry-pick): zephyr: nfc: port nfc ctn730 to zephyr
+[33mfa3798557f[m HEAD@{92}: cherry-pick: tanjiro: add dp alt mode config
+[33mc60de7c96e[m HEAD@{93}: pull: Fast-forward
+[33ma0d44bcc30[m HEAD@{94}: reset: moving to HEAD^
+[33mcfced947fe[m HEAD@{95}: commit (amend): [Test_only]pujjocento: decrease src output when battery over discharge
+[33mb74b02c3af[m HEAD@{96}: commit (amend): [Test_only]pujjocento: decrease src output when battery over discharge
+[33m2957b687df[m HEAD@{97}: commit (amend): [Test_only]pujjocento: decrease src output when battery over discharge
+[33m7d11e7e625[m HEAD@{98}: commit (amend): [Test_only]pujjocento: decrease src output when battery over discharge
+[33mc89956243d[m HEAD@{99}: commit: [Test_only]pujjocento: decrease src output when battery over discharge
+[33ma0d44bcc30[m HEAD@{100}: pull: Fast-forward
+[33m71014422e5[m HEAD@{101}: reset: moving to HEAD^^^^^
+[33mc8a9024157[m HEAD@{102}: reset: moving to HEAD^^^^^
+[33m24d9d3cab2[m HEAD@{103}: reset: moving to HEAD^^^^^
+[33mba28b0314d[m HEAD@{104}: reset: moving to HEAD^^^^^
+[33m0d1d053a71[m HEAD@{105}: commit (amend): sapphire: Add second source for motion sensor
+[33m60744344e9[m HEAD@{106}: commit (amend): sapphire: Add second source for motion sensor
+[33mc8cca1975b[m HEAD@{107}: commit: sapphire: Add second source for motion sensor
+[33m0a24fc6d7c[m HEAD@{108}: reset: moving to HEAD^^
+[33md617b69d5b[m HEAD@{109}: commit (amend): [test_only]sapphire: lightbar demo testing
+[33m8bb8d4857d[m HEAD@{110}: commit: []
+[33m9083dc681b[m HEAD@{111}: cherry-pick: Hack: Led strip demo
+[33m0a24fc6d7c[m HEAD@{112}: cherry-pick: sapphire: Enable cbi function
+[33m046761efcb[m HEAD@{113}: cherry-pick: sapphire: add pdc firmware udpate function
+[33m3b6cf7536e[m HEAD@{114}: cherry-pick: sapphire: modify vol button config
+[33m5297670064[m HEAD@{115}: cherry-pick: sapphire: enable bl control logic
+[33mba28b0314d[m HEAD@{116}: cherry-pick: sapphire: enable thermal sensor function
+[33m13012e9a06[m HEAD@{117}: cherry-pick: sapphire: enable nfc ctn730 function
+[33m0049bc7670[m HEAD@{118}: cherry-pick: sapphire: init zephyr board
+[33m6e61d72d12[m HEAD@{119}: cherry-pick: zephyr: nfc: port nfc ctn730 to zephyr
+[33m679d09b360[m HEAD@{120}: cherry-pick: tanjiro: add dp alt mode config
+[33m24d9d3cab2[m HEAD@{121}: cherry-pick: tanjiro: initial board
+[33mb7b72bafb8[m HEAD@{122}: pull: Fast-forward
+[33m6656d9653a[m HEAD@{123}: reset: moving to HEAD^
+[33m413d3622ff[m HEAD@{124}: cherry-pick: pujjocento: Update vif config
+[33m6656d9653a[m HEAD@{125}: pull: Fast-forward
+[33m4385fbb396[m HEAD@{126}: reset: moving to HEAD~1000
+[33m37b46e7e71[m HEAD@{127}: reset: moving to HEAD~1000
+[33mb65d3e21f8[m HEAD@{128}: reset: moving to HEAD~100
+[33mc3c70163d0[m HEAD@{129}: reset: moving to HEAD~100
+[33m34e3834eed[m HEAD@{130}: reset: moving to HEAD~100
+[33m6656d9653a[m HEAD@{131}: pull: Fast-forward
+[33m3203504859[m HEAD@{132}: reset: moving to HEAD^^
+[33m7d268fbb6e[m HEAD@{133}: reset: moving to HEAD^^
+[33m5bc3bd5dd4[m HEAD@{134}: reset: moving to HEAD^^
+[33m04a3241564[m HEAD@{135}: reset: moving to HEAD^^^^^^^
+[33m1c2c580908[m HEAD@{136}: reset: moving to HEAD^
+[33mc553375b58[m HEAD@{137}: cherry-pick: common: queue: use "min" instead of Z_MIN
+[33m1c2c580908[m HEAD@{138}: cherry-pick: Hack: Led strip demo
+[33m922f6c00c5[m HEAD@{139}: reset: moving to HEAD^
+[33mdc4c5808c1[m HEAD@{140}: reset: moving to HEAD
+[33mdc4c5808c1[m HEAD@{141}: cherry-pick: Hack: Led strip demo
+[33m922f6c00c5[m HEAD@{142}: reset: moving to HEAD
+[33m922f6c00c5[m HEAD@{143}: reset: moving to HEAD
+[33m922f6c00c5[m HEAD@{144}: cherry-pick: tanjiro: modify hibernate mode setting
+[33m705314b8cf[m HEAD@{145}: cherry-pick: sapphire: Enable cbi function
+[33m55fdcfdc8c[m HEAD@{146}: cherry-pick: sapphire: add pdc firmware udpate function
+[33m372c3af1fa[m HEAD@{147}: cherry-pick: tanjiro: add dp alt mode config
+[33m0749274b09[m HEAD@{148}: cherry-pick: sapphire: modify vol button config
+[33m42bac707bd[m HEAD@{149}: commit (cherry-pick): sapphire: enable bl control logic
+[33m04a3241564[m HEAD@{150}: cherry-pick: sapphire: enable thermal sensor function
+[33madeb9709f5[m HEAD@{151}: commit (amend): sapphire: enable nfc ctn730 function
+[33ma04df3c30f[m HEAD@{152}: cherry-pick: sapphire: enable nfc ctn730 function
+[33m5bc3bd5dd4[m HEAD@{153}: reset: moving to HEAD^^^^
+[33m759a82ba88[m HEAD@{154}: reset: moving to HEAD^^^^
+[33m13fec4cd87[m HEAD@{155}: cherry-pick: tanjiro: modify hibernate mode setting
+[33ma05049bdcb[m HEAD@{156}: cherry-pick: sapphire: Enable cbi function
+[33m257b6636dc[m HEAD@{157}: cherry-pick: sapphire: add pdc firmware udpate function
+[33md281610e59[m HEAD@{158}: cherry-pick: tanjiro: add dp alt mode config
+[33m759a82ba88[m HEAD@{159}: commit (cherry-pick): sapphire: modify vol button config
+[33m3e6facbc78[m HEAD@{160}: commit (cherry-pick): sapphire: enable bl control logic
+[33m662518da5c[m HEAD@{161}: cherry-pick: sapphire: enable thermal sensor function
+[33m7c189682e0[m HEAD@{162}: commit (amend): sapphire: enable nfc ctn730 function
+[33m5cc960e8fe[m HEAD@{163}: cherry-pick: sapphire: enable nfc ctn730 function
+[33m5bc3bd5dd4[m HEAD@{164}: commit (amend): sapphire: init zephyr board
+[33mce8e127432[m HEAD@{165}: cherry-pick: sapphire: init zephpr board
+[33m28f4c3b5b9[m HEAD@{166}: reset: moving to HEAD^
+[33m34485dafa3[m HEAD@{167}: reset: moving to 34485dafa3b950c6d9d77901e5e51a5314bab763
+[33m34485dafa3[m HEAD@{168}: reset: moving to HEAD^
+[33m6df7d2bed3[m HEAD@{169}: reset: moving to HEAD
+[33m6df7d2bed3[m HEAD@{170}: cherry-pick: sapphire: enable nfc ctn730 function
+[33m34485dafa3[m HEAD@{171}: commit (amend): sapphire: init zephyr board
+[33mb6d54f47c3[m HEAD@{172}: reset: moving to HEAD^
+[33mf9977521a4[m HEAD@{173}: reset: moving to HEAD^
+[33m33f6beab0a[m HEAD@{174}: reset: moving to HEAD^
+[33mf5e2f95d97[m HEAD@{175}: reset: moving to HEAD^^^^^
+[33me25d94b577[m HEAD@{176}: commit (amend): tanjiro: modify hibernate mode setting
+[33mcb5499257c[m HEAD@{177}: commit: tanjiro: modify hibernate mode setting
+[33m2304145493[m HEAD@{178}: commit: sapphire: Enable cbi function
+[33m0960d1a887[m HEAD@{179}: commit: sapphire: add pdc firmware udpate function
+[33me08ecd70b2[m HEAD@{180}: commit: tanjiro: add dp alt mode config
+[33m06fad63d29[m HEAD@{181}: commit: sapphire: modify vol button config
+[33mf5e2f95d97[m HEAD@{182}: cherry-pick: sapphire: enable bl control logic
+[33m33f6beab0a[m HEAD@{183}: cherry-pick: sapphire: enable thermal sensor function
+[33mf9977521a4[m HEAD@{184}: cherry-pick: sapphire: enable nfc ctn730 function
+[33mb6d54f47c3[m HEAD@{185}: cherry-pick: sapphire: init zephpr board
+[33m28f4c3b5b9[m HEAD@{186}: cherry-pick: zephyr: nfc: port nfc ctn730 to zephyr
+[33m7d268fbb6e[m HEAD@{187}: cherry-pick: tanjiro: initial board
+[33m5e8f645c5c[m[33m ([m[1;31mcros/release-R142-16433.B-main[m[33m, [m[1;31mcros/firmware-R142-16433.2.B-main[m[33m)[m HEAD@{188}: pull: Fast-forward
+[33m6e0fba9a71[m HEAD@{189}: checkout: moving from 7ec1154e80be2c497c3a607372a511e1b6649e05 to ciri
+[33m7ec1154e80[m HEAD@{190}: cherry-pick: sapphire: enable bl control logic
+[33me1be44de61[m HEAD@{191}: cherry-pick: sapphire: enable thermal sensor function
+[33mb7125d297f[m HEAD@{192}: cherry-pick: sapphire: enable nfc ctn730 function
+[33me22a068d74[m HEAD@{193}: cherry-pick: sapphire: init zephpr board
+[33m0baea33c2b[m HEAD@{194}: cherry-pick: zephyr: nfc: port nfc ctn730 to zephyr
+[33m7caf40e092[m HEAD@{195}: checkout: moving from ciri to FETCH_HEAD
+[33m6e0fba9a71[m HEAD@{196}: pull: Fast-forward
+[33mab70da2bf2[m HEAD@{197}: pull: Fast-forward
+[33me92041c4ab[m HEAD@{198}: pull: Fast-forward
+[33mcd8f3c98b9[m HEAD@{199}: pull: Fast-forward
+[33m1c67a81f18[m HEAD@{200}: pull: Fast-forward
+[33md142233779[m HEAD@{201}: pull: Fast-forward
+[33m4676b40dd1[m HEAD@{202}: pull: Fast-forward
+[33m12ade6cf10[m HEAD@{203}: reset: moving to HEAD
+[33m12ade6cf10[m HEAD@{204}: checkout: moving from b65d3e21f831f5eec242601db54e3ffb02d19183 to ciri
+[33mb65d3e21f8[m HEAD@{205}: checkout: moving from ea03ccbc9b1aecccac3b8f620694b574f663ae12 to b65d3e21f831f5eec242601db54e3ffb02d19183
+[33mea03ccbc9b[m HEAD@{206}: checkout: moving from 73b6155840e7d6fd1c09e5b1f20cf201e820ea39 to ea03ccbc9b1aecccac3b8f620694b574f663ae12
+[33m73b6155840[m HEAD@{207}: checkout: moving from e4b7d3f087ade68d74183b3c2534fe9b9ee4f33a to 73b6155840e7d6fd1c09e5b1f20cf201e820ea39
+[33me4b7d3f087[m HEAD@{208}: checkout: moving from ba67e54e31afa983b707878f67a4318357b69e7f to e4b7d3f087ade68d74183b3c2534fe9b9ee4f33a
+[33mba67e54e31[m HEAD@{209}: checkout: moving from 56d6de92db429ad90c4f6abcfc8b5c8e2ccb235b to ba67e54e31afa983b707878f67a4318357b69e7f
+[33m56d6de92db[m HEAD@{210}: checkout: moving from ciri to 56d6de92db429ad90c4f6abcfc8b5c8e2ccb235b
+[33m12ade6cf10[m HEAD@{211}: pull: Fast-forward
+[33m04ce1d83f1[m HEAD@{212}: pull: Fast-forward
+[33m024331e64a[m[33m ([m[1;31mcros/stabilize-16404.45.B-main[m[33m, [m[1;31mcros/release-R141-16404.B-main[m[33m)[m HEAD@{213}: pull: Fast-forward
+[33m32c7216def[m[33m ([m[1;31mcros/stabilize-starline-16397.B-main[m[33m)[m HEAD@{214}: pull: Fast-forward
+[33m1a9478ed62[m[33m ([m[1;31mcros/factory-skywalker-16393.B-main[m[33m)[m HEAD@{215}: pull: Fast-forward
+[33m260486e2ad[m[33m ([m[1;32mupload_branch[m[33m)[m HEAD@{216}: cherry-pick: ciri: modify vif TypeC output setting
+[33m39689766e1[m HEAD@{217}: cherry-pick: ciri: Remove specific Type-C port output policy
+[33m685f6edfa1[m HEAD@{218}: pull: Fast-forward
+[33mfc306f41ce[m HEAD@{219}: pull: Fast-forward
+[33m73aff20cd7[m HEAD@{220}: pull: Fast-forward
+[33mcb89261ab4[m HEAD@{221}: reset: moving to HEAD
+[33mcb89261ab4[m HEAD@{222}: reset: moving to HEAD
+[33mcb89261ab4[m HEAD@{223}: pull: Fast-forward
+[33m09a796a3ff[m HEAD@{224}: pull: Fast-forward
+[33m4a9d251ae4[m HEAD@{225}: merge 4a9d251ae40d9db83b2325d504ccd28677bf46e8: Fast-forward
+[33mcc869d5749[m HEAD@{226}: reset: moving to HEAD
+[33mcc869d5749[m HEAD@{227}: pull: Fast-forward
+[33m4cc86ad44f[m HEAD@{228}: checkout: moving from 8a8866ee2889e07835bc5a89b0215f7ab936a003 to ciri
+[33m8a8866ee28[m HEAD@{229}: checkout: moving from 9f9981d61177e5756abe997814363c68f4aa4d71 to 8a8866ee2889e07835bc5a89b0215f7ab936a003
