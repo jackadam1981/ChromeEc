@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b574e6_cd904abb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T18:30:35Z",
+      "side": 1,
+      "message": "Fixed in the following CL, rebasing the order was a bit of a pain, let me know if you feel the order has to be flipped but I figured since the bmi323 isn\u0027t used it\u0027s ok if the CLs go in this order.",
+      "parentUuid": "3e8b2ca3_504aabf0",
+      "revId": "1443ba448760056d2ad7d176b320d79f23739db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6a8bb6a_d7049684",
