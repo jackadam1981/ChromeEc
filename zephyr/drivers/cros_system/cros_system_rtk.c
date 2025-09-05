@@ -244,6 +244,10 @@ static int cros_system_rtk_hibernate(const struct device *dev, uint32_t seconds,
 	if (board_hibernate_late)
 		board_hibernate_late();
 
+#ifdef CONFIG_POWEROFF
+	sys_poweroff();
+#endif
+
 	return 0;
 }
 
