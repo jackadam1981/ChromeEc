@@ -9,7 +9,6 @@
 #include "cros_cbi.h"
 #include "driver/accel_bma4xx.h"
 #include "driver/accel_lis2dw12_public.h"
-#include "driver/accelgyro_bmi323.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -26,7 +25,6 @@ LOG_MODULE_REGISTER(uldrenite_sensor, LOG_LEVEL_INF);
 enum base_sensor_type {
 	base_lis2dw12 = 0,
 	base_lsm6ds3tr,
-	base_bmi323,
 };
 
 static int sensor_fwconfig;
@@ -38,8 +36,6 @@ void motion_interrupt(enum gpio_signal signal)
 		lis2dw12_interrupt(signal);
 	else if (base_use_alt_sensor == base_lsm6ds3tr)
 		lsm6dsm_interrupt(signal);
-	else if (base_use_alt_sensor == base_bmi323)
-		bmi3xx_interrupt(signal);
 }
 
 void lid_accel_interrupt(enum gpio_signal signal)
@@ -92,10 +88,6 @@ static void alt_sensor_init(void)
 			   CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_1)))) {
 		base_use_alt_sensor = base_lsm6ds3tr;
 		LOG_INF("BASE ACCEL IS lsm6ds3tr");
-	} else if (cros_cbi_ssfc_check_match(
-			   CBI_SSFC_VALUE_ID(DT_NODELABEL(base_sensor_2)))) {
-		base_use_alt_sensor = base_bmi323;
-		LOG_INF("BASE ACCEL IS bmi323");
 	}
 
 	motion_sensors_check_ssfc();
