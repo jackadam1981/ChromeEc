@@ -94,6 +94,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c96b74_0ef7f10c",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-05T17:12:47Z",
+      "side": 1,
+      "message": "For the `GPIO_INPUT`, it seems that `gpio_emul_input_set` is the function that has to be used to set the value. It sets the physical value. To read the logical value, you need to use `gpio_pin_get_dt`. Any other functionto set the value and read the value does not lead to any logical conclusion.",
+      "parentUuid": "31d2276c_ea8a3a8f",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
