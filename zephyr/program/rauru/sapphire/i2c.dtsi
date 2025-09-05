@@ -131,6 +131,12 @@
 		&i2c3_data_gpb5_default>;
 	pinctrl-names = "default";
 	prescale-scl-low = <8>;
+	
+	ntc730@41 {
+		compatible = "nxp,ntc730";
+		reg = <0x41>;
+		irq-gpios=<&gpioh 1 (GPIO_INPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+	};
 };
 
 &i2c4 {

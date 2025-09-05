@@ -186,6 +186,18 @@
 		gpio_ec_bl_en_od: ec_bl_en_od {
 			gpios = <&gpiod 2 (GPIO_ODR_LOW)>;
 		};
+
+		// pin need change
+		gpio_wpc_irq: gpio_wpc_irq{
+			gpios = <&gpioh 1 (GPIO_INPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_WPC_IRQ";
+		};
+
+		gpio_wpc_rst: gpio_wpc_rst{
+			gpios = <&gpioh 2 GPIO_INPUT>;
+			enum-name = "GPIO_QI_RESET_L";
+		};
+
 	};
 
 	hibernate-wake-pins {
@@ -211,8 +223,6 @@
 			<&gpiof 4 0>,
 			<&gpiof 5 0>,
 			<&gpiog 0 0>,
-			<&gpioh 1 0>,
-			<&gpioh 2 0>,
 			/* USB_C1_FRS_EN */
 			<&gpiod 3 0>;
 	};

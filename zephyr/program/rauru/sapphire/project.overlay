@@ -44,6 +44,11 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "ap_bl_en_interrupt";
 		};
+		int_wpc: wpc{
+			irq-pin = <&gpio_wpc_irq>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pchg_irq";
+		};
 	};
 
 	batteries {
