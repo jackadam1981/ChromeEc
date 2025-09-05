@@ -138,6 +138,7 @@ properties:
       - GPIO_VCCST_PWRGD_OD
       - GPIO_VOLUME_DOWN_L
       - GPIO_VOLUME_UP_L
+      - GPIO_WLC_NRST_CONN
       - GPIO_WARM_RESET_L
       - GPIO_QI_RESET_L
       - GPIO_WPC_IRQ
