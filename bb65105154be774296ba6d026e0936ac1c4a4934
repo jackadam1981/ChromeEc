@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1f7d8539_ff4a9b4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-05T07:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da323193_75e7a29f",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fc84417b_0698caeb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a865b22_3fffc25f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 3554,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-05T07:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25159323_2584dc8c",
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00a06ead_ed3ac744",
@@ -71,6 +113,24 @@
       "writtenOn": "2025-09-04T20:18:35Z",
       "side": 1,
       "message": "Nit: I\u0027m pretty sure this is a no-op. It may not be possible for the time difference to actually be 0.\n\nGiven the newly understood requirement, it might be more meaningful to test that the time was less than 30 ms. That\u0027s a somewhat arbitrary amount of time, but it\u0027s the minimum amount of time for CC to be stable during toggling, and given our intended CC stability time, if we accidentally added an amount of time less than 30 ms, we\u0027d still technically be below the maximum time.",
+      "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce96d62_ba4fdd8e",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-05T07:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a06ead_ed3ac744",
       "revId": "bb65105154be774296ba6d026e0936ac1c4a4934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
