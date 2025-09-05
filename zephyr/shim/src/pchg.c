@@ -4,6 +4,7 @@
  */
 
 #include "gpio_signal.h"
+#include "nfc/ctn730.h"
 #include "peripheral_charger.h"
 #include "wpc/scp8200.h"
 
@@ -12,11 +13,16 @@
 #include <zephyr/sys/util.h>
 
 #if DT_HAS_COMPAT_STATUS_OKAY(CPS8200_PCHG_COMPAT)
+#if DT_HAS_COMPAT_STATUS_OKAY(CTN730_PCHG_COMPAT)
 
 #define WPC_CHIP_ELE(id, fn) fn(id),
 
-struct pchg pchgs[] = { DT_FOREACH_STATUS_OKAY_VARGS(
-	CPS8200_PCHG_COMPAT, WPC_CHIP_ELE, WPC_CHIP_CPS8200) };
+struct pchg pchgs[] = {
+	DT_FOREACH_STATUS_OKAY_VARGS(CPS8200_PCHG_COMPAT, WPC_CHIP_ELE,
+				     WPC_CHIP_CPS8200),
+	DT_FOREACH_STATUS_OKAY_VARGS(CTN730_PCHG_COMPAT, WPC_CHIP_ELE,
+				     NFC_CHIP_CTN730)
+};
 
 unsigned int pchg_count = ARRAY_SIZE(pchgs);
 
