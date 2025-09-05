@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06950f36_d50a57c0",
+        "filename": "docs_rst/index.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T14:42:05Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "5ada8341_28f8a0c6",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 11
+      },
+      "revId": "e9cc89202671c4e223b0bc4277c9eeb344835e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908873ab_2b15736b",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-08-01T21:55:40Z",
       "side": 1,
       "message": "ChromiumOS",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "e9cc89202671c4e223b0bc4277c9eeb344835e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d20510_b0d7825c",
+        "filename": "docs_rst/index.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T14:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908873ab_2b15736b",
       "range": {
         "startLine": 10,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebae9ca_83ea5c0f",
+        "filename": "docs_rst/index.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T14:42:05Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "b012343e_4f3ea717",
+      "range": {
+        "startLine": 16,
+        "startChar": 38,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "e9cc89202671c4e223b0bc4277c9eeb344835e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "814687e9_b13b621b",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-08-01T21:55:40Z",
       "side": 1,
       "message": "```suggestion\n    charging, keyboard scanning, thermal management, USB-C port management, and other\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "e9cc89202671c4e223b0bc4277c9eeb344835e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ba8fb73_a6a59c31",
+        "filename": "docs_rst/index.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T14:42:05Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "814687e9_b13b621b",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83411711_3eb0b354",
+        "filename": "docs_rst/index.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T14:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bef36340_4820b84c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "e9cc89202671c4e223b0bc4277c9eeb344835e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "724244d6_e0caa1f8",
@@ -146,6 +266,30 @@
       "writtenOn": "2025-08-01T21:55:40Z",
       "side": 1,
       "message": "I\u0027m not sure this diagram is helpful.  It implies a hierarchy, as if the \"i2c bus\" is a software stack sitting on top of the sensors.\n\nAre there any diagrams available that could draw a multi-tap bus that looks more like a schematic?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "e9cc89202671c4e223b0bc4277c9eeb344835e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a17d80f_042c23a8",
+        "filename": "docs_rst/ish.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-05T14:42:05Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like there\u0027s a better way right now to represent this. There\u0027s a list of different types at https://mermaid.js.org/syntax/flowchart.html. I think that eventually https://github.com/mermaid-js/mermaid/issues/2112 might provide better support for \"bus\" like diagrams.",
+      "parentUuid": "724244d6_e0caa1f8",
       "range": {
         "startLine": 12,
         "startChar": 0,
