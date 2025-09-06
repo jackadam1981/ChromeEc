@@ -142,6 +142,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a54bc4_8fdab340",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-06T15:57:12Z",
+      "side": 1,
+      "message": "if I run the sensor initialization before called the spi write:\n\n```\nZTEST_F(egis630, test_periphery_spi_write_read_success)\n{\n\tfingerprint_init(fixture-\u003edev);\n\tuint8_t tx_buf[1] \u003d { 0xFD };\n\tuint8_t rx_buf[3] \u003d { 0 };\n\tuint8_t expeceted_rx_buf[3] \u003d { 0x1, 0x1E, 0x6 };\n\n\tzassert_ok(egis630_periphery_spi_write_read(tx_buf, sizeof(tx_buf),\n\t\t\t\t\t\t    rx_buf, sizeof(rx_buf)));\n\tzassert_mem_equal(rx_buf, expeceted_rx_buf, sizeof(expeceted_rx_buf),\n\t\t\t  \"Received data does not match sent data\");\n\t\t\t  zassert_true(0);\n}\n```\n\nand experiment with the order with which I set the `reset_pin` inside the `gis_fp_reset_sensor` function\n\n```\nvoid egis_fp_reset_sensor(const struct egis630_cfg *cfg)\n{\n\tif (cfg \u003d\u003d NULL) {\n\t\treturn;\n\t}\n\n\tint ret \u003d gpio_pin_set_dt(\u0026cfg-\u003ereset_pin, 1);\n\tif (ret \u003c 0) {\n\t\tLOG_ERR(\"Failed to set FP reset pin, status: %d\", ret);\n\t\treturn;\n\t}\n\tk_msleep(FP_SENSOR_RESET_DURATION_MS);\n\tret \u003d gpio_pin_set_dt(\u0026cfg-\u003ereset_pin, 0);\n\tif (ret \u003c 0) {\n\t\tLOG_ERR(\"Failed to set FP reset pin, status: %d\", ret);\n\t\treturn;\n\t}\n\tk_msleep(FP_SENSOR_RESET_DURATION_MS);\n\treturn;\n}\n```\n\nif I print the value using `LOG_INF(\"Value1b: %d\", gpio_emul_output_get(cfg-\u003ereset_pin.port, cfg-\u003ereset_pin.pin));` inside the `egis630_emul_io` function, these are the results of the experiment:\n\n1) GPIO_ACTIVE_LOW; 1, 0 --\u003e 1\n2) GPIO_ACTIVE_LOW; 0, 1 --\u003e 0\n3) GPIO_ACTIVE_HIGH; 0, 1 --\u003e 1\n4) GPIO_ACTIVE_HIGH; 1, 0 --\u003e 0\n\nthis can be explained. I believe there is an issue if we do not explicitly set the `GPIO_OUTPUT_ACTIVE` or `GPIO_OUTPUT_INACTIVE`",
+      "parentUuid": "e2dcbfc9_45086ab4",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
