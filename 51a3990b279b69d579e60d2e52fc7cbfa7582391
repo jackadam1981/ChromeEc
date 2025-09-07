@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fb2a067_1dcc4f9c",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-07T19:41:45Z",
+      "side": 1,
+      "message": "Updated this in a separate CL crrev/c/6919166, please take a look",
+      "parentUuid": "9759ea1b_0ac6aa1b",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 6
+      },
+      "revId": "51a3990b279b69d579e60d2e52fc7cbfa7582391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8d7835_492fb44d",
         "filename": "include/battery.h",
         "patchSetId": 1
