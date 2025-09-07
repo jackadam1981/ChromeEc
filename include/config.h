@@ -6757,9 +6757,10 @@
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
 
 /*****************************************************************************/
-/* If battery_v2 isn't used, it's v1. */
+/* Auto-enable battery v2 module with a single battery if battery is defined. */
 #if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
-#define CONFIG_BATTERY_V1
+#define CONFIG_BATTERY_COUNT 1
+#define CONFIG_BATTERY_V2
 #endif
 
 /*
