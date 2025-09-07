@@ -193,18 +193,12 @@ static inline int charge_want_shutdown(void)
  *
  * @param transitioned	True to check if SoC is previously above threshold
  */
-enum batt_threshold_type {
-	BATT_THRESHOLD_TYPE_LOW = 0,
-	BATT_THRESHOLD_TYPE_SHUTDOWN
-};
 #if defined(CONFIG_CHARGER) && defined(CONFIG_BATTERY)
-int battery_is_below_threshold(enum batt_threshold_type type,
-			       bool transitioned);
+bool check_battery_level_transition(enum batt_threshold_type type);
 #else
-static inline int battery_is_below_threshold(enum batt_threshold_type type,
-					     bool transitioned)
+static inline bool check_battery_level_transition(enum batt_threshold_type type)
 {
-	return 0;
+	return false;
 }
 #endif
 

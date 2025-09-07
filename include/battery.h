@@ -94,6 +94,11 @@ enum battery_disconnect_state {
 	BATTERY_DISCONNECT_ERROR,
 };
 
+enum batt_threshold_type {
+	BATT_THRESHOLD_TYPE_LOW = 0,
+	BATT_THRESHOLD_TYPE_SHUTDOWN
+};
+
 struct battery_static_info {
 	uint16_t design_capacity;
 	uint16_t design_voltage;
@@ -511,6 +516,28 @@ void battery_compensate_params(struct batt_params *batt);
 __override_proto void board_battery_compensate_params(struct batt_params *batt);
 
 void battery_validate_params(struct batt_params *batt);
+
+/**
+ * @brief Gets the integer percentage value for a given battery threshold type.
+ *
+ * This function translates a battery threshold enum into its corresponding
+ * percentage value defined by system constants.
+ *
+ * @param type The enum representing the threshold to look up.
+ * @return The integer percentage value of the threshold, or 0 if the
+ * type is invalid.
+ */
+int get_battery_threshold_percent(enum batt_threshold_type type);
+
+/**
+ * @brief Checks if the battery's state of charge is at or below a given
+ * threshold.
+ *
+ * @param type The battery threshold to check against (e.g., LOW or SHUTDOWN).
+ * @return 1 if the battery level is at or below the threshold, 0 otherwise.
+ */
+bool battery_is_below_threshold(const struct batt_params *batt,
+				enum batt_threshold_type type);
 
 /**
  * Read static battery info from a main battery and store it in a cache.

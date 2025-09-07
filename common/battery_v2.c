@@ -226,6 +226,29 @@ static int is_battery_string_reliable(const char *buf)
 	return 1;
 }
 
+int get_battery_threshold_percent(enum batt_threshold_type type)
+{
+	switch (type) {
+	case BATT_THRESHOLD_TYPE_LOW:
+		return BATTERY_LEVEL_LOW;
+	case BATT_THRESHOLD_TYPE_SHUTDOWN:
+		return CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
+	default:
+		return 0;
+	}
+}
+
+bool battery_is_below_threshold(const struct batt_params *batt,
+				enum batt_threshold_type type)
+{
+	/* If the state of charge isn't reliable, assume the level is fine. */
+	if (batt->flags & BATT_FLAG_BAD_STATE_OF_CHARGE) {
+		return false;
+	}
+
+	return batt->state_of_charge <= get_battery_threshold_percent(type);
+}
+
 int update_static_battery_info(void)
 {
 	int batt_serial;
@@ -382,7 +405,7 @@ void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
 		send_batt_info_event++;
 	}
 	if (params->is_present == BP_YES &&
-	    battery_is_below_threshold(BATT_THRESHOLD_TYPE_SHUTDOWN, false))
+	    battery_is_below_threshold(params, BATT_THRESHOLD_TYPE_SHUTDOWN))
 		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
 
 	tmp |= is_charging ? EC_BATT_FLAG_CHARGING : EC_BATT_FLAG_DISCHARGING;
