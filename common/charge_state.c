@@ -726,27 +726,11 @@ static int shutdown_on_critical_battery(void)
 	return 1;
 }
 
-int battery_is_below_threshold(enum batt_threshold_type type, bool transitioned)
+bool check_battery_level_transition(enum batt_threshold_type type)
 {
-	int threshold;
-
-	/* We can't tell what the current charge is. Assume it's okay. */
-	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE)
-		return 0;
-
-	switch (type) {
-	case BATT_THRESHOLD_TYPE_LOW:
-		threshold = BATTERY_LEVEL_LOW;
-		break;
-	case BATT_THRESHOLD_TYPE_SHUTDOWN:
-		threshold = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
-		break;
-	default:
-		return 0;
-	}
-
-	return curr.batt.state_of_charge <= threshold &&
-	       (!transitioned || prev_charge > threshold);
+	/* Returns true only when the threshold is first crossed. */
+	return battery_is_below_threshold(&curr.batt, type) &&
+	       prev_charge > get_battery_threshold_percent(type);
 }
 
 /*
@@ -758,11 +742,11 @@ int battery_is_below_threshold(enum batt_threshold_type type, bool transitioned)
 static void notify_host_of_low_battery_charge(void)
 {
 	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS)) {
-		if (battery_is_below_threshold(BATT_THRESHOLD_TYPE_LOW, true))
+		if (check_battery_level_transition(BATT_THRESHOLD_TYPE_LOW))
 			host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
 
-		if (battery_is_below_threshold(BATT_THRESHOLD_TYPE_SHUTDOWN,
-					       true))
+		if (check_battery_level_transition(
+			    BATT_THRESHOLD_TYPE_SHUTDOWN))
 			host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
 	}
 }
