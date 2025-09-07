@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "301b2b61_161bb592",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-07T19:40:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dca0b419_8c02385a",
+      "range": {
+        "startLine": 317,
+        "startChar": 5,
+        "endLine": 317,
+        "endChar": 32
+      },
+      "revId": "51a3990b279b69d579e60d2e52fc7cbfa7582391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9759ea1b_0ac6aa1b",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-09-04T16:42:37Z",
       "side": 1,
       "message": "Update this comment.",
+      "range": {
+        "startLine": 523,
+        "startChar": 3,
+        "endLine": 523,
+        "endChar": 48
+      },
+      "revId": "51a3990b279b69d579e60d2e52fc7cbfa7582391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe82376_a7114258",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-07T19:40:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4e8d7835_492fb44d",
       "range": {
         "startLine": 523,
         "startChar": 3,
