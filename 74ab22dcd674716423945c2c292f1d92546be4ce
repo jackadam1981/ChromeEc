@@ -166,6 +166,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d724a6ae_876a64e4",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-09-08T06:58:23Z",
+      "side": 1,
+      "message": "Haven\u0027t went through the whole, but just looking at the code\n\n\u003e\tgpio_pin_configure_dt(\u0026cfg-\u003ereset_pin, GPIO_OUTPUT_INACTIVE);\n\nthe emulator should __not__ configure the GPIOs used by the real hardware. GPIOs should be configured by the driver, as it is done in the real application. The emulator can only check states of the GPIOs and manipulate state of inputs (it is output for the emulator).",
+      "parentUuid": "e5a54bc4_8fdab340",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
