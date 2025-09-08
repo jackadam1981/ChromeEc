@@ -1,0 +1,9 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Richtek RT3645 Power Management IC
+
+compatible: "richtek,rt3645"
+
+include: i2c-device.yaml

@@ -11,6 +11,17 @@ menuconfig PLATFORM_EC_PMIC
 	  be accessed to tune operational parameters or read fault
 	  codes.
 
+config PLATFORM_EC_RT3645
+	bool "Enable RT3645 PMIC Support"
+	default n
+	depends on DT_HAS_RICHTEK_RT3645_ENABLED
+	help
+	   Enable support for RT3645 PMIC. This is a quadruple channel
+	   PWM controller with an I2C interface for Intel IMVP9.3 CPU
+	   Power Core Supply. This driver enables reprogramming of
+	   configuration registers, when initial factory settings need
+	   to be tuned in prototype devices.
+
 if PLATFORM_EC_PMIC
 
 config PLATFORM_EC_MP2964
