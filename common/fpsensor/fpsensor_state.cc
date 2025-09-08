@@ -201,7 +201,78 @@ static int validate_fp_mode(const uint32_t mode)
 	return EC_SUCCESS;
 }
 
-enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
+static enum ec_error_list
+authenticate_enroll(std::span<const uint8_t, SHA256_DIGEST_LENGTH> mac)
+{
+	/*
+	 * The context for signing/verifying messages is Android user id
+	 * which is 4 byte integer.
+	 */
+	static_assert(global_context.user_id.size() >= sizeof(uint32_t));
+	std::span<const uint8_t> context{ global_context.user_id.data(),
+					  sizeof(uint32_t) };
+
+	/* The operation is just an "enroll" string */
+	static constexpr uint8_t operation_str[] = { 'e', 'n', 'r',
+						     'o', 'l', 'l' };
+	std::span<const uint8_t> operation{ operation_str };
+
+	return validate_request(context, operation, mac);
+}
+
+static enum ec_error_list
+authenticate_match(std::span<const uint8_t, SHA256_DIGEST_LENGTH> mac)
+{
+	/*
+	 * The context for signing/verifying messages is Android user id
+	 * which is 4 byte integer.
+	 */
+	static_assert(global_context.user_id.size() >= sizeof(uint32_t));
+	std::span<const uint8_t> context{ global_context.user_id.data(),
+					  sizeof(uint32_t) };
+
+	/* The operation is just an "auth" string */
+	static constexpr uint8_t operation_str[] = { 'a', 'u', 't', 'h' };
+	std::span<const uint8_t> operation{ operation_str };
+
+	return validate_request(context, operation, mac);
+}
+
+static enum ec_error_list authenticate_fp_mode(
+	const uint32_t mode,
+	std::optional<std::span<const uint8_t, SHA256_DIGEST_LENGTH> > mac)
+{
+	/* Allow for classic fingerprint flow. */
+	if (!(global_context.fp_encryption_status &
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+		return EC_SUCCESS;
+	}
+
+	uint32_t flags_changed = global_context.sensor_mode ^ mode;
+	uint32_t flags_enabled = mode & flags_changed;
+
+	/* Modes that don't require authentication are allowed. */
+	if (!(flags_enabled & FP_MODES_WITH_AUTHENTICATION)) {
+		return EC_SUCCESS;
+	}
+
+	/* Block if the MAC is not available */
+	if (!mac.has_value()) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	if (flags_enabled & FP_MODE_ENROLL_SESSION) {
+		return authenticate_enroll(mac.value());
+	} else if (flags_enabled & FP_MODE_MATCH) {
+		return authenticate_match(mac.value());
+	}
+
+	return EC_ERROR_UNKNOWN;
+}
+
+enum ec_status fp_set_sensor_mode(
+	uint32_t mode, uint32_t *mode_output,
+	std::optional<std::span<const uint8_t, SHA256_DIGEST_LENGTH> > mac)
 {
 	if (mode_output == nullptr)
 		return EC_RES_INVALID_PARAM;
@@ -213,6 +284,13 @@ enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
 	}
 
 	if (!(mode & FP_MODE_DONT_CHANGE)) {
+		enum ec_error_list auth_err = authenticate_fp_mode(mode, mac);
+		if (auth_err != EC_SUCCESS) {
+			CPRINTS("Mode authentication failed with: %d",
+				auth_err);
+			return EC_RES_ACCESS_DENIED;
+		}
+
 		global_context.sensor_mode = mode;
 		task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG);
 	}
@@ -224,10 +302,18 @@ enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
 static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 {
 	const auto *p = static_cast<const ec_params_fp_mode *>(args->params);
+	const auto *p_1 =
+		static_cast<const ec_params_fp_mode_v1 *>(args->params);
 	auto *r = static_cast<ec_response_fp_mode *>(args->response);
+	std::optional<std::span<const uint8_t, FP_MAC_LENGTH> > mac =
+		std::nullopt;
 	uint32_t mode_out;
 
-	enum ec_status ret = fp_set_sensor_mode(p->mode, &mode_out);
+	if (args->version == 1) {
+		mac = std::span{ p_1->mac };
+	}
+
+	enum ec_status ret = fp_set_sensor_mode(p->mode, &mode_out, mac);
 
 	r->mode = mode_out;
 
@@ -236,7 +322,8 @@ static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 
 	return ret;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 {
@@ -255,7 +342,8 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 		 * fp_sensor_open(), this must be asynchronous because
 		 * fp_sensor_open() can take ~175 ms. See http://b/137288498.
 		 */
-		return fp_set_sensor_mode(FP_MODE_RESET_SENSOR, &mode_output);
+		return fp_set_sensor_mode(FP_MODE_RESET_SENSOR, &mode_output,
+					  std::nullopt);
 
 	case FP_CONTEXT_GET_RESULT:
 		if (global_context.sensor_mode & FP_MODE_RESET_SENSOR)
