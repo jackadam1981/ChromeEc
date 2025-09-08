@@ -49,8 +49,9 @@
 
 &i2c2 {
 	charger: isl95522@9 {
-		compatible = "intersil,isl95522";
+		compatible = "intersil,isl95522", "hpb-charger";
 		status = "okay";
 		reg = <0x9>;
+		minimum-voltage-required = <15000>;
 	};
 };
