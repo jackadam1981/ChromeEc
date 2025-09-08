@@ -8339,6 +8339,8 @@ struct ec_params_fp_passthru {
 	 FP_MODE_MATCH | FP_MODE_RESET_SENSOR | FP_MODE_SENSOR_MAINTENANCE | \
 	 FP_MODE_DONT_CHANGE)
 
+#define FP_MODES_WITH_AUTHENTICATION (FP_MODE_ENROLL_SESSION | FP_MODE_MATCH)
+
 /* Capture types defined in bits [30..26] */
 #define FP_MODE_CAPTURE_TYPE_SHIFT 26
 #define FP_MODE_CAPTURE_TYPE_MASK (0x1F << FP_MODE_CAPTURE_TYPE_SHIFT)
@@ -8382,8 +8384,15 @@ enum fp_capture_type {
 	(enum fp_capture_type)(((mode) & FP_MODE_CAPTURE_TYPE_MASK) >> \
 			       FP_MODE_CAPTURE_TYPE_SHIFT)
 
+#define FP_MAC_LENGTH 32
+
 struct ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
+} __ec_align4;
+
+struct ec_params_fp_mode_v1 {
+	uint32_t mode; /* as defined by FP_MODE_ constants */
+	uint8_t mac[FP_MAC_LENGTH];
 } __ec_align4;
 
 struct ec_response_fp_mode {

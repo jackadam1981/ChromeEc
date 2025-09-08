@@ -21,6 +21,7 @@
 #include <stdint.h>
 
 #include <array>
+#include <optional>
 #include <span>
 
 /* if no special memory regions are defined, fallback on regular SRAM */
@@ -36,7 +37,7 @@
 	 sizeof(struct ec_fp_template_encryption_metadata))
 
 struct enc_buffer {
-	struct ec_fp_template_encryption_metadata metadata{};
+	struct ec_fp_template_encryption_metadata metadata {};
 	std::array<uint8_t, FP_ALGORITHM_TEMPLATE_SIZE> fp_template{};
 	std::array<uint8_t, FP_POSITIVE_MATCH_SALT_BYTES> positive_match_salt{};
 };
@@ -142,9 +143,12 @@ int fp_get_next_event(uint8_t *out);
  *
  * @param mode          new mode to change to
  * @param mode_output   resulting mode
+ * @param mac           the MAC, required for authenticated modes
  * @return EC_RES_SUCCESS on success. Error code on failure.
  */
-enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output);
+enum ec_status
+fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output,
+		   std::optional<std::span<const uint8_t, FP_MAC_LENGTH> > mac);
 
 /**
  * Allow reading positive match secret for |fgr| in the next 5 seconds.

@@ -104,7 +104,7 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 		CPRINTS("Waiting for finger ...");
 
 	uint32_t mode_output = 0;
-	const int rc = fp_set_sensor_mode(mode, &mode_output);
+	const int rc = fp_set_sensor_mode(mode, &mode_output, std::nullopt);
 
 	if (rc != EC_RES_SUCCESS) {
 		/*
@@ -421,8 +421,8 @@ static int command_fpmaintenance(int argc, const char **argv)
 {
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	uint32_t mode_output = 0;
-	const int rc =
-		fp_set_sensor_mode(FP_MODE_SENSOR_MAINTENANCE, &mode_output);
+	const int rc = fp_set_sensor_mode(FP_MODE_SENSOR_MAINTENANCE,
+					  &mode_output, std::nullopt);
 
 	if (rc != EC_RES_SUCCESS) {
 		/*
