@@ -45,6 +45,30 @@
       },
       "revId": "dfe1a2af0978464c9bb2a7478d9f72f7c32bdb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577cbfeb_ac832788",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-08T20:57:32Z",
+      "side": 1,
+      "message": "I will leave responding to this command for after a GVC demonstration. I tried the `k_free` before and when I use it, I get memory corruption. Not sure what is going here.",
+      "parentUuid": "3f73603f_e562456d",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "dfe1a2af0978464c9bb2a7478d9f72f7c32bdb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
