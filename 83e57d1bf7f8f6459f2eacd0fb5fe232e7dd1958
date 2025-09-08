@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b12285_425e905f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-08T17:01:00Z",
+      "side": 1,
+      "message": "Put this CL at the parent to reduce code, removing the need for extra testing in the \"fix number of sensors\" CL.",
+      "revId": "83e57d1bf7f8f6459f2eacd0fb5fe232e7dd1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
