@@ -8732,6 +8732,15 @@ struct ec_params_fp_confirm_template {
 	uint8_t mac[FP_MAC_LENGTH];
 } __ec_align4;
 
+#define EC_CMD_FP_SIGN_MATCH 0x0417
+struct ec_params_fp_sign_match {
+	uint8_t challenge[FP_CHALLENGE_SIZE];
+} __ec_align4;
+
+struct ec_response_fp_sign_match {
+	uint8_t signature[FP_MAC_LENGTH];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
