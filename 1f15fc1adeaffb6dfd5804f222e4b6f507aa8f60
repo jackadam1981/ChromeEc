@@ -22,6 +22,30 @@
       },
       "revId": "1f15fc1adeaffb6dfd5804f222e4b6f507aa8f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803db48b_c5f21de2",
+        "filename": "zephyr/program/fatcat/kinmen/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-09-08T04:06:22Z",
+      "side": 1,
+      "message": "Hi @Tristan Honscheid,\nI just confirmed our coreboot engineer this part is not ready, but I think we can enable this flag first. right?",
+      "parentUuid": "aaaefc65_a97833ca",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "1f15fc1adeaffb6dfd5804f222e4b6f507aa8f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
