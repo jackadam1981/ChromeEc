@@ -78,9 +78,11 @@ static void average_tempature(void)
 		&charger_temp);
 
 	charger_temp_c = K_TO_C(charger_temp);
-	/* Abnormal value processing, maintain previous strategy */
-	if (charger_temp_c > 120)
+	/* Abnormal value processing, limited to 1000ma */
+	if (charger_temp_c > 120) {
+		current = 1000;
 		return;
+	}
 
 	thermals[thermal_cyc] = charger_temp_c;
 	thermal_cyc = (thermal_cyc + 1) % 5;
