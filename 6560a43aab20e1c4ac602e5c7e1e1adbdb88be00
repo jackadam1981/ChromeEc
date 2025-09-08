@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83bd4513_0e8f9706",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T21:50:11Z",
+      "side": 1,
+      "message": "Is this supposed to be an array?",
+      "range": {
+        "startLine": 314,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 58
+      },
+      "revId": "6560a43aab20e1c4ac602e5c7e1e1adbdb88be00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f215673_4197ea0a",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T21:50:11Z",
+      "side": 1,
+      "message": "Since this is an array and we\u0027re copying into it, we probably need to pass the size as well so that we can make sure that there is enough room when doing the copy. The size can be an in/out parameter (e.g., `uint8_t* num_params`) if we want to be able to return the number of valid items in the resulting array.\n\nYou can also make it clearer that it\u0027s an array by using `[]` instead of `*`: `struct fingerprint_image_frame_params image_frame_params_array[]`.",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 64
+      },
+      "revId": "6560a43aab20e1c4ac602e5c7e1e1adbdb88be00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4af401_8f0010cf",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T21:50:11Z",
+      "side": 1,
+      "message": "Should this be `image_frame_params_array`?",
+      "range": {
+        "startLine": 465,
+        "startChar": 40,
+        "endLine": 465,
+        "endChar": 58
+      },
+      "revId": "6560a43aab20e1c4ac602e5c7e1e1adbdb88be00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
