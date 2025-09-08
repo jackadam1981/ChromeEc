@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43d526e6_0e39253f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-08T22:08:36Z",
+      "side": 1,
+      "message": "the structs are of 2 different types: `fp_sensor_info` and `fingerprint_sensor_info`.",
+      "parentUuid": "803f695f_bfc079d3",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 48
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85a7a553_0e0392c7",
         "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
         "patchSetId": 10
