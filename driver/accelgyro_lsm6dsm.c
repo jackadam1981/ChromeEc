@@ -554,8 +554,11 @@ lsm6dsm_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 	 * conflict. More refactoring is likely needed on this driver.
 	 */
 	if (enable) {
+		RETURN_ERROR(config_interrupt(s));
 		return fifo_enable(LSM6DSM_MAIN_SENSOR(s));
 	} else {
+		RETURN_ERROR(st_raw_write8(s->port, s->i2c_spi_addr_flags,
+					   LSM6DSM_INT1_CTRL, 0));
 		return fifo_disable(LSM6DSM_MAIN_SENSOR(s));
 	}
 }
