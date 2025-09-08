@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfeb6c5_b70ec9e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-09-08T22:31:43Z",
+      "side": 1,
+      "message": "Please address the review comments.",
+      "revId": "fe782655f2cfe43ac0eb0dafa814e8eda683720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81cf3508_bedb8f97",
@@ -72,6 +89,30 @@
       "writtenOn": "2025-09-08T21:36:56Z",
       "side": 1,
       "message": "how similar do you expect moonstone to be to kinmen?\nhow about including `../kinmen/...` files here instead of copying\nthem until there are noteworthy differences?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "fe782655f2cfe43ac0eb0dafa814e8eda683720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6690fe3_7e65a66e",
+        "filename": "zephyr/program/fatcat/moonstone/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-09-08T22:31:43Z",
+      "side": 1,
+      "message": "This would be OK in the zephyr sources.  At the ALOS level, the moonstone device will be iheriting from the fatcat design.",
+      "parentUuid": "38599912_6dde1c9d",
       "range": {
         "startLine": 11,
         "startChar": 0,
