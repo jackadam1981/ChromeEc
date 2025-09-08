@@ -16,6 +16,24 @@
       "message": "The on-body/off-body event is sent from cros-ish, so why do we still need the motionsense task in the main EC?",
       "revId": "1c1142d9b4ff7f27591cb12af214edd70f2f1dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93be6900_6b2f7b5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-08T19:41:42Z",
+      "side": 1,
+      "message": "The logic in the EC side that gets the on-body event calls `body_detect_change_state` which allows the thermals to work as expected. This function also puts the event on the FIFO. It\u0027s possible we can decouple this further so we can avoid putting it on the motionsense fifo, but I haven\u0027t look into that yet. Would you like me to?",
+      "parentUuid": "1857ec38_4e71b2d7",
+      "revId": "1c1142d9b4ff7f27591cb12af214edd70f2f1dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
