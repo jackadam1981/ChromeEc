@@ -484,6 +484,25 @@ enum ec_error_list charger_get_voltage(int chgnum, int *voltage)
 	return chg_chips[chgnum].drv->get_voltage(chgnum, voltage);
 }
 
+test_mockable enum ec_error_list charger_get_minimum_charging_mv(int chgnum,
+								 uint32_t *mv)
+{
+	if (chgnum < 0)
+		return EC_ERROR_INVAL;
+
+	if (chgnum >= board_get_charger_chip_count()) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_INVAL;
+	}
+
+	if (chg_chips[chgnum].minimum_charging_mv ==
+	    CHARGER_NO_MINIMUM_CHARGING_MV)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	*mv = chg_chips[chgnum].minimum_charging_mv;
+	return EC_SUCCESS;
+}
+
 enum ec_error_list charger_set_voltage(int chgnum, int voltage)
 {
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
