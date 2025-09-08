@@ -77,17 +77,26 @@ static struct k_thread cros_ec_ishtp_thread;
 static K_SEM_DEFINE(cros_ec_ishtp_event_sem, 0, 1);
 static uint32_t cros_ec_ishtp_event;
 static uint32_t heci_cros_ec_conn_id;
+static bool ap_in_s0ix;
+static bool pending_mkbp_event;
 
 int heci_send_mkbp_event(uint32_t *timestamp)
 {
 	struct cros_ec_ishtp_msg evt;
 	struct mrd_t m = { 0 };
 
+	if (ap_in_s0ix) {
+		LOG_ERR("Can't send heci message in s0ix");
+		pending_mkbp_event = true;
+		return EC_SUCCESS;
+	}
+
 	evt.hdr.channel = CROS_MKBP_EVENT;
 	evt.hdr.status = 0;
 	m.buf = &evt;
 	m.len = sizeof(evt);
 
+	pending_mkbp_event = false;
 	*timestamp = __hw_clock_source_read();
 	return heci_send(heci_cros_ec_conn_id, &m) ? EC_SUCCESS :
 						     EC_ERROR_UNKNOWN;
@@ -261,13 +270,20 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 	case HOST_SLEEP_EVENT_S3_SUSPEND:
 	case HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND:
 		LOG_INF("%s: suspend", __FILE__);
+		ap_in_s0ix = true;
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		break;
 
 	case HOST_SLEEP_EVENT_S0IX_RESUME:
 	case HOST_SLEEP_EVENT_S3_RESUME:
 		LOG_INF("%s: resume", __FILE__);
+		ap_in_s0ix = false;
 		hook_notify(HOOK_CHIPSET_RESUME);
+		if (pending_mkbp_event) {
+			uint32_t timestamp;
+
+			heci_send_mkbp_event(&timestamp);
+		}
 		break;
 
 	default:
