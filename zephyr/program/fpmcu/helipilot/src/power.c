@@ -65,7 +65,7 @@ static int slp_event_init(void)
 					GPIO_INT_EDGE_BOTH);
 
 	/* Get init state of the sleep pins */
-	k_work_submit(&slp_event_work);
+	slp_event_handler(NULL);
 
 	return 0;
 }
