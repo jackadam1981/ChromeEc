@@ -12,6 +12,7 @@
 #include "crypto/cleanse_wrapper.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
+#include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_detect.h"
@@ -111,7 +112,21 @@ static uint32_t fp_process_enroll(void)
 			fp_enable_positive_match_secret(
 				global_context.templ_valid,
 				&global_context.positive_match_secret_state);
-			global_context.templ_valid++;
+
+			/*
+			 * In the classic flow we immediately use this template
+			 * for matching (templ_valid is incremented).
+			 *
+			 * In the Fingerprint Auth flow we must reliably inform
+			 * Trusted Application that the template was enrolled.
+			 * To achieve this, we will not use this template for
+			 * matching, until Trusted Application sends us a signed
+			 * confirmation.
+			 */
+			if (!(global_context.fp_encryption_status &
+			      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+				global_context.templ_valid++;
+			}
 		}
 		global_context.sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
@@ -701,3 +716,46 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
+
+static enum ec_status
+fp_command_confirm_template(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const struct ec_params_fp_confirm_template *>(
+			args->params);
+	std::span<const uint8_t, FP_MAC_LENGTH> mac{ params->mac };
+
+	/*
+	 * The context for signing/verifying messages is Android user id
+	 * which is 4 byte integer.
+	 */
+	static_assert(global_context.user_id.size() >= sizeof(uint32_t));
+	std::span<const uint8_t> context{ global_context.user_id.data(),
+					  sizeof(uint32_t) };
+
+	/* The operation is just an "enroll_finish" string */
+	static constexpr uint8_t operation_str[] = { 'e', 'n', 'r', 'o', 'l',
+						     'l', '_', 'f', 'i', 'n',
+						     'i', 's', 'h' };
+	std::span<const uint8_t> operation{ operation_str };
+
+	/*
+	 * After successful enrollment, the 'template_newly_enrolled' (new
+	 * template id) must be equal to 'templ_valid'.
+	 */
+	if (global_context.template_newly_enrolled !=
+	    global_context.templ_valid) {
+		return EC_RES_ERROR;
+	}
+
+	if (validate_request(context, operation, mac) != EC_SUCCESS) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	/* Add newly enrolled template to valid templates. */
+	global_context.templ_valid++;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_CONFIRM_TEMPLATE, fp_command_confirm_template,
+		     EC_VER_MASK(0));
