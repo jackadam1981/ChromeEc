@@ -112,8 +112,12 @@ static void shi_init(void)
 		shi_enable();
 	}
 }
+#ifdef CONFIG_NPCX_SHI_SHIM_INIT_WITH_SYS_INIT
+SYS_INIT(shi_init, POST_KERNEL, CONFIG_NPCX_SHI_SHIM_INIT_WITH_SYS_INIT_PRIO);
+#else
 /* Call hook after chipset sets initial power state */
 DECLARE_HOOK(HOOK_INIT, shi_init, HOOK_PRIO_POST_CHIPSET);
+#endif
 
 #ifndef CONFIG_EC_HOST_CMD
 /* Get protocol information */
