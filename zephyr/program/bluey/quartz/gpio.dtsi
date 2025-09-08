@@ -1,0 +1,77 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	aliases {
+		gpio-wp = &gpio_ec_wp_l;
+	};
+	/*
+	 * The I2C port is being removed to free up its
+	 * pins for use as GPIOs.
+	 */
+	named-i2c-ports {
+		/delete-node/ ec_i2c_tp;
+	};
+
+	named-gpios {
+		/delete-node/ imu0_ec_int;
+		/delete-node/ imu1_ec_int;
+		/delete-node/ usb_vbus_0_on_l;
+		/delete-node/ usb_vbus_1_on_l;
+		/delete-node/ charge_status0;
+		/delete-node/ charge_status1;
+		/delete-node/ ec_bkoff_odl;
+		/delete-node/ edp_bl_en;
+		/delete-node/ en_kb_base_x;
+		/delete-node/ ec_als_int;
+		/delete-node/ ec_batt_pres_odl;
+		/delete-node/ en_cc_lid_base_pu;
+		/delete-node/ ec_batt_i2c_en_odl;
+		/delete-node/ en_hdmi_pwr;
+		/delete-node/ kbl_pwr_en_odl;
+		/delete-node/ ec_usb_en;
+		/delete-node/ ec_ipcm_pdn;
+		/delete-node/ gsc_ec_volup_btn_odl;
+		/delete-node/ gsc_ec_voldn_btn_odl;
+
+		gpio_pg_pp5000_s5_od: pg_pp5000_s5_od {
+			gpios = <&gpio6 3 (GPIO_INPUT)>;
+		};
+		gpio_tpad_en: tpad_en {
+			gpios = <&gpio9 5 (GPIO_OUTPUT)>;
+		};
+		gpio_bl_off_odl: bl_off_odl {
+			gpios = <&gpio9 7 (GPIO_OUTPUT | GPIO_OPEN_DRAIN)>;
+		};
+		gpio_haptic_en_ec: haptic_en_ec {
+			gpios = <&gpioa 3 (GPIO_OUTPUT)>;
+		};
+		gpio_en_pp3300_fp_ec: en_pp3300_fp_ec {
+			gpios = <&gpiob 2 (GPIO_OUTPUT)>;
+		};
+		gpio_ec_en_pp5000_fan: ec_en_pp5000_fan {
+			gpios = <&gpiob 3 (GPIO_OUTPUT)>;
+		};
+		gpio_fs_os_state_l_conn: fs_os_state_l_conn {
+			gpios = <&gpiob 4 (GPIO_OUTPUT)>;
+		};
+		gpio_fp_apm: fp_apm {
+			gpios = <&gpiob 5 (GPIO_OUTPUT)>;
+		};
+		gpio_tablet_mode_l: tablet_mode_l {
+			gpios = <&gpioe 4 (GPIO_INPUT)>;
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
+		gpio_smb2360_a_chg_led_pg_odl: smb2360_a_chg_led_pg_odl {
+			gpios = <&gpiof 0 (GPIO_INPUT)>;
+		};
+		gpio_led_ec_do_argb_di: led_ec_do_argb_di {
+			gpios = <&gpio3 5 (GPIO_OUTPUT)>;
+		};
+		gpio_en_pp5000_led_x: en_pp5000_led_x {
+			gpios = <&gpio6 6 (GPIO_OUTPUT)>;
+		};
+	};
+};
