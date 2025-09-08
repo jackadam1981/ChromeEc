@@ -1708,6 +1708,123 @@ test_static enum ec_error_list test_fp_mode_match_fail_version_0(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list test_fp_confirm_template_success(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 13> operation = {
+		'e', 'n', 'r', 'o', 'l', 'l', '_', 'f', 'i', 'n', 'i', 's', 'h'
+	};
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_confirm_template params = { 0 };
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.templ_valid = 1;
+	global_context.template_newly_enrolled = global_context.templ_valid;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(
+			session_key, user_id, sender, operation,
+			challenge_response.challenge, params.mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONFIRM_TEMPLATE, 0, &params,
+				       sizeof(params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(global_context.templ_valid, 2, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_confirm_template_fail_invalid_signature(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_confirm_template params = { 0 };
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.templ_valid = 1;
+	global_context.template_newly_enrolled = global_context.templ_valid;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONFIRM_TEMPLATE, 0, &params,
+				       sizeof(params), nullptr, 0),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	TEST_EQ(global_context.templ_valid, 1, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_confirm_template_fail_state_mismatch(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_confirm_template params = { 0 };
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.templ_valid = 1;
+	global_context.template_newly_enrolled = 0;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONFIRM_TEMPLATE, 0, &params,
+				       sizeof(params), nullptr, 0),
+		EC_RES_ERROR, "%d");
+
+	TEST_EQ(global_context.templ_valid, 1, "%d");
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 void run_test(int argc, const char **argv)
@@ -1756,5 +1873,8 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_mode_disable_enroll_no_signature);
 	RUN_TEST(test_fp_mode_enroll_invalid_signature);
 	RUN_TEST(test_fp_mode_enroll_session_transitions);
+	RUN_TEST(test_fp_confirm_template_success);
+	RUN_TEST(test_fp_confirm_template_fail_invalid_signature);
+	RUN_TEST(test_fp_confirm_template_fail_state_mismatch);
 	test_print_result();
 }
