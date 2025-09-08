@@ -93,6 +93,30 @@
       },
       "revId": "caaa18fa859eb351f4f069fe32d31e6c976e4975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1d8697_99a69a9e",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-08T18:45:35Z",
+      "side": 1,
+      "message": "I will re-open this comment. If I follow the suggestion, I need to move the location of the enum definition `enum fingerprint_capture_type` to before the definition of this struct. The [struct fp_image_frame_params](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8452?q\u003dec_commands.h\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d8451-,8452,-8453) defines `fp_capture_type` as `uint8_t`. This later caused wrong values to appear when I ran the `fpinfo` command. I believe we need to define the `enum fingerprint_capture_type` as below for compatibility:\n\n```\nenum fingerprint_capture_type : uint8_t {\n    // ... enum members\n};\n```",
+      "parentUuid": "4b515e73_0422c3e8",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 25
+      },
+      "revId": "caaa18fa859eb351f4f069fe32d31e6c976e4975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
