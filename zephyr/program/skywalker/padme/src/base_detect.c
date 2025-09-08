@@ -8,6 +8,7 @@
 #include "base_state.h"
 #include "chipset.h"
 #include "console.h"
+#include "drivers/one_wire_uart.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -48,16 +49,32 @@ static enum base_status current_base_status;
 static void base_update(enum base_status attached)
 {
 	int connected = (attached != BASE_CONNECTED) ? false : true;
+	const struct gpio_dt_spec *en_cc_lid_base_pu =
+		GPIO_DT_FROM_NODELABEL(en_cc_lid_base_pu);
+#ifndef CONFIG_ZTEST
+	const static struct device *one_wire_uart =
+		DEVICE_DT_GET(DT_NODELABEL(one_wire_uart));
+#endif
 
 	if (current_base_status == attached)
 		return;
 
 	current_base_status = attached;
 
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp3300_base_x), connected);
+#ifndef CONFIG_ZTEST
+	if (connected) {
+		one_wire_uart_enable(one_wire_uart);
+	} else {
+		one_wire_uart_disable(one_wire_uart);
+	}
+#endif
+
 	base_set_state(connected);
 	tablet_set_mode(!connected, TABLET_TRIGGER_BASE);
 
-	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp3300_base_x), connected);
+	gpio_pin_configure(en_cc_lid_base_pu->port, en_cc_lid_base_pu->pin,
+			   connected ? GPIO_OUTPUT_HIGH : GPIO_INPUT);
 }
 
 void base_detect_interrupt(enum gpio_signal signal)
@@ -118,7 +135,6 @@ static void base_detect_enable(bool enable)
 	} else {
 		gpio_disable_dt_interrupt(
 			GPIO_INT_FROM_NODELABEL(pogo_prsnt_int));
-		base_update(BASE_UNKNOWN);
 		hook_call_deferred(&base_detect_deferred_data, -1);
 	}
 }
