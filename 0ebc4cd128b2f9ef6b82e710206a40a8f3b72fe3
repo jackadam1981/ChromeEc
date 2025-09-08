@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a651bb3c_b71bdb42",
+        "filename": "common/battery_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-08T20:52:13Z",
+      "side": 1,
+      "message": "Remove unnecessary `break` statements.",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 8
+      },
+      "revId": "0ebc4cd128b2f9ef6b82e710206a40a8f3b72fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72462e58_2928c51d",
+        "filename": "common/charge_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-08T20:52:13Z",
+      "side": 1,
+      "message": "Change it to `bool` (`int` was an old conversion).",
+      "range": {
+        "startLine": 729,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 3
+      },
+      "revId": "0ebc4cd128b2f9ef6b82e710206a40a8f3b72fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
