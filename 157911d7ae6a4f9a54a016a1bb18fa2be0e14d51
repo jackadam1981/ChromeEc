@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81598010_5583ca4b",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor,image-frame-params.yaml.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:11:51Z",
+      "side": 1,
+      "message": "```suggestion\n# Copyright 2025 The Chromium OS Authors. All rights reserved.\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "157911d7ae6a4f9a54a016a1bb18fa2be0e14d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046f1c1f_2b66362d",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor,image-frame-params.yaml.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:11:51Z",
+      "side": 1,
+      "message": "I think you can remove this line since you have a `description` below.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "157911d7ae6a4f9a54a016a1bb18fa2be0e14d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86a1f38_5fdb26a8",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor,image-frame-params.yaml.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:11:51Z",
+      "side": 1,
+      "message": "```suggestion\n      description: Frame size (bytes) of captured fingerprint image.\n```",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "157911d7ae6a4f9a54a016a1bb18fa2be0e14d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b901a42_b6986385",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor,image-frame-params.yaml.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:11:51Z",
+      "side": 1,
+      "message": "Looks like we lost the comment about this format.",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "157911d7ae6a4f9a54a016a1bb18fa2be0e14d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a2d209_bb2a5a1b",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor,image-frame-params.yaml.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:11:51Z",
+      "side": 1,
+      "message": "Do we have any other formats? If not, we can remove this comment.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "157911d7ae6a4f9a54a016a1bb18fa2be0e14d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
