@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6072a71d_ebae6121",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2025-09-08T22:20:08Z",
+      "side": 1,
+      "message": "Moonstone is the OEM shipping device based on kinmen.  You can almost think kinmen as a proto of Moonstone.",
+      "parentUuid": "32339ad2_93f787a4",
+      "revId": "fe782655f2cfe43ac0eb0dafa814e8eda683720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81cf3508_bedb8f97",
         "filename": "zephyr/program/fatcat/moonstone/project.overlay",
         "patchSetId": 2
