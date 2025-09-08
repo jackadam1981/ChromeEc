@@ -457,3 +457,62 @@ fp_command_read_match_secret(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
 		     EC_VER_MASK(0));
+
+static enum ec_status fp_command_sign_match(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_sign_match *>(args->params);
+	auto *response =
+		static_cast<ec_response_fp_sign_match *>(args->response);
+
+	/*
+	 * The context for signing/verifying messages is Android user id
+	 * which is 4 byte integer.
+	 */
+	static_assert(global_context.user_id.size() >= sizeof(uint32_t));
+	std::span<const uint8_t> context{ global_context.user_id.data(),
+					  sizeof(uint32_t) };
+
+	/* The operation is just an "auth" string */
+	static constexpr uint8_t operation_str[] = { 'a', 'u', 't', 'h' };
+	std::span<const uint8_t> operation{ operation_str };
+
+	std::span<const uint8_t, FP_CHALLENGE_SIZE> challenge{
+		params->challenge
+	};
+	std::span<uint8_t, FP_MAC_LENGTH> signature{ response->signature };
+
+	if (!(global_context.fp_encryption_status &
+	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	timestamp_t now = get_time();
+	struct positive_match_secret_state state_copy =
+		global_context.positive_match_secret_state;
+
+	fp_disable_positive_match_secret(
+		&global_context.positive_match_secret_state);
+
+	if (FP_NO_SUCH_TEMPLATE == state_copy.template_matched ||
+	    !state_copy.readable) {
+		CPRINTS("No match to be signed");
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	if (timestamp_expired(state_copy.deadline, &now)) {
+		CPRINTS("Deadline has passed");
+		return EC_RES_TIMEOUT;
+	}
+
+	if (sign_message(context, operation, challenge, signature)) {
+		CPRINTS("Failed to sign message");
+		return EC_RES_ERROR;
+	}
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_SIGN_MATCH, fp_command_sign_match,
+		     EC_VER_MASK(0));
