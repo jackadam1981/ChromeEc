@@ -16,6 +16,7 @@
 
 /* quartz project DTS includes */
 
+#include "gpios.dtsi"
 #include "fan.dtsi"
 
 /* quartz overrides follow... */
