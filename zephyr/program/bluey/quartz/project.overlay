@@ -7,8 +7,6 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* quartz project DTS includes */
-
 #include "../gpios.dtsi"
 #include "../interrupts.dtsi"
 #include "../adc.dtsi"
@@ -16,6 +14,9 @@
 #include "../common.dtsi"
 #include "../battery.dtsi"
 
+/* quartz project DTS includes */
+
+#include "gpio.dtsi"
 #include "fan.dtsi"
 
 /* quartz overrides follow... */
