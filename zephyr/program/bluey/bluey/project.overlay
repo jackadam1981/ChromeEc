@@ -7,14 +7,14 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-/* bluey project DTS includes */
-
 #include "../gpios.dtsi"
 #include "../interrupts.dtsi"
 #include "../adc.dtsi"
 #include "../i2c.dtsi"
 #include "../common.dtsi"
 #include "../battery.dtsi"
+
+/* bluey project DTS includes */
 
 #include "fan.dtsi"
 
