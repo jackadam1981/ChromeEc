@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e77e3f16_48acab56",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-08T20:33:25Z",
+      "side": 1,
+      "message": "In the current implementation, it is returning rc. So keep it to remain aligned. It will break a test if I modify it.",
+      "parentUuid": "f76efe0a_9e338852",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cdc46c4_f30ff04d",
         "filename": "zephyr/shim/src/fpsensor.c",
         "patchSetId": 9
