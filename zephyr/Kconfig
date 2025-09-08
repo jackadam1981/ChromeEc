@@ -222,6 +222,12 @@ config PLATFORM_EC_BRINGUP
 	    for each power signal change.
 	  - And more!  You can search the codebase for CONFIG_BRINGUP
             to see all of the features this flag will toggle.
+config PLATFORM_EC_IMVP_FACTORY_UPDATE
+	bool "Enable imvp update in factory"
+	help
+	  Enable CONFIG_IMVP_FACTORY_UPDATE to support imvp update in factory.
+	  This ensures that imvp is updated, before system boots. No need of
+	  any prior knowlede of any ec commands, when this config is enabled.
 
 config PLATFORM_EC_BUTTON
 	bool "Enable button support"
