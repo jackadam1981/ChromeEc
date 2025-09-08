@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d29c96b_17009817",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e77e3f16_48acab56",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cdc46c4_f30ff04d",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "This suggestion does not work because the 2 structs are of 2 different type: one is `fp_sensor_info` and the other is  `fingerprint_sensor_info`.",
       "parentUuid": "e8e1904e_d62850ae",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7197bf44_8f093387",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:03:56Z",
+      "side": 1,
+      "message": "Ok, let\u0027s add a `BUILD_ASSERT` here that the size of the two structs are the same. We can also add that same `BUILD_ASSERT` in the declaration of the struct in the header file: https://crrev.com/c/6872815.",
+      "parentUuid": "57780aa9_d7d725cc",
       "range": {
         "startLine": 136,
         "startChar": 0,
