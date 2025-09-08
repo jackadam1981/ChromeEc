@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dd653a1_0f7ca1c0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T22:16:42Z",
+      "side": 1,
+      "message": "Ok, same comment as [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6875957/comment/7cdc46c4_f30ff04d/)",
+      "parentUuid": "43d526e6_0e39253f",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 48
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85a7a553_0e0392c7",
         "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
         "patchSetId": 10
