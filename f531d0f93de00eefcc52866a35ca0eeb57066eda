@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57780aa9_d7d725cc",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-08T20:01:20Z",
+      "side": 1,
+      "message": "This suggestion does not work because the 2 structs are of 2 different type: one is `fp_sensor_info` and the other is  `fingerprint_sensor_info`.",
+      "parentUuid": "e8e1904e_d62850ae",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3ee340d_57200526",
         "filename": "zephyr/shim/src/fpsensor.c",
         "patchSetId": 9
