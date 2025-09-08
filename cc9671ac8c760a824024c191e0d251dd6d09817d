@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61413d8_f8e1ed66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-08T16:59:26Z",
+      "side": 1,
+      "message": "ec_rate is independent of ODR setting. It is used to send an interrupt to the host in buffer mode, or query the sensor in forced mode.",
+      "revId": "cc9671ac8c760a824024c191e0d251dd6d09817d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad1a146_5439f923",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-08T16:59:26Z",
+      "side": 1,
+      "message": "which interrupt(s) are fired? We should not fire any since the ODR is 0.",
+      "revId": "cc9671ac8c760a824024c191e0d251dd6d09817d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91ca58d_ddde28bc",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-08T16:59:26Z",
+      "side": 1,
+      "message": "update comments.",
+      "revId": "cc9671ac8c760a824024c191e0d251dd6d09817d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023b12dd_1e1ff465",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-08T16:59:26Z",
+      "side": 1,
+      "message": "it would be better to add an argument to `config_interrupt()`, accessing the interrupt register at one place.",
+      "revId": "cc9671ac8c760a824024c191e0d251dd6d09817d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
