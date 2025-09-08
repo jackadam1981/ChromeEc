@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21c2e8a_12e8dca8",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T20:41:56Z",
+      "side": 1,
+      "message": "Does it work if you make it inline? It makes it a little bit easier to read.\n\n```suggestion\ntest_static int test_upload_pgm_image_wrong_bpp(void)\n{\n\tstd::array\u003cuint8_t, 100\u003e frame{};\n\n\tTEST_EQ(upload_pgm_image(frame.data(), {.bpp \u003d 0}),\n\t\tEC_ERROR_UNKNOWN, \"%d\");\n\n\tTEST_EQ(upload_pgm_image(frame.data(), {.bpp \u003d 17}),\n\t\tEC_ERROR_UNKNOWN, \"%d\");\n\n\tTEST_EQ(upload_pgm_image(frame.data(), {.bpp \u003d 23}),\n\t\tEC_ERROR_UNKNOWN, \"%d\");\n\n\treturn EC_SUCCESS;\n}\n```",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 1
+      },
+      "revId": "7a0b31b1999484a52332a1c9743d553ae8d9f430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85b90ef_4111d817",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T20:41:56Z",
+      "side": 1,
+      "message": "Same here.\n\n```suggestion\nZTEST(fpsensor_debug, test_upload_pgm_image_wrong_bpp)\n{\n\tstd::array\u003cuint8_t, 100\u003e frame{};\n\n\tzassert_equal(upload_pgm_image(frame.data(), {.bpp \u003d 0}),\n\t\t      EC_ERROR_UNKNOWN);\n\n\tzassert_equal(upload_pgm_image(frame.data(), {.bpp \u003d 17}),\n\t\t      EC_ERROR_UNKNOWN);\n\n\tzassert_equal(upload_pgm_image(frame.data(), {.bpp \u003d 23}),\n\t\t      EC_ERROR_UNKNOWN);\n}\n\n```",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 0
+      },
+      "revId": "7a0b31b1999484a52332a1c9743d553ae8d9f430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
