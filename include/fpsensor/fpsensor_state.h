@@ -142,9 +142,12 @@ int fp_get_next_event(uint8_t *out);
  *
  * @param mode          new mode to change to
  * @param mode_output   resulting mode
+ * @param mac           the MAC, required for authenticated modes
  * @return EC_RES_SUCCESS on success. Error code on failure.
  */
-enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output);
+enum ec_status
+fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output,
+		   std::optional<std::span<const uint8_t, FP_MAC_LENGTH> > mac);
 
 /**
  * Allow reading positive match secret for |fgr| in the next 5 seconds.
