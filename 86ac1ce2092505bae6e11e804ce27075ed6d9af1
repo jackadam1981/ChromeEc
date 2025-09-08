@@ -22,6 +22,30 @@
       },
       "revId": "86ac1ce2092505bae6e11e804ce27075ed6d9af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ceba05b_7f31929a",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-08T21:06:09Z",
+      "side": 0,
+      "message": "let me create a test for `get_image_frame_params` shortly.",
+      "parentUuid": "54d7059d_66113871",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "86ac1ce2092505bae6e11e804ce27075ed6d9af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
