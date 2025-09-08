@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32339ad2_93f787a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-08T21:36:56Z",
+      "side": 1,
+      "message": "how similar do you expect moonstone to be compared to kinmen?",
+      "revId": "fe782655f2cfe43ac0eb0dafa814e8eda683720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81cf3508_bedb8f97",
+        "filename": "zephyr/program/fatcat/moonstone/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-08T21:36:56Z",
+      "side": 1,
+      "message": "moonstone?",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "fe782655f2cfe43ac0eb0dafa814e8eda683720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38599912_6dde1c9d",
+        "filename": "zephyr/program/fatcat/moonstone/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-08T21:36:56Z",
+      "side": 1,
+      "message": "how similar do you expect moonstone to be to kinmen?\nhow about including `../kinmen/...` files here instead of copying\nthem until there are noteworthy differences?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "fe782655f2cfe43ac0eb0dafa814e8eda683720b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
