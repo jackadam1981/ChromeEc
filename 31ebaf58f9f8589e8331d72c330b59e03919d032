@@ -88,6 +88,24 @@
       "parentUuid": "869bda7d_c6a99cf0",
       "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce611687_5d19aab9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-08T19:46:17Z",
+      "side": 1,
+      "message": "Found the deadlock scenario, added description to commit message.",
+      "parentUuid": "18bc712d_12bacaf7",
+      "revId": "31ebaf58f9f8589e8331d72c330b59e03919d032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
