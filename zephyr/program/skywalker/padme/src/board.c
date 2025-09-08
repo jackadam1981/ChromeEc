@@ -15,6 +15,7 @@
 __override_proto void board_rt9490_adc_control(void);
 
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/i2c.h>
 
 #include <ap_power/ap_power.h>
 
@@ -39,6 +40,26 @@ static void board_backlight_handler(struct ap_power_ev_callback *cb,
 	}
 }
 
+static void board_suspend_handler(struct ap_power_ev_callback *cb,
+				  struct ap_power_ev_data data)
+{
+	const struct device *touchpad =
+		DEVICE_DT_GET(DT_NODELABEL(hid_i2c_target));
+
+	switch (data.event) {
+	default:
+		return;
+
+	case AP_POWER_RESUME:
+		i2c_target_driver_register(touchpad);
+		break;
+
+	case AP_POWER_SUSPEND:
+		i2c_target_driver_unregister(touchpad);
+		break;
+	}
+}
+
 static int install_backlight_handler(void)
 {
 	static struct ap_power_ev_callback cb;
@@ -48,6 +69,8 @@ static int install_backlight_handler(void)
 	 */
 	ap_power_ev_init_callback(&cb, board_backlight_handler,
 				  AP_POWER_STARTUP | AP_POWER_HARD_OFF);
+	ap_power_ev_init_callback(&cb, board_suspend_handler,
+				  AP_POWER_RESUME | AP_POWER_SUSPEND);
 	ap_power_ev_add_callback(&cb);
 
 	return 0;
