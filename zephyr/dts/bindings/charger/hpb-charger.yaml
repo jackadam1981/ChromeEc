@@ -1,0 +1,15 @@
+# Copyright 2025 The ChromiumOS Authors
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Hybrid Power Boost Charger chip
+
+compatible: "hpb-charger"
+
+properties:
+  minimum-voltage-required:
+    type: int
+    default: 15000
+    description: |
+      Minimum voltage (in millivolts) required to charge battery for hybrid
+      boost chargers.
