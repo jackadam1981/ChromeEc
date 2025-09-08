@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bdd67c_3b80df2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-08T06:04:30Z",
+      "side": 1,
+      "message": "I tried rebasing this after removing the EC sensors and the bmi323 support and it\u0027s way too complicated. When we remove the EC sensors we no longer have an on-body sensor. The support for that is done in this CL so we need this CL to land before the removal of the EC sensors otherwise the EC doesn\u0027t build. At best we can squash them but in reality merging in this order doesn\u0027t make a difference:\n1. This CL is verified with the lsm6dsm base IMU and not the bmi323\n2. There are no boards using the bmi323\n3. We will remove support for the bmi323 within 2 CLs",
+      "revId": "0179431fb25a3ebe969980e5bee09e9f973504d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
