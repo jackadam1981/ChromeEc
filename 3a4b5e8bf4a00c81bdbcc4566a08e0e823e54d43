@@ -34,6 +34,24 @@
       "parentUuid": "ff38d8d7_3250d0a0",
       "revId": "3a4b5e8bf4a00c81bdbcc4566a08e0e823e54d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7e3827_8802f8be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-09-08T08:42:24Z",
+      "side": 1,
+      "message": "I checked all type C test and this change is not cause any regression on magma.",
+      "parentUuid": "40cb2d0a_5506bbf0",
+      "revId": "3a4b5e8bf4a00c81bdbcc4566a08e0e823e54d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
