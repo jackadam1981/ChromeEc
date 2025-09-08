@@ -22,6 +22,30 @@
       },
       "revId": "e1b88b1cd996723cee63abda34bc4cf41bf7babf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28f1978_854717dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-09-08T01:54:56Z",
+      "side": 1,
+      "message": "Sorry, there is no related issue filed for this project yet. Our current modification follows the awasuki changes, as the design schemes of the two projects are consistent.   Let’s wait for the test results of version 16408.0.0, and then we can discuss with the Google TAM team whether to file an issue. Sorry for bringing you in to review this code prematurely",
+      "parentUuid": "6142b702_fe5bdf58",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "e1b88b1cd996723cee63abda34bc4cf41bf7babf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
