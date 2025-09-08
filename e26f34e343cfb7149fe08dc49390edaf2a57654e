@@ -152,6 +152,30 @@
       },
       "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083f62fd_3f827736",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-sensor.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T20:09:18Z",
+      "side": 1,
+      "message": "The configs in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6909771/21/zephyr/program/fpmcu/helipilot/helipilot.dts looks like what I was thinking.",
+      "parentUuid": "9557ce6b_92b42715",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "e26f34e343cfb7149fe08dc49390edaf2a57654e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
