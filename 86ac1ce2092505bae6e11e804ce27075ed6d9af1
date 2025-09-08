@@ -46,6 +46,30 @@
       },
       "revId": "86ac1ce2092505bae6e11e804ce27075ed6d9af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa4de69_e34f9070",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-08T21:37:12Z",
+      "side": 0,
+      "message": "Ok, let\u0027s also move the deletion of `ZTEST(fpsensor_debug, test_get_sensor_bpp)` to https://crrev.com/c/6872807.",
+      "parentUuid": "4ceba05b_7f31929a",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "86ac1ce2092505bae6e11e804ce27075ed6d9af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
