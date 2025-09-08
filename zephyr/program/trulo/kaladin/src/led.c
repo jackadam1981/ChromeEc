@@ -16,6 +16,9 @@
 #include "led_common.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_pd.h"
+#include <drivers/pdc.h>
+#include <usbc/pdc_power_mgmt.h>
 
 #include <stdint.h>
 
@@ -38,6 +41,8 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
  * delay turning off power LED during suspend/shutdown.
  */
 #define PWR_LED_CPU_DELAY K_MSEC(2000)
+
+int blink_cnt, low_adp_blink;
 
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 					     EC_LED_ID_POWER_LED };
@@ -228,7 +233,28 @@ static void led_set_battery(void)
 		break;
 	case LED_PWRS_DISCHARGE:
 		if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
-			if (charge_get_percent() <= BATTERY_LEVEL_CRITICAL &&
+			if(low_adp_blink) {
+				battery_low_triggeied = 0;
+				battery_critical_triggeied = 0;
+				hook_call_deferred(&battery_set_pwm_led_tick_data, -1);
+
+				switch (blink_cnt % 10) {
+					case 0:
+					case 2:
+					case 4:
+						led_set_color_battery_duty(LED_AMBER, 100);
+						LOG_INF("@@@@@ charge_led_blink_on, %d", blink_cnt);
+						break;
+					default:
+						led_set_color_battery_duty(LED_OFF, 0);
+						LOG_INF("@@@@@ charge_led_blink_off, %d", blink_cnt);
+						break;
+				}
+				blink_cnt++;
+				if(blink_cnt >= 10)
+					blink_cnt = 0;
+
+			} else if (charge_get_percent() <= BATTERY_LEVEL_CRITICAL &&
 			    !battery_critical_triggeied) {
 				battery_low_triggeied = 0;
 				battery_critical_triggeied = 1;
@@ -492,6 +518,9 @@ static void pwr_led_init(void)
 		pwr_led_suspend_hook();
 	else
 		pwr_led_shutdown_hook();
+
+	blink_cnt = 0;
+	low_adp_blink = 0;
 }
 DECLARE_HOOK(HOOK_INIT, pwr_led_init, HOOK_PRIO_DEFAULT);
 
@@ -512,3 +541,24 @@ void board_led_auto_control(void)
 		pwr_led_shutdown_hook();
 	}
 }
+
+static void low_adp_check(void)
+{
+	int active_port, vbus, maxvoltage, voltage, rv, charger_voltage;
+	union connector_status_t connector_status;
+
+	active_port = charge_manager_get_active_charge_port();
+	vbus = charge_manager_get_vbus_voltage(active_port);
+	maxvoltage = pd_get_max_voltage();
+	charger_voltage = charge_manager_get_charger_voltage();
+	rv = pdc_power_mgmt_get_connector_status(active_port, &connector_status);
+	voltage = (connector_status.voltage_reading * connector_status.voltage_scale * 5);
+
+	LOG_INF("###### low_adp_check: active_port %d, max voltage %d, voltage: %d, charger_voltage: %d", active_port, maxvoltage, voltage, charger_voltage);
+	if(active_port != -1 && charger_voltage < 15000 && charger_voltage > 0)
+		low_adp_blink = 1;
+	else
+		low_adp_blink = 0;
+	blink_cnt = 0;
+}
+DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, low_adp_check, HOOK_PRIO_DEFAULT);
