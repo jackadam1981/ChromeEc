@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7526b670_81bccdbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-09-09T22:44:10Z",
+      "side": 1,
+      "message": "Hi Keith and Abhishek. Following up on the discussion this morning, here is an update for PD power button support on PDC platforms. This does use the non-UCSI RTK interface to read Alert information into the PDC power manager. To do this, it adds \"vendor_status\" which is a new data object for PDCs to report interrupts which are not supported by UCSI. Let me know if you have any questions",
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
