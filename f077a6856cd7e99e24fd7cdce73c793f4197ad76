@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0b86481_28328f06",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T19:05:43Z",
+      "side": 1,
+      "message": "Same as [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6876367/comment/85a7a553_0e0392c7/).",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "f077a6856cd7e99e24fd7cdce73c793f4197ad76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37208ea5_40e22841",
         "filename": "zephyr/program/fpmcu/helipilot/buccaneer.dts",
         "patchSetId": 37
