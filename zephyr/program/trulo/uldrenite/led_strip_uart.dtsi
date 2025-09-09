@@ -4,7 +4,6 @@
  */
 
 #include <zephyr/dt-bindings/led/led.h>
-#include <dt-bindings/macros.h>
 
 / {
 	aliases {
@@ -18,17 +17,18 @@
 
 		/* WS2812 */
 		chain-length = <8>; /* arbitrary; change at will */
-		one-symbol = <BINARY(1, 1, 0)>;  /* 0b110 T1H: xxxus within 0.650~0.950us */
-		zero-symbol = <BINARY(1, 0, 0)>; /* 0b100 T0H: xxxus within 0.250~0.550us */
+		one-symbol = <0x6>;  /* 0b110 T1H: xxxus within 0.650~0.950us */
+		zero-symbol = <0x4>; /* 0b100 T0H: xxxus within 0.250~0.550us */
 		bits-per-symbol = <3>;
-		color-mapping = <LED_COLOR_ID_GREEN
-				 LED_COLOR_ID_RED
+		color-mapping = <LED_COLOR_ID_RED
+                 LED_COLOR_ID_GREEN
 				 LED_COLOR_ID_BLUE>;
 	};
 };
 
 &uart4 {
 	status = "okay";
+	current-speed = <115200>;
 	current-speed = <2500000>;
 	pinctrl-0 = <&uart4_sout_gp35>;
 	pinctrl-names = "default";

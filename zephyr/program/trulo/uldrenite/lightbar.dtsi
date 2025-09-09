@@ -1,0 +1,83 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	lightbar {
+		compatible = "cros-ec,led-lightbar";
+		lightbar0 {
+			led-id = "EC_LED_ID_LIGHTBAR_LED";
+			strip = <&led_strip_uart>;
+
+			/* Color definitions */
+			color_red: red {
+				led-color = "LED_RED";
+				color = <0x100000>;
+			};
+			color_green: green {
+				led-color = "LED_GREEN";
+				color = <0x001000>;
+			};
+			color_blue: blue {
+				led-color = "LED_BLUE";
+				color = <0x000010>;
+			};
+			color_white: white {
+				led-color = "LED_WHITE";
+				color = <0x101010>;
+			};
+			color_off: off {
+				led-color = "LED_OFF";
+				color = <0x000000>;
+			};
+		};
+	};
+
+	led-policy {
+		compatible = "cros-ec,led-policy";
+
+		/* Lightbar policy */
+		power-state-charge-s0 {
+			charge-state = "LED_PWRS_CHARGE";
+			chipset-state = "POWER_S0";
+			/* Solid blue */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_GREEN";
+				};
+			};
+		};
+		power-state-discharge-s0 {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
+			/* Solid white */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+		power-state-suspend {
+			chipset-state = "POWER_S3";
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_LINEAR";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <1500>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1500>;
+				};
+			};
+		};
+	};
+};
+

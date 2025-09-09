@@ -42,6 +42,7 @@ enum {
 	EC_TASK_CHIPSET_PRIO,
 	EC_TASK_MOTIONSENSE_PRIO,
 	EC_TASK_USB_MUX_PRIO,
+	EC_TASK_LIGHTBAR_PRIO,
 	EC_TASK_HOSTCMD_PRIO,
 	EC_SHELL_PRIO,
 	EC_TASK_KEYPROTO_PRIO,
@@ -103,6 +104,11 @@ enum {
 		    (CROS_EC_TASK(MOTIONSENSE, motion_sense_task, 0,       \
 				  CONFIG_TASK_MOTIONSENSE_STACK_SIZE,      \
 				  EC_TASK_MOTIONSENSE_PRIO, 0)),           \
+		    ())                                                    \
+	COND_CODE_1(HAS_TASK_LIGHTBAR,                    \
+		    (CROS_EC_TASK(LIGHTBAR, lightbar_task, 0,              \
+				  512,         \
+				  EC_TASK_LIGHTBAR_PRIO, 0)),              \
 		    ())                                                    \
 	IF_ENABLED(HAS_TASK_USB_MUX,                                       \
 		   (CROS_EC_TASK(USB_MUX, usb_mux_task, 0,                 \
