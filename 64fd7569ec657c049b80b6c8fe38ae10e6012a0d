@@ -46,6 +46,30 @@
       },
       "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0727a51e_c5088ded",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T17:00:29Z",
+      "side": 1,
+      "message": "I think it makes sense to find the max frame size like you suggested and use that to set the buffer size for the image. However, I\u0027m not sure if you\u0027ll be able to do that at compile time, since the `find_max_frame_size` function is a runtime function.",
+      "parentUuid": "0890181e_cb0eec38",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
