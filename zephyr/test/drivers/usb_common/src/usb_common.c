@@ -159,6 +159,10 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_detached)
 			      &drp_sink_time, PD_ROLE_SINK, PD_DRP_TOGGLE_OFF,
 			      TYPEC_CC_VOLT_OPEN, TYPEC_CC_VOLT_OPEN, true),
 		      DRP_TC_DEFAULT);
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SOURCE, PD_DRP_TOGGLE_OFF,
+			      TYPEC_CC_VOLT_OPEN, TYPEC_CC_VOLT_OPEN, true),
+		      DRP_TC_DEFAULT);
 
 	/* If toggle is frozen, the next state should be the current state. */
 	zassert_equal(drp_auto_toggle_next_state(
@@ -290,6 +294,16 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_sink)
 			      TYPEC_CC_VOLT_RD, TYPEC_CC_VOLT_OPEN, true),
 		      DRP_TC_UNATTACHED_SNK);
 	zassert_equal(drp_sink_time, fake_time.val);
+	/* If role = SINK, toggle=ON, fallback Unattached.SRC */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SINK, PD_DRP_TOGGLE_ON,
+			      TYPEC_CC_VOLT_OPEN, TYPEC_CC_VOLT_OPEN, false),
+		      DRP_TC_UNATTACHED_SRC);
+	/* If role = SOURCE, toggle=ON, fallback Unattached.SNK */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SOURCE, PD_DRP_TOGGLE_ON,
+			      TYPEC_CC_VOLT_OPEN, TYPEC_CC_VOLT_OPEN, false),
+		      DRP_TC_UNATTACHED_SNK);
 
 	get_time_mock = NULL;
 }
