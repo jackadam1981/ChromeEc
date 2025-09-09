@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0765e8_46ce97d3",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T17:04:54Z",
+      "side": 1,
+      "message": "I modified it. I also modified all entries to `struct fingerprint_image_frame_params image_frame_params_array[]` except for the syscall where I must put it as pointer.",
+      "parentUuid": "83bd4513_0e8f9706",
+      "range": {
+        "startLine": 314,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 58
+      },
+      "revId": "6560a43aab20e1c4ac602e5c7e1e1adbdb88be00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f215673_4197ea0a",
