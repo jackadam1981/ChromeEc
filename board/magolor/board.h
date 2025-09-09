@@ -50,7 +50,7 @@
 #undef CONFIG_CHARGER_SINGLE_CHIP
 #undef CONFIG_CMD_CHARGER_DUMP
 #undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
-#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (25 * MSEC)
 /*
  * b/147463641: The charger IC seems to overdraw ~4%, therefore we
  * reduce our target accordingly.
@@ -111,9 +111,6 @@
 
 /* Variant references the TCPCs to determine Vbus sourcing */
 #define CONFIG_USB_PD_5V_EN_CUSTOM
-
-/* Event-driven CC detection */
-#define CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE
 
 /* I2C configuration */
 #define I2C_PORT_EEPROM NPCX_I2C_PORT7_0
