@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b382ce97_acdcd6f2",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T05:06:48Z",
+      "side": 1,
+      "message": "I modified. If the order and comment makes sense, I will add it in the other locations.",
+      "parentUuid": "7197bf44_8f093387",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3ee340d_57200526",
         "filename": "zephyr/shim/src/fpsensor.c",
         "patchSetId": 9
