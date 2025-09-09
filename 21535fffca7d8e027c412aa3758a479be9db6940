@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233ec14b_3a7260b6",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T22:35:26Z",
+      "side": 1,
+      "message": "\"Properties common to all Hybrid Power Boost (HBP) charger chips\"",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b260bc_ea353c4f",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T22:35:26Z",
+      "side": 1,
+      "message": "You don\u0027t need a separate compatible here.  This file is only defining a property that might be shared by multiple charger chips.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f175a62_e724f915",
+        "filename": "zephyr/program/trulo/kaladin/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T22:35:26Z",
+      "side": 1,
+      "message": "This isn\u0027t needed.  The isl95522 yaml is already including the hpb-charger yaml which pulls in the new property.\n\nThis is also a board specific change.  Move to a separate CL after the common HPB changes.",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
