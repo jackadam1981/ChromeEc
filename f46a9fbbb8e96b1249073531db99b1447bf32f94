@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "732d5e1e_387d31da",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-09T17:02:53Z",
+      "side": 1,
+      "message": "Good catch! I was debating on having a positive check and got my rebased files mixed up.",
+      "parentUuid": "3d53a909_338201ba",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1545,
+        "endChar": 40
+      },
+      "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2adf65fa_56412302",
