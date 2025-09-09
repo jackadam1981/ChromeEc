@@ -46,6 +46,30 @@
       },
       "revId": "ea45f10d953a784de1929fa7856f3b1d875df301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7235f7_776635a6",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-image-frame-params.yaml",
+        "patchSetId": 26
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T18:28:21Z",
+      "side": 1,
+      "message": "That\u0027s not quite what I meant. I\u0027m asking if you can make it so that the config takes a readable string, not an integer:\n\n```\ncapture-type \u003d \"FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT\";\n```\n\nI don\u0027t know exactly how this works, but it seems to work for `V4L2_PIX_FMT_GREY`.",
+      "parentUuid": "43c7ed68_cf504790",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "ea45f10d953a784de1929fa7856f3b1d875df301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
