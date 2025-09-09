@@ -64,9 +64,8 @@ extern "C" {
  * @param node_id Devicetree node identifier for the sensor.
  * @return Sensor capture type (enum fp_capture_type).
  */
-#define FINGERPRINT_SENSOR_CAPTURE_TYPE(idx, node_id)                      \
-	DT_STRING_TOKEN(DT_CHILD(DT_CHILD(node_id, configs), config##idx), \
-			capture_type)
+#define FINGERPRINT_SENSOR_CAPTURE_TYPE(idx, node_id) \
+	DT_STRING_TOKEN(DT_CHILD(DT_CHILD(node_id, configs), config##idx), capture_type)
 
 /**
  * @brief Get fingerprint sensor pixel format for a given configuration index.
