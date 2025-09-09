@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da92039c_5186d4d6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T21:48:19Z",
+      "side": 1,
+      "message": "Yes, you can add a runtime assertion.",
+      "parentUuid": "d35f7110_25cf220f",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 37
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d02aace_5f9b3834",
         "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
         "patchSetId": 10
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "Since NUM_IMAGE_CAPTURE_TYPES is derived directly from the device tree and represents the number of configured image capture settings, a build assertion checking its value might be redundent.",
       "parentUuid": "30ccf9fe_6bf641ca",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 50
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90377e47_4e546760",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T21:48:19Z",
+      "side": 1,
+      "message": "\u003e a build assertion checking its value might be redundant.\n\nIt\u0027s redundant right now since we are looking through all the code and know how it\u0027s currently implemented, but the purpose of `BUILD_ASSERT` is to make sure someone doesn\u0027t accidentally break this in the future when making a change. They may not know what assumptions were made and think it\u0027s safe to change the behavior.",
+      "parentUuid": "02df2191_d2b2fba1",
       "range": {
         "startLine": 510,
         "startChar": 0,
