@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382d907b_b22c9956",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,write-protect.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T22:53:12Z",
+      "side": 1,
+      "message": "Is this GPIO assignment fixed for the MEC1727?  If so, might as well document that here.\n\n\n```suggestion\n    description: |\n      Internal GPIO that controls write protect status for the EC SPI flash.\n      For the MEC1727 this should be MCHP_GPIO_DECODE_076.\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506a69cc_bd02852b",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,write-protect.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T22:53:12Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand \"from the SOC to the EC\". The source of the write protect signal connect to the EC is from the GSC.\n\n\n```suggestion\n    description: | \n      External GPIO that connects to the write protect signal from the GSC.\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348d7c30_8abc8715",
+        "filename": "zephyr/include/drivers/microchip_wp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T22:53:12Z",
+      "side": 1,
+      "message": "Nit - needs a void parameter.",
+      "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
