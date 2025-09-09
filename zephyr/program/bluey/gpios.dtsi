@@ -121,8 +121,8 @@
 		gpio_ec_shdf_espi_l: ec_shdf_espi_l {
 			gpios = <&gpiod 6 (GPIO_INPUT)>;
 		};
-		gpio_ec_pmk_rst_od: ec_pmk_rst_od {
-			gpios = <&gpio9 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN)>;
+		gpio_ec_pmk_rst: ec_pmk_rst {
+			gpios = <&gpio9 6 (GPIO_OUTPUT)>;
 			enum-name = "GPIO_PMIC_RESIN_L";
 		};
 		gpio_kbl_pwr_en_odl: kbl_pwr_en_odl {
