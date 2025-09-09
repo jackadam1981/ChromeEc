@@ -22,6 +22,57 @@
       },
       "revId": "a15f786988f24bd2e4a69c62d9e95cf4da226885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79a43bf_91033bbd",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-09T16:58:44Z",
+      "side": 1,
+      "message": "There is already tests in activate_mkbp_with_events() to skip sending the MKBP message if the AP is sleeping. (see `skip_interrupt`). Is the wakeup mask properly set? (most likely to 0 since we can not wake up the AP from the EC directly).",
+      "revId": "a15f786988f24bd2e4a69c62d9e95cf4da226885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "970b908a_66e5eec2",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-09T16:58:44Z",
+      "side": 1,
+      "message": "return code is incorrect since the message was not sent. |timestamp| is not set, it will confuse the caller.",
+      "revId": "a15f786988f24bd2e4a69c62d9e95cf4da226885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dccb7daa_8d8d67ed",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-09T16:58:44Z",
+      "side": 1,
+      "message": "Not needed: the kernel retrieves all the MKBP events issued while suspended at reseume. See `cros_ec_report_events_during_suspend` called via `cros_ec_resume`.",
+      "revId": "a15f786988f24bd2e4a69c62d9e95cf4da226885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
