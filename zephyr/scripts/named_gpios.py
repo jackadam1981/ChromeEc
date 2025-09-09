@@ -30,7 +30,7 @@ def _detect_gpios_mismatches(node_name, prop_name, prop_gpios, board_gpios):
     """
     errors = 0
     count = 0
-
+    logging.info("Checking: %s", node_name)
     # The -gpios property may be an array of GPIO tuples
     for gpio in prop_gpios:
         count += 1
@@ -139,7 +139,7 @@ def verify_gpios_flags_match(edtlib, edt, project_name):
             # Do not consider disabled nodes.
             continue
         for prop_name in node.props.keys():
-            if prop_name.endswith("-gpios"):
+            if prop_name.endswith("-gpios") and not prop_name.startswith("variant"):
                 gpios = node.props[prop_name].val
 
                 prop_gpio_count, prop_gpio_errors = _detect_gpios_mismatches(

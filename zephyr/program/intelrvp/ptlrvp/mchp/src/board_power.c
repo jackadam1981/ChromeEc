@@ -168,21 +168,9 @@ int board_power_signal_set(enum power_signal signal, int value)
 
 __override void board_pulse_entering_rw(void)
 {
-	const struct gpio_dt_spec *gpio_dt;
-	int board_id;
-
-	board_id = system_get_board_version();
-	if (board_id == PTL_RVP_BOARD_ID) {
-		gpio_dt = GPIO_DT_FROM_NODELABEL(rvp_entering_rw);
-	} else if (board_id == PTL_GCS_BOARD_ID) {
-		gpio_dt = GPIO_DT_FROM_NODELABEL(gcs_entering_rw);
-	} else {
-		return;
-	}
-
-	gpio_pin_set_dt(gpio_dt, 1);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 1);
 	crec_usleep(MSEC);
-	gpio_pin_set_dt(gpio_dt, 0);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(ec_spi_oe_mecc), 0);
 }
 
 static struct gpio_callback int_cb;
