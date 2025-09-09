@@ -16,6 +16,24 @@
       "message": "No DTS file for this one?",
       "revId": "2515fa16bf0387fb12e8257f5b58970c955f9301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2374a333_52052b13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T18:55:42Z",
+      "side": 1,
+      "message": "there is no dartmonkey board supported in zephyr. only emulated driver test",
+      "parentUuid": "6eb1ee22_4799b9aa",
+      "revId": "2515fa16bf0387fb12e8257f5b58970c955f9301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
