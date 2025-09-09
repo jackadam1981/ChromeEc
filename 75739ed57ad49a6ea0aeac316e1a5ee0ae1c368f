@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f519968f_616ab273",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "Instead of syncing the state on demand, does it make sense to register an interrupt handler to automatically sync the state of `ex_wp_gpios` with `wp_gpios`?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc7a442_223f25ec",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "Else is unnecessary after return.  Please also use braces for all conditional blocks.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef47cf7_3175479d",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a14235_bdfe11cf",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,write-protect.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "These descriptions need more detail.  It\u0027s not clear to me how these properties are used without looking at the source driver.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b7be6a_3efe8a20",
+        "filename": "zephyr/include/drivers/microchip_wp.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "This isn\u0027t hard-coded.",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d4b436_b36dee89",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "Is this nodelabel used?",
+      "range": {
+        "startLine": 361,
+        "startChar": 2,
+        "endLine": 361,
+        "endChar": 12
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122607f9_510d3075",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "Nit - put board specific changes in a separate CL",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008bd5b1_68a9e456",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T20:30:48Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "75739ed57ad49a6ea0aeac316e1a5ee0ae1c368f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
