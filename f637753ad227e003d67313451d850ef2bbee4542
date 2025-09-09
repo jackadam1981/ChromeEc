@@ -163,6 +163,30 @@
       },
       "revId": "f637753ad227e003d67313451d850ef2bbee4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02df2191_d2b2fba1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T21:26:44Z",
+      "side": 1,
+      "message": "Since NUM_IMAGE_CAPTURE_TYPES is derived directly from the device tree and represents the number of configured image capture settings, a build assertion checking its value might be redundent.",
+      "parentUuid": "30ccf9fe_6bf641ca",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 50
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
