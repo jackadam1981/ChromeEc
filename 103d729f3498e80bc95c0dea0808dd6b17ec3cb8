@@ -16,6 +16,41 @@
       "message": "Should we move forward with this patch or fix all emergent assertions discovered by CL:6820756?",
       "revId": "103d729f3498e80bc95c0dea0808dd6b17ec3cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10201a00_5e37a8f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T18:21:31Z",
+      "side": 1,
+      "message": "We",
+      "revId": "103d729f3498e80bc95c0dea0808dd6b17ec3cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623cf21d_bc00d630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-09T18:21:31Z",
+      "side": 1,
+      "message": "We should fix assertions as they are discovered instead of disabling the assertion.",
+      "parentUuid": "3a87254b_1b9997c3",
+      "revId": "103d729f3498e80bc95c0dea0808dd6b17ec3cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
