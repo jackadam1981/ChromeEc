@@ -51,6 +51,23 @@
       "parentUuid": "3a87254b_1b9997c3",
       "revId": "103d729f3498e80bc95c0dea0808dd6b17ec3cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f914ae8f_5a7ea59d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-09T21:04:33Z",
+      "side": 1,
+      "message": "how many asserts are we tripping over?\nif this is a non trivial number of cases, please open a bug to track fixes.",
+      "revId": "103d729f3498e80bc95c0dea0808dd6b17ec3cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
