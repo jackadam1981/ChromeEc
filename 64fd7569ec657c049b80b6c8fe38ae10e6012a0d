@@ -22,6 +22,30 @@
       },
       "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0890181e_cb0eec38",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T04:33:02Z",
+      "side": 1,
+      "message": "I was thinking of removing this and adding the following:\n\n```\nstatic const uint32_t my_sensor_frame_sizes[NUM_IMAGE_CAPTURE_TYPES] \u003d { LISTIFY(\n\tNUM_IMAGE_CAPTURE_TYPES, FINGERPRINT_SENSOR_FRAME_SIZE, (, ),\n\tDT_CHOSEN(cros_fp_fingerprint_sensor)) };\n\nstatic inline uint32_t find_max_frame_size(void) {\n    uint32_t max_val \u003d my_sensor_frame_sizes[0];\n    for (int i \u003d 1; i \u003c NUM_IMAGE_CAPTURE_TYPES; ++i) {\n        if (my_sensor_frame_sizes[i] \u003e max_val) {\n            max_val \u003d my_sensor_frame_sizes[i];\n        }\n    }\n    return max_val;\n}\n\n#define MAX_FRAME find_max_frame_size()\n```\n\nThe reason of why this code was added is to find the `FP_SENSOR_IMAGE_SIZE` in case `CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE` is not defined. A logical approach is to assign  `FP_SENSOR_IMAGE_SIZE` to the maximum frame size from the configs. Please let me know your thoughts.\n\n```\n#ifdef CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE\n#define FP_SENSOR_IMAGE_SIZE CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE\n#else\n#define FP_SENSOR_IMAGE_SIZE                \\\n\tFINGERPRINT_SENSOR_REAL_IMAGE_SIZE( \\\n\t\tDT_CHOSEN(cros_fp_fingerprint_sensor))\n#endif\n```",
+      "parentUuid": "2e35544d_6fb4dc95",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
