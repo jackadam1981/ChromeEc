@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f7c511_3f445236",
+        "filename": "common/charge_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-09T22:04:19Z",
+      "side": 1,
+      "message": "i don\u0027t think this logic is quite right - or at least subtly\ndifferent from before: any previous value computed for\n`prevent_power_on` is not considered in this i-t-e.\n\ni think what\u0027s happening on the RVP is that `system_is_locked()`\nis false, so `prevent_power_on` is false for the\nno-battery case and we don\u0027t enforce \n`CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON`.\n\nthe decision tree in this function is pretty hard to follow.\nwe should be able to convert\n`#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT` to\n`IS_ENABLED(...)` but we may be stuck with `#ifdef` for the\nrest.\n\ni personally don\u0027t agree that `system_is_locked()` should be used\nas a flag to over-ride and violate system power requirements.",
+      "range": {
+        "startLine": 1696,
+        "startChar": 2,
+        "endLine": 1696,
+        "endChar": 18
+      },
+      "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
