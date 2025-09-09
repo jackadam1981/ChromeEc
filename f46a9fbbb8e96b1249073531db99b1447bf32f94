@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d53a909_338201ba",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-09T16:53:31Z",
+      "side": 1,
+      "message": "This logic seems inverted. It returns true if there is an active charge port.\n\nThe updated code in `raa489000.c` is now [logically] equivalent to `charge_port !\u003d CHARGE_PORT_NONE`, when it previously checked `charge_port \u003d\u003d CHARGE_PORT_NONE`.\n\nAlso, a minor nit: can this function be named in verb format, e.g. `charge_manager_has_no_active_charge_port()` ?",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1545,
+        "endChar": 40
+      },
+      "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2adf65fa_56412302",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-09T16:53:31Z",
+      "side": 1,
+      "message": "It would be great to have a UT test case as the inside of this block is currently uncovered",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
