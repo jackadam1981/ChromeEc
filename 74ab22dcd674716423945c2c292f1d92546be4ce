@@ -190,6 +190,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b8303a6_3e975a14",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T21:08:17Z",
+      "side": 1,
+      "message": "Debugging with Keith revealed that `GPIO_OUTPUT_INACTIVE` and `GPIO_OUTPUT_ACTIVE` were returning the same values because a prior test had already executed [egis630_init](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c;l\u003d104?q\u003dfingerprint_egis630.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d103-,104,-105). This call inadvertently set the reset pin to a logical low state. The issue was resolved by commenting out the logic within the [egis_fp_reset_sensor](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c;l\u003d53?q\u003dfingerprint_egis630.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d52-,53,-54) function, which allowed the expected behavior to be observed.\n\nI am going to resolve this comment as the behavior is fully understood.",
+      "parentUuid": "d724a6ae_876a64e4",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
