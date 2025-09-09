@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "561f8f6f_f4f7c419",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-09-09T22:01:46Z",
+      "side": 1,
+      "message": "While AP is in suspend state, ISH power state could be any of D0/D0i0/D0i1/D0i2; this is decided by when the next scheduled task happens. So motion sense task wakes ISH to D0 and detect tablet mode change, ISH write to i2c bus to notify EC.\nMeantime, EC enables deep sleep since AP is suspended, how long EC stays in deep sleep is decided by next event time too (like hook tick every 250ms). if the i2c write arrives when EC is in deep sleep, then EC won\u0027t respond and ISH get a NACK and has to retry.\nIdeally ISH should have a way to wake up EC, probably hardware change will be required.",
+      "parentUuid": "b7a107a5_3ae98b5f",
+      "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "423114a6_5a421c87",
