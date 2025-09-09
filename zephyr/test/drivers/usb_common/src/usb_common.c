@@ -235,6 +235,11 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_source)
 						 TYPEC_CC_VOLT_RP_3_0,
 						 TYPEC_CC_VOLT_OPEN, true),
 		      DRP_TC_DRP_AUTO_TOGGLE);
+	/* Check sink role with FORCE_SOURCE and auto-toggle supported */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SINK, PD_DRP_FORCE_SOURCE,
+			      TYPEC_CC_VOLT_RP_3_0, TYPEC_CC_VOLT_OPEN, true),
+		      DRP_TC_DRP_AUTO_TOGGLE);
 }
 
 ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_sink)
@@ -290,6 +295,11 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_sink)
 			      TYPEC_CC_VOLT_RD, TYPEC_CC_VOLT_OPEN, true),
 		      DRP_TC_UNATTACHED_SNK);
 	zassert_equal(drp_sink_time, fake_time.val);
+	/* Check FREEZE in attached-to-sink case */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SOURCE, PD_DRP_FREEZE,
+			      TYPEC_CC_VOLT_RD, TYPEC_CC_VOLT_OPEN, true),
+		      DRP_TC_UNATTACHED_SRC);
 
 	get_time_mock = NULL;
 }
