@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7514b0_ea97ce67",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T17:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a152c45_5ec40ed9",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 68
+      },
+      "revId": "a7ba09be77ccfa8428dd89535627b3afb26f661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59eb5b8c_35575e6c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dd49e5_4eaabad9",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T17:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59eb5b8c_35575e6c",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 35
+      },
+      "revId": "a7ba09be77ccfa8428dd89535627b3afb26f661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87efddc8_96fc8763",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-09-09T17:03:33Z",
       "side": 1,
       "message": "Does it fail to compile without this cast?",
+      "range": {
+        "startLine": 138,
+        "startChar": 20,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "a7ba09be77ccfa8428dd89535627b3afb26f661f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb6a100_a1b98eca",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T17:37:37Z",
+      "side": 1,
+      "message": "it does not cause a compilation error. maybe a suggestion from Duckie. I removed it.",
+      "parentUuid": "87efddc8_96fc8763",
       "range": {
         "startLine": 138,
         "startChar": 20,
