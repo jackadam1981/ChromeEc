@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "423114a6_5a421c87",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2025-09-09T03:55:24Z",
+      "side": 1,
+      "message": "Changes looks fine but issue might be hit again in some coroner cases.\nAddressing this gap for future platform designs will be helpful.",
+      "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
