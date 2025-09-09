@@ -17,9 +17,6 @@
 			gpios = <MCHP_GPIO_DECODE_004 GPIO_INPUT>;
 		};
 		**/
-		kbc-numlock {
-			gpios = <MCHP_GPIO_DECODE_154 GPIO_INPUT>;
-		};
 		bc_acok: bc-acok-ec-in {
 			gpios = <MCHP_GPIO_DECODE_155 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
@@ -65,9 +62,6 @@
 		};
 		ec-tcpc-aic-reset-n {
 			gpios = <MCHP_GPIO_DECODE_043 GPIO_INPUT>;
-		};
-		kbd-bklt-ctrl {
-			gpios = <MCHP_GPIO_DECODE_153 GPIO_INPUT>;
 		};
 		pm_bat_status_led2: ec-pm-bat-status-led2 {
 			gpios = <MCHP_GPIO_DECODE_157 GPIO_OUTPUT_LOW>;
@@ -392,9 +386,6 @@
 		};
 		tp-bgp2 {
 			gpios = <MCHP_GPIO_DECODE_102 GPIO_INPUT>;
-		};
-		home-btn-ec-rvp-aep-id {
-			gpios = <MCHP_GPIO_DECODE_000 GPIO_INPUT>;
 		};
 		/**
 		NOTE: Used for espi_rst, do not define.
