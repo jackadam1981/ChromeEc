@@ -598,9 +598,13 @@ static int bma4xx_enable_interrupt(const struct motion_sensor_t *s, bool enable)
 	/* Flush the FIFO */
 	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_CMD_ADDR, BMA4_FIFO_FLUSH));
 
-	/* Configure INT1 pin */
-	GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT1_IO_CTRL_ADDR,
-				       enable ? BMA4_INT1_OUTPUT_EN : 0));
+	/* Configure INT_MAP_DATA int1 setting */
+	if (enable)
+		GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT_MAP_DATA_ADDR,
+					       BMA4_INT1_DRDY | BMA4_INT1_FWM |
+						       BMA4_INT1_FFULL));
+	else
+		GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT_MAP_DATA_ADDR, 0));
 
 	/* Read interrupt status, to clears any pending IRQs */
 	GOTO_ON_ERROR(out,
