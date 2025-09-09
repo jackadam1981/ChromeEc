@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d10606c_150b579e",
+        "filename": "zephyr/dts/bindings/fingerprint/fingerprint-image-frame-params.yaml",
+        "patchSetId": 26
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T17:09:16Z",
+      "side": 1,
+      "message": "Is it possible to make this an enum, similar to `v4l2-pixel-format`? It would be a lot easier to read [the config](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6876367/38/zephyr/program/fpmcu/helipilot/helipilot.dts) if you could write it as `capture-type \u003d \"FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT\";`, etc.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "ea45f10d953a784de1929fa7856f3b1d875df301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
