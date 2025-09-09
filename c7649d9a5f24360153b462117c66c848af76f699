@@ -39,6 +39,23 @@
       "message": "Hi Keith and Abhishek. Following up on the discussion this morning, here is an update for PD power button support on PDC platforms. This does use the non-UCSI RTK interface to read Alert information into the PDC power manager. To do this, it adds \"vendor_status\" which is a new data object for PDCs to report interrupts which are not supported by UCSI. Let me know if you have any questions",
       "revId": "c7649d9a5f24360153b462117c66c848af76f699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda9e73c_d2f5cb3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3487009
+      },
+      "writtenOn": "2025-09-09T22:46:01Z",
+      "side": 1,
+      "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
