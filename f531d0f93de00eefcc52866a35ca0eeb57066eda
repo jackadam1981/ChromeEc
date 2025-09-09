@@ -309,6 +309,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fcba4b7_cb218a3d",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T17:03:33Z",
+      "side": 1,
+      "message": "Looks good.",
+      "parentUuid": "b382ce97_acdcd6f2",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "f531d0f93de00eefcc52866a35ca0eeb57066eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ee340d_57200526",
