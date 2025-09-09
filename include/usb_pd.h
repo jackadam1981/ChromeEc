@@ -304,7 +304,7 @@ enum pdo_augmented_pps {
 #define PD_T_TRY_TIMEOUT (570 * MSEC) /* between 550ms and 1100ms */
 #define PD_T_TRY_WAIT (600 * MSEC) /* Wait time for TryWait.SNK */
 #define PD_T_SINK_REQUEST (100 * MSEC) /* 100ms before next request */
-#define PD_T_PD_DEBOUNCE (15 * MSEC) /* between 10ms and 20ms */
+#define PD_T_PD_DEBOUNCE (10 * MSEC) /* between 10ms and 20ms */
 #define PD_T_CHUNK_SENDER_RESPONSE (25 * MSEC) /* 25ms */
 #define PD_T_CHUNK_SENDER_REQUEST (25 * MSEC) /* 25ms */
 #define PD_T_SWAP_SOURCE_START (25 * MSEC) /* Min of 20ms */
