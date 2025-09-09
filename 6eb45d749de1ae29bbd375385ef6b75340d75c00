@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1234e0_333bd62e",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T16:40:59Z",
+      "side": 1,
+      "message": "Is there any reason to make this configurable? Is there a reason we wouldn\u0027t want to always use the \"sys init\" version?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 78
+      },
+      "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
