@@ -235,6 +235,27 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_source)
 						 TYPEC_CC_VOLT_RP_3_0,
 						 TYPEC_CC_VOLT_OPEN, true),
 		      DRP_TC_DRP_AUTO_TOGGLE);
+	/* Cover AUDIO_ACC attach path */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SINK, PD_DRP_TOGGLE_ON,
+			      TYPEC_CC_VOLT_RA, TYPEC_CC_VOLT_RA, true),
+		      DRP_TC_ATTACHED_WAIT_SRC);
+	/* Cover TOGGLE_OFF leading to LPM */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SOURCE, PD_DRP_TOGGLE_OFF,
+			      TYPEC_CC_VOLT_OPEN, TYPEC_CC_VOLT_OPEN, true),
+		      DRP_TC_LOW_POWER_MODE);
+	/* Cover FORCE_SOURCE leading to LPM */
+	zassert_equal(drp_auto_toggle_next_state(&drp_sink_time, PD_ROLE_SOURCE,
+						 PD_DRP_FORCE_SOURCE,
+						 TYPEC_CC_VOLT_OPEN,
+						 TYPEC_CC_VOLT_OPEN, true),
+		      DRP_TC_LOW_POWER_MODE);
+	/* TOGGLE_OFF leads to Unattached.SNK */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SOURCE, PD_DRP_TOGGLE_OFF,
+			      TYPEC_CC_VOLT_RA, TYPEC_CC_VOLT_OPEN, false),
+		      DRP_TC_UNATTACHED_SNK);
 }
 
 ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_sink)
