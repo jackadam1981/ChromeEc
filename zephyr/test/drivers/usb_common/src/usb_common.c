@@ -235,6 +235,11 @@ ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_source)
 						 TYPEC_CC_VOLT_RP_3_0,
 						 TYPEC_CC_VOLT_OPEN, true),
 		      DRP_TC_DRP_AUTO_TOGGLE);
+	/* Cover AUDIO_ACC attach path */
+	zassert_equal(drp_auto_toggle_next_state(
+			      &drp_sink_time, PD_ROLE_SINK, PD_DRP_TOGGLE_ON,
+			      TYPEC_CC_VOLT_RA, TYPEC_CC_VOLT_RA, true),
+		      DRP_TC_ATTACHED_WAIT_SRC);
 }
 
 ZTEST_USER(usb_common, test_drp_auto_toggle_next_state_attached_to_sink)
