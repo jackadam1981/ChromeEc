@@ -145,7 +145,7 @@
 				height = <160>;
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
-				capture-type = <0>;
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT";
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 			config1 {
@@ -153,7 +153,7 @@
 				height = <160>;
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
-				capture-type = <4>;
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE";
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 			config2 {
@@ -161,7 +161,7 @@
 				height = <160>;
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
-				capture-type = <8>;
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN0";
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 			config3 {
@@ -169,7 +169,7 @@
 				height = <160>;
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
-				capture-type = <12>;
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN1";
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 			config4 {
@@ -177,7 +177,7 @@
 				height = <160>;
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
-				capture-type = <16>;
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST";
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 			config5 {
@@ -185,7 +185,7 @@
 				height = <160>;
 				bits-per-pixel = <8>;
 				frame-size = <25600>;
-				capture-type = <20>;
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_RESET_TEST";
 				v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 			};
 		};
