@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0482415d_e5126d27",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 37
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T21:15:35Z",
+      "side": 1,
+      "message": "I do not believe so. My macros are hardcoded for config##idx. I am not sure if it will be an easy task to extract the configs if I give them descriptive names. I do not find a way to extract the configs using index.",
+      "parentUuid": "5bfda3ec_88e4f99e",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 10
+      },
+      "revId": "789ae82fed34eb288acbc3fad9b43eb074d940ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e404844_d45562ac",
         "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
         "patchSetId": 37
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-09T18:45:55Z",
       "side": 1,
       "message": "Since the configs are basically the same, can you do something like we did for EC?\n\n```\n#define FPC1025_COMMON_IMAGE_PROPS \\\n    width \u003d \u003c160\u003e; \\\n    height \u003d \u003c160\u003e; \\\n    bits-per-pixel \u003d \u003c8\u003e; \\\n    frame-size \u003d \u003c25600\u003e; \\\n    v4l2-pixel-format \u003d \"V4L2_PIX_FMT_GREY\";\n \n config0 {\n    FPC1025_COMMON_IMAGE_PROPS\n    capture-type \u003d \u003c0\u003e;\n};\n ```",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 5
+      },
+      "revId": "789ae82fed34eb288acbc3fad9b43eb074d940ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db13f977_5fc09b50",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 37
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T21:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e404844_d45562ac",
       "range": {
         "startLine": 124,
         "startChar": 3,
