@@ -34,6 +34,29 @@
       "parentUuid": "6eb1ee22_4799b9aa",
       "revId": "2515fa16bf0387fb12e8257f5b58970c955f9301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ceda7cf_5c65ca73",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1145.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T19:06:06Z",
+      "side": 1,
+      "message": "Same as [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6876367/comment/85a7a553_0e0392c7/).",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 37
+      },
+      "revId": "2515fa16bf0387fb12e8257f5b58970c955f9301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
