@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d813569c_746e1606",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-09T19:05:15Z",
+      "side": 1,
+      "message": "Same as [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6876367/comment/85a7a553_0e0392c7/).",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 0
+      },
+      "revId": "436bb48355a1d9f11849149ccdcbcbf9d8fb4be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fba20c17_0a3e0b63",
         "filename": "zephyr/program/fpmcu/helipilot/gwendolin.dts",
         "patchSetId": 37
