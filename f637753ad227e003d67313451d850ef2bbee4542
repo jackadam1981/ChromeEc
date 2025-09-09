@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d35f7110_25cf220f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-09T21:28:21Z",
+      "side": 1,
+      "message": "how about adding an runtime assertion that `cfg-\u003esensor_info.num_capture_types` is the same as `NUM_IMAGE_CAPTURE_TYPES`?",
+      "parentUuid": "85a7a553_0e0392c7",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 37
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d02aace_5f9b3834",
         "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
         "patchSetId": 10
