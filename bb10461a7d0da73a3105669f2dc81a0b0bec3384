@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a749ae_0a0430ec",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,write-protect.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-09T23:00:03Z",
+      "side": 1,
+      "message": "It is fixed for MEC1727 added the comments as such",
+      "parentUuid": "382d907b_b22c9956",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "506a69cc_bd02852b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf552cf_a0d42f43",
+        "filename": "zephyr/dts/bindings/cros_flash/microchip,write-protect.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-09T23:00:03Z",
+      "side": 1,
+      "message": "I definitely meant GSC not SOC fixed",
+      "parentUuid": "506a69cc_bd02852b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "348d7c30_8abc8715",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-09-09T22:53:12Z",
       "side": 1,
       "message": "Nit - needs a void parameter.",
+      "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f8e09b_9bb9ba33",
+        "filename": "zephyr/include/drivers/microchip_wp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-09T23:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "348d7c30_8abc8715",
       "revId": "bb10461a7d0da73a3105669f2dc81a0b0bec3384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
