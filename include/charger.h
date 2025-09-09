@@ -172,6 +172,7 @@ struct charger_config_t {
 	int i2c_port;
 	uint16_t i2c_addr_flags;
 	const struct charger_drv *drv;
+	uint32_t min_required_voltage;
 };
 
 #ifndef CONFIG_CHARGER_RUNTIME_CONFIG
@@ -299,6 +300,9 @@ enum ec_error_list charger_get_vbus_voltage(int port, int *voltage);
 
 /* Get the Vsys voltage (mV) from the charger */
 enum ec_error_list charger_get_vsys_voltage(int port, int *voltage);
+
+/* Get the minimum required voltage (mv) to charge battery */
+enum ec_error_list charger_get_min_required_voltage(int chgnum, int *voltage);
 
 /* Custom board function to discharge battery when on AC power */
 int board_discharge_on_ac(int enable);
