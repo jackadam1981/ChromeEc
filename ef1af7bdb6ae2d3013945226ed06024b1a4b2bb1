@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0874306c_303ab827",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:25:24Z",
+      "side": 1,
+      "message": "This value was set to 100 ms in CL:2752250 to make sure that Servo v4 connected consistently. Can you make sure that this doesn\u0027t regress that behavior?",
+      "revId": "ef1af7bdb6ae2d3013945226ed06024b1a4b2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5ba35d_85dcaaef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:25:24Z",
+      "side": 1,
+      "message": "This config item was originally added in CL:2325265. Based on how it\u0027s been used, I think it probably ought to have the same value across models that use the same TCPC. If that\u0027s correct, then a better structure would probably be to have a constant accessible via the TCPC driver API. That way you would get the correct value automatically based on the `tcpc_config` instead of having to see this problem and set it in `board.h`.\n\nI don\u0027t think you should do that refactor right now, but if we run into another model with this issue, it might be a good idea.",
+      "revId": "ef1af7bdb6ae2d3013945226ed06024b1a4b2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658e92c3_cdb2d859",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:25:24Z",
+      "side": 1,
+      "message": "25 ms is the default value. You can just delete this line for the same effect.",
+      "revId": "ef1af7bdb6ae2d3013945226ed06024b1a4b2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
