@@ -52,5 +52,6 @@
 		compatible = "intersil,isl95522";
 		status = "okay";
 		reg = <0x9>;
+		minimum-voltage-required = <15000>;
 	};
 };
