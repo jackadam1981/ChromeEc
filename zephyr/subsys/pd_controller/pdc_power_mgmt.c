@@ -5621,6 +5621,22 @@ test_mockable int pdc_power_mgmt_set_bbr_cts(int port, bool enable)
 	return public_api_block(port, CMD_PDC_SET_BBR_CTS);
 }
 
+test_mockable int pdc_power_mgmt_set_ap_power_state(enum power_state state)
+{
+	if (!(state == POWER_S0 || state == POWER_S5)) {
+		LOG_ERR("PD: Can only notify S0 and S5 states (state=%d)",
+			state);
+		return -EINVAL;
+	}
+
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		/* Issue command on all port instances */
+		pdc_notify_ap_power_state(i, state);
+	}
+
+	return 0;
+}
+
 #ifdef CONFIG_ZTEST
 
 bool test_pdc_power_mgmt_is_snk_typec_attached_run(int port)

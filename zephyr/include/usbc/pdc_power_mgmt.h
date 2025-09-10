@@ -778,4 +778,17 @@ int pdc_power_mgmt_set_bbr_cts(int port, bool enable);
  */
 bool pdc_power_mgmt_is_pdc_port_valid(int port);
 
+/**
+ * @brief Manually notify the PDCs of the given AP power state
+ *
+ * Notify all PDC drivers that the AP is in the given power state. This
+ * overrides the state set by the PDC subsystem but does not prevent it from
+ * updating the power state again on the next startup or shutdown transition.
+ *
+ * @param state POWER_S0  or POWER_S5
+ * @return 0 on success
+ * @return -EINVAL for invalid \p state values.
+ */
+int pdc_power_mgmt_set_ap_power_state(enum power_state state);
+
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */
