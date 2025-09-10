@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef192198_5e716290",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T01:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "233ec14b_3a7260b6",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b260bc_ea353c4f",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-09T22:35:26Z",
       "side": 1,
       "message": "You don\u0027t need a separate compatible here.  This file is only defining a property that might be shared by multiple charger chips.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c32ea1d9_dce504bd",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T01:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b260bc_ea353c4f",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8f6447_3a8392b4",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T01:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece99e0d_1108d4e5",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f175a62_e724f915",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-09-09T22:35:26Z",
       "side": 1,
       "message": "This isn\u0027t needed.  The isl95522 yaml is already including the hpb-charger yaml which pulls in the new property.\n\nThis is also a board specific change.  Move to a separate CL after the common HPB changes.",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "21535fffca7d8e027c412aa3758a479be9db6940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7db2975_b36b6b65",
+        "filename": "zephyr/program/trulo/kaladin/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T01:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f175a62_e724f915",
       "range": {
         "startLine": 52,
         "startChar": 35,
