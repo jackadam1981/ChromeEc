@@ -2209,6 +2209,11 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_INPUT_CURRENT_STEP:
 				val = info->input_current_step;
 				break;
+			case CS_PARAM_CHG_MIN_REQUIRED_MV:
+				if (charger_get_minimum_charging_mv(0, &val)) {
+					rv = EC_RES_INVALID_PARAM;
+				};
+				break;
 			default:
 				rv = EC_RES_INVALID_PARAM;
 			}
@@ -2254,6 +2259,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_INPUT_CURRENT_MIN:
 			case CS_PARAM_CHG_INPUT_CURRENT_MAX:
 			case CS_PARAM_CHG_INPUT_CURRENT_STEP:
+			case CS_PARAM_CHG_MIN_REQUIRED_MV:
 				/* Can't set this */
 				rv = EC_RES_ACCESS_DENIED;
 				break;
