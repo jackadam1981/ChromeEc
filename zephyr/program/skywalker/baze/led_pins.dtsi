@@ -49,7 +49,7 @@
 
 			color_amber: color-amber {
 				led-color = "LED_AMBER";
-				led-values = <70 30 0 100>;
+				led-values = <90 10 0 100>;
 			};
 		};
 	};
