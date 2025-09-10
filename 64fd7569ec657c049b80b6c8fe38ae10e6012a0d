@@ -94,6 +94,30 @@
       },
       "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5219c7_f05e88e6",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-10T18:23:05Z",
+      "side": 1,
+      "message": "That\u0027s some macro fun... Does Zephyr already have this multi-arg MAX define?\n\nIf not, let\u0027s go ahead and put that in another CL. Once we have it in a good form, we should push it upstream.",
+      "parentUuid": "1565569f_9f8f5cda",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
