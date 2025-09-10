@@ -22,6 +22,30 @@
       },
       "revId": "6eb153e5904d1b8c9f80c79a875bf6b32c5075f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c04b3f_44e0a28f",
+        "filename": "zephyr/program/fatcat/felino/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-10T09:03:10Z",
+      "side": 1,
+      "message": "In the previous CL, the definitions of these two functions have been added.",
+      "parentUuid": "708b3eb1_824ce610",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "6eb153e5904d1b8c9f80c79a875bf6b32c5075f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
