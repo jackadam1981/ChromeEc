@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6a70780_6c05885b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-10T09:03:18Z",
+      "side": 1,
+      "message": "File one if possible.",
+      "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571d0ffe_9e78dc3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-10T09:03:18Z",
+      "side": 1,
+      "message": "also run suspend stress test, like `suspend_stress_test`.",
+      "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22994094_0320685f",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 2
