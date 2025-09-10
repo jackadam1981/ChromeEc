@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd33040_fb01bd46",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-10T15:21:12Z",
+      "side": 1,
+      "message": "`charge_manager_get_active_charge_port_unlocked()` would be more descriptive.",
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf29d1f_4ad25e77",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-10T15:21:12Z",
+      "side": 1,
+      "message": "Why is a mutex required in `charge_manager_get_active_charge_port` but not in `charge_manager_has_no_active_charge_port`? It\u0027s reading the same `charge_port` variable.",
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
