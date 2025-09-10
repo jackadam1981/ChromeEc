@@ -46,6 +46,30 @@
       },
       "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fee9af_f0bb22f1",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-10T15:56:14Z",
+      "side": 1,
+      "message": "The EC teams should have tests in place to make sure there aren\u0027t regressions. I\u0027d like to avoid making the code harder to read and work with if possible.\n\n@keithshort@chromium.org Are you ok with making this change without the configuration option? (Or can you suggest who would be the right person?)",
+      "parentUuid": "39c40ac0_d9764214",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 78
+      },
+      "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
