@@ -51,6 +51,24 @@
       "message": "Changes looks fine but issue might be hit again in some coroner cases.\nAddressing this gap for future platform designs will be helpful.",
       "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9309125_836c284a",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-10T18:50:00Z",
+      "side": 1,
+      "message": "I agree, I will be looking at kconfig options on the EC side to see if we can still handle I2C communication in low power modes.",
+      "parentUuid": "423114a6_5a421c87",
+      "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
