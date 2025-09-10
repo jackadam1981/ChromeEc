@@ -22,6 +22,30 @@
       },
       "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c40ac0_d9764214",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-09-10T06:28:07Z",
+      "side": 1,
+      "message": "The major reason is that I cannot make sure if it will cause regression for EC projects if we change it to `SYS_INIT` always.",
+      "parentUuid": "6c1234e0_333bd62e",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 78
+      },
+      "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
