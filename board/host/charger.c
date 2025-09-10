@@ -161,5 +161,6 @@ const struct charger_drv mock_drv = {
 const struct charger_config_t chg_chips[] = {
 	{
 		.drv = &mock_drv,
+		.minimum_charging_mv = 15000,
 	},
 };
