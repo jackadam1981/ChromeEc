@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ca34b8_b6e0b881",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-10T09:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd869b4c_df39246a",
+      "range": {
+        "startLine": 186,
+        "startChar": 33,
+        "endLine": 186,
+        "endChar": 36
+      },
+      "revId": "1b50b2489bd20953b17e468e0c8ba2d33487fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9230648_ae0cb9e9",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-07-11T00:18:42Z",
       "side": 1,
       "message": "the bq25770 datasheet says this is a 2\u0027s complement value with range\n-16 A to +16 A. can this actually be negative in practice?\n\nif so, we\u0027ll need some extra handling here.\ni kind of doubt any code using this value expects a negative reading.\nmaybe map negative readings to 0 to at least avoid false very large\nvalues.",
+      "range": {
+        "startLine": 841,
+        "startChar": 53,
+        "endLine": 841,
+        "endChar": 56
+      },
+      "revId": "1b50b2489bd20953b17e468e0c8ba2d33487fc23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe62c47_0ef0c96c",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-10T09:01:26Z",
+      "side": 1,
+      "message": "The DUT is connected to a Type-C peripheral load. A value of 0 is read from this register, whereas a numerical value can be read when AC is connected. It appears that negative values cannot be read. Therefore, no modification should be needed here.",
+      "parentUuid": "b9230648_ae0cb9e9",
       "range": {
         "startLine": 841,
         "startChar": 53,
