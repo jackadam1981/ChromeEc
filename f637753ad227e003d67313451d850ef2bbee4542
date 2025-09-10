@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd334648_4b8cf1f2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-10T21:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da92039c_5186d4d6",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 37
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d02aace_5f9b3834",
@@ -180,6 +204,30 @@
       "writtenOn": "2025-08-29T02:52:00Z",
       "side": 1,
       "message": "const struct fpc1025_cfg *cfg \u003d dev-\u003econfig;\n\t\n\tif (image_buf_size \u003c cfg-\u003esensor_image_configs[capture_type].frame_size)\n\t     return -EINVAL;",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 17
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d096562_a1a55c40",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-10T21:52:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2d02aace_5f9b3834",
       "range": {
         "startLine": 361,
         "startChar": 1,
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "\u003e a build assertion checking its value might be redundant.\n\nIt\u0027s redundant right now since we are looking through all the code and know how it\u0027s currently implemented, but the purpose of `BUILD_ASSERT` is to make sure someone doesn\u0027t accidentally break this in the future when making a change. They may not know what assumptions were made and think it\u0027s safe to change the behavior.",
       "parentUuid": "02df2191_d2b2fba1",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 50
+      },
+      "revId": "f637753ad227e003d67313451d850ef2bbee4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2858d577_806c1650",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-10T21:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90377e47_4e546760",
       "range": {
         "startLine": 510,
         "startChar": 0,
