@@ -312,7 +312,7 @@ enum pdo_augmented_pps {
 #define PD_T_CHUNK_SENDER_REQUEST (25 * MSEC) /* 25ms */
 #define PD_T_SWAP_SOURCE_START (25 * MSEC) /* Min of 20ms */
 #define PD_T_RP_VALUE_CHANGE (15 * MSEC) /* 10 to 20ms */
-#define PD_T_SRC_DISCONNECT (15 * MSEC) /* 15ms */
+#define PD_T_SRC_DISCONNECT (10 * MSEC) /* 0ms to 20ms */
 #define PD_T_SRC_TRANSITION (25 * MSEC) /* 25ms to 35 ms */
 #define PD_T_VCONN_STABLE (50 * MSEC) /* 50ms */
 #define PD_T_DISCOVER_IDENTITY (45 * MSEC) /* between 40ms and 50ms */
