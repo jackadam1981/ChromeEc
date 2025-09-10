@@ -2223,6 +2223,9 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_INPUT_CURRENT_STEP:
 				val = info->input_current_step;
 				break;
+			case CS_PARAM_CHG_MIN_REQ_VOLTAGE:
+				charger_get_min_required_voltage(0, &val);
+				break;
 			default:
 				rv = EC_RES_INVALID_PARAM;
 			}
