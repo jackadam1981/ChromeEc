@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caec52eb_b737b588",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-10T22:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b86481_28328f06",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 37
+      },
+      "revId": "f077a6856cd7e99e24fd7cdce73c793f4197ad76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37208ea5_40e22841",
