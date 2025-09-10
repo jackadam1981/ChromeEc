@@ -7326,6 +7326,12 @@
 #error CONFIG_BODY_DETECTION_SENSOR must be defined to use body detection
 #endif /* ifndef(CONFIG_BODY_DETECTION_SENSOR) */
 
+/* Non-zephyr only support V1 version of the body detection algorithm. */
+#if !defined(CONFIG_BODY_DETECTION_ALOGIRTHM_V1) && \
+	!defined(CONFIG_BODY_DETECTION_ALOGIRTHM_V2)
+#define CONFIG_BODY_DETECTION_ALOGIRTHM_V1
+#endif
+
 #ifndef CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE
 #define CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE 250 /* max sensor odr (Hz) */
 #endif
