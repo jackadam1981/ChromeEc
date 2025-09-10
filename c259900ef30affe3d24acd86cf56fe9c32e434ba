@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c61fca_aaaa20b9",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated code from `x86_non_dsx_common_pwrseq_sm_handler.c`.  Please move to a shared file.",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21183e5_b04670a5",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdb9e13_fa77b679",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8c8d27_4e046d73",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32594f0_6ebfd095",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6238929f_ee9ea743",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092038c1_ff4a9ffc",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-10T15:42:20Z",
+      "side": 1,
+      "message": "Duplicated",
+      "range": {
+        "startLine": 370,
+        "startChar": 11,
+        "endLine": 370,
+        "endChar": 33
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
