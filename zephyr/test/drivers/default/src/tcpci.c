@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "ec_commands.h"
 #include "ec_tasks.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/tcpc/emul_tcpci.h"
@@ -13,13 +14,19 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/tcpci_test_common.h"
 #include "test/drivers/test_state.h"
+#include "test/drivers/utils.h"
+#include "usb_pd.h"
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 
+#define TCPCI_PORT 0
+
 #define TCPCI_EMUL_NODE DT_NODELABEL(tcpci_emul)
+
+FAKE_VALUE_FUNC(bool, pd_vbus_valid_for_bist, int);
 
 /* Convenience pointer directly to the TCPCI mux under test */
 static struct usb_mux *tcpci_usb_mux;
@@ -576,6 +583,91 @@ static void *tcpci_setup(void)
 static void tcpci_after(void *state)
 {
 	set_usb_mux_tcpc();
+}
+
+void tcpci_get_rx_message_raw(const struct emul *emul,
+			      struct i2c_common_emul_data *common_data,
+			      enum usbc_port port)
+{
+	const struct tcpm_drv *drv = tcpc_config[port].drv;
+	struct tcpci_emul_msg msg;
+	uint32_t payload[1];
+	/* bist mode message header and payload
+	 *
+	 * TODO(b/359666332): A BIST Test Data message should have 7 data
+	 * objects, although this should not affect the results of this test.
+	 */
+	uint16_t input_header = PD_HEADER(PD_DATA_BIST, PD_ROLE_SINK,
+					  PD_ROLE_UFP, /*msg_id=*/0, /*cnt=*/1,
+					  /*rev=*/PD_REV30,
+					  /*ext=*/false);
+	uint32_t input_bdo = BDO(BDO_MODE_TEST_DATA, 0);
+	uint8_t buf[sizeof(input_header) + sizeof(input_bdo)];
+
+	*(uint16_t *)buf = input_header;
+	*(uint32_t *)(buf + sizeof(input_header)) = input_bdo;
+
+	int head;
+	bool bist_enabled;
+
+	RESET_FAKE(pd_vbus_valid_for_bist);
+	pd_vbus_valid_for_bist_fake.return_val = true;
+
+	tcpci_emul_set_reg(emul, TCPC_REG_RX_DETECT,
+			   TCPC_REG_RX_DETECT_SOP | TCPC_REG_RX_DETECT_SOPP);
+
+	msg.buf = buf;
+	msg.cnt = 31;
+	msg.sop_type = TCPCI_MSG_SOP;
+	zassert_equal(TCPCI_EMUL_TX_SUCCESS,
+		      tcpci_emul_add_rx_msg(emul, &msg, true),
+		      "Failed to setup emulator message");
+
+	/* Test fail on reading message */
+	i2c_common_emul_set_read_fail_reg(common_data, TCPC_REG_RX_BUFFER);
+	zassert_equal(EC_ERROR_UNKNOWN,
+		      drv->get_message_raw(port, payload, &head), NULL);
+	i2c_common_emul_set_read_fail_reg(common_data,
+					  I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	/* Test bist mode true */
+	msg.buf = buf;
+	msg.cnt = sizeof(buf);
+	msg.sop_type = TCPCI_MSG_SOP;
+	zassert_equal(TCPCI_EMUL_TX_SUCCESS,
+		      tcpci_emul_add_rx_msg(emul, &msg, true),
+		      "Failed to setup emulator message");
+
+	zassert_equal(EC_SUCCESS, drv->set_bist_test_mode(port, false));
+	zassert_equal(EC_SUCCESS, drv->get_message_raw(port, payload, &head),
+		      NULL);
+	zassert_equal(EC_SUCCESS, drv->get_bist_test_mode(port, &bist_enabled),
+		      NULL);
+	zassert_true(bist_enabled, "BIST mode should be enabled");
+
+	/* Test bist mode already true */
+	zassert_equal(TCPCI_EMUL_TX_SUCCESS,
+		      tcpci_emul_add_rx_msg(emul, &msg, true),
+		      "Failed to setup emulator message");
+
+	zassert_equal(EC_SUCCESS, drv->set_bist_test_mode(port, true));
+	zassert_equal(EC_SUCCESS, drv->get_message_raw(port, payload, &head),
+		      NULL);
+	zassert_equal(EC_SUCCESS, drv->get_bist_test_mode(port, &bist_enabled),
+		      NULL);
+	zassert_true(bist_enabled, "BIST mode should be enabled");
+}
+
+ZTEST(tcpci, test_tcpci_get_rx_message_raw)
+{
+	const struct emul *tcpci_emul = EMUL_DT_GET(TCPCI_EMUL_NODE);
+	struct i2c_common_emul_data *common_data =
+		emul_tcpci_generic_get_i2c_common_data(tcpci_emul);
+
+	/* set battery level to avoid entering low battery status */
+	test_set_battery_level(75);
+
+	tcpci_get_rx_message_raw(tcpci_emul, common_data, TCPCI_PORT);
 }
 
 ZTEST_SUITE(tcpci, drivers_predicate_pre_main, tcpci_setup, NULL, tcpci_after,
