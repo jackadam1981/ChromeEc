@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21519ea2_cb67e54f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-10T23:51:32Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"funtions\" is a possible misspelling of \"functions\".\n\nTo bypass Spellchecker, ad...\n\n\"funtions\" is a possible misspelling of \"functions\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "8f0e45a6a4059c64f1061584d3e9a7cb18e440c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
