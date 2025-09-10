@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7d31fa_9abec512",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-10T05:04:49Z",
+      "side": 1,
+      "message": "Add another test: tast run \u003cIP\u003e hardware.SensorIioserviceHard to make sure the sensor is working as expected.",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c9b4bc_c39e28d1",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-10T05:04:49Z",
+      "side": 1,
+      "message": "Remove, done in s-\u003edrv-\u003eenable_interrupt();",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69eb63d7_3cc8e179",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-10T05:04:49Z",
+      "side": 1,
+      "message": "Remove: done in s-\u003edrv-\u003eenable_interrupt();",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
