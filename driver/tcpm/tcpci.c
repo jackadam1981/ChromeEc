@@ -24,10 +24,13 @@
 #include "usb_pd_flags.h"
 #include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pe_sm.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+
+static bool common_bist_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 bool sop_prime_en[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -1902,6 +1905,58 @@ test_mockable void tcpc_dump_std_registers(int port)
 }
 #endif
 
+static bool common_tcpm_should_enter_bist_mode(int port, uint32_t *payload,
+					       int *head)
+{
+	uint32_t hdr = *head;
+	/*
+	 * Detect bist message here and enable bist mode.
+	 */
+	if ((PD_HEADER_EXT(hdr) == 0) && (PD_HEADER_CNT(hdr) > 0) &&
+	    (PD_HEADER_TYPE(hdr) == PD_DATA_BIST) &&
+	    (BIST_MODE(payload[0]) == BIST_TEST_DATA) &&
+	    (!common_bist_mode[port]) && pd_vbus_valid_for_bist(port)) {
+		return true;
+	}
+
+	return false;
+}
+
+int common_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
+{
+	int ret = tcpci_tcpm_get_message_raw(port, payload, head);
+
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	if (common_tcpm_should_enter_bist_mode(port, payload, head)) {
+		common_bist_mode[port] = true;
+		ret = tcpci_set_bist_test_mode(port, true);
+	}
+	return ret;
+}
+
+enum ec_error_list common_set_bist_test_mode(const int port, const bool enable)
+{
+	common_bist_mode[port] = enable;
+
+	/*
+	 * If BIST test mode is being enabled, it will already have been enabled
+	 * in raa489000_tcpm_get_message_raw, so don't repeat that work here.
+	 */
+	if (!common_bist_mode[port]) {
+		return tcpci_set_bist_test_mode(port, enable);
+	}
+	return EC_SUCCESS;
+}
+
+enum ec_error_list common_get_bist_test_mode(const int port, bool *enable)
+{
+	*enable = common_bist_mode[port];
+
+	return EC_SUCCESS;
+}
+
 const struct tcpm_drv tcpci_tcpm_drv = {
 	.init = &tcpci_tcpm_init,
 	.release = &tcpci_tcpm_release,
@@ -1919,7 +1974,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.set_vconn = &tcpci_tcpm_set_vconn,
 	.set_msg_header = &tcpci_tcpm_set_msg_header,
 	.set_rx_enable = &tcpci_tcpm_set_rx_enable,
-	.get_message_raw = &tcpci_tcpm_get_message_raw,
+	.get_message_raw = &common_tcpm_get_message_raw,
 	.transmit = &tcpci_tcpm_transmit,
 	.tcpc_alert = &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
@@ -1941,8 +1996,8 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable = &tcpci_tcpc_fast_role_swap_enable,
 #endif
-	.set_bist_test_mode = &tcpci_set_bist_test_mode,
-	.get_bist_test_mode = &tcpci_get_bist_test_mode,
+	.set_bist_test_mode = &common_set_bist_test_mode,
+	.get_bist_test_mode = &common_get_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers = &tcpc_dump_std_registers,
 #endif
