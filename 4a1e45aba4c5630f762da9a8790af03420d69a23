@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db318267_d20460b4",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T15:42:53Z",
+      "side": 1,
+      "message": "See comment below.",
+      "parentUuid": "5cd33040_fb01bd46",
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdf29d1f_4ad25e77",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-10T15:21:12Z",
       "side": 1,
       "message": "Why is a mutex required in `charge_manager_get_active_charge_port` but not in `charge_manager_has_no_active_charge_port`? It\u0027s reading the same `charge_port` variable.",
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce1c91b_623ebebf",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T15:42:53Z",
+      "side": 1,
+      "message": "In this scenario, `raa489000_init` isn\u0027t impacted from a stale value returned from charge_manager, as this is working prior to mutexes being introduced.  \n\nI\u0027ve considered adding a `_unlocked()` version of the API as it can be used elsewhere, where a stale value won\u0027t impact the results as its fetched again, like the LED tick handler as it queries this API frequently comparing against `CHARGE_PORT_NONE`.  I\u0027ve found the majority are comparing against `CHARGE_PORT_NONE` so making a more concise API on what this is detecting, will make the code more readable.",
+      "parentUuid": "fdf29d1f_4ad25e77",
       "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
