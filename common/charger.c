@@ -494,9 +494,6 @@ enum ec_error_list charger_get_min_required_voltage(int chgnum, int *voltage)
 		return EC_ERROR_INVAL;
 	}
 
-	if (chg_chips[chgnum].min_required_voltage == 0)
-		return EC_ERROR_UNIMPLEMENTED;
-
 	*voltage = chg_chips[chgnum].min_required_voltage;
 	return EC_SUCCESS;
 }

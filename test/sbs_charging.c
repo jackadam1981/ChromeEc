@@ -555,7 +555,8 @@ test_static int test_hc_charge_state(void)
 					    sizeof(params), &resp,
 					    sizeof(resp));
 		TEST_ASSERT(rv == EC_RES_SUCCESS);
-		if (i != CS_PARAM_LIMIT_POWER)
+		if (i != CS_PARAM_LIMIT_POWER &&
+		    i != CS_PARAM_CHG_MIN_REQ_VOLTAGE)
 			TEST_ASSERT(resp.get_param.value);
 		else
 			TEST_ASSERT(!resp.get_param.value);
@@ -579,6 +580,7 @@ test_static int test_hc_charge_state(void)
 		case CS_PARAM_CHG_INPUT_CURRENT_MIN:
 		case CS_PARAM_CHG_INPUT_CURRENT_MAX:
 		case CS_PARAM_CHG_INPUT_CURRENT_STEP:
+		case CS_PARAM_CHG_MIN_REQ_VOLTAGE:
 			/* These ones can't be set */
 			break;
 		case CS_PARAM_CHG_OPTION:
@@ -593,7 +595,7 @@ test_static int test_hc_charge_state(void)
 					    sizeof(resp));
 		if (i == CS_PARAM_CHG_STATUS ||
 		    (CS_PARAM_LIMIT_POWER <= i &&
-		     i <= CS_PARAM_CHG_INPUT_CURRENT_STEP))
+		     i <= CS_PARAM_CHG_MIN_REQ_VOLTAGE))
 			TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
 		else
 			TEST_ASSERT(rv == EC_RES_SUCCESS);
