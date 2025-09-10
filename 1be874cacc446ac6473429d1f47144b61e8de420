@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c977c970_19dee484",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-10T19:13:01Z",
+      "side": 1,
+      "message": "@gwendal@chromium.org you\u0027re right, ideally we would have an interrupt from the ISH to wake the EC. We would fire it before each I2C transaction. But Uldrenite doesn\u0027t have that pin and we can\u0027t add it at this point. So the retry is the best option we have. I\u0027m looking at the EC side I2C driver to see if we can get it to handle I2C events in deep sleep and wake up when they come in instead of NACKing them.",
+      "parentUuid": "561f8f6f_f4f7c419",
+      "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "423114a6_5a421c87",
