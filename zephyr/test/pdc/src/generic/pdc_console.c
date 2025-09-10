@@ -1273,3 +1273,30 @@ ZTEST_USER(console_cmd_pdc, test_set_bbr_cts)
 	zassert_equal(0, pdc_power_mgmt_set_bbr_cts_fake.arg0_history[0]);
 	zassert_false(pdc_power_mgmt_set_bbr_cts_fake.arg1_history[0]);
 }
+
+ZTEST_USER(console_cmd_pdc, test_set_ap_power_state)
+{
+	int rv;
+
+	/* Invalid state */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc ap_state s3");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Set S0 */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc ap_state s0");
+	zassert_ok(rv, "Expected success, but got %d", rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_ap_power_state_fake.call_count);
+	zassert_equal(POWER_S0,
+		      pdc_power_mgmt_set_ap_power_state_fake.arg0_history[0]);
+
+	RESET_FAKE(pdc_power_mgmt_set_ap_power_state);
+
+	/* Set S5 */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc ap_state s5");
+	zassert_ok(rv, "Expected success, but got %d", rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_ap_power_state_fake.call_count);
+	zassert_equal(POWER_S5,
+		      pdc_power_mgmt_set_ap_power_state_fake.arg0_history[0]);
+}
