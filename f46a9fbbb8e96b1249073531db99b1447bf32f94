@@ -69,6 +69,30 @@
       },
       "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd38191_baf1c373",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-10T02:44:26Z",
+      "side": 1,
+      "message": "This can be done in a separate CL. This is out of scope of this CL.",
+      "parentUuid": "2adf65fa_56412302",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
