@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22714d00_6356d4f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:10:33Z",
+      "side": 1,
+      "message": "The usual comment about making sure this change doesn\u0027t regress other tests/platforms.",
+      "revId": "160ce63de10c75ac0c49fe0bbdfaceebf61ee351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0201aaf_f037265b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:10:33Z",
+      "side": 1,
+      "message": "Can you comment the allowed range here?",
+      "revId": "160ce63de10c75ac0c49fe0bbdfaceebf61ee351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
