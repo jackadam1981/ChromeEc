@@ -118,6 +118,30 @@
       },
       "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1d4bd4_b70d250d",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-10T23:27:37Z",
+      "side": 1,
+      "message": "I created this upstream CL: https://github.com/zephyrproject-rtos/zephyr/pull/95826\n\nI will update once this gets reviewed and merged.",
+      "parentUuid": "9f5219c7_f05e88e6",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
