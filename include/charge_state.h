@@ -327,6 +327,15 @@ void charge_set_active_chg_chip(int idx);
 int charge_get_active_chg_chip(void);
 
 /**
+ * Determine if attached charger is sufficient for charging the battery.
+ * Applicable only for hybrid power boost (HPB) chargers only.
+ *
+ * @return true
+ * @return false
+ */
+bool charge_is_charger_sufficient(void);
+
+/**
  * Reset the OCPC internal state data and set the target VSYS to the current
  * battery voltage for the auxiliary chargers.
  */
