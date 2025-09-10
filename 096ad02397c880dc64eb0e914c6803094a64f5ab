@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b480a6d0_d0b9340b",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-10T03:43:40Z",
+      "side": 1,
+      "message": "Should these floating GPIOs be configured as `unused-gpios` in order to prevent leakage?",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "096ad02397c880dc64eb0e914c6803094a64f5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432c4f5d_c3362bd5",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-10T03:43:40Z",
+      "side": 1,
+      "message": "GPIO63 is `pg_pp5000_s5_od` in `bluey_design_guide_v0.09_COLOR_20250826.pdf` but `bluey/gpios.dtsi` defines it as `charge_status1`. Does the `bluey/gpios.dtsi` update to the latest schematic?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "096ad02397c880dc64eb0e914c6803094a64f5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc971d6_d49a01ad",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-10T03:43:40Z",
+      "side": 1,
+      "message": "same as GPIO63. seems `bluey/gpios.dtsi` not update to the latest schematic.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "096ad02397c880dc64eb0e914c6803094a64f5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de937bbb_d6e52c69",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-10T03:43:40Z",
+      "side": 1,
+      "message": "GPIOE4 is NC on Quartz.\nRef：https://docs.google.com/spreadsheets/d/1YfdE3TigFzwQMWF2DhOEsAQZpvhIY50UCSoskH76OUQ/edit?resourcekey\u003d0-C5Jz8Gem2UnvrPV0BneI8A\u0026gid\u003d318408311#gid\u003d318408311",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "096ad02397c880dc64eb0e914c6803094a64f5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd785ceb_174d1eff",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-10T03:43:40Z",
+      "side": 1,
+      "message": "same as GPIO63. seems `bluey/gpios.dtsi` not update to the latest schematic.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 4
+      },
+      "revId": "096ad02397c880dc64eb0e914c6803094a64f5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
