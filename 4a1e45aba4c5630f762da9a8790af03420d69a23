@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1e9bcb5_44a0e168",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-09-10T22:10:45Z",
+      "side": 1,
+      "message": "It is not clear from the function names why a developer should use one over the other, except for `charge_manager_no_active_charge_port` being slightly more concise. \n\nI\u0027m concerned that we may hit this exact bug again when new code is added that accesses `charge_manager_get_active_charge_port`. Splitting this function into charge_manager_get_active_charge_port_unlocked` (and maybe `charge_manager_get_active_charge_port_locked`) would make this side effect very clear.",
+      "parentUuid": "1ce1c91b_623ebebf",
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afcc79c5_0a6196b1",
         "filename": "include/charge_manager.h",
         "patchSetId": 14
