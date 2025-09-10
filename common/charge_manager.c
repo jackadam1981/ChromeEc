@@ -1599,7 +1599,7 @@ int charge_manager_get_charger_current(void)
 	return retval;
 }
 
-int charge_manager_get_charger_voltage(void)
+test_mockable int charge_manager_get_charger_voltage(void)
 {
 	int retval = 0;
 
