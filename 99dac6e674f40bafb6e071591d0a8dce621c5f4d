@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77bb164c_6023f0b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-10T08:24:58Z",
+      "side": 1,
+      "message": "It will fail\n\n```\n2025-09-10T07:33:40.614995Z hardware.SensorIioserviceHard [ FAIL ]  : Client 0 to cros-ec-gyro failed: : error during validation: too much delta between samples for accel-base cros-ec-gyro at index 1899(3m18.943877831s): got 9.298445ms; want \u003c\u003d 7.211538ms\n2025-09-10T07:33:40.615008Z                                         : Client 2 to cros-ec-gyro failed: : error during validation: too much delta between samples for accel-base cros-ec-gyro at index 1899(3m18.943877831s): got 9.298445ms; want \u003c\u003d 7.211538ms\n2025-09-10T07:33:40.615021Z                                         : Client 1 to cros-ec-gyro failed: : error during validation: too much delta between samples for accel-base cros-ec-gyro at index 1899(3m18.943877831s): got 9.298445ms; want \u003c\u003d 7.211538ms\n```\n\nBut try run with the 16367.0.0 ish.bin it can PASS.",
+      "parentUuid": "3d7d31fa_9abec512",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1c9b4bc_c39e28d1",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-10T05:04:49Z",
       "side": 1,
       "message": "Remove, done in s-\u003edrv-\u003eenable_interrupt();",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea77061_89aa7b02",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-10T08:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1c9b4bc_c39e28d1",
       "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2025-09-10T05:04:49Z",
       "side": 1,
       "message": "Remove: done in s-\u003edrv-\u003eenable_interrupt();",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257f5fba_39ce13c2",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-10T08:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69eb63d7_3cc8e179",
       "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
