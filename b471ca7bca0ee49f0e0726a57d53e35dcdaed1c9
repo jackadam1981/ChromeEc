@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d6e783_721b6e82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:27:28Z",
+      "side": 1,
+      "message": "BTW, this CL has been ready to go for a while. If you rebased your CL stack so that this CL was at the bottom, you could have submitted it already. In general, that\u0027s an OK thing to do when the CLs in a stack don\u0027t require a specific ordering.",
+      "revId": "b471ca7bca0ee49f0e0726a57d53e35dcdaed1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
