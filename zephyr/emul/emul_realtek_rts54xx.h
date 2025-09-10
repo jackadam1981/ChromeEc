@@ -502,17 +502,6 @@ union rts54_response {
 	} __packed get_tpc_csd_operation_mode;
 };
 
-enum cmd_sts_t {
-	/** Command has not been started */
-	CMD_BUSY = 0,
-	/** Command has completed */
-	CMD_COMPLETE = 1,
-	/** Command has been started but has not completed */
-	CMD_DEFERRED = 2,
-	/** Command completed with error. Send GET_ERROR_STATUS for details */
-	CMD_ERROR = 3,
-};
-
 struct ping_status {
 	/** Command status */
 	uint8_t cmd_sts : 2;
@@ -543,6 +532,7 @@ struct rts5453p_emul_pdc_data {
 	struct lpm_ppm_info_t lpm_ppm_info;
 	union cable_property_t cable_property;
 	bool bbr_cts_mode;
+	enum sx_sleep_state sys_power_state;
 
 	union rts54_request request;
 

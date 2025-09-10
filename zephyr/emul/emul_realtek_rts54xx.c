@@ -5,6 +5,7 @@
 
 #include "drivers/pdc.h"
 #include "drivers/ucsi_v3.h"
+#include "drivers/usbc/pdc_rts54xx.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_pdc.h"
 #include "emul/emul_smbus_ara.h"
@@ -866,7 +867,7 @@ static bool send_response(struct rts5453p_emul_pdc_data *data)
 		return true;
 	}
 
-	set_ping_status(data, CMD_COMPLETE, data->response.byte_count);
+	set_ping_status(data, CMD_DONE, data->response.byte_count);
 
 	return false;
 }
@@ -877,7 +878,7 @@ static void delayable_work_handler(struct k_work *w)
 	struct rts5453p_emul_pdc_data *data =
 		CONTAINER_OF(dwork, struct rts5453p_emul_pdc_data, delay_work);
 
-	set_ping_status(data, CMD_COMPLETE, data->response.byte_count);
+	set_ping_status(data, CMD_DONE, data->response.byte_count);
 }
 
 static int set_bbr_cts_mode(struct rts5453p_emul_pdc_data *data,
@@ -899,6 +900,8 @@ static int set_sys_pwr_state(struct rts5453p_emul_pdc_data *data,
 			     const union rts54_request *req)
 {
 	LOG_INF("SET_SYS_PWR_STATE: %d", req->set_sys_pwr_state.state);
+
+	data->sys_power_state = req->set_sys_pwr_state.state;
 
 	/* No response data */
 	memset(&data->response, 0, sizeof(union rts54_response));
@@ -1253,6 +1256,7 @@ static int emul_realtek_rts54xx_init_data(const struct emul *target)
 	data->frs_configured = false;
 	data->sbu_mux_mode = 0;
 	data->bbr_cts_mode = false;
+	data->sys_power_state = SX_RSVD; /* Power state unspecified */
 
 	/* Clear any feature flags */
 	emul_realtek_rts54xx_reset_feature_flags(target);
@@ -1788,6 +1792,43 @@ emul_realtek_rts54xx_get_battery_status(const struct emul *target,
 	*bstat = data->battery_status;
 	return 0;
 }
+
+static int emul_realtek_rts54xx_get_sys_power_state(const struct emul *target,
+						    enum power_state *state)
+{
+	struct rts5453p_emul_pdc_data *data =
+		rts5453p_emul_get_pdc_data(target);
+
+	__ASSERT(state, "state is NULL");
+
+	switch (data->sys_power_state) {
+	case SX_S0:
+		*state = POWER_S0;
+		break;
+	case SX_S5:
+		*state = POWER_S5;
+		break;
+	/* LCOV_EXCL_START - Only S0 and S5 are expected to be used */
+	case SX_S3:
+		*state = POWER_S3;
+		break;
+	case SX_S4:
+		*state = POWER_S4;
+		break;
+#ifdef CONFIG_POWER_S0IX
+	case SX_S0IX:
+		*state = POWER_S0ix;
+		break;
+#endif /* CONFIG_POWER_S0IX */
+	default:
+		/* Includes default value SX_RSVD (0) */
+		*state = -1;
+	}
+	/* LCOV_EXCL_STOP */
+
+	return 0;
+}
+
 static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.reset = emul_realtek_rts54xx_reset,
 	.set_response_delay = emul_realtek_rts54xx_set_response_delay,
@@ -1827,6 +1868,7 @@ static DEVICE_API(emul_pdc, emul_realtek_rts54xx_api) = {
 	.get_dead_battery = emul_realtek_rts54xx_get_dead_battery,
 	.get_battery_capability = emul_realtek_rts54xx_get_battery_capability,
 	.get_battery_status = emul_realtek_rts54xx_get_battery_status,
+	.get_sys_power_state = emul_realtek_rts54xx_get_sys_power_state,
 };
 
 #define RTS5453P_EMUL_DEFINE(n)                                             \

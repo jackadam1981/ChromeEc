@@ -2574,6 +2574,52 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_rdo_errors)
 	zassert_equal(-EINVAL, pdc_power_mgmt_get_rdo(TEST_PORT, NULL));
 	zassert_equal(-ENODATA, pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
 }
+
+ZTEST_USER(pdc_power_mgmt_api, test_set_ap_power_state)
+{
+	int rv;
+	enum power_state state;
+
+	/* Only S0 and S5 are supported */
+
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S3);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S4);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_G3);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+
+#ifdef CONFIG_POWER_S0IX
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S0ix);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+#endif
+
+	/* Set S0 */
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S0);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	rv = emul_pdc_get_sys_power_state(emul, &state);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_equal(POWER_S0, state, "Expected POWER_S0 (%d), got %d",
+		      POWER_S0, rv);
+
+	/* Set S5 */
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S5);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	rv = emul_pdc_get_sys_power_state(emul, &state);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_equal(POWER_S5, state, "Expected POWER_S0 (%d), got %d",
+		      POWER_S5, rv);
+}
 #endif
 
 ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_pd_get_polarity)
