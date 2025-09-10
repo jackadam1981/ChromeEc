@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2953b44_0807fce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:14:40Z",
+      "side": 1,
+      "message": "This will need to be cleaned up, but it looks basically how I was imagining.",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bce7cd8_492451db",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:14:40Z",
+      "side": 1,
+      "message": "The typical way to name stuff in this file is `tcpci_*`.",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1499f5_1fe6af4f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:14:40Z",
+      "side": 1,
+      "message": "I can\u0027t remember why these were externally linked in `raa489000.c`. Can they be `static`?",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f765e98c_5ba55af1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:14:40Z",
+      "side": 1,
+      "message": "You\u0027ll need to integrate this logic with the existing `tcpm_tcpci_get_message_raw`. Same for the get and set functions.",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
