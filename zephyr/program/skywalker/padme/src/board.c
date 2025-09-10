@@ -6,13 +6,10 @@
 #include "charger.h"
 #include "chipset.h"
 #include "common.h"
-#include "driver/charger/rt9490.h"
 #include "extpower.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "timer.h"
-
-__override_proto void board_rt9490_adc_control(void);
 
 #include <zephyr/drivers/gpio.h>
 
@@ -54,15 +51,3 @@ static int install_backlight_handler(void)
 }
 
 SYS_INIT(install_backlight_handler, APPLICATION, 1);
-
-__overridable void board_rt9490_adc_control(void)
-{
-	rt9490_enable_adc(CHARGER_SOLO, extpower_is_present());
-}
-
-static void board_hook_ac_change(void)
-{
-	board_rt9490_adc_control();
-}
-DECLARE_HOOK(HOOK_AC_CHANGE, board_hook_ac_change, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_INIT, board_hook_ac_change, HOOK_PRIO_LAST);
