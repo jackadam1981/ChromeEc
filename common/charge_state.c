@@ -2109,6 +2109,25 @@ static int charge_get_charge_state_debug(int param, uint32_t *value)
 	return EC_SUCCESS;
 }
 
+bool charge_is_adapter_sufficient(void)
+{
+	uint32_t min_voltage;
+	int voltage;
+
+	if (charger_get_minimum_charging_mv(0, &min_voltage)) {
+		return false;
+	}
+
+	if (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
+		return false;
+	}
+
+	voltage = charge_manager_get_charger_voltage();
+	CPRINTS("min_voltage=%d mv, voltage=%d mv", min_voltage, voltage);
+
+	return (voltage > 0 && voltage >= min_voltage);
+}
+
 static enum ec_status
 charge_command_charge_state(struct host_cmd_handler_args *args)
 {
@@ -2214,6 +2233,9 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 					rv = EC_RES_INVALID_PARAM;
 				};
 				break;
+			case CS_PARAM_CHG_IS_ADAPTER_SUFFICIENT:
+				val = charge_is_adapter_sufficient();
+				break;
 			default:
 				rv = EC_RES_INVALID_PARAM;
 			}
@@ -2260,6 +2282,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_INPUT_CURRENT_MAX:
 			case CS_PARAM_CHG_INPUT_CURRENT_STEP:
 			case CS_PARAM_CHG_MIN_REQUIRED_MV:
+			case CS_PARAM_CHG_IS_ADAPTER_SUFFICIENT:
 				/* Can't set this */
 				rv = EC_RES_ACCESS_DENIED;
 				break;
