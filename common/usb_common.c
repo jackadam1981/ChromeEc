@@ -48,6 +48,11 @@
 struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #endif /* CONFIG_COMMON_RUNTIME */
 
+static struct policy_engine {
+	/* last requested voltage PDO index */
+	int requested_idx;
+} pe[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 int usb_get_battery_soc(void)
 {
 #if defined(CONFIG_CHARGER)
@@ -911,3 +916,34 @@ void pd_print_timestamps(int port)
 	memset(&pd_ts[port], 0, sizeof(pd_ts[port]));
 }
 #endif /* CONFIG_USB_PD_DEBUG_INTERVALS */
+
+/**
+ * This function is called from interrupt context,
+ * It is a special behavior in the current code content.
+ * Currently this function is only called in
+ * raa489000_tcpm_should_enter_bist_mode.
+ */
+test_mockable bool pd_vbus_valid_for_bist(int port)
+{
+	int vbus_mv;
+	int ibus_ma;
+
+	/* Get the current nominal VBUS value */
+	if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
+		const uint32_t *src_pdo;
+		uint32_t unused;
+
+		pd_get_source_pdo(&src_pdo, port);
+		pd_extract_pdo_power(src_pdo[pe[port].requested_idx - 1],
+				     &ibus_ma, &vbus_mv, &unused);
+	} else {
+		vbus_mv = pd_get_requested_voltage(port);
+	}
+
+	/* If VBUS is not at vSafe5V, then don't enter BIST test mode */
+	if (vbus_mv != PD_V_SAFE5V_NOM) {
+		return false;
+	}
+
+	return true;
+}
