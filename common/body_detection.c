@@ -120,7 +120,8 @@ static void body_detect_send_host_event(enum body_detect_states state)
 		 */
 		return;
 	}
-	struct ec_response_motion_sensor_data vector = {
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+		struct ec_response_motion_sensor_data vector = {
 			.flags = MOTIONSENSE_SENSOR_FLAG_BYPASS_FIFO,
 			.activity_data = {
 				.activity = MOTIONSENSE_ACTIVITY_BODY_DETECTION,
@@ -128,9 +129,10 @@ static void body_detect_send_host_event(enum body_detect_states state)
 			},
 			.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
 		};
-	motion_sense_fifo_stage_data(&vector, NULL, 0,
-				     __hw_clock_source_read());
-	motion_sense_fifo_commit_data();
+		motion_sense_fifo_stage_data(&vector, NULL, 0,
+					     __hw_clock_source_read());
+		motion_sense_fifo_commit_data();
+	}
 }
 
 /* Change the motion state and commit the change to AP.
