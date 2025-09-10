@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da22773f_29e89e88",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:39:33Z",
+      "side": 1,
+      "message": "Super-nit, since you\u0027ve already changed this once: I think call sites to this would be easier to think about with a non-inverted name like `charge_manager_has_active_charge_port` and the previous logic, i.e. returning true if it\u0027s not none. Then the callsites would be like `!charge_manager_has_active_charge_port()`. Similarly, compare `zassert_false(has_no_active_charge_port())` to `zassert_true(has_active_charge_port())`.",
+      "parentUuid": "732d5e1e_387d31da",
+      "range": {
+        "startLine": 1545,
+        "startChar": 0,
+        "endLine": 1545,
+        "endChar": 40
+      },
+      "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2adf65fa_56412302",
         "filename": "driver/tcpm/raa489000.c",
         "patchSetId": 11
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "This can be done in a separate CL. This is out of scope of this CL.",
       "parentUuid": "2adf65fa_56412302",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "f46a9fbbb8e96b1249073531db99b1447bf32f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53f353e_7a71a422",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:39:33Z",
+      "side": 1,
+      "message": "@honscheid@google.com I mentioned this to Al OOB, but right now there are a lot of little checks for the no-battery case scattered around the codebase. If possible, I\u0027d like if all of those were consolidated into common code in charge manager. I think a future change like that would be a great time to make test like that to demonstrate that the refactoring didn\u0027t change behavior in an undesired way.",
+      "parentUuid": "3bd38191_baf1c373",
       "range": {
         "startLine": 141,
         "startChar": 0,

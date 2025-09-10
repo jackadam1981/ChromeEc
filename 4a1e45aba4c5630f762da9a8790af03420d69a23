@@ -69,6 +69,29 @@
       "parentUuid": "fdf29d1f_4ad25e77",
       "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afcc79c5_0a6196b1",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-10T16:39:33Z",
+      "side": 1,
+      "message": "Nit: This doesn\u0027t really say anything that can\u0027t be inferred from the return type. Ideally, it would give some clue here about the polarity of the function.",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
