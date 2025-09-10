@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bdd1070_e91f0d86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-10T18:33:00Z",
+      "side": 1,
+      "message": "I think https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6936845 is the right fix here",
+      "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22994094_0320685f",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 2
