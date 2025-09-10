@@ -114,10 +114,12 @@ ZTEST_USER(bodydetectmode, test_setbodydetectionmode_forced)
 
 	/**
 	 * Reset body detect mode. This returns body detect to "on".
+	 * After a delay to analyze sensor data.
 	 */
 	ret = shell_execute_cmd(get_ec_shell(), "bodydetectmode reset");
 	zassert_equal(ret, EC_SUCCESS, "unexpected command return status: %d",
 		      ret);
+	k_sleep(K_SECONDS(1));
 	body_detect_state = body_detect_get_state();
 	zassert_equal(body_detect_state, BODY_DETECTION_ON_BODY,
 		      "unexpected body detect mode: %d", body_detect_state);
