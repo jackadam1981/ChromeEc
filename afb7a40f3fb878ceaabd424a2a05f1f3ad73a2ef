@@ -46,6 +46,30 @@
       },
       "revId": "afb7a40f3fb878ceaabd424a2a05f1f3ad73a2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "727d0f3f_d93e6649",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_xec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-10T17:55:30Z",
+      "side": 1,
+      "message": "Looks like this doesn\u0027t need to be here changed the underlying function in is_int_protected to just invert the pin for the internal flash protect",
+      "parentUuid": "193dafb4_b5543a0b",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 0
+      },
+      "revId": "afb7a40f3fb878ceaabd424a2a05f1f3ad73a2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
