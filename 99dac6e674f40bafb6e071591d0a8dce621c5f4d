@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dd1a7f3_84299975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-10T09:00:55Z",
+      "side": 1,
+      "message": "Is this CL the only change since 16367.0.0? The issue is with the gyroscope, not the BMA4xx accelerometer.",
+      "parentUuid": "77bb164c_6023f0b2",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1c9b4bc_c39e28d1",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 1
