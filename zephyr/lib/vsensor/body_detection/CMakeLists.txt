@@ -7,6 +7,7 @@ include(${ZEPHYR_PIGWEED_MODULE_DIR}/pw_build/pigweed.cmake)
 pw_add_library(vsensor.body_detection STATIC
   SOURCES
     body_detection.c
+    "${PLATFORM_EC}/common/body_detect_common.c"
   PRIVATE_DEPS
     cros_ec_interface
     math.smoothing

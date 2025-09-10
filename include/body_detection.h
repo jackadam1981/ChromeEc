@@ -37,6 +37,9 @@ void body_detect_set_enable(int enable);
 /* get enable state of body detection */
 int body_detect_get_enable(void);
 
+/* Print the current body detection mode */
+void print_body_detect_mode(void);
+
 void body_detect_set_spoof(int enable);
 bool body_detect_get_spoof(void);
 
