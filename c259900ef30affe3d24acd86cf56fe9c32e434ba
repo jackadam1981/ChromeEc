@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c66600e_63e60af2",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-11T18:45:41Z",
+      "side": 1,
+      "message": "I found out that this is not being used anywhere, and it was safe to remove, also it makes more sense to only have `ap_power_force_shutdown` given that it checks for `debug_mode`.",
+      "parentUuid": "35350b2a_db8a4c2c",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c21183e5_b04670a5",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "I like the 3rd option.",
       "parentUuid": "ce7214d1_36cc9403",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6ebe34_69566618",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-11T18:45:41Z",
+      "side": 1,
+      "message": "OK, I will implement this one.",
+      "parentUuid": "c1327252_d6fa2c34",
       "range": {
         "startLine": 127,
         "startChar": 5,
