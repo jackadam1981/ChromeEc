@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf93e9f_5da7af07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-11T03:29:24Z",
+      "side": 1,
+      "message": "Hi Yuval,  \nI local build uldrenite-ish with this CL. Execute the `powerd_dbus_suspend` and check the GPIO04 `soc_acc2_int#`, it got the floating low, around 0.44v ~ 0.5v.",
+      "revId": "7b8cf2ec9dbda648ca1439d938ddc28ddd83de17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
