@@ -23,6 +23,7 @@
 #include "./cbi.dtsi"
 #include "./interrupts.dtsi"
 #include "./led.dtsi"
+#include "./temps.dtsi"
 
 /* board override */
 / {
