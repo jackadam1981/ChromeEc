@@ -142,6 +142,30 @@
       },
       "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab146ad_acd9dc95",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T16:48:45Z",
+      "side": 1,
+      "message": "Keeping as \"unresolved\" so we can see this comment.",
+      "parentUuid": "4a1d4bd4_b70d250d",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "64fd7569ec657c049b80b6c8fe38ae10e6012a0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
