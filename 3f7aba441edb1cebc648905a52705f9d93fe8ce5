@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a14b8a_bc521b0e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-11T17:07:57Z",
+      "side": 1,
+      "message": "I guess the comment belong at the lower #ifdef, moved.",
+      "parentUuid": "1d04757a_2d039a19",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5393c626_d88f5b95",
@@ -67,6 +85,24 @@
       "writtenOn": "2025-09-03T18:32:35Z",
       "side": 1,
       "message": "move this code line 282, to simplify the #ifdef test statement.",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90fb2796_61ba2b23",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-11T17:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5393c626_d88f5b95",
       "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +226,24 @@
       "side": 1,
       "message": "see comment line 197.",
       "parentUuid": "78b471d0_ef7d7496",
+      "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d170110_89536363",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-11T17:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e465f13_560a52f3",
       "revId": "3f7aba441edb1cebc648905a52705f9d93fe8ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
