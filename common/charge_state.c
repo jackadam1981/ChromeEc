@@ -1755,9 +1755,39 @@ uint32_t charge_get_led_flags(void)
 	return flags;
 }
 
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+test_export_static bool charge_is_adapter_sufficient(int chgnum)
+{
+	uint32_t min_voltage;
+	int voltage;
+
+	/* Handle error */
+	if (charger_get_minimum_charging_mv(chgnum, &min_voltage) ==
+	    EC_ERROR_INVAL) {
+		return false;
+	}
+
+	if (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
+		return false;
+	}
+
+	voltage = charge_manager_get_charger_voltage();
+	CPRINTS("min_voltage=%d mv, voltage=%d mv", min_voltage, voltage);
+
+	return (voltage > 0 && voltage >= min_voltage);
+}
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
+
 enum led_pwr_state led_pwr_get_state(void)
 {
 	uint32_t chflags = charge_get_led_flags();
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+	int chgnum = 0;
+
+	if (IS_ENABLED(CONFIG_OCPC)) {
+		chgnum = charge_get_active_chg_chip();
+	}
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 
 	switch (curr.state) {
 	case ST_IDLE:
@@ -1779,12 +1809,19 @@ enum led_pwr_state led_pwr_get_state(void)
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
-		    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE)
+		    charge_manager_get_active_charge_port() ==
+			    CHARGE_PORT_NONE) {
 			return LED_PWRS_DISCHARGE;
-		else if (battery_near_full())
+		} else if (battery_near_full()) {
 			return LED_PWRS_CHARGE_NEAR_FULL;
-		else
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+		} else if (!charge_is_adapter_sufficient(chgnum)) {
+			return LED_PWRS_INSUFFICIENT_ADAPTER;
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
+		} else {
 			return LED_PWRS_CHARGE;
+		}
+
 	case ST_PRECHARGE:
 		/* we're in battery discovery mode */
 		if (chflags & CHARGE_LED_FLAG_FORCE_IDLE)
@@ -2108,29 +2145,6 @@ static int charge_get_charge_state_debug(int param, uint32_t *value)
 
 	return EC_SUCCESS;
 }
-
-#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
-test_export_static bool charge_is_adapter_sufficient(int chgnum)
-{
-	uint32_t min_voltage;
-	int voltage;
-
-	/* Handle error */
-	if (charger_get_minimum_charging_mv(chgnum, &min_voltage) ==
-	    EC_ERROR_INVAL) {
-		return false;
-	}
-
-	if (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
-		return false;
-	}
-
-	voltage = charge_manager_get_charger_voltage();
-	CPRINTS("min_voltage=%d mv, voltage=%d mv", min_voltage, voltage);
-
-	return (voltage > 0 && voltage >= min_voltage);
-}
-#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 
 static enum ec_status
 charge_command_charge_state(struct host_cmd_handler_args *args)
