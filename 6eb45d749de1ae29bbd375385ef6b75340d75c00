@@ -94,6 +94,30 @@
       },
       "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82960976_cfb41ddc",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T16:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387fde47_85401bd5",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 78
+      },
+      "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
