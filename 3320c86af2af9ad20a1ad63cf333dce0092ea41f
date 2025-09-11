@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3434bd8e_24fb5332",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-11T20:01:54Z",
+      "side": 1,
+      "message": "If cl/6933916 is at the bottom of the CL stack, we can merge this CL with the one that remove sensors from the EC (cl/6862787).",
+      "revId": "3320c86af2af9ad20a1ad63cf333dce0092ea41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
