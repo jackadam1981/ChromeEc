@@ -288,41 +288,53 @@ void system_clear_reset_flags(uint32_t flags)
 	reset_flags &= ~flags;
 }
 
-static void print_reset_flags(uint32_t flags)
+void stringify_reset_flags(uint32_t flags, char *output_buf, int buf_len)
 {
 	int count = 0;
 	int i;
+	int offset = 0;
 	static const char *const reset_flag_descs[] = {
 #include "reset_flag_desc.inc"
 	};
 
 	if (!flags) {
-		CPUTS("unknown");
+		snprintf(&output_buf[offset], buf_len - offset, "unknown");
 		return;
 	}
 
 	for (i = 0; i < ARRAY_SIZE(reset_flag_descs); i++) {
 		if (flags & BIT(i)) {
-			if (count++)
-				CPUTS(" ");
+			if (count++) {
+				offset += snprintf(&output_buf[offset],
+						   buf_len - offset, " ");
+			}
 
-			CPRINTF("%s", reset_flag_descs[i]);
+			offset += snprintf(&output_buf[offset],
+					   buf_len - offset, "%s",
+					   reset_flag_descs[i]);
 		}
 	}
 
 	if (flags >= BIT(i)) {
-		if (count)
-			CPUTS(" ");
+		if (count) {
+			offset += snprintf(&output_buf[offset],
+					   buf_len - offset, " ");
+		}
 
-		CPUTS("no-desc");
+		offset += snprintf(&output_buf[offset], buf_len - offset,
+				   "no-desc");
 	}
 }
 
 void system_print_reset_flags(void)
 {
-	print_reset_flags(reset_flags);
+	char reset_flags_string[MAX_RESET_FLAG_STRLEN];
+	stringify_reset_flags(reset_flags, reset_flags_string,
+			      MAX_RESET_FLAG_STRLEN);
+	CPUTS(reset_flags_string);
 }
 
+#ifndef CONFIG_ZEPHYR
 void system_print_banner(void)
 {
 	/* be less verbose if we boot for USB resume to meet spec timings */
@@ -339,6 +351,7 @@ void system_print_banner(void)
 		CPUTS("]\n");
 	}
 }
+#endif
 
 #if defined(CONFIG_RAM_SIZE) && \
 	(defined(CONFIG_COMMON_PANIC_OUTPUT) || defined(BOARD_HOST))

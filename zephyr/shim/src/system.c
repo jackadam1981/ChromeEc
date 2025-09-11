@@ -7,6 +7,7 @@
 #include "common.h"
 #include "console.h"
 #include "cros_version.h"
+#include "printf.h"
 #include "system.h"
 #include "watchdog.h"
 
@@ -77,6 +78,34 @@ int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)
 	rc = bbram_read(bbram_dev, offset, size, value);
 
 	return rc ? EC_ERROR_INVAL : EC_SUCCESS;
+}
+
+void system_print_banner(void)
+{
+	uint32_t flags = system_get_reset_flags();
+
+	/* be less verbose if we boot for USB resume to meet spec timings */
+	if (!(flags & EC_RESET_FLAG_USB_RESUME)) {
+		char temp_str[MAX_RESET_FLAG_STRLEN];
+
+		/* Use LOG_PRINTK so the banner message is sent as is without
+		 * extra formatting at the beginning.  This also ensures the
+		 * banner cannot be disabled by changing the logging level.
+		 */
+		LOG_PRINTK("\n");
+		if (system_jumped_to_this_image()) {
+			snprintf_timestamp_now(temp_str, sizeof(temp_str));
+			LOG_PRINTK("[%s UART initialized after sysjump]\n",
+				   temp_str);
+		} else {
+			LOG_PRINTK("\n--- UART initialized after reboot ---\n");
+		}
+		LOG_PRINTK("[Image: %s, %s]\n", system_get_image_copy_string(),
+			   system_get_build_info());
+
+		stringify_reset_flags(flags, temp_str, MAX_RESET_FLAG_STRLEN);
+		LOG_PRINTK("[Reset cause: %s]\n", temp_str);
+	}
 }
 
 void chip_save_reset_flags(uint32_t flags)
