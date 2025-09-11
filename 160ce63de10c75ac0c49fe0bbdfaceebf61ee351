@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a85d7c_391fc8a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-09-11T06:22:32Z",
+      "side": 1,
+      "message": "This change doesn\u0027t cause any regression.",
+      "parentUuid": "22714d00_6356d4f3",
+      "revId": "160ce63de10c75ac0c49fe0bbdfaceebf61ee351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0201aaf_f037265b",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-10T16:10:33Z",
       "side": 1,
       "message": "Can you comment the allowed range here?",
+      "revId": "160ce63de10c75ac0c49fe0bbdfaceebf61ee351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c53dc2_083c2a62",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-09-11T06:22:32Z",
+      "side": 1,
+      "message": "Yes I have added range in comment.",
+      "parentUuid": "f0201aaf_f037265b",
       "revId": "160ce63de10c75ac0c49fe0bbdfaceebf61ee351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
