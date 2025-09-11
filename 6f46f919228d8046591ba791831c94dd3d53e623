@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "063ece02_d45a11d0",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T16:31:44Z",
+      "side": 1,
+      "message": "Does it work if you write like this:\n\n\n```suggestion\nstatic int shi_init(void)\n{\n\tstatic struct ap_power_ev_callback cb;\n#ifdef CONFIG_EC_HOST_CMD\n\tconst struct device *cros_shi_dev \u003d DEVICE_DT_GET(SHI_NODE);\n#endif\n\n\tap_power_ev_init_callback(\u0026cb, shi_power_change,\n#if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK\n\t\t\t\t  AP_POWER_RESUME_INIT |\n\t\t\t\t\t  AP_POWER_SUSPEND_COMPLETE\n#else\n\t\t\t\t  AP_POWER_RESUME | AP_POWER_SUSPEND\n#endif\n\t);\n\tap_power_ev_add_callback(\u0026cb);\n\n#ifdef CONFIG_EC_HOST_CMD\n\tpm_device_runtime_enable(cros_shi_dev);\n#endif\n\n\tif (IS_ENABLED(CONFIG_CROS_SHI_NPCX_DEBUG) ||\n\t    (system_jumped_late() \u0026\u0026 chipset_in_state(CHIPSET_STATE_ON))) {\n\t\tshi_enable();\n\t}\n\n\n\treturn 0;\n}\n\n#ifdef CONFIG_NPCX_SHI_SHIM_INIT_WITH_SYS_INIT\nSYS_INIT(shi_init, POST_KERNEL, CONFIG_NPCX_SHI_SHIM_INIT_WITH_SYS_INIT_PRIO);\n#else\nstatic void shi_init_no_return_val(void)\n{\n  shi_init();\n}\n/* Call hook after chipset sets initial power state */\nDECLARE_HOOK(HOOK_INIT, shi_init_no_return_val, HOOK_PRIO_POST_CHIPSET);\n#endif\n\n\n```",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 1
+      },
+      "revId": "6f46f919228d8046591ba791831c94dd3d53e623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
