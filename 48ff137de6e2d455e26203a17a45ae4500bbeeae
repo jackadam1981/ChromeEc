@@ -16,6 +16,24 @@
       "message": "The source max current would be updated to 3.0A by EC. Does 3.0A cause any failure ?",
       "revId": "48ff137de6e2d455e26203a17a45ae4500bbeeae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb29743c_f3618e67",
+        "filename": "zephyr/program/trulo/pujjocento/pujjocento_vif.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-09-11T08:47:53Z",
+      "side": 1,
+      "message": "yes, please check the issue 422114165#comment17 point 2. thanks.",
+      "parentUuid": "be6a404b_6a362521",
+      "revId": "48ff137de6e2d455e26203a17a45ae4500bbeeae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
