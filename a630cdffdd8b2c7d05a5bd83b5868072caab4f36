@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ba1b10_9f2b4d1c",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-11T20:13:18Z",
+      "side": 1,
+      "message": "Nit, line length\n\n\n```suggestion\n\t\tint-gpios \u003d \u003c\u0026gpioh 6 (GPIO_ACTIVE_LOW |\n\t\t                       GPIO_VOLTAGE_1P8 |\n\t\t                       GPIO_OPEN_DRAIN)\u003e;\n```",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 80
+      },
+      "revId": "a630cdffdd8b2c7d05a5bd83b5868072caab4f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db4e50f_930710fc",
+        "filename": "zephyr/program/ocelot/ocelotrvp-mchp/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-11T20:13:18Z",
+      "side": 1,
+      "message": "Home home DSP comms aren\u0027t used on the mchp variant?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "a630cdffdd8b2c7d05a5bd83b5868072caab4f36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
