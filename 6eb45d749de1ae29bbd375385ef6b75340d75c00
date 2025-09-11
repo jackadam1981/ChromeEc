@@ -70,6 +70,30 @@
       },
       "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387fde47_85401bd5",
+        "filename": "zephyr/shim/chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-11T00:39:24Z",
+      "side": 1,
+      "message": "We don\u0027t have any unit tests for the chip specific code. We would have to flash this on actual devices to verify it.\nThis is a small amount of tech debt to provide the config option, so I think it\u0027s safest to submit this CL as is.",
+      "parentUuid": "c4fee9af_f0bb22f1",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 78
+      },
+      "revId": "6eb45d749de1ae29bbd375385ef6b75340d75c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
