@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0620d801_25b8f79a",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-11T00:36:59Z",
+      "side": 0,
+      "message": "This was a duplicate definition of the one in `pdc_rts54xx.h` except CMD_DONE was renamed CMD_COMPLETE. Remove this and use the driver header\u0027s definition.",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 16
+      },
+      "revId": "f1227657466a52ffde6f3e86e80146d8c8f51068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
