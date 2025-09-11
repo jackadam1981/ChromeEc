@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2cb56e_65a7d866",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-11T17:09:51Z",
+      "side": 1,
+      "message": "Is CONFIG_GESTURE_HOST_DETECTION define on the EC side? It should not be.\nCONFIG_ACCEL_FIFO is somewhat implied for CONFIG_GESTURE_HOST_DETECTION to work.",
+      "revId": "8096310c9039ad7c3a0e1e84c5742a5f9dcd2963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae990967_d0919f5f",
+        "filename": "common/body_detection.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-11T17:09:51Z",
+      "side": 1,
+      "message": "could we use the logic above: if remote, we are on the EC, if not, we are on the ISH and we have to submit the message. \n```suggestion\n\telse {\n```\n\nEven better, we could use do \n```\n   if (!body_detect_is_remote()) { ... /* send message */ }\n```",
+      "revId": "8096310c9039ad7c3a0e1e84c5742a5f9dcd2963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
