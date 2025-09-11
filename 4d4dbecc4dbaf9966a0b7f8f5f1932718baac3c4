@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca6337b_fc11ad9d",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T16:35:33Z",
+      "side": 1,
+      "message": "It\u0027s both an input and output parameter. On input, it\u0027s the space allocated for params and on output, it\u0027s the number of elements actually written. (Same for description below.)",
+      "range": {
+        "startLine": 315,
+        "startChar": 3,
+        "endLine": 316,
+        "endChar": 46
+      },
+      "revId": "4d4dbecc4dbaf9966a0b7f8f5f1932718baac3c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
