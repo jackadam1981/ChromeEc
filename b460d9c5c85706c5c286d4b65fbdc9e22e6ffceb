@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10753f13_0938c320",
+        "filename": "zephyr/program/trulo/uldrenite/src/sensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-11T21:03:50Z",
+      "side": 1,
+      "message": "Does this disable the interrupt on the EC or on the ISH?  This file is shared by both.\n\nYuvall and Gwendal - doesn\u0027t motionsense have settings to indicated which power state sensors are valid?  Can that mechanism be used to disable ther interrupt instead of board specific code?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "b460d9c5c85706c5c286d4b65fbdc9e22e6ffceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
