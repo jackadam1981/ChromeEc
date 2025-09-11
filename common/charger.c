@@ -484,7 +484,8 @@ enum ec_error_list charger_get_voltage(int chgnum, int *voltage)
 	return chg_chips[chgnum].drv->get_voltage(chgnum, voltage);
 }
 
-enum ec_error_list charger_get_min_required_voltage(int chgnum, int *voltage)
+test_mockable enum ec_error_list charger_get_min_required_voltage(int chgnum,
+								  int *voltage)
 {
 	if (chgnum < 0)
 		return EC_ERROR_INVAL;
