@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2092f0_46099ddf",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T21:25:06Z",
+      "side": 1,
+      "message": "Let\u0027s also check `image_frame_params` for NULL here. Then we can skip the `if (image_frame_params !\u003d NULL \u0026\u0026 capacity \u003e 0)` check below because `capacity`/`num_params` is unsigned, right?",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "fb3356ece0b1530ece399eec7df58389adf3215e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

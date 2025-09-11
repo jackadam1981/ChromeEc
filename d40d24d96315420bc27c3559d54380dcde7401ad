@@ -94,6 +94,30 @@
       },
       "revId": "d40d24d96315420bc27c3559d54380dcde7401ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad842c37_db2e2dbd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T21:25:06Z",
+      "side": 1,
+      "message": "Yes, this is along the lines of what I was looking for.",
+      "parentUuid": "cae46ae7_9192c648",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 68
+      },
+      "revId": "d40d24d96315420bc27c3559d54380dcde7401ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
