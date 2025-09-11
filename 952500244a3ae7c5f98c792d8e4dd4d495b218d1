@@ -46,6 +46,30 @@
       },
       "revId": "952500244a3ae7c5f98c792d8e4dd4d495b218d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd8b6d0_71d56f44",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T16:59:06Z",
+      "side": 1,
+      "message": "The `BUILD_ASSERT` is not sufficient. You need to look at this code as someone without any knowledge of the rest of the code does. i.e., look at this function in complete isolation without making any assumptions about any of the inputs.",
+      "parentUuid": "91326984_fb9059cc",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 68
+      },
+      "revId": "952500244a3ae7c5f98c792d8e4dd4d495b218d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
