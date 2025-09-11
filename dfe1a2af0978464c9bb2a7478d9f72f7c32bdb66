@@ -93,6 +93,30 @@
       },
       "revId": "dfe1a2af0978464c9bb2a7478d9f72f7c32bdb66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d85acc35_34e6f84e",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-11T00:08:15Z",
+      "side": 1,
+      "message": "ok, I figured it out. The `args.response_max` needs to be the size allocated to `test_info_buffer`. If it is smaller or larger, the heap leak will fail.",
+      "parentUuid": "577cbfeb_ac832788",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "dfe1a2af0978464c9bb2a7478d9f72f7c32bdb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
