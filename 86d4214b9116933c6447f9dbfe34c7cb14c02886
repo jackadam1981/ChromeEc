@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33d7238_65b90247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-09-11T02:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd6d2b8f_a5df3d7d",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "86d4214b9116933c6447f9dbfe34c7cb14c02886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135161ca_b69dacb2",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0985439d_122913a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-09-11T02:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "135161ca_b69dacb2",
+      "revId": "86d4214b9116933c6447f9dbfe34c7cb14c02886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c26224b_7f5a1ce8",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-09-10T16:48:04Z",
       "side": 1,
       "message": "```suggestion\n\t * for the host command 0x011d. See b/427468960#110 for details.\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 37,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "86d4214b9116933c6447f9dbfe34c7cb14c02886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9a9c75_6c22b9e6",
+        "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-09-11T02:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c26224b_7f5a1ce8",
       "range": {
         "startLine": 72,
         "startChar": 37,
