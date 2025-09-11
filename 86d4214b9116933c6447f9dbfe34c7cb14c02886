@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "135161ca_b69dacb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-11T01:10:18Z",
+      "side": 1,
+      "message": " can you run `cros format zephyr/program/fpmcu/helipilot/src/power.c` on this file and re-upload. It seems the CQ is failing the `ros format` check.",
+      "revId": "86d4214b9116933c6447f9dbfe34c7cb14c02886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c26224b_7f5a1ce8",
         "filename": "zephyr/program/fpmcu/helipilot/src/power.c",
         "patchSetId": 3
