@@ -52,6 +52,24 @@
       "parentUuid": "93be6900_6b2f7b5f",
       "revId": "1c1142d9b4ff7f27591cb12af214edd70f2f1dc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1809cd2e_f4bd4e92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-11T14:25:09Z",
+      "side": 1,
+      "message": "Fixed in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6933916 and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6933917",
+      "parentUuid": "b290910b_5a2a86d0",
+      "revId": "1c1142d9b4ff7f27591cb12af214edd70f2f1dc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
