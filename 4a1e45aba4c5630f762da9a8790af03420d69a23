@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95b2421_10ffe351",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-11T16:49:00Z",
+      "side": 1,
+      "message": "As discussed offline, added some comments to provide warning when using these APIs.",
+      "parentUuid": "d1e9bcb5_44a0e168",
+      "revId": "4a1e45aba4c5630f762da9a8790af03420d69a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afcc79c5_0a6196b1",
