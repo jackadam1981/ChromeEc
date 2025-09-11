@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028cc559_b8aa5a52",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-11T16:38:46Z",
+      "side": 1,
+      "message": "For this to be safe, you need to do the copy before modifying `*num_params` or check that `sesnor_info-\u003enum_capture_types` is less than or equal to `*num_params`.",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 68
+      },
+      "revId": "952500244a3ae7c5f98c792d8e4dd4d495b218d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
