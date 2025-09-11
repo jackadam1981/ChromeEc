@@ -22,6 +22,30 @@
       },
       "revId": "d40d24d96315420bc27c3559d54380dcde7401ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861d1c8e_23d8df9e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-11T17:30:16Z",
+      "side": 1,
+      "message": "I am currently passing `NUM_IMAGE_CAPTURE_TYPES` as the default value for `num_params`. `NUM_IMAGE_CAPTURE_TYPES` is the value that is ready for the device tree for the number of available configurations. It is not the maximum space available. It is the simply the number of configurations from the device tree. So technically speaking `cfg-\u003esensor_image_configs` should be exactly `num_params` and we should not reassign it. I can pass it to Duckie, but I just want to make sure we are aligned on what is the default value for `num_params` and `NUM_IMAGE_CAPTURE_TYPES`",
+      "parentUuid": "6130ca28_daf51981",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 68
+      },
+      "revId": "d40d24d96315420bc27c3559d54380dcde7401ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
