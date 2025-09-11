@@ -2295,9 +2295,12 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	max_mv = PDO_FIXED_VOLTAGE(pdo);
 	max_mw = max_ma * max_mv / 1000;
 
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
 	LOG_INF("C%d: Available charging (%sconstrained)",
 		config->connector_num,
-		(pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
+		(vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
 	LOG_INF("  PDO: %08x", pdo);
 	LOG_INF("  V: %d", max_mv);
 	LOG_INF("  C: %d", max_ma);
@@ -2312,9 +2315,6 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	pd_set_input_current_limit(config->connector_num, max_ma, max_mv);
 	charge_manager_set_ceil(config->connector_num, CEIL_REQUESTOR_PD,
 				max_ma);
-
-	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
-	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
 
 	if (((PDO_GET_TYPE(pdo) == PDO_TYPE_FIXED) &&
 	     (!(vsafe_5v_pdo & PDO_FIXED_GET_DRP) ||
