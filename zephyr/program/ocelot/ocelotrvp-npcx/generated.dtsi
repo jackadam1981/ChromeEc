@@ -42,6 +42,9 @@
 		gpio_adp_det: std_adp_prsnt: adp_det {
 			gpios = <&gpio6 2 (GPIO_INPUT)>;
 		};
+		gpio_adp_cntrl: std_adp_cntrl: adp_cntrl {
+			gpios = <&gpio6 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
 		/* Power sequencing signal needed by fan driver */
 		gpio_all_sys_pwrgd: all_sys_pwrgd {
 			gpios = <&gpio6 3 (GPIO_INPUT)>;
