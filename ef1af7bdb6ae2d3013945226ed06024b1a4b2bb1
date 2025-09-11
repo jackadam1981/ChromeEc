@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "37f435e3_466284c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-11T12:36:14Z",
+      "side": 1,
+      "message": "Done, We validated with Servo v4 connected on port 1 using the new 25 ms debounce. The connection remained stable for over 15 minutes with no detach/reattach events observed. Multiple manual detach/reattach cycles were also tested, and the EC logs resumed correctly each time.",
+      "parentUuid": "0874306c_303ab827",
+      "revId": "ef1af7bdb6ae2d3013945226ed06024b1a4b2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "de5ba35d_85dcaaef",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2025-09-10T16:25:24Z",
       "side": 1,
       "message": "25 ms is the default value. You can just delete this line for the same effect.",
+      "revId": "ef1af7bdb6ae2d3013945226ed06024b1a4b2bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93173608_932689b4",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-11T12:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "658e92c3_cdb2d859",
       "revId": "ef1af7bdb6ae2d3013945226ed06024b1a4b2bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
