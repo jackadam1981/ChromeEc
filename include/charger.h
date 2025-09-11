@@ -304,7 +304,12 @@ enum ec_error_list charger_get_vbus_voltage(int port, int *voltage);
 /* Get the Vsys voltage (mV) from the charger */
 enum ec_error_list charger_get_vsys_voltage(int port, int *voltage);
 
-/* Get the minimum required voltage (mv) to charge battery */
+/* Get the minimum required voltage (mv) to charge battery.
+ * Returns EC_ERROR_INVAL upon invalid arguments
+ * Returns EC_ERROR_UNIMPLEMENTED if charger IC does not require a min voltage,
+ * 				  mv is set to 0.
+ * Returns EC_SUCCESS upon success, with mv populated.
+ */
 enum ec_error_list charger_get_minimum_charging_mv(int chgnum, uint32_t *mv);
 
 /* Custom board function to discharge battery when on AC power */
