@@ -214,6 +214,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369422b8_995a9c3f",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-09-12T10:12:43Z",
+      "side": 1,
+      "message": "For me it was clear that the pin is set by the reset sensor function. In the last comment, I just stressed out that emulator can not configure the pin.\n\nBut the original question was different - why the SPI transaction is issued (by the FPS diver) when state of the reset pin is 1 (active logically)? Does `gpio_emul_output_get` function return physical state of the pin, not logical?",
+      "parentUuid": "1b8303a6_3e975a14",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
