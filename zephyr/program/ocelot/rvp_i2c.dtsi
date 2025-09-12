@@ -19,6 +19,7 @@
 			i2c-port = <&i2c_port_charger>;
 			enum-names = "I2C_PORT_BATTERY",
 				"I2C_PORT_CHARGER",
+				"I2C_PORT_IMVP",
 				"I2C_PORT_PORT80";
 		};
 		i2c_named_i2c_port_ish: named_i2c_port_ish {
@@ -47,6 +48,11 @@
 		compatible = "intersil,isl9241";
 		status = "okay";
 		reg = <0x9>;
+	};
+	pmic_rt3645: pmic_rt3645@20 {
+		compatible = "richtek,rt3645";
+		reg = <0x20>;
+		label = "I2C_ADDR_IMVP";
 	};
 	pca95xx_0: pca95xx@22 {
 		compatible = "nxp,pca95xx";
