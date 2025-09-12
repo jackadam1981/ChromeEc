@@ -39,6 +39,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f4373d_a139a946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-12T21:54:03Z",
+      "side": 1,
+      "message": "Al - can you update the PDC state machine diagram to match this change?  We should also figure out if we can use a command line tool such as graphviz to generate these diagrams instead of rendering a PNG.",
+      "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
