@@ -130,7 +130,7 @@
 
 /* EC Modules */
 #define CONFIG_ADC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_HOST_INTERFACE_ESPI
 #define CONFIG_HOSTCMD_EVENTS
 #define CONFIG_I2C

@@ -143,7 +143,7 @@
 #define CONFIG_GMR_TABLET_MODE
 
 /* Verified boot */
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_SHA256_UNROLLED
 #define CONFIG_VBOOT_HASH
 

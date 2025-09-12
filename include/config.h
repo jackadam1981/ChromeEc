@@ -2025,7 +2025,7 @@
 #undef CONFIG_EC_EC_COMM_BATTERY
 
 /* Include CRC-8 utility function */
-#undef CONFIG_CRC8
+#undef CONFIG_CRC8_CROS
 
 /*****************************************************************************/
 /*
@@ -7277,7 +7277,7 @@
 #endif
 
 #ifdef CONFIG_SMBUS_PEC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #endif
 
 /*

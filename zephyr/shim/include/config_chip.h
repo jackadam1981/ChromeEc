@@ -92,8 +92,8 @@ extern "C" {
  * This not used by the Zephyr code since we always make cros_crc8() available.
  * Define it here to reduce the delta from the ECOS CONFIG.
  */
-#undef CONFIG_CRC8
-#define CONFIG_CRC8
+#undef CONFIG_CRC8_CROS
+#define CONFIG_CRC8_CROS
 
 /*
  * This is not used by the Zephyr code.

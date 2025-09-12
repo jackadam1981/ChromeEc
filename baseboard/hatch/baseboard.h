@@ -34,7 +34,7 @@
 /* EC Defines */
 #define CONFIG_ADC
 #define CONFIG_BOARD_VERSION_CBI
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_CBI_EEPROM
 #define CONFIG_DPTF
 #define CONFIG_HIBERNATE_PSL

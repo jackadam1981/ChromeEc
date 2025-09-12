@@ -215,7 +215,7 @@ enum sensor_id {
 #endif
 
 #ifdef TEST_CRC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_SW_CRC
 #endif
 
