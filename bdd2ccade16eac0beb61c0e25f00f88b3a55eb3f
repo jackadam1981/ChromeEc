@@ -16,6 +16,24 @@
       "message": "you can wrap this function with the tags `// LCOV_EXCL_START` and `// LCOV_EXCL_STOP` to prevent the coverage tool from counting it.",
       "revId": "bdd2ccade16eac0beb61c0e25f00f88b3a55eb3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "becdbb47_dc8006eb",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2025-09-12T02:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb801d56_89ba2026",
+      "revId": "bdd2ccade16eac0beb61c0e25f00f88b3a55eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
