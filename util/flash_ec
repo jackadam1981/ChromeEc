@@ -58,6 +58,10 @@ BOARDS_IT83XX_SPI_PROGRAMMING=(
 	it8xxx2_evb
 )
 
+BOARDS_IT83XX_UART_PROGRAMMING=(
+	ocelotrvp_ite
+)
+
 BOARDS_STM32=(
 	bloonchipper
 	chell_pd
@@ -99,6 +103,7 @@ BOARDS_NPCX_INT_SPI=(
 
 BOARDS_NPCX_INT_SPI_UUT=(
 	ptlrvp_npcx
+	ocelotrvp_npcx
 )
 
 BOARDS_SPI_1800MV=(
@@ -127,6 +132,7 @@ BOARDS_RAIDEN=(
 BOARDS_MCHP_INT_UART=(
 	mtlrvpp_mchp
 	ptlrvp_mchp
+	ocelotrvp_mchp
 )
 
 DEFAULT_PORT="${SERVOD_PORT:-9999}"
@@ -351,6 +357,10 @@ fi
 
 if in_array "${BOARDS_IT83XX_SPI_PROGRAMMING[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("ite_spi")
+fi
+
+if in_array "${BOARDS_IT83XX_UART_PROGRAMMING[@]}" "${BOARD}"; then
+	SUPPORTED_CHIPS+=("ite_uart")
 fi
 
 if in_array "${BOARDS_MCHP_INT_UART[@]}" "${BOARD}"; then
