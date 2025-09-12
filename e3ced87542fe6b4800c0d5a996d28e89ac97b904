@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9f0e10_d80bd4ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-12T21:19:51Z",
+      "side": 1,
+      "message": "matsu is a separate design and not directly related to the WCL RVP, right?\nit may be OK to start by cloning one of the WCL RVP configs as long as the\nnext patch renames files and adjusts content so matsu really is independent\nof the RVP.\n\nso, either add a patch right after this to do all the adjustments or squash\nthem together and change the commit message to \"based on ocelotrvp-ite\"\ninstead of \"copying...\".",
+      "revId": "e3ced87542fe6b4800c0d5a996d28e89ac97b904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
