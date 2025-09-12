@@ -10,7 +10,7 @@
 /* matsu project DTS includes */
 
 #include "binman.dtsi"
-#include "generated.dtsi"
+#include "gpios.dtsi"
 #include "power_signals.dtsi"
 
 /*
@@ -27,17 +27,11 @@ i2c_port_ish: &i2c5 {};
  */
 
 gpio_acok: &gpio_acok_od {};
-gpio_dc_jack_present: &gpio_std_adp_prsnt_r {};
 gpio_lid: &gpio_lid_open {};
 gpio_pwrbtn: &gpio_gsc_ec_pwr_btn_odl {};
-gpio_voldn: &gpio_ec_voldn_btn_odl {};
-gpio_volup: &gpio_ec_volup_btn_odl {};
 gpio_fan_control: &gpio_en_pp5000_fan {};
 gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd_r {};
 gpio_temp_sensor_power_good: &gpio_en_s5_rails {};
-
-/* Power sequencing */
-gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
 
 /* Map tachometers to common names */
 tach_fan0: &tach0 {};
@@ -47,6 +41,7 @@ tach_fan0: &tach0 {};
 #include "console.dtsi"
 #include "fan.dtsi"
 #include "i2c.dtsi"
+#include "interrupts.dtsi"
 #include "keyboard.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
@@ -55,22 +50,9 @@ tach_fan0: &tach0 {};
 #include "usb_typec.dtsi"
 
 #include "../ite_hibernate.dtsi"
-#include "../rvp_interrupts.dtsi"
 #include "../rvp_temp_sensors.dtsi"
 
 /* matsu overrides follow... */
-/ {
-	aliases {
-		gpio-wp = &gpio_c_ec_wp_odl_r;
-	};
-
-	named-gpios {
-		/* unimplemented GPIOs */
-		entering-rw {
-			enum-name = "GPIO_ENTERING_RW";
-		};
-	};
-};
 
 &espi0 {
 	status = "okay";
