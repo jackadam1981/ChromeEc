@@ -22,6 +22,30 @@
       },
       "revId": "abcd49770a1cbd980d02012f8a8335b70f89d43c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adbc1135_e61c9a37",
+        "filename": "zephyr/shim/include/zephyr_write_protect.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-12T15:39:03Z",
+      "side": 1,
+      "message": "I need to do some more testing on this after finding out that with microchip the wp gpio is not toggling the logic in this patch might need to be changed to keep this function the same as before and just set the internal gpio to the opposite of this pin",
+      "parentUuid": "ee923a20_35ba764d",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "abcd49770a1cbd980d02012f8a8335b70f89d43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
