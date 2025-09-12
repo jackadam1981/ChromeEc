@@ -33,6 +33,24 @@
       "message": "Please add a todo to re-enable after bug is resolved.",
       "revId": "c8c97443547a39602b8d0baa74865001077e52d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38968cc1_7f457063",
+        "filename": "zephyr/program/trulo/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1562212
+      },
+      "writtenOn": "2025-09-12T02:36:53Z",
+      "side": 1,
+      "message": "Is this default enabled in trulo? It seems disabled in nissa http://cs/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/zephyr/program/nissa/program.conf?l\u003d145.",
+      "parentUuid": "95ba95fb_3aef61e2",
+      "revId": "c8c97443547a39602b8d0baa74865001077e52d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
