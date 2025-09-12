@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ab4e15_4d128360",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-12T21:32:48Z",
+      "side": 1,
+      "message": "needed?",
+      "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5da9419_a0db9cb1",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-12T21:32:48Z",
+      "side": 1,
+      "message": "It is only needed to include body_detect_change_state() in the EC code. The rest of file is not used anymore?",
+      "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8dd5fa1_efde7cc1",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-12T21:32:48Z",
+      "side": 1,
+      "message": "why is this needed when the sensors definition are gone?",
+      "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
