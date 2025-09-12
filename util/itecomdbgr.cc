@@ -638,6 +638,9 @@ static int erase_flash(struct itecomdbgr_config *conf)
 		W_CMD_PORT, DBUS_DATA, W_DATA_PORT, 0x00,
 	};
 
+	if ((end_addr - start_addr) % conf->sector_size)
+		total_sectors++;
+
 	write_com(conf, enable_follow_mode, sizeof(enable_follow_mode));
 	while (start_addr < end_addr) {
 		if (spi_sr1_wel(conf) != SUCCESS) {
@@ -801,6 +804,9 @@ static int program_page(struct itecomdbgr_config *conf,
 		W_CMD_PORT, DBUS_256W_DATA, W_BURST_DATA_PORT, 0xFF
 	};
 	int i;
+
+	/* set transfer length if it not 256 bytes */
+	pp_buf[19] = wr_count - 1;
 
 	/*
 	 * We know the page has been erased to 0xff.
