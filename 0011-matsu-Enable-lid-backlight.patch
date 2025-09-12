@@ -1,0 +1,50 @@
+From c06cdaf36307debef82d39410f475b70b73561d3 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:12:43 +0800
+Subject: [PATCH 11/19] matsu: Enable lid backlight
+
+Enable lid backlight
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: I349111592505c65d4cc15549c2b941705d9b4b21
+---
+ zephyr/program/ocelot/matsu/generated.dtsi | 6 +++---
+ zephyr/program/ocelot/matsu/project.conf   | 3 +++
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index 5148e863eb..ff5e6861fb 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -68,9 +68,9 @@
+ 		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
+ 			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+ 		};
+-		gpio_c_edp_bklt_en_r: c_edp_bklt_en_r {
+-			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
+-						GPIO_OUTPUT_INIT_LOGICAL)>;
++		gpio_ec_en_edp_bl: ec_en_edp_bl {
++			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
++			enum-name = "GPIO_ENABLE_BACKLIGHT";
+ 		};
+ 		gpio_c_ioex_kbd_intr_r: c_ioex_kbd_intr_r {
+ 			gpios = <&gpioi 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index 76af2e1434..772f2086a3 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -8,6 +8,9 @@ CONFIG_BOARD_MATSU=y
+ 
+ CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION=y
+ 
++# Lid
++CONFIG_PLATFORM_EC_BACKLIGHT_LID=y
++
+ # Disable options not yet configured
+ 
+ # PDC
+-- 
+2.43.0
+

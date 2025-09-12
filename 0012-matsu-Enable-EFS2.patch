@@ -1,0 +1,32 @@
+From 9840a2edc1efb59f02bc6d2ed759594e4730b967 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:15:07 +0800
+Subject: [PATCH 12/19] matsu: Enable EFS2
+
+Enable EFS2
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: Ic00fa93050aed91b9b3840ec91716e6bec33d1f2
+---
+ zephyr/program/ocelot/matsu/project.conf | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index 772f2086a3..6b2992c2d5 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -11,6 +11,9 @@ CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION=y
+ # Lid
+ CONFIG_PLATFORM_EC_BACKLIGHT_LID=y
+ 
++# EFS2
++CONFIG_PLATFORM_EC_VBOOT_EFS2=y
++
+ # Disable options not yet configured
+ 
+ # PDC
+-- 
+2.43.0
+

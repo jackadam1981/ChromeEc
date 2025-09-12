@@ -1,0 +1,74 @@
+From 22f34bf3de91b4bddedf4fa7cabbbd9ad5c82185 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 08:46:58 +0800
+Subject: [PATCH 02/19] matsu: Add adc configs
+
+Add adc configs
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: Ia600ed1153e6744407762010949860d06d8b178f
+---
+ zephyr/program/ocelot/matsu/adc.dtsi        | 14 ++++++++++++++
+ zephyr/program/ocelot/matsu/generated.dtsi  | 10 ----------
+ zephyr/program/ocelot/matsu/project.overlay |  1 +
+ 3 files changed, 15 insertions(+), 10 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/adc.dtsi
+
+diff --git a/zephyr/program/ocelot/matsu/adc.dtsi b/zephyr/program/ocelot/matsu/adc.dtsi
+new file mode 100644
+index 0000000000..9ffd1fc00b
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/adc.dtsi
+@@ -0,0 +1,14 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++&adc0 {
++	status = "okay";
++	pinctrl-0 = <&adc0_ch1_gpi1_default
++		&adc0_ch2_gpi2_default
++		&adc0_ch3_gpi3_default
++		&adc0_ch4_gpi4_default
++		&adc0_ch5_gpi5_default>;
++	pinctrl-names = "default";
++};
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index f700a76f51..a667daea99 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -200,16 +200,6 @@
+ 	};
+ };
+ 
+-&adc0 {
+-	status = "okay";
+-	pinctrl-0 = <&adc0_ch1_gpi1_default
+-		&adc0_ch2_gpi2_default
+-		&adc0_ch3_gpi3_default
+-		&adc0_ch4_gpi4_default
+-		&adc0_ch5_gpi5_default>;
+-	pinctrl-names = "default";
+-};
+-
+ &i2c1 {
+ 	status = "okay";
+ 	pinctrl-0 = <&i2c1_clk_gpc1_default
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index d90f849ebb..9c1b6b96aa 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -43,6 +43,7 @@ cse_early_rec_sw: &gpio_c_mecc_cse_early_sw_r{};
+ /* Map tachometers to common names */
+ tach_fan0: &tach0 {};
+ 
++#include "adc.dtsi"
+ #include "../ite_hibernate.dtsi"
+ #include "../rvp_usba.dtsi"
+ #include "../rvp_battery.dtsi"
+-- 
+2.43.0
+

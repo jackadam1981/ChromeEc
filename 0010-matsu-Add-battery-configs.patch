@@ -1,0 +1,64 @@
+From 5fff1a5582a67640dd8dfab9fcbf379612ed946d Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:11:51 +0800
+Subject: [PATCH 10/19] matsu: Add battery configs
+
+Add battery configs
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: Ib202fcad3f55cd2751dc93138cfce62996088bb1
+---
+ zephyr/program/ocelot/matsu/battery.dtsi    | 18 ++++++++++++++++++
+ zephyr/program/ocelot/matsu/project.overlay |  2 +-
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+ create mode 100644 zephyr/program/ocelot/matsu/battery.dtsi
+
+diff --git a/zephyr/program/ocelot/matsu/battery.dtsi b/zephyr/program/ocelot/matsu/battery.dtsi
+new file mode 100644
+index 0000000000..8d2de2c712
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/battery.dtsi
+@@ -0,0 +1,18 @@
++/* Copyright 2024 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++/ {
++	batteries {
++		default_battery: cosmx-ap23abl {
++			compatible = "cosmx,ap23abl", "battery-smart";
++		};
++		atl-ap24cal {
++			compatible = "atl,ap24cal", "battery-smart";
++		};
++		lges-ap23a8l {
++			compatible = "lges,ap23a8l", "battery-smart";
++		};
++	};
++};
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index 6d3abc5e98..938d6a36fa 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -43,6 +43,7 @@ gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+ tach_fan0: &tach0 {};
+ 
+ #include "adc.dtsi"
++#include "battery.dtsi"
+ #include "console.dtsi"
+ #include "fan.dtsi"
+ #include "keyboard.dtsi"
+@@ -53,7 +54,6 @@ tach_fan0: &tach0 {};
+ #include "usb_typec.dtsi"
+ 
+ #include "../ite_hibernate.dtsi"
+-#include "../rvp_battery.dtsi"
+ #include "../rvp_i2c.dtsi"
+ #include "../rvp_interrupts.dtsi"
+ #include "../rvp_temp_sensors.dtsi"
+-- 
+2.43.0
+

@@ -1,0 +1,109 @@
+From 0dae464222525fc56ea25af6048bd0832e3d8747 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:10:11 +0800
+Subject: [PATCH 09/19] matsu: Configure AMP_MUTE_ODL signal
+
+ALC721 has PD# pin and connected to EC. Mute system speakers during
+power transitions until AP starts up.
+
+BUG=b:443612246
+TEST=zmake build matsu
+LOW_COVERAGE_REASON=b:444086749 will add test code after bring up.
+
+Change-Id: I8d8b233d8dc0582797a7cc800bec24c605d4a5b1
+---
+ zephyr/program/ocelot/CMakeLists.txt          |  1 +
+ zephyr/program/ocelot/matsu/generated.dtsi    |  5 +-
+ .../program/ocelot/matsu/src/suspend_resume.c | 52 +++++++++++++++++++
+ 3 files changed, 55 insertions(+), 3 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/src/suspend_resume.c
+
+diff --git a/zephyr/program/ocelot/CMakeLists.txt b/zephyr/program/ocelot/CMakeLists.txt
+index ae02172e5f..17b2b0ca4f 100644
+--- a/zephyr/program/ocelot/CMakeLists.txt
++++ b/zephyr/program/ocelot/CMakeLists.txt
+@@ -36,6 +36,7 @@ endif()
+ if(DEFINED CONFIG_BOARD_MATSU)
+ 	project(matsu)
+ 	zephyr_library_sources("matsu/src/board_power.c")
++	zephyr_library_sources("matsu/src/suspend_resume.c")
+ 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+ 					"matsu/src/keyboard_customization.c")
+ endif()
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index 8b52822277..5148e863eb 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -54,9 +54,8 @@
+ 		gpio_cpu_c10_gate_r: cpu_c10_gate_r {
+ 			gpios = <&gpiob 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+ 		};
+-		gpio_c_ec_pdb_ctrl_r: c_ec_pdb_ctrl_r {
+-			gpios = <&gpioh 0 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH |
+-						GPIO_OUTPUT_INIT_LOGICAL)>;
++		gpio_amp_mute_odl: amp_mute_odl {
++			gpios = <&gpioh 0 (GPIO_OUTPUT_LOW | GPIO_OPEN_DRAIN)>;
+ 		};
+ 		gpio_c_ec_snr_alrt1: c_ec_snr_alrt1 {
+ 			// signal name was manually overriden from "bga_pinc1"
+diff --git a/zephyr/program/ocelot/matsu/src/suspend_resume.c b/zephyr/program/ocelot/matsu/src/suspend_resume.c
+new file mode 100644
+index 0000000000..5b36a9c06f
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/src/suspend_resume.c
+@@ -0,0 +1,52 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++#include "ap_power/ap_power.h"
++#include "gpio_signal.h"
++
++#include <zephyr/drivers/gpio.h>
++#include <zephyr/logging/log.h>
++
++LOG_MODULE_REGISTER(board_init, LOG_LEVEL_INF);
++
++static void matsu_power_event_handler(struct ap_power_ev_callback *callback,
++				      struct ap_power_ev_data data)
++{
++	switch (data.event) {
++	case AP_POWER_PRE_INIT:
++		/* fall-through */
++	case AP_POWER_STARTUP:
++		/* Deassert AMP_MUTE_ODL when AP is on. */
++		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_amp_mute_odl), 1);
++		break;
++	case AP_POWER_HARD_OFF:
++		/* Assert AMP_MUTE_ODL when powered off. */
++		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_amp_mute_odl), 0);
++		break;
++	default:
++		/* Other events ignored */
++		break;
++	}
++}
++
++static int init_suspend_resume(void)
++{
++	static struct ap_power_ev_callback cb;
++	const struct gpio_dt_spec *amp_mute_odl =
++		GPIO_DT_FROM_NODELABEL(gpio_amp_mute_odl);
++
++	if (!gpio_is_ready_dt(amp_mute_odl)) {
++		LOG_ERR("device %s not ready", amp_mute_odl->port->name);
++		return -EINVAL;
++	}
++
++	ap_power_ev_init_callback(&cb, matsu_power_event_handler,
++				  AP_POWER_PRE_INIT | AP_POWER_STARTUP |
++					  AP_POWER_HARD_OFF);
++	ap_power_ev_add_callback(&cb);
++
++	return 0;
++}
++SYS_INIT(init_suspend_resume, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
+-- 
+2.43.0
+

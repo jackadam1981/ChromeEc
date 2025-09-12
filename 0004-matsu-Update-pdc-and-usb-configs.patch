@@ -1,0 +1,163 @@
+From 114d893a3b79ba6cf0f12c8b63bf2554e31f1c4b Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 08:54:36 +0800
+Subject: [PATCH 04/19] matsu: Update pdc and usb configs
+
+Update pdc and usb configs
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: I873105704b00cd9e4085d321ab19ba71beb78983
+---
+ zephyr/program/ocelot/CMakeLists.txt        |  2 +-
+ zephyr/program/ocelot/matsu/project.conf    |  4 ++
+ zephyr/program/ocelot/matsu/project.overlay | 21 ++-------
+ zephyr/program/ocelot/matsu/usb_typec.dtsi  | 47 +++++++++++++++++++++
+ zephyr/program/ocelot/matsu/usba.dtsi       | 12 ++++++
+ 5 files changed, 67 insertions(+), 19 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/usb_typec.dtsi
+ create mode 100644 zephyr/program/ocelot/matsu/usba.dtsi
+
+diff --git a/zephyr/program/ocelot/CMakeLists.txt b/zephyr/program/ocelot/CMakeLists.txt
+index e55de24187..7a19d587d6 100644
+--- a/zephyr/program/ocelot/CMakeLists.txt
++++ b/zephyr/program/ocelot/CMakeLists.txt
+@@ -38,7 +38,7 @@ if(DEFINED CONFIG_BOARD_MATSU)
+ 	zephyr_library_sources("src/rvp_board_id.c")
+ 	zephyr_library_sources("src/rvp_keyboard_customization.c")
+ 	zephyr_library_sources("src/rvp_board_power.c")
+-	zephyr_library_sources("src/rvp_usbc_runtime.c")
++
+ endif()
+ 
+ zephyr_include_directories("include/")
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index ddae372424..efad3d62f5 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -7,3 +7,7 @@
+ CONFIG_BOARD_MATSU=y
+ 
+ # Disable options not yet configured
++
++# PDC
++CONFIG_PDC_RUNTIME_PORT_CONFIG=n
++CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER=n
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index 0098bfdc93..13b6174992 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -46,12 +46,13 @@ tach_fan0: &tach0 {};
+ #include "adc.dtsi"
+ #include "fan.dtsi"
+ #include "pwm.dtsi"
++#include "usba.dtsi"
++#include "usb_typec.dtsi"
++
+ #include "../ite_hibernate.dtsi"
+-#include "../rvp_usba.dtsi"
+ #include "../rvp_battery.dtsi"
+ #include "../rvp_i2c.dtsi"
+ #include "../rvp_interrupts.dtsi"
+-#include "../rvp_usbc.dtsi"
+ #include "../rvp_keyboard.dtsi"
+ #include "../rvp_temp_sensors.dtsi"
+ #include "../rvp_ioex_gpio.dtsi"
+@@ -89,22 +90,6 @@ tach_fan0: &tach0 {};
+ 
+ /* Update board-specific references  */
+ 
+-&pdc_rtk_c0 {
+-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+-};
+-
+-&pdc_rtk_c1 {
+-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+-};
+-
+-&pdc_ti_c0 {
+-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+-};
+-
+-&pdc_ti_c1 {
+-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
+-};
+-
+ &kblight {
+ 	pwms = <&pwm1 PWM_CHANNEL_1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
+ };
+diff --git a/zephyr/program/ocelot/matsu/usb_typec.dtsi b/zephyr/program/ocelot/matsu/usb_typec.dtsi
+new file mode 100644
+index 0000000000..96bcdbacb5
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/usb_typec.dtsi
+@@ -0,0 +1,47 @@
++/*
++ * Copyright 2025 The ChromiumOS Authors
++ *
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++#include <usbc-policy.dtsi>
++
++ /{
++	usbc {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		usbc_port0: port0@0 {
++			compatible = "named-usbc-port";
++			reg = <0>;
++			chg = <&charger>;
++			pdc = <&pdc_rtk_c0>;
++			pd-retimer;
++			policy = <&cros_policy>;
++		};
++		usbc_port1: port1@1 {
++			compatible = "named-usbc-port";
++			reg = <1>;
++			pdc = <&pdc_rtk_c1>;
++			pd-retimer;
++			policy = <&cros_policy>;
++		};
++		ppm-driver {
++			compatible = "ucsi-ppm";
++		};
++	};
++};
++
++&i2c_port_pd1 {
++	/* Define PDC IRQ GPIO(s) in board overlay */
++	pdc_rtk_c0: rts54-pdc@66 {
++		compatible = "realtek,rts54-pdc";
++		reg = <0x66>;
++		irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
++		ccd;
++	};
++	pdc_rtk_c1: rts54-pdc@67 {
++		compatible = "realtek,rts54-pdc";
++		reg = <0x67>;
++		irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
++	};
++};
+diff --git a/zephyr/program/ocelot/matsu/usba.dtsi b/zephyr/program/ocelot/matsu/usba.dtsi
+new file mode 100644
+index 0000000000..974e16166b
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/usba.dtsi
+@@ -0,0 +1,12 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++ / {
++	usba {
++		compatible = "cros-ec,usba-port-enable-pins";
++		enable-pins = <&gpio_en_pp5000_usba>;
++		status = "okay";
++	};
++ };
+-- 
+2.43.0
+

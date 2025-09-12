@@ -1,0 +1,476 @@
+From d3021f06e50eda6cbd70d592fa5e8ee64718c644 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:38:23 +0800
+Subject: [PATCH 16/19] matsu: Update GPIO and interrupts configs
+
+Update GPIO and interrupts configs
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: Ib59c33c0eef74630c4e65d9ec6ec2c63b8bdd6ee
+---
+ .../matsu/{generated.dtsi => gpios.dtsi}      | 234 +++++++++---------
+ zephyr/program/ocelot/matsu/interrupts.dtsi   |  31 +++
+ zephyr/program/ocelot/matsu/project.conf      |   3 +
+ zephyr/program/ocelot/matsu/project.overlay   |  22 +-
+ 4 files changed, 158 insertions(+), 132 deletions(-)
+ rename zephyr/program/ocelot/matsu/{generated.dtsi => gpios.dtsi} (54%)
+ create mode 100644 zephyr/program/ocelot/matsu/interrupts.dtsi
+
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/gpios.dtsi
+similarity index 54%
+rename from zephyr/program/ocelot/matsu/generated.dtsi
+rename to zephyr/program/ocelot/matsu/gpios.dtsi
+index 95b3940727..dbf7de1efb 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/gpios.dtsi
+@@ -1,11 +1,12 @@
+ /* Copyright 2025 The ChromiumOS Authors
+  * Use of this source code is governed by a BSD-style license that can be
+  * found in the LICENSE file.
+- *
+- * This file was auto-generated but contains manual edits
+  */
+ 
+ / {
++	aliases {
++		gpio-wp = &gpio_ec_wp_od;
++	};
+ 
+ 	named-adc-channels {
+ 		compatible = "named-adc-channels";
+@@ -14,123 +15,88 @@
+ 			enum-name = "ADC_AMON_BMON";
+ 			io-channels = <&adc0 1>;
+ 		};
+-		adc_temp_ambient: temp_ambient {
+-			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
+-			io-channels = <&adc0 5>;
++		adc_temp_vr: temp_vr {
++			enum-name = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
++			io-channels = <&adc0 2>;
+ 		};
+ 		adc_temp_skin: temp_skin {
+ 			enum-name = "ADC_TEMP_SENSOR_4";
+ 			io-channels = <&adc0 3>;
+ 		};
+-		adc_temp_vr: temp_vr {
+-			enum-name = "ADC_TEMP_SENSOR_PP3300_REGULATOR";
+-			io-channels = <&adc0 2>;
+-		};
+ 		adc_temp_ddr_soc: temp_ddr_soc {
+ 			enum-name = "ADC_TEMP_SENSOR_1_DDR_SOC";
+ 			io-channels = <&adc0 4>;
+ 		};
++		adc_temp_ambient: temp_ambient {
++			enum-name = "ADC_TEMP_SENSOR_2_AMBIENT";
++			io-channels = <&adc0 5>;
++		};
+ 	};
+ 
+ 	named-gpios {
+ 		compatible = "named-gpios";
+ 
+-		gpio_acok_od: acok_od {
+-			// signal name was manually overriden from "bga_pine5"
+-			gpios = <&gpioc 0 (GPIO_INPUT)>;
+-			enum-name = "GPIO_AC_PRESENT";
+-		};
+ 		gpio_all_sys_pwrgd_r: all_sys_pwrgd_r {
+ 			gpios = <&gpiod 5 (GPIO_INPUT)>;
+ 		};
+-		gpio_bat_det_r: bat_det_r {
++		gpio_imvp9_vrrdy_od: imvp9_vrrdy_od {
+ 			gpios = <&gpioe 5 (GPIO_INPUT)>;
+-			enum-name = "GPIO_BATT_PRES_ODL";
+ 		};
+-		gpio_ccd_mode_odl: ccd_mode_odl {
+-			// signal name was manually overriden from "bga_pinm1"
+-			gpios = <&gpioe 6 (GPIO_INPUT)>;
++		gpio_ec_accel_mb_int_l: ec_accel_mb_int_l {
++			gpios = <&gpiof 7 (GPIO_INPUT)>;
+ 		};
+-		gpio_cpu_c10_gate_r: cpu_c10_gate_r {
+-			gpios = <&gpiob 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
++		gpio_ec_accel_db_int_l: ec_accel_db_int_l {
++			gpios = <&gpiof 6 (GPIO_INPUT)>;
+ 		};
+-		gpio_amp_mute_odl: amp_mute_odl {
+-			gpios = <&gpioh 0 (GPIO_OUTPUT_LOW | GPIO_OPEN_DRAIN)>;
++		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
++			gpios = <&gpioe 4 (GPIO_INPUT)>;
++			enum-name = "GPIO_POWER_BUTTON_L";
+ 		};
+-		gpio_c_ec_snr_alrt1: c_ec_snr_alrt1 {
+-			// signal name was manually overriden from "bga_pinc1"
+-			gpios = <&gpiof 7 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
++		gpio_acok_od: acok_od {
++			gpios = <&gpioc 0 (GPIO_INPUT)>;
++			enum-name = "GPIO_AC_PRESENT";
++		};
++		/* I2C_PROG_SCL */
++		gpio_bga_pinm2: bga_pinm2 {
++			gpios = <&gpioc 7 (GPIO_INPUT)>;
+ 		};
+-		gpio_c_ec_snr_alrt2: c_ec_snr_alrt2 {
+-			// signal name was manually overriden from "bga_pinb1"
+-			gpios = <&gpiof 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
++		/* I2C_PROG_SDA */
++		gpio_bga_pinn1: bga_pinn1 {
++			gpios = <&gpiod 0 (GPIO_INPUT)>;
+ 		};
+-		gpio_c_ec_wp_odl_r: c_ec_wp_odl_r {
+-			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
++		gpio_amp_mute_odl: amp_mute_odl {
++			gpios = <&gpioh 0 (GPIO_OUTPUT_LOW | GPIO_OPEN_DRAIN)>;
++		};
++		gpio_ec_wp_od: ec_wp_od {
++			gpios = <&gpiob 5 (GPIO_INPUT | GPIO_ACTIVE_HIGH)>;
+ 		};
+ 		gpio_ec_en_edp_bl: ec_en_edp_bl {
+ 			gpios = <&gpioc 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+ 			enum-name = "GPIO_ENABLE_BACKLIGHT";
+ 		};
+-		gpio_c_ioex_kbd_intr_r: c_ioex_kbd_intr_r {
+-			gpios = <&gpioi 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+-		};
+-		gpio_cse_early_rec_sw: cse_early_rec_sw {
+-			gpios = <&gpioj 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+-		};
+-		gpio_en_pp5000_fan: en_pp5000_fan {
+-			gpios = <&gpioc 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+-		};
+-		gpio_ec_ish_int_odl_c_ec_ish_alert_r: ec_ish_int_odl_c_ec_ish_alert_r {
+-			gpios = <&gpioh 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+-		};
+-		gpio_ec_slatemode_hallout_snsr_r: ec_slatemode_hallout_snsr_r {
+-			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+-		};
+-		gpio_ec_soc_int_odl: ec_soc_int_odl {
+-			gpios = <&gpiom 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+-			enum-name = "GPIO_EC_INT_L";
+-		};
+-		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+-			// signal name was manually overriden from "vol_dn_ec_r"
+-			gpios = <&gpioa 0 (GPIO_INPUT)>;
+-			enum-name = "GPIO_VOLUME_DOWN_L";
+-		};
+-		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
+-			// signal name was manually overriden from "volume_up_r"
+-			gpios = <&gpioa 4 (GPIO_INPUT)>;
+-			enum-name = "GPIO_VOLUME_UP_L";
+-		};
+ 		gpio_en_pp5000_usba: en_pp5000_usba {
+-			// signal name was manually overriden from "c_en_pp5000_typea_r"
+-			gpios = <&gpiof 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
++			gpios = <&gpiof 4 (GPIO_OUTPUT_LOW)>;
++		};
++		gpio_ec_kb_bl_en: ec_kb_bl_en {
++			gpios = <&gpioi 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
++			enum-name = "GPIO_EN_KEYBOARD_BACKLIGHT";
+ 		};
+ 		/* Power sequencing signal needed by temp sensor driver */
+ 		gpio_en_s5_rails: en_s5_rails {
+ 			gpios = <&gpioi 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+ 			no-auto-init;
+ 		};
+-		gpio_espi_soc_rst_l: espi_soc_rst_l {
+-			gpios = <&gpiod 2 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+-		};
+-		gpio_fmiso_r: fmiso_r {
+-			gpios = <&gpiog 5 (GPIO_INPUT | GPIO_PULL_UP)>;
+-		};
+-		gpio_fmosi_r: fmosi_r {
+-			gpios = <&gpiog 4 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+-		};
+-		gpio_fsce_l_r: fsce_l_r {
+-			gpios = <&gpiog 3 (GPIO_INPUT | GPIO_PULL_UP)>;
++		gpio_en_pp5000_fan: en_pp5000_fan {
++			gpios = <&gpioc 4 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
+ 		};
+-		gpio_fsck_r: fsck_r {
+-			gpios = <&gpiog 7 (GPIO_INPUT | GPIO_PULL_DOWN)>;
++		gpio_ec_ish_int_odl: ec_ish_int_odl {
++			gpios = <&gpioh 6 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+ 		};
+-		gpio_gpf2: gpf2 {
+-			// signal name was manually overriden from "bga_pina10"
+-			gpios = <&gpiof 2 (GPIO_INPUT)>;
++		gpio_tablet_mode_l: tablet_mode_l {
++			gpios = <&gpiod 1 (GPIO_INPUT)>;
+ 		};
+-		gpio_gpg0: gpg0 {
+-			gpios = <&gpiog 0 (GPIO_INPUT)>;
++		gpio_en_slp_z: en_slp_z {
++			gpios = <&gpiod 4 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+ 		};
+ 		gpio_gpg2_r: gpg2_r {
+ 			gpios = <&gpiog 2 (GPIO_INPUT)>;
+@@ -138,48 +104,78 @@
+ 		gpio_gpg6_r: gpg6_r {
+ 			gpios = <&gpiog 6 (GPIO_INPUT)>;
+ 		};
+-		gpio_gsc_ec_pwr_btn_odl: gsc_ec_pwr_btn_odl {
+-			// signal name was manually overriden from "bga_pinb4"
+-			gpios = <&gpioe 4 (GPIO_INPUT)>;
+-			enum-name = "GPIO_POWER_BUTTON_L";
+-		};
+-		gpio_io_exp_int_mecc_r: io_exp_int_mecc_r {
++		gpio_ec_soc_rtcrst: ec_soc_rtcrst {
+ 			gpios = <&gpioh 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+ 		};
+-		gpio_lid_open: lid_open {
+-			gpios = <&gpiod 3 (GPIO_INPUT)>;
+-			enum-name = "GPIO_LID_OPEN";
++		gpio_ec_plt_pwrok: plt_pwrok_ec_r {
++			gpios = <&gpioj 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
++			no-auto-init;
+ 		};
+-		gpio_pm_pwrbtn_n_r: pm_pwrbtn_n_r {
++		gpio_sys_slp_s0ix_l: sys_slp_s0ix_l {
++			gpios = <&gpioj 5 (GPIO_INPUT)>;
++			no-auto-init;
++		};
++		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
+ 			gpios = <&gpioe 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+ 			enum-name = "GPIO_PCH_PWRBTN_L";
+ 		};
+-		gpio_prochot_ec_n_r: prochot_ec_n_r {
++		gpio_ec_rsmrst_l: ec_rsmrst_l {
++			gpios = <&gpioj 0 (GPIO_INPUT)>;
++			no-auto-init;
++		};
++		gpio_ec_slp_s3_l: ec_slp_s3_l {
++			gpios = <&gpioh 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
++			no-auto-init;
++		};
++		gpio_ec_slp_s4_l: ec_slp_s4_l {
++			gpios = <&gpioh 4 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
++			no-auto-init;
++		};
++		gpio_ec_forcepr_odl: ec_forcepr_odl {
+ 			gpios = <&gpioi 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+ 		};
++		gpio_pg_vccio_od: pg_vccio_od {
++			gpios = <&gpiof 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
++			no-auto-init;
++		};
+ 		gpio_sys_rst_odl: sys_rst_odl {
+ 			gpios = <&gpioj 7 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+ 			enum-name = "GPIO_SYS_RST_ODL";
+ 			no-auto-init;
+ 		};
+-		gpio_smc_wake_sci_n_r: smc_wake_sci_n_r {
+-			gpios = <&gpiob 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
++		gpio_ec_soc_int_odl: ec_soc_int_odl {
++			gpios = <&gpiom 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
++			enum-name = "GPIO_EC_INT_L";
+ 		};
+-		gpio_std_adpt_cntrl_gpio_r: std_adpt_cntrl_gpio_r {
+-			gpios = <&gpioa 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
++		gpio_lid_open: lid_open {
++			gpios = <&gpiod 3 (GPIO_INPUT)>;
++			enum-name = "GPIO_LID_OPEN";
++		};
++		gpio_ec_soc_wake_odl: ec_soc_wake_odl {
++			gpios = <&gpiob 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+ 		};
+-		gpio_std_adp_prsnt_r: std_adp_prsnt: std_adp_prsnt_r {
+-			gpios = <&gpioa 6 (GPIO_INPUT)>;
++		gpio_soc_sys_pwrok: soc_sys_pwrok {
++			gpios = <&gpiof 1 (GPIO_INPUT)>;
++			no-auto-init;
+ 		};
+ 		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
+ 			gpios = <&gpiod 7 GPIO_OUTPUT>;
+ 			enum-name = "GPIO_PACKET_MODE_EN";
+ 		};
+-		gpio_wc_usbc_pd_alrt_aic1_r: wc_usbc_pd_alrt_aic1_r {
++		gpio_ec_volup_btn_odl: ec_volup_btn_odl {
++			gpios = <&gpioa 7 (GPIO_INPUT)>;
++			enum-name = "GPIO_VOLUME_UP_L";
++		};
++		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
++			gpios = <&gpioa 0 (GPIO_INPUT)>;
++			enum-name = "GPIO_VOLUME_DOWN_L";
++		};
++		gpio_usb_pd1_int_odl: usb_pd_int_odl {
+ 			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
++			no-auto-init;
+ 		};
+-		gpio_wc_usbc_pd_alrt_aic2_r: wc_usbc_pd_alrt_aic2_r {
+-			gpios = <&gpioj 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
++		gpio_cse_early_rec_sw: cse_early_rec_sw {
++			gpios = <&gpioj 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+ 		};
+ 		gpio_led_1_l: led_1_l {
+ 			gpios = <&gpioa 2 GPIO_OUTPUT_HIGH>;
+@@ -193,22 +189,36 @@
+ 		gpio_ec_touch_en: ec_touch_en {
+ 			gpios = <&gpioj 4 GPIO_OUTPUT_LOW>;
+ 		};
++		/* The legacy system code requires GPIO_ENTERING_RW symbol */
++		ec-entering-rw {
++			enum-name = "GPIO_ENTERING_RW";
++		};
+ 	};
+ 
+ 	unused-pins {
+ 		compatible = "unused-gpios";
++
+ 		unused-gpios =
+-			/* BGA_PINA2 - unused 1.8V I2C bus - pull down to avoid
+-			 * voltage level issues if this AIC is connected to a
+-			 * different base RVP board */
+-			<&gpiob 4 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+-			/* BGA_PINA5 - unused 1.8V I2C bus - pull down to avoid
+-			 * voltage level issues if this AIC is connected to a
+-			 * different base RVP board */
+-			<&gpiob 3 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+-			/* BGA_PINM2 */
+-			<&gpioc 7 (GPIO_INPUT | GPIO_PULL_UP)>,
+-			/* BGA_PINN1 */
+-			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
++			/* check IT82002 not used */
++			<&gpiob 3 0>, /* SPARE GPB3 */
++			<&gpiob 4 0>, /* SPARE GPB4 */
++			<&gpioe 6 0>, /* SPARE GPE6 */
++			<&gpiof 2 0>, /* SPARE GPF2 */
++			<&gpiof 3 0>, /* SPARE GPF3 */
++			<&gpiog 1 0>, /* SPARE GPG1 */
++
++			/* check both not used */
++			<&gpioa 4 0>, /* LED_3_R_L */
++			<&gpioa 5 0>, /* LED_4_R_L */
++			<&gpiog 0 0>, /* SPARE GPG0 */
++			<&gpiob 2 0>, /* SPARE GPB2 */
++			<&gpiog 3 0>, /* SPARE GPG3 */
++			<&gpiog 4 0>, /* SPARE GPG4 */
++			<&gpiog 5 0>, /* SPARE GPG5 */
++			<&gpiog 7 0>, /* SPARE GPG7 */
++			<&gpioj 6 0>; /* SPARE GPJ6 PD2_INT*/
+ 	};
+ };
++
++/* The eSPI shim requires this GPIO nodelabel */
++gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_odl {};
+\ No newline at end of file
+diff --git a/zephyr/program/ocelot/matsu/interrupts.dtsi b/zephyr/program/ocelot/matsu/interrupts.dtsi
+new file mode 100644
+index 0000000000..8864c94980
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/interrupts.dtsi
+@@ -0,0 +1,31 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++/ {
++	gpio-interrupts {
++		compatible = "cros-ec,gpio-interrupts";
++
++		int_ac_present: ac_present {
++			irq-pin = <&gpio_acok>;
++			flags = <GPIO_INT_EDGE_BOTH>;
++			handler = "extpower_interrupt";
++		};
++		int_power_button: power_button {
++			irq-pin = <&gpio_pwrbtn>;
++			flags = <GPIO_INT_EDGE_BOTH>;
++			handler = "power_button_interrupt";
++		};
++		int_lid_open: lid_open {
++			irq-pin = <&gpio_lid>;
++			flags = <GPIO_INT_EDGE_BOTH>;
++			handler = "lid_interrupt";
++		};
++		int_soc_edp_bl_en: soc_edp_bl_en {
++			irq-pin = <&gpio_soc_edp_bl_en>;
++			flags = <GPIO_INT_EDGE_BOTH>;
++			handler = "soc_edp_bl_interrupt";
++		};
++	};
++};
+\ No newline at end of file
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index f7515d4f88..289f2c323e 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -23,6 +23,9 @@ CONFIG_PLATFORM_EC_BACKLIGHT_LID=y
+ CONFIG_PLATFORM_EC_VBOOT_EFS2=y
+ 
+ # Disable options not yet configured
++CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT=n
++CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO=n
++CONFIG_PLATFORM_EC_BATTERY_PRESENT_NONE=y
+ 
+ # PDC
+ CONFIG_PDC_RUNTIME_PORT_CONFIG=n
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index ba3b99a899..4952a86d12 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -10,7 +10,7 @@
+ /* matsu project DTS includes */
+ 
+ #include "binman.dtsi"
+-#include "generated.dtsi"
++#include "gpios.dtsi"
+ #include "power_signals.dtsi"
+ 
+ /*
+@@ -27,18 +27,12 @@ i2c_port_ish: &i2c5 {};
+  */
+ 
+ gpio_acok: &gpio_acok_od {};
+-gpio_dc_jack_present: &gpio_std_adp_prsnt_r {};
+ gpio_lid: &gpio_lid_open {};
+ gpio_pwrbtn: &gpio_gsc_ec_pwr_btn_odl {};
+-gpio_voldn: &gpio_ec_voldn_btn_odl {};
+-gpio_volup: &gpio_ec_volup_btn_odl {};
+ gpio_fan_control: &gpio_en_pp5000_fan {};
+ gpio_all_sys_pwr_good: &gpio_all_sys_pwrgd_r {};
+ gpio_temp_sensor_power_good: &gpio_en_s5_rails {};
+ 
+-/* Power sequencing */
+-gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+-
+ /* Map tachometers to common names */
+ tach_fan0: &tach0 {};
+ 
+@@ -47,6 +41,7 @@ tach_fan0: &tach0 {};
+ #include "console.dtsi"
+ #include "fan.dtsi"
+ #include "i2c.dtsi"
++#include "interrupts.dtsi"
+ #include "keyboard.dtsi"
+ #include "led_pins.dtsi"
+ #include "led_policy.dtsi"
+@@ -55,22 +50,9 @@ tach_fan0: &tach0 {};
+ #include "usb_typec.dtsi"
+ 
+ #include "../ite_hibernate.dtsi"
+-#include "../rvp_interrupts.dtsi"
+ #include "../rvp_temp_sensors.dtsi"
+ 
+ /* matsu overrides follow... */
+-/ {
+-	aliases {
+-		gpio-wp = &gpio_c_ec_wp_odl_r;
+-	};
+-
+-	named-gpios {
+-		/* unimplemented GPIOs */
+-		entering-rw {
+-			enum-name = "GPIO_ENTERING_RW";
+-		};
+-	};
+-};
+ 
+ &espi0 {
+ 	status = "okay";
+-- 
+2.43.0
+

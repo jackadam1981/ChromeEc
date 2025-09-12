@@ -1,0 +1,170 @@
+From ec41fd9cb74fcd4979c7b7885e6e9c1f96b51e4c Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:26:00 +0800
+Subject: [PATCH 14/19] matsu: Update i2c configs
+
+Update i2c configs
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: I308e1a725ba6edcc30340286b6fed8bcdf294d2a
+---
+ zephyr/program/ocelot/matsu/generated.dtsi  | 33 +----------
+ zephyr/program/ocelot/matsu/i2c.dtsi        | 66 +++++++++++++++++++++
+ zephyr/program/ocelot/matsu/project.overlay |  8 +--
+ 3 files changed, 70 insertions(+), 37 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/i2c.dtsi
+
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index ff5e6861fb..5898e4dd21 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -171,8 +171,9 @@
+ 		gpio_std_adp_prsnt_r: std_adp_prsnt: std_adp_prsnt_r {
+ 			gpios = <&gpioa 6 (GPIO_INPUT)>;
+ 		};
+-		gpio_virtual_battery_r: virtual_battery_r {
+-			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_PULL_UP)>;
++		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
++			gpios = <&gpiod 7 GPIO_OUTPUT>;
++			enum-name = "GPIO_PACKET_MODE_EN";
+ 		};
+ 		gpio_wc_usbc_pd_alrt_aic1_r: wc_usbc_pd_alrt_aic1_r {
+ 			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+@@ -205,31 +206,3 @@
+ 			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
+ 	};
+ };
+-
+-&i2c1 {
+-	status = "okay";
+-	pinctrl-0 = <&i2c1_clk_gpc1_default
+-		&i2c1_data_gpc2_default>;
+-	pinctrl-names = "default";
+-};
+-
+-&i2c3 {
+-	status = "okay";
+-	pinctrl-0 = <&i2c3_clk_gph1_default
+-		&i2c3_data_gph2_default>;
+-	pinctrl-names = "default";
+-};
+-
+-&i2c4 {
+-	status = "okay";
+-	pinctrl-0 = <&i2c4_clk_gpe0_default
+-		&i2c4_data_gpe7_default>;
+-	pinctrl-names = "default";
+-};
+-
+-&i2c5 {
+-	status = "okay";
+-	pinctrl-0 = <&i2c5_clk_gpe1_default
+-		&i2c5_data_gpe2_default>;
+-	pinctrl-names = "default";
+-};
+diff --git a/zephyr/program/ocelot/matsu/i2c.dtsi b/zephyr/program/ocelot/matsu/i2c.dtsi
+new file mode 100644
+index 0000000000..d5d55affab
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/i2c.dtsi
+@@ -0,0 +1,66 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++/ {
++	named-i2c-ports {
++		compatible = "named-i2c-ports";
++
++		i2c_named_i2c_port_pd1: named_i2c_port_pd_aic1 {
++			i2c-port = <&i2c_port_pd1>;
++			enum-names = "I2C_PORT_PD";
++		};
++		i2c_named_i2c_port_charger: named_i2c_port_charger {
++			i2c-port = <&i2c_port_charger>;
++			enum-names = "I2C_PORT_BATTERY",
++				"I2C_PORT_CHARGER",
++				"I2C_PORT_PORT80";
++		};
++		i2c_named_i2c_port_ish: named_i2c_port_ish {
++			i2c-port = <&i2c_port_ish>;
++			enum-names = "I2C_PORT_ISH";
++		};
++	};
++};
++
++&i2c_port_pd1 {
++	label = "I2C_PORT_PD";
++	clock-frequency = <I2C_BITRATE_STANDARD>;
++};
++
++&i2c_port_charger {
++	label = "I2C_PORT_CHARGER";
++	clock-frequency = <I2C_BITRATE_STANDARD>;
++
++	charger: raa489@9 {
++		compatible = "intersil,isl9241";
++		status = "okay";
++		reg = <0x9>;
++	};
++};
++
++&i2c_port_ish {
++	label = "I2C_PORT_ISH";
++	clock-frequency = <I2C_BITRATE_STANDARD>;
++};
++
++&i2c1 {
++	status = "okay";
++	pinctrl-0 = <&i2c1_clk_gpc1_default
++		&i2c1_data_gpc2_default>;
++	pinctrl-names = "default";
++};
++
++&i2c4 {
++	status = "okay";
++	pinctrl-0 = <&i2c4_clk_gpe0_default
++		&i2c4_data_gpe7_default>;
++	pinctrl-names = "default";
++};
++
++&i2c5 {
++	status = "okay";
++	pinctrl-0 = <&i2c5_clk_gpe1_default
++		&i2c5_data_gpe2_default>;
++	pinctrl-names = "default";
++};
+\ No newline at end of file
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index 938d6a36fa..ba3b99a899 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -46,6 +46,7 @@ tach_fan0: &tach0 {};
+ #include "battery.dtsi"
+ #include "console.dtsi"
+ #include "fan.dtsi"
++#include "i2c.dtsi"
+ #include "keyboard.dtsi"
+ #include "led_pins.dtsi"
+ #include "led_policy.dtsi"
+@@ -54,15 +55,8 @@ tach_fan0: &tach0 {};
+ #include "usb_typec.dtsi"
+ 
+ #include "../ite_hibernate.dtsi"
+-#include "../rvp_i2c.dtsi"
+ #include "../rvp_interrupts.dtsi"
+ #include "../rvp_temp_sensors.dtsi"
+-#include "../rvp_ioex_gpio.dtsi"
+-#include <ite/it8801-common-cfg.dtsi>
+-
+-&it8801_mfd {
+-        irq-gpios = <&gpioi 6 GPIO_ACTIVE_LOW>;
+-};
+ 
+ /* matsu overrides follow... */
+ / {
+-- 
+2.43.0
+

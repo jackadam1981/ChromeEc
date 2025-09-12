@@ -1,0 +1,163 @@
+From 162fda3eda32eb778de7db68dcea22dcf4bd209f Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:27:39 +0800
+Subject: [PATCH 15/19] matsu: Enable touch panel power sequence control
+
+Enable touch panel power sequence control
+
+BUG=b:443612246
+TEST=zmake build matsu
+LOW_COVERAGE_REASON=b:444086749 will add test code after bring up.
+
+Change-Id: I2051560d52b44a41be0749736294b4da542d7469
+---
+ zephyr/program/ocelot/BUILD.py                |  3 -
+ zephyr/program/ocelot/CMakeLists.txt          |  1 +
+ zephyr/program/ocelot/matsu/generated.dtsi    |  8 ++-
+ zephyr/program/ocelot/matsu/project.conf      |  7 ++
+ zephyr/program/ocelot/matsu/src/touch_panel.c | 66 +++++++++++++++++++
+ 5 files changed, 81 insertions(+), 4 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/src/touch_panel.c
+
+diff --git a/zephyr/program/ocelot/BUILD.py b/zephyr/program/ocelot/BUILD.py
+index 30a3717de1..19920e277f 100644
+--- a/zephyr/program/ocelot/BUILD.py
++++ b/zephyr/program/ocelot/BUILD.py
+@@ -165,9 +165,6 @@ register_rtk59_project(
+ 
+ register_it8xxx2_project(
+     project_name="matsu",
+-    extra_kconfig_base_files=[
+-        here / "rvp_program.conf",
+-    ],
+ )
+ 
+ # Note for reviews, do not let anyone edit these assertions, the addresses
+diff --git a/zephyr/program/ocelot/CMakeLists.txt b/zephyr/program/ocelot/CMakeLists.txt
+index 17b2b0ca4f..cd963c9718 100644
+--- a/zephyr/program/ocelot/CMakeLists.txt
++++ b/zephyr/program/ocelot/CMakeLists.txt
+@@ -37,6 +37,7 @@ if(DEFINED CONFIG_BOARD_MATSU)
+ 	project(matsu)
+ 	zephyr_library_sources("matsu/src/board_power.c")
+ 	zephyr_library_sources("matsu/src/suspend_resume.c")
++	zephyr_library_sources("matsu/src/touch_panel.c")
+ 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+ 					"matsu/src/keyboard_customization.c")
+ endif()
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index 5898e4dd21..95b3940727 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -88,7 +88,7 @@
+ 			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+ 		};
+ 		gpio_ec_soc_int_odl: ec_soc_int_odl {
+-			gpios = <&gpioj 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
++			gpios = <&gpiom 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
+ 			enum-name = "GPIO_EC_INT_L";
+ 		};
+ 		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
+@@ -187,6 +187,12 @@
+ 		gpio_led_2_l: led_2_l {
+ 			gpios = <&gpioa 3 GPIO_OUTPUT_HIGH>;
+ 		};
++		gpio_soc_edp_bl_en: soc_edp_bl_en {
++			gpios = <&gpioh 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
++		};
++		gpio_ec_touch_en: ec_touch_en {
++			gpios = <&gpioj 4 GPIO_OUTPUT_LOW>;
++		};
+ 	};
+ 
+ 	unused-pins {
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index 98a844007e..f7515d4f88 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -27,3 +27,10 @@ CONFIG_PLATFORM_EC_VBOOT_EFS2=y
+ # PDC
+ CONFIG_PDC_RUNTIME_PORT_CONFIG=n
+ CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER=n
++CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV=20000
++CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW=65000
++CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA=3250
++
++# Bring up configs
++CONFIG_PLATFORM_EC_SYSTEM_UNLOCKED=y
++CONFIG_USBC_PDC_RTS54XX_CONSOLE_FW_UPDATER=y
+diff --git a/zephyr/program/ocelot/matsu/src/touch_panel.c b/zephyr/program/ocelot/matsu/src/touch_panel.c
+new file mode 100644
+index 0000000000..664db8825d
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/src/touch_panel.c
+@@ -0,0 +1,66 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++#include "gpio/gpio.h"
++#include "gpio/gpio_int.h"
++#include "hooks.h"
++#include "lid_switch.h"
++
++#include <zephyr/devicetree.h>
++#include <zephyr/drivers/gpio.h>
++#include <zephyr/logging/log.h>
++
++LOG_MODULE_DECLARE(touch_en, LOG_LEVEL_INF);
++
++/* touch panel power sequence control */
++
++#define TOUCH_ENABLE_DELAY_MS (500 * USEC_PER_MSEC)
++#define TOUCH_DISABLE_DELAY_MS (0 * USEC_PER_MSEC)
++
++void touch_disable(void)
++{
++	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_touch_en), 0);
++}
++DECLARE_DEFERRED(touch_disable);
++
++void touch_enable(void)
++{
++	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_touch_en), 1);
++}
++DECLARE_DEFERRED(touch_enable);
++
++void soc_edp_bl_interrupt(enum gpio_signal signal)
++{
++	int state;
++
++	if (signal != GPIO_SIGNAL(DT_NODELABEL(gpio_soc_edp_bl_en)))
++		return;
++
++	state = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_soc_edp_bl_en));
++
++	LOG_INF("%s: %d", __func__, state);
++
++	if (state && lid_is_open()) {
++		hook_call_deferred(&touch_enable_data, TOUCH_ENABLE_DELAY_MS);
++	} else {
++		hook_call_deferred(&touch_disable_data, TOUCH_DISABLE_DELAY_MS);
++	}
++}
++
++static void touch_lid_change(void)
++{
++	if (!lid_is_open()) {
++		hook_call_deferred(&touch_disable_data, TOUCH_DISABLE_DELAY_MS);
++	} else {
++		if (gpio_pin_get_dt(
++			    GPIO_DT_FROM_NODELABEL(gpio_soc_edp_bl_en)) &&
++		    !gpio_pin_get_dt(
++			    GPIO_DT_FROM_NODELABEL(gpio_ec_touch_en))) {
++			hook_call_deferred(&touch_enable_data,
++					   TOUCH_ENABLE_DELAY_MS);
++		}
++	}
++}
++DECLARE_HOOK(HOOK_LID_CHANGE, touch_lid_change, HOOK_PRIO_DEFAULT);
+-- 
+2.43.0
+

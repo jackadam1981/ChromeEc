@@ -1,0 +1,422 @@
+From 1e457b78114ba57ba0b85bb6060e7b9defeed6f3 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 08:56:57 +0800
+Subject: [PATCH 05/19] matsu: Implement keyboard matrix
+
+Implement the customization matrix for matsu
+
+BUG=b:443612246
+TEST=zmake build matsu
+LOW_COVERAGE_REASON=b:444086749 will add test code after bring up.
+
+Change-Id: Ib799deff42270ce961db4e283e48debfd31dc8f9
+---
+ zephyr/program/ocelot/CMakeLists.txt          |   4 +-
+ zephyr/program/ocelot/matsu/generated.dtsi    |  59 -------
+ zephyr/program/ocelot/matsu/keyboard.dtsi     | 150 ++++++++++++++++++
+ zephyr/program/ocelot/matsu/project.conf      |   2 +
+ zephyr/program/ocelot/matsu/project.overlay   |  11 +-
+ .../ocelot/matsu/src/keyboard_customization.c |  98 ++++++++++++
+ 6 files changed, 253 insertions(+), 71 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/keyboard.dtsi
+ create mode 100644 zephyr/program/ocelot/matsu/src/keyboard_customization.c
+
+diff --git a/zephyr/program/ocelot/CMakeLists.txt b/zephyr/program/ocelot/CMakeLists.txt
+index 7a19d587d6..8fa1259840 100644
+--- a/zephyr/program/ocelot/CMakeLists.txt
++++ b/zephyr/program/ocelot/CMakeLists.txt
+@@ -36,9 +36,9 @@ endif()
+ if(DEFINED CONFIG_BOARD_MATSU)
+ 	project(matsu)
+ 	zephyr_library_sources("src/rvp_board_id.c")
+-	zephyr_library_sources("src/rvp_keyboard_customization.c")
+ 	zephyr_library_sources("src/rvp_board_power.c")
+-
++	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
++					"matsu/src/keyboard_customization.c")
+ endif()
+ 
+ zephyr_include_directories("include/")
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index 302937176a..12e583b343 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -227,62 +227,3 @@
+ 		&i2c5_data_gpe2_default>;
+ 	pinctrl-names = "default";
+ };
+-
+-&kbd {
+-	status = "okay";
+-	pinctrl-0 = <
+-		&ksi0_default
+-		&ksi1_default
+-		&ksi2_default
+-		&ksi4_default
+-		&ksi5_default
+-		&ksi6_default
+-		&ksi7_default
+-		&kso0_default
+-		&kso10_default
+-		&kso11_default
+-		&kso12_default
+-		&kso13_default
+-		&kso14_default
+-		&kso15_default
+-		&kso16_default
+-		&kso17_default
+-		&kso1_default
+-		&kso2_default
+-		&kso3_default
+-		&kso4_default
+-		&kso5_default
+-		&kso6_default
+-		&kso7_default
+-		&kso8_default
+-		&kso9_default
+-	>;
+-	pinctrl-1 = <
+-		&ksi0_sleep
+-		&ksi1_sleep
+-		&ksi2_sleep
+-		&ksi4_sleep
+-		&ksi5_sleep
+-		&ksi6_sleep
+-		&ksi7_sleep
+-		&kso0_sleep
+-		&kso10_sleep
+-		&kso11_sleep
+-		&kso12_sleep
+-		&kso13_sleep
+-		&kso14_sleep
+-		&kso15_sleep
+-		&kso16_sleep
+-		&kso17_sleep
+-		&kso1_sleep
+-		&kso2_sleep
+-		&kso3_sleep
+-		&kso4_sleep
+-		&kso5_sleep
+-		&kso6_sleep
+-		&kso7_sleep
+-		&kso8_sleep
+-		&kso9_sleep
+-	>;
+-	pinctrl-names = "default", "sleep";
+-};
+diff --git a/zephyr/program/ocelot/matsu/keyboard.dtsi b/zephyr/program/ocelot/matsu/keyboard.dtsi
+new file mode 100644
+index 0000000000..ff33b0874b
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/keyboard.dtsi
+@@ -0,0 +1,150 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++/ {
++	chosen {
++		cros-ec,keyboard = &kbd;
++	};
++
++	kblight: kblight {
++		compatible = "cros-ec,kblight-pwm";
++		pwms = <&pwm1 PWM_CHANNEL_1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
++	};
++
++};
++
++&vivaldi_kbd {
++	vivaldi-keys = <VIVALDI_KEYS_STRAUSS_T14>;
++
++	kbd_config_0: kbd-config-0 {
++		vivaldi-codes = <
++			VIVALDI_TK_BACK               /* T1 */
++			VIVALDI_TK_REFRESH            /* T2 */
++			VIVALDI_TK_FULLSCREEN         /* T3 */
++			VIVALDI_TK_OVERVIEW           /* T4 */
++			VIVALDI_TK_SNAPSHOT           /* T5 */
++			VIVALDI_TK_BRIGHTNESS_DOWN    /* T6 */
++			VIVALDI_TK_BRIGHTNESS_UP      /* T7 */
++			VIVALDI_TK_KBD_BKLIGHT_TOGGLE /* T8 */
++			VIVALDI_TK_DICTATE            /* T9 */
++			VIVALDI_TK_ACCESSIBILITY      /* T10 */
++			VIVALDI_TK_MICMUTE            /* T11 */
++			VIVALDI_TK_VOL_MUTE           /* T12 */
++			VIVALDI_TK_VOL_DOWN           /* T13 */
++			VIVALDI_TK_VOL_UP             /* T14 */
++		>;
++		capabilities = <(VIVALDI_KEYBD_CAP_FUNCTION_KEYS |
++				VIVALDI_KEYBD_CAP_SCRNLOCK_KEY |
++				VIVALDI_KEYBD_CAP_ASSISTANT_KEY)
++		>;
++	};
++};
++
++&kbd {
++	status = "okay";
++
++	pinctrl-0 = <
++		&ksi0_default
++		&ksi1_default
++		&ksi2_default
++		&ksi3_default
++		&ksi4_default
++		&ksi5_default
++		&ksi6_default
++		&ksi7_default
++		&kso0_default
++		&kso1_default
++		&kso3_default
++		&kso4_default
++		&kso5_default
++		&kso6_default
++		&kso7_default
++		&kso8_default
++		&kso9_default
++		&kso10_default
++		&kso11_default
++		&kso12_default
++		&kso13_default
++		&kso14_default
++		&kso15_default
++		&kso16_default
++		&kso17_default
++	>;
++        pinctrl-1 = <
++		&ksi0_sleep
++		&ksi1_sleep
++		&ksi2_sleep
++		&ksi4_sleep
++		&ksi5_sleep
++		&ksi6_sleep
++		&ksi7_sleep
++		&kso0_sleep
++		&kso10_sleep
++		&kso11_sleep
++		&kso12_sleep
++		&kso13_sleep
++		&kso14_sleep
++		&kso15_sleep
++		&kso16_sleep
++		&kso17_sleep
++		&kso1_sleep
++		&kso2_sleep
++		&kso3_sleep
++		&kso4_sleep
++		&kso5_sleep
++		&kso6_sleep
++		&kso7_sleep
++		&kso8_sleep
++		&kso9_sleep
++	>;
++	pinctrl-names = "default", "sleep";
++	row-size = <8>;
++	col-size = <18>;
++	kso-ignore-mask = <04>;
++	debounce-down-ms = <15>;
++	debounce-up-ms = <15>;
++	actual-key-mask = <
++		0x08  /* C0 */
++		0xff  /* C1 */
++		0xff  /* C2 */
++		0xff  /* C3 */
++		0xff  /* C4 */
++		0xff  /* C5 */
++		0xff  /* C6 */
++		0xa0  /* C7 */
++		0xff  /* C8 */
++		0xff  /* C9 */
++		0x01  /* C10 */
++		0xff  /* C11 */
++		0xff  /* C12 */
++		0x40  /* C13 */
++		0x0a  /* C14 */
++		0x40  /* C15 */
++		0x01  /* C16 */
++		0xc4  /* C17 */
++	>;
++
++	kso-gpio {
++		compatible = "cros-ec,col-gpio";
++		col-num = <2>;
++		col-gpios = <&gpioksol 2 GPIO_ACTIVE_LOW>;
++	};
++
++	boot-keys {
++		compatible = "cros-ec,boot-keys";
++		down-arrow-rc = <KBD_RC(6, 11)>;
++		esc-rc = <KBD_RC(1, 1)>;
++		left-shift-rc = <KBD_RC(5, 7)>;
++		refresh-rc = <KBD_RC(3, 2)>;
++	};
++
++	runtime-keys {
++		compatible = "cros-ec,runtime-keys";
++		left-alt-rc = <KBD_RC(6, 13)>;
++		right-alt-rc = <KBD_RC(0, 10)>;
++		h-rc = <KBD_RC(1, 6)>;
++		r-rc = <KBD_RC(7, 9)>;
++	};
++};
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index efad3d62f5..76af2e1434 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -6,6 +6,8 @@
+ 
+ CONFIG_BOARD_MATSU=y
+ 
++CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION=y
++
+ # Disable options not yet configured
+ 
+ # PDC
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index 13b6174992..719cd37565 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -45,6 +45,7 @@ tach_fan0: &tach0 {};
+ 
+ #include "adc.dtsi"
+ #include "fan.dtsi"
++#include "keyboard.dtsi"
+ #include "pwm.dtsi"
+ #include "usba.dtsi"
+ #include "usb_typec.dtsi"
+@@ -53,7 +54,6 @@ tach_fan0: &tach0 {};
+ #include "../rvp_battery.dtsi"
+ #include "../rvp_i2c.dtsi"
+ #include "../rvp_interrupts.dtsi"
+-#include "../rvp_keyboard.dtsi"
+ #include "../rvp_temp_sensors.dtsi"
+ #include "../rvp_ioex_gpio.dtsi"
+ #include <ite/it8801-common-cfg.dtsi>
+@@ -74,10 +74,6 @@ tach_fan0: &tach0 {};
+ 			enum-name = "GPIO_ENTERING_RW";
+ 		};
+ 	};
+-
+-	chosen {
+-		cros-ec,keyboard = &kbd;
+-	};
+ };
+ 
+ &espi0 {
+@@ -88,8 +84,3 @@ tach_fan0: &tach0 {};
+ 	status = "okay";
+ };
+ 
+-/* Update board-specific references  */
+-
+-&kblight {
+-	pwms = <&pwm1 PWM_CHANNEL_1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
+-};
+diff --git a/zephyr/program/ocelot/matsu/src/keyboard_customization.c b/zephyr/program/ocelot/matsu/src/keyboard_customization.c
+new file mode 100644
+index 0000000000..8366eebc57
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/src/keyboard_customization.c
+@@ -0,0 +1,98 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++#include "common.h"
++#include "gpio.h"
++#include "keyboard_8042_sharedlib.h"
++#include "keyboard_config.h"
++#include "keyboard_protocol.h"
++#include "keyboard_raw.h"
++
++#include <zephyr/drivers/gpio.h>
++
++static uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
++	{ 0x0000, 0x0000, 0x0000, 0xe01f, 0x0000, 0x0000, 0x0000, 0x0000 },
++	{ 0x0078, 0x0076, 0x000d, 0x000e, 0x001c, 0x0016, 0x001a, 0x003c },
++	{ 0x0005, 0x000c, 0x0004, 0x0006, 0x0023, 0x0041, 0x0026, 0x0043 },
++	{ 0x0032, 0x0034, 0x002c, 0x002e, 0x002b, 0x0049, 0x0025, 0x0044 },
++	{ 0x0009, 0x0083, 0x000b, 0x001b, 0x0003, 0x004a, 0x001e, 0x004d },
++	{ 0x0031, 0x0007, 0x005b, 0x000f, 0x0042, 0x0021, 0x003e, 0x0015 },
++	{ 0x0051, 0x0033, 0x0035, 0x004e, 0x003b, 0x0029, 0x0045, 0x001d },
++	{ 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0012, 0x0000, 0x0059 },
++	{ 0x0055, 0x0052, 0x0054, 0x0036, 0x004c, 0x0022, 0x003d, 0x0024 },
++	{ 0xe06c, 0x0001, 0xe071, 0x002f, 0x004b, 0x002a, 0x0046, 0x002d },
++	{ 0xe011, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000 },
++	{ 0x0017, 0x0066, 0x000a, 0x005d, 0x005a, 0x003a, 0xe072, 0xe075 },
++	{ 0x001f, 0x0064, 0xe07d, 0x0067, 0xe069, 0xe07a, 0xe074, 0xe06b },
++	{ 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0011, 0x0000 },
++	{ 0x0000, 0x0014, 0x0000, 0xe014, 0x0000, 0x0000, 0x0000, 0x0000 },
++	{ 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0027, 0x0000 },
++	{ 0x0037, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000 },
++	{ 0x0000, 0x0000, 0x006a, 0x0000, 0x0000, 0x0000, 0x005d, 0x0061 },
++};
++
++uint16_t get_scancode_set2(uint8_t row, uint8_t col)
++{
++	if (col < KEYBOARD_COLS_MAX && row < KEYBOARD_ROWS) {
++		return scancode_set2[col][row];
++	}
++	return 0;
++}
++
++void set_scancode_set2(uint8_t row, uint8_t col, uint16_t val)
++{
++	if (col < KEYBOARD_COLS_MAX && row < KEYBOARD_ROWS) {
++		scancode_set2[col][row] = val;
++	}
++}
++
++#ifdef CONFIG_KEYBOARD_DEBUG
++static uint8_t keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_SEARC, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO },
++	{ KLLI_F11, KLLI_ESC, KLLI_TAB, '~', 'a', '1', 'z', 'u' },
++	{ KLLI_F1, KLLI_F4, KLLI_F3, KLLI_F2, 'd', ',', '3', 'i' },
++	{ 'b', 'g', 't', '5', 'f', '.', '4', 'o' },
++	{ KLLI_F10, KLLI_F7, KLLI_F6, 's', KLLI_F5, '/', '2', 'p' },
++	{ 'n', KLLI_F12, ']', KLLI_F13, 'k', 'c', '8', 'q' },
++	{ KLLI_UNKNO, 'h', 'y', '-', 'j', KLLI_SPACE, '0', 'w' },
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_L_SHT, KLLI_UNKNO, KLLI_R_SHT },
++	{ '=', '\'', '[', '6', ';', 'x', '7', 'e' },
++	{ KLLI_UNKNO, KLLI_F9, KLLI_UNKNO, KLLI_UNKNO, 'l', 'v', '9',
++	  'r' }, /*delete at 2*/
++	{ KLLI_R_ALT, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO },
++	{ KLLI_F14, KLLI_B_SPC, KLLI_F8, KLLI_UNKNO, KLLI_ENTER, 'm', KLLI_DOWN,
++	  KLLI_UP },
++	{ KLLI_F15, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_RIGHT, KLLI_LEFT },
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_L_ALT, KLLI_UNKNO },
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO },
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO },
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO },
++	{ KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
++	  KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO },
++};
++
++uint8_t get_keycap_label(uint8_t row, uint8_t col)
++{
++	if (col < KEYBOARD_COLS_MAX && row < KEYBOARD_ROWS) {
++		return keycap_label[col][row];
++	}
++	return KLLI_UNKNO;
++}
++
++void set_keycap_label(uint8_t row, uint8_t col, uint8_t val)
++{
++	if (col < KEYBOARD_COLS_MAX && row < KEYBOARD_ROWS) {
++		keycap_label[col][row] = val;
++	}
++}
++#endif
+-- 
+2.43.0
+

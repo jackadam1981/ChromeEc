@@ -1,0 +1,332 @@
+From 83ee9658b826458203c56f1cbc6953d772901b77 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:05:55 +0800
+Subject: [PATCH 07/19] matsu: Update power_signals and board_power
+
+Update power_signals and board_power
+
+BUG=b:443612246
+TEST=zmake build matsu
+LOW_COVERAGE_REASON=b:444086749 will add test code after bring up.
+
+Change-Id: I703ab74f08cb031fcf2d1682c18dab404868b30d
+---
+ zephyr/program/ocelot/CMakeLists.txt          |   3 +-
+ zephyr/program/ocelot/matsu/generated.dtsi    |   7 +-
+ .../program/ocelot/matsu/power_signals.dtsi   | 131 ++++++++++++++----
+ zephyr/program/ocelot/matsu/project.overlay   |   1 -
+ zephyr/program/ocelot/matsu/src/board_power.c | 109 +++++++++++++++
+ 5 files changed, 216 insertions(+), 35 deletions(-)
+ create mode 100644 zephyr/program/ocelot/matsu/src/board_power.c
+
+diff --git a/zephyr/program/ocelot/CMakeLists.txt b/zephyr/program/ocelot/CMakeLists.txt
+index 8fa1259840..ae02172e5f 100644
+--- a/zephyr/program/ocelot/CMakeLists.txt
++++ b/zephyr/program/ocelot/CMakeLists.txt
+@@ -35,8 +35,7 @@ endif()
+ 
+ if(DEFINED CONFIG_BOARD_MATSU)
+ 	project(matsu)
+-	zephyr_library_sources("src/rvp_board_id.c")
+-	zephyr_library_sources("src/rvp_board_power.c")
++	zephyr_library_sources("matsu/src/board_power.c")
+ 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+ 					"matsu/src/keyboard_customization.c")
+ endif()
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index 12e583b343..28698c1971 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -76,8 +76,7 @@
+ 		gpio_c_ioex_kbd_intr_r: c_ioex_kbd_intr_r {
+ 			gpios = <&gpioi 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+ 		};
+-		gpio_c_mecc_cse_early_sw_r: c_mecc_cse_early_sw_r {
+-			// signal name was manually overriden from "x00085"
++		gpio_cse_early_rec_sw: cse_early_rec_sw {
+ 			gpios = <&gpioj 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+ 		};
+ 		gpio_en_pp5000_fan: en_pp5000_fan {
+@@ -159,8 +158,10 @@
+ 		gpio_prochot_ec_n_r: prochot_ec_n_r {
+ 			gpios = <&gpioi 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+ 		};
+-		gpio_rst_push_n_d_r: rst_push_n_d_r {
++		gpio_sys_rst_odl: sys_rst_odl {
+ 			gpios = <&gpioj 7 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
++			enum-name = "GPIO_SYS_RST_ODL";
++			no-auto-init;
+ 		};
+ 		gpio_smc_wake_sci_n_r: smc_wake_sci_n_r {
+ 			gpios = <&gpiob 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+diff --git a/zephyr/program/ocelot/matsu/power_signals.dtsi b/zephyr/program/ocelot/matsu/power_signals.dtsi
+index 8acd369f86..90d3874bd4 100644
+--- a/zephyr/program/ocelot/matsu/power_signals.dtsi
++++ b/zephyr/program/ocelot/matsu/power_signals.dtsi
+@@ -3,34 +3,107 @@
+  * found in the LICENSE file.
+  */
+ 
+-#include "../power_signals.dtsi"
++/ {
++	chosen {
++		intel-ap-pwrseq,espi = &espi0;
++	};
+ 
+-&pwr_en_pp3300_a {
+-        /* EC_DS3 net. This connects to the PRIM_VR_EN signal and
+-         * both the EN1 and EN2 pins on the RT6585 LDO. */
+-	gpios = <&gpioi 7 GPIO_ACTIVE_HIGH>;
+-};
+-&pwr_rsmrst_pwrgd {
+-        /* RSMRST_PWRGD_N_R net  */
+-	gpios = <&gpiof 0 GPIO_ACTIVE_HIGH>;
+-};
+-&pwr_ec_pch_rsmrst {
+-        /* RM_RSMST_N_R net */
+-	gpios = <&gpioj 0 GPIO_ACTIVE_LOW>;
+-};
+-&pwr_slp_s0 {
+-        /* PCH_SLP_S0_N_R net */
+-	gpios = <&gpioj 5 GPIO_ACTIVE_LOW>;
+-};
+-&pwr_pch_pwrok {
+-        /* PCH_PWROK_EC_R net */
+-	gpios = <&gpioj 1 GPIO_OPEN_DRAIN>;
+-};
+-&pwr_all_sys_pwrgd {
+-        /* ALL_SYS_PWRGD_R net */
+-	gpios = <&gpiod 5 GPIO_ACTIVE_HIGH>;
+-};
+-&pwr_sys_rst {
+-        gpios = <&gpioj 7 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
+-};
++	common-pwrseq {
++		compatible = "intel,ap-pwrseq";
+ 
++		sys-pwrok-delay = <3>;
++		all-sys-pwrgd-timeout = <20>;
++		sys-reset-delay = <60>;
++	};
++
++	pwr-en-s5-rails {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "EN_S5_RAILS enable output for PP5000/PP3300";
++		enum-name = "PWR_EN_PP5000_A";
++		gpios = <&gpioi 7 0>;
++		output;
++	};
++	pwr_rsmrst_pwrgd: rsmrst-pwrgd-ec-n {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "RSMRST power good from regulator";
++		enum-name = "PWR_RSMRST_PWRGD";
++		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
++                /* RSMRST_PWRGD_N_R net  */
++	        gpios = <&gpiof 0 0>;
++	};
++	pwr_ec_pch_rsmrst: pm-rsmrst-ec-n {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "RSMRST output to PCH";
++		enum-name = "PWR_EC_PCH_RSMRST";
++                /* RM_RSMST_N_R net */
++	        gpios = <&gpioj 0 GPIO_ACTIVE_LOW>;
++		reset-val = <1>;
++		output;
++	};
++	pwr_slp_s0: pm-slp-s0-r-n {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "SLP_S0_L input from PCH";
++		enum-name = "PWR_SLP_S0";
++		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
++                /* PCH_SLP_S0_N_R net */
++	        gpios = <&gpioj 5 GPIO_ACTIVE_LOW>;
++	};
++	pwr_pch_pwrok: ec-pm-pch-pwrok {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "PCH_PWROK output to PCH";
++		enum-name = "PWR_PCH_PWROK";
++                /* PCH_PWROK_EC_R net */
++	        gpios = <&gpioj 1 GPIO_ACTIVE_HIGH>;
++		output;
++	};
++	pwr_ec_pch_sys_pwrok: pwr-ec-pch-sys-pwrok {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "SYS_PWROK output to PCH";
++		enum-name = "PWR_EC_PCH_SYS_PWROK";
++		gpios = <&gpiof 1 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
++		output;
++	};
++	pwr-slp-s3 {
++		compatible = "intel,ap-pwrseq-vw";
++		dbg-label = "SLP_S3 virtual wire input from PCH";
++		enum-name = "PWR_SLP_S3";
++		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S3";
++		reset-val = <1>;
++		vw-invert;
++	};
++	pwr-slp-s4 {
++		compatible = "intel,ap-pwrseq-vw";
++		dbg-label = "SLP_S4 virtual wire input from PCH";
++		enum-name = "PWR_SLP_S4";
++		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
++		reset-val = <1>;
++		vw-invert;
++	};
++	pwr-slp-s5 {
++		compatible = "intel,ap-pwrseq-vw";
++		dbg-label = "SLP_S5 virtual wire input from PCH";
++		enum-name = "PWR_SLP_S5";
++		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S5";
++		reset-val = <1>;
++		vw-invert;
++	};
++	pwr_all_sys_pwrgd: all_sys_pwrgd {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "all power good";
++		enum-name = "PWR_ALL_SYS_PWRGD";
++		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
++                /* ALL_SYS_PWRGD_R net */
++	        gpios = <&gpiod 5 GPIO_ACTIVE_HIGH>;
++	};
++	pwr_sys_rst: pwr-sys-rst-l {
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "SYS_RESET# output to PCH";
++		enum-name = "PWR_SYS_RST";
++                gpios = <&gpioj 7 (GPIO_ACTIVE_LOW|GPIO_OPEN_DRAIN)>;
++		output;
++	};
++	ap-power {
++		compatible = "ap-pwrseq-sub-states";
++		chipset = "S0ix";
++	};
++};
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index a5bcaa8482..1967c02d48 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -38,7 +38,6 @@ gpio_temp_sensor_power_good: &gpio_en_s5_rails {};
+ 
+ /* Power sequencing */
+ gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
+-cse_early_rec_sw: &gpio_c_mecc_cse_early_sw_r{};
+ 
+ /* Map tachometers to common names */
+ tach_fan0: &tach0 {};
+diff --git a/zephyr/program/ocelot/matsu/src/board_power.c b/zephyr/program/ocelot/matsu/src/board_power.c
+new file mode 100644
+index 0000000000..48100393b3
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/src/board_power.c
+@@ -0,0 +1,109 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++#include "gpio.h"
++#include "gpio_signal.h"
++#include "include/system.h"
++#include "system_boot_time.h"
++
++#include <zephyr/drivers/gpio.h>
++#include <zephyr/logging/log.h>
++
++#include <power_signals.h>
++#ifdef CONFIG_AP_PWRSEQ_DRIVER
++#include <ap_power/ap_pwrseq_sm.h>
++#endif
++
++LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
++
++#define X86_NON_DSX_FORCE_SHUTDOWN_TO_MS 50
++
++/* Power cycling primary rail requires at least 30 ms 'off' time */
++#define BOARD_OCELOT_MINIMUM_POWER_DOWN_DELAY_MS 30
++
++void board_ap_power_force_shutdown(void)
++{
++	int timeout_ms = X86_NON_DSX_FORCE_SHUTDOWN_TO_MS;
++
++	/* Turn off PCH_RMSRST to meet tPCH12 */
++	power_signal_set(PWR_EC_PCH_RSMRST, 1);
++
++	power_signal_set(PWR_EN_PP5000_A, 0);
++	/* Wait RSMRST to be off. */
++	while (power_signal_get(PWR_RSMRST_PWRGD) && (timeout_ms > 0)) {
++		k_msleep(1);
++		timeout_ms--;
++	};
++
++	if (power_signal_get(PWR_RSMRST_PWRGD))
++		LOG_WRN("RSMRST_PWRGD didn't go low!  Assuming G3.");
++
++	k_msleep(BOARD_OCELOT_MINIMUM_POWER_DOWN_DELAY_MS);
++}
++
++#ifdef CONFIG_AP_PWRSEQ_DRIVER
++int board_ap_power_action_g3_entry(void *data)
++{
++	board_ap_power_force_shutdown();
++
++	return 0;
++}
++
++static int board_ap_power_action_g3_run(void *data)
++{
++	if (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
++		LOG_DBG("Turning on EN_S5_RAILS");
++		power_signal_set(PWR_EN_PP5000_A, 1);
++
++		/* Indication to soc on recovery boot */
++		if (system_is_manual_recovery()) {
++			gpio_pin_set_dt(
++				GPIO_DT_FROM_NODELABEL(gpio_cse_early_rec_sw),
++				1);
++		} else {
++			gpio_pin_set_dt(
++				GPIO_DT_FROM_NODELABEL(gpio_cse_early_rec_sw),
++				0);
++		}
++
++		update_ap_boot_time(ARAIL);
++	}
++
++	/* Return 0 only if power rails have been enabled  */
++	return !power_signal_get(PWR_EN_PP5000_A);
++}
++
++AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_action_g3_entry,
++			  board_ap_power_action_g3_run, NULL);
++#endif /* CONFIG_AP_PWRSEQ_DRIVER */
++
++int power_signal_external_init(void)
++{
++	return 0;
++}
++
++int board_power_signal_get(enum power_signal signal)
++{
++	switch (signal) {
++	case PWR_EC_PCH_SYS_PWROK:
++		return power_signal_get(PWR_PCH_PWROK);
++	case PWR_SYS_RST:
++		return gpio_pin_get_dt(
++			GPIO_DT_FROM_NODELABEL(gpio_sys_rst_odl));
++	default:
++		return -EINVAL;
++	}
++}
++
++int board_power_signal_set(enum power_signal signal, int value)
++{
++	switch (signal) {
++	case PWR_SYS_RST:
++		return gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_sys_rst_odl),
++				       value);
++	default:
++		return -EINVAL;
++	}
++}
+-- 
+2.43.0
+

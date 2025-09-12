@@ -1,0 +1,237 @@
+From abf4ba6dda0bafd91c4b4809e37cf4f5fe19c346 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:08:36 +0800
+Subject: [PATCH 08/19] matsu: Add led policy
+
+Add led policy
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: I5e59748640bfe3997e282feb04965e687a17ae9a
+---
+ zephyr/program/ocelot/matsu/generated.dtsi  |   6 +
+ zephyr/program/ocelot/matsu/led_pins.dtsi   |  29 ++++
+ zephyr/program/ocelot/matsu/led_policy.dtsi | 143 ++++++++++++++++++++
+ zephyr/program/ocelot/matsu/project.overlay |   2 +
+ 4 files changed, 180 insertions(+)
+ create mode 100644 zephyr/program/ocelot/matsu/led_pins.dtsi
+ create mode 100644 zephyr/program/ocelot/matsu/led_policy.dtsi
+
+diff --git a/zephyr/program/ocelot/matsu/generated.dtsi b/zephyr/program/ocelot/matsu/generated.dtsi
+index 28698c1971..8b52822277 100644
+--- a/zephyr/program/ocelot/matsu/generated.dtsi
++++ b/zephyr/program/ocelot/matsu/generated.dtsi
+@@ -181,6 +181,12 @@
+ 		gpio_wc_usbc_pd_alrt_aic2_r: wc_usbc_pd_alrt_aic2_r {
+ 			gpios = <&gpioj 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+ 		};
++		gpio_led_1_l: led_1_l {
++			gpios = <&gpioa 2 GPIO_OUTPUT_HIGH>;
++		};
++		gpio_led_2_l: led_2_l {
++			gpios = <&gpioa 3 GPIO_OUTPUT_HIGH>;
++		};
+ 	};
+ 
+ 	unused-pins {
+diff --git a/zephyr/program/ocelot/matsu/led_pins.dtsi b/zephyr/program/ocelot/matsu/led_pins.dtsi
+new file mode 100644
+index 0000000000..2e1d80969a
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/led_pins.dtsi
+@@ -0,0 +1,29 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++/ {
++	gpio-led-pins {
++		compatible = "cros-ec,gpio-led-pins";
++
++		batt_led: batt-led {
++			led-id = "EC_LED_ID_BATTERY_LED";
++			led-pins = <&gpio_led_1_l &gpio_led_2_l>;
++			color_off: color-off {
++				led-color = "LED_OFF";
++				led-values = <1 1>;
++			};
++
++			color_amber: color-amber {
++				led-color = "LED_AMBER";
++				led-values = <0 1>;
++			};
++
++			color_blue: color-blue {
++				led-color = "LED_BLUE";
++				led-values = <1 0>;
++			};
++		};
++	};
++};
+diff --git a/zephyr/program/ocelot/matsu/led_policy.dtsi b/zephyr/program/ocelot/matsu/led_policy.dtsi
+new file mode 100644
+index 0000000000..69b7a98340
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/led_policy.dtsi
+@@ -0,0 +1,143 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++#include <dt-bindings/battery.h>
++
++/ {
++	led-colors {
++		compatible = "cros-ec,led-policy";
++
++		power-state-near-full {
++			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
++
++			/* Turn on Blue LED */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_BLUE";
++				};
++			};
++		};
++
++		power-state-charge-full {
++			charge-state = "LED_PWRS_CHARGE";
++			/* Battery percent range 97..100 */
++			batt-lvl = <97 100>;
++
++			/* Turn on Blue LED */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_BLUE";
++				};
++			};
++		};
++
++		power-state-charge {
++			charge-state = "LED_PWRS_CHARGE";
++			/* Battery percent range 0..96 */
++			batt-lvl = <0 96>;
++
++			/* Turn on Amber LED */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_AMBER";
++				};
++			};
++		};
++
++		power-state-discharge-s0 {
++			charge-state = "LED_PWRS_DISCHARGE";
++			chipset-state = "POWER_S0";
++
++			/* Turn on Blue LED */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_BLUE";
++				};
++			};
++		};
++
++		power-state-discharge-s3 {
++			charge-state = "LED_PWRS_DISCHARGE";
++			chipset-state = "POWER_S3";
++
++			/* One sec Amber, three secs Off */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_AMBER";
++					period-ms = <1000>;
++				};
++				color-1 {
++					led-color = "LED_OFF";
++					period-ms = <3000>;
++				};
++			};
++		};
++
++		power-state-discharge-s5 {
++			charge-state = "LED_PWRS_DISCHARGE";
++			chipset-state = "POWER_S5";
++
++			/* Turn off */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_OFF";
++				};
++			};
++		};
++
++		power-state-forced-idle {
++			charge-state = "LED_PWRS_FORCED_IDLE";
++
++			/* 2 secs Amber, 2 secs Blue */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_AMBER";
++					period-ms = <2000>;
++				};
++				color-1 {
++					led-color = "LED_BLUE";
++					period-ms = <2000>;
++				};
++			};
++		};
++
++		power-state-idle {
++			charge-state = "LED_PWRS_IDLE";
++
++			/* Turn on Blue LED */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_BLUE";
++				};
++			};
++		};
++
++		power-state-error {
++			charge-state = "LED_PWRS_ERROR";
++
++			/* One sec Amber, one sec Off */
++			batt-led {
++				led-id = "EC_LED_ID_BATTERY_LED";
++				color-0 {
++					led-color = "LED_AMBER";
++					period-ms = <1000>;
++				};
++				color-1 {
++					led-color = "LED_OFF";
++					period-ms = <1000>;
++				};
++			};
++		};
++
++	};
++};
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index 1967c02d48..6d3abc5e98 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -46,6 +46,8 @@ tach_fan0: &tach0 {};
+ #include "console.dtsi"
+ #include "fan.dtsi"
+ #include "keyboard.dtsi"
++#include "led_pins.dtsi"
++#include "led_policy.dtsi"
+ #include "pwm.dtsi"
+ #include "usba.dtsi"
+ #include "usb_typec.dtsi"
+-- 
+2.43.0
+

@@ -1,0 +1,71 @@
+From b5aea37e90321390620cae5ec14de3a1f2ab1734 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:17:48 +0800
+Subject: [PATCH 13/19] matsu: Disable SLP_S3/S4 Virtual Wires
+
+Disable SLP_S3/S4 Virtual Wires
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: I8cf1c5f106ba9259a904fab898446811d264d4fb
+---
+ zephyr/program/ocelot/matsu/power_signals.dtsi | 18 ++++++++----------
+ zephyr/program/ocelot/matsu/project.conf       |  8 ++++++++
+ 2 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/zephyr/program/ocelot/matsu/power_signals.dtsi b/zephyr/program/ocelot/matsu/power_signals.dtsi
+index 90d3874bd4..d86dc20d48 100644
+--- a/zephyr/program/ocelot/matsu/power_signals.dtsi
++++ b/zephyr/program/ocelot/matsu/power_signals.dtsi
+@@ -64,20 +64,18 @@
+ 		output;
+ 	};
+ 	pwr-slp-s3 {
+-		compatible = "intel,ap-pwrseq-vw";
+-		dbg-label = "SLP_S3 virtual wire input from PCH";
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "SLP_S3_L input from PCH";
+ 		enum-name = "PWR_SLP_S3";
+-		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S3";
+-		reset-val = <1>;
+-		vw-invert;
++		gpios = <&gpioh 3 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
++		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+ 	};
+ 	pwr-slp-s4 {
+-		compatible = "intel,ap-pwrseq-vw";
+-		dbg-label = "SLP_S4 virtual wire input from PCH";
++		compatible = "intel,ap-pwrseq-gpio";
++		dbg-label = "SLP_S4_L input from PCH";
+ 		enum-name = "PWR_SLP_S4";
+-		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
+-		reset-val = <1>;
+-		vw-invert;
++		gpios = <&gpioh 4 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
++		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+ 	};
+ 	pwr-slp-s5 {
+ 		compatible = "intel,ap-pwrseq-vw";
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index 6b2992c2d5..98a844007e 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -8,6 +8,14 @@ CONFIG_BOARD_MATSU=y
+ 
+ CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION=y
+ 
++# AP to EC communication
++CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S3=n
++CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S4=n
++CONFIG_PLATFORM_EC_HOST_INTERFACE_ESPI_VW_SLP_S5=y
++CONFIG_PLATFORM_EC_POWER_BUTTON_IGNORE_LID=y
++CONFIG_PLATFORM_EC_CMD_BUTTON=y
++CONFIG_HCDEBUG_OFF=y
++
+ # Lid
+ CONFIG_PLATFORM_EC_BACKLIGHT_LID=y
+ 
+-- 
+2.43.0
+

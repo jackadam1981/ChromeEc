@@ -1,0 +1,34 @@
+From 7d471555a1269fe197a8fe7fd3af4b662dcd3318 Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 09:40:30 +0800
+Subject: [PATCH 17/19] matsu: Enable SERIAL/KERNEL/ZEPHYR in ram
+
+Move SERIAL, KERNEL, and ZEPHYR code to ram.
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: Ifdf484d9e2b2afe6ad7805594360b2c421b965be
+---
+ zephyr/program/ocelot/matsu/project.conf | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/zephyr/program/ocelot/matsu/project.conf b/zephyr/program/ocelot/matsu/project.conf
+index 289f2c323e..69683b9ebc 100644
+--- a/zephyr/program/ocelot/matsu/project.conf
++++ b/zephyr/program/ocelot/matsu/project.conf
+@@ -22,6 +22,11 @@ CONFIG_PLATFORM_EC_BACKLIGHT_LID=y
+ # EFS2
+ CONFIG_PLATFORM_EC_VBOOT_EFS2=y
+ 
++# Link some code into RAM to improve performance.
++CONFIG_SOC_IT8XXX2_SERIAL_IN_RAM=y
++CONFIG_SOC_IT8XXX2_KERNEL_IN_RAM=y
++CONFIG_SOC_IT8XXX2_ZEPHYR_IN_RAM=y
++
+ # Disable options not yet configured
+ CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT=n
+ CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO=n
+-- 
+2.43.0
+

@@ -1,0 +1,61 @@
+From adf4acbd7ea60c9c49c9d65b19750b929324aa7f Mon Sep 17 00:00:00 2001
+From: Yu-An <yu-an.chen@quanta.corp-partner.google.com>
+Date: Fri, 12 Sep 2025 08:58:05 +0800
+Subject: [PATCH 06/19] matsu: Add console and uart configs
+
+Add console and uart configs
+
+BUG=b:443612246
+TEST=zmake build matsu
+
+Change-Id: Iab4a66a28c8505fe401665743d13d2b5f880efc4
+---
+ zephyr/program/ocelot/matsu/console.dtsi    | 23 +++++++++++++++++++++
+ zephyr/program/ocelot/matsu/project.overlay |  1 +
+ 2 files changed, 24 insertions(+)
+ create mode 100644 zephyr/program/ocelot/matsu/console.dtsi
+
+diff --git a/zephyr/program/ocelot/matsu/console.dtsi b/zephyr/program/ocelot/matsu/console.dtsi
+new file mode 100644
+index 0000000000..0c04aa2761
+--- /dev/null
++++ b/zephyr/program/ocelot/matsu/console.dtsi
+@@ -0,0 +1,23 @@
++/* Copyright 2025 The ChromiumOS Authors
++ * Use of this source code is governed by a BSD-style license that can be
++ * found in the LICENSE file.
++ */
++
++/ {
++	chosen {
++		zephyr,console = &uart1;
++		zephyr,shell-uart = &uart1;
++	};
++};
++
++&uart1 {
++	status = "okay";
++	current-speed = <115200>;
++};
++
++&ite_uart1_wrapper {
++	status = "okay";
++	pinctrl-0 = <&uart1_rx_gpb0_default
++		     &uart1_tx_gpb1_default>;
++	pinctrl-names = "default";
++};
+diff --git a/zephyr/program/ocelot/matsu/project.overlay b/zephyr/program/ocelot/matsu/project.overlay
+index 719cd37565..a5bcaa8482 100644
+--- a/zephyr/program/ocelot/matsu/project.overlay
++++ b/zephyr/program/ocelot/matsu/project.overlay
+@@ -44,6 +44,7 @@ cse_early_rec_sw: &gpio_c_mecc_cse_early_sw_r{};
+ tach_fan0: &tach0 {};
+ 
+ #include "adc.dtsi"
++#include "console.dtsi"
+ #include "fan.dtsi"
+ #include "keyboard.dtsi"
+ #include "pwm.dtsi"
+-- 
+2.43.0
+
