@@ -46,6 +46,8 @@ tach_fan0: &tach0 {};
 #include "console.dtsi"
 #include "fan.dtsi"
 #include "keyboard.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
 #include "pwm.dtsi"
 #include "usba.dtsi"
 #include "usb_typec.dtsi"
