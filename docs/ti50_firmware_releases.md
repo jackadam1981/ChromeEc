@@ -9,6 +9,7 @@ This document captures major feature differences between Ti50 firmware releases
 ChromeOS Version    | DT PrePVT version | DT Prod Version | NT PrePVT version | NT Prod Version
 ------------------- | ----------------- | --------------- | ----------------- | ---------------
 [ToT][ToT ebuild]   | 0.24.220          | 0.23.210        | 0.34.220          | 0.33.210
+[M141][141 release] | 0.24.220          | 0.23.210        | 0.34.220          | 0.33.210
 [M140][140 release] | 0.24.210          | 0.23.190        | 0.33.210          | 0.33.210
 [M139][139 release] | 0.24.180          | 0.23.180        | 0.33.190          | 0.33.190
 [M138][138 release] | 0.24.172          | 0.23.160        | 0.33.190          | 0.33.190
@@ -1118,6 +1119,50 @@ Build:   0.{23,33}.210/ti50_common_mp-15980.B:v0.0.572-b52baab4
          tock:v0.0.9685-1f9552cfa
          ms-tpm-20-ref:v0.0.331-b94c999
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-riy1 2025-07-31 12:50:28
+```
+
+### 0.x3.230 Released in DT-M142 NT-M142
+
+DT/NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6944837)
+
+Builder
+[firmware-ti50-mp-15980.B-branch/95](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/95/overview)
+
+Artifacts:
+[15980.92.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.92.0/)
+
+
+**Features**
+
+*   Improve concurrent storage access reliability
+    [b/440146847](https://b.corp.google.com/issues/440146847)
+*   Increase TPM stack size for boot params
+    [b/425687205](https://b.corp.google.com/issues/425687205)
+
+**Bug Fixes**
+
+*   Don't touch EC\_RST\_L when flashrom sets custom\_rst to True
+    [b/437102147](https://b.corp.google.com/issues/437102147)
+
+**NT Specific Bug Fixes**
+
+*   Attach internal pull down to unused PWM3 as advertised
+    [b/428015277](https://b.corp.google.com/issues/428015277)
+*   Improve I2C-based TPM handling when AP asks for data and none is available
+    [b/437174404](https://b.corp.google.com/issues/437174404)
+    [b/432676100](https://b.corp.google.com/issues/432676100)
+*   Fix general release bid flags to `0:0:0` from `FFFF:0:0`
+    [b/438710823](https://b.corp.google.com/issues/438710823)
+*   Fix issue handling USB packets
+    [b/440944468](https://b.corp.google.com/issues/440944468)
+
+```
+Build:   0.{23,33}.230/ti50_common_tot:v0.0.1414-fd2d8291
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9673-2649e0509
+         ms-tpm-20-ref:v0.0.318-9942b1f
+         @chromeos-ci-firmware-us-central1-b-x32-0-zc52 2024-08-01 08:25:40
 ```
 
 ## PrePVT images
@@ -2493,6 +2538,35 @@ Build:   0.{24,34}.220/ti50_common_prepvt-15974.B:v0.0.608-1cbeaea7
          chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-9cy4 2025-08-21 11:00:58
 ```
 
+### 0.x4.230 Released in DT-M142 NT-M142
+
+DT/NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/6931217)
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/99](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/99/overview)
+
+Artifacts:
+[15974.98.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.98.0/)
+
+**Bug Fixes**
+
+*   Don't touch EC\_RST\_L when flashrom sets custom\_rst to True
+    [b/437102147](https://b.corp.google.com/issues/437102147)
+
+**NT Specific Bug Fixes**
+
+*   Fix issue handling USB packets
+    [b/440944468](https://b.corp.google.com/issues/440944468)
+
+```
+Build:   0.{24,34}.220/ti50_common_mp-15980.B:v0.0.617-31a0f4fa
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-1f9552cfa
+         ms-tpm-20-ref:v0.0.333-a4e3619
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-0-54av 2025-09-04 13:44:58
+```
+
 <!-- Links -->
 
 [105 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R105-14989.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
@@ -2531,4 +2605,5 @@ Build:   0.{24,34}.220/ti50_common_prepvt-15974.B:v0.0.608-1cbeaea7
 [138 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R138-16295.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [139 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R139-16328.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [140 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R140-16371.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[141 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R141-16404.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
