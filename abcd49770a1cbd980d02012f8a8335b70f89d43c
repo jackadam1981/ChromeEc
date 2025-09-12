@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee923a20_35ba764d",
+        "filename": "zephyr/shim/include/zephyr_write_protect.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-12T00:01:04Z",
+      "side": 1,
+      "message": "do we have one case that\u0027s active-low and one that\u0027s active-high?",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "abcd49770a1cbd980d02012f8a8335b70f89d43c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
