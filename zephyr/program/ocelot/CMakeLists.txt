@@ -38,7 +38,7 @@ if(DEFINED CONFIG_BOARD_MATSU)
 	zephyr_library_sources("src/rvp_board_id.c")
 	zephyr_library_sources("src/rvp_keyboard_customization.c")
 	zephyr_library_sources("src/rvp_board_power.c")
-	zephyr_library_sources("src/rvp_usbc_runtime.c")
+
 endif()
 
 zephyr_include_directories("include/")

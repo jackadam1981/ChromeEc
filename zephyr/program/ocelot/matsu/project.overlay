@@ -46,12 +46,13 @@ tach_fan0: &tach0 {};
 #include "adc.dtsi"
 #include "fan.dtsi"
 #include "pwm.dtsi"
+#include "usba.dtsi"
+#include "usb_typec.dtsi"
+
 #include "../ite_hibernate.dtsi"
-#include "../rvp_usba.dtsi"
 #include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
-#include "../rvp_usbc.dtsi"
 #include "../rvp_keyboard.dtsi"
 #include "../rvp_temp_sensors.dtsi"
 #include "../rvp_ioex_gpio.dtsi"
@@ -88,22 +89,6 @@ tach_fan0: &tach0 {};
 };
 
 /* Update board-specific references  */
-
-&pdc_rtk_c0 {
-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
-};
-
-&pdc_rtk_c1 {
-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
-};
-
-&pdc_ti_c0 {
-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
-};
-
-&pdc_ti_c1 {
-	irq-gpios = <&gpiof 5 GPIO_ACTIVE_LOW>;
-};
 
 &kblight {
 	pwms = <&pwm1 PWM_CHANNEL_1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
