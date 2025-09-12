@@ -44,6 +44,7 @@ cse_early_rec_sw: &gpio_c_mecc_cse_early_sw_r{};
 tach_fan0: &tach0 {};
 
 #include "adc.dtsi"
+#include "console.dtsi"
 #include "fan.dtsi"
 #include "keyboard.dtsi"
 #include "pwm.dtsi"
