@@ -38,6 +38,7 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
  * delay turning off power LED during suspend/shutdown.
  */
 #define PWR_LED_CPU_DELAY K_MSEC(2000)
+#define PWR_LED_CPU_DELAY_S5 K_MSEC(4500)
 
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 					     EC_LED_ID_POWER_LED };
@@ -456,7 +457,7 @@ static void pwr_led_shutdown_hook(void)
 {
 	k_timer_stop(&shutdown_timer);
 	k_timer_init(&shutdown_timer, pwr_led_shutdown, NULL);
-	k_timer_start(&shutdown_timer, PWR_LED_CPU_DELAY, K_FOREVER);
+	k_timer_start(&shutdown_timer, PWR_LED_CPU_DELAY_S5, K_FOREVER);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwr_led_shutdown_hook, HOOK_PRIO_DEFAULT);
 
