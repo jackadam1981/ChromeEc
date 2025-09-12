@@ -76,8 +76,7 @@
 		gpio_c_ioex_kbd_intr_r: c_ioex_kbd_intr_r {
 			gpios = <&gpioi 6 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
-		gpio_c_mecc_cse_early_sw_r: c_mecc_cse_early_sw_r {
-			// signal name was manually overriden from "x00085"
+		gpio_cse_early_rec_sw: cse_early_rec_sw {
 			gpios = <&gpioj 3 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_en_pp5000_fan: en_pp5000_fan {
@@ -159,8 +158,10 @@
 		gpio_prochot_ec_n_r: prochot_ec_n_r {
 			gpios = <&gpioi 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
-		gpio_rst_push_n_d_r: rst_push_n_d_r {
+		gpio_sys_rst_odl: sys_rst_odl {
 			gpios = <&gpioj 7 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_SYS_RST_ODL";
+			no-auto-init;
 		};
 		gpio_smc_wake_sci_n_r: smc_wake_sci_n_r {
 			gpios = <&gpiob 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
