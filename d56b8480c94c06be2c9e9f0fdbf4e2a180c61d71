@@ -56,6 +56,23 @@
       "message": "Al - can you update the PDC state machine diagram to match this change?  We should also figure out if we can use a command line tool such as graphviz to generate these diagrams instead of rendering a PNG.",
       "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0e6099_9412f0c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-12T22:43:42Z",
+      "side": 1,
+      "message": "Can you confirm the test procedure in https://crrev.com/c/5886885 still works?",
+      "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
