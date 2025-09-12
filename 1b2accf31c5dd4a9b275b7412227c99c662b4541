@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea6d479_1cbcc263",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-12T21:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c26b94d3_04ed32ae",
+      "range": {
+        "startLine": 175,
+        "startChar": 10,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "728a924a_9f5059d0",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-12T15:58:58Z",
       "side": 1,
       "message": "Nit - how about \"minimum-charging-voltage\" or \"minimum-charging-mv\"?",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39de362_0857da4c",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-12T21:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "728a924a_9f5059d0",
       "range": {
         "startLine": 8,
         "startChar": 2,
@@ -83,6 +131,30 @@
       "writtenOn": "2025-09-12T17:14:22Z",
       "side": 1,
       "message": "Because your code uses 0V as no minimum and there are boards already using this charger, I think it might be better to remove the require attribute and also the default attribute.  The C code can the use DT_PROP_OR to set the minimum voltage to 0 if the device tree does not specify it.",
+      "parentUuid": "9a5c8dfa_9b18b427",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942887fd_e1f499ab",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-12T21:10:55Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "9a5c8dfa_9b18b427",
       "range": {
         "startLine": 11,
