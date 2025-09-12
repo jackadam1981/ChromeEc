@@ -7,7 +7,6 @@
 
 #include <cros/integrated_fwid.dtsi>
 
-#include "../gpios.dtsi"
 #include "../interrupts.dtsi"
 #include "../adc.dtsi"
 #include "../i2c.dtsi"
@@ -17,6 +16,7 @@
 
 /* bluey project DTS includes */
 
+#include "gpios.dtsi"
 #include "fan.dtsi"
 
 /* bluey overrides follow... */
