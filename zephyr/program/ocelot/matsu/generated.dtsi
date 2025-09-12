@@ -171,8 +171,9 @@
 		gpio_std_adp_prsnt_r: std_adp_prsnt: std_adp_prsnt_r {
 			gpios = <&gpioa 6 (GPIO_INPUT)>;
 		};
-		gpio_virtual_battery_r: virtual_battery_r {
-			gpios = <&gpiod 7 (GPIO_INPUT | GPIO_PULL_UP)>;
+		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
+			gpios = <&gpiod 7 GPIO_OUTPUT>;
+			enum-name = "GPIO_PACKET_MODE_EN";
 		};
 		gpio_wc_usbc_pd_alrt_aic1_r: wc_usbc_pd_alrt_aic1_r {
 			gpios = <&gpiof 5 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
@@ -204,32 +205,4 @@
 			/* BGA_PINN1 */
 			<&gpiod 0 (GPIO_INPUT | GPIO_PULL_UP)>;
 	};
-};
-
-&i2c1 {
-	status = "okay";
-	pinctrl-0 = <&i2c1_clk_gpc1_default
-		&i2c1_data_gpc2_default>;
-	pinctrl-names = "default";
-};
-
-&i2c3 {
-	status = "okay";
-	pinctrl-0 = <&i2c3_clk_gph1_default
-		&i2c3_data_gph2_default>;
-	pinctrl-names = "default";
-};
-
-&i2c4 {
-	status = "okay";
-	pinctrl-0 = <&i2c4_clk_gpe0_default
-		&i2c4_data_gpe7_default>;
-	pinctrl-names = "default";
-};
-
-&i2c5 {
-	status = "okay";
-	pinctrl-0 = <&i2c5_clk_gpe1_default
-		&i2c5_data_gpe2_default>;
-	pinctrl-names = "default";
 };

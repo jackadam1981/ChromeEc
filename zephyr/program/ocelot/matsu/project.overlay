@@ -46,6 +46,7 @@ tach_fan0: &tach0 {};
 #include "battery.dtsi"
 #include "console.dtsi"
 #include "fan.dtsi"
+#include "i2c.dtsi"
 #include "keyboard.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
@@ -54,15 +55,8 @@ tach_fan0: &tach0 {};
 #include "usb_typec.dtsi"
 
 #include "../ite_hibernate.dtsi"
-#include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_temp_sensors.dtsi"
-#include "../rvp_ioex_gpio.dtsi"
-#include <ite/it8801-common-cfg.dtsi>
-
-&it8801_mfd {
-        irq-gpios = <&gpioi 6 GPIO_ACTIVE_LOW>;
-};
 
 /* matsu overrides follow... */
 / {
