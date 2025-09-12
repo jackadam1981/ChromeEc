@@ -43,6 +43,7 @@ gpio_ec_pch_wake_odl: &gpio_smc_wake_sci_n_r {};
 tach_fan0: &tach0 {};
 
 #include "adc.dtsi"
+#include "battery.dtsi"
 #include "console.dtsi"
 #include "fan.dtsi"
 #include "keyboard.dtsi"
@@ -53,7 +54,6 @@ tach_fan0: &tach0 {};
 #include "usb_typec.dtsi"
 
 #include "../ite_hibernate.dtsi"
-#include "../rvp_battery.dtsi"
 #include "../rvp_i2c.dtsi"
 #include "../rvp_interrupts.dtsi"
 #include "../rvp_temp_sensors.dtsi"
