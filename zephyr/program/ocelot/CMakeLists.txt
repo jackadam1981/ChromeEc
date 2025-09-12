@@ -36,6 +36,7 @@ endif()
 if(DEFINED CONFIG_BOARD_MATSU)
 	project(matsu)
 	zephyr_library_sources("matsu/src/board_power.c")
+	zephyr_library_sources("matsu/src/suspend_resume.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"matsu/src/keyboard_customization.c")
 endif()
