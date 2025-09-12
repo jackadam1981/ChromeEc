@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26b94d3_04ed32ae",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-12T15:58:58Z",
+      "side": 1,
+      "message": "Nit - include \"mv\" in the name so it\u0027s clear what units this expects.  This is also using an unsigned value, but your access routine assigns to a signed int.  These should be consistent.",
+      "range": {
+        "startLine": 175,
+        "startChar": 10,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728a924a_9f5059d0",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-12T15:58:58Z",
+      "side": 1,
+      "message": "Nit - how about \"minimum-charging-voltage\" or \"minimum-charging-mv\"?",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a5c8dfa_9b18b427",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-12T15:58:58Z",
+      "side": 1,
+      "message": "I think when the `required` property is used, `default` is a no-op, because the user must always add this property to their device tree.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
