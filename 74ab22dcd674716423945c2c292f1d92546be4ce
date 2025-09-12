@@ -262,6 +262,30 @@
       },
       "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82227e0_648da497",
+        "filename": "zephyr/emul/emul_egis630.c",
+        "patchSetId": 79
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-09-12T14:42:02Z",
+      "side": 1,
+      "message": "Thanks for the info. Please add a comment in the code that `gpio_emul_output_get` returns physical value, not logical and the rest is fine for me.",
+      "parentUuid": "63d4c931_12cfdc10",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 62
+      },
+      "revId": "74ab22dcd674716423945c2c292f1d92546be4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
