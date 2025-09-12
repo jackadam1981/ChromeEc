@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f349e7_e193207d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "Nit: I think most of the parentheses here are unnecessary and make the code harder to read.",
+      "range": {
+        "startLine": 852,
+        "startChar": 5,
+        "endLine": 855,
+        "endChar": 61
+      },
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf99937_8341f018",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "Nit: It\u0027s probably worth a comment here to say that we\u0027re doing this check here to reduce the latency of BIST Test Mode entry.",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117b2653_0c3320db",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "This is redundant with the call below.",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ad8095_0e996d80",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "Nit: I might have expected you to get a pre-upload error for not having all declarations at the top. Are you uploading with `repo upload`?",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c631fdb6_0998c2d8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "As written, this is effectively a check on `enable`. It will never set the register bit, just clear it, and the subsequent `enable` checks are redundant. The `raa489000.c` version of this was splitting the BIST state between the RAA48900 driver and the TCPCI driver, so it had to do some weird double-checking. With this entirely contained in the TCPCI driver, the check will be a bit more straightforward, and the form also needs to change a little bit to ensure that the register write actually happens when it needs to.\n\nI think this should be something like\n```suggestion\n        int rv \u003d EC_SUCCESS;\n        /* Don\u0027t change cached value yet. */\n\n\tif (enable !\u003d tcpci_bist_mode[port]) {\n\t\trv \u003d tcpc_update8(port, TCPC_REG_TCPC_CTRL,\n\t\t\t\t  TCPC_REG_TCPC_CTRL_BIST_TEST_MODE,\n\t\t\t\t  enable ? MASK_SET : MASK_CLR);\n\t\trv |\u003d tcpc_update16(port, TCPC_REG_ALERT_MASK,\n\t\t\t\t    TCPC_REG_ALERT_RX_STATUS,\n\t\t\t\t    enable ? MASK_CLR : MASK_SET);\n\t}\n\n\t/* This could also be inside the if statement above. Maybe less\n\t * nesting is easier to read. IDK\n\t */\n\tif (rv !\u003d EC_SUCCESS)\n\t    tcpci_bist_mode[port] \u003d enable;\n```",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

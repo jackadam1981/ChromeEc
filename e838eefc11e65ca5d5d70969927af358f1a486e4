@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe78bb8_b7c70f54",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a93446a8_753006de",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b1499f5_1fe6af4f",
@@ -83,6 +101,42 @@
       "writtenOn": "2025-09-10T16:14:40Z",
       "side": 1,
       "message": "You\u0027ll need to integrate this logic with the existing `tcpm_tcpci_get_message_raw`. Same for the get and set functions.",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4edbfbc_76a5b8ef",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f765e98c_5ba55af1",
+      "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70fa487_b9dbf59d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-12T18:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b1499f5_1fe6af4f",
       "revId": "e838eefc11e65ca5d5d70969927af358f1a486e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
