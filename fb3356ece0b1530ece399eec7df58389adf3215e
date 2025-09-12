@@ -46,6 +46,30 @@
       },
       "revId": "fb3356ece0b1530ece399eec7df58389adf3215e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef5f251_8a1d56fa",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 49
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-12T04:26:04Z",
+      "side": 1,
+      "message": "I believe, memcpy will still work when len is zero. So this should be safe. right?",
+      "parentUuid": "02ec9671_c2831193",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "fb3356ece0b1530ece399eec7df58389adf3215e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
