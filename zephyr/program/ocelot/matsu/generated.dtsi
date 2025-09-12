@@ -88,7 +88,7 @@
 			gpios = <&gpiod 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
-			gpios = <&gpioj 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+			gpios = <&gpiom 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_EC_INT_L";
 		};
 		gpio_ec_voldn_btn_odl: ec_voldn_btn_odl {
@@ -186,6 +186,12 @@
 		};
 		gpio_led_2_l: led_2_l {
 			gpios = <&gpioa 3 GPIO_OUTPUT_HIGH>;
+		};
+		gpio_soc_edp_bl_en: soc_edp_bl_en {
+			gpios = <&gpioh 1 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		gpio_ec_touch_en: ec_touch_en {
+			gpios = <&gpioj 4 GPIO_OUTPUT_LOW>;
 		};
 	};
 
