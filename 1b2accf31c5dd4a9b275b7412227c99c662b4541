@@ -68,6 +68,30 @@
       },
       "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccd5bb9_9ee68ea3",
+        "filename": "zephyr/dts/bindings/charger/hpb-charger.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-12T17:14:22Z",
+      "side": 1,
+      "message": "Because your code uses 0V as no minimum and there are boards already using this charger, I think it might be better to remove the require attribute and also the default attribute.  The C code can the use DT_PROP_OR to set the minimum voltage to 0 if the device tree does not specify it.",
+      "parentUuid": "9a5c8dfa_9b18b427",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "1b2accf31c5dd4a9b275b7412227c99c662b4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
