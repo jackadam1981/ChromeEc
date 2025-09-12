@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dca4ddc_ecbf6fed",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-12T21:20:54Z",
+      "side": 1,
+      "message": "can you add a comment in the help why you chose a default value of 89 for priority? was this arbitrary or based on some empirical data?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "6f46f919228d8046591ba791831c94dd3d53e623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "063ece02_d45a11d0",
         "filename": "zephyr/shim/chip/npcx/shi.c",
         "patchSetId": 3
