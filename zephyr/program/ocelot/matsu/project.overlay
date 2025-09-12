@@ -43,6 +43,7 @@ cse_early_rec_sw: &gpio_c_mecc_cse_early_sw_r{};
 /* Map tachometers to common names */
 tach_fan0: &tach0 {};
 
+#include "adc.dtsi"
 #include "../ite_hibernate.dtsi"
 #include "../rvp_usba.dtsi"
 #include "../rvp_battery.dtsi"
