@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37034514_69490fc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-09-12T08:51:56Z",
+      "side": 1,
+      "message": "Sorry, need to give -1 as if that patch lands we going to have CCD working only in one servo plug orientation and this is huge regression. \n\nRef - https://docs.google.com/document/d/1zrvs-bLct3MmYAW1uBRde7Um8TnlI9IglMFZtE8ZkS8/edit?tab\u003dt.0#heading\u003dh.7gd75uxhqngl\n\n\"Ti50 programs a link config of one orientation (a.k.a. side or polarity) not both for SuzyQable, because Dauntless does not support the swapping on two USB sideband lines.\"\n\nEven if Ti50 FW team implements reverse detect (b/441361652) we need to be sure that all DUTs in fleet (and best also on developers desk) received this changes before submitting such changes for servo FW.",
+      "revId": "e31c2a8e509608721f8da9bbd7613616745e117e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
