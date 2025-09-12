@@ -257,11 +257,11 @@ static inline void pd_set_host_mode(int port, int enable)
 		 * advertise the correct TypeC current level, the
 		 * values of Rp1/Rp2 need to asymmetric with Rp1 > Rp2. This
 		 * function is called without a specified Rp value so assume the
-		 * servo_v4 default of USB level current. If a higher current
+		 * servo_v4 default of 1.5A current. If a higher current
 		 * can be supported, then the Rp value will get adjusted when
 		 * VBUS is enabled.
 		 */
-		pd_set_rp_rd(port, TYPEC_CC_RP, TYPEC_RP_USB);
+		pd_set_rp_rd(port, TYPEC_CC_RP, TYPEC_RP_1A5);
 
 		gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
 		gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
