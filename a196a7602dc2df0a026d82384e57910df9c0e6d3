@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1d1e60_6a784cc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-12T17:26:43Z",
+      "side": 1,
+      "message": "Yup. I added it.",
+      "parentUuid": "4ca25564_4e437d12",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 50
+      },
+      "revId": "a196a7602dc2df0a026d82384e57910df9c0e6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d52b9a_2244a88e",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-09-08T20:32:26Z",
       "side": 1,
       "message": "How about a test case to verify that the session remains usable after `fp_reset_and_clear_context` is called? e.g., establish session, call `fp_reset_and_clear_context` and verify that session still works.",
+      "revId": "a196a7602dc2df0a026d82384e57910df9c0e6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f95cb2_e016f184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-12T17:26:43Z",
+      "side": 1,
+      "message": "\u003e verify that session still works\n\nThis is tricky to do in this CL, because there is no use for Session Key for now. I\u0027ll implement the test in a separate CL.",
+      "parentUuid": "88d52b9a_2244a88e",
       "revId": "a196a7602dc2df0a026d82384e57910df9c0e6d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
