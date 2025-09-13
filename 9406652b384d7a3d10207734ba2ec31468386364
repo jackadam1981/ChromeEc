@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a3cd91_ddd0be87",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 110
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-13T05:42:32Z",
+      "side": 1,
+      "message": "there is a missing `args-\u003eresponse_size`. Without this, all values are zero.\n\n```\n\targs-\u003eresponse_size \u003d sizeof(struct ec_response_fp_info_v2) +\n\t\t\t      (r-\u003esensor_info.num_capture_types) *\n\t\t\t\t      sizeof(struct fp_image_frame_params);\n```\n\n\nthe functionality was proven using ectool.cc\n```\nint cmd_fp_info(int argc, char *argv[])\n{\n\n\tprintf(\"I am in cmd_fp_info.\\n\");\nstruct ec_response_fp_info_v2 *r;\n\tint rv;\n\tuint16_t dead;\n\n\tr \u003d (struct ec_response_fp_info_v2 *)(ec_inbuf);\n\n\trv \u003d ec_command(EC_CMD_FP_INFO, 2, NULL, 0, r, ec_max_insize);\n\tif (rv \u003c 0)\n\t\treturn rv;\n\n\tprintf(\"Fingerprint sensor: vendor %x product %x model %x version %x\\n\",\n\t       r-\u003esensor_info.vendor_id, r-\u003esensor_info.product_id,\n\t       r-\u003esensor_info.model_id, r-\u003esensor_info.version);\n\n\tfor (uint16_t i \u003d 0; i \u003c r-\u003esensor_info.num_capture_types; ++i) {\n\t\tprintf(\"Image [%d]: size %dx%d %d bpp\\n\", i,\n\t\t       r-\u003eimage_frame_params[i].width,\n\t\t       r-\u003eimage_frame_params[i].height,\n\t\t       r-\u003eimage_frame_params[i].bpp);\n\t}\n\tprintf(\"Error flags: %s%s%s%s\\n\",\n\t       r-\u003esensor_info.errors \u0026 FP_ERROR_NO_IRQ ? \"NO_IRQ \" : \"\",\n\t       r-\u003esensor_info.errors \u0026 FP_ERROR_SPI_COMM ? \"SPI_COMM \" : \"\",\n\t       r-\u003esensor_info.errors \u0026 FP_ERROR_BAD_HWID ? \"BAD_HWID \" : \"\",\n\t       r-\u003esensor_info.errors \u0026 FP_ERROR_INIT_FAIL ? \"INIT_FAIL \" : \"\");\n\tdead \u003d FP_ERROR_DEAD_PIXELS(r-\u003esensor_info.errors);\n\tif (dead \u003d\u003d FP_ERROR_DEAD_PIXELS_UNKNOWN) {\n\t\tprintf(\"Dead pixels: UNKNOWN\\n\");\n\t} else {\n\t\tprintf(\"Dead pixels: %u\\n\", dead);\n\t}\n\n\tprintf(\"Templates: version %d size %d count %d/%d\"\n\t       \" dirty bitmap %x\\n\",\n\t       r-\u003etemplate_info.template_version,\n\t       r-\u003etemplate_info.template_size, r-\u003etemplate_info.template_valid,\n\t       r-\u003etemplate_info.template_max, r-\u003etemplate_info.template_dirty);\n\n\treturn 0;\n}\n```",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 392,
+        "endChar": 23
+      },
+      "revId": "9406652b384d7a3d10207734ba2ec31468386364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
