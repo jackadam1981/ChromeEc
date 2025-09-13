@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec1183e_85c439de",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 50
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-13T14:38:55Z",
+      "side": 1,
+      "message": "this should be \u003d\u003d",
+      "range": {
+        "startLine": 282,
+        "startChar": 30,
+        "endLine": 282,
+        "endChar": 32
+      },
+      "revId": "660a22fb4144c2502e994fe94b7c92af450ed9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
