@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "641db824_35533d03",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-13T01:12:17Z",
+      "side": 1,
+      "message": "Yes, until https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6933917 lands",
+      "parentUuid": "14ab4e15_4d128360",
+      "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5da9419_a0db9cb1",
         "filename": "zephyr/program/trulo/uldrenite/project.conf",
         "patchSetId": 16
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6eb8ae3_46f2fa4c",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-13T01:12:17Z",
+      "side": 1,
+      "message": "Right, this is all removed later in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6933917",
+      "parentUuid": "b5da9419_a0db9cb1",
+      "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8dd5fa1_efde7cc1",
         "filename": "zephyr/program/trulo/uldrenite/project.conf",
         "patchSetId": 16
@@ -48,6 +84,24 @@
       "writtenOn": "2025-09-12T21:32:48Z",
       "side": 1,
       "message": "why is this needed when the sensors definition are gone?",
+      "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e76a92_39275e95",
+        "filename": "zephyr/program/trulo/uldrenite/project.conf",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-13T01:12:17Z",
+      "side": 1,
+      "message": "They\u0027re not gone yet. See above comments.",
+      "parentUuid": "e8dd5fa1_efde7cc1",
       "revId": "90fb6eec268abe6620d394aa5a84044972a082ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
