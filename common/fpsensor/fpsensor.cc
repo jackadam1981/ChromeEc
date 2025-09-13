@@ -389,6 +389,10 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 	r->template_info.template_dirty = global_context.templ_dirty;
 	r->template_info.template_version = FP_TEMPLATE_FORMAT_VERSION;
 
+	args->response_size = sizeof(struct ec_response_fp_info_v2) +
+			      (r->sensor_info.num_capture_types) *
+				      sizeof(struct fp_image_frame_params);
+
 	return EC_RES_SUCCESS;
 }
 
