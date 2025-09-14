@@ -92,11 +92,17 @@
 		};
 
 		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
-			gpios = <&gpioh 3 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
+			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
 		};
-		gpio_5p0va_pwr_mode: 5p0va_pwr_mode {
-			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
+
+		gpio_bl_pwr_pgd: gpio_bl_pwr_pgd {
+			gpios = <&gpioh 3 GPIO_INPUT>;
 		};
+
+		gpio_hp_jack_det_l_mb: hp_jack_det_l_mb {
+			gpios = <&gpiod 7 GPIO_INPUT>;
+		};
+
 		gpio_pen_eject: pen_eject {
 			gpios = <&gpioh 2 GPIO_INPUT>;
 		};
