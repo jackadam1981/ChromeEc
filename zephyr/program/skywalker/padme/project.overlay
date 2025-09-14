@@ -46,11 +46,8 @@
 	};
 
 	batteries {
-		default_battery: dynapack_b140435 {
-			compatible = "dynapack,b140435","battery-smart";
-		};
-		celxpert_b340442 {
-			compatible = "celxpert,b340442","battery-smart";
+		default_battery: b300049 {
+			compatible = "celxpert,b300049", "battery-smart";
 		};
 	};
 
