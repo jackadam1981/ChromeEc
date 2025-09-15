@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9daa4a_e288d014",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2975,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T10:30:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5e97ef3a_ab70cba4",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b086922_e1128313",
@@ -119,6 +137,24 @@
       "writtenOn": "2025-09-15T10:29:11Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "11b53f62_f5f8ffcd",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a989ee11_d606db0b",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T10:30:42Z",
+      "side": 1,
+      "message": "I believe it\u0027s a typo in src/platform/ec/zephyr/include/drivers/ucsi_v3.h. In UCSI spec it\u0027s VDM Header from bit 24.",
       "parentUuid": "11b53f62_f5f8ffcd",
       "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
