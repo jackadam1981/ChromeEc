@@ -26,6 +26,10 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 
 void board_chipset_startup(void)
 {
+#if defined(CONFIG_BOARD_BLUEY)
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_off_odl), 1);
+#endif
+
 #if defined(CONFIG_BOARD_QUARTZ)
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_haptic_en_ec), 1);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_tpad_en), 1);
@@ -44,6 +48,10 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
 void board_chipset_shutdown(void)
 {
+#if defined(CONFIG_BOARD_BLUEY)
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_off_odl), 0);
+#endif
+
 #if defined(CONFIG_BOARD_QUARTZ)
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_haptic_en_ec), 0);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_tpad_en), 0);
