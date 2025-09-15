@@ -1940,6 +1940,53 @@ test_static enum ec_error_list test_fp_sign_match_fail_no_session(void)
 	return EC_SUCCESS;
 }
 
+test_static enum ec_error_list test_fp_reset_does_not_clear_session(void)
+{
+	std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00, 0x00 };
+	std::array<const uint8_t, 4> operation = { 'a', 'u', 't', 'h' };
+	std::array<const uint8_t, 5> sender = { 'f', 'p', 'm', 'c', 'u' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key;
+	struct ec_params_fp_sign_match params = {
+		.challenge = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+			       8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5 },
+	};
+	struct ec_response_fp_sign_match response;
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> expected_signature;
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+	TEST_BITS_SET(global_context.fp_encryption_status,
+		      FP_CONTEXT_STATUS_SESSION_ESTABLISHED);
+
+	fp_reset_and_clear_context();
+
+	TEST_BITS_SET(global_context.fp_encryption_status,
+		      FP_CONTEXT_STATUS_SESSION_ESTABLISHED);
+
+	global_context.user_id[0] = 10;
+	global_context.positive_match_secret_state.template_matched = 0;
+	global_context.positive_match_secret_state.readable = true;
+	global_context.positive_match_secret_state.deadline.val =
+		get_time().val + 5 * SECOND;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_SIGN_MATCH, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation, params.challenge,
+					  expected_signature),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(response.signature, expected_signature,
+			     expected_signature.size());
+
+	return EC_SUCCESS;
+}
+
 } // namespace
 
 void run_test(int argc, const char **argv)
@@ -1995,5 +2042,6 @@ void run_test(int argc, const char **argv)
 	RUN_TEST(test_fp_sign_match_fail_no_match);
 	RUN_TEST(test_fp_sign_match_fail_deadline_passed);
 	RUN_TEST(test_fp_sign_match_fail_no_session);
+	RUN_TEST(test_fp_reset_does_not_clear_session);
 	test_print_result();
 }
