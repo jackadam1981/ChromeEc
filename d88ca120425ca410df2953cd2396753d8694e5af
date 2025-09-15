@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b158e1e5_d6055685",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-15T10:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b086922_e1128313",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b08b0350_8309b02e",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "This value is named vdm_heade in `union get_attention_vdo_t`. I don\u0027t know if it is a mistake or not. I will change vdm_heade to vdm_heade in this union.",
       "parentUuid": "b08b0350_8309b02e",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0edc5a6_df56916c",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-15T10:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b53f62_f5f8ffcd",
       "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
