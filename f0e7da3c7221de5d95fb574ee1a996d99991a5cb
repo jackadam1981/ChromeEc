@@ -46,6 +46,30 @@
       },
       "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6b02cc_7c37df78",
+        "filename": "common/charge_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-15T16:24:00Z",
+      "side": 1,
+      "message": "I think I understand the logic of this change, but I\u0027m not sure why this occurs on the second press of the power button as I think this issue should occur on the first press as well.\n\nWhen we reach these checks for a sufficient charger, I\u0027d expect\n```\ncharge_prevent_power_on_automatic_power_on \u003d\u003d 0;\nprevent_power_on \u003d\u003d 0;\n```\nas no battery is attached and function arg `power_button_pressed \u003d\u003d true`, since no battery is present, `prevent_power_on` hasn\u0027t been evaluated yet and is still `0`. We should evaluate if the charge is sufficient.  BUT we do this on line# 1707 below?  Why is this line not preventing power up?",
+      "parentUuid": "cc219147_34d33f5e",
+      "range": {
+        "startLine": 1696,
+        "startChar": 2,
+        "endLine": 1696,
+        "endChar": 18
+      },
+      "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
