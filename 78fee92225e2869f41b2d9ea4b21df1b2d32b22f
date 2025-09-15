@@ -22,6 +22,30 @@
       },
       "revId": "78fee92225e2869f41b2d9ea4b21df1b2d32b22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d987ae5d_c034a3ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-15T16:01:21Z",
+      "side": 1,
+      "message": "any amount of time...The code currently sets a global that holds if the power button was pressed ever (until the EC resets) and if it has boot regardless if it is pressed again",
+      "parentUuid": "ed299f59_17e70c22",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "78fee92225e2869f41b2d9ea4b21df1b2d32b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
