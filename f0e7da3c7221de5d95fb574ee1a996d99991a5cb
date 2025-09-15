@@ -70,6 +70,30 @@
       },
       "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4672271d_69121525",
+        "filename": "common/charge_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-15T16:31:23Z",
+      "side": 1,
+      "message": "It\u0027s do to this line that is right before the diff at 1662 it is checking if charge_prevent_power_on_automatic_power_on is set and setting prevent_power_on to 0 so the mW check is never executed",
+      "parentUuid": "9c6b02cc_7c37df78",
+      "range": {
+        "startLine": 1696,
+        "startChar": 2,
+        "endLine": 1696,
+        "endChar": 18
+      },
+      "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
