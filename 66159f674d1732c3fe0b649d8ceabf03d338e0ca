@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d0a18f2_4d393ea5",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-15T07:43:57Z",
+      "side": 1,
+      "message": "This pin is a strap pin, and pull-up to 3.3V with 220 KΩ resistor.\n\nShoud we configure this pin as GPIO?",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 4
+      },
+      "revId": "66159f674d1732c3fe0b649d8ceabf03d338e0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4feaf22c_6fcbc214",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-09-15T07:43:57Z",
+      "side": 1,
+      "message": "GPIO34/37/41 are unused too.",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 16
+      },
+      "revId": "66159f674d1732c3fe0b649d8ceabf03d338e0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
