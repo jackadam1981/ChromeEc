@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5fb6060f_cc9a33a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T08:48:14Z",
+      "side": 1,
+      "message": "Verified on kinmen with TPS66994. Voltage is reported correctly in connector_status.",
+      "parentUuid": "5ba85bc6_1351d624",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fd5087bf_07d798b6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +95,24 @@
       "writtenOn": "2025-09-12T22:43:42Z",
       "side": 1,
       "message": "Can you confirm the test procedure in https://crrev.com/c/5886885 still works?",
+      "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee01c290_3b8a1443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T08:48:14Z",
+      "side": 1,
+      "message": "kaladin-rev1  # ectool chargeoverride dontcharge\nOverride port set to -2\nkaladin-rev1  #  ectool battery\nBattery 0 info:\n  Manufacturer:           333-2C-32-A\n  Device name:            AE03041XL\n  Chemistry   :           LION\n  Serial number:          3EF\n  Design capacity:        3648 mAh\n  Last full charge:       3956 mAh\n  Design output voltage   11250 mV\n  Cycle count             0\n  Present voltage         13038 mV\n  Present current         -244 mA\n  Remaining capacity      3916 mAh\n  Desired voltage         13200 mV\n  Desired current         2554 mA\n  Flags                   0x07 AC_PRESENT BATT_PRESENT DISCHARGING\nkaladin-rev1  # ectool chargeoverride off\nOverride port set to -1\nkaladin-rev1  # ectool battery\nBattery 0 info:\n  Manufacturer:           333-2C-32-A\n  Device name:            AE03041XL\n  Chemistry   :           LION\n  Serial number:          3EF\n  Design capacity:        3648 mAh\n  Last full charge:       3956 mAh\n  Design output voltage   11250 mV\n  Cycle count             0\n  Present voltage         13166 mV\n  Present current         526 mA\n  Remaining capacity      3916 mAh\n  Desired voltage         13200 mV\n  Desired current         2554 mA\n  Flags                   0x0b AC_PRESENT BATT_PRESENT CHARGING\n\nand the get_connector_stsatus reports correctly\n\n25-09-15 16:45:17.247 Port 0 GET_CONNECTOR_STATUS:\n25-09-15 16:45:17.250    change bits                      : 0x0000\n25-09-15 16:45:17.252    power_operation_mode             : 3\n25-09-15 16:45:17.254    connect_status                   : 1\n25-09-15 16:45:17.256    power_direction                  : 0\n25-09-15 16:45:17.259    conn_partner_flags               : 0x01\n25-09-15 16:45:17.261    conn_partner_type                : 1\n25-09-15 16:45:17.262    rdo                              : 0x42851545\n25-09-15 16:45:17.264    battery_charging_cap_status      : 1\n25-09-15 16:45:17.265    provider_caps_limited_reason     : 0\n25-09-15 16:45:17.266    bcd_pd_version                   : 0x0300\n25-09-15 16:45:17.267    orientation                      : 1\n25-09-15 16:45:17.268    sink_path_status                 : 1\n25-09-15 16:45:17.269    reverse_current_protection_status: 0\n25-09-15 16:45:17.270    power_reading_ready              : 1\n25-09-15 16:45:17.271    peak_current                     : 0\n25-09-15 16:45:17.272    average_current                  : 0\n25-09-15 16:45:17.273    voltage_scale                    : 10\n25-09-15 16:45:17.273    voltage_reading                  : 407\n25-09-15 16:45:17.274    voltage                          : 20350 mV",
+      "parentUuid": "fd0e6099_9412f0c0",
       "revId": "d56b8480c94c06be2c9e9f0fdbf4e2a180c61d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
