@@ -221,6 +221,7 @@ gpio_sys_rst_odl: &gpio_sys_rst_odl {};
  */
 gpio_ec_3v_s3_en: &gpio_ec_en_pp3300_s3 {};
 gpio_ec_en_ppvar_oled: &gpio_ec_enavdd_oled {};
+gpio_ec_bl_off_odl: &gpio_bl_off_odl {};
 
 /*
  * Aliases switchcap to common names
