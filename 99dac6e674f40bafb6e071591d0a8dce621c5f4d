@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bf56b1b_51b5bcc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-15T07:26:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure does the ish FW has modified anything since 16367.0.0. That 16367.0.0 is the Uprev stable_version.\nI have tried the `git pull` and local build the uldrenite-ish `w/o` this solution. It cannot PASS the `tast run \u003cIP\u003e hardware.SensorIioserviceHard` too. The failure reason is the same\n```\n2025-09-15T07:23:19.019594Z --------------------------------------------------------------------------------\n2025-09-15T07:23:19.019601Z hardware.SensorIioserviceHard [ FAIL ]  : Client 2 to cros-ec-gyro failed: : error during validation: too much delta between samples for accel-base cros-ec-gyro at index 5(31.22081584s): got 8.761662ms; want \u003c\u003d 7.211538ms\n2025-09-15T07:23:19.019601Z                                         : Client 0 to cros-ec-gyro failed: : error during validation: too much delta between samples for accel-base cros-ec-gyro at index 5(31.22081584s): got 8.761662ms; want \u003c\u003d 7.211538ms\n2025-09-15T07:23:19.019601Z                                         : Client 1 to cros-ec-gyro failed: : error during validation: too much delta between samples for accel-base cros-ec-gyro at index 5(31.22081584s): got 8.761662ms; want \u003c\u003d 7.211538ms\n2025-09-15T07:23:19.019634Z --------------------------------------------------------------------------------\n2025-09-15T07:23:19.019642Z Results saved to /tmp/tast/results/20250915-152251\n\n```",
+      "parentUuid": "5dd1a7f3_84299975",
+      "revId": "99dac6e674f40bafb6e071591d0a8dce621c5f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1c9b4bc_c39e28d1",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 1
