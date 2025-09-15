@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30a886a_9a879567",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common_pwrseq_drv_sm_handler.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-15T19:34:30Z",
+      "side": 1,
+      "message": "Done, although is possible to use a single timer to handle both `s5_innactivity` and `start_from_g3` events (given that their timeline is mutually exclusive), I decided to use them separate for the sake of clarity.",
+      "parentUuid": "cf6ebe34_69566618",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "c259900ef30affe3d24acd86cf56fe9c32e434ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c8c8d27_4e046d73",
