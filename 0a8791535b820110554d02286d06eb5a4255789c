@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9169c6fe_03985743",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T23:10:50Z",
+      "side": 1,
+      "message": "```suggestion\nsession was canceled by the user the AuthenticatorID must remain the\n```",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5d2030_5d3e14b2",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T23:10:50Z",
+      "side": 1,
+      "message": "nit: same comment as last CL",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 70
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8882bff5_1246c7ec",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T23:10:50Z",
+      "side": 1,
+      "message": "Is this a recoverable error or will we be permanently in a bad state?\n\nIf it\u0027s permanent, should we block enrollment of new templates if we haven\u0027t validated the enrollment so that we don\u0027t get into this state?",
+      "range": {
+        "startLine": 736,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 2
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170f9536_8aa43565",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T23:10:50Z",
+      "side": 1,
+      "message": "nit: Same comments as last CL about `const`/`constexpr` and zero initialization",
+      "range": {
+        "startLine": 1705,
+        "startChar": 0,
+        "endLine": 1712,
+        "endChar": 54
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
