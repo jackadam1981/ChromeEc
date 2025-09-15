@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59263c0_6ac36572",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-15T06:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a70780_6c05885b",
+      "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "571d0ffe_9e78dc3f",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-10T09:03:18Z",
       "side": 1,
       "message": "also run suspend stress test, like `suspend_stress_test`.",
+      "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16945531_b94cb1e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-15T06:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571d0ffe_9e78dc3f",
       "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,24 @@
       "writtenOn": "2025-09-10T09:00:55Z",
       "side": 1,
       "message": "nit: \n```\n  GOTO_ON_ERROR(out, bma4_write8(s, BMA4_INT_MAP_DATA_ADDR, \n\t\tenable ? BMA4_INT1_DRDY | BMA4_INT1_FWM | BMA4_INT1_FFULL : 0));\n```",
+      "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c289ae91_86da533e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-09-15T06:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22994094_0320685f",
       "revId": "b27f13d932fde8cab8e9799af666c3c49100b0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
