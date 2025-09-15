@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5ed4b5_50c30616",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-15T09:28:36Z",
+      "side": 1,
+      "message": "Acknowledged, Removed",
+      "parentUuid": "0d0a18f2_4d393ea5",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 4
+      },
+      "revId": "66159f674d1732c3fe0b649d8ceabf03d338e0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4feaf22c_6fcbc214",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-15T07:43:57Z",
       "side": 1,
       "message": "GPIO34/37/41 are unused too.",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 16
+      },
+      "revId": "66159f674d1732c3fe0b649d8ceabf03d338e0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a6c4a3_b21cd097",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-15T09:28:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4feaf22c_6fcbc214",
       "range": {
         "startLine": 179,
         "startChar": 2,
