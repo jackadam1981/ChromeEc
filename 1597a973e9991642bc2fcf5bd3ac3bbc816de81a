@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb22f9d_34c485fc",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T23:14:40Z",
+      "side": 1,
+      "message": "nit: Same as earlier CLs",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 70
+      },
+      "revId": "1597a973e9991642bc2fcf5bd3ac3bbc816de81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7fc96f_37e15b78",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T23:14:40Z",
+      "side": 1,
+      "message": "nit: same as earlier CLs about `const`/`constexpr` and zero initialization",
+      "range": {
+        "startLine": 1820,
+        "startChar": 1,
+        "endLine": 1829,
+        "endChar": 62
+      },
+      "revId": "1597a973e9991642bc2fcf5bd3ac3bbc816de81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
