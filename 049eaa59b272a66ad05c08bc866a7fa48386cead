@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a716062_5d02558e",
+        "filename": "zephyr/program/fpmcu/helipilot/prj.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-15T21:57:21Z",
+      "side": 1,
+      "message": "Can you add the name of the command? e.g., EC_CMD_GET_VERSION (0x011d)\n\n(not sure offhand which command this is.)",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "049eaa59b272a66ad05c08bc866a7fa48386cead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
