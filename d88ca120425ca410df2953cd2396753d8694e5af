@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f95108_1cb55764",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2975,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T03:40:28Z",
+      "side": 1,
+      "message": "Could we add a check to ensure vdo is not NULL ?",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b086922_e1128313",
+        "filename": "zephyr/drivers/usbc/tps6699x_cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T03:40:28Z",
+      "side": 1,
+      "message": "Add the brief description for the function.",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08b0350_8309b02e",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-09-15T03:40:28Z",
+      "side": 1,
+      "message": "vdm_header",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
