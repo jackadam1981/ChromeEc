@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e97ef3a_ab70cba4",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2975,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-15T10:06:40Z",
+      "side": 1,
+      "message": "This is checked in cmd_get_attention_vdo. Multiple functions have the same behavior of checking in cmd_*. For example, tps_get_rdo and cmd_get_rdo. Do you prefer checking NULL in this function?",
+      "parentUuid": "58f95108_1cb55764",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b086922_e1128313",
         "filename": "zephyr/drivers/usbc/tps6699x_cmd.h",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "writtenOn": "2025-09-15T03:40:28Z",
       "side": 1,
       "message": "vdm_header",
+      "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b53f62_f5f8ffcd",
+        "filename": "zephyr/drivers/usbc/tps6699x_reg.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-15T10:06:40Z",
+      "side": 1,
+      "message": "This value is named vdm_heade in `union get_attention_vdo_t`. I don\u0027t know if it is a mistake or not. I will change vdm_heade to vdm_heade in this union.",
+      "parentUuid": "b08b0350_8309b02e",
       "revId": "d88ca120425ca410df2953cd2396753d8694e5af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
