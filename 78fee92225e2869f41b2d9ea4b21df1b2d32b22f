@@ -46,6 +46,29 @@
       },
       "revId": "78fee92225e2869f41b2d9ea4b21df1b2d32b22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d55030_36d14704",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-15T17:29:33Z",
+      "side": 1,
+      "message": "Brandon - This block doesn\u0027t rely on `prevent_power_on`.  Its a similar (but inverted) check as line# 1669 (in this diff), with some additional checks on `extpower_is_present()` and `battery_hw_present()`.  I think we need to look at what these are returning as this should prevent power on when an insufficient charger is connected with no battery, and doesn\u0027t rely on the state if the power button has been pressed.",
+      "range": {
+        "startLine": 1707,
+        "startChar": 0,
+        "endLine": 1713,
+        "endChar": 23
+      },
+      "revId": "78fee92225e2869f41b2d9ea4b21df1b2d32b22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
