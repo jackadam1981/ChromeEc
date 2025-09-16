@@ -10,6 +10,11 @@
 
 #include <zephyr/ztest.h>
 
+__override int board_is_dc_jack_present(void)
+{
+	return false;
+}
+
 ZTEST_SUITE(charge_manager_seeding_pre_main, charger_predicate_pre_main, NULL,
 	    NULL, NULL, NULL);
 
