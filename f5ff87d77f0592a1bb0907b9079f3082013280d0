@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9255f92d_8795541c",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5d848c4_fbac1a3d",
+      "range": {
+        "startLine": 1945,
+        "startChar": 1,
+        "endLine": 1954,
+        "endChar": 62
+      },
+      "revId": "f5ff87d77f0592a1bb0907b9079f3082013280d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc416afa_cd2e1adc",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-15T23:34:31Z",
       "side": 1,
       "message": "Might be better to copy the full `user_id` from above in case we want to change it?\n\n```suggestion\n\tstd::ranges::copy(user_id, global_context.user_id.begin());\n```",
+      "range": {
+        "startLine": 1968,
+        "startChar": 0,
+        "endLine": 1968,
+        "endChar": 32
+      },
+      "revId": "f5ff87d77f0592a1bb0907b9079f3082013280d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f356871_58476ea5",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc416afa_cd2e1adc",
       "range": {
         "startLine": 1968,
         "startChar": 0,
