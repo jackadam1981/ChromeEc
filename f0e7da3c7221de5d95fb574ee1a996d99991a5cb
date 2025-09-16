@@ -94,6 +94,30 @@
       },
       "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "200674b4_16f5a647",
+        "filename": "common/charge_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-16T17:22:11Z",
+      "side": 1,
+      "message": "moved the check for no battery and minimum power to the end of this function to avoid creating issues with the existing flow",
+      "parentUuid": "4672271d_69121525",
+      "range": {
+        "startLine": 1696,
+        "startChar": 2,
+        "endLine": 1696,
+        "endChar": 18
+      },
+      "revId": "f0e7da3c7221de5d95fb574ee1a996d99991a5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
