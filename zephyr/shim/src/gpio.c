@@ -321,9 +321,32 @@ test_export_static int init_gpios(const struct device *dev)
 
 	return 0;
 }
-#if CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY <= CONFIG_KERNEL_INIT_PRIORITY_DEFAULT
-#error "GPIOs must initialize after the kernel default initialization"
+
+BUILD_ASSERT(CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY > CONFIG_GPIO_INIT_PRIORITY);
+
+/*
+ * The checks below ensure that the GPIO shim code runs after any I/O expander
+ * initialization.
+ *
+ * Test code can have an initialization dependency loop because the I2C bus
+ * emulator calls the init routine for any emulators connected to the bus.
+ *
+ * Because of this, in test code, this GPIO shim is configured to have higher
+ * priority than CONFIG_I2C_INIT_PRIORITY.
+ *
+ * On actual hardware, we need to the GPIO shim to have lower priority than
+ * CONFIG_I2C_INIT_PRIORITY in case there an I/O expander is used.
+ */
+#ifndef CONFIG_ZTEST
+#ifdef CONFIG_GPIO_NCT38XX
+BUILD_ASSERT(CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY >
+	     CONFIG_GPIO_NCT38XX_PORT_INIT_PRIORITY);
 #endif
+#ifdef CONFIG_MFD
+BUILD_ASSERT(CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY > CONFIG_MFD_INIT_PRIORITY);
+#endif
+#endif
+
 #define DT_DRV_COMPAT named_gpios
 DEVICE_DT_INST_DEFINE(0, init_gpios, NULL, NULL, NULL, POST_KERNEL,
 		      CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY, NULL);
