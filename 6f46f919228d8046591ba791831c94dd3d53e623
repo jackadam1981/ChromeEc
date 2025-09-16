@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a16b992_fcb69b84",
+        "filename": "zephyr/shim/chip/npcx/Kconfig.npcx",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-09-16T02:08:04Z",
+      "side": 1,
+      "message": "Sorry for the late reply.   \nThe default value `89` is designed to be higher than `CONFIG_APPLICATION_INIT_PRIORITY\u003d90`. This corresponds to the priority of the`slp_event_init()` function in the file `zephyr/program/fpmcu/helipilot/src/power.c`.",
+      "parentUuid": "95f28372_ea5949e9",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "6f46f919228d8046591ba791831c94dd3d53e623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "063ece02_d45a11d0",
