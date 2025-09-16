@@ -16,6 +16,24 @@
       "message": "do you need this empty file?",
       "revId": "3993f9c9515fbcc41d81692c728d86be32e349f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f773f6_e71ceef3",
+        "filename": "zephyr/program/ocelot/matsu/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-09-16T00:42:22Z",
+      "side": 1,
+      "message": "Yes, if this file is missing, the compilation will fail.",
+      "parentUuid": "f988a479_a5ea8a6f",
+      "revId": "3993f9c9515fbcc41d81692c728d86be32e349f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
