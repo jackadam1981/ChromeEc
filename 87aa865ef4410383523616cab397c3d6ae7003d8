@@ -16,6 +16,23 @@
       "message": "Changed this patch to not modify the existing code as there are some cases that we might still want the prevent_power_on check. Added a new check at the end for no battery and power less than minimum",
       "revId": "87aa865ef4410383523616cab397c3d6ae7003d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dffea7e9_a600ec3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-16T21:00:13Z",
+      "side": 1,
+      "message": "```\nld.lld: error: undefined symbol: charge_manager_get_power_limit_uw\n\u003e\u003e\u003e referenced by charge_state.c:1736 (/mnt/host/source/src/platform/ec/common/charge_state.c:1736)\n\u003e\u003e\u003e               build/host/sbs_charging/RO/common/charge_state.o:(charge_prevent_power_on)\n  CC      RO/common/memory_commands.o\n  CC      RO/common/ec_features.o\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\n  CC      RO/board/host/usb_pd_pdo.o\nmake[1]: *** [Makefile.rules:595: build/host/sbs_charging/sbs_charging.exe] Error 1\nmake: *** [Makefile.rules:364: host-sbs_charging] Error 2\n```\n\ndo we need another `#if defined(CONFIG_CHARGE_MANAGER)`?",
+      "revId": "87aa865ef4410383523616cab397c3d6ae7003d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
