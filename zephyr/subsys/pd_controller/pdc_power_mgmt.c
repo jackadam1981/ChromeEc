@@ -2354,6 +2354,18 @@ static uint8_t pdc_get_snk_path_en_mask(void)
 {
 	uint8_t snk_path_en_mask = 0;
 
+#ifdef CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
+	BUILD_ASSERT(DEDICATED_CHARGE_PORT < 8); /* Based on size of uint8_t */
+
+	WRITE_BIT(snk_path_en_mask, DEDICATED_CHARGE_PORT,
+		  board_is_dc_jack_present());
+
+	if (snk_path_en_mask) {
+		LOG_WRN("PD: DC barrel jack is present. "
+			"Cannot enable any PDC sink paths");
+	}
+#endif
+
 	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		WRITE_BIT(snk_path_en_mask, port,
 			  pdc_data[port]->port.sink_path_status);
