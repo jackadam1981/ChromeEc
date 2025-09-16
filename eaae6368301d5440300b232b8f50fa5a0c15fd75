@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d648a2dd_130ca2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "Hi Javik, thanks for the review see comments below. I also sent you in chat a gpio.dtsi with these changes and it sorted based off of the schematic symbol ordering. Hopefully it\u0027s useful.",
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0449381d_cc292b10",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "/* @Jayvik Added this GPIO */\n\t\tgpio_ec_vph_pwr_a_det: ec_vph_pwr_a_det {\n\t\t\tgpios \u003d \u003c\u0026gpioc 7 (GPIO_INPUT)\u003e;\n\t\t}",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b333e97_0094bbdc",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "GPIO_INPUT",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc455361_c998f07f",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "Remove Active Low",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "785386bb_68786583",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "Consider GPIO_OUTPUT_INIT_LOW",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d64d911_1ed8b314",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "Remove \"OPEN DRAIN\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 36,
+        "endLine": 140,
+        "endChar": 51
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fbfa24_e527ba0f",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1364414
+      },
+      "writtenOn": "2025-09-16T21:51:33Z",
+      "side": 1,
+      "message": "Consider GPIO_OUTPUT_INIT_LOW",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 33
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
