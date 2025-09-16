@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c05119_fcc25411",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-16T21:32:30Z",
+      "side": 1,
+      "message": "LGTM. As you mentioned, it doesn\u0027t hurt, so I\u0027ll resolve this.",
+      "parentUuid": "99eafec1_d9513088",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 15
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cd5b2e2_a998b170",
