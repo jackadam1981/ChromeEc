@@ -193,4 +193,10 @@ config PWM_SHELL
 config WDT_SHELL
 	default y if WATCHDOG
 
+# Upstream Zephyr sets the MFD library priority to be lower than SPI.
+# Our MFD drivers are all I2C based, so set the priority to lower than
+# CONFIG_I2C_INIT_PRIORITY (50).
+config MFD_INIT_PRIORITY
+	default 51
+
 endif # CROS_EC

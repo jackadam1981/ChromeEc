@@ -321,9 +321,15 @@ test_export_static int init_gpios(const struct device *dev)
 
 	return 0;
 }
-#if CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY <= CONFIG_KERNEL_INIT_PRIORITY_DEFAULT
-#error "GPIOs must initialize after the kernel default initialization"
+
+BUILD_ASSERT(CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY > CONFIG_GPIO_INIT_PRIORITY,
+	     "GPIO shim must initialize after the GPIO drivers");
+
+#ifdef CONFIG_MFD
+BUILD_ASSERT(CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY > CONFIG_MFD_INIT_PRIORITY,
+	     "GPIO shim must initialize after the MFD drivers");
 #endif
+
 #define DT_DRV_COMPAT named_gpios
 DEVICE_DT_INST_DEFINE(0, init_gpios, NULL, NULL, NULL, POST_KERNEL,
 		      CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY, NULL);
