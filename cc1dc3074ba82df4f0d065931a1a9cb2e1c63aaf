@@ -16,6 +16,24 @@
       "message": "Is fw qual version targeting on M141?",
       "revId": "cc1dc3074ba82df4f0d065931a1a9cb2e1c63aaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6df4a06_892465a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-09-16T08:15:01Z",
+      "side": 1,
+      "message": "our image ship version is targeting to M142, So according to N-1 policy, EC fw qual is targeting on M141.",
+      "parentUuid": "877741d1_23bfc942",
+      "revId": "cc1dc3074ba82df4f0d065931a1a9cb2e1c63aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
