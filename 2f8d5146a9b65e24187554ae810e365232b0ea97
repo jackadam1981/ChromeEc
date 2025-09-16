@@ -22,6 +22,23 @@
       },
       "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ae6d3e_e7ab7e4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-16T17:47:55Z",
+      "side": 1,
+      "message": "If servod is started with the correct board name, this change is not be needed.  You can also set the EC chip type directly using the `--chip` argument.\n\nSo this is not a good approach for support the multiple EC types on Ocelot.\n\nIf we want to try and auto-detecting the EC type, we can add lookup map to the servo overlay for Ocelot.  [Example from nissa](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/hdctools/servo/data/servo_nissa_overlay.xml).  Note that this only works if the EC is functional.  If the EC firmware is blank or corrupt, one must explicitly set the board type with servod.",
+      "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
