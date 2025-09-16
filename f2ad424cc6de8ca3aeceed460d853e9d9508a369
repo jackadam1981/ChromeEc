@@ -16,6 +16,52 @@
       "message": "Hi Scott, could you help to review this CL?",
       "revId": "f2ad424cc6de8ca3aeceed460d853e9d9508a369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc3d40b_8455d5bd",
+        "filename": "zephyr/program/fatcat/lapis/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-16T15:17:15Z",
+      "side": 1,
+      "message": "Is this pin connected on lapis?  If it is not connected, it is usually better to configure as an input to prevent leakage.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "f2ad424cc6de8ca3aeceed460d853e9d9508a369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fd79a1_08a560b6",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-16T15:17:15Z",
+      "side": 1,
+      "message": "Delete - this symbol is automatically enabled when setting `\u0026ulpm { status \u003d \"okay\" }`",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "f2ad424cc6de8ca3aeceed460d853e9d9508a369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
