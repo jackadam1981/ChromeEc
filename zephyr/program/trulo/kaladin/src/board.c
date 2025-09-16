@@ -13,6 +13,7 @@
 #include "keyboard_config.h"
 #include "tablet_mode.h"
 
+#include <soc_common.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
@@ -134,3 +135,14 @@ static void sensor_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, sensor_init, HOOK_PRIO_DEFAULT);
+
+static int uart_dbgr_mode_delay(void)
+{
+	/* uart dbgr mode */
+	if (ECREG(0xf04001) & BIT(1)) {
+		k_busy_wait(2000000);
+	}
+
+	return 0;
+}
+SYS_INIT(uart_dbgr_mode_delay, APPLICATION, CONFIG_APPLICATION_INIT_PRIORITY);
