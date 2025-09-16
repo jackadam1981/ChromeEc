@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a96e29_5d999c79",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-16T22:15:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d0ffd7af_29cd74fb",
+      "range": {
+        "startLine": 852,
+        "startChar": 5,
+        "endLine": 855,
+        "endChar": 61
+      },
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf99937_8341f018",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "9cf99937_8341f018",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f1c4ae_158caa4a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-16T22:15:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "48a520bb_ceaba7eb",
       "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "633e8deb_cf5b89a5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-16T22:15:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c2d212b0_8d7852ae",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3ad8095_0e996d80",
@@ -131,6 +191,24 @@
       "writtenOn": "2025-09-12T18:13:07Z",
       "side": 1,
       "message": "Nit: I might have expected you to get a pre-upload error for not having all declarations at the top. Are you uploading with `repo upload`?",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18928ae_ad33a960",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-16T22:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ad8095_0e996d80",
       "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +244,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "c631fdb6_0998c2d8",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e28ab7_cdf10546",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-16T22:15:44Z",
+      "side": 1,
+      "message": "I typoed the suggestion. I think it should be\n```\nif (rv \u003d\u003d EC_SUCCESS)\n\t\ttcpci_bist_mode[port] \u003d enable;\n```",
+      "parentUuid": "7b77d6a8_978968ab",
       "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
