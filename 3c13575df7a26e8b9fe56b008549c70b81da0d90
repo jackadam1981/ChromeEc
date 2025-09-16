@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ff6505_0251d6fa",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4da487cb_f3ba8ca6",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 59
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b1e659a_d6522055",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-15T22:51:44Z",
       "side": 1,
       "message": "nit: let\u0027s initialize to zero\n\n```suggestion\n\tstd::array\u003cuint8_t, SHA256_DIGEST_LENGTH\u003e computed_mac{};\n```",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 56
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64e0629_dd6213a0",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1e659a_d6522055",
       "range": {
         "startLine": 295,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99eafec1_d9513088",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Each signature can be compared only once because `FP_AUTH_CHALLENGE_SET` flag is reset before we compare the signatures (new challenge had to be generated), so I don\u0027t think the attacker can use this, but I changed this to BoringSSL\u0027s `CRYPTO_memcmp()` (it uses the same XOR and OR trick) - it\u0027s better to be safe.\n\nBTW I learned that C++ compiler knows when the size of the span is known at compile time, which is nice, because we can make sure that the sizes are correct in build time.",
+      "parentUuid": "1d22e66c_ed17bb2f",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 319,
+        "endChar": 15
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cd5b2e2_a998b170",
         "filename": "common/fpsensor/fpsensor_auth_commands.cc",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2025-09-15T22:51:44Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 59
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e1bb5c_b3725449",
+        "filename": "common/fpsensor/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cd5b2e2_a998b170",
       "range": {
         "startLine": 333,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ea3ab1_274b6908",
+        "filename": "include/fpsensor/fpsensor_auth_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a8191a_594989fe",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb5d0716_52107096",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-09-15T22:51:44Z",
       "side": 1,
       "message": "nit: let\u0027s initialize to 0 (same in other tests)\n\n```suggestion\n\tstd::array\u003cuint8_t, FP_PAIRING_KEY_LEN\u003e pairing_key{};\n```",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 53
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ca0149_916bef63",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb5d0716_52107096",
       "range": {
         "startLine": 1144,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccdfa09_8c916325",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cd32c30_187d7bd6",
+      "range": {
+        "startLine": 1145,
+        "startChar": 0,
+        "endLine": 1145,
+        "endChar": 55
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12043180_41807469",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-09-15T22:51:44Z",
       "side": 1,
       "message": "nit: let\u0027s initialize to 0 (same in other tests)\n\n```suggestion\n\tstruct ec_response_fp_generate_nonce nonce_response{};\n```",
+      "range": {
+        "startLine": 1152,
+        "startChar": 0,
+        "endLine": 1152,
+        "endChar": 53
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42acdb59_132e69a0",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12043180_41807469",
       "range": {
         "startLine": 1152,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee73646_4a26070b",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b3a25d9_9eefa664",
+      "range": {
+        "startLine": 1155,
+        "startChar": 61,
+        "endLine": 1155,
+        "endChar": 65
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf8fcb71_1ce7a52a",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585d7901_37c85b4a",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8fcb71_1ce7a52a",
+      "range": {
+        "startLine": 1163,
+        "startChar": 0,
+        "endLine": 1163,
+        "endChar": 60
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d01b816_d8b1288d",
@@ -244,6 +484,30 @@
       "writtenOn": "2025-09-15T22:51:44Z",
       "side": 1,
       "message": "```suggestion\n\t\t\t\t       nullptr, 0),\n```",
+      "range": {
+        "startLine": 1179,
+        "startChar": 11,
+        "endLine": 1179,
+        "endChar": 15
+      },
+      "revId": "3c13575df7a26e8b9fe56b008549c70b81da0d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3a8681_76c985d9",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d01b816_d8b1288d",
       "range": {
         "startLine": 1179,
         "startChar": 11,
