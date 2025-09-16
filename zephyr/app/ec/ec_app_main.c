@@ -24,6 +24,7 @@
 #include <zephyr/pm/policy.h>
 #include <zephyr/shell/shell_uart.h>
 #include <zephyr/sys/printk.h>
+#include <soc_common.h>
 
 static struct k_timer no_sleep_boot_timer;
 static void boot_allow_sleep(struct k_timer *timer)
@@ -46,6 +47,11 @@ void ec_app_main(void)
 	}
 
 	system_print_banner();
+
+	/* uart dbgr mode */
+	if (ECREG(0xf04001) & BIT(1)) {
+		k_busy_wait(2000000);
+	}
 
 	if (IS_ENABLED(CONFIG_WATCHDOG) &&
 	    !IS_ENABLED(CONFIG_WDT_DISABLE_AT_BOOT)) {
