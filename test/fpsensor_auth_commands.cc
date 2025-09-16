@@ -814,7 +814,7 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
+	struct ec_fp_template_encryption_metadata enc_metadata_data {
 		.struct_version = 4
 	};
 
@@ -878,7 +878,7 @@ test_static enum ec_error_list test_fp_command_commit_v3(void)
 	encrypt_data_in_place(1, info, global_context.user_id,
 			      global_context.tpm_seed, template_data);
 
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
+	struct ec_fp_template_encryption_metadata enc_metadata_data {
 		.struct_version = 3
 	};
 
@@ -947,7 +947,7 @@ test_static enum ec_error_list test_fp_command_commit_trivial_salt(void)
 			      { template_data.data(),
 				template_data.size() + salt_data.size() });
 
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
+	struct ec_fp_template_encryption_metadata enc_metadata_data {
 		.struct_version = 4
 	};
 
@@ -1012,7 +1012,7 @@ test_static enum ec_error_list test_fp_command_commit_without_seed(void)
 
 	struct fp_auth_command_encryption_metadata info;
 
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
+	struct ec_fp_template_encryption_metadata enc_metadata_data {
 		.struct_version = 4
 	};
 
