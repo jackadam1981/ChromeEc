@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16676658_6f5e7250",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6225,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-09-16T07:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54cf3c4f_1e0ba286",
+      "range": {
+        "startLine": 6225,
+        "startChar": 1,
+        "endLine": 6225,
+        "endChar": 4
+      },
+      "revId": "792bcb641147fa06be124daf68ccf91a62091532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8241cb3_f0a82bdf",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-12T09:54:51Z",
       "side": 1,
       "message": "It also looks like we should do `__ec_align4` for rust porting.",
+      "range": {
+        "startLine": 6235,
+        "startChar": 1,
+        "endLine": 6235,
+        "endChar": 2
+      },
+      "revId": "792bcb641147fa06be124daf68ccf91a62091532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a210e24_1009ec81",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6235,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-09-16T07:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8241cb3_f0a82bdf",
       "range": {
         "startLine": 6235,
         "startChar": 1,
