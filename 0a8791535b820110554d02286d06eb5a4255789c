@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9afed09_c830ad7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9169c6fe_03985743",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa5d2030_5d3e14b2",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-15T23:10:50Z",
       "side": 1,
       "message": "nit: same comment as last CL",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 70
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0f270f_d9564624",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa5d2030_5d3e14b2",
       "range": {
         "startLine": 728,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c537b41_1889cab0",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:17:15Z",
+      "side": 1,
+      "message": "It\u0027s recoverable. In normal operation, `template_newly_enrolled` is set to `FP_NO_SUCH_TEMPLATE`. After the finger is enrolled, it\u0027s set to `templ_valid`.\n\nIt\u0027s okay if we start enrollment once again, without confirming the previous template, because the template will be overwritten.",
+      "parentUuid": "8882bff5_1246c7ec",
+      "range": {
+        "startLine": 736,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 2
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "170f9536_8aa43565",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-09-15T23:10:50Z",
       "side": 1,
       "message": "nit: Same comments as last CL about `const`/`constexpr` and zero initialization",
+      "range": {
+        "startLine": 1705,
+        "startChar": 0,
+        "endLine": 1712,
+        "endChar": 54
+      },
+      "revId": "0a8791535b820110554d02286d06eb5a4255789c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a84465_cdddcbc7",
+        "filename": "test/fpsensor_auth_commands.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T13:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "170f9536_8aa43565",
       "range": {
         "startLine": 1705,
         "startChar": 0,
