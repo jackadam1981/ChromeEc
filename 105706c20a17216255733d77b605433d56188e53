@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbbea09_fe99eaf3",
+        "filename": "test/fpsensor_auth_crypto_stateless.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T12:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3e59712_90f83668",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 6
+      },
+      "revId": "105706c20a17216255733d77b605433d56188e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "facd9b49_eefb894f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98dfa542_e02bc9d8",
+        "filename": "test/fpsensor_auth_crypto_stateless.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T12:57:20Z",
+      "side": 1,
+      "message": "I used `constexpr` everywhere.",
+      "parentUuid": "facd9b49_eefb894f",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 61
+      },
+      "revId": "105706c20a17216255733d77b605433d56188e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0549fdb_1eff2ae1",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-09-15T22:20:50Z",
       "side": 1,
       "message": "nit: Let\u0027s initialize just in case `compute_message_signature` is ever changed and doesn\u0027t overwrite the entire buffer.\n\n```suggestion\n\tstd::array\u003cuint8_t, 32\u003e actual_signature{};\n```",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 42
+      },
+      "revId": "105706c20a17216255733d77b605433d56188e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f6f0ed_3adcfca7",
+        "filename": "test/fpsensor_auth_crypto_stateless.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-16T12:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0549fdb_1eff2ae1",
       "range": {
         "startLine": 364,
         "startChar": 0,
