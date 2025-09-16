@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 add_subdirectory(ap_pwrseq)
+add_subdirectory(bt_passthru)
 add_subdirectory(emul)
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC_USB_PD_CONTROLLER pd_controller)
 add_subdirectory_ifdef(CONFIG_HOST_SERVICE host_service)

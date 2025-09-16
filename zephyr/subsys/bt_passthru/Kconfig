@@ -1,0 +1,34 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig BT_PASSTHRU
+	bool "Enable Bluetooth passthrough"
+	help
+	  Enable bluetooth passthrough host commands to pass data to ISH
+
+if BT_PASSTHRU
+
+module = BT_PASSTHRU
+module-str = BT Passthru
+source "subsys/logging/Kconfig.template.log_config"
+
+config BT_PASSTHRU_INIT_PRIORITY
+	int "BT passthru stack init priority"
+	default 91
+	help
+	  Initialization priority of BT passthru in POST_KERNEL.
+
+config BT_PASSTHRU_THREAD_PRIORTY
+	int "BT passthru thread priority"
+	default 0
+	help
+	  Set thread priority of the BT passthrough
+
+config BT_PASSTHRU_STACK_SIZE
+	int "BT passthru thread stack size"
+	default 1024
+	help
+	  Stack size of thread.
+
+endif # BT_PASSTHRU

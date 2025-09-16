@@ -8888,6 +8888,25 @@ struct ec_response_get_boot_time {
 /* Issue AP shutdown */
 #define EC_CMD_AP_SHUTDOWN 0x0605
 
+/* BT Passthrough Host commands */
+#define EC_CMD_BT_COMMAND 0x0606
+
+#define BT_MAX_COMMAND_SIZE 2048
+struct ec_param_bt_command {
+	uint32_t size;
+	uint8_t data[BT_MAX_COMMAND_SIZE];
+};
+
+#define EC_CMD_BT_READ_EVENT 0x0607
+#define BT_MAX_EVENT_SIZE 256 /* TBD */
+#define BT_EVENT_BUFF_SIZE BT_MAX_EVENT_SIZE * 10
+struct ec_response_bt_read_event {
+	uint32_t num_events;
+	/* Event data buffer mapping BT events next to each other.
+	   [ [<size><event>][<size><event>] ]*/
+	uint8_t events[BT_EVENT_BUFF_SIZE];
+};
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
