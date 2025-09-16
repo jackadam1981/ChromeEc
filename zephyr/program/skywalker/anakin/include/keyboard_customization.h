@@ -8,7 +8,7 @@
 #ifndef __KEYBOARD_CUSTOMIZATION_H
 #define __KEYBOARD_CUSTOMIZATION_H
 
-#define KEYBOARD_COLS_MAX 15
+#define KEYBOARD_COLS_MAX 18
 #define KEYBOARD_ROWS 8
 
 /* Columns and Rows for keys we particularly care about */
@@ -18,7 +18,7 @@
 #define KEYBOARD_ROW_ESC 1
 #define KEYBOARD_COL_KEY_H 6
 #define KEYBOARD_ROW_KEY_H 1
-#define KEYBOARD_COL_KEY_R 3
+#define KEYBOARD_COL_KEY_R 9
 #define KEYBOARD_ROW_KEY_R 7
 #define KEYBOARD_COL_LEFT_ALT 13
 #define KEYBOARD_ROW_LEFT_ALT 6
