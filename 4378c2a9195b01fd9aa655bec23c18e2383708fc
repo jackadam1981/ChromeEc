@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702d56b5_2f858ac8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-16T21:30:06Z",
+      "side": 1,
+      "message": "Ideally charge manager would handle all of this, but consider this a stopgap to solve an RVP issue until we think of a better plan. \n\nThis only affects a development board and not any real products.",
+      "revId": "4378c2a9195b01fd9aa655bec23c18e2383708fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
