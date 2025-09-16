@@ -16,6 +16,24 @@
       "message": "I think something like `pd_timer_enable(port, PE_TIMER_PS_SOURCE, (pe_in_frs_mode(port) ? 0 : PD_POWER_TURN_ON_DELAY));` suffice this requirement. No change needed elsewhere.",
       "revId": "4676b40dd15d18583a3ce9c97ff50b288574df2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b7c1fb_9fc2c890",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5537,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-16T17:16:53Z",
+      "side": 0,
+      "message": "I think Pranava is right. That\u0027s an odd enough thing to do that there should  still be a comment saying that in the FRS case, VBUS is already at vSafe5V, so we don\u0027t need to wait.",
+      "parentUuid": "71be64cf_4ffd4ff8",
+      "revId": "4676b40dd15d18583a3ce9c97ff50b288574df2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
