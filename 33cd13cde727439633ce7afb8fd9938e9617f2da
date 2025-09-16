@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50505cf1_3f4e435f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-16T21:47:49Z",
+      "side": 1,
+      "message": "I wonder if we should make a helper function for this check and use it everywhere. It might make the code slightly easier to read. Something like:\n\n```\nbool fingerprint_auth_enabled( context ) {\n  return context.fp_encryption_status \u0026 FP_CONTEXT_STATUS_SESSION_ESTABLISHED;\n}\n```\n\nNo need for any changes here; you can do it in a follow up CL if you want to do it.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 4
+      },
+      "revId": "33cd13cde727439633ce7afb8fd9938e9617f2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
