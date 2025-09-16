@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8585fa_ba819116",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-16T21:26:42Z",
+      "side": 1,
+      "message": "```suggestion\nBUG\u003db:441171342\n```",
+      "revId": "5704febf46dfd0b6ea8f85a5b9aa8c6c56e297ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcaf1b7_b606552f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-16T21:26:42Z",
+      "side": 1,
+      "message": "Expend this section. With the compiled code, the EC should be able to discover the i2c device. Does it see it? Can it interact with it?",
+      "revId": "5704febf46dfd0b6ea8f85a5b9aa8c6c56e297ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
