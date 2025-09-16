@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0d4a09_95d4104c",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1025/boards/native_sim.overlay",
+        "patchSetId": 39
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-16T01:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94146ea7_7c4afbe1",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "502fb9c90fc7c8db5db615eddc19f9c890f98b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0985148c_5c4af380",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-09T18:49:23Z",
       "side": 1,
       "message": "Same as these comments [1](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6876488/comment/5bfda3ec_88e4f99e/), [2](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6876488/comment/4e404844_d45562ac/)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "502fb9c90fc7c8db5db615eddc19f9c890f98b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b46c08_e0989015",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1145/boards/native_sim.overlay",
+        "patchSetId": 39
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-16T01:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0985148c_5c4af380",
       "range": {
         "startLine": 20,
         "startChar": 0,
