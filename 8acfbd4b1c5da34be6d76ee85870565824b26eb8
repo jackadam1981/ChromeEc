@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f232b5_0ae88f45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T15:25:37Z",
+      "side": 1,
+      "message": "This code change doesn\u0027t have any dependencies on the isl95522 driver tests.  It should be easy enough to add unit tests for the new charger minimum checks to the existing charging tests.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "8acfbd4b1c5da34be6d76ee85870565824b26eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
