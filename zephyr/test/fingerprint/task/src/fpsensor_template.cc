@@ -8,6 +8,7 @@
 #define _XOPEN_SOURCE 500
 #endif
 
+#include "command_helper.h"
 #include "mock_fingerprint_algorithm.h"
 
 #include <stdlib.h>
@@ -18,6 +19,8 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
+#include <zephyr/kernel.h>
+#include <zephyr/sys/util.h>
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
@@ -37,9 +40,10 @@ FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
 FAKE_VALUE_FUNC(int, system_is_locked);
 
 #define fp_sim DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
-#define IMAGE_SIZE                          \
-	FINGERPRINT_SENSOR_REAL_IMAGE_SIZE( \
-		DT_CHOSEN(cros_fp_fingerprint_sensor))
+#define IMAGE_SIZE                                                 \
+	MAX_FROM_LIST(LISTIFY(NUM_IMAGE_CAPTURE_TYPES,             \
+			      FINGERPRINT_SENSOR_FRAME_SIZE, (, ), \
+			      DT_CHOSEN(cros_fp_fingerprint_sensor)))
 static uint8_t frame_buffer[IMAGE_SIZE];
 
 static const uint8_t fake_rollback_entropy[] = "some_rollback_entropy";
@@ -151,6 +155,11 @@ static int custom_enroll_finish(const struct fingerprint_algorithm *const alg,
 }
 
 static uint8_t encrypted_template[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+
+static ec_response_fp_info_v2 *test_info_buffer = NULL;
+static const size_t test_info_buffer_size =
+	sizeof(struct ec_response_fp_info_v2) +
+	sizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;
 
 /*
  * Size of params buffer for FP_TEMPLATE command. Its size must be big enough
@@ -322,7 +331,6 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_success)
 	const size_t data_size =
 		FP_TEMPLATE_PARAMS_BUFFER_SIZE - sizeof(*params);
 	uint8_t *data = params_buffer + sizeof(*params);
-	struct ec_response_fp_info info;
 	size_t offset = 0;
 
 	memcpy(encrypted_template, &expected_enc_info,
@@ -350,8 +358,8 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_success)
 	}
 
 	/* Confirm that there is 1 valid template. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_valid, 1);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(test_info_buffer->template_info.template_valid, 1);
 }
 
 ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
@@ -363,7 +371,6 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
 	const size_t data_size =
 		FP_TEMPLATE_PARAMS_BUFFER_SIZE - sizeof(*params);
 	uint8_t *data = params_buffer + sizeof(*params);
-	struct ec_response_fp_info info;
 	size_t offset = 0;
 
 	struct ec_fp_template_encryption_metadata enc_info_with_invalid_tag =
@@ -403,8 +410,8 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
 	}
 
 	/* Confirm that there is no valid template. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_valid, 0);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(test_info_buffer->template_info.template_valid, 0);
 }
 
 static void *fpsensor_setup(void)
@@ -472,7 +479,19 @@ static void fpsensor_before(void *f)
 
 	/* Reset seed for random() */
 	srandom(0xdeadc0de);
+
+	test_info_buffer =
+		(ec_response_fp_info_v2 *)k_malloc(test_info_buffer_size);
+	zassert_not_null(test_info_buffer, "Failed to allocate info buffer");
+	memset(test_info_buffer, 0, test_info_buffer_size); // or k_calloc above
+							    // if it exists}
 }
 
-ZTEST_SUITE(fpsensor_template, NULL, fpsensor_setup, fpsensor_before, NULL,
-	    NULL);
+static void fpsensor_after(void *f)
+{
+	k_free(test_info_buffer);
+	test_info_buffer = NULL;
+}
+
+ZTEST_SUITE(fpsensor_template, NULL, fpsensor_setup, fpsensor_before,
+	    fpsensor_after, NULL);
