@@ -9,6 +9,7 @@
 #include "system_safe_mode.h"
 
 #include <zephyr/arch/cpu.h>
+#include <zephyr/cache.h>
 #include <zephyr/fatal.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -202,6 +203,12 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 			return;
 		}
 		pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS;
+	}
+
+	panic_printf(" %s: ready to reboot: pdata 0x%p, magic %d\n", __func__,
+		     (void *)pdata, pdata->magic);
+	if (IS_ENABLED(CONFIG_CACHE_MANAGEMENT) && IS_ENABLED(CONFIG_X86)) {
+		sys_cache_data_flush_and_invd_all();
 	}
 
 	/*
