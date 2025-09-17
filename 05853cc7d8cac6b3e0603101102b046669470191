@@ -22,6 +22,30 @@
       },
       "revId": "05853cc7d8cac6b3e0603101102b046669470191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797280d9_40edb031",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1025/src/fpc1025.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-17T22:36:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2533a095_39cd5755",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "05853cc7d8cac6b3e0603101102b046669470191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
