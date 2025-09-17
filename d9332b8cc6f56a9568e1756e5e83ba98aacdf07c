@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ff33e1_22ec5a48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T18:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a9d29ab_ce4e06b0",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "d9332b8cc6f56a9568e1756e5e83ba98aacdf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44990275_91c8445a",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-17T07:10:40Z",
       "side": 1,
       "message": "is this adapter or charger?",
+      "range": {
+        "startLine": 2126,
+        "startChar": 15,
+        "endLine": 2126,
+        "endChar": 22
+      },
+      "revId": "d9332b8cc6f56a9568e1756e5e83ba98aacdf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718783b6_5e2660bd",
+        "filename": "common/charge_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T18:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44990275_91c8445a",
       "range": {
         "startLine": 2126,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2ebe1f_0ac95b79",
+        "filename": "include/charge_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T18:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d03b61_a98fcf5b",
+      "range": {
+        "startLine": 336,
+        "startChar": 25,
+        "endLine": 336,
+        "endChar": 32
+      },
+      "revId": "d9332b8cc6f56a9568e1756e5e83ba98aacdf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef48c88b_cb5c7261",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-09-17T07:10:40Z",
       "side": 1,
       "message": "What if a low voltage adapter and 60W adapter are attached at the same time?",
+      "range": {
+        "startLine": 340,
+        "startChar": 11,
+        "endLine": 340,
+        "endChar": 16
+      },
+      "revId": "d9332b8cc6f56a9568e1756e5e83ba98aacdf07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "311dbcc1_7e6c5ff2",
+        "filename": "include/charge_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T18:56:59Z",
+      "side": 1,
+      "message": "The `charge_manager` module evaluates the connected adapters and selects the best one, in this scenario the 60W adapter. `charge_manager_get_charger_voltage` will return the voltage of the 60W adapter.",
+      "parentUuid": "ef48c88b_cb5c7261",
       "range": {
         "startLine": 340,
         "startChar": 11,
