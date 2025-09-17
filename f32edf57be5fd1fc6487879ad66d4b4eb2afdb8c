@@ -50,6 +50,24 @@
       "message": "I assume it is a copy from another charger IC. Can specify which one?",
       "revId": "f32edf57be5fd1fc6487879ad66d4b4eb2afdb8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27004667_03b1fd27",
+        "filename": "zephyr/shim/include/nfc/ctn730.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-09-17T01:26:49Z",
+      "side": 1,
+      "message": "cps8200",
+      "parentUuid": "d9da8197_97b96fa0",
+      "revId": "f32edf57be5fd1fc6487879ad66d4b4eb2afdb8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
