@@ -65,4 +65,7 @@ config LTO
 config ISR_TABLES_LOCAL_DECLARATION
 	default y
 
+config CURRENT_THREAD_USE_TLS
+	default n
+
 orsource "Kconfig.defaults-$(ARCH)"
