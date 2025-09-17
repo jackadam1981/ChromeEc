@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2533a095_39cd5755",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1025/src/fpc1025.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-17T20:48:51Z",
+      "side": 1,
+      "message": "Is it possible to specify the full config struct, rather than splitting them out like this?\n\nNote that although in general we want to avoid hard-coding values, it\u0027s ok to do so in tests when you want to check for specific values. So we could just put the hardcoded values in the test for the entire array of structs.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "05853cc7d8cac6b3e0603101102b046669470191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
