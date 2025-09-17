@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f4c0c0_bfc0e84b",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "04631ec0_f84ccc52",
+      "revId": "fcd39e00dfee46c882cd2fa1a14b639e44f638fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0803e14_5ab1ef46",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-09-17T02:31:26Z",
       "side": 1,
       "message": "power good should be an input\n```suggestion\n\t\t\tgpios \u003d \u003c\u0026gpio6 3 (GPIO_INPUT)\u003e;\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "fcd39e00dfee46c882cd2fa1a14b639e44f638fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7955e0ea_f518a3bb",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b0803e14_5ab1ef46",
       "range": {
         "startLine": 51,
         "startChar": 21,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6cbc8e6_e79467f7",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "000d0d04_0ee32c04",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "fcd39e00dfee46c882cd2fa1a14b639e44f638fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7ea8aff_9a59f6c9",
@@ -94,6 +160,30 @@
       "writtenOn": "2025-09-17T02:31:26Z",
       "side": 1,
       "message": "power detect is tied directly to rail, active high\n```suggestion\n\t\t\tgpios \u003d \u003c\u0026gpioa 1 (GPIO_INPUT)\u003e;\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 22,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "fcd39e00dfee46c882cd2fa1a14b639e44f638fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bbb992_38abafa5",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a7ea8aff_9a59f6c9",
       "range": {
         "startLine": 91,
         "startChar": 22,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbb05d7_367deaf9",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b46b0955_5fa691fb",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "fcd39e00dfee46c882cd2fa1a14b639e44f638fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95ccece7_dae2096a",
@@ -140,6 +254,30 @@
       "writtenOn": "2025-09-17T02:31:26Z",
       "side": 1,
       "message": "GPIO75 is connected to EC_LED4_ODL, should not be in the unused list.",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 15
+      },
+      "revId": "fcd39e00dfee46c882cd2fa1a14b639e44f638fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d989e43_80666a2f",
+        "filename": "zephyr/program/bluey/quartz/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "95ccece7_dae2096a",
       "range": {
         "startLine": 188,
         "startChar": 3,
