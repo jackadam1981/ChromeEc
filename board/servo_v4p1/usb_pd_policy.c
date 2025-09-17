@@ -148,7 +148,7 @@ static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
 static uint8_t vbus_rp = TYPEC_RP_RESERVED;
 
-static int cc_config = CC_ALLOW_SRC;
+int cc_config = CC_ALLOW_SRC;
 
 /* Voltage thresholds for no connect in DTS mode */
 static int pd_src_vnc_dts[TYPEC_RP_RESERVED][2] = {
@@ -1181,6 +1181,8 @@ static void print_cc_mode(void)
 	ccprintf("chg allowed: %s\n", cc_config & CC_ALLOW_SRC ? "on" : "off");
 	ccprintf("drp enabled: %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
 	ccprintf("cc polarity: %s\n", cc_config & CC_POLARITY ? "cc2" : "cc1");
+	ccprintf("cc suzyqalike: %s\n",
+		 cc_config & CC_SUZYQ_ALIKE ? "on" : "off");
 	ccprintf("pd enabled: %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
 	ccprintf("emca: %s\n",
 		 cc_config & CC_EMCA_SERVO ? "emarked" : "non-emarked");
