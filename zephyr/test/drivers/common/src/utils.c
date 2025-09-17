@@ -96,6 +96,7 @@ void test_set_chipset_to_power_level(enum power_state new_state)
 #endif
 		     ,
 		     "Power state must be one of the steady states");
+	enum power_state old_state = power_get_state();
 	task_wake(TASK_ID_CHIPSET);
 	k_sleep(K_SECONDS(1));
 
@@ -107,6 +108,14 @@ void test_set_chipset_to_power_level(enum power_state new_state)
 	test_set_chipset_to_s0();
 
 	power_set_state(new_state);
+
+	/* Slightly hacky, but notify hooks if needed. */
+	if (new_state == POWER_S3) {
+		hook_notify(HOOK_CHIPSET_SUSPEND);
+	}
+	if (old_state == POWER_S3 && new_state == POWER_S0) {
+		hook_notify(HOOK_CHIPSET_RESUME);
+	}
 
 	k_sleep(K_SECONDS(1));
 
