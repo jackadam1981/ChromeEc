@@ -550,10 +550,20 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, "[clear]",
 static enum ec_status
 host_command_panic_info(struct host_cmd_handler_args *args)
 {
+	static int call_count;
 	const struct ec_params_get_panic_info_v1 *p = args->params;
 	uint32_t pdata_size = get_panic_data_size();
 	uintptr_t pdata_start = get_panic_data_start();
 	struct panic_data *pdata = panic_get_data();
+
+	if (call_count == 3) {
+		volatile int one = 1;
+		volatile int zero = 0;
+
+		cflush();
+		ccprintf("%08x", one / zero);
+	}
+	call_count++;
 
 	if (pdata_start && pdata_size > 0) {
 		if (pdata_size > args->response_max) {

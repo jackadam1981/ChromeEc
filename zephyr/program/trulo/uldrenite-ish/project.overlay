@@ -17,3 +17,7 @@
 		zephyr,flash = &sram;
 	};
 };
+
+&sram {
+	reg = < 0xff200000 0x98000 >;
+};
