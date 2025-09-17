@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fff0045_cfa1933c",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T19:54:09Z",
+      "side": 1,
+      "message": "This returns an error if the platform did not define a charging minimum. Are the AP users of this command good with that?",
+      "range": {
+        "startLine": 2214,
+        "startChar": 0,
+        "endLine": 2214,
+        "endChar": 31
+      },
+      "revId": "99799ca1c7ea2f388484ae0815c3cf3c6749f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd04bc8_a540259b",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8017,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T19:54:09Z",
+      "side": 1,
+      "message": "Non-blocking, but some good cleanup here would be to use declared initializers for these parameters.\n```\nstatic const char *const base_params[] \u003d {\n\t[CS_PARAM_CHG_VOLTAGE] \u003d \"chg_voltage\",\n```",
+      "range": {
+        "startLine": 8017,
+        "startChar": 0,
+        "endLine": 8017,
+        "endChar": 15
+      },
+      "revId": "99799ca1c7ea2f388484ae0815c3cf3c6749f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
