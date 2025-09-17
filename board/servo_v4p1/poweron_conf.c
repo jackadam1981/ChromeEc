@@ -51,8 +51,10 @@ static void servo_print_usb_poweron_conf(const char *port, uint8_t bitmask)
 
 static void servo_print_cc_poweron_conf(uint8_t bitmask)
 {
-	ccprintf("CC settings - dts:%s\n",
+	ccprintf("CC settings - dts:%s ",
 		 (bitmask & CC_DISABLE_DTS) ? "off" : "on");
+
+	ccprintf("suzyq:%s\n", (bitmask & CC_SUZYQ_ALIKE) ? "on" : "off");
 }
 
 static int
@@ -210,6 +212,13 @@ static int servo_subcommand_cc_poweron_conf(int argc, const char *argv[])
 				current_config.cc_config |= CC_DISABLE_DTS;
 			else
 				return EC_ERROR_PARAM4;
+		} else if (!strcasecmp(argv[2], "suzyq")) {
+			if (!strcasecmp(argv[3], "off"))
+				current_config.cc_config &= ~CC_SUZYQ_ALIKE;
+			else if (!strcasecmp(argv[3], "on"))
+				current_config.cc_config |= CC_SUZYQ_ALIKE;
+			else
+				return EC_ERROR_PARAM4;
 		} else {
 			return EC_ERROR_PARAM3;
 		}
@@ -351,7 +360,11 @@ void apply_poweron_conf(void)
 		gl3590_enable_ports(0, GL3590_DFP4, 0);
 	}
 
-	/* Init CCD config */
+	/* Init CC config */
+	if (servo_poweron_conf.cc_config & CC_SUZYQ_ALIKE) {
+		set_cc_flag(CC_SUZYQ_ALIKE, true);
+	}
+
 	if (servo_poweron_conf.cc_config & CC_DISABLE_DTS) {
 		set_cc_flag(CC_DISABLE_DTS, true);
 	} else {
