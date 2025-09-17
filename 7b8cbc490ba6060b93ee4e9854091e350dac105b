@@ -46,6 +46,30 @@
       },
       "revId": "7b8cbc490ba6060b93ee4e9854091e350dac105b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d169fc3_1e0fc20e",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2228,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-09-17T22:34:51Z",
+      "side": 1,
+      "message": "Removed these messages from the CL. This now just supports revision and disc id",
+      "parentUuid": "b2c0d72b_665b58fc",
+      "range": {
+        "startLine": 2228,
+        "startChar": 3,
+        "endLine": 2228,
+        "endChar": 12
+      },
+      "revId": "7b8cbc490ba6060b93ee4e9854091e350dac105b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
