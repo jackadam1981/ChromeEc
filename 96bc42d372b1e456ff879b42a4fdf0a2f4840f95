@@ -16,6 +16,29 @@
       "message": "Let other reviewers to more look at this.",
       "revId": "96bc42d372b1e456ff879b42a4fdf0a2f4840f95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d073d9_fb02737c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T22:06:57Z",
+      "side": 1,
+      "message": "Nit - the Type-C spec indicates that the port shall not drive Vconn in these states: UnorientedDebugAccessory.SRC, OrientedDebugAccessory.SRC, and DebugAccessory.SNK",
+      "range": {
+        "startLine": 1352,
+        "startChar": 5,
+        "endLine": 1352,
+        "endChar": 29
+      },
+      "revId": "96bc42d372b1e456ff879b42a4fdf0a2f4840f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
