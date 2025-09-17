@@ -23,5 +23,22 @@
                 		default;
 			};
 		};
+
+		thermal {
+			enum-name = "FW_THERMAL";
+			start = <2>;
+			size = <1>;
+
+			thermal_1405_1505 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_THERMAL_1405_1505";
+				value = <0>;
+			};
+			thermal_1406 {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_THERMAL_1406";
+				value = <1>;
+			};
+		};
 	};
 };

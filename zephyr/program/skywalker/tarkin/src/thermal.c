@@ -8,12 +8,16 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
+#include "cros_cbi.h"
 #include "extpower.h"
 #include "hooks.h"
 #include "power.h"
 #include "temp_sensor/temp_sensor.h"
 #include "util.h"
 
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(thermal, LOG_LEVEL_INF);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
@@ -171,23 +175,41 @@ static void average_tempature(void)
 }
 DECLARE_HOOK(HOOK_SECOND, average_tempature, HOOK_PRIO_DEFAULT);
 
+static int thermal_ntc;
+static void thermal_ntc_init(void)
+{
+	int ret;
+
+	ret = cros_cbi_get_fw_config(FW_THERMAL, &thermal_ntc);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_THERMAL);
+		return;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, thermal_ntc_init, HOOK_PRIO_POST_FIRST);
+
 int charger_profile_override(struct charge_state_data *curr)
 {
-	/*
-	 * Precharge must be executed when communication is failed on
-	 * dead battery.
-	 */
-	if (!(curr->batt.flags & BATT_FLAG_RESPONSIVE))
-		return 0;
+	if (thermal_ntc == FW_THERMAL_1405_1505) {
+		/*
+		 * Precharge must be executed when communication is failed on
+		 * dead battery.
+		 */
+		if (!(curr->batt.flags & BATT_FLAG_RESPONSIVE))
+			return 0;
 
-	/* Don't charge if outside of allowable temperature range */
-	if (current == 0) {
-		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-		if (curr->state != ST_DISCHARGE)
-			curr->state = ST_IDLE;
+		/* Don't charge if outside of allowable temperature range */
+		if (current == 0) {
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			if (curr->state != ST_DISCHARGE)
+				curr->state = ST_IDLE;
+		}
+		if (current >= 0)
+			curr->requested_current =
+				MIN(curr->requested_current, current);
+
+		return 0;
 	}
-	if (current >= 0)
-		curr->requested_current = MIN(curr->requested_current, current);
 
 	return 0;
 }
