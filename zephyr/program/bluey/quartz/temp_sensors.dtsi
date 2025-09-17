@@ -25,22 +25,22 @@
 		};
 	};
 
-	temp_point1: point1 {
+	temp_thermistor1: thermistor1 {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_100K_100K_4250B>;
 		adc = <&adc_temp_sensor1>;
 	};
-	temp_point2: point2 {
+	temp_thermistor2: thermistor2 {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_100K_100K_4250B>;
 		adc = <&adc_temp_sensor2>;
 	};
-	temp_point3: point3 {
+	temp_thermistor3: thermistor3 {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_100K_100K_4250B>;
 		adc = <&adc_temp_sensor3>;
 	};
-	temp_point4: point4 {
+	temp_thermistor4: thermistor4 {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_100K_100K_4250B>;
 		adc = <&adc_temp_sensor4>;
@@ -48,17 +48,17 @@
 
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
-		point1 {
-			sensor = <&temp_point1>;
+		temp_point1: point1 {
+			sensor = <&temp_thermistor1>;
 		};
-		point2 {
-			sensor = <&temp_point2>;
+		temp_point2: point2 {
+			sensor = <&temp_thermistor2>;
 		};
-		point3 {
-			sensor = <&temp_point3>;
+		temp_point3: point3 {
+			sensor = <&temp_thermistor3>;
 		};
-		point4 {
-			sensor = <&temp_point4>;
+		temp_point4: point4 {
+			sensor = <&temp_thermistor4>;
 		};
 	};
 };
