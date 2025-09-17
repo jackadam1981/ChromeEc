@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecc50d97_7e057cf5",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T15:32:58Z",
+      "side": 1,
+      "message": "Just curious, any reason we opted not to use [led policies](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/zephyr/zephyr_leds.md#configure-led-policies)?",
+      "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7930089e_98329cff",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T15:32:58Z",
+      "side": 1,
+      "message": "I\u0027m working on a [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6939212/3) that will provide an `is_charger_sufficient` API",
+      "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
