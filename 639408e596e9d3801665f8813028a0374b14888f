@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37275732_7c61ff7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T20:03:15Z",
+      "side": 1,
+      "message": "I mentioned in the first CL, but I think charge_manager should be checking \"is_adapter_sufficient\" as part of `charge_manager_refresh()`.  We don\u0027t want the charge manager trying to charge from a low voltage adapter, and we want to ensure TCPC/PDC drivers to disable the sink path.",
+      "revId": "639408e596e9d3801665f8813028a0374b14888f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
