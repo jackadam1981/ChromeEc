@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d0e23d3_5b94a1a8",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:52:57Z",
+      "side": 1,
+      "message": "This pin is configured as an ADC pin,to detect the switchcap power good.",
+      "parentUuid": "0449381d_cc292b10",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b333e97_0094bbdc",
         "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
         "patchSetId": 3
