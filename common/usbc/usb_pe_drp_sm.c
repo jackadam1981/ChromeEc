@@ -5530,11 +5530,15 @@ static void pe_prs_snk_src_source_on_entry(int port)
 	print_current_state(port);
 
 	/*
-	 * VBUS was enabled when the TypeC state machine entered
-	 * Attached.SRC state
+	 * VBUS was enabled when the Type-C state machine entered Attached.SRC.
+	 * In the Fast Role Swap (FRS) case, the PPC/TCPC has already driven
+	 * VBUS to vSafe5V, so we don’t need to wait for the normal
+	 * PD_POWER_SUPPLY_TURN_ON_DELAY. A 0-tick timer ensures PS_RDY is sent
+	 * immediately.
 	 */
 	pd_timer_enable(port, PE_TIMER_PS_SOURCE,
-			PD_POWER_SUPPLY_TURN_ON_DELAY);
+			(pe_in_frs_mode(port) ? 0 :
+						PD_POWER_SUPPLY_TURN_ON_DELAY));
 }
 
 static void pe_prs_snk_src_source_on_run(int port)
