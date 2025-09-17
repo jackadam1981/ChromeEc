@@ -4,6 +4,7 @@
 
 # Skywalker Makeifile
 zephyr_include_directories("include")
+zephyr_library_sources("src/charger.c")
 zephyr_library_sources("src/keyboard.c")
 zephyr_library_sources("src/sensor.c")
 zephyr_library_sources("src/touch_panel.c")
