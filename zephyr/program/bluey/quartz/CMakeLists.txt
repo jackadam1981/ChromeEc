@@ -4,4 +4,4 @@
 
 # Quartz Makefile
 zephyr_include_directories("include")
-zephyr_library_sources("src/fan.c")
+zephyr_library_sources("src/fan.c" "src/led.c")
