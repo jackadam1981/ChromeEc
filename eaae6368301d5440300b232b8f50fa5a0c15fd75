@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fbc4b75_9941281b",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5b333e97_0094bbdc",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc455361_c998f07f",
@@ -77,6 +101,30 @@
       "writtenOn": "2025-09-16T21:51:33Z",
       "side": 1,
       "message": "Remove Active Low",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe08fa7_c6382bfb",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dc455361_c998f07f",
       "range": {
         "startLine": 77,
         "startChar": 35,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02aa87e7_74c75e92",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "785386bb_68786583",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d64d911_1ed8b314",
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8cdaf11_c052a3d1",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7d64d911_1ed8b314",
+      "range": {
+        "startLine": 140,
+        "startChar": 36,
+        "endLine": 140,
+        "endChar": 51
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15fbfa24_e527ba0f",
@@ -146,6 +242,30 @@
       "writtenOn": "2025-09-16T21:51:33Z",
       "side": 1,
       "message": "Consider GPIO_OUTPUT_INIT_LOW",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 33
+      },
+      "revId": "eaae6368301d5440300b232b8f50fa5a0c15fd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6dba35d_f9736df4",
+        "filename": "zephyr/program/bluey/bluey/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-17T13:50:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "15fbfa24_e527ba0f",
       "range": {
         "startLine": 143,
         "startChar": 22,
