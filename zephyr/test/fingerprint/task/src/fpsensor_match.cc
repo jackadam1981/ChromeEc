@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "command_helper.h"
 #include "mock_fingerprint_algorithm.h"
 
 #include <zephyr/device.h>
@@ -11,6 +12,8 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
+#include <zephyr/kernel.h>
+#include <zephyr/sys/util.h>
 #include <zephyr/ztest.h>
 #include <zephyr/ztest_assert.h>
 
@@ -28,12 +31,18 @@ DEFINE_FFF_GLOBALS;
 FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
 
 #define fp_sim DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
-#define IMAGE_SIZE                          \
-	FINGERPRINT_SENSOR_REAL_IMAGE_SIZE( \
-		DT_CHOSEN(cros_fp_fingerprint_sensor))
+#define IMAGE_SIZE                                                 \
+	MAX_FROM_LIST(LISTIFY(NUM_IMAGE_CAPTURE_TYPES,             \
+			      FINGERPRINT_SENSOR_FRAME_SIZE, (, ), \
+			      DT_CHOSEN(cros_fp_fingerprint_sensor)))
 static uint8_t image_buffer[IMAGE_SIZE];
 
 static const uint8_t fake_rollback_entropy[] = "some_rollback_entropy";
+
+static ec_response_fp_info_v2 *test_info_buffer = NULL;
+static const size_t test_info_buffer_size =
+	sizeof(struct ec_response_fp_info_v2) +
+	sizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;
 
 /* The fake TPM seed is "very_secret_32_bytes_of_tpm_seed" */
 #define FAKE_TPM_SEED                                                       \
@@ -486,7 +495,6 @@ ZTEST_USER(fpsensor_match, test_match_success_template_updated_dirty_template)
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
 
 	/* Load example template. */
 	zassert_ok(ec_cmd_fp_template(
@@ -521,8 +529,8 @@ ZTEST_USER(fpsensor_match, test_match_success_template_updated_dirty_template)
 	zassert_equal(mock_alg_match_fake.call_count, 1);
 
 	/* Confirm that dirty templates bitmap is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_dirty, 0x1);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(test_info_buffer->template_info.template_dirty, 0x1);
 }
 
 ZTEST_USER(fpsensor_match,
@@ -533,7 +541,6 @@ ZTEST_USER(fpsensor_match,
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
 
 	/* Load example template. */
 	zassert_ok(ec_cmd_fp_template(
@@ -568,8 +575,8 @@ ZTEST_USER(fpsensor_match,
 	zassert_equal(mock_alg_match_fake.call_count, 1);
 
 	/* Confirm that dirty templates bitmap is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_dirty, 0x0);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(test_info_buffer->template_info.template_dirty, 0x0);
 }
 
 ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
@@ -579,7 +586,6 @@ ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
-	struct ec_response_fp_info info;
 
 	/* Load example template. */
 	zassert_ok(ec_cmd_fp_template(
@@ -614,8 +620,8 @@ ZTEST_USER(fpsensor_match, test_match_success_no_template_update_dirty_template)
 	zassert_equal(mock_alg_match_fake.call_count, 1);
 
 	/* Confirm that dirty templates bitmap is correct. */
-	zassert_ok(ec_cmd_fp_info(NULL, &info));
-	zassert_equal(info.template_dirty, 0x0);
+	zassert_ok(fpinfo_cmd_helper(test_info_buffer));
+	zassert_equal(test_info_buffer->template_info.template_dirty, 0x0);
 }
 
 ZTEST_USER(fpsensor_match,
@@ -999,6 +1005,18 @@ static void fpsensor_before(void *f)
 
 	/* Clear MKBP events from previous tests. */
 	fp_get_next_event((uint8_t *)&fp_events);
+	test_info_buffer =
+		(ec_response_fp_info_v2 *)k_malloc(test_info_buffer_size);
+	zassert_not_null(test_info_buffer, "Failed to allocate info buffer");
+	memset(test_info_buffer, 0, test_info_buffer_size); // or k_calloc above
+							    // if it exists}
 }
 
-ZTEST_SUITE(fpsensor_match, NULL, fpsensor_setup, fpsensor_before, NULL, NULL);
+static void fpsensor_after(void *f)
+{
+	k_free(test_info_buffer);
+	test_info_buffer = NULL;
+}
+
+ZTEST_SUITE(fpsensor_match, NULL, fpsensor_setup, fpsensor_before,
+	    fpsensor_after, NULL);
