@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d84ab2e_9c53f35d",
+        "filename": "zephyr/test/charger/charge/src/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T15:32:35Z",
+      "side": 1,
+      "message": "Why mock this function?  If you use the real function, you\u0027ll get better test coverage.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "67b7e016cd2a2a926d6425930676971077d3e8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
