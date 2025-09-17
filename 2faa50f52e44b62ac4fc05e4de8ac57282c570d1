@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b6d0b7_736cb8ce",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5017,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2025-09-17T07:16:35Z",
+      "side": 1,
+      "message": "dumb question: should this be base param or custom param?",
+      "range": {
+        "startLine": 5017,
+        "startChar": 0,
+        "endLine": 5017,
+        "endChar": 34
+      },
+      "revId": "2faa50f52e44b62ac4fc05e4de8ac57282c570d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d646888_04f48152",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5017,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2025-09-17T07:16:35Z",
+      "side": 1,
+      "message": "bikeshedding on the name: MIN_REQUIRED_MV? VOLTAGE_REQUIRED_MIN? \nother params do not have unit specified... are they all in mv/ma/mw?",
+      "range": {
+        "startLine": 5017,
+        "startChar": 14,
+        "endLine": 5017,
+        "endChar": 33
+      },
+      "revId": "2faa50f52e44b62ac4fc05e4de8ac57282c570d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
