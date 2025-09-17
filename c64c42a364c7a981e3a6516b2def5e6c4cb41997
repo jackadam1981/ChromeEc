@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d065133_1480377a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2969,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-17T16:46:34Z",
+      "side": 1,
+      "message": "Dont we need a return after this? If not, after setting the state to `TC_ATTACH_WAIT_SRC`, if not it might get overwritten to `TC_UNATTACHED_SNK` in line 2981 or 2998. Correct me if I am misunderstanding the flow.",
+      "range": {
+        "startLine": 2969,
+        "startChar": 2,
+        "endLine": 2969,
+        "endChar": 41
+      },
+      "revId": "c64c42a364c7a981e3a6516b2def5e6c4cb41997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05f1005c_176658d6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 23
@@ -37,6 +60,29 @@
       "writtenOn": "2025-09-11T16:04:46Z",
       "side": 1,
       "message": "I don\u0027t really have a problem with you adding a new test here if there\u0027s no existing Zephyr test framework for this. If we do have a good way to test this in Zephyr, it\u0027s better to write new tests in Zephyr.",
+      "revId": "c64c42a364c7a981e3a6516b2def5e6c4cb41997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0864a41_d82dca87",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-17T16:46:34Z",
+      "side": 1,
+      "message": "Won\u0027t we be Unattached.SRC sometimes as we are toggling?",
+      "range": {
+        "startLine": 224,
+        "startChar": 13,
+        "endLine": 224,
+        "endChar": 29
+      },
       "revId": "c64c42a364c7a981e3a6516b2def5e6c4cb41997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
