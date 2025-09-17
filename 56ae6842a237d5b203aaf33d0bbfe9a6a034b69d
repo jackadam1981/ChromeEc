@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5a88a8_3da26313",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1145/src/fpc1145.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-17T23:40:53Z",
+      "side": 1,
+      "message": "Does it work if you compare the two structs directly rather than all of the individual fields?\n\n```\nzassert_equal(image_frame_params_array[i], expected_image_frame_params_array[i]);\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 57
+      },
+      "revId": "56ae6842a237d5b203aaf33d0bbfe9a6a034b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
