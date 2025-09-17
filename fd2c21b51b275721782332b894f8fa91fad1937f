@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428f47f4_adaecbfd",
+        "filename": "common/charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-17T20:11:37Z",
+      "side": 1,
+      "message": "Should we track an under powered charger on the charging chip, or should we track it on each charge supplier port?\n\nI think it would be better to track this at the charge supplier port level.\n\nIt\u0027s possible that charge manager could pick a supplier that is under voltage because it provides more total power than a supplier that has sufficient voltage.  In this case, charge manager should pick the supplier with lower wattage but sufficient voltage so the battery will charge.",
+      "range": {
+        "startLine": 487,
+        "startChar": 33,
+        "endLine": 487,
+        "endChar": 64
+      },
+      "revId": "fd2c21b51b275721782332b894f8fa91fad1937f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
