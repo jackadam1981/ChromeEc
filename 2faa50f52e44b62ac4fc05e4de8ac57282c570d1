@@ -45,6 +45,54 @@
       },
       "revId": "2faa50f52e44b62ac4fc05e4de8ac57282c570d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb62a2e3_317baeb6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5017,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T15:34:03Z",
+      "side": 1,
+      "message": "\u003e bikeshedding on the name: MIN_REQUIRED_MV? VOLTAGE_REQUIRED_MIN?\n\nack\n\n\u003e other params do not have unit specified... are they all in mv/ma/mw?\n\nI\u0027ll need to trace these back, but from I can tell so far that the ones related to current are in ma.",
+      "parentUuid": "8d646888_04f48152",
+      "range": {
+        "startLine": 5017,
+        "startChar": 14,
+        "endLine": 5017,
+        "endChar": 33
+      },
+      "revId": "2faa50f52e44b62ac4fc05e4de8ac57282c570d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28fec48_ef4dc35f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5017,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T15:34:03Z",
+      "side": 1,
+      "message": "Base param.  Custom params are board specific (as far as I can tell), so any tests or utility leveraging this host command needs to know the param value and what they are fetching. Any board that decides to use the isl95522 charger chip (or that supports hybrid boost chargers) will pick this up as well, this param will return 0 otherwise.",
+      "parentUuid": "00b6d0b7_736cb8ce",
+      "range": {
+        "startLine": 5017,
+        "startChar": 0,
+        "endLine": 5017,
+        "endChar": 34
+      },
+      "revId": "2faa50f52e44b62ac4fc05e4de8ac57282c570d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
