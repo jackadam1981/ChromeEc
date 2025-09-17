@@ -36,9 +36,9 @@ properties:
 
   # Battery info
   voltage_max:
-    default: 13350
+    default: 13200
   voltage_normal:
-    default: 11610
+    default: 11550
   voltage_min:
     default: 9000
   precharge_current:
