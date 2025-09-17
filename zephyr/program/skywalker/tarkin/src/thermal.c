@@ -8,12 +8,16 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
+#include "cros_cbi.h"
 #include "extpower.h"
 #include "hooks.h"
 #include "power.h"
 #include "temp_sensor/temp_sensor.h"
 #include "util.h"
 
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(thermal, LOG_LEVEL_INF);
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
@@ -24,6 +28,7 @@ static int thermals[COL_NUM], time[ROW_NUM][COL_NUM];
 static int thermal_cyc;
 static int current = -1;
 static int charger_temp_ave_bef, charger_temp_ave;
+static int thermal_config;
 
 enum {
 	TEMP_ZONE_0, /* not limit */
@@ -60,6 +65,15 @@ static void clear_remaining_array(int arr[][COL_NUM], int row, int exceptrow,
 /* Called by hook task every hook second (1 sec) */
 static void average_tempature(void)
 {
+	if (thermal_config == FW_THERMAL_N) {
+		return;
+	}
+
+	/*
+	 * FW_THERMAL_1 and FW_THERMAL_2
+	 * are reserved for future differentiation of charging current limit
+	 * policy; currently, the same charging current limit policy is applied.
+	 */
 	int charger_temp, charger_temp_c;
 	int charger_temp_sum = 0;
 	enum power_state chipset_state = power_get_state();
@@ -171,8 +185,23 @@ static void average_tempature(void)
 }
 DECLARE_HOOK(HOOK_SECOND, average_tempature, HOOK_PRIO_DEFAULT);
 
+static void thermal_ntc_init(void)
+{
+	int ret;
+
+	ret = cros_cbi_get_fw_config(FW_THERMAL, &thermal_config);
+	if (ret != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d", FW_THERMAL);
+		return;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, thermal_ntc_init, HOOK_PRIO_POST_FIRST);
+
 int charger_profile_override(struct charge_state_data *curr)
 {
+	if (thermal_config == FW_THERMAL_N) {
+		return 0;
+	}
 	/*
 	 * Precharge must be executed when communication is failed on
 	 * dead battery.
