@@ -22,6 +22,30 @@
       },
       "revId": "67b7e016cd2a2a926d6425930676971077d3e8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2451ed_f347f19c",
+        "filename": "zephyr/test/charger/charge/src/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-17T15:54:56Z",
+      "side": 1,
+      "message": "I\u0027m trying to create an overlay to delete the current charger node, and add the isl95522, but the delete wasn\u0027t taking effect so two chargers were defined leading to compiler errors. I\u0027m still working this out (probably need to create an isl95522 emulator and split out the charger nodes into their own overlay files), but wanted to get some test to verify this layer in the mean time.",
+      "parentUuid": "6d84ab2e_9c53f35d",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "67b7e016cd2a2a926d6425930676971077d3e8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
