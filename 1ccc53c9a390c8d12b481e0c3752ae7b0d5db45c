@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42526ecc_f11cf46b",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-17T20:25:03Z",
+      "side": 1,
+      "message": "It\u0027s better to declare some new constants for these `poweron_config.cc_config` values and translate them to the `cc_config` in use. Since the `poweron_config.cc_config` field is 8-bit while the `cc_config` in use is 32-bit.\n\nAlternatively, you could extend the `poweron_config.cc_config` to 32-bit and share the same constant values.",
+      "range": {
+        "startLine": 217,
+        "startChar": 33,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "1ccc53c9a390c8d12b481e0c3752ae7b0d5db45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
