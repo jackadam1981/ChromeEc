@@ -496,8 +496,9 @@ test_mockable enum ec_error_list charger_get_minimum_charging_mv(int chgnum,
 	}
 
 	if (chg_chips[chgnum].minimum_charging_mv ==
-	    CHARGER_NO_MINIMUM_CHARGING_MV)
+	    CHARGER_NO_MINIMUM_CHARGING_MV) {
 		return EC_ERROR_UNIMPLEMENTED;
+	}
 
 	*mv = chg_chips[chgnum].minimum_charging_mv;
 	return EC_SUCCESS;
