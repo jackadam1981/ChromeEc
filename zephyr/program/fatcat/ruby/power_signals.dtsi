@@ -3,11 +3,6 @@
  * found in the LICENSE file.
  */
 
-aliases {
-    en-s5-rails = &gpio_en_s5_rails;
-    pg-mem-s3-od = &gpio_pg_mem_s3_od;
-};
-
 / {
 	chosen {
 		intel-ap-pwrseq,espi = &espi0;
@@ -24,13 +19,6 @@ aliases {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PP5000_S5 enable output to regulator";
 		enum-name = "PWR_EN_PP5000_A";
-		gpios = <&gpio4 0 0>;
-		output;
-	};
-	pwr-en-pp3300-s5 {
-		compatible = "intel,ap-pwrseq-gpio";
-		dbg-label = "PP3300_S5 enable output to LS";
-		enum-name = "PWR_EN_PP3300_A";
 		gpios = <&gpiob 6 0>;
 		output;
 	};
@@ -38,7 +26,7 @@ aliases {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "RSMRST power good from regulator";
 		enum-name = "PWR_RSMRST_PWRGD";
-		gpios = <&gpioc 0 0>;
+		gpios = <&gpio5 0 0>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-ec-pch-rsmrst-odl {
@@ -53,50 +41,49 @@ aliases {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SLP_S0_L input from PCH";
 		enum-name = "PWR_SLP_S0";
-		gpios = <&gpio9 7 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
+		gpios = <&gpio7 2 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-slp-s3-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SLP_S3_L input from PCH";
 		enum-name = "PWR_SLP_S3";
-		gpios = <&gpio6 7 GPIO_ACTIVE_LOW>;
+		gpios = <&gpio3 7 GPIO_ACTIVE_LOW>;
 		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-imvp9-vrrdy-od {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "VRRDY input from IMVP9";
 		enum-name = "PWR_IMVP9_VRRDY";
-		gpios = <&gpio4 3 0>;
+		gpios = <&gpioa 7 0>;
 	};
 	pwr-pch-pwrok {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "PCH_PWROK output to PCH";
 		enum-name = "PWR_PCH_PWROK";
-		gpios = <&gpioa 3 (0 | GPIO_VOLTAGE_1P8)>;
+		gpios = <&gpioa 5 (0 | GPIO_VOLTAGE_1P8)>;
 		output;
 	};
 	pwr-ec-pch-sys-pwrok {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SYS_PWROK output to PCH";
 		enum-name = "PWR_EC_PCH_SYS_PWROK";
-		gpios = <&gpioa 1 (0 | GPIO_VOLTAGE_1P8)>;
+		gpios = <&gpiob 0 (0 | GPIO_VOLTAGE_1P8)>;
 		output;
 	};
 	pwr-sys-rst-l {
 		compatible = "intel,ap-pwrseq-gpio";
 		dbg-label = "SYS_RESET# output to PCH";
 		enum-name = "PWR_SYS_RST";
-		gpios = <&gpio9 3 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+		gpios = <&gpioc 5 (GPIO_ACTIVE_LOW | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
 		output;
 	};
 	pwr-slp-s4 {
-		compatible = "intel,ap-pwrseq-vw";
-		dbg-label = "SLP_S4 virtual wire input from PCH";
+		compatible = "intel,ap-pwrseq-gpio";
+		dbg-label = "SLP_S4_L input from PCH";
 		enum-name = "PWR_SLP_S4";
-		virtual-wire = "ESPI_VWIRE_SIGNAL_SLP_S4";
-		reset-val = <1>;
-		vw-invert;
+		gpios = <&gpioa 0 (GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
+		interrupt-flags = <GPIO_INT_EDGE_BOTH>;
 	};
 	pwr-slp-s5 {
 		compatible = "intel,ap-pwrseq-vw";
@@ -117,7 +104,7 @@ aliases {
  * Because the power signals directly reference the GPIOs,
  * the correspinding named-gpios need to have no-auto-init set.
  */
-&gpio_ec_soc_pch_pwrok_od {
+&gpio_ec_plt_pwrok {
 	no-auto-init;
 };
 &gpio_ec_soc_rsmrst_l {
@@ -126,22 +113,19 @@ aliases {
 &gpio_ec_soc_sys_pwrok {
 	no-auto-init;
 };
-&gpio_en_pp3300_s5 {
+&gpio_en_s5_rails {
 	no-auto-init;
 };
-&gpio_en_pp5000_s5 {
+&gpio_imvp9_vrrdy_od {
 	no-auto-init;
 };
-&gpio_imvp91_vrrdy_od {
+&gpio_slp_s0ix_l {
 	no-auto-init;
 };
-&gpio_slp_s0_l {
+&gpio_ec_nuv_slp_s3_l {
 	no-auto-init;
 };
-&gpio_slp_s3_l {
-	no-auto-init;
-};
-&gpio_slp_s4_l {
+&gpio_ec_nuv_slp_s4_l {
 	no-auto-init;
 };
 &gpio_sys_rst_odl {

@@ -33,8 +33,6 @@ void board_ap_power_force_shutdown(void)
 {
 	power_signal_set(PWR_EC_PCH_RSMRST, 1);
 
-	power_signal_set(PWR_EN_PP3300_A, 0);
-
 	power_signal_set(PWR_EN_PP5000_A, 0);
 
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
@@ -47,7 +45,6 @@ void board_ap_power_action_g3_s5(void)
 {
 	LOG_DBG("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
 	power_signal_set(PWR_EN_PP5000_A, 1);
-	power_signal_set(PWR_EN_PP3300_A, 1);
 
 	update_ap_boot_time(ARAIL);
 	power_wait_signals_on_timeout(IN_PGOOD_ALL_CORE,
@@ -88,9 +85,7 @@ int board_ap_power_assert_pch_power_ok(void)
 
 bool board_ap_power_check_power_rails_enabled(void)
 {
-	return power_signal_get(PWR_EN_PP3300_A) &&
-	       power_signal_get(PWR_EN_PP5000_A) &&
-		   gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pwr_1p25v_pg));
+	return power_signal_get(PWR_EN_PP5000_A);
 }
 #else
 #ifndef CONFIG_EMUL_AP_PWRSEQ_DRIVER
@@ -134,14 +129,12 @@ static int board_ap_power_g3_run(void *data)
 		LOG_INF("Turning on PWR_EN_PP5000_A and PWR_EN_PP3300_A");
 
 		power_signal_set(PWR_EN_PP5000_A, 1);
-		power_signal_set(PWR_EN_PP3300_A, 1);
 
 		power_wait_signals_on_timeout(
 			AP_PWRSEQ_DT_VALUE(wait_signal_timeout));
 	}
 
-	if (power_signal_get(PWR_EN_PP5000_A) &&
-	    power_signal_get(PWR_EN_PP3300_A)) {
+	if (power_signal_get(PWR_EN_PP5000_A)) {
 		return 0;
 	}
 

@@ -1,0 +1,32 @@
+/* Copyright 2024 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* ruby program common DTS includes */
+
+#include <cros/integrated_fwid.dtsi>
+
+#include "adc.dtsi"
+#include "battery.dtsi"
+#include "cbi.dtsi"
+#include "gpios.dtsi"
+#include "i2c.dtsi"
+#include "keyboard.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
+#include "motionsense.dtsi"
+#include "overlay.dtsi"
+#include "power_signals.dtsi"
+#include "thermal.dtsi"
+#include "usba.dtsi"
+#include "usbc.dtsi"
+
+/* ruby overrides follow... */
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
