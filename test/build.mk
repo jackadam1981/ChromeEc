@@ -39,7 +39,6 @@ test-list-host += console_edit
 test-list-host += crc
 test-list-host += debug_unimplemented
 test-list-host += entropy
-test-list-host += extpwr_gpio
 test-list-host += fan
 test-list-host += flash
 test-list-host += float
@@ -48,7 +47,6 @@ test-list-host += fp_transport
 test-list-host += fpsensor_auth_commands
 test-list-host += fpsensor_auth_commands_otp
 test-list-host += fpsensor_auth_crypto_stateful
-test-list-host += fpsensor_auth_crypto_stateful_otp
 test-list-host += fpsensor_auth_crypto_stateless
 test-list-host += fpsensor_crypto
 test-list-host += fpsensor_crypto_with_mock
@@ -57,7 +55,6 @@ test-list-host += fpsensor_debug
 test-list-host += fpsensor_state
 test-list-host += fpsensor_utils
 test-list-host += gettimeofday
-test-list-host += gyro_cal
 test-list-host += hooks
 test-list-host += host_command
 test-list-host += hyperdebug
@@ -87,10 +84,9 @@ test-list-host += motion_angle_tablet
 test-list-host += motion_lid
 test-list-host += motion_sense_fifo
 test-list-host += mutex
-test-list-host += newton_fit
+test-list-host += mutex_recursive
+test-list-host += mutex_trylock
 test-list-host += nvidia_gpu
-test-list-host += online_calibration
-test-list-host += online_calibration_spoof
 test-list-host += otp_key
 test-list-host += pingpong
 test-list-host += power_button
@@ -150,7 +146,6 @@ test-list-host += utils_str
 test-list-host += vboot
 test-list-host += version
 test-list-host += x25519
-test-list-host += stillness_detector
 -include ../ec-private/test/build.mk
 endif
 
@@ -169,7 +164,7 @@ cov-dont-test += version
 cov-dont-test += interrupt
 # Flaky tests. The number of covered lines changes from run to run
 # b/213374060
-cov-dont-test += accel_cal entropy flash float kb_mkbp kb_scan_strict
+cov-dont-test += entropy flash float kb_mkbp kb_scan_strict
 cov-dont-test += rsa
 
 cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
@@ -182,7 +177,6 @@ rw-test = ro
 endif
 
 abort-y=abort.o
-accel_cal-y=accel_cal.o
 aes-y=aes.o
 # The purpose of the always_memset test is to ensure the functionality of
 # always_memset during high levels of optimization.
@@ -214,7 +208,6 @@ debug_unimplemented-y=debug_unimplemented.o
 entropy-y=entropy.o
 exception-y=exception.o
 exit-y=exit.o
-extpwr_gpio-y=extpwr_gpio.o
 fan-y=fan.o
 flash-y=flash.o
 flash_physical-y=flash_physical.o
@@ -223,7 +216,6 @@ fp_transport-y=fp_transport.o
 fpsensor_auth_commands-y=fpsensor_auth_commands.o
 fpsensor_auth_commands_otp-$(rw-test)=fpsensor_auth_commands_otp.o
 fpsensor_auth_crypto_stateful-y=fpsensor_auth_crypto_stateful.o
-fpsensor_auth_crypto_stateful_otp-y=fpsensor_auth_crypto_stateful_otp.o
 fpsensor_auth_crypto_stateless-y=fpsensor_auth_crypto_stateless.o
 fpsensor_crypto-y=fpsensor_crypto.o
 fpsensor_crypto_with_mock-y=fpsensor_crypto_with_mock.o
@@ -235,7 +227,6 @@ fpsensor_utils-y=fpsensor_utils.o
 ftrapv-y=ftrapv.o
 gettimeofday-y=gettimeofday.o
 global_initialization-y=global_initialization.o
-gyro_cal-y=gyro_cal.o gyro_cal_init_for_test.o
 hooks-y=hooks.o
 host_command-y=host_command.o
 hyperdebug-y=hyperdebug.o
@@ -257,9 +248,8 @@ motion_angle-y=motion_angle.o motion_angle_data_literals.o motion_common.o
 motion_angle_tablet-y=motion_angle_tablet.o motion_angle_data_literals_tablet.o motion_common.o
 motion_lid-y=motion_lid.o
 motion_sense_fifo-y=motion_sense_fifo.o
+null_pointer-y=null_pointer.o
 nvidia_gpu-y=nvidia_gpu.o
-online_calibration-y=online_calibration.o
-online_calibration_spoof-y=online_calibration_spoof.o gyro_cal_init_for_test.o
 rgb_keyboard-y=rgb_keyboard.o
 kasa-y=kasa.o
 ifeq ($(USE_BUILTIN_STDLIB), 0)
@@ -270,7 +260,6 @@ mpu-y=mpu.o
 mutex-y=mutex.o
 mutex_trylock-y=mutex_trylock.o
 mutex_recursive-y=mutex_recursive.o
-newton_fit-y=newton_fit.o
 otp_key-y=otp_key.o
 panic-y=panic.o
 panic_data-y=panic_data.o
@@ -334,8 +323,8 @@ usb_typec_drp_acc_trysrc-y=usb_typec_drp_acc_trysrc.o vpd_api.o \
 usb_prl_old-y=usb_prl_old.o usb_sm_checks.o fake_usbc.o
 usb_prl-y=usb_prl.o usb_sm_checks.o
 usb_prl_noextended-y=usb_prl_noextended.o usb_sm_checks.o fake_usbc.o
-usb_pe_drp_old-y=usb_pe_drp_old.o usb_sm_checks.o fake_usbc.o
-usb_pe_drp_old_noextended-y=usb_pe_drp_old.o usb_sm_checks.o fake_usbc.o
+usb_pe_drp_old-y=usb_pe_drp_old.o usb_sm_checks.o
+usb_pe_drp_old_noextended-y=usb_pe_drp_old.o usb_sm_checks.o
 usb_pe_drp-y=usb_pe_drp.o usb_sm_checks.o
 usb_pe_drp_noextended-y=usb_pe_drp_noextended.o usb_sm_checks.o
 usb_tcpmv2_compliance-y=usb_tcpmv2_compliance.o usb_tcpmv2_compliance_common.o \
@@ -362,7 +351,6 @@ watchdog-y=watchdog.o
 float-y=fp.o
 fp-y=fp.o
 x25519-y=x25519.o
-stillness_detector-y=stillness_detector.o
 
 host-is_enabled_error: TEST_SCRIPT=is_enabled_error.sh
 is_enabled_error-y=is_enabled_error.o.cmd

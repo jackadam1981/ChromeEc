@@ -9,4 +9,5 @@ target_include_directories(app PRIVATE
 # Add source files
 target_sources(app PRIVATE
   src/led_pwm_fade.c
+  src/led_host_cmd.c
 )

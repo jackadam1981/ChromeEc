@@ -51,6 +51,8 @@ FAKE_VOID_FUNC(raa489000_hibernate, int, bool);
 FAKE_VALUE_FUNC(int, raa489000_enable_asgate, int, bool);
 FAKE_VOID_FUNC(usb_interrupt_c1, enum gpio_signal);
 
+static int keyboard_layout;
+
 static void test_before(void *fixture)
 {
 	RESET_FAKE(raa489000_is_acok);
@@ -62,6 +64,8 @@ static void test_before(void *fixture)
 	RESET_FAKE(cros_cbi_get_fw_config);
 	RESET_FAKE(set_scancode_set2);
 	RESET_FAKE(get_scancode_set2);
+
+	keyboard_layout = 0;
 
 	raa489000_is_acok_fake.custom_fake = raa489000_is_acok_absent;
 	i2c_common_emul_set_write_fail_reg(
@@ -168,11 +172,21 @@ ZTEST(craaskov, test_tcpc_get_alert_status)
 	/* Both IRQs are asserted */
 	gpio_emul_input_set(c0_int->port, c0_int->pin, 0);
 
+	/* Enable all TCPC Alerts */
+	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT_MASK, TCPC_REG_ALERT_MASK_ALL);
+
 	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT, 1);
 	zassert_equal(tcpc_get_alert_status(), PD_STATUS_TCPC_ALERT_0);
 
 	/* Bit 14 is ignored */
 	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT, 0x4000);
+	zassert_equal(tcpc_get_alert_status(), 0);
+
+	/* Disable all TCPC Alerts */
+	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT_MASK, 0);
+
+	/* Expect no alert status when alert mask is 0 */
+	tcpci_emul_set_reg(TCPC0, TCPC_REG_ALERT, 0xffff);
 	zassert_equal(tcpc_get_alert_status(), 0);
 }
 
@@ -292,8 +306,6 @@ ZTEST(craaskov, test_charger_hibernate)
 	zassert_true(raa489000_hibernate_fake.arg1_history[0]);
 }
 
-static int keyboard_layout;
-
 static int cros_cbi_get_fw_config_mock(enum cbi_fw_config_field_id field_id,
 				       uint32_t *value)
 {
@@ -345,6 +357,8 @@ ZTEST(craaskov, test_touch_enable_init)
 		GPIO_DT_FROM_NODELABEL(gpio_soc_edp_bl_en);
 	const struct gpio_dt_spec *touch_en =
 		GPIO_DT_FROM_NODELABEL(gpio_ec_touch_en);
+
+	cros_cbi_get_fw_config_fake.custom_fake = cros_cbi_get_fw_config_mock;
 
 	hook_notify(HOOK_INIT);
 

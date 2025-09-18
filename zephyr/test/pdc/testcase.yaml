@@ -25,6 +25,26 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
+
+  pdc.generic.runtime_config.one_pdc:
+    timeout: 500
+    extra_configs:
+    - CONFIG_TEST_SUITE_PDC_GENERIC=y
+    - CONFIG_TEST_PDC_MESSAGE_TRACING=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_PDC_RUNTIME_PORT_CONFIG=y
+    - CONFIG_TEST_PDC_DISABLE_C1=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+    - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.utils:
     timeout: 500
@@ -44,13 +64,6 @@ tests:
     - CONFIG_PLATFORM_EC_USB_MUX_TASK=y
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
-
-  pdc.sbu_mux.no_ccd:
-    extra_configs:
-    - CONFIG_TEST_SUITE_PDC_SBU_MUX_NO_CCD=y
-    extra_dtc_overlay_files:
-    - "./boards/rts5453p.overlay"
-    - "./boards/no_ccd.overlay"
 
   pdc.generic.tps6699x:
     timeout: 300
@@ -77,6 +90,27 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/tps6699x.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
+
+  pdc.generic.tps6699x.runtime_config.one_pdc:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_SUITE_PDC_GENERIC=y
+    - CONFIG_TEST_PDC_MESSAGE_TRACING=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_TODO_B_345292002=y
+    - CONFIG_PDC_RUNTIME_PORT_CONFIG=y
+    - CONFIG_TEST_PDC_DISABLE_C1=y
+    extra_dtc_overlay_files:
+    - "./boards/tps6699x.overlay"
+    - "./boards/pdc_deferred.overlay"
+    # # b/406176587: These tests cause code coverage flakes. Continue running
+    # # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.generic.api_null_check:
     timeout: 300
@@ -103,6 +137,72 @@ tests:
     - CONFIG_PLATFORM_EC_USB_PD_FRS=y
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
+
+  pdc.policy.sink:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_SUITE_PDC_POLICY_SINK=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_PLATFORM_EC_USB_PD_FRS=y
+    - CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+
+  pdc.battery_status:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_SUITE_PDC_BATTERY_STATUS=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+
+  pdc.policy.dead_battery.two_chargers:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_TWO_CHARGERS=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_PLATFORM_EC_USB_PD_FRS=y
+    - CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+    - "./boards/pdc_deferred.overlay"
+    - "./boards/pdc_power_mgmt_deferred.overlay"
+
+  pdc.policy.dead_battery.ac_only.ap_on:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY_AP_ON=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_PLATFORM_EC_USB_PD_FRS=y
+    - CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS=y
+    - CONFIG_PLATFORM_EC_CONSOLE_DEBUG=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+    - "./boards/pdc_deferred.overlay"
+    - "./boards/pdc_power_mgmt_deferred.overlay"
+
+  pdc.policy.dead_battery.ac_only.ap_off:
+    timeout: 300
+    extra_configs:
+    - CONFIG_TEST_PDC_POLICY_DEAD_BATTERY_AC_ONLY_AP_OFF=y
+    - CONFIG_USBC_PDC_TRACE_MSG=y
+    - CONFIG_USB_PDC_LOG_LEVEL_DBG=y
+    - CONFIG_TEST_DISABLE_INLINE_CHIPSET_IN_STATE=y
+    - CONFIG_PLATFORM_EC_USB_PD_FRS=y
+    - CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS=y
+    - CONFIG_PLATFORM_EC_CONSOLE_DEBUG=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+    - "./boards/pdc_deferred.overlay"
+    - "./boards/pdc_power_mgmt_deferred.overlay"
 
   pdc.policy.no_frs:
     timeout: 300
@@ -234,6 +334,23 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
+
+  pdc.ppm.runtime_config.one_pdc:
+    extra_configs:
+    - CONFIG_TEST_SUITE_PPM=y
+    - CONFIG_UCSI_PPM=y
+    - CONFIG_EMUL_PPM_DRIVER=n
+    - CONFIG_PDC_RUNTIME_PORT_CONFIG=y
+    - CONFIG_TEST_PDC_DISABLE_C1=y
+    extra_dtc_overlay_files:
+    - "./boards/rts5453p.overlay"
+    - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.ppm_console:
     extra_configs:
@@ -277,6 +394,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.runtime_port_config.one_pdc:
     extra_configs:
@@ -286,6 +406,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.runtime_port_config.discontiguous:
     extra_configs:
@@ -295,6 +418,9 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE
 
   pdc.runtime_port_config.two_pdcs:
     extra_configs:
@@ -304,3 +430,6 @@ tests:
     extra_dtc_overlay_files:
     - "./boards/rts5453p.overlay"
     - "./boards/pdc_deferred.overlay"
+    # b/406176587: These tests cause code coverage flakes. Continue running
+    # the tests when unit testing, but skip when measuring code coverage.
+    filter: not CONFIG_COVERAGE

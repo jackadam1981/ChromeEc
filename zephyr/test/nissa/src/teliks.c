@@ -31,14 +31,6 @@ FAKE_VOID_FUNC(icm42607_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(bma4xx_interrupt, enum gpio_signal);
 FAKE_VOID_FUNC(lis2dw12_interrupt, enum gpio_signal);
 
-static void test_before(void *fixture)
-{
-	RESET_FAKE(cros_cbi_get_fw_config);
-	RESET_FAKE(cbi_get_ssfc);
-}
-
-ZTEST_SUITE(teliks, NULL, NULL, test_before, NULL, NULL);
-
 static bool clamshell_mode;
 
 static int cbi_get_form_factor_config(enum cbi_fw_config_field_id field,
@@ -169,6 +161,8 @@ ZTEST(teliks, test_board_setup_init_convertible)
 	RESET_FAKE(bma4xx_interrupt);
 	RESET_FAKE(lis2dw12_interrupt);
 
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
+
 	/* Initial ssfc data for BMA422 and BMI323. */
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = 0x9;
@@ -251,6 +245,8 @@ ZTEST(teliks, test_alt_sensor)
 	RESET_FAKE(bma4xx_interrupt);
 	RESET_FAKE(lis2dw12_interrupt);
 
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
+
 	/* Initial ssfc data for LSM6DSM and LIS2DW. */
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = 0x12;
@@ -295,6 +291,8 @@ ZTEST(teliks, test_alt_sensor_icm42607)
 	RESET_FAKE(icm42607_interrupt);
 	RESET_FAKE(bma4xx_interrupt);
 	RESET_FAKE(lis2dw12_interrupt);
+
+	cros_cbi_get_fw_config_fake.custom_fake = cbi_get_form_factor_config;
 
 	/* Initial ssfc data for ICM42607 and LIS2DW. */
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
@@ -384,3 +382,13 @@ ZTEST(teliks, test_set_keycap_label)
 	set_keycap_label(0, 14, KLLI_F15);
 	zassert_equal(get_keycap_label(0, 14), KLLI_F15);
 }
+static void test_before(void *fixture)
+{
+	RESET_FAKE(cros_cbi_get_fw_config);
+	RESET_FAKE(cbi_get_ssfc);
+
+	clamshell_mode = false;
+	ssfc_data = 0;
+}
+
+ZTEST_SUITE(teliks, NULL, NULL, test_before, NULL, NULL);

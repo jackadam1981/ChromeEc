@@ -202,7 +202,7 @@ $3 = 0x100ba480 "tach@400e1000"
 If the symbol has been optimized, try rebuilding with `CONFIG_LTO=n`.
 
 
-## Using GDB for debugging unit tests
+## Using GDB or valgrind for debugging unit tests
 
 Unit tests running on `native_sim` produce an executable file that can be
 rebuilt directly with ninja to save time, and run with GDB to help out
@@ -236,6 +236,17 @@ Breakpoint 1, main (argc=-17520, argv=0xffffbc24) at boards/posix/native_sim/mai
 ...
 ```
 
+Similarly, valgrind can be used on the test binary, it can be used outside of
+the chroot installing the `valgrind` and `libc6-dbg:i386` package, and then
+simply running the test as:
+
+```
+valgrind ./twister-out/native_sim_native/llvm/vivaldi_kbd/vivaldi_kbd.default/zephyr/zephyr.exe
+```
+
+This can be useful to identify tests that are flaky due to uninitialized
+memory usage, for example because of default mocked functions not setting
+argument passed by pointer.
 
 ## Trouleshooting the initialization sequence
 

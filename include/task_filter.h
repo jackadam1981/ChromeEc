@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  *
  * Filter tasklist in *.tasklist, depending on section (RO/RW), or
- * TEST/CTS build.
+ * TEST build.
  */
 
 #ifndef __CROS_EC_TASK_FILTER_H
@@ -38,16 +38,12 @@
 #define CONFIG_TEST_TASK_LIST
 #endif
 
-#ifndef CTS_MODULE
-#define CONFIG_CTS_TASK_LIST
-#endif
-
 #define TASK_ALWAYS TASK
 
 /* If included directly from Makefile, dump task list. */
 #ifdef _MAKEFILE
 #define TASK(n, ...) n
-CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
+CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST
 #endif
 
 #endif /*  __CROS_EC_TASK_FILTER_H */

@@ -44,6 +44,8 @@ tests:
     extra_configs:
     - CONFIG_TEST_STEELIX_RUSTY=y
     - CONFIG_TEST_FORM_FACTOR_CONVERTIBLE=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
     - CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM=y
     extra_dtc_overlay_files:
     - kingler.steelix.overlay
@@ -88,6 +90,9 @@ tests:
     extra_configs:
     - CONFIG_TEST_STEELIX_RUSTY=y
     - CONFIG_TEST_ALT_SENSOR_PROBE=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM=y
     extra_dtc_overlay_files:
     - kingler.steelix.overlay
   kingler.voltorb:
@@ -111,12 +116,18 @@ tests:
     - CONFIG_TEST_PONYTA=y
     - CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP=y
     - CONFIG_PLATFORM_EC_MKBP_EVENT=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI3XX=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI160=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_LSM6DSM=y
     extra_dtc_overlay_files:
     - kingler.ponyta.overlay
     - boards/ponyta.dtsi
   kingler.kyogre_sensor:
     extra_configs:
     - CONFIG_TEST_KYOGRE_SENSOR_PROBE=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI160=y
+    - CONFIG_PLATFORM_EC_ACCELGYRO_BMI_COMM_I2C=y
     extra_dtc_overlay_files:
     - kingler.kyogre.overlay
   kingler.kyogre_battery_detection:

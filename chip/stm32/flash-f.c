@@ -747,7 +747,7 @@ int crec_flash_pre_init(void)
 	if (prot_flags & EC_FLASH_PROTECT_GPIO_ASSERTED) {
 		if (prot_flags & EC_FLASH_PROTECT_RO_NOW) {
 			/* Enable physical protection for RO (0 means RO). */
-			crec_flash_physical_protect_now(0);
+			crec_flash_physical_protect_now(false);
 		}
 
 		if ((prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) &&

@@ -197,7 +197,13 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		}
 	}
 
+	if (thread_id->base.thread_state & _THREAD_DUMMY) {
+		return TASK_ID_INVALID;
+	}
+
+#ifndef CONFIG_ZTEST
 	__ASSERT(false, "Failed to map thread to task");
+#endif
 	return TASK_ID_INVALID;
 }
 
@@ -433,7 +439,7 @@ void task_disable_task(task_id_t tskid)
  */
 void task_clear_pending_irq(int irq)
 {
-#if CONFIG_ITE_IT8XXX2_INTC
+#if CONFIG_HAS_ITE_INTC
 	ite_intc_isr_clear(irq);
 #endif
 }

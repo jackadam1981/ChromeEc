@@ -37,10 +37,17 @@ static void reset(void)
 	hook_notify(HOOK_INIT);
 }
 
-int mock_cros_cbi_get_fw_config_clamshell(enum cbi_fw_config_field_id field_id,
-					  uint32_t *value)
+static bool clamshell_mode;
+
+static int mock_cros_cbi_get_fw_config(enum cbi_fw_config_field_id field_id,
+				       uint32_t *value)
 {
-	*value = CLAMSHELL;
+	if (field_id != FORM_FACTOR) {
+		return -EINVAL;
+	}
+
+	*value = clamshell_mode ? CLAMSHELL : CONVERTIBLE;
+
 	return 0;
 }
 
@@ -48,14 +55,15 @@ static void chinchou_before(void *fixture)
 {
 	RESET_FAKE(cbi_get_ssfc);
 	RESET_FAKE(cros_cbi_get_fw_config);
+	clamshell_mode = false;
 }
 
 static void *clamshell_setup(void)
 {
 	int val;
 
-	cros_cbi_get_fw_config_fake.custom_fake =
-		mock_cros_cbi_get_fw_config_clamshell;
+	cros_cbi_get_fw_config_fake.custom_fake = mock_cros_cbi_get_fw_config;
+	clamshell_mode = true;
 	reset();
 
 	/* Check if CBI write worked. */
@@ -146,6 +154,7 @@ static void *alt_sensor_use_setup(void)
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = SSFC_ALT_SENSORS;
 	/* Run init hooks to initialize cbi. */
+	cros_cbi_get_fw_config_fake.custom_fake = mock_cros_cbi_get_fw_config;
 	reset();
 
 	return NULL;
@@ -181,6 +190,7 @@ static void *alt_sensor_no_use_setup(void)
 	cbi_get_ssfc_fake.custom_fake = cbi_get_ssfc_mock;
 	ssfc_data = SSFC_MAIM_SENSORS;
 	/* Run init hooks to initialize cbi. */
+	cros_cbi_get_fw_config_fake.custom_fake = mock_cros_cbi_get_fw_config;
 	reset();
 
 	return NULL;

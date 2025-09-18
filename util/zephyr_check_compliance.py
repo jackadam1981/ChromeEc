@@ -75,6 +75,14 @@
 #   name: "infra/python/wheels/unidiff-py2_py3"
 #   version: "version:0.7.5"
 # >
+# wheel: <
+#   name: "infra/python/wheels/tabulate-py3"
+#   version: "version:0.9.0"
+# >
+# wheel: <
+#   name: "infra/python/wheels/python-dotenv-py3"
+#   version: "version:1.1.1"
+# >
 # [VPYTHON:END]
 
 import argparse
@@ -162,7 +170,6 @@ def main(argv):
         # Exit early if nothing changed
         return
 
-    # TODO: also enable DevicetreeBindings
     check_compliance.main(
         [
             "--output=",

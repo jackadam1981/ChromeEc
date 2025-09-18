@@ -30,12 +30,12 @@ FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config, enum cbi_fw_config_field_id,
 		uint32_t *);
 FAKE_VALUE_FUNC(bool, cros_cbi_ssfc_check_match, enum cbi_ssfc_value_id);
 
-static int mock_cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id ssfc)
+static bool mock_cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id ssfc)
 {
 	return true;
 }
 
-static int mock_cros_cbi_ssfc_check_not_match(enum cbi_ssfc_value_id ssfc)
+static bool mock_cros_cbi_ssfc_check_not_match(enum cbi_ssfc_value_id ssfc)
 {
 	return false;
 }

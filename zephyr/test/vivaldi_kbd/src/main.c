@@ -292,7 +292,7 @@ ZTEST(vivaldi_kbd, test_vol_up_key)
 #endif
 }
 
-static void *vivaldi_setup(const void *state)
+static void *vivaldi_setup(void)
 {
 	hook_notify(HOOK_INIT);
 

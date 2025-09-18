@@ -417,7 +417,7 @@ ZTEST_USER(flash, test_console_cmd_flash_info)
 ZTEST_USER(flash, test_console_cmd_flashwp__invalid)
 {
 	/* Command requires a 2nd CLI arg */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "flashwp"), NULL);
 }
 
 ZTEST_USER(flash, test_console_cmd_flashwp__now)
@@ -488,13 +488,13 @@ ZTEST_USER(flash, test_console_cmd_flashwp__bool_true)
 
 ZTEST_USER(flash, test_console_cmd_flashwp__bad_param)
 {
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "flashwp xyz"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "flashwp xyz"), NULL);
 }
 
 ZTEST_USER(flash, test_console_cmd_flash_erase__flash_locked)
 {
 	/* Force write protection on */
-	zassert_ok(crec_flash_physical_protect_now(1));
+	zassert_ok(crec_flash_physical_protect_now(true));
 
 	CHECK_CONSOLE_CMD("flasherase 0x1000 0x1000", NULL,
 			  EC_ERROR_ACCESS_DENIED);
@@ -867,7 +867,7 @@ ZTEST_USER(flash, test_console_cmd_flash_write__cbi_1)
 ZTEST_USER(flash, test_console_cmd_flash_write__flash_locked)
 {
 	/* Force write protection on */
-	zassert_ok(crec_flash_physical_protect_now(1));
+	zassert_ok(crec_flash_physical_protect_now(true));
 
 	CHECK_CONSOLE_CMD("flashwrite 0x1000 0x1000", NULL,
 			  EC_ERROR_ACCESS_DENIED);
@@ -1023,7 +1023,6 @@ static void flash_reset(void *data)
 
 	/* Reset the protection flags */
 	cros_flash_emul_protect_reset();
-	zassert_ok(crec_flash_physical_protect_now(0));
 
 	/* Tests modify these banks. Erase them. */
 	zassert_ok(crec_flash_erase(0x10000, 0x10000));

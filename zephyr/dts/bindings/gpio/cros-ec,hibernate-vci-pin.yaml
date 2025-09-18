@@ -20,6 +20,7 @@ properties:
     enum:
       - "Active_Low"
       - "Active_High"
+      - "Active_Both"
 
   vci-latch-enable:
     type: boolean

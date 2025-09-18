@@ -182,12 +182,6 @@ static void chipset_turn_off_power_rails(void);
  */
 static int is_suspend_asserted(void)
 {
-#ifdef BOARD_OAK
-	if ((power_get_signals() & IN_SUSPEND) &&
-	    (system_get_board_version() < 4))
-		crec_usleep(SUSPEND_DEBOUNCE_TIME);
-#endif
-
 	return power_get_signals() & IN_SUSPEND;
 }
 
@@ -199,12 +193,6 @@ static int is_suspend_asserted(void)
  */
 static int is_suspend_deasserted(void)
 {
-#ifdef BOARD_OAK
-	if (!(power_get_signals() & IN_SUSPEND) &&
-	    (system_get_board_version() < 4))
-		crec_usleep(SUSPEND_DEBOUNCE_TIME);
-#endif
-
 	return !(power_get_signals() & IN_SUSPEND);
 }
 
@@ -218,11 +206,6 @@ static int is_power_good_asserted(void)
 {
 	if (!gpio_get_level(GPIO_SYSTEM_POWER_H))
 		return 0;
-#ifdef BOARD_OAK
-	else if ((power_get_signals() & IN_POWER_GOOD) &&
-		 (system_get_board_version() < 4))
-		crec_usleep(POWER_DEBOUNCE_TIME);
-#endif
 
 	return power_get_signals() & IN_POWER_GOOD;
 }
@@ -235,21 +218,6 @@ static int is_power_good_asserted(void)
  */
 static int is_power_good_deasserted(void)
 {
-#ifdef BOARD_OAK
-	/*
-	 * Warm reset key from servo board lets the POWER_GOOD signal
-	 * deasserted temporarily (about 1~2 seconds) on rev4.
-	 * In order to detect this case, check the AP_RESET_L status,
-	 * ignore the transient state if reset key is pressing.
-	 */
-	if (system_get_board_version() >= 4) {
-		if (0 == gpio_get_level(GPIO_AP_RESET_L))
-			return 0;
-	} else {
-		if (!(power_get_signals() & IN_POWER_GOOD))
-			crec_usleep(POWER_DEBOUNCE_TIME);
-	}
-#endif
 	if (0 == gpio_get_level(GPIO_AP_RESET_L))
 		return 0;
 
@@ -626,14 +594,7 @@ static void power_on(void)
 	/* enable interrupt */
 	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_PULL_UP);
 
-#ifdef BOARD_OAK
-	if (system_get_board_version() <= 3)
-		gpio_set_flags(GPIO_EC_INT_L, GPIO_OUTPUT | GPIO_OUT_HIGH);
-	else
-		gpio_set_flags(GPIO_EC_INT_L, GPIO_ODR_HIGH);
-#else
 	gpio_set_flags(GPIO_EC_INT_L, GPIO_ODR_HIGH);
-#endif
 
 	disable_sleep(SLEEP_MASK_AP_RUN);
 #ifdef HAS_TASK_POWERLED

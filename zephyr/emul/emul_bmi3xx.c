@@ -342,7 +342,7 @@ static int bmi3xx_emul_start_read(uint8_t *regs, const struct emul *emul,
 }
 
 static int bmi3xx_emul_handle_read(uint8_t *regs, const struct emul *emul,
-				   int reg, int byte, uint8_t *buf)
+				   int reg, int byte, char *buf)
 {
 	uint16_t fifo_len;
 	bool tag_time;
