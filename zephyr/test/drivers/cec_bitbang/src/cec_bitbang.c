@@ -125,7 +125,7 @@ void cec_trigger_send(int port)
 	cec_event_tx(port);
 }
 
-static void cec_bitbang_setup(void *fixture)
+static void *cec_bitbang_setup(void)
 {
 	/*
 	 * Workaround for a limitation in gpio_emul. Currently if a pin is
@@ -136,6 +136,7 @@ static void cec_bitbang_setup(void *fixture)
 	 */
 	zassert_ok(gpio_pin_interrupt_configure(CEC_OUT_PORT, CEC_OUT_PIN,
 						GPIO_INT_EDGE_BOTH));
+	return NULL;
 }
 
 static void cec_bitbang_before(void *fixture)

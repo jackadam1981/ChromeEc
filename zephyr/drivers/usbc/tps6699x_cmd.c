@@ -204,6 +204,13 @@ int tps_rw_transmit_sink_capabilities(const struct i2c_dt_spec *i2c,
 			    sizeof(union reg_transmit_sink_capabilities), flag);
 }
 
+int tps_rw_sx_app_config(const struct i2c_dt_spec *i2c,
+			 union reg_sx_app_config *buf, int flag)
+{
+	return tps_xfer_reg(i2c, REG_SET_SX_APP_CONFIG, buf->raw_value,
+			    sizeof(union reg_sx_app_config), flag);
+}
+
 int tps_rd_active_rdo_contract(const struct i2c_dt_spec *i2c,
 			       union reg_active_rdo_contract *buf)
 {
@@ -232,6 +239,14 @@ int tps_rw_autonegotiate_sink(const struct i2c_dt_spec *i2c,
 {
 	return tps_xfer_reg(i2c, REG_AUTONEGOTIATE_SINK, buf->raw_value,
 			    sizeof(union reg_autonegotiate_sink), flag);
+}
+
+int tps_rw_thunderbolt_configuration(const struct i2c_dt_spec *i2c,
+				     union reg_thunderbolt_configuration *buf,
+				     int flag)
+{
+	return tps_xfer_reg(i2c, REG_THUNDERBOLT_CONFIGURATION, buf->raw_value,
+			    sizeof(union reg_thunderbolt_configuration), flag);
 }
 
 int tps_rd_power_path_status(const struct i2c_dt_spec *i2c,
@@ -274,6 +289,9 @@ int tps_rd_status_reg(const struct i2c_dt_spec *i2c, union reg_status *status)
 			    I2C_MSG_READ);
 }
 
+#ifdef CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER
+/* LCOV_EXCL_START */
+
 /** Split streaming transfers down into chunks of this size for more manageable
  *  I2C write lengths.
  */
@@ -309,14 +327,20 @@ int tps_stream_data(const struct i2c_dt_spec *i2c,
 				TPS_STREAM_CHUNK_SIZE);
 			return rv;
 		}
-
-		/* Periodically print a progress log message */
-		if ((chunk_offset / TPS_STREAM_CHUNK_SIZE) % 32 == 0) {
-			LOG_INF("  Block progress %u / %u", chunk_offset,
-				buf_len);
-		}
 	}
 
-	LOG_INF("  Block complete (%u)", buf_len);
+	LOG_DBG("  Block complete (%u)", buf_len);
 	return 0;
+}
+/* LCOV_EXCL_STOP */
+#endif
+
+int tps_rd_received_attention_vdm(
+	const struct i2c_dt_spec *i2c,
+	union reg_received_attention_vdm *received_attention_vdm)
+{
+	return tps_xfer_reg(i2c, REG_RECEIVED_ATTENTION_VDM,
+			    received_attention_vdm->raw_value,
+			    sizeof(union reg_received_attention_vdm),
+			    I2C_MSG_READ);
 }

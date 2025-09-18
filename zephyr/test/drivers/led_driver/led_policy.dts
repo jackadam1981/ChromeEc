@@ -13,19 +13,38 @@
 	led-colors {
 		compatible = "cros-ec,led-policy";
 
-		power-state-charge-right {
+		power-state-charge-right-with-alt-policy-1 {
 			charge-state = "LED_PWRS_CHARGE";
 			charge-port = <0>; /* Right port */
 			batt-lvl = <BATTERY_LEVEL_EMPTY 99>;
 			/* Battery is charging */
 			batt-state-mask = <SB_STATUS_DISCHARGING>;
 			batt-state = <0>;
+			board-led-alt-policy-label = <1>;
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
 					led-color = "LED_WHITE";
+				};
+			};
+		};
+
+		power-state-charge-right-with-alt-policy-0 {
+			charge-state = "LED_PWRS_CHARGE";
+			charge-port = <0>; /* Right port */
+			batt-lvl = <BATTERY_LEVEL_EMPTY 99>;
+			/* Battery is charging */
+			batt-state-mask = <SB_STATUS_DISCHARGING>;
+			batt-state = <0>;
+			board-led-alt-policy-label = <0>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_OFF";
 				};
 			};
 		};

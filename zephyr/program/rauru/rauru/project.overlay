@@ -255,11 +255,11 @@
 		fan0: fan0 {
 			pwms = <&pwm2 0 PWM_KHZ(324) PWM_POLARITY_INVERTED>;
 			tach = <&tach0>;
-			rpm_min = <1000>;
-			rpm_start = <1000>;
-			rpm_max = <4900>;
-			enable_gpio = <&gpio_en_pp5000_fan>;
-			use_fast_start;
+			rpm-min = <1000>;
+			rpm-start = <1000>;
+			rpm-max = <4900>;
+			enable-gpio = <&gpio_en_pp5000_fan>;
+			use-fast-start;
 		};
 	};
 };

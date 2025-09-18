@@ -101,12 +101,14 @@ uint8_t pdc_power_mgmt_get_usb_pd_port_count(void);
 int pdc_power_mgmt_set_active_charge_port(int charge_port);
 
 /**
- * @brief Get CC polarity of the port
+ * @brief Get CC polarity of the port. Note: the result may not be valid if the
+ *        port is not connected.
  *
  * @param port USB-C port number
  *
- * @retval (POLARITY_CC1 or POLARITY_CC1_DTS) for non-flipped connection or
- * (POLARITY_CC2 or POLARITY_CC2_DTS)
+ * @retval POLARITY_CC1 for non-flipped connection
+ * @retval POLARITY_CC2 for flipped connection
+ * @retval -ERANGE if the port is invalid.
  */
 enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port);
 
@@ -118,42 +120,6 @@ enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port);
  * @retval PD_ROLE_UFP for UFP, or PD_ROLE_DFP
  */
 enum pd_data_role pdc_power_mgmt_pd_get_data_role(int port);
-
-/**
- * @brief Request power swap to Source
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_src(int port);
-
-/**
- * @brief Request power swap to Sink
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_snk(int port);
-
-/**
- * @brief Request data swap to UFP
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_ufp(int port);
-
-/**
- * @brief Request data swap to DFP
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_dfp(int port);
 
 /**
  * @brief Signal power request to indicate a charger update that affects the
@@ -296,9 +262,28 @@ uint8_t pdc_power_mgmt_get_src_cap_cnt(int port);
  *
  * @param port USB-C port number
  * @param rdo Output parameter for RDO object
- * @retval 0 on success, -EINVAL if \p rdo is NULL, -ENODATA if not sinking.
+ * @retval 0 on success
+ * @retval -ERANGE if \p port is invalid
+ * @retval -EINVAL if \p rdo is NULL
+ * @retval -ENODATA if not sinking.
  */
 int pdc_power_mgmt_get_rdo(int port, uint32_t *rdo);
+
+/**
+ * @brief Get the voltage requested from the charger while in sink mode
+ *
+ * @param port USB-C port number
+ * @return uint32_t voltage in millivolts
+ */
+uint32_t pdc_power_mgmt_get_requested_voltage(int port);
+
+/**
+ * @brief Get the current requested from the charger while in sink mode
+ *
+ * @param port USB-C port number
+ * @return uint32_t current in milliamps
+ */
+uint32_t pdc_power_mgmt_get_requested_current(int port);
 
 /**
  * @brief Set dual role state, from among enum pd_dual_role_states
@@ -313,7 +298,8 @@ void pdc_power_mgmt_set_dual_role(int port, enum pd_dual_role_states state);
  * @brief Get the previously set dual role state
  *
  * @param port USB-C port number
- * @return most recently-set dual role state, or -1 if never set.
+ * @return most recently-set dual role state
+ * @return -ERANGE if \p port is invalid
  */
 enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port);
 
@@ -326,7 +312,7 @@ enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port);
 const char *pdc_power_mgmt_get_task_state_name(int port);
 
 /**
- * @brief Request a power role swap
+ * @brief Request a power role swap, non-blocking
  *
  * @param port USB-C port number
  */
@@ -594,11 +580,23 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable);
  * @brief Enable/Disable PDC TrySRC on a port
  *
  * @param port USB-C port number
- * @param enable enable or disable TrySRC on port
+ * @param enable enable or disable TrySRC on port. True sets DRP_TRY_SRC and
+ *        false sets DRP_NORMAL
  *
- * @retval 0 if successful or error code
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
  */
 int pdc_power_mgmt_set_trysrc(int port, bool enable);
+
+/**
+ * @brief Query current dual-role power (DRP) setting
+ *
+ * @param port USB-C port number
+ * @param drp_mode output param for DRP mode enum
+ *
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
+ */
 int pdc_power_mgmt_get_drp_mode(int port, enum drp_mode_t *drp_mode);
 
 /*
@@ -617,7 +615,8 @@ int pdc_power_mgmt_get_pch_data_status(int port, uint8_t *status);
  * @param port USB-C port number
  * @param info Pointer to user-supplied output location for response
  *
- * @retval 0 if successful or error code
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
  */
 int pdc_power_mgmt_get_lpm_ppm_info(int port, struct lpm_ppm_info_t *info);
 
@@ -720,6 +719,7 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port);
 int pdc_power_mgmt_get_connector_status_for_ppm(
 	int port, union connector_status_t *connector_status);
 
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Find an active port with CCD enabled based on devicetree properties
  *
@@ -728,7 +728,6 @@ int pdc_power_mgmt_get_connector_status_for_ppm(
  */
 int pdc_power_mgmt_get_ccd_port(void);
 
-#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 /**
  * @brief Reads the current SBU mux operating mode. This targets the port with
  *        the `ccd` property in the devicetree.
@@ -756,5 +755,40 @@ int pdc_power_mgmt_set_sbu_mux_mode(enum pdc_sbu_mux_mode mode);
  * @return Device pointer on success
  */
 const struct device *pdc_power_mgmt_get_port_pdc_driver(int port);
+
+/**
+ * @brief Enable/disable BBR retimer test mode
+ *
+ * @param port USB-C port number
+ * @param enable True to enter test mode, false to exit.
+ *
+ * @retval 0 on success, otherwise error code.
+ */
+int pdc_power_mgmt_set_bbr_cts(int port, bool enable);
+
+/**
+ * @brief Used to validate port numbers passed into the public API functions
+ *
+ * @note  Do not use for internal checks since port counts are not known until
+ *        all pdc_power_mgmt devices initialize.
+ *
+ * @param port Port number to check
+ * @return true if the port exists and is active
+ * @return false otherwise
+ */
+bool pdc_power_mgmt_is_pdc_port_valid(int port);
+
+/**
+ * @brief Manually notify the PDCs of the given AP power state
+ *
+ * Notify all PDC drivers that the AP is in the given power state. This
+ * overrides the state set by the PDC subsystem but does not prevent it from
+ * updating the power state again on the next startup or shutdown transition.
+ *
+ * @param state POWER_S0  or POWER_S5
+ * @return 0 on success
+ * @return -EINVAL for invalid \p state values.
+ */
+int pdc_power_mgmt_set_ap_power_state(enum power_state state);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

@@ -25,7 +25,7 @@
 /* CrOS Board Info */
 #define CONFIG_CBI_EEPROM
 #define CONFIG_BOARD_VERSION_CBI
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 
 /* EC Defines */
 #define CONFIG_LTO

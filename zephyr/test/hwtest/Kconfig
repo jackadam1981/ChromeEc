@@ -67,6 +67,7 @@ config HW_TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL
 	bool "FP sensor auth crypto stateful test"
 	select ZTEST
 	select MOCK_ROLLBACK
+	select MOCK_OTP if NPCX_OTP_KEY
 
 config HW_TEST_FPSENSOR_AUTH_CRYPTO_STATELESS
 	bool "FP sensor auth crypto stateless test"
@@ -104,6 +105,7 @@ config HW_TEST_LIBC_PRINTF
 config HW_TEST_LIBCXX
 	bool "libcxx test"
 	select ZTEST
+	select XSI_SINGLE_PROCESS
 	help
 	  The test verifies time measurement system_clock vs udelay.
 
@@ -112,6 +114,18 @@ config HW_TEST_MALLOC
 	select ZTEST
 	help
 	  The test verifies basic malloc operations.
+
+config HW_TEST_OTP_KEY
+	bool "OTP key test"
+	select ZTEST
+	select MOCK_OTP
+	help
+		The test verifies basic OTP key functionality
+config HW_TEST_NULL_POINTER
+	bool "null pointer test"
+	select ZTEST
+	help
+	  The test verifies null pointer dereference crashes.
 
 config HW_TEST_PANIC
 	bool "Panic test"
@@ -140,6 +154,13 @@ config HW_TEST_QUEUE
 	help
 	  The test verifies queue functionality in EC.
 
+config HW_TEST_RAM_LOCK
+	bool "NPCX RAM lock test"
+	select ZTEST
+	depends on NPCX_RAM_LOCK
+	help
+	  The test verifies ram lock function of NPCX chip.
+
 config HW_TEST_RESTRICTED_CONSOLE
 	bool "Restricted console test"
 	select ZTEST
@@ -165,9 +186,16 @@ config HW_TEST_ROLLBACK
 config HW_TEST_ROLLBACK_ENTROPY
 	bool "Rollback entropy test"
 	select ZTEST
+	select MOCK_OTP if NPCX_OTP_KEY
 	depends on PLATFORM_EC_ROLLBACK
 	help
 	  The test verifies rollback entropy functionality.
+
+config HW_TEST_RTC_NPCX9
+	bool "RTC NPCX9 test"
+	select ZTEST
+	help
+	  The test verifies NPCX RTC functionality
 
 config HW_TEST_SBRK
 	bool "SBRK test"
@@ -257,3 +285,6 @@ config HW_TEST_WATCHDOG
 
 config MOCK_ROLLBACK
 	bool "Mock rollback for tests"
+
+config MOCK_OTP
+	bool "Mock OTP for tests"

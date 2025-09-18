@@ -5,6 +5,8 @@
 """Tests for the generate_readme.py file."""
 
 # pylint:disable=import-error
+import argparse
+
 import pytest
 import zmake.generate_readme as gen_readme
 
@@ -15,6 +17,17 @@ def test_generate_readme_contents():
 
     # Look for a string we know should appear in the README.
     assert "### zmake build\n" in readme
+
+
+def test_generate_readme_help_format_expansion():
+    """Verify that MarkdownHelpFormatter correctly formats help text"""
+    test_parser = argparse.ArgumentParser(prog="TestProg")
+    test_parser.add_argument("arg1", help="This should be one percent sign: %%")
+    test_parser.add_argument("arg2", help="This is the program name: %(prog)s")
+    test_parser.formatter_class = gen_readme.MarkdownHelpFormatter
+
+    assert "This should be one percent sign: %" in test_parser.format_help()
+    assert "This is the program name: TestProg" in test_parser.format_help()
 
 
 @pytest.mark.parametrize(

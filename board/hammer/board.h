@@ -73,13 +73,7 @@
 #define CONFIG_UART_CONSOLE 1
 
 /* Optional features */
-/*
- * TODO(b:65697962): Reenable low-power-idle on wand without breaking EC-EC
- * communication
- */
-#ifndef BOARD_WAND
 #define CONFIG_LOW_POWER_IDLE
-#endif
 #define CONFIG_LTO
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_MATH_UTIL
@@ -90,8 +84,8 @@
 #define CONFIG_USB_UPDATE
 
 #undef CONFIG_UPDATE_PDU_SIZE
-#if defined(BOARD_WAND) || defined(VARIANT_HAMMER_TP_LARGE_PAGE)
-/* Wand/Zed does not have enough space to fit 4k PDU. */
+#if defined(VARIANT_HAMMER_TP_LARGE_PAGE)
+/* Zed does not have enough space to fit 4k PDU. */
 #define CONFIG_UPDATE_PDU_SIZE 2048
 #else
 #define CONFIG_UPDATE_PDU_SIZE 4096
@@ -267,32 +261,6 @@
 #define CONFIG_USB_PAIRING
 
 #define CONFIG_USB_CONSOLE_READ
-
-#ifdef BOARD_WAND
-/* Battery and charger options. */
-#define CONFIG_CHARGER
-#define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 128
-#define CONFIG_CHARGER_ISL9238
-#define CONFIG_CHARGER_SENSE_RESISTOR 10
-#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
-#define CONFIG_CHARGER_DISCHARGE_ON_AC
-#define CONFIG_CHARGER_OTG
-
-#define CONFIG_CHARGE_RAMP_HW
-
-#define CONFIG_BATTERY_CUT_OFF
-#define CONFIG_BATTERY_SMART
-
-#define I2C_PORT_BATTERY I2C_PORT_CHARGER
-
-#define EC_EC_UART usart2_hw
-#define CONFIG_STREAM_USART2
-#define CONFIG_STREAM_USART
-
-#define CONFIG_EC_EC_COMM_SERVER
-#define CONFIG_EC_EC_COMM_BATTERY
-#define CONFIG_CRC8
-#endif /* BOARD_WAND */
 
 #else /* SECTION_IS_RO */
 /* Sign and switch to RW partition on boot. */

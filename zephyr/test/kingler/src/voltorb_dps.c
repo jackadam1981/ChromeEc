@@ -21,13 +21,13 @@ FAKE_VALUE_FUNC(int, battery_status, int *);
 bool voltorb_is_more_efficient(int curr_mv, int prev_mv, int batt_mv,
 			       int batt_mw, int input_mw);
 
-bool mock_battery_status_fullycharged(int *battery_status)
+int mock_battery_status_fullycharged(int *battery_status)
 {
 	*battery_status = SB_STATUS_FULLY_CHARGED;
 	return EC_SUCCESS;
 }
 
-bool mock_battery_status_notfullycharged(int *battery_status)
+int mock_battery_status_notfullycharged(int *battery_status)
 {
 	*battery_status = SB_STATUS_DISCHARGING;
 	return EC_SUCCESS;

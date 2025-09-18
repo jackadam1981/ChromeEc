@@ -25,8 +25,8 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		memory_thermistor: memory-thermistor {
-			temp_fan_off = <35>;
-			temp_fan_max = <70>;
+			temp-fan-off = <35>;
+			temp-fan-max = <70>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory>;
 		};

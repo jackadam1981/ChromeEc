@@ -54,6 +54,9 @@ DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_get_sbu_mux_mode,
 			enum pdc_sbu_mux_mode *, int *);
 DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_set_sbu_mux_mode,
 			enum pdc_sbu_mux_mode);
+DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_set_bbr_cts, int, bool);
+DECLARE_FAKE_VALUE_FUNC(int, pdc_power_mgmt_set_ap_power_state,
+			enum power_state);
 
 /**
  * @brief Reset the above set of fakes

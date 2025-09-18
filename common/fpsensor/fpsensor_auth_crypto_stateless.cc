@@ -8,13 +8,14 @@
 #include "crypto/elliptic_curve_key.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_crypto.h"
+#include "openssl/aead.h"
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
 #include "openssl/ecdh.h"
 #include "openssl/obj_mac.h"
 #include "openssl/rand.h"
-#include "sha256.h"
 
 #include <algorithm>
 #include <array>
@@ -92,16 +93,15 @@ bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 
 enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 					       const EC_KEY &public_key,
-					       uint8_t *shared_secret,
-					       uint8_t shared_secret_size)
+					       std::span<uint8_t> secret)
 {
 	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
 	if (public_point == nullptr) {
 		return EC_ERROR_INVAL;
 	}
 
-	if (ECDH_compute_key_fips(shared_secret, shared_secret_size,
-				  public_point, &private_key) != 1) {
+	if (ECDH_compute_key_fips(secret.data(), secret.size(), public_point,
+				  &private_key) != 1) {
 		return EC_ERROR_INVAL;
 	}
 
@@ -109,110 +109,80 @@ enum ec_error_list generate_ecdh_shared_secret(const EC_KEY &private_key,
 }
 
 enum ec_error_list
-generate_gsc_session_key(std::span<const uint8_t> auth_nonce,
-			 std::span<const uint8_t> gsc_nonce,
-			 std::span<const uint8_t> pairing_key,
-			 std::span<uint8_t> gsc_session_key)
+generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
+					const EC_KEY &public_key,
+					std::span<uint8_t> secret)
 {
-	if (auth_nonce.size() != 32 || gsc_nonce.size() != 32 ||
-	    pairing_key.size() != 32 ||
-	    gsc_session_key.size() != SHA256_DIGEST_SIZE) {
+	const EC_POINT *public_point = EC_KEY_get0_public_key(&public_key);
+	if (public_point == nullptr) {
 		return EC_ERROR_INVAL;
 	}
-	CleanseWrapper<struct sha256_ctx> ctx;
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, auth_nonce.data(), auth_nonce.size());
-	SHA256_update(&ctx, gsc_nonce.data(), gsc_nonce.size());
-	SHA256_update(&ctx, pairing_key.data(), pairing_key.size());
-	std::span result(SHA256_final(&ctx), SHA256_DIGEST_SIZE);
 
-	std::ranges::copy(result, gsc_session_key.begin());
+	if (ECDH_compute_key(secret.data(), secret.size(), public_point,
+			     &private_key, NULL) == -1) {
+		return EC_ERROR_INVAL;
+	}
 
 	return EC_SUCCESS;
 }
 
-enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
-	std::span<const uint8_t> gsc_session_key, std::span<const uint8_t> iv,
-	std::span<uint8_t> data)
+enum ec_error_list generate_session_key(
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> peer_nonce,
+	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key)
 {
-	if (gsc_session_key.size() != 32 || iv.size() != AES_BLOCK_SIZE) {
+	std::array inputs{
+		std::span<const uint8_t>{ fpmcu_nonce },
+		std::span<const uint8_t>{ peer_nonce },
+	};
+
+	return hmac_sha256(pairing_key, inputs, session_key);
+}
+
+enum ec_error_list decrypt_data_with_session_key(
+	std::span<const uint8_t, 32> session_key,
+	std::span<const uint8_t> input, std::span<uint8_t> output,
+	std::span<const uint8_t, FP_AES_KEY_NONCE_BYTES> nonce,
+	std::span<const uint8_t, FP_AES_KEY_TAG_BYTES> tag,
+	std::span<const uint8_t> aad)
+{
+	if (input.size() != output.size()) {
+		return EC_ERROR_OVERFLOW;
+	}
+
+	bssl::ScopedEVP_AEAD_CTX ctx;
+	int ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_256_gcm(),
+				    session_key.data(), session_key.size(),
+				    tag.size(), nullptr);
+	if (!ret) {
 		return EC_ERROR_INVAL;
 	}
 
-	CleanseWrapper<AES_KEY> aes_key;
-	int res = AES_set_encrypt_key(gsc_session_key.data(), 256, &aes_key);
-	if (res) {
-		return EC_ERROR_INVAL;
+	ret = EVP_AEAD_CTX_open_gather(ctx.get(), output.data(), nonce.data(),
+				       nonce.size(), input.data(), input.size(),
+				       tag.data(), tag.size(), aad.data(),
+				       aad.size());
+	if (!ret) {
+		return EC_ERROR_UNKNOWN;
 	}
-
-	std::array<uint8_t, AES_BLOCK_SIZE> aes_iv;
-	std::ranges::copy(iv, aes_iv.begin());
-
-	/* The AES CTR uses the same function for encryption & decryption. */
-	unsigned int block_num = 0;
-	std::array<uint8_t, AES_BLOCK_SIZE> ecount_buf;
-	AES_ctr128_encrypt(data.data(), data.data(), data.size(), &aes_key,
-			   aes_iv.data(), ecount_buf.data(), &block_num);
 
 	return EC_SUCCESS;
 }
 
-enum ec_error_list encrypt_data_with_ecdh_key_in_place(
-	const struct fp_elliptic_curve_public_key &in_pubkey,
-	std::span<uint8_t> data, std::span<uint8_t> iv,
-	struct fp_elliptic_curve_public_key &out_pubkey)
+enum ec_error_list compute_message_signature(
+	std::span<const uint8_t, SHA256_DIGEST_LENGTH> session_key,
+	std::span<const uint8_t> context, std::span<const uint8_t> sender,
+	std::span<const uint8_t> operation,
+	std::span<const uint8_t, FP_CHALLENGE_SIZE> challenge,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> signature)
 {
-	if (iv.size() != AES_BLOCK_SIZE) {
-		return EC_ERROR_INVAL;
-	}
+	std::array inputs{
+		std::span<const uint8_t>{ challenge },
+		context,
+		sender,
+		operation,
+	};
 
-	bssl::UniquePtr<EC_KEY> private_key = generate_elliptic_curve_key();
-	if (private_key == nullptr) {
-		return EC_ERROR_MEMORY_ALLOCATION;
-	}
-
-	std::optional<fp_elliptic_curve_public_key> out_key =
-		create_pubkey_from_ec_key(*private_key);
-	if (!out_key.has_value()) {
-		return EC_ERROR_INVAL;
-	}
-
-	out_pubkey = out_key.value();
-
-	bssl::UniquePtr<EC_KEY> public_key =
-		create_ec_key_from_pubkey(in_pubkey);
-	if (public_key == nullptr) {
-		return EC_ERROR_MEMORY_ALLOCATION;
-	}
-
-	CleanseWrapper<std::array<uint8_t, SHA256_DIGEST_SIZE> > enc_key;
-
-	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*private_key, *public_key, enc_key.data(), enc_key.size());
-	if (ret != EC_SUCCESS) {
-		return ret;
-	}
-
-	CleanseWrapper<AES_KEY> aes_key;
-	int res = AES_set_encrypt_key(enc_key.data(), 256, &aes_key);
-	if (res) {
-		return EC_ERROR_INVAL;
-	}
-
-	RAND_bytes(iv.data(), iv.size());
-
-	/* The IV will be changed after the AES_ctr128_encrypt, we need a copy
-	 * for that. */
-	std::array<uint8_t, AES_BLOCK_SIZE> aes_iv;
-
-	std::ranges::copy(iv, aes_iv.begin());
-
-	unsigned int block_num = 0;
-	std::array<uint8_t, AES_BLOCK_SIZE> ecount_buf;
-
-	/* The AES CTR uses the same function for encryption & decryption. */
-	AES_ctr128_encrypt(data.data(), data.data(), data.size(), &aes_key,
-			   aes_iv.data(), ecount_buf.data(), &block_num);
-
-	return EC_SUCCESS;
+	return hmac_sha256(session_key, inputs, signature);
 }

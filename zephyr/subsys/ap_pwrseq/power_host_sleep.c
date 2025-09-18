@@ -60,7 +60,7 @@ void power_update_wake_mask(void)
 		 ap_power_get_lazy_wake_mask(state, &wake_mask))
 		return;
 #if CONFIG_AP_PWRSEQ_S0IX
-	if ((state == AP_POWER_STATE_S0IX) && (wake_mask == 0))
+	if ((state == AP_POWER_STATE_S0ix) && (wake_mask == 0))
 		wake_mask = DEFAULT_WAKE_MASK_S0IX;
 #endif
 

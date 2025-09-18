@@ -98,12 +98,14 @@ void fps_event(enum gpio_signal signal);
 }
 #endif
 
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_SHA256_SW
 
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
 #define I2C_PORT_EEPROM 0
 #define I2C_ADDR_EEPROM_FLAGS 0x50
+
+#define CONFIG_COMMON_RECURSIVE_MUTEX
 
 #endif /* __CROS_EC_BOARD_H */

@@ -113,8 +113,6 @@ int cbi_get_fw_config(uint32_t *fw_config);
 int cbi_get_pcb_supplier(uint32_t *pcb_supplier);
 int cbi_get_ssfc(uint32_t *ssfc);
 int cbi_get_rework_id(uint64_t *id);
-int cbi_get_factory_calibration_data(uint32_t *calibration_data);
-int cbi_get_common_control(union ec_common_control *ctrl);
 
 /**
  * Get data from CBI store
@@ -264,6 +262,13 @@ void cbi_latch_eeprom_wp(void);
  * @return EC_RES_SUCCESS on success or EC_RES_* otherwise.
  */
 int cbi_write(void);
+
+/* Clears the CBI data, but doesn't set the magic signature or the header.
+ * Use only in tests to verify the handling of a completely uninitialized CBI.
+ *
+ * @return EC_RES_SUCCESS on success or EC_RES_* otherwise.
+ */
+int cbi_clear(void);
 #endif
 
 #ifdef __cplusplus
