@@ -15,7 +15,8 @@
 
 #include "fingerprint_ft9865_pal.h"
 #include "fingerprint_ft9865.h"
-#include "ft93xx_api.h"
+#include "fingerprint_ft9865_private.h"
+
 
 //uint8_t ff_raw_buf[64 * 80 * 2]; //raw data buf
 extern uint8_t ff_algo_buf[64 * 1024]; //share memory with alg to save sram
@@ -56,8 +57,12 @@ static inline int ft9865_disable_irq(const struct device *dev)
 static int ft9865_set_mode(const struct device *dev,
 			    enum fingerprint_sensor_mode mode)
 {
-	LOG_INF("%s", __func__);
 	int ret;
+
+	if (!IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) 
+	{
+		return -ENOTSUP;
+	}
 	
 	switch (mode)
 	{
@@ -87,7 +92,11 @@ static int ft9865_set_mode(const struct device *dev,
 
 static int ft9865_init(const struct device *dev)
 {
-	LOG_INF("%s", __func__);	
+	if (!IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) 
+	{
+		return -ENOTSUP;
+	}
+	
 	sensor_param_t sensor_param = {0};
 	sensor_param.hw_rst_func_impl = ft_sensor_hw_reset;
 	sensor_param.spi_write_func_impl = ft_spi_write;
@@ -99,21 +108,24 @@ static int ft9865_init(const struct device *dev)
 	uint16_t chipid = ft_sensor_query_chipid();
 	uint16_t cols = ft_sensor_query_cols();
 	uint16_t rows = ft_sensor_query_rows();
-	LOG_INF("sensor id: %x, cols:%d, rows:%d", chipid, cols, rows);
+	LOG_DBG("sensor id: %x, cols:%d, rows:%d", chipid, cols, rows);
 	
 	return 0;
 }
 
 static int ft9865_deinit(const struct device *dev)
-{
-	LOG_INF("%s", __func__);
+{	
+	if (!IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) 
+	{
+		return -ENOTSUP;
+	}
+	
 	return 0;
 }
 
 static int ft9865_get_info(const struct device *dev,
 			    struct fingerprint_info *info)
 {
-	LOG_INF("%s", __func__);
 	const struct ft9865_cfg *cfg = dev->config;
 	
 	/* Copy immutable sensor information to the structure. */
@@ -126,7 +138,6 @@ static int ft9865_get_info(const struct device *dev,
 
 static int ft9865_config(const struct device *dev, fingerprint_callback_t cb)
 {
-	LOG_INF("%s", __func__);
 	struct ft9865_data *data = dev->data;
 
 	data->callback = cb;
@@ -139,7 +150,11 @@ static int ft9865_config(const struct device *dev, fingerprint_callback_t cb)
 static int ft9865_maintenance(const struct device *dev, uint8_t *buf,
 			       size_t size)
 {
-	LOG_INF("%s", __func__);
+	if (!IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) 
+	{
+		return -ENOTSUP;
+	}
+	
 	return 0;
 }
 
@@ -147,8 +162,15 @@ static int ft9865_acquire_image(const struct device *dev,
 				 enum fingerprint_capture_type capture_type,
 				 uint8_t *image_buf, size_t image_buf_size)
 {
-	LOG_INF("%s", __func__);
 	int ret = -1;
+
+	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
+		return -EINVAL;
+	
+	if (!IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) 
+	{
+		return -ENOTSUP;
+	}
 	
 	switch (capture_type)
 	{
@@ -166,15 +188,19 @@ static int ft9865_acquire_image(const struct device *dev,
 
 static int ft9865_finger_status(const struct device *dev)
 {
-	LOG_INF("%s", __func__);
+	if (!IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) 
+	{
+		return -ENOTSUP;
+	}
+	
 	if (ft_sensor_query_finger_status_simple() == 1)
 	{
-		LOG_INF("FINGER_PRESENT");
+		LOG_DBG("FINGER_PRESENT");
 		return FINGERPRINT_FINGER_STATE_PRESENT;
 	}
 	else
 	{
-		LOG_INF("FINGER_NONE");
+		LOG_DBG("FINGER_NONE");
 		return FINGERPRINT_FINGER_STATE_NONE;
 	}
 }
@@ -193,7 +219,6 @@ static DEVICE_API(fingerprint, cros_fp_ft9865_driver_api) = {
 static void ft9865_irq(const struct device *dev, struct gpio_callback *cb,
 			uint32_t pins)
 {
-	LOG_INF("%s", __func__);
 	struct ft9865_data *data = CONTAINER_OF(cb, struct ft9865_data, irq_cb);
 
 	ft9865_disable_irq(data->dev);
@@ -205,7 +230,6 @@ static void ft9865_irq(const struct device *dev, struct gpio_callback *cb,
 
 static int ft9865_init_driver(const struct device *dev)
 {
-	LOG_INF("%s", __func__);
 	const struct ft9865_cfg *cfg = dev->config;
 	struct ft9865_data *data = dev->data;		
 	int ret;

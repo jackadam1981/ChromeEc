@@ -7,11 +7,11 @@
 
 #include <fingerprint/fingerprint_alg.h>
 
+#include <zephyr/drivers/fingerprint/fingerprint_ft9865_private.h>
+
 #include <stdio.h>
 
 #include "ft9865_bio_alg.h"
-
-#include "focal_algolib_for_locker.h"
 
 LOG_MODULE_REGISTER(ft9865_bio_alg, LOG_LEVEL_INF);
 
@@ -22,15 +22,18 @@ static uint8_t g_finger_template_data[FT_TPL_HEAD_SIZE + FT_TPL_SUBTPL_SIZE * SI
 
 static int ft9865_algorithm_init(const struct fingerprint_algorithm *const alg)
 {
-	LOG_INF("%s", __func__);
-
 	int ret = 0;
     char alg_version[64];
 	struct ft_libfp_data *data = (struct ft_libfp_data *)alg->data;
 
+	if (!IS_ENABLED(CONFIG_HAVE_FT_LOCKER_PRIVATE_ALGORITHM)) 
+	{
+		return 0;
+	}
+
 	algo_param_locker_t algo_params = {
-			.rows = 80, 
-			.cols = 64,
+			.rows = ft_sensor_query_rows(), 
+			.cols = ft_sensor_query_cols(),
 			.algo_size_limit = FF_ALGO_SIZE,
 			.flash_size_limit = 0,
 			.max_finger_num = MAX_TEMPLATE_ID,
@@ -58,32 +61,34 @@ static int ft9865_algorithm_init(const struct fingerprint_algorithm *const alg)
 	}
     
 	ret = focal_algo_init(algo_params);
-	LOG_INF("focal_algo_init ret: %d", ret);
 	if (ret != 0) 
     {
 		LOG_ERR("algorithm initial failed, ret = %d", ret);
 	}
 
 	focal_algo_get_finger_detailed_info(&data->tpl_finger_size, &data->tpl_subtemplate_size, &data->tpl_head_size);
-	LOG_INF("algo:finger_size = %d, head_size = %d, sub_tpl_size= %d\n", data->tpl_finger_size, data->tpl_head_size, data->tpl_subtemplate_size);
+	LOG_DBG("algo:finger_size = %d, head_size = %d, sub_tpl_size= %d\n", data->tpl_finger_size, data->tpl_head_size, data->tpl_subtemplate_size);
 
 	sprintf(alg_version, "api_%s_core_", LIBFP_API_LOCKER_VERSION);
 	focal_algo_get_version((uint8_t*)&alg_version[strlen(alg_version)]);
-	LOG_INF("algo ver: %s", alg_version);
+	LOG_DBG("algo ver: %s", alg_version);
 	
 	return 0;
 }
 
 static int ft9865_algorithm_exit(const struct fingerprint_algorithm *const alg)
-{
-	LOG_INF("%s", __func__);
+{	
 	return 0;
 }
 
 static int ft9865_enroll_start(const struct fingerprint_algorithm *const alg)
 {
-	LOG_INF("%s", __func__);
 	struct ft_libfp_data *data = (struct ft_libfp_data *)alg->data;
+
+	if (!IS_ENABLED(CONFIG_HAVE_FT_LOCKER_PRIVATE_ALGORITHM)) 
+	{
+		return -ENOTSUP;
+	}
 
 	data->remain = data->max_enroll_samples;
 	memset(g_finger_template_data, 0, sizeof(g_finger_template_data));
@@ -94,12 +99,16 @@ static int ft9865_enroll_start(const struct fingerprint_algorithm *const alg)
 static int ft9865_enroll_step(const struct fingerprint_algorithm *const alg,
 			       const uint8_t *const image, int *completion)
 {
-	LOG_INF("%s", __func__);
 	struct ft_libfp_data *data = (struct ft_libfp_data *)alg->data;
 
 	int32_t ret = 0;
 	int32_t feature_size = 0;
 	uint8_t enroll_index = 0;
+
+	if (!IS_ENABLED(CONFIG_HAVE_FT_LOCKER_PRIVATE_ALGORITHM)) 
+	{
+		return -ENOTSUP;
+	}
 	
 	if(data->remain == 0)
 	{
@@ -115,7 +124,7 @@ static int ft9865_enroll_step(const struct fingerprint_algorithm *const alg,
 		ret = focal_algo_enroll_by_feature(g_feature, enroll_index, g_finger_template_data);
 		if(ret == 0)
 		{
-			LOG_INF("enroll success: %d", enroll_index);
+			LOG_DBG("enroll success: %d", enroll_index);
 			data->remain -= 1;
 			*completion = (data->max_enroll_samples - data->remain) * 100 / data->max_enroll_samples;
 			memcpy(g_finger_template_data + data->tpl_head_size + data->tpl_subtemplate_size * enroll_index,
@@ -142,8 +151,12 @@ static int ft9865_enroll_step(const struct fingerprint_algorithm *const alg,
 static int ft9865_enroll_finish(const struct fingerprint_algorithm *const alg,
 				 void *templ)
 {
-	LOG_INF("%s", __func__);
 	struct ft_libfp_data *data = (struct ft_libfp_data *)alg->data;
+
+	if (!IS_ENABLED(CONFIG_HAVE_FT_LOCKER_PRIVATE_ALGORITHM)) 
+	{
+		return -ENOTSUP;
+	}
 	
 	if(templ)
 		memcpy(templ, g_finger_template_data, sizeof(g_finger_template_data));
@@ -159,11 +172,14 @@ static int ft9865_match(const struct fingerprint_algorithm *const alg,
 			 const uint8_t *const image, int32_t *match_index,
 			 uint32_t *update_bitmap)
 {
-	LOG_INF("%s", __func__);
-
 	int32_t ret = 0;   
 	int32_t feature_size = 0;
 	uint8_t update_flag = 0;
+
+	if (!IS_ENABLED(CONFIG_HAVE_FT_LOCKER_PRIVATE_ALGORITHM)) 
+	{
+		return -ENOTSUP;
+	}
 
 	memset(g_feature, 0, sizeof(g_feature));
 	ret = focal_algo_get_feature((uint8_t*)image, g_feature, &feature_size);
@@ -172,7 +188,7 @@ static int ft9865_match(const struct fingerprint_algorithm *const alg,
 		for (int i = 0; i < templ_count ; i++)
 		{
 			ret = focal_algo_verify_by_feature(g_feature, templ + i * FINGER_TEMPLATE_SIZE, &update_flag);
-			LOG_INF("identify : %d %d", ret, update_flag);
+			LOG_DBG("identify : %d %d", ret, update_flag);
 			if (ret == 0)
 			{
 				/*match*/ 
