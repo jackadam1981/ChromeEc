@@ -22,6 +22,30 @@
       },
       "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56f0740_16f82f22",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-18T16:14:07Z",
+      "side": 1,
+      "message": "I see that ptlrvp sets the external signal as active low.  Should the internal pin also be active low?",
+      "parentUuid": "5b6734dd_bdb7a03e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
