@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "775b070f_ce252d17",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2969,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-18T05:44:47Z",
+      "side": 1,
+      "message": "Done, Thanks Pranava you are right to the point",
+      "parentUuid": "8d065133_1480377a",
+      "range": {
+        "startLine": 2969,
+        "startChar": 2,
+        "endLine": 2969,
+        "endChar": 41
+      },
+      "revId": "c64c42a364c7a981e3a6516b2def5e6c4cb41997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05f1005c_176658d6",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-11T16:04:46Z",
       "side": 1,
       "message": "\u003e Incremental coverage: 89%. The minimum coverage level is 90%. Increase test coverage before submitting.\n\nBrutal. Some back-of-the-envelope math suggests that you need 2 more covered lines to pass.\n\nThis highlighted chunk and the above check for audio accessory are the only uncovered lines in the CL. The audio accessory condition already existed and probably doesn\u0027t have any associated tests. It might be very easy or very tedious to make a new test that covers this. I don\u0027t know off the top of my head.\n\nMost of the uncovered lines right here are based on different DRP policy states. It should be pretty easy to cover them by copying an existing test case but setting the DRP policy to something different. I would suggest pursuing this path.\n\nI see 2 lines here that should not be coverable. If removing them from the calculation would get you over 90%, I\u0027d just vote Coverage+1. Unfortunately, just correcting the coverage math would still not get you over the line.",
+      "range": {
+        "startLine": 2993,
+        "startChar": 0,
+        "endLine": 3000,
+        "endChar": 1
+      },
+      "revId": "c64c42a364c7a981e3a6516b2def5e6c4cb41997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33028ea_64cf04b5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 3000,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-18T05:44:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "05f1005c_176658d6",
       "range": {
         "startLine": 2993,
         "startChar": 0,
@@ -77,6 +125,30 @@
       "writtenOn": "2025-09-17T16:46:34Z",
       "side": 1,
       "message": "Won\u0027t we be Unattached.SRC sometimes as we are toggling?",
+      "range": {
+        "startLine": 224,
+        "startChar": 13,
+        "endLine": 224,
+        "endChar": 29
+      },
+      "revId": "c64c42a364c7a981e3a6516b2def5e6c4cb41997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8cb8cb_8745c0d8",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-09-18T05:44:47Z",
+      "side": 1,
+      "message": "Done, Yes FSM toggles between Unattached.SRC and Unattached.SNK, but in both cases the mux is detached. The test checks for mux state, so it’s valid regardless of which unattached state we’re in.",
+      "parentUuid": "b0864a41_d82dca87",
       "range": {
         "startLine": 224,
         "startChar": 13,
