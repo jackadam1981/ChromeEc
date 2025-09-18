@@ -544,6 +544,22 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	return ret;
 }
 
+__maybe_unused static int
+lsm6dsm_enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	/* To enable the interrupt we just update the FIFO enablement.
+	 * This is not ideal, but the lsmg6dsm driver uses the watermark
+	 * configuration in order to actuate the interrupt. If we were to update
+	 * the interrupt CTRL register instead, it could cause a configuration
+	 * conflict. More refactoring is likely needed on this driver.
+	 */
+	if (enable) {
+		return fifo_enable(LSM6DSM_MAIN_SENSOR(s));
+	} else {
+		return fifo_disable(LSM6DSM_MAIN_SENSOR(s));
+	}
+}
+
 static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
@@ -751,6 +767,7 @@ const struct accelgyro_drv lsm6dsm_drv = {
 	.get_offset = st_get_offset,
 #ifdef ACCEL_LSM6DSM_INT_ENABLE
 	.irq_handler = irq_handler,
+	.enable_interrupt = lsm6dsm_enable_interrupt,
 #endif /* ACCEL_LSM6DSM_INT_ENABLE */
 #ifdef CONFIG_BODY_DETECTION
 	.get_rms_noise = get_rms_noise,

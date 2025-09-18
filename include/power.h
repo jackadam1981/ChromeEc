@@ -450,6 +450,19 @@ void power_5v_enable(task_id_t tid, int enable);
  * chipset_task() would.
  */
 void test_power_common_state(void);
+
+/**
+ * @brief Called when signal or state change in chipset_task.
+ *
+ * @param state: The new state.
+ * @param this_in_signals: The new signals.
+ */
+void on_new_signal_or_state(enum power_state state, uint32_t this_in_signals);
+
+/**
+ * @brief Reset boot time for testing.
+ */
+void reset_boot_time();
 #endif
 
 #ifdef CONFIG_POWERSEQ_FAKE_CONTROL

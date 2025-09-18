@@ -11,6 +11,8 @@
 #include "common.h"
 #include "ec_commands.h" /* For EC_FLASH_PROTECT_* flags */
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -233,10 +235,10 @@ int crec_flash_physical_protect_at_boot(uint32_t new_flags);
 /**
  * Protect flash now.
  *
- * @param all		Protect all (=1) or just read-only and pstate (=0).
+ * @param all		Protect all (=true) or just RO and pstate (=false).
  * @return non-zero if error.
  */
-int crec_flash_physical_protect_now(int all);
+int crec_flash_physical_protect_now(bool all);
 
 /**
  * Force reload of flash protection bits.

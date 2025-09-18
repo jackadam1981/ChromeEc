@@ -18,9 +18,10 @@
 
 int chipset_s0_run_count;
 
-static void setup_test(void *fixture)
+static void *setup_test(void)
 {
 	power_signal_init();
+	return NULL;
 }
 
 static void after_test(void *fixture)
@@ -211,8 +212,7 @@ static int chipset_ap_power_s0_run(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S0, NULL, chipset_ap_power_s0_run,
-			      NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(S0, NULL, chipset_ap_power_s0_run, NULL);
 
 static int chipset_ap_power_s3_run(void *data)
 {
@@ -223,22 +223,19 @@ static int chipset_ap_power_s3_run(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S3, NULL, chipset_ap_power_s3_run,
-			      NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(S3, NULL, chipset_ap_power_s3_run, NULL);
 
 static int chipset_ap_power_g3_run(void *data)
 {
 	return ap_pwrseq_sm_set_state(data, AP_POWER_STATE_S3);
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL, chipset_ap_power_g3_run,
-			      NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(G3, NULL, chipset_ap_power_g3_run, NULL);
 
 static int x86_non_dsx_adlp_s0ix_run(void *data)
 {
 	return 0;
 }
 
-AP_POWER_CHIPSET_SUB_STATE_DEFINE(AP_POWER_STATE_S0IX, NULL,
-				  x86_non_dsx_adlp_s0ix_run, NULL,
-				  AP_POWER_STATE_S0);
+AP_POWER_CHIPSET_SUB_STATE_DEFINE(S0ix, NULL, x86_non_dsx_adlp_s0ix_run, NULL,
+				  S0);

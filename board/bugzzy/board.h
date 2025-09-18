@@ -51,7 +51,8 @@
 #define CONFIG_CHARGER_INPUT_CURRENT_DERATE_PCT 4
 #define CONFIG_BATTERY_CHECK_CHARGE_TEMP_LIMITS
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
-
+#define CONFIG_BATTERY_PRESENT_CUSTOM
+#undef CONFIG_BATTERY_PRESENT_GPIO
 /*
  * GPIO for C1 interrupts, for baseboard use
  *
@@ -104,8 +105,8 @@
 #undef PD_POWER_SUPPLY_TURN_ON_DELAY
 #undef PD_POWER_SUPPLY_TURN_OFF_DELAY
 #undef CONFIG_USBC_VCONN_SWAP_DELAY_US
-/* 20% margin added for these timings */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY 13080 /* us */
+/* This turn-on delay is ~4 ms longer than the worst observed delay. */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY 40000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 16080 /* us */
 #undef CONFIG_USBC_VCONN_SWAP_DELAY_US
 #define CONFIG_USBC_VCONN_SWAP_DELAY_US 787 /* us */
@@ -200,6 +201,9 @@
 /* LIS2DS Lid accel */
 #define CONFIG_ACCEL_LIS2DS
 
+/* Recursive mutex support */
+#define CONFIG_COMMON_RECURSIVE_MUTEX
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -233,7 +237,8 @@ enum sensor_id { LID_ACCEL, BASE_ACCEL, BASE_GYRO, SENSOR_COUNT };
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_SDI,
+	BATTERY_SDI_4404D57M,
+	BATTERY_SDI_4404D57,
 	BATTERY_TYPE_COUNT,
 };
 

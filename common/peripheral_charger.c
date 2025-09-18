@@ -6,6 +6,7 @@
 #include "atomic.h"
 #include "chipset.h"
 #include "common.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
@@ -24,7 +25,7 @@
 /* Host event queue. Shared by all ports. */
 static struct queue const host_events =
 	QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, uint32_t);
-struct mutex host_event_mtx;
+mutex_t host_event_mtx;
 
 static int pchg_count;
 

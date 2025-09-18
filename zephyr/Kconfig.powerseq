@@ -67,6 +67,16 @@ config PLATFORM_EC_HOSTCMD_AP_RESET
 	  Warning: This command skips the normal reset mechanism on the AP and
 	  may leave data unsaved.
 
+config PLATFORM_EC_HOSTCMD_AP_SHUTDOWN
+	bool "Host command: EC_CMD_AP_RESET"
+	depends on PLATFORM_EC_HOSTCMD
+	help
+	  Enable support for EC_CMD_AP_SHUTDOWN, used by the AP to request that
+	  the EC perform a shutdown of the AP.
+
+	  Warning: This command skips the normal reset mechanism on the AP and
+	  may leave data unsaved.
+
 config PLATFORM_EC_POWERSEQ_PP5000_CONTROL
 	bool "Enable a task-safe way to control the PP5000 rail"
 	depends on !AP_X86_AMD
@@ -95,7 +105,7 @@ config PLATFORM_EC_POWERSEQ_FAKE_CONTROL
 menuconfig PLATFORM_EC_POWERSEQ_AMD
 	bool "AMD power sequencing"
 	depends on AP_X86_AMD
-	select HAS_TASK_POWERBTN
+	select PLATFORM_EC_POWER_BUTTON_X86
 	default y
 	help
 	  Enable AMD power sequencing code.
@@ -114,7 +124,7 @@ endif  # PLATFORM_EC_POWERSEQ_AMD
 menuconfig PLATFORM_EC_POWERSEQ_INTEL
 	bool "Enable shimming common Intel power sequencing code"
 	depends on AP_X86_INTEL
-	select HAS_TASK_POWERBTN
+	select PLATFORM_EC_POWER_BUTTON_X86
 	default y
 	help
 	  Enable shimming platform/ec AP power sequencing code for
@@ -226,6 +236,16 @@ config PLATFORM_EC_POWERSEQ_MT8188
 	  Use the MT8188 code for power sequencing. Re-use MT8186 common
 	  code.
 
+config PLATFORM_EC_POWERSEQ_MT8189
+	bool "Use common MT8189 code for power sequencing"
+	default y
+	depends on AP_ARM_MTK_MT8189
+	select PLATFORM_EC_POWERSEQ_MTK_ALLOW_S3_WDT
+	select PLATFORM_EC_POWERSEQ_MTK_FW_SUSPEND
+	help
+	  Use the MT8189 code for power sequencing. Re-use MT8186 common
+	  code.
+
 config PLATFORM_EC_POWERSEQ_MT8196
 	bool "Use common MT8196 code for power sequencing"
 	default y
@@ -270,6 +290,14 @@ config PLATFORM_EC_PP3700_DISCHARGE_TIME_MS
 	  This implies that whenever AP shutdown, AP has to stay in the
 	  shutdown state for at least PP3700_DISCHARGE_TIME_MS.
 
+config PLATFORM_EC_PMIC_PASSTHRU_POWER_SIGNALS
+	bool "Enable Support to mirror EC power signals to the PMIC power signals"
+	depends on PLATFORM_EC_POWERSEQ_QC_EXP
+	help
+	Enables a passthrough from the EC power signals to the PMIC power signals
+	when the switch-cap power is active. This mechanism ensures that the PMIC's
+	power signal flow remain undisturbed.
+
 config PLATFORM_EC_POWERSEQ_SC7180
 	bool "SC7180 power sequencing"
 	depends on AP_ARM_QUALCOMM_SC7180
@@ -286,6 +314,13 @@ config PLATFORM_EC_POWERSEQ_SC7280
 	  Enable power sequencing for the Qualcomm Snapdragon SC7280
 	  chipset.
 
+config PLATFORM_EC_POWERSEQ_QC_EXP
+	bool "QC_EXP power sequencing"
+	depends on AP_ARM_QUALCOMM_QC_EXP
+	default y
+	help
+	  Enable power sequencing for the Qualcomm QC_EXP chipset.
+
 config PLATFORM_EC_CONSOLE_CMD_S5_TIMEOUT
 	bool "Console command: s5_timeout"
 	help
@@ -293,5 +328,12 @@ config PLATFORM_EC_CONSOLE_CMD_S5_TIMEOUT
 	  change the timeout waiting for inactivity in the S5 power state before
 	  transitioning to the G3 state. This command is useful for power
 	  testing.
+
+config PLATFORM_EC_CONSOLE_CMD_BOOTTIME
+	bool "Console command: boottime"
+	default y
+	help
+	  Enable the console command 'boottime'. This command is used to
+	  gather the time from system boot to S5 and S0.
 
 endif # PLATFORM_EC_POWERSEQ

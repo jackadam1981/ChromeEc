@@ -43,12 +43,12 @@ ZTEST_USER(ocpc, test_consolecmd_ocpcpid__read)
 
 	/* Check for some expected lines */
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "Kp = 1 / 4"), "Output was: `%s`",
-		   outbuffer);
-	zassert_ok(!strstr(outbuffer, "Ki = 1 / 15"), "Output was: `%s`",
-		   outbuffer);
-	zassert_ok(!strstr(outbuffer, "Kd = 1 / 10"), "Output was: `%s`",
-		   outbuffer);
+	zassert_not_null(strstr(outbuffer, "Kp = 1 / 4"), "Output was: `%s`",
+			 outbuffer);
+	zassert_not_null(strstr(outbuffer, "Ki = 1 / 15"), "Output was: `%s`",
+			 outbuffer);
+	zassert_not_null(strstr(outbuffer, "Kd = 1 / 10"), "Output was: `%s`",
+			 outbuffer);
 }
 
 ZTEST_USER(ocpc, test_consolecmd_ocpcpid__write)
@@ -68,12 +68,12 @@ ZTEST_USER(ocpc, test_consolecmd_ocpcpid__write)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "Kp = 2 / 3"), "Output was: `%s`",
-		   outbuffer);
-	zassert_ok(!strstr(outbuffer, "Ki = 4 / 5"), "Output was: `%s`",
-		   outbuffer);
-	zassert_ok(!strstr(outbuffer, "Kd = 6 / 7"), "Output was: `%s`",
-		   outbuffer);
+	zassert_not_null(strstr(outbuffer, "Kp = 2 / 3"), "Output was: `%s`",
+			 outbuffer);
+	zassert_not_null(strstr(outbuffer, "Ki = 4 / 5"), "Output was: `%s`",
+			 outbuffer);
+	zassert_not_null(strstr(outbuffer, "Kd = 6 / 7"), "Output was: `%s`",
+			 outbuffer);
 }
 
 ZTEST_USER(ocpc, test_consolecmd_ocpcpid__bad_param)
@@ -97,8 +97,8 @@ ZTEST_USER(ocpc, test_consolecmd_ocpcdrvlmt)
 		shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
 
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "Drive Limit = 100"), "Output was: `%s`",
-		   outbuffer);
+	zassert_not_null(strstr(outbuffer, "Drive Limit = 100"),
+			 "Output was: `%s`", outbuffer);
 }
 
 ZTEST_USER(ocpc, test_consolecmd_ocpcdebug)

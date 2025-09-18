@@ -324,7 +324,7 @@ static int zephyr_shim_console_out(int c)
 	}
 
 	/* Always capture EC output into the AP console buffer. */
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE) && !k_is_in_isr()) {
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE)) {
 		char console_char = c;
 		console_buf_notify_chars(&console_char, 1);
 	}
@@ -499,8 +499,6 @@ static void zephyr_print(const char *buff, size_t size)
 	 * printk instead.
 	 * If the shell is about to be (or is) stopped, use printk, since the
 	 * output may be stalled and the shell mutex held.
-	 * Also, console_buf_notify_chars uses a mutex, which may not be
-	 * locked in ISRs.
 	 */
 	bool in_isr = k_is_in_isr();
 

@@ -199,6 +199,9 @@ uint32_t get_feature_flags1(void)
 #ifdef CONFIG_KEYBOARD_STRAUSS
 		| EC_FEATURE_MASK_1(EC_FEATURE_STRAUSS)
 #endif
+#ifdef CONFIG_PLATFORM_EC_POE
+		| EC_FEATURE_MASK_1(EC_FEATURE_POE)
+#endif
 		;
 	return board_override_feature_flags1(result);
 }

@@ -48,9 +48,10 @@ static bool is_pr_swap_needed(int port)
 
 static void swap_to_src(void)
 {
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		if (is_pr_swap_needed(i)) {
-			pdc_power_mgmt_request_swap_to_src(i);
+			/* We are a sink, swap to source */
+			pdc_power_mgmt_request_power_swap(i);
 		}
 	}
 }
