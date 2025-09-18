@@ -37,7 +37,6 @@ test-list-y = \
        flash_write_protect \
        fp_transport \
        fpsensor_auth_crypto_stateful \
-       fpsensor_auth_crypto_stateful_otp \
        fpsensor_auth_crypto_stateless \
        fpsensor_crypto \
        fpsensor_debug \
@@ -52,6 +51,7 @@ test-list-y = \
        mutex \
        mutex_trylock \
        mutex_recursive \
+       null_pointer \
        otp_key \
        panic \
        panic_data \

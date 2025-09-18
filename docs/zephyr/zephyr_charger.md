@@ -7,6 +7,9 @@
 The charger chip enables an external power supply to provide power to the
 board's components.
 
+The charger depends on having a battery, so both the charging subsystem and
+battery must be configured together in the same change.
+
 ## Kconfig Options
 
 `CONFIG_PLATFORM_EC_CHARGER` enables charging support in the EC

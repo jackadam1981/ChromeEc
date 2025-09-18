@@ -9,62 +9,103 @@
 #include "openssl/aead.h"
 #include "openssl/evp.h"
 #include "openssl/hkdf.h"
+#include "openssl/hmac.h"
 #include "openssl/mem.h"
+#include "openssl/sha.h"
 #include "otp_key.h"
 #include "rollback.h"
-#include "sha256.h"
 #include "util.h"
 
 #include <stdbool.h>
 
 #include <span>
 
-#ifdef CONFIG_OTP_KEY
-constexpr uint8_t IKM_OTP_OFFSET_BYTES =
-	CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES;
-constexpr uint8_t IKM_SIZE_BYTES = IKM_OTP_OFFSET_BYTES + OTP_KEY_SIZE_BYTES;
-BUILD_ASSERT(IKM_SIZE_BYTES == 96);
-
-#else
-constexpr uint8_t IKM_SIZE_BYTES =
-	CONFIG_ROLLBACK_SECRET_SIZE + FP_CONTEXT_TPM_BYTES;
-BUILD_ASSERT(IKM_SIZE_BYTES == 64);
-#endif
-
 #if !defined(CONFIG_BORINGSSL_CRYPTO) || !defined(CONFIG_ROLLBACK_SECRET_SIZE)
 #error "fpsensor requires CONFIG_BORINGSSL_CRYPTO and ROLLBACK_SECRET_SIZE"
 #endif
 
-test_export_static enum ec_error_list
-get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
-	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
+enum ec_error_list
+hmac_sha256(std::span<const uint8_t> key,
+	    std::span<const std::span<const uint8_t> > inputs,
+	    std::span<uint8_t, SHA256_DIGEST_LENGTH> output)
 {
-	if (bytes_are_trivial(tpm_seed.data(), tpm_seed.size_bytes())) {
-		CPRINTS("Seed hasn't been set.");
-		return EC_ERROR_ACCESS_DENIED;
+	bssl::ScopedHMAC_CTX ctx;
+
+	if (!HMAC_Init_ex(ctx.get(), key.data(), key.size(), EVP_sha256(),
+			  nullptr)) {
+		return EC_ERROR_INVAL;
 	}
 
+	for (const auto &input : inputs) {
+		if (!HMAC_Update(ctx.get(), input.data(), input.size())) {
+			return EC_ERROR_INVAL;
+		}
+	}
+
+	if (!HMAC_Final(ctx.get(), output.data(), nullptr)) {
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list
+hkdf_sha256_extract(std::span<uint8_t, SHA256_DIGEST_LENGTH> prk,
+		    std::span<const std::span<const uint8_t> > ikms,
+		    std::span<const uint8_t> salt)
+{
 	/*
-	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
-	 * anti-rollback blocks.
+	 * As specified by RFC5869, the extract step of HKDF is HMAC of IKM
+	 * (Input Key Material) with salt used as the key. The output of HMAC
+	 * is PRK (Pseudo Random Key).
 	 */
-	enum ec_error_list ret = rollback_get_secret(ikm.data());
+	return hmac_sha256(salt, ikms, prk);
+}
+
+bool hkdf_sha256_impl(std::span<uint8_t> out_key,
+		      std::span<const std::span<const uint8_t> > ikms,
+		      std::span<const uint8_t> salt,
+		      std::span<const uint8_t> info)
+{
+	CleanseWrapper<std::array<uint8_t, SHA256_DIGEST_LENGTH> > prk;
+
+	if (hkdf_sha256_extract(prk, ikms, salt) != EC_SUCCESS) {
+		return false;
+	}
+
+	return HKDF_expand(out_key.data(), out_key.size(), EVP_sha256(),
+			   prk.data(), prk.size(), info.data(), info.size());
+}
+
+test_mockable bool hkdf_sha256(std::span<uint8_t> out_key,
+			       std::span<const std::span<const uint8_t> > ikms,
+			       std::span<const uint8_t> salt,
+			       std::span<const uint8_t> info)
+{
+	return hkdf_sha256_impl(out_key, ikms, salt, info);
+}
+
+test_export_static enum ec_error_list
+get_rollback_entropy(std::span<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> output)
+{
+	enum ec_error_list ret = rollback_get_secret(output.data());
+
 	if (ret != EC_SUCCESS) {
 		CPRINTS("Failed to read rollback secret: %d", ret);
 		return EC_ERROR_HW_INTERNAL;
 	}
-	/*
-	 * IKM is the concatenation of the rollback secret and the seed from
-	 * the TPM.
-	 */
-	memcpy(ikm.data() + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed.data(),
-	       tpm_seed.size_bytes());
+
+	return EC_SUCCESS;
+}
 
 #ifdef CONFIG_OTP_KEY
-	uint8_t otp_key[OTP_KEY_SIZE_BYTES] = { 0 };
+test_export_static enum ec_error_list
+get_otp_key(std::span<uint8_t, OTP_KEY_SIZE_BYTES> output)
+{
+	enum ec_error_list ret;
 
 	otp_key_init();
-	ret = (enum ec_error_list)otp_key_read(otp_key);
+	ret = (enum ec_error_list)otp_key_read(output.data());
 	otp_key_exit();
 
 	if (ret != EC_SUCCESS) {
@@ -72,39 +113,75 @@ get_ikm(std::span<uint8_t, IKM_SIZE_BYTES> ikm,
 		return EC_ERROR_HW_INTERNAL;
 	}
 
-	if (bytes_are_trivial(otp_key, sizeof(otp_key))) {
+	if (bytes_are_trivial(output.data(), output.size())) {
 		CPRINTS("ERROR: bytes read from OTP are trivial!");
 		return EC_ERROR_HW_INTERNAL;
 	}
 
-	/*
-	 * IKM is now the concatenation of the rollback secret, the seed
-	 * from the TPM and the key stored in OTP
-	 */
-	memcpy(ikm.data() + IKM_OTP_OFFSET_BYTES, otp_key, sizeof(otp_key));
-	BUILD_ASSERT((IKM_SIZE_BYTES - IKM_OTP_OFFSET_BYTES) ==
-		     sizeof(otp_key));
-	OPENSSL_cleanse(otp_key, OTP_KEY_SIZE_BYTES);
-#endif
-
 	return EC_SUCCESS;
 }
+#endif
 
-bool hkdf_sha256_impl(std::span<uint8_t> out_key, std::span<const uint8_t> ikm,
-		      std::span<const uint8_t> salt,
-		      std::span<const uint8_t> info)
+static enum ec_error_list derive_key(std::span<uint8_t> output,
+				     std::span<const uint8_t> salt,
+				     std::span<const uint8_t> tpm_seed,
+				     std::span<const uint8_t> info)
 {
-	return HKDF(out_key.data(), out_key.size(), EVP_sha256(), ikm.data(),
-		    ikm.size(), salt.data(), salt.size(), info.data(),
-		    info.size());
-}
+	CleanseWrapper<std::array<uint8_t, CONFIG_ROLLBACK_SECRET_SIZE> >
+		rollback_entropy;
+#ifdef CONFIG_OTP_KEY
+	CleanseWrapper<std::array<uint8_t, OTP_KEY_SIZE_BYTES> > otp_key;
+#endif
+	enum ec_error_list ret;
 
-test_mockable bool hkdf_sha256(std::span<uint8_t> out_key,
-			       std::span<const uint8_t> ikm,
-			       std::span<const uint8_t> salt,
-			       std::span<const uint8_t> info)
-{
-	return hkdf_sha256_impl(out_key, ikm, salt, info);
+	if (!tpm_seed.empty() && tpm_seed.size() != FP_CONTEXT_TPM_BYTES) {
+		return EC_ERROR_INVAL;
+	}
+
+	/* Make sure TPM Seed is set */
+	if (!tpm_seed.empty() &&
+	    bytes_are_trivial(tpm_seed.data(), tpm_seed.size_bytes())) {
+		CPRINTS("Seed hasn't been set.");
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	ret = get_rollback_entropy(rollback_entropy);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+
+#ifdef CONFIG_OTP_KEY
+	ret = get_otp_key(otp_key);
+	if (ret != EC_SUCCESS) {
+		return ret;
+	}
+#endif
+
+	/*
+	 * The IKM consists of rollback entropy, TPM Seed (if provided) and
+	 * optional OTP key.
+	 *
+	 * By default, the compiler deduces static extent from built-in arrays
+	 * and std::array, but in the ikms array we can only keep spans with
+	 * dynamic extent. Prevent compiler from deducing static extent by
+	 * providing template arguments (std::dynamic_extent is the default
+	 * value for 'Extent' parameter, so we don't need to specify it
+	 * explicitly). See C++ std::span deduction guide for more details.
+	 */
+	std::array ikms{
+		std::span<const uint8_t>{ rollback_entropy },
+		tpm_seed,
+#ifdef CONFIG_OTP_KEY
+		std::span<const uint8_t>{ otp_key },
+#endif
+	};
+
+	if (!hkdf_sha256(output, ikms, salt, info)) {
+		CPRINTS("Failed to perform HKDF");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
 }
 
 enum ec_error_list derive_positive_match_secret(
@@ -113,7 +190,6 @@ enum ec_error_list derive_positive_match_secret(
 	std::span<const uint8_t, FP_CONTEXT_USERID_BYTES> user_id,
 	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
 {
-	CleanseWrapper<std::array<uint8_t, IKM_SIZE_BYTES> > ikm;
 	static constexpr char info_prefix[] = "positive_match_secret for user ";
 	uint8_t info[sizeof(info_prefix) - 1 + user_id.size_bytes()];
 
@@ -124,19 +200,14 @@ enum ec_error_list derive_positive_match_secret(
 		return EC_ERROR_INVAL;
 	}
 
-	enum ec_error_list ret = get_ikm(ikm, tpm_seed);
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to get IKM: %d", ret);
-		return ret;
-	}
-
 	memcpy(info, info_prefix, strlen(info_prefix));
 	memcpy(info + strlen(info_prefix), user_id.data(),
 	       user_id.size_bytes());
 
-	if (!hkdf_sha256(output, ikm, input_positive_match_salt, info)) {
-		CPRINTS("Failed to perform HKDF");
-		return EC_ERROR_UNKNOWN;
+	enum ec_error_list ret =
+		derive_key(output, input_positive_match_salt, tpm_seed, info);
+	if (ret != EC_SUCCESS) {
+		return ret;
 	}
 
 	/* Check that secret is not full of 0x00 or 0xff. */
@@ -153,25 +224,21 @@ derive_encryption_key(std::span<uint8_t> out_key, std::span<const uint8_t> salt,
 		      std::span<const uint8_t> info,
 		      std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed)
 {
-	CleanseWrapper<std::array<uint8_t, IKM_SIZE_BYTES> > ikm;
-
-	if (info.size() != SHA256_DIGEST_SIZE) {
+	if (info.size() != SHA256_DIGEST_LENGTH) {
 		CPRINTS("Invalid info size: %zu", info.size());
 		return EC_ERROR_INVAL;
 	}
 
-	enum ec_error_list ret = get_ikm(ikm, tpm_seed);
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to get IKM: %d", ret);
-		return ret;
-	}
+	return derive_key(out_key, salt, tpm_seed, info);
+}
 
-	if (!hkdf_sha256(out_key, ikm, salt, info)) {
-		CPRINTS("Failed to perform HKDF");
-		return EC_ERROR_UNKNOWN;
-	}
+enum ec_error_list
+derive_pairing_key_encryption_key(std::span<uint8_t> output,
+				  std::span<const uint8_t> salt)
+{
+	static constexpr uint8_t info[] = "FPMCU & FingerGuard pairing key";
 
-	return ret;
+	return derive_key(output, salt, std::span<const uint8_t>{}, info);
 }
 
 enum ec_error_list aes_128_gcm_encrypt(std::span<const uint8_t> key,

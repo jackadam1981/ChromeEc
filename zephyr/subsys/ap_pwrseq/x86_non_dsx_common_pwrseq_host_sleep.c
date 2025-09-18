@@ -84,7 +84,8 @@ enum sleep_hang_type {
 };
 
 static uint16_t sleep_signal_timeout;
-static uint16_t host_sleep_timeout_default = CONFIG_SLEEP_TIMEOUT_MS;
+static uint16_t host_sleep_timeout_default =
+	AP_PWRSEQ_DT_VALUE(s0ix_entry_timeout) * MSEC_PER_SEC;
 static uint32_t sleep_signal_transitions;
 static enum sleep_hang_type timeout_hang_type;
 
@@ -123,7 +124,7 @@ void power_chipset_handle_sleep_hang(enum sleep_hang_type hang_type)
 	if (ap_pwrseq_get_current_state(dev) == AP_POWER_STATE_S0) {
 		host_event_t sleep_wake_mask;
 
-		ap_power_get_lazy_wake_mask(AP_POWER_STATE_S0IX,
+		ap_power_get_lazy_wake_mask(AP_POWER_STATE_S0ix,
 					    &sleep_wake_mask);
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, sleep_wake_mask);
 	}

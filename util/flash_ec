@@ -53,65 +53,38 @@ die() {
 BOARDS_IT83XX=(
 	adlrvpm_ite
 	adlrvpp_ite
-	it83xx_evb
-	reef_it8320
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
 	it8xxx2_evb
-	it8xxx2_pdevb
 )
 
 BOARDS_STM32=(
 	bloonchipper
 	chell_pd
-	coffeecake
 	chocodile_bec
-	chocodile_vpdmcu
 	dartmonkey
 	glados_pd
 	hatch_fp
 	jerry
-	minimuffin
 	nami_fp
 	nocturne_fp
 	oak_pd
 	pit
 	strago_pd
-	zinger
-)
-BOARDS_STM32_PROG_EN=(
 )
 
 BOARDS_STM32_DFU=(
 	c2d2
-	dingdong
-	hoho
-	twinkie
-	discovery
 	servo_v4
 	servo_v4p1
 	servo_micro
 	sweetberry
-	polyberry
-	stm32f446e-eval
-	tigertail
 	fluffy
 )
 
 BOARDS_NPCX_5M5G_JTAG=(
 	npcx_evb
-	npcx_evb_arm
-)
-
-BOARDS_NPCX_5M6G_JTAG=(
-)
-
-BOARDS_NPCX_7M6X_JTAG=(
-)
-
-BOARDS_NPCX_7M7X_JTAG=(
-	npcx7_evb
 )
 
 BOARDS_NPCX_SPI=(
@@ -122,7 +95,6 @@ BOARDS_NPCX_SPI=(
 )
 
 BOARDS_NPCX_INT_SPI=(
-	adlrvpp_npcx
 	mtlrvpp_npcx
 )
 
@@ -211,6 +183,8 @@ DEFINE_string token_db "${EC_DIR}/build/tokens.bin" \
 # shellcheck disable=SC2034 # Remove someday when autorepair doesn't use it.
 DEFINE_boolean use_i2c_pseudo "${FLAGS_FALSE}" \
 	"Ignored."
+DEFINE_boolean usbc_charging "${FLAGS_FALSE}" \
+	"For servo_v4p1, switch to USB-C (non-PD) charging during programming."
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -354,20 +328,14 @@ if in_array "${BOARDS_NPCX_5M5G_JTAG[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("npcx_5m5g_jtag")
 fi
 
-if in_array "${BOARDS_NPCX_5M6G_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_5m6g_jtag")
-fi
-
-if in_array "${BOARDS_NPCX_7M6X_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_7m6x_jtag")
-fi
-
-if in_array "${BOARDS_NPCX_7M7X_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_7m7x_jtag")
-fi
-
 if in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("npcx_spi")
+	# b/419704767#comment10: Upstream Zephyr test binaries do not have an FMAP,
+	# so the --preserve flag does not work with them.
+	if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+		info "Board ${BOARD} is in BOARDS_NPCX_SPI, forcing --no_preserve."
+		FLAGS_no_preserve="${FLAGS_TRUE}"
+	fi
 fi
 
 if in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"; then
@@ -444,14 +412,17 @@ case "${BOARD}" in
 				 nami_fp|nocturne_fp|rosalia )
 		MCU="fpmcu"
 		;;
-	dingdong|hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
 case "${CHIP}" in
-	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx"|"ite_i2c"|"npcx_uut"|"ite_spi"| \
-			"ite_spi_ccd_i2c"|"ite_spi_ccd_uart"|"ite_uart"|"ite_uart_3m"| \
-			"it8xxx2"|"mchp_int_spi")
+	"stm32"| \
+		"npcx_spi"|"npcx_int_spi"|"npcx_uut"| \
+		"it83xx"|"ite_i2c"|"ite_spi"|"ite_spi_ccd_i2c"| \
+		"ite_spi_ccd_uart"|"ite_uart"|"ite_uart_3m"|"it8xxx2"| \
+		"ite_i2c_usbc_charging"| \
+		"mchp_int_spi"| \
+		"rtk_uart")
 		;;
 	*)
 		if [[ -n "${FLAGS_read}" ]]; then
@@ -644,11 +615,6 @@ servo_sh_boot0() {
 ec_switch_boot0() {
 	local on_value=$1
 	# Enable programming GPIOs
-	if in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"; then
-		servo_save_add "prog_en"
-
-		dut_control prog_en:yes
-	fi
 	if servo_is_ccd ; then
 		stype=ccd
 	elif [[ "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
@@ -1488,6 +1454,45 @@ function ite_dfu_mode() {
 	fi
 }
 
+#
+# ITE (it83xx and it8xxx2) flash mechanisms.
+#
+# Chip type:       Description:
+#
+# it83xx           Deprecated alias for the "ite_i2c" chip type.
+#
+# it8xxx2          Deprecated alias for the "ite_spi_ccd_i2c" chip type.
+#
+# ite_i2c          ITE programming over an I2C bus. This method sends a
+#                  special waveform on the I2C bus that switches the ITE
+#                  chip into debugger/programming mode. This is supported
+#                  by all I2C devices (it83xx and it8xxx2).
+#
+# ite_i2c_usbc_charging
+#                  ITE programming over an I2C bus. Prior to enabling
+#                  the ITE debugger mode, the servo_v4p1 is switched
+#                  to USB-C (non-PD) charging. Use this mode for boards
+#                  without a battery and that use the built in TCPC
+#                  of the ITE chip.
+#
+# ite_spi          ITE programming directly over a SPI interface. Utilizes
+#                  flashrom for the actual programming.
+#
+# ite_spi_ccd_i2c  ITE programming over SPI when a CCD connection is used,
+#                  otherwise uses I2C programming.
+#
+# ite_spi_ccd_uart ITE programming over SPI when a CCD connection is used,
+#                  otheriwse uses UART programming.
+#
+# ite_uart         ITE programming over a UART interface using a 115200 baud
+#                  rate. This is only supported by it8xxx2 manufactured
+#                  later than June of 2024. Check the datasheet for the ITE
+#                  chip to confirm.
+#
+# ite_uart_3m      ITE programming over a UART interface using a 3 MHz baud
+#                  rate. When using CCD, this automatically falls back to
+#                  115200 baud due to limitations of the GSC.
+
 function flash_it83xx() {
 	local TOOL_PATH="${EC_DIR}/build/host/util:${PATH}"
 	local ITEFLASH_BIN
@@ -1544,6 +1549,26 @@ function flash_it83xx() {
 		servo_ec_hard_reset_or_die
 	fi
 
+	if [[ "${SERVO_TYPE}" =~ "servo_v4" && \
+	      "${FLAGS_usbc_charging}" == "${FLAGS_TRUE}" ]]; then
+	      	# Put the EC into reset so we know the AP is off.
+		# This prevents a brown-out when we switch to non-PD
+		# charging.
+		dut_control cold_reset:on
+
+		info "Disable CCD watchdog"
+		dut_control watchdog_remove:"${ACTIVE_DEVICE}"
+		info "Switching servo_v4 to USB-C (non-PD) charging"
+		dut_control usbc_charging:1A5
+		sleep 2
+
+		info "Disconnect/reconnect CC lines to reconnect CCD"
+		dut_control servo_v4p1_uart_cmd:"cc off"
+		dut_control servo_v4p1_uart_cmd:"cc on"
+
+		dut_control cold_reset:off
+	fi
+
 	ite_dfu_mode
 
 	# Build the iteflash command line.
@@ -1598,8 +1623,25 @@ function flash_it83xx() {
 	fi
 
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
+
+	if [[ "${SERVO_TYPE}" =~ "servo_v4" && \
+	      "${FLAGS_usbc_charging}" == "${FLAGS_TRUE}" ]]; then
+		info "Restoring servo_v4 to PD charging"
+		dut_control servo_pd_role:src
+
+		info "Disconnect/reconnect CC lines to reconnect CCD"
+		dut_control servo_v4p1_uart_cmd:"cc off"
+		dut_control servo_v4p1_uart_cmd:"cc on"
+	fi
 }
 
+#
+# Common handler for flashing ITE devices (it8xxx2) using a UART inteface with
+# a programmable baud rate.
+#
+# This utilizes the ITE tool "itecomdbgr" to first enable debugger/programming
+# mode and to then program a new EC binary.
+#
 function flash_ite_uart_common() {
 	local BAUDRATE=$1
 	local TOOL_PATH
@@ -1666,9 +1708,16 @@ function flash_ite_uart_common() {
 	print_or_run "${ITEFLASH_ARGS[@]}" || die "${ERROR_MSG}"
 }
 
+#
+# Flash ITE devices (it8xxx2) using a UART inteface using a 115200 baud rate.
+#
 function flash_ite_uart() {
 	flash_ite_uart_common 115200
 }
+
+#
+# Flash ITE devices (it8xxx2) using a UART inteface using a 3M baud rate.
+#
 function flash_ite_uart_3m() {
 	if servo_is_ccd ; then
 		# Servo only supports 115200
@@ -1681,6 +1730,12 @@ function flash_ite_uart_3m() {
 # Alias for flashing ITE chips over I2C from all servo types.
 function flash_ite_i2c() {
         flash_it83xx
+}
+
+# Flash ITE over I2C, but force servo to switch to USB-C (non-pd) charging.
+function flash_ite_i2c_usbc_charging() {
+	FLAGS_usbc_charging="${FLAGS_TRUE}"
+	flash_it83xx
 }
 
 # Alias for flashing ITE chips over SPI from all servo types.
@@ -1711,7 +1766,7 @@ function flash_ite_spi_ccd_uart() {
 }
 
 # Flash ITE chips over SPI when using the servod debug connector
-# and over I2C whn using CCD.
+# and over I2C when using CCD.
 function flash_it8xxx2() {
 	flash_ite_spi_ccd_i2c
 }
@@ -1731,6 +1786,180 @@ function flash_npcx_jtag() {
 	ec_reset
 
 	flash_openocd
+}
+
+
+function flash_rtk_uart() {
+	local RTK_UUT
+	local EC_UART
+	local TEMP_SUFFIX
+	local TEMP_DIR
+	local TOOL_PATH="${EC_DIR}/build/host/util:${PATH}"
+
+	RTK_UUT=$(PATH="${TOOL_PATH}" which rtkupdate)
+	EC_UART="$(servo_ec_uart)"
+	TEMP_SUFFIX=".$(basename "${SCRIPT}").${CHIP}.$$"
+	TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+	DELETE_LIST+=("${TEMP_DIR}")
+
+	# Look for rts5915_flash_upload.bin in multiple directories, starting with
+	# the same path as the EC binary.
+	local MON=""
+	for dir in \
+		"$(dirname "${IMG}")" \
+		"build/zephyr/${BOARD}/output" \
+		"$(dirname "${LOCAL_BUILD}")" \
+		"$(dirname "${EMERGE_BUILD}")" \
+		"/usr/share/ec-devutils" ;
+	do
+		if [ -f "${dir}/rts5915_flash_upload.bin" ] ; then
+			MON="${dir}/rts5915_flash_upload.bin"
+			break
+		fi
+	done
+	if [ -z "${MON}" ] ; then
+		die "Failed to find rts5915_flash_upload.bin"
+	fi
+	info "Using RTK image : ${MON}"
+
+	# The start address to restore monitor firmware binary
+	local SPI_OFFSET="0x00000000"
+
+	if [ ! -x "${RTK_UUT}" ]; then
+		die "no RTK UART Update Tool found."
+	fi
+
+	info "Using: RTK UART Update Tool"
+	info "${MCU} UART pty : ${EC_UART}"
+	claim_pty "${EC_UART}"
+
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		# Ti50 does not yet support ccd_keepalive option which
+		# requires ccdstate command on the GSC console.
+		# TODO(b/161483597) remove the check when Ti50 CCD is on par.
+		servo_save_add ccd_keepalive_en
+		dut_control ccd_keepalive_en:on
+	fi
+
+	# Don't let the EC come out of reset after H1 reset
+	dut_control gsc_ec_reset:on
+	sleep 0.1
+	# Force the EC to boot in UART update mode
+	ec_enable_boot0 "uut"
+	sleep 1
+
+	dut_control gsc_ec_reset:off
+
+	# Have to wait a bit for EC boot-up
+	sleep 1
+	# Ensure normal UART operation
+	ec_disable_boot0 "uut"
+	sleep 1
+
+	# Remove the prefix "/dev/" because uartupdatetool will add it.
+	local UUT_ARGS=( "--port=${EC_UART#/dev/}" "--baudrate=115200" )
+	local IMG_READ="${FLAGS_read}"
+
+	local monitor_res=0
+	local wp_res_0=0
+	local wp_res_1=0
+
+	# Write Protect
+	local UUT_WP=(
+			"${RTK_UUT}"  \
+			"--method=wp" \
+			"--protect=0"  \
+			"--uart_device=${EC_UART}")
+
+	print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+		"${UUT_WP[@]}" || wp_res_0=$?
+
+	# Write Protect again, in case the UART mismatch
+	# TODO: b/425716329 Remove once WP issues resolved
+	local UUT_WP=(
+			"${RTK_UUT}"  \
+			"--method=wp" \
+			"--protect=0"  \
+			"--uart_device=${EC_UART}")
+
+	print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+		"${UUT_WP[@]}" || wp_res_1=$?
+
+	if [[ ${wp_res_0} -ne 0 && ${wp_res_1} -ne 0 ]];
+	then
+		die "Failed to disable EC write protect."
+	fi
+
+	# Load monitor binary
+	info "Loading monitor binary."
+	local UUT_MON=(
+			"${RTK_UUT}"  \
+			"--method=frame" \
+			"--file=${MON}" \
+			"--uart_device=${EC_UART}")
+
+	print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_MON[@]}" || monitor_res=$?
+
+	if [[ ${monitor_res} != 0 ]]; then
+		die "Failed to load monitor binary."
+	fi
+
+	# Program EC image.
+	if [[ -z "${IMG_READ}" ]]; then
+
+		info "Programming EC firmware image."
+		if [[ "${FLAGS_no_preserve}" == "${FLAGS_FALSE}" ]]; then
+			local IMG_CPY
+
+			IMG_CPY="${TEMP_DIR}/ec.new.cpy.bin"
+			cat "${IMG}" > "${IMG_CPY}"
+			IMG="${IMG_CPY}"
+			preserve_sections "rtk_uart" "${IMG}" "${TEMP_DIR}"    \
+				"${RTK_UUT}" "--uart_device=${EC_UART}" || die "${MSG_PROGRAM_FAIL}"
+		fi
+
+		local UUT_WR=(
+				"${RTK_UUT}" \
+				"--method=flash" \
+				"--spi_start=${SPI_OFFSET}" \
+				"--file=${IMG}" \
+				"--uart_device=${EC_UART}")
+
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_WR[@]}" || die "${MSG_PROGRAM_FAIL}"
+
+		# If it is a program-verify request, then make a temporary
+		# directory to store the image.
+		if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+			IMG_READ="${TEMP_DIR}/ec.read.bin"
+		fi
+	fi
+
+	# Read EC image.
+	if [[ -n "${IMG_READ}" ]]; then
+		info "Reading EC firmware image."
+
+		local UUT_RD=(
+				"${RTK_UUT}" \
+				"--method=read_bin" \
+				"--spi_start=${SPI_OFFSET}" \
+				"--file=${IMG_READ}" \
+				"--uart_device=${EC_UART}" \
+				"--bin_length=0x100000")
+
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_RD[@]}" || die "${MSG_READ_FAIL}"
+	fi
+
+	# Verify the flash by comparing the source image to the read image,
+	# only if it was a flash write request.
+	if [[ -z "${FLAGS_read}" && "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+		info "Verifying EC firmware image."
+
+		print_or_run cmp -s -n "${IMG_SIZE}" "${IMG}" "${IMG_READ}" \
+			|| die "${MSG_VERIFY_FAIL}"
+	fi
 }
 
 function flash_npcx_uut() {
@@ -1896,17 +2125,6 @@ function flash_npcx_5m5g_jtag() {
 	flash_npcx_jtag
 }
 
-function flash_npcx_5m6g_jtag() {
-	flash_npcx_jtag
-}
-
-function flash_npcx_7m6x_jtag() {
-	flash_npcx_jtag
-}
-
-function flash_npcx_7m7x_jtag() {
-	flash_npcx_jtag
-}
 
 function flash_npcx_spi() {
 	flash_flashrom
@@ -2227,6 +2445,19 @@ function read_chip_partially() {
 			"--extract" "--include=${SECTION}:${FILE_PATH}")
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${FLASHROM_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
+
+	elif [ "${CHIP_TYPE}" == "rtk_uart" ]; then
+
+		UUT_CUR_FMAP_RD=(
+				"${CHIP_CMD_PREFIX[@]}" \
+				"--method=read_bin" \
+				"--spi_start=${OFFSET}" \
+				"--file=${FILE_PATH}" \
+				"--bin_length=${SIZE}")
+		info "${UUT_CUR_FMAP_RD[@]}"
+
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			"${UUT_CUR_FMAP_RD[@]}" || die "${MSG_READ_FAIL}"
 	else
 		die "${MSG_CHIP_READ_INVALID}"
 	fi
@@ -2262,7 +2493,14 @@ function read_chip() {
 		UUT_CUR_RD=( "${CHIP_CMD_PREFIX[@]}" "-r" "${FILE_PATH}" )
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
 					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
-
+	elif [ "${CHIP_TYPE}" == "rtk_uart" ]; then
+		UUT_CUR_RD=( "${CHIP_CMD_PREFIX[@]}" \
+					"--method=read_bin" \
+					"--spi_start=0x0" \
+					"--file=${FILE_PATH}" \
+					"--bin_length=0x100000")
+		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \
+					"${UUT_CUR_RD[@]}" || die "${MSG_READ_FAIL}"
 	elif [ "${CHIP_TYPE}" == "spi" ]; then
 		FLASHROM_RD=( "sudo" "${CHIP_CMD_PREFIX[@]}" "--read=${FILE_PATH}" )
 		print_or_run timeout -k 10 -s 9 "${FLAGS_timeout}" \

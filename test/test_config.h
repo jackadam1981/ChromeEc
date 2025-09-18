@@ -92,14 +92,6 @@ enum battery_type {
 #define CONFIG_MAG_CALIBRATE
 #endif
 
-#ifdef TEST_STILLNESS_DETECTOR
-#define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
-#define CONFIG_TEMP_CACHE_STALE_THRES (5 * SECOND)
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#endif
-
 #ifdef TEST_FLOAT
 #define CONFIG_FPU
 #define CONFIG_MAG_CALIBRATE
@@ -117,7 +109,6 @@ enum battery_type {
 	defined(TEST_FPSENSOR_DEBUG) || defined(TEST_FPSENSOR_UTILS) || \
 	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATELESS) ||                 \
 	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL) ||                  \
-	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL_OTP) ||              \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS) ||                         \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS_OTP) ||                     \
 	defined(TEST_HOST_COMMAND_FUZZ)
@@ -127,8 +118,7 @@ enum battery_type {
 #define CONFIG_CMD_FPSENSOR_DEBUG
 #endif
 
-#if defined(TEST_FPSENSOR_CRYPTO_WITH_MOCK_OTP) ||         \
-	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL_OTP) || \
+#if defined(TEST_FPSENSOR_CRYPTO_WITH_MOCK_OTP) || \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS_OTP)
 #define CONFIG_OTP_KEY
 #endif
@@ -159,25 +149,7 @@ enum battery_type {
 
 #ifdef TEST_KASA
 #define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#endif
-
-#ifdef TEST_ACCEL_CAL
-#define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
-#define CONFIG_ACCEL_CAL_MIN_TEMP 20.0f
-#define CONFIG_ACCEL_CAL_MAX_TEMP 40.0f
-#define CONFIG_ACCEL_CAL_KASA_RADIUS_THRES 0.1f
-#define CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES 0.1f
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#endif
-
-#ifdef TEST_NEWTON_FIT
-#define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
+#define CONFIG_MAG_CALIBRATE
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 #endif
@@ -192,41 +164,10 @@ enum battery_type {
 #define GPIO_NVIDIA_GPU_ACOFF_ODL 123
 #endif
 
-#ifdef TEST_STILLNESS_DETECTOR
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#endif
-
-#ifdef TEST_ONLINE_CALIBRATION
-#define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#endif
-
-#ifdef TEST_ONLINE_CALIBRATION_SPOOF
-#define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#define CONFIG_ONLINE_CALIB_SPOOF_MODE
-#endif /* TEST_ONLINE_CALIBRATION_SPOOF */
-
-#ifdef TEST_GYRO_CAL
-#define CONFIG_FPU
-#define CONFIG_ONLINE_CALIB
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_GPIO
-#endif
-
-#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_TEMP_CACHE_STALE_THRES)
-#define CONFIG_TEMP_CACHE_STALE_THRES (1 * SECOND)
-#endif /* CONFIG_ONLINE_CALIB && !CONFIG_TEMP_CACHE_STALE_THRES */
-
-#if defined(CONFIG_ONLINE_CALIB) || defined(TEST_BODY_DETECTION) ||        \
-	defined(TEST_MOTION_ANGLE) || defined(TEST_MOTION_ANGLE_TABLET) || \
-	defined(TEST_MOTION_LID) || defined(TEST_MOTION_SENSE_FIFO) ||     \
-	defined(TEST_TABLET_BROKEN_SENSOR)
+#if defined(TEST_BODY_DETECTION) || defined(TEST_KASA) ||                \
+	defined(TEST_BODY_DETECTION) || defined(TEST_MOTION_ANGLE) ||    \
+	defined(TEST_MOTION_ANGLE_TABLET) || defined(TEST_MOTION_LID) || \
+	defined(TEST_MOTION_SENSE_FIFO) || defined(TEST_TABLET_BROKEN_SENSOR)
 enum sensor_id {
 	BASE,
 	LID,
@@ -274,7 +215,7 @@ enum sensor_id {
 #endif
 
 #ifdef TEST_CRC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_SW_CRC
 #endif
 

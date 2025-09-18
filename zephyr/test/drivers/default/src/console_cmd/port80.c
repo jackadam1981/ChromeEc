@@ -38,8 +38,9 @@ ZTEST(console_cmd_port80, test_port80_console_subcmd)
 	CHECK_CONSOLE_CMD("port80 scroll", "scroll enabled", EC_SUCCESS);
 	CHECK_CONSOLE_CMD("port80 scroll", "scroll disabled", EC_SUCCESS);
 
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "port80 unknown_param"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(),
+					 "port80 unknown_param"),
+		       NULL);
 }
 
 static const char port80_header[] = "Port 80 writes:\r\n";

@@ -37,6 +37,8 @@ static void test_table(uint16_t batt, uint16_t chgv1, uint16_t lcdv1,
 		DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_temp_sensor_1));
 	struct charge_state_data curr;
 
+	memset(&curr, 0, sizeof(curr));
+
 	curr.batt.flags = batt;
 	power_set_state(power);
 	set_adc_emul_read_voltage(chgv1, adc_dev, charger_adc_channel);

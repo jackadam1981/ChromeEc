@@ -197,10 +197,11 @@ ZTEST(keyboard_scan, test_console_command_ksstate__noargs)
 
 	/* Check for some expected lines */
 	zassert_true(buffer_size > 0);
-	zassert_ok(!strstr(outbuffer, "Keyboard scan disable mask: 0x00000000"),
-		   "Output was: `%s`", outbuffer);
-	zassert_ok(!strstr(outbuffer, "Keyboard scan state printing off"),
-		   "Output was: `%s`", outbuffer);
+	zassert_not_null(strstr(outbuffer,
+				"Keyboard scan disable mask: 0x00000000"),
+			 "Output was: `%s`", outbuffer);
+	zassert_not_null(strstr(outbuffer, "Keyboard scan state printing off"),
+			 "Output was: `%s`", outbuffer);
 
 	/* Ensure we are still scanning */
 	zassert_true(keyboard_scan_is_enabled());
@@ -238,7 +239,7 @@ ZTEST(keyboard_scan, test_console_command_ksstate__on_off)
 ZTEST(keyboard_scan, test_console_command_ksstate__invalid)
 {
 	/* Pass a string that cannot be parsed as a bool */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "ksstate xyz"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "ksstate xyz"));
 }
 
 ZTEST(keyboard_scan, test_console_command_kbpress__noargs)
@@ -286,14 +287,14 @@ ZTEST(keyboard_scan, test_console_command_kbpress__noargs)
 ZTEST(keyboard_scan, test_console_command_kbpress__invalid)
 {
 	/* Row or column number out of range, or wrong type */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress -1 0"));
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress foo 0"));
-	zassert_ok(!shell_execute_cmd(
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "kbpress -1 0"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "kbpress foo 0"));
+	zassert_not_ok(shell_execute_cmd(
 		get_ec_shell(), "kbpress " STRINGIFY(KEYBOARD_COLS_MAX) " 0"));
 
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress 0 -1"));
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "kbpress 0 foo"));
-	zassert_ok(!shell_execute_cmd(
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "kbpress 0 -1"));
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "kbpress 0 foo"));
+	zassert_not_ok(shell_execute_cmd(
 		get_ec_shell(), "kbpress 0 " STRINGIFY(KEYBOARD_COLS_MAX)));
 }
 

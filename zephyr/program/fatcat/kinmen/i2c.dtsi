@@ -31,6 +31,11 @@
 
 	label = "I2C_PORT_SENSOR";
 	clock-frequency = <I2C_BITRATE_FAST>;
+	dsp_service: dsp-service@20 {
+		compatible = "cros,dsp-service";
+		reg = <0x20>;
+		int-gpios = <&gpioh 6 (GPIO_ACTIVE_LOW)>;
+	};
 };
 
 &i2c1 {

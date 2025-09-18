@@ -53,10 +53,7 @@ PROJECT?=ec
 EMPTY=
 
 # Output directory for build objects
-ifdef CTS_MODULE
-# CTS builds need different directories per board per suite.
-out?=build/$(BOARD)/cts_$(CTS_MODULE)
-else ifdef TEST_COVERAGE
+ifdef TEST_COVERAGE
 out?=build/coverage/initial-$(BOARD)
 else
 out?=build/$(BOARD)
@@ -194,17 +191,10 @@ UC_PROJECT:=$(call uppercase,$(PROJECT))
 # the board/baseboard/project/chip/core variables are defined, since some of
 # the configs are dependent on particular configurations.
 includes=include core/$(CORE)/include include/driver $(dirs) $(out) fuzz test third_party
-ifdef CTS_MODULE
-includes+=cts/$(CTS_MODULE) cts
-endif
 ifeq "$(TEST_BUILD)" "y"
 	_tsk_lst_file:=ec.tasklist
 	_tsk_lst_flags:=$(if $(TEST_FUZZ),-Ifuzz,-Itest) -DTEST_BUILD=$(EMPTY) \
 			-imacros $(PROJECT).tasklist
-else ifdef CTS_MODULE
-	_tsk_lst_file:=ec.tasklist
-	_tsk_lst_flags:=-I cts/$(CTS_MODULE) -Icts -DCTS_MODULE=$(CTS_MODULE) \
-			-imacros cts.tasklist
 else
 	_tsk_lst_file:=$(PROJECT).tasklist
 	_tsk_lst_flags:=
@@ -349,9 +339,7 @@ include $(feature-x-builds)
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
 
-ifdef CTS_MODULE
-include cts/build.mk
-endif
+
 include $(BASEDIR)/build.mk
 ifneq ($(BASEDIR),$(BDIR))
 include $(BDIR)/build.mk
@@ -426,9 +414,6 @@ all-obj-$(1)+=$(call objs_from_dir_p,libc,libc,$(1))
 endif
 all-obj-$(1)+=$(call objs_from_dir_p,driver,driver,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,power,power,$(1))
-ifdef CTS_MODULE
-all-obj-$(1)+=$(call objs_from_dir_p,cts,cts,$(1))
-endif
 ifeq ($(TEST_FUZZ),y)
 all-obj-$(1)+=$(call objs_from_dir_p,fuzz,$(PROJECT),$(1))
 else
@@ -477,7 +462,7 @@ host-srcs-cxx := $(foreach u,$(host-util-bin-cxx-y), \
 	$(sort $($(u)-objs:%.o=util/%.cc) $(wildcard util/$(u).cc)))
 
 dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
-	cts/common cts/$(CTS_MODULE) $(out)/gen
+	$(out)/gen
 dirs+= $(ec-private) $(PDIR) $(PBDIR)
 dirs+=$(shell find common -type d)
 dirs+=$(shell find driver -type d)

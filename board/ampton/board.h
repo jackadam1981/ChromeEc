@@ -13,6 +13,13 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
+/*
+ * Watchdog count was locked in shipped RO, it can never be
+ * changed from 1600ms on Ampton (b/416109671).
+ */
+#undef CONFIG_WATCHDOG_PERIOD_MS
+#define CONFIG_WATCHDOG_PERIOD_MS 1600
+
 #define GPIO_PG_EC_RSMRST_ODL GPIO_RSMRST_L_PGOOD
 
 /* I2C bus configuraiton */
