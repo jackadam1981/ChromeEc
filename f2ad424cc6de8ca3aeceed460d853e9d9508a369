@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffb244b_1cf4ba5f",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-09-18T09:32:26Z",
+      "side": 1,
+      "message": "add CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6963582",
+      "parentUuid": "45183bb5_b301b4a7",
+      "range": {
+        "startLine": 247,
+        "startChar": 7,
+        "endLine": 247,
+        "endChar": 22
+      },
+      "revId": "f2ad424cc6de8ca3aeceed460d853e9d9508a369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc3d40b_8455d5bd",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd08cb9a_962c52ec",
+        "filename": "zephyr/program/fatcat/lapis/gpios.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-09-18T09:32:26Z",
+      "side": 1,
+      "message": "Yes, in Lapis, this pin is for Z_power control; it needs to output high to keep power enabled.",
+      "parentUuid": "cfc3d40b_8455d5bd",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "f2ad424cc6de8ca3aeceed460d853e9d9508a369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4fd79a1_08a560b6",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-09-16T15:17:15Z",
       "side": 1,
       "message": "Delete - this symbol is automatically enabled when setting `\u0026ulpm { status \u003d \"okay\" }`",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "f2ad424cc6de8ca3aeceed460d853e9d9508a369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1049662a_f81645b0",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3513462
+      },
+      "writtenOn": "2025-09-18T09:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4fd79a1_08a560b6",
       "range": {
         "startLine": 101,
         "startChar": 0,
