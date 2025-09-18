@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7b571e_39751577",
+        "filename": "common/body_detect_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-18T20:13:54Z",
+      "side": 1,
+      "message": "It feels like it need to be split further: _common between v1 and v2 on the \"server side\" (ISH or wherever the motion sense stack is) and the _client side (EC, to connect to other firmware service).",
+      "revId": "9099688dc4c5f5472eaa76ab09b2d3edf92313b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae90be3_391d972f",
+        "filename": "common/body_detect_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-18T20:13:54Z",
+      "side": 1,
+      "message": "remove, we can not have CONFIG_GESTURE_HOST_DETECTION without CONFIG_ACCEL_FIFO.",
+      "revId": "9099688dc4c5f5472eaa76ab09b2d3edf92313b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b5734b_da44c690",
+        "filename": "common/body_detect_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-18T20:13:54Z",
+      "side": 1,
+      "message": "ISH side only.",
+      "revId": "9099688dc4c5f5472eaa76ab09b2d3edf92313b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3774909b_ee574e8e",
+        "filename": "common/body_detect_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-18T20:13:54Z",
+      "side": 1,
+      "message": "EC side only.",
+      "revId": "9099688dc4c5f5472eaa76ab09b2d3edf92313b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70bfb54_4452d0da",
+        "filename": "common/body_detect_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-18T20:13:54Z",
+      "side": 1,
+      "message": "This function is only called by the motion sense. Won\u0027t work on the EC.",
+      "revId": "9099688dc4c5f5472eaa76ab09b2d3edf92313b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccfa6a4_c8403767",
+        "filename": "common/body_detect_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-09-18T20:13:54Z",
+      "side": 1,
+      "message": "Not available on the EC when ISH doing the job.",
+      "revId": "9099688dc4c5f5472eaa76ab09b2d3edf92313b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
