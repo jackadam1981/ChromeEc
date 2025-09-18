@@ -90,6 +90,14 @@ static void pdc_dpm_balance_source_ports(struct k_work *work)
 			  non_pd_sink_max_requested);
 	max_current_claimed &= ~removed_ports;
 
+	/* Update current limit for removed ports */
+	while (removed_ports) {
+		int removed_port = LOWEST_PORT(removed_ports);
+		rp = pdc_power_mgmt_get_default_current_limit(removed_port);
+		pdc_power_mgmt_set_current_limit(removed_port, rp);
+		removed_ports &= ~BIT(removed_port);
+	}
+
 	/* Allocate 3.0 A to new PD sink ports that need it */
 	new_ports = sink_max_pdo_requested & ~max_current_claimed;
 
@@ -210,16 +218,27 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 		if (!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_FRS))
 			return;
 
+		/* If FRS is supported, the power manager will request 3A when
+		 * a PD Source is connected to enable FRS until Sink Caps are
+		 * evaluated. Clear 3A request if it is not necessary and
+		 * disable FRS if it is not supported.
+		 */
+
 		/* FRS is only supported in PD 3.0 and higher */
-		if (pdc_power_mgmt_get_rev(port, TCPCI_MSG_SOP) == PD_REV20)
-			return;
+		if (pdc_power_mgmt_get_rev(port, TCPCI_MSG_SOP) == PD_REV20) {
+			atomic_clear_bit(&source_frs_max_requested, port);
+			pdc_power_mgmt_frs_enable(port, false);
+			goto balance;
+		}
 
 		if ((vsafe5v_pdo & PDO_FIXED_DUAL_ROLE) && frs_current) {
 			/* Always enable FRS when 3.0 A is not needed */
 			if (frs_current == PDO_FIXED_FRS_CURR_DFLT_USB_POWER ||
 			    frs_current == PDO_FIXED_FRS_CURR_1A5_AT_5V) {
+				atomic_clear_bit(&source_frs_max_requested,
+						 port);
 				pdc_power_mgmt_frs_enable(port, true);
-				return;
+				goto balance;
 			}
 
 			if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
@@ -227,10 +246,26 @@ void pdc_dpm_eval_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 
 			atomic_set_bit(&source_frs_max_requested, port);
 		} else {
-			return;
+			atomic_clear_bit(&source_frs_max_requested, port);
+			pdc_power_mgmt_frs_enable(port, false);
 		}
 	}
 
+balance:
+	pdc_dpm_balance_source_ports(&dpm_work.work);
+}
+
+void pdc_dpm_add_pd_source(int port)
+{
+	/* The PDC DPM will attempt to enable FRS early while evaluating Snk
+	 * Caps. If 3A is not available, the DPM will not enable FRS until it
+	 * can confirm 3A is not required. It can take longer to enable FRS on
+	 * platforms which don't source 3A.
+	 */
+	if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 0)
+		return;
+
+	atomic_set_bit(&source_frs_max_requested, port);
 	pdc_dpm_balance_source_ports(&dpm_work.work);
 }
 

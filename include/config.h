@@ -334,11 +334,6 @@
  * Some ALS modules may be connected to the EC. We need the command, and
  * specific drivers for each module.
  */
-#ifdef HAS_TASK_ALS
-#define CONFIG_ALS
-#else
-#undef CONFIG_ALS
-#endif
 #undef CONFIG_ALS_AL3010
 #undef CONFIG_ALS_BH1730
 /*
@@ -600,6 +595,11 @@
  * msec before deciding the cutoff failed.
  */
 #define CONFIG_BATTERY_CUTOFF_TIMEOUT_MSEC 8000
+
+/*
+ * Disable VolumeUp + AC disconnect battery cutoff sequence.
+ */
+#undef CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED
 
 /*
  * The board-specific battery.c implements get and set functions to read and
@@ -953,10 +953,12 @@
 #undef CONFIG_CHARGER_BQ24773
 #undef CONFIG_CHARGER_BQ25710
 #undef CONFIG_CHARGER_BQ25720
+#undef CONFIG_CHARGER_BQ25770
 #undef CONFIG_CHARGER_ISL9237
 #undef CONFIG_CHARGER_ISL9238 /* For ISL9238 A/B */
 #undef CONFIG_CHARGER_ISL9238C
 #undef CONFIG_CHARGER_ISL9241
+#undef CONFIG_CHARGER_ISL95522
 #undef CONFIG_CHARGER_MT6370
 #undef CONFIG_CHARGER_RAA489000
 #undef CONFIG_CHARGER_RAA489110
@@ -1170,6 +1172,12 @@
 
 /* Value of the bq25710 input current sense resistor, in mOhms */
 #undef CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC
+
+/* Value of the bq25770 charge sense resistor, in mOhms */
+#undef CONFIG_CHARGER_BQ25770_SENSE_RESISTOR
+
+/* Value of the bq25770 input current sense resistor, in mOhms */
+#undef CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC
 
 /*
  * This config option is used to enable the PSYS sensing circuit on the
@@ -1524,6 +1532,7 @@
 #undef CONFIG_CHIPSET_SKYLAKE /* Intel Skylake (x86) */
 #undef CONFIG_CHIPSET_SC7180 /* Qualcomm SC7180 */
 #undef CONFIG_CHIPSET_SC7280 /* Qualcomm SC7280 */
+#undef CONFIG_CHIPSET_QC_EXP /* Qualcomm QC_EXP */
 #undef CONFIG_CHIPSET_SDM845 /* Qualcomm SDM845 */
 #undef CONFIG_CHIPSET_STONEY /* AMD Stoney (x86)*/
 #undef CONFIG_CHIPSET_TIGERLAKE /* Intel Tigerlake (x86) */
@@ -1924,6 +1933,12 @@
  */
 #define CONFIG_COMMON_RUNTIME
 
+/**
+ * Use a common implementation of mutex that supports recursive
+ * locking within the same task.
+ */
+#undef CONFIG_COMMON_RECURSIVE_MUTEX
+
 /* Allow deferred (async) flash protect*/
 #define CONFIG_FLASH_PROTECT_DEFERRED
 
@@ -2010,7 +2025,7 @@
 #undef CONFIG_EC_EC_COMM_BATTERY
 
 /* Include CRC-8 utility function */
-#undef CONFIG_CRC8
+#undef CONFIG_CRC8_CROS
 
 /*****************************************************************************/
 /*
@@ -2716,6 +2731,9 @@
 /* Command to issue AP reset */
 #undef CONFIG_HOSTCMD_AP_RESET
 
+/* Command to issue AP shutdown */
+#undef CONFIG_HOSTCMD_AP_SHUTDOWN
+
 /*
  * Support voltage regulator host command
  * If defined, the board should also implement board functions defined in
@@ -2954,9 +2972,6 @@
  */
 #undef CONFIG_SMBUS_PEC
 
-/* Support I2C HID touchpad interface. */
-#undef CONFIG_I2C_HID_TOUCHPAD
-
 /*
  * Add hosts-side support for entering programming mode for I2C ITE ECs.
  * Must define ite_dfu_config_t for configuration in board file.
@@ -3136,6 +3151,12 @@
  * NOTE: this config is only relevant for non-zephyr boards with NDS32 arch
  */
 #undef CONFIG_IT83XX_PREWDT_ALWAYS_ENABLED
+
+/*
+ * For IT83xx boards shipped with Watchdog timer locked in RO this config
+ * allows to extend the duration of Watchdog timer by resetting it once.
+ */
+#undef CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION
 
 /*
  * Support the standard integer multiplication and division instruction
@@ -3599,44 +3620,6 @@
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
 
-/* Include sensor online calibration (requires CONFIG_FPU) */
-#undef CONFIG_ONLINE_CALIB
-
-/*
- * Spoof the data for online calibration. When this flag is enabled, every
- * reading with the flag MOTIONSENSE_FLAG_IN_SPOOF_MODE will be treated as a
- * new calibration point. This should be used in conjunction with
- * CONFIG_ACCEL_SPOOF_MODE. To trigger an accelerometer calibration for
- * example, enable both config flags, connect to the cr50 terminal and run:
- * $ accelspoof id on X Y Z
- * This will spoof a reading of (X, Y, Z) from the sensor and treat those
- * values as the calibration result (bypassing the calibration for the given
- * sensor ID).
- */
-#undef CONFIG_ONLINE_CALIB_SPOOF_MODE
-
-/*
- * Duration after which an entry in the temperature cache is considered stale.
- * Defaults to 5 minutes if not set.
- */
-#undef CONFIG_TEMP_CACHE_STALE_THRES
-
-/* Set minimum temperature for accelerometer calibration. */
-#undef CONFIG_ACCEL_CAL_MIN_TEMP
-
-/* Set maximum temperature for accelerometer calibration. */
-#undef CONFIG_ACCEL_CAL_MAX_TEMP
-
-/* Set threshold radius for using the Kasa algorithm in accelerometer bias
- * calculation (g).
- */
-#undef CONFIG_ACCEL_CAL_KASA_RADIUS_THRES
-
-/* Set threshold radius for using the Newton fit algorithm in accelerometer
- * bias calculation (g).
- */
-#undef CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES
-
 /* Include code to do online compass calibration */
 #undef CONFIG_MAG_CALIBRATE
 
@@ -3772,6 +3755,9 @@
 
 /* Support One Time Protection structure */
 #undef CONFIG_OTP
+
+/* Use OTP as a source of key material. */
+#undef CONFIG_OTP_KEY
 
 /*
  * Address to store persistent panic data at. By default, this will be
@@ -4408,17 +4394,6 @@
 #undef CONFIG_TEST_TASK_LIST
 
 /*
- * List of tasks used by CTS
- *
- * cts.tasklist contains tasks run only for CTS. These tasks are added to the
- * tasks registered in ec.tasklist with higher priority.
- *
- * If a CTS suite does not define its own cts.tasklist, the common list is used
- * (i.e. cts/cts.tasklist).
- */
-#undef CONFIG_CTS_TASK_LIST
-
-/*
  * List of tasks that support reset. Tasks listed here must also be included in
  * CONFIG_TASK_LIST.
  *
@@ -4873,6 +4848,13 @@
  */
 #undef CONFIG_USB_PD_DEBUG_LEVEL
 
+/* Build a framework to record custom time intervals and print them out at
+ * convenient points with respect to each USB-C port. This config does not
+ * directly enable any recording. The developer must define the intervals and
+ * choose when to print the results.
+ */
+#undef CONFIG_USB_PD_DEBUG_INTERVALS
+
 /*
  * Set to a nonzero value to delay PD task startup by the given
  * amount of time.
@@ -5010,6 +4992,9 @@
 
 /* The size in bytes of the FIFO used for event logging */
 #define CONFIG_EVENT_LOG_SIZE 512
+
+/* Event-driven CC detection */
+#undef CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE
 
 /* Save power by waking up on VBUS rather than polling CC */
 #define CONFIG_USB_PD_LOW_POWER
@@ -5461,10 +5446,11 @@
 #undef CONFIG_USBC_PPC_SYV682X_OVP_SET_15V
 
 /*
- * SYV682x PPC high voltage power path current limit.  Default limit is
- * 3.3A.  See the syv682x header file for permissible values.
+ * SYV682x PPC high voltage power path current limit. The hardware default is
+ * 3.3A, but this results in spurious OCP events. Default to 5.5A in software.
+ * See b/349015641 for details. See the syv682x header file for possible values.
  */
-#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_3_30
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
 
 /* SYV682 does not pass through CC, instead it bypasses to the TCPC */
 #undef CONFIG_USBC_PPC_SYV682X_NO_CC
@@ -6539,6 +6525,11 @@
 #define CONFIG_BATTERY
 #endif
 
+#if defined(CONFIG_BATTERY_CUTOFF_VOL_UP_DISABLED) && \
+	!defined(CONFIG_VOLUME_BUTTONS)
+#error "VOLUME_BUTTONS must be defined to use BATTERY_CUTOFF_VOL_UP_DISABLED"
+#endif
+
 #if defined(CONFIG_CBI_EEPROM) || defined(CONFIG_CBI_FLASH)
 #if defined(CONFIG_BATTERY) && defined(CONFIG_BATTERY_FUEL_GAUGE)
 #define CONFIG_BATTERY_CONFIG_IN_CBI
@@ -6631,7 +6622,7 @@
 	defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_RT9490) ||   \
 	defined(CONFIG_CHARGER_MT6370) || defined(CONFIG_CHARGER_BQ25710) ||  \
 	defined(CONFIG_CHARGER_BQ25720) || defined(CONFIG_CHARGER_ISL9241) || \
-	defined(CONFIG_CHARGER_RAA489110)
+	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_BQ25770)
 #if !defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC) &&              \
 	!defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT) && \
 	!defined(CONFIG_USB_PD_VBUS_MEASURE_BY_BOARD)
@@ -6679,6 +6670,7 @@
 	defined(CONFIG_CHARGER_ISL9238C) || defined(CONFIG_CHARGER_ISL9241) || \
 	defined(CONFIG_CHARGER_RAA489000) || defined(CONFIG_CHARGER_SM5803) || \
 	defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_BQ25720) ||  \
+	defined(CONFIG_CHARGER_BQ25770) ||                                     \
 	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_RT9490)
 #define CONFIG_CHARGER_NARROW_VDC
 #endif
@@ -6735,9 +6727,10 @@
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
 
 /*****************************************************************************/
-/* If battery_v2 isn't used, it's v1. */
+/* Auto-enable battery v2 module with a single battery if battery is defined. */
 #if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
-#define CONFIG_BATTERY_V1
+#define CONFIG_BATTERY_COUNT 1
+#define CONFIG_BATTERY_V2
 #endif
 
 /*
@@ -6968,7 +6961,8 @@
 #error "Must enable CONFIG_POWER_TRACK_HOST_SLEEP_STATE for S0ix"
 #endif
 
-#if defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280)
+#if defined(CONFIG_CHIPSET_SC7180) || defined(CONFIG_CHIPSET_SC7280) || \
+	defined(CONFIG_CHIPSET_QC_EXP)
 #if defined(CONFIG_POWER_SLEEP_FAILURE_DETECTION) && \
 	!defined(CONFIG_CHIPSET_RESUME_INIT_HOOK)
 #error "Require resume init hook to enable sleep failure detection"
@@ -7245,22 +7239,6 @@
 #error "Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES"
 #endif
 
-#ifndef CONFIG_TEMP_CACHE_STALE_THRES
-#ifdef CONFIG_ONLINE_CALIB
-/*
- * Boards may choose to leave this to default and just turn on online
- * calibration, in which case we'll set the threshold to 5 minutes.
- */
-#define CONFIG_TEMP_CACHE_STALE_THRES (5 * MINUTE)
-#else
-/*
- * Boards that use the FIFO and not the online calibration can just leave this
- * at 0.
- */
-#define CONFIG_TEMP_CACHE_STALE_THRES 0
-#endif /* CONFIG_ONLINE_CALIB */
-#endif /* !CONFIG_TEMP_CACHE_STALE_THRES */
-
 #endif /* CONFIG_ACCEL_FIFO */
 
 /*
@@ -7299,31 +7277,8 @@
 #endif
 
 #ifdef CONFIG_SMBUS_PEC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #endif
-
-#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_FPU)
-#error "Online calibration requires CONFIG_FPU"
-#endif
-
-/* Set default values for accelerometer calibration if not defined. */
-#ifdef CONFIG_ONLINE_CALIB
-#ifndef CONFIG_ACCEL_CAL_MIN_TEMP
-#define CONFIG_ACCEL_CAL_MIN_TEMP 0.0f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_MAX_TEMP
-#define CONFIG_ACCEL_CAL_MAX_TEMP 45.0f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_KASA_RADIUS_THRES
-#define CONFIG_ACCEL_CAL_KASA_RADIUS_THRES 0.001f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES
-#define CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES 0.001f
-#endif
-#endif /* CONFIG_ONLINE_CALIB */
 
 /*
  *  Vivaldi keyboard code to be enabled only if board has selected

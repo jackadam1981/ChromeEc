@@ -3,7 +3,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# Disable check that incorrectly detects the "config_*" functions as unreachable.
+# shellcheck disable=SC2317
 # shellcheck disable=SC1091
+
 # shellcheck source=../../../scripts/lib/shflags/shflags
 . "${SHFLAGS:-/usr/share/misc/shflags}" || exit 1
 
@@ -42,8 +45,47 @@ readonly CROS_EC_FP_SPI_MODALIAS_STR="spi:cros-ec-fp"
 
 readonly CROS_EC_UART_MODALIAS_STR="of:NcrfpTCgoogle,cros-ec-uart"
 
+# Clean up any remaining gpioset processes on exit.
+trap 'kill "${GPIO_ACTIVE_PIDS[@]}" 2>/dev/null' EXIT
+
 klog() {
   echo "flash_fp_mcu: $*" > /dev/kmsg
+}
+
+# POSIX-compliant helper to check if a name is a defined function.
+# Usage: is_function <function_name>
+is_function() {
+  type "$1" 2>/dev/null | grep -q 'function'
+}
+
+os() {
+  if [[ -f "/system/build.prop" ]]; then
+    echo "android"
+    return 0
+  fi
+
+  if [[ -f "/etc/lsb-release" ]] && grep -q "CHROMEOS_RELEASE" "/etc/lsb-release" 2>/dev/null; then
+    echo "chromeos"
+    return 0
+  fi
+
+  echo "unknown"
+  return 1
+}
+
+check_spidev() {
+  if [[ -d "/sys/module/spidev" ]]; then
+    return 0
+  fi
+
+  if [[ "$(os)" == "android" ]]; then
+    if insmod /vendor/lib/modules/spidev.ko; then
+      return 0
+    fi
+  fi
+
+  echo "Failed to load spidev kernel module" >&2
+  exit "${EXIT_PRECONDITION}"
 }
 
 check_hardware_write_protect_disabled() {
@@ -67,7 +109,7 @@ get_sysfs_gpiochip_base() {
   local match="$1"
 
   for chip in /sys/class/gpio/gpiochip*; do
-    if [[ "$(readlink "${chip}")" =~ ${match} ]]; then
+    if readlink "${chip}" | grep -q "${match}"; then
       echo "${chip#/sys/class/gpio/gpiochip}"
       return 0
     fi
@@ -105,9 +147,8 @@ get_uartid() {
   return 1
 }
 
-# TODO(b/358420799): Replace with libgpiod (gpioget/gpioset).
 # Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
-gpio() {
+_gpio_legacy() {
   local cmd="$1"
   shift
 
@@ -138,6 +179,86 @@ gpio() {
         ;;
     esac
   done
+}
+
+# Usage: _gpioset_hold <gpio_chip> <signal> <value>
+_gpioset_hold() {
+  local gpio_chip="$1"
+  local signal="$2"
+  local value="$3"
+
+  # Kill any gpioset processes for this GPIO before spawning a new one.
+  if [[ -n "${GPIO_ACTIVE_PIDS[${signal}]}" ]]; then
+    kill "${GPIO_ACTIVE_PIDS[${signal}]}"
+    unset "GPIO_ACTIVE_PIDS[${signal}]"
+  fi
+
+  # We need to run gpioset as a background process in order to hold the
+  # gpio at a specific value.
+  gpioset --mode=signal "${gpio_chip}" "${signal}=${value}" &
+  GPIO_ACTIVE_PIDS[${signal}]=$!
+  klog "Set and hold GPIO ${gpio_chip}/${signal} to ${value} (PID: ${GPIO_ACTIVE_PIDS[${signal}]})"
+}
+
+# Usage: _gpioset <gpio_chip> <signal> <value>
+_gpioset() {
+  local gpio_chip="$1"
+  local signal="$2"
+  local value="$3"
+  gpioset "${gpio_chip}" "${signal}=${value}"
+  klog "Set GPIO ${gpio_chip}/${signal} to ${value}"
+}
+
+# Usage: gpio <unexport|export|in|out|0|1|get> <signal> [signal...]
+_gpio_new() {
+  local cmd="$1"
+  shift
+
+  if [[ -z "${GPIO_CHIP}" ]]; then
+      echo "Error: GPIO_CHIP variable is not set." >&2
+      exit "${EXIT_CONFIG}"
+  fi
+
+  for signal in "$@"; do
+    case "${cmd}" in
+      0|1)
+        if [[ "${GPIOSET_SUPPORTS_HOLD}" -eq 1 ]]; then
+          _gpioset_hold "${GPIO_CHIP}" "${signal}" "${cmd}"
+        else
+          _gpioset "${GPIO_CHIP}" "${signal}" "${cmd}"
+        fi
+        ;;
+      get)
+        klog "Get GPIO ${GPIO_CHIP}/${signal}"
+        gpioget "${GPIO_CHIP}" "${signal}"
+        ;;
+      unexport|export|in|out)
+        # no-op
+        ;;
+      *)
+        echo "Invalid gpio command: ${cmd}" >&2
+        exit "${EXIT_RUNTIME}"
+        ;;
+    esac
+  done
+}
+
+# Usage: gpio <0|1|get> <signal> [signal...]
+gpio() {
+  if [[ "${USE_LEGACY_GPIO_API}" -eq 1 ]]; then
+    _gpio_legacy "$@"
+  else
+    _gpio_new "$@"
+  fi
+}
+
+gpio_chip_exists() {
+  if [[ "${USE_LEGACY_GPIO_API}" -eq 1 ]]; then
+    [[ -e "/sys/class/gpio/${GPIO_CHIP}" ]]
+    return
+  fi
+
+  gpioinfo "${GPIO_CHIP}" > /dev/null 2>&1
 }
 
 # Usage: warn_gpio <signal> <expected_value> <msg>
@@ -185,25 +306,40 @@ lsbval() {
 get_platform_name() {
   local platform_name
 
-  # We used to use "cros_config /identity platform-name", but that is specific
-  # to mosys and does not actually provide the board name in all cases.
-  # cros_config intentionally does not provide a way to get the board
-  # name: b/156650654.
+  case "$(os)" in
+    "chromeos")
+      # We used to use "cros_config /identity platform-name", but that is specific
+      # to mosys and does not actually provide the board name in all cases.
+      # cros_config intentionally does not provide a way to get the board
+      # name: b/156650654.
 
-  # If there was a way to get the board name from cros_config, it's possible
-  # that it could fail in the following cases:
-  #
-  # 1) We're running on a non-unibuild device (the only one with FP is nocturne)
-  # 2) We're running on a proto device during bringup and the cros_config
-  #    settings haven't yet been setup.
-  #
-  # In all cases we can fall back to /etc/lsb-release. It's not recommended
-  # to do this, but we don't have any other options in this case.
-  echo "Getting platform name from /etc/lsb-release." 1>&2
-  platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
-  if [[ -z "${platform_name}" ]]; then
-    return 1
-  fi
+      # If there was a way to get the board name from cros_config, it's possible
+      # that it could fail in the following cases:
+      #
+      # 1) We're running on a non-unibuild device (the only one with FP is nocturne)
+      # 2) We're running on a proto device during bringup and the cros_config
+      #    settings haven't yet been setup.
+      #
+      # In all cases we can fall back to /etc/lsb-release. It's not recommended
+      # to do this, but we don't have any other options in this case.
+      echo "Getting platform name from /etc/lsb-release." 1>&2
+      platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
+      if [[ -z "${platform_name}" ]]; then
+        return 1
+      fi
+      ;;
+    "android")
+      echo "Getting platform name from ro.product.device." 1>&2
+      platform_name="$(getprop ro.product.device 2>/dev/null)"
+      if [[ -z "${platform_name}" ]]; then
+        return 1
+      fi
+      ;;
+    *)
+      echo "Unsupported operating system" 1>&2
+      return 1
+      ;;
+  esac
 
   echo "${platform_name}"
 }
@@ -254,16 +390,6 @@ power_cycle_fpmcu() {
   fi
 }
 
-# Test the current running kernel version against a regular expression.
-# Returns 0 if the regex matches.
-match_kernel_regex() {
-  local match_exp=$1
-  local kversion
-  kversion=$(uname -r)
-  [[ ${kversion} =~ ${match_exp} ]]
-  return $?
-}
-
 # Given a full platform name, extract the base platform.
 #
 # Tests are also run on modified images, like hatch-arc-r, hatch-borealis, or
@@ -294,7 +420,19 @@ platform_base_name() {
 
 get_fp_mcu_board() {
   local board
-  board="$(cros_config /fingerprint board)"
+
+  case "$(os)" in
+    "chromeos")
+      board="$(cros_config /fingerprint board)"
+      ;;
+    "android")
+      board="$(halconfig_runtime Fingerprint board)"
+      ;;
+    *)
+      echo "Unsupported operating system" 1>&2
+      exit "${EXIT_CONFIG}"
+      ;;
+  esac
 
   echo "${board}"
 }
@@ -324,14 +462,23 @@ get_default_fw() {
   # If cros_config returns "", that is okay assuming there is only
   # one firmware file on disk.
 
-  local -a fws
-  mapfile -t fws < <(find /opt/google/biod/fw -maxdepth 1 -name "${board}*.bin")
+  local tmp_file
+  tmp_file="$(mktemp)"
 
-  if [[ "${#fws[@]}" -ne 1 ]]; then
+  find /opt/google/biod/fw -maxdepth 1 -name "${board}*.bin" 2>/dev/null > "${tmp_file}"
+
+  local num_fw_files
+  num_fw_files="$(wc -l < "${tmp_file}")"
+  local fw_file
+  fw_file="$(head -n 1 "${tmp_file}" 2>/dev/null)"
+
+  rm -f "${tmp_file}"
+
+  if [[ "${num_fw_files}" -ne 1 ]]; then
     return 1
   fi
 
-  echo "${fws[0]}"
+  echo "${fw_file}"
 }
 
 # Find processes that have the named file, active or deleted, open.
@@ -349,11 +496,37 @@ get_default_fw() {
 proc_open_file() {
   local file_pattern="$1"
 
-  # Avoid overloading kernel max arguments with the number of file names.
-  local -a FDS=( /proc/*/fd/* )
-  xargs ls -l <<<"${FDS[*]}" 2>/dev/null | grep "${file_pattern}" | \
-    awk '{split($9,p,"/"); print "PID", p[3], "->", $11, $12}'
-  return "${PIPESTATUS[1]}"
+  find /proc/ -maxdepth 3 -type l -path '*/fd/*' -exec ls -l {} + 2>/dev/null | \
+  awk -v pattern="${file_pattern}" '
+    {
+      proc_fd_col = ""
+      filename_col = 0
+
+      for (i = 1; i <= NF; i++) {
+        if ($i ~ /^\/proc\//) {
+          proc_fd_col = $i
+        }
+        if ($i == "->") {
+          filename_col = i + 1
+        }
+      }
+
+      if (proc_fd_col == "" || filename_col == 0) {
+        next
+      }
+
+      if ($(filename_col) ~ pattern) {
+        split(proc_fd_col, p, "/")
+        print "PID", p[3], "->", $(filename_col), $(filename_col + 1)
+        found = 1
+      }
+    }
+    END {
+      # 0 if found, 1 if not found.
+      exit !found
+    }
+  '
+  return $?
 }
 
 flash_fp_mcu_npcx() {
@@ -613,13 +786,17 @@ flash_fp_mcu_board() {
   fi
   sleep 0.5
 
-  # We do not expect the drivers to change the pin state when binding.
-  # If you receive this warning, the driver needs to be fixed on this board
-  # and this flash attempt will probably fail.
-  warn_gpio "${gpio_boot0}" 1 \
-    "WARNING: One of the drivers changed BOOT0 pin state on bind attempt."
-  warn_gpio "${gpio_nrst}" 0 \
-    "WARNING: One of the drivers changed NRST pin state on bind attempt."
+  # When using gpioset, we can only do this check if it's not holding the
+  # GPIO.
+  if [[  "${#GPIO_ACTIVE_PIDS[@]}" -eq 0 ]]; then
+    # We do not expect the drivers to change the pin state when binding.
+    # If you receive this warning, the driver needs to be fixed on this board
+    # and this flash attempt will probably fail.
+    warn_gpio "${gpio_boot0}" 1 \
+      "WARNING: One of the drivers changed BOOT0 pin state on bind attempt."
+    warn_gpio "${gpio_nrst}" 0 \
+      "WARNING: One of the drivers changed NRST pin state on bind attempt."
+  fi
 
   if [[ ! -c "${device}" ]]; then
     echo "Failed to bind raw device driver." >&2
@@ -677,7 +854,6 @@ flash_fp_mcu_board() {
   # open-drain outputs on other platforms.
   if [[ "${PLATFORM_BASE_NAME}" != "strongbad" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "zork" ]] &&
-     [[ "${PLATFORM_BASE_NAME}" != "myst" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "rauru" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "skyrim" ]] &&
      [[ "${PLATFORM_BASE_NAME}" != "skywalker" ]]; then
@@ -730,11 +906,17 @@ flash_fp_mcu_board() {
     # Test it
     klog "Query version and reset flags"
     ectool --name=cros_fp version
-    ectool --name=cros_fp uptimeinfo
+
+    # TODO(b/408245482): re-enable when implemented.
+    if [[ "$(os)" != "android" ]]; then
+      ectool --name=cros_fp uptimeinfo
+    fi
   fi
 }
 
 config_hatch() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.1"
   # See
@@ -743,149 +925,98 @@ config_hatch() {
   # Examine `cat /sys/kernel/debug/pinctrl/INT34BB:00/gpio-ranges` on a hatch
   # device to determine gpio number from pin number.
 
-  local gpiochip_dev_path="pci0000:00/INT34BB:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on GPP_A12 = 12
-  local gpionrst=12
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=12
   # FPMCU BOOT0 is on GPP_A22 = 22
-  local gpioboot=22
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=22
   # FP_PWR_EN is on GPP_C11 = 256 + 11 = 267
-  local gpiopwren=267
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
-}
-
-config_herobrine() {
-  readonly TRANSPORT="SPI"
-  readonly DEVICE="/dev/spidev9.0"
-
-  local dev_path="platform/soc@0/f100000.pinctrl/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
-  # FPMCU RST_ODL is $(gpiofind FP_RST_L) is gpiochip0 22
-  readonly GPIO_NRST=$((gpiobase + $(gpiofind FP_RST_L|cut -f2 -d" ")))
-  # FPMCU BOOT0 is $(gpiofind FPMCU_BOOT0) is gpiochip0 10
-  readonly GPIO_BOOT0=$((gpiobase + $(gpiofind FPMCU_BOOT0|cut -f2 -d" ")))
-
-  # EN FP RAILS is $(gpiofind EN_FP_RAILS) is gpiochip0 42
-  readonly GPIO_PWREN=$((gpiobase + $(gpiofind EN_FP_RAILS|cut -f2 -d" ")))
+  readonly GPIO_PWREN=267
 }
 
 config_nami() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
   # See kernel/v5.4/drivers/pinctrl/intel/pinctrl-sunrisepoint.c
   # for pin name and pin number.
 
-  local gpiochip_dev_path="pci0000:00/INT344B:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on GPP_C9 = 57
-  local gpionrst=57
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=57
   # FPMCU BOOT0 is on GPP_D5 = 77
-  local gpioboot=77
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=77
   # FP_PWR_EN is on GPP_B11 = 35
-  local gpiopwren=35
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=35
 }
 
 config_nocturne() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
   # See kernel/v5.4/drivers/pinctrl/intel/pinctrl-sunrisepoint.c
   # for pin name and pin number.
-
-  local gpiochip_dev_path="pci0000:00/INT344B:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on GPP_C10 = 58
-  local gpionrst=58
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=58
   # FPMCU BOOT0 is on GPP_C8 = 56
-  local gpioboot=56
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=56
   # FP_PWR_EN is on GPP_A11 = 11
-  local gpiopwren=11
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=11
 }
 
 config_rauru() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev5.0"
 
-  local dev_path="platform/soc/1002d000.pinctrl/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
   # FPMCU RST_ODL is $(gpiofind FP_RST_1V8_S3_L) is gpiochip0 26
-  readonly GPIO_NRST=$((gpiobase + $(gpiofind FP_RST_1V8_S3_L|cut -f2 -d" ")))
+  GPIO_NRST=$(gpiofind FP_RST_1V8_S3_L|cut -f2 -d" ")
+  readonly GPIO_NRST
   # FPMCU BOOT0 is $(gpiofind AP_FP_FW_UP_STRAP) is gpiochip0 27
-  readonly GPIO_BOOT0=$((gpiobase + $(gpiofind AP_FP_FW_UP_STRAP|cut -f2 -d" ")))
-
+  GPIO_BOOT0=$(gpiofind AP_FP_FW_UP_STRAP|cut -f2 -d" ")
+  readonly GPIO_BOOT0
   # EN FP RAILS is $(gpiofind EN_PWR_FP) is gpiochip0 173
-  readonly GPIO_PWREN=$((gpiobase + $(gpiofind EN_PWR_FP|cut -f2 -d" ")))
+  GPIO_PWREN=$(gpiofind EN_PWR_FP|cut -f2 -d" ")
+  readonly GPIO_PWREN
 }
 
 config_strongbad() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev10.0"
 
-  local dev_path="platform/soc@0/3500000.pinctrl/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
   # FPMCU RST_ODL is $(gpiofind FP_RST_L) is gpiochip0 22
-  readonly GPIO_NRST=$((gpiobase + $(gpiofind FP_RST_L|cut -f2 -d" ")))
+  GPIO_NRST=$(gpiofind FP_RST_L|cut -f2 -d" ")
+  readonly GPIO_NRST
   # FPMCU BOOT0 is $(gpiofind FPMCU_BOOT0) is gpiochip0 10
-  readonly GPIO_BOOT0=$((gpiobase + $(gpiofind FPMCU_BOOT0|cut -f2 -d" ")))
+  GPIO_BOOT0=$(gpiofind FPMCU_BOOT0|cut -f2 -d" ")
+  readonly GPIO_BOOT0
 
   # EN FP RAILS is $(gpiofind EN_FP_RAILS) is gpiochip0 74 (if available)
   local en_fp_rails
   if en_fp_rails=$(gpiofind EN_FP_RAILS); then
-    readonly GPIO_PWREN=$((gpiobase + $(echo "${en_fp_rails}"|cut -f2 -d" ")))
+    GPIO_PWREN=$(echo "${en_fp_rails}"|cut -f2 -d" ")
+    readonly GPIO_PWREN
   else
     readonly GPIO_PWREN=-1
   fi
 }
 
 config_volteer() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
@@ -897,29 +1028,27 @@ config_volteer() {
   # the pin number is 194. From the gpio-ranges, the gpio value is
   # 920 + (194-171) = 943. The relative gpio value is 943 - 664 = 279.
 
-  local gpiochip_dev_path="pci0000:00/INT34C5:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on GPP_C23 = 256 + (194 - 171) = 279
-  local gpionrst=279
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=279
   # FPMCU BOOT0 is on GPP_C22 = 256 + (193 - 171) = 278
-  local gpioboot=278
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=278
   # FP_PWR_EN is on GPP_A21 = 64 + (63 - 42) = 85
-  local gpiopwren=85
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=85
 }
 
 config_brya() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
-  readonly DEVICE="/dev/spidev0.0"
+
+  DEVICE="/dev/spidev0.0"
+
+  if [[ "$(os)" == "android" ]]; then
+    DEVICE="/dev/spidev1.0"
+  fi
+  readonly DEVICE
 
   # See kernel/v5.10/drivers/pinctrl/intel/pinctrl-tigerlake.c
   # for pin name and pin number.
@@ -929,24 +1058,14 @@ config_brya() {
   # the pin number is 100 from the pinctrl-tigerlake.c.
   # From the gpio-ranges, the gpio value is 824 + (100-99) = 825
 
-  local gpiochip_dev_path="pci0000:00/INTC1055:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on GPP_D1 = 160 + (100 - 99) = 161
-  local gpionrst=161
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=161
   # FPMCU BOOT0 is on GPP_D0 = 160 + (99 - 99) = 160
-  local gpioboot=160
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=160
   # FP_PWR_EN is on GPP_D2 = 160 + (101 - 99) = 162
-  local gpiopwren=162
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=162
 }
 
 config_brask() {
@@ -960,6 +1079,8 @@ config_ghost() {
 }
 
 config_rex() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
@@ -970,14 +1091,7 @@ config_rex() {
   # For example: GPP_B11, the pin number is 215 from the pinctrl-meteorlake.c.
   # From the gpio-ranges, the gpio value is 925 + (215-204) = 936
 
-  local gpiochip_dev_path="pci0000:00/INTC1083:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
@@ -985,116 +1099,74 @@ config_rex() {
     (screebo | screebo4es)
       # Screebo is based off Rex but with different pins for FPMCU
       # FPMCU RST_ODL is on GPP_C21 = 64 + (50 - 29) = 85
-      local gpionrst=85
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=85
       # FPMCU BOOT0 is on GPP_C20 = 64 + (49 - 29) = 84
-      local gpioboot=84
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=84
       # FP_PWR_EN is on GPP_B08 = 352 + (212-204) - 573 = 360
-      local gpiopwren=360
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=360
       ;;
     *)
       # FPMCU RST_ODL is on GPP_C23 = 64 + (52 - 29) = 87
-      local gpionrst=87
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=87
       # FPMCU BOOT0 is on GPP_C22 = 64 + (51 - 29) = 86
-      local gpioboot=86
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=86
       # FP_PWR_EN is on GPP_B11 = 352 + (215-204) = 363
-      local gpiopwren=363
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=363
       ;;
   esac
 }
 
 config_zork() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="UART"
   readonly DEVICE="/dev/ttyS1"
 
-  local gpiochip_dev_path="platform/AMD0030:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on AGPIO 11
-  local gpionrst=11
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=11
   # FPMCU BOOT0 is on AGPIO 69
-  local gpioboot=69
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=69
   # FPMCU PWR_EN is on AGPIO 32
-  local gpiopwren=32
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=32
 }
 
 config_guybrush() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="UART"
   readonly DEVICE="/dev/ttyS1"
 
-  local gpiochip_dev_path="platform/AMD0030:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  local GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on AGPIO 11
-  local gpionrst=11
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=11
   # FPMCU BOOT0 is on AGPIO 144
-  local gpioboot=144
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=144
   # FPMCU PWR_EN is on AGPIO 3
-  local gpiopwren=3
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+  readonly GPIO_PWREN=3
 }
 
 config_skyrim() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="UART"
   readonly DEVICE="/dev/ttyS1"
 
-  local gpiochip_dev_path="platform/AMD0030:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   # FPMCU RST_ODL is on AGPIO 12
-  local gpionrst=12
-  readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+  readonly GPIO_NRST=12
   # FPMCU BOOT0 is on AGPIO 130
-  local gpioboot=130
-  readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+  readonly GPIO_BOOT0=130
   # FPMCU PWR_EN is on AGPIO 4
-  local gpiopwren=4
-  readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
-}
-
-config_myst() {
-  readonly TRANSPORT="UART"
-
-  readonly DEVICE="/dev/ttyS1"
-
-  readonly GPIO_CHIP="gpiochip768"
-  # FPMCU RST_ODL is on AGPIO 40 = 768 + 40 = 808
-  readonly GPIO_NRST=808
-  # FPMCU BOOT0 is on AGPIO 132 = 768 + 132 = 900
-  readonly GPIO_BOOT0=900
-  # FPMCU PWR_EN is on AGPIO 4 = 768 + 4 = 772
-  readonly GPIO_PWREN=772
+  readonly GPIO_PWREN=4
 }
 
 config_brox() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
@@ -1107,39 +1179,34 @@ config_brox() {
   # For example: GPP_E21, the pin number is 247 from the pinctrl-tigerlake.c.
   # From the gpio-ranges, the gpio value is 832 + (247-226) = 853
 
-  local gpiochip_dev_path="pci0000:00/INTC1055:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
   case "${model}" in
     (lotso)
       # FPMCU RST_ODL is on GPP_E21 = 320 + 21 = 341
-      local gpionrst=341
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=341
       # FPMCU BOOT0 is on GPP_D9 = 160 + 9 = 169
-      local gpioboot=169
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=169
       # FP_PWR_EN is on GPP_E20 = 320 + 20 = 340
-      local gpiopwren=340
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=340
       ;;
     (jubilant|jubileum)
       # FPMCU RST_ODL is on GPP_D15 = 160 + 15 = 175
-      local gpionrst=175
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=175
       # FPMCU BOOT0 is on GPP_D3 = 160 + 3 = 163
-      local gpioboot=163
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=163
       # FP_PWR_EN is on GPP_D2 = 160 + 2 = 162
-      local gpiopwren=162
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=162
+      ;;
+    (caboc)
+      # FPMCU RST_ODL is on GPP_D9 = 160 + 9 = 169
+      readonly GPIO_NRST=169
+      # FPMCU BOOT0 is on GPP_D8 = 160 + 8 = 168
+      readonly GPIO_BOOT0=168
+      # FP_PWR_EN is on GPP_D11 = 160 + 11 = 171
+      readonly GPIO_PWREN=171
       ;;
     *)
       echo "FPMCU not supported on model ${model}"
@@ -1149,61 +1216,45 @@ config_brox() {
 }
 
 config_fatcat() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev0.0"
 
   # Examine `cat /sys/kernel/debug/pinctrl/INTC1083:00/gpio-ranges` on a
   # fatcat device to determine gpio number from pin number.
 
-  local gpiochip_dev_path="pci0000:00/INTC10BC:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
 
-  # On fatcat, gpios are split across two base gpio banks:
-  # gpiochip512 and gpiochip560.
-  local gpiobase512=512
-  local gpiobase560=560
-  local gpiobase626=626
 
   case "${model}" in
     (francka)
       # FPMCU FPS_RST_N(RST_ODL) is on GPP_H17 = 626 + 17
-      local gpionrst=17
-      readonly GPIO_NRST=$(( gpionrst + gpiobase626))
+      readonly GPIO_NRST=17
 
       # FPMCU FPMCU_FW_UPDATE(BOOT0) is on GPP_F20 = 560 + 20
-      local gpioboot=20
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase560))
+      readonly GPIO_BOOT0=20
 
       # FPMCU_PWREN(FP_PWR_EN) is on GPP_H03 = 626 + 3
-      local gpiopwren=3
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase626))
+      readonly GPIO_PWREN=3
       ;;
     *)
       # FPMCU FPS_RST_N(RST_ODL) is on GPP_C15 = 24 + (39 - 24) = 39
-      local gpionrst=39
-      readonly GPIO_NRST=$(( gpionrst + gpiobase512 ))
-
+      readonly GPIO_NRST=39
       # FPMCU FPMCU_FW_UPDATE(BOOT0) is on GPP_E20 = 26 + (46 - 26) = 46
-      local gpioboot=46
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase560 ))
-
+      readonly GPIO_BOOT0=46
       # FPMCU_PWREN(FP_PWR_EN) is on GPP_E19 = 26 + (45 - 26) = 45
-      local gpiopwren=45
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase560 ))
+      readonly GPIO_PWREN=45
       ;;
   esac
 }
 
 config_nissa() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
@@ -1216,28 +1267,18 @@ config_nissa() {
   # For example: GPP_E7, the pin number is 231 from the pinctrl-alderlake.c.
   # From the gpio-ranges, the gpio value is 320 + (231 - 224) = 327
 
-  local gpiochip_dev_path="pci0000:00/INTC1057:00/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${gpiochip_dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
 
   local model
   model=$(cros_config / name)
   case "${model}" in
-    (pujjoniru)
+    (pujjoniru | pujjoquince)
       # FPMCU RST_ODL is on GPP_E7 = 320 + (231 - 224) = 327
-      local gpionrst=327
-      readonly GPIO_NRST=$(( gpionrst + gpiobase ))
+      readonly GPIO_NRST=327
       # FPMCU BOOT0 is on GPP_D0 = 192 + (119 - 119) = 192
-      local gpioboot=192
-      readonly GPIO_BOOT0=$(( gpioboot + gpiobase ))
+      readonly GPIO_BOOT0=192
       # FP_PWR_EN is on GPP_D2 = 192 + (121-119) = 194
-      local gpiopwren=194
-      readonly GPIO_PWREN=$(( gpiopwren + gpiobase ))
+      readonly GPIO_PWREN=194
       ;;
     *)
       echo "FPMCU not supported on model ${model}"
@@ -1247,24 +1288,21 @@ config_nissa() {
 }
 
 config_skywalker() {
+  readonly USE_LEGACY_GPIO_API=0
+
   readonly TRANSPORT="SPI"
   readonly DEVICE="/dev/spidev1.0"
 
-  local dev_path="platform/soc/10005000.pinctrl/gpio"
-  local gpiobase
-  if ! gpiobase=$(get_sysfs_gpiochip_base "${dev_path}"); then
-    echo "Unable to find gpio chip base"
-    return "${EXIT_PRECONDITION}"
-  fi
-
-  readonly GPIO_CHIP="gpiochip${gpiobase}"
+  readonly GPIO_CHIP="gpiochip0"
   # FPMCU RST_ODL is $(gpiofind FP_RST_1V8_S3_L) is gpiochip0 134
-  readonly GPIO_NRST=$((gpiobase + $(gpiofind FP_RST_1V8_S3_L|cut -f2 -d" ")))
+  GPIO_NRST=$(gpiofind FP_RST_1V8_S3_L|cut -f2 -d" ")
+  readonly GPIO_NRST
   # FPMCU BOOT0 is $(gpiofind AP_FP_FW_UP_STRAP) is gpiochip0 133
-  readonly GPIO_BOOT0=$((gpiobase + $(gpiofind AP_FP_FW_UP_STRAP|cut -f2 -d" ")))
-
+  GPIO_BOOT0=$(gpiofind AP_FP_FW_UP_STRAP|cut -f2 -d" ")
+  readonly GPIO_BOOT0
   # EN FP RAILS is $(gpiofind EN_PWR_FP) is gpiochip0 12
-  readonly GPIO_PWREN=$((gpiobase + $(gpiofind EN_PWR_FP|cut -f2 -d" ")))
+  GPIO_PWREN=$(gpiofind EN_PWR_FP|cut -f2 -d" ")
+  readonly GPIO_PWREN
 }
 
 main() {
@@ -1274,6 +1312,16 @@ main() {
   # print out canonical path to differentiate between /usr/local/bin and
   # /usr/bin installs
   readlink -f "$0"
+
+  echo "OS: $(os)"
+
+  if [[ "$(os)" == "android" ]]; then
+    USE_LEGACY_GPIO_API=0
+    readonly GPIOSET_SUPPORTS_HOLD=0
+  else
+    USE_LEGACY_GPIO_API=1
+    readonly GPIOSET_SUPPORTS_HOLD=1
+  fi
 
   # The "platform name" corresponds to the underlying board (reference design)
   # that we're running on (not the FPMCU or sensor). At the moment all of the
@@ -1297,9 +1345,9 @@ main() {
   echo "Platform name is ${PLATFORM_NAME} (${PLATFORM_BASE_NAME})."
 
   # Check that the config function exists
-  if [[ "$(type -t "config_${PLATFORM_NAME}")" == "function" ]]; then
+  if is_function "config_${PLATFORM_NAME}"; then
     readonly PLATFORM_CONFIG="${PLATFORM_NAME}"
-  elif [[ "$(type -t "config_${PLATFORM_BASE_NAME}")" == "function" ]]; then
+  elif is_function "config_${PLATFORM_BASE_NAME}"; then
     readonly PLATFORM_CONFIG="${PLATFORM_BASE_NAME}"
   else
     echo "No config for platform ${PLATFORM_NAME}." >&2
@@ -1328,10 +1376,13 @@ main() {
   fi
 
   # Check that the gpiochip exists
-  if [[ ! -e "/sys/class/gpio/${GPIO_CHIP}" ]]; then
+  if ! gpio_chip_exists; then
     echo "Cannot find GPIO chip: ${GPIO_CHIP}"
     exit "${EXIT_CONFIG}"
   fi
+
+  # Ensure spidev module is loaded.
+  check_spidev
 
   # Ensure hardware write-protect is disabled.
   check_hardware_write_protect_disabled
@@ -1354,7 +1405,7 @@ main() {
   local files_open
   # Ensure no processes have cros_fp device or debug device open.
   # This might be biod and/or timberslide.
-  if files_open=$(proc_open_file "/dev/cros_fp\|/sys/kernel/debug/cros_fp/*")
+  if files_open=$(proc_open_file "/dev/cros_fp|/sys/kernel/debug/cros_fp/.*")
   then
     echo "WARNING: Another process has a cros_fp device file open." >&2
     echo "${files_open}" >&2

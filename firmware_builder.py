@@ -10,6 +10,7 @@ This is the entry point for the custom firmware builder workflow recipe.  It
 gets invoked by chromite/api/controller/firmware.py.
 """
 
+import json
 import os
 import pathlib
 import shutil
@@ -19,6 +20,9 @@ import sys
 # pylint: disable=import-error
 from google.protobuf import json_format
 from util.coreboot_sdk import init_toolchain
+
+# cros format puts this here
+import yaml  # pylint: disable=wrong-import-order
 import zephyr.scripts.firmware_builder_lib
 
 # pylint: disable=wrong-import-order
@@ -55,6 +59,65 @@ BINARY_SIZE_BOARDS = [
     "shotzo",
     "taranza",
 ]
+
+# These EC names in boxter don't exist. They come from somewhere else
+EXPECTED_MISSING_BOARDS = {
+    # Wilco devices don't have Chrome ECs
+    "arcada_signed",  # Remove 2029-07
+    "arcada",  # Remove 2029-07
+    "drallion_signed",  # Remove 2030-06
+    "drallion",  # Remove 2030-06
+    "sarien_signed",  # Remove 2029-07
+    "sarien",  # Remove 2029-07
+    # Hana seems to have been deleted from HEAD, see firmware-oak-8438.B branch
+    "hana",  # Remove 2027-06
+    # These are zephyr, not ECOS
+    "brox-ish",
+    "rex-ish",
+}
+
+# These EC boards are not used in boxter for various reasons.
+EXPECTED_UNUSED_BOARDS = {
+    # Ti50 test board carrier.
+    "hyperdebug",
+    # Servo. These could probably be deleted, and built only from the servo branch
+    "c2d2",
+    "servo_micro",
+    "servo_v4",
+    "servo_v4p1",
+    # Other hardware tools, no idea when these are AUE
+    "baklava",
+    "panqueque",
+    "quiche",
+    # Detachable keyboards, see src/platform2/hammerd/hammertests/common.py
+    "duck",  # Remove 2031-06
+    "eel",  # Remove 2031-06
+    "hammer",  # Not used directly, but all the other keyboards use this code.
+    "staff",  # Remove 2027-08
+    "star",  # Remove 2031-06
+    "whiskers",  # Remove 2029-06
+    "zed",  # Remove 2031-06
+    # Fingerprint development
+    "bloonchipper-druid",
+    "gwendolin",
+    "hatch_fp",
+    "nocturne_fp",
+    "nucleo-dartmonkey",
+    "nucleo-f412zg",
+    "nucleo-h743zi",
+    "rosalia",
+    # Symlinks
+    "icarus",  # cozmo links to this 2030-06
+    "poppy",  # soraka links to this 2027-08
+    # SCP. These have no builders, the binaries are copied to GCS manually.
+    # src/platform/dev/contrib/uprev_scp_firmware.sh
+    "asurada_scp",  # chromeos-base/chromeos-scp-firmware-asurada
+    "corsola_scp",  # chromeos-base/chromeos-scp-firmware-corsola
+    "cherry_scp",  # chromeos-base/chromeos-scp-firmware-cherry
+    "cherry_scp_core1",  # chromeos-base/chromeos-scp-firmware-cherry
+    "geralt_scp",  # chromeos-base/chromeos-scp-firmware-geralt
+    "geralt_scp_core1",  # chromeos-base/chromeos-scp-firmware-geralt
+}
 
 
 def build(opts):
@@ -338,14 +401,229 @@ def test(opts):
         subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
 
+def find_checkout():
+    """Find the path to the base of the checkout (e.g., ~/chromiumos)."""
+    for path in pathlib.Path(__file__).resolve().parents:
+        if (path / ".repo").is_dir():
+            return path
+    raise FileNotFoundError("Unable to locate the root of the checkout")
+
+
+def check_inherits(opts):
+    """Reads the src/project/*/*/sw_build_config json files and compares
+    the boards and ec targets.
+    """
+
+    env = os.environ.copy()
+    env.update(init_toolchain())
+    cmd = ["make", "print-boards", f"-j{opts.cpus}"]
+    print(f"# Running {' '.join(cmd)}.")
+    ec_boards = set()
+    used_ec_boards = set()
+    for line in subprocess.run(
+        cmd,
+        cwd=os.path.dirname(__file__),
+        check=True,
+        universal_newlines=True,
+        stdout=subprocess.PIPE,
+        env=env,
+    ).stdout.splitlines():
+        ec_boards.add(line)
+
+    retcode = 0
+    board_dirs = (find_checkout() / "src" / "project").glob("*")
+    for board_dir in board_dirs:
+        # Check the boxter sw_build_config files
+        for cfg_path in board_dir.glob(
+            "*/sw_build_config/platform/chromeos-config/generated/project-config.json"
+        ):
+            with open(cfg_path, "r", encoding="utf-8") as file:
+                cfg = json.load(file)
+
+                for software_config in cfg.get("chromeos", {}).get(
+                    "configs", []
+                ):
+                    cros_ec = (
+                        software_config.get("firmware", {})
+                        .get("build-targets", {})
+                        .get("ec", None)
+                    )
+                    if cros_ec:
+                        if (
+                            cros_ec not in ec_boards
+                            and cros_ec not in EXPECTED_MISSING_BOARDS
+                        ):
+                            print(
+                                f"ERROR: Unknown EC target {cros_ec} in {cfg_path}"
+                            )
+                            retcode = 1
+                        used_ec_boards.add(cros_ec)
+                    for cros_ec in (
+                        software_config.get("firmware", {})
+                        .get("build-targets", {})
+                        .get("ec_extras", [])
+                    ):
+                        if cros_ec:
+                            if (
+                                cros_ec not in ec_boards
+                                and cros_ec not in EXPECTED_MISSING_BOARDS
+                            ):
+                                print(
+                                    f"ERROR: Unknown EC target (ec_extras) {cros_ec} in {cfg_path}"
+                                )
+                                retcode = 1
+                            used_ec_boards.add(cros_ec)
+        # Check the boxter joined.jsonproto files
+        for cfg_path in board_dir.glob("*/generated/joined.jsonproto"):
+            with open(cfg_path, "r", encoding="utf-8") as file:
+                cfg = json.load(file)
+
+                for software_config in cfg.get("softwareConfigs", []):
+                    cros_ec = (
+                        software_config.get("firmwareBuildConfig", {})
+                        .get("buildTargets", {})
+                        .get("ec", None)
+                    )
+                    if cros_ec:
+                        if (
+                            cros_ec not in ec_boards
+                            and cros_ec not in EXPECTED_MISSING_BOARDS
+                        ):
+                            print(
+                                f"ERROR: Unknown EC target {cros_ec} in {cfg_path}"
+                            )
+                            retcode = 1
+                        used_ec_boards.add(cros_ec)
+                    cros_ec = (
+                        software_config.get("firmwareBuildConfig", {})
+                        .get("buildTargets", {})
+                        .get("ish", None)
+                    )
+                    if cros_ec:
+                        if (
+                            cros_ec not in ec_boards
+                            and cros_ec not in EXPECTED_MISSING_BOARDS
+                        ):
+                            print(
+                                f"ERROR: Unknown EC target (ISH) {cros_ec} in {cfg_path}"
+                            )
+                            retcode = 1
+                        used_ec_boards.add(cros_ec)
+                    cros_ec = (
+                        software_config.get("firmwareBuildConfig", {})
+                        .get("buildTargets", {})
+                        .get("base", None)
+                    )
+                    if cros_ec:
+                        if (
+                            cros_ec not in ec_boards
+                            and cros_ec not in EXPECTED_MISSING_BOARDS
+                        ):
+                            print(
+                                f"ERROR: Unknown EC target (base) {cros_ec} in {cfg_path}"
+                            )
+                            retcode = 1
+                        used_ec_boards.add(cros_ec)
+                    for cros_ec in (
+                        software_config.get("firmwareBuildConfig", {})
+                        .get("buildTargets", {})
+                        .get("ecExtras", [])
+                    ):
+                        if cros_ec:
+                            if (
+                                cros_ec not in ec_boards
+                                and cros_ec not in EXPECTED_MISSING_BOARDS
+                            ):
+                                print(
+                                    f"ERROR: Unknown EC target (ecExtras) {cros_ec} in {cfg_path}"
+                                )
+                                retcode = 1
+                            used_ec_boards.add(cros_ec)
+                for design in cfg.get("designList", []):
+                    for config in design.get("configs", []):
+                        cros_ec = (
+                            software_config.get("hardwareFeatures", {})
+                            .get("fingerprint", {})
+                            .get("board", None)
+                        )
+                        if cros_ec:
+                            if (
+                                cros_ec not in ec_boards
+                                and cros_ec not in EXPECTED_MISSING_BOARDS
+                            ):
+                                print(
+                                    f"ERROR: Unknown EC target (FP) {cros_ec} in {cfg_path}"
+                                )
+                                retcode = 1
+                            used_ec_boards.add(cros_ec)
+    # Check the old yaml files
+    # src/overlays/overlay-trogdor/chromeos-base/chromeos-config-bsp/files/model.yaml
+    yamls = (find_checkout() / "src").glob(
+        "*overlays/*/chromeos-base/chromeos-config-bsp*/files/model.yaml"
+    )
+    for yaml_path in yamls:
+        with open(yaml_path, "r", encoding="utf-8") as file:
+            try:
+                for cfg in yaml.safe_load_all(file):
+                    for device in cfg.get("chromeos", {}).get("devices", []):
+                        for sku in device.get("skus", []):
+                            config = sku.get("config", {})
+                            cros_ec = (
+                                config.get("firmware", {})
+                                .get("build-targets", {})
+                                .get("ec", None)
+                            )
+                            while cros_ec and cros_ec.startswith("{{$"):
+                                lookup_key = cros_ec[2 : len(cros_ec) - 2]
+                                if lookup_key in config:
+                                    cros_ec = config.get(lookup_key)
+                                elif lookup_key in sku:
+                                    cros_ec = sku.get(lookup_key)
+                                elif lookup_key in device:
+                                    cros_ec = device.get(lookup_key)
+                                else:
+                                    print(
+                                        f"ERROR: Failed to find {lookup_key} for"
+                                        f" {sku} in {yaml_path}"
+                                    )
+                                    cros_ec = None
+                            if cros_ec:
+                                if (
+                                    cros_ec not in ec_boards
+                                    and cros_ec not in EXPECTED_MISSING_BOARDS
+                                ):
+                                    print(
+                                        f"ERROR: Unknown EC target {cros_ec} in {yaml_path}"
+                                    )
+                                    retcode = 1
+                                used_ec_boards.add(cros_ec)
+            except yaml.composer.ComposerError:
+                print(f"Ignoring {yaml_path}")
+    for cros_ec in ec_boards:
+        if (
+            cros_ec not in used_ec_boards
+            and cros_ec not in EXPECTED_UNUSED_BOARDS
+        ):
+            print(f"ERROR: EC target {cros_ec} is not used anywhere")
+            retcode = 1
+
+    return retcode
+
+
 def main(args):
     """Builds, bundles, or tests all of the EC targets.
 
     Additionally, the tool reports build metrics.
     """
-    parser, _ = zephyr.scripts.firmware_builder_lib.create_arg_parser(
+    parser, sub_cmds = zephyr.scripts.firmware_builder_lib.create_arg_parser(
         build, bundle, test
     )
+    check_inherits_cmd = sub_cmds.add_parser(
+        "check_inherits",
+        help="Checks the inherited_from values against Boxster",
+    )
+    check_inherits_cmd.set_defaults(func=check_inherits)
+
     opts = parser.parse_args(args)
 
     if not hasattr(opts, "func"):

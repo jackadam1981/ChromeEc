@@ -13,8 +13,10 @@
 extern "C" {
 #endif
 
+#if DT_HAS_COMPAT_STATUS_OKAY(named_bbram_regions)
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_bbram_regions) == 1,
 	     "only one named-bbram-regions compatible node may be present");
+#endif
 
 #define BBRAM_NODE DT_COMPAT_GET_ANY_STATUS_OKAY(named_bbram_regions)
 

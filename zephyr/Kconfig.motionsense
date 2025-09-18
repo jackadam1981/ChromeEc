@@ -24,6 +24,25 @@ config PLATFORM_EC_SENSOR_EC_RATE_FORCE_MODE
       Enable this to toggle interrupt mode sensors to force mode at specific low
       intervals in order to save power in low power states (S3 and S5)
 
+config PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM
+    bool "Disable power management when sensor sample rates are high"
+    depends on PM
+    default y if SOC_FAMILY_INTEL_ISH
+    help
+      When the sensors are being sampled quickly, the delay of waking up the CPU
+      might cause ISR scheduling delays. When these delays happen, the CPU will
+      miss samples. Enable this config to prevent the CPU from going below the
+      PM_STATE_ACTIVE when sample rates are high.
+
+config PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM_THRESHOLD
+    int "Threshold (in microseconds) for disabling power management"
+    depends on PLATFORM_EC_MOTIONSENSE_DISABLE_HIGH_THROUGHPUT_PM
+    default 6000
+    help
+      Set this threshold to control when PM will be disabled during the sensor
+      loop. Lower values mean that we require high sample rates in order to
+      disable PM. By default we use 6000 microseconds (~166Hz).
+
 config PLATFORM_EC_ACCEL_FIFO
     bool "Sensor FIFO"
     help
@@ -85,8 +104,7 @@ config PLATFORM_EC_ALS
     help
       Enable this to indicate there's at least one or more ALS devices available.
       If PLATFORM_EC_MOTION_FILL_LPC_SENSE_DATA is set, then motion task updates
-      the designated part of EC memmap with the ALS data. The updating EC memmap
-      can be also done by the dedicated ALS task with HAS_ALS_TASK set.
+      the designated part of EC memmap with the ALS data.
       Number of ALS entries reserved in EC memmap are defined by EC_ALS_ENTRIES
       in ec_commands.h.
 
@@ -166,6 +184,7 @@ config PLATFORM_EC_GESTURE_DETECTION
 
 config PLATFORM_EC_GESTURE_HOST_DETECTION
 	bool "Gesture host detection"
+	select PLATFORM_EC_GESTURE_DETECTION
 	help
 	  Enable gesture host interface
 

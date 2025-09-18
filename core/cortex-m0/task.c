@@ -37,14 +37,12 @@ typedef union {
 void __idle(void);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
-CONFIG_CTS_TASK_LIST
 #undef TASK
 
 /* Task names for easier debugging */
 #define TASK(n, r, d, s) #n,
 static const char *const task_names[] = {
-	"<< idle >>",
-	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
+	"<< idle >>", CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST
 };
 #undef TASK
 
@@ -98,10 +96,8 @@ static const struct {
 	uint32_t r0;
 	uint32_t pc;
 	uint16_t stack_size;
-} tasks_init[] = {
-	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
-		CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
-};
+} tasks_init[] = { TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
+			   CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST };
 #undef TASK
 
 /* Contexts for all tasks */
@@ -113,8 +109,7 @@ BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
 /* Stacks for all tasks */
 #define TASK(n, r, d, s) +s
 uint8_t task_stacks[0 TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
-			    CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST
-				    CONFIG_CTS_TASK_LIST] __aligned(8);
+			    CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST] __aligned(8);
 
 #undef TASK
 
@@ -508,7 +503,7 @@ static void __nvic_init_irqs(void)
 	}
 }
 
-void mutex_lock(struct mutex *mtx)
+void mutex_lock(struct mutex_nr *mtx)
 {
 	uint32_t id = 1 << task_get_current();
 
@@ -530,7 +525,7 @@ void mutex_lock(struct mutex *mtx)
 	atomic_clear_bits(&mtx->waiters, id);
 }
 
-void mutex_unlock(struct mutex *mtx)
+void mutex_unlock(struct mutex_nr *mtx)
 {
 	uint32_t waiters;
 	task_ *tsk = current_task;

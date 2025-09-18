@@ -349,6 +349,84 @@ enum vdo_type_t {
 #define PDC_DISC_IDENTITY_VDO_COUNT 7
 
 /**
+ * @brief Battery state of charge for battery status data object
+ */
+enum bsdo_battery_state_t {
+	BSDO_BATTERY_STATE_CHARGING = 0b00,
+	BSDO_BATTERY_STATE_DISCHARGING = 0b01,
+	BSDO_BATTERY_STATE_IDLE = 0b10,
+	BSDO_BATTERY_STATE_RESERVED = 0b11,
+};
+
+/**
+ * @brief Battery Status Data Object
+ */
+union battery_status_t {
+	struct {
+		uint8_t reserved;
+		union {
+			struct {
+				uint8_t invalid_reference : 1;
+				uint8_t battery_present : 1;
+				/** bsdo_battery_state_t */
+				uint8_t battery_state : 2;
+			};
+			uint8_t flags;
+		};
+		/**
+		 * Battery state of charge in 0.1 Wh increments
+		 * 0xffff = Battery's SOC unknown
+		 */
+		uint16_t present_capacity;
+	} __packed;
+	uint8_t raw_value[4];
+};
+
+/**
+ * @brief Battery Capability Data Block
+ */
+union battery_capability_t {
+	struct {
+		/** The Vendor ID assigned by the USB-IF.*/
+		uint16_t vid;
+		/** The Product ID assigned by the manufacturer.*/
+		uint16_t pid;
+		/**
+		 * Battery's design capacity in 0.1 Wh increments.
+		 * 0x0000 - battery not present
+		 * 0xffff - design capacity unknown
+		 */
+		uint16_t design_capacity;
+		/**
+		 * Battery's last full charge capacity in 0.1 Wh increments.
+		 * 0x0000 - battery not present
+		 * 0xffff - last full charge capacity unknown
+		 */
+		uint16_t last_full_charge_capacity;
+		union {
+			struct {
+				uint8_t invalid_reference : 1;
+			};
+			uint8_t type;
+		};
+	} __packed;
+	uint8_t raw_value[9];
+};
+
+/*
+ * @brief
+ * List of Response Message Types supported by the UCSI GET_PD_MESSAGE command.
+ */
+enum get_pd_message_response_type_t {
+	GET_PD_MESSAGE_SINK_CAP_EXT = 0,
+	GET_PD_MESSAGE_SRC_CAP_EXT = 1,
+	GET_PD_MESSAGE_BATTERY_CAP = 2,
+	GET_PD_MESSAGE_BATTERY_STATUS = 3,
+	GET_PD_MESSAGE_DISC_ID = 4,
+	GET_PD_MESSAGE_REVISION = 5,
+};
+
+/**
  * @brief CCI - USB Type-C Command Status and Connector Change Indication
  */
 union cci_event_t {
@@ -1273,7 +1351,7 @@ union pdr_t {
 	uint16_t raw_value;
 };
 
-#define GET_PDOS_MAX_NUM 4
+#define UCSI_GET_PDOS_MAX_NUM 4
 /**
  * @brief GET_PDOS command format
  */

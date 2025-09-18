@@ -21,6 +21,9 @@ ZTEST(timer, test_crec_usleep)
 	const int expected_duration = 12345;
 
 	uint64_t start_time = sys_clock_cycle_get_64();
+	/* This test is trying to test the functionality of crec_usleep, so we
+	 * allow the usage even though it's in Zephyr code.
+	 */
 	crec_usleep(expected_duration); /* NOLINT_EC_SYMBOL */
 	uint64_t sleep_duration =
 		((sys_clock_cycle_get_64() - start_time) * USEC_PER_SEC) /
@@ -30,11 +33,20 @@ ZTEST(timer, test_crec_usleep)
 	int error_threshold =
 		(USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC) * 2;
 
-	if (IS_ENABLED(CONFIG_BOARD_HELIPILOT)) {
-		/* TODO(b/309557100): Adjust the threshold for Helipilot as it
-		 * is done for CrosEC.
-		 */
-		zassert_unreachable();
+	/*
+	 * The SYS_CLK for NPCX is generated from a timer clocked by LFCLK which
+	 * runs at 32768 Hz with an error of 2%. The SYS_CLK frequency is
+	 * configurable and defaults to 10000 Hz for Zephyr. The maximum error
+	 * therefore needs to be calculated based on the configured frequency
+	 * (CONFIG_SYS_CLOCK_TICKS_PER_SEC) and 2% error
+	 */
+	if (IS_ENABLED(CONFIG_BASEBOARD_HELIPILOT)) {
+		double max_error = expected_duration * 0.02;
+		double clock_tick_us =
+			USEC_PER_SEC / CONFIG_SYS_CLOCK_TICKS_PER_SEC;
+
+		/* Assume a worst case error of max_error + 1 clock tick */
+		error_threshold = (int)(max_error + clock_tick_us);
 	}
 
 	zassert_true(sleep_duration >= expected_duration);

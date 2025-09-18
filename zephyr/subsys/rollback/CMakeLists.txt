@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 add_library(rollback_initial OBJECT rollback_initial_data.c)
+set_source_files_properties(rollback_initial_data.c PROPERTIES
+  COMPILE_OPTIONS $<TARGET_PROPERTY:compiler,prohibit_lto>
+)
 
 target_link_libraries(rollback_initial PUBLIC zephyr_interface)
 target_link_libraries(rollback_initial PUBLIC cros_ec_interface)

@@ -122,11 +122,14 @@ ZTEST(dps_config, test_console_cmd__fakepwr_enable_disable)
 ZTEST(dps_config, test_console_cmd__fakepwr_invalid)
 {
 	/* Various invalid parameters */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps fakepwr 100"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps fakepwr -100 -200"),
-		   NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps fakepwr 100 -200"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps fakepwr 100"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(),
+					 "dps fakepwr -100 -200"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(),
+					 "dps fakepwr 100 -200"),
+		       NULL);
 }
 
 ZTEST(dps_config, test_console_cmd__debuglevel)
@@ -143,16 +146,18 @@ ZTEST(dps_config, test_console_cmd__setkmore)
 	char cmd[32];
 
 	/* Try some invalid requests first */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkmore"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkmore 101"),
-		   NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkmore 0"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkmore -1"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkmore"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkmore 101"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkmore 0"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkmore -1"),
+		       NULL);
 
 	zassert_true(crec_snprintf(cmd, sizeof(cmd), "dps setkmore %d",
 				   config->k_less_pwr - 1) > 0,
 		     NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), cmd), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), cmd), NULL);
 
 	/* Adjust k_more_pwr to be one over k_less_pwr */
 	zassert_true(crec_snprintf(cmd, sizeof(cmd), "dps setkmore %d",
@@ -171,16 +176,18 @@ ZTEST(dps_config, test_console_cmd__setkless)
 	char cmd[32];
 
 	/* Try some invalid requests first */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkless"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkless 101"),
-		   NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkless 0"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkless -1"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkless"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkless 101"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkless 0"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkless -1"),
+		       NULL);
 
 	zassert_true(crec_snprintf(cmd, sizeof(cmd), "dps setkless %d",
 				   config->k_more_pwr + 1) > 0,
 		     NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), cmd), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), cmd), NULL);
 
 	/* Adjust k_less_pwr to be one under k_more_pwr */
 	zassert_true(crec_snprintf(cmd, sizeof(cmd), "dps setkless %d",
@@ -198,9 +205,10 @@ ZTEST(dps_config, test_console_cmd__setksample)
 	struct dps_config_t *config = dps_get_config();
 
 	/* Try some invalid requests first */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setksample"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setksample -1"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setksample"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setksample -1"),
+		       NULL);
 
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "dps setksample 999"),
 		   NULL);
@@ -214,8 +222,9 @@ ZTEST(dps_config, test_console_cmd__setkwindow)
 	struct dps_config_t *config = dps_get_config();
 
 	/* Try some invalid requests first */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkwin"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps setkwin -1"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkwin"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps setkwin -1"),
+		       NULL);
 
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "dps setkwin 4"), NULL);
 
@@ -227,9 +236,10 @@ ZTEST(dps_config, test_console_cmd__settcheck)
 	struct dps_config_t *config = dps_get_config();
 
 	/* Try some invalid requests first */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps settcheck"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps settcheck -1"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps settcheck"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps settcheck -1"),
+		       NULL);
 
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "dps settcheck 5"), NULL);
 
@@ -242,9 +252,10 @@ ZTEST(dps_config, test_console_cmd__settstable)
 	struct dps_config_t *config = dps_get_config();
 
 	/* Try some invalid requests first */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps settstable"), NULL);
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps settstable -1"),
-		   NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps settstable"),
+		       NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps settstable -1"),
+		       NULL);
 
 	zassert_ok(shell_execute_cmd(get_ec_shell(), "dps settstable 6"), NULL);
 
@@ -255,7 +266,8 @@ ZTEST(dps_config, test_console_cmd__settstable)
 ZTEST(dps_config, test_console_cmd__invalid)
 {
 	/* Non-existent subcommand should fail */
-	zassert_ok(!shell_execute_cmd(get_ec_shell(), "dps foobar xyz"), NULL);
+	zassert_not_ok(shell_execute_cmd(get_ec_shell(), "dps foobar xyz"),
+		       NULL);
 }
 
 ZTEST_SUITE(dps_config, drivers_predicate_pre_main, dps_config_setup,

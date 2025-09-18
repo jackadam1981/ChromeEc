@@ -56,6 +56,53 @@ static struct ec_response_fp_info ec_fp_sensor_info = {
 	.bpp = FP_SENSOR_RES_BPP_FPC,
 };
 
+/* Sensor description */
+static struct fp_sensor_info fpc1025_sensor_info = {
+	/* Sensor identification */
+	.vendor_id = FOURCC('F', 'P', 'C', ' '),
+	.product_id = 9,
+	.model_id = 1,
+	.version = 1,
+};
+
+#define FPC1025_DEFAULT_IMAGE_PARAMS                                          \
+	.bpp = FP_SENSOR_RES_BPP_FPC, .frame_size = FP_SENSOR_IMAGE_SIZE_FPC, \
+	.pixel_format = V4L2_PIX_FMT_GREY, .width = FP_SENSOR_RES_X_FPC,      \
+	.height = FP_SENSOR_RES_X_FPC
+
+static const struct fp_image_frame_params fpc1025_image_frame_params[] = {
+	[FPC_CAPTURE_VENDOR_FORMAT] =
+	{
+		FPC1025_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_VENDOR_FORMAT,
+	},
+	[FPC_CAPTURE_SIMPLE_IMAGE] =
+	{
+		FPC1025_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE,
+	},
+	[FPC_CAPTURE_PATTERN0] =
+	{
+		FPC1025_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_PATTERN0,
+	},
+	[FPC_CAPTURE_PATTERN1] =
+	{
+		FPC1025_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_PATTERN1,
+	},
+	[FPC_CAPTURE_QUALITY_TEST] =
+	{
+		FPC1025_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_QUALITY_TEST,
+	},
+	[FPC_CAPTURE_RESET_TEST] =
+	{
+		FPC1025_DEFAULT_IMAGE_PARAMS,
+		.fp_capture_type = FP_CAPTURE_RESET_TEST,
+	},
+};
+
 static enum fpc_capture_type
 convert_fp_capture_type_to_fpc_capture_type(enum fp_capture_type mode)
 {
@@ -264,6 +311,32 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 
 	resp->model_id = sensor_id;
 	resp->errors = errors;
+
+	return EC_SUCCESS;
+}
+
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size)
+{
+	if (sizeof(struct ec_response_fp_info_v2) +
+		    sizeof(fpc1025_image_frame_params) >
+	    resp_size) {
+		return EC_RES_OVERFLOW;
+	}
+
+	uint16_t sensor_id;
+	if (fpc_get_hwid(&sensor_id))
+		return EC_RES_ERROR;
+
+	memcpy(&resp->sensor_info, &fpc1025_sensor_info,
+	       sizeof(struct fp_sensor_info));
+
+	memcpy(&resp->image_frame_params, &fpc1025_image_frame_params,
+	       sizeof(fpc1025_image_frame_params));
+
+	resp->sensor_info.model_id = sensor_id;
+	resp->sensor_info.errors = errors;
+	resp->sensor_info.num_capture_types =
+		ARRAY_SIZE(fpc1025_image_frame_params);
 
 	return EC_SUCCESS;
 }
