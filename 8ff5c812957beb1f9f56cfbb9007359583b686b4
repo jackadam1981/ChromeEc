@@ -46,6 +46,30 @@
       },
       "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59c46bb_531f477c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-18T18:09:50Z",
+      "side": 1,
+      "message": "External state is active low which is why this has to be inverted. From what I can tell the wp code expects the wp signal connected to GSC to be active low which is why it is inverted here cause the internal wp gpio is active high",
+      "parentUuid": "d56f0740_16f82f22",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
