@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4766ec22_1960c5f4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+        "patchSetId": 65
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-18T18:32:01Z",
+      "side": 1,
+      "message": "```\nvoid z_impl_fingerprint_load_image(const struct device *dev, uint8_t *image,\n\t\t\t\t   size_t image_size)\n{\n\tconst struct fp_simulator_cfg *config \u003d dev-\u003econfig;\n\tstruct fp_simulator_data *data \u003d dev-\u003edata;\n\tuint32_t frame_size \u003d 0;\n\n\tLOG_INF(\"The value of image_size is: %d\", image_size);\n\tLOG_INF(\"data-\u003estate.last_acquire_image_mode: %d\", data-\u003estate.last_acquire_image_mode);\n\n\tfingerprint_get_state(dev, \u0026data-\u003estate);\n\n\tfor (uint8_t i \u003d 0; i \u003c config-\u003esensor_info.num_capture_types; ++i) {\n\t\tif (config-\u003esensor_image_configs[i].fp_capture_type \u003d\u003d\n\t\t    data-\u003estate.last_acquire_image_mode) {\n\t\t\tframe_size \u003d config-\u003esensor_image_configs[i].frame_size;\n\t\t\tbreak;\n\t\t}\n\t\tLOG_INF(\"The value of i is: %d\", i);\n\t}\n\n\tLOG_INF(\"The value of frame_size is: %d\", frame_size);\n\n\tsize_t size \u003d MIN(frame_size, image_size);\n\tmemcpy(config-\u003eimage_buffer, image, size);\n```\n\nstill need to investigate this",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 1
+      },
+      "revId": "ae9d3b64cdd61405ceff49945b0637b4e02d23a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
