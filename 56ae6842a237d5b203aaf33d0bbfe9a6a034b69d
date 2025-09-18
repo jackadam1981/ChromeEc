@@ -22,6 +22,30 @@
       },
       "revId": "56ae6842a237d5b203aaf33d0bbfe9a6a034b69d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb9b25e_85db4cac",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1145/src/fpc1145.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-18T15:39:19Z",
+      "side": 1,
+      "message": "this will work:\n\n```\n\tfor (int i \u003d 0; i \u003c NUM_IMAGE_CAPTURE_TYPES; ++i) {\n\t\tzassert_equal(\n\t\t\tmemcmp(\u0026image_frame_params_array[i],\n\t\t\t       \u0026expected_image_frame_params_array[i],\n\t\t\t       sizeof(struct fingerprint_image_frame_params)),\n\t\t\t0, \"Struct comparison failed at index %d\", i);\n\t}\n```",
+      "parentUuid": "fd5a88a8_3da26313",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 57
+      },
+      "revId": "56ae6842a237d5b203aaf33d0bbfe9a6a034b69d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
