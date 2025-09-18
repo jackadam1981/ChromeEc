@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3936ddee_daee95c0",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-18T16:50:03Z",
+      "side": 1,
+      "message": "Marking as done. We need to explore the Zephyr side and see if we can wake the EC on an inbound I2C transaction. For now the retry is the best option to get this unblocked quickly.",
+      "parentUuid": "c977c970_19dee484",
+      "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "423114a6_5a421c87",
         "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
         "patchSetId": 4
