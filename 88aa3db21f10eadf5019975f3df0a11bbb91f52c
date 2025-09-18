@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87429a4c_25f69eb4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025_pal.c",
+        "patchSetId": 56
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-18T18:48:11Z",
+      "side": 1,
+      "message": "```suggestion\n\t    /* For FPC all of the configs have the same image size, so\n\t     * just choose index 0.\n\t     */\n\t    size \u003d\u003d FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(\n\t\t\t    0, DT_CHOSEN(cros_fp_fingerprint_sensor))) {\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "88aa3db21f10eadf5019975f3df0a11bbb91f52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
