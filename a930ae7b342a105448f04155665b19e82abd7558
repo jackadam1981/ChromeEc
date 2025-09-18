@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f1042d_3f508df8",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 40
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-18T18:54:25Z",
+      "side": 1,
+      "message": "The distinction between these is still a bit confusing. Maybe we should add something to `FINGERPRINT_SENSOR_FRAME_SIZE` that mentions that \"frame size\" may be larger than the actual underlying image size calculated by width * height * bpp since it can include other metadata. (If that\u0027s a correct statement.)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "a930ae7b342a105448f04155665b19e82abd7558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
