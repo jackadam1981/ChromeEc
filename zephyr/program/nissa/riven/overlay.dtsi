@@ -169,10 +169,10 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_memory: memory {
-			temp_host_high = <78>;
-			temp_host_halt = <80>;
-			temp_host_release_high = <0>;
-			temp_host_release_halt = <75>;
+			temp-host-high = <78>;
+			temp-host-halt = <80>;
+			temp-host-release-high = <0>;
+			temp-host-release-halt = <75>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_memory_thermistor>;
 		};

@@ -80,6 +80,9 @@ FAKE_VOID_FUNC(set_scancode_set2, uint8_t, uint8_t, uint16_t);
 FAKE_VOID_FUNC(get_scancode_set2, uint8_t, uint8_t);
 FAKE_VALUE_FUNC(int, chipset_in_state, int);
 
+static int tablet;
+static int kb_layout;
+
 uint8_t board_get_charger_chip_count(void)
 {
 	return 2;
@@ -119,6 +122,9 @@ static void test_before(void *fixture)
 	RESET_FAKE(set_scancode_set2);
 	RESET_FAKE(get_scancode_set2);
 	RESET_FAKE(chipset_in_state);
+
+	tablet = 0;
+	kb_layout = 0;
 
 	/* Make the DB is 1C1A as initial */
 	quandiso2_cached_sub_board = QUANDISO2_SB_C_A;
@@ -447,8 +453,6 @@ ZTEST(quandiso2, test_pd_snk_is_vbus_provided)
 	zassert_equal(sm5803_get_chg_det_fake.arg0_val, 0);
 }
 
-static int tablet;
-
 static int cros_cbi_get_fw_config_tablet(enum cbi_fw_config_field_id field_id,
 					 uint32_t *value)
 {
@@ -469,8 +473,6 @@ static int cros_cbi_get_fw_config_tablet(enum cbi_fw_config_field_id field_id,
 	}
 	return 0;
 }
-
-static int kb_layout;
 
 static int
 cros_cbi_get_fw_config_kb_layout(enum cbi_fw_config_field_id field_id,
@@ -969,6 +971,9 @@ ZTEST(quandiso2, test_alt_sensor_lid_bma422)
 
 	/* sensor_enable_irqs enable the interrupt int_acc */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_acc));
+
+	/* make sure cros_cbi_get_fw_config is handled */
+	cros_cbi_get_fw_config_fake.custom_fake = cros_cbi_get_fw_config_tablet;
 
 	board_init();
 

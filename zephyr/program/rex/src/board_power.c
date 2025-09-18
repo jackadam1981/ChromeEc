@@ -89,7 +89,7 @@ static int board_ap_power_action_g3_run(void *data)
 	return 0;
 }
 
-AP_POWER_APP_STATE_DEFINE(AP_POWER_STATE_G3, board_ap_power_action_g3_entry,
+AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_action_g3_entry,
 			  board_ap_power_action_g3_run, NULL);
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 #endif /* CONFIG_X86_NON_DSX_PWRSEQ_MTL */

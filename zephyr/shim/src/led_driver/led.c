@@ -43,13 +43,12 @@ DT_FOREACH_CHILD_STATUS_OKAY_VARGS(
 #define PINS_NODE_FROM_POLICY(led_id, color_token) \
 	DT_CAT4(PIN_NODE_, led_id, _COLOR_, color_token)
 
-#define SET_PATTERN_COLOR_ARRAY(id)                                           \
-	{                                                                     \
-		.led_color_node = &PINS_NODE_FROM_POLICY(                     \
-			GET_PROP(DT_PARENT(id), led_id),                      \
-			GET_PROP(id, led_color)),                             \
-		.duration =                                                   \
-			DT_PROP_OR(id, period_ms, 0) / HOOK_TICK_INTERVAL_MS, \
+#define SET_PATTERN_COLOR_ARRAY(id)                          \
+	{                                                    \
+		.led_color_node = &PINS_NODE_FROM_POLICY(    \
+			GET_PROP(DT_PARENT(id), led_id),     \
+			GET_PROP(id, led_color)),            \
+		.duration_ms = DT_PROP_OR(id, period_ms, 0), \
 	},
 
 #define PATTERN_COLOR_ARRAY(id) DT_CAT(PATTERN_COLOR_, id)
@@ -65,7 +64,7 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, DT_FOREACH_CHILD_VARGS,
 #define LED_PATTERN_INIT(node_id, fn)                          \
 	{                                                      \
 		.cur_color = 0,                                \
-		.ticks = 0,                                    \
+		.elapsed_ms = 0,                               \
 		.transition = GET_PROP(node_id, transition),   \
 		.pattern_len = 0 fn(node_id, PLUS_ONE),        \
 		.pattern_color = PATTERN_COLOR_ARRAY(node_id), \
@@ -78,6 +77,7 @@ struct node_prop_t {
 	int batt_state;
 	int8_t batt_lvl[2];
 	int8_t charge_port;
+	int8_t board_led_alt_policy_label;
 	struct led_pattern_node_t *led_patterns;
 	uint8_t num_patterns;
 	bool state_active;
@@ -112,6 +112,11 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, GEN_PATTERN_NODE_ARRAY,
 		.charge_port =                                                \
 			COND_CODE_1(DT_NODE_HAS_PROP(state_id, charge_port),  \
 				    (DT_PROP(state_id, charge_port)), (-1)),  \
+		.board_led_alt_policy_label = COND_CODE_1(                    \
+			DT_NODE_HAS_PROP(state_id,                            \
+					 board_led_alt_policy_label),         \
+			(DT_PROP(state_id, board_led_alt_policy_label)),      \
+			(-1)),                                                \
 		.led_patterns = PATTERN_NODE_ARRAY(state_id),                 \
 		.num_patterns = 0 fn(state_id, PLUS_ONE),                     \
 		.state_active = false,                                        \
@@ -154,20 +159,37 @@ static void set_color(int node_idx)
 
 		led_set_color_with_pattern(&patterns[i]);
 
-		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0)
-			patterns[i].ticks++;
+		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0) {
+			patterns[i].elapsed_ms += HOOK_TICK_INTERVAL_MS;
 
-		if (patterns[i].ticks >=
-		    GET_DURATION(patterns[i], patterns[i].cur_color)) {
-			patterns[i].cur_color++;
-			patterns[i].ticks = 0;
-		}
+			while (patterns[i].elapsed_ms >=
+			       GET_DURATION(patterns[i],
+					    patterns[i].cur_color)) {
+				patterns[i].elapsed_ms -= GET_DURATION(
+					patterns[i], patterns[i].cur_color);
+				patterns[i].cur_color++;
 
-		if (patterns[i].cur_color >= patterns[i].pattern_len) {
-			patterns[i].cur_color = 0;
+				if (patterns[i].cur_color >=
+				    patterns[i].pattern_len) {
+					patterns[i].cur_color = 0;
+				}
+
+				if (GET_DURATION(patterns[i],
+						 patterns[i].cur_color) == 0) {
+					break;
+				}
+			}
 		}
 	}
 }
+
+/* LCOV_EXCL_START */
+__overridable int board_led_alt_policy(void)
+{
+	/* Default no led alt policy */
+	return -1;
+}
+/* LCOV_EXCL_STOP */
 
 /*
  * The script zephyr/scripts/led_policy.py is used to verify that all
@@ -209,6 +231,15 @@ static int match_node(int node_idx)
 		}
 	}
 
+	/* Check if this node depends on board alt policy */
+	if (node_array[node_idx].board_led_alt_policy_label != -1) {
+		if (node_array[node_idx].board_led_alt_policy_label !=
+		    board_led_alt_policy()) {
+			node_array[node_idx].state_active = false;
+			return -1;
+		}
+	}
+
 #if (IS_ENABLED(CONFIG_PLATFORM_EC_BATTERY))
 	/* check if this node depends on battery status */
 	if (node_array[node_idx].batt_state_mask != -1) {
@@ -236,24 +267,25 @@ static int match_node(int node_idx)
 			return -1;
 		}
 	}
+#endif /* CONFIG_PLATFORM_EC_CHARGE_MANAGER */
 
 	/* reset the color counter if pattern just activated */
 	if (node_array[node_idx].state_active == false) {
 		node_array[node_idx].state_active = true;
 		for (int i = 0; i < node_array[node_idx].num_patterns; i++) {
 			node_array[node_idx].led_patterns[i].cur_color = 0;
-			node_array[node_idx].led_patterns[i].ticks = 0;
+			node_array[node_idx].led_patterns[i].elapsed_ms = 0;
 		}
 	}
-#endif /* CONFIG_PLATFORM_EC_CHARGE_MANAGER */
 
 	/* We found the node that matches the current system state */
 	return node_idx;
 }
 
-static void board_led_set_color(void)
+static bool led_set_all_colors(void)
 {
 	bool found_node = false;
+	bool has_transitions = false;
 
 	/*
 	 * Find all the nodes that match the current state of the system and
@@ -267,19 +299,29 @@ static void board_led_set_color(void)
 		if (match_node(i) != -1) {
 			found_node = true;
 
+			// TODO: has_transitions should support all non-step
+			// patterns
+			if (node_array[i].led_patterns->transition ==
+			    LED_TRANSITION_LINEAR)
+				has_transitions = true;
+
 			set_color(i);
 		}
 	}
 
 	if (!found_node)
 		LOG_ERR("Node with matching prop not found");
+
+	return has_transitions;
 }
 
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
 static void led_tick(void)
 {
-	board_led_set_color();
-	board_led_apply_color();
+	bool has_transitions = led_set_all_colors();
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_LED_DT_PWM)) {
+		led_asynchronous_apply_color(has_transitions);
+	}
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
@@ -307,11 +349,11 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 
 	if (state == LED_STATE_RESET) {
 		led_auto_control(led_id, 1);
-		board_led_set_color();
+		led_set_all_colors();
 		return;
 	}
 
 	led_auto_control(led_id, 0);
 
-	led_set_color(color, led_id);
+	led_set_color(color, led_id, 100);
 }

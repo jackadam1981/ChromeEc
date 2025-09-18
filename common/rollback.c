@@ -59,7 +59,8 @@ static int get_rollback_offset(int region)
 	ASSERT(rv >= 0);
 	return rv;
 #else
-	return CONFIG_ROLLBACK_OFF + region * CONFIG_FLASH_ERASE_SIZE;
+	return CONFIG_ROLLBACK_OFF +
+	       region * CONFIG_ROLLBACK_SIZE / ROLLBACK_REGIONS;
 #endif
 }
 
@@ -204,7 +205,8 @@ static int get_rollback_erase_size_bytes(int region)
 	int erase_size;
 
 #ifndef CONFIG_FLASH_MULTIPLE_REGION
-	erase_size = CONFIG_FLASH_ERASE_SIZE;
+	erase_size = CONFIG_ROLLBACK_SIZE / ROLLBACK_REGIONS;
+	ASSERT(erase_size % CONFIG_FLASH_ERASE_SIZE == 0);
 #else
 	int rollback_start_bank = crec_flash_bank_index(CONFIG_ROLLBACK_OFF);
 

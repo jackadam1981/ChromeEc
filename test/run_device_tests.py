@@ -117,10 +117,10 @@ DATA_ACCESS_VIOLATION_24000000_REGEX = re.compile(
     r"Data access violation, mfar = 24000000\r\n"
 )
 DATA_ACCESS_VIOLATION_64020000_REGEX = re.compile(
-    r"Data access violation, mfar = 64020000\r\n"
+    r"(Data access violation, mfar = 64020000\r\n)|(.*MMFAR Address: 0x64020000\r\n)"
 )
 DATA_ACCESS_VIOLATION_64030000_REGEX = re.compile(
-    r"Data access violation, mfar = 64030000\r\n"
+    r"(Data access violation, mfar = 64030000\r\n)|(.*MMFAR Address: 0x64030000\r\n)"
 )
 DATA_ACCESS_VIOLATION_200B0000_REGEX = re.compile(
     r"Data access violation, mfar = 200b0000\r\n"
@@ -181,8 +181,11 @@ BLOONCHIPPER_V5938_IMAGE_PATH = os.path.join(
 BUCCANEER_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, "buccaneer_v2.0.26328-821504380b.bin"
 )
-HELIPILOT_IMAGE_PATH = os.path.join(
+HELIPILOT_V24337_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, "helipilot_v2.0.24337-2726e9f149.bin"
+)
+HELIPILOT_V27609_IMAGE_PATH = os.path.join(
+    TEST_ASSETS_BUCKET, "helipilot_v2.0.27609-ac26a0796b.bin"
 )
 
 RangedValue = namedtuple("RangedValue", "nominal range")
@@ -450,6 +453,7 @@ class Renode(Platform):
                     "fp_transport",  # TODO(b/384094788)
                     "fpsensor_debug",  # TODO(b/384110894)
                     "ftrapv",  # TODO(b/384095271)
+                    "null_pointer",  # TODO(b/436935088)
                     "panic",  # TODO(b/384095226)
                     "panic_data",  # TODO(b/384095623)
                     "zephyr_flash_stm32f4",  # TODO(b/384974228)
@@ -457,8 +461,6 @@ class Renode(Platform):
                     "zephyr_counter_basic_api_stm32_subsec",
                     # TODO(b/390255521)
                     "timer",
-                    # TODO(b/405230727)
-                    "stdlib",
                 ]:
                     return True
 
@@ -638,10 +640,6 @@ class AllTests:
                 test_args=["uart"],
             ),
             TestConfig(test_name="fpsensor_auth_crypto_stateful"),
-            TestConfig(
-                test_name="fpsensor_auth_crypto_stateful_otp",
-                exclude_boards=[BLOONCHIPPER, DARTMONKEY],
-            ),
             TestConfig(test_name="fpsensor_auth_crypto_stateless"),
             TestConfig(test_name="fpsensor_crypto"),
             TestConfig(test_name="fpsensor_debug"),
@@ -679,6 +677,7 @@ class AllTests:
             TestConfig(test_name="mutex", skip_for_zephyr=True),
             TestConfig(test_name="mutex_trylock", skip_for_zephyr=True),
             TestConfig(test_name="mutex_recursive", skip_for_zephyr=True),
+            TestConfig(test_name="null_pointer"),
             TestConfig(
                 test_name="otp_key",
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],
@@ -857,7 +856,6 @@ class AllTests:
         """Return Zephyr upstream test configs."""
         # Make sure proper paths are added in the twister script, see ZEPHYR_TEST_PATHS
         tests = [
-            # TODO(b/380492754): Fix compilation.
             TestConfig(
                 zephyr_name="cpp.main.newlib",
                 test_name="zephyr_cpp_newlib",
@@ -912,19 +910,19 @@ BLOONCHIPPER_CONFIG = BoardConfig(
     rollback_region0_regex=DATA_ACCESS_VIOLATION_8020000_REGEX,
     rollback_region1_regex=DATA_ACCESS_VIOLATION_8040000_REGEX,
     mpu_regex=DATA_ACCESS_VIOLATION_20000000_REGEX,
-    fp_power_supply="ppvar_fp_mw",
-    mcu_power_supply="ppvar_mcu_mw",
+    fp_power_supply="pp3300_fp_mw",
+    mcu_power_supply="pp3300_mcu_mw",
     expected_fp_power=PowerUtilization(
-        idle=RangedValue(0.71, 0.53), sleep=RangedValue(0.69, 0.51)
+        idle=RangedValue(0.06, 0.02), sleep=RangedValue(0.06, 0.02)
     ),
     expected_mcu_power=PowerUtilization(
-        idle=RangedValue(16.05, 0.14 * 2), sleep=RangedValue(0.53, 0.35 * 2)
+        idle=RangedValue(20.81, 0.14 * 2), sleep=RangedValue(1.25, 0.35 * 2)
     ),
     expected_fp_power_zephyr=PowerUtilization(
-        idle=RangedValue(0.17, 0.04), sleep=RangedValue(0.17, 0.04)
+        idle=RangedValue(0.06, 0.02), sleep=RangedValue(0.06, 0.02)
     ),
     expected_mcu_power_zephyr=PowerUtilization(
-        idle=RangedValue(14.10, 0.14 * 2), sleep=RangedValue(0.28, 0.04)
+        idle=RangedValue(17.6, 0.14 * 2), sleep=RangedValue(0.38, 0.04)
     ),
     variants={
         "bloonchipper_v2.0.4277": {
@@ -999,7 +997,8 @@ HELIPILOT_CONFIG = BoardConfig(
         idle=RangedValue(34.8, 7.0), sleep=RangedValue(2.7, 2.5)
     ),
     variants={
-        "helipilot_v2.0.24337": {"ro_image_path": HELIPILOT_IMAGE_PATH},
+        "helipilot_v2.0.24337": {"ro_image_path": HELIPILOT_V24337_IMAGE_PATH},
+        "helipilot_v2.0.27609": {"ro_image_path": HELIPILOT_V27609_IMAGE_PATH},
         "buccaneer_v2.0.26328": {
             "ro_image_path": BUCCANEER_IMAGE_PATH,
             "build_board": "buccaneer",
@@ -1288,6 +1287,16 @@ def patch_image(test: TestConfig, image_path: str):
         image_file.truncate()
 
 
+def erase_rw(image_path: str):
+    """Replace RW part of the firmware with 0xFF."""
+    with open(image_path, "rb+") as image_file:
+        image = bytearray(image_file.read())
+        write_section(b"", image, "EC_RW")
+        image_file.seek(0)
+        image_file.write(image)
+        image_file.truncate()
+
+
 def readline(
     executor: ThreadPoolExecutor, file: BinaryIO, timeout_secs: int
 ) -> Optional[bytes]:
@@ -1476,13 +1485,14 @@ def get_zephyr_image_path(test: TestConfig, build_board: str):
     """Get a path to a Zephyr built image"""
     if test.zephyr_name is not None:
         # The path to binary differs depending on a test name, path and platform,
-        # so just find the zephyr.bin in the build dir.
+        # so just find the zephyr.npcx.bin or zephyr.bin in the build dir.
         twister_out = os.walk(ZEPHYR_TWISTER_BUILD_DIR)
         image_path = None
         for dirpath, _, filenames in twister_out:
-            for file in filenames:
-                if file == "zephyr.bin":
-                    image_path = os.path.join(dirpath, "zephyr.bin")
+            # b/419617755#comment46: Use version with Nuvoton header if it exists.
+            for filename in ["zephyr.npcx.bin", "zephyr.bin"]:
+                if filename in filenames:
+                    image_path = os.path.join(dirpath, filename)
                     break
             if image_path is not None:
                 break

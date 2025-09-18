@@ -44,6 +44,7 @@ menuconfig PLATFORM_EC
 	imply CRC
 	imply PRINTK
 	imply SHELL
+    imply POLL # k_poll used in shim/src/console.c
 	help
 	  The platform/ec Zephyr module allows some code from the
 	  existing Chromium OS EC project to be "shimmed" into Zephyr. With
@@ -107,6 +108,8 @@ rsource "Kconfig.usbc"
 rsource "Kconfig.watchdog"
 rsource "Kconfig.wireless_charger"
 rsource "Kconfig.ap_hang_detect"
+rsource "Kconfig.poe"
+rsource "debug/Kconfig"
 
 # Define PLATFORM_EC_... options to enable EC features. Each Kconfig should be
 # matched by a line in zephyr/shim/include/config_chip.h which #defines the
@@ -361,7 +364,7 @@ config PLATFORM_EC_CROS_FWID_VERSION
 
 config PLATFORM_EC_DEBUG_ASSERT
 	bool "Enable assertion failures"
-	default n
+	default y
 	select ASSERT
 	help
 	  Assertion failures are used to flag conditions which should not occur
@@ -427,7 +430,7 @@ config PLATFORM_EC_EMULATED_SYSRQ
 
 config PLATFORM_EC_EXTPOWER
 	bool "Support external power detection"
-	depends on PLATFORM_EC_HOOKS && PLATFORM_EC_HOSTCMD
+	depends on PLATFORM_EC_HOOKS
 	help
 	  Enable code for handling the detection of external power.
 	  If PLATFORM_EC_EXTPOWER_GPIO is not set, then the board
@@ -438,7 +441,7 @@ config PLATFORM_EC_EXTPOWER
 config PLATFORM_EC_EXTPOWER_GPIO
 	bool "GPIO-based external power detection"
 	select PLATFORM_EC_EXTPOWER
-	depends on PLATFORM_EC_HOOKS && PLATFORM_EC_HOSTCMD
+	depends on PLATFORM_EC_HOOKS
 	help
 	  Enable shimming the extpower_gpio module, which provides
 	  GPIO-based external power presence detection features.  The
@@ -717,6 +720,12 @@ config PLATFORM_EC_POWER_BUTTON
 
 	  This requires a GPIO named GPIO_POWER_BUTTON_L.
 
+config PLATFORM_EC_POWER_BUTTON_X86
+    bool "Enable x86 power button support"
+    select HAS_TASK_POWERBTN
+    help
+      Enable x86 power button logic.
+
 config PLATFORM_EC_POWER_BUTTON_IGNORE_LID
 	bool "Ignore lid switch for power button press"
 	default y if !PLATFORM_EC_LID_SWITCH
@@ -742,6 +751,30 @@ config PLATFORM_EC_BUTTON_DEBOUNCE
 	default 30000
 	help
 	  Configure the button debounce time in us per project requirement.
+
+config PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	bool "Power button debounce"
+	help
+	  Configure the debounce of the power button separate from the
+	  the other buttons in the system.  When this is enable, you must
+	  also configure the debounce time used when the AP is
+	  powered on and when the AP is powered off.
+
+config PLATFORM_EC_POWER_BUTTON_DEBOUNCE_AP_ON
+	depends on PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	int "button debounce in us when S0 or s0ix"
+	default 300000
+	help
+	  Configure the button debounce time in us per project requirement when
+	  the AP is on (S0ix or S0).
+
+config PLATFORM_EC_POWER_BUTTON_DEBOUNCE_AP_OFF
+	depends on PLATFORM_EC_POWER_BUTTON_DEBOUNCE
+	int "button debounce in us when S5"
+	default 500000
+	help
+	  Configure the button debounce time in us per project requirement when
+	  the AP is off (S5 and below).
 
 config PLATFORM_EC_PRESERVED_RING_BUF
 	bool "Preserved ring buffer"

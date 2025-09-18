@@ -14,7 +14,6 @@
 #include "fpsensor_driver.h"
 #include "fpsensor_matcher.h"
 #include "fpsensor_state_driver.h"
-#include "fpsensor_template_state.h"
 #include "link_defs.h"
 #include "timer.h"
 
@@ -22,6 +21,7 @@
 #include <stdint.h>
 
 #include <array>
+#include <optional>
 #include <span>
 
 /* if no special memory regions are defined, fallback on regular SRAM */
@@ -87,8 +87,6 @@ struct fpsensor_context {
 	/** Salt used in derivation of positive match secret. */
 	uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				      [FP_POSITIVE_MATCH_SALT_BYTES];
-	/** The states for different fingers. */
-	std::array<fp_template_state, FP_MAX_FINGER_COUNT> template_states;
 };
 
 extern struct fpsensor_context global_context;
@@ -145,9 +143,12 @@ int fp_get_next_event(uint8_t *out);
  *
  * @param mode          new mode to change to
  * @param mode_output   resulting mode
+ * @param mac           the MAC, required for authenticated modes
  * @return EC_RES_SUCCESS on success. Error code on failure.
  */
-enum ec_status fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output);
+enum ec_status
+fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output,
+		   std::optional<std::span<const uint8_t, FP_MAC_LENGTH> > mac);
 
 /**
  * Allow reading positive match secret for |fgr| in the next 5 seconds.

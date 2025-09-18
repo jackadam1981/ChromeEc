@@ -124,29 +124,29 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temp_cpu: cpu {
-			temp_fan_off = <45>;
-			temp_fan_max = <60>;
-			temp_host_high = <75>;
-			temp_host_halt = <85>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <45>;
+			temp-fan-max = <60>;
+			temp-host-high = <75>;
+			temp-host-halt = <85>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_cpu_thermistor>;
 		};
 		temp_5v_regulator: 5v-regulator {
-			temp_fan_off = <50>;
-			temp_fan_max = <65>;
-			temp_host_high = <75>;
-			temp_host_halt = <85>;
-			temp_host_release_high = <65>;
+			temp-fan-off = <50>;
+			temp-fan-max = <65>;
+			temp-host-high = <75>;
+			temp-host-halt = <85>;
+			temp-host-release-high = <65>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_5v_regulator_thermistor>;
 		};
 		temp_charger: charger {
-			temp_fan_off = <50>;
-			temp_fan_max = <65>;
-			temp_host_high = <80>;
-			temp_host_halt = <85>;
-			temp_host_release_high = <75>;
+			temp-fan-off = <50>;
+			temp-fan-max = <65>;
+			temp-host-high = <80>;
+			temp-host-halt = <85>;
+			temp-host-release-high = <75>;
 			power-good-pin = <&gpio_ec_soc_dsw_pwrok>;
 			sensor = <&temp_charger_thermistor>;
 		};

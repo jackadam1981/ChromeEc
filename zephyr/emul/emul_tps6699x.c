@@ -9,6 +9,7 @@
 #include "emul/emul_pdc_pdo.h"
 #include "emul/emul_tps6699x.h"
 #include "tps6699x_reg.h"
+#include "usb_common.h"
 #include "usbc/utils.h"
 
 #include <stdbool.h>
@@ -66,6 +67,29 @@ static bool register_is_valid(const struct tps6699x_emul_pdc_data *data,
 			      int reg)
 {
 	return reg < sizeof(data->reg_val) / sizeof(*data->reg_val);
+}
+
+#define REG_BITMAP_INDEX(reg) ((reg) / 32)
+#define REG_BITMAP_OFFSET(reg) ((reg) % 32)
+
+static bool register_read_should_fail(const struct tps6699x_emul_pdc_data *data,
+				      int reg)
+{
+	return data->fail_reg_reads[REG_BITMAP_INDEX(reg)] &
+	       BIT(REG_BITMAP_OFFSET(reg));
+}
+
+static bool
+register_write_should_fail(const struct tps6699x_emul_pdc_data *data, int reg)
+{
+	return data->fail_reg_writes[REG_BITMAP_INDEX(reg)] &
+	       BIT(REG_BITMAP_OFFSET(reg));
+}
+
+static void clear_register_fail_bit(const struct tps6699x_emul_pdc_data *data,
+				    int reg, uint32_t *fail_bitmap)
+{
+	fail_bitmap[REG_BITMAP_INDEX(reg)] &= ~BIT(REG_BITMAP_OFFSET(reg));
 }
 
 /** Check that a register access is valid. A valid access has
@@ -131,6 +155,7 @@ static void tps699x_emul_get_error_status(struct tps6699x_emul_pdc_data *data)
 static void
 tps699x_emul_get_connector_status(struct tps6699x_emul_pdc_data *data)
 {
+	data->connector_status.rdo = data->pdo.rdo;
 	data->response.result = TASK_COMPLETED_SUCCESSFULLY;
 	data->response.data.connector_status = data->connector_status;
 
@@ -153,7 +178,7 @@ static void tps699x_emul_set_uor(struct tps6699x_emul_pdc_data *data,
 static void tps699x_emul_set_pdr(struct tps6699x_emul_pdc_data *data,
 				 const union pdr_t *pdr)
 {
-	LOG_INF("SET_PDR port=%d, swap_to_src=%d, swap_to_snk=%d, accept_pr_swap=%d}",
+	LOG_INF("SET_PDR port=%d, swap_to_src=%d, swap_to_snk=%d, accept_pr_swap=%d",
 		pdr->connector_number, pdr->swap_to_src, pdr->swap_to_snk,
 		pdr->accept_pr_swap);
 	data->response.result = TASK_COMPLETED_SUCCESSFULLY;
@@ -161,11 +186,13 @@ static void tps699x_emul_set_pdr(struct tps6699x_emul_pdc_data *data,
 	data->pdr = *pdr;
 
 	if (data->connector_status.power_operation_mode == PD_OPERATION &&
-	    data->connector_status.connect_status && data->ccom == BIT(2)) {
+	    data->connector_status.connect_status && data->ccom == CCOM_DRP) {
 		if (data->pdr.swap_to_snk) {
 			data->connector_status.power_direction = 0;
+			LOG_INF("SET_PDR: PDC power role set to sink (0)");
 		} else if (data->pdr.swap_to_src) {
 			data->connector_status.power_direction = 1;
+			LOG_INF("SET_PDR: PDC power role set to source (1)");
 		}
 	}
 }
@@ -177,19 +204,23 @@ static void tps699x_emul_set_ccom(struct tps6699x_emul_pdc_data *data,
 	data->response.result = TASK_COMPLETED_SUCCESSFULLY;
 
 	switch (ccom->cc_operation_mode) {
-	case 1:
+	case BIT(CCOM_RP):
 		data->ccom = CCOM_RP;
 		break;
-	case 2:
+	case BIT(CCOM_RD):
 		data->ccom = CCOM_RD;
 		break;
-	case 4:
+	case BIT(CCOM_DRP):
 		data->ccom = CCOM_DRP;
 		break;
 	default:
-		LOG_ERR("Unexpected ccom = %u", ccom->cc_operation_mode);
+		LOG_ERR("SET_CCOM: Unexpected CCOM (0x%02x). "
+			"Keep existing value.",
+			ccom->cc_operation_mode);
 		break;
 	}
+
+	LOG_INF("SET_CCOM: %s (%d)", get_ccom_name(data->ccom), data->ccom);
 }
 
 static void tps699x_emul_get_pdos(struct tps6699x_emul_pdc_data *data,
@@ -256,6 +287,34 @@ static void tps6699x_emul_ucsi_set_pdos(struct tps6699x_emul_pdc_data *data,
 	}
 }
 
+static void
+tps699x_emul_get_pd_message(struct tps6699x_emul_pdc_data *data,
+			    const union get_pd_message_t *get_pd_message)
+{
+	switch (get_pd_message->response_message_type) {
+	case GET_PD_MESSAGE_DISC_ID:
+		data->response.result = TASK_COMPLETED_SUCCESSFULLY;
+		data->response.data.length =
+			sizeof(uint32_t) * PDC_DISC_IDENTITY_VDO_COUNT;
+		memcpy(data->response.data.pd_message, &data->identity,
+		       sizeof(uint32_t) * PDC_DISC_IDENTITY_VDO_COUNT);
+		memcpy(&data->reg_val[REG_DATA_FOR_CMD1], &data->response,
+		       sizeof(data->response));
+		break;
+	case GET_PD_MESSAGE_REVISION:
+		data->response.result = TASK_COMPLETED_SUCCESSFULLY;
+		data->response.data.length = sizeof(uint32_t);
+		memcpy(data->response.data.pd_message, &data->rmdo,
+		       sizeof(uint32_t));
+		memcpy(data->reg_val[REG_DATA_FOR_CMD1], &data->response,
+		       sizeof(data->response));
+		break;
+	default:
+		/* Unsupported GET_PD_MESSAGE command */
+		break;
+	}
+}
+
 static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 				      uint8_t *data_reg)
 {
@@ -272,6 +331,17 @@ static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 	if (cmd != UCSI_SET_PDOS) {
 		zassert_equal(data_len, 0);
 	}
+
+	if (data->fail_next_ucsi_cmd_count > 0 &&
+	    cmd == data->fail_next_ucsi_cmd) {
+		data_reg[0] = data->fail_next_ucsi_cmd_with_response;
+		data->fail_next_ucsi_cmd_count--;
+		LOG_INF("Fail UCSI command 0x%X (remaining fails: %d)",
+			data->fail_next_ucsi_cmd,
+			data->fail_next_ucsi_cmd_count);
+		return;
+	}
+
 	/* TODO(b/345292002): Validate connector number field. */
 
 	LOG_INF("UCSI command 0x%X", cmd);
@@ -311,6 +381,10 @@ static void tps6699x_emul_handle_ucsi(struct tps6699x_emul_pdc_data *data,
 		break;
 	case UCSI_SET_PDOS:
 		tps6699x_emul_ucsi_set_pdos(data, data_reg);
+		break;
+	case UCSI_GET_PD_MESSAGE:
+		tps699x_emul_get_pd_message(
+			data, (union get_pd_message_t *)&data_reg[2]);
 		break;
 	default:
 		LOG_WRN("tps6699x_emul: Unimplemented UCSI command %#04x", cmd);
@@ -365,6 +439,13 @@ static void tps6699x_emul_handle_sryr(struct tps6699x_emul_pdc_data *data,
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 }
 
+static void tps6699x_emul_handle_trig(struct tps6699x_emul_pdc_data *data,
+				      uint8_t *data_reg)
+{
+	LOG_INF("TRIG TASK");
+	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
+}
+
 static void aneg_delayable_work_handler(struct k_work *w)
 {
 	struct k_work_delayable *dwork = k_work_delayable_from_work(w);
@@ -383,7 +464,30 @@ static void aneg_delayable_work_handler(struct k_work *w)
 static void tps6699x_emul_handle_aneg(struct tps6699x_emul_pdc_data *data,
 				      uint8_t *data_reg)
 {
-	LOG_INF("ANEg TASK");
+	uint32_t pdo, ma, max_mv, min_mv;
+	union reg_autonegotiate_sink *an_snk =
+		(union reg_autonegotiate_sink *)
+			data->reg_val[REG_AUTONEGOTIATE_SINK];
+
+	union reg_active_rdo_contract *active_rdo_contract =
+		(union reg_active_rdo_contract *)
+			data->reg_val[REG_ACTIVE_RDO_CONTRACT];
+	LOG_INF("ANEg TASK, voltage=[%d:%d]", an_snk->auto_neg_min_voltage,
+		an_snk->auto_neg_max_voltage);
+
+	/* Find the PDO used to set ANeg values to set active RDO */
+	for (int i = 0; i < PDO_OFFSET_MAX; i++) {
+		pdo = data->pdo.partner_src_pdos[i];
+		pd_extract_pdo_power_unclamped(pdo, &ma, &max_mv, &min_mv);
+
+		if ((min_mv / 50) == an_snk->auto_neg_min_voltage &&
+		    (max_mv / 50) == an_snk->auto_neg_max_voltage) {
+			LOG_INF("ANEg Found PDO pos=%d", i + 1);
+			active_rdo_contract->rdo = RDO_FIXED(i + 1, ma, ma, 0);
+			data->pdo.rdo = active_rdo_contract->rdo;
+			break;
+		}
+	}
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 	k_work_schedule(&data->aneg_delay_work, K_MSEC(1));
 }
@@ -420,6 +524,14 @@ static int tps6699x_emul_handle_sbud(struct tps6699x_emul_pdc_data *data,
 	data->reg_val[REG_STATUS][3] = mode << 2;
 	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 
+	return 0;
+}
+
+static int tps6699x_emul_handle_gaid(struct tps6699x_emul_pdc_data *data,
+				     uint8_t *data_reg)
+{
+	LOG_INF("GAID TASK");
+	data_reg[0] = TASK_COMPLETED_SUCCESSFULLY;
 	return 0;
 }
 
@@ -461,6 +573,12 @@ static void tps6699x_emul_handle_command(struct tps6699x_emul_pdc_data *data,
 		break;
 	case COMMAND_TASK_SBUD:
 		tps6699x_emul_handle_sbud(data, data_reg);
+		break;
+	case COMMAND_TASK_GAID:
+		tps6699x_emul_handle_gaid(data, data_reg);
+		break;
+	case COMMAND_TASK_TRIG:
+		tps6699x_emul_handle_trig(data, data_reg);
 		break;
 	default: {
 		char task_str[5] = {
@@ -507,6 +625,22 @@ tps6699x_emul_handle_port_control(struct tps6699x_emul_pdc_data *data,
 	data->port_control = *pc;
 }
 
+static void
+tps6699x_emul_handle_interrupt_clear(struct tps6699x_emul_pdc_data *data)
+{
+	union reg_interrupt *interrupts =
+		(union reg_interrupt *)
+			data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
+	union reg_interrupt *clear =
+		(union reg_interrupt *)
+			data->reg_val[REG_INTERRUPT_CLEAR_FOR_I2C1];
+
+	for (int i = 0; i < sizeof(union reg_interrupt); ++i) {
+		interrupts->raw_value[i] &= ~clear->raw_value[i];
+		clear->raw_value[i] = 0;
+	}
+}
+
 static void tps6699x_emul_handle_write(struct tps6699x_emul_pdc_data *data,
 				       int reg)
 {
@@ -526,6 +660,7 @@ static void tps6699x_emul_handle_write(struct tps6699x_emul_pdc_data *data,
 		break;
 	case REG_INTERRUPT_CLEAR_FOR_I2C1:
 		/* Interrupts have been cleared */
+		tps6699x_emul_handle_interrupt_clear(data);
 		gpio_emul_input_set(data->irq_gpios.port, data->irq_gpios.pin,
 				    1);
 		break;
@@ -540,6 +675,11 @@ static int tps6699x_emul_start_write(const struct emul *emul, int reg)
 	struct tps6699x_emul_pdc_data *data = tps6699x_emul_get_pdc_data(emul);
 
 	if (!register_is_valid(data, reg)) {
+		return -EIO;
+	}
+
+	if (register_write_should_fail(data, reg)) {
+		clear_register_fail_bit(data, reg, data->fail_reg_writes);
 		return -EIO;
 	}
 
@@ -610,6 +750,11 @@ static int tps6699x_emul_start_read(const struct emul *emul, int reg)
 	struct tps6699x_emul_pdc_data *data = tps6699x_emul_get_pdc_data(emul);
 
 	if (!register_is_valid(data, reg)) {
+		return -EIO;
+	}
+
+	if (register_read_should_fail(data, reg)) {
+		clear_register_fail_bit(data, reg, data->fail_reg_reads);
 		return -EIO;
 	}
 
@@ -722,6 +867,7 @@ static int emul_tps6699x_set_connector_status(
 
 	union reg_received_identity_data_object *received_identity_data_object;
 	uint16_t voltage;
+	union conn_status_change_bits_t change_bits;
 
 	data->connector_status = *connector_status;
 
@@ -754,6 +900,28 @@ static int emul_tps6699x_set_connector_status(
 				[REG_RECEIVED_SOP_PRIME_IDENTITY_DATA_OBJECT];
 		received_identity_data_object->response_type = 0;
 	}
+
+	change_bits.raw_value = connector_status->raw_conn_status_change_bits;
+	if (change_bits.supported_provider_caps ||
+	    data->connector_status.connect_status == 0) {
+		union reg_power_path_status *power_path_status =
+			(union reg_power_path_status *)
+				data->reg_val[REG_POWER_PATH_STATUS];
+		/* Turn off the sink path */
+		power_path_status->pa_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
+		power_path_status->pb_ext_vbus_sw = EXT_VBUS_SWITCH_DISABLED;
+	}
+	return 0;
+}
+
+static int emul_tps6699x_set_rdo(const struct emul *target, uint32_t rdo)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	data->pdo.rdo = rdo;
+	data->connector_status.rdo = rdo;
+
 	return 0;
 }
 
@@ -881,7 +1049,6 @@ static int emul_tps6699x_set_info(const struct emul *target,
 		(union reg_tx_identity *)data->reg_val[REG_TX_IDENTITY];
 	union reg_customer_use *reg_customer_use =
 		(union reg_customer_use *)data->reg_val[REG_CUSTOMER_USE];
-	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
 
 	reg_version->version = info->fw_version;
 	*((uint16_t *)reg_tx_identity->vendor_id) = info->vid;
@@ -889,8 +1056,6 @@ static int emul_tps6699x_set_info(const struct emul *target,
 	memset(reg_customer_use->data, 0, sizeof(reg_customer_use->data));
 	memcpy(reg_customer_use->data, info->project_name,
 	       MIN(sizeof(reg_customer_use->data), strlen(info->project_name)));
-	*((uint32_t *)reg_mode->data) =
-		(info->is_running_flash_code ? REG_MODE_APP0 : 0);
 
 	return 0;
 }
@@ -967,20 +1132,37 @@ static int emul_tps6699x_reset(const struct emul *target)
 		tps6699x_emul_get_pdc_data(target);
 	const union reg_port_control *pdc_port_control =
 		(const union reg_port_control *)data->reg_val[REG_PORT_CONTROL];
-
+	union reg_mode *reg_mode = (union reg_mode *)data->reg_val[REG_MODE];
+	union reg_received_attention_vdm *attention_vdm =
+		(union reg_received_attention_vdm *)
+			data->reg_val[REG_RECEIVED_ATTENTION_VDM];
 	memset(data->reg_val, 0, sizeof(data->reg_val));
 
 	/* Reset PDOs. */
 	emul_pdc_pdo_reset(&data->pdo);
 
 	/* Default DRP enabled */
-	data->ccom = BIT(2);
+	data->ccom = CCOM_DRP;
 
 	emul_tps6699x_default_port_control(
 		(union reg_port_control *)data->reg_val[REG_PORT_CONTROL]);
 
 	data->frs_configured = false;
 	data->port_control = *pdc_port_control;
+
+	/* Reset failure structures. */
+	memset(data->fail_reg_reads, 0, REG_U32_BITMAP_SIZE);
+	memset(data->fail_reg_writes, 0, REG_U32_BITMAP_SIZE);
+	data->fail_next_ucsi_cmd_count = 0;
+
+	/* Initialize reg_mode to APP0 to indicate running from flash. */
+	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
+
+	/* Init received attention vdm */
+	attention_vdm->number_valid_vdos = 2;
+	attention_vdm->sequence_number = 1;
+	attention_vdm->vdm_header = 0;
+	attention_vdm->vdo = 0x1;
 
 	return 0;
 }
@@ -1046,17 +1228,32 @@ static int tps6699x_emul_init(const struct emul *emul,
 {
 	struct tps6699x_emul_data *data = emul->data;
 	const struct i2c_common_emul_cfg *cfg = emul->cfg;
-
+	union reg_mode *reg_mode =
+		(union reg_mode *)data->pdc_data.reg_val[REG_MODE];
+	union reg_received_attention_vdm *attention_vdm =
+		(union reg_received_attention_vdm *)
+			data->pdc_data.reg_val[REG_RECEIVED_ATTENTION_VDM];
 	LOG_INF("TPS669X emul init");
 
 	data->common.i2c = parent;
 	data->common.cfg = cfg;
 
 	i2c_common_emul_init(&data->common);
+	gpio_emul_input_set(data->pdc_data.irq_gpios.port,
+			    data->pdc_data.irq_gpios.pin, 1);
 	k_work_init_delayable(&data->pdc_data.delay_work,
 			      delayable_work_handler);
 	k_work_init_delayable(&data->pdc_data.aneg_delay_work,
 			      aneg_delayable_work_handler);
+
+	/* Init register to APP0 */
+	*((uint32_t *)reg_mode->data) = REG_MODE_APP0;
+
+	/* Init received attention vdm */
+	attention_vdm->number_valid_vdos = 2;
+	attention_vdm->sequence_number = 1;
+	attention_vdm->vdm_header = 0;
+	attention_vdm->vdo = 0x1;
 
 	return 0;
 }
@@ -1155,6 +1352,68 @@ static int tps6699x_emul_get_data_role_preference(const struct emul *target,
 	return 0;
 }
 
+int emul_pdc_fail_reg_read(const struct emul *target, uint8_t reg)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (reg > TPS6699X_MAX_REG) {
+		return -EINVAL;
+	}
+
+	data->fail_reg_reads[REG_BITMAP_INDEX(reg)] |=
+		BIT(REG_BITMAP_OFFSET(reg));
+
+	return 0;
+}
+
+int emul_pdc_fail_reg_write(const struct emul *target, uint8_t reg)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (reg > TPS6699X_MAX_REG) {
+		return -EINVAL;
+	}
+
+	data->fail_reg_writes[REG_BITMAP_INDEX(reg)] |=
+		BIT(REG_BITMAP_OFFSET(reg));
+
+	return 0;
+}
+
+int emul_pdc_fail_next_ucsi_command(const struct emul *target,
+				    enum ucsi_command_t command,
+				    enum std_task_response with_response,
+				    uint8_t num_times)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	if (with_response == TASK_COMPLETED_SUCCESSFULLY) {
+		return -EINVAL;
+	}
+
+	data->fail_next_ucsi_cmd = command;
+	data->fail_next_ucsi_cmd_count = num_times;
+	data->fail_next_ucsi_cmd_with_response = with_response;
+
+	return 0;
+}
+
+int emul_pdc_set_interrupt_patch_loaded(const struct emul *target)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+	union reg_interrupt *reg_interrupt =
+		(union reg_interrupt *)
+			data->reg_val[REG_INTERRUPT_EVENT_FOR_I2C1];
+
+	reg_interrupt->patch_loaded = 1;
+
+	return 0;
+}
+
 /* LCOV_EXCL_START - Emulator backend functionality only */
 static bool is_feature_flag_supported(enum emul_pdc_feature_flag feature)
 {
@@ -1207,6 +1466,39 @@ static void emul_tps6699x_reset_feature_flags(const struct emul *target)
 }
 /* LCOV_EXCL_STOP */
 
+static int emul_tps6699x_get_autoneg_sink(const struct emul *target,
+					  int *max_voltage, int *max_current)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+
+	const union reg_autonegotiate_sink *an_snk =
+		(union reg_autonegotiate_sink *)
+			data->reg_val[REG_AUTONEGOTIATE_SINK];
+
+	*max_voltage = an_snk->auto_neg_max_voltage;
+	*max_current = an_snk->auto_neg_max_current;
+
+	return 0;
+}
+
+static int emul_tps6699x_set_identity(const struct emul *target, uint32_t *vdos)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+	memcpy(&data->identity, vdos,
+	       sizeof(uint32_t) * PDC_DISC_IDENTITY_VDO_COUNT);
+	return 0;
+}
+
+static int emul_tps6699x_set_revision(const struct emul *target, uint32_t rmdo)
+{
+	struct tps6699x_emul_pdc_data *data =
+		tps6699x_emul_get_pdc_data(target);
+	data->rmdo = rmdo;
+	return 0;
+}
+
 static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.reset = emul_tps6699x_reset,
 	.set_response_delay = emul_tps6699x_set_response_delay,
@@ -1217,6 +1509,7 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.set_connector_status = emul_tps6699x_set_connector_status,
 	.get_uor = emul_tps6699x_get_uor,
 	.get_pdr = emul_tps6699x_get_pdr,
+	.set_rdo = emul_tps6699x_set_rdo,
 	.get_requested_power_level = emul_tps6699x_get_requested_power_level,
 	.get_ccom = emul_tps6699x_get_ccom,
 	.get_drp_mode = emul_tps6699x_get_drp_mode,
@@ -1240,6 +1533,9 @@ static DEVICE_API(emul_pdc, emul_tps6699x_api) = {
 	.set_feature_flag = emul_tps6699x_set_feature_flag,
 	.clear_feature_flag = emul_tps6699x_clear_feature_flag,
 	.reset_feature_flags = emul_tps6699x_reset_feature_flags,
+	.get_autoneg_sink = emul_tps6699x_get_autoneg_sink,
+	.set_identity = emul_tps6699x_set_identity,
+	.set_revision = emul_tps6699x_set_revision,
 };
 
 /* clang-format off */

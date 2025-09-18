@@ -7,19 +7,17 @@
 
 #include <cros/integrated_fwid.dtsi>
 
+#include "../interrupts.dtsi"
+#include "../adc.dtsi"
+#include "../i2c.dtsi"
+#include "../common.dtsi"
+#include "../battery.dtsi"
+#include "../psl.dtsi"
+
 /* bluey project DTS includes */
 
-#include <cros/cbi_flash.dtsi>
-
-#include "../gpios.dtsi"
+#include "gpios.dtsi"
+#include "fan.dtsi"
 
 /* bluey overrides follow... */
 
-&cbi_flash {
-	/*
-	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
-	 * EC_RO section. EC_RO section ends at 0x50000 byte which is the offset
-	 */
-	offset = <0x50000>;
-	size = <0x1000>;
-};

@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "cros_cbi.h"
 #include "gpio.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -27,6 +28,19 @@ static int fake_cbi_get_board_version(uint32_t *ver)
 FAKE_VOID_FUNC(ppc_chip_0_interrupt, int);
 FAKE_VOID_FUNC(ppc_chip_alt_interrupt, int);
 FAKE_VOID_FUNC(ppc_chip_1_interrupt, int);
+DECLARE_FAKE_VALUE_FUNC(int, cros_cbi_get_fw_config,
+			enum cbi_fw_config_field_id, uint32_t *);
+
+static int cros_cbi_get_fw_config_mock(enum cbi_fw_config_field_id field_id,
+				       uint32_t *value)
+{
+	if (field_id != FORM_FACTOR)
+		return -EINVAL;
+
+	*value = CONVERTIBLE;
+
+	return 0;
+}
 
 ZTEST(ppc_tentacruel, test_ppc_init)
 {
@@ -34,6 +48,8 @@ ZTEST(ppc_tentacruel, test_ppc_init)
 		DT_GPIO_CTLR(DT_NODELABEL(usb_c0_ppc_int_odl), gpios));
 	const gpio_port_pins_t ppc_int_pin =
 		DT_GPIO_PIN(DT_NODELABEL(usb_c0_ppc_int_odl), gpios);
+
+	cros_cbi_get_fw_config_fake.custom_fake = cros_cbi_get_fw_config_mock;
 
 	/* Board version 0, expect that main ppc is enabled. */
 	RESET_FAKE(cbi_get_board_version);
@@ -128,6 +144,7 @@ static void ppc_tentacruel_before(void *fixture)
 	RESET_FAKE(ppc_chip_0_interrupt);
 	RESET_FAKE(ppc_chip_alt_interrupt);
 	RESET_FAKE(ppc_chip_1_interrupt);
+	RESET_FAKE(cros_cbi_get_fw_config);
 
 	/* We have bypassed the db detection, so we force enabling the
 	 * int_x_ec_gpio2.

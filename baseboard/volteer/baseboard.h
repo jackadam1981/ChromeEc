@@ -36,7 +36,7 @@
 /* EC Defines */
 #define CONFIG_LTO
 #define CONFIG_BOARD_VERSION_CBI
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_CBI_EEPROM
 #define CONFIG_DPTF
 #define CONFIG_FPU
@@ -114,7 +114,6 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 512
-#define CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT 512
 
 /*
  * Hardware based charge ramp is broken in the ISL9241 (b/169350714).

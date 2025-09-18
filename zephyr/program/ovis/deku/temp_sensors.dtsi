@@ -30,35 +30,35 @@
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		temperature_ddr_soc: ddr_soc {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
 			sensor = <&temp_ddr_soc>;
 		};
 		temperature_ambient: ambient {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
 			sensor = <&temp_ambient>;
 		};
 		temperature_imvp_soc: imvp_soc {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
 			sensor = <&temp_imvp_soc>;
 		};
 		temperature_nvme: nvme {
-			temp_fan_off = <35>;
-			temp_fan_max = <60>;
-			temp_host_high = <85>;
-			temp_host_halt = <90>;
-			temp_host_release_high = <80>;
+			temp-fan-off = <35>;
+			temp-fan-max = <60>;
+			temp-host-high = <85>;
+			temp-host-halt = <90>;
+			temp-host-release-high = <80>;
 			sensor = <&temp_nvme>;
 		};
 	};

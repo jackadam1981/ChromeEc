@@ -397,10 +397,23 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 #define SENSOR_GPIO_ENABLE_INTERRUPT(i, id) \
 	gpio_enable_dt_interrupt(           \
 		GPIO_INT_FROM_NODE(DT_PHANDLE_BY_IDX(id, sensor_irqs, i)));
-static void sensor_enable_irqs(void){
+static void sensor_enable_irqs(void)
+{
+	if (motion_sensor_count == 0) {
+		/* Don't enable interrupts if there are no sensors. This is not
+		 * an optimal solution, it's possible that some sensors will be
+		 * disabled while others aren't. For now, we will use this
+		 * all-or-nothing approach which will be replaced eventually by
+		 * the Zephyr upstream drivers.
+		 */
+		return;
+	}
+	__ASSERT_NO_MSG(DT_PROP_LEN(SENSOR_INFO_NODE, sensor_irqs) <=
+			motion_sensor_count);
 	LISTIFY(DT_PROP_LEN(SENSOR_INFO_NODE, sensor_irqs),
 		SENSOR_GPIO_ENABLE_INTERRUPT, (), SENSOR_INFO_NODE)
-} DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
+}
+DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
 #endif
 
 /* Handle the alternative motion sensors */
@@ -466,5 +479,20 @@ void motion_sensors_check_ssfc(void){
 	COND_CODE_1(DT_NODE_HAS_PROP(id, int_signal), (DEF_MOTION_ISR(id)), ())
 
 #if DT_NODE_EXISTS(SENSOR_NODE)
-DT_FOREACH_CHILD(SENSOR_NODE, DEF_MOTION_CHECK_ISR)
+DT_FOREACH_CHILD(SENSOR_NODE, DEF_MOTION_CHECK_ISR);
+#endif
+
+#ifdef CONFIG_PLATFORM_EC_BODY_DETECTION_DYNAMIC_INDEX
+
+static int motion_sense_on_body_sensor_index = MOTION_SENSE_INVALID_SENSOR_ID;
+
+int motion_sense_get_on_body_sensor_index(void)
+{
+	return motion_sense_on_body_sensor_index;
+}
+
+void motion_sense_set_on_body_sensor_index(int idx)
+{
+	motion_sense_on_body_sensor_index = idx;
+}
 #endif
