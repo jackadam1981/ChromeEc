@@ -243,8 +243,7 @@ static enum ec_error_list authenticate_fp_mode(
 	std::optional<std::span<const uint8_t, SHA256_DIGEST_LENGTH> > mac)
 {
 	/* Allow for classic fingerprint flow. */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+	if (!fingerprint_auth_enabled()) {
 		return EC_SUCCESS;
 	}
 
@@ -482,8 +481,7 @@ static enum ec_status fp_command_sign_match(struct host_cmd_handler_args *args)
 	};
 	std::span<uint8_t, FP_MAC_LENGTH> signature{ response->signature };
 
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+	if (!fingerprint_auth_enabled()) {
 		return EC_RES_ACCESS_DENIED;
 	}
 

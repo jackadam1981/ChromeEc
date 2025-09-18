@@ -123,8 +123,7 @@ static uint32_t fp_process_enroll(void)
 			 * matching, until Trusted Application sends us a signed
 			 * confirmation.
 			 */
-			if (!(global_context.fp_encryption_status &
-			      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+			if (!fingerprint_auth_enabled()) {
 				global_context.templ_valid++;
 			}
 		}

@@ -23,6 +23,13 @@
 enum ec_error_list check_context_cleared();
 
 /**
+ * Check if Fingerprint Auth is enabled
+ *
+ * @return true if the Fingerprint Auth is enabled, false otherwise.
+ */
+bool fingerprint_auth_enabled();
+
+/**
  * Validate request from Trusted Application.
  *
  * @param[in] context the context.

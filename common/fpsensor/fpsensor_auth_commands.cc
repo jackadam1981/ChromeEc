@@ -57,6 +57,12 @@ enum ec_error_list check_context_cleared()
 	return EC_SUCCESS;
 }
 
+bool fingerprint_auth_enabled()
+{
+	return global_context.fp_encryption_status &
+	       FP_CONTEXT_STATUS_SESSION_ESTABLISHED;
+}
+
 static enum ec_status
 fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 {
@@ -151,8 +157,7 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_SESSION_ESTABLISHED) {
+	if (fingerprint_auth_enabled()) {
 		CPRINTS("load_pairing_key: Session already established");
 		return EC_RES_ACCESS_DENIED;
 	}
@@ -188,8 +193,7 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_SESSION_ESTABLISHED) {
+	if (fingerprint_auth_enabled()) {
 		/* Invalidate the existing context and templates to prevent
 		 * leaking the existing template. */
 		fp_reset_context();
@@ -261,8 +265,7 @@ fp_cmd_generate_challenge(struct host_cmd_handler_args *args)
 
 	/* The Session Key is used to sign messages. Let's make sure
 	 * it's available. */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+	if (!fingerprint_auth_enabled()) {
 		return EC_RES_ACCESS_DENIED;
 	}
 
@@ -334,8 +337,7 @@ sign_message(std::span<const uint8_t> context,
 
 	/* The Session Key is used to sign messages. Let's make sure
 	 * it's available. */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_SESSION_ESTABLISHED)) {
+	if (!fingerprint_auth_enabled()) {
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
