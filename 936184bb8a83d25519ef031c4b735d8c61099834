@@ -51,6 +51,24 @@
       "message": "I\u0027m working on a [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6939212/3) that will provide an `is_charger_sufficient` API",
       "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e2021b_588ffaa0",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-09-18T01:50:38Z",
+      "side": 1,
+      "message": "`charge_is_adapter_sufficient\u0027 looks good to used. Wait your CL merge and we will change to use this API.",
+      "parentUuid": "7930089e_98329cff",
+      "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
