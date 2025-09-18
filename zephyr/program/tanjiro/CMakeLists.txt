@@ -14,4 +14,5 @@ if(DEFINED CONFIG_BOARD_TANJIRO)
 
 elseif(DEFINED CONFIG_BOARD_SAPPHIRE)
 	project(sapphire)
+	add_subdirectory(sapphire)
 endif()
