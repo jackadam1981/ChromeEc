@@ -28,6 +28,8 @@
 
 static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static int pd_int_storm_max = CONFIG_USB_PD_INT_STORM_MAX;
+
 test_mockable void schedule_deferred_pd_interrupt(const int port)
 {
 	/*
@@ -44,11 +46,21 @@ static struct {
 	timestamp_t time;
 } storm_tracker[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static struct {
+	bool active;
+	uint32_t period;
+	timestamp_t duration;
+} storm_simulator[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 static void service_one_port(int port)
 {
 	timestamp_t now;
 
 	tcpc_alert(port);
+
+	/* Check if storm detection is enabled */
+	if (pd_int_storm_max <= 0)
+		return;
 
 	now = get_time();
 	if (timestamp_expired(storm_tracker[port].time, &now)) {
@@ -60,10 +72,8 @@ static void service_one_port(int port)
 		 * now
 		 */
 		storm_tracker[port].count = 1;
-	} else if (++storm_tracker[port].count > CONFIG_USB_PD_INT_STORM_MAX) {
-		CPRINTS("C%d: Interrupt storm detected."
-			" Disabling port temporarily",
-			port);
+	} else if (++storm_tracker[port].count > pd_int_storm_max) {
+		CPRINTS("C%d: Interrupt storm detected.", port);
 
 		pd_set_suspend(port, 1);
 		pd_deferred_resume(port);
@@ -99,9 +109,23 @@ void pd_interrupt_handler_task(void *p)
 
 	while (1) {
 		bool have_alerts;
-		const int evt = task_wait_event(-1);
+		int evt;
+		int wait_period = -1;
+		if (storm_simulator[port].active) {
+			if (storm_simulator[port].duration.val > 0 &&
+			    timestamp_expired(storm_simulator[port].duration,
+					      NULL)) {
+				storm_simulator[port].active = false;
+				CPRINTS("C%d: Interrupt storm simulation finished",
+					port);
+			} else {
+				wait_period = storm_simulator[port].period;
+			}
+		}
+		evt = task_wait_event(wait_period);
 
-		if ((evt & PD_PROCESS_INTERRUPT) == 0)
+		if ((evt & PD_PROCESS_INTERRUPT) == 0 &&
+		    !(storm_simulator[port].active))
 			continue;
 		/*
 		 * While the interrupt signal is asserted; we have more
@@ -115,9 +139,18 @@ void pd_interrupt_handler_task(void *p)
 		 * PD_PROCESS_INTERRUPT to check if we missed anything.
 		 */
 		do {
-			have_alerts = (tcpc_get_alert_status() & port_mask) &&
-				      pd_is_port_enabled(port);
-			if (have_alerts)
+			bool port_enabled = pd_is_port_enabled(port);
+			if (port_enabled) {
+				/* Only check tcpc_get_alert_status if port is
+				 * enabled since it may be expensive.
+				 */
+				have_alerts =
+					!!(tcpc_get_alert_status() & port_mask);
+			} else {
+				have_alerts = false;
+			}
+			if (have_alerts ||
+			    (storm_simulator[port].active && port_enabled))
 				service_one_port(port);
 			board_process_pd_alert(port);
 		} while (have_alerts);
@@ -203,6 +236,8 @@ void pd_shared_alert_task(void *p)
 				}
 				service_one_port(port);
 			}
+
+			have_alerts = tcpc_get_alert_status();
 			for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT;
 			     ++port) {
 				board_process_pd_alert(port);
@@ -211,3 +246,91 @@ void pd_shared_alert_task(void *p)
 	}
 }
 #endif /* !CONFIG_ZEPHYR || CONFIG_HAS_TASK_PD_INT_SHARED */
+
+static int command_pd_int_storm_simulate(int argc, const char **argv)
+{
+	char *e;
+	int duration_s;
+	int frequency;
+	int port;
+
+	if (argc < 3 || argc > 4)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 0);
+	if (port < 0 || port > CONFIG_USB_PD_PORT_MAX_COUNT) {
+		return EC_ERROR_PARAM1;
+	}
+
+	storm_simulator[port].active = false;
+
+	frequency = strtoi(argv[2], &e, 0);
+	if (frequency <= 0) {
+		ccprintf("PD interrupt storm simulator disabled on port %d\n",
+			 port);
+		return EC_SUCCESS;
+	}
+	storm_simulator[port].period = SECOND / frequency;
+
+	duration_s = 0;
+	if (argc >= 4) {
+		duration_s = strtoi(argv[3], &e, 0);
+	}
+	if (duration_s <= 0) {
+		storm_simulator[port].duration.val = 0;
+	} else {
+		storm_simulator[port].duration.val =
+			get_time().val + duration_s * SECOND;
+	}
+
+	if (duration_s > 0)
+		ccprintf(
+			"PD interrupt storm simulator running on port %d at %dhz for %ds\n",
+			port, frequency, duration_s);
+	else
+		ccprintf(
+			"PD interrupt storm simulator running on port %d at %dhz\n",
+			port, frequency);
+
+	storm_simulator[port].active = true;
+
+	task_set_event(pd_int_task_id[port], TASK_EVENT_WAKE);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(
+	pd_storm_sim, command_pd_int_storm_simulate,
+	"<port> <frequency(hz)> [duration(s)]",
+	"Simulate a pd interrupt storm. "
+	"frequency <= 0 will disable storm simulation. "
+	"duration <= 0 or unspecified will run storm simulation until stopped.");
+
+static int command_pd_int_storm_detect(int argc, const char **argv)
+{
+	char *e;
+
+	if (argc < 1 || argc > 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc == 2) {
+		pd_int_storm_max = strtoi(argv[1], &e, 0);
+	}
+
+	if (pd_int_storm_max <= 0) {
+		ccprintf("PD interrupt storm detect disabled\n");
+		return EC_SUCCESS;
+	}
+
+	ccprintf(
+		"PD interrupt storm detect threshold = %dhz (default = %dhz)\n",
+		pd_int_storm_max, CONFIG_USB_PD_INT_STORM_MAX);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(
+	pd_storm_det, command_pd_int_storm_detect,
+	"[<storm_detect_threshold(hz)>]",
+	"Prints and optionally sets the PD interrupt storm detect "
+	"threshold frequency. "
+	"storm_detect_threshold <= 0 disables PD interrupt storm detection.");
