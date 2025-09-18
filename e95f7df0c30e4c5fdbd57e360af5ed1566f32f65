@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521f3577_2bde2414",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-18T18:15:39Z",
+      "side": 1,
+      "message": "Could this one also be common?\n\n```suggestion\n{\n\tif (ap_power_in_or_transitioning_to_state(AP_POWER_STATE_HARD_OFF) ||\n\t    ap_power_in_state(AP_POWER_STATE_SOFT_OFF)) {\n\t\trequest_start_from_g3();\n\t}\n}\n```",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "e95f7df0c30e4c5fdbd57e360af5ed1566f32f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9e2913_6d5ba36a",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-18T18:15:39Z",
+      "side": 1,
+      "message": "I am thinking about moving all functions that start with `ap_power` into `zephyr/subsys/ap_pwrseq/ap_power_interface.c` and remove `zephyr/subsys/ap_pwrseq/ap_power_drv_interface.c`.\n\nGiven that only difference would be `ap_power_in_or_transitioning_to_state` and `ap_power_in_to_state` a simple `#ifdef CONFIG_AP_PWRSEQ_DRIVER` may be OK to use.",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "e95f7df0c30e4c5fdbd57e360af5ed1566f32f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
