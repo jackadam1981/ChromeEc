@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f71877d7_8d042456",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-18T21:54:58Z",
+      "side": 1,
+      "message": "@mqg@chromium.org - Do you have any concerns with an error returned for platforms that don\u0027t support this?",
+      "parentUuid": "3fff0045_cfa1933c",
+      "range": {
+        "startLine": 2214,
+        "startChar": 0,
+        "endLine": 2214,
+        "endChar": 31
+      },
+      "revId": "99799ca1c7ea2f388484ae0815c3cf3c6749f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bd04bc8_a540259b",
         "filename": "util/ectool.cc",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-17T19:54:09Z",
       "side": 1,
       "message": "Non-blocking, but some good cleanup here would be to use declared initializers for these parameters.\n```\nstatic const char *const base_params[] \u003d {\n\t[CS_PARAM_CHG_VOLTAGE] \u003d \"chg_voltage\",\n```",
+      "range": {
+        "startLine": 8017,
+        "startChar": 0,
+        "endLine": 8017,
+        "endChar": 15
+      },
+      "revId": "99799ca1c7ea2f388484ae0815c3cf3c6749f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e157ca7b_3bfbc9eb",
+        "filename": "util/ectool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8017,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-18T21:54:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8bd04bc8_a540259b",
       "range": {
         "startLine": 8017,
         "startChar": 0,
