@@ -89,6 +89,8 @@ struct node_prop_t {
 	bool state_active;
 };
 
+static int policy_queue = -1;
+
 #define PATTERN_NODE_ARRAY(id) DT_CAT(PATTERN_ARRAY_, id)
 #define GEN_PATTERN_NODE_ARRAY(id, fn1, fn2)          \
 	struct led_pattern_node_t PATTERN_NODE_ARRAY( \
@@ -156,12 +158,31 @@ test_export_static enum power_state get_chipset_state(void)
 
 static void set_color(int node_idx)
 {
+	if (charge_manager_get_active_charge_port() != 1) {
+		if (policy_queue == -1) {
+			policy_queue = node_idx;
+		}
+		else {
+			struct led_pattern_node_t *p = node_array[policy_queue].led_patterns;
+			if (p[0].cur_color >= p[0].pattern_len - 1) {
+				policy_queue = node_idx;
+			}
+			else {
+				node_idx = policy_queue;
+			}
+		}
+	}
+	else {
+		policy_queue = -1;
+	}
+	
 	struct led_pattern_node_t *patterns = node_array[node_idx].led_patterns;
 
 	for (int i = 0; i < node_array[node_idx].num_patterns; i++) {
 		if (!led_auto_control_is_enabled(
 			    patterns[i].pattern_color[0].led_color_node->led_id))
 			continue; /* Auto control is disabled */
+
 
 		led_set_color_with_pattern(&patterns[i]);
 

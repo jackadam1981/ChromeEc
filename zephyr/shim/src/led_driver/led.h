@@ -152,7 +152,7 @@ struct led_pattern_node_t {
 };
 
 #define GET_COLOR(pattern_element, color_index) \
-	pattern_element.pattern_color[color_index].led_color
+	pattern_element.pattern_color[color_index].led_color_node->led_color
 #define GET_DURATION(pattern_element, color_index) \
 	pattern_element.pattern_color[color_index].duration_ms
 

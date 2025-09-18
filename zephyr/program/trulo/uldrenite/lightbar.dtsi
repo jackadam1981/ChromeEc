@@ -27,6 +27,15 @@
 				led-color = "LED_WHITE";
 				color = <0x101010>;
 			};
+			color_yellow: yellow {
+				led-color = "LED_YELLOW";
+				color = <0x101000>;
+			};
+			/* not actually amber, stand in for dim */
+			color_amber: amber {
+				led-color = "LED_AMBER";
+				color = <0x040404>;
+			};
 			color_off: off {
 				led-color = "LED_OFF";
 				color = <0x000000>;
@@ -41,12 +50,80 @@
 		power-state-charge-s0 {
 			charge-state = "LED_PWRS_CHARGE";
 			chipset-state = "POWER_S0";
+			charge-port = <0>;
+			/* Solid blue */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-2 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-3 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-4 {
+					led-color = "LED_GREEN";
+					period-ms = <1000>;
+				};
+				color-5 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+		/* Lightbar policy */
+		power-state-near-full-s0 {
+			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+			chipset-state = "POWER_S0";
+			charge-port = <0>;
 			/* Solid blue */
 			pattern-0 {
 				transition = "LED_TRANSITION_STEP";
 				led-id = "EC_LED_ID_LIGHTBAR_LED";
 				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-2 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-3 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-4 {
 					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-5 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-6 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-7 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-8 {
+					led-color = "LED_AMBER";
 				};
 			};
 		};
@@ -59,6 +136,80 @@
 				led-id = "EC_LED_ID_LIGHTBAR_LED";
 				color-0 {
 					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-2 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-3 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-4 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-5 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-6 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-7 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-8 {
+					led-color = "LED_AMBER";
+				};
+			};
+		};
+
+		power-state-error-s0 {
+			charge-state = "LED_PWRS_ERROR";
+			chipset-state = "POWER_S0";
+
+			batter-led {
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_RED";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+
+		power-state-forced-idle {
+			charge-state = "LED_PWRS_FORCED_IDLE";
+			chipset-state = "POWER_S0";
+
+			batter-led {
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_OFF";
+				};
+			};
+		};
+
+		power-state-idle {
+			charge-state = "LED_PWRS_IDLE";
+			chipset-state = "POWER_S0";
+
+			batter-led {
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_OFF";
 				};
 			};
 		};
@@ -69,12 +220,199 @@
 				transition = "LED_TRANSITION_LINEAR";
 				led-id = "EC_LED_ID_LIGHTBAR_LED";
 				color-0 {
+					led-color = "LED_OFF";
+				};
+			};
+		};
+		power-state-off {
+			chipset-state = "POWER_S5";
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
 					led-color = "LED_WHITE";
-					period-ms = <1500>;
+					period-ms = <250>;
 				};
 				color-1 {
 					led-color = "LED_OFF";
-					period-ms = <1500>;
+					period-ms = <250>;
+				};
+				color-2 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-3 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-4 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-5 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-6 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-7 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-8 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-9 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-10 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-11 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-12 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-13 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-14 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-15 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-16 {
+					led-color = "LED_WHITE";
+					period-ms = <1000>;
+				};
+				color-17 {
+					led-color = "LED_BLUE";
+					period-ms = <250>;
+				};
+				color-18 {
+					led-color = "LED_RED";
+					period-ms = <250>;
+				};
+				color-19 {
+					led-color = "LED_YELLOW";
+					period-ms = <250>;
+				};
+				color-20 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-21 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+
+
+		/* port 1 policies */
+		/* Lightbar policy */
+		power-state-charge-s0-port1 {
+			charge-state = "LED_PWRS_CHARGE";
+			chipset-state = "POWER_S0";
+			charge-port = <1>;
+			/* Solid blue */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-2 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-3 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-4 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-5 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-6 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-7 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-8 {
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+		/* Lightbar policy */
+		power-state-near-full-s0-port1 {
+			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+			chipset-state = "POWER_S0";
+			charge-port = <1>;
+			/* Solid blue */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-2 {
+					led-color = "LED_WHITE";
+					period-ms = <250>;
+				};
+				color-3 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-4 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-5 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-6 {
+					led-color = "LED_GREEN";
+					period-ms = <250>;
+				};
+				color-7 {
+					led-color = "LED_OFF";
+					period-ms = <250>;
+				};
+				color-8 {
+					led-color = "LED_AMBER";
 				};
 			};
 		};
