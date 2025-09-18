@@ -70,6 +70,30 @@
       },
       "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d4e64c_7e323d1c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-18T21:34:30Z",
+      "side": 1,
+      "message": "I didn\u0027t see the second comment when I posted mine. The Internal MCHP WP is only Active high hence the inversion here",
+      "parentUuid": "a59c46bb_531f477c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
