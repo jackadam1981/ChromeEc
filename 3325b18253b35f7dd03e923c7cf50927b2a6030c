@@ -16,6 +16,63 @@
       "message": "p",
       "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc91bcb_ceb61546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-18T16:06:24Z",
+      "side": 1,
+      "message": "I know that the commit message is borrowed from the previous commit, would appreciate adding a bit more details.",
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7cc664_6a6c5446",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-18T16:06:24Z",
+      "side": 1,
+      "message": "nit: Remove this extra line",
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e78b42d_75a43233",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-18T16:06:24Z",
+      "side": 1,
+      "message": "nit: Adjust the comment style",
+      "range": {
+        "startLine": 873,
+        "startChar": 1,
+        "endLine": 874,
+        "endChar": 12
+      },
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
