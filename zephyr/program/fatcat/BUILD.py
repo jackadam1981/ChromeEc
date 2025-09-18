@@ -1,4 +1,4 @@
-# Copyright 2024 The ChromiumOS Authors
+# Copyright 2025 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -9,6 +9,7 @@ def register_npcx9_project(
     project_name,
     extra_kconfig_files=(),
     inherited_from=None,
+    zephyr_board= "npcx9/npcx9m7f",
 ):
     """Register an npcx9 based variant of fatcat."""
     if inherited_from is None:
@@ -16,7 +17,7 @@ def register_npcx9_project(
 
     register_npcx_project(
         project_name=project_name,
-        zephyr_board="npcx9/npcx9m7f",
+        zephyr_board=zephyr_board,
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
@@ -83,6 +84,11 @@ register_npcx9_project(
     project_name="francka",
 )
 
+register_npcx9_project(
+    project_name="ruby",
+    zephyr_board="npcx9/npcx9m7fb",
+)
+
 register_it8xxx2_project(
     project_name="felino",
 )
@@ -124,6 +130,7 @@ register_ish_project(
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="francka", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ruby", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino4es", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="kinmen", addr=0x60098)
