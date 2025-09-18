@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4c3dd6_dcca25f8",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-18T16:15:26Z",
+      "side": 1,
+      "message": "Add the `no-auto-init` property to this GPIO because the GPIO initialization is handled by the WP driver.  You can also set the flags to 0 since it won\u0027t be used by the GPIO shim driver when `no-auto-init` is set.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 26
+      },
+      "revId": "2e87c5a3245a4f8258f1db209ca35d55083a4bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
