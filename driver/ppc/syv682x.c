@@ -20,6 +20,7 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "zephyr/debug/mutex_history.h"
 
 #define SYV682X_FLAGS_SOURCE_ENABLED BIT(0)
 #define SYV682X_FLAGS_SINK_ENABLED BIT(1)
@@ -69,6 +70,8 @@ static timestamp_t vconn_oc_timer[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
+
+extern struct ring_buf mutex_history_rb;
 
 static int syv682x_vbus_sink_enable(int port, int enable);
 
@@ -134,14 +137,27 @@ static int syv682x_wait_for_ready(int port, int reg)
 
 static int write_reg(uint8_t port, int reg, int regval)
 {
+	if (regval == 234) {
+		MUTEX_HISTORY_LOG_CRUMB(&mutex_history_rb,
+					"Entry to write_reg"); /* Entry to
+								  write_reg */
+	}
 	int rv;
 
 	rv = syv682x_wait_for_ready(port, reg);
 	if (rv)
 		return rv;
 
-	return i2c_write8(ppc_chips[port].i2c_port,
-			  ppc_chips[port].i2c_addr_flags, reg, regval);
+	rv = i2c_write8(ppc_chips[port].i2c_port,
+			ppc_chips[port].i2c_addr_flags, reg, regval);
+
+	if (regval == 234) {
+		MUTEX_HISTORY_LOG_CRUMB(&mutex_history_rb,
+					"Exit from write_reg"); /* Exit from
+								   write_reg */
+	}
+
+	return rv;
 }
 
 static int syv682x_is_sourcing_vbus(int port)

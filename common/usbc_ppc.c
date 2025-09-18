@@ -13,6 +13,7 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "zephyr/debug/mutex_history.h"
 
 #ifndef TEST_LEGACY_BUILD
 /*
@@ -25,6 +26,8 @@
 #define CPRINTF(format, args...)
 #define CPRINTS(format, args...)
 #endif
+
+extern struct ring_buf mutex_history_rb;
 
 int ppc_prints(const char *string, int port)
 {
@@ -219,6 +222,12 @@ int ppc_dev_is_connected(int port, enum ppc_device_role dev)
 
 test_mockable int ppc_vbus_sink_enable(int port, int enable)
 {
+	if (enable == 0) {
+		MUTEX_HISTORY_LOG_CRUMB(
+			&mutex_history_rb,
+			"Entry to ppc_vbus_sink_enable"); /* Entry to
+						    ppc_vbus_sink_enable*/
+	}
 	int rv = EC_ERROR_UNIMPLEMENTED;
 	const struct ppc_config_t *ppc;
 
@@ -230,6 +239,14 @@ test_mockable int ppc_vbus_sink_enable(int port, int enable)
 	ppc = &ppc_chips[port];
 	if (ppc->drv->vbus_sink_enable)
 		rv = ppc->drv->vbus_sink_enable(port, enable);
+
+	if (enable == 0) {
+		MUTEX_HISTORY_LOG_CRUMB(
+			&mutex_history_rb,
+			"Exit from ppc_vbus_sink_enable"); /* Exit from
+								 ppc_vbus_sink_enable
+								   */
+	}
 
 	return rv;
 }
