@@ -1,0 +1,42 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* ruby program common DTS includes */
+
+#include <cros/integrated_fwid.dtsi>
+#include <cros/cbi_flash.dtsi>
+
+#include "adc.dtsi"
+#include "battery.dtsi"
+#include "cbi.dtsi"
+#include "gpios.dtsi"
+#include "i2c.dtsi"
+#include "keyboard.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
+#include "overlay.dtsi"
+#include "power_signals.dtsi"
+#include "thermal.dtsi"
+#include "usba.dtsi"
+#include "usbc.dtsi"
+
+/* ruby overrides follow... */
+
+&cbi_flash {
+	/*
+	 * CBI section size is 0x1000 bytes, the CBI portion lies at the end of
+	 * EC_RO section. WP_RO section size is 0x40000 bytes, EC_RO will be
+	 * trimmed down to 0x3e000 and CBI will be added at 0x3e000.
+	 */
+	offset = <0x3e000>;
+	size = <0x1000>;
+};
+
+/* AP interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
