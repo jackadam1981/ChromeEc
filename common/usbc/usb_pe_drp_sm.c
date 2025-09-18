@@ -40,6 +40,7 @@
 #include "usb_tc_sm.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "zephyr/debug/mutex_history.h"
 
 /*
  * USB Policy Engine Sink / Source module
@@ -181,6 +182,8 @@
  * function defined in the board's usb_pd_policy.c file.
  */
 typedef int (*svdm_rsp_func)(int port, uint32_t *payload);
+
+extern struct ring_buf mutex_history_rb;
 
 /* List of all Policy Engine level states */
 enum usb_pe_state {
@@ -3520,6 +3523,9 @@ static void pe_snk_wait_for_capabilities_exit(int port)
  */
 static void pe_snk_evaluate_capability_entry(int port)
 {
+	MUTEX_HISTORY_DROP_CRUMB(&mutex_history_rb); /* contract negotiation
+							started */
+
 	uint32_t *pdo = (uint32_t *)rx_emsg[port].buf;
 	uint32_t num = rx_emsg[port].len >> 2;
 
@@ -3797,6 +3803,8 @@ static void pe_snk_transition_sink_entry(int port)
 
 static void pe_snk_transition_sink_run(int port)
 {
+	MUTEX_HISTORY_DROP_CRUMB(&mutex_history_rb); /* Accept message received
+							from source */
 	/*
 	 * Transition to the PE_SNK_Ready state when:
 	 *  1) A PS_RDY Message is received from the Source.
@@ -3851,6 +3859,13 @@ static void pe_snk_transition_sink_run(int port)
 			 * PE_SNK_Select_Capability has already applied that
 			 * limit.
 			 */
+			if (pe[port].curr_limit == 0) {
+				MUTEX_HISTORY_DROP_CRUMB(
+					&mutex_history_rb); /* 0A contract
+							       accepted */
+				mutex_history_dump(&mutex_history_rb);
+			}
+
 			if (pe[port].curr_limit != 0) {
 				/*
 				 * Per PD r3.1 v1.8 ss 8.3.3.3.6, the PE should
