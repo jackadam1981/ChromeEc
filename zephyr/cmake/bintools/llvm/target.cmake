@@ -2,36 +2,24 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Use generic bintools.
-include("${TOOLCHAIN_ROOT}/cmake/bintools/llvm/generic.cmake")
+include("${ZEPHYR_BASE}/cmake/bintools/llvm/target.cmake")
 
 if ("${ARCH}" STREQUAL "arm" OR "${ARCH}" STREQUAL "riscv")
-  set(CMAKE_AR         "${CROSS_COMPILE}ar")
-  set(CMAKE_NM         "${CROSS_COMPILE}nm")
-  set(CMAKE_OBJCOPY    "${CROSS_COMPILE}objcopy")
-  set(CMAKE_OBJDUMP    "${CROSS_COMPILE}objdump")
-  set(CMAKE_RANLIB     "${CROSS_COMPILE}ranlib")
-  set(CMAKE_READELF    "${CROSS_COMPILE}readelf")
-
   # CMake is looking for bintools by adding a suffix to compiler binary
   # e.g for AR it would be armv7m-cros-eabi-clang-ar, which doesn't exist.
   # Set bintools locations manually
-  set(CMAKE_C_COMPILER_AR         "${CROSS_COMPILE}ar")
-  set(CMAKE_C_COMPILER_NM         "${CROSS_COMPILE}nm")
-  set(CMAKE_C_COMPILER_OBJCOPY    "${CROSS_COMPILE}objcopy")
-  set(CMAKE_C_COMPILER_OBJDUMP    "${CROSS_COMPILE}objdump")
-  set(CMAKE_C_COMPILER_RANLIB     "${CROSS_COMPILE}ranlib")
-  set(CMAKE_C_COMPILER_READELF    "${CROSS_COMPILE}readelf")
+  set(CMAKE_C_COMPILER_AR       "${CMAKE_AR}")
+  set(CMAKE_C_COMPILER_NM       "${CMAKE_NM}")
+  set(CMAKE_C_COMPILER_OBJCOPY  "${CMAKE_OBJCOPY}")
+  set(CMAKE_C_COMPILER_OBJDUMP  "${CMAKE_OBJDUMP}")
+  set(CMAKE_C_COMPILER_RANLIB   "${CMAKE_RANLIB}")
+  set(CMAKE_C_COMPILER_READELF  "${CMAKE_READELF}")
 
   # And for C++
-  set(CMAKE_CXX_COMPILER_AR         "${CROSS_COMPILE}ar")
-  set(CMAKE_CXX_COMPILER_NM         "${CROSS_COMPILE}nm")
-  set(CMAKE_CXX_COMPILER_OBJCOPY    "${CROSS_COMPILE}objcopy")
-  set(CMAKE_CXX_COMPILER_OBJDUMP    "${CROSS_COMPILE}objdump")
-  set(CMAKE_CXX_COMPILER_RANLIB     "${CROSS_COMPILE}ranlib")
-  set(CMAKE_CXX_COMPILER_READELF    "${CROSS_COMPILE}readelf")
-
+  set(CMAKE_CXX_COMPILER_AR       "${CMAKE_AR}")
+  set(CMAKE_CXX_COMPILER_NM       "${CMAKE_NM}")
+  set(CMAKE_CXX_COMPILER_OBJCOPY  "${CMAKE_OBJCOPY}")
+  set(CMAKE_CXX_COMPILER_OBJDUMP  "${CMAKE_OBJDUMP}")
+  set(CMAKE_CXX_COMPILER_RANLIB   "${CMAKE_RANLIB}")
+  set(CMAKE_CXX_COMPILER_READELF  "${CMAKE_READELF}")
 endif()
-
-# Include the GNU bintools properties as a base.
-include("${ZEPHYR_BASE}/cmake/bintools/gnu/target_bintools.cmake")

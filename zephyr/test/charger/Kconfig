@@ -67,12 +67,6 @@ choice TEST_BOARD_VARIANT
 		select TEST_ISL923X
 		select TEST_CHARGER_MULTI_DEF
 
-	config TEST_BOARD_XIVUR
-		bool "Run xivur tests"
-		select TEST_PROGRAM_NISSA
-		select TEST_ISL923X
-		select TEST_CHARGER_MULTI_DEF
-
 	config TEST_BOARD_NATIVE_SIM
 		bool "native sim test"
 
@@ -94,7 +88,6 @@ config TEST_BOARD_NAME
 	default "pujjo" if TEST_BOARD_PUJJO
 	default "uldren" if TEST_BOARD_ULDREN
 	default "xivu" if TEST_BOARD_XIVU
-	default "xivur" if TEST_BOARD_XIVUR
 
 # Charger selection
 config TEST_ISL923X
@@ -104,6 +97,7 @@ config TEST_ISL923X
 # Test Selection
 choice TEST_TARGET
 	prompt "Test to run"
+	optional
 
 	config TEST_EXTPOWER
 		bool "Run external power tests"
@@ -135,5 +129,8 @@ config TEST_CHARGE_RAMP
 
 config TEST_CHARGE_STATE_PREVENT_POWER_ON
 	bool "Test charge_state.c prevent power on"
+
+config TEST_CHARGE_MANAGER_SEEDING
+	bool "Test charge_manager.c seeding"
 
 source "Kconfig.zephyr"

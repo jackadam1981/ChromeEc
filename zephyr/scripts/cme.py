@@ -157,6 +157,12 @@ def disambiguify(component):
     name = component["component_name"]
     if name in cme_chip_id.DISAMBIGUATION_DICTIONARY:
         for comp_info in cme_chip_id.DISAMBIGUATION_DICTIONARY[name]:
+            if (
+                comp_info.component_type is not None
+                and comp_info.component_type is not component["component_type"]
+            ):
+                continue
+
             new_comp = deepcopy(component)
             new_comp["component_name"] = comp_info.name
 
@@ -297,6 +303,7 @@ def find_i2c_portmap(edtlib, edt):
         "microchip,xec-i2c-v2",
         "zephyr,i2c-emul-controller",
         "intel,sedi-i2c",
+        "snps,designware-i2c",
     ]
 
     # Append all I2C chip names to a list; its index is the port number.
@@ -474,6 +481,8 @@ def insert_i2c_component(ctype, node, usbc_port, i2c_portmap, manifest):
     probe_str = "direct"
     if "ls-en-pin" in node.props:
         probe_str = "low_power"
+    elif node.props["compatible"].val[0] == "parade,ps8xxx":
+        probe_str = "low_power_probe_once"
 
     manifest.insert_component(
         ctype,

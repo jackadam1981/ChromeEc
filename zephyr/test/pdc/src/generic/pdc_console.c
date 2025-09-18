@@ -946,7 +946,7 @@ ZTEST_USER(console_cmd_pdc, test_srccaps)
 	 *  Src 3: 0201912c FIX          5000mV,  3000mA [           DRD    ]
 	 *  Src 4: 0181912c FIX          5000mV,  3000mA [               FRS]
 	 *  Src 5: 99019096 VAR  5000mV-20000mV,  1500mA
-	 *  Src 6: 590190c8 BAT  5000mV-20000mV, 10000mA
+	 *  Src 6: 590190c8 BAT  5000mV-20000mV,  2500mA
 	 *  Src 7: c12c5a28 AUG  9000mV-15000mV,  2000mA
 	 */
 
@@ -973,7 +973,7 @@ ZTEST_USER(console_cmd_pdc, test_srccaps)
 
 	/* Exceeds board current limit but will be reported anyways */
 	zassert_not_null(strstr(
-		outbuffer, "Src 6: 590190c8 BAT  5000mV-20000mV, 10000mA"));
+		outbuffer, "Src 6: 590190c8 BAT  5000mV-20000mV,  2500mA"));
 	zassert_not_null(strstr(
 		outbuffer, "Src 7: c12c5a28 AUG  9000mV-15000mV,  2000mA"));
 }
@@ -1231,4 +1231,72 @@ ZTEST_USER(console_cmd_pdc, test_sbumux)
 	zassert_ok(rv, "Expected success, but got %d", rv);
 	zassert_equal(1, pdc_power_mgmt_set_sbu_mux_mode_fake.call_count);
 	zassert_equal(1, pdc_power_mgmt_set_sbu_mux_mode_fake.arg0_history[0]);
+}
+
+ZTEST_USER(console_cmd_pdc, test_set_bbr_cts)
+{
+	int rv;
+
+	/* Invalid port number */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 99");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Invalid mode */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 invalid");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* API call fails */
+	pdc_power_mgmt_set_bbr_cts_fake.return_val = 1;
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 on");
+	zassert_equal(rv, pdc_power_mgmt_set_bbr_cts_fake.return_val,
+		      "Expected %d, but got %d",
+		      pdc_power_mgmt_set_bbr_cts_fake.return_val, rv);
+
+	RESET_FAKE(pdc_power_mgmt_set_bbr_cts);
+
+	/* Successful (on) */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 on");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_bbr_cts_fake.call_count);
+	zassert_equal(0, pdc_power_mgmt_set_bbr_cts_fake.arg0_history[0]);
+	zassert_true(pdc_power_mgmt_set_bbr_cts_fake.arg1_history[0]);
+	RESET_FAKE(pdc_power_mgmt_set_bbr_cts);
+
+	/* Successful (off) */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc set_bbr_cts 0 off");
+	zassert_equal(rv, EC_SUCCESS, "Expected %d, but got %d", EC_SUCCESS,
+		      rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_bbr_cts_fake.call_count);
+	zassert_equal(0, pdc_power_mgmt_set_bbr_cts_fake.arg0_history[0]);
+	zassert_false(pdc_power_mgmt_set_bbr_cts_fake.arg1_history[0]);
+}
+
+ZTEST_USER(console_cmd_pdc, test_set_ap_power_state)
+{
+	int rv;
+
+	/* Invalid state */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc ap_state s3");
+	zassert_equal(rv, -EINVAL, "Expected %d, but got %d", -EINVAL, rv);
+
+	/* Set S0 */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc ap_state s0");
+	zassert_ok(rv, "Expected success, but got %d", rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_ap_power_state_fake.call_count);
+	zassert_equal(POWER_S0,
+		      pdc_power_mgmt_set_ap_power_state_fake.arg0_history[0]);
+
+	RESET_FAKE(pdc_power_mgmt_set_ap_power_state);
+
+	/* Set S5 */
+	rv = shell_execute_cmd(get_ec_shell(), "pdc ap_state s5");
+	zassert_ok(rv, "Expected success, but got %d", rv);
+
+	zassert_equal(1, pdc_power_mgmt_set_ap_power_state_fake.call_count);
+	zassert_equal(POWER_S5,
+		      pdc_power_mgmt_set_ap_power_state_fake.arg0_history[0]);
 }

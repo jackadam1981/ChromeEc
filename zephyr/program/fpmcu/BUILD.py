@@ -14,6 +14,7 @@ def register_fpmcu_variant(
     variant_dts_overlays=(),
     variant_kconfig_files=(),
     signer=(),
+    **kwargs,
 ):
     """Register an fpmcu variant"""
     return register_func(
@@ -25,6 +26,7 @@ def register_fpmcu_variant(
         dts_overlays=[*variant_dts_overlays],
         kconfig_files=[here / "prj.conf", *variant_kconfig_files],
         signer=signer,
+        **kwargs,
     )
 
 
@@ -32,7 +34,7 @@ bloonchipper = register_fpmcu_variant(
     project_name="bloonchipper",
     zephyr_board="google_dragonclaw",
     register_func=register_binman_project,
-    variant_modules=["hal_stm32", "cmsis"],
+    variant_modules=["hal_stm32", "cmsis", "cmsis_6"],
     variant_optional_modules=["fpc"],
     variant_dts_overlays=[
         here / "bloonchipper" / "bloonchipper.dts",
@@ -45,17 +47,49 @@ bloonchipper = register_fpmcu_variant(
     signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
         here / "bloonchipper" / "dev_key.pem",
     ),
+    inherited_from=["brox", "brya", "fatcat", "guybrush", "rex", "skyrim"],
 )
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="bloonchipper", addr=0x601C8)
 
+buccaneer = register_fpmcu_variant(
+    project_name="buccaneer",
+    zephyr_board="google_quincy",
+    register_func=register_npcx_project,
+    variant_modules=["cmsis", "cmsis_6"],
+    variant_optional_modules=["elan"],
+    variant_dts_overlays=[
+        here / "helipilot" / "buccaneer.dts",
+    ],
+    variant_kconfig_files=[
+        here / "helipilot" / "prj.conf",
+        here / "helipilot" / "ec_quirks.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "helipilot" / "buccaneer" / "dev_key.pem",
+    ),
+    inherited_from=[
+        "brox",
+        "brya",
+        "fatcat",
+        "nissa",
+        "rauru",
+        "rex",
+        "skywalker",
+    ],
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="buccaneer", addr=0x40144)
+
 helipilot = register_fpmcu_variant(
     project_name="helipilot",
     zephyr_board="google_quincy",
     register_func=register_npcx_project,
-    variant_modules=["cmsis"],
+    variant_modules=["cmsis", "cmsis_6"],
     variant_optional_modules=["fpc"],
     variant_dts_overlays=[
         here / "helipilot" / "helipilot.dts",
@@ -67,8 +101,31 @@ helipilot = register_fpmcu_variant(
     signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
         here / "helipilot" / "dev_key.pem",
     ),
+    inherited_from=["brya", "fatcat", "rauru", "rex"],
 )
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x40144)
+
+gwendolin = register_fpmcu_variant(
+    project_name="gwendolin",
+    zephyr_board="google_quincy",
+    register_func=register_npcx_project,
+    variant_modules=["cmsis", "cmsis_6"],
+    variant_optional_modules=["egis"],
+    variant_dts_overlays=[
+        here / "helipilot" / "gwendolin.dts",
+    ],
+    variant_kconfig_files=[
+        here / "helipilot" / "prj.conf",
+        here / "helipilot" / "ec_quirks.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "helipilot" / "gwendolin" / "dev_key.pem",
+    ),
+)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="gwendolin", addr=0x40144)

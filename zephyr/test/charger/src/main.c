@@ -8,12 +8,34 @@
 #include <zephyr/kernel.h>
 #include <zephyr/ztest.h>
 
+struct test_state {
+	bool ec_app_main_run;
+};
+
+bool charger_predicate_pre_main(const void *state)
+{
+	return ((struct test_state *)state)->ec_app_main_run == false;
+}
+
+bool charger_predicate_post_main(const void *state)
+{
+	return !charger_predicate_pre_main(state);
+}
+
 void test_main(void)
 {
+	struct test_state state = {
+		.ec_app_main_run = false,
+	};
+
+	/* Run all the suites that depend on main not being called yet */
+	ztest_run_test_suites(&state, false, 1, 1);
+
 	ec_app_main();
+	state.ec_app_main_run = true;
 
 	/* Run all the suites that depend on main being called */
-	ztest_run_test_suites(NULL, false, 1, 1);
+	ztest_run_test_suites(&state, false, 1, 1);
 
 	/* Check that every suite ran */
 	ztest_verify_all_test_suites_ran();

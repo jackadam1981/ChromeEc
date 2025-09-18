@@ -17,7 +17,13 @@ int board_get_pdc_for_port(int port, const struct device **dev)
 		*dev = DEVICE_DT_GET(DT_NODELABEL(pdc_emul1));
 		return 0;
 	case 1:
-		*dev = DEVICE_DT_GET(DT_NODELABEL(pdc_emul2));
+		/* Presence of port C1 can be controlled via a config option to
+		 * test running the PDC subsystem with fewer than the maximum
+		 * number of supported ports.
+		 */
+		*dev = IS_ENABLED(CONFIG_TEST_PDC_DISABLE_C1) ?
+			       NULL :
+			       DEVICE_DT_GET(DT_NODELABEL(pdc_emul2));
 		return 0;
 	}
 

@@ -96,7 +96,7 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_CBI_EEPROM
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_LOW_POWER_IDLE
@@ -166,7 +166,6 @@
 #define CONFIG_CHARGER
 /* Allow low-current USB charging */
 #define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 512
-#define CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT 512
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_USB_CHARGER
@@ -320,9 +319,6 @@
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 #endif /* VARIANT_OCTOPUS_NO_SENSORS */
-
-/* System safe mode for improved panic debugging */
-#define CONFIG_SYSTEM_SAFE_MODE
 
 /*
  * Sensor stack in EC/Kernel depends on a hardware interrupt pin from EC->AP, so

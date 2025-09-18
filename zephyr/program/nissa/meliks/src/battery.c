@@ -9,16 +9,21 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
+#include "driver/charger/isl923x.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "math_util.h"
 #include "usb_pd.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ##args)
+
 /* charging data */
 #define DEFAULT_DESIGN_CAPACITY 5723
-#define CHARGING_VOLTAGE 8600
+#define CHARGING_VOLTAGE_SDI_4404D57 8600
+#define CHARGING_VOLTAGE_SDI_4404D57M 8700
 #define BAT_SERIES 2
+#define BAT_MAX_SERIES 4
 #define TC_CHARGING_VOLTAGE 8300
 #define CRATE_100 80
 #define CFACT_10 9
@@ -26,6 +31,9 @@
 #define BAT_CELL_OVERVOLTAGE (BAT_CELL_VOLT_SPEC - 50)
 #define BAT_CELL_MARGIN (BAT_CELL_VOLT_SPEC - 32)
 #define BAT_CELL_READY_OVER_VOLT 4150
+
+#define DROP_CELL_VOLT_MV 16 // 2S battery
+#define DROP_VOLT_MV (DROP_CELL_VOLT_MV * BAT_SERIES)
 
 struct therm_item {
 	int low;
@@ -51,9 +59,13 @@ BUILD_ASSERT(ARRAY_SIZE(bat_temp_table) == TEMP_TYPE_COUNT);
 
 static struct charge_state_data *charging_data;
 static int design_capacity = 0;
-static uint16_t bat_cell_volt[BAT_SERIES];
+static uint16_t bat_cell_volt[BAT_MAX_SERIES];
 static uint8_t bat_cell_over_volt_flag;
 static int bat_cell_ovp_volt;
+static int bat_drop_voltage = 0;
+
+static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
+static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
 void find_battery_thermal_zone(int bat_temp)
 {
@@ -92,7 +104,7 @@ void check_battery_cell_voltage(void)
 	static uint8_t idx = 0;
 	int data;
 	uint16_t max_voltage, min_voltage, delta_voltage;
-	static uint8_t over_volt_count[BAT_SERIES] = {
+	static uint8_t over_volt_count[BAT_MAX_SERIES] = {
 		0,
 	};
 
@@ -108,7 +120,7 @@ void check_battery_cell_voltage(void)
 			over_volt_count[idx]++;
 			if (over_volt_count[idx] >= 4) {
 				max_voltage = min_voltage = bat_cell_volt[idx];
-				for (int i = 0; i < BAT_SERIES; i++) {
+				for (int i = 0; i < BAT_MAX_SERIES; i++) {
 					if (bat_cell_volt[i] > max_voltage)
 						max_voltage = bat_cell_volt[i];
 					if (bat_cell_volt[i] < min_voltage &&
@@ -130,12 +142,12 @@ void check_battery_cell_voltage(void)
 		}
 
 		idx++;
-		if (idx >= BAT_SERIES)
+		if (idx >= BAT_MAX_SERIES)
 			idx = 0;
 	} else {
 		if (cell_check_flag != 0) {
 			cell_check_flag = 0;
-			for (int i = 0; i < BAT_SERIES; i++) {
+			for (int i = 0; i < BAT_MAX_SERIES; i++) {
 				over_volt_count[i] = 0;
 			}
 			bat_cell_over_volt_flag = 0;
@@ -147,7 +159,7 @@ DECLARE_HOOK(HOOK_TICK, check_battery_cell_voltage, HOOK_PRIO_DEFAULT);
 
 int check_ready_for_high_temperature(void)
 {
-	for (int i = 0; i < BAT_SERIES; i++) {
+	for (int i = 0; i < BAT_MAX_SERIES; i++) {
 		if (bat_cell_volt[i] >= BAT_CELL_READY_OVER_VOLT) {
 			return 0;
 		}
@@ -162,7 +174,10 @@ void set_current_volatage_by_capacity(int *current, int *voltage)
 	uint32_t cal_current = 0;
 
 	*current = 0;
-	*voltage = CHARGING_VOLTAGE;
+	if (board_battery_type == BATTERY_SDI_4404D57M)
+		*voltage = CHARGING_VOLTAGE_SDI_4404D57M;
+	else
+		*voltage = CHARGING_VOLTAGE_SDI_4404D57;
 
 	cal_current = charging_data->batt.full_capacity * 100;
 	cal_current += (design_capacity / 2);
@@ -234,10 +249,80 @@ void set_current_voltage_by_temperature(int *current, int *voltage)
 	}
 }
 
+void check_battery_life_time(void)
+{
+	int rv;
+	int data;
+	uint8_t drop_step;
+	uint16_t bat_health_cycle;
+
+	bat_drop_voltage = 0;
+	rv = sb_read(0x25, &data);
+
+	if (!rv) {
+		bat_health_cycle = data / 6;
+
+		if (bat_health_cycle <= 50)
+			drop_step = 0;
+		else if (bat_health_cycle <= 160)
+			drop_step = 1;
+		else if (bat_health_cycle <= 300)
+			drop_step = 2;
+		else if (bat_health_cycle <= 420)
+			drop_step = 3;
+		else if (bat_health_cycle <= 520)
+			drop_step = 4;
+		else if (bat_health_cycle <= 650)
+			drop_step = 5;
+		else
+			drop_step = 6;
+
+		bat_drop_voltage = CHARGING_VOLTAGE_SDI_4404D57M -
+				   (DROP_VOLT_MV * drop_step);
+	}
+}
+
+test_export_static enum ec_error_list board_force_bgate_off(int enable)
+{
+	int rv, regval;
+
+	rv = i2c_read16(chg_chips[CHARGER_PRIMARY].i2c_port,
+			chg_chips[CHARGER_PRIMARY].i2c_addr_flags,
+			ISL923X_REG_CONTROL1, &regval);
+
+	if (!rv) {
+		if (enable)
+			regval |= RAA489000_C1_BGATE_FORCE_OFF;
+		else
+			regval &= ~RAA489000_C1_BGATE_FORCE_OFF;
+		rv = i2c_write16(chg_chips[CHARGER_PRIMARY].i2c_port,
+				 chg_chips[CHARGER_PRIMARY].i2c_addr_flags,
+				 ISL923X_REG_CONTROL1, regval);
+	}
+
+	if (rv) {
+#ifdef CONFIG_PLATFORM_EC_BRINGUP
+		CPRINTS("[%s] Failed to %s on primary charger!", __func__,
+			enable == 0 ? "enable normal operation" :
+				      "force BGATE off");
+#endif /* CONFIG_PLATFORM_EC_BRINGUP */
+		return EC_ERROR_UNKNOWN;
+	} else {
+#ifdef CONFIG_PLATFORM_EC_BRINGUP
+		CPRINTS("[%s] Success to %s on primary charger!", __func__,
+			enable == 0 ? "enable normal operation" :
+				      "force BGATE off");
+#endif /* CONFIG_PLATFORM_EC_BRINGUP */
+		return EC_SUCCESS;
+	}
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
 	int data_c;
 	int data_v;
+	int rv;
+	static int bgate_off_flag = 0;
 
 	enum charge_state state;
 
@@ -259,6 +344,11 @@ int charger_profile_override(struct charge_state_data *curr)
 
 		/* charge stop */
 		if (temp_zone == STOP_LOW_TEMP || temp_zone == STOP_HIGH_TEMP) {
+			if (bgate_off_flag == 0) {
+				rv = board_force_bgate_off(1);
+				if (!rv)
+					bgate_off_flag = 1;
+			}
 			curr->requested_current = curr->requested_voltage = 0;
 			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
 			curr->state = ST_IDLE;
@@ -266,20 +356,42 @@ int charger_profile_override(struct charge_state_data *curr)
 			return 0;
 		}
 
+		if (bgate_off_flag) {
+			rv = board_force_bgate_off(0);
+			if (!rv)
+				bgate_off_flag = 0;
+		}
+
 		state = curr->state;
 		if (state == ST_CHARGE) {
+			int port = charge_manager_get_active_charge_port();
+
 			if (design_capacity == 0) {
 				if (battery_design_capacity(&design_capacity)) {
 					design_capacity =
 						DEFAULT_DESIGN_CAPACITY;
 				}
 			}
+
+			if (board_battery_type == BATTERY_SDI_4404D57M) {
+				check_battery_life_time();
+			}
 			set_current_volatage_by_capacity(&data_c, &data_v);
 			set_current_voltage_by_temperature(&data_c, &data_v);
+
+			if (bat_drop_voltage != 0 &&
+			    board_battery_type == BATTERY_SDI_4404D57M) {
+				if (data_v > bat_drop_voltage)
+					data_v = bat_drop_voltage;
+			}
 
 			if (bat_cell_over_volt_flag) {
 				if (data_v > bat_cell_ovp_volt)
 					data_v = bat_cell_ovp_volt;
+			}
+
+			if (port == CHARGER_SECONDARY) {
+				data_v -= 150;
 			}
 
 			if (curr->requested_current != data_c &&
@@ -296,6 +408,14 @@ int charger_profile_override(struct charge_state_data *curr)
 	} else {
 		design_capacity = 0;
 		temp_zone = NORMAL_TEMP;
+		bat_drop_voltage = 0;
+		board_battery_type = BATTERY_TYPE_COUNT;
+
+		if (bgate_off_flag) {
+			rv = board_force_bgate_off(0);
+			if (!rv)
+				bgate_off_flag = 0;
+		}
 	}
 
 	return 0;
@@ -342,3 +462,54 @@ test_export_static void reduce_input_voltage_when_full(void)
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, reduce_input_voltage_when_full, HOOK_PRIO_DEFAULT);
+
+/* Get type of the battery connected on the board */
+static int board_get_battery_type(void)
+{
+	char device_name[32];
+	int i;
+
+	for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
+		if (!battery_device_name(device_name, sizeof(device_name))) {
+			if (!strcasecmp(device_name,
+					board_battery_info[i].device_name)) {
+				board_battery_type = i;
+				break;
+			}
+		}
+	}
+
+	return board_battery_type;
+}
+
+/*
+ * Initialize the battery type for the board.
+ *
+ * Very first battery info is called by the charger driver to initialize
+ * the charger parameters hence initialize the battery type for the board
+ * as soon as the I2C is initialized.
+ */
+test_export_static void board_init_battery_type(void)
+{
+	if (board_get_battery_type() != BATTERY_TYPE_COUNT)
+		CPRINTS("found batt:%s",
+			board_battery_info[board_battery_type].device_name);
+	else
+		CPRINTS("battery not found");
+}
+DECLARE_HOOK(HOOK_INIT, board_init_battery_type, HOOK_PRIO_INIT_I2C + 1);
+
+enum battery_present battery_is_present(void)
+{
+	enum battery_present batt_pres;
+
+	/* The GPIO is low when the battery is present */
+	batt_pres = gpio_get_level(GPIO_BATT_PRES_ODL) ? BP_NO : BP_YES;
+
+	if (batt_pres_prev != BP_YES && batt_pres == BP_YES)
+		board_init_battery_type();
+
+	batt_pres_prev = batt_pres;
+
+	return batt_pres;
+}

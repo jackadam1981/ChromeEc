@@ -548,4 +548,79 @@
 			sample-index = <12>;
 		};
 	};
+
+	/omit-if-no-ref/ thermistor_3V3_51K1_47K_4100B: thermistor-3V3-51K1-47K-4100B {
+		status = "disabled";
+		compatible = "cros-ec,thermistor";
+		scaling-factor = <11>;
+		num-pairs = <13>;
+		steinhart-reference-mv = <3300>;
+		steinhart-reference-res = <51100>;
+
+		sample-datum-0 {
+			milivolt = <(2517 / 11)>;
+			temp = <0>;
+			sample-index = <0>;
+		};
+		sample-datum-1 {
+			milivolt = <(2158 / 11)>;
+			temp = <10>;
+			sample-index = <1>;
+		};
+		sample-datum-2 {
+			milivolt = <(1773 / 11)>;
+			temp = <20>;
+			sample-index = <2>;
+		};
+		sample-datum-3 {
+			milivolt = <(1396 / 11)>;
+			temp = <30>;
+			sample-index = <3>;
+		};
+		sample-datum-4 {
+			milivolt = <(1062 / 11)>;
+			temp = <40>;
+			sample-index = <4>;
+		};
+		sample-datum-5 {
+			milivolt = <( 792 / 11)>;
+			temp = <50>;
+			sample-index = <5>;
+		};
+		sample-datum-6 {
+			milivolt = <( 585 / 11)>;
+			temp = <60>;
+			sample-index = <6>;
+		};
+		sample-datum-7 {
+			milivolt = <( 429 / 11)>;
+			temp = <70>;
+			sample-index = <7>;
+		};
+		sample-datum-8 {
+			milivolt = <( 316 / 11)>;
+			temp = <80>;
+			sample-index = <8>;
+		};
+		sample-datum-9 {
+			milivolt = <( 273 / 11)>;
+			temp = <85>;
+			sample-index = <9>;
+		};
+		sample-datum-10 {
+			milivolt = <( 235 / 11)>;
+			temp = <90>;
+			sample-index = <10>;
+		};
+		sample-datum-11 {
+			milivolt = <( 203 / 11)>;
+			temp = <95>;
+			sample-index = <11>;
+		};
+		sample-datum-12 {
+			milivolt = <( 176 / 11)>;
+			temp = <100>;
+			sample-index = <12>;
+		};
+	};
 };

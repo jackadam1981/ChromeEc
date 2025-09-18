@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_MOTION_SENSE_H
 #define __CROS_EC_MOTION_SENSE_H
 
+#include "accelgyro.h"
 #include "atomic.h"
 #include "body_detection.h"
 #include "chipset.h"
@@ -148,28 +149,6 @@ struct motion_data_t {
  */
 #define MOTIONSENSE_FLAG_IN_SPOOF_MODE BIT(1)
 
-struct online_calib_data {
-	/**
-	 * Type specific data.
-	 * - For Accelerometers use struct accel_cal.
-	 * - For Gyroscopes (not yet implemented).
-	 * - For Magnetormeters (not yet implemented).
-	 */
-	void *type_specific_data;
-
-	/**
-	 * Cached calibration values from the latest successful calibration
-	 * pass.
-	 */
-	int16_t cache[3];
-
-	/** The latest temperature reading in K, negative if not set. */
-	int last_temperature;
-
-	/** Timestamp for the latest temperature reading. */
-	uint32_t last_temperature_timestamp;
-};
-
 struct motion_sensor_t {
 	/* RO fields */
 	uint32_t active_mask;
@@ -181,9 +160,6 @@ struct motion_sensor_t {
 	/* One mutex per physical chip. */
 	mutex_t *mutex;
 	void *drv_data;
-	/* Data used for online calibraiton, must match the sensor type. */
-	struct online_calib_data
-		online_calib_data[__cfg_select(CONFIG_ONLINE_CALIB, 1, 0)];
 
 	/* i2c port */
 	uint8_t port;
@@ -330,6 +306,9 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s);
  */
 bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 
+/* A sensor ID set to this value is invalid. */
+#define MOTION_SENSE_INVALID_SENSOR_ID (0xff)
+
 /*
  * There are 4 variables that represent the number of sensors:
  * SENSOR_COUNT: The number of available motion sensors in board.
@@ -341,14 +320,23 @@ bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
  */
 #if defined(CONFIG_GESTURE_HOST_DETECTION) || defined(CONFIG_ORIENTATION_SENSOR)
 /* Add an extra sensor. We may need to add more */
+#ifdef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+#define MOTION_SENSE_ACTIVITY_SENSOR_ID                  \
+	(motion_sensor_count > 0 ? motion_sensor_count : \
+				   MOTION_SENSE_INVALID_SENSOR_ID)
+#else
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
-#define ALL_MOTION_SENSORS (MOTION_SENSE_ACTIVITY_SENSOR_ID + 1)
+#endif
 #define MAX_MOTION_SENSORS (SENSOR_COUNT + 1)
 #else
-#define MOTION_SENSE_ACTIVITY_SENSOR_ID (-1)
-#define ALL_MOTION_SENSORS (motion_sensor_count)
+#define MOTION_SENSE_ACTIVITY_SENSOR_ID MOTION_SENSE_INVALID_SENSOR_ID
 #define MAX_MOTION_SENSORS (SENSOR_COUNT)
 #endif
+#define ALL_MOTION_SENSORS                                \
+	((int)(MOTION_SENSE_ACTIVITY_SENSOR_ID) !=        \
+			 MOTION_SENSE_INVALID_SENSOR_ID ? \
+		 motion_sensor_count + 1 :                \
+		 motion_sensor_count)
 
 #ifdef CONFIG_ALS_LIGHTBAR_DIMMING
 #ifdef TEST_BUILD
@@ -394,12 +382,22 @@ ec_motion_sensor_fill_values(struct ec_response_motion_sensor_data *dst,
 	dst->data[2] = v[2];
 }
 
-#ifdef CONFIG_TEST
+/**
+ * Get the current motionsense configuration state.
+ *
+ * This state should normally match the current power state, but allows the
+ * sensor configuration indexing to be optimized.
+ *
+ * @return The current sensor configuration index for the current power state.
+ */
 enum sensor_config motion_sense_get_ec_config(void);
-#endif
 
 #ifdef __cplusplus
 }
+#endif
+
+#ifdef CONFIG_ZEPHYR
+#include "motionsense_sensors.h"
 #endif
 
 #endif /* __CROS_EC_MOTION_SENSE_H */

@@ -12,7 +12,6 @@
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "openssl/mem.h"
 #include "openssl/rand.h"
 #include "scoped_fast_cpu.h"
@@ -26,18 +25,24 @@
 #include <utility>
 #include <variant>
 
+/* Pointer to the FPMCU's ECDH private key */
+static bssl::UniquePtr<EC_KEY> ecdh_key;
+
 /* The GSC pairing key. */
 static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
-/* The auth nonce for GSC session key. */
-std::array<uint8_t, FP_CK_AUTH_NONCE_LEN> auth_nonce;
+/* The session nonce for session key. */
+static std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
+
+static std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key;
+
+/* Current challenge */
+static std::array<uint8_t, FP_CHALLENGE_SIZE> challenge;
+test_export_static timestamp_t challenge_ctime;
 
 enum ec_error_list check_context_cleared()
 {
 	for (uint8_t partial : global_context.user_id)
-		if (partial != 0)
-			return EC_ERROR_ACCESS_DENIED;
-	for (uint8_t partial : auth_nonce)
 		if (partial != 0)
 			return EC_ERROR_ACCESS_DENIED;
 	if (global_context.templ_valid != 0)
@@ -52,6 +57,12 @@ enum ec_error_list check_context_cleared()
 	return EC_SUCCESS;
 }
 
+bool fingerprint_auth_enabled()
+{
+	return global_context.fp_encryption_status &
+	       FP_CONTEXT_STATUS_SESSION_ESTABLISHED;
+}
+
 static enum ec_status
 fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 {
@@ -60,22 +71,10 @@ fp_command_establish_pairing_key_keygen(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
+	ecdh_key = generate_elliptic_curve_key();
 	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
-
-	std::optional<fp_encrypted_private_key> encrypted_private_key =
-		create_encrypted_private_key(*ecdh_key,
-					     FP_AES_KEY_ENC_METADATA_VERSION,
-					     global_context.user_id,
-					     global_context.tpm_seed);
-	if (!encrypted_private_key.has_value()) {
-		CPRINTS("pairing_keygen: Failed to fill response encrypted private key");
-		return EC_RES_UNAVAILABLE;
-	}
-
-	r->encrypted_private_key = encrypted_private_key.value();
 
 	std::optional<fp_elliptic_curve_public_key> pubkey =
 		create_pubkey_from_ec_key(*ecdh_key);
@@ -100,14 +99,13 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 	auto *r = static_cast<ec_response_fp_establish_pairing_key_wrap *>(
 		args->response);
 
-	ScopedFastCpu fast_cpu;
+	CleanseWrapper<std::array<uint8_t, FP_PAIRING_KEY_LEN> > new_pairing_key;
 
-	bssl::UniquePtr<EC_KEY> private_key = decrypt_private_key(
-		params->encrypted_private_key, global_context.user_id,
-		global_context.tpm_seed);
-	if (private_key == nullptr) {
+	if (ecdh_key == nullptr) {
 		return EC_RES_UNAVAILABLE;
 	}
+
+	ScopedFastCpu fast_cpu;
 
 	bssl::UniquePtr<EC_KEY> public_key =
 		create_ec_key_from_pubkey(params->peers_pubkey);
@@ -115,21 +113,27 @@ fp_command_establish_pairing_key_wrap(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 	}
 
-	enum ec_error_list ret = generate_ecdh_shared_secret(
-		*private_key, *public_key, r->encrypted_pairing_key.data,
-		sizeof(r->encrypted_pairing_key.data));
+	/*
+	 * The Pairing Key is only used to produce the Session Key.
+	 * It's not used as a key for symmetric encryption. It's okay
+	 * to not apply KDF in this case.
+	 */
+	enum ec_error_list ret = generate_ecdh_shared_secret_without_kdf(
+		*ecdh_key, *public_key, new_pairing_key);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
 
-	ret = encrypt_data_in_place(FP_AES_KEY_ENC_METADATA_VERSION,
-				    r->encrypted_pairing_key.info,
-				    global_context.user_id,
-				    global_context.tpm_seed,
-				    r->encrypted_pairing_key.data);
+	ret = encrypt_pairing_key(FP_AES_KEY_ENC_METADATA_VERSION,
+				  r->encrypted_pairing_key.info,
+				  new_pairing_key,
+				  r->encrypted_pairing_key.data);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_UNAVAILABLE;
 	}
+
+	/* Deallocate the FPMCU's ECDH private key. */
+	ecdh_key = nullptr;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -153,15 +157,14 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
-		CPRINTS("load_pairing_key: In an nonce context");
+	if (fingerprint_auth_enabled()) {
+		CPRINTS("load_pairing_key: Session already established");
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	ret = decrypt_data(params->encrypted_pairing_key.info,
-			   global_context.user_id, global_context.tpm_seed,
-			   params->encrypted_pairing_key.data, pairing_key);
+	ret = decrypt_pairing_key(params->encrypted_pairing_key.info,
+				  params->encrypted_pairing_key.data,
+				  pairing_key);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("load_pairing_key: Failed to decrypt pairing key");
 		return EC_RES_UNAVAILABLE;
@@ -172,6 +175,17 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FP_LOAD_PAIRING_KEY, fp_command_load_pairing_key,
 		     EC_VER_MASK(0));
 
+__maybe_unused test_export_static void reset_session(void)
+{
+	OPENSSL_cleanse(session_nonce.data(), session_nonce.size());
+	OPENSSL_cleanse(session_key.data(), session_key.size());
+	OPENSSL_cleanse(global_context.tpm_seed.data(),
+			global_context.tpm_seed.size());
+	global_context.fp_encryption_status &= ~(
+		FP_CONTEXT_SESSION_NONCE_SET |
+		FP_CONTEXT_STATUS_SESSION_ESTABLISHED | FP_ENC_STATUS_SEED_SET);
+}
+
 static enum ec_status
 fp_command_generate_nonce(struct host_cmd_handler_args *args)
 {
@@ -179,18 +193,17 @@ fp_command_generate_nonce(struct host_cmd_handler_args *args)
 
 	ScopedFastCpu fast_cpu;
 
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_NONCE_CONTEXT_SET) {
+	if (fingerprint_auth_enabled()) {
 		/* Invalidate the existing context and templates to prevent
 		 * leaking the existing template. */
 		fp_reset_context();
 	}
 
-	RAND_bytes(auth_nonce.data(), auth_nonce.size());
+	RAND_bytes(session_nonce.data(), session_nonce.size());
 
-	std::ranges::copy(auth_nonce, r->nonce);
+	std::ranges::copy(session_nonce, r->nonce);
 
-	global_context.fp_encryption_status |= FP_CONTEXT_AUTH_NONCE_SET;
+	global_context.fp_encryption_status |= FP_CONTEXT_SESSION_NONCE_SET;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -199,186 +212,139 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_NONCE, fp_command_generate_nonce,
 		     EC_VER_MASK(0));
 
 static enum ec_status
-fp_command_nonce_context(struct host_cmd_handler_args *args)
+fp_command_establish_session(struct host_cmd_handler_args *args)
 {
-	const auto *p =
-		static_cast<const ec_params_fp_nonce_context *>(args->params);
+	const auto *p = static_cast<const ec_params_fp_establish_session *>(
+		args->params);
+	static constexpr uint8_t tpm_seed_aad[] = { 't', 'p', 'm', '_',
+						    's', 'e', 'e', 'd' };
+	constexpr auto aad = std::span{ tpm_seed_aad };
 
 	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_AUTH_NONCE_SET)) {
-		CPRINTS("No existing auth nonce");
+	      FP_CONTEXT_SESSION_NONCE_SET)) {
+		CPRINTS("No existing session nonce");
 		return EC_RES_ACCESS_DENIED;
 	}
 
 	ScopedFastCpu fast_cpu;
 
-	std::array<uint8_t, SHA256_DIGEST_SIZE> gsc_session_key;
-	enum ec_error_list ret = generate_gsc_session_key(
-		auth_nonce, p->gsc_nonce, pairing_key, gsc_session_key);
-
+	enum ec_error_list ret = generate_session_key(
+		session_nonce, p->peer_nonce, pairing_key, session_key);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_INVALID_PARAM;
 	}
 
-	static_assert(sizeof(global_context.user_id) == sizeof(p->enc_user_id));
-	std::array<uint8_t, sizeof(global_context.user_id)> raw_user_id;
-	std::ranges::copy(p->enc_user_id, raw_user_id.begin());
+	static_assert(sizeof(global_context.tpm_seed) ==
+		      sizeof(p->enc_tpm_seed));
+	CleanseWrapper<std::array<uint8_t, sizeof(global_context.tpm_seed)> >
+		tpm_seed;
 
-	ret = decrypt_data_with_gsc_session_key_in_place(
-		gsc_session_key, p->enc_user_id_iv, raw_user_id);
-
+	ret = decrypt_data_with_session_key(session_key, p->enc_tpm_seed,
+					    tpm_seed, p->nonce, p->tag, aad);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_ERROR;
 	}
 
-	/* Set the user_id. */
-	std::ranges::copy(raw_user_id, global_context.user_id.begin());
-
-	global_context.fp_encryption_status &= FP_ENC_STATUS_SEED_SET;
-	global_context.fp_encryption_status |= FP_CONTEXT_USER_ID_SET;
+	/* Set the TPM Seed. */
+	std::ranges::copy(tpm_seed, global_context.tpm_seed.begin());
+	global_context.fp_encryption_status |= FP_ENC_STATUS_SEED_SET;
+	global_context.fp_encryption_status &= ~FP_CONTEXT_SESSION_NONCE_SET;
 	global_context.fp_encryption_status |=
-		FP_CONTEXT_STATUS_NONCE_CONTEXT_SET;
+		FP_CONTEXT_STATUS_SESSION_ESTABLISHED;
+
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_NONCE_CONTEXT, fp_command_nonce_context,
+DECLARE_HOST_COMMAND(EC_CMD_FP_ESTABLISH_SESSION, fp_command_establish_session,
 		     EC_VER_MASK(0));
 
 static enum ec_status
-fp_command_read_match_secret_with_pubkey(struct host_cmd_handler_args *args)
+fp_cmd_generate_challenge(struct host_cmd_handler_args *args)
 {
-	const auto *params =
-		static_cast<const ec_params_fp_read_match_secret_with_pubkey *>(
-			args->params);
-	auto *response =
-		static_cast<ec_response_fp_read_match_secret_with_pubkey *>(
-			args->response);
-	int8_t fgr = params->fgr;
+	auto *r = static_cast<ec_response_fp_generate_challenge *>(
+		args->response);
 
-	ScopedFastCpu fast_cpu;
-
-	static_assert(sizeof(response->enc_secret) ==
-		      FP_POSITIVE_MATCH_SECRET_BYTES);
-
-	CleanseWrapper<std::array<uint8_t, FP_POSITIVE_MATCH_SECRET_BYTES> >
-		secret;
-
-	enum ec_status status = fp_read_match_secret(fgr, secret);
-	if (status != EC_RES_SUCCESS) {
-		return status;
-	}
-
-	enum ec_error_list ret = encrypt_data_with_ecdh_key_in_place(
-		params->pubkey, secret, response->iv, response->pubkey);
-
-	if (ret != EC_SUCCESS) {
-		return EC_RES_UNAVAILABLE;
-	}
-
-	std::ranges::copy(secret, response->enc_secret);
-
-	args->response_size = sizeof(*response);
-
-	return EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
-		     fp_command_read_match_secret_with_pubkey, EC_VER_MASK(0));
-
-static enum ec_status unlock_template(uint16_t idx)
-{
-	auto *dec_state = std::get_if<fp_decrypted_template_state>(
-		&global_context.template_states[idx]);
-	if (dec_state) {
-		if (safe_memcmp(dec_state->user_id.begin(),
-				global_context.user_id.begin(),
-				sizeof(global_context.user_id)) != 0) {
-			return EC_RES_ACCESS_DENIED;
-		}
-		return EC_RES_SUCCESS;
-	}
-
-	auto *enc_state = std::get_if<fp_encrypted_template_state>(
-		&global_context.template_states[idx]);
-	if (!enc_state) {
-		return EC_RES_INVALID_PARAM;
-	}
-
-	ec_fp_template_encryption_metadata &enc_info = enc_state->enc_metadata;
-	if (enc_info.struct_version != 4) {
+	/* The Session Key is used to sign messages. Let's make sure
+	 * it's available. */
+	if (!fingerprint_auth_enabled()) {
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	/* We reuse the fp_enc_buffer for the data decryption, because we don't
-	 * want to allocate a huge array on the stack.
-	 * Note: fp_enc_buffer = fp_template || fp_positive_match_salt */
-	constexpr std::span enc_template = fp_enc_buffer.fp_template;
-	constexpr std::span enc_salt = fp_enc_buffer.positive_match_salt;
-	constexpr std::span enc_buffer(enc_template.data(),
-				       enc_template.size() + enc_salt.size());
-	static_assert(enc_buffer.size() <= sizeof(fp_enc_buffer));
+	ScopedFastCpu fast_cpu;
 
-	std::ranges::copy(fp_template[idx], enc_template.begin());
-	std::ranges::copy(global_context.fp_positive_match_salt[idx],
-			  enc_salt.begin());
+	RAND_bytes(challenge.data(), challenge.size());
+	std::ranges::copy(challenge, r->challenge);
 
-	FpEncryptionKey key;
-	if (derive_encryption_key(key, enc_info.encryption_salt,
-				  global_context.user_id,
-				  global_context.tpm_seed) != EC_SUCCESS) {
-		fp_clear_finger_context(idx);
-		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
-		return EC_RES_UNAVAILABLE;
-	}
+	timestamp_t now = get_time();
+	challenge_ctime.val = now.val;
 
-	if (aes_128_gcm_decrypt(key, enc_buffer, enc_buffer, enc_info.nonce,
-				enc_info.tag) != EC_SUCCESS) {
-		fp_clear_finger_context(idx);
-		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
-		return EC_RES_UNAVAILABLE;
-	}
+	global_context.fp_encryption_status |= FP_AUTH_CHALLENGE_SET;
 
-	std::ranges::copy(enc_template, fp_template[idx]);
-	std::ranges::copy(enc_salt, global_context.fp_positive_match_salt[idx]);
-	global_context.template_states[idx] = fp_decrypted_template_state{
-		.user_id = global_context.user_id,
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_GENERATE_CHALLENGE, fp_cmd_generate_challenge,
+		     EC_VER_MASK(0));
+
+enum ec_error_list
+validate_request(std::span<const uint8_t> context,
+		 std::span<const uint8_t> operation,
+		 std::span<const uint8_t, SHA256_DIGEST_LENGTH> mac)
+{
+	/* We expect the message to come from Fingerguard. */
+	static constexpr uint8_t sender_str[] = {
+		'f', 'i', 'n', 'g', 'e', 'r', '_', 'g', 'u', 'a', 'r', 'd'
 	};
-	OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
-	return EC_RES_SUCCESS;
+	static constexpr std::span sender = sender_str;
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> computed_mac{};
+
+	/* Make sure new challenge was generated. */
+	if (!(global_context.fp_encryption_status & FP_AUTH_CHALLENGE_SET)) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	/* Remove the bit so the challenge is not reused. */
+	global_context.fp_encryption_status &= ~FP_AUTH_CHALLENGE_SET;
+
+	/* Make sure the challenge has not expired. */
+	timestamp_t now = get_time();
+	if (now.val > challenge_ctime.val + (5 * SECOND)) {
+		return EC_ERROR_TIMEOUT;
+	}
+
+	/* Compute expected signature. */
+	if (compute_message_signature(session_key, context, sender, operation,
+				      challenge, computed_mac) != EC_SUCCESS) {
+		return EC_ERROR_INVAL;
+	}
+
+	/* Compare computed signature with received one. */
+	static_assert(mac.size() == computed_mac.size());
+	if (CRYPTO_memcmp(mac.data(), computed_mac.data(), mac.size())) {
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	return EC_SUCCESS;
 }
 
-static enum ec_status
-fp_command_unlock_template(struct host_cmd_handler_args *args)
+enum ec_error_list
+sign_message(std::span<const uint8_t> context,
+	     std::span<const uint8_t> operation,
+	     std::span<const uint8_t, FP_CHALLENGE_SIZE> peer_challenge,
+	     std::span<uint8_t, SHA256_DIGEST_LENGTH> output)
 {
-	const auto *params =
-		static_cast<const ec_params_fp_unlock_template *>(args->params);
-	uint16_t fgr_num = params->fgr_num;
+	static constexpr uint8_t sender_str[] = { 'f', 'p', 'm', 'c', 'u' };
+	static constexpr std::span sender = sender_str;
 
-	ScopedFastCpu fast_cpu;
-
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
-		return EC_RES_ACCESS_DENIED;
+	/* The Session Key is used to sign messages. Let's make sure
+	 * it's available. */
+	if (!fingerprint_auth_enabled()) {
+		return EC_ERROR_ACCESS_DENIED;
 	}
 
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
-		return EC_RES_ACCESS_DENIED;
+	if (compute_message_signature(session_key, context, sender, operation,
+				      peer_challenge, output) != EC_SUCCESS) {
+		return EC_ERROR_INVAL;
 	}
 
-	if (fgr_num > global_context.template_states.size()) {
-		return EC_RES_OVERFLOW;
-	}
-
-	for (uint16_t idx = 0; idx < fgr_num; idx++) {
-		enum ec_status res = unlock_template(idx);
-		if (res != EC_RES_SUCCESS) {
-			return res;
-		}
-	}
-
-	global_context.fp_encryption_status |= FP_CONTEXT_TEMPLATE_UNLOCKED_SET;
-	global_context.templ_valid = fgr_num;
-
-	return EC_RES_SUCCESS;
+	return EC_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_UNLOCK_TEMPLATE, fp_command_unlock_template,
-		     EC_VER_MASK(0));

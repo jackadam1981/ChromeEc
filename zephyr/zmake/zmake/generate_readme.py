@@ -60,7 +60,10 @@ class MarkdownHelpFormatter(argparse.HelpFormatter):
             return f"`{_get_metavar(action)}`"
 
         def _get_table_line(action):
-            return f"| {_format_invocation(action)} | {action.help} |"
+            return (
+                f"| {_format_invocation(action)} | "
+                f"{self._expand_help(action) if action.help else None} |"
+            )
 
         table_lines = [
             "|   |   |",

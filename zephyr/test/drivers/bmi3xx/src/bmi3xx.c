@@ -44,6 +44,8 @@
 #define ODR_800 0xB
 #define ODR_1600 0xC
 
+#define INT_OP_SHIFT 2
+
 static const struct emul *emul = EMUL_DT_GET(BMI3XX_NODE);
 static struct motion_sensor_t *acc = &motion_sensors[ACC_SENSOR_ID];
 static struct motion_sensor_t *gyr = &motion_sensors[GYR_SENSOR_ID];
@@ -680,6 +682,26 @@ ZTEST_USER(bmi3xx, test_bmi_gyr_fifo)
 		      NULL);
 }
 
+ZTEST_USER(bmi3xx, test_enable_interrupt)
+{
+	int old_val, expect_val;
+
+	zassert_ok(acc->drv->init(acc));
+
+	old_val = bmi_emul_get_reg16(emul, BMI3_REG_IO_INT_CTRL);
+	/* test if output enable bit is 1 */
+	expect_val = old_val | (BMI3_INT_OUTPUT_ENABLE << INT_OP_SHIFT);
+	zassert_ok(gyr->drv->enable_interrupt(acc, 1));
+	zassert_equal(bmi_emul_get_reg16(emul, BMI3_REG_IO_INT_CTRL),
+		      expect_val);
+
+	/* test if output enable bit is 0 */
+	expect_val = old_val & ~(BMI3_INT_OUTPUT_ENABLE << INT_OP_SHIFT);
+	zassert_ok(gyr->drv->enable_interrupt(acc, 0));
+	zassert_equal(bmi_emul_get_reg16(emul, BMI3_REG_IO_INT_CTRL),
+		      expect_val);
+}
+
 ZTEST_USER(bmi3xx, test_irq_handler)
 {
 	struct i2c_common_emul_data *common_data =
@@ -881,8 +903,8 @@ ZTEST_USER(bmi3xx, test_date_rate)
 	zassert_false(check_sensor_enabled(MOTIONSENSE_TYPE_GYRO));
 
 	/* test set fail */
-	zassert_ok(!(acc->drv->set_data_rate(acc, 1, 1)));
-	zassert_ok(!(gyr->drv->set_data_rate(gyr, 1, 1)));
+	zassert_not_ok(acc->drv->set_data_rate(acc, 1, 1));
+	zassert_not_ok(gyr->drv->set_data_rate(gyr, 1, 1));
 
 	/* test get value */
 	zassert_equal(0, acc->drv->get_data_rate(acc));

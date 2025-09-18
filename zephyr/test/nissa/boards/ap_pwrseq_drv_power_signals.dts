@@ -208,7 +208,7 @@
 	};
 	ap-power {
 		compatible = "ap-pwrseq-sub-states";
-		chipset = "AP_POWER_STATE_S0IX";
+		chipset = "S0ix";
 	};
 	gpio-interrupts {
 		/delete-node/ int_usb_c0;
