@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade3513d_1fcc76da",
+        "filename": "zephyr/subsys/ap_pwrseq/ap_power_interface.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-18T21:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "521f3577_2bde2414",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "e95f7df0c30e4c5fdbd57e360af5ed1566f32f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee9e2913_6d5ba36a",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-18T18:15:39Z",
       "side": 1,
       "message": "I am thinking about moving all functions that start with `ap_power` into `zephyr/subsys/ap_pwrseq/ap_power_interface.c` and remove `zephyr/subsys/ap_pwrseq/ap_power_drv_interface.c`.\n\nGiven that only difference would be `ap_power_in_or_transitioning_to_state` and `ap_power_in_to_state` a simple `#ifdef CONFIG_AP_PWRSEQ_DRIVER` may be OK to use.",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "e95f7df0c30e4c5fdbd57e360af5ed1566f32f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4c43df_3dbce6ae",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-18T21:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9e2913_6d5ba36a",
       "range": {
         "startLine": 97,
         "startChar": 5,
