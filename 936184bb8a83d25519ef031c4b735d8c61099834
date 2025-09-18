@@ -69,6 +69,29 @@
       "parentUuid": "7930089e_98329cff",
       "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25a0811_85a345b7",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-09-18T03:21:26Z",
+      "side": 1,
+      "message": "Replace the number 15000 with a mnemonic macro.",
+      "range": {
+        "startLine": 554,
+        "startChar": 44,
+        "endLine": 554,
+        "endChar": 49
+      },
+      "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
