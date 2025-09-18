@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf70e031_a400dbaf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 2993,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-18T16:49:19Z",
+      "side": 1,
+      "message": "The description of PD_DRP_TOGGLE_OFF is \n```\n/* Stay in src until disconnect, then stay in sink forever */\nPD_DRP_TOGGLE_OFF\n```\n\nSo, I believe when in unattached state, we should go to Unattached.SNK if PD_DRP_TOGGLE_OFF. That\u0027s why it was,\n\n```\nelse if (pd_timer_is_expired(port, TC_TIMER_NEXT_ROLE_SWAP) \u0026\u0026\n\t drp_state[port] !\u003d PD_DRP_FORCE_SOURCE \u0026\u0026\n\t drp_state[port] !\u003d PD_DRP_FREEZE)\n```\nPlease keep it that way.",
+      "range": {
+        "startLine": 2992,
+        "startChar": 0,
+        "endLine": 2993,
+        "endChar": 44
+      },
+      "revId": "9728856468fefed8b3bbd46c8618321947e1ee68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
