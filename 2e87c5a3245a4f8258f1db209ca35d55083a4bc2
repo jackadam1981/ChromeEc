@@ -22,6 +22,30 @@
       },
       "revId": "2e87c5a3245a4f8258f1db209ca35d55083a4bc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fdc39a_9434a72c",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ptlrvp_mchp/gpio.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-18T18:12:49Z",
+      "side": 1,
+      "message": "I\u0027ll do some testing around this to see if it works. I didn\u0027t do any testing with this config set to 0 and no-auto-init",
+      "parentUuid": "1c4c3dd6_dcca25f8",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 26
+      },
+      "revId": "2e87c5a3245a4f8258f1db209ca35d55083a4bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
