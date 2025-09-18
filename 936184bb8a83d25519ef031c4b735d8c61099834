@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a64f29_22cb435e",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-09-18T01:08:11Z",
+      "side": 1,
+      "message": "Use led.c in board level is more easier to custom led behavior",
+      "parentUuid": "ecc50d97_7e057cf5",
+      "revId": "936184bb8a83d25519ef031c4b735d8c61099834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7930089e_98329cff",
