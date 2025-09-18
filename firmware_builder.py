@@ -173,12 +173,14 @@ def add_size_metrics(metrics, platform_name, mapfile):
         fw_section = item.fw_section.add()
         fw_section.region = "total-flash"
         fw_section.used = image_size
+        fw_section.track_on_gerrit = True
     if ram_size and ram_free:
         ram_size = int(ram_size.group(1), 16)
         ram_free = int(ram_free.group(1), 16)
         fw_section = item.fw_section.add()
         fw_section.region = "total-ram"
         fw_section.used = ram_size - ram_free
+        fw_section.track_on_gerrit = True
 
 
 def bundle(opts):
