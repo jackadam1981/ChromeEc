@@ -217,8 +217,7 @@ static int x86_non_dsx_adlp_g3_run(void *data)
 	return 1;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_G3, NULL, x86_non_dsx_adlp_g3_run,
-			      NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(G3, NULL, x86_non_dsx_adlp_g3_run, NULL);
 
 static int x86_non_dsx_adlp_s4_run(void *data)
 {
@@ -229,8 +228,7 @@ static int x86_non_dsx_adlp_s4_run(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S4, NULL, x86_non_dsx_adlp_s4_run,
-			      NULL);
+AP_POWER_CHIPSET_STATE_DEFINE(S4, NULL, x86_non_dsx_adlp_s4_run, NULL);
 
 static int x86_non_dsx_adlp_s3_entry(void *data)
 {
@@ -248,7 +246,7 @@ static int x86_non_dsx_adlp_s3_run(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S3, x86_non_dsx_adlp_s3_entry,
+AP_POWER_CHIPSET_STATE_DEFINE(S3, x86_non_dsx_adlp_s3_entry,
 			      x86_non_dsx_adlp_s3_run, NULL);
 
 static int x86_non_dsx_adlp_s0_run(void *data)
@@ -296,7 +294,7 @@ static int x86_non_dsx_adlp_s0_exit(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_STATE_DEFINE(AP_POWER_STATE_S0, NULL, x86_non_dsx_adlp_s0_run,
+AP_POWER_CHIPSET_STATE_DEFINE(S0, NULL, x86_non_dsx_adlp_s0_run,
 			      x86_non_dsx_adlp_s0_exit);
 
 #if CONFIG_AP_PWRSEQ_S0IX
@@ -317,8 +315,7 @@ static int x86_non_dsx_adlp_s0ix_run(void *data)
 	return 0;
 }
 
-AP_POWER_CHIPSET_SUB_STATE_DEFINE(AP_POWER_STATE_S0IX, NULL,
-				  x86_non_dsx_adlp_s0ix_run, NULL,
-				  AP_POWER_STATE_S0);
+AP_POWER_CHIPSET_SUB_STATE_DEFINE(S0ix, NULL, x86_non_dsx_adlp_s0ix_run, NULL,
+				  S0);
 #endif /* CONFIG_AP_PWRSEQ_S0IX */
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */

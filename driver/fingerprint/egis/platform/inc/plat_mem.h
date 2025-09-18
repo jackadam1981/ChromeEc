@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,6 +64,43 @@ static inline void PLAT_FREE(void **x)
 static inline void *plat_alloc(size_t size)
 {
 	return sys_alloc(1, size);
+}
+
+/**
+ * @brief Allocates memory for an array of count elements of size bytes each and
+ * initializes all bytes to zero.
+ *
+ * @param[in] count Number of elements to allocate.
+ * @param[in] size Size of each element.
+ *
+ * @return Pointer to allocated memory initialized to zero, or NULL if
+ * allocation failed.
+ */
+static inline void *plat_calloc(size_t count, size_t size)
+{
+	void *ptr = sys_alloc(1, count * size);
+	if (ptr)
+		memset(ptr, 0, count * size);
+	return ptr;
+}
+
+/**
+ * @brief Reallocates the given memory block to a new size.
+ *
+ * @param[in] data Pointer to the previously allocated memory block.
+ * @param[in] size New size in bytes for the memory block.
+ *
+ * @return Pointer to the reallocated memory block, or NULL if reallocation
+ * failed.
+ */
+static inline void *plat_realloc(void *data, size_t size)
+{
+	void *new_ptr = sys_alloc(1, size);
+	if (new_ptr && data) {
+		memcpy(new_ptr, data, size);
+		sys_free(data);
+	}
+	return new_ptr;
 }
 
 #ifdef __cplusplus

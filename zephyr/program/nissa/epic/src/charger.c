@@ -57,7 +57,6 @@ __override void board_hibernate(void)
 	cflush();
 }
 
-#ifndef CONFIG_ZTEST
 #define MAX_POWER_65W 20000
 #define DEFAULT_POWER 15000
 #define IS_SKU_ID_IN_RANGE(sku_id) \
@@ -103,4 +102,13 @@ static void adapter_voltage_limit(void)
 }
 
 DECLARE_HOOK(HOOK_INIT, adapter_voltage_limit, HOOK_PRIO_DEFAULT - 1);
-#endif
+
+enum battery_present battery_hw_present(void)
+{
+	const struct gpio_dt_spec *batt_pres;
+
+	batt_pres = GPIO_DT_FROM_NODELABEL(gpio_ec_battery_pres_odl);
+
+	/* The GPIO is low when the battery is physically present */
+	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}

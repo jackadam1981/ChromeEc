@@ -10,6 +10,7 @@
  */
 #include "accelgyro.h"
 #include "battery.h"
+#include "button.h"
 #include "common.h"
 #include "cros_cbi.h"
 #include "driver/accel_bma4xx.h"
@@ -18,6 +19,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "lid_switch.h"
 #include "motion_sense.h"
 #include "motionsense_sensors.h"
 #include "tablet_mode.h"
@@ -90,4 +92,15 @@ enum battery_present battery_hw_present(void)
 
 	/* The GPIO is low when the battery is physically present */
 	return gpio_pin_get_dt(batt_pres) ? BP_NO : BP_YES;
+}
+
+/*
+ * Handle a volume button interrupt.
+ */
+void vol_btn_interrupt(enum gpio_signal signal)
+{
+	if (!lid_is_open())
+		return;
+
+	button_interrupt(signal);
 }

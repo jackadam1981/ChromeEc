@@ -3,6 +3,6 @@
  * found in the LICENSE file.
  */
 
- #define CONFIG_TEST_MOCK_LIST  \
-	MOCK(USB_MUX)           \
+#define CONFIG_TEST_MOCK_LIST \
+	MOCK(USB_MUX)         \
 	MOCK(TCPC)

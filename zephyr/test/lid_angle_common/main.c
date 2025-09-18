@@ -4,6 +4,7 @@
  */
 
 #include "board.h"
+#include "lid_angle.h"
 
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>

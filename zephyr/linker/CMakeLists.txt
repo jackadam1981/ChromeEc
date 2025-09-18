@@ -19,6 +19,10 @@ zephyr_linker_sources_ifdef(CONFIG_SOC_FAMILY_NPCX ROM_START SORT_KEY 1
 zephyr_linker_sources_ifdef(CONFIG_SOC_FAMILY_MICROCHIP_MEC ROM_START SORT_KEY 1
   mchp-xec-lfw.ld)
 
+# Little FW with specific purposes used by RTK EC
+zephyr_linker_sources_ifdef(CONFIG_SOC_FAMILY_REALTEK_EC ROM_START SORT_KEY 1
+rtk-lfw.ld)
+
 zephyr_linker_sources(DATA_SECTIONS iterables-ram.ld)
 zephyr_linker_sources(SECTIONS iterables-rom.ld)
 

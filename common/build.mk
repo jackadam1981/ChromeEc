@@ -35,7 +35,6 @@ common-$(CONFIG_BODY_DETECTION)+=math_util.o
 common-$(CONFIG_TEMP_SENSOR_TMP112)+=math_util.o
 common-$(CONFIG_TEMP_SENSOR_PCT2075)+=math_util.o
 common-$(CONFIG_CMD_ADC)+=adc.o
-common-$(HAS_TASK_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
 common-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
 common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
@@ -79,8 +78,13 @@ common-$(CONFIG_IO_EXPANDER)+=ioexpander.o ioexpander_commands.o
 common-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic_output.o
 common-$(CONFIG_COMMON_RUNTIME)+=hooks.o main.o system.o peripheral.o \
 	system_boot_time.o
+ifeq ($(BOARD),host)
+common-$(CONFIG_COMMON_RECURSIVE_MUTEX)+=recursive_mutex.o
+else ifeq ($(USE_BUILTIN_STDLIB), 1)
+common-$(CONFIG_COMMON_RECURSIVE_MUTEX)+=recursive_mutex.o
+endif
 common-$(CONFIG_COMMON_TIMER)+=timer.o
-common-$(CONFIG_CRC8)+= crc8.o
+common-$(CONFIG_CRC8_CROS)+= crc8.o
 common-$(CONFIG_CURVE25519)+=curve25519.o
 ifneq ($(CORE),cortex-m0)
 common-$(CONFIG_CURVE25519)+=curve25519-generic.o
@@ -104,7 +108,6 @@ common-$(CONFIG_HOSTCMD_PD)+=host_command_controller.o
 common-$(CONFIG_HOSTCMD_REGULATOR)+=regulator.o
 common-$(CONFIG_HOSTCMD_RTC)+=rtc.o
 common-$(CONFIG_I2C_DEBUG)+=i2c_trace.o
-common-$(CONFIG_I2C_HID_TOUCHPAD)+=i2c_hid_touchpad.o
 common-$(CONFIG_I2C_CONTROLLER)+=i2c_controller.o
 common-$(CONFIG_I2C_CONTROLLER)+=i2c_controller_cros_ec.o
 common-$(CONFIG_I2C_CONTROLLER)+=i2c_passthru.o
@@ -149,9 +152,6 @@ common-$(CONFIG_RSA)+=rsa.o
 common-$(CONFIG_RWSIG)+=rwsig.o vboot/common.o
 common-$(CONFIG_RWSIG_TYPE_RWSIG)+=vboot/vb21_lib.o
 common-$(CONFIG_MATH_UTIL)+=math_util.o
-common-$(CONFIG_ONLINE_CALIB)+=stillness_detector.o kasa.o math_util.o \
-	mat44.o vec3.o newton_fit.o accel_cal.o online_calibration.o \
-	mkbp_event.o mag_cal.o math_util.o mat33.o gyro_cal.o gyro_still_det.o
 common-$(CONFIG_SHA1)+= sha1.o
 # use the standard software SHA256 lib if the chip cannot support SHA256
 # hardware accelerator.
@@ -250,11 +250,7 @@ common-$(call not_cfg,$(CONFIG_SHARED_MALLOC))+=shared_mem.o
 endif
 endif
 
-ifeq ($(CTS_MODULE),)
 common-$(TEST_BUILD)+=test_util.o
-else
-common-y+=test_util.o
-endif
 
 ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3

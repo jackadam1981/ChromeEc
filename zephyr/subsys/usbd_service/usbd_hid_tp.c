@@ -346,12 +346,12 @@ static void tp_iface_ready(const struct device *dev, const bool ready)
 		atomic_set_bit(&touchpad.state, HID_CLASS_IFACE_READY);
 	} else {
 		atomic_clear_bit(&touchpad.state, HID_CLASS_IFACE_READY);
-		mutex_lock(touchpad.report_queue_mutex);
+		k_mutex_lock(&touchpad.report_queue_mutex, K_FOREVER);
 		if (queue_count(&touchpad.report_queue) != 0) {
 			queue_remove_units(&touchpad.report_queue, NULL,
 					   queue_count(&touchpad.report_queue));
 		}
-		mutex_unlock(touchpad.report_queue_mutex);
+		k_mutex_unlock(&touchpad.report_queue_mutex);
 	}
 }
 
@@ -380,9 +380,10 @@ static int tp_get_report(const struct device *dev, const uint8_t type,
 	return -ENOTSUP;
 }
 
-static void tp_in_ready(const struct device *dev)
+static void tp_in_ready(const struct device *dev, const uint8_t *const report)
 {
 	ARG_UNUSED(dev);
+	ARG_UNUSED(report);
 
 	atomic_clear_bit(&touchpad.state, HID_EP_IN_BUSY);
 }
@@ -410,13 +411,13 @@ __overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
 		return;
 	}
 
-	mutex_lock(touchpad.report_queue_mutex);
+	k_mutex_lock(&touchpad.report_queue_mutex, K_FOREVER);
 
 	if (queue_is_empty(&touchpad.report_queue)) {
 		int ret = write_tp_report(report);
 
 		if (ret != -EBUSY) {
-			mutex_unlock(touchpad.report_queue_mutex);
+			k_mutex_unlock(&touchpad.report_queue_mutex);
 			return;
 		}
 	}
@@ -433,7 +434,7 @@ __overridable void set_touchpad_report(struct usb_hid_touchpad_report *report)
 	}
 	queue_add_unit(&touchpad.report_queue, report);
 
-	mutex_unlock(touchpad.report_queue_mutex);
+	k_mutex_unlock(&touchpad.report_queue_mutex);
 
 	hook_call_deferred(&hid_tp_proc_queue_data, 0);
 }
@@ -442,18 +443,18 @@ static void hid_tp_proc_queue(void)
 {
 	struct usb_hid_touchpad_report report;
 
-	mutex_lock(touchpad.report_queue_mutex);
+	k_mutex_lock(&touchpad.report_queue_mutex, K_FOREVER);
 
 	if (!atomic_test_bit(&touchpad.state, HID_CLASS_IFACE_READY) ||
 	    touchpad.report_protocol == HID_PROTOCOL_BOOT) {
 		queue_remove_units(&touchpad.report_queue, NULL,
 				   queue_count(&touchpad.report_queue));
-		mutex_unlock(touchpad.report_queue_mutex);
+		k_mutex_unlock(&touchpad.report_queue_mutex);
 		return;
 	}
 
 	if (queue_is_empty(&touchpad.report_queue)) {
-		mutex_unlock(touchpad.report_queue_mutex);
+		k_mutex_unlock(&touchpad.report_queue_mutex);
 		return;
 	}
 
@@ -463,7 +464,7 @@ static void hid_tp_proc_queue(void)
 		queue_advance_head(&touchpad.report_queue, 1);
 	}
 
-	mutex_unlock(touchpad.report_queue_mutex);
+	k_mutex_unlock(&touchpad.report_queue_mutex);
 	hook_call_deferred(&hid_tp_proc_queue_data, 1 * USEC_PER_MSEC);
 }
 
@@ -497,6 +498,8 @@ static int usb_hid_tp_init(void)
 		LOG_ERR("failed to get hid touchpad device");
 		return -ENXIO;
 	}
+
+	k_mutex_init(&touchpad.report_queue_mutex);
 
 	ret = hid_device_register(touchpad.dev, report_desc,
 				  sizeof(report_desc), &ops);
