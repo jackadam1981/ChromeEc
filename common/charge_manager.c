@@ -26,7 +26,9 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 #include "util.h"
+#include "zephyr/debug/mutex_history.h"
 #include "zephyr/include/usbc/pdc_dpm.h"
 #ifdef CONFIG_ZEPHYR
 #include "zephyr/include/usbc/pdc_power_mgmt.h"
@@ -36,6 +38,8 @@
 #error Mock defined HAS_MOCK_CHARGE_MANAGER
 #endif
 
+MUTEX_HISTORY_DECLARE(mutex_history_rb, 32);
+
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
 
 #define POWER(charge_port) ((charge_port.current) * (charge_port.voltage))
@@ -43,6 +47,8 @@
 /* Timeout for delayed override power swap, allow for 500ms extra */
 #define POWER_SWAP_TIMEOUT \
 	(PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + PD_T_SAFE_0V + 500 * MSEC)
+
+/*extern struct ring_buf mutex_history_rb; */
 
 /*
  * Default charge supplier priority
@@ -952,6 +958,10 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
  */
 static void charge_manager_refresh(void)
 {
+	MUTEX_HISTORY_LOG_CRUMB(
+		&mutex_history_rb,
+		"charge_manager_refresh started"); /* charge_manager_refresh
+		     started */
 	/* Always initialize charge port on first pass */
 	static int active_charge_port_initialized;
 	int new_supplier, new_port;
@@ -1207,6 +1217,13 @@ static void charge_manager_refresh(void)
 	}
 
 	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	MUTEX_HISTORY_LOG_CRUMB(
+		&mutex_history_rb,
+		"charge_manager_refresh ended"); /* charge_manager_refresh
+		     ended */
+
+	mutex_history_dump(&mutex_history_rb);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1428,6 +1445,16 @@ charge_manager_update_charge(int supplier, int port,
 
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
 {
+	MUTEX_HISTORY_LOG_CRUMB(
+		&mutex_history_rb,
+		"first entry into charge manager module"); /* first
+							      entry
+							      into
+							      charge
+							      manager
+							      module
+							    */
+
 	if (!is_pd_port(port))
 		return;
 
@@ -1493,6 +1520,9 @@ void charge_manager_force_ceil(int port, int ceil)
 	 * waiting for our deferred task to run.
 	 */
 	if (left_safe_mode && port == charge_port && ceil < charge_current) {
+		if (ceil == 0) {
+			ppc_vbus_sink_enable(port, 0);
+		}
 		board_set_charge_limit(port, CHARGE_SUPPLIER_PD, ceil,
 				       charge_current_uncapped, charge_voltage);
 		/* Enforcing charge_ceil here prevents race conditions between
