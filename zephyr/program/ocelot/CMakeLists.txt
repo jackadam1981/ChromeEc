@@ -52,5 +52,3 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
 if(DEFINED CONFIG_BOARD_INTEL_ISH_5_8_0)
 	project(ocelot-ish)
 endif()
-
-add_subdirectory(${PROJECT_NAME})
