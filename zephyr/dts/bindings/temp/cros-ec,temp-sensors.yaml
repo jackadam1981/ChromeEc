@@ -25,26 +25,26 @@ child-binding:
         which can be referenced to detect whether the sensor is powered before
         reading.
 
-    temp_fan_off:
+    temp-fan-off:
       type: int
       description:
         Temperature threshold in degrees C when no active cooling
         is needed
 
-    temp_fan_max:
+    temp-fan-max:
       type: int
       description:
         Temperature threshold in degrees C when max active cooling
         is needed
 
-    temp_host_warn:
+    temp-host-warn:
       type: int
       description:
         Temperature threshold in degrees C of thermal warn.
         Temperatures above the thermal warn threshold generate a
         request to the AP to throttle itself.
 
-    temp_host_high:
+    temp-host-high:
       type: int
       description:
         Temperature threshold in degrees C of thermal high.
@@ -52,23 +52,23 @@ child-binding:
         assert a signal (usually PROCHOT) to the AP and force the AP to
         throttle.
 
-    temp_host_halt:
+    temp-host-halt:
       type: int
       description:
         Temperature threshold in degrees C that forces AP to shutdown
         due to thermal reason
 
-    temp_host_release_warn:
+    temp-host-release-warn:
       type: int
       description:
         Temperature release threshold in degrees C of thermal warn
 
-    temp_host_release_high:
+    temp-host-release-high:
       type: int
       description:
         Temperature release threshold in degrees C of thermal high
 
-    temp_host_release_halt:
+    temp-host-release-halt:
       type: int
       description:
         Temperature release threshold in degrees C of thermal shutdown

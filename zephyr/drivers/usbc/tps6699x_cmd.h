@@ -279,6 +279,18 @@ int tps_rw_transmit_sink_capabilities(const struct i2c_dt_spec *i2c,
 				      int flag);
 
 /**
+ * @brief Read or Write Sx App Config Register
+ *
+ * @param i2c device pointer to i2c device
+ * @param buf pointer where data is stored
+ * @param int flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ *
+ * @return 0 on success, else -EIO
+ */
+int tps_rw_sx_app_config(const struct i2c_dt_spec *i2c,
+			 union reg_sx_app_config *buf, int flag);
+
+/**
  * @brief Read PD Status
  *
  * @param i2c device pointer to i2c device
@@ -324,6 +336,19 @@ int tps_rw_global_system_configuration(
  */
 int tps_rw_autonegotiate_sink(const struct i2c_dt_spec *i2c,
 			      union reg_autonegotiate_sink *buf, int flag);
+
+/**
+ * @brief Read or Write Thunderbolt Configuration
+ *
+ * @param i2c device pointer to i2c device
+ * @param buf pointer where data is stored
+ * @param int flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ *
+ * @return 0 on success, else -EIO
+ */
+int tps_rw_thunderbolt_configuration(const struct i2c_dt_spec *i2c,
+				     union reg_thunderbolt_configuration *buf,
+				     int flag);
 
 /**
  * @brief Read ADC Results
@@ -428,6 +453,7 @@ int tps_rd_data_status_reg(const struct i2c_dt_spec *i2c,
  */
 int tps_rd_status_reg(const struct i2c_dt_spec *i2c, union reg_status *status);
 
+#ifdef CONFIG_USBC_PDC_TPS6699X_CONSOLE_FW_UPDATER
 /**
  * @brief Perform bulk transfers to the PDC
  *
@@ -441,5 +467,17 @@ int tps_rd_status_reg(const struct i2c_dt_spec *i2c, union reg_status *status);
 int tps_stream_data(const struct i2c_dt_spec *i2c,
 		    const uint8_t broadcast_address, const uint8_t *buf,
 		    size_t buf_len);
+#endif
 
+/**
+ * @brief Read the received attention VDM register (0x4E)
+ *
+ * @param i2c device pointer to i2c device
+ * @param received_attention_vdm pointer where data is stored
+ *
+ * @return 0 on success, else -EIO
+ */
+int tps_rd_received_attention_vdm(
+	const struct i2c_dt_spec *i2c,
+	union reg_received_attention_vdm *received_attention_vdm);
 #endif /* ZEPHYR_DRIVERS_USBC_TPS6699X_H_ */

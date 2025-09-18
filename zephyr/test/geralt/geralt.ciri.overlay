@@ -57,6 +57,7 @@
 			active-mask = "SENSOR_ACTIVE_S0";
 			location = "MOTIONSENSE_LOC_LID";
 			drv-data = <&bmi323_data>;
+			port = <&i2c_sensor>;
 		};
 
 		lid_gyro: lid-gyro {
@@ -66,6 +67,7 @@
 			active-mask = "SENSOR_ACTIVE_S0";
 			location = "MOTIONSENSE_LOC_LID";
 			drv-data = <&bmi323_data>;
+			port = <&i2c_sensor>;
 		};
 	};
 
@@ -76,6 +78,9 @@
 
 			active-mask = "SENSOR_ACTIVE_S0";
 			location = "MOTIONSENSE_LOC_LID";
+			drv-data = <&lsm6dsm_data_accel>;
+			port = <&i2c_sensor>;
+			alternate-for = <&lid_accel>;
 		};
 
 		alt_lid_gyro: alt-lid-gyro {
@@ -84,6 +89,9 @@
 
 			active-mask = "SENSOR_ACTIVE_S0";
 			location = "MOTIONSENSE_LOC_LID";
+			drv-data = <&lsm6dsm_data_gyro>;
+			port = <&i2c_sensor>;
+			alternate-for = <&lid_gyro>;
 		};
 	};
 

@@ -101,13 +101,6 @@ const struct i2c_port_t i2c_ports[] = {
 	  .kbps = 400,
 	  .scl = GPIO_MASTER_I2C_SCL,
 	  .sda = GPIO_MASTER_I2C_SDA },
-#ifdef BOARD_WAND
-	{ .name = "charger",
-	  .port = I2C_PORT_CHARGER,
-	  .kbps = 100,
-	  .scl = GPIO_CHARGER_I2C_SCL,
-	  .sda = GPIO_CHARGER_I2C_SDA },
-#endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 #endif
@@ -152,28 +145,6 @@ __override struct keyboard_scan_config keyscan_config = {
 };
 #endif
 
-#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
-struct consumer const ec_ec_usart_consumer;
-static struct usart_config const ec_ec_usart;
-
-struct queue const ec_ec_comm_server_input =
-	QUEUE_DIRECT(64, uint8_t, ec_ec_usart.producer, ec_ec_usart_consumer);
-struct queue const ec_ec_comm_server_output =
-	QUEUE_DIRECT(64, uint8_t, null_producer, ec_ec_usart.consumer);
-
-struct consumer const ec_ec_usart_consumer = {
-	.queue = &ec_ec_comm_server_input,
-	.ops = &((struct consumer_ops const){
-		.written = ec_ec_comm_server_written,
-	}),
-};
-
-static struct usart_config const ec_ec_usart =
-	USART_CONFIG(EC_EC_UART, usart_rx_interrupt, usart_tx_interrupt, 115200,
-		     USART_CONFIG_FLAG_HDSEL, ec_ec_comm_server_input,
-		     ec_ec_comm_server_output);
-#endif /* BOARD_WAND && SECTION_IS_RW */
-
 /******************************************************************************
  * Initialize board.
  */
@@ -188,15 +159,6 @@ static void board_init(void)
 
 	CPRINTS("Backlight%s present", has_keyboard_backlight ? "" : " not");
 #endif /* HAS_BACKLIGHT */
-
-#ifdef BOARD_WAND
-	/* USB to serial queues */
-	queue_init(&ec_ec_comm_server_input);
-	queue_init(&ec_ec_comm_server_output);
-
-	/* UART init */
-	usart_init(&ec_ec_usart);
-#endif /* BOARD_WAND */
 
 #ifdef CONFIG_LED_DRIVER_LM3630A
 	lm3630a_poweron();
@@ -390,8 +352,8 @@ static const struct ec_response_keybd_config duck_kb = {
 };
 
 /* For boards that have vivaldi configs, make sure it is enabled. */
-#if defined(BOARD_ZED) || defined(BOARD_STAR) || defined(BOARD_GELATIN) || \
-	defined(BOARD_EEL) || defined(BOARD_DUCK)
+#if defined(BOARD_ZED) || defined(BOARD_STAR) || defined(BOARD_EEL) || \
+	defined(BOARD_DUCK)
 #if defined(SECTION_IS_RW) && !defined(CONFIG_USB_HID_KEYBOARD_VIVALDI)
 #error CONFIG_USB_HID_KEYBOARD_VIVALDI must be defined in RW if \
 board_vivaldi_keybd_config is used.
@@ -401,8 +363,7 @@ board_vivaldi_keybd_config is used.
 __override const struct ec_response_keybd_config *
 board_vivaldi_keybd_config(void)
 {
-	if (IS_ENABLED(BOARD_ZED) || IS_ENABLED(BOARD_STAR) ||
-	    IS_ENABLED(BOARD_GELATIN))
+	if (IS_ENABLED(BOARD_ZED) || IS_ENABLED(BOARD_STAR))
 		return &zed_kb;
 	if (IS_ENABLED(BOARD_EEL))
 		return &eel_kb;

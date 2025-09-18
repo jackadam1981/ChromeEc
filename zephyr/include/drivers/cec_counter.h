@@ -81,3 +81,12 @@ void cros_cec_bitbang_enable_timer(int port);
  * @param port CEC port to control
  */
 void cros_cec_bitbang_disable_timer(int port);
+
+/**
+ * @brief initialize the timer for cec bitbang.
+ *
+ * @param dev Pointer to the device structure for the cec bitbang driver
+ * instance.
+ * @param port CEC port to control
+ */
+void cros_cec_bitbang_init_timer(int port);

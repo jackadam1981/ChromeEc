@@ -9,7 +9,7 @@
 #define __CROS_EC_BASEBOARD_H
 
 /* EC Defines */
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 
 /* Flash Lyaout */
 /*

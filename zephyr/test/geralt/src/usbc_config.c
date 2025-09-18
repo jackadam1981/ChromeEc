@@ -17,6 +17,8 @@
 #include "usbc_ppc.h"
 
 #include <zephyr/devicetree.h>
+#include <zephyr/devicetree/io-channels.h>
+#include <zephyr/drivers/adc/adc_emul.h>
 #include <zephyr/drivers/emul.h>
 #include <zephyr/fff.h>
 #include <zephyr/ztest.h>
@@ -113,6 +115,46 @@ ZTEST(usbc_config, test_adc_channel)
 	zassert_equal(board_get_vbus_adc(0), ADC_VBUS_C0, NULL);
 	zassert_equal(board_get_vbus_adc(1), ADC_VBUS_C1, NULL);
 	zassert_equal(board_get_vbus_adc(99), ADC_VBUS_C0, NULL);
+}
+
+static void set_vbus_adc(int voltage)
+{
+	const struct device *adc_dev =
+		DEVICE_DT_GET(DT_IO_CHANNELS_CTLR(DT_NODELABEL(adc_vbus_c0)));
+	const int channel = DT_IO_CHANNELS_INPUT(DT_NODELABEL(adc_vbus_c0));
+
+	adc_emul_const_value_set(adc_dev, channel, voltage / 10);
+}
+
+ZTEST(usbc_config, test_pd_check_vbus_level)
+{
+	/* SAFE0V true */
+	set_vbus_adc(PD_V_SAFE0V_MAX - 1);
+	zassert_true(pd_check_vbus_level(0, VBUS_SAFE0V), NULL);
+
+	/* SAFE0V false */
+	set_vbus_adc(PD_V_SAFE0V_MAX + 100);
+	zassert_false(pd_check_vbus_level(0, VBUS_SAFE0V), NULL);
+
+	/* PRESENT true */
+	set_vbus_adc(PD_V_SAFE5V_MIN + 100);
+	zassert_true(pd_check_vbus_level(0, VBUS_PRESENT), NULL);
+
+	/* PRESENT false */
+	set_vbus_adc(PD_V_SAFE5V_MIN - 500);
+	zassert_false(pd_check_vbus_level(0, VBUS_PRESENT), NULL);
+
+	/* REMOVED true */
+	set_vbus_adc(PD_V_SINK_DISCONNECT_MAX - 1);
+	zassert_true(pd_check_vbus_level(0, VBUS_REMOVED), NULL);
+
+	/* REMOVED false */
+	set_vbus_adc(PD_V_SINK_DISCONNECT_MAX + 500);
+	zassert_false(pd_check_vbus_level(0, VBUS_REMOVED), NULL);
+
+	/* invalid enum */
+	set_vbus_adc(1000);
+	zassert_false(pd_check_vbus_level(0, 123), NULL);
 }
 
 static void geralt_usbc_config_before(void *fixture)

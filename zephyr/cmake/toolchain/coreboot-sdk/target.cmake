@@ -59,6 +59,15 @@ set(CMAKE_GCOV       "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcov")
 file(GLOB GCC_DIR LIST_DIRECTORIES true "${COREBOOT_SDK_ROOT}/lib/gcc/${CROSS_COMPILE_TARGET}/[0-9][0-9].[0-9].[0-9]")
 get_filename_component(GCC_VERSION ${GCC_DIR} NAME)
 
+if(CONFIG_LTO)
+  # Using 'ar' or 'ranlib' alone produces 'plugin needed to handle lto object',
+  # use 'gcc-* ' variants to specify appropriate plugin argument.
+  # For more details see
+  # https://embeddedartistry.com/blog/2020/04/13/prefer-gcc-ar-to-ar-in-your-buildsystems/
+  set(CMAKE_AR         "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcc-ar")
+  set(CMAKE_RANLIB     "${TOOLCHAIN_HOME}/${CROSS_COMPILE}gcc-ranlib")
+endif()
+
   ##########################################################################################################
   # TODO(b/384559486) Fix this block
 if(CONFIG_REQUIRES_FULL_LIBCPP)

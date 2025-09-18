@@ -15,9 +15,15 @@
 		zephyr,host-cmd-shi-backend = &shi0;
 		zephyr,host-cmd-uart-backend = &uart2;
 		zephyr,shell-uart = &uart1;
+		cros,rtc = &mtc;
 	};
 
 	binman {
+		pad-byte = <0xff>;
+
+		/* Total Flash size is 1 MB. */
+		size = <0x100000>;
+
 		/* First 128 kB (uniform 4 kB sectors) used for RO */
 		wp-ro {
 			offset = <0x0>;
@@ -60,7 +66,6 @@
 				};
 			};
 		};
-		pad-byte = <0xff>;
 	};
 };
 

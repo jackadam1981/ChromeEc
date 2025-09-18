@@ -6,14 +6,14 @@ cmake_minimum_required(VERSION 3.20.5)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
-if(DEFINED CONFIG_BOARD_FATCAT_NPCX9M7F)
-	project(fatcat_npcx9m7f)
-	add_subdirectory(fatcat_npcx9m7f)
+if(DEFINED CONFIG_BOARD_FATCATRVP_NPCX)
+	project(fatcatrvp-npcx)
+	add_subdirectory(fatcatrvp-npcx)
 endif()
 
-if(DEFINED CONFIG_BOARD_FATCAT_IT82002AW)
-	project(fatcat_it82002aw)
-	add_subdirectory(fatcat_it82002aw)
+if(DEFINED CONFIG_BOARD_FATCATRVP_ITE)
+	project(fatcatrvp-ite)
+	add_subdirectory(fatcatrvp-ite)
 endif()
 
 if(DEFINED CONFIG_BOARD_FRANCKA)
@@ -31,18 +31,43 @@ if(DEFINED CONFIG_BOARD_FRANCKA)
 endif()
 
 if(DEFINED CONFIG_BOARD_FELINO)
-	project(felino)
-	add_subdirectory(felino)
-	zephyr_include_directories("felino/include")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-					"felino/src/keyboard_customization.c")
+	if(DEFINED CONFIG_BOARD_FELINO4ES)
+		project(felino4es)
+		add_subdirectory(felino4es)
+		zephyr_include_directories("felino4es/include")
+		zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+						"felino4es/src/keyboard_customization.c")
+	else()
+		project(felino)
+		add_subdirectory(felino)
+		zephyr_include_directories("felino/include")
+		zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+						"felino/src/keyboard_customization.c")
+	endif()
 endif()
 
 if(DEFINED CONFIG_BOARD_KINMEN)
 	project(kinmen)
 	zephyr_include_directories("kinmen/include")
 	zephyr_library_sources("kinmen/src/board_power.c")
-	zephyr_library_sources("kinmen/src/hibernate.c")
+	zephyr_library_sources("kinmen/src/suspend_resume.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"kinmen/src/keyboard_customization.c")
+endif()
+
+if(DEFINED CONFIG_BOARD_LAPIS)
+	project(lapis)
+	add_subdirectory(lapis)
+	zephyr_include_directories("lapis/include")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"lapis/src/keyboard_customization.c")
+endif()
+
+if(DEFINED CONFIG_BOARD_MOONSTONE)
+	project(moonstone)
+	zephyr_include_directories("moonstone/include")
+	zephyr_library_sources("moonstone/src/board_power.c")
+	zephyr_library_sources("moonstone/src/suspend_resume.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"moonstone/src/keyboard_customization.c")
 endif()
