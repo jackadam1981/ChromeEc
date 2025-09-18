@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3754cbb4_253afe71",
+        "filename": "zephyr/shim/src/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-18T14:57:43Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s the interrupt that\u0027s causing it. This is the change that Intel provided in the bug. I think the issue is in the `heci_core.c::heci_send()` function, not the interrupt.",
+      "parentUuid": "c79a43bf_91033bbd",
+      "revId": "a15f786988f24bd2e4a69c62d9e95cf4da226885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "970b908a_66e5eec2",
         "filename": "zephyr/shim/src/host_command_heci.c",
         "patchSetId": 1
