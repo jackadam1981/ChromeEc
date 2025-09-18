@@ -1011,6 +1011,12 @@ static int uart_app(struct itecomdbgr_config *conf)
 			/* dbgr reset */
 			write_com(conf, dbgr_reset_buf, sizeof(dbgr_reset_buf));
 
+			/* Halt the ec code via enable/disable follow mode */
+			write_com(conf, enable_follow_mode,
+				  sizeof(enable_follow_mode));
+			write_com(conf, disable_follow_mode,
+				  sizeof(disable_follow_mode));
+
 			if (getchipid(conf) == SUCCESS) {
 				/* Reset UART1*/
 				wr_reg(conf, 0xF02011, 1);
