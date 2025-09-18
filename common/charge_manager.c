@@ -27,6 +27,7 @@
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "zephyr/debug/mutex_history.h"
 #include "zephyr/include/usbc/pdc_dpm.h"
 #ifdef CONFIG_ZEPHYR
 #include "zephyr/include/usbc/pdc_power_mgmt.h"
@@ -43,6 +44,8 @@
 /* Timeout for delayed override power swap, allow for 500ms extra */
 #define POWER_SWAP_TIMEOUT \
 	(PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + PD_T_SAFE_0V + 500 * MSEC)
+
+struct ring_buf mutex_history_rb;
 
 /*
  * Default charge supplier priority
@@ -915,6 +918,9 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
  */
 static void charge_manager_refresh(void)
 {
+	MUTEX_HISTORY_DROP_CRUMB(&mutex_history_rb); /* charge_manager_refresh
+							started */
+
 	/* Always initialize charge port on first pass */
 	static int active_charge_port_initialized;
 	int new_supplier, new_port;
