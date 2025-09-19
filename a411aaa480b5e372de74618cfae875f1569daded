@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f43dacc_2c0387d6",
+        "filename": "zephyr/program/intelrvp/src/dc_jack.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-09-19T05:46:36Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com\nThe firmware is expected to support Switching of power sources i.e USBC to AC adaptor if battery is connected. i.e Disable sink path of the PD controller, enable AC adaptor path.\n\nWe would might miss this case. As this is only one instance of failure would you still suggest to disable Barrel Jack?",
+      "revId": "a411aaa480b5e372de74618cfae875f1569daded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
