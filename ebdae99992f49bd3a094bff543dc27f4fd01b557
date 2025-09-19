@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this go upstream?",
       "revId": "ebdae99992f49bd3a094bff543dc27f4fd01b557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bd6b9f_bbe9c9fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T00:42:50Z",
+      "side": 1,
+      "message": "I wrote it in the same folder where a similar function for mpu exits [mpu_lock_rollback](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/core/cortex-m/mpu.c;l\u003d144;bpv\u003d0#:~:text\u003d143-,144,-145)\n\nIf I push it upstream, I believe I should generalize it more. It is only toggling write permissions (which is tailored to our application). Let me know your thoughts.\n\nThe function was tested and it does work.",
+      "parentUuid": "950ba571_4440e092",
+      "revId": "ebdae99992f49bd3a094bff543dc27f4fd01b557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
