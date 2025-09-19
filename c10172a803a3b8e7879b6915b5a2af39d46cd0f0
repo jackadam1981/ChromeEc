@@ -22,6 +22,30 @@
       },
       "revId": "c10172a803a3b8e7879b6915b5a2af39d46cd0f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3aa271_8659240c",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-19T17:53:08Z",
+      "side": 1,
+      "message": "I had to fix `fingerprint.h` manually - for some reason `fingerprint_capture_type` variants had wrong values.\n\nFor `ec_commands.h`, I don\u0027t know why. @fsammoura@google.com you prepared previous merge commit month ago. Do you know why we see these changes?",
+      "parentUuid": "b5710f25_21745eb2",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "c10172a803a3b8e7879b6915b5a2af39d46cd0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
