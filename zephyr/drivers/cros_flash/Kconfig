@@ -22,6 +22,12 @@ config CROS_FLASH_NPCX_ERASE_SIZE
 	  This option sets the NPCX flash erase size. The default value is 0x1000
 	  (4K bytes).
 
+config NPCX_INT_FLASH_SUPPORT
+	bool "NPCX internal flash support"
+	default n
+	help
+		Enable NPCX internal flash support
+
 config CROS_FLASH_IT8XXX2
 	bool "ITE IT81202 flash driver for the Zephyr shim"
 	depends on SOC_FAMILY_ITE_EC
