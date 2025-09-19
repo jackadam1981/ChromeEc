@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b7ac354_3994dc85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 69
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "What was the fix for the memory corruption issue that you were seeing before?",
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df266bd_37c08d87",
+        "filename": "zephyr/test/fingerprint/task/prj.conf",
+        "patchSetId": 69
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "Why does this need to be increased? Can you add a comment here, so someone who looks at it in the future understands?\n\nDo we also need to increase it for the non-test code?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d885f638_cfe45d78",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 518,
+        "startChar": 53,
+        "endLine": 519,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ed39dc_d69497cc",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 318,
+        "startChar": 53,
+        "endLine": 319,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479faa42_102d88df",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1011,
+        "startChar": 53,
+        "endLine": 1012,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228f3ef8_d69a89f1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_shim.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 227,
+        "startChar": 53,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f047ebb2_abc5840d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T19:04:37Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 486,
+        "startChar": 53,
+        "endLine": 487,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
