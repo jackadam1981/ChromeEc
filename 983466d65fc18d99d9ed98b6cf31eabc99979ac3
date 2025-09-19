@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ba251e_30c2e2c9",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+        "patchSetId": 70
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T20:42:10Z",
+      "side": 1,
+      "message": "I think you can statically allocate the buffer, which will simplify things by removing the `k_malloc`s and `free`s, as well as the kconfig heap size change.\n\n```suggestion\nstatic const size_t test_info_buffer_size \u003d\n\tsizeof(struct ec_response_fp_info_v2) +\n\tsizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;\nstatic uint8_t buffer[test_info_buffer_size];\nstatic struct ec_response_fp_info_v2* test_info_buffer \u003d (struct ec_response_fp_info_v2*)buffer;\n```\n\nThen you can use",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "983466d65fc18d99d9ed98b6cf31eabc99979ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
