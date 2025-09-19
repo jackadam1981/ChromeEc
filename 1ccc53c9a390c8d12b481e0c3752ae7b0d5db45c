@@ -22,6 +22,30 @@
       },
       "revId": "1ccc53c9a390c8d12b481e0c3752ae7b0d5db45c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994ac128_25ad20b6",
+        "filename": "board/servo_v4p1/poweron_conf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-09-19T14:50:26Z",
+      "side": 1,
+      "message": "I agree, that was shortcut for PoC. I will go for separate constants in poweron_config module, as I don\u0027t expect we would need more then 8 flags any time in future and also SuzyQ mode will keep separate form cc_config.",
+      "parentUuid": "42526ecc_f11cf46b",
+      "range": {
+        "startLine": 217,
+        "startChar": 33,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "1ccc53c9a390c8d12b481e0c3752ae7b0d5db45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
