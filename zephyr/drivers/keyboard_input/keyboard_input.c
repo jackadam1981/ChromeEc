@@ -47,6 +47,7 @@ uint8_t keyboard_get_rows(void)
 void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 {
 	int prev_mask;
+	int curr_mask;
 
 	if (enable) {
 		prev_mask = atomic_and(&disable_scan_mask, ~mask);
@@ -54,14 +55,20 @@ void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 		prev_mask = atomic_or(&disable_scan_mask, mask);
 	}
 
+	curr_mask = atomic_get(&disable_scan_mask);
+
+	if (prev_mask != curr_mask) {
+		LOG_INF("KB disable_scanning_mask changed: 0x%08x", curr_mask);
+	}
+
 	if (!pm_device_runtime_is_enabled(kbd_dev)) {
 		LOG_WRN("device %s does not support runtime PM", kbd_dev->name);
 		return;
 	}
 
-	if (prev_mask == 0 && atomic_get(&disable_scan_mask) != 0) {
+	if (prev_mask == 0 && curr_mask != 0) {
 		pm_device_runtime_put(kbd_dev);
-	} else if (prev_mask != 0 && atomic_get(&disable_scan_mask) == 0) {
+	} else if (prev_mask != 0 && curr_mask == 0) {
 		pm_device_runtime_get(kbd_dev);
 	}
 }

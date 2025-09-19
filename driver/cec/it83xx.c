@@ -15,6 +15,8 @@
 #include "task.h"
 #include "util.h"
 #ifdef CONFIG_ZEPHYR
+#include "system.h"
+
 #include <zephyr/device.h>
 #include <zephyr/irq.h>
 #ifndef CONFIG_TEST
@@ -524,6 +526,7 @@ static int it83xx_cec_set_enable(int port, uint8_t enable)
 #else
 		it8xxx2_cec_clock_enable_peripheral(1);
 		it8xxx2_cec_alt_func_enable(1);
+		disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 #endif
 
 		/* Set logical address to unregistered (default is 0 = TV) */
@@ -561,6 +564,7 @@ static int it83xx_cec_set_enable(int port, uint8_t enable)
 #else
 		it8xxx2_cec_alt_func_enable(0);
 		it8xxx2_cec_clock_enable_peripheral(0);
+		enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 #endif
 
 		cec_state = CEC_STATE_DISABLED;

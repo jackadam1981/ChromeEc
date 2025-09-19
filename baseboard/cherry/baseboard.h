@@ -72,7 +72,6 @@
 #define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 512
-#define CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT 512
 #define CONFIG_CHARGER_ISL9238C
 /* Not used in boot flow, set to 0 to suppress system_can_boot_ap warning */
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 0
@@ -192,7 +191,7 @@
 #define CONFIG_EMULATED_SYSRQ
 
 /* Vboot Config */
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_VBOOT_EFS2
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE

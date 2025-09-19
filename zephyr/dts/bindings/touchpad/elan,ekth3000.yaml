@@ -14,26 +14,26 @@ properties:
     required: true
     description: Interrupt from touchpad
 
-  logical_max_x:
+  logical-max-x:
     type: int
     required: true
     description: The logical maximum x-axis setting
 
-  logical_max_y:
+  logical-max-y:
     type: int
     required: true
     description: The logical maximum y-axis setting
 
-  physical_max_x:
+  physical-max-x:
     type: int
     required: true
     description: The physical maximum x-axis setting
 
-  physical_max_y:
+  physical-max-y:
     type: int
     required: true
     description: The physical maximum y-axis setting
 
-  max_pressure:
+  max-pressure:
     type: int
     description: The maximum pressure for touchpad

@@ -36,6 +36,14 @@
 	};
 
 	/delete-node/ unused-pins;
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_sensor: i2c-sensor {
+			i2c-port = <&i2c0>;
+			enum-names = "I2C_PORT_SENSOR";
+		};
+	};
 
 	named-gpios {
 		/delete-node/ tablet_mode_l;
@@ -122,6 +130,15 @@
 		};
 	};
 
+	motionsense-mutex {
+		compatible = "cros-ec,motionsense-mutex";
+		lid_mutex: lid-mutex {
+		};
+
+		alt_lid_mutex: alt-lid-mutex {
+		};
+	};
+
 	motionsense-sensor {
 		/delete-node/ base-accel;
 		/delete-node/ base-gyro;
@@ -132,6 +149,9 @@
 
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&lid_mutex>;
+			drv-data = <&bmi323_data>;
+			port = <&i2c_sensor>;
 		};
 
 		lid_gyro: lid-gyro {
@@ -140,6 +160,9 @@
 
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&lid_mutex>;
+			drv-data = <&bmi323_data>;
+			port = <&i2c_sensor>;
 		};
 	};
 
@@ -150,6 +173,10 @@
 
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&alt_lid_mutex>;
+			drv-data = <&lsm6dsm_data>;
+			port = <&i2c_sensor>;
+			alternate-for = <&lid_accel>;
 		};
 
 		alt_lid_gyro: alt-lid-gyro {
@@ -158,6 +185,10 @@
 
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&alt_lid_mutex>;
+			drv-data = <&lsm6dsm_data>;
+			port = <&i2c_sensor>;
+			alternate-for = <&lid_gyro>;
 		};
 	};
 

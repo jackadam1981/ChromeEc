@@ -89,6 +89,9 @@
 };
 
 &binman {
+	pad-byte = <0xff>;
+	pad-after = <0x40000>;
+
 	wp-ro {
 		offset = <0x0>;
 		size = <0x60000>;
@@ -123,6 +126,4 @@
 			};
 		};
 	};
-	pad-byte = <0xff>;
-	pad-after = <0x40000>;
 };

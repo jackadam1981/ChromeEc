@@ -8,6 +8,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "stdbool.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -89,6 +90,14 @@ struct charge_port_info {
 };
 
 /**
+ * Check if the charge manager is seeded.
+ *
+ * @return	true if all ports/suppliers have reported
+ *		with some initial charge, false otherwise.
+ */
+bool charge_manager_is_seeded(void);
+
+/**
  * Called by charging tasks to update their available charge.
  *
  * @param supplier	Charge supplier to update.
@@ -98,6 +107,17 @@ struct charge_port_info {
  */
 void charge_manager_update_charge(int supplier, int port,
 				  const struct charge_port_info *charge);
+
+/**
+ * @brief Invalidate suppliers for given port
+ *	This sets the voltage and current all the suppliers for given port to
+ *	zero. This is generally used before calling
+ *	pd_set_input_current_limit API to zero out all suppliers, as a PD port
+ *	shouldn't have other suppliers.
+ *
+ * @param port		Charge port to update.
+ */
+void charge_manager_invalidate_suppliers(int port);
 
 /* Partner port dualrole capabilities */
 enum dualrole_capabilities {
@@ -204,6 +224,27 @@ int charge_manager_get_override(void);
  * @return	Current active charge port.
  */
 int charge_manager_get_active_charge_port(void);
+
+/**
+ * Get the current active charge port, as determined by charge manager.
+ *  ** WARNING **
+ *    This API does not use mutex locking,
+ *    make sure your code can handle a stale charge port.
+ *
+ * @return	Current active charge port.
+ */
+int charge_manager_get_active_charge_port_no_lock(void);
+
+/**
+ * Return true/false if active charge port.
+ *  ** WARNING **
+ *    This API does not use mutex locking,
+ *    make sure your code can handle a stale charge port.
+ *
+ * @return true 	when valid charge port is active
+ * @return false 	no valid charge port is active
+ */
+bool charge_manager_has_active_charge_port(void);
 
 /**
  * Get the current selected charge port, as determined by charge manager.

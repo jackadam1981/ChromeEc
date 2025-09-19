@@ -33,6 +33,7 @@ enum {
 	EC_TASK_RWSIG_PRIO,
 	EC_TASK_TOUCHPAD_PRIO,
 	EC_TASK_FPSENSOR_PRIO,
+	EC_TASK_PCHG_PRIO,
 	EC_TASK_CHG_RAMP_PRIO,
 	EC_TASK_USB_CHG_PRIO,
 	EC_TASK_DPS_PRIO,
@@ -82,6 +83,11 @@ enum {
 		    (CROS_EC_TASK(DPS, dps_task, 0,                        \
 				  CONFIG_TASK_DPS_STACK_SIZE,              \
 				  EC_TASK_DPS_PRIO, 0)),                   \
+		    ())                                                    \
+	COND_CODE_1(HAS_TASK_PCHG,                                         \
+		    (CROS_EC_TASK(PCHG, pchg_task, 0,                      \
+				  CONFIG_TASK_PCHG_STACK_SIZE,             \
+				  EC_TASK_PCHG_PRIO, 0)),                  \
 		    ())                                                    \
 	COND_CODE_1(HAS_TASK_CHARGER,                                      \
 		    (CROS_EC_TASK(CHARGER, charger_task, 0,                \
@@ -209,6 +215,7 @@ enum {
 	CROS_EC_TASK(CHG_RAMP, NULL, 0, 0, EC_TASK_CHG_RAMP_PRIO, 0)           \
 	CROS_EC_TASK(USB_CHG, NULL, 0, 0, EC_TASK_USB_CHG_PRIO, 0)             \
 	CROS_EC_TASK(DPS, NULL, 0, 0, EC_TASK_DPS_PRIO, 0)                     \
+	CROS_EC_TASK(PCHG, NULL, 0, 0, EC_TASK_PCHG_PRIO, 0)                   \
 	CROS_EC_TASK(CHARGER, NULL, 0, 0, EC_TASK_CHARGER_PRIO, 0)             \
 	CROS_EC_TASK(CHIPSET, NULL, 0, 0, EC_TASK_CHIPSET_PRIO, 0)             \
 	CROS_EC_TASK(MOTIONSENSE, NULL, 0, 0, EC_TASK_MOTIONSENSE_PRIO, 0)     \

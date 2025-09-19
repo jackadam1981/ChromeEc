@@ -5,6 +5,7 @@
 
 #include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charger_test.h"
 #include "system.h"
 #include "system_fake.h"
 
@@ -56,5 +57,5 @@ ZTEST_USER(charge_ramp, test_ramp_locked)
 	system_set_shrspi_image_copy(old_image);
 }
 
-ZTEST_SUITE(charge_ramp, NULL, NULL, charge_ramp_before, charge_ramp_after,
-	    NULL);
+ZTEST_SUITE(charge_ramp, charger_predicate_post_main, NULL, charge_ramp_before,
+	    charge_ramp_after, NULL);

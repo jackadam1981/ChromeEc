@@ -8,6 +8,3 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 project(npcx_monitor)
 
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
-
-zephyr_include_directories(include)
-add_subdirectory(${PLATFORM_EC}/zephyr/shim/chip/npcx/npcx_monitor monitor_bin)

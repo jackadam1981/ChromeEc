@@ -7,6 +7,7 @@
 #include "cros_cbi.h"
 #include "gpio_signal.h"
 #include "hooks.h"
+#include "motion_sense.h"
 #include "tablet_mode.h"
 #include "zephyr/kernel.h"
 
@@ -107,6 +108,7 @@ ZTEST(alt_sensor_no_use, test_alt_sensor_no_use)
 	const gpio_port_pins_t base_imu_pin =
 		DT_GPIO_PIN(DT_NODELABEL(base_imu_int_l), gpios);
 
+	printk("motion_sensor_count: %d\n", motion_sensor_count);
 	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 1), NULL);
 	k_sleep(K_MSEC(100));
 	zassert_ok(gpio_emul_input_set(base_imu_gpio, base_imu_pin, 0), NULL);

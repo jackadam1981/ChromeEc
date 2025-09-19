@@ -4,10 +4,13 @@
  */
 
 #include "config.h"
+#include "ec_tasks.h"
 #include "hooks.h"
 #include "panic.h"
 #include "task.h"
 #include "watchdog.h"
+
+#include <stdio.h>
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/watchdog.h>
@@ -31,7 +34,9 @@ const struct watchdog_info wdt_info[] = {
 	{
 		.wdt_dev = DEVICE_DT_GET(DT_CHOSEN(cros_ec_watchdog)),
 		.config = {
-#if DT_NODE_HAS_COMPAT(DT_CHOSEN(cros_ec_watchdog), st_stm32_watchdog)
+#if ((DT_NODE_HAS_COMPAT(DT_CHOSEN(cros_ec_watchdog), st_stm32_watchdog)) || \
+     (DT_NODE_HAS_COMPAT(DT_CHOSEN(cros_ec_watchdog),                        \
+			 realtek_rts5912_watchdog)))
 			.flags = WDT_FLAG_RESET_SOC,
 			.window.min = 0U,
 			.window.max = CONFIG_WATCHDOG_PERIOD_MS,
@@ -152,19 +157,90 @@ void watchdog_reload(void)
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
+static uint32_t get_stack_ptr(const struct k_thread *thread)
+{
+#if defined(CONFIG_ARM64)
+	/* We are assuming that the SP of interest is SP_EL1 */
+	return thread->callee_saved.sp_elx;
+#elif defined(CONFIG_ARM)
+	return thread->callee_saved.psp;
+#elif defined(CONFIG_X86)
+#if defined(CONFIG_X86_64)
+	return thread->callee_saved.rsp;
+#else
+	return thread->callee_saved.esp;
+#endif
+#elif defined(CONFIG_RISCV)
+	return thread->callee_saved.sp;
+#elif defined(CONFIG_ARCH_POSIX)
+	return (uint32_t)thread->callee_saved.thread_status;
+#endif
+}
+
+static void log_thread_info(const struct k_thread *thread, void *user_data)
+{
+	uint32_t sp = get_stack_ptr(thread);
+	struct arch_esf *esf = (struct arch_esf *)sp;
+	char thread_name[16];
+
+#ifdef CONFIG_THREAD_NAME
+	snprintf(thread_name, sizeof(thread_name), "%s", thread->name);
+#else
+	snprintf(thread_name, sizeof(thread_name), "TASK_ID: %d",
+		 thread_id_to_task_id((k_tid_t)thread));
+#endif
+
+#if defined(CONFIG_ARM)
+	printk("%s [SP=%p, PC=%p, LR=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->basic.pc, (void *)esf->basic.lr);
+#elif defined(CONFIG_X86)
+#if defined(CONFIG_X86_64)
+	printk("%s [SP=%p, PC=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->rip);
+#else
+	printk("%s [SP=%p, PC=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->eip);
+#endif
+#elif defined(CONFIG_RISCV)
+	printk("%s [SP=%p, PC=%p, RA=%p]\n", thread_name, (void *)sp,
+	       (void *)esf->mepc, (void *)esf->ra);
+#elif defined(CONFIG_ARCH_POSIX)
+	/* Nothing useful within esf to be printed here */
+	ARG_UNUSED(esf);
+#endif
+}
+
 __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 					       int channel_id)
 {
-	const char *thread_name = k_thread_name_get(k_current_get());
 	uint32_t exception_address = 0;
+	const char *thread_name;
+	if (IS_ENABLED(CONFIG_THREAD_NAME)) {
+		thread_name = k_thread_name_get(k_current_get());
+	} else {
+		thread_name = "unknown";
+	}
+	task_id_t task_id = task_get_current();
 
 #ifdef CONFIG_RISCV
 	exception_address = csr_read(mepc);
-	printk("WDT pre-warning MEPC:%p THREAD_NAME:%s\n",
-	       (void *)exception_address, thread_name);
+	printk("WDT pre-warning MEPC:%p TASK_ID:%d THREAD_NAME:%s\n",
+	       (void *)exception_address, task_id, thread_name);
+#elif CONFIG_CPU_CORTEX_M
+	struct arch_esf *esf;
+	/*
+	 * Watchdog warning should only be triggered while executing in thread
+	 * context, thus PSP will point to esf.
+	 */
+	__asm__ volatile("mrs %0, psp" : "=r"(esf));
+	printk("WDT pre-warning PC:%p LR:%p TASK_ID:%d THREAD_NAME:%s\n",
+	       (void *)esf->basic.pc, (void *)esf->basic.lr, task_id,
+	       thread_name);
+	exception_address = esf->basic.pc;
 #else
 	/* TODO(b/176523207): watchdog warning message */
-	printk("Watchdog deadline is close! THREAD_NAME:%s\n", thread_name);
+	printk("Watchdog deadline is close! TASK_ID:%d THREAD_NAME:%s\n",
+	       task_id, thread_name);
 #endif
 #ifdef TEST_BUILD
 	wdt_warning_triggered = true;
@@ -175,13 +251,16 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 	cros_chip_wdt_handler(wdt_dev, channel_id);
 #endif
 
+	if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {
+		k_thread_foreach(log_thread_info, NULL);
+	}
+
 	/* Save the current task id in panic info.
 	 * The PANIC_SW_WATCHDOG_WARN reason will be changed to a regular
 	 * PANIC_SW_WATCHDOG in system_common_pre_init if a watchdog reset
 	 * occurs.
 	 */
-	panic_set_reason(PANIC_SW_WATCHDOG_WARN, exception_address,
-			 task_get_current());
+	panic_set_reason(PANIC_SW_WATCHDOG_WARN, exception_address, task_id);
 }
 
 __maybe_unused static void

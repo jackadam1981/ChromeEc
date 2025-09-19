@@ -18,6 +18,9 @@
 #define TPS6699X_MAX_REG 0xa4
 #define TPS6699X_REG_SIZE 64
 
+/* Size of bitmap using uint32_t for all TPS registers. 256 / 32 = 8 bytes. */
+#define REG_U32_BITMAP_SIZE 8
+
 struct ti_ccom {
 	uint16_t connector_number : 7;
 	uint16_t cc_operation_mode : 3;
@@ -56,6 +59,7 @@ struct tps6699x_response {
 				union error_status_t error;
 				struct ti_ccom ccom;
 				uint32_t pdos[4];
+				uint32_t pd_message[PDC_DISC_IDENTITY_VDO_COUNT];
 			};
 		} __packed;
 		union connector_status_t connector_status;
@@ -89,8 +93,17 @@ struct tps6699x_emul_pdc_data {
 	union cable_property_t cable_property;
 	union reg_port_control port_control;
 	bool frs_configured;
+	uint32_t rmdo;
+	uint32_t identity[PDC_DISC_IDENTITY_VDO_COUNT];
 
 	struct tps6699x_response response;
+
+	uint32_t fail_reg_reads[REG_U32_BITMAP_SIZE];
+	uint32_t fail_reg_writes[REG_U32_BITMAP_SIZE];
+
+	int fail_next_ucsi_cmd_count;
+	enum ucsi_command_t fail_next_ucsi_cmd;
+	enum std_task_response fail_next_ucsi_cmd_with_response;
 
 	struct emul_pdc_pdo_t pdo;
 	bool cmd_error;
@@ -98,5 +111,22 @@ struct tps6699x_emul_pdc_data {
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
 };
+
+/* Fail next register read from given reg. */
+int emul_pdc_fail_reg_read(const struct emul *target, uint8_t reg);
+
+/* Fail next register write to given reg. */
+int emul_pdc_fail_reg_write(const struct emul *target, uint8_t reg);
+
+/* With the next UCSI command sent, fail with the provided response. */
+int emul_pdc_fail_next_ucsi_command(const struct emul *target,
+				    enum ucsi_command_t command,
+				    enum std_task_response with_response,
+				    uint8_t num_times);
+
+/* Set the patch loaded interrupt bit. This will cause the driver to re-init all
+ * ports.
+ */
+int emul_pdc_set_interrupt_patch_loaded(const struct emul *target);
 
 #endif /* __EMUL_TPS6699X_H_ */

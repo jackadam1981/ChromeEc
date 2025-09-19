@@ -79,7 +79,7 @@ static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 	const struct ec_params_pd_chip_info *p = args->params;
 	struct ec_response_pd_chip_info_v1 info;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (!board_pd_port_num_is_valid(p->port))
 		return EC_RES_INVALID_PARAM;
 
 	if (tcpm_get_chip_info(p->port, p->live, &info))

@@ -74,7 +74,7 @@ static uint8_t battery_level_shutdown;
  * State for charger_task(). Here so we can reset it on a HOOK_INIT, and
  * because stack space is more limited than .bss
  */
-static const struct battery_info *batt_info;
+test_export_static const struct battery_info *batt_info;
 static struct charge_state_data curr;
 static enum charge_state prev_state;
 static int prev_ac, prev_charge, prev_disp_charge;
@@ -726,27 +726,11 @@ static int shutdown_on_critical_battery(void)
 	return 1;
 }
 
-int battery_is_below_threshold(enum batt_threshold_type type, bool transitioned)
+bool check_battery_level_transition(enum batt_threshold_type type)
 {
-	int threshold;
-
-	/* We can't tell what the current charge is. Assume it's okay. */
-	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE)
-		return 0;
-
-	switch (type) {
-	case BATT_THRESHOLD_TYPE_LOW:
-		threshold = BATTERY_LEVEL_LOW;
-		break;
-	case BATT_THRESHOLD_TYPE_SHUTDOWN:
-		threshold = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
-		break;
-	default:
-		return 0;
-	}
-
-	return curr.batt.state_of_charge <= threshold &&
-	       (!transitioned || prev_charge > threshold);
+	/* Returns true only when the threshold is first crossed. */
+	return battery_is_below_threshold(&curr.batt, type) &&
+	       prev_charge > get_battery_threshold_percent(type);
 }
 
 /*
@@ -758,11 +742,11 @@ int battery_is_below_threshold(enum batt_threshold_type type, bool transitioned)
 static void notify_host_of_low_battery_charge(void)
 {
 	if (IS_ENABLED(CONFIG_HOSTCMD_EVENTS)) {
-		if (battery_is_below_threshold(BATT_THRESHOLD_TYPE_LOW, true))
+		if (check_battery_level_transition(BATT_THRESHOLD_TYPE_LOW))
 			host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
 
-		if (battery_is_below_threshold(BATT_THRESHOLD_TYPE_SHUTDOWN,
-					       true))
+		if (check_battery_level_transition(
+			    BATT_THRESHOLD_TYPE_SHUTDOWN))
 			host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
 	}
 }
@@ -1143,12 +1127,19 @@ static void revive_battery(int *need_static)
 	battery_seems_dead = 0;
 }
 
+/*
+ * Initial batt_info for all batt_info parameter that can be used in some
+ * functions start in HOOK_PRIO_DEFAULT.
+ */
+static void init_battery_info(void)
+{
+	batt_info = battery_get_info();
+}
+DECLARE_HOOK(HOOK_INIT, init_battery_info, HOOK_PRIO_POST_BATTERY_INIT);
+
 /* Set up the initial state of the charger task */
 static void charger_setup(const struct charger_info *info)
 {
-	/* Get the battery-specific values */
-	batt_info = battery_get_info();
-
 	prev_ac = prev_charge = prev_disp_charge = -1;
 	local_state.chg_ctl_mode = CHARGE_CONTROL_NORMAL;
 	shutdown_target_time.val = 0UL;
@@ -1512,7 +1503,9 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 
 	/* Wait on the dynamic info until the static info is good. */
 	if (!*need_staticp)
-		update_dynamic_battery_info();
+		battery_set_dynamic_info(&curr.batt, curr.ac,
+					 curr.batt_is_charging);
+
 	notify_host_of_low_battery_charge();
 	notify_host_of_low_battery_voltage();
 
@@ -1647,6 +1640,29 @@ bool charge_prevent_power_on(bool power_button_pressed)
 		    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
+	/*
+	 * Factory override: Always allow power on if WP is disabled,
+	 * except when auto-power-on at EC startup and the battery
+	 * is physically present.
+	 */
+	prevent_power_on &= (system_is_locked() ||
+			     (charge_prevent_power_on_automatic_power_on
+#ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
+
+			      && battery_hw_present() == BP_YES
+#endif
+			      ));
+
+	/*
+	 * If the battery is too cold, is_battery_critical() would
+	 * shut us down again if not on AC.
+	 */
+	int batt_temp_c =
+		DECI_KELVIN_TO_CELSIUS(current_batt_params->temperature);
+	if (battery_too_cold_for_discharge(batt_temp_c)) {
+		prevent_power_on = 1;
+	}
+
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
 	/* However, we can power on if a sufficient charger is present. */
@@ -1669,20 +1685,15 @@ bool charge_prevent_power_on(bool power_button_pressed)
 #endif
 	}
 #endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
+#endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
 
 	/*
-	 * Factory override: Always allow power on if WP is disabled,
-	 * except when auto-power-on at EC startup and the battery
-	 * is physically present.
+	 * If the battery is too hot then refuse to power on, even on AC.
+	 * Otherwise is_battery_critical() would shut us down again.
 	 */
-	prevent_power_on &= (system_is_locked() ||
-			     (charge_prevent_power_on_automatic_power_on
-#ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
-
-			      && battery_hw_present() == BP_YES
-#endif
-			      ));
-#endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
+	if (battery_too_hot(batt_temp_c)) {
+		prevent_power_on = 1;
+	}
 
 #if defined(CONFIG_CHARGE_MANAGER) && !defined(CONFIG_USB_PD_CONTROLLER)
 	/* Always prevent power on until charge current is initialized */
@@ -1786,7 +1797,7 @@ enum led_pwr_state led_pwr_get_state(void)
 	}
 }
 
-int charge_get_percent(void)
+test_mockable int charge_get_percent(void)
 {
 	/*
 	 * Since there's no way to indicate an error to the caller, we'll just
@@ -1863,6 +1874,14 @@ int charge_set_input_current_limit(int ma, int mv)
 
 	ma = derate_input_current(ma);
 #ifdef CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT
+	BUILD_ASSERT(
+		((CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT *
+		  CONFIG_USB_PD_MAX_VOLTAGE_MV) /
+			 1000 >=
+		 CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) ||
+			CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT == 0,
+		"Charger minimum input current limit is unreasonably low."
+		" Consider unsetting it, and refer to the Kconfig help for details.");
 	if (CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT > 0) {
 		ma = MAX(ma, CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT);
 	}

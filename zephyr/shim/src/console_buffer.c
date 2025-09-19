@@ -28,9 +28,10 @@ size_t console_buf_notify_chars(const char *s, size_t len)
 	/*
 	 * This is just notifying of console characters for debugging
 	 * output, so if we are unable to lock the mutex immediately,
-	 * then just drop the string.
+	 * then just drop the string. Mutexes cannot be locked from an
+	 * isr, so also drop the string in this case too.
 	 */
-	if (k_mutex_lock(&console_write_lock, K_NO_WAIT))
+	if (k_is_in_isr() || k_mutex_lock(&console_write_lock, K_NO_WAIT))
 		return 0;
 	/* We got the mutex. */
 	for (size_t i = 0; i < len; i++) {

@@ -479,7 +479,7 @@ uint32_t crec_flash_physical_get_protect_flags(void)
 #define WP_RANGE(start, count) (((1 << (count)) - 1) << (start))
 #define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
 
-int crec_flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(bool all)
 {
 	protect_blocks(RO_WP_RANGE);
 

@@ -24,8 +24,13 @@ throttling or shutting down the AP.
 
 | Part | File | Description |
 |---|---|---|
-| TMP112 | [driver/temp_sensor/tmp112.h](../../driver/temp_sensor/tmp112.h) | SMBus / I2C temperature sensor |
-| Thermistors | [driver/temp_sensor/thermistor.c](../../driver/temp_sensor/thermistor.c) | Various analog thermistor configurations |
+| F75303 | [include/driver/temp_sensor/f75303.h](../../include/driver/temp_sensor/f75303.h) | SMBus / I2C temperature sensor |
+| PCT2075 | [include/driver/temp_sensor/pct2075.h](../../include/driver/temp_sensor/pct2075.h) | SMBus / I2C temperature sensor |
+| SB_TSI | [include/driver/temp_sensor/sb_tsi.h](../../include/driver/temp_sensor/sb_tsi.h) | I2C temperature sensor on AMD Stony Ridge FT4 SoC |
+| TMP112 | [include/driver/temp_sensor/tmp112.h](../../include/driver/temp_sensor/tmp112.h) | SMBus / I2C temperature sensor |
+| Thermistors | [include/driver/temp_sensor/thermistor.h](../../include/driver/temp_sensor/thermistor.h) | Various analog thermistor configurations |
+
+See [zephyr/shim/include/temp_sensor/temp_sensor.h](../../zephyr/shim/include/temp_sensor/temp_sensor.h).
 
 #### Supported Thermistor Configurations
 
@@ -35,8 +40,7 @@ throttling or shutting down the AP.
    * `thermistor_3V3_51K1_47K_4050B`
 
 See [zephyr/include/cros/thermistor/thermistor.dtsi](../../zephyr/include/cros/thermistor/thermistor.dtsi)
-and [zephyr/test/drivers/overlay.dts](../../zephyr/test/drivers/overlay.dts)
-to see where these are defined.
+and [zephyr/test/drivers/boards/native_sim.overlay](../../zephyr/test/drivers/boards/native_sim.overlay).
 
 ### Legacy EC Temperature Sensors
 These models have drivers written for the legacy EC code, but would need
@@ -47,15 +51,14 @@ further work to adapt to Zephyr.
 | ADT7481 | [driver/temp_sensor/adt7481.h](../../driver/temp_sensor/adt7481.h) | SMBus / I2C 3-channel temperature sensor (local + 2x remote) |
 | R19ME4070 | [driver/temp_sensor/amd_r19me4070.h](../../driver/temp_sensor/amd_r19me4070.h) | AMD GPU, but has an onboard temperature sensor. |
 | BD99992GW | [driver/temp_sensor/bd99992gw.h](../../driver/temp_sensor/bd99992gw.h) | This is a PMIC, but has an onboard temp sensor. |
-| F75303 | [driver/temp_sensor/f75303.h](../../driver/temp_sensor/f75303.h) | SMBus / I2C 3-channel temperature sensor (local + 2x remote) |
+| F75303 | [driver/temp_sensor/f75303.h](../../include/driver/temp_sensor/f75303.h) | SMBus / I2C 3-channel temperature sensor (local + 2x remote) |
 | G781/G782 | [driver/temp_sensor/g78x.h](../../driver/temp_sensor/g78x.h) | SMBus / I2C 2-channel temperature sensor (local + remote) |
 | G753 | [driver/temp_sensor/g753.h](../../driver/temp_sensor/g753.h) | SMBus / I2C single-channel temperature sensor |
 | OTI502 | [driver/temp_sensor/oti502.h](../../driver/temp_sensor/oti502.h) | I2C ambient plus infrared temperature sensor |
-| PCT2075 | [driver/temp_sensor/pct2075.h](../../driver/temp_sensor/pct2075.h) | I2C temperature sensor |
-| SB-TSI | [driver/temp_sensor/sb_tsi.h](../../driver/temp_sensor/sb_tsi.h) | I2C temp sensor on the AMD Stony Ridge FT4 SOC |
+| PCT2075 | [driver/temp_sensor/pct2075.h](../../include/driver/temp_sensor/pct2075.h) | I2C temperature sensor |
+| SB-TSI | [driver/temp_sensor/sb_tsi.h](../../include/driver/temp_sensor/sb_tsi.h) | I2C temp sensor on the AMD Stony Ridge FT4 SOC |
 | NCP15WB | [driver/temp_sensor/thermistor_ncp15wb.c](../../driver/temp_sensor/thermistor_ncp15wb.c) | NTC thermistor (used with ADC) |
 | TMP006 | [driver/temp_sensor/tmp006.h](../../driver/temp_sensor/tmp006.h) | SMBus / I2C infrared temperature sensor |
-| TMP112 | [driver/temp_sensor/tmp112.h](../../driver/temp_sensor/tmp112.h) | SMBus / I2C temperature sensor |
 | TMP411 | [driver/temp_sensor/tmp411.h](../../driver/temp_sensor/tmp411.h) | SMBus / I2C 2-channel temperature sensor (local + remote) |
 | TMP432 | [driver/temp_sensor/tmp432.h](../../driver/temp_sensor/tmp432.h) | SMBus / I2C 2-channel temperature sensor (local + remote) |
 | TMP468 | [driver/temp_sensor/tmp468.h](../../driver/temp_sensor/tmp468.h) | SMBus / I2C 9-channel temperature sensor (local + 8x remote) |
@@ -76,15 +79,15 @@ on Zephyr-based boards.
 
 Temperature sensors are declared as separate nodes and additional properties are
 defined by the `cros-ec,temp-sensors` node in the device tree. This example is
-from [zephyr/program/brya/temp_sensors.dts](../../zephyr/program/brya/temp_sensors.dts):
+from [zephyr/program/rex/temp_sensors.dtsi](../../zephyr/program/rex/temp_sensors.dtsi):
 
 ```
 	temp_ddr_soc: ddr_soc {
 		compatible = "cros-ec,temp-sensor-thermistor";
 		thermistor = <&thermistor_3V3_30K9_47K_4050B>;
-		adc = <&adc_ddr_soc>;
+		adc = <&adc_temp_sensor_1>;
 	};
-
+...
 	named-temp-sensors {
 		compatible = "cros-ec,temp-sensors";
 		ddr_soc {
@@ -95,14 +98,15 @@ from [zephyr/program/brya/temp_sensors.dts](../../zephyr/program/brya/temp_senso
 			temp_host_release_high = <80>;
 			sensor = <&temp_ddr_soc>;
 		};
+		...
 ```
 
 More information about temperature sensor device tree settings can be found in the
 following locations:
 
- * [cros_ec_temp_sensor.yaml](../../zephyr/dts/bindings/temp/cros_ec_temp_sensor.yaml) - Common properties
- * [cors_ec_temp_sensor_thermistor.yaml](../../zephyr/dts/bindings/temp/cors_ec_temp_sensor_thermistor.yaml) - Special properties for analog thermistors
- * [cros_ec_temp_sensor_tmp112.yaml](../../zephyr/dts/bindings/temp/cros_ec_temp_sensor_tmp112.yaml) - Properties for the TMP112 I2C-based sensor
+ * [cros-ec,temp-sensors.yaml](../../zephyr/dts/bindings/temp/cros-ec,temp-sensors.yaml) - Common properties
+ * [cros-ec,thermistor.yaml](../../zephyr/dts/bindings/temp/cros-ec,thermistor.yaml) - Special properties for analog thermistors
+ * [cros-ec,temp-sensor-tmp112.yaml](../../zephyr/dts/bindings/temp/cros-ec,temp-sensor-tmp112.yaml) - Properties for the TMP112 I2C-based sensor
 
 ### Thermistors
 

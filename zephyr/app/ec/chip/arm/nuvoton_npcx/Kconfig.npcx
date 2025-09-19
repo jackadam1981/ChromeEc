@@ -12,20 +12,15 @@ if SOC_FAMILY_NPCX
 config ARM_MPU
 	default y
 
-# Enable NPCX firmware header generator
-config NPCX_HEADER
+# Power management options
+config PM
 	default y
 
-choice NPCX_HEADER_SPI_MAX_CLOCK_CHOICE
-	default NPCX_HEADER_SPI_MAX_CLOCK_50
-endchoice
+config PM_DEVICE
+	default y
 
-choice NPCX_HEADER_SPI_READ_MODE_CHOICE
-	default NPCX_HEADER_SPI_READ_MODE_DUAL
-endchoice
-
-choice NPCX_HEADER_CORE_CLOCK_SPI_CLOCK_RATIO_CHOICE
-	default NPCX_HEADER_CORE_CLOCK_SPI_CLOCK_RATIO_2
+choice PM_POLICY
+	default PM_POLICY_CUSTOM
 endchoice
 
 # ADC
