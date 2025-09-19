@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbcc9667_524ec4e1",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-09-19T18:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78683e66_cc4d6d04",
+      "revId": "9de38737ee996cf85c9dac36e9257358f36459ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "354da3a1_901e3615",
         "filename": "common/charge_manager.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-19T17:03:24Z",
       "side": 1,
       "message": "You can also use `MUTEX_HISTORY_LOG_CRUMB(\u0026mutex_history_rb, \"charge_manager_refresh ended\")`, which will capture this string prefixed with the line number. This will reduce the need to lookup a file:line_num to see what the crumb is indicating.",
+      "revId": "9de38737ee996cf85c9dac36e9257358f36459ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13b5433_d826e744",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-09-19T18:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354da3a1_901e3615",
       "revId": "9de38737ee996cf85c9dac36e9257358f36459ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
