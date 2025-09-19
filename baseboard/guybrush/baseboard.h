@@ -22,7 +22,7 @@
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
 /* Vboot Config */
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_VBOOT_EFS2
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE

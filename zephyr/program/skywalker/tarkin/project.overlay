@@ -14,8 +14,8 @@
 #include "../usba.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
-#include "motionsense.dtsi"
 #include "temp_sensor.dtsi"
+#include "cbi.dtsi"
 
 / {
 	batteries {
@@ -25,14 +25,20 @@
 		celxpert_b340442 {
 			compatible = "celxpert,b340442","battery-smart";
 		};
+		celxpert_p360644 {
+			compatible = "celxpert,p360644","battery-smart";
+		};
+		smp_c31n2313 {
+			compatible = "smp,c31n2313","battery-smart";
+		};
 	};
 
 	gpio-interrupts {
-		int_imu: ec-imu {
-			irq-pin = <&gpio_imu_int_ec_l>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "base_accel_gyro_interrupt";
-		};
+		/delete-node/ lid-accel;
+		/delete-node/ ec-imu;
+		/delete-node/ tablet_mode;
+		/delete-node/ volume-up;
+		/delete-node/ volume-down;
 		int_jd1: jd1 {
 			irq-pin = <&gpio_jd1>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -47,6 +53,13 @@
 		/delete-node/ usb_c1_dp_hpd;
 		/delete-node/ en_usb_c0_dev_mode;
 		/delete-node/ ec_kso_02_inv;
+		/delete-node/ imu_int_ec_l;
+		/delete-node/ lid_accel_int_ec_l;
+		/delete-node/ lid_360_l;
+		/delete-node/ ec_voldn_btn_odl;
+		/delete-node/ ec_volup_btn_odl;
+		/delete-node/ ec_pen_chg_dis_odl;
+		/delete-node/ en_pp5000_z1;
 
 		gpio_ec_en_ppvar_blpwr: ec_en_ppvar_blpwr {
 			gpios = <&gpioi 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
@@ -57,29 +70,36 @@
 		gpio_5p0va_pwr_mode: 5p0va_pwr_mode {
 			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
 		};
-		gpio_pen_eject: pen_eject {
-			gpios = <&gpiof 4 (GPIO_INPUT | GPIO_PULL_UP)>;
-		};
 	};
 
 	named-i2c-ports {
 		/delete-node/ ec_i2c_pdc_s_scl_3v3;
+		/delete-node/ ec_i2c_sensor_scl_1v8;
 	};
 
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
-			<&gpioa 3 GPIO_INPUT_PULL_DOWN>,
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpiob 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpioc 7 GPIO_INPUT_PULL_DOWN>,
+			<&gpiod 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpiod 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 3 GPIO_INPUT_PULL_DOWN>,
+			<&gpioe 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
+			<&gpiof 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
+			<&gpioh 3 GPIO_INPUT_PULL_DOWN>,
 			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
 			<&gpioj 2 GPIO_INPUT_PULL_DOWN>;
 	};
@@ -87,8 +107,11 @@
 	cros-keyscan {
 		compatible = "cros-ec,keyscan";
 
+		debounce-down = <20000>;
+		debounce-up = <20000>;
+
 		actual-key-mask = <
-			0x48	/* C0 */
+			0x08	/* C0 */
 			0xff	/* C1 */
 			0xff	/* C2 */
 			0xff	/* C3 */
@@ -97,40 +120,22 @@
 			0xff	/* C6 */
 			0xa4	/* C7 */
 			0xff	/* C8 */
-			0xff	/* C9 */
+			0xf7	/* C9 */
 			0x55	/* C10 */
 			0xff	/* C11 */
 			0xff	/* C12 */
-			0x40    /* C13 */
-			0x0a    /* C14 */
+			0x40	/* C13 */
+			0x0a	/* C14 */
+			0x40	/* C15 */
+			0xff	/* C16 */
+			0xff	/* C17 */
 		>;
 	};
-};
 
-&cros_kb_raw {
-	pinctrl-0 = <&ksi0_default
-		     &ksi1_default
-		     &ksi2_default
-		     &ksi3_default
-		     &ksi4_default
-		     &ksi5_default
-		     &ksi6_default
-		     &ksi7_default
-		     &kso0_default
-		     &kso1_default
-		     &kso2_default
-		     &kso3_default
-		     &kso4_default
-		     &kso5_default
-		     &kso6_default
-		     &kso7_default
-		     &kso8_default
-		     &kso9_default
-		     &kso10_default
-		     &kso11_default
-		     &kso12_default
-		     &kso13_default
-		     &kso14_default>;
+	kblight {
+		compatible = "cros-ec,kblight-pwm";
+		pwms = <&pwm3 PWM_CHANNEL_3 PWM_HZ(100) PWM_POLARITY_NORMAL>;
+	};
 };
 
 &pwm2 {
@@ -152,15 +157,12 @@
 	status = "disabled";
 };
 
-&sha0 {
-	status = "okay";
+&i2c3 {
+    status = "disabled";
 };
 
-&pdc_power_p0 {
-	zephyr,deferred-init;
-};
-&pdc_power_p1 {
-	zephyr,deferred-init;
+&sha0 {
+	status = "okay";
 };
 
 /*

@@ -23,7 +23,7 @@ if(DEFINED CONFIG_BOARD_NIVVIKS)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "nivviks/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nivviks/src/charger.c")
 endif()
-if(DEFINED CONFIG_BOARD_NEREID OR DEFINED CONFIG_BOARD_NEREID_CX)
+if(DEFINED CONFIG_BOARD_NEREID)
 	project(nereid)
 	zephyr_library_sources(
 			"src/led.c"
@@ -42,15 +42,6 @@ if(DEFINED CONFIG_BOARD_NOKRIS)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "nokris/src/fan.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "nokris/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "nokris/src/charger.c")
-endif()
-if(DEFINED CONFIG_BOARD_NAKTAL)
-        project(naktal)
-        zephyr_library_sources(
-                        "naktal/src/led.c"
-                        "naktal/src/hdmi.c"
-        )
-        zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "naktal/src/usbc.c")
-        zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "naktal/src/charger.c")
 endif()
 if(DEFINED CONFIG_BOARD_CRAASK)
 	zephyr_library_sources(
@@ -136,16 +127,6 @@ if(DEFINED CONFIG_BOARD_YAVISTA)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "yavista/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "yavista/src/charger.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "yavista/src/fan.c")
-endif()
-if(DEFINED CONFIG_BOARD_XIVUR)
-	project(xivur)
-	zephyr_library_sources(
-			"xivur/src/led.c"
-			"xivur/src/board.c"
-	)
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "xivur/src/fan.c")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "xivur/src/usbc.c")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "xivur/src/charger.c")
 endif()
 if(DEFINED CONFIG_BOARD_ULDREN)
 	project(uldren)

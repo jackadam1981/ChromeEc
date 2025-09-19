@@ -98,7 +98,7 @@ void fps_event(enum gpio_signal signal);
 }
 #endif
 
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_SHA256_SW
 
 #define CONFIG_I2C

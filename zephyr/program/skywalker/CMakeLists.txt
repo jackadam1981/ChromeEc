@@ -6,11 +6,12 @@ cmake_minimum_required(VERSION 3.20.5)
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
 target_sources(app PRIVATE
-	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/dp_alt_mode.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/i2c.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hibernate.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hooks.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/backlight.c)
+target_sources_ifndef(CONFIG_BOARD_SKYWALKER_SINGLE_USB_TYPEC app PRIVATE
+	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/dp_alt_mode.c)
 
 if(DEFINED CONFIG_BOARD_SKYWALKER)
 	project(skywalker)
@@ -33,4 +34,7 @@ elseif(DEFINED CONFIG_BOARD_BAZE)
 elseif(DEFINED CONFIG_BOARD_TARKIN)
 	project(tarkin)
 	add_subdirectory(tarkin)
+elseif(DEFINED CONFIG_BOARD_PADME)
+	project(padme)
+	add_subdirectory(padme)
 endif()

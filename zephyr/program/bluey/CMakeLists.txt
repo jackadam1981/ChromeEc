@@ -14,5 +14,9 @@ if(DEFINED CONFIG_BOARD_QUENBI)
 	project(quenbi)
 endif()
 
+if(DEFINED CONFIG_BOARD_QUARTZ)
+	project(quartz)
+endif()
+
 zephyr_library_sources("src/switchcap.c")
 zephyr_library_sources("src/chipset.c")

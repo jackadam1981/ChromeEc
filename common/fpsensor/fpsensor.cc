@@ -12,12 +12,12 @@
 #include "crypto/cleanse_wrapper.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
+#include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_detect.h"
 #include "fpsensor/fpsensor_modes.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "fpsensor/fpsensor_utils.h"
 #include "gpio.h"
 #include "host_command.h"
@@ -112,42 +112,26 @@ static uint32_t fp_process_enroll(void)
 			fp_enable_positive_match_secret(
 				global_context.templ_valid,
 				&global_context.positive_match_secret_state);
-			global_context
-				.template_states[global_context.templ_valid] =
-				fp_decrypted_template_state{
-					.user_id = global_context.user_id,
-				};
-			global_context.templ_valid++;
+
+			/*
+			 * In the classic flow we immediately use this template
+			 * for matching (templ_valid is incremented).
+			 *
+			 * In the Fingerprint Auth flow we must reliably inform
+			 * Trusted Application that the template was enrolled.
+			 * To achieve this, we will not use this template for
+			 * matching, until Trusted Application sends us a signed
+			 * confirmation.
+			 */
+			if (!fingerprint_auth_enabled()) {
+				global_context.templ_valid++;
+			}
 		}
 		global_context.sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
 	return EC_MKBP_FP_ENROLL | EC_MKBP_FP_ERRCODE(res) |
 	       (percent << EC_MKBP_FP_ENROLL_PROGRESS_OFFSET);
-}
-
-static bool authenticate_fp_match_state(void)
-{
-	/* The rate limit is only meanful for the nonce context, and we don't
-	 * have rate limit for the legacy FP user unlock flow. */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
-		return true;
-	}
-
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_TEMPLATE_UNLOCKED_SET)) {
-		CPRINTS("Cannot process match without unlock template");
-		return false;
-	}
-
-	if (global_context.fp_encryption_status &
-	    FP_CONTEXT_STATUS_MATCH_PROCESSED_SET) {
-		CPRINTS("Cannot process match twice in nonce context");
-		return false;
-	}
-
-	return true;
 }
 
 static uint32_t fp_process_match(void)
@@ -160,20 +144,6 @@ static uint32_t fp_process_match(void)
 	/* match finger against current templates */
 	fp_disable_positive_match_secret(
 		&global_context.positive_match_secret_state);
-
-	if (!authenticate_fp_match_state()) {
-		res = EC_MKBP_FP_ERR_MATCH_NO_AUTH_FAIL;
-		return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res) |
-		       ((fgr << EC_MKBP_FP_MATCH_IDX_OFFSET) &
-			EC_MKBP_FP_MATCH_IDX_MASK);
-	}
-
-	/* The match processed state will be used to prevent the template unlock
-	 * operation after match processed in a nonce context. If we don't do
-	 * that, the attacker can unlock template multiple times in a single
-	 * nonce context. */
-	global_context.fp_encryption_status |=
-		FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
 
 	CPRINTS("Matching/%d ...", global_context.templ_valid);
 	if (global_context.templ_valid) {
@@ -417,8 +387,48 @@ extern "C" void fp_task(void)
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
 }
 
+static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
+{
+	struct ec_response_fp_info_v2 *r =
+		static_cast<ec_response_fp_info_v2 *>(args->response);
+
+#ifdef HAVE_FP_PRIVATE_DRIVER
+	if (fp_sensor_get_info_v2(r, args->response_max) < 0)
+#endif
+		return EC_RES_UNAVAILABLE;
+
+	r->template_info.template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
+	r->template_info.template_max = FP_MAX_FINGER_COUNT;
+	r->template_info.template_valid = global_context.templ_valid;
+	r->template_info.template_dirty = global_context.templ_dirty;
+	r->template_info.template_version = FP_TEMPLATE_FORMAT_VERSION;
+
+	args->response_size = sizeof(struct ec_response_fp_info_v2) +
+			      (r->sensor_info.num_capture_types) *
+				      sizeof(struct fp_image_frame_params);
+
+	return EC_RES_SUCCESS;
+}
+
+__overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp,
+					size_t resp_size)
+{
+	*resp = {
+		.sensor_info = { .vendor_id = 0,
+				 .product_id = 0,
+				 .model_id = 0,
+				 .version = 0,
+				 .num_capture_types = 0,
+				 .errors = 0 },
+	};
+	return EC_SUCCESS;
+}
+
 static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
+	if (args->version == 2) {
+		return fp_command_info_v2(args);
+	}
 	auto *r = static_cast<ec_response_fp_info *>(args->response);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
@@ -638,37 +648,26 @@ enum ec_status fp_commit_template(std::span<const uint8_t> context)
 		templ.data(),
 		templ.size_bytes() + positive_match_salt.size_bytes());
 
-	if (global_context.fp_encryption_status & FP_CONTEXT_USER_ID_SET) {
-		FpEncryptionKey key;
-		enum ec_error_list ret =
-			derive_encryption_key(key, enc_info->encryption_salt,
-					      context, global_context.tpm_seed);
-		if (ret != EC_SUCCESS) {
-			CPRINTS("fgr%d: Failed to derive key", idx);
-			return EC_RES_UNAVAILABLE;
-		}
+	FpEncryptionKey key;
+	enum ec_error_list ret =
+		derive_encryption_key(key, enc_info->encryption_salt, context,
+				      global_context.tpm_seed);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("fgr%d: Failed to derive key", idx);
+		return EC_RES_UNAVAILABLE;
+	}
 
-		/* Decrypt the secret blob in-place. */
-		ret = aes_128_gcm_decrypt(
-			key, encrypted_template_and_positive_match_salt,
-			encrypted_template_and_positive_match_salt,
-			enc_info->nonce, enc_info->tag);
-		if (ret != EC_SUCCESS) {
-			CPRINTS("fgr%d: Failed to decipher template", idx);
-			/* Don't leave bad data in the template buffer
-			 */
-			fp_clear_finger_context(idx);
-			return EC_RES_UNAVAILABLE;
-		}
-		global_context.template_states[idx] =
-			fp_decrypted_template_state{
-				.user_id = global_context.user_id,
-			};
-	} else {
-		global_context.template_states[idx] =
-			fp_encrypted_template_state{
-				.enc_metadata = *enc_info,
-			};
+	/* Decrypt the secret blob in-place. */
+	ret = aes_128_gcm_decrypt(key,
+				  encrypted_template_and_positive_match_salt,
+				  encrypted_template_and_positive_match_salt,
+				  enc_info->nonce, enc_info->tag);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("fgr%d: Failed to decipher template", idx);
+		/* Don't leave bad data in the template buffer
+		 */
+		fp_clear_finger_context(idx);
+		return EC_RES_UNAVAILABLE;
 	}
 
 	std::ranges::copy(templ, fp_template[idx]);
@@ -718,63 +717,44 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
 
 static enum ec_status
-fp_command_migrate_template_to_nonce_context(struct host_cmd_handler_args *args)
+fp_command_confirm_template(struct host_cmd_handler_args *args)
 {
-	const auto *params = static_cast<
-		const ec_params_fp_migrate_template_to_nonce_context *>(
-		args->params);
-	uint16_t idx = global_context.templ_valid;
+	const auto *params =
+		static_cast<const struct ec_params_fp_confirm_template *>(
+			args->params);
+	std::span<const uint8_t, FP_MAC_LENGTH> mac{ params->mac };
 
 	/*
-	 * The command is used for migrating legacy templates to be encrypted by
-	 * nonce sessions. No point to call this outside a nonce context.
+	 * The context for signing/verifying messages is Android user id
+	 * which is 4 byte integer.
 	 */
-	if (!(global_context.fp_encryption_status &
-	      FP_CONTEXT_STATUS_NONCE_CONTEXT_SET)) {
+	static_assert(global_context.user_id.size() >= sizeof(uint32_t));
+	std::span<const uint8_t> context{ global_context.user_id.data(),
+					  sizeof(uint32_t) };
+
+	/* The operation is just an "enroll_finish" string */
+	static constexpr uint8_t operation_str[] = { 'e', 'n', 'r', 'o', 'l',
+						     'l', '_', 'f', 'i', 'n',
+						     'i', 's', 'h' };
+	std::span<const uint8_t> operation{ operation_str };
+
+	/*
+	 * After successful enrollment, the 'template_newly_enrolled' (new
+	 * template id) must be equal to 'templ_valid'.
+	 */
+	if (global_context.template_newly_enrolled !=
+	    global_context.templ_valid) {
+		return EC_RES_ERROR;
+	}
+
+	if (validate_request(context, operation, mac) != EC_SUCCESS) {
 		return EC_RES_ACCESS_DENIED;
 	}
 
-	/*
-	 * Migration commits a template into the nonce session, so the whole
-	 * temlpate needs to be uploaded through FP_TEMPLATE command first
-	 * without committing. Check whether we have space for a new template.
-	 */
-	if (idx >= FP_MAX_FINGER_COUNT)
-		return EC_RES_OVERFLOW;
-
-	BUILD_ASSERT(sizeof(params->userid) == SHA256_DIGEST_SIZE);
-	ec_status res = fp_commit_template(
-		{ reinterpret_cast<const uint8_t *>(params->userid),
-		  sizeof(params->userid) });
-	if (res != EC_RES_SUCCESS) {
-		return res;
-	}
-
-	ScopedFastCpu fast_cpu;
-
-	/*
-	 * Make sure salt data is cleared because the new protocol doesn't trust
-	 * match secrets of legacy templates. New match secret needs to be
-	 * generated for them.
-	 */
-	std::ranges::fill(global_context.fp_positive_match_salt[idx], 0);
-	int ret = fp_enable_positive_match_secret(
-		idx, &global_context.positive_match_secret_state);
-	if (ret != EC_SUCCESS) {
-		return EC_RES_ACCESS_DENIED;
-	}
-
-	/*
-	 * Note that this operation can be think of as making template idx
-	 * (the one we just committed) a freshly enrolled template. It needs to
-	 * be fetched again (and encrypted differently) and its match secret
-	 * needs to be freshly generated.
-	 */
-	global_context.templ_dirty |= BIT(idx);
-	global_context.template_newly_enrolled = idx;
+	/* Add newly enrolled template to valid templates. */
+	global_context.templ_valid++;
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT,
-		     fp_command_migrate_template_to_nonce_context,
+DECLARE_HOST_COMMAND(EC_CMD_FP_CONFIRM_TEMPLATE, fp_command_confirm_template,
 		     EC_VER_MASK(0));

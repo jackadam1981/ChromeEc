@@ -109,6 +109,7 @@
 				};
 				ec-s3 {
 					odr = <(50000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -134,6 +135,7 @@
 				};
 				ec-s3 {
 					odr = <(50000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -161,6 +163,7 @@
 				};
 				ec-s3 {
 					odr = <(50000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -186,6 +189,7 @@
 				};
 				ec-s3 {
 					odr = <(50000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};

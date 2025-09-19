@@ -99,7 +99,7 @@
 	named-adc-channels {
 		compatible = "named-adc-channels";
 
-		adc_vbus_c0 {
+		adc_vbus_c0: adc-vbus-c0 {
 			enum-name = "ADC_VBUS_C0";
 			io-channels = <&adc0 0>;
 			mul = <10>;

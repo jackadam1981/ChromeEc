@@ -62,6 +62,7 @@ register_ish_project(
         here / "rex-ish" / "project.overlay",
     ],
     kconfig_files=[here / "rex-ish" / "prj.conf"],
+    inherited_from=["rex"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses

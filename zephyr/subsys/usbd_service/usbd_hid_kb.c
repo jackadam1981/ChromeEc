@@ -168,12 +168,12 @@ static void kb_iface_ready(const struct device *dev, const bool ready)
 		atomic_set_bit(&keyboard.state, HID_CLASS_IFACE_READY);
 	} else {
 		atomic_clear_bit(&keyboard.state, HID_CLASS_IFACE_READY);
-		mutex_lock(keyboard.report_queue_mutex);
+		k_mutex_lock(&keyboard.report_queue_mutex, K_FOREVER);
 		if (queue_count(&keyboard.report_queue) != 0) {
 			queue_remove_units(&keyboard.report_queue, NULL,
 					   queue_count(&keyboard.report_queue));
 		}
-		mutex_unlock(keyboard.report_queue_mutex);
+		k_mutex_unlock(&keyboard.report_queue_mutex);
 	}
 
 	LOG_DBG("%s interface is %s", dev->name, ready ? "ready" : "not ready");
@@ -364,12 +364,12 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 			return;
 		}
 
-		mutex_lock(keyboard.report_queue_mutex);
+		k_mutex_lock(&keyboard.report_queue_mutex, K_FOREVER);
 		if (queue_is_empty(&keyboard.report_queue)) {
 			int ret = write_kb_report(&report);
 
 			if (ret != -EBUSY) {
-				mutex_unlock(keyboard.report_queue_mutex);
+				k_mutex_unlock(&keyboard.report_queue_mutex);
 				return;
 			}
 		}
@@ -385,7 +385,7 @@ __overridable void keyboard_state_changed(int row, int col, int is_pressed)
 		}
 		queue_add_unit(&keyboard.report_queue, &report);
 
-		mutex_unlock(keyboard.report_queue_mutex);
+		k_mutex_unlock(&keyboard.report_queue_mutex);
 
 		hook_call_deferred(&hid_kb_proc_queue_data, 0);
 	}
@@ -396,17 +396,17 @@ static void hid_kb_proc_queue(void)
 	struct usb_hid_keyboard_report kb_data;
 	int ret;
 
-	mutex_lock(keyboard.report_queue_mutex);
+	k_mutex_lock(&keyboard.report_queue_mutex, K_FOREVER);
 
 	if (!atomic_test_bit(&keyboard.state, HID_CLASS_IFACE_READY)) {
 		queue_remove_units(&keyboard.report_queue, NULL,
 				   queue_count(&keyboard.report_queue));
-		mutex_unlock(keyboard.report_queue_mutex);
+		k_mutex_unlock(&keyboard.report_queue_mutex);
 		return;
 	}
 
 	if (queue_is_empty(&keyboard.report_queue)) {
-		mutex_unlock(keyboard.report_queue_mutex);
+		k_mutex_unlock(&keyboard.report_queue_mutex);
 		return;
 	}
 
@@ -417,7 +417,7 @@ static void hid_kb_proc_queue(void)
 		queue_advance_head(&keyboard.report_queue, 1);
 	}
 
-	mutex_unlock(keyboard.report_queue_mutex);
+	k_mutex_unlock(&keyboard.report_queue_mutex);
 	hook_call_deferred(&hid_kb_proc_queue_data, 1 * USEC_PER_MSEC);
 }
 
@@ -450,6 +450,8 @@ static int usb_hid_kb_init(void)
 		LOG_ERR("failed to get hid keyboard device");
 		return -ENXIO;
 	}
+
+	k_mutex_init(&keyboard.report_queue_mutex);
 
 	/* Coreboot only parses the first interface descriptor for boot keyboard
 	 * detection. Therefore, The instance number of hid kb device should be

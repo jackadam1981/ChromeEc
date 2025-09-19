@@ -10,6 +10,7 @@
 
 #include "ec_commands.h"
 #include "openssl/ec.h"
+#include "openssl/sha.h"
 
 #include <optional>
 #include <span>
@@ -203,51 +204,61 @@ generate_ecdh_shared_secret_without_kdf(const EC_KEY &private_key,
 					std::span<uint8_t> secret);
 
 /**
- * Generate a gsc_session_key that is derived from auth nonce, GSC nonce and
- * pairing key.
+ * Generate a session key that is derived from FPMCU nonce, peer nonce and
+ * the Pairing Key.
  *
- * @param[in] auth_nonce the auth nonce
- * @param[in] gsc_nonce the auth nonce
- * @param[in] pairing_key the auth nonce
- * @param[in,out] gsc_session_key the output key
+ * @param[in] fpmcu_nonce the session nonce on FPMCU side
+ * @param[in] peer_nonce the session nonce on peer side
+ * @param[in] pairing_key the Pairing Key
+ * @param[in,out] session_key the output key
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
-enum ec_error_list
-generate_gsc_session_key(std::span<const uint8_t> auth_nonce,
-			 std::span<const uint8_t> gsc_nonce,
-			 std::span<const uint8_t> pairing_key,
-			 std::span<uint8_t> gsc_session_key);
+enum ec_error_list generate_session_key(
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> peer_nonce,
+	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key);
 
 /**
- * Decrypt the data in place with a GSC session key.
- * Note: The GSC session key is equal to the CK in the original design doc.
+ * Decrypt the data with a session key.
  *
- * @param[in] gsc_session_key the GSC session key
- * @param[in] iv the IV of the encrypted data
- * @param[in,out] data the encrypted data
+ * @param[in] session_key the session key
+ * @param[in] input the encrypted data
+ * @param[out] output the decrypted data
+ * @param[in] nonce the AES256-GCM nonce
+ * @param[in] tag the AES256-GCM tag
+ * @param[in] aad the AES256-GCM additional auth data
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
-enum ec_error_list decrypt_data_with_gsc_session_key_in_place(
-	std::span<const uint8_t> gsc_session_key, std::span<const uint8_t> iv,
-	std::span<uint8_t> data);
+enum ec_error_list decrypt_data_with_session_key(
+	std::span<const uint8_t, 32> session_key,
+	std::span<const uint8_t> input, std::span<uint8_t> output,
+	std::span<const uint8_t, FP_AES_KEY_NONCE_BYTES> nonce,
+	std::span<const uint8_t, FP_AES_KEY_TAG_BYTES> tag,
+	std::span<const uint8_t> aad);
+
 /**
- * Encrypt the data with a ECDH public key.
+ * Compute session message signature
  *
- * @param[in] in_pubkey the input public key
- * @param[in,out] data the data to be encrypted
- * @param[out] iv the output IV
- * @param[out] out_pubkey the output public key
+ * @param[in] session_key the session key
+ * @param[in] context the context e.g. user id
+ * @param[in] sender the sender name, e.g. "fpmcu"
+ * @param[in] operation the authenticated operation
+ * @param[in] challenge the challenge
+ * @param[out] signature the message signature
  *
  * @return EC_SUCCESS on success
  * @return EC_ERROR_* on error
  */
-enum ec_error_list encrypt_data_with_ecdh_key_in_place(
-	const struct fp_elliptic_curve_public_key &in_pubkey,
-	std::span<uint8_t> data, std::span<uint8_t> iv,
-	struct fp_elliptic_curve_public_key &out_pubkey);
+enum ec_error_list compute_message_signature(
+	std::span<const uint8_t, SHA256_DIGEST_LENGTH> session_key,
+	std::span<const uint8_t> context, std::span<const uint8_t> sender,
+	std::span<const uint8_t> operation,
+	std::span<const uint8_t, FP_CHALLENGE_SIZE> challenge,
+	std::span<uint8_t, SHA256_DIGEST_LENGTH> signature);
 
 #endif /* __CROS_EC_FPSENSOR_FPSENSOR_AUTH_CRYPTO_H */
