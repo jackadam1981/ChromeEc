@@ -255,8 +255,16 @@ static int flash_set_status(const struct device *dev, uint8_t sr1, uint8_t sr2)
 	int rv;
 	uint8_t regs[2];
 
-	if (is_int_flash_protected(dev) && flash_check_status_reg_srp(dev)) {
-		return EC_ERROR_ACCESS_DENIED;
+	if (flash_check_status_reg_srp(dev)) {
+#ifdef CONFIG_NPCX_INT_FLASH_SUPPORT
+		if (is_int_flash_protected(dev)) {
+			return EC_ERROR_ACCESS_DENIED;
+		}
+#else
+		if (crec_flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED) {
+			return EC_ERROR_ACCESS_DENIED;
+		}
+#endif
 	}
 
 	regs[0] = sr1;
@@ -424,6 +432,50 @@ static int cros_flash_npcx_init(const struct device *dev)
 	 * Disable flash quad enable to avoid /WP pin function is not
 	 * available. */
 	flash_set_quad_enable(dev, false);
+
+#ifdef CONFIG_NPCX_INT_FLASH_SUPPORT
+	/*
+	 * Fix situation when flash protect bit (SRP0) is enabled, but the size
+	 * of protected area is 0 or it's not possible to decode protected range
+	 * from SR1 and SR2 registers (spi_flash_reg_to_protect() returned
+	 * error). This situation can occur if flashing was interrupted
+	 * e.g. flashrom was killed while reading from flash:
+	 * http://b/328066864#comment12
+	 *
+	 * Status registers can be modified only when the SRP0 bit and the WP_IF
+	 * bit (in DEV_CTL4 register) are not enabled at the same time. The
+	 * WP_IF bit is cleared when MCU reboots, it means that once enabled,
+	 * the bit can't be cleared by the software.
+	 *
+	 * The WP_IF bit is set by flash_protect_int_flash() function based on
+	 * GPIO_WP status. In our case, the WP_IF bit is clear in RO (because we
+	 * are after reboot), but not in RW (because it will be set later in
+	 * this function).
+	 *
+	 * Clearing the status registers before the WP_IF bit is enabled avoids
+	 * situation in which we protect status registers with size of protected
+	 * area set to 0. We rely on other parts of the system to enable
+	 * protection like we rely on them to enable protection when HW WP is
+	 * enabled for the first time.
+	 */
+	if (!is_int_flash_protected(dev)) {
+		uint8_t sr1, sr2;
+		unsigned int prot_start, prot_length;
+		int rv;
+
+		flash_get_status(dev, &sr1, &sr2);
+		rv = spi_flash_reg_to_protect(sr1, sr2, &prot_start,
+					      &prot_length);
+
+		if (rv || ((sr1 & SPI_FLASH_SR1_SRP0) && prot_length == 0)) {
+			rv = flash_set_status(dev, 0, 0);
+			if (rv) {
+				LOG_ERR("Failed to clear invalid status: %d",
+					rv);
+			}
+		}
+	}
+#endif
 
 	/*
 	 * Protect status registers of internal spi-flash if WP# is active
