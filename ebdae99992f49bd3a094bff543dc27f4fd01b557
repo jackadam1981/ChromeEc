@@ -34,6 +34,24 @@
       "parentUuid": "950ba571_4440e092",
       "revId": "ebdae99992f49bd3a094bff543dc27f4fd01b557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985ec547_c353ea8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-19T15:58:16Z",
+      "side": 1,
+      "message": "The preference is always to push things upstream instead of maintaining our own changes. Otherwise, we risk having it break when there are upstream changes since they don\u0027t know about our custom stuff. Ultimately the plan is to remove this shim code entirely, so we want to avoid adding to it if we can make it work upstream.",
+      "parentUuid": "58bd6b9f_bbe9c9fc",
+      "revId": "ebdae99992f49bd3a094bff543dc27f4fd01b557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
