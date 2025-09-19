@@ -33,6 +33,24 @@
       "message": "Does this change replace CL:6677392?",
       "revId": "a64a0440cfbf9aee9d2b4d0fe6a14edafd329dec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478ca88a_a25ca8f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289721
+      },
+      "writtenOn": "2025-09-19T02:07:28Z",
+      "side": 1,
+      "message": "Yes.These two are different solutions.\nWe think this solution is better and will avoid problems related to EC F/W code.",
+      "parentUuid": "0e024303_c0f027bc",
+      "revId": "a64a0440cfbf9aee9d2b4d0fe6a14edafd329dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
