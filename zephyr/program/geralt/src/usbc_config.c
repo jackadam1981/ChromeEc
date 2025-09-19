@@ -5,6 +5,7 @@
 
 /* Geralt baseboard-specific USB-C configuration */
 
+#include "adc.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "console.h"
@@ -173,5 +174,23 @@ __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
 		return PD_DRP_TOGGLE_ON;
 	} else {
 		return PD_DRP_FORCE_SINK;
+	}
+}
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int vbus;
+
+	vbus = adc_read_channel(board_get_vbus_adc(port));
+
+	switch (level) {
+	case VBUS_SAFE0V:
+		return vbus <= PD_V_SAFE0V_MAX;
+	case VBUS_PRESENT:
+		return vbus >= PD_V_SAFE5V_MIN;
+	case VBUS_REMOVED:
+		return vbus <= PD_V_SINK_DISCONNECT_MAX;
+	default:
+		return false;
 	}
 }

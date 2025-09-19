@@ -12,11 +12,7 @@
 extern "C" {
 #endif
 
-#ifdef BOARD_MUSHU
-#define F75303_I2C_ADDR_FLAGS 0x4D
-#else
 #define F75303_I2C_ADDR_FLAGS 0x4C
-#endif
 
 /*
  * I2C port and address information for all the board F75303 sensors should be

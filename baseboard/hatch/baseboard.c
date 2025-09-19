@@ -89,18 +89,6 @@ const struct i2c_port_t i2c_ports[] = {
 	  .scl = GPIO_I2C4_SCL,
 	  .sda = GPIO_I2C4_SDA },
 #endif
-#ifdef BOARD_MUSHU
-	{ .name = "f75303_temp",
-	  .port = I2C_PORT_THERMAL,
-	  .kbps = 100,
-	  .scl = GPIO_I2C0_SCL,
-	  .sda = GPIO_I2C0_SDA },
-	{ .name = "gpu_temp",
-	  .port = I2C_PORT_GPU,
-	  .kbps = 100,
-	  .scl = GPIO_I2C4_SCL,
-	  .sda = GPIO_I2C4_SDA },
-#endif
 	{ .name = "power",
 	  .port = I2C_PORT_POWER,
 	  .kbps = 100,

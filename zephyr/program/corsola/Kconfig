@@ -62,12 +62,6 @@ config BOARD_CHINCHOU
 	  Build Google Chinchou variant board. Chinchou is a variant of Krabby
 	  and has MediaTek MT8186 SoC with ITE it81202-bx EC
 
-config BOARD_WOOBAT
-	bool "Google Woobat Board"
-	help
-	  Build Google Woobat variant board. Woobat is a variant of Krabby
-	  and has MediaTek MT8186 SoC with ITE it81202-bx EC
-
 config BOARD_WUGTRIO
 	bool "Google Wugtrio Board"
 	help

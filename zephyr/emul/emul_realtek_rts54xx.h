@@ -312,6 +312,22 @@ union rts54_request {
 		uint8_t port_num;
 		uint8_t state;
 	} set_sys_pwr_state;
+
+	struct set_battery_capability_req {
+		uint8_t command_code;
+		uint8_t data_len;
+		uint8_t sub_cmd;
+		uint8_t port_num;
+		union battery_capability_t bcap;
+	} __packed set_battery_capability;
+
+	struct set_battery_status_req {
+		uint8_t command_code;
+		uint8_t data_len;
+		uint8_t sub_cmd;
+		uint8_t port_num;
+		union battery_status_t bstat;
+	} __packed set_battery_status;
 };
 
 union rts54_response {
@@ -486,17 +502,6 @@ union rts54_response {
 	} __packed get_tpc_csd_operation_mode;
 };
 
-enum cmd_sts_t {
-	/** Command has not been started */
-	CMD_BUSY = 0,
-	/** Command has completed */
-	CMD_COMPLETE = 1,
-	/** Command has been started but has not completed */
-	CMD_DEFERRED = 2,
-	/** Command completed with error. Send GET_ERROR_STATUS for details */
-	CMD_ERROR = 3,
-};
-
 struct ping_status {
 	/** Command status */
 	uint8_t cmd_sts : 2;
@@ -527,6 +532,7 @@ struct rts5453p_emul_pdc_data {
 	struct lpm_ppm_info_t lpm_ppm_info;
 	union cable_property_t cable_property;
 	bool bbr_cts_mode;
+	enum sx_sleep_state sys_power_state;
 
 	union rts54_request request;
 
@@ -549,6 +555,8 @@ struct rts5453p_emul_pdc_data {
 	bool vconn_sourcing;
 	union get_attention_vdo_t attention_vdo;
 	uint8_t sbu_mux_mode;
+	union battery_capability_t battery_capability;
+	union battery_status_t battery_status;
 	/** PDC feature flags */
 	ATOMIC_DEFINE(features, EMUL_PDC_FEATURE_COUNT);
 	int dead_battery;

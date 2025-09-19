@@ -334,11 +334,6 @@
  * Some ALS modules may be connected to the EC. We need the command, and
  * specific drivers for each module.
  */
-#ifdef HAS_TASK_ALS
-#define CONFIG_ALS
-#else
-#undef CONFIG_ALS
-#endif
 #undef CONFIG_ALS_AL3010
 #undef CONFIG_ALS_BH1730
 /*
@@ -958,6 +953,7 @@
 #undef CONFIG_CHARGER_BQ24773
 #undef CONFIG_CHARGER_BQ25710
 #undef CONFIG_CHARGER_BQ25720
+#undef CONFIG_CHARGER_BQ25770
 #undef CONFIG_CHARGER_ISL9237
 #undef CONFIG_CHARGER_ISL9238 /* For ISL9238 A/B */
 #undef CONFIG_CHARGER_ISL9238C
@@ -1176,6 +1172,12 @@
 
 /* Value of the bq25710 input current sense resistor, in mOhms */
 #undef CONFIG_CHARGER_BQ25710_SENSE_RESISTOR_AC
+
+/* Value of the bq25770 charge sense resistor, in mOhms */
+#undef CONFIG_CHARGER_BQ25770_SENSE_RESISTOR
+
+/* Value of the bq25770 input current sense resistor, in mOhms */
+#undef CONFIG_CHARGER_BQ25770_SENSE_RESISTOR_AC
 
 /*
  * This config option is used to enable the PSYS sensing circuit on the
@@ -2023,7 +2025,7 @@
 #undef CONFIG_EC_EC_COMM_BATTERY
 
 /* Include CRC-8 utility function */
-#undef CONFIG_CRC8
+#undef CONFIG_CRC8_CROS
 
 /*****************************************************************************/
 /*
@@ -2729,6 +2731,9 @@
 /* Command to issue AP reset */
 #undef CONFIG_HOSTCMD_AP_RESET
 
+/* Command to issue AP shutdown */
+#undef CONFIG_HOSTCMD_AP_SHUTDOWN
+
 /*
  * Support voltage regulator host command
  * If defined, the board should also implement board functions defined in
@@ -2966,9 +2971,6 @@
  * This option also enables error checking function on smart batteries.
  */
 #undef CONFIG_SMBUS_PEC
-
-/* Support I2C HID touchpad interface. */
-#undef CONFIG_I2C_HID_TOUCHPAD
 
 /*
  * Add hosts-side support for entering programming mode for I2C ITE ECs.
@@ -3617,44 +3619,6 @@
 
 /* Need for a math library */
 #undef CONFIG_MATH_UTIL
-
-/* Include sensor online calibration (requires CONFIG_FPU) */
-#undef CONFIG_ONLINE_CALIB
-
-/*
- * Spoof the data for online calibration. When this flag is enabled, every
- * reading with the flag MOTIONSENSE_FLAG_IN_SPOOF_MODE will be treated as a
- * new calibration point. This should be used in conjunction with
- * CONFIG_ACCEL_SPOOF_MODE. To trigger an accelerometer calibration for
- * example, enable both config flags, connect to the cr50 terminal and run:
- * $ accelspoof id on X Y Z
- * This will spoof a reading of (X, Y, Z) from the sensor and treat those
- * values as the calibration result (bypassing the calibration for the given
- * sensor ID).
- */
-#undef CONFIG_ONLINE_CALIB_SPOOF_MODE
-
-/*
- * Duration after which an entry in the temperature cache is considered stale.
- * Defaults to 5 minutes if not set.
- */
-#undef CONFIG_TEMP_CACHE_STALE_THRES
-
-/* Set minimum temperature for accelerometer calibration. */
-#undef CONFIG_ACCEL_CAL_MIN_TEMP
-
-/* Set maximum temperature for accelerometer calibration. */
-#undef CONFIG_ACCEL_CAL_MAX_TEMP
-
-/* Set threshold radius for using the Kasa algorithm in accelerometer bias
- * calculation (g).
- */
-#undef CONFIG_ACCEL_CAL_KASA_RADIUS_THRES
-
-/* Set threshold radius for using the Newton fit algorithm in accelerometer
- * bias calculation (g).
- */
-#undef CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES
 
 /* Include code to do online compass calibration */
 #undef CONFIG_MAG_CALIBRATE
@@ -4428,17 +4392,6 @@
  * test/{testname}.tasklist.
  */
 #undef CONFIG_TEST_TASK_LIST
-
-/*
- * List of tasks used by CTS
- *
- * cts.tasklist contains tasks run only for CTS. These tasks are added to the
- * tasks registered in ec.tasklist with higher priority.
- *
- * If a CTS suite does not define its own cts.tasklist, the common list is used
- * (i.e. cts/cts.tasklist).
- */
-#undef CONFIG_CTS_TASK_LIST
 
 /*
  * List of tasks that support reset. Tasks listed here must also be included in
@@ -6669,7 +6622,7 @@
 	defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_RT9490) ||   \
 	defined(CONFIG_CHARGER_MT6370) || defined(CONFIG_CHARGER_BQ25710) ||  \
 	defined(CONFIG_CHARGER_BQ25720) || defined(CONFIG_CHARGER_ISL9241) || \
-	defined(CONFIG_CHARGER_RAA489110)
+	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_BQ25770)
 #if !defined(CONFIG_USB_PD_VBUS_MEASURE_TCPC) &&              \
 	!defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT) && \
 	!defined(CONFIG_USB_PD_VBUS_MEASURE_BY_BOARD)
@@ -6717,6 +6670,7 @@
 	defined(CONFIG_CHARGER_ISL9238C) || defined(CONFIG_CHARGER_ISL9241) || \
 	defined(CONFIG_CHARGER_RAA489000) || defined(CONFIG_CHARGER_SM5803) || \
 	defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_BQ25720) ||  \
+	defined(CONFIG_CHARGER_BQ25770) ||                                     \
 	defined(CONFIG_CHARGER_RAA489110) || defined(CONFIG_CHARGER_RT9490)
 #define CONFIG_CHARGER_NARROW_VDC
 #endif
@@ -6773,9 +6727,10 @@
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
 
 /*****************************************************************************/
-/* If battery_v2 isn't used, it's v1. */
+/* Auto-enable battery v2 module with a single battery if battery is defined. */
 #if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
-#define CONFIG_BATTERY_V1
+#define CONFIG_BATTERY_COUNT 1
+#define CONFIG_BATTERY_V2
 #endif
 
 /*
@@ -7284,22 +7239,6 @@
 #error "Using CONFIG_ACCEL_FIFO, must define _SIZE and _THRES"
 #endif
 
-#ifndef CONFIG_TEMP_CACHE_STALE_THRES
-#ifdef CONFIG_ONLINE_CALIB
-/*
- * Boards may choose to leave this to default and just turn on online
- * calibration, in which case we'll set the threshold to 5 minutes.
- */
-#define CONFIG_TEMP_CACHE_STALE_THRES (5 * MINUTE)
-#else
-/*
- * Boards that use the FIFO and not the online calibration can just leave this
- * at 0.
- */
-#define CONFIG_TEMP_CACHE_STALE_THRES 0
-#endif /* CONFIG_ONLINE_CALIB */
-#endif /* !CONFIG_TEMP_CACHE_STALE_THRES */
-
 #endif /* CONFIG_ACCEL_FIFO */
 
 /*
@@ -7338,31 +7277,8 @@
 #endif
 
 #ifdef CONFIG_SMBUS_PEC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #endif
-
-#if defined(CONFIG_ONLINE_CALIB) && !defined(CONFIG_FPU)
-#error "Online calibration requires CONFIG_FPU"
-#endif
-
-/* Set default values for accelerometer calibration if not defined. */
-#ifdef CONFIG_ONLINE_CALIB
-#ifndef CONFIG_ACCEL_CAL_MIN_TEMP
-#define CONFIG_ACCEL_CAL_MIN_TEMP 0.0f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_MAX_TEMP
-#define CONFIG_ACCEL_CAL_MAX_TEMP 45.0f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_KASA_RADIUS_THRES
-#define CONFIG_ACCEL_CAL_KASA_RADIUS_THRES 0.001f
-#endif
-
-#ifndef CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES
-#define CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES 0.001f
-#endif
-#endif /* CONFIG_ONLINE_CALIB */
 
 /*
  *  Vivaldi keyboard code to be enabled only if board has selected

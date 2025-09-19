@@ -41,7 +41,7 @@
 			temp-fan-off = <40>;
 			temp-fan-max = <76>;
 			temp-host-high = <85>;
-			temp-host-halt = <90>;
+			temp-host-halt = <76>;
 			temp-host-release-high = <80>;
 			power-good-pin = <&gpio_ec_dsw_pwrok>;
 			sensor = <&temp_soc_thermistor>;
