@@ -25,9 +25,9 @@ const static struct mp2964_reg_val mp2964_page0[] = {
 	{ 0x42, 0x014D }, { 0x44, 0x0053 }, { 0x45, 0x0053 }, { 0x46, 0x00D0 },
 	{ 0x4D, 0xE13F }, { 0x53, 0x0025 }, { 0x60, 0x2DB0 }, { 0x62, 0x0CAD },
 	{ 0xBD, 0x0019 }, { 0xD2, 0x00D0 }, { 0xD4, 0x0063 }, { 0xD6, 0x003F },
-	{ 0xD8, 0x002D }, { 0xE0, 0x0012 }, { 0xE2, 0x00D0 }, { 0xE8, 0x04B7 },
+	{ 0xD8, 0x002D }, { 0xE0, 0x0012 }, { 0xE2, 0x00D0 }, { 0xE8, 0x00B7 },
 	{ 0xE9, 0x00B7 }, { 0xEA, 0x00B7 }, { 0xEB, 0x00B7 }, { 0xEF, 0x00C7 },
-	{ 0xF0, 0x01C7 }
+	{ 0xF0, 0x00C7 }
 };
 
 const static struct mp2964_reg_val mp2964_page1[] = {
@@ -54,6 +54,19 @@ test_export_static void panel_power_detect_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, panel_power_detect_init, HOOK_PRIO_DEFAULT);
 
+test_export_static void disable_pfm_mode(void)
+{
+	uint8_t val;
+	int rv;
+
+	rv = i2c_reg_read_byte_dt(&lcdctrl, ISL98607_REG_VBST_CNTRL, &val);
+
+	if (!rv) {
+		val |= ISL98607_VBST_PFM_MODE_DISABLE;
+		i2c_reg_write_byte_dt(&lcdctrl, ISL98607_REG_VBST_CNTRL, val);
+	}
+}
+
 /**
  * Handle VPN / VSN for mipi display.
  */
@@ -63,6 +76,7 @@ test_export_static void panel_power_change_deferred(void)
 		GPIO_DT_FROM_NODELABEL(gpio_ec_en_pp1800_panel_x));
 
 	if (signal != 0) {
+		disable_pfm_mode();
 		i2c_reg_write_byte_dt(&lcdctrl, ISL98607_REG_VBST_OUT,
 				      ISL98607_VBST_OUT_5P65);
 
@@ -131,14 +145,18 @@ test_export_static void handle_tsp_ta(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, handle_tsp_ta, HOOK_PRIO_DEFAULT);
 
-static void power_handler(struct ap_power_ev_callback *cb,
-			  struct ap_power_ev_data data)
+test_export_static void power_handler(struct ap_power_ev_callback *cb,
+				      struct ap_power_ev_data data)
 {
 	int ret;
 	static int chip_updated;
 
+	const struct gpio_dt_spec *vbus_rail =
+		GPIO_DT_FROM_ALIAS(gpio_en_usb_a1_vbus);
+
 	switch (data.event) {
 	case AP_POWER_STARTUP:
+		gpio_pin_set_dt(vbus_rail, 1);
 		if (chip_updated == 0) {
 #ifdef CONFIG_PLATFORM_EC_BRINGUP
 			CPRINTS("[mp2964] Attempting to tune mp2964");
@@ -160,6 +178,9 @@ static void power_handler(struct ap_power_ev_callback *cb,
 #endif /* CONFIG_PLATFORM_EC_BRINGUP */
 		}
 		break;
+	case AP_POWER_SHUTDOWN:
+		gpio_pin_set_dt(vbus_rail, 0);
+		break;
 	default:
 		LOG_ERR("Unhandled power event %d", data.event);
 		break;
@@ -170,7 +191,8 @@ test_export_static void meliks_callback_init(void)
 {
 	static struct ap_power_ev_callback meliks_cb;
 
-	ap_power_ev_init_callback(&meliks_cb, power_handler, AP_POWER_STARTUP);
+	ap_power_ev_init_callback(&meliks_cb, power_handler,
+				  AP_POWER_STARTUP | AP_POWER_SHUTDOWN);
 	ap_power_ev_add_callback(&meliks_cb);
 }
 DECLARE_HOOK(HOOK_INIT, meliks_callback_init, HOOK_PRIO_DEFAULT);

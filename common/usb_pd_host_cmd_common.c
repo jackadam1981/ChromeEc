@@ -15,6 +15,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm_sm.h"
 
+#include <stdbool.h>
 #include <string.h>
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
@@ -23,12 +24,17 @@ __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
 	return EC_PD_PORT_LOCATION_UNKNOWN;
 }
 
+__overridable bool board_pd_port_num_is_valid(int port)
+{
+	return (port >= 0 && port < board_get_usb_pd_port_count());
+}
+
 static enum ec_status hc_get_pd_port_caps(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_get_pd_port_caps *p = args->params;
 	struct ec_response_get_pd_port_caps *r = args->response;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (!board_pd_port_num_is_valid(p->port))
 		return EC_RES_INVALID_PARAM;
 
 	/* Power Role */
@@ -105,7 +111,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	struct ec_response_usb_pd_control *r = args->response;
 	const char *task_state_name;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (!board_pd_port_num_is_valid(p->port))
 		return EC_RES_INVALID_PARAM;
 
 	if (p->role >= USB_PD_CTRL_ROLE_COUNT ||
@@ -227,7 +233,7 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	struct cros_ec_typec_status *cs = &r1->typec_status;
 	const char *tc_state_name;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (!board_pd_port_num_is_valid(p->port))
 		return EC_RES_INVALID_PARAM;
 
 	args->response_size = args->version == 0 ? sizeof(*r0) : sizeof(*r1);
@@ -345,7 +351,7 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 	uint32_t data[VDO_MAX_SIZE];
 	enum tcpci_msg_type tx_type;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (!board_pd_port_num_is_valid(p->port))
 		return EC_RES_INVALID_PARAM;
 
 	switch (p->command) {
@@ -416,7 +422,7 @@ static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 	const struct ec_params_usb_pd_info_request *p = args->params;
 	struct ec_params_usb_pd_discovery_entry *r = args->response;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (!board_pd_port_num_is_valid(p->port))
 		return EC_RES_INVALID_PARAM;
 
 	r->vid = pd_get_identity_vid(p->port);

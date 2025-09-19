@@ -1137,7 +1137,7 @@ int crec_flash_set_protect(uint32_t mask, uint32_t flags)
 
 	/* 4 - Commit RO_NOW. */
 	if (flags & EC_FLASH_PROTECT_RO_NOW) {
-		rv = crec_flash_physical_protect_now(0);
+		rv = crec_flash_physical_protect_now(false);
 		if (rv)
 			retval = rv;
 
@@ -1152,7 +1152,7 @@ int crec_flash_set_protect(uint32_t mask, uint32_t flags)
 
 	/* 5 - Commit ALL_NOW. */
 	if (flags & EC_FLASH_PROTECT_ALL_NOW) {
-		rv = crec_flash_physical_protect_now(1);
+		rv = crec_flash_physical_protect_now(true);
 		if (rv)
 			retval = rv;
 	}

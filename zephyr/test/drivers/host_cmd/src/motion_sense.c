@@ -266,15 +266,9 @@ ZTEST_USER(host_cmd_motion_sense, test_get_info_v4__no_read_temp)
 	zassert_equal(response.info.type, motion_sensors[0].type);
 	zassert_equal(response.info.location, motion_sensors[0].location);
 	zassert_equal(response.info.chip, motion_sensors[0].chip);
-	if (IS_ENABLED(CONFIG_ONLINE_CALIB)) {
-		zassert_true(response.info_4.flags &
-				     MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB,
-			     NULL);
-	} else {
-		zassert_false(response.info_4.flags &
-				      MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB,
-			      NULL);
-	}
+	zassert_false(response.info_4.flags &
+			      MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB,
+		      NULL);
 }
 
 ZTEST_USER(host_cmd_motion_sense, test_get_ec_rate__invalid_sensor_num)
@@ -977,6 +971,6 @@ ZTEST(host_cmd_motion_sense, test_tablet_mode_lid_angle__invalid)
 {
 	struct ec_response_motion_sense response;
 
-	zassert_ok(!host_cmd_motion_sense_tablet_mode_lid_angle(-100, -100,
-								&response));
+	zassert_not_ok(host_cmd_motion_sense_tablet_mode_lid_angle(-100, -100,
+								   &response));
 }

@@ -25,4 +25,10 @@ config BOARD_SPIKYROCK
 	  Build Google Spikyrock board. Spikyrock is a variant board of
 	  Roach devices.
 
+config BOARD_EIRTAE
+	bool "Google Eirtae Board"
+	help
+	  Build Google Eirtae board. Eirtae is a variant board of
+	  Roach devices.
+
 source "Kconfig.zephyr"

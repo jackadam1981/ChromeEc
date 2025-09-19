@@ -86,7 +86,7 @@ static void shi_power_change(struct ap_power_ev_callback *cb,
 	}
 }
 
-static void shi_init(void)
+static int shi_init(void)
 {
 	static struct ap_power_ev_callback cb;
 #ifdef CONFIG_EC_HOST_CMD
@@ -111,9 +111,19 @@ static void shi_init(void)
 	    (system_jumped_late() && chipset_in_state(CHIPSET_STATE_ON))) {
 		shi_enable();
 	}
+
+	return 0;
+}
+#ifdef CONFIG_NPCX_SHI_SHIM_INIT_WITH_SYS_INIT
+SYS_INIT(shi_init, POST_KERNEL, CONFIG_NPCX_SHI_SHIM_INIT_WITH_SYS_INIT_PRIO);
+#else
+static void shi_init_no_return_val(void)
+{
+	shi_init();
 }
 /* Call hook after chipset sets initial power state */
-DECLARE_HOOK(HOOK_INIT, shi_init, HOOK_PRIO_POST_CHIPSET);
+DECLARE_HOOK(HOOK_INIT, shi_init_no_return_val, HOOK_PRIO_POST_CHIPSET);
+#endif
 
 #ifndef CONFIG_EC_HOST_CMD
 /* Get protocol information */

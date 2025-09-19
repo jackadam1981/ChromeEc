@@ -9,7 +9,7 @@
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
-#include "gpio.h"
+#include "gpio_signal.h"
 #include "queue.h"
 #include "stdbool.h"
 #include "task.h"
@@ -304,7 +304,7 @@ struct pchg {
 	/* Event queue */
 	struct queue const events;
 	/* Event queue mutex */
-	struct mutex mtx;
+	mutex_t mtx;
 	/* 1:Pending IRQ 0:No pending IRQ */
 	atomic_t irq;
 	/* Event currently being handled */

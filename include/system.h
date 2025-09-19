@@ -642,6 +642,20 @@ static inline void disable_sleep(uint32_t mask)
 	atomic_or(&sleep_mask, mask);
 }
 
+/**
+ * Increment lock on all power management states and keep CPU active.
+ *
+ * @see pm_policy_state_lock_get from Zephyr for more information.
+ */
+void pm_policy_state_lock_get_all(void);
+
+/**
+ * Decrement lock all power management states.
+ *
+ * @see pm_policy_state_lock_put from Zephyr for more information.
+ */
+void pm_policy_state_lock_put_all(void);
+
 #ifdef CONFIG_LOW_POWER_IDLE_LIMITED
 /*
  * If this variable is nonzero, all levels of idle modes are disabled.

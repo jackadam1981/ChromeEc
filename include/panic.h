@@ -71,6 +71,7 @@ void panic_data_ccprint(const struct panic_data *pdata);
  * @param fname		File name where assertion happened
  * @param linenum	Line number where assertion happened
  */
+#if !(defined(CONFIG_ZEPHYR))
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
 #if !(defined(TEST_FUZZ) || defined(CONFIG_ZTEST))
 __noreturn
@@ -97,6 +98,8 @@ __noreturn
 	void
 	panic(const char *msg);
 
+#endif /* !CONFIG_ZEPHYR */
+
 /**
  * Display a default message and reset
  */
@@ -106,6 +109,7 @@ __noreturn
 	void
 	panic_reboot(void);
 
+#if !(defined(CONFIG_ZEPHYR))
 /**
  * Store a panic log and halt the system for a software-related reason, such as
  * stack overflow or assertion failure.
@@ -115,6 +119,7 @@ __noreturn
 #endif
 	void
 	software_panic(uint32_t reason, uint32_t info);
+#endif /* !CONFIG_ZEPHYR */
 
 /**
  * Log a panic in the panic log, but don't halt the system. Normally
