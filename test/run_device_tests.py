@@ -453,6 +453,7 @@ class Renode(Platform):
                     "fp_transport",  # TODO(b/384094788)
                     "fpsensor_debug",  # TODO(b/384110894)
                     "ftrapv",  # TODO(b/384095271)
+                    "null_pointer",  # TODO(b/436935088)
                     "panic",  # TODO(b/384095226)
                     "panic_data",  # TODO(b/384095623)
                     "zephyr_flash_stm32f4",  # TODO(b/384974228)
@@ -676,6 +677,7 @@ class AllTests:
             TestConfig(test_name="mutex", skip_for_zephyr=True),
             TestConfig(test_name="mutex_trylock", skip_for_zephyr=True),
             TestConfig(test_name="mutex_recursive", skip_for_zephyr=True),
+            TestConfig(test_name="null_pointer"),
             TestConfig(
                 test_name="otp_key",
                 exclude_boards=[BLOONCHIPPER, DARTMONKEY],

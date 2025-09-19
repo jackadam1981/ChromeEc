@@ -140,6 +140,7 @@ void panic_reboot(void)
 	system_reset(0);
 }
 
+#if !(defined(CONFIG_ZEPHYR))
 /* Complete the processing of a panic, after the initial message is shown */
 test_mockable_static
 #if !(defined(TEST_FUZZ) || defined(CONFIG_ZTEST))
@@ -176,6 +177,7 @@ void panic(const char *msg)
 	panic_printf("\n** PANIC: %s\n", msg);
 	panic_reboot();
 }
+#endif /* !CONFIG_ZEPHYR */
 
 test_mockable struct panic_data *panic_get_data(void)
 {

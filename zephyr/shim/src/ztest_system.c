@@ -18,11 +18,6 @@ __attribute__((weak)) void system_reset(int flags)
 	__builtin_unreachable();
 }
 
-__attribute__((weak)) void software_panic(uint32_t reason, uint32_t info)
-{
-	__builtin_unreachable();
-}
-
 static uint8_t bbram[SYSTEM_BBRAM_IDX_TRY_SLOT + 1];
 
 test_mockable int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)

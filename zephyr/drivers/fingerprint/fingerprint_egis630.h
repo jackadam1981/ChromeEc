@@ -15,6 +15,7 @@ struct egis630_cfg {
 	struct gpio_dt_spec interrupt;
 	struct gpio_dt_spec reset_pin;
 	struct fingerprint_info info;
+	uint32_t calibration_data_addr;
 };
 
 struct egis630_data {
@@ -22,6 +23,11 @@ struct egis630_data {
 	fingerprint_callback_t callback;
 	struct gpio_callback irq_cb;
 	uint16_t errors;
+};
+
+struct egis630_calibration_data {
+	uint32_t size;
+	uint8_t data[];
 };
 
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_EGIS630_H_ */
