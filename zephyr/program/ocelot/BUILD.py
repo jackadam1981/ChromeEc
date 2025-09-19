@@ -40,6 +40,7 @@ def register_it8xxx2_project(
     extra_kconfig_base_files=(),
     extra_kconfig_proj_files=(),
     inherited_from=None,
+    chip="it8xxx2/it82002aw",
 ):
     """Register an it8xxx2 based variant of ocelot."""
     if inherited_from is None:
@@ -47,7 +48,7 @@ def register_it8xxx2_project(
 
     register_binman_project(
         project_name=project_name,
-        zephyr_board="it8xxx2/it82002aw",
+        zephyr_board=chip,
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
@@ -165,6 +166,7 @@ register_rtk59_project(
 
 register_it8xxx2_project(
     project_name="matsu",
+    chip="it8xxx2/it82000bw",
 )
 
 register_ish_project(
