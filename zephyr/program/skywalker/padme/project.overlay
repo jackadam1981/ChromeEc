@@ -125,6 +125,16 @@
 		en_cc_lid_base_pu: en-cc-lid-base-pu {
 			gpios = <&gpioa 3 GPIO_INPUT>;
 		};
+
+		gpio_wpc_irq: gpio_wpc_irq{
+			gpios = <&gpiod 4 (GPIO_INPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_WPC_IRQ";
+		};
+
+		gpio_ec_pen_chg_dis_odl: ec_pen_chg_dis_odl {
+			gpios = <&gpiof 5 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_QI_RESET_L";
+		};
 	};
 
 	named-i2c-ports {
@@ -137,7 +147,7 @@
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 7 GPIO_INPUT_PULL_DOWN>,
-			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
+			//<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
@@ -203,6 +213,15 @@
 
 &i2c0 {
 	/delete-node/ bq25720@9;
+	scp8601@41 {
+		compatible = "convenientpower,cps8601";
+		reg = <0x41>;
+		irq-gpios=<&gpiod 4 (GPIO_INPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+	};
+	data-hold-time = <10>;
+};
+
+&i2c1 {
 	charger_rt9490: rt9490@53{
 		compatible = "richtek,rt9490";
 		thermistor = <&thermistor_rt9490>;
@@ -210,7 +229,6 @@
 		eoc-current = <120>;
 		/delete-property/ irq;
 	};
-	data-hold-time = <10>;
 };
 
 &i2c2 {
