@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "5ecc2edfc8832a8c7021eeb6d36a6404d12ad1f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9556faeb_0d1d5bfc",
+        "filename": "board/servo_v4p1/poweron_conf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-19T17:27:22Z",
+      "side": 1,
+      "message": "Keep it the same value as `CC_DISABLE_DTS`, i.e. `BIT(1)` for backward compatibility, as the existing lab devices save the old value to NVRAM.",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "5ecc2edfc8832a8c7021eeb6d36a6404d12ad1f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
