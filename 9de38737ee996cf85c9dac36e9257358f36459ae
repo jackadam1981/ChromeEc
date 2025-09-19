@@ -16,6 +16,23 @@
       "message": "Use `MUTEX_HISTORY_DECLARE` to declare this ring buffer, as it will size it appropriately with the number of entries it can hold.",
       "revId": "9de38737ee996cf85c9dac36e9257358f36459ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354da3a1_901e3615",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-19T17:03:24Z",
+      "side": 1,
+      "message": "You can also use `MUTEX_HISTORY_LOG_CRUMB(\u0026mutex_history_rb, \"charge_manager_refresh ended\")`, which will capture this string prefixed with the line number. This will reduce the need to lookup a file:line_num to see what the crumb is indicating.",
+      "revId": "9de38737ee996cf85c9dac36e9257358f36459ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
