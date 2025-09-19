@@ -16,6 +16,24 @@
       "message": "Let\u0027s verify that `fingerprint_get_info` sets `num_params` to `NUM_IMAGE_CAPTURE_TYPES`:\n\n```\nzassert_equal(num_params, NUM_IMAGE_CAPTURE_TYPES,\n              \"fingerprint_get_info returned an unexpected number of params\");\n```",
       "revId": "ac2269dd82e38821844c5cd3c1aacaef39e0ee41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd46b8fc_9afd2f44",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1025/src/fpc1025.c",
+        "patchSetId": 60
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T18:57:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "087b0d06_520e071b",
+      "revId": "ac2269dd82e38821844c5cd3c1aacaef39e0ee41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
