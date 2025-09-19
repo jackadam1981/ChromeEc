@@ -108,8 +108,37 @@ static int save_log[CHARGE_PORT_COUNT];
 
 #ifdef CONFIG_ZEPHYR
 K_MUTEX_DEFINE(cm_refresh);
+
+// #define CM_MUTEX_DEBUG
+#if defined(CM_MUTEX_DEBUG) && defined(CONFIG_PLATFORM_EC_MUTEX_HISTORY)
+#include <debug/mutex_history.h>
+
+#define MUTEX_HISTORY_SIZE 32 // Number of events to keep
+
+// Define the ring buffer instance
+MUTEX_HISTORY_DECLARE(mutex_event_rb, MUTEX_HISTORY_SIZE);
+
+// Call from watchdog timeout handler
+void charge_manager_dump_mutex_history()
+{
+	mutex_history_dump(&mutex_event_rb);
+}
+
+#define CM_MUTEX_LOCK(m)                                        \
+	{                                                       \
+		MUTEX_HISTORY_LOG(&mutex_event_rb, m, LOCKING); \
+		mutex_lock(m);                                  \
+		MUTEX_HISTORY_LOG(&mutex_event_rb, m, LOCKED);  \
+	}
+#define CM_MUTEX_UNLOCK(m)                                       \
+	{                                                        \
+		mutex_unlock(m);                                 \
+		MUTEX_HISTORY_LOG(&mutex_event_rb, m, UNLOCKED); \
+	}
+#else
 #define CM_MUTEX_LOCK(m) mutex_lock(m)
 #define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
+#endif /* CM_MUTEX_DEBUG */
 #else
 /* TODO(b/427504021) - Legacy EC mutexes are not recursive */
 #define CM_MUTEX_LOCK(m)
@@ -738,6 +767,27 @@ static int get_candidate_port_power(int supplier, int port)
 
 	return candidate_port_power;
 }
+
+static bool is_dualrole_charging_capable(int port)
+{
+#ifdef CONFIG_CHARGE_MANAGER_DRP_CHARGING
+	return true;
+#else
+	return (dualrole_capability[port] == CAP_DEDICATED ||
+		override_port == port ||
+		charge_manager_spoof_dualrole_capability());
+#endif
+}
+
+static bool is_battery_disconnected(void)
+{
+	return (IS_ENABLED(CONFIG_BATTERY) &&
+		(battery_is_present() == BP_NO ||
+		 battery_is_present() == BP_NOT_SURE ||
+		 (battery_is_present() == BP_YES &&
+		  battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL)));
+}
+
 /**
  * Select the best charge port or the override port, as defined by the supplier
  * hierarchy and the available power.
@@ -747,10 +797,10 @@ static int get_candidate_port_power(int supplier, int port)
  */
 static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 {
-	int supplier = CHARGE_SUPPLIER_NONE;
-	int port = CHARGE_PORT_NONE;
+	int best_supplier = CHARGE_SUPPLIER_NONE;
+	int best_port = CHARGE_PORT_NONE;
 	int best_port_power = -1, candidate_port_power;
-	int i, j;
+	int sup_idx, port_idx;
 
 	if (override_port == OVERRIDE_DONT_CHARGE) {
 		*new_port = CHARGE_PORT_NONE;
@@ -768,18 +818,18 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 	 * available_charge can be changed at any time by other tasks,
 	 * so make no assumptions about its consistency.
 	 */
-	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
-		for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
+	for (sup_idx = 0; sup_idx < CHARGE_SUPPLIER_COUNT; ++sup_idx) {
+		for (port_idx = 0; port_idx < CHARGE_PORT_COUNT; ++port_idx) {
 			/* Skip this port if it is not valid. */
-			if (!is_valid_port(j))
+			if (!is_valid_port(port_idx))
 				continue;
 
 			/*
 			 * Skip this supplier if there is no
 			 * available charge.
 			 */
-			if (available_charge[i][j].current == 0 ||
-			    available_charge[i][j].voltage == 0)
+			if (available_charge[sup_idx][port_idx].current == 0 ||
+			    available_charge[sup_idx][port_idx].voltage == 0)
 				continue;
 
 			/*
@@ -787,41 +837,39 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			 * charge on another override port.
 			 */
 			if (override_port != OVERRIDE_OFF &&
-			    override_port == port && override_port != j)
+			    override_port == best_port &&
+			    override_port != port_idx)
 				continue;
 
-#ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 			/*
 			 * Don't charge from a dual-role port unless
 			 * it is our override port.
 			 */
-			if (dualrole_capability[j] != CAP_DEDICATED &&
-			    override_port != j &&
-			    !charge_manager_spoof_dualrole_capability())
+			if (!is_dualrole_charging_capable(port_idx))
 				continue;
-#endif
 
-			candidate_port_power = get_candidate_port_power(i, j);
+			candidate_port_power =
+				get_candidate_port_power(sup_idx, port_idx);
 
 			/* Select DPS port if provided. */
 			if (IS_ENABLED(CONFIG_USB_PD_DPS) &&
 			    override_port == OVERRIDE_OFF &&
-			    i == CHARGE_SUPPLIER_PD &&
-			    j == dps_get_charge_port()) {
-				supplier = i;
-				port = j;
+			    sup_idx == CHARGE_SUPPLIER_PD &&
+			    port_idx == dps_get_charge_port()) {
+				best_supplier = sup_idx;
+				best_port = port_idx;
 				break;
 				/* Select if no supplier chosen yet. */
-			} else if (supplier == CHARGE_SUPPLIER_NONE ||
+			} else if (best_supplier == CHARGE_SUPPLIER_NONE ||
 				   /* ..or if supplier priority is higher. */
-				   supplier_priority[i] <
-					   supplier_priority[supplier] ||
+				   supplier_priority[sup_idx] <
+					   supplier_priority[best_supplier] ||
 				   /* ..or if this is our override port. */
-				   (j == override_port &&
-				    port != override_port) ||
+				   (port_idx == override_port &&
+				    best_port != override_port) ||
 				   /* ..or if priority is tied and.. */
-				   (supplier_priority[i] ==
-					    supplier_priority[supplier] &&
+				   (supplier_priority[sup_idx] ==
+					    supplier_priority[best_supplier] &&
 				    /*
 				     * candidate port can supply more power or
 				     * ..
@@ -833,37 +881,32 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 				      * amount of power.
 				      */
 				     (candidate_port_power == best_port_power &&
-				      charge_port == j)))) {
-				supplier = i;
-				port = j;
+				      charge_port == port_idx)))) {
+				best_supplier = sup_idx;
+				best_port = port_idx;
 				best_port_power = candidate_port_power;
 			}
 		}
 	}
 
-#ifdef CONFIG_BATTERY
 	/*
 	 * if no battery present then retain same charge port
 	 * and charge supplier to avoid the port switching
 	 */
-	if (charge_port != CHARGE_PORT_NONE && charge_port != port &&
-	    (battery_is_present() == BP_NO ||
-	     battery_is_present() == BP_NOT_SURE ||
-	     (battery_is_present() == BP_YES &&
-	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL))) {
-		port = charge_port;
+	if (charge_port != CHARGE_PORT_NONE && charge_port != best_port &&
+	    is_battery_disconnected()) {
+		best_port = charge_port;
 		/*
 		 * Since PDC will reset PDOs when receive new SRC Caps.
 		 * Only keep current charge_supplier when the PDO is non zero.
 		 */
-		if (available_charge[charge_supplier][port].current != 0 ||
-		    available_charge[charge_supplier][port].voltage != 0)
-			supplier = charge_supplier;
+		if (available_charge[charge_supplier][best_port].current != 0 ||
+		    available_charge[charge_supplier][best_port].voltage != 0)
+			best_supplier = charge_supplier;
 	}
-#endif
 
-	*new_port = port;
-	*new_supplier = supplier;
+	*new_port = best_port;
+	*new_supplier = best_supplier;
 }
 
 /**
@@ -1265,6 +1308,15 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		hook_call_deferred(&charge_manager_refresh_data, 0);
 }
 
+void charge_manager_invalidate_suppliers(int port)
+{
+	int i;
+
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
+		charge_manager_update_charge(i, port, NULL);
+	}
+}
+
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
@@ -1477,15 +1529,26 @@ int charge_manager_get_override(void)
 	return override_port;
 }
 
-int charge_manager_get_active_charge_port(void)
+int charge_manager_get_active_charge_port_no_lock(void)
+{
+	return charge_port;
+}
+
+test_mockable int charge_manager_get_active_charge_port(void)
 {
 	int retval = 0;
 
 	CM_MUTEX_LOCK(&cm_refresh);
-	retval = charge_port;
+	retval = charge_manager_get_active_charge_port_no_lock();
 	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return retval;
+}
+
+bool charge_manager_has_active_charge_port(void)
+{
+	return charge_manager_get_active_charge_port_no_lock() !=
+	       CHARGE_PORT_NONE;
 }
 
 int charge_manager_get_selected_charge_port(void)

@@ -11,7 +11,7 @@
 		/*
 		 * Interrupt bindings for sensor devices.
 		 */
-		 bma4xx-int = &lid_accel;
+		 lis2dw12-int = &lid_accel;
 	};
 
 	/*
@@ -54,12 +54,12 @@
 	 * "struct als_drv_data_t" in accelgyro.h
 	 */
 	motionsense-sensor-data {
-		bma422_lid_data: bma422-lid-drv-data {
-			compatible = "cros-ec,drvdata-bma4xx";
+		lis2dw12_base_data: lis2dw12-base-drv-data {
+			compatible = "cros-ec,drvdata-lis2dw12";
 			status = "okay";
 		};
-		bma422_base_data: bma422-base-drv-data {
-			compatible = "cros-ec,drvdata-bma4xx";
+		lis2dw12_lid_data: lis2dw12-lid-drv-data {
+			compatible = "cros-ec,drvdata-lis2dw12";
 			status = "okay";
 		};
 	};
@@ -74,7 +74,7 @@
 	 */
 	motionsense-sensor {
 		lid_accel: lid-accel {
-			compatible = "cros-ec,bma4xx";
+			compatible = "cros-ec,lis2dw12";
 			status = "okay";
 
 			active-mask = "SENSOR_ACTIVE_S0";
@@ -83,8 +83,8 @@
 			port = <&i2c_ec_i2c_sensor>;
 			rot-standard-ref = <&lid_rot_ref>;
 			default-range = <2>;
-			drv-data = <&bma422_lid_data>;
-			i2c-spi-addr-flags = "BMA4_I2C_ADDR_SECONDARY";
+			drv-data = <&lis2dw12_lid_data>;
+			i2c-spi-addr-flags = "LIS2DWL_ADDR1_FLAGS";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
@@ -94,17 +94,17 @@
 			};
 		};
 		base_accel: base-accel {
-			compatible = "cros-ec,bma4xx";
+			compatible = "cros-ec,lis2dw12";
 			status = "okay";
 
 			active-mask = "SENSOR_ACTIVE_S0";
-			location = "MOTIONSENSE_LOC_LID";
+			location = "MOTIONSENSE_LOC_BASE";
 			mutex = <&base_mutex>;
 			port = <&i2c_ec_i2c_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
 			default-range = <2>;
-			drv-data = <&bma422_base_data>;
-			i2c-spi-addr-flags = "BMA4_I2C_ADDR_PRIMARY";
+			drv-data = <&lis2dw12_base_data>;
+			i2c-spi-addr-flags = "LIS2DWL_ADDR0_FLAGS";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";

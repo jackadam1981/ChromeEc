@@ -14,8 +14,8 @@
 #include "i2c.dts"
 #include "vci.dtsi"
 #include "../battery.dtsi"
+#include "../gsc_board.dtsi"
 #include "../i2c.dtsi"
-#include "../ioex.dtsi"
 #include "../ioex_gpio.dtsi"
 #include "../interrupts.dtsi"
 #include "../keyboard.dtsi"
@@ -34,6 +34,7 @@
 / {
 	chosen {
 		cros-ec,sha = &symcr;
+                cros-ec,keyboard = &ioex_it8801_kbd;
 	};
 	named-gpios {
 		/delete-node/  ec-jtag-tms;
@@ -52,3 +53,16 @@
 &rom_api {
 	status = "okay";
 };
+
+&it8801_mfd {
+	irq-gpios = <MCHP_GPIO_DECODE_000 GPIO_ACTIVE_HIGH>;
+};
+
+&ioex_it8801_kbd {
+          status="okay";
+          kso-mapping = <0 1 20 3 4 5 6 17 18 16 15 11 12>;
+          mfdctrl = <&kso18_gp01_default &kso20_gp23_default>;
+          row-size = <8>;
+          col-size = <13>;
+};
+

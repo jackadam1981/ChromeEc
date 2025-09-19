@@ -17,12 +17,7 @@ static int char_out(uint8_t *data, size_t length, void *ctx)
 {
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_LOG))
 		panic_log_write_str(data, length);
-	/*
-	 * console_buf_notify_chars uses a mutex, which may not be
-	 * locked in ISRs.
-	 */
-	if (k_is_in_isr())
-		return 0;
+
 	return console_buf_notify_chars(data, length);
 }
 LOG_OUTPUT_DEFINE(log_output_console_buffer, char_out, char_out_buf,

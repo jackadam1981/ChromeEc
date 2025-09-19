@@ -191,7 +191,7 @@
 #define CONFIG_EMULATED_SYSRQ
 
 /* Vboot Config */
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_VBOOT_EFS2
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE

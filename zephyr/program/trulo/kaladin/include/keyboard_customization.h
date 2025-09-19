@@ -16,6 +16,4 @@
 #define KEYBOARD_COLS_MAX 16
 #define KEYBOARD_ROWS 8
 
-#define KEYBOARD_ROW_TO_MASK(r) (1 << (r))
-
 #endif /* __KEYBOARD_CUSTOMIZATION_H */

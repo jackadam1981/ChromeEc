@@ -133,7 +133,7 @@ register_intelrvp_project(
         here / "mtlrvp/mtlrvpp_mchp/board_mchp.conf",
         here / "mtlrvp/tcpc.conf",
     ],
-    inherited_from=["fatcat", "rex"],
+    inherited_from=["rex"],
 )
 
 
@@ -161,7 +161,7 @@ register_intelrvp_project(
         here / "mtlrvp/mtlrvpp_npcx/board_npcx.conf",
         here / "mtlrvp/tcpc.conf",
     ],
-    inherited_from=["fatcat", "rex"],
+    inherited_from=["rex"],
 )
 
 register_intelrvp_project(
@@ -188,6 +188,7 @@ register_intelrvp_project(
         here / "ptlrvp/pd.conf",
         here / "zephyr_ap_pwrseq.conf",
     ],
+    inherited_from=["fatcat"],
 )
 
 register_intelrvp_project(
@@ -214,6 +215,7 @@ register_ish_project(
         here / "ish" / "prj.conf",
         here / "ish" / "motionsense.conf",
     ],
+    inherited_from=["fatcat"],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses

@@ -48,10 +48,12 @@
 #include <iostream>
 #include <libchrome/base/json/json_reader.h>
 #include <libec/add_entropy_command.h>
+#include <libec/ec_command_factory.h>
+#include <libec/ec_command_version_supported.h>
 #include <libec/ec_panicinfo.h>
 #include <libec/fingerprint/fp_encryption_status_command.h>
 #include <libec/fingerprint/fp_frame_command.h>
-#include <libec/flash_protect_command.h>
+#include <libec/fingerprint/fp_mode_command.h>
 #include <libec/mkbp_event.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
@@ -106,10 +108,10 @@ static const char *const led_color_names[] = { "red",	 "green", "blue",
 BUILD_ASSERT(ARRAY_SIZE(led_color_names) == EC_LED_COLOR_COUNT);
 
 /* Note: depends on enum ec_led_id */
-static const char *const led_names[] = { "battery",    "power",
-					 "adapter",    "left",
-					 "right",      "recovery_hwreinit",
-					 "sysrq debug" };
+static const char *const led_names[] = { "battery",	"power",
+					 "adapter",	"left",
+					 "right",	"recovery_hwreinit",
+					 "sysrq debug", "lightbar" };
 BUILD_ASSERT(ARRAY_SIZE(led_names) == EC_LED_ID_COUNT);
 
 /* ASCII mode for printing, default off */
@@ -119,6 +121,37 @@ int ascii_mode;
 static int verbose = 0;
 
 const command *commands_find(const char *name);
+
+namespace ec
+{
+
+class EcCommandVersionSupported : public EcCommandVersionSupportedInterface {
+    public:
+	EcCommandVersionSupported() = default;
+	EcCommandVersionSupported(const EcCommandVersionSupported &) = delete;
+	EcCommandVersionSupported &
+	operator=(const EcCommandVersionSupported &) = delete;
+	~EcCommandVersionSupported() override = default;
+
+	EcCmdVersionSupportStatus EcCmdVersionSupported(uint16_t cmd,
+							uint32_t ver) override;
+};
+
+EcCmdVersionSupportStatus
+EcCommandVersionSupported::EcCmdVersionSupported(uint16_t cmd, uint32_t ver)
+{
+	constexpr int kMaxIoAttempts = 20;
+	VersionsCommand versions_cmd(cmd);
+	if (!versions_cmd.RunWithMultipleAttempts(comm_get_fd(),
+						  kMaxIoAttempts)) {
+		fprintf(stderr, "Failed to get version info for command %d\n",
+			cmd);
+		return EcCmdVersionSupportStatus::UNKNOWN;
+	}
+	return versions_cmd.IsVersionSupported(ver);
+}
+
+} // namespace ec
 
 /* Check SBS numerical value range */
 int is_battery_range(int val)
@@ -805,6 +838,7 @@ static const char *reset_cause_to_str(uint16_t cause)
 		"shutdown: entering G3",
 		"shutdown: thermal",
 		"shutdown: power button",
+		"shutdown: at AP's request",
 	};
 	BUILD_ASSERT(ARRAY_SIZE(shutdown_causes) ==
 		     CHIPSET_SHUTDOWN_COUNT - CHIPSET_SHUTDOWN_BEGIN);
@@ -1482,61 +1516,53 @@ int cmd_flash_protect(int argc, char *argv[])
 			mask |= ec::flash_protect::Flags::kRoAtBoot;
 	}
 
-	// TODO(b/287519577) Use FlashProtectCommandFactory after removing its
-	// dependency on CrosFpDeviceInterface.
-	uint32_t version = 1;
-	ec::VersionsCommand flash_protect_versions_command(
-		EC_CMD_FLASH_PROTECT);
+	ec::EcCommandFactory ec_command_factory;
+	ec::EcCommandVersionSupported ec_cmd_ver_supported;
+	auto flash_protect_command = ec_command_factory.FlashProtectCommand(
+		&ec_cmd_ver_supported, flags, mask);
 
-	if (!flash_protect_versions_command.RunWithMultipleAttempts(
-		    comm_get_fd(), 20)) {
-		fprintf(stderr, "Flash Protect Versions Command failed:\n");
+	if (!flash_protect_command) {
+		fprintf(stderr, "Failed to create FlashProtectCommand.\n");
 		return -1;
 	}
 
-	if (flash_protect_versions_command.IsVersionSupported(2) ==
-	    ec::EcCmdVersionSupportStatus::SUPPORTED) {
-		version = 2;
-	}
-
-	ec::FlashProtectCommand flash_protect_command(flags, mask, version);
-	if (!flash_protect_command.Run(comm_get_fd())) {
-		int rv = -EECRESULT - flash_protect_command.Result();
+	if (!flash_protect_command->Run(comm_get_fd())) {
+		int rv = -EECRESULT - flash_protect_command->Result();
 		fprintf(stderr, "Flash protect returned with errors: %d\n", rv);
 		return rv;
 	}
 
 	/* Print returned flags */
 	printf("Flash protect flags: 0x%08x%s\n",
-	       static_cast<int>(flash_protect_command.GetFlags()),
+	       static_cast<int>(flash_protect_command->GetFlags()),
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetFlags()))
+			flash_protect_command->GetFlags()))
 		       .c_str());
 	printf("Valid flags:         0x%08x%s\n",
-	       static_cast<int>(flash_protect_command.GetValidFlags()),
+	       static_cast<int>(flash_protect_command->GetValidFlags()),
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetValidFlags()))
+			flash_protect_command->GetValidFlags()))
 		       .c_str());
 	printf("Writable flags:      0x%08x%s\n",
-	       static_cast<int>(flash_protect_command.GetWritableFlags()),
+	       static_cast<int>(flash_protect_command->GetWritableFlags()),
 
 	       (ec::FlashProtectCommand::ParseFlags(
-			flash_protect_command.GetWritableFlags()))
+			flash_protect_command->GetWritableFlags()))
 		       .c_str());
 
 	/* Check if we got all the flags we asked for */
-	if ((flash_protect_command.GetFlags() & mask) != (flags & mask)) {
+	if ((flash_protect_command->GetFlags() & mask) != (flags & mask)) {
 		fprintf(stderr,
 			"Unable to set requested flags "
 			"(wanted mask 0x%08x flags 0x%08x)\n",
 			static_cast<int>(mask), static_cast<int>(flags));
-		if ((mask & ~flash_protect_command.GetWritableFlags()) !=
+		if ((mask & ~flash_protect_command->GetWritableFlags()) !=
 		    ec::flash_protect::Flags::kNone)
 			fprintf(stderr,
 				"Which is expected, because writable "
 				"mask is 0x%08x.\n",
 				static_cast<int>(flash_protect_command
-							 .GetWritableFlags()));
+							 ->GetWritableFlags()));
 
 		return -1;
 	}
@@ -1886,29 +1912,57 @@ int cmd_apreset(int argc, char *argv[])
  * @returns a vector<uint8_t> containing the the requested frame.
  */
 static std::unique_ptr<std::vector<uint8_t> >
-fp_download_frame(struct ec_response_fp_info *info, int index)
+fp_download_frame(struct SensorImage &sensor_image,
+		  struct TemplateInfo &template_info, int index)
 {
-	int rv = 0;
+	ec::EcCommandFactory ec_command_factory;
+	ec::EcCommandVersionSupported ec_cmd_ver_supported;
+	auto fp_info_command =
+		ec_command_factory.FpInfoCommand(&ec_cmd_ver_supported);
+
+	if (!fp_info_command || !fp_info_command->Run(comm_get_fd())) {
+		fprintf(stderr, "Failed to Run FpInfoCommand.\n");
+		return nullptr;
+	}
+
+	template_info = *fp_info_command->template_info();
+	auto images = fp_info_command->sensor_image();
+	if (images.size() == 1) {
+		sensor_image = images[0];
+	} else {
+		ec::FpModeCommand fp_mode_command(
+			(ec::FpMode(ec::FpMode::Mode::kDontChange)));
+		if (!fp_mode_command.Run(comm_get_fd())) {
+			fprintf(stderr, "Failed to Run FpModeCommand.\n");
+			return nullptr;
+		}
+
+		bool found = false;
+		uint8_t current_fp_capture_type =
+			FP_CAPTURE_TYPE(fp_mode_command.Mode().RawVal());
+		for (const auto &image : fp_info_command->sensor_image())
+			if (image.fp_capture_type.has_value() &&
+			    *image.fp_capture_type == current_fp_capture_type) {
+				sensor_image = image;
+				found = true;
+				break;
+			}
+		if (!found) {
+			fprintf(stderr,
+				"Could not find fp image frame params.\n");
+			return nullptr;
+		}
+	}
+
 	size_t size;
-	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
-	int rsize = cmdver == 1 ? sizeof(*info) :
-				  sizeof(struct ec_response_fp_info_v0);
-
-	/* templates not supported in command v0 */
-	if (index > 0 && cmdver == 0)
-		return NULL;
-
-	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, info, rsize);
-	if (rv < 0)
-		return NULL;
-
 	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
-		size = (size_t)info->width * info->bpp / 8 * info->height;
+		size = (size_t)sensor_image.width * sensor_image.bpp / 8 *
+		       sensor_image.height;
 		index = FP_FRAME_INDEX_RAW_IMAGE;
 	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
-		size = info->frame_size;
+		size = sensor_image.frame_size;
 	} else {
-		size = info->template_size;
+		size = template_info.size;
 	}
 
 	auto frame_cmd = ec::FpFrameCommand::Create(index, size, ec_max_insize);
@@ -2056,38 +2110,24 @@ int cmd_fp_stats(int argc, char *argv[])
 
 int cmd_fp_info(int argc, char *argv[])
 {
-	struct ec_response_fp_info r;
-	int rv;
-	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
-	int rsize = cmdver == 1 ? sizeof(r) :
-				  sizeof(struct ec_response_fp_info_v0);
-	uint16_t dead;
+	ec::EcCommandFactory ec_command_factory;
+	ec::EcCommandVersionSupported ec_cmd_ver_supported;
+	auto fp_info_command =
+		ec_command_factory.FpInfoCommand(&ec_cmd_ver_supported);
 
-	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, &r, rsize);
-	if (rv < 0)
+	if (!fp_info_command) {
+		fprintf(stderr, "Failed to create FpInfoCommand.\n");
+		return -1;
+	}
+
+	if (!fp_info_command->Run(comm_get_fd())) {
+		int rv = -EECRESULT - fp_info_command->Result();
+		fprintf(stderr, "Fp info command returned with errors: %d\n",
+			rv);
 		return rv;
-
-	printf("Fingerprint sensor: vendor %x product %x model %x version %x\n",
-	       r.vendor_id, r.product_id, r.model_id, r.version);
-	printf("Image: size %dx%d %d bpp\n", r.width, r.height, r.bpp);
-	printf("Error flags: %s%s%s%s\n",
-	       r.errors & FP_ERROR_NO_IRQ ? "NO_IRQ " : "",
-	       r.errors & FP_ERROR_SPI_COMM ? "SPI_COMM " : "",
-	       r.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
-	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "");
-	dead = FP_ERROR_DEAD_PIXELS(r.errors);
-	if (dead == FP_ERROR_DEAD_PIXELS_UNKNOWN) {
-		printf("Dead pixels: UNKNOWN\n");
-	} else {
-		printf("Dead pixels: %u\n", dead);
 	}
 
-	if (cmdver == 1) {
-		printf("Templates: version %d size %d count %d/%d"
-		       " dirty bitmap %x\n",
-		       r.template_version, r.template_size, r.template_valid,
-		       r.template_max, r.template_dirty);
-	}
+	printf("%s", fp_info_command->ParseSensorInfo().c_str());
 
 	return 0;
 }
@@ -2174,25 +2214,28 @@ int cmd_fp_enc_status(int argc, char *argv[])
 
 int cmd_fp_frame(int argc, char *argv[])
 {
-	struct ec_response_fp_info r;
+	struct SensorImage sensor_image{};
+	struct TemplateInfo template_info{};
 	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
 			  FP_FRAME_INDEX_RAW_IMAGE :
 			  FP_FRAME_INDEX_SIMPLE_IMAGE;
-	auto fp_frame = fp_download_frame(&r, idx);
+	auto fp_frame = fp_download_frame(sensor_image, template_info, idx);
 	if (!fp_frame) {
 		fprintf(stderr, "Failed to get FP sensor frame\n");
 		return -1;
 	}
 
 	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
-		assert(fp_frame->size() == r.frame_size);
-		fwrite(fp_frame->data(), r.frame_size, 1, stdout);
+		assert(fp_frame->size() == sensor_image.frame_size);
+		fwrite(fp_frame->data(), sensor_image.frame_size, 1, stdout);
 		return 0;
 	}
 
 	auto frame_to_pgm = ec::FpFrameCommand::FrameToPgm(
 		*fp_frame,
-		{ .bpp = r.bpp, .width = r.width, .height = r.height });
+		{ .bpp = sensor_image.bpp,
+		  .width = static_cast<uint16_t>(sensor_image.width),
+		  .height = static_cast<uint16_t>(sensor_image.height) });
 
 	if (!frame_to_pgm.has_value()) {
 		fprintf(stderr, "Error: Failed to convert frame to PGM.\n");
@@ -2204,7 +2247,8 @@ int cmd_fp_frame(int argc, char *argv[])
 
 int cmd_fp_template(int argc, char *argv[])
 {
-	struct ec_response_fp_info r;
+	struct SensorImage sensor_image{};
+	struct TemplateInfo template_info{};
 	struct ec_params_fp_template *p =
 		(struct ec_params_fp_template *)(ec_outbuf);
 	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
@@ -2224,13 +2268,14 @@ int cmd_fp_template(int argc, char *argv[])
 
 	idx = strtol(argv[1], &e, 0);
 	if (!(e && *e)) {
-		auto fp_frame = fp_download_frame(&r, idx + 1);
+		auto fp_frame =
+			fp_download_frame(sensor_image, template_info, idx + 1);
 		if (!fp_frame) {
 			fprintf(stderr, "Failed to get FP template %d\n", idx);
 			return -1;
 		}
-		assert(fp_frame->size() == r.template_size);
-		fwrite(fp_frame->data(), r.template_size, 1, stdout);
+		assert(fp_frame->size() == template_info.size);
+		fwrite(fp_frame->data(), template_info.size, 1, stdout);
 		return 0;
 	}
 	/* not an index, is it a filename ? */
@@ -4796,6 +4841,9 @@ static int cmd_lightbar(int argc, char **argv)
 	struct ec_params_lightbar param;
 	struct ec_response_lightbar resp;
 
+	printf("warning: ectool lightbar is depricated. "
+	       "Use ectool led lightbar instead.\n");
+
 	if (1 == argc) { /* no args = dump 'em all */
 		r = lb_do_cmd(LIGHTBAR_CMD_DUMP, &param, &resp);
 		if (r)
@@ -6302,34 +6350,72 @@ int cmd_usb_pd(int argc, char *argv[])
 	return 0;
 }
 
-int cmd_usb_pd_dps(int argc, char *argv[])
+static int usb_pd_dps_control(bool en)
 {
 	struct ec_params_usb_pd_dps_control p;
-	int rv;
 
-	/*
-	 * Set up requested flags.  If no flags were specified, p.mask will
-	 * be 0 and nothing will change.
-	 */
-	if (argc < 1) {
-		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
-		return -1;
-	}
-
-	if (!strcasecmp(argv[1], "enable")) {
-		p.enable = 1;
-	} else if (!strcasecmp(argv[1], "disable")) {
-		p.enable = 0;
-	} else {
-		fprintf(stderr, "Usage: %s [enable|disable]\n", argv[0]);
-		return -1;
-	}
-
-	rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	p.enable = en;
+	int rv = ec_command(EC_CMD_USB_PD_DPS_CONTROL, 0, &p, sizeof(p), NULL,
+			    0);
 	if (rv < 0)
 		return rv;
 
 	return 0;
+}
+
+static int usb_pd_dps_status(void)
+{
+	struct ec_response_usb_pd_dps_status r;
+
+	int rv =
+		ec_command(EC_CMD_USB_PD_DPS_STATUS, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (!r.is_enabled) {
+		printf("DPS Disabled\n");
+		return 0;
+	}
+
+	if (r.port < 0) {
+		printf("No charger attached\n");
+		return 0;
+	}
+
+	printf("C%d DPS Enabled\n"
+	       "Requested: %dmV/%dmA\n"
+	       "Measured:  %dmV/%dmA/%dmW\n"
+	       "Efficient: %dmV\n"
+	       "Batt:      %dmv\n"
+	       "PDMaxMV:   %dmV\n",
+	       r.port, r.requested_voltage, r.requested_current,
+	       r.input_voltage, r.input_current, r.input_power,
+	       r.efficient_voltage, r.battery_voltage, r.max_voltage);
+
+	return 0;
+}
+
+int cmd_usb_pd_dps(int argc, char *argv[])
+{
+	/*
+	 * Set up requested flags.  If no flags were specified, p.mask will
+	 * be 0 and nothing will change.
+	 */
+	if (argc <= 1) {
+		fprintf(stderr, "Usage: %s [enable|disable|status]\n", argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "enable")) {
+		return usb_pd_dps_control(true);
+	} else if (!strcasecmp(argv[1], "disable")) {
+		return usb_pd_dps_control(false);
+	} else if (!strcasecmp(argv[1], "status")) {
+		return usb_pd_dps_status();
+	} else {
+		fprintf(stderr, "Usage: %s [enable|disable|status]\n", argv[0]);
+		return -1;
+	}
 }
 
 static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
@@ -12975,7 +13061,7 @@ const struct command commands[] = {
 	  "\t[dr_swap|pr_swap|vconn_swap]>\n"
 	  "\tControl USB PD/type-C [deprecated]." },
 	{ "usbpddps", cmd_usb_pd_dps,
-	  "[enable | disable]\n"
+	  "[enable | disable | status]\n"
 	  "\tEnable or disable dynamic pdo selection." },
 	{ "usbpdmuxinfo", cmd_usb_pd_mux_info,
 	  "[tsv]\n"

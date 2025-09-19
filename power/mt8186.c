@@ -74,7 +74,7 @@
 #define NORMAL_SHUTDOWN_DELAY (150 * MSEC)
 #define RESET_FLAG_TIMEOUT (2 * SECOND)
 
-#if defined(CONFIG_PLATFORM_EC_POWERSEQ_MTK_S5_EN_CONTROL) && \
+#if defined(CONFIG_PLATFORM_EC_POWERSEQ_MTK_S5_EN_RAIL) && \
 	!DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
 #error Must have dt node en_pp4200_s5 for S5 rail contorl
 #endif

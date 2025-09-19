@@ -102,16 +102,22 @@ enum fingerprint_capture_type {
 	 * 'frame_size' bytes).
 	 */
 	FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT = 0,
+	/** Capture for check defect pixel test */
+	FINGERPRINT_CAPTURE_TYPE_DEFECT_PXL_TEST = 1,
+	/** Capture for check abnormal pixel test */
+	FINGERPRINT_CAPTURE_TYPE_ABNORMAL_TEST = 2,
+	/** Capture for check noise test */
+	FINGERPRINT_CAPTURE_TYPE_NOISE_TEST = 3,
 	/** Simple raw image capture (produces width x height x bpp bits). */
-	FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE = 1,
+	FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE = 4,
 	/** Self test pattern (e.g. checkerboard). */
-	FINGERPRINT_CAPTURE_TYPE_PATTERN0 = 2,
+	FINGERPRINT_CAPTURE_TYPE_PATTERN0 = 8,
 	/** Self test pattern (e.g. inverted checkerboard). */
-	FINGERPRINT_CAPTURE_TYPE_PATTERN1 = 3,
+	FINGERPRINT_CAPTURE_TYPE_PATTERN1 = 12,
 	/** Capture for quality test with fixed contrast. */
-	FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST = 4,
+	FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST = 16,
 	/** Capture for pixel reset value test. */
-	FINGERPRINT_CAPTURE_TYPE_RESET_TEST = 5,
+	FINGERPRINT_CAPTURE_TYPE_RESET_TEST = 20,
 	/** End of enum. */
 	FINGERPRINT_CAPTURE_TYPE_MAX,
 };
