@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56dcb524_26cfa7bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 69
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "The fix was that I had to set `args.response_max \u003d test_info_buffer_size;` to have the same size as the allocated buffer.\n\n```\n\nuint16_t fpinfo_cmd_helper(struct ec_response_fp_info_v2 *response)\n{\n\tstatic const size_t test_info_buffer_size \u003d\n\t\tsizeof(struct ec_response_fp_info_v2) +\n\t\tsizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;\n\n\tstruct host_cmd_handler_args args \u003d\n\t\tBUILD_HOST_COMMAND_RESPONSE(EC_CMD_FP_INFO, 2, *response);\n\targs.response_max \u003d test_info_buffer_size;\n\n\treturn host_command_process(\u0026args);\n}\n```",
+      "parentUuid": "2b7ac354_3994dc85",
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df266bd_37c08d87",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-09-19T19:04:37Z",
       "side": 1,
       "message": "Why does this need to be increased? Can you add a comment here, so someone who looks at it in the future understands?\n\nDo we also need to increase it for the non-test code?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7973d6a0_f33e6037",
+        "filename": "zephyr/test/fingerprint/task/prj.conf",
+        "patchSetId": 69
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "I need to explicitly enable the configuration option that provides the `k_malloc` function. If I comment out the config `CONFIG_HEAP_MEM_POOL_SIZE\u003d1024`, I get a linker error:\n\n```\nld.lld: error: undefined symbol: k_malloc\n\u003e\u003e\u003e referenced by ap_events.c:23 (/mnt/host/source/src/platform/ec/zephyr/subsys/ap_pwrseq/ap_events.c:23)\n```\n\nAdded this comment:\n```\n# Size of the kernel heap memory pool, primarily used by k_malloc()\n# and k_free().\n```",
+      "parentUuid": "9df266bd_37c08d87",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e04cdc_a3d24cf3",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "removed it.",
+      "parentUuid": "d885f638_cfe45d78",
+      "range": {
+        "startLine": 518,
+        "startChar": 53,
+        "endLine": 519,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1ed39dc_d69497cc",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-09-19T19:04:37Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 318,
+        "startChar": 53,
+        "endLine": 319,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "014803aa_da93905d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_init.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "removed it",
+      "parentUuid": "a1ed39dc_d69497cc",
       "range": {
         "startLine": 318,
         "startChar": 53,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f81855_f1222d28",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_match.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "removed it.",
+      "parentUuid": "479faa42_102d88df",
+      "range": {
+        "startLine": 1011,
+        "startChar": 53,
+        "endLine": 1012,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "228f3ef8_d69a89f1",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94a0691_fea00eb9",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_shim.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "removed it",
+      "parentUuid": "228f3ef8_d69a89f1",
+      "range": {
+        "startLine": 227,
+        "startChar": 53,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f047ebb2_abc5840d",
@@ -146,6 +284,30 @@
       "writtenOn": "2025-09-19T19:04:37Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 486,
+        "startChar": 53,
+        "endLine": 487,
+        "endChar": 27
+      },
+      "revId": "19397140e3ef57ca94ba45ec2d44c7b675c8451f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25db37db_963a6234",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.cc",
+        "patchSetId": 69
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-19T20:12:05Z",
+      "side": 1,
+      "message": "removed it",
+      "parentUuid": "f047ebb2_abc5840d",
       "range": {
         "startLine": 486,
         "startChar": 53,
