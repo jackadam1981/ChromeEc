@@ -51,6 +51,16 @@ uint8_t tc_get_pd_enabled(int port)
 	return mock_tc_port[port].pd_enable;
 }
 
+void pd_comm_enable(int port, int enable)
+{
+	mock_tc_port[port].pd_enable = enable;
+}
+
+void tc_set_power_role(int port, enum pd_power_role role)
+{
+	mock_tc_port[port].power_role = role;
+}
+
 void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
 {
 	mock_tc_port[port].lcl_rp = rp;

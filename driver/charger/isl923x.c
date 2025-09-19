@@ -1054,7 +1054,7 @@ test_mockable enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)
 	return EC_SUCCESS;
 }
 
-int raa489000_enable_asgate(int chgnum, bool enable)
+test_mockable int raa489000_enable_asgate(int chgnum, bool enable)
 {
 	enum mask_update_action action = enable ? MASK_SET : MASK_CLR;
 
@@ -1062,7 +1062,7 @@ int raa489000_enable_asgate(int chgnum, bool enable)
 			    RAA489000_C8_ASGATE_ON_READY, action);
 }
 
-void raa489000_hibernate(int chgnum, bool disable_adc)
+test_mockable void raa489000_hibernate(int chgnum, bool disable_adc)
 {
 	int rv, regval;
 

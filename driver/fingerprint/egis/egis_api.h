@@ -18,13 +18,28 @@ extern "C" {
 #define FP_SENSOR_HWID_EGIS 630
 #define FP_SENSOR_RES_X_EGIS 80
 #define FP_SENSOR_RES_Y_EGIS 64
-#define FP_SENSOR_IMAGE_SIZE_EGIS (FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS)
+/**
+ * @brief Largest image size
+ *
+ * Since this is used to size the buffer that holds images, this must be the
+ * largest possible image size, which is the 16-bpp test image.
+ */
+#define FP_SENSOR_IMAGE_SIZE_EGIS \
+	(FP_SENSOR_RES_X_EGIS * FP_SENSOR_RES_Y_EGIS * sizeof(uint16_t))
 #define FP_ALGORITHM_TEMPLATE_SIZE_EGIS (16 * 1024)
 #define FP_MAX_FINGER_COUNT_EGIS 3
 #define FP_ALGORITHM_MAX_ENROLL_COUNT_EGIS 15
 
 #define FP_SENSOR_IMAGE_OFFSET_EGIS (0)
-#define FP_SENSOR_RES_BPP_EGIS (8)
+
+/**
+ * @brief 8-bpp image for enroll/verify
+ */
+#define FP_SENSOR_DEFAULT_BPP_EGIS (8)
+/**
+ * @brief 16-bpp raw image for factory test
+ */
+#define FP_SENSOR_TEST_BPP_EGIS (16)
 
 typedef enum {
 	EGIS_API_OK = 0,
@@ -84,6 +99,7 @@ typedef enum {
  *
  */
 typedef enum {
+	EGIS_CAPTURE_TYPE_INVALID = -1,
 	EGIS_CAPTURE_NORMAL_FORMAT = 0,
 	EGIS_CAPTURE_BLACK_PXL_TEST = 1,
 	EGIS_CAPTURE_WHITE_PXL_TEST = 2,
@@ -286,6 +302,29 @@ egis_api_return_t egis_enrollment_finish(void *templ);
  * @return EGIS_API_ERROR_EMFP_LIB_FAIL : on emfp lib fail
  */
 egis_api_return_t egis_finger_enroll(uint8_t *image, int *completion);
+
+/**
+ * apply sensor calibration from storage and do re-calibration.
+ * @param[in] data_addr calibration data addr
+ * @param[in] data_len total calibration size
+ *
+ * @return EGIS_API_OK : on success
+ * @return negative value on error, list below
+ * @return EGIS_API_ERROR_DEVICE_NOT_FOUND : on sensor cannot be detected
+ * @return EGIS_API_ERROR_IO_SPI : on execute SPI transfer fail
+ * @return EGIS_API_ERROR_SENSOR_OCP_DETECT : on sensor OCP detect
+ * @return EGIS_API_ERROR_SENSOR_NEED_RESET : on sensor need reset
+ * @return EGIS_API_ERROR_SENSOR_SENSING_MDOE_CALIBRATION : on sensor
+ * calibration sensing mode fail
+ * @return EGIS_API_ERROR_SENSOR_DETECT_MDOE_CALIBRATION : on sensor calibration
+ * detect mode fail
+ * @return EGIS_API_ERROR_MEMORY : on alloc memory fail
+ * @return EGIS_API_ERROR_GENERAL : on other operation fail
+ * @return EGIS_API_ERROR_SENSOR_GENERAL : on sensor operation fail
+ * @return EGIS_API_ERROR_PARAMETER : on incorrect parameter
+ */
+egis_api_return_t egis_apply_calibration_data(uint8_t *data_addr,
+					      uint32_t data_len);
 
 #ifdef __cplusplus
 }

@@ -22,12 +22,20 @@
 LOG_MODULE_REGISTER(ucsi_ppm_test, LOG_LEVEL_DBG);
 
 #define DT_PPM_DRV DT_INST(0, ucsi_ppm)
-#define NUM_PORTS DT_NUM_INST_STATUS_OKAY(named_usbc_port)
 #define PDC_WAIT_FOR_ITERATIONS 30
 #define PDC_EMUL_NODE DT_NODELABEL(pdc_emul1)
 #define PDC_EMUL_PORT USBC_PORT_FROM_PDC_DRIVER_NODE(PDC_EMUL_NODE)
 #define PPM_CONNECTOR_NUM (PDC_EMUL_PORT + 1)
 #define SYNC_CMD_TIMEOUT_MS 2000
+
+/* Assume DT has two ports configured */
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == 2);
+
+#ifdef CONFIG_TEST_PDC_DISABLE_C1
+#define NUM_PORTS 1
+#else
+#define NUM_PORTS 2
+#endif
 
 static struct ucsi_ppm_device *ppm_dev;
 static const struct emul *emul = EMUL_DT_GET(PDC_EMUL_NODE);

@@ -5,6 +5,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_detect.h"
@@ -14,6 +15,8 @@
 #include "system.h"
 #include "util.h"
 #include "watchdog.h"
+
+#include <vector>
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/shell/shell.h>
@@ -101,7 +104,7 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 		CPRINTS("Waiting for finger ...");
 
 	uint32_t mode_output = 0;
-	const int rc = fp_set_sensor_mode(mode, &mode_output);
+	const int rc = fp_set_sensor_mode(mode, &mode_output, std::nullopt);
 
 	if (rc != EC_RES_SUCCESS) {
 		/*
@@ -131,6 +134,33 @@ test_export_static uint8_t get_sensor_bpp(void)
 		return EC_ERROR_UNKNOWN;
 	}
 	return info.bpp;
+#else
+	return EC_ERROR_UNKNOWN;
+#endif
+}
+
+__maybe_unused test_export_static int
+get_image_frame_params(struct fp_image_frame_params &image_frame_params)
+{
+#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
+	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
+	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
+
+	if (fp_sensor_get_info_v2(info, buffer.size()) < 0) {
+		return EC_ERROR_UNKNOWN;
+	}
+
+	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
+		if (info->image_frame_params[i].fp_capture_type ==
+		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
+			image_frame_params = info->image_frame_params[i];
+			return EC_RES_SUCCESS;
+		}
+	}
+	return EC_ERROR_INVAL;
 #else
 	return EC_ERROR_UNKNOWN;
 #endif
@@ -229,7 +259,7 @@ static int command_fpenroll(int argc, const char **argv)
 	if (system_is_locked())
 		return EC_ERROR_ACCESS_DENIED;
 
-	do {
+	while (1) {
 		int tries = 1000;
 
 		rc = fp_console_action(FP_MODE_ENROLL_SESSION |
@@ -240,6 +270,9 @@ static int command_fpenroll(int argc, const char **argv)
 		percent = EC_MKBP_FP_ENROLL_PROGRESS(event);
 		CPRINTS("Enroll capture: %s (%d%%)",
 			enroll_str[EC_MKBP_FP_ERRCODE(event) & 3], percent);
+		if (percent == 100) {
+			break;
+		}
 		/* wait for finger release between captures */
 		global_context.sensor_mode = FP_MODE_ENROLL_SESSION |
 					     FP_MODE_FINGER_UP;
@@ -247,7 +280,7 @@ static int command_fpenroll(int argc, const char **argv)
 		while (tries-- &&
 		       global_context.sensor_mode & FP_MODE_FINGER_UP)
 			crec_usleep(20 * MSEC);
-	} while (percent < 100);
+	}
 	global_context.sensor_mode = 0; /* reset FP_MODE_ENROLL_SESSION */
 	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG);
 
@@ -289,6 +322,60 @@ static int command_fpinfo(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(fpinfo, command_fpinfo, nullptr,
+			     "Print fingerprint system info");
+
+static int command_fpinfo_v2(int argc, const char **argv)
+{
+#if defined(HAVE_FP_PRIVATE_DRIVER) || defined(BOARD_HOST)
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
+	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
+	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
+
+	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) < 0) {
+		ccprintf("Failed to get fp_info_v2\n");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	constexpr int align = 15;
+
+	ccprintf("%*s: 0x%X (%s)\n", align, "Vendor ID",
+		 info->sensor_info.vendor_id,
+		 fourcc_to_string(info->sensor_info.vendor_id).c_str());
+	ccprintf("%*s: 0x%X\n", align, "Product ID",
+		 info->sensor_info.product_id);
+	ccprintf("%*s: 0x%X\n", align, "Model ID", info->sensor_info.model_id);
+	ccprintf("%*s: 0x%X\n", align, "Version", info->sensor_info.version);
+
+	ccprintf("%*s: 0x%X\n", align, "Error State", info->sensor_info.errors);
+
+	ccprintf("%*s: %s\n", align, "Sensor Strap",
+		 fp_sensor_type_to_str(fpsensor_detect_get_type()));
+
+	for (uint16_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
+		ccprintf("FP Capture Type: %d\n",
+			 info->image_frame_params[i].fp_capture_type);
+		ccprintf("  %*s: %u x %u %ubpp\n", align, "Sensor (w x h)",
+			 info->image_frame_params[i].width,
+			 info->image_frame_params[i].height,
+			 info->image_frame_params[i].bpp);
+		ccprintf("  %*s: %u\n", align, "Frame Size",
+			 info->image_frame_params[i].frame_size);
+		ccprintf("  %*s: 0x%X (%s)\n", align, "Pixel Format",
+			 info->image_frame_params[i].pixel_format,
+			 fourcc_to_string(
+				 info->image_frame_params[i].pixel_format)
+				 .c_str());
+	}
+
+	return EC_SUCCESS;
+#else
+	ccprintf("fpinfo2 command not supported on this firmware.\n");
+	return EC_ERROR_UNKNOWN;
+#endif
+}
+DECLARE_SAFE_CONSOLE_COMMAND(fpinfo2, command_fpinfo_v2, nullptr,
 			     "Print fingerprint system info");
 
 static int command_fpmatch(int argc, const char **argv)
@@ -334,8 +421,8 @@ static int command_fpmaintenance(int argc, const char **argv)
 {
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	uint32_t mode_output = 0;
-	const int rc =
-		fp_set_sensor_mode(FP_MODE_SENSOR_MAINTENANCE, &mode_output);
+	const int rc = fp_set_sensor_mode(FP_MODE_SENSOR_MAINTENANCE,
+					  &mode_output, std::nullopt);
 
 	if (rc != EC_RES_SUCCESS) {
 		/*

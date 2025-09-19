@@ -21,8 +21,10 @@
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
+#if DT_HAS_COMPAT_STATUS_OKAY(intel_ap_pwrseq)
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(intel_ap_pwrseq) == 1,
 	     "Only one node for intel_ap_pwrseq is allowed");
+#endif
 
 BUILD_ASSERT(POWER_SIGNAL_COUNT <= 32, "Too many power signals");
 
@@ -310,6 +312,9 @@ test_mockable void power_signal_init(void)
 	}
 	if (IS_ENABLED(CONFIG_AP_PWRSEQ_SIGNAL_ADC)) {
 		power_signal_adc_init();
+	}
+	if (IS_ENABLED(CONFIG_AP_PWRSEQ_SIGNAL_EXTERNAL)) {
+		power_signal_external_init();
 	}
 	/*
 	 * Initialise the mask with the current values.

@@ -130,7 +130,7 @@
 
 /* EC Modules */
 #define CONFIG_ADC
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_HOST_INTERFACE_ESPI
 #define CONFIG_HOSTCMD_EVENTS
 #define CONFIG_I2C
@@ -170,7 +170,6 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 256
-#define CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT 256
 #define CONFIG_USB_CHARGER
 #define CONFIG_TRICKLE_CHARGING
 
@@ -213,6 +212,9 @@
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
+
+#define CONFIG_USB_PD_XID 0
+#define CONFIG_USB_BCD_DEV 0
 
 /* Temp Sensor */
 #define CONFIG_TEMP_SENSOR_POWER
@@ -261,12 +263,26 @@
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
-/* System safe mode for improved panic debugging */
-#define CONFIG_SYSTEM_SAFE_MODE
-#define CONFIG_PANIC_ON_WATCHDOG_WARNING
-/* Increase watchdog timeout since system will panic on warning */
+#if defined(VARIANT_DEDEDE_EC_IT8320) || defined(VARIANT_KEEBY_EC_IT8320)
+/* WDT period cannot be longer than WDT period configured in RO
+ * for IT8320 variants (b/416109671) */
+#undef CONFIG_WATCHDOG_PERIOD_MS
+#define CONFIG_WATCHDOG_PERIOD_MS 1600
+
+/* IT8320 boards shipped with locked watchdog timeout (in RO) */
+#define CONFIG_IT83XX_LOCKED_WATCHDOG_EXTENSION
+
+#elif defined(VARIANT_DEDEDE_EC_NPCX796FC) || \
+	defined(VARIANT_KEEBY_EC_NPCX797FC)
+/* Increase watchdog timeout */
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 2100
+#endif
+
+#ifdef SECTION_IS_RW
+#define CONFIG_PRESERVED_RING_BUF
+#define CONFIG_PANIC_LOG
+#endif
 
 #ifndef __ASSEMBLER__
 

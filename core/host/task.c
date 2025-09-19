@@ -63,7 +63,6 @@ static void task_enable_all_tasks_callback(void);
 #define TASK(n, r, d, s) void r(void *);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
-CONFIG_CTS_TASK_LIST
 #undef TASK
 
 /* usleep that uses OS functions, instead of emulated timer. */
@@ -100,16 +99,14 @@ void _run_test(void *d)
 #define TASK(n, r, d, s) { r, d },
 const struct task_args task_info[TASK_ID_COUNT] = {
 	{ __idle, NULL },
-	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST{ _run_test,
-								     NULL },
+	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST{ _run_test, NULL },
 };
 #undef TASK
 
 #define TASK(n, r, d, s) #n,
 static const char *const task_names[] = {
 	"<< idle >>",
-	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
-	"<< test runner >>",
+	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST "<< test runner >>",
 };
 #undef TASK
 
@@ -261,7 +258,9 @@ uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 	return events & event_mask;
 }
 
-void mutex_lock(struct mutex *mtx)
+#ifndef CONFIG_COMMON_RECURSIVE_MUTEX
+
+void mutex_lock(struct mutex_nr *mtx)
 {
 	int value = 0;
 	int id = 1 << task_get_current();
@@ -281,7 +280,7 @@ void mutex_lock(struct mutex *mtx)
 	mtx->waiters &= ~id;
 }
 
-void mutex_unlock(struct mutex *mtx)
+void mutex_unlock(struct mutex_nr *mtx)
 {
 	int v;
 	mtx->lock = 0;
@@ -293,6 +292,8 @@ void mutex_unlock(struct mutex *mtx)
 			break;
 		}
 }
+
+#endif /* !CONFIG_COMMON_RECURSIVE_MUTEX */
 
 task_id_t task_get_current(void)
 {

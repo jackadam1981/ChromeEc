@@ -9,11 +9,11 @@
 		fan_0 {
 			pwms = <&pwm3 PWM_CHANNEL_3 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
 			tach = <&tach1>;
-			rpm_min = <1500>;
-			rpm_start = <1500>;
-			rpm_max = <4000>;
-			rpm_deviation = <1>;
-			enable_gpio = <&gpio_en_pp5000_fan>;
+			rpm-min = <1500>;
+			rpm-start = <1500>;
+			rpm-max = <4000>;
+			rpm-deviation = <1>;
+			enable-gpio = <&gpio_en_pp5000_fan>;
 		};
 	};
  };

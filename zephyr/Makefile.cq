@@ -77,7 +77,7 @@ test: $(BUILD)/zephyr/lcov_no_tests.info # ALL_FILTERED
 test: $(BUILD)/zephyr/lcov_rpt # html artifact
 test: special_boards # BOARD_ metric and html artifact
 else
-test: twister_host twister_llvm zephyr_check_compliance_unittest
+test: twister_host twister_llvm twister_coreboot_sdk zephyr_check_compliance_unittest
 endif
 
 ifdef COVERAGE
@@ -98,6 +98,10 @@ twister_host $(PLATFORM_EC)/twister-out-host/coverage.info:
 twister_llvm $(PLATFORM_EC)/twister-out-llvm/coverage.info: TOOLCHAIN=llvm
 twister_llvm $(PLATFORM_EC)/twister-out-llvm/coverage.info:
 	+$(TWISTER_COMMAND)
+
+twister_coreboot_sdk: TOOLCHAIN=coreboot-sdk
+twister_coreboot_sdk:
+	+$(TWISTER_COMMAND) -p it8xxx2/it82002aw -p npcx9/npcx9m7f -p realtek/rts5912
 
 $(BUILD)/coverage/lcov.info:
 	$(MAKE) -C .. test-coverage
