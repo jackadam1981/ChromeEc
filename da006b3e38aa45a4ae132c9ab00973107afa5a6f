@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9720ef94_537bb56f",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-20T01:17:49Z",
+      "side": 1,
+      "message": "Self debug note - `CONFIG_MFD` is enabled for the test `rex.rex.usb_mux_config` and the others because it includes `nuvoton,nct38xx-tcpc` which selects `MFD` (zephyr/Kconfig.tcpm:156). This test also forces `CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY\u003d49` in zephyr/test/rex/boards/rex/prj.conf:47. Seems pretty messy. Removing the EC GPIO init priority override causes a runtime issue with the Zephyr GPIO emul initialization.",
+      "range": {
+        "startLine": 330,
+        "startChar": 7,
+        "endLine": 330,
+        "endChar": 17
+      },
+      "revId": "da006b3e38aa45a4ae132c9ab00973107afa5a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
