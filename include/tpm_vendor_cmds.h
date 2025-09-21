@@ -220,6 +220,12 @@ enum vendor_cmd_cc {
 	/* Returns info to identify the specific GSC chip type. */
 	VENDOR_CC_GET_CHIP_ID = 75,
 
+	/* Get and/or increment a monotonic counter */
+	VENDOR_CC_MONOTONIC_COUNTER = 76,
+
+	/* Trusty SPDM storage mac */
+	VENDOR_CC_TRUSTY_SPDM_STORAGE_MAC = 77,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
