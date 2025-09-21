@@ -226,6 +226,11 @@ enum vendor_cmd_cc {
 	/* Trusty SPDM storage mac */
 	VENDOR_CC_TRUSTY_SPDM_STORAGE_MAC = 77,
 
+	/* Set device IDs */
+	VENDOR_CC_SET_DEVICE_IDS = 78,
+	/* Get device IDs */
+	VENDOR_CC_GET_DEVICE_IDS = 79,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
