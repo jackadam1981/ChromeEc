@@ -61,6 +61,14 @@ aic_ite = register_ite_project(
     project_name="ite-aic",
 )
 
+aic_ite.variant(
+    project_name="it82000-aic",
+    zephyr_board="it8xxx2/it82000bw",
+    dts_overlays=[
+        here / "ite-aic" / "it82000_elpm.overlay",
+    ]
+)
+
 # ITE + RTK PDC project. Assumes a Realtek PDC evaluation board is connected to
 # the AIC. Enables the PDC software stack and relevant devicetree nodes for two
 # USB-C ports, plus dependencies (e.g. charger)
@@ -86,5 +94,6 @@ npcx_aic = register_nuvoton_project(
 )
 
 assert_rw_fwid_DO_NOT_EDIT(project_name="ite-aic", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="it82000-aic", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ite-aic-rtk-pdc", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="npcx-aic", addr=0x80144)
