@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d6b252a_40c0040b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-22T18:53:58Z",
+      "side": 1,
+      "message": "I is based on the commit message from : https://github.com/zephyrproject-rtos/zephyr/pull/95138/commits/649c388eaf25cd2c23e0f020d37aa89ecb684052\nand the comment in the CL.",
+      "parentUuid": "ebca4e0e_c2642316",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "5a90a9d048f6378405d34f6048973b0e57b667de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63b0a9b4_86e87feb",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 1
