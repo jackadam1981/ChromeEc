@@ -16,6 +16,29 @@
       "message": "Because Huaqin plans to include this CL in Google CPFE version this week. I add the comment to skip Code-Coverage checking.",
       "revId": "c9fab5877810d3288fce6f65783050dfab1cc8f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69fc215b_bd428f97",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T16:04:39Z",
+      "side": 1,
+      "message": "We can just override the coverage check for the CL.  It is not correct to exclude this code from coverage.\n\nPlease delete the LCOV_EXCL tags.",
+      "range": {
+        "startLine": 1358,
+        "startChar": 0,
+        "endLine": 1358,
+        "endChar": 23
+      },
+      "revId": "c9fab5877810d3288fce6f65783050dfab1cc8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
