@@ -70,6 +70,30 @@
       },
       "revId": "c10172a803a3b8e7879b6915b5a2af39d46cd0f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b678b428_419a09c0",
+        "filename": "zephyr/include/drivers/fingerprint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-09-22T11:14:14Z",
+      "side": 1,
+      "message": "Created reapply https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6969013. The merge commit applies cleanly now.",
+      "parentUuid": "637e745a_8f2fb1d2",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "c10172a803a3b8e7879b6915b5a2af39d46cd0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
