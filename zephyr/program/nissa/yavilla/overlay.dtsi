@@ -30,6 +30,9 @@
 		atl_gb-s20-4473a9 {
 			compatible = "atl,gb-s20-4473a9", "battery-smart";
 		};
+		smp_333-1d-0d-a {
+			compatible = "smp,333-1d-0d-a", "battery-smart";
+		};
 	};
 
 	hibernate-wake-pins {

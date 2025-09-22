@@ -454,7 +454,7 @@ static int cps8200_wait_cmd_done(int port, uint8_t id)
 		if (CPS8200_CMD_STATUS(u32) == CMD_STATUS_FAIL ||
 		    CPS8200_CMD_STATUS(u32) == CMD_STATUS_ILLEGAL) {
 			CPRINTS("Command failed or illegal: %02x",
-				CPS8200_CMD_STATUS(u32));
+				(unsigned int)CPS8200_CMD_STATUS(u32));
 			return EC_ERROR_UNKNOWN;
 		}
 
@@ -586,7 +586,7 @@ static void cps8100_print_alert_info(uint32_t reg)
 	CPRINTFP("%sCharging\n", CPS8100_STATUS_CHARGE(reg) ? "" : "Not ");
 	CPRINTFP("Device %sPresent\n",
 		 CPS8100_STATUS_DEVICE(reg) ? "" : "Not ");
-	CPRINTFP("Battery: %d%%\n", CPS8100_STATUS_BATTERY(reg));
+	CPRINTFP("Battery: %d%%\n", (int)CPS8100_STATUS_BATTERY(reg));
 }
 
 static int cps8x00_get_event(struct pchg *ctx)

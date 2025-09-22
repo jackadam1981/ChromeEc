@@ -1042,7 +1042,7 @@ ZTEST_USER_F(ppm_test, test_ppm_reset_works_in_all_states)
 ZTEST_USER_F(ppm_test, test_invalid_read_writes)
 {
 	size_t ucsi_region_size = sizeof(struct ucsi_memory_region);
-	const char buf[32];
+	char buf[32];
 
 	initialize_fake_to_idle_notify(fixture);
 

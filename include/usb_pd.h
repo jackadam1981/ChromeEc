@@ -133,6 +133,9 @@ enum pdo_peak_overcurrent {
 #define PDO_FIXED_GET_UNCONSTRAINED_PWR BIT(27)
 #define PDO_FIXED_GET_USB_COMM_CAPABLE BIT(26)
 
+/* Mask of flag bits in a fixed PDO per USB-PD spec R3.2 V1.1, 6.4.1.2.1 */
+#define PDO_FIXED_FLAGS_MASK GENMASK(29, 23)
+
 #define PDO_FIXED(mv, ma, flags) \
 	(PDO_FIXED_SET_VOLTAGE(mv) | PDO_FIXED_SET_CURRENT(ma) | (flags))
 
@@ -280,7 +283,7 @@ enum pdo_augmented_pps {
 #define PD_T_PS_SOURCE_OFF (835 * MSEC) /* between 750ms and 920ms */
 #define PD_T_PS_HARD_RESET (25 * MSEC) /* between 25ms and 35ms */
 #define PD_T_ERROR_RECOVERY (240 * MSEC) /* min 240ms if sourcing VConn */
-#define PD_T_CC_DEBOUNCE (130 * MSEC) /* between 100ms and 200ms */
+#define PD_T_CC_DEBOUNCE (140 * MSEC) /* between 100ms and 200ms */
 /* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
 #define PD_T_DRP_SNK (40 * MSEC) /* toggle time for sink DRP */
 #define PD_T_DRP_SRC (30 * MSEC) /* toggle time for source DRP */
@@ -309,7 +312,7 @@ enum pdo_augmented_pps {
 #define PD_T_CHUNK_SENDER_REQUEST (25 * MSEC) /* 25ms */
 #define PD_T_SWAP_SOURCE_START (25 * MSEC) /* Min of 20ms */
 #define PD_T_RP_VALUE_CHANGE (15 * MSEC) /* 10 to 20ms */
-#define PD_T_SRC_DISCONNECT (15 * MSEC) /* 15ms */
+#define PD_T_SRC_DISCONNECT (10 * MSEC) /* 0ms to 20ms */
 #define PD_T_SRC_TRANSITION (25 * MSEC) /* 25ms to 35 ms */
 #define PD_T_VCONN_STABLE (50 * MSEC) /* 50ms */
 #define PD_T_DISCOVER_IDENTITY (45 * MSEC) /* between 40ms and 50ms */

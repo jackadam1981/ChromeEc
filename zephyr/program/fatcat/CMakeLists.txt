@@ -54,3 +54,20 @@ if(DEFINED CONFIG_BOARD_KINMEN)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"kinmen/src/keyboard_customization.c")
 endif()
+
+if(DEFINED CONFIG_BOARD_LAPIS)
+	project(lapis)
+	add_subdirectory(lapis)
+	zephyr_include_directories("lapis/include")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"lapis/src/keyboard_customization.c")
+endif()
+
+if(DEFINED CONFIG_BOARD_MOONSTONE)
+	project(moonstone)
+	zephyr_include_directories("moonstone/include")
+	zephyr_library_sources("moonstone/src/board_power.c")
+	zephyr_library_sources("moonstone/src/suspend_resume.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"moonstone/src/keyboard_customization.c")
+endif()
