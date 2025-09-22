@@ -42,6 +42,9 @@
 		gpio_adp_det: std_adp_prsnt: adp_det {
 			gpios = <&gpio6 2 (GPIO_INPUT)>;
 		};
+		gpio_adp_cntrl: std_adp_cntrl: adp_cntrl {
+			gpios = <&gpio6 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
+		};
 		/* Power sequencing signal needed by fan driver */
 		gpio_all_sys_pwrgd: all_sys_pwrgd {
 			gpios = <&gpio6 3 (GPIO_INPUT)>;
@@ -158,7 +161,7 @@
 		};
 		gpio_wp_odl: wp_odl {
 			// signal name was manually overriden from "ec_soc_rtcrst_odl"
-			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+			gpios = <&gpioc 7 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 		};
 
 		/* Set ISH/sensor I2C bus (i2c5_0) voltage thresholds to 1.8V.

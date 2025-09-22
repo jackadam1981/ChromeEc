@@ -9,7 +9,6 @@
 #include "math_util.h"
 #include "mkbp_event.h"
 #include "motion_sense_fifo.h"
-#include "online_calibration.h"
 #include "stdbool.h"
 #include "tablet_mode.h"
 #include "task.h"
@@ -286,11 +285,6 @@ fifo_stage_unit(struct ec_response_motion_sensor_data *data,
 		}
 		if (removed) {
 			mutex_unlock(&g_sensor_mutex);
-			if (IS_ENABLED(CONFIG_ONLINE_CALIB) &&
-			    !is_new_timestamp(data->sensor_num))
-				online_calibration_process_data(
-					data, sensor,
-					next_timestamp[data->sensor_num].next);
 			return;
 		}
 	}
@@ -379,8 +373,6 @@ peek_fifo_staged(size_t offset)
 
 void motion_sense_fifo_init(void)
 {
-	if (IS_ENABLED(CONFIG_ONLINE_CALIB))
-		online_calibration_init();
 }
 
 int motion_sense_fifo_interrupt_needed(void)
@@ -569,10 +561,6 @@ commit_data_end:
 
 		/* Update online calibration if enabled. */
 		data = peek_fifo_staged(i);
-		if (IS_ENABLED(CONFIG_ONLINE_CALIB))
-			online_calibration_process_data(
-				data, &motion_sensors[sensor_num],
-				next_timestamp[sensor_num].prev);
 	}
 
 	/* Advance the tail and clear the staged metadata. */

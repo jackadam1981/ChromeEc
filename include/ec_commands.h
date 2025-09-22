@@ -2691,6 +2691,8 @@ enum ec_led_id {
 	EC_LED_ID_RECOVERY_HW_REINIT_LED,
 	/* LED to indicate sysrq debug mode. */
 	EC_LED_ID_SYSRQ_DEBUG_LED,
+	/* LED strip for advanced patterns. */
+	EC_LED_ID_LIGHTBAR_LED,
 
 	EC_LED_ID_COUNT,
 };
@@ -6216,6 +6218,24 @@ struct ec_params_usb_pd_dps_control {
 	uint8_t enable;
 } __ec_align1;
 
+/*
+ * This command return the status of dynamic PDO selection.
+ */
+#define EC_CMD_USB_PD_DPS_STATUS 0x0107
+
+struct ec_response_usb_pd_dps_status {
+	int32_t is_enabled;
+	int32_t port;
+	int32_t requested_voltage;
+	int32_t requested_current;
+	int32_t input_power;
+	int32_t input_voltage;
+	int32_t input_current;
+	int32_t efficient_voltage;
+	int32_t battery_voltage;
+	int32_t max_voltage;
+} __ec_align4;
+
 /* Write USB-PD device FW */
 #define EC_CMD_USB_PD_FW_UPDATE 0x0110
 
@@ -6785,6 +6805,8 @@ enum chipset_shutdown_reason {
 	CHIPSET_SHUTDOWN_THERMAL,
 	/* Force a chipset shutdown from the power button through EC */
 	CHIPSET_SHUTDOWN_BUTTON,
+	/* Force a chipset shutdown, because the AP wants to. */
+	CHIPSET_SHUTDOWN_HOST_CMD,
 
 	CHIPSET_SHUTDOWN_COUNT, /* End of shutdown reasons. */
 };
@@ -8317,6 +8339,8 @@ struct ec_params_fp_passthru {
 	 FP_MODE_MATCH | FP_MODE_RESET_SENSOR | FP_MODE_SENSOR_MAINTENANCE | \
 	 FP_MODE_DONT_CHANGE)
 
+#define FP_MODES_WITH_AUTHENTICATION (FP_MODE_ENROLL_SESSION | FP_MODE_MATCH)
+
 /* Capture types defined in bits [30..26] */
 #define FP_MODE_CAPTURE_TYPE_SHIFT 26
 #define FP_MODE_CAPTURE_TYPE_MASK (0x1F << FP_MODE_CAPTURE_TYPE_SHIFT)
@@ -8327,6 +8351,9 @@ struct ec_params_fp_passthru {
  * image (produces 'frame_size' bytes)
  * @FP_CAPTURE_SIMPLE_IMAGE: Simple raw image capture (produces width x height x
  * bpp bits)
+ * @FP_CAPTURE_DEFECT_PXL_TEST: Capture for check defect pixel test
+ * @FP_CAPTURE_ABNORMAL_TEST: Capture for check abnormal pixel test
+ * @FP_CAPTURE_NOISE_TEST: Capture for check noise test
  * @FP_CAPTURE_PATTERN0: Self test pattern (e.g. checkerboard)
  * @FP_CAPTURE_PATTERN1: Self test pattern (e.g. inverted checkerboard)
  * @FP_CAPTURE_QUALITY_TEST: Capture for Quality test with fixed contrast
@@ -8338,6 +8365,9 @@ struct ec_params_fp_passthru {
  */
 enum fp_capture_type {
 	FP_CAPTURE_VENDOR_FORMAT = 0,
+	FP_CAPTURE_DEFECT_PXL_TEST = 1,
+	FP_CAPTURE_ABNORMAL_TEST = 2,
+	FP_CAPTURE_NOISE_TEST = 3,
 	FP_CAPTURE_SIMPLE_IMAGE = 4,
 	FP_CAPTURE_PATTERN0 = 8,
 	FP_CAPTURE_PATTERN1 = 12,
@@ -8345,13 +8375,24 @@ enum fp_capture_type {
 	FP_CAPTURE_RESET_TEST = 20,
 	FP_CAPTURE_TYPE_MAX,
 };
+
+/* The maximum number of capture types in enum fp_capture_type */
+#define FP_MAX_CAPTURE_TYPES 9
+
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode)                                          \
 	(enum fp_capture_type)(((mode) & FP_MODE_CAPTURE_TYPE_MASK) >> \
 			       FP_MODE_CAPTURE_TYPE_SHIFT)
 
+#define FP_MAC_LENGTH 32
+
 struct ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
+} __ec_align4;
+
+struct ec_params_fp_mode_v1 {
+	uint32_t mode; /* as defined by FP_MODE_ constants */
+	uint8_t mac[FP_MAC_LENGTH];
 } __ec_align4;
 
 struct ec_response_fp_mode {
@@ -8575,16 +8616,14 @@ struct ec_params_fp_seed {
 
 /* FP TPM seed has been set or not */
 #define FP_ENC_STATUS_SEED_SET BIT(0)
-/* FP using nonce context or not */
-#define FP_CONTEXT_STATUS_NONCE_CONTEXT_SET BIT(1)
-/* FP match had been processed or not */
-#define FP_CONTEXT_STATUS_MATCH_PROCESSED_SET BIT(2)
-/* FP auth_nonce had been set or not*/
-#define FP_CONTEXT_AUTH_NONCE_SET BIT(3)
+/* Session was established or not */
+#define FP_CONTEXT_STATUS_SESSION_ESTABLISHED BIT(1)
+/* FP session_nonce had been set or not*/
+#define FP_CONTEXT_SESSION_NONCE_SET BIT(2)
 /* FP user_id had been set or not*/
-#define FP_CONTEXT_USER_ID_SET BIT(4)
-/* FP templates are unlocked for nonce context or not */
-#define FP_CONTEXT_TEMPLATE_UNLOCKED_SET BIT(5)
+#define FP_CONTEXT_USER_ID_SET BIT(3)
+/* The operation authentication challenge was generated */
+#define FP_AUTH_CHALLENGE_SET BIT(4)
 
 struct ec_response_fp_encryption_status {
 	/* Used bits in encryption engine status */
@@ -8666,61 +8705,41 @@ struct ec_response_fp_establish_pairing_key_wrap {
 typedef struct ec_response_fp_establish_pairing_key_wrap
 	ec_params_fp_load_pairing_key;
 
-#define FP_CK_AUTH_NONCE_LEN 32
+#define FP_CK_SESSION_NONCE_LEN 32
 
 #define EC_CMD_FP_GENERATE_NONCE 0x0413
 struct ec_response_fp_generate_nonce {
-	uint8_t nonce[FP_CK_AUTH_NONCE_LEN];
+	uint8_t nonce[FP_CK_SESSION_NONCE_LEN];
 } __ec_align4;
 
-#define FP_CONTEXT_USERID_LEN 32
-#define FP_CONTEXT_USERID_IV_LEN 16
-#define FP_CONTEXT_KEY_LEN 32
-
-#define EC_CMD_FP_NONCE_CONTEXT 0x0414
-struct ec_params_fp_nonce_context {
-	uint8_t gsc_nonce[FP_CK_AUTH_NONCE_LEN];
-	uint8_t enc_user_id[FP_CONTEXT_USERID_LEN];
-	uint8_t enc_user_id_iv[FP_CONTEXT_USERID_IV_LEN];
+#define EC_CMD_FP_ESTABLISH_SESSION 0x0414
+struct ec_params_fp_establish_session {
+	uint8_t peer_nonce[FP_CK_SESSION_NONCE_LEN];
+	uint8_t enc_tpm_seed[FP_CONTEXT_TPM_BYTES];
+	uint8_t nonce[FP_AES_KEY_NONCE_BYTES];
+	uint8_t tag[FP_AES_KEY_TAG_BYTES];
 } __ec_align4;
 
-#define FP_ELLIPTIC_CURVE_PUBLIC_KEY_IV_LEN 16
+#define FP_CHALLENGE_SIZE 32
 
-#define EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY 0x0415
-
-struct ec_params_fp_read_match_secret_with_pubkey {
-	uint16_t fgr;
-	uint16_t reserved;
-	struct fp_elliptic_curve_public_key pubkey;
+#define EC_CMD_FP_GENERATE_CHALLENGE 0x0415
+struct ec_response_fp_generate_challenge {
+	uint8_t challenge[FP_CHALLENGE_SIZE];
 } __ec_align4;
 
-struct ec_response_fp_read_match_secret_with_pubkey {
-	struct fp_elliptic_curve_public_key pubkey;
-	uint8_t iv[FP_ELLIPTIC_CURVE_PUBLIC_KEY_IV_LEN];
-	uint8_t enc_secret[FP_POSITIVE_MATCH_SECRET_BYTES];
+#define EC_CMD_FP_CONFIRM_TEMPLATE 0x0416
+struct ec_params_fp_confirm_template {
+	uint8_t mac[FP_MAC_LENGTH];
 } __ec_align4;
 
-/* Unlock the fpsensor template with the current nonce context */
-#define EC_CMD_FP_UNLOCK_TEMPLATE 0x0417
-
-struct ec_params_fp_unlock_template {
-	uint16_t fgr_num;
+#define EC_CMD_FP_SIGN_MATCH 0x0417
+struct ec_params_fp_sign_match {
+	uint8_t challenge[FP_CHALLENGE_SIZE];
 } __ec_align4;
 
-/*
- * Migrate a legacy FP template (here, legacy refers to being generated in a
- * raw user_id context instead of a nonce context) by wiping its match secret
- * salt and treating it as a newly-enrolled template.
- * The legacy FP template needs to be uploaded by FP_TEMPLATE command first
- * without committing, then this command will commit it.
- */
-#define EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT 0x0418
-
-struct ec_params_fp_migrate_template_to_nonce_context {
-	/* The context userid used to encrypt this template when it was created.
-	 */
-	uint32_t userid[FP_CONTEXT_USERID_WORDS];
-};
+struct ec_response_fp_sign_match {
+	uint8_t signature[FP_MAC_LENGTH];
+} __ec_align4;
 
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
@@ -8915,6 +8934,9 @@ struct ec_response_get_boot_time {
 	uint64_t timestamp[RESET_CNT];
 	uint16_t cnt;
 } __ec_align4;
+
+/* Issue AP shutdown */
+#define EC_CMD_AP_SHUTDOWN 0x0605
 
 /*****************************************************************************/
 /*

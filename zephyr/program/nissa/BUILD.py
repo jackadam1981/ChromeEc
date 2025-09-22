@@ -4,7 +4,7 @@
 
 """Define zmake projects for nissa."""
 
-# Nivviks and Craask, Pujjo, Xivu, Xivur, Uldren has NPCX993F, Nereid
+# Nivviks and Craask, Pujjo, Xivu, Uldren has NPCX993F, Nereid
 # and Joxer, Yaviks, Yavilla, Yavista, Quandiso, Quandiso2, Domika has
 # ITE81302
 
@@ -76,26 +76,9 @@ nereid = register_nissa_project(
     chip="it8xxx2/it81302bx",
 )
 
-nereid_cx = register_binman_project(
-    project_name="nereid_cx",
-    zephyr_board="it8xxx2/it81302cx",
-    dts_overlays=[here / "nereid" / "project.overlay"],
-    kconfig_files=[
-        here / "program.conf",
-        here / "it8xxx2_program.conf",
-        here / "it8xxx2cx_program.conf",
-        here / "nereid" / "project.conf",
-    ],
-)
-
 nokris = register_nissa_project(
     project_name="nokris",
     chip="npcx9/npcx9m3f",
-)
-
-naktal = register_nissa_project(
-    project_name="naktal",
-    chip="it8xxx2/it81302bx",
 )
 
 craask = register_nissa_project(
@@ -120,11 +103,6 @@ pujjogatwin = register_nissa_project(
 
 xivu = register_nissa_project(
     project_name="xivu",
-    chip="npcx9/npcx9m3f",
-)
-
-xivur = register_nissa_project(
-    project_name="xivur",
     chip="npcx9/npcx9m3f",
 )
 
@@ -241,9 +219,7 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="craaskov", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="dirks", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="gothrax", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="joxer", addr=0xBFFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="naktal", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nereid", addr=0xBFFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="nereid_cx", addr=0xBFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nivviks", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="nokris", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="pirrha", addr=0xBFFE0)
@@ -254,7 +230,6 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="quandiso", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="quandiso2", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="uldren", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="xivu", addr=0x7FFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="xivur", addr=0x7FFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yaviks", addr=0xAFFE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="yavilla", addr=0xB7FE0)
 assert_rw_fwid_DO_NOT_EDIT(project_name="glassway", addr=0x7FFE0)

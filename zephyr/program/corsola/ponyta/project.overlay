@@ -22,6 +22,8 @@
 /* Projrect level DTS shared with tests */
 #include "./cbi.dtsi"
 #include "./interrupts.dtsi"
+#include "./led.dtsi"
+#include "./temps.dtsi"
 
 /* board override */
 / {
@@ -35,6 +37,8 @@
 	};
 
 	named-gpios {
+		/delete-node/ usb_c0_bc12_int_odl;
+
  		en_pp5000_usb_a1_vbus: en_pp5000_usb_a1_vbus_x {
 			gpios = <&gpiof 5 GPIO_OUTPUT_LOW>;
 		};
@@ -43,12 +47,24 @@
 		};
 	};
 
+	unused-pins {
+		unused-gpios =
+			<&gpio8 3 0>;
+	};
+
+	gpio-interrupts {
+		/delete-node/ usb_c0_bc12;
+	};
+
 	batteries {
 		default_battery: gfl_nb0299-485489 {
 			compatible = "gfl,nb0299-485489", "battery-smart";
 		};
 		ult_u485496phr {
 			compatible = "utl,hq24u3s1p3i", "battery-smart";
+		};
+		gfl_hq71101003dj0 {
+			compatible = "gfl,hq71101003dj0", "battery-smart";
 		};
 	};
 
@@ -178,264 +194,15 @@
 			>;
 	};
 
-	led-colors {
-		compatible = "cros-ec,led-policy";
-
-		/* ponyta LED bat charge */
-		bat-state1-charge {
-			charge-state = "LED_PWRS_CHARGE";
-			/* Battery display percent range (>= 0, <= 4%) */
-			batt-lvl = <BATTERY_LEVEL_EMPTY 4>;
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_RED";
-				};
-			};
+	usbc {
+		port0@0 {
+			/delete-property/ bc12;
 		};
 
-		bat-state2-charge {
-			charge-state = "LED_PWRS_CHARGE";
-			/* Battery display percent range (>= 5, <= 96%) */
-			batt-lvl = <BATTERY_LEVEL_CRITICAL 96>;
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_AMBER";
-				};
-			};
-		};
-
-		bat-state3-charge {
-			charge-state = "LED_PWRS_CHARGE";
-			/* Battery display percent range (>= 97, <= 100) */
-			batt-lvl = <97 100>;
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_GREEN";
-				};
-			};
-		};
-
-		/* ponyta LED bat charge near full */
-		bat-state-charge-near-full {
-			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_GREEN";
-				};
-			};
-		};
-
-		/* ponyta LED bat discharge */
-		bat-state-discharge {
-			charge-state = "LED_PWRS_DISCHARGE";
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_OFF";
-				};
-			};
-		};
-
-		/* ponyta LED bat error */
-		bat-state-error {
-			charge-state = "LED_PWRS_ERROR";
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_RED";
-					period-ms = <1000>;
-				};
-				color-1 {
-					led-color = "LED_OFF";
-					period-ms = <1000>;
-				};
-			};
-		};
-
-		/* ponyta LED bat idle */
-		bat-state-idle {
-			charge-state = "LED_PWRS_IDLE";
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_GREEN";
-				};
-			};
-		};
-
-		/* ponyta LED bat forced idle */
-		bat-state-forced-idle {
-			charge-state = "LED_PWRS_FORCED_IDLE";
-
-			battery-led {
-				led-id = "EC_LED_ID_BATTERY_LED";
-
-				color-0 {
-					led-color = "LED_RED";
-					period-ms = <2000>;
-				};
-				color-1 {
-					led-color = "LED_GREEN";
-					period-ms = <2000>;
-				};
-			};
-		};
-
-		/* ponyta LED power s0 */
-		power-state-s0 {
-			chipset-state = "POWER_S0";
-
-			power-led {
-				led-id = "EC_LED_ID_POWER_LED";
-
-				color-0 {
-					led-color = "LED_WHITE";
-				};
-			};
-		};
-
-		/* ponyta LED power s3 */
-		power-state-s3 {
-			chipset-state = "POWER_S3";
-
-			power-led {
-				led-id = "EC_LED_ID_POWER_LED";
-
-				color-0 {
-					led-color = "LED_WHITE";
-					period-ms = <3000>;
-				};
-				color-1 {
-					led-color = "LED_OFF";
-					period-ms = <500>;
-				};
-			};
-		};
-
-		/* ponyta LED power s5 */
-		power-state-s5 {
-			chipset-state = "POWER_S5";
-
-			power-led {
-				led-id = "EC_LED_ID_POWER_LED";
-
-				color-0 {
-					led-color = "LED_OFF";
-				};
-			};
+		port1@1 {
+			/delete-property/ bc12;
 		};
 	};
-
-	pwmleds {
-		compatible = "pwm-leds";
-		led_battery_red: ec_led1_odl {
-			pwms = <&pwm0 0 PWM_HZ(100) PWM_POLARITY_INVERTED>;
-		};
-		led_battery_green: ec_led2_odl {
-			pwms = <&pwm1 0 PWM_HZ(100) PWM_POLARITY_INVERTED>;
-		};
-		led_power_white: ec_led3_odl {
-			pwms = <&pwm4 0 PWM_HZ(100) PWM_POLARITY_INVERTED>;
-		};
-	};
-
-	pwm-led-pins {
-		compatible = "cros-ec,pwm-led-pins";
-
-		battery_led: battery-led {
-			led-id = "EC_LED_ID_BATTERY_LED";
-			led-pwms = <&led_battery_red &led_battery_green>;
-
-			color-off {
-				led-color = "LED_OFF";
-				led-values = <0 0>;
-			};
-
-			color-red {
-				led-color = "LED_RED";
-				led-values = <100 0>;
-			};
-
-			color-amber {
-				led-color = "LED_AMBER";
-				led-values = <100 20>;
-			};
-
-			color-green {
-				led-color = "LED_GREEN";
-				led-values = <0 100>;
-			};
-		};
-
-		power_led: power-led {
-			led-id = "EC_LED_ID_POWER_LED";
-			led-pwms = <&led_power_white>;
-
-			color-white {
-				led-color = "LED_WHITE";
-				led-values = <100>;
-			};
-
-			color-off {
-				led-color = "LED_OFF";
-				led-values = <0>;
-			};
-		};
-	};
-};
-
-/* Red LED */
-&pwm0_gpc3 {
-	drive-open-drain;
-};
-
-&pwm0 {
-	status = "okay";
-	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
-	pinctrl-0 = <&pwm0_gpc3>;
-	pinctrl-names = "default";
-};
-
-/* Green LED */
-&pwm1_gpc2 {
-	drive-open-drain;
-};
-
-&pwm1 {
-	status = "okay";
-	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
-	pinctrl-0 = <&pwm1_gpc2>;
-	pinctrl-names = "default";
-};
-
-/* White LED */
-&pwm4_gpb6 {
-	drive-open-drain;
-};
-
-&pwm4 {
-	status = "okay";
-	clock-bus = "NPCX_CLOCK_BUS_LFCLK";
-	pinctrl-0 = <&pwm4_gpb6>;
-	pinctrl-names = "default";
 };
 
 /* inherit the rot_ref from Kingler and overwrite it */
@@ -455,4 +222,12 @@
 &usba_port_enable_list {
 	enable-pins = <&en_pp5000_usb_a0_vbus
 		       &en_pp5000_usb_a1_vbus>;
+};
+
+&i2c1_0 {
+	/delete-node/ pi3usb9201@5f;
+};
+
+&i2c2_0 {
+	/delete-node/ rt1718s-bc12@40;
 };

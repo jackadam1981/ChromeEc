@@ -339,16 +339,25 @@ DISAMBIGUATION_DICTIONARY = {
             {
                 "reg": "0x02",
                 "mask": "0xff",
-                "value": "0x45",
+                "value": "0x15",
                 "bytes": 1,
             },
             {
                 "reg": "0x03",
                 "mask": "0xff",
-                "value": "0x87",
+                "value": "0x88",
                 "bytes": 1,
             },
-            None,
+            {
+                "reg": "0x2c",
+                # this mask is untriggerable on purpose to indicate the use of overrides
+                "mask": "0x00",
+                "value": "0x01",
+                "override_addr": "0x8",
+                "override_mask": "0x02",
+                "override_value": "0x02",
+                "bytes": 1,
+            },
             None,
         ),
         CompatibleInfo(
@@ -425,7 +434,16 @@ DISAMBIGUATION_DICTIONARY = {
                 "value": "0x88",
                 "bytes": 1,
             },
-            None,
+            {
+                "reg": "0x2c",
+                # the default value is auto pass
+                "mask": "0x00",
+                "value": "0x00",
+                "override_addr": "0x8",
+                "override_mask": "0x02",
+                "override_value": "0x00",
+                "bytes": 1,
+            },
             None,
         ),
     ],
@@ -1008,6 +1026,63 @@ DISAMBIGUATION_DICTIONARY = {
                 # the ascii characters "GOOG0H" on the 27-32 bytes
                 "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
                 "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730480000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5453p-vb",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0L" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304C0000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p-vb",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0N" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304E0000000000",
+                "bytes": 38,
+            },
+            None,
+            None,
+        ),
+        CompatibleInfo(
+            "realtek,rts5452p-vb",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0O" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304F0000000000",
                 "bytes": 38,
             },
             None,

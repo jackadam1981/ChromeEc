@@ -234,5 +234,46 @@ ZTEST_USER_F(dps_selection, test_dps_pdo_switch)
 	zassert_equal(pd_get_requested_voltage(TEST_PORT), 15000, NULL);
 }
 
+ZTEST_USER_F(dps_selection, test_host_cmd)
+{
+	struct common_fixture *common = &fixture->common;
+
+	/* Enable */
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_USB_PD_DPS_CONTROL, 0,
+		(struct ec_params_usb_pd_dps_control){ .enable = 1 });
+	struct ec_response_usb_pd_dps_status r;
+
+	zassert_ok(host_command_process(&args));
+	zassert_true(dps_is_enabled());
+
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_USB_PD_DPS_STATUS, 0, r);
+	zassert_ok(host_command_process(&args));
+	zassert_true(r.is_enabled);
+	zassert_equal(r.port, CHARGE_PORT_NONE);
+
+	connect_partner_to_port(common->tcpci_emul, common->charger_emul,
+				&common->partner, &common->src_ext);
+	k_sleep(K_SECONDS(1));
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_USB_PD_DPS_STATUS, 0, r);
+	zassert_ok(host_command_process(&args));
+	zassert_true(r.is_enabled);
+	zassert_equal(r.port, 0);
+
+	/* Disable */
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_USB_PD_DPS_CONTROL, 0,
+		(struct ec_params_usb_pd_dps_control){ .enable = 0 });
+
+	zassert_ok(host_command_process(&args));
+	zassert_false(dps_is_enabled());
+	args = (struct host_cmd_handler_args)BUILD_HOST_COMMAND_RESPONSE(
+		EC_CMD_USB_PD_DPS_STATUS, 0, r);
+	zassert_ok(host_command_process(&args));
+	zassert_false(r.is_enabled);
+}
+
 ZTEST_SUITE(dps_selection, drivers_predicate_post_main, dps_selection_setup,
 	    dps_selection_before, dps_selection_after, NULL);

@@ -21,8 +21,6 @@
 #define CONFIG_USB_PID 0x505b
 #elif defined(BOARD_EEL)
 #define CONFIG_USB_PID 0x5057
-#elif defined(BOARD_GELATIN)
-#define CONFIG_USB_PID 0x505D
 #elif defined(BOARD_JEWEL)
 #define CONFIG_USB_PID 0x5061
 #elif defined(BOARD_MAGNEMITE)
@@ -35,8 +33,6 @@
 #define CONFIG_USB_PID 0x502b
 #elif defined(BOARD_STAR)
 #define CONFIG_USB_PID 0x5052
-#elif defined(BOARD_WAND)
-#define CONFIG_USB_PID 0x502d
 #elif defined(BOARD_WHISKERS)
 #define CONFIG_USB_PID 0x5030
 #elif defined(BOARD_WHITEBEARD)
@@ -50,7 +46,7 @@
 #ifdef SECTION_IS_RW
 
 /* Touchpad interface, firmware size and physical dimension. */
-#if defined(BOARD_HAMMER) || defined(BOARD_WAND)
+#if defined(BOARD_HAMMER)
 #define HAS_I2C_TOUCHPAD
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
@@ -85,17 +81,6 @@
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_PRESSURE 511
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 839 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 457 /* tenth of mm */
-#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (64 * 1024)
-#elif defined(BOARD_GELATIN)
-#define CONFIG_USB_HID_KEYBOARD_VIVALDI
-#define CONFIG_USB_HID_KB_NUM_TOP_ROW_KEYS 10
-#define HAS_I2C_TOUCHPAD
-/* TODO: update correct parameters */
-#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3340
-#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1811
-#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_PRESSURE 511
-#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1060 /* tenth of mm */
-#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 575 /* tenth of mm */
 #define CONFIG_TOUCHPAD_VIRTUAL_SIZE (64 * 1024)
 #elif defined(BOARD_JEWEL)
 #define HAS_I2C_TOUCHPAD
@@ -177,14 +162,13 @@
 #endif
 
 /* Assistant key */
-#if defined(BOARD_HAMMER) || defined(BOARD_WAND) || defined(BOARD_WHISKERS)
+#if defined(BOARD_HAMMER) || defined(BOARD_WHISKERS)
 
 #define CONFIG_KEYBOARD_ASSISTANT_KEY
 #endif
 
 /* Backlight */
-#if defined(BOARD_HAMMER) || defined(BOARD_STAFF) || defined(BOARD_WAND) || \
-	defined(BOARD_WHISKERS)
+#if defined(BOARD_HAMMER) || defined(BOARD_STAFF) || defined(BOARD_WHISKERS)
 /*
  * Even with this option, we detect the backlight presence using a PU/PD on the
  * PWM pin. Not defining this totally disables support.
@@ -201,7 +185,7 @@
 #define KBLIGHT_PWM_FREQ 50000 /* Hz */
 #endif
 
-#endif /* BOARD_HAMMER/WAND/WHISKERS */
+#endif /* BOARD_HAMMER/WHISKERS */
 
 /* GMR sensor for tablet mode detection */
 #if defined(BOARD_DON) || defined(BOARD_MASTERBALL) ||        \
