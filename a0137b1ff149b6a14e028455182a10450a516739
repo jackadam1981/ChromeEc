@@ -22,6 +22,30 @@
       },
       "revId": "a0137b1ff149b6a14e028455182a10450a516739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1ce933_99683135",
+        "filename": "zephyr/boards/google/it8xxx2/it8xxx2_it82000bw.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-09-22T09:06:02Z",
+      "side": 1,
+      "message": "I’ll submit an upstream pr to add these into it82000.dtsi, thanks.",
+      "parentUuid": "a59d9ca4_0cf36ff7",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "a0137b1ff149b6a14e028455182a10450a516739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
