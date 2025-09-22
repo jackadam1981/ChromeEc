@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7aa91e3_e9cec009",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-09-22T05:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2f7dac_eea58959",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ae6d3e_e7ab7e4f",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-09-16T17:47:55Z",
       "side": 1,
       "message": "If servod is started with the correct board name, this change is not be needed.  You can also set the EC chip type directly using the `--chip` argument.\n\nSo this is not a good approach for support the multiple EC types on Ocelot.\n\nIf we want to try and auto-detecting the EC type, we can add lookup map to the servo overlay for Ocelot.  [Example from nissa](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/hdctools/servo/data/servo_nissa_overlay.xml).  Note that this only works if the EC is functional.  If the EC firmware is blank or corrupt, one must explicitly set the board type with servod.",
+      "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2e410b_9aabdc5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-09-22T05:56:41Z",
+      "side": 1,
+      "message": "Thanks @keithshort@chromium.org, I am exploring the option u mentioned as auto-detection of EC chip and will update the changes accordingly. Along with that I feel --board option just adds extra option support along with --chip argument similar to previous platforms like ptlrvp and mtlrvp which can be used in case EC is not functional as u mentioned. Let me know your thoughts on that.",
+      "parentUuid": "51ae6d3e_e7ab7e4f",
       "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
