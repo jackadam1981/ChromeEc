@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d61e461_34b20b33",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T20:38:03Z",
+      "side": 1,
+      "message": "Nit - improper indentation.  Help text is indented by 1 hard tab followed by 2 spaces.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "1be874cacc446ac6473429d1f47144b61e8de420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7a107a5_3ae98b5f",
         "filename": "zephyr/drivers/dsp_comms/client/dsp_client_transport.c",
         "patchSetId": 4
