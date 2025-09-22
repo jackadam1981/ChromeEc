@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88cc18ea_40f58ecf",
+        "filename": "common/charge_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T17:31:19Z",
+      "side": 1,
+      "message": "This hard codes the charger number.  Looks like version 1 of the command provides a `chgnum` parameter that should be used.",
+      "parentUuid": "db4757dc_024f8e1b",
+      "range": {
+        "startLine": 2214,
+        "startChar": 0,
+        "endLine": 2214,
+        "endChar": 31
+      },
+      "revId": "99799ca1c7ea2f388484ae0815c3cf3c6749f372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bd04bc8_a540259b",
         "filename": "util/ectool.cc",
         "patchSetId": 5
