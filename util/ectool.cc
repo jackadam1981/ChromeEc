@@ -9329,6 +9329,7 @@ static void cmd_cbi_help(char *cmd)
 		"      11: COMMON_CONTROL\n"
 		"      [12:27]: BATTERY_CONFIG_[0:15] (hex)\n"
 		"      28: PROVISION_MATRIX_VERSION\n"
+		"      29: UFSC\n"
 		"    <size> is the size of the data in byte. It should be zero for\n"
 		"      string types.\n"
 		"    <value/string> is an integer or a string to be set\n"
