@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b95df5_5b883b01",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-22T18:46:57Z",
+      "side": 1,
+      "message": "```suggestion\n  if (IS_ENABLED(DEBUG_SHI)) {\n\tif (state !\u003d last_error_state)\n\t\tCPRINTS(\"Unexpected state %d in %s ISR\", state, isr_name);\n  }\n```",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 6
+      },
+      "revId": "dff23553a43ab74c92dac0b354a1117df69926bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
