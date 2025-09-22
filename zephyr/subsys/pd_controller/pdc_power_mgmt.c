@@ -550,6 +550,8 @@ enum policy_snk_attached_t {
 	SNK_POLICY_UPDATE_BATTERY_STATUS,
 	/** Update battery capability */
 	SNK_POLICY_UPDATE_BATTERY_CAPABILITY,
+	/** Update sink pdo */
+	SNK_POLICY_UPDATE_SINK_PDO,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -2152,6 +2154,8 @@ static void pdc_snk_attached_entry(void *obj)
 			SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
 		port->get_pdo = (struct get_pdo_t){ 0 };
 
+                atomic_set_bit(port->snk_policy.flags,
+				       SNK_POLICY_UPDATE_SINK_PDO);
 		/* If we were just a SRC, tell the DPM that the
 		 * attached sink has been disconnected.
 		 */
@@ -2506,6 +2510,21 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_ATTENTION)) {
 		queue_internal_cmd(port, CMD_PDC_GET_ATTENTION_VDO);
+		return SMF_EVENT_HANDLED;
+	}
+	if (atomic_test_and_clear_bit(port->snk_policy.flags,
+				      SNK_POLICY_UPDATE_SINK_PDO))
+	{
+	        /* Set sink PDO(s) that reflects this board's max voltage and
+		 * current */
+		port->set_pdos = (struct set_pdos_t){
+			.type = SINK_PDO,
+			.count = ARRAY_SIZE(pdc_snk_pdos),
+		};
+
+		memcpy(port->set_pdos.pdos, pdc_snk_pdos, sizeof(pdc_snk_pdos));
+
+		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		return SMF_EVENT_HANDLED;
 	}
 
