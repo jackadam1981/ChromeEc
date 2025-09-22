@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b2da1f_3277c9fc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T17:28:19Z",
+      "side": 1,
+      "message": "Nit `verify_min_required_mv` is clearer.",
+      "range": {
+        "startLine": 816,
+        "startChar": 6,
+        "endLine": 816,
+        "endChar": 19
+      },
+      "revId": "bb46e6d40aaf8e752be0e275f135c46bb3edb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9139bf8_0730b300",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T17:28:19Z",
+      "side": 1,
+      "message": "What about adding a new Kconfig that controls whether a charging minimum is needed?",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 64
+      },
+      "revId": "bb46e6d40aaf8e752be0e275f135c46bb3edb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
