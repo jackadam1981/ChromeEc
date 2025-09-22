@@ -1136,11 +1136,13 @@ test_mockable void system_enter_hibernate(uint32_t seconds,
 	 * this is to prevent an action triggered by developers.
 	 * See: b/192259035
 	 */
+	/* ITE Debug
 	if (IS_ENABLED(CONFIG_EXTPOWER) &&
 	    IS_ENABLED(CONFIG_AP_POWER_CONTROL) && extpower_is_present()) {
 		CPRINTS("AC on, skip hibernate");
 		return;
 	}
+	*/
 
 	/*
 	 * If chipset is already off, then call system_hibernate directly. Else,
