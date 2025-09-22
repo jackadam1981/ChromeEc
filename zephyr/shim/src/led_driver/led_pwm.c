@@ -82,10 +82,11 @@ const struct led_pins_node_t *pins_node[] = {
  * converted to duty cycle in ns (pulse_ns)
  */
 void led_set_color_with_pins(const struct pwm_pin_t *pwm_pins,
-			     uint8_t pins_count)
+			     uint8_t pins_count, uint8_t brightness)
 {
 	for (int j = 0; j < pins_count; j++) {
-		pwm_pins[j].pwm->pulse_ns = pwm_pins[j].pulse_ns;
+		pwm_pins[j].pwm->pulse_ns =
+			pwm_pins[j].pulse_ns * brightness / 100;
 		pwm_pins[j].pwm->pulse_step_ns = pwm_pins[j].pulse_step_ns;
 	}
 }
@@ -93,13 +94,15 @@ void led_set_color_with_pins(const struct pwm_pin_t *pwm_pins,
 /*
  * Iterate through LED pins nodes to find the color matching node.
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id)
+void led_set_color(enum led_color color, enum ec_led_id led_id,
+		   uint8_t brightness)
 {
 	for (int i = 0; i < ARRAY_SIZE(pins_node); i++) {
 		if ((pins_node[i]->led_color == color) &&
 		    (pins_node[i]->led_id == led_id)) {
 			led_set_color_with_pins(pins_node[i]->pwm_pins,
-						pins_node[i]->pins_count);
+						pins_node[i]->pins_count,
+						brightness);
 			break;
 		}
 	}
@@ -157,7 +160,8 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 {
 	uint8_t pins_count = pattern->pattern_color[pattern->cur_color]
 				     .led_color_node->pins_count;
-	uint8_t duration = pattern->pattern_color[pattern->cur_color].duration;
+	int32_t duration_ms =
+		pattern->pattern_color[pattern->cur_color].duration_ms;
 	struct pwm_pin_t *next_color =
 		pattern->pattern_color[pattern->cur_color]
 			.led_color_node->pwm_pins;
@@ -167,25 +171,21 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 	struct pwm_pin_t *prev_color =
 		pattern->pattern_color[prev_color_idx].led_color_node->pwm_pins;
 	struct pwm_pin_t cur_color[pins_count];
-	int32_t next_tick_pulse_ns;
 
 	for (int i = 0; i < pins_count; i++) {
 		cur_color[i].pwm = next_color[i].pwm;
 
-		if (pattern->transition == LED_TRANSITION_LINEAR) {
+		if (pattern->transition == LED_TRANSITION_LINEAR &&
+		    duration_ms != 0) {
 			cur_color[i].pulse_ns = (next_color[i].pulse_ns -
-						 prev_color[i].pulse_ns) *
-							pattern->ticks /
-							duration +
+						 prev_color[i].pulse_ns) /
+							duration_ms *
+							pattern->elapsed_ms +
 						prev_color[i].pulse_ns;
-			next_tick_pulse_ns = (next_color[i].pulse_ns -
-					      prev_color[i].pulse_ns) *
-						     (pattern->ticks + 1) /
-						     duration +
-					     prev_color[i].pulse_ns;
-			cur_color[i].pulse_step_ns =
-				(next_tick_pulse_ns - cur_color[i].pulse_ns) *
-				LED_STEP_TIME_MS / HOOK_TICK_INTERVAL_MS;
+			cur_color[i].pulse_step_ns = (next_color[i].pulse_ns -
+						      prev_color[i].pulse_ns) /
+						     duration_ms *
+						     LED_STEP_TIME_MS;
 		}
 		/*
 		 * This algorithm first finds the ratio of the starting and end
@@ -198,15 +198,16 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 		 * multiplication or division by a power of 2 can by calculated
 		 * by simply bit shifting by the power of 2 exponent).
 		 */
-		else if (pattern->transition == LED_TRANSITION_EXPONENTIAL) {
+		else if (pattern->transition == LED_TRANSITION_EXPONENTIAL &&
+			 duration_ms != 0) {
 			if (next_color[i].pulse_ns > prev_color[i].pulse_ns) {
 				int32_t scale =
 					next_color[i].pulse_ns /
 					MAX(prev_color[i].pulse_ns, PWM_MIN_NS);
 				cur_color[i].pulse_ns =
 					MAX(prev_color[i].pulse_ns, PWM_MIN_NS)
-					<< (MSB(scale) * pattern->ticks /
-					    duration);
+					<< (MSB(scale) * pattern->elapsed_ms /
+					    duration_ms);
 			} else if (next_color[i].pulse_ns <
 				   prev_color[i].pulse_ns) {
 				int32_t scale =
@@ -214,8 +215,8 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 					MAX(next_color[i].pulse_ns, PWM_MIN_NS);
 				cur_color[i].pulse_ns =
 					prev_color[i].pulse_ns >>
-					(MSB(scale) * pattern->ticks /
-					 duration);
+					(MSB(scale) * pattern->elapsed_ms /
+					 duration_ms);
 			} else {
 				cur_color[i].pulse_ns = next_color[i].pulse_ns;
 			}
@@ -226,7 +227,7 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 		}
 	}
 
-	led_set_color_with_pins(cur_color, pins_count);
+	led_set_color_with_pins(cur_color, pins_count, 100);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
@@ -260,15 +261,16 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 		if (br_color != EC_LED_COLOR_INVALID &&
 		    brightness[br_color] != 0) {
 			color_set = true;
-			led_set_color(pins_node[i]->led_color, led_id);
+			led_set_color(pins_node[i]->led_color, led_id,
+				      brightness[br_color]);
 		}
 	}
 
 	/* If no color was set, turn off the LED */
 	if (!color_set)
-		led_set_color(LED_OFF, led_id);
+		led_set_color(LED_OFF, led_id, 0);
 
-	board_led_apply_color(false);
+	led_asynchronous_apply_color(false);
 	return EC_SUCCESS;
 }
 
@@ -287,7 +289,7 @@ __override int led_is_supported(enum ec_led_id led_id)
 }
 
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
-void board_led_apply_color(bool has_transitions)
+void led_asynchronous_apply_color(bool has_transitions)
 {
 	if (has_transitions) {
 		k_work_schedule(&led_tick_control_data, K_NO_WAIT);

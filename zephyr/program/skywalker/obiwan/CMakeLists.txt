@@ -4,4 +4,8 @@
 
 # Obiwan Makefile
 zephyr_include_directories("include")
-zephyr_library_sources("src/kb_backlight.c" "src/thermal_policy.c")
+zephyr_library_sources(
+		"src/kb_backlight.c"
+		"src/thermal_policy.c"
+		"src/touchpanel.c"
+)

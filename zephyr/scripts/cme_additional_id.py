@@ -133,5 +133,41 @@ ADDITIONAL_DICTIONARY = {
                 "bytes": 38,
             },
         ),
+        AdditionalInfo(
+            "realtek,tusb1044",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0F" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730460000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "realtek,tusb1044",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0O" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304F0000000000",
+                "bytes": 38,
+            },
+        ),
     ],
 }

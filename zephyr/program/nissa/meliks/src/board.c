@@ -145,8 +145,8 @@ test_export_static void handle_tsp_ta(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, handle_tsp_ta, HOOK_PRIO_DEFAULT);
 
-static void power_handler(struct ap_power_ev_callback *cb,
-			  struct ap_power_ev_data data)
+test_export_static void power_handler(struct ap_power_ev_callback *cb,
+				      struct ap_power_ev_data data)
 {
 	int ret;
 	static int chip_updated;

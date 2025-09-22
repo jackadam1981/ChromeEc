@@ -122,42 +122,6 @@ enum tcpc_cc_polarity pdc_power_mgmt_pd_get_polarity(int port);
 enum pd_data_role pdc_power_mgmt_pd_get_data_role(int port);
 
 /**
- * @brief Request power swap to Source
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_src(int port);
-
-/**
- * @brief Request power swap to Sink
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_snk(int port);
-
-/**
- * @brief Request data swap to UFP
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_ufp(int port);
-
-/**
- * @brief Request data swap to DFP
- *
- * @param port USB-C port number
- *
- * @retval void
- */
-void pdc_power_mgmt_request_swap_to_dfp(int port);
-
-/**
  * @brief Signal power request to indicate a charger update that affects the
  * port.
  *
@@ -348,7 +312,7 @@ enum pd_dual_role_states pdc_power_mgmt_get_dual_role(int port);
 const char *pdc_power_mgmt_get_task_state_name(int port);
 
 /**
- * @brief Request a power role swap
+ * @brief Request a power role swap, non-blocking
  *
  * @param port USB-C port number
  */
@@ -813,5 +777,18 @@ int pdc_power_mgmt_set_bbr_cts(int port, bool enable);
  * @return false otherwise
  */
 bool pdc_power_mgmt_is_pdc_port_valid(int port);
+
+/**
+ * @brief Manually notify the PDCs of the given AP power state
+ *
+ * Notify all PDC drivers that the AP is in the given power state. This
+ * overrides the state set by the PDC subsystem but does not prevent it from
+ * updating the power state again on the next startup or shutdown transition.
+ *
+ * @param state POWER_S0  or POWER_S5
+ * @return 0 on success
+ * @return -EINVAL for invalid \p state values.
+ */
+int pdc_power_mgmt_set_ap_power_state(enum power_state state);
 
 #endif /* __CROS_EC_PDC_POWER_MGMT_H */

@@ -29,7 +29,7 @@
 #define CONFIG_LTO
 #define CONFIG_CBI_EEPROM
 #define CONFIG_BOARD_VERSION_CBI
-#define CONFIG_CRC8
+#define CONFIG_CRC8_CROS
 #define CONFIG_DPTF
 #define CONFIG_FPU
 
@@ -236,6 +236,12 @@
 #define BASEBOARD_PD_TASK_STACK_SIZE 1216
 #define BASEBOARD_POWERBTN_TASK_STACK_SIZE 1088
 #define BASEBOARD_RGBKBD_TASK_STACK_SIZE 2048
+
+/* Enable Panic Log for debugging crashes */
+#ifdef SECTION_IS_RW
+#define CONFIG_PRESERVED_RING_BUF
+#define CONFIG_PANIC_LOG
+#endif
 
 #ifndef __ASSEMBLER__
 

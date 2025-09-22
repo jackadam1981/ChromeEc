@@ -67,12 +67,6 @@ choice TEST_BOARD_VARIANT
 		select TEST_ISL923X
 		select TEST_CHARGER_MULTI_DEF
 
-	config TEST_BOARD_XIVUR
-		bool "Run xivur tests"
-		select TEST_PROGRAM_NISSA
-		select TEST_ISL923X
-		select TEST_CHARGER_MULTI_DEF
-
 	config TEST_BOARD_NATIVE_SIM
 		bool "native sim test"
 
@@ -94,7 +88,6 @@ config TEST_BOARD_NAME
 	default "pujjo" if TEST_BOARD_PUJJO
 	default "uldren" if TEST_BOARD_ULDREN
 	default "xivu" if TEST_BOARD_XIVU
-	default "xivur" if TEST_BOARD_XIVUR
 
 # Charger selection
 config TEST_ISL923X

@@ -37,7 +37,12 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 #define BYTE3(n) (((n) >> 24) & 0xff)
 
 /**
- * @brief Time before sending a ping status
+ * @brief Time from writing command to first ping status
+ */
+#define T_INITIAL_PING_STATUS 5
+
+/**
+ * @brief Polling interval for subsequent ping status checks
  */
 #define T_PING_STATUS 20
 
@@ -147,6 +152,8 @@ static const struct smbus_cmd_t GET_CURRENT_PARTNER_SRC_PDO = { 0x08, 0x02,
 static const struct smbus_cmd_t RTS_SET_FRS_FUNCTION = { 0x08, 0x03, 0xE1 };
 static const struct smbus_cmd_t GET_TPC_CSD_OPERATION_MODE = { 0x08, 0x02,
 							       0x9D };
+static const struct smbus_cmd_t SET_BATTERY_CAPABILITY = { 0x08, 0x0B, 0x32 };
+static const struct smbus_cmd_t SET_BATTERY_STATUS = { 0x08, 0x06, 0x33 };
 static const struct smbus_cmd_t GET_RTK_STATUS = { 0x09, 0x03 };
 static const struct smbus_cmd_t RTS_UCSI_PPM_RESET = { 0x0E, 0x02, 0x01 };
 static const struct smbus_cmd_t RTS_UCSI_CONNECTOR_RESET = { 0x0E, 0x03, 0x03 };
@@ -306,6 +313,10 @@ enum cmd_t {
 	CMD_GET_SBU_MUX_MODE,
 	/** CMD_SET_SBU_MUX_MODE */
 	CMD_SET_SBU_MUX_MODE,
+	/** CMD_SET_BATTERY_CAPABILITY */
+	CMD_SET_BATTERY_CAPABILITY,
+	/** CMD_SET_BATTERY_STATUS */
+	CMD_SET_BATTERY_STATUS,
 	/** Set the Burnside Bridge retimer into CTS test mode */
 	CMD_SET_BBR_CTS,
 	/** CMD_SET_SYS_PWR_STATE */
@@ -449,6 +460,8 @@ static const char *const cmd_names[] = {
 	[CMD_GET_ATTENTION_VDO] = "CMD_GET_ATTENTION_VDO",
 	[CMD_GET_SBU_MUX_MODE] = "CMD_GET_SBU_MUX_MODE",
 	[CMD_SET_SBU_MUX_MODE] = "CMD_SET_SBU_MUX_MODE",
+	[CMD_SET_BATTERY_CAPABILITY] = "SET_BATTERY_CAPABILITY",
+	[CMD_SET_BATTERY_STATUS] = "SET_BATTERY_STATUS",
 	[CMD_SET_BBR_CTS] = "CMD_SET_BBR_CTS",
 	[CMD_SET_SYS_PWR_STATE] = "CMD_SET_SYS_PWR_STATE",
 };
@@ -1014,7 +1027,8 @@ static enum smf_state_result st_write_run(void *o)
 	}
 
 	/* I2C transaction succeeded. Set timepoint for next ping status. */
-	data->next_ping_status = sys_timepoint_calc(K_MSEC(T_PING_STATUS));
+	data->next_ping_status =
+		sys_timepoint_calc(K_MSEC(T_INITIAL_PING_STATUS));
 	set_state(data, ST_PING_STATUS);
 
 	return SMF_EVENT_HANDLED;
@@ -2763,6 +2777,53 @@ static int rts54_set_sbu_mux_mode(const struct device *dev,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
+static int rts54_set_battery_capability(const struct device *dev,
+					union battery_capability_t *bcap)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = { SET_BATTERY_CAPABILITY.cmd,
+			      SET_BATTERY_CAPABILITY.len,
+			      SET_BATTERY_CAPABILITY.sub,
+			      0x00,
+			      BYTE0(bcap->vid),
+			      BYTE1(bcap->vid),
+			      BYTE0(bcap->pid),
+			      BYTE1(bcap->pid),
+			      BYTE0(bcap->design_capacity),
+			      BYTE1(bcap->design_capacity),
+			      BYTE0(bcap->last_full_charge_capacity),
+			      BYTE1(bcap->last_full_charge_capacity),
+			      BYTE0(bcap->type) };
+
+	return rts54_post_command(dev, CMD_SET_BATTERY_CAPABILITY, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
+static int rts54_set_battery_status(const struct device *dev,
+				    union battery_status_t *bstat)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	uint8_t payload[] = {
+		SET_BATTERY_STATUS.cmd,		SET_BATTERY_STATUS.len,
+		SET_BATTERY_STATUS.sub,		0x00,
+		BYTE0(bstat->reserved),		BYTE0(bstat->flags),
+		BYTE0(bstat->present_capacity), BYTE1(bstat->present_capacity),
+	};
+
+	return rts54_post_command(dev, CMD_SET_BATTERY_STATUS, payload,
+				  ARRAY_SIZE(payload), NULL);
+}
+
 static int rts54_set_bbr_cts(const struct device *dev, bool enable)
 {
 	const struct pdc_config_t *cfg = dev->config;
@@ -2826,6 +2887,8 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.get_lpm_ppm_info = rts54_get_lpm_ppm_info,
 	.set_frs = rts54_set_frs,
 	.get_attention_vdo = rts54_get_attention_vdo,
+	.set_battery_capability = rts54_set_battery_capability,
+	.set_battery_status = rts54_set_battery_status,
 #ifdef CONFIG_USBC_PDC_DRIVEN_CCD
 	.get_sbu_mux_mode = rts54_get_sbu_mux_mode,
 	.set_sbu_mux_mode = rts54_set_sbu_mux_mode,

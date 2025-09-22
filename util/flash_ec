@@ -53,65 +53,38 @@ die() {
 BOARDS_IT83XX=(
 	adlrvpm_ite
 	adlrvpp_ite
-	it83xx_evb
-	reef_it8320
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
 	it8xxx2_evb
-	it8xxx2_pdevb
 )
 
 BOARDS_STM32=(
 	bloonchipper
 	chell_pd
-	coffeecake
 	chocodile_bec
-	chocodile_vpdmcu
 	dartmonkey
 	glados_pd
 	hatch_fp
 	jerry
-	minimuffin
 	nami_fp
 	nocturne_fp
 	oak_pd
 	pit
 	strago_pd
-	zinger
-)
-BOARDS_STM32_PROG_EN=(
 )
 
 BOARDS_STM32_DFU=(
 	c2d2
-	dingdong
-	hoho
-	twinkie
-	discovery
 	servo_v4
 	servo_v4p1
 	servo_micro
 	sweetberry
-	polyberry
-	stm32f446e-eval
-	tigertail
 	fluffy
 )
 
 BOARDS_NPCX_5M5G_JTAG=(
 	npcx_evb
-	npcx_evb_arm
-)
-
-BOARDS_NPCX_5M6G_JTAG=(
-)
-
-BOARDS_NPCX_7M6X_JTAG=(
-)
-
-BOARDS_NPCX_7M7X_JTAG=(
-	npcx7_evb
 )
 
 BOARDS_NPCX_SPI=(
@@ -122,7 +95,6 @@ BOARDS_NPCX_SPI=(
 )
 
 BOARDS_NPCX_INT_SPI=(
-	adlrvpp_npcx
 	mtlrvpp_npcx
 )
 
@@ -356,18 +328,6 @@ if in_array "${BOARDS_NPCX_5M5G_JTAG[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("npcx_5m5g_jtag")
 fi
 
-if in_array "${BOARDS_NPCX_5M6G_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_5m6g_jtag")
-fi
-
-if in_array "${BOARDS_NPCX_7M6X_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_7m6x_jtag")
-fi
-
-if in_array "${BOARDS_NPCX_7M7X_JTAG[@]}" "${BOARD}"; then
-	SUPPORTED_CHIPS+=("npcx_7m7x_jtag")
-fi
-
 if in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"; then
 	SUPPORTED_CHIPS+=("npcx_spi")
 	# b/419704767#comment10: Upstream Zephyr test binaries do not have an FMAP,
@@ -452,7 +412,6 @@ case "${BOARD}" in
 				 nami_fp|nocturne_fp|rosalia )
 		MCU="fpmcu"
 		;;
-	dingdong|hoho|twinkie ) DUT_CONTROL_CMD=( "true" ); MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
 
@@ -656,11 +615,6 @@ servo_sh_boot0() {
 ec_switch_boot0() {
 	local on_value=$1
 	# Enable programming GPIOs
-	if in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"; then
-		servo_save_add "prog_en"
-
-		dut_control prog_en:yes
-	fi
 	if servo_is_ccd ; then
 		stype=ccd
 	elif [[ "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
@@ -2171,17 +2125,6 @@ function flash_npcx_5m5g_jtag() {
 	flash_npcx_jtag
 }
 
-function flash_npcx_5m6g_jtag() {
-	flash_npcx_jtag
-}
-
-function flash_npcx_7m6x_jtag() {
-	flash_npcx_jtag
-}
-
-function flash_npcx_7m7x_jtag() {
-	flash_npcx_jtag
-}
 
 function flash_npcx_spi() {
 	flash_flashrom

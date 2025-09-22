@@ -64,8 +64,15 @@ static int slp_event_init(void)
 	gpio_pin_interrupt_configure_dt(GPIO_DT_FROM_NODELABEL(slp_l),
 					GPIO_INT_EDGE_BOTH);
 
-	/* Get init state of the sleep pins */
-	k_work_submit(&slp_event_work);
+	/*
+	 * Get init state of the sleep pins.
+	 * The timing of getting the initial state is critical for enabling the
+	 * SHI host command driver. Using k_work_submit(&slp_event_work) defers
+	 * SHI enable to the lowest-priority system workqueue thread, which is
+	 * too late and may cause three consecutive retry errors for the host
+	 * command 0x011d. See b/427468960#110 for details.
+	 */
+	slp_event_handler(NULL);
 
 	return 0;
 }

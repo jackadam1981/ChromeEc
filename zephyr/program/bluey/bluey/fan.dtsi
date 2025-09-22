@@ -13,7 +13,7 @@
 			rpm-start = <3850>;
 			rpm-max = <7700>;
 			tach = <&tach1>;
-			enable-gpio = <&gpio_ec_en_pp5000>;
+			enable-gpio = <&gpio_ec_en_pp5000_fan>;
 		};
 	};
 };

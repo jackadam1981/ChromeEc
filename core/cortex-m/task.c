@@ -38,14 +38,12 @@ typedef union {
 void __idle(void);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
-CONFIG_CTS_TASK_LIST
 #undef TASK
 
 /* Task names for easier debugging */
 #define TASK(n, r, d, s) #n,
 static const char *const task_names[] = {
-	"<< idle >>",
-	CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
+	"<< idle >>", CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST
 };
 #undef TASK
 
@@ -130,10 +128,8 @@ static const struct {
 	uint32_t r0;
 	uint32_t pc;
 	uint16_t stack_size;
-} tasks_init[] = {
-	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
-		CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST CONFIG_CTS_TASK_LIST
-};
+} tasks_init[] = { TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
+			   CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST };
 #undef TASK
 
 /* Contexts for all tasks */
@@ -166,8 +162,7 @@ BUILD_ASSERT(BIT(TASK_ID_COUNT) < TASK_RESET_LOCK);
 /* Stacks for all tasks */
 #define TASK(n, r, d, s) +s
 uint8_t task_stacks[0 TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
-			    CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST
-				    CONFIG_CTS_TASK_LIST] __aligned(8);
+			    CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST] __aligned(8);
 
 #undef TASK
 

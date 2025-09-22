@@ -84,10 +84,8 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="22500">22500 mW</vif:Product_Total_Source_Power_mW>
-    <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
-    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
-    <vif:Port_Source_Power_Gang_Max_Power value="22500">22500 mW</vif:Port_Source_Power_Gang_Max_Power>
+    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Port_Source_Power_Type value="0">Assured</vif:Port_Source_Power_Type>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -101,16 +99,14 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:PD_Power_As_Source value="15000">15000 mW</vif:PD_Power_As_Source>
-    <vif:PD_Power_As_Source_Guaranteed value="7500">7500 mW</vif:PD_Power_As_Source_Guaranteed>
+    <vif:PD_Power_As_Source value="7500">7500 mW</vif:PD_Power_As_Source>
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
     <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="true" />
     <vif:Has_Invariant_PDOs value="true" />
-    <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
-    <vif:DPS_Supported value="false" />
+    <vif:Port_Managed_Guaranteed_Type value="1">Guaranteed Capability</vif:Port_Managed_Guaranteed_Type>
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="0">Over-Current Response</vif:PD_OCP_Method>
@@ -121,9 +117,9 @@
         <vif:Src_PDO_Supply_Type value="0">Fixed</vif:Src_PDO_Supply_Type>
         <vif:Src_PDO_Peak_Current value="0">100% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
-        <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
+        <vif:Src_PDO_Max_Current value="150">1500 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_OC_Debounce value="8">8 msec</vif:Src_PD_OCP_OC_Debounce>
-        <vif:Src_PD_OCP_OC_Threshold value="300">3000 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_OC_Threshold value="175">1750 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -250,10 +246,8 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:Product_Total_Source_Power_mW value="22500">22500 mW</vif:Product_Total_Source_Power_mW>
-    <vif:Port_Source_Power_Type value="1">Shared</vif:Port_Source_Power_Type>
-    <vif:Port_Source_Power_Gang>gang</vif:Port_Source_Power_Gang>
-    <vif:Port_Source_Power_Gang_Max_Power value="22500">22500 mW</vif:Port_Source_Power_Gang_Max_Power>
+    <vif:Product_Total_Source_Power_mW value="15000">15000 mW</vif:Product_Total_Source_Power_mW>
+    <vif:Port_Source_Power_Type value="0">Assured</vif:Port_Source_Power_Type>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Host-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -267,16 +261,14 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:PD_Power_As_Source value="15000">15000 mW</vif:PD_Power_As_Source>
-    <vif:PD_Power_As_Source_Guaranteed value="7500">7500 mW</vif:PD_Power_As_Source_Guaranteed>
+    <vif:PD_Power_As_Source value="7500">7500 mW</vif:PD_Power_As_Source>
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
     <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="true" />
     <vif:Has_Invariant_PDOs value="true" />
-    <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
-    <vif:DPS_Supported value="false" />
+    <vif:Port_Managed_Guaranteed_Type value="1">Guaranteed Capability</vif:Port_Managed_Guaranteed_Type>
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="0">Over-Current Response</vif:PD_OCP_Method>
@@ -287,9 +279,9 @@
         <vif:Src_PDO_Supply_Type value="0">Fixed</vif:Src_PDO_Supply_Type>
         <vif:Src_PDO_Peak_Current value="0">100% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
-        <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
+        <vif:Src_PDO_Max_Current value="150">1500 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_OC_Debounce value="8">8 msec</vif:Src_PD_OCP_OC_Debounce>
-        <vif:Src_PD_OCP_OC_Threshold value="300">3000 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_OC_Threshold value="175">1750 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
