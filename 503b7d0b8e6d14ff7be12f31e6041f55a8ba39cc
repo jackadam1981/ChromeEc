@@ -45,6 +45,30 @@
       },
       "revId": "503b7d0b8e6d14ff7be12f31e6041f55a8ba39cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bed9b5_a78fa031",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_shim.cc",
+        "patchSetId": 72
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-22T20:51:49Z",
+      "side": 1,
+      "message": "No, I reverted it.",
+      "parentUuid": "ed9b12d6_ad542ad7",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 31
+      },
+      "revId": "503b7d0b8e6d14ff7be12f31e6041f55a8ba39cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
