@@ -5,8 +5,8 @@
 
 # Disable check that incorrectly detects the "config_*" functions as unreachable.
 # shellcheck disable=SC2317
-
 # shellcheck disable=SC1091
+
 # shellcheck source=../../../scripts/lib/shflags/shflags
 . "${SHFLAGS:-/usr/share/misc/shflags}" || exit 1
 
@@ -1199,6 +1199,14 @@ config_brox() {
       readonly GPIO_BOOT0=163
       # FP_PWR_EN is on GPP_D2 = 160 + 2 = 162
       readonly GPIO_PWREN=162
+      ;;
+    (caboc)
+      # FPMCU RST_ODL is on GPP_D9 = 160 + 9 = 169
+      readonly GPIO_NRST=169
+      # FPMCU BOOT0 is on GPP_D8 = 160 + 8 = 168
+      readonly GPIO_BOOT0=168
+      # FP_PWR_EN is on GPP_D11 = 160 + 11 = 171
+      readonly GPIO_PWREN=171
       ;;
     *)
       echo "FPMCU not supported on model ${model}"

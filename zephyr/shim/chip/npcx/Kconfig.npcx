@@ -75,4 +75,20 @@ config NPCX_OTP_KEY
 	help
 		Enable the OTP Key functionality
 
+config NPCX_SHI_SHIM_INIT_WITH_SYS_INIT
+	bool "NPCX SHI Shim initialization via SYS_INIT"
+	depends on CROS_SHI_NPCX || EC_HOST_CMD_BACKEND_SHI_NPCX
+	help
+	  The SHI Shim initialization is invoked via a SYS_INIT.
+	  Otherwise, the SHI Shim initialization is invoked via a HOOK_INIT.
+
+config NPCX_SHI_SHIM_INIT_WITH_SYS_INIT_PRIO
+	int "NPCX SHI Shim initialization priority"
+	default 89
+	range 0 99
+	depends on NPCX_SHI_SHIM_INIT_WITH_SYS_INIT
+	help
+	  The SHI Shim initialization is invoked via a SYS_INIT with this
+	  priority.
+
 endif # PLATFORM_EC

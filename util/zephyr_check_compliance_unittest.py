@@ -83,6 +83,10 @@
 #   name: "infra/python/wheels/tabulate-py3"
 #   version: "version:0.9.0"
 # >
+# wheel: <
+#   name: "infra/python/wheels/python-dotenv-py3"
+#   version: "version:1.1.1"
+# >
 # [VPYTHON:END]
 
 import unittest

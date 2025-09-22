@@ -83,6 +83,23 @@ void tcpci_snk_emul_clear_alert_received(struct tcpci_snk_emul_data *sink_data);
 void tcpci_snk_emul_clear_last_5v_cap(struct tcpci_snk_emul_data *sink_data);
 
 /**
+ * @brief Send request message constructed as per input arguments
+ *
+ * @param  data Pointer to USB-C sink emulator
+ * @param  common_data Pointer to common TCPCI partner data
+ * @param  target_current_ma Requested operating current in milliamps
+ * @param  cap_mismatch If true, sets the "Capability Mismatch" bit in the RDO
+ *
+ * @return TCPCI_EMUL_TX_SUCCESS on success
+ * @return TCPCI_EMUL_TX_FAILED when TCPCI is configured to not handle
+ *                              messages of this type
+ * @return -ENOMEM when there is no free memory for message
+ * @return -EINVAL on TCPCI emulator add RX message error
+ */
+int tcpci_snk_emul_send_request_msg(struct tcpci_snk_emul_data *data,
+				    struct tcpci_partner_data *common_data,
+				    int target_current_ma, bool cap_mismatch);
+/**
  * @}
  */
 

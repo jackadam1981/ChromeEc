@@ -489,7 +489,7 @@ static int board_get_battery_type(void)
  * the charger parameters hence initialize the battery type for the board
  * as soon as the I2C is initialized.
  */
-static void board_init_battery_type(void)
+test_export_static void board_init_battery_type(void)
 {
 	if (board_get_battery_type() != BATTERY_TYPE_COUNT)
 		CPRINTS("found batt:%s",

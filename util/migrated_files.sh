@@ -32,6 +32,7 @@ test/libc_printf.c
 test/libcxx.cc
 test/malloc.c
 test/otp_key.c
+test/null_pointer.c
 test/panic_data.c
 test/panic.c
 test/printf.c

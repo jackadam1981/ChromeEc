@@ -38,6 +38,7 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
  * delay turning off power LED during suspend/shutdown.
  */
 #define PWR_LED_CPU_DELAY K_MSEC(2000)
+#define PWR_LED_CPU_DELAY_S5 K_MSEC(4500)
 
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 					     EC_LED_ID_POWER_LED };
@@ -228,8 +229,6 @@ static void led_set_battery(void)
 		break;
 	case LED_PWRS_DISCHARGE:
 		if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
-			battery_low_triggeied = 0;
-			battery_critical_triggeied = 0;
 			if (charge_get_percent() <= BATTERY_LEVEL_CRITICAL &&
 			    !battery_critical_triggeied) {
 				battery_low_triggeied = 0;
@@ -248,9 +247,7 @@ static void led_set_battery(void)
 							 LED_AMBER);
 				hook_call_deferred(
 					&battery_set_pwm_led_tick_data, 0);
-			} else if (charge_get_percent() > BATT_LOW_BCT &&
-				   !battery_critical_triggeied &&
-				   !battery_low_triggeied) {
+			} else if (charge_get_percent() > BATT_LOW_BCT) {
 				battery_low_triggeied = 0;
 				battery_critical_triggeied = 0;
 				hook_call_deferred(
@@ -460,7 +457,7 @@ static void pwr_led_shutdown_hook(void)
 {
 	k_timer_stop(&shutdown_timer);
 	k_timer_init(&shutdown_timer, pwr_led_shutdown, NULL);
-	k_timer_start(&shutdown_timer, PWR_LED_CPU_DELAY, K_FOREVER);
+	k_timer_start(&shutdown_timer, PWR_LED_CPU_DELAY_S5, K_FOREVER);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwr_led_shutdown_hook, HOOK_PRIO_DEFAULT);
 

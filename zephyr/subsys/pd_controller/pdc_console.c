@@ -792,6 +792,23 @@ static int cmd_pdc_sbu_mux_mode(const struct shell *sh, size_t argc,
 }
 #endif /* defined(CONFIG_USBC_PDC_DRIVEN_CCD) */
 
+static int cmd_set_ap_power_state(const struct shell *sh, size_t argc,
+				  char **argv)
+{
+	enum power_state state;
+
+	if (!strcmp(argv[1], "s0")) {
+		state = POWER_S0;
+	} else if (!strcmp(argv[1], "s5")) {
+		state = POWER_S5;
+	} else {
+		shell_error(sh, "Must be 's0' or 's5'");
+		return -EINVAL;
+	}
+
+	return pdc_power_mgmt_set_ap_power_state(state);
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -878,6 +895,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 			   "and optionally set trace port\n"
 			   "<Type-C port number>|all|on|none|off",
 			   cmd_pdc_trace, 1, 1),
+	SHELL_CMD_ARG(ap_state, NULL,
+		      "Notify the PDC of AP power state change\n"
+		      "Usage: pdc ap_state [s0|s5]",
+		      cmd_set_ap_power_state, 2, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
