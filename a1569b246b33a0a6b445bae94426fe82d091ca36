@@ -22,6 +22,30 @@
       },
       "revId": "a1569b246b33a0a6b445bae94426fe82d091ca36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e895c10a_afba73c2",
+        "filename": "common/charger.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-22T21:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc07e30f_b8232b88",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 10
+      },
+      "revId": "a1569b246b33a0a6b445bae94426fe82d091ca36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
