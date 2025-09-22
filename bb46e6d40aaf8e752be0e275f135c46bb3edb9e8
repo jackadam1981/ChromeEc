@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0c539b_baedd5fa",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-22T21:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b2da1f_3277c9fc",
+      "range": {
+        "startLine": 816,
+        "startChar": 6,
+        "endLine": 816,
+        "endChar": 19
+      },
+      "revId": "bb46e6d40aaf8e752be0e275f135c46bb3edb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9139bf8_0730b300",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-22T17:28:19Z",
       "side": 1,
       "message": "What about adding a new Kconfig that controls whether a charging minimum is needed?",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 64
+      },
+      "revId": "bb46e6d40aaf8e752be0e275f135c46bb3edb9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36107ba5_e5bdf001",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-22T21:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9139bf8_0730b300",
       "range": {
         "startLine": 825,
         "startChar": 0,
