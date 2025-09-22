@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab70b791_c1effb2e",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-22T18:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f90e8dda_e13443e8",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 6
+      },
+      "revId": "4b4f55581551aff0c6de50113a9ff0dfcd14693c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ccfef2f_ab28e590",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-09-22T17:53:00Z",
       "side": 1,
       "message": "This looks like a bug in the original code and is different than the logging change mentioned in the commit message. Can you split into a separate CL?",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 6
+      },
+      "revId": "4b4f55581551aff0c6de50113a9ff0dfcd14693c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9167452_1b8de1cb",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-22T18:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ccfef2f_ab28e590",
       "range": {
         "startLine": 602,
         "startChar": 0,
