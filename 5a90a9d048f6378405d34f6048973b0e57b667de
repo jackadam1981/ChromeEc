@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9a6d9ce_41e005d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-22T23:51:17Z",
+      "side": 1,
+      "message": "I think it\u0027s ok, but I\u0027d remove the last line \"This removes a redundant reset and improves driver\nefficiency for V2 hardware.\" since it doesn\u0027t really add anything.\n\n@chlin56@nuvoton.com can you review the current version and let us know if it\u0027s correct?",
+      "parentUuid": "794cf06a_826ccd74",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "5a90a9d048f6378405d34f6048973b0e57b667de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63b0a9b4_86e87feb",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 1
