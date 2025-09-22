@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebca4e0e_c2642316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-22T18:52:56Z",
+      "side": 1,
+      "message": "you can think of it as gemini-assisted. I reiterated a few times to write this message.",
+      "parentUuid": "d59f533c_bb33e798",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "5a90a9d048f6378405d34f6048973b0e57b667de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63b0a9b4_86e87feb",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-22T18:49:24Z",
       "side": 1,
       "message": "```suggestion\n  if (!IS_ENABLED(NPCX_SHI_V2)) {\n\t/* Reset shi\u0027s state machine for error recovery */\n\tshi_reset_prepare();\n  }\n```",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 6
+      },
+      "revId": "5a90a9d048f6378405d34f6048973b0e57b667de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edefac03_23add74c",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-22T18:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b0a9b4_86e87feb",
       "range": {
         "startLine": 586,
         "startChar": 0,
