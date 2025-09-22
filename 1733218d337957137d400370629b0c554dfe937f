@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f7fd3f_111908b8",
+        "filename": "include/charger.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T22:07:36Z",
+      "side": 1,
+      "message": "Some functions in this header are using correct doxygen formatting, so it\u0027s better to use doxygen formatting on new functions.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 59
+      },
+      "revId": "1733218d337957137d400370629b0c554dfe937f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bba0198_d683a71c",
+        "filename": "include/charger.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-22T22:07:36Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 24
+      },
+      "revId": "1733218d337957137d400370629b0c554dfe937f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
