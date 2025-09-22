@@ -120,6 +120,12 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	return 0;
 }
 
+/* TODO(b/398899644): implement fp_sensor_get_info_v2 in zephyr */
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size)
+{
+	return 0;
+}
+
 void fp_configure_detect(void)
 {
 	fingerprint_set_mode(fp_sensor_dev, FINGERPRINT_SENSOR_MODE_DETECT);
@@ -135,6 +141,12 @@ int fp_acquire_image(uint8_t *image_data, enum fp_capture_type capture_type)
 /* BUILD_ASSERTs to ensure enum values are the same. */
 BUILD_ASSERT((int)FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT ==
 	     (int)FP_CAPTURE_VENDOR_FORMAT);
+BUILD_ASSERT((int)FINGERPRINT_CAPTURE_TYPE_DEFECT_PXL_TEST ==
+	     (int)FP_CAPTURE_DEFECT_PXL_TEST);
+BUILD_ASSERT((int)FINGERPRINT_CAPTURE_TYPE_ABNORMAL_TEST ==
+	     (int)FP_CAPTURE_ABNORMAL_TEST);
+BUILD_ASSERT((int)FINGERPRINT_CAPTURE_TYPE_NOISE_TEST ==
+	     (int)FP_CAPTURE_NOISE_TEST);
 BUILD_ASSERT((int)FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE ==
 	     (int)FP_CAPTURE_SIMPLE_IMAGE);
 BUILD_ASSERT((int)FINGERPRINT_CAPTURE_TYPE_PATTERN0 ==

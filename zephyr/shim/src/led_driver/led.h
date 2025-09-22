@@ -53,6 +53,14 @@ enum led_transition {
 	LED_TRANSITION_COUNT
 };
 
+/*
+ * Board specific override that allows the board to define its own alt
+ * led policies at run time.
+ *
+ * @return>-int to represent the label of each board-led-alt-policy.
+ */
+__overridable int board_led_alt_policy(void);
+
 #define LED_ENUM(id, enum_name) DT_STRING_TOKEN(id, enum_name)
 #define LED_ENUM_WITH_COMMA(id, enum_name)           \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name), \
@@ -123,12 +131,12 @@ struct led_pins_node_t {
 
 struct pattern_color_node_t {
 	struct led_pins_node_t *led_color_node;
-	uint8_t duration;
+	int32_t duration_ms;
 };
 
 struct led_pattern_node_t {
 	uint8_t cur_color;
-	uint8_t ticks;
+	int32_t elapsed_ms;
 	enum led_transition transition;
 	struct pattern_color_node_t *pattern_color;
 	uint8_t pattern_len;
@@ -137,15 +145,17 @@ struct led_pattern_node_t {
 #define GET_COLOR(pattern_element, color_index) \
 	pattern_element.pattern_color[color_index].led_color
 #define GET_DURATION(pattern_element, color_index) \
-	pattern_element.pattern_color[color_index].duration
+	pattern_element.pattern_color[color_index].duration_ms
 
 /**
  * Set LED color using color enum
  *
- * @param color		LED Color to enable
- * @param led_id	LED ID to set the color for
+ * @param color			LED Color to enable
+ * @param led_id		LED ID to set the color for
+ * @param brightness	Brightness to set the color to
  */
-void led_set_color(enum led_color color, enum ec_led_id led_id);
+void led_set_color(enum led_color color, enum ec_led_id led_id,
+		   uint8_t brightness);
 
 /**
  * Set LED color using pattern node
@@ -165,7 +175,7 @@ void led_set_color_with_pattern(const struct led_pattern_node_t *led);
  * @param has_transitions		Whether the policy has a transition
  * pattern
  */
-void board_led_apply_color(bool has_transitions);
+void led_asynchronous_apply_color(bool has_transitions);
 
 #ifdef TEST_BUILD
 const struct led_pins_node_t *led_get_node(enum led_color color,

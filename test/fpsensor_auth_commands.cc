@@ -9,12 +9,12 @@
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
 #include "fpsensor/fpsensor_state.h"
-#include "fpsensor/fpsensor_template_state.h"
 #include "mock/fpsensor_state_mock.h"
 #include "mock/otpi_mock.h"
 #include "openssl/aes.h"
 #include "openssl/bn.h"
 #include "openssl/ec.h"
+#include "openssl/evp.h"
 #include "openssl/obj_mac.h"
 #include "sha256.h"
 #include "test_util.h"
@@ -29,48 +29,14 @@
 #include <span>
 #include <variant>
 
+/* Function used to cleanup session secrets and flags. */
+void reset_session(void);
+
+/* Challenge creation time. */
+extern timestamp_t challenge_ctime;
+
 namespace
 {
-
-enum ec_error_list
-check_seed_set_result(const enum ec_status rv, const uint32_t expected,
-		      const struct ec_response_fp_encryption_status *resp)
-{
-	const uint32_t actual = resp->status & FP_ENC_STATUS_SEED_SET;
-
-	if (rv != EC_RES_SUCCESS || expected != actual) {
-		ccprintf("%s:%s(): rv = %d, seed is set: %d\n", __FILE__,
-			 __func__, rv, actual);
-		return EC_ERROR_UNKNOWN;
-	}
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list test_set_fp_tpm_seed(void)
-{
-	enum ec_status rv;
-	struct ec_params_fp_seed params;
-	struct ec_response_fp_encryption_status resp = { 0 };
-
-	params.struct_version = FP_TEMPLATE_FORMAT_VERSION;
-	memcpy(params.seed, default_fake_tpm_seed,
-	       sizeof(default_fake_tpm_seed));
-
-	rv = test_send_host_command(EC_CMD_FP_SEED, 0, &params, sizeof(params),
-				    NULL, 0);
-	if (rv != EC_RES_SUCCESS) {
-		ccprintf("%s:%s(): rv = %d, set seed failed\n", __FILE__,
-			 __func__, rv);
-		return EC_ERROR_UNKNOWN;
-	}
-
-	/* Now seed should have been set. */
-	rv = test_send_host_command(EC_CMD_FP_ENC_STATUS, 0, NULL, 0, &resp,
-				    sizeof(resp));
-
-	return check_seed_set_result(rv, FP_ENC_STATUS_SEED_SET, &resp);
-}
 
 static enum ec_error_list get_fp_encryption_status(uint32_t *status)
 {
@@ -139,16 +105,6 @@ test_static enum ec_error_list test_fp_command_check_context_cleared(void)
 
 	fp_reset_and_clear_context();
 	TEST_EQ(check_context_cleared(), EC_SUCCESS, "%d");
-
-	enum ec_status rv;
-	struct ec_response_fp_generate_nonce nonce_response;
-
-	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				    &nonce_response, sizeof(nonce_response));
-
-	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
-
-	TEST_EQ(check_context_cleared(), EC_ERROR_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
 }
@@ -346,17 +302,133 @@ test_static enum ec_error_list test_fp_command_generate_nonce(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context(void)
+static enum ec_error_list
+initialize_pairing_key(std::span<uint8_t, FP_PAIRING_KEY_LEN> pairing_key)
 {
 	enum ec_status rv;
+	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
+	struct ec_params_fp_establish_pairing_key_wrap wrap_params;
+	ec_response_fp_establish_pairing_key_wrap wrap_response;
+	ec_params_fp_load_pairing_key load_params;
+
+	/* Ask FPMCU for its public key */
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
+				    NULL, 0, &keygen_response,
+				    sizeof(keygen_response));
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	/* Convert FPMCU public key to more useful form */
+	bssl::UniquePtr<EC_KEY> fpmcu_public_key =
+		create_ec_key_from_pubkey(keygen_response.pubkey);
+	TEST_NE(fpmcu_public_key.get(), nullptr, "%p");
+
+	/* Generate ECDH private key on our side */
+	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
+	TEST_NE(ecdh_key.get(), nullptr, "%p");
+
+	/* Get public key from that key */
+	std::optional<fp_elliptic_curve_public_key> pubkey =
+		create_pubkey_from_ec_key(*ecdh_key);
+	TEST_ASSERT(pubkey.has_value());
+
+	wrap_params.peers_pubkey = pubkey.value();
+
+	/* Generate Pairing Key on our side */
+	enum ec_error_list ret = generate_ecdh_shared_secret_without_kdf(
+		*ecdh_key, *fpmcu_public_key, pairing_key);
+	TEST_EQ(ret, EC_SUCCESS, "%d");
+
+	/*
+	 * Send our public key to the FPMCU. FPMCU will return encrypted
+	 * Pairing Key.
+	 */
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_WRAP, 0,
+				    &wrap_params, sizeof(wrap_params),
+				    &wrap_response, sizeof(wrap_response));
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	load_params.encrypted_pairing_key = wrap_response.encrypted_pairing_key;
+
+	/* Load Pairing Key to the FPMCU */
+	rv = test_send_host_command(EC_CMD_FP_LOAD_PAIRING_KEY, 0, &load_params,
+				    sizeof(load_params), nullptr, 0);
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
+static enum ec_error_list generate_valid_establish_session_request(
+	std::span<const uint8_t, FP_PAIRING_KEY_LEN> pairing_key,
+	std::span<const uint8_t, FP_CK_SESSION_NONCE_LEN> fpmcu_nonce,
+	std::span<const uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed,
+	struct ec_params_fp_establish_session *session_params)
+{
+	static constexpr uint8_t tpm_seed_aad[] = { 't', 'p', 'm', '_',
+						    's', 'e', 'e', 'd' };
+	constexpr auto aad = std::span{ tpm_seed_aad };
+
+	/* Get our session nonce */
+	std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
+	/* Obtain session key on our side */
+	std::array<uint8_t, SHA256_DIGEST_SIZE> session_key;
+	enum ec_error_list ret = generate_session_key(
+		fpmcu_nonce, session_nonce, pairing_key, session_key);
+	TEST_EQ(ret, EC_SUCCESS, "%d");
+
+	TEST_EQ(tpm_seed.size(), sizeof(session_params->enc_tpm_seed), "%zu");
+
+	std::array<uint8_t, FP_AES_KEY_NONCE_BYTES> nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+	TEST_EQ(nonce.size(), sizeof(session_params->nonce), "%zu");
+	memcpy(session_params->nonce, nonce.data(), FP_AES_KEY_NONCE_BYTES);
+
+	/* Encrypt tpm_seed using session key */
+	bssl::ScopedEVP_AEAD_CTX ctx;
+	int aead_ret = EVP_AEAD_CTX_init(ctx.get(), EVP_aead_aes_256_gcm(),
+					 session_key.data(), session_key.size(),
+					 sizeof(session_params->tag), nullptr);
+	TEST_EQ(aead_ret, 1, "%d");
+
+	size_t tag_bytes_written = 0;
+	aead_ret = EVP_AEAD_CTX_seal_scatter(
+		ctx.get(), session_params->enc_tpm_seed, session_params->tag,
+		&tag_bytes_written, sizeof(session_params->tag),
+		session_params->nonce, sizeof(session_params->nonce),
+		tpm_seed.data(), tpm_seed.size(), /* extra_in = */ nullptr,
+		/* extra_in_len = */ 0, aad.data(), aad.size());
+	TEST_EQ(aead_ret, 1, "%d");
+	TEST_EQ(tag_bytes_written, sizeof(session_params->tag), "%zu");
+
+	/* Copy our session nonce to the structure */
+	std::ranges::copy(session_nonce, session_params->peer_nonce);
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_establish_session(void)
+{
+	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params;
 	uint32_t status;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
+	TEST_BITS_CLEARED((int)status, FP_ENC_STATUS_SEED_SET);
 
 	global_context.templ_valid = 1;
 
@@ -366,32 +438,89 @@ test_static enum ec_error_list test_fp_command_nonce_context(void)
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_USER_ID_SET);
+	TEST_BITS_CLEARED((int)status, FP_ENC_STATUS_SEED_SET);
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_SET((int)status, FP_CONTEXT_USER_ID_SET);
+	TEST_BITS_SET((int)status, FP_ENC_STATUS_SEED_SET);
 
 	TEST_EQ(global_context.templ_valid, 1u, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_fail_different_pk(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				    &nonce_response, sizeof(nonce_response));
+
+	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	// Change Pairing Key to different one.
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
+	// Try to establish session using request prepared for previous
+	// Pairing Key.
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
+
+	// Expect failure in TPM Seed decryption.
+	TEST_EQ(rv, EC_RES_ERROR, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_establish_session_deny(void)
+{
+	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	struct ec_response_fp_generate_nonce nonce_response;
+	struct ec_params_fp_establish_session session_params;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	// Nonce context without generate nonce should fail.
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
@@ -402,8 +531,14 @@ test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
@@ -421,16 +556,21 @@ test_static enum ec_error_list test_fp_command_nonce_context_deny(void)
 }
 
 test_static enum ec_error_list
-test_fp_command_nonce_context_limit_without_generated_nonce(void)
+test_fp_command_establish_session_limit_without_generated_nonce(void)
 {
 	enum ec_status rv;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	/* Call nonce context without generated nonce should fail. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
@@ -438,16 +578,24 @@ test_fp_command_nonce_context_limit_without_generated_nonce(void)
 }
 
 test_static enum ec_error_list
-test_fp_command_nonce_context_limit_normal_context(void)
+test_fp_command_establish_session_limit_normal_context(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_params_fp_context_v1 ctx_params = {
 		.action = FP_CONTEXT_GET_RESULT,
 	};
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				    &nonce_response, sizeof(nonce_response));
@@ -461,49 +609,80 @@ test_fp_command_nonce_context_limit_normal_context(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
 	/* Call nonce context with generated nonce should success. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_1(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_limit_twice_1(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				    &nonce_response, sizeof(nonce_response));
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	/* Call nonce context twice should fail. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_2(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_limit_twice_2(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				    &nonce_response, sizeof(nonce_response));
@@ -515,25 +694,34 @@ test_static enum ec_error_list test_fp_command_nonce_context_limit_twice_2(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
 	/* Call nonce context twice should fail even we generated two nonces. */
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
+test_static enum ec_error_list
+test_fp_command_establish_session_load_pk_deny(void)
 {
 	enum ec_status rv;
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params;
+	struct ec_params_fp_establish_session session_params;
 	struct ec_response_fp_establish_pairing_key_keygen keygen_response;
 	struct ec_params_fp_establish_pairing_key_wrap wrap_params {
 		.peers_pubkey = {
@@ -551,11 +739,18 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 			},
 		},
 	};
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
 	ec_response_fp_establish_pairing_key_wrap wrap_response;
 	ec_params_fp_load_pairing_key load_params;
 
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_PAIRING_KEY_KEYGEN, 0,
 				    NULL, 0, &keygen_response,
@@ -587,8 +782,14 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
-	rv = test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0, &nonce_params,
-				    sizeof(nonce_params), NULL, 0);
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	rv = test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				    &session_params, sizeof(session_params),
+				    NULL, 0);
 
 	TEST_EQ(rv, EC_RES_SUCCESS, "%d");
 
@@ -601,184 +802,35 @@ test_static enum ec_error_list test_fp_command_nonce_context_load_pk_deny(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list
-test_fp_command_read_match_secret_with_pubkey_succeed(void)
-{
-	struct ec_response_fp_read_match_secret_with_pubkey response = {};
-	/* Create valid param with 0 <= fgr < 5 */
-	uint16_t matched_fgr = 1;
-	struct ec_params_fp_read_match_secret_with_pubkey params = {
-		.fgr = matched_fgr,
-	};
-
-	/*
-	 * Expected positive_match_secret same as in
-	 * test/fpsensor_crypto_with_mock.cc.
-	 */
-#ifdef CONFIG_OTP_KEY
-	static const uint8_t
-		expected_positive_match_secret_for_empty_user_id[] = {
-			0x2f, 0x78, 0x2d, 0xd2, 0x0a, 0xa9, 0xa2, 0x17,
-			0xc6, 0x4d, 0xa3, 0x1a, 0x02, 0xef, 0x4e, 0x2c,
-			0xf9, 0x23, 0xe1, 0x2d, 0x12, 0x3e, 0xa9, 0xe3,
-			0xc9, 0x16, 0x6f, 0x98, 0x39, 0x8b, 0x0e, 0xc5,
-		};
-#else
-	static const uint8_t
-		expected_positive_match_secret_for_empty_user_id[] = {
-			0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72,
-			0xd6, 0xdd, 0xa1, 0x4c, 0xb8, 0xa1, 0x76, 0x2b,
-			0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4, 0x74, 0x51,
-			0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
-		};
-#endif
-
-	/* Create positive secret match state with valid deadline value,
-	 * readable state, and correct template matched
-	 */
-	struct positive_match_secret_state test_state_1 = {
-		.template_matched = matched_fgr,
-		.readable = true,
-		.deadline = { .val = get_time().val + (5 * SECOND) },
-	};
-
-	bssl::UniquePtr<EC_KEY> ecdh_key = generate_elliptic_curve_key();
-
-	TEST_NE(ecdh_key.get(), nullptr, "%p");
-
-	std::optional<fp_elliptic_curve_public_key> pubkey =
-		create_pubkey_from_ec_key(*ecdh_key);
-
-	TEST_ASSERT(pubkey.has_value());
-
-	params.pubkey = pubkey.value();
-
-	global_context.positive_match_secret_state = test_state_1;
-	/* Set fp_positive_match_salt to the default fake positive match salt */
-	for (auto &fp_positive_match_salt :
-	     global_context.fp_positive_match_salt) {
-		std::ranges::copy(default_fake_fp_positive_match_salt,
-				  fp_positive_match_salt);
-	}
-
-	/* Initialize an empty user_id to compare positive_match_secret */
-	std::ranges::fill(global_context.user_id, 0);
-
-	TEST_ASSERT(fp_tpm_seed_is_set());
-	/* Test with the correct matched finger state and the default fake
-	 * fp_positive_match_salt
-	 */
-	TEST_ASSERT(
-		test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET_WITH_PUBKEY,
-				       0, &params, sizeof(params), &response,
-				       sizeof(response)) == EC_RES_SUCCESS);
-
-	bssl::UniquePtr<EC_KEY> resp_pubkey =
-		create_ec_key_from_pubkey(response.pubkey);
-
-	TEST_NE(resp_pubkey.get(), nullptr, "%p");
-
-	std::array<uint8_t, SHA256_DIGEST_SIZE> enc_key;
-
-	TEST_EQ(generate_ecdh_shared_secret(*ecdh_key, *resp_pubkey, enc_key),
-		EC_SUCCESS, "%d");
-
-	AES_KEY aes_key;
-	std::array<uint8_t, FP_CONTEXT_USERID_IV_LEN> aes_iv;
-	std::array<uint8_t, 16> ecount_buf = {};
-	unsigned int block_num = 0;
-
-	TEST_EQ(AES_set_encrypt_key(enc_key.data(), 256, &aes_key), 0, "%d");
-
-	std::ranges::copy(response.iv, aes_iv.begin());
-
-	/* The AES CTR uses the same function for encryption & decryption. */
-	AES_ctr128_encrypt(response.enc_secret, response.enc_secret,
-			   FP_CONTEXT_USERID_LEN, &aes_key, aes_iv.data(),
-			   ecount_buf.data(), &block_num);
-
-	TEST_ASSERT_ARRAY_EQ(
-		response.enc_secret,
-		expected_positive_match_secret_for_empty_user_id,
-		sizeof(expected_positive_match_secret_for_empty_user_id));
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list test_fp_command_template_encrypted(void)
-{
-	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
-	constexpr size_t metadata_size =
-		sizeof(ec_fp_template_encryption_metadata);
-	constexpr size_t template_size = sizeof(fp_template[0]);
-	constexpr size_t salt_size =
-		sizeof(global_context.fp_positive_match_salt[0]);
-	constexpr size_t params_size =
-		head_size + metadata_size + template_size + salt_size;
-
-	std::array<uint8_t, params_size> params = {};
-	std::span head(params.begin(), head_size);
-	std::span enc_metadata(head.end(), metadata_size);
-	std::span template_data(enc_metadata.end(), template_size);
-	std::span salt_data(template_data.end(), salt_size);
-
-	struct ec_params_fp_template head_data = {
-		.offset = 0,
-		.size = FP_TEMPLATE_COMMIT | (params_size - head_size),
-	};
-	static_assert(head_size == sizeof(head_data));
-	memcpy(head.data(), &head_data, head.size());
-
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
-		.struct_version = 4,
-		.nonce = { 1, 2, 3, 4, 5, 6, 7, 8 },
-		.encryption_salt = { 2, 2, 3, 4, 5, 6, 7, 8 },
-		.tag = { 3, 2, 3, 4, 5, 6, 7, 8 },
-	};
-	static_assert(metadata_size == sizeof(enc_metadata_data));
-	memcpy(enc_metadata.data(), &enc_metadata_data, enc_metadata.size());
-
-	std::ranges::fill(template_data, 0xc4);
-	std::ranges::fill(salt_data, 0xab);
-
-	fp_reset_and_clear_context();
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_TEMPLATE, 0, params.data(),
-				       params.size(), NULL, 0),
-		EC_RES_SUCCESS, "%d");
-	TEST_ASSERT(std::holds_alternative<fp_encrypted_template_state>(
-		global_context.template_states[0]));
-
-	return EC_SUCCESS;
-}
-
 test_static enum ec_error_list test_fp_command_template_decrypted(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
 	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
+	struct ec_params_fp_establish_session session_params = {};
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
+
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
 				       NULL, 0),
 		EC_RES_SUCCESS, "%d");
-
-	struct ec_params_fp_unlock_template unlock_params0{ .fgr_num = 0 };
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params0, sizeof(unlock_params0),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
 
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =
@@ -834,358 +886,13 @@ test_static enum ec_error_list test_fp_command_template_decrypted(void)
 		EC_RES_SUCCESS, "%d");
 
 	uint32_t status;
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_SET((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
 
 	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
 	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list test_fp_command_unlock_template(void)
-{
-	fp_reset_and_clear_context();
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	struct ec_params_fp_unlock_template unlock_params{ .fgr_num = 1 };
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_ACCESS_DENIED, "%d");
-
-	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				       &nonce_response, sizeof(nonce_response)),
-		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
-	constexpr size_t metadata_size =
-		sizeof(ec_fp_template_encryption_metadata);
-	constexpr size_t template_size = sizeof(fp_template[0]);
-	constexpr size_t salt_size =
-		sizeof(global_context.fp_positive_match_salt[0]);
-	constexpr size_t params_size =
-		head_size + metadata_size + template_size + salt_size;
-
-	std::array<uint8_t, params_size> params = {};
-	std::span head(params.begin(), head_size);
-	std::span enc_metadata(head.end(), metadata_size);
-	std::span template_data(enc_metadata.end(), template_size);
-	std::span salt_data(template_data.end(), salt_size);
-
-	struct ec_params_fp_template head_data = {
-		.offset = 0,
-		.size = FP_TEMPLATE_COMMIT | (params_size - head_size),
-	};
-	static_assert(head_size == sizeof(head_data));
-	memcpy(head.data(), &head_data, head.size());
-
-	std::ranges::fill(template_data, 0xc4);
-	std::ranges::fill(salt_data, 0xab);
-
-	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
-			      { template_data.data(),
-				template_data.size() + salt_data.size() });
-
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
-		.struct_version = 4
-	};
-
-	static_assert(sizeof(info.nonce) == sizeof(enc_metadata_data.nonce));
-	std::ranges::copy(info.nonce, enc_metadata_data.nonce);
-
-	static_assert(sizeof(info.encryption_salt) ==
-		      sizeof(enc_metadata_data.encryption_salt));
-	std::ranges::copy(info.encryption_salt,
-			  enc_metadata_data.encryption_salt);
-
-	static_assert(sizeof(info.tag) == sizeof(enc_metadata_data.tag));
-	std::ranges::copy(info.tag, enc_metadata_data.tag);
-
-	static_assert(metadata_size == sizeof(enc_metadata_data));
-	memcpy(enc_metadata.data(), &enc_metadata_data, enc_metadata.size());
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_TEMPLATE, 0, params.data(),
-				       params.size(), NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	uint32_t status;
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_SET((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	/* Lock the template manually. */
-	global_context.fp_encryption_status &=
-		~FP_CONTEXT_TEMPLATE_UNLOCKED_SET;
-
-	struct ec_params_fp_unlock_template unlock2_params{ .fgr_num = 2 };
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock2_params, sizeof(unlock2_params),
-				       NULL, 0),
-		EC_RES_INVALID_PARAM, "%d");
-
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	struct ec_params_fp_unlock_template unlock_fail_params{
-		.fgr_num = 0xffff
-	};
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_fail_params,
-				       sizeof(unlock_fail_params), NULL, 0),
-		EC_RES_OVERFLOW, "%d");
-
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_SET((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				       &nonce_response, sizeof(nonce_response)),
-		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_ACCESS_DENIED, "%d");
-
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	global_context.fp_encryption_status |=
-		FP_CONTEXT_STATUS_MATCH_PROCESSED_SET;
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_ACCESS_DENIED, "%d");
-
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_CLEARED((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list
-test_fp_command_unlock_template_pre_encrypted_fail(void)
-{
-	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
-	constexpr size_t metadata_size =
-		sizeof(ec_fp_template_encryption_metadata);
-	constexpr size_t template_size = sizeof(fp_template[0]);
-	constexpr size_t salt_size =
-		sizeof(global_context.fp_positive_match_salt[0]);
-	constexpr size_t params_size =
-		head_size + metadata_size + template_size + salt_size;
-
-	std::array<uint8_t, params_size> params = {};
-	std::span head(params.begin(), head_size);
-	std::span enc_metadata(head.end(), metadata_size);
-	std::span template_data(enc_metadata.end(), template_size);
-	std::span salt_data(template_data.end(), salt_size);
-
-	struct ec_params_fp_template head_data = {
-		.offset = 0,
-		.size = FP_TEMPLATE_COMMIT | (params_size - head_size),
-	};
-	static_assert(head_size == sizeof(head_data));
-	memcpy(head.data(), &head_data, head.size());
-
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
-		.struct_version = 4,
-		.nonce = { 1, 2, 3, 4, 5, 6, 7, 8 },
-		.encryption_salt = { 2, 2, 3, 4, 5, 6, 7, 8 },
-		.tag = { 3, 2, 3, 4, 5, 6, 7, 8 },
-	};
-	static_assert(metadata_size == sizeof(enc_metadata_data));
-	memcpy(enc_metadata.data(), &enc_metadata_data, enc_metadata.size());
-
-	std::ranges::fill(template_data, 0xc4);
-	std::ranges::fill(salt_data, 0xab);
-
-	fp_reset_and_clear_context();
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_TEMPLATE, 0, params.data(),
-				       params.size(), NULL, 0),
-		EC_RES_SUCCESS, "%d");
-	TEST_ASSERT(std::holds_alternative<fp_encrypted_template_state>(
-		global_context.template_states[0]));
-
-	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				       &nonce_response, sizeof(nonce_response)),
-		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	struct ec_params_fp_unlock_template unlock_params{ .fgr_num = 1 };
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_UNAVAILABLE, "%d");
-
-	return EC_SUCCESS;
-}
-
-test_static enum ec_error_list
-test_fp_command_unlock_template_pre_encrypted(void)
-{
-	fp_reset_and_clear_context();
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				       &nonce_response, sizeof(nonce_response)),
-		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
-	constexpr size_t metadata_size =
-		sizeof(ec_fp_template_encryption_metadata);
-	constexpr size_t template_size = sizeof(fp_template[0]);
-	constexpr size_t salt_size =
-		sizeof(global_context.fp_positive_match_salt[0]);
-	constexpr size_t params_size =
-		head_size + metadata_size + template_size + salt_size;
-
-	std::array<uint8_t, params_size> params = {};
-	std::span head(params.begin(), head_size);
-	std::span enc_metadata(head.end(), metadata_size);
-	std::span template_data(enc_metadata.end(), template_size);
-	std::span salt_data(template_data.end(), salt_size);
-
-	struct ec_params_fp_template head_data = {
-		.offset = 0,
-		.size = FP_TEMPLATE_COMMIT | (params_size - head_size),
-	};
-	static_assert(head_size == sizeof(head_data));
-	memcpy(head.data(), &head_data, head.size());
-
-	std::ranges::fill(template_data, 0xc4);
-	std::ranges::fill(salt_data, 0xab);
-
-	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
-			      { template_data.data(),
-				template_data.size() + salt_data.size() });
-
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
-		.struct_version = 4
-	};
-
-	static_assert(sizeof(info.nonce) == sizeof(enc_metadata_data.nonce));
-	std::ranges::copy(info.nonce, enc_metadata_data.nonce);
-
-	static_assert(sizeof(info.encryption_salt) ==
-		      sizeof(enc_metadata_data.encryption_salt));
-	std::ranges::copy(info.encryption_salt,
-			  enc_metadata_data.encryption_salt);
-
-	static_assert(sizeof(info.tag) == sizeof(enc_metadata_data.tag));
-	std::ranges::copy(info.tag, enc_metadata_data.tag);
-
-	static_assert(metadata_size == sizeof(enc_metadata_data));
-	memcpy(enc_metadata.data(), &enc_metadata_data, enc_metadata.size());
-
-	std::array<uint8_t, FP_CONTEXT_USERID_BYTES> backup_user_id;
-	std::ranges::copy(global_context.user_id, backup_user_id.begin());
-
-	fp_reset_and_clear_context();
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_TEMPLATE, 0, params.data(),
-				       params.size(), NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<fp_encrypted_template_state>(
-		global_context.template_states[0]));
-
-	struct ec_params_fp_unlock_template unlock_params{ .fgr_num = 1 };
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				       &nonce_response, sizeof(nonce_response)),
-		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	std::ranges::copy(backup_user_id, global_context.user_id.begin());
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_UNLOCK_TEMPLATE, 0,
-				       &unlock_params, sizeof(unlock_params),
-				       NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	uint32_t status;
-	TEST_ASSERT(std::holds_alternative<fp_decrypted_template_state>(
-		global_context.template_states[0]));
-	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
-	TEST_BITS_SET((int)status, FP_CONTEXT_TEMPLATE_UNLOCKED_SET);
 
 	return EC_SUCCESS;
 }
@@ -1193,10 +900,33 @@ test_fp_command_unlock_template_pre_encrypted(void)
 // Test that legacy format (v3) isn't accepted by commit function.
 test_static enum ec_error_list test_fp_command_commit_v3(void)
 {
-	fp_reset_and_clear_context();
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
 
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
+	struct ec_response_fp_generate_nonce nonce_response;
+	struct ec_params_fp_establish_session session_params = {};
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				       &nonce_response, sizeof(nonce_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
+				       NULL, 0),
+		EC_RES_SUCCESS, "%d");
 
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =
@@ -1251,7 +981,33 @@ test_static enum ec_error_list test_fp_command_commit_v3(void)
 // Test that trivial positive match salt will be detected into an error.
 test_static enum ec_error_list test_fp_command_commit_trivial_salt(void)
 {
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
+	std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
 	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
+
+	struct ec_response_fp_generate_nonce nonce_response;
+	struct ec_params_fp_establish_session session_params = {};
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+				       &nonce_response, sizeof(nonce_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
+				       NULL, 0),
+		EC_RES_SUCCESS, "%d");
 
 	// Templates will only be decrypted in active context.
 	struct ec_params_fp_context_v1 ctx_params = {
@@ -1261,9 +1017,6 @@ test_static enum ec_error_list test_fp_command_commit_trivial_salt(void)
 	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &ctx_params,
 				       sizeof(ctx_params), NULL, 0),
 		EC_RES_SUCCESS, "%d");
-
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
 
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =
@@ -1333,9 +1086,6 @@ test_static enum ec_error_list test_fp_command_commit_without_seed(void)
 				       sizeof(ctx_params), NULL, 0),
 		EC_RES_SUCCESS, "%d");
 
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
 	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
 	constexpr size_t metadata_size =
 		sizeof(ec_fp_template_encryption_metadata);
@@ -1388,134 +1138,868 @@ test_static enum ec_error_list test_fp_command_commit_without_seed(void)
 	return EC_SUCCESS;
 }
 
-test_static enum ec_error_list
-test_fp_command_migrate_template_to_nonce_context(void)
+static enum ec_error_list
+establish_session(std::span<uint8_t, SHA256_DIGEST_LENGTH> session_key)
 {
-	fp_reset_and_clear_context();
-
-	/* Prepare an uncommitted template. */
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
-
-	constexpr size_t head_size = offsetof(ec_params_fp_template, data);
-	constexpr size_t metadata_size =
-		sizeof(ec_fp_template_encryption_metadata);
-	constexpr size_t template_size = sizeof(fp_template[0]);
-	constexpr size_t salt_size =
-		sizeof(global_context.fp_positive_match_salt[0]);
-	constexpr size_t params_size =
-		head_size + metadata_size + template_size + salt_size;
-
-	std::array<uint8_t, params_size> params = {};
-	std::span head(params.begin(), head_size);
-	std::span enc_metadata(head.end(), metadata_size);
-	std::span template_data(enc_metadata.end(), template_size);
-	std::span salt_data(template_data.end(), salt_size);
-
-	struct ec_params_fp_template head_data = {
-		.offset = 0,
-		.size = (params_size - head_size),
-	};
-	static_assert(head_size == sizeof(head_data));
-	memcpy(head.data(), &head_data, head.size());
-
-	std::ranges::fill(template_data, 0xc4);
-	std::ranges::fill(salt_data, 0xab);
-
-	struct fp_auth_command_encryption_metadata info;
-	encrypt_data_in_place(1, info, global_context.user_id,
-			      global_context.tpm_seed,
-			      { template_data.data(),
-				template_data.size() + salt_data.size() });
-
-	struct ec_fp_template_encryption_metadata enc_metadata_data{
-		.struct_version = 4
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key{};
+	constexpr std::array<uint8_t, FP_CONTEXT_TPM_BYTES> tpm_seed = {
+		1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
 	};
 
-	static_assert(sizeof(info.nonce) == sizeof(enc_metadata_data.nonce));
-	std::ranges::copy(info.nonce, enc_metadata_data.nonce);
+	TEST_EQ(initialize_pairing_key(pairing_key), EC_SUCCESS, "%d");
 
-	static_assert(sizeof(info.encryption_salt) ==
-		      sizeof(enc_metadata_data.encryption_salt));
-	std::ranges::copy(info.encryption_salt,
-			  enc_metadata_data.encryption_salt);
+	struct ec_response_fp_generate_nonce nonce_response{};
+	struct ec_params_fp_establish_session session_params{};
 
-	static_assert(sizeof(info.tag) == sizeof(enc_metadata_data.tag));
-	std::ranges::copy(info.tag, enc_metadata_data.tag);
-
-	static_assert(metadata_size == sizeof(enc_metadata_data));
-	memcpy(enc_metadata.data(), &enc_metadata_data, enc_metadata.size());
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_TEMPLATE, 0, params.data(),
-				       params.size(), NULL, 0),
-		EC_RES_SUCCESS, "%d");
-
-	struct ec_params_fp_migrate_template_to_nonce_context
-		migrate_params = {};
-
-	/* Migrate command should fail outside a nonce session. */
-	TEST_EQ(test_send_host_command(
-			EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT, 0,
-			&migrate_params, sizeof(migrate_params), NULL, 0),
-		EC_RES_ACCESS_DENIED, "%d");
-
-	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, nullptr, 0,
 				       &nonce_response, sizeof(nonce_response)),
 		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
+
+	/*
+	 * This is the same nonce as the one hardcoded in
+	 * generate_valid_establish_session_request.
+	 */
+	constexpr std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> peer_nonce = {
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5,
+		6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1,
+	};
+
+	TEST_EQ(generate_session_key(nonce_response.nonce, peer_nonce,
+				     pairing_key, session_key),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(generate_valid_establish_session_request(
+			pairing_key, nonce_response.nonce, tpm_seed,
+			&session_params),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_ESTABLISH_SESSION, 0,
+				       &session_params, sizeof(session_params),
+				       nullptr, 0),
 		EC_RES_SUCCESS, "%d");
 
-	/* Now migrate command should succeed. */
-	TEST_EQ(test_send_host_command(
-			EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT, 0,
-			&migrate_params, sizeof(migrate_params), NULL, 0),
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_command_generate_challenge(void)
+{
+	struct ec_response_fp_generate_challenge challenge_response{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	uint32_t status;
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_CLEARED((int)status, FP_AUTH_CHALLENGE_SET);
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
 		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_SET((int)status, FP_AUTH_CHALLENGE_SET);
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_command_generate_challenge_fail_no_session(void)
+{
+	struct ec_response_fp_generate_challenge challenge_response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_validate_request(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	uint32_t status;
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_SET((int)status, FP_AUTH_CHALLENGE_SET);
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation,
+					  challenge_response.challenge, mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac), EC_SUCCESS, "%d");
+
+	TEST_EQ(get_fp_encryption_status(&status), EC_SUCCESS, "%d");
+	TEST_BITS_CLEARED((int)status, FP_AUTH_CHALLENGE_SET);
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_validate_request_fail_no_challenge(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac = { 0 };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac),
+		EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_validate_request_fail_invalid_signature(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac = { 0 };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac),
+		EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_validate_request_fail_timeout(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	challenge_ctime.val -= 6 * SECOND;
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation,
+					  challenge_response.challenge, mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(validate_request(user_id, operation, mac), EC_ERROR_TIMEOUT,
+		"%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_message(void)
+{
+	constexpr std::array<const uint8_t, FP_CHALLENGE_SIZE> challenge = {
+		1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+		8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5,
+	};
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 5> sender = { 'f', 'p', 'm', 'c',
+							  'u' };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> expected_mac{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	TEST_EQ(sign_message(user_id, operation, challenge, mac), EC_SUCCESS,
+		"%d");
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation, challenge, expected_mac),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(mac, expected_mac, mac.size());
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_message_fail_no_session(void)
+{
+	constexpr std::array<const uint8_t, FP_CHALLENGE_SIZE> challenge = { 0 };
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> mac{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(sign_message(user_id, operation, challenge, mac),
+		EC_ERROR_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_match_correct_signature(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 4> operation = { 'a', 'u', 't',
+							     'h' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_mode_v1 params = { .mode = FP_MODE_MATCH };
+	struct ec_response_fp_mode response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(
+			session_key, user_id, sender, operation,
+			challenge_response.challenge, params.mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, FP_MODE_MATCH, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_disable_match_no_signature(void)
+{
+	struct ec_params_fp_mode_v1 params = { .mode = 0 };
+	struct ec_response_fp_mode response{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	global_context.sensor_mode = FP_MODE_MATCH;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, 0u, "%x");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_match_invalid_signature(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_mode_v1 params = { .mode = FP_MODE_MATCH };
+	struct ec_response_fp_mode response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_enroll_correct_signature(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_mode_v1 params = { .mode = FP_MODE_ENROLL_SESSION |
+						       FP_MODE_ENROLL_IMAGE };
+	struct ec_response_fp_mode response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(
+			session_key, user_id, sender, operation,
+			challenge_response.challenge, params.mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE,
+		"%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_disable_enroll_no_signature(void)
+{
+	struct ec_params_fp_mode_v1 params = { .mode = 0 };
+	struct ec_response_fp_mode response{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	global_context.sensor_mode = FP_MODE_ENROLL_SESSION;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, 0u, "%x");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_enroll_invalid_signature(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_mode_v1 params = { .mode = FP_MODE_ENROLL_SESSION |
+						       FP_MODE_ENROLL_IMAGE };
+	struct ec_response_fp_mode response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_enroll_session_transitions(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 6> operation = { 'e', 'n', 'r',
+							     'o', 'l', 'l' };
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_mode_v1 params = { .mode = FP_MODE_ENROLL_SESSION |
+						       FP_MODE_ENROLL_IMAGE };
+	struct ec_response_fp_mode response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(
+			session_key, user_id, sender, operation,
+			challenge_response.challenge, params.mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE,
+		"%d");
+
+	params.mode = FP_MODE_ENROLL_SESSION | FP_MODE_FINGER_UP;
+	memset(params.mac, 0, sizeof(params.mac));
+	global_context.sensor_mode = FP_MODE_ENROLL_SESSION;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, FP_MODE_ENROLL_SESSION | FP_MODE_FINGER_UP,
+		"%d");
+
+	params.mode = FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE;
+	global_context.sensor_mode = FP_MODE_ENROLL_SESSION;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 1, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(response.mode, FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE,
+		"%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_mode_match_fail_version_0(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_mode params = { .mode = FP_MODE_MATCH };
+	struct ec_response_fp_mode response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_MODE, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_confirm_template_success(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 13> operation = {
+		'e', 'n', 'r', 'o', 'l', 'l', '_', 'f', 'i', 'n', 'i', 's', 'h'
+	};
+	constexpr std::array<const uint8_t, 12> sender = { 'f', 'i', 'n', 'g',
+							   'e', 'r', '_', 'g',
+							   'u', 'a', 'r', 'd' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_confirm_template params = { 0 };
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.templ_valid = 1;
+	global_context.template_newly_enrolled = global_context.templ_valid;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(
+			session_key, user_id, sender, operation,
+			challenge_response.challenge, params.mac),
+		EC_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONFIRM_TEMPLATE, 0, &params,
+				       sizeof(params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(global_context.templ_valid, 2, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list
+test_fp_confirm_template_fail_invalid_signature(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_response_fp_generate_challenge challenge_response{};
+	struct ec_params_fp_confirm_template params = { 0 };
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.templ_valid = 1;
+	global_context.template_newly_enrolled = global_context.templ_valid;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_CHALLENGE, 0, nullptr,
+				       0, &challenge_response,
+				       sizeof(challenge_response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONFIRM_TEMPLATE, 0, &params,
+				       sizeof(params), nullptr, 0),
+		EC_RES_ACCESS_DENIED, "%d");
+
 	TEST_EQ(global_context.templ_valid, 1, "%d");
 
 	return EC_SUCCESS;
 }
 
 test_static enum ec_error_list
-test_fp_command_migrate_template_to_nonce_context_failure(void)
+test_fp_confirm_template_fail_state_mismatch(void)
 {
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_confirm_template params = { 0 };
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.templ_valid = 1;
+	global_context.template_newly_enrolled = 0;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONFIRM_TEMPLATE, 0, &params,
+				       sizeof(params), nullptr, 0),
+		EC_RES_ERROR, "%d");
+
+	TEST_EQ(global_context.templ_valid, 1, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_match_success(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 4> operation = { 'a', 'u', 't',
+							     'h' };
+	constexpr std::array<const uint8_t, 5> sender = { 'f', 'p', 'm', 'c',
+							  'u' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_sign_match params = {
+		.challenge = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+			       8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5 },
+	};
+	struct ec_response_fp_sign_match response{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> expected_signature{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.positive_match_secret_state.template_matched = 0;
+	global_context.positive_match_secret_state.readable = true;
+	global_context.positive_match_secret_state.deadline.val =
+		get_time().val + 5 * SECOND;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_SIGN_MATCH, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_SUCCESS, "%d");
+
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation, params.challenge,
+					  expected_signature),
+		EC_SUCCESS, "%d");
+
+	TEST_ASSERT_ARRAY_EQ(response.signature, expected_signature,
+			     expected_signature.size());
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_match_fail_no_match(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_sign_match params = { 0 };
+	struct ec_response_fp_sign_match response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.positive_match_secret_state.template_matched =
+		FP_NO_SUCH_TEMPLATE;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_SIGN_MATCH, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_match_fail_deadline_passed(void)
+{
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_sign_match params = { 0 };
+	struct ec_response_fp_sign_match response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+
+	struct ec_params_fp_context_v1 context_params = {
+		.action = FP_CONTEXT_GET_RESULT,
+		.userid = { 10, 0, 0, 0, 0, 0, 0, 0 },
+	};
+	TEST_EQ(test_send_host_command(EC_CMD_FP_CONTEXT, 1, &context_params,
+				       sizeof(context_params), nullptr, 0),
+		EC_RES_SUCCESS, "%d");
+
+	global_context.positive_match_secret_state.template_matched = 0;
+	global_context.positive_match_secret_state.readable = true;
+	global_context.positive_match_secret_state.deadline.val =
+		get_time().val - 1;
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_SIGN_MATCH, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_TIMEOUT, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_sign_match_fail_no_session(void)
+{
+	struct ec_params_fp_sign_match params = { 0 };
+	struct ec_response_fp_sign_match response{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(test_send_host_command(EC_CMD_FP_SIGN_MATCH, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
+		EC_RES_ACCESS_DENIED, "%d");
+
+	return EC_SUCCESS;
+}
+
+test_static enum ec_error_list test_fp_reset_does_not_clear_session(void)
+{
+	constexpr std::array<const uint8_t, 4> user_id = { 0x0a, 0x00, 0x00,
+							   0x00 };
+	constexpr std::array<const uint8_t, 4> operation = { 'a', 'u', 't',
+							     'h' };
+	constexpr std::array<const uint8_t, 5> sender = { 'f', 'p', 'm', 'c',
+							  'u' };
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> session_key{};
+	struct ec_params_fp_sign_match params = {
+		.challenge = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+			       8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5 },
+	};
+	struct ec_response_fp_sign_match response{};
+	std::array<uint8_t, SHA256_DIGEST_LENGTH> expected_signature{};
+
+	fp_reset_and_clear_context();
+	reset_session();
+
+	TEST_EQ(establish_session(session_key), EC_SUCCESS, "%d");
+	TEST_BITS_SET((int)global_context.fp_encryption_status,
+		      FP_CONTEXT_STATUS_SESSION_ESTABLISHED);
+
 	fp_reset_and_clear_context();
 
-	/* Prepare an uncommitted template. */
-	TEST_ASSERT(std::holds_alternative<std::monostate>(
-		global_context.template_states[0]));
+	TEST_BITS_SET((int)global_context.fp_encryption_status,
+		      FP_CONTEXT_STATUS_SESSION_ESTABLISHED);
 
-	struct ec_params_fp_migrate_template_to_nonce_context
-		migrate_params = {};
+	std::ranges::copy(user_id, global_context.user_id.begin());
+	global_context.positive_match_secret_state.template_matched = 0;
+	global_context.positive_match_secret_state.readable = true;
+	global_context.positive_match_secret_state.deadline.val =
+		get_time().val + 5 * SECOND;
 
-	struct ec_response_fp_generate_nonce nonce_response;
-	struct ec_params_fp_nonce_context nonce_params = {};
-
-	TEST_EQ(test_send_host_command(EC_CMD_FP_GENERATE_NONCE, 0, NULL, 0,
-				       &nonce_response, sizeof(nonce_response)),
-		EC_RES_SUCCESS, "%d");
-	TEST_EQ(test_send_host_command(EC_CMD_FP_NONCE_CONTEXT, 0,
-				       &nonce_params, sizeof(nonce_params),
-				       NULL, 0),
+	TEST_EQ(test_send_host_command(EC_CMD_FP_SIGN_MATCH, 0, &params,
+				       sizeof(params), &response,
+				       sizeof(response)),
 		EC_RES_SUCCESS, "%d");
 
-	/* Migrate command should fail without loaded template. */
-	TEST_EQ(test_send_host_command(
-			EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT, 0,
-			&migrate_params, sizeof(migrate_params), NULL, 0),
-		EC_RES_INVALID_PARAM, "%d");
+	TEST_EQ(compute_message_signature(session_key, user_id, sender,
+					  operation, params.challenge,
+					  expected_signature),
+		EC_SUCCESS, "%d");
 
-	global_context.templ_valid = 5;
-	/* Migrate command should fail without overflow. */
-	TEST_EQ(test_send_host_command(
-			EC_CMD_FP_MIGRATE_TEMPLATE_TO_NONCE_CONTEXT, 0,
-			&migrate_params, sizeof(migrate_params), NULL, 0),
-		EC_RES_OVERFLOW, "%d");
-	global_context.templ_valid = 0;
+	TEST_ASSERT_ARRAY_EQ(response.signature, expected_signature,
+			     expected_signature.size());
+
 	return EC_SUCCESS;
 }
 
@@ -1537,28 +2021,43 @@ void run_test(int argc, const char **argv)
 
 	RUN_TEST(test_fp_command_establish_pairing_key_fail);
 	RUN_TEST(test_fp_command_establish_pairing_key_keygen);
-
-	// All tests after this require the TPM seed to be set.
-	RUN_TEST(test_set_fp_tpm_seed);
-
 	RUN_TEST(test_fp_command_establish_and_load_pairing_key);
 	RUN_TEST(test_fp_command_load_pairing_key_fail);
-	RUN_TEST(test_fp_command_nonce_context);
-	RUN_TEST(test_fp_command_nonce_context_deny);
-	RUN_TEST(test_fp_command_nonce_context_limit_without_generated_nonce);
-	RUN_TEST(test_fp_command_nonce_context_limit_normal_context);
-	RUN_TEST(test_fp_command_nonce_context_limit_twice_1);
-	RUN_TEST(test_fp_command_nonce_context_limit_twice_2);
-	RUN_TEST(test_fp_command_nonce_context_load_pk_deny);
-	RUN_TEST(test_fp_command_read_match_secret_with_pubkey_succeed);
-	RUN_TEST(test_fp_command_template_encrypted);
+	RUN_TEST(test_fp_command_establish_session);
+	RUN_TEST(test_fp_command_establish_session_fail_different_pk);
+	RUN_TEST(test_fp_command_establish_session_deny);
+	RUN_TEST(
+		test_fp_command_establish_session_limit_without_generated_nonce);
+	RUN_TEST(test_fp_command_establish_session_limit_normal_context);
+	RUN_TEST(test_fp_command_establish_session_limit_twice_1);
+	RUN_TEST(test_fp_command_establish_session_limit_twice_2);
+	RUN_TEST(test_fp_command_establish_session_load_pk_deny);
 	RUN_TEST(test_fp_command_template_decrypted);
-	RUN_TEST(test_fp_command_unlock_template);
-	RUN_TEST(test_fp_command_unlock_template_pre_encrypted_fail);
-	RUN_TEST(test_fp_command_unlock_template_pre_encrypted);
 	RUN_TEST(test_fp_command_commit_v3);
 	RUN_TEST(test_fp_command_commit_trivial_salt);
-	RUN_TEST(test_fp_command_migrate_template_to_nonce_context);
-	RUN_TEST(test_fp_command_migrate_template_to_nonce_context_failure);
+	RUN_TEST(test_fp_command_generate_challenge);
+	RUN_TEST(test_fp_command_generate_challenge_fail_no_session);
+	RUN_TEST(test_fp_validate_request);
+	RUN_TEST(test_fp_validate_request_fail_no_challenge);
+	RUN_TEST(test_fp_validate_request_fail_invalid_signature);
+	RUN_TEST(test_fp_validate_request_fail_timeout);
+	RUN_TEST(test_fp_sign_message);
+	RUN_TEST(test_fp_sign_message_fail_no_session);
+	RUN_TEST(test_fp_mode_match_correct_signature);
+	RUN_TEST(test_fp_mode_disable_match_no_signature);
+	RUN_TEST(test_fp_mode_match_invalid_signature);
+	RUN_TEST(test_fp_mode_match_fail_version_0);
+	RUN_TEST(test_fp_mode_enroll_correct_signature);
+	RUN_TEST(test_fp_mode_disable_enroll_no_signature);
+	RUN_TEST(test_fp_mode_enroll_invalid_signature);
+	RUN_TEST(test_fp_mode_enroll_session_transitions);
+	RUN_TEST(test_fp_confirm_template_success);
+	RUN_TEST(test_fp_confirm_template_fail_invalid_signature);
+	RUN_TEST(test_fp_confirm_template_fail_state_mismatch);
+	RUN_TEST(test_fp_sign_match_success);
+	RUN_TEST(test_fp_sign_match_fail_no_match);
+	RUN_TEST(test_fp_sign_match_fail_deadline_passed);
+	RUN_TEST(test_fp_sign_match_fail_no_session);
+	RUN_TEST(test_fp_reset_does_not_clear_session);
 	test_print_result();
 }

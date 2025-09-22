@@ -12,6 +12,7 @@
 #define DT_DRV_COMPAT named_usbc_port
 
 #include "battery.h"
+#include "battery_smart.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "drivers/ucsi_v3.h"
@@ -212,6 +213,10 @@ enum pdc_cmd_t {
 	CMD_PDC_SET_AP_POWER_STATE,
 	/** CMD_PDC_SET_BBR_CTS */
 	CMD_PDC_SET_BBR_CTS,
+	/** CMD_PDC_SET_BATTERY_STATUS */
+	CMD_PDC_SET_BATTERY_STATUS,
+	/** CMD_PDC_SET_BATTERY_CAPABILITY*/
+	CMD_PDC_SET_BATTERY_CAPABILITY,
 	/** CMD_PDC_COUNT */
 	CMD_PDC_COUNT
 };
@@ -276,8 +281,6 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_SET_FRS,
 	/** SNK_ATTACHED_GET_PDOS */
 	SNK_ATTACHED_GET_PDOS,
-	/** SNK_ATTACHED_READ_POWER_LEVEL */
-	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_GET_VDO */
 	SNK_ATTACHED_GET_VDO,
 	/** SNK_ATTACHED_SYNC_CHARGE_MGR */
@@ -290,6 +293,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_GET_SINK_PDO,
 	/** SNK_ATTACHED_GET_CABLE_PROPERTY */
 	SNK_ATTACHED_GET_CABLE_PROPERTY,
+	/** SNK_ATTACHED_READ_POWER_LEVEL */
+	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_RUN */
 	SNK_ATTACHED_RUN,
 };
@@ -439,6 +444,8 @@ test_export_static const char *const pdc_cmd_names[] = {
 	[CMD_PDC_SET_SBU_MUX_MODE] = "PDC_SET_SBU_MUX_MODE",
 	[CMD_PDC_SET_AP_POWER_STATE] = "PDC_SET_AP_POWER_STATE",
 	[CMD_PDC_SET_BBR_CTS] = "PDC_SET_BBR_CTS",
+	[CMD_PDC_SET_BATTERY_STATUS] = "PDC_SET_BATTERY_STATUS",
+	[CMD_PDC_SET_BATTERY_CAPABILITY] = "PDC_SET_BATTERY_CAPABILITY",
 };
 const int pdc_cmd_types = CMD_PDC_COUNT;
 
@@ -539,6 +546,10 @@ enum policy_snk_attached_t {
 	SNK_POLICY_UPDATE_FRS,
 	/** TypeC sink only */
 	SNK_POLICY_UPDATE_TYPEC_CURRENT,
+	/** Update battery status */
+	SNK_POLICY_UPDATE_BATTERY_STATUS,
+	/** Update battery capability */
+	SNK_POLICY_UPDATE_BATTERY_CAPABILITY,
 	/** SNK_POLICY_COUNT */
 	SNK_POLICY_COUNT,
 };
@@ -636,6 +647,10 @@ enum policy_src_attached_t {
 	SRC_POLICY_GET_RDO,
 	/** Triggers an update of the allow_pr_swap bit in CMD_SET_DRP */
 	SRC_POLICY_UPDATE_ALLOW_PR_SWAP,
+	/** Update battery status */
+	SRC_POLICY_UPDATE_BATTERY_STATUS,
+	/** Update battery capability */
+	SRC_POLICY_UPDATE_BATTERY_CAPABILITY,
 
 	/** SRC_POLICY_COUNT */
 	SRC_POLICY_COUNT
@@ -829,6 +844,10 @@ struct pdc_port_t {
 	pdc_power_mgmt_board_dp_attention_cb board_dp_attention_cb;
 	/** CMD_SET_BBR_CTS temp variable to communicate the desired state */
 	bool bbr_cts_enable;
+	/** Battery status */
+	union battery_status_t bstat;
+	/** Battery capability */
+	union battery_capability_t bcap;
 };
 
 /**
@@ -909,12 +928,13 @@ static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd);
 static void init_port_variables(struct pdc_port_t *port,
 				bool reset_charge_manager);
-static int pdc_power_mgmt_request_power_swap_intern(int port,
-						    enum pd_power_role role);
 static void pd_chipset_startup(void);
 static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
 static void pd_chipset_shutdown(void);
+
+static void pdc_update_battery_status(struct pdc_port_t *port);
+static void pdc_update_battery_capability(struct pdc_port_t *port);
 
 static bool should_suspend(struct pdc_port_t *port)
 {
@@ -1580,11 +1600,15 @@ static bool should_swap_to_source(struct pdc_port_t *port)
 		return false;
 	}
 
-	if (port->snk_policy.pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR ||
-	    !(port->snk_policy.pdo & PDO_FIXED_DUAL_ROLE)) {
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
+	if (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR ||
+	    !(vsafe_5v_pdo & PDO_FIXED_GET_DRP)) {
 		LOG_INF("C%d: %s: Remain sink because partner has unconstrained "
-			"power or is not DRP-capable (PDO=0x%08x)",
-			port_num, __func__, port->snk_policy.pdo);
+			"power or is not DRP-capable (vSafe5v PDO=0x%08x, "
+			"active PDO=0x%08x)",
+			port_num, __func__, vsafe_5v_pdo, port->snk_policy.pdo);
 		return false;
 	}
 
@@ -1679,6 +1703,17 @@ static void run_snk_policies(struct pdc_port_t *port)
 		};
 
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
+		return;
+	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
+					     SNK_POLICY_UPDATE_BATTERY_STATUS)) {
+		/* Update the PDC with the correct battery status. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_STATUS);
+		return;
+	} else if (atomic_test_and_clear_bit(
+			   port->snk_policy.flags,
+			   SNK_POLICY_UPDATE_BATTERY_CAPABILITY)) {
+		/* Update the PDC with the correct battery capabilities. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_CAPABILITY);
 		return;
 	}
 
@@ -1845,6 +1880,17 @@ static void run_src_policies(struct pdc_port_t *port)
 			port->src_policy.accept_power_role_swap);
 		queue_internal_cmd(port, CMD_PDC_SET_PDR);
 		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_UPDATE_BATTERY_STATUS)) {
+		/* Update the PDC with the correct battery status. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_STATUS);
+		return;
+	} else if (atomic_test_and_clear_bit(
+			   port->snk_policy.flags,
+			   SRC_POLICY_UPDATE_BATTERY_CAPABILITY)) {
+		/* Update the PDC with the correct battery capabilities. */
+		queue_internal_cmd(port, CMD_PDC_SET_BATTERY_CAPABILITY);
+		return;
 	}
 
 	send_pending_public_commands(port);
@@ -1992,6 +2038,10 @@ static void pdc_src_attached_entry(void *obj)
 				USB_SWITCH_CONNECT,
 				pdc_power_mgmt_pd_get_polarity(port_number));
 		}
+
+		/* Update the PDC with the correct battery status. */
+		pdc_update_battery_capability(port);
+		pdc_update_battery_status(port);
 	}
 
 	/* Clear a piece of sink policy as it is no longer relevant in the
@@ -2113,6 +2163,10 @@ static void pdc_snk_attached_entry(void *obj)
 				USB_SWITCH_CONNECT,
 				pdc_power_mgmt_pd_get_polarity(port_number));
 		}
+
+		/* Update the PDC with the correct battery status. */
+		pdc_update_battery_capability(port);
+		pdc_update_battery_status(port);
 	}
 }
 
@@ -2241,9 +2295,12 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	max_mv = PDO_FIXED_VOLTAGE(pdo);
 	max_mw = max_ma * max_mv / 1000;
 
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
 	LOG_INF("C%d: Available charging (%sconstrained)",
 		config->connector_num,
-		(pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
+		(vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
 	LOG_INF("  PDO: %08x", pdo);
 	LOG_INF("  V: %d", max_mv);
 	LOG_INF("  C: %d", max_ma);
@@ -2260,8 +2317,8 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 				max_ma);
 
 	if (((PDO_GET_TYPE(pdo) == PDO_TYPE_FIXED) &&
-	     (!(pdo & PDO_FIXED_GET_DRP) ||
-	      (pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
+	     (!(vsafe_5v_pdo & PDO_FIXED_GET_DRP) ||
+	      (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR))) ||
 	    (max_mw >= PD_DRP_CHARGE_POWER_MIN)) {
 		/* Port partner is a robust power source, meeting one or more of
 		 * these conditions:
@@ -2539,7 +2596,7 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		} else {
 			port->snk_attached_local_state =
 				(port->sink_path_status ?
-					 SNK_ATTACHED_READ_POWER_LEVEL :
+					 SNK_ATTACHED_SYNC_CHARGE_MGR :
 					 SNK_ATTACHED_EVALUATE_PDOS);
 			port->get_pdo.updating = false;
 		}
@@ -2555,12 +2612,8 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		 */
 		if (pdc_snk_attached_evaluate_pdos(port)) {
 			port->snk_attached_local_state =
-				SNK_ATTACHED_READ_POWER_LEVEL;
+				SNK_ATTACHED_SYNC_CHARGE_MGR;
 		}
-		return SMF_EVENT_HANDLED;
-	case SNK_ATTACHED_READ_POWER_LEVEL:
-		port->snk_attached_local_state = SNK_ATTACHED_SYNC_CHARGE_MGR;
-		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SYNC_CHARGE_MGR:
 		/* Update Charge Manager with PDO/RDO the PDC has negotiated or
@@ -2620,8 +2673,12 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		/* If !CONFIG_PLATFORM_EC_USB_PD_FRS, fallthrough */
 		__fallthrough;
 	case SNK_ATTACHED_GET_CABLE_PROPERTY:
-		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		port->snk_attached_local_state = SNK_ATTACHED_READ_POWER_LEVEL;
 		queue_internal_cmd(port, CMD_PDC_GET_CABLE_PROPERTY);
+		return SMF_EVENT_HANDLED;
+	case SNK_ATTACHED_READ_POWER_LEVEL:
+		port->snk_attached_local_state = SNK_ATTACHED_RUN;
+		queue_internal_cmd(port, CMD_PDC_READ_POWER_LEVEL);
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_RUN:
 		/* Hard Reset could disable Sink FET. Re-enable it */
@@ -2826,6 +2883,12 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_SET_BBR_CTS:
 		rv = pdc_set_bbr_cts(port->pdc, port->bbr_cts_enable);
+		break;
+	case CMD_PDC_SET_BATTERY_STATUS:
+		rv = pdc_set_battery_status(port->pdc, &port->bstat);
+		break;
+	case CMD_PDC_SET_BATTERY_CAPABILITY:
+		rv = pdc_set_battery_capability(port->pdc, &port->bcap);
 		break;
 	default:
 		LOG_ERR("C%d: Invalid command: %d", config->connector_num,
@@ -4009,8 +4072,10 @@ bool pdc_power_mgmt_get_partner_unconstr_power(int port)
 		return false;
 	}
 
-	return (pdc_data[port]->port.snk_policy.pdo &
-		PDO_FIXED_GET_UNCONSTRAINED_PWR);
+	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
+	uint32_t vsafe_5v_pdo = pdc_data[port]->port.snk_policy.src.pdos[0];
+
+	return (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR);
 }
 
 static int pdc_power_mgmt_request_data_swap_intern(int port,
@@ -4069,64 +4134,25 @@ test_mockable void pdc_power_mgmt_request_data_swap(int port)
 	}
 }
 
-static int pdc_power_mgmt_request_power_swap_intern(int port,
-						    enum pd_power_role role)
-{
-	/* Make sure port is connected */
-	if (!pdc_power_mgmt_is_connected(port)) {
-		LOG_ERR("C%d: Cannot swap power role: port disconnected", port);
-		return 1;
-	}
-
-	LOG_INF("C%d: Attempt power role swap to %s", port,
-		(role == PD_ROLE_SINK ? "sink" : "source"));
-
-	bool current_external_swap_policy = false;
-
-	if (pdc_power_mgmt_is_sink_connected(port)) {
-		current_external_swap_policy =
-			pdc_data[port]->port.snk_policy.accept_power_role_swap;
-	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		current_external_swap_policy =
-			pdc_data[port]->port.src_policy.accept_power_role_swap;
-	}
-
-	/* Set PR accept swap policy */
-	if (role == PD_ROLE_SOURCE) {
-		/* Attempt to swap to SOURCE */
-		pdc_data[port]->port.pdr_policy =
-			PDC_POWER_POLICY_SOURCE(current_external_swap_policy);
-	} else {
-		/* Attempt to swap to SINK */
-		pdc_data[port]->port.pdr_policy =
-			PDC_POWER_POLICY_SINK(current_external_swap_policy);
-	}
-
-	/* Block until command completes */
-	if (public_api_block(port, CMD_PDC_SET_PDR)) {
-		/* something went wrong */
-		return 1;
-	}
-
-	return EC_SUCCESS;
-}
-
-void pdc_power_mgmt_request_swap_to_src(int port)
-{
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
-}
-
-void pdc_power_mgmt_request_swap_to_snk(int port)
-{
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
-}
-
 test_mockable void pdc_power_mgmt_request_power_swap(int port)
 {
 	if (pdc_power_mgmt_is_sink_connected(port)) {
-		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+		LOG_INF("C%d: Request power role swap to source", port);
+
+		atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+			       SNK_POLICY_SWAP_TO_SRC);
+		k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SINK);
+		LOG_INF("C%d: Request power role swap to sink", port);
+
+		atomic_set_bit(pdc_data[port]->port.src_policy.flags,
+			       SRC_POLICY_SWAP_TO_SNK);
+		k_event_post(&pdc_data[port]->port.sm_event, PDC_SM_EVENT);
+	} else {
+		LOG_ERR("C%d: Cannot swap power role: "
+			"port not PD-attached or invalid",
+			port);
 	}
 }
 
@@ -4578,6 +4604,147 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, pd_chipset_shutdown,
 #else
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
 #endif
+
+static void pdc_battery_status_changed(void)
+{
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		if (pdc_power_mgmt_is_pdc_port_valid(i)) {
+			pdc_update_battery_status(&pdc_data[i]->port);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pdc_battery_status_changed,
+	     HOOK_PRIO_DEFAULT);
+
+static void pdc_update_battery_status(struct pdc_port_t *port)
+{
+	const struct pdc_config_t *config = port->dev->config;
+	int port_number = config->connector_num;
+	union battery_status_t bsdo = { 0 };
+
+	if (battery_is_present()) {
+		uint32_t v;
+		uint32_t c;
+
+		if (battery_design_voltage(&v) != 0 ||
+		    battery_remaining_capacity(&c) != 0) {
+			bsdo.present_capacity = BSDO_CAP_UNKNOWN;
+		} else {
+			/*
+			 * Wh = (c * v) / 1000000
+			 * 10th of a Wh = Wh * 10
+			 */
+			bsdo.present_capacity =
+				DIV_ROUND_NEAREST((c * v), 100000);
+		}
+
+		/* Battery is present */
+		bsdo.battery_present = 1;
+
+		/*
+		 * For drivers that are not smart battery compliant,
+		 * battery_status() returns EC_ERROR_UNIMPLEMENTED and
+		 * the battery is assumed to be idle.
+		 */
+		if (battery_status(&c) != 0) {
+			/* Assume idle if battery status is not available. */
+			bsdo.battery_state = BSDO_BATTERY_STATE_IDLE;
+		} else {
+			if (c & STATUS_FULLY_CHARGED) {
+				/* Fully charged */
+				bsdo.battery_state = BSDO_BATTERY_STATE_IDLE;
+			} else if (c & STATUS_DISCHARGING) {
+				/* Discharging */
+				bsdo.battery_state =
+					BSDO_BATTERY_STATE_DISCHARGING;
+			} else {
+				/* Else battery is charging.*/
+				bsdo.battery_state =
+					BSDO_BATTERY_STATE_CHARGING;
+			}
+		}
+	} else {
+		bsdo.present_capacity = BSDO_CAP_UNKNOWN;
+	}
+
+	port->bstat = bsdo;
+	if (pdc_power_mgmt_is_sink_connected(port_number)) {
+		atomic_set_bit(port->snk_policy.flags,
+			       SNK_POLICY_UPDATE_BATTERY_STATUS);
+	} else if (pdc_power_mgmt_is_source_connected(port_number)) {
+		atomic_set_bit(port->src_policy.flags,
+			       SRC_POLICY_UPDATE_BATTERY_STATUS);
+	}
+}
+
+static void pdc_update_battery_capability(struct pdc_port_t *port)
+{
+	const struct pdc_config_t *config = port->dev->config;
+	int port_number = config->connector_num;
+	union battery_capability_t bcdb = { 0 };
+
+	/* TODO: Replace with proper VID:PID API */
+	/* Set VID */
+	bcdb.vid = CONFIG_PLATFORM_EC_USB_VID;
+
+	/* Set PID */
+	bcdb.pid = CONFIG_PLATFORM_EC_USB_PID;
+
+	if (battery_is_present()) {
+		uint32_t v;
+		uint32_t c;
+
+		/*
+		 * The Battery Design Capacity field shall return the
+		 * Battery’s design capacity in tenths of Wh. If the
+		 * Battery is Hot Swappable and is not present, the
+		 * Battery Design Capacity field shall be set to 0. If
+		 * the Battery is unable to report its Design Capacity,
+		 * it shall return 0xFFFF
+		 */
+		bcdb.design_capacity = 0xffff;
+
+		/*
+		 * The Battery Last Full Charge Capacity field shall
+		 * return the Battery’s last full charge capacity in
+		 * tenths of Wh. If the Battery is Hot Swappable and
+		 * is not present, the Battery Last Full Charge Capacity
+		 * field shall be set to 0. If the Battery is unable to
+		 * report its Design Capacity, the Battery Last Full
+		 * Charge Capacity field shall be set to 0xFFFF.
+		 */
+		bcdb.last_full_charge_capacity = 0xffff;
+
+		if (battery_design_voltage(&v) == 0) {
+			if (battery_design_capacity(&c) == 0) {
+				/*
+				 * Wh = (c * v) / 1000000
+				 * 10th of a Wh = Wh * 10
+				 */
+				bcdb.design_capacity =
+					DIV_ROUND_NEAREST((c * v), 100000);
+			}
+
+			if (battery_full_charge_capacity(&c) == 0) {
+				/*
+				 * Wh = (c * v) / 1000000
+				 * 10th of a Wh = Wh * 10
+				 */
+				bcdb.last_full_charge_capacity =
+					DIV_ROUND_NEAREST((c * v), 100000);
+			}
+		}
+	}
+
+	port->bcap = bcdb;
+	if (pdc_power_mgmt_is_sink_connected(port_number)) {
+		atomic_set_bit(port->snk_policy.flags,
+			       SNK_POLICY_UPDATE_BATTERY_CAPABILITY);
+	} else if (pdc_power_mgmt_is_source_connected(port_number)) {
+		atomic_set_bit(port->src_policy.flags,
+			       SRC_POLICY_UPDATE_BATTERY_CAPABILITY);
+	}
+}
 
 test_mockable int pdc_power_mgmt_get_drp_mode(int port,
 					      enum drp_mode_t *drp_mode)
@@ -5109,7 +5276,11 @@ test_mockable void pdc_power_mgmt_request_source_voltage(int port, int mv)
 	if (pdc_power_mgmt_is_sink_connected(port)) {
 		pdc_power_mgmt_set_new_power_request(port);
 	} else if (pdc_power_mgmt_is_source_connected(port)) {
-		pdc_power_mgmt_request_swap_to_snk(port);
+		/* We are a source, swap to sink */
+		LOG_INF("C%d: Swapping to sink role to request new "
+			"source voltage",
+			port);
+		pdc_power_mgmt_request_power_swap(port);
 	} else {
 		LOG_ERR("C%d: Port is disconnected. New source voltage "
 			"will take effect on next connection",
@@ -5448,6 +5619,22 @@ test_mockable int pdc_power_mgmt_set_bbr_cts(int port, bool enable)
 
 	/* Block until command completes */
 	return public_api_block(port, CMD_PDC_SET_BBR_CTS);
+}
+
+test_mockable int pdc_power_mgmt_set_ap_power_state(enum power_state state)
+{
+	if (!(state == POWER_S0 || state == POWER_S5)) {
+		LOG_ERR("PD: Can only notify S0 and S5 states (state=%d)",
+			state);
+		return -EINVAL;
+	}
+
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		/* Issue command on all port instances */
+		pdc_notify_ap_power_state(i, state);
+	}
+
+	return 0;
 }
 
 #ifdef CONFIG_ZTEST

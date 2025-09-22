@@ -481,6 +481,8 @@ def insert_i2c_component(ctype, node, usbc_port, i2c_portmap, manifest):
     probe_str = "direct"
     if "ls-en-pin" in node.props:
         probe_str = "low_power"
+    elif node.props["compatible"].val[0] == "parade,ps8xxx":
+        probe_str = "low_power_probe_once"
 
     manifest.insert_component(
         ctype,

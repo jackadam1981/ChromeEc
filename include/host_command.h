@@ -189,6 +189,14 @@ void host_set_single_event(enum host_event_code event);
 void host_clear_events(host_event_t mask);
 
 /**
+ * Clear one or more host event bits from copy B.
+ *
+ * @param mask          Event bits to clear (use EC_HOST_EVENT_MASK()).
+ *                      Write 1 to a bit to clear it.
+ */
+void host_clear_events_b(host_event_t mask);
+
+/**
  * Return the raw event state.
  */
 host_event_t host_get_events(void);
