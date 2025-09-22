@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59d9ca4_0cf36ff7",
+        "filename": "zephyr/boards/google/it8xxx2/it8xxx2_it82000bw.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-09-22T08:40:44Z",
+      "side": 1,
+      "message": "Just a suggestion:\nI suggest creating a follow-up commit(upstream) to add the node of i2c0: scl-gpios, sda-gpios, and ite_uart1_wrapper: gpios properties directly into \u003cite/it82000.dtsi\u003e. Since these properties are fixed for the it82000 SoC, putting them in the SoC .dtsi avoids having to declare them in every board .dts.\n\nThe user only needs to decide the status and pinctrl-0",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "a0137b1ff149b6a14e028455182a10450a516739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
