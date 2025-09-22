@@ -9307,40 +9307,27 @@ int cmd_boottime(int argc, char *argv[])
 	return rv;
 }
 
-static void cmd_cbi_help(char *cmd)
-{
-	fprintf(stderr,
-		"  Usage: %s get <tag> [get_flag]\n"
-		"  Usage: %s set <tag> <value> <size> [set_flag]\n"
-		"  Usage: %s set <tag> <string/hex> <*> [set_flag]\n"
-		"  Usage: %s remove <tag> [set_flag]\n"
-		"    <tag> is one of:\n"
-		"      0: BOARD_VERSION\n"
-		"      1: OEM_ID\n"
-		"      2: SKU_ID\n"
-		"      3: DRAM_PART_NUM (string)\n"
-		"      4: OEM_NAME (string)\n"
-		"      5: MODEL_ID\n"
-		"      6: FW_CONFIG\n"
-		"      7: PCB_VENDOR\n"
-		"      8: SSFC\n"
-		"      9: REWORK_ID\n"
-		"      10: FACTORY_CALIBRATION_DATA\n"
-		"      11: COMMON_CONTROL\n"
-		"      [12:27]: BATTERY_CONFIG_[0:15] (hex)\n"
-		"      28: PROVISION_MATRIX_VERSION\n"
-		"    <size> is the size of the data in byte. It should be zero for\n"
-		"      string types.\n"
-		"    <value/string> is an integer or a string to be set\n"
-		"    <*> is unused but must be present (e.g. '0')\n"
-		"    <hex> is a hex string\n"
-		"    [get_flag] is combination of:\n"
-		"      01b: Invalidate cache and reload data from EEPROM\n"
-		"    [set_flag] is combination of:\n"
-		"      01b: Skip write to EEPROM. Use for back-to-back writes\n"
-		"      10b: Set all fields to defaults first\n",
-		cmd, cmd, cmd, cmd);
-}
+#define CBI_FIELD_NAME_ENTRY(tag) [CBI_TAG_##tag] = STRINGIFY(tag)
+
+static const char *const cbi_field_name[] = {
+	CBI_FIELD_NAME_ENTRY(BOARD_VERSION),
+	CBI_FIELD_NAME_ENTRY(OEM_ID),
+	CBI_FIELD_NAME_ENTRY(SKU_ID),
+	CBI_FIELD_NAME_ENTRY(DRAM_PART_NUM),
+	CBI_FIELD_NAME_ENTRY(OEM_NAME),
+	CBI_FIELD_NAME_ENTRY(MODEL_ID),
+	CBI_FIELD_NAME_ENTRY(FW_CONFIG),
+	CBI_FIELD_NAME_ENTRY(PCB_SUPPLIER),
+	CBI_FIELD_NAME_ENTRY(SSFC),
+	CBI_FIELD_NAME_ENTRY(REWORK_ID),
+	CBI_FIELD_NAME_ENTRY(FACTORY_CALIBRATION_DATA),
+	CBI_FIELD_NAME_ENTRY(COMMON_CONTROL),
+	CBI_FIELD_NAME_ENTRY(BATTERY_CONFIG),
+	CBI_FIELD_NAME_ENTRY(BATTERY_CONFIG_15),
+	CBI_FIELD_NAME_ENTRY(PROVISION_MATRIX_VERSION),
+	CBI_FIELD_NAME_ENTRY(UFSC),
+};
+BUILD_ASSERT(ARRAY_SIZE(cbi_field_name) == CBI_TAG_COUNT);
 
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
@@ -9351,6 +9338,44 @@ static int cmd_cbi_is_binary_field(enum cbi_data_tag tag)
 {
 	return CBI_TAG_BATTERY_CONFIG <= tag &&
 	       tag <= CBI_TAG_BATTERY_CONFIG_15;
+}
+
+static void cmd_cbi_help(char *cmd)
+{
+	fprintf(stderr,
+		"  Usage: %s get <tag> [get_flag]\n"
+		"  Usage: %s set <tag> <value> <size> [set_flag]\n"
+		"  Usage: %s set <tag> <string/hex> <*> [set_flag]\n"
+		"  Usage: %s remove <tag> [set_flag]\n"
+		"    <tag> is one of:\n",
+		cmd, cmd, cmd, cmd);
+	for (int tag = CBI_TAG_BOARD_VERSION; tag <= CBI_TAG_COMMON_CONTROL;
+	     ++tag) {
+		fprintf(stderr, "      %2d: %s%s\n", tag, cbi_field_name[tag],
+			cmd_cbi_is_string_field(
+				static_cast<enum cbi_data_tag>(tag)) ?
+				" (string)" :
+				"");
+	}
+	fprintf(stderr, "      [%d:%d]: BATTERY_CONFIG_[0:15] (hex)\n",
+		CBI_TAG_BATTERY_CONFIG, CBI_TAG_BATTERY_CONFIG_15);
+	for (int tag = CBI_TAG_PROVISION_MATRIX_VERSION; tag < CBI_TAG_COUNT;
+	     ++tag) {
+		if (cbi_field_name[tag])
+			fprintf(stderr, "      %2d: %s\n", tag,
+				cbi_field_name[tag]);
+	}
+	fprintf(stderr,
+		"    <size> is the size of the data in byte. It should be zero for\n"
+		"      string types.\n"
+		"    <value/string> is an integer or a string to be set\n"
+		"    <*> is unused but must be present (e.g. '0')\n"
+		"    <hex> is a hex string\n"
+		"    [get_flag] is combination of:\n"
+		"      01b: Invalidate cache and reload data from EEPROM\n"
+		"    [set_flag] is combination of:\n"
+		"      01b: Skip write to EEPROM. Use for back-to-back writes\n"
+		"      10b: Set all fields to defaults first\n");
 }
 
 /*
