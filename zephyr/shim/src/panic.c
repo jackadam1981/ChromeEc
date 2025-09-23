@@ -213,6 +213,41 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 }
 #endif /* CONFIG_ZTEST_FATAL_HOOK */
 
+#ifdef CONFIG_PLATFORM_EC_DEBUG_ASSERT
+#ifdef CONFIG_ASSERT_NO_FILE_INFO
+__override void assert_post_action(void)
+{
+	panic_set_reason(PANIC_SW_ASSERT, -1, task_get_current());
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
+		command_crash_nested_handler();
+
+	panic_reboot();
+	__ASSERT_UNREACHABLE;
+}
+#else
+__override void assert_post_action(const char *path, unsigned int line)
+{
+	/* Extract filename from path */
+	const char *last_slash = strrchr(path, '/');
+	const char *filename = last_slash ? last_slash + 1 : path;
+	/* Top two bytes of info register is first two characters of filename.
+	 * Bottom two bytes of info register is line number.
+	 */
+	panic_set_reason(PANIC_SW_ASSERT,
+			 (filename[0] << 24) | (filename[1] << 16) |
+				 (line & 0xffff),
+			 task_get_current());
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
+		command_crash_nested_handler();
+
+	panic_reboot();
+	__ASSERT_UNREACHABLE;
+}
+#endif /* CONFIG_ASSERT_NO_FILE_INFO */
+#endif /* CONFIG_PLATFORM_EC_DEBUG_ASSERT */
+
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 {
 	struct panic_data *const pdata = get_panic_data_write();

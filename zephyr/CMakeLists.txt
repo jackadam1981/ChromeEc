@@ -302,6 +302,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25710
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25720
                                                 "${PLATFORM_EC}/driver/charger/bq25710.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_BQ25770
+                                                "${PLATFORM_EC}/driver/charger/bq25710.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_RT9490
                                                 "${PLATFORM_EC}/driver/charger/rt9490.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER_SM5803
@@ -740,6 +742,7 @@ set(ZEPHYR_CURRENT_LIBRARY ec_shim)
 
 add_subdirectory(linker)
 add_subdirectory("app")
+add_subdirectory("debug")
 add_subdirectory("drivers")
 add_subdirectory("emul")
 add_subdirectory("fake")
@@ -803,5 +806,14 @@ if (NOT DEFINED CONFIG_BOARD_NATIVE_POSIX AND NOT DEFINED CONFIG_BOARD_NATIVE_SI
       ${PLATFORM_EC}/util/check_zephyr_end_of_ram.py
       ${CMAKE_BINARY_DIR}/zephyr/zephyr.elf
       --delete
+  )
+endif()
+
+if (DEFINED CONFIG_SOC_INTEL_ISH_5_8_0)
+  set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
+    COMMAND
+      ${PLATFORM_EC}/util/ish/sign_ish_main.sh
+      ${PROJECT_BINARY_DIR}
+      ${PLATFORM_EC}/third_party/ish/ish_header_5_8.bin
   )
 endif()

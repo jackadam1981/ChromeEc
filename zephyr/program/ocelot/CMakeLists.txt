@@ -29,6 +29,19 @@ if(DEFINED CONFIG_BOARD_OCELOTRVP_MCHP)
 	zephyr_library_sources("src/rvp_usbc_runtime.c")
 endif()
 
+if(DEFINED CONFIG_BOARD_OJAL)
+	project(ojal)
+endif()
+
+if(DEFINED CONFIG_BOARD_MATSU)
+	project(matsu)
+	zephyr_library_sources("matsu/src/board_power.c")
+	zephyr_library_sources("matsu/src/suspend_resume.c")
+	zephyr_library_sources("matsu/src/touch_panel.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"matsu/src/keyboard_customization.c")
+endif()
+
 zephyr_include_directories("include/")
 
 zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT

@@ -22,6 +22,7 @@ properties:
       - EC_LED_ID_RIGHT_LED
       - EC_LED_ID_RECOVERY_HW_REINIT_LED
       - EC_LED_ID_SYSRQ_DEBUG_LED
+      - EC_LED_ID_LIGHTBAR_LED
   sysrq-led-control-color:
     description: |
       Specify what color to display when `led_control` makes the LED
@@ -130,6 +131,16 @@ child-binding:
              range of BATTERY_LEVEL_EMPTY to BATTERY_LEVEL_LOW inclusive.
       type: array
 
+    board-led-alt-policy-label:
+      description: |
+        If the LED color depends on board level alternated policy, this
+        property is used to describe it.
+        Use int to mark each alt policy, and define board_led_alt_policy() in
+        board level src/led_customization.c to determine LED board level
+        alternated policy, which returns int value that represents the label
+        of board-led-alt-policy.
+      type: int
+
   child-binding:
     properties:
       led-id:
@@ -162,7 +173,7 @@ child-binding:
           description: |
             In case of blinking LEDs, amount of time in msecs the LED
             color is active. This value must be a multiple of
-            HOOK_TICK_INTERVAL_MS.
+            HOOK_TICK_INTERVAL_MS for gpio LEDs.
             e.g.
             power-state-error {
                charge-state = "LED_PWRS_ERROR";

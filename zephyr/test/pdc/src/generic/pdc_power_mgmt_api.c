@@ -934,6 +934,36 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap)
 	}
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_request_power_swap__invalid)
+{
+	union connector_status_t connector_status = { 0 };
+
+	/* Invalid port is ignored */
+	pd_request_power_swap(99);
+
+	/* Attach a type-c only partner. Without PD support, a power role swap
+	 * request will be ignored. */
+	emul_pdc_configure_snk(emul, &connector_status);
+	connector_status.power_operation_mode = USB_DEFAULT_OPERATION;
+	emul_pdc_connect_partner(emul, &connector_status);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+	zassert_equal(PDC_SNK_TYPEC_ONLY,
+		      pdc_power_mgmt_get_task_state(TEST_PORT));
+
+	/* This should be a no-op. */
+	pd_request_power_swap(TEST_PORT);
+
+	/* The above should not trigger any pdc_power_mgmt state machine
+	 * action. To be sure, wait a fixed delay too. */
+	TEST_WORKING_DELAY(PDC_POWER_STABLE_TIMEOUT);
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	/* Role should be unchanged */
+	zassert_equal(PDC_SNK_TYPEC_ONLY,
+		      pdc_power_mgmt_get_task_state(TEST_PORT));
+}
+
 ZTEST_USER(pdc_power_mgmt_api, test_request_data_swap)
 {
 	int i;
@@ -1022,8 +1052,11 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_src)
 		PDO_FIXED(5000, 3000,
 			  PDO_FIXED_DUAL_ROLE |
 				  PDO_FIXED_GET_UNCONSTRAINED_PWR),
+		PDO_FIXED(9000, 3000, 0),
+		PDO_FIXED(12000, 3000, 0),
 	};
 
+	/* Invalid port number */
 	zassert_false(
 		pd_get_partner_unconstr_power(CONFIG_USB_PD_PORT_MAX_COUNT));
 
@@ -1032,8 +1065,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_src)
 	 */
 	emul_pdc_configure_src(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
-			  pdos_up);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos_up),
+			  PARTNER_PDO, pdos_up);
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_false(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
@@ -1045,12 +1078,14 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_no_up)
 	union connector_status_t connector_status = {};
 	const uint32_t pdos_no_up[] = {
 		PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE),
+		PDO_FIXED(9000, 3000, 0),
+		PDO_FIXED(12000, 3000, 0),
 	};
 
 	emul_pdc_configure_snk(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
-			  pdos_no_up);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0,
+			  ARRAY_SIZE(pdos_no_up), PARTNER_PDO, pdos_no_up);
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_false(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
@@ -1064,6 +1099,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_up)
 		PDO_FIXED(5000, 3000,
 			  PDO_FIXED_DUAL_ROLE |
 				  PDO_FIXED_GET_UNCONSTRAINED_PWR),
+		PDO_FIXED(9000, 3000, 0),
+		PDO_FIXED(12000, 3000, 0),
 	};
 
 	/* If the port is in Attached.SNK, unconstrained power should be the
@@ -1071,8 +1108,8 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_unconstr_power_snk_up)
 	 */
 	emul_pdc_configure_snk(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
-			  pdos_up);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, ARRAY_SIZE(pdos_up),
+			  PARTNER_PDO, pdos_up);
 	emul_pdc_connect_partner(emul, &connector_status);
 	zassert_true(TEST_WAIT_FOR(pd_get_partner_unconstr_power(TEST_PORT),
 				   PDC_TEST_TIMEOUT));
@@ -1447,7 +1484,7 @@ ZTEST_USER(pdc_power_mgmt_api, test_chipset_resume_drp_partner)
 
 	emul_pdc_configure_snk(emul, &connector_status);
 	clear_partner_pdos(emul, SOURCE_PDO);
-	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_1, 1, PARTNER_PDO, pdos);
+	emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1, PARTNER_PDO, pdos);
 	emul_pdc_connect_partner(emul, &connector_status);
 
 	zassert_true(
@@ -2180,13 +2217,13 @@ ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 }
 
+#endif /* CONFIG_TODO_B_345292002 */
+
 ZTEST_USER(pdc_power_mgmt_api, test_bbr_cts_mode)
 {
 	zassert_ok(pdc_power_mgmt_set_bbr_cts(TEST_PORT, true));
 	zassert_ok(pdc_power_mgmt_set_bbr_cts(TEST_PORT, false));
 }
-
-#endif /* CONFIG_TODO_B_345292002 */
 
 /* Get / set SBU mux mode is only supported on RTK currently */
 ZTEST(pdc_power_mgmt_api, test_pdc_power_mgmt_sbu_mux_mode)
@@ -2536,6 +2573,52 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_rdo_errors)
 				       CONFIG_USB_PD_PORT_MAX_COUNT, &rdo));
 	zassert_equal(-EINVAL, pdc_power_mgmt_get_rdo(TEST_PORT, NULL));
 	zassert_equal(-ENODATA, pdc_power_mgmt_get_rdo(TEST_PORT, &rdo));
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_set_ap_power_state)
+{
+	int rv;
+	enum power_state state;
+
+	/* Only S0 and S5 are supported */
+
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S3);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S4);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_G3);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+
+#ifdef CONFIG_POWER_S0IX
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S0ix);
+	zassert_equal(-EINVAL, rv, "Expected -EINVAL, got %d", rv);
+#endif
+
+	/* Set S0 */
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S0);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	rv = emul_pdc_get_sys_power_state(emul, &state);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_equal(POWER_S0, state, "Expected POWER_S0 (%d), got %d",
+		      POWER_S0, rv);
+
+	/* Set S5 */
+	rv = pdc_power_mgmt_set_ap_power_state(POWER_S5);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+
+	rv = emul_pdc_get_sys_power_state(emul, &state);
+	zassert_ok(rv, "Expected success, got %d", rv);
+
+	zassert_equal(POWER_S5, state, "Expected POWER_S0 (%d), got %d",
+		      POWER_S5, rv);
 }
 #endif
 

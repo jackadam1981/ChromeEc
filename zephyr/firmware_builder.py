@@ -80,6 +80,34 @@ BINARY_SIZE_REGIONS = [
     "RW_ROM",
 ]
 
+# Unused boards that are expected to be unused, such as dev boards.
+UNUSED_BOARDS = {
+    "dev-posix",
+    "it8xxx2_evb",
+    "it82002_evb",
+    "minimal-posix",
+    "minimal-npcx9",
+    "minimal-it8xxx2",
+    "minimal-realtek",
+    "npcx7",
+    "npcx9",
+    "npcx_monitor",
+    "axii",
+}
+
+# Unused inherited_from values that are expected to be unused, such as dev boards.
+UNUSED_INHERITED_FROM = {
+    "ec-aic",
+    "intelrvp",
+}
+
+# ish and fingerprint don't separate legacy from zephyr in boxter.
+LEGACY_TARGETS = {
+    "dartmonkey",
+    "volteer",
+    "zork",
+}
+
 
 def log_cmd(cmd, env=None, cwd=None):
     """Log subprocess command."""
@@ -486,54 +514,103 @@ def check_inherits(_opts):
         ec_to_board[project.config.project_name] = board_dict
 
     retcode = 0
-    configs = (find_checkout() / "src" / "project").glob(
-        "*/*/generated/joined.jsonproto"
-    )
-    for cfg_path in configs:
-        with open(cfg_path, "r", encoding="utf-8") as file:
-            cfg = json.load(file)
-            board_name = None
-            for design_list in cfg.get("designList", []):
-                this_board = design_list.get("programId", {}).get("value", None)
-                if this_board is not None:
-                    this_board = this_board.lower()
-                    if board_name is not None and board_name != this_board:
-                        print(
-                            f"ERROR: Found multiple boards in {cfg_path}: "
-                            f"{this_board} != {board_name}"
-                        )
-                        retcode = 1
-                    board_name = this_board
-            if board_name is None:
-                print(f"WARNING: Found no board in {cfg_path}")
+    board_dirs = (find_checkout() / "src" / "project").glob("*")
+    for board_dir in board_dirs:
+        board_name = board_dir.name
+        configs = board_dir.glob(
+            "*/sw_build_config/platform/chromeos-config/generated/project-config.json"
+        )
+        for cfg_path in configs:
+            with open(cfg_path, "r", encoding="utf-8") as file:
+                cfg = json.load(file)
 
-            for software_config in cfg.get("softwareConfigs", []):
-                zephyr_ec = (
-                    software_config.get("firmwareBuildConfig", {})
-                    .get("buildTargets", {})
-                    .get("zephyrEc", None)
-                )
-                if zephyr_ec:
-                    if zephyr_ec not in ec_to_board:
-                        print(
-                            f"ERROR: Unknown Zephyr target {zephyr_ec} in {cfg_path}"
-                        )
-                        retcode = 1
-                    elif board_name not in ec_to_board[zephyr_ec]:
-                        print(
-                            f"ERROR: Zephyr target {zephyr_ec} does not have "
-                            f"inherited_from {board_name}"
-                        )
-                        retcode = 1
-                    ec_to_board[zephyr_ec][board_name] = True
+                for software_config in cfg.get("chromeos", {}).get(
+                    "configs", []
+                ):
+                    zephyr_ec = (
+                        software_config.get("firmware", {})
+                        .get("build-targets", {})
+                        .get("zephyr-ec", None)
+                    )
+                    if zephyr_ec:
+                        if zephyr_ec not in ec_to_board:
+                            print(
+                                f"ERROR: Unknown Zephyr target {zephyr_ec} in {cfg_path}"
+                            )
+                            retcode = 1
+                        elif board_name not in ec_to_board[zephyr_ec]:
+                            print(
+                                f"ERROR: Zephyr target {zephyr_ec} does not have "
+                                f"inherited_from {board_name}"
+                            )
+                            retcode = 1
+                        ec_to_board[zephyr_ec][board_name] = True
+                    zephyr_kb = (
+                        software_config.get("firmware", {})
+                        .get("build-targets", {})
+                        .get("zephyr-detachable-base", None)
+                    )
+                    if zephyr_kb:
+                        if zephyr_kb not in ec_to_board:
+                            print(
+                                f"ERROR: Unknown Zephyr KB {zephyr_kb} in {cfg_path}"
+                            )
+                            retcode = 1
+                        elif board_name not in ec_to_board[zephyr_kb]:
+                            print(
+                                f"ERROR: Zephyr KB target {zephyr_kb} does not have "
+                                f"inherited_from {board_name}"
+                            )
+                            retcode = 1
+                        ec_to_board[zephyr_kb][board_name] = True
+                    ish = (
+                        software_config.get("firmware", {})
+                        .get("build-targets", {})
+                        .get("ish", None)
+                    )
+                    if ish:
+                        if ish not in ec_to_board:
+                            print(
+                                f"ERROR: Unknown ISH target {ish} in {cfg_path}"
+                            )
+                            retcode = 1
+                        elif board_name not in ec_to_board[ish]:
+                            print(
+                                f"ERROR: ISH target {ish} does not have "
+                                f"inherited_from {board_name}"
+                            )
+                            retcode = 1
+                        ec_to_board[ish][board_name] = True
+                    fp = software_config.get("fingerprint", {}).get(
+                        "board", None
+                    )
+                    if fp and fp not in LEGACY_TARGETS:
+                        if fp not in ec_to_board:
+                            print(
+                                f"ERROR: Unknown fingerprint target {fp} in {cfg_path}"
+                            )
+                            retcode = 1
+                        elif (
+                            board_name not in ec_to_board[fp]
+                            and board_name not in LEGACY_TARGETS
+                        ):
+                            print(
+                                f"ERROR: Fingerprint target {fp} does not have "
+                                f"inherited_from {board_name}"
+                            )
+                            retcode = 1
+                        ec_to_board[fp][board_name] = True
     for zephyr_ec, boards in ec_to_board.items():
         for board, found in boards.items():
-            if not found:
+            if not found and board not in UNUSED_INHERITED_FROM:
                 print(
                     f"ERROR: Zephyr target {zephyr_ec} has unexpected "
                     f"inherited_from of {board}"
                 )
                 retcode = 1
+        if not boards and zephyr_ec not in UNUSED_BOARDS:
+            print(f"ERROR: Zephyr target {zephyr_ec} is not used anywhere")
+            retcode = 1
 
     return retcode
 

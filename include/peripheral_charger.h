@@ -9,7 +9,7 @@
 #include "atomic.h"
 #include "common.h"
 #include "ec_commands.h"
-#include "gpio.h"
+#include "gpio_signal.h"
 #include "queue.h"
 #include "stdbool.h"
 #include "task.h"

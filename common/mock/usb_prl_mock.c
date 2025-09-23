@@ -52,15 +52,17 @@ void mock_prl_reset(void)
 	}
 }
 
-void prl_end_ams(int port)
-{
-}
-
 void prl_execute_hard_reset(int port)
 {
 	mock_prl_port[port].last_ctrl_msg = 0;
 	mock_prl_port[port].last_data_msg = 0;
 	mock_prl_port[port].last_tx_type = TCPCI_MSG_TX_HARD_RESET;
+}
+
+/* LCOV_EXCL_START - These mocks just avoid linker errors with stubs. */
+
+void prl_end_ams(int port)
+{
 }
 
 void prl_set_data_role_check(int port, bool enable)
@@ -89,6 +91,8 @@ __overridable bool prl_is_busy(int port)
 void prl_reset_soft(int port)
 {
 }
+
+/* LCOV_EXCL_STOP */
 
 void prl_send_ctrl_msg(int port, enum tcpci_msg_type type,
 		       enum pd_ctrl_msg_type msg)
