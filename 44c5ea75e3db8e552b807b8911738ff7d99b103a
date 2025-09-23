@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bbe055_4fafadf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2025-09-23T20:00:08Z",
+      "side": 1,
+      "message": "We should not be adding board specific code. This is something we\u0027ll run into with all platforms so it should be fixed in the common logic. Uldrenite\u0027s sensor.c calls gmr_tablet_switch_disable() when it detects it\u0027s running in the EC and is in clamshell. That call ends up calling `gpio_disable_interrupt(GPIO_TABLET_MODE_L);` which should have disabled the interrupt and later calls `tablet_disable();` which should also enable the peripherals. It seems to me that the implementation of `tablet_disable()` might be bailing out early and not actually enabling the peripherals.",
+      "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
