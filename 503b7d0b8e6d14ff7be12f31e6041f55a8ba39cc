@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81805e80_39f19a9d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 72
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-23T22:20:09Z",
+      "side": 1,
+      "message": "\u003e did you suggest that I add this function to ec_cmd_api.h? \n\nYes, all of these helper functions appear to be in that file. Note that you don\u0027t have to use all those magic macros. There are some examples at the top of the file that don\u0027t use them, so you could probably copy/paste your current implementation into that file.\n\n\u003e By the way, do you have any concerns if I modify the helper function from\n\nYou\u0027re just renaming to  `_v2`? Seems fine.",
+      "parentUuid": "d57633e1_0f742c26",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 47
+      },
+      "revId": "503b7d0b8e6d14ff7be12f31e6041f55a8ba39cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed9b12d6_ad542ad7",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_shim.cc",
         "patchSetId": 72
