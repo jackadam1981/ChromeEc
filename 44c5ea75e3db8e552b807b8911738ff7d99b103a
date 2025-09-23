@@ -34,6 +34,24 @@
       "parentUuid": "06bbe055_4fafadf1",
       "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c235c96_4c323c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-09-23T23:30:37Z",
+      "side": 1,
+      "message": "I think the issue is one of timing. Or possibly there is always an event at init time to check the value of GPIO_TABLET_MODE_L as there may not be an edge to trigger an interrupt if it\u0027s already at 0 when the EC reboots. \n\nThe interrupt handler calls lid_angle_peripheral_enable(0) and this in turn appears to trigger something that is clearing the refresh bit in boot_keys_value. The interrupt is subsequently disabled, but by this time it\u0027s already too late as the refresh bit has already been cleared.",
+      "parentUuid": "e026a483_f72e07b8",
+      "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
