@@ -1,4 +1,4 @@
-/* Copyright 2024 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -17,18 +17,27 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
 
-#define COL_NUM 3
+#define COL_NUM 4
 #define ROW_NUM 2
+#define THERMAL_SAMPLE_CNT 5
 
-static int thermals[5], time[ROW_NUM][COL_NUM];
+#define TEMP_UPPER_ZONE3 65
+#define TEMP_UPPER_ZONE2 57
+#define TEMP_UPPER_ZONE1 50
+#define TEMP_LOWER_ZONE1 48
+#define TEMP_LOWER_ZONE2 55
+#define TEMP_LOWER_ZONE3 60
+
+static int thermals[THERMAL_SAMPLE_CNT], time[ROW_NUM][COL_NUM];
 static int thermal_cyc;
 static int current = -1;
 static int charger_temp_ave_bef, charger_temp_ave;
 
 enum {
 	TEMP_ZONE_0, /* not limit */
-	TEMP_ZONE_1, /* 1000mA */
-	TEMP_ZONE_2, /* 500mA */
+	TEMP_ZONE_1, /* 1500mA */
+	TEMP_ZONE_2, /* 1056mA */
+	TEMP_ZONE_3, /* 500mA */
 } temp_zone = TEMP_ZONE_0;
 
 /*
@@ -55,7 +64,7 @@ static void clear_remaining_array(int arr[][COL_NUM], int row, int exceptrow,
 }
 
 /* Called by hook task every hook second (1 sec) */
-static void average_tempature(void)
+static void average_temperature(void)
 {
 	int charger_temp, charger_temp_c;
 	int charger_temp_sum = 0;
@@ -63,21 +72,22 @@ static void average_tempature(void)
 
 	if (!extpower_is_present())
 		return;
+	return;
 	/*
 	 * Keep track of battery temperature range:
 	 *
-	 *     ZONE_0  ZONE_1   ZONE_2
-	 * --->------>-------->--- Temperature (C)
-	 *    0      53       70
-	 *     ZONE_0  ZONE_1   ZONE_2
-	 * ---<------<--------<--- Temperature (C)
-	 *    0      48        65
+	 *     ZONE_0  ZONE_1   ZONE_2  ZONE_3
+	 * --->------>-------->-------->------>--- Temperature (C)
+	 *    0      50       57       65
+	 *     ZONE_0  ZONE_1   ZONE_2  ZONE_3
+	 * ---<------<--------<--------<------<--- Temperature (C)
+	 *    0      48        55       60
 	 */
-	temp_sensor_read(
-		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(charger_bc12_port1)),
-		&charger_temp);
+	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
+			 &charger_temp);
 
 	charger_temp_c = K_TO_C(charger_temp);
+
 	/* Abnormal value processing, limited to 1000ma */
 	if (charger_temp_c > 120) {
 		current = 1000;
@@ -85,32 +95,40 @@ static void average_tempature(void)
 	}
 
 	thermals[thermal_cyc] = charger_temp_c;
-	thermal_cyc = (thermal_cyc + 1) % 5;
-	for (int i = 0; i < 5; i++)
+	thermal_cyc = (thermal_cyc + 1) % THERMAL_SAMPLE_CNT;
+	for (int i = 0; i < THERMAL_SAMPLE_CNT; i++)
 		charger_temp_sum += thermals[i];
 
 	charger_temp_ave_bef = charger_temp_ave;
-	charger_temp_ave = (charger_temp_sum + 2.5) / 5;
+	charger_temp_ave = (charger_temp_sum + 2.5) / THERMAL_SAMPLE_CNT;
 
 	if ((charger_temp_ave - charger_temp_ave_bef) > 0) {
 		temperature_increase = 1;
-	} else if ((charger_temp_ave - charger_temp_ave_bef) = < 0) {
+	} else if ((charger_temp_ave - charger_temp_ave_bef) < 0) {
 		temperature_increase = 0;
 	}
 
-	if (thermals[4]) {
+	if (thermals[THERMAL_SAMPLE_CNT - 1]) {
 		if (temperature_increase) {
-			if (charger_temp_ave >= 60 && temp_zone <= TEMP_ZONE_2)
+			if (charger_temp_ave >= TEMP_UPPER_ZONE3 &&
+			    temp_zone <= TEMP_ZONE_3)
+				clear_remaining_array(time, ROW_NUM, 0, 3);
+			else if (charger_temp_ave >= TEMP_UPPER_ZONE2 &&
+				 temp_zone <= TEMP_ZONE_2)
 				clear_remaining_array(time, ROW_NUM, 0, 2);
-			else if (charger_temp_ave >= 50 &&
+			else if (charger_temp_ave >= TEMP_UPPER_ZONE1 &&
 				 temp_zone <= TEMP_ZONE_1)
 				clear_remaining_array(time, ROW_NUM, 0, 1);
 		} else {
-			if (charger_temp_ave < 45 && temp_zone >= TEMP_ZONE_1)
+			if (charger_temp_ave < TEMP_LOWER_ZONE1 &&
+			    temp_zone >= TEMP_ZONE_1)
 				clear_remaining_array(time, ROW_NUM, 1, 0);
-			else if (charger_temp_ave < 55 &&
-				 temp_zone >= TEMP_ZONE_2)
+			if (charger_temp_ave < TEMP_LOWER_ZONE2 &&
+			    temp_zone >= TEMP_ZONE_2)
 				clear_remaining_array(time, ROW_NUM, 1, 1);
+			else if (charger_temp_ave < TEMP_LOWER_ZONE3 &&
+				 temp_zone >= TEMP_ZONE_3)
+				clear_remaining_array(time, ROW_NUM, 1, 2);
 		}
 	}
 
@@ -130,14 +148,17 @@ static void average_tempature(void)
 		current = -1;
 		break;
 	case TEMP_ZONE_1:
-		current = 1000;
+		current = 1500;
 		break;
 	case TEMP_ZONE_2:
+		current = 1056;
+		break;
+	case TEMP_ZONE_3:
 		current = 500;
 		break;
 	}
 }
-DECLARE_HOOK(HOOK_SECOND, average_tempature, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_SECOND, average_temperature, HOOK_PRIO_DEFAULT);
 
 int charger_profile_override(struct charge_state_data *curr)
 {
