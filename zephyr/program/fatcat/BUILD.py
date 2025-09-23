@@ -7,16 +7,20 @@
 
 def register_npcx9_project(
     project_name,
+    chip="npcx9/npcx9m7f",
+    zephyr_board=None,
     extra_kconfig_files=(),
     inherited_from=None,
 ):
     """Register an npcx9 based variant of fatcat."""
+    if zephyr_board is None:
+        zephyr_board = chip
     if inherited_from is None:
         inherited_from = ["fatcat"]
 
     register_npcx_project(
         project_name=project_name,
-        zephyr_board="npcx9/npcx9m7f",
+        zephyr_board=zephyr_board,
         dts_overlays=[
             here / project_name / "project.overlay",
         ],
@@ -85,6 +89,7 @@ def register_realtek_project(
 
 register_npcx9_project(
     project_name="fatcatrvp-npcx",
+    chip="npcx9/npcx9m7f",
     extra_kconfig_files=[
         here / ".." / "intelrvp" / "zephyr_ap_pwrseq.conf",
         here / ".." / "intelrvp" / "ptlrvp" / "pd.conf",
@@ -103,6 +108,12 @@ register_it8xxx2_project(
 
 register_npcx9_project(
     project_name="francka",
+    chip="npcx9/npcx9m7f",
+)
+
+register_npcx9_project(
+    project_name="ruby",
+    chip="npcx9/npcx9m7fb",
 )
 
 register_it8xxx2_project(
@@ -159,6 +170,7 @@ register_ish_project(
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="francka", addr=0x80144)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ruby", addr=0x40144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="felino4es", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="kinmen", addr=0x60098)
