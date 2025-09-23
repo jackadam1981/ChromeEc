@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7505d4b_458702ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-23T03:31:47Z",
+      "side": 1,
+      "message": "We should look into [CONFIG_LOG_RUNTIME_FILTERING](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_RUNTIME_FILTERING) or our own custom way we can dynamically control the logging for PDC.",
+      "revId": "4d538c883f82696e0a207f5f44594ed3adf042ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
