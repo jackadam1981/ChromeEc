@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f969603_dd258b2c",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-23T23:12:50Z",
+      "side": 1,
+      "message": "Done, I relocated all corresponding code into `x86_non_dsx` directory and created `handlers` and `drv_handlers`.",
+      "parentUuid": "f9c36d12_df10a922",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "cd7cff042a113520b5452bbaf700507316292321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea82ebb6_24a75353",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-23T17:49:36Z",
       "side": 1,
       "message": "Can you add doxygen comments for these functions?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "cd7cff042a113520b5452bbaf700507316292321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e75d2c_58605d5c",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-09-23T23:12:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ea82ebb6_24a75353",
       "range": {
         "startLine": 37,
         "startChar": 0,
