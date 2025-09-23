@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91795e20_3337cdf6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-09-23T05:40:51Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "f9a6d9ce_41e005d8",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "5a90a9d048f6378405d34f6048973b0e57b667de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63b0a9b4_86e87feb",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 1
