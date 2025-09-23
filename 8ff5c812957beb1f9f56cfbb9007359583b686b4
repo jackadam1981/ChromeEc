@@ -94,6 +94,30 @@
       },
       "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a73e22_3727e4f9",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-23T18:05:53Z",
+      "side": 1,
+      "message": "I\u0027m still confused.  If the external signal has the ACTIVE_LOW setting, `gpio_pin_get_dt` returns the logical state of the external signal.  If the external signal is asserted to physical low, `gpio_pin_get_dt` returns 1.\n\nSo you shouldn\u0027t need to invert the result, provided the ACTIVE_LOW/ACTIVE_HIGH setting of both signals is correct.",
+      "parentUuid": "e4d4e64c_7e323d1c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
