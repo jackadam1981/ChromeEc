@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d57633e1_0f742c26",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 72
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-23T20:45:05Z",
+      "side": 1,
+      "message": "did you suggest that I add this function to `ec_cmd_api.h`? If this is the case, I do not believe I can calculate the size there. The size potentially can be a large number. If you suggested that I add it inside the helper header, this is a simple change.\n\nThis is similar to [ec_cmd_battery_config](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_cmd_api.h;l\u003d48?q\u003dec_cmd_api.h\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d47-,48,-49):\n\n```\nstatic inline int ec_cmd_battery_config(CROS_EC_COMMAND_INFO *h, uint8_t *r)\n{\n\treturn CROS_EC_COMMAND(h, EC_CMD_BATTERY_CONFIG, 0, NULL, 0, r,\n\t\t\t       BATT_CONF_MAX_SIZE);\n}\n```\n\nBy the way, do you have any concerns if I modify the helper function from\n\n```\nuint16_t fpinfo_cmd_helper(struct ec_response_fp_info_v2 *response)\n{\n\tstatic const size_t test_info_buffer_size \u003d\n\t\tsizeof(struct ec_response_fp_info_v2) +\n\t\tsizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;\n\n\tstruct host_cmd_handler_args args \u003d\n\t\tBUILD_HOST_COMMAND_RESPONSE(EC_CMD_FP_INFO, 2, *response);\n\targs.response_max \u003d test_info_buffer_size;\n\n\treturn host_command_process(\u0026args);\n}\n```\n\nto\n\n```\nuint16_t ec_cmd_fp_info_v2(struct ec_response_fp_info_v2 *response)\n{\n\tstatic const size_t test_info_buffer_size \u003d\n\t\tsizeof(struct ec_response_fp_info_v2) +\n\t\tsizeof(struct fp_image_frame_params) * NUM_IMAGE_CAPTURE_TYPES;\n\n\tstruct host_cmd_handler_args args \u003d\n\t\tBUILD_HOST_COMMAND_RESPONSE(EC_CMD_FP_INFO, 2, *response);\n\targs.response_max \u003d test_info_buffer_size;\n\n\treturn host_command_process(\u0026args);\n}\n```\n\nand then use it as is?",
+      "parentUuid": "a1f000d7_a86b9ceb",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 47
+      },
+      "revId": "503b7d0b8e6d14ff7be12f31e6041f55a8ba39cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed9b12d6_ad542ad7",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_shim.cc",
         "patchSetId": 72
