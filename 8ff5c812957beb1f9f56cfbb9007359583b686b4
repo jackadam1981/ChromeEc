@@ -118,6 +118,30 @@
       },
       "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2418e0_fb969912",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1427817
+      },
+      "writtenOn": "2025-09-23T18:17:24Z",
+      "side": 1,
+      "message": "Ok I misspoke due to different wording between how microchip defines active and how the code is actually defining it. The Internal pin is active low as well since the flash protection can only be removed when the pin is high. I\u0027ll test out configuring it to active low as well and verify that everything still works",
+      "parentUuid": "c7a73e22_3727e4f9",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
