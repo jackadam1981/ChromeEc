@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6993a7_d08a15e2",
+        "filename": "include/charger.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-23T02:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd2dbb12_67312f88",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 30
+      },
+      "revId": "8f1e8bf71c53353925ca6f898c624ac9e048e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d621ac_8308ff80",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-22T21:55:29Z",
       "side": 1,
       "message": "No need to plumb this to the legacy EC namespace.  This feature is only supported by Zephyr EC builds.",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 0
+      },
+      "revId": "8f1e8bf71c53353925ca6f898c624ac9e048e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4233cda_b67b9961",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-23T02:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d621ac_8308ff80",
       "range": {
         "startLine": 482,
         "startChar": 0,
