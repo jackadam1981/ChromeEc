@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d2802b_13d014d8",
+        "filename": "util/zephyr_check_compliance_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-09-23T09:47:16Z",
+      "side": 0,
+      "message": "mock-py3 and pathspec-py3 are not included in the util/zephyr_check_compliance.py.vpytohn3. The unittest passes so I guess it\u0027s fine to remove those.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "a6a4765a500d29f7aa6e632e1de5fd2ee460e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
