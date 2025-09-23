@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da416eb3_6f9e2b2e",
+        "filename": "zephyr/program/tanjiro/tanjiro/project.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-09-23T06:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c511470_3c5ad616",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "fcabab67411c8b199ccff0580532f188599fadc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "259e8239_4018ee55",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-18T13:38:40Z",
       "side": 1,
       "message": "should be MOTIONSENSE_LOC_LID",
+      "range": {
+        "startLine": 140,
+        "startChar": 15,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "fcabab67411c8b199ccff0580532f188599fadc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f7eef6_a31490ff",
+        "filename": "zephyr/program/tanjiro/tanjiro/project.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-09-23T06:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "259e8239_4018ee55",
       "range": {
         "startLine": 140,
         "startChar": 15,
