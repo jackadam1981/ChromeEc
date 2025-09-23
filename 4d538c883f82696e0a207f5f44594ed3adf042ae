@@ -16,6 +16,24 @@
       "message": "We should look into [CONFIG_LOG_RUNTIME_FILTERING](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_LOG_RUNTIME_FILTERING) or our own custom way we can dynamically control the logging for PDC.",
       "revId": "4d538c883f82696e0a207f5f44594ed3adf042ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e91fd0e_8d03d0d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-23T16:00:36Z",
+      "side": 1,
+      "message": "I want to, but Zephyr\u0027s nicer logging features (non-minimal) increases the code size by a ridiculous amount. Doing it our own way would probably be better.",
+      "parentUuid": "b7505d4b_458702ab",
+      "revId": "4d538c883f82696e0a207f5f44594ed3adf042ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
