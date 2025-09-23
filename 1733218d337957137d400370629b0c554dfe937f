@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "808e97b8_64eaa792",
+        "filename": "include/charger.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-23T02:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f7fd3f_111908b8",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 59
+      },
+      "revId": "1733218d337957137d400370629b0c554dfe937f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bba0198_d683a71c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-22T22:07:36Z",
       "side": 1,
       "message": "Delete",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 24
+      },
+      "revId": "1733218d337957137d400370629b0c554dfe937f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa293d1_388b8d1b",
+        "filename": "include/charger.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-23T02:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bba0198_d683a71c",
       "range": {
         "startLine": 310,
         "startChar": 0,
