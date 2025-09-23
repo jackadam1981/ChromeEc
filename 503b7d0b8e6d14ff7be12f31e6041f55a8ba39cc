@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1f000d7_a86b9ceb",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 72
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-23T18:31:58Z",
+      "side": 1,
+      "message": "You probably need to calculate the size, similar to how you calculate `test_info_buffer_size` in `fpinfo_cmd_helper`. What is the value of that?",
+      "parentUuid": "364f53d2_5be06a4e",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 47
+      },
+      "revId": "503b7d0b8e6d14ff7be12f31e6041f55a8ba39cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed9b12d6_ad542ad7",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_shim.cc",
         "patchSetId": 72
