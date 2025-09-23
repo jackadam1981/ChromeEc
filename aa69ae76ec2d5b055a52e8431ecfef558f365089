@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a51dca_80cfb21d",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-23T15:18:00Z",
+      "side": 1,
+      "message": "This should be enabled for the application if the UPLM driver is enabled.\n\nIn this [file]( https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/Kconfig), add the following:\n```\nconfig POWEROFF\n    # Realtek ULPM support requires POWEROFF\n    default y if SOC_RTS5912_ULPM\n```\n\nThis could be added to the parent CL",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "aa69ae76ec2d5b055a52e8431ecfef558f365089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
