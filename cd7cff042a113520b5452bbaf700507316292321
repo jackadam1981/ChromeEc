@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c36d12_df10a922",
+        "filename": "zephyr/subsys/ap_pwrseq/CMakeLists.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-23T17:49:36Z",
+      "side": 1,
+      "message": "Nit - about prefixing with `ap_pwrseq_driver_` so it\u0027s clear which files are used for the AP_PWRSEQ_DRIVER option.\n\nAlternatively, you could move the pwrseq_driver files into a sub-directory, but this should be done as a follow up.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "cd7cff042a113520b5452bbaf700507316292321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea82ebb6_24a75353",
+        "filename": "zephyr/subsys/ap_pwrseq/include/x86_non_dsx_common_pwrseq_sm_handler.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-23T17:49:36Z",
+      "side": 1,
+      "message": "Can you add doxygen comments for these functions?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "cd7cff042a113520b5452bbaf700507316292321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
