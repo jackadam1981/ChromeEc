@@ -1,4 +1,4 @@
-/* Copyright 2024 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -73,9 +73,8 @@ static void average_tempature(void)
 	 * ---<------<--------<--- Temperature (C)
 	 *    0      48        65
 	 */
-	temp_sensor_read(
-		TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(charger_bc12_port1)),
-		&charger_temp);
+	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_charger)),
+			 &charger_temp);
 
 	charger_temp_c = K_TO_C(charger_temp);
 	/* Abnormal value processing, limited to 1000ma */
@@ -94,7 +93,7 @@ static void average_tempature(void)
 
 	if ((charger_temp_ave - charger_temp_ave_bef) > 0) {
 		temperature_increase = 1;
-	} else if ((charger_temp_ave - charger_temp_ave_bef) = < 0) {
+	} else if ((charger_temp_ave - charger_temp_ave_bef) <= 0) {
 		temperature_increase = 0;
 	}
 
