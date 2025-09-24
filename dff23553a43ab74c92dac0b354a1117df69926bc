@@ -46,6 +46,30 @@
       },
       "revId": "dff23553a43ab74c92dac0b354a1117df69926bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6d271c_0fdb3f12",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-24T21:54:01Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n\n[DEBUG_SHI](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/registers.h;l\u003d68?q\u003dplatform%2Fec%20DEBUG_SHI#:~:text\u003d67-,68,-69) is defined as 0. We cannot use the macro `IS_ENABLED` when it is defined to 0. I am getting a compilation error:\n\n```\nIn file included from ./builtin/assert.h:11,\n\nfrom chip/npcx/shi.c:13:\n\nIn function \u0027log_unexpected_state\u0027,\n\ninlined from \u0027shi_int_handler\u0027 at chip/npcx/shi.c:737:4:\n\ninclude/common.h:515:38: error: call to \u0027IS_ENABLED_BAD_ARGS_DEBUG_SHI\u0027 declared with attribute error: DEBUG_SHI must be \u003cblank\u003e, or not defined.\n\n515 | IS_ENABLED_BAD_ARGS##unique(); \\\n\n| ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nIn function \u0027log_unexpected_state\u0027,\n\ninlined from \u0027shi_int_handler\u0027 at chip/npcx/shi.c:785:4:\n\ninclude/common.h:515:38: error: call to \u0027IS_ENABLED_BAD_ARGS_DEBUG_SHI\u0027 declared with attribute error: DEBUG_SHI must be \u003cblank\u003e, or not defined.\n\n515 | IS_ENABLED_BAD_ARGS##unique(); \\\n\n| ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nIn function \u0027log_unexpected_state\u0027,\n\ninlined from \u0027shi_int_handler\u0027 at chip/npcx/shi.c:836:4:\n\ninclude/common.h:515:38: error: call to \u0027IS_ENABLED_BAD_ARGS_DEBUG_SHI\u0027 declared with attribute error: DEBUG_SHI must be \u003cblank\u003e, or not defined.\n\n515 | IS_ENABLED_BAD_ARGS##unique(); \\\n\n| ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nmake[2]: *** [Makefile.rules:603: build/marzipan/RW/chip/npcx/shi.o] Error 1\n\nmake[1]: *** [Makefile.rules:299: proj-marzipan] Error 2\n\nmake[1]: *** Waiting for unfinished jobs....\n```",
+      "parentUuid": "b4122844_79445fe6",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 6
+      },
+      "revId": "dff23553a43ab74c92dac0b354a1117df69926bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
