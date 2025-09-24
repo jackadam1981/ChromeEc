@@ -88,6 +88,24 @@
       "parentUuid": "5b6e492e_e1133c77",
       "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd31a5cf_61fcd620",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-09-24T02:36:37Z",
+      "side": 1,
+      "message": "I upload CL [uldrenite: Adjust the priority of gmr_tablet_switch()](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6975695.\n\nTest cutoff with hotkey success.\n\n@peress@google.com, @scollyer@chromium.org, please help to review.",
+      "parentUuid": "5b6e492e_e1133c77",
+      "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
