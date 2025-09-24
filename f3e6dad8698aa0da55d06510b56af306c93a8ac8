@@ -39,6 +39,52 @@
       },
       "revId": "f3e6dad8698aa0da55d06510b56af306c93a8ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eba89d4_69b9dc76",
+        "filename": "docs_rst/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T23:06:20Z",
+      "side": 1,
+      "message": "```suggestion\nYou can either navigate to\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "f3e6dad8698aa0da55d06510b56af306c93a8ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca26576a_62391500",
+        "filename": "zephyr/lib/math/docs.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T23:06:20Z",
+      "side": 1,
+      "message": "Nit - this should have some hard line breaks.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 260
+      },
+      "revId": "f3e6dad8698aa0da55d06510b56af306c93a8ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
