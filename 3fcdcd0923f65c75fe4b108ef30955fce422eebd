@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39eb0220_b3ac7e73",
+        "filename": "zephyr/test/charger/charge/src/charge_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:08:48Z",
+      "side": 1,
+      "message": "Non-blocking nit - why are the PDC emulators 1-indexed?",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "3fcdcd0923f65c75fe4b108ef30955fce422eebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab5a416_37ae6d48",
+        "filename": "zephyr/test/charger/charge/src/charge_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:08:48Z",
+      "side": 1,
+      "message": "This is only works for `CONFIG_OCPC\u003dn`.  With OCPC, this will return -1 for an insufficient adapter.\n\nYou could try to make this test OCPC compatible, or you could just add a build assert if OCPC is enabled.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 39
+      },
+      "revId": "3fcdcd0923f65c75fe4b108ef30955fce422eebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
