@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a3f2cc_e74aa6f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:59:32Z",
+      "side": 1,
+      "message": "The logo files are huge.  Considering how often we create branches, we don\u0027t want to check-in a 700K bitmap file.",
+      "revId": "f3e6dad8698aa0da55d06510b56af306c93a8ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9d089c6_26f62bc0",
