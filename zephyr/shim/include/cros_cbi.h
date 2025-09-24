@@ -84,28 +84,14 @@ enum cbi_fw_config_value_id {
 };
 /* clang-format on */
 
-/**
- * @brief Initialize CBI SSFC
- *
- * The function has to be called before checking SSFC values.
- */
-void cros_cbi_ssfc_init(void);
+#ifdef CONFIG_CROS_EC_CBI_FW_CONFIG_PARSER
 
 /**
- * @brief Initialize CBI FW
+ * @brief Initialize CBI FW_CONFIG
  *
  * The function has to be called before getting CBI FW_CONFIG.
  */
 void cros_cbi_fw_config_init(void);
-
-/**
- * @brief Check if the CBI SSFC value matches the one in the EEPROM
- *
- * @param value_id The SSFC value to check in EEPROM.
- *
- * @return true If matches, false if not.
- */
-bool cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id value_id);
 
 /**
  * @brief Retrieve the value of the FW_CONFIG field
@@ -119,6 +105,54 @@ bool cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id value_id);
  */
 int cros_cbi_get_fw_config(enum cbi_fw_config_field_id field_id,
 			   uint32_t *value);
+
+#else /* !CONFIG_CROS_EC_CBI_FW_CONFIG_PARSER */
+
+static inline void cros_cbi_fw_config_init(void)
+{
+}
+
+static inline int cros_cbi_get_fw_config(enum cbi_fw_config_field_id field_id,
+					 uint32_t *value)
+{
+	ARG_UNUSED(field_id);
+	ARG_UNUSED(value);
+	return -ENODEV;
+}
+
+#endif /* CONFIG_CROS_EC_CBI_FW_CONFIG_PARSER */
+
+#ifdef CONFIG_CROS_EC_CBI_SSFC_PARSER
+
+/**
+ * @brief Initialize CBI SSFC
+ *
+ * The function has to be called before checking SSFC values.
+ */
+void cros_cbi_ssfc_init(void);
+
+/**
+ * @brief Check if the CBI SSFC value matches the one in the CBI
+ *
+ * @param value_id The SSFC value to check in CBI.
+ *
+ * @return true If matches, false if not.
+ */
+bool cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id value_id);
+
+#else /* !CONFIG_CROS_EC_CBI_SSFC_PARSER */
+
+static inline void cros_cbi_ssfc_init(void)
+{
+}
+
+static inline bool cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id value_id)
+{
+	ARG_UNUSED(value_id);
+	return false;
+}
+
+#endif /* CONFIG_CROS_EC_CBI_SSFC_PARSER */
 
 #ifdef CONFIG_ZTEST
 /**
