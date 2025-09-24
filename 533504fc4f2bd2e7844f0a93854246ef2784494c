@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2a0096_f649f0c4",
+        "filename": "test/sbs_charging.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T21:56:21Z",
+      "side": 1,
+      "message": "The test config needs to enable the hybrid boost feature which should then add coverage to charge_state.c",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "533504fc4f2bd2e7844f0a93854246ef2784494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
