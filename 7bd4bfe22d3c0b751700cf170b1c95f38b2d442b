@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17f035b1_b579f383",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6658,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-24T16:24:34Z",
+      "side": 1,
+      "message": "It ties to CBI and its name contains a \"cbi_\" prefix. Many other similar conversions in files, for example, \"battery_\", \"typec_\", \"fp_\", and \"chipset_\", which don\u0027t contains the \"ec_\" prefix.\n\nDoes coreboot use this struct directly, or does it have its own struct for it, which would then require an \"ec_\" prefix to avoid name conflict? If the latter is the case, I can move this declaration to another EC header file.",
+      "parentUuid": "88915462_e513e713",
+      "range": {
+        "startLine": 6658,
+        "startChar": 7,
+        "endLine": 6658,
+        "endChar": 15
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3841f072_a1b72763",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2025-09-24T04:00:39Z",
       "side": 1,
       "message": "(Optional) Do you think `uint8_t data[20]` is more general?",
+      "range": {
+        "startLine": 6659,
+        "startChar": 1,
+        "endLine": 6659,
+        "endChar": 35
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4188da7d_56443468",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6659,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-24T16:24:34Z",
+      "side": 1,
+      "message": "Why? The UFSC fields are precisely designed not to cross a 32-bit boundary. Using a `uint32_t` reduces the complexity of parsing a field where a boundary is crossed. Since crossing an 8-bit boundary exists in some fields, special handling is needed.",
+      "parentUuid": "3841f072_a1b72763",
       "range": {
         "startLine": 6659,
         "startChar": 1,
