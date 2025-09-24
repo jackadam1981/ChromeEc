@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5b9b83_7c2603b7",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_enroll.cc",
+        "patchSetId": 72
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-24T17:29:41Z",
+      "side": 1,
+      "message": "ok I created this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6980484 to introduce the new API for FP_INFO command version 2.",
+      "parentUuid": "81805e80_39f19a9d",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 47
+      },
+      "revId": "503b7d0b8e6d14ff7be12f31e6041f55a8ba39cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9b12d6_ad542ad7",
