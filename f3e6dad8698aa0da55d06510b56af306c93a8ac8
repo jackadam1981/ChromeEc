@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9d089c6_26f62bc0",
+        "filename": "docs_rst/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:53:18Z",
+      "side": 1,
+      "message": "Should these instruction be run inside or outside the chroot?\n\ngo/install-bazel includes instructions for install bazelisk.  Should that be used instead?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "f3e6dad8698aa0da55d06510b56af306c93a8ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
