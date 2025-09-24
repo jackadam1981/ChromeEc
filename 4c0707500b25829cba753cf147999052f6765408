@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b6ee55d5_8da8ce06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-09-24T11:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "395c2c01_19c6a45a",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d5587ec_2f43f459",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -284,6 +308,24 @@
       "side": 1,
       "message": "I guess 7 would be USB|DP|inverted. 31 would be USB|DP|inverted|HPD IRQ|HPD asserted. I guess those both make sense to me, although I\u0027m not sure why our test code set the polarity to inverted. (That shouldn\u0027t be relevant for this test. I wouldn\u0027t worry about it.)\n\nThat at least sounds consistent with our [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/dp_alt_mode.c;l\u003d633;drc\u003d59c226033dfecbd77867e7b15f45638ec259b894).\n\nPer the DP alt mode spec, v2.1, ss 5.2.4 DisplayPort Configure Command\n\u003e Before issuing the command, the DFP_U shall place the USB-C pins that are to be reconfigured to DisplayPort Configuration into the Safe state, as specified in USB-C (i.e., ensure that there is no USB on these pins). ... The UFP_U shall respond to this command with a USB PD Responder ACK response after ensuring that the reconfigured pins are connected to DisplayPort.\n\nFrom ss 5.2.4 DisplayPort Status Update Command\n\u003e The Enter Mode, DisplayPort Status Update, and DisplayPort Attention Commands do **not** result in a reconfiguration of pins on the USB-C connector. [emphasis theirs]\n\nBut the HPD bits aren\u0027t a pin reconfiguration, so they wouldn\u0027t be prohibited. AFAICT, what you\u0027re seeing is the intended behavior for the mux.\n\nYou might want to check the HPD bits of the mux config. I\u0027d suggest checking that or otherwise checking when `usb_mux_hpd_update` was called or checking the status of the HPD GPIO (`dp_hpd_gpio_set`), whichever is easiest to do in a test.",
       "parentUuid": "8a3110a1_aeef911e",
+      "revId": "4c0707500b25829cba753cf147999052f6765408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780f9fa9_df6932a8",
+        "filename": "zephyr/test/drivers/usbc_dp_mode/src/usbc_dp_mode_svdm_ver_21.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-09-24T11:09:37Z",
+      "side": 1,
+      "message": "Ok so currently tests pass.",
+      "parentUuid": "612a4f2a_08635358",
       "revId": "4c0707500b25829cba753cf147999052f6765408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
