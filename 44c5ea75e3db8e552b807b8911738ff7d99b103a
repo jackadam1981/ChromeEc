@@ -52,6 +52,24 @@
       "parentUuid": "e026a483_f72e07b8",
       "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6e492e_e1133c77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2025-09-24T01:59:55Z",
+      "side": 1,
+      "message": "You are right, this is timing issue. \nIn motionsense_init() to check clamshell mode to do gmr_tablet_switch_disable(), this priority is used HOOK_PRIO_DEFAULT. \n\nBut disable keyboard scan is in gmr_tablet_switch_init of lid_angle_peripheral_enable(0) which used HOOK_PRIO_POST_LID, this timing is early motionsense_init(). Cause KB scan disable cannot scan refresh key.\nI think we can change the gmr_tablet_switch_init priority to later than motionsense_init(). Please let me know for more advise.",
+      "parentUuid": "3c235c96_4c323c97",
+      "revId": "44c5ea75e3db8e552b807b8911738ff7d99b103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
