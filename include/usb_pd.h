@@ -985,6 +985,8 @@ struct pd_cable {
 
 #define PD_VDO_DPSTS_MF_MASK BIT(4)
 
+#define DP_STATUS_USB_CONFIG_REQ BIT(5)
+
 #define PD_VDO_DPSTS_HPD_IRQ(x) (((x) >> 8) & 1)
 #define PD_VDO_DPSTS_HPD_LVL(x) (((x) >> 7) & 1)
 #define PD_VDO_DPSTS_MF_PREF(x) (((x) >> 4) & 1)
