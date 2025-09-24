@@ -84,6 +84,24 @@ enum cbi_fw_config_value_id {
 };
 /* clang-format on */
 
+/*
+ * Macros are _INST_ types, so require DT_DRV_COMPAT to be defined.
+ */
+#define DT_DRV_COMPAT cros_ec_cbi_ufsc_value
+
+#define CBI_UFSC_VALUE_COMPAT DT_DRV_COMPAT
+#define CBI_UFSC_VALUE_ID(id) DT_CAT(CBI_UFSC_VALUE_ID_, id)
+#define CBI_UFSC_VALUE_ID_WITH_COMMA(id) CBI_UFSC_VALUE_ID(id),
+#define CBI_UFSC_VALUE_INST_ENUM(inst, _) \
+	CBI_UFSC_VALUE_ID_WITH_COMMA(DT_INST(inst, CBI_UFSC_VALUE_COMPAT))
+
+enum cbi_ufsc_value_id {
+	LISTIFY(DT_NUM_INST_STATUS_OKAY(CBI_UFSC_VALUE_COMPAT),
+		CBI_UFSC_VALUE_INST_ENUM, ()) CBI_UFSC_VALUE_COUNT
+};
+
+#undef DT_DRV_COMPAT
+
 #ifdef CONFIG_CROS_EC_CBI_FW_CONFIG_PARSER
 
 /**
@@ -150,6 +168,42 @@ static inline bool cros_cbi_ssfc_check_match(enum cbi_ssfc_value_id value_id)
 }
 
 #endif /* CONFIG_CROS_EC_CBI_SSFC_PARSER */
+
+#ifdef CONFIG_CROS_EC_CBI_UFSC_PARSER
+
+/**
+ * @brief Initialize CBI UFSC
+ *
+ * The function has to be called before getting CBI UFSC.
+ */
+void cros_cbi_ufsc_init(void);
+
+/**
+ * @brief Check if the UFSC field value matches a specific component value.
+ *
+ * This is the primary API for checking for second-sourced components. It reads
+ * the value of the field associated with the given `value_id` and compares it
+ * against the expected value for that `value_id`.
+ *
+ * @param value_id The enum ID of the component value to check against,
+ *                 generated from the "cros-ec,cbi-ufsc-value" node.
+ * @return True if the value in CBI for the parent field matches the value
+ *         of the specified `value_id` node. False otherwise.
+ */
+bool cros_cbi_ufsc_check_match(enum cbi_ufsc_value_id value_id);
+
+#else /* !CONFIG_CROS_EC_CBI_UFSC_PARSER */
+
+static inline void cros_cbi_ufsc_init(void)
+{
+}
+
+static inline bool cros_cbi_ufsc_check_match(enum cbi_ufsc_value_id value_id)
+{
+	return false;
+}
+
+#endif /* CONFIG_CROS_EC_CBI_UFSC_PARSER */
 
 #ifdef CONFIG_ZTEST
 /**
