@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "013dc7d7_47b2f80c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:37:25Z",
+      "side": 1,
+      "message": "Please add tests with this CL stack.\nYou can use the [emul_pct2075.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/emul_pct2075.c) emulator as an example.\n\nYou can also model the test on the [PCT2075 test](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/temp_sensor.c;l\u003d194;drc\u003d3d86e93e0034f21ff77d5487cfcf57ac2c07b43a)",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8045b967_8dfb942f",
         "filename": "driver/build.mk",
         "patchSetId": 3
@@ -14,6 +37,70 @@
       "writtenOn": "2025-09-23T16:43:56Z",
       "side": 1,
       "message": "Place it with alphabet order.",
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6868641_8016b0ca",
+        "filename": "driver/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:37:25Z",
+      "side": 1,
+      "message": "No need to add support for legacy EC, the change to build.mk can be removed.",
+      "parentUuid": "8045b967_8dfb942f",
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e298fef_e1d2a9c9",
+        "filename": "driver/temp_sensor/apl6012.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:37:25Z",
+      "side": 1,
+      "message": "No need for the CONFIG_ZEPHYR check.  This driver will only be used on Zephyr EC boards.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9da9c2_456bbcda",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4496,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:37:25Z",
+      "side": 1,
+      "message": "Delete - this sensor should only be used with Zephyr EC.",
+      "range": {
+        "startLine": 4496,
+        "startChar": 0,
+        "endLine": 4496,
+        "endChar": 72
+      },
       "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -43,6 +130,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0de78d65_6b6d20e3",
+        "filename": "include/driver/temp_sensor/apl6012.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:37:25Z",
+      "side": 1,
+      "message": "This driver won\u0027t be used on legacy EC platforms.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae67ef18_98877f13",
         "filename": "include/driver/temp_sensor/apl6012.h",
         "patchSetId": 3
@@ -54,6 +164,29 @@
       "writtenOn": "2025-09-23T16:43:56Z",
       "side": 1,
       "message": "Is the function implemented ?",
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b1bfa2_a5279b85",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:37:25Z",
+      "side": 1,
+      "message": "Delete - this won\u0027t be used with legacy EC",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 776,
+        "endChar": 0
+      },
       "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
