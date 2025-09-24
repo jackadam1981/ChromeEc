@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d07679_8d8a631f",
+        "filename": "common/charge_state.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-24T22:13:18Z",
+      "side": 1,
+      "message": "Nit - its odd to move the location of this function.  Can you just put this in the correct place on the CL that introduces this routine?",
+      "range": {
+        "startLine": 1759,
+        "startChar": 0,
+        "endLine": 1759,
+        "endChar": 64
+      },
+      "revId": "86ca1f256294c36a7599a47e1fdf2e40494d233b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
