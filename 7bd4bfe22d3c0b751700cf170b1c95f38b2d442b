@@ -16,6 +16,52 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8702917699559381121) is being automatically retried for the following reasons:\n- Some child builders are now retryable:arm64-generic-incremental-cq, cq-orchestrator\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88915462_e513e713",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6658,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-24T04:00:39Z",
+      "side": 1,
+      "message": "Can we add the \"ec_\" prefix as this is API used by external code? (I\u0027d say the same for `cbi_data_tag`, but it\u0027s too late)",
+      "range": {
+        "startLine": 6658,
+        "startChar": 7,
+        "endLine": 6658,
+        "endChar": 15
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3841f072_a1b72763",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6659,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-24T04:00:39Z",
+      "side": 1,
+      "message": "(Optional) Do you think `uint8_t data[20]` is more general?",
+      "range": {
+        "startLine": 6659,
+        "startChar": 1,
+        "endLine": 6659,
+        "endChar": 35
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
