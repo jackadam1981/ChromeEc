@@ -122,6 +122,8 @@ __override int board_get_version(void)
 	bom_id |= gpio_pin_get_dt(&bom_id_config[2]) << 2;
 
 	LOG_INF("BOM_ID:0x%x", bom_id);
+
+	ptl_board_id |= (bom_id << 6);
 #endif
 #if RVP_ID_HAS_FAB_GPIOS
 	/*
@@ -133,7 +135,7 @@ __override int board_get_version(void)
 
 	LOG_INF("FAB_ID:0x%x", fab_id);
 
-	ptl_board_id |= (fab_id << 8);
+	ptl_board_id |= (fab_id << 9);
 #endif
 
 	return ptl_board_id;
