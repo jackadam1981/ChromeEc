@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ef4786_dc09f9ae",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T03:01:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54d3289_768216c0",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 824,
+        "endChar": 52
+      },
+      "revId": "34693e3eb95aa7c6989bb1405569fd9e80ec54e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dadc7f0e_6520274d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-24T21:52:16Z",
       "side": 1,
       "message": "Nit - no need to guard the prototype.  Leaving unguarded allows callers to use `if (IS_ENABLED())` style guards.",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 52
+      },
+      "revId": "34693e3eb95aa7c6989bb1405569fd9e80ec54e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6f4eef_f33d4f26",
+        "filename": "include/charger.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T03:01:34Z",
+      "side": 1,
+      "message": "Ah, that explains why I started seeing compile errors. Done.",
+      "parentUuid": "dadc7f0e_6520274d",
       "range": {
         "startLine": 309,
         "startChar": 0,
