@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf1b809_3ea26d5f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6658,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-25T06:53:04Z",
+      "side": 1,
+      "message": "Yes, I plan to use this struct in coreboot. But no, there\u0027s no naming conflict.\n\nAs this file is ec_commands.h, I\u0027d expect all APIs/structs to have the \"ec_\" prefix to a have better namespace. However, as there are already exceptions in this file, using `cbi_` seems fine.",
+      "parentUuid": "17f035b1_b579f383",
+      "range": {
+        "startLine": 6658,
+        "startChar": 7,
+        "endLine": 6658,
+        "endChar": 15
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3841f072_a1b72763",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Why? The UFSC fields are precisely designed not to cross a 32-bit boundary. Using a `uint32_t` reduces the complexity of parsing a field where a boundary is crossed. Since crossing an 8-bit boundary exists in some fields, special handling is needed.",
       "parentUuid": "3841f072_a1b72763",
+      "range": {
+        "startLine": 6659,
+        "startChar": 1,
+        "endLine": 6659,
+        "endChar": 35
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3edb8b85_1b9fb2f0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6659,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-25T06:53:04Z",
+      "side": 1,
+      "message": "\u003e The UFSC fields are precisely designed not to cross a 32-bit boundary\n\nAck. I didn\u0027t know that.",
+      "parentUuid": "4188da7d_56443468",
       "range": {
         "startLine": 6659,
         "startChar": 1,
