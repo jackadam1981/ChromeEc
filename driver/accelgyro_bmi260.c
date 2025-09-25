@@ -41,6 +41,13 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
 
+#define GOTO_ON_ERROR(label, expr)  \
+	do {                        \
+		ret = expr;         \
+		if (ret)            \
+			goto label; \
+	} while (0)
+
 STATIC_IF(ACCELGYRO_BMI260_INT_ENABLE)
 volatile uint32_t last_interrupt_timestamp;
 
@@ -408,6 +415,32 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	return EC_SUCCESS;
 }
+
+static int bmi260_enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	int ret, val;
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	mutex_lock(s->mutex);
+	/* Flush the FIFO */
+	GOTO_ON_ERROR(out, bmi_write8(s->port, s->i2c_spi_addr_flags,
+				      BMI260_CMD_REG, BMI260_CMD_FIFO_FLUSH));
+
+	/* Enable/Disable interrupts on INT1 */
+	GOTO_ON_ERROR(out, bmi_read8(s->port, s->i2c_spi_addr_flags,
+				     BMI260_INT_MAP_DATA, &val));
+	if (enable)
+		val |= (BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);
+	else
+		val &= ~(BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);
+	GOTO_ON_ERROR(out, bmi_write8(s->port, s->i2c_spi_addr_flags,
+				      BMI260_INT_MAP_DATA, val));
+out:
+	mutex_unlock(s->mutex);
+	return ret;
+}
 #endif /* ACCELGYRO_BMI260_INT_ENABLE */
 
 /*
@@ -619,6 +652,8 @@ const struct accelgyro_drv bmi260_drv = {
 	.read_temp = bmi_read_temp,
 #ifdef ACCELGYRO_BMI260_INT_ENABLE
 	.irq_handler = irq_handler,
+	.enable_interrupt = bmi260_enable_interrupt,
+	.interrupt = bmi260_interrupt,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	.list_activities = bmi_list_activities,
