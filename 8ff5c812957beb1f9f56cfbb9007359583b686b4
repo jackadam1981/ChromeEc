@@ -142,6 +142,30 @@
       },
       "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db8e9a4_67ec5744",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_mchp_wp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2025-09-25T19:07:46Z",
+      "side": 1,
+      "message": "set both to active low to make this a passthrough",
+      "parentUuid": "8e2418e0_fb969912",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "8ff5c812957beb1f9f56cfbb9007359583b686b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
