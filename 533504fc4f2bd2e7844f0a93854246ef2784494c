@@ -22,6 +22,30 @@
       },
       "revId": "533504fc4f2bd2e7844f0a93854246ef2784494c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cea0db_6c6476a1",
+        "filename": "test/sbs_charging.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T03:02:04Z",
+      "side": 1,
+      "message": "Done - took some digging to figure out how a charger is mocked in legacy EC tests, as I needed the API to return a non-zero value to pass asserts.",
+      "parentUuid": "5c2a0096_f649f0c4",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "533504fc4f2bd2e7844f0a93854246ef2784494c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
