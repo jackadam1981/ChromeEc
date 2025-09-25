@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b0927b_ec9eeecc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "it would be good to have a tracker for this new feature.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d7a63a_fce8f091",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "the driver should not contain the platform/board specific tuning values.\nthese should move to ocelotrvp, if i understand your objective.\n\nhave a look at how we structured this on brya:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2827950\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2823634",
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0d8fba_e031b0d4",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "don\u0027t use spaces before newlines",
+      "range": {
+        "startLine": 107,
+        "startChar": 27,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d261a0a_0cebb6a9",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "casts should not be needed here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d305ee_9cedfff9",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "this should be table driven. again, have a look at how we did this here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2827950\n\nalso note the optimization of skipping writes when values are already as expected.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 18
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b05ee28_a67283fe",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "given that this IMVP9.x chip is very SoC specific, do you expect boards\nto need different implementations for this?",
+      "range": {
+        "startLine": 280,
+        "startChar": 19,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31017700_9809a0b5",
+        "filename": "driver/rt3645.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T19:49:39Z",
+      "side": 1,
+      "message": "no comma here since it\u0027s always the last",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 17
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
