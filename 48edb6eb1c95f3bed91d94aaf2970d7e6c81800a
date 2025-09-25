@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff76c726_9c54b0f4",
+        "filename": "zephyr/dts/bindings/cbi/cros-ec,cbi-ufsc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T17:30:50Z",
+      "side": 1,
+      "message": "As it seems `start` and `size` arrays need to be the same size, can this be made into its own child binding?  Something like `cros-ec,cbi-ufsc-field-segment`?",
+      "revId": "48edb6eb1c95f3bed91d94aaf2970d7e6c81800a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
