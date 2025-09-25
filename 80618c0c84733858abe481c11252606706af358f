@@ -16,6 +16,24 @@
       "message": "\u003cNOTE\u003e\n- The elpm hibernate introduction doesn\u0027t affect other projects (the deep doze hibernate mechanism). Deep doze hibernate functionality has been verified on the Anakin platform.\n- this change has dependency on upstream updates. (https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6957501 and https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/6963959).",
       "revId": "80618c0c84733858abe481c11252606706af358f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd52874b_41a414cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-25T20:53:14Z",
+      "side": 1,
+      "message": "Upstream PR is https://github.com/zephyrproject-rtos/zephyr/pull/96466",
+      "parentUuid": "fe002060_60bf54ce",
+      "revId": "80618c0c84733858abe481c11252606706af358f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
