@@ -408,6 +408,32 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	return EC_SUCCESS;
 }
+
+static int bmi260_enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	int ret, val;
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	mutex_lock(s->mutex);
+	/* Flush the FIFO */
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_CMD_REG,
+			 BMI260_CMD_FIFO_FLUSH);
+
+	/* disable INT1_OUTPUT_EN */
+	ret = bmi_read8(s->port, s->i2c_spi_addr_flags, BMI260_INT_MAP_DATA,
+			&val);
+	if (enable)
+		val |= (BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);
+	else
+		val &= ~(BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_INT_MAP_DATA,
+			 val);
+
+	mutex_unlock(s->mutex);
+	return ret;
+}
 #endif /* ACCELGYRO_BMI260_INT_ENABLE */
 
 /*
@@ -619,6 +645,8 @@ const struct accelgyro_drv bmi260_drv = {
 	.read_temp = bmi_read_temp,
 #ifdef ACCELGYRO_BMI260_INT_ENABLE
 	.irq_handler = irq_handler,
+	.enable_interrupt = bmi260_enable_interrupt,
+	.interrupt = bmi260_interrupt,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	.list_activities = bmi_list_activities,
