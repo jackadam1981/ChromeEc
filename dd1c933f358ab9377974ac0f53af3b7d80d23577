@@ -22,6 +22,30 @@
       },
       "revId": "dd1c933f358ab9377974ac0f53af3b7d80d23577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65facf8_1075c7cd",
+        "filename": "board/host/charger.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T13:31:06Z",
+      "side": 1,
+      "message": "This is in millivolts, and its mainly to stub a return value for the test.",
+      "parentUuid": "cc05ffdd_4d33edc5",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 30
+      },
+      "revId": "dd1c933f358ab9377974ac0f53af3b7d80d23577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
