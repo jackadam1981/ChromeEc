@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1560813a_a2323141",
+        "filename": "zephyr/program/skywalker/padme/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-09-25T02:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d1ebbae_ec6ed144",
+      "revId": "a839dc6aab2c5d30d03c16c862bb2353d540ea08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7607137_388e5bb0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eca3919_7abf7f66",
+        "filename": "zephyr/program/skywalker/padme/motionsense.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-09-25T02:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7607137_388e5bb0",
+      "revId": "a839dc6aab2c5d30d03c16c862bb2353d540ea08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d447e80_b9e013d8",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-09-22T13:02:00Z",
       "side": 1,
       "message": "Delete",
+      "revId": "a839dc6aab2c5d30d03c16c862bb2353d540ea08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab29e9ed_f442d5f6",
+        "filename": "zephyr/program/skywalker/padme/src/sensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-09-25T02:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d447e80_b9e013d8",
       "revId": "a839dc6aab2c5d30d03c16c862bb2353d540ea08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
