@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "529c8e13_3fb6e10f",
+        "filename": "zephyr/test/charger/charge/src/charge_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T01:47:24Z",
+      "side": 1,
+      "message": "No strong reason, just copy/pasted from PDC tests.",
+      "parentUuid": "39eb0220_b3ac7e73",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "3fcdcd0923f65c75fe4b108ef30955fce422eebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fab5a416_37ae6d48",
         "filename": "zephyr/test/charger/charge/src/charge_state.c",
         "patchSetId": 10
