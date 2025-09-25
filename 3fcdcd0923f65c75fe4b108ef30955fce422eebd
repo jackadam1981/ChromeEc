@@ -69,6 +69,30 @@
       },
       "revId": "3fcdcd0923f65c75fe4b108ef30955fce422eebd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1761b0f0_1d7e49f7",
+        "filename": "zephyr/test/charger/charge/src/charge_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-25T03:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab5a416_37ae6d48",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 39
+      },
+      "revId": "3fcdcd0923f65c75fe4b108ef30955fce422eebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
