@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7f35d4_da35c001",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T16:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "56ade98d_039df90b",
+      "range": {
+        "startLine": 29,
+        "startChar": 22,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "976b6f113c65aa5a0fe5cb744f7efd1797c26c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd2e887a_cff78552",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "changed to GPIO_ODR_HIGH.",
       "parentUuid": "cd2e887a_cff78552",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 34
+      },
+      "revId": "976b6f113c65aa5a0fe5cb744f7efd1797c26c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f73239_073b89db",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-25T16:40:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c48ff5_ca99fc6a",
       "range": {
         "startLine": 60,
         "startChar": 31,
