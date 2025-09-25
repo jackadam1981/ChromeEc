@@ -41,6 +41,13 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ##args)
 
+#define GOTO_ON_ERROR(label, expr)  \
+	do {                        \
+		ret = expr;         \
+		if (ret)            \
+			goto label; \
+	} while (0)
+
 STATIC_IF(ACCELGYRO_BMI260_INT_ENABLE)
 volatile uint32_t last_interrupt_timestamp;
 
@@ -280,6 +287,26 @@ end_perform_calib:
 	return ret;
 }
 
+static int enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	int ret, val;
+
+	/* Manage Data interrupt mapping for both INT pins */
+	ret = bmi_read8(s->port, s->i2c_spi_addr_flags, BMI260_INT_MAP_DATA,
+			&val);
+	if (ret)
+		return ret;
+
+	if (enable)
+		val |= (BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);
+	else
+		val &= ~(BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_INT_MAP_DATA,
+			 val);
+
+	return ret;
+}
+
 /**
  * config_interrupt - sets up the interrupt request output pin on the BMI260
  *
@@ -308,9 +335,7 @@ static __maybe_unused int config_interrupt(const struct motion_sensor_t *s)
 				 BMI260_INT2_IO_CTRL, BMI260_INT2_INPUT_EN);
 
 	/* map fifo water mark to int 1 */
-	ret = bmi_write8(s->port, s->i2c_spi_addr_flags, BMI260_INT_MAP_DATA,
-			 BMI260_INT_MAP_DATA_REG(1, FWM) |
-				 BMI260_INT_MAP_DATA_REG(1, FFULL));
+	ret = enable_interrupt(s, true);
 
 	/*
 	 * Configure fifo watermark to int whenever there's any data in
@@ -407,6 +432,25 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		motion_sense_fifo_commit_data();
 
 	return EC_SUCCESS;
+}
+
+static int bmi260_enable_interrupt(const struct motion_sensor_t *s, bool enable)
+{
+	int ret;
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	mutex_lock(s->mutex);
+	/* Flush the FIFO */
+	GOTO_ON_ERROR(out, bmi_write8(s->port, s->i2c_spi_addr_flags,
+				      BMI260_CMD_REG, BMI260_CMD_FIFO_FLUSH));
+
+	/* Manage Data interrupt mapping for both INT pins */
+	GOTO_ON_ERROR(out, enable_interrupt(s, enable));
+out:
+	mutex_unlock(s->mutex);
+	return ret;
 }
 #endif /* ACCELGYRO_BMI260_INT_ENABLE */
 
@@ -619,6 +663,8 @@ const struct accelgyro_drv bmi260_drv = {
 	.read_temp = bmi_read_temp,
 #ifdef ACCELGYRO_BMI260_INT_ENABLE
 	.irq_handler = irq_handler,
+	.enable_interrupt = bmi260_enable_interrupt,
+	.interrupt = bmi260_interrupt,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	.list_activities = bmi_list_activities,
