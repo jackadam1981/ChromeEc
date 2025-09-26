@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb5d724_dde658a3",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-09-26T19:46:15Z",
+      "side": 1,
+      "message": "do you need `label` here and in the wrapper?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "aff88f4a22171a48f49431fc76ba6e46623a264e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
