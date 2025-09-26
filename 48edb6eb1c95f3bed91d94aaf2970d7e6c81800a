@@ -34,6 +34,24 @@
       "parentUuid": "ff76c726_9c54b0f4",
       "revId": "48edb6eb1c95f3bed91d94aaf2970d7e6c81800a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f48cac_f53e27e6",
+        "filename": "zephyr/dts/bindings/cbi/cros-ec,cbi-ufsc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-26T21:22:37Z",
+      "side": 1,
+      "message": "Introducing `cros-ec,cbi-ufsc-field-segment` is overkill. It adds too much structural overhead for the small amount of data. This child-node representations are usually used for distinct and independent entities, like I2C devices with their own properties, or the `cros-ec,cbi-ufsc-value` nodes whose properties are also somewhat complicated.\n\nAnother common practice in Zephyr is to use a cell pattern, e.g.\n```\n    segments \u003d \u003cstart1 size1\u003e, \u003cstart2 size2\u003e, ...;\n```\nHowever, it still relies on a BUILD_ASSERT in the C code to ensure the number of elements is even. Since in most cases, the fields will only have one segment, until it runs of allocated space, the parallel arrays give a simple and more readable approach.",
+      "parentUuid": "b8df34ed_98f75199",
+      "revId": "48edb6eb1c95f3bed91d94aaf2970d7e6c81800a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
