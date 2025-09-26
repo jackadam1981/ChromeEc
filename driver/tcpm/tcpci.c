@@ -1204,6 +1204,7 @@ void tcpci_tcpc_alert(int port)
 		CPRINTS("C%d: Failed to read alert register", port);
 		return;
 	}
+	CPRINTS("P%d alert=%x\n", port, alert);
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
@@ -1226,13 +1227,20 @@ void tcpci_tcpc_alert(int port)
 	 */
 	if (alert & TCPC_REG_ALERT_TX_COMPLETE) {
 		int tx_status;
+		CPRINTS("P%d: TX alert\n", port);
 
-		if (alert & TCPC_REG_ALERT_TX_SUCCESS)
+		if (alert & TCPC_REG_ALERT_TX_SUCCESS) {
 			tx_status = TCPC_TX_COMPLETE_SUCCESS;
-		else if (alert & TCPC_REG_ALERT_TX_DISCARDED)
+			CPRINTS("P%d: TX complete\n", port);
+		}
+		else if (alert & TCPC_REG_ALERT_TX_DISCARDED) {
 			tx_status = TCPC_TX_COMPLETE_DISCARDED;
-		else
+			CPRINTS("P%d: TX DISCARDED\n", port);
+		}
+		else {
 			tx_status = TCPC_TX_COMPLETE_FAILED;
+			CPRINTS("P%d: TX FAILED\n", port);
+		}
 
 		pd_transmit_complete(port, tx_status);
 	}
@@ -1242,6 +1250,7 @@ void tcpci_tcpc_alert(int port)
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		CPRINTS("P%d: RX alert--%x\n", port, alert);
 		/*
 		 * Some TCPCs do not properly disable interrupts during BIST
 		 * test mode. For reducing I2C access time,
