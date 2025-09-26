@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab2e2cd_64fc0c18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-26T02:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e2e9a0_04b4f8a1",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "3e4cbded33662301cd7a5167fe37e4ca86b1d711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc2a1984_eae1caac",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-25T17:52:31Z",
       "side": 1,
       "message": "At a minimum you\u0027ve created new unit tests.  But you\u0027re also testing this on HW.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "3e4cbded33662301cd7a5167fe37e4ca86b1d711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05841b51_6e35db74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-09-26T02:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2a1984_eae1caac",
       "range": {
         "startLine": 14,
         "startChar": 5,
