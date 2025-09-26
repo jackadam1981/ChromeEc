@@ -22,6 +22,30 @@
       },
       "revId": "cb78ebfe889b7eb0eafdf8937126006ef44380a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5952d06e_daa3d967",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-09-26T20:06:12Z",
+      "side": 1,
+      "message": "Done. \n\n```\nZephyr compare builds successful:\n   HEAD: a2eccefe07b07506cfabffbb9172bfc727db6448\n   HEAD~: cf1efc1beeb979779fbbc76ae068f246d2c7cf6d\n```",
+      "parentUuid": "0d46675e_f4a461e6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "cb78ebfe889b7eb0eafdf8937126006ef44380a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
