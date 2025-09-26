@@ -39,6 +39,53 @@
       },
       "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df575fd_a2ec5c71",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-09-26T18:42:33Z",
+      "side": 1,
+      "message": "For RTK platforms we set then when sending SET_PDOs. Check the configs, it should be based on a config called ONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_*\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/pd_controller/pdc_power_mgmt.c;drc\u003dde7f1e1c5afcc05970ab6d9b6ba0aac16e6e1764;l\u003d880",
+      "parentUuid": "f06e09e7_8e96a619",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 79
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2de0e17_ea9da398",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-09-26T18:42:33Z",
+      "side": 1,
+      "message": "We should also be supporting Pin E",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 99
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
