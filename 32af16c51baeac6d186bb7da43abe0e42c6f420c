@@ -16,6 +16,24 @@
       "message": "Are new 3 Top row keys implemented in the code ?",
       "revId": "32af16c51baeac6d186bb7da43abe0e42c6f420c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c112f9_27720241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-26T01:32:08Z",
+      "side": 1,
+      "message": "This proto phase board uses CX1405 keyboard, so the code uses CX1405 config. The new top keys will be used on boards that will feature the new keyboard in the next phase.",
+      "parentUuid": "eaf490bf_0cecfab8",
+      "revId": "32af16c51baeac6d186bb7da43abe0e42c6f420c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
