@@ -22,6 +22,30 @@
       },
       "revId": "2e392b217863419139df91472efabfed23f02e66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85424c6b_63af147a",
+        "filename": "zephyr/program/fatcat/lapis/src/board_power.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-26T07:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63004d6a_50a6fc7c",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "2e392b217863419139df91472efabfed23f02e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
