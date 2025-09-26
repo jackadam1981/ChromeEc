@@ -81,6 +81,24 @@
       "parentUuid": "51ae6d3e_e7ab7e4f",
       "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512ed991_37c346c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-09-26T06:33:33Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.org ....Please share your thoughts on my previous comment. This change provides extra argument support other than --chip argument and can be helpful in case of EC chip is not functional or not pre-flashed.",
+      "parentUuid": "3e2e410b_9aabdc5a",
+      "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
