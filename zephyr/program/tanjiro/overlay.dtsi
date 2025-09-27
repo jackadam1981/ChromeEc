@@ -64,14 +64,14 @@
 		};
 	};
 
-	hibernate-wake-pins {
-		compatible = "cros-ec,hibernate-wake-pins";
-		wakeup-irqs = <
-			&int_ac_present
-			&int_power_button
-			&int_lid_open
-		>;
+	hibernate_z5: hibernate-z5 {
+		compatible = "cros-ec,hibernate-z5";
+		en-slp-z-gpios = <&gpioh 0 GPIO_ACTIVE_HIGH>;
 	};
+};
+
+&gpio_en_ulp {
+	no-auto-init;
 };
 
 &pinctrl {
