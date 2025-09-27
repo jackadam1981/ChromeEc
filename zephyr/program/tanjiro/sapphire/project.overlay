@@ -234,6 +234,8 @@
 		/delete-node/ fp_btn_ign; //fp pin
 		/delete-node/ ec_gpa7;
 		/delete-node/ ec_gpg1;
+		/delete-node/ gsc_ec_voldn_btn_odl;
+		/delete-node/ gsc_ec_volup_btn_odl;
 
 		gpio_pen_int_odl: pen_int_odl {
 			gpios = <&gpiog 0 (GPIO_INPUT | GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
@@ -253,6 +255,14 @@
 		//hylia has usba, but sapphire no, use hylia debug
 		gpio_en_pp5000_usba_vbus: en_pp5000_usba_vbus {
 			gpios = <&gpiog 1 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		gpio_gsc_ec_voldn_btn_odl: gsc_ec_voldn_btn_odl {
+			gpios = <&gpioe 3 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		gpio_gsc_ec_volup_btn_odl: gsc_ec_volup_btn_odl {
+			gpios = <&gpioe 4 (GPIO_INPUT | GPIO_PULL_UP)>;
+			enum-name = "GPIO_VOLUME_UP_L";
 		};
 	};
 
