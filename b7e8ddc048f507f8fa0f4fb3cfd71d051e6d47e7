@@ -86,6 +86,24 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0767a6be_8d8c4be9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-29T23:48:51Z",
+      "side": 1,
+      "message": "```\ndiff --git a/zephyr/program/fpmcu/testcase.yaml b/zephyr/program/fpmcu/testcase.yaml\nindex 0bf6671fc5..baa1d7b3ae 100644\n--- a/zephyr/program/fpmcu/testcase.yaml\n+++ b/zephyr/program/fpmcu/testcase.yaml\n@@ -199,6 +199,8 @@ tests:\n   sha256_unrolled:\n     extra_configs:\n     - CONFIG_HW_TEST_SHA256_UNROLLED\u003dy\n+    - CONFIG_PLATFORM_EC_SHA256_SW\u003dy\n+    - CONFIG_PLATFORM_EC_SHA256_UNROLLED\u003dy\n     extra_conf_files:\n     - prj_hw_tests.conf\n   static_if:\n```\nThe output logs are: https://paste.googleplex.com/4753034425008128\n\nThese are the same errors observed before the configs were disabled and enabled only for bloonchipper as in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6794064",
+      "parentUuid": "597c20d1_6dc7e49a",
+      "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
