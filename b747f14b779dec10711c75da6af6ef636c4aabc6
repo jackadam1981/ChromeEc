@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1bd3a17_e944b821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T19:14:26Z",
+      "side": 1,
+      "message": "I wouldn\u0027t expect this code to be submitted, so it\u0027s not really amenable to \"review.\" I\u0027d mark it as WIP. I\u0027m still happy to take a look, although I\u0027ll probably lean heavily on Al.",
+      "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bdd28dd_95fc9c30",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3861,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T19:14:26Z",
+      "side": 1,
+      "message": "You might want to add a corresponding crumb for the non-zero case, just so that there will always be a matching \"accept\" crumb for the \"negotiation started\" crumb.",
+      "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
