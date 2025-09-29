@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99694957_4847577b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T19:28:02Z",
+      "side": 1,
+      "message": "Nit: \"Minimize the latency of BIST Test Mode entry by checking immediately after reading the message, instead of waiting for typical PE message handling.\"",
+      "revId": "d55d34739a5635db2b444fb071de9b73fc3ee180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

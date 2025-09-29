@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10d3d157_ce7a059a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T19:28:02Z",
+      "side": 1,
+      "message": "How about this?\n```\ntcpci: Enable BIST Test Mode ASAP\n\nIn the TCPCI driver, enable BIST Test Mode immediately after receiving a BIST Test\nData message, if conditions are appropriate. Do not wait for the message to make\nits way through the PRL and PE. Decrease the latency of entry into BIST Test\nMode, thereby reducing the opportunity for the TCPC\u0027s Rx buffers to overflow\nduring a BIST test.\n\nThis generalizes a previous solution that was specific to the RAA489000 TCPC\ndriver.\n```\n(You\u0027ll have to reflow the line breaks for appropriate commit message formatting.)",
+      "parentUuid": "8fc91bcb_ceb61546",
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f7cc664_6a6c5446",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7

@@ -282,6 +282,24 @@
       "parentUuid": "86e28ab7_cdf10546",
       "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64da336_4b41bae7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T19:28:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7be636eb_a9a62e47",
+      "revId": "1b1f665952c7ed74487b0fcf4ae56f4c9e108677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
