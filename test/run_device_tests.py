@@ -371,6 +371,14 @@ class Hardware(Platform):
     def skip_test(
         self, test_name: str, board_config: BoardConfig, zephyr: bool
     ) -> bool:
+        """Returns true if the given test should be skipped."""
+        if (
+            zephyr
+            and test_name == "sha256_unrolled"
+            and board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]
+        ):
+            return True
+
         return False
 
 
