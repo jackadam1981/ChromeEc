@@ -569,14 +569,24 @@ static void shi_bad_received_data(void)
 	shi_fill_out_status(EC_SPI_RX_BAD_DATA);
 	state = SHI_STATE_BAD_RECEIVED_DATA;
 
-	CPRINTF("BAD-");
-	CPRINTF("in_msg=[");
+	DEBUG_CPRINTF("BAD-");
+	DEBUG_CPRINTF("in_msg=[");
 	for (i = 0; i < shi_params.sz_received; i++)
-		CPRINTF("%02x ", in_msg[i]);
-	CPRINTF("]\n");
+		DEBUG_CPRINTF("%02x ", in_msg[i]);
+	DEBUG_CPRINTF("]\n");
 
-	/* Reset shi's state machine for error recovery */
-	shi_reset_prepare();
+	/*
+	 * SHI version 1 (for NPCX5) cannot detect CS de-assertion if there is
+	 * no clock toggle. In the case, it should perform the reset and prepare
+	 * here for next transaction.
+	 * SHI version 2 can detect CS de-assertion event by CSNRE bit even if
+	 * there no clock toggle. In this case, the reset and prepare can defer
+	 * to the CS de-assertion ISR.
+	 */
+	if (!IS_ENABLED(NPCX_SHI_V2)) {
+		/* Reset shi's state machine for error recovery */
+		shi_reset_prepare();
+	}
 
 	DEBUG_CPRINTF("END\n");
 }
@@ -589,7 +599,7 @@ static int last_error_state = -1;
 
 static void log_unexpected_state(char *isr_name)
 {
-#if !(DEBUG_SHI)
+#if DEBUG_SHI
 	if (state != last_error_state)
 		CPRINTS("Unexpected state %d in %s ISR", state, isr_name);
 #endif
