@@ -24,6 +24,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c171aa_e0eac104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-29T16:27:32Z",
+      "side": 1,
+      "message": "This isn\u0027t the right place for this driver.",
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8637e78_97912df8",
+        "filename": "driver/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-29T16:27:32Z",
+      "side": 1,
+      "message": "This won\u0027t be used on any legacy EC platforms.  No changes to this file are  needed.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36d7a63a_fce8f091",
@@ -37,6 +77,29 @@
       "writtenOn": "2025-09-25T19:49:39Z",
       "side": 1,
       "message": "the driver should not contain the platform/board specific tuning values.\nthese should move to ocelotrvp, if i understand your objective.\n\nhave a look at how we structured this on brya:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2827950\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2823634",
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32faf6e_68559b00",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-29T16:27:32Z",
+      "side": 1,
+      "message": "This will only be used on Zephyr EC boards.\n\nThis entire file should be moved to platform/ec/zephyr/drivers/imvp/ and the updated to follow the Zephyr driver model.\n\nYou can then set the I2C port and target address using a node in the devicetree instead of hard coding `I2C_PORT_IMVP` and `I2C_ADDR_IMVP`.\n\nAlso use the Zephyr native API `i2c_transfer_dt` instead of the legacy EC versions.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
       "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +214,29 @@
         "startChar": 16,
         "endLine": 112,
         "endChar": 17
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6354d726_4130d580",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 3249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-29T16:27:32Z",
+      "side": 1,
+      "message": "No need to plumb the Kconfig into the legacy config.h definition.  By following the Zephyr device mode, the driver can extract the I2C bus and address information directly.",
+      "range": {
+        "startLine": 3241,
+        "startChar": 0,
+        "endLine": 3249,
+        "endChar": 0
       },
       "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
