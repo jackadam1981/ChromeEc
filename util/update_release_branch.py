@@ -419,9 +419,11 @@ def main(argv):
     if opts.baseboard:
         # If a zephyr board, no baseboard allowed
         if opts.zephyr:
-            raise ValueError("--baseboard not allowed for Zephyr boards")
-        # Dereference symlinks so "git log" works as expected.
-        baseboard_dir = os.path.relpath("baseboard/" + opts.baseboard)
+            baseboard_dir = os.path.relpath(
+                "zephyr/program/fpmcu/" + opts.baseboard
+            )
+        else:
+            baseboard_dir = os.path.relpath("baseboard/" + opts.baseboard)
         baseboard_dir = os.path.relpath(os.path.realpath(baseboard_dir))
 
         boards = get_relevant_boards(opts.baseboard)
