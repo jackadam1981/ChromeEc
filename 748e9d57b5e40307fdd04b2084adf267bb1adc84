@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "744c8958_8830b446",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-09-29T13:59:49Z",
+      "side": 1,
+      "message": "Vendor Info File Definition\nVersion 3.36\n\nSrc_PDO_Peak_Current\nPeak current (that is, over the value specified by Src_PDO_Voltage) that the Qualifying\nProduct may provide for short periods.\nValid options are:\n0 – 100% IOC\n1 – 130% IOC\n2 – 150% IOC\n3 – 200% IOC\n\nI am not sure how this is translated from PD spec to VIF definitions",
+      "parentUuid": "d8bee5a7_b2230883",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 79
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2de0e17_ea9da398",
         "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "writtenOn": "2025-09-26T18:42:33Z",
       "side": 1,
       "message": "We should also be supporting Pin E",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 99
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e34f1d_403a8202",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-09-29T13:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2de0e17_ea9da398",
       "range": {
         "startLine": 205,
         "startChar": 0,
