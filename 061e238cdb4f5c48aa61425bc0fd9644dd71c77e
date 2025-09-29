@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93360f0b_f9d06112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T22:52:08Z",
+      "side": 1,
+      "message": "Looks like a good merge to me. If you want to double check, you can look through the history of `usb_tc_drp_acc_trysrc_sm.c`. Nothing jumps out at me as obviously missing.",
+      "revId": "061e238cdb4f5c48aa61425bc0fd9644dd71c77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
