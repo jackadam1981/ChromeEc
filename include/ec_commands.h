@@ -1397,9 +1397,9 @@ enum ec_image {
  * @current_image: One of ec_image.
  */
 struct ec_response_get_version {
-	char version_string_ro[32];
-	char version_string_rw[32];
-	char reserved[32]; /* Changed to cros_fwid_ro in version 1 */
+	uint8_t version_string_ro[32];
+	uint8_t version_string_rw[32];
+	uint8_t reserved[32]; /* Changed to cros_fwid_ro in version 1 */
 	uint32_t current_image;
 } __ec_align4;
 
@@ -1417,11 +1417,11 @@ struct ec_response_get_version {
  * @cros_fwid_rw: Null-terminated RW CrOS FWID string.
  */
 struct ec_response_get_version_v1 {
-	char version_string_ro[32];
-	char version_string_rw[32];
-	char cros_fwid_ro[32]; /* Added in version 1 (Used to be reserved) */
+	uint8_t version_string_ro[32];
+	uint8_t version_string_rw[32];
+	uint8_t cros_fwid_ro[32]; /* Added in version 1 (Used to be reserved) */
 	uint32_t current_image;
-	char cros_fwid_rw[32]; /* Added in version 1 */
+	uint8_t cros_fwid_rw[32]; /* Added in version 1 */
 } __ec_align4;
 
 /* Read test - OBSOLETE */
@@ -1444,9 +1444,9 @@ struct ec_response_get_version_v1 {
  * @revision: Null-terminated string for chip mask version.
  */
 struct ec_response_get_chip_info {
-	char vendor[32];
-	char name[32];
-	char revision[32];
+	uint8_t vendor[32];
+	uint8_t name[32];
+	uint8_t revision[32];
 } __ec_align4;
 
 /* Get board HW version */
@@ -4379,7 +4379,7 @@ struct ec_params_temp_sensor_get_info {
 } __ec_align1;
 
 struct ec_response_temp_sensor_get_info {
-	char sensor_name[32];
+	uint8_t sensor_name[32];
 	uint8_t sensor_type;
 } __ec_align1;
 
@@ -4556,7 +4556,7 @@ struct ec_response_switch_enable_wireless_v1 {
 #define EC_CMD_GPIO_SET 0x0092
 
 struct ec_params_gpio_set {
-	char name[32];
+	uint8_t name[32];
 	uint8_t val;
 } __ec_align1;
 
@@ -4565,7 +4565,7 @@ struct ec_params_gpio_set {
 
 /* Version 0 of input params and response */
 struct ec_params_gpio_get {
-	char name[32];
+	uint8_t name[32];
 } __ec_align1;
 
 struct ec_response_gpio_get {
@@ -4577,7 +4577,7 @@ struct ec_params_gpio_get_v1 {
 	uint8_t subcmd;
 	union {
 		struct __ec_align1 {
-			char name[32];
+			uint8_t name[32];
 		} get_value_by_name;
 		struct __ec_align1 {
 			uint8_t index;
@@ -4592,7 +4592,7 @@ struct ec_response_gpio_get_v1 {
 		} get_value_by_name, get_count;
 		struct __ec_todo_unpacked {
 			uint8_t val;
-			char name[32];
+			uint8_t name[32];
 			uint32_t flags;
 		} get_info;
 	};
@@ -6114,7 +6114,7 @@ struct ec_response_usb_pd_control_v1 {
 	uint8_t enabled;
 	uint8_t role;
 	uint8_t polarity;
-	char state[32];
+	uint8_t state[32];
 } __ec_align1;
 
 /* Possible port partner connections based on CC line states */
@@ -6147,7 +6147,7 @@ struct ec_response_usb_pd_control_v2 {
 	uint8_t enabled;
 	uint8_t role;
 	uint8_t polarity;
-	char state[32];
+	uint8_t state[32];
 	uint8_t cc_state; /* enum pd_cc_states representing cc state */
 	uint8_t dp_mode; /* Current DP pin mode (MODE_DP_PIN_[A-E]) */
 	uint8_t reserved; /* Reserved for future use */
@@ -6560,7 +6560,7 @@ struct ec_response_pd_chip_info_v2 {
 	/** Project name string associated with the chip's FW. Add an extra
 	 *  byte for a NUL-terminator.
 	 */
-	char fw_name_str[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
+	uint8_t fw_name_str[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
 } __ec_align2;
 
 /** Maximum length of a driver/chip name reported in the pd_chip_info
@@ -6585,9 +6585,9 @@ struct ec_response_pd_chip_info_v3 {
 	/** Project name string associated with the chip's FW. Add an extra
 	 *  byte for a NUL-terminator.
 	 */
-	char fw_name_str[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
+	uint8_t fw_name_str[USB_PD_CHIP_INFO_PROJECT_NAME_LEN + 1];
 	/** Driver/chip string, plus room for a NUL-terminator */
-	char driver_name[USB_PD_CHIP_INFO_DRIVER_NAME_LEN + 1];
+	uint8_t driver_name[USB_PD_CHIP_INFO_DRIVER_NAME_LEN + 1];
 } __ec_align2;
 
 /* Run RW signature verification and get status */
@@ -7236,7 +7236,7 @@ struct ec_params_regulator_get_info {
 } __ec_align4;
 
 struct ec_response_regulator_get_info {
-	char name[EC_REGULATOR_NAME_MAX_LEN];
+	uint8_t name[EC_REGULATOR_NAME_MAX_LEN];
 	uint16_t num_voltages;
 	uint16_t voltages_mv[EC_REGULATOR_VOLTAGE_MAX_COUNT];
 } __ec_align2;
@@ -7623,7 +7623,7 @@ struct ec_response_typec_status /* DEPRECATED */ {
 	uint8_t dp_pin; /* DP pin mode (MODE_DP_IN_[A-E]) */
 	uint8_t mux_state; /* USB_PD_MUX* - encoded mux state */
 
-	char tc_state[32]; /* TC state name */
+	uint8_t tc_state[32]; /* TC state name */
 
 	uint32_t events; /* PD_STATUS_EVENT bitmask */
 
@@ -7662,7 +7662,7 @@ struct cros_ec_typec_status {
 	uint8_t dp_pin; /* DP pin mode (MODE_DP_IN_[A-E]) */
 	uint8_t mux_state; /* USB_PD_MUX* - encoded mux state */
 
-	char tc_state[32]; /* TC state name */
+	uint8_t tc_state[32]; /* TC state name */
 
 	uint32_t events; /* PD_STATUS_EVENT bitmask */
 
@@ -8808,10 +8808,10 @@ struct ec_params_battery_static_info {
 struct ec_response_battery_static_info {
 	uint16_t design_capacity;
 	uint16_t design_voltage;
-	char manufacturer[EC_COMM_TEXT_MAX];
-	char model[EC_COMM_TEXT_MAX];
-	char serial[EC_COMM_TEXT_MAX];
-	char type[EC_COMM_TEXT_MAX];
+	uint8_t manufacturer[EC_COMM_TEXT_MAX];
+	uint8_t model[EC_COMM_TEXT_MAX];
+	uint8_t serial[EC_COMM_TEXT_MAX];
+	uint8_t type[EC_COMM_TEXT_MAX];
 	/* TODO(crbug.com/795991): Consider moving to dynamic structure. */
 	uint32_t cycle_count;
 } __ec_align4;
@@ -8832,10 +8832,10 @@ struct ec_response_battery_static_info_v1 {
 	uint16_t design_capacity;
 	uint16_t design_voltage;
 	uint32_t cycle_count;
-	char manufacturer_ext[12];
-	char model_ext[12];
-	char serial_ext[12];
-	char type_ext[12];
+	uint8_t manufacturer_ext[12];
+	uint8_t model_ext[12];
+	uint8_t serial_ext[12];
+	uint8_t type_ext[12];
 } __ec_align4;
 
 /**
@@ -8858,10 +8858,10 @@ struct ec_response_battery_static_info_v2 {
 	uint16_t design_capacity;
 	uint16_t design_voltage;
 	uint32_t cycle_count;
-	char manufacturer[SBS_MAX_STR_OBJ_SIZE];
-	char device_name[SBS_MAX_STR_OBJ_SIZE];
-	char serial[SBS_MAX_STR_OBJ_SIZE];
-	char chemistry[SBS_MAX_STR_OBJ_SIZE];
+	uint8_t manufacturer[SBS_MAX_STR_OBJ_SIZE];
+	uint8_t device_name[SBS_MAX_STR_OBJ_SIZE];
+	uint8_t serial[SBS_MAX_STR_OBJ_SIZE];
+	uint8_t chemistry[SBS_MAX_STR_OBJ_SIZE];
 } __ec_align4;
 
 /*
