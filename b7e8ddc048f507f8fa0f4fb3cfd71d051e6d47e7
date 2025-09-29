@@ -122,6 +122,42 @@
       "parentUuid": "0767a6be_8d8c4be9",
       "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c91ec39_b1de49ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-29T23:57:18Z",
+      "side": 1,
+      "message": "I am asking CH in this bug: https://b.corp.google.com/issues/448193193",
+      "parentUuid": "38d8adf5_b1147140",
+      "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3657375_3a518482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-29T23:57:18Z",
+      "side": 1,
+      "message": "I saw it running and passing on zephyr helipilot:\n\n```\nTest \"sha256\": PASSED\nTest \"sha256_unrolled\": FAILED\n```",
+      "parentUuid": "26593140_a3961fb6",
+      "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
