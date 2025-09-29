@@ -52,6 +52,23 @@
       "parentUuid": "92fc0cd4_f91909a2",
       "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26593140_a3961fb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-29T23:33:22Z",
+      "side": 1,
+      "message": "Are we running any SHA256 tests for Zephyr to test the hardware case? I don\u0027t see a sha256 test [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/), but I see it listed [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d735;drc\u003d07d22f40c328591afbb19b23b501630d7b4e9067).",
+      "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
