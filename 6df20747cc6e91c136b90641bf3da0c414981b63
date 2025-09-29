@@ -22,6 +22,30 @@
       },
       "revId": "6df20747cc6e91c136b90641bf3da0c414981b63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed8640e5_cbcc404b",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-29T21:25:37Z",
+      "side": 1,
+      "message": "I saw that the `fpmcu` directory was there from the beginning. However, I do not believe the path was correct and suspect that this is a typo. I do not believe this is going to break anything.",
+      "parentUuid": "df34e9d3_dc8d31b8",
+      "range": {
+        "startLine": 430,
+        "startChar": 41,
+        "endLine": 430,
+        "endChar": 62
+      },
+      "revId": "6df20747cc6e91c136b90641bf3da0c414981b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
