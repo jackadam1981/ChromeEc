@@ -104,6 +104,24 @@
       "parentUuid": "597c20d1_6dc7e49a",
       "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d8adf5_b1147140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-29T23:54:03Z",
+      "side": 1,
+      "message": "It\u0027s probably conflicting with the [`struct sha256_ctx` here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/sha256_chip.h;l\u003d12-21;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46).\n\nWe probably need a config to enable hardware acceleration explicitly, so we can disable this code when we don\u0027t want to use it in this test.",
+      "parentUuid": "0767a6be_8d8c4be9",
+      "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
