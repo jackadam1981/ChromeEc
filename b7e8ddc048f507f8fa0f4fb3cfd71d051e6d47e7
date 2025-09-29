@@ -69,6 +69,23 @@
       "message": "Are we running any SHA256 tests for Zephyr to test the hardware case? I don\u0027t see a sha256 test [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/), but I see it listed [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d735;drc\u003d07d22f40c328591afbb19b23b501630d7b4e9067).",
       "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397352ea_1d63d7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3487009
+      },
+      "writtenOn": "2025-09-29T23:33:55Z",
+      "side": 1,
+      "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "b7e8ddc048f507f8fa0f4fb3cfd71d051e6d47e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
