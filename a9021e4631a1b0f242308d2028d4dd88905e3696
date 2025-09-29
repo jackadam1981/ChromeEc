@@ -33,6 +33,24 @@
       "message": "The configuration option NPCX_INT_FLASH_SUPPORT in CROS-EC exists because the first NPCX chip (NPCX5) does not support internal flash.\n\nIn Zephyr, NPCX5 is not included. This means Zephyr EC/FPMCU firmware with NPCX chips uses the internal flash.\n\nTherefore, it is not necessary to guard the added code with the NPCX_INT_FLASH_SUPPORT configuration flag.",
       "revId": "a9021e4631a1b0f242308d2028d4dd88905e3696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae44c0b_58576ea1",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-09-29T19:45:35Z",
+      "side": 1,
+      "message": "Thanks for clarifying, done and tested",
+      "parentUuid": "1ec2e9f6_3dffd08e",
+      "revId": "a9021e4631a1b0f242308d2028d4dd88905e3696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
