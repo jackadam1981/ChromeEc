@@ -22,6 +22,30 @@
       },
       "revId": "fc754b83e77d2b4601a0fc625bed5caf44c7b0c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721604a2_8672144c",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-29T21:29:04Z",
+      "side": 1,
+      "message": "it seems that this is creating some paths to filter which Git commits are relevant for the merge commit message.\n\nlet us discuss in 1:1 because I believe we are still using the normal method to get relevant boards `        baseboard_dir \u003d os.path.relpath(os.path.realpath(baseboard_dir))`. \n\nThere is something about the code that does not make sense to me.",
+      "parentUuid": "bc0ad437_7e537e62",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 424,
+        "endChar": 13
+      },
+      "revId": "fc754b83e77d2b4601a0fc625bed5caf44c7b0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
