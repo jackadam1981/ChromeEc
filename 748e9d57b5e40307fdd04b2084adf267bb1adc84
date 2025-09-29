@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "295aec14_02240449",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-09-29T17:20:58Z",
+      "side": 1,
+      "message": "\u003e I am not sure how this is translated from PD spec to VIF definitions\n\nThe VIF needs to align with how we set this field in the devices PDOs, if we aren\u0027t setting this to greater than 100% in the Skywalker config, it should just be 100%.\n\nAre you seeing this reported at 130% in compliance? If so, there may be a bug here",
+      "parentUuid": "744c8958_8830b446",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 79
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2de0e17_ea9da398",
         "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
         "patchSetId": 1
