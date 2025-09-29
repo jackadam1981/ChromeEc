@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edfec85_94c9dbbf",
+        "filename": "zephyr/program/rauru/navi/navi_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-09-29T19:09:37Z",
+      "side": 0,
+      "message": "This CL removes the DisplayPort properties. We should keep those and duplicate them for the newly added port 1.",
+      "revId": "5e8f645c5c10516adee1d140d7065d104a36464d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
