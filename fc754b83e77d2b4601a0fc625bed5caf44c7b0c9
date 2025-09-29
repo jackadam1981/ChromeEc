@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0ad437_7e537e62",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-29T21:24:24Z",
+      "side": 1,
+      "message": "As mentioned in the comment, I don\u0027t think Zephyr has the concept of \"baseboard\".",
+      "range": {
+        "startLine": 420,
+        "startChar": 6,
+        "endLine": 424,
+        "endChar": 13
+      },
+      "revId": "fc754b83e77d2b4601a0fc625bed5caf44c7b0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
