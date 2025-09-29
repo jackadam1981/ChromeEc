@@ -183,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a68d6f_abb213c5",
+        "filename": "util/cbi-util.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-29T16:43:13Z",
+      "side": 1,
+      "message": "I see this is done in the next CL",
+      "parentUuid": "4ed6f9ae_688eeae8",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52e4b558_a6b111b7",
