@@ -99,6 +99,24 @@
       "parentUuid": "3e2e410b_9aabdc5a",
       "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de356d46_82bdad2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-09-29T20:15:00Z",
+      "side": 1,
+      "message": "It\u0027s not scalable to keep adding exceptions into the flash_ec script.\n\nYour change (https://crrev.com/c/6973834) is good for boards that have a functional EC.  If the EC chip is blank or corrupted, users can either start servod with the correct model such as `ocelot_ite` or they can use the `--chip` argument.",
+      "parentUuid": "512ed991_37c346c3",
+      "revId": "2f8d5146a9b65e24187554ae810e365232b0ea97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
