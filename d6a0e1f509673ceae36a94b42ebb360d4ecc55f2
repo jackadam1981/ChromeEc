@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5264043b_cda9a6a5",
+        "filename": "zephyr/program/fpmcu/testcase.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-30T17:40:02Z",
+      "side": 1,
+      "message": "Can you add a comment that mentions this test only works in software, not with hardware acceleration?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 43
+      },
+      "revId": "d6a0e1f509673ceae36a94b42ebb360d4ecc55f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
