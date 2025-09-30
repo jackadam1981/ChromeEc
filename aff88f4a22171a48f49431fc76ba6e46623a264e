@@ -22,6 +22,30 @@
       },
       "revId": "aff88f4a22171a48f49431fc76ba6e46623a264e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95c8970_88d5f7bd",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-09-30T09:01:14Z",
+      "side": 1,
+      "message": "Removed the label in the wrapper.",
+      "parentUuid": "deb5d724_dde658a3",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "aff88f4a22171a48f49431fc76ba6e46623a264e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
