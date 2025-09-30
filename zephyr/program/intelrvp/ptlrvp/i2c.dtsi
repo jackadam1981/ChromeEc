@@ -66,6 +66,11 @@
 		reg = <0x38>;
 		label = "MAX695X_SEVEN_SEG_DISPLAY";
 	};
+	cros_imvp: richtek-imvp@20 {
+		compatible = "richtek,rt3645";
+		status = "okay";
+		reg = <0x20>;
+	};
 };
 
 /* typec-aic1-power */
