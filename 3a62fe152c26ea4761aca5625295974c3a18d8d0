@@ -22,6 +22,30 @@
       },
       "revId": "3a62fe152c26ea4761aca5625295974c3a18d8d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacded4b_6c0f3104",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-30T17:40:26Z",
+      "side": 1,
+      "message": "@chlin56@nuvoton.corp-partner.google.com can you please confirm?",
+      "parentUuid": "2cbb8578_907a9abc",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 12
+      },
+      "revId": "3a62fe152c26ea4761aca5625295974c3a18d8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
