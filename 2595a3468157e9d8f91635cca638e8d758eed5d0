@@ -16,6 +16,24 @@
       "message": "Unnecessary newline.",
       "revId": "2595a3468157e9d8f91635cca638e8d758eed5d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08828c7_ad7b85ea",
+        "filename": "zephyr/program/fatcat/lapis/include/keyboard_customization.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-09-30T03:19:16Z",
+      "side": 1,
+      "message": "I check most of projects\u0027 keyboard_customization.h files, they all have a newline at end of file. To keep the formatting consistent, I added a newline. Could I submit the code in this format?",
+      "parentUuid": "97292250_8dd49098",
+      "revId": "2595a3468157e9d8f91635cca638e8d758eed5d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
