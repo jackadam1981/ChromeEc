@@ -115,14 +115,46 @@ static enum dualrole_capabilities dualrole_capability[CHARGE_PORT_COUNT];
 static int save_log[CHARGE_PORT_COUNT];
 #endif
 
-#ifdef CONFIG_ZEPHYR
+/* Use mutexing to sync charge_manager_refresh and pdc_power_mgmt */
+#ifdef CONFIG_USB_PDC_POWER_MGMT
+K_MUTEX_DEFINE(cm_refresh);
+
+// #define CM_MUTEX_DEBUG
+#if defined(CM_MUTEX_DEBUG) && defined(CONFIG_PLATFORM_EC_MUTEX_HISTORY)
+#include <debug/mutex_history.h>
+
+#define MUTEX_HISTORY_SIZE 32 // Number of events to keep
+
+// Define the ring buffer instance
+MUTEX_HISTORY_DECLARE(mutex_event_rb, MUTEX_HISTORY_SIZE);
+
+// Call from watchdog timeout handler
+void charge_manager_dump_mutex_history()
+{
+	mutex_history_dump(&mutex_event_rb);
+}
+
+#define CM_MUTEX_LOCK(m)                                        \
+	{                                                       \
+		MUTEX_HISTORY_LOG(&mutex_event_rb, m, LOCKING); \
+		mutex_lock(m);                                  \
+		MUTEX_HISTORY_LOG(&mutex_event_rb, m, LOCKED);  \
+	}
+#define CM_MUTEX_UNLOCK(m)                                       \
+	{                                                        \
+		mutex_unlock(m);                                 \
+		MUTEX_HISTORY_LOG(&mutex_event_rb, m, UNLOCKED); \
+	}
+#else
 #define CM_MUTEX_LOCK(m) mutex_lock(m)
 #define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
-#else
+#endif /* CM_MUTEX_DEBUG */
+
+#else /* CONFIG_USB_PDC_POWER_MGMT */
 /* TODO(b/427504021) - Legacy EC mutexes are not recursive */
 #define CM_MUTEX_LOCK(m)
 #define CM_MUTEX_UNLOCK(m)
-#endif /* CONFIG_ZEPHYR */
+#endif /* CONFIG_USB_PDC_POWER_MGMT */
 
 /* Store current state of port enable / charge current. */
 test_export_static int charge_port = CHARGE_PORT_NONE;
