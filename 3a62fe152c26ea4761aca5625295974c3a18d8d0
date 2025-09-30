@@ -46,6 +46,30 @@
       },
       "revId": "3a62fe152c26ea4761aca5625295974c3a18d8d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81b73892_e13bd128",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-30T17:53:13Z",
+      "side": 1,
+      "message": "added this question to the bug tracker. closing this comment.",
+      "parentUuid": "dacded4b_6c0f3104",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 12
+      },
+      "revId": "3a62fe152c26ea4761aca5625295974c3a18d8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
