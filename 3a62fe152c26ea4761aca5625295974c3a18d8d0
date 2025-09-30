@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbb8578_907a9abc",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-30T17:38:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this config have a `depends on` `PLATFORM_EC_SHA256_HW_ACCELERATE`?\n\nIf so, we can change in separate CL.",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 12
+      },
+      "revId": "3a62fe152c26ea4761aca5625295974c3a18d8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
