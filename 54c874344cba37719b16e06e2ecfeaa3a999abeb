@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d75a067_90da10b4",
+        "filename": "util/rtkupdate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-30T20:49:06Z",
+      "side": 1,
+      "message": "This code is duplicated with the one inside the loop. You can combine them.\n\nThe loop is like:\n```\nwhile (retry_count \u003c\u003d RETRY_COUNT_FOR_SEND_PAGES) {\n   if (retry_count \u003e 0) {\n      sleep(..);\n      tcflash(..);\n   }\n   if (send_packet_a(..) !\u003d 0) {\n      ...\n   }\n   if (wait_for_response(..) \u003d\u003d 0) {\n      success \u003d true;\n      break;\n   }\n   retry_count++;\n}\nif (!success) {\n  ERR_PRINT(..);\n  return -1;\n}\nif (retry_count \u003e 0) {\n  DBG_PRINT(\"Retry %d times..\"); \n}\n```",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "54c874344cba37719b16e06e2ecfeaa3a999abeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f616eaad_4b4ba99c",
         "filename": "util/rtkupdate.c",
         "patchSetId": 1
