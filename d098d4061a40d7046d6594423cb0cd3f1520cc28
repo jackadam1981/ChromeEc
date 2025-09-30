@@ -106,6 +106,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22ff3c8a_944f23dd",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-30T19:16:26Z",
+      "side": 1,
+      "message": "Use Zephyr logging and make messages like this debug-level.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 59
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f0d8fba_e031b0d4",
         "filename": "driver/rt3645.c",
         "patchSetId": 7
@@ -152,6 +175,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eace627a_a6015c6a",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-30T19:16:26Z",
+      "side": 1,
+      "message": "Also, what do the numbers `0x24`, `0x54`, and `0x2` represent? These should be expressed with macros",
+      "parentUuid": "8d261a0a_0cebb6a9",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13d305ee_9cedfff9",
         "filename": "driver/rt3645.c",
         "patchSetId": 7
@@ -168,6 +215,29 @@
         "startChar": 1,
         "endLine": 173,
         "endChar": 18
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0870daf0_331c6618",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-30T19:16:26Z",
+      "side": 1,
+      "message": "Why do we need to sleep before writing a log message?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 13
       },
       "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -198,6 +268,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0a95471_f0bf4317",
+        "filename": "driver/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-30T19:16:26Z",
+      "side": 1,
+      "message": "The datasheet requires that the regulator be disabled (EN pin low) while adjusting these parameters. That\u0027s what the board-specific implementations do in the following CL. However:\n\n(1) We are trying to discourage further usage of strong/weak board override functions and a callback-based mechanism where the board can register a hook for before and after the PMIC update would be better\n\n(2) Since the PMIC requires being disabled, it might be worthwhile to have the driver do this directly and have a particular GPIO referenced in its devicetree node that controls `EN`, but this one is also a power sequencing signal and the AP needs to be turned down, so it isn\u0027t as straightforward.",
+      "parentUuid": "3b05ee28_a67283fe",
+      "range": {
+        "startLine": 280,
+        "startChar": 19,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31017700_9809a0b5",
         "filename": "driver/rt3645.h",
         "patchSetId": 7
@@ -214,6 +308,29 @@
         "startChar": 16,
         "endLine": 112,
         "endChar": 17
+      },
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "221e10f9_2f0a09b5",
+        "filename": "zephyr/Kconfig.pmic",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-30T19:16:26Z",
+      "side": 1,
+      "message": "This should be `default y` if you want it to automatically enable based on presence in the devicetree. Then, drop the `CONFIG_PLATFORM_EC_RT3645\u003dy` in the following commit.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 8
       },
       "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
