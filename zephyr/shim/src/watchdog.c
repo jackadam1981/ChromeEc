@@ -103,7 +103,7 @@ static int watchdog_enable(const struct device *wdt_dev)
 	return err;
 }
 
-static int watchdog_init_device(const struct watchdog_info *info)
+int watchdog_init_device(const struct watchdog_info *info)
 {
 	const struct device *wdt_dev = info->wdt_dev;
 	int chan, err;
