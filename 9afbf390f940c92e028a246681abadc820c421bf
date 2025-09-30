@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdcace5_a4c0ec70",
+        "filename": "util/cbi-util.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-30T19:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca79038d_0b51230a",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 63
+      },
+      "revId": "9afbf390f940c92e028a246681abadc820c421bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63a2db31_515f9186",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-29T16:51:06Z",
       "side": 1,
       "message": "Nit - how about a goto so that there is only one free call and exit point.",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 18
+      },
+      "revId": "9afbf390f940c92e028a246681abadc820c421bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7dfee54_2ec6786c",
+        "filename": "util/cbi-util.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-30T19:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a2db31_515f9186",
       "range": {
         "startLine": 341,
         "startChar": 0,
