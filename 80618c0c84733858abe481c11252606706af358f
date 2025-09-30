@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a2b3d0_cd549eb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-09-30T03:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25165a3a_88121482",
+      "revId": "80618c0c84733858abe481c11252606706af358f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28005810_58edc994",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-09-30T00:54:57Z",
       "side": 1,
       "message": "Please drop.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "80618c0c84733858abe481c11252606706af358f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f892a9_64a028cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-09-30T03:27:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28005810_58edc994",
       "range": {
         "startLine": 13,
         "startChar": 0,
