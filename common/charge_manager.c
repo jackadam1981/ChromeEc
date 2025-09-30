@@ -51,8 +51,6 @@
 #define POWER_SWAP_TIMEOUT \
 	(PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + PD_T_SAFE_0V + 500 * MSEC)
 
-K_MUTEX_DEFINE(cm_refresh);
-
 /*
  * Default charge supplier priority
  *
@@ -115,14 +113,18 @@ static enum dualrole_capabilities dualrole_capability[CHARGE_PORT_COUNT];
 static int save_log[CHARGE_PORT_COUNT];
 #endif
 
-#ifdef CONFIG_ZEPHYR
+/* Use mutexing to sync charge_manager_refresh and pdc_power_mgmt */
+#ifdef CONFIG_USB_PDC_POWER_MGMT
+K_MUTEX_DEFINE(cm_refresh);
+
 #define CM_MUTEX_LOCK(m) mutex_lock(m)
 #define CM_MUTEX_UNLOCK(m) mutex_unlock(m)
-#else
+
+#else /* CONFIG_USB_PDC_POWER_MGMT */
 /* TODO(b/427504021) - Legacy EC mutexes are not recursive */
 #define CM_MUTEX_LOCK(m)
 #define CM_MUTEX_UNLOCK(m)
-#endif /* CONFIG_ZEPHYR */
+#endif /* CONFIG_USB_PDC_POWER_MGMT */
 
 /* Store current state of port enable / charge current. */
 test_export_static int charge_port = CHARGE_PORT_NONE;
