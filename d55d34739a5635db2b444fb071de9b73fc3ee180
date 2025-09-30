@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84521139_b71db6fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-30T04:35:22Z",
+      "side": 1,
+      "message": "@alevkoy@chromium.org, this CL seems to not work for NCTxxxx TCPCs. Smitha will discuss it in the sync meeting.",
+      "revId": "d55d34739a5635db2b444fb071de9b73fc3ee180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99694957_4847577b",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 9
