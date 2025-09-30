@@ -1471,13 +1471,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	if (!is_valid_port(port))
 		return;
 
-	CM_MUTEX_LOCK(&cm_refresh);
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
 			hook_call_deferred(&charge_manager_refresh_data, 0);
 	}
-	CM_MUTEX_UNLOCK(&cm_refresh);
 }
 
 void charge_manager_force_ceil(int port, int ceil)
