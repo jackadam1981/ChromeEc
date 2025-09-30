@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3899d5bf_c49bba30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-30T15:50:33Z",
+      "side": 1,
+      "message": "```suggestion\nhwtest: Fix Kconfig format\n\nA newline was missing after HW_TEST_OTP_KEY.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "191b05be7fd81536ffba2444ae9789a9456ef61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad4a397_1e276b5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-09-30T15:50:33Z",
+      "side": 1,
+      "message": "Just for my knowledge: Did this cause any problems or is it just a style issue?",
+      "revId": "191b05be7fd81536ffba2444ae9789a9456ef61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
