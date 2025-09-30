@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27af8e5a_af8b2dd6",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 9333,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-30T19:24:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e4b558_a6b111b7",
+      "range": {
+        "startLine": 9318,
+        "startChar": 0,
+        "endLine": 9333,
+        "endChar": 0
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f254406d_7752d32b",
@@ -243,6 +267,30 @@
       "writtenOn": "2025-09-29T16:42:33Z",
       "side": 1,
       "message": "I thought `!CONFIG_SYSTEM_UNLOCKED` only blocks writes to `BOARD_VERSION` and `OEM_ID`.\n[reference](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/cbi.c;l\u003d229;drc\u003d68282286f358028448b67e01b617735ac59d1a5e)",
+      "range": {
+        "startLine": 625,
+        "startChar": 7,
+        "endLine": 625,
+        "endChar": 29
+      },
+      "revId": "7bd4bfe22d3c0b751700cf170b1c95f38b2d442b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e911fd_7ad32902",
+        "filename": "zephyr/test/drivers/common_cbi/src/test_common_cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-09-30T19:24:03Z",
+      "side": 1,
+      "message": "You are correct. Found out that my previous failure was caused by wrongly applying the `CBI_SET_INIT` flag. Fixed it now.",
+      "parentUuid": "f254406d_7752d32b",
       "range": {
         "startLine": 625,
         "startChar": 7,
