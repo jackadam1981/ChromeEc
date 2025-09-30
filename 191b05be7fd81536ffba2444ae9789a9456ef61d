@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a46b8270_335d1a45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-30T16:24:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3899d5bf_c49bba30",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "191b05be7fd81536ffba2444ae9789a9456ef61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ad4a397_1e276b5c",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-09-30T15:50:33Z",
       "side": 1,
       "message": "Just for my knowledge: Did this cause any problems or is it just a style issue?",
+      "revId": "191b05be7fd81536ffba2444ae9789a9456ef61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9ee6e3_a02d35fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-09-30T16:24:03Z",
+      "side": 1,
+      "message": "this is a pure style CL. This did not cause any functional issues.",
+      "parentUuid": "2ad4a397_1e276b5c",
       "revId": "191b05be7fd81536ffba2444ae9789a9456ef61d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
