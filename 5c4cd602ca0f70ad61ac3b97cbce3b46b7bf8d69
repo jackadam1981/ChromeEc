@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f47d899_79c5e3bf",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-09-30T19:18:34Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary once the Kconfig option correctly follows the devicetree (see comment in previous CL). Also, this config file is for Ocelot-wide settings. For RVP only, please use `rvp_program.conf`",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "5c4cd602ca0f70ad61ac3b97cbce3b46b7bf8d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
