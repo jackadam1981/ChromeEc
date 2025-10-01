@@ -1512,6 +1512,7 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	return sleep_usec;
 }
 
+#include <soc.h>
 /* Main loop */
 void charger_task(void *u)
 {
@@ -1584,8 +1585,17 @@ void charger_task(void *u)
 		/* Report our state */
 		local_state.is_full = is_full;
 
+		unsigned int lock;
+		lock = irq_lock();
+		ECREG(0xf01d08) &= ~BIT(7);
+		irq_unlock(lock);
+
 		sleep_usec = calculate_sleep_dur(battery_critical, sleep_usec);
 		task_wait_event(sleep_usec);
+
+		lock = irq_lock();
+		ECREG(0xf01d08) |= BIT(7);
+		irq_unlock(lock);
 	}
 }
 
