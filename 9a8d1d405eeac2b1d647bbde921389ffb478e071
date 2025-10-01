@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bf1fe2_350e8ce9",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025.c",
+        "patchSetId": 62
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-01T23:01:43Z",
+      "side": 1,
+      "message": "Thinking about this more, if `capacity` is too small to hold the number of configs, we should return an error instead of copying only part of the configs.\n\n```suggestion\n\tuint8_t capacity \u003d *num_params;\n\tuint8_t num_defined_configs \u003d cfg-\u003esensor_info.num_capture_types;\n\n\tif (capacity \u003c num_defined_configs) {\n            return -EINVAL; // Is there a better error code?\n        }\n\n\tBUILD_ASSERT(sizeof(cfg-\u003esensor_info) \u003d\u003d sizeof(*sensor_info),\n\t\t     \"struct fingerprint_sensor_info size mismatch\");\n\n\tmemcpy(sensor_info, \u0026cfg-\u003esensor_info,\n\t       sizeof(struct fingerprint_sensor_info));\n\n\tmemcpy(image_frame_params_array, cfg-\u003esensor_image_configs,\n\t       num_defined_configs * sizeof(struct fingerprint_image_frame_params));\n\n\t*num_params \u003d num_defined_configs;\n```",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 27
+      },
+      "revId": "9a8d1d405eeac2b1d647bbde921389ffb478e071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
