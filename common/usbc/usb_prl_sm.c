@@ -1150,25 +1150,8 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 	 *       requirement.
 	 */
 
-	if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
-		/* NOTE: PRL_TX_Message_Sent State embedded here. */
-		/* Increment messageId counter */
-		increment_msgid_counter(port);
-
-		/* Inform Policy Engine Message was sent */
-		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
-			PDMSG_SET_FLAG(port, PRL_FLAGS_TX_COMPLETE);
-		else
-			pe_message_sent(port);
-
-		/*
-		 * This event reduces the time of informing the policy engine of
-		 * the transmission by one state machine cycle
-		 */
-		task_wake(PD_PORT_TO_TASK_ID(port));
-		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
-	} else if (pd_timer_is_expired(port, PR_TIMER_TCPC_TX_TIMEOUT) ||
-		   prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED) {
+	if (pd_timer_is_expired(port, PR_TIMER_TCPC_TX_TIMEOUT) ||
+	    prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED) {
 		/*
 		 * NOTE: PRL_Tx_Transmission_Error State embedded
 		 * here.
@@ -1188,6 +1171,23 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 
 		/* Increment message id counter */
 		increment_msgid_counter(port);
+		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+	} else if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
+		/* NOTE: PRL_TX_Message_Sent State embedded here. */
+		/* Increment messageId counter */
+		increment_msgid_counter(port);
+
+		/* Inform Policy Engine Message was sent */
+		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
+			PDMSG_SET_FLAG(port, PRL_FLAGS_TX_COMPLETE);
+		else
+			pe_message_sent(port);
+
+		/*
+		 * This event reduces the time of informing the policy engine of
+		 * the transmission by one state machine cycle
+		 */
+		task_wake(PD_PORT_TO_TASK_ID(port));
 		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 	}
 }
