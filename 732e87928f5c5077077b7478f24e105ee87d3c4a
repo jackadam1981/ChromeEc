@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f964ba74_8e4aa727",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-01T18:18:17Z",
+      "side": 1,
+      "message": "Nit - use the \"ite_it8xxx2_power_elpm\" compatible to look up the node for consistency with upstream.\n`DT_INST(0, ite_it8xxx2_power_elpm)`",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 47
+      },
+      "revId": "732e87928f5c5077077b7478f24e105ee87d3c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c25e3bff_ebd1a559",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-01T18:18:17Z",
+      "side": 1,
+      "message": "Drop this #ifdef, the caller to `system_it8xxx2_hibernate_by_elpm` is already guarded by `CONFIG_PLATFORM_EC_HIBERNATE_ELPM` which depends on the ELPM node being enabled.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 39
+      },
+      "revId": "732e87928f5c5077077b7478f24e105ee87d3c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67d9d86_92d5b240",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-01T18:18:17Z",
+      "side": 1,
+      "message": "Drop all the unused arguments for this static function.  Also add `__maybe_unused` to the function prototype so can avoid the #ifdef wrapper.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 69
+      },
+      "revId": "732e87928f5c5077077b7478f24e105ee87d3c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b6d89a_b68d43b9",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-01T18:18:17Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed.  The guard using CONFIG_PLATFORM_EC_HIBERNATE_ELPM should exclude the elpm function if not enabled.",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 0
+      },
+      "revId": "732e87928f5c5077077b7478f24e105ee87d3c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
