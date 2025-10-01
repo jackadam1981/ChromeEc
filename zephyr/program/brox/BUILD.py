@@ -95,6 +95,8 @@ register_ish_project(
     project_name="brox-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "brox-ish" / "project.overlay",
     ],
     kconfig_files=[

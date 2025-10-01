@@ -136,6 +136,8 @@ register_ish_project(
     project_name="trulo-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "trulo-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -152,6 +154,8 @@ register_ish_project(
     project_name="uldrenite-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "uldrenite-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -168,6 +172,8 @@ register_ish_project(
     project_name="pujjolo-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "pujjolo-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -184,6 +190,8 @@ register_ish_project(
     project_name="kaladin-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "kaladin-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -198,6 +206,8 @@ register_ish_project(
     project_name="lite-ish",
     zephyr_board="intel_ish_5_4_1",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "lite-ish" / "project.overlay",
     ],
     kconfig_files=[

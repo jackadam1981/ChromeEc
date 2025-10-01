@@ -158,6 +158,8 @@ register_ish_project(
     project_name="kinmen-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "kinmen-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -172,6 +174,8 @@ register_ish_project(
     project_name="ruby-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "ruby-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -186,6 +190,8 @@ register_ish_project(
     project_name="moonstone-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "moonstone-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -200,6 +206,8 @@ register_ish_project(
     project_name="fatcat-ish-idle",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "fatcat-ish-idle" / "project.overlay",
     ],
     kconfig_files=[

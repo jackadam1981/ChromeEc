@@ -59,6 +59,8 @@ register_ish_project(
     project_name="rex-ish",
     zephyr_board="intel_ish_5_6_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "rex-ish" / "project.overlay",
     ],
     kconfig_files=[here / "rex-ish" / "prj.conf"],
