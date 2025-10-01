@@ -114,10 +114,21 @@ static int pd_task_timeout(int port)
 	return timeout;
 }
 
+#include <soc.h>
+
 static bool pd_task_loop(int port)
 {
+	unsigned int lock;
+	lock = irq_lock();
+	ECREG(0xf01d08) &= ~BIT(1);
+	irq_unlock(lock);
+
 	/* wait for next event/packet or timeout expiration */
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
+
+	lock = irq_lock();
+	ECREG(0xf01d08) |= BIT(1);
+	irq_unlock(lock);
 
 	/* Manage expired PD Timers on timeouts */
 	if (evt & TASK_EVENT_TIMER)

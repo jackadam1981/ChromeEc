@@ -431,6 +431,7 @@ board_system_is_idle(uint64_t last_shutdown_time, uint64_t *target,
 #endif /* CONFIG_BATTERY */
 #endif /* CONFIG_HIBERNATE */
 
+#include <soc.h>
 /**
  * Common handler for steady states
  *
@@ -439,6 +440,8 @@ board_system_is_idle(uint64_t last_shutdown_time, uint64_t *target,
  */
 static enum power_state power_common_state(void)
 {
+	unsigned int lock;
+
 	switch (state) {
 	case POWER_G3:
 		if (want_g3_exit || want_reboot_ap_at_g3) {
@@ -490,11 +493,28 @@ static enum power_state power_common_state(void)
 				break;
 			}
 
+			lock = irq_lock();
+			ECREG(0xf01d08) &= ~BIT(5);
+			irq_unlock(lock);
+
 			wait = MIN(target - now, TASK_MAX_WAIT_US);
 			task_wait_event(wait);
+
+			lock = irq_lock();
+			ECREG(0xf01d08) |= BIT(5);
+			irq_unlock(lock);
 		}
 #else /* !CONFIG_HIBERNATE */
+
+		lock = irq_lock();
+		ECREG(0xf01d08) &= ~BIT(5);
+		irq_unlock(lock);
+
 		task_wait_event(-1);
+
+		lock = irq_lock();
+		ECREG(0xf01d08) |= BIT(5);
+		irq_unlock(lock);
 #endif
 		break;
 
@@ -536,7 +556,16 @@ static enum power_state power_common_state(void)
 #endif
 		/* Wait for a message */
 		power_wait_signals(0);
+
+		lock = irq_lock();
+		ECREG(0xf01d08) &= ~BIT(5);
+		irq_unlock(lock);
+
 		task_wait_event(-1);
+
+		lock = irq_lock();
+		ECREG(0xf01d08) |= BIT(5);
+		irq_unlock(lock);
 		break;
 
 	default:
@@ -716,6 +745,7 @@ void chipset_task(void *u)
 	static uint32_t last_in_signals;
 
 	while (1) {
+
 		/*
 		 * In order to prevent repeated console spam, only print the
 		 * current power state if something has actually changed.  It's

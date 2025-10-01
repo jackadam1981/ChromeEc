@@ -1084,11 +1084,14 @@ static bool keyboard_is_debouncing(void)
 	return false;
 }
 
+#include <soc.h>
+
 void keyboard_scan_task(void *u)
 {
 	timestamp_t poll_deadline, start;
 	int wait_time;
 	uint32_t local_disable_scanning = 0;
+	unsigned int lock;
 
 	print_state(debounced_state, "init state");
 	poll_deadline.val = 0;
@@ -1171,9 +1174,22 @@ void keyboard_scan_task(void *u)
 				 */
 				boot_key_value &= BIT(BOOT_KEY_POWER);
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
+
+				lock = irq_lock();
+				//ECREG(0xf01d08) &= ~BIT(4);
+				irq_unlock(lock);
+
 				task_wait_event(-1);
+
+				lock = irq_lock();
+				//ECREG(0xf01d08) |= BIT(4);
+				irq_unlock(lock);
 			}
 		}
+
+		lock = irq_lock();
+		//ECREG(0xf01d08) |= BIT(4);
+		irq_unlock(lock);
 
 		/* We're about to poll, so any existing forces are fulfilled */
 		force_poll = 0;
@@ -1186,6 +1202,10 @@ void keyboard_scan_task(void *u)
 		/* Busy polling keyboard state. */
 		while (keyboard_scan_is_enabled()) {
 			start = get_time();
+
+			lock = irq_lock();
+			//ECREG(0xf01d08) |= BIT(4);
+			irq_unlock(lock);
 
 			/* Check for keys down */
 			if (check_keys_changed(debounced_state)) {
@@ -1212,6 +1232,10 @@ void keyboard_scan_task(void *u)
 
 			if (wait_time < post_scan_clock_us)
 				wait_time = post_scan_clock_us;
+
+			lock = irq_lock();
+			//ECREG(0xf01d08) &= ~BIT(4);
+			irq_unlock(lock);
 
 			crec_usleep(wait_time);
 		}

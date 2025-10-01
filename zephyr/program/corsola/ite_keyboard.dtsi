@@ -29,14 +29,7 @@
 
 &cros_kb_raw {
 	status = "okay";
-	pinctrl-0 = <&ksi0_default
-		     &ksi1_default
-		     &ksi2_default
-		     &ksi3_default
-		     &ksi4_default
-		     &ksi5_default
-		     &ksi6_default
-		     &ksi7_default
+	pinctrl-0 = <
 		     &kso0_default
 		     &kso1_default
 		     &kso2_default
