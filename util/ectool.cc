@@ -43,6 +43,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <fcntl.h>
 #include <getopt.h>
 #include <iomanip>
 #include <iostream>
@@ -60,6 +61,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <vector>
 
@@ -121,6 +123,12 @@ int ascii_mode;
 static int verbose = 0;
 
 const command *commands_find(const char *name);
+
+/* The last set fingerprint capture type. */
+static uint32_t last_fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE;
+
+/* The file to store the last set fingerprint capture type. */
+#define FP_CAPTURE_CACHE_FILE "/tmp/ectool_fp_capture_type"
 
 namespace ec
 {
@@ -1930,19 +1938,24 @@ fp_download_frame(struct SensorImage &sensor_image,
 	if (images.size() == 1) {
 		sensor_image = images[0];
 	} else {
-		ec::FpModeCommand fp_mode_command(
-			(ec::FpMode(ec::FpMode::Mode::kDontChange)));
-		if (!fp_mode_command.Run(comm_get_fd())) {
-			fprintf(stderr, "Failed to Run FpModeCommand.\n");
-			return nullptr;
+		bool found = false;
+		FILE *f = fopen(FP_CAPTURE_CACHE_FILE, "r");
+		if (f) {
+			if (fscanf(f, "%u", &last_fp_capture_type) != 1) {
+				fprintf(stderr,
+					"Warning: Failed to read capture type from %s, defaulting to %u\n",
+					FP_CAPTURE_CACHE_FILE,
+					FP_CAPTURE_SIMPLE_IMAGE);
+				last_fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE;
+			}
+			fclose(f);
+		} else {
+			last_fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE;
 		}
 
-		bool found = false;
-		uint8_t current_fp_capture_type =
-			FP_CAPTURE_TYPE(fp_mode_command.Mode().RawVal());
 		for (const auto &image : fp_info_command->sensor_image())
 			if (image.fp_capture_type.has_value() &&
-			    *image.fp_capture_type == current_fp_capture_type) {
+			    *image.fp_capture_type == last_fp_capture_type) {
 				sensor_image = image;
 				found = true;
 				break;
@@ -2026,8 +2039,27 @@ int cmd_fp_mode(int argc, char *argv[])
 		else if (!strncmp(argv[i], "test_reset", 10))
 			capture_type = FP_CAPTURE_RESET_TEST;
 	}
-	if (mode & FP_MODE_CAPTURE)
+	if (mode & FP_MODE_CAPTURE) {
 		mode |= capture_type << FP_MODE_CAPTURE_TYPE_SHIFT;
+
+		int fd = open(FP_CAPTURE_CACHE_FILE,
+			      O_WRONLY | O_CREAT | O_TRUNC, 0600);
+		if (fd != -1) {
+			char buf[16];
+			snprintf(buf, sizeof(buf), "%u", capture_type);
+			ssize_t written = write(fd, buf, strlen(buf));
+			if (written < 0) {
+				fprintf(stderr,
+					"Warning: Failed to write to capture cache file %s: %s\n",
+					FP_CAPTURE_CACHE_FILE, strerror(errno));
+			}
+			close(fd);
+		} else {
+			fprintf(stderr,
+				"Warning: Failed to open capture cache file %s for writing: %s\n",
+				FP_CAPTURE_CACHE_FILE, strerror(errno));
+		}
+	}
 
 	p.mode = mode;
 	rv = ec_command(EC_CMD_FP_MODE, 0, &p, sizeof(p), &r, sizeof(r));
