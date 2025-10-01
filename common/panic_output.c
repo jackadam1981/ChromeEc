@@ -146,8 +146,7 @@ test_mockable_static
 #if !(defined(TEST_FUZZ) || defined(CONFIG_ZTEST))
 	__noreturn
 #endif
-	void
-	complete_panic(const char *fname, int linenum)
+	void complete_panic(const char *fname, int linenum)
 {
 	/* Top two bytes of info register is first two characters of file name.
 	 * Bottom two bytes of info register is line number.
@@ -551,6 +550,8 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, "[clear]",
 /*****************************************************************************/
 /* Host commands */
 
+static int panicinfo_receive_count;
+
 static enum ec_status
 host_command_panic_info(struct host_cmd_handler_args *args)
 {
@@ -558,6 +559,15 @@ host_command_panic_info(struct host_cmd_handler_args *args)
 	uint32_t pdata_size = get_panic_data_size();
 	uintptr_t pdata_start = get_panic_data_start();
 	struct panic_data *pdata = panic_get_data();
+
+	if (panicinfo_receive_count++ > 3) {
+		/* Force a panic on the 3rd consecutive request for testing. */
+		volatile int one = 1;
+		volatile int zero = 0;
+
+		cflush();
+		ccprintf("%08x", one / zero);
+	}
 
 	if (pdata_start && pdata_size > 0) {
 		if (pdata_size > args->response_max) {
