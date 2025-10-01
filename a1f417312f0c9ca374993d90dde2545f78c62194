@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bbdcae9_d8037ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 76
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-01T21:50:25Z",
+      "side": 1,
+      "message": "```suggestion\nzephyr: test: fingerprint: Update calls to fp_sensor_get_info to use FP_INFO v2 API\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 76
+      },
+      "revId": "a1f417312f0c9ca374993d90dde2545f78c62194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "071f2ac3_1fa5eb40",
         "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
         "patchSetId": 76
