@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95766483_ccc085e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-01T19:10:03Z",
+      "side": 1,
+      "message": "I have no idea how this works. It seems like there must be some kind of race condition on `xmit_status`, but I don\u0027t know what it could be.",
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103f5401_ac4117c2",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-01T19:10:03Z",
+      "side": 1,
+      "message": "The expected behavior would be that `xmit_status` is eventually set to success, and this state would take the success path. If it\u0027s initially a different value, I would just expect this state to loop back around and catch it next time. The currently observed failure would suggest that that\u0027s happening way late or not at all. If that\u0027s true, I wouldn\u0027t expect a short delay to change the behavior of this state at all.\n\nDo you know what the flow of this state is in the currently failing behavior? How does it change with this CL?\n\nSuperficially, all this CL is doing to delay the `prl_tx[port].xmit_status \u003d\u003d TCPC_TX_COMPLETE_SUCCESS` check is putting this handful of integer checks in front of it, which should take a handful of microseconds. Does anything different happen in the case of a longer, more intentional delay?\n\nDo you have a theory for why this changes the behavior?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44ba073_2b7b757b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-01T19:10:03Z",
+      "side": 1,
+      "message": "This is out of scope, but `pe_message_sent` already does this, so this is redundant. In the extended message case that\u0027s relevant right now, [the TCH runs again after the PRL](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;l\u003d783;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283), and the [next state](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;l\u003d1900;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283) will [call into the PE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;l\u003d2129;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283), and that will happen in this same task cycle. This extra `task_wake` call should actually increase the latency of the PE handling this, if anything. (We used to have a lot more of these wake calls and tried to streamline them for this reason.)\n\nAnyway, this call shouldn\u0027t do anything except maybe slightly change the PE timing in a way that shouldn\u0027t matter.\n\nSince this CL is already spooky, does anything change if you remove this call?",
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
