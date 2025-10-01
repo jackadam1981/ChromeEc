@@ -209,6 +209,8 @@ register_ish_project(
     project_name="ptl-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "ish/ptl-ish/project.overlay",
     ],
     kconfig_files=[

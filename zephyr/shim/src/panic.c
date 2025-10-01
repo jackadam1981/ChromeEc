@@ -10,6 +10,7 @@
 #include "task.h"
 
 #include <zephyr/arch/cpu.h>
+#include <zephyr/cache.h>
 #include <zephyr/fatal.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -190,6 +191,8 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
 		command_crash_nested_handler();
+
+	sys_cache_data_flush_and_invd_all();
 
 	/*
 	 * Reboot immediately, don't wait for watchdog, otherwise
