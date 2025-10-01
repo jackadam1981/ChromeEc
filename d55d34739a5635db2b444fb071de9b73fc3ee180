@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab795c4_c74b9850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-01T16:22:48Z",
+      "side": 1,
+      "message": "Ack. I think this CL should be good to submit, but we\u0027ll need to debug the Nuvoton TCPCs further. I\u0027ll try to gather the information I have in the bug.",
+      "parentUuid": "84521139_b71db6fa",
+      "revId": "d55d34739a5635db2b444fb071de9b73fc3ee180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99694957_4847577b",
