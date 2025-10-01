@@ -333,7 +333,9 @@ static struct protocol_layer_tx {
 	/* message id counters for all 6 port partners */
 	uint32_t msg_id_counter[NUM_SOP_STAR_TYPES];
 	/* transmit status */
-	int xmit_status;
+	volatile int xmit_status;
+	/* mutex for xmit_status */
+	mutex_t xmit_status_mutex;
 } prl_tx[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Hard Reset State Machine Object */
@@ -540,9 +542,11 @@ static void set_tcpc_tx_success_ts(int port)
 
 void pd_transmit_complete(int port, int status)
 {
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
 	if (status == TCPC_TX_COMPLETE_SUCCESS)
 		set_tcpc_tx_success_ts(port);
 	prl_tx[port].xmit_status = status;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
 }
 
 void pd_execute_hard_reset(int port)
@@ -584,6 +588,9 @@ static void prl_init(int port)
 {
 	int i;
 	const struct sm_ctx cleared = {};
+
+	/* initialize xmit_status_mutex */
+	k_mutex_init(&prl_tx[port].xmit_status_mutex);
 
 	/*
 	 * flags without PRL_FLAGS_SINK_NG present means we are initially
@@ -882,7 +889,9 @@ static void prl_tx_phy_layer_reset_entry(const int port)
 static void prl_tx_wait_for_message_request_entry(const int port)
 {
 	/* No phy layer response is pending */
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
 	prl_tx[port].xmit_status = TCPC_TX_UNSET;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
 	print_current_prl_tx_state(port);
 }
 
@@ -971,6 +980,8 @@ static void prl_tx_discard_message_entry(const int port)
 {
 	print_current_prl_tx_state(port);
 
+	int xmit_status;
+
 	/*
 	 * Discard queued message
 	 * Note: We differ from spec here, which allows us to not discard on
@@ -983,15 +994,19 @@ static void prl_tx_discard_message_entry(const int port)
 	 * response yet, or it was discarded in the phy layer, then a tx message
 	 * discard event has been detected.
 	 */
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
+	xmit_status = prl_tx[port].xmit_status;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
+
 	if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT) ||
-	    prl_tx[port].xmit_status == TCPC_TX_WAIT ||
-	    prl_tx[port].xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
+	    xmit_status == TCPC_TX_WAIT ||
+	    xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
 		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
 		/* Increment msgID only if the message is already passed to
 		 * the phy layer.
 		 * Otherwise, silently drop it without incrementing msgID
 		 */
-		if (prl_tx[port].xmit_status != TCPC_TX_UNSET) {
+		if (xmit_status != TCPC_TX_UNSET) {
 			increment_msgid_counter(port);
 		}
 		pe_report_discard(port);
@@ -1109,7 +1124,9 @@ static void prl_tx_construct_message(const int port)
 	prl_tx[port].last_xmit_type = pdmsg[port].xmit_type;
 
 	/* Indicate that a tx message is being passed to the phy layer */
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
 	prl_tx[port].xmit_status = TCPC_TX_WAIT;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
 	/*
 	 * PRL_FLAGS_TX_COMPLETE could be set if this function is called before
 	 * the Policy Engine is informed of the previous transmission. Clear the
@@ -1141,6 +1158,7 @@ static void prl_tx_wait_for_phy_response_entry(const int port)
 
 static void prl_tx_wait_for_phy_response_run(const int port)
 {
+	int xmit_status;
 	/* Wait until TX is complete */
 
 	/*
@@ -1150,7 +1168,11 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 	 *       requirement.
 	 */
 
-	if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
+	xmit_status = prl_tx[port].xmit_status;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
+
+	if (xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
 		/* NOTE: PRL_TX_Message_Sent State embedded here. */
 		/* Increment messageId counter */
 		increment_msgid_counter(port);
@@ -1163,7 +1185,7 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 
 		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 	} else if (pd_timer_is_expired(port, PR_TIMER_TCPC_TX_TIMEOUT) ||
-		   prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED) {
+		   xmit_status == TCPC_TX_COMPLETE_FAILED) {
 		/*
 		 * NOTE: PRL_Tx_Transmission_Error State embedded
 		 * here.
@@ -1306,7 +1328,9 @@ void prl_hr_send_msg_to_phy(const int port)
 	 * Policy Engine is informed of the previous transmission. Clear the
 	 * flags so that this message can be sent.
 	 */
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
 	prl_tx[port].xmit_status = TCPC_TX_UNSET;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
 	PDMSG_CLR_FLAG(port, PRL_FLAGS_TX_COMPLETE);
 
 	/* Pass message to PHY Layer */
@@ -1887,6 +1911,7 @@ static void tch_wait_for_transmission_complete_entry(const int port)
 
 static void tch_wait_for_transmission_complete_run(const int port)
 {
+	int xmit_status;
 	/*
 	 * Inform Policy Engine that Message was sent.
 	 */
@@ -1914,8 +1939,12 @@ static void tch_wait_for_transmission_complete_run(const int port)
 	 * jump to TCH_MESSAGE_RECEIVED if the phy layer has not indicated that
 	 * the tx message was sent successfully.
 	 */
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
+	xmit_status = prl_tx[port].xmit_status;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
+
 	if (TCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED) &&
-	    prl_tx[port].xmit_status != TCPC_TX_COMPLETE_SUCCESS) {
+	    xmit_status != TCPC_TX_COMPLETE_SUCCESS) {
 		TCH_CLR_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
 		set_state_tch(port, TCH_MESSAGE_RECEIVED);
 		return;
@@ -2169,6 +2198,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	uint8_t type;
 	uint8_t cnt;
 	int8_t msid;
+	int xmit_status;
 
 	/*
 	 * If PD3, wait for the RX chunk SM to copy the pdmsg into the extended
@@ -2269,6 +2299,10 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 * not a ping message (length must be checked to verify this is a
 	 * control message, rather than data)
 	 */
+	mutex_lock(&prl_tx[port].xmit_status_mutex);
+	xmit_status = prl_tx[port].xmit_status;
+	mutex_unlock(&prl_tx[port].xmit_status_mutex);
+
 	if ((cnt > 0) || (type != PD_CTRL_PING)) {
 		/*
 		 * Note: Spec dictates that we always go into
@@ -2277,7 +2311,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * complete at the same time as a response so only do this if a
 		 * message is pending.
 		 */
-		if (prl_tx[port].xmit_status != TCPC_TX_COMPLETE_SUCCESS ||
+		if (xmit_status != TCPC_TX_COMPLETE_SUCCESS ||
 		    PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT))
 			set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
 	}
