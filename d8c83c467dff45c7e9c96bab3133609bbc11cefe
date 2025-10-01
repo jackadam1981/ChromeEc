@@ -22,6 +22,30 @@
       },
       "revId": "d8c83c467dff45c7e9c96bab3133609bbc11cefe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d897686b_04b42532",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_sensor_sim.c",
+        "patchSetId": 78
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-01T23:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f26947f_55c89c10",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "d8c83c467dff45c7e9c96bab3133609bbc11cefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
