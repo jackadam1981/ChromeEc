@@ -206,6 +206,30 @@
       },
       "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58179b5_beb8d00d",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-10-01T16:19:58Z",
+      "side": 1,
+      "message": "My bad. I didn\u0027t realize this was an SOPP field",
+      "parentUuid": "7f42f77e_b2644810",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 99
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
