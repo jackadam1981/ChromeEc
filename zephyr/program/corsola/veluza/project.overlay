@@ -100,11 +100,6 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "ppc_interrupt";
 		};
-		int_x_ec_gpio2: x_ec_gpio2 {
-			irq-pin = <&gpio_x_ec_gpio2>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "hdmi_hpd_interrupt";
-		};
 		int_ap_bl_en: int_ap_bl_en{
 			irq-pin = <&gpio_ap_bl_en_odl>;
 			flags = <GPIO_INT_EDGE_BOTH>;
@@ -343,6 +338,11 @@
 			compatible = "sunwoda,333-cf-32-a", "battery-smart";
 		};
 	};
+
+	usbc {
+		/delete-node/ port1@1;
+		/delete-node/ port1-muxes;
+	};
 };
 &adc0 {
 	pinctrl-0 = <&adc0_ch0_gpi0_default
@@ -372,6 +372,10 @@
 &i2c4 {
 	/delete-node/ tusb1064-mux-1@44;
 	/delete-node/ ps8743_mux_1;
+};
+
+&usbpd1 {
+	status = "disabled";
 };
 
 /* Veluza usba port enable config */

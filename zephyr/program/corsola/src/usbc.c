@@ -226,7 +226,7 @@ test_export_static void baseboard_x_ec_gpio2_init(void)
 		(const struct bc12_config){ .drv = &virtual_bc12_drv };
 #endif
 	/* Use virtual mux to notify AP the mainlink direction. */
-	USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_hdmi_db);
+	//USB_MUX_ENABLE_ALTERNATIVE(usb_mux_chain_1_hdmi_db);
 
 	/*
 	 * If a HDMI DB is attached, C1 port tasks will be exiting in that
