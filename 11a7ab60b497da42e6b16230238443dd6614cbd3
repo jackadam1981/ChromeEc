@@ -46,6 +46,30 @@
       },
       "revId": "11a7ab60b497da42e6b16230238443dd6614cbd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e2e68e_f750df0f",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-01T16:54:29Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "c8b9fb2a_e10e1269",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "11a7ab60b497da42e6b16230238443dd6614cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
