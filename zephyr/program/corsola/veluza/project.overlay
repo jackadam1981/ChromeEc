@@ -89,12 +89,9 @@
 		/delete-node/ x_ec_gpio2;
 		/delete-node/ usb_c0_ppc_bc12;
 		/delete-node/ usb_c1_bc12_charger;
-		int_base_imu: base_imu {
-			handler = "base_sensor_interrupt";
-		};
-		int_lid_imu: lid_imu {
-			handler = "lid_sensor_interrupt";
-		};
+		/delete-node/ base_imu;
+		/delete-node/ lid_imu;
+
 		int_usb_c0_ppc: usb_c0_ppc {
 			irq-pin = <&usb_c0_ppc_int_odl>;
 			flags = <GPIO_INT_EDGE_FALLING>;
@@ -238,9 +235,11 @@
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -260,9 +259,11 @@
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -298,9 +299,11 @@
 					"cros-ec,motionsense-sensor-config";
 				ec-s0 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 				ec-s3 {
 					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
 				};
 			};
 		};
@@ -318,6 +321,14 @@
 			alternate-for = <&base_gyro>;
 			alternate-ssfc-indicator = <&base_sensor_bmi260>;
 		};
+	};
+
+	/delete-node/ motionsense-sensor-info;
+	motionsense-sensor-info {
+		compatible = "cros-ec,motionsense-sensor-info";
+
+		/* list of sensors in force mode */
+		accel-force-mode-sensors = <&base_accel &lid_accel>;
 	};
 
 	batteries {
