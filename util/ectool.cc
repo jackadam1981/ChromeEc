@@ -122,6 +122,9 @@ static int verbose = 0;
 
 const command *commands_find(const char *name);
 
+/* File-scope static variable to cache the last set fingerprint capture type. */
+static uint32_t last_fp_capture_type = FP_CAPTURE_SIMPLE_IMAGE;
+
 namespace ec
 {
 
@@ -1930,19 +1933,10 @@ fp_download_frame(struct SensorImage &sensor_image,
 	if (images.size() == 1) {
 		sensor_image = images[0];
 	} else {
-		ec::FpModeCommand fp_mode_command(
-			(ec::FpMode(ec::FpMode::Mode::kDontChange)));
-		if (!fp_mode_command.Run(comm_get_fd())) {
-			fprintf(stderr, "Failed to Run FpModeCommand.\n");
-			return nullptr;
-		}
-
 		bool found = false;
-		uint8_t current_fp_capture_type =
-			FP_CAPTURE_TYPE(fp_mode_command.Mode().RawVal());
 		for (const auto &image : fp_info_command->sensor_image())
 			if (image.fp_capture_type.has_value() &&
-			    *image.fp_capture_type == current_fp_capture_type) {
+			    *image.fp_capture_type == last_fp_capture_type) {
 				sensor_image = image;
 				found = true;
 				break;
@@ -2026,8 +2020,11 @@ int cmd_fp_mode(int argc, char *argv[])
 		else if (!strncmp(argv[i], "test_reset", 10))
 			capture_type = FP_CAPTURE_RESET_TEST;
 	}
-	if (mode & FP_MODE_CAPTURE)
+	if (mode & FP_MODE_CAPTURE) {
 		mode |= capture_type << FP_MODE_CAPTURE_TYPE_SHIFT;
+		/* Store the capture type in the static variable */
+		last_fp_capture_type = capture_type;
+	}
 
 	p.mode = mode;
 	rv = ec_command(EC_CMD_FP_MODE, 0, &p, sizeof(p), &r, sizeof(r));
