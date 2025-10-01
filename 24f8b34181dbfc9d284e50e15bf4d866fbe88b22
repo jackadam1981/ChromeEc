@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00840f28_b0969333",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-01T18:18:40Z",
+      "side": 1,
+      "message": "We should not get interrupt storm from the sensor, since they are based on the FIFO: the sensor raises it when there is at least one sample to process, and until the EC clear the interrupt register, no more interrupt will be sent. The interrupt frequency is therefore limited to the max ODR, 100Hz.",
+      "revId": "24f8b34181dbfc9d284e50e15bf4d866fbe88b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2251f585_967f8a32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-01T18:18:40Z",
+      "side": 1,
+      "message": "The reference put the sensor in forced mode only in S3.",
+      "revId": "24f8b34181dbfc9d284e50e15bf4d866fbe88b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e7efcb_bf1b78d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-01T18:18:40Z",
+      "side": 1,
+      "message": "Check we still pass sensor tests like CTS and tast test: `tast run $DUT hardware.SensorIioserviceHard`.\n\nThe problem with \"force` mode is the EC may not be schedule fast enough and can send n samples at a time instead of one, for instance 2 samples every 20ms, when the host request one sample every 10ms (100Hz).",
+      "revId": "24f8b34181dbfc9d284e50e15bf4d866fbe88b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
