@@ -184,6 +184,9 @@ DEFINE_boolean use_i2c_pseudo "${FLAGS_FALSE}" \
 	"Ignored."
 DEFINE_boolean usbc_charging "${FLAGS_FALSE}" \
 	"For servo_v4p1, switch to USB-C (non-PD) charging during programming."
+DEFINE_boolean do_ec_image_validation "${FLAGS_FALSE}" \
+	"Validate board variant of ec image with board variant identified " \
+	"by dut-control ec_board_info command."
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -285,6 +288,11 @@ function dut_control_get() {
 	DUT_GETVAL=$( "${ARGS[@]}" ) || RETVAL="$?"
 	if (( "${RETVAL}" )) ; then
 		warn "${FUNCNAME[0]} failed: ${ARGS[*]} returned ${RETVAL}."
+		if [ "$1" == "ec_chip" ]; then
+			warn "servo is not able to find ec chip"
+			warn "This could be due to ec chip is unresponsive"
+			warn "Please try with --chip parameter to flash."
+		fi
 		return "${RETVAL}"
 	fi
 
@@ -825,6 +833,79 @@ function ec_token_database() {
 		fi
 	fi
 	die "no token database found : specify one."
+}
+
+# Function to validate EC image compatibility with ec chip
+function validate_ec_image_compatibility() {
+	local EC_IMAGE="${1}"
+
+	# Skip validation if flag is set, no image specified, or reading firmware
+	if [[ "${FLAGS_do_ec_image_validation}" == "${FLAGS_FALSE}" || \
+	      -z "${EC_IMAGE}" || -n "${FLAGS_read}" ]]; then
+		if [[ "${FLAGS_do_ec_image_validation}" == "${FLAGS_FALSE}" ]]; then
+			warn "Skipping EC image compatibility validation " \
+			     "(--do_ec_image_validation is not provided)"
+			warn "This flashing may fail or brick the device if EC image is incorrect."
+		fi
+		return 0
+	fi
+
+	info "Validating EC image compatibility for ec chip going to be flashed..."
+
+	# Get board variant details from servo
+	local EC_BOARD_NAME=""
+	if dut_has_control ec_board_info; then
+		EC_BOARD_NAME="$(dut_control_get ec_board_info 2>/dev/null || true)"
+		info "Detected EC board variant from servo: ${EC_BOARD_NAME}"
+	else
+		warn "ec_board_info control not available, skipping EC image validation"
+		warn "Make sure provided EC image is correct."
+		return 0
+	fi
+
+	# Check if we got a valid board variant name
+	if [[ -z "${EC_BOARD_NAME}" || "${EC_BOARD_NAME}" =~ "unknown" ]]; then
+		warn "Could not determine EC board variant detail from servo, " \
+		     "skipping validation"
+		warn "This could be possible due to EC is unresponsive or " \
+		     "not programmed before."
+		warn "Make sure, correct ec image is provided to flash EC chip."
+		warn "This flashing may fail or brick the device if EC image is incorrect."
+		return 0
+	fi
+
+	# Check if strings command is available
+	if ! command -v strings >/dev/null 2>&1; then
+		warn "strings command not available, skipping EC image validation"
+		return 0
+	fi
+
+	# Search for EC board variant name in the firmware image
+	info "Searching for EC board variant identifier '${EC_BOARD_NAME}' " \
+	     "in firmware image..."
+	if strings -a "${EC_IMAGE}" | grep -Fq "${EC_BOARD_NAME}"; then
+		info "EC image compatibility validated: '${EC_BOARD_NAME}' " \
+		     "found in firmware image"
+		return 0
+	else
+		error "EC image compatibility validation failed!"
+		error "Expected EC board variant: '${EC_BOARD_NAME}'"
+		error "This EC board variant identifier was not found in the " \
+		      "firmware image: '${EC_IMAGE}'"
+		error "This could be possible due to the EC image provided does " \
+		      "not support the connected EC chip."
+		error "Force flashing may fail or brick the device."
+		error ""
+		error "Please verify:"
+		error "1. The firmware image is built for the correct EC board variant"
+		error "2. The servo overlay defines board details for connected " \
+		      "variant and able to correctly detecting the board details"
+		error "3. You have provided the correct EC firmware file w.r.t " \
+		      "EC board variant"
+		error ""
+		die "Aborting flash operation due to EC firmware image and " \
+		    "EC board variant mismatch"
+	fi
 }
 
 function load_token_db() {
@@ -2209,6 +2290,9 @@ if [[ -z "${FLAGS_read}" ]]; then
 	IMG="$(ec_image)"
 	info "Using ${MCU} image : ${IMG}"
 	IMG_SIZE=$(stat -c%s "${IMG}")
+
+	# Validate EC image compatibility with connected board variant
+	validate_ec_image_compatibility "${IMG}"
 fi
 
 if [ "${NEED_SERVO}" != "no" ] ; then
