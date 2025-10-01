@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e418f005_75eeaa21",
+        "filename": "zephyr/program/trulo/kaladin/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-01T08:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff1639b_29489e03",
+      "revId": "61bca40ee476606fb22a3b6b2a0d9c2764c6c9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0186b3de_7c1854b2",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-01T06:46:48Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "61bca40ee476606fb22a3b6b2a0d9c2764c6c9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7806d137_710358cc",
+        "filename": "zephyr/program/trulo/kaladin/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-01T08:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0186b3de_7c1854b2",
       "range": {
         "startLine": 87,
         "startChar": 1,
