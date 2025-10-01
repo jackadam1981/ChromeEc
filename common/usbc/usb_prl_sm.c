@@ -1141,6 +1141,8 @@ static void prl_tx_wait_for_phy_response_entry(const int port)
 
 static void prl_tx_wait_for_phy_response_run(const int port)
 {
+	CPRINTS("P%d: %s\n", port,
+			prl_tx_state_names[prl_tx_get_state(port)]);
 	/* Wait until TX is complete */
 
 	/*
@@ -2203,7 +2205,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	    prl_debug_level >= DEBUG_LEVEL_3) {
 		int p;
 
-		CPRINTF("C%d: RECV %04x/%d ", port, header, cnt);
+		CPRINTF("P%d: RECV %04x/%d ", port, header, cnt);
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, pdmsg[port].rx_chk_buf[p]);
 		CPRINTF("\n");
@@ -2215,8 +2217,10 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 */
 	if (!IS_ENABLED(CONFIG_USB_CTVPD) && !IS_ENABLED(CONFIG_USB_VPD) &&
 	    PD_HEADER_GET_SOP(header) != TCPCI_MSG_SOP &&
-	    PD_HEADER_PROLE(header) == PD_PLUG_FROM_DFP_UFP)
+	    PD_HEADER_PROLE(header) == PD_PLUG_FROM_DFP_UFP){
+			CPRINTS("L2219\n");
 		return;
+		}
 
 	/*
 	 * From 6.2.1.1.6 Port Data Role in USB PD Rev 3.1, Ver 1.3
@@ -2233,6 +2237,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	if (!RCH_CHK_FLAG(port, PRL_FLAGS_IGNORE_DATA_ROLE) &&
 	    PD_HEADER_GET_SOP(header) == TCPCI_MSG_SOP &&
 	    PD_HEADER_DROLE(header) == pd_get_data_role(port)) {
+			CPRINTS("L2238\n");
 		CPRINTS("C%d Error: Data role mismatch (0x%08x)", port, header);
 		tc_start_error_recovery(port);
 		return;
@@ -2240,6 +2245,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 
 	/* Handle incoming soft reset as special case */
 	if (cnt == 0 && type == PD_CTRL_SOFT_RESET) {
+		CPRINTS("L2246\n");
 		/* Clear MessageIdCounter and stored MessageID value. */
 		prl_reset_msg_ids(port, prl_rx[port].sop);
 
@@ -2247,6 +2253,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 
 		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
+			CPRINTS("L2254\n");
 			set_state_rch(port,
 				      RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
 			set_state_tch(port,
@@ -2259,6 +2266,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * the PE's outgoing ACCEPT message to the soft reset.
 		 */
 		pe_got_soft_reset(port);
+		CPRINTS("L2267\n");
 
 		return;
 	}
@@ -2266,8 +2274,10 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	/*
 	 * Ignore if this is a duplicate message. Stop processing.
 	 */
-	if (prl_rx[port].msg_id[prl_rx[port].sop] == msid)
+	if (prl_rx[port].msg_id[prl_rx[port].sop] == msid){
+		CPRINTS("L2276\n");
 		return;
+	}
 
 	/*
 	 * Discard any pending tx message if this is
@@ -2275,6 +2285,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 * control message, rather than data)
 	 */
 	if ((cnt > 0) || (type != PD_CTRL_PING)) {
+		CPRINTS("L2286\n");
 		/*
 		 * Note: Spec dictates that we always go into
 		 * PRL_Tx_Discard_Message upon receivng a message.  However, due
@@ -2283,19 +2294,24 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * message is pending.
 		 */
 		if (prl_tx[port].xmit_status != TCPC_TX_COMPLETE_SUCCESS ||
-		    PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT))
+		    PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)){
+				CPRINTS("L2296\n");
 			set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
+			CPRINTS("L2298\n");
+			}
 	}
 
 	/* Store Message Id */
 	prl_rx[port].msg_id[prl_rx[port].sop] = msid;
 
 	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
+		CPRINTS("L2306\n");
 		/* RTR Chunked Message Router States. */
 		/*
 		 * Received Ping from Protocol Layer
 		 */
 		if (cnt == 0 && type == PD_CTRL_PING) {
+			CPRINTS("L2312\n");
 			/* NOTE: RTR_PING State embedded here. */
 			rx_emsg[port].len = 0;
 			pe_message_received(port);
@@ -2312,6 +2328,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		else if (tch_get_state(port) !=
 				 TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE ||
 			 TCH_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
+				CPRINTS("L2329\n");
 			/* NOTE: RTR_TX_CHUNKS State embedded here. */
 			/*
 			 * Send Message to Tx Chunk
@@ -2324,6 +2341,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * Protocol Layer & Not Doing Tx Chunks
 		 */
 		else {
+			CPRINTS("L2342\n");
 			/* NOTE: RTR_RX_CHUNKS State embedded here. */
 			/*
 			 * Send Message to Rx
@@ -2332,6 +2350,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 			RCH_SET_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
 		}
 	} else {
+		CPRINTS("L2351\n");
 		/* Copy chunk to extended buffer */
 		copy_chunk_to_ext(port);
 		/* Send message to Policy Engine */
@@ -2339,6 +2358,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	}
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
+	CPRINTS("L2359\n");
 }
 
 /* All necessary Protocol Transmit States (Section 6.11.2.2) */
