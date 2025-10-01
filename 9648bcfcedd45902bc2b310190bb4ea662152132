@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817413a3_14eba12b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-01T21:39:43Z",
+      "side": 1,
+      "message": "This should be setting it to `num_to_copy` (the number actually copied).",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "9648bcfcedd45902bc2b310190bb4ea662152132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
