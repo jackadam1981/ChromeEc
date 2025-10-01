@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ad1ae4_7f9c906e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1145.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-01T21:40:27Z",
+      "side": 1,
+      "message": "This should be setting it to `num_to_copy` (the number actually copied).",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 35
+      },
+      "revId": "2ca34000a2c0d03e0619eec3af222f0bd31bb1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
