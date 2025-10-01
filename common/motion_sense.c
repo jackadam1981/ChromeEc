@@ -912,6 +912,7 @@ static void check_and_queue_gestures(uint32_t *event)
 }
 #endif
 
+#include <soc.h>
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -1072,7 +1073,18 @@ void motion_sense_task(void *u)
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_get_all();
 		}
+
+		unsigned int lock;
+		lock = irq_lock();
+		ECREG(0xf01d00) &= ~BIT(3);
+		irq_unlock(lock);
+
 		event = task_wait_event(wait_us);
+
+		lock = irq_lock();
+		ECREG(0xf01d00) |= BIT(3);
+		irq_unlock(lock);
+
 		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_put_all();

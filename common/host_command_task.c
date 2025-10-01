@@ -373,6 +373,7 @@ const struct host_command *find_host_command(int command)
 	}
 }
 
+#include <soc.h>
 void host_command_task(void *u)
 {
 	timestamp_t t0, t1, t_recess;
@@ -386,8 +387,17 @@ void host_command_task(void *u)
 #endif
 
 	while (1) {
+		unsigned int lock;
+		lock = irq_lock();
+		ECREG(0xf01d01) &= ~BIT(2);
+		irq_unlock(lock);
+
 		/* Wait for the next command event */
 		int evt = task_wait_event(-1);
+
+		lock = irq_lock();
+		ECREG(0xf01d01) |= BIT(2);
+		irq_unlock(lock);
 
 		t0 = get_time();
 
@@ -407,9 +417,18 @@ void host_command_task(void *u)
 		 * rate limiting : check how long we have gone without a
 		 * significant interruption to avoid DoS from host
 		 */
-		if (t1.val - t_recess.val > CONFIG_HOSTCMD_RATE_LIMITING_PERIOD)
+		if (t1.val - t_recess.val > CONFIG_HOSTCMD_RATE_LIMITING_PERIOD) {
+			lock = irq_lock();
+			ECREG(0xf01d01) &= ~BIT(2);
+			irq_unlock(lock);
+
 			/* Short recess */
 			crec_usleep(CONFIG_HOSTCMD_RATE_LIMITING_RECESS);
+
+			lock = irq_lock();
+			ECREG(0xf01d01) |= BIT(2);
+			irq_unlock(lock);
+		}
 	}
 }
 
