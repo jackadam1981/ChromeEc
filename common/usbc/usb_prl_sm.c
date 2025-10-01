@@ -334,6 +334,8 @@ static struct protocol_layer_tx {
 	uint32_t msg_id_counter[NUM_SOP_STAR_TYPES];
 	/* transmit status */
 	int xmit_status;
+	/* transmit status latch */
+	int tx_status;
 } prl_tx[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Hard Reset State Machine Object */
@@ -748,6 +750,9 @@ void prl_run(int port, int evt, int en)
 
 		/* Run Protocol Layer Hard Reset state machine */
 		run_state(port, &prl_hr[port].ctx);
+
+		/* Latch xmit_status */
+		prl_tx[port].xmit_status = prl_tx[port].tx_status;
 
 		/*
 		 * If the Hard Reset state machine is active, then there is no
