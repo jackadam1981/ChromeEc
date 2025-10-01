@@ -52,6 +52,24 @@
       "parentUuid": "e13145ba_2e78083c",
       "revId": "e68f6635e8feda6f2c9e6a98166c5b35694a7f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ae7f47_365fd32d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-10-01T17:05:57Z",
+      "side": 1,
+      "message": "Most likely because I synced my repo before your associated patch landed yesterday afternoon. Yes, I can run with `--with_private\u003dno` after syncing. Between the two runs, testing takes several hours for a low risk change that has already been validated on the EC side, so please advise of any other flag additions you\u0027d like to see sonner rather than later, To me, the current results pretty convincingly show no regressions based on this CL which is unrelated to `sha256_unrolled`",
+      "parentUuid": "397ecc9e_5ff624c6",
+      "revId": "e68f6635e8feda6f2c9e6a98166c5b35694a7f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
