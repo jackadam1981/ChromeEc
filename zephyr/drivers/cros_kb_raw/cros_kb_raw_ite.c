@@ -117,7 +117,7 @@ static void kb_raw_ite_drive_column_reg_set_v1(const struct device *dev)
 	inst->KBS_KSOLGOEN |= IT8XXX2_KBS_KSO2GOEN;
 #else
 	/* KSO[7:0] pins output low. */
-	inst->KBS_KSOL = 0x00;
+	//inst->KBS_KSOL = 0x00;
 #endif
 	/* critical section with interrupts off */
 	key = irq_lock();
@@ -127,11 +127,11 @@ static void kb_raw_ite_drive_column_reg_set_v1(const struct device *dev)
 	 *       rest be configured as GPIO output mode. In this case that we
 	 *       disable the ISR in critical section to avoid race condition.
 	 */
-	inst->KBS_KSOH1 &= (uint8_t)~KSOH_PIN_MASK;
+	//inst->KBS_KSOH1 &= (uint8_t)~KSOH_PIN_MASK;
 	/* restore interrupts */
 	irq_unlock(key);
 	/* KSO[17:16] pins output low */
-	inst->KBS_KSOH2 &= ~KSOH2_PIN_MASK;
+	//inst->KBS_KSOH2 &= ~KSOH2_PIN_MASK;
 }
 #endif
 
@@ -155,7 +155,7 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 	/* KSO[2] is inverted. */
 	mask ^= BIT(2);
 #endif
-	inst->KBS_KSOL = mask & 0xff;
+	//inst->KBS_KSOL = mask & 0xff;
 	/* critical section with interrupts off */
 	key = irq_lock();
 	/*
@@ -164,13 +164,13 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 	 * here (this depends on how many keyboard matrix output pin
 	 * we are using).
 	 */
-	inst->KBS_KSOH1 = ((inst->KBS_KSOH1) & ~KSOH_PIN_MASK) |
-			  ((mask >> 8) & KSOH_PIN_MASK);
+	//inst->KBS_KSOH1 = ((inst->KBS_KSOH1) & ~KSOH_PIN_MASK) |
+	//		  ((mask >> 8) & KSOH_PIN_MASK);
 	/* restore interrupts */
 	irq_unlock(key);
 	/* Set KSO[17:16] output data */
-	inst->KBS_KSOH2 = ((inst->KBS_KSOH2) & ~KSOH2_PIN_MASK) |
-			  ((mask >> 16) & KSOH2_PIN_MASK);
+	//inst->KBS_KSOH2 = ((inst->KBS_KSOH2) & ~KSOH2_PIN_MASK) |
+	//		  ((mask >> 16) & KSOH2_PIN_MASK);
 
 	return 0;
 }

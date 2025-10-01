@@ -373,6 +373,7 @@ const struct host_command *find_host_command(int command)
 	}
 }
 
+#include <soc.h>
 void host_command_task(void *u)
 {
 	timestamp_t t0, t1, t_recess;
@@ -386,8 +387,17 @@ void host_command_task(void *u)
 #endif
 
 	while (1) {
+		unsigned int lock;
+		lock = irq_lock();
+		ECREG(0xf01d01) &= ~BIT(2);
+		irq_unlock(lock);
+
 		/* Wait for the next command event */
 		int evt = task_wait_event(-1);
+
+		lock = irq_lock();
+		ECREG(0xf01d01) |= BIT(2);
+		irq_unlock(lock);
 
 		t0 = get_time();
 

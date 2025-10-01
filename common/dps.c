@@ -477,6 +477,8 @@ void dps_update_stabilized_time(int port)
 	update_timeout(dps_config.t_stable);
 }
 
+#include <soc.h>
+
 void dps_task(void *u)
 {
 	struct pdo_candidate last_cand = { CHARGE_PORT_NONE, 0, 0 };
@@ -495,10 +497,22 @@ void dps_task(void *u)
 		struct pdo_candidate curr_cand = { CHARGE_PORT_NONE, 0, 0 };
 		timestamp_t now;
 
+		unsigned int lock;
+
 		now = get_time();
 		if (flag & DPS_FLAG_STOP_EVENTS) {
 			dps_reset();
+
+			lock = irq_lock();
+			ECREG(0xf01d00) &= ~BIT(5);
+			irq_unlock(lock);
+
 			task_wait_event(-1);
+
+			lock = irq_lock();
+			ECREG(0xf01d00) |= BIT(5);
+			irq_unlock(lock);
+
 			/* clear flags after wake up. */
 			atomic_clear(&flag);
 			update_timeout(dps_config.t_check);

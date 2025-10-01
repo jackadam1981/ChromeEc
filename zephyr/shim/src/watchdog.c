@@ -143,10 +143,17 @@ int watchdog_init(void)
 	return err;
 }
 
+#include <soc.h>
+
 void watchdog_reload(void)
 {
 	if (!watchdog_initialized)
 		return;
+
+	unsigned int lock;
+	lock = irq_lock();
+	ECREG(0xf01d01) |= BIT(3);
+	irq_unlock(lock);
 
 	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
 		if (wdt_chan[i] < 0)
@@ -154,6 +161,10 @@ void watchdog_reload(void)
 
 		wdt_feed(wdt_info[i].wdt_dev, wdt_chan[i]);
 	}
+
+	lock = irq_lock();
+	ECREG(0xf01d01) &= ~BIT(3);
+	irq_unlock(lock);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 

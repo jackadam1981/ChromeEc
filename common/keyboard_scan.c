@@ -1084,6 +1084,8 @@ static bool keyboard_is_debouncing(void)
 	return false;
 }
 
+#include <soc.h>
+
 void keyboard_scan_task(void *u)
 {
 	timestamp_t poll_deadline, start;
@@ -1171,7 +1173,16 @@ void keyboard_scan_task(void *u)
 				 */
 				boot_key_value &= BIT(BOOT_KEY_POWER);
 #endif /* CONFIG_KEYBOARD_BOOT_KEYS */
+				unsigned int lock;
+				lock = irq_lock();
+				ECREG(0xf01d00) &= ~BIT(4);
+				irq_unlock(lock);
+
 				task_wait_event(-1);
+
+				lock = irq_lock();
+				ECREG(0xf01d00) |= BIT(4);
+				irq_unlock(lock);
 			}
 		}
 
