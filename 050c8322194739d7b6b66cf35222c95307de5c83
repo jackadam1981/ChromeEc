@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f7abf8_866c8567",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-10-01T09:17:05Z",
+      "side": 1,
+      "message": "(cr) ren@ren-dell /mnt/host/source/src/scripts $ tast run 192.168.1.8 firmware.EcStress.sensors_suspend\n\n...\n\n2025-10-01T09:15:31.713982Z --------------------------------------------------------------------------------\n2025-10-01T09:15:31.714016Z firmware.EcStress.sensors_suspend [ FAIL ] DUT rebooted unexpectedly\n2025-10-01T09:15:31.714016Z                                            EC crash detected: \u003d\u003d\u003d EXCEPTION: MCAUSE\u003d6 \u003d\u003d\u003d\nS11 00000000 S10 00000000  S9 00000000  S8   00000000\nS7  00000000 S6  00000000  S5 00000000  S4   00000000\nS3  00000000 S2  00000000  S1 800318a2  S0   dead6664\nT6  00000000 T5  00000000  T4 00000000  T3   00000000\nT2  00000000 T1  00000000  T0 00000000  A7   00000000\nA6  00000000 A5  00000000  A4 00000000  A3   00000000\nA2  00000000 A1  00000000  A0 00000000  TP   00000000\nGP  00000000 RA  00000000  SP 00000000  MEPC 00000000\n2025-10-01T09:15:31.714082Z --------------------------------------------------------------------------------",
+      "revId": "050c8322194739d7b6b66cf35222c95307de5c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
