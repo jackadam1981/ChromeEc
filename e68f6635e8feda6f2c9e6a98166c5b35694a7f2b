@@ -34,6 +34,24 @@
       "parentUuid": "9f2d21e9_3de837a2",
       "revId": "e68f6635e8feda6f2c9e6a98166c5b35694a7f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397ecc9e_5ff624c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-01T15:31:23Z",
+      "side": 1,
+      "message": "can you add rthe flag `--with_private\u003dno`. I need it is running private tests. why the `sha256_unrolled` is still failing? Can you please rebase?",
+      "parentUuid": "e13145ba_2e78083c",
+      "revId": "e68f6635e8feda6f2c9e6a98166c5b35694a7f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
