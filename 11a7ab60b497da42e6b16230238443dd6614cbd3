@@ -22,6 +22,30 @@
       },
       "revId": "11a7ab60b497da42e6b16230238443dd6614cbd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b9fb2a_e10e1269",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-01T16:40:03Z",
+      "side": 1,
+      "message": "Focaltech named their Zephyr module with SOC support and drivers `focaltech`, so I needed to find something else to avoid conflict with it. Maybe `focaltech_fp` is better since it is in the fingerprint directory? What do you think?",
+      "parentUuid": "bdc15547_8b578fab",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "11a7ab60b497da42e6b16230238443dd6614cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
