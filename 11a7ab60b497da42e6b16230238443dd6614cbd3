@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc15547_8b578fab",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-01T16:35:13Z",
+      "side": 1,
+      "message": "why are you calling it `focaltech_lib` instead of `focaltech`?",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "11a7ab60b497da42e6b16230238443dd6614cbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
