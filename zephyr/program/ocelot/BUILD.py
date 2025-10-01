@@ -155,6 +155,8 @@ register_ish_project(
     project_name="ocelotrvp-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "ocelot-ish" / "ocelotrvp-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -191,6 +193,8 @@ register_ish_project(
     project_name="matsu-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "matsu-ish" / "matsu-ish" / "project.overlay",
     ],
     kconfig_files=[
@@ -211,6 +215,8 @@ register_ish_project(
     project_name="ocicat-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
+        # TODO: remove once upstream fixes the RAM map for ISH
+        here / ".." / ".." / "include" / "cros" / "intel" / "ish.overlay",
         here / "ocicat-ish" / "project.overlay",
     ],
     kconfig_files=[
