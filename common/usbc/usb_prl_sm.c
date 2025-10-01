@@ -333,7 +333,7 @@ static struct protocol_layer_tx {
 	/* message id counters for all 6 port partners */
 	uint32_t msg_id_counter[NUM_SOP_STAR_TYPES];
 	/* transmit status */
-	int xmit_status;
+	volatile int xmit_status;
 } prl_tx[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Hard Reset State Machine Object */
