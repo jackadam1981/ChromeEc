@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e370f10_20ce7993",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-02T21:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c61dddb0_cd89de19",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 39
+      },
+      "revId": "732e87928f5c5077077b7478f24e105ee87d3c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d67d9d86_92d5b240",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "If the `#if-#endif` guard is retained, the `__maybe_unused` attribute can be removed.",
       "parentUuid": "d67d9d86_92d5b240",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 69
+      },
+      "revId": "732e87928f5c5077077b7478f24e105ee87d3c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb81d0e_a8c61dda",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-02T21:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69536625_490bd84b",
       "range": {
         "startLine": 261,
         "startChar": 0,
