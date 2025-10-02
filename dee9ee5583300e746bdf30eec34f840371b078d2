@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96ec025_d5e352a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-02T23:04:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c643833_d1e9e9ee",
+      "range": {
+        "startLine": 14,
+        "startChar": 63,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "dee9ee5583300e746bdf30eec34f840371b078d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88aa0240_a73d3923",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-02T22:23:22Z",
       "side": 1,
       "message": "Let\u0027s file a bug to fix the firmware side so that it clears all of the capture bits after acquiring an image. The halfway state is confusing (and probably accidental).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 63
+      },
+      "revId": "dee9ee5583300e746bdf30eec34f840371b078d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24835f03_045808e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-02T23:04:31Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/449014224",
+      "parentUuid": "88aa0240_a73d3923",
       "range": {
         "startLine": 15,
         "startChar": 0,
