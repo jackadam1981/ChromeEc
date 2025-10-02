@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c20eb5_6587c344",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_fpc1025_pal.c",
+        "patchSetId": 64
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-02T18:42:26Z",
+      "side": 1,
+      "message": "We may be able to add a build assert for this.\n\nDoes it work to add these in `fingerprint_fpc1025.c`?:\n\n```\n#define FPC1025_ASSERT_FRAME_SIZE_CONSISTENT(idx, inst)    \\\n    BUILD_ASSERT(                                                            \\\n        (FINGERPRINT_SENSOR_FRAME_SIZE(idx, DT_DRV_INST(inst)) \u003d\u003d             \\\n         FINGERPRINT_SENSOR_FRAME_SIZE(0, DT_DRV_INST(inst))),                \\\n        \"FPC1025: frame_size of config \" #idx \" does not match config 0\");\n```\n\nThen add this to `FPC1025_DEFINE(inst)`:\n\n```\nLISTIFY(FINGERPRINT_SENSOR_NUM_CONFIGS(DT_DRV_INST(inst)),                   \\\n            FPC1025_ASSERT_FRAME_SIZE_CONSISTENT, (;), inst)                     \\\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "fc6f58a46a8bde7e793fff3a164ddf59c298a7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
