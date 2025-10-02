@@ -20,9 +20,16 @@
 #define CONFIG_CMD_S5_TIMEOUT /* Allow a user-specified timeout to exit S5 */
 #define CONFIG_EMULATED_SYSRQ
 
+<<<<<<< HEAD   (e1353c6158c3433f03fb91d3d13cd551f8738bee host_cmd: Add console_print host command)
 /* Detect sleep hang after 10s */
 #undef CONFIG_SLEEP_TIMEOUT_MS
 #define CONFIG_SLEEP_TIMEOUT_MS 10000
+||||||| BASE   (5e29e00d68000dc3b8ea9d3b5ad46a71f9f064d4 gpio: Assert unsupported unused pin at compile-time)
+=======
+/* Disable hcdebug because it is noisy */
+#undef CONFIG_HOSTCMD_DEBUG_MODE
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+>>>>>>> CHANGE (7b2a1d15a08b47dfe0b9d08e220a6a03a961886a guybrush: set HOSTCMD_DEBUG to off)
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
