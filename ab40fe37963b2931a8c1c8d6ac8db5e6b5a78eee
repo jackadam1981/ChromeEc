@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d26a7f_443a4eda",
+        "filename": "zephyr/drivers/imvp/imvp_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-02T23:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd1bd32f_36a932a3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "ab40fe37963b2931a8c1c8d6ac8db5e6b5a78eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ceaf0f_2c8f7f60",
+        "filename": "zephyr/drivers/imvp/imvp_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-02T23:06:00Z",
+      "side": 1,
+      "message": "Done, invalidating page.",
+      "parentUuid": "db7b5030_195c446f",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "ab40fe37963b2931a8c1c8d6ac8db5e6b5a78eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "def16106_052c1277",
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c75b62_b6823e20",
+        "filename": "zephyr/drivers/imvp/imvp_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-02T23:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "def16106_052c1277",
+      "range": {
+        "startLine": 48,
+        "startChar": 28,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "ab40fe37963b2931a8c1c8d6ac8db5e6b5a78eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a367635e_b5ddf3a0",
+        "filename": "zephyr/drivers/imvp/imvp_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-02T23:06:00Z",
+      "side": 1,
+      "message": "Done, using datasheet nomenclature.",
+      "parentUuid": "2b946903_0dd636e3",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "ab40fe37963b2931a8c1c8d6ac8db5e6b5a78eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "663128bc_61e46bd3",
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be54ca8b_81610d56",
+        "filename": "zephyr/drivers/imvp/imvp_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-02T23:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663128bc_61e46bd3",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "ab40fe37963b2931a8c1c8d6ac8db5e6b5a78eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e17cbc_171711d3",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-10-02T19:57:11Z",
       "side": 1,
       "message": "5",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "ab40fe37963b2931a8c1c8d6ac8db5e6b5a78eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52796db9_0ffa869c",
+        "filename": "zephyr/dts/bindings/imvp/richtek,rt3645.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-02T23:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e17cbc_171711d3",
       "range": {
         "startLine": 1,
         "startChar": 15,
