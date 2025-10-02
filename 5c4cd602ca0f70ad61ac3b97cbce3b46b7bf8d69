@@ -22,6 +22,29 @@
       },
       "revId": "5c4cd602ca0f70ad61ac3b97cbce3b46b7bf8d69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f57a24d_23e94436",
+        "filename": "zephyr/program/ocelot/rvp_i2c.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-02T16:52:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t do what you want.  The `label` property is a string and is not converted to an I2C address.\n\nThis will be deleted once you move the driver under the platform/ec/zephyr folder.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "5c4cd602ca0f70ad61ac3b97cbce3b46b7bf8d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
