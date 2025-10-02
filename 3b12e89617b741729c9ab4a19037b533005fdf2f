@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c7b27d_2719c049",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-02T17:03:34Z",
+      "side": 1,
+      "message": "After this command, the EC chip will power down and no return, right? Better to document this behavior. Especially, this is different from `system_it8xxx2_hibernate_by_deep_doze()` which returns and an explicit `system_reset()` is called afterward.",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 71
+      },
+      "revId": "3b12e89617b741729c9ab4a19037b533005fdf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87569074_5ba5be19",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-02T17:03:34Z",
+      "side": 1,
+      "message": "Better to document this ELPM hibernate mode doesn\u0027t support a time-based wake-up. Print some error message if non-zero seconds or microseconds are passed.",
+      "range": {
+        "startLine": 349,
+        "startChar": 8,
+        "endLine": 349,
+        "endChar": 40
+      },
+      "revId": "3b12e89617b741729c9ab4a19037b533005fdf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
