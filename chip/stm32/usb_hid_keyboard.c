@@ -206,6 +206,7 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x29, 0xa4, /* Usage Maximum (164) */				\
 	0x81, 0x00, /* Input (Data, Array), ;Key arrays (6 bytes) */
 
+<<<<<<< HEAD   (2ab361247a799b43154722ff092dd480b8523be5 host_cmd: Add console_print host command)
 #define KEYBOARD_TOP_ROW_DESC						\
 	/* Modifiers */							\
 	0x05, 0x0C, /* Consumer Page */					\
@@ -239,6 +240,81 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x95, 0x0C, /* Report Count (12) */				\
 	0x75, 0x01, /* Report Size (1) */				\
 	0x81, 0x01, /* Input (Constant), ;1-bit padding */
+||||||| BASE   (ba5011d38e06c87518a21b3f323eee0a21ca0be4 cbi: Change the size of UFSC from 5 DWORDs to 4 DWORDs)
+#define KEYBOARD_TOP_ROW_DESC                                                 \
+	/* Modifiers */                                                       \
+	0x05, 0x0C, /* Consumer Page */                                       \
+		0x0A, 0x24, 0x02, /* AC Back (0x224) */                       \
+		0x0A, 0x25, 0x02, /* AC Forward (0x225) */                    \
+		0x0A, 0x27, 0x02, /* AC Refresh (0x227) */                    \
+		0x0A, 0x32, 0x02, /* AC View Toggle (0x232) */                \
+		0x0A, 0x9F, 0x02, /* AC Desktop Show All windows (0x29F) */   \
+		0x09, 0x70, /* Display Brightness Decrement (0x70) */         \
+		0x09, 0x6F, /* Display Brightness Increment (0x6F) */         \
+		0x09, 0xE2, /* Mute (0xE2) */                                 \
+		0x09, 0xEA, /* Volume Decrement (0xEA) */                     \
+		0x09, 0xE9, /* Volume Increment (0xE9) */                     \
+		0x0B, 0x46, 0x00, 0x07, 0x00, /* PrintScreen (Page 0x7, Usage \
+						 0x46) */                     \
+		0x0A, 0xD0, 0x02, /* Privacy Screen Toggle (0x2D0) */         \
+		0x09, 0x7A, /* Keyboard Brightness Decrement (0x7A) */        \
+		0x09, 0x79, /* Keyboard Brightness Increment (0x79)*/         \
+		0x09, 0xCD, /* Play / Pause (0xCD) */                         \
+		0x09, 0xB5, /* Scan Next Track (0xB5) */                      \
+		0x09, 0xB6, /* Scan Previous Track (0xB6) */                  \
+		0x09, 0x7C, /* Keyboard Backlight OOC (0x7C) */               \
+		0x0B, 0x2F, 0x00, 0x0B, 0x00, /* Phone Mute (Page 0xB, Usage  \
+						 0x2F) */                     \
+		0x09, 0x32, /* Sleep (0x32) */                                \
+		0x15, 0x00, /* Logical Minimum (0) */                         \
+		0x25, 0x01, /* Logical Maximum (1) */                         \
+		0x75, 0x01, /* Report Size (1) */                             \
+		0x95, 0x14, /* Report Count (20) */                           \
+		0x81, 0x02, /* Input (Data, Variable, Absolute), ;Modifier    \
+			       byte */                                        \
+                                                                              \
+		/* 12-bit padding */                                          \
+		0x95, 0x0C, /* Report Count (12) */                           \
+		0x75, 0x01, /* Report Size (1) */                             \
+		0x81, 0x01, /* Input (Constant), ;1-bit padding */
+=======
+#define KEYBOARD_TOP_ROW_DESC                                                 \
+	/* Modifiers */                                                       \
+	0x05, 0x0C, /* Consumer Page */                                       \
+		0x0A, 0x24, 0x02, /* AC Back (0x224) */                       \
+		0x0A, 0x25, 0x02, /* AC Forward (0x225) */                    \
+		0x0A, 0x27, 0x02, /* AC Refresh (0x227) */                    \
+		0x0A, 0x32, 0x02, /* AC View Toggle (0x232) */                \
+		0x0A, 0x9F, 0x02, /* AC Desktop Show All windows (0x29F) */   \
+		0x09, 0x70, /* Display Brightness Decrement (0x70) */         \
+		0x09, 0x6F, /* Display Brightness Increment (0x6F) */         \
+		0x09, 0xE2, /* Mute (0xE2) */                                 \
+		0x09, 0xEA, /* Volume Decrement (0xEA) */                     \
+		0x09, 0xE9, /* Volume Increment (0xE9) */                     \
+		0x0B, 0x46, 0x00, 0x07, 0x00, /* PrintScreen (Page 0x7, Usage \
+						 0x46) */                     \
+		0x0A, 0xD0, 0x02, /* Privacy Screen Toggle (0x2D0) */         \
+		0x09, 0x7A, /* Keyboard Brightness Decrement (0x7A) */        \
+		0x09, 0x79, /* Keyboard Brightness Increment (0x79)*/         \
+		0x09, 0xCD, /* Play / Pause (0xCD) */                         \
+		0x09, 0xB5, /* Scan Next Track (0xB5) */                      \
+		0x09, 0xB6, /* Scan Previous Track (0xB6) */                  \
+		0x09, 0x7C, /* Keyboard Backlight OOC (0x7C) */               \
+		0x0B, 0xA9, 0x00, 0x01, 0x00, /* System Microphone Mute (Page \
+						 0x01, Usage 0xA9) */         \
+		0x09, 0x32, /* Sleep (0x32) */                                \
+		0x15, 0x00, /* Logical Minimum (0) */                         \
+		0x25, 0x01, /* Logical Maximum (1) */                         \
+		0x75, 0x01, /* Report Size (1) */                             \
+		0x95, 0x14, /* Report Count (20) */                           \
+		0x81, 0x02, /* Input (Data, Variable, Absolute), ;Modifier    \
+			       byte */                                        \
+                                                                              \
+		/* 12-bit padding */                                          \
+		0x95, 0x0C, /* Report Count (12) */                           \
+		0x75, 0x01, /* Report Size (1) */                             \
+		0x81, 0x01, /* Input (Constant), ;1-bit padding */
+>>>>>>> CHANGE (d2247fa2ebbdf51257c9242724bae5cf247b523b stm32/usb_hid_keyboard; Modify HID of top micmute key)
 
 #define KEYBOARD_TOP_ROW_FEATURE_DESC					\
 	0x06, 0xd1, 0xff, /* Usage Page (Google) */			\
@@ -512,7 +588,7 @@ static const struct action_key_config action_key[] = {
 	[TK_NEXT_TRACK] = { .mask = BIT(15), .usage = 0x000C00B5 },
 	[TK_PREV_TRACK] = { .mask = BIT(16), .usage = 0x000C00B6 },
 	[TK_KBD_BKLIGHT_TOGGLE] = { .mask = BIT(17), .usage = 0x000C007C },
-	[TK_MICMUTE] = { .mask = BIT(18), .usage = 0x000B002F },
+	[TK_MICMUTE] = { .mask = BIT(18), .usage = 0x000100A9 },
 };
 
 /* TK_* is 1-indexed, so the next bit is at ARRAY_SIZE(action_key) - 1 */
