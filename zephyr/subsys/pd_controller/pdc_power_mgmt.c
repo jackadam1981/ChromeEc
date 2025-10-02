@@ -1253,6 +1253,16 @@ static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd)
 	set_pdc_state(port, PDC_SEND_CMD_START);
 }
 
+static void queue_set_sink_path(struct pdc_port_t *port)
+{
+	if (port->sink_path_to_send != port->sink_path_status) {
+		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+	} else {
+		LOG_INF("No change in sink_path_status, skip sending");
+		k_event_post(&port->sm_event, PDC_SM_EVENT);
+	}
+}
+
 /**
  * @brief Trigger a PPM change indication on a port.
  */
@@ -1768,7 +1778,7 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		port->sink_path_to_send =
 			charge_manager_get_active_charge_port() ==
 			config->connector_num;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		queue_set_sink_path(port);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_SRC_CAPS)) {
 		/* Ensure the next time a PD capable SNK connects, we offer
@@ -2003,7 +2013,7 @@ static enum smf_state_result pdc_unattached_run(void *obj)
 	case UNATTACHED_SET_SINK_PATH_OFF:
 		port->sink_path_to_send = false;
 		port->unattached_local_state = UNATTACHED_RUN;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		queue_set_sink_path(port);
 		return SMF_EVENT_HANDLED;
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
@@ -2090,7 +2100,7 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 		port->sink_path_to_send = false;
 		port->src_attached_local_state =
 			SRC_ATTACHED_GET_CONNECTOR_CAPABILITY;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		queue_set_sink_path(port);
 		return SMF_EVENT_HANDLED;
 	case SRC_ATTACHED_GET_CONNECTOR_CAPABILITY:
 		port->src_attached_local_state =
@@ -2413,7 +2423,7 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 		/* Disable sink path if we're not the selected port. */
 		if (!IS_BIT_SET(sink_path_mask, selected_port)) {
 			port->sink_path_to_send = false;
-			queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+			queue_set_sink_path(port);
 		}
 
 		/* Remain in current state until only one sink path is enabled*/
@@ -2468,7 +2478,7 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 			/* No other ports have sink path enabled,
 			 * proceed to enable */
 			port->sink_path_to_send = true;
-			queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+			queue_set_sink_path(port);
 			return true;
 		} else if (port->sink_path_status) {
 			/* Already enabled proceed to next state */
@@ -2481,7 +2491,7 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 	} else {
 		/* Disabling sink path, no need to wait */
 		port->sink_path_to_send = false;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		queue_set_sink_path(port);
 		return true;
 	}
 }
@@ -3183,7 +3193,7 @@ static enum smf_state_result pdc_src_typec_only_run(void *obj)
 			SRC_TYPEC_ATTACHED_DEBOUNCE;
 
 		port->sink_path_to_send = false;
-		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
+		queue_set_sink_path(port);
 		return SMF_EVENT_HANDLED;
 	case SRC_TYPEC_ATTACHED_DEBOUNCE:
 		if (k_timer_status_get(&port->typec_only_timer) > 0) {

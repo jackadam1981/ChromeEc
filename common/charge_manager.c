@@ -927,6 +927,8 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 	 */
 	if (charge_port != CHARGE_PORT_NONE && charge_port != best_port &&
 	    is_battery_disconnected()) {
+		CPRINTS("Battery disconnected, retain current port/supplier port=%d supp=%d",
+			charge_port, charge_supplier);
 		best_port = charge_port;
 		/*
 		 * Since PDC will reset PDOs when receive new SRC Caps.

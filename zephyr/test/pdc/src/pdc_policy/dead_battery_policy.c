@@ -161,6 +161,8 @@ int configure_dead_battery(const struct pdc_fixture *pdc)
 	cs.sink_path_status = 1;
 	zassert_ok(emul_pdc_connect_partner(pdc->emul_pdc, &cs));
 
+	WRITE_BIT(sink_path_en_mask, pdc->port, 1);
+
 	return 0;
 }
 
@@ -200,8 +202,6 @@ static void dead_battery_policy_before(void *f)
 	sniff_pdc_set_sink_path_fake.custom_fake =
 		custom_fake_pdc_set_sink_path;
 	sniff_pdc_set_rdo_fake.custom_fake = custom_fake_pdc_set_rdo;
-
-	sink_path_en_mask = BIT_MASK(CONFIG_USB_PD_PORT_MAX_COUNT);
 }
 
 ZTEST_SUITE(dead_battery_policy, NULL, dead_battery_policy_setup,
