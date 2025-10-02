@@ -278,6 +278,7 @@ enum {
 		(COND_CODE_1(CONFIG_SHELL_BACKEND_DUMMY, (fn(SHELL)),   \
 		())))							\
 	fn(SYSWORKQ)                                                    \
+	fn(AP_PWRSEQ)                                                   \
 	fn(IDLE)
 /* clang-format on */
 
