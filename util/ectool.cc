@@ -1913,7 +1913,8 @@ int cmd_apreset(int argc, char *argv[])
  */
 static std::unique_ptr<std::vector<uint8_t> >
 fp_download_frame(struct SensorImage &sensor_image,
-		  struct TemplateInfo &template_info, int index)
+		  struct TemplateInfo &template_info, int index,
+		  uint8_t capture_type = FP_CAPTURE_VENDOR_FORMAT)
 {
 	ec::EcCommandFactory ec_command_factory;
 	ec::EcCommandVersionSupported ec_cmd_ver_supported;
@@ -1930,19 +1931,10 @@ fp_download_frame(struct SensorImage &sensor_image,
 	if (images.size() == 1) {
 		sensor_image = images[0];
 	} else {
-		ec::FpModeCommand fp_mode_command(
-			(ec::FpMode(ec::FpMode::Mode::kDontChange)));
-		if (!fp_mode_command.Run(comm_get_fd())) {
-			fprintf(stderr, "Failed to Run FpModeCommand.\n");
-			return nullptr;
-		}
-
 		bool found = false;
-		uint8_t current_fp_capture_type =
-			FP_CAPTURE_TYPE(fp_mode_command.Mode().RawVal());
 		for (const auto &image : fp_info_command->sensor_image())
 			if (image.fp_capture_type.has_value() &&
-			    *image.fp_capture_type == current_fp_capture_type) {
+			    *image.fp_capture_type == capture_type) {
 				sensor_image = image;
 				found = true;
 				break;
@@ -2222,10 +2214,36 @@ int cmd_fp_frame(int argc, char *argv[])
 {
 	struct SensorImage sensor_image{};
 	struct TemplateInfo template_info{};
-	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
-			  FP_FRAME_INDEX_RAW_IMAGE :
-			  FP_FRAME_INDEX_SIMPLE_IMAGE;
-	auto fp_frame = fp_download_frame(sensor_image, template_info, idx);
+
+	int idx = FP_FRAME_INDEX_SIMPLE_IMAGE;
+	uint8_t capture_type = FP_CAPTURE_VENDOR_FORMAT;
+
+	for (int i = 1; i < argc; i++) {
+		if (!strcasecmp(argv[i], "raw")) {
+			idx = FP_FRAME_INDEX_RAW_IMAGE;
+		}
+
+		/* capture types */
+		else if (!strncmp(argv[i], "vendor", 6))
+			capture_type = FP_CAPTURE_VENDOR_FORMAT;
+		else if (!strncmp(argv[i], "pattern0", 8))
+			capture_type = FP_CAPTURE_PATTERN0;
+		else if (!strncmp(argv[i], "pattern1", 8))
+			capture_type = FP_CAPTURE_PATTERN1;
+		else if (!strncmp(argv[i], "qual", 4))
+			capture_type = FP_CAPTURE_QUALITY_TEST;
+		else if (!strncmp(argv[i], "test_reset", 10))
+			capture_type = FP_CAPTURE_RESET_TEST;
+		else if (!strncmp(argv[i], "test_defect_pxl", 15))
+			capture_type = FP_CAPTURE_DEFECT_PXL_TEST;
+		else if (!strncmp(argv[i], "test_abnormal", 13))
+			capture_type = FP_CAPTURE_ABNORMAL_TEST;
+		else if (!strncmp(argv[i], "test_noise", 10))
+			capture_type = FP_CAPTURE_NOISE_TEST;
+	}
+
+	auto fp_frame = fp_download_frame(sensor_image, template_info, idx,
+					  capture_type);
 	if (!fp_frame) {
 		fprintf(stderr, "Failed to get FP sensor frame\n");
 		return -1;
