@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d599dbe_ec97f2db",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-03T06:37:39Z",
+      "side": 1,
+      "message": "My theory is that the [pd_transmit_complete](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283;l\u003d541), responsible for updating `prl_tx[port].xmit_status` may exhibit a minimum latency. This delay could potentially fall within the timeframe during which we evalutate the condition `prl_tx[port].xmit_status \u003d\u003d TCPC_TX_COMPLETE_SUCCESS`.\n\nI have not yet had the opportunity to experiment with longer more intentional delays. I will need to observe the results.",
+      "parentUuid": "103f5401_ac4117c2",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
