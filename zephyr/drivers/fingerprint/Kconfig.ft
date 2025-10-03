@@ -1,0 +1,41 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config FINGERPRINT_SENSOR_FT9865
+	bool "Fingerprint driver for FT9865"
+	default y
+	depends on DT_HAS_FT_FT9865_ENABLED
+
+config FINGERPRINT_SENSOR_FT9869
+	bool "Fingerprint driver for FT9869"
+	default y
+	depends on DT_HAS_FT_FT9869_ENABLED
+
+config FINGERPRINT_SENSOR_FT9849
+	bool "Fingerprint driver for FT9849"
+	default y
+	depends on DT_HAS_FT_FT9849_ENABLED
+
+config FINGERPRINT_SENSOR_FT98XX
+	bool "FT98XX sensor driver"
+	default y if FINGERPRINT_SENSOR_FT9865 || FINGERPRINT_SENSOR_FT9869 || FINGERPRINT_SENSOR_FT9849
+
+if FINGERPRINT_SENSOR_FT98XX
+
+config FINGERPRINT_SENSOR_FT98XX_PAL
+	bool "Platform Abstraction Layer for Focaltech private library"
+	default y
+	help
+	  If enabled, Platform Abstraction Layer for Focaltech private library will be
+	  compiled. The PAL is used to interact with the sensor (SPI, GPIO) and
+	  the system (heap allocations, printing messages, time functions).
+
+# Enabled in private driver Kconfig
+config HAVE_FT98XX_PRIVATE_DRIVER
+	bool
+	default n
+	help
+	  If enabled, it indicates that focaltech private driver is present.
+
+endif # FINGERPRINT_SENSOR_FT98XX
