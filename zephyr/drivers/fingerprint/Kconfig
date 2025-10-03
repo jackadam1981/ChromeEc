@@ -27,6 +27,13 @@ config FINGERPRINT_SENSOR_IMAGE_SIZE
 	# { width (80) x height (64) x bytes_per_pixel (2) }
 	default 10240 if FINGERPRINT_SENSOR_EGIS630
 	default 12800 if FINGERPRINT_SENSOR_ELAN80SERIES
+<<<<<<< PATCH SET (67167a5b23cde47a86972c6f5bb02f703308dbe0 Add ft9865 sensor driver)
+	default 5120 if FINGERPRINT_SENSOR_FT9865
+	default 7840 if FINGERPRINT_SENSOR_FT9869
+	default 10240 if FINGERPRINT_SENSOR_FT9849
+||||||| BASE      (b8fbca049743db766d9794c1837021c5b8680bc3 WIP: zephyr: fpmcu: add chojnik)
+=======
+>>>>>>> BASE      (85883698d8e92ca8713ada57f7b6f46a1cc03370 WIP: zephyr: fpmcu: add chojnik)
 	help
 	  This is a size of fingerprint image with an additional metadata.
 	  This size must be at least a size of raw image. For FPC1025,
@@ -43,6 +50,13 @@ config FINGERPRINT_SENSOR_IMAGE_OFFSET
 	default 2340 if FINGERPRINT_SENSOR_FPC1145
 	default 0 if FINGERPRINT_SENSOR_EGIS630
 	default 0 if FINGERPRINT_SENSOR_ELAN80SERIES
+<<<<<<< PATCH SET (67167a5b23cde47a86972c6f5bb02f703308dbe0 Add ft9865 sensor driver)
+	default 0 if FINGERPRINT_SENSOR_FT9865
+	default 0 if FINGERPRINT_SENSOR_FT9869
+	default 0 if FINGERPRINT_SENSOR_FT9849
+||||||| BASE      (b8fbca049743db766d9794c1837021c5b8680bc3 WIP: zephyr: fpmcu: add chojnik)
+=======
+>>>>>>> BASE      (85883698d8e92ca8713ada57f7b6f46a1cc03370 WIP: zephyr: fpmcu: add chojnik)
 	help
 	  This is an offset of the raw fingerprint image in the image data
 	  buffer.
@@ -53,6 +67,7 @@ config FINGERPRINT_SENSOR_IMAGE_OFFSET
 rsource "Kconfig.egis"
 rsource "Kconfig.elan"
 rsource "Kconfig.fpc"
+rsource "Kconfig.ft"
 rsource "Kconfig.sensor_sim"
 # zephyr-keep-sorted-stop
 
