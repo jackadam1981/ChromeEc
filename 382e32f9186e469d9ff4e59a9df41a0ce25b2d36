@@ -34,6 +34,24 @@
       "parentUuid": "7404b071_d155870e",
       "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4199974b_259615dd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 84
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T17:51:42Z",
+      "side": 1,
+      "message": "Try to include the common.h file",
+      "parentUuid": "1769c275_aaaa67fb",
+      "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
