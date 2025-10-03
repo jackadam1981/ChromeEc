@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a7b42e_1d4b51dc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T10:20:01Z",
+      "side": 1,
+      "message": "Unfortunately, this is not acceptable in this for. Can you described how this is shared? Doesn\u0027t sensor driver and algo driver need to use it at the same time? Maybe you can use some dynamic memory allocation method?",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a4789a_70e26a4a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T10:20:01Z",
+      "side": 1,
+      "message": "Please introduce enumes or defines for modes.",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7057de6_274b7a57",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T10:20:01Z",
+      "side": 1,
+      "message": "Are all functions in this file referenced by the libs?",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
