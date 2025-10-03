@@ -16,6 +16,24 @@
       "message": "Bindings yaml file is missing for this",
       "revId": "a64fe712d69c3850eb9f9b963ba67566c05021f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744abcf4_0bb5411a",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 4234276
+      },
+      "writtenOn": "2025-10-03T10:10:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "049c499a_5e41b68e",
+      "revId": "a64fe712d69c3850eb9f9b963ba67566c05021f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
