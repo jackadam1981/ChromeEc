@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff0987e_003c3275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-03T21:55:52Z",
+      "side": 1,
+      "message": "This is an interesting idea, but I don\u0027t think you need a new servod control.\n\nThe version string includes the board name, and you can look up the version string directly from the EC binary.\n\n```\ndump_fmap \u003cec.bin\u003e -x RO_FRID\n```\n\nThis extracts the firwmare ID from the EC binary, saving a file called `RO_FRID` into the current directory.\n\nFor example:\n```\n(cr) $ dump_fmap build/zephyr/ocelotrvp-npcx/output/ec.bin -F  -x RO_FRID\n0x0003c980:0x0003c99f RO_FRID\n(cr) $ cat RO_FRID \nocelotrvp-npcx-0.0.0-3478f6e\n```\n\nYou can then just run the following commands to get the version string from the EC:\n\n```\n(cr) $ dut-control ec_uart_regexp:\"[\u0027RO:\\s+(\\S+)\u0027]\"\n(cr) $ dut-control ec_uart_cmd:\"version\"\n(cr) $ dut-control ec_uart_cmd\nec_uart_cmd:[(\u0027RO:\\tuldrenite-0.0.0-7b8cf2e\u0027, \u0027uldrenite-0.0.0-7b8cf2e\u0027)]\n(cr) $ dut-control ec_uart_regexp:None\n```\n\nInside the flash_ec, this would look like:\n```\n\tdut_control ec_uart_regexp:\"[\u0027RO:\\s+(\\S+)\u0027]\"\n\tdut_control ec_uart_cmd:\"version\"\n\tEC_VER\u003d\"$(dut_control_get ec_uart_cmd)\"\n\tdut_control ec_uart_regexp:None\n\tinfo \"EC version: ${EC_VER}\"\n```",
+      "revId": "a485ad7664fd4562f419bc2fa804d1f131c3c058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
