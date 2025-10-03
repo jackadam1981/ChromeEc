@@ -32,6 +32,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include <ilm.h>
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
@@ -919,7 +920,7 @@ static void check_and_queue_gestures(uint32_t *event)
  *    1 in the A/B(lid, display) and 1 in the C/D(base, keyboard)
  * Gyro Sensor (optional)
  */
-void motion_sense_task(void *u)
+__soc_ram_code void motion_sense_task(void *u)
 {
 	int i, ret, sample_id = 0;
 	timestamp_t ts_end_task;

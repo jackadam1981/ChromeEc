@@ -23,6 +23,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include <ilm.h>
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_LID, outstr)
@@ -289,7 +290,7 @@ static void motion_lid_set_dptf_profile(int reliable)
  *
  * @return flag representing if resulting lid angle calculation is reliable.
  */
-static int calculate_lid_angle(const intv3_t base, const intv3_t lid,
+__soc_ram_code int calculate_lid_angle(const intv3_t base, const intv3_t lid,
 			       int *lid_angle)
 {
 	intv3_t cross, proj_lid, proj_base, scaled_base, scaled_lid;
@@ -486,7 +487,7 @@ int motion_lid_get_angle(void)
 /*
  * Calculate lid angle and massage the results
  */
-void motion_lid_calc(void)
+__soc_ram_code void motion_lid_calc(void)
 {
 	/* Calculate angle of lid accel. */
 	lid_angle_is_reliable = calculate_lid_angle(

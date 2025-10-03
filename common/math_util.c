@@ -10,6 +10,12 @@
 #include "math_util.h"
 #include "util.h"
 
+//#ifdef CONFIG_SOC_IT8XXX2
+#include <ilm.h>
+//#else
+//#define __soc_ram_code
+//#endif
+
 /* For cosine lookup table, define the increment and the size of the table. */
 #define COSINE_LUT_INCR_DEG 5
 #define COSINE_LUT_SIZE ((180 / COSINE_LUT_INCR_DEG) + 1)
@@ -32,7 +38,7 @@ static const fp_t cos_lut[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(cos_lut) == COSINE_LUT_SIZE);
 
-fp_t arc_cos(fp_t x)
+__soc_ram_code fp_t arc_cos(fp_t x)
 {
 	int i;
 
@@ -86,7 +92,7 @@ fp_t fp_sqrtf(fp_t x)
 	return sqrtf(x);
 }
 #else
-int int_sqrtf(fp_inter_t x)
+__soc_ram_code int int_sqrtf(fp_inter_t x)
 {
 	int rmax = INT32_MAX;
 	int rmin = 0;
@@ -127,7 +133,7 @@ int int_sqrtf(fp_inter_t x)
 	}
 }
 
-fp_t fp_sqrtf(fp_t x)
+__soc_ram_code fp_t fp_sqrtf(fp_t x)
 {
 	fp_inter_t preshift_x = (fp_inter_t)x << FP_BITS;
 
@@ -135,7 +141,7 @@ fp_t fp_sqrtf(fp_t x)
 }
 #endif /* CONFIG_FPU */
 
-int vector_magnitude(const intv3_t v)
+__soc_ram_code int vector_magnitude(const intv3_t v)
 {
 	fp_inter_t sum = (fp_inter_t)v[0] * v[0] + (fp_inter_t)v[1] * v[1] +
 			 (fp_inter_t)v[2] * v[2];
@@ -144,27 +150,27 @@ int vector_magnitude(const intv3_t v)
 }
 
 /* cross_product only works if the vectors magnitudes are around 1<<16. */
-void cross_product(const intv3_t v1, const intv3_t v2, intv3_t v)
+__soc_ram_code void cross_product(const intv3_t v1, const intv3_t v2, intv3_t v)
 {
 	v[X] = (fp_inter_t)v1[Y] * v2[Z] - (fp_inter_t)v1[Z] * v2[Y];
 	v[Y] = (fp_inter_t)v1[Z] * v2[X] - (fp_inter_t)v1[X] * v2[Z];
 	v[Z] = (fp_inter_t)v1[X] * v2[Y] - (fp_inter_t)v1[Y] * v2[X];
 }
 
-fp_inter_t dot_product(const intv3_t v1, const intv3_t v2)
+__soc_ram_code fp_inter_t dot_product(const intv3_t v1, const intv3_t v2)
 {
 	return (fp_inter_t)v1[X] * v2[X] + (fp_inter_t)v1[Y] * v2[Y] +
 	       (fp_inter_t)v1[Z] * v2[Z];
 }
 
-void vector_scale(intv3_t v, fp_t s)
+__soc_ram_code void vector_scale(intv3_t v, fp_t s)
 {
 	v[X] = fp_mul(v[X], s);
 	v[Y] = fp_mul(v[Y], s);
 	v[Z] = fp_mul(v[Z], s);
 }
 
-fp_t cosine_of_angle_diff(const intv3_t v1, const intv3_t v2)
+__soc_ram_code fp_t cosine_of_angle_diff(const intv3_t v1, const intv3_t v2)
 {
 	fp_inter_t dotproduct;
 	fp_inter_t denominator;
@@ -202,7 +208,7 @@ fp_t cosine_of_angle_diff(const intv3_t v1, const intv3_t v2)
  * rotate a vector v
  *  - support input v and output res are the same vector
  */
-void rotate(const intv3_t v, const mat33_fp_t R, intv3_t res)
+__soc_ram_code void rotate(const intv3_t v, const mat33_fp_t R, intv3_t res)
 {
 	fp_inter_t t[3];
 
@@ -226,7 +232,7 @@ void rotate(const intv3_t v, const mat33_fp_t R, intv3_t res)
 	res[2] = FP_TO_INT(t[2]);
 }
 
-void rotate_inv(const intv3_t v, const mat33_fp_t R, intv3_t res)
+__soc_ram_code void rotate_inv(const intv3_t v, const mat33_fp_t R, intv3_t res)
 {
 	fp_inter_t t[3];
 	fp_t deter;
@@ -278,7 +284,7 @@ void rotate_inv(const intv3_t v, const mat33_fp_t R, intv3_t res)
 }
 
 /* division that round to the nearest integer */
-int round_divide(int64_t dividend, int divisor)
+__soc_ram_code int round_divide(int64_t dividend, int divisor)
 {
 	return (dividend > 0) ^ (divisor > 0) ?
 		       (dividend - divisor / 2) / divisor :
@@ -293,7 +299,7 @@ int round_divide(int64_t dividend, int divisor)
  * operation. So fall back to 32 bit operations on a
  * union.
  */
-uint64_t bitmask_uint64(int offset)
+__soc_ram_code uint64_t bitmask_uint64(int offset)
 {
 	union mask64_t {
 		struct {
