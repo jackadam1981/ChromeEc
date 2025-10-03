@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35365b15_656e8fc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-03T14:57:28Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"excution\" is a possible misspelling of \"execution\".\n\nTo bypass Spellchecker, ad...\n\n\"excution\" is a possible misspelling of \"execution\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 10,
+        "startChar": 46,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "e41c256857a132be99888ccff1f5dcb5dff7da89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
