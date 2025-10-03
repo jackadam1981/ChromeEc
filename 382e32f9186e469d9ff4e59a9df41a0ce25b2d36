@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7404b071_d155870e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 84
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T11:09:35Z",
+      "side": 1,
+      "message": "I can see that [STATIC_IF_NOT](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/accel_lis2dw12.c;l\u003d239) is used in the code. Can you double-check why it is not working?",
+      "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
