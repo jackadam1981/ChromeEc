@@ -833,6 +833,7 @@ DT_CHOSEN_CROS_EC_SHA := cros-ec,sha
 config PLATFORM_EC_SHA256_HW_ZEPHYR
 	bool "Use Zephyr SHA256 API with HW accelerator"
 	default "$(dt_chosen_enabled,$(DT_CHOSEN_CROS_EC_SHA))"
+	select PLATFORM_EC_SHA256_HW_ACCELERATE
 	select CRYPTO
 	help
 	  Use the Zephyr crypto_sha driver to compute SHA256 hashing.
