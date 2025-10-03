@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace8fb0d_338a7a9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-03T18:27:12Z",
+      "side": 1,
+      "message": "Assuming the root cause is basically the same, I might suggest debugging this on magolor port 1 and then seeing if whatever fix you come up with fixes pujjoga port 0.\n\nIf you do want to debug on port 0 of pujjoga, there are some more elaborate things you could try. Basically, record whatever state you want about the progress of the PRL, ensuring that you do it in a way that won\u0027t be overwritten once it\u0027s set. Then trigger that recording upon receipt of Get_Sink_Caps_Extended. Then add a shell command that will print and clear the recorded state. Run the test, connect CCD, and run the command. That\u0027s a very tedious process to get right and iterate on, so I wouldn\u0027t do it unless you\u0027re really out of options.",
+      "parentUuid": "b1221a75_5e5917e6",
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "103f5401_ac4117c2",
@@ -85,6 +103,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe33fa83_78ffe1c3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-03T18:27:12Z",
+      "side": 1,
+      "message": "\u003e  pd_transmit_complete, responsible for updating prl_tx[port].xmit_status may exhibit a minimum latency.\n\nCan you elaborate on \"minimum latency\"? Here\u0027s what I think that might mean, but tell me if you\u0027re thinking of something else.\n\nI\u0027m curious what `xmit_status` was before it was set to success. The transmit is actually succeeding, so the only way I can think of that we make it out of this state without the PE seeing message sent is if, sometime before or after `xmit_status` is set to success, it\u0027s set to `TCPC_TX_COMPLETE_FAILED`. If this function happened to run at that time, and the timer was expired this function would go down the error path. In that case, I would expect that the mechanism of this change is to slightly shift the failure check to happen while the timer is still running or after the status is success. Then the next success check, either in the this iteration or the next, would come after `xmit_status` had been updated to success. This function would make it to the success case and out of this state.\n\nThe only other possibility I can think of right now: `xmit_status` starts out as I would expect with a value that is neither success nor failure. When the Tx completes, `pd_transmit_complete` sets it to success. Then, very quickly _something else_ sets it to that third value, and it stays at that value. If the success check happens outside that brief window, this function never leaves this state. The effect of this CL might then be to shift the success check slightly to happen during that brief window and trigger the success case.\n\nI think the second scenario fits the observed behavior slightly better. If we were erroneously hitting the failure case, we\u0027d see `pe_give_sink_cap_ext_run` fail out, not get stuck. If we were getting stuck in `prl_tx_wait_for_phy_response_run`, it would make sense to me that we\u0027d also get stuck in `pe_give_sink_cap_ext_run`.\n\nIf either of these scenarios is accurate, I\u0027d expect the the fix here to be to add or remove a setting of `xmit_status` to `TCPC_TX_UNSET` (or some other value) somewhere else in the PRL. But this is all pretty speculative.",
+      "parentUuid": "6d599dbe_ec97f2db",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
@@ -114,6 +156,24 @@
       "side": 1,
       "message": "I did try after removing the `task_wake` call before this CL and I didn\u0027t notice any difference. The challenge in this case is that the failure is seen in `port0` and so we can\u0027t debug using the ec logs.",
       "parentUuid": "c44ba073_2b7b757b",
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e25b123c_15a69799",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-03T18:27:12Z",
+      "side": 1,
+      "message": "As noted elsewhere, it might be interesting to try this on magolor port 1. This is speculative, so I wouldn\u0027t dig too deep on what it is or isn\u0027t doing. But if it appears to have no effect on pujjoga or magolor, removing it might make the flow of this state slightly easier to trace when you do get debugging facilities set up.",
+      "parentUuid": "7ce63404_22e2ec64",
       "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
