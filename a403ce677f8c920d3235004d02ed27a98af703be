@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c5a77a_2b208697",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T10:29:53Z",
+      "side": 1,
+      "message": "This assumes size % CONFIG_FLASH_ERASE_SIZE \u003d\u003d 0, right? If so, please add a check at the beginning of this function.",
+      "revId": "a403ce677f8c920d3235004d02ed27a98af703be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
