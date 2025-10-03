@@ -56,6 +56,24 @@
       "message": "This is out of scope, but `pe_message_sent` already does this, so this is redundant. In the extended message case that\u0027s relevant right now, [the TCH runs again after the PRL](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;l\u003d783;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283), and the [next state](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;l\u003d1900;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283) will [call into the PE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;l\u003d2129;drc\u003d9b63c9053cbc39a686376ad674b86fd61013a283), and that will happen in this same task cycle. This extra `task_wake` call should actually increase the latency of the PE handling this, if anything. (We used to have a lot more of these wake calls and tried to streamline them for this reason.)\n\nAnyway, this call shouldn\u0027t do anything except maybe slightly change the PE timing in a way that shouldn\u0027t matter.\n\nSince this CL is already spooky, does anything change if you remove this call?",
       "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce63404_22e2ec64",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-03T05:00:23Z",
+      "side": 1,
+      "message": "I did try after removing the `task_wake` call before this CL and I didn\u0027t notice any difference. The challenge in this case is that the failure is seen in `port0` and so we can\u0027t debug using the ec logs.",
+      "parentUuid": "c44ba073_2b7b757b",
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
