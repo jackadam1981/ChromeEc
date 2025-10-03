@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e2953e_f69522ce",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-03T07:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca0e7a8e_f657e608",
+      "revId": "6e8f15364ae69c7ba3cd88c361942193bf0d07c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64d6f486_056c13e9",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-03T05:34:48Z",
       "side": 1,
       "message": "Help section is missing.",
+      "revId": "6e8f15364ae69c7ba3cd88c361942193bf0d07c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a44cd30c_9274c21b",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-03T07:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64d6f486_056c13e9",
       "revId": "6e8f15364ae69c7ba3cd88c361942193bf0d07c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
