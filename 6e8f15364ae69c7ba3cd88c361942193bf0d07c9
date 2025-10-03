@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0e7a8e_f657e608",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T05:34:48Z",
+      "side": 1,
+      "message": "You need to add a new bindings yaml file, like `nuvoton,npcx-cros-flash.yaml`",
+      "revId": "6e8f15364ae69c7ba3cd88c361942193bf0d07c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d6f486_056c13e9",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-03T05:34:48Z",
+      "side": 1,
+      "message": "Help section is missing.",
+      "revId": "6e8f15364ae69c7ba3cd88c361942193bf0d07c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
