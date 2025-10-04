@@ -98,9 +98,10 @@ helipilot = register_fpmcu_variant(
         here / "helipilot" / "prj.conf",
         here / "helipilot" / "ec_quirks.conf",
     ],
-    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
-        here / "helipilot" / "dev_key.pem",
-    ),
+    # signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+    #    here / "helipilot" / "dev_key.pem",
+    # ),
+    signer=signers.RochksumSigner(),  # pylint: disable=undefined-variable
     inherited_from=["brya", "fatcat", "rauru", "rex"],
 )
 
