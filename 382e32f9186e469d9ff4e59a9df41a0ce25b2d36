@@ -52,6 +52,24 @@
       "parentUuid": "1769c275_aaaa67fb",
       "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13cfa2bc_dbf85648",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 84
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-04T19:40:14Z",
+      "side": 1,
+      "message": "If I make this change:\n\n```\nfsammoura@fsammoura2:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/drivers/fingerprint/CMakeLists.txt b/zephyr/drivers/fingerprint/CMakeLists.txt\nindex 092c34aab6..d151d6d399 100644\n--- a/zephyr/drivers/fingerprint/CMakeLists.txt\n+++ b/zephyr/drivers/fingerprint/CMakeLists.txt\n@@ -2,6 +2,7 @@\n # Use of this source code is governed by a BSD-style license that can be\n # found in the LICENSE file.\n \n+\n zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_EGIS630 fingerprint_egis630.c)\n zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_EGIS630_PAL\n                             fingerprint_egis630_pal.c)\ndiff --git a/zephyr/drivers/fingerprint/fingerprint_egis630.c b/zephyr/drivers/fingerprint/fingerprint_egis630.c\nindex 4535d8b5da..f4dfd58167 100644\n--- a/zephyr/drivers/fingerprint/fingerprint_egis630.c\n+++ b/zephyr/drivers/fingerprint/fingerprint_egis630.c\n@@ -9,6 +9,7 @@\n #include \"fingerprint_egis630_private.h\"\n \n #include \u003cassert.h\u003e\n+#include \"common.h\"\n \n #include \u003czephyr/drivers/gpio.h\u003e\n #include \u003czephyr/drivers/spi.h\u003e\n@@ -71,7 +72,7 @@ void egis_fp_reset_sensor(const struct egis630_cfg *cfg)\n        return;\n }\n \n-COND_CODE_1(CONFIG_ZTEST, (), (static))\n+STATIC_IF_NOT(CONFIG_ZTEST)\n int convert_egis_get_image_error_code(egis_api_return_t code)\n {\n        switch (code) {\n```\n\nI can compile the `gwendolin` board successfully\n\n```\n(cr) fsammoura@fsammoura2 /mnt/host/source/src/platform/ec $ sudo zmake -D build gwendolin --clobber\n```\n\nHowever, when I try to run the twister tests, it complains that it cannot find the `common.h` header:\n\n```\n/fingerprint_egis630.c.obj -c /usr/local/google/home/fsammoura/chromiumos/src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c\n/usr/local/google/home/fsammoura/chromiumos/src/platform/ec/zephyr/drivers/fingerprint/fingerprint_egis630.c:12:10: fatal error: common.h: No such file or directory\n   12 | #include \"common.h\"\n      |          ^~~~~~~~~~\ncompilation terminated.\n```\n\nI believe this is because we do not enable `CONFIG_PLATFORM_EC` in the test config file. Enabling this config will lead to a mess. Any clue of how to fix it?\n\nThis is the output logs: https://paste.googleplex.com/6260386449981440\nmainly a lot of configs are not defined.\n\nWhat is your concern about using the zephyr macro:\n\n```\nCOND_CODE_1(CONFIG_ZTEST, (), (static))\n```",
+      "parentUuid": "4199974b_259615dd",
+      "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
