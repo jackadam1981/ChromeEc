@@ -16,6 +16,23 @@
       "message": "Jason - this CL failed the led_pwm_fade test, but the failure looks unrelated to this change.  Are you aware of any issues with this the led_pwm_fade test?",
       "revId": "ab06db140c563133f04071c05962860aad6693f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b8fc26_ce2080bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-04T15:39:07Z",
+      "side": 1,
+      "message": "A fix for the failing test has merged.",
+      "revId": "ab06db140c563133f04071c05962860aad6693f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
