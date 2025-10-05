@@ -3886,15 +3886,17 @@ static bool get_bid(struct transfer_descriptor *td, struct board_id *bid)
 	int rv;
 	size_t response_size = sizeof(*bid);
 
-	rv = send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid,
-				 response_size, bid, &response_size);
+	rv = send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid, response_size,
+				 bid, &response_size);
 	if (rv) {
 		/* b/424475170 H1 will return NO_SUCH_COMMAND if there's */
 		/* currently a BID mismatch. */
 		if (gsc_dev == GSC_DEVICE_H1 &&
 		    rv == VENDOR_RC_NO_SUCH_COMMAND) {
-			fprintf(stderr, "error reading board id %d: H1 no "
-					"such VC\n", rv);
+			fprintf(stderr,
+				"error reading board id %d: H1 no "
+				"such VC\n",
+				rv);
 			return false;
 		}
 		fprintf(stderr, "Error %d reading board id\n", rv);
