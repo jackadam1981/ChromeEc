@@ -230,10 +230,15 @@ int battery_get_mode(int *mode)
 	!defined(CONFIG_BATTERY_PRESENT_CUSTOM)
 __overridable enum battery_present battery_is_present(void)
 {
-	int temperature;
+	int manufacturer_date;
 
-	if (sb_read(SB_TEMPERATURE, &temperature)) {
-		return BP_NOT_SURE;
+	if (sb_read(SB_MANUFACTURE_DATE, &manufacturer_date)) {
+		/* Require 2 consecutive failures before declaring the
+		 * battery missing.
+		 */
+		if (sb_read(SB_MANUFACTURE_DATE, &manufacturer_date)) {
+			return BP_NOT_SURE;
+		}
 	}
 
 	return BP_YES;
