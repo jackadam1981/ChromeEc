@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7977b0a_257585f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-10-06T09:45:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9494dfcf_2b88f3fa",
+      "revId": "df5668be720edc23ec8336f226e20399ec074357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2b0377_af057848",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "Side note: If this is intended for all Ocelot designs, this is the correct place. If it is just for the RVP, use `rvp_program.conf`.",
       "parentUuid": "6d2b0377_af057848",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 58
+      },
+      "revId": "df5668be720edc23ec8336f226e20399ec074357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26272d12_a4f0cc73",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-10-06T09:45:29Z",
+      "side": 1,
+      "message": "45W is 3 times the TDP. Applicable for all the Ocelot based projects.",
+      "parentUuid": "9065b731_82f1b3fa",
       "range": {
         "startLine": 103,
         "startChar": 0,
