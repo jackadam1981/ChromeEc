@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4456ab4_8b1dc853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-06T18:47:53Z",
+      "side": 1,
+      "message": "I think before we submit this we need to add some tests on the firmware side to make sure that we can\u0027t read frame data outside of the last capture. For example, let\u0027s say we do a capture that gives us 20 KB. Then you try to fetch a frame that is 21KB. We shouldn\u0027t allow that since it\u0027s outside of the bounds of valid data.",
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adcec3cd_e006d9b1",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-06T18:47:53Z",
+      "side": 1,
+      "message": "Can you remind me the difference between simple and raw?\n\nIt would be nice if we could simplify this by getting the size directly from the capture_type type rather than having to do additional calculations.",
+      "range": {
+        "startLine": 1949,
+        "startChar": 1,
+        "endLine": 1958,
+        "endChar": 2
+      },
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
