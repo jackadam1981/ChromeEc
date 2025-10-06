@@ -3100,6 +3100,13 @@ int pd_is_connected(int port);
 void pd_execute_hard_reset(int port);
 
 /**
+ * Request PRL to discard any pending or in-progress TX message.
+ *
+ * @param port USB-C port number
+ */
+void prl_request_discard(int port);
+
+/**
  * Signal to protocol layer that PD transmit is complete
  *
  * @param port USB-C port number

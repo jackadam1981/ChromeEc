@@ -434,6 +434,9 @@ GEN_NOT_SUPPORTED(TCH_REPORT_ERROR);
 /* To store the time stamp when TCPC sets TX Complete Success */
 static timestamp_t tcpc_tx_success_ts[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Request to discard any current or next TX */
+static bool prl_discard_pending[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /* Set the protocol transmit statemachine to a new state. */
 static void set_state_prl_tx(const int port,
 			     const enum usb_prl_tx_state new_state)
@@ -536,6 +539,12 @@ timestamp_t prl_get_tcpc_tx_success_ts(int port)
 static void set_tcpc_tx_success_ts(int port)
 {
 	tcpc_tx_success_ts[port] = get_time();
+}
+
+void prl_request_discard(int port)
+{
+	prl_discard_pending[port] = true;
+	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 void pd_transmit_complete(int port, int status)
@@ -1100,6 +1109,13 @@ static uint32_t get_sop_star_header(const int port)
 
 static void prl_tx_construct_message(const int port)
 {
+	/* Check if FRS-triggered discard is pending */
+	if (prl_discard_pending[port]) {
+		prl_discard_pending[port] = false;
+		set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
+		return;
+	}
+
 	/* The header is unused for hard reset, etc. */
 	const uint32_t header = pdmsg[port].xmit_type < NUM_SOP_STAR_TYPES ?
 					get_sop_star_header(port) :
@@ -1141,6 +1157,13 @@ static void prl_tx_wait_for_phy_response_entry(const int port)
 
 static void prl_tx_wait_for_phy_response_run(const int port)
 {
+	/* Check if FRS discard was requested mid-transmit */
+	if (prl_discard_pending[port]) {
+		prl_discard_pending[port] = false;
+		set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
+		return;
+	}
+
 	/* Wait until TX is complete */
 
 	/*

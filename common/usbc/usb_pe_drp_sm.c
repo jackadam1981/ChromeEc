@@ -777,6 +777,23 @@ static void init_cable_rev(int port)
 #define prl_send_ext_data_msg DO_NOT_USE
 #define prl_send_ctrl_msg DO_NOT_USE
 
+static void pe_cancel_ams(int port)
+{
+	/* Abort active AMS-related flags */
+	PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+	PE_CLR_FLAG(port, PE_FLAGS_WAITING_PR_SWAP);
+	PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
+	PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT);
+	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+	PE_CLR_FLAG(port, PE_FLAGS_WAIT);
+	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+
+	/* Cancel any PE AMS-related timers */
+	pd_timer_disable(port, PE_TIMER_SENDER_RESPONSE);
+	pd_timer_disable(port, PE_TIMER_NO_RESPONSE);
+	pd_timer_disable(port, PE_TIMER_PS_TRANSITION);
+}
+
 static void pe_init(int port)
 {
 	memset(&pe[port].flags_a, 0, sizeof(pe[port].flags_a));
@@ -968,9 +985,15 @@ void pe_got_hard_reset(int port)
  */
 test_mockable void pd_got_frs_signal(int port)
 {
-	if (pe_is_running(port))
+	/* Stop any PD Tx immediately */
+	prl_request_discard(port);
+
+	/* Cancel current AMS to avoid conflict */
+	pe_cancel_ams(port);
+
+	if (pe_is_running(port)) {
 		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
-	else
+	} else
 		pd_set_error_recovery(port);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
