@@ -176,6 +176,24 @@
       "parentUuid": "7ce63404_22e2ec64",
       "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57fe54c0_90020f5d",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-06T10:41:23Z",
+      "side": 1,
+      "message": "Tried removing the `task_wake` call and it appears to have no effect on pujjoga or magolor.",
+      "parentUuid": "e25b123c_15a69799",
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
