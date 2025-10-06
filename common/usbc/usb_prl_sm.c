@@ -659,9 +659,10 @@ void prl_send_ctrl_msg(int port, enum tcpci_msg_type type,
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	pdmsg[port].ext = 0;
-
+	CPRINTS("L662\n");
 	TCH_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 #else
+	CPRINTS("L665");
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
@@ -676,10 +677,11 @@ void prl_send_data_msg(int port, enum tcpci_msg_type type,
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	pdmsg[port].ext = 0;
-
+	CPRINTS("L680\n");
 	TCH_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 #else
 	prl_copy_msg_to_buffer(port);
+	CPRINTS("L684\n");
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
@@ -786,6 +788,7 @@ void prl_run(int port, int evt, int en)
 				 */
 				run_state(port, &tch[port].ctx);
 		}
+		prl_tx[port].xmit_status = TCPC_TX_UNSET;
 		break;
 	}
 }
@@ -1141,6 +1144,9 @@ static void prl_tx_wait_for_phy_response_entry(const int port)
 
 static void prl_tx_wait_for_phy_response_run(const int port)
 {
+	// CPRINTS("P%d: %s\n", port,
+	// 		prl_tx_state_names[prl_tx_get_state(port)]);
+
 	/* Wait until TX is complete */
 
 	/*
@@ -1681,6 +1687,7 @@ static void rch_requesting_chunk_entry(const int port)
 	pdmsg[port].data_objs = 1;
 	pdmsg[port].ext = 1;
 	pdmsg[port].xmit_type = prl_rx[port].sop;
+	CPRINTS("L1688\n");
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_TX);
 }
@@ -1873,6 +1880,7 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 				prl_copy_msg_to_buffer(port);
 
 				/* Pass Message to Protocol Layer */
+				CPRINTS("L1881\n");
 				PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 				set_state_tch(
 					port,
@@ -1978,6 +1986,7 @@ static void tch_construct_chunked_message_entry(const int port)
 	pdmsg[port].data_objs = (num + 2 + 3) >> 2;
 
 	/* Pass message chunk to Protocol Layer */
+	CPRINTS("L1987\n");
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 }
 
@@ -2283,8 +2292,10 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * message is pending.
 		 */
 		if (prl_tx[port].xmit_status != TCPC_TX_COMPLETE_SUCCESS ||
-		    PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT))
+		    PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
+				CPRINTS("P%d-PRL--TX-DISCARD\n", port);
 			set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
+			}
 	}
 
 	/* Store Message Id */
