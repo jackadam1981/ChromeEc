@@ -55,11 +55,11 @@
 #endif /* DT_HAS_COMPAT_STATUS_OKAY(focaltech_fts) */
 #endif /* CONFIG_ZEPHYR */
 
-#define FTS_CHIP_ID_H  0x36
+#define FTS_CHIP_ID_H  0x54
 #define FTS_CHIP_ID_L  0x39
 
-#define FTS_BOOT_ID_H  0x36
-#define FTS_BOOT_ID_L  0xA9
+#define FTS_BOOT_ID_H  0x00
+#define FTS_BOOT_ID_L  0x00
 #define FTS_VENDOR_ID  0x2808
 
 
@@ -616,13 +616,13 @@ static int fts_flash_write_buf(u32 saddr, const u8 *buf, u32 len, u32 delay, u16
         if ((i == (packet_number - 1)) && remainder)
             packet_len = remainder;
 
-            packet_buf[0] = FTS_CMD_WRITE;
-            packet_buf[1] = BYTE_OFF_16(addr);
-            packet_buf[2] = BYTE_OFF_8(addr);
-            packet_buf[3] = BYTE_OFF_0(addr);
-            packet_buf[4] = BYTE_OFF_8(packet_len);
-            packet_buf[5] = BYTE_OFF_0(packet_len);
-            cmdlen = 6;
+        packet_buf[0] = FTS_CMD_WRITE;
+        packet_buf[1] = BYTE_OFF_16(addr);
+        packet_buf[2] = BYTE_OFF_8(addr);
+        packet_buf[3] = BYTE_OFF_0(addr);
+        packet_buf[4] = BYTE_OFF_8(packet_len);
+        packet_buf[5] = BYTE_OFF_0(packet_len);
+        cmdlen = 6;
         
 
         for (j = 0; j < packet_len; j++) {
