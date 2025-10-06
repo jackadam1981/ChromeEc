@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0392b98f_4a811cb1",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-10-06T18:03:26Z",
+      "side": 1,
+      "message": "I think in Cr50 it is possible to use compiler-generated unaligned access (via attribute(packed)), and on OT you can just write unaligned 32-bit, so we may consider more optimized implementation, but later.",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 974,
+        "endChar": 53
+      },
+      "revId": "81eb395c6a8df173ac7166cd51e8f036c61dca5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
