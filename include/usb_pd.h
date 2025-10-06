@@ -3768,6 +3768,18 @@ enum pd_debug_interval {
 	 * pd_ts_name valid.
 	 */
 	PD_INTERVAL_INVALID,
+	PD_INTERVAL_FRS_TCPC_IRQ, /* FRS signal seen in TCPC interrupt handler
+				   */
+	PD_INTERVAL_FRS_FLAGGED_IN_PE, /* FRS signal flagged in PE */
+	PD_INTERVAL_FRS_PE_ACTION_FRS_FLAG, /* PE acts on DRS flag */
+	PD_INTERVAL_FRS_DRS_MSG_TO_PRL, /* PE sends DRS message to PRL */
+	PD_INTERVAL_FRS_DRS_MSG_TX_CONSTUCTION, /* DRS Message at Tx
+						   Construction */
+	PD_INTERVAL_FRS_DRS_WAIT_PHY_RESPONSE, /* DRS Message Wait at PHY
+						  Response */
+	PD_INTERVAL_FRS_PE_REACTS_DISCARD, /* PE triggers reacts to discard flag
+					    */
+	PD_INTERVAL_FRS_PRL_DISCARD_TCPC, /* PRL triggers discard in TCPC */
 	PD_INTERVAL_COUNT,
 };
 

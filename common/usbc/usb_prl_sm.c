@@ -123,9 +123,11 @@ __maybe_unused static void print_flag(const char *group, int set_or_clear,
 #define PRL_FLAGS_CHUNKING BIT(10)
 /* Flag to disable checking data role on incoming messages. */
 #define PRL_FLAGS_IGNORE_DATA_ROLE BIT(11)
+/* Flag to request discarding any current or next TX (e.g. on FRS) */
+#define PRL_FLAGS_DISCARD_PENDING BIT(12)
 
 /* For checking flag_bit_names[] */
-#define PRL_FLAGS_COUNT 12
+#define PRL_FLAGS_COUNT 13
 
 struct bit_name {
 	int value;
@@ -146,6 +148,7 @@ static __const_data const struct bit_name flag_bit_names[] = {
 	{ PRL_FLAGS_ABORT, "PRL_FLAGS_ABORT" },
 	{ PRL_FLAGS_CHUNKING, "PRL_FLAGS_CHUNKING" },
 	{ PRL_FLAGS_IGNORE_DATA_ROLE, "PRL_FLAGS_IGNORE_DATA_ROLE" },
+	{ PRL_FLAGS_DISCARD_PENDING, "PRL_FLAGS_DISCARD_PENDING" },
 };
 BUILD_ASSERT(ARRAY_SIZE(flag_bit_names) == PRL_FLAGS_COUNT);
 
@@ -536,6 +539,33 @@ timestamp_t prl_get_tcpc_tx_success_ts(int port)
 static void set_tcpc_tx_success_ts(int port)
 {
 	tcpc_tx_success_ts[port] = get_time();
+}
+
+/*
+ * Check if FRS-triggered TX discard is pending.
+ * Returns true if this function caused a state change (to DISCARD_MESSAGE).
+ */
+static bool prl_check_and_handle_discard(int port)
+{
+	if (PDMSG_CHK_FLAG(port, PRL_FLAGS_DISCARD_PENDING)) {
+		PDMSG_CLR_FLAG(port, PRL_FLAGS_DISCARD_PENDING);
+		pd_record_timestamp_start(port,
+					  PD_INTERVAL_FRS_PE_REACTS_DISCARD);
+		set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
+		return true;
+	}
+	return false;
+}
+
+void prl_request_discard(int port)
+{
+	/* Avoid repeated wakeups if already requested */
+	if (PDMSG_CHK_FLAG(port, PRL_FLAGS_DISCARD_PENDING)) {
+		return;
+	}
+
+	PDMSG_SET_FLAG(port, PRL_FLAGS_DISCARD_PENDING);
+	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 void pd_transmit_complete(int port, int status)
@@ -970,6 +1000,7 @@ static void increment_msgid_counter(int port)
 static void prl_tx_discard_message_entry(const int port)
 {
 	print_current_prl_tx_state(port);
+	pd_record_timestamp_start(port, PD_INTERVAL_FRS_PRL_DISCARD_TCPC);
 
 	/*
 	 * Discard queued message
@@ -1100,6 +1131,13 @@ static uint32_t get_sop_star_header(const int port)
 
 static void prl_tx_construct_message(const int port)
 {
+	/* Check if FRS-triggered discard is pending */
+	if (prl_check_and_handle_discard(port)) {
+		pd_record_timestamp_start(
+			port, PD_INTERVAL_FRS_DRS_MSG_TX_CONSTUCTION);
+		return;
+	}
+
 	/* The header is unused for hard reset, etc. */
 	const uint32_t header = pdmsg[port].xmit_type < NUM_SOP_STAR_TYPES ?
 					get_sop_star_header(port) :
@@ -1141,6 +1179,13 @@ static void prl_tx_wait_for_phy_response_entry(const int port)
 
 static void prl_tx_wait_for_phy_response_run(const int port)
 {
+	/* Check if FRS discard was requested mid-transmit */
+	if (prl_check_and_handle_discard(port)) {
+		pd_record_timestamp_start(
+			port, PD_INTERVAL_FRS_DRS_WAIT_PHY_RESPONSE);
+		return;
+	}
+
 	/* Wait until TX is complete */
 
 	/*

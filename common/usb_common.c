@@ -868,6 +868,18 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
 	"Invalid interval",
+	[PD_INTERVAL_FRS_TCPC_IRQ] =
+		"FRS signal seen in TCPC interrupt handler",
+	[PD_INTERVAL_FRS_FLAGGED_IN_PE] = "FRS signal flagged in PE",
+	[PD_INTERVAL_FRS_PE_ACTION_FRS_FLAG] = "PE acts on FRS flag",
+	[PD_INTERVAL_FRS_DRS_MSG_TO_PRL] = "PE sends DRS message to PRL",
+	[PD_INTERVAL_FRS_DRS_MSG_TX_CONSTUCTION] =
+		"DRS message at Tx Construction",
+	[PD_INTERVAL_FRS_DRS_WAIT_PHY_RESPONSE] =
+		"DRS message wait for PHY Response",
+	[PD_INTERVAL_FRS_PE_REACTS_DISCARD] =
+		"PE triggers reacts to discard flag",
+	[PD_INTERVAL_FRS_PRL_DISCARD_TCPC] = "PRL triggers discard in TCPC",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 
