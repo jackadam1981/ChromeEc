@@ -155,6 +155,13 @@ void prl_execute_hard_reset(int port);
  */
 void prl_set_data_role_check(int port, bool enable);
 
+/**
+ * Request PRL to discard any pending or in-progress TX message.
+ *
+ * @param port USB-C port number
+ */
+void prl_request_discard(int port);
+
 #ifdef __cplusplus
 }
 #endif
