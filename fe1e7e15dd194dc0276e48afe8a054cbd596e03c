@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e29d45a_7f2cc3a6",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-06T17:15:16Z",
+      "side": 1,
+      "message": "When the test fails without `CPRINTS(\"P%d: %s\\n\", port,prl_tx_state_names[prl_tx_get_state(port)])`, we can see this in the `EC LOG`.",
+      "revId": "fe1e7e15dd194dc0276e48afe8a054cbd596e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea6d1c5_4b1a3122",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2297,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-06T17:15:16Z",
+      "side": 1,
+      "message": "When the test passes with `CPRINTS(\"P%d: %s\\n\", port, prl_tx_state_names[prl_tx_get_state(port)])`, we can see this in the `EC LOG`.",
+      "revId": "fe1e7e15dd194dc0276e48afe8a054cbd596e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
