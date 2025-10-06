@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2cacad_838fc2f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-06T17:26:55Z",
+      "side": 1,
+      "message": "`CPRINTS` doesn\u0027t affect the behavior. Not for `Magolor`. The only `CPRINTS` that affect the test result is https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6987445/4#:~:text\u003dCPRINTS(%22P,(port)%5D)%3B",
+      "parentUuid": "e54b8a68_9f2116d0",
+      "revId": "fe1e7e15dd194dc0276e48afe8a054cbd596e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e29d45a_7f2cc3a6",
