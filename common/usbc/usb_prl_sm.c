@@ -334,6 +334,10 @@ static struct protocol_layer_tx {
 	uint32_t msg_id_counter[NUM_SOP_STAR_TYPES];
 	/* transmit status */
 	int xmit_status;
+	/* transmit status mutex variable */
+	int tx_status;
+	/* mutex object */
+	mutex_t tx_transmit_status;
 } prl_tx[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Hard Reset State Machine Object */
@@ -542,7 +546,10 @@ void pd_transmit_complete(int port, int status)
 {
 	if (status == TCPC_TX_COMPLETE_SUCCESS)
 		set_tcpc_tx_success_ts(port);
-	prl_tx[port].xmit_status = status;
+	if (in_interrupt_context())
+		prl_tx[port].tx_status = status;
+	else
+		prl_tx[port].xmit_status = status;
 }
 
 void pd_execute_hard_reset(int port)
@@ -745,6 +752,11 @@ void prl_run(int port, int evt, int en)
 			local_state[port] = SM_PAUSED;
 			break;
 		}
+
+		/* Latch xmit_status */
+		mutex_lock(&prl_tx[port].tx_transmit_status);
+		prl_tx[port].xmit_status = prl_tx[port].tx_status;
+		mutex_unlock(&prl_tx[port].tx_transmit_status);
 
 		/* Run Protocol Layer Hard Reset state machine */
 		run_state(port, &prl_hr[port].ctx);
