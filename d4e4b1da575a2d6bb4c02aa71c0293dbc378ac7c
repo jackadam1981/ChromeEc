@@ -39,6 +39,30 @@
       },
       "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401928d4_862f3d71",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-06T19:38:40Z",
+      "side": 1,
+      "message": "I am pretty sure we can get rid of the `raw` and `simple` terminology with the introduction of `fpinfo` version 2. We just need to update the `frame_size` for each capture type based on whether it is a `raw` or a `simple` capture. I believe `simple` and `raw` was introduced to account for different captures having a different `frame_size` that the default value.",
+      "parentUuid": "adcec3cd_e006d9b1",
+      "range": {
+        "startLine": 1949,
+        "startChar": 1,
+        "endLine": 1958,
+        "endChar": 2
+      },
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
