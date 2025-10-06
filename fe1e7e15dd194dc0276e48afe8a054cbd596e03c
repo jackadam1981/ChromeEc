@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54b8a68_9f2116d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:18:44Z",
+      "side": 1,
+      "message": "Some of these loops are pretty tight. If you find that the `CPRINTS` are altering the timing/behavior, you might want to use the timestamp debugging framework to defer the log printing.",
+      "revId": "fe1e7e15dd194dc0276e48afe8a054cbd596e03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e29d45a_7f2cc3a6",
