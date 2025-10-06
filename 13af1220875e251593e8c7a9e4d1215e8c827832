@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27d624f_20a2c00a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:22:16Z",
+      "side": 1,
+      "message": "This seems potentially OK as a debugging step. I\u0027m surprised that we\u0027re entering LPM in this situation, so I might be more inclined to find the transition to the LPM state in the PRL, see why it\u0027s happening, and maybe put an extra check on it if it\u0027s happening unexpectedly.",
+      "revId": "13af1220875e251593e8c7a9e4d1215e8c827832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2a93d4_e521376f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:22:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure I get this. With this CL, this call will do nothing.",
+      "revId": "13af1220875e251593e8c7a9e4d1215e8c827832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
