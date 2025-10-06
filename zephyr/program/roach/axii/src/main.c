@@ -76,6 +76,7 @@ static void base_detect_tick(void)
 
 test_export_static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 {
+	ccprints("wgx: re %d %d", length,KEYBOARD_COLS_MAX);
 	if (cmd == ROACH_CMD_KEYBOARD_MATRIX && length == KEYBOARD_COLS_MAX) {
 		/* convert key matrix to key event by comparing the payload to
 		 * a cached previous state.
@@ -90,7 +91,6 @@ test_export_static void recv_cb(uint8_t cmd, const uint8_t *payload, int length)
 			while (diff) {
 				int row = __builtin_ctz(diff);
 				bool pressed = payload[col] & (1 << row);
-
 				keyboard_state_changed(row, col, pressed);
 
 				diff ^= (1 << row);
