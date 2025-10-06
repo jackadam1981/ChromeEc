@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7065e757_982f207d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:14:28Z",
+      "side": 1,
+      "message": "At least most of these things should be taken care of by the ultimate PE state change, e.g. the AMS and PRS flags and the timers. If they aren\u0027t, we should probably fix up the state entry/exit functions that need to reset them.\n\nSome of these we probably don\u0027t want to clear, e.g. the DR Swap request and VDM wait timers. We do want the FRS to happen before we act on any of these. It looks to me like we already have [code to do that](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d894;drc\u003d82bc5d81d5f49328a264ea96503bdc54266426b7). Is this check still happening too late?",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee798d73_3e6b2ba1",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:14:28Z",
+      "side": 1,
+      "message": "I\u0027d make something like this a flag rather than its own variable.",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5f4767_8222a042",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:14:28Z",
+      "side": 1,
+      "message": "I don\u0027t think it will work the way you want to put this here. The call sites of `prl_tx_construct_message` immediately transition to another state after it returns, and it has no return value to check. So this will result in two consecutive state transitions that don\u0027t correspond to the spec state diagrams. We always have to return from the state function immediately after a state change, because we don\u0027t want the rest of the old state to run after we\u0027ve transitioned to the new state.\n\nIt\u0027s not immediately clear to me that every call site of this function is the right place to check the flag, but maybe it is. Assuming it, I\u0027d give this function a return value and check at each call site. If it indicated a state change had already happened, then I\u0027d return immediately from the state run function. If this isn\u0027t actually the right place to put this, I\u0027d make a small function with a return value and use it the same way.\n\nYou can find examples elsewhere of functions that return `true` when they triggered a state change, and the call sites check them and return.",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf89f8a_48c286b1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-06T17:14:28Z",
+      "side": 1,
+      "message": "We put `prl_*` functions in `prl_sm.h` and `pe_*` functions in `pe_drp_sm.h`.",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
