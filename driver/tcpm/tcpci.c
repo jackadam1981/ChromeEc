@@ -564,7 +564,9 @@ int tcpci_tcpc_drp_toggle(int port)
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpci_enter_low_power_mode(int port)
 {
-	return tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	/* return tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	 */
+	return EC_SUCCESS;
 }
 
 void tcpci_wake_low_power_mode(int port)
@@ -950,6 +952,10 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 		 */
 		return tcpc_write(port, TCPC_REG_TRANSMIT,
 				  TCPC_REG_TRANSMIT_SET_WITHOUT_RETRY(type));
+	}
+
+	if (type == TCPCI_MSG_TX_HARD_RESET) {
+		tcpci_enter_low_power_mode(port);
 	}
 
 	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
