@@ -70,6 +70,24 @@
       "parentUuid": "4199974b_259615dd",
       "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879c9ac3_7fab93e8",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 84
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-06T05:14:36Z",
+      "side": 1,
+      "message": "\u003e What is your concern about using the zephyr macro:\nCOND_CODE_1(CONFIG_ZTEST, (), (static))\n\nIt is dirty. We can a special macro for exactly this case so it would be nice to use it.\n\n\u003e Any clue of how to fix it?\n\nThat would be problematic, we don\u0027t want to set that just for one macro.\n\nPlease at least use [IF_DISABLED](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/sys/util_macro.h#L271) instead.",
+      "parentUuid": "13cfa2bc_dbf85648",
+      "revId": "382e32f9186e469d9ff4e59a9df41a0ce25b2d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
