@@ -893,6 +893,8 @@ void pe_run(int port, int evt, int en)
 		 */
 		if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 		    PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED)) {
+			pd_record_timestamp_start(
+				port, PD_INTERVAL_FRS_PE_ACTION_FRS_FLAG);
 			PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 			set_state_pe(port, PE_FRS_SNK_SRC_START_AMS);
 		}
@@ -968,10 +970,12 @@ void pe_got_hard_reset(int port)
  */
 test_mockable void pd_got_frs_signal(int port)
 {
-	if (pe_is_running(port))
-		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
-	else
-		pd_set_error_recovery(port);
+	/* This should only be called from the PD task */
+	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+	pd_record_timestamp_start(port, PD_INTERVAL_FRS_FLAGGED_IN_PE);
+
+	/* Set FRS Flag Immediately */
+	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
@@ -5045,6 +5049,7 @@ static void pe_drs_send_swap_entry(int port)
 	 * states embedded here.
 	 */
 	/* Request the Protocol Layer to send a DR_Swap Message */
+	pd_record_timestamp_start(port, PD_INTERVAL_FRS_DRS_MSG_TO_PRL);
 	send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_DR_SWAP);
 	pe_sender_response_msg_entry(port);
 }
@@ -5697,6 +5702,7 @@ __maybe_unused static void pe_frs_snk_src_start_ams_entry(int port)
 		assert(0);
 
 	print_current_state(port);
+	pd_print_timestamps(port);
 
 	/* Inform Protocol Layer this is start of AMS */
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);

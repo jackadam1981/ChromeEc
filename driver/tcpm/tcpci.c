@@ -24,6 +24,7 @@
 #include "usb_pd_flags.h"
 #include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
+#include "usb_prl_sm.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
@@ -1345,8 +1346,12 @@ void tcpci_tcpc_alert(int port)
 		CPRINTS("C%d Hard Reset sent", port);
 
 	if (tcpm_tcpc_has_frs_control(port) &&
-	    (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
+	    (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS)) {
+		/* Stop any PD Tx immediately */
+		pd_record_timestamp_start(port, PD_INTERVAL_FRS_TCPC_IRQ);
+		prl_request_discard(port);
 		pd_got_frs_signal(port);
+	}
 
 	/*
 	 * Check registers to see if we can tell that the TCPC has reset. If
