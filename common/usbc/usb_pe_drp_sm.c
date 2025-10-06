@@ -968,10 +968,14 @@ void pe_got_hard_reset(int port)
  */
 test_mockable void pd_got_frs_signal(int port)
 {
-	if (pe_is_running(port))
-		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
-	else
-		pd_set_error_recovery(port);
+	/* This should only be called from the PD task */
+	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+
+	/* Stop any PD Tx immediately */
+	prl_request_discard(port);
+
+	/* Set FRS Flag Immediately */
+	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
