@@ -22,6 +22,30 @@
       },
       "revId": "58202d2f6887044a164980fe01de1781f4a3ae29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f678ada4_7ff9ea67",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-10-06T18:33:45Z",
+      "side": 1,
+      "message": "Confirming offline. I\u0027ll just land a patch if we need to update it.",
+      "parentUuid": "68411e52_0a718167",
+      "range": {
+        "startLine": 459,
+        "startChar": 35,
+        "endLine": 459,
+        "endChar": 37
+      },
+      "revId": "58202d2f6887044a164980fe01de1781f4a3ae29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
