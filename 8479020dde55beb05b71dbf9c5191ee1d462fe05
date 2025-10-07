@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "961aeec9_d2b6af54",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-07T13:55:58Z",
+      "side": 1,
+      "message": "If the memory is never freed, I don\u0027t think it makes sense to use `k_malloc`. I was just thinking - if you can reuse the same memory in the senor driver and in the algo driver, there is a time window when you can actually free the memory and allow to us it in other places.",
+      "parentUuid": "28049002_285553f5",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a4789a_70e26a4a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
         "patchSetId": 3
