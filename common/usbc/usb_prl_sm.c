@@ -1149,8 +1149,10 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 	 *       This condition satisfies the PRL_Tx_Match_MessageID state
 	 *       requirement.
 	 */
+	int tx_status = prl_tx[port].xmit_status;
+	// pd_transmit_complete(port, tx_status);
 
-	if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
+	if (tx_status == TCPC_TX_COMPLETE_SUCCESS) {
 		/* NOTE: PRL_TX_Message_Sent State embedded here. */
 		/* Increment messageId counter */
 		increment_msgid_counter(port);
@@ -1163,7 +1165,7 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 
 		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 	} else if (pd_timer_is_expired(port, PR_TIMER_TCPC_TX_TIMEOUT) ||
-		   prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED) {
+		   tx_status == TCPC_TX_COMPLETE_FAILED) {
 		/*
 		 * NOTE: PRL_Tx_Transmission_Error State embedded
 		 * here.
