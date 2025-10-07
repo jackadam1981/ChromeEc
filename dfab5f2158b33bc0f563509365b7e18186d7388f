@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "dfab5f2158b33bc0f563509365b7e18186d7388f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f4fa81_72b2f28f",
+        "filename": "zephyr/program/bluey/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-07T18:07:39Z",
+      "side": 1,
+      "message": "Though no need to fix it in this change, every project should adapt to use the upstream input-subsystem-based keyboard driver, instead of the shimmed raw keyboard driver.\n\nYou can refer to ` zephyr/program/brox/jubilant/keyboard.dtsi` for an example.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "dfab5f2158b33bc0f563509365b7e18186d7388f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
