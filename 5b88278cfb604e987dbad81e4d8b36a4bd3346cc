@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b0158f_c4f3df8a",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-07T17:15:33Z",
+      "side": 1,
+      "message": "Just want to confirm if you have tested this case and verified the message is showing up. I am not sure if the UART is disabled then.",
+      "range": {
+        "startLine": 357,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 9
+      },
+      "revId": "5b88278cfb604e987dbad81e4d8b36a4bd3346cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
