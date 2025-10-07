@@ -456,7 +456,7 @@ enum vendor_cc_get_device_id_subcmd {
 
 
 #define TI50_DEVICE_ID_COUNT 8
-#define TI50_DEVICE_ID_MAX_STR_LEN 31
+#define TI50_DEVICE_ID_MAX_STR_LEN 32
 #define TI50_DEVICE_IDS_VERSION 1
 #define TI50_DEVICE_IDS_VERSION_UNSET 0xff
 

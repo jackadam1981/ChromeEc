@@ -4910,22 +4910,26 @@ static void print_ti50_device_id_header(struct ti50_device_ids_response *ids,
 
 	if (show_machine_output) {
 		print_machine_output("VERSION", "%u", ids->header.version);
+		print_machine_output("STATUS", "%u", ids->header.status);
 		print_machine_output("VALID", "%s", valid);
 		print_machine_output("FINALIZED", "%s", finalized);
 		print_machine_output("STORAGE_TYPE", "%u",
 				     ids->header.storage_type);
+		print_machine_output("INFO_STORAGE", "%s",
+				     ids->header.storage_type == 2 ? "Y" : "N");
+		print_machine_output("SCRATCH_STORAGE", "%s",
+				     ids->header.storage_type == 1 ? "Y" : "N");
 		print_machine_output("FIELD_COUNT", "%u",
 				     ids->header.field_count);
-		print_machine_output("STATUS", "%u", ids->header.status);
-		print_machine_output("SIZE", "%u", size);
+		print_machine_output("TOTAL_FIELDS_SIZE", "%u", size);
 	} else {
 		printf("Version: %u\n", ids->header.version);
+		printf("Status: %u\n", ids->header.status);
 		printf("Valid: %s\n", valid);
 		printf("Finalized: %s\n", finalized);
-		printf("Storage type: %u\n", ids->header.storage_type);
-		printf("Field count: %u\n", ids->header.field_count);
-		printf("Status: %u\n", ids->header.status);
-		printf("Size: %u\n", size);
+		printf("Storage Type: %u\n", ids->header.storage_type);
+		printf("Field Count: %u\n", ids->header.field_count);
+		printf("Total Fields Size: %u\n", size);
 	}
 }
 
