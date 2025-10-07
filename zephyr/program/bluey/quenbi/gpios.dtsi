@@ -38,9 +38,12 @@
 		/* Reserved for test: from the detachable case. */
 		gpio_gsc_ec_volup_btn_odl: gsc_ec_volup_btn_odl {
 			gpios = <&gpiof 5 (GPIO_INPUT)>;
+			enum-name = "GPIO_VOLUME_UP_L";
+
 		};
 		gpio_gsc_ec_voldn_btn_odl: gsc_ec_voldn_btn_odl {
 			gpios = <&gpiof 4 (GPIO_INPUT)>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
 		};
 		/* Reserve only: power to PAC (current sensor). */
 		gpio_ec_ipcm_pdn: ec_ipcm_pdn {
