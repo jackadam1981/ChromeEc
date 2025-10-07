@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "858e3d54_a2b21904",
+        "filename": "zephyr/drivers/imvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-07T19:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559d011b_f0b63811",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "099cb69bd042ff5a60d84e9b46b33f26b7c74132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35cb5ce_88dbe194",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c466b4e0_662ab46a",
+        "filename": "zephyr/drivers/imvp/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-07T19:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35cb5ce_88dbe194",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "099cb69bd042ff5a60d84e9b46b33f26b7c74132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43fc5d03_db7aaae4",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-10-06T23:54:52Z",
       "side": 1,
       "message": "Even if you don\u0027t want the overhead of `DEVICE_DT_DEFINE`,  you should still leverage the `DT_DRV_COMPAT` macros.\n\n```\n#define DT_DRV_COMPAT richtek_rt3645\n\nBUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) \u003d\u003d 1,\n\t     \"only one \u0027richtek,rt3645\u0027 compatible node may be present\");\n\nstatic const struct i2c_dt_spec ifc \u003d I2C_DT_SPEC_GET(DT_DRV_INST(0));\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 79
+      },
+      "revId": "099cb69bd042ff5a60d84e9b46b33f26b7c74132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c2dc44_36544423",
+        "filename": "zephyr/drivers/imvp/rt3645_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-07T19:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43fc5d03_db7aaae4",
       "range": {
         "startLine": 20,
         "startChar": 0,
