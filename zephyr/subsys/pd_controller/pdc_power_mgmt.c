@@ -4631,7 +4631,7 @@ static void pdc_update_battery_status(struct pdc_port_t *port)
 	int port_number = config->connector_num;
 	union battery_status_t bsdo = { 0 };
 
-	if (battery_is_present()) {
+	if (battery_is_present() == BP_YES) {
 		uint32_t v;
 		uint32_t c;
 
@@ -4673,16 +4673,19 @@ static void pdc_update_battery_status(struct pdc_port_t *port)
 			}
 		}
 	} else {
+		bsdo.battery_present = 0;
 		bsdo.present_capacity = BSDO_CAP_UNKNOWN;
 	}
 
-	port->bstat = bsdo;
-	if (pdc_power_mgmt_is_sink_connected(port_number)) {
-		atomic_set_bit(port->snk_policy.flags,
-			       SNK_POLICY_UPDATE_BATTERY_STATUS);
-	} else if (pdc_power_mgmt_is_source_connected(port_number)) {
-		atomic_set_bit(port->src_policy.flags,
-			       SRC_POLICY_UPDATE_BATTERY_STATUS);
+	if (memcmp(&port->bstat, &bsdo, sizeof(union battery_status_t)) != 0) {
+		port->bstat = bsdo;
+		if (pdc_power_mgmt_is_sink_connected(port_number)) {
+			atomic_set_bit(port->snk_policy.flags,
+				       SNK_POLICY_UPDATE_BATTERY_STATUS);
+		} else if (pdc_power_mgmt_is_source_connected(port_number)) {
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_UPDATE_BATTERY_STATUS);
+		}
 	}
 }
 
