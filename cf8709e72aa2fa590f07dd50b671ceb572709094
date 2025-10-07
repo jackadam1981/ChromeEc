@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "cf8709e72aa2fa590f07dd50b671ceb572709094",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57d511b_57bee2ff",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-07T03:06:54Z",
+      "side": 1,
+      "message": "Swapping the order of these checks in the if statement within flash_set_status has no logical impact due to boolean short-circuiting. This change seems unnecessary. To keep the patch focused on the primary bug fix, consider reverting this line.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 70
+      },
+      "revId": "cf8709e72aa2fa590f07dd50b671ceb572709094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
