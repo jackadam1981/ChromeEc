@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f812a20f_1bf5b686",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-07T19:43:08Z",
+      "side": 1,
+      "message": "Nit - Can this be `y if PLATFORM_EC_BRINGUP`? I don\u0027t think the `?` is very clear",
+      "range": {
+        "startLine": 78,
+        "startChar": 26,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "f200cca39c4a8332d54abb60b1bc97a8914b25e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
