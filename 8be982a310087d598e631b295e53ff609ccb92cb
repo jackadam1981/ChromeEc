@@ -52,6 +52,24 @@
       "parentUuid": "5985ccae_67054296",
       "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb215eeb_8c6696a9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-07T18:30:25Z",
+      "side": 1,
+      "message": "I have further confirmed that option (b) doesn\u0027t work. The host command requires the size to match the one stored in the CBI. So, only option (a): coreboot casts the response to `uint64_t`.",
+      "parentUuid": "1d6eb3d3_f85f27d2",
+      "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
