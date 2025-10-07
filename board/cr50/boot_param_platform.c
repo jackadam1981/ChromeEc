@@ -6,6 +6,7 @@
 #include <boot_param_platform.h>
 #include <nvmem_vars.h>
 
+#include "board_id.h"
 #include "boot_param_platform_cr50.h"
 #include "console.h"
 #include "internal.h"
@@ -325,6 +326,8 @@ bool __platform_get_dice_config(
 	struct dice_config_s *cfg
 )
 {
+	struct board_id bid;
+
 	/* Just in case, pre-set all fields to zeroes.
 	 * Future-proofing in case we add new fields to dice_config_s
 	 * w/o updating platform code in cr50.
@@ -357,6 +360,16 @@ bool __platform_get_dice_config(
 		verbose_log("getting pcr10 failed");
 		return false;
 	}
+
+	cfg->gsc_type = BOOT_PARAM_GSC_TYPE_H1B3X;
+	if (read_board_id(&bid) == EC_SUCCESS) {
+		cfg->board_id_flags = bid.flags;
+		cfg->board_id_type = bid.type;
+	} else {
+		cfg->board_id_flags = 0;
+		cfg->board_id_type = 0;
+	}
+
 
 	return true;
 }
