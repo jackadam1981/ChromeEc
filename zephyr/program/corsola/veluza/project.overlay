@@ -136,9 +136,12 @@
 	};
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
+		battery {
+			i2c-port = <&i2c4>;
+		};
 		/delete-node/ usb-c1;
 		i2c_hdmi: i2c_hdmi {
-			i2c-port = <&i2c4>;
+			i2c-port = <&i2c1>;
 			enum-names = "I2C_PORT_USB_C1",
 				"I2C_PORT_USB_MUX1";
 		};
@@ -369,7 +372,7 @@
 	/* EC_I2C_SENSOR */
 	transfer-timeout-ms = <200>;
 };
-&i2c4 {
+&i2c1 {
 	/delete-node/ tusb1064-mux-1@44;
 	/delete-node/ ps8743_mux_1;
 };
