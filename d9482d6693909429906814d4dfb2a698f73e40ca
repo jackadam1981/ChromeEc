@@ -16,6 +16,24 @@
       "message": "Curious to know if we have any advantages of removing this? was it causing any conflicts/issues? Also, for the extended messages, `pe_message_sent()` is at least not called from #1162, so just wondering if we would need this here.",
       "revId": "d9482d6693909429906814d4dfb2a698f73e40ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade04227_b639eb89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-07T06:35:30Z",
+      "side": 1,
+      "message": "It doesn\u0027t case any conflicts/issues. This just a no-op refactor removing the reduntant `task_wake` call.",
+      "parentUuid": "f7c39210_d8213fe8",
+      "revId": "d9482d6693909429906814d4dfb2a698f73e40ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
