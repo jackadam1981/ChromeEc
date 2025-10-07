@@ -16,6 +16,24 @@
       "message": "This will be EM32F967 specific driver, right? If so, please consider adjusting the name.",
       "revId": "46e92e19e4c5567c8c3c3a11e6a5f3090da770ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b4ef6d_0e86a7f1",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-07T10:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c09779e_3c8db8cb",
+      "revId": "46e92e19e4c5567c8c3c3a11e6a5f3090da770ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
