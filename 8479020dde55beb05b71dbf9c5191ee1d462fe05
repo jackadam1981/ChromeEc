@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28049002_285553f5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4234276
+      },
+      "writtenOn": "2025-10-07T11:42:26Z",
+      "side": 1,
+      "message": "We\u0027re trying to switch to dynamic allocation by using k_malloc() during driver initialization to allocate the algorithm scratch buffer once and reuse it throughout the device’s lifetime.\nWhat do you think?",
+      "parentUuid": "43a7b42e_1d4b51dc",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a4789a_70e26a4a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
         "patchSetId": 3
