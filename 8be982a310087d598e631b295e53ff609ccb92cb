@@ -34,6 +34,24 @@
       "message": "Shouldn\u0027t we change this now that we decided to model this differently? The new plan as I understand it is only 4 bytes, not 5, and they should be understood as two separate 64-bit values that probably(?) each deserve their own CBI tag (especially because the AP only wants to request one but not the other).\n\nLet\u0027s please fix this up before we\u0027re stuck with something that doesn\u0027t really make sense for who knows how many years.",
       "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6eb3d3_f85f27d2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-07T16:50:39Z",
+      "side": 1,
+      "message": "First, the existing `fw_config` tag for the host command supports only 1 DWORD. Therefore, the EC must use a new tag for transfers larger than 1 DWORD. This new tag, `UFSC`, is 5 DWORDs in size, which is consistent with other infrastructure, like Boxster, the probing tool, the BOM conversion, etc. Since our previous discussion focused only on coreboot, I don\u0027t remember we discussed anything outside this scope, e.g. changing the data size from 5 DWORDs to 4 DWORDs.\n\nRegarding this struct, coreboot can use a single host command to read the new UFSC tag. As the size can be specified in a parameter of the host command. It can either:\n (a) read the entire 5 DWORDs by setting the size to `sizeof(struct cbi_ufsc)` and then cast it to `uint64_t` to pass to the existing backend, or\n (b) read only 2 DWORDs that coreboot cares by setting the size to `sizeof(uint64_t)`.\n\nThis process is more simple than the current implementation, which uses one host command to read the `fw_config` tag (1 DWORD) and another to read the `SSFC` tag (1 DWORD), then combines them into 2 DWORDs to pass to the backend.\n\nIf you prefer the option (b) above, I can move this `struct cbi_ufsc` from this shared `ec_command.h` to some EC-only header file, so that coreboot can use its own type for it.",
+      "parentUuid": "5985ccae_67054296",
+      "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
