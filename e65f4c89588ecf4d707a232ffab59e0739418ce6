@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1344b8ef_65a91903",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-07T20:52:47Z",
+      "side": 1,
+      "message": "I tested on PTL, WCL (ITE \u0026 NPCX) and Brox, I could not get access to a TWL board.",
+      "parentUuid": "c1fface1_d81601b5",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "e65f4c89588ecf4d707a232ffab59e0739418ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a43bb75_f10dab68",
