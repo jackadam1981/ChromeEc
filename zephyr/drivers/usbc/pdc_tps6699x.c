@@ -366,7 +366,6 @@ static void cmd_update_retimer(struct pdc_data_t *data);
 static void cmd_get_current_pdo(struct pdc_data_t *data);
 static void cmd_is_vconn_sourcing(struct pdc_data_t *data);
 static void cmd_set_sx_app_config(struct pdc_data_t *data);
-static void cmd_get_attention_vdo(struct pdc_data_t *data);
 static void task_trig(struct pdc_data_t *data);
 static void task_gaid(struct pdc_data_t *data);
 static void task_srdy(struct pdc_data_t *data);
@@ -1002,7 +1001,7 @@ static enum smf_state_result st_idle_run(void *o)
 			task_trig(data);
 			break;
 		case CMD_GET_ATTENTION_VDO:
-			cmd_get_attention_vdo(data);
+			task_ucsi(data, UCSI_GET_ATTENTION_VDO);
 		}
 	}
 
@@ -1844,48 +1843,6 @@ error_recovery:
 	set_state(data, ST_ERROR_RECOVERY);
 }
 
-static void cmd_get_attention_vdo(struct pdc_data_t *data)
-{
-	union reg_received_attention_vdm received_attention_vdm;
-	struct pdc_config_t const *cfg = data->dev->config;
-
-	int rv;
-
-	if (data->user_buf == NULL) {
-		LOG_ERR("TI%d: Null user buffer; can't read attention reg",
-			cfg->connector_number);
-		goto error_recovery;
-	}
-
-	rv = tps_rd_received_attention_vdm(&cfg->i2c, &received_attention_vdm);
-	if (rv) {
-		LOG_ERR("TI%d: Failed to read received attention vdm (%d)",
-			cfg->connector_number, rv);
-		goto error_recovery;
-	}
-
-	union get_attention_vdo_t get_attention_vdo = {
-		.alt_mode_index = 0,
-		.num_vdos = received_attention_vdm.number_valid_vdos,
-		.sequence_number = received_attention_vdm.sequence_number,
-		.vdm_heade = received_attention_vdm.vdm_header,
-		.vdo = received_attention_vdm.vdo,
-	};
-	memcpy(data->user_buf, &get_attention_vdo,
-	       sizeof(union get_attention_vdo_t));
-
-	/* Command has completed */
-	data->cci_event.command_completed = 1;
-	/* Inform the system of the event */
-	call_cci_event_cb(data);
-
-	set_state(data, ST_IDLE);
-	return;
-
-error_recovery:
-	set_state(data, ST_ERROR_RECOVERY);
-}
-
 static int write_task_cmd(struct pdc_config_t const *cfg,
 			  enum command_task task, union reg_data *cmd_data)
 {
@@ -2393,6 +2350,10 @@ static enum smf_state_result st_task_wait_run(void *o)
 			offset = 0;
 			len = 0;
 		}
+		break;
+	case UCSI_GET_ATTENTION_VDO:
+		len = sizeof(union get_attention_vdo_t);
+		offset = 1;
 		break;
 	default:
 		/* No data for this command */
