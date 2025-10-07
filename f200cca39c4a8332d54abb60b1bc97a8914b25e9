@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c9b437_3518c23c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-07T20:51:08Z",
+      "side": 1,
+      "message": "Another alternative is to filter out CC_HOSTCMD.  This would allow a developer at runtime to re-enabled the host command debug.\n[Legacy EC example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/baseboard/volteer/baseboard.h;l\u003d16;drc\u003d7893f0969495d788db61ca17896a3e46e4e4aea8)\n[Zephyr devicetree example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/geralt/ciri/project.overlay;l\u003d29;drc\u003db60483cf6f3e3f0a5e72aa35a1f0896f5bf86ed9)",
+      "revId": "f200cca39c4a8332d54abb60b1bc97a8914b25e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f812a20f_1bf5b686",
