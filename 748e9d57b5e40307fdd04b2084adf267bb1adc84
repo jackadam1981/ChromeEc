@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d77fe59_f9320781",
+        "filename": "zephyr/program/skywalker/skywalker/skywalker_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-10-07T12:04:45Z",
+      "side": 1,
+      "message": "I will check it under b/448823718, for now I will merge this change.",
+      "parentUuid": "295aec14_02240449",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 79
+      },
+      "revId": "748e9d57b5e40307fdd04b2084adf267bb1adc84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2de0e17_ea9da398",
