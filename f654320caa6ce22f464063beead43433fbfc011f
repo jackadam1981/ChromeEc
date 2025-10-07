@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a08892_09b97271",
+        "filename": "zephyr/boards/google/realtek/realtek.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-07T17:42:17Z",
+      "side": 1,
+      "message": "Should this change go upstream? I see the min-residency-us is set to 100 seconds in upstream.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69427a7f_3e4126e8",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-07T17:42:17Z",
+      "side": 1,
+      "message": "What is this code doing?  Why is this needed to read the chip ID?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a571e09_ef5c3e27",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-07T17:42:17Z",
+      "side": 1,
+      "message": "Same here.  Why is this needed?\n\nIf both chip ID and chip version need this sequence, please move to a helper function.  Maybe something like `rts_otp_access_enable()` and `rts_otp_access_disable()`.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06d8982_24498199",
+        "filename": "zephyr/program/brox/brtk/brtk.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-07T17:42:17Z",
+      "side": 1,
+      "message": "Please rebase.  This has already been fixed.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de598ff1_e40ad7d3",
+        "filename": "zephyr/program/brox/brtk/rtk_keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-07T17:42:17Z",
+      "side": 1,
+      "message": "Split the brtk specific changes into a separate CL from the generic Realtek board changes.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
