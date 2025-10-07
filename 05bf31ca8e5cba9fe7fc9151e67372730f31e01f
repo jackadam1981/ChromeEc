@@ -127,6 +127,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31e9b9b1_fe5084e2",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-07T13:47:57Z",
+      "side": 1,
+      "message": "There are three instances where `xmit_status` is set to `TCPC_TX_UNSET`:\n1) [prl_init](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;drc\u003d1afd124529bf7048ef47bb49d96e1820e53fd4db;l\u003d596)\n2) [prl_tx_wait_for_message_request_entry](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;drc\u003d1afd124529bf7048ef47bb49d96e1820e53fd4db;l\u003d885)\n3) [prl_hr_send_msg_to_phy](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_prl_sm.c;drc\u003d1afd124529bf7048ef47bb49d96e1820e53fd4db;l\u003d1309)",
+      "parentUuid": "fe33fa83_78ffe1c3",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
