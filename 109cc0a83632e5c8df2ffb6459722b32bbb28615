@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b6349d3_354e017c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-10-07T13:13:49Z",
+      "side": 1,
+      "message": "Acknowledged, Yes its still happening late",
+      "parentUuid": "7065e757_982f207d",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee798d73_3e6b2ba1",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-06T17:14:28Z",
       "side": 1,
       "message": "I\u0027d make something like this a flag rather than its own variable.",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f3dd7e_3d15208a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-10-07T13:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee798d73_3e6b2ba1",
       "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "143b13e7_98fc8245",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-10-07T13:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf5f4767_8222a042",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbf89f8a_48c286b1",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-10-06T17:14:28Z",
       "side": 1,
       "message": "We put `prl_*` functions in `prl_sm.h` and `pe_*` functions in `pe_drp_sm.h`.",
+      "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11507c33_999bd9bd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-10-07T13:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf89f8a_48c286b1",
       "revId": "109cc0a83632e5c8df2ffb6459722b32bbb28615",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
