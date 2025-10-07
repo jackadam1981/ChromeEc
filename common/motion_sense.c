@@ -1068,15 +1068,15 @@ void motion_sense_task(void *u)
 			wait_us = motion_min_interval;
 		}
 
-		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
-						    fastest_collection_rate)) {
-			pm_policy_state_lock_get_all();
-		}
+		//if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
+		//				    fastest_collection_rate)) {
+		//	pm_policy_state_lock_get_all();
+		//}
 		event = task_wait_event(wait_us);
-		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
-						    fastest_collection_rate)) {
-			pm_policy_state_lock_put_all();
-		}
+		//if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
+		//				    fastest_collection_rate)) {
+		//	pm_policy_state_lock_put_all();
+		//}
 	}
 }
 
