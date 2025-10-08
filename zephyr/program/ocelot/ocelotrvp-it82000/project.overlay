@@ -1,0 +1,121 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Use the it82002 devicetree from ocelotrvp-ite with some overrides */
+
+#include "../ocelotrvp-ite/project.overlay"
+
+/*
+ * Use ELPM instead of discrete hibernate circuitry
+ */
+
+/delete-node/ &hibernate_z5;
+
+&power_ctrl_elpm {
+	status = "okay";
+
+	/* Use XLPIN0,1,4 */
+	pinctrl-0 = <&xlpin0_gpq0_default &xlpin1_gpq1_default
+		     &xlpin4_gpq4_default>;
+	pinctrl-names = "default";
+
+	/* XLPIN0: MECH_PWR_BTN_ODL, falling edge */
+	xlpin0: xlpin@0 { reg = <0>; polarity = "low-falling"; };
+
+	/* XLPIN1: ACOK_OD, rising edge */
+	xlpin1: xlpin@1 { reg = <1>; polarity = "high-rising"; };
+
+	/* XLPIN4: LID_OPEN, rising edge */
+	xlpin4: xlpin@4 { reg = <4>; polarity = "high-rising"; };
+};
+
+/*
+ * Re-map GPIOs that differ between IT82002 and IT82000
+ *
+ *   ACOK_OD			GPC0 -> XLPIN1/GPQ1 (ELPM)
+ *   CCD_MODE_L:		GPE6 -> GPC0
+ *   EC_ACCEL_INT_L:		GPF7 -> GPD0
+ *   EC_IMU_INT_L:		GPF6 -> GPE4
+ *   EN_Z1_RAILS:		GPD4 -> XLPOUT (ELPM, dedicated pin, not muxed)
+ *   GSC_EC_PWR_BTN_ODL:	GPE4 -> N/C
+ *   LID_OPEN			GPD3 -> XLPIN4/GPQ4 (ELPM)
+ *   MECH_PWR_BTN_ODL:		N/C  -> XLPIN0/GPQ0 (ELPM)
+ *   UART_EC_RX_GSC_DBG_TX:	GPB0 -> GPC7
+ *   UART_EC_TX_GSC_DBG_RX:	GPB1 -> GPE6
+ */
+
+/* ACOK_OD */
+&gpio_acok_od {
+	gpios = <&gpioq 1 (GPIO_INPUT)>;
+};
+
+/* CCD_MODE_L */
+&gpio_ccd_mode_odl {
+	gpios = <&gpioc 0 (GPIO_INPUT)>;
+};
+
+/* EC_ACCEL_INT_L */
+&gpio_c_ec_snr_alrt1 {
+	gpios = <&gpiod 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+};
+
+/* EC_IMU_INT_L */
+&gpio_c_ec_snr_alrt2 {
+	gpios = <&gpioe 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+};
+
+/* There is no named-gpio for EN_Z1_RAILS/EN_SLP_Z. It is now re-worked to
+ * XLPOUT, which is a dedicated pin and does not require pinmuxing */
+
+/* GSC_EC_PWR_BTN_ODL replaced by MECH_PWR_BTN_ODL connected to ELPM */
+/delete-node/ &gpio_gsc_ec_pwr_btn_odl;
+
+/ {
+	named-gpios {
+		gpio_mech_pwr_btn_odl: mech_pwr_btn_odl {
+			gpios = <&gpioq 0 (GPIO_INPUT)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+	};
+};
+
+/* Re-map common GPIO name (referenced by rvp_interrupts.dtsi) */
+gpio_pwrbtn: &gpio_mech_pwr_btn_odl {};
+
+/* LID_OPEN */
+&gpio_lid_open {
+	gpios = <&gpioq 4 (GPIO_INPUT)>;
+};
+
+/* uart1: UART_EC_TX_GSC_DBG_RX / UART_EC_RX_GSC_DBG_TX */
+&ite_uart1_wrapper {
+	status = "okay";
+	pinctrl-0 = <&uart1_rx_gpc7_default
+		     &uart1_tx_gpe6_default>;
+	pinctrl-names = "default";
+};
+
+/*
+ * Replace unused GPIOs list
+ */
+
+/ {
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			/* BGA_PINA2 - unused 1.8V I2C bus (I2C0) - pull down to
+			 * avoid voltage level issues if this AIC is connected
+			 * to a different base RVP board */
+			<&gpiof 3 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+			/* BGA_PINA5 - unused 1.8V I2C bus (I2C0) - pull down to
+			 * avoid voltage level issues if this AIC is connected
+			 * to a different base RVP board */
+			<&gpiof 2 (GPIO_INPUT | GPIO_PULL_DOWN)>,
+			/* Unused I2C2 bus, EC_I2C_PD34_SCL */
+			<&gpiof 6 (GPIO_INPUT | GPIO_PULL_UP)>,
+			/* Unused I2C2 bus, EC_I2C_PD34_SDA */
+			<&gpiof 7 (GPIO_INPUT | GPIO_PULL_UP)>;
+	};
+};
