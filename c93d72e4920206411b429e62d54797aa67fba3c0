@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30345241_4adf653d",
+        "filename": "util/ectool.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-08T22:35:37Z",
+      "side": 1,
+      "message": "Can you add a `TODO(b/123)` to remove v1 and change this like we talked about today?",
+      "range": {
+        "startLine": 1950,
+        "startChar": 0,
+        "endLine": 1959,
+        "endChar": 2
+      },
+      "revId": "c93d72e4920206411b429e62d54797aa67fba3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
