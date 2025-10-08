@@ -1028,6 +1028,12 @@ void motion_sense_task(void *u)
 			wait_us = motion_min_interval;
 		}
 
+#ifdef CONFIG_PLATFORM_EC_GUARANTEE_MOTION_MIN_SENSE_WAIT_TIME
+		crec_usleep(motion_min_interval);
+		if (wait_us >= 0) {
+			wait_us -= motion_min_interval;
+		}
+#endif
 		event = task_wait_event(wait_us);
 	}
 }
