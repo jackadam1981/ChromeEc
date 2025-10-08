@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c66d3c_b06328ed",
+        "filename": "zephyr/boards/google/realtek/realtek.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-08T09:03:59Z",
+      "side": 1,
+      "message": "In other projects using upstream code, the sleep systems are designed to let customer control, so we prefer to let the min-residency-us set in the platform/ec.",
+      "parentUuid": "b0a08892_09b97271",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69427a7f_3e4126e8",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-07T17:42:17Z",
       "side": 1,
       "message": "What is this code doing?  Why is this needed to read the chip ID?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6655b00_f608a63d",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-08T09:03:59Z",
+      "side": 1,
+      "message": "The Chip info of the RTS5915 is recorded in the OTP field。 \nFor power saving reason, we let OTP IP to be disabled in the usual and enable it when task need to access it。",
+      "parentUuid": "69427a7f_3e4126e8",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dece1572_8445f5a4",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-08T09:03:59Z",
+      "side": 1,
+      "message": "We combined it into get_otp_chip_info() function and make it return register value directly.",
+      "parentUuid": "3a571e09_ef5c3e27",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e06d8982_24498199",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab20838_12fa2117",
+        "filename": "zephyr/program/brox/brtk/brtk.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-08T09:03:59Z",
+      "side": 1,
+      "message": "Thanks for your commit to add this property, we removed it now.",
+      "parentUuid": "e06d8982_24498199",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de598ff1_e40ad7d3",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-10-07T17:42:17Z",
       "side": 1,
       "message": "Split the brtk specific changes into a separate CL from the generic Realtek board changes.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "f654320caa6ce22f464063beead43433fbfc011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ebb68e_e0de969d",
+        "filename": "zephyr/program/brox/brtk/rtk_keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-08T09:03:59Z",
+      "side": 1,
+      "message": "We split it to another CL for board brtk using, thanks.",
+      "parentUuid": "de598ff1_e40ad7d3",
       "range": {
         "startLine": 59,
         "startChar": 0,
