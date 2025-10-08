@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1076d24_aba94a7e",
+        "filename": "zephyr/include/drivers/rt3645.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-08T18:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cc1583_fcd25cae",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "2feb40d3fef34566669eec86ffddb23ef7931570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b284191_22f699d5",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-10-08T15:40:02Z",
       "side": 1,
       "message": "No need to make these public at the moment.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "2feb40d3fef34566669eec86ffddb23ef7931570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f891e1c0_d650308c",
+        "filename": "zephyr/include/drivers/rt3645.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-08T18:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b284191_22f699d5",
       "range": {
         "startLine": 95,
         "startChar": 0,
