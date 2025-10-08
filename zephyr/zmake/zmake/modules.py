@@ -79,6 +79,9 @@ known_modules = {
     "focaltech_fp": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "focaltech"
     ),
+    "focaltech": lambda name, checkout: (
+        checkout / "src" / "platform" / "zephyr-ft9001"/ "focaltech"
+    ),
 }
 
 
