@@ -16,6 +16,24 @@
       "message": "Should it be Source device is connected ? From a PD trace I am seeing that DFP sends the VDO 0x00000009 in VDM DP status.",
       "revId": "c380fdd838c53c02b976c79bae4ce208c2cd16ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5e852e_28adb254",
+        "filename": "zephyr/program/skywalker/obiwan/obiwan_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-10-08T18:53:04Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "ef413646_d7e49a2e",
+      "revId": "c380fdd838c53c02b976c79bae4ce208c2cd16ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
