@@ -175,6 +175,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14681a22_cf1096f8",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-08T10:51:55Z",
+      "side": 1,
+      "message": "Using a local variable like `int tx_status \u003d prl_tx[port].xmit_status;` in this CL results in failure.\n```\nif (pd_timer_is_expired(port, PR_TIMER_TCPC_TX_TIMEOUT) ||\n\t    tx_status \u003d\u003d TCPC_TX_COMPLETE_FAILED) {\n\t\t/*\n\t\t * NOTE: PRL_Tx_Transmission_Error State embedded\n\t\t * here.\n\t\t */\n\n\t\tif (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {\n\t\t\t/*\n\t\t\t * State tch_wait_for_transmission_complete will\n\t\t\t * inform policy engine of error\n\t\t\t */\n\t\t\tPDMSG_SET_FLAG(port, PRL_FLAGS_TX_ERROR);\n\t\t} else {\n\t\t\t/* Report Error To Policy Engine */\n\t\t\tpe_report_error(port, ERR_TCH_XMIT,\n\t\t\t\t\tprl_tx[port].last_xmit_type);\n\t\t}\n\n\t\t/* Increment message id counter */\n\t\tincrement_msgid_counter(port);\n\t\tset_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);\n\t} else if (tx_status \u003d\u003d TCPC_TX_COMPLETE_SUCCESS) {\n\t\t/* NOTE: PRL_TX_Message_Sent State embedded here. */\n\t\t/* Increment messageId counter */\n\t\tincrement_msgid_counter(port);\n\n\t\t/* Inform Policy Engine Message was sent */\n\t\tif (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))\n\t\t\tPDMSG_SET_FLAG(port, PRL_FLAGS_TX_COMPLETE);\n\t\telse\n\t\t\tpe_message_sent(port);\n\n\t\tset_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);\n\t}\n```",
+      "parentUuid": "002a38f8_6de61a9c",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
