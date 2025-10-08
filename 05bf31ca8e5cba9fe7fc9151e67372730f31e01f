@@ -319,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1563ecb9_357d4d03",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-08T22:34:34Z",
+      "side": 1,
+      "message": "```\n25-10-08 12:18:59.449[54.726200 tx_status \u003d 0\n25-10-08 12:18:59.452 ]\n25-10-08 12:18:59.452[54.728400 tx1 \u003d 1, tx2 \u003d 1\n25-10-08 12:18:59.455 ]\n25-10-08 12:18:59.455[54.729000 xmit_status \u003d 1\n```\nSuperficially, this is exactly what we were looking for, but it raises some questions.\n1. This is the working case, which would suggest that it\u0027s not necessarily a problem. We believe that things actually start to go wrong in the previous Get_Sink_Caps_Extended. What do the logs look like for that exchange?\n2. If the reads and writes are interleaved just as the logs would suggest, I would still expect the Tx state machine to come back around and see success consistently on the next `prl_tx_wait_for_phy_response_run`. I would expect similar results in the version where you read `xmit_status` into a local variable once at the beginning. What do you see on port 0? What do you see on port 1 with the local variable change?\n3. The existing code and debugging code assume that integer memory accesses are atomic. I\u0027m pretty sure that\u0027s true on our ECs. If they aren\u0027t atomic, that could cause a bug. This function could see `xmit_status` as having a value that was never written to it, and that could cause unexpected behavior (somehow?). Does anything happen if you just mutex all of the accesses to this field?",
+      "parentUuid": "7e9d8b4b_72aff261",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
