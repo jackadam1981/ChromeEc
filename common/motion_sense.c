@@ -1072,7 +1072,9 @@ void motion_sense_task(void *u)
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_get_all();
 		}
-		event = task_wait_event(wait_us);
+		/* Short recess */
+		crec_usleep(2 * MSEC);
+		event = task_wait_event(wait_us - 2 * MSEC);
 		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_put_all();
