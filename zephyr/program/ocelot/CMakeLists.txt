@@ -33,6 +33,10 @@ if(DEFINED CONFIG_BOARD_OJAL)
 	project(ojal)
 endif()
 
+if(DEFINED CONFIG_BOARD_OCELOTRVP_RTK)
+	project(ocelotrvp-rtk)
+endif()
+
 if(DEFINED CONFIG_BOARD_MATSU)
 	project(matsu)
 	zephyr_library_sources("matsu/src/board_power.c")
