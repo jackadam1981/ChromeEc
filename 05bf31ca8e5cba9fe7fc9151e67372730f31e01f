@@ -223,6 +223,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "465c7242_6f0eb511",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-08T21:54:20Z",
+      "side": 1,
+      "message": "This was in `pujjoga port0` in which it was passing consistently with this CL. It is consistently failing in `pujjoga port0` while using a local variable. However, it passes in `pujjoga port1` with and without using a local variable in this CL.\nIt still fails in `both ports` of `magolor` with and without using a local variable in this CL.",
+      "parentUuid": "a7bd4c3f_1ed76b3b",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
