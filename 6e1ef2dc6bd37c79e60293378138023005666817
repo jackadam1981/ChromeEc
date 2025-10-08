@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dbb3d02_cba9332c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-10-08T15:39:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7949f9d7_7cdc7271",
+      "revId": "6e1ef2dc6bd37c79e60293378138023005666817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "400c9625_61f1828e",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-08T00:27:49Z",
       "side": 1,
       "message": "can we instead do\n\n```\n      # Create a temp log file\n      local temp_log\u003d$(mktemp) || exit 1\n      trap \u0027rm -f \"${temp_log}\"\u0027 EXIT SIGINT SIGTERM\n      # Execute in sub shell so we don\u0027t change working directories\n      if ! ( \"${opentitan_root}/bazelisk.sh\" build \\\n             //sw/host/opentitantool:opentitantool \u003e/dev/null 2\u003e\u00261 \u003e\"${temp_log}\"); then\n        echo \"${script_path} failed to build opentitantool:\" \u003e\u00262\n        # Dump the the failed build log.\n        cat \"${temp_log}\" \u003e\u00262\n        exit 1\n      fi\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "6e1ef2dc6bd37c79e60293378138023005666817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead20538_361bc904",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-10-08T15:39:58Z",
+      "side": 1,
+      "message": "Made a change to preserve and report the log without a second run, PTAL",
+      "parentUuid": "400c9625_61f1828e",
       "range": {
         "startLine": 26,
         "startChar": 6,
