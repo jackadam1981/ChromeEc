@@ -16,6 +16,24 @@
       "message": "This sounds like a bug in the PDC firmware.  I would expect SET_SINK_PATH to be a NOP if there is no change in the sink paths setting.  Does this affect both PDC types?",
       "revId": "23365a29bd64a28faf8768519b3bb9fbb7e6023f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4ee262_1531ccd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-08T01:28:04Z",
+      "side": 1,
+      "message": "I\u0027ve only tested this on with RTK PDC on my kaladin DUT. I\u0027ll try TI PDC tomorrow.",
+      "parentUuid": "44af8439_d6cdbee3",
+      "revId": "23365a29bd64a28faf8768519b3bb9fbb7e6023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
