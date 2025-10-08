@@ -1072,6 +1072,13 @@ void motion_sense_task(void *u)
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_get_all();
 		}
+
+#ifdef CONFIG_PLATFORM_EC_GUARANTEE_MOTION_MIN_SENSE_WAIT_TIME
+		int short_recess = CONFIG_MOTION_MIN_SENSE_WAIT_TIME * MSEC;
+
+		crec_usleep(short_recess);
+		wait_us -= short_recess;
+#endif
 		event = task_wait_event(wait_us);
 		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
 						    fastest_collection_rate)) {
