@@ -12,7 +12,6 @@
 #include "fan.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dts"
-#include "keyboard.dtsi"
 #include "vci.dtsi"
 #include "../battery.dtsi"
 #include "../gsc_board.dtsi"
@@ -66,10 +65,4 @@
 	irq-gpios = <MCHP_GPIO_DECODE_000 GPIO_ACTIVE_HIGH>;
 };
 
-&ioex_it8801_kbd {
-          status="okay";
-          kso-mapping = <0 1 20 3 4 5 6 17 18 16 15 11 12>;
-          mfdctrl = <&kso18_gp01_default &kso20_gp23_default>;
-          row-size = <8>;
-          col-size = <13>;
-};
+#include "keyboard.dtsi"
