@@ -63,6 +63,30 @@
       },
       "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d395c6_28d37693",
+        "filename": "util/ectool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-08T03:42:02Z",
+      "side": 1,
+      "message": "I believe this new version is compatible with both fpinfo v1 and v2",
+      "parentUuid": "401928d4_862f3d71",
+      "range": {
+        "startLine": 1949,
+        "startChar": 1,
+        "endLine": 1958,
+        "endChar": 2
+      },
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
