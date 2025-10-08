@@ -29,4 +29,9 @@ if (DEFINED CONFIG_BOARD_ET171)
 	project(et171)
 endif()
 
+if (DEFINED CONFIG_BOARD_FT9001)
+	add_subdirectory(ft9001)
+	project(ft9001)
+endif()
+
 zephyr_library_sources_ifdef(CONFIG_EC_HOST_CMD "src/fp_transport.c")
