@@ -24,4 +24,9 @@ if (DEFINED CONFIG_BASEBOARD_HELIPILOT)
 	project(helipilot)
 endif()
 
+if (DEFINED CONFIG_BOARD_CHOJNIK)
+	add_subdirectory(chojnik)
+	project(chojnik)
+endif()
+
 zephyr_library_sources_ifdef(CONFIG_EC_HOST_CMD "src/fp_transport.c")
