@@ -188,6 +188,12 @@ config PLATFORM_EC_GESTURE_HOST_DETECTION
 	help
 	  Enable gesture host interface
 
+config PLATFORM_EC_GUARANTEE_MOTION_MIN_SENSE_WAIT_TIME
+	bool "Ensure there is short recess for motion sense task"
+	help
+	  Enable this to guarantee some minimum delay to allow other lower
+	  priority tasks to run.
+
 rsource "Kconfig.sensor_devices"
 rsource "Kconfig.body_detection"
 
