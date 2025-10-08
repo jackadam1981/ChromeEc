@@ -65,6 +65,36 @@ def register_it8xxx2_project(
     )
 
 
+def register_it82000_project(
+    project_name,
+    extra_kconfig_base_files=(),
+    extra_kconfig_proj_files=(),
+    inherited_from=None,
+):
+    """Register an it82000 based variant of ocelot."""
+    if inherited_from is None:
+        inherited_from = ["ocelot"]
+
+    register_binman_project(
+        project_name=project_name,
+        zephyr_board="it8xxx2/it82000bw",
+        dts_overlays=[
+            here / project_name / "project.overlay",
+        ],
+        kconfig_files=[
+            # Common to all projects.
+            here / "program.conf",
+            # Customization to apply before project-specific config.
+            *extra_kconfig_base_files,
+            # Project-specific KConfig customization.
+            here / project_name / "project.conf",
+            # Additional project-specific KConfig customization.
+            *extra_kconfig_proj_files,
+        ],
+        inherited_from=inherited_from,
+    )
+
+
 def register_mec172x_project(
     project_name,
     extra_kconfig_base_files=(),
@@ -146,6 +176,14 @@ register_mec172x_project(
     ],
 )
 
+# For IT82000-based EC AIC
+register_it82000_project(
+    project_name="ocelotrvp-it82000",
+    extra_kconfig_base_files=[
+        here / "rvp_program.conf",
+    ],
+)
+
 register_ish_project(
     project_name="ocelotrvp-ish",
     zephyr_board="intel_ish_5_8_0",
@@ -184,5 +222,6 @@ register_ish_project(
 assert_rw_fwid_DO_NOT_EDIT(project_name="matsu", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-ite", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-it82000", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-mchp", addr=0x40318)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ojal", addr=0x80404)
