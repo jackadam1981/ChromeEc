@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88e1f3a_69f73438",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-08T20:55:13Z",
+      "side": 1,
+      "message": "Future work: Should this be the default behavior?",
+      "revId": "63ca7ed840d497b0902abbbd3dc0d4582fb2aa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae39411_e9675e48",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-08T20:55:13Z",
+      "side": 1,
+      "message": "Future work: Should the emulator expose a method to reset this state?",
+      "revId": "63ca7ed840d497b0902abbbd3dc0d4582fb2aa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
