@@ -34,6 +34,24 @@
       "parentUuid": "44af8439_d6cdbee3",
       "revId": "23365a29bd64a28faf8768519b3bb9fbb7e6023f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ea1f7a_2ce0135a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-08T17:27:27Z",
+      "side": 1,
+      "message": "I tried this on my brox-sku4 device setup with a 15V adapter. This uses the usual NVDC charger chip, so behavior is different.\n\nScenario 1: \n\nAfter running cutoff and attaching a 5v adapter, the EC comes back online but the battery reconnects preventing any brownouts.  \n\nScenario 2:\n\nI then physically disconnected the battery, and swapped adapters again.  EC and GSC console become unresponsive to commands and dump any logging, I\u0027m suspecting there\u0027s not enough power to boot up EC.",
+      "parentUuid": "fc4ee262_1531ccd1",
+      "revId": "23365a29bd64a28faf8768519b3bb9fbb7e6023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
