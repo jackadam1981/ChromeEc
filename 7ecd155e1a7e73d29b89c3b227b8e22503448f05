@@ -45,6 +45,29 @@
       },
       "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a851886_462fd1c7",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-08T21:54:56Z",
+      "side": 1,
+      "message": "The loop actually iterates forward, not backward. Please correct the comment to be clearer. For example, the `pm_states` array is ordered from the shallowest to the deepest power state. Iterate forward through the states and select the first one that is not currently locked.",
+      "range": {
+        "startLine": 25,
+        "startChar": 41,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
