@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca48ab9c_847845a1",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-08T20:42:39Z",
+      "side": 1,
+      "message": "Add a macro for the OTP enable bit.  `PUF_OPERATION_STAGE_ACTIVE`.\n```suggestion\n\t*(volatile uint32_t *)RTK_OTP_CTRL_REG \u003d PUF_OPERATION_STAGE_ACTIVE;\n```",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 46
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad44a398_edc5494d",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-08T20:42:39Z",
+      "side": 1,
+      "message": "```suggestion\n\t*(volatile uint32_t *)RTK_OTP_CTRL_REG \u003d PUF_OPERATION_STATE_SLEEP;\n```",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
