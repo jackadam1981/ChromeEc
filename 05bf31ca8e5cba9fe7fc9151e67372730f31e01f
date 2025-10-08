@@ -343,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3699ebc1_d55b988e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-08T22:57:53Z",
+      "side": 1,
+      "message": "1. \n```\n25-10-08 12:18:59.164C1: RECV 05b6/0\n25-10-08 12:18:59.425[54.711500 tx_status \u003d 0\n25-10-08 12:18:59.428 ]\n25-10-08 12:18:59.428[54.712400 tx_status \u003d 0\n25-10-08 12:18:59.430 ]\n25-10-08 12:18:59.430[54.714000 tx1 \u003d 1, tx2 \u003d 1\n25-10-08 12:18:59.436 ]\n25-10-08 12:18:59.436[54.713900 tx_status \u003d 0\n25-10-08 12:18:59.438 ]\n25-10-08 12:18:59.438[54.717800 xmit_status \u003d 1\n25-10-08 12:18:59.441 ]\n25-10-08 12:18:59.441C1: RECV 97a4/1[0]00088001\n25-10-08 12:18:59.449[54.726200 tx_status \u003d 0\n25-10-08 12:18:59.452 ]\n25-10-08 12:18:59.452[54.728400 tx1 \u003d 1, tx2 \u003d 1\n25-10-08 12:18:59.455 ]\n25-10-08 12:18:59.455[54.729000 xmit_status \u003d 1\n25-10-08 12:18:59.458 ]\n```\nHere, `RECV 05b6/0` is the `Get_Sink_Caps_Extended` and `RECV 97a4/1[0]00088001` is the `Get Battery Status`.\n\n2. Will do the same on `port1` with the local variable change. What would be the best way to do it on `port0`?",
+      "parentUuid": "1563ecb9_357d4d03",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
