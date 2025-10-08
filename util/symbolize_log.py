@@ -50,6 +50,7 @@ LOG_ADDR_REGEX = re.compile(
     """,
     re.IGNORECASE | re.VERBOSE,
 )
+LOG_THREAD_REGEX = re.compile(r"Thread: (.*?)\n")
 
 ADDR2LINE_CACHE = {}
 
@@ -106,6 +107,12 @@ def parse_log_line(line, elf_file, addr2line_tool):
     """
     Finds all PC/LR addresses in a line and symbolizes them.
     """
+    thread_match = LOG_THREAD_REGEX.search(line)
+
+    if thread_match:
+        name = thread_match.group(1).strip()
+        print(f"Thread: {name}")
+
     matches = LOG_ADDR_REGEX.finditer(line)
     symbolized_info = []
 
@@ -123,10 +130,13 @@ def parse_log_line(line, elf_file, addr2line_tool):
             sys.exit(1)
 
     if found_addresses:
-        print(f"[Log Line]: {line.strip()}")
-        for info in symbolized_info:
-            print(info)
-        print("-" * 20)
+        if len(symbolized_info) == 1:
+            print(f"[Log Line]: {line.strip()} --> {symbolized_info[0]}")
+        else:
+            print(f"[Log Line]: {line.strip()}")
+            for info in symbolized_info:
+                print(info)
+            print("-" * 20)
 
 
 def main():
