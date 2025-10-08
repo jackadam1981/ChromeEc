@@ -1,0 +1,77 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+ / {
+	aliases {
+		gpio-wp = &gpio_ec_wp_odl;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		smc-wake-sci-n-3v3 {
+			gpios = <&gpioa 0 (GPIO_OUTPUT | GPIO_ODR_HIGH)>;
+		};
+		std-adpt-cntrl-gpio-3v3-pp {
+			gpios = <&gpioa 1 GPIO_OUTPUT>;
+		};
+		/* I3C pins*/
+		/* I2C SMB pins*/
+		/* I2C ISH pins*/
+		/* I2C PD pins*/
+		/* I2C PCH pins*/
+		all-sys-pwrgd-3v3-i {
+			gpios = <&gpiog 3 GPIO_INPUT>;
+		};
+
+		pm-rsmrst-n-1v8-pp {
+			gpios = <&gpiog 15 GPIO_OUTPUT>;
+		};
+
+		sys-pwrok-ec-1v8-od {
+			gpios = <&gpiog 13 GPIO_OUTPUT>;
+		};
+		pm-pwrbtn-n-1v8-od {
+			gpios = <&gpioh 12 GPIO_OUTPUT>;
+		};
+		prochot-ec-n-3v3-od {
+			gpios = <&gpioh 10 GPIO_OUTPUT>;
+		};
+
+		c-mecc-cse-early-sw-1v8-od {
+			gpios = <&gpioa 15 GPIO_OUTPUT>;
+		};
+		pch-slp-s0-n-1v8-i {
+			gpios = <&gpioh 13 GPIO_INPUT>;
+		};
+		bat-det-3v3-i {
+			gpios = <&gpioh 14 GPIO_INPUT>;
+		};
+
+		pwrbtn-ec-in-n-3v3-i {
+			gpios = <&gpioh 3 GPIO_INPUT>;
+		};
+		/* UART pins */
+		bc-acok-3v3-i {
+			gpios = <&gpioh 0 GPIO_INPUT>;
+		};
+		ec-pg3-wake-3v3-pp {
+			gpios = <&gpioi 3 GPIO_OUTPUT>;
+		};
+		pch-pwrok-ec-1v8-od {
+			gpios = <&gpioh 15 GPIO_INPUT>;
+		};
+		c-en-pp5000-typea-3v3-pp {
+			gpios = <&gpioh 11 GPIO_INPUT>;
+		};
+		/* The legacy system code requires GPIO_ENTERING_RW symbol */
+		gpio_ec_entering_rw: ec_entering_rw {
+			enum-name = "GPIO_ENTERING_RW";
+		};
+		gpio_ec_wp_odl: ec_wp_odl { /* SPI_WP_H1 */
+			gpios = <&gpiob 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+	};
+};
