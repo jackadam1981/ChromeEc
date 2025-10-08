@@ -10,6 +10,9 @@
 
 enum fp_transport_type get_fp_transport_type(void)
 {
+#ifdef CONFIG_BOARD_FT9001
+	return FP_TRANSPORT_TYPE_SPI;
+#else
 	static enum fp_transport_type ret = FP_TRANSPORT_TYPE_UNKNOWN;
 
 	if (ret == FP_TRANSPORT_TYPE_UNKNOWN) {
@@ -30,4 +33,5 @@ enum fp_transport_type get_fp_transport_type(void)
 	}
 
 	return ret;
+#endif
 }
