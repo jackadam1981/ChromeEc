@@ -16,6 +16,24 @@
       "message": "Tried `prl_run` logging, but the device just kept rebooting. Will try a different approach",
       "revId": "c440d1c4e68dd69e6e7e3d3ec497b2221086663a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d592dee4_26f30014",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-08T20:59:19Z",
+      "side": 1,
+      "message": "Were you directly logging within the run or using the timestamping framework? I\u0027d suggest the latter.",
+      "parentUuid": "3809d1b4_ef2a6102",
+      "revId": "c440d1c4e68dd69e6e7e3d3ec497b2221086663a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
