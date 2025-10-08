@@ -52,6 +52,24 @@
       "parentUuid": "fc4ee262_1531ccd1",
       "revId": "23365a29bd64a28faf8768519b3bb9fbb7e6023f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1938ea_0b3d58b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-08T18:28:23Z",
+      "side": 1,
+      "message": "The EC and GSC need less than 100mw to boot.  So something else is happening or the PDC is failing to enable the sink path automatically.",
+      "parentUuid": "20ea1f7a_2ce0135a",
+      "revId": "23365a29bd64a28faf8768519b3bb9fbb7e6023f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
