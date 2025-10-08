@@ -271,6 +271,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85c4a0f3_23de4287",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-08T22:14:06Z",
+      "side": 1,
+      "message": "Tried monitoring `xmit_status` in `prl_tx_wait_for_phy_response_run` in `pujjoga port1` without this CL when the `failure is not observed`:\n```\nvoid pd_transmit_complete(int port, int status)\n{\n\tint tx1 \u003d status;\n\tif (status \u003d\u003d TCPC_TX_COMPLETE_SUCCESS)\n\t\tset_tcpc_tx_success_ts(port);\n\tprl_tx[port].xmit_status \u003d status;\n\tint tx2 \u003d status;\n\tCPRINTS(\"tx1 \u003d %d, tx2 \u003d %d\\n\", tx1, tx2);\n}\n```\n```\nstatic void prl_tx_wait_for_phy_response_run(const int port)\n{\n\t/* Wait until TX is complete */\n\n\t/*\n\t * NOTE: The TCPC will set xmit_status to TCPC_TX_COMPLETE_DISCARDED\n\t *       when a GoodCRC containing an incorrect MessageID is received.\n\t *       This condition satisfies the PRL_Tx_Match_MessageID state\n\t *       requirement.\n\t */\n\tint tx_status \u003d prl_tx[port].xmit_status;\n\tCPRINTS(\"tx_status \u003d %d\\n\", tx_status);\n\tif (prl_tx[port].xmit_status \u003d\u003d TCPC_TX_COMPLETE_SUCCESS) {\n\t\tCPRINTS(\"xmit_status \u003d %d\\n\", prl_tx[port].xmit_status);\n```\nThis is what we get in the `ec log` after the `Get Battery Status from Ellisys`:\n```\n25-10-08 12:18:59.449[54.726200 tx_status \u003d 0\n25-10-08 12:18:59.452 ]\n25-10-08 12:18:59.452[54.728400 tx1 \u003d 1, tx2 \u003d 1\n25-10-08 12:18:59.455 ]\n25-10-08 12:18:59.455[54.729000 xmit_status \u003d 1\n```",
+      "parentUuid": "fc3396c0_a4d594ef",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
