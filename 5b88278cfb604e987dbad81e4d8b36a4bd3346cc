@@ -22,6 +22,30 @@
       },
       "revId": "5b88278cfb604e987dbad81e4d8b36a4bd3346cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaeb7701_21751070",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-10-08T00:09:47Z",
+      "side": 1,
+      "message": "Yes, we\u0027ve tested on it82000.bw evb, and here is the log:\n```\nec:~\u003e hibernate 1 2\nHibernating for 1.000002 s\nE: unsupported elpm time-based wake-up, hibernating until wake pin asserted\n```",
+      "parentUuid": "25b0158f_c4f3df8a",
+      "range": {
+        "startLine": 357,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 9
+      },
+      "revId": "5b88278cfb604e987dbad81e4d8b36a4bd3346cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
