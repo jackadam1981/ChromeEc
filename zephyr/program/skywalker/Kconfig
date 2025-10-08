@@ -44,6 +44,12 @@ config BOARD_TARKIN
 	  Build Google Tarkin board. Tarkin has MediaTek SoC
 	  with ITE IT82002 EC.
 
+config BOARD_GROGU
+	bool "Google Grogu Board"
+	help
+	  Build Google Grogu board. Grogu has MediaTek SoC
+	  with ITE IT82002 EC.
+
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"
