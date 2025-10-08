@@ -39,6 +39,30 @@
       },
       "revId": "f538586ba5f31fb4685d713a403e99101d1a79a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77c71cb_46ce929c",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-10-08T20:15:56Z",
+      "side": 1,
+      "message": "I tested that as presented this work for both failure and success cases.\n\nKeeping status inside the parens would create a local instance and not update the outside version.",
+      "parentUuid": "19993040_f464d52f",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "f538586ba5f31fb4685d713a403e99101d1a79a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
