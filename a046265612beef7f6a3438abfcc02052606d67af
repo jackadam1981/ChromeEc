@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89eecce4_9dde7269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-08T06:19:58Z",
+      "side": 1,
+      "message": "presubmit fail log:\n\n```\n[FAILED] chromiumos/platform/ec: cros format\n    Hook script \"cros format --check --exclude \"*.xml\" --exclude \"extra/usb_updater/*.json\" --exclude \"third_party/*\" --commit ${PRESUBMIT_COMMIT}\" failed with code 1:\n      22:45:18: WARNING: zephyr/drivers/cros_flash/cros_flash_em32f967.c: needs formatting\n      22:45:29: NOTICE: You can fix formatting errors by running:\n        cros format zephyr/drivers/cros_flash/cros_flash_em32f967.c\n```",
+      "revId": "a046265612beef7f6a3438abfcc02052606d67af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
