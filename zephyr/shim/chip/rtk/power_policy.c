@@ -16,19 +16,19 @@ const struct pm_state_info *pm_policy_next_state(uint8_t cpu, int32_t ticks)
 {
 	ARG_UNUSED(cpu);
 
-	const struct pm_state_info *out_state_ret = NULL;
-	const struct pm_state_info *cpu_states_list;
-	uint8_t num_cpu_states = pm_state_cpu_get_all(0U, &cpu_states_list);
+	const struct pm_state_info *ret = NULL;
+	const struct pm_state_info *cpu_state_list;
+	uint8_t num_cpu_states = pm_state_cpu_get_all(cpu, &cpu_state_list);
 
 	if (DEEP_SLEEP_ALLOWED) {
 		for (int i = 0; i < num_cpu_states; i++) {
 			if (pm_policy_state_lock_is_active(
-				    cpu_states_list[i].state,
+				    cpu_state_list[i].state,
 				    PM_ALL_SUBSTATES)) {
 				break;
 			}
-			out_state_ret = &cpu_states_list[i];
+			ret = &cpu_state_list[i];
 		}
 	}
-	return out_state_ret;
+	return ret;
 }
