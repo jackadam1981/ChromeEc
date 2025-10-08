@@ -16,6 +16,29 @@
       "message": "@apronin@chromium.org PTAL - the original version was not helpful, because the script actually exits right away after bazel failure due to `set -e`, the problem is that the user does not know that the build failed, and this looks like opentitantool just crashing for no apparent reason.\n\nWith the latest change the failure log is printed.",
       "revId": "6e1ef2dc6bd37c79e60293378138023005666817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400c9625_61f1828e",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-10-08T00:27:49Z",
+      "side": 1,
+      "message": "can we instead do\n\n```\n      # Create a temp log file\n      local temp_log\u003d$(mktemp) || exit 1\n      trap \u0027rm -f \"${temp_log}\"\u0027 EXIT SIGINT SIGTERM\n      # Execute in sub shell so we don\u0027t change working directories\n      if ! ( \"${opentitan_root}/bazelisk.sh\" build \\\n             //sw/host/opentitantool:opentitantool \u003e/dev/null 2\u003e\u00261 \u003e\"${temp_log}\"); then\n        echo \"${script_path} failed to build opentitantool:\" \u003e\u00262\n        # Dump the the failed build log.\n        cat \"${temp_log}\" \u003e\u00262\n        exit 1\n      fi\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "6e1ef2dc6bd37c79e60293378138023005666817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
