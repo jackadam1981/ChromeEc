@@ -129,3 +129,24 @@ gwendolin = register_fpmcu_variant(
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY
 # good reason to change it.
 assert_rw_fwid_DO_NOT_EDIT(project_name="gwendolin", addr=0x40144)
+
+# The address of RW_FWID is hardcoded in RO. You need to have REALLY
+# good reason to change it.
+assert_rw_fwid_DO_NOT_EDIT(project_name="helipilot", addr=0x40144)
+chojnik = register_fpmcu_variant(
+    project_name="chojnik",
+    zephyr_board="ft9001_eval",
+    register_func=register_binman_project,
+    variant_modules=["cmsis_6"],
+    variant_optional_modules=["focaltech", "focaltech_fp"],
+    variant_dts_overlays=[
+        here / "chojnik" / "chojnik.dts",
+    ],
+    variant_kconfig_files=[
+        here / "chojnik" / "prj.conf",
+    ],
+    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
+        here / "chojnik" / "dev_key.pem",
+    ),
+)
+assert_rw_fwid_DO_NOT_EDIT(project_name="chojnik", addr=0x82274)

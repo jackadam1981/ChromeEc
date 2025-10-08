@@ -651,9 +651,10 @@ extern char mock_jump_data[CONFIG_PLATFORM_EC_PRESERVED_END_OF_RAM_SIZE];
 #define _BINMAN_RO_PATH DT_PATH(binman, wp_ro)
 #define _BINMAN_RW_PATH DT_PATH(binman, ec_rw)
 
-#define CONFIG_EC_PROTECTED_STORAGE_OFF DT_PROP(_BINMAN_RO_PATH, offset)
+/* This assumes the output binary is loaded at the beginning of flash, which is not a case for FT */
+#define CONFIG_EC_PROTECTED_STORAGE_OFF (DT_PROP(_BINMAN_RO_PATH, offset) + 0x80000)
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE DT_PROP(_BINMAN_RO_PATH, size)
-#define CONFIG_EC_WRITABLE_STORAGE_OFF DT_PROP(_BINMAN_RW_PATH, offset)
+#define CONFIG_EC_WRITABLE_STORAGE_OFF (DT_PROP(_BINMAN_RW_PATH, offset) + 0x80000)
 #define CONFIG_EC_WRITABLE_STORAGE_SIZE DT_PROP(_BINMAN_RW_PATH, size)
 
 #undef CONFIG_EXTERNAL_STORAGE
