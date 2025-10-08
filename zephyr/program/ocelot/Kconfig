@@ -9,6 +9,13 @@ config BOARD_OCELOTRVP_ITE
 	  This board is for use with the Intel RVP using the
 	  MECC 2.1 connector.
 
+config BOARD_OCELOTRVP_IT82000
+	bool "Google Ocelot ITE (it82000) add-in card for the RVP"
+	help
+	  Build Google ITE it82000 based Ocelot add-in card.
+	  This board is for use with the Intel RVP using the
+	  MECC 2.1 connector.
+
 config BOARD_OCELOTRVP_NPCX
 	bool "Google Ocelot Nuvoton (npcx9m7f) add-in card for the RVP"
 	help

@@ -127,10 +127,6 @@
 		gpio_fsck_r: fsck_r {
 			gpios = <&gpiog 7 (GPIO_INPUT | GPIO_PULL_DOWN)>;
 		};
-		gpio_gpf2: gpf2 {
-			// signal name was manually overriden from "bga_pina10"
-			gpios = <&gpiof 2 (GPIO_INPUT)>;
-		};
 		gpio_gpg0: gpg0 {
 			gpios = <&gpiog 0 (GPIO_INPUT)>;
 		};
