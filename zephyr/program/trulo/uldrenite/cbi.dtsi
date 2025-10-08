@@ -165,5 +165,20 @@
 				value = <2>;
 			};
 		};
+		pmic-type {
+			enum-name = "PMIC_TYPE";
+			size = <1>;
+			uldrenite: uldrenite {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <0>;
+				default;
+			};
+			uldrino: uldrino {
+				compatible = "cros-ec,cbi-ssfc-value";
+				status = "okay";
+				value = <1>;
+			};
+		};
 	};
 };
