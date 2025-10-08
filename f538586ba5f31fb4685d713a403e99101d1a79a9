@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b2e23d_937a851b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-10-08T20:12:39Z",
+      "side": 1,
+      "message": "+2 with a question",
+      "revId": "f538586ba5f31fb4685d713a403e99101d1a79a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19993040_f464d52f",
+        "filename": "util/opentitantool.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-10-08T20:12:39Z",
+      "side": 1,
+      "message": "does it work this way, both captures the combined output in the log and sets status in case of a failure. basically, does `var_x \u003d $(some_command)` produces the status code of `some_command`, so that `||` after it works?\n\nor shall it be\n```\nlog\u003d$( \"${opentitan_root}/bazelisk.sh\" build \\\n             //sw/host/opentitantool:opentitantool  2\u003e\u00261 || status\u003d$? )\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "f538586ba5f31fb4685d713a403e99101d1a79a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
