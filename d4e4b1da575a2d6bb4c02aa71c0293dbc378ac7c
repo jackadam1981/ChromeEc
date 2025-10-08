@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41bad3b8_9c244701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-08T22:52:14Z",
+      "side": 1,
+      "message": "We talked about this today. Currently, the [`fpsensor_context`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor_state.h;l\u003d69-90;drc\u003d77953198a455d477ee3db5a97b5531671667863f) struct holds state about the sensor, including the current mode, so you could use that to store capture size or potentially store the last mode. I think technically you could use the current mode since we\u0027re not clearing the old mode bits right now, but we want to fix that: http://b/449014224. I guess we could re-use it for now and then do a second CL to implement http://b/449014224 if we have a TODO(http://b/449014224).\n\nWhen someone tries to [download a frame](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d456;drc\u003d4f79cf3e850f16ecfb53fcd1c296c608faa9aef0), we need to have checks to make sure they\u0027re requesting a size that is within the captured size. There are already a [`validate_fp_buffer_offset` check](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d481;drc\u003d4f79cf3e850f16ecfb53fcd1c296c608faa9aef0), but that\u0027s only checking the bounds of the total frame buffer. Now that we have different capture sizes, we may not be using all of that buffer and need to check that we\u0027re only returning data from within the subset of the buffer we used for capturing.",
+      "parentUuid": "a4456ab4_8b1dc853",
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcec3cd_e006d9b1",
         "filename": "util/ectool.cc",
         "patchSetId": 8
