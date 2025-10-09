@@ -139,7 +139,7 @@ et171 = register_fpmcu_variant(
     zephyr_board="egis_et171",
     register_func=register_binman_project,
     variant_modules=["hal_egis"],
-    variant_optional_modules=["egis"],
+    variant_optional_modules=["egis", "egis_module"],
     variant_dts_overlays=[
         here / "et171" / "et171.dts",
     ],

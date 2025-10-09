@@ -80,6 +80,7 @@ known_modules = {
     "focaltech_fp": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "focaltech"
     ),
+    "egis_module": third_party_module,
 }
 
 

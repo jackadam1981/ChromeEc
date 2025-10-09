@@ -4,6 +4,7 @@
  */
 
 #include <cros/egis/et171.dtsi>
+#include <egis/common_priv.dtsi>
 
 /delete-node/ &sram;
 
@@ -41,3 +42,15 @@
 	ahb-divide = <2>;
 	apb-divide = <3>;
 };
+
+&clock {
+	ahb-divide = <3>; /* ~66.666Mhz */
+	apb-divide = <1>; /* ~16.666Mhz */
+
+	status = "okay";
+};
+
+&uart0 {
+	/delete-property/ clock-frequency;
+};
+
