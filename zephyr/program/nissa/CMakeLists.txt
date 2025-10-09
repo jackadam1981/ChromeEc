@@ -269,6 +269,7 @@ endif()
 if(DEFINED CONFIG_BOARD_RIVEN)
 	zephyr_include_directories("riven/include")
 	zephyr_library_sources(
+			"riven/src/button.c"
 			"riven/src/form_factor.c"
 			"riven/src/led.c"
 			"riven/src/touch_panel.c"
