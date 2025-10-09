@@ -23,12 +23,16 @@ extern "C" {
 
 /* Configuration descriptor - see go/gsc-dice
  */
-#define CFG_DESCR_LABEL_COMP_NAME     CBOR_NINT32(-70002)
-#define CFG_DESCR_LABEL_RESETTABLE    CBOR_NINT32(-70004)
-#define CFG_DESCR_LABEL_SEC_VER	      CBOR_NINT32(-70005)
-#define CFG_DESCR_LABEL_APROV_STATUS  CBOR_NINT32(-71000)
-#define CFG_DESCR_LABEL_VBOOT_STATUS  CBOR_NINT32(-71001)
-#define CFG_DESCR_LABEL_AP_FW_VERSION CBOR_NINT32(-71002)
+#define CFG_DESCR_LABEL_COMP_NAME       CBOR_NINT32(-70002)
+#define CFG_DESCR_LABEL_RESETTABLE      CBOR_NINT32(-70004)
+#define CFG_DESCR_LABEL_SEC_VER	        CBOR_NINT32(-70005)
+#define CFG_DESCR_LABEL_APROV_STATUS    CBOR_NINT32(-71000)
+#define CFG_DESCR_LABEL_VBOOT_STATUS    CBOR_NINT32(-71001)
+#define CFG_DESCR_LABEL_AP_FW_VERSION   CBOR_NINT32(-71002)
+#define CFG_DESCR_LABEL_DICE_CHAIN_ID   CBOR_NINT32(-71003)
+#define CFG_DESCR_LABEL_GSC_TYPE        CBOR_NINT32(-71004)
+#define CFG_DESCR_LABEL_BOARD_ID_FLAGS  CBOR_NINT32(-71005)
+#define CFG_DESCR_LABEL_BOARD_ID_TYPE   CBOR_NINT32(-71006)
 
 #define CFG_DESCR_COMP_NAME_VALUE_LEN 10 /* "CrOS AP FW" */
 #define CFG_DESCR_COMP_NAME_LEN	      (1 + CFG_DESCR_COMP_NAME_VALUE_LEN)
@@ -39,7 +43,7 @@ extern "C" {
 	}
 
 struct cfg_descr_s {
-	/* Map header: 6 entries */
+	/* Map header: 6 (stage1) or 10 (stage2) entries */
 	uint8_t map_hdr;
 	/* 1. Comp name: nint(-70002, 4bytes) => tstr("CrOS AP FW") */
 	uint8_t comp_name_label[CBOR_NINT32_LEN];
@@ -59,6 +63,20 @@ struct cfg_descr_s {
 	/* 6. AP FW version: nint(-71002, 4bytes) => bstr(PCR10, 32bytes) */
 	uint8_t ap_fw_version_label[CBOR_NINT32_LEN];
 	struct cbor_bstr32_s ap_fw_version;
+#if BOOT_PARAM_CFG_DESCR_STAGE == 2
+	/* 7. DICE chain ID: nint(-71003, 4bytes) => uint(chain_id, 0byte) */
+	uint8_t dice_chain_id_label[CBOR_NINT32_LEN];
+	struct cbor_uint8_s dice_chain_id;
+	/* 8. GSC type: nint(-71004, 4bytes) => uint(gsc_type, 0byte) */
+	uint8_t gsc_type_label[CBOR_NINT32_LEN];
+	struct cbor_uint8_s gsc_type;
+	/* 9. BoardID flags: nint(-71005, 4bytes) => uint(bid_flags, 4bytes) */
+	uint8_t board_id_flags_label[CBOR_NINT32_LEN];
+	struct cbor_uint32_s board_id_flags;
+	/* 10. BoardID type: nint(-71006, 4bytes) => uint(bid_type, 4bytes) */
+	uint8_t board_id_type_label[CBOR_NINT32_LEN];
+	struct cbor_uint32_s board_id_type;
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE == 2 */
 };
 
 #define CFG_DESCR_LEN sizeof(struct cfg_descr_s)

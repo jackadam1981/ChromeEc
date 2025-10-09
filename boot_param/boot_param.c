@@ -9,6 +9,10 @@
 #include "boot_param.h"
 #include "boot_param_platform.h"
 
+#if BOOT_PARAM_VERSION == 1
+#include "res_mem.h"
+#endif /* BOOT_PARAM_VERSION */
+
 /* Common structure to build Sig_structure or DICE Handover structure
  */
 
@@ -45,26 +49,48 @@ _Static_assert(
 	"dice_handover_s != dice_handover_hdr_s + DICE_CHAIN_SIZE"
 );
 
+#if BOOT_PARAM_VERSION == 1
+/* BootParam = {
+ *   1  : uint,               ; structure version (1)
+ *   4  : AndroidDiceHandoverBstr,
+ *   5  : ReservedMemBstr,
+ * }
+ */
+
+#else /* BOOT_PARAM_VERSION == 0 */
 /* BootParam = {
  *   1  : uint,               ; structure version (0)
  *   2  : GSCBootParam,
  *   3  : AndroidDiceHandover,
  * }
  */
-#define BOOT_PARAM_VERSION 0
+#endif /* BOOT_PARAM_VERSION */
+
 struct boot_param_s {
 	/* Map header: 3 entries */
 	uint8_t map_hdr;
 	/* 1. Version: uint(1, 0bytes) => uint(BOOT_PARAM_VERSION, 0bytes) */
 	uint8_t version_label;
 	uint8_t version;
+#if BOOT_PARAM_VERSION == 1
+	/* 2. AndroidDiceHandover: uint(4, 0bytes) => AndroidDiceHandoverBstr */
+	uint8_t dice_handover_bstr_label;
+	uint8_t dice_handover_bstr_hdr[3];
+	struct dice_handover_s dice_handover;
+	/* 3. ReservedMem: uint(5, 0bytes) => ReservedMemBstr */
+	uint8_t res_mem_bstr_label;
+	uint8_t res_mem_bstr_hdr[3];
+	struct res_mem_s res_mem;
+#else /* BOOT_PARAM_VERSION == 0 */
 	/* 2. GSCBootParam: uint(2, 0bytes) => GSCBootParam */
 	uint8_t gsc_boot_param_label;
 	struct gsc_boot_param_s gsc_boot_param;
 	/* 3. AndroidDiceHandover: uint(3, 0bytes) => AndroidDiceHandover */
 	uint8_t dice_handover_label;
 	struct dice_handover_s dice_handover;
+#endif /* BOOT_PARAM_VERSION */
 };
+
 _Static_assert(
 	sizeof(struct boot_param_s) == BOOT_PARAM_SIZE,
 	"boot_param_s != BOOT_PARAM_SIZE"
@@ -146,8 +172,10 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 			CFG_DESCR_BSTR_HDR,
 			/* struct cfg_descr_s */
 			{
-				/* Map header: 6 entries */
-				CBOR_HDR1(CBOR_MAJOR_MAP, 6),
+				/* Map header: */
+				/* 6 (stage1) or 10 (stage2) entries */
+				CBOR_HDR1(CBOR_MAJOR_MAP,
+					BOOT_PARAM_CFG_DESCR_MAP_COUNT),
 				/* 1. Comp name: nint(-70002, 4bytes) =>
 				 * tstr("CrOS AP FW")
 				 */
@@ -178,6 +206,28 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 				/* bstr(PCR10, 32bytes) */
 				CFG_DESCR_LABEL_AP_FW_VERSION,
 				CBOR_BSTR32_EMPTY, /* VARIABLE */
+#if BOOT_PARAM_CFG_DESCR_STAGE == 2
+				/* 7. DICE chain ID: */
+				/* nint(-71003, 4bytes) => */
+				/* uint(chain_id, 0byte) */
+				CFG_DESCR_LABEL_DICE_CHAIN_ID,
+				CBOR_UINT8_ZERO, /* VARIABLE */
+				/* 8. GSC type: */
+				/* nint(-71004, 4bytes) => */
+				/* uint(gsc_type, 0byte) */
+				CFG_DESCR_LABEL_GSC_TYPE,
+				CBOR_UINT8_ZERO, /* VARIABLE */
+				/* 9. BoardID flags: */
+				/* nint(-71005, 4bytes) => */
+				/* uint(bid_flags, 4bytes) */
+				CFG_DESCR_LABEL_BOARD_ID_FLAGS,
+				CBOR_UINT32_ZERO, /* VARIABLE */
+				/* 10. BoardID type: */
+				/* nint(-71006, 4bytes) => */
+				/* uint(bid_type, 4bytes) */
+				CFG_DESCR_LABEL_BOARD_ID_TYPE,
+				CBOR_UINT32_ZERO, /* VARIABLE */
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE == 2 */
 			},
 		},
 		/* 6. Auth Hash: nint(-4670549, 4bytes) => bstr(32bytes) */
@@ -695,12 +745,42 @@ static inline bool fill_cdi_details_with_key(
 	return true;
 }
 
+/* Updates hidden_digest for the requested chain ID.
+ * Assumes that ctx->cfg is already filled.
+ */
+static inline bool set_hidden_digest_for_chain(
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
+)
+{
+	uint8_t bytes[DIGEST_BYTES + 1];
+	const struct slice_ref_s slice = { DIGEST_BYTES + 1, bytes };
+
+	/* For AP chain keep the hidden digest as-is to avoid
+	 * changing sealing CDIs for already used devices.
+	 */
+	if (chain_id == BOOT_PARAM_DICE_CHAIN_AP)
+		return true;
+
+	/* For all other chains:
+	 * hidden_digest = sha256(hidden_digest | chain_id)
+	 */
+	__platform_memcpy(bytes, ctx->cfg.hidden_digest, DIGEST_BYTES);
+	bytes[DIGEST_BYTES] = chain_id;
+
+	return __platform_sha256(slice, ctx->cfg.hidden_digest);
+}
+
 /* Fills CDI_attest pubkey, CDI_ID in the CDI certificate.
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline bool fill_cdi_details(
 	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	const void *cdi_key;
@@ -709,6 +789,10 @@ static inline bool fill_cdi_details(
 
 	__platform_memcpy(hdr, &kDiceHandoverHdrTemplate,
 			  sizeof(struct dice_handover_hdr_s));
+	if (!set_hidden_digest_for_chain(ctx, chain_id)) {
+		__platform_log_str("Failed to set chain digest");
+		return false;
+	}
 	if (!calc_cdi_attest(ctx, hdr->cdi_attest.value)) {
 		__platform_log_str("Failed to calc CDI_attest");
 		return false;
@@ -806,7 +890,10 @@ static inline void set_cbor_u32(
 
 /* Fills CfgDescr, CfgDescr digest and boot mode in CDI certificate */
 static inline bool fill_config_details(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	struct cwt_claims_bstr_s *payload = &ctx->output.dice_handover.payload;
@@ -826,6 +913,12 @@ static inline bool fill_config_details(
 			  DIGEST_BYTES);
 	__platform_memcpy(cfg_descr->ap_fw_version.value, ctx->cfg.pcr10,
 			  DIGEST_BYTES);
+#if BOOT_PARAM_CFG_DESCR_STAGE == 2
+	cfg_descr->dice_chain_id.value = chain_id;
+	cfg_descr->gsc_type.value = ctx->cfg.gsc_type;
+	set_cbor_u32(ctx->cfg.board_id_flags, &cfg_descr->board_id_flags);
+	set_cbor_u32(ctx->cfg.board_id_type, &cfg_descr->board_id_type);
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE */
 
 	/* Calculate Cfg Descriptor digest */
 	if (!__platform_sha256(cfg_descr_slice, cwt_claims->cfg_hash.value)) {
@@ -848,7 +941,10 @@ static inline bool fill_config_details(
 /* Fills DICE handover structure in struct dice_ctx_s. */
 /* Assumes ctx.cfg is already filled */
 static inline bool generate_dice_handover(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	/* 1. Fill device configuration details in CDI certificate: CfgDescr and
@@ -860,14 +956,80 @@ static inline bool generate_dice_handover(
 	 * be filled already.
 	 */
 
-	return fill_config_details(ctx) &&
-		fill_cdi_details(ctx) &&
+	return fill_config_details(ctx, chain_id) &&
+		fill_cdi_details(ctx, chain_id) &&
 		fill_uds_details(ctx);
 }
 
+#if BOOT_PARAM_VERSION == 1
+/* Fills buffer with LE32 value. */
+static inline void le32_set(
+	uint8_t buffer[4],
+	uint32_t value
+)
+{
+	buffer[0] = (uint8_t)((value) & 0x000000FF);
+	buffer[1] = (uint8_t)(((value) & 0x0000FF00) >> 8);
+	buffer[2] = (uint8_t)(((value) & 0x00FF0000) >> 16);
+	buffer[3] = (uint8_t)(((value) & 0xFF000000) >> 24);
+}
+
+/* Fills ReservedMem. */
+static inline bool fill_res_mem(
+	/* [IN/OUT] ReservedMem */
+	struct res_mem_s *res_mem,
+	/* [IN] chain id */
+	uint8_t chain_id
+)
+{
+	uint32_t seed_version;
+
+	__platform_memcpy(&res_mem->hdrs, &res_mem_hdrs,
+			  sizeof(struct res_mem_hdrs_s));
+	set_res_mem_string(res_mem, desktop_trusty_name);
+	set_res_mem_string(res_mem, early_entropy_compat);
+	set_res_mem_string(res_mem, session_key_seed_compat);
+	set_res_mem_string(res_mem, auth_token_key_seed_compat);
+	set_res_mem_string(res_mem, versioned_seed_compat);
+
+	if (!__platform_get_gsc_boot_param(
+			res_mem->blobs.early_entropy,
+			res_mem->blobs.session_key_seed,
+			res_mem->blobs.auth_token_key_seed)) {
+		__platform_log_str("Failed to get GSC boot param");
+		return false;
+	}
+	if (!__platform_get_cur_versioned_seed(
+			res_mem->blobs.versioned_seed.seed,
+			&seed_version)) {
+		__platform_log_str("Failed to get versioned seed");
+		return false;
+	}
+	le32_set(res_mem->blobs.versioned_seed.version, seed_version);
+	return true;
+}
+
+/* Fills the header of a BSTR with 2-byte length field. */
+static inline void set_cbor_bstr_hdr16(
+	/* [OUT] header to be filled */
+	uint8_t hdr[3],
+	/* [IN] size of bstr value */
+	uint16_t size
+)
+{
+	hdr[0] = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES2);
+	hdr[1] = (uint8_t)(((size) & 0xFF00) >> 8);
+	hdr[2] = (uint8_t)((size) & 0x00FF);
+}
+
+#else /* BOOT_PARAM_VERSION == 0 */
+
 /* Fills GSCBootParam. */
 static inline bool fill_gsc_boot_param(
-	struct gsc_boot_param_s *gsc_boot_param /* [IN/OUT] GSCBootParam */
+	/* [IN/OUT] GSCBootParam */
+	struct gsc_boot_param_s *gsc_boot_param,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	/* GSCBootParam: Map header: 3 entries */
@@ -907,10 +1069,15 @@ static inline bool fill_gsc_boot_param(
 	return true;
 }
 
+#endif /* BOOT_PARAM_VERSION */
+
 /* Fills GSCBootParam and BootParam header in struct dice_ctx_s. */
 /* Doesn't touch DICE handover structure */
 static inline bool fill_boot_param(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
+	/* [IN/OUT] dice context */
+	struct dice_ctx_s *ctx,
+	/* [IN] chain id */
+	uint8_t chain_id
 )
 {
 	/* BootParam: Map header: 3 entries */
@@ -920,7 +1087,28 @@ static inline bool fill_boot_param(
 	 * uint(1, 0bytes) => uint(BOOT_PARAM_VERSION, 0bytes)
 	 */
 	ctx->output.version_label = CBOR_UINT0(1);
-	ctx->output.version = CBOR_UINT0(0);
+	ctx->output.version = CBOR_UINT0(BOOT_PARAM_VERSION);
+
+#if BOOT_PARAM_VERSION == 1
+	/* BootParam entry 2: AndroidDiceHandover:
+	 * uint(4, 0bytes) => AndroidDiceHandoverBstr
+	 * (value not touched in this func)
+	 */
+	ctx->output.dice_handover_bstr_label = CBOR_UINT0(4);
+	set_cbor_bstr_hdr16(ctx->output.dice_handover_bstr_hdr,
+			    sizeof(struct dice_handover_s));
+
+
+	/* BootParam entry 3: ReservedMem:
+	 * uint(5, 0bytes) => ReservedMemBstr
+	 * (value filled below in this func)
+	 */
+	ctx->output.res_mem_bstr_label = CBOR_UINT0(5);
+	set_cbor_bstr_hdr16(ctx->output.res_mem_bstr_hdr,
+			    sizeof(struct res_mem_s));
+
+	return fill_res_mem(&ctx->output.res_mem, chain_id);
+#else /* BOOT_PARAM_VERSION == 0 */
 
 	/* BootParam entry 2: GSCBootParam:
 	 * uint(2, 0bytes) => GSCBootParam (filled in fill_gsc_boot_param)
@@ -932,17 +1120,22 @@ static inline bool fill_boot_param(
 	 */
 	ctx->output.dice_handover_label = CBOR_UINT0(3);
 
-	return fill_gsc_boot_param(&ctx->output.gsc_boot_param);
+	return fill_gsc_boot_param(&ctx->output.gsc_boot_param, chain_id);
+#endif /* BOOT_PARAM_VERSION */
 }
 
-/* Get (part of) BootParam structure: [offset .. offset + size). */
-size_t get_boot_param_bytes(
+/* Get (part of) BootParam structure for the specific chain:
+ * [offset .. offset + size).
+ */
+size_t get_boot_param_bytes_for_chain(
 	/* [OUT] destination buffer to fill */
 	uint8_t *dest,
 	/* [IN] starting offset in the BootParam struct */
 	size_t offset,
 	/* [IN] size of the BootParam struct to copy */
-	size_t size
+	size_t size,
+	/* [IN] chain ID */
+	uint8_t chain_id
 )
 {
 	struct dice_ctx_s ctx;
@@ -957,10 +1150,10 @@ size_t get_boot_param_bytes(
 		__platform_log_str("Failed to get DICE config");
 		return 0;
 	}
-	if (!generate_dice_handover(&ctx))
+	if (!generate_dice_handover(&ctx, chain_id))
 		return 0;
 
-	if (!fill_boot_param(&ctx))
+	if (!fill_boot_param(&ctx, chain_id))
 		return 0;
 
 	__platform_memcpy(dest, src + offset, size);
@@ -968,14 +1161,18 @@ size_t get_boot_param_bytes(
 	return size;
 }
 
-/* Get (part of) DiceChain structure: [offset .. offset + size) */
-size_t get_dice_chain_bytes(
+/* Get (part of) DiceChain structure for the specific chain:
+ * [offset .. offset + size).
+ */
+size_t get_dice_chain_bytes_for_chain(
 	/* [OUT] destination buffer to fill */
 	uint8_t *dest,
 	/* [IN] starting offset in the DiceChain struct */
 	size_t offset,
 	/* [IN] size of the data to copy */
-	size_t size
+	size_t size,
+	/* [IN] chain ID */
+	uint8_t chain_id
 )
 {
 	struct dice_ctx_s ctx;
@@ -990,10 +1187,59 @@ size_t get_dice_chain_bytes(
 		__platform_log_str("Failed to get DICE config");
 		return 0;
 	}
-	if (!generate_dice_handover(&ctx))
+	if (!generate_dice_handover(&ctx, chain_id))
 		return 0;
 
 	__platform_memcpy(dest, src + offset, size);
 	__platform_memset(&ctx, 0, sizeof(struct dice_ctx_s)); /* zeroize */
 	return size;
+}
+
+/* Sign data with attestation CDI key for the specific chain.
+ */
+bool sign_with_cdi_key(
+	/* [IN] chain ID */
+	uint8_t chain_id,
+	/* [IN] data to sign */
+	const struct slice_ref_s data_to_sign,
+	/* [OUT] resulting signature */
+	uint8_t signature[ECDSA_SIG_BYTES]
+)
+{
+	struct dice_ctx_s ctx;
+	uint8_t cdi[DIGEST_BYTES];
+	const void *cdi_key;
+	bool result;
+
+	if (!__platform_get_dice_config(&ctx.cfg)) {
+		__platform_log_str("Failed to get DICE config");
+		return false;
+	}
+	if (!fill_config_details(&ctx, chain_id)) {
+		__platform_log_str("Failed to fill config details");
+		return false;
+	}
+
+	if (!set_hidden_digest_for_chain(&ctx, chain_id)) {
+		__platform_log_str("Failed to set chain digest");
+		return false;
+	}
+	if (!calc_cdi_attest(&ctx, cdi)) {
+		__platform_log_str("Failed to calc CDI_attest");
+		return false;
+	}
+	if (!generate_cdi_key(cdi, &cdi_key)) {
+		__platform_log_str("Failed to generate CDI key");
+		return false;
+	}
+
+	result = __platform_ecdsa_p256_sign(cdi_key, data_to_sign,
+					    signature);
+	if (!result) {
+		__platform_log_str("Failed to sign with CDI key");
+		return false;
+	}
+	__platform_ecdsa_p256_free(cdi_key);
+
+	return result;
 }
