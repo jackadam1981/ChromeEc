@@ -6,6 +6,7 @@
 #include <boot_param_platform.h>
 #include <nvmem_vars.h>
 
+#include "board_id.h"
 #include "boot_param_platform_cr50.h"
 #include "console.h"
 #include "internal.h"
@@ -209,15 +210,46 @@ static inline void generate_name_hash(struct sha256_digest *digest)
 	 */
 }
 
-/* Derive UDS from key ladder.
+/* Derive a secret from key ladder.
  * We can't use DCRYPTO_appkey_init/derive since they are in fips module,
  * and we'd need to add the 7th const to dcrypto_app_names[] in app_keys.
  * Instead, copy the simplified DCRYPTO_appkey_init/derive logic here and
  * re-use PINWEAVER app_id for this case.
  */
+static inline bool derive_secret(
+	/* [IN] derivation input */
+	const uint32_t input[8],
+	/* [OUT] secret */
+	uint8_t secret[DIGEST_BYTES]
+)
+{
+	const enum dcrypto_appid app_id = PINWEAVER;
+	uint32_t secret_buf[8]; /* intermediate buffer to ensure alignment */
+	struct sha256_digest digest;
+	int res;
+
+	generate_name_hash(&digest);
+
+	if (!dcrypto_ladder_compute_usr(app_id, digest.b32)) {
+		verbose_log("dcrypto_ladder_compute_usr failed");
+		return false;
+	}
+
+	res = dcrypto_ladder_derive(app_id, digest.b32, input, secret_buf);
+	DCRYPTO_appkey_finish();
+	if (!res) {
+		verbose_log("dcrypto_ladder_derive failed");
+		return false;
+	}
+	memcpy(secret, secret_buf, DIGEST_BYTES);
+	memset(secret_buf, 0, DIGEST_BYTES); /* zeroize temp buf */
+	return true;
+}
+
+/* Derive UDS from key ladder.
+ */
 static inline bool derive_uds(uint8_t uds[DIGEST_BYTES])
 {
-	const enum dcrypto_appid uds_app_id = PINWEAVER;
 	const uint32_t uds_input[8] = {
 		0xa5a5a5a5,
 		0x5a5a5a5a,
@@ -228,26 +260,33 @@ static inline bool derive_uds(uint8_t uds[DIGEST_BYTES])
 		0xa5a5a5a5,
 		0x5a5a5a5a,
 	};
-	uint32_t uds_buf[8]; /* intermediate buffer to ensure alignment */
-	struct sha256_digest digest;
-	int res;
 
-	generate_name_hash(&digest);
+	return derive_secret(uds_input, uds);
+}
 
-	if (!dcrypto_ladder_compute_usr(uds_app_id, digest.b32)) {
-		verbose_log("dcrypto_ladder_compute_usr failed");
-		return false;
-	}
+/* Derive versioned seed from key ladder.
+ */
+BUILD_ASSERT(DIGEST_BYTES == KEY_SEED_BYTES);
+static inline bool derive_versioned_seed(
+	/* [IN] seed version */
+	uint32_t version,
+	/* [OUT] seed */
+	uint8_t seed[KEY_SEED_BYTES]
+)
+{
+	uint32_t seed_input[8] = {
+		0x26262626,
+		0x62626262,
+		0x26262626,
+		0x62626262,
+		0x26262626,
+		0x62626262,
+		0x26262626,
+		0x00000000,
+	};
+	seed_input[7] = version;
 
-	res = dcrypto_ladder_derive(uds_app_id, digest.b32, uds_input, uds_buf);
-	DCRYPTO_appkey_finish();
-	if (!res) {
-		verbose_log("dcrypto_ladder_derive failed");
-		return false;
-	}
-	memcpy(uds, uds_buf, DIGEST_BYTES);
-	memset(uds_buf, 0, DIGEST_BYTES); /* zeroize temp buf */
-	return true;
+	return derive_secret(seed_input, seed);
 }
 
 /* Get data that changes with owner clear */
@@ -287,6 +326,8 @@ bool __platform_get_dice_config(
 	struct dice_config_s *cfg
 )
 {
+	struct board_id bid;
+
 	/* Just in case, pre-set all fields to zeroes.
 	 * Future-proofing in case we add new fields to dice_config_s
 	 * w/o updating platform code in cr50.
@@ -319,6 +360,16 @@ bool __platform_get_dice_config(
 		verbose_log("getting pcr10 failed");
 		return false;
 	}
+
+	cfg->gsc_type = BOOT_PARAM_GSC_TYPE_H1B3X;
+	if (read_board_id(&bid) == EC_SUCCESS) {
+		cfg->board_id_flags = bid.flags;
+		cfg->board_id_type = bid.type;
+	} else {
+		cfg->board_id_flags = 0;
+		cfg->board_id_type = 0;
+	}
+
 
 	return true;
 }
@@ -394,6 +445,21 @@ bool __platform_get_gsc_boot_param(
 	       KEY_SEED_BYTES);
 
 	return true;
+}
+
+/* Get current versioned seed */
+bool __platform_get_cur_versioned_seed(
+	/* [OUT] seed */
+	uint8_t seed[KEY_SEED_BYTES],
+	/* [OUT] version */
+	uint32_t *version
+)
+{
+	/* Hard-code initial version */
+	const uint32_t cur_seed_version = 2;
+
+	*version = cur_seed_version;
+	return derive_versioned_seed(cur_seed_version, seed);
 }
 
 /*

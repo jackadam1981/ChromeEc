@@ -13,16 +13,21 @@ gets invoked by chromite/api/controller/firmware.py.
 import argparse
 import multiprocessing
 import os
+import re
 import subprocess
 import sys
 
 # pylint: disable=import-error
 from google.protobuf import json_format
 
-# TODO(crbug/1181505): Code outside of chromite should not be importing from
-# chromite.api.gen.  Import json_format after that so we get the matching one.
-from chromite.api.gen.chromite.api import firmware_pb2
+# Find chromite!  Assume this code only runs inside the SDK.
+sys.path.insert(0, "/mnt/host/source")
 
+# pylint: disable=wrong-import-position
+from chromite.api.gen_sdk.chromite.api import firmware_pb2
+
+DIR = os.path.dirname(os.path.abspath(__file__))
+BUILD_DIR = os.path.join(DIR, "build")
 
 # Set to True to publish goldeneye artifacts with new firmware builders.
 #   - False on TOT.
@@ -97,21 +102,10 @@ def init_toolchain():
 
 
 def build(opts):
-    """Builds all EC firmware targets
-
-    Note that when we are building unit tests for code coverage, we don't
-    need this step. It builds EC **firmware** targets, but unit tests with
-    code coverage are all host-based. So if the --code-coverage flag is set,
-    we don't need to build the firmware targets and we can return without
-    doing anything but creating the metrics file and giving an informational
-    message.
-    """
-    # TODO(b/169178847): Add appropriate metric information
+    """Builds all Cr50 firmware targets"""
     metrics = firmware_pb2.FwBuildMetricList()
     env = os.environ.copy()
     env.update(init_toolchain())
-    with open(opts.metrics, "w") as f:
-        f.write(json_format.MessageToJson(metrics))
 
     if opts.code_coverage:
         print(
@@ -123,6 +117,8 @@ def build(opts):
     cmd = ["make", "BOARD=cr50", "all", "dis", "-j{}".format(opts.cpus)]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+    add_size_metrics(metrics, "ro-prod", f"{BUILD_DIR}/cr50/RO/ec.RO.map")
+    add_size_metrics(metrics, "rw-prod", f"{BUILD_DIR}/cr50/RW/ec.RW.map")
     cmd = [
         "make",
         "out=build/dbg_test",
@@ -134,6 +130,8 @@ def build(opts):
     ]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+    add_size_metrics(metrics, "ro-dev", f"{BUILD_DIR}/dbg_test/RO/ec.RO.map")
+    add_size_metrics(metrics, "rw-dev", f"{BUILD_DIR}/dbg_test/RW/ec.RW.map")
     cmd = [
         "make",
         "out=build/crypto_test",
@@ -157,6 +155,32 @@ def build(opts):
     ]
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+
+    with open(opts.metrics, "w") as f:
+        f.write(json_format.MessageToJson(metrics))
+
+
+def add_size_metrics(metrics, platform_name, mapfile):
+    item = metrics.value.add()
+    item.target_name = "cr50"
+    item.platform_name = platform_name
+    mapfile = open(mapfile).read()
+    image_size = re.search(r"(0x[0-9a-f]+) +__image_size", mapfile)
+    ram_size = re.search(r"IRAM +0x[0-9a-f]+ +(0x[0-9a-f]+) ", mapfile)
+    ram_free = re.search(r"(0x[0-9a-f]+) +__ram_free", mapfile)
+    if image_size:
+        image_size = int(image_size.group(1), 16)
+        fw_section = item.fw_section.add()
+        fw_section.region = "total-flash"
+        fw_section.used = image_size
+        fw_section.track_on_gerrit = True
+    if ram_size and ram_free:
+        ram_size = int(ram_size.group(1), 16)
+        ram_free = int(ram_free.group(1), 16)
+        fw_section = item.fw_section.add()
+        fw_section.region = "total-ram"
+        fw_section.used = ram_size - ram_free
+        fw_section.track_on_gerrit = True
 
 
 def bundle(opts):
@@ -264,7 +288,6 @@ def bundle_firmware(opts):
 
 def test(opts):
     """Runs all of the unit tests for EC firmware"""
-    # TODO(b/169178847): Add appropriate metric information
     metrics = firmware_pb2.FwTestMetricList()
     env = os.environ.copy()
     env.update(init_toolchain())
