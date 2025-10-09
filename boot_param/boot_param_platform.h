@@ -65,6 +65,14 @@ bool __platform_get_gsc_boot_param(
 	uint8_t auth_token_key_seed[KEY_SEED_BYTES]
 );
 
+/* Get current versioned seed */
+bool __platform_get_cur_versioned_seed(
+	/* [OUT] seed */
+	uint8_t seed[KEY_SEED_BYTES],
+	/* [OUT] version */
+	uint32_t *version
+);
+
 /* Generate ECDSA P-256 key using HMAC-DRBG initialized by the seed */
 bool __platform_ecdsa_p256_keygen_hmac_drbg(
 	/* [IN] key seed */
