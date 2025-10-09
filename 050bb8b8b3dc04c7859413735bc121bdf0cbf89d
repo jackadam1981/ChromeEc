@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e15663d_890751bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-09T23:09:38Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ebff52b3_9afd2dd3",
+      "revId": "050bb8b8b3dc04c7859413735bc121bdf0cbf89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b46c1c0c_472906d7",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-09T18:11:49Z",
       "side": 1,
       "message": "Isn\u0027t it good to limit the individual command access based on config, so that they are made available only when required?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 1
+      },
+      "revId": "050bb8b8b3dc04c7859413735bc121bdf0cbf89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54568c27_87ee96fc",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-09T23:09:38Z",
+      "side": 1,
+      "message": "I do not see much to limit, we could just enable by default reading registers commands:\n- `set_page`\n- `dump_regs`\n- `cfg_mode`\n\nAnd restrict all writing commands:\n- `cfg_mode`\n- `store_cfg`\n- `set_regs`",
+      "parentUuid": "b46c1c0c_472906d7",
       "range": {
         "startLine": 236,
         "startChar": 0,
