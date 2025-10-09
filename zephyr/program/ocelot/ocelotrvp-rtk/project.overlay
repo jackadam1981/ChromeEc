@@ -8,3 +8,25 @@
 #include <cros/integrated_fwid.dtsi>
 
 #include "gpio.dtsi"
+#include "power_signals.dtsi"
+
+&espi0 {
+	status = "okay";
+};
+
+/ {
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_acok>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+		int_power_button: power_button {
+			irq-pin = <&gpio_pwrbtn>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_button_interrupt";
+		};
+	};
+};
