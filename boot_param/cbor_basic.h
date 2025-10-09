@@ -142,6 +142,18 @@ struct cbor_bstr64_s {
 		}                               \
 	}
 
+/* UINT8 */
+struct cbor_uint8_s {
+	uint8_t cbor_hdr;
+	uint8_t value;
+};
+#define CBOR_UINT8_HDR CBOR_HDR1(CBOR_MAJOR_UINT, CBOR_BYTES1)
+#define CBOR_UINT8_ZERO            \
+	{                          \
+		CBOR_UINT8_HDR,    \
+		0                  \
+	}
+
 /* UINT32 */
 struct cbor_uint32_s {
 	uint8_t cbor_hdr;

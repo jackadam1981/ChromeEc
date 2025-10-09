@@ -599,6 +599,9 @@ static const struct option_container cmd_line_options[] = {
 	  "Effective with -b, -f, -i, -J, -r, and -O." },
 	{ { "tpm_mode", optional_argument, NULL, 'm' },
 	  "[enable|disable]%Change or query tpm_mode" },
+	{ { "device_ids", required_argument, NULL, 2 },
+	  "Get the device IDs "
+	  "[get_scratch|get_info|commit|delete_scratch|[id_type:value]" },
 	{ { "serial", required_argument, NULL, 'n' }, "GSC USB serial number" },
 	{ { "openbox_rma", required_argument, NULL, 'O' },
 	  "<desc_file>%Verify other device's RO integrity using information "
@@ -1097,7 +1100,7 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 
 	/* Now get the reply. */
 	r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80, (void *)&reply,
-				 sizeof(reply), &actual, 1000);
+				 sizeof(reply), &actual, 10000);
 	if (r) {
 		if (r == -7) {
 			fprintf(stderr, "Timeout!\n");
@@ -1706,6 +1709,10 @@ static void get_version(struct transfer_descriptor *td, bool leave_pending)
 	if (td->ep_type == usb_xfer) {
 		struct update_pdu updu;
 
+		/* First clear any stale buffered incoming data */
+		usb_clear_in_buffer(&td->uep);
+
+		/* Then send first update packet to get version info */
 		memset(&updu, 0, sizeof(updu));
 		updu.block_size = htobe32(sizeof(updu));
 		do_xfer(&td->uep, &updu, sizeof(updu), &start_resp,
@@ -3882,15 +3889,17 @@ static bool get_bid(struct transfer_descriptor *td, struct board_id *bid)
 	int rv;
 	size_t response_size = sizeof(*bid);
 
-	rv = send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid,
-				 response_size, bid, &response_size);
+	rv = send_vendor_command(td, VENDOR_CC_GET_BOARD_ID, bid, response_size,
+				 bid, &response_size);
 	if (rv) {
 		/* b/424475170 H1 will return NO_SUCH_COMMAND if there's */
 		/* currently a BID mismatch. */
 		if (gsc_dev == GSC_DEVICE_H1 &&
 		    rv == VENDOR_RC_NO_SUCH_COMMAND) {
-			fprintf(stderr, "error reading board id %d: H1 no "
-					"such VC\n", rv);
+			fprintf(stderr,
+				"error reading board id %d: H1 no "
+				"such VC\n",
+				rv);
 			return false;
 		}
 		fprintf(stderr, "Error %d reading board id\n", rv);
@@ -4860,6 +4869,250 @@ static int process_ti50_get_metrics(struct transfer_descriptor *td,
 	return 0;
 }
 
+static void print_ti50_device_id_field(const char *name,
+				       struct ti50_device_ids_field id,
+				       bool show_machine_output)
+{
+	if (show_machine_output) {
+		printf("FIELD_%s_SIZE=%u\n", name, id.size);
+		printf("FIELD_%s=", name);
+	} else {
+		printf("%12s (%3u): ", name, id.size);
+	}
+	if (id.size == 0xff) {
+		printf("__unset__\n");
+		return;
+	}
+	if (id.size > TI50_DEVICE_ID_MAX_STR_LEN) {
+		printf("invalid\n");
+		return;
+	}
+	printf("%.*s\n", id.size, id.value);
+}
+
+static void print_ti50_device_id_header(struct ti50_device_ids_response *ids,
+					bool show_machine_output)
+{
+	const char *valid = ids->header.status == 0 ? "Y" : "N";
+	const char *finalized = ids->header.storage_type == STORAGE_INFO ? "Y" :
+									   "N";
+	uint16_t size = ids->header.data_size[0] |
+			(ids->header.data_size[1] << 8);
+
+	if (ids->header.version == TI50_DEVICE_IDS_VERSION_UNSET) {
+		if (show_machine_output) {
+			printf("STATUS=unset\n");
+			printf("VALID=N\n");
+		} else {
+			printf("Unset\n");
+		}
+	}
+
+	if (show_machine_output) {
+		print_machine_output("VERSION", "%u", ids->header.version);
+		print_machine_output("STATUS", "%u", ids->header.status);
+		print_machine_output("VALID", "%s", valid);
+		print_machine_output("FINALIZED", "%s", finalized);
+		print_machine_output("STORAGE_TYPE", "%u",
+				     ids->header.storage_type);
+		print_machine_output("INFO_STORAGE", "%s",
+				     ids->header.storage_type == 2 ? "Y" : "N");
+		print_machine_output("SCRATCH_STORAGE", "%s",
+				     ids->header.storage_type == 1 ? "Y" : "N");
+		print_machine_output("FIELD_COUNT", "%u",
+				     ids->header.field_count);
+		print_machine_output("TOTAL_FIELDS_SIZE", "%u", size);
+	} else {
+		printf("Version: %u\n", ids->header.version);
+		printf("Status: %u\n", ids->header.status);
+		printf("Valid: %s\n", valid);
+		printf("Finalized: %s\n", finalized);
+		printf("Storage Type: %u\n", ids->header.storage_type);
+		printf("Field Count: %u\n", ids->header.field_count);
+		printf("Total Fields Size: %u\n", size);
+	}
+}
+
+const struct ti50_device_id_field_info ti50_device_id_fields[] = {
+	{ "BRAND", DEVICE_ID_BRAND },
+	{ "DEVICE", DEVICE_ID_DEVICE },
+	{ "PRODUCT", DEVICE_ID_PRODUCT },
+	{ "MANUFACTURER", DEVICE_ID_MANUFACTURER },
+	{ "MODEL", DEVICE_ID_MODEL },
+	{ "SN", DEVICE_ID_SN },
+	{ "IMEI", DEVICE_ID_IMEI },
+	{ "MEID", DEVICE_ID_MEID },
+};
+BUILD_ASSERT(ARRAY_SIZE(ti50_device_id_fields) == TI50_DEVICE_ID_COUNT);
+
+/*
+ * Print the full device IDs struct
+
+ * - success the everything was ok.
+ * - 1 if the IDs had an unsupported version.
+ */
+static int print_ti50_device_ids(struct ti50_device_ids_response *ids,
+				 bool show_machine_output)
+{
+	size_t i;
+
+	if (ids->header.version == 0xff) {
+		printf("fields unset");
+		return 0;
+	}
+	if (ids->header.version != TI50_DEVICE_IDS_VERSION) {
+		printf("unsupported device ids version");
+		return 1;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(ti50_device_id_fields); i++) {
+		print_ti50_device_id_field(ti50_device_id_fields[i].name,
+					   ids->ids[i], show_machine_output);
+	}
+	return 0;
+}
+
+/*
+ * Get device IDs.
+ *
+ * Get the ids stored in INFO or NVMEM with "get_info" and "get_scratch".
+
+ * - success the get command ran without errors and the device ids were printed.
+ * - various errors if getting the device id is not allowed or something
+ *   goes wrong on Ti50
+ */
+static int process_ti50_get_device_ids(struct transfer_descriptor *td,
+				       uint8_t subcmd, bool show_machine_output)
+{
+	uint32_t rv;
+	/* Allocate extra space in case future versions add more data. */
+	struct ti50_device_ids_response response[4];
+	size_t response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_DEVICE_IDS, &subcmd,
+				 sizeof(subcmd), (uint8_t *)&response,
+				 &response_size);
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Get device ids failed. (%X)\n", rv);
+		return update_error;
+	}
+
+	if (response_size != sizeof(struct ti50_device_ids_header) &&
+	    response_size < sizeof(struct ti50_device_ids_response)) {
+		printf("Unexpected response size. (%zu)\n", response_size);
+		printf("expected (%zu)\n",
+		       sizeof(struct ti50_device_ids_response));
+		printf("expected (%zu)\n",
+		       sizeof(struct ti50_device_ids_field));
+		return 2;
+	}
+
+	print_ti50_device_id_header((struct ti50_device_ids_response *)response,
+				    show_machine_output);
+	if (response_size == sizeof(struct ti50_device_ids_header)) {
+		printf("no data");
+		return 0;
+	}
+	return print_ti50_device_ids(
+		(struct ti50_device_ids_response *)response,
+		show_machine_output);
+}
+
+/*
+ * Get or set the GSC device IDs.
+ *
+ * Get the ids stored in INFO or NVMEM with "get_info" and "get_scratch".
+ *
+ * Commit the device IDs with the "commit" arg.
+ *
+ * Delete the IDs stored in scratch with "delete_scratch"
+ *
+ * Set device id fields by passing in <field ID>:<value>. The field ID is
+ * case insensitive. Gsctool passes the value as is.
+ *   - BRAND:<value>
+ *   - DEVICE:<value>
+ *   - PRODUCT:<value>
+ *   - MANUFACTURER:<value>
+ *   - MODEL:<value>
+ *   - SN:<value>
+ *   - IMEI:<value>
+ *   - MEID:<value>
+ * ex: gsctool --device_ids "brand:AbcD" will set the brand to "AbcD".
+
+ * - success the get or set device command ran without errors.
+ * - various errors if setting the device id is not allowed or something
+ *   goes wrong on Ti50
+ */
+static int process_ti50_device_ids(struct transfer_descriptor *td,
+				   const char *arg, bool show_machine_output)
+{
+	const char *colon;
+	size_t len;
+	size_t i;
+	uint32_t rv;
+	bool found_id = false;
+	struct ti50_device_ids_request request;
+	size_t request_size;
+
+	if (!arg) {
+		return update_error;
+	} else if (!strcasecmp("get_info", arg)) {
+		return process_ti50_get_device_ids(td, STORAGE_INFO,
+						   show_machine_output);
+	} else if (!strcasecmp("get_scratch", arg)) {
+		return process_ti50_get_device_ids(td, STORAGE_NVMEM,
+						   show_machine_output);
+	} else if (!strcasecmp("commit", arg)) {
+		request.subcmd = DEVICE_ID_COMMIT;
+		request_size = 1;
+	} else if (!strcasecmp("delete_scratch", arg)) {
+		request.subcmd = DEVICE_ID_DELETE_SCRATCH;
+		request_size = 1;
+	} else {
+		/*
+		 * Validate the parameter, for starters make sure that the colon
+		 * symbol is present and is neither the first nor the last
+		 * character in the string.
+		 */
+		colon = strchr(arg, ':');
+		if (!colon || (colon == arg)) {
+			fprintf(stderr, "Misformatted device id arg: %s\n",
+				arg);
+			return update_error;
+		}
+
+		len = colon - arg;
+		for (i = 0; i < ARRAY_SIZE(ti50_device_id_fields); i++) {
+			if (!strncasecmp(ti50_device_id_fields[i].name, arg,
+					 len)) {
+				request.subcmd =
+					ti50_device_id_fields[i].subcmd;
+				found_id = true;
+			}
+		}
+		if (!found_id) {
+			printf("Could not find id type from %s\n", arg);
+			return update_error;
+		}
+		len = strlen(arg) - len - 1;
+		if (len > TI50_DEVICE_ID_MAX_STR_LEN) {
+			printf("arg too long: max len %u got %zu %s\n",
+			       TI50_DEVICE_ID_MAX_STR_LEN, len, colon + 1);
+			return update_error;
+		}
+		request.size = len;
+		memcpy(request.value, colon + 1, request.size);
+		request_size = sizeof(request);
+	}
+	rv = send_vendor_command(td, VENDOR_CC_SET_DEVICE_IDS, &request,
+				 request_size, NULL, NULL);
+	if (rv != VENDOR_RC_SUCCESS) {
+		printf("Set device ids failed. (%X)\n", rv);
+		return update_error;
+	}
+	return 0;
+}
+
 static int process_cr50_get_metrics(struct transfer_descriptor *td,
 				    bool show_machine_output)
 {
@@ -5132,6 +5385,8 @@ int main(int argc, char *argv[])
 	int get_console = 0;
 	int factory_config = 0;
 	int set_factory_config = 0;
+	bool parse_device_ids = false;
+	char *device_ids_arg = "";
 	uint64_t factory_config_arg = 0;
 	int get_time = 0;
 	bool get_boot_trace = false;
@@ -5182,6 +5437,10 @@ int main(int argc, char *argv[])
 		if (check_boolean(omap, i))
 			continue;
 		switch (i) {
+		case 2:
+			parse_device_ids = true;
+			device_ids_arg = optarg;
+			break;
 		case 'A':
 			get_apro_hash = 1;
 			break;
@@ -5479,7 +5738,7 @@ int main(int argc, char *argv[])
 	    !show_fw_ver && !sn_bits && !sn_inc_rma && !start_apro_verify &&
 	    !openbox_desc_file && !tstamp && !tpm_mode && (wp == WP_NONE) &&
 	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts &&
-	    !upload_owner_config) {
+	    !upload_owner_config && !parse_device_ids) {
 		num_images = argc - optind;
 		if (num_images <= 0) {
 			fprintf(stderr,
@@ -5629,6 +5888,15 @@ int main(int argc, char *argv[])
 
 	if (get_aprov_reset_counts)
 		exit(process_get_aprov_reset_counts(&td));
+
+	if (parse_device_ids) {
+		if (!is_ti50_device()) {
+			printf("Not supported on Cr50\n");
+			exit(1);
+		}
+		exit(process_ti50_device_ids(&td, device_ids_arg,
+					     show_machine_output));
+	}
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
