@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9195a5b_8c7af8f0",
+        "filename": "zephyr/program/ocelot/matsu/gpios.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-09T16:28:24Z",
+      "side": 1,
+      "message": "Are these pins used?  I don\u0027t see this pins setup for I2C communication in matsu/i2c.dtsi.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "83b3fe9ea982b4664fa5bbc2691d522063a69943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
