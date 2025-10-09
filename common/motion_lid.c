@@ -161,6 +161,7 @@ static void motion_lid_set_tablet_mode(int reliable)
 	static int tablet_mode_debounce_cnt = TABLET_MODE_DEBOUNCE_COUNT;
 	const int current_mode = tablet_get_mode();
 	int new_mode = current_mode;
+	static int old_mode;
 
 	if (reliable) {
 		if (last_lid_angle_fp > tablet_zone_lid_angle)
@@ -170,6 +171,9 @@ static void motion_lid_set_tablet_mode(int reliable)
 
 		/* Only change tablet mode if we're sure. */
 		if (current_mode != new_mode) {
+			if (tablet_get_force_mode() && (old_mode != new_mode)) {
+				tablet_mode_set_override(TABLET_MODE_DEFAULT);
+			}
 			if (tablet_mode_debounce_cnt == 0) {
 				/* Alright, we're convinced. */
 				tablet_mode_debounce_cnt =
@@ -180,6 +184,7 @@ static void motion_lid_set_tablet_mode(int reliable)
 			tablet_mode_debounce_cnt--;
 			return;
 		}
+		old_mode = new_mode;
 	}
 
 	/*
