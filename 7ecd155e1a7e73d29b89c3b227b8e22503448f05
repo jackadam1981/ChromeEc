@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f05acda9_f1fe1f23",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-09T20:11:08Z",
+      "side": 1,
+      "message": "I think the PM subsys has already declared this array. Better to avoid duplication and use the API `pm_state_cpu_get_all()` to get a pointer of it.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a851886_462fd1c7",
         "filename": "zephyr/shim/chip/rtk/power_policy.c",
         "patchSetId": 4
