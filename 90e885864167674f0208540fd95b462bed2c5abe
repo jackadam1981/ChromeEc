@@ -52,6 +52,24 @@
       "parentUuid": "b4c6c3c6_e948262b",
       "revId": "90e885864167674f0208540fd95b462bed2c5abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d53a7a6c_042ec2cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-10-09T10:32:45Z",
+      "side": 1,
+      "message": "OK, I will create another PR `depends on !LTO` for kconfig warning message",
+      "parentUuid": "442dc970_e0bb6e11",
+      "revId": "90e885864167674f0208540fd95b462bed2c5abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
