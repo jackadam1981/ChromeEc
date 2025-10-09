@@ -415,6 +415,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4486c7d_aee77158",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-09T06:04:21Z",
+      "side": 1,
+      "message": "Tried it on `port1` with local variable.\n```\n25-10-09 04:54:01.198C1: RECV 97a4/1[0]00088001\n25-10-09 04:54:01.206[69.243100 tx_status \u003d 0\n25-10-09 04:54:01.213 ]\n25-10-09 04:54:01.213[69.245300 tx1 \u003d 1, tx2 \u003d 1\n25-10-09 04:54:01.213 ]\n25-10-09 04:54:01.213[69.246100 tx_status \u003d 1\n25-10-09 04:54:01.217 ]\n25-10-09 04:54:01.217[69.252700 xmit_status \u003d 1\n```\n\nThis is without local variable:\n\n```\n25-10-08 12:18:59.441C1: RECV 97a4/1[0]00088001\n25-10-08 12:18:59.449[54.726200 tx_status \u003d 0\n25-10-08 12:18:59.452 ]\n25-10-08 12:18:59.452[54.728400 tx1 \u003d 1, tx2 \u003d 1\n25-10-08 12:18:59.455 ]\n25-10-08 12:18:59.455[54.729000 xmit_status \u003d 1\n```",
+      "parentUuid": "b348f130_21dfc3e3",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1154,
+        "endChar": 57
+      },
+      "revId": "05bf31ca8e5cba9fe7fc9151e67372730f31e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44ba073_2b7b757b",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
