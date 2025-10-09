@@ -319,6 +319,7 @@ BUILD_ASSERT(VIRTUAL_NV_INDEX_SN_DATA_SIZE == sizeof(struct sn_data));
 
 static void GetG2fCert(BYTE *to, size_t offset, size_t size)
 {
+#ifdef CONFIG_U2F
 	uint8_t cert[G2F_ATTESTATION_CERT_MAX_LEN] = { 0 };
 	size_t certificate_len;
 
@@ -328,6 +329,9 @@ static void GetG2fCert(BYTE *to, size_t offset, size_t size)
 		memset(cert, 0, sizeof(cert));
 
 	memcpy(to, ((BYTE *)cert) + offset, size);
+#else
+	memset(to, 0, size);
+#endif
 }
 BUILD_ASSERT(VIRTUAL_NV_INDEX_G2F_CERT_SIZE == G2F_ATTESTATION_CERT_MAX_LEN);
 
