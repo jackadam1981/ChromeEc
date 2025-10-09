@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea8e960_f057e737",
+        "filename": "zephyr/program/corsola/veluza/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-10-09T07:28:34Z",
+      "side": 1,
+      "message": "data-hold-time \u003d \u003c10\u003e;\n\tprescale-scl-low \u003d \u003c8\u003e;",
+      "range": {
+        "startLine": 406,
+        "startChar": 1,
+        "endLine": 406,
+        "endChar": 24
+      },
+      "revId": "e176dfaa8324512f604534b5e6d2e3c108b25cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
