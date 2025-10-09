@@ -42,6 +42,11 @@
 /* Raise an error if a valid branch isn't set */
 #error Set BRANCH to TOT, MP, or PREPVT
 #endif
+
+#ifdef CRYPTO_TEST_SETUP
+#define CONFIG_U2F
+#endif
+
 /*
  * The default watchdog timeout is 1.6 seconds, but there are some legitimate
  * flash-intensive TPM operations that actually take close to that long to
