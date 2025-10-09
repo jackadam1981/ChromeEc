@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85613772_bb75fc60",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T02:48:09Z",
+      "side": 1,
+      "message": "Can we ever get stuck in this loop? Do we want to add a delay between each read?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad44a398_edc5494d",
         "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
         "patchSetId": 4
