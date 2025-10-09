@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58732b2a_fce96531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-10-09T08:06:02Z",
+      "side": 1,
+      "message": "Disable `CONFIG_PLATFORM_EC_DEBUG_ASSERT` blindly is not a solution, please investigate why the assert happens and fix it. If the EC FW is needed urgently, maybe can disable it temporarily. Please keep the issue open and re-enable it when issue is fixed.",
+      "revId": "90ddcb57e8e06243e9c034c11a54b4ac451fe219",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
