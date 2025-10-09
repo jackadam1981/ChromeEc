@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a473d9_375a5879",
+        "filename": "zephyr/Kconfig.watchdog",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "nit: PLATFORM_EC_WATCHDOG_DUMP_THREADS_STACK_TRACE or PLATFORM_EC_WATCHDOG_DUMP_THREADS_CALL_STACK.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3abf671_3d2861f5",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "Maybe just `TASK_%d`",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dd804c_dda3dcc9",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "nit: Bit misleading because it\u0027s not printing the full esf.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d9acf0_8e89834a",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "nit: frame_index?",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48994dce_3435b7eb",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "Is this trying to mirror the format used elsewhere in Zephyr? Is ra RISCV specific? Please add comment explaining the rationale for this format.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d33c830_df97a0a5",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "nit: print_stack_trace",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591bda45_6c187470",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "I wonder if thread \u003d\u003d k_get_current() would be more appropriate for this check?",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427f9e57_638ffffd",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "nit: Using an else here to set esf to NULL would make logic more clear.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ffb36e_c6d3293d",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "May need to reload watchdog here.\n\nI was also going to suggest locking the console somehow to avoid other log messages being interspersed, but perhaps that isn\u0027t needed since this is happening in an interrupt context already.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a56323_e9fba8d5",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "Print_esf prints PC and LR. Are both of these printed by print_stack too? I wonder if it should be print_esf() and print_stack(thread) when CONFIG_PLATFORM_EC_WATCHDOG_DUMP_THREADS is not enabled.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f52dd40_bb249e6b",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T16:32:18Z",
+      "side": 1,
+      "message": "Motivations for removing the lock?",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
