@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f653f6_9c5e827c",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-09T16:22:10Z",
+      "side": 1,
+      "message": "Nit: Would it be massively more complicated to take the USB3 and USB4 flags as optional strings \"usb3\" and \"usb4,\" where their absence means not enabled? Or have a positional argument valued 3 or 4? That would produce more obvious command invocations than positional boolean parameters. This is dev-facing, so usability isn\u0027t the highest priority, but we may have to use this under fire someday.\n\nAlternatively, these fields in the UCSI command appear to be redundant with the USB Mode field in the EUDO, and it seems like there is a possible invalid setting of these fields (both enabled) that is not possible in the EUDO. Would it be better to remove these as parameters and derive these UCSI fields from the EUDO? Or take a single speed argument and derive the EUDO fields from that?",
+      "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d9c6ddb_13fc6079",
         "filename": "zephyr/subsys/ucsi/ppm_console.c",
         "patchSetId": 1
@@ -31,6 +48,23 @@
       "writtenOn": "2025-10-09T02:35:14Z",
       "side": 1,
       "message": "nit: `shell_strtoul`?",
+      "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26dcee1c_cb24970b",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-09T16:22:10Z",
+      "side": 1,
+      "message": "NB: Some of the fields in the EUDO should be known to the EC somehow. Whether it makes sense to allow the user to control them depends on what you want to do with this command.",
       "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
