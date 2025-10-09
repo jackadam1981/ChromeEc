@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "813eb79d_3b3abec5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T21:45:33Z",
+      "side": 1,
+      "message": "The developer also has the option to change hcdebug level at runtime. I agree that both solutions are similar, but ec-console does not have straight forward way to configure a system wide default.",
+      "parentUuid": "11c9b437_3518c23c",
+      "revId": "f200cca39c4a8332d54abb60b1bc97a8914b25e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f812a20f_1bf5b686",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-07T19:43:08Z",
       "side": 1,
       "message": "Nit - Can this be `y if PLATFORM_EC_BRINGUP`? I don\u0027t think the `?` is very clear",
+      "range": {
+        "startLine": 78,
+        "startChar": 26,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "f200cca39c4a8332d54abb60b1bc97a8914b25e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f65fcf_e11886a0",
+        "filename": "docs/zephyr/zephyr_ap_ec_comm.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-09T21:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f812a20f_1bf5b686",
       "range": {
         "startLine": 78,
         "startChar": 26,
