@@ -34,6 +34,24 @@
       "parentUuid": "bbd65b02_d9c6d26e",
       "revId": "90e885864167674f0208540fd95b462bed2c5abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442dc970_e0bb6e11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-09T09:35:18Z",
+      "side": 1,
+      "message": "Acknowledged.\n\nOr maybe let kconfig generate a warning message\n\n```\nconfig SOC_IT8XXX2_SERIAL_IN_RAM\n   ...\n   depends !LTO\n```\n\nshould work.",
+      "parentUuid": "b4c6c3c6_e948262b",
+      "revId": "90e885864167674f0208540fd95b462bed2c5abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
