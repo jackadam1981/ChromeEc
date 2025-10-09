@@ -115,6 +115,30 @@
       },
       "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "294f0f16_217a3090",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-09T19:02:39Z",
+      "side": 1,
+      "message": "Does it logic make more sense?\n```\n\tconst struct pm_state_info *out_state \u003d NULL;\n\n\tif (DEEP_SLEEP_ALLOWED) {\n\t\tfor (int i \u003d 0; i \u003c ARRAY_SIZE(pm_states); i++) {\n\t\t\tif (pm_policy_state_lock_is_active(pm_states[i].state,\n\t\t\t\t\t\t\t   PM_ALL_SUBSTATES)) {\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tout_state \u003d \u0026pm_states[i];\n\t\t}\n\t}\n\treturn out_state;\n```",
+      "parentUuid": "abbc6bd8_f3b0c6cd",
+      "range": {
+        "startLine": 25,
+        "startChar": 41,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
