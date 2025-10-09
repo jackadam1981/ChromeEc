@@ -659,6 +659,9 @@ enum nvmem_users {
 /* Enable unsafe dev features for CCD in crypto test builds */
 #define CONFIG_CMD_ROLLBACK
 
+/* This brings in some crypto primitives. */
+#define CONFIG_U2F
+
 /* Remove console commands to save space */
 #undef CONFIG_CMD_ECRST
 #undef CONFIG_CMD_SYSRST
