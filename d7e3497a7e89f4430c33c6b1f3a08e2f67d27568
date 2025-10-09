@@ -16,6 +16,24 @@
       "message": "Rebased and maybe Zoss will be satisfied now.",
       "revId": "d7e3497a7e89f4430c33c6b1f3a08e2f67d27568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d340fb7_5e35275e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-10-09T03:21:26Z",
+      "side": 1,
+      "message": "Needed some more work to rebase over refactoring; now successfully builds for everything.",
+      "parentUuid": "579d745b_ce65ab4a",
+      "revId": "d7e3497a7e89f4430c33c6b1f3a08e2f67d27568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
