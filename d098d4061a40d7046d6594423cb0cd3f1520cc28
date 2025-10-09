@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c4fe10_47d225c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-10-09T17:50:17Z",
+      "side": 1,
+      "message": "Hi All! Apologies for delay in response, as I was on vacation. I have raised a cross bug for this - https://partnerissuetracker.corp.google.com/issues/450532992 . Meanwhile, As Bernardo has recieved request for individual command support for ptl and has  written another CL ( https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7007087 ) related to this, I will realign this CL further to align with his CL. Thanks.",
+      "revId": "d098d4061a40d7046d6594423cb0cd3f1520cc28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8637e78_97912df8",
