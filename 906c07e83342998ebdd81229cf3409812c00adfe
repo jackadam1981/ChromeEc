@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c9027d_6cd12e79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2025-10-09T01:00:44Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"developement\" is a possible misspelling of \"development\".\n\nTo bypass Spellcheck...\n\n\"developement\" is a possible misspelling of \"development\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 14,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 72
+      },
+      "revId": "906c07e83342998ebdd81229cf3409812c00adfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
