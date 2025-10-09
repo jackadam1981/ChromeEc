@@ -16,6 +16,24 @@
       "message": "Please fix the error\n```\nchromeos-zephyr-0.0.1-r5434: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5434/work/chromeos-zephyr-0.0.1/build/orisa/modules/ec/common/charge_manager.c:119:16: error: redefinition of \u0027cm_refresh\u0027\nchromeos-zephyr-0.0.1-r5434:   119 | #ifdef CONFIG_USB_PDC_POWER_MGMT\nchromeos-zephyr-0.0.1-r5434:       |                ^~~~~~~~~~\nchromeos-zephyr-0.0.1-r5434: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5434/work/chromeos-zephyr-0.0.1/zephyr-base/include/zephyr/sys/iterable_sections.h:43:28: note: in definition of macro \u0027TYPE_SECTION_ITERABLE\u0027\nchromeos-zephyr-0.0.1-r5434:    43 |         Z_DECL_ALIGN(type) varname \\\nchromeos-zephyr-0.0.1-r5434:       |                            ^~~~~~~\nchromeos-zephyr-0.0.1-r5434: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5434/work/chromeos-zephyr-0.0.1/zephyr-base/include/zephyr/sys/iterable_sections.h:217:9: note: in expansion of macro \u0027STRUCT_SECTION_ITERABLE_ALTERNATE\u0027\nchromeos-zephyr-0.0.1-r5434:   217 |         STRUCT_SECTION_ITERABLE_ALTERNATE(struct_type, struct_type, varname)\nchromeos-zephyr-0.0.1-r5434:       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nchromeos-zephyr-0.0.1-r5434: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5434/work/chromeos-zephyr-0.0.1/zephyr-base/include/zephyr/kernel.h:3038:9: note: in expansion of macro \u0027STRUCT_SECTION_ITERABLE\u0027\nchromeos-zephyr-0.0.1-r5434:  3038 |         STRUCT_SECTION_ITERABLE(k_mutex, name) \u003d \\\nchromeos-zephyr-0.0.1-r5434:       |         ^~~~~~~~~~~~~~~~~~~~~~~\nchromeos-zephyr-0.0.1-r5434: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5434/work/chromeos-zephyr-0.0.1/build/orisa/modules/ec/common/charge_manager.c:119:1: note: in expansion of macro \u0027K_MUTEX_DEFINE\u0027\nchromeos-zephyr-0.0.1-r5434:   119 | #ifdef CONFIG_USB_PDC_POWER_MGMT\nchromeos-zephyr-0.0.1-r5434:       | ^~~~~~~~~~~~~~\nchromeos-zephyr-0.0.1-r5434: /build/nissa/tmp/portage/chromeos-base/chromeos-zephyr-0.0.1-r5434/work/chromeos-zephyr-0.0.1/build/orisa/modules/ec/common/charge_manager.c:53:16: note: previous definition of \u0027cm_refresh\u0027 with type \u0027struct k_mutex\u0027\n\n```",
       "revId": "c788def3e864ec7f957fec6a5042ad1e48c8dbc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcca157f_465e4e2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3685612
+      },
+      "writtenOn": "2025-10-09T02:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa6c252_f4a0d256",
+      "revId": "c788def3e864ec7f957fec6a5042ad1e48c8dbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
