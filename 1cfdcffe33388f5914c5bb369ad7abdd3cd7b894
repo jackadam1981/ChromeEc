@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9bca84_edc21acd",
+        "filename": "zephyr/Kconfig.watchdog",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a473d9_375a5879",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3abf671_3d2861f5",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-09T16:32:18Z",
       "side": 1,
       "message": "Maybe just `TASK_%d`",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f164803_a31bdcc5",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3abf671_3d2861f5",
       "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43e4445_fa5cb282",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1dd804c_dda3dcc9",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5d9acf0_8e89834a",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-10-09T16:32:18Z",
       "side": 1,
       "message": "nit: frame_index?",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec765815_08db6cd5",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d9acf0_8e89834a",
       "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e4b271_54bda6ba",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "This is mimicking the same format in the [unwind](https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/main/subsys/shell/modules/kernel_service/thread/unwind.c#19) shell command.  I can drop this and look for `#%d` frame index in symbolize_log.py",
+      "parentUuid": "48994dce_3435b7eb",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d33c830_df97a0a5",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-10-09T16:32:18Z",
       "side": 1,
       "message": "nit: print_stack_trace",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2167648b_2c2d5568",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d33c830_df97a0a5",
       "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3739ad44_433aa279",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591bda45_6c187470",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "427f9e57_638ffffd",
@@ -133,6 +259,24 @@
       "writtenOn": "2025-10-09T16:32:18Z",
       "side": 1,
       "message": "nit: Using an else here to set esf to NULL would make logic more clear.",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b716d60_73020033",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427f9e57_638ffffd",
       "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e885f932_754b82b5",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c5ffb36e_c6d3293d",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19a56323_e9fba8d5",
@@ -171,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ed507a_4377e11a",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "Only the PC is printed in `print_stack` as the LR is not available in the callback API.  I can do both.",
+      "parentUuid": "19a56323_e9fba8d5",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f52dd40_bb249e6b",
@@ -184,6 +364,24 @@
       "writtenOn": "2025-10-09T16:32:18Z",
       "side": 1,
       "message": "Motivations for removing the lock?",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb23ae2_2dfb771d",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-09T18:30:56Z",
+      "side": 1,
+      "message": "I noticed many of the [kernel thread shell commands](https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/main/subsys/shell/modules/kernel_service/thread/list.c#122) use this variant to prevent any unexpected calls to `arch_irq_unlock`",
+      "parentUuid": "7f52dd40_bb249e6b",
       "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
