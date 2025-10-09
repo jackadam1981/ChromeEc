@@ -16,6 +16,24 @@
       "message": "Is it required to wait BOARD_PTL_RVP_MINIMUM_POWER_DOWN_DELAY_MS before exit ? ref: crrev/c/6249549",
       "revId": "1bbdefce10e2eb546dba40bb94a359cef93966be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3191f78c_b95b69dc",
+        "filename": "zephyr/program/fatcat/lapis/src/board_power.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-09T05:53:35Z",
+      "side": 1,
+      "message": "Yes, I add BOARD_PTL_RVP_MINIMUM_POWER_DOWN_DELAY_MS and verify the power sequence works normally.",
+      "parentUuid": "240d4112_ae7527b4",
+      "revId": "1bbdefce10e2eb546dba40bb94a359cef93966be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
