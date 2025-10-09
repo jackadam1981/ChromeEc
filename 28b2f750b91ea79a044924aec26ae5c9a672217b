@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fae9255_e4868101",
+        "filename": "zephyr/shim/chip/elan/include/flash_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1177449
+      },
+      "writtenOn": "2025-10-09T01:10:08Z",
+      "side": 1,
+      "message": "```suggestion\n#define CONFIG_FLASH_WRITE_SIZE 16\n```",
+      "revId": "28b2f750b91ea79a044924aec26ae5c9a672217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3cde7c_d7b19b93",
+        "filename": "zephyr/shim/chip/elan/include/flash_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1177449
+      },
+      "writtenOn": "2025-10-09T01:10:08Z",
+      "side": 1,
+      "message": "```suggestion\n#define CONFIG_FLASH_ERASE_SIZE 8192\n```",
+      "revId": "28b2f750b91ea79a044924aec26ae5c9a672217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
