@@ -35,6 +35,7 @@
 /* TOT: DBG: The DBG image doesn't have enough room chargen. */
 #ifndef CR50_DEV
 #define CONFIG_CMD_CHARGEN
+#define CONFIG_U2F
 #endif
 
 #else
@@ -61,6 +62,8 @@
 #undef CONFIG_CMD_SYSINFO
 #undef CONFIG_CMD_SYSJUMP
 #undef CONFIG_CMD_SYSLOCK
+#undef CONFIG_CMD_TIMERINFO
+#undef CONFIG_CONSOLE_HISTORY
 
 #define CONFIG_CUSTOMIZED_RO
 /* TODO: find a way to drop RO build. */
@@ -129,9 +132,6 @@
 /* Enable debug cable detection */
 #define CONFIG_RDD
 
-/* Also use the cr50 as a second factor authentication */
-#define CONFIG_U2F
-
 /* Additional FIPS KAT tests. */
 #define CONFIG_FIPS_RSA2048
 #define CONFIG_FIPS_SW_HMAC_DRBG
@@ -166,8 +166,6 @@
 #ifdef CR50_DEV
 /* Remove console commands to save space. */
 #undef CONFIG_CMD_SLEEPMASK
-#undef CONFIG_CMD_TIMERINFO
-#undef CONFIG_CONSOLE_HISTORY
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_I2C_XFER
 #undef CONFIG_FLASH
@@ -669,8 +667,6 @@ enum nvmem_users {
 #undef CONFIG_CMD_PINMUX
 #undef CONFIG_CMD_GPIOCFG
 #undef CONFIG_CMD_SLEEPMASK
-#undef CONFIG_CMD_TIMERINFO
-#undef CONFIG_CONSOLE_HISTORY
 #undef CONFIG_I2C_XFER
 #undef CONFIG_I2C_SCAN
 #undef CONFIG_CONSOLE_CMDHELP
