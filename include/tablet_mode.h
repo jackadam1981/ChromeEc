@@ -21,6 +21,8 @@ extern "C" {
  */
 int tablet_get_mode(void);
 
+bool tablet_get_force_mode(void);
+
 /* Bit mask of tablet mode trigger */
 #define TABLET_TRIGGER_LID BIT(0)
 #define TABLET_TRIGGER_BASE BIT(1)
@@ -62,6 +64,11 @@ void gmr_tablet_switch_isr_handler(void);
  * devices to turn off gmr sensor's tablet mode detection on clamshell.
  */
 void gmr_tablet_switch_disable(void);
+
+/**
+ * Function to override tablet mode to on/off/reset
+ */
+void tablet_mode_set_override(enum tablet_mode_override mode);
 
 /**
  * This must be defined when CONFIG_GMR_TABLET_MODE_CUSTOM is defined. This

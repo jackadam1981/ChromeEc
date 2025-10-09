@@ -89,6 +89,11 @@ int tablet_get_mode(void)
 	return !!tablet_mode;
 }
 
+bool tablet_get_force_mode(void)
+{
+	return tablet_mode_forced;
+}
+
 static inline void print_tablet_mode(void)
 {
 	CPRINTS("%s mode", tablet_mode_names[tablet_get_mode()]);
@@ -370,6 +375,31 @@ void gmr_tablet_switch_disable(void)
 	tablet_disable();
 }
 #endif /* CONFIG_GMR_TABLET_MODE */
+
+void tablet_mode_set_override(enum tablet_mode_override mode)
+{
+	switch (mode) {
+	case TABLET_MODE_DEFAULT:
+		tablet_mode = tablet_mode_store;
+		tablet_mode_forced = false;
+		break;
+	case TABLET_MODE_FORCE_TABLET:
+		tablet_mode = TABLET_TRIGGER_LID;
+		tablet_mode_forced = true;
+		break;
+	case TABLET_MODE_FORCE_CLAMSHELL:
+		tablet_mode = 0;
+		tablet_mode_forced = true;
+		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
+			lid_angle_peripheral_enable(1);
+		break;
+	default:
+		CPRINTS("Invalid EC_CMD_SET_TABLET_MODE parameter: %d", mode);
+		return;
+	}
+
+	notify_tablet_mode_change();
+}
 
 static enum ec_status tablet_mode_command(struct host_cmd_handler_args *args)
 {
