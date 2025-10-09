@@ -16,6 +16,24 @@
       "message": "is there any compile time warning to notify people that this combination does not work?",
       "revId": "90e885864167674f0208540fd95b462bed2c5abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c6c3c6_e948262b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-10-09T09:26:21Z",
+      "side": 1,
+      "message": "If we add assert, then we need to make sure those boards that enabled `CONFIG_SOC_IT8XXX2_*_IN_RAM` wouldn\u0027t trigger the build assert.\nI find that those boards, brox, fatcat (kinmen, moonstone), rauru (rauru, navi), roach (spikyrock), skywalker, trulo, are enabled `CONFIG_SOC_IT8XXX2_*_IN_RAM`.",
+      "parentUuid": "bbd65b02_d9c6d26e",
+      "revId": "90e885864167674f0208540fd95b462bed2c5abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
