@@ -33,6 +33,24 @@
       "message": "What is this section? What is it needed?",
       "revId": "5b000953705bd5a696a9f24cbeee23428b1423aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1271cac_2ebf72c1",
+        "filename": "zephyr/subsys/fingerprint/alg/ft9865_bio_alg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-10-09T01:58:34Z",
+      "side": 1,
+      "message": "DTCM is another 32K bytes SRAM, g_feature[FT_TPL_SUBTPL_SIZE] is a buffer to save bio feature data of one image at enroll or identify.",
+      "parentUuid": "06ac6908_6d242d1e",
+      "revId": "5b000953705bd5a696a9f24cbeee23428b1423aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
