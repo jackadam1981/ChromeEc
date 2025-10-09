@@ -70,6 +70,24 @@
       "parentUuid": "1d6eb3d3_f85f27d2",
       "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be80ef1c_ca205f1a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-09T01:16:19Z",
+      "side": 1,
+      "message": "\u003e Since our previous discussion focused only on coreboot, I don\u0027t remember we discussed anything outside this scope, e.g. changing the data size from 5 DWORDs to 4 DWORDs.\n\nWell, the number of DWORDs necessarily gets reduced (from 5 to 4) with the changes we discussed, because the \"OEM\" spaces got included in the 64 bits that coreboot gets and then a separate OEM DWORD doesn\u0027t make sense anymore. I just sent another email to Aamir to clarify that, but I think there\u0027s no other logical option with the changes we discussed. (I assume that they\u0027re going to modify their other infrastructure like Boxster accordingly.)\n\nAlso, from an organizational perspective, I think it makes more sense to consider these two separate `uint64_t` instead of four `uint32_t`. I totally agree with you that we should deprecate the existing `fw_config`/`SSFC` tags and make new ones, I\u0027m just saying that you should make two new tags that contain one `uint64_t` each, rather than this array of `uint32_t` here. Then coreboot can request one of them and doesn\u0027t need to care about the other.",
+      "parentUuid": "bb215eeb_8c6696a9",
+      "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
