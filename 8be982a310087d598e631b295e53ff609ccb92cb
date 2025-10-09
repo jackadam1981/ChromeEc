@@ -88,6 +88,24 @@
       "parentUuid": "bb215eeb_8c6696a9",
       "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6034018_a84455c7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-09T16:21:58Z",
+      "side": 1,
+      "message": "**5 DWORD vs 4 DWORD**: The 64-bit is a limitation of coreboot; otherwise, a massive change would be required. The situation for the EC is different as it has to introduce something new. I\u0027d prefer over-reservation, having a dedicated DWORD for OEM-defined fields. However, it is not a big deal. I would let Aamir to decide.\n\n**`uint64_t` vs `uint32_t`**: Unlike the AP, all ECs supported so far still use 32-bit architecture. Using `uint64_t` has worse performance than `uint32_t`, as the compiler must translate `uint64_t` operations into multiple `uint32_t` instructions. Therefore, `struct cbi_ufsc { uint32_t data[COUNT] }` is used instead of `struct cbi_ufsc { uint64_t data[COUNT] }`.\n\n**1 tag vs 2 tags**: Let\u0027s consider this as a provider-consumer case. The UFSC tag (or 2 tags) stored in CBI is the provider. The EC is one consumer, coreboot is another, the factory provisioning it is another, the build system constructing it is yet another. I understand coreboot only inspect 2 DWORDs (or 1 tag), but all other use cases inspect the entire 5 DWORDs (2 tags). Changing the provider to optimize for a single consumer at the expense of the others seems not a good idea.",
+      "parentUuid": "be80ef1c_ca205f1a",
+      "revId": "8be982a310087d598e631b295e53ff609ccb92cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
