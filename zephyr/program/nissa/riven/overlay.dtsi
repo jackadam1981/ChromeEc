@@ -90,6 +90,26 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "soc_edp_bl_interrupt";
 		};
+		int_enter_btn: enter_btn {
+			irq-pin = <&gpio_enter_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "board_button_interrupt";
+		};
+		int_back_btn: back_btn {
+			irq-pin = <&gpio_back_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "board_button_interrupt";
+		};
+		int_overview_btn: overview_btn {
+			irq-pin = <&gpio_overview_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "board_button_interrupt";
+		};
+		int_launcher_btn: launcher_btn {
+			irq-pin = <&gpio_launcher_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "board_button_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -257,8 +277,6 @@
 			<&gpio3 5 0>,
 			<&gpio3 6 0>,
 			<&gpio5 7 0>,
-			<&gpio6 0 0>,
-			<&gpio6 6 0>,
 			<&gpio8 6 0>,
 			<&gpioa 0 0>,
 			<&gpiob 1 0>,
