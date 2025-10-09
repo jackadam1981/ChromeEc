@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "923af506_aeafcda0",
+        "filename": "zephyr/shim/chip/elan/include/flash_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-09T06:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fae9255_e4868101",
+      "revId": "28b2f750b91ea79a044924aec26ae5c9a672217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa3cde7c_d7b19b93",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-09T01:10:08Z",
       "side": 1,
       "message": "```suggestion\n#define CONFIG_FLASH_ERASE_SIZE 8192\n```",
+      "revId": "28b2f750b91ea79a044924aec26ae5c9a672217b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63b4225_5a9cce5b",
+        "filename": "zephyr/shim/chip/elan/include/flash_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-09T06:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3cde7c_d7b19b93",
       "revId": "28b2f750b91ea79a044924aec26ae5c9a672217b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
