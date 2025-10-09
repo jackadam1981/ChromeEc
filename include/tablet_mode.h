@@ -63,6 +63,11 @@ void gmr_tablet_switch_isr_handler(void);
 void gmr_tablet_switch_disable(void);
 
 /**
+ * Function to override tablet mode to on/off/reset
+ */
+void tablet_mode_set_override(enum tablet_mode_override mode);
+
+/**
  * This must be defined when CONFIG_GMR_TABLET_MODE_CUSTOM is defined. This
  * allows a board to override the default behavior that determines if the
  * 360 sensor is active: !gpio_get_level(GPIO_TABLET_MODE_L).
