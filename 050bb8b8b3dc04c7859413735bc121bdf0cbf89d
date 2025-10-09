@@ -16,6 +16,29 @@
       "message": "Hi Bernardo,\nYou can use crossbug - https://partnerissuetracker.corp.google.com/issues/450532992 for this CL.",
       "revId": "050bb8b8b3dc04c7859413735bc121bdf0cbf89d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46c1c0c_472906d7",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-10-09T18:11:49Z",
+      "side": 1,
+      "message": "Isn\u0027t it good to limit the individual command access based on config, so that they are made available only when required?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 1
+      },
+      "revId": "050bb8b8b3dc04c7859413735bc121bdf0cbf89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
