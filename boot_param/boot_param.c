@@ -962,6 +962,18 @@ static inline bool generate_dice_handover(
 }
 
 #if BOOT_PARAM_VERSION == 1
+/* Fills buffer with LE32 value. */
+static inline void le32_set(
+	uint8_t buffer[4],
+	uint32_t value
+)
+{
+	buffer[0] = (uint8_t)((value) & 0x000000FF);
+	buffer[1] = (uint8_t)(((value) & 0x0000FF00) >> 8);
+	buffer[2] = (uint8_t)(((value) & 0x00FF0000) >> 16);
+	buffer[3] = (uint8_t)(((value) & 0xFF000000) >> 24);
+}
+
 /* Fills ReservedMem. */
 static inline bool fill_res_mem(
 	/* [IN/OUT] ReservedMem */
@@ -970,6 +982,8 @@ static inline bool fill_res_mem(
 	uint8_t chain_id
 )
 {
+	uint32_t seed_version;
+
 	__platform_memcpy(&res_mem->hdrs, &res_mem_hdrs,
 			  sizeof(struct res_mem_hdrs_s));
 	set_res_mem_string(res_mem, desktop_trusty_name);
@@ -985,8 +999,13 @@ static inline bool fill_res_mem(
 		__platform_log_str("Failed to get GSC boot param");
 		return false;
 	}
-	__platform_memset(&res_mem->blobs.versioned_seed, 0,
-			  sizeof(struct versioned_seed_s));
+	if (!__platform_get_cur_versioned_seed(
+			res_mem->blobs.versioned_seed.seed,
+			&seed_version)) {
+		__platform_log_str("Failed to get versioned seed");
+		return false;
+	}
+	le32_set(res_mem->blobs.versioned_seed.version, seed_version);
 	return true;
 }
 
