@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd80b41c_c0bff7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-10T17:45:46Z",
+      "side": 1,
+      "message": "Followup from meeting: There are 4",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69619f2e_0d67b213",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-10T17:45:46Z",
+      "side": 1,
+      "message": "This should be per-port, as part of `prl_tx`, if we have a mutex like this.",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedfbbfb_28d8a24d",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-10T17:45:46Z",
+      "side": 1,
+      "message": "Per OOB discussion, this is sometimes called from within the PD task. The simplest way to latch `xmit_status` once per PRL run might be to check for the PD interrupt task here and set `tx_stat` in that case.",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c6b952_c6ef6ffa",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-10T17:45:46Z",
+      "side": 1,
+      "message": "No corresponding lock",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b367aa6d_6f844682",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-10T17:45:46Z",
+      "side": 1,
+      "message": "Per OOB discussion, the mutex probably does nothing here. The status-latching assignment is probably what helps. Cleaning this up in that direction would probably entail moving this to the beginning of `prl_run`.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 33
+      },
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
