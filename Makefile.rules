@@ -52,6 +52,12 @@ quiet = $(cmd_$(1))
 endif
 endif
 
+ifeq ($(CR50_DEV)$(CRYPTO_TEST),)
+CHECK_FIPS=1
+else
+CHECK_FIPS=0
+endif
+
 # commands to build all targets
 cmd_libec = $(LD) -r $^ -o $@.1.o ${silent_err} && \
 	$(OBJCOPY) --localize-hidden $@.1.o $@.2.o ${silent_err} && \
@@ -70,7 +76,7 @@ cmd_elf_to_signed ?= $(SIGNER) --key=util/signer/$(3) \
 	&& sudo chown $(shell whoami) $@.signed && mv $@.signed $@
 cmd_copy_manifest ?= $(SANITIZE_MANIFEST) $(MANIFEST) $(out)/prod.json
 cmd_elf_to_elf_fips = ./util/inject_fips_fingerprint.sh $(OBJCOPY) $(OBJDUMP) \
-	$^ $(silent)
+	$^ $(CHECK_FIPS) $(silent)
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
 cmd_elf_to_bin = $(OBJCOPY) -O binary $< $@
 cmd_elf_to_hex = $(OBJCOPY) -O ihex $< $@
