@@ -487,6 +487,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		if (ret != EC_SUCCESS)
 			return EC_RES_INVALID_PARAM;
 
+		if (size > global_context.frame_size) {
+			return EC_RES_INVALID_PARAM;
+		}
+
 		memcpy(out, fp_buffer + offset, size);
 		args->response_size = size;
 		return EC_RES_SUCCESS;
