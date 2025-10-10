@@ -16,6 +16,7 @@
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_detect.h"
+#include "fpsensor/fpsensor_frame_size.h"
 #include "fpsensor/fpsensor_modes.h"
 #include "fpsensor/fpsensor_state.h"
 #include "fpsensor/fpsensor_utils.h"
@@ -60,6 +61,7 @@ static uint32_t matching_time_us;
 static uint32_t overall_time_us;
 static timestamp_t overall_t0;
 static uint8_t timestamps_invalid;
+static FpFrameSizeCache fpsensor_frame_size_cache;
 
 BUILD_ASSERT(sizeof(struct ec_fp_template_encryption_metadata) % 4 == 0);
 
@@ -195,12 +197,29 @@ static uint32_t fp_process_match(void)
 static void fp_process_finger(void)
 {
 	timestamp_t t0 = get_time();
+	enum fp_capture_type capture_type =
+		FP_CAPTURE_TYPE(global_context.sensor_mode);
+	auto optional_size =
+		fpsensor_frame_size_cache.get_frame_size(capture_type);
 
+	if (optional_size.has_value()) {
+		global_context.frame_size = optional_size.value();
+	} else {
+		CPRINTS("Error: Failed to get frame size for capture type %d",
+			capture_type);
+		global_context.frame_size = 0;
+		return;
+	}
+
+	/*
+	 * TODO(b/453683389): Refactor `fp_acquire_image` to Expose Acquired
+	 * Frame Size Directly.
+	 */
 	CPRINTS("Capturing ...");
-	int res = fp_acquire_image(fp_buffer,
-				   FP_CAPTURE_TYPE(global_context.sensor_mode));
+	int res = fp_acquire_image(fp_buffer, capture_type);
 	capture_time_us = time_since32(t0);
 	if (!res) {
+		global_context.frame_size = 0;
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
 
 #ifndef CONFIG_ZEPHYR
