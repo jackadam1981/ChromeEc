@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "799dad51_5901f61f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-10T19:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69619f2e_0d67b213",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aedfbbfb_28d8a24d",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-10-10T17:45:46Z",
       "side": 1,
       "message": "Per OOB discussion, this is sometimes called from within the PD task. The simplest way to latch `xmit_status` once per PRL run might be to check for the PD interrupt task here and set `tx_stat` in that case.",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52455b26_2e614f51",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-10T19:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aedfbbfb_28d8a24d",
       "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44fd80e6_eeddb26e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-10T19:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c6b952_c6ef6ffa",
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b367aa6d_6f844682",
@@ -82,6 +136,30 @@
       "writtenOn": "2025-10-10T17:45:46Z",
       "side": 1,
       "message": "Per OOB discussion, the mutex probably does nothing here. The status-latching assignment is probably what helps. Cleaning this up in that direction would probably entail moving this to the beginning of `prl_run`.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 33
+      },
+      "revId": "0ef00e6a05ccbfadf00d918081b7cd18d7d13d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d92a55_842a6246",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-10T19:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b367aa6d_6f844682",
       "range": {
         "startLine": 1159,
         "startChar": 0,
