@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f1dfa1_7d6e97e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T20:56:14Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"fimware\" is a possible misspelling of \"firmware\".\n\nTo bypass Spellchecker, add ...\n\n\"fimware\" is a possible misspelling of \"firmware\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b96b837_9b6924c8",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T20:56:14Z",
+      "side": 1,
+      "message": "Do have an example that shows how this is used?\nWould it make more sense to only add this mode for the EC/FP chips that need it?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
