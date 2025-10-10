@@ -22,6 +22,30 @@
       },
       "revId": "83b3fe9ea982b4664fa5bbc2691d522063a69943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07f610a_12006ca1",
+        "filename": "zephyr/program/ocelot/matsu/gpios.dtsi",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-10-10T03:30:35Z",
+      "side": 1,
+      "message": "They are currently unused. I simply named them according to the schematic.",
+      "parentUuid": "e9195a5b_8c7af8f0",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "83b3fe9ea982b4664fa5bbc2691d522063a69943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
