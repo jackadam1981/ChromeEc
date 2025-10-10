@@ -77,6 +77,28 @@ static void send_mkbp_event(uint32_t event)
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
 
+static int get_fp_capture_type_frame_size(uint32_t *frame_size)
+{
+	size_t fp_sensor_get_info_v2_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
+	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
+	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
+
+	if (fp_sensor_get_info(info, buffer.size()) < 0) {
+		return EC_ERROR_UNKNOWN;
+	}
+
+	for (uint8_t i = 0; i < info->sensor_info.num_capture_types; ++i) {
+		if (info->image_frame_params[i].fp_capture_type ==
+		    FP_CAPTURE_TYPE(global_context.sensor_mode)) {
+			*frame_size = info->image_frame_params[i].frame_size;
+			return EC_RES_SUCCESS;
+		}
+	}
+	return EC_ERROR_INVAL;
+}
+
 /*
  * contains the bit FP_MODE_ENROLL_SESSION if a finger enrollment is on-going.
  * It is used to detect the ENROLL_SESSION transition when sensor_mode is
@@ -195,10 +217,20 @@ static uint32_t fp_process_match(void)
 static void fp_process_finger(void)
 {
 	timestamp_t t0 = get_time();
+	enum fp_capture_type capture_type =
+		FP_CAPTURE_TYPE(global_context.sensor_mode);
+	uint32_t frame_size = 0;
+
+	int res = get_fp_capture_type_frame_size(&frame_size);
+	if (res != EC_RES_SUCCESS) {
+		CPRINTS("Error: Failed to get frame size for capture type %d, ec_res: %d",
+			capture_type, res);
+		return;
+	}
+	global_context.frame_size = frame_size;
 
 	CPRINTS("Capturing ...");
-	int res = fp_acquire_image(fp_buffer,
-				   FP_CAPTURE_TYPE(global_context.sensor_mode));
+	res = fp_acquire_image(fp_buffer, capture_type);
 	capture_time_us = time_since32(t0);
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
