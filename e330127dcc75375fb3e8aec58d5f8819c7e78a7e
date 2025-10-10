@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972f64f5_759e0489",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-10-10T20:59:30Z",
+      "side": 0,
+      "message": "maybe move this too and then we can drop this conditional from this section?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "e330127dcc75375fb3e8aec58d5f8819c7e78a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
