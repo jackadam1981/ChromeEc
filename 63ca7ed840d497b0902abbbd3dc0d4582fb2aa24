@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6e1971_df165cb8",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T17:43:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c88e1f3a_69f73438",
+      "revId": "63ca7ed840d497b0902abbbd3dc0d4582fb2aa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae39411_e9675e48",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-08T20:55:13Z",
       "side": 1,
       "message": "Future work: Should the emulator expose a method to reset this state?",
+      "revId": "63ca7ed840d497b0902abbbd3dc0d4582fb2aa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffddef4_3a91bb44",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T17:43:32Z",
+      "side": 1,
+      "message": "This is exposed via the ZTEST_RULE later in this file.  So the ISL emulator\u0027s I2C state is automatically reset before each test.",
+      "parentUuid": "cae39411_e9675e48",
       "revId": "63ca7ed840d497b0902abbbd3dc0d4582fb2aa24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
