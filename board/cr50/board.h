@@ -35,7 +35,6 @@
 /* TOT: DBG: The DBG image doesn't have enough room chargen. */
 #ifndef CR50_DEV
 #define CONFIG_CMD_CHARGEN
-#define CONFIG_U2F
 #endif
 
 #else
@@ -70,6 +69,8 @@
 #define CONFIG_FW_INCLUDE_RO
 
 #ifndef CR50_DEV
+/* Enable U2F in non-DBG images */
+#define CONFIG_U2F
 /* Disable stuff that should only be in debug builds */
 #undef CONFIG_CMD_CRASH
 #undef CONFIG_CMD_MD
@@ -658,9 +659,6 @@ enum nvmem_users {
 #ifdef CRYPTO_TEST_SETUP
 /* Enable unsafe dev features for CCD in crypto test builds */
 #define CONFIG_CMD_ROLLBACK
-
-/* This brings in some crypto primitives. */
-#define CONFIG_U2F
 
 /* Remove console commands to save space */
 #undef CONFIG_CMD_ECRST
