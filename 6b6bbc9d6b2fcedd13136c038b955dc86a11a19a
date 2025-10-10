@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "592aabba_6dc5f426",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T18:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1adb3024_a267b0eb",
+      "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f653f6_9c5e827c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b218b7e8_1996494f",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T18:32:58Z",
+      "side": 1,
+      "message": "This command is meant for testing of the PDC\u0027s response to SET_USB and to prototype USB4 entry/exit sequences.  I don\u0027t know how the PDCs will respond to an inconsistency between the enable flags and the EUDO value.\n\nUltimately, we only expect the AP to initiate a SET_USB command. This command is a stopgap measure to enable early testing.",
+      "parentUuid": "39f653f6_9c5e827c",
+      "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d9c6ddb_13fc6079",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-10-09T02:35:14Z",
       "side": 1,
       "message": "nit: `shell_strtoul`?",
+      "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbe6121_a3a90373",
+        "filename": "zephyr/subsys/ucsi/ppm_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-10T18:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9c6ddb_13fc6079",
       "revId": "6b6bbc9d6b2fcedd13136c038b955dc86a11a19a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
