@@ -46,6 +46,30 @@
       },
       "revId": "e330127dcc75375fb3e8aec58d5f8819c7e78a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5104ece7_73692764",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-10-10T21:03:32Z",
+      "side": 0,
+      "message": "ah, right, it is the case on !CR50_DEV",
+      "parentUuid": "a15f0bb2_757c343a",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "e330127dcc75375fb3e8aec58d5f8819c7e78a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
