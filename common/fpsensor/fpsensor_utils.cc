@@ -19,7 +19,7 @@ bool fp_match_success(int match_result)
 	       match_result == EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED;
 }
 
-enum ec_error_list validate_fp_buffer_offset(const uint32_t buffer_size,
+enum ec_error_list validate_fp_buffer_offset(const uint32_t frame_size,
 					     const uint32_t offset,
 					     const uint32_t size)
 {
@@ -28,7 +28,7 @@ enum ec_error_list validate_fp_buffer_offset(const uint32_t buffer_size,
 	if (check_add_overflow(size, offset, &bytes_requested))
 		return EC_ERROR_OVERFLOW;
 
-	if (bytes_requested > buffer_size)
+	if (bytes_requested > frame_size)
 		return EC_ERROR_INVAL;
 
 	return EC_SUCCESS;
