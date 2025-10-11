@@ -31,6 +31,7 @@ static void board_backlight_handler(struct ap_power_ev_callback *cb,
 		value = 0;
 		break;
 	}
+	k_busy_wait(50 * USEC_PER_MSEC);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_en_od), value);
 }
 
