@@ -43,7 +43,7 @@ else
 echo = echo $(1);
 ifeq ($(V),)
 Q := @
-quiet = @echo '  $(2)' $(patsubst $(out)/%,%,$@) ; $(cmd_$(1))
+quiet = @printf '%-8s %s\n' $(2) $(patsubst $(out)/%,%,$@); $(cmd_$(1))
 silent = 1>/dev/null
 silent_err = 2>/dev/null
 else
@@ -74,7 +74,7 @@ cmd_ec_elf_to_flat ?= $(OBJCOPY) --set-section-flags .roshared=share \
 cmd_elf_to_signed ?= $(SIGNER) --key=util/signer/$(3) \
 	--b --input=$< --format=bin --output=$@.signed $(SIGNER_EXTRAS) \
 	&& sudo chown $(shell whoami) $@.signed && mv $@.signed $@
-cmd_copy_manifest ?= $(SANITIZE_MANIFEST) $(MANIFEST) $(out)/prod.json
+cmd_copy_manifest ?= $(SANITIZE_MANIFEST) $(MANIFEST) $(out)/prod.json $(silent)
 cmd_elf_to_elf_fips = ./util/inject_fips_fingerprint.sh $(OBJCOPY) $(OBJDUMP) \
 	$^ $(CHECK_FIPS) $(silent)
 cmd_elf_to_dis = $(OBJDUMP) -D $< > $@
@@ -304,10 +304,10 @@ run-test-targets=$(foreach t,$(test-list-host),run-$(t))
 
 $(host-test-targets): host-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/test-$*
-	+$(call quiet,host_test,BUILD  )
+	+$(call quiet,host_test,BUILD)
 
 $(run-test-targets): run-%: host-%
-	$(call quiet,run_host_test,TEST   )
+	$(call quiet,run_host_test,TEST)
 	@rm -f $(FAILED_BOARDS_DIR)/test-$*
 
 .PHONY: print-host-tests
@@ -328,9 +328,9 @@ $(fuzz-test-targets): TEST_FLAG=TEST_FUZZ=y TEST_ASAN=$(TEST_ASAN) \
 		sed -e 's/[^-]*$$//')
 $(fuzz-test-targets): host-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/test-$*
-	+$(call quiet,host_test,BUILD  )
+	+$(call quiet,host_test,BUILD)
 $(run-fuzz-test-targets): run-%: host-%
-	$(call quiet,run_fuzz,TEST   )
+	$(call quiet,run_fuzz,TEST)
 	@rm -f $(FAILED_BOARDS_DIR)/test-$*
 
 $(FAILED_BOARDS_DIR):
@@ -394,33 +394,33 @@ cmd_stats= \
   done
 
 build/host/%.info: run-%
-	$(call quiet,lcov,COV    )
+	$(call quiet,lcov,COV)
 
 .PHONY: coverage
 coverage: TEST_FLAG=TEST_COVERAGE=y
 coverage: $(cov-test-targets)
-	$(call quiet,report_cov,REPORT )
+	$(call quiet,report_cov,REPORT)
 
 $(out)/libec.a: $(ro-objs)
-	$(call quiet,libec,BUILD )
+	$(call quiet,libec,BUILD)
 
 $(out)/firmware_image.lds: common/firmware_image.lds.S
-	$(call quiet,lds,LDS    )
+	$(call quiet,lds,LDS)
 $(out)/%.lds: core/$(CORE)/ec.lds.S
-	$(call quiet,lds,LDS    )
+	$(call quiet,lds,LDS)
 
 $(out)/%_B.lds: core/$(CORE)/ec.lds.S
-	$(call quiet,lds_b,LDS_B  )
+	$(call quiet,lds_b,LDS_B)
 
 $(out)/%.bin: $(out)/%.obj
 	$(call quiet,obj_to_bin,OBJCOPY)
-	$(if $(wildcard $(PEM)),$(call quiet,rsasign,SIGN   ),)
+	$(if $(wildcard $(PEM)),$(call quiet,rsasign,SIGN),)
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
 			$(call quiet,copyrw-y,COPY_RW))
-	$(call quiet,mv_from_tmp,MV     )
+	$(call quiet,mv_from_tmp,MV)
 
 $(out)/$(BOARD)_vif.txt: $(out)/util/genvif
-	$(call quiet,vif,VIF    )
+	$(call quiet,vif,VIF)
 
 flat-y := $(out)/RW/$(PROJECT).RW.flat
 flat-$(CONFIG_FW_INCLUDE_RO) += $(out)/RO/$(PROJECT).RO.flat
@@ -434,7 +434,7 @@ flat-$(CONFIG_SHAREDLIB) += $(libsharedobjs-y)
 
 $(out)/$(PROJECT).obj: common/firmware_image.S $(out)/firmware_image.lds \
 	$(flat-y)
-	$(call quiet,flat_to_obj,CAT    )
+	$(call quiet,flat_to_obj,CAT)
 
 $(out)/%.dis: $(out)/%.elf
 	$(call quiet,elf_to_dis,OBJDUMP)
@@ -449,7 +449,7 @@ $(out)/RW/%.elf.fips: $(out)/RW/%.elf
 endif
 
 $(out)/RW/%.hex: $(out)/RW/%.elf$(rw_elf_ext) $(out)/RW/%.smap
-	$(call quiet,copy_manifest)
+	$(call quiet,copy_manifest,MANIFEST)
 	$(call quiet,elf_to_hex,OBJCOPY)
 
 ifeq ("$(SIGNER)","")
@@ -472,89 +472,89 @@ $(out)/$(PROJECT).hex: $(out)/$(PROJECT).bin
 	$(call quiet,bin_to_hex,OBJCOPY)
 
 $(out)/%.vbprik2 $(out)/%.vbpubk2: $(PEM)
-	$(call quiet,key_extract,KEY    )
+	$(call quiet,key_extract,KEY)
 
 $(out)/RW/%.flat.sig: $(out)/RW/%.flat $(out)/key.vbprik2
-	$(call quiet,rsasign_rwsig,SIGN   )
+	$(call quiet,rsasign_rwsig,SIGN)
 
 $(out)/RW/%.elf: override BLD:=RW
 $(out)/RW/%.elf: private objs := $(rw-objs)
 $(out)/RW/%.elf: $(out)/RW/%.lds $(rw-objs) $(libsharedobjs_elf-y)
-	$(call quiet,elf,LD     )
+	$(call quiet,elf,LD)
 
 $(out)/RO/%.elf: override BLD:=RO
 $(out)/RO/%.elf: private objs := $(ro-objs)
 $(out)/RO/%.elf: $(out)/RO/%.lds $(ro-objs) $(libsharedobjs_elf-y)
-	$(call quiet,elf,LD     )
+	$(call quiet,elf,LD)
 
 $(out)/%.elf: $(out)/%.lds $(objs)
-	$(call quiet,elf,LD     )
+	$(call quiet,elf,LD)
 
 $(out)/$(SHOBJLIB)/$(SHOBJLIB).elf: $(sharedlib-objs)
 	@mkdir -p $(out)/$(SHOBJLIB)
-	$(call quiet,sharedlib_elf,LD     )
+	$(call quiet,sharedlib_elf,LD)
 
 $(out)/%.smap: $(out)/%.elf
-	$(call quiet,smap,NM     )
+	$(call quiet,smap,NM)
 
 ifeq ($(TEST_FUZZ),y)
 $(out)/$(PROJECT).exe: $(rw-only-objs) $(out)/libec.a
-	$(call quiet,fuzz_exe,EXE    )
+	$(call quiet,fuzz_exe,EXE)
 else ifneq ($(TEST_SCRIPT),)
 $(out)/$(PROJECT).exe: test/$(TEST_SCRIPT) | $(ro-objs)
-	$(call quiet,cp_script,CP     )
+	$(call quiet,cp_script,CP)
 else
 $(out)/$(PROJECT).exe: $(ro-objs)
-	$(call quiet,exe,EXE    )
+	$(call quiet,exe,EXE)
 endif
 
 $(out)/RO/%.o.cmd:%.c
 	$(file > $@,$(subst .o.cmd,.o,$(cmd_c_to_o)))
 $(out)/RO/%.o:%.c
-	$(call quiet,c_to_o,CC     )
+	$(call quiet,c_to_o,CC)
 ifeq ($(CONFIG_EXTRACT_PRINTF_STRINGS),)
 $(out)/RW/%.o:%.c
-	$(call quiet,c_to_o,CC     )
+	$(call quiet,c_to_o,CC)
 $(rw-objs): | $(out)/ec_version.h
 else
 
 $(out)/RW/%.o:$(out)/RW/%.Ep
-	$(call quiet,ep_to_o,EO     )
+	$(call quiet,ep_to_o,EO)
 $(out)/RW/%.E:%.c
-	$(call quiet,c_to_e,CE     )
+	$(call quiet,c_to_e,CE)
 
 $(rw-es): | $(out)/ec_version.h
 endif
 $(out)/RO/%.o:%.cc
-	$(call quiet,cxx_to_o,CXX    )
+	$(call quiet,cxx_to_o,CXX)
 $(out)/RW/%.o:%.cc
-	$(call quiet,cxx_to_o,CXX    )
+	$(call quiet,cxx_to_o,CXX)
 
 $(out)/RO/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
 $(out)/RO/%.pb.o:$(out)/gen/%.pb.cc
-	$(call quiet,cxx_to_o,CXX    )
+	$(call quiet,cxx_to_o,CXX)
 $(out)/RW/%.pb.o: CXXFLAGS+= -Wno-unreachable-code
 $(out)/RW/%.pb.o:$(out)/gen/%.pb.cc
-	$(call quiet,cxx_to_o,CXX    )
+	$(call quiet,cxx_to_o,CXX)
 $(out)/gen/%.pb.cc:%.proto
-	$(call quiet,proto_to_cxx,PROTOC )
+	$(call quiet,proto_to_cxx,PROTOC)
 $(out)/gen/%.pb.h:%.proto
-	$(call quiet,proto_to_cxx,PROTOC )
+	$(call quiet,proto_to_cxx,PROTOC)
 
 $(out)/$(SHOBJLIB)/%.o: override LATE_CFLAGS_DEFINE:=-DSHAREDLIB_IMAGE=$(EMPTY)
 $(out)/$(SHOBJLIB)/%.o:%.c
-	$(call quiet,c_to_o,CC     )
+	$(call quiet,c_to_o,CC)
 
 $(out)/RO/%.o:%.S
-	$(call quiet,c_to_o,AS     )
+	$(call quiet,c_to_o,AS)
 $(out)/RW/%.o:%.S
-	$(call quiet,c_to_o,AS     )
+	$(call quiet,c_to_o,AS)
 
 # Default rules for archives, dependencies need to be fixes in build.mk
 $(out)/RO/%.a:
-	$(call quiet,o_to_a,AR     )
+	$(call quiet,o_to_a,AR)
 $(out)/RW/%.a:
-	$(call quiet,o_to_a,AR     )
+	$(call quiet,o_to_a,AR)
 
 # Conditionally force the rebuilding of ec_version.h only if it would be
 # changed.
@@ -585,16 +585,16 @@ $(build-utils): $(out)/%:$(build-srcs)
 	$(call quiet,c_to_build,BUILDCC)
 
 $(host-utils): $(out)/%:$(host-srcs)
-	$(call quiet,c_to_host,HOSTCC )
+	$(call quiet,c_to_host,HOSTCC)
 
 $(out)/cscope.files: $(out)/$(PROJECT).bin
-	$(call quiet,deps_to_list,SH     )
+	$(call quiet,deps_to_list,SH)
 
 $(out)/TAGS: $(out)/cscope.files
-	$(call quiet,etags,ETAGS  )
+	$(call quiet,etags,ETAGS)
 
 $(out)/tags: $(out)/cscope.files
-	$(call quiet,ctags,CTAGS  )
+	$(call quiet,ctags,CTAGS)
 
 .PHONY: npx-monitor-dir
 npx-monitor-dir:
