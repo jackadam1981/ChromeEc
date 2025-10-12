@@ -331,13 +331,15 @@ int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size,
 	memcpy(&resp->sensor_info, &fpc1025_sensor_info,
 	       sizeof(struct fp_sensor_info));
 
-	memcpy(&resp->image_frame_params, &fpc1025_image_frame_params,
-	       sizeof(fpc1025_image_frame_params));
-
 	resp->sensor_info.model_id = sensor_id;
 	resp->sensor_info.errors = errors;
 	resp->sensor_info.num_capture_types =
 		ARRAY_SIZE(fpc1025_image_frame_params);
+
+	*num_params = MIN(*num_params, resp->sensor_info.num_capture_types);
+
+	memcpy(&resp->image_frame_params, &fpc1025_image_frame_params,
+	       *num_params * sizeof(struct fp_image_frame_params));
 
 	return EC_SUCCESS;
 }
