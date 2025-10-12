@@ -148,8 +148,9 @@ get_image_frame_params(struct fp_image_frame_params &image_frame_params)
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
 	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
 	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
+	uint8_t num_params = FP_MAX_CAPTURE_TYPES;
 
-	if (fp_sensor_get_info_v2(info, buffer.size()) < 0) {
+	if (fp_sensor_get_info_v2(info, buffer.size(), &num_params) < 0) {
 		return EC_ERROR_UNKNOWN;
 	}
 
@@ -332,8 +333,10 @@ static int command_fpinfo_v2(int argc, const char **argv)
 		sizeof(struct fp_image_frame_params) * FP_MAX_CAPTURE_TYPES;
 	std::vector<uint8_t> buffer(fp_sensor_get_info_v2_size);
 	auto *info = reinterpret_cast<ec_response_fp_info_v2 *>(buffer.data());
+	uint8_t num_params = FP_MAX_CAPTURE_TYPES;
 
-	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size) < 0) {
+	if (fp_sensor_get_info_v2(info, fp_sensor_get_info_v2_size,
+				  &num_params) < 0) {
 		ccprintf("Failed to get fp_info_v2\n");
 		return EC_ERROR_UNKNOWN;
 	}
