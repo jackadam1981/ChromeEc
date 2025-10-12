@@ -8521,6 +8521,12 @@ struct ec_response_fp_info_v2 {
 } __ec_align4;
 BUILD_ASSERT(sizeof(struct ec_response_fp_info_v2) == 36);
 
+struct ec_params_fp_info_v2 {
+	/* Number of capture types. */
+	uint32_t num_capture_types;
+} __ec_align4;
+BUILD_ASSERT(sizeof(struct ec_params_fp_info_v2) == 4);
+
 /* Get the last captured finger frame or a template content */
 #define EC_CMD_FP_FRAME 0x0404
 
