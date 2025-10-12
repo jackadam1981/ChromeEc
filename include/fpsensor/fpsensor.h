@@ -106,12 +106,15 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp);
  *
  * @param[in] resp_size the  maximum size of response buffer
  * @param[out] resp sensor info
+ * @param[in,out] num_params On input, contains the number of configurations
+ * requested. On output, contains the actual number of configuration written to
+ * image_frame_params array.
  *
  * @return EC_SUCCESS on success
  * @return EC_RES_ERROR on error
  */
-int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp,
-			  size_t resp_size);
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size,
+			  uint8_t *num_params);
 
 /**
  * Put the sensor in its lowest power state.

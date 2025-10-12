@@ -393,9 +393,10 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 		static_cast<ec_response_fp_info_v2 *>(args->response);
 	const struct ec_params_fp_info_v2 *p =
 		static_cast<const struct ec_params_fp_info_v2 *>(args->params);
+	uint8_t num_params = p->num_capture_types;
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info_v2(r, args->response_max) < 0)
+	if (fp_sensor_get_info_v2(r, args->response_max, &num_params) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
 
@@ -405,15 +406,14 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 	r->template_info.template_dirty = global_context.templ_dirty;
 	r->template_info.template_version = FP_TEMPLATE_FORMAT_VERSION;
 
-	args->response_size =
-		sizeof(struct ec_response_fp_info_v2) +
-		(p->num_capture_types) * sizeof(struct fp_image_frame_params);
+	args->response_size = sizeof(struct ec_response_fp_info_v2) +
+			      num_params * sizeof(struct fp_image_frame_params);
 
 	return EC_RES_SUCCESS;
 }
 
 __overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp,
-					size_t resp_size)
+					size_t resp_size, uint8_t *num_params)
 {
 	*resp = {
 		.sensor_info = { .vendor_id = 0,
