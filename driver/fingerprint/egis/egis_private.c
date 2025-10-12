@@ -190,7 +190,8 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	return EC_SUCCESS;
 }
 
-int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size)
+int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size,
+			  uint8_t *num_params)
 {
 	if (sizeof(struct ec_response_fp_info_v2) +
 		    sizeof(egis_image_frame_params) >
