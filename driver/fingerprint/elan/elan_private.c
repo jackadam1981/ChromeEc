@@ -221,9 +221,23 @@ int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size,
 {
 	CPRINTF("========%s=======\n", __func__);
 
-	if (sizeof(struct ec_response_fp_info_v2) +
-		    sizeof(elan_image_frame_params) >
-	    resp_size) {
+	if (!num_params || !resp) {
+		return EC_RES_INVALID_PARAM;
+	}
+
+	uint8_t driver_params_count = ARRAY_SIZE(elan_image_frame_params);
+	uint8_t num_params_to_copy = *num_params;
+
+	if (num_params_to_copy > driver_params_count) {
+		num_params_to_copy = driver_params_count;
+	}
+
+	size_t required_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		sizeof(struct fp_image_frame_params) * num_params_to_copy;
+
+	if (required_size > resp_size) {
+		*num_params = 0;
 		return EC_RES_OVERFLOW;
 	}
 
@@ -235,13 +249,14 @@ int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp, size_t resp_size,
 	memcpy(&resp->sensor_info, &elan_sensor_info,
 	       sizeof(struct fp_sensor_info));
 
-	memcpy(&resp->image_frame_params, &elan_image_frame_params,
-	       sizeof(elan_image_frame_params));
-
 	resp->sensor_info.model_id = id;
 	resp->sensor_info.errors = errors;
-	resp->sensor_info.num_capture_types =
-		ARRAY_SIZE(elan_image_frame_params);
+	resp->sensor_info.num_capture_types = num_params_to_copy;
+
+	memcpy(&resp->image_frame_params, &elan_image_frame_params,
+	       num_params_to_copy * sizeof(struct fp_image_frame_params));
+
+	*num_params = num_params_to_copy;
 
 	return EC_SUCCESS;
 }
