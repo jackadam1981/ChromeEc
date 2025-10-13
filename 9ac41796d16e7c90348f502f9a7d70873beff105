@@ -16,6 +16,75 @@
       "message": "Nit: You should be able to use the [WAIT_FOR](https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/main/include/zephyr/sys/util.h#1091) macro here to simplify the logic.",
       "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a78ce7d_c6a97a74",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-13T21:38:25Z",
+      "side": 1,
+      "message": "`out_state` or just `ret` (`out` and `ret` have the same meaning; use one only).",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa7492a_678b6658",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-13T21:38:25Z",
+      "side": 1,
+      "message": "`cpu_states` or `cpu_state_list`.",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7342d7c_2020d5e8",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-13T21:38:25Z",
+      "side": 1,
+      "message": "You should pass the `cpu` parameter.",
+      "range": {
+        "startLine": 21,
+        "startChar": 47,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
