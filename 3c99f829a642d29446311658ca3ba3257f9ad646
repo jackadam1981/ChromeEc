@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e98cd3_00f6ff0b",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-13T12:00:41Z",
+      "side": 1,
+      "message": "You can not rely on a relative path of a locally added module.",
+      "revId": "3c99f829a642d29446311658ca3ba3257f9ad646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
