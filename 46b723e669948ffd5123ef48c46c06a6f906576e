@@ -39,6 +39,30 @@
       },
       "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4ff817_b1806c08",
+        "filename": "zephyr/subsys/fingerprint/alg/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-10-13T09:21:55Z",
+      "side": 1,
+      "message": "It is math library that used in 9865 algorithm lib",
+      "parentUuid": "7362ea0e_188a00cb",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
