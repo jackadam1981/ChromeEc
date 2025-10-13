@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7482ed60_40d0b3b4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3669,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T20:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c953bd_0a5802cc",
+      "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6135146c_66d062f1",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-10-08T17:14:02Z",
       "side": 1,
       "message": "This would be the appropriate place to log that an Accept was received in general. This is the closest that it\u0027s easy to get to the start point of tSrcTransition for PS.SNK.1.\n\n(The closest we could really get would be in the TCPC interrupt task handler when we see the Rx alert bit, but that would be a lot of work for right now. I don\u0027t think ISR latency is dominating this delay.)",
+      "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6764c47_07628ac3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3736,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T20:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6135146c_66d062f1",
       "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +119,24 @@
       "side": 1,
       "message": "Actually, this is quite late for the purposes of this test failure. This is after we received the PS_RDY, and the timeout we care about the in the 0A case starts after we received the Accept.",
       "parentUuid": "2bdd28dd_95fc9c30",
+      "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a5c0cb_35b9a501",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3861,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T20:53:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f6bded0_c42a74ff",
       "revId": "b747f14b779dec10711c75da6af6ef636c4aabc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

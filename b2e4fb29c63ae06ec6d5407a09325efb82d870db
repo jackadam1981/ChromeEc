@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "983e7c48_200a6d4e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3674,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T20:53:11Z",
+      "side": 1,
+      "message": "I think this is too early to dump the logs. For one, it\u0027s in the middle of events that we want to get precise timing for",
+      "revId": "b2e4fb29c63ae06ec6d5407a09325efb82d870db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1824bac8_d0d59316",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3926,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T20:53:11Z",
+      "side": 1,
+      "message": "I think at the end of this function would be a decent place to dump the mutex logs. Another place might be in `pe_snk_ready_entry`, although that would be noisier.",
+      "revId": "b2e4fb29c63ae06ec6d5407a09325efb82d870db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
