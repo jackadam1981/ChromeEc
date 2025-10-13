@@ -22,6 +22,30 @@
       },
       "revId": "8c19cac29404d7af8939023cfe88a4fde5fdb666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0b0d4c_4f88f482",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-13T21:52:50Z",
+      "side": 1,
+      "message": "yes, this is how `libec` populate the [`SensorImage` vector](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_info_command_v2.cc;l\u003d33#:~:text\u003d32-,33,-34)",
+      "parentUuid": "c82b2c04_14392342",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 62
+      },
+      "revId": "8c19cac29404d7af8939023cfe88a4fde5fdb666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
