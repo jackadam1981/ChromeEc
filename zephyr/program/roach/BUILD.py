@@ -13,7 +13,9 @@ def register_variant(project_name, rwsig_sign=True, inherited_from=None):
     signer_kwarg = {}
     if rwsig_sign:
         # pylint: disable=undefined-variable
-        signer_kwarg["signer"] = signers.RwsigSigner(here / "dev_key.pem")
+        signer_kwarg["signers_list"] = [
+            signers.RwsigSigner(here / "dev_key.pem")
+        ]
 
     register_binman_project(
         project_name=project_name,
