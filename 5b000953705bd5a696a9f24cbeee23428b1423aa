@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5703a26_16e25729",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-10-13T08:51:09Z",
+      "side": 1,
+      "message": "modify back the default value on patchset4",
+      "parentUuid": "9fb39115_6ae01c2e",
+      "revId": "5b000953705bd5a696a9f24cbeee23428b1423aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ac6908_6d242d1e",
