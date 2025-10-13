@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100f9ae6_f79c641f",
+        "filename": "zephyr/program/trulo/pujjolo/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1544342
+      },
+      "writtenOn": "2025-10-13T16:04:21Z",
+      "side": 1,
+      "message": "I think these are enabled in `zephyr/drivers/dsp_comms/Kconfig` for the DSP service.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "cc90f7547240189f2c8c5b7535be6a259ef5f539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
