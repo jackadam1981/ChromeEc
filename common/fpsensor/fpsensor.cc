@@ -391,9 +391,16 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_info_v2 *r =
 		static_cast<ec_response_fp_info_v2 *>(args->response);
+	const size_t response_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		FP_MAX_CAPTURE_TYPES * sizeof(struct fp_image_frame_params);
+
+	if (response_size > args->response_max) {
+		return EC_RES_OVERFLOW;
+	}
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info_v2(r, args->response_max) < 0)
+	if (fp_sensor_get_info_v2(r, response_size) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
 
@@ -403,9 +410,7 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 	r->template_info.template_dirty = global_context.templ_dirty;
 	r->template_info.template_version = FP_TEMPLATE_FORMAT_VERSION;
 
-	args->response_size = sizeof(struct ec_response_fp_info_v2) +
-			      (r->sensor_info.num_capture_types) *
-				      sizeof(struct fp_image_frame_params);
+	args->response_size = response_size;
 
 	return EC_RES_SUCCESS;
 }
