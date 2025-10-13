@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50443a8_3b99428b",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-13T15:24:36Z",
+      "side": 1,
+      "message": "Nit: You should be able to use the [WAIT_FOR](https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/main/include/zephyr/sys/util.h#1091) macro here to simplify the logic.",
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
