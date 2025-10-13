@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba470148_62ab797b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T20:56:32Z",
+      "side": 1,
+      "message": "This would also be an OK place to dump logs, although it could be a bit noisy.",
+      "revId": "b2e4fb29c63ae06ec6d5407a09325efb82d870db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "983e7c48_200a6d4e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 8
