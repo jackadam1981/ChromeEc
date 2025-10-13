@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3eb44c7_d7f5d3f5",
+        "filename": "zephyr/program/ocelot/rvp_i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-13T18:05:39Z",
+      "side": 0,
+      "message": "Follow the pattern used for the other I2C buses and devices:\n\n 1. Leave `i2c-port \u003d \u003c\u0026i2c_port_ish\u003e;` here.\n 2. In the project overlays map `i2c_port_ish` to the appropriate SOC-specific I2C bus name. Example: `i2c_port_ish: \u0026i2c5_0 {};`\n \nSteps 1 and 2 have already been done for ITE, NPCX\n\n 3. Define the ISH dsp-service node, I2C bus label, I2C freq in `\u0026i2c_port_ish {...}` in `rvp_i2c.dtsi`\n 4. Project overlays supply the ISH int-gpios: `\u0026dsp_service { int-gpios \u003d \u003c...\u003e };` (see the PDC nodes as an example)",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "17d615654658bfc0b302db06d805e333144c2e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
