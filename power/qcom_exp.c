@@ -67,6 +67,7 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 /* Masks for power signals */
 #define IN_POWER_GOOD POWER_SIGNAL_MASK(QC_EXP_POWER_GOOD)
 #define IN_AP_RST_ASSERTED POWER_SIGNAL_MASK(QC_EXP_AP_RST_ASSERTED)
+#define IN_AP_PS_HOLD_DEASSERTED POWER_SIGNAL_MASK(QC_EXP_PS_HOLD)
 #define IN_SUSPEND POWER_SIGNAL_MASK(QC_EXP_AP_SUSPEND)
 
 /* Long power key press to force shutdown */
@@ -858,13 +859,22 @@ static int warm_reset_seq(void)
 	 *         to initiate a cold reset power sequence.
 	 */
 
-	gpio_set_level(GPIO_PMIC_RESIN_L, 0);
-	crec_usleep(PMIC_RESIN_PULSE_LENGTH);
 	gpio_set_level(GPIO_PMIC_RESIN_L, 1);
+	crec_usleep(PMIC_RESIN_PULSE_LENGTH);
+	gpio_set_level(GPIO_PMIC_RESIN_L, 0);
 
+	/* Check that the PMIC asserts PON_RESET_N*/
 	rv = power_wait_signals_timeout(IN_AP_RST_ASSERTED,
 					PMIC_POWER_AP_RESPONSE_TIMEOUT);
 
+	/* Exception case: PMIC not work as expected, request a cold reset */
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	CPRINTS("AP_RST asserted, checking PS_HOLD.");
+	/* Wait until ps_hold_ls goes back high*/
+	rv = power_wait_signals_timeout(IN_AP_PS_HOLD_DEASSERTED,
+					PMIC_POWER_AP_RESPONSE_TIMEOUT);
 	/* Exception case: PMIC not work as expected, request a cold reset */
 	if (rv != EC_SUCCESS)
 		return rv;
