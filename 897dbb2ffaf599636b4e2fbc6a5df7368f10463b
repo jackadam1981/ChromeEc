@@ -16,6 +16,24 @@
       "message": "Is this correct?",
       "revId": "897dbb2ffaf599636b4e2fbc6a5df7368f10463b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c65a0b_017cdd22",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T23:21:12Z",
+      "side": 1,
+      "message": "I think you want something like the [checks](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pe_drp_sm.c;l\u003d914;drc\u003d82bc5d81d5f49328a264ea96503bdc54266426b7) for the PD task, but you\u0027ll be checking for the PD_INT task.",
+      "parentUuid": "d73041ee_94bb25de",
+      "revId": "897dbb2ffaf599636b4e2fbc6a5df7368f10463b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

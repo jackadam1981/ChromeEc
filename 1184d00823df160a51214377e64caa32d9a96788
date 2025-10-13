@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bd1cdb_8b98ba9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T23:21:12Z",
+      "side": 1,
+      "message": "As far as I can tell, the mutex usage here is \"correct,\" in that it adheres to the experiment design. As you noted, it doesn\u0027t have any effect, so it is most likely not necessary.",
+      "revId": "1184d00823df160a51214377e64caa32d9a96788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e21c1e_b644cdc5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T23:21:12Z",
+      "side": 1,
+      "message": "I think this still needs to check whether it\u0027s the PD task or the interrupt task, as in the earlier patchset.",
+      "revId": "1184d00823df160a51214377e64caa32d9a96788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "155fe577_68764678",
