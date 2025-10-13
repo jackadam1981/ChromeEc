@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c82b2c04_14392342",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-13T21:43:05Z",
+      "side": 1,
+      "message": "The client (e.g., `ectool`) will know how many capture types are actually valid based on [`fpsensor_info.num_capture_types`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8485;drc\u003d8be982a310087d598e631b295e53ff609ccb92cb), right?\n\nIf so, I think this will work. \n\nSince we\u0027re not necessarily going to use the entire buffer (e.g., `FP_MAX_CAPTURE_TYPES` may be 10, but we may only support 5), we should double-check that the code that calls this function clears the buffer or explicitly clear it here to avoid leaking data.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 62
+      },
+      "revId": "8c19cac29404d7af8939023cfe88a4fde5fdb666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
