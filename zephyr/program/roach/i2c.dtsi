@@ -23,10 +23,17 @@
 	pinctrl-names = "default";
 	data-hold-time = <10>;
 
+	/*
 	touchpad@15 {
 		compatible = "elan,ekth3000";
-		status = "okay";
+		status = "disabled";
 		reg = <0x15>;
 		irq = <&int_tchpad>;
-	};
+	};*/
+	touchpad@38 {
+       compatible = "focaltech,fts";
+       status = "okay";
+       reg = <0x38>;
+       irq = <&int_tchpad>;
+   };
 };
