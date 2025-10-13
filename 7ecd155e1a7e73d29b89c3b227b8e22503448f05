@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7363944d_518c226d",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-13T11:56:00Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ca48ab9c_847845a1",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 46
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85613772_bb75fc60",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-09T02:48:09Z",
       "side": 1,
       "message": "Can we ever get stuck in this loop? Do we want to add a delay between each read?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1dba89_d22db2c6",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-13T11:56:00Z",
+      "side": 1,
+      "message": "We set timeout here as 50ms to avoid loop forever.\nAs I know, this function will be used in Host cmd (isr), therefore adding delay may not have the expected effect.",
+      "parentUuid": "85613772_bb75fc60",
       "range": {
         "startLine": 84,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd62bb8_439b1570",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-13T11:56:00Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ad44a398_edc5494d",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05acda9_f1fe1f23",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-10-09T20:11:08Z",
       "side": 1,
       "message": "I think the PM subsys has already declared this array. Better to avoid duplication and use the API `pm_state_cpu_get_all()` to get a pointer of it.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372b43f2_f01a4780",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-13T11:56:00Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "f05acda9_f1fe1f23",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -154,6 +250,30 @@
       "side": 1,
       "message": "Does it logic make more sense?\n```\n\tconst struct pm_state_info *out_state \u003d NULL;\n\n\tif (DEEP_SLEEP_ALLOWED) {\n\t\tfor (int i \u003d 0; i \u003c ARRAY_SIZE(pm_states); i++) {\n\t\t\tif (pm_policy_state_lock_is_active(pm_states[i].state,\n\t\t\t\t\t\t\t   PM_ALL_SUBSTATES)) {\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tout_state \u003d \u0026pm_states[i];\n\t\t}\n\t}\n\treturn out_state;\n```",
       "parentUuid": "abbc6bd8_f3b0c6cd",
+      "range": {
+        "startLine": 25,
+        "startChar": 41,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "7ecd155e1a7e73d29b89c3b227b8e22503448f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8749ed6_bb6467f4",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-13T11:56:00Z",
+      "side": 1,
+      "message": "We changed the methods to get pm_states as your comment, thanks.",
+      "parentUuid": "294f0f16_217a3090",
       "range": {
         "startLine": 25,
         "startChar": 41,
