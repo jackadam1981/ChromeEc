@@ -46,6 +46,30 @@
       },
       "revId": "8c19cac29404d7af8939023cfe88a4fde5fdb666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "046d6239_f1ca9963",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-13T22:40:36Z",
+      "side": 1,
+      "message": "I have also included the clearing of the buffer",
+      "parentUuid": "8d0b0d4c_4f88f482",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 62
+      },
+      "revId": "8c19cac29404d7af8939023cfe88a4fde5fdb666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
