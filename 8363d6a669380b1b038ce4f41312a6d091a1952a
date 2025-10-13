@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa9fef8_cb3e0efb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-13T17:11:32Z",
+      "side": 1,
+      "message": "Can we remove the `CONFIG_UCSI_PPM_CONSOLE\u003dy` entries from `zephyr/program/ocelot/rvp_program.conf` and `zephyr/test/pdc/testcase.yaml`?",
+      "revId": "8363d6a669380b1b038ce4f41312a6d091a1952a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
