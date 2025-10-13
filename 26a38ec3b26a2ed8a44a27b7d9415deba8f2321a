@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c450451_3144da7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-13T21:23:47Z",
+      "side": 1,
+      "message": "This would suggest that pujjoga is wired up for both TCPC and PPC VBUS detection, and that the TCPC detection is preferred but not always available. I\u0027m not familiar with this aspect of pujjoga.\n\n@phoenixshen@chromium.org Can you check if this looks right for pujjoga?",
+      "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
