@@ -2148,6 +2148,9 @@ static void task_ucsi(struct pdc_data_t *data, enum ucsi_command_t ucsi_command)
 		case CCOM_DRP:
 			cmd_data.data[3] = 2;
 			break;
+		case CCOM_DISABLED:
+			cmd_data.data[3] = 3;
+			break;
 		}
 		break;
 	case CMD_SET_UOR:
