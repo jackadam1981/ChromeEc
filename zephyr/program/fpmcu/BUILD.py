@@ -13,7 +13,7 @@ def register_fpmcu_variant(
     variant_optional_modules=(),
     variant_dts_overlays=(),
     variant_kconfig_files=(),
-    signer=(),
+    signers_list=(),
     **kwargs,
 ):
     """Register an fpmcu variant"""
@@ -25,7 +25,7 @@ def register_fpmcu_variant(
         supported_toolchains=["llvm", "zephyr"],
         dts_overlays=[*variant_dts_overlays],
         kconfig_files=[here / "prj.conf", *variant_kconfig_files],
-        signer=signer,
+        signers_list=signers_list,
         **kwargs,
     )
 
@@ -44,9 +44,11 @@ bloonchipper = register_fpmcu_variant(
         here / "bloonchipper" / "prj.conf",
         here / "bloonchipper" / "ec_quirks.conf",
     ],
-    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
-        here / "bloonchipper" / "dev_key.pem",
-    ),
+    signers_list=[
+        signers.RwsigSigner(  # pylint: disable=undefined-variable
+            here / "bloonchipper" / "dev_key.pem",
+        )
+    ],
     inherited_from=["brox", "brya", "fatcat", "guybrush", "rex", "skyrim"],
 )
 
@@ -67,9 +69,11 @@ buccaneer = register_fpmcu_variant(
         here / "helipilot" / "prj.conf",
         here / "helipilot" / "ec_quirks.conf",
     ],
-    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
-        here / "helipilot" / "buccaneer" / "dev_key.pem",
-    ),
+    signers_list=[
+        signers.RwsigSigner(  # pylint: disable=undefined-variable
+            here / "helipilot" / "buccaneer" / "dev_key.pem",
+        )
+    ],
     inherited_from=[
         "brox",
         "brya",
@@ -98,9 +102,11 @@ helipilot = register_fpmcu_variant(
         here / "helipilot" / "prj.conf",
         here / "helipilot" / "ec_quirks.conf",
     ],
-    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
-        here / "helipilot" / "dev_key.pem",
-    ),
+    signers_list=[
+        signers.RwsigSigner(  # pylint: disable=undefined-variable
+            here / "helipilot" / "dev_key.pem",
+        )
+    ],
     inherited_from=["brya", "fatcat", "rauru", "rex"],
 )
 
@@ -121,9 +127,11 @@ gwendolin = register_fpmcu_variant(
         here / "helipilot" / "prj.conf",
         here / "helipilot" / "ec_quirks.conf",
     ],
-    signer=signers.RwsigSigner(  # pylint: disable=undefined-variable
-        here / "helipilot" / "gwendolin" / "dev_key.pem",
-    ),
+    signers_list=[
+        signers.RwsigSigner(  # pylint: disable=undefined-variable
+            here / "helipilot" / "gwendolin" / "dev_key.pem",
+        )
+    ],
 )
 
 # The address of RW_FWID is hardcoded in RO. You need to have REALLY

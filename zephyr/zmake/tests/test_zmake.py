@@ -40,9 +40,9 @@ class FakeProject:
             supported_toolchains=["llvm"],
             output_packer=zmake.output_packers.ElfPacker,
             project_dir=pathlib.Path("FakeProjectDir"),
-            signer=zmake.signers.NullSigner(),
+            signers_list=[zmake.signers.NullSigner()],
         )
-        self.signer = self.config.signer
+        self.signers_list = self.config.signers_list
 
     @staticmethod
     def iter_builds():
