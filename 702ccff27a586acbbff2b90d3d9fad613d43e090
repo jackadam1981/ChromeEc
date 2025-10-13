@@ -93,6 +93,30 @@
       },
       "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc3b475_4ae0e398",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-13T22:01:15Z",
+      "side": 1,
+      "message": "This is a universal node only for FP builds.  For EC builds, we\u0027ve already had to delete the rollback entries to get things building correctly.  [Example](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/ocelot/ocelotrvp-ite/binman.dtsi;l\u003d13;drc\u003db262450cf1b76a62939ca2fcc874a8da201441da)\n\nIt might be time to have separate binman defaults for FP and EC builds.",
+      "parentUuid": "d7068e7f_8c49a633",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
