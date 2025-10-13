@@ -16,6 +16,24 @@
       "message": "Even CBI read fail, please think if need to write default FW val.",
       "revId": "f2897ea36243147e9283d2a1be75726eb5ce6c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10720c83_731a0737",
+        "filename": "zephyr/program/trulo/uldrenite/src/mp2964_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-10-13T01:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70909ca1_e70bcde2",
+      "revId": "f2897ea36243147e9283d2a1be75726eb5ce6c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
