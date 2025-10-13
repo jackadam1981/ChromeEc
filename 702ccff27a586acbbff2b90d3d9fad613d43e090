@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d78eca6_5d3dd7b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-13T06:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1f1dfa1_7d6e97e3",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b96b837_9b6924c8",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-10T20:56:14Z",
       "side": 1,
       "message": "Do have an example that shows how this is used?\nWould it make more sense to only add this mode for the EC/FP chips that need it?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7068e7f_8c49a633",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-13T06:22:59Z",
+      "side": 1,
+      "message": "You can see usage of the node in this [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6597060/19/zephyr/program/fpmcu/et171/et171.dts#53). Definition of the binary is [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6597060/19/zephyr/program/fpmcu/et171/src/flash_header.c). You can see what it contains, e.g. [SDCP](https://github.com/microsoft/SecureDeviceConnectionProtocol/wiki/Secure-Device-Connection-Protocol) items (verification method for biometrics devices).\n\n\u003e Would it make more sense to only add this mode for the EC/FP chips that need it?\n\nI think it makes sense, but also it is a \"universal\" node, so it\u0027s not that bad in my opinion. The problem is that the binman uses order of the child nodes from the original binman node. If I just add the flash-header node, in the program dts files (as in the CL), the binman complains about the binary size:\n```\nImagePos    Offset      Size  Name\n\u003cnone\u003e    00000000  00101000  image\n\u003cnone\u003e     00001000  0003f000  wp-ro\n\u003cnone\u003e      00000000  0003f000  ec-ro\n\u003cnone\u003e       00000000  000382e0  ro-fw\n\u003cnone\u003e       000382e0  00000020  ro-frid\n\u003cnone\u003e       00038300  000002d8  fmap\n\u003cnone\u003e       0003ebc0  00000400  key-ro\n\u003cnone\u003e       0003efc0  00000040  sig-ro\n\u003cnone\u003e     00040000  00001000  rollback0\n\u003cnone\u003e     00041000  00001000  rollback1\n\u003cnone\u003e     00080000  00080000  ec-rw\n\u003cnone\u003e      00000000  00080000  rw-fw\n\u003cnone\u003e       00000000  00075440  zephyr-rw\n\u003cnone\u003e       00000058  00000020  rw-fwid\n\u003cnone\u003e       0000007c  00000004  rw-rbver\n\u003cnone\u003e       0007fc00  00000400  sig-rw\n\u003cnone\u003e     00000000  00001000  flash-header\n```\nYou can see that `flash-header` node is placed at the end and the image size is `0x101000` not, `0x100000`, even though offsets are set explicitly. I haven\u0027t debugged it that deeply, do you think that\u0027s expected behavior?",
+      "parentUuid": "6b96b837_9b6924c8",
       "range": {
         "startLine": 13,
         "startChar": 0,
