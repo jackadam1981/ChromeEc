@@ -104,6 +104,24 @@
       "message": "Are all functions in this file referenced by the libs?",
       "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b95020a_ebbea623",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-10-13T10:04:44Z",
+      "side": 1,
+      "message": "Yes, all functions in this file are referenced by the sensor lib and fingerprint_ft9865.c",
+      "parentUuid": "f7057de6_274b7a57",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
