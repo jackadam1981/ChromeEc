@@ -468,6 +468,41 @@ static int cmd_pdc_reset(const struct shell *sh, size_t argc, char **argv)
 	return EC_SUCCESS;
 }
 
+static int cmd_pdc_ccom(const struct shell *sh, size_t argc,
+				   char **argv)
+{
+	int rv;
+	uint8_t port;
+	enum ccom_t ccom;
+
+	/* Get PD port number */
+	rv = cmd_get_pd_port(sh, argv[1], &port);
+	if (rv)
+		return rv;
+
+	if (!strcmp(argv[2], "RP")) {
+		ccom = CCOM_RP;
+	} else if (!strcmp(argv[2], "RD")) {
+		ccom = CCOM_RD;
+	} else if (!strcmp(argv[2], "DRP")) {
+		ccom = CCOM_DRP;
+	} else if (!strcmp(argv[2], "DISABLE")) {
+		ccom = CCOM_DISABLED;
+	} else {
+		shell_error(sh, "Invalid ccom type");
+		return -EINVAL;
+	}
+
+	/* Trigger a PDC connector reset */
+	rv = pdc_power_mgmt_set_ccom(port, ccom);
+	if (rv) {
+		shell_error(sh, "CONNECTOR_RESET not sent to port %u (%d)",
+			    port, rv);
+	}
+
+	return rv;
+}
+
 static int cmd_pdc_connector_reset(const struct shell *sh, size_t argc,
 				   char **argv)
 {
@@ -840,6 +875,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Set trysrc mode\n"
 		      "Usage: pdc trysrc <port> [0|1]",
 		      cmd_pdc_trysrc, 3, 0),
+	SHELL_CMD_ARG(ccom, NULL,
+		      "Set ccom mode\n"
+		      "Usage: pdc ccom <port> [RP|RD|DRP|DISABLE]",
+		      cmd_pdc_ccom, 3, 0),
 	SHELL_CMD_ARG(drp, NULL,
 		      "Get DRP mode\n"
 		      "Usage: pdc drp <port>",

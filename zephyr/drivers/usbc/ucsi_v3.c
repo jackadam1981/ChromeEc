@@ -74,11 +74,12 @@ static const char *ccom_name[] = {
 	"CCOM_RP",
 	"CCOM_RD",
 	"CCOM_DRP",
+	"CCOM_DISABLED",
 };
 
 const char *get_ccom_name(enum ccom_t ccom)
 {
-	if (ccom <= CCOM_DRP) {
+	if (ccom <= CCOM_DISABLED) {
 		return ccom_name[ccom];
 	} else {
 		return "INVALID CCOM";

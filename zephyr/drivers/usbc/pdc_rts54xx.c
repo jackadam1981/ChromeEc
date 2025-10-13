@@ -2230,8 +2230,12 @@ static int rts54_set_ccom(const struct device *dev, enum ccom_t ccom)
 	case CCOM_DRP:
 		conn_opmode = 1 << (opmode_offset + 2);
 		break;
+	case CCOM_DISABLED:
+		conn_opmode = 1 << (opmode_offset + 3);
+		break;
 	}
 
+	LOG_ERR("RTK%d: SET_CCOM conn_opmode = %d", conn_opmode & 0xff, (conn_opmode >> 7) & 0xff);
 	uint8_t payload[] = {
 		RTS_UCSI_SET_CCOM.cmd, RTS_UCSI_SET_CCOM.len,
 		RTS_UCSI_SET_CCOM.sub, 0x00 /* data length */,
