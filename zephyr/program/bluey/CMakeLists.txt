@@ -20,3 +20,4 @@ endif()
 
 zephyr_library_sources("src/switchcap.c")
 zephyr_library_sources("src/chipset.c")
+zephyr_library_sources("src/heartbeat_wake.c")
