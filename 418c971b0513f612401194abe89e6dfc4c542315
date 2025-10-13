@@ -16,6 +16,24 @@
       "message": "Why are you adding it to helipilot?",
       "revId": "418c971b0513f612401194abe89e6dfc4c542315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1575202f_96cda400",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1551272
+      },
+      "writtenOn": "2025-10-13T22:50:15Z",
+      "side": 1,
+      "message": "For testing with a firmware image that I\u0027m familiar with. It may make more sense to replace this CL with one targeted to the correct Elan FPMCU project, but that doesn\u0027t look to be merged yet (IIUC)",
+      "parentUuid": "ba131b15_cbfc6717",
+      "revId": "418c971b0513f612401194abe89e6dfc4c542315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
