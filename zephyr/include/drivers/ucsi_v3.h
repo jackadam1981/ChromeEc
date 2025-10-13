@@ -227,7 +227,9 @@ enum ccom_t {
 	/** CCOM Rd */
 	CCOM_RD,
 	/** CCOM DRP */
-	CCOM_DRP
+	CCOM_DRP,
+	/** CCOM Disabled */
+	CCOM_DISABLED
 };
 const char *get_ccom_name(enum ccom_t ccom);
 
