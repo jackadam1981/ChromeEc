@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38cf585_d84ab683",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-14T17:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "565f96b7_14e16836",
+      "revId": "8a5e3b4c5846bce8f6ce7b717c3ed8b58cb5abee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13ec2b46_dce6cdba",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-14T16:02:58Z",
       "side": 1,
       "message": "Rethinking if this a good idea. This will effectively swallow the first watchdog once per boot. This may make the results and behavior inconsistent. \n\nAnother solution would be to just extend the watchdog warning lead time. Could add a BUILD assert to enforce that it is at least X MSEC when CONFIG_PLATFORM_EC_WATCHDOG_DUMP_THREADS_CALL_STACK is enabled.",
+      "revId": "8a5e3b4c5846bce8f6ce7b717c3ed8b58cb5abee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7c00b8_2b792590",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-14T17:23:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ec2b46_dce6cdba",
       "revId": "8a5e3b4c5846bce8f6ce7b717c3ed8b58cb5abee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
