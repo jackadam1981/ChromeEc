@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d4c9f1_ef8735c2",
+        "filename": "zephyr/drivers/cros_system/cros_system_rtk.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-14T09:49:06Z",
+      "side": 1,
+      "message": "This function may be used in the ISR by host command and the delay in WAIT_FOR may let behavior become inconsistency between ISR and normal thread.",
+      "parentUuid": "e50443a8_3b99428b",
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a78ce7d_c6a97a74",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-13T21:38:25Z",
       "side": 1,
       "message": "`out_state` or just `ret` (`out` and `ret` have the same meaning; use one only).",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1536c7d9_f08a187f",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-14T09:49:06Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7a78ce7d_c6a97a74",
       "range": {
         "startLine": 19,
         "startChar": 29,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2a25fd_da5a55bf",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-14T09:49:06Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8aa7492a_678b6658",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7342d7c_2020d5e8",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-10-13T21:38:25Z",
       "side": 1,
       "message": "You should pass the `cpu` parameter.",
+      "range": {
+        "startLine": 21,
+        "startChar": 47,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15436079_03048376",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-14T09:49:06Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b7342d7c_2020d5e8",
       "range": {
         "startLine": 21,
         "startChar": 47,
