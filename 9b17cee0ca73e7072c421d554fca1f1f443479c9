@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047d6d0e_8339a9a2",
+        "filename": "zephyr/program/rauru/navi/navi_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-14T20:53:51Z",
+      "side": 1,
+      "message": "This should be non-zero, and if navi is returning 0, we should update the board config with the real PID. @bleung@chromium.org I don\u0027t see a PID for rauru/navi (or hylia) in the PID list. Do you know what this PID should be?",
+      "revId": "9b17cee0ca73e7072c421d554fca1f1f443479c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
