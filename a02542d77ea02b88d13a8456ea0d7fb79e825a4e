@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484b47f0_72044c11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:28:46Z",
+      "side": 1,
+      "message": "Please open a bug and share the battery datasheet.",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "a02542d77ea02b88d13a8456ea0d7fb79e825a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8da1b5_193bda9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:28:46Z",
+      "side": 1,
+      "message": "Please open a separate bug specifically for adding unit tests.",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "a02542d77ea02b88d13a8456ea0d7fb79e825a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7453f42_2a6a37a5",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:28:46Z",
+      "side": 1,
+      "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "a02542d77ea02b88d13a8456ea0d7fb79e825a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9398015_5ebb8795",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:28:46Z",
+      "side": 1,
+      "message": "Put the new battery support into a separate CL, and add the ojal changes separately.",
+      "revId": "a02542d77ea02b88d13a8456ea0d7fb79e825a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5851e59d_a1bd02ed",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:28:46Z",
+      "side": 1,
+      "message": "This bug number is not correct.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "a02542d77ea02b88d13a8456ea0d7fb79e825a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5fc3532_e6df8680",
+        "filename": "zephyr/program/ocelot/ojal/project.conf",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:28:46Z",
+      "side": 1,
+      "message": "Not needed - `choice` style symbols ensure that only one option is selected.  The last option set to `\u003dy` is the selected option.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "a02542d77ea02b88d13a8456ea0d7fb79e825a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
