@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c59cde_36af3774",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T11:19:40Z",
+      "side": 1,
+      "message": "Please fix all `Please remove the trailing whitespace.` errors",
+      "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7362ea0e_188a00cb",
@@ -127,6 +144,30 @@
       "side": 1,
       "message": "It is standard library, I will modify it only link for CONFIG_FP_FT9865_ALGORITHM.",
       "parentUuid": "390273bd_53c2deb2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8138e94_97004ec3",
+        "filename": "zephyr/subsys/fingerprint/alg/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T11:19:40Z",
+      "side": 1,
+      "message": "I think it should be linked with the private lib then since the lib is the one that uses it.",
+      "parentUuid": "e8298c5e_aea42be9",
       "range": {
         "startLine": 11,
         "startChar": 0,
