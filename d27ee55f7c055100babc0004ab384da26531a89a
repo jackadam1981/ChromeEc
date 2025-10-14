@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e603bb9_58c33ec6",
+        "filename": "zephyr/program/skywalker/padme/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T10:02:41Z",
+      "side": 1,
+      "message": "There is a 3.3V pull up in schematic, GPIO_VOLTAGE_1P8 flag can be removed.",
+      "revId": "d27ee55f7c055100babc0004ab384da26531a89a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
