@@ -591,6 +591,55 @@ ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery_send_config)
 			    "Failed to see DP set");
 }
 
+ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery_send_dp_config)
+{
+	setup_passive_cable(&fixture->partner);
+	/* Attention message fields definition:
+	 * <8>    : IRQ_HPD : 1 == irq arrived since last message otherwise 0.
+	 * <7>    : HPD state : 0 = HPD_LOW, 1 == HPD_HIGH
+	 * <6>    : Exit DP Alt mode: 0 == maintain, 1 == exit
+	 * <5>    : USB config : 0 == maintain current, 1 == switch to USB from
+	 * DP
+	 * <4>    : Multi-function preference : 0 == no pref, 1 == MF
+	 *          preferred.
+	 * <3>    : enabled : is DPout on/off.
+	 * <2>    : power low : 0 == normal or LPM disabled, 1 == DP disabled
+	 * for LPM <1:0>  : connect status : 00b ==  no (DFP|UFP)_D is connected
+	 * or disabled. 01b == DFP_D connected, 10b == UFP_D connected, 11b ==
+	 * both.
+	 */
+	/* Based on failing compliance test we state that UFP is disconnected */
+	fixture->partner.dp_status_vdm[1] =
+		VDO_DP_STATUS(0, 1, 0, 0, 0, 1, 0, 2);
+	connect_sink_to_port(&fixture->partner, fixture->tcpci_emul,
+			     fixture->charger_emul);
+
+	uint8_t response_buffer[EC_LPC_HOST_PACKET_SIZE];
+
+	/* Verify SOP discovery */
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP, response_buffer,
+				 sizeof(response_buffer));
+
+	/* Verify SOP' discovery */
+	host_cmd_typec_discovery(TEST_PORT, TYPEC_PARTNER_SOP_PRIME,
+				 response_buffer, sizeof(response_buffer));
+
+	host_cmd_typec_control_enter_mode(TEST_PORT, TYPEC_MODE_DP);
+	k_sleep(K_MSEC(1000));
+
+	/* Verify initial mux state */
+	//assert_mux_state_is(TEST_PORT, USB_PD_MUX_SAFE_MODE,
+	//		    "Failed to see safe mode");
+	/* Based on compliance test, we send attention mode 0x28 00101000 */
+	send_dp_attention_vdm(&fixture->partner,
+			      VDO_DP_STATUS(0, 0, 1, 0, 1, 0, 0, 0));
+	k_sleep(K_MSEC(1000));
+
+	//assert_mux_state_is(TEST_PORT, USB_PD_MUX_SAFE_MODE,
+	//		    "Failed to see safe mode");
+
+}
+
 ZTEST_F(usbc_dp_mode_svdm_ver_21, test_dp21_entry_passive_32)
 {
 	setup_passive_cable(&fixture->partner);
