@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad788ff4_afef9a7b",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-14T16:05:41Z",
+      "side": 1,
+      "message": "The latest patchset 6 hasn\u0027t fixed it (still uses the same name). The below comments are the same.",
+      "parentUuid": "1536c7d9_f08a187f",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8aa7492a_678b6658",
         "filename": "zephyr/shim/chip/rtk/power_policy.c",
         "patchSetId": 5
