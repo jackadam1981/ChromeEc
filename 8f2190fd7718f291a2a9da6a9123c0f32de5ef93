@@ -22,6 +22,30 @@
       },
       "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54b67e1_a7aadd35",
+        "filename": "zephyr/program/bluey/src/heartbeat_wake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-10-14T06:45:37Z",
+      "side": 1,
+      "message": "\u003e Please store the current battery level at shutdown hook and check for delta here.\n\nIs this because we don\u0027t have the control on when the charging will stop during slow charging ??\n\n\u003e Additionally, poweron the chipset if battery level is below the threshold (e.g. 20% for off-mode\n\nThe chipset will power-on if the battery is below the `BATTERY_STATE_OF_CHARGE_LOWER_THRESHOLD`",
+      "parentUuid": "92e229e5_358bf70e",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
