@@ -117,7 +117,7 @@ void hook_notify(enum hook_type type)
 	uint64_t run_time;
 #endif
 
-	CPRINTS("hook notify %d", type);
+	CPRINTS_L2("hook notify %d", type);		//this change is just for pujjoga
 
 	start = hook_list[type].start;
 	end = hook_list[type].end;

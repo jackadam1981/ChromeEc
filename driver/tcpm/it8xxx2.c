@@ -679,7 +679,7 @@ static int it8xxx2_tcpm_transmit(int port, enum tcpci_msg_type type,
 {
 	int status = TCPC_TX_COMPLETE_FAILED;
 	bool pd_transmit_complete_called = false;
-
+	
 	switch (type) {
 	case TCPCI_MSG_SOP:
 	case TCPCI_MSG_SOP_PRIME:

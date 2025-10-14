@@ -620,7 +620,6 @@ int tcpci_tcpm_set_src_ctrl(int port, int enable)
 {
 	int cmd = enable ? TCPC_REG_COMMAND_SRC_CTRL_HIGH :
 			   TCPC_REG_COMMAND_SRC_CTRL_LOW;
-
 	return tcpc_write(port, TCPC_REG_COMMAND, cmd);
 }
 
@@ -941,6 +940,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 {
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4 * PD_HEADER_CNT(header);
+	timestamp_t tx_ts = get_time();		//this change is common for anraggar and pujjoga
 
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
@@ -1009,7 +1009,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 	 * discarded and don't tell the TCPC to transmit.
 	 */
 	if (tcpm_has_pending_message(port)) {
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED);
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED,&tx_ts);	//this change is common for anraggar and pujjoga
 		return EC_ERROR_BUSY;
 	}
 
@@ -1198,6 +1198,7 @@ void tcpci_tcpc_alert(int port)
 	uint32_t pd_event = 0;
 	int retval = 0;
 	bool bist_mode;
+	timestamp_t alert_ts = get_time();	//this change is common for anraggar and pujjoga
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1234,7 +1235,7 @@ void tcpci_tcpc_alert(int port)
 		else
 			tx_status = TCPC_TX_COMPLETE_FAILED;
 
-		pd_transmit_complete(port, tx_status);
+		pd_transmit_complete(port, tx_status,&alert_ts);	//this change is common for anraggar and pujjoga
 	}
 
 	tcpc_get_bist_test_mode(port, &bist_mode);
@@ -1592,7 +1593,7 @@ int tcpci_tcpm_init(int port)
 
 	/* Cache our device capabilities for future reference */
 	tcpc_read16(port, TCPC_REG_DEV_CAP_1, &dev_cap_1[port]);
-
+	
 	return EC_SUCCESS;
 }
 

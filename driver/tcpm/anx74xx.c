@@ -973,7 +973,6 @@ void anx74xx_tcpc_alert(int port)
 {
 	int reg;
 	int failed_attempts;
-
 	/* Clear soft irq bit */
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_3,
 		   ANX74XX_REG_CLEAR_SOFT_IRQ);
@@ -985,10 +984,8 @@ void anx74xx_tcpc_alert(int port)
 	/* Prioritize TX completion because PD state machine is waiting */
 	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT)
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
-
 	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT)
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
-
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (reg & ANX74XX_REG_IRQ_CC_MSG_INT) {
@@ -1036,7 +1033,6 @@ void anx74xx_tcpc_alert(int port)
 	if (reg & ANX74XX_REG_ALERT_TX_HARD_RESETOK)
 		/* ANX hardware clears the request bit */
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
-
 	/* Read and clear TCPC extended alert register 2 */
 	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
