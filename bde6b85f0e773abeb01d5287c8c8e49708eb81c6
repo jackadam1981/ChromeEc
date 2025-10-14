@@ -96,6 +96,23 @@
       },
       "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216af476_27d62d10",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_em32f967.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-14T05:10:10Z",
+      "side": 1,
+      "message": "You might want to return the error code on line 90\n```suggestion\n\treturn ret;\n```",
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
