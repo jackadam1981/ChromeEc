@@ -4536,6 +4536,19 @@ test_mockable int pdc_power_mgmt_set_trysrc(int port, bool enable)
 	return public_api_block(port, CMD_PDC_SET_DRP);
 }
 
+test_mockable int pdc_power_mgmt_set_ccom(int port, enum ccom_t ccom)
+{
+	if (!pdc_power_mgmt_is_pdc_port_valid(port)) {
+		return -ERANGE;
+	}
+
+	LOG_INF("C%d: PD setting CCOM=%d", port, ccom);
+
+	pdc_data[port]->port.una_policy.cc_mode = ccom;
+
+	return public_api_block(port, CMD_PDC_SET_CCOM);
+}
+
 static void set_hpd_wake_watch(int port)
 {
 	struct pdc_port_t *port_data = &pdc_data[port]->port;
@@ -5090,6 +5103,7 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 			}
 
 			ret = pdc_set_comms_state(pdc_data[p]->port.pdc, true);
+
 			if (ret) {
 				LOG_ERR("Cannot resume port C%d driver: %d", p,
 					ret);

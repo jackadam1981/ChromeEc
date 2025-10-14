@@ -589,6 +589,17 @@ int pdc_power_mgmt_frs_enable(int port_num, bool enable);
 int pdc_power_mgmt_set_trysrc(int port, bool enable);
 
 /**
+ * @brief set ccom on a port
+ *
+ * @param port USB-C port number
+ * @param ccom ccom type to set on port
+ *
+ * @retval 0 if successful
+ * @retval -ERANGE if \p port is invalid
+ */
+int pdc_power_mgmt_set_ccom(int port, enum ccom_t ccom);
+
+/**
  * @brief Query current dual-role power (DRP) setting
  *
  * @param port USB-C port number
