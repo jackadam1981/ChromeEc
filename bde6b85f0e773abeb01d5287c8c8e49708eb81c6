@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff5fe1e_9b7183f4",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_em32f967.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-14T05:07:21Z",
+      "side": 1,
+      "message": "Remove this line",
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8500600_50bc328f",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_em32f967.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-14T05:07:21Z",
+      "side": 1,
+      "message": "remove this line",
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c5ce2b_9eb010f1",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_em32f967.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-14T05:07:21Z",
+      "side": 1,
+      "message": "Use LOG_DBG for spammy debug messages. (This one and all LOG_INF below)",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
