@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432a903b_6561ee15",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx_fwup.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-10-14T08:27:01Z",
+      "side": 1,
+      "message": "Can we use (RTS54XX_GET_IC_STATUS_PD_VER_MINOR_OFFSET + 1) here?",
+      "range": {
+        "startLine": 42,
+        "startChar": 44,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "cc85fd1852cb1e454ebefb776d87242b5d0710e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
