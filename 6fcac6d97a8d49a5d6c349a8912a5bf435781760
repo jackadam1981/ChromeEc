@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bba16b_bdfd87c1",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "This is not merged in the upstream. I don\u0027t think we can merge this driver, because it uses not existing headers.",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a85513_b2f9c14d",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "No need to use goto. Just return here.",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7885e18d_01b71b25",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "No need to use goto. Just return here.",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a00420_67a5980b",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "Too verbose for LOG_INF",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a030fc8_dd774bb9",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "Why are you using a static buffer here?",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d33ada8_34525fa7",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a4748f_65877304",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "Too verbose for LOG_INF",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aba99e7_6ee53a55",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T10:18:03Z",
+      "side": 1,
+      "message": "Too verbose for LOG_INF",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
