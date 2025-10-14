@@ -655,8 +655,9 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	mux_state_t mux_state;
+	uint32_t status = payload[1];
 
-	dp_status[port] = payload[1];
+	dp_status[port] = status;
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) && (irq || lvl))
 		/*
@@ -670,6 +671,17 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		return 1;
+	}
+
+	if (status & (DP_STATUS_EXIT_DP_ALT_MODE | DP_STATUS_MF_PREFERENCE)) {
+		/*
+		 * UFP is requesting a change to the USB/DP pin configuration.
+		 * This is handled by re-sending the DP_Configure message.
+		 */
+		dp_state[port] = DP_PREPARE_CONFIG;
+		// TODO call vdo_count = 8;
+		// dp_setup_next_vdm(port, &vdo_count, &status);
 		return 1;
 	}
 
