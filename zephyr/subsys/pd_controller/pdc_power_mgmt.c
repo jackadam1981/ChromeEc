@@ -5130,6 +5130,11 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 			return -EALREADY;
 		}
 
+		/* Disconnect the Port */
+		for (int p = 0; p < port_count; p++) {
+			pdc_power_mgmt_set_ccom(p, CCOM_DISABLED);
+		}
+
 		/* Request each port's PDC state machine to enter the suspend
 		 * state.
 		 */
