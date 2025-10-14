@@ -89,6 +89,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "468efe99_20e6394d",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-14T22:34:20Z",
+      "side": 1,
+      "message": "With `CONFIG_AP_PWRSEQ_DRIVER` set, both `board_ap_power_action_g3_s5` and \n`board_ap_power_check_power_rails_enabled` can be included in single power state handler:\n\n```suggestion\nstatic int board_ap_power_action_g3_run(void *data)\n{\n\tif (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {\n\t\tpower_signal_set(PWR_EN_PP5000_A, 1);\n\t\tpower_signal_set(PWR_EN_PP3300_A, 1);\n\n\t\tupdate_ap_boot_time(ARAIL);\n\t}\n\t/* Handle `gpio_pwr_1p25v_pg` delay */\n\treturn power_signal_get(PWR_EN_PP3300_A) \u0026\u0026\n\t       power_signal_get(PWR_EN_PP5000_A) \u0026\u0026\n\t       gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pwr_1p25v_pg));\n}\n```\nTo make this more robust, you can consider declaring `gpio_pwr_1p25v_pg` as power signal to avoid missing signal assertion.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59fce6b3_4284edcb",
         "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
         "patchSetId": 19
