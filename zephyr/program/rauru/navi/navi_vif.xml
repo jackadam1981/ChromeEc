@@ -157,7 +157,7 @@
         <vif:Snk_PDO_Supply_Type value="2">Variable</vif:Snk_PDO_Supply_Type>
         <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
         <vif:Snk_PDO_Max_Voltage value="400">20000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
-        <vif:Snk_PDO_Op_Current value="310">3100 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
+        <vif:Snk_PDO_Op_Current value="315">3150 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
       </vif:SnkPDO>
     </vif:SnkPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -179,7 +179,7 @@
     <vif:DFP_VDO_Port_Number value="0">0</vif:DFP_VDO_Port_Number>
     <vif:Modal_Operation_Supported_SOP value="false" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
-    <vif:PID_SOP value="20570">505A</vif:PID_SOP>
+    <vif:PID_SOP value="0">0000</vif:PID_SOP>
     <vif:bcdDevice_SOP value="0">0000</vif:bcdDevice_SOP>
   </vif:Component>
   <vif:Component>
@@ -324,7 +324,7 @@
         <vif:Snk_PDO_Supply_Type value="2">Variable</vif:Snk_PDO_Supply_Type>
         <vif:Snk_PDO_Min_Voltage value="95">4750 mV (Factor = 50)</vif:Snk_PDO_Min_Voltage>
         <vif:Snk_PDO_Max_Voltage value="400">20000 mV (Factor = 50)</vif:Snk_PDO_Max_Voltage>
-        <vif:Snk_PDO_Op_Current value="310">3100 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
+        <vif:Snk_PDO_Op_Current value="315">3150 mA (Factor = 10)</vif:Snk_PDO_Op_Current>
       </vif:SnkPDO>
     </vif:SnkPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -346,7 +346,7 @@
     <vif:DFP_VDO_Port_Number value="1">1</vif:DFP_VDO_Port_Number>
     <vif:Modal_Operation_Supported_SOP value="false" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
-    <vif:PID_SOP value="20570">505A</vif:PID_SOP>
+    <vif:PID_SOP value="0">0000</vif:PID_SOP>
     <vif:bcdDevice_SOP value="0">0000</vif:bcdDevice_SOP>
   </vif:Component>
   <!--Non-USB Content-->
