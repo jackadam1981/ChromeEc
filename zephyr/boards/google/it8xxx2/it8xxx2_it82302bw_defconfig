@@ -20,3 +20,9 @@ CONFIG_WATCHDOG=y
 
 # BBRAM
 CONFIG_BBRAM=y
+
+# Link some code into RAM to improve performance. (add? no board to verify)
+CONFIG_LTO=n
+CONFIG_SOC_IT8XXX2_SERIAL_IN_RAM=y
+CONFIG_SOC_IT8XXX2_KERNEL_IN_RAM=y
+CONFIG_SOC_IT8XXX2_ZEPHYR_IN_RAM=y
