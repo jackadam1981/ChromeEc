@@ -22,6 +22,30 @@
       },
       "revId": "d51efe53549025594806e8b01ce0c163a80312a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52526e8d_af87875c",
+        "filename": "test/tpm_test/sb.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-10-14T22:40:49Z",
+      "side": 1,
+      "message": "I think `test_mode` is not supported in V3, so TEE can return error if it is set.",
+      "parentUuid": "931f5b1a_dfede955",
+      "range": {
+        "startLine": 284,
+        "startChar": 72,
+        "endLine": 284,
+        "endChar": 75
+      },
+      "revId": "d51efe53549025594806e8b01ce0c163a80312a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
