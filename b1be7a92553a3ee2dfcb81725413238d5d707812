@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51b1789_09713677",
+        "filename": "zephyr/test/mtk_power/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-10-14T06:12:14Z",
+      "side": 1,
+      "message": "In my observation, pg_pp3700_s5_od goes from 1 to 0 when S5 -\u003e G3. Do we also have to set `zassert_ok(gpio_emul_input_set(gpio_dev, PG_PP3700_S5, 0));` when target \u003d\u003d POWER_G3?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 61
+      },
+      "revId": "b1be7a92553a3ee2dfcb81725413238d5d707812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edfbdc8b_6c608cb6",
+        "filename": "zephyr/test/mtk_power/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-10-14T06:12:14Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 179,
+        "startChar": 19,
+        "endLine": 179,
+        "endChar": 21
+      },
+      "revId": "b1be7a92553a3ee2dfcb81725413238d5d707812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
