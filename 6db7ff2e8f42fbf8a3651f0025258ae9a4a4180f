@@ -16,6 +16,29 @@
       "message": "Can you provide more details about why CONFIG_LTO and the _IN_RAM configs are not compatible?",
       "revId": "6db7ff2e8f42fbf8a3651f0025258ae9a4a4180f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e24a31d_84dcf2d6",
+        "filename": "zephyr/program/brox/ite.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T19:54:44Z",
+      "side": 1,
+      "message": "If we want this to be the default for ITE, these settings should be moved to one of the defconfig files under zephyr/boards/google/it8xxx2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "6db7ff2e8f42fbf8a3651f0025258ae9a4a4180f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
