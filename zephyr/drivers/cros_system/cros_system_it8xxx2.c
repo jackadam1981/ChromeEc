@@ -240,6 +240,8 @@ static int system_it8xxx2_hibernate_by_deep_doze(const struct device *dev,
 
 #define ELPMF1_WAKE_UP_CTRL3 0xF1
 #define XLPINS_BYPASS_EN BIT(2)
+#define FIRMWARE_CTRL_EN BIT(1)
+#define FIRMWARE_CTRL_OUTPUT_H BIT(0)
 
 #define ELPMF2_XLPIN_LATCH_STS 0xF2
 #define ELPMF3_XLPIN_RISING_EDGE_STS 0xF3
@@ -299,7 +301,9 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 	sys_write8(xlpins_enable, ELPM_BASE_ADDR + ELPMF8_XLPIN_LATCH_EN);
 
 	/* enable bypass mode (non-debounced) */
-	sys_write8(XLPINS_BYPASS_EN, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+	sys_write8(sys_read8(ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3) |
+			   XLPINS_BYPASS_EN,
+		   ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
 
 	/* clear xlpins status before enabling them */
 	sys_write8(xlpins_enable,
@@ -307,14 +311,18 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 	sys_write8(xlpins_enable,
 		   ELPM_BASE_ADDR + ELPMF4_XLPIN_FALLING_EDGE_STS);
 
-	/* configure xlpins polarity and enable them. This setup allows the EC
-	 * chip's main power(VSTBY) to turn off (entering hibernate mode) and
-	 * the chip is only woken upon the assertion of one of configured XLPIN
-	 * wake-up pins.
-	 */
+	/* configure xlpins polarity and enable them */
 	sys_write8(polarity_ctrl_val,
 		   ELPM_BASE_ADDR + ELPMF7_XLPIN_POLARITY_CTRL);
 	sys_write8(xlpins_enable, ELPM_BASE_ADDR + ELPMF5_XLPIN_INPUT_ENABLE);
+
+	/* Disable firmware control mode so that the EC chip’s main
+	 * power (VSTBY) turns off, entering hibernate mode. The chip is only
+	 * woken upon the assertion of one of configured XLPIN wake-up pins.
+	 */
+	sys_write8(sys_read8(ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3) &
+			   ~(FIRMWARE_CTRL_EN | FIRMWARE_CTRL_OUTPUT_H),
+		   ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
 
 	return 0;
 }
