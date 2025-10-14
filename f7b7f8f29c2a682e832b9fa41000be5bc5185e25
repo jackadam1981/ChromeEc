@@ -59,6 +59,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc130c87_dbdf785d",
+        "filename": "driver/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6868641_8016b0ca",
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e298fef_e1d2a9c9",
@@ -72,6 +90,30 @@
       "writtenOn": "2025-09-24T22:37:25Z",
       "side": 1,
       "message": "No need for the CONFIG_ZEPHYR check.  This driver will only be used on Zephyr EC boards.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3d1241_cde295de",
+        "filename": "driver/temp_sensor/apl6012.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e298fef_e1d2a9c9",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -105,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7f68db_fa64ad59",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4496,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a9da9c2_456bbcda",
+      "range": {
+        "startLine": 4496,
+        "startChar": 0,
+        "endLine": 4496,
+        "endChar": 72
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d86976ab_85e74579",
@@ -118,6 +184,30 @@
       "writtenOn": "2025-09-23T16:43:56Z",
       "side": 1,
       "message": "address",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c999084f_7815339f",
+        "filename": "include/driver/temp_sensor/apl6012.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d86976ab_85e74579",
       "range": {
         "startLine": 16,
         "startChar": 26,
@@ -151,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9faeebf_d4944cc0",
+        "filename": "include/driver/temp_sensor/apl6012.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de78d65_6b6d20e3",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae67ef18_98877f13",
@@ -168,6 +282,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f52ba0d_253f3ef3",
+        "filename": "include/driver/temp_sensor/apl6012.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Delete it",
+      "parentUuid": "ae67ef18_98877f13",
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74b1bfa2_a5279b85",
@@ -181,6 +313,30 @@
       "writtenOn": "2025-09-24T22:37:25Z",
       "side": 1,
       "message": "Delete - this won\u0027t be used with legacy EC",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 776,
+        "endChar": 0
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "162f2514_ba137995",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T08:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74b1bfa2_a5279b85",
       "range": {
         "startLine": 771,
         "startChar": 0,
