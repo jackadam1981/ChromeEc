@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd37dccc_db5ca109",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-14T09:58:14Z",
+      "side": 1,
+      "message": "We use b:451868360 to track all Lapis ztest code. The SR tests need public FW, so we want to merge this CL first, then we use new CL to complete the ztest code.",
+      "parentUuid": "013dc7d7_47b2f80c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "f7b7f8f29c2a682e832b9fa41000be5bc5185e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8045b967_8dfb942f",
