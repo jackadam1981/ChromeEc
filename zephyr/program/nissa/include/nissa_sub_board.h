@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_NISSA_NISSA_SUB_BOARD_H__
 #define __CROS_EC_NISSA_NISSA_SUB_BOARD_H__
 
+
 enum nissa_sub_board_type {
 	NISSA_SB_UNKNOWN = -1, /* Uninitialised */
 	NISSA_SB_NONE = 0, /* No board defined */

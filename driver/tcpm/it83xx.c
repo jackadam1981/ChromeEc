@@ -723,6 +723,8 @@ static int it83xx_tcpm_transmit(int port, enum tcpci_msg_type type,
 				uint16_t header, const uint32_t *data)
 {
 	int status = TCPC_TX_COMPLETE_FAILED;
+	bool pd_transmit_complete_called = false;
+	timestamp_t tx_ts = get_time();
 
 	switch (type) {
 	case TCPCI_MSG_SOP:
@@ -731,6 +733,12 @@ static int it83xx_tcpm_transmit(int port, enum tcpci_msg_type type,
 	case TCPCI_MSG_SOP_DEBUG_PRIME:
 	case TCPCI_MSG_SOP_DEBUG_PRIME_PRIME:
 		status = it83xx_tx_data(port, type, header, data);
+		/* To improve the SendResponseTimer accuracy,
+		 * pd_transmit_complete() is call inside irq handler if the
+		 * message is successfully transmitted.
+		 */
+		pd_transmit_complete_called =
+			(status == TCPC_TX_COMPLETE_SUCCESS);
 		break;
 	case TCPCI_MSG_TX_BIST_MODE_2:
 		it83xx_send_bist_mode2_pattern(port);
@@ -744,8 +752,9 @@ static int it83xx_tcpm_transmit(int port, enum tcpci_msg_type type,
 		status = TCPC_TX_COMPLETE_FAILED;
 		break;
 	}
-	pd_transmit_complete(port, status);
-
+	if (!pd_transmit_complete_called) {
+		pd_transmit_complete(port, status, &tx_ts);
+	}
 	return EC_SUCCESS;
 }
 

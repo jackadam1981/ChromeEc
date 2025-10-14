@@ -13,6 +13,7 @@
 #include "tcpm/tcpm.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
+#include "timer.h"
 
 #ifdef __cplusplus
 extern "C" {
