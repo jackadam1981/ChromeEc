@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2fe9509_19908478",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-14T05:08:52Z",
+      "side": 1,
+      "message": "Use short link CL:XXX\n\n```suggestion\nThis patch is based on CL:6781020\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 78
+      },
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ac6a4b_665c1805",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-14T05:08:52Z",
+      "side": 1,
+      "message": "Add BUG\u003d and TEST\u003d line here",
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ff5fe1e_9b7183f4",
         "filename": "zephyr/drivers/cros_flash/cros_flash_em32f967.c",
         "patchSetId": 7
