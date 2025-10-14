@@ -16,6 +16,24 @@
       "message": "This should catch the majority of threads created, but some [thread priorities](https://source.chromium.org/search?q\u003dTHREAD_PRIORITY%20f:platform%2Fec%2F%20%20case:y%20f:Kconfig%7C%5C.c\u0026sq\u003d\u0026ss\u003dchromiumos) are not captured by the `EC_TASK_*` enums.  Should we consider adding these as EC_TASKs?",
       "revId": "5b7637f2277e25f804ea3ac2c3ef4b5023d7cef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e74806_c4a590fb",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-14T01:03:41Z",
+      "side": 1,
+      "message": "Added these thread priorities to the enum as follow on CLs. Managing this enum is cumbersome, but it shouldn\u0027t need to be updated often.",
+      "parentUuid": "4ce10ae0_6605c290",
+      "revId": "5b7637f2277e25f804ea3ac2c3ef4b5023d7cef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
