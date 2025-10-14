@@ -384,6 +384,24 @@
       "parentUuid": "7f52dd40_bb249e6b",
       "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36d6eda_2c43b143",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-14T16:02:58Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ddb23ae2_2dfb771d",
+      "revId": "1cfdcffe33388f5914c5bb369ad7abdd3cd7b894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
