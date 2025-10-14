@@ -113,6 +113,29 @@
       "message": "You might want to return the error code on line 90\n```suggestion\n\treturn ret;\n```",
       "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0dba7c6_f0e1f603",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_em32f967.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T05:24:54Z",
+      "side": 1,
+      "message": "Please remove. I don\u0027t think these functions will be ever implemented.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "bde6b85f0e773abeb01d5287c8c8e49708eb81c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
