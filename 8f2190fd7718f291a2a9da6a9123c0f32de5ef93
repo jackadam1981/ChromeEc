@@ -70,6 +70,30 @@
       },
       "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d81745_5a870457",
+        "filename": "zephyr/program/bluey/src/heartbeat_wake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-10-14T21:23:20Z",
+      "side": 1,
+      "message": "In that case, would you be open to lowering the `BATTERY_STATE_OF_CHARGE_LOWER_THRESHOLD`? The current implementation aims to maintain the battery SoC within a specific range. Given that slow charging is a temporary solution, setting a lower threshold, such as 75%, could be a good starting point. This would avoid the need to modify the implementation once the full solution is enabled.\n\nWhat are your thoughts on this?",
+      "parentUuid": "53ccabf5_7c457029",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
