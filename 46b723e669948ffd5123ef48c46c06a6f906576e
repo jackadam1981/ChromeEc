@@ -111,6 +111,30 @@
       },
       "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8298c5e_aea42be9",
+        "filename": "zephyr/subsys/fingerprint/alg/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-10-14T01:00:37Z",
+      "side": 1,
+      "message": "It is standard library, I will modify it only link for CONFIG_FP_FT9865_ALGORITHM.",
+      "parentUuid": "390273bd_53c2deb2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
