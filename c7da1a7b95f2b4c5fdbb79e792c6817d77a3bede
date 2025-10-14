@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfc8c361_fc3f669a",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-14T22:40:43Z",
+      "side": 1,
+      "message": "**Correction**: AP Powe sequcne driver requires action handlers to return `0` in order to move forward. `board_ap_power_action_g3_run` must return 0 if all power signals are asserted.\n```\n\tif (power_signal_get(PWR_EN_PP3300_A) \u0026\u0026\n\t    power_signal_get(PWR_EN_PP5000_A) \u0026\u0026\n\t    gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pwr_1p25v_pg)))\n\t\treturn 0;\n\t\n\treturn 1;\n```",
+      "parentUuid": "468efe99_20e6394d",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59fce6b3_4284edcb",
         "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
         "patchSetId": 19
