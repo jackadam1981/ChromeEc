@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edffecd5_d1460be5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:21:49Z",
+      "side": 1,
+      "message": "Bernardo - can you also take a look at this CL?",
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce6caad_f952ec58",
+        "filename": "zephyr/program/ocelot/ojal/project.conf",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:21:49Z",
+      "side": 1,
+      "message": "This should be enabled.  `CONFIG_AP_PWRSEQ_DRIVER` is required for new designs.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b363b8b2_302153d6",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:21:49Z",
+      "side": 1,
+      "message": "Follow the example in board/ocelot/src/rvp_board_power.c for the correct CONFIG_AP_PWRSEQ_DRIVER functions.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fce6b3_4284edcb",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:21:49Z",
+      "side": 1,
+      "message": "This code is never executed.  This function is only called for power signals with the `intel,ap-pwrseq-external` compatible type. \nAll the power signals on ojal are either GPIO `intel,ap-pwrseq-gpio` or a virtual wire `intel,ap-pwrseq-vw`",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 52
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd78393_0ab09836",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:21:49Z",
+      "side": 1,
+      "message": "This function is also not used.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 63
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893acc13_d35af908",
+        "filename": "zephyr/program/ocelot/ojal/src/board_power.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:21:49Z",
+      "side": 1,
+      "message": "PWR_ALL_SYS_PWRGD is connected to a real GPIO and is not a \"soft\" power signal.  I think both `board_all_sys_pwrgd_interrupt` and `board_config_pwrgd_interrupt` should be removed.",
+      "range": {
+        "startLine": 118,
+        "startChar": 27,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "c7da1a7b95f2b4c5fdbb79e792c6817d77a3bede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
