@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8cb696_7481fe57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-14T15:53:00Z",
+      "side": 1,
+      "message": "`pdc comms suspend/resume` is for suppressing I2C communication to the PDC from the driver during PDC firmware update. It is not for PD/port control.",
+      "revId": "b57321baa1192f46396a1f44e666278d17842ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
