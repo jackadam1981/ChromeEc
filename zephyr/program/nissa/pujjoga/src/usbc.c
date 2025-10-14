@@ -14,15 +14,20 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include <stdint.h> //this corresponds to the anraggar change in anraggar in anraggar/src/usbc.c
 
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+static bool sourcing_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_C1, USBC_PORT_COUNT };
+
+static bool sourcing_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];	//this corresponds to the anraggar change in anraggar in anraggar/src/usbc.c
 
 __override uint8_t board_get_usb_pd_port_count(void)
 {
@@ -84,6 +89,7 @@ int board_set_active_charge_port(int port)
 		return EC_ERROR_UNKNOWN;
 	}
 
+	sourcing_vbus[port] = false; //this corresponds to the anraggar change in anraggar in anraggar/src/usbc.c
 	return EC_SUCCESS;
 }
 
@@ -118,17 +124,30 @@ void reset_nct38xx_port(int port)
 	gpio_reset_port(ioex_port0);
 }
 
+static void notify_power_change(void)
+{
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+DECLARE_DEFERRED(notify_power_change);
+
 void pd_power_supply_reset(int port)
 {
+	if (!sourcing_vbus[port])	//this corresponds to the anraggar change in anraggar in anraggar/src/usbc.c
+		return;
 	/* Disable VBUS. */
 	ppc_vbus_source_enable(port, 0);
+	sourcing_vbus[port] = false;	//this corresponds to the anraggar change in anraggar in anraggar/src/usbc.c
 
 	/* Enable discharge if we were previously sourcing 5V */
 	if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE))
 		pd_set_vbus_discharge(port, 1);
 
 	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	// pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	// /* Notify host of power info change. Defer call to avoid delaying Error
+	//  * Recovery path.
+	//  */
+	hook_call_deferred(&notify_power_change_data, 0);
 }
 
 int pd_set_power_supply_ready(int port)
@@ -149,12 +168,18 @@ int pd_set_power_supply_ready(int port)
 	if (rv) {
 		return rv;
 	}
+	sourcing_vbus[port] = true;	//this corresponds to the anraggar change in anraggar in anraggar/src/usbc.c
 
 	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	// pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	/* Notify host of power info change. Defer call to avoid delaying Error
+	 * Recovery path.
+	 */
+	hook_call_deferred(&notify_power_change_data, 0);
 
 	return EC_SUCCESS;
 }
+
 
 void board_reset_pd_mcu(void)
 {

@@ -744,8 +744,9 @@ static int it83xx_tcpm_transmit(int port, enum tcpci_msg_type type,
 		status = TCPC_TX_COMPLETE_FAILED;
 		break;
 	}
-	pd_transmit_complete(port, status);
-
+	if (!pd_transmit_complete_called) {
+		pd_transmit_complete(port, status);
+	}
 	return EC_SUCCESS;
 }
 

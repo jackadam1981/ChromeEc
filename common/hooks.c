@@ -117,11 +117,13 @@ void hook_notify(enum hook_type type)
 	uint64_t run_time;
 #endif
 
-	CPRINTS("hook notify %d", type);
+	CPRINTS_L2("hook notify %d", type);
 
 	start = hook_list[type].start;
 	end = hook_list[type].end;
 	count = end - start;
+
+	pd_record_timestamp_start(port, WHILE_IN_HOOK);
 
 	/* Call all the hooks in priority order */
 	while (called < count) {
@@ -140,6 +142,9 @@ void hook_notify(enum hook_type type)
 			}
 		}
 	}
+
+	pd_record_timestamp_end(port, WHILE_IN_HOOK);
+
 
 #ifdef CONFIG_HOOK_DEBUG
 	run_time = get_time().val - start_time;

@@ -18,6 +18,7 @@
 #include "usb_pd.h"
 #include "usb_pd_flags.h"
 #include "usbc_config.h"
+#include "timer.h"	//this change is common for anraggar and pujjoga
 
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
@@ -96,7 +97,7 @@ int pd_get_retry_count(int port, enum tcpci_msg_type type)
 	return 3;
 }
 
-void pd_transmit_complete(int port, int status)
+void pd_transmit_complete(int port, int status,  const timestamp_t *ts)	//this change is common for anraggar and pujjoga
 {
 }
 
