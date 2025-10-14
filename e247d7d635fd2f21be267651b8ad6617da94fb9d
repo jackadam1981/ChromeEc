@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62acb682_bc2f19b6",
+        "filename": "zephyr/program/ocelot/ojal/gpio.dtsi",
+        "patchSetId": 15
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T20:08:14Z",
+      "side": 1,
+      "message": "You have the the SLP_S3 signal configured as a virtual wire in the next CL.\nIf you are going to use the virtual wire, move this signal to the unused section below.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "e247d7d635fd2f21be267651b8ad6617da94fb9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
