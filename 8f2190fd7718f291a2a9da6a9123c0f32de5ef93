@@ -46,6 +46,30 @@
       },
       "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ccabf5_7c457029",
+        "filename": "zephyr/program/bluey/src/heartbeat_wake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2025-10-14T09:40:41Z",
+      "side": 1,
+      "message": "Yes, we need to consider cases where the battery might not charge to 100% due to depletion or thermal conditions. Checking for changes in `battery_soc` would be a better approach.\n\nBy \"threshold,\" I meant a minimum value. For example, we shouldn\u0027t wait for further discharge if the SOC is at 20% or say 4%.",
+      "parentUuid": "e54b67e1_a7aadd35",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
