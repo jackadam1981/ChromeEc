@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0df3a5e_a7295cb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T21:32:02Z",
+      "side": 1,
+      "message": "Fix the bug number for test coverage.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d18629a_c815ccbd",
+        "filename": "zephyr/program/ocelot/ojal/fan.dtsi",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-14T21:32:02Z",
+      "side": 1,
+      "message": "These temperature sensors also need thresholds for halting the main processor.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
