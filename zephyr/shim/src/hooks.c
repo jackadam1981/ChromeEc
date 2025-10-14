@@ -16,6 +16,8 @@
 #include <ap_power/ap_power.h>
 #include <ap_power/ap_power_events.h>
 
+#define CPRINTS(format, args...) cprints(CC_HOOK, format, ##args)
+
 /*
  * hook_registry maps each hook_type to the list of handlers for that hook type.
  *
@@ -126,6 +128,7 @@ SYS_INIT(zephyr_shim_setup_hooks, APPLICATION, 1);
 
 void hook_notify(enum hook_type type)
 {
+	
 	const struct zephyr_shim_hook_info *start = hook_registry[type].start;
 	const struct zephyr_shim_hook_info *end = hook_registry[type].end;
 	int last_prio = HOOK_PRIO_FIRST - 1;
@@ -166,6 +169,57 @@ void hook_notify(enum hook_type type)
 		}
 	};
 }
+
+// void hook_notify(enum hook_type type)
+// {
+// 	const struct zephyr_shim_hook_info *start = hook_registry[type].start;
+// 	const struct zephyr_shim_hook_info *end = hook_registry[type].end;
+// 	int last_prio = HOOK_PRIO_FIRST - 1;
+// 	int count = 0;
+
+// 	__ASSERT(type >= 0 && type < HOOK_TYPE_COUNT,
+// 		 "hook type %d is out of range (maximum hook_type value %d)",
+// 		 type, HOOK_TYPE_COUNT);
+
+// 	if (!start || !end)
+// 		return;
+
+// 	count = end - start;
+// 	ccprintf("hook_notify(%d): %d hooks\n", type, count);
+
+// 	timestamp_t total_start = get_time();
+
+// 	while (1) {
+// 		int prio = INT_MAX;
+
+// 		/* Find next higher priority */
+// 		for (const struct zephyr_shim_hook_info *p = start; p != end; p++) {
+// 			if (p->priority > last_prio)
+// 				prio = MIN(prio, p->priority);
+// 		}
+
+// 		if (prio == INT_MAX)
+// 			break;
+
+// 		last_prio = prio;
+
+// 		/* Call handlers of this priority */
+// 		for (const struct zephyr_shim_hook_info *p = start; p != end; p++) {
+// 			if (p->priority == prio) {
+// 				timestamp_t hstart = get_time();
+// 				p->routine();
+// 				timestamp_t hend = get_time();
+// 				ccprintf("  hook %p (prio %d) took %d us\n",
+// 					 p->routine, p->priority,
+// 					 (int)(hend.val - hstart.val));
+// 			}
+// 		}
+// 	}
+
+// 	timestamp_t total_end = get_time();
+// 	ccprintf("hook_notify(%d) total: %d us\n",
+// 		 type, (int)(total_end.val - total_start.val));
+// }
 
 int hook_call_deferred(const struct deferred_data *data, int us)
 {

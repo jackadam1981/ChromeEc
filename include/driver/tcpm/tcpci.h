@@ -13,6 +13,7 @@
 #include "tcpm/tcpm.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
+#include "timer.h"	//this change is common for anraggar and pujjoga
 
 #ifdef __cplusplus
 extern "C" {

@@ -1049,12 +1049,19 @@ void pe_invalidate_explicit_contract(int port)
 	pe_invalidate_explicit_contract_frs_untouched(port);
 }
 
+static void notify_pd_event_typec(void)	
+{
+	pd_send_host_event(PD_EVENT_TYPEC);
+}
+DECLARE_DEFERRED(notify_pd_event_typec);
+
 void pd_notify_event(int port, uint32_t event_mask)
 {
 	atomic_or(&pe[port].events, event_mask);
 
 	/* Notify the host that new events are available to read */
-	pd_send_host_event(PD_EVENT_TYPEC);
+	// pd_send_host_event(PD_EVENT_TYPEC);
+	hook_call_deferred(&notify_pd_event_typec_data, 0);
 }
 
 void pd_clear_events(int port, uint32_t clear_mask)
@@ -1489,7 +1496,7 @@ void pe_clear_port_data(int port)
 #else
 static void pe_clear_port_data(int port)
 #endif /* TEST_BUILD */
-{
+{	
 	/*
 	 * PD 3.0 Section 8.3.3.3.8
 	 * Note: The HardResetCounter is reset on a power cycle or Detach.
@@ -1497,19 +1504,26 @@ static void pe_clear_port_data(int port)
 	pe[port].hard_reset_counter = 0;
 
 	/* Reset port events */
+	pd_record_timestamp_start(port, PD_CLEAR_EVENTS);
 	pd_clear_events(port, GENMASK(31, 0));
+	pd_record_timestamp_end(port, PD_CLEAR_EVENTS);
 
 	/* But then set disconnected event */
+	pd_record_timestamp_start(port, PD_NOTIFY_EVENTS);
 	pd_notify_event(port, PD_STATUS_EVENT_DISCONNECTED);
+	pd_record_timestamp_end(port, PD_NOTIFY_EVENTS);
 
 	/* Tell Policy Engine to invalidate the explicit contract */
+	pd_record_timestamp_start(port, PD_EXPLICIT_CONTRACT);
 	pe_invalidate_explicit_contract(port);
-
+	pd_record_timestamp_end(port, PD_EXPLICIT_CONTRACT);
 	/*
 	 * Saved Source and Sink Capabilities are no longer valid on disconnect
 	 */
+	pd_record_timestamp_start(port, PD_SET_SRC_SNK_CAPS);
 	pd_set_src_caps(port, 0, NULL);
 	pe_set_snk_caps(port, 0, NULL);
+	pd_record_timestamp_end(port, PD_SET_SRC_SNK_CAPS);
 
 	/*
 	 * Saved Revision responses are no longer valid on disconnect
@@ -1521,17 +1535,26 @@ static void pe_clear_port_data(int port)
 	pe[port].partner_rmdo.major_rev = 0;
 
 	/* Clear any stored discovery data, but leave modes for alt mode exit */
+	pd_record_timestamp_start(port, PD_DFP_DISCOVERY_INIT);
 	pd_dfp_discovery_init(port);
+	pd_record_timestamp_end(port, PD_DFP_DISCOVERY_INIT);
+
 
 	/* Clear any pending alerts */
+	pd_record_timestamp_start(port, PD_CLEAR_ADO);
 	pe_clear_ado(port);
+	pd_record_timestamp_end(port, PD_CLEAR_ADO);
 
+	pd_record_timestamp_start(port, DPM_REMOVE_SINK_SOURCE);
 	dpm_remove_sink(port);
 	dpm_remove_source(port);
 	dpm_init(port);
+	pd_record_timestamp_end(port, DPM_REMOVE_SINK_SOURCE);
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
+	pd_record_timestamp_start(port, SET_BIST_TEST_MODE);
 	tcpc_set_bist_test_mode(port, false);
+	pd_record_timestamp_end(port, SET_BIST_TEST_MODE);
 }
 
 void pe_set_requested_vconn_role(int port, enum pd_vconn_role role)
@@ -1569,8 +1592,9 @@ struct rmdo pd_get_partner_rmdo(int port)
 static void pe_handle_detach(void)
 {
 	const int port = TASK_ID_TO_PD_PORT(task_get_current());
-
+	pd_record_timestamp_start(port, PE_HANDLE_DETACH);
 	pe_clear_port_data(port);
+	pd_record_timestamp_end(port, PE_HANDLE_DETACH);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 
@@ -2352,7 +2376,6 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			tx_success_ts = prl_get_tcpc_tx_success_ts(port);
 			/* Calculate the delay from TX success to PE */
 			offset = time_since32(tx_success_ts);
-
 			int t_sender_response =
 				prl_get_rev(port, TCPCI_MSG_SOP) == PD_REV20 ?
 					PD2_T_SENDER_RESPONSE :
@@ -2365,7 +2388,13 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 			 * propagating the TX status.
 			 */
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
-					t_sender_response - offset);
+					t_sender_response - offset);				//this change is common for anraggar and pujjoga
+			
+			pd_record_timestamp(port, PD_INTERVAL_SENDER_RESPONSE,
+					    PD_START, tx_success_ts);
+			pd_record_timestamp(port,
+					    PD_INTERVAL_GOODCRC_TO_ERR_REC,
+					    PD_START, tx_success_ts);
 			return PE_MSG_SEND_COMPLETED;
 		}
 		return PE_MSG_SEND_PENDING;
@@ -2381,8 +2410,9 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
  */
 static void pe_sender_response_msg_exit(int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_SRT_DISABLE);		//this change is common for anraggar and pujjoga
 	pd_timer_disable(port, PE_TIMER_SENDER_RESPONSE);
-}
+	pd_record_timestamp_end(port, PD_INTERVAL_SRT_DISABLE);}
 
 /**
  * PE_SRC_Startup
@@ -5665,6 +5695,7 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 *   1) The SenderResponseTimer times out.
 	 */
 	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
+		pd_record_timestamp_end(port, PD_INTERVAL_SENDER_RESPONSE);		//this change is common for anraggar and pujjoga
 		set_state_pe(port, pe_in_frs_mode(port) ?
 					   PE_WAIT_FOR_ERROR_RECOVERY :
 					   PE_SNK_READY);
@@ -5679,12 +5710,17 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	if (pe_in_frs_mode(port) &&
 	    PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		pd_record_timestamp_start(port, PD_INTERVAL_PE_STATE_CHANGE);	//this change is common for anraggar and pujjoga
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+		pd_record_timestamp_end(port, PD_INTERVAL_PE_STATE_CHANGE);
 	}
 }
 
 static void pe_prs_snk_src_send_swap_exit(int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_ERR_REC);		//this change is common for anraggar and pujjoga
+	pd_record_timestamp_start(port, PD_INTERVAL_ERR_REC_FLAG);
+
 	pe_sender_response_msg_exit(port);
 }
 
@@ -8625,6 +8661,14 @@ uint8_t pd_get_src_cap_cnt(int port)
 	return 0;
 }
 
+static int notify_port;
+
+static void notify_memset(void)	//this change is just for pujjoga
+{
+	memset(pe[notify_port].discovery, 0, sizeof(pe[notify_port].discovery));
+}
+DECLARE_DEFERRED(notify_memset);
+
 /* Track access to the PD discovery structures during HC execution */
 atomic_t task_access[CONFIG_USB_PD_PORT_MAX_COUNT][DISCOVERY_TYPE_COUNT];
 
@@ -8633,8 +8677,13 @@ void pd_dfp_discovery_init(int port)
 	atomic_or(&task_access[port][TCPCI_MSG_SOP], BIT(task_get_current()));
 	atomic_or(&task_access[port][TCPCI_MSG_SOP_PRIME],
 		  BIT(task_get_current()));
+	
+	notify_port=port;
+	pd_record_timestamp_start(port, MEMSET_DFP_DISCOVERY);
+	// memset(pe[port].discovery, 0, sizeof(pe[port].discovery));
+	hook_call_deferred(&notify_memset_data, 0);
+	pd_record_timestamp_end(port, MEMSET_DFP_DISCOVERY);
 
-	memset(pe[port].discovery, 0, sizeof(pe[port].discovery));
 }
 
 void pd_dfp_mode_init(int port)
