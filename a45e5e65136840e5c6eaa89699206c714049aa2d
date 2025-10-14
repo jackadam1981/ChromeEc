@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e87ed52_bea0ec13",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "the code only checks the running EC board name vs. image being flashed.\nthere is no `dut-control ec_board_info`",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 38
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47906057_69f5844e",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem like the place where you\u0027d want to special case\nany particular dot-control sub-commands",
+      "range": {
+        "startLine": 291,
+        "startChar": 16,
+        "endLine": 291,
+        "endChar": 23
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4059c581_866fa578",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "isn\u0027t this always true?",
+      "range": {
+        "startLine": 901,
+        "startChar": 18,
+        "endLine": 901,
+        "endChar": 36
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ed6a7b_fe5e83f9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "uart",
+      "range": {
+        "startLine": 919,
+        "startChar": 50,
+        "endLine": 919,
+        "endChar": 55
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41bb4e4_b0e1ef80",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "anything involving fmap should happen before trying to interact with the EC\nsince that\u0027s a \"local\" operation.",
+      "range": {
+        "startLine": 945,
+        "startChar": 20,
+        "endLine": 945,
+        "endChar": 29
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1e4e13_7fd8955f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "this can be done before/outside the subshell, right?",
+      "range": {
+        "startLine": 965,
+        "startChar": 8,
+        "endLine": 971,
+        "endChar": 10
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f953aa14_3d1c4e3c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "do you really need the `||` here?\nseems equivalent to `FMAP_RESULT\u003d$?`",
+      "range": {
+        "startLine": 975,
+        "startChar": 6,
+        "endLine": 975,
+        "endChar": 23
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485ccc94_d94fe022",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-14T17:12:17Z",
+      "side": 1,
+      "message": "already known to be true",
+      "range": {
+        "startLine": 989,
+        "startChar": 10,
+        "endLine": 989,
+        "endChar": 30
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
