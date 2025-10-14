@@ -39,7 +39,7 @@ LOG_MODULE_REGISTER(pdc_rts54_fwup, LOG_LEVEL_INF);
 
 /** Number of GET_IC_STATUS bytes that can be requested while running in ROM
  *  code */
-#define RTS54XX_GET_IC_STATUS_SAFE_READ_LEN 20
+#define RTS54XX_GET_IC_STATUS_SAFE_READ_LEN 27
 
 static struct {
 	bool fwup_session_active;
