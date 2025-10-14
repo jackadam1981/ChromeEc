@@ -117,6 +117,30 @@
       },
       "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27409995_46f7e301",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T06:02:30Z",
+      "side": 1,
+      "message": "Oh, I wasn\u0027t aware such node causes problems.\n\nI agree that SDCP itself is FP specific, but any type of flash header can be used by multiple applications.\n\nI would prefer to keep the binman defaults common for EC and FPMCU since majority of the code is the same.\n\nHow about adding `/omit-if-no-ref/`? I used `compare-builds` to verify it for `ocelotrvp-ite`. There is no `flash-header` node in the `zephyr.dts` file. Actually, I also verified it for the rollback nodes and it works. `zephyr.dts` files are the same, except for the line numbers in comments.",
+      "parentUuid": "bfc3b475_4ae0e398",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
