@@ -189,6 +189,30 @@
       },
       "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be7ebe52_7b7df439",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-14T18:09:49Z",
+      "side": 1,
+      "message": "Makes sense. I added a comment. I\u0027ll try to prepare a better doc once everything clarifies on the FP side.",
+      "parentUuid": "98b33eba_99d82f0c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "702ccff27a586acbbff2b90d3d9fad613d43e090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
