@@ -86,6 +86,24 @@
       "parentUuid": "b0b3abf9_04da5e2c",
       "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4887fc20_2679cd2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-10-15T20:31:02Z",
+      "side": 1,
+      "message": "The PPC (SYV682, handling VSafe5V and VSafe0V thresholds) and the TCPC (NCX3808 with VBUS ADC) both have the ability to monitor VBUS, here\u0027s the schematic: http://go/pujjoga-pvt-sch.\n\nGiven that our primary VBUS monitoring needs are limited to the coarse VSafe5V and VSafe0V status, the dedicated VBUS ADC integrated into the NCX3808 TCPC appears to be over-needed for the TCPMv2. The only Type-C Spec requirement I can identify that necessitates this higher precision measurement is the dynamic VSinkDisconnectPD threshold (defined in PD Spec Table 4-3 VBUS Sink Characteristics), which tracks the negotiated voltage.",
+      "parentUuid": "57a85d73_45d25173",
+      "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
