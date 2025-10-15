@@ -51,6 +51,24 @@
       "message": "Based on the datasheet, INT1_OUTPUT_EN is in reg 0x53 which is not programmed here which suppose to be used to enable/disable interupts.\n\nMoreover, in section 4.9,\n```\nInterrupt Pin Mapping\nThe data ready, FIFO watermark, FIFO full, error, and the advanced feature interrupts are mapped to\nthe external INT1 or INT2 pins by setting the corresponding bits in the Registers INT_MAP_DATA,\nINT1_MAP_FEAT and INT2_MAP_FEAT. To unmap these interrupts, the corresponding bits must be reset.\n```\nShould all of them has to be unmapped when disabling interrupt ? Could you confirm those above with vendor ?",
       "revId": "67c73fe593ff91b7423acd25b4c3e0f243317b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52ca06e_a59ac876",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-15T02:18:28Z",
+      "side": 1,
+      "message": "vendor reply as below,\n`````````````````````````````\nIf use the register 0x53 to disable INT, it might affect the signal of interrupt pin.\nTherefore, we recommend using the mapping register 0x58 instead.\nYou can store the 0x58 register value in a variable then unmask data ready, FIFO watermark, FIFO full to disable interrupt features.\nIf you want to enable interrupt features, please restore the variable value to register 0x58.\n`````````````````````````````",
+      "parentUuid": "18538796_12998897",
+      "revId": "67c73fe593ff91b7423acd25b4c3e0f243317b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
