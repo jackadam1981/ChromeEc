@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cc2158_248e4fec",
+        "filename": "boot_param_test/src/main.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-10-15T16:30:36Z",
+      "side": 1,
+      "message": "no, this won\u0027t work, we can\u0027t default to Ed25519, will need a dice_context",
+      "range": {
+        "startLine": 133,
+        "startChar": 26,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "d2f5672dd12fdc3cf911fb80e1479add093da617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
