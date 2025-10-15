@@ -57,6 +57,30 @@
       },
       "revId": "6db7ff2e8f42fbf8a3651f0025258ae9a4a4180f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a314fe67_88023b11",
+        "filename": "zephyr/program/brox/ite.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-10-15T07:48:10Z",
+      "side": 1,
+      "message": "Yes, I agree, but we want to verify at last one board of each baseboard to ensure that if we enable the RAM code, EC can boot up. So far there are left three board moonstone, matsu, and rauru that need to be verified, we will borrow them from ODM/OEM or just verify it by ODM/OEM, after these three boards are verified, I will move these CONFIG to zephyr/boards/google/it8xxx2.\n\ndraft in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7039981/4",
+      "parentUuid": "6e24a31d_84dcf2d6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "6db7ff2e8f42fbf8a3651f0025258ae9a4a4180f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
