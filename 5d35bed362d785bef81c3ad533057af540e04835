@@ -100,6 +100,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4dd87347_17f5d823",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:38:32Z",
+      "side": 1,
+      "message": "Please use form:\n```\nTODO(b/xxx): ...\n```",
+      "parentUuid": "fc5629de_d80e4bdb",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8871907d_801d6ab9",
         "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
         "patchSetId": 3
