@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e85ff0ae_41134941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-10-15T06:27:24Z",
+      "side": 1,
+      "message": "In ilm.c, we would copy text section from `__ilm_flash_start` ~ `__ilm_flash_end` to `__ilm_ram_start` ~ `__ilm_ram_end` (ilm_ram section ), so we can run ram code for better performance.\n\nIn linker.ld, we arrange `libdrivers__serial`, `libkernel` and `libzephyr` within `__ilm_flash_start/end`, if `CONFIG_LTO\u003dn`, we can see those three .object in our assign region for each functions and text length, but after `CONFIG_LTO\u003dy`, those three .object in our assign region don\u0027t have any bytes, which means nothing will be copied to ilm_ram section.\n\nBelow are build with \n`CONFIG_LTO\u003dy`:\n``````\n                0x80035000                        __ilm_flash_start \u003d .\n  ...\n .exception.other.__soc_handle_irq\n                0x80035b64        0x6 zephyr/libzephyr.a(soc_irq.S.obj)\n                0x80035b64                __soc_handle_irq\n *libdrivers__serial.a:*(SORT_BY_ALIGNMENT(.text) SORT_BY_ALIGNMENT(.text.*))\n *libdrivers__serial.a:*(SORT_BY_ALIGNMENT(.rodata) SORT_BY_ALIGNMENT(.rodata.*))\n *libdrivers__serial.a:*(SORT_BY_ALIGNMENT(.srodata) SORT_BY_ALIGNMENT(.srodata.*))\n *libkernel.a:*(SORT_BY_ALIGNMENT(.text) SORT_BY_ALIGNMENT(.text.*))\n *libkernel.a:*(SORT_BY_ALIGNMENT(.rodata) SORT_BY_ALIGNMENT(.rodata.*))\n *libkernel.a:*(SORT_BY_ALIGNMENT(.srodata) SORT_BY_ALIGNMENT(.srodata.*))\n *libzephyr.a:*(SORT_BY_ALIGNMENT(.text) SORT_BY_ALIGNMENT(.text.*))\n *libzephyr.a:*(SORT_BY_ALIGNMENT(.rodata) SORT_BY_ALIGNMENT(.rodata.*))\n *libzephyr.a:*(SORT_BY_ALIGNMENT(.srodata) SORT_BY_ALIGNMENT(.srodata.*))\n                0x80035b6a                        __ilm_flash_end \u003d .\n````````\n\n\n\n`CONFIG_LTO\u003dn`:\n``````\n                0x80030000                        __ilm_flash_start \u003d .\n...\n.exception.other.__soc_handle_irq\n                0x80030cc8        0x6 zephyr/libzephyr.a(soc_irq.S.obj)\n                0x80030cc8                __soc_handle_irq\n *libdrivers__serial.a:*(SORT_BY_ALIGNMENT(.text) SORT_BY_ALIGNMENT(.text.*))\n .text.z_impl_gpio_pin_interrupt_configure\n                0x80030cce      0x12c zephyr/drivers/serial/libdrivers__serial.a(uart_ite_it8xxx2.c.obj)\n .text.uart1_wui_isr\n                0x80030dfa       0x4a zephyr/drivers/serial/libdrivers__serial.a(uart_ite_it8xxx2.c.obj)\n                0x80030dfa                uart1_wui_isr\n .text.uart2_wui_isr\n                0x80030e44        0x4 zephyr/drivers/serial/libdrivers__serial.a(uart_ite_it8xxx2.c.obj)\n                0x80030e44                uart2_wui_isr\n...\n                0x8003cc0b                        __ilm_flash_end \u003d .\n```````",
+      "parentUuid": "9479dc93_ab929373",
+      "revId": "6db7ff2e8f42fbf8a3651f0025258ae9a4a4180f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e24a31d_84dcf2d6",
         "filename": "zephyr/program/brox/ite.conf",
         "patchSetId": 5
