@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb1e651_259622af",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6bba16b_bdfd87c1",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a85513_b2f9c14d",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-14T10:18:03Z",
       "side": 1,
       "message": "No need to use goto. Just return here.",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe7a445_11a40027",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a85513_b2f9c14d",
       "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef6cb68_88116fb3",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7885e18d_01b71b25",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85a00420_67a5980b",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-10-14T10:18:03Z",
       "side": 1,
       "message": "Too verbose for LOG_INF",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e82d5c_de9c8108",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a00420_67a5980b",
       "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d019defa_d362c395",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Use BSS to avoid the zmake error: \u0027error: address of stack memory associated with local variable \u0027buf\u0027 returned [-Werror,-Wreturn-stack-address]\u0027.",
+      "parentUuid": "8a030fc8_dd774bb9",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d33ada8_34525fa7",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-10-14T10:18:03Z",
       "side": 1,
       "message": "Same here",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3856d8d6_10d02468",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Use BSS to avoid the zmake error: \u0027error: address of stack memory associated with local variable \u0027buf\u0027 returned [-Werror,-Wreturn-stack-address]\u0027.",
+      "parentUuid": "7d33ada8_34525fa7",
       "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebd8dc5_495e786c",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a4748f_65877304",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aba99e7_6ee53a55",
@@ -133,6 +259,24 @@
       "writtenOn": "2025-10-14T10:18:03Z",
       "side": 1,
       "message": "Too verbose for LOG_INF",
+      "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4464d548_ed0b30d8",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-10-15T09:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aba99e7_6ee53a55",
       "revId": "6fcac6d97a8d49a5d6c349a8912a5bf435781760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
