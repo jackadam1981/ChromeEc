@@ -189,7 +189,11 @@ static void watchdog_interrupt_deferred(void)
 	}
 
 	if (!(power_get_signals() & flags)) {
-		chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT)) {
+			CPRINTS("WDT triggered!");
+		} else {
+			chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
+		}
 	}
 }
 DECLARE_DEFERRED(watchdog_interrupt_deferred);
@@ -205,17 +209,8 @@ void chipset_watchdog_interrupt(enum gpio_signal signal)
 	 *    interrupt tirgger is a fake WDT interrupt, we should skip it.
 	 */
 	if (!is_resetting && !is_shutdown) {
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT) &&
-		    !first_wdt_received) {
-			/* first WDT is from kernel, wait for coreboot to send
-			 * another WDT */
-			first_wdt_received = true;
-			hook_call_deferred(&watchdog_interrupt_deferred_data,
-					   15 * SECOND);
-		} else {
-			hook_call_deferred(&watchdog_interrupt_deferred_data,
-					   NORMAL_SHUTDOWN_DELAY);
-		}
+		hook_call_deferred(&watchdog_interrupt_deferred_data,
+				   NORMAL_SHUTDOWN_DELAY);
 	}
 }
 
