@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda3c9c6_5b5e7047",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-10-15T03:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c539ccfd_f08ddaf6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "fa7aa8dac5928807ba27478b837e7a3d90285141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87b3ed37_813162d1",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-15T03:14:35Z",
       "side": 1,
       "message": "Slightly improved performance.",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "fa7aa8dac5928807ba27478b837e7a3d90285141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b42de77_1e9f82e3",
+        "filename": "zephyr/program/corsola/veluza/project.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-10-15T03:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b3ed37_813162d1",
       "range": {
         "startLine": 16,
         "startChar": 2,
