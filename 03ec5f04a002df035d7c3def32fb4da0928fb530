@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b661a09_6447350a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T06:52:36Z",
+      "side": 1,
+      "message": "Unfortunately, the test system doesn\u0027t support checking that. [host_packet_respond](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/host_command_task.c;l\u003d177) is never called.",
+      "parentUuid": "de001133_dfa46ff2",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 65
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23e3f1d1_74ad68a5",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-14T22:21:13Z",
       "side": 1,
       "message": "Do you think we will ever need more parameters? In that case we could add some extra unused ones. We can always create new versions in the future though, so we can just do that instead.",
+      "range": {
+        "startLine": 8671,
+        "startChar": 0,
+        "endLine": 8672,
+        "endChar": 17
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13f5fd6_a24aa338",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8672,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T06:52:36Z",
+      "side": 1,
+      "message": "Do you mean more than `param1`? I don\u0027t think that more than 1 32-bit parameter will be ever needed.",
+      "parentUuid": "23e3f1d1_74ad68a5",
       "range": {
         "startLine": 8671,
         "startChar": 0,
