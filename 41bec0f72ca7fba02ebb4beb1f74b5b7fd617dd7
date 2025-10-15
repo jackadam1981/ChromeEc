@@ -16,6 +16,24 @@
       "message": "Better use 25ms refer to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7018944/comment/529c0669_91da55f4/",
       "revId": "41bec0f72ca7fba02ebb4beb1f74b5b7fd617dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da57f1c1_e25df6be",
+        "filename": "zephyr/program/fatcat/lapis/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-15T13:31:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deea428d_a6dbfcca",
+      "revId": "41bec0f72ca7fba02ebb4beb1f74b5b7fd617dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
