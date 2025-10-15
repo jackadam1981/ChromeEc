@@ -16,19 +16,23 @@
 &power_ctrl_elpm {
 	status = "okay";
 
-	/* Use XLPIN0,1,4 */
-	pinctrl-0 = <&xlpin0_gpq0_default &xlpin1_gpq1_default
-		     &xlpin4_gpq4_default>;
+	// /* Use XLPIN0,1,4 */
+	// pinctrl-0 = <&xlpin0_gpq0_default &xlpin1_gpq1_default
+	// 	     &xlpin4_gpq4_default>;
+
+	/* Use XLPIN0,1 */
+	pinctrl-0 = <&xlpin0_gpq0_default &xlpin1_gpq1_default>;
+
 	pinctrl-names = "default";
 
 	/* XLPIN0: MECH_PWR_BTN_ODL, falling edge */
 	xlpin0: xlpin@0 { reg = <0>; polarity = "low-falling"; };
 
 	/* XLPIN1: ACOK_OD, rising edge */
-	xlpin1: xlpin@1 { reg = <1>; polarity = "high-rising"; };
+	xlpin1: xlpin@1 { reg = <1>; polarity = "low-falling"; };
 
-	/* XLPIN4: LID_OPEN, rising edge */
-	xlpin4: xlpin@4 { reg = <4>; polarity = "high-rising"; };
+	// /* XLPIN4: LID_OPEN, rising edge */
+	// xlpin4: xlpin@4 { reg = <4>; polarity = "high-rising"; };
 };
 
 /*
