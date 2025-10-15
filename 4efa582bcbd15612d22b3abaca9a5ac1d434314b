@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf72235_c412469c",
+        "filename": "zephyr/Kconfig.watchdog",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-15T15:56:15Z",
+      "side": 1,
+      "message": "Would an `imply ARCH_STACKWALK` make more sense?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "4efa582bcbd15612d22b3abaca9a5ac1d434314b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
