@@ -94,6 +94,30 @@
       },
       "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8156900f_28f2b6f2",
+        "filename": "zephyr/program/bluey/src/heartbeat_wake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2025-10-15T05:47:18Z",
+      "side": 1,
+      "message": "\u003e Yes, we need to consider cases where the battery might not charge to 100% due to depletion or thermal conditions. Checking for changes in battery_soc would be a better approach.\n\nTo avoid unnecessary system wake-ups when the battery doesn\u0027t charge to 100%, we can implement the following logic:\n\n```\nif (battery_soc \u003c 4% || delta_battery_soc \u003e\u003d 3%)\n    chipset_power_on();\n```",
+      "parentUuid": "65d81745_5a870457",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "8f2190fd7718f291a2a9da6a9123c0f32de5ef93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
