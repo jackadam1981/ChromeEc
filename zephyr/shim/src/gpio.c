@@ -110,6 +110,10 @@ int gpio_get_level(enum gpio_signal signal)
 		LOG_ERR("Cannot read %s (%d)", configs[signal].name, l);
 		return 0;
 	}
+
+	if (signal == GPIO_AC_PRESENT)
+		return !l;
+
 	return l;
 }
 
