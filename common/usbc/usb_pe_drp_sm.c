@@ -3581,12 +3581,86 @@ static void pe_snk_apply_psnkstdby(int port)
 	 * current source isn't PD, we don't need to care about drawing more
 	 * than pSnkStdby. Thus, it's not considered (in the else clause).
 	 */
+<<<<<<< HEAD   (88934dc8281dea567814934ea53d73556957aed1 zephyr: nissa/domika: Slightly improved performance)
 	if (charge_manager_get_supplier() == CHARGE_SUPPLIER_PD)
 		high = MAX(charge_manager_get_charger_voltage(), mv);
 	else
 		high = mv;
 	charge_manager_force_ceil(
 		port, high > 0 ? PD_SNK_STDBY_MW * 1000 / high : PD_MIN_MA);
+||||||| BASE   (e7fa0c4f8514786c9ae5451dcea515cbb7cb61c8 moonstone: Configure the SPI peripheral)
+
+	/* For purposes of calculating input current to adhere to pSnkStdby,
+	 * this code chooses the higher of the present input voltage and the new
+	 * input voltage, because both voltages may appear during the
+	 * transition.
+	 */
+	high_mv = max(charge_manager_get_charger_voltage(), request_mv);
+
+	if (request_ma == 0) {
+		/* Transition to 0A. */
+		current_limit = 0;
+	} else if (high_mv == 0) {
+		/* Transition to 0V should not be possible. Limit to iSnkStdby
+		 * out of caution.
+		 */
+		current_limit = PD_MIN_MA;
+	} else if (charge_manager_get_supplier() == CHARGE_SUPPLIER_PD) {
+		/* PD-to-PD transition: Apply pSnkStdby. */
+		/* TODO: Consider whether to limit this to voltage transitions.
+		 */
+		current_limit = PD_SNK_STDBY_MW * 1000 / high_mv;
+	} else {
+		/* Type-C-to-PD transition: Apply iSnkstdby. */
+		/* TODO: The previous code claimed that this transition did not
+		 * require iSnkStdby. Citation needed.
+		 */
+		current_limit = PD_MIN_MA;
+	}
+
+	if (current_limit == 0)
+		charge_manager_invalidate_suppliers(port);
+	else
+		charge_manager_force_ceil(port, current_limit);
+=======
+
+	/* For purposes of calculating input current to adhere to pSnkStdby,
+	 * this code chooses the higher of the present input voltage and the new
+	 * input voltage, because both voltages may appear during the
+	 * transition.
+	 */
+	high_mv = max(charge_manager_get_charger_voltage(), request_mv);
+
+	if (request_ma == 0) {
+		/* Transition to 0A. */
+		current_limit = 0;
+	} else if (high_mv == 0) {
+		/* Transition to 0V should not be possible. Limit to iSnkStdby
+		 * out of caution.
+		 */
+		current_limit = PD_MIN_MA;
+	} else if (charge_manager_get_supplier() == CHARGE_SUPPLIER_PD) {
+		/* PD-to-PD transition: Apply pSnkStdby. */
+		/* TODO: Consider whether to limit this to voltage transitions.
+		 */
+		current_limit = PD_SNK_STDBY_MW * 1000 / high_mv;
+	} else {
+		/* Type-C-to-PD transition: Apply iSnkstdby. */
+		/* TODO: The previous code claimed that this transition did not
+		 * require iSnkStdby. Citation needed.
+		 */
+		current_limit = PD_MIN_MA;
+	}
+	/* charge_manager_invalidate_suppliers makes sure that no other supplier
+	 * will keep the limit above 0. charge_manager_force_ceil makes sure the
+	 * change takes effect ASAP.
+	 */
+
+	if (current_limit == 0)
+		charge_manager_invalidate_suppliers(port);
+
+	charge_manager_force_ceil(port, current_limit);
+>>>>>>> CHANGE (c627a9b590acee055ebc7f5f2cbde9399de9aa16 Pujjoga: Try to Transition into 0A asap)
 }
 
 static void pe_snk_select_capability_run(int port)
