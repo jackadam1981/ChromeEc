@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16ecc36a_e1d97287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:36:50Z",
+      "side": 1,
+      "message": "Shorten the title",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0252a0b3_0fc39d85",
         "filename": "zephyr/drivers/cros_system/Kconfig",
         "patchSetId": 3
@@ -83,6 +100,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8871907d_801d6ab9",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:36:50Z",
+      "side": 1,
+      "message": "Use signed int here to return the error code at line 59.",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe0ceee6_cb09b29f",
         "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
         "patchSetId": 3
@@ -94,6 +134,29 @@
       "writtenOn": "2025-10-15T10:32:51Z",
       "side": 1,
       "message": "This function returns negative value as an error, while the return type is uint32_t.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df13176_b4d85068",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:36:50Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 14
+      },
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +214,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "326f3c7d_4b799111",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:36:50Z",
+      "side": 1,
+      "message": "Check the return value here.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29c1fe5a_399b3505",
         "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
         "patchSetId": 3
@@ -179,6 +259,23 @@
       "writtenOn": "2025-10-15T10:32:51Z",
       "side": 1,
       "message": "Lack of error checking",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febf7364_d76c35d6",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:36:50Z",
+      "side": 1,
+      "message": "Same here",
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
