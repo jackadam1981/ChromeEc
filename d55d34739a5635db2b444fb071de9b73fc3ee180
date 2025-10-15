@@ -51,6 +51,24 @@
       "message": "Nit: \"Minimize the latency of BIST Test Mode entry by checking immediately after reading the message, instead of waiting for typical PE message handling.\"",
       "revId": "d55d34739a5635db2b444fb071de9b73fc3ee180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ea3940_9ea6b8e7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-10-15T11:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99694957_4847577b",
+      "revId": "d55d34739a5635db2b444fb071de9b73fc3ee180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

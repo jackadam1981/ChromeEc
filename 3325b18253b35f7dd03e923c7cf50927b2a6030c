@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73fb8e81_67c0cb9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-10-15T11:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d3d157_ce7a059a",
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f7cc664_6a6c5446",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
@@ -81,6 +99,24 @@
         "id": 3436255
       },
       "writtenOn": "2025-09-24T06:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f7cc664_6a6c5446",
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09df3ef4_f6c6bfbf",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-10-15T11:53:28Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "5f7cc664_6a6c5446",
@@ -122,6 +158,30 @@
         "id": 3436255
       },
       "writtenOn": "2025-09-24T06:39:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e78b42d_75a43233",
+      "range": {
+        "startLine": 873,
+        "startChar": 1,
+        "endLine": 874,
+        "endChar": 12
+      },
+      "revId": "3325b18253b35f7dd03e923c7cf50927b2a6030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d908cabe_400ef5b5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-10-15T11:53:28Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "1e78b42d_75a43233",
