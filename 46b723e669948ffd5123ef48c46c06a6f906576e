@@ -176,6 +176,30 @@
       },
       "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045d5f14_47cbe0a8",
+        "filename": "zephyr/subsys/fingerprint/alg/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-10-15T11:42:38Z",
+      "side": 1,
+      "message": "I removed it from ec on patchset6, and add it in private lib repo.",
+      "parentUuid": "a8138e94_97004ec3",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
