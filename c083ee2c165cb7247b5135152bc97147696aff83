@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd693f3_4ed28d23",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-15T10:09:24Z",
+      "side": 1,
+      "message": "With this approach, the `test regression` is observed only on `port0`.\nMoving this to `prl_tx_wait_for_phy_response_run` has the same outcome.",
+      "revId": "c083ee2c165cb7247b5135152bc97147696aff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
