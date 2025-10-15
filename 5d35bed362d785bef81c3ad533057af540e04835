@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0252a0b3_0fc39d85",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "It is for em32 family or only EM32F967? Please also update the config name accordingly.",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 20
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60bb42a1_6b0a460b",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "Please remove this. The `SOC_EM32F967` config doesn\u0027t exist yet.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94b5433_1bbb47b0",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "Please use /* */ syntax. It applies to the entire file.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0ceee6_cb09b29f",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "This function returns negative value as an error, while the return type is uint32_t.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d12c55_82b9b646",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "This function returns negative value as an error, while the return type is uint8_t.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15cc6f7b_2af7f474",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "No need to use static buffer.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5f4995_94b12c6b",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "Lack of error checking",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c1fe5a_399b3505",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "No need to use static buffer.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a1072c_92e8bb8b",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:32:51Z",
+      "side": 1,
+      "message": "Lack of error checking",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
