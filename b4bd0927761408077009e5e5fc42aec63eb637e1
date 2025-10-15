@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2a0e40_85128414",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-15T23:00:50Z",
+      "side": 1,
+      "message": "This is only the raw image case. We should check it for every case, right?\n\nAlso, I seem to remember that we have to get the frame in chunks (e.g., we have `offset` and `size` parameters), so you need to take both into account. \n\nWe may just need to change [`validate_fp_buffer_offset`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor_utils.h;l\u003d16-25;drc\u003d8de006af9f9472832d28d580610742384ebba9e3) to take the `frame_size` as its `buffer_size` parameter.",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 3
+      },
+      "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
