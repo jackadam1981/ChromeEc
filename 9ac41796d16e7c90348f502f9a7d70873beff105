@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99709688_eea1585b",
+        "filename": "zephyr/shim/chip/rtk/power_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4049158
+      },
+      "writtenOn": "2025-10-15T02:08:19Z",
+      "side": 1,
+      "message": "We squash the patch to the next commit in the yesterday modify and we moved it back now, thanks.",
+      "parentUuid": "ad788ff4_afef9a7b",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "9ac41796d16e7c90348f502f9a7d70873beff105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa7492a_678b6658",
