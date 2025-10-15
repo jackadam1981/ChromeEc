@@ -98,7 +98,7 @@ fn main() -> Result<()> {
 
     println!("--------------------------------");
     println!("Verifying original DICE with hwtrust");
-    let mut options = Options::vsr16();
+    let mut options = Options::vsr17();
     options.verbose = verbose;
     options.allow_any_mode = true;
     options.rkp_instance = RkpInstance::Default;
