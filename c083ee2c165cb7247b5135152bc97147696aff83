@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7426dbe0_28b59790",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-15T16:41:57Z",
+      "side": 1,
+      "message": "Nit: Maybe call this something like `int_xmit_status` or `int_task_xmit_status` for a little more consistency and clarity.",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "c083ee2c165cb7247b5135152bc97147696aff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e52e46_9fd77953",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-15T16:41:57Z",
+      "side": 1,
+      "message": "Can you add a comment here explaining what\u0027s going on, i.e. that this function can be called by the PD task or the PD interrupt task, and the PD task will latch the interrupt-task value at a specific point in the PRL cycle?",
+      "revId": "c083ee2c165cb7247b5135152bc97147696aff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbd693f3_4ed28d23",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 13
@@ -14,6 +54,24 @@
       "writtenOn": "2025-10-15T10:09:24Z",
       "side": 1,
       "message": "With this approach, the `test regression` is observed only on `port0`.\nMoving this to `prl_tx_wait_for_phy_response_run` has the same outcome.",
+      "revId": "c083ee2c165cb7247b5135152bc97147696aff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002435c0_f01771d8",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-15T16:41:57Z",
+      "side": 1,
+      "message": "Is it different if you move it before `prl_hr`?",
+      "parentUuid": "cbd693f3_4ed28d23",
       "revId": "c083ee2c165cb7247b5135152bc97147696aff83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
