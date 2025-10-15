@@ -38,3 +38,39 @@ config HAVE_ELAN80SG_PRIVATE_DRIVER
 	  If enabled, it indicates that the private driver is present.
 
 endif # FINGERPRINT_SENSOR_ELAN80SG
+
+menuconfig FINGERPRINT_SENSOR_ELANI80SA
+	bool "Fingerprint driver for ELANI80SA"
+	default y
+	depends on DT_HAS_ELAN_ELANI80SA_ENABLED
+	help
+	  Driver for ELANI80SA fingerprint sensor. It requires ELAN private library
+	  to implement cros_fingerprint API. If the library is not available it
+	  only supports checking sensor hardware ID.
+
+if FINGERPRINT_SENSOR_ELANI80SA
+
+config FINGERPRINT_SENSOR_ELANI80SA_HEAP_SIZE
+	int "Size of heap for ELANI80SA driver"
+	default 52224
+	help
+	  Size of heap to be used by ELAN private library. The heap must have
+	  enough space to facilitate the generation of the finger templates
+	  during the enrollment process and to enable efficient runtime matching
+	  operations. For these operations, a 51KB heap is sufficient.
+
+config FINGERPRINT_SENSOR_ELANI80SA_PAL
+	bool "Platform Abstraction Layer for ELAN private library"
+	default y
+	help
+	  If enabled, Platform Abstraction Layer for ELAN private library will be
+	  compiled. The PAL is used to interact with the sensor (SPI, GPIO) and
+	  the system (heap allocations, printing messages, time functions).
+
+# Enabled in private driver Kconfig
+config HAVE_ELANI80SA_PRIVATE_DRIVER
+	bool
+	help
+	  If enabled, it indicates that the private driver is present.
+
+endif # FINGERPRINT_SENSOR_ELANI80SA
