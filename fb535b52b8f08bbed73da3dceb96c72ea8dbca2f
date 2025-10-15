@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9948a39c_55479d28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-15T19:35:02Z",
+      "side": 1,
+      "message": "As noted on the bug, I\u0027d like to know the incremental effect on latency of this change. But if that effect is in the right direction, and Al says this usage is OK, I\u0027m fine with this change.",
+      "revId": "fb535b52b8f08bbed73da3dceb96c72ea8dbca2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8adfc8ce_a647f4f9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3661,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-15T19:35:02Z",
+      "side": 1,
+      "message": "Can you add a comment about why we do both of these things? invalidate_suppliers makes sure that no other supplier will keep the limit above 0. force_ceil makes sure the change takes effect ASAP.",
+      "revId": "fb535b52b8f08bbed73da3dceb96c72ea8dbca2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
