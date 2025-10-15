@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7895ac_bb5949fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:46:44Z",
+      "side": 1,
+      "message": "please run `cros format driver/wpc/cps8100.c` to fix the mixed tabs and whitespaces",
+      "revId": "43ca93111bf8909dbc1452a91e0605db8a1f1791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c075e49_d2e1461b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-15T10:46:44Z",
+      "side": 1,
+      "message": "remove this line",
+      "revId": "43ca93111bf8909dbc1452a91e0605db8a1f1791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
