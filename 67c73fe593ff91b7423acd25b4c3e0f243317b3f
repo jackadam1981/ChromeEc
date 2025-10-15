@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e4e5ad_00d7edf3",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-15T02:03:57Z",
+      "side": 1,
+      "message": "ret is return on line 435",
+      "parentUuid": "5b94e965_056c0e1b",
+      "revId": "67c73fe593ff91b7423acd25b4c3e0f243317b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18538796_12998897",
