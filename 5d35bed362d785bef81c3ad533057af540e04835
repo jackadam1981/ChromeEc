@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc5629de_d80e4bdb",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-15T10:34:06Z",
+      "side": 1,
+      "message": "Please also create a bug and add a link to it here (in b/xxx form) to use upstream version of the structure once the hwinfo driver is upstreamed.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe0ceee6_cb09b29f",
         "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
         "patchSetId": 3
