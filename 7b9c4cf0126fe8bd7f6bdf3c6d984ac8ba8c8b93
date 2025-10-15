@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7df5fc32_17789003",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-15T22:56:47Z",
+      "side": 1,
+      "message": "We will also need to clear the frame_size any time the frame is not valid.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 40
+      },
+      "revId": "7b9c4cf0126fe8bd7f6bdf3c6d984ac8ba8c8b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8037cee6_60807af4",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 3
