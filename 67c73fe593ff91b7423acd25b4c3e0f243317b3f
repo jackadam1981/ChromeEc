@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a06b16_802c4804",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-10-15T09:34:31Z",
+      "side": 1,
+      "message": "I believe it\u0027s something similar to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/lsm6dsm/src/main.c;drc\u003daafc402d1378d85b900c7268a611f97f3898a2e2;l\u003d25 should be implemented in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/bmi260.c",
+      "parentUuid": "4afd466f_14ded50c",
+      "revId": "67c73fe593ff91b7423acd25b4c3e0f243317b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b94e965_056c0e1b",
