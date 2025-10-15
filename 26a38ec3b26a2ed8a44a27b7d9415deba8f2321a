@@ -68,6 +68,24 @@
       "parentUuid": "bb014f32_fc037bcf",
       "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a85d73_45d25173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-15T16:25:10Z",
+      "side": 1,
+      "message": "Can you elaborate on that? Does pujjoga support VBUS measurement through both the TCPC and PPC? And which one we have to use might be different at different times?",
+      "parentUuid": "b0b3abf9_04da5e2c",
+      "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
