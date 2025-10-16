@@ -639,12 +639,6 @@
 #define CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT (30 * 60 * SECOND)
 
 /*
- * Use memory mapped region to store battery information. It supports only
- * single battery systems. V2 should be used unless there is a reason not to.
- */
-#undef CONFIG_BATTERY_V1
-
-/*
  * Use an alternative method to store battery information: Instead of writing
  * directly to host memory mapped region, this keeps the battery information in
  * ec_response_battery_static/dynamic_info structures, that can then be fetched
@@ -653,10 +647,10 @@
  *
  * This is required on dual-battery systems and hostless bases with a battery.
  */
-#undef CONFIG_BATTERY_V2
+#undef CONFIG_BATTERY_INFO
 
 /*
- * Number of batteries, only matters when CONFIG_BATTERY_V2 is used.
+ * Number of batteries, only matters when CONFIG_BATTERY_INFO is used.
  */
 #undef CONFIG_BATTERY_COUNT
 
@@ -2648,12 +2642,9 @@
 /*
  * Include host commands to fetch battery information from
  * ec_response_battery_static/dynamic_info structures, only makes sense when
- * CONFIG_BATTERY_V2 is enabled.
+ * CONFIG_BATTERY_INFO is enabled.
  */
-#undef CONFIG_HOSTCMD_BATTERY_V2
-
-/* Default hcdebug mode, e.g. HCDEBUG_OFF or HCDEBUG_NORMAL */
-#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_NORMAL
+#undef CONFIG_HOSTCMD_BATTERY_INFO
 
 /* If we have host command task, assume we also are using host events. */
 #ifdef HAS_TASK_HOSTCMD
@@ -4215,6 +4206,7 @@
 #undef CONFIG_SPI_FLASH_W25Q64
 #undef CONFIG_SPI_FLASH_W25Q80
 #undef CONFIG_SPI_FLASH_W25X40
+#undef CONFIG_SPI_FLASH_P25Q16
 
 /* SPI flash part supports SR2 register */
 #undef CONFIG_SPI_FLASH_HAS_SR2
@@ -6173,6 +6165,15 @@
 #include "board.h"
 #endif
 
+/* Default hcdebug mode, e.g. HCDEBUG_OFF or HCDEBUG_NORMAL */
+#if !defined(CONFIG_HOSTCMD_DEBUG_MODE)
+#if defined(CONFIG_BRINGUP)
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_NORMAL
+#else
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+#endif /* defined(CONFIG_BRINGUP) */
+#endif /* !defined(CONFIG_HOSTCMD_DEBUG_MODE) */
+
 /*
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
  * are configured as virtual wires.
@@ -6715,22 +6716,22 @@
 #ifdef CONFIG_EC_EC_COMM_BATTERY
 #ifdef CONFIG_EC_EC_COMM_CLIENT
 #define CONFIG_EC_EC_COMM_BATTERY_CLIENT
-#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_INFO
 #define CONFIG_BATTERY_COUNT 2
 #endif
 
 #ifdef CONFIG_EC_EC_COMM_SERVER
 #define CONFIG_EC_EC_COMM_BATTERY_SERVER
-#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_INFO
 #define CONFIG_BATTERY_COUNT 1
 #endif
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
 
 /*****************************************************************************/
 /* Auto-enable battery v2 module with a single battery if battery is defined. */
-#if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
+#if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_INFO)
 #define CONFIG_BATTERY_COUNT 1
-#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_INFO
 #endif
 
 /*

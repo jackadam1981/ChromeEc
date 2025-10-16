@@ -933,7 +933,7 @@ static void pd_chipset_resume(void);
 static void pd_chipset_suspend(void);
 static void pd_chipset_shutdown(void);
 
-static void pdc_update_battery_status(struct pdc_port_t *port);
+static void pdc_update_battery_status(struct pdc_port_t *port, bool force);
 static void pdc_update_battery_capability(struct pdc_port_t *port);
 
 static bool should_suspend(struct pdc_port_t *port)
@@ -1453,6 +1453,9 @@ static void trigger_ppm_status_change(struct pdc_port_t *port)
 		break;
 	case CMD_PDC_SET_SINK_PATH:
 		status.sink_path_status_change = 1;
+		break;
+	case CMD_PDC_READ_POWER_LEVEL:
+		status.negotiated_power_level = 1;
 		break;
 
 	/* For all other commands, no need to trigger as there shouldn't be
@@ -2041,7 +2044,7 @@ static void pdc_src_attached_entry(void *obj)
 
 		/* Update the PDC with the correct battery status. */
 		pdc_update_battery_capability(port);
-		pdc_update_battery_status(port);
+		pdc_update_battery_status(port, true);
 	}
 
 	/* Clear a piece of sink policy as it is no longer relevant in the
@@ -2166,14 +2169,14 @@ static void pdc_snk_attached_entry(void *obj)
 
 		/* Update the PDC with the correct battery status. */
 		pdc_update_battery_capability(port);
-		pdc_update_battery_status(port);
+		pdc_update_battery_status(port, true);
 	}
 }
 
 static void pdc_print_pdo_info(int port, struct pdc_pdos_t *pdo)
 {
 	uint32_t max_ma, max_mv, max_mw, min_mv;
-	const char *type_str;
+	const char *type_str = NULL;
 
 	/* Prints a table of PDOs with key fields extracted
 	 *
@@ -2279,9 +2282,14 @@ pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
 			RDO_FIXED(snk_policy->pdo_index, max_ma, max_ma, flags);
 	}
 
-	LOG_INF("C%d: Send RDO: %d, battery_is_present=%d",
+	LOG_INF("C%d: Send RDO: %d (%08x), battery_is_present=%d, mismatch=%d",
 		config->connector_num, RDO_POS(snk_policy->rdo_to_send),
-		battery_is_present());
+		snk_policy->rdo_to_send, battery_is_present(),
+		!!(flags & RDO_CAP_MISMATCH));
+	LOG_INF("C%d: Power request: %umA, %umV, %umW, "
+		"pdo_max=%umW, board_max=%umW",
+		config->connector_num, max_ma, max_mv, max_mw, max_mw_pdo,
+		pdc_max_operating_power);
 	queue_internal_cmd(port, CMD_PDC_SET_RDO);
 }
 
@@ -3107,6 +3115,7 @@ static void pdc_send_cmd_wait_exit(void *obj)
 	case CMD_PDC_SET_UOR:
 	case CMD_PDC_SET_PDOS:
 	case CMD_PDC_SET_SINK_PATH:
+	case CMD_PDC_READ_POWER_LEVEL:
 		trigger_ppm_status_change(port);
 		break;
 	default:
@@ -4609,20 +4618,27 @@ static void pdc_battery_status_changed(void)
 {
 	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		if (pdc_power_mgmt_is_pdc_port_valid(i)) {
-			pdc_update_battery_status(&pdc_data[i]->port);
+			pdc_update_battery_status(&pdc_data[i]->port, false);
 		}
 	}
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pdc_battery_status_changed,
 	     HOOK_PRIO_DEFAULT);
 
-static void pdc_update_battery_status(struct pdc_port_t *port)
+/**
+ * @brief Send updated battery status to the PDC
+ *
+ * @param port PDC port to update
+ * @param force If true, unconditionally send the battery status. Otherwise
+ * only send battery status if the battery information changed.
+ */
+static void pdc_update_battery_status(struct pdc_port_t *port, bool force)
 {
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
 	union battery_status_t bsdo = { 0 };
 
-	if (battery_is_present()) {
+	if (battery_is_present() == BP_YES) {
 		uint32_t v;
 		uint32_t c;
 
@@ -4664,7 +4680,12 @@ static void pdc_update_battery_status(struct pdc_port_t *port)
 			}
 		}
 	} else {
+		bsdo.battery_present = 0;
 		bsdo.present_capacity = BSDO_CAP_UNKNOWN;
+	}
+
+	if (!force && memcmp(&port->bstat, &bsdo, sizeof(bsdo)) == 0) {
+		return;
 	}
 
 	port->bstat = bsdo;
