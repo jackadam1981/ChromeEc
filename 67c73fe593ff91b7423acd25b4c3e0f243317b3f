@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f859020_33b48e67",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-10-16T05:59:27Z",
+      "side": 1,
+      "message": "What Gwendal meant is `config_interrupt` should be called in this function. This is an example: [accelgyro_bmi3xx.c - Chromium Code Search](https://crsrc.org/o/src/platform/ec/driver/accelgyro_bmi3xx.c;l\u003d426?q\u003dbmi3xx.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch)",
+      "parentUuid": "a7a06b16_802c4804",
+      "revId": "67c73fe593ff91b7423acd25b4c3e0f243317b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b94e965_056c0e1b",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 1
