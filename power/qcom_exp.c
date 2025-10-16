@@ -176,6 +176,7 @@ enum power_request_t {
 	POWER_REQ_WARM_RESET,
 	POWER_REQ_ON_LONG_WARM_RESET,
 	POWER_REQ_OFF_LONG_WARM_RESET,
+	POWER_REQ_ON_HEARTBEAT_WAKE,
 
 	POWER_REQ_COUNT,
 };
@@ -204,6 +205,7 @@ enum power_on_event_t {
 	POWER_ON_CANCEL,
 	POWER_ON_BY_AUTO_POWER_ON,
 	POWER_ON_BY_AC_ON,
+	POWER_ON_BY_HEARTBEAT_WAKE,
 	POWER_ON_BY_LID_OPEN,
 	POWER_ON_BY_LONG_WARM_RESET,
 	POWER_ON_BY_POWER_BUTTON_PRESSED,
@@ -258,6 +260,13 @@ void chipset_ap_rst_interrupt(enum gpio_signal signal)
 	}
 #endif
 	power_signal_interrupt(signal);
+}
+
+/* Power on request for heartbeat wake */
+void power_on_req_heartbeat(void)
+{
+	power_request = POWER_REQ_ON_HEARTBEAT_WAKE;
+	task_wake(TASK_ID_CHIPSET);
 }
 
 static void lid_event(void)
@@ -537,7 +546,8 @@ static int set_pmic_pwron(int enable, uint8_t event)
 	 * falls back to the next functions, which cuts off the system power.
 	 */
 
-	if (enable && event == POWER_ON_BY_AC_ON) {
+	if (enable && (event == POWER_ON_BY_AC_ON ||
+		       event == POWER_ON_BY_HEARTBEAT_WAKE)) {
 		passthru_ac_on_to_pmic();
 		ret = wait_pmic_pwron(enable, PMIC_POWER_AP_RESPONSE_TIMEOUT);
 	} else {
@@ -707,6 +717,8 @@ static uint8_t check_for_power_on_event(void)
 		ret = POWER_ON_BY_POWER_REQ_ON;
 	} else if (power_request == POWER_REQ_ON_LONG_WARM_RESET) {
 		ret = POWER_ON_BY_LONG_WARM_RESET;
+	} else if (power_request == POWER_REQ_ON_HEARTBEAT_WAKE) {
+		ret = POWER_ON_BY_HEARTBEAT_WAKE;
 	} else if (power_request == POWER_REQ_COLD_RESET) {
 		ret = POWER_ON_BY_POWER_REQ_RESET;
 	} else if (auto_power_on) {

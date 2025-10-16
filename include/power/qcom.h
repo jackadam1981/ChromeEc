@@ -30,6 +30,15 @@ enum power_signal {
 };
 #endif
 
+/**
+ * Request a system power-on due to a heartbeat wake event.
+ *
+ * This function should be called by board-specific code when a
+ * heartbeat wake signal is detected. It wakes the chipset task
+ * to initiate the power-on sequence.
+ */
+void power_on_req_heartbeat(void);
+
 /* Swithcap functions */
 void board_set_switchcap_power(int enable);
 int board_is_switchcap_enabled(void);
