@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e56abf4_b7c84f22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-16T17:27:20Z",
+      "side": 1,
+      "message": "```\nXkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe raw \ncapture_type: 0\nimages.size(): 6\nsize: 26260\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe raw pattern0\ncapture_type: 8\nimages.size(): 6\nsize: 26260\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe pattern0\ncapture_type: 8\nimages.size(): 6\nsize: 25600\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe raw pattern1\ncapture_type: 12\nimages.size(): 6\nsize: 26260\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe pattern1\ncapture_type: 12\nimages.size(): 6\nsize: 25600\n```",
+      "revId": "aea61d627c4dd50fdb3a2d646e087e4adc58705f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
