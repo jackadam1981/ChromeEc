@@ -70,6 +70,30 @@
       },
       "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21912f03_5d415d68",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-16T21:47:22Z",
+      "side": 1,
+      "message": "\u003e How about clearing the buffer before capturing an image?\n\nThat won\u0027t work since it means the data would still be there if you try to download the frame again without doing a capture.",
+      "parentUuid": "1e340ae4_cdbc2354",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 3
+      },
+      "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
