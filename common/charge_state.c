@@ -1504,7 +1504,8 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 	/* Wait on the dynamic info until the static info is good. */
 	if (!*need_staticp)
 		battery_set_dynamic_info(&curr.batt, curr.ac,
-					 curr.batt_is_charging);
+					 curr.batt_is_charging,
+					 curr.state == ST_IDLE);
 
 	notify_host_of_low_battery_charge();
 	notify_host_of_low_battery_voltage();
@@ -1684,6 +1685,18 @@ bool charge_prevent_power_on(bool power_button_pressed)
 			prevent_power_on = 0;
 #endif
 	}
+
+	/*
+	 * Prevent power on if there is no battery and the minimum mW to
+	 * power on is not met. This should only be hit in edge cases, however
+	 * it needs to be checked to prevent brown outs
+	 */
+
+	if (!current_batt_params->is_present &&
+	    charge_manager_get_power_limit_uw() <
+		    CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000)
+		prevent_power_on = 1;
+
 #endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
 #endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
 
@@ -1755,9 +1768,39 @@ uint32_t charge_get_led_flags(void)
 	return flags;
 }
 
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+test_export_static bool charge_is_adapter_sufficient(int chgnum)
+{
+	uint32_t min_voltage;
+	int voltage;
+
+	/* Handle error */
+	if (charger_get_minimum_charging_mv(chgnum, &min_voltage) ==
+	    EC_ERROR_INVAL) {
+		return false;
+	}
+
+	if (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
+		return false;
+	}
+
+	voltage = charge_manager_get_charger_voltage();
+	CPRINTS("min_voltage=%d mv, voltage=%d mv", min_voltage, voltage);
+
+	return (voltage > 0 && voltage >= min_voltage);
+}
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
+
 enum led_pwr_state led_pwr_get_state(void)
 {
 	uint32_t chflags = charge_get_led_flags();
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+	int chgnum = 0;
+
+	if (IS_ENABLED(CONFIG_OCPC)) {
+		chgnum = charge_get_active_chg_chip();
+	}
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 
 	switch (curr.state) {
 	case ST_IDLE:
@@ -1779,12 +1822,22 @@ enum led_pwr_state led_pwr_get_state(void)
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
-		    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE)
-			return LED_PWRS_DISCHARGE;
-		else if (battery_near_full())
+		    charge_manager_get_active_charge_port() ==
+			    CHARGE_PORT_NONE) {
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+			if (!charge_is_adapter_sufficient(chgnum)) {
+				return LED_PWRS_INSUFFICIENT_ADAPTER;
+			} else
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
+			{
+				return LED_PWRS_DISCHARGE;
+			}
+		} else if (battery_near_full()) {
 			return LED_PWRS_CHARGE_NEAR_FULL;
-		else
+		} else {
 			return LED_PWRS_CHARGE;
+		}
+
 	case ST_PRECHARGE:
 		/* we're in battery discovery mode */
 		if (chflags & CHARGE_LED_FLAG_FORCE_IDLE)
@@ -2209,6 +2262,17 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_INPUT_CURRENT_STEP:
 				val = info->input_current_step;
 				break;
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+			case CS_PARAM_CHG_MIN_REQUIRED_MV:
+				if (charger_get_minimum_charging_mv(chgnum,
+								    &val)) {
+					rv = EC_RES_INVALID_PARAM;
+				};
+				break;
+			case CS_PARAM_CHG_IS_ADAPTER_SUFFICIENT:
+				val = charge_is_adapter_sufficient(chgnum);
+				break;
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 			default:
 				rv = EC_RES_INVALID_PARAM;
 			}
@@ -2254,6 +2318,10 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_INPUT_CURRENT_MIN:
 			case CS_PARAM_CHG_INPUT_CURRENT_MAX:
 			case CS_PARAM_CHG_INPUT_CURRENT_STEP:
+#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
+			case CS_PARAM_CHG_MIN_REQUIRED_MV:
+			case CS_PARAM_CHG_IS_ADAPTER_SUFFICIENT:
+#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 				/* Can't set this */
 				rv = EC_RES_ACCESS_DENIED;
 				break;
