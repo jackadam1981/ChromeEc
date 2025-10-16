@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4086cd00_fc340d58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "General suggestions here\n\n1. run `cros format driver/touchpad_focal.c` to fix the coding style\n2. move the changes under `zephyr/program/roach/*` to another CL\n3. remove all commented-out code",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a0be64_9552723c",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "We don\u0027t need to support new non-zephyr firmwares, you can remove all #ifdef CONFIG_ZEPHYR blocks below.",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0fa362_fa5547db",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "remove these typedef and use uint*_t directly",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37fcf68d_abbad783",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "add `static` to all functions except touchpad_interrupt and touchpad_task.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b126d2eb_92344187",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "i2c_xfer already have a retry loop, so this is redundant.",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e2ed6f_ae039beb",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "pressure \u003d CLAMP(pressure, 25, 281);",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 9
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7efaad65_931539d0",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "does reading chip id really need to cros_msleep + watchdog_reload.\n\nfor slow operations like write/erase it\u0027s ok to call watchdog_reload().\nbut you shouldn\u0027t need to do it here.",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02eefa9f_21abfdce",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:28:56Z",
+      "side": 1,
+      "message": "Remove unimplemented subcommands from the help message",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 50
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
