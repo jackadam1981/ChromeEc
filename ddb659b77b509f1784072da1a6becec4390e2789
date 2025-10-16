@@ -39,6 +39,24 @@
       "message": "I know we need this, but it makes me nervous from a security perspective.\n\nCan we design some sort of authentication mechanism or something along those lines?",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6f6284_ebca4c7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-16T21:53:22Z",
+      "side": 1,
+      "message": "We only need this for development, right? Maybe it\u0027s something that we only enable in local builds, but not in production builds.",
+      "parentUuid": "6f83725d_211a3546",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
