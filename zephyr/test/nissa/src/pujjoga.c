@@ -17,6 +17,7 @@
 #include "typec_control.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
+#include "usbc_ppc.h"
 
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
@@ -61,8 +62,6 @@ FAKE_VALUE_FUNC(int, ppc_vbus_sink_enable, int, int);
 FAKE_VOID_FUNC(nct38xx_reset_notify, int);
 FAKE_VALUE_FUNC(int, extpower_is_present);
 FAKE_VOID_FUNC(extpower_handle_update, int);
-
-int ppc_cnt = 2;
 
 static void test_before(void *fixture)
 {
