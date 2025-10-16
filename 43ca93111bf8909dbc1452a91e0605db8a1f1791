@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10ba5425_498b96da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T04:24:13Z",
+      "side": 1,
+      "message": "Looks like you used a wrong clang-format config.\nThe format in old code is already good, these should not change.\nUse tab, not whitespace, in your new code.\n\nTry load `platform/ec/.clang-format`, it should have the correct setting.",
+      "parentUuid": "5cdd0e9b_b649b54d",
+      "revId": "43ca93111bf8909dbc1452a91e0605db8a1f1791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c075e49_d2e1461b",
         "filename": "driver/wpc/cps8100.c",
         "patchSetId": 7
