@@ -16,6 +16,29 @@
       "message": "Comment removed by: Gavin Mak; Reason: delete",
       "revId": "6a235dfd115fc8ad4d2f01dfc5a23a852910709e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c15f81_709e7afa",
+        "filename": "zephyr/program/fatcat/kinmen/gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-16T17:14:55Z",
+      "side": 1,
+      "message": "do we need to add `gpioa 6` now or is it used\nsomewhere else anyway?",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "6a235dfd115fc8ad4d2f01dfc5a23a852910709e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
