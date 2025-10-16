@@ -177,3 +177,38 @@ int board_tcpc_post_init(int port)
 	schedule_deferred_pd_interrupt(port);
 	return EC_SUCCESS;
 }
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int tcpc_vbus_voltage = 0;
+	int tcpc_rv;
+
+	/* Invalid argument guard */
+	if (level > VBUS_REMOVED)
+		return false;
+
+	/*
+	 * Attempt to read the VBUS voltage from the Type-C Port Controller
+	 * (TCPC). It helps in adjust thresholds to be more accurate during
+	 * VBUS Detection.
+	 */
+	tcpc_rv = tcpci_get_vbus_voltage_no_check(port, &tcpc_vbus_voltage);
+
+	if (tcpc_rv == EC_SUCCESS) {
+		/* Check TCPC voltage path */
+		switch (level) {
+		case VBUS_PRESENT:
+			return tcpc_vbus_voltage >= PD_V_SAFE5V_MIN;
+		case VBUS_SAFE0V:
+			return tcpc_vbus_voltage <= PD_V_SAFE0V_MAX;
+		case VBUS_REMOVED:
+			/*
+			 * Pujjoga: On experiment deterrmined that an offset of
+			 * 100mv is required during ADC Calibration.
+			 */
+			return tcpc_vbus_voltage <=
+			       PD_V_SINK_DISCONNECT_MAX - 100;
+		}
+	}
+	return false;
+}
