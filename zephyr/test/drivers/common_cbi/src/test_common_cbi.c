@@ -4,6 +4,7 @@
  */
 
 #include "cros_board_info.h"
+#include "cros_cbi.h"
 #include "host_command.h"
 #include "test/drivers/test_mocks.h"
 #include "test/drivers/test_state.h"
@@ -594,6 +595,128 @@ ZTEST_USER(common_cbi, test_board_id_fails_when_set)
 	zassert_ok(host_command_process(&get_args));
 	zassert_equal(get_args.response_size, sizeof(board_id));
 	zassert_equal(hc_get_response.data[0], board_id);
+}
+
+ZTEST_USER(common_cbi, test_cbi_get_ufsc__read_write)
+{
+	const struct cbi_ufsc ufsc_to_write = {
+		.data = { 0x11223344, 0x55667788, 0x99aabbcc, 0xddeeff00,
+			  0x12345678 }
+	};
+	struct actual_set_params {
+		struct ec_params_set_cbi params;
+		struct cbi_ufsc data;
+	};
+	struct actual_set_params hc_params = {
+		.params = {
+			.tag = CBI_TAG_UFSC,
+			.size = sizeof(ufsc_to_write),
+		},
+		.data = ufsc_to_write,
+	};
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_SET_CROS_BOARD_INFO, 0, hc_params);
+	struct cbi_ufsc ufsc_read;
+
+	/* Turn off write-protect so we can actually write. */
+	gpio_wp_l_set(1);
+
+	zassert_ok(host_command_process(&args), "Failed to set UFSC data");
+
+	/* Invalidate cache to force a read from storage. */
+	cbi_invalidate_cache();
+
+	zassert_ok(cbi_get_ufsc(&ufsc_read), "cbi_get_ufsc failed");
+	zassert_mem_equal(&ufsc_to_write, &ufsc_read, sizeof(struct cbi_ufsc),
+			  "Read UFSC data does not match written data");
+}
+
+ZTEST_USER(common_cbi, test_cbi_get_ufsc__not_found)
+{
+	struct cbi_ufsc ufsc_read;
+	int rv;
+
+	/* Clear CBI to ensure the tag is not present. */
+	gpio_wp_l_set(1);
+	zassert_ok(cbi_clear(), "cbi_clear failed");
+
+	rv = cbi_get_ufsc(&ufsc_read);
+	zassert_equal(rv, EC_ERROR_UNKNOWN,
+		      "Expected EC_ERROR_UNKNOWN for missing tag, but got %d",
+		      rv);
+}
+
+ZTEST_USER(common_cbi, test_cros_cbi_ufsc_match)
+{
+	struct cbi_ufsc ufsc_to_write = { 0 };
+	struct actual_set_params {
+		struct ec_params_set_cbi params;
+		struct cbi_ufsc data;
+	};
+	struct actual_set_params hc_params = {
+		.params = {
+			.tag = CBI_TAG_UFSC,
+			.size = sizeof(ufsc_to_write),
+		},
+	};
+	struct host_cmd_handler_args args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_SET_CROS_BOARD_INFO, 0, hc_params);
+
+	/*
+	 * data[0]: Set test-field-1 (start=0, size=2) to value 2 and
+	 * test-field-2 (start=2, size=3) to value 5.
+	 * Value = (2 << 0) | (5 << 2) = 2 | 20 = 22 (0x16).
+	 */
+	ufsc_to_write.data[0] = 0x16;
+	/*
+	 * data[4]: Set test-field-3 (start=130, size=1) to value 1.
+	 * Bit offset in data[4] is 130 % 32 = 2. Value = BIT(2).
+	 */
+	ufsc_to_write.data[4] = BIT(2);
+	hc_params.data = ufsc_to_write;
+
+	gpio_wp_l_set(1);
+
+	zassert_ok(host_command_process(&args), "Failed to set UFSC data");
+
+	/* Re-initialize UFSC driver to pick up new CBI value */
+	cros_cbi_ufsc_init();
+
+	/* Field 1 was set to 2, which corresponds to value_b */
+	zassert_true(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_b))));
+	zassert_false(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_a))));
+
+	/* Field 2 was set to 5, which corresponds to value_c */
+	zassert_true(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_c))));
+
+	/* Field 3 was set to 1, which corresponds to value_d */
+	zassert_true(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_d))));
+	zassert_false(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_e))));
+}
+
+ZTEST_USER(common_cbi, test_cros_cbi_ufsc_default)
+{
+	/* Clear CBI so that driver uses defaults */
+	gpio_wp_l_set(1);
+	zassert_ok(cbi_clear(), "cbi_clear failed");
+	cros_cbi_ufsc_init();
+
+	/* Field 1's default is value_a (value=1) */
+	zassert_true(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_a))));
+	zassert_false(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_b))));
+
+	/* Field 3's default is value_e (value=0) */
+	zassert_true(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_e))));
+	zassert_false(cros_cbi_ufsc_check_match(
+		CBI_UFSC_VALUE_ID(DT_NODELABEL(value_d))));
 }
 
 static void test_common_cbi_before_after(void *test_data)
