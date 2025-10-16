@@ -405,6 +405,10 @@ int tcpci_tcpm_set_src_ctrl(int port, int enable);
 
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable);
 
+int tcpci_enter_low_power_mode_caller(int port, const char *fn);
+#define tcpci_enter_low_power_mode(port) \
+	tcpci_enter_low_power_mode_caller(port, __func__);
+
 #ifdef __cplusplus
 }
 #endif
