@@ -17,6 +17,7 @@
 #include "typec_control.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
+#include "usbc_ppc.h"
 
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
