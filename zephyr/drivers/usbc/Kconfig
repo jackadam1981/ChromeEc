@@ -79,6 +79,14 @@ config USBC_PDC_RTS54XX_CONSOLE_FW_UPDATER
 	  over the EC console with help from a script (extra/pdc/pdc_fwup.py)
 	  running on the host.
 
+config USBC_PDC_RTS54XX_FW_UPDATER
+	bool "USB-C RTS54xx PDC FW update support"
+	depends on USBC_PDC_RTS54XX
+	help
+	  If enabled, bundle a realtek FW binary blob into the EC image and add code
+	  to perform an EC-based firmware update of the PDC for development
+	  purposes. Enables the `pdc fwupdate` console command.
+
 config USBC_PDC_TRACE_MSG
 	bool "USB-C PDC message tracing"
 	depends on USBC_PDC_RTS54XX

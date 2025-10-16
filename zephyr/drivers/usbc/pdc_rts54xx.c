@@ -3143,3 +3143,16 @@ bool pdc_rts54xx_test_idle_wait(void)
 /* LCOV_EXCL_STOP */
 
 #endif
+
+#ifdef CONFIG_USBC_PDC_RTS54XX_FW_UPDATER
+/* See rts54xx_fwup.c */
+extern int rts54xx_do_firmware_update_internal(const struct i2c_dt_spec *dev);
+int rts_pdc_do_firmware_update(void)
+{
+	/* Get DT node for first PDC port */
+	const struct device *dev = DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
+	const struct pdc_config_t *cfg = dev->config;
+	return rts54xx_do_firmware_update_internal(&cfg->i2c);
+}
+#endif /* CONFIG_USBC_PDC_RTS54XX_FW_UPDATER */
+
