@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0e9b5ea_1b5d3bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-16T23:31:32Z",
+      "side": 1,
+      "message": "Please keep the comment open since we need to merge the firmware side before merging this change.",
+      "parentUuid": "5b7374f0_5d214248",
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcec3cd_e006d9b1",
         "filename": "util/ectool.cc",
         "patchSetId": 8
