@@ -16,6 +16,24 @@
       "message": "Please split algo and sensor drivers into separate CLs. Additionally, please add tests for the sensor driver",
       "revId": "4fd0814e3c445fcab23ae9da097921e850e833a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6b8405_b0047dbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-16T08:18:43Z",
+      "side": 1,
+      "message": "Fixed in PS4. the algo CL is chromium:7047840.",
+      "parentUuid": "6247683c_f94a3756",
+      "revId": "4fd0814e3c445fcab23ae9da097921e850e833a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
