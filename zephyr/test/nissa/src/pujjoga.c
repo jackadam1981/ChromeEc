@@ -5,6 +5,7 @@
 
 #include "cros_board_info.h"
 #include "cros_cbi.h"
+#include "driver/tcpm/tcpci.h"
 #include "extpower.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
@@ -17,6 +18,7 @@
 #include "typec_control.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
+#include "usbc_ppc.h"
 
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/fff.h>
@@ -61,8 +63,10 @@ FAKE_VALUE_FUNC(int, ppc_vbus_sink_enable, int, int);
 FAKE_VOID_FUNC(nct38xx_reset_notify, int);
 FAKE_VALUE_FUNC(int, extpower_is_present);
 FAKE_VOID_FUNC(extpower_handle_update, int);
+FAKE_VALUE_FUNC(int, tcpci_get_vbus_voltage, int, int *);
+FAKE_VALUE_FUNC(int, ppc_is_vbus_present, int);
 
-int ppc_cnt = 2;
+unsigned int ppc_cnt = 2;
 
 static void test_before(void *fixture)
 {
@@ -76,6 +80,8 @@ static void test_before(void *fixture)
 	RESET_FAKE(extpower_is_present);
 	RESET_FAKE(extpower_handle_update);
 	RESET_FAKE(cros_cbi_get_fw_config);
+	RESET_FAKE(tcpci_get_vbus_voltage);
+	RESET_FAKE(ppc_is_vbus_present);
 }
 
 ZTEST_SUITE(pujjoga, NULL, NULL, test_before, NULL, NULL);
@@ -360,4 +366,50 @@ ZTEST(pujjoga, test_pen_power_control)
 	pen_detect_change(NULL, data);
 	gpio_disable_dt_interrupt(pen_detect_int);
 	zassert_equal(gpio_emul_output_get_dt(pen_power_gpio), 0);
+}
+
+ZTEST(pujjoga, test_pd_check_vbus_level)
+{
+	int port = 0;
+
+	/* Invalid level */
+	zassert_false(pd_check_vbus_level(port, VBUS_REMOVED + 1));
+
+	/* TCPC success paths */
+	/* Case: VBUS_PRESENT → voltage above 4750 mV */
+	tcpci_get_vbus_voltage_fake.custom_fake = [](int p, int *v) {
+		*v = 4500;
+		return EC_SUCCESS;
+	};
+	zassert_true(pd_check_vbus_level(port, VBUS_PRESENT));
+
+	/* Case: VBUS_SAFE0V → voltage below or equal to 800 mV */
+	tcpci_get_vbus_voltage_fake.custom_fake = [](int p, int *v) {
+		*v = 500;
+		return EC_SUCCESS;
+	};
+	zassert_true(pd_check_vbus_level(port, VBUS_SAFE0V));
+
+	/* Case: VBUS_REMOVED → voltage below (3670 - 100) = 3570 mV */
+	tcpci_get_vbus_voltage_fake.custom_fake = [](int p, int *v) {
+		*v = 3400;
+		return EC_SUCCESS;
+	};
+	zassert_true(pd_check_vbus_level(port, VBUS_REMOVED));
+
+	/* TCPC not powered (fallback to PPC) */
+	tcpci_get_vbus_voltage_fake.return_val = EC_ERROR_NOT_POWERED;
+
+	/* PPC reports VBUS present */
+	ppc_is_vbus_present_fake.return_val = 1;
+	zassert_true(pd_check_vbus_level(port, VBUS_PRESENT));
+	zassert_false(pd_check_vbus_level(port, VBUS_SAFE0V));
+
+	/* PPC reports VBUS absent */
+	ppc_is_vbus_present_fake.return_val = 0;
+	zassert_true(pd_check_vbus_level(port, VBUS_REMOVED));
+
+	/* TCPC other I2C error */
+	tcpci_get_vbus_voltage_fake.return_val = EC_ERROR_UNKNOWN;
+	zassert_false(pd_check_vbus_level(port, VBUS_PRESENT));
 }
