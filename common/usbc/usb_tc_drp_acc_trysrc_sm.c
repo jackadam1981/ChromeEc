@@ -3621,7 +3621,7 @@ __maybe_unused static void tc_low_power_mode_run(const int port)
 		CPRINTS("C%d: TCPC Enter Low Power Mode", port);
 		TC_SET_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 		TC_SET_FLAG(port, TC_FLAGS_LPM_TRANSITION);
-		tcpm_enter_low_power_mode(port);
+		tcpm_enter_low_power_mode(port, __func__);
 		TC_CLR_FLAG(port, TC_FLAGS_LPM_TRANSITION);
 		tc_pause_event_loop(port);
 

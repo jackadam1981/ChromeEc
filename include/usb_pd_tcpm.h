@@ -472,7 +472,7 @@ struct tcpm_drv {
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*enter_low_power_mode)(int port);
+	int (*enter_low_power_mode)(int port, const char *fn);
 
 	/**
 	 * Starts I2C wake sequence for TCPC

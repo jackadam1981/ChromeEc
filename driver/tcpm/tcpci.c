@@ -562,8 +562,10 @@ int tcpci_tcpc_drp_toggle(int port)
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-int tcpci_enter_low_power_mode(int port)
+int tcpci_enter_low_power_mode_caller(int port, const char *fn)
 {
+	printf("P%d: Called by %s\n", port, fn);
+
 	return tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
 }
 
@@ -1936,7 +1938,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.get_src_ctrl = &tcpci_tcpm_get_src_ctrl,
 	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode = &tcpci_enter_low_power_mode,
+	.enter_low_power_mode = &tcpci_enter_low_power_mode_caller,
 #endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable = &tcpci_tcpc_fast_role_swap_enable,
