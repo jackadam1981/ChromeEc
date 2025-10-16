@@ -39,6 +39,9 @@ extern "C" {
 void chip_save_reset_flags(uint32_t flags);
 uint32_t chip_read_reset_flags(void);
 
+void chip_save_unexpected_reset_rw_flag(bool flag);
+bool chip_read_unexpected_reset_rw_flag(void);
+
 /**
  * Checks if running image is RW or not
  *

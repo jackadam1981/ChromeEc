@@ -36,6 +36,9 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	if (board_hibernate)
 		board_hibernate();
 
+	if (IS_ENABLED(CONFIG_UNEXPECTED_RESET_DETECTION_RW))
+		chip_save_unexpected_reset_rw_flag(false);
+
 	/* chip specific standby mode */
 	__enter_hibernate(seconds, microseconds);
 }
@@ -87,6 +90,16 @@ static void system_reset_ec_by_gpg1(void)
 		;
 }
 
+void chip_save_unexpected_reset_rw_flag(bool flag)
+{
+	BRAM_UNEXPECTED_RESET_RW = flag;
+}
+
+bool chip_read_unexpected_reset_rw_flag(void)
+{
+	return BRAM_UNEXPECTED_RESET_RW;
+}
+
 static void check_reset_cause(void)
 {
 	uint32_t flags;
@@ -104,6 +117,12 @@ static void check_reset_cause(void)
 	/* Clear reset cause. */
 	IT83XX_GCTRL_RSTS |= 0x03;
 	IT83XX_GCTRL_SPCTRL4 |= 0x07;
+
+	if (IS_ENABLED(CONFIG_UNEXPECTED_RESET_DETECTION_RW)) {
+		if (chip_read_unexpected_reset_rw_flag())
+			flags |= EC_RESET_FLAG_UNEXPECTED_RESET_RW;
+		chip_save_unexpected_reset_rw_flag(true);
+	}
 
 	/* Determine if watchdog reset or power on reset. */
 	if (raw_reset_cause & 0x02) {
@@ -340,6 +359,9 @@ void system_reset(int flags)
 
 	/* Store flags to battery backed RAM. */
 	chip_save_reset_flags(save_flags);
+
+	if (IS_ENABLED(CONFIG_UNEXPECTED_RESET_DETECTION_RW))
+		chip_save_unexpected_reset_rw_flag(false);
 
 	/* If WAIT_EXT is set, then allow 10 seconds for external reset */
 	if (flags & SYSTEM_RESET_WAIT_EXT) {

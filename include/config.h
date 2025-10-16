@@ -3754,6 +3754,16 @@
 #undef CONFIG_OTP_KEY
 
 /*
+ * Detects unexpected restarts in RW image by
+ * storing a flag in bbram upon entering RW and
+ * clears it when leaving. If the flag is set when
+ * entering the image, an unexpected reset has occured.
+ * Only applied to RW image to avoid conflicts between RO
+ * and RW image.
+ */
+#undef CONFIG_UNEXPECTED_RESET_DETECTION_RW
+
+/*
  * Address to store persistent panic data at. By default, this will be
  * at the end of RAM, and have a size of sizeof(struct panic_data)
  */

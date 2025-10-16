@@ -82,6 +82,10 @@ BUILD_ASSERT((sizeof(struct panic_data) + sizeof(struct jump_data) +
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_seconds;
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_microseconds;
 
+#if defined(CONFIG_UNEXPECTED_RESET_DETECTION_RW)
+BUILD_ASSERT(IS_ENABLED(SECTION_IS_RW));
+#endif
+
 /* On-going actions preventing going into deep-sleep mode */
 atomic_t sleep_mask;
 
@@ -720,6 +724,9 @@ system_run_image_copy_with_flags(enum ec_image copy, uint32_t add_reset_flags)
 	if (copy == EC_IMAGE_RO)
 		system_clear_reset_flags(EC_RESET_FLAG_EFS);
 
+	if (IS_ENABLED(CONFIG_UNEXPECTED_RESET_DETECTION_RW))
+		chip_save_unexpected_reset_rw_flag(false);
+
 	CPRINTS("Jumping to image %s (0x%08x)", ec_image_to_string(copy),
 		system_get_reset_flags());
 
@@ -905,39 +912,10 @@ system_get_build_info(void)
 {
 	return build_info;
 }
+int system_common_pre_init_ran = 0;
 
 void system_common_pre_init(void)
 {
-	/*
-	 * Log panic cause if watchdog caused reset and panic cause
-	 * was not already logged. This must happen before calculating
-	 * jump_data address because it might change panic pointer.
-	 */
-	if (system_get_reset_flags() & EC_RESET_FLAG_WATCHDOG) {
-		uint32_t reason;
-		uint32_t info;
-		uint8_t exception;
-		struct panic_data *pdata;
-
-		panic_get_reason(&reason, &info, &exception);
-		pdata = panic_get_data();
-
-		/* If the panic reason is a watchdog warning, then change
-		 * the reason to a regular watchdog reason while preserving
-		 * the info and exception from the watchdog warning.
-		 */
-		if (reason == PANIC_SW_WATCHDOG_WARN)
-			panic_set_reason(PANIC_SW_WATCHDOG, info, exception);
-		/* The watchdog panic info may have already been initialized by
-		 * the watchdog handler, so only set it here if the panic reason
-		 * is not a watchdog or the panic info has already been read,
-		 * i.e. an old watchdog panic.
-		 */
-		else if (reason != PANIC_SW_WATCHDOG || !pdata ||
-			 pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD)
-			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
-	}
-
 	/*
 	 * get_jump_data() is only available if one of the following are
 	 * enabled.
@@ -960,7 +938,9 @@ void system_common_pre_init(void)
 		/* Yes, we jumped to this image */
 		jumped_to_image = 1;
 		/* Restore the reset flags */
-		reset_flags = jdata->reset_flags | EC_RESET_FLAG_SYSJUMP;
+		system_set_reset_flags(jdata->reset_flags |
+				       system_get_reset_flags() |
+				       EC_RESET_FLAG_SYSJUMP);
 
 		/*
 		 * If the jump data structure isn't the same size as the
@@ -1012,6 +992,47 @@ void system_common_pre_init(void)
 	} else {
 		/* Clear the whole jump_data struct */
 		memset(jdata, 0, sizeof(struct jump_data));
+	}
+
+	/*
+	 * Log panic cause if watchdog caused reset and panic cause
+	 * was not already logged. This must happen before calculating
+	 * jump_data address because it might change panic pointer.
+	 */
+	if (system_get_reset_flags() & EC_RESET_FLAG_WATCHDOG) {
+		uint32_t reason;
+		uint32_t info;
+		uint8_t exception;
+		struct panic_data *pdata;
+
+		panic_get_reason(&reason, &info, &exception);
+		pdata = panic_get_data();
+
+		/* If the panic reason is a watchdog warning, then change
+		 * the reason to a regular watchdog reason while preserving
+		 * the info and exception from the watchdog warning.
+		 */
+		if (reason == PANIC_SW_WATCHDOG_WARN) {
+			panic_set_reason(PANIC_SW_WATCHDOG, info, exception);
+		}
+		/* The watchdog panic info may have already been initialized by
+		 * the watchdog handler, so only set it here if the panic reason
+		 * is not a watchdog or the panic info has already been read,
+		 * i.e. an old watchdog panic.
+		 */
+		else if (reason != PANIC_SW_WATCHDOG || !pdata ||
+			 pdata->flags & PANIC_DATA_FLAG_OLD_HOSTCMD) {
+			panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
+		}
+
+		/* If an unexpected reset in RW was detected, assume
+		 * the watchdog occured in RW and set the flag on the panic data
+		 */
+		if (IS_ENABLED(CONFIG_SYSTEM_RESET_DETECTION_RW) && pdata &&
+		    (system_get_reset_flags() &
+		     EC_RESET_FLAG_UNEXPECTED_RESET_RW)) {
+			pdata->flags |= PANIC_DATA_FLAG_RW_IMAGE;
+		}
 	}
 }
 
