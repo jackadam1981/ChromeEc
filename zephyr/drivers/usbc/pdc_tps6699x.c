@@ -91,10 +91,6 @@ LOG_MODULE_REGISTER(tps6699x, CONFIG_USBC_LOG_LEVEL);
  */
 #define NUM_PDC_TPS6699X_PORTS DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)
 
-/* TODO: b/323371550 */
-BUILD_ASSERT(NUM_PDC_TPS6699X_PORTS <= 2,
-	     "tps6699x driver supports a maximum of 2 ports");
-
 /* Make sure pdc_info_t::project_name has enough space for the config identifier
  * string stored in the customer-use register plus a NUL-terminator byte.
  */
@@ -1627,6 +1623,7 @@ static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 	union reg_tx_identity tx_identity;
 	union reg_customer_use customer_val;
 	union reg_mode mode_reg;
+	union reg_boot_flags pdc_boot_flags;
 	int rv;
 
 	if (info == NULL) {
@@ -1676,7 +1673,13 @@ static int cmd_get_ic_status_sync_internal(const struct pdc_config_t *cfg,
 	info->pid = *(uint16_t *)tx_identity.product_id;
 
 	/* TI Running flash bank offset */
-	info->running_in_flash_bank = 0;
+	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
+	if (rv) {
+		LOG_ERR("TI%d: Read boot flags failed (%d)",
+			cfg->connector_number, rv);
+		return rv;
+	}
+	info->running_in_flash_bank = pdc_boot_flags.active_bank;
 
 	/* TI PD Revision (big-endian) */
 	info->pd_revision = 0x0000;
@@ -2844,25 +2847,6 @@ static int tps_is_vconn_sourcing(const struct device *dev, bool *vconn_sourcing)
 	return tps_post_command(dev, CMD_IS_VCONN_SOURCING, vconn_sourcing);
 }
 
-static int tps_get_current_flash_bank(const struct device *dev, uint8_t *bank)
-{
-	const struct pdc_config_t *cfg =
-		(const struct pdc_config_t *)dev->config;
-	union reg_boot_flags pdc_boot_flags;
-	int rv;
-
-	rv = tps_rd_boot_flags(&cfg->i2c, &pdc_boot_flags);
-	if (rv) {
-		LOG_ERR("TI%d: Read boot flags failed (%d)",
-			cfg->connector_number, rv);
-		*bank = 0xff;
-		return rv;
-	}
-
-	*bank = pdc_boot_flags.active_bank;
-	return 0;
-}
-
 static int tps_get_cable_property(const struct device *dev,
 				  union cable_property_t *cp)
 {
@@ -3071,7 +3055,6 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 	.set_comms_state = tps_set_comms_state,
 	.get_pch_data_status = tps_get_pch_data_status,
 	.is_vconn_sourcing = tps_is_vconn_sourcing,
-	.get_current_flash_bank = tps_get_current_flash_bank,
 	.update_retimer = tps_update_retimer_mode,
 	.execute_ucsi_cmd = tps_execute_ucsi_cmd,
 	.set_frs = tps_set_fast_role_swap,
@@ -3232,6 +3215,11 @@ static void tps_thread(void *dev, void *unused1, void *unused2)
 }
 
 #define PDC_DATA_STRUCT_NAME(inst) pdc_data_##inst
+
+BUILD_ASSERT(
+	EC_TASK_PRIORITY(EC_TASK_USBC_PDC_PRIO) ==
+		CONFIG_USBC_PDC_TPS6699X_THREAD_PRIORITY,
+	"EC_TASK_USBC_PDC_PRIO does not match USBC_PDC_TPS6699X_THREAD_PRIORITY.");
 
 #define TPS6699X_PDC_DEFINE(inst)                                              \
 	K_THREAD_STACK_DEFINE(tps6699x_thread_stack_area_##inst,               \
