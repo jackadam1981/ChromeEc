@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ab604b_961bc9ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-16T21:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ffd13ce_aeff2cef",
+      "revId": "a5d5dd94c404cf4705cf857f5460d7efc5df9e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d66cbe5f_40ef8dd8",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-15T15:18:41Z",
       "side": 1,
       "message": "Nit - use lowercase `min` which is the version that guarantees single execution of the arguments.  [reference](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/sys/util.h;l\u003d457;drc\u003d46e9731f90ccc98ddc5128ac2b17d6469eea7098)",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "a5d5dd94c404cf4705cf857f5460d7efc5df9e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2ab403_a82dedbe",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx_fwup.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-16T21:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66cbe5f_40ef8dd8",
       "range": {
         "startLine": 169,
         "startChar": 7,
