@@ -16,6 +16,24 @@
       "message": "Can you also push this `ec_commands.h` change over to AL?  This should automagically update AL ectool.",
       "revId": "734e3e43cb5bf0de1bf07ea2ee4cb185cf562ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1464257_cc26f10d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6664,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-16T16:32:45Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "65f4fd2b_39e4c80f",
+      "revId": "734e3e43cb5bf0de1bf07ea2ee4cb185cf562ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
