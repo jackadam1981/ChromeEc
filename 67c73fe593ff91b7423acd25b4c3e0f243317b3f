@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10f8cf0_2cf2f71b",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-16T09:20:39Z",
+      "side": 1,
+      "message": "Hi Kyle,   \n\nIf code change as below, bmi260 sensor can\u0027t workable when power on to OS. motionsense data will always 0. It look like the `config_interrupt` of bmi260 just can call one time when code init, can\u0027t call it every time when driver call enable_interrupt.\n\n-----------------------\n```\nstatic int bmi260_enable_interrupt(const struct motion_sensor_t *s, bool enable)\n{\n\tint ret, val;\n\n\tif (s-\u003etype !\u003d MOTIONSENSE_TYPE_ACCEL)\n\t\treturn EC_SUCCESS;\n\n\tif (enable)\n\t\treturn config_interrupt(s);\n\n\tmutex_lock(s-\u003emutex);\n\t/* Flush the FIFO */\n\tGOTO_ON_ERROR(out, bmi_write8(s-\u003eport, s-\u003ei2c_spi_addr_flags,\n\t\t\t\t      BMI260_CMD_REG, BMI260_CMD_FIFO_FLUSH));\n\n\t/* Disable interrupt mapping for both INT pins */\n\tGOTO_ON_ERROR(out, bmi_read8(s-\u003eport, s-\u003ei2c_spi_addr_flags,\n\t\t\t\t     BMI260_INT_MAP_DATA, \u0026val));\n\n\t\tval \u0026\u003d ~(BMI260_MAP_FFULL_INT | BMI260_MAP_FWM_INT);\n\tGOTO_ON_ERROR(out, bmi_write8(s-\u003eport, s-\u003ei2c_spi_addr_flags,\n\t\t\t\t      BMI260_INT_MAP_DATA, val));\nout:\n\tmutex_unlock(s-\u003emutex);\n\treturn ret;\n}\n```",
+      "parentUuid": "7f859020_33b48e67",
+      "revId": "67c73fe593ff91b7423acd25b4c3e0f243317b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b94e965_056c0e1b",
