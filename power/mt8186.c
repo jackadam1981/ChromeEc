@@ -176,9 +176,13 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&reset_request_interrupt_deferred_data, 0);
 }
 
+static bool first_wdt_received = false;
+
 static void watchdog_interrupt_deferred(void)
 {
 	uint32_t flags = IN_AP_RST;
+
+	first_wdt_received = false;
 
 	if (!IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_ALLOW_S3_WDT)) {
 		flags |= IN_SUSPEND_ASSERTED;
@@ -200,9 +204,19 @@ void chipset_watchdog_interrupt(enum gpio_signal signal)
 	 * 2. If a warm reset request or AP shutdown is processing, then this
 	 *    interrupt tirgger is a fake WDT interrupt, we should skip it.
 	 */
-	if (!is_resetting && !is_shutdown)
-		hook_call_deferred(&watchdog_interrupt_deferred_data,
-				   NORMAL_SHUTDOWN_DELAY);
+	if (!is_resetting && !is_shutdown) {
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT) &&
+		    !first_wdt_received) {
+			/* first WDT is from kernel, wait for coreboot to send
+			 * another WDT */
+			first_wdt_received = true;
+			hook_call_deferred(&watchdog_interrupt_deferred_data,
+					   15 * SECOND);
+		} else {
+			hook_call_deferred(&watchdog_interrupt_deferred_data,
+					   NORMAL_SHUTDOWN_DELAY);
+		}
+	}
 }
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
@@ -540,6 +554,11 @@ enum power_state power_handle_state(enum power_state state)
 		power_signal_disable_interrupt(GPIO_AP_IN_SLEEP_L);
 		power_signal_disable_interrupt(GPIO_AP_EC_WDTRST_L);
 		power_signal_disable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
+		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT)) {
+			first_wdt_received = false;
+			hook_call_deferred(&watchdog_interrupt_deferred_data,
+					   -1);
+		}
 
 		/* Only actively reset AP with hard shutdown.
 		 * For AP initiated shutdown, the AP has been reset by PMIC.
