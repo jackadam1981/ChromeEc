@@ -562,8 +562,10 @@ int tcpci_tcpc_drp_toggle(int port)
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-int tcpci_enter_low_power_mode(int port)
+int tcpci_enter_low_power_mode_caller(int port, char *fn)
 {
+	printf("L-567, Called by %s", fn);
+
 	return tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
 }
 
