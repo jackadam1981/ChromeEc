@@ -63,6 +63,12 @@
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 2100
 
+/* Enable panic log in RW image to preserve log before panic */
+#ifdef SECTION_IS_RW
+#define CONFIG_PRESERVED_RING_BUF
+#define CONFIG_PANIC_LOG
+#endif
+
 #elif defined(VARIANT_OCTOPUS_EC_ITE8320)
 /* IT83XX config */
 #define CONFIG_IT83XX_VCC_1P8V
@@ -177,7 +183,7 @@
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_L
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_SMART
-#define CONFIG_HOSTCMD_BATTERY_V2
+#define CONFIG_HOSTCMD_BATTERY_INFO
 
 /*******************************************************************************
  * USB-C Configs
