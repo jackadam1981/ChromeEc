@@ -159,6 +159,75 @@
       },
       "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c62c795_35c0b212",
+        "filename": "zephyr/Kconfig.touchpad",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:31:54Z",
+      "side": 1,
+      "message": "revert these change",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40418505_4f3ad3ba",
+        "filename": "zephyr/Kconfig.touchpad",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:31:54Z",
+      "side": 1,
+      "message": "remove the writespaces before tab characher",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1d2453_8737236a",
+        "filename": "zephyr/Kconfig.touchpad",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-16T07:31:54Z",
+      "side": 1,
+      "message": "default y if DT_HAS_FOCALTECH_FTS_ENABLED.",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
