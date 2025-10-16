@@ -192,6 +192,16 @@ void print_flag(int port, int set_or_clear, int flag);
 /* Unreachable time in future */
 #define TIMER_DISABLED 0xffffffffffffffff
 
+#define MAX_VBUS_SAMPLES 60
+
+struct vbus_sample {
+	uint32_t timestamp;
+	int voltage_mv;
+};
+
+static struct vbus_sample vbus_log[MAX_VBUS_SAMPLES];
+static int vbus_log_count;
+
 enum ps_reset_sequence {
 	PS_STATE0,
 	PS_STATE1,
@@ -682,6 +692,32 @@ static void pd_update_pd_comm(void)
 	}
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_pd_comm, HOOK_PRIO_DEFAULT);
+
+/* To Collect Vbus Samples */
+static void tc_vbus_log_sample(int port, int vbus_mv)
+{
+	if (vbus_log_count >= MAX_VBUS_SAMPLES)
+		return; /* prevent overflow */
+
+	vbus_log[vbus_log_count].timestamp = get_time().val;
+	vbus_log[vbus_log_count].voltage_mv = vbus_mv;
+	vbus_log_count++;
+}
+
+/* Dump collected Vbus log*/
+static void tc_dump_vbus_log(int port)
+{
+	int i;
+
+	if (!vbus_log_count)
+		return;
+
+	CPRINTS("VBUS log dump %d samples", vbus_log_count);
+	for (i = 0; i < vbus_log_count; i++) {
+		CPRINTS("[%d] %uus: %dmV", i, vbus_log[i].timestamp,
+			vbus_log[i].voltage_mv);
+	}
+}
 
 static bool pd_comm_allowed_by_policy(void)
 {
@@ -2264,6 +2300,8 @@ static void tc_unattached_snk_entry(const int port)
 		print_current_state(port);
 	}
 
+	tc_dump_vbus_log(port);
+
 	/*
 	 * We are in an unattached state and considering to be a SNK
 	 * searching for a SRC partner.  We set the CC pull value to
@@ -2670,6 +2708,7 @@ static bool tc_snk_check_vbus_removed(const int port)
 
 static void tc_attached_snk_run(const int port)
 {
+	int vbus_mv = 0;
 #ifdef CONFIG_USB_PE_SM
 	/*
 	 * Perform Hard Reset
@@ -2727,8 +2766,11 @@ static void tc_attached_snk_run(const int port)
 		/*
 		 * Detach detection
 		 */
-		if (tc_snk_check_vbus_removed(port))
+		if (tc_snk_check_vbus_removed(port)) {
+			vbus_mv = tcpc_get_vbus_voltage(port);
+			tc_vbus_log_sample(port, vbus_mv);
 			return;
+		}
 
 		if (!pe_is_explicit_contract(port))
 			sink_power_sub_states(port);
