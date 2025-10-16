@@ -47,8 +47,11 @@
 	};
 
 	batteries {
-		default_battery: b300049 {
-			compatible = "celxpert,b300049", "battery-smart";
+		default_battery: cm32054 {
+			compatible = "cosmx,cm32054", "battery-smart";
+		};
+		celxpert_b300049 {
+			compatible = "celxpert,b300049","battery-smart";
 		};
 	};
 
@@ -63,6 +66,11 @@
 			irq-pin = <&pogo_prsnt_int_l>;
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "base_detect_interrupt";
+		};
+			wpc_irq:wpc_irq{
+			irq-pin = <&gpio_wpc_irq>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "pchg_irq";
 		};
 	};
 
@@ -126,6 +134,16 @@
 		en_cc_lid_base_pu: en-cc-lid-base-pu {
 			gpios = <&gpioa 3 GPIO_INPUT>;
 		};
+
+		gpio_wpc_irq: gpio_wpc_irq{
+			gpios = <&gpiod 4 (GPIO_INPUT_PULL_UP | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_WPC_IRQ";
+		};
+
+		gpio_ec_pen_chg_dis_odl: ec_pen_chg_dis_odl {
+			gpios = <&gpiof 5 (GPIO_OUTPUT_HIGH)>;
+			enum-name = "GPIO_QI_RESET_L";
+		};
 	};
 
 	named-i2c-ports {
@@ -137,7 +155,7 @@
 		unused-gpios =
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
-			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
+			//<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
@@ -166,9 +184,9 @@
 	};
 
 	named-i2c-ports {
-		/delete-node/ i2c_ec_i2c_pdc_s_scl_3v3;
+		/delete-node/ i2c_ec_i2c_charger_scl_3v3;
 		i2c_detachable_base: detachable-base {
-			i2c-port = <&i2c4>;
+			i2c-port = <&i2c0>;
 			enum-names = "I2C_PORT_DETACHABLE_BASE";
 		};
 	};
@@ -203,28 +221,12 @@
 
 &i2c0 {
 	/delete-node/ bq25720@9;
-	charger_rt9490: rt9490@53{
-		compatible = "richtek,rt9490";
-		thermistor = <&thermistor_rt9490>;
-		reg = <0x53>;
-		eoc-current = <120>;
-		/delete-property/ irq;
-	};
-	data-hold-time = <10>;
-};
 
-&i2c2 {
-	/delete-node/ rts54-pdc@67;
-};
-
-&i2c4 {
-	/delete-node/ ps8747-mux-1@10;
-	/delete-node/ tusb546-mux-0@44;
 	label = "I2C_DETACHABLE_BASE";
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_FAST>;
-	pinctrl-0 = <&i2c4_clk_gpe0_default
-		     &i2c4_data_gpe7_default>;
+	pinctrl-0 = <&i2c0_clk_gpb3_default
+		     &i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
 	prescale-scl-low = <1>;
 
@@ -246,6 +248,31 @@
 		/* Zephyr preferred style for specifying ec_ap_hid_int_odl */
 		irq-gpios = <&gpioi 6 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8 |
 			     GPIO_ACTIVE_LOW)>;
+	};
+	data-hold-time = <10>;
+};
+
+&i2c1 {
+	charger_rt9490: rt9490@53{
+		compatible = "richtek,rt9490";
+		thermistor = <&thermistor_rt9490>;
+		reg = <0x53>;
+		eoc-current = <120>;
+		/delete-property/ irq;
+	};
+};
+
+&i2c2 {
+	/delete-node/ rts54-pdc@67;
+	/delete-node/ ps8747-mux-1@10;
+	/delete-node/ tusb546-mux-0@44;
+};
+
+&i2c4 {
+	scp8601@41 {
+		compatible = "convenientpower,cps8601";
+		reg = <0x41>;
+		irq-gpios=<&gpiod 4 (GPIO_INPUT_PULL_UP | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)>;
 	};
 };
 
