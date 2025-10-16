@@ -22,6 +22,30 @@
       },
       "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0a02d9_fa5ad8a6",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-16T17:30:32Z",
+      "side": 1,
+      "message": "how about just clearing the `fp_buffer` after copy `memcpy(out, fp_buffer + offset, size);`?",
+      "parentUuid": "ea2a0e40_85128414",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 3
+      },
+      "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
