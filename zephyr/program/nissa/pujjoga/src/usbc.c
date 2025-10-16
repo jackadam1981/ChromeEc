@@ -5,6 +5,7 @@
 
 #include "charge_state.h"
 #include "chipset.h"
+#include "driver/ppc/syv682x_public.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/tcpci.h"
 #include "gpio.h"
@@ -19,6 +20,7 @@
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
+#define CPRINTS(fmt, args...) cprints(CC_USBPD, fmt, ##args)
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
 
@@ -176,4 +178,57 @@ int board_tcpc_post_init(int port)
 	 * otherwise the alert# pin stays low indefinitely */
 	schedule_deferred_pd_interrupt(port);
 	return EC_SUCCESS;
+}
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int rv, vbus_voltage;
+
+	rv = tcpci_get_vbus_voltage(port, &vbus_voltage);
+
+	/* Log every call for confirmation */
+	CPRINTS("C%d: pd_check_vbus_level(%d): rv=%d, vbus=%dmV", port, level,
+		rv, vbus_voltage);
+
+	if (rv == EC_ERROR_NOT_POWERED) {
+		bool present = ppc_is_vbus_present(port);
+		CPRINTS("C%d: VBUS ADC not powered -> PPC reports %s", port,
+			present ? "PRESENT" : "NOT PRESENT");
+
+		switch (level) {
+		case VBUS_PRESENT:
+			return present;
+		case VBUS_SAFE0V:
+		case VBUS_REMOVED:
+			return !present;
+		default:
+			CPRINTS("%s: unrecognized vbus_level: %d", __func__,
+				level);
+			return false;
+		}
+	}
+
+	if (rv != EC_SUCCESS) {
+		CPRINTS("C%d: tcpci_get_vbus_voltage() failed: %d", port, rv);
+		return false;
+	}
+
+	if (vbus_voltage < 0 || vbus_voltage > 5500)
+		CPRINTS("C%d: Warning: unexpected VBUS reading = %dmV", port,
+			vbus_voltage);
+
+	switch (level) {
+	case VBUS_PRESENT:
+		return vbus_voltage >= PD_V_SAFE5V_MIN;
+
+	case VBUS_SAFE0V:
+		return vbus_voltage <= PD_V_SAFE0V_MAX;
+
+	case VBUS_REMOVED:
+		return vbus_voltage <= PD_V_SINK_DISCONNECT_MAX;
+
+	default:
+		CPRINTS("%s: unrecognized vbus_level: %d", __func__, level);
+		return false;
+	}
 }
