@@ -220,6 +220,17 @@ enum vendor_cmd_cc {
 	/* Returns info to identify the specific GSC chip type. */
 	VENDOR_CC_GET_CHIP_ID = 75,
 
+	/* Get and/or increment a monotonic counter */
+	VENDOR_CC_MONOTONIC_COUNTER = 76,
+
+	/* Trusty SPDM storage mac */
+	VENDOR_CC_TRUSTY_SPDM_STORAGE_MAC = 77,
+
+	/* Set device IDs */
+	VENDOR_CC_SET_DEVICE_IDS = 78,
+	/* Get device IDs */
+	VENDOR_CC_GET_DEVICE_IDS = 79,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
@@ -412,6 +423,72 @@ struct ti50_stats {
 #define METRICSV_IS_PROD_MASK (1 << METRICSV_IS_PROD_SHIFT)
 #define METRICSV_RDD_IS_DETECTED_SHIFT 7
 #define METRICSV_RDD_IS_DETECTED_MASK (1 << METRICSV_RDD_IS_DETECTED_SHIFT)
+
+/*
+ * VENDOR_CC_SET_DEVICE_IDS options. This should match the set_device_ids.rs
+ * sub_cmd values.
+ */
+enum ti50_set_device_id_subcmd {
+	DEVICE_ID_BRAND = 1,
+	DEVICE_ID_DEVICE,
+	DEVICE_ID_PRODUCT,
+	DEVICE_ID_MANUFACTURER,
+	DEVICE_ID_MODEL,
+	DEVICE_ID_SN,
+	DEVICE_ID_IMEI,
+	DEVICE_ID_MEID,
+	DEVICE_ID_COMMIT,
+	DEVICE_ID_DELETE_SCRATCH,
+};
+
+struct ti50_device_id_field_info {
+	/* Capability name */
+	const char *name;
+
+	/* Default state, if config set to CCD_CAP_STATE_DEFAULT */
+	enum ti50_set_device_id_subcmd subcmd;
+};
+
+enum vendor_cc_get_device_id_subcmd {
+	STORAGE_NVMEM = 1,
+	STORAGE_INFO = 2,
+};
+
+
+#define TI50_DEVICE_ID_COUNT 8
+#define TI50_DEVICE_ID_MAX_STR_LEN 32
+#define TI50_DEVICE_IDS_VERSION 1
+#define TI50_DEVICE_IDS_VERSION_UNSET 0xff
+
+struct ti50_device_ids_field {
+	/* Length of the device id string */
+	uint8_t size;
+	/* The value of the field */
+	uint8_t value[TI50_DEVICE_ID_MAX_STR_LEN];
+} __packed;
+
+struct ti50_device_ids_header {
+	uint8_t version;
+	uint8_t storage_type;
+	uint8_t field_count;
+	uint8_t data_size[2];
+	uint8_t status;
+	uint8_t unused[2];
+} __packed;
+
+struct ti50_device_ids_response {
+	struct ti50_device_ids_header header;
+	struct ti50_device_ids_field ids[TI50_DEVICE_ID_COUNT];
+} __packed;
+
+/* Structure for VENDOR_CC_SPI_HASH request which follows tpm_header */
+struct ti50_device_ids_request {
+	uint8_t subcmd; /* See vendor_cc_device_id_subcmd */
+	/* Length of the device id string */
+	uint8_t size;
+	/* The value */
+	uint8_t value[TI50_DEVICE_ID_MAX_STR_LEN];
+} __packed;
 
 /* End Ti50 Specific Structs */
 /*****************************************************************************/
