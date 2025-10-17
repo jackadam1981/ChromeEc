@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca69134_67894749",
+        "filename": "zephyr/program/fatcat/ruby/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-17T00:13:06Z",
+      "side": 1,
+      "message": "Normally this signal is not initialized high, and the board\u0027s drivers will enable USB-A power as needed. Is there a reason for this?",
+      "range": {
+        "startLine": 185,
+        "startChar": 36,
+        "endLine": 185,
+        "endChar": 57
+      },
+      "revId": "4e4ef30491fe2d4bf9167f3f18535b6ba94d582c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
