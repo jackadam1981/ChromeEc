@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8d273c_3c2f1476",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-17T10:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd3ff595_a2619c06",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 45
+      },
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f83725d_211a3546",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "We only need this for development, right? Maybe it\u0027s something that we only enable in local builds, but not in production builds.",
       "parentUuid": "6f83725d_211a3546",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0302e8be_59385c6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-17T10:07:13Z",
+      "side": 1,
+      "message": "\u003e I know we need this, but it makes me nervous from a security perspective.\n\nI see your point. It is basically a new potential attack vector. I\u0027m nervous as well.\n\n\u003e Can we design some sort of authentication mechanism or something along those lines?\n\nDo you have anything special in your mind? You mean something like integrity check via some magic number, not to accidentally enter bootloader or more like authentication e.g. with TA involvement? \n\n\u003e We only need this for development, right? Maybe it\u0027s something that we only enable in local builds, but not in production builds.\n\nThat is a problematic question. If we don\u0027t have that in mp builds, we just resign from the `flash_fp_mcu` script functionality, because there is no other method to force bootloader. Anyway, this CL adds possibility to include such command, guarded by the config.",
+      "parentUuid": "1d6f6284_ebca4c7d",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
