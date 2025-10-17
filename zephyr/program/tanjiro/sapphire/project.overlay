@@ -10,7 +10,9 @@
 #include "../keyboard.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
+
 #include "cbi.dtsi"
+#include "led_strip_spi.dtsi"
 
 / {
 	aliases {
@@ -290,6 +292,8 @@
 		/delete-node/ ec_led1_odl;
 		/delete-node/ ec_led2_odl;
 		/delete-node/ ec_gpd3;
+		/delete-node/ rsvd_kso17;
+
 
 		gpio_gsc_ec_voldn_btn_odl: gsc_ec_voldn_btn_odl {
 			gpios = <&gpioe 3 (GPIO_INPUT | GPIO_PULL_UP)>;
@@ -322,6 +326,9 @@
 		gpio_pp1800_wlc_en: pp1800_wlc_en {
 			gpios = <&gpioa 1 (GPIO_OUTPUT)>;
 		};
+		gpio_en_pp5000_led_x: en_pp5000_led_x {
+			gpios = <&gpioh 2 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_HIGH)>;
+        };
 	};
 
 	gpio-interrupts { 
