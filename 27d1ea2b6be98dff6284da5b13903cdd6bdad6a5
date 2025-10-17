@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df94999b_faddea2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "done.\n\nadd new CL:7052484",
+      "parentUuid": "4086cd00_fc340d58",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4a0be64_9552723c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e8ac4c_9ef2573e",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a0be64_9552723c",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc0fa362_fa5547db",
@@ -48,6 +84,30 @@
       "writtenOn": "2025-10-16T07:28:56Z",
       "side": 1,
       "message": "remove these typedef and use uint*_t directly",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92baa65e_f629f42c",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0fa362_fa5547db",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacf205a_603c97b7",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37fcf68d_abbad783",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b126d2eb_92344187",
@@ -94,6 +178,24 @@
       "writtenOn": "2025-10-16T07:28:56Z",
       "side": 1,
       "message": "i2c_xfer already have a retry loop, so this is redundant.",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8605b5_42f5eb41",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b126d2eb_92344187",
       "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05700f8e_4280f414",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e2ed6f_ae039beb",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 9
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7efaad65_931539d0",
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf54e62_a57c31e9",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "A delay is required when reading the chip ID during initialization, as the IC needs a short period to power on and for communication to stabilize.",
+      "parentUuid": "7efaad65_931539d0",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02eefa9f_21abfdce",
@@ -151,6 +295,30 @@
       "writtenOn": "2025-10-16T07:28:56Z",
       "side": 1,
       "message": "Remove unimplemented subcommands from the help message",
+      "range": {
+        "startLine": 932,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 50
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc7f844_7d6f0900",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02eefa9f_21abfdce",
       "range": {
         "startLine": 932,
         "startChar": 0,
@@ -184,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2aa70c0_4bd62127",
+        "filename": "zephyr/Kconfig.touchpad",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c62c795_35c0b212",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40418505_4f3ad3ba",
@@ -207,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf598f54_22497acd",
+        "filename": "zephyr/Kconfig.touchpad",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40418505_4f3ad3ba",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c1d2453_8737236a",
@@ -220,6 +436,30 @@
       "writtenOn": "2025-10-16T07:31:54Z",
       "side": 1,
       "message": "default y if DT_HAS_FOCALTECH_FTS_ENABLED.",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78738b0_4a3821d8",
+        "filename": "zephyr/Kconfig.touchpad",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-17T07:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c1d2453_8737236a",
       "range": {
         "startLine": 25,
         "startChar": 12,
