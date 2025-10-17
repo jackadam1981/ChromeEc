@@ -284,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77092c46_d2cc6aff",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-17T10:07:02Z",
+      "side": 1,
+      "message": "Got it.\n\nBut the default watchdog in EC timeout is 1.6s.\n200ms sleep does not need to explicit reload watchdog.",
+      "parentUuid": "aaf54e62_a57c31e9",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02eefa9f_21abfdce",
         "filename": "driver/touchpad_focal.c",
         "patchSetId": 2
