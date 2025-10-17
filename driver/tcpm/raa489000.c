@@ -28,7 +28,7 @@ static int dev_id[CONFIG_USB_PD_PORT_MAX_COUNT] = { -1 };
 static bool raa489000_bist_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static int raa489000_enter_low_power_mode(int port)
+static int raa489000_enter_low_power_mode(int port, const char *fn)
 {
 	int rv;
 

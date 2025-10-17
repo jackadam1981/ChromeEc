@@ -331,7 +331,8 @@ int tcpci_set_role_ctrl(int port, enum tcpc_drp drp, enum tcpc_rp_value rp,
 int tcpci_tcpc_drp_toggle(int port);
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-int tcpci_enter_low_power_mode(int port);
+// int tcpci_enter_low_power_mode(int port);
+int tcpci_enter_low_power_mode_caller(int port, const char *fn);
 void tcpci_wake_low_power_mode(int port);
 #endif
 int tcpci_hard_reset_reinit(int port);
@@ -404,6 +405,10 @@ bool tcpci_tcpm_get_src_ctrl(int port);
 int tcpci_tcpm_set_src_ctrl(int port, int enable);
 
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable);
+
+// int tcpci_enter_low_power_mode_caller(int port, const char *fn);
+#define tcpci_enter_low_power_mode(port) \
+	tcpci_enter_low_power_mode_caller(port, __func__);
 
 #ifdef __cplusplus
 }

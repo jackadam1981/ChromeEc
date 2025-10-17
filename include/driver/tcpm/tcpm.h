@@ -372,9 +372,9 @@ static inline int tcpm_debug_detach(int port)
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static inline int tcpm_enter_low_power_mode(int port)
+static inline int tcpm_enter_low_power_mode(int port, const char *fn)
 {
-	return tcpc_config[port].drv->enter_low_power_mode(port);
+	return tcpc_config[port].drv->enter_low_power_mode(port, fn);
 }
 
 static inline void tcpm_wake_low_power_mode(int port)
@@ -383,7 +383,7 @@ static inline void tcpm_wake_low_power_mode(int port)
 		tcpc_config[port].drv->wake_low_power_mode(port);
 }
 #else
-int tcpm_enter_low_power_mode(int port);
+int tcpm_enter_low_power_mode(int port, const char *fn);
 void tcpm_wake_low_power_mode(int port);
 #endif
 

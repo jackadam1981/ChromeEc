@@ -441,7 +441,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 	.set_src_ctrl = &tcpci_tcpm_set_src_ctrl,
 	.get_chip_info = &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode = &tcpci_enter_low_power_mode,
+	.enter_low_power_mode = &tcpci_enter_low_power_mode_caller,
 #endif
 	.set_bist_test_mode = &tcpci_set_bist_test_mode,
 	.get_bist_test_mode = &tcpci_get_bist_test_mode,
