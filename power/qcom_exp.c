@@ -107,7 +107,7 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 #define CAN_BOOT_AP_CHECK_WAIT (200 * MSEC)
 
 /* The timeout of the check if the switchcap outputs good voltage */
-#define SWITCHCAP_PG_CHECK_TIMEOUT (100 * MSEC)
+#define SWITCHCAP_PG_CHECK_TIMEOUT (800 * MSEC)
 
 /* Wait for polling if the switchcap outputs good voltage */
 #define SWITCHCAP_PG_CHECK_WAIT (6 * MSEC)
@@ -664,6 +664,12 @@ static int power_on_seq(uint8_t poweron_event)
 {
 	int ret;
 
+	/* Reset all the Passthru signal to the PMIC.
+	 * This ensures that the AP powers on with the
+	 * intended flow.
+	 */
+	reset_all_passthru_pmic_signal();
+
 	ret = set_system_power(1);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -678,6 +684,10 @@ static int power_on_seq(uint8_t poweron_event)
 	}
 
 	CPRINTS("POWER_GOOD seen");
+	/* if power-on is a success passthru the signals again */
+	passthru_ac_on_to_pmic();
+	passthru_lid_open_to_pmic();
+
 	return EC_SUCCESS;
 }
 
