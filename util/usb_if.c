@@ -237,6 +237,22 @@ int usb_trx(struct usb_endpoint *uep, void *outbuf, int outlen, void *inbuf,
 	return 0;
 }
 
+void usb_clear_in_buffer(struct usb_endpoint *uep)
+{
+	uint8_t buffer[256];
+	int actual = 0;
+
+	/* Keep reading until we get an error or we didn't get any data */
+	do {
+		if (libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80, buffer,
+					 sizeof(buffer), &actual, 100) < 0)
+			return;
+		if (actual > 0)
+			fprintf(stderr, "Cleared %d stale USB bytes!\n",
+				actual);
+	} while (actual > 0);
+}
+
 void usb_shut_down(struct usb_endpoint *uep)
 {
 	libusb_close(uep->devh);
