@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbed67b_f7f3b813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-10-17T02:25:45Z",
+      "side": 1,
+      "message": "Comment removed by: Gavin Mak; Reason: delete",
+      "parentUuid": "19b65474_0bb7c837",
+      "revId": "6a235dfd115fc8ad4d2f01dfc5a23a852910709e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23c15f81_709e7afa",
@@ -48,6 +66,30 @@
       "writtenOn": "2025-10-16T17:14:55Z",
       "side": 1,
       "message": "do we need to add `gpioa 6` now or is it used\nsomewhere else anyway?",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 14
+      },
+      "revId": "6a235dfd115fc8ad4d2f01dfc5a23a852910709e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d8e477_a24c351b",
+        "filename": "zephyr/program/fatcat/kinmen/gpios.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-10-17T02:25:45Z",
+      "side": 1,
+      "message": "gpioa 6 is not implement function now. I leave it to unused pin.",
+      "parentUuid": "23c15f81_709e7afa",
       "range": {
         "startLine": 214,
         "startChar": 2,
