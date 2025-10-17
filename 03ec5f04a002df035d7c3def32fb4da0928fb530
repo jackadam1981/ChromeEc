@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c194b3f0_e3320957",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-17T17:41:54Z",
+      "side": 1,
+      "message": "Since we have the tests in a file called `fpsensor_commands.cc`, how about putting this code in a file called `fpsensor_commands.cc`?",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 52
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7b35c6_45ecf614",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-17T17:41:54Z",
+      "side": 1,
+      "message": "nit: Since it\u0027s C++, prefer to use `reinterpret_cast`.",
+      "range": {
+        "startLine": 773,
+        "startChar": 41,
+        "endLine": 773,
+        "endChar": 52
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de001133_dfa46ff2",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 7
@@ -38,6 +84,30 @@
       "side": 1,
       "message": "Unfortunately, the test system doesn\u0027t support checking that. [host_packet_respond](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/host_command_task.c;l\u003d177) is never called.",
       "parentUuid": "de001133_dfa46ff2",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 65
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ac38db_bba31fb9",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-17T17:41:54Z",
+      "side": 1,
+      "message": "In that case, can we add the `ret \u003e args-\u003eresponse_max` here?\n\nIt\u0027s redundant, but it shouldn\u0027t be expensive and we will be able to have a test that verifies it continues to behave correctly.",
+      "parentUuid": "5b661a09_6447350a",
       "range": {
         "startLine": 778,
         "startChar": 0,
@@ -90,6 +160,76 @@
         "startChar": 0,
         "endLine": 8672,
         "endChar": 17
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6cec7ca_3bf3a38a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8672,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-17T17:41:54Z",
+      "side": 1,
+      "message": "Yes, I meant more than `param1`. Thanks for checking.",
+      "parentUuid": "f13f5fd6_a24aa338",
+      "range": {
+        "startLine": 8671,
+        "startChar": 0,
+        "endLine": 8672,
+        "endChar": 17
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ceb65e_07ab7a70",
+        "filename": "zephyr/Kconfig.fingerprint",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-17T17:41:54Z",
+      "side": 1,
+      "message": "```suggestion\n\tbool \"Enable fingerprint vendor defined host command\"\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a01ac9_6ea85b94",
+        "filename": "zephyr/test/fingerprint/task/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-17T17:41:54Z",
+      "side": 1,
+      "message": "```suggestion\n\t  on fingerprint host and console commands.\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 39
       },
       "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
