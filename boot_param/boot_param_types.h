@@ -28,6 +28,17 @@ extern "C" {
 #define DICE_ID_BYTES	  20
 #define DICE_ID_HEX_BYTES (DICE_ID_BYTES * 2)
 
+/* Format of Cfg Descriptor used for BootParam CDI */
+#define BOOT_PARAM_CFG_DESCR_STAGE 2
+
+#if BOOT_PARAM_CFG_DESCR_STAGE == 1
+#define BOOT_PARAM_CFG_DESCR_MAP_COUNT 6
+#define BOOT_PARAM_CFG_DESCR_EXTRA_STAGE_SIZE 0
+#elif BOOT_PARAM_CFG_DESCR_STAGE == 2
+#define BOOT_PARAM_CFG_DESCR_MAP_COUNT 10
+#define BOOT_PARAM_CFG_DESCR_EXTRA_STAGE_SIZE 34
+#endif /* BOOT_PARAM_CFG_DESCR_STAGE */
+
 struct slice_mut_s {
 	size_t size;
 	uint8_t *data;
@@ -63,7 +74,24 @@ struct dice_config_s {
 	uint8_t pcr0[DIGEST_BYTES];
 	/* PCR10 value */
 	uint8_t pcr10[DIGEST_BYTES];
+
+	/* The fields below are only used for
+	 * BOOT_PARAM_CFG_DESCR_STAGE >= 2
+	 */
+
+	/* BoardID Flags */
+	uint32_t board_id_flags;
+	/* BoardID Type */
+	uint32_t board_id_type;
+	/* GSC type */
+	uint8_t gsc_type;
 };
+
+#define BOOT_PARAM_GSC_TYPE_H1B3X       0x00
+#define BOOT_PARAM_GSC_TYPE_H1D3C       0x04
+#define BOOT_PARAM_GSC_TYPE_NT11A1      0x10
+#define BOOT_PARAM_GSC_TYPE_NT11A2      0x11
+#define BOOT_PARAM_GSC_TYPE_UNKNOWN     0xFF
 
 #ifdef __cplusplus
 } /* extern "C" */
