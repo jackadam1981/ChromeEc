@@ -22,7 +22,7 @@
  * running RW image is not well and is rebooting before bringing the system
  * manages to come up.
  */
-#define RW_BOOT_MAX_RETRY_COUNT 5
+#define RW_BOOT_MAX_RETRY_COUNT 6
 
 static uint8_t pinhold_on_reset;
 static uint8_t rollback_detected_at_boot;

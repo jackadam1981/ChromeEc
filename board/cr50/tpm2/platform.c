@@ -279,8 +279,10 @@ void _plat__OwnerClearCallback(void)
 	cleanup_report(__func__, "pw log",
 		       setvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1, NULL, 0));
 
+#ifdef CONFIG_U2F
 	/* Invalidate existing u2f registrations. */
 	cleanup_report(__func__, "u2f", u2f_zeroize_keys());
+#endif
 
 	boot_param_handle_owner_clear();
 }
