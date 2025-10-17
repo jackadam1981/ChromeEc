@@ -16,6 +16,23 @@
       "message": "@phoenixshen@chromium.org Could you help to post the failed reason of Tryjob?",
       "revId": "2a6f3ef9f90c7584e9a186a310e9b4c7b1b1d900",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43678832_3e563c71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-10-17T01:51:38Z",
+      "side": 1,
+      "message": "Kernel code increased by about 6~7KB after CONFIG_ASSERT is enabled.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7024417\nWe will create a CL to disable the CONFIG_ASSERT config option for board veluza.",
+      "revId": "2a6f3ef9f90c7584e9a186a310e9b4c7b1b1d900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
