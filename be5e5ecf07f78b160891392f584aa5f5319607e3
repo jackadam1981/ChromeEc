@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db78dd79_67f8a38f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-17T08:11:59Z",
+      "side": 1,
+      "message": "```\nIn file included from board/constitution/board.c:22:\ninclude/peripheral_charger.h:281:39: error: expected \u0027:\u0027, \u0027,\u0027, \u0027;\u0027, \u0027}\u0027 or \u0027__attribute__\u0027 before \u0027cps8601_update\u0027\n  281 |                 struct cps8x00 update cps8601_update;\n      |                                       ^~~~~~~~~~~~~~\nmake[2]: *** [Makefile.rules:603: build/constitution/RW/board/constitution/board.o] Error 1\nmake[1]: *** [Makefile.rules:299: proj-constitution] Error 2\n```",
+      "revId": "be5e5ecf07f78b160891392f584aa5f5319607e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
