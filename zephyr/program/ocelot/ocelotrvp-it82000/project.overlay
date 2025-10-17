@@ -25,9 +25,10 @@
 	xlpin0: xlpin@0 { reg = <0>; polarity = "low-falling"; };
 
 	/* XLPIN1: ACOK_OD, rising edge */
-	xlpin1: xlpin@1 { reg = <1>; polarity = "high-rising"; };
+	xlpin1: xlpin@1 { reg = <1>; polarity = "low-falling"; };
 
-	/* XLPIN4: LID_OPEN, rising edge */
+	/* XLPIN4: LID_OPEN, rising edge
+	 * Note: this pin is dynamically reconfigured in FW */
 	xlpin4: xlpin@4 { reg = <4>; polarity = "high-rising"; };
 };
 
@@ -48,7 +49,7 @@
 
 /* ACOK_OD */
 &gpio_acok_od {
-	gpios = <&gpioq 1 (GPIO_INPUT)>;
+	gpios = <&gpioq 1 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 };
 
 /* CCD_MODE_L */
@@ -75,7 +76,7 @@
 / {
 	named-gpios {
 		gpio_mech_pwr_btn_odl: mech_pwr_btn_odl {
-			gpios = <&gpioq 0 (GPIO_INPUT)>;
+			gpios = <&gpioq 0 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
 			enum-name = "GPIO_POWER_BUTTON_L";
 		};
 	};

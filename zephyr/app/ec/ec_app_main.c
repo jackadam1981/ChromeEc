@@ -63,6 +63,34 @@ void ec_app_main(void)
 					 PM_ALL_SUBSTATES);
 	}
 
+	/* Go back to hibernation */
+	cprintf(CC_SYSTEM,
+		"Checking hibernation: "
+		"hib=%d, por=%d, lid=%d, ac=%d, pwr_btn=%d \n",
+		!!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE),
+		!!(system_get_reset_flags() & EC_RESET_FLAG_POWER_ON),
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_lid_open)),
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_acok_od)),
+		gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_mech_pwr_btn_odl)));
+
+	if ((system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
+	    /* We are coming up from a cold start */
+	    (system_get_reset_flags() & EC_RESET_FLAG_POWER_ON) &&
+	    /* We did NOT just perform a sysjump */
+	    !(system_get_reset_flags() & EC_RESET_FLAG_SYSJUMP) &&
+	    /* Lid is shut */
+	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_lid_open)) &&
+	    /* No AC power connected */
+	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_acok_od)) &&
+	    /* Power button is NOT pressed */
+	    !gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_mech_pwr_btn_odl))) {
+		cprints(CC_SYSTEM, "Re-entering hibernation");
+
+		system_hibernate(0, 0);
+	}
+
+	cprints(CC_SYSTEM, "Okay to wake up!");
+
 	/*
 	 * Keyboard scan init/Button init can set recovery events to
 	 * indicate to host entry into recovery mode. Before this is

@@ -18,7 +18,7 @@
 #include <soc.h>
 #include <soc/ite_it8xxx2/reg_def_cros.h>
 
-LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_ERR);
+LOG_MODULE_REGISTER(cros_system, LOG_LEVEL_INF);
 
 #define GCTRL_IT8XXX2_REG_BASE \
 	((struct gctrl_it8xxx2_regs *)DT_INST_REG_ADDR(0))
@@ -289,6 +289,22 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 			return -ENOTSUP;
 		};
 	}
+
+	/* Experiment: Set the XLPIN4 polarity based on the opposite of current
+	 * LID_OPEN level */
+	xlpins_enable |= BIT(4);
+
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_lid_open))) {
+		/* LID_OPEN is high (lid open). Set wake-up polarity to low */
+		LOG_INF("Lid is open (high). Set XLPIN4 Wake polarity to low");
+		polarity_ctrl_val &= ~BIT(4);
+	} else {
+		/* LID_OPEN is low (lid closed). Set wake-up polarity to high */
+		LOG_INF("Lid is closed (low). Set XLPIN4 Wake polarity to high");
+		polarity_ctrl_val |= BIT(4);
+	}
+	/* End experiment */
+
 	if (xlpins_enable == 0) {
 		/* no xlpins are enabled */
 		return -EINVAL;
@@ -324,7 +340,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 					 uint32_t seconds,
 					 uint32_t microseconds)
 {
-	struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
+	//struct wdt_it8xxx2_regs *const wdt_base = WDT_IT8XXX2_REG_BASE;
 
 	/* Disable all interrupts. */
 	interrupt_disable_all();
@@ -333,7 +349,7 @@ static int cros_system_it8xxx2_hibernate(const struct device *dev,
 	ite_intc_save_and_disable_interrupts();
 
 	/* bit5: watchdog is disabled. */
-	wdt_base->ETWCTRL |= IT8XXX2_WDT_EWDSCEN;
+	//wdt_base->ETWCTRL |= IT8XXX2_WDT_EWDSCEN;
 
 	/*
 	 * Setup GPIOs for hibernate. On some boards, it's possible that this
