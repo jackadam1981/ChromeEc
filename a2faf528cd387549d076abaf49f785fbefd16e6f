@@ -34,6 +34,29 @@
       "parentUuid": "092b707b_bdad8956",
       "revId": "a2faf528cd387549d076abaf49f785fbefd16e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9845eebd_16054392",
+        "filename": "zephyr/program/fatcat/kinmen/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-17T17:35:10Z",
+      "side": 1,
+      "message": "This is duplicating the same code found on several other boards.  I see over 15 boards implementing the same scheme to ramp up the fan.\n\nThis really should be moved to standalone driver that uses the devicetree to configure the board specific behavior.",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "a2faf528cd387549d076abaf49f785fbefd16e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
