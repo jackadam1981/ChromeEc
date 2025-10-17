@@ -65,6 +65,8 @@ enum pdc_power_mgmt_board_cb_t {
 	PDC_BOARD_CB_UNATTACH,
 	/** DP Attention */
 	PDC_BOARD_CB_DP_ATTENTION,
+	/** Power state transitions */
+	PDC_BOARD_CB_POWER_STATE_CHANGE,
 
 	/** State count. Always leave as last item. */
 	PDC_BOARD_CB_COUNT,
@@ -684,6 +686,15 @@ typedef void (*pdc_power_mgmt_board_dp_attention_cb)(int port,
  * @param port USB-C port number
  */
 typedef void (*pdc_power_mgmt_board_unattached_cb)(int port);
+
+/**
+ * @brief Board hook for power state transition
+ *
+ * @param enum chip_state_mask The entered chipset power state, one of
+ *             CHIPSET_STATE_ON, CHIPSET_STATE_ANY_SUSPEND, or
+ *             CHIPSET_STATE_ANY_OFF.
+ */
+typedef void (*pdc_power_mgmt_power_state_change_cb)(enum chipset_state_mask);
 
 /**
  * @brief Get the latest DP Attention/Status VDO for the port.

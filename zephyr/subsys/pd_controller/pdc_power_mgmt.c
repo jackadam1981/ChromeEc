@@ -919,6 +919,11 @@ static const uint32_t pdc_snk_pdos[] = {
 		CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA),
 };
 
+/** Subsystem-wide callback for power state transition notifications to board
+ *  code.
+ */
+static pdc_power_mgmt_power_state_change_cb power_state_callback;
+
 static const struct smf_state pdc_states[];
 static enum pdc_state_t get_pdc_state(struct pdc_port_t *port);
 static void set_pdc_state(struct pdc_port_t *port, enum pdc_state_t next_state);
@@ -3434,8 +3439,10 @@ static void clear_hpd_wake_watch(int port);
 static void pdc_apply_power_state_policy(struct k_work *work)
 {
 	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+	enum chipset_state_mask state = 0;
 
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		state = CHIPSET_STATE_ON;
 		LOG_INF("PD: AP is ON: apply 'startup' followed by 'resume'");
 		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_startup_policy_1(i);
@@ -3451,16 +3458,22 @@ static void pdc_apply_power_state_policy(struct k_work *work)
 			clear_hpd_wake_watch(i);
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		state = CHIPSET_STATE_ANY_SUSPEND;
 		LOG_INF("PD: AP is SUSPENDED: apply 'suspend' policy");
 		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_suspend_policy_1(i);
 			set_hpd_wake_watch(i);
 		}
 	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		state = CHIPSET_STATE_ANY_OFF;
 		LOG_INF("PD: AP is OFF: apply 'shutdown' policy");
 		for (int i = 0; i < port_count; i++) {
 			enforce_pd_chipset_shutdown_policy_1(i);
 		}
+	}
+
+	if (power_state_callback) {
+		power_state_callback(state);
 	}
 }
 
@@ -5506,6 +5519,16 @@ int pdc_power_mgmt_register_board_callback(enum pdc_power_mgmt_board_cb_t type,
 {
 	struct pdc_port_t *pdc;
 	int port;
+
+	/* Subsystem-wide callbacks (not per-port) */
+	switch (type) {
+	case PDC_BOARD_CB_POWER_STATE_CHANGE:
+		power_state_callback =
+			(pdc_power_mgmt_power_state_change_cb)callback;
+		return 0;
+	default:
+		break;
+	}
 
 	/* The callback can safely be applied to all port structs, even inactive
 	 * ones. Use the CONFIG_USB_PD_PORT_MAX_COUNT constant instead of
