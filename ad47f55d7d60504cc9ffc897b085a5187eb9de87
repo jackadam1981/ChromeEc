@@ -22,6 +22,30 @@
       },
       "revId": "ad47f55d7d60504cc9ffc897b085a5187eb9de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af528970_c6a9d5a3",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-10-17T07:19:31Z",
+      "side": 1,
+      "message": "When DEBUG_ASSERT is enabled, the system fails to boot. We will fix this issue later.",
+      "parentUuid": "c5e3e3f8_c738400c",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "ad47f55d7d60504cc9ffc897b085a5187eb9de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
