@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 /* BootParam structure version */
-#define BOOT_PARAM_VERSION 0
+#define BOOT_PARAM_VERSION 1
 
 /* Size of BootParam structure in bytes */
 #if BOOT_PARAM_VERSION == 0
