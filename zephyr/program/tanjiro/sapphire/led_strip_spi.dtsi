@@ -1,0 +1,341 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/led/led.h>
+#include <dt-bindings/battery.h>
+
+/ {
+	aliases {
+		led-strip = &led_strip_spi;
+	};
+
+    chosen {
+		cros-ec,keyboard = &kbd;
+	};
+
+	lightbar {
+		compatible = "cros-ec,led-lightbar";
+
+		sysrq-alias = "EC_LED_ID_LIGHTBAR_LED";
+		sysrq-led-control-color = "LED_WHITE";
+
+		recovery-hw-reinit-alias = "EC_LED_ID_LIGHTBAR_LED";
+		recovery-hw-reinit-led-control-color = "LED_AMBER";
+
+		lightbar0 {
+			led-id = "EC_LED_ID_LIGHTBAR_LED";
+			strip = <&led_strip_spi>;
+
+			/* Color definitions */
+			color_red: red {
+				led-color = "LED_RED";
+				color = <0x100000>;
+			};
+			color_green: green {
+				led-color = "LED_GREEN";
+				color = <0x001000>;
+			};
+			color_blue: blue {
+				led-color = "LED_BLUE";
+				color = <0x000010>;
+			};
+			color_white: white {
+				led-color = "LED_WHITE";
+				color = <0x101010>;
+			};
+			color_off: off {
+				led-color = "LED_OFF";
+				color = <0x000000>;
+			};
+		};
+	};
+
+	led-policy {
+		compatible = "cros-ec,led-policy";
+
+		power-state-charge-lvl-1 {
+			charge-state = "LED_PWRS_CHARGE";
+
+			/* Battery display percent range (>= Empty, <= 4%) */
+			batt-lvl = <BATTERY_LEVEL_EMPTY 4>;
+
+			/* red */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_RED";
+				};
+			};
+		};
+
+		power-state-charge-lvl-2 {
+			charge-state = "LED_PWRS_CHARGE";
+
+			/* Battery display percent range (>= 5%, <= 96%) */
+			batt-lvl = <5 96>;
+
+			/* amber */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_BLUE";
+				};
+			};
+		};
+
+		power-state-charge-lvl-3 {
+			charge-state = "LED_PWRS_CHARGE";
+
+			/* Battery display percent range (>= 97) */
+			batt-lvl = <97 100>;
+
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_GREEN";
+				};
+			};
+		};
+
+		power-state-near-full {
+			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_GREEN";
+				};
+			};
+		};
+
+		power-state-discharge {
+			charge-state = "LED_PWRS_DISCHARGE";
+
+			/* Solid white */
+			pattern-0 {
+				transition = "LED_TRANSITION_STEP";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_OFF";
+				};
+			};
+		};
+
+		power-state-error {
+			charge-state = "LED_PWRS_ERROR";
+
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_LINEAR";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_RED";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+
+
+		power-state-forced-idle {
+			charge-state = "LED_PWRS_FORCED_IDLE";
+
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_LINEAR";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_RED";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_GREEN";
+					period-ms = <2000>;
+				};
+			};
+		};
+
+		power-state-idle {
+			charge-state = "LED_PWRS_IDLE";
+
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_LINEAR";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_RED";
+					period-ms = <2000>;
+				};
+				color-1 {
+					led-color = "LED_GREEN";
+					period-ms = <2000>;
+				};
+			};
+		};
+
+		chipset-state-s3 {
+			chipset-state = "POWER_S3";
+
+			/* Breathing white */
+			pattern-0 {
+				transition = "LED_TRANSITION_LINEAR";
+				led-id = "EC_LED_ID_LIGHTBAR_LED";
+				color-0 {
+					led-color = "LED_WHITE";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+				};
+			};
+		};
+	};
+
+
+};
+
+/* light bar */
+&spi0 {
+	status = "okay";
+	pinctrl-0 = <&spi_ssce0_default &spi_smosi_default>;
+	pinctrl-names = "default";
+
+	led_strip_spi: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+
+		/* SPI */
+		reg = <0>; /* ignored, but necessary for SPI bindings */
+		chain-length = <5>;
+		color-mapping = <LED_COLOR_ID_GREEN
+						 LED_COLOR_ID_RED
+						 LED_COLOR_ID_BLUE>;
+		/* === Timing Properties === */
+		reset-delay = <50>;            // 50 microsecond latch time
+		spi-max-frequency = <6000000>; //6 MHz clock
+		frame-format = <32768>; /* SPI_FRAME_FORMAT_TI */
+		bits-per-symbol = <8>;	// Using 8-bit symbols
+		spi-one-frame = <0xF8>;  /* 0b11111000 T1H: 0.833us within 0.650~0.950us */
+		spi-zero-frame = <0xC0>; /* 0b11000000 T0H: 0.333us within 0.250~0.550us */
+
+	};
+};
+
+&kbd {
+	status = "okay";
+	pinctrl-0 = <
+		&ksi0_default
+		&ksi1_default
+		&ksi2_default
+		&ksi3_default
+		&ksi4_default
+		&ksi5_default
+		&ksi6_default
+		&ksi7_default
+		&kso0_default
+		&kso1_default
+		&kso3_default
+		&kso4_default
+		&kso5_default
+		&kso6_default
+		&kso7_default
+		&kso8_default
+		&kso9_default
+		&kso10_default
+		&kso11_default
+		&kso12_default
+		&kso13_default
+		&kso14_default
+		&kso15_default>;
+	pinctrl-1 = <
+		&ksi0_sleep
+		&ksi1_sleep
+		&ksi2_sleep
+		&ksi3_sleep
+		&ksi4_sleep
+		&ksi5_sleep
+		&ksi6_sleep
+		&ksi7_sleep
+		&kso0_sleep
+		&kso1_sleep
+		&kso2_sleep
+		&kso3_sleep
+		&kso4_sleep
+		&kso5_sleep
+		&kso6_sleep
+		&kso7_sleep
+		&kso8_sleep
+		&kso9_sleep
+		&kso10_sleep
+		&kso11_sleep
+		&kso12_sleep
+		&kso13_sleep
+		&kso14_sleep
+		&kso15_sleep>;
+
+	pinctrl-names = "default", "sleep";
+	row-size = <8>;
+	col-size = <18>;
+	debounce-down-ms = <15>;
+	debounce-up-ms = <15>;
+	actual-key-mask = <
+		0x08  /* C0 */
+		0xff  /* C1 */
+		0xff  /* C2 */
+		0xff  /* C3 */
+		0xff  /* C4 */
+		0xff  /* C5 */
+		0xff  /* C6 */
+		0xa5  /* C7 */
+		0xff  /* C8 */
+		0xff  /* C9 */
+		0x55  /* C10 */
+		0xff  /* C11 */
+		0xff  /* C12 */
+		0x40  /* C13 */
+		0x0a  /* C14 */
+		0x40  /* C15 */
+		0xff  /* C16 */
+		0xff  /* C17 */
+	>;
+	kso-ignore-mask = <0x30004>;
+
+	kso2-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <2>;
+		col-gpios = <&gpioksol 2 GPIO_ACTIVE_HIGH>;
+	};
+
+	kso17-gpio {
+		compatible = "cros-ec,col-gpio";
+		col-num = <17>;
+		col-gpios = <&gpioc 5 (GPIO_OPEN_DRAIN | GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		settle-time-us = <0>;
+	};
+
+	boot-keys {
+		compatible = "cros-ec,boot-keys";
+		down-arrow-rc = <KBD_RC(6, 11)>;
+		esc-rc = <KBD_RC(1, 1)>;
+		left-shift-rc = <KBD_RC(5, 7)>;
+		refresh-rc = <KBD_RC(3, 2)>;
+	};
+
+	runtime-keys {
+		compatible = "cros-ec,runtime-keys";
+		left-alt-rc = <KBD_RC(6, 13)>;
+		right-alt-rc = <KBD_RC(0, 10)>;
+		h-rc = <KBD_RC(1, 6)>;
+		r-rc = <KBD_RC(7, 9)>;
+	};
+};
