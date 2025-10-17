@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06b067a_cdd55395",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-10-17T11:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96495f24_381f4428",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "bb5c5e4944b9886a582226e33b23c3d9e027bb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c489ff_0c0205b7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e993fa2_39ac0e58",
+        "filename": "zephyr/program/ocelot/ojal/i2c.dtsi",
+        "patchSetId": 21
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-10-17T11:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c489ff_0c0205b7",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 41
+      },
+      "revId": "bb5c5e4944b9886a582226e33b23c3d9e027bb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a844e54_d59276cd",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-10-14T20:39:38Z",
       "side": 1,
       "message": "Delete - this is a choice symbol.  `CONFIG_PLATFORM_EC_USB_PD_CONTROLLER\u003dy` below ensures that `CONFIG_PLATFORM_EC_USB_PD_TCPMV2` is disabled.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "bb5c5e4944b9886a582226e33b23c3d9e027bb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f6bc0a_79414ab5",
+        "filename": "zephyr/program/ocelot/ojal/project.conf",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-10-17T11:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a844e54_d59276cd",
       "range": {
         "startLine": 19,
         "startChar": 0,
