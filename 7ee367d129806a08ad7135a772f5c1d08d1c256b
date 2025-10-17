@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99404d8_15e16697",
+        "filename": "zephyr/program/roach/eirtae/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-17T10:16:38Z",
+      "side": 1,
+      "message": "remove this commented out section.\n```suggestion\n\n```",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca0f628_633e7b7b",
+        "filename": "zephyr/program/roach/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-17T10:16:38Z",
+      "side": 1,
+      "message": "replace whitespace with tabs\n```suggestion\n\ttouchpad@38 {\n\t\tcompatible \u003d \"focaltech,fts\";\n\t\tstatus \u003d \"okay\";\n\t\treg \u003d \u003c0x38\u003e;\n\t\tirq \u003d \u003c\u0026int_tchpad\u003e;\n\t};\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4e0365_b66077f0",
+        "filename": "zephyr/program/roach/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-17T10:16:38Z",
+      "side": 1,
+      "message": "why disable this?",
+      "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
