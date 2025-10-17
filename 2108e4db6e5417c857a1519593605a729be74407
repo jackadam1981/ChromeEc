@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6ed225_da50bf73",
+        "filename": "zephyr/drivers/imvp/Kconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-17T19:32:55Z",
+      "side": 1,
+      "message": "Non-blocking I don\u0027t think this extra config is necessary because the driver doesn\u0027t do anything except when commanded from the console.\nI suggest at least defaulting this option to \u0027y\u0027 in a follow up.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "2108e4db6e5417c857a1519593605a729be74407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
