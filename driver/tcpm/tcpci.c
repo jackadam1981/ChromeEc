@@ -141,6 +141,25 @@ int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 	return rv;
 }
 
+static void print_stack_trace(const struct k_thread *thread)
+{
+	int frame_idx = 0;
+	char state[32];
+	uint32_t sp = 0;
+	struct arch_esf *esf = NULL;
+	bool current_thread = thread == k_current_get();
+	char thread_name[16];
+
+	get_thread_name(thread, thread_name, sizeof(thread_name));
+
+	printk("Thread: %s%s, state=%s\n", current_thread ? "*" : "",
+	       thread_name,
+	       k_thread_state_str((k_tid_t)thread, state, sizeof(state)));
+
+	/* Pass esf if this is the currently interrupted thread */
+	arch_stack_walk(print_trace_address, &frame_idx, thread, NULL);
+}
+
 int tcpc_addr_write16(int port, int i2c_addr, int reg, int val)
 {
 	int rv;
@@ -564,6 +583,8 @@ int tcpci_tcpc_drp_toggle(int port)
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpci_enter_low_power_mode(int port)
 {
+	print_stack_trace(k_current_get());
+
 	return tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
 }
 
