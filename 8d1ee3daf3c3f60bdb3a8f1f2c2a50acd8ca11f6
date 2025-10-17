@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b9f9b6_d6f384b0",
+        "filename": "zephyr/program/fatcat/kinmen/src/usbc_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-10-17T00:27:10Z",
+      "side": 1,
+      "message": "This function returns type `bool` but `i2c_transfer_dt` returns an `int`. This also means the function returns false (0) when the chip is detected. This is also inconsistent with lines 24, 31 which return false on errors. Can this logic be revised?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 50
+      },
+      "revId": "8d1ee3daf3c3f60bdb3a8f1f2c2a50acd8ca11f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
