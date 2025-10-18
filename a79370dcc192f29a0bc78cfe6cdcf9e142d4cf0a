@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15e7cef_d99b9b95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3395304
+      },
+      "writtenOn": "2025-10-18T09:01:55Z",
+      "side": 1,
+      "message": "```suggestion\nmodify: Add the driver for CPS8601\n\nBUG\u003db:452233583\nTEST\u003dzmake build padme\nLOW_COVERAGE_REASON\u003dTests will be added in b:440201907\n\nChange-Id: I2219e423374c21028b44570009f42b128fe3d7cb\n```\n\nPlease delete the `Reviewed-on` line, which is automatically generated.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "a79370dcc192f29a0bc78cfe6cdcf9e142d4cf0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4b0d80c9_cba9161e",
@@ -14,6 +37,29 @@
       "writtenOn": "2025-10-18T08:59:12Z",
       "side": 1,
       "message": "Hi, thanks for your contribution. I stumbled across this CL on Gerrit and I found some minor flaws in it, which I will tell you about in another thread.",
+      "revId": "a79370dcc192f29a0bc78cfe6cdcf9e142d4cf0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65dde5bc_37cce300",
+        "filename": "driver/wpc/cps8601_bootloader.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3395304
+      },
+      "writtenOn": "2025-10-18T09:01:55Z",
+      "side": 1,
+      "message": "```suggestion\n/* Copyright 2025 The ChromiumOS Authors\n```\n\nThis is a newly added file, please change it to the current year.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
       "revId": "a79370dcc192f29a0bc78cfe6cdcf9e142d4cf0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
