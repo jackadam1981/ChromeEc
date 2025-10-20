@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "93e20938_1277255a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4406407
+      },
+      "writtenOn": "2025-10-20T14:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e15e7cef_d99b9b95",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "a79370dcc192f29a0bc78cfe6cdcf9e142d4cf0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4b0d80c9_cba9161e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
@@ -54,6 +78,30 @@
       "writtenOn": "2025-10-18T09:01:55Z",
       "side": 1,
       "message": "```suggestion\n/* Copyright 2025 The ChromiumOS Authors\n```\n\nThis is a newly added file, please change it to the current year.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a79370dcc192f29a0bc78cfe6cdcf9e142d4cf0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "717003cf_217a6d6e",
+        "filename": "driver/wpc/cps8601_bootloader.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4406407
+      },
+      "writtenOn": "2025-10-20T14:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65dde5bc_37cce300",
       "range": {
         "startLine": 1,
         "startChar": 13,
