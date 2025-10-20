@@ -8,7 +8,8 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | DT PrePVT version | DT Prod Version | NT PrePVT version | NT Prod Version
 ------------------- | ----------------- | --------------- | ----------------- | ---------------
-[ToT][ToT ebuild]   | 0.24.220          | 0.23.210        | 0.34.220          | 0.33.210
+[ToT][ToT ebuild]   | 0.24.241          | 0.23.230        | 0.34.241          | 0.33.230
+[M142][142 release] | 0.24.230          | 0.23.230        | 0.34.230          | 0.33.230
 [M141][141 release] | 0.24.220          | 0.23.210        | 0.34.220          | 0.33.210
 [M140][140 release] | 0.24.210          | 0.23.190        | 0.33.210          | 0.33.210
 [M139][139 release] | 0.24.180          | 0.23.180        | 0.33.190          | 0.33.190
@@ -2567,6 +2568,36 @@ Build:   0.{24,34}.220/ti50_common_mp-15980.B:v0.0.617-31a0f4fa
          chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-0-54av 2025-09-04 13:44:58
 ```
 
+### 0.x4.241 Released in DT-M143 NT-M143
+
+DT/NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/7056216)
+
+Builder
+[firmware-ti50-prepvt-15974.B-branch/107](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-prepvt-15974.B-branch/107/overview)
+
+Artifacts:
+[15974.107.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-prepvt-15974.B-branch-firmware/R129-15974.107.0)
+
+**Features**
+
+* add `device_id` support [b/442801296](https://b.corp.google.com/issues/442801296)
+* add stage2 parameters to DICE CfgDescr. [b/438579760](https://b.corp.google.com/issues/438579760)
+* Remove RSA for Android. [b/390525609](https://b.corp.google.com/issues/390525609)
+
+**Bug Fixes**
+*   rbox: ignore WP events until the FWMP setting is initialized. [b/446711779](https://b.corp.google.com/issues/446711779)
+*   Fix system_test_a TpmTest. [b/390525609](https://b.corp.google.com/issues/390525609)
+
+```
+Build:   0.{2,3}4.241/ti50_common_prepvt-15974.B:v0.0.664-0b61d38d
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-7d2295b47
+         ms-tpm-20-ref:v0.0.344-ffebf12
+         chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-7j1q 2025-10-13 16:21:42
+```
+
+
 <!-- Links -->
 
 [105 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R105-14989.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
@@ -2606,4 +2637,5 @@ Build:   0.{24,34}.220/ti50_common_mp-15980.B:v0.0.617-31a0f4fa
 [139 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R139-16328.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [140 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R140-16371.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [141 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R141-16404.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[142 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R142-16433.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
