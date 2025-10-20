@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a7a129_39127d82",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-20T21:09:46Z",
+      "side": 1,
+      "message": "don\u0027t you also need to remove `CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED\u003dy`?\nand set the appropriate strap pin on the GSC?",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
