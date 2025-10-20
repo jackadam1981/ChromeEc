@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66dcfaa_d42bf657",
+        "filename": "zephyr/program/roach/eirtae/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-20T02:08:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d99404d8_15e16697",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fca0f628_633e7b7b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71c9b48a_35caf226",
+        "filename": "zephyr/program/roach/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-20T02:08:42Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "fca0f628_633e7b7b",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea4e0365_b66077f0",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-10-17T10:16:38Z",
       "side": 1,
       "message": "why disable this?",
+      "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43dd0ded_8a851804",
+        "filename": "zephyr/program/roach/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-20T02:08:42Z",
+      "side": 1,
+      "message": "This isn\u0027t needed, so I\u0027m removing it.",
+      "parentUuid": "ea4e0365_b66077f0",
       "revId": "7ee367d129806a08ad7135a772f5c1d08d1c256b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
