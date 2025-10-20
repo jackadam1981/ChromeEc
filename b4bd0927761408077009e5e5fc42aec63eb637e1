@@ -94,6 +94,30 @@
       },
       "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e7b1e1_065b357a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-20T21:22:25Z",
+      "side": 1,
+      "message": "ok. understood. I replaced `sizeof(fp_buffer)` with `global_context.frame_size`. I modified the naming of the input parameters to validate_fp_buffer_offset.",
+      "parentUuid": "21912f03_5d415d68",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 3
+      },
+      "revId": "b4bd0927761408077009e5e5fc42aec63eb637e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
