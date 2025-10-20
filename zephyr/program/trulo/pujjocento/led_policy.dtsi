@@ -20,7 +20,7 @@
 
 				color-0 {
 					led-color = "LED_RED";
-				};
+				}
 			};
 		};
 
@@ -61,7 +61,12 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = "LED_GREEN";
+					led-color = "LED_AMBER";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
 				};
 			};
 		};
