@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6500c2e3_31c034dd",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-20T21:33:23Z",
+      "side": 1,
+      "message": "The condition of setting `POWER_ON_BY_AC_ON` checks for both the AC on and the battery charge level. Does it need to be treated differently from `POWER_ON_BY_AC_ON`?",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 28
+      },
+      "revId": "8b5b63509aadf7fd4b8bb54e2e65b504ca511c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
