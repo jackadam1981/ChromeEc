@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "beb9e669_f94015ff",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-20T20:17:30Z",
+      "side": 1,
+      "message": "Actually, how about we put it in a file called `fpsensor_vendor_command.cc`? Then rename the test to `fpsensor_vendor_command.cc` too.\n\nThat matches the style we used for `fpsensor_auth_commands.cc`.",
+      "parentUuid": "0c78a719_d40aa284",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 52
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e7b35c6_45ecf614",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 7

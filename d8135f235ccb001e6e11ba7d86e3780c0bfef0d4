@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84046ba_680251b5",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-20T20:17:30Z",
+      "side": 1,
+      "message": "Should we remove this comment now? Maybe we should put a comment in the `ret \u003e args-\u003e response_max` case that says something like: \"This is handled by the host command subsystem, but we can\u0027t easily test it in the unit tests unless we handle it here.\"",
+      "range": {
+        "startLine": 793,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 65
+      },
+      "revId": "d8135f235ccb001e6e11ba7d86e3780c0bfef0d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
