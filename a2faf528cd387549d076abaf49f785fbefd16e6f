@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a8036cc_92881991",
+        "filename": "zephyr/program/fatcat/kinmen/fan.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-20T15:29:01Z",
+      "side": 1,
+      "message": "You don\u0027t want any fan control for the charger or regulator?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "a2faf528cd387549d076abaf49f785fbefd16e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9845eebd_16054392",
         "filename": "zephyr/program/fatcat/kinmen/src/thermal.c",
         "patchSetId": 5
