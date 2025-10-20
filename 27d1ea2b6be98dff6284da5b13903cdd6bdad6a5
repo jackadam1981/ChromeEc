@@ -300,6 +300,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1efcc3_3f87c2cd",
+        "filename": "driver/touchpad_focal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-20T01:59:39Z",
+      "side": 1,
+      "message": "Done. Thanks for the feedback. I\u0027ve already removed the explicit watchdog reload in the latest version, which was published on patch set 3.",
+      "parentUuid": "77092c46_d2cc6aff",
+      "revId": "27d1ea2b6be98dff6284da5b13903cdd6bdad6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02eefa9f_21abfdce",
