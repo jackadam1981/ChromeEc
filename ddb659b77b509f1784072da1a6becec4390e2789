@@ -99,6 +99,24 @@
       "parentUuid": "1d6f6284_ebca4c7d",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db95822_5b034170",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-20T20:31:32Z",
+      "side": 1,
+      "message": "\u003e not to accidentally enter bootloader or more like authentication e.g. with TA involvement?\n\nI was thinking about something that would prevent an attacker with root access from being able to send the \"enter bootloader\" command to the FPMCU. I think it would need to involve authentication with TA, but I haven\u0027t thought it through. IIRC, GSC has some protocol for enabling some development features. Maybe we could re-use that?\n\n@lziest@google.com, what are your thoughts? We don\u0027t have access to the bootloader code, so it\u0027s hard to audit.\n\n\u003e  we just resign from the flash_fp_mcu script functionality, because there is no other method to force bootloader\n\nIs there any restriction on entering the bootloader when we\u0027re in RW? If we can limit the command to only the RW image, then that gives us the ability to turn the command off in RW if there are some security issues.",
+      "parentUuid": "0302e8be_59385c6a",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
