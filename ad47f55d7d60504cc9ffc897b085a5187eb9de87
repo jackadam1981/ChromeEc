@@ -70,6 +70,30 @@
       },
       "revId": "ad47f55d7d60504cc9ffc897b085a5187eb9de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5308667_782f8dc2",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-10-20T07:07:57Z",
+      "side": 1,
+      "message": "I have already filed a bug to track this issue and attached the EC log.",
+      "parentUuid": "82d090f2_e320b634",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "ad47f55d7d60504cc9ffc897b085a5187eb9de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
