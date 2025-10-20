@@ -1323,6 +1323,7 @@ static int command_flash_write(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(flashwrite, command_flash_write, "offset size",
 			"Write pattern to flash");
 
+#include <soc_common.h>
 static int command_flash_read(int argc, const char **argv)
 {
 	int offset = -1;
@@ -1330,37 +1331,51 @@ static int command_flash_read(int argc, const char **argv)
 	int rv;
 	uint8_t *data;
 	int i;
+	int mem_size, remaining, cur;
 
+ECREG(0xf01602) |= BIT(2);
 	rv = parse_offset_size(argc, argv, 1, &offset, &size);
 	if (rv)
 		return rv;
 
-	if (size > shared_mem_size())
-		size = shared_mem_size();
+	//if (size > shared_mem_size())
+	//	size = shared_mem_size();
+
+	mem_size = shared_mem_size();
 
 	/* Acquire the shared memory buffer */
-	rv = shared_mem_acquire(size, (char **)&data);
+	rv = shared_mem_acquire(mem_size, (char **)&data);
 	if (rv) {
 		ccputs("Can't get shared mem\n");
 		return rv;
 	}
 
-	/* Read the data */
-	if (crec_flash_read(offset, size, data)) {
-		shared_mem_release(data);
-		return EC_ERROR_INVAL;
-	}
+	remaining = size;
+	cur = offset;
 
-	/* Dump it */
-	for (i = 0; i < size; i++) {
-		if ((offset + i) % 16) {
-			ccprintf(" %02x", data[i]);
-		} else {
-			ccprintf("\n%08x: %02x", offset + i, data[i]);
-			cflush();
+	printk("chunk=%d, remaining=%d\n",mem_size,remaining);
+	while (remaining > 0) {
+		int now = MIN(remaining, mem_size);
+
+		if (crec_flash_read(cur, now, data)) {
+			shared_mem_release(data);
+			return EC_ERROR_INVAL;
 		}
+
+		for (i = 0; i < now; i++) {
+			if ((cur + i) % 16) {
+				ccprintf(" %02x", data[i]);
+			} else {
+				ccprintf("\n%08x: %02x", cur + i, data[i]);
+			}
+		}
+		cflush();
+
+		cur += now;
+		remaining -= now;
 	}
-	ccprintf("\n");
+ECREG(0xf01602) &= ~BIT(2);
+	ccprintf("\n end \n");
 
 	/* Free the buffer */
 	shared_mem_release(data);
