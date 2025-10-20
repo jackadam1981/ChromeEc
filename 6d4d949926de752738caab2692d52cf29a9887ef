@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd02d57_e10de18f",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-20T21:18:40Z",
+      "side": 1,
+      "message": "Incorrect copyright.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "6d4d949926de752738caab2692d52cf29a9887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00af12d1_b3567b08",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx/handlers/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-20T21:18:40Z",
+      "side": 1,
+      "message": "Incorrect copyright.\n```\n# Copyright 2025 The ChromiumOS Authors\n# Use of this source code is governed by a BSD-style license that can be\n# found in the LICENSE file.\n\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "6d4d949926de752738caab2692d52cf29a9887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
