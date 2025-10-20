@@ -18,10 +18,35 @@
 #include "driver/charger/bq257x0_regs.h"
 #endif
 
+static enum chipset_state_mask pdc_power_state;
+
+static void maybe_toggle_drp(void)
+{
+	int xhci_stat = gpio_pin_get_dt(
+		GPIO_DT_FROM_NODELABEL(gpio_ap_xhci_init_done_r));
+
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		if (xhci_stat && pdc_power_state == CHIPSET_STATE_ON) {
+			pdc_power_mgmt_set_dual_role(i, PD_DRP_TOGGLE_ON);
+		}
+	}
+}
+
+static void skywalker_pdc_power_state_change(enum chipset_state_mask state)
+{
+	pdc_power_state = state;
+
+	maybe_toggle_drp();
+}
+
 static void skywalker_common_init(void)
 {
 	gpio_enable_dt_interrupt(
 		GPIO_INT_FROM_NODELABEL(int_ap_xhci_init_done));
+
+	pdc_power_mgmt_register_board_callback(
+		PDC_BOARD_CB_POWER_STATE_CHANGE,
+		skywalker_pdc_power_state_change);
 
 #ifdef CONFIG_PLATFORM_EC_CHARGER_BQ25720
 	/* b/353712228:
@@ -50,11 +75,7 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif
 
-	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
-		if (xhci_stat) {
-			pdc_power_mgmt_set_dual_role(i, PD_DRP_TOGGLE_ON);
-		}
-	}
+	maybe_toggle_drp();
 }
 
 __override enum pd_dual_role_states pd_get_drp_state_in_s0(void)
