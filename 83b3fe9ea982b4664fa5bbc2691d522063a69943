@@ -63,6 +63,29 @@
       },
       "revId": "83b3fe9ea982b4664fa5bbc2691d522063a69943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518c9387_7e30bf4d",
+        "filename": "zephyr/program/ocelot/matsu/project.overlay",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-10-20T09:21:39Z",
+      "side": 1,
+      "message": "how about uninlining these? looks a bit odd to have this compact all of a sudden when the rest of the file is more \"expanded\", also do you need the nodelabels? May bas well drop them, just\n\n```\nxlpin@0 {\n        reg \u003d \u003c0\u003e;\n        polarity \u003d \"low-falling\";\n};\n```\n\nand so on",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "83b3fe9ea982b4664fa5bbc2691d522063a69943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
