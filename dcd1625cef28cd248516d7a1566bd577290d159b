@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be05f0a_ece4e95c",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-20T07:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76de821_46e3cb47",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 0
+      },
+      "revId": "dcd1625cef28cd248516d7a1566bd577290d159b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d68b3b_79346c6e",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-10-20T05:27:16Z",
       "side": 1,
       "message": "Please move the majority of the body of this function to something like `enable_interrupt(const struct motion_sensor_t *s, bool enable)` and call it in this function.",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 24
+      },
+      "revId": "dcd1625cef28cd248516d7a1566bd577290d159b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adcb796b_a210ad58",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-10-20T07:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d68b3b_79346c6e",
       "range": {
         "startLine": 426,
         "startChar": 1,
