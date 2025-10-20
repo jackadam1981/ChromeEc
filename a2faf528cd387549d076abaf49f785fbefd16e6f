@@ -57,6 +57,30 @@
       },
       "revId": "a2faf528cd387549d076abaf49f785fbefd16e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d2a17f_116779c3",
+        "filename": "zephyr/program/fatcat/kinmen/src/thermal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-10-20T02:13:30Z",
+      "side": 1,
+      "message": "I am not family with it and it affeted all boards use this scheme. we don\u0027t have other boards to verify. Could googler to help on this?",
+      "parentUuid": "9845eebd_16054392",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "a2faf528cd387549d076abaf49f785fbefd16e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
