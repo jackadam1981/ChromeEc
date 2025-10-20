@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b894a3e_5b57c651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-10-20T21:49:23Z",
+      "side": 1,
+      "message": "This logic seems complicated.\n\nI think the previous introduced `battery_poll_dynamic_info()` is regularly called to update the battery dynamic info; after the update, a similar implementation of `check_battery_change_soc()` is called to notify the `HOOK_BATTERY_SOC_CHANGE`.\n\nIn the power sequence, a `HOOK_BATTERY_SOC_CHANGE` is registered to wake up the `TASK_ID_CHIPSET`. The new condition of setting `POWER_ON_BY_AC_ON` checks both the AC on and the battery charge level. When both conditions match, it powers on the AP.",
+      "revId": "61482b2a8fd78ebbbf0607a775a848390e99cfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
