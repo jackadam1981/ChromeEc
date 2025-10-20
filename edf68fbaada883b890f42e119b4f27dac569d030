@@ -93,6 +93,30 @@
       },
       "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab7b6fa_79e45053",
+        "filename": "zephyr/program/ocelot/ojal/fan.dtsi",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-10-20T07:54:10Z",
+      "side": 1,
+      "message": "Hi Keith,  \nAt this stage, only the CPU threshold has been defined. The thermal team does not have a unit available for validation, so the remaining thermal thresholds have not yet been characterized.",
+      "parentUuid": "451468d3_9fefcf8e",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
