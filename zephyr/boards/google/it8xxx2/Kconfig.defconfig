@@ -51,4 +51,19 @@ choice PLATFORM_EC_SHA256_MODE
 endchoice
 endif # PLATFORM_EC_VBOOT_HASH
 
+if SOC_IT8XXX2_REG_SET_V2
+config LTO
+	bool "link time optimization"
+	default n
+
+config SOC_IT8XXX2_SERIAL_IN_RAM
+	default y
+
+config SOC_IT8XXX2_KERNEL_IN_RAM
+	default y
+
+config SOC_IT8XXX2_ZEPHYR_IN_RAM
+	default y
+endif # SOC_IT8XXX2_REG_SET_V2
+
 endif # BOARD_IT8XXX2
