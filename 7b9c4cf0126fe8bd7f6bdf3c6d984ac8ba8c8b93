@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d6a2949_b26866cd",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-20T21:22:04Z",
+      "side": 1,
+      "message": "ok. create a class `FpFrameSizeCache` to cache the frame sizes.",
+      "parentUuid": "1f5fead6_78e88043",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "7b9c4cf0126fe8bd7f6bdf3c6d984ac8ba8c8b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7df5fc32_17789003",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdafa7f_db71bb32",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-20T21:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7df5fc32_17789003",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 40
+      },
+      "revId": "7b9c4cf0126fe8bd7f6bdf3c6d984ac8ba8c8b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8037cee6_60807af4",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-10-15T22:55:52Z",
       "side": 1,
       "message": "Let\u0027s also file a bug about changing `fp_acquire_image` to return the frame size directly and add `TODO(b/123)` here. Someone reading the code is probably going to wonder why we\u0027re not doing that. I\u0027m not sure we\u0027ll ever get the vendors to recompile for that change, but at least it will be documented.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 49
+      },
+      "revId": "7b9c4cf0126fe8bd7f6bdf3c6d984ac8ba8c8b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac9d213_9db37c3d",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-20T21:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8037cee6_60807af4",
       "range": {
         "startLine": 230,
         "startChar": 0,
