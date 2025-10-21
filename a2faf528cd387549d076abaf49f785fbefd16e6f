@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64dd136_8246d09a",
+        "filename": "zephyr/program/fatcat/kinmen/fan.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-10-21T01:22:04Z",
+      "side": 1,
+      "message": "Feedback from our thermal team. The regulator sensor is used for halt or throttle. The charger sensor is used for charge current control only.",
+      "parentUuid": "8a8036cc_92881991",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "a2faf528cd387549d076abaf49f785fbefd16e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9845eebd_16054392",
