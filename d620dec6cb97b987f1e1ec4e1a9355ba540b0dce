@@ -70,6 +70,30 @@
       },
       "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b2f412_08307f58",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-21T18:00:36Z",
+      "side": 1,
+      "message": "Right now, the fatcatrvp and ocelotrvp platforms do not use `kso-gpio`.  We\u0027ve tested basic keypresses on ocelotrvp.  Any suggestions for additional testing to ensure no extra settle time is needed?",
+      "parentUuid": "7949def1_4aa9f8de",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
