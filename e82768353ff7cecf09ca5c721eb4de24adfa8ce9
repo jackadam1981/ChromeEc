@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b8c3c1f_87c0e5c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-21T16:18:49Z",
+      "side": 1,
+      "message": "this might need to rebased on top of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6877189 after the fpinfo CL chain merges.\n\nSome changes need to be made to the device tree and driver initialization",
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6e06389_9fb6b53c",
         "filename": "zephyr/drivers/fingerprint/Kconfig",
         "patchSetId": 6
