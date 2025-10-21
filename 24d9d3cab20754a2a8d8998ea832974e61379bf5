@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c373544_07df59a7",
+        "filename": "zephyr/program/tanjiro/program.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-10-21T07:39:40Z",
+      "side": 1,
+      "message": "Should we set CONFIG_LTO\u003dn to enable this?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 32
+      },
+      "revId": "24d9d3cab20754a2a8d8998ea832974e61379bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
