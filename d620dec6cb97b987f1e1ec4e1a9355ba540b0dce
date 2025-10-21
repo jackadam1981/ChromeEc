@@ -46,6 +46,30 @@
       },
       "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7949def1_4aa9f8de",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-10-21T07:50:37Z",
+      "side": 1,
+      "message": "It may still be needed for the extra settle time delay, even if the pin is not inverted, worth trying removing it though I don\u0027t think it has been tested. If it works it\u0027s one less moving part in the keyboard stuff, which would be a good thing.",
+      "parentUuid": "644bb156_9f7e407e",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
