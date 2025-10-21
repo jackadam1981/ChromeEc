@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1764e3e_fec97cd1",
+        "filename": "zephyr/dts/bindings/pchg/convenientpower,cps8601.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T09:25:47Z",
+      "side": 1,
+      "message": "This is a limitation in our code:\n```\n\t/* Partial data of new firmware */\n\tuint8_t data[128];\n```\nThe IC can support a maximum size of 256, but we only have a size of 128.",
+      "parentUuid": "288b9da4_c8f6bff1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d107ad7_ce908af0",
         "filename": "zephyr/shim/src/pchg.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-21T08:00:06Z",
       "side": 1,
       "message": "is this scp or cps?",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01a8ec7_ad04ba2f",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T09:25:47Z",
+      "side": 1,
+      "message": "cps",
+      "parentUuid": "9d107ad7_ce908af0",
       "range": {
         "startLine": 9,
         "startChar": 14,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "060d966e_5bb7a508",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T09:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd95086_c1dc1abe",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7aeb0a3_d90046ee",
@@ -83,6 +155,24 @@
       "writtenOn": "2025-10-21T09:02:39Z",
       "side": 1,
       "message": "is the include guard really needed?",
+      "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094bdc95_de5a4c2f",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T09:25:47Z",
+      "side": 1,
+      "message": "I’ve updated it. The include guard has been removed",
+      "parentUuid": "c7aeb0a3_d90046ee",
       "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
