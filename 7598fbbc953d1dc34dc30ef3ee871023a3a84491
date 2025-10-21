@@ -16,6 +16,24 @@
       "message": "`GPIO_ODR_HIGH`? pin name says it\u0027s open drain.",
       "revId": "7598fbbc953d1dc34dc30ef3ee871023a3a84491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9346e213_0633f653",
+        "filename": "zephyr/program/skywalker/padme/project.overlay",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T10:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45452da2_9e6b26d9",
+      "revId": "7598fbbc953d1dc34dc30ef3ee871023a3a84491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
