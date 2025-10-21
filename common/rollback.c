@@ -278,7 +278,8 @@ static int rollback_update(int32_t next_min_version, const uint8_t *entropy,
 	 */
 	uint8_t block[CONFIG_FLASH_WRITE_SIZE *
 		      DIV_ROUND_UP(sizeof(struct rollback_data),
-				   CONFIG_FLASH_WRITE_SIZE)];
+				   CONFIG_FLASH_WRITE_SIZE)]
+		__attribute__((aligned(CONFIG_FLASH_WRITE_SIZE)));
 	struct rollback_data *data = (struct rollback_data *)block;
 	BUILD_ASSERT(sizeof(block) >= sizeof(*data));
 	int erase_size, offset, region, ret;
