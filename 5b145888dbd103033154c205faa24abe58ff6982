@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "141b6a8f_b16b3291",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T22:16:52Z",
+      "side": 1,
+      "message": "We have a unit test for `validate_fp_buffer_offset` I think.\n\nIt would be nice to have unit tests for `fp_command_frame`. I think that will require some refactoring, but would be good to do as a followup.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "5b145888dbd103033154c205faa24abe58ff6982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76e753b_80054b9e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T22:16:52Z",
+      "side": 1,
+      "message": "It looks like we\u0027re only checking in the `RAW_IMAGE` case. Do we also need to check the `frame_size` here? Any other places?\n\nOne option would be to keep the existing checks and add a new call to `validate_fp_buffer_offset` at the top of the function.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 70
+      },
+      "revId": "5b145888dbd103033154c205faa24abe58ff6982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38bf6d09_086a91e2",
+        "filename": "include/fpsensor/fpsensor_utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T22:16:52Z",
+      "side": 1,
+      "message": "frame_size",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "5b145888dbd103033154c205faa24abe58ff6982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d171673d_4de91ded",
+        "filename": "include/fpsensor/fpsensor_utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T22:16:52Z",
+      "side": 1,
+      "message": "frame_size",
+      "range": {
+        "startLine": 21,
+        "startChar": 38,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "5b145888dbd103033154c205faa24abe58ff6982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
