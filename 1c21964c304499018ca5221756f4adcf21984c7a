@@ -68,6 +68,30 @@
       },
       "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fabda8_7fffc6c7",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-21T22:02:45Z",
+      "side": 1,
+      "message": "ok, will refactor it this way. I had a previous version that uses the Create method:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7032751/5/include/fpsensor/fpsensor_frame_size.h",
+      "parentUuid": "98917071_86f820f5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
