@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1d9769_84451277",
+        "filename": "zephyr/dts/bindings/pchg/convenientpower,cps8601.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T06:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4261d4cd_d20fb9c3",
+      "revId": "65992c7e72588620b2360329aa8e4a5c1600d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "292ee300_adfc6fe4",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-21T06:21:24Z",
       "side": 1,
       "message": "Add blank line",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 43
+      },
+      "revId": "65992c7e72588620b2360329aa8e4a5c1600d2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a35bc1b_58914dfb",
+        "filename": "zephyr/dts/bindings/pchg/convenientpower,cps8601.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-10-21T06:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292ee300_adfc6fe4",
       "range": {
         "startLine": 4,
         "startChar": 0,
