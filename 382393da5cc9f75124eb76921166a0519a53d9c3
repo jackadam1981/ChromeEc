@@ -45,6 +45,29 @@
       },
       "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd95086_c1dc1abe",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-10-21T08:22:55Z",
+      "side": 1,
+      "message": "Is this unused after this change?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "382393da5cc9f75124eb76921166a0519a53d9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
