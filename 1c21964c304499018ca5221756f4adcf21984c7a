@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5f2490_3da8bfdc",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T21:57:18Z",
+      "side": 1,
+      "message": "Rather than initialize it here, we should do it at the start of the task where we\u0027re doing the other initialization. The cache object can be stored as a `std::unique_ptr` in the global context. The pointer should only be non-null if the cache was successfully created (see comments below).",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ad8edc_23a4bdeb",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T21:57:18Z",
+      "side": 1,
+      "message": "We should have unit tests for this new class.",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98917071_86f820f5",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-21T21:57:18Z",
+      "side": 1,
+      "message": "Instead of doing it like this, create a `static` `Create` method that returns a `std::unique_ptr\u003cFpFrameSizeCache\u003e`. On failure, it will return `nullptr`.\n\nSee https://abseil.io/tips/42\n\nThen you can get rid of the initialized checks since it will either be successfully constructed or not. That will also let you remove the `std::optional` on `get_frame_size`.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
