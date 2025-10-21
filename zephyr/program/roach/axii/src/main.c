@@ -7,6 +7,7 @@
 #include "console.h"
 #include "drivers/one_wire_uart.h"
 #include "drivers/one_wire_uart_internal.h"
+#include "ec_commands.h"
 #include "hooks.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
@@ -112,3 +113,10 @@ static void axii_init(void)
 	one_wire_uart_set_callback(one_wire_uart, recv_cb);
 }
 DECLARE_HOOK(HOOK_INIT, axii_init, HOOK_PRIO_DEFAULT);
+
+static void sysjump_rw(void)
+{
+	if (!system_is_in_rw())
+		system_run_image_copy(EC_IMAGE_RW);
+}
+DECLARE_HOOK(HOOK_INIT, sysjump_rw, HOOK_PRIO_TEMP_SENSOR);
