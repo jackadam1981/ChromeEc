@@ -16,6 +16,23 @@
       "message": "Hi Jayvik and Derek, could you help review the CL? Thanks.",
       "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5661293_04325a5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-10-21T13:53:05Z",
+      "side": 1,
+      "message": "Battery status cannot be accessed for LED control when the AP is on. Accessing battery status will require the ADSP firmware, which is not currently available.",
+      "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
