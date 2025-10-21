@@ -16,6 +16,75 @@
       "message": "In PS6, the use_flash_addresses() function was added to configure the base image address in flash.",
       "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e06389_9fb6b53c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-21T16:09:13Z",
+      "side": 1,
+      "message": "are the sizes the same as the 80sg?",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb5c68e_e80b9ed0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-21T16:09:13Z",
+      "side": 1,
+      "message": "this was not in the 80sg sensor initialization. What is the purpose of this?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 53
+      },
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5774e15_98b538ae",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_pal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-21T16:09:13Z",
+      "side": 1,
+      "message": "these are outside the ksem. most likely wrong location. I do not see them used until after the k_sem_take call and they are rewritten. \n\nWhy the i80sa uses a different image read protocol?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 30
+      },
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
