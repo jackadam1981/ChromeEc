@@ -16,6 +16,40 @@
       "message": "You\u0027re only calling this with the current thread, so you shouldn\u0027t need to double check here.",
       "revId": "12face48ae1986f11b0544355cd53ce90bf3866c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d552d04e_5fca809b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-21T16:34:28Z",
+      "side": 1,
+      "message": "You\u0027ll need to copy this function from the original CL.",
+      "revId": "12face48ae1986f11b0544355cd53ce90bf3866c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8417b2_d97de871",
+        "filename": "zephyr/program/nissa/pujjoga/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2025-10-21T16:34:28Z",
+      "side": 1,
+      "message": "This should get enabled by the Zephyr architecture Kconfigs.  If this isn\u0027t auto-enabled, then the `arch_stack_walk` functionality will not be available.",
+      "revId": "12face48ae1986f11b0544355cd53ce90bf3866c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
