@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ab352b_b0d0d236",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-21T10:40:03Z",
+      "side": 1,
+      "message": "remove whitespace\n\n\n```suggestion\n\t\t\t\t\tWPC_CHIP_ELE_CPS8200)\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "4bdd472ab51fa51d11233dc2e5321f13f0b33812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13553d09_31821634",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-21T10:40:03Z",
+      "side": 1,
+      "message": "unindent one level\n```suggestion\n\t\t\t\t\tWPC_CHIP_ELE_CPS8601) };\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "4bdd472ab51fa51d11233dc2e5321f13f0b33812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
