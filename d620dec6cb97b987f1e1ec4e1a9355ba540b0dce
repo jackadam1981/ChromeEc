@@ -94,6 +94,30 @@
       },
       "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013be857_c2af954d",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-10-21T18:16:33Z",
+      "side": 1,
+      "message": "if the keyboard works it\u0027s probably good enough, ideally we\u0027d get a measurement of the delay in and out of the GSC for that specific signal and make sure the default settling delay covers it with a minimum of headroom, from what we know now it may be sampling at the limit",
+      "parentUuid": "b1b2f412_08307f58",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
