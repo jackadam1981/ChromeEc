@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee09d9d5_843ed882",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-21T10:55:20Z",
+      "side": 1,
+      "message": "Make sense, done.",
+      "parentUuid": "beb9e669_f94015ff",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 52
+      },
+      "revId": "03ec5f04a002df035d7c3def32fb4da0928fb530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e7b35c6_45ecf614",
