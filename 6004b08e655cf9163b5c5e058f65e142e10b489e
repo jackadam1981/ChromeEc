@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9e1274_142a3019",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-21T23:52:15Z",
+      "side": 1,
+      "message": "Do not use a external variable in a macro.\nInstead of copying the macro from bma4xx, add it to src/platform/ec/include/common.h, next to RETURN_ERROR (use GOTO_ERROR). \nYou can make the change in a separate commit, but I don\u0027t think the macro is needed at all, see below.",
+      "revId": "6004b08e655cf9163b5c5e058f65e142e10b489e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ee636f_26a60ce2",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-21T23:52:15Z",
+      "side": 1,
+      "message": "Since the chip comes from a reset state when config_interrupt() is called, you can put FLUSH into enable_interrupt().",
+      "revId": "6004b08e655cf9163b5c5e058f65e142e10b489e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
