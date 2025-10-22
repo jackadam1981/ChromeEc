@@ -33,6 +33,24 @@
       "message": "Battery status cannot be accessed for LED control when the AP is on. Accessing battery status will require the ADSP firmware, which is not currently available.",
       "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163ac9b9_e74501ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-10-22T06:51:51Z",
+      "side": 1,
+      "message": "Thanks for sharing the essential info. I opened bug b/454187289 to track this and added a TODO note in the code.\n\nCould we merge this CL with the TODO to unblock the LED function, and then update the code once the ADSP is available?",
+      "parentUuid": "c5661293_04325a5b",
+      "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
