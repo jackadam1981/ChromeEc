@@ -117,6 +117,24 @@
       "parentUuid": "0302e8be_59385c6a",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c32c9d_f7291e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2025-10-22T23:11:25Z",
+      "side": 1,
+      "message": "I think I need to get educated first. Does this command require a pin to use? And once the ec enters the bootloader mode, it can stay in the bootloader mode and essentially can jump to any place?\n\nGenerally speaking, yes it will be nice if we can bind this potentially very-powerful-but-only-in-dev capability to the GSC dev mode. But I don\u0027t know how to do it, I will be happy to learn. Will apronin@ know some pointers?",
+      "parentUuid": "4db95822_5b034170",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
