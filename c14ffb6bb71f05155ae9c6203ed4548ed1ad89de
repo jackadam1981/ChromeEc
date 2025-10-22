@@ -22,6 +22,30 @@
       },
       "revId": "c14ffb6bb71f05155ae9c6203ed4548ed1ad89de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "124a8dac_67ed7fec",
+        "filename": "zephyr/program/roach/i2c.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-22T08:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb31783_49a0e480",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 2
+      },
+      "revId": "c14ffb6bb71f05155ae9c6203ed4548ed1ad89de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
