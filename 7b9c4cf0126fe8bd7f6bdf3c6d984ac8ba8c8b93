@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c744f58f_622b5cea",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-22T03:24:01Z",
+      "side": 1,
+      "message": "I will keep this comment open. It does not belong to this CL though.",
+      "parentUuid": "6beff146_5dd1a713",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 40
+      },
+      "revId": "7b9c4cf0126fe8bd7f6bdf3c6d984ac8ba8c8b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8037cee6_60807af4",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 3

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "985d26e2_22c03578",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-22T03:24:01Z",
+      "side": 1,
+      "message": "I will keep this comment open for now. This CL will just focus on creating the cache class. Initialization will be in a follow up CL.",
+      "parentUuid": "2a5f2490_3da8bfdc",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25ad8edc_23a4bdeb",
         "filename": "common/fpsensor/fpsensor_frame_size.cc",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-21T21:57:18Z",
       "side": 1,
       "message": "We should have unit tests for this new class.",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd7c7af_1253841d",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-22T03:24:01Z",
+      "side": 1,
+      "message": "Done\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7069097/1",
+      "parentUuid": "25ad8edc_23a4bdeb",
       "range": {
         "startLine": 15,
         "startChar": 18,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "ok, will refactor it this way. I had a previous version that uses the Create method:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7032751/5/include/fpsensor/fpsensor_frame_size.h",
       "parentUuid": "98917071_86f820f5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2d22cb_228e6e80",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-22T03:24:01Z",
+      "side": 1,
+      "message": "I refactored this CL to just focus on creating the class. the following CL will test the class. I will introduce the cache initialization logic in a follow-up CL.",
+      "parentUuid": "99fabda8_7fffc6c7",
       "range": {
         "startLine": 15,
         "startChar": 0,
