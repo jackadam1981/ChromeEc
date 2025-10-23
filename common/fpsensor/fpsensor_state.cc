@@ -55,6 +55,7 @@ struct fpsensor_context global_context = {
 	.fp_events = 0,
 	.sensor_mode = 0,
 	.current_frame_size = 0,
+	.fp_frame_size_cache = nullptr,
 	.tpm_seed = { 0 },
 	.user_id = { 0 },
 	.positive_match_secret_state = {
@@ -112,6 +113,7 @@ static void _fp_clear_context(void)
 {
 	fp_reset_context();
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
+	global_context.current_frame_size = 0;
 	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
 }
