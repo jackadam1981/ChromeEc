@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d78306d_c784be94",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "181db03b_ca5f8881",
+      "range": {
+        "startLine": 18,
+        "startChar": 59,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53ff1658_7af7a9d1",
@@ -61,6 +85,30 @@
       "writtenOn": "2025-10-23T18:45:20Z",
       "side": 1,
       "message": "nit: In our style we usually have guard checks early return error:\n\n```\nif (!populate_cache) {\n  return nullptr;\n}\n\nreturn cache;\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f3e869_c36e7d02",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ff1658_7af7a9d1",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "295560e7_4e7e3b88",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd967a72_d5afda80",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d38d491d_4e3ab26f",
@@ -107,6 +179,30 @@
       "writtenOn": "2025-10-23T18:45:20Z",
       "side": 1,
       "message": "It looks like we\u0027re not doing anything with the return code, so I would just return `bool`.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184579fa_52225112",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d38d491d_4e3ab26f",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e09167_48286e68",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b749ac_f8beb236",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd380987_819d9207",
@@ -153,6 +273,30 @@
       "writtenOn": "2025-10-23T18:45:20Z",
       "side": 1,
       "message": "nit: Not strictly necessary since you are initializing it to zero with `frame_sizes_ \u003d {}`",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebda3bb_bda6c3de",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd380987_819d9207",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -186,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7da5d0_edf6aa3f",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60eb4366_8b4109bf",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19286846_413eb874",
@@ -209,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ed91f7_6e7d9aed",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19286846_413eb874",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b571b0_c7adadf2",
@@ -222,6 +414,30 @@
       "writtenOn": "2025-10-23T18:45:20Z",
       "side": 1,
       "message": "unused?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c4c713_615a43f1",
+        "filename": "include/fpsensor/fpsensor_frame_size.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b571b0_c7adadf2",
       "range": {
         "startLine": 14,
         "startChar": 0,
