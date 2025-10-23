@@ -199,6 +199,16 @@ config EMUL_FPC1145
 	  It supports only basic commands (get hardware id, enter low power
 	  mode) that can be issued by the public driver (without FPC private
 	  library)
+	  
+config EMUL_FT9865
+	bool "FT9865 fingerprint sensor emulator"
+	depends on ZTEST && DT_HAS_FT_FT9865_ENABLED && ARCH_POSIX
+	default y
+	help
+	  This option enables the FT9865 fingerprint sensor emulator.
+	  It supports only basic commands (get hardware id, enter low power
+	  mode) that can be issued by the public driver (without FT private
+	  library)		  
 
 config EMUL_SMBUS_ARA
 	bool "SMBUS Alert Response Address emulator"
