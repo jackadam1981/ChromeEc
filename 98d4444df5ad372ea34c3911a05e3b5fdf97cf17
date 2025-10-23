@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedf7bab_e8f48173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-10-23T03:06:22Z",
+      "side": 1,
+      "message": "CQ failure reason:\n\n```\n[padme:rw] ERROR: Duplicate GPIOs found at nodes: ec_pen_chg_dis_odl and ec_pen_dis\n[padme:rw] ERROR: 1 duplicate GPIOs found in padme\n```",
+      "revId": "98d4444df5ad372ea34c3911a05e3b5fdf97cf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
