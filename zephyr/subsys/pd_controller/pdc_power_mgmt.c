@@ -376,6 +376,11 @@ enum init_local_state_t {
 	 *  PDC based on product configuration data.
 	 */
 	INIT_SET_SINK_PDOS,
+	/** INIT_SET_SRC_PDOS - If CONFIG_PLATFORM_EC_USB_PD_3A_PORTS is 0,
+	 * src_pdo will not be updated, so needs to be sent in advance in
+	 * pdc_init_run.
+	 */
+	INIT_SET_SRC_PDOS,
 	/** INIT_GET_CONNECTOR_STATUS - Get current status. This state does not
 	 *  return; the state machine will transition to the unattached or one
 	 *  of the attached run states after handling the response.
@@ -3514,7 +3519,7 @@ static enum smf_state_result pdc_init_run(void *obj)
 		__fallthrough;
 
 	case INIT_SET_SINK_PDOS:
-		port->init_local_state = INIT_GET_CONNECTOR_STATUS;
+		port->init_local_state = INIT_SET_SRC_PDOS;
 
 		/* Set sink PDO(s) that reflects this board's max voltage and
 		 * current */
@@ -3524,6 +3529,19 @@ static enum smf_state_result pdc_init_run(void *obj)
 		};
 
 		memcpy(port->set_pdos.pdos, pdc_snk_pdos, sizeof(pdc_snk_pdos));
+
+		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
+		break;
+
+	case INIT_SET_SRC_PDOS:
+		port->init_local_state = INIT_GET_CONNECTOR_STATUS;
+
+		port->src_policy.lpm_src_pdo = pdc_src_pdo_nominal;
+		port->set_pdos = (struct set_pdos_t){
+			.count = 1,
+			.type = SOURCE_PDO,
+			.pdos = { port->src_policy.lpm_src_pdo },
+		};
 
 		queue_internal_cmd(port, CMD_PDC_SET_PDOS);
 		break;
