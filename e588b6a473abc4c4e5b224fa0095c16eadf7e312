@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e3f258_6fcf98e2",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-23T21:56:30Z",
+      "side": 1,
+      "message": "Nit - this is easier to follow if you cache the read value.\n```\nwake_up_ctrl3 \u003d sys_read8(ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);\nwake_up_ctrl3 |\u003d XLPINS_BYPASS_EN;\nsys_write8(wake_up_ctrl3, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);\n\n...\n\n/* Disable firmware control */\nwake_up_ctrl3 \u0026\u003d ~(FIRMWARE_CTRL_EN | FIRMWARE_CTRL_OUTPUT_H);\nsys_write8(wake_up_ctrl3, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);\n```",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 0
+      },
+      "revId": "e588b6a473abc4c4e5b224fa0095c16eadf7e312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
