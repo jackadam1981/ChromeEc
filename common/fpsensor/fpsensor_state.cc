@@ -55,6 +55,7 @@ struct fpsensor_context global_context = {
 	.fp_events = 0,
 	.sensor_mode = 0,
 	.current_frame_size = 0,
+	.fp_frame_size_cache = nullptr,
 	.tpm_seed = { 0 },
 	.user_id = { 0 },
 	.positive_match_secret_state = {
