@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "791f1126_18c71321",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:52:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f50432ec_a686402e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "3f1ff1564fa828c98d2a5969b19b08f424a34559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "036f2fa1_c051efc6",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-23T18:24:36Z",
       "side": 1,
       "message": "```suggestion\n\nThis change introduces the `current_frame_size` member to the `fpsensor_context`\nstruct. This new field is intended to store the size, in bytes, of the\nimage data obtained from the most recent fingerprint sensor capture.\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "3f1ff1564fa828c98d2a5969b19b08f424a34559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dcd7b21_d39c8cdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T22:52:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "036f2fa1_c051efc6",
       "range": {
         "startLine": 8,
         "startChar": 0,
