@@ -16,6 +16,24 @@
       "message": "```\n[eirtae:rw] /mnt/host/source/src/platform/ec/build/zephyr/eirtae/modules/ec/driver/touchpad_focal.c:30:34: error: \u0027rv\u0027 may be used uninitialized [-Werror\u003dmaybe-uninitialized]\n[eirtae:rw]    30 | #define CPRINTS(format, args...) cprints(CC_TOUCHPAD, format, ##args)\n[eirtae:ro] [58/259] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/shell/modules/kernel_service/thread/resume.c.obj\n[eirtae:rw]       |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n[eirtae:rw] /mnt/host/source/src/platform/ec/build/zephyr/eirtae/modules/ec/driver/touchpad_focal.c:335:13: note: \u0027rv\u0027 was declared here\n[eirtae:rw]   335 |         int rv;\n[eirtae:rw]       |             ^~\n[eirtae:rw] cc1: all warnings being treated as errors\n```",
       "revId": "077b1586c5ac5dd127b0c81479de3858b6570c8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3cc3173_0ae7a72f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3524861
+      },
+      "writtenOn": "2025-10-23T05:59:48Z",
+      "side": 1,
+      "message": "Done. Fixed in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7077798",
+      "parentUuid": "48c8a6e1_ae30da07",
+      "revId": "077b1586c5ac5dd127b0c81479de3858b6570c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
