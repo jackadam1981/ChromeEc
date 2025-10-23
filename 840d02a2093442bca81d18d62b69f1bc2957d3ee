@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43efbaf4_111fab76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-23T15:08:29Z",
+      "side": 1,
+      "message": "Please split this changes into to CLs:\n- one renaming the existing algo/configs to \"series\"\n- the second one that adds support for `HAVE_ELANI80SA_PRIVATE_ALGORITHM`",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d7b2db_e3020104",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-23T15:08:29Z",
+      "side": 1,
+      "message": "Do we really need a new config? Maybe rename the existing config to something with \"series\" as the source code?",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5466ec79_7eff2459",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80series_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-23T15:08:29Z",
+      "side": 1,
+      "message": "Can the `fingerprint_elan80sg_private.h` header file be common for both sensors?",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4100c72_29f26c64",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80series_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-23T15:08:29Z",
+      "side": 1,
+      "message": "It is incorrect. We need to support public builds, when no private lib is provided.",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95e4236_57d690a2",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80series_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-23T15:08:29Z",
+      "side": 1,
+      "message": "This pattern is commonly used. Add a macro with it to reuse the pattern.",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
