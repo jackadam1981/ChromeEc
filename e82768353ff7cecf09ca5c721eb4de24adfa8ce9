@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f871279_053f6d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-23T08:28:15Z",
+      "side": 1,
+      "message": "I’m not sure if PS9 includes the fix. Does it refer to the \u0027Relation chain\u0027 at the top right corner?",
+      "parentUuid": "34e31114_f345bc01",
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6e06389_9fb6b53c",
         "filename": "zephyr/drivers/fingerprint/Kconfig",
         "patchSetId": 6
@@ -65,6 +83,30 @@
       "writtenOn": "2025-10-21T16:09:13Z",
       "side": 1,
       "message": "are the sizes the same as the 80sg?",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d474a1_788253a4",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-23T08:28:15Z",
+      "side": 1,
+      "message": "Yes, I have made a revision in PS9. I think it can be combined into one.",
+      "parentUuid": "e6e06389_9fb6b53c",
       "range": {
         "startLine": 30,
         "startChar": 9,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8697c692_e20e3035",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-23T08:28:15Z",
+      "side": 1,
+      "message": "This function provides the addresses of ft_info and the base image to the library. The Elan I80SA solution uses ft_info for initialization and use base image from flash.",
+      "parentUuid": "5bb5c68e_e80b9ed0",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 53
+      },
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5774e15_98b538ae",
@@ -111,6 +177,30 @@
       "writtenOn": "2025-10-21T16:09:13Z",
       "side": 1,
       "message": "these are outside the ksem. most likely wrong location. I do not see them used until after the k_sem_take call and they are rewritten. \n\nWhy the i80sa uses a different image read protocol?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 30
+      },
+      "revId": "e82768353ff7cecf09ca5c721eb4de24adfa8ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b91849_c237e755",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_pal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-23T08:28:15Z",
+      "side": 1,
+      "message": "Fixed in PS9. This approach checks the status before receiving each line of data to ensure it is ready, providing better data stability at higher SPI speeds and improving image capture efficiency.",
+      "parentUuid": "b5774e15_98b538ae",
       "range": {
         "startLine": 242,
         "startChar": 0,
