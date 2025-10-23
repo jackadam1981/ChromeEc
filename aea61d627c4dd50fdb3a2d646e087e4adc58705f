@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b996421_c1ab479e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:02:04Z",
+      "side": 1,
+      "message": "Can you do a test with this new version of `ectool` against the current (v1) firmware and put the results here?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 59
+      },
+      "revId": "aea61d627c4dd50fdb3a2d646e087e4adc58705f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e56abf4_b7c84f22",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 18
@@ -14,6 +37,24 @@
       "writtenOn": "2025-10-16T17:27:20Z",
       "side": 1,
       "message": "```\nXkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe raw \ncapture_type: 0\nimages.size(): 6\nsize: 26260\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe raw pattern0\ncapture_type: 8\nimages.size(): 6\nsize: 26260\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe pattern0\ncapture_type: 8\nimages.size(): 6\nsize: 25600\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe raw pattern1\ncapture_type: 12\nimages.size(): 6\nsize: 26260\nkanix-rev2 ~ # ectool --name\u003dcros_fp fpframe pattern1\ncapture_type: 12\nimages.size(): 6\nsize: 25600\n```",
+      "revId": "aea61d627c4dd50fdb3a2d646e087e4adc58705f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7274b505_2688de7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e56abf4_b7c84f22",
       "revId": "aea61d627c4dd50fdb3a2d646e087e4adc58705f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

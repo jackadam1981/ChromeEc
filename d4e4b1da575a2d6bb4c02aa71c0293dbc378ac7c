@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0af0aa5_0830e95d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:02:04Z",
+      "side": 1,
+      "message": "We discussed this yesterday. We haven\u0027t merged the v2 of the command yet on the firmware side and won\u0027t do so until the frame size check is complete. The v1 firmware will return a `capture_type` of `nullopt`, so commands for other capture types won\u0027t have an effect.",
+      "parentUuid": "c0e9b5ea_1b5d3bd3",
+      "revId": "d4e4b1da575a2d6bb4c02aa71c0293dbc378ac7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adcec3cd_e006d9b1",
