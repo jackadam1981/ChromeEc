@@ -7,6 +7,7 @@ zephyr_include_directories(include)
 zephyr_library_sources("src/board.c")
 zephyr_library_sources("src/charger.c")
 zephyr_library_sources("src/touchpanel.c")
+zephyr_library_sources("src/power_config.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	"src/keyboard_customization.c"
 )
