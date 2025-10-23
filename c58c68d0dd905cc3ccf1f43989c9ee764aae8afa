@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ff1658_7af7a9d1",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "nit: In our style we usually have guard checks early return error:\n\n```\nif (!populate_cache) {\n  return nullptr;\n}\n\nreturn cache;\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd967a72_d5afda80",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "I wouldn\u0027t log this here. You can log it in the function that calls it if you get a `nullptr` return value.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38d491d_4e3ab26f",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "It looks like we\u0027re not doing anything with the return code, so I would just return `bool`.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b749ac_f8beb236",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "Probably good to add a log message here since you\u0027re doing it for the other failure paths",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd380987_819d9207",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "nit: Not strictly necessary since you are initializing it to zero with `frame_sizes_ \u003d {}`",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60eb4366_8b4109bf",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "Everywhere you\u0027re using `FP_CAPTURE_TYPE_MAX`, you can use `frame_sizes_.size()` instead. That way you only need to change the size in a single place (declaration of `frame_sizes_`) and you don\u0027t need to worry about the two getting out of sync.",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19286846_413eb874",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "I don\u0027t think you need the cast here. But when you do that you should check `\u003c frame_sizes.size()` and `\u003e\u003d 0`.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b571b0_c7adadf2",
+        "filename": "include/fpsensor/fpsensor_frame_size.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:45:20Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
