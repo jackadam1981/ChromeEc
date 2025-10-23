@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e22f04b_2e25538a",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T19:08:37Z",
+      "side": 1,
+      "message": "Let\u0027s add an argument call `max_frame_size_bytes`. Then when creating the cache we should fail if any frame sizes returned exceed it.\n\nWhen creating the cache, we pass `sizeof(fp_buffer)` as `max_frame_size_bytes`.",
+      "range": {
+        "startLine": 18,
+        "startChar": 59,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "c58c68d0dd905cc3ccf1f43989c9ee764aae8afa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53ff1658_7af7a9d1",
         "filename": "common/fpsensor/fpsensor_frame_size.cc",
         "patchSetId": 13
