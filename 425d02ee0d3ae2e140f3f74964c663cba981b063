@@ -16,6 +16,24 @@
       "message": "I found this file just copy paste from `elan_elan80sg_bio_alg.c`. Can you make it common for both algorithm implementations?",
       "revId": "425d02ee0d3ae2e140f3f74964c663cba981b063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b18f1a_b107c8f9",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elani80sa_bio_alg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-23T08:28:29Z",
+      "side": 1,
+      "message": "It was implemented in PS5, but I’m not certain whether it is suitable.",
+      "parentUuid": "5951a7a0_c9f4c422",
+      "revId": "425d02ee0d3ae2e140f3f74964c663cba981b063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
