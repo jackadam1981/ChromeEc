@@ -124,7 +124,8 @@ test_mockable_static_inline int sniff_pdc_set_rdo(const struct device *dev,
 	CONFIG_PDC_POWER_MGMT_STATE_MACHINE_SETTLED_TIMEOUT_MS
 
 /** @brief Delay to wait for stable power state before running hooks */
-#define PDC_POWER_STATE_DEBOUNCE_S (K_SECONDS(2))
+#define PDC_POWER_STATE_DEBOUNCE_MS \
+	(K_MSEC(CONFIG_PDC_POWER_MGMT_POWER_STATE_DEBOUNCE_PERIOD_MS))
 
 /**
  * @brief maximum number of times to try and send a command, or wait for a
@@ -4517,7 +4518,7 @@ static void clear_hpd_wake_watch(int port)
 static void pd_chipset_resume(void)
 {
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
-			  PDC_POWER_STATE_DEBOUNCE_S);
+			  PDC_POWER_STATE_DEBOUNCE_MS);
 
 	LOG_INF("PD:S3->S0");
 }
@@ -4526,7 +4527,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 static void pd_chipset_suspend(void)
 {
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
-			  PDC_POWER_STATE_DEBOUNCE_S);
+			  PDC_POWER_STATE_DEBOUNCE_MS);
 
 	LOG_INF("PD:S0->S3");
 }
@@ -4535,7 +4536,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 static void pd_chipset_startup(void)
 {
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
-			  PDC_POWER_STATE_DEBOUNCE_S);
+			  PDC_POWER_STATE_DEBOUNCE_MS);
 
 	LOG_INF("PD:S5->S3");
 }
@@ -4544,7 +4545,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 static void pd_chipset_shutdown(void)
 {
 	k_work_reschedule(&pdc_apply_power_state_policy_work,
-			  PDC_POWER_STATE_DEBOUNCE_S);
+			  PDC_POWER_STATE_DEBOUNCE_MS);
 
 	LOG_INF("PD:S3->S5");
 }
