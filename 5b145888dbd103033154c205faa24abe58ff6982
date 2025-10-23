@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebc8ee30_d8292046",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T19:07:06Z",
+      "side": 1,
+      "message": "\u003e  The template case, does not get the size from cmd_fp_frame\n\nBut we want to make sure there isn\u0027t a bug in the client code that is requesting incorrect template sizes, right? I guess we can make that a separate CL and test it separately since we\u0027re not currently doing that check.",
+      "parentUuid": "f744f5cc_261f2105",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 70
+      },
+      "revId": "5b145888dbd103033154c205faa24abe58ff6982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38bf6d09_086a91e2",
         "filename": "include/fpsensor/fpsensor_utils.h",
         "patchSetId": 8
