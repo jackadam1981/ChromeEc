@@ -336,7 +336,7 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_success)
 	while (offset < FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE) {
 		params->offset = offset;
 		params->size =
-			MIN(data_size,
+			min(data_size,
 			    FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE - offset);
 		memcpy(data, encrypted_template + offset, params->size);
 		offset += params->size;
@@ -383,7 +383,7 @@ ZTEST_USER(fpsensor_template, test_fp_template_load_template_invalid_tag)
 	while (offset < FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE) {
 		params->offset = offset;
 		params->size =
-			MIN(data_size,
+			min(data_size,
 			    FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE - offset);
 		memcpy(data, encrypted_template + offset, params->size);
 		offset += params->size;
