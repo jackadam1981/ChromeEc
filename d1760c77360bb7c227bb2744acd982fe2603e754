@@ -16,6 +16,52 @@
       "message": "Updated the bug number(b:452854582) and datasheet",
       "revId": "d1760c77360bb7c227bb2744acd982fe2603e754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75be3080_faae63b2",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-23T19:26:24Z",
+      "side": 1,
+      "message": "Should be 45.",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "d1760c77360bb7c227bb2744acd982fe2603e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822015e7_081468a4",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-23T19:26:24Z",
+      "side": 1,
+      "message": "Should be 45",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "d1760c77360bb7c227bb2744acd982fe2603e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
