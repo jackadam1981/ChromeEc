@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a568ee_710d775e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-23T03:57:37Z",
+      "side": 1,
+      "message": "This is done in this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7077440/2",
+      "parentUuid": "985d26e2_22c03578",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "1c21964c304499018ca5221756f4adcf21984c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25ad8edc_23a4bdeb",
