@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209d3fa3_f950d389",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:58:41Z",
+      "side": 1,
+      "message": "Remove this. It\u0027s obvious from the code.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 46
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30332cf_41fbbc54",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:58:41Z",
+      "side": 1,
+      "message": "This is going to stop the `fp_task`. I\u0027m not sure if that\u0027s going to cause problems, so you\u0027ll need to test it. Host commands will run on a different task, so they should still run, but we want to make sure it\u0027s obvious on the caller side what is happening.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9071c647_25941ad9",
+        "filename": "include/fpsensor/fpsensor_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-23T18:58:41Z",
+      "side": 1,
+      "message": "```suggestion\n\t/** Map of the capture type to frame size. */\n```",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
