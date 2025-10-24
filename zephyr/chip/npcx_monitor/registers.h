@@ -31,8 +31,8 @@
 /* Standard macros / definitions */
 #define GENERIC_MAX(x, y) ((x) > (y) ? (x) : (y))
 #define GENERIC_MIN(x, y) ((x) < (y) ? (x) : (y))
-#ifndef MAX
-#define MAX(a, b)                            \
+#ifndef max
+#define max(a, b)                            \
 	({                                   \
 		__typeof__(a) temp_a = (a);  \
 		__typeof__(b) temp_b = (b);  \
@@ -40,8 +40,8 @@
 		GENERIC_MAX(temp_a, temp_b); \
 	})
 #endif
-#ifndef MIN
-#define MIN(a, b)                            \
+#ifndef min
+#define min(a, b)                            \
 	({                                   \
 		__typeof__(a) temp_a = (a);  \
 		__typeof__(b) temp_b = (b);  \
