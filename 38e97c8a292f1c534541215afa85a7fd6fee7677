@@ -39,6 +39,30 @@
       },
       "revId": "38e97c8a292f1c534541215afa85a7fd6fee7677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1ede78_83dcef64",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-10-24T06:38:46Z",
+      "side": 1,
+      "message": "This handler will call the appropriate hooks to update the host event and AC_CHANGE hook, which should, in my opinion, properly update the system state. Please let me know if you disagree.",
+      "parentUuid": "474bb72f_f654115c",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 58
+      },
+      "revId": "38e97c8a292f1c534541215afa85a7fd6fee7677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
