@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5baeefb5_43d177ca",
+        "filename": "common/hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:04:38Z",
+      "side": 1,
+      "message": "`CPRINTS_L2` and its associated infrastructure are defined in the PD state machine files. How are you building this code here?\n\nAnyway, I would expect this change to have a similar effect on anraggar vs pujjoga. This is common code. If you think it might be significant, just delete it and see what happens.",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ddde2d_576b4c3b",
+        "filename": "common/hooks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:04:38Z",
+      "side": 1,
+      "message": "This actually works differently than I thought. It\u0027s making a blocking call to each hook in sequence. I was thinking it was just scheduling them for later, but that\u0027s `hook_call_deferred`.\n\nThat means that most of the time taken by this function is probably in the actual hooks, and that would be an interesting thing to measure.\n\nIt may be that we can change the `hook_notify` call to a `hook_call_deferred` call and save some time on the critical path. But that will depend on what the hooks need to do.",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e810f3_f13872c7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:04:38Z",
+      "side": 1,
+      "message": "All I see in here are timestamp recordings, which is fine, but there aren\u0027t any changes in here meant to help pujjoga be faster, right?",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd437b1e_0c29b1a1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:04:38Z",
+      "side": 1,
+      "message": "You might be able to change this to a deferred call.",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b56811_96cc58fd",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:04:38Z",
+      "side": 1,
+      "message": "You have two of these definitions. How is this building?",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e184fc8a_b22cbc73",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:04:38Z",
+      "side": 1,
+      "message": "You also might want to set `sourcing_vbus[port] \u003d false` here. (Actually, you could set it for all ports, but that wouldn\u0027t help speed up the test.)",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
