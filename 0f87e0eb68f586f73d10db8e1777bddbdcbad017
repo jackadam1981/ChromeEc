@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e0aaac_46afaabb",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_frame_size.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-24T00:08:44Z",
+      "side": 1,
+      "message": "I do not believe this will compile without adding this. even the simple utils tests includes this:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/fingerprint/task/src/fpsensor_utils.cc\n\nI believe this has to do with including fpsensor.h",
+      "parentUuid": "b08728a4_be93e746",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "0f87e0eb68f586f73d10db8e1777bddbdcbad017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47542621_b31b6470",
