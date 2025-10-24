@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b74f32_8a304969",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-24T00:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "209d3fa3_f950d389",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 46
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c30332cf_41fbbc54",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-10-23T18:58:41Z",
       "side": 1,
       "message": "```suggestion\n\t/** Map of the capture type to frame size. */\n```",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42683200_6051c3fc",
+        "filename": "include/fpsensor/fpsensor_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-24T00:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9071c647_25941ad9",
       "range": {
         "startLine": 86,
         "startChar": 25,
