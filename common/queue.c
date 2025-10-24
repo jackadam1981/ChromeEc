@@ -12,12 +12,6 @@
 
 #ifdef CONFIG_ZEPHYR
 
-/* Use the single call variant for MIN in this file. */
-#undef MIN
-#define MIN min
-
-#endif
-
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
 
 static void queue_action_null(struct queue_policy const *policy, size_t count)
