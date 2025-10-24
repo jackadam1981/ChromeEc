@@ -101,6 +101,23 @@
       "message": "You also might want to set `sourcing_vbus[port] \u003d false` here. (Actually, you could set it for all ports, but that wouldn\u0027t help speed up the test.)",
       "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b077ca_a49180e3",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-24T22:06:45Z",
+      "side": 1,
+      "message": "I\u0027m wondering whether there are any other places we could check this, or something like it, that would avoid redundant work. For instance, in `pd_set_power_supply_ready`. I don\u0027t think that would speed up the critical path in this test, but maybe there\u0027s somewhere else that would. I don\u0027t have any other places on the tip of my tongue, though. What you already have might be everything that can be done.",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
