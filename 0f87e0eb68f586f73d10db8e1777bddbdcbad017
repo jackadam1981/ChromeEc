@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d83a44e_40301f5e",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_frame_size.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-24T04:38:22Z",
+      "side": 1,
+      "message": "this is the error log: https://paste.googleplex.com/6620489959211008\n```\nundefined reference to `mkbp_send_event\u0027\n```",
+      "parentUuid": "44e0aaac_46afaabb",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "0f87e0eb68f586f73d10db8e1777bddbdcbad017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47542621_b31b6470",
