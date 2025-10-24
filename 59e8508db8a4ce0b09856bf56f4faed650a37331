@@ -51,6 +51,24 @@
       "parentUuid": "c5661293_04325a5b",
       "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd6bd73_3881416b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-10-24T06:27:52Z",
+      "side": 1,
+      "message": "We cannot merge this code at this time as it violates the current battery policy. The policy prohibits reading the battery access once the chipset is turned on. I am currently working on an updated flow to address this, and the progress is being tracked in issue b/443592668\n\nThanks",
+      "parentUuid": "163ac9b9_e74501ff",
+      "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
