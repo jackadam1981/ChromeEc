@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c248ae0_1f06e128",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-24T16:07:58Z",
+      "side": 1,
+      "message": "Do you mean that I generate a firmware that returns a nullptr, flash it, and then try for example `ectool` commands and see what happens?\n\nHow about not checking in here. I will check before `global_context.fp_frame_size_cache-\u003eget_frame_size` is called that `global_context.fp_frame_size_cache` is not a nullptr.\n\n```\nif (global_context.fp_frame_size_cache) {\n    global_context.current_frame_size \u003d\n        global_context.fp_frame_size_cache-\u003eget_frame_size(\n            capture_type);\n} else {\n    CPRINTS(\"FP frame size cache is NULL. Cannot determine frame size for type %d.\", capture_type);    \n    global_context.current_frame_size \u003d 0;\n}\n```",
+      "parentUuid": "c30332cf_41fbbc54",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9071c647_25941ad9",
         "filename": "include/fpsensor/fpsensor_state.h",
         "patchSetId": 2
