@@ -135,6 +135,24 @@
       "parentUuid": "4db95822_5b034170",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd22d634_3e8b9469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-24T09:52:04Z",
+      "side": 1,
+      "message": "\u003e Does this command require a pin to use?\n\nNo, we don\u0027t have additional pin in our connector with FPMCU.\n\n\u003e And once the ec enters the bootloader mode, it can stay in the bootloader mode and essentially can jump to any place?\n\nNo.\n\nGenerally, I think we need to trust the bootloader anyway. The SOC can stay in bootloader for other reasons that sending the HC e.g. if an integrity check fails (flash is corrupted for some reason), the bootloader won\u0027t jump to RO.",
+      "parentUuid": "e8c32c9d_f7291e23",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
