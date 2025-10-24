@@ -39,6 +39,29 @@
       },
       "revId": "6febbde84542a8510d8de856b2679dc7d6b540e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725d4195_31aad311",
+        "filename": "zephyr/program/bluey/quartz/temp_sensors.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-10-24T06:25:56Z",
+      "side": 1,
+      "message": "remove unnecessary space",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "6febbde84542a8510d8de856b2679dc7d6b540e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
