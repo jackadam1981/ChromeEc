@@ -1,0 +1,101 @@
+/* Copyright 2025 The ChromiumOS Authors
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+*/
+/* Corsola program common DTS includes */
+#include "../common.dtsi"
+#include "../power_signal.dtsi"
+#include "../usba.dtsi"
+#include "../npcx_adc.dtsi"
+#include "../npcx_gpio.dtsi"
+#include "../npcx_host_interface.dtsi"
+#include "../npcx_i2c.dtsi"
+#include "../npcx_interrupts.dtsi"
+#include "../npcx_keyboard.dtsi"
+#include "../npcx_motionsense.dtsi"redefinition of 'dps_config'
+
+#include "../npcx_usbc.dtsi"
+#include "../npcx_default_gpio_pinctrl.dtsi"
+#include <cros/thermistor/thermistor.dtsi>
+#include <dt-bindings/battery.h>
+/ {
+        
+        named-adc-channels {
+                adc_temp_charger: temp-charger {
+                        enum-name = "ADC_TEMP_SENSOR_CHARGER";
+                        io-channels = <&adc0 8>;
+                };
+        };
+        temp_charger_thermistor: charger-thermistor {
+                compatible = "cros-ec,temp-sensor-thermistor";
+                thermistor = <&thermistor_3V3_51K1_47K_4050B>;
+                adc = <&adc_temp_charger>;
+        };
+        named-temp-sensors {
+                compatible = "cros-ec,temp-sensors";
+                temp_sensor_charger: charger-thermistor {
+                        sensor = <&temp_charger_thermistor>;
+                };
+        };
+        usbc {
+                port0@0{
+                        /delete-property/ bc12;
+                };
+                port1@1{
+                        /delete-property/ bc12;
+                };
+        };
+};
+&i2c1_0 {
+        /delete-node/ pi3usb9201@5f;
+};
+&i2c2_0 {
+        /delete-node/ rt1718s-bc12@40;
+};
+/* Amber LED */
+&pwm0_gpc3 {
+        drive-open-drain;
+};
+&pwm0 {
+        status = "okay";
+        clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+        pinctrl-0 = <&pwm0_gpc3>;
+        pinctrl-names = "default";
+};
+/* Blue LED */
+&pwm1_gpc2 {
+        drive-open-drain;
+};
+&pwm1 {
+        status = "okay";
+        clock-bus = "NPCX_CLOCK_BUS_LFCLK";
+        pinctrl-0 = <&pwm1_gpc2>;
+        pinctrl-names = "default";
+};
+/* gpio overrides */
+/ {
+        named-gpios {
+                /delete-node/ ec_pen_chg_dis_odl;
+        };
+};
+/* interrupts overrides */
+/ {
+        gpio-interrupts {
+                /*
+                /delete-node/ base_imu;
+                /delete-node/ tablet_mode;
+                */
+                /delete-node/ usb_c0_bc12;
+        };
+};
+&thermistor_3V3_51K1_47K_4050B {
+        status = "okay";
+};
+/* adc0 overrides */
+&adc0 {
+        pinctrl-0 = <&adc0_chan0_gp45
+                     &adc0_chan1_gp44
+                     &adc0_chan2_gp43
+                     &adc0_chan3_gp42
+                     &adc0_chan8_gpf1>;
+};
