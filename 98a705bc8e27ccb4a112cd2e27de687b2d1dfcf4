@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6706bf34_92bca1da",
+        "filename": "zephyr/program/tanjiro/generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-27T09:47:23Z",
+      "side": 1,
+      "message": "I think the ACTIVE HIGH or LOW doesn\u0027t really matter, but if you want to change this, put this in tanjiro/arbitrage.dtsi.",
+      "range": {
+        "startLine": 207,
+        "startChar": 36,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "98a705bc8e27ccb4a112cd2e27de687b2d1dfcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
