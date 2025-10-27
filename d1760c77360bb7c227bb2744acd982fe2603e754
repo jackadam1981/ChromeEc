@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00669e13_e8c16d67",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-10-27T08:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75be3080_faae63b2",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "d1760c77360bb7c227bb2744acd982fe2603e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "822015e7_081468a4",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-10-23T19:26:24Z",
       "side": 1,
       "message": "Should be 45",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "d1760c77360bb7c227bb2744acd982fe2603e754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d75c042_099d6c1f",
+        "filename": "zephyr/dts/bindings/battery/aec,598855.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2025-10-27T08:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "822015e7_081468a4",
       "range": {
         "startLine": 49,
         "startChar": 13,
