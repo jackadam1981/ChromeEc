@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94784ebc_33556106",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-27T23:40:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure if you need this. You\u0027re initializing `frame_sizes_` to 0, so we can just check if it\u0027s 0, log, and return that, right?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
