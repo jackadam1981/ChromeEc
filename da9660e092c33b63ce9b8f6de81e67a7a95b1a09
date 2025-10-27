@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69a8df4d_1781d039",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-27T20:42:15Z",
+      "side": 1,
+      "message": "I modified it. I added the `is_initialized` method and `is_initalized_` member. If it is not initialized, the `get_frame_size` will log an error and return zero.",
+      "parentUuid": "9af4687d_0e30f192",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9071c647_25941ad9",
         "filename": "include/fpsensor/fpsensor_state.h",
         "patchSetId": 2
