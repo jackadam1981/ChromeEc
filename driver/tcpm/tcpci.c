@@ -121,6 +121,13 @@ static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Cache our Device Capabilities at init for later reference */
 static int dev_cap_1[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static timestamp_t tcpc_int_ts[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+void tcpci_tcpm_set_int_ts(int port, timestamp_t ts)
+{
+	tcpc_int_ts[port] = ts;
+}
+
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
@@ -941,6 +948,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 {
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4 * PD_HEADER_CNT(header);
+	timestamp_t tx_ts = get_time();
 
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
@@ -1009,7 +1017,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 	 * discarded and don't tell the TCPC to transmit.
 	 */
 	if (tcpm_has_pending_message(port)) {
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED);
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED, &tx_ts);
 		return EC_ERROR_BUSY;
 	}
 
@@ -1198,6 +1206,7 @@ void tcpci_tcpc_alert(int port)
 	uint32_t pd_event = 0;
 	int retval = 0;
 	bool bist_mode;
+	timestamp_t alert_ts = get_time();
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1234,7 +1243,12 @@ void tcpci_tcpc_alert(int port)
 		else
 			tx_status = TCPC_TX_COMPLETE_FAILED;
 
-		pd_transmit_complete(port, tx_status);
+		/*if (tcpc_int_ts[port].val != 0) {
+			alert_ts = tcpc_int_ts[port];
+			tcpc_int_ts[port].val = 0;
+		}*/
+
+		pd_transmit_complete(port, tx_status, &alert_ts);
 	}
 
 	tcpc_get_bist_test_mode(port, &bist_mode);

@@ -5,6 +5,7 @@
 
 #include "charge_state.h"
 #include "chipset.h"
+#include "driver/ppc/syv682x_public.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/tcpci.h"
 #include "gpio.h"
@@ -15,9 +16,13 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 
+#include <stdint.h>
+
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
+
+static bool sourcing_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ##args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ##args)
@@ -83,6 +88,7 @@ int board_set_active_charge_port(int port)
 		CPRINTSUSB("C%d: sink path enable failed.", port);
 		return EC_ERROR_UNKNOWN;
 	}
+	sourcing_vbus[port] = false;
 
 	return EC_SUCCESS;
 }
@@ -118,17 +124,29 @@ void reset_nct38xx_port(int port)
 	gpio_reset_port(ioex_port0);
 }
 
+static void notify_power_change(void)
+{
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+DECLARE_DEFERRED(notify_power_change);
+
 void pd_power_supply_reset(int port)
 {
+	if (!sourcing_vbus[port])
+		return;
+
 	/* Disable VBUS. */
 	ppc_vbus_source_enable(port, 0);
+	sourcing_vbus[port] = false;
 
 	/* Enable discharge if we were previously sourcing 5V */
 	if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE))
 		pd_set_vbus_discharge(port, 1);
 
-	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	/* Notify host of power info change. Defer call to avoid delaying Error
+	 * Recovery path.
+	 */
+	hook_call_deferred(&notify_power_change_data, 10 * USEC_PER_MSEC);
 }
 
 int pd_set_power_supply_ready(int port)
@@ -149,9 +167,12 @@ int pd_set_power_supply_ready(int port)
 	if (rv) {
 		return rv;
 	}
+	sourcing_vbus[port] = true;
 
-	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+	/* Notify host of power info change. Defer call to avoid delaying Error
+	 * Recovery path.
+	 */
+	hook_call_deferred(&notify_power_change_data, 10 * USEC_PER_MSEC);
 
 	return EC_SUCCESS;
 }
@@ -176,4 +197,61 @@ int board_tcpc_post_init(int port)
 	 * otherwise the alert# pin stays low indefinitely */
 	schedule_deferred_pd_interrupt(port);
 	return EC_SUCCESS;
+}
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int rv, vbus_voltage;
+
+	rv = tcpci_get_vbus_voltage(port, &vbus_voltage);
+	if (rv == EC_ERROR_NOT_POWERED) {
+		/* VBUS ADC not available, use digital presence from PPC */
+		switch (level) {
+		case VBUS_PRESENT:
+			return ppc_is_vbus_present(port);
+		case VBUS_SAFE0V:
+		case VBUS_REMOVED:
+			return !ppc_is_vbus_present(port);
+		default:
+			CPRINTFUSB("%s: unrecognized vbus_level: %d\n",
+				   __func__, level);
+			return false;
+		}
+	}
+
+	if (rv != EC_SUCCESS)
+		return false; /* Unhandled I2C or TCPC error */
+
+	switch (level) {
+	case VBUS_PRESENT:
+		return vbus_voltage >= PD_V_SAFE5V_MIN;
+
+	case VBUS_SAFE0V:
+		return vbus_voltage <= PD_V_SAFE0V_MAX;
+
+	case VBUS_REMOVED:
+		return vbus_voltage <= (PD_V_SINK_DISCONNECT_MAX - 100);
+
+	default:
+		CPRINTFUSB("%s: unrecognized vbus_level: %d\n", __func__,
+			   level);
+		return false;
+	}
+}
+
+void usb_interrupt(enum gpio_signal signal)
+{
+	int port;
+	timestamp_t interrupt_time = get_time();
+
+	if (signal == GPIO_SIGNAL(DT_NODELABEL(gpio_usb_c0_ppc_int_odl))) {
+		port = 0;
+	} else {
+		port = 1;
+	}
+
+	tcpci_tcpm_set_int_ts(port, interrupt_time);
+
+	/* Trigger polling of TCPC in USB-PD task */
+	schedule_deferred_pd_interrupt(port);
 }
