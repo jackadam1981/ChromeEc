@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e7117e_67607e0e",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-10-27T03:26:22Z",
+      "side": 1,
+      "message": "how about reading the BOARD ID once again post sysjump?",
+      "revId": "234f548c56f87bc747dddb06db505db304907e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
