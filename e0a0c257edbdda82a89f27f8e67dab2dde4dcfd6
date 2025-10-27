@@ -16,6 +16,24 @@
       "message": "@phoenixshen@chromium.org, for tanjiro, do we adapt the alt mode as skywalker ?",
       "revId": "e0a0c257edbdda82a89f27f8e67dab2dde4dcfd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e397da0a_08d8f4a2",
+        "filename": "zephyr/program/tanjiro/src/dp_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-10-27T08:31:22Z",
+      "side": 1,
+      "message": "No, Tanjiro/Sapphire uses Rauru\u0027s design.\nBUILD_ASSERT() macro here is not needed (kernel doesn\u0027t need to read this GPIO).",
+      "parentUuid": "340a5083_46ad2ec1",
+      "revId": "e0a0c257edbdda82a89f27f8e67dab2dde4dcfd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
