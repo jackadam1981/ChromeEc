@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177c5c22_6641c3d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-27T18:18:03Z",
+      "side": 1,
+      "message": "There is extensive unit tests available for the PDC subsystem.  This CL should also add a test that validates the SOURCE_PDO is sent before any device is attached.\n\nI recommend adding a new [testcase](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/testcase.yaml;l\u003d130;drc\u003d5d9cbb026326c5e3302354fd70d40690317601a9) that verifies the [LPM source PDO](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/src/pdc_policy/src_policy.c;l\u003d117;drc\u003d35bcf095e7cf3a6271f31b1844a7a0a3d30bffbb) is set after initialization.\n\nThe testcase should use `CONFIG_PLATFORM_EC_USB_PD_3A_PORTS\u003d1` and `CONFIG_PLATFORM_EC_USB_PD_3A_PORTS\u003d0`.\n\nThis test should fail without your fix, and pass with your fix.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 54
+      },
+      "revId": "0094c2c7f7061c51601da3143fc49771804eb53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8937d564_7f570ef4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3538,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-27T18:18:03Z",
+      "side": 1,
+      "message": "Use the same helper routines as the policy manager:\n```\n\trp \u003d pdc_power_mgmt_get_default_current_limit(config-\u003econnector_num);\n\tpdc_power_mgmt_set_current_limit(config-\u003econnector_num, rp);\n\n```",
+      "range": {
+        "startLine": 3538,
+        "startChar": 0,
+        "endLine": 3538,
+        "endChar": 53
+      },
+      "revId": "0094c2c7f7061c51601da3143fc49771804eb53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
