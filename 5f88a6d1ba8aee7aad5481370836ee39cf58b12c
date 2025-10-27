@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff66b2fb_ad56ec9a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-27T18:47:52Z",
+      "side": 1,
+      "message": "I don\u0027t mean just the `ectool` case. You also have to consider all the other cases that could call this, such as from `biod`.",
+      "parentUuid": "14d711ec_f70a2eb5",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 39
+      },
+      "revId": "5f88a6d1ba8aee7aad5481370836ee39cf58b12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c17b1691_fca08d04",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 14
