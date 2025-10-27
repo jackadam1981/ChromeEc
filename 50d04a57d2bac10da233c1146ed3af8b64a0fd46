@@ -70,6 +70,30 @@
       },
       "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484af659_84f3ff89",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-27T23:56:22Z",
+      "side": 1,
+      "message": "Correct. But since you\u0027ve initialized `frame_sizes` to all zero in the member initializer (`std::array\u003cuint32_t, FP_CAPTURE_TYPE_MAX\u003e frame_sizes_ \u003d {};`, `frame_sizes[N]`), it will be `0` if your other initialization code in the constructor doesn\u0027t run.\n\nhttps://www.stroustrup.com/C++11FAQ.html#member-init",
+      "parentUuid": "d4b821be_a30dda8f",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
