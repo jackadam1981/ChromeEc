@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcd6d0f_c857d794",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-27T18:06:57Z",
+      "side": 1,
+      "message": "Slightly better to use a `std::vector` here to manage the buffer if you\u0027re going to allocate on the heap.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "daab8e8ce9c3e08cdb7b16b4ff9ce88cc931321b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34b1c35_9d820434",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-27T18:06:57Z",
+      "side": 1,
+      "message": "nit: Use guard clause for early return\n\n\n\n```suggestion\n\t\tif (type \u003e\u003d frame_sizes.size()) {\n\t\t\tCPRINTF(\"ERROR: Invalid fp_capture_type %u received from EC, max \"\n\t\t\t\t\"supported is %zu.\",\n\t\t\t\ttype, frame_sizes_.size());\n\t\t\treturn false;\n\t\t}\n\t\t\n\n\t\tframe_sizes_[type] \u003d size;\n\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "daab8e8ce9c3e08cdb7b16b4ff9ce88cc931321b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
