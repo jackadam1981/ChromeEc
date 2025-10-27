@@ -7,6 +7,7 @@ import sys
 import time
 
 import ectool_commands as commands
+import ectool_oqc as oqc
 
 
 def cmd_get_version(args) -> int:
@@ -378,6 +379,13 @@ def cmd_reflash_rw(args) -> int:
     print("Done")
 
 
+def cmd_oqc(args) -> int:
+    if oqc.run_oqc(args.configuration_file) == 0:
+        print("OQC Pass")
+    else:
+        print("OQC Fail")
+
+
 def add_arg_file(sub_parser: argparse.ArgumentParser):
     sub_parser.add_argument("file", type=str)
 
@@ -478,6 +486,12 @@ def main():
 
     sub_reflash_rw = subcmd.add_parser("reflash_rw", help="Try reflashing rw")
     sub_reflash_rw.set_defaults(func=cmd_reflash_rw)
+
+    sub_oqc = subcmd.add_parser("oqc", help="Run OQC")
+    sub_oqc.set_defaults(func=cmd_oqc)
+    sub_oqc.add_argument(
+        "configuration_file", nargs="?", type=argparse.FileType("r")
+    )
 
     args = parser.parse_args()
 
