@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b047c9e4_64534a9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-10-27T05:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ab0c18_541b9107",
+      "revId": "234f548c56f87bc747dddb06db505db304907e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10e7117e_67607e0e",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-27T03:26:22Z",
       "side": 1,
       "message": "how about reading the BOARD ID once again post sysjump?",
+      "revId": "234f548c56f87bc747dddb06db505db304907e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32626196_6bd1779b",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-10-27T05:42:32Z",
+      "side": 1,
+      "message": "With this solution of preserving \u0026 restoring the id, we donot have to repeate reading of board ID again.",
+      "parentUuid": "10e7117e_67607e0e",
       "revId": "234f548c56f87bc747dddb06db505db304907e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
