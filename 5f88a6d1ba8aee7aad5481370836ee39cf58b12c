@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7721510_d74ce6b8",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-27T22:24:41Z",
+      "side": 1,
+      "message": "[FpFrameCommand](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_frame_command.h;l\u003d36?q\u003dplatform2%20FpFrameCommand#:~:text\u003d35-,36,-37) is constructed using an index. [fp_command_frame](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d468?q\u003dplatform%2Fec%20fp_command_template#:~:text\u003d467-,468,-469) is defined in `fpsensor.cc`. If the index is [FP_FRAME_INDEX_RAW_IMAGE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor.cc;l\u003d481?q\u003dplatform%2Fec%20fp_command_template#:~:text\u003d480-,481,-482) or 0, it uploads an image from the `fp_buffer` to the host. Otherwise, it uploads a finger template from the `fp_enc_buffer` to the host.\n\n[FpFrameCommand](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/biod/cros_fp_device.cc;drc\u003dc4ce9d715f5635d900f71eb55f2921d7c3d4f5a3;l\u003d554) is used in `biod` to upload finger templates.\n\nIn Fpinfo version 2, we did not change the size of the template. It is still one entry per fingerprint sensor. However, we changed the size of the sizes of the capture types.",
+      "parentUuid": "ff66b2fb_ad56ec9a",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 39
+      },
+      "revId": "5f88a6d1ba8aee7aad5481370836ee39cf58b12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c17b1691_fca08d04",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 14
