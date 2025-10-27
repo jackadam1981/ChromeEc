@@ -16,6 +16,24 @@
       "message": "Redundant blank line.",
       "revId": "4cdfd810cf112db123f061db4dfb6093f1339917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0487ed4b_f98e3d53",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-10-27T01:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb5dfd9_9c481a5b",
+      "revId": "4cdfd810cf112db123f061db4dfb6093f1339917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
