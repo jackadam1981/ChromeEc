@@ -22,6 +22,30 @@
       },
       "revId": "98a705bc8e27ccb4a112cd2e27de687b2d1dfcf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d0889b_d5ac446b",
+        "filename": "zephyr/program/tanjiro/generated.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-10-27T12:18:03Z",
+      "side": 1,
+      "message": "we can change the svdm_set_hpd_gpio define.  thanks",
+      "parentUuid": "6706bf34_92bca1da",
+      "range": {
+        "startLine": 207,
+        "startChar": 36,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "98a705bc8e27ccb4a112cd2e27de687b2d1dfcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
