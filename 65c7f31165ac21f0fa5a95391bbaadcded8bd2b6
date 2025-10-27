@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00d47c3_f1f08d0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-10-27T11:14:16Z",
+      "side": 1,
+      "message": "I created a ticket b:455492398 and attached failure log.",
+      "parentUuid": "db105dd2_545d2306",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "65c7f31165ac21f0fa5a95391bbaadcded8bd2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "660bd6fb_4404c77b",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-10-23T08:48:00Z",
       "side": 1,
       "message": "Assuming that the interrupt from all the three ports are connected to the same line. In what circumstance you are seeing the failure ?",
+      "revId": "65c7f31165ac21f0fa5a95391bbaadcded8bd2b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218604b1_0b094023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-10-27T11:14:16Z",
+      "side": 1,
+      "message": "Hi Ivan,\n\nI created a bug to discuss.",
+      "parentUuid": "660bd6fb_4404c77b",
       "revId": "65c7f31165ac21f0fa5a95391bbaadcded8bd2b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
