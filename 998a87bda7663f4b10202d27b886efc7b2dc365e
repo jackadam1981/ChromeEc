@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7003ef7a_1243095e",
+        "filename": "zephyr/program/ocelot/ojal/keyboard.dtsi",
+        "patchSetId": 27
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-27T19:23:55Z",
+      "side": 1,
+      "message": "324 Hz seems very slow. could you confirm this is a good value?",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "998a87bda7663f4b10202d27b886efc7b2dc365e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
