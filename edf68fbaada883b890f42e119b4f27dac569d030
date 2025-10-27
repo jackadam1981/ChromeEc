@@ -117,6 +117,30 @@
       },
       "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb914b6d_2c5d6c0e",
+        "filename": "zephyr/program/ocelot/ojal/fan.dtsi",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-27T15:49:39Z",
+      "side": 1,
+      "message": "Please open a bug for completing the thermal configuration later.",
+      "parentUuid": "4ab7b6fa_79e45053",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
