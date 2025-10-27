@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596e5fdb_2ab717cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-10-27T19:50:12Z",
+      "side": 1,
+      "message": "how about saving those 6 or 7 bits needed from the IO expander into\nFW_CONFIG? that\u0027ll avoid IO expander readiness issue altogether.\n\nwe have a feature request to do that\nhttps://issuetracker.google.com/426139268 AP firmware should use MODULE_ID CBI to define memory type\nbut no one has had time to follow up on it. this may be a good time to do so.",
+      "revId": "0573759a5f0a74a63e7b76c286525be02ad5dbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
