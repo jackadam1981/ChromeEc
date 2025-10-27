@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5ecac22_2131c9b1",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-27T18:07:41Z",
+      "side": 1,
+      "message": "let us say for `helipilot`, I do the below to make it fail:\n\n```\n\tglobal_context.fp_frame_size_cache \u003d\n\t\tFpFrameSizeCache::Create(sizeof(fp_buffer) -2);\n\tif (!global_context.fp_frame_size_cache) {\n\t\tCPRINTS(\"Fatal Error: Failed to create FpFrameSizeCache!\");\n\t\treturn;\n```\n\nI flash the firmware:\n\nthis is what I see in the `karis-rev3 /var/log # more cros_fp.log`\n```\n2025-10-27T17:54:11.297000Z [1.682611 FP_SENSOR_SEL: FPC]\n2025-10-27T17:54:11.297000Z [1.682651 FPC libfpbep.a fpc_bep_chromebook_2.0.0.016]\n2025-10-27T17:54:11.297000Z [1.682707 Build information - FPCBEP: sw11_fpc_bep_chromebook_2.0.0.016 (Oct  9 2019 13:59:40)]\n2025-10-27T17:54:11.311000Z [1.697270 HC 0x400b err 1]\n2025-10-27T17:54:11.313000Z [1.698939 HC 0x0008 err 3]\n2025-10-27T17:54:11.314000Z [1.699867 HC 0x008d err 1]\n2025-10-27T17:54:11.425000Z [1.810906 FPC1025 id 0x021b]\n2025-10-27T17:54:11.425000Z Error: Type 0 frame size (26260) exceeds max allowed (26258).[1.811124 Fatal Error: Failed to create FpFrameSizeCache!]\n2025-10-27T17:54:11.425000Z [1.811182 Task 2 (FPSENSOR) exited!]\n```\n\nI tried `fpinfo` command:\n\n```\nkaris-rev3 ~ # ectool --name\u003dcros_fp fpinfo          \nFingerprint sensor: vendor 20435046 product 9 model 21b version 1\nError flags: NONE\nDead pixels: UNKNOWN\nImage [0]: size 160x160 8 bpp\nImage [1]: size 160x160 8 bpp\nImage [2]: size 160x160 8 bpp\nImage [3]: size 160x160 8 bpp\nImage [4]: size 160x160 8 bpp\nImage [5]: size 160x160 8 bpp\nTemplates: version 4 size 5156 count 0/5 dirty bitmap 0\n```\n\nThen I tried to capture a `pattern0` and download it (the capture command times out):\n\n```\nkaris-rev3 ~ # ectool --name\u003dcros_fp waitevent FINGERPRINT 500 fpmode capture pattern0\nFP mode: (0x20000008) capture \nTimeout waiting for MKBP event\n```\n\nIf you try to download, you get a failure for invalid parameter:\n```\nkaris-rev3 ~ # ectool --name\u003dcros_fp fpframe pattern0\n2025-10-27T18:00:49.924056Z WARNING ectool: [../../../../../../../../mnt/host/source/src/platform2/libec/ec_command.h:206] cros_ec returned error\u003dINVALID_PARAM for cmd\u003d0x404\n2025-10-27T18:00:49.924476Z ERROR ectool: [../../../../../../../../mnt/host/source/src/platform2/libec/fingerprint/fp_frame_command.cc:42] FP_FRAME command failed @ 0x0\nFp Frame command failed with error: INVALID_PARAM\nFailed to get FP sensor frame\nkaris-rev3 ~ #\n```\n\nIf you flash the correct firmware, everything works fine:\n\n```\nkaris-rev3 ~ # ectool --name\u003dcros_fp waitevent FINGERPRINT 500 fpmode capture pattern0\nFP mode: (0x20000008) capture \nMKBP event 5 data: 00 00 00 80\n\nkaris-rev3 ~ # ectool --name\u003dcros_fp fpframe pattern0\nP2\n160 160\n255\n...\n```",
+      "parentUuid": "3c248ae0_1f06e128",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "da9660e092c33b63ce9b8f6de81e67a7a95b1a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9071c647_25941ad9",
         "filename": "include/fpsensor/fpsensor_state.h",
         "patchSetId": 2
