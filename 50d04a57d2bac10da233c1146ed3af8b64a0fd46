@@ -22,6 +22,30 @@
       },
       "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b821be_a30dda8f",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-27T23:53:09Z",
+      "side": 1,
+      "message": "I am using it in `FpFrameSizeCache::get_frame_size` to return `0` if `FpFrameSizeCache` is not initialized.",
+      "parentUuid": "94784ebc_33556106",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
