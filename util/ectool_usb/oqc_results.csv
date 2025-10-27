@@ -1,0 +1,7 @@
+Stage,Message,Result
+Serial number check,SN: 01484D5036394B3030,PASS
+VID and PID check,VID: 18D1 PID: 5401,PASS
+RO version check,RO: sanok-0.0.0-7b14f7c+,PASS
+RW version check,RW: sanok-0.0.0-7b14f7c+,PASS
+Sensor data check,"Wrong check sum (0xf5) at 0xb for [range(0, 11)]",FAIL
+Overall result,,FAIL

@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "offset": "0x07",
+      "operations": [
+        {
+          "equal": "0x03"
+        }
+      ],
+      "size": 1
+    },
+    {
+      "offset": "0x0A",
+      "operations": [
+        {
+          "and": "0x03"
+        },
+        {
+          "equal": "0x03"
+        }
+      ],
+      "size": 1
+    }
+  ],
+  "pid": "0x54017"
+}
