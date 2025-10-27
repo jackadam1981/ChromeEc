@@ -16,6 +16,24 @@
       "message": "The issue is mentioned in commit message. A description relevant to the state itself should be more proper here, and please align the comment lines.",
       "revId": "2eee97e21949dce88cf8323f942c77e5aa463356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1c6382_f588258e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-10-27T11:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "550943fe_545e8be8",
+      "revId": "2eee97e21949dce88cf8323f942c77e5aa463356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
