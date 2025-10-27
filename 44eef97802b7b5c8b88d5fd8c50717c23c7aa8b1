@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0431eab2_02839f0e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-27T23:53:17Z",
+      "side": 1,
+      "message": "This may be another place that we have to reset frame_size. Please review all of the code to see if there are other places.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 33
+      },
+      "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
