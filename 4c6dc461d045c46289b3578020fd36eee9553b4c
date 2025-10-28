@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c01055c_5e2f245b",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T19:30:07Z",
+      "side": 1,
+      "message": "If this is giving you false positives from other devices, you could also check the address against the TCPC addresses for the board/bus.",
+      "revId": "4c6dc461d045c46289b3578020fd36eee9553b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
