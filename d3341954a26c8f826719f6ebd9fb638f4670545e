@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "602b30bd_25ed8d9f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-10-28T09:41:19Z",
+      "side": 1,
+      "message": "I already tried that but the thing is after flashing the binary device will stuck in a restart loop. It will keep on rebooting it and not coming out of that loop.",
+      "parentUuid": "fd437b1e_0c29b1a1",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3b56811_96cc58fd",
