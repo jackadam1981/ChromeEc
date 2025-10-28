@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d194980c_5d174f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Adding Peter in case he has an idea about the proper way to do this for pujjoga. It seems like Eric already has a better understanding than I do about how this is set up.",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabf738e_43711a87",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Can you add a comment describing the theory of this implementation?",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d77ab9b_89d49f2b",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Nit: Use `tcpc_get_vbus_voltage`.",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87755aa_a6eedbce",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "When do you see this condition triggered?",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb26532d_e22ab88b",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Nit: The flow of this function is a little bit hard for me to follow. What if you did something like this?\n```\nbool ppc_vbus_present \u003d false;\nint tcpc_vbus_voltage \u003d 0;\nint tcpc_rv \u003d EC_SUCCESS;\n\n// Invalid argument\nif (level \u003e VBUS_REMOVED)\n  return false;\n\n// Get VBUS, whichever way works\ntcpc_rv \u003d tcpc_get_vbus_voltage(port, \u0026tcpc_vbus_voltage);\n// This check is redundant, but it might save an I2C read\nif (tcpc_rv \u003d\u003d EC_ERROR_NOT_POWERED) {\n  ppc_vbus_present \u003d ppc_is_vbus_present(port);\n}\n\nif (tcpc_rv \u003d\u003d EC_SUCCESS)\n  // Preferred TCPC case\n  switch (level) {\n    // Just check tcpc_vbus_voltage; no need for default\n  }\n} else if (tcpc_rv \u003d\u003d EC_ERROR_NOT_POWERED) {\n  // fallback PPC case\n  // Similar switch to what you have now, but no default\n} else {\n  // TCPC I2C error, if you don\u0027t want to fall back to PPC\n  return false;\n}\n```\nThis is just a little redundant, but I think it makes the thought process more obvious.",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a92470_19c595be",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Nit: Would it make sense to fall back to the PPC in this case as well?",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb12feee_157db8c8",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Can you add a comment here that this was experimentally determined?",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

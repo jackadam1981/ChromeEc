@@ -104,6 +104,24 @@
       "parentUuid": "57a85d73_45d25173",
       "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29f6055_56c40c0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T17:59:37Z",
+      "side": 1,
+      "message": "Experimentally, it seems like the default VBUS monitoring implementation detects vSinkDisconnect/vSafe0V at too high of a voltage. I think that just uses the PPC?\n\nSo it could be that the PPC vSafe0V threshold is a little off. Maybe less likely, it could be that we\u0027re using the TCPC threshold detection in EXTENDED_STATUS, and that\u0027s a little off compared to the TCPC ADC. Either way, I don\u0027t have a hypothesis about why that might be the case yet.",
+      "parentUuid": "4887fc20_2679cd2e",
+      "revId": "26a38ec3b26a2ed8a44a27b7d9415deba8f2321a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
