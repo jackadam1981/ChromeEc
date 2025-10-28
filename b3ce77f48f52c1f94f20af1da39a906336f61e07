@@ -22,6 +22,30 @@
       },
       "revId": "b3ce77f48f52c1f94f20af1da39a906336f61e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cde84a_14245946",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-28T23:23:30Z",
+      "side": 1,
+      "message": "At first glance, you should be able to move `pd_vbus_valid_for_bist` to `usb_common.c`. If that works, that\u0027s probably what you should do.",
+      "parentUuid": "be6a9667_376aa053",
+      "range": {
+        "startLine": 855,
+        "startChar": 5,
+        "endLine": 855,
+        "endChar": 27
+      },
+      "revId": "b3ce77f48f52c1f94f20af1da39a906336f61e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
