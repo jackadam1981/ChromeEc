@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16926dd4_2cfaf071",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-28T19:56:45Z",
+      "side": 1,
+      "message": "You could do that. I guess the question is whether we want to make a single bad type cause a failure for all types. That\u0027s probably fine so that we can make the bad type more obvious by failing fast.",
+      "parentUuid": "bf45eff6_aa787778",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "de819971670ee760a58809dd973c937ab390e7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "526085d5_bf08e908",
         "filename": "common/fpsensor/fpsensor_frame_size.cc",
         "patchSetId": 21
