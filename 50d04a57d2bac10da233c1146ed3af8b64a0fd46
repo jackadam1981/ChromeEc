@@ -118,6 +118,30 @@
       },
       "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd6ccf16_7986eb18",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-28T00:02:41Z",
+      "side": 1,
+      "message": "You should still keep the logging. Just check if it\u0027s 0 and then log. We\u0027ll never set the frame size to 0 for a valid capture type, right?",
+      "parentUuid": "6a8337c9_5160edff",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
