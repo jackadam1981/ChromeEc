@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a74a3d_92cec529",
+        "filename": "zephyr/drivers/cros_system/cros_system_et171.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3698372
+      },
+      "writtenOn": "2025-10-28T11:00:30Z",
+      "side": 1,
+      "message": "Don\u0027t forget to restore \u0027reset_vector\u0027 before reset.",
+      "revId": "3e7c289aaf9d1cbb4ec88316007c6da1e00ba110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e398144_ebad8ea4",
+        "filename": "zephyr/drivers/cros_system/cros_system_et171.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 3698372
+      },
+      "writtenOn": "2025-10-28T11:00:30Z",
+      "side": 1,
+      "message": "It is safer to write the reset bit only.",
+      "revId": "3e7c289aaf9d1cbb4ec88316007c6da1e00ba110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
