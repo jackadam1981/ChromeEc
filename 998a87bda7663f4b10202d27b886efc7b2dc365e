@@ -22,6 +22,30 @@
       },
       "revId": "998a87bda7663f4b10202d27b886efc7b2dc365e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f71ed3_cd5039f3",
+        "filename": "zephyr/program/ocelot/ojal/keyboard.dtsi",
+        "patchSetId": 27
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-10-28T07:53:04Z",
+      "side": 1,
+      "message": "Confirmed with the keypart team, Ojal does not need support the keyboard backlight function. Remove the kb_bl PWM function.",
+      "parentUuid": "7003ef7a_1243095e",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "998a87bda7663f4b10202d27b886efc7b2dc365e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
