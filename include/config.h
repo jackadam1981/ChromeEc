@@ -6495,7 +6495,8 @@
 	!defined(CONFIG_MKBP_USE_HOST_EVENT) &&          \
 	!defined(CONFIG_MKBP_USE_GPIO) &&                \
 	!defined(CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT) && \
-	!defined(CONFIG_MKBP_USE_HECI)
+	!defined(CONFIG_MKBP_USE_HECI) &&                \
+	!defined(CONFIG_MKBP_USE_USB)
 #error Please define one of CONFIG_MKBP_USE_* macro.
 #endif
 
