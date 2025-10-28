@@ -144,6 +144,19 @@ static int mkbp_set_host_active_via_heci(int active, uint32_t *timestamp)
 }
 #endif
 
+#ifdef CONFIG_MKBP_USE_USB
+int mkbp_set_host_active_via_usb(int active, uint32_t *timestamp)
+{
+	if (timestamp) {
+		*timestamp = __hw_clock_source_read();
+	}
+	if (active) {
+		ec_host_cmd_backend_usb_trigger_event();
+	}
+	return EC_SUCCESS;
+}
+#endif
+
 /*
  * This communicates to the AP whether an MKBP event is currently available
  * for processing.
@@ -166,6 +179,8 @@ static int mkbp_set_host_active(int active, uint32_t *timestamp)
 	return mkbp_set_host_active_via_gpio(active, timestamp);
 #elif defined(CONFIG_MKBP_USE_HECI)
 	return mkbp_set_host_active_via_heci(active, timestamp);
+#elif defined(CONFIG_MKBP_USE_USB)
+	return mkbp_set_host_active_via_usb(active, timestamp);
 #endif
 }
 
