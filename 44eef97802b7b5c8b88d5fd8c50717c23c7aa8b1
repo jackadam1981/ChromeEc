@@ -46,6 +46,30 @@
       },
       "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf06e1db_f158f9e5",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-28T00:18:34Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t re-run the fpsensor task. That is only run once when EC/Zephyr boots.",
+      "parentUuid": "a9587ecd_8c2e6e87",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 33
+      },
+      "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
