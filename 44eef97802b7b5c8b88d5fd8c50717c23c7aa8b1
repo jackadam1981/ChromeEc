@@ -94,6 +94,30 @@
       },
       "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47a7cba_e9bc8176",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-28T16:46:25Z",
+      "side": 1,
+      "message": "I don\u0027t remember the exact difference between `_fp_clear_context` and `fp_reset_context` offhand. It looks like it could go in `fp_reset_context`. What\u0027s the difference in terms of when the two are called from various places?",
+      "parentUuid": "c76b1d56_dd11d212",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 33
+      },
+      "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
