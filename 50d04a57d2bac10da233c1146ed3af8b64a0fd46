@@ -142,6 +142,30 @@
       },
       "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f5041f_eabbffed",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-28T00:33:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6ccf16_7986eb18",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
