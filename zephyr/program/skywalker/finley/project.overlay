@@ -44,12 +44,6 @@
 			gpios = <&gpioksol 2 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_LOW)>;
 			enum-name = "GPIO_KBD_KSO2";
 		};
-		gpio_edp_bl_en_3v3: edp_bl_en_3v3 {
-			gpios = <&gpiob 6 GPIO_INPUT>;
-		};
-		gpio_ec_tchscr_report_en: ec_tchscr_report_en {
-			gpios = <&gpioh 3 GPIO_OUTPUT>;
-		};
 	};
 
 	gpio-interrupts {
@@ -61,6 +55,7 @@
 	unused-pins {
 		compatible = "unused-gpios";
 		unused-gpios =
+			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 4 GPIO_INPUT_PULL_DOWN>,
