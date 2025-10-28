@@ -50,6 +50,46 @@ config BOARD_GROGU
 	  Build Google Grogu board. Grogu has MediaTek SoC
 	  with ITE IT82002 EC.
 
+<<<<<<< HEAD   (2f8582ebb88e0cbde842a46b0dceb4e97fa52aad Grogu: Initial zephyr config for grogu project)
+||||||| BASE   (a3aaec7fb6725ea324e7d8f499fcf9c6b66a8879 anakin: Limit input charge current)
+config BOARD_SKYWALKER_SINGLE_USB_TYPEC
+	bool "Boards have only one USB-C port"
+	default n
+	help
+	Enable board code for managing DP alt mode on
+	the board which has a single USB-C port.
+
+config BOARD_SKYWALKER_PMIC_RESETB_IRQ
+	bool "Forward PMIC_RESETB to EC_PWR_S3"
+	depends on $(dt_nodelabel_exists,gpio_en_pwr_s3)
+	default y
+	help
+	  Enable this to support the latest hardware design,
+	  which requires EC to forward PMIC_RESETB signal to EC_PWR_S3.
+
+=======
+config BOARD_DOOKU
+	bool "Google Dooku Board"
+	help
+	  Build Google Dooku board. Dooku has MediaTek SoC
+	  with ITE IT82002 EC.
+
+config BOARD_SKYWALKER_SINGLE_USB_TYPEC
+	bool "Boards have only one USB-C port"
+	default n
+	help
+	Enable board code for managing DP alt mode on
+	the board which has a single USB-C port.
+
+config BOARD_SKYWALKER_PMIC_RESETB_IRQ
+	bool "Forward PMIC_RESETB to EC_PWR_S3"
+	depends on $(dt_nodelabel_exists,gpio_en_pwr_s3)
+	default y
+	help
+	  Enable this to support the latest hardware design,
+	  which requires EC to forward PMIC_RESETB signal to EC_PWR_S3.
+
+>>>>>>> CHANGE (7ca45b21e3162865d76dddde9616de997dcc8e0d skywalker: Initial zephyr config for dooku)
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"
