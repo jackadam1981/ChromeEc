@@ -118,6 +118,30 @@
       },
       "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae26271b_7ee4f6a4",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-28T16:54:46Z",
+      "side": 1,
+      "message": "since this is related to reading from `fp_buffer`, it should go where we clear `fp_buffer`. This was my logic",
+      "parentUuid": "d47a7cba_e9bc8176",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 33
+      },
+      "revId": "44eef97802b7b5c8b88d5fd8c50717c23c7aa8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
