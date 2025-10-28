@@ -13,8 +13,11 @@
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
+#include <zephyr/logging/log.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/sys/atomic.h>
+
+LOG_MODULE_REGISTER(task_shim, LOG_LEVEL_INF);
 
 #include <soc.h>
 
@@ -166,9 +169,25 @@ k_tid_t task_id_to_thread_id(task_id_t task_id)
 	return NULL;
 }
 
+#define SAFE_THREAD_NAME(tid)                                           \
+	((tid) && k_thread_name_get((tid)) ? k_thread_name_get((tid)) : \
+					     "(unnamed)")
+
+__maybe_unused void print_threads(const struct k_thread *thread,
+				  void *user_data)
+{
+	ARG_UNUSED(user_data);
+
+	k_tid_t tid = (k_tid_t)thread;
+
+	LOG_ERR("$$$  - Thread %p -> %c'%s'", thread,
+		(tid == k_current_get()) ? '*' : ' ', SAFE_THREAD_NAME(tid));
+}
+
 task_id_t thread_id_to_task_id(k_tid_t thread_id)
 {
 	if (thread_id == NULL) {
+		LOG_ERR("$$$ thread_id is NULL");
 		__ASSERT(false, "Invalid thread_id");
 		return TASK_ID_INVALID;
 	}
@@ -212,6 +231,28 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 	if (thread_id->base.thread_state & _THREAD_DUMMY) {
 		return TASK_ID_INVALID;
 	}
+
+	LOG_ERR("$$$ Current TID = %p (%s), state = %x", k_current_get(),
+		SAFE_THREAD_NAME(k_current_get()),
+		thread_id->base.thread_state);
+
+	LOG_ERR("$$$ Failed to map thread to task: thread_id=%p, name=%s",
+		thread_id, SAFE_THREAD_NAME(thread_id));
+
+#ifdef CONFIG_THREAD_MONITOR
+	LOG_ERR("$$$ Dump all thread info:");
+	k_thread_foreach_unlocked(print_threads, NULL);
+	LOG_ERR("$$$ End of thread info list");
+#else
+	LOG_ERR("$$$ No thread monitor");
+#endif
+
+	LOG_ERR("$$$ Dump CrOS task array (len %u)", ARRAY_SIZE(task_to_k_tid));
+	for (int i = 0; i < ARRAY_SIZE(task_to_k_tid); i++) {
+		LOG_ERR("$$$  - i=%d, k_tid_t=%p, name=%s", i, task_to_k_tid[i],
+			SAFE_THREAD_NAME(task_to_k_tid[i]));
+	}
+	LOG_ERR("$$$ End of CrOS task array");
 
 #ifndef CONFIG_ZTEST
 	__ASSERT(false, "Failed to map thread to task");
