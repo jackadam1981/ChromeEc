@@ -17,6 +17,8 @@
 #include "task.h"
 #include "util.h"
 
+#include <zephyr/kernel.h>
+
 #ifdef CONFIG_ZEPHYR
 #include "i2c/i2c.h"
 
@@ -31,6 +33,9 @@
 #ifndef I2C_CONTROLLER_COUNT
 #define I2C_CONTROLLER_COUNT I2C_PORT_COUNT
 #endif
+
+#define TCPC_REG_COMMAND 0x23
+#define TCPC_REG_COMMAND_I2CIDLE 0xFF
 
 static mutex_t port_mutex[I2C_CONTROLLER_COUNT + I2C_BITBANG_PORT_COUNT];
 
@@ -509,7 +514,8 @@ int i2c_write8(const int port, const uint16_t addr_flags, int offset, int data)
 
 	buf[0] = offset;
 	buf[1] = data;
-
+	if (offset == TCPC_REG_COMMAND && data == TCPC_REG_COMMAND_I2CIDLE)
+		printk("i2c_write8\n");
 	return platform_ec_i2c_write(port, addr_flags, buf, sizeof(buf));
 }
 

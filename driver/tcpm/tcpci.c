@@ -26,6 +26,8 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
+#include <zephyr/kernel.h>
+
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ##args)
 
@@ -564,7 +566,9 @@ int tcpci_tcpc_drp_toggle(int port)
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpci_enter_low_power_mode(int port)
 {
+	printk("tcpci_enter_low_power_mode Entry\n");
 	return tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	printk("tcpci_enter_low_power_mode Exit\n");
 }
 
 void tcpci_wake_low_power_mode(int port)
@@ -1636,11 +1640,13 @@ int tcpci_tcpm_mux_init(const struct usb_mux *me)
 
 int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *me)
 {
+	printk("tcpci_tcpm_mux_enter_low_power entry\n");
 	/* If this MUX is also the TCPC, then skip low power */
 	if (!(me->flags & USB_MUX_FLAG_NOT_TCPC))
 		return EC_SUCCESS;
 
 	return mux_write(me, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	printk("tcpci_tcpm_mux_enter_low_power exit\n");
 }
 
 int tcpci_tcpm_mux_set(const struct usb_mux *me, mux_state_t mux_state,

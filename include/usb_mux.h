@@ -14,6 +14,8 @@
 #include "usb_charge.h"
 #include "usb_pd.h"
 
+#include <zephyr/kernel.h>
+
 /*
  * If compiling with Zephyr, include the USB_MUX_FLAG_ definitions that are
  * shared with device tree
@@ -248,6 +250,8 @@ void virtual_hpd_update(const struct usb_mux *me, mux_state_t hpd_state,
 #ifdef CONFIG_USB_PD_TCPM_MUX
 static inline int mux_write(const struct usb_mux *me, int reg, int val)
 {
+	if (reg == TCPC_REG_COMMAND && val == TCPC_REG_COMMAND_I2CIDLE)
+		printk("mux_write I2CIDLE\n");
 	return me->flags & USB_MUX_FLAG_NOT_TCPC ?
 		       i2c_write8(me->i2c_port, me->i2c_addr_flags, reg, val) :
 		       tcpc_write(me->usb_port, reg, val);

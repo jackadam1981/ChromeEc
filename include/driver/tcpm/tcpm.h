@@ -14,6 +14,11 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
+#include <zephyr/kernel.h>
+
+#define TCPC_REG_COMMAND 0x23
+#define TCPC_REG_COMMAND_I2CIDLE 0xFF
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,6 +35,8 @@ extern "C" {
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 static inline int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
+	if (reg == TCPC_REG_COMMAND && val == TCPC_REG_COMMAND_I2CIDLE)
+		printk("tcpc_addr_write I2CIDLE\n");
 	return i2c_write8(tcpc_config[port].i2c_info.port, i2c_addr, reg, val);
 }
 
@@ -140,6 +147,8 @@ int tcpc_update16(int port, int reg, uint16_t mask,
 
 static inline int tcpc_write(int port, int reg, int val)
 {
+	if (reg == TCPC_REG_COMMAND && val == TCPC_REG_COMMAND_I2CIDLE)
+		printk("tcpc_write I2CIDLE\n");
 	return tcpc_addr_write(port, tcpc_config[port].i2c_info.addr_flags, reg,
 			       val);
 }
