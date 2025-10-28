@@ -16,6 +16,24 @@
       "message": "how about saving those 6 or 7 bits needed from the IO expander into\nFW_CONFIG? that\u0027ll avoid IO expander readiness issue altogether.\n\nwe have a feature request to do that\nhttps://issuetracker.google.com/426139268 AP firmware should use MODULE_ID CBI to define memory type\nbut no one has had time to follow up on it. this may be a good time to do so.",
       "revId": "0573759a5f0a74a63e7b76c286525be02ad5dbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbee2ddb_809c7787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-10-28T14:57:20Z",
+      "side": 1,
+      "message": "Hi Caveh,\n\nThanks for sharing the crossbug.\n\nI can see that Model_id tag as proposed in the crossbug is still listed in the board as below:\n2 [7689.904724 CBI Reading board info]\n25-10-28 19:42:26.888 CBI_VERSION: 0x0000\n25-10-28 19:42:26.890 TOTAL_SIZE: 37\n25-10-28 19:42:26.892 BOARD_VERSION: (Error 1)\n25-10-28 19:42:26.895 OEM_ID: (Error 1)\n25-10-28 19:42:26.898 MODEL_ID: (Error 1)\n25-10-28 19:42:26.901 SKU_ID: 2 (0x2)\n25-10-28 19:42:26.903 FW_CONFIG: 78605 (0x1330d)\n25-10-28 19:42:26.907 PCB_SUPPLIER: (Error 1)\n25-10-28 19:42:26.909 SSFC: (Error 1)----\n\nSo,in this case, I believe, we need to reuse cbi_set_board_info function \u0026 perform writing to the corresponding tag - 5 - MODEL-ID  based on the 1st time board id value read, which becomes a one time activity?\nAlso, for further reading it , we need to introduce a function to read 5th tag as well.\n\nAlso, system_get_board_version() must also retrive the board id value by reading MODULE_ID.\nBut , i think these changes will impact, lot of boards, as system_get_board_version() is getting called for multiple boards, and we have to be careful. May be we need to change only for PTL \u0026 WCL RVP specific as of now, where rvp_board_id variable can get replaced with reading from CBI 5th tag .\n\n\nInfact originally, issue of board id getting lost is faced for warm reboot test case, when ec soft sync is enabled, blocking validation test cases. So, I was also wondering for unblocking the specific test case with cpfe builds, how about merging this CL for time being and shall I further work on above change ?",
+      "parentUuid": "596e5fdb_2ab717cc",
+      "revId": "0573759a5f0a74a63e7b76c286525be02ad5dbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
