@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cd9dd5_707365d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-28T15:00:18Z",
+      "side": 1,
+      "message": "Add one to know why it is needed.",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "696e1bc9_0bc64887",
@@ -31,6 +48,41 @@
       "writtenOn": "2025-10-28T02:46:26Z",
       "side": 1,
       "message": "@gwendal@chromium.org\n\nHi Gwendal,\n\nI saw that line 1065 above says: \"Guarantee some minimum delay to allow other lower priority tasks to run\".\nIf there is a pending external interrupt here, the MOTIONSENSE task will wake up immediately after task_wait_event() is called; the minimum delay won\u0027t be guaranteed.\nCan we call usleep() here to guarantee the minimum delay before calling task_wait_event()?",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97a53c4_f6819cd2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-28T15:00:18Z",
+      "side": 1,
+      "message": "Indeed an interrupt will wake up the thread. The assumption is the processing of the event is less than the output data rate (ODR). Adding a sleep won\u0027t help, it will worsen the backlog of events from the sensor to process. If the EC can not handle the flow of events coming from the sensors, we need to lower the maximum ODR.",
+      "parentUuid": "f5a7c554_abb39585",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6057ecb7_0bf4bd19",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-28T15:00:18Z",
+      "side": 1,
+      "message": "should be an integer value.",
       "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
