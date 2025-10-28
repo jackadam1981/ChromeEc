@@ -94,6 +94,30 @@
       },
       "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8337c9_5160edff",
+        "filename": "common/fpsensor/fpsensor_frame_size.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-28T00:01:39Z",
+      "side": 1,
+      "message": "the only reason I may keep it is for debugging purpose. If the failure came from a size of 0, it is now printing log the the FpFrameSize was not initialized. Let me know if you believe this is important to keep\n\n```\nuint32_t\nFpFrameSizeCache::get_frame_size(enum fp_capture_type capture_type) const\n{\n\tif (!is_initialized_) {\n\t\tCPRINTF(\"Error: FpFrameSizeCache is uninitialized, returning size 0.\");\n\t\treturn 0;\n\t}\n```",
+      "parentUuid": "484af659_84f3ff89",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "50d04a57d2bac10da233c1146ed3af8b64a0fd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
