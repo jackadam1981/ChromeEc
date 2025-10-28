@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "909fac9f_2aeb2909",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-10-28T08:40:57Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "89e810f3_f13872c7",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd437b1e_0c29b1a1",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -82,6 +100,24 @@
       "writtenOn": "2025-10-24T22:04:38Z",
       "side": 1,
       "message": "You have two of these definitions. How is this building?",
+      "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0df735_504b796e",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-10-28T08:40:57Z",
+      "side": 1,
+      "message": "I think while cleanup I didn\u0027t noticed it.",
+      "parentUuid": "c3b56811_96cc58fd",
       "revId": "d3341954a26c8f826719f6ebd9fb638f4670545e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
