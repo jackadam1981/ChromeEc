@@ -16,6 +16,23 @@
       "message": "Tested on Veluza.",
       "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a7c554_abb39585",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-10-28T02:46:26Z",
+      "side": 1,
+      "message": "@gwendal@chromium.org\n\nHi Gwendal,\n\nI saw that line 1065 above says: \"Guarantee some minimum delay to allow other lower priority tasks to run\".\nIf there is a pending external interrupt here, the MOTIONSENSE task will wake up immediately after task_wait_event() is called; the minimum delay won\u0027t be guaranteed.\nCan we call usleep() here to guarantee the minimum delay before calling task_wait_event()?",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
