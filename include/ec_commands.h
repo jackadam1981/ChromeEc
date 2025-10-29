@@ -5818,6 +5818,7 @@ enum ec_reboot_cmd {
 	EC_REBOOT_HIBERNATE_CLEAR_AP_OFF = 7,
 	EC_REBOOT_COLD_AP_OFF = 8, /* Cold-reboot and don't boot AP */
 	EC_REBOOT_NO_OP = 9, /* Do nothing but apply the flags. */
+	EC_REBOOT_AP_WDT = 10, /*  */
 };
 
 /* Flags for ec_params_reboot_ec.reboot_flags */

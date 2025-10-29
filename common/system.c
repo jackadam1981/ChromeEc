@@ -1117,6 +1117,9 @@ static int handle_pending_reboot(struct ec_params_reboot_ec *p)
 		system_hibernate(hibernate_seconds, hibernate_microseconds);
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
+	case EC_REBOOT_AP_WDT:
+		chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
+		return EC_SUCCESS;
 	default:
 		return EC_ERROR_INVAL;
 	}

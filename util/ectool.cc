@@ -57,7 +57,6 @@
 #include <libec/mkbp_event.h>
 #include <libec/rand_num_command.h>
 #include <libec/versions_command.h>
-#include <map>
 #include <memory>
 #include <optional>
 #include <string>
@@ -1005,6 +1004,8 @@ int cmd_reboot_ec(int argc, char *argv[])
 		p.cmd = EC_REBOOT_DISABLE_JUMP;
 	else if (!strcmp(argv[1], "hibernate"))
 		p.cmd = EC_REBOOT_HIBERNATE;
+	else if (!strcmp(argv[1],"ap-wdt")
+		p.cmd = EC_REBOOT_AP_WDT;
 	else if (!strcmp(argv[1], "hibernate-clear-ap-off")) {
 		p.cmd = EC_REBOOT_HIBERNATE_CLEAR_AP_OFF;
 		fprintf(stderr, "hibernate-clear-ap-off is deprecated.\n"
@@ -1914,8 +1915,7 @@ int cmd_apreset(int argc, char *argv[])
  */
 static std::unique_ptr<std::vector<uint8_t> >
 fp_download_frame(struct SensorImage &sensor_image,
-		  struct TemplateInfo &template_info, int index,
-		  uint8_t capture_type = FP_CAPTURE_VENDOR_FORMAT)
+		  struct TemplateInfo &template_info, int index)
 {
 	ec::EcCommandFactory ec_command_factory;
 	ec::EcCommandVersionSupported ec_cmd_ver_supported;
@@ -1932,10 +1932,19 @@ fp_download_frame(struct SensorImage &sensor_image,
 	if (images.size() == 1) {
 		sensor_image = images[0];
 	} else {
+		ec::FpModeCommand fp_mode_command(
+			(ec::FpMode(ec::FpMode::Mode::kDontChange)));
+		if (!fp_mode_command.Run(comm_get_fd())) {
+			fprintf(stderr, "Failed to Run FpModeCommand.\n");
+			return nullptr;
+		}
+
 		bool found = false;
+		uint8_t current_fp_capture_type =
+			FP_CAPTURE_TYPE(fp_mode_command.Mode().RawVal());
 		for (const auto &image : fp_info_command->sensor_image())
 			if (image.fp_capture_type.has_value() &&
-			    *image.fp_capture_type == capture_type) {
+			    *image.fp_capture_type == current_fp_capture_type) {
 				sensor_image = image;
 				found = true;
 				break;
@@ -1947,10 +1956,6 @@ fp_download_frame(struct SensorImage &sensor_image,
 		}
 	}
 
-	/*
-	 * TODO(b/450381837): Remove raw/simple parameters and use fp_info
-	 * version 2 for frame size.
-	 */
 	size_t size;
 	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
 		size = (size_t)sensor_image.width * sensor_image.bpp / 8 *
@@ -2219,48 +2224,10 @@ int cmd_fp_frame(int argc, char *argv[])
 {
 	struct SensorImage sensor_image{};
 	struct TemplateInfo template_info{};
-
-	int idx = FP_FRAME_INDEX_SIMPLE_IMAGE;
-	uint8_t capture_type = FP_CAPTURE_VENDOR_FORMAT;
-	bool capture_type_arg_seen = false;
-
-	static const std::map<std::string, uint8_t> capture_type_map = {
-		{ "vendor", FP_CAPTURE_VENDOR_FORMAT },
-		{ "pattern0", FP_CAPTURE_PATTERN0 },
-		{ "pattern1", FP_CAPTURE_PATTERN1 },
-		{ "qual", FP_CAPTURE_QUALITY_TEST },
-		{ "test_reset", FP_CAPTURE_RESET_TEST },
-		{ "test_defect_pixel", FP_CAPTURE_DEFECT_PXL_TEST },
-		{ "test_abnormal", FP_CAPTURE_ABNORMAL_TEST },
-		{ "test_noise", FP_CAPTURE_NOISE_TEST }
-	};
-
-	for (int i = 1; i < argc; i++) {
-		std::string arg = argv[i];
-		if (arg == "raw") {
-			idx = FP_FRAME_INDEX_RAW_IMAGE;
-		} else {
-			auto it = capture_type_map.find(arg);
-			if (it != capture_type_map.end()) {
-				if (capture_type_arg_seen) {
-					fprintf(stderr,
-						"Error: Multiple capture types specified ('%s'). Please specify"
-						" only one.\n ",
-						arg.c_str());
-					return -1;
-				}
-				capture_type = it->second;
-				capture_type_arg_seen = true;
-			} else {
-				fprintf(stderr,
-					"Warning: Ignoring unknown argument '%s'\n",
-					arg.c_str());
-			}
-		}
-	}
-
-	auto fp_frame = fp_download_frame(sensor_image, template_info, idx,
-					  capture_type);
+	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
+			  FP_FRAME_INDEX_RAW_IMAGE :
+			  FP_FRAME_INDEX_SIMPLE_IMAGE;
+	auto fp_frame = fp_download_frame(sensor_image, template_info, idx);
 	if (!fp_frame) {
 		fprintf(stderr, "Failed to get FP sensor frame\n");
 		return -1;
@@ -13033,7 +13000,7 @@ const struct command commands[] = {
 	  "\tconfigurable number of seconds the next time we enter the G3\n"
 	  "\tpower state." },
 	{ "reboot_ec", cmd_reboot_ec,
-	  "<RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump|cold-ap-off>\n"
+	  "<RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump|cold-ap-off|ap-wdt>\n"
 	  "\t[at-shutdown|switch-slot|clear-ap-idle]\n"
 	  "\tReboot EC to RO or RW" },
 	{ "rgbkbd", cmd_rgbkbd,
