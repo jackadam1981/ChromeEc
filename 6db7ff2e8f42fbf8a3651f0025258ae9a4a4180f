@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fba41a_cd0c15e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-10-29T01:57:26Z",
+      "side": 1,
+      "message": "Since CL:7039981 is merged, this can be abandoned.",
+      "parentUuid": "96088a67_29db21fa",
+      "revId": "6db7ff2e8f42fbf8a3651f0025258ae9a4a4180f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e24a31d_84dcf2d6",
