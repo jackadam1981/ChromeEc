@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ffc827_9022b684",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T16:23:10Z",
+      "side": 1,
+      "message": "My bad as well. I should have paid more attention to this. I\u0027ll try `CONFIG_ARCH_IRQ_VECTOR_TABLE_ALIGN`",
+      "parentUuid": "77c6aca3_02f4412c",
+      "revId": "3c4697e65755e45c751e30d1641da84d45c579b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59521bfd_03ae6f6a",
