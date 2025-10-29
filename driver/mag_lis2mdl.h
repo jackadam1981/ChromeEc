@@ -77,7 +77,7 @@ struct lis2mdl_private_data {
 
 #define LIS2MDL_ODR_MIN_VAL 10000
 #define LIS2MDL_ODR_MAX_VAL 50000
-#if (CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ <= LIS2MDL_ODR_MAX_VAL)
+#if (CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ < LIS2MDL_ODR_MAX_VAL)
 #error "EC too slow for magnetometer"
 #endif
 
