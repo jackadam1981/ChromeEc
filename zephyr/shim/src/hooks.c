@@ -103,26 +103,27 @@ BUILD_ASSERT(
 
 static int zephyr_shim_setup_hooks(void)
 {
-	int rv;
+	int rv = 0;
 
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_HOST_INTERFACE_HECI)) {
 #ifdef CONFIG_PLATFORM_EC_HOOK_SECOND
-	/* Startup the HOOK_SECOND recurring work */
-	rv = k_work_reschedule(&hook_seconds_work_data, K_SECONDS(1));
-	/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
-	if (rv < 0)
-		work_queue_error(&hook_seconds_work_data, rv);
-	/* LCOV_EXCL_STOP */
+		/* Startup the HOOK_SECOND recurring work */
+		rv = k_work_reschedule(&hook_seconds_work_data, K_SECONDS(1));
+		/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
+		if (rv < 0)
+			work_queue_error(&hook_seconds_work_data, rv);
+		/* LCOV_EXCL_STOP */
 #endif /* CONFIG_PLATFORM_EC_HOOK_SECOND */
 
-	/* Startup the HOOK_TICK recurring work */
-	rv = k_work_reschedule(&hook_ticks_work_data,
+		/* Startup the HOOK_TICK recurring work */
+		rv = k_work_reschedule(&hook_ticks_work_data,
 			       K_USEC(HOOK_TICK_INTERVAL));
-	/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
-	if (rv < 0)
-		work_queue_error(&hook_ticks_work_data, rv);
-	/* LCOV_EXCL_STOP */
-
-	return 0;
+		/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
+		if (rv < 0)
+			work_queue_error(&hook_ticks_work_data, rv);
+		/* LCOV_EXCL_STOP */
+	}
+	return rv;
 }
 
 SYS_INIT(zephyr_shim_setup_hooks, APPLICATION, 1);
