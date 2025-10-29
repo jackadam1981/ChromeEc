@@ -13,10 +13,8 @@
 #include "../ite_usbc.dtsi"
 #include "../power_signal.dtsi"
 #include "../usba.dtsi"
-#include "cbi.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
-#include "motionsense.dtsi"
 
 / {
 	aliases {
@@ -57,6 +55,9 @@
 	named-gpios {
 		/delete-node/ ec_kso_02_inv;
 		/delete-node/ en_pp5000_z1;
+		/delete-node/ imu_int_ec_l;
+		/delete-node/ lid_360_l;
+		/delete-node/ lid_accel_int_ec_l;
 
 		gpio_ec_kso_02: ec_kso_02 {
 			gpios = <&gpioksol 2 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_LOW)>;
@@ -65,9 +66,9 @@
 	};
 
 	gpio-interrupts {
-		int_imu: ec-imu {
-			handler = "bma4xx_interrupt";
-		};
+		/delete-node/ lid-accel;
+		/delete-node/ ec-imu;
+		/delete-node/ tablet_mode;
 	};
 
 	unused-pins {
