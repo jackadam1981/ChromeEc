@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3efae5c0_07392c35",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "One more time - this approach is not acceptable, the drivers uses memory allocated somewhere else. Can this be memory allocated and freed during by driver in runtime? Or it has to be always assigned to the driver.",
+      "parentUuid": "961aeec9_d2b6af54",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a4789a_70e26a4a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
         "patchSetId": 3
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Yes, all functions in this file are referenced by the sensor lib and fingerprint_ft9865.c",
       "parentUuid": "f7057de6_274b7a57",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbd1f48_bee8fb1e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "I should rather ask question - are here functions not referenced by the private lib?",
+      "parentUuid": "0b95020a_ebbea623",
       "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

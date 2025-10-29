@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a7c4a7_6f927067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "Fix spellchecker errors",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a85c0d_7af6155b",
+        "filename": "zephyr/drivers/fingerprint/CMakeLists.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "Please use separate config for PAL.",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbe7f0a_dfbd5cca",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07d6577_31d178e4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89025a06_bd471083",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "`1` not needed",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e12e96_c39371c3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "I believe you should be able to just use NULL here. It has to be handled in the SPI driver. It is describer [here](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/spi.h#L620).",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd3ab39_a553297c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "Same here. It adds unnecessary memory usage on stack.",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcac6b9_ab5b930b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "2025",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac65af2_3b718d9d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "Please add documentation of the functions.",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f539ab03_8a9405ae",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_private.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-29T12:39:02Z",
+      "side": 1,
+      "message": "Please use English only.",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
