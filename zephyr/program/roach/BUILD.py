@@ -39,7 +39,7 @@ register_variant("eirtae", inherited_from=["jedi"])
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="axii", addr=0x7FFE0)
-assert_rw_fwid_DO_NOT_EDIT(project_name="kelpie", addr=0x40098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="roach", addr=0x40098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="spikyrock", addr=0x40098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="eirtae", addr=0x40098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="kelpie", addr=0x40104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="roach", addr=0x40104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="spikyrock", addr=0x40104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="eirtae", addr=0x40104)

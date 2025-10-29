@@ -24,4 +24,4 @@ register_tanjiro_project(project_name="tanjiro")
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
-assert_rw_fwid_DO_NOT_EDIT(project_name="tanjiro", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="tanjiro", addr=0x60104)

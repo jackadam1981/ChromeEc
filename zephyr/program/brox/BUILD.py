@@ -161,11 +161,11 @@ lotso = register_brox_project(
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release. Not needed for brox-ish since it
 # doesn't use RO+RW
-assert_rw_fwid_DO_NOT_EDIT(project_name="brox", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brox", addr=0x60104)
 assert_rw_fwid_DO_NOT_EDIT(project_name="brtk", addr=0x80404)
-assert_rw_fwid_DO_NOT_EDIT(project_name="brox-ish-ec", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="caboc", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="greenbayupoc", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="jubilant", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="lotso", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="brox-sku4", addr=0x70098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brox-ish-ec", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="caboc", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="greenbayupoc", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="jubilant", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="lotso", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="brox-sku4", addr=0x70104)

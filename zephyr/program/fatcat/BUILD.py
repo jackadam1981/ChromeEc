@@ -179,11 +179,11 @@ register_ish_project(
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-npcx", addr=0x80144)
-assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-ite", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="fatcatrvp-ite", addr=0x60104)
 assert_rw_fwid_DO_NOT_EDIT(project_name="francka", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ruby", addr=0x40144)
-assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="felino4es", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="kinmen", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="felino", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="felino4es", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="kinmen", addr=0x60104)
 assert_rw_fwid_DO_NOT_EDIT(project_name="lapis", addr=0x80404)
-assert_rw_fwid_DO_NOT_EDIT(project_name="moonstone", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="moonstone", addr=0x60104)

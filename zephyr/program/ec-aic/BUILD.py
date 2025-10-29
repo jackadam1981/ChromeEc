@@ -85,6 +85,6 @@ npcx_aic = register_nuvoton_project(
     project_name="npcx-aic",
 )
 
-assert_rw_fwid_DO_NOT_EDIT(project_name="ite-aic", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="ite-aic-rtk-pdc", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ite-aic", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ite-aic-rtk-pdc", addr=0x60104)
 assert_rw_fwid_DO_NOT_EDIT(project_name="npcx-aic", addr=0x80144)

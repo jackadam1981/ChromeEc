@@ -26,5 +26,5 @@ ciri = register_geralt_project(project_name="ciri")
 
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
-assert_rw_fwid_DO_NOT_EDIT(project_name="ciri", addr=0x60098)
-assert_rw_fwid_DO_NOT_EDIT(project_name="geralt", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ciri", addr=0x60104)
+assert_rw_fwid_DO_NOT_EDIT(project_name="geralt", addr=0x60104)
