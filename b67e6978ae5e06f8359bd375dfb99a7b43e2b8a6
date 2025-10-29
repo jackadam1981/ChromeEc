@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dad5163_1dbaf14c",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-10-29T00:00:35Z",
+      "side": 1,
+      "message": "This value isn\u0027t used until the else block below; why do the PPC read here rather than only once it\u0027s actually needed?",
+      "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af86ddd2_7029b330",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-10-29T00:00:35Z",
+      "side": 1,
+      "message": "I\u0027m suspicious that this offset varies between devices, since the TCPC datasheet specifies 1% accuracy for the ADC: 100 mV is less than 1% of the full-scale VBUS voltage (20V) so there\u0027s no guarantee of this being accurate.",
+      "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
