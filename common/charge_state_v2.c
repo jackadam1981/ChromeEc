@@ -1702,6 +1702,10 @@ static int get_desired_input_current(enum battery_present batt_present,
 /* Main loop */
 void charger_task(void *u)
 {
+	static int display_sleep_usec = 0;
+	timestamp_t now;
+	timestamp_t break_point[4] = { 0 };
+	uint64_t diff;
 	int sleep_usec;
 	int battery_critical;
 	int need_static = 1;
@@ -1808,11 +1812,15 @@ void charger_task(void *u)
 #endif
 
 		charger_get_params(&curr.chg);
+
+		break_point[0] = get_time();
+
 		battery_get_params(&curr.batt);
+
+		break_point[1] = get_time();
 
 		if (prev_bp != curr.batt.is_present) {
 			prev_bp = curr.batt.is_present;
-
 			/* Update battery info due to change of battery */
 			batt_info = battery_get_info();
 			need_static = 1;
@@ -1995,6 +2003,7 @@ void charger_task(void *u)
 		}
 
 	wait_for_it:
+
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		if (get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
 			sleep_usec = charger_profile_override(&curr);
@@ -2011,9 +2020,14 @@ void charger_task(void *u)
 		}
 #endif
 
+		break_point[2] = get_time();
+
 		/* Keep the AP informed */
 		if (need_static)
 			need_static = update_static_battery_info();
+
+		break_point[3] = get_time();
+
 		/* Wait on the dynamic info until the static info is good. */
 		if (!need_static)
 			update_dynamic_battery_info();
@@ -2187,7 +2201,26 @@ void charger_task(void *u)
 		}
 
 		/* Adjust for time spent in this loop */
-		sleep_usec -= (int)(get_time().val - curr.ts.val);
+		now = get_time();
+		diff = now.val - curr.ts.val;
+		if(sleep_usec >= diff) {
+			sleep_usec -= diff;
+		} else {
+			CPRINTS(
+				"sleep_usec: %8d "
+				"diff: %8" PRId64 " "
+				"bp: %8" PRId64
+				" %8" PRId64
+				" %8" PRId64
+				" %8" PRId64,
+				sleep_usec, diff,
+				(break_point[0].val - curr.ts.val),
+				(break_point[1].val - break_point[0].val),
+				(break_point[2].val - break_point[1].val),
+				(break_point[3].val - break_point[2].val)
+			);
+			sleep_usec = 0;
+		}
 		if (sleep_usec < CHARGE_MIN_SLEEP_USEC)
 			sleep_usec = CHARGE_MIN_SLEEP_USEC;
 		else if (sleep_usec > CHARGE_MAX_SLEEP_USEC)
@@ -2201,6 +2234,11 @@ void charger_task(void *u)
 		if (battery_critical &&
 		    (sleep_usec > CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US))
 			sleep_usec = CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US;
+
+		if(display_sleep_usec % 32 == 0) {
+			CPRINTS("task_wait_event(sleep_usec=%d)", sleep_usec);
+		}
+		++display_sleep_usec;
 
 		task_wait_event(sleep_usec);
 	}
