@@ -3,9 +3,9 @@
  * found in the LICENSE file.
  */
 
-#include "fingerprint_elan80sg.h"
-#include "fingerprint_elan80sg_pal.h"
-#include "fingerprint_elan80sg_private.h"
+#include "fingerprint_elan80series.h"
+#include "fingerprint_elan80series_pal.h"
+#include "fingerprint_elan80series_private.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -20,7 +20,7 @@
 
 /* Platform Abstraction Layer for ELAN binary */
 
-LOG_MODULE_REGISTER(elan80sg_pal, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(elan80elan80series_pal, LOG_LEVEL_INF);
 
 #if !DT_HAS_CHOSEN(cros_fp_fingerprint_sensor)
 #error "cros-fp,fingerprint-sensor device must be chosen"
@@ -28,7 +28,7 @@ LOG_MODULE_REGISTER(elan80sg_pal, LOG_LEVEL_INF);
 #define fp_sensor_dev DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
 #endif
 
-K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_ELAN80SG_HEAP_SIZE);
+K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE);
 K_SEM_DEFINE(trx_buffer_lock, 1, 1);
 
 static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE];
@@ -45,7 +45,7 @@ static int elan_spi_transaction_fullplex(uint8_t *tx_buf, uint8_t *rx_buf,
 	assert(tx_buf != NULL);
 	assert(rx_buf != NULL);
 
-	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
+	const struct elan80series_cfg *cfg = fp_sensor_dev->config;
 
 	const struct spi_buf write_buf[1] = { { .buf = tx_buf,
 						.len = trx_len } };
@@ -65,7 +65,7 @@ static int elan_spi_transaction_duplex(uint8_t *tx_buf, size_t tx_len,
 	assert(tx_buf != NULL);
 	assert(rx_buf != NULL);
 
-	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
+	const struct elan80series_cfg *cfg = fp_sensor_dev->config;
 
 	const struct spi_buf write_buf[] = { { .buf = tx_buf, .len = tx_len },
 					     { .buf = NULL, .len = rx_len } };
@@ -223,20 +223,11 @@ int __unused elan_write_reg_vector(const uint8_t *reg_table, int length)
 	return ret;
 }
 
-int __unused elan_raw_capture(uint16_t *short_raw)
+int elan_image_read(uint16_t *short_raw)
 {
-	assert(short_raw != NULL);
-
 	int ret = 0, i = 0, cnt_timer = 0, rx_index = 0;
 	uint8_t regdata[4] = { 0 };
 
-	/* Write start scans command to fp sensor */
-	if (elan_write_cmd(START_SCAN) < 0) {
-		ret = ELAN_ERROR_SPI;
-		LOG_ERR("%s SPISendCommand( SSP2, START_SCAN ) fail ret = %d",
-			__func__, ret);
-		return ret;
-	}
 	/* Polling scan status */
 	cnt_timer = 0;
 	while (1) {
@@ -257,12 +248,11 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 
 	/* Read the image from fp sensor */
 	k_sem_take(&trx_buffer_lock, K_FOREVER);
-	memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
-	tx_buf[0] = START_READ_IMAGE;
 	for (i = 0; i < ELAN_DMA_LOOP; i++) {
+		memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
+		tx_buf[0] = START_READ_IMAGE;
 		ret = elan_spi_transaction_duplex(tx_buf, ELAN_SPI_TX_BUF_SIZE,
 						  rx_buf, ELAN_SPI_RX_BUF_SIZE);
-
 		if (ret != 0) {
 			LOG_SPI_WRITE_FAIL(__func__, ret);
 			k_sem_give(&trx_buffer_lock);
@@ -279,14 +269,38 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 			}
 		}
 	}
-	k_sem_give(&trx_buffer_lock);
 
+	k_sem_give(&trx_buffer_lock);
 	return 0;
+}
+
+int __unused elan_raw_capture(uint16_t *short_raw)
+{
+	int ret = 0;
+
+	if (short_raw == NULL) {
+		LOG_ERR("%s: short_raw is NULL", __func__);
+		return -EINVAL;
+	}
+
+	/* Write start scans command to fp sensor */
+	if (elan_write_cmd(START_SCAN) < 0) {
+		ret = ELAN_ERROR_SPI;
+		LOG_ERR("%s SPISendCommand( SSP2, START_SCAN ) fail ret = %d",
+			__func__, ret);
+		return ret;
+	}
+
+	ret = elan_image_read(short_raw);
+	if (ret < 0)
+		LOG_ERR("%s: elan_image_read failed (%d)", __func__, ret);
+
+	return ret;
 }
 
 int __unused elan_execute_calibration(void)
 {
-	if (!IS_ENABLED(CONFIG_HAVE_ELAN80SG_PRIVATE_DRIVER)) {
+	if (!IS_ENABLED(CONFIG_HAVE_ELAN80SERIES_PRIVATE_DRIVER)) {
 		return 0;
 	}
 
@@ -428,7 +442,7 @@ uint32_t __unused elan_get_tick(void)
 
 void __unused elan_sensor_set_rst(bool state)
 {
-	const struct elan80sg_cfg *cfg = fp_sensor_dev->config;
+	const struct elan80series_cfg *cfg = fp_sensor_dev->config;
 	int ret = gpio_pin_set_dt(&cfg->reset_pin, state ? 1 : 0);
 
 	if (ret < 0) {
