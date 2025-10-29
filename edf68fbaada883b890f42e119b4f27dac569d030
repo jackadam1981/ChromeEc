@@ -141,6 +141,30 @@
       },
       "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1052472_9d48296a",
+        "filename": "zephyr/program/ocelot/ojal/fan.dtsi",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1542702
+      },
+      "writtenOn": "2025-10-29T05:55:40Z",
+      "side": 1,
+      "message": "Add b:455984243 to track the thermal configuration.",
+      "parentUuid": "bb914b6d_2c5d6c0e",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "edf68fbaada883b890f42e119b4f27dac569d030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
