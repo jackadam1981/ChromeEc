@@ -289,6 +289,7 @@ static void shi_ite_int_handler(const void *arg)
 	}
 }
 
+#ifdef CONFIG_PLATFORM_EC_LOW_POWER_S0
 void spi_event(enum gpio_signal signal)
 {
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
@@ -298,6 +299,7 @@ void spi_event(enum gpio_signal signal)
 		disable_sleep(SLEEP_MASK_SPI);
 	}
 }
+#endif
 
 /*
  * SHI init priority is behind CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY to
@@ -372,8 +374,10 @@ static int cros_shi_ite_init(const struct device *dev)
 	IRQ_CONNECT(DT_INST_IRQN(0), 0, shi_ite_int_handler, 0, 0);
 	irq_enable(DT_INST_IRQN(0));
 
+#ifdef CONFIG_PLATFORM_EC_LOW_POWER_S0
 	/* Enable SPI chip select pin interrupt */
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_spi0_cs));
+#endif
 
 	return 0;
 }
