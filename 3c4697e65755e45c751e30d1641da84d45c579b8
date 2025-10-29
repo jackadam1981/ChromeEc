@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c6aca3_02f4412c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-10-29T15:45:09Z",
+      "side": 1,
+      "message": "Oof, thanks for spotting this Jeremy, sorry for missing it should have paid more attention to that comment. Dawid can we change back CONFIG_ARCH_IRQ_VECTOR_TABLE_ALIGN maybe?",
+      "revId": "3c4697e65755e45c751e30d1641da84d45c579b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59521bfd_03ae6f6a",
