@@ -114,14 +114,15 @@ static int zephyr_shim_setup_hooks(void)
 	/* LCOV_EXCL_STOP */
 #endif /* CONFIG_PLATFORM_EC_HOOK_SECOND */
 
-	/* Startup the HOOK_TICK recurring work */
-	rv = k_work_reschedule(&hook_ticks_work_data,
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_HOST_INTERFACE_HECI)) {
+		/* Startup the HOOK_TICK recurring work */
+		rv = k_work_reschedule(&hook_ticks_work_data,
 			       K_USEC(HOOK_TICK_INTERVAL));
-	/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
-	if (rv < 0)
-		work_queue_error(&hook_ticks_work_data, rv);
-	/* LCOV_EXCL_STOP */
-
+		/* LCOV_EXCL_START cannot fail unless delay = K_NO_WAIT */
+		if (rv < 0)
+			work_queue_error(&hook_ticks_work_data, rv);
+		/* LCOV_EXCL_STOP */
+	}
 	return 0;
 }
 
