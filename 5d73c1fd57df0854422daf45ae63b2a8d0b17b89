@@ -16,6 +16,24 @@
       "message": "Majority of the code is copy-paste as in the algo CL. Please separate common code, rename files are reuse it instead of coping.",
       "revId": "5d73c1fd57df0854422daf45ae63b2a8d0b17b89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892b60c0_9b11ee74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-10-29T12:13:24Z",
+      "side": 1,
+      "message": "I\u0027m currently separating the common code and will reuse it instead of keeping the duplicated copy. The ELANI80SA changes will be updated accordingly. This CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7093794 is rename to series.",
+      "parentUuid": "d606e7f9_8c443130",
+      "revId": "5d73c1fd57df0854422daf45ae63b2a8d0b17b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
