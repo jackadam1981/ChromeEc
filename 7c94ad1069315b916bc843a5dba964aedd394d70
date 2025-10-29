@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa284a15_3269edcf",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-10-29T22:46:52Z",
+      "side": 1,
+      "message": "nit: thread_id instead of k_tid_t. k_tid_t is the type.",
+      "revId": "7c94ad1069315b916bc843a5dba964aedd394d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
