@@ -5,12 +5,10 @@
 
 /* Private sensor interface */
 
-#ifndef ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_PRIVATE_H_
-#define ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_PRIVATE_H_
+#ifndef ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SERIES_PRIVATE_H_
+#define ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SERIES_PRIVATE_H_
 
 #include <stdint.h>
-
-#define FP_SENSOR_HWID_ELAN 0x4f4f
 
 /* ELAN error codes */
 enum elan_error_code {
