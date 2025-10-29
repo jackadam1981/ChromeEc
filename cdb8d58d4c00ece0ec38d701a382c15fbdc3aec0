@@ -22,6 +22,30 @@
       },
       "revId": "cdb8d58d4c00ece0ec38d701a382c15fbdc3aec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617ac86b_0a7eb317",
+        "filename": "zephyr/program/fatcat/lapis/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-29T03:09:12Z",
+      "side": 1,
+      "message": "`CONFIG_PLATFORM_EC_THERMISTOR` depends on `DT_HAS_CROS_EC_THERMISTOR_ENABLED` in [Kconfig.temperature\n](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.temperature;drc\u003d0512af03f3f8b2a63e7891b2757c7b2eb658dd7b;l\u003d46), but Lapis doesn\u0027t use `temp-sensor-thermistor` compatible, so `CONFIG_PLATFORM_EC_THERMISTOR` will not be compiled into the code, then this will cause a compilation error when `thermistor_linear_interpolate()` is used in [apl6012.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/temp_sensor/apl6012.c;drc\u003d0512af03f3f8b2a63e7891b2757c7b2eb658dd7b;l\u003d79). So the `thermistor.c` should be added here.",
+      "parentUuid": "201a5926_61663235",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 67
+      },
+      "revId": "cdb8d58d4c00ece0ec38d701a382c15fbdc3aec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
