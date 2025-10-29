@@ -14,23 +14,6 @@ menuconfig FINGERPRINT_SENSOR_ELAN80SG
 
 if FINGERPRINT_SENSOR_ELAN80SG
 
-config FINGERPRINT_SENSOR_ELAN80SG_HEAP_SIZE
-	int "Size of heap for ELAN80SG driver"
-	default 36864
-	help
-	  Size of heap to be used by ELAN private library. The heap must have
-	  enough space to facilitate the generation of the finger templates
-	  during the enrollment process and to enable efficient runtime matching
-	  operations. For these operations, a 36KB heap is sufficient.
-
-config FINGERPRINT_SENSOR_ELAN80SG_PAL
-	bool "Platform Abstraction Layer for ELAN private library"
-	default y
-	help
-	  If enabled, Platform Abstraction Layer for ELAN private library will be
-	  compiled. The PAL is used to interact with the sensor (SPI, GPIO) and
-	  the system (heap allocations, printing messages, time functions).
-
 # Enabled in private driver Kconfig
 config HAVE_ELAN80SG_PRIVATE_DRIVER
 	bool
@@ -38,3 +21,28 @@ config HAVE_ELAN80SG_PRIVATE_DRIVER
 	  If enabled, it indicates that the private driver is present.
 
 endif # FINGERPRINT_SENSOR_ELAN80SG
+
+config FP_SENSOR_HWID_ELAN
+    hex "Elan fingerprint sensor hardware ID"
+    default 0x4f4f if FINGERPRINT_SENSOR_ELAN80SG
+    help
+      Hardware ID value used by the driver for identifying
+      the specific Elan 80-series fingerprint sensor.
+
+config FINGERPRINT_SENSOR_ELAN80SERIES_PAL
+    bool "Platform Abstraction Layer for ELAN 80 series sensors"
+    default y
+    depends on FINGERPRINT_SENSOR_ELAN80SG
+    help
+      If enabled, Platform Abstraction Layer for ELAN private library will be compiled.
+      This PAL is used by both ELAN80SG and ELANI80SA sensors.
+
+config FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE
+	int "Size of heap for ELAN80SERIES driver"
+	default 36864 if FINGERPRINT_SENSOR_ELAN80SG
+	default 36864
+	help
+	  Size of heap to be used by ELAN private library. The heap must have
+	  enough space to facilitate the generation of the finger templates
+	  during the enrollment process and to enable efficient runtime matching
+	  operations.
