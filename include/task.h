@@ -176,6 +176,7 @@ task_id_t task_get_current(void);
  * Check if this current task is running in deferred context
  */
 bool in_deferred_context(void);
+int get_thread_alphabetical_index(k_tid_t thread_id);
 #else
 /* All ECOS deferred calls run from the HOOKS task */
 static inline bool in_deferred_context(void)

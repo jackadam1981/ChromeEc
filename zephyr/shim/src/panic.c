@@ -237,7 +237,7 @@ __override void assert_post_action(const char *path, unsigned int line)
 	panic_set_reason(PANIC_SW_ASSERT,
 			 (filename[0] << 24) | (filename[1] << 16) |
 				 (line & 0xffff),
-			 task_get_current());
+			 get_thread_alphabetical_index(k_current_get()));
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
 		command_crash_nested_handler();

@@ -9,6 +9,7 @@
 #include "host_command.h"
 #include "task.h"
 #include "timer.h"
+#include "util.h"
 #include "zephyr_console_shim.h"
 
 #include <zephyr/init.h>
@@ -164,6 +165,50 @@ k_tid_t task_id_to_thread_id(task_id_t task_id)
 	}
 	__ASSERT(false, "Failed to map task %d to thread", task_id);
 	return NULL;
+}
+
+struct thread_alphabetical_index_info {
+	const char *name;
+	int saw_name;
+	int index;
+};
+
+static void thread_alphabetical_index_cb(const struct k_thread *thread,
+					 void *user_data)
+{
+	struct thread_alphabetical_index_info *info =
+		(struct thread_alphabetical_index_info *)user_data;
+
+	int strcmp_result =
+		strcasecmp(k_thread_name_get((k_tid_t)thread), info->name);
+	if (strcmp_result < 0) {
+		info->index++;
+	} else if (strcmp_result == 0) {
+		__ASSERT(!info->saw_name, "Duplicate thread name");
+		info->saw_name = true;
+	}
+}
+
+int get_thread_alphabetical_index(k_tid_t thread_id)
+{
+	if (!(IS_ENABLED(CONFIG_THREAD_MONITOR) &&
+	      IS_ENABLED(CONFIG_THREAD_NAME))) {
+		return -1;
+	}
+	if (k_is_pre_kernel()) {
+		return -1;
+	}
+	const char *thread_name = k_thread_name_get(thread_id);
+	struct thread_alphabetical_index_info info = {
+		.name = thread_name,
+		.saw_name = false,
+		.index = 0,
+	};
+	k_thread_foreach_unlocked(thread_alphabetical_index_cb, (void *)&info);
+	if (!info.saw_name) {
+		return -1;
+	}
+	return info.index;
 }
 
 task_id_t thread_id_to_task_id(k_tid_t thread_id)
