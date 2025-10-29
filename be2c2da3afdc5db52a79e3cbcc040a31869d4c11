@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033ab2b4_42090b28",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-29T18:08:39Z",
+      "side": 1,
+      "message": "Nit - this is referencing a parameter from the SMBUS spec.  I suggest fixing it so it doesn\u0027t look like a function call.\n\n```suggestion\n\t * exceeds the value of tTIMEOUT Min, 25ms.\n```",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "be2c2da3afdc5db52a79e3cbcc040a31869d4c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
