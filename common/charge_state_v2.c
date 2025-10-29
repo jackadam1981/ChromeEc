@@ -1702,6 +1702,12 @@ static int get_desired_input_current(enum battery_present batt_present,
 /* Main loop */
 void charger_task(void *u)
 {
+	static int display_sleep_usec = 0;
+	timestamp_t now;
+	timestamp_t break_point_1 = {};
+	timestamp_t break_point_2 = {};
+	timestamp_t break_point_3 = {};
+	uint64_t diff;
 	int sleep_usec;
 	int battery_critical;
 	int need_static = 1;
@@ -1767,45 +1773,45 @@ void charger_task(void *u)
 		    curr.ac)
 			board_base_reset();
 #endif
-		if (curr.ac != prev_ac) {
-			if (curr.ac) {
-				/*
-				 * Some chargers are unpowered when the AC is
-				 * off, so we'll reinitialize it when AC
-				 * comes back and set the input current limit.
-				 * Try again if it fails.
-				 */
-				int rv = charger_post_init();
-				if (rv != EC_SUCCESS) {
-					problem(PR_POST_INIT, rv);
-				} else {
-					if (curr.desired_input_current !=
-					    CHARGE_CURRENT_UNINITIALIZED)
-						rv = charger_set_input_current(
-							curr.desired_input_current);
-					if (rv != EC_SUCCESS)
-						problem(PR_SET_INPUT_CURR, rv);
-					else
-						prev_ac = curr.ac;
-				}
+		if (curr.ac != 0 && prev_ac == 0) {
+			/*
+				* Some chargers are unpowered when the AC is
+				* off, so we'll reinitialize it when AC
+				* comes back and set the input current limit.
+				* Try again if it fails.
+				*/
+			int rv = charger_post_init();
+			if (rv != EC_SUCCESS) {
+				problem(PR_POST_INIT, rv);
 			} else {
-				/* Some things are only meaningful on AC */
-				set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
-				battery_seems_to_be_dead = 0;
-				prev_ac = curr.ac;
-
-				/*
-				 * b/187967523, we should clear charge current,
-				 * otherwise it will effect typeC output.this
-				 * should be ok for all chargers.
-				 */
-				charger_set_current(0);
+				if (curr.desired_input_current !=
+					CHARGE_CURRENT_UNINITIALIZED)
+					rv = charger_set_input_current(
+						curr.desired_input_current);
+				if (rv != EC_SUCCESS)
+					problem(PR_SET_INPUT_CURR, rv);
+				else
+					prev_ac = curr.ac;
 			}
+		} else if(curr.ac == 0 && prev_ac != 0) {
+			/* Some things are only meaningful on AC */
+			set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
+			battery_seems_to_be_dead = 0;
+			prev_ac = curr.ac;
+
+			/*
+				* b/187967523, we should clear charge current,
+				* otherwise it will effect typeC output.this
+				* should be ok for all chargers.
+				*/
+			charger_set_current(0);
 		}
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 		update_base_battery_info();
 #endif
+
+		break_point_1 = get_time();
 
 		charger_get_params(&curr.chg);
 		battery_get_params(&curr.batt);
@@ -1848,9 +1854,11 @@ void charger_task(void *u)
 
 		notify_host_of_over_current(&curr.batt);
 
+		break_point_2 = get_time();
+
 		/* battery current stable now, saves the current. */
 		if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV) &&
-		    get_time().val > stable_ts.val && curr.batt.current >= 0)
+		    break_point_2.val > stable_ts.val && curr.batt.current >= 0)
 			stable_current = curr.batt.current;
 
 		/*
@@ -1911,6 +1919,8 @@ void charger_task(void *u)
 			goto wait_for_it;
 		}
 
+		break_point_3 = get_time();
+
 		/* If the battery is not responsive, try to wake it up. */
 		if (!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) {
 			if (battery_seems_to_be_dead || battery_is_cut_off()) {
@@ -1919,7 +1929,7 @@ void charger_task(void *u)
 				curr.requested_voltage = 0;
 				curr.requested_current = 0;
 			} else if (curr.state == ST_PRECHARGE &&
-				   (get_time().val >
+				   (break_point_3.val >
 				    precharge_start_time.val +
 					    PRECHARGE_TIMEOUT_US)) {
 				/* We've tried long enough, give up */
@@ -1932,7 +1942,7 @@ void charger_task(void *u)
 				/* See if we can wake it up */
 				if (curr.state != ST_PRECHARGE) {
 					CPRINTS("try to wake battery");
-					precharge_start_time = get_time();
+					precharge_start_time = break_point_3;
 					need_static = 1;
 				}
 				set_charge_state(ST_PRECHARGE);
@@ -1995,6 +2005,7 @@ void charger_task(void *u)
 		}
 
 	wait_for_it:
+
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		if (get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
 			sleep_usec = charger_profile_override(&curr);
@@ -2187,7 +2198,20 @@ void charger_task(void *u)
 		}
 
 		/* Adjust for time spent in this loop */
-		sleep_usec -= (int)(get_time().val - curr.ts.val);
+		now = get_time();
+		diff = now.val - curr.ts.val;
+		if(sleep_usec >= diff) {
+			sleep_usec -= diff;
+		} else {
+			CPRINTS(
+				"warning 1: sleep_usec: %d diff: %" PRId64 " bp1: %" PRId64 " bp2: %" PRId64 " bp3: %" PRId64,
+				sleep_usec, diff,
+				(break_point_1.val - curr.ts.val),
+				(break_point_2.val - curr.ts.val),
+				(break_point_3.val - curr.ts.val)
+			);
+			sleep_usec = 0;
+		}
 		if (sleep_usec < CHARGE_MIN_SLEEP_USEC)
 			sleep_usec = CHARGE_MIN_SLEEP_USEC;
 		else if (sleep_usec > CHARGE_MAX_SLEEP_USEC)
@@ -2201,6 +2225,11 @@ void charger_task(void *u)
 		if (battery_critical &&
 		    (sleep_usec > CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US))
 			sleep_usec = CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US;
+
+		if(display_sleep_usec % 32 == 0) {
+			CPRINTS("task_wait_event(sleep_usec=%d)", sleep_usec);
+		}
+		++display_sleep_usec;
 
 		task_wait_event(sleep_usec);
 	}
