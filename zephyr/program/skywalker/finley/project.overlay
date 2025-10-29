@@ -126,6 +126,10 @@
 			sensor = <&temp_charger>;
 		};
 	};
+
+	usbc {
+		/delete-node/ port1@1;
+	};
 };
 
 
@@ -225,4 +229,13 @@
 			size = <0x1000>;
 		};
 	};
+};
+
+&i2c2 {
+	/delete-node/ rts54-pdc@67;
+};
+
+&i2c4 {
+	/delete-node/ ps8747-mux-1@10;
+	/delete-node/ tusb546-mux-0@44;
 };
