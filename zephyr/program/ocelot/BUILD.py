@@ -167,6 +167,10 @@ register_it8xxx2_project(
     project_name="matsu",
 )
 
+register_it8xxx2_project(
+    project_name="matsu_it82000",
+)
+
 register_ish_project(
     project_name="matsu-ish",
     zephyr_board="intel_ish_5_8_0",
@@ -182,6 +186,7 @@ register_ish_project(
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="matsu", addr=0x60098)
+assert_rw_fwid_DO_NOT_EDIT(project_name="matsu_it82000", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-mchp", addr=0x40318)
