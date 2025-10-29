@@ -50,6 +50,7 @@ DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown, NULL,
 
 #endif
 
+#define CONFIG_HOSTCMD_AP_RESET
 #ifdef CONFIG_HOSTCMD_AP_RESET
 static enum ec_status host_command_apreset(struct host_cmd_handler_args *args)
 {
