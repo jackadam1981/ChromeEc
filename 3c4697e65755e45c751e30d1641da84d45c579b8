@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59521bfd_03ae6f6a",
+        "filename": "zephyr/program/brox/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-10-29T15:26:02Z",
+      "side": 1,
+      "message": "You can\u0027t change these addresses, they are locked into the RO FMAP on shipped devices.",
+      "range": {
+        "startLine": 161,
+        "startChar": 20,
+        "endLine": 161,
+        "endChar": 59
+      },
+      "revId": "3c4697e65755e45c751e30d1641da84d45c579b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
