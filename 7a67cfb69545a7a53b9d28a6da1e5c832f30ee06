@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42225920_8e92bd1b",
+        "filename": "zephyr/program/fatcat/lapis/src/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-30T14:25:08Z",
+      "side": 1,
+      "message": "Initialized to zero is ok, they will be refresh in next second.",
+      "parentUuid": "3a6ab185_dcd34eae",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "7a67cfb69545a7a53b9d28a6da1e5c832f30ee06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54c54d31_31bc64f6",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-29T23:45:42Z",
       "side": 1,
       "message": "This function is being called once per second. Is there an expectation that the temperature reading will change enough in a second to require checking the next level up or down? Only adjusting up or down one level would make this part much cleaner. The if/else break seems a bit cumbersome.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "7a67cfb69545a7a53b9d28a6da1e5c832f30ee06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c9c4bb_9cf24295",
+        "filename": "zephyr/program/fatcat/lapis/src/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-30T14:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54c54d31_31bc64f6",
       "range": {
         "startLine": 57,
         "startChar": 2,
