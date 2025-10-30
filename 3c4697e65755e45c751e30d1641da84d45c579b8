@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f806f1d6_e91f9e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-30T10:24:26Z",
+      "side": 1,
+      "message": "The value of `ARCH_IRQ_VECTOR_TABLE_ALIGN` that places FWID at correct offset is 2, so I don\u0027t think we can use that.",
+      "parentUuid": "dddbd2f4_0ddf5140",
+      "revId": "3c4697e65755e45c751e30d1641da84d45c579b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59521bfd_03ae6f6a",
         "filename": "zephyr/program/brox/BUILD.py",
         "patchSetId": 1
