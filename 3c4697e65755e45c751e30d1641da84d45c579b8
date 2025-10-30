@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba3d460e_f9738b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-30T09:54:31Z",
+      "side": 1,
+      "message": "The `CONFIG_ARCH_IRQ_VECTOR_TABLE_ALIGN` is not changed. It is just used in anther place. I don\u0027t think changing `ARCH_IRQ_VECTOR_TABLE_ALIGN` is a good idea. It is also used [here](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/linker/irq-vector-table-section.ld#L4).",
+      "parentUuid": "68ffc827_9022b684",
+      "revId": "3c4697e65755e45c751e30d1641da84d45c579b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59521bfd_03ae6f6a",
         "filename": "zephyr/program/brox/BUILD.py",
         "patchSetId": 1
