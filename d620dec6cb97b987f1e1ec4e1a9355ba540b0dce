@@ -118,6 +118,30 @@
       },
       "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fed0a7_277f0f6c",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2025-10-30T03:13:18Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED\u003dy already remove in other CL.\nDo we need any other modify for this CL?\nCurrently function is working normally.",
+      "parentUuid": "013be857_c2af954d",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
