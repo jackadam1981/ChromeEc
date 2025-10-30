@@ -46,6 +46,30 @@
       },
       "revId": "cdb8d58d4c00ece0ec38d701a382c15fbdc3aec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5f752e_67066681",
+        "filename": "zephyr/program/fatcat/lapis/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-30T21:08:00Z",
+      "side": 1,
+      "message": "This is not a sustainable way to address the problem.  Board specific files should not be directly pulling in common code like you\u0027ve done here.\n\nYou should fix the dependency for `CONFIG_PLATFORM_EC_THERMISTOR` instead.\n\n```\nconfig PLATFORM_EC_THERMISTOR\n\tdepends on DT_HAS_CROS_EC_THERMISTOR_ENABLED || \\\n    \t\tDT_HAS_CROS_EC_TEMP_SENSOR_APL6012_ENABLED\n```\n\nPlease submit a CL fix this the correct way.",
+      "parentUuid": "617ac86b_0a7eb317",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 67
+      },
+      "revId": "cdb8d58d4c00ece0ec38d701a382c15fbdc3aec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
