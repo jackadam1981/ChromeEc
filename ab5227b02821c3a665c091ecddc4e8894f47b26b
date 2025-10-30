@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64641d25_f20a960c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T22:31:06Z",
+      "side": 1,
+      "message": "What\u0027s the status of this CL? It looks fairly coherent, but if it\u0027s ready to submit, we don\u0027t want to submit the debugging stuff along with it.\n\nIf this CL improves performance on FRS.SNK3.1, even if it doesn\u0027t get the whole way to a pass, and if it doesn\u0027t degrade the performance of other tests, we should make sure that it can be cherry-picked cleanly. If those things are true, can you split out the debug code into its own follower CL and mark this one as useful for pujjoga testing?\n\nIf this CL doesn\u0027t improve performance on this test, don\u0027t worry about it for right now.",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2c3f3b_268a7852",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T22:31:06Z",
+      "side": 1,
+      "message": "If that were true, then it should probably be called `pe_got_frs_signal`. But I see it being called in a lot of places that I think would be in the PD interrupt task. So I don\u0027t think you can assert this here.",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba07e80_f9a643c5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T22:31:06Z",
+      "side": 1,
+      "message": "Setting the flag is a trivial operation. This function should only be called from inside the PD task, which should means it\u0027s already awake, and there shouldn\u0027t be a context switch. So I think it\u0027s OK to just set the flag and wake the task and not check the flag first.",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5180747d_a7d335f1",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T22:31:06Z",
+      "side": 1,
+      "message": "IMO, this should happen inside `pd_got_frs_signal`. `prl_request_discard` happens to be safe to call from interrupt context, although its name doesn\u0027t indicate that.",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
