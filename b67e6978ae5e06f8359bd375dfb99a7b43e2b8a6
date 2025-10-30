@@ -69,6 +69,24 @@
       "parentUuid": "af86ddd2_7029b330",
       "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f998d4_f7585b92",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-10-30T00:14:02Z",
+      "side": 1,
+      "message": "100mV may be too small for some devices; 250mV is probably okay since it accounts for the worst-case ADC error, although ideally we\u0027d also account for error introduced by resistor tolerance on the input (since the ADC is fed via a resistive divider).",
+      "parentUuid": "7090686a_d1072e5f",
+      "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
