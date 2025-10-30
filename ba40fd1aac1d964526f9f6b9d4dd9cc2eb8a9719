@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3736c66_8ff31ec2",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-30T22:09:12Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed.  The upstream [binding](https://github.com/zephyrproject-rtos/zephyr/blob/3af17bf8b1a18e7eb049a0b1c97594cf54f7e854/dts/bindings/vendor-prefixes.txt#L491) already defines this.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "ba40fd1aac1d964526f9f6b9d4dd9cc2eb8a9719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4a25e6_87f3516e",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-30T22:09:12Z",
+      "side": 1,
+      "message": "Nit - disable clang-format for this macro expansion.\n\n\n```suggestion\n/* clang-format off */\nstruct pchg pchgs[] \u003d {\n\tDT_FOREACH_STATUS_OKAY(CPS8200_PCHG_COMPAT, WPC_CHIP_ELE_CPS8200)\n\tDT_FOREACH_STATUS_OKAY(CPS8601_PCHG_COMPAT, WPC_CHIP_ELE_CPS8601)\n\tDT_FOREACH_STATUS_OKAY(CTN730_PCHG_COMPAT, WPC_CHIP_ELE_CTN730)\n};\n/* clang-format on */\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "ba40fd1aac1d964526f9f6b9d4dd9cc2eb8a9719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
