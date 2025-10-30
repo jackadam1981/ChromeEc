@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fdb479b_6de658b4",
+        "filename": "zephyr/dts/bindings/gpio/gpio-enum-name.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-10-30T02:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed047f5e_1ce300bb",
+      "revId": "28f4c3b5b94370d79650952b4f0867ef7c84718e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "573ed5ea_fcd5f846",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-09-29T21:38:14Z",
       "side": 1,
       "message": "nit: alphabetical order",
+      "revId": "28f4c3b5b94370d79650952b4f0867ef7c84718e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c43cd171_5b8cfb58",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-10-30T02:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "573ed5ea_fcd5f846",
       "revId": "28f4c3b5b94370d79650952b4f0867ef7c84718e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
