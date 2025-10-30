@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f9a482_8776ef36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T17:23:40Z",
+      "side": 1,
+      "message": "Per OOB discussion:\n1. Please base this directly on CL:6935287 as its own CLs (one for TCPC_CONTROL caching, one for avoiding second ALERT read). That will make it easier to understand the incremental benefit of each change and easier for others to use the WIP fixes.\n2. The ALERT-read code looks basically good.\n3. The TCPC_CONTROL caching change accidentally eliminated the read-from-cache behavior of the previous CL, blunting the effect. Make sure to restore that behavior.",
+      "revId": "04250efe14985f83371b6c0ecfbe4128b0c43271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7cec99_4c0f6558",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T17:23:40Z",
+      "side": 1,
+      "message": "You should also be checking the cached value here, and not doing the write if it wouldn\u0027t change anything. It might be simpler just to have this whole operation be one function, but the current structure is fine for a quick hack, if that\u0027s easier for you.",
+      "revId": "04250efe14985f83371b6c0ecfbe4128b0c43271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90a9e6c_a72192d5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T17:23:40Z",
+      "side": 1,
+      "message": "This is no longer writing to `tcpci_bist_mode[port]`, which probably makes `tcpci_get_bist_test_mode` always return false. Make sure that the get and set implementations are in sync and both using the same caching.\n\nThe best way to do that is probably to have `tcpci_get_bist_test_mode` read from the correct bit in `tcpc_ctrl_cache[port]` and get rid of `tcpci_bist_mode`, but for the purposes of this hack, it\u0027s OK to keep both around.",
+      "revId": "04250efe14985f83371b6c0ecfbe4128b0c43271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
