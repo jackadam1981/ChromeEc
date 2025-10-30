@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "25a1d0ca29edccb7b5f81b86e2a1c29658aac56e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe125f6_3a0c3d36",
+        "filename": "common/usb_pd_host_cmd_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-30T17:12:26Z",
+      "side": 1,
+      "message": "This looks right, but the build is failing. There are a couple things going on here:\n1. `pd_dpm_request` only exists in TCPMv2. So this should be something like\n```suggestion\nif (IS_ENABLED(CONFIG_USB_PD_TCPMV2)\n    pd_dpm_request(p-\u003eport, DPM_REQUEST_DR_SWAP);\nelse\n    pd_request_data_swap(p-\u003eport);\n```\n   That should be sufficient for it to build.\n2. The reason I don\u0027t think that wouldn\u0027t leave non-TCPMv2 boards still with this bug is that in other implementations, `pd_request_data_swap` actually has the semantics of `pd_dpm_request`. Arguably, this is what `pd_request_data_swap` is supposed to be, and it\u0027s TCPMv2 that\u0027s wrong, not this host command.\n\nIf this is urgent, go ahead and make the change describe in 1. to fix the build, open an EC bug for the mismatch described in 2., and leave a TODO here referencing that bug.\n\nIf it\u0027s not urgent, the refactor probably isn\u0027t that hard, and I can give you some pointers.",
+      "revId": "25a1d0ca29edccb7b5f81b86e2a1c29658aac56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
