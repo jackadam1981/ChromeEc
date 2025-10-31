@@ -46,6 +46,30 @@
       },
       "revId": "b3ce77f48f52c1f94f20af1da39a906336f61e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cbbae1f_948d5b5a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-31T16:51:33Z",
+      "side": 1,
+      "message": "OK, at second glance, moving this to `usb_common.c` is not a good idea. It\u0027s directly accessing `pe`. I think creating a shadow of this structure in `usb_common.c` is likely to make this code very confusing.\n\nI would suggest keeping `pd_vbus_valid_for_bist` in the TCPMv2 PE. To keep TCPMv1 building, put a check for `CONFIG_USB_PD_TCPMv2` around the call to `tcpci_tcpm_should_enter_bist_mode`. TCPMv1 never supported BIST mode properly, and fixing that is not a goal of this exercise. TCPMv1 just needs to build and stay somewhat readable.",
+      "parentUuid": "01cde84a_14245946",
+      "range": {
+        "startLine": 855,
+        "startChar": 5,
+        "endLine": 855,
+        "endChar": 27
+      },
+      "revId": "b3ce77f48f52c1f94f20af1da39a906336f61e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
