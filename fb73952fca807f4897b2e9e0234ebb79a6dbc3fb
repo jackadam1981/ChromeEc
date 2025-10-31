@@ -34,6 +34,24 @@
       "parentUuid": "15c148b8_f0aefb3c",
       "revId": "fb73952fca807f4897b2e9e0234ebb79a6dbc3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd413c5_993c35da",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-31T13:33:58Z",
+      "side": 1,
+      "message": "Makes sense",
+      "parentUuid": "260e49bf_0b2b5058",
+      "revId": "fb73952fca807f4897b2e9e0234ebb79a6dbc3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
