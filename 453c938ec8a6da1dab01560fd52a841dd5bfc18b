@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0162a845_8ba13f75",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T16:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d4e3dc6_0c232839",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 46
+      },
+      "revId": "453c938ec8a6da1dab01560fd52a841dd5bfc18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "863492ac_43d27028",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-31T16:14:20Z",
       "side": 1,
       "message": "You can use default initialization:\n\n```suggestion\n\t.fp_frame_size_cache \u003d {},\n```\n\nhttp://shortn/_rKHs418qQg",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "453c938ec8a6da1dab01560fd52a841dd5bfc18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78c33a06_e8150b2a",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T16:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "863492ac_43d27028",
       "range": {
         "startLine": 59,
         "startChar": 0,
