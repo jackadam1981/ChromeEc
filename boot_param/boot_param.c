@@ -907,6 +907,16 @@ static inline bool fill_config_details(
 			  sizeof(struct cwt_claims_bstr_s));
 
 	/* Fill Cfg Descriptor variables based on ctx->cfg */
+	if (chain_id == BOOT_PARAM_DICE_CHAIN_GSC) {
+		/* TODO(b/456603629): rework, use a better name */
+		const uint8_t gsc_comp_name[CFG_DESCR_COMP_NAME_LEN] = {
+			CBOR_HDR1(CBOR_MAJOR_TSTR,
+				  CFG_DESCR_COMP_NAME_VALUE_LEN),
+			'T', 'i', '5', '0', ' ', 'S', 'B', ' ', 'F', 'W'
+		};
+		__platform_memcpy(cfg_descr->comp_name, gsc_comp_name,
+				  CFG_DESCR_COMP_NAME_LEN);
+	}
 	set_cbor_u32(ctx->cfg.aprov_status, &cfg_descr->aprov_status);
 	set_cbor_u32(ctx->cfg.sec_ver, &cfg_descr->sec_ver);
 	__platform_memcpy(cfg_descr->vboot_status.value, ctx->cfg.pcr0,
