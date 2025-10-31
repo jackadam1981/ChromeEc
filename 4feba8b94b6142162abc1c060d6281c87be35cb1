@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a128aff0_6580c062",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T17:19:41Z",
+      "side": 1,
+      "message": "rewrote the commit message based on the new logic",
+      "parentUuid": "b7e3b442_edb16f38",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "4feba8b94b6142162abc1c060d6281c87be35cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c72c6a00_3c0c875c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-31T17:11:08Z",
       "side": 1,
       "message": "This isn\u0027t assigning to anything.\n\nDid you use duckie to check?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 66
+      },
+      "revId": "4feba8b94b6142162abc1c060d6281c87be35cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd924ab8_c6d3c22a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T17:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72c6a00_3c0c875c",
       "range": {
         "startLine": 206,
         "startChar": 0,
