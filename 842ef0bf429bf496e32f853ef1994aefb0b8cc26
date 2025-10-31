@@ -70,6 +70,30 @@
       },
       "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d75d3c9_d4e0893a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T16:56:22Z",
+      "side": 1,
+      "message": "I meant the logic of the if/else statement\n\n```\n  if (res) {\n    global_context.current_frame_size \u003d 0;\n    timestamps_invalid |\u003d FPSTATS_CAPTURE_INV;\n    return;\n  }\n\n  uint32_t evt \u003d EC_MKBP_FP_IMAGE_READY;\n\n#ifndef CONFIG_ZEPHYR\n  /* Clean up SPI before clocking up to avoid hang on the dsb\n   * in dma_go. Ignore the return value to let the WDT reboot\n   * the MCU (and avoid getting trapped in the loop).\n   * b/112781659 */\n  res \u003d spi_transaction_flush(\u0026spi_devices[0]);\n  if (res) CPRINTS(\"Failed to flush SPI: 0x%x\", res);\n#endif\n\n  /* we need CPU power to do the computations */\n  ScopedFastCpu fast_cpu;\n\n  if (global_context.sensor_mode \u0026 FP_MODE_ENROLL_IMAGE)\n    evt \u003d fp_process_enroll();\n  else if (global_context.sensor_mode \u0026 FP_MODE_MATCH)\n    evt \u003d fp_process_match();\n\n  global_context.sensor_mode \u0026\u003d ~FP_MODE_ANY_CAPTURE;\n  overall_time_us \u003d time_since32(overall_t0);\n  send_mkbp_event(evt);\n}",
+      "parentUuid": "7fb590fb_0c3485a9",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
