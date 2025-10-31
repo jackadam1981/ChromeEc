@@ -535,6 +535,55 @@ ZTEST_USER(common_cbi, test_init_fails_when_locked)
 #endif /* CONFIG_SYSTEM_UNLOCKED */
 }
 
+ZTEST_USER(common_cbi, test_model_id_set)
+{
+	uint32_t model_id = 234;
+	int rv;
+
+	/* Turn off write-protect so we can actually write */
+	gpio_wp_l_set(1);
+	zassert_ok(cbi_clear());
+
+	/* Set model ID directly */
+	rv = cbi_set_model_id(model_id);
+	zassert_equal(rv, EC_SUCCESS);
+}
+
+ZTEST_USER(common_cbi, test_model_id_hc_set_get)
+{
+	uint32_t model_id = 234;
+	uint32_t model_id_read;
+
+	struct actual_set_params {
+		struct ec_params_set_cbi params;
+		uint8_t actual_data[sizeof(model_id)];
+	};
+
+	struct actual_set_params hc_set_params = {
+	.params = {
+		.tag = CBI_TAG_MODEL_ID,
+		.flag = CBI_SET_INIT,  /* This is crucial! */
+		.size = sizeof(model_id),
+		},
+	};
+
+	struct host_cmd_handler_args set_args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_SET_CROS_BOARD_INFO, 0, hc_set_params);
+
+	memcpy(hc_set_params.params.data, &model_id, sizeof(model_id));
+
+	/* Turn off write-protect so we can actually write */
+	gpio_wp_l_set(1);
+	zassert_ok(cbi_clear());
+
+	/* Set model ID via host command */
+	zassert_ok(host_command_process(&set_args));
+
+	/* Verify model ID was set correctly */
+	zassert_ok(cbi_get_model_id(&model_id_read));
+	zassert_equal(model_id_read, model_id);
+}
+
 ZTEST_USER(common_cbi, test_board_id_fails_when_set)
 {
 	uint8_t board_id = 42;
