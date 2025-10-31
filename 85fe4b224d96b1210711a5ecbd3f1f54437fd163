@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3d3fac4_7785548d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-10-31T09:49:14Z",
+      "side": 1,
+      "message": "If the maximal ODR is already set to 100Hz, can we  lower it to 50Hz? A gyro driver will prompt an error if we make ODR less than 100Hz:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/driver/accelgyro_bmi_common_public.h#10",
+      "parentUuid": "d97a53c4_f6819cd2",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6057ecb7_0bf4bd19",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 5
@@ -83,6 +101,24 @@
       "writtenOn": "2025-10-28T15:00:18Z",
       "side": 1,
       "message": "should be an integer value.",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b84bdd35_8afcd671",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-10-31T09:49:14Z",
+      "side": 1,
+      "message": "This config is a on/off to guarantee EC will sleep CONFIG_MOTION_MIN_SENSE_WAIT_TIME ms between running motion sense task loop. The CONFIG_MOTION_MIN_SENSE_WAIT_TIME config was defined here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/config.h#2606",
+      "parentUuid": "6057ecb7_0bf4bd19",
       "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
