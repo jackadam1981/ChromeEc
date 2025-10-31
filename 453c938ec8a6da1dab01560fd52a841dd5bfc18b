@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4e3dc6_0c232839",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-31T16:11:44Z",
+      "side": 1,
+      "message": "In the case where this fails, we should set `frame_size` to 0 similar to what we do in the `fp_process_finger` case.",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 46
+      },
+      "revId": "453c938ec8a6da1dab01560fd52a841dd5bfc18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
