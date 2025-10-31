@@ -21,6 +21,14 @@
 				led-id = "EC_LED_ID_LEFT_LED";
 				/* Left LED to White */
 				color-1 {
+					led-color = "LED_RED";
+				};
+			};
+
+			bad-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+				/* Left LED to White */
+				color-1 {
 					led-color = "LED_WHITE";
 				};
 			};
