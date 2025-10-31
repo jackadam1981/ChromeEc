@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9c637f_371ccd0a",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T22:44:40Z",
+      "side": 1,
+      "message": "You can utilize the `matsu.variant()` to register a new variant based on  all the Matsu configuration.  You can then use the file `matsu_it82000.overlay` to override devicetree settings as needed.\n\nSee https://crrev.com/c/6974880 for an example.\n\n\n```suggestion\n# Matsu based on it82002\nmatsu \u003d register_it8xxx2_project(\n    project_name\u003d\"matsu\",\n)\n\n# Matsu variant using the it82000\nmatsu.variant(\n    project_name\u003d\"matsu_it82000\",\n    zephyr_board\u003d\"it8xxx2/it82000bw\",\n    dts_overlays\u003d[\n        here / \"matsu_it82000\" / \"matsu_it82000.overlay\",\n)\n```",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "8a8a125aa509740cc805a7cbdd614fbda46eafbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc29f31_9b6936e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T22:44:40Z",
+      "side": 1,
+      "message": "```suggestion\nmatsu_it82000: Initial Zephyr EC image\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "45e2c136fc8531a686f0e5c3bbda334c3f08e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e725cbc8_c059db41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T22:44:40Z",
+      "side": 1,
+      "message": "```suggestion\nCreate the initial EC image for the matsu_it82000 variant based\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "45e2c136fc8531a686f0e5c3bbda334c3f08e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3acdc28_bf6d68c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T22:44:40Z",
+      "side": 1,
+      "message": "```suggestion\nTEST\u003dzmake build matsu_it82000\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "45e2c136fc8531a686f0e5c3bbda334c3f08e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4538c8_003c4602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T22:44:40Z",
+      "side": 1,
+      "message": "There is no need to copy the entire matsu folder. \n\nYou can simply create a variant of `matsu` and add a few extra devicetree files.\n\nSee the comment in BUILD.py",
+      "revId": "45e2c136fc8531a686f0e5c3bbda334c3f08e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
