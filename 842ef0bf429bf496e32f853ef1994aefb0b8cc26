@@ -46,6 +46,30 @@
       },
       "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb590fb_0c3485a9",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-31T16:52:09Z",
+      "side": 1,
+      "message": "\u003e by the way, this does not follow the logic we usually use to handle the failing case first.\n\nI think the logic might be clearer in both instances, if we set to 0 before doing the capture. Then if the capture succeeds, we save `frame_size`.",
+      "parentUuid": "2f0c7ded_58016916",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
