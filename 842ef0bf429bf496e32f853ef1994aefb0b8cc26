@@ -118,6 +118,30 @@
       },
       "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fe0694_d5074a9a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T17:07:24Z",
+      "side": 1,
+      "message": "will clean it in a follow up CL. I modified the logic per your recommendation.",
+      "parentUuid": "69559cb4_5fc61c85",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
