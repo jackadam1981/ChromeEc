@@ -52,6 +52,24 @@
       "parentUuid": "fbee2ddb_809c7787",
       "revId": "0573759a5f0a74a63e7b76c286525be02ad5dbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10e3b28_a9884a71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-10-31T22:41:33Z",
+      "side": 1,
+      "message": "Hi @caveh@chromium.org,\n\nI have added seperate CLs for setting model id  \u0026 change specific to ocelot.\n- https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7105984 \u0026  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7105985/2\n\nPlease have a look.\n\nI will abandon this CL later.",
+      "parentUuid": "dbee2734_30ec3c2d",
+      "revId": "0573759a5f0a74a63e7b76c286525be02ad5dbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
