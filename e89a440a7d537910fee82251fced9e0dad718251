@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d8d07b_18d80b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-31T18:54:58Z",
+      "side": 1,
+      "message": "verified it compile on coachz: missing includes in common/body_detect_common.c, CONFIG_BODY_DETECTION_ALOGIRTHM_V1 was not defined for legacy builds.",
+      "revId": "e89a440a7d537910fee82251fced9e0dad718251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
