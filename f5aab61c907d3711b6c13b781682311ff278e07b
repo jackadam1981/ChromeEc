@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a19f2f_8c2b1667",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T23:05:38Z",
+      "side": 1,
+      "message": "We can\u0027t keep copying the",
+      "revId": "f5aab61c907d3711b6c13b781682311ff278e07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385f07df_97b10ded",
+        "filename": "zephyr/program/fatcat/lapis/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T23:05:38Z",
+      "side": 1,
+      "message": "We cannot keep copying this custom fan code to more boards.\n\nThere should be time in the lapis schedule to create a generic solution.  See b/452957146",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "f5aab61c907d3711b6c13b781682311ff278e07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
