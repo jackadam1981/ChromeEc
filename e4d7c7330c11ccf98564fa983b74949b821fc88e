@@ -22,6 +22,30 @@
       },
       "revId": "e4d7c7330c11ccf98564fa983b74949b821fc88e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f331f75_14351dab",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_frame_size.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T19:15:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a050e65f_a4fece60",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "e4d7c7330c11ccf98564fa983b74949b821fc88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
