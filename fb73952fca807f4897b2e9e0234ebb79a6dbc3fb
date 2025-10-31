@@ -16,6 +16,24 @@
       "message": "Everything is good. I\u0027m just wondering if a name of this function is good. Have you considered more following pattern used for other similar functions? E.g. something like `convert_get_egis_capture_type`?",
       "revId": "fb73952fca807f4897b2e9e0234ebb79a6dbc3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "260e49bf_0b2b5058",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T13:32:40Z",
+      "side": 1,
+      "message": "this is the name convention we are adopting to other projects:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_fpc1025.c?q\u003dfingerprint_fpc1025.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d33-,34,-35",
+      "parentUuid": "15c148b8_f0aefb3c",
+      "revId": "fb73952fca807f4897b2e9e0234ebb79a6dbc3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
