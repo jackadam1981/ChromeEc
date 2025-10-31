@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c148b8_f0aefb3c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis630.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-10-31T07:55:27Z",
+      "side": 1,
+      "message": "Everything is good. I\u0027m just wondering if a name of this function is good. Have you considered more following pattern used for other similar functions? E.g. something like `convert_get_egis_capture_type`?",
+      "revId": "fb73952fca807f4897b2e9e0234ebb79a6dbc3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
