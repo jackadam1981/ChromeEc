@@ -94,6 +94,30 @@
       },
       "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69559cb4_5fc61c85",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-31T16:59:03Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s clean that up in a followup CL. But let\u0027s try to invert the logic like I mentioned since I think it\u0027s a bit easier to follow and a bit more robust. By setting it to 0 by default, we ensure that we\u0027re not leaving out any error cases since we only set it on a success case.",
+      "parentUuid": "1d75d3c9_d4e0893a",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
