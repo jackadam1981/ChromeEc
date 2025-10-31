@@ -22,6 +22,30 @@
       },
       "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0c7ded_58016916",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T16:48:31Z",
+      "side": 1,
+      "message": "You are absolutely right. My mistake. In the above case:\n\n```\n\tint res \u003d fp_acquire_image(fp_buffer, capture_type);\n\tcapture_time_us \u003d time_since32(t0);\n\t ---\u003e success\n\tif (!res) {. \n\t\tuint32_t evt \u003d EC_MKBP_FP_IMAGE_READY;\n\n#ifndef CONFIG_ZEPHYR\n\t\t/* Clean up SPI before clocking up to avoid hang on the dsb\n\t\t * in dma_go. Ignore the return value to let the WDT reboot\n\t\t * the MCU (and avoid getting trapped in the loop).\n\t\t * b/112781659 */\n\t\tres \u003d spi_transaction_flush(\u0026spi_devices[0]);\n\t\tif (res)\n\t\t\tCPRINTS(\"Failed to flush SPI: 0x%x\", res);\n#endif\n\n\t\t/* we need CPU power to do the computations */\n\t\tScopedFastCpu fast_cpu;\n\n\t\tif (global_context.sensor_mode \u0026 FP_MODE_ENROLL_IMAGE)\n\t\t\tevt \u003d fp_process_enroll();\n\t\telse if (global_context.sensor_mode \u0026 FP_MODE_MATCH)\n\t\t\tevt \u003d fp_process_match();\n\n\t\tglobal_context.sensor_mode \u0026\u003d ~FP_MODE_ANY_CAPTURE;\n\t\toverall_time_us \u003d time_since32(overall_t0);\n\t\tsend_mkbp_event(evt);\n\t---\u003e failure\n\t} else {\n\t\tglobal_context.current_frame_size \u003d 0;\n\t\ttimestamps_invalid |\u003d FPSTATS_CAPTURE_INV;\n\t}\n```\n\nby the way, this does not follow the logic we usually use to handle the failing case first.",
+      "parentUuid": "31aee848_7258e6a3",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "842ef0bf429bf496e32f853ef1994aefb0b8cc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
