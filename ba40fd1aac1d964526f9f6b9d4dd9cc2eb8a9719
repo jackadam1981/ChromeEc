@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e4cb45_c06c5c9f",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-10-31T01:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3736c66_8ff31ec2",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "ba40fd1aac1d964526f9f6b9d4dd9cc2eb8a9719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb4a25e6_87f3516e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-30T22:09:12Z",
       "side": 1,
       "message": "Nit - disable clang-format for this macro expansion.\n\n\n```suggestion\n/* clang-format off */\nstruct pchg pchgs[] \u003d {\n\tDT_FOREACH_STATUS_OKAY(CPS8200_PCHG_COMPAT, WPC_CHIP_ELE_CPS8200)\n\tDT_FOREACH_STATUS_OKAY(CPS8601_PCHG_COMPAT, WPC_CHIP_ELE_CPS8601)\n\tDT_FOREACH_STATUS_OKAY(CTN730_PCHG_COMPAT, WPC_CHIP_ELE_CTN730)\n};\n/* clang-format on */\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "ba40fd1aac1d964526f9f6b9d4dd9cc2eb8a9719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5641e5b6_8f517750",
+        "filename": "zephyr/shim/src/pchg.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-10-31T01:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4a25e6_87f3516e",
       "range": {
         "startLine": 22,
         "startChar": 0,
