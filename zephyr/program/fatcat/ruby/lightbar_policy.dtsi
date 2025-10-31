@@ -1,0 +1,86 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#include <dt-bindings/macros.h>
+
+/ {
+    lightbar {
+        compatible = "cros-ec,led-lightbar";
+
+        lightbar0 {
+            /* Identifies this lightbar to the system */
+            led-id = "EC_LED_ID_LIGHTBAR_LED";
+
+            /* This links the color definitions to the driver node 
+             * configured in the section above.
+             */
+            strip = <&led_strip>;
+
+            /* Define each required color below.
+             * The 'color' property should be the 24-bit 0xRRGGBB hex value
+             * determined during the tuning process.
+             */
+            color_g_blue_500: g-blue-500 {
+                led-color = "LED_BLUE";
+                color = <0x4285F4>; /* Replace with your tuned hex value */
+            };
+            color_g_green_500: g-green-500 {
+                led-color = "LED_GREEN";
+                color = <0x34A853>; /* Replace with your tuned hex value */
+            };
+            color_g_yellow_500: g-yellow-500 {
+                led-color = "LED_YELLOW";
+                color = <0xFBBC04>; /* Replace with your tuned hex value */
+            };
+            color_g_red_500: g-red-500 {
+                led-color = "LED_RED";
+                color = <0xEA4335>; /* Replace with your tuned hex value */
+            };
+            color_white: white {
+                led-color = "LED_WHITE";
+                color = <0xFFFFFF>; /* Replace with your tuned hex value */
+            };
+            color_gemini_blue: gemini-blue {
+                led-color = "LED_CYAN";
+                color = <0x4285F4>; /* Replace with your tuned hex value */
+            };
+            color_gemini_purple: gemini-purple {
+                led-color = "LED_MAGENTA";
+                color = <0xC97BE2>; /* Replace with your tuned hex value */
+            };
+            color_off: off {
+                led-color = "LED_OFF";
+                color = <0x000000>;
+            };
+        };
+    };
+};
+
+&uart4 { /* Use the correct UART instance, e.g., uart4 for Nuvoton EC */
+    status = "okay";
+
+    /* === Step 3: UART Peripheral & Pin Properties === */
+    current-speed = <2500000>;      // 2.5 MHz baud rate
+    pinctrl-0 = <&uart4_sout_gp35>; // Configure the specific TX pin
+    pinctrl-names = "default";
+    data-bits = <7>;                // (2+7=9, a multiple of 3)
+    tx-invert;                      // Mandatory for idle-low signal
+
+    led_strip: ws2812-strip {
+        compatible = "worldsemi,ws2812-uart";
+        status = "okay";
+
+        /* === Step 1: Physical Properties === */
+        chain-length = <15>;
+        color-mapping = <LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_RED
+                         LED_COLOR_ID_BLUE>;
+
+        /* === Step 2: Timing Properties === */
+        reset-delay = <50>;
+        bits-per-symbol = <3>;
+        one-symbol = <BINARY(1,1,0)>;
+        zero-symbol = <BINARY(1,0,0)>;
+    };
+};
