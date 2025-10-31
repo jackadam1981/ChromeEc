@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ed3388e6_0348f89c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-10-31T21:31:00Z",
+      "side": 1,
+      "message": "Using b/456688864 for test coverage.",
+      "parentUuid": "3f88f24e_e7c9d5c2",
+      "revId": "2108e4db6e5417c857a1519593605a729be74407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7b6ed225_da50bf73",
         "filename": "zephyr/drivers/imvp/Kconfig",
         "patchSetId": 10
