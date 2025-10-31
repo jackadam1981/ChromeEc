@@ -310,7 +310,7 @@ static void nct38xx_tcpc_alert(int port)
 	}
 
 	/* Process normal TCPC ALERT event and clear status. */
-	tcpci_tcpc_alert(port);
+	tcpci_tcpc_alert_update(port, alert);
 
 	/*
 	 * If the IO expander feature is enabled, use the ALERT register
