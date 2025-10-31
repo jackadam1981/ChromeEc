@@ -38,6 +38,19 @@ extern "C" {
 #define TASK_ID_TO_PD_PORT(id) 0
 #endif /* CONFIG_USB_PD_PORT_MAX_COUNT && HAS_TASK_PD_C0 */
 
+/*
+ * Define PD_PORT_TO_INT_TASK_ID() and TASK_ID_TO_INT_PD_PORT() macros to
+ * go between PD port number and task ID. Assume that TASK_ID_PD_INT_C0 is the
+ * lowest task ID and IDs are on a continuous range.
+ */
+#if defined(HAS_TASK_PD_INT_C0) && defined(CONFIG_USB_PD_PORT_MAX_COUNT)
+#define PD_PORT_TO_INT_TASK_ID(port) (TASK_ID_PD_INT_C0 + (port))
+#define TASK_ID_TO_INT_PD_PORT(id) ((id) - TASK_ID_PD_INT_C0)
+#else
+#define PD_PORT_TO_INT_TASK_ID(port) -1 /* stub task ID */
+#define TASK_ID_TO_INT_PD_PORT(id) 0
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT && HAS_TASK_PD_INT_C0 */
+
 enum pd_rx_errors {
 	PD_RX_ERR_INVAL = -1, /* Invalid packet */
 	PD_RX_ERR_HARD_RESET = -2, /* Got a Hard-Reset packet */
