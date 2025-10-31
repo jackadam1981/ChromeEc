@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04759e22_fe835291",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-31T16:34:33Z",
+      "side": 1,
+      "message": "If we\u0027re already in BIST mode, you shouldn\u0027t need to do this write either (because this function will have done it previously). You could put another `if` in, but it will probably be easier to combine `tcpc_write_cached` into this function and return early if the new TCPC_CONTROL value is the same as the old value.",
+      "revId": "209c74eaebec1abaaa7e3f1fd8a5f43da5fc4f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca74f3a0_849c9de0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-31T16:34:33Z",
+      "side": 1,
+      "message": "This should be checking for the BIST Test Mode bit. Right now, it will probably return true a lot of the time, and that will break things.",
+      "revId": "209c74eaebec1abaaa7e3f1fd8a5f43da5fc4f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
