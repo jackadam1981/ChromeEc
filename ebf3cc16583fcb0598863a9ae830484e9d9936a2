@@ -16,6 +16,24 @@
       "message": "```suggestion\n\t} else if ((cbi_boardversion \u003d\u003d 4) || (cbi_boardversion \u003e\u003d 10)) {\n```",
       "revId": "ebf3cc16583fcb0598863a9ae830484e9d9936a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ddbe60_fdb2364d",
+        "filename": "zephyr/program/trulo/uldrenite/src/mp2964_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-10-31T08:12:55Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "08ad712c_f816990f",
+      "revId": "ebf3cc16583fcb0598863a9ae830484e9d9936a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
