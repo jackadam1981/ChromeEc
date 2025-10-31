@@ -21,8 +21,8 @@
  *   EC_ERROR_INVAL: if size+offset > buffer_size
  *   EC_SUCCESS: otherwise
  */
-enum ec_error_list validate_fp_buffer_offset(uint32_t buffer_size,
-					     uint32_t offset, uint32_t size);
+enum ec_error_list validate_buffer_offset(uint32_t buffer_size, uint32_t offset,
+					  uint32_t size);
 
 bool fp_match_success(int match_result);
 

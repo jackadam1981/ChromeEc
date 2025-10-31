@@ -25,19 +25,19 @@ enum ec_error_list rollback_get_secret(uint8_t *secret)
 	return EC_ERROR_UNKNOWN;
 }
 
-ZTEST(fpsensor_utils, test_validate_fp_buffer_offset_success)
+ZTEST(fpsensor_utils, test_validate_buffer_offset_success)
 {
-	zassert_equal(validate_fp_buffer_offset(1, 0, 1), EC_SUCCESS);
+	zassert_equal(validate_buffer_offset(1, 0, 1), EC_SUCCESS);
 }
 
-ZTEST(fpsensor_utils, test_validate_fp_buffer_offset_failure_no_overflow)
+ZTEST(fpsensor_utils, test_validate_buffer_offset_failure_no_overflow)
 {
-	zassert_equal(validate_fp_buffer_offset(1, 1, 1), EC_ERROR_INVAL);
+	zassert_equal(validate_buffer_offset(1, 1, 1), EC_ERROR_INVAL);
 }
 
-ZTEST(fpsensor_utils, test_validate_fp_buffer_offset_failure_overflow)
+ZTEST(fpsensor_utils, test_validate_buffer_offset_failure_overflow)
 {
-	zassert_equal(validate_fp_buffer_offset(1, UINT32_MAX, 1),
+	zassert_equal(validate_buffer_offset(1, UINT32_MAX, 1),
 		      EC_ERROR_OVERFLOW);
 }
 
