@@ -22,6 +22,30 @@
       },
       "revId": "f89f7288d45f5f9127912461dc9d8c1d7b42efa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51400d3_154c529e",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-10-31T19:02:22Z",
+      "side": 1,
+      "message": "ok. the renaming is done is a separate CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7107720/1",
+      "parentUuid": "15d0f813_8c56bddb",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "f89f7288d45f5f9127912461dc9d8c1d7b42efa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
