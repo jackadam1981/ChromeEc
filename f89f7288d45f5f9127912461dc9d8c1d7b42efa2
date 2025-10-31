@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d0f813_8c56bddb",
+        "filename": "common/fpsensor/fpsensor_utils.cc",
+        "patchSetId": 39
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-10-31T18:20:28Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to rename `buffer_size` to `frame_size`. It\u0027s still kind of a \"buffer_size\"; we\u0027re just passing the frame size as the buffer size. If we were going to rename argument, we\u0027d probably want to rename the function as well.\n\nI guess we could rename to `validate_buffer_offset` instead so that there\u0027s no confusion with the `fp_buffer` variable. It\u0027s a generic validation function, not limited to a specific buffer.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "f89f7288d45f5f9127912461dc9d8c1d7b42efa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
