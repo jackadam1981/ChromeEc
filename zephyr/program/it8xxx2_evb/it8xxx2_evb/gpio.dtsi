@@ -45,11 +45,13 @@
 		};
 	};
 
+/*
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-irqs = <&int_power_button
 			       &int_lid_open>;
 	};
+*/
 
 	unused-pins {
 		compatible = "unused-gpios";

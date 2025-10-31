@@ -4,11 +4,11 @@
  */
 
  /* Main devictree overlay for the it8xxx2_evb project */
-#include "adc.dtsi"
-#include "fan.dtsi"
+//#include "adc.dtsi"
+//#include "fan.dtsi"
 #include "gpio.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dtsi"
-#include "interrupts.dtsi"
-#include "pwm.dtsi"
-#include "shi.dtsi"
+//#include "interrupts.dtsi"
+//#include "pwm.dtsi"
+//#include "shi.dtsi"
