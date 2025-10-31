@@ -70,6 +70,30 @@
       },
       "revId": "cdb8d58d4c00ece0ec38d701a382c15fbdc3aec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13856be_52e8509f",
+        "filename": "zephyr/program/fatcat/lapis/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-10-31T02:39:33Z",
+      "side": 1,
+      "message": "Ok, thanks. This [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7104540) shows the dependency changes.",
+      "parentUuid": "1b5f752e_67066681",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 67
+      },
+      "revId": "cdb8d58d4c00ece0ec38d701a382c15fbdc3aec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
