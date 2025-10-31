@@ -21,6 +21,32 @@
 
 LOG_MODULE_REGISTER(cros_fingerprint, LOG_LEVEL_INF);
 
+static egis_capture_mode_t convert_fp_capture_type_to_egis_capture_type(
+	enum fingerprint_capture_type capture_type)
+{
+	switch (capture_type) {
+	case FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT:
+	case FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE:
+		return EGIS_CAPTURE_NORMAL_FORMAT;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN0:
+		return EGIS_CAPTURE_BLACK_PXL_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_PATTERN1:
+		return EGIS_CAPTURE_WHITE_PXL_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST:
+		return EGIS_CAPTURE_RV_INT_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_DEFECT_PXL_TEST:
+		return EGIS_CAPTURE_DEFECT_PXL_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_ABNORMAL_TEST:
+		return EGIS_CAPTURE_ABNORMAL_TEST;
+	case FINGERPRINT_CAPTURE_TYPE_NOISE_TEST:
+		return EGIS_CAPTURE_NOISE_TEST;
+	/*  Egis does not support the reset test. */
+	case FINGERPRINT_CAPTURE_TYPE_RESET_TEST:
+	default:
+		return EGIS_CAPTURE_TYPE_INVALID;
+	}
+}
+
 static inline int egis630_enable_irq(const struct device *dev)
 {
 	const struct egis630_cfg *cfg = dev->config;
@@ -249,12 +275,26 @@ static int egis630_acquire_image(const struct device *dev,
 	if (image_buf_size < CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE)
 		return -EINVAL;
 
+	egis_capture_mode_t rc =
+		convert_fp_capture_type_to_egis_capture_type(capture_type);
+
+	if (rc == EGIS_CAPTURE_TYPE_INVALID) {
+		LOG_ERR("Unsupported capture_type %d provided", capture_type);
+		return rc;
+	}
+
 	if (!IS_ENABLED(CONFIG_HAVE_EGIS630_PRIVATE_DRIVER)) {
 		return -ENOTSUP;
 	}
 
-	return convert_egis_get_image_error_code(
-		egis_get_image_with_mode(image_buf, capture_type));
+	int ret = convert_egis_get_image_error_code(
+		egis_get_image_with_mode(image_buf, rc));
+	if (ret < 0) {
+		LOG_ERR("Failed to acquire image with capture_type %d: %d",
+			capture_type, ret);
+	}
+
+	return ret;
 }
 
 static int egis630_finger_status(const struct device *dev)
