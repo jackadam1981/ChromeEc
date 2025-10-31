@@ -304,6 +304,7 @@ extern "C" {
 extern const struct tcpm_drv tcpci_tcpm_drv;
 extern const struct usb_mux_driver tcpci_tcpm_usb_mux_driver;
 
+void tcpci_tcpc_alert_update(int port, int alert_value);
 void tcpci_set_cached_rp(int port, int rp);
 int tcpci_get_cached_rp(int port);
 void tcpci_set_cached_pull(int port, enum tcpc_cc_pull pull);
