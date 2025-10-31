@@ -236,3 +236,18 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+ZTEST(rt1718s_tcpc, test_tcpc_alert)
+{
+	uint16_t alert_mask = TCPC_REG_ALERT_CC_STATUS;
+
+	tcpci_emul_set_reg(rt1718s_emul, TCPC_REG_ALERT, alert_mask);
+	compare_reg_val_with_mask(rt1718s_emul, TCPC_REG_ALERT, alert_mask,
+				  alert_mask);
+
+	if (rt1718s_tcpm_drv.tcpc_alert) {
+		rt1718s_tcpm_drv.tcpc_alert(tcpm_rt1718s_port);
+	}
+
+	compare_reg_val_with_mask(rt1718s_emul, TCPC_REG_ALERT, 0, alert_mask);
+}
