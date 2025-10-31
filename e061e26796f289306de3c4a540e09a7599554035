@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3972f01f_bfa8082f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-31T16:58:15Z",
+      "side": 1,
+      "message": "Use `motion_min_interval` instead.",
+      "revId": "e061e26796f289306de3c4a540e09a7599554035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb1b060_a28d2299",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-31T16:58:15Z",
+      "side": 1,
+      "message": "if `wait_us` is already at `motion_min_interval`, `wait_us` will be 0 and no timer will be set.",
+      "revId": "e061e26796f289306de3c4a540e09a7599554035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

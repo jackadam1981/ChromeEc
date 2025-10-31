@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5279185_dd16895a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-10-31T16:58:15Z",
+      "side": 1,
+      "message": "data stream from a gyroscope at 50Hz it not very usable for virtual sensors like gaming or rotation. We have to figure out how to make sensor working at 100Hz.\n\nCan we measure where the EC is spending time?",
+      "parentUuid": "d3d3fac4_7785548d",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6057ecb7_0bf4bd19",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 5
