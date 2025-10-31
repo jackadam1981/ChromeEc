@@ -1130,28 +1130,48 @@ int tcpci_hard_reset_reinit(int port)
 	return rv;
 }
 
+int tcpc_ctrl_cache[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 enum ec_error_list tcpci_set_bist_test_mode(const int port, const bool enable)
 {
 	int rv = EC_SUCCESS;
+	int new_ctrl;
+	static const int bist_mask = TCPC_REG_TCPC_CTRL_BIST_TEST_MODE;
 
-	if (enable != tcpci_bist_mode[port]) {
-		rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
-				  TCPC_REG_TCPC_CTRL_BIST_TEST_MODE,
-				  enable ? MASK_SET : MASK_CLR);
-		rv |= tcpc_update16(port, TCPC_REG_ALERT_MASK,
-				    TCPC_REG_ALERT_RX_STATUS,
-				    enable ? MASK_CLR : MASK_SET);
+	int *ctrl_cache = &tcpc_ctrl_cache[port];
+
+	new_ctrl = *ctrl_cache;
+
+	if (enable)
+		new_ctrl |= bist_mask;
+	else
+		new_ctrl &= ~bist_mask;
+
+	/*
+	 * If the new control value is the same as the cached value,
+	 * the TCPC_REG_TCPC_CTRL register does not need to be written.
+	 */
+	if (new_ctrl != *ctrl_cache) {
+		rv = tcpc_write(port, TCPC_REG_TCPC_CTRL, new_ctrl);
+
+		if (rv == EC_SUCCESS) {
+			*ctrl_cache = new_ctrl;
+			rv |= tcpc_update16(port, TCPC_REG_ALERT_MASK,
+					    TCPC_REG_ALERT_RX_STATUS,
+					    enable ? MASK_CLR : MASK_SET);
+		}
+	} else {
+		return EC_SUCCESS;
 	}
-
-	if (rv == EC_SUCCESS)
-		tcpci_bist_mode[port] = enable;
 
 	return rv;
 }
 
 enum ec_error_list tcpci_get_bist_test_mode(const int port, bool *enable)
 {
-	*enable = tcpci_bist_mode[port];
+	static const int bist_mask = TCPC_REG_TCPC_CTRL_BIST_TEST_MODE;
+
+	*enable = (tcpc_ctrl_cache[port] & bist_mask) != 0;
 	return EC_SUCCESS;
 }
 
