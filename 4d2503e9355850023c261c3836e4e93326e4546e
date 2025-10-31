@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd879a9_f6eb9127",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-10-31T16:41:42Z",
+      "side": 1,
+      "message": "Low priority: Ideally, we\u0027d get to the point where our interrupt handling on all boards is only reading ALERT once, and we only have one function to do it, but that will be tedious. To allow incremental merging, we\u0027ll need for both ways of calling this to coexist, and I don\u0027t want to duplicate the bit-handling code. I think you could arrange for that like this:\n1. Have this function essentially as-is. We can work on the name.\n2. Modify `tcpci_tcpc_alert` to just read ALERT and call this function. Together, these should be a no-op refactor.\n3. Modify drivers that directly call `tcpci_tcpc_alert` but already have an ALERT value at hand to call this function instead.\n4. Gradually modify other callers to pipe existing ALERT values down to this function.\n5. When all of the existing calls to `tcpci_tcpc_alert` are gone, turn this function into `tcpci_tcpc_alert` and remove the wrapper.",
+      "revId": "4d2503e9355850023c261c3836e4e93326e4546e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
