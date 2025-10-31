@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a422c51_6746da30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-10-31T01:04:11Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8699587060308975105) is being automatically retried for the following reasons:\n- Some child builders are now retryable:brask-cq, brox-cq, brya-cq, cherry-cq, corsola-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "b2ec4ffed964c37ef8d06a09f3a32e2ddc2ff2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
