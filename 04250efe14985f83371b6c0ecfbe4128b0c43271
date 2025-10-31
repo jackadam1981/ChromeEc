@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf500bc_b5469dcb",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-31T09:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7cec99_4c0f6558",
+      "revId": "04250efe14985f83371b6c0ecfbe4128b0c43271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b90a9e6c_a72192d5",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-10-30T17:23:40Z",
       "side": 1,
       "message": "This is no longer writing to `tcpci_bist_mode[port]`, which probably makes `tcpci_get_bist_test_mode` always return false. Make sure that the get and set implementations are in sync and both using the same caching.\n\nThe best way to do that is probably to have `tcpci_get_bist_test_mode` read from the correct bit in `tcpc_ctrl_cache[port]` and get rid of `tcpci_bist_mode`, but for the purposes of this hack, it\u0027s OK to keep both around.",
+      "revId": "04250efe14985f83371b6c0ecfbe4128b0c43271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b3830f3_2e47a8ec",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-10-31T09:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b90a9e6c_a72192d5",
       "revId": "04250efe14985f83371b6c0ecfbe4128b0c43271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
