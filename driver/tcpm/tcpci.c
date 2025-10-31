@@ -1407,6 +1407,181 @@ void tcpci_tcpc_alert(int port)
 		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event);
 }
 
+void tcpci_tcpc_alert_update(int port, int alert_value)
+{
+	int alert = alert_value;
+	int alert_ext = 0;
+	int failed_attempts;
+	uint32_t pd_event = 0;
+	int retval = 0;
+	bool bist_mode;
+	timestamp_t tx_ts = get_time();
+
+	/* Get Extended Alert register if needed */
+	if (alert & TCPC_REG_ALERT_ALERT_EXT)
+		tcpm_alert_ext_status(port, &alert_ext);
+
+	/* Clear any pending faults */
+	if (alert & TCPC_REG_ALERT_FAULT) {
+		int fault;
+
+		if (tcpci_get_fault(port, &fault) == EC_SUCCESS && fault != 0 &&
+		    tcpci_handle_fault(port, fault) == EC_SUCCESS &&
+		    tcpci_clear_fault(port, fault) == EC_SUCCESS)
+			CPRINTS("C%d FAULT 0x%02X handled", port, fault);
+	}
+
+	/*
+	 * Check for TX complete first b/c PD state machine waits on TX
+	 * completion events. This will send an event to the PD tasks
+	 * immediately
+	 */
+	if (alert & TCPC_REG_ALERT_TX_COMPLETE) {
+		int tx_status;
+
+		if (alert & TCPC_REG_ALERT_TX_SUCCESS)
+			tx_status = TCPC_TX_COMPLETE_SUCCESS;
+		else if (alert & TCPC_REG_ALERT_TX_DISCARDED)
+			tx_status = TCPC_TX_COMPLETE_DISCARDED;
+		else
+			tx_status = TCPC_TX_COMPLETE_FAILED;
+
+		pd_transmit_complete(port, tx_status, &tx_ts);
+	}
+
+	tcpc_get_bist_test_mode(port, &bist_mode);
+
+	/* Pull all RX messages from TCPC into EC memory */
+	failed_attempts = 0;
+	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		/*
+		 * Some TCPCs do not properly disable interrupts during BIST
+		 * test mode. For reducing I2C access time,
+		 * there is no need to read out BIST data, just break.
+		 * (see b/229812911).
+		 */
+		if (bist_mode)
+			break;
+
+		retval = tcpm_enqueue_message(port);
+		if (retval)
+			++failed_attempts;
+		if (tcpm_alert_status(port, &alert))
+			++failed_attempts;
+
+		/*
+		 * EC RX FIFO is full. Deassert ALERT# line to exit interrupt
+		 * handler by discarding pending message from TCPC RX FIFO.
+		 */
+		if (retval == EC_ERROR_OVERFLOW) {
+			CPRINTS("C%d: PD RX OVF!", port);
+			tcpc_write16(port, TCPC_REG_ALERT,
+				     TCPC_REG_ALERT_RX_STATUS |
+					     TCPC_REG_ALERT_RX_BUF_OVF);
+		}
+
+		/* Ensure we don't loop endlessly */
+		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
+			CPRINTS("C%d Cannot consume RX buffer after %d failed attempts!",
+				port, failed_attempts);
+			/*
+			 * The port is in a bad state, we don't want to consume
+			 * all EC resources so suspend the port for a little
+			 * while.
+			 */
+			pd_set_suspend(port, 1);
+			pd_deferred_resume(port);
+			return;
+		}
+	}
+
+	/*
+	 * Clear all pending alert bits. Ext first because ALERT.AlertExtended
+	 * is set if any bit of ALERT_EXTENDED is set.
+	 */
+	if (alert_ext)
+		tcpc_write(port, TCPC_REG_ALERT_EXT, alert_ext);
+	if (alert)
+		tcpc_write16(port, TCPC_REG_ALERT, alert);
+
+	if (alert & TCPC_REG_ALERT_CC_STATUS) {
+		/*
+		 * Always report PD_EVENT_CC event if
+		 * CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE is enabled
+		 * so that the CC state change in unattached state
+		 * can be detected.
+		 */
+		if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&
+		    !IS_ENABLED(CONFIG_USB_PD_EVENT_DRIVEN_CC_STATE)) {
+			enum tcpc_cc_voltage_status cc1;
+			enum tcpc_cc_voltage_status cc2;
+
+			/*
+			 * Some TCPCs generate CC Alerts when
+			 * drp auto toggle is active and nothing
+			 * is connected to the port. So, get the
+			 * CC line status and only generate a
+			 * PD_EVENT_CC if something is connected.
+			 */
+			tcpci_tcpm_get_cc(port, &cc1, &cc2);
+			if (cc1 != TYPEC_CC_VOLT_OPEN ||
+			    cc2 != TYPEC_CC_VOLT_OPEN)
+				/* CC status cchanged, wake task */
+				pd_event |= PD_EVENT_CC;
+		} else {
+			/* CC status changed, wake task */
+			pd_event |= PD_EVENT_CC;
+		}
+	}
+
+	tcpci_check_vbus_changed(port, alert, &pd_event);
+
+	/* Check for Hard Reset received */
+	if (alert & TCPC_REG_ALERT_RX_HARD_RST) {
+		/* hard reset received */
+		CPRINTS("C%d Hard Reset received", port);
+
+		tcpm_hard_reset_reinit(port);
+
+		pd_event |= PD_EVENT_RX_HARD_RESET;
+	}
+
+	/* USB TCPCI Spec R2 V1.1 Section 4.7.3 Step 2
+	 *
+	 * The TCPC asserts both ALERT.TransmitSOP*MessageSuccessful and
+	 * ALERT.TransmitSOP*MessageFailed regardless of the outcome of the
+	 * transmission and asserts the Alert# pin.
+	 */
+	if (alert & TCPC_REG_ALERT_TX_SUCCESS &&
+	    alert & TCPC_REG_ALERT_TX_FAILED)
+		CPRINTS("C%d Hard Reset sent", port);
+
+	if (tcpm_tcpc_has_frs_control(port) &&
+	    (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
+		pd_got_frs_signal(port);
+
+	/*
+	 * Check registers to see if we can tell that the TCPC has reset. If
+	 * so, perform a tcpc_init.
+	 *
+	 * Some TCPCs do not properly disable interrupts during BIST test mode.
+	 * As TCPC not reset at this moment, no need to check pd reset status to
+	 * reduce I2C access time.(see b/229812911)
+	 */
+	if (!bist_mode && register_mask_reset(port))
+		pd_event |= PD_EVENT_TCPC_RESET;
+
+	/*
+	 * Wait until all possible TCPC accesses in this function are complete
+	 * prior to setting events and/or waking the pd task. When the PD
+	 * task is woken and runs (which will happen during I2C transactions in
+	 * this function), the pd task may put the TCPC into low power mode and
+	 * the next I2C transaction to the TCPC will cause it to wake again.
+	 */
+	if (pd_event)
+		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event);
+}
+
 test_mockable int tcpci_get_vbus_voltage_no_check(int port, int *vbus)
 {
 	int error, val;
