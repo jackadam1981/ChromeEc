@@ -52,6 +52,24 @@
       "parentUuid": "8cbd4705_fe0d813c",
       "revId": "0c854ec7c8437c4156334180ff6fdfd2a0eddb4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d2f96a_eada9873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2025-10-31T04:38:25Z",
+      "side": 1,
+      "message": "That also works, but I will check/handle disabling fw build on the factory branch later, thanks for the suggestion.",
+      "parentUuid": "c856a447_9d7c4c15",
+      "revId": "0c854ec7c8437c4156334180ff6fdfd2a0eddb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
