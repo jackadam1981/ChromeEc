@@ -9,7 +9,7 @@
 
 def register_corsola_project(
     project_name,
-    chip="it8xxx2/it81202bx",
+    chip="it8xxx2/it81202cx",
     inherited_from=None,
 ):
     """Register a variant of corsola."""
@@ -17,7 +17,7 @@ def register_corsola_project(
     if chip.startswith("npcx"):
         register_func = register_npcx_project
 
-    chip_kconfig = {"it8xxx2/it81202bx": "ite", "npcx9/npcx9m3f": "npcx"}[chip]
+    chip_kconfig = {"it8xxx2/it81202cx": "ite", "npcx9/npcx9m3f": "npcx"}[chip]
     if inherited_from is None:
         inherited_from = ["corsola"]
 
