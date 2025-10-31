@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ae0e47_6131f6fc",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "6e87ed52_bea0ec13",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 38
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47906057_69f5844e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-14T17:12:17Z",
       "side": 1,
       "message": "this doesn\u0027t seem like the place where you\u0027d want to special case\nany particular dot-control sub-commands",
+      "range": {
+        "startLine": 291,
+        "startChar": 16,
+        "endLine": 291,
+        "endChar": 23
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5e5630_afdb9e05",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Thanks Caveh, I have identified to handle this at different place. I will handle this case in separate patch so removed from here.",
+      "parentUuid": "47906057_69f5844e",
       "range": {
         "startLine": 291,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c67f7c8_4cf07bda",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "4059c581_866fa578",
+      "range": {
+        "startLine": 901,
+        "startChar": 18,
+        "endLine": 901,
+        "endChar": 36
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2ed6a7b_fe5e83f9",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-10-14T17:12:17Z",
       "side": 1,
       "message": "uart",
+      "range": {
+        "startLine": 919,
+        "startChar": 50,
+        "endLine": 919,
+        "endChar": 55
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181c1aae_664e0a4c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "d2ed6a7b_fe5e83f9",
       "range": {
         "startLine": 919,
         "startChar": 50,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b90ca3de_82cc0367",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "d41bb4e4_b0e1ef80",
+      "range": {
+        "startLine": 945,
+        "startChar": 20,
+        "endLine": 945,
+        "endChar": 29
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df1e4e13_7fd8955f",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-10-14T17:12:17Z",
       "side": 1,
       "message": "this can be done before/outside the subshell, right?",
+      "range": {
+        "startLine": 965,
+        "startChar": 8,
+        "endLine": 971,
+        "endChar": 10
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f781d29_7116c173",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "df1e4e13_7fd8955f",
       "range": {
         "startLine": 965,
         "startChar": 8,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf748db_50f3b03f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "f953aa14_3d1c4e3c",
+      "range": {
+        "startLine": 975,
+        "startChar": 6,
+        "endLine": 975,
+        "endChar": 23
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485ccc94_d94fe022",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-10-14T17:12:17Z",
       "side": 1,
       "message": "already known to be true",
+      "range": {
+        "startLine": 989,
+        "startChar": 10,
+        "endLine": 989,
+        "endChar": 30
+      },
+      "revId": "a45e5e65136840e5c6eaa89699206c714049aa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2482e6e9_eff90040",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-10-31T13:57:55Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "485ccc94_d94fe022",
       "range": {
         "startLine": 989,
         "startChar": 10,
