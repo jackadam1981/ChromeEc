@@ -470,8 +470,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 		}
 
-		ret = validate_fp_buffer_offset(
-			global_context.current_frame_size, offset, size);
+		ret = validate_buffer_offset(global_context.current_frame_size,
+					     offset, size);
 		if (ret != EC_SUCCESS)
 			return EC_RES_INVALID_PARAM;
 
@@ -489,7 +489,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	if (fgr >= global_context.templ_valid)
 		return EC_RES_UNAVAILABLE;
-	ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+	ret = validate_buffer_offset(sizeof(fp_enc_buffer), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
@@ -693,7 +693,7 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	    size + offsetof(struct ec_params_fp_template, data))
 		return EC_RES_INVALID_PARAM;
 	enum ec_error_list ret =
-		validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset, size);
+		validate_buffer_offset(sizeof(fp_enc_buffer), offset, size);
 	if (ret != EC_SUCCESS)
 		return EC_RES_INVALID_PARAM;
 
