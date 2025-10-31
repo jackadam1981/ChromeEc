@@ -39,6 +39,7 @@
 	pinctrl-names = "default";
 	label = "I2C_1";
 
+/*
 	rts545x@67 {
 		compatible = "realtek,rts545x";
 		reg = <0x67>;
@@ -47,4 +48,5 @@
 		compatible = "realtek,rts545x";
 		reg = <0x68>;
 	};
+*/
 };
