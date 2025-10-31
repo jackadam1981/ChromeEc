@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c3e1cf_aafc8f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-10-31T18:23:45Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to bypass coverage on this CL.  It would take quite a bit of work to cover the error paths.",
+      "revId": "876e3495986e464f29487dda391671b8f434dd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
