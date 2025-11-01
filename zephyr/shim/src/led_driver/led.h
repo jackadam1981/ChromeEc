@@ -9,6 +9,9 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/pwm.h>
+#include <zephyr/drivers/led_strip.h>
+
+#include "common.h"
 
 /*
  * Return string-token if the property exists, otherwise return 0
@@ -123,6 +126,11 @@ struct led_pins_node_t {
 #if CONFIG_PLATFORM_EC_LED_DT_PWM
 	/* Array of PWM pins to set to enable particular color */
 	struct pwm_pin_t *pwm_pins;
+#endif
+
+#if CONFIG_PLATFORM_EC_LED_DT_LIGHTBAR
+	/* RGB color for lightbar */
+	struct led_rgb color;
 #endif
 
 	/* Number of pins per color */
