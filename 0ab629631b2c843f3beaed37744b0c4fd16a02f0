@@ -16,6 +16,24 @@
       "message": "I notice that there aren\u0027t any firmware builders running on this repo.\n\nWe should fix that before landing this change.",
       "revId": "0ab629631b2c843f3beaed37744b0c4fd16a02f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36ad1af_3ebf2dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-01T22:21:30Z",
+      "side": 1,
+      "message": "Should have landed yesterday, not sure why it\u0027s not working currently: crrev/i/8722991",
+      "parentUuid": "03f0f8de_3474fc7d",
+      "revId": "0ab629631b2c843f3beaed37744b0c4fd16a02f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
