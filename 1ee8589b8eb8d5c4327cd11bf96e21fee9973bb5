@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07d9c25f_c278ca9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-11-01T10:44:47Z",
+      "side": 1,
+      "message": "reach 72 characters per line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "1ee8589b8eb8d5c4327cd11bf96e21fee9973bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c0aafb7_914ebfe9",
         "filename": "zephyr/program/tanjiro/sapphire/cbi.dtsi",
         "patchSetId": 18
