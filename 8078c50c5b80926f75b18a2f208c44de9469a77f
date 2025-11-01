@@ -16,6 +16,24 @@
       "message": "@harikrishna.m@7rays.corp-partner.google.com  Is this CL known to cause regressions? If not, should it also be in #pujjoga-fixes?",
       "revId": "8078c50c5b80926f75b18a2f208c44de9469a77f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252bc82e_6de1415a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-01T01:52:35Z",
+      "side": 1,
+      "message": "CL:7106478 is not known to cause any regressions, but I am not so sure about this CL and the redundant alert read CL:7105659.",
+      "parentUuid": "003099a7_2dc8f550",
+      "revId": "8078c50c5b80926f75b18a2f208c44de9469a77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
