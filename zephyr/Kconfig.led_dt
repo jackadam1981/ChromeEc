@@ -28,4 +28,12 @@ config PLATFORM_EC_LED_DT_PWM
 	help
 	  Enable support for devicetree PWM LEDs, requires a node using the
           cros-ec,pwm-led-pins compatible.
+
+config PLATFORM_EC_LED_DT_LIGHTBAR
+	bool "DT Lightbar LED driver"
+	default y
+	select HAS_TASK_LIGHTBAR
+	select LED_STRIP
+	help
+	  Enable support for devicetree Lightbar LEDs.
 endif

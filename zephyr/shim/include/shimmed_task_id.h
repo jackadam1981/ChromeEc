@@ -33,6 +33,7 @@ typedef uint8_t task_id_t;
 enum {
 	EC_TASK_PRIO_LOWEST = 0,
 	EC_SYSWORKQ_PRIO = EC_TASK_PRIO_LOWEST, // 29
+	EC_TASK_LIGHTBAR_PRIO,
 	EC_SHELL_PRIO, // 28
 	EC_TASK_RWSIG_PRIO, // 27
 	EC_TASK_TOUCHPAD_PRIO, // 26
@@ -75,6 +76,11 @@ enum {
  */
 #ifdef CONFIG_SHIMMED_TASKS
 #define CROS_EC_TASK_LIST                                                  \
+	COND_CODE_1(HAS_TASK_LIGHTBAR,                    \
+		    (CROS_EC_TASK(LIGHTBAR, lightbar_task, 0,              \
+				  512,         \
+				  EC_TASK_LIGHTBAR_PRIO, 0)),              \
+		    ())                                                    \
 	COND_CODE_1(HAS_TASK_CHG_RAMP,                                     \
 		    (CROS_EC_TASK(CHG_RAMP, chg_ramp_task, 0,              \
 				  CONFIG_TASK_CHG_RAMP_STACK_SIZE,         \
