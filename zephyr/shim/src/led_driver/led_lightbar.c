@@ -183,6 +183,31 @@ static void lightbar_set_color_manual(enum led_color color, uint8_t brightness)
 	g_lightbar_state.g_step = 0;
 	g_lightbar_state.b_step = 0;
 }
+
+void led_set_color(enum led_color color, enum ec_led_id led_id,uint8_t brightness)
+{
+	struct led_rgb new_color = { 0, 0, 0 };
+	if (color != LED_OFF) {
+		for (int i = 0; i < pins_node_count; i++) {
+			if((pins_node[i]->led_color == color) &&(pins_node[i]->led_id == led_id)) {
+				new_color = pins_node[i]->color;
+				break;
+			}
+		}
+	}
+	LOG_DBG("Manual color set to R:%d G:%d B:%d at %d%% brightness",
+		new_color.r, new_color.g, new_color.b, brightness);
+	g_lightbar_state.color.r =
+		((uint32_t)new_color.r * brightness / 100) << 8;
+	g_lightbar_state.color.g =
+		((uint32_t)new_color.g * brightness / 100) << 8;
+	g_lightbar_state.color.b =
+		((uint32_t)new_color.b * brightness / 100) << 8;
+	g_lightbar_state.r_step = 0;
+	g_lightbar_state.g_step = 0;
+	g_lightbar_state.b_step = 0;
+}
+
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	bool color_set = false;
