@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd004487_12f98077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-02T08:00:07Z",
+      "side": 1,
+      "message": "Added a fix in the unit tests. I think I hit a potential race between the test thread and the body detection thread.",
+      "revId": "573cd20bc5c9644b967d61e106f820a9534d09e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
