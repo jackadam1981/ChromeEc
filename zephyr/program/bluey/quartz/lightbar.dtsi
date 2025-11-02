@@ -1,0 +1,48 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <dt-bindings/led/led.h>
+#include <dt-bindings/macros.h>
+//#include <zephyr/dt-bindings/led/led.h>
+
+/ {
+	aliases {
+		led-strip = &led_strip_uart;
+	};
+};
+
+&uart4 {
+	status = "okay";
+
+	current-speed = <2500000>;
+	pinctrl-0 = <&uart4_sout_gp35>;
+	pinctrl-names = "default";
+	data-bits = <7>;
+	tx-invert;
+
+	led_strip_uart: ws2812-strip {
+		compatible = "worldsemi,ws2812-uart";
+		status = "okay";
+
+		chain-length = <6>;
+		color-mapping = <LED_COLOR_ID_RED
+				LED_COLOR_ID_GREEN
+				LED_COLOR_ID_BLUE>;
+
+		reset-delay = <50>;
+		bits-per-symbol = <3>;
+		one-symbol = <BINARY(1,1,0)>;
+		zero-symbol = <BINARY(1,0,0)>;
+	};
+};
+
+&pcc {
+	clock-frequency = <DT_FREQ_M(80)>;
+	core-prescaler = <2>;
+	apb1-prescaler = <4>;
+	apb2-prescaler = <4>;
+	apb3-prescaler = <4>;
+	apb4-prescaler = <2>;
+};
