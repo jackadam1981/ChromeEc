@@ -24,8 +24,6 @@ const ecPrefix = "src/platform/ec/"
 var expectedCQPatterns = []string{
 	// chromeos-base/chromeos-ec-headers:
 	"src/platform/ec/include/{ec_commands,ec_cmd_api,panic_defs,cros_ec_dev}.h",
-	// chromeos-base/zephyr-build-tools
-	"src/platform/ec/zephyr/zmake/**",
 	// chromeos-base/ec-utils/ec-utils (Optional, uses pupr): make BOARD=host utils-host && cat build/host/util/*.d | tr ' ' '\012' | sort -u
 	// chromeos-base/ec-utils/ec-devutils (Optional, uses pupr):
 	//   include/compile_time_macros.h util/misc_util.h include/update_fw.h include/usb_descriptor.h include/vb21_struct.h include/2id.h extra/usb_updater/usb_updater2.c
@@ -38,14 +36,11 @@ var expectedCQPatterns = []string{
 	"src/platform/ec/extra/rma_reset/**",
 	// TODO: Switch to only the actual deps instead of all of the util dir
 	"src/platform/ec/util/**",
-	// BUILD.py changes that don't match src/project/*/*/config.star can break.
-	"src/platform/ec/zephyr/program/**/BUILD.py",
 }
 
 // gitIgnores are patterns that would normally be ignored by git.
 var gitIgnores = []string{
 	"src/platform/ec/**/__pycache__/**",
-	"src/platform/ec/zephyr/zmake/.hypothesis/**",
 }
 
 func main() {
