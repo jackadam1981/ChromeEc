@@ -97,6 +97,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f46c0895_fc883f56",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Rename it to `validate_led_colors` to state its main purpose.",
+      "range": {
+        "startLine": 287,
+        "startChar": 4,
+        "endLine": 287,
+        "endChar": 12
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8351ccd_13dbed64",
         "filename": "zephyr/scripts/led_policy.py",
         "patchSetId": 3
@@ -137,6 +160,236 @@
         "startChar": 0,
         "endLine": 288,
         "endChar": 66
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb1f5a1_45975bb6",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "The `project_name` argument is missing.",
+      "range": {
+        "startLine": 290,
+        "startChar": 4,
+        "endLine": 290,
+        "endChar": 8
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c23507_2c043f18",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Initialize it using `collections.defaultdict(set)`, such that you don\u0027t need to initialize the set separately (i.e. no line 314).",
+      "range": {
+        "startLine": 302,
+        "startChar": 14,
+        "endLine": 302,
+        "endChar": 16
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762ab201_28c98eb7",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Will it fail if the compat is not defined?",
+      "range": {
+        "startLine": 305,
+        "startChar": 42,
+        "endLine": 305,
+        "endChar": 50
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b35ac34_dc2e11e0",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Add a comment to explain that only one instance can be defined.",
+      "range": {
+        "startLine": 310,
+        "startChar": 39,
+        "endLine": 310,
+        "endChar": 40
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a9fb84_ae5ba20d",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Refactor the logic like:\n```\n   led_id \u003d led_node.props[\"led-id\"].val\n   led_color \u003d color_node.props[\"led-color\"].val\n   led_map[led_id].add(led_color)\n```",
+      "range": {
+        "startLine": 317,
+        "startChar": 24,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dfc828_2e2d4e39",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Like the above comment, define the variables:\n```\n   led_id \u003d led_node.props[\"led-id\"].val\n   led_color \u003d color_node.props[\"led-color\"].val\n```",
+      "range": {
+        "startLine": 332,
+        "startChar": 20,
+        "endLine": 332,
+        "endChar": 53
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adf7c70_2022e1a9",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "You need to check if `led_id` is in `led_map` before accessing it.",
+      "range": {
+        "startLine": 333,
+        "startChar": 34,
+        "endLine": 333,
+        "endChar": 64
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da358eb6_24c9a824",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Use Python f-string to format it:\n```\n f\"led-id \u0027{led_id}\u0027, color \u0027{color}\u0027\"\n```",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 34
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2f38a3_fa399cfe",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Sort it? So the output doesn\u0027t tight to the set implementation.",
+      "range": {
+        "startLine": 342,
+        "startChar": 13,
+        "endLine": 342,
+        "endChar": 28
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327f5b81_cada780f",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-03T22:10:41Z",
+      "side": 1,
+      "message": "Remove `but`. \"%s used in led policy\" is a subject.",
+      "range": {
+        "startLine": 344,
+        "startChar": 39,
+        "endLine": 344,
+        "endChar": 42
       },
       "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
