@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include <zephyr/dt-bindings/input/keymap.h>
+
 / {
 	chosen {
 		cros-ec,keyboard = &kbd;
@@ -122,5 +124,27 @@
 		pin28-gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
 		pin29-gpios = <&gpio1 1 GPIO_ACTIVE_HIGH>;
 		pin30-gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
+	};
+
+	fn-keys {
+		compatible = "cros-ec,fn-keys";
+
+		fn-rc = <KBD_RC(2, 0)>;
+		keymap = <
+			MATRIX_KEY(1, 1, KBD_SCANCODE_F1)
+			MATRIX_KEY(0, 2, KBD_SCANCODE_F2)
+			MATRIX_KEY(3, 2, KBD_SCANCODE_F3)
+			MATRIX_KEY(2, 2, KBD_SCANCODE_F4)
+			MATRIX_KEY(1, 2, KBD_SCANCODE_F5)
+			MATRIX_KEY(3, 4, KBD_SCANCODE_F6)
+			MATRIX_KEY(2, 4, KBD_SCANCODE_F7)
+			MATRIX_KEY(1, 4, KBD_SCANCODE_F8)
+			MATRIX_KEY(2, 9, KBD_SCANCODE_F9)
+			MATRIX_KEY(1, 9, KBD_SCANCODE_F10)
+			MATRIX_KEY(0, 4, KBD_SCANCODE_F11)
+			MATRIX_KEY(3, 9, KBD_SCANCODE_F12)
+
+			MATRIX_KEY(0, 1, KBD_SCANCODE_CAPSLOCK)
+		>;
 	};
 };

@@ -409,6 +409,9 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		make_code = override_code;
 	}
 
+	printk("%s row=%d col=%d pressed=%d override=%x code=%x\n", __func__,
+	       row, col, pressed, override_code, make_code);
+
 #ifdef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 	{
 		enum ec_error_list r =
