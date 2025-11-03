@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a26f1ba_85048aa9",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46c0895_fc883f56",
+      "range": {
+        "startLine": 287,
+        "startChar": 4,
+        "endLine": 287,
+        "endChar": 12
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8351ccd_13dbed64",
@@ -188,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd86d193_15394bf8",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb1f5a1_45975bb6",
+      "range": {
+        "startLine": 290,
+        "startChar": 4,
+        "endLine": 290,
+        "endChar": 8
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7c23507_2c043f18",
@@ -201,6 +249,30 @@
       "writtenOn": "2025-11-03T22:10:41Z",
       "side": 1,
       "message": "Initialize it using `collections.defaultdict(set)`, such that you don\u0027t need to initialize the set separately (i.e. no line 314).",
+      "range": {
+        "startLine": 302,
+        "startChar": 14,
+        "endLine": 302,
+        "endChar": 16
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4ae37f_3895cb6a",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7c23507_2c043f18",
       "range": {
         "startLine": 302,
         "startChar": 14,
@@ -234,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c75829_568a7492",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "No it just returns an empty list.",
+      "parentUuid": "762ab201_28c98eb7",
+      "range": {
+        "startLine": 305,
+        "startChar": 42,
+        "endLine": 305,
+        "endChar": 50
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b35ac34_dc2e11e0",
@@ -247,6 +343,30 @@
       "writtenOn": "2025-11-03T22:10:41Z",
       "side": 1,
       "message": "Add a comment to explain that only one instance can be defined.",
+      "range": {
+        "startLine": 310,
+        "startChar": 39,
+        "endLine": 310,
+        "endChar": 40
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a4514f_8a7c32ba",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b35ac34_dc2e11e0",
       "range": {
         "startLine": 310,
         "startChar": 39,
@@ -280,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92ceb81_393ab0c4",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03a9fb84_ae5ba20d",
+      "range": {
+        "startLine": 317,
+        "startChar": 24,
+        "endLine": 317,
+        "endChar": 31
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1dfc828_2e2d4e39",
@@ -293,6 +437,30 @@
       "writtenOn": "2025-11-03T22:10:41Z",
       "side": 1,
       "message": "Like the above comment, define the variables:\n```\n   led_id \u003d led_node.props[\"led-id\"].val\n   led_color \u003d color_node.props[\"led-color\"].val\n```",
+      "range": {
+        "startLine": 332,
+        "startChar": 20,
+        "endLine": 332,
+        "endChar": 53
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe150ad_91547565",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1dfc828_2e2d4e39",
       "range": {
         "startLine": 332,
         "startChar": 20,
@@ -326,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da619a17_51afefe0",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3adf7c70_2022e1a9",
+      "range": {
+        "startLine": 333,
+        "startChar": 34,
+        "endLine": 333,
+        "endChar": 64
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da358eb6_24c9a824",
@@ -339,6 +531,30 @@
       "writtenOn": "2025-11-03T22:10:41Z",
       "side": 1,
       "message": "Use Python f-string to format it:\n```\n f\"led-id \u0027{led_id}\u0027, color \u0027{color}\u0027\"\n```",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 34
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c6d4ad_377d3e49",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da358eb6_24c9a824",
       "range": {
         "startLine": 336,
         "startChar": 24,
@@ -372,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d89ad3_7160e8d4",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "I don\u0027t believe the order matters.\n\nAll the errors have the same priority and none of them are co-dependent.\n\nIn fact I can\u0027t even think of what criteria I would use to sort them.",
+      "parentUuid": "ed2f38a3_fa399cfe",
+      "range": {
+        "startLine": 342,
+        "startChar": 13,
+        "endLine": 342,
+        "endChar": 28
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "327f5b81_cada780f",
@@ -385,6 +625,30 @@
       "writtenOn": "2025-11-03T22:10:41Z",
       "side": 1,
       "message": "Remove `but`. \"%s used in led policy\" is a subject.",
+      "range": {
+        "startLine": 344,
+        "startChar": 39,
+        "endLine": 344,
+        "endChar": 42
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7698bc_9776a684",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T23:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "327f5b81_cada780f",
       "range": {
         "startLine": 344,
         "startChar": 39,
