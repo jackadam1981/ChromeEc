@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db780b8d_0f8ed1ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T19:25:41Z",
+      "side": 1,
+      "message": "the things in the private library can become:\n\n```\nconfig ELAN_ELAN80SG_LIBRARY\n    bool \"ELAN ELAN80SG library\"\n    default y if FINGERPRINT_SENSOR_ELAN80SG\n    default y if FP_ELAN_ELAN80SG_ALGORITHM\n    depends on ARMV7_M_ARMV8_M_MAINLINE\n    depends on !TEST\n    imply HAVE_ELAN80SSERIES_PRIVATE_ALGORITHM\n    imply HAVE_ELAN80SERIES_PRIVATE_DRIVER\n    help\n      If enabled, the ELAN ELAN80SG library will be linked with firmware.\n```",
+      "revId": "c279cfecd29b3b4c950258492769920359415179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aac77d32_bfefb3bb",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 13
