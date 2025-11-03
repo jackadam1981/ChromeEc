@@ -16,6 +16,24 @@
       "message": "We are exploring options to send the CCOM command from OPM instead of PPM.\nMeanwhile, kindly help review this patch",
       "revId": "d6430567a373bb9e70a848ed9ead64262565e4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d1b53f_228d8eee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-03T18:00:12Z",
+      "side": 1,
+      "message": "I\u0027d like to know about the possibility of using the OPM to initiate this.\n\nThis change would also need unit tests before allowing it to merge.  But I think you should wait until you here from the kernel team before adding unit tests.",
+      "parentUuid": "a6db190b_ca20c22d",
+      "revId": "d6430567a373bb9e70a848ed9ead64262565e4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
