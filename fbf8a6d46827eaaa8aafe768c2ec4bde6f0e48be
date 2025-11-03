@@ -16,6 +16,24 @@
       "message": "Please fix the merge conflicts",
       "revId": "fbf8a6d46827eaaa8aafe768c2ec4bde6f0e48be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ec54ff_5226e429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T06:30:31Z",
+      "side": 1,
+      "message": "Has this been fixed in PS5 and in https://crrev.com/c/7043126?",
+      "parentUuid": "55ec8810_cf3c351e",
+      "revId": "fbf8a6d46827eaaa8aafe768c2ec4bde6f0e48be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
