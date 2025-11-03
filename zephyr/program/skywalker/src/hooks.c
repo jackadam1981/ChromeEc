@@ -18,6 +18,8 @@
 #include "driver/charger/bq257x0_regs.h"
 #endif
 
+LOG_MODULE_REGISTER(skywalker, LOG_LEVEL_INF);
+
 static void skywalker_common_init(void)
 {
 	gpio_enable_dt_interrupt(
@@ -37,17 +39,38 @@ static void skywalker_common_init(void)
 DECLARE_HOOK(HOOK_INIT, skywalker_common_init, HOOK_PRIO_PRE_DEFAULT);
 
 /* USB-A */
+static void skywalker_usba_enable_deferred(struct k_work *work)
+{
+	for (int i = 0; i < USB_PORT_ENABLE_COUNT; i++) {
+		usb_charge_set_mode(i, USB_CHARGE_MODE_ENABLED,
+				    USB_ALLOW_SUSPEND_CHARGE);
+	}
+}
+static K_WORK_DELAYABLE_DEFINE(skywalker_usba_enable_deferred_data,
+			       skywalker_usba_enable_deferred);
+
+static void skywalker_usba_disable_deferred(struct k_work *work)
+{
+	for (int i = 0; i < USB_PORT_ENABLE_COUNT; i++) {
+		usb_charge_set_mode(i, USB_CHARGE_MODE_DISABLED,
+				    USB_ALLOW_SUSPEND_CHARGE);
+	}
+}
+static K_WORK_DELAYABLE_DEFINE(skywalker_usba_disable_deferred_data,
+			       skywalker_usba_disable_deferred);
+
 void xhci_interrupt(enum gpio_signal signal)
 {
 	int xhci_stat = gpio_get_level(signal);
 
+	LOG_INF("xhci=%d", xhci_stat);
 #ifdef USB_PORT_ENABLE_COUNT
-	enum usb_charge_mode usba_mode = xhci_stat ? USB_CHARGE_MODE_ENABLED :
-						     USB_CHARGE_MODE_DISABLED;
-
-	for (int i = 0; i < USB_PORT_ENABLE_COUNT; i++) {
-		usb_charge_set_mode(i, usba_mode, USB_ALLOW_SUSPEND_CHARGE);
-	}
+	if (xhci_stat)
+		k_work_schedule(&skywalker_usba_enable_deferred_data,
+				K_MSEC(200));
+	else
+		k_work_schedule(&skywalker_usba_disable_deferred_data,
+				K_MSEC(0));
 #endif
 
 	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {

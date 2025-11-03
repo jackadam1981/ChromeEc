@@ -37,6 +37,7 @@ static void usb_port_set_enabled(int port_id, int en)
 #endif
 		charge_mode[port_id] = en;
 	}
+	CPRINTS("usba id=%d, en=%d", port_id, en);
 }
 
 __maybe_unused static void usb_port_all_ports_on(void)
