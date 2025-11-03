@@ -6,7 +6,6 @@
 #ifndef __CROS_EC_ATOMIC_BIT_H
 #define __CROS_EC_ATOMIC_BIT_H
 
-#ifndef CONFIG_ZEPHYR
 #include "atomic.h"
 
 #ifdef __cplusplus
@@ -21,5 +20,4 @@ static inline atomic_val_t atomic_get(const atomic_t *target)
 #endif
 
 #include "third_party/zephyr/atomic.h"
-#endif /* CONFIG_ZEPHYR */
 #endif /* __CROS_EC_ATOMIC_BIT_H */
