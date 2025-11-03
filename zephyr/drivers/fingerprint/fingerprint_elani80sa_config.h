@@ -3,10 +3,10 @@
  * found in the LICENSE file.
  */
 
-#ifndef ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_CONFIG_SENSOR_H_
-#define ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_CONFIG_SENSOR_H_
+#ifndef ZEPHYR_DRIVERS_FINGERPRINT_ELANI80SA_CONFIG_SENSOR_H_
+#define ZEPHYR_DRIVERS_FINGERPRINT_ELANI80SA_CONFIG_SENSOR_H_
 
-#define DT_DRV_COMPAT elan_elan80sg
+#define DT_DRV_COMPAT elan_elani80sa
 
 #include "fingerprint_elan80series_private.h"
 
@@ -16,16 +16,20 @@
 
 #include <zephyr/toolchain.h>
 
-#define FP_SENSOR_HWID_ELAN 0x4f4f
+#define FP_SENSOR_HWID_ELAN 0x5253
 
 /* The hardware ID information and FW version */
 #define PID 0x0903 /* USB product ID */
 #define MID 0x01 /* Elan doesn't track model, so this has no meaning. */
 #define VERSION 0x100B /* Elan internal firmware version */
 
-/* Dummy addresses for ELAN80SG to support noop flash function */
+/* Base image address in internal flash */
 #define FLASH_BASE_ADDR 0x10086000
+
+/* Offset for Ft Info record relative to the base image address */
 #define FT_INFO_OFFSET 0x5000
+
+/* Read-only Ft Info address in internal flash (base image address + offset) */
 #define FT_INFO_ADDR (FLASH_BASE_ADDR + FT_INFO_OFFSET)
 
 /**
@@ -71,7 +75,7 @@
  * Sensor real image size:
  * ((IMAGE_HEIGHT * ONE_PIXEL_BYTE) + FP_DUMMY_BYTE) * IMAGE_WIDTH
  */
-#define FP_DUMMY_BYTE 2
+#define FP_DUMMY_BYTE 0
 #define ONE_PIXEL_BYTE 2
 #define IMAGE_TOTAL_PIXEL (IMAGE_WIDTH * IMAGE_HEIGHT)
 #define RAW_PIXEL_SIZE (IMAGE_WIDTH * ONE_PIXEL_BYTE)
@@ -79,14 +83,14 @@
 #define IMG_BUF_SIZE (RAW_DATA_SIZE * IMAGE_HEIGHT)
 
 /* SPI tx and rx buffer size */
-#define ELAN_DMA_LOOP 4
+#define ELAN_DMA_LOOP IMAGE_HEIGHT
 #define ELAN_DMA_SIZE (IMAGE_TOTAL_PIXEL / ELAN_DMA_LOOP)
 #define ELAN_SPI_TX_BUF_SIZE 2
 #define ELAN_SPI_RX_BUF_SIZE (IMG_BUF_SIZE / ELAN_DMA_LOOP)
 
-/* These are only supported on the EFSA80SG. */
+/* These are only supported on the EFSAI80SA. */
 #define CHARGE_PUMP_HVIC 0x83
-#define VOLTAGE_HVIC 0x00
+#define VOLTAGE_HVIC 0x02
 
 /* Polling scan status counter */
 #define POLLING_SCAN_TIMER 10000
@@ -100,7 +104,7 @@
  *  - elan_image_read: Reads the image in a standard block.
  *  - elan_image_read_linewise: Reads the image with a line-wise approach.
  */
-#define IMAGE_READER_IMPL elan_image_read
+#define IMAGE_READER_IMPL elan_image_read_linewise
 
 /*
  * Selects the function used to handle flash addresses for the sensor.
@@ -108,6 +112,6 @@
  *  - use_flash_addresses: Uses FLASH_BASE_ADDR and FT_INFO_ADDR.
  *  - elan_use_flash_noop: Does nothing (used by sensors that do not use flash).
  */
-#define USE_FLASH_IMPL elan_use_flash_noop
+#define USE_FLASH_IMPL use_flash_addresses
 
-#endif /* ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_CONFIG_SENSOR_H_ */
+#endif /* ZEPHYR_DRIVERS_FINGERPRINT_ELANI80SA_CONFIG_SENSOR_H_ */
