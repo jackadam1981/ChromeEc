@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc1b0db9_aa7549a5",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:43:55Z",
+      "side": 1,
+      "message": "```\ndefault 12800 if FINGERPRINT_SENSOR_ELAN80SG\ndefault xxxxx if FINGERPRINT_SENSOR_ELANI80XX\n```",
+      "parentUuid": "bff4a8b2_b8483348",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "526b9f8e_77b872c4",
         "filename": "zephyr/drivers/fingerprint/Kconfig",
         "patchSetId": 9

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "336da33e_cffa2d12",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:43:55Z",
+      "side": 0,
+      "message": "I believe this has to be changed to `if FINGERPRINT_SENSOR_ELAN80SERIES` and the entries below it.",
+      "parentUuid": "64eb5635_89880633",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15faca7e_d08b3b19",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 8
