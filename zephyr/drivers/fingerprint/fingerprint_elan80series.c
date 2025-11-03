@@ -119,7 +119,11 @@ static int elan80series_init(const struct device *dev)
 	if (IS_ENABLED(CONFIG_HAVE_ELAN80SERIES_PRIVATE_DRIVER)) {
 		elan_execute_reset();
 		elan_alg_param_setting();
+#if defined(CONFIG_FINGERPRINT_SENSOR_ELANI80SA)
+		use_flash_addresses(FLASH_BASE_ADDR, FT_INFO_ADDR);
+#endif
 	}
+	elan_register_image_read_func();
 	elan_set_hv_chip(true);
 
 	rc = elan80series_check_hwid(dev);

@@ -104,6 +104,13 @@ int __unused elan_write_page(uint8_t page);
 int __unused elan_write_reg_vector(const uint8_t *reg_table, int length);
 
 /**
+ * @brief Register the image read function for ELAN fingerprint sensors.
+ *
+ * @return None.
+ */
+void elan_register_image_read_func();
+
+/**
  * Get 14bits raw image data from ELAN fingerprint sensor
  *
  * @param[out] short_raw    The memory buffer to receive fingerprint image
