@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5644d904_135684a3",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-03T17:58:42Z",
+      "side": 1,
+      "message": "While it is the most flexible to allow all supported CC modes, what are the side affects of forcing \"RP\" or \"RD\" mode?\n\nI\u0027m not sure we want to give developers the ability to change the CC mode except potentially for disable mode.\n\nWhat\u0027s the expected workflow to re-enable the port after disabling it?",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 0
+      },
+      "revId": "f0c4e3cc81f40c7998035b5f1e4b3402b442914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
