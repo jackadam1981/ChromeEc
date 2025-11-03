@@ -72,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72cc99ea_955ab9a4",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:29:58Z",
+      "side": 1,
+      "message": "I believe this should be `select`\n\n```\nimply F\n\nEnables Feature F? Only suggests enabling Feature F. It sets F\u0027s default value to enabled if the main configuration is chosen.\n\nUser Override? Yes. The user can explicitly disable Feature F, even if the option that implies it is enabled.\n\nTypical Use Case: Used when one feature usually requires another, but the implied feature is not strictly mandatory for all build configurations, or to provide a sensible default.\n```\n\n```\nselect F\nEnables Feature F? Forces Feature F to be enabled. It acts as a hard dependency.\n\nUser Override? No. The user cannot manually disable Feature F as long as the option that selects it remains enabled.\n\nTypical Use Case: Used when one feature is impossible to build or function without Feature F, establishing a strict, non-negotiable dependency.\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6432692_83c6efee",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:29:58Z",
+      "side": 1,
+      "message": "I do not believe this is the right way. This config can be changed by user. We need to make it an internal config and only enabled when needed. I believe you need to remove the message to make it internal:\n\n```\nconfig FINGERPRINT_SENSOR_ELAN80SERIES\n    bool\n    help\n      Enable driver for ELAN 80 series sensor.\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9473edf_aaeb550c",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
         "patchSetId": 9
