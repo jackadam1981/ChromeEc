@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4478ec_7da0d96e",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-03T22:27:34Z",
+      "side": 1,
+      "message": "Does this interact at all with `zephyr/Makefile.cq`? The mocks are already in `TEST_PATTERNS`, which makes sense. Should they be in `GENERATED_AND_SYSTEM_PATTERNS`, which doesn\u0027t really make sense, to avoid blocking CQ on low mock coverage?",
+      "revId": "8e40d6cc3977ef05b0411737b60d54a612f5a8e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
