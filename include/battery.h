@@ -13,16 +13,6 @@
 #include "ec_commands.h"
 #include "host_command.h"
 
-/*
- * If compiling with Zephyr, include the BATTERY_LEVEL_ definitions that are
- * shared with device tree
- */
-#ifdef CONFIG_ZEPHYR
-
-#include "dt-bindings/battery.h"
-
-#else /* !CONFIG_ZEPHYR */
-
 /* Stop charge when charging and battery level >= this percentage */
 #define BATTERY_LEVEL_FULL 100
 
@@ -43,8 +33,6 @@
  * deeply, which isn't good for the battery health.
  */
 #define BATTERY_LEVEL_SHUTDOWN 3
-
-#endif /* CONFIG_ZEPHYR */
 
 #ifdef __cplusplus
 extern "C" {
