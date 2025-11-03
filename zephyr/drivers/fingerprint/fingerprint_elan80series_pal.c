@@ -31,6 +31,9 @@ LOG_MODULE_REGISTER(elan80elan80series_pal, LOG_LEVEL_INF);
 K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE);
 K_SEM_DEFINE(trx_buffer_lock, 1, 1);
 
+typedef int (*elan_image_read_t)(uint16_t *short_raw);
+elan_image_read_t elan_image_read_func = NULL;
+
 static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE];
 static uint8_t rx_buf[ELAN_SPI_RX_BUF_SIZE];
 BUILD_ASSERT(ELAN_SPI_TX_BUF_SIZE == 2);
@@ -274,6 +277,57 @@ int elan_image_read(uint16_t *short_raw)
 	return 0;
 }
 
+int elan_image_read_linewise(uint16_t *short_raw)
+{
+	int ret = 0, i = 0, cnt_timer = 0, rx_index = 0;
+	uint8_t regdata[4] = { 0 };
+
+	for (i = 0; i < ELAN_DMA_LOOP; i++) {
+		/* Polling scan status */
+		cnt_timer = 0;
+		do {
+			cnt_timer++;
+			regdata[0] = SENSOR_STATUS;
+			elan_spi_transaction(regdata, 2, regdata, 2);
+			if (cnt_timer > POLLING_SCAN_TIMER)
+				return ELAN_ERROR_SCAN;
+		} while ((regdata[0] & IMG_READY) == 0);
+
+		/* Read block */
+		k_sem_take(&trx_buffer_lock, K_FOREVER);
+		memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
+		tx_buf[0] = START_READ_IMAGE;
+		ret = elan_spi_transaction_duplex(tx_buf, ELAN_SPI_TX_BUF_SIZE,
+						  rx_buf, ELAN_SPI_RX_BUF_SIZE);
+		if (ret != 0) {
+			LOG_SPI_WRITE_FAIL(__func__, ret);
+			k_sem_give(&trx_buffer_lock);
+			return -EIO;
+		}
+
+		for (int y = 0; y < IMAGE_HEIGHT / ELAN_DMA_LOOP; y++) {
+			for (int x = 0; x < IMAGE_WIDTH; x++) {
+				rx_index = (x * 2) + (RAW_DATA_SIZE * y);
+				short_raw[(x + y * IMAGE_WIDTH) +
+					  i * ELAN_DMA_SIZE] =
+					(rx_buf[rx_index] << 8) +
+					rx_buf[rx_index + 1];
+			}
+		}
+		k_sem_give(&trx_buffer_lock);
+	}
+
+	return ret;
+}
+
+void elan_register_image_read_func()
+{
+	if (IS_ENABLED(CONFIG_FINGERPRINT_SENSOR_ELANI80SA))
+		elan_image_read_func = elan_image_read_linewise;
+	else
+		elan_image_read_func = elan_image_read;
+}
+
 int __unused elan_raw_capture(uint16_t *short_raw)
 {
 	int ret = 0;
@@ -291,9 +345,14 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 		return ret;
 	}
 
-	ret = elan_image_read(short_raw);
+	if (!elan_image_read_func) {
+		LOG_ERR("%s: image read func not initialized", __func__);
+		return -ENODEV;
+	}
+
+	ret = elan_image_read_func(short_raw);
 	if (ret < 0)
-		LOG_ERR("%s: elan_image_read failed (%d)", __func__, ret);
+		LOG_ERR("%s: elan_image_read_func failed (%d)", __func__, ret);
 
 	return ret;
 }
