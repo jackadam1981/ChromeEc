@@ -2,7 +2,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-
 menuconfig FINGERPRINT_SENSOR_ELAN80SG
 	bool "Fingerprint driver for ELAN80SG"
 	default y
@@ -10,6 +9,16 @@ menuconfig FINGERPRINT_SENSOR_ELAN80SG
 	imply FINGERPRINT_SENSOR_ELAN80SERIES
 	help
 	  Driver for ELAN80SG fingerprint sensor. It requires ELAN private library
+	  to implement cros_fingerprint API. If the library is not available it
+	  only supports checking sensor hardware ID.
+
+menuconfig FINGERPRINT_SENSOR_ELANI80SA
+	bool "Fingerprint driver for ELANI80SA"
+	default y
+	depends on DT_HAS_ELAN_ELANI80SA_ENABLED
+	imply FINGERPRINT_SENSOR_ELAN80SERIES
+	help
+	  Driver for ELANI80SA fingerprint sensor. It requires ELAN private library
 	  to implement cros_fingerprint API. If the library is not available it
 	  only supports checking sensor hardware ID.
 
@@ -33,6 +42,7 @@ config FINGERPRINT_SENSOR_ELAN80SERIES_PAL
 config FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE
 	int "Size of heap for ELAN80SERIES driver"
 	default 36864 if FINGERPRINT_SENSOR_ELAN80SG
+	default 52224 if FINGERPRINT_SENSOR_ELANI80SA
 	default 36864
 	help
 	  Size of heap to be used by ELAN private library. The heap must have
