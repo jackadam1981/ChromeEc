@@ -138,38 +138,6 @@ config {CONSOLE_PREFIX}WIBBLE
         ) as out:
             out.write(f"menuconfig {PREFIX}BAD_KCONFIG")
 
-    @classmethod
-    def setup_zephyr_base(cls, zephyr_base):
-        """Set up some Kconfig files in a directory and subdirs
-
-        Args:
-            zephyr_base: Directory to write to
-        """
-        with open(
-            os.path.join(zephyr_base, "Kconfig.zephyr"), "w", encoding="utf-8"
-        ) as out:
-            out.write(
-                """config ZCONFIG
-\tbool "zephyr kconfig"
-
-rsource "subdir/Kconfig.wobble"
-"""
-            )
-        subdir = os.path.join(zephyr_base, "subdir")
-        os.mkdir(subdir)
-        with open(
-            os.path.join(subdir, "Kconfig.wobble"), "w", encoding="utf-8"
-        ) as out:
-            out.write("menuconfig WOBBLE_MENU_KCONFIG\n")
-
-        # Add a directory which should be ignored
-        bad_subdir = os.path.join(subdir, "Kconfig")
-        os.mkdir(bad_subdir)
-        with open(
-            os.path.join(bad_subdir, "Kconfig.bad"), "w", encoding="utf-8"
-        ) as out:
-            out.write("menuconfig BAD_KCONFIG")
-
     def test_find_kconfigs(self):
         """Test KconfigCheck.find_kconfigs()"""
         checker = kconfig_check.KconfigCheck()
@@ -211,24 +179,17 @@ rsource "subdir/Kconfig.wobble"
             self.setup_srctree(srctree)
             with tempfile.NamedTemporaryFile() as allowed:
                 with tempfile.NamedTemporaryFile() as configs:
-                    with tempfile.TemporaryDirectory() as zephyr_path:
-                        self.setup_zephyr_base(zephyr_path)
-                        os.environ["ZEPHYR_BASE"] = str(zephyr_path)
-                        self.setup_allowed_and_configs(
-                            allowed.name, configs.name
-                        )
-                        (
-                            new_adhoc,
-                            unneeded_adhoc,
-                            updated_adhoc,
-                        ) = checker.check_adhoc_configs(
-                            configs.name, srctree, allowed.name, PREFIX_TUPLES
-                        )
-                        self.assertEqual(["NEW_ONE"], new_adhoc)
-                        self.assertEqual(["MENU_KCONFIG"], unneeded_adhoc)
-                        self.assertEqual(
-                            ["CMD_WIBBLE", "OLD_ONE"], updated_adhoc
-                        )
+                    self.setup_allowed_and_configs(allowed.name, configs.name)
+                    (
+                        new_adhoc,
+                        unneeded_adhoc,
+                        updated_adhoc,
+                    ) = checker.check_adhoc_configs(
+                        configs.name, srctree, allowed.name, PREFIX_TUPLES
+                    )
+                    self.assertEqual(["NEW_ONE"], new_adhoc)
+                    self.assertEqual(["MENU_KCONFIG"], unneeded_adhoc)
+                    self.assertEqual(["CMD_WIBBLE", "OLD_ONE"], updated_adhoc)
 
     def test_check(self):
         """Test running the 'check' subcommand"""
@@ -238,12 +199,36 @@ rsource "subdir/Kconfig.wobble"
         ), tempfile.TemporaryDirectory() as srctree:
             with tempfile.NamedTemporaryFile() as allowed:
                 with tempfile.NamedTemporaryFile() as configs:
-                    with tempfile.TemporaryDirectory() as zephyr_path:
-                        self.setup_srctree(srctree)
-                        self.setup_zephyr_base(zephyr_path)
-                        os.environ["ZEPHYR_BASE"] = str(zephyr_path)
+                    self.setup_srctree(srctree)
+                    self.setup_allowed_and_configs(allowed.name, configs.name)
+                    ret_code = kconfig_check.main(
+                        [
+                            "-c",
+                            configs.name,
+                            "-s",
+                            srctree,
+                            "-r",
+                            REPLACE_ARG_1,
+                            REPLACE_ARG_2,
+                            "-a",
+                            allowed.name,
+                            "check",
+                        ]
+                    )
+                    self.assertEqual(1, ret_code)
+        self.assertEqual("", stdout.getvalue())
+        found = re.findall("(CONFIG_.*)", stderr.getvalue())
+        self.assertEqual(["CONFIG_NEW_ONE"], found)
+
+    def test_check_unneeded(self):
+        """Test running the 'check' subcommand with unneeded ad-hoc configs"""
+        with capture_sys_output() as (stdout, stderr):
+            with tempfile.TemporaryDirectory() as srctree:
+                self.setup_srctree(srctree)
+                with tempfile.NamedTemporaryFile() as allowed:
+                    with tempfile.NamedTemporaryFile() as configs:
                         self.setup_allowed_and_configs(
-                            allowed.name, configs.name
+                            allowed.name, configs.name, False
                         )
                         ret_code = kconfig_check.main(
                             [
@@ -260,38 +245,6 @@ rsource "subdir/Kconfig.wobble"
                             ]
                         )
                         self.assertEqual(1, ret_code)
-        self.assertEqual("", stdout.getvalue())
-        found = re.findall("(CONFIG_.*)", stderr.getvalue())
-        self.assertEqual(["CONFIG_NEW_ONE"], found)
-
-    def test_check_unneeded(self):
-        """Test running the 'check' subcommand with unneeded ad-hoc configs"""
-        with capture_sys_output() as (stdout, stderr):
-            with tempfile.TemporaryDirectory() as srctree:
-                self.setup_srctree(srctree)
-                with tempfile.NamedTemporaryFile() as allowed:
-                    with tempfile.NamedTemporaryFile() as configs:
-                        with tempfile.TemporaryDirectory() as zephyr_path:
-                            self.setup_zephyr_base(zephyr_path)
-                            os.environ["ZEPHYR_BASE"] = str(zephyr_path)
-                            self.setup_allowed_and_configs(
-                                allowed.name, configs.name, False
-                            )
-                            ret_code = kconfig_check.main(
-                                [
-                                    "-c",
-                                    configs.name,
-                                    "-s",
-                                    srctree,
-                                    "-r",
-                                    REPLACE_ARG_1,
-                                    REPLACE_ARG_2,
-                                    "-a",
-                                    allowed.name,
-                                    "check",
-                                ]
-                            )
-                            self.assertEqual(1, ret_code)
         self.assertEqual("", stderr.getvalue())
         found = re.findall("(CONFIG_.*)", stdout.getvalue())
         self.assertEqual(["CONFIG_CMD_WIBBLE", "CONFIG_MENU_KCONFIG"], found)

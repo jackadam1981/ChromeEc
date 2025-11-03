@@ -101,14 +101,6 @@ class UartSerial:
             "cleanup_cmd": ["", "chan restore"],
             "end_of_input": CRLF,
         },
-        # EC Zephyr
-        {
-            "prompt": "ec:~$",
-            "device_type": "EC(Zephyr)",
-            "prepare_cmd": ["chan save", "chan 0"],  # Disable console message
-            "cleanup_cmd": ["x", "", "chan restore"],
-            "end_of_input": CRLF,
-        },
     )
 
     def __init__(
