@@ -42,7 +42,7 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define MINIMUM_CHARGING_MV 15000
 
-int blink_cnt, low_adp_blink;
+int blink_cnt, low_adp_blink, blink_cycle;
 
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 					     EC_LED_ID_POWER_LED };
@@ -250,12 +250,15 @@ static void led_set_battery(void)
 					break;
 				default:
 					led_set_color_battery_duty(LED_OFF, 0);
+					if (blink_cnt == 9)
+						blink_cycle++;
 					break;
 				}
 				blink_cnt++;
 				if (blink_cnt >= 10)
 					blink_cnt = 0;
-
+				if (blink_cycle == 6)
+					low_adp_blink = 0;
 			} else if (charge_get_percent() <=
 					   BATTERY_LEVEL_CRITICAL &&
 				   !battery_critical_triggeied) {
@@ -524,6 +527,7 @@ static void pwr_led_init(void)
 
 	blink_cnt = 0;
 	low_adp_blink = 0;
+	blink_cycle = 0;
 }
 DECLARE_HOOK(HOOK_INIT, pwr_led_init, HOOK_PRIO_DEFAULT);
 
@@ -560,5 +564,6 @@ static void low_adp_check(void)
 	else
 		low_adp_blink = 0;
 	blink_cnt = 0;
+	blink_cycle = 0;
 }
 DECLARE_HOOK(HOOK_POWER_SUPPLY_CHANGE, low_adp_check, HOOK_PRIO_DEFAULT);
