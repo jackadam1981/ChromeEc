@@ -42,7 +42,10 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 
 #define MINIMUM_CHARGING_MV 15000
 
-int blink_cnt, low_adp_blink;
+#define LOW_ADP_BLINK_END_STEP 9
+#define LOW_ADP_BLINK_CYCLE 6
+
+int blink_cnt, low_adp_blink_done, blink_cycle;
 
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 					     EC_LED_ID_POWER_LED };
@@ -221,6 +224,8 @@ static void batt_led_config_tick(uint32_t interval, int duty_inc,
 static void low_adp_blink_init(void)
 {
 	blink_cnt = 0;
+	low_adp_blink_done = 0;
+	blink_cycle = 0;
 }
 
 static void led_set_battery(void)
@@ -275,21 +280,32 @@ static void led_set_battery(void)
 			battery_critical_triggeied = 0;
 			hook_call_deferred(&battery_set_pwm_led_tick_data, -1);
 
+			if (low_adp_blink_done)
+				break;
+
 			/* 500ms on, 500ms off, blink three times, then
 			 * off 2 sec, loop */
-			switch (blink_cnt % 10) {
+			switch (blink_cnt % (LOW_ADP_BLINK_END_STEP + 1)) {
 			case 0:
 			case 2:
 			case 4:
 				led_set_color_battery_duty(LED_AMBER, 100);
 				break;
 			default:
+
+				/* End of blink step for one cycle */
+				if (blink_cnt == LOW_ADP_BLINK_END_STEP)
+					blink_cycle++;
 				led_set_color_battery_duty(LED_OFF, 0);
 				break;
 			}
 			blink_cnt++;
-			if (blink_cnt >= 10)
+			if (blink_cnt >= LOW_ADP_BLINK_END_STEP + 1)
 				blink_cnt = 0;
+
+			/* low ADP blink cyle end, total 30 sec */
+			if (blink_cycle == LOW_ADP_BLINK_CYCLE)
+				low_adp_blink_done = 1;
 		}
 		break;
 	case LED_PWRS_ERROR:
