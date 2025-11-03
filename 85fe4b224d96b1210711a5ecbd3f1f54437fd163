@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "95ed141e_73707c6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-03T08:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6cd9dd5_707365d6",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "696e1bc9_0bc64887",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -108,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ce7c26a_5c92f477",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-03T08:26:11Z",
+      "side": 1,
+      "message": "We will try to measure where the EC is spending time.\nSince the IT81xxx EC runs the program directly from internal flash, the EC will have extra latency in fetching code from flash compared to the RAM code architecture EC. The EC will need more cost for content switching or running a thread...\nWe have three config options to eliminate latency in fetching code from flash.\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/main/soc/ite/ec/it8xxx2/Kconfig#215\nThe above three config options require additional RAM space. Unfortunately, IT81xxx\u0027s memory space is out of room; We can\u0027t get the config options enabled.",
+      "parentUuid": "e5279185_dd16895a",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6057ecb7_0bf4bd19",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 5
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "This config is a on/off to guarantee EC will sleep CONFIG_MOTION_MIN_SENSE_WAIT_TIME ms between running motion sense task loop. The CONFIG_MOTION_MIN_SENSE_WAIT_TIME config was defined here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/config.h#2606",
       "parentUuid": "6057ecb7_0bf4bd19",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ed7511_abc9450c",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-03T08:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b84bdd35_8afcd671",
       "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

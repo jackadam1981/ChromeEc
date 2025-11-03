@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be7a0e3_e5c8f763",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-03T08:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3972f01f_bfa8082f",
+      "revId": "e061e26796f289306de3c4a540e09a7599554035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fb1b060_a28d2299",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-31T16:58:15Z",
       "side": 1,
       "message": "if `wait_us` is already at `motion_min_interval`, `wait_us` will be 0 and no timer will be set.",
+      "revId": "e061e26796f289306de3c4a540e09a7599554035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b99de25_81396134",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-03T08:26:11Z",
+      "side": 1,
+      "message": "We tried passing 0 to the task_wait_event() function; the thread will wake up immediately with the TASK_EVENT_TIMER event flag. Does this process meet the expectations we want?",
+      "parentUuid": "9fb1b060_a28d2299",
       "revId": "e061e26796f289306de3c4a540e09a7599554035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
