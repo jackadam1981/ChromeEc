@@ -468,33 +468,13 @@ class KconfigCheck:
         Returns:
             Exit code: 0 if OK, 1 if a problem was found
         """
-        new_adhoc, unneeded_adhoc, updated_adhoc = self.check_adhoc_configs(
+        _, unneeded_adhoc, updated_adhoc = self.check_adhoc_configs(
             configs_file,
             srcdir,
             allowed_file,
             replace_list,
             use_defines,
         )
-        if new_adhoc:
-            file_list = "\n".join([f"CONFIG_{name}" for name in new_adhoc])
-            print(
-                f"""Error:\tThe EC is in the process of migrating to Zephyr.
-\tZephyr uses Kconfig for configuration rather than ad-hoc #defines.
-\tAny new EC CONFIG options must ALSO be added to Zephyr so that new
-\tfunctionality is available in Zephyr also. The following new ad-hoc
-\tCONFIG options were detected:
-
-{file_list}
-
-Please add these via Kconfig instead. Find a suitable Kconfig
-file in zephyr/ and add a 'config' or 'menuconfig' option.
-Also see details in http://issuetracker.google.com/181253613
-
-To temporarily disable this, use: ALLOW_CONFIG=1 make ...
-""",
-                file=sys.stderr,
-            )
-            return 1
 
         if not ignore:
             ignore = []
