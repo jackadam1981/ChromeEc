@@ -52,6 +52,5 @@
 		compatible = "intersil,isl95522";
 		status = "okay";
 		reg = <0x9>;
-		minimum-charging-mv = <15000>;
 	};
 };
