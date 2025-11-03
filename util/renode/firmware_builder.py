@@ -28,10 +28,6 @@ EC_BOARDS = [
     "helipilot",
 ]
 
-ZEPHYR_BOARDS = [
-    "bloonchipper",
-]
-
 
 def build(opts):
     """Build all the EC unit tests."""
@@ -58,7 +54,7 @@ def bundle(opts):
         )
 
 
-def run_device_tests(board: str, working_dir: Path, zephyr: bool):
+def run_device_tests(board: str, working_dir: Path):
     """Run device tests on Renode emulator."""
     cmd = [
         "test/run_device_tests.py",
@@ -68,9 +64,6 @@ def run_device_tests(board: str, working_dir: Path, zephyr: bool):
         "--with_private",
         "no",
     ]
-
-    if zephyr:
-        cmd.append("--zephyr")
 
     subprocess.run(
         cmd,
@@ -117,13 +110,10 @@ def test(_opts):
 
     # Run unit tests with Renode.
     # TODO(b/371633141): Add a parallel option to run_device_tests.py to speed
-    # this up. Right now the EC/Zephyr coverage builders take longer than this,
+    # this up. Right now the EC coverage builders take longer than this,
     # so it doesn't affect overall CQ time.
     for board in EC_BOARDS:
-        run_device_tests(board, working_dir, zephyr=False)
-
-    for board in ZEPHYR_BOARDS:
-        run_device_tests(board, working_dir, zephyr=True)
+        run_device_tests(board, working_dir)
 
 
 def main(args):

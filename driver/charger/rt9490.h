@@ -269,7 +269,6 @@ int rt9490_enable_hidden_mode(int chgnum, bool en);
 
 /*
  * Required for TS_ADC temperature calculation.
- * Non-zephyr devices that using TS_ADC must define this in board layer.
  */
 extern const struct thermistor_info rt9490_thermistor_info;
 
