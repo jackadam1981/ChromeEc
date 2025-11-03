@@ -2,7 +2,6 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-
 menuconfig FINGERPRINT_SENSOR_ELAN80SG
 	bool "Fingerprint driver for ELAN80SG"
 	default y
@@ -22,6 +21,26 @@ config HAVE_ELAN80SG_PRIVATE_DRIVER
 	  If enabled, it indicates that the private driver is present.
 
 endif # FINGERPRINT_SENSOR_ELAN80SG
+
+menuconfig FINGERPRINT_SENSOR_ELANI80SA
+	bool "Fingerprint driver for ELANI80SA"
+	default y
+	depends on DT_HAS_ELAN_ELANI80SA_ENABLED
+	imply FINGERPRINT_SENSOR_ELAN80SERIES
+	help
+	  Driver for ELANI80SA fingerprint sensor. It requires ELAN private library
+	  to implement cros_fingerprint API. If the library is not available it
+	  only supports checking sensor hardware ID.
+
+if FINGERPRINT_SENSOR_ELANI80SA
+
+# Enabled in private driver Kconfig
+config HAVE_ELANI80SA_PRIVATE_DRIVER
+	bool
+	help
+	  If enabled, it indicates that the private driver is present.
+
+endif # FINGERPRINT_SENSOR_ELANI80SA
 
 config FINGERPRINT_SENSOR_ELAN80SERIES
     bool "Enable driver for ELAN 80 series sensors"
@@ -43,6 +62,7 @@ config FINGERPRINT_SENSOR_ELAN80SERIES_PAL
 config FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE
 	int "Size of heap for ELAN80SERIES driver"
 	default 36864 if FINGERPRINT_SENSOR_ELAN80SG
+	default 52224 if FINGERPRINT_SENSOR_ELANI80SA
 	default 36864
 	help
 	  Size of heap to be used by ELAN private library. The heap must have
@@ -53,6 +73,7 @@ config FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE
 config FINGERPRINT_SENSOR_CONFIG_FILE
     string
     default "fingerprint_elan80sg_config.h" if FINGERPRINT_SENSOR_ELAN80SG
+    default "fingerprint_elani80sa_config.h" if FINGERPRINT_SENSOR_ELANI80SA
     default "fingerprint_elan80sg_config.h"
     help
       The header file of the fingerprint sensor configuration to include.
