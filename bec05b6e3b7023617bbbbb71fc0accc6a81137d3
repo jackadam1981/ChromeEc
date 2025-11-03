@@ -16,6 +16,24 @@
       "message": "Why are these changes needed?",
       "revId": "bec05b6e3b7023617bbbbb71fc0accc6a81137d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27237efb_d766a37a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T10:56:46Z",
+      "side": 0,
+      "message": "Fixed in PS7.",
+      "parentUuid": "2e12f2b4_9eb1c5a4",
+      "revId": "bec05b6e3b7023617bbbbb71fc0accc6a81137d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

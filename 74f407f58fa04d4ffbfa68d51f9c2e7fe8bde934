@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0d82495_f3ad1820",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T10:56:46Z",
+      "side": 1,
+      "message": "Yes, up until now, the image size for the 80 series has been 12,800.",
+      "parentUuid": "18020b2d_d4945f28",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6bd345e_0ac26cfb",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2025-11-03T08:33:17Z",
       "side": 1,
       "message": "I don\u0027t think we need two configs for private drivers - one per sensor one for series. Isn\u0027t `HAVE_ELAN80SERIES_PRIVATE_DRIVER` all we need?",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5e14ac_b609bb8e",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T10:56:46Z",
+      "side": 1,
+      "message": "Remove in PS7.",
+      "parentUuid": "b6bd345e_0ac26cfb",
       "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1def7e6b_8900181b",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T10:56:46Z",
+      "side": 1,
+      "message": "Fixed in PS7.",
+      "parentUuid": "a2fa2a4e_1aa89de3",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6acfed0c_647dc0e2",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8587884c_238e3e78",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T10:56:46Z",
+      "side": 1,
+      "message": "Fixed in PS7.",
+      "parentUuid": "6acfed0c_647dc0e2",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01f72e57_a5db3dc3",
@@ -99,6 +171,24 @@
       "writtenOn": "2025-11-03T08:33:17Z",
       "side": 1,
       "message": "Please use `#ifdef` to include a correct header file. Add `#error` if there is no a valid config.",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7258bbcd_6095449a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T10:56:46Z",
+      "side": 1,
+      "message": "Fixed in PS7.",
+      "parentUuid": "01f72e57_a5db3dc3",
       "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
