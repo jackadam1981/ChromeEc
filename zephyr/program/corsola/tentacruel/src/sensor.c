@@ -22,10 +22,16 @@ LOG_MODULE_REGISTER(board_sensor, LOG_LEVEL_INF);
 test_export_static bool base_is_none;
 test_export_static bool lid_is_none;
 
+timestamp_t t_base_start;
+timestamp_t t_lid_start;
+
+bool base_irq, lid_irq;
 void base_sensor_interrupt(enum gpio_signal signal)
 {
 	uint32_t val;
 	int ret;
+
+	t_base_start = get_time();
 
 	ret = cros_cbi_get_fw_config(FORM_FACTOR, &val);
 	if (ret < 0) {
@@ -45,7 +51,9 @@ void base_sensor_interrupt(enum gpio_signal signal)
 		}
 		/* The convertible device gyro sensor default is icm42607 */
 		else {
+			base_irq = true;
 			icm42607_interrupt(signal);
+			base_irq = false;
 		}
 	} else {
 		base_is_none = true;
@@ -56,6 +64,8 @@ void lid_sensor_interrupt(enum gpio_signal signal)
 {
 	uint32_t val;
 	int ret;
+
+	t_lid_start = get_time();
 
 	ret = cros_cbi_get_fw_config(FORM_FACTOR, &val);
 	if (ret < 0) {
@@ -75,7 +85,9 @@ void lid_sensor_interrupt(enum gpio_signal signal)
 		}
 		/* The convertible device lid sensor default is lis2dw12 */
 		else {
+			lid_irq = true;
 			lis2dw12_interrupt(signal);
+			lid_irq = false;
 		}
 	} else {
 		lid_is_none = true;

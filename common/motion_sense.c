@@ -912,6 +912,11 @@ static void check_and_queue_gestures(uint32_t *event)
 }
 #endif
 
+extern timestamp_t t_base_start, t_lid_start;
+uint64_t duration_base_ms, duration_lid_ms, duration_ms;
+timestamp_t t_motion_start, t_motion_end;
+extern bool base_irq, lid_irq;
+
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -1072,7 +1077,27 @@ void motion_sense_task(void *u)
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_get_all();
 		}
+
+		t_motion_end = get_time();
+		duration_ms = (t_motion_end.val - t_motion_start.val)/1000;
+		printk("[DEBUG-seneor] total duration_base_ms %llu ms, duration_lid_ms %llu ms\n",
+			duration_base_ms + duration_ms,
+			duration_lid_ms + duration_ms);
+
+		//printk("[DEBUG-seneor] wait_us %d ms\n", wait_us);
+
 		event = task_wait_event(wait_us);
+
+		t_motion_start = get_time();
+
+		if (base_irq) {
+			duration_base_ms = (t_motion_start.val - t_base_start.val)/1000;
+		}
+
+		if (lid_irq) {
+			duration_lid_ms = (t_motion_start.val - t_lid_start.val)/1000;
+		}
+
 		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_put_all();
