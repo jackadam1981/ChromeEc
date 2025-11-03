@@ -23,18 +23,6 @@ import textwrap
 
 BUG_NONE_PATTERN = re.compile("none", flags=re.IGNORECASE)
 
-ZEPHYR_MODULES = {
-    "picolibc": {
-        "path": "src/third_party/zephyr/picolibc",
-        "main": "main",
-    },
-    "cmsis": {
-        "path": "src/third_party/zephyr/cmsis",
-        "main": "chromeos-main",
-    },
-}
-ZEPHYR_MODULE_LIST = list(ZEPHYR_MODULES.keys())
-
 
 def git_commit_msg(cros_main, branch, head, merge_head, rel_paths, cmd):
     """Generates a merge commit message based off of relevant changes.
@@ -378,58 +366,20 @@ def main(argv):
         action=("store_true"),
         help=("Remove non-root OWNERS level files if present"),
     )
-    parser.add_argument(
-        "--zephyr",
-        "-z",
-        action=("store_true"),
-        help=("If set, treat the board as a Zephyr based program"),
-    )
-    parser.add_argument(
-        "--zephyr-modules",
-        nargs="*",
-        default=ZEPHYR_MODULE_LIST,
-        help=(
-            "A list of Zephyr modules to merge. "
-            "Defaults to all known modules if not specified. "
-            "Provide the flag with no arguments to select no modules. "
-            "Only applies if --zephyr is also set. "
-            f"Known modules: {', '.join(ZEPHYR_MODULE_LIST)}"
-        ),
-    )
 
     opts = parser.parse_args(argv[1:])
-
-    if opts.zephyr_modules != ZEPHYR_MODULE_LIST and not opts.zephyr:
-        parser.error(
-            "The --zephyr-modules argument requires the --zephyr flag to be specified as well."
-        )
-
-    if opts.zephyr_modules:
-        for module_name in opts.zephyr_modules:
-            if module_name not in ZEPHYR_MODULES:
-                valid_modules = ", ".join(ZEPHYR_MODULE_LIST)
-                parser.error(
-                    f"Invalid Zephyr module specified: '{module_name}'. "
-                    f"Valid modules are: {valid_modules}."
-                )
 
     baseboard_dir = ""
     board_dir = ""
 
     if opts.baseboard:
-        # If a zephyr board, no baseboard allowed
-        if opts.zephyr:
-            raise ValueError("--baseboard not allowed for Zephyr boards")
         # Dereference symlinks so "git log" works as expected.
         baseboard_dir = os.path.relpath("baseboard/" + opts.baseboard)
         baseboard_dir = os.path.relpath(os.path.realpath(baseboard_dir))
 
         boards = get_relevant_boards(opts.baseboard)
     elif opts.board:
-        if opts.zephyr:
-            board_dir = os.path.relpath("zephyr/program/fpmcu/" + opts.board)
-        else:
-            board_dir = os.path.relpath("board/" + opts.board)
+        board_dir = os.path.relpath("board/" + opts.board)
         board_dir = os.path.relpath(os.path.realpath(board_dir))
         boards = [opts.board]
     else:
@@ -443,9 +393,8 @@ def main(argv):
     elif opts.board:
         relevant_paths.append(board_dir)
 
-    if not opts.zephyr:
-        for board in boards:
-            relevant_paths.append("board/" + board)
+    for board in boards:
+        relevant_paths.append("board/" + board)
 
     # Check for the existence of a file that has other paths of interest.
     # Also check for 'relevant-paths.txt' in the board directory
@@ -517,50 +466,6 @@ def main(argv):
         prunelist,
         relevant_paths,
     )
-    if opts.zephyr:
-        # Strip off any trailing -main or -master from branch name
-        if opts.release_branch.endswith("-main"):
-            opts.release_branch = opts.release_branch[:-5]
-        if opts.release_branch.endswith("-master"):
-            opts.release_branch = opts.release_branch[:-7]
-        cmd_checkout = [
-            "git",
-            "checkout",
-            "-B",
-            opts.release_branch,
-            opts.remote_prefix + "/" + opts.release_branch,
-        ]
-        prunelist = []
-        if opts.remove_owners:
-            # Remove the top level OWNERS file from the list
-            # to avoid any conflict with the modified branch file.
-            prunelist.append("OWNERS")
-        merge_repo(
-            os.path.join(opts.srcbase, "src/third_party/zephyr/main"),
-            cros_main,
-            cmd_checkout,
-            strategy,
-            cmd,
-            prunelist,
-            [],
-        )
-
-        for module_name in opts.zephyr_modules:
-            print(f"Merging Zephyr module: {module_name}")
-            module_info = ZEPHYR_MODULES[module_name]
-            module_path = os.path.join(opts.srcbase, module_info["path"])
-            module_cros_main = opts.remote_prefix + "/" + module_info["main"]
-
-            merge_repo(
-                module_path,
-                module_cros_main,
-                cmd_checkout,
-                strategy,
-                cmd,
-                prunelist,
-                [],
-            )
-
     print(
         (
             "Finished! **Please review the commit(s) to see if they're to your "
