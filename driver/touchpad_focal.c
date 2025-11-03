@@ -21,8 +21,8 @@
 #include "util.h"
 #include "watchdog.h"
 
-#include <zephyr/devicetree.h>
-#include <zephyr/sys/byteorder.h>
+// JPM #include <zephyr/devicetree.h>
+// JPM #include <zephyr/sys/byteorder.h>
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_TOUCHPAD, outstr)

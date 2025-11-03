@@ -8,8 +8,8 @@
 #include "include/ppm.h"
 #include "ppm_common.h"
 
-#include <zephyr/device.h>
-#include <zephyr/logging/log.h>
+// JPM #include <zephyr/device.h>
+// JPM #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(ppm_common, LOG_LEVEL_INF);
 

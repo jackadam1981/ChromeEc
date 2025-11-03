@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include <zephyr/device.h>
+// JPM #include <zephyr/device.h>
 
 /* Forward declarations. */
 struct ucsi_pd_driver;
@@ -35,7 +35,7 @@ struct ppm_common_device {
 	/* Parent PD driver instance. Not OWNED. */
 	const struct ucsi_pd_driver *pd;
 
-	/* Zephyr device instance for this driver. */
+	/* Zephyr device instance for this driver. */ // JPM
 	const struct device *device;
 
 	/* Doorbell notification callback (and context). */

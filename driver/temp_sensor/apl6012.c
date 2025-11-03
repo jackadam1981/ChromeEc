@@ -76,7 +76,8 @@ void apl6012_update_temperature(int idx)
 
 	/* Vin = (10mV * REG_ch_val) + 1V */
 	mv = ch_val * APL6012_MV_STEP + APL6012_MV_OFFSET;
-	temp_c = thermistor_linear_interpolate(mv,
-					       sensor->zephyr_info->thermistor);
+	temp_c = thermistor_linear_interpolate(
+		mv,
+		sensor->zephyr_info->thermistor); // TODO JPM
 	temps[idx] = CELSIUS_TO_MILLI_KELVIN(temp_c);
 }

@@ -79,15 +79,6 @@ or a unit test image. For complete details, refer to the `--help` output.
 > runtest
 ```
 
-```bash
-# Build the bloonchipper Zephyr image.
-(chroot) $ zmake build bloonchipper
-# Run the image in Renode.
-(chroot) $ ./util/renode-ec-launch -b bloonchipper --zephyr
-# Connect to the console.
-(chroot) $ screen /tmp/renode-uart
-```
-
 [`renode-ec-launch`]: ../renode-ec-launch
 
 ## Connecting GDB to Renode

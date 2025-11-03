@@ -8,8 +8,6 @@
 #ifndef __CROS_EC_USB_SM_H
 #define __CROS_EC_USB_SM_H
 
-#include "compiler.h" /* for typeof() on Zephyr */
-
 #ifdef __cplusplus
 extern "C" {
 #endif
