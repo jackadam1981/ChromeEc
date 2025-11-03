@@ -337,9 +337,7 @@ const struct host_command *find_host_command(int command)
 		if (!command_is_allowed_in_safe_mode(command))
 			return NULL;
 	}
-	if (IS_ENABLED(CONFIG_ZEPHYR)) {
-		return zephyr_find_host_command(command);
-	} else if (IS_ENABLED(CONFIG_HOSTCMD_SECTION_SORTED)) {
+	if (IS_ENABLED(CONFIG_HOSTCMD_SECTION_SORTED)) {
 		const struct host_command *l, *r, *m;
 		uint32_t num;
 
