@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ab07db_2981258c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:08:26Z",
+      "side": 1,
+      "message": "can you still build for buccaneer?\n\n```\nzmake -D build buccaneer --clobber\n```",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
