@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeea4689_a1fb11dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T06:30:17Z",
+      "side": 1,
+      "message": "PS6 renames both \"elan80sg\" and \"elani80sa\" to \"elan80series\", \nso the same driver can be used for both \"elan80sg\" and \"elani80sa\".",
+      "parentUuid": "43efbaf4_111fab76",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21d7b2db_e3020104",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-23T15:08:29Z",
       "side": 1,
       "message": "Do we really need a new config? Maybe rename the existing config to something with \"series\" as the source code?",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a693f9cf_455147cd",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T06:30:17Z",
+      "side": 1,
+      "message": "Fixed in PS6.",
+      "parentUuid": "21d7b2db_e3020104",
       "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "074f428e_bb5a8886",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80series_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T06:30:17Z",
+      "side": 1,
+      "message": "Yes, it fixed in PS6 and https://crrev.com/c/7093794.",
+      "parentUuid": "5466ec79_7eff2459",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4100c72_29f26c64",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5137336d_e51a0a6e",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80series_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T06:30:17Z",
+      "side": 1,
+      "message": "Fixed in PS6",
+      "parentUuid": "d4100c72_29f26c64",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f95e4236_57d690a2",
@@ -82,6 +154,24 @@
       "writtenOn": "2025-10-23T15:08:29Z",
       "side": 1,
       "message": "This pattern is commonly used. Add a macro with it to reuse the pattern.",
+      "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704c7b9a_20e7d23a",
+        "filename": "zephyr/subsys/fingerprint/alg/elan_elan80series_bio_alg.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-03T06:30:17Z",
+      "side": 1,
+      "message": "Fixed in PS6.",
+      "parentUuid": "f95e4236_57d690a2",
       "revId": "840d02a2093442bca81d18d62b69f1bc2957d3ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
