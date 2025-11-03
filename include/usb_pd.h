@@ -3768,6 +3768,10 @@ enum pd_debug_interval {
 	 * pd_ts_name valid.
 	 */
 	PD_INTERVAL_INVALID,
+	PD_INTERVAL_HR_PE_SRC_INITIATE, /* HR initiated by PE SRC */
+	PD_INTERVAL_HR_PRL_INITIATE, /* HR initiated by PRL */
+	PD_INTERVAL_HR_PHY_COMPLETE, /* HR interval take PHY to complete */
+	PD_INTERVAL_HR_PE_SNK_INITIATE, /* HR initiated by PE SNK */
 	PD_INTERVAL_COUNT,
 };
 

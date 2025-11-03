@@ -3232,8 +3232,13 @@ static void pe_src_hard_reset_entry(int port)
 {
 	print_current_state(port);
 
+	pd_record_timestamp_start(port, PD_INTERVAL_HR_PE_SRC_INITIATE);
+
 	/* Generate Hard Reset Signal */
 	prl_execute_hard_reset(port);
+
+	pd_record_timestamp_end(port, PD_INTERVAL_HR_PE_SRC_INITIATE);
+	pd_print_timestamps(port);
 
 	/* Increment the HardResetCounter */
 	pe[port].hard_reset_counter++;
@@ -4195,6 +4200,7 @@ static void pe_snk_hard_reset_entry(int port)
 #endif
 
 	print_current_state(port);
+	pd_record_timestamp_start(port, PD_INTERVAL_HR_PE_SNK_INITIATE);
 
 	/*
 	 * Note: If the SinkWaitCapTimer times out and the HardResetCounter is
@@ -4298,6 +4304,8 @@ static void pe_snk_hard_reset_entry(int port)
 			charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 						pe[port].curr_limit);
 	}
+	pd_record_timestamp_end(port, PD_INTERVAL_HR_PE_SNK_INITIATE);
+	pd_print_timestamps(port);
 }
 
 static void pe_snk_hard_reset_run(int port)

@@ -1337,6 +1337,8 @@ static void prl_hr_reset_layer_entry(const int port)
 
 	print_current_prl_hr_state(port);
 
+	pd_record_timestamp_start(port, PD_INTERVAL_HR_PRL_INITIATE);
+
 	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
 		tch[port].flags = 0;
 		rch[port].flags = 0;
@@ -1391,7 +1393,9 @@ static void prl_hr_reset_layer_run(const int port)
 		 * Request PHY to perform a Hard Reset. Note
 		 * PRL_HR_Request_Reset state is embedded here.
 		 */
+		pd_record_timestamp_start(port, PD_INTERVAL_HR_PHY_COMPLETE);
 		prl_hr_send_msg_to_phy(port);
+		pd_record_timestamp_end(port, PD_INTERVAL_HR_PHY_COMPLETE);
 		set_state_prl_hr(port, PRL_HR_WAIT_FOR_PHY_HARD_RESET_COMPLETE);
 	}
 	/*
@@ -1428,6 +1432,7 @@ static void prl_hr_wait_for_phy_hard_reset_complete_run(const int port)
 
 		/* Inform Policy Engine Hard Reset was sent */
 		pe_hard_reset_sent(port);
+		pd_record_timestamp_end(port, PD_INTERVAL_HR_PRL_INITIATE);
 		set_state_prl_hr(port, PRL_HR_WAIT_FOR_PE_HARD_RESET_COMPLETE);
 
 		return;

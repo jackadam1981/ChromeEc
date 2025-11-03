@@ -868,6 +868,10 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
 	"Invalid interval",
+	[PD_INTERVAL_HR_PE_SRC_INITIATE] = "PE initiate SRC HR signal",
+	[PD_INTERVAL_HR_PRL_INITIATE] = "PRL initiate HR signal",
+	[PD_INTERVAL_HR_PHY_COMPLETE] = "PHY completes HR signal",
+	[PD_INTERVAL_HR_PE_SNK_INITIATE] = "PE initiate SNK HR signal",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 
