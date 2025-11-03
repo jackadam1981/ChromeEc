@@ -16,6 +16,24 @@
       "message": "there will a latch that the cbi_boardversion \u003c -1, I suggest to add else { LOG_ERR(\"Error: not a acceptable version.\");\n}",
       "revId": "b06824beccc4640896bc39365eb01dd8486a5fea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1fc8e8_bf0d7517",
+        "filename": "zephyr/program/trulo/uldrenite/src/mp2964_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2025-11-03T09:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7c3801_3fa41645",
+      "revId": "b06824beccc4640896bc39365eb01dd8486a5fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
