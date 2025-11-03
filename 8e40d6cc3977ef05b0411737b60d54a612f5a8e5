@@ -34,6 +34,24 @@
       "parentUuid": "ef4478ec_7da0d96e",
       "revId": "8e40d6cc3977ef05b0411737b60d54a612f5a8e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1cd6d8_aa911f28",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-03T23:05:48Z",
+      "side": 1,
+      "message": "Well, the goal of this CL is to exclude the entire files instead of individual functions, so maybe I do want it in `GENERATED_AND_SYSTEM_PATTERNS`. Any concern about doing that and making the name not make sense anymore?\n\nI thought that the basic operation of `lcov` was to include in the denominator only files that were included in the build of the coverage executables. I believe the mocks were only included in the legacy build, and I wouldn\u0027t have expected them to be in the denominator of a Zephyr coverage run anyway. Is that right?",
+      "parentUuid": "95c2e14f_2e4b2592",
+      "revId": "8e40d6cc3977ef05b0411737b60d54a612f5a8e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
