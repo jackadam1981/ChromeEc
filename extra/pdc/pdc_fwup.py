@@ -164,8 +164,7 @@ class ServodClient(xmlrpc.client.ServerProxy):
 
 
 # Number of host FWUP packets to send at a time, per call to
-# `pdc_rtk_fwup write`. This is impacted by the Zephyr shell buffer size.
-# Overrunning this buffer on the EC console side will result in loss of data.
+# `pdc_rtk_fwup write`.
 HOST_FWUP_PACKET_MAX_CHUNK_COUNT = 2
 
 # Maximum number of FW payload bytes that can be included in each write packet,
@@ -179,8 +178,6 @@ RTK_FLASH_SEGMENT_SIZE = 64 * 1024  # 64 KiB
 # Size of a PDC FW image
 RTK_FLASH_BANK_SIZE = RTK_FLASH_SEGMENT_SIZE * 2
 
-# Struct definition must match the EC's `struct host_fwup_packet` in
-# `zephyr/drivers/usbc/pdc_rts54xx_fwup.c`
 HOST_FWUP_PACKET_FMT = "<BHB29s"
 assert struct.calcsize(HOST_FWUP_PACKET_FMT) == 33
 
