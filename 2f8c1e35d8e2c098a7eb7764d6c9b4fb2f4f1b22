@@ -50,6 +50,29 @@
       "message": "Please do not introduce logical changes in this CL.",
       "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca9bf53_dba27359",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:21:04Z",
+      "side": 0,
+      "message": "those do not belong to the renaming. They should be separate CL",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

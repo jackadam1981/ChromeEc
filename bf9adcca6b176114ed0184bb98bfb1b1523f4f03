@@ -91,6 +91,69 @@
       },
       "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff2e89b_9afb2c36",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:21:04Z",
+      "side": 1,
+      "message": "same thing here. This does not belong here. make it a separate CL",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb0ea73_02bde655",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:21:04Z",
+      "side": 1,
+      "message": "this extra line does not being here. separate CL",
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51730cb8_51010171",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:21:04Z",
+      "side": 1,
+      "message": "put this into a separate CL",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 1
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
