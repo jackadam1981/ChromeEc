@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13689d1_5723eb5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-03T22:17:42Z",
+      "side": 1,
+      "message": "As I have pointed out before, the board ID value is absent after a sysjump because the board ID driver didn\u0027t initialize the IO expander device driver needed to read board ID pins. The [power state hooks](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/board_id/board_id_intel_rvp.c;l\u003d161) are waiting for a transition into S5, which already happened during the previous boot cycle (before sysjump) and won\u0027t happen again unless the AP restarts.\n\nPlease fix this in the board ID driver instead of trying to save the board ID in CBI or jumptags. For example: if the board is already in S5 or above, call `device_init(gpio_port)` immediately.",
+      "revId": "2d68dae1113cf8eca0456f91b7a2db7f1b713147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
