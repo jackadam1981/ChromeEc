@@ -3,8 +3,6 @@
  * found in the LICENSE file.
  */
 
-#define DT_DRV_COMPAT elan_elan80sg
-
 #include "fingerprint_elan80series.h"
 #include "fingerprint_elan80series_pal.h"
 #include "fingerprint_elan80series_private.h"
@@ -121,7 +119,11 @@ static int elan80series_init(const struct device *dev)
 	if (IS_ENABLED(CONFIG_HAVE_ELAN80SERIES_PRIVATE_DRIVER)) {
 		elan_execute_reset();
 		elan_alg_param_setting();
+#if defined(CONFIG_FINGERPRINT_SENSOR_ELANI80SA)
+		use_flash_addresses(FLASH_BASE_ADDR, FT_INFO_ADDR);
+#endif
 	}
+	elan_register_image_read_func();
 	elan_set_hv_chip(true);
 
 	rc = elan80series_check_hwid(dev);
@@ -473,4 +475,9 @@ static int elan80series_init_driver(const struct device *dev)
 			      CONFIG_FINGERPRINT_SENSOR_INIT_PRIORITY,       \
 			      &cros_fp_elan80series_driver_api)
 
+#define DT_DRV_COMPAT elan_elani80sa
+DT_INST_FOREACH_STATUS_OKAY(ELAN80SERIES_DEFINE);
+
+#undef DT_DRV_COMPAT
+#define DT_DRV_COMPAT elan_elan80sg
 DT_INST_FOREACH_STATUS_OKAY(ELAN80SERIES_DEFINE);
