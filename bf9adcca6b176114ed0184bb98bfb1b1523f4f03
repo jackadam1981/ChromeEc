@@ -22,6 +22,75 @@
       },
       "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff4a8b2_b8483348",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:14:40Z",
+      "side": 1,
+      "message": "does this depend on the series or the specific sensor implementation?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526b9f8e_77b872c4",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:14:40Z",
+      "side": 1,
+      "message": "does this depend on the series or the specific sensor implementation?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9473edf_aaeb550c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T18:14:40Z",
+      "side": 1,
+      "message": "The line `#define DT_DRV_COMPAT elan_elan80sg` remains unchanged. This means the renamed `elan80series` driver will still only bind to devicetree nodes with `compatible \u003d \"elan,elan80sg\".`",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
