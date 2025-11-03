@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f9ee87_459a0052",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T21:49:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5220641_a88ed8f5",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c67573_7c81dc28",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5aa242f_5668d6f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T21:49:24Z",
+      "side": 1,
+      "message": "Yes, I\u0027m working on refactoring the LED driver now. They will be gone when the driver is refactored.",
+      "parentUuid": "70c67573_7c81dc28",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8351ccd_13dbed64",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-03T20:30:50Z",
       "side": 1,
       "message": "Nit - can you expand on this comment?  What kind of error does this catch?",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "12c0ece4afec7ddd8783da015267392e42df3810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ee7969_a77d62ad",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-11-03T21:49:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8351ccd_13dbed64",
       "range": {
         "startLine": 288,
         "startChar": 0,
