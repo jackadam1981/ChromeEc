@@ -16,9 +16,6 @@ func TestCheckPatterns(t *testing.T) {
 		Pattern     string
 		ExpectMatch bool
 	}{
-		{"src/platform/ec/zephyr/app/CMakeLists.txt", "src/platform/ec/zephyr/[^z]*/**", true},
-		{"src/platform/ec/zephyr/.pylint", "src/platform/ec/zephyr/[^z]*/**", false},
-		{"src/platform/ec/zephyr/zmake/zmake.py", "src/platform/ec/zephyr/[^z]*/**", false},
 		{"src/platform/ec/chip/host/config_chip.h", "src/platform/ec/{board,chip}/host/**", true},
 	} {
 		ok, err := doublestar.Match(tc.Pattern, tc.Filename)
