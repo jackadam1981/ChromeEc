@@ -89,7 +89,7 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 		fn_key_triggered = true;
 	}
 
-	LOG_DBG("fn_key_pressed=%d fn_keys_status=%02x", fn_key_pressed,
+	LOG_INF("fn_key_pressed=%d fn_keys_status=%02x", fn_key_pressed,
 		fn_keys_status);
 
 	keyboard_state_changed_process(row, col, is_pressed, override_code);
