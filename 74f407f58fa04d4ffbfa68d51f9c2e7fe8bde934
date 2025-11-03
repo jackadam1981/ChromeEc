@@ -16,6 +16,91 @@
       "message": "There is still a merge conflict",
       "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18020b2d_d4945f28",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-03T08:33:17Z",
+      "side": 1,
+      "message": "Are values in this file always the same for all elan80 series sensors?",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6bd345e_0ac26cfb",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-03T08:33:17Z",
+      "side": 1,
+      "message": "I don\u0027t think we need two configs for private drivers - one per sensor one for series. Isn\u0027t `HAVE_ELAN80SERIES_PRIVATE_DRIVER` all we need?",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fa2a4e_1aa89de3",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-03T08:33:17Z",
+      "side": 1,
+      "message": "This is not a correct usage of Kconfig, please use `#ifdef` in a header file.",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acfed0c_647dc0e2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-03T08:33:17Z",
+      "side": 1,
+      "message": "Please don\u0027t introduce new functionality in this CL. It should only rename/rework the driver.",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f72e57_a5db3dc3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-03T08:33:17Z",
+      "side": 1,
+      "message": "Please use `#ifdef` to include a correct header file. Add `#error` if there is no a valid config.",
+      "revId": "74f407f58fa04d4ffbfa68d51f9c2e7fe8bde934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
