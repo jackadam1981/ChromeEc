@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dabe8325_4ae8474a",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-03T19:17:48Z",
+      "side": 1,
+      "message": "I do not believe you need to do this:\n\nmake this an internal config:\n\n```\nconfig FP_ELAN_ELAN80SERIES_ALGORITHM\n\t  bool\n\t  help\n\t    Enable ELAN ELAN80SERIES matching algorithm. To work properly, ELAN\n\t\tprivate library is required.\n```\n\nkeep the sensor specific config. It is should select `FP_ELAN_ELAN80SERIES_ALGORITHM` when it is enabled.\n\n```\nconfig FP_ELAN_ELAN80SG_ALGORITHM\n\t  bool \"ELAN ELAN80SG matching algorithm\"\n\t  default y if FINGERPRINT_SENSOR_ELAN80SG\n\t  select FP_ELAN_ELAN80SERIES_ALGORITHM\n\t  help\n\t    Enable ELAN ELAN80SG matching algorithm. To work properly, ELAN\n\t\tprivate library is required.\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "c9a80348a5fb3fec5108964a28f797764f58b015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9bbbfe9_4f7b0b16",
         "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
         "patchSetId": 10
