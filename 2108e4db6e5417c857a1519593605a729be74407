@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83e5555_e6360d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-03T19:01:29Z",
+      "side": 1,
+      "message": "Please add test coverage in this CL chain.  Deferring test coverage until later should only be done for items that are blocking a milestone.",
+      "parentUuid": "ed3388e6_0348f89c",
+      "revId": "2108e4db6e5417c857a1519593605a729be74407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7b6ed225_da50bf73",
