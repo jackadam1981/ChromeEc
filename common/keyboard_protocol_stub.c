@@ -3,9 +3,7 @@
  * found in the LICENSE file.
  *
  * This is a stub (no-op) keyboard protocol that can be used for testing when
- * an AP is not present. All key events are simply discarded. On Zephyr builds
- * using the upstream input subsystem, keyboard events can be seen in the
- * console by running `input dump on`.
+ * an AP is not present. All key events are simply discarded.
  */
 
 #include "ec_commands.h"

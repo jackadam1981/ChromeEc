@@ -69,8 +69,6 @@ bool is_current_task_safe_mode_critical(void)
 	return is_task_safe_mode_critical(task_get_current());
 }
 
-#ifndef CONFIG_ZEPHYR
-
 int disable_non_safe_mode_critical_tasks(void)
 {
 	for (task_id_t task_id = 0; task_id < TASK_ID_COUNT; task_id++) {
@@ -85,8 +83,6 @@ int disable_non_safe_mode_critical_tasks(void)
 	}
 	return EC_SUCCESS;
 }
-
-#endif /* CONFIG_ZEPHYR */
 
 void handle_system_safe_mode_timeout(void)
 {
