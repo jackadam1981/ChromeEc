@@ -23,10 +23,10 @@ from util.coreboot_sdk import init_toolchain
 
 # cros format puts this here
 import yaml  # pylint: disable=wrong-import-order
-import zephyr.scripts.firmware_builder_lib
 
 # pylint: disable=wrong-import-order
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
+import scripts.firmware_builder_lib
 
 
 DEFAULT_BUNDLE_DIRECTORY = "/tmp/artifact_bundles"
@@ -615,7 +615,7 @@ def main(args):
 
     Additionally, the tool reports build metrics.
     """
-    parser, sub_cmds = zephyr.scripts.firmware_builder_lib.create_arg_parser(
+    parser, sub_cmds = scripts.firmware_builder_lib.create_arg_parser(
         build, bundle, test
     )
     check_inherits_cmd = sub_cmds.add_parser(
