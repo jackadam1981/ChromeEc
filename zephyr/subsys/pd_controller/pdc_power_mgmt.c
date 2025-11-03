@@ -2950,7 +2950,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
