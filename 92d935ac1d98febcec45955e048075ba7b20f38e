@@ -51,6 +51,24 @@
       "parentUuid": "cd6cbdba_266dc2cc",
       "revId": "92d935ac1d98febcec45955e048075ba7b20f38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ecf3c7_0200716d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T19:10:34Z",
+      "side": 1,
+      "message": "The qual is also meant to help pull in new stability fixes in general.  I would propose that we revert this, start a new qual at HEAD on the firmware branch, work to reland, and qual again later.",
+      "parentUuid": "7b0c7bd3_b15930c9",
+      "revId": "92d935ac1d98febcec45955e048075ba7b20f38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
