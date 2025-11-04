@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd1ac02_2763ac2b",
+        "filename": "zephyr/program/trulo/uldrenite/src/mp2964_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1524952
+      },
+      "writtenOn": "2025-11-04T05:58:45Z",
+      "side": 1,
+      "message": "for this part I think your use else {} instead the condition `((cbi_boardversion !\u003d 4) \u0026\u0026 (cbi_boardversion \u003c 10))`",
+      "revId": "fd8f894671632f70ba418b022d5d1424c5abb7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
