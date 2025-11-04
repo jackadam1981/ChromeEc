@@ -132,23 +132,18 @@ test_static int test_command_fpupload_correct_uploaded_values(void)
 	return EC_SUCCESS;
 }
 
-test_static int test_command_fpdownload(void)
+/*
+ * TODO(b/460170742): fpdownload: fpsensor_debug EC test fails on Renode due to
+ * missing image acquisition simulation.
+ */
+test_static int test_command_fpdownload_locked(void)
 {
-	enum ec_error_list res;
-
-	/* System is unlocked. */
-	is_locked = 0;
-
-	char console_input1[] = "fpdownload";
-	res = test_send_console_command(console_input1);
-	TEST_EQ(res, EC_SUCCESS, "%d");
-
 	/* System is locked. */
 	is_locked = 1;
 
 	/* Test for the case when access is denied. */
-	char console_input2[] = "fpdownload";
-	res = test_send_console_command(console_input2);
+	char console_input[] = "fpdownload";
+	enum ec_error_list res = test_send_console_command(console_input);
 	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
@@ -269,7 +264,7 @@ void run_test(int argc, const char **argv)
 		RUN_TEST(
 			test_command_fpupload_offset_equal_image_size_minus_image_offset);
 		RUN_TEST(test_command_fpupload_correct_uploaded_values);
-		RUN_TEST(test_command_fpdownload);
+		RUN_TEST(test_command_fpdownload_locked);
 		RUN_TEST(test_command_fpmatch);
 		RUN_TEST(test_command_fpcapture_system_is_locked);
 		RUN_TEST(test_command_fpcapture_mode_is_negative);
