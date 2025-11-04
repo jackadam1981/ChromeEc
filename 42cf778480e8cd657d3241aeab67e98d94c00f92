@@ -16,6 +16,69 @@
       "message": "Removal of fingerprint-related files looks fine.",
       "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4691e3_13315729",
+        "filename": "Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T19:44:46Z",
+      "side": 1,
+      "message": "I think this whole file can be deleted.  Only the Zephyr CMake should be referencing this file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0b32a2_d163b8e1",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T19:44:46Z",
+      "side": 1,
+      "message": "I recommend splitting this file into it\u0027s own CL.  There are non-trivial changes in this file so better to have bisectability available to this change.",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 48
+      },
+      "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb118a5_7f9d10a3",
+        "filename": "include/task.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T19:44:46Z",
+      "side": 1,
+      "message": "Nit add closing comment `CONFIG_COMMON_RECURSIVE_MUTEX`.",
+      "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

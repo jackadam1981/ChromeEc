@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa296856_3d8d6601",
+        "filename": "common/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T19:44:46Z",
+      "side": 0,
+      "message": "Nit - this file is referenced by a comment in a ]test file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/usb_tcpmv2_td_pd_vndi3_e3.c;l\u003d56;drc\u003d3a47f3a831c00c4a4c9ec274a85f4ece34a9db45).  Delete the comment.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "8af24491fe314568300871010159d26d4e805a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e857316a_1f25416f",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T19:44:46Z",
+      "side": 0,
+      "message": "The entire extra/pdc directory can be deleted for ec-legacy.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 73
+      },
+      "revId": "8af24491fe314568300871010159d26d4e805a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b59106b_54dc40a2",
+        "filename": "include/fan.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T19:44:46Z",
+      "side": 0,
+      "message": "This might need a rebase to avoid a merge conflict with your other fix.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "8af24491fe314568300871010159d26d4e805a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
