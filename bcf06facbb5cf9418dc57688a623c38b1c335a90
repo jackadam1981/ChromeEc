@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2a1e290_8592249b",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-11-04T02:18:38Z",
+      "side": 1,
+      "message": "Not sure, in other vifs this is 130 with a value of 1. The value is more important. \nhttps://source.corp.google.com/search?q\u003d%22Src_PDO_Peak_Current%20value%3D%5C%221%22\u0026sq\u003d",
+      "parentUuid": "63708ef1_57416472",
+      "range": {
+        "startLine": 122,
+        "startChar": 44,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c0103a8_5574d011",
         "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
         "patchSetId": 4
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08b25351_2ff4bb67",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-11-04T02:18:38Z",
+      "side": 1,
+      "message": "The device requests 20V at the beginning meaning 60W, and after this it requests again but this time 15V. Probably mismatch between PDC and EC policies. Not sure which value should be here.",
+      "parentUuid": "8c0103a8_5574d011",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 45
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3340b8f_373949ab",
         "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
         "patchSetId": 4
@@ -131,6 +179,30 @@
       "writtenOn": "2025-11-04T01:14:21Z",
       "side": 1,
       "message": "The same above.",
+      "parentUuid": "e3340b8f_373949ab",
+      "range": {
+        "startLine": 158,
+        "startChar": 45,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75845a96_7d311d11",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-11-04T02:18:38Z",
+      "side": 1,
+      "message": "hard to say, see above",
       "parentUuid": "e3340b8f_373949ab",
       "range": {
         "startLine": 158,
