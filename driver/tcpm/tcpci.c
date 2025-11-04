@@ -975,6 +975,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 {
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4 * PD_HEADER_CNT(header);
+	timestamp_t tx_ts = get_time();
 
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
@@ -1043,7 +1044,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 	 * discarded and don't tell the TCPC to transmit.
 	 */
 	if (tcpm_has_pending_message(port)) {
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED);
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED, &tx_ts);
 		return EC_ERROR_BUSY;
 	}
 
@@ -1229,6 +1230,11 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 void tcpci_tcpc_alert(int port)
 {
 	int alert = 0;
+	int alert_ext = 0;
+	int failed_attempts;
+	uint32_t pd_event = 0;
+	int retval = 0;
+	bool bist_mode;
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1281,7 +1287,7 @@ void tcpci_tcpc_alert_with_value(int port, int alert_value)
 		else
 			tx_status = TCPC_TX_COMPLETE_FAILED;
 
-		pd_transmit_complete(port, tx_status);
+		pd_transmit_complete(port, tx_status, &alert_ts);
 	}
 
 	tcpc_get_bist_test_mode(port, &bist_mode);
