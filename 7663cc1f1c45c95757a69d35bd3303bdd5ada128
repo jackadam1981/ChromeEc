@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1076a23f_28d3c14f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-04T10:46:20Z",
+      "side": 1,
+      "message": "@gwendal@chromium.org\nHi Gwendal,\n\nWith this patch, we can pass these two tests on the board domika:\ntast run $DUT firmware.EcStress.flash_keyscan_sensors\ntast run $DUT hardware.SensorIioserviceHard\nDo you have any other tests you recommend?",
+      "revId": "7663cc1f1c45c95757a69d35bd3303bdd5ada128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
