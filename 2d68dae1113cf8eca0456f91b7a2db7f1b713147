@@ -34,6 +34,24 @@
       "parentUuid": "c13689d1_5723eb5f",
       "revId": "2d68dae1113cf8eca0456f91b7a2db7f1b713147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576df43f_f61506cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-04T22:13:59Z",
+      "side": 1,
+      "message": "we can solve this by using `cbi_set_model_id()` and `cbi_get_model_id()`.\nplease see\nhttps://b.corp.google.com/issues/426139268#comment8\nfor details.",
+      "parentUuid": "80d51b2e_05b08ec9",
+      "revId": "2d68dae1113cf8eca0456f91b7a2db7f1b713147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
