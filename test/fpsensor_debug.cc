@@ -139,16 +139,21 @@ test_static int test_command_fpdownload(void)
 	/* System is unlocked. */
 	is_locked = 0;
 
-	char console_input1[] = "fpdownload";
+	/* Capture a pattern0 image. */
+	char console_input1[] = "fpcapture 8";
 	res = test_send_console_command(console_input1);
+
+	/* Download the captured image. */
+	char console_input2[] = "fpdownload";
+	res = test_send_console_command(console_input2);
 	TEST_EQ(res, EC_SUCCESS, "%d");
 
 	/* System is locked. */
 	is_locked = 1;
 
 	/* Test for the case when access is denied. */
-	char console_input2[] = "fpdownload";
-	res = test_send_console_command(console_input2);
+	char console_input3[] = "fpdownload";
+	res = test_send_console_command(console_input3);
 	TEST_EQ(res, EC_ERROR_ACCESS_DENIED, "%d");
 
 	return EC_SUCCESS;
