@@ -198,6 +198,7 @@ static void fp_process_finger(void)
 	enum fp_capture_type capture_type =
 		FP_CAPTURE_TYPE(global_context.sensor_mode);
 	global_context.current_frame_size = 0;
+	global_context.current_capture_type = FP_CAPTURE_TYPE_INVALID;
 
 	CPRINTS("Capturing ...");
 	int res = fp_acquire_image(fp_buffer, capture_type);
@@ -284,6 +285,8 @@ extern "C" void fp_task(void)
 				enum fp_capture_type capture_type =
 					FP_CAPTURE_TYPE(mode);
 				global_context.current_frame_size = 0;
+				global_context.current_capture_type =
+					FP_CAPTURE_TYPE_INVALID;
 				if (!fp_acquire_image(fp_buffer,
 						      capture_type)) {
 					global_context.current_frame_size =
@@ -291,6 +294,8 @@ extern "C" void fp_task(void)
 							.fp_frame_size_cache
 							.get_frame_size(
 								capture_type);
+					global_context.current_capture_type =
+						capture_type;
 				}
 				global_context.sensor_mode &= ~FP_MODE_CAPTURE;
 				send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
