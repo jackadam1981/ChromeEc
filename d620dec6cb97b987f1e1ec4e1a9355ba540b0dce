@@ -166,6 +166,30 @@
       },
       "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec84d0c_112b9f91",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-04T06:21:20Z",
+      "side": 1,
+      "message": "After removing the kso-gpio node, all keys on KSO2 became undetectable.",
+      "parentUuid": "ae87b6c2_375062be",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
