@@ -430,63 +430,84 @@ static int command_crash(int argc, const char **argv)
 	}
 
 	if (!strcasecmp(argv[1], "assert")) {
-		ASSERT(0);
-	} else if (!strcasecmp(argv[1], "divzero")) {
-		volatile int one = 1;
-		volatile int zero = 0;
-
-		cflush();
-		ccprintf("%08x", one / zero);
-	} else if (!strcasecmp(argv[1], "udivzero")) {
-		volatile unsigned int one = 1;
-		volatile int zero = 0;
-
-		cflush();
-		ccprintf("%08x", one / zero);
-	} else if (!strcasecmp(argv[1], "stack")) {
-		stack_overflow_recurse(1);
-#ifndef CONFIG_ALLOW_UNALIGNED_ACCESS
-	} else if (!strcasecmp(argv[1], "unaligned")) {
-		volatile intptr_t unaligned_ptr = 0xcdef;
-		cflush();
-		ccprintf("%08x", *(volatile int *)unaligned_ptr);
-#endif /* !CONFIG_ALLOW_UNALIGNED_ACCESS */
-	} else if (!strcasecmp(argv[1], "watchdog")) {
-		while (1) {
-/* Yield on native posix to avoid locking up the simulated sys clock */
-#ifdef CONFIG_ARCH_POSIX
-			k_cpu_idle();
-#endif
-		}
-	} else if (!strcasecmp(argv[1], "hang")) {
-		uint32_t lock_key = irq_lock();
-
-		while (1) {
-/* Yield on native posix to avoid locking up the simulated sys clock */
-#ifdef CONFIG_ARCH_POSIX
-			k_cpu_idle();
-#endif
-		}
-
-		/* Unreachable, but included for consistency */
-		irq_unlock(lock_key);
-	} else if (!strcasecmp(argv[1], "null")) {
-		volatile uintptr_t null_ptr = 0x0;
-		cflush();
-		ccprintf("%08x\n", *(volatile unsigned int *)null_ptr);
+		if (IS_ENABLED(CONFIG_DEBUG_ASSERT_REBOOTS))
+			ASSERT(0);
 	} else {
-		/* Disable nested crash on error */
-		if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED))
-			command_crash_nested_disable();
+		ccprintf("Asserts are disabled\n");
 		return EC_ERROR_PARAM1;
 	}
+}
+else if (!strcasecmp(argv[1], "divzero"))
+{
+	volatile int one = 1;
+	volatile int zero = 0;
 
+	cflush();
+	ccprintf("%08x", one / zero);
+}
+else if (!strcasecmp(argv[1], "udivzero"))
+{
+	volatile unsigned int one = 1;
+	volatile int zero = 0;
+
+	cflush();
+	ccprintf("%08x", one / zero);
+}
+else if (!strcasecmp(argv[1], "stack"))
+{
+	stack_overflow_recurse(1);
+#ifndef CONFIG_ALLOW_UNALIGNED_ACCESS
+}
+else if (!strcasecmp(argv[1], "unaligned"))
+{
+	volatile intptr_t unaligned_ptr = 0xcdef;
+	cflush();
+	ccprintf("%08x", *(volatile int *)unaligned_ptr);
+#endif /* !CONFIG_ALLOW_UNALIGNED_ACCESS */
+}
+else if (!strcasecmp(argv[1], "watchdog"))
+{
+	while (1) {
+/* Yield on native posix to avoid locking up the simulated sys clock */
+#ifdef CONFIG_ARCH_POSIX
+		k_cpu_idle();
+#endif
+	}
+}
+else if (!strcasecmp(argv[1], "hang"))
+{
+	uint32_t lock_key = irq_lock();
+
+	while (1) {
+/* Yield on native posix to avoid locking up the simulated sys clock */
+#ifdef CONFIG_ARCH_POSIX
+		k_cpu_idle();
+#endif
+	}
+
+	/* Unreachable, but included for consistency */
+	irq_unlock(lock_key);
+}
+else if (!strcasecmp(argv[1], "null"))
+{
+	volatile uintptr_t null_ptr = 0x0;
+	cflush();
+	ccprintf("%08x\n", *(volatile unsigned int *)null_ptr);
+}
+else
+{
 	/* Disable nested crash on error */
 	if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED))
 		command_crash_nested_disable();
+	return EC_ERROR_PARAM1;
+}
 
-	/* Everything crashes, so shouldn't get back here */
-	return EC_ERROR_UNKNOWN;
+/* Disable nested crash on error */
+if (IS_ENABLED(CONFIG_CMD_CRASH_NESTED))
+	command_crash_nested_disable();
+
+/* Everything crashes, so shouldn't get back here */
+return EC_ERROR_UNKNOWN;
 }
 
 DECLARE_CONSOLE_COMMAND(crash, command_crash,
