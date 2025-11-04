@@ -33,6 +33,24 @@
       "message": "The purpose of the latest fwqual was to add this watchdog.",
       "revId": "92d935ac1d98febcec45955e048075ba7b20f38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0c7bd3_b15930c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-11-04T19:06:24Z",
+      "side": 1,
+      "message": "Then here are some scenarios where AP cannot pet the watchdog:\n1) When inside FW. There are sub-scenarios:\n   * FAFT BIOS tests make the AP to remain in FW for a prolonged duration\n   * In field recovery where the user is preparing a USB stick or doing a network based recovery\n   * In field when the firmware is accidentally corrupted/broken in both slots\n2) In Developer mode the device will take a longer time to boot to OS.\n3) In Developer mode when the user has installed an alternate OS.\n\nWe need AP Hang Detect module to handle these scenarios before enabling this feature.",
+      "parentUuid": "cd6cbdba_266dc2cc",
+      "revId": "92d935ac1d98febcec45955e048075ba7b20f38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
