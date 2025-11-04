@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70e0516_bf029821",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-04T22:59:43Z",
+      "side": 1,
+      "message": "could you check if this is needed?\ni think\n```\n\u0026power_ctrl_psl {\n\tstatus \u003d \"okay\";\n...\n```\nenables this config already.",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "60c6c5c0e4d262e3b9eabcd6eff9d4b14de5499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
