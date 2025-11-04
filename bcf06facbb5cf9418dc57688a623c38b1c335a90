@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93b808a1_fba18d18",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-11-04T01:14:21Z",
+      "side": 1,
+      "message": "It\u0027s index 1, in VIF it should be 130.",
+      "parentUuid": "63708ef1_57416472",
+      "range": {
+        "startLine": 122,
+        "startChar": 44,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c0103a8_5574d011",
         "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51748bf7_d9da1139",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-11-04T01:14:21Z",
+      "side": 1,
+      "message": "If the device wants both 20V 2.25A and 15V 3A, how do we deal with this case ? Or do we recomment partner to limit the voltage to 15V so that we could align the PD_Power_As_Sink to 45W as well ?",
+      "parentUuid": "8c0103a8_5574d011",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 45
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3340b8f_373949ab",
         "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-03T16:58:30Z",
       "side": 1,
       "message": "See above, can this board really do 20V? Other PDOs have this as well.",
+      "range": {
+        "startLine": 158,
+        "startChar": 45,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d45f31_bc9744d3",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-11-04T01:14:21Z",
+      "side": 1,
+      "message": "The same above.",
+      "parentUuid": "e3340b8f_373949ab",
       "range": {
         "startLine": 158,
         "startChar": 45,
