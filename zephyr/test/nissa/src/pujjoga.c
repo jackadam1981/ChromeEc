@@ -201,6 +201,7 @@ ZTEST(pujjoga, test_pd_power_supply_reset)
 		zassert_equal(pd_set_vbus_discharge_fake.arg1_val, 1);
 	}
 
+	k_sleep(K_MSEC(100));
 	zassert_equal(pd_send_host_event_fake.call_count, 1);
 }
 
@@ -222,6 +223,7 @@ ZTEST(pujjoga, test_pd_set_power_supply_ready)
 	zassert_equal(ppc_vbus_source_enable_fake.arg0_val, 0);
 	zassert_equal(ppc_vbus_source_enable_fake.arg1_val, 1);
 
+	k_sleep(K_MSEC(100));
 	zassert_equal(pd_send_host_event_fake.call_count, 1);
 }
 
