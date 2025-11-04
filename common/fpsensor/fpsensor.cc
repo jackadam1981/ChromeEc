@@ -460,6 +460,10 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 	if (size > args->response_max)
 		return EC_RES_INVALID_PARAM;
 
+	if (global_context.current_capture_type == FP_CAPTURE_TYPE_INVALID) {
+		return EC_RES_INVALID_PARAM;
+	}
+
 	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
 		/* The host requested a frame. */
 		if (system_is_locked())
@@ -469,7 +473,7 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		 * the embedded/offset image bytes, like simple, pattern0,
 		 * pattern1, and reset_test.
 		 */
-		if (skip_image_offset(global_context.sensor_mode))
+		if (skip_image_offset(global_context.current_capture_type))
 			offset += FP_SENSOR_IMAGE_OFFSET;
 
 		if (global_context.current_frame_size > sizeof(fp_buffer)) {
