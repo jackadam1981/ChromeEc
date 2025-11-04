@@ -16,6 +16,24 @@
       "message": "As I have pointed out before, the board ID value is absent after a sysjump because the board ID driver didn\u0027t initialize the IO expander device driver needed to read board ID pins. The [power state hooks](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/board_id/board_id_intel_rvp.c;l\u003d161) are waiting for a transition into S5, which already happened during the previous boot cycle (before sysjump) and won\u0027t happen again unless the AP restarts.\n\nPlease fix this in the board ID driver instead of trying to save the board ID in CBI or jumptags. For example: if the board is already in S5 or above, call `device_init(gpio_port)` immediately.",
       "revId": "2d68dae1113cf8eca0456f91b7a2db7f1b713147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d51b2e_05b08ec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-04T06:49:22Z",
+      "side": 1,
+      "message": "Hi Tristan,\nThe concept of Model id itself is to avoid reading of ioexpander again right ?\nHere, \u0027rvp_board_id_set\u0027 is just acting as a flag indicating that model_id is saved in cbi.  If we, go by reading board id again while in S0 state, then saving model_id in CBI, doesn\u0027t make any sense. Also, another point to note is that here, I havenot avoided reading ioexpander for board in cold reset scenario, irrespective of 1st time reading in boot is because, same EC AICs can be used across WCL \u0026 PTL and also across different SKUs  in WCL itself, which has different board ids. Please let me know all of your thoughts",
+      "parentUuid": "c13689d1_5723eb5f",
+      "revId": "2d68dae1113cf8eca0456f91b7a2db7f1b713147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
