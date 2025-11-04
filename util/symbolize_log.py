@@ -7,9 +7,12 @@
 
 import argparse
 import os
+import pathlib
 import re
 import subprocess
 import sys
+import tempfile
+from urllib.parse import urlparse
 
 
 # Regex to find registers and their hex values
@@ -149,12 +152,14 @@ def main():
         description="Parse log files and run addr2line on PC and LR values."
     )
     parser.add_argument(
-        "--elf", required=True, help="Path to the ELF file with debug symbols."
-    )
-    parser.add_argument(
         "--addr2line",
         default="addr2line",
         help="Path to the addr2line executable.",
+    )
+    parser.add_argument(
+        "--model",
+        default="",
+        help="Model to check(Used when version supplied).",
     )
     parser.add_argument(
         "log_file",
@@ -163,21 +168,77 @@ def main():
         default=sys.stdin,
         help="Log file to parse (reads from stdin if not specified).",
     )
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--elf", help="Path to the ELF file with debug symbols.")
+    group.add_argument(
+        "--gcs",
+        help="Path to the GCS archive with build artifacts and symbols.",
+    )
+    group.add_argument(
+        "--version", help="Version to attempt to find symbols for."
+    )
 
     args = parser.parse_args()
 
-    if not os.path.exists(args.elf):
-        print(f"Error: ELF file not found: {args.elf}", file=sys.stderr)
-        sys.exit(1)
+    elf_file = args.elf
+    gcs_archive = args.gcs
+    if args.version:
+        completed_process = subprocess.run(
+            [
+                "gsutil",
+                "ls",
+                f"gs://firmware-image-archive/**/{args.model}.EC_elf.{args.version}.tar.bz2",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+        gcs_archive = completed_process.stdout.strip()
+    with (tempfile.TemporaryDirectory(".firmware_archive") as firmware_dir,):
+        if gcs_archive:
+            parsed_uri = urlparse(gcs_archive)
+            parsed_path = pathlib.Path(parsed_uri.path)
+            filename = parsed_path.name
+            subprocess.run(
+                [
+                    "gsutil",
+                    "-m",
+                    "-q",
+                    "cp",
+                    gcs_archive,
+                    firmware_dir,
+                ],
+                check=True,
+                timeout=180,
+            )
+            subprocess.run(
+                [
+                    "tar",
+                    "-xzvf",
+                    filename,
+                    "-C",
+                    "./extracted_firmware",
+                ],
+                check=True,
+                timeout=180,
+                cwd=firmware_dir,
+            )
+            # JPM TODO iterate?
+            elf_file = f"{firmware_dir}/extracted_firmware/zephyr.rw.elf"
 
-    try:
-        for line in args.log_file:
-            parse_log_line(line, args.elf, args.addr2line)
-    except KeyboardInterrupt:
-        print("\nExiting...", file=sys.stderr)
-    finally:
-        if args.log_file != sys.stdin:
-            args.log_file.close()
+        if not os.path.exists(elf_file):
+            print(f"Error: ELF file not found: {elf_file}", file=sys.stderr)
+            sys.exit(1)
+
+        try:
+            for line in args.log_file:
+                parse_log_line(line, elf_file, args.addr2line)
+        except KeyboardInterrupt:
+            print("\nExiting...", file=sys.stderr)
+        finally:
+            if args.log_file != sys.stdin:
+                args.log_file.close()
 
 
 if __name__ == "__main__":
