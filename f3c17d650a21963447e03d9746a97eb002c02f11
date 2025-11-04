@@ -34,6 +34,24 @@
       "parentUuid": "d9c1d1f5_fc9bb291",
       "revId": "f3c17d650a21963447e03d9746a97eb002c02f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a357e8ba_9eb7668b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-04T11:09:23Z",
+      "side": 1,
+      "message": "Since http://crrev.com/c/7092624 the `ARCH_IRQ_VECTOR_TABLE_ALIGN` config gets set in the linker file, the resulting output becomes something like this:\n\n\n```\nHIDDEN(__rom_start_address \u003d .);\nFILL(0x00);\n. +\u003d 0x0 - (. - __rom_start_address);\n. \u003d ALIGN(4);\nKEEP(*(.vectors.__start))\n. \u003d ALIGN(256); \u003c-- this is the one that changes\nINCLUDE isr_tables_vt.ld\n*(.fixed.ver)\n```\n\nand it seems like that ends up pushing `.fixed.ver` forward. Does that make sense?",
+      "parentUuid": "0bae0494_c90f9151",
+      "revId": "f3c17d650a21963447e03d9746a97eb002c02f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
