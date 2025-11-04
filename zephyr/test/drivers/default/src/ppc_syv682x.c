@@ -821,3 +821,72 @@ ZTEST_F(ppc_syv682x, test_syv682x_i2c_error_control_4)
 	i2c_common_emul_set_write_fail_reg(fixture->common_data,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 }
+
+ZTEST_F(ppc_syv682x, test_syv682x_discharge_register_value_check)
+{
+	uint8_t reg_before, reg_after;
+
+	/* Read initial CONTROL_2 register value */
+	reg_before =
+		syv682x_emul_get_reg(fixture->ppc_emul, SYV682X_CONTROL_2_REG);
+
+	/* Enable VBUS discharge */
+	zassert_ok(ppc_discharge_vbus(syv682x_port, true),
+		   "Failed to enable VBUS discharge");
+
+	/* Read register after enabling */
+	reg_after =
+		syv682x_emul_get_reg(fixture->ppc_emul, SYV682X_CONTROL_2_REG);
+
+	/* Register value should change after enabling discharge */
+	zassert_not_equal(
+		reg_before, reg_after,
+		"CONTROL_2 value did not change after enabling discharge");
+
+	/* Disable VBUS discharge */
+	zassert_ok(ppc_discharge_vbus(syv682x_port, false),
+		   "Failed to disable VBUS discharge");
+
+	/* Read register again after disabling */
+	reg_after =
+		syv682x_emul_get_reg(fixture->ppc_emul, SYV682X_CONTROL_2_REG);
+
+	/* Register should return to its original state */
+	zassert_equal(
+		reg_before, reg_after,
+		"CONTROL_2 did not return to initial value after disabling discharge");
+}
+
+ZTEST_F(ppc_syv682x, test_syv682x_vconn_register_value_check)
+{
+	uint8_t reg_before, reg_after;
+
+	/* Read initial CONTROL_4 register value */
+	reg_before =
+		syv682x_emul_get_reg(fixture->ppc_emul, SYV682X_CONTROL_4_REG);
+
+	/* Enable VCONN */
+	zassert_ok(ppc_set_vconn(syv682x_port, true), "Failed to enable VCONN");
+
+	/* Read register after enabling */
+	reg_after =
+		syv682x_emul_get_reg(fixture->ppc_emul, SYV682X_CONTROL_4_REG);
+
+	/* Register value should change after enabling VCONN */
+	zassert_not_equal(
+		reg_before, reg_after,
+		"CONTROL_4 value did not change after enabling VCONN");
+
+	/* Disable VCONN */
+	zassert_ok(ppc_set_vconn(syv682x_port, false),
+		   "Failed to disable VCONN");
+
+	/* Read register again after disabling */
+	reg_after =
+		syv682x_emul_get_reg(fixture->ppc_emul, SYV682X_CONTROL_4_REG);
+
+	/* Register value should return to the original state */
+	zassert_equal(
+		reg_before, reg_after,
+		"CONTROL_4 did not return to initial value after disabling VCONN");
+}
