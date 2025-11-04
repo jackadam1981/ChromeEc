@@ -16,6 +16,24 @@
       "message": "Please do not introduce logical changes in this CL.",
       "revId": "d55eededd94be8e7ef5665181429c7d47db70a70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e27b788_f2beb969",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "fixed in PS10. This assert(short_raw !\u003d NULL); change will be handled in another CL.",
+      "parentUuid": "40e65487_f7e510bc",
+      "revId": "d55eededd94be8e7ef5665181429c7d47db70a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

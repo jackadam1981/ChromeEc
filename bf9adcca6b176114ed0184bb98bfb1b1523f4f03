@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f01678c_d0f7ad7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "Yes, it can be built for buccaneer.",
+      "parentUuid": "f8ab07db_2981258c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff4a8b2_b8483348",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a9f3ec_79cd7a38",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "Currently, all sensors in the ELAN80 series use the same image size (12800),\nso this value depends on the series.",
+      "parentUuid": "bc1b0db9_aa7549a5",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "526b9f8e_77b872c4",
@@ -84,6 +132,30 @@
       "writtenOn": "2025-11-03T18:14:40Z",
       "side": 1,
       "message": "does this depend on the series or the specific sensor implementation?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "679338a0_ce521592",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "It depends on the series. The current ELAN80 series implementation does not require any image offset.",
+      "parentUuid": "526b9f8e_77b872c4",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -119,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "004765cf_daad9945",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "Fixed in PS10.",
+      "parentUuid": "72cc99ea_955ab9a4",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6432692_83c6efee",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 9
@@ -130,6 +226,30 @@
       "writtenOn": "2025-11-03T18:29:58Z",
       "side": 1,
       "message": "I do not believe this is the right way. This config can be changed by user. We need to make it an internal config and only enabled when needed. I believe you need to remove the message to make it internal:\n\n```\nconfig FINGERPRINT_SENSOR_ELAN80SERIES\n    bool\n    help\n      Enable driver for ELAN 80 series sensor.\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac91bedf_c03be9c0",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "Fixed in PS10.",
+      "parentUuid": "d6432692_83c6efee",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -165,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9732509_0da51300",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "I’d like to confirm your expectation here. Since the driver now supports both ELAN80SG and ELANI80SA, should we keep #define DT_DRV_COMPAT elan_elan80sg or switch to a generic elan_elan80series and rely on multiple compatible entries in DTS?",
+      "parentUuid": "a9473edf_aaeb550c",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ff2e89b_9afb2c36",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 9
@@ -176,6 +320,30 @@
       "writtenOn": "2025-11-03T18:21:04Z",
       "side": 1,
       "message": "same thing here. This does not belong here. make it a separate CL",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "992bb73e_f3bbf1eb",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "Fixed in PS10.",
+      "parentUuid": "2ff2e89b_9afb2c36",
       "range": {
         "startLine": 226,
         "startChar": 0,
@@ -203,6 +371,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9daf547_ee4d46e1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "fixed in PS10.",
+      "parentUuid": "5bb0ea73_02bde655",
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51730cb8_51010171",
@@ -216,6 +402,30 @@
       "writtenOn": "2025-11-03T18:21:04Z",
       "side": 1,
       "message": "put this into a separate CL",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 1
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8208a0a4_ccc7eed2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 1,
+      "message": "fixed in PS10. This assert(short_raw !\u003d NULL); change will be handled in another CL.",
+      "parentUuid": "51730cb8_51010171",
       "range": {
         "startLine": 277,
         "startChar": 0,

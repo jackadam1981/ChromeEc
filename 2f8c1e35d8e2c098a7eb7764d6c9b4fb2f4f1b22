@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc9f541_ac6871d5",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 0,
+      "message": "Fixed in PS10.",
+      "parentUuid": "336da33e_cffa2d12",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15faca7e_d08b3b19",
@@ -61,6 +85,24 @@
       "writtenOn": "2025-11-03T11:44:04Z",
       "side": 0,
       "message": "Please do not introduce logical changes in this CL.",
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc787ac_aba546e5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 0,
+      "message": "fixed in PS10.",
+      "parentUuid": "15faca7e_d08b3b19",
       "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2ce7d8_e81bc6b5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 0,
+      "message": "fixed in PS10",
+      "parentUuid": "6c20f688_6402649f",
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe6958ff_1d3a5c55",
@@ -99,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17f0711_bd54694d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 0,
+      "message": "fixed in PS10.",
+      "parentUuid": "fe6958ff_1d3a5c55",
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aca9bf53_dba27359",
@@ -112,6 +190,30 @@
       "writtenOn": "2025-11-03T18:21:04Z",
       "side": 0,
       "message": "those do not belong to the renaming. They should be separate CL",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "2f8c1e35d8e2c098a7eb7764d6c9b4fb2f4f1b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee491bb_bcdfe260",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:06Z",
+      "side": 0,
+      "message": "Fixed in PS10.",
+      "parentUuid": "aca9bf53_dba27359",
       "range": {
         "startLine": 228,
         "startChar": 0,
