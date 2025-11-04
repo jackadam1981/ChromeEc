@@ -16,6 +16,24 @@
       "message": "@aaboagye@chromium.org do you happen to know what code we should be using here? I\u0027m assuming this is not mean to be normal \"home\" key but rather something else, can\u0027t see an obvious one in the hid usage tables either",
       "revId": "7fa516f20d75b94fcbf7363b0dae6482135f4fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b63360_e2e5f13a",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2025-11-04T18:00:25Z",
+      "side": 1,
+      "message": "I believe this is AC Home in the Generic GUI Application Controls HID Usage.",
+      "parentUuid": "40c38df4_8f1b83d4",
+      "revId": "7fa516f20d75b94fcbf7363b0dae6482135f4fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
