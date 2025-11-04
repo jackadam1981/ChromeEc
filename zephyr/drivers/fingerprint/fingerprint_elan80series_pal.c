@@ -223,20 +223,11 @@ int __unused elan_write_reg_vector(const uint8_t *reg_table, int length)
 	return ret;
 }
 
-int __unused elan_raw_capture(uint16_t *short_raw)
+int elan_image_read(uint16_t *short_raw)
 {
-	assert(short_raw != NULL);
-
 	int ret = 0, i = 0, cnt_timer = 0, rx_index = 0;
 	uint8_t regdata[4] = { 0 };
 
-	/* Write start scans command to fp sensor */
-	if (elan_write_cmd(START_SCAN) < 0) {
-		ret = ELAN_ERROR_SPI;
-		LOG_ERR("%s SPISendCommand( SSP2, START_SCAN ) fail ret = %d",
-			__func__, ret);
-		return ret;
-	}
 	/* Polling scan status */
 	cnt_timer = 0;
 	while (1) {
@@ -257,9 +248,9 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 
 	/* Read the image from fp sensor */
 	k_sem_take(&trx_buffer_lock, K_FOREVER);
-	memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
-	tx_buf[0] = START_READ_IMAGE;
 	for (i = 0; i < ELAN_DMA_LOOP; i++) {
+		memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);
+		tx_buf[0] = START_READ_IMAGE;
 		ret = elan_spi_transaction_duplex(tx_buf, ELAN_SPI_TX_BUF_SIZE,
 						  rx_buf, ELAN_SPI_RX_BUF_SIZE);
 
@@ -282,6 +273,30 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 	k_sem_give(&trx_buffer_lock);
 
 	return 0;
+}
+
+int __unused elan_raw_capture(uint16_t *short_raw)
+{
+	int ret = 0;
+
+	if (short_raw == NULL) {
+		LOG_ERR("%s: short_raw is NULL", __func__);
+		return -EINVAL;
+	}
+
+	/* Write start scans command to fp sensor */
+	if (elan_write_cmd(START_SCAN) < 0) {
+		ret = ELAN_ERROR_SPI;
+		LOG_ERR("%s SPISendCommand( SSP2, START_SCAN ) fail ret = %d",
+			__func__, ret);
+		return ret;
+	}
+
+	ret = elan_image_read(short_raw);
+	if (ret < 0)
+		LOG_ERR("%s: elan_image_read failed (%d)", __func__, ret);
+
+	return ret;
 }
 
 int __unused elan_execute_calibration(void)
