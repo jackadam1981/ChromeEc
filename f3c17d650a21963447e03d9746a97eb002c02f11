@@ -16,6 +16,24 @@
       "message": "Dino/Ruibin, do you think this should go in soc upstream?",
       "revId": "f3c17d650a21963447e03d9746a97eb002c02f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bae0494_c90f9151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1295075
+      },
+      "writtenOn": "2025-11-04T10:41:02Z",
+      "side": 1,
+      "message": "Hi Fabio,\n\nI find that it8xxx2 setting are\n`CONFIG_RISCV_TRAP_HANDLER_ALIGNMENT \u003d 4`\n`GEN_SW_ISR_TABLE \u003d y`\n`ARCH_SW_ISR_TABLE_ALIGN \u003d 4` \n`GEN_IRQ_VECTOR_TABLE \u003d n` (arch/riscv/kconfig),\nsince `GEN_IRQ_VECTOR_TABLE\u003dn`, I don\u0027t understand why `ARCH_IRQ_VECTOR_TABLE_ALIGN 256` -\u003e `4` is related to FWID offset.",
+      "parentUuid": "d9c1d1f5_fc9bb291",
+      "revId": "f3c17d650a21963447e03d9746a97eb002c02f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
