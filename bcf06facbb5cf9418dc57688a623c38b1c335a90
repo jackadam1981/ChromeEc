@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b8dec9b_016921a0",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T21:07:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f2a1e290_8592249b",
+      "range": {
+        "startLine": 122,
+        "startChar": 44,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0103a8_5574d011",
@@ -145,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d346f382_2c18d6ab",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T21:07:38Z",
+      "side": 1,
+      "message": "\u003e The device requests 20V at the beginning meaning 60W\n\nIs it really requesting 20V/3A? That seems like a bug. What is the RDO?\n\nSpeaking with Benson about this, it is probably ok to advertise a variable 20V/3A PDO to capture the max of each. But, we can\u0027t incorrectly provide a 60W PDP. Would updating that in the VIF lead to any compliance issues?\n\nCompliance testing will enforce that the Sink PDOs sent by the PDC match the VIF. We will send PDOs based on how pdc_power_mgmt builds them using the configs.\n\nSee https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/pd_controller/pdc_power_mgmt.c;drc\u003db0d8a98d78e8473087a55fecc2aa575f49ef027a;l\u003d907",
+      "parentUuid": "08b25351_2ff4bb67",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 45
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3340b8f_373949ab",
         "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
         "patchSetId": 4
@@ -204,6 +252,30 @@
       "side": 1,
       "message": "hard to say, see above",
       "parentUuid": "e3340b8f_373949ab",
+      "range": {
+        "startLine": 158,
+        "startChar": 45,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f13f4c_ef448950",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T21:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75845a96_7d311d11",
       "range": {
         "startLine": 158,
         "startChar": 45,
