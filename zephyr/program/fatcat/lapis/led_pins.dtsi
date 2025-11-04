@@ -1,0 +1,64 @@
+<<<<<<< HEAD   (39f94953cbeae0b99855119f25263e00e9439741 led: Refactor led_pins_node_t to use a generic pointer)
+||||||| BASE   (c43c3cb627bec5075c2065e965ca868127eb1a2f led: Refactor led_pins_node_t to use a generic pointer)
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	gpio-led-pins {
+		compatible = "cros-ec,gpio-led-pins";
+
+		battery_led: battery-led {
+			led-id = "EC_LED_ID_BATTERY_LED";
+			led-pins = <&gpio_led_amber &gpio_led_white>;
+
+			color_off: color-off {
+				led-color = "LED_OFF";
+				led-values = <0 0>;
+			};
+
+			color_amber: color-amber {
+				led-color = "LED_AMBER";
+				led-values = <1 0>;
+			};
+
+			color_white: color-white {
+				led-color = "LED_WHITE";
+				led-values = <0 1>;
+			};
+		};
+	};
+};
+=======
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	led_pins: gpio-led-pins {
+		compatible = "cros-ec,gpio-led-pins";
+
+		battery_led: battery-led {
+			led-id = "EC_LED_ID_BATTERY_LED";
+			led-pins = <&gpio_led_amber &gpio_led_white>;
+
+			color_off: color-off {
+				led-color = "LED_OFF";
+				led-values = <0 0>;
+			};
+
+			color_amber: color-amber {
+				led-color = "LED_AMBER";
+				led-values = <1 0>;
+			};
+
+			color_white: color-white {
+				led-color = "LED_WHITE";
+				led-values = <0 1>;
+			};
+		};
+	};
+};
+>>>>>>> CHANGE (28fa20c5eaa0fc603154106843b7168598626531 led: Generalize LED pins node lookup using a devicetree labe)
