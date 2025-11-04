@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "69a865a9_6c739a0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dee68dea_28a1910c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7526b670_81bccdbe",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba2ef6a_85a408fe",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "This is change to \"Alert Received\" in v3.3.28. I\u0027ve added a note here about the name change.",
+      "parentUuid": "575e58ea_7320ffef",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 37
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8d346d_12b775bf",
@@ -128,6 +176,30 @@
       "writtenOn": "2025-09-10T21:06:46Z",
       "side": 1,
       "message": "```suggestion\n\t\tif (data-\u003erd_buf[4] \u0026 BIT(3)) {\n```",
+      "range": {
+        "startLine": 1404,
+        "startChar": 0,
+        "endLine": 1404,
+        "endChar": 30
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5841e047_d07c815c",
+        "filename": "zephyr/drivers/usbc/pdc_rts54xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8d346d_12b775bf",
       "range": {
         "startLine": 1404,
         "startChar": 0,
@@ -161,6 +233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0789910a_4a42be62",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa05df4_5a7f4f32",
+      "range": {
+        "startLine": 1562,
+        "startChar": 3,
+        "endLine": 1562,
+        "endChar": 7
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf0704e2_06ad1ce5",
@@ -174,6 +270,30 @@
       "writtenOn": "2025-09-10T21:06:46Z",
       "side": 1,
       "message": "You\u0027re directly reading the same storage `port-\u003eado` that the PDC driver writes into. If you add an `ado` argument to this function, you can ensure that it doesn\u0027t get clobbered by the driver.",
+      "range": {
+        "startLine": 1689,
+        "startChar": 7,
+        "endLine": 1689,
+        "endChar": 16
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da3b63b_ac8ad674",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "Thanks for catching this, fixed in patchset 2.",
+      "parentUuid": "bf0704e2_06ad1ce5",
       "range": {
         "startLine": 1689,
         "startChar": 7,
@@ -207,6 +327,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4db417_fea74224",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1537d8f3_62c74613",
+      "range": {
+        "startLine": 1693,
+        "startChar": 6,
+        "endLine": 1693,
+        "endChar": 47
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a96c055_276587cf",
@@ -220,6 +364,30 @@
       "writtenOn": "2025-09-10T21:06:46Z",
       "side": 1,
       "message": "See above\n\n\n```suggestion\n\t\t\thandle_alert(port, port-\u003eado);\n```",
+      "range": {
+        "startLine": 3123,
+        "startChar": 0,
+        "endLine": 3123,
+        "endChar": 22
+      },
+      "revId": "c7649d9a5f24360153b462117c66c848af76f699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb23be7b_d0d7c65e",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3123,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-11-04T00:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a96c055_276587cf",
       "range": {
         "startLine": 3123,
         "startChar": 0,
