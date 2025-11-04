@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14da81b7_484a722e",
+        "filename": "Kconfig",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T20:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f4691e3_13315729",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de0b32a2_d163b8e1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "620172a1_af4f0dc0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T20:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de0b32a2_d163b8e1",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 48
+      },
+      "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eb118a5_7f9d10a3",
@@ -77,6 +125,24 @@
       "writtenOn": "2025-11-04T19:44:46Z",
       "side": 1,
       "message": "Nit add closing comment `CONFIG_COMMON_RECURSIVE_MUTEX`.",
+      "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff19f0ea_98942baf",
+        "filename": "include/task.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T20:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb118a5_7f9d10a3",
       "revId": "42cf778480e8cd657d3241aeab67e98d94c00f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

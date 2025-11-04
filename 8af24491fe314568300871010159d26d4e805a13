@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe4ebc6e_4fd4d0e5",
+        "filename": "common/usbc/svdm_rsp_dfp_only.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T20:39:36Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "aa296856_3d8d6601",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "8af24491fe314568300871010159d26d4e805a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e857316a_1f25416f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bdf305_66491faf",
+        "filename": "extra/pdc/pdc_fwup.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T20:39:36Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e857316a_1f25416f",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 73
+      },
+      "revId": "8af24491fe314568300871010159d26d4e805a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b59106b_54dc40a2",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-04T19:44:46Z",
       "side": 0,
       "message": "This might need a rebase to avoid a merge conflict with your other fix.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "8af24491fe314568300871010159d26d4e805a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a120b4e_78c90666",
+        "filename": "include/fan.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-04T20:39:36Z",
+      "side": 0,
+      "message": "That is already done here",
+      "parentUuid": "1b59106b_54dc40a2",
       "range": {
         "startLine": 16,
         "startChar": 0,
