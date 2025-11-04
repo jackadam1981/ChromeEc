@@ -821,3 +821,47 @@ ZTEST_F(ppc_syv682x, test_syv682x_i2c_error_control_4)
 	i2c_common_emul_set_write_fail_reg(fixture->common_data,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 }
+
+ZTEST_F(ppc_syv682x, test_syv682x_discharge_register_value_check)
+{
+	uint8_t reg_before, reg_after, rv;
+
+	/* Read initial CONTROL_2 value */
+	reg_before = syv682x_emul_get_reg(fixture->ppc_emul,
+					  SYV682X_CONTROL_2_REG, &rv);
+	zassert_ok(rv);
+
+	/* Call discharge_vbus */
+	zassert_ok(ppc_discharge_vbus(syv682x_port, true));
+
+	/* Read register again */
+	reg_after = syv682x_emul_get_reg(fixture->ppc_emul,
+					 SYV682X_CONTROL_2_REG, &rv);
+	zassert_ok(rv);
+
+	/* Register value should be same */
+	zassert_equal(reg_before, reg_after,
+		      "CONTROL_2 should remain unchanged for same value write");
+}
+
+ZTEST_F(ppc_syv682x, test_syv682x_vconn_register_value_check)
+{
+	uint8_t reg_before, reg_after, rv;
+
+	/* Read initial CONTROL_4 value */
+	reg_before = syv682x_emul_get_reg(fixture->ppc_emul,
+					  SYV682X_CONTROL_4_REG, &rv);
+	zassert_ok(rv);
+
+	/* Call set_vconn */
+	zassert_ok(ppc_set_vconn(syv682x_port, true));
+
+	/* Read register again */
+	reg_after = syv682x_emul_get_reg(fixture->ppc_emul,
+					 SYV682X_CONTROL_4_REG, &rv);
+	zassert_ok(rv);
+
+	/* Register value should be same */
+	zassert_equal(reg_before, reg_after,
+		      "CONTROL_4 should remain unchanged for same value write");
+}
