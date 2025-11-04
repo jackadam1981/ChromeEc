@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "da137858360268e94e1f2578bf9a0779de069198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34a74f5_ceb86484",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T22:01:38Z",
+      "side": 1,
+      "message": "Needs a doxygen header.",
+      "range": {
+        "startLine": 794,
+        "startChar": 5,
+        "endLine": 794,
+        "endChar": 47
+      },
+      "revId": "da137858360268e94e1f2578bf9a0779de069198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fe7683_2582715a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-04T22:01:38Z",
+      "side": 1,
+      "message": "The TCPM code has logic to track how long the power button is held down and only takes action on the [button release](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/usbc/usb_pd_dpm.c;l\u003d598;drc\u003db168742832ac0a884842f72e70b22b774d711ed4) once the power button duration is known.\n\nDo we need similar support here?  Specifically actions to power down the AP on a long press?",
+      "range": {
+        "startLine": 1701,
+        "startChar": 2,
+        "endLine": 1701,
+        "endChar": 44
+      },
+      "revId": "da137858360268e94e1f2578bf9a0779de069198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
