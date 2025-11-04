@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "489181c1_a9a1e5fd",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:58Z",
+      "side": 1,
+      "message": "Fixed in PS11.",
+      "parentUuid": "dabe8325_4ae8474a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "c9a80348a5fb3fec5108964a28f797764f58b015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9bbbfe9_4f7b0b16",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-03T18:46:03Z",
       "side": 1,
       "message": "I believe this should be `FINGERPRINT_SENSOR_ELAN80SG \u0026\u0026  FP_ELAN_ELAN80SERIES_ALGORITHM`\n\nare all of the series parameters the same?",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "c9a80348a5fb3fec5108964a28f797764f58b015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9069e88_48024311",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-04T09:03:58Z",
+      "side": 1,
+      "message": "No, this parameter is not the same for all series. It has been corrected in PS11.",
+      "parentUuid": "c9bbbfe9_4f7b0b16",
       "range": {
         "startLine": 38,
         "startChar": 17,
