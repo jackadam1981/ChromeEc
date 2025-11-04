@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "392e1223_926ab83b",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-04T17:17:33Z",
+      "side": 1,
+      "message": "I see that you are now using `tcpci_get_vbus_voltage_no_check`. I presume that the NCT3808 used in pujjoga has this capability enabled, and this saves a register read.\n\nIs saving this register read necessary to achieve the latency requirement of this test? If not, I might still prefer that this code call `tcpc_get_vbus_voltage` for the sake of separation of concerns.\n\nAlternatively, does every NCT38xx TCPC support this capability? If so, it would make sense to set `nct38xx_tcpm_drv.get_vbus_voltage \u003d tcpci_get_vbus_voltage_no_check` and always save the register read.\n\nThis is still a nit. If the right thing to do here is to update the NCT38xx driver, do that in another CL.",
+      "parentUuid": "7d77ab9b_89d49f2b",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d87755aa_a6eedbce",
         "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
         "patchSetId": 9
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "To mask real I²C failures, safer not to fall back",
       "parentUuid": "d1a92470_19c595be",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1770fa8_88f791ea",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-04T17:17:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "456eeda9_51e42455",
       "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

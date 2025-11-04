@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4934c7_0b02542a",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-04T17:17:33Z",
+      "side": 1,
+      "message": "Update comment. I guess I would say something like, \"Experimentally, pujjoga requires an offset of at least 100 mV to accurately detect VBUS disconnect in TD 4.6.3. 250 mV accounts for the NCT3808\u0027s supposed maximum ADC error, 1% at 20V.\"",
+      "revId": "1903c6fa476190671979fc90034abd7dcf274905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
