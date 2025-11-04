@@ -821,3 +821,60 @@ ZTEST_F(ppc_syv682x, test_syv682x_i2c_error_control_4)
 	i2c_common_emul_set_write_fail_reg(fixture->common_data,
 					   I2C_COMMON_EMUL_NO_FAIL_REG);
 }
+
+ZTEST_F(ppc_syv682x, test_vbus_source_enable_register_check)
+{
+	const struct emul *emul = EMUL_SYV682X_GET(TEST_PORT);
+	uint8_t before, after;
+	int rv;
+
+	/* Set CONTROL_1 register */
+	syv682x_emul_set_reg(emul, SYV682X_CONTROL_1_REG, 0x55);
+
+	/* Ensure flags[port] source already enabled for disable-case path */
+	atomic_or(&flags[TEST_PORT], SYV682X_FLAGS_SOURCE_ENABLED);
+
+	/* First call — disable source  */
+	rv = syv682x_vbus_source_enable(TEST_PORT, 0);
+	zassert_equal(rv, EC_SUCCESS);
+
+	/* Read the register after first call */
+	syv682x_emul_get_reg(emul, SYV682X_CONTROL_1_REG, &before);
+
+	/* Second call — disable source again*/
+	rv = syv682x_vbus_source_enable(TEST_PORT, 0);
+	zassert_equal(rv, EC_SUCCESS);
+
+	/* Read register after second call */
+	syv682x_emul_get_reg(emul, SYV682X_CONTROL_1_REG, &after);
+
+	/* Check that register value remains unchanged */
+	zassert_equal(before, after, "CONTROL_1 register changed unexpectedly");
+}
+
+ZTEST_F(ppc_syv682x, test_vconn_register_check)
+{
+	const struct emul *emul = EMUL_SYV682X_GET(TEST_PORT);
+	uint8_t reg_before, reg_after;
+	int rv;
+
+	/* Set initial CONTROL_4 register */
+	syv682x_emul_set_reg(emul, SYV682X_CONTROL_4_REG, 0x34);
+
+	/* First call -disable Vconn*/
+	rv = syv682x_set_vconn(TEST_PORT, 0);
+	zassert_equal(rv, EC_SUCCESS);
+
+	/* Read the register after first call */
+	syv682x_emul_get_reg(emul, SYV682X_CONTROL_4_REG, &reg_before);
+
+	/* Second call -disable vconn*/
+	rv = syv682x_set_vconn(TEST_PORT, 0);
+	zassert_equal(rv, EC_SUCCESS);
+
+	/* Read register after second call */
+	syv682x_emul_get_reg(emul, SYV682X_CONTROL_4_REG, &reg_after);
+
+	/* Check that register value remains unchanged */
+	zassert_equal(before, after, "CONTROL_4 register changed unexpectedly");
+}
