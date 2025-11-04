@@ -9,16 +9,40 @@
 #include <stdio.h>
 
 #include <zephyr/fff.h>
+#include <zephyr/sys/util.h>
 #include <zephyr/ztest.h>
 
 #include <algorithm>
 #include <array>
 #include <ec_commands.h>
+#include <fingerprint/v4l2_types.h>
 #include <fpsensor/fpsensor_state_driver.h>
 #include <fpsensor/fpsensor_utils.h>
 #include <fpsensor_driver.h>
 #include <mkbp_event.h>
 #include <rollback.h>
+
+#define FP_SIMULATOR_IMAGE_FRAME_PARAM_INITIALIZER(idx, node_id)            \
+	{                                                                   \
+		.frame_size = FINGERPRINT_SENSOR_FRAME_SIZE(idx, node_id),  \
+		.pixel_format =                                             \
+			FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(idx, node_id), \
+		.width = FINGERPRINT_SENSOR_RES_X(idx, node_id),            \
+		.height = FINGERPRINT_SENSOR_RES_Y(idx, node_id),           \
+		.bpp = FINGERPRINT_SENSOR_RES_BPP(idx, node_id),            \
+		.fp_capture_type =                                          \
+			FINGERPRINT_SENSOR_CAPTURE_TYPE(idx, node_id),      \
+		.reserved = 0,                                              \
+	}
+
+static const struct fingerprint_image_frame_params image_frame_params_arr[] = {
+	LISTIFY(NUM_IMAGE_CAPTURE_TYPES,
+		FP_SIMULATOR_IMAGE_FRAME_PARAM_INITIALIZER, (, ),
+		DT_NODELABEL(fpsensor_sim))
+};
+
+int get_image_frame_params(struct fp_image_frame_params &image_frame_params,
+			   enum fp_capture_type capture_type);
 
 static int is_locked;
 
@@ -190,4 +214,27 @@ ZTEST(fpsensor_debug, test_upload_pgm_image_wrong_bpp)
 
 	zassert_equal(upload_pgm_image(frame.data(), { .bpp = 23 }),
 		      EC_ERROR_UNKNOWN);
+}
+
+ZTEST(fpsensor_debug, test_get_image_frame_params)
+{
+	struct fp_image_frame_params image_frame_params{};
+	constexpr std::array<enum fp_capture_type, 6> kCaptureTypesArray = {
+		FP_CAPTURE_VENDOR_FORMAT, FP_CAPTURE_SIMPLE_IMAGE,
+		FP_CAPTURE_PATTERN0,	  FP_CAPTURE_PATTERN1,
+		FP_CAPTURE_QUALITY_TEST,  FP_CAPTURE_RESET_TEST
+	};
+
+	for (int i = 0; i < kCaptureTypesArray.size(); ++i) {
+		enum fp_capture_type current_capture_type =
+			kCaptureTypesArray[i];
+
+		get_image_frame_params(image_frame_params,
+				       current_capture_type);
+
+		zassert_equal(memcmp(&image_frame_params_arr[i],
+				     &image_frame_params,
+				     sizeof(struct fp_image_frame_params)),
+			      0, "Struct comparison failed at index %d", i);
+	}
 }
