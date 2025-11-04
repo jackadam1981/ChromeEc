@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fb442e_2833386b",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60aa647b_5d0bce66",
+      "revId": "25487e5bb017f35cbd1f3f64b717e21f4a856018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1397ce68_49b12523",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-29T15:31:15Z",
       "side": 1,
       "message": "This case is specifically checking for the empirically derived offset. Can you add a comment to that effect?",
+      "revId": "25487e5bb017f35cbd1f3f64b717e21f4a856018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d9b5cf_c25fdcac",
+        "filename": "zephyr/test/nissa/src/pujjoga.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1397ce68_49b12523",
       "revId": "25487e5bb017f35cbd1f3f64b717e21f4a856018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

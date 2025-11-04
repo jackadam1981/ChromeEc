@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57843957_04aa830d",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aabf738e_43711a87",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d77ab9b_89d49f2b",
@@ -86,6 +104,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcd9306_db988907",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb26532d_e22ab88b",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6172e29d_53a5d443",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Might be during board reset or low-power states where the TCPC’s VBUS monitor is gated off, But it Looks like control is not following on this path, So removed EC_ERROR_NOT_POWERED case",
+      "parentUuid": "d87755aa_a6eedbce",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a92470_19c595be",
@@ -105,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "456eeda9_51e42455",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "To mask real I²C failures, safer not to fall back",
+      "parentUuid": "d1a92470_19c595be",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb12feee_157db8c8",
         "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
         "patchSetId": 9
@@ -116,6 +188,24 @@
       "writtenOn": "2025-10-28T17:59:37Z",
       "side": 1,
       "message": "Can you add a comment here that this was experimentally determined?",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c3c8cc_94d7bf8c",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb12feee_157db8c8",
       "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a44090e6_1d516a0b",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "you\u0027re right. The PPC read here doesn’t add value since it’s only used later in the fallback branch. I’ll move the ppc_is_vbus_present() call inside the else if block so it’s only executed when actually needed",
+      "parentUuid": "6dad5163_1dbaf14c",
+      "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af86ddd2_7029b330",
         "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
         "patchSetId": 12
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "For now, if 250 works for pujjoga, I\u0027d say we should merge it.\n\nIdeally, I\u0027d like this offset to live inside the NCT3xxx driver. If we need further offsets based on board resistors, we can keep those in board code. We\u0027ll have to figure that out as we work our way through different models. Right now, I think we\u0027ve only seen this particular failure mode on pujjoga.",
       "parentUuid": "91f998d4_f7585b92",
+      "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92149520_732b0aa4",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-04T12:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2690be1a_f175fcba",
       "revId": "b67e6978ae5e06f8359bd375dfb99a7b43e2b8a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
