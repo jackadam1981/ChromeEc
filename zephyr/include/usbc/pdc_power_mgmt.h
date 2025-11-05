@@ -26,6 +26,18 @@ extern const char *const pdc_cmd_names[];
 extern const int pdc_cmd_types;
 #endif
 
+#if defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_100)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_100
+#elif defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_110)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_110
+#elif defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_125)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_125
+#elif defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_150)
+#define PDO_PEAK_OCP PDO_PEAK_OVERCURR_150
+#else
+#error Invalid peak overcurrent setting
+#endif
+
 /**
  * @brief State Machine States
  */
