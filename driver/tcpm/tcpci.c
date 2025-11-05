@@ -124,6 +124,9 @@ static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Cache our Device Capabilities at init for later reference */
 static int dev_cap_1[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Cache add state */
+static bool cached_auto_dischard_disconnect_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
@@ -406,8 +409,12 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
  * are connected and disabled after we are disconnected and
  * VBus is at SafeV0
  */
-void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
+void tcpci_tcpc_enable_auto_discharge_disconnect(int port, bool enable)
 {
+	/* Skip redundant register access */
+	if (cached_auto_dischard_disconnect_state[port] == enable)
+		return;
+
 	if (IS_ENABLED(DEBUG_AUTO_DISCHARGE_DISCONNECT))
 		CPRINTS("C%d: AutoDischargeDisconnect %sABLED", port,
 			enable ? "EN" : "DIS");
@@ -415,6 +422,8 @@ void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 	tcpc_update8(port, TCPC_REG_POWER_CTRL,
 		     TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT,
 		     (enable) ? MASK_SET : MASK_CLR);
+
+	cached_auto_dischard_disconnect_state[port] = enable;
 }
 
 int tcpci_tcpc_debug_accessory(int port, bool enable)
@@ -975,6 +984,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 {
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4 * PD_HEADER_CNT(header);
+	timestamp_t tx_ts = get_time();
 
 	/* If not SOP* transmission, just write to the transmit register */
 	if (type >= NUM_SOP_STAR_TYPES) {
@@ -1043,7 +1053,7 @@ int tcpci_tcpm_transmit(int port, enum tcpci_msg_type type, uint16_t header,
 	 * discarded and don't tell the TCPC to transmit.
 	 */
 	if (tcpm_has_pending_message(port)) {
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED);
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_DISCARDED, &tx_ts);
 		return EC_ERROR_BUSY;
 	}
 
@@ -1251,6 +1261,7 @@ void tcpci_tcpc_alert_with_value(int port, int alert_value)
 	uint32_t pd_event = 0;
 	int retval = 0;
 	bool bist_mode;
+	timestamp_t alert_ts = get_time();
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
@@ -1281,7 +1292,7 @@ void tcpci_tcpc_alert_with_value(int port, int alert_value)
 		else
 			tx_status = TCPC_TX_COMPLETE_FAILED;
 
-		pd_transmit_complete(port, tx_status);
+		pd_transmit_complete(port, tx_status, &alert_ts);
 	}
 
 	tcpc_get_bist_test_mode(port, &bist_mode);
@@ -1546,6 +1557,7 @@ int tcpci_tcpm_init(int port)
 	int error;
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
+	cached_auto_dischard_disconnect_state[port] = false;
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_ERROR_INVAL;
