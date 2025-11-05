@@ -32,9 +32,6 @@ FAKE_VALUE_FUNC(int, chipset_in_state, int);
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == 2,
 	     "PDC source policy test suite must supply exactly 2 PDC ports");
 
-BUILD_ASSERT(CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 1,
-	     "PDC source policy test suite only supports one 3A port");
-
 #define PDC_TEST_TIMEOUT 2000
 
 /* TODO: b/343760437 - Once the emulator can detect the PDC threads are idle,
@@ -73,7 +70,6 @@ static void *src_policy_setup(void)
 static void src_policy_before(void *f)
 {
 	struct src_policy_fixture *fixture = f;
-	uint32_t lpm_src_pdo = PDO_FIXED(5000, 1500, 0);
 
 	RESET_FAKE(chipset_in_state);
 
@@ -86,13 +82,20 @@ static void src_policy_before(void *f)
 		zassert_true(TEST_WAIT_FOR(!pdc_power_mgmt_is_connected(i),
 					   PDC_TEST_TIMEOUT));
 
-		/* Our USB souring policy indicates that PDCs must be configured
-		 * to source only 1.5A by default.  Set the LPM source PDOs as
-		 * if the PDC just had a hard reset.
-		 */
-		zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[i], SOURCE_PDO,
-					     PDO_OFFSET_0, 1, LPM_PDO,
-					     &lpm_src_pdo));
+#if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 1)
+		{
+			uint32_t lpm_src_pdo = PDO_FIXED(
+				5000, 1500, PDO_FIXED_PEAK_CURR(PDO_PEAK_OCP));
+
+			/* Our USB souring policy indicates that PDCs must be
+			 * configured to source only 1.5A by default.  Set the
+			 * LPM source PDOs as if the PDC just had a hard reset.
+			 */
+			zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[i],
+						     SOURCE_PDO, PDO_OFFSET_0,
+						     1, LPM_PDO, &lpm_src_pdo));
+		}
+#endif
 	}
 }
 
@@ -110,7 +113,7 @@ static inline struct ec_response_usb_pd_power_info host_cmd_power_info(int port)
 
 /* Read the LPM's source PDO and verify the voltage and current. */
 int verify_lpm_source_pdo(struct src_policy_fixture *fixture, uint32_t port,
-			  int mv, int ma)
+			  int mv, int ma, int PDO_PEAK_OCP)
 {
 	uint32_t lpm_src_pdo;
 
@@ -132,9 +135,18 @@ int verify_lpm_source_pdo(struct src_policy_fixture *fixture, uint32_t port,
 		return -ERANGE;
 		/* LCOV_EXCL_STOP */
 	}
+
+	if (PDO_FIXED_GET_PEAK_CURR(lpm_src_pdo) != PDO_PEAK_OCP) {
+		/* LCOV_EXCL_START - error path only run when test fails */
+		LOG_ERR("Expected peak current %d, actual %d", PDO_PEAK_OCP,
+			PDO_FIXED_GET_PEAK_CURR(lpm_src_pdo));
+		return -ERANGE;
+		/* LCOV_EXCL_STOP */
+	}
 	return 0;
 }
 
+#if (CONFIG_PLATFORM_EC_USB_PD_3A_PORTS == 1)
 /* Verify first port connected is offered 3A contract. */
 ZTEST_USER_F(src_policy, test_src_policy_one_3a)
 {
@@ -147,6 +159,7 @@ ZTEST_USER_F(src_policy, test_src_policy_one_3a)
 	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT0],
 				     SINK_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
 				     &partner_snk_pdo));
+
 	zassert_ok(emul_pdc_connect_partner(fixture->emul_pdc[TEST_USBC_PORT0],
 					    &connector_status_port0));
 
@@ -157,7 +170,8 @@ ZTEST_USER_F(src_policy, test_src_policy_one_3a)
 	 * Check the configured LPM source PDO to verify our policy manager
 	 * offered a higher contract.
 	 */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "1st PD sink port not offered 15W");
 
 	/* Connect a second 3A capable sink.  We should only offer a 1.5A
@@ -174,11 +188,13 @@ ZTEST_USER_F(src_policy, test_src_policy_one_3a)
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT1, -1));
 
 	/* Port 0 should still offer 5V 3A. */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "1st PD sink port downgraded from 15W unexpectedly");
 
 	/* Port 1 should only offer 5V 1.5A. */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "2nd PD sink not limited to 7.5W");
 
 	/* Verify the correct voltages are reported to the host. */
@@ -239,7 +255,8 @@ ZTEST_USER_F(src_policy, test_src_policy_disconnect_3a)
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT1, -1));
 
 	/* Port 1 should only offer 5V 1.5A. */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "2nd port connected should only be offered 7.5W");
 
 	/* Disconnect port 0 */
@@ -247,11 +264,13 @@ ZTEST_USER_F(src_policy, test_src_policy_disconnect_3a)
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
 	/* Port 1 should now be offered 3A */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "Port 1 didn't get 15W after disconnecting port 0");
 
 	/* Port 0 should also be setup to only offer 1.5A for next connection */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "Disconnected port should only offer 7.5W");
 }
 
@@ -273,7 +292,8 @@ ZTEST_USER_F(src_policy, test_src_policy_pr_swap)
 	/* Wait for connection to settle and source policies to run. */
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "1st PD sink connected not offered 15W");
 
 	/* Following a PR swap, the LPM PDO should be configured for
@@ -289,7 +309,8 @@ ZTEST_USER_F(src_policy, test_src_policy_pr_swap)
 
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "After PR swap, LPM should only offer 7.5W");
 }
 
@@ -311,7 +332,8 @@ ZTEST_USER_F(src_policy, test_src_policy_non_pd)
 	/* Wait for connection to settle and source policies to run. */
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "1st PD sink connected not offered 15W");
 
 	/* Connect a non-PD sink.  The Rp should be set for 1.5A. */
@@ -388,7 +410,8 @@ ZTEST_USER_F(src_policy, test_src_policy_frs_1a5)
 	/* Wait for connection to settle and source policies to run. */
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "1st PD sink attached not offered 15W");
 
 	/* Connect an FRS source that needs 1.5A. */
@@ -415,7 +438,8 @@ ZTEST_USER_F(src_policy, test_src_policy_frs_1a5)
 	/* The source PDO should also be configured for 1.5A prior to
 	 * the swap.
 	 */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "7.5W FRS partner not limited to 7.5W");
 }
 
@@ -457,7 +481,8 @@ ZTEST_USER_F(src_policy, test_src_policy_frs_3a)
 	/* Wait for connection to settle and source policies to run. */
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "7.5W PD sink not limited to 7.5W");
 
 	/* Connect an FRS source that supports 3.0A. */
@@ -483,7 +508,8 @@ ZTEST_USER_F(src_policy, test_src_policy_frs_3a)
 	/* The source PDO should also be configured for 3.0A prior to
 	 * the swap.
 	 */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "15W FRS port not offered 15W");
 }
 
@@ -531,7 +557,8 @@ ZTEST_USER_F(src_policy, test_src_policy_fsr_downgrade_for_pd)
 	/* The source PDO should also be configured for 3.0A prior to
 	 * the swap.
 	 */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "15W FRS port not offered 15W");
 
 	/* Connecting a PD sink that needs 3.0A on port 0.
@@ -561,12 +588,14 @@ ZTEST_USER_F(src_policy, test_src_policy_fsr_downgrade_for_pd)
 
 	/* LPM source PDO offered should only be 1.5A to the FRS port. */
 	zassert_ok(
-		verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500),
+		verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 1500,
+				      PDO_PEAK_OCP),
 		"15W FRS port not downgraded to 7.5W after connecting PD sink");
 
 	/* PD sink should be offered 3.0A. */
 	zassert_ok(
-		verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000),
+		verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 3000,
+				      PDO_PEAK_OCP),
 		"15W PD sink not offered 15W when connecting after FRS port");
 
 	/* Disconnecting the PD sink on port 0 should re-enable FRS. */
@@ -584,7 +613,8 @@ ZTEST_USER_F(src_policy, test_src_policy_fsr_downgrade_for_pd)
 	/* The source PDO should also be configured for 3.0A prior to
 	 * the swap.
 	 */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000,
+					 PDO_PEAK_OCP),
 		   "15W FRS port not upgraded to 15W after removing PD sink");
 }
 
@@ -647,7 +677,8 @@ ZTEST_USER_F(src_policy, test_src_policy_non_pd_downgrade_for_frs)
 	zassert_true(frs_enabled);
 
 	zassert_ok(
-		verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000),
+		verify_lpm_source_pdo(fixture, TEST_USBC_PORT1, 5000, 3000,
+				      PDO_PEAK_OCP),
 		"15W FRS port not offerred 15W after connecting non-PD sink first");
 }
 
@@ -671,7 +702,8 @@ ZTEST_USER_F(src_policy, test_src_policy_sink_pdo_errors)
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
 
 	/* Source caps should only be 5V/1.5A. */
-	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500),
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500,
+					 PDO_PEAK_OCP),
 		   "15W PD sink with missing Fixed PDO not limited to 7.5W");
 
 	zassert_ok(emul_pdc_disconnect(fixture->emul_pdc[TEST_USBC_PORT0]));
@@ -888,3 +920,43 @@ ZTEST_USER_F(src_policy, test_src_policy_early_frs_disable)
 				    &frs_enabled));
 	zassert_true(frs_enabled);
 }
+#else
+ZTEST_USER_F(src_policy, test_src_policy_no_3a)
+{
+	union connector_status_t connector_status_port0 = { 0 };
+	uint32_t partner_snk_pdo = PDO_FIXED(5000, 1500, 0);
+
+	emul_pdc_configure_src(fixture->emul_pdc[TEST_USBC_PORT0],
+			       &connector_status_port0);
+	zassert_ok(emul_pdc_set_pdos(fixture->emul_pdc[TEST_USBC_PORT0],
+				     SINK_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				     &partner_snk_pdo));
+	zassert_ok(emul_pdc_connect_partner(fixture->emul_pdc[TEST_USBC_PORT0],
+					    &connector_status_port0));
+
+	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_USBC_PORT0, -1));
+
+	/* The emulator doesn't negotiate a real contract with the partner
+	 * as this is under the control of the PDC firmware.
+	 * Check the configured LPM source PDO to verify our policy manager
+	 * offered a higher contract.
+	 */
+	zassert_ok(verify_lpm_source_pdo(fixture, TEST_USBC_PORT0, 5000, 1500,
+					 PDO_PEAK_OCP),
+		   "1st PD sink port pdo incorrect");
+
+	/* Verify the correct voltages are reported to the host. */
+	struct ec_response_usb_pd_power_info response;
+	response = host_cmd_power_info(TEST_USBC_PORT0);
+	zassert_equal(
+		response.role, USB_PD_PORT_POWER_SOURCE,
+		"EC_CMD_USB_PD_POWER_INFO - Port %d Expected power role %d, "
+		"but EC reports role %d",
+		TEST_USBC_PORT0, USB_PD_PORT_POWER_DISCONNECTED, response.role);
+	zassert_equal(
+		response.meas.current_max, 1500,
+		"EC_CMD_USB_PD_POWER_INFO - Port %d: expected current %d mA, "
+		"actual current %d mA",
+		TEST_USBC_PORT0, 1500, response.meas.current_max);
+}
+#endif
