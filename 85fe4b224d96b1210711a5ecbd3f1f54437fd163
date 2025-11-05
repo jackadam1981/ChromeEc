@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0e8d2cf_7565c7fa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2025-11-05T06:42:38Z",
+      "side": 1,
+      "message": "During the EC stress test, we observe there are several threads taking turns activated and caused sysworkq threads unable to resume to reload watchdog: PD, KEYSCAN, HOSTCMD, MOTIONSENSE, CHARGER, and SHELL.\nWe also observe that the MOTIONSENSE will wake up immediately (with a sensor interrupt) after task_wait_event() is called. MOTIONSENSE only get suspended when it start an i2c transaction to read sensor raw data.\nIs there a recommended code section of MOTIONSENSE thread that needs to be measured to see how much time EC will spend to run the code?",
+      "parentUuid": "2ce7c26a_5c92f477",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6057ecb7_0bf4bd19",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 5
