@@ -28,7 +28,7 @@ config PLATFORM_EC_DSP_CLIENT_TIMEOUT_MS
 
 config PLATFORM_EC_DSP_CLIENT_TX_RETRY_MAX
 	int "Maximum number of TX retries"
-	default 20
+	default 50
 	depends on PLATFORM_EC_DSP_CLIENT
 	help
 	  When a TX call fails, a retry should happen up to this many times. Failures
