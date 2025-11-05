@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "825d7bb0_4e33cdb4",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T19:37:29Z",
+      "side": 1,
+      "message": "can you move this block above \n\n```\nmenuconfig FINGERPRINT_SENSOR_ELAN80SG\n\tbool \"Fingerprint driver for ELAN80SG\"\n\tdefault y\n\tdepends on DT_HAS_ELAN_ELAN80SG_ENABLED\n\tselect FINGERPRINT_SENSOR_ELAN80SERIES\n\thelp\n\t  Driver for ELAN80SG fingerprint sensor. It requires ELAN private library\n\t  to implement cros_fingerprint API. If the library is not available it\n\t  only supports checking sensor hardware ID.\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e7f12b0_5aefe53e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
         "patchSetId": 12
@@ -14,6 +37,24 @@
       "writtenOn": "2025-11-05T11:10:55Z",
       "side": 1,
       "message": "Do not introduce it in this CL.",
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142d0eb9_b80b98e6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T19:37:29Z",
+      "side": 1,
+      "message": "I agree. This CL is just renaming.",
+      "parentUuid": "8e7f12b0_5aefe53e",
       "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3beb9d21_bb98ebf1",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T19:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "004765cf_daad9945",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6432692_83c6efee",
