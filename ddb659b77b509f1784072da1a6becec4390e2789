@@ -171,6 +171,24 @@
       "parentUuid": "cd22d634_3e8b9469",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c0ab48_8646ec01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505078
+      },
+      "writtenOn": "2025-11-05T07:32:20Z",
+      "side": 1,
+      "message": "Apologies for the late reply. As long as we don\u0027t allow applications to change bootloader I think I am ok with it. From the security angle, what is the worst case scenario? Does this increase some attackers\u0027 capability?",
+      "parentUuid": "3ab0545d_02152955",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
