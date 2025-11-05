@@ -22,6 +22,30 @@
       },
       "revId": "09ad587a17ea90f03c5bfd2e02f0ebac4f4424cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2acbe4b_8141a74a",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T18:24:25Z",
+      "side": 1,
+      "message": "probably not, we can get it from the cache `cache[capture_type]`",
+      "parentUuid": "3cb093f0_41912a41",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "09ad587a17ea90f03c5bfd2e02f0ebac4f4424cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
