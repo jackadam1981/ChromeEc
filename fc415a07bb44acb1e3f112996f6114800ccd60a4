@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf8d352_a4ab2e49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-05T21:51:15Z",
+      "side": 1,
+      "message": "You may want to sent 2 CL: one the revert the old change (crrev.com/c/7005547) and one that add the change for every ISH ever.",
+      "revId": "fc415a07bb44acb1e3f112996f6114800ccd60a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0445e9b_7288b498",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-05T21:51:15Z",
+      "side": 1,
+      "message": "add b:433638452",
+      "revId": "fc415a07bb44acb1e3f112996f6114800ccd60a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "314de87d_4ac9bebf",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.client",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-05T21:51:15Z",
+      "side": 1,
+      "message": "Why 50? the default delay interval is 5ms. so the EC has to be waken by other means up every 250ms. Can we prove it will always happen?\nThe reason is it critical we don\u0027t loose a message ever, for user not to complain.",
+      "revId": "fc415a07bb44acb1e3f112996f6114800ccd60a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
