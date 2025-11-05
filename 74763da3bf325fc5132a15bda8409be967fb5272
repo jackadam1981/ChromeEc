@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8a36375_1bce99a8",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T20:10:18Z",
+      "side": 1,
+      "message": "can this be handled using the configuration system or CMAKE.txt file?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e7f12b0_5aefe53e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
         "patchSetId": 12
