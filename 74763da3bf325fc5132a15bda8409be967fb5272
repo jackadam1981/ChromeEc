@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "543ba036_3112a26d",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T19:38:08Z",
+      "side": 1,
+      "message": "are you sure this is a series dependency or a sensor dependency?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfc019b_f39ae48d",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-05T19:38:08Z",
+      "side": 1,
+      "message": "are you sure this is a series dependency or a sensor dependency?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "825d7bb0_4e33cdb4",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 12
