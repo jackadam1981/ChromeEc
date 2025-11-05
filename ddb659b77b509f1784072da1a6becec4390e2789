@@ -189,6 +189,24 @@
       "parentUuid": "3ab0545d_02152955",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deac4b5b_f6c4b48d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-05T13:06:41Z",
+      "side": 1,
+      "message": "\u003e As long as we don\u0027t allow applications to change bootloader\n\nit is a hard requirement for SDCP.\n\n\u003e From the security angle, what is the worst case scenario? Does this increase some attackers\u0027 capability?\n\nA potential attack I see is that the attacker enters bootloader and the bootloader has somehow possibility to read RAM (templates, keys etc.) or entropy in Rollbacks.\n\nTo mitigate such threats, I\u0027m thinking about placing such command only in RO. It would allow us to erase entropy before jumping to bootloader and there shouldn\u0027t be any FP related content / secrets in RAM.\n\n@tomhughes@chromium.org @patrykd@google.com any thoughts?",
+      "parentUuid": "62c0ab48_8646ec01",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
