@@ -176,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f972d4_a782c663",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-05T19:15:02Z",
+      "side": 1,
+      "message": "Per bug discussion, this is only likely to be triggered when the TCPC is not in an attached state, i.e. when AutoDischargeDisconnect is set to 0. (This corresponds roughly with when the TC is not in an Attached state, but it doesn\u0027t line up exactly.) If this were a problem, we might see a failure to transition to Attached from AttachWait.\n\nCode inspection suggests that we only call this function in a TCPC-attached state, so this won\u0027t be a problem. The fact that this CL causes no regressions in the Type-C Functional suite adds a lot of weight to this conclusion.\n\nIf we were to discover that we needed a fallback method, the TCPC\u0027s POWER_STATUS register would be an option in addition to the PPC, and that might make this function a little conceptually simpler.",
+      "parentUuid": "6172e29d_53a5d443",
+      "revId": "41a41b79b830181a9efcffe96c42a74e4bd60b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a92470_19c595be",
