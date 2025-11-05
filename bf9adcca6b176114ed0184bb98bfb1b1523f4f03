@@ -309,6 +309,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c8d3fe3_9da80960",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-05T11:10:55Z",
+      "side": 1,
+      "message": "It\u0027s a good point. I think you need to add `#ifdef` here for defining `DT_DRV_COMPAT` and #error if there is no a proper sensor detected.",
+      "parentUuid": "c9732509_0da51300",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "bf9adcca6b176114ed0184bb98bfb1b1523f4f03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ff2e89b_9afb2c36",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 9
