@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92db477f_f32b9150",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-05T22:04:54Z",
+      "side": 1,
+      "message": "Might be helpful to have a comment like [this]( https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/fingerprint/fpc/bep/fpc1025_private.h;l\u003d20-25;drc\u003ddfb76cb0f59f19463eb4bb8e5f62c5718aa84a06)\n\nSame in the other case.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "50f7b80279d1181f26f0395445560a0e29ec89d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
