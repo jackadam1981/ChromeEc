@@ -46,6 +46,30 @@
       },
       "revId": "50f7b80279d1181f26f0395445560a0e29ec89d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1df38b_9437e175",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-05T22:23:42Z",
+      "side": 1,
+      "message": "Can you include the `Value from fpc_bep_image_get_buffer_size():`? That gives a helpful pointer to the source of truth for the size.",
+      "parentUuid": "534757bb_b4b90140",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "50f7b80279d1181f26f0395445560a0e29ec89d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
