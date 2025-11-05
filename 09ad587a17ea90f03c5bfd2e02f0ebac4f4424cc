@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb093f0_41912a41",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-05T18:16:50Z",
+      "side": 1,
+      "message": "Question (no need to make changes now): If we have saved the capture type, do we need to keep the frame_size as well? We can get it from the cache, right?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "09ad587a17ea90f03c5bfd2e02f0ebac4f4424cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
