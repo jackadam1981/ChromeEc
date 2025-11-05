@@ -4020,7 +4020,6 @@ static void tc_cc_open_entry(const int port)
 	 */
 	if (battery_is_present())
 		tcpm_enable_auto_discharge_disconnect(port, 0);
-
 	/*
 	 * We may brown out after applying CC open, so flush console first.
 	 * Console flush can take a long time, so if we aren't in danger of

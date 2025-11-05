@@ -24,8 +24,6 @@ LOG_MODULE_DECLARE(nissa, CONFIG_NISSA_LOG_LEVEL);
 
 enum usbc_port { USBC_PORT_C0 = 0, USBC_PORT_C1, USBC_PORT_COUNT };
 
-static bool sourcing_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
-
 __override uint8_t board_get_usb_pd_port_count(void)
 {
 	return USBC_PORT_COUNT;
