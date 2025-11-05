@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d37efb0_686c373c",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-11-05T01:01:50Z",
+      "side": 1,
+      "message": "Hi all.\n\nIf the value is changed to 45w, [TEST.PD.SNK.1 PDO](https://partnerissuetracker.corp.google.com/issues/457658719) will fail.",
+      "parentUuid": "d346f382_2c18d6ab",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 45
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3340b8f_373949ab",
         "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
         "patchSetId": 4
