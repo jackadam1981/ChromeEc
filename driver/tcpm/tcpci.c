@@ -405,6 +405,17 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
  */
 void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 {
+	static bool cached_add_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+	/*Since argument is integer, normalize to bool*/
+	enable = !!enable;
+
+	/* Skip redundant register access */
+	if (cached_add_state[port] == enable)
+		return;
+
+	cached_add_state[port] = enable;
+
 	if (IS_ENABLED(DEBUG_AUTO_DISCHARGE_DISCONNECT))
 		CPRINTS("C%d: AutoDischargeDisconnect %sABLED", port,
 			enable ? "EN" : "DIS");
