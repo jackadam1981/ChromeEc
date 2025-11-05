@@ -4,15 +4,21 @@
  */
 
 #include "chipset.h"
+#include "keyboard_scan.h"
+#include "cros_board_info.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
 #include "timer.h"
+#include "../include/keyboard_customization.h"
 
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
 
 #include <ap_power/ap_power.h>
 
 #define INT_RECHECK_US 5000
+
+LOG_MODULE_REGISTER(board_init, LOG_LEVEL_ERR);
 
 static void board_backlight_handler(struct ap_power_ev_callback *cb,
 				    struct ap_power_ev_data data)
@@ -78,3 +84,40 @@ static void board_setup_init()
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_jd1));
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
+
+/* Vol-up key matrix for T13 */
+#define VOL_UP_KEY_ROW_1 3
+#define VOL_UP_KEY_COL_1 5
+
+/* Vol-up key matrix for T15 */
+#define VOL_UP_KEY_ROW_2 0
+#define VOL_UP_KEY_COL_2 12
+
+static void kb_vol_up_init(void)
+{
+	int ret;
+	uint32_t sku_id;
+
+	ret = cbi_get_sku_id(&sku_id);
+	if (ret != 0) {
+		LOG_ERR("%s: Cannot read CBI SKU ID: %d.",
+			__func__, ret);
+
+		return;
+	}
+	switch ((sku_id >> 12) & 0x03) {
+	case 0x01:
+		set_vol_up_key(KEYBOARD_DEFAULT_ROW_VOL_UP,
+			       KEYBOARD_DEFAULT_COL_VOL_UP);
+		break;
+	case 0x02:
+		set_vol_up_key(VOL_UP_KEY_ROW_1,
+			       VOL_UP_KEY_COL_1);
+		break;
+	case 0x03:
+		set_vol_up_key(VOL_UP_KEY_ROW_2,
+			       VOL_UP_KEY_COL_2);
+		break;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, kb_vol_up_init, HOOK_PRIO_PRE_DEFAULT);
