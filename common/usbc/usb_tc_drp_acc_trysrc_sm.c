@@ -2825,6 +2825,14 @@ static void tc_attached_snk_run(const int port)
 	sink_power_sub_states(port);
 #endif /* CONFIG_USB_PE_SM */
 }
+static int deferred_port_discharge;
+
+static void deferred_disable_auto_discharge(void)
+{
+	int port = deferred_port_discharge;
+	tcpm_enable_auto_discharge_disconnect(port, 0);
+}
+DECLARE_DEFERRED(deferred_disable_auto_discharge);
 
 static void tc_attached_snk_exit(const int port)
 {
@@ -2843,8 +2851,11 @@ static void tc_attached_snk_exit(const int port)
 		 * happen in tc_cc_open_entry if that is the path we are
 		 * taking.
 		 */
-		if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_SUSPEND))
-			tcpm_enable_auto_discharge_disconnect(port, 0);
+		if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_SUSPEND)) {
+			deferred_port_discharge = port;
+			hook_call_deferred(
+				&deferred_disable_auto_discharge_data, 0);
+		}
 	}
 
 	/* Stop drawing power */
@@ -4018,9 +4029,10 @@ static void tc_cc_open_entry(const int port)
 	 * sure the TCPC has managed its internal states for disconnecting
 	 * the only source of power it has.
 	 */
-	if (battery_is_present())
-		tcpm_enable_auto_discharge_disconnect(port, 0);
-
+	if (battery_is_present()) {
+		deferred_port_discharge = port;
+		hook_call_deferred(&deferred_disable_auto_discharge_data, 0);
+	}
 	/*
 	 * We may brown out after applying CC open, so flush console first.
 	 * Console flush can take a long time, so if we aren't in danger of
