@@ -16,6 +16,57 @@
       "message": "This change is for optimisation in the ErrorRecovery time.Test FRS.SNK3.4 is passing without this change also.",
       "revId": "d2f3f5d7710455d4646fd28d7d165f3c5bac0c20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f16c6f2_a1dcf5b1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2828,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-06T20:57:40Z",
+      "side": 1,
+      "message": "There would be a race condition on this if both ports disconnected at the same time. If you want to only have one deferred function, I think you\u0027ll need to make a flag or bool in the per-port state and then have this function iterate through the port states checking the flag and clearing it.",
+      "revId": "d2f3f5d7710455d4646fd28d7d165f3c5bac0c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32d0159_4dc42722",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2857,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-06T20:57:40Z",
+      "side": 1,
+      "message": "This might break the TCPC operational model. There are some sequencing requirements on this bit in TCPCI, and at a high level, a TCPC can use this bit as a signal for whether it\u0027s connected or not. For instance, if ADD is enabled, the LookForConnection command used to enable DRP Autotoggle will be a ignored. That could mess up the transition from an Attached state to DRP Autotoggle. I hesitate to do this.",
+      "revId": "d2f3f5d7710455d4646fd28d7d165f3c5bac0c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540bb724_d2540b86",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4034,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-06T20:57:40Z",
+      "side": 1,
+      "message": "In the transition from Attached.SNK to Error Recovery (or any CC open state), which is the one we care about here, this setting will have already happened in `tc_attached_snk_exit`. This one would be redundant, and we could avoid it by caching the ADD state.\n\n(We might also be able to avoid it by getting rid of one of the calls to `tcpm_enable_auto_discharge_disconnect`, but I suspect that would be unsafe. I\u0027m guessing there\u0027s a reason we call this in both places.)\n\nThe appropriate place to do that caching would probably be in `tcpci_tcpc_enable_auto_discharge_disconnect`.\n\nSince your current change defers 2-4 register accesses, and caching would avoid 1-2, I would expect caching to save about half as much time as what you\u0027re doing now.",
+      "revId": "d2f3f5d7710455d4646fd28d7d165f3c5bac0c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
