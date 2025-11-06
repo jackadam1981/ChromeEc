@@ -22,6 +22,54 @@
       },
       "revId": "60c6c5c0e4d262e3b9eabcd6eff9d4b14de5499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f29e24f_81459ff0",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-06T01:29:04Z",
+      "side": 1,
+      "message": "After I deleted the \u0026power_ctrl_psl, the power LED still stayed on when entering hibernate mode, so I think it’s still needed.",
+      "parentUuid": "b70e0516_bf029821",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "60c6c5c0e4d262e3b9eabcd6eff9d4b14de5499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f07699f_6d81b839",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-06T01:29:04Z",
+      "side": 1,
+      "message": "when I removed \u0026power_ctrl_psl",
+      "parentUuid": "b70e0516_bf029821",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "60c6c5c0e4d262e3b9eabcd6eff9d4b14de5499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
