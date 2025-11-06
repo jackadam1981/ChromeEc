@@ -39,6 +39,30 @@
       },
       "revId": "f5aab61c907d3711b6c13b781682311ff278e07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60070014_88367154",
+        "filename": "zephyr/program/fatcat/lapis/src/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-06T16:57:38Z",
+      "side": 1,
+      "message": "The EC team will take ownership of creating a new fan control driver.\n\nThis change is allowed to merge in the short term for to unblock testing.",
+      "parentUuid": "385f07df_97b10ded",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "f5aab61c907d3711b6c13b781682311ff278e07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
