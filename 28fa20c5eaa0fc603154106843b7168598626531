@@ -22,6 +22,30 @@
       },
       "revId": "28fa20c5eaa0fc603154106843b7168598626531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912d0112_783333fc",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T01:26:09Z",
+      "side": 1,
+      "message": "This is a short-term solution. Further refactoring will be required in order to support multiple LED pin nodes (b/458139443).",
+      "parentUuid": "6d802a92_41ef4217",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "28fa20c5eaa0fc603154106843b7168598626531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
