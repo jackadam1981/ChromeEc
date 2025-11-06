@@ -16,6 +16,29 @@
       "message": "Please review this CL",
       "revId": "9187f64b506b7aacce197f9a7bec608132ea4f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbe6c73_8b2452b5",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-06T23:41:33Z",
+      "side": 1,
+      "message": "pigweed and nanopb aren\u0027t used for this build, right?\n\ni\u0027m not sure about cmsis/cmsis_6. the main ECs don\u0027t specify that,\nmaybe they\u0027re getting it by default?\nin any case, that\u0027s an ARM thing, isn\u0027t it?",
+      "range": {
+        "startLine": 188,
+        "startChar": 59,
+        "endLine": 188,
+        "endChar": 78
+      },
+      "revId": "9187f64b506b7aacce197f9a7bec608132ea4f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
