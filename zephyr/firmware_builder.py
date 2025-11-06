@@ -155,11 +155,11 @@ def build(opts):
     projects_path = zmake.modules.default_projects_dirs(modules)
 
     # Start with a clean build environment
-    cmd = ["make", "clobber"]
+    cmd = ["make", "-f", "Makefile.cq", "clobber"]
     log_cmd(cmd)
     subprocess.run(
         cmd,
-        cwd=platform_ec,
+        cwd=ZEPHYR_DIR,
         check=True,
         stdin=subprocess.DEVNULL,
         env=env,
