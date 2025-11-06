@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5a5000_3882479e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Change this description: Configure the LED hardware peripheral.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13960d2_7c956c0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Update the bug number.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f84ffd5f_15e24455",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Update the testing instruction.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79598983_307068a5",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Remove it. This CL only configures the hardware peripheral.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e282417_9d5907f5",
+        "filename": "zephyr/program/fatcat/ruby/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Remove it. It will be automatically selected.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560cc31c_52cdd513",
+        "filename": "zephyr/program/fatcat/ruby/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Update the comment.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 69
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4b3cff_5da3fc41",
+        "filename": "zephyr/program/fatcat/ruby/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Please use the consistent style.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e492b1bf_830385e3",
+        "filename": "zephyr/program/fatcat/ruby/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Remove it.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc3948e_dc2902a5",
+        "filename": "zephyr/program/fatcat/ruby/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Remove this comment.",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 72
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f062b3f0_9e1a4a77",
+        "filename": "zephyr/program/fatcat/ruby/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Update the baud rate.",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be4ac1a_d45832d3",
+        "filename": "zephyr/program/fatcat/ruby/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T17:30:23Z",
+      "side": 1,
+      "message": "Update it.",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "c6d63de37ee4b0d5b971b2288874dba403b430f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
