@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ceeacc_f2ba0d61",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-06T11:13:30Z",
+      "side": 1,
+      "message": "Please use `ELAN_EM32`.",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2353e27_ad122066",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-06T11:13:30Z",
+      "side": 1,
+      "message": "What is this bug number?",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9755183e_83a947db",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-06T11:13:30Z",
+      "side": 1,
+      "message": "`chip_id` casted to `int` can be easily interpreted as negative value, which would mean an error. Maybe just pass a buffer to this function to store the chip_id?",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "983ec372_a885d606",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-06T11:13:30Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

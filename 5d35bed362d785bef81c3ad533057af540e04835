@@ -101,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecf30daa_95e3d09e",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-06T11:13:30Z",
+      "side": 1,
+      "message": "There are still `//` comments.",
+      "parentUuid": "a1fc3d70_6db9c970",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc5629de_d80e4bdb",
         "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
         "patchSetId": 3
@@ -470,6 +488,24 @@
       "side": 1,
       "message": "Use BSS to avoid the zmake error: \u0027error: address of stack memory associated with local variable \u0027buf\u0027 returned [-Werror,-Wreturn-stack-address]\u0027.",
       "parentUuid": "29c1fe5a_399b3505",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9861f148_a412c79a",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-06T11:13:30Z",
+      "side": 1,
+      "message": "I see it now",
+      "parentUuid": "cdef4bf8_4e9a71e1",
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
