@@ -610,9 +610,13 @@ out:
 	return ret;
 }
 
+#include <soc.h>
+bool int_acc;
 /* Handle IRQ from sensor: schedule read from task context */
 test_mockable void bma4xx_interrupt(enum gpio_signal signal)
 {
+	ECREG(0xf01607) |= BIT(4);
+	int_acc = true;
 	last_irq_timestamp = __hw_clock_source_read();
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_BMA4XX_INT_EVENT);
 }

@@ -725,7 +725,9 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s)
 	}
 }
 
-static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
+#include "ilm.h"
+
+static int __soc_ram_code motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 				const timestamp_t *ts)
 {
 	int ret = EC_SUCCESS;
@@ -919,7 +921,12 @@ static void check_and_queue_gestures(uint32_t *event)
  *    1 in the A/B(lid, display) and 1 in the C/D(base, keyboard)
  * Gyro Sensor (optional)
  */
-void motion_sense_task(void *u)
+#include <soc.h>
+
+extern bool int_acc, int_imu;
+bool lid_acc_flag, base_imu_flag;
+
+void __soc_ram_code motion_sense_task(void *u)
 {
 	int i, ret, sample_id = 0;
 	timestamp_t ts_end_task;
@@ -941,6 +948,19 @@ void motion_sense_task(void *u)
 	}
 
 	while (1) {
+		unsigned int key1;
+		key1 = irq_lock();
+		if (lid_acc_flag) {
+			ECREG(0xf01607) |= BIT(4);
+		}
+		irq_unlock(key1);
+
+		key1 = irq_lock();
+		if (base_imu_flag) {
+			ECREG(0xf01607) |= BIT(3);
+		}
+		irq_unlock(key1);
+
 		ts_begin_task = get_time();
 		atomic_add(&motion_sense_task_loops, 1);
 		for (i = 0; i < motion_sensor_count; ++i) {
@@ -1072,7 +1092,39 @@ void motion_sense_task(void *u)
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_get_all();
 		}
+
+		key1 = irq_lock();
+		if (lid_acc_flag) {
+			lid_acc_flag = false;
+			ECREG(0xf01607) &= ~BIT(4);
+		}
+		irq_unlock(key1);
+
+		key1 = irq_lock();
+		if (base_imu_flag) {
+			base_imu_flag = false;
+			ECREG(0xf01607) &= ~BIT(3);
+		}
+		irq_unlock(key1);
+
 		event = task_wait_event(wait_us);
+
+		key1 = irq_lock();
+		if (int_acc) {
+			int_acc = false;
+			lid_acc_flag = true;
+			ECREG(0xf01607) &= ~BIT(4);
+		}
+		irq_unlock(key1);
+
+		key1 = irq_lock();
+		if (int_imu) {
+			int_imu = false;
+			base_imu_flag = true;
+			ECREG(0xf01607) &= ~BIT(3);
+		}
+		irq_unlock(key1);
+
 		if (DISABLE_PM_POLICY_WHILE_WAITING(wait_us,
 						    fastest_collection_rate)) {
 			pm_policy_state_lock_put_all();
