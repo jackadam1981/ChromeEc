@@ -16,6 +16,24 @@
       "message": "Deferred host event calls LGTM.\n\nCaching VBUS-enable status: I think this needs to be initialized more carefully. But I think it would also be better to do this caching inside the PPC driver. Is that not already happening?",
       "revId": "41501c1e714e10faec03842bd505ed72ce09cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0322aae5_2aa1ee9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-11-06T06:43:00Z",
+      "side": 1,
+      "message": "Yes, In PPC driver also we are doing it. I have created a CL stack for this.",
+      "parentUuid": "25bae07f_6aa900be",
+      "revId": "41501c1e714e10faec03842bd505ed72ce09cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
