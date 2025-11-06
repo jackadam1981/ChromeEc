@@ -46,6 +46,30 @@
       },
       "revId": "28fa20c5eaa0fc603154106843b7168598626531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73169b12_a1281723",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-06T01:32:04Z",
+      "side": 1,
+      "message": "BTW, I agree with you that `DT_CHOSEN` is a good practice.",
+      "parentUuid": "912d0112_783333fc",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "28fa20c5eaa0fc603154106843b7168598626531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
