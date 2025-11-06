@@ -81,6 +81,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fc3d70_6db9c970",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94b5433_1bbb47b0",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc5629de_d80e4bdb",
@@ -134,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "285db9e3_284fbc40",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8045668a_4ee3c591",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8871907d_801d6ab9",
@@ -147,6 +183,30 @@
       "writtenOn": "2025-10-15T10:36:50Z",
       "side": 1,
       "message": "Use signed int here to return the error code at line 59.",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41922d4f_98681f9c",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8871907d_801d6ab9",
       "range": {
         "startLine": 49,
         "startChar": 7,
@@ -174,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eaefb35_9ca3968d",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0ceee6_cb09b29f",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df13176_b4d85068",
@@ -187,6 +265,30 @@
       "writtenOn": "2025-10-15T10:36:50Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f64ee32_1c3405ef",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df13176_b4d85068",
       "range": {
         "startLine": 69,
         "startChar": 7,
@@ -214,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf0e2f33_89c311dd",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29d12c55_82b9b646",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15cc6f7b_2af7f474",
@@ -227,6 +347,24 @@
       "writtenOn": "2025-10-15T10:32:51Z",
       "side": 1,
       "message": "No need to use static buffer.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5defdf_48d5a0ca",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Use BSS to avoid the zmake error: \u0027error: address of stack memory associated with local variable \u0027buf\u0027 returned [-Werror,-Wreturn-stack-address]\u0027.",
+      "parentUuid": "15cc6f7b_2af7f474",
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -265,6 +403,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e298600_e2ff7e61",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326f3c7d_4b799111",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e81ec8_4f5b78a7",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc5f4995_94b12c6b",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c1fe5a_399b3505",
@@ -278,6 +452,24 @@
       "writtenOn": "2025-10-15T10:32:51Z",
       "side": 1,
       "message": "No need to use static buffer.",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdef4bf8_4e9a71e1",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Use BSS to avoid the zmake error: \u0027error: address of stack memory associated with local variable \u0027buf\u0027 returned [-Werror,-Wreturn-stack-address]\u0027.",
+      "parentUuid": "29c1fe5a_399b3505",
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -312,6 +504,42 @@
       "writtenOn": "2025-10-15T10:36:50Z",
       "side": 1,
       "message": "Same here",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7972e4_5011763d",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a1072c_92e8bb8b",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd051f6_6aa1a719",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-06T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "febf7364_d76c35d6",
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
