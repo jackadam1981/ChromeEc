@@ -134,6 +134,7 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 			ap_power_ev_send_callbacks(AP_POWER_RESUME_INIT);
 		}
 #endif
+		disable_sleep(SLEEP_MASK_AP_RUN);
 		/* Notify power event rails are up */
 		ap_power_ev_send_callbacks(AP_POWER_RESUME);
 		break;
