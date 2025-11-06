@@ -795,12 +795,6 @@ static inline bool is_charge_available(const struct charge_port_info *info)
 	return !(info->current == 0 || info->voltage == 0);
 }
 
-static inline bool is_voltage_sufficient(const struct charge_port_info *info,
-					 const uint32_t min_required_mv)
-{
-	return info->voltage >= min_required_mv;
-}
-
 /**
  * Select the best charge port or the override port, as defined by the supplier
  * hierarchy and the available power.
@@ -854,17 +848,6 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			if (!is_charge_available(
 				    &available_charge[sup_idx][port_idx]))
 				continue;
-
-			/*
-			 * If supported, skip supplier that doesn't meet minimum
-			 * required voltage of charger IC.
-			 */
-			if (verify_min_required_mv &&
-			    !is_voltage_sufficient(
-				    &available_charge[sup_idx][port_idx],
-				    min_required_mv)) {
-				continue;
-			}
 
 			/*
 			 * Don't select this port if we have a
