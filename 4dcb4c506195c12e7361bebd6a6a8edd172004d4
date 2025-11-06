@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4dcb4c506195c12e7361bebd6a6a8edd172004d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "262a2856_4feca6fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3569749
+      },
+      "writtenOn": "2025-11-06T11:21:20Z",
+      "side": 1,
+      "message": "Verified on brya-redrix by flashing the EC, connecting a phone via C-C cable and triggering data role swaps from the userspace: `echo device \u003e /sys/class/typec/port1/data_role`",
+      "revId": "4dcb4c506195c12e7361bebd6a6a8edd172004d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
