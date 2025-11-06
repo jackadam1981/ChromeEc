@@ -32,12 +32,18 @@ enum base_sensor_type {
 
 static int use_alt_base_sensor;
 
+#include <soc.h>
+bool int_imu;
+
 void base_sensor_interrupt(enum gpio_signal signal)
 {
+	ECREG(0xf01607) |= BIT(3);
+	int_imu=true;
 	if (use_alt_base_sensor == base_bmi260)
 		bmi260_interrupt(signal);
 	else
 		bmi3xx_interrupt(signal);
+	//int_imu=false;
 }
 
 __override uint8_t board_get_usb_pd_port_count(void)
