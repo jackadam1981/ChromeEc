@@ -28,6 +28,15 @@ properties:
       - "celxpert,c340152"
       - "celxpert,l22c3pg0"
       - "cosmx,313-ac-32-a"
+<<<<<<< HEAD   (e353f4b1aa40b3f26f7f97b7d62e8f64a30e8897 zephyr: shim: Don't assert for unmatched thread IDs)
+||||||| BASE   (744e96a466ce2ebaa67764342f4215b5fc5ce328 quenbi: Add temperature sensors device tree configuration)
+      - "cosmx,313-ac-38-a"
+      - "cosmx,333-ac-3f-a"
+=======
+      - "cosmx,313-ac-38-a"
+      - "cosmx,333-ac-0b-a"
+      - "cosmx,333-ac-3f-a"
+>>>>>>> CHANGE (0490aa5de034d00912e50f5cdb002f3aeb6575bc domika/yavilla: Add battery cosmx,333-ac-0b-a)
       - "cosmx,ap20cbl"
       - "cosmx,ap20cbl-2"
       - "cosmx,ap20cbl-3"
