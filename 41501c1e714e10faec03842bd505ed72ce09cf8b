@@ -34,6 +34,24 @@
       "parentUuid": "25bae07f_6aa900be",
       "revId": "41501c1e714e10faec03842bd505ed72ce09cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e0e71e_356203b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-06T21:00:32Z",
+      "side": 1,
+      "message": "The now-redundant caching is still in this CL.",
+      "parentUuid": "0322aae5_2aa1ee9a",
+      "revId": "41501c1e714e10faec03842bd505ed72ce09cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
