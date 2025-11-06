@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac7e503_20c104cc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-06T21:39:42Z",
+      "side": 0,
+      "message": "This is algorithm is in common code. Does verified_min_required_mv check not apply for kaladin. Wouldn\u0027t you get the same result if you removed this property minimum-charging-mv \u003d \u003c15000\u003e; from the .dtsi file . I don\u0027t think this code section can be removed because it was added recently without some other justification and an understanding how this will affect hybrid chargers.",
+      "range": {
+        "startLine": 862,
+        "startChar": 3,
+        "endLine": 868,
+        "endChar": 0
+      },
+      "revId": "1b906599fec4bd094357c824be9c77bd0390ae5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
