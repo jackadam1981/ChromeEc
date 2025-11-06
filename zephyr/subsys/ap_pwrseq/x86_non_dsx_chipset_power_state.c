@@ -150,8 +150,8 @@ static void x86_non_dsx_chipset_state_entry_cb(const struct device *dev,
 		 * to go into deep sleep in S0ix.
 		 */
 		enable_sleep(SLEEP_MASK_AP_RUN);
-
 		ap_power_ev_send_callbacks(AP_POWER_S0IX_SUSPEND);
+
 #if CONFIG_PLATFORM_EC_CHIPSET_RESUME_INIT_HOOK
 		ap_power_ev_send_callbacks(AP_POWER_SUSPEND_COMPLETE);
 #endif
