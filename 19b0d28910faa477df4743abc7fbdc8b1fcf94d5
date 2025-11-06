@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aec26c2_5911f943",
+        "filename": "zephyr/program/nissa/pujjoga/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-06T21:08:17Z",
+      "side": 1,
+      "message": "This is kind of a dangerous optimization to enable. It assumes that all registers on all devices accessed via `i2c_update*` have normal memory semantics. This is true of most registers on most devices, but some have different semantics, e.g. W1C or read-to-clear.\n\nInstead of making this change globally, individual drivers should do this for individual registers. That\u0027s what you\u0027re already doing in the SYV682 CL, so if that\u0027s the register write you were optimizing out here, this CL should provide no incremental benefit.\n\nA better version of this feature would be to provide a function like `i2c_update_if_changed` and have individual drivers call that where appropriate. That might be worth doing soon.",
+      "revId": "19b0d28910faa477df4743abc7fbdc8b1fcf94d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
