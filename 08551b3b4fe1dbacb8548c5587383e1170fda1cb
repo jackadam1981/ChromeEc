@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "675b4a15_2be92275",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-06T21:51:36Z",
+      "side": 1,
+      "message": "This limit should be defined as a macro that makes it clear what time period is being checked.",
+      "range": {
+        "startLine": 253,
+        "startChar": 22,
+        "endLine": 253,
+        "endChar": 23
+      },
+      "revId": "08551b3b4fe1dbacb8548c5587383e1170fda1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7082f0e5_9b72ce27",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-06T21:51:36Z",
+      "side": 1,
+      "message": "similar comment as above. I don\u0027t see any comments related to the period of blink_cnt.",
+      "range": {
+        "startLine": 260,
+        "startChar": 23,
+        "endLine": 260,
+        "endChar": 25
+      },
+      "revId": "08551b3b4fe1dbacb8548c5587383e1170fda1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
