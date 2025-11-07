@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "587f3ea0_59baddd1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:46:11Z",
+      "side": 1,
+      "message": "I believe the CL can just define the pointer function and make it \n\n```\nvoid elan_register_image_read_func()\n{\n\t\telan_image_read_func \u003d elan_image_read;\n}\n```\n\nthen we you come to this CL, you make the difference to I80SG",
+      "parentUuid": "d02d5232_dcb61876",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 1
+      },
+      "revId": "d1ff12d0f26cf17ec45dcfc5ef1b6e7248c7a13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a4613aa_3224245a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
         "patchSetId": 16
