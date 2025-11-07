@@ -52,6 +52,24 @@
       "parentUuid": "7175e5ec_862ed058",
       "revId": "18a53a0019fb0e17032027012570b647df69eb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2f2737_c8dd59e3",
+        "filename": "zephyr/program/nissa/domika/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3406608
+      },
+      "writtenOn": "2025-11-07T09:40:06Z",
+      "side": 1,
+      "message": "+CONFIG_THREAD_ANALYZER\u003dy\n+CONFIG_THREAD_ANALYZER_USE_PRINTK\u003dy\n+CONFIG_THREAD_ANALYZER_AUTO\u003dy\n+CONFIG_THREAD_ANALYZER_AUTO_INTERVAL\u003d5",
+      "parentUuid": "9a887c7c_3da117cd",
+      "revId": "18a53a0019fb0e17032027012570b647df69eb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
