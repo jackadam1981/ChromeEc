@@ -34,6 +34,24 @@
       "parentUuid": "0d32411a_915636b6",
       "revId": "18a53a0019fb0e17032027012570b647df69eb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a887c7c_3da117cd",
+        "filename": "zephyr/program/nissa/domika/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3406608
+      },
+      "writtenOn": "2025-11-07T09:34:34Z",
+      "side": 1,
+      "message": "Enable Zephyr thread analyzer, and here is the stack usage during runtime: (ISR0 604 \u003e 512)\n\n\n\n\nCONFIG_THREAD_ANALYZER_AUTO25-11-07 09:27:48.817  0x801022c8          : STACK: unused 560 usage 720 / 1280 (56 %); CPU: 0 %\n25-11-07 09:27:48.826                      : Total CPU cycles used: 178\n25-11-07 09:27:48.833  0x80102390          : STACK: unused 384 usage 640 / 1024 (62 %); CPU: 3 %\n25-11-07 09:27:48.840                      : Total CPU cycles used: 47214\n25-11-07 09:27:48.848  0x80101b60          : STACK: unused 504 usage 520 / 1024 (50 %); CPU: 0 %\n25-11-07 09:27:48.863                      : Total CPU cycles used: 271\n25-11-07 09:27:48.875  0x80101480          : STACK: unused 240 usage 784 / 1024 (76 %); CPU: 0 %\n25-11-07 09:27:48.882                      : Total CPU cycles used: 1526\n25-11-07 09:27:48.897  0x80101c28          : STACK: unused 256 usage 768 / 1024 (75 %); CPU: 0 %\n25-11-07 09:27:48.920                      : Total CPU cycles used: 473\n25-11-07 09:27:48.937  0x80101db8          : STACK: unused 320 usage 1216 / 1536 (79 %); CPU: 0 %\n25-11-07 09:27:48.952                      : Total CPU cycles used: 8204\n25-11-07 09:27:48.959  0x80101cf0          : STACK: unused 400 usage 1136 / 1536 (73 %); CPU: 24 %\n25-11-07 09:27:48.971                      : Total CPU cycles used: 304675\n25-11-07 09:27:48.974  0x80101908          : STACK: unused 384 usage 896 / 1280 (70 %); CPU: 4 %\n25-11-07 09:27:48.986                      : Total CPU cycles used: 61028\n25-11-07 09:27:48.993  0x80101a98          : STACK: unused 144 usage 880 / 1024 (85 %); CPU: 0 %\n25-11-07 09:27:49.001                      : Total CPU cycles used: 813\n25-11-07 09:27:49.010  0x801019d0          : STACK: unused 160 usage 864 / 1024 (84 %); CPU: 0 %\n25-11-07 09:27:49.030                      : Total CPU cycles used: 2392\n25-11-07 09:27:49.031  0x801016f0          : STACK: unused 160 usage 1120 / 1280 (87 %); CPU: 7 %\n25-11-07 09:27:49.045                      : Total CPU cycles used: 90015\n25-11-07 09:27:49.053  0x801015f0          : STACK: unused 160 usage 864 / 1024 (84 %); CPU: 0 %\n25-11-07 09:27:49.059                      : Total CPU cycles used: 8230\n25-11-07 09:27:49.067  0x80102678          : STACK: unused 16 usage 240 / 256 (93 %); CPU: 0 %\n25-11-07 09:27:49.074                      : Total CPU cycles used: 29\n25-11-07 09:27:49.081  0x80102aa8          : STACK: unused 320 usage 960 / 1280 (75 %); CPU: 0 %\n25-11-07 09:27:49.096                      : Total CPU cycles used: 10738\n25-11-07 09:27:49.103  0x80102458          : STACK: unused 304 usage 208 / 512 (40 %); CPU: 53 %\n25-11-07 09:27:49.117                      : Total CPU cycles used: 654515\n25-11-07 09:27:49.125  0x80102520          : STACK: unused 352 usage 1184 / 1536 (77 %); CPU: 2 %\n25-11-07 09:27:49.137                      : Total CPU cycles used: 28456\n25-11-07 09:27:49.147  ISR0                : STACK: unused 196 usage 604 / 800 (75 %)",
+      "parentUuid": "7175e5ec_862ed058",
+      "revId": "18a53a0019fb0e17032027012570b647df69eb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
