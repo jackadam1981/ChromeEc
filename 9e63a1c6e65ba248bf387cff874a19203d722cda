@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1f9d70_cf619eaf",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-07T17:14:50Z",
+      "side": 0,
+      "message": "Hi Deepti, \nVisually, the changes look correct - but I believe we\u0027re going to need to put ITE and Nuvoton on separate CLs because we\u0027ll need to stage rework versus releasing the CLs.\n\nITE needs to have h/w rework done ahead of the CL merging.  Nuvoton would be more forgiving, but makes sense to merge the CL ahead of the h/w rework.",
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
