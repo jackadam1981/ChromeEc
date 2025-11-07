@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a83e3a7b_88621503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T21:03:04Z",
+      "side": 1,
+      "message": "I agree we should try and fix these settings in the devicetree.",
+      "parentUuid": "71a8d96c_02104ed9",
+      "revId": "0ebe7e322c6f0efc154dac19ad68e54cdd12ed58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75f3ab96_6e54c654",
         "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
         "patchSetId": 1
