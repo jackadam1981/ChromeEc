@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb593e7c_e2127e06",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-07T23:26:27Z",
+      "side": 1,
+      "message": "please double check this condition.\ni don\u0027t recall off the top of my head if `EC_RESET_FLAG_SYSJUMP`\nis set in the EFS2 case and that this covers all the cases intended here.\nthe EFS2 sysjump vs explicit sysjump cases are subtly different\nand need to be considered.\n\nif i understand your intention, when `board_get_version()` is called\nfor the first time after a cold/full reboot, and with the IOEX powered,\nthen you want to transfer the value from `get_rvp_id_config()` to\ncbi_set_model_id(). i think checking for reset cases may be more robust\nthan checking for SYSJUMP.\n\nthen, return `rvp_board_id` or error.\n\ni would also add a check to skip `cbi_set_model_id()` if the existing\nvalue is the same as the new value.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "ff05880c40be72b72f82c6c7c55e9c7f17a5005b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
