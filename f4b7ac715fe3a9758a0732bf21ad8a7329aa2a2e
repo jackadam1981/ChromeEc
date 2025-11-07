@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d1dbbd_48c8d681",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:10:33Z",
+      "side": 1,
+      "message": "can you please move this below `endif # FINGERPRINT_SENSOR_ELAN80SERIES`",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "f4b7ac715fe3a9758a0732bf21ad8a7329aa2a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e89c88_ddf8f647",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:10:33Z",
+      "side": 1,
+      "message": "if you add this, the config will not be an internal config. Do you need to have external control over the PAL, or it should be enabled by default if `FINGERPRINT_SENSOR_ELAN80SERIES\u003dy`?",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 64
+      },
+      "revId": "f4b7ac715fe3a9758a0732bf21ad8a7329aa2a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd76eef_3f3e2d0a",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:10:33Z",
+      "side": 1,
+      "message": "if you add this, the config will not be an internal config. Do you need to have external control over the HEAP size, or it should be enabled by default if `FINGERPRINT_SENSOR_ELAN80SERIES\u003dy` and the default values set per the if statements?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "f4b7ac715fe3a9758a0732bf21ad8a7329aa2a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
