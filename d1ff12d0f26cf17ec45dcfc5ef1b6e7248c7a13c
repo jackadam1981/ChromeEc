@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1090492b_28ca43c2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:37:06Z",
+      "side": 1,
+      "message": "this is not added for 80sg? what it was not there before?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 33
+      },
+      "revId": "d1ff12d0f26cf17ec45dcfc5ef1b6e7248c7a13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02d5232_dcb61876",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:37:06Z",
+      "side": 1,
+      "message": "can we move this into a separate CL. I do not believe it belongs to this CL",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 1
+      },
+      "revId": "d1ff12d0f26cf17ec45dcfc5ef1b6e7248c7a13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4613aa_3224245a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T16:37:06Z",
+      "side": 1,
+      "message": "I do not believe this function belongs to the config. Can you move it to the pal and make it a pointer function that returns nothing for the 80sg or some other trick",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "d1ff12d0f26cf17ec45dcfc5ef1b6e7248c7a13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
