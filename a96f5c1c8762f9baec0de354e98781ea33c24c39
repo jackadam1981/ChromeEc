@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3f18ee2_a115800c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:46:59Z",
+      "side": 1,
+      "message": "I’m not entirely sure why, but I did use git mv to rename/move the file. Git still shows it as A and D.\nPlease let me know if there’s a way to make it show as R instead.",
+      "parentUuid": "8bf8e6f8_eabeb62d",
+      "revId": "a96f5c1c8762f9baec0de354e98781ea33c24c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b94359f9_d5b0994a",
         "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
         "patchSetId": 13
@@ -31,6 +49,30 @@
       "writtenOn": "2025-11-05T19:45:49Z",
       "side": 1,
       "message": "put this before \n\n```\nconfig FP_ELAN_ELAN80SG_ALGORITHM\n      bool \"ELAN ELAN80SG matching algorithm\"\n      default y if FINGERPRINT_SENSOR_ELAN80SG\n      select FP_ELAN_ELAN80SERIES_ALGORITHM\n      help\n        Enable ELAN ELAN80SG matching algorithm. To work properly, ELAN\n        private library is required.\n```",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "a96f5c1c8762f9baec0de354e98781ea33c24c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08dcd64c_4c4e5d20",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:46:59Z",
+      "side": 1,
+      "message": "Fixed in PS15",
+      "parentUuid": "b94359f9_d5b0994a",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b2a948_7a3db823",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:46:59Z",
+      "side": 1,
+      "message": "Fixed in PS15",
+      "parentUuid": "5a05d91a_39faa858",
+      "range": {
+        "startLine": 45,
+        "startChar": 46,
+        "endLine": 45,
+        "endChar": 79
+      },
+      "revId": "a96f5c1c8762f9baec0de354e98781ea33c24c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66a9d72d_75ebd11a",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-11-05T19:45:49Z",
       "side": 1,
       "message": "shouldn\u0027t this be \n\n```\ndefault 3 if FINGERPRINT_SENSOR_ELAN80SG \u0026\u0026 FP_ELAN_ELAN80SG_ALGORITHM\n```\n\nunless this is a series selection",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 37
+      },
+      "revId": "a96f5c1c8762f9baec0de354e98781ea33c24c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08dfe6d4_3f7582eb",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 13
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:46:59Z",
+      "side": 1,
+      "message": "Fixed in PS15",
+      "parentUuid": "66a9d72d_75ebd11a",
       "range": {
         "startLine": 61,
         "startChar": 2,
