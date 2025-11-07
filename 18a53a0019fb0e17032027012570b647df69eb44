@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d32411a_915636b6",
+        "filename": "zephyr/program/nissa/domika/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1583108
+      },
+      "writtenOn": "2025-11-07T08:19:46Z",
+      "side": 1,
+      "message": "`CONFIG_KERNEL_SHELL\u003dn` \u0026 `CONFIG_ISR_STACK_SIZE\u003d512` causes ec reboot(stack overflow or watchdog timeout)",
+      "revId": "18a53a0019fb0e17032027012570b647df69eb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
