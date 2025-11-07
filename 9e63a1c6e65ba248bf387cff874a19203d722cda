@@ -16,6 +16,24 @@
       "message": "Hi Deepti, \nVisually, the changes look correct - but I believe we\u0027re going to need to put ITE and Nuvoton on separate CLs because we\u0027ll need to stage rework versus releasing the CLs.\n\nITE needs to have h/w rework done ahead of the CL merging.  Nuvoton would be more forgiving, but makes sense to merge the CL ahead of the h/w rework.",
       "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94fab86_3a584dff",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-07T19:52:42Z",
+      "side": 0,
+      "message": "I\u0027ve verified the Nuvoton CL, testing hardware in all cases (old/new firmware vs h/w rework).  All is behaving as expected.  After the ITE \u0026 Nuvoton portions are separated, we should be fine test-wise.",
+      "parentUuid": "ca1f9d70_cf619eaf",
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
