@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "416e42d6_e46e5aee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-07T01:03:09Z",
+      "side": 1,
+      "message": "please note that this is a major regression that affects\nnissa/trulo/rex/fatcat/ocelot variants ... pretty much everywhere\nwe\u0027re using these ECs.\n\nwe could probably drop `SOC_NPCX9MFP` here since i don\u0027t think it is used\nfor the main EC on chromebooks. i don\u0027t know what mechanisms are needed\non SOC_NPCX9MFP devices, but if that includes `sysjump ro` in some fashion,\ni think it\u0027s affected as well.",
+      "parentUuid": "b291589e_50f6c204",
+      "revId": "0ebe7e322c6f0efc154dac19ad68e54cdd12ed58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75f3ab96_6e54c654",
         "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
         "patchSetId": 1
