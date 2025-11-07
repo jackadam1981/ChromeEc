@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049f380f_3d8ab48c",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-07T14:33:53Z",
+      "side": 1,
+      "message": "Don\u0027t we need to check for this signal de-assertion within any specific time limit as well in the check condition?",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
