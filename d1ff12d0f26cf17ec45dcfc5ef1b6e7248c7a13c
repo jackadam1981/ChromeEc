@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b5e86ab_c608616d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T18:27:51Z",
+      "side": 1,
+      "message": "actually no need to cast:\n\n```\ntypedef int (*elan_image_read_t)(uint16_t short_raw);\n\nstatic int elan_image_read_linewise(uint16_t short_raw) { /* ... */ return short_raw; }\nstatic int elan_image_read(uint16_t short_raw) { /* ... */ return short_raw; }\n\nelan_image_read_t elan_image_read_func \u003d IMAGE_READER_IMPL;\n```",
+      "parentUuid": "9e39970a_993f58ea",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "d1ff12d0f26cf17ec45dcfc5ef1b6e7248c7a13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d02d5232_dcb61876",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 16
