@@ -46,6 +46,30 @@
       },
       "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a39b0b_97399015",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T23:03:10Z",
+      "side": 1,
+      "message": "The EC code can read any of the power signals at any time.\n\nIs there any value in reading the PWR_PCH_PWROK status instead of just unconditionally setting both PWR_PCH_PWROK and PWR_EC_PCH_SYS_PWROK to 0?",
+      "parentUuid": "0f1a91d3_3375c4c6",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
