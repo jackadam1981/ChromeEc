@@ -22,6 +22,30 @@
       },
       "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1a91d3_3375c4c6",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-07T17:05:47Z",
+      "side": 1,
+      "message": "I thought the checks for signal transition only happened on the power up path, not during power down.  I haven\u0027t seen any timeouts on the down path yet.  Keith may comment on this.\n\nAs long as the signals transition in order, no additional delays need to be added in the code path.",
+      "parentUuid": "049f380f_3d8ab48c",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
