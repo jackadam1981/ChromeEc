@@ -16,6 +16,121 @@
       "message": "Hi @caveh@chromium.org \u0026 @keithshort@chromium.org, please review updated changes and help this CL to merge.",
       "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f318c9_06f06ae1",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:43:22Z",
+      "side": 1,
+      "message": "Nit, change flag name to `verify_ec_type`.",
+      "range": {
+        "startLine": 187,
+        "startChar": 15,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "282d3e12_15017787",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:43:22Z",
+      "side": 1,
+      "message": "Note - this file should use hard tabs throughout.",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 44
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a7f04a_9e518d8d",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:43:22Z",
+      "side": 1,
+      "message": "Move this check to the caller location.  Then you can drop the checks in this function completely.\n\nI don\u0027t like the printing a warning for the default cause (no EC type verification).\n\n```\n    if [[ \"${FLAGS_do_ec_image_validation}\" \u003d\u003d \"${FLAGS_TRUE}\" ]]; then\n        validate_ec_image_compatibility($IMG)\n    fi\n...",
+      "range": {
+        "startLine": 862,
+        "startChar": 0,
+        "endLine": 862,
+        "endChar": 68
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b64fc5_270912ef",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:43:22Z",
+      "side": 1,
+      "message": "`dump_fmap` is already required for the preserve functionality, which is also the default behavior.  It\u0027s okay for the script to fail if `dump_fmap` is missing.",
+      "range": {
+        "startLine": 879,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 45
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d174f8f_5effe263",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:43:22Z",
+      "side": 1,
+      "message": "`dut-control ec_uart_regexp:\"\u003cregex\u003e\"` can be used to automatically query the EC output for a regular expression.\n\nThis example captures the digits following the `power state ` text output:\n```\n$dut_control ec_uart_regexp:\"[\u0027power state (\\d+)\u0027]\"\n$dut_control ec_uart_cmd:\u0027powerinfo\u0027\nlocal result\u003d$($dut_control ec_uart_cmd)\n```\n\nThe result creates a string of tuples designated by square brackets.\n\nRun these commands manually to see the exact output format.",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 61
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
