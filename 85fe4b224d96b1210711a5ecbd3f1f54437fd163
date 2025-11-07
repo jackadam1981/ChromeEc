@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67060434_08f3a127",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2025-11-07T11:10:45Z",
+      "side": 1,
+      "message": "We uploaded experimental data here, please have a look: \nhttps://docs.google.com/document/d/1CAus6Rifyg8eyvQE5gO26ZoHkvvC2r14nivnsB8GDwk/edit?tab\u003dt.0\nEC takes 2.8ms ~ 5.4ms to complete a sensor thread loop (No stress test performed).\nBefore the watchdog reset is triggered, EC takes 32.8ms ~ 64.8ms to complete a sensor thread loop. Since when ODR is set to 100Hz, sensor will assert int every 10ms after interrupt status is cleared, task will wake up immediately after task_wait_event() is called. And loop until watchdog reset.",
+      "parentUuid": "b0e8d2cf_7565c7fa",
+      "revId": "85fe4b224d96b1210711a5ecbd3f1f54437fd163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6057ecb7_0bf4bd19",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 5
