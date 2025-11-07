@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36b4f109_50cbd2b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T19:08:06Z",
+      "side": 1,
+      "message": "why none?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "326cb85f52ee488fd1eff41ca72480bf80be3f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "288447be_5cea7a31",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 4
