@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e39970a_993f58ea",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T17:29:42Z",
+      "side": 1,
+      "message": "How about something like this. I tried it and it works:\n\nIn the config file for each sensor:\n\n```\n#define IMAGE_READ_FUNCTION elan_image_read or elan_image_read_linewise\n```\n\n```\nstatic int elan_image_read_linewise(uint16_t short_raw)\n{\n  LOG(INFO) \u003c\u003c \"The value of short_raw is: \" \u003c\u003c short_raw;\n  return short_raw;\n}\n\nstatic int elan_image_read(uint16_t short_raw)\n{\n  LOG(INFO) \u003c\u003c \"THe value of short_raw is: \" \u003c\u003c 2*short_raw;\n  return short_raw;\n}\n\ntypedef int (*elan_image_read_t)(uint16_t short_raw);\nelan_image_read_t elan_image_read_func \u003d (elan_image_read_t)IMAGE_READ_FUNCTION;\n```\n\nIs this a better solution that separate everything into the config file?? Please let me know your thoughts",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "d1ff12d0f26cf17ec45dcfc5ef1b6e7248c7a13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d02d5232_dcb61876",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 16
