@@ -246,6 +246,8 @@ int charge_manager_get_active_charge_port_no_lock(void);
  */
 bool charge_manager_has_active_charge_port(void);
 
+bool charge_manager_has_insufficient_adapter(void);
+
 /**
  * Get the current selected charge port, as determined by charge manager.
  * This is the charge port that is either active or that we may be
