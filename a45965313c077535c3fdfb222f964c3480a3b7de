@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac2f030_89e19c60",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T19:08:31Z",
+      "side": 1,
+      "message": "Considering that you have most of the file wrapped inside an `#if` block, this would be better structured as 3 separate files:\n\n```\nsrc_policy_common.c\nsrc_policy_no_3a_ports.c\nsrc_policy_one_3a_port.c\n```\n\nYou can use the CMake file to compile in the correct version of the tests.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 45
+      },
+      "revId": "a45965313c077535c3fdfb222f964c3480a3b7de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
