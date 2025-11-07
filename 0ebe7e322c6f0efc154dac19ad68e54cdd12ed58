@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f3ab96_6e54c654",
+        "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T00:18:19Z",
+      "side": 1,
+      "message": "I believe this will break helipilot and buccaneer zephyr build.\n\nthis change was made to infer it from the binman file.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "0ebe7e322c6f0efc154dac19ad68e54cdd12ed58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
