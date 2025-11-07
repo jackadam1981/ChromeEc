@@ -49,6 +49,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4073466f_cf4a009c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:48:37Z",
+      "side": 1,
+      "message": "As far as I can see, elan_image_read is used by elan_raw_capture in this file. elan_raw_capture might be unused in the public repo, which is why it’s marked __unused. Let me know if I got this wrong.",
+      "parentUuid": "2c63afc7_243575df",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "d6947ee460ac933269b05a4f071bf579e188961d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6330e4c4_fd625f9f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:48:37Z",
+      "side": 1,
+      "message": "Fixed in PS3",
+      "parentUuid": "a6dec8b1_d050c949",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 9
+      },
+      "revId": "d6947ee460ac933269b05a4f071bf579e188961d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf491df5_9de2871f",
         "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-05T19:53:00Z",
       "side": 1,
       "message": "There could be a potential Inefficiency in elan_image_read: Inside the for loop within elan_image_read, `tx_buf` is repeatedly zeroed and the first byte is set:\n\n```\nfor (i \u003d 0; i \u003c ELAN_DMA_LOOP; i++) {\n    memset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);\n    tx_buf[0] \u003d START_READ_IMAGE;\n    // ... spi transaction ...\n}\n```\n\nSince START_READ_IMAGE is a constant and the rest of `tx_buf` seems unused for the transmit part of this specific SPI transaction, initializing `tx_buf` before the loop would be more efficient.\n\nSuggestion: Move the `memset` and `tx_buf[0]` assignment outside and before the for loop.\n\n\n```\n// In elan_image_read\nmemset(tx_buf, 0, ELAN_SPI_TX_BUF_SIZE);\ntx_buf[0] \u003d START_READ_IMAGE;\nfor (i \u003d 0; i \u003c ELAN_DMA_LOOP; i++) {\n    // No need to reset tx_buf here\n    ret \u003d elan_spi_transaction_duplex(tx_buf, ELAN_SPI_TX_BUF_SIZE,\n                                      rx_buf, ELAN_SPI_RX_BUF_SIZE);\n    // ... rest of the loop ...\n}\n```",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "d6947ee460ac933269b05a4f071bf579e188961d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5a315c_bcb6eda1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:48:37Z",
+      "side": 1,
+      "message": "Fixed in PS3",
+      "parentUuid": "cf491df5_9de2871f",
       "range": {
         "startLine": 252,
         "startChar": 1,
