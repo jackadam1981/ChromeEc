@@ -39,6 +39,30 @@
       },
       "revId": "9187f64b506b7aacce197f9a7bec608132ea4f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ad23b7_37a3f9de",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-11-07T01:45:23Z",
+      "side": 1,
+      "message": "Removed this line. the default modules are enough.",
+      "parentUuid": "5dbe6c73_8b2452b5",
+      "range": {
+        "startLine": 188,
+        "startChar": 59,
+        "endLine": 188,
+        "endChar": 78
+      },
+      "revId": "9187f64b506b7aacce197f9a7bec608132ea4f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

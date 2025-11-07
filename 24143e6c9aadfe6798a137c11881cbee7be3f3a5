@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eedfc14_013d5a3c",
+        "filename": "zephyr/program/fatcat/BUILD.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-11-07T01:45:23Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "7b889dae_1de32e13",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "24143e6c9aadfe6798a137c11881cbee7be3f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea77b06_8e9e55d9",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e98973_ac01da86",
+        "filename": "zephyr/program/fatcat/fatcat-ish-idle/i2c.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-11-07T01:45:23Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "9ea77b06_8e9e55d9",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "24143e6c9aadfe6798a137c11881cbee7be3f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d2cd564_ab0d864f",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-10-31T02:05:56Z",
       "side": 1,
       "message": "If don\u0027t enable dsp_comm, this can be removed.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "24143e6c9aadfe6798a137c11881cbee7be3f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a746d6_a8eecd31",
+        "filename": "zephyr/program/fatcat/fatcat-ish-idle/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2025-11-07T01:45:23Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "2d2cd564_ab0d864f",
       "range": {
         "startLine": 73,
         "startChar": 0,
