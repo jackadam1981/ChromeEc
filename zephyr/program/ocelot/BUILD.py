@@ -193,6 +193,13 @@ register_ish_project(
     ],
 )
 
+register_rtk59_project(
+    project_name="ocelotrvp-rtk",
+    extra_kconfig_base_files=[
+        here / "rvp_program.conf",
+    ],
+)
+
 # Note for reviews, do not let anyone edit these assertions, the addresses
 # must not change after the first RO release.
 assert_rw_fwid_DO_NOT_EDIT(project_name="kodkod", addr=0x80404)
@@ -202,3 +209,4 @@ assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-npcx", addr=0x80144)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-ite", addr=0x60098)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-mchp", addr=0x40318)
 assert_rw_fwid_DO_NOT_EDIT(project_name="ojal", addr=0x80404)
+assert_rw_fwid_DO_NOT_EDIT(project_name="ocelotrvp-rtk", addr=0x80404)
