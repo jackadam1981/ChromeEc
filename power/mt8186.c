@@ -405,6 +405,11 @@ enum power_state power_handle_state(enum power_state state)
 
 	switch (state) {
 	case POWER_G3:
+		#if CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+               if (is_exiting_off && !power_is_enough()) {
+                       is_exiting_off = false;
+               }
+		#endif
 		if (next_state != POWER_G3)
 			return POWER_G3S5;
 		break;
@@ -437,11 +442,6 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_G3S5:
-#if CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
-		if (!power_is_enough())
-			return POWER_G3;
-#endif
-
 #if DT_NODE_EXISTS(DT_NODELABEL(en_pp4200_s5))
 		power_signal_enable_interrupt(GPIO_PMIC_EC_RESETB);
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(en_pp4200_s5), 1);
