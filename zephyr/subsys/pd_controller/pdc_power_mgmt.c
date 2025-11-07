@@ -1391,8 +1391,12 @@ static void handle_connector_status(struct pdc_port_t *port)
 			set_pdc_state(port, PDC_SRC_ATTACHED);
 			return;
 		} else {
-			/* Port partner is a source
-			 * device */
+			/* Port partner is a source device
+			 */
+			if (conn_status_change_bits.negotiated_power_level) {
+				port->snk_attached_local_state =
+					SNK_ATTACHED_GET_PDOS;
+			}
 			set_pdc_state(port, PDC_SNK_ATTACHED);
 			return;
 		}
