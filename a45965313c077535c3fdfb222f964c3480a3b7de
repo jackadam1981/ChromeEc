@@ -22,6 +22,30 @@
       },
       "revId": "a45965313c077535c3fdfb222f964c3480a3b7de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c0fc70_753ce023",
+        "filename": "zephyr/test/pdc/src/pdc_policy/src_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T19:09:50Z",
+      "side": 1,
+      "message": "With this structure you could create 2 test configs\n`CONFIG_TEST_SUITE_PDC_POLICY` and `CONFIG_TEST_SUITE_PDC_POLICY_NO_3A`.",
+      "parentUuid": "4ac2f030_89e19c60",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 45
+      },
+      "revId": "a45965313c077535c3fdfb222f964c3480a3b7de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
