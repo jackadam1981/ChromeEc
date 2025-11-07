@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a91898_c93a069e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:58:12Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"adatpers\" is a possible misspelling of \"adapters\".\n\nTo bypass Spellchecker, add...\n\n\"adatpers\" is a possible misspelling of \"adapters\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "d4e6fd7b11065269101465cacde72ba14418da01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5c46af_1583836b",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:58:12Z",
+      "side": 1,
+      "message": "I don\u0027t believe the CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST is necessary.  `charge_manager_has_insufficient_adapter()` should always return false if hybrid boost not present.\n\nAlso, please add {} around all conditional blocks. The nesting is difficult to follow.",
+      "range": {
+        "startLine": 1786,
+        "startChar": 0,
+        "endLine": 1796,
+        "endChar": 0
+      },
+      "revId": "d4e6fd7b11065269101465cacde72ba14418da01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec33536_f6d00c9a",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T22:58:12Z",
+      "side": 1,
+      "message": "Add a doxygen header",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 51
+      },
+      "revId": "d4e6fd7b11065269101465cacde72ba14418da01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
