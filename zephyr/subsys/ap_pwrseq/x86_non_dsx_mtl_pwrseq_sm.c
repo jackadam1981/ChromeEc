@@ -153,7 +153,9 @@ static int x86_non_dsx_mtl_s0_exit(void *data)
 {
 	enum ap_pwrseq_state new_state = ap_pwrseq_sm_get_entry_state(data);
 
-	if (new_state < AP_POWER_STATE_S3) {
+	/* in case of "apshutdown" or sudden power loss S0->G3
+	   transition is possible. Hence set PCH_PWROK and PCH_SYS_PWROK to 0*/
+	if (new_state <= AP_POWER_STATE_S3) {
 		power_signal_set(PWR_PCH_PWROK, 0);
 		power_signal_set(PWR_EC_PCH_SYS_PWROK, 0);
 	}
