@@ -43,6 +43,10 @@ if(DEFINED CONFIG_BOARD_MATSU)
 					"matsu/src/keyboard_customization.c")
 endif()
 
+if(DEFINED CONFIG_BOARD_OCELOTRVP_RTK)
+	project(ocelotrvp-rtk)
+endif()
+
 zephyr_include_directories("include/")
 
 zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
