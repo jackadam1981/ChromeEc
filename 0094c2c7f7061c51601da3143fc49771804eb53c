@@ -117,6 +117,30 @@
       },
       "revId": "0094c2c7f7061c51601da3143fc49771804eb53c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c31027_0ddcf5f6",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3538,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-07T19:25:37Z",
+      "side": 1,
+      "message": "Using `pdc_power_mgmt_set_current_limit()` ensures that the Rp value and SRC PDO values are in sync.\n\nBut we probably don\u0027t want to wait to send new source caps.  If we\u0027re currently a SRC, the state machine will have to process all the sub-states of `pdc_src_attached_run` before it updates the source caps.\n\nYou could add a new enum to `enum attached_state_t` so that we don\u0027t set redundant policy flags.\n\n```\nenum attached_state_t {\n    INIT_STATE,\n    UNATTACHED_STATE,\n\n...\n\nThen you can call `pdc_power_mgmt_set_current_limit()` and it won\u0027t set any policy flags and you can still send SRC CAPS inline here.",
+      "parentUuid": "8c6098df_52c7618e",
+      "range": {
+        "startLine": 3538,
+        "startChar": 0,
+        "endLine": 3538,
+        "endChar": 53
+      },
+      "revId": "0094c2c7f7061c51601da3143fc49771804eb53c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
