@@ -16,6 +16,75 @@
       "message": "Ignore my previous automated message.",
       "revId": "cfab658d5da426e8c6c5cafe80e22a36ef12664c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec55df2_89ef24e2",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-07T22:37:55Z",
+      "side": 1,
+      "message": "Make it `static`.",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 3
+      },
+      "revId": "cfab658d5da426e8c6c5cafe80e22a36ef12664c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3aeed5e_04ee6204",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-07T22:37:55Z",
+      "side": 1,
+      "message": "Nit: Add a newline.",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 1
+      },
+      "revId": "cfab658d5da426e8c6c5cafe80e22a36ef12664c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2e5a0a_97e3f230",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-07T22:37:55Z",
+      "side": 1,
+      "message": "Nit: Upper letter.",
+      "range": {
+        "startLine": 334,
+        "startChar": 3,
+        "endLine": 334,
+        "endChar": 5
+      },
+      "revId": "cfab658d5da426e8c6c5cafe80e22a36ef12664c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
