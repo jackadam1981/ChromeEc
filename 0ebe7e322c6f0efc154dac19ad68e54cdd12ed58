@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b291589e_50f6c204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-07T00:24:10Z",
+      "side": 1,
+      "message": "why you just do not override the `CONFIG_CROS_EC_RO_SIZE` value in the `prj.conf` file for that particular board.",
+      "revId": "0ebe7e322c6f0efc154dac19ad68e54cdd12ed58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75f3ab96_6e54c654",
         "filename": "zephyr/app/ec/chip/arm/nuvoton_npcx/Kconfig.npcx9",
         "patchSetId": 1
