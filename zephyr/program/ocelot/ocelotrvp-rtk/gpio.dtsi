@@ -42,7 +42,9 @@
 		prochot-ec-n-3v3-od {
 			gpios = <&gpioh 10 GPIO_OUTPUT>;
 		};
-
+		gpio_voldn: vol-dn-ec-3v3-i {
+			gpios = <&gpiob 13 GPIO_INPUT>;
+		};
 		cse_early_rec_sw: c-mecc-cse-early-sw-1v8-od {
 			gpios = <&gpioa 15 GPIO_OUTPUT>;
 		};
@@ -55,6 +57,9 @@
 		};
 		gpio_en_pp3300: ec-ds3-3v3-pp {
 			gpios = <&gpiod 5 GPIO_OUTPUT>;
+		};
+		gpio_volup: volume-up-3v3-i {
+			gpios = <&gpiof 3 GPIO_INPUT>;
 		};
 		gpio_pwrbtn: pwrbtn-ec-in-n-3v3-i {
 			gpios = <&gpioh 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
@@ -73,6 +78,9 @@
 		gpio_acok: bc-acok-3v3-i {
 			gpios = <&gpiof 13 GPIO_INPUT>;
 			enum-name = "GPIO_AC_PRESENT";
+		};
+		gpio_lid: smc-lid-3v3-i {
+			gpios = <&gpiof 12 GPIO_INPUT>;
 		};
 		gpio_pch_pwrok_ec: pch-pwrok-ec-1v8-od {
 			gpios = <&gpioh 15 GPIO_INPUT>;
