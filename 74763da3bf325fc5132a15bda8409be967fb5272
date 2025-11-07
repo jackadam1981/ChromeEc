@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e65e454_314d6fd0",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:43:22Z",
+      "side": 1,
+      "message": "All sensors in the ELAN80 series (ELAN80, ELAN80SG, ELANI80SA) use the same image size (12800). Sensors outside the series, such as ELAN515, have different sizes.\nSo this value is correctly based on the series.",
+      "parentUuid": "543ba036_3112a26d",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dfc019b_f39ae48d",
         "filename": "zephyr/drivers/fingerprint/Kconfig",
         "patchSetId": 12
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9799d3fb_b2300251",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:43:22Z",
+      "side": 1,
+      "message": "Currently, all sensors in the ELAN series, including ELAN80 and ELAN515, do not use any image offset. Therefore, FINGERPRINT_SENSOR_IMAGE_OFFSET is 0 for the entire series, and this setting is series-based rather than sensor-specific.",
+      "parentUuid": "8dfc019b_f39ae48d",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "825d7bb0_4e33cdb4",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 12
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-05T19:37:29Z",
       "side": 1,
       "message": "can you move this block above \n\n```\nmenuconfig FINGERPRINT_SENSOR_ELAN80SG\n\tbool \"Fingerprint driver for ELAN80SG\"\n\tdefault y\n\tdepends on DT_HAS_ELAN_ELAN80SG_ENABLED\n\tselect FINGERPRINT_SENSOR_ELAN80SERIES\n\thelp\n\t  Driver for ELAN80SG fingerprint sensor. It requires ELAN private library\n\t  to implement cros_fingerprint API. If the library is not available it\n\t  only supports checking sensor hardware ID.\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84009d4a_ebadd035",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:43:22Z",
+      "side": 1,
+      "message": "Fixed in PS14",
+      "parentUuid": "825d7bb0_4e33cdb4",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87e8793_287416c1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:43:22Z",
+      "side": 1,
+      "message": "The \"#define DT_DRV_COMPAT elan_elan80sg\" works in fingerprint_elani80sg_config.h\nFixed in PS14",
+      "parentUuid": "f433a826_7e305ece",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e7f12b0_5aefe53e",
@@ -148,6 +244,24 @@
       "side": 1,
       "message": "I agree. This CL is just renaming.",
       "parentUuid": "8e7f12b0_5aefe53e",
+      "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a49cb17_bce21398",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-07T05:43:22Z",
+      "side": 1,
+      "message": "Fixed in PS14.",
+      "parentUuid": "142d0eb9_b80b98e6",
       "revId": "74763da3bf325fc5132a15bda8409be967fb5272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
