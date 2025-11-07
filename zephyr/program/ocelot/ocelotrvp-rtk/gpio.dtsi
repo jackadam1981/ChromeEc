@@ -11,12 +11,99 @@
 	named-gpios {
 		compatible = "named-gpios";
 
+		smc-wake-sci-n-3v3-od {
+			gpios = <&gpioa 0 (GPIO_OUTPUT | GPIO_ODR_HIGH)>;
+		};
+		std-adpt-cntrl-gpio-3v3-pp {
+			gpios = <&gpioa 1 GPIO_OUTPUT>;
+		};
+		/* I3C pins*/
+		/* I2C SMB pins*/
+		/* I2C ISH pins*/
+		/* I2C PD pins*/
+		/* I2C PCH pins*/
+		all-sys-pwrgd-3v3-i {
+			gpios = <&gpiog 3 GPIO_INPUT>;
+		};
+		c-ec-pdb-ctrl-1v8-od {
+			gpios = <&gpiog 0 GPIO_INPUT>;
+		};
+		gpio_ec_pch_rsmrst: pm-rsmrst-n-1v8-pp {
+			gpios = <&gpiog 15 GPIO_OUTPUT>;
+		};
+
+		sys-pwrok-ec-1v8-od {
+			gpios = <&gpiog 13 (GPIO_OUTPUT | GPIO_OPEN_DRAIN)>;
+		};
+		pm-pwrbtn-n-1v8-od {
+			gpios = <&gpioh 12 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+		prochot-ec-n-3v3-od {
+			gpios = <&gpioh 10 (GPIO_OUTPUT | GPIO_OPEN_DRAIN)>;
+		};
+		gpio_voldn: vol-dn-ec-3v3-i {
+			gpios = <&gpiob 13 GPIO_INPUT>;
+			enum-name = "GPIO_VOLUME_DOWN_L";
+		};
+		cpu-c10-gate-1v8-i {
+			gpios = <&gpiob 15 GPIO_INPUT>;
+		};
+		cse_early_rec_sw: c-mecc-cse-early-sw-1v8-od {
+			gpios = <&gpioa 15 (GPIO_OUTPUT | GPIO_OPEN_DRAIN)>;
+		};
+		gpio_slp_s0: pch-slp-s0-n-1v8-i {
+			gpios = <&gpioh 13 GPIO_INPUT>;
+		};
+		bat-det-3v3-i {
+			gpios = <&gpioh 14 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+		gpio_en_pp3300: ec-ds3-3v3-pp {
+			gpios = <&gpiod 5 GPIO_OUTPUT>;
+		};
+		gpio_volup: volume-up-3v3-i {
+			gpios = <&gpiof 3 GPIO_INPUT>;
+			enum-name = "GPIO_VOLUME_UP_L";
+		};
+		gpio_pwrbtn: pwrbtn-ec-in-n-3v3-i {
+			gpios = <&gpioh 3 (GPIO_INPUT | GPIO_ACTIVE_LOW)>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		/* UART pins */
+		gpio_acok: bc-acok-3v3-i {
+			gpios = <&gpioh 0 GPIO_INPUT>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+		gpio_ec_pch_wake_odl: c-pg3-wake-3v3-pp {
+			gpios = <&gpioi 3 GPIO_OUTPUT>;
+		};
+		gpio_rsmrst_pwrgd: rsmrst-pwrgd-n-1v8-i {
+			gpios = <&gpiog 8 GPIO_INPUT>;
+		};
+		gpio_tablet_mode_l: ec-slatemode-hallout-snsr-1v8-i {
+			gpios = <&gpioe 14 GPIO_INPUT>;
+			enum-name = "GPIO_TABLET_MODE_L";
+		};
+		gpio_dc_jack_present: std_adp_prsnt: std-adp-prsnt-3v3-i {
+			gpios = <&gpiof 13 GPIO_INPUT>;
+		};
+		gpio_lid: smc-lid-3v3-i {
+			gpios = <&gpiof 12 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		gpio_pch_pwrok_ec: pch-pwrok-ec-1v8-od {
+			gpios = <&gpioh 15 GPIO_INPUT>;
+		};
+		c-en-pp5000-typea-3v3-pp {
+			gpios = <&gpioh 11 GPIO_INPUT>;
+		};
 		/* The legacy system code requires GPIO_ENTERING_RW symbol */
 		gpio_ec_entering_rw: ec_entering_rw {
 			enum-name = "GPIO_ENTERING_RW";
 		};
 		gpio_ec_wp_odl: ec_wp_odl { /* SPI_WP_H1 */
-			gpios = <&gpiob 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			gpios = <&gpiob 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8 | GPIO_ACTIVE_LOW)>;
 		};
 	};
 };
