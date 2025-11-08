@@ -29,9 +29,7 @@
 #include "usbc_ppc.h"
 #include "util.h"
 #include "zephyr/include/usbc/pdc_dpm.h"
-#ifdef CONFIG_ZEPHYR
 #include "zephyr/include/usbc/pdc_power_mgmt.h"
-#endif
 
 #ifdef HAS_MOCK_CHARGE_MANAGER
 #error Mock defined HAS_MOCK_CHARGE_MANAGER
