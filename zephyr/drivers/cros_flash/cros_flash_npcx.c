@@ -10,7 +10,7 @@
 #include "spi_flash_reg.h"
 #include "system.h"
 #include "watchdog.h"
-#include "write_protect.h"
+#include "zephyr_write_protect.h"
 
 #include <zephyr/drivers/flash.h>
 #include <zephyr/drivers/flash/npcx_flash_api_ex.h>

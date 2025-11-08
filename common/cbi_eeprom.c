@@ -13,7 +13,7 @@
 #include "system.h"
 #include "timer.h"
 #include "util.h"
-#include "write_protect.h"
+#include "zephyr_write_protect.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, "CBI " format, ##args)
 
