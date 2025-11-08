@@ -14,6 +14,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/pm/device.h>
 #include <zephyr/sys/byteorder.h>
+#include <zephyr/sys/util.h>
 
 #include <drivers/fingerprint.h>
 #include <fingerprint/v4l2_types.h>
@@ -125,23 +126,46 @@ static int ft9865_deinit(const struct device *dev)
 	return 0;
 }
 
-static int ft9865_get_info(const struct device *dev,
-			   struct fingerprint_info *info)
+static int ft9865_get_info(
+	const struct device *dev, struct fingerprint_sensor_info *sensor_info,
+	struct fingerprint_image_frame_params image_frame_params_array[],
+	uint8_t *num_params)
 {
 	const struct ft9865_cfg *cfg = dev->config;
 	struct ft9865_data *data = dev->data;
 
-	/* Copy immutable sensor information to the structure. */
-	memcpy(info, &cfg->info, sizeof(struct fingerprint_info));
+	if (sensor_info == NULL || num_params == NULL ||
+	    image_frame_params_array == NULL) {
+		return -EINVAL;
+	}
+
+	uint8_t capacity = *num_params;
+	uint8_t num_defined_configs = cfg->sensor_info.num_capture_types;
+
+	if (capacity < num_defined_configs) {
+		return -EINVAL;
+	}
+
+	BUILD_ASSERT(sizeof(cfg->sensor_info) == sizeof(*sensor_info),
+		     "struct fingerprint_sensor_info size mismatch");
+
+	memcpy(sensor_info, &cfg->sensor_info,
+	       sizeof(struct fingerprint_sensor_info));
+
+	memcpy(image_frame_params_array, cfg->sensor_image_configs,
+	       num_defined_configs *
+		       sizeof(struct fingerprint_image_frame_params));
+
+	*num_params = num_defined_configs;
 
 	if (IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER))
-		info->model_id = ft_sensor_query_chipid();
+		sensor_info->model_id = ft_sensor_query_chipid();
 
-	info->errors = data->errors;
+	sensor_info->errors = data->errors;
 
 	if ((data->irq_event == 0) &&
 	    (IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)))
-		info->errors |= FINGERPRINT_ERROR_NO_IRQ;
+		sensor_info->errors |= FINGERPRINT_ERROR_NO_IRQ;
 
 	return 0;
 }
@@ -271,40 +295,61 @@ static int ft9865_init_driver(const struct device *dev)
 	return 0;
 }
 
-#define FT9865_SENSOR_INFO(inst)                                       \
-	{                                                              \
-		.vendor_id = FOURCC('F', 'T', ' ', ' '),               \
-		.product_id = 9,                                       \
-		.model_id = 1,                                         \
-		.version = 1,                                          \
-		.frame_size = CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE,    \
-		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(  \
-			DT_DRV_INST(inst)),                            \
-		.width = FINGERPRINT_SENSOR_RES_X(DT_DRV_INST(inst)),  \
-		.height = FINGERPRINT_SENSOR_RES_Y(DT_DRV_INST(inst)), \
-		.bpp = FINGERPRINT_SENSOR_RES_BPP(DT_DRV_INST(inst)),  \
+#define FT9865_SENSOR_INFO(inst)                                           \
+	{                                                                  \
+		.vendor_id = FOURCC('F', 'T', ' ', ' '),                   \
+		.product_id = 9,                                           \
+		.model_id = 1,                                             \
+		.version = 1,                                              \
+		.num_capture_types =                                       \
+			FINGERPRINT_SENSOR_NUM_CONFIGS(DT_DRV_INST(inst)), \
 	}
 
-#define FT9865_DEFINE(inst)                                                    \
-	static struct ft9865_data ft9865_data_##inst;                          \
-	static const struct ft9865_cfg ft9865_cfg_##inst = {                   \
-		.spi = SPI_DT_SPEC_INST_GET(inst,                              \
-					    SPI_OP_MODE_MASTER |               \
-						    SPI_WORD_SET(8) |          \
-						    SPI_TRANSFER_MSB,          \
-					    0),                                \
-		.interrupt = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),           \
-		.reset_pin = GPIO_DT_SPEC_INST_GET(inst, reset_gpios),         \
-		.info = FT9865_SENSOR_INFO(inst),                              \
-	};                                                                     \
+#define FT9865_IMAGE_PARAM_INITIALIZER(idx, inst)                              \
+	{                                                                      \
+		.frame_size =                                                  \
+			FINGERPRINT_SENSOR_FRAME_SIZE(idx, DT_DRV_INST(inst)), \
+		.pixel_format = FINGERPRINT_SENSOR_V4L2_PIXEL_FORMAT(          \
+			idx, DT_DRV_INST(inst)),                               \
+		.width = FINGERPRINT_SENSOR_RES_X(idx, DT_DRV_INST(inst)),     \
+		.height = FINGERPRINT_SENSOR_RES_Y(idx, DT_DRV_INST(inst)),    \
+		.bpp = FINGERPRINT_SENSOR_RES_BPP(idx, DT_DRV_INST(inst)),     \
+		.fp_capture_type = FINGERPRINT_SENSOR_CAPTURE_TYPE(            \
+			idx, DT_DRV_INST(inst)),                               \
+		.reserved = 0,                                                 \
+	}
+
+#define FT9865_BUILD_ASSERT_IMAGE_SIZE(idx, inst)                              \
 	BUILD_ASSERT(                                                          \
 		CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE >=                        \
-			FINGERPRINT_SENSOR_REAL_IMAGE_SIZE(DT_DRV_INST(inst)), \
-		"FP image buffer size is smaller than raw image size");        \
-	DEVICE_DT_INST_DEFINE(inst, ft9865_init_driver, NULL,                  \
-			      &ft9865_data_##inst, &ft9865_cfg_##inst,         \
-			      POST_KERNEL,                                     \
-			      CONFIG_FINGERPRINT_SENSOR_INIT_PRIORITY,         \
+			FINGERPRINT_SENSOR_FRAME_SIZE(idx, DT_DRV_INST(inst)), \
+		"FP image buffer size smaller than raw image size at index " #idx);
+
+#define FT9865_DEFINE(inst)                                                         \
+	static struct ft9865_data ft9865_data_##inst;                               \
+	static const struct ft9865_cfg ft9865_cfg_##inst = {                        \
+		.spi = SPI_DT_SPEC_INST_GET(inst,                                   \
+					    SPI_OP_MODE_MASTER |                    \
+						    SPI_WORD_SET(8) |               \
+						    SPI_TRANSFER_MSB,               \
+					    0),                                     \
+		.interrupt = GPIO_DT_SPEC_INST_GET(inst, irq_gpios),                \
+		.reset_pin = GPIO_DT_SPEC_INST_GET(inst, reset_gpios),              \
+		.sensor_info = FT9865_SENSOR_INFO(inst),                            \
+		.sensor_image_configs = { LISTIFY(                                  \
+			FINGERPRINT_SENSOR_NUM_CONFIGS(DT_DRV_INST(inst)),          \
+			FT9865_IMAGE_PARAM_INITIALIZER, (, ), inst) },              \
+	};                                                                          \
+	LISTIFY(FINGERPRINT_SENSOR_NUM_CONFIGS(DT_DRV_INST(inst)),                  \
+		FT9865_BUILD_ASSERT_IMAGE_SIZE, (;), inst)                          \
+	BUILD_ASSERT(                                                               \
+		FINGERPRINT_SENSOR_NUM_CONFIGS(DT_DRV_INST(inst)) <=                \
+			NUM_IMAGE_CAPTURE_TYPES,                                    \
+		"FT9865: Number of image configs exceeds NUM_IMAGE_CAPTURE_TYPES"); \
+	DEVICE_DT_INST_DEFINE(inst, ft9865_init_driver, NULL,                       \
+			      &ft9865_data_##inst, &ft9865_cfg_##inst,              \
+			      POST_KERNEL,                                          \
+			      CONFIG_FINGERPRINT_SENSOR_INIT_PRIORITY,              \
 			      &cros_fp_ft9865_driver_api)
 
 DT_INST_FOREACH_STATUS_OKAY(FT9865_DEFINE);
