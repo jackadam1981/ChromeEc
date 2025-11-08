@@ -499,7 +499,16 @@ def main(argv):
             f"with strategy option '{opts.strategy_option if opts.strategy_option else ''}'"
         ),
     )
+<<<<<<< PATCH SET (77706d7129a17d99ae5fa7d54f9363dcd311247c ec: Update fingerprint release script for ec-legacy)
+    cros_main = (
+        opts.remote_prefix + "/" + ("main" if opts.zephyr else "ec-legacy")
+    )
+||||||| BASE      (1e6120df1d746a07e0967504a9da13e554e82b2a ec: Remove legacy code)
+    # TODO JPM override if legacy port and not private to be ec-legacy
     cros_main = opts.remote_prefix + "/" + "main"
+=======
+    cros_main = opts.remote_prefix + "/" + "main"
+>>>>>>> BASE      (891a35f0c07d63881b8926d5127b0f30d1e717cd ec: Remove legacy code)
     strategy = [
         opts.merge_strategy,
     ]
