@@ -22,6 +22,30 @@
       },
       "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b42d0d_5b0df443",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-11-08T03:32:39Z",
+      "side": 1,
+      "message": "If this must be done before `PWR_EC_PCH_RSMRST` is asserted, I would say this is the right place. \n\nSudden power down sequence (for instance `apshutdown`) calls `board_ap_power_action_g3_entry` as a consequence of the power signals `board_ap_power_force_shutdown` has modified.\n\nIf we want to ensure power signals order, we should keep them in a single function, later power sequence will move to proper state based on power signals values.",
+      "parentUuid": "3a05a898_8fc558b5",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
