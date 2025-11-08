@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a05a898_8fc558b5",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-08T00:36:21Z",
+      "side": 1,
+      "message": "Question for Bernardo - should this code be put into the chipset G3 entry state instead?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
