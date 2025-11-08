@@ -449,7 +449,6 @@ def main(argv):
 
     # Check for the existence of a file that has other paths of interest.
     # Also check for 'relevant-paths.txt' in the board directory
-    # TODO JPM add legacy path
     if opts.relevant_paths_file and os.path.exists(opts.relevant_paths_file):
         with open(
             opts.relevant_paths_file, "r", encoding="utf-8"
@@ -500,8 +499,9 @@ def main(argv):
             f"with strategy option '{opts.strategy_option if opts.strategy_option else ''}'"
         ),
     )
-    # TODO JPM override if legacy port and not private to be ec-legacy
-    cros_main = opts.remote_prefix + "/" + "main"
+    cros_main = (
+        opts.remote_prefix + "/" + ("main" if opts.zephyr else "ec-legacy")
+    )
     strategy = [
         opts.merge_strategy,
     ]
