@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f5c996_2944a48d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2025-11-08T14:00:04Z",
+      "side": 1,
+      "message": "because of CL:7122418: led: Refactor led_pins_node_t to use a generic pointer | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7122418, i need change pwm-led-pins to the led_pins: pwm-led-pins, thanks.",
+      "revId": "4e77aae23c1529f862ef4235fc9ca35239776250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
