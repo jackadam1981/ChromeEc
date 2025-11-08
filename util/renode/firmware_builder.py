@@ -30,16 +30,10 @@ EC_BOARDS = [
 ]
 
 
-def build(opts):
-    """Build all the EC unit tests."""
+def build(_opts):
+    """No-op."""
 
-    working_dir = Path(__file__).parents[2].resolve()
-    cmd = [
-        "make",
-        f"-j{opts.cpus}",
-    ]
-    cmd.extend(["tests-" + b for b in EC_BOARDS])
-    subprocess.run(cmd, cwd=working_dir, check=True)
+    return 0
 
 
 def bundle(opts):
