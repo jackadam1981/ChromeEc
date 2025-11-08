@@ -16,6 +16,24 @@
       "message": "Put this script back in the ec-legacy folder and sync between the two to ensure that after branch switch, the script still works as expected",
       "revId": "8ee3e368d5017a151a44264151a2f06de4a93dac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a5a82a_665bc114",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-08T23:21:23Z",
+      "side": 1,
+      "message": "crrev/c/7134643",
+      "parentUuid": "06e83e48_4437674f",
+      "revId": "8ee3e368d5017a151a44264151a2f06de4a93dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
