@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ac8304_937a84b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-08T11:26:14Z",
+      "side": 1,
+      "message": "25-11-08 11:17:26.607 Thread analyze:\n\n\nshell_uart_thread\n25-11-08 11:17:26.607  0x801022c8          : STACK: unused 192 usage 1088 / 1280 (85 %); CPU: 0 %\n\n25-11-08 11:17:26.616                      : Total CPU cycles used: 7323\n\n\n_k_thread_obj_thread_analyzer\n25-11-08 11:17:26.630  0x80102390          : STACK: unused 384 usage 640 / 1024 (62 %); CPU: 3 %\n\n25-11-08 11:17:26.644                      : Total CPU cycles used: 40070\n\n\n_k_thread_obj_USB_MUX\n25-11-08 11:17:26.670  0x80101b60          : STACK: unused 248 usage 520 / 768 (67 %); CPU: 0 %\n\n25-11-08 11:17:26.685                      : Total CPU cycles used: 227\n\n\n_k_thread_obj_POWERBTN\n25-11-08 11:17:26.693  0x80101480          : STACK: unused 224 usage 800 / 1024 (78 %); CPU: 0 %\n\n25-11-08 11:17:26.700                      : Total CPU cycles used: 1393\n\n\n_k_thread_obj_PD_INT_C1\n25-11-08 11:17:26.708  0x80101c28          : STACK: unused 160 usage 864 / 1024 (84 %); CPU: 0 %\n\n25-11-08 11:17:26.720                      : Total CPU cycles used: 1056\n\n\n_k_thread_obj_PD_C1\n25-11-08 11:17:26.728  0x80101db8          : STACK: unused 272 usage 1264 / 1536 (82 %); CPU: 0 %\n\n25-11-08 11:17:26.738                      : Total CPU cycles used: 8668\n\n\n_k_thread_obj_PD_C0\n25-11-08 11:17:26.751  0x80101cf0          : STACK: unused 384 usage 1152 / 1536 (75 %); CPU: 27 %\n\n25-11-08 11:17:26.761                      : Total CPU cycles used: 293271\n\n\n_k_thread_obj_MOTIONSENSE\n25-11-08 11:17:26.776  0x80101908          : STACK: unused 352 usage 928 / 1280 (72 %); CPU: 4 %\n\n25-11-08 11:17:26.776                      : Total CPU cycles used: 49817\n\n\n_k_thread_obj_KEYSCAN\n25-11-08 11:17:26.784  0x80101a98          : STACK: unused 176 usage 848 / 1024 (82 %); CPU: 0 %\n\n25-11-08 11:17:26.796                      : Total CPU cycles used: 988\n\n\n_k_thread_obj_KEYPROTO\n25-11-08 11:17:26.803  0x801019d0          : STACK: unused 176 usage 848 / 1024 (82 %); CPU: 0 %\n\n25-11-08 11:17:26.811                      : Total CPU cycles used: 659\n\n\n_k_thread_obj_CHARGER\n25-11-08 11:17:26.826  0x801016f0          : STACK: unused 144 usage 1136 / 1280 (88 %); CPU: 7 %\n\n25-11-08 11:17:26.836                      : Total CPU cycles used: 75815\n\n\npwrseq_thread_data\n25-11-08 11:17:26.841  0x801015f0          : STACK: unused 160 usage 864 / 1024 (84 %); CPU: 0 %\n\n25-11-08 11:17:26.851                      : Total CPU cycles used: 7896\n\n\nvcmp_it8xxx2_work_q\n25-11-08 11:17:26.859  0x80102678          : STACK: unused 144 usage 240 / 384 (62 %); CPU: 0 %\n\n25-11-08 11:17:26.866                      : Total CPU cycles used: 19\n\n\nk_sys_work_q\n25-11-08 11:17:26.884  0x80102aa8          : STACK: unused 320 usage 960 / 1280 (75 %); CPU: 0 %\n\n25-11-08 11:17:26.917                      : Total CPU cycles used: 10404\n\n\nz_idle_threads\n25-11-08 11:17:26.928  0x80102458          : STACK: unused 304 usage 208 / 512 (40 %); CPU: 49 %\n\n25-11-08 11:17:26.940                      : Total CPU cycles used: 527676\n\n\nz_main_thread\n25-11-08 11:17:26.943  0x80102520          : STACK: unused 336 usage 1200 / 1536 (78 %); CPU: 2 %\n\n25-11-08 11:17:26.956                      : Total CPU cycles used: 28777\n\n\n\n25-11-08 11:17:26.963  ISR0                : STACK: unused 196 usage 604 / 800 (75 %)",
+      "revId": "2acbd72aa3504996517fba2f05637c70276892a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
