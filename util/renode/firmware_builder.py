@@ -23,23 +23,22 @@ from google.protobuf import json_format
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
 
 
+<<<<<<< HEAD
 EC_BOARDS = [
     "bloonchipper",
     "dartmonkey",
     "helipilot",
+=======
+ZEPHYR_BOARDS = [
+    "bloonchipper",
+>>>>>>> 7791e6aa7c (ec: Update fingerprint release script for ec-legacy)
 ]
 
 
-def build(opts):
-    """Build all the EC unit tests."""
+def build(_opts):
+    """No-op."""
 
-    working_dir = Path(__file__).parents[2].resolve()
-    cmd = [
-        "make",
-        f"-j{opts.cpus}",
-    ]
-    cmd.extend(["tests-" + b for b in EC_BOARDS])
-    subprocess.run(cmd, cwd=working_dir, check=True)
+    return 0
 
 
 def bundle(opts):
@@ -127,8 +126,13 @@ def test(_opts):
     # TODO(b/371633141): Add a parallel option to run_device_tests.py to speed
     # this up. Right now the EC coverage builders take longer than this,
     # so it doesn't affect overall CQ time.
+<<<<<<< HEAD
     for board in EC_BOARDS:
         run_device_tests(board, working_dir)
+=======
+    for board in ZEPHYR_BOARDS:
+        run_device_tests(board, working_dir, zephyr=True)
+>>>>>>> 7791e6aa7c (ec: Update fingerprint release script for ec-legacy)
 
 
 def main(args):
