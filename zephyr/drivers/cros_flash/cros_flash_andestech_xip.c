@@ -39,7 +39,7 @@
 #include "../drivers/flash/spi_nor.h"
 #include "flash.h"
 #include "spi_flash_reg.h"
-#include "write_protect.h"
+#include "zephyr_write_protect.h"
 
 #include <zephyr/drivers/flash.h>
 #include <zephyr/drivers/flash/andes_flash_xip_api_ex.h>

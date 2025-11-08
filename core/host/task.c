@@ -9,8 +9,8 @@
 #include "common.h"
 #include "console.h"
 #include "host_task.h"
+#include "shimmed_task_id.h"
 #include "task.h"
-#include "task_id.h"
 #include "test_util.h"
 #include "timer.h"
 
