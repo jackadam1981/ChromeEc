@@ -173,11 +173,11 @@ def build(opts):
     platform_ec = ZEPHYR_DIR.parent
 
     # Start with a clean build environment
-    cmd = ["make", "clobber"]
+    cmd = ["make", "-f", "Makefile.cq", "clobber"]
     log_cmd(cmd)
     subprocess.run(
         cmd,
-        cwd=platform_ec,
+        cwd=ZEPHYR_DIR,
         check=True,
         stdin=subprocess.DEVNULL,
         env=env,
@@ -516,9 +516,6 @@ def test(opts):
             "EC_ZEPHYR_TESTS_GCC",
             metrics,
             twister_out_dir_gcc / "coverage.info",
-        )
-        _extract_lcov_summary(
-            "EC_LEGACY_TESTS", metrics, platform_ec / "build/coverage/lcov.info"
         )
         _extract_lcov_summary(
             "ALL_TESTS", metrics, build_dir / "all_tests.info"
