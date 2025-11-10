@@ -111,6 +111,30 @@
       },
       "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceefcb25_0fc17464",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:54:43Z",
+      "side": 1,
+      "message": "The question I originally asked was whether `FP_MODE_ANY_CAPTURE` is a subset of the bits cleared in `FP_MODE_CAPTURE_TYPE_MASK`. In that case, we only need to clear `FP_MODE_CAPTURE_TYPE_MASK`. Can you check the definition of `FP_MODE_ANY_CAPTURE`?",
+      "parentUuid": "058e8420_cfc3f30e",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 53
+      },
+      "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
