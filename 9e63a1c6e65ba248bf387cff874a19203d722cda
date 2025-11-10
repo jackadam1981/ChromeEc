@@ -94,6 +94,30 @@
       },
       "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732b2477_04a25ac6",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-10T13:14:19Z",
+      "side": 1,
+      "message": "Ack, I will remove the reading of the PWR_PCH_PWROK before setting it to Low.\n\nHi Mike,\nYes, PLT_PWROK is same as EC_PCH_PWROK.",
+      "parentUuid": "872b68c3_ce48197a",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
