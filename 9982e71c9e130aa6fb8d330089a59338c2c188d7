@@ -46,6 +46,30 @@
       },
       "revId": "9982e71c9e130aa6fb8d330089a59338c2c188d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f59725_081fe3b0",
+        "filename": "zephyr/Makefile.cq",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-10T13:54:06Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7134918/2/zephyr/firmware_builder.py#b158",
+      "parentUuid": "79c049e9_d4ddd159",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 3
+      },
+      "revId": "9982e71c9e130aa6fb8d330089a59338c2c188d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
