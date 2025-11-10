@@ -46,6 +46,30 @@
       },
       "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33788a7f_e84125cf",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-10T13:18:48Z",
+      "side": 1,
+      "message": "yes as per PDG, PWR_PCH_PWROK is set before PWR_EC_PCH_RSMRST and PWR_EN_PP3300_A",
+      "parentUuid": "12b42d0d_5b0df443",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
