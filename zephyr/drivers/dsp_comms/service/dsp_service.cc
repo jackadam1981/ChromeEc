@@ -7,6 +7,7 @@
 #include <pb_encode.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/init.h>
+#include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/sys/byteorder.h>
@@ -29,10 +30,13 @@
 
 #define DT_DRV_COMPAT cros_dsp_service
 
-LOG_MODULE_REGISTER(dsp_service, CONFIG_DSP_COMMS_LOG_LEVEL);
+LOG_MODULE_REGISTER(dsp_service, LOG_LEVEL_DBG /*CONFIG_DSP_COMMS_LOG_LEVEL*/ );
 
 static_assert(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
               "Must have exactly 1 cros,dsp-service");
+
+static struct k_work_delayable gmr_work;
+static void dsp_service_gmr_tablet_switch_deferred(struct k_work *work);
 
 static constexpr const struct i2c_target_callbacks dsp_service_callbacks = {
     .write_requested = dsp_service_write_requested,
@@ -343,6 +347,7 @@ pw::Status cros::dsp::service::Driver::Init() {
     if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
       SetNotebookMode(cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK);
     }
+    k_work_init_delayable(&gmr_work, dsp_service_gmr_tablet_switch_deferred);
     /* Poll the GMR states */
     dsp_service_hook_lid_change();
     if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE)) {
@@ -370,9 +375,17 @@ void dsp_service_hook_tablet_mode_change() {
       cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE, is_in_tablet_mode);
 }
 #ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH
-extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
+static void dsp_service_gmr_tablet_switch_deferred(struct k_work *work)
+{
+  ARG_UNUSED(work);
+  LOG_INF("gmr_tablet_switch_deferred %d", gpio_get_level(GPIO_TABLET_MODE_L));
   dsp_service_hook_tablet_mode_change();
-  gmr_tablet_switch_isr(signal);
+  gmr_tablet_switch_isr_handler();
+}
+
+extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
+  ARG_UNUSED(signal);
+  k_work_reschedule(&gmr_work, K_USEC(CONFIG_GMR_SENSOR_DEBOUNCE_US));
 }
 #endif
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_tablet_mode_change, HOOK_PRIO_DEFAULT);
