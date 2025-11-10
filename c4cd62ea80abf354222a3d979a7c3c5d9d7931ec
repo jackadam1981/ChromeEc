@@ -135,6 +135,30 @@
       },
       "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "477acd1f_057597c9",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T23:02:43Z",
+      "side": 1,
+      "message": "No it is not. [FP_MODE_ANY_CAPTURE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/fpsensor/fpsensor_modes.h;l\u003d11?q\u003dplatform%2Fec%20FP_MODE_ANY_CAPTURE#:~:text\u003d10-,11,-12) is defined as:\n\n```\ninline constexpr uint32_t FP_MODE_ANY_CAPTURE \u003d\n\t(FP_MODE_CAPTURE | FP_MODE_ENROLL_IMAGE | FP_MODE_MATCH);\n```\n\nwhere \n\n[FP_MODE_CAPTURE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8347?q\u003dFP_MODE_CAPTURE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d8346-,8347,-8348), [FP_MODE_ENROLL_IMAGE](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8351?q\u003dFP_MODE_CAPTURE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d8350-,8351,-8352), and [FP_MODE_MATCH](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d8353?q\u003dFP_MODE_CAPTURE\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d8352-,8353,-8354) are defined as bit 3, 5, and 6, respectively.",
+      "parentUuid": "ceefcb25_0fc17464",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 53
+      },
+      "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
