@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4d9d83_48596eb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:05:42Z",
+      "side": 1,
+      "message": "Can you explain?\n\nAlthough the test may not execute the full \"download\" of an image, it at least verifies that the command is allowed to execute in the case where the system is unlocked. Maybe this just needs a comment explaining that limitation and what can be tested.",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "b7a772ff07d61cd4ef6ed9aba09ec3fc4523f259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
