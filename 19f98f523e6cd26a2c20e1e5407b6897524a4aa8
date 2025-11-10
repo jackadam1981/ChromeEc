@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55352a32_bb7fdc70",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-10T22:10:13Z",
+      "side": 1,
+      "message": "I think you can use `STRUCT_SECTION_COUNT()` to automatically determine if the HOOK_SECOND and HOOK_TICK is used.\n\nThis will also allow you to delete CONFIG_PLATFORM_EC_HOOK_SECOND. \n\n```\n#define HAS_HOOK_SECOND \\\n    (STRUCT_SECTION_COUNT(zephyr_shim_hook_HOOK_SECOND) !\u003d 0)\n        \n#define HAS_HOOK_TICK \\\n    (STRUCT_SECTION_COUNT(zephyr_shim_hook_HOOK_TICK) !\u003d 0)\n#define HAS_RECURRING_HOOKS (HAS_HOOK_SECOND || HAS_HOOK_TICK)\n\n#if HAS_HOOK_SECOND\nstatic void hook_second_work(struct k_work *work)\n#endif\n\n#if HAS_HOOK_TICK\nstatic void hook_tick_work(struct k_work *work)\n#endif\n\n#if HAS_RECURRING_HOOKS\nstatic int zephyr_shim_setup_hooks(void) \n{\n#if HAS_HOOK_SECOND\n   /* Startup HOOK_SECOND */\n#else\n#if HAS_HOOK_TICK\n   /* Startup HOOK_TICK */\n#endif\n}\n#endif\n```",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 59
+      },
+      "revId": "19f98f523e6cd26a2c20e1e5407b6897524a4aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
