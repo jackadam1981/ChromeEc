@@ -34,6 +34,167 @@
       "parentUuid": "c0cb3c5d_50b55915",
       "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baec3b73_112f7690",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "slightly simpler:\n\n```suggestion\n\tconstexpr auto kCaptureTypesArray \u003d std::to_array({\n    FP_CAPTURE_VENDOR_FORMAT, FP_CAPTURE_SIMPLE_IMAGE,\n    FP_CAPTURE_PATTERN0,    FP_CAPTURE_PATTERN1,\n    FP_CAPTURE_QUALITY_TEST,  FP_CAPTURE_RESET_TEST\n});\n```",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5d034a_a26ea293",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "It looks like we can use the [\"if this then that\" ayeaye analyzer](http://shortn/_pGPzOksPOY) to make sure these stay in sync with the enum.\n\nSomething like this in `ec_commands.h`:\n\n```\n// LINT.IfChange\nenum fp_capture_type {\n\t/* Full blown vendor-defined capture (produces \u0027frame_size\u0027 bytes) */\n\tFP_CAPTURE_VENDOR_FORMAT \u003d 0,\n\t/* Simple raw image capture (produces width x height x bpp bits) */\n\tFP_CAPTURE_SIMPLE_IMAGE \u003d 1,\n\t/* Self test pattern (e.g. checkerboard) */\n\tFP_CAPTURE_PATTERN0 \u003d 2,\n\t/* Self test pattern (e.g. inverted checkerboard) */\n\tFP_CAPTURE_PATTERN1 \u003d 3,\n\t/* Capture for Quality test with fixed contrast */\n\tFP_CAPTURE_QUALITY_TEST \u003d 4,\n\t/* Capture for pixel reset value test */\n\tFP_CAPTURE_RESET_TEST \u003d 5,\n\tFP_CAPTURE_TYPE_MAX,\n};\n// LINT.ThenChange(/zephyr/test/fingerprint/task/src/fpsensor_debug.cc)\n```",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7709d791_c34855b1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "Can you make the list exhaustive?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ac5b14_f58de580",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "nit: you can make it a little more concise with:\n\n\n```suggestion\n\tfor (enum fp_capture_type current_capture_type : kCaptureTypesArray) {\n```",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 25
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e42ce1_ac5c5b62",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "It looks like the [assertion macros will return on failure](https://docs.zephyrproject.org/latest/develop/test/ztest.html#assertions), so you technically don\u0027t need this.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 24
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c970a3e_0e5f4ca4",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "`zassert_mem_equal`?",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ebc7d36_a102ba01",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:34:24Z",
+      "side": 1,
+      "message": "`zassert_mem_equal`?",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 21
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
