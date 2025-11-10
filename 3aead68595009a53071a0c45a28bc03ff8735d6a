@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c13e351_039f71b6",
+        "filename": "test/fpsensor_utils.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:41:11Z",
+      "side": 1,
+      "message": "It looks like we can use the [\"if this then that\" ayeaye analyzer](http://shortn/_pGPzOksPOY) to make sure these stay in sync with the enum.\n\nSomething like this in `ec_commands.h`:\n\n```\n// LINT.IfChange\nenum fp_capture_type {\n    /* Full blown vendor-defined capture (produces \u0027frame_size\u0027 bytes) */\n    FP_CAPTURE_VENDOR_FORMAT \u003d 0,\n    /* Simple raw image capture (produces width x height x bpp bits) */\n    FP_CAPTURE_SIMPLE_IMAGE \u003d 1,\n    /* Self test pattern (e.g. checkerboard) */\n    FP_CAPTURE_PATTERN0 \u003d 2,\n    /* Self test pattern (e.g. inverted checkerboard) */\n    FP_CAPTURE_PATTERN1 \u003d 3,\n    /* Capture for Quality test with fixed contrast */\n    FP_CAPTURE_QUALITY_TEST \u003d 4,\n    /* Capture for pixel reset value test */\n    FP_CAPTURE_RESET_TEST \u003d 5,\n    FP_CAPTURE_TYPE_MAX,\n};\n// LINT.ThenChange(/test/fpsensor_utils.cc\n//                 /zephyr/test/fingerprint/task/src/fpsensor_debug.cc,\n//                 )\n```",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 53
+      },
+      "revId": "3aead68595009a53071a0c45a28bc03ff8735d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cd0d42_b51b1544",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_utils.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:41:11Z",
+      "side": 1,
+      "message": "Let\u0027s keep these in the same order as the declaration of the enums so that it\u0027s easier to compare the two. Same above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "3aead68595009a53071a0c45a28bc03ff8735d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
