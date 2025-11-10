@@ -87,6 +87,30 @@
       },
       "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058e8420_cfc3f30e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T22:44:44Z",
+      "side": 1,
+      "message": "but we also need to clear `FP_MODE_ANY_CAPTURE`. It was already being cleared. This bit tells the state machine that we have a capture, the bit 26-30, decide what time of capture to use.",
+      "parentUuid": "6c35702d_0fb51944",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 53
+      },
+      "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
