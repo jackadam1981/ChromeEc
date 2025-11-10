@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb74a2f3_94805a17",
+        "filename": "zephyr/Makefile.cq",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-10T15:54:59Z",
+      "side": 0,
+      "message": "Same here - we need the legacy tests until they are converted to ztest or it is determined a specific test is only used by the legacy EC.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59cd9ddb_57fd863f",
@@ -14,6 +37,29 @@
       "writtenOn": "2025-11-10T13:53:40Z",
       "side": 0,
       "message": "clobber occurred here.",
+      "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445500b9_31bf2bd2",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-10T15:54:59Z",
+      "side": 0,
+      "message": "I think we need to keep the legacy tests.  They provide some coverage of shared code.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 80
+      },
       "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
