@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723b86b3_002a44ed",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-10T17:12:34Z",
+      "side": 1,
+      "message": "The EC drives at 3.3V; is it ok to read the input at 1.8V?  I\u0027m not sure what this does to the code.  As long as the 1.8V definition is on the input side, it should be ok.",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "53f2d2449ba7ca430774d7ff4e327fed656d6e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
