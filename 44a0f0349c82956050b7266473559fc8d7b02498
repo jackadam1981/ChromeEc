@@ -16,6 +16,24 @@
       "message": "@jpmurphy@google.com and @keithshort@chromium.org This is another example of something that needs to remain in the EC-only and zephyr-only repos. We have separate unit tests for EC and Zephyr, but the logic inside them needs to be kept the same. Right now we are relying on the [`migrated_files.sh`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/migrated_files.sh;l\u003d12-56;drc\u003d07d22f40c328591afbb19b23b501630d7b4e9067) script to [run as a presubmit](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/PRESUBMIT.cfg;l\u003d36-37;drc\u003d8b122d890d2cf0945551319dddbd46fd673ebb5e).",
       "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c327efa_663e8513",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-10T22:31:23Z",
+      "side": 1,
+      "message": "crrev/c/7137528",
+      "parentUuid": "9cd0a895_3d5c689d",
+      "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
