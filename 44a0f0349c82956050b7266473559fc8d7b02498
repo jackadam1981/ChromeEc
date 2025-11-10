@@ -52,6 +52,24 @@
       "parentUuid": "5c327efa_663e8513",
       "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627f1315_7ad54d5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-10T23:37:45Z",
+      "side": 1,
+      "message": "If the legacy FP tests are deleted from platform/ec, the platform/ec-legacy becomes the source of truth. We can update `migrated_file.sh` to run as part of firmware-ec-legacy-cq and post a comment on the CL.\nRunning `migrate_file.sh` as a regular pre-submit doesn\u0027t make sense when the developer needs to touch multiple repos.",
+      "parentUuid": "45097a49_178e2952",
+      "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
