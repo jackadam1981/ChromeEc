@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e34b08_f86f12ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-10T05:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a91898_c93a069e",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "d4e6fd7b11065269101465cacde72ba14418da01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb5c46af_1583836b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1013e68_b7c35a18",
+        "filename": "common/charge_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-10T05:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5c46af_1583836b",
+      "range": {
+        "startLine": 1786,
+        "startChar": 0,
+        "endLine": 1796,
+        "endChar": 0
+      },
+      "revId": "d4e6fd7b11065269101465cacde72ba14418da01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ec33536_f6d00c9a",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-07T22:58:12Z",
       "side": 1,
       "message": "Add a doxygen header",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 51
+      },
+      "revId": "d4e6fd7b11065269101465cacde72ba14418da01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99492910_2f263c29",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-10T05:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec33536_f6d00c9a",
       "range": {
         "startLine": 249,
         "startChar": 0,
