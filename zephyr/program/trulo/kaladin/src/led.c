@@ -233,32 +233,8 @@ static void led_set_battery(void)
 		break;
 	case LED_PWRS_DISCHARGE:
 		if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
-			if (low_adp_blink) {
-				battery_low_triggeied = 0;
-				battery_critical_triggeied = 0;
-				hook_call_deferred(
-					&battery_set_pwm_led_tick_data, -1);
-
-				/* 500ms on, 500ms off, blink three times, then
-				 * off 2 sec, loop */
-				switch (blink_cnt % 10) {
-				case 0:
-				case 2:
-				case 4:
-					led_set_color_battery_duty(LED_AMBER,
-								   100);
-					break;
-				default:
-					led_set_color_battery_duty(LED_OFF, 0);
-					break;
-				}
-				blink_cnt++;
-				if (blink_cnt >= 10)
-					blink_cnt = 0;
-
-			} else if (charge_get_percent() <=
-					   BATTERY_LEVEL_CRITICAL &&
-				   !battery_critical_triggeied) {
+			if (charge_get_percent() <= BATTERY_LEVEL_CRITICAL &&
+			    !battery_critical_triggeied) {
 				battery_low_triggeied = 0;
 				battery_critical_triggeied = 1;
 				BATT_CRI_LED_CONFIG_TICK(BATT_LED_PULSE_TICK_MS,
@@ -286,6 +262,29 @@ static void led_set_battery(void)
 			battery_low_triggeied = 0;
 			battery_critical_triggeied = 0;
 			hook_call_deferred(&battery_set_pwm_led_tick_data, -1);
+		}
+		break;
+	case LED_PWRS_INSUFFICIENT_ADAPTER:
+		if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
+			battery_low_triggeied = 0;
+			battery_critical_triggeied = 0;
+			hook_call_deferred(&battery_set_pwm_led_tick_data, -1);
+
+			/* 500ms on, 500ms off, blink three times, then
+			 * off 2 sec, loop */
+			switch (blink_cnt % 10) {
+			case 0:
+			case 2:
+			case 4:
+				led_set_color_battery_duty(LED_AMBER, 100);
+				break;
+			default:
+				led_set_color_battery_duty(LED_OFF, 0);
+				break;
+			}
+			blink_cnt++;
+			if (blink_cnt >= 10)
+				blink_cnt = 0;
 		}
 		break;
 	case LED_PWRS_ERROR:
