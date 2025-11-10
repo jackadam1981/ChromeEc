@@ -34,6 +34,24 @@
       "parentUuid": "9cd0a895_3d5c689d",
       "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45097a49_178e2952",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T22:45:47Z",
+      "side": 1,
+      "message": "@jpmurphy@google.com That\u0027s not quite right. We don\u0027t need the tests themselves synced, since EC tests and Zephyr tests have a different structure and use different asserts. Unfortunately, there\u0027s no easy way to share that code, so we\u0027re using the presubmit to remind the developer making changes to a test that they need to apply the equivalent changes in the Zephyr version of the test. (Ideally, vice-versa when a change is made to a Zephyr test, but we don\u0027t have that now.)",
+      "parentUuid": "5c327efa_663e8513",
+      "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
