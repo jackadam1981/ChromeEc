@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f2ff51_b5a417c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-10T18:10:58Z",
+      "side": 1,
+      "message": "This is fine as far as it goes. Right now, I would guess that you\u0027re going to get build failures for TCPC drivers that haven\u0027t been updated and low-coverage for some of the code that you ultimately will need to update. We\u0027ll need to resolve those one way or another before merging.",
+      "revId": "948f0027320585e7c194855f8656c77189a7005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
