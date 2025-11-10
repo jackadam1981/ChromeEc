@@ -39,6 +39,30 @@
       },
       "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cc4f67_cea90dc5",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T22:17:14Z",
+      "side": 1,
+      "message": "```\n/* Capture types defined in bits [30..26] */\n#define FP_MODE_CAPTURE_TYPE_SHIFT 26\n#define FP_MODE_CAPTURE_TYPE_MASK (0x1F \u003c\u003c FP_MODE_CAPTURE_TYPE_SHIFT)\n```\n\nit should clear the capture bits (bit 26 --\u003e 30). These are the bits that we were still seeing being on after an image capture.",
+      "parentUuid": "e94ae890_b1e42f0d",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 53
+      },
+      "revId": "c4cd62ea80abf354222a3d979a7c3c5d9d7931ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
