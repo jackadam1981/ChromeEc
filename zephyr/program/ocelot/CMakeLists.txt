@@ -51,10 +51,11 @@ endif()
 
 if(DEFINED CONFIG_BOARD_OCICAT)
 	project(ocicat)
-	zephyr_library_sources("ocicat/src/keyboard_customization.c")
 	zephyr_library_sources("ocicat/src/board_power.c")
-	zephyr_library_sources("ocicat/src/usbc_runtime.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"ocicat/src/keyboard_customization.c")
 endif()
+
 
 zephyr_include_directories("include/")
 
