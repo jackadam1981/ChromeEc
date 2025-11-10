@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c85eba_afbf17c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T21:53:40Z",
+      "side": 1,
+      "message": "Duplicate?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "045b74850d764066ad2e66bdc356671b6ae53934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "76ef2def_60dfb5ad",
@@ -14,6 +37,52 @@
       "writtenOn": "2025-11-07T00:27:13Z",
       "side": 1,
       "message": "Ignore my previous automated message. This CL belongs on main.",
+      "revId": "045b74850d764066ad2e66bdc356671b6ae53934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04f89d2_347f5638",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T21:53:40Z",
+      "side": 1,
+      "message": "nit: you could just do:\n\n```suggestion\n\tint ret \u003d get_image_frame_params(image_frame_params, global_context.current_capture_type);\n```",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 21
+      },
+      "revId": "045b74850d764066ad2e66bdc356671b6ae53934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b79ad5_ab87745d",
+        "filename": "common/fpsensor/fpsensor_debug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T21:53:40Z",
+      "side": 1,
+      "message": "nit: you could just do:\n\n```suggestion\n\tint ret \u003d get_image_frame_params(image_frame_params, global_context.current_capture_type);\n```",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 68
+      },
       "revId": "045b74850d764066ad2e66bdc356671b6ae53934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
