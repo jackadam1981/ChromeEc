@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "856e48b0_82001a69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-10T21:30:31Z",
+      "side": 1,
+      "message": "(Test with the top of the stack, since https://crrev.com/c/7120759 is probably the riskiest.)",
+      "parentUuid": "8fa920b7_eb4a38ee",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "0878da814a460f1f1120cc2c824202667c4152be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "711c18ff_e9707ed5",
