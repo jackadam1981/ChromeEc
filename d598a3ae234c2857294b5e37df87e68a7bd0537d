@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98798ae_3fb80252",
+        "filename": "test/fpsensor_utils.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T22:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af43bf9c_341baa09",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "d598a3ae234c2857294b5e37df87e68a7bd0537d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262a2a86_6dd9616a",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-10T21:27:10Z",
       "side": 1,
       "message": "Let\u0027s make this exhaustive over all the possible enums, including `INVALID` and `MAX`.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 56
+      },
+      "revId": "d598a3ae234c2857294b5e37df87e68a7bd0537d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21935518_73973390",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_utils.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T22:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "262a2a86_6dd9616a",
       "range": {
         "startLine": 80,
         "startChar": 1,
