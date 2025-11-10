@@ -43,6 +43,14 @@ if(DEFINED CONFIG_BOARD_MATSU)
 					"matsu/src/keyboard_customization.c")
 endif()
 
+if(DEFINED CONFIG_BOARD_OCICAT)
+	project(ocicat)
+	zephyr_library_sources("ocicat/src/board_power.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"ocicat/src/keyboard_customization.c")
+endif()
+
+
 zephyr_include_directories("include/")
 
 zephyr_include_directories_ifdef(CONFIG_PLATFORM_EC_DEDICATED_CHARGE_PORT
