@@ -22,6 +22,30 @@
       },
       "revId": "9982e71c9e130aa6fb8d330089a59338c2c188d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79c049e9_d4ddd159",
+        "filename": "zephyr/Makefile.cq",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-11-10T13:53:40Z",
+      "side": 1,
+      "message": "To ensure that the artifacts are built cleanly.  The old version did this too, but this target existed in a Makefile which was deleted in the previous CL.",
+      "parentUuid": "701b85bf_d58b8d1b",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 3
+      },
+      "revId": "9982e71c9e130aa6fb8d330089a59338c2c188d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
