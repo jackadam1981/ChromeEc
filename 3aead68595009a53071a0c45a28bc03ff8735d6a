@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4888976f_b00a3fa4",
+        "filename": "test/fpsensor_utils.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T23:36:30Z",
+      "side": 1,
+      "message": "I added it in a separate [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7137349/1)",
+      "parentUuid": "9c13e351_039f71b6",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 53
+      },
+      "revId": "3aead68595009a53071a0c45a28bc03ff8735d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5cd0d42_b51b1544",
         "filename": "zephyr/test/fingerprint/task/src/fpsensor_utils.cc",
         "patchSetId": 13
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-10T22:41:11Z",
       "side": 1,
       "message": "Let\u0027s keep these in the same order as the declaration of the enums so that it\u0027s easier to compare the two. Same above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "3aead68595009a53071a0c45a28bc03ff8735d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "664c3740_fcebc547",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_utils.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-10T23:36:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5cd0d42_b51b1544",
       "range": {
         "startLine": 90,
         "startChar": 0,
