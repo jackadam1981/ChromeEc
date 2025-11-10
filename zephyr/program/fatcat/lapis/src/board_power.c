@@ -136,3 +136,10 @@ int board_power_signal_set(enum power_signal signal, int value)
 {
 	return -EINVAL;
 }
+
+void board_pwrbtn_to_pch(int level)
+{
+	k_msleep(100);
+
+	gpio_set_level(GPIO_PCH_PWRBTN_L, level);
+}

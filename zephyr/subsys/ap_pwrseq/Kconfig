@@ -214,6 +214,16 @@ config AP_SLP_S0_DEBUG
 	  If the sleep timeout expires before the debug alarm, then the
 	  debug alarm is cancelled.
 
+if BOARD_LAPIS
+
+config PLATFORM_EC_POWER_BUTTON_TO_PCH_CUSTOM
+	bool "Custom board_pwrbtn_to_pch"
+	help
+	  The board support code provides a custom function,
+	  board_pwrbtn_to_pch, that replaces the standard GPIO set
+	  level to the SoC.
+
+endif
 
 endif
 
