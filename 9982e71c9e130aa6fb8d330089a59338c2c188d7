@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24468e1e_cad97b4c",
+        "filename": "zephyr/Makefile.cq",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-11-10T21:56:14Z",
+      "side": 1,
+      "message": "You don\u0027t need to append (-a) a single file. That is only used when you have 2 files.\n\nEither replace all uses of $(BUILD)/zephyr/all_tests.info with $(PLATFORM_EC)/twister-out-host/coverage.info or copy $(PLATFORM_EC)/twister-out-host/coverage.info to $(BUILD)/zephyr/all_tests.info",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 49
+      },
+      "revId": "9982e71c9e130aa6fb8d330089a59338c2c188d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "701b85bf_d58b8d1b",
         "filename": "zephyr/Makefile.cq",
         "patchSetId": 2
