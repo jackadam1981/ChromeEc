@@ -34,6 +34,24 @@
       "parentUuid": "ca1f9d70_cf619eaf",
       "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c20e7f_fec5a378",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-10T13:25:50Z",
+      "side": 0,
+      "message": "Thanks.\n\nI have separated the CL\u0027s now.\nBefore merging the changes, we plan to test the cold reboot, warm reboot, S0ix and DC Jack unplug-plug each flow 5 times to ensure nothing is regressing.",
+      "parentUuid": "e94fab86_3a584dff",
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
