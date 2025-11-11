@@ -22,6 +22,30 @@
       },
       "revId": "19f98f523e6cd26a2c20e1e5407b6897524a4aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "344848fa_b75b41da",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-11T16:20:10Z",
+      "side": 1,
+      "message": "Thanks for the pointers.\nI tried using STRUCT_SECTION_COUNT()\nI am facing compile issues, when i tried checking further, looks like STRUCT_SECTION_COUNT() is a run time macro hence cannot be used to evaluate #if directives.\n\nI am planning to add conditions like below to the API as \u0027hook_registry\u0027 is available in the same file.\n\nzephyr_shim_setup_hooks() {\n..\nif ((hook_registry[HOOK_SECOND].end - hook_registry[HOOK_SECOND].start) \u003e 0)\n..\nif ((hook_registry[HOOK_TICK].end - hook_registry[HOOK_TICK].start) \u003e 0)\n..\n}\n\nPlease let me know your thoughts.",
+      "parentUuid": "55352a32_bb7fdc70",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 59
+      },
+      "revId": "19f98f523e6cd26a2c20e1e5407b6897524a4aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
