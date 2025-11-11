@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac412a9_6d11a65a",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-11T16:27:09Z",
+      "side": 1,
+      "message": "I checked the specific case where EC jumps to RW due to ec sync enabled in CB \u0026 the flag - EC_RESET_FLAG_SYSJUMP is set in that case as well, other than the explicit RO to RW jump case( ie, case where, ec sync disabled from CB).\n\nAlso, now, Added the condition to skip cbi_set_model_id(), if the existing\nvalue is the same as the new value in latest patch.",
+      "parentUuid": "cb593e7c_e2127e06",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "ff05880c40be72b72f82c6c7c55e9c7f17a5005b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e0f434c_03e52ee5",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-11-11T04:42:02Z",
       "side": 1,
       "message": "how about implementing the CBI MODEL ID read/write functionality in board_id_intel_rvp.c driver - let driver manage to read from CBI/IO expander/Rturn error when not feasible.\n\nThis avoids implementing additional checks in board specific code.",
+      "revId": "ff05880c40be72b72f82c6c7c55e9c7f17a5005b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b1090b_af77fad0",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-11T16:27:09Z",
+      "side": 1,
+      "message": "board_get_version() is board specific function \u0026 also cbi read/write functionality may also be board dependent. Hence, didn\u0027t make it as part of generic code.",
+      "parentUuid": "6e0f434c_03e52ee5",
       "revId": "ff05880c40be72b72f82c6c7c55e9c7f17a5005b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
