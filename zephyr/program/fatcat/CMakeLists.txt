@@ -9,6 +9,7 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 if(DEFINED CONFIG_BOARD_FATCATRVP_NPCX)
 	project(fatcatrvp-npcx)
 	add_subdirectory(fatcatrvp-npcx)
+	zephyr_library_sources("src/rvp_board_id.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_FATCATRVP_ITE)
