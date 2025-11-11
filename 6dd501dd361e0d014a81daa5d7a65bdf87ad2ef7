@@ -105,6 +105,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff719629_08be8e61",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7709d791_c34855b1",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4f2d9e_7c3815d1",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baec3b73_112f7690",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a75fa029_072caf3c",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "was created as separate CL.",
+      "parentUuid": "9d5d034a_a26ea293",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41ac5b14_f58de580",
@@ -118,6 +190,30 @@
       "writtenOn": "2025-11-10T22:34:24Z",
       "side": 1,
       "message": "nit: you can make it a little more concise with:\n\n\n```suggestion\n\tfor (enum fp_capture_type current_capture_type : kCaptureTypesArray) {\n```",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 25
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4567ab6f_43088906",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ac5b14_f58de580",
       "range": {
         "startLine": 228,
         "startChar": 0,
@@ -151,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c746e329_056cd5c4",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "I modified slightly the test logic. It iterates over all possible capture types. For the ones that exist, we do the succeessful assertion. for the ones that do not exist, we do the failure assertions.",
+      "parentUuid": "42e42ce1_ac5c5b62",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 24
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c970a3e_0e5f4ca4",
@@ -174,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc421a38_1f13e87d",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c970a3e_0e5f4ca4",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ebc7d36_a102ba01",
@@ -187,6 +331,30 @@
       "writtenOn": "2025-11-10T22:34:24Z",
       "side": 1,
       "message": "`zassert_mem_equal`?",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 21
+      },
+      "revId": "6dd501dd361e0d014a81daa5d7a65bdf87ad2ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef026201_c610ffc9",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T00:19:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ebc7d36_a102ba01",
       "range": {
         "startLine": 278,
         "startChar": 1,
