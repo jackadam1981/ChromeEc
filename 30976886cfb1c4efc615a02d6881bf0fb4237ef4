@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a3a552_d53a2495",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-11T21:36:27Z",
+      "side": 1,
+      "message": "This should be up at the top with the other state variables. (Arguably, they should all be in one structure, like the TCPM state machines, but that would be out of scope here.)\n\nAlso, this is initialized to false, which _should_ be accurate, but I think it would be more obviously correct to set it in `tcpci_tcpm_init`, based on the observed value of the register.",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d04b664_b4b64e99",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-11T21:36:27Z",
+      "side": 1,
+      "message": "You don\u0027t need to do this. Implicitly converting from int to bool, as on line 417 or 425, has the same semantics. In fact, that\u0027s all that `!!` is doing anyway.\n\nIf you want to fix this up, change the argument to `bool` in all of the implementations (in another CL).",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dfd8030_3a188e3c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-11T21:36:27Z",
+      "side": 1,
+      "message": "This is an OK optimization for this bit, but it begs the question about other optimizations. There are a handful of other functions that touch this register, and some of them have different optimizations. They should all be able to share the same optimization:\n\nTCPCI says this register is changed only by the TCPM after power-on initialization. That means that we should be able to cache the entire register value and compare any new value to the cached value. That also means that other than the first access after init, we should never have to read the value of the register before writing it.\n\nThis will be essentially the same optimization that @abin.roy@7rays.corp-partner.google.com did for TCPC_CONTROL, that we ended up not needing. You might want a helper function for accessing POWER_CONTROL, if the individual functions get redundant. I think if we do this right, all of these functions could look almost identical, and each would involve at most one I2C access.",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
