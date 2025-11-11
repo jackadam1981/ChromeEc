@@ -51,6 +51,7 @@ static void reset_tablet_mode(void)
 	tablet_set_mode(0, TABLET_TRIGGER_LID);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reset_tablet_mode, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, reset_tablet_mode, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE */
 
 static void enable_peripherals(void)
