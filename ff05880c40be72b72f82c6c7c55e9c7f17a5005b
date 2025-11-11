@@ -22,6 +22,23 @@
       },
       "revId": "ff05880c40be72b72f82c6c7c55e9c7f17a5005b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0f434c_03e52ee5",
+        "filename": "zephyr/program/ocelot/src/rvp_board_id.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2025-11-11T04:42:02Z",
+      "side": 1,
+      "message": "how about implementing the CBI MODEL ID read/write functionality in board_id_intel_rvp.c driver - let driver manage to read from CBI/IO expander/Rturn error when not feasible.\n\nThis avoids implementing additional checks in board specific code.",
+      "revId": "ff05880c40be72b72f82c6c7c55e9c7f17a5005b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
