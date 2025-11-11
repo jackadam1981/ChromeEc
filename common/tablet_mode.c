@@ -163,6 +163,8 @@ void tablet_set_mode(int mode, uint32_t trigger)
 	old_mode = tablet_mode;
 	tablet_mode = new_mode;
 
+	CPRINTS("tablet_set_node: old = %d, new =%d", old_mode, new_mode);
+
 	/* Boolean comparison */
 	if (!tablet_mode == !old_mode)
 		return;
