@@ -46,6 +46,30 @@
       },
       "revId": "19f98f523e6cd26a2c20e1e5407b6897524a4aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ce85c2_4bc7bbbc",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-11T20:50:15Z",
+      "side": 1,
+      "message": "You\u0027re correct, it isn\u0027t possible to determine the size of iterable sections at compile time.  The final size isn\u0027t known until the final link.\n\nSo there are 2 paths:\n1. Perform a runtime check.\n2. Add another Kconfig CONFIG_PLATFORM_EC_HOOK_TICK that can be used to turn off the tick scheduler. This would do the same thing as CONFIG_PLATFORM_EC_HOOK_SECOND\n\nOption 2 is my preference, because it will reduce the code size when these HOOK_TYPES are not used.",
+      "parentUuid": "344848fa_b75b41da",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 59
+      },
+      "revId": "19f98f523e6cd26a2c20e1e5407b6897524a4aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
