@@ -5,6 +5,7 @@
 
 /* Boxy board-specific configuration */
 
+#include "adc.h"
 #include "adc_chip.h"
 #include "board.h"
 #include "button.h"
@@ -395,5 +396,21 @@ const struct i2c_port_t i2c_ports[] = {
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+#ifdef CONFIG_POWER_BUTTON_INIT_IDLE
+/*
+ * The system supply specification is 17.1 to 21V. 17.1V less 20% is 13.68V.
+ * use 13.5V as the minimum power voltage. Report power failure when system
+ * supply voltage is less than 13.5V.
+ */
+#define MINIMUM_POWER_IN_MV 13500
+
+__override bool board_is_power_good(void)
+{
+	CPRINTUSB("board_is_power_good run");
+	return false;
+}
+#endif
+
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
