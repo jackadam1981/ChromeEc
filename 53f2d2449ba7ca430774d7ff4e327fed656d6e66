@@ -22,6 +22,30 @@
       },
       "revId": "53f2d2449ba7ca430774d7ff4e327fed656d6e66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e56649_a388e93a",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/power_signals.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-11T09:55:06Z",
+      "side": 1,
+      "message": "EC side, this declares the GPIO as 1.8V OUTPUT pin as SOC IO level are 1.8V.\n\n1P8 should be removed from here as there is a voltage divider added as part of the HW changes for Nuvoton. I will do the changes.",
+      "parentUuid": "723b86b3_002a44ed",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "53f2d2449ba7ca430774d7ff4e327fed656d6e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
