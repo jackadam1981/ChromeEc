@@ -22,6 +22,30 @@
       },
       "revId": "b7a772ff07d61cd4ef6ed9aba09ec3fc4523f259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc4713f_73a44a71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-11T16:54:23Z",
+      "side": 1,
+      "message": "The test requires that I capture an image before I download. Otherwise, `global_context.current_capture_type` is not populated with a valid type and `get_image_frame_params` will fail (return `INVALID`).\n\nThe test now passes on a device. However, it does not pass on renode. I believe renode does not simulate image capturing. Is this true?",
+      "parentUuid": "5b4d9d83_48596eb6",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "b7a772ff07d61cd4ef6ed9aba09ec3fc4523f259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
