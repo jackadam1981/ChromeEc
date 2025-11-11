@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3a1b57_11fa1380",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "Add a comment about where this number comes from.",
+      "range": {
+        "startLine": 755,
+        "startChar": 25,
+        "endLine": 755,
+        "endChar": 38
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ab11d6_ebffe7e0",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "Define a constant or add a comment",
+      "range": {
+        "startLine": 925,
+        "startChar": 18,
+        "endLine": 925,
+        "endChar": 28
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241f075f_2bd0dfb1",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "Is there a maximum length we should enforce for blob_size_words?",
+      "range": {
+        "startLine": 1062,
+        "startChar": 1,
+        "endLine": 1062,
+        "endChar": 16
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4557ba_c45828d6",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "Add comments or define constants for magic numbers like 13.",
+      "range": {
+        "startLine": 1251,
+        "startChar": 0,
+        "endLine": 1253,
+        "endChar": 24
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02cf2389_1d803e0c",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "Add a comment about these numbers to explain what they are.",
+      "range": {
+        "startLine": 1558,
+        "startChar": 27,
+        "endLine": 1558,
+        "endChar": 36
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e459b5df_075873ca",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "Is there a reason these are defined here?",
+      "range": {
+        "startLine": 1558,
+        "startChar": 0,
+        "endLine": 1560,
+        "endChar": 65
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146095fc_eb67969e",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "add comment to explain",
+      "range": {
+        "startLine": 1774,
+        "startChar": 21,
+        "endLine": 1774,
+        "endChar": 23
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23dd9f86_0061a721",
+        "filename": "common/strongbox.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-11T21:38:55Z",
+      "side": 1,
+      "message": "nit: there\u0027s extra parenthesis here",
+      "range": {
+        "startLine": 1824,
+        "startChar": 65,
+        "endLine": 1824,
+        "endChar": 66
+      },
+      "revId": "34a643bd8b3825c3ffdef8adb3e37bbff3c3b5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
