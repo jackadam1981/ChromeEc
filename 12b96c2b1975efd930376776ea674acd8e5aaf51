@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3d8f4d_85fe5393",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-11T20:50:04Z",
+      "side": 1,
+      "message": "As a follow up these files should move under zephyr/program/intelrvp.\nI can also ask Intel to do this if you want.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "12b96c2b1975efd930376776ea674acd8e5aaf51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
