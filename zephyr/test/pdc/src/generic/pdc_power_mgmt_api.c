@@ -1716,7 +1716,10 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status)
 	in.conn_partner_flags = 1;
 	in.conn_partner_type = UFP_ATTACHED;
 
-	emul_pdc_configure_snk(emul, &in);
+	/* Run this test as a source because the sink entry flow calls
+	 * GET_CONNECTOR_STATUS and thus can ack/clear the expected bits before
+	 * we check them. The source entry flow does not do this. */
+	emul_pdc_configure_src(emul, &in);
 	emul_pdc_connect_partner(emul, &in);
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 
