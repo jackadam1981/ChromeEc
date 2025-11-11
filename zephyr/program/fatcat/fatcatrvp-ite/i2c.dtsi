@@ -39,6 +39,9 @@ pd_pow_i2c: &i2c1 {
 };
 
 charger_i2c: &i2c4 {
+	rvp-board-id {
+		handler = "fatcatrvp_id_handler";
+	};
 };
 
 &i2c5 {
