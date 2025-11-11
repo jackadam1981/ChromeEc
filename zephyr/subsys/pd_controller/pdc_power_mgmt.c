@@ -284,6 +284,8 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_GET_PDOS,
 	/** SNK_ATTACHED_GET_VDO */
 	SNK_ATTACHED_GET_VDO,
+	/** SNK_ATTACHED_WAIT_FOR_CONTRACT */
+	SNK_ATTACHED_WAIT_FOR_CONTRACT,
 	/** SNK_ATTACHED_SYNC_CHARGE_MGR */
 	SNK_ATTACHED_SYNC_CHARGE_MGR,
 	/** SNK_ATTACHED_SET_SINK_PATH */
@@ -2371,14 +2373,28 @@ static uint8_t pdc_get_snk_path_en_mask(void)
 	return snk_path_en_mask;
 }
 
+/** Return values for pdc_snk_attached_evaluate_pdos(), describing what
+ *  action was taken by the function.
+ */
+enum eval_pdo_outcome {
+	/** Multiple sink paths are enabled. Hold in current state until only
+	 *  one sink path is active. */
+	EVAL_PDO_OUTCOME_SINK_PATH_STATE,
+	/** Keep the current RDO. A new RDO has NOT been sent, so proceed */
+	EVAL_PDO_OUTCOME_RETAIN_CURRENT_RDO,
+	/** A new RDO has been sent. Wait for the the PDC to re-negotiate before
+	 *  proceeding. */
+	EVAL_PDO_OUTCOME_SEND_NEW_RDO,
+};
+
 /**
  * @brief Evaluate PDOs and send RDO when only one (or none) sink path is
  * enabled. The sink path is disabled on non-preferred ports.
  *
- * @return true - Proceed to next state
- *         false - Remain in current state.
+ * @return enum eval_pdo_outcome
  */
-static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
+static enum eval_pdo_outcome
+pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
 	int pdo_index = 0, selected_port;
@@ -2392,7 +2408,9 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 
 	/* No valid PDOs found, move to next state */
 	if (pdo_index == -1) {
-		return true;
+		LOG_INF("C%d: No valid PDOs found. Keep current RDO.",
+			config->connector_num);
+		return EVAL_PDO_OUTCOME_RETAIN_CURRENT_RDO;
 	}
 
 	selected_port = charge_manager_get_active_charge_port();
@@ -2401,7 +2419,7 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 				       pdo_index)) {
 		LOG_INF("C%d: Retaining PDO[%d]=0x%08X", config->connector_num,
 			pdo_index, selected_pdo);
-		return true;
+		return EVAL_PDO_OUTCOME_RETAIN_CURRENT_RDO;
 	}
 
 	uint8_t sink_path_mask = pdc_get_snk_path_en_mask();
@@ -2418,7 +2436,7 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 		}
 
 		/* Remain in current state until only one sink path is enabled*/
-		return false;
+		return EVAL_PDO_OUTCOME_SINK_PATH_STATE;
 	}
 
 	/* if sink path is enabled, battery is not present, and AP is ON,
@@ -2426,7 +2444,9 @@ static bool pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	 */
 	if (port->sink_path_status && battery_is_present() == BP_NO &&
 	    !chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
-		return true;
+		LOG_INF("C%d: Dead battery detected. Keep current RDO.",
+			config->connector_num);
+		return EVAL_PDO_OUTCOME_RETAIN_CURRENT_RDO;
 	}
 
 	/* Only one sink path is enabled, safe to update RDO */
@@ -2494,6 +2514,7 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *config = port->dev->config;
+	union conn_status_change_bits_t conn_status_change_bits;
 
 	/* The CCI_EVENT is set to re-query connector status, so check the
 	 * connector status and take the appropriate action.
@@ -2619,9 +2640,44 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 		 * the best port and disable the sink path on all but the best
 		 * port.
 		 */
-		if (pdc_snk_attached_evaluate_pdos(port)) {
+		switch (pdc_snk_attached_evaluate_pdos(port)) {
+		case EVAL_PDO_OUTCOME_SINK_PATH_STATE:
+			/* Remain in this substate until only a single sink path
+			 * is active. */
+			break;
+		case EVAL_PDO_OUTCOME_RETAIN_CURRENT_RDO:
+			/* No RDO changes. Proceed directly to seeding charge
+			 * manager. */
 			port->snk_attached_local_state =
 				SNK_ATTACHED_SYNC_CHARGE_MGR;
+			break;
+		case EVAL_PDO_OUTCOME_SEND_NEW_RDO:
+			/* A new RDO was sent. Wait for the PD contract to be
+			 * negotiated by the PDC. */
+			port->snk_attached_local_state =
+				SNK_ATTACHED_WAIT_FOR_CONTRACT;
+			queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
+			break;
+		}
+		return SMF_EVENT_HANDLED;
+	case SNK_ATTACHED_WAIT_FOR_CONTRACT:
+		/* Poll GET_CONNECTOR_STATUS until the `negotiated_power_level`
+		 * bit is set. */
+		conn_status_change_bits.raw_value =
+			port->connector_status.raw_conn_status_change_bits;
+
+		/* TODO: add a timeout mechanism to give up after a certain
+		 * amount of time. */
+
+		LOG_INF("Checking for negotiated_power_level");
+
+		if (conn_status_change_bits.negotiated_power_level) {
+			/* New contract is in place. Seed charge_manager. */
+			port->snk_attached_local_state =
+				SNK_ATTACHED_SYNC_CHARGE_MGR;
+		} else {
+			/* Poll GET_CONNECTOR_STATUS again*/
+			queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		}
 		return SMF_EVENT_HANDLED;
 	case SNK_ATTACHED_SYNC_CHARGE_MGR:
