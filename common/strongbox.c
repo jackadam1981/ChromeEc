@@ -13,6 +13,7 @@
 #include "dcrypto.h"
 #include "internal.h"
 #include "nvmem_vars.h"
+#include "board_id_features.h"
 
 #include "cbor_basic.h"
 #include "cbor_boot_param.h"
@@ -290,6 +291,15 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 			if (p->in_size & (sizeof(uint32_t) - 1))
 				return SBERR_InvalidArgument;
 
+			if (get_board_id_features() &
+			    BOARD_ID_FEATURES_SB_DISABLE_SET)
+				return SBERR_HardwareNotYetAvailable;
+
+			if (!(get_board_id_features() &
+			      BOARD_ID_FEATURES_SB_ENABLE_SET) &&
+			    p->code != SB_SetStrongboxState)
+				return SBERR_HardwareNotYetAvailable;
+
 			if (!km.initialized) {
 				enum strongbox_error err = keymint_init();
 
@@ -309,6 +319,39 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 	p->out_size = 0;
 	return SBERR_Unimplemented;
 }
+
+/**
+ * @brief Set HW Enforced Parameters
+ *
+ * Input:
+ * - [ 4 bytes ] Non-zero value enables Strongbox, zero disables.
+ * No output produced.
+ *
+ * @param km KeyMint context.
+ * @param buf Input/Output buffer.
+ * @param buf_size_words Size of the I/O buffer in 32-bit words.
+ * @param req_len_words Size of the input data in 32-bit words.
+ * @param out_len_bytes On success, the number of bytes written to the buffer.
+ * @return SB_OK on success, or an error code on failure.
+ */
+enum strongbox_error sb_SetStrongboxState(struct km *km, uint32_t *buf,
+					  size_t buf_size_words,
+					  size_t req_len_words,
+					  size_t *out_len_bytes)
+{
+	/* Clean output len. */
+	*out_len_bytes = 0;
+
+	/* 1 32-bit word arguments are expected for the command. */
+	if (req_len_words != 1)
+		return SBERR_InvalidArgument;
+
+	add_board_id_features((buf[0] ? BOARD_ID_FEATURES_SB_ENABLE_SET :
+					BOARD_ID_FEATURES_SB_DISABLE_SET));
+
+	return SB_OK;
+}
+DECLARE_STRONGBOX_COMMAND(SB_SetStrongboxState, sb_SetStrongboxState);
 
 /**
  * @brief Implements IKeyMintDevice::getHardwareInfo.
