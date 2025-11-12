@@ -1953,8 +1953,10 @@ fp_download_frame(struct SensorImage &sensor_image,
 	 */
 	size_t size;
 	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
-		size = (size_t)sensor_image.width * sensor_image.bpp / 8 *
+		size = (size_t)sensor_image.width *
+		       (size_t)std::ceil((double)sensor_image.bpp / 8.0) *
 		       sensor_image.height;
+
 		index = FP_FRAME_INDEX_RAW_IMAGE;
 	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
 		size = sensor_image.frame_size;
