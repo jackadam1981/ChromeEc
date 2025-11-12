@@ -1876,6 +1876,9 @@ static int command_board_properties(int argc, char **argv)
 	print_factory_config();
 #ifdef CONFIG_BOARD_ID_FEATURES
 	print_board_id_features();
+#else
+	/* BOARD_CFG reg is shared with BOARD_ID_FEATURES reg. */
+	ccprintf("board_cfg = 0x%08x\n", get_board_cfg());
 #endif
 	return EC_SUCCESS;
 }

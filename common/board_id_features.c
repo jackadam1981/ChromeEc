@@ -8,22 +8,9 @@
 #include "board_id_features.h"
 #include "console.h"
 
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
-/* The board id wasn't set when Cr50 booted */
-#define BOARD_ID_FEATURES_UNSET_BID	BIT(0)
-/* The board id features are initialized */
-#define BOARD_ID_FEATURES_INITIALIZED	BIT(1)
-/* Bits to store write protect bit state across deep sleep and resets. */
-#define BOARD_ID_FWMP_BLOCK_DEV_RST_EC	BIT(2)
-
-static uint32_t board_id_features;
-
-static void store_board_id_features(uint32_t features)
-{
-	GREG32(PMU, PWRDN_SCRATCH25) = features;
-	board_id_features = features;
-}
+uint32_t board_id_features;
 
 static void load_board_id_features(void)
 {
@@ -32,6 +19,7 @@ static void load_board_id_features(void)
 
 void print_board_id_features(void)
 {
+	/* Note, this includes BOARD_CFG reg in top 16 bits. */
 	ccprintf("bid features = %08x\n", board_id_features);
 }
 
