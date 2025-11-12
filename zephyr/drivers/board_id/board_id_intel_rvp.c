@@ -44,6 +44,7 @@ struct rvp_board_id_config {
 	const struct gpio_dt_spec *bom_gpios_config;
 	const struct gpio_dt_spec *fab_gpios_config;
 	const struct gpio_dt_spec *board_gpios_config;
+	rvp_board_id_handler handler;
 };
 
 /*
@@ -146,6 +147,8 @@ static void pca95xx_deferred_init_cb(const struct device *dev,
 				device_init(gpio_port);
 			}
 		}
+		if (rvp_config->handler != NULL)
+			rvp_config->handler();
 	}
 }
 
@@ -173,6 +176,10 @@ static int rvp_board_id_init(const struct device *dev)
 }
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
+#if DT_NODE_HAS_PROP(DT_DRV_INST(0), handler)
+extern void DT_STRING_TOKEN(DT_DRV_INST(0), handler)(void);
+#endif
+
 static const struct rvp_board_id_config rvp_board_id_cfg = {
 	.defer_until_s5 = DT_NODE_HAS_PROP(DT_DRV_INST(0), defer_until_s5),
 #if DT_NODE_HAS_PROP(DT_DRV_INST(0), bom_gpios)
@@ -192,6 +199,11 @@ static const struct rvp_board_id_config rvp_board_id_cfg = {
 	.board_gpios_config =
 		(const struct gpio_dt_spec[]){
 			FOREACH_RVP_GPIOS_ELEM(0, board_gpios) },
+#if DT_NODE_HAS_PROP(DT_DRV_INST(0), handler)
+	.handler = DT_STRING_TOKEN(DT_DRV_INST(0), handler),
+#else
+	.handler = NULL,
+#endif
 };
 
 DEVICE_DT_INST_DEFINE(0, rvp_board_id_init, NULL, NULL, &rvp_board_id_cfg,
