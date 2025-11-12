@@ -94,6 +94,30 @@
       },
       "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cf496e_c322d2c4",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-12T01:44:58Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/455660428#comment14 - there are some separate hardware issues - but the code looks correct for both ITE \u0026 Nuvoton for sequencing.  I tested what was in comment #12 for that bug.",
+      "parentUuid": "1a7cf611_ab5cf755",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
