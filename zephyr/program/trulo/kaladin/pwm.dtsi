@@ -24,20 +24,6 @@
  * for 324 Hz or lower so LEDs work in low power mode.
  */
 
-&pwm1 {
-	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm1_gpa1_default>;
-	pinctrl-names = "default";
-};
-
-&pwm2 {
-	status = "okay";
-	prescaler-cx = <PWM_PRESCALER_C4>;
-	pinctrl-0 = <&pwm2_gpa2_default>;
-	pinctrl-names = "default";
-};
-
 &pwm4 {
 	status = "okay";
 	prescaler-cx = <PWM_PRESCALER_C4>;

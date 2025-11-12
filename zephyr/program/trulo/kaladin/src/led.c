@@ -59,14 +59,6 @@ enum led_color {
 static const struct board_led_pwm_dt_channel pwr_led =
 	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(DT_NODELABEL(pwm_power_led));
 
-static const struct board_led_pwm_dt_channel battery_amber_led =
-	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(
-		DT_NODELABEL(pwm_battery_amber_led));
-
-static const struct board_led_pwm_dt_channel battery_white_led =
-	BOARD_LED_PWM_DT_CHANNEL_INITIALIZER(
-		DT_NODELABEL(pwm_battery_white_led));
-
 static void led_pwm_set_duty(const struct board_led_pwm_dt_channel *ch,
 			     int percent)
 {
@@ -98,16 +90,16 @@ static int led_set_color_battery_duty(enum led_color color, int duty)
 
 	switch (color) {
 	case LED_WHITE:
-		led_pwm_set_duty(&battery_white_led, duty);
-		led_pwm_set_duty(&battery_amber_led, 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_chg_led_l), 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ac_led_l), 1);
 		break;
 	case LED_AMBER:
-		led_pwm_set_duty(&battery_white_led, 0);
-		led_pwm_set_duty(&battery_amber_led, duty);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_chg_led_l), 1);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ac_led_l), 0);
 		break;
 	case LED_OFF:
-		led_pwm_set_duty(&battery_white_led, 0);
-		led_pwm_set_duty(&battery_amber_led, 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_chg_led_l), 0);
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ac_led_l), 0);
 		break;
 	default:
 		break;

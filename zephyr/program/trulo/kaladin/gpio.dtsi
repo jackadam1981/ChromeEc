@@ -163,6 +163,13 @@
 		gpio_usb_c1_hv_disable: usb_c1_hv_disable {
 			gpios = <&gpioa 6 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
+		gpio_chg_led_l: chg_led_l {
+			gpios = <&gpioa 1 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
+		};
+		gpio_ac_led_l: ac_led_l {
+			gpios = <&gpioa 2 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+		};
+
 	};
 	unused-pins {
 		compatible = "unused-gpios";
