@@ -30,7 +30,10 @@
  * PWRDN_SCRATCH22 - Preserve FIPS power-up test status on Cr50
  * PWRDN_SCRATCH23 - Preserve time since cold boot
  * PWRDN_SCRATCH24 - Preserve count of flash errors in low 12 bits
- * PWRDN_SCRATCH25 - Enable features based on the board id
+ * PWRDN_SCRATCH25 - Low 16 bits - board id features, when
+ *                   CONFIG_BOARD_ID_FEATURES is defined.
+ *                   High 16 bits - BOARD_CFG register.
+ *
  * PWRDN_SCRATCH26 - Unused
  * PWRDN_SCRATCH27 - Unused
  *
@@ -41,7 +44,7 @@
 
 enum permission_level {
 	PERMISSION_LOW = 0x00,
-	PERMISSION_MEDIUM = 0x33,    /* APPS run at medium */
+	PERMISSION_MEDIUM = 0x33, /* APPS run at medium */
 	PERMISSION_HIGH = 0x3C,
 	PERMISSION_HIGHEST = 0x55
 };
@@ -50,8 +53,8 @@ int runlevel_is_high(void);
 void init_runlevel(const enum permission_level desired_level);
 
 void init_jittery_clock(int highsec);
-void init_jittery_clock_locking_optional(int highsec,
-					 int enable, int lock_required);
+void init_jittery_clock_locking_optional(int highsec, int enable,
+					 int lock_required);
 void init_sof_clock(void);
 
-#endif	/* __CROS_EC_INIT_CHIP_H */
+#endif /* __CROS_EC_INIT_CHIP_H */

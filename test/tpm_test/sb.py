@@ -49,6 +49,7 @@ SB_SetHalVersion = 0x84
 SB_SetAdditionalAttestationInfo = 0x91
 SB_GetDiceChain = 0xA0
 SB_SetHalBootInfo = 0xA1
+SB_SetStrongboxState = 0xA2
 
 # Keymint tag types
 
@@ -365,6 +366,13 @@ def sb_GenerateEcdsaP256KeyPair(tpm):
     return key_blob, maced_key
 
 
+def vc_SetStrongboxState(tpm, state: int):
+    cmd = state.to_bytes(1, "little")
+    print("vc_SetStrongboxState: ", cmd.hex())
+    rsp = tpm.command(tpm.wrap_ext_command(subcmd.SET_STRONGBOX_STATE, cmd))
+    return tpm.unwrap_ext_response(subcmd.SET_STRONGBOX_STATE, rsp)
+
+
 def sb_SetHalBootInfo(
     tpm, os_version, os_patchlevel, vendor_patchlevel, boot_patchlevel
 ):
@@ -440,6 +448,9 @@ def sb_GenerateKey(tpm, key_params, attest_key):
 def sb_test(tpm):
     """Run TPM2 startup/shutdown in a loop tests"""
     tpm2_startup(tpm, TPM_SU_CLEAR)
+
+    vc_SetStrongboxState(tpm, 1)
+
     w_rsp = tpm.command(wrap_sb_command(SB_DeviceGetHardwareInfo, b""))
     rsp = tpm.unwrap_ext_response(SB_DeviceGetHardwareInfo, w_rsp)
     print("Get Hardware Info:", rsp.hex())
@@ -583,5 +594,15 @@ def sb_test(tpm):
     )
     rsp = tpm.unwrap_ext_response(SB_OperationFinish, w_rsp)
     print("r=", rsp.hex())
+
+    vc_SetStrongboxState(tpm, 0)
+    exception_detected = False
+    try:
+        vc_SetStrongboxState(tpm, 1)
+    except subcmd.TpmTestError as tpm_exc:
+        exception_detected = True
+
+    if not exception_detected:
+        print("Unexpected success in sb_SetStrongboxState")
 
     tpm2_shutdown(tpm, TPM_SU_STATE)
