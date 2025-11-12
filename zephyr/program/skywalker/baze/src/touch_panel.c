@@ -40,6 +40,22 @@ static void touch_enable_deferred(struct k_work *work)
 static K_WORK_DELAYABLE_DEFINE(touch_enable_deferred_data,
 			       touch_enable_deferred);
 
+static void backlight_disable_deferred(struct k_work *work)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_en_od), 0);
+}
+
+static K_WORK_DELAYABLE_DEFINE(backlight_disable_deferred_data,
+			       backlight_disable_deferred);
+
+static void backlight_enable_deferred(struct k_work *work)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_en_od), 1);
+}
+
+static K_WORK_DELAYABLE_DEFINE(backlight_enable_deferred_data,
+			       backlight_enable_deferred);
+
 /* Called on AP S3 -> S5 transition */
 void board_power_event_handler(struct ap_power_ev_callback *cb,
 			       struct ap_power_ev_data data)
@@ -47,10 +63,13 @@ void board_power_event_handler(struct ap_power_ev_callback *cb,
 	switch (data.event) {
 	case AP_POWER_SHUTDOWN:
 		/* Cancel touch_enable touch_disable k_work. */
-		k_work_cancel_delayable(&touch_enable_deferred_data);
-		k_work_cancel_delayable(&touch_disable_deferred_data);
-		gpio_pin_set_dt(
-			GPIO_DT_FROM_NODELABEL(gpio_ec_tchscr_report_en), 0);
+		if (touch_sequence_enable) {
+			k_work_cancel_delayable(&touch_enable_deferred_data);
+			k_work_cancel_delayable(&touch_disable_deferred_data);
+			gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(
+						gpio_ec_tchscr_report_en),
+					0);
+		}
 		break;
 	default:
 		return;
@@ -67,11 +86,17 @@ void soc_edp_bl_interrupt(const struct device *device,
 	LOG_INF("%s: %d", __func__, state);
 
 	if (state) {
-		k_work_schedule(&touch_enable_deferred_data,
-				K_MSEC(TOUCH_ENABLE_DELAY_MS));
+		k_work_schedule(&backlight_enable_deferred_data, K_MSEC(1));
+		if (touch_sequence_enable) {
+			k_work_schedule(&touch_enable_deferred_data,
+					K_MSEC(TOUCH_ENABLE_DELAY_MS));
+		}
 	} else {
-		k_work_schedule(&touch_disable_deferred_data,
-				K_MSEC(TOUCH_DISABLE_DELAY_MS));
+		if (touch_sequence_enable) {
+			k_work_schedule(&touch_disable_deferred_data,
+					K_MSEC(TOUCH_DISABLE_DELAY_MS));
+		}
+		k_work_schedule(&backlight_disable_deferred_data, K_MSEC(0));
 	}
 }
 
@@ -84,12 +109,15 @@ static void touch_lid_change(void)
 		LOG_INF("%s: disable touch", __func__);
 		k_work_schedule(&touch_disable_deferred_data,
 				K_MSEC(TOUCH_DISABLE_DELAY_MS));
+		k_work_schedule(&backlight_disable_deferred_data, K_MSEC(0));
 	} else {
 		if (gpio_pin_get_dt(
 			    GPIO_DT_FROM_NODELABEL(gpio_edp_bl_en_3v3)) &&
 		    !gpio_pin_get_dt(
 			    GPIO_DT_FROM_NODELABEL(gpio_ec_tchscr_report_en))) {
 			LOG_INF("%s: enable touch", __func__);
+			k_work_schedule(&backlight_enable_deferred_data,
+					K_MSEC(1));
 			k_work_schedule(&touch_enable_deferred_data,
 					K_MSEC(TOUCH_ENABLE_DELAY_MS));
 		}
@@ -108,20 +136,6 @@ static void touch_enable_init(void)
 	uint32_t val;
 
 	touch_sequence_enable = false;
-
-	rv = cros_cbi_get_fw_config(FW_PANEL_PWRSEQ_EC_CONTROL, &val);
-	if (rv != 0) {
-		LOG_ERR("Error retrieving CBI FW_CONFIG field %d",
-			FW_PANEL_PWRSEQ_EC_CONTROL);
-		return;
-	}
-
-	LOG_INF("%s: %sable", __func__,
-		(val == FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) ? "en" : "dis");
-
-	if (val != FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) {
-		return;
-	}
 
 	ap_power_ev_init_callback(&power_cb, board_power_event_handler,
 				  AP_POWER_SHUTDOWN | AP_POWER_HARD_OFF);
@@ -142,6 +156,20 @@ static void touch_enable_init(void)
 	irq_key = irq_lock();
 	soc_edp_bl_interrupt(tpgpio_gpio->port, &cb, BIT(tpgpio_gpio->pin));
 	irq_unlock(irq_key);
+
+	rv = cros_cbi_get_fw_config(FW_PANEL_PWRSEQ_EC_CONTROL, &val);
+	if (rv != 0) {
+		LOG_ERR("Error retrieving CBI FW_CONFIG field %d",
+			FW_PANEL_PWRSEQ_EC_CONTROL);
+		return;
+	}
+
+	LOG_INF("%s: %sable", __func__,
+		(val == FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) ? "en" : "dis");
+
+	if (val != FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) {
+		return;
+	}
 
 	touch_sequence_enable = true;
 
