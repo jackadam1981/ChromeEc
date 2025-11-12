@@ -70,6 +70,24 @@
       "parentUuid": "91c20e7f_fec5a378",
       "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2918f35_40c64214",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/power_signals.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-12T17:47:39Z",
+      "side": 0,
+      "message": "Hi Deepti, \n\nI\u0027m having a hard time tracking the submissions here.  I did a visual inspection of the proposed changes for both ITE and Nuvoton late last week, and it looked good.\n\nI also tried both images in b/455660428 #comment8 and they both behaved as expected for with \u0026 without rework \u0026 old new hardware.  I tried all combinations except ITE new firmware w/ no rework, as this risks damage.\n\nThe concern here is that https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7137079 the Nuvoton definition changed.  I\u0027ll comment on that bug, as I can\u0027t see change history on this submission (or am not finding this).\n\nNov 12 update - \n\nAlso - just so it\u0027s recorded in the bug; even after the CL is +1/+2, we need to wait for the h/w rework to happen before the CL is merged; we\u0027ll give users ~2 weeks or so to get their units reworked before releasing this CL after finalizing the rework.",
+      "parentUuid": "91c20e7f_fec5a378",
+      "revId": "9e63a1c6e65ba248bf387cff874a19203d722cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
