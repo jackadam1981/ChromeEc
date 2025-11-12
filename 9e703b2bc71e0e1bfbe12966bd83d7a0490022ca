@@ -213,6 +213,30 @@
       },
       "revId": "9e703b2bc71e0e1bfbe12966bd83d7a0490022ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "908003c7_121d4c45",
+        "filename": "zephyr/subsys/ap_pwrseq/x86_non_dsx_chipset_power_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-11-12T18:39:54Z",
+      "side": 1,
+      "message": "Yes, I forgot `S0ix` is a substate of `S0` so technically we are still in `S0`, its enter/exit wont be called.\n\nSince S0ix is not part of architecture I think that in addition to `S0` enty/exit, we could either:\n1. keep `disable_sleep` \u0026 `disable_sleep` call in this function or\n2. call these functions on s0ix entry/exit\n\nNumber 2 would require to add same entry exit to every chipset handler (mtl, ptl, adl), this makes 1 more feasible.\n\n@keithshort@chromium.org, any comments?",
+      "parentUuid": "c7ccd801_30fd0647",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 34
+      },
+      "revId": "9e703b2bc71e0e1bfbe12966bd83d7a0490022ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
