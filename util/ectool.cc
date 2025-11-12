@@ -43,6 +43,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <cmath>
 #include <getopt.h>
 #include <iomanip>
 #include <iostream>
@@ -1953,8 +1954,9 @@ fp_download_frame(struct SensorImage &sensor_image,
 	 */
 	size_t size;
 	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
-		size = (size_t)sensor_image.width * sensor_image.bpp / 8 *
-		       sensor_image.height;
+		size = (size_t)sensor_image.width *
+		       std::ceil(sensor_image.bpp / 8.0) * sensor_image.height;
+
 		index = FP_FRAME_INDEX_RAW_IMAGE;
 	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
 		size = sensor_image.frame_size;
