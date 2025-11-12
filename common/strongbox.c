@@ -13,6 +13,7 @@
 #include "dcrypto.h"
 #include "internal.h"
 #include "nvmem_vars.h"
+#include "board_id_features.h"
 
 #include "cbor_basic.h"
 #include "cbor_boot_param.h"
@@ -266,6 +267,7 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 {
 	const struct strongbox_command *cmd_p;
 	const struct strongbox_command *end_p;
+	uint32_t board_cfg;
 
 #ifdef DEBUG_EXTENSION
 	CPRINTS("%s(%d,%s) is=%d os=%d", __func__, p->code,
@@ -278,6 +280,14 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 	    || board_id_is_mismatched()
 #endif
 	)
+		return SBERR_HardwareNotYetAvailable;
+
+	board_cfg = get_board_cfg();
+
+	if (board_cfg & BOARD_CFG_SB_DISABLE_SET)
+		return SBERR_HardwareNotYetAvailable;
+
+	if (!(board_cfg & BOARD_CFG_SB_ENABLE_SET))
 		return SBERR_HardwareNotYetAvailable;
 
 	/* Find the command handler */
@@ -310,6 +320,39 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 	p->out_size = 0;
 	return SBERR_Unimplemented;
 }
+
+/**
+ * @brief Set HW Enforced Parameters
+ *
+ * Input:
+ * - [ 1 byte ] Non-zero value enables Strongbox, zero disables.
+ * No output produced.
+ * @return VENDOR_RC_SUCCESS on success, or an error code on failure.
+ */
+static enum vendor_cmd_rc vc_SetStrongboxState(enum vendor_cmd_cc code,
+					       void *buf, size_t input_size,
+					       size_t *response_size)
+{
+	uint8_t *b = (uint8_t *)buf;
+	uint32_t board_cfg = get_board_cfg();
+
+	*response_size = 0;
+	if (input_size != 1)
+		return VENDOR_RC_BOGUS_ARGS;
+
+	/* Don't allow to enable if was disabled previously. */
+	if (b[0]) {
+		if (board_cfg & BOARD_CFG_SB_DISABLE_SET)
+			return VENDOR_RC_NOT_ALLOWED;
+		store_board_id_features(board_cfg | BOARD_CFG_SB_ENABLE_SET);
+	} else {
+		/* Set SB_DISABLE, clear SB_ENABLE */
+		store_board_id_features((board_cfg & ~BOARD_CFG_SB_ENABLE_SET) |
+					BOARD_CFG_SB_DISABLE_SET);
+	}
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_STRONGBOX_STATE, vc_SetStrongboxState);
 
 /**
  * @brief Implements IKeyMintDevice::getHardwareInfo.
