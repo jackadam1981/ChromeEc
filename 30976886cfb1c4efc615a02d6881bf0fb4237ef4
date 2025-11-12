@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd098a5c_8cb41465",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-12T17:54:03Z",
+      "side": 1,
+      "message": "I see the move to the top of the file. I do not see the change in initialization.",
+      "parentUuid": "635db04b_c338305f",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d04b664_b4b64e99",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
@@ -49,6 +67,24 @@
       "writtenOn": "2025-11-11T21:36:27Z",
       "side": 1,
       "message": "You don\u0027t need to do this. Implicitly converting from int to bool, as on line 417 or 425, has the same semantics. In fact, that\u0027s all that `!!` is doing anyway.\n\nIf you want to fix this up, change the argument to `bool` in all of the implementations (in another CL).",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6b1a2a_95d8fb4b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-12T17:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d04b664_b4b64e99",
       "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
