@@ -27,6 +27,7 @@
 #endif
 
 #include "byteorder.h"
+#include "board_id_features.h"
 #include "console.h"
 #include "extension.h"
 #include "fips_rand.h"
@@ -81,9 +82,9 @@
 
 /****************************************************************************/
 
-#define CPRINTF(format, args...) cprintf(CC_TPM_REG, format, ## args)
-#define CPRINTSS(format, args...) cprints(CC_SYSTEM, format, ## args)
-#define CPRINTST(format, args...) cprints(CC_TPM, format, ## args)
+#define CPRINTF(format, args...)  cprintf(CC_TPM_REG, format, ##args)
+#define CPRINTSS(format, args...) cprints(CC_SYSTEM, format, ##args)
+#define CPRINTST(format, args...) cprints(CC_TPM, format, ##args)
 
 /* Register addresses for FIFO mode. */
 #define TPM_ACCESS	    (0)
@@ -96,7 +97,7 @@
 #define TPM_FW_VER	    (0xf90)
 #define TPM_BOARD_CFG	    (0xfe0)
 
-#define CR50_RID	0  /* No revision ID yet */
+#define CR50_RID 0 /* No revision ID yet */
 
 /* Flag indicating reset request.
  * Code below ignores repeated requests if no TPM operation was done.
@@ -115,9 +116,10 @@ enum tpm_states {
 };
 
 /* A preliminary interface capability register value, will be fine tuned. */
-#define IF_CAPABILITY_REG ((3 << 28) | /* TPM2.0 (interface 1.3) */   \
-			   (3 << 9) | /* up to 64 bytes transfers. */ \
-			   0x15) /* Mandatory set to one. */
+#define IF_CAPABILITY_REG                           \
+	((3 << 28) | /* TPM2.0 (interface 1.3) */   \
+	 (3 << 9) | /* up to 64 bytes transfers. */ \
+	 0x15) /* Mandatory set to one. */
 
 /* Volatile registers for FIFO mode */
 struct tpm_register_file {
@@ -131,11 +133,11 @@ struct tpm_register_file {
  * supported.
  */
 static struct {
-	enum tpm_states		  state;
-	uint32_t fifo_read_index;   /* for read commands */
-	uint32_t fifo_write_index;  /* for write commands */
-	struct tpm_register_file  regs;
-} tpm_  __attribute__((section(".bss.Tpm2_common")));
+	enum tpm_states state;
+	uint32_t fifo_read_index; /* for read commands */
+	uint32_t fifo_write_index; /* for write commands */
+	struct tpm_register_file regs;
+} tpm_ __attribute__((section(".bss.Tpm2_common")));
 
 /* Bit definitions for some TPM registers. */
 enum tpm_access_bits {
@@ -147,12 +149,12 @@ enum tpm_access_bits {
 
 enum tpm_sts_bits {
 	tpm_family_shift = 26,
-	tpm_family_mask = (BIT(2) - 1),  /* 2 bits wide */
+	tpm_family_mask = (BIT(2) - 1), /* 2 bits wide */
 	tpm_family_tpm2 = 1,
 	reset_establishment_bit = BIT(25),
 	command_cancel = BIT(24),
 	burst_count_shift = 8,
-	burst_count_mask = (BIT(16) - 1),  /* 16 bits wide */
+	burst_count_mask = (BIT(16) - 1), /* 16 bits wide */
 	sts_valid = BIT(7),
 	command_ready = BIT(6),
 	tpm_go = BIT(5),
@@ -170,7 +172,7 @@ static int tpm_fw_ver_index __attribute__((section(".bss.Tpm2_common")));
  * cr50 image components. The number is somewhat arbitrary, calculated for the
  * worst case scenario when all compontent trees are 'dirty'.
  */
-static uint8_t tpm_fw_ver[80]  __attribute__((section(".bss.Tpm2_common")));
+static uint8_t tpm_fw_ver[80] __attribute__((section(".bss.Tpm2_common")));
 
 /*
  * We need to be able to report firmware version to the host, both RO and RW
@@ -186,16 +188,14 @@ static void set_version_string(void)
 	active_rw = system_get_image_copy();
 
 	snprintf(tpm_fw_ver, sizeof(tpm_fw_ver), "%s:%d RO_%c:%s",
-		 system_get_chip_revision(),
-		 system_get_board_version(),
+		 system_get_chip_revision(), system_get_board_version(),
 		 (active_ro == SYSTEM_IMAGE_RO ? 'A' : 'B'),
 		 system_get_version(active_ro));
 	offset = strlen(tpm_fw_ver);
 	if (offset == sizeof(tpm_fw_ver) - 1)
 		return;
 
-	snprintf(tpm_fw_ver + offset,
-		 sizeof(tpm_fw_ver) - offset, " RW_%c:%s",
+	snprintf(tpm_fw_ver + offset, sizeof(tpm_fw_ver) - offset, " RW_%c:%s",
 		 (active_rw == SYSTEM_IMAGE_RW ? 'A' : 'B'),
 		 system_get_version(active_rw));
 }
@@ -250,8 +250,8 @@ static void copy_bytes(uint8_t *dest, uint32_t data_size, uint32_t value)
 static void access_reg_write(uint8_t data)
 {
 	if (!single_bit_set(data)) {
-		CPRINTF("%s: attempt to set access reg to %02x\n",
-			__func__, data);
+		CPRINTF("%s: attempt to set access reg to %02x\n", __func__,
+			data);
 		return;
 	}
 
@@ -275,7 +275,7 @@ static void access_reg_write(uint8_t data)
 			 * command in progress.
 			 */
 			CPRINTF("%s: locality release request in state %d\n",
-			__func__, tpm_.state);
+				__func__, tpm_.state);
 			break;
 		}
 		tpm_.regs.access &= ~active_locality;
@@ -285,7 +285,8 @@ static void access_reg_write(uint8_t data)
 
 	default:
 		CPRINTF("%s: attempt to set access reg to an unsupported value"
-			" of 0x%02x\n", __func__, data);
+			" of 0x%02x\n",
+			__func__, data);
 		break;
 	}
 }
@@ -357,8 +358,8 @@ static void sts_reg_write(const uint8_t *data, uint32_t data_size)
 
 	/* By definition only one bit can be set at a time. */
 	if (!single_bit_set(value)) {
-		CPRINTF("%s: attempt to set status reg to %02x\n",
-			__func__, value);
+		CPRINTF("%s: attempt to set status reg to %02x\n", __func__,
+			value);
 		return;
 	}
 
@@ -394,8 +395,8 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 		set_tpm_state(tpm_state_receiving_cmd);
 
 	if (tpm_.state != tpm_state_receiving_cmd) {
-		CPRINTF("%s: ignoring data in state %d\n",
-			__func__, tpm_.state);
+		CPRINTF("%s: ignoring data in state %d\n", __func__,
+			tpm_.state);
 		return;
 	}
 
@@ -408,8 +409,7 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 	}
 
 	/* Copy data into the local buffer. */
-	memcpy(tpm_.regs.data_fifo + tpm_.fifo_write_index,
-	       data, data_size);
+	memcpy(tpm_.regs.data_fifo + tpm_.fifo_write_index, data, data_size);
 
 	tpm_.fifo_write_index += data_size;
 
@@ -480,19 +480,15 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 		CPRINTF("\n");
 		return;
 	}
-
 }
 
 static void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 {
-	uint32_t still_in_fifo = tpm_.fifo_write_index -
-		tpm_.fifo_read_index;
+	uint32_t still_in_fifo = tpm_.fifo_write_index - tpm_.fifo_read_index;
 	uint32_t tpm_sts;
 
 	data_size = MIN(data_size, still_in_fifo);
-	memcpy(dest,
-	       tpm_.regs.data_fifo + tpm_.fifo_read_index,
-	       data_size);
+	memcpy(dest, tpm_.regs.data_fifo + tpm_.fifo_read_index, data_size);
 
 	tpm_.fifo_read_index += data_size;
 
@@ -507,8 +503,8 @@ static void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 		 * Tell the controller how much there is to read in the next
 		 * burst.
 		 */
-		tpm_sts |= MIN(tpm_.fifo_write_index -
-			       tpm_.fifo_read_index, 63) << burst_count_shift;
+		tpm_sts |= MIN(tpm_.fifo_write_index - tpm_.fifo_read_index, 63)
+			   << burst_count_shift;
 	}
 
 	tpm_.regs.sts = tpm_sts;
@@ -618,7 +614,7 @@ static void tpm_init(void)
 	 * and the next up to 62 bytes are the data to write to that register.
 	 */
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
-		(63 << burst_count_shift) | sts_valid;
+			(63 << burst_count_shift) | sts_valid;
 
 	/* Create version string to be read by host */
 	set_version_string();
@@ -674,8 +670,8 @@ size_t tpm_get_burst_size(void)
 	((code == CONFIG_EXTENSION_COMMAND) || (code & TPM_CC_VENDOR_BIT_MASK))
 
 static void call_extension_command(struct tpm_cmd_header *tpmh,
-				   size_t *total_size,
-				   uint32_t flags, uint32_t le_command_code)
+				   size_t *total_size, uint32_t flags,
+				   uint32_t le_command_code)
 {
 	size_t command_size = be32toh(tpmh->size);
 	uint32_t rc;
@@ -731,8 +727,8 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
  * Events used on the TPM task context. Make sure there is no collision with
  * event(s) defined in chip/g/dcrypto/dcrypto_runtime.c
  */
-#define TPM_EVENT_RESET TASK_EVENT_CUSTOM_BIT(1)
-#define TPM_EVENT_COMMIT TASK_EVENT_CUSTOM_BIT(2)
+#define TPM_EVENT_RESET		TASK_EVENT_CUSTOM_BIT(1)
+#define TPM_EVENT_COMMIT	TASK_EVENT_CUSTOM_BIT(2)
 #define TPM_EVENT_ALT_EXTENSION TASK_EVENT_CUSTOM_BIT(3)
 
 /*
@@ -819,8 +815,8 @@ enum ec_error_list tpm_reset_request(bool wait_until_done,
 {
 	uint32_t evt;
 
-	cprints(CC_TASK, "%s(%x, %x)", __func__,
-		wait_until_done, wipe_nvmem_first);
+	cprints(CC_TASK, "%s(%x, %x)", __func__, wait_until_done,
+		wipe_nvmem_first);
 
 	if (reset_in_progress) {
 		cprints(CC_TASK, "%s: already scheduled", __func__);
@@ -846,10 +842,9 @@ enum ec_error_list tpm_reset_request(bool wait_until_done,
 	if (!wait_until_done)
 		return EC_SUCCESS;
 
-	if (in_interrupt_context() ||
-	    task_get_current() == TASK_ID_TPM) {
+	if (in_interrupt_context() || task_get_current() == TASK_ID_TPM) {
 		task_waiting_for_reset = TASK_ID_INVALID;
-		return EC_ERROR_BUSY;	    /* Can't sleep. Clown'll eat me. */
+		return EC_ERROR_BUSY; /* Can't sleep. Clown'll eat me. */
 	}
 
 	evt = task_wait_event_mask(TPM_EVENT_RESET, 5 * SECOND);
@@ -935,6 +930,11 @@ static void tpm_reset_now(bool wipe_first, bool can_preserve_orderly)
 
 	/* Re-initialize our registers */
 	tpm_init();
+
+#ifdef CONFIG_STRONGBOX
+	/* Make it possible to enable/disable Strongbox again. */
+	reset_board_cfg(BOARD_CFG_SB_DISABLE_SET | BOARD_CFG_SB_ENABLE_SET);
+#endif
 
 	if (can_preserve_orderly && !wipe_first)
 		tpm_orderly_state_restore(orderly_state_copy);
@@ -1112,9 +1112,9 @@ void tpm_task(void *u)
 		{
 			if (board_id_is_mismatched()) {
 				static const char tpm_broken_response[] = {
-					0x80, 0x01,	/* TPM_ST_NO_SESSIONS */
-					0, 0, 0, 10,	/* Response size. */
-					0, 0, 9, 0x21	/* TPM_RC_LOCKOUT */
+					0x80, 0x01, /* TPM_ST_NO_SESSIONS */
+					0,    0,    0, 10, /* Response size. */
+					0,    0,    9, 0x21 /* TPM_RC_LOCKOUT */
 				};
 				CPRINTST("%s: Ignoring TPM commands", __func__);
 				response = (uint8_t *)tpmh;
@@ -1212,8 +1212,9 @@ void tpm_task(void *u)
 			set_tpm_state(tpm_state_completing_cmd);
 			tpm_sts = tpm_.regs.sts;
 			tpm_sts &= ~(burst_count_mask << burst_count_shift);
-			tpm_sts |= (MIN(response_size, 63) << burst_count_shift)
-				| data_avail;
+			tpm_sts |=
+				(MIN(response_size, 63) << burst_count_shift) |
+				data_avail;
 			tpm_.regs.sts = tpm_sts;
 		}
 	}
