@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aff66a5_3631c08c",
+        "filename": "zephyr/test/nissa/src/pujjoga.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-12T17:55:55Z",
+      "side": 1,
+      "message": "This is effectively not testing anything, because the call is still expected later. I think you\u0027ll need to sleep in the test to allow the deferred host event to run, then check that it happened as previously.",
+      "revId": "e1a4d1e7ecd7731e6f1e49614653698eee0e9e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
