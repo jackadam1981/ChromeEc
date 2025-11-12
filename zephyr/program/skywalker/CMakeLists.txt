@@ -8,7 +8,8 @@ find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 target_sources(app PRIVATE
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/i2c.c
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hibernate.c
-	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hooks.c
+	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/hooks.c)
+target_sources_ifndef(CONFIG_BOARD_SKYWALKER_BACKLIGHT app PRIVATE
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/backlight.c)
 target_sources_ifndef(CONFIG_BOARD_SKYWALKER_SINGLE_USB_TYPEC app PRIVATE
 	${PLATFORM_EC_PROGRAM_DIR}/skywalker/src/dp_alt_mode.c)

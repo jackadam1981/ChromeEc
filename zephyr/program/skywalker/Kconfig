@@ -77,6 +77,15 @@ config BOARD_SKYWALKER_PMIC_RESETB_IRQ
 	  Enable this to support the latest hardware design,
 	  which requires EC to forward PMIC_RESETB signal to EC_PWR_S3.
 
+config BOARD_SKYWALKER_BACKLIGHT
+	bool "The backlight status changed depends on power state"
+	default y
+	help
+	  Control the backlight status as the power state changed.
+	  Turn on it when the AP resume from S3 to S0. Turn off it
+	  when the AP suspend from S0 to S3. Disable this config to
+	  control backlight by project.
+
 module = SKYWALKER
 module-str = Skywalker board-specific code
 source "subsys/logging/Kconfig.template.log_config"
