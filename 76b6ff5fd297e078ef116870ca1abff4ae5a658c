@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce2e2ab_9af4159a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-12T17:59:34Z",
+      "side": 1,
+      "message": "You should be able to cover this with a simple test in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/ppc_syv682x.c. IMO, you shouldn\u0027t check whether the redundant write happens, because that\u0027s internal to the driver. Just check that the register value is correct before and after a write of the same value.",
+      "revId": "76b6ff5fd297e078ef116870ca1abff4ae5a658c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
