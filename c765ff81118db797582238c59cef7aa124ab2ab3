@@ -22,6 +22,30 @@
       },
       "revId": "c765ff81118db797582238c59cef7aa124ab2ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281f6785_77da726d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-12T14:55:22Z",
+      "side": 1,
+      "message": "Ignore that. This fixes a local build issue. LGTM",
+      "parentUuid": "9c683c61_bdd74721",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "c765ff81118db797582238c59cef7aa124ab2ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
