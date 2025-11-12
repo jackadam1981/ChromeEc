@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "756feed0_71db5759",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-12T09:15:34Z",
+      "side": 1,
+      "message": "Please add `Cq-Depend: chrome-internal:8732317`.",
+      "revId": "f4b7ac715fe3a9758a0732bf21ad8a7329aa2a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6d1dbbd_48c8d681",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 15
