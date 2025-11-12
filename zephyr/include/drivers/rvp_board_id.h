@@ -34,4 +34,6 @@ enum rvp_id_type {
  */
 int get_rvp_id_config(enum rvp_id_type id_type);
 
+typedef void (*rvp_board_id_handler)(void);
+
 #endif /* ZEPHYR_INCLUDE_DRIVERS_RVP_BOARD_ID_H_ */

@@ -16,7 +16,7 @@
 #define FAB_GPIOS_COUNT 2
 #define BOARD_GPIOS_COUNT 6
 
-LOG_MODULE_REGISTER(rvp_board_id, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(rvp_board_id, LOG_LEVEL_DBG);
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) <= 1,
 	     "Unsupported RVP Board ID instance");
@@ -44,6 +44,7 @@ struct rvp_board_id_config {
 	const struct gpio_dt_spec *bom_gpios_config;
 	const struct gpio_dt_spec *fab_gpios_config;
 	const struct gpio_dt_spec *board_gpios_config;
+	rvp_board_id_handler handler;
 };
 
 /*
@@ -122,7 +123,12 @@ static void pca95xx_deferred_init_cb(const struct device *dev,
 {
 	const struct device *gpio_port;
 
+	LOG_DBG("RVP_BOARD_ID: callback");
+
 	if (exit == AP_POWER_STATE_G3) {
+
+		LOG_DBG("RVP_BOARD_ID: G3 exit");
+
 		LOG_DBG("S5 callback triggered, when exiting G3");
 		for (int i = 0; i < BOM_GPIOS_COUNT; i++) {
 			gpio_port = rvp_config->bom_gpios_config[i].port;
@@ -145,12 +151,16 @@ static void pca95xx_deferred_init_cb(const struct device *dev,
 				device_init(gpio_port);
 			}
 		}
+		if (rvp_config->handler)
+			rvp_config->handler();
 	}
 }
 
 static int rvp_board_id_init(const struct device *dev)
 {
 	rvp_config = dev->config;
+
+	LOG_DBG("RVP_BOARD_ID: init");
 
 	if (rvp_config->defer_until_s5) {
 		static struct ap_pwrseq_state_callback ap_pwrseq_entry_cb;
@@ -173,6 +183,10 @@ static int rvp_board_id_init(const struct device *dev)
 }
 #endif /* CONFIG_AP_PWRSEQ_DRIVER */
 
+#if DT_NODE_HAS_PROP(DT_DRV_INST(0), handler)
+extern void DT_STRING_TOKEN(DT_DRV_INST(0), handler)(void);
+#endif
+
 static const struct rvp_board_id_config rvp_board_id_cfg = {
 	.defer_until_s5 = DT_NODE_HAS_PROP(DT_DRV_INST(0), defer_until_s5),
 #if DT_NODE_HAS_PROP(DT_DRV_INST(0), bom_gpios)
@@ -192,6 +206,12 @@ static const struct rvp_board_id_config rvp_board_id_cfg = {
 	.board_gpios_config =
 		(const struct gpio_dt_spec[]){
 			FOREACH_RVP_GPIOS_ELEM(0, board_gpios) },
+
+#if DT_NODE_HAS_PROP(DT_DRV_INST(0), handler)
+	.handler = DT_STRING_TOKEN(DT_DRV_INST(0), handler),
+#else
+	.handler = NULL,
+#endif
 };
 
 DEVICE_DT_INST_DEFINE(0, rvp_board_id_init, NULL, NULL, &rvp_board_id_cfg,
