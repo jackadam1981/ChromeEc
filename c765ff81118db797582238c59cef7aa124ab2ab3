@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c683c61_bdd74721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-12T14:54:10Z",
+      "side": 1,
+      "message": "I don\u0027t think the build environment has access to cr50-utils, because it\u0027s a private ebuild b/337231253. We can still land this.",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "c765ff81118db797582238c59cef7aa124ab2ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
