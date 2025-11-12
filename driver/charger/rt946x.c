@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Richtek rt946x, Mediatek mt6370 battery charger driver.
+ * Richtek rt946x, Mediatek mt6370 battery charger driver.rt946x_pd_disconnect
  */
 
 #include "battery.h"
