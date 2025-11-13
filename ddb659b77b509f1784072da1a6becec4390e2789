@@ -207,6 +207,24 @@
       "parentUuid": "62c0ab48_8646ec01",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1172d2_be02019b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-13T10:08:50Z",
+      "side": 1,
+      "message": "I updated the CL to allow entering bootloader only if the system is unlocked. I think it is the safest option for now to proceed with the development.",
+      "parentUuid": "deac4b5b_f6c4b48d",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
