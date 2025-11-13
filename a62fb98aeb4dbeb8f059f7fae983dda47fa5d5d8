@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be6b5ee9_17d75fab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-13T18:42:38Z",
+      "side": 1,
+      "message": "Please add:\n```\nLOW_COVERAGE_REASON\u003db:406324560, tests will be added in CL:6657821\n```",
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98c74113_0e00644f",
         "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
         "patchSetId": 18
