@@ -1,0 +1,13 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC
+
+config ET171_OTP_KEY
+	bool "Enable ET171 OTP Key functionality"
+	default n
+	help
+		Enable the OTP Key functionality
+
+endif # PLATFORM_EC
