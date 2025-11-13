@@ -31,6 +31,11 @@ LOG_MODULE_REGISTER(elan80elan80series_pal, LOG_LEVEL_INF);
 K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE);
 K_SEM_DEFINE(trx_buffer_lock, 1, 1);
 
+static int elan_image_read(uint16_t *short_raw);
+
+typedef int (*elan_image_read_t)(uint16_t *short_raw);
+elan_image_read_t elan_image_read_func = IMAGE_READER_IMPL;
+
 static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE];
 static uint8_t rx_buf[ELAN_SPI_RX_BUF_SIZE];
 BUILD_ASSERT(ELAN_SPI_TX_BUF_SIZE == 2);
@@ -232,7 +237,7 @@ int __unused elan_write_reg_vector(const uint8_t *reg_table, int length)
  * @param short_raw Pointer to the buffer to store the image data.
  * @return 0 on success, negative error code on failure.
  */
-static int elan_image_read(uint16_t *short_raw)
+static __maybe_unused int elan_image_read(uint16_t *short_raw)
 {
 	int ret = 0, i = 0, cnt_timer = 0, rx_index = 0;
 	uint8_t regdata[4] = { 0 };
@@ -298,9 +303,14 @@ int __unused elan_raw_capture(uint16_t *short_raw)
 		return ret;
 	}
 
-	ret = elan_image_read(short_raw);
+	if (!elan_image_read_func) {
+		LOG_ERR("%s: image read func not initialized", __func__);
+		return -ENODEV;
+	}
+
+	ret = elan_image_read_func(short_raw);
 	if (ret < 0)
-		LOG_ERR("%s: elan_image_read failed (%d)", __func__, ret);
+		LOG_ERR("%s: elan_image_read_func failed (%d)", __func__, ret);
 
 	return ret;
 }
