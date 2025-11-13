@@ -16,6 +16,24 @@
       "message": "is there any bug related with this vif? considering timeline, this would be initial \u0026 very close to final as well. isn\u0027t it?",
       "revId": "3aeded29c3a2eb87d068ac1e6dde3bf43e76bbbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705b8c4d_69887566",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2025-11-13T03:12:09Z",
+      "side": 1,
+      "message": "Hi Minho, Update the bug ID in commit message.  Also, I just checked with the internal team, and the PD compliance test passed with this CL.",
+      "parentUuid": "669bba99_c85995f1",
+      "revId": "3aeded29c3a2eb87d068ac1e6dde3bf43e76bbbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
