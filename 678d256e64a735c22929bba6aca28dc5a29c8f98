@@ -22,6 +22,30 @@
       },
       "revId": "678d256e64a735c22929bba6aca28dc5a29c8f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1d5128_0d2bbd1b",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-13T10:10:47Z",
+      "side": 1,
+      "message": "Fixed in PS4.",
+      "parentUuid": "d1f49ec7_e7772e17",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "678d256e64a735c22929bba6aca28dc5a29c8f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
