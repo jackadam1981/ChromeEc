@@ -31,6 +31,12 @@ LOG_MODULE_REGISTER(elan80elan80series_pal, LOG_LEVEL_INF);
 K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE);
 K_SEM_DEFINE(trx_buffer_lock, 1, 1);
 
+static void elan_use_flash_noop(uint32_t base_addr, uint32_t ft_info_addr);
+
+typedef void (*use_flash_addresses_t)(uint32_t base_addr,
+				      uint32_t ft_info_addr);
+use_flash_addresses_t use_flash_addresses_ptr = USE_FLASH_IMPL;
+
 static uint8_t tx_buf[ELAN_SPI_TX_BUF_SIZE];
 static uint8_t rx_buf[ELAN_SPI_RX_BUF_SIZE];
 BUILD_ASSERT(ELAN_SPI_TX_BUF_SIZE == 2);
@@ -467,4 +473,15 @@ void __unused elan_sensor_set_rst(bool state)
 	if (ret < 0) {
 		LOG_ERR("Failed to set FP reset pin, status: %d", ret);
 	}
+}
+
+void __unused elan_use_flash_addresses()
+{
+	use_flash_addresses_ptr(FLASH_BASE_ADDR, FT_INFO_ADDR);
+}
+
+static __unused void elan_use_flash_noop(uint32_t base_addr,
+					 uint32_t ft_info_addr)
+{
+	/* ELAN80SG does not use flash info */
 }
