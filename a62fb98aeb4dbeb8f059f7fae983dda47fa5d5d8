@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c74113_0e00644f",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T18:06:41Z",
+      "side": 1,
+      "message": "add a space after this line",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207b38e9_d8ef6ac0",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T18:06:41Z",
+      "side": 1,
+      "message": "I believe this is redundant. this config does not exist unless `FINGERPRINT_SENSOR_ELAN80SERIES` is enabled.",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5271f45_7658ddeb",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T18:06:41Z",
+      "side": 1,
+      "message": "this is redundant?? why do you have to say `if FINGERPRINT_SENSOR_ELAN80SERIES`? This config does not exist if `FINGERPRINT_SENSOR_ELAN80SERIES` is not enabled. Does it need a default if there is no fingerprint sensor. I believe we can just delete `\tdefault 36864 if FINGERPRINT_SENSOR_ELAN80SERIES`",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
