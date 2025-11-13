@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4dd9e2_2dfe975d",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T22:02:27Z",
+      "side": 1,
+      "message": "@wenbin.bao@egistec.corp-partner.google.com\n\nIs this a correct include? It was complaining that this does not exist when I tried to build sanok. Shall I add something in the `CMakeLists.txt` file",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 62
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707e4310_093e9d51",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T22:02:27Z",
+      "side": 1,
+      "message": "@wenbin.bao@egistec.corp-partner.google.com\n\nI believe we need add comments referencing the datasheet or hardware specification where these values originate. This helps future maintainers understand their context.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2b9080_9921bd02",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T22:02:27Z",
+      "side": 1,
+      "message": "@wenbin.bao@egistec.corp-partner.google.com\n@index 2 or 3?\n\ncan we make the comments clearer",
+      "range": {
+        "startLine": 32,
+        "startChar": 37,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ce878e_b04ce2a3",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T22:02:27Z",
+      "side": 1,
+      "message": "@wenbin.bao@egistec.corp-partner.google.com\n\nWhat other error codes does the `HAL_OTP_Read32` function return? We can try to better translate them",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 55
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18bbb56_71740ebb",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T22:02:27Z",
+      "side": 1,
+      "message": "@wenbin.bao@egistec.corp-partner.google.com\n\nWhat is the function that you use to provision the OTP key at the factory? We use [trng_rand_bytes](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/otp_key.c;l\u003d98?q\u003d%20platform%2Fec%20OTP_KEY_SIZE_BYTES#:~:text\u003d97-,98,-99) for other vendors. We might need to align to guarantee quality.",
+      "range": {
+        "startLine": 61,
+        "startChar": 19,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
