@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f029a97b_4c4ba8c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-13T18:12:47Z",
+      "side": 1,
+      "message": "The build failure is from a duplicate I2C node in the device tree, which you did not touch. Try syncing to the latest EC and Zephyr (and everything else, but those are the ones that matter), and dry running again.",
+      "revId": "f1d2b78a95003b3579fabe2cc558e77a29043b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

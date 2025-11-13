@@ -34,6 +34,24 @@
       "parentUuid": "1aff66a5_3631c08c",
       "revId": "e1a4d1e7ecd7731e6f1e49614653698eee0e9e1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e70d63_d8297c07",
+        "filename": "zephyr/test/nissa/src/pujjoga.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-13T18:12:47Z",
+      "side": 1,
+      "message": "This deserves a comment to explain why you\u0027re doing this. Also, you should probably have a named constant for the delay time.",
+      "parentUuid": "c284b39f_1f661440",
+      "revId": "e1a4d1e7ecd7731e6f1e49614653698eee0e9e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
