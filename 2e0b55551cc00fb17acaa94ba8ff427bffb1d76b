@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d444c5ae_a98d5755",
+        "filename": "util/ectool.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1958,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-13T00:31:40Z",
+      "side": 1,
+      "message": "Is the `DIV_ROUND_UP` macro from `util.h` available here? If so, let\u0027s use that.",
+      "range": {
+        "startLine": 1958,
+        "startChar": 9,
+        "endLine": 1958,
+        "endChar": 43
+      },
+      "revId": "2e0b55551cc00fb17acaa94ba8ff427bffb1d76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
