@@ -23,6 +23,11 @@
 #define MID 0x01 /* Elan doesn't track model, so this has no meaning. */
 #define VERSION 0x100B /* Elan internal firmware version */
 
+/* Dummy addresses for ELAN80SG to support noop flash function */
+#define FLASH_BASE_ADDR 0x10086000
+#define FT_INFO_OFFSET 0x5000
+#define FT_INFO_ADDR (FLASH_BASE_ADDR + FT_INFO_OFFSET)
+
 /**
  * Elan sensor operation is controlled by sending commands and receiving
  * through the SPI interface. There are several SPI command codes for
@@ -95,5 +100,13 @@
  *  - elan_image_read: Reads the image in a standard block.
  */
 #define IMAGE_READER_IMPL elan_image_read
+
+/*
+ * Selects the function used to handle flash addresses for the sensor.
+ * Possible values:
+ *  - use_flash_addresses: Uses FLASH_BASE_ADDR and FT_INFO_ADDR.
+ *  - elan_use_flash_noop: Does nothing (used by sensors that do not use flash).
+ */
+#define USE_FLASH_IMPL elan_use_flash_noop
 
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_CONFIG_SENSOR_H_ */

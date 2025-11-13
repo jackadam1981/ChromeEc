@@ -119,6 +119,7 @@ static int elan80series_init(const struct device *dev)
 	if (IS_ENABLED(CONFIG_HAVE_ELAN80SERIES_PRIVATE_DRIVER)) {
 		elan_execute_reset();
 		elan_alg_param_setting();
+		elan_use_flash_addresses();
 	}
 	elan_set_hv_chip(true);
 
