@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1ee477_f55e59c2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T18:16:52Z",
+      "side": 1,
+      "message": "can we make this in the config file similar to what we have done for image capture function?",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 1
+      },
+      "revId": "618fbdb763c9138b725da0a5d3087f963cbc8c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
