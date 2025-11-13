@@ -74,7 +74,7 @@ properties:
 
   s5-inactivity-timeout:
     type: int
-    default: 10
+    default: 120
     description: |
       Timeout in seconds for dropping back from S5 to G3.
 
