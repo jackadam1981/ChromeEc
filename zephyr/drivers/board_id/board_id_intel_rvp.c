@@ -16,7 +16,7 @@
 #define FAB_GPIOS_COUNT 2
 #define BOARD_GPIOS_COUNT 6
 
-LOG_MODULE_REGISTER(rvp_board_id, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(rvp_board_id, LOG_LEVEL_DBG);
 
 BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) <= 1,
 	     "Unsupported RVP Board ID instance");
@@ -124,6 +124,8 @@ static void pca95xx_deferred_init_cb(const struct device *dev,
 {
 	const struct device *gpio_port;
 
+	LOG_DBG("RVP_BOARD_ID: callback");
+
 	if (entry > AP_POWER_STATE_S5) {
 		LOG_DBG("S5 callback triggered, going to higher state");
 		for (int i = 0; i < BOM_GPIOS_COUNT; i++) {
@@ -155,6 +157,8 @@ static void pca95xx_deferred_init_cb(const struct device *dev,
 static int rvp_board_id_init(const struct device *dev)
 {
 	rvp_config = dev->config;
+
+	LOG_DBG("RVP_BOARD_ID: init");
 
 	if (rvp_config->defer_until_s5) {
 		static struct ap_pwrseq_state_callback ap_pwrseq_cb;
