@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "086bc2c7_cb492146",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T14:31:49Z",
+      "side": 1,
+      "message": "Actually I think we just want strongbox enable/disable to be a variable that only survives until the TPM is reset or we need to figure out when to clear it.",
+      "revId": "a4d140a089c75fac34c1b9611d726a16b65fc527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a41bcf1_2b2943f6",
         "filename": "common/strongbox.c",
         "patchSetId": 3
