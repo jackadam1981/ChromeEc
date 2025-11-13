@@ -225,6 +225,24 @@
       "parentUuid": "deac4b5b_f6c4b48d",
       "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9ba21e_b27f018a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-13T12:00:51Z",
+      "side": 1,
+      "message": "My 2 cents:\n\n\u003e It would allow us to erase entropy before jumping to bootloader and there shouldn\u0027t be any FP related content / secrets in RAM.\n\nYeah, if the bootloader is able to read flash, then we will need to reset entropy before jumping to bootloader, so it won\u0027t make decrypting templates easier for attacker. There is also another thing: **are we sure that the entropy we are using currently was not read previously by the bootloader?** The only way we can know it is to reset entropy after we go back from \"dev\" mode to \"secure\" mode.\n\nI think, solving this issue is outside of the scope of this CL and using `system_is_locked()` here is the best thing we can do.",
+      "parentUuid": "6f1172d2_be02019b",
+      "revId": "ddb659b77b509f1784072da1a6becec4390e2789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
