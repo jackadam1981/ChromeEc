@@ -89,4 +89,11 @@
 /* Re-calibration timer */
 #define REK_TIMES 3
 
+/*
+ * Selects the function used to read the image data from the sensor.
+ * Possible values:
+ *  - elan_image_read: Reads the image in a standard block.
+ */
+#define IMAGE_READER_IMPL elan_image_read
+
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_CONFIG_SENSOR_H_ */
