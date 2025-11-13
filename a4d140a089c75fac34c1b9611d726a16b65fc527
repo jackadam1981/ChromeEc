@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52eda528_7281260d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T20:52:53Z",
+      "side": 1,
+      "message": "I added reset in TPM reset, but not sure if I need to reset only \"disable bit\" or both.",
+      "parentUuid": "ae76e70c_43e182c4",
+      "revId": "a4d140a089c75fac34c1b9611d726a16b65fc527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a41bcf1_2b2943f6",
         "filename": "common/strongbox.c",
         "patchSetId": 3
@@ -66,6 +84,30 @@
       "writtenOn": "2025-11-13T14:28:33Z",
       "side": 1,
       "message": "Move this to 283",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 41
+      },
+      "revId": "a4d140a089c75fac34c1b9611d726a16b65fc527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95c3610_d11532f3",
+        "filename": "common/strongbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T20:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a41bcf1_2b2943f6",
       "range": {
         "startLine": 289,
         "startChar": 0,
@@ -89,6 +131,24 @@
       "writtenOn": "2025-11-13T14:26:34Z",
       "side": 1,
       "message": "Can you print the get_board_cfg value in command_board_properties in board.c",
+      "revId": "a4d140a089c75fac34c1b9611d726a16b65fc527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a0ac74_0a43170b",
+        "filename": "include/board_id_features.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T20:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0fdf738_820b5f0c",
       "revId": "a4d140a089c75fac34c1b9611d726a16b65fc527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
