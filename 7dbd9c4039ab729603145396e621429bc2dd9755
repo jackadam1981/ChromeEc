@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc50e32_b4fc9ade",
+        "filename": "common/strongbox.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T21:14:58Z",
+      "side": 1,
+      "message": "You need to clear the BOARD_CFG_SB_ENABLE_SET here when you set BOARD_CFG_SB_DISABLE_SET. It\u0027s possible ENABLE was set earlier.",
+      "revId": "7dbd9c4039ab729603145396e621429bc2dd9755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
