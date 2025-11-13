@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd40a30_3c67ccec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-13T10:08:35Z",
+      "side": 1,
+      "message": "Fixed in PS5",
+      "parentUuid": "36b4f109_50cbd2b8",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "326cb85f52ee488fd1eff41ca72480bf80be3f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "288447be_5cea7a31",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-07T16:24:38Z",
       "side": 1,
       "message": "for all other checks in the file, we are using `assert !\u003d NULL`. For consistency, we either make them all assert or all return error. I will keep this to a separate CL. For now, just keep the assert. Maybe follow up with a separate CL if you prefer to change all the checks from assert",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 23
+      },
+      "revId": "326cb85f52ee488fd1eff41ca72480bf80be3f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ca4038_bcb09f07",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-13T10:08:35Z",
+      "side": 1,
+      "message": "Fixed in PS5",
+      "parentUuid": "288447be_5cea7a31",
       "range": {
         "startLine": 282,
         "startChar": 1,
