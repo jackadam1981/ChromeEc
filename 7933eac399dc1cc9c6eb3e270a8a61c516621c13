@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdbfcde0_2015b20f",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-13T22:19:04Z",
+      "side": 1,
+      "message": "This was fixed with these 2 changes:\n\n```\ndiff --cc zephyr/shim/chip/egis/CMakeLists.txt\nindex 9dc27269a9f,8f03f27f539..00000000000\n--- a/zephyr/shim/chip/egis/CMakeLists.txt\n+++ b/zephyr/shim/chip/egis/CMakeLists.txt\n@@@ -4,6 -4,4 +4,12 @@@\n  \n  cros_ec_library_include_directories(include)\n  \n +zephyr_library_sources(clock.c)\n +zephyr_library_sources(mpu.c)\n +zephyr_library_sources_ifdef(CONFIG_CROS_EC  system.c)\n+ zephyr_library_sources_ifdef(CONFIG_EGIS_OTP_KEY otp_key.c)\n++\n++if(CONFIG_EGIS_OTP_KEY)\n++  zephyr_library_link_libraries(ET171HAL)\n++endif()\n++\n```\n\nand \n\n```\ndiff --git a/zephyr/shim/chip/egis/otp_key.c b/zephyr/shim/chip/egis/otp_key.c\nindex 6d215403fdf..cfd30b8eb84 100644\n--- a/zephyr/shim/chip/egis/otp_key.c\n+++ b/zephyr/shim/chip/egis/otp_key.c\n@@ -17,7 +17,7 @@\n #include \"trng.h\"\n #include \"util.h\"\n \n-#include \u003czephyr/hal_egis/et171/inc/et171_hal/et171_hal_otp.h\u003e\n+#include \u003cet171_hal/et171_hal_otp.h\u003e\n```\n\nDoes this make sense to you? I can successfully compile now with `CONFIG_EGIS_OTP_KEY\u003dy`\n\n```\ndiff --git a/zephyr/program/fpmcu/sanok/prj.conf b/zephyr/program/fpmcu/sanok/prj.conf\nindex eccf2769eb9..c1267ccdba8 100644\n--- a/zephyr/program/fpmcu/sanok/prj.conf\n+++ b/zephyr/program/fpmcu/sanok/prj.conf\n@@ -99,3 +99,5 @@ CONFIG_FINGERPRINT_SENSOR_EGIS630_HEAP_SIZE\u003d112640\n CONFIG_KERNEL_SHELL\u003dn\n \n CONFIG_FP_SENSOR_ALLOW_EXTERNAL_CALI_DATA\u003dy\n+\n+CONFIG_EGIS_OTP_KEY\u003dy\n```",
+      "parentUuid": "8f4dd9e2_2dfe975d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 62
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "707e4310_093e9d51",
         "filename": "zephyr/shim/chip/egis/otp_key.c",
         "patchSetId": 9
