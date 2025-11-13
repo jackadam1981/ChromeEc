@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e0b1b4_fd0b5f76",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4247300
+      },
+      "writtenOn": "2025-11-13T07:56:05Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"deactive\" is a possible misspelling of \"deactivate\".\n\nTo bypass Spellchecker, a...\n\n\"deactive\" is a possible misspelling of \"deactivate\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "c6a69f272f321969956a8679af9ebecb11179070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c6fa53_7b4b4b8a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_private.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 4247300
+      },
+      "writtenOn": "2025-11-13T07:56:05Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"excution\" is a possible misspelling of \"execution\".\n\nTo bypass Spellchecker, ad...\n\n\"excution\" is a possible misspelling of \"execution\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 151,
+        "endChar": 69
+      },
+      "revId": "c6a69f272f321969956a8679af9ebecb11179070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38bc0e12_b4aedc3b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_private.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 4247300
+      },
+      "writtenOn": "2025-11-13T07:56:05Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"excution\" is a possible misspelling of \"execution\".\n\nTo bypass Spellchecker, ad...\n\n\"excution\" is a possible misspelling of \"execution\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "c6a69f272f321969956a8679af9ebecb11179070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1a3efa_47fac09c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_private.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 4247300
+      },
+      "writtenOn": "2025-11-13T07:56:05Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"persent\" is a possible misspelling of \"present\", \"percent\", or \"persistent\".\n\nT...\n\n\"persent\" is a possible misspelling of \"present\", \"percent\", or \"persistent\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 168,
+        "startChar": 40,
+        "endLine": 168,
+        "endChar": 47
+      },
+      "revId": "c6a69f272f321969956a8679af9ebecb11179070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
