@@ -16,6 +16,29 @@
       "message": "b",
       "revId": "18556733ad1481efc8806f111a076a79e54c027e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4b6cee_5a4c0e39",
+        "filename": "common/charge_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-13T22:26:58Z",
+      "side": 1,
+      "message": "I think this can be refactored to use IS_ENABLED\n\n\n```suggestion\n\t\tif (IS_ENABLED(CONFIG_PWR_STATE_DISCHARGE_FULL) \u0026\u0026\n\t\t    battery_near_full()) {\n\t\t\treturn LED_PWRS_DISCHARGE_FULL;\n\t\t} else {\n```",
+      "range": {
+        "startLine": 1786,
+        "startChar": 0,
+        "endLine": 1791,
+        "endChar": 0
+      },
+      "revId": "18556733ad1481efc8806f111a076a79e54c027e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
