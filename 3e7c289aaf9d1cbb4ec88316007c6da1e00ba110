@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad70903e_5352ef6c",
+        "filename": "zephyr/drivers/cros_system/cros_system_et171.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3698372
+      },
+      "writtenOn": "2025-11-13T02:22:42Z",
+      "side": 1,
+      "message": "Well, it looks like you would use \"SYSTEM_RESET\"only,\nso that won\u0027t be an issue.",
+      "parentUuid": "8fce05eb_bdfdcf98",
+      "revId": "3e7c289aaf9d1cbb4ec88316007c6da1e00ba110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e398144_ebad8ea4",
