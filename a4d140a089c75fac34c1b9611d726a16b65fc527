@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae76e70c_43e182c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T14:35:30Z",
+      "side": 1,
+      "message": "Or keep storing it in PWRDN SCRATCH and let something update it if it hasn\u0027t been updated since the last tpm reset. This way enable will survive the S3 TPM_RST_L pulses.",
+      "parentUuid": "086bc2c7_cb492146",
+      "revId": "a4d140a089c75fac34c1b9611d726a16b65fc527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a41bcf1_2b2943f6",
         "filename": "common/strongbox.c",
         "patchSetId": 3
