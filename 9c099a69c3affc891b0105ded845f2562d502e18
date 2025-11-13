@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9717634_db99f2ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-13T18:23:30Z",
+      "side": 1,
+      "message": "The config CL at the bottom of this stack won\u0027t merge until the upstream Zephyr PR merges, and that hasn\u0027t happened yet. If you want to merge, go ahead and rebase these CLs below it.",
+      "revId": "9c099a69c3affc891b0105ded845f2562d502e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849e7b7c_34bf3bd0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-13T18:23:30Z",
+      "side": 1,
+      "message": "IMO, `alert_value` should be a `uint16_t`. However, that\u0027s an existing issue with this codebase, and to fully fix it, I think you\u0027d have to go the whole way down to the I2C drivers. Best to leave it for a future CL.",
+      "revId": "9c099a69c3affc891b0105ded845f2562d502e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
