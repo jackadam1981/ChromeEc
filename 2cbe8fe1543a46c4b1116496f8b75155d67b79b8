@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37735d1e_29eb9fb5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 5982,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-13T18:54:58Z",
+      "side": 1,
+      "message": "Should we use \"JUMP\" instead of \"ENTER\" everywhere? That might make it clearer that it\u0027s a jump instead of a reboot into the bootloader.",
+      "range": {
+        "startLine": 5982,
+        "startChar": 8,
+        "endLine": 5982,
+        "endChar": 31
+      },
+      "revId": "2cbe8fe1543a46c4b1116496f8b75155d67b79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
