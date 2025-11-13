@@ -23,6 +23,11 @@
 #define MID 0x01 /* Elan doesn't track model, so this has no meaning. */
 #define VERSION 0x100B /* Elan internal firmware version */
 
+/* Dummy addresses for ELAN80SG to support noop flash function */
+#define FLASH_BASE_ADDR 0x10086000
+#define FT_INFO_OFFSET 0x5000
+#define FT_INFO_ADDR (FLASH_BASE_ADDR + FT_INFO_OFFSET)
+
 /**
  * Elan sensor operation is controlled by sending commands and receiving
  * through the SPI interface. There are several SPI command codes for

@@ -42,6 +42,13 @@ convert_fp_capture_type_to_elan_capture_type(enum fingerprint_capture_type mode)
 	}
 }
 
+static void elan80series_use_flash_addresses()
+{
+#ifdef CONFIG_HAVE_ELAN80SERIES_FLASH_SETTING
+	use_flash_addresses(FLASH_BASE_ADDR, FT_INFO_ADDR);
+#endif
+}
+
 static int elan80series_get_hwid(const struct device *dev, uint16_t *id)
 {
 	int rc;
@@ -120,6 +127,7 @@ static int elan80series_init(const struct device *dev)
 	if (IS_ENABLED(CONFIG_HAVE_ELAN80SERIES_PRIVATE_DRIVER)) {
 		elan_execute_reset();
 		elan_alg_param_setting();
+		elan80series_use_flash_addresses();
 	}
 	elan_set_hv_chip(true);
 
