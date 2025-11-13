@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d0b97e_203b0d6d",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-13T00:15:53Z",
+      "side": 1,
+      "message": "I guess stop blinking when the blink_cnt is greater than 30 * 1000 should work.",
+      "range": {
+        "startLine": 288,
+        "startChar": 11,
+        "endLine": 288,
+        "endChar": 20
+      },
+      "revId": "98b37db2232271fd389d0b04e1e155c2ba2d0ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
