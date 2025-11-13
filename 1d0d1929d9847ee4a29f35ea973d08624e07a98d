@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4acffd59_5be36714",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4247300
+      },
+      "writtenOn": "2025-11-13T07:40:29Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "f07d6577_31d178e4",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89025a06_bd471083",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
         "patchSetId": 9
