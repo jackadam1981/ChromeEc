@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2eb8f8_fc20d3b7",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T00:59:43Z",
+      "side": 1,
+      "message": "Do you think we need to rename this? This feature isn\u0027t tied to the board ID.\n\nWe could make the top 16 bits of PWRDN_SCRATCH25 pwrdn_board_cfg or something.",
+      "range": {
+        "startLine": 295,
+        "startChar": 7,
+        "endLine": 295,
+        "endChar": 28
+      },
+      "revId": "6f9bde3ea14c3705ab1acd10f5e98900bc987fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb41d446_21838b53",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T00:59:43Z",
+      "side": 1,
+      "message": "Can you make this a standard vendor commands? Ti50 doesn\u0027t have strongbox support. I want to add a Ti50 command, so we can start sending it from cros on all devices.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 70
+      },
+      "revId": "6f9bde3ea14c3705ab1acd10f5e98900bc987fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
