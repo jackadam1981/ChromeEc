@@ -15,6 +15,11 @@ config HAVE_ELAN80SERIES_PRIVATE_DRIVER
     help
       If enabled, it indicates that the elan 80 series private driver is present.
 
+config HAVE_ELAN80SERIES_FLASH_SETTING
+    bool
+    help
+	If enabled, access the ELAN fingerprint setting data using the flash addresses.
+
 config FINGERPRINT_SENSOR_ELAN80SERIES_PAL
     bool
 	default y
