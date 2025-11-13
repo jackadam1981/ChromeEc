@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2174b62_977d011e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T21:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e8dd81_8fa62aa1",
+      "revId": "f85338041adaace7f0e31bcccbb26504185b72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e7f10aa_8cdd9e62",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-13T21:33:41Z",
       "side": 1,
       "message": "Can you use what you had in patcheset 5, but just add a reset_board_cfg(BOARD_CFG_SB_ENABLE_SET) before adding the add_board_cfg call?",
+      "revId": "f85338041adaace7f0e31bcccbb26504185b72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35404b7_7d5be968",
+        "filename": "common/strongbox.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T21:43:35Z",
+      "side": 1,
+      "message": "reset_board_cfg/add_board_cfg has a side effect - it is reading value again from register (get_board_cfg()) - extra bytes of code which are not needed.",
+      "parentUuid": "2e7f10aa_8cdd9e62",
       "revId": "f85338041adaace7f0e31bcccbb26504185b72d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
