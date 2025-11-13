@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bcbdb6_b3e43f6e",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T14:26:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9dfcd9b3_4f1f8dd1",
+      "range": {
+        "startLine": 295,
+        "startChar": 7,
+        "endLine": 295,
+        "endChar": 28
+      },
+      "revId": "6f9bde3ea14c3705ab1acd10f5e98900bc987fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb41d446_21838b53",
