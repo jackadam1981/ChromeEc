@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e8dd81_8fa62aa1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T21:33:41Z",
+      "side": 1,
+      "message": "nit: add 0x before the hex value for consistency with the other prints",
+      "revId": "f85338041adaace7f0e31bcccbb26504185b72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7f10aa_8cdd9e62",
+        "filename": "common/strongbox.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-13T21:33:41Z",
+      "side": 1,
+      "message": "Can you use what you had in patcheset 5, but just add a reset_board_cfg(BOARD_CFG_SB_ENABLE_SET) before adding the add_board_cfg call?",
+      "revId": "f85338041adaace7f0e31bcccbb26504185b72d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
