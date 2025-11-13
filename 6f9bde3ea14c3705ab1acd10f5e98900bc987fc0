@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dfcd9b3_4f1f8dd1",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T02:19:17Z",
+      "side": 1,
+      "message": "I added documentation about this, changed to top 16 bits, but still we need to handle potentially shared nature of this value and update shadow copy if needed. However, I\u0027m not sure if there is value in having a shadow value at all - reading register is no different. This can simplify Board Id features a little bit.",
+      "parentUuid": "cf2eb8f8_fc20d3b7",
+      "range": {
+        "startLine": 295,
+        "startChar": 7,
+        "endLine": 295,
+        "endChar": 28
+      },
+      "revId": "6f9bde3ea14c3705ab1acd10f5e98900bc987fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb41d446_21838b53",
         "filename": "common/strongbox.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-13T00:59:43Z",
       "side": 1,
       "message": "Can you make this a standard vendor commands? Ti50 doesn\u0027t have strongbox support. I want to add a Ti50 command, so we can start sending it from cros on all devices.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 70
+      },
+      "revId": "6f9bde3ea14c3705ab1acd10f5e98900bc987fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315bcc48_3b57a049",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-13T02:19:17Z",
+      "side": 1,
+      "message": "We actually have Ti50\u0027s Strongbox (lib/strongbox). But overall it is more complicated on the Ti50 side due to Ti50 and Ti50A builds and lack of clarity if we can have a combined image or will need to have a split.\n\nSo, let it be a vendor command.",
+      "parentUuid": "eb41d446_21838b53",
       "range": {
         "startLine": 324,
         "startChar": 0,
