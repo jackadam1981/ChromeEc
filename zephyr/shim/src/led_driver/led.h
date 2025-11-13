@@ -115,6 +115,12 @@ struct led_pins_node_t {
 	 */
 	enum ec_led_id led_id;
 
+	/**
+	* Set LED color using pattern node.
+	*
+	*/
+	void (*led_set_color_with_pattern)(void*);
+
 	/*
 	 * Pointer to driver-specific pin configuration data used to
 	 * enable a particular color. The underlying driver is responsible
@@ -153,14 +159,6 @@ struct led_pattern_node_t {
  */
 void led_set_color(enum led_color color, enum ec_led_id led_id,
 		   uint8_t brightness);
-
-/**
- * Set LED color using pattern node
- *
- * @param *pins_node	Pins node to enable the color corresponding
- *			to the node.
- */
-void led_set_color_with_pattern(const struct led_pattern_node_t *led);
 
 /**
  * For pwms only.

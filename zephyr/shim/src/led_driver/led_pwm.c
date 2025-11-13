@@ -56,7 +56,9 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, DT_FOREACH_CHILD, GEN_PINS_ARRAY)
 	{ .led_color = GET_PROP(node_id, led_color),      \
 	  .led_id = GET_PROP(DT_PARENT(node_id), led_id), \
 	  .pins = PINS_ARRAY(node_id),                    \
-	  .pins_count = DT_PROP_LEN(node_id, led_values) }
+	  .pins_count = DT_PROP_LEN(node_id, led_values), \
+	  .led_set_color_with_pattern = pwm_set_color_with_pattern, \
+	}
 
 /*
  * Initialize led_pins_node_t struct for each pin node defined
@@ -156,7 +158,7 @@ static void led_tick_control(struct k_work *work)
  * approximately equal to 2^17. Because HOOK_TICK_INTERVAL_MS is on a 250ms
  * tick rate, this allows for 4s of transition without loss of accuracy.
  */
-void led_set_color_with_pattern(const struct led_pattern_node_t *pattern)
+void pwm_set_color_with_pattern(const struct led_pattern_node_t *pattern)
 {
 	uint8_t pins_count = pattern->pattern_color[pattern->cur_color]
 				     .led_color_node->pins_count;

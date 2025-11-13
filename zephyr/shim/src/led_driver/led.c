@@ -155,7 +155,7 @@ static void set_color(int node_idx)
 			    patterns[i].pattern_color[0].led_color_node->led_id))
 			continue; /* Auto control is disabled */
 
-		led_set_color_with_pattern(&patterns[i]);
+		patterns[i].pattern_color[0].led_color_node->led_set_color_with_pattern(&patterns[i]);
 
 		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0) {
 			patterns[i].elapsed_ms += HOOK_TICK_INTERVAL_MS;
