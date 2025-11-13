@@ -89,4 +89,6 @@
 /* Re-calibration timer */
 #define REK_TIMES 3
 
+#define IMAGE_READER_IMPL elan_image_read
+
 #endif /* ZEPHYR_DRIVERS_FINGERPRINT_ELAN80SG_CONFIG_SENSOR_H_ */
