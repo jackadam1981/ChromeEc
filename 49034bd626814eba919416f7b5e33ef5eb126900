@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c897e1b6_283da1aa",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-13T00:01:09Z",
+      "side": 1,
+      "message": "You can make this option default N for all ISH builds.\n\nThen you shouldn\u0027t need the next CL in the chain.\n\n```suggestion\nconfig PLATFORM_EC_HOOK_SECOND\n\tbool \"Enable the one second period hook\"\n\tdefault n if SOC_FAMILY_INTEL_ISH\n\tdefault y\n\thelp\n\t  Enable support for the one second hook. Disabling the hook save\n```",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 0
+      },
+      "revId": "49034bd626814eba919416f7b5e33ef5eb126900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da6a156_6dab323e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-13T00:01:09Z",
+      "side": 1,
+      "message": "default n if SOC_FAMILY_INTEL_ISH",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 10
+      },
+      "revId": "49034bd626814eba919416f7b5e33ef5eb126900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
