@@ -1,0 +1,14 @@
+# Copyright 2025 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC
+
+config EGIS_ET171_OTP_KEY
+	bool "Enable EGIS ET171 OTP Key functionality"
+	default n
+	help
+	  Enable support for reading and validating the One-Time Programmable
+	  (OTP) key on EGIS ET171 series chips.
+
+endif # PLATFORM_EC
