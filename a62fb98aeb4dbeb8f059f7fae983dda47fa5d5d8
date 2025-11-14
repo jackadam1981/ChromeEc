@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d46769_4c7401de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:56:14Z",
+      "side": 1,
+      "message": "Added in PS19, thanks.",
+      "parentUuid": "be6b5ee9_17d75fab",
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98c74113_0e00644f",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-11-13T18:06:41Z",
       "side": 1,
       "message": "add a space after this line",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b698c037_a66be37d",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:56:14Z",
+      "side": 1,
+      "message": "Fixed in PS19.",
+      "parentUuid": "98c74113_0e00644f",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b769b5a_e0ff9817",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:56:14Z",
+      "side": 1,
+      "message": "I removed the conditional default in PS19.",
+      "parentUuid": "207b38e9_d8ef6ac0",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5271f45_7658ddeb",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-11-13T18:06:41Z",
       "side": 1,
       "message": "this is redundant?? why do you have to say `if FINGERPRINT_SENSOR_ELAN80SERIES`? This config does not exist if `FINGERPRINT_SENSOR_ELAN80SERIES` is not enabled. Does it need a default if there is no fingerprint sensor. I believe we can just delete `\tdefault 36864 if FINGERPRINT_SENSOR_ELAN80SERIES`",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "a62fb98aeb4dbeb8f059f7fae983dda47fa5d5d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d461bb5_be476d69",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:56:14Z",
+      "side": 1,
+      "message": "I removed the redundant default line in PS19.",
+      "parentUuid": "c5271f45_7658ddeb",
       "range": {
         "startLine": 27,
         "startChar": 1,
