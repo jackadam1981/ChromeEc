@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1a6a39_bc4be888",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-14T07:23:10Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "44f318c9_06f06ae1",
+      "range": {
+        "startLine": 187,
+        "startChar": 15,
+        "endLine": 187,
+        "endChar": 37
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "282d3e12_15017787",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-11-07T22:43:22Z",
       "side": 1,
       "message": "Note - this file should use hard tabs throughout.",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 44
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd3ae2a_761acd5e",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-14T07:23:10Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "282d3e12_15017787",
       "range": {
         "startLine": 855,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00803455_1cff81d0",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-14T07:23:10Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "58a7f04a_9e518d8d",
+      "range": {
+        "startLine": 862,
+        "startChar": 0,
+        "endLine": 862,
+        "endChar": 68
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10b64fc5_270912ef",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dfa25a1_2034261a",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-14T07:23:10Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "10b64fc5_270912ef",
+      "range": {
+        "startLine": 879,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 45
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d174f8f_5effe263",
@@ -123,6 +219,30 @@
       "writtenOn": "2025-11-07T22:43:22Z",
       "side": 1,
       "message": "`dut-control ec_uart_regexp:\"\u003cregex\u003e\"` can be used to automatically query the EC output for a regular expression.\n\nThis example captures the digits following the `power state ` text output:\n```\n$dut_control ec_uart_regexp:\"[\u0027power state (\\d+)\u0027]\"\n$dut_control ec_uart_cmd:\u0027powerinfo\u0027\nlocal result\u003d$($dut_control ec_uart_cmd)\n```\n\nThe result creates a string of tuples designated by square brackets.\n\nRun these commands manually to see the exact output format.",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 61
+      },
+      "revId": "cacd3f7d33f0ea8b5c78187d63d6e19f70014484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c5591b_8521e47d",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-14T07:23:10Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "2d174f8f_5effe263",
       "range": {
         "startLine": 938,
         "startChar": 0,
