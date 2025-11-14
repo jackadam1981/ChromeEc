@@ -12,6 +12,8 @@ main() {
   local objcopy="${1}"
   local objdump="${2}"
   local rw_elf_in="${3}"
+  local check_result="${4}"
+
   local base="${rw_elf_in%.elf}"
   local rw_elf_out="${rw_elf_in}.fips"
   local checksum_section=".text.fips_checksum"
@@ -74,6 +76,13 @@ main() {
 
   # don't update digest if run with FIPS_BREAK=1
   [ -v FIPS_BREAK ] && return 0
+  if [[ ${check_result} == 1 ]]; then
+    local snapshot="board/${BOARD}/fips/$(basename "${fips_checksum_dump}")"
+    if ! cmp "${fips_checksum_dump}" "${snapshot}"; then
+      echo "Generated fips hash ${fips_checksum_dump} mismatch!" >&2
+      exit 1
+    fi
+  fi
   ${objcopy} --update-section "${checksum_section}"="${fips_checksum_dump}" \
 		"${rw_elf_out}"
 }
