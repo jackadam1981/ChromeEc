@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b560a8_1ed649b1",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-14T21:12:24Z",
+      "side": 1,
+      "message": "Fail if the `IMAGE_BOARD_NAME` is not found at this point.",
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f347588_4309750c",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-14T21:12:24Z",
+      "side": 1,
+      "message": "`dut_control` doesn\u0027t return anything.  This if branch is not needed.",
+      "range": {
+        "startLine": 923,
+        "startChar": 0,
+        "endLine": 923,
+        "endChar": 68
+      },
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aacb51e_1d24a0f5",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-14T21:12:24Z",
+      "side": 1,
+      "message": "Why are you running the version command twice?\nIf you\u0027re concerned about corrupted input, you can run `dut_control ec_uart_cmd:\u0027chan 0\u0027` before the version command and `dut_control ec_uart_cmd:\u0027restore\u0027` after.",
+      "range": {
+        "startLine": 925,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 55
+      },
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfd0a73_63ab803c",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-14T21:12:24Z",
+      "side": 1,
+      "message": "You need to clear the UART regex once you\u0027re run the version command.\n`dut_control ec_uart_regexp:None`",
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604caa03_b6953519",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-14T21:12:24Z",
+      "side": 1,
+      "message": "Formatting is not correct from this point forward.  Please use hard tabs for consistency.",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 72
+      },
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
