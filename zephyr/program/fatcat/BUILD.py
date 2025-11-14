@@ -29,6 +29,7 @@ def register_npcx9_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        modules=["cmsis", "cmsis_6", "ec", "google-private"],
         inherited_from=inherited_from,
     )
 
@@ -81,6 +82,7 @@ def register_realtek_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        modules=["cmsis", "cmsis_6", "ec", "google-private"],
     )
 
 

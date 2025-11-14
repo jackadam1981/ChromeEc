@@ -16,6 +16,7 @@ def register_tanjiro_project(project_name):
             here / "program.conf",
             here / project_name / "project.conf",
         ],
+        modules=["cmsis", "cmsis_6", "ec", "google-private"],
         inherited_from=["tanjiro"],
     )
 
