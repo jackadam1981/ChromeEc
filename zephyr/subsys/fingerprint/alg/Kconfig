@@ -30,11 +30,19 @@ config FP_EGIS_EGIS630_ALGORITHM
 	  Enable EGIS EGIS630 matching algorithm. To work properly, EGIS private
 	  library is required.
 
+config FP_EGIS_EC6601_ALGORITHM
+	bool "EGIS EC6601 matching algorithm"
+	default y if FINGERPRINT_SENSOR_EGIS_EC6601
+	help
+	  Enable EGIS EC6601 matching algorithm. To work properly, EGIS private
+	  library is required.
+
 config FP_ALGORITHM_TEMPLATE_SIZE
 	int "Size of template size"
 	default 5092 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	default 47552 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
 	default 16384 if FINGERPRINT_SENSOR_EGIS630 && FP_EGIS_EGIS630_ALGORITHM
+	default 18000 if FINGERPRINT_SENSOR_EGIS_EC6601 && FP_EGIS_EC6601_ALGORITHM
 	default 19320 if FINGERPRINT_SENSOR_ELAN80SG && FP_ELAN_ELAN80SG_ALGORITHM
 	default 0
 	help
@@ -51,6 +59,7 @@ config FP_MAX_FINGER_COUNT
 	  default 5 if FINGERPRINT_SENSOR_FPC1025 && FP_FPC_BEP_ALGORITHM
 	  default 5 if FINGERPRINT_SENSOR_FPC1145 && FP_FPC_LIBFP_ALGORITHM
 	  default 3 if FINGERPRINT_SENSOR_EGIS630 && FP_EGIS_EGIS630_ALGORITHM
+	  default 5 if FINGERPRINT_SENSOR_EGIS_EC6601 && FP_EGIS_EC6601_ALGORITHM
 	  default 3 if FINGERPRINT_SENSOR_ELAN80SG && FP_ELAN_ELAN80SG_ALGORITHM
 	  default 5
 	  help
@@ -74,6 +83,12 @@ config HAVE_EGIS630_PRIVATE_ALGORITHM
 	default n
 	help
 	  If enabled, it indicates that EGIS630 private algorithm is present.
+
+config HAVE_EGIS_EC6601_PRIVATE_ALGORITHM
+	bool
+	default n
+	help
+	  If enabled, it indicates that EGIS EC6601 private algorithm is present.
 
 config HAVE_ELAN80SG_PRIVATE_ALGORITHM
 	bool
