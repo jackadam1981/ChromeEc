@@ -858,8 +858,8 @@ by running [`flashrom`] or `futility` from the device bash prompt.
 [Case Closed Debugging]: ./case_closed_debugging.md
 [chromeos-cr50 ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-cr50/chromeos-cr50-0.0.1.ebuild
 [chromeos-ti50 ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
-[Developer Mode]: https://chromium.googlesource.com/chromiumos/docs/+/main/developer_mode.md#dev-mode
-[Recovery Mode]: https://chromium.googlesource.com/chromiumos/docs/+/main/debug_buttons.md
+[Developer Mode]: https://www.chromium.org/chromium-os/developer-library/guides/device/developer-mode/
+[Recovery Mode]: https://www.chromium.org/chromium-os/developer-library/guides/debugging/debug-buttons/#firmware-keyboard-interface
 [Servo]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/main/docs/servo.md
 [`servod`]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/main/docs/servo.md
 [Type-C Servo v4]: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/main/docs/servo_v4.md
