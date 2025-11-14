@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63c928c_be4f302e",
+        "filename": "common/keyboard_8042_fn.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-11-14T07:08:23Z",
+      "side": 1,
+      "message": "typo\n```suggestion\n\tLOG_DBG(\"fn_key_status\u003d%d fn_keys_status\u003d%02x\", fn_key_status,\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "df5f9fda45adaf2bf8fd0a6dfcaa3e26fc42e6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
