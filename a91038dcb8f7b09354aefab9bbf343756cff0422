@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c91c78_cd73b33b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:58:23Z",
+      "side": 1,
+      "message": "It has been removed in PS19.",
+      "parentUuid": "9615f895_f194b55b",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "a91038dcb8f7b09354aefab9bbf343756cff0422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f18e525_f2a2aeb5",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-13T18:23:16Z",
       "side": 1,
       "message": "you might bring the implementation of `elan_image_read_linewise` to this CL",
+      "range": {
+        "startLine": 101,
+        "startChar": 25,
+        "endLine": 101,
+        "endChar": 50
+      },
+      "revId": "a91038dcb8f7b09354aefab9bbf343756cff0422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb8e5cf_e61e750a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:58:23Z",
+      "side": 1,
+      "message": "I’ve brought the implementation of elan_image_read_linewise() into this CL as suggested (see PS19).",
+      "parentUuid": "8f18e525_f2a2aeb5",
       "range": {
         "startLine": 101,
         "startChar": 25,
