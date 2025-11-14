@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "116d4499_865e3569",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4333743
+      },
+      "writtenOn": "2025-11-14T13:14:16Z",
+      "side": 1,
+      "message": "will do that",
+      "parentUuid": "b1de6258_5fe59818",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccf3f704_d747ca87",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
         "patchSetId": 1
