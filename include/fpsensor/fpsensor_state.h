@@ -25,6 +25,10 @@
 #include <optional>
 #include <span>
 
+/*this code just for psram demo, it is need to define this at a better place*/
+#define FP_FRAME_SECTION __attribute__ ((section("PSRAM")))
+#define FP_TEMPLATE_SECTION __attribute__ ((section("PSRAM")))
+
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
