@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4100d58a_23806b8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-14T02:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69be410_80f4b3c0",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "e100a4ec3f30fe11a6f14ed2b3009a242e33e7d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47eac8a3_990731be",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-14T01:33:46Z",
       "side": 1,
       "message": "firmware_ec, firmware_pd, and firmware.EcStress (test reports: b:454898408#comment24)",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "e100a4ec3f30fe11a6f14ed2b3009a242e33e7d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b478e76_5abc1f7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-14T02:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47eac8a3_990731be",
       "range": {
         "startLine": 13,
         "startChar": 4,
