@@ -179,13 +179,14 @@ ifeq ($(H1_DEVIDS),)
 CR50_RW_KEY = loader-testkey-A.pem
 else
 # Try to build signer from the known location, if it is missing
-ifeq ($(SIGNER),)
+ifeq ($(wildcard $(SINGER)),)
 # If source path is present, build codesigner later as dependency
 ifneq ($(wildcard $(CODESIGNER_PATH)),)
 SIGNER := $(CODESIGNER_PATH)/codesigner
 # Set CFLAGS and CXX to avoid passing target configuration
 $(SIGNER):
-	CFLAGS="-O2" CXX="clang++" $(MAKE) -C $(CODESIGNER_PATH) codesigner
+	CC="$(HOSTCC)" CFLAGS="-O2" CXX=$(HOSTCXX)" \
+	$(MAKE) -C $(CODESIGNER_PATH) codesigner
 else
 $(error cr50-codesigner is not available!)
 endif
