@@ -74,13 +74,6 @@ AP_POWER_APP_STATE_DEFINE(G3, board_ap_power_action_g3_entry,
 
 static int board_ap_power_action_s4_run(void *data)
 {
-	/* Disable SUSB_EC# before goto S5 */
-	if (power_signal_get(PWR_RSMRST_PWRGD) == 0 ||
-	    power_signal_get(PWR_SLP_S5)) {
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_susb_ec), 0);
-		return 0;
-	}
-
 	/* Enable SUSB_EC# before goto S3 */
 	if (!power_signal_get(PWR_SLP_S4)) {
 		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_susb_ec), 1);
