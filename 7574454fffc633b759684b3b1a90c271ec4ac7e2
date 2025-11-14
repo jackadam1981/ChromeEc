@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29f424d_e2d88eea",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:57:29Z",
+      "side": 1,
+      "message": "This function has been moved to CL:7043126 as suggested.",
+      "parentUuid": "ca3f6060_4aa5bce3",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 71
+      },
+      "revId": "7574454fffc633b759684b3b1a90c271ec4ac7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24392f13_69f9af69",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-13T18:14:35Z",
       "side": 1,
       "message": "add a comment:\n\n```\n/*\n * Selects the function used to read the image data from the sensor.\n * Possible values:\n *  - elan_image_read: Reads the image in a standard block.\n *  - elan_image_read_linewise: Reads the image with a line-wise approach.\n */\n ```",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "7574454fffc633b759684b3b1a90c271ec4ac7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7216180c_bd7eac80",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-14T08:57:29Z",
+      "side": 1,
+      "message": "Added in PS3, thanks.",
+      "parentUuid": "24392f13_69f9af69",
       "range": {
         "startLine": 92,
         "startChar": 0,
