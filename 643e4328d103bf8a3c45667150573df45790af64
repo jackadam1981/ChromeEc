@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb05fcc_d2699496",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5388,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-14T23:23:48Z",
+      "side": 1,
+      "message": "Move this inside the `INIT_SET_SRC_PDOS` block above.\n\nThis case inside pdc_power_mgmt_set_current_limit can just do nothing.",
+      "range": {
+        "startLine": 5379,
+        "startChar": 0,
+        "endLine": 5388,
+        "endChar": 0
+      },
+      "revId": "643e4328d103bf8a3c45667150573df45790af64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
