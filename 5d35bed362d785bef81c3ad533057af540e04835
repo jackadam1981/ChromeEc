@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45afbc7a_7c9d9890",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0252a0b3_0fc39d85",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 20
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60bb42a1_6b0a460b",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-10-15T10:32:51Z",
       "side": 1,
       "message": "Please remove this. The `SOC_EM32F967` config doesn\u0027t exist yet.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b641d7_48df358a",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60bb42a1_6b0a460b",
       "range": {
         "startLine": 146,
         "startChar": 0,
@@ -113,6 +161,24 @@
       "side": 1,
       "message": "There are still `//` comments.",
       "parentUuid": "a1fc3d70_6db9c970",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938e5a29_b48d1a58",
+        "filename": "zephyr/drivers/cros_system/cros_system_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf30daa_95e3d09e",
       "revId": "5d35bed362d785bef81c3ad533057af540e04835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

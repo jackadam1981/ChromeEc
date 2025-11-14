@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32033405_684bed97",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ceeacc_f2ba0d61",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2353e27_ad122066",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-06T11:13:30Z",
       "side": 1,
       "message": "What is this bug number?",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "240e9230_50d58287",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2353e27_ad122066",
       "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "478db9fa_fe3fa231",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9755183e_83a947db",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "983ec372_a885d606",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-11-06T11:13:30Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eea9d0a_464dd478",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-14T11:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983ec372_a885d606",
       "revId": "bbc2bf24a48d795afd80a5226d962b634f7a86ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
