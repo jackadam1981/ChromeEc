@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c733b16c_9a684359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-14T17:55:36Z",
+      "side": 1,
+      "message": "All of the uncovered lines in this delta are uncoverable or logicallyh actually covered. Put something like\n```\nLOW_COVERAGE_REASON\u003db/442310524 lcov marks lines uncovered in error\n```\nin the commit message.",
+      "revId": "05548157c3111749362916f551b773e009893270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
