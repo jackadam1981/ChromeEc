@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82f42d2_f9f1313e",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-11-14T16:51:13Z",
+      "side": 1,
+      "message": "A comment about how CONFIG_ESPI_PERIPHERAL_HOST_CMD_PARAM_PORT_NUM is the offset from the base of the h2ram_pool would be helpful.",
+      "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7677fcc8_35ad9708",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-11-14T16:51:13Z",
+      "side": 1,
+      "message": "This works for both cases, so the ifdef can be removed.",
+      "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
