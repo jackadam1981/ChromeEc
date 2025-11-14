@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1de6258_5fe59818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-14T10:48:12Z",
+      "side": 1,
+      "message": "You need to split the sensor code and algo code into separate CLs.",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccf3f704_d747ca87",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-14T10:48:12Z",
+      "side": 1,
+      "message": "I\u0027m not fully getting this part - does SPI module puts the pins into sleep state automatically after the transaction or it is caused on the `pm_device_action_run` call in this driver.",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
