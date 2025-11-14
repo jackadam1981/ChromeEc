@@ -210,9 +210,18 @@
 		gpio_lcd_backoff: lcd_backoff {
 			gpios = <&gpioa 2 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
 		};
+<<<<<<< PATCH SET (99c4b20ac146c09862d307c993ff9003f0fefcff lapis: add missing gpio)
+		/* EN_PP5000_LED_X */
+		gpio_en_pp5000_led: en_pp5000_led {
+			gpios = <&gpiog 1 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_HIGH)>;
+		};
+
+||||||| BASE      (28fa20c5eaa0fc603154106843b7168598626531 led: Generalize LED pins node lookup using a devicetree labe)
+=======
 		/* EC_SOC_REC_SWITCH_ODL */
 		gpio_ec_soc_rec_switch_odl: ec_soc_rec_switch_odl {
 			gpios = <&gpioh 8 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
+>>>>>>> BASE      (acc5eee26d36ba11aa159964a9ba56f14ea6f301 Quartz: Changing BL_OFF_ODL to OD and INIT_LOW)
 	};
 };
