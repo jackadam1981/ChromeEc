@@ -16,6 +16,52 @@
       "message": "Ignore my previous automated message.",
       "revId": "01da37185c6cc387be2cf5338491d89180ef4845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7931f0aa_fe8bd0d2",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-14T18:03:00Z",
+      "side": 1,
+      "message": "Update the comment too.",
+      "range": {
+        "startLine": 841,
+        "startChar": 15,
+        "endLine": 841,
+        "endChar": 18
+      },
+      "revId": "01da37185c6cc387be2cf5338491d89180ef4845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ededef52_b82df4fc",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-14T18:03:00Z",
+      "side": 1,
+      "message": "Does the net name also changed?",
+      "range": {
+        "startLine": 852,
+        "startChar": 31,
+        "endLine": 852,
+        "endChar": 33
+      },
+      "revId": "01da37185c6cc387be2cf5338491d89180ef4845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
