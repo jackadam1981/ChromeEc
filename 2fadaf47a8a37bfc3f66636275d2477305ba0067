@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d48731_ed7f2a54",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-15T00:34:10Z",
+      "side": 1,
+      "message": "This extern isn\u0027t needed. You only invoke the handler through a pointer.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 0
+      },
+      "revId": "2fadaf47a8a37bfc3f66636275d2477305ba0067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ee58d4_21a741ef",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-15T00:34:10Z",
+      "side": 1,
+      "message": "```suggestion\n\t.handler \u003d DT_INST_STRING_TOKEN_OR(0, handler, NULL),\n};\n```\n\nGenerally, I don\u0027t like putting function pointers in the devicetree.  The more common pattern is to declare an iterable section so that board specific code can register a callback at compile time.  But that\u0027s probably overkill when you only support a single callback.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 0
+      },
+      "revId": "2fadaf47a8a37bfc3f66636275d2477305ba0067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
