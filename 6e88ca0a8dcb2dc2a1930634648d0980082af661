@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f154f74_4d84c9db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-15T07:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0344804b_cfaf5ada",
+      "revId": "6e88ca0a8dcb2dc2a1930634648d0980082af661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff580e19_aff99672",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-11-14T11:28:31Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Trailing Whitespace: Please remove the trailing whitespace.\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 99,
+        "startChar": 69,
+        "endLine": 99,
+        "endChar": 70
+      },
+      "revId": "6e88ca0a8dcb2dc2a1930634648d0980082af661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942a193b_c37c16e8",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-11-15T07:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff580e19_aff99672",
       "range": {
         "startLine": 99,
         "startChar": 69,
