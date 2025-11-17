@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689b4955_fcd12379",
+        "filename": "zephyr/dts/bindings/fingerprint/egis,ec6601.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-17T10:37:37Z",
+      "side": 1,
+      "message": "This file is not used anymore. Please rebase the code and adjust driver to the latest architecture. You can find reference in this CL chain - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6877188",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "303eae9c4330994358b7691a5187b28eec4a2539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
