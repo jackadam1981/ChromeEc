@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e4d6a0_39b37abe",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T21:55:50Z",
+      "side": 1,
+      "message": "While `elan_image_read` is currently only called from `elan_raw_capture` after a `NULL` check on `short_raw`, consider adding `assert(short_raw !\u003d NULL)`; at the beginning of `elan_image_read` as well. This provides defense in depth in case the function is ever called from a different context in the future.",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 26
+      },
+      "revId": "5c270ec49a258b54b1cae19a801458821635ea34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
