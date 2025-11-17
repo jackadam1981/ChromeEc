@@ -22,6 +22,30 @@
       },
       "revId": "dea9396ab3fb7c351bc5ef43af42375528e88082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b3bb50_d0fc8631",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-11-17T19:44:09Z",
+      "side": 1,
+      "message": "The bug link provides the context.",
+      "parentUuid": "10520dd0_fe6e2fd4",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "dea9396ab3fb7c351bc5ef43af42375528e88082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
