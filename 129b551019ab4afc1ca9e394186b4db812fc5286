@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25288a83_0e9adc4d",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "Fixed it",
+      "parentUuid": "350b161e_be9b64a2",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01e15eba_240a1e13",
@@ -106,6 +130,30 @@
       "writtenOn": "2025-11-14T07:34:47Z",
       "side": 1,
       "message": "It is size of OTP key used in our application, not size of keys in Egis OTP. It is the same in these case, but I think you are mixing defines when you use it for `otp_key_addr` calculation.",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa871364_55833422",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "I fixed it.",
+      "parentUuid": "01e15eba_240a1e13",
       "range": {
         "startLine": 25,
         "startChar": 36,
@@ -133,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b6cbad_71f6e5ef",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "I modified it. Check the modification.",
+      "parentUuid": "d0e6abb2_84b3b450",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b64c11f8_f23e81a2",
@@ -146,6 +212,24 @@
       "writtenOn": "2025-11-14T07:34:47Z",
       "side": 1,
       "message": "Add a comment it takes 4-bytes word as offset and size.",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36875f8d_b50e3e9a",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "I modified it. Check the modification.",
+      "parentUuid": "b64c11f8_f23e81a2",
       "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +251,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af03322a_c54b8aba",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad837360_71ee3636",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ab046bb_3f00d5c2",
@@ -180,6 +282,24 @@
       "writtenOn": "2025-11-14T07:34:47Z",
       "side": 1,
       "message": "I don\u0027t understand why we are panicking here. Can you explain the reason for this panic?",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd96161_d8edea1d",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "This is what we did for the [npcx](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/otp_key.c;l\u003d106?q\u003dplatform%2Fec%20otp_key_provision\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d105-,106,-107) project. If the key is trivial, what do we need to do? We cannot continue the boot up process. The security is broken??",
+      "parentUuid": "8ab046bb_3f00d5c2",
       "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

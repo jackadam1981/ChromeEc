@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd70731_1f68010f",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T20:59:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1acb4a3a_d5a233a5",
+      "range": {
+        "startLine": 32,
+        "startChar": 37,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ce878e_b04ce2a3",
