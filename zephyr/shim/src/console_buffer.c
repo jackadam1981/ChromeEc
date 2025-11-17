@@ -12,6 +12,14 @@
 #ifdef CONFIG_PLATFORM_EC_SOC_IT8XXX2_CONSOLE_BUF_H2RAM_SHARED
 extern uint8_t h2ram_pool[];
 #define console_buf h2ram_pool
+/*
+ * CONFIG_ESPI_PERIPHERAL_HOST_CMD_PARAM_PORT_NUM and
+ * CONFIG_ESPI_PERIPHERAL_ACPI_SHM_REGION_PORT_NUM represent the offset from the
+ * base of h2ram_pool where each eSPI region begins.
+ * Since console_buf is placed at the beginning of h2ram_pool, ensure its size
+ * does not exceed these offsets so that it does not overlap with the
+ * host-command parameter region or ACPI shared memory region.
+ */
 BUILD_ASSERT(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE <= CONFIG_ESPI_PERIPHERAL_HOST_CMD_PARAM_PORT_NUM);
 BUILD_ASSERT(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE <= CONFIG_ESPI_PERIPHERAL_ACPI_SHM_REGION_PORT_NUM);
 #else
@@ -25,11 +33,7 @@ static uint32_t tail_idx;
 
 static inline uint32_t next_idx(uint32_t cur_idx)
 {
-#ifdef CONFIG_PLATFORM_EC_SOC_IT8XXX2_CONSOLE_BUF_H2RAM_SHARED
 	return (cur_idx + 1) % CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE_BUF_SIZE;
-#else
-	return (cur_idx + 1) % ARRAY_SIZE(console_buf);
-#endif
 }
 
 K_MUTEX_DEFINE(console_write_lock);
