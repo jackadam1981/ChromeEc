@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d078575_5f994057",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T22:20:42Z",
+      "side": 1,
+      "message": "The loop variable `i` represents the line index, right? Renaming it to something more descriptive, like `line_idx`, could improve readability.\n\n```\n// Suggested change\nfor (int line_idx \u003d 0; line_idx \u003c ELAN_DMA_LOOP; line_idx++) {\n    // ...\n    short_raw[(x + y * IMAGE_WIDTH) +\n              line_idx * ELAN_DMA_SIZE] \u003d\n        (rx_buf[rx_index] \u003c\u003c 8) +\n        rx_buf[rx_index + 1];\n    // ...\n}\n```",
+      "range": {
+        "startLine": 314,
+        "startChar": 4,
+        "endLine": 314,
+        "endChar": 37
+      },
+      "revId": "a0bcb9ac25612cf6d4819a9dc0fbc4103e6802d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
