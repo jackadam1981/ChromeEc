@@ -16,6 +16,23 @@
       "message": "For code coverage, zephyr/test/ocelot should be created. To be done as part of b:416418970. Intel will add this in coming weeks.",
       "revId": "0dc66ebae9456ea6aae74dff7179dbc3ed0c8c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83a1703_23d41418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-17T22:28:45Z",
+      "side": 1,
+      "message": "Tristan gave me a build today for ITE and I verified the \"apshutdown\" sequence was correct.  Can we submit this CL?",
+      "revId": "0dc66ebae9456ea6aae74dff7179dbc3ed0c8c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
