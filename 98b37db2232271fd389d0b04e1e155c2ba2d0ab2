@@ -46,6 +46,30 @@
       },
       "revId": "98b37db2232271fd389d0b04e1e155c2ba2d0ab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfacc688_ad56cc51",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-17T06:55:26Z",
+      "side": 1,
+      "message": "I was wrong about the blink_cnt. Just found the tick interval is 500ms. I guess just increasing blink_cnt for every tick until it reaches 30 and turn off LED should work.",
+      "parentUuid": "71a3c42e_04fa8f81",
+      "range": {
+        "startLine": 288,
+        "startChar": 11,
+        "endLine": 288,
+        "endChar": 20
+      },
+      "revId": "98b37db2232271fd389d0b04e1e155c2ba2d0ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
