@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7264279e_7d6db2fa",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-17T01:40:16Z",
+      "side": 1,
+      "message": "To avoid blocking this CL, I’ll follow up with another CL to address these changes.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7155972",
+      "parentUuid": "d82f42d2_f9f1313e",
+      "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7677fcc8_35ad9708",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-14T16:51:13Z",
       "side": 1,
       "message": "This works for both cases, so the ifdef can be removed.",
+      "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c000b85b_18c5d130",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-17T01:40:16Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "7677fcc8_35ad9708",
       "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
