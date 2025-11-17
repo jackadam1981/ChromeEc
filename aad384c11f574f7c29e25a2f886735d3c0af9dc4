@@ -87,6 +87,24 @@
       "parentUuid": "7677fcc8_35ad9708",
       "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef76b17_8aaf356d",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-17T03:46:29Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "c000b85b_18c5d130",
+      "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
