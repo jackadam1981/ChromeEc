@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c148dc_4405cb57",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-17T11:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4acffd59_5be36714",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89025a06_bd471083",
@@ -306,6 +330,24 @@
       "side": 1,
       "message": "done",
       "parentUuid": "4ac65af2_3b718d9d",
+      "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1cb13bc_7fb7ed63",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-17T11:01:24Z",
+      "side": 1,
+      "message": "added doucumentation for the functions",
+      "parentUuid": "8cd3541c_e273d6b2",
       "revId": "1d0d1929d9847ee4a29f35ea973d08624e07a98d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
