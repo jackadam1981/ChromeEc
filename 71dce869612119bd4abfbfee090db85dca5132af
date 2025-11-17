@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "71dce869612119bd4abfbfee090db85dca5132af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5048183a_b4dcb0c5",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-11-17T13:42:50Z",
+      "side": 1,
+      "message": "Should I add also CONFIG_PLATFORM_EC_USB_PD_FRS_PPC? What does this option do?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "71dce869612119bd4abfbfee090db85dca5132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
