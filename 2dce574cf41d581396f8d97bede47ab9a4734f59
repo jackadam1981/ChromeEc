@@ -123,6 +123,24 @@
       "parentUuid": "497ebca4_498ee67b",
       "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071af35d_dc3a3be0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-17T10:44:09Z",
+      "side": 1,
+      "message": "You can see some details here - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/5463942. We added the PM device action after the transaction, because we noticed that that FPC1025 sensor drains a lot of power if SPI pins are configured in \"SPI mode\", when no SPI transaction is ongoing.",
+      "parentUuid": "0d6bff79_0d5a3d98",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
