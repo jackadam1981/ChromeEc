@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c77d61_194d0e6f",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-11-17T17:56:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "35a73f51_5afb9a61",
+      "range": {
+        "startLine": 894,
+        "startChar": 3,
+        "endLine": 894,
+        "endChar": 4
+      },
+      "revId": "a345e30b274e37920d96561ad5f97dd4a333d52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43ceea5b_e44635b5",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-17T16:34:33Z",
       "side": 1,
       "message": "Nit: Similarly, a tab to align the above line.",
+      "range": {
+        "startLine": 897,
+        "startChar": 3,
+        "endLine": 897,
+        "endChar": 4
+      },
+      "revId": "a345e30b274e37920d96561ad5f97dd4a333d52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71021e0b_7a7e26d0",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-11-17T17:56:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "43ceea5b_e44635b5",
       "range": {
         "startLine": 897,
         "startChar": 3,
