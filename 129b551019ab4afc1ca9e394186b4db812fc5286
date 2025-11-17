@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28549756_07440294",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T21:30:33Z",
+      "side": 1,
+      "message": "by the way, do you know why we do not have `zephyr/` before this include?\n\n```\n#include \u003czephyr/et171_hal/et171_hal_otp.h\u003e\n```",
+      "parentUuid": "a826ac51_42359f94",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "350b161e_be9b64a2",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 15
@@ -300,6 +318,24 @@
       "side": 1,
       "message": "This is what we did for the [npcx](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/chip/npcx/otp_key.c;l\u003d106?q\u003dplatform%2Fec%20otp_key_provision\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d105-,106,-107) project. If the key is trivial, what do we need to do? We cannot continue the boot up process. The security is broken??",
       "parentUuid": "8ab046bb_3f00d5c2",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a387a80_9d924a20",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T21:30:33Z",
+      "side": 1,
+      "message": "Please let me know if you have other thoughts.",
+      "parentUuid": "acd96161_d8edea1d",
       "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
