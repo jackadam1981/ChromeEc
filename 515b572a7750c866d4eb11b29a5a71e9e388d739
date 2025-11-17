@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ca09ba_8fb54b0d",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-17T06:39:32Z",
+      "side": 1,
+      "message": "Unused variable low_adp_blink.",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "515b572a7750c866d4eb11b29a5a71e9e388d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390d0b4f_a93ff2bf",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-17T06:39:32Z",
+      "side": 1,
+      "message": "Add static qualifier to blink_cnt.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "515b572a7750c866d4eb11b29a5a71e9e388d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6928dd9f_29981b24",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1547258
+      },
+      "writtenOn": "2025-11-17T06:39:32Z",
+      "side": 1,
+      "message": "Add `\u0026\u0026 blink_cnt !\u003d 0`.",
+      "range": {
+        "startLine": 328,
+        "startChar": 57,
+        "endLine": 328,
+        "endChar": 58
+      },
+      "revId": "515b572a7750c866d4eb11b29a5a71e9e388d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
