@@ -244,8 +244,8 @@
 	};
 
 	batteries {
-		default_battery: smp_l23m4pg4 {
-			compatible = "smp,l23m4pg4", "battery-smart";
+		default_battery: sunwoda_l25d2pk6 {
+			compatible = "sunwoda,l25d2pk6", "battery-smart";
 		};
 	};
 
