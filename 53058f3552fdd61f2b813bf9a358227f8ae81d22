@@ -33,6 +33,24 @@
       "message": "Can CONFIG_SOC_IT8XXX2_SERIAL_IN_RAM and/or CONFIG_SOC_IT8XXX2_ZEPHYR_IN_RAM also be enabled?",
       "revId": "53058f3552fdd61f2b813bf9a358227f8ae81d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86de86dc_192ab2c5",
+        "filename": "zephyr/program/nissa/domika/project.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-17T23:22:35Z",
+      "side": 1,
+      "message": "These two options cannot be enabled because RAM on this chip is already very constrained, and enabling either of them would exceed the available memory.",
+      "parentUuid": "973895ac_e70aa0fd",
+      "revId": "53058f3552fdd61f2b813bf9a358227f8ae81d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
