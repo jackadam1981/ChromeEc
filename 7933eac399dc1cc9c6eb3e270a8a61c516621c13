@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1aa75429_7a4ffd15",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T21:18:25Z",
+      "side": 1,
+      "message": "can we check what specific errors does the function `HAL_OTP_Read32` return?\nI can see `HAL_TIMEOUT` and it seems the only error returned. Can you confirm?",
+      "parentUuid": "24feb345_cd264ed7",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 55
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c18bbb56_71740ebb",
         "filename": "zephyr/shim/chip/egis/otp_key.c",
         "patchSetId": 9
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "As windows tool is used for manufacturing, BCRYPT_RNG_ALGORITHM based on FIPS 186-2 is used.\nhttps://learn.microsoft.com/en-us/windows/win32/seccng/cng-algorithm-identifiers",
       "parentUuid": "c18bbb56_71740ebb",
+      "range": {
+        "startLine": 61,
+        "startChar": 19,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b495bfb3_7ecfca1e",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-17T21:18:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "10110186_2b1064d6",
       "range": {
         "startLine": 61,
         "startChar": 19,
