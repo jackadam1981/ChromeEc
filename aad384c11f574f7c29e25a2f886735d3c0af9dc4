@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da0623e_a48b03b0",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-17T03:43:58Z",
+      "side": 1,
+      "message": "Ignore the above. This has already been fixed in this CL.",
+      "parentUuid": "7264279e_7d6db2fa",
+      "revId": "aad384c11f574f7c29e25a2f886735d3c0af9dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7677fcc8_35ad9708",
