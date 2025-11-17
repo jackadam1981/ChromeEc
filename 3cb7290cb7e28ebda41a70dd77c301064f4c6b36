@@ -118,6 +118,30 @@
       },
       "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0937aed_140d117a",
+        "filename": "zephyr/program/ocelot/src/rvp_board_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-17T03:37:22Z",
+      "side": 1,
+      "message": "Thanks Mike. I am closing this comment as no action is pending from firmware side.",
+      "parentUuid": "55cf496e_c322d2c4",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "3cb7290cb7e28ebda41a70dd77c301064f4c6b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
