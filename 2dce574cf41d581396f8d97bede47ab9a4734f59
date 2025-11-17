@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8c65ac_ca0f6e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2025-11-17T08:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116d4499_865e3569",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccf3f704_d747ca87",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "We just take reference codes from other sensors and copy-paste the codes, actually it is not necessary anymore as ET171 SPI interface is only used for EC6601/EC630 , not shared with other devices.",
       "parentUuid": "ccf3f704_d747ca87",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497ebca4_498ee67b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2025-11-17T08:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f8cf68_769ab3cb",
       "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
