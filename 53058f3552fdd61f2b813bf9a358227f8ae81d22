@@ -16,6 +16,23 @@
       "message": "@keithshort@chromium.org @robbarnes@google.com, Ready for review.",
       "revId": "53058f3552fdd61f2b813bf9a358227f8ae81d22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973895ac_e70aa0fd",
+        "filename": "zephyr/program/nissa/domika/project.conf",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-11-17T22:45:07Z",
+      "side": 1,
+      "message": "Can CONFIG_SOC_IT8XXX2_SERIAL_IN_RAM and/or CONFIG_SOC_IT8XXX2_ZEPHYR_IN_RAM also be enabled?",
+      "revId": "53058f3552fdd61f2b813bf9a358227f8ae81d22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
