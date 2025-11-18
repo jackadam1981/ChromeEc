@@ -16,6 +16,29 @@
       "message": "Adding Tom to CC as an owner of the new updater for FPMCU.",
       "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740101bf_58e8832a",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-18T17:15:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is correct. NPCX platforms set `CONFIG_RO_STORAGE_OFF` to a [non-zero](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/chip/npcx/include/flash_chip.h;l\u003d28;drc\u003df7760c1b03557cfc0e1c6b0f9e7c3a8ef3b9f9b1) value.\n\nDo you have a CL that shows the flash configuration for this new part?",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
