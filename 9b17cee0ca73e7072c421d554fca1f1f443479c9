@@ -52,6 +52,24 @@
       "parentUuid": "15589eb5_f9c744de",
       "revId": "9b17cee0ca73e7072c421d554fca1f1f443479c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b383e77_c8ba0146",
+        "filename": "zephyr/program/rauru/navi/navi_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2025-11-18T00:02:56Z",
+      "side": 1,
+      "message": "Abe, feel free to assign a new PID for Rauru/Navi here. https://source.corp.google.com/piper///depot/google3/hardware/standards/usb/product_ids/chromeos_generic.textpb",
+      "parentUuid": "ad0f6d5f_5e49ad2d",
+      "revId": "9b17cee0ca73e7072c421d554fca1f1f443479c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
