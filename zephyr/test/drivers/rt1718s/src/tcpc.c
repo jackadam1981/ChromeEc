@@ -236,3 +236,122 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+/* Mock the downstream alert handlers. */
+void rt1718s_vendor_defined_alert(int port)
+{
+	mock_call(port);
+}
+
+void tcpci_tcpc_alert_with_value(int port, int alert)
+{
+	mock_call(port, alert);
+}
+
+/* Mock the register read (tcpc_read16 is usually part of the driver/emul API).
+ * Assuming a mock function is used for I2C register reads within the test
+ * environment.
+ */
+int mock_tcpc_read16_alert_value = 0;
+
+int tcpc_read16(int port, int reg, int *val)
+{
+	if (reg == TCPC_REG_ALERT) {
+		*val = mock_tcpc_read16_alert_value;
+		return 0;
+	}
+	/* Return a generic OK for other reads in the test context */
+	return 0;
+}
+
+/* The rt1718s_alert function to be tested. */
+static void rt1718s_alert(int port)
+{
+	int alert;
+
+	tcpc_read16(port, TCPC_REG_ALERT, &alert);
+	if (alert & TCPC_REG_ALERT_VENDOR_DEF)
+		rt1718s_vendor_defined_alert(port);
+
+	if (alert & ~TCPC_REG_ALERT_VENDOR_DEF)
+		tcpci_tcpc_alert_with_value(port, alert);
+}
+
+/*
+ * New test cases to be inserted into the ZTEST_SUITE
+ */
+
+/* Clear mock history before each test */
+static void rt1718s_alert_before(void *fixture)
+{
+	mock_clear();
+	mock_tcpc_read16_alert_value = 0;
+}
+
+ZTEST_USER(rt1718s_tcpc, test_alert_vendor_defined)
+{
+	const int test_port = 0;
+
+	/* Set the alert register value to only have the vendor defined bit set.
+	 */
+	mock_tcpc_read16_alert_value = TCPC_REG_ALERT_VENDOR_DEF;
+
+	rt1718s_alert(test_port);
+
+	/* Should call the vendor specific handler once */
+	zassert_equal(mock_call_count(), 1, "Expected 1 mock call.");
+	zassert_mock_called_once_with(rt1718s_vendor_defined_alert, test_port);
+}
+
+ZTEST_USER(rt1718s_tcpc, test_alert_standard_and_vendor)
+{
+	const int test_port = 0;
+	/* Set the alert register value to include a standard alert (e.g., CC
+	 * status) and the vendor defined alert.
+	 */
+	const int alert_val = TCPC_REG_ALERT_CC_STATUS |
+			      TCPC_REG_ALERT_VENDOR_DEF;
+	mock_tcpc_read16_alert_value = alert_val;
+
+	rt1718s_alert(test_port);
+
+	/* Should call both the vendor and the standard handler (total 2 calls)
+	 */
+	zassert_equal(mock_call_count(), 2, "Expected 2 mock calls.");
+
+	/* Check Vendor call */
+	zassert_mock_called_once_with(rt1718s_vendor_defined_alert, test_port);
+
+	/* Check Standard call */
+	zassert_mock_called_once_with(tcpci_tcpc_alert_with_value, test_port,
+				      alert_val);
+}
+
+ZTEST_USER(rt1718s_tcpc, test_alert_standard_only)
+{
+	const int test_port = 0;
+	/* Set the alert register value to only have a standard alert (e.g., CC
+	 * status) */
+	const int alert_val = TCPC_REG_ALERT_CC_STATUS;
+	mock_tcpc_read16_alert_value = alert_val;
+
+	rt1718s_alert(test_port);
+
+	/* Should only call the standard handler once */
+	zassert_equal(mock_call_count(), 1, "Expected 1 mock call.");
+	zassert_mock_called_once_with(tcpci_tcpc_alert_with_value, test_port,
+				      alert_val);
+}
+
+ZTEST_USER(rt1718s_tcpc, test_alert_no_alert)
+{
+	const int test_port = 0;
+
+	/* Set the alert register to 0. */
+	mock_tcpc_read16_alert_value = 0;
+
+	rt1718s_alert(test_port);
+
+	/* Should call neither handler (total 0 calls) */
+	zassert_equal(mock_call_count(), 0, "Expected 0 mock calls.");
+}
