@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "130e76ff_f14dfa52",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-18T08:28:30Z",
+      "side": 1,
+      "message": "@dawidn@google.com  Hi Dawid, about this issue, I want to use K_HEAP_DEFINE(fp_driver_heap, CONFIG_FINGERPRINT_SENSOR_FT9865_HEAP_SIZE) to define a fp driver heap, and add ft_malloc and ft_free in the PAL file, our private lib can use ft_malloc and ft_free to allocate and free memory in runtime. is this correct?",
+      "parentUuid": "3efae5c0_07392c35",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a4789a_70e26a4a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
         "patchSetId": 3
