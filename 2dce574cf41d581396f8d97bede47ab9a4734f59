@@ -141,6 +141,24 @@
       "parentUuid": "0d6bff79_0d5a3d98",
       "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15ad8f8_3ff32261",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2025-11-18T07:37:50Z",
+      "side": 1,
+      "message": "TODO: separate CL to support SPI PM",
+      "parentUuid": "071af35d_dc3a3be0",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
