@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d9b022_b07024ac",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T06:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390d0b4f_a93ff2bf",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "515b572a7750c866d4eb11b29a5a71e9e388d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62972206_2a575d15",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T06:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ca09ba_8fb54b0d",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "515b572a7750c866d4eb11b29a5a71e9e388d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6928dd9f_29981b24",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-17T06:39:32Z",
       "side": 1,
       "message": "Add `\u0026\u0026 blink_cnt !\u003d 0`.",
+      "range": {
+        "startLine": 328,
+        "startChar": 57,
+        "endLine": 328,
+        "endChar": 58
+      },
+      "revId": "515b572a7750c866d4eb11b29a5a71e9e388d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d4430a8_ce229e36",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T06:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6928dd9f_29981b24",
       "range": {
         "startLine": 328,
         "startChar": 57,
