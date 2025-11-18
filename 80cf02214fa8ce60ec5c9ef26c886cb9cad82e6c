@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24667dd9_6dcd535d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Use `cros format file_name` on the added/modified files.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688470bc_8b1dff4f",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Add a proper dependency, otherwise it will be enabled for every project.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8865045_398ae0a4",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Maybe add a dependency on a Elan watchdog for enabling this driver?",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da3ffc2_e20c4486",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Move to previous line",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af8b88b_c55f2273",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Move to previous line.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679c7774_32523667",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Null terminate the buf with buf[8] \u003d \u0027\\0\u0027; The buf pointer is shared outside this function, so we are not 100% sure it was not modified.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbc26c6_5bbbad68",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "Null terminate the `buf` with `buf[2] \u003d \u0027\\0\u0027;` The buf pointer is shared outside this function, so we are not 100% sure it was not modified.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "874b6d0b_1f635e14",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T11:17:43Z",
+      "side": 1,
+      "message": "I think DEBUG_RST is fine. There is no a perfect match for `RESET_LOW_POWER_WAKE`, so I believe mapping it to `DEBUG_RST` is acceptable to differentiate it from other reset causes. You can add a comment explaining it.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
