@@ -33,6 +33,24 @@
       "message": "Can you add a comment about why we do both of these things? invalidate_suppliers makes sure that no other supplier will keep the limit above 0. force_ceil makes sure the change takes effect ASAP.",
       "revId": "fb535b52b8f08bbed73da3dceb96c72ea8dbca2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706b9301_c994e84d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3661,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-11-18T05:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8adfc8ce_a647f4f9",
+      "revId": "fb535b52b8f08bbed73da3dceb96c72ea8dbca2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
