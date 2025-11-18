@@ -217,3 +217,8 @@ __override bool pd_check_vbus_level(int port, enum vbus_level level)
 		return false;
 	}
 }
+
+int board_vbus_sink_enable(int port, int enable)
+{
+	return ppc_vbus_sink_enable(port, enable);
+}
