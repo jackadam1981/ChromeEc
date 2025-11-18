@@ -198,7 +198,7 @@ static int verify_ap_ro_check_space(void)
 	data_size = p_chk->header.num_ranges * sizeof(struct ro_range) +
 		    offsetof(struct ap_ro_check_payload, ranges);
 	if (p_chk->header.num_ranges > AP_RO_MAX_NUM_RANGES) {
-		CPRINTS("%s: bogus number of ranges %d", __func__,
+		CPRINTS("%s: bogus range # %d", __func__,
 			p_chk->header.num_ranges);
 		return EC_ERROR_CRC;
 	}
@@ -207,7 +207,7 @@ static int verify_ap_ro_check_space(void)
 			 sizeof(checksum));
 
 	if (memcmp(&checksum, &p_chk->header.checksum, sizeof(checksum))) {
-		CPRINTS("%s: AP RO Checksum corrupted", __func__);
+		CPRINTS("%s: corrupted", __func__);
 		return EC_ERROR_CRC;
 	}
 
@@ -229,17 +229,13 @@ static enum ap_ro_check_vc_errors ap_ro_check_unsupported(int add_flash_event)
 {
 	/* Validate the saved hash contents */
 	if (p_chk->header.num_ranges == (uint16_t)~0) {
-		CPRINTS("%s: RO verification not programmed", __func__);
-		if (add_flash_event)
-			ap_ro_add_flash_event(APROF_SPACE_NOT_PROGRAMMED);
+		CPRINTS("%s: not programmed", __func__);
 		return ARCVE_NOT_PROGRAMMED;
 	}
 
 	/* Are the v1 contents intact? */
 	if (verify_ap_ro_check_space() != EC_SUCCESS) {
-		CPRINTS("%s: unable to read ap ro space", __func__);
-		if (add_flash_event)
-			ap_ro_add_flash_event(APROF_SPACE_INVALID);
+		CPRINTS("%s: read failed", __func__);
 		return ARCVE_FLASH_READ_FAILED; /* No verification possible. */
 	}
 	return ARCVE_DISABLED;
@@ -267,7 +263,7 @@ void ap_ro_device_reset(void)
 		CPRINTS("%s: ignored", __func__);
 		return;
 	}
-	CPRINTS("%s: clear apro result", __func__);
+	CPRINTS("%s: clear", __func__);
 	apro_result = AP_RO_NOT_RUN;
 }
 
@@ -451,38 +447,6 @@ static enum vendor_cmd_rc vc_seed_ap_ro_check(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_SEED_AP_RO_CHECK, vc_seed_ap_ro_check);
 
-static int verify_ap_ro_gbb_space(void)
-{
-	uint32_t checksum;
-
-	if ((p_chk->gbbd_header.type != AP_RO_HASH_TYPE_GBBD) ||
-	    (p_chk->gbbd_header.version != AP_RO_GBBD_LAYOUT_VERSION_2))
-		return EC_ERROR_CRC;
-	/* The GBB descriptor is only valid for FACTORY hashes. */
-	if (p_chk->header.type != AP_RO_HASH_TYPE_FACTORY)
-		return EC_ERROR_CRC;
-
-	/* The V1 header saved too many ranges. The stored GBBD is invalid */
-	if (p_chk->header.num_ranges > AP_RO_MAX_NUM_RANGES) {
-		CPRINTS("%s: V1 stored too many ranges", __func__);
-		return EC_ERROR_CRC;
-	}
-	if (p_chk->gbbd_header.num_ranges != p_chk->header.num_ranges) {
-		CPRINTS("%s: gbbd doesn't match v1 header", __func__);
-		return EC_ERROR_CRC;
-	}
-
-	app_compute_hash(&p_chk->gbbd, sizeof(struct gbb_descriptor),
-			 &checksum, sizeof(checksum));
-
-	if (memcmp(&checksum, &p_chk->gbbd_header.checksum, sizeof(checksum))) {
-		CPRINTS("%s: AP RO GBB Checksum corrupted", __func__);
-		return EC_ERROR_CRC;
-	}
-
-	return EC_SUCCESS;
-}
-
 /*
  * Set the AP RO verification result to UNSUPPORTED_TRIGGERED, so shimless
  * RMA and factory scripts can tell that AP RO verification was purposefully
@@ -492,10 +456,9 @@ static int verify_ap_ro_gbb_space(void)
  */
 static uint8_t do_ap_ro_check(void)
 {
-	CPRINTS("%s: universally unsupported", __func__);
+	CPRINTS("%s: NO GSC SUPPORT", __func__);
 	update_device_rst_deadline(UNSUPPORTED_DEVICE_RST_WINDOW);
 	apro_result = AP_RO_UNSUPPORTED_TRIGGERED;
-	ap_ro_add_flash_event(APROF_CHECK_UNSUPPORTED);
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
@@ -540,14 +503,6 @@ void validate_ap_ro(void)
 	tpm_alt_extension(&pack.tpmh, sizeof(pack));
 }
 
-void ap_ro_add_flash_event(enum ap_ro_verification_ev event)
-{
-	struct ap_ro_entry_payload ev;
-
-	ev.event = event;
-	flash_log_add_event(FE_LOG_AP_RO_VERIFICATION, sizeof(ev), &ev);
-}
-
 static enum vendor_cmd_rc vc_get_ap_ro_hash(enum vendor_cmd_cc code,
 					    void *buf, size_t input_size,
 					    size_t *response_size)
@@ -563,7 +518,7 @@ static enum vendor_cmd_rc vc_get_ap_ro_hash(enum vendor_cmd_cc code,
 	if (rv != ARCVE_OK) {
 		if (ARCVE_DISABLED) {
 			CPRINTS("%s: hash ok", __func__);
-			CPRINTS("%s: apro verification is disabled", __func__);
+			CPRINTS("%s: disabled", __func__);
 		} else {
 			*response_size = 1;
 			*response = rv;
@@ -577,6 +532,7 @@ static enum vendor_cmd_rc vc_get_ap_ro_hash(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_AP_RO_HASH, vc_get_ap_ro_hash);
 
+#ifdef CONFIG_CMD_AP_RO_VERIFICATION
 static int ap_ro_info_cmd(int argc, char **argv)
 {
 	int rv;
@@ -607,18 +563,6 @@ static int ap_ro_info_cmd(int argc, char **argv)
 	 */
 	if (rv != ARCVE_OK && rv != ARCVE_DISABLED)
 		return EC_SUCCESS;
-	rv = verify_ap_ro_gbb_space();
-	ccprintf("gbbd      : ");
-	if (rv == EC_SUCCESS) {
-		ccprintf("ok (%d)\n", p_chk->gbbd.status);
-		ccprintf("flags     : ");
-		if (p_chk->gbbd.status & GS_FLAGS_IN_HASH)
-			ccprintf("0x%x\n", p_chk->gbbd.injected_flags);
-		else
-			ccprintf("na\n");
-	} else {
-		ccprintf("na (%d)\n", rv);
-	}
 	ccprintf("sha256 hash %ph\n",
 		 HEX_BUF(p_chk->payload.digest, sizeof(p_chk->payload.digest)));
 	ccprintf("Covered ranges:\n");
@@ -638,6 +582,7 @@ DECLARE_SAFE_CONSOLE_COMMAND(ap_ro_info, ap_ro_info_cmd,
 			     "", "Display AP RO check space"
 #endif
 );
+#endif
 
 static enum vendor_cmd_rc vc_get_ap_ro_status(enum vendor_cmd_cc code,
 					      void *buf, size_t input_size,
@@ -645,8 +590,6 @@ static enum vendor_cmd_rc vc_get_ap_ro_status(enum vendor_cmd_cc code,
 {
 	uint8_t rv = apro_result;
 	uint8_t *response = buf;
-
-	CPRINTS("Check AP RO status");
 
 	*response_size = 0;
 	if (input_size)
