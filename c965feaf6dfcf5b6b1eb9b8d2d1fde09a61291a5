@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cc1c50_5279d1f3",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-18T14:55:59Z",
+      "side": 1,
+      "message": "I see a `TODO Validate vendor defined alert mask is set once tcpci emul fix` in the [src/platform/ec/zephyr/test/drivers/rt1718s/src/tcpc.c] (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/rt1718s/src/tcpc.c;drc\u003de7c42899c61d8835888bcf94e808164786ce23cc;l\u003d75)",
+      "revId": "c965feaf6dfcf5b6b1eb9b8d2d1fde09a61291a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
