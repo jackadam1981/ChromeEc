@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "589e6f6d_9580d0aa",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T12:08:45Z",
+      "side": 1,
+      "message": "If the heap is for the private lib usage, please define it in PAL.",
+      "parentUuid": "130e76ff_f14dfa52",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a4789a_70e26a4a",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
         "patchSetId": 3
