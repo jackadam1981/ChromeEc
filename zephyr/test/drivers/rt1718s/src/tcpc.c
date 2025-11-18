@@ -236,3 +236,13 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+ZTEST(rt1718s_tcpc, test_alert_handling)
+{
+	/* Simulate a general TCPCI alert */
+	rt1718s_emul_set_reg(rt1718s_emul, TCPC_REG_ALERT,
+			     ~TCPC_REG_ALERT_VENDOR_DEF & 0xFFFF);
+	/* Call the function under test */
+	rt1718s_tcpm_drv.tcpc_alert(tcpm_rt1718s_port);
+	zassert_ok(rt1718s_tcpm_drv.tcpc_alert(tcpm_rt1718s_port, true));
+}
