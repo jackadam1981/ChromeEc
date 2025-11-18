@@ -158,6 +158,24 @@
       "parentUuid": "0b95020a_ebbea623",
       "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea724b6c_bcf5939a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-18T02:30:12Z",
+      "side": 1,
+      "message": "All 4 functions in this file will be referenced by the private lib",
+      "parentUuid": "6bbd1f48_bee8fb1e",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
