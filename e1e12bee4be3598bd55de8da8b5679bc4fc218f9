@@ -16,6 +16,24 @@
       "message": "increase retry_cnt here to avoid continuously increasing.",
       "revId": "e1e12bee4be3598bd55de8da8b5679bc4fc218f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60778308_f9b70718",
+        "filename": "zephyr/program/fatcat/lapis/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2025-11-18T09:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "239b780b_0e802e5a",
+      "revId": "e1e12bee4be3598bd55de8da8b5679bc4fc218f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
