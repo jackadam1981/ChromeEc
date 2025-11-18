@@ -63,6 +63,30 @@
       },
       "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f508c4_04e6e3f4",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T18:53:03Z",
+      "side": 1,
+      "message": "To be clear - the logs from last comment are __without__ changes in this CL.",
+      "parentUuid": "bc86f499_8c235dfe",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
