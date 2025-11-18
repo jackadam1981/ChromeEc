@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f165862f_1c091ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-18T22:23:39Z",
+      "side": 1,
+      "message": "The way I think this is _supposed to_ work is kind of complicated. I\u0027ll explain on the bug, and you can do some experiments to validate that.",
+      "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b08cb4f_256dba36",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-18T22:23:39Z",
+      "side": 1,
+      "message": "This function _should_ only be called when the Type-C supplier is active, which isn\u0027t our situation.",
+      "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca93b30_d4a2ebf3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3664,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-18T22:23:39Z",
+      "side": 1,
+      "message": "IIRC, this is from your other CL. It will be easier to work on this one if you put it in a stack on top of that one. You should be able to do that without creating a new CL in Gerrit.",
+      "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb44eed_41be6c02",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-18T22:23:39Z",
+      "side": 1,
+      "message": "This might work, because nobody else is using it. But I don\u0027t think this is the right function to override. It\u0027s supposed to be used by BC1.2, which this board doesn\u0027t support.\n\nTry it this way, because I don\u0027t think it will hurt. But if it works, we\u0027ll need to figure out the right way to do it.",
+      "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
