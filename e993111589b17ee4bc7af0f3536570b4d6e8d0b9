@@ -16,6 +16,23 @@
       "message": "Run repo uploade for uploading the CL and address all checks, including running `cros format`",
       "revId": "e993111589b17ee4bc7af0f3536570b4d6e8d0b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8bb8e3_cd1d7d7f",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T13:18:49Z",
+      "side": 1,
+      "message": "I think a default option should be 3",
+      "revId": "e993111589b17ee4bc7af0f3536570b4d6e8d0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
