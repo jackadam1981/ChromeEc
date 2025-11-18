@@ -159,6 +159,24 @@
       "parentUuid": "071af35d_dc3a3be0",
       "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a55957a_89d7acc7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T08:36:16Z",
+      "side": 1,
+      "message": "Yes, create a separate CL and add it in a comment in /* TODO(b:xxx): XXX */ form, to SPI low power mode after transaction in the driver.",
+      "parentUuid": "e15ad8f8_3ff32261",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
