@@ -5152,10 +5152,13 @@ test_mockable int pdc_power_mgmt_set_comms_state(bool enable_comms)
 				continue;
 			}
 
-			ret = WAIT_FOR(get_pdc_state(&pdc_data[p]->port) ==
-					       PDC_SUSPENDED,
-				       SUSPEND_TIMEOUT_USEC,
-				       k_sleep(K_MSEC(LOOP_DELAY_MS)));
+			ret = WAIT_FOR(
+				get_pdc_state(&pdc_data[p]->port) ==
+						PDC_SUSPENDED ||
+					get_pdc_state(&pdc_data[p]->port) ==
+						PDC_INIT,
+				SUSPEND_TIMEOUT_USEC,
+				k_sleep(K_MSEC(LOOP_DELAY_MS)));
 			if (!ret) {
 				LOG_ERR("Timed out suspending PDC SM for port "
 					"C%d: %d",
