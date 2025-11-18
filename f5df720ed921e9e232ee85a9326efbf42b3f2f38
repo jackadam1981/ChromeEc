@@ -117,6 +117,24 @@
       "parentUuid": "17188ba3_583dfe29",
       "revId": "f5df720ed921e9e232ee85a9326efbf42b3f2f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35cbb7eb_178d6f64",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-18T19:25:54Z",
+      "side": 1,
+      "message": "HOOK_TABLET_MODE_CHANGE can\u0027t be used because this hook is notified when the lid angle calculation determines a tablet mode switch needs to happen. For this case we would only want the hook to trigger the dsp service to notify the ISH to retrieve the new GMR sensor GPIO level.",
+      "parentUuid": "b9502ad8_44bee48b",
+      "revId": "f5df720ed921e9e232ee85a9326efbf42b3f2f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
