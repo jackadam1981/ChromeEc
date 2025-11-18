@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07af062b_d189a57c",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-18T07:14:48Z",
+      "side": 1,
+      "message": "Should we capture error code here and return the same instead of returning -1 ?\nex:\n  return pin;\n\nor add a debug print to capture error and then return -1.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 14
+      },
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b25b586_d550241a",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-18T07:14:48Z",
+      "side": 1,
+      "message": "same as board_id.",
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9391106b_67339b46",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-18T07:14:48Z",
+      "side": 1,
+      "message": "same as board_id.",
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
