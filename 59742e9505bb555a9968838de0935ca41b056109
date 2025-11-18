@@ -16,6 +16,24 @@
       "message": "```\nINFO    - The following issues were found (showing the top 10 items):\nINFO    - 1) skyrim.baseboard.usbc_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 2) skyrim.baseboard.power_signals on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 3) skyrim.baseboard.usb_pd_policy on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 4) skyrim.baseboard.usb_pd_policy.discharge on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 5) skyrim.crystaldrift.usb_mux_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 6) skyrim.frostflow.ppc_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 7) skyrim.frostflow.usb_mux_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 8) skyrim.markarth.ppc_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 9) skyrim.markarth.usb_mux_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\nINFO    - 10) skyrim.skyrim.ppc_config on native_sim/native error (Build failure - error: unused function \u0027tcpci_tcpm_should_enter_bist_mode\u0027 [-Werror,-Wunused-function])\n```\nOption 1 would be to find what I guess is the skyrim board code that should call this function and fix it. Option 2 would be to mark this function `__maybe_unused`.",
       "revId": "59742e9505bb555a9968838de0935ca41b056109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be54484_2e73d4b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-18T09:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89cc314d_eff35683",
+      "revId": "59742e9505bb555a9968838de0935ca41b056109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
