@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46a2891d_ed29a158",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-18T02:21:20Z",
+      "side": 1,
+      "message": "I moved it to Kconfig.ft in sensor driver",
+      "parentUuid": "72961f45_8d012389",
+      "revId": "42f6be4145d83afe6fcf845c8346b5af3501a95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f203bfbb_cecbd2c3",
         "filename": "zephyr/subsys/fingerprint/alg/ft9865_bio_alg.c",
         "patchSetId": 10
