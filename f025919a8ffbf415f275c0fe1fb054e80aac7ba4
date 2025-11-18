@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976275b7_13c4a8e1",
+        "filename": "zephyr/include/cros/cbi_ufsc_std_schema.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-18T17:22:23Z",
+      "side": 1,
+      "message": "We reserve the `_present` and `_absent` suffix for the value nodes. So the field nodes should not use this suffix.",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
