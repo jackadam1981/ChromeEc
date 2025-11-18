@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32577ac0_37feae69",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-18T18:27:42Z",
+      "side": 1,
+      "message": "The guard using `HAS_PROP` isn\u0027t needed.  Simplify using one of the `DT_*_OR()` variants.\n```suggestion\n\t.handler \u003d DT_INST_STRING_TOKEN_OR(0, handler, NULL),\n};\n```",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 0
+      },
+      "revId": "6b28db794ac62e1c87f41abba28a4e11b78a3cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

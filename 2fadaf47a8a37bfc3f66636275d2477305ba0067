@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34088968_6c1f0521",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-18T18:27:42Z",
+      "side": 1,
+      "message": "Ack - keeping the extern label makes sense so it\u0027s clear the function isn\u0027t defined here.",
+      "parentUuid": "990adb2b_31cc88d9",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 0
+      },
+      "revId": "2fadaf47a8a37bfc3f66636275d2477305ba0067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43ee58d4_21a741ef",
