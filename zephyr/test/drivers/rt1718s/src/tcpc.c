@@ -236,3 +236,62 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+ZTEST(rt1718s_tcpc, test_alert_standard_behavior)
+{
+	/* * 1. Set a standard TCPCI alert (e.g., CC Status Change).
+	 * This ensures (alert & ~TCPC_REG_ALERT_VENDOR_DEF) evaluates to true.
+	 */
+	uint16_t alert_mask = TCPC_REG_ALERT_CC_STATUS;
+
+	/* Use the emulator backdoor to set the ALERT register directly */
+	tcpci_emul_set_reg(rt1718s_emul, TCPC_REG_ALERT, alert_mask);
+
+	/* Verify the emulator register is actually set before we test */
+	compare_reg_val_with_mask(rt1718s_emul, TCPC_REG_ALERT, alert_mask,
+				  alert_mask);
+
+	/* * 2. Trigger the driver's alert handler.
+	 * This calls rt1718s_alert(), which reads the register we just set.
+	 */
+	if (rt1718s_tcpm_drv.tcpc_alert) {
+		rt1718s_tcpm_drv.tcpc_alert(tcpm_rt1718s_port);
+	}
+
+	/* * 3. Verify the result.
+	 * If the code entered the `if (alert & ~TCPC_REG_ALERT_VENDOR_DEF)`
+	 * block, it called `tcpci_tcpc_alert_with_value`. The standard behavior
+	 * of that function is to process the event and write-to-clear the ALERT
+	 * register.
+	 */
+	compare_reg_val_with_mask(rt1718s_emul, TCPC_REG_ALERT, 0, alert_mask);
+}
+
+ZTEST(rt1718s_tcpc, test_alert_vendor_behavior)
+{
+	/* 1. Set the Vendor Defined Alert bit.
+	 * This ensures (alert & TCPC_REG_ALERT_VENDOR_DEF) evaluates to true.
+	 */
+	uint16_t alert_mask = TCPC_REG_ALERT_VENDOR_DEF;
+
+	/* Use the emulator backdoor to set the ALERT register directly */
+	tcpci_emul_set_reg(rt1718s_emul, TCPC_REG_ALERT, alert_mask);
+
+	/* Optional: Set a specific vendor interrupt cause in the proprietary
+	 * register (e.g., RT1718S_RT_INT). This depends on how complex the
+	 * rt1718s_vendor_defined_alert function is.
+	 * For basic coverage, just the ALERT bit is usually sufficient.
+	 */
+
+	/* 2. Trigger the driver's alert handler. */
+	if (rt1718s_tcpm_drv.alert) {
+		rt1718s_tcpm_drv.alert(tcpm_rt1718s_port);
+	}
+
+	/* 3. Verify the result.
+	 * The driver's rt1718s_vendor_defined_alert() function should have:
+	 * - Read the underlying cause.
+	 * - Written to TCPC_REG_ALERT to clear the VENDOR_DEF bit.
+	 */
+	compare_reg_val_with_mask(rt1718s_emul, TCPC_REG_ALERT, 0, alert_mask);
+}
