@@ -17,6 +17,9 @@
 ZTEST_SUITE(rt1718s_tcpc, drivers_predicate_post_main, NULL,
 	    rt1718s_clear_set_reg_history, rt1718s_clear_set_reg_history, NULL);
 
+bool rt1718s_emul_check_vendor_alert_called(const struct emul *emul);
+bool rt1718s_emul_check_tcpci_alert_called(const struct emul *emul);
+
 static void test_bc12_reg_init_settings(const struct emul *emul)
 {
 	/* Vendor defined BC12 function is enabled */
@@ -235,4 +238,25 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 	compare_reg_val_with_mask(
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
+}
+
+ZTEST(rt1718s_tcpc, test_alert_handling)
+{
+	// 1. Simulate a VENDOR_DEF alert
+	rt1718s_emul_set_reg(rt1718s_emul, TCPC_REG_ALERT,
+			     TCPC_REG_ALERT_VENDOR_DEF);
+	// Call the function under test
+	rt1718s_tcpm_drv.tcpc_alert(tcpm_rt1718s_port);
+	// Assert: rt1718s_vendor_defined_alert was called.
+	zassert_true(rt1718s_emul_check_vendor_alert_called(rt1718s_emul),
+		     "Vendor defined alert not processed.");
+
+	// 2. Simulate a general TCPCI alert
+	rt1718s_emul_set_reg(rt1718s_emul, TCPC_REG_ALERT,
+			     ~TCPC_REG_ALERT_VENDOR_DEF & 0xFFFF);
+	// Call the function under test
+	rt1718s_tcpm_drv.tcpc_alert(tcpm_rt1718s_port);
+	// Assert: tcpci_tcpc_alert was called.
+	zassert_true(rt1718s_emul_check_tcpci_alert_called(rt1718s_emul),
+		     "General TCPCI alert not processed.");
 }

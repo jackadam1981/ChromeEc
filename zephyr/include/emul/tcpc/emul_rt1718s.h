@@ -75,4 +75,20 @@ void rt1718s_emul_reset_set_history(const struct emul *emul);
  */
 void rt1718s_emul_set_device_id(const struct emul *emul, uint16_t device_id);
 
+/**
+ * @brief tcpc alert call
+ *
+ * @param emul Pointer to I2C rt1718s emulator
+ *
+ */
+bool rt1718s_emul_check_tcpci_alert_called(const struct emul *emul);
+
+/**
+ * @brief Vendor alert call
+ *
+ * @param emul Pointer to I2C rt1718s emulator
+ *
+ */
+bool rrt1718s_emul_check_vendor_alert_called(const struct emul *emul);
+
 #endif /* __EMUL_RT1718S_H */
