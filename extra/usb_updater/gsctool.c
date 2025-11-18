@@ -3489,7 +3489,7 @@ static int process_get_apro_hash(struct transfer_descriptor *td)
 	}
 	printf("digest: ");
 	for (i = 0; i < SHA256_DIGEST_SIZE; i++)
-		printf("%x", response[i]);
+		printf("%02x", response[i]);
 	printf("\n");
 	return 0;
 }
