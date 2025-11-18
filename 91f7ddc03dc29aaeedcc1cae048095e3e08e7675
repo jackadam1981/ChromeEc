@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8d50c989_5f466d62",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-18T21:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c28fcde_96e83334",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 14
+      },
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8b25b586_d550241a",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 3
@@ -85,6 +109,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "17fc83bf_f4faf504",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-18T21:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03edb692_153cc3be",
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9391106b_67339b46",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 3
@@ -114,6 +156,24 @@
       "side": 1,
       "message": "```suggestion\n\t\t\t\treturn pin;\n```",
       "parentUuid": "9391106b_67339b46",
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71282e0c_e084b18b",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-18T21:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a85d921f_32403e2b",
       "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
