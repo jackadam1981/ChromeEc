@@ -1242,6 +1242,7 @@
 
 /* Include AP RO verification support. */
 #undef CONFIG_AP_RO_VERIFICATION
+#undef CONFIG_CMD_AP_RO_VERIFICATION
 
 /*
  * Enable EC-CR50 communication (a.k.a. EC-EFS2). This is for CR50 config only.
