@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c28fcde_96e83334",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-18T08:27:52Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\treturn pin;\n```",
+      "parentUuid": "07af062b_d189a57c",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 14
+      },
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8b25b586_d550241a",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "03edb692_153cc3be",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-18T08:27:52Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\treturn pin;\n```",
+      "parentUuid": "8b25b586_d550241a",
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9391106b_67339b46",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-11-18T07:14:48Z",
       "side": 1,
       "message": "same as board_id.",
+      "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85d921f_32403e2b",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-18T08:27:52Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t\treturn pin;\n```",
+      "parentUuid": "9391106b_67339b46",
       "revId": "91f7ddc03dc29aaeedcc1cae048095e3e08e7675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
