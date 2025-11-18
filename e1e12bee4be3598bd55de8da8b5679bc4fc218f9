@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239b780b_0e802e5a",
+        "filename": "zephyr/program/fatcat/lapis/src/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-11-18T03:34:11Z",
+      "side": 1,
+      "message": "increase retry_cnt here to avoid continuously increasing.",
+      "revId": "e1e12bee4be3598bd55de8da8b5679bc4fc218f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
