@@ -236,3 +236,16 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+ZTEST(rt1718s_tcpc, test_tcpc_alert)
+{
+	uint16_t reg;
+
+	tcpci_emul_set_reg(emul, TCPC_REG_ALERT, TCPC_REG_ALERT_VENDOR_DEF);
+	tcpci_emul_get_reg(emul, TCPC_REG_ALERT, &reg);
+	zassert_equal(reg, TCPC_REG_ALERT_VENDOR_DEF);
+
+	zassert_equal(pd_got_frs_signal_fake.call_count, 0);
+	tcpc_config[PORT].drv->tcpc_alert(PORT);
+	zassert_equal(pd_got_frs_signal_fake.call_count, 1);
+}
