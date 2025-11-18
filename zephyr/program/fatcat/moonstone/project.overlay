@@ -8,6 +8,9 @@
 #include <cros/integrated_fwid.dtsi>
 
 /* moonstone project DTS includes */
+#include "keyboard.dtsi"
+#include "led_strip_spi.dtsi"
+
 #include "../kinmen/adc.dtsi"
 #include "../kinmen/binman.dtsi"
 #include "../kinmen/console.dtsi"
@@ -16,7 +19,6 @@
 #include "../kinmen/hibernate.dtsi"
 #include "../kinmen/i2c.dtsi"
 #include "../kinmen/interrupts.dtsi"
-#include "../kinmen/keyboard.dtsi"
 #include "../kinmen/led_pins.dtsi"
 #include "../kinmen/led_policy.dtsi"
 #include "../kinmen/power_signals.dtsi"
