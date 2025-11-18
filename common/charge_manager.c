@@ -1401,6 +1401,12 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
 		supplier = CHARGE_SUPPLIER_TYPEC_UNDER_1_5A;
 #endif /* CONFIG_USB_CHARGER */
 
+	if (charge.current == 0) {
+		board_vbus_sink_enable(port, 0);
+	} else {
+		board_vbus_sink_enable(port, 1);
+	}
+
 	charge_manager_update_charge(supplier, port, &charge);
 
 	/*

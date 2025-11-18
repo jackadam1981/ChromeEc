@@ -3660,8 +3660,8 @@ static void pe_snk_apply_transition_current(int port)
 
 	if (current_limit == 0)
 		charge_manager_invalidate_suppliers(port);
-	else
-		charge_manager_force_ceil(port, current_limit);
+
+	charge_manager_force_ceil(port, current_limit);
 }
 
 static void pe_snk_select_capability_run(int port)
