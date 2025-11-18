@@ -63,6 +63,24 @@
       "message": "Looking deeper, this code should be in tablet_mode.c, there is a debounce for the interrupt handler already.\nThe tricky part is `gmr_tablet_switch_isr_handler` is completely different and should be defined to call the dsp service for sending the message.\nIt would make `dsp_service.cc` less convoluted by removing the tablet mode handling logic.",
       "revId": "f5df720ed921e9e232ee85a9326efbf42b3f2f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ad3879_f12f59c3",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-18T01:39:25Z",
+      "side": 1,
+      "message": "Are you suggesting that dsp_serice.cc should not have any tablet mode logic at all.",
+      "parentUuid": "1ac3fbfb_db31e8d7",
+      "revId": "f5df720ed921e9e232ee85a9326efbf42b3f2f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
