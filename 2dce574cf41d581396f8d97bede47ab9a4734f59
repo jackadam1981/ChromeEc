@@ -177,6 +177,24 @@
       "parentUuid": "e15ad8f8_3ff32261",
       "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4c936d_9b9e185e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4333743
+      },
+      "writtenOn": "2025-11-18T12:48:55Z",
+      "side": 1,
+      "message": "We didn\u0027t see such kind of weird behavior what you observed on ST MCU+FPC1025. Let\u0027s remove those codes first, and we will double check the actual power consumption of real module, OK?",
+      "parentUuid": "071af35d_dc3a3be0",
+      "revId": "2dce574cf41d581396f8d97bede47ab9a4734f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
