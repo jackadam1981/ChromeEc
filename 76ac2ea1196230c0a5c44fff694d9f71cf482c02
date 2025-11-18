@@ -51,6 +51,29 @@
       "message": "I believe that Caveh is the EC engineer on this program.",
       "revId": "76ac2ea1196230c0a5c44fff694d9f71cf482c02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ab7a77_6898cf00",
+        "filename": "zephyr/program/fatcat/moonstone/project.overlay",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-18T21:40:45Z",
+      "side": 1,
+      "message": "you cold also update the commit message that you\u0027re splitting\nthe moonstone GPIOs from kinmen and making adjustments for moonstone.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "76ac2ea1196230c0a5c44fff694d9f71cf482c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
