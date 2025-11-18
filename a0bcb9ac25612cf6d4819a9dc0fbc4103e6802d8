@@ -22,6 +22,30 @@
       },
       "revId": "a0bcb9ac25612cf6d4819a9dc0fbc4103e6802d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c382ba_8f6fd27b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-18T09:49:36Z",
+      "side": 1,
+      "message": "I moved this change to a separate CL:7165372 and updated both elan_image_read() and elan_image_read_linewise() accordingly.",
+      "parentUuid": "0d078575_5f994057",
+      "range": {
+        "startLine": 314,
+        "startChar": 4,
+        "endLine": 314,
+        "endChar": 37
+      },
+      "revId": "a0bcb9ac25612cf6d4819a9dc0fbc4103e6802d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
