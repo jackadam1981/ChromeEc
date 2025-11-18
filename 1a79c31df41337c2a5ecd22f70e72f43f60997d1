@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfcdada2_3470397e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-18T09:49:26Z",
+      "side": 1,
+      "message": "Fixed in PS4.",
+      "parentUuid": "a5f80f09_48fa1cd7",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 31
+      },
+      "revId": "1a79c31df41337c2a5ecd22f70e72f43f60997d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "883bd6f5_ea9fa1e4",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-17T22:15:28Z",
       "side": 1,
       "message": "let us be consistent with the rest `__unused`. Is there a reason for `__maybe_unsed`??",
+      "range": {
+        "startLine": 481,
+        "startChar": 7,
+        "endLine": 481,
+        "endChar": 21
+      },
+      "revId": "1a79c31df41337c2a5ecd22f70e72f43f60997d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c8ef83_8f3e60f7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-18T09:49:26Z",
+      "side": 1,
+      "message": "Updated to __unused to stay consistent with the rest.\nelan_image_read() and elan_image_read_linewise() has been updated as well.",
+      "parentUuid": "883bd6f5_ea9fa1e4",
       "range": {
         "startLine": 481,
         "startChar": 7,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "maybe this is needed before this comes from the library? `__unused` tag.??",
       "parentUuid": "cacbb9bf_88693582",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 68
+      },
+      "revId": "1a79c31df41337c2a5ecd22f70e72f43f60997d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "defdc8cb_d2126db9",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-18T09:49:26Z",
+      "side": 1,
+      "message": "Fixed in PS4.",
+      "parentUuid": "608780ab_953cd2e8",
       "range": {
         "startLine": 213,
         "startChar": 0,
