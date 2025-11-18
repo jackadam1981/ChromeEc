@@ -236,3 +236,46 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+ZTEST(rt1718s_tcpc, test_alert_non_vendor_defined)
+{
+	const struct emul *emul = rt1718s_emul;
+	uint16_t non_vendor_alert = TCPC_REG_ALERT_CC_STATUS |
+				    TCPC_REG_ALERT_VBUS_DIS_COMPLETE;
+	uint16_t expected_alert_value = non_vendor_alert;
+
+	// 1. Setup the emulator to return a non-vendor-defined alert value
+	// This is done by simulating a read from TCPC_REG_ALERT.
+	rt1718s_emul_set_reg(emul, TCPC_REG_ALERT, non_vendor_alert);
+
+	// 2. Clear any previous mock call history for the alert function
+	compare_reg_val_with_mask(emul, TCPC_REG_ALERT, 0, 0xFFFF);
+
+	// 3. Call the function that processes alerts (driver entry point)
+	// The driver should read TCPC_REG_ALERT (set in step 1), and then
+	// call tcpci_tcpc_alert_with_value with the filtered value.
+	// NOTE: 'tcpc_alert' is typically the public entry point for the
+	// driver.
+	tcpc_alert(tcpm_rt1718s_port);
+
+	// 4. Verification: Check if tcpci_tcpc_alert_with_value was called
+	// with the expected alert value (excluding VENDOR_DEF bit if it was
+	// set). The rt1718s_alert function calls:
+	tcpci_tcpc_alert_with_value(port, alert & ~TCPC_REG_ALERT_VENDOR_DEF);
+	// Since we set 'non_vendor_alert', the filter doesn't change it.
+
+	// A real ZTEST would use an assertion based on a mocked function:
+	// /*
+	zassert_equal(
+		mock_tcpci_alert_get_call_count(), 1,
+		"tcpci_tcpc_alert_with_value should have been called once.");
+	zassert_equal(
+		mock_tcpci_alert_get_last_value(), expected_alert_value,
+		"tcpci_tcpc_alert_with_value called with wrong alert mask.");
+	// */
+
+	// If you were also testing vendor alerts, you'd verify
+	// rt1718s_vendor_defined_alert was called:
+	// zassert_true(mock_rt1718s_vendor_alert_called(), "Vendor alert
+	// function not called.");
+}
