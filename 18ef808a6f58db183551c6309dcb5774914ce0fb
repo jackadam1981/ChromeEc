@@ -39,6 +39,30 @@
       },
       "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc86f499_8c235dfe",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-18T18:48:03Z",
+      "side": 1,
+      "message": "It is hard to show the case without modifying some code a bit, because ectool doesn\u0027t support the flash region info command. I added this additional prints:\n```\ndiff --git a/common/flash.c b/common/flash.c\nindex caab120f3bca..d90339fb60b9 100644\n--- a/common/flash.c\n+++ b/common/flash.c\n@@ -1441,6 +1441,7 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,\n #define EC_FLASH_REGION_START \\\n        min(CONFIG_EC_PROTECTED_STORAGE_OFF, CONFIG_EC_WRITABLE_STORAGE_OFF)\n \n+void print_flash_regions(void);\n static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)\n {\n        const struct ec_params_flash_info_2 *p_2 \u003d args-\u003eparams;\n@@ -1457,6 +1458,8 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)\n        int ideal_size \u003d\n                (args-\u003eresponse_max - sizeof(struct ec_params_flash_write)) \u0026\n                ~(CONFIG_FLASH_WRITE_IDEAL_SIZE - 1);\n+\n+       print_flash_regions();\n        /*\n         * If we can\u0027t get at least one ideal block, then just want\n         * as high a multiple of the minimum write size as possible.\n@@ -1858,6 +1861,28 @@ flash_command_region_info(struct host_cmd_handler_args *args)\n DECLARE_HOST_COMMAND(EC_CMD_FLASH_REGION_INFO, flash_command_region_info,\n                     EC_VER_MASK(EC_VER_FLASH_REGION_INFO));\n \n+void print_flash_regions(void)\n+{\n+       struct ec_params_flash_region_info params;\n+       struct ec_response_flash_region_info info;\n+       struct host_cmd_handler_args args;\n+\n+       args.params \u003d \u0026params;\n+       args.response \u003d \u0026info;\n+\n+       params.region \u003d EC_FLASH_REGION_WP_RO;\n+       flash_command_region_info(\u0026args);\n+       printk(\"Flash region EC_FLASH_REGION_WP_RO\\n\");\n+       printk(\"offset: 0x%08x\\n\", info.offset);\n+       printk(\"size  : 0x%08x\\n\", info.size);\n+\n+       params.region \u003d EC_FLASH_REGION_RO;\n+       flash_command_region_info(\u0026args);\n+       printk(\"Flash region EC_FLASH_REGION_RO\\n\");\n+       printk(\"offset: 0x%08x\\n\", info.offset);\n+       printk(\"size  : 0x%08x\\n\", info.size);\n+}\n+\n #ifdef CONFIG_FLASH_SELECT_REQUIRED\n \n static enum ec_status flash_command_select(struct host_cmd_handler_args *args)\n```\nIt just causes that the flash regions info are printed for `EC_FLASH_REGION_WP_RO` and `EC_FLASH_REGION_RO` after receiving the flash info command (not flash region info). I built it for helipilot (npcx FPMCU) and here are results:\n```\nkaris-rev2 ~ # ectool --name\u003dcros_fp flashinfo\n...\nkaris-rev2 ~ # ectool --name\u003dcros_fp console\n...\nFlash region EC_FLASH_REGION_WP_RO\noffset: 0x00000000\nsize  : 0x00020000\nFlash region EC_FLASH_REGION_RO\noffset: 0x00000040\nsize  : 0x00020000\n...\n```\nYou can see, that according to this, the `EC_FLASH_REGION_WP_RO` ends at `0x00020000`, but `EC_FLASH_REGION_RO` ends at `0x00020040`.",
+      "parentUuid": "740101bf_58e8832a",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
