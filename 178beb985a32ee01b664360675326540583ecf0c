@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db61f3c_9c15b622",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T08:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3220735_5f896314",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "178beb985a32ee01b664360675326540583ecf0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9677664f_a6ad0b4d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-18T07:24:03Z",
       "side": 1,
       "message": "Add `\u0026\u0026 blink_cnt \u003c LOW_ADP_BLINK_END_STEP` to the conditional.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 59
+      },
+      "revId": "178beb985a32ee01b664360675326540583ecf0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "030e75b5_57925556",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T08:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9677664f_a6ad0b4d",
       "range": {
         "startLine": 275,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af58e3e3_6edf0161",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T08:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ba8fee3_9c0499f8",
+      "revId": "178beb985a32ee01b664360675326540583ecf0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f194fe97_c577a65f",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be6cfa4_c8060f8f",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T08:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f194fe97_c577a65f",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 11
+      },
+      "revId": "178beb985a32ee01b664360675326540583ecf0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed073987_6d8e69e6",
@@ -100,6 +190,30 @@
       "writtenOn": "2025-11-18T07:24:03Z",
       "side": 1,
       "message": "These lines are redundant.",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 10
+      },
+      "revId": "178beb985a32ee01b664360675326540583ecf0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db2282b_0579cb6a",
+        "filename": "zephyr/program/trulo/kaladin/src/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-11-18T08:41:34Z",
+      "side": 1,
+      "message": "remove in patchset11",
+      "parentUuid": "ed073987_6d8e69e6",
       "range": {
         "startLine": 295,
         "startChar": 3,
