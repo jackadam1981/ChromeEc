@@ -188,6 +188,16 @@ int fp_maintenance(void);
  */
 int fp_vendor_command(uint32_t param, uint8_t *buf, size_t buf_size);
 
+/**
+ * FP SDCP defined routine for the FP SDCP host command
+ *
+ * @param[out] res SDCP claim data to fill
+
+ * @return 0 on success
+ * @return negative value on error
+ */
+int fp_sdcp_command(struct ec_response_fp_sdcp *res);
+
 #ifdef CONFIG_ZEPHYR
 /**
  * Put the sensor into idle state
