@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1976ab9_71444149",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-19T17:55:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "707e4310_093e9d51",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b2b9080_9921bd02",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "Only return HAL_TIMEOUT and HAL_OK, no other error code",
       "parentUuid": "1aa75429_7a4ffd15",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 55
+      },
+      "revId": "7933eac399dc1cc9c6eb3e270a8a61c516621c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbd77a1_3db2d90d",
+        "filename": "zephyr/shim/chip/egis/otp_key.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-19T17:55:16Z",
+      "side": 1,
+      "message": "I believe I modified it to return timeout if not successful",
+      "parentUuid": "12bdcfe7_ddf60001",
       "range": {
         "startLine": 54,
         "startChar": 0,
