@@ -39,6 +39,30 @@
       },
       "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cadc66_016e4195",
+        "filename": "zephyr/include/cros/cbi_ufsc_std_schema.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1558852
+      },
+      "writtenOn": "2025-11-19T12:29:03Z",
+      "side": 1,
+      "message": "This is a sample project overlay file:\n\n\u0026ufsc_kb_backlight_present {\n\tufsc_kb_backlight_absent: kb-backlight-absent {\n\t\tcompatible \u003d \"cros-ec,cbi-ufsc-value\";\n\t\tstatus \u003d \"okay\";\n\t\tvalue \u003d \u003c0\u003e;\n\t};\n\tufsc_kb_backlight_present: kb-backlight-present {\n\t\tcompatible \u003d \"cros-ec,cbi-ufsc-value\";\n\t\tstatus \u003d \"okay\";\n\t\tvalue \u003d \u003c1\u003e;\n\t};\n};\n\n\ndo you see conflict of definitions?",
+      "parentUuid": "976275b7_13c4a8e1",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
