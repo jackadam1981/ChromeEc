@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61401f8d_0159da1b",
+        "filename": "common/fpsensor/fpsensor_sdcp_command.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-19T16:45:30Z",
+      "side": 1,
+      "message": "Loudly thinking. Can these be used to track users? Console should not be easily accessible + it\u0027s possible to get these data using the host command, so it\u0027s probably fine. What do you think?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "635db0873f957892613c5bd38815d1c623f0a37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae71f777_35a9f1d8",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-19T16:45:30Z",
+      "side": 1,
+      "message": "This file should be included only when SDCP command is enabled.\n```suggestion\nzephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FINGERPRINT_SDCP\n\t\t\t\t\t\"${PLATFORM_EC}/common/fpsensor/fpsensor_sdcp_command.cc\")\n```",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 69
+      },
+      "revId": "635db0873f957892613c5bd38815d1c623f0a37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c110c87f_d0a22374",
+        "filename": "zephyr/Kconfig.fingerprint",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-19T16:45:30Z",
+      "side": 1,
+      "message": "I would remove `_COMMAND` suffix here, because enabling SDCP support can introduce more changes than just the command itself.",
+      "range": {
+        "startLine": 31,
+        "startChar": 35,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "635db0873f957892613c5bd38815d1c623f0a37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
