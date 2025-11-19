@@ -16,6 +16,24 @@
       "message": "It seems like we should change something on the Trusty-side, but this doesn\u0027t seem to match: https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:trusty/user/desktop/lib/tpm_commands/strongbox.rs;l\u003d35",
       "revId": "020cfcbed56e2d6325498183cc9bf1dddc578dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe166ea_13b16aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-19T17:03:31Z",
+      "side": 1,
+      "message": "This is a normal GSC vendor command. It\u0027s not a strongbox command. It\u0027s supposed to enable the rest of the strongbox commands. We need to start send it every boot.",
+      "parentUuid": "b39d21d6_a79a647f",
+      "revId": "020cfcbed56e2d6325498183cc9bf1dddc578dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
