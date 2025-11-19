@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c458d264_f43a3d6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-11-19T17:30:29Z",
+      "side": 1,
+      "message": "Updated the CL to skip sending the command on Ti50, because it doesn\u0027t have support right now.",
+      "revId": "cc8e58f267839eacf4437e45a8f2b382bb422d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
