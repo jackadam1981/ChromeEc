@@ -8688,6 +8688,26 @@ struct ec_params_fp_vendor {
 	uint32_t param1;
 } __ec_align4;
 
+/*
+ * Fingerprint SDCP claim command.
+ *
+ */
+#define EC_CMD_FP_SDCP 0x040C
+
+#define FP_SDCP_KEY_SIZE 65
+#define FP_SDCP_SIGNATURE_SIZE 64
+#define FP_SDCP_HASH_SIZE 32
+
+struct ec_response_fp_sdcp {
+	uint8_t pk_m[FP_SDCP_KEY_SIZE];
+	uint8_t s_goog[FP_SDCP_SIGNATURE_SIZE];
+	uint8_t pk_d[FP_SDCP_KEY_SIZE];
+	uint8_t s_m[FP_SDCP_SIGNATURE_SIZE];
+	uint8_t pk_f[FP_SDCP_KEY_SIZE];
+	uint8_t h_f[FP_SDCP_HASH_SIZE];
+	uint8_t s_d[FP_SDCP_SIGNATURE_SIZE];
+} __ec_align4;
+
 /* The positive match secret has the length of the SHA256 digest. */
 #define FP_POSITIVE_MATCH_SECRET_BYTES 32
 struct ec_response_fp_read_match_secret {
