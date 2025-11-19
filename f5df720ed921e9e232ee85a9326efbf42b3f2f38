@@ -135,6 +135,24 @@
       "parentUuid": "b9502ad8_44bee48b",
       "revId": "f5df720ed921e9e232ee85a9326efbf42b3f2f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8350edae_90d06ea0",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-19T00:59:00Z",
+      "side": 1,
+      "message": "I removed dsp_service_gmr_tablet_switch_isr and added a call to dsp_service_hook_tablet_mode_change in dsp_service_gmr_tablet_switch_deferred. So now the same GMR sensor ISR handler is used when sensors are either on the EC or ISH.",
+      "parentUuid": "35cbb7eb_178d6f64",
+      "revId": "f5df720ed921e9e232ee85a9326efbf42b3f2f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
