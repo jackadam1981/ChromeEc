@@ -18,7 +18,7 @@ U2F_SIGN = 45
 U2F_ATTEST = 46
 DRBG_TEST = 50
 FIPS_CMD = 55
-SET_STRONGBOX_STATE = 78
+SET_STRONGBOX_STATE = 80
 
 
 # The same exception class used by all tpmtest modules.
