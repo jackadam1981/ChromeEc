@@ -599,9 +599,6 @@ static const struct option_container cmd_line_options[] = {
 	  "Effective with -b, -f, -i, -J, -r, and -O." },
 	{ { "tpm_mode", optional_argument, NULL, 'm' },
 	  "[enable|disable]%Change or query tpm_mode" },
-	{ { "device_ids", required_argument, NULL, 2 },
-	  "Get the device IDs "
-	  "[get_scratch|get_info|commit|delete_scratch|[id_type:value]" },
 	{ { "serial", required_argument, NULL, 'n' }, "GSC USB serial number" },
 	{ { "openbox_rma", required_argument, NULL, 'O' },
 	  "<desc_file>%Verify other device's RO integrity using information "
@@ -645,6 +642,11 @@ static const struct option_container cmd_line_options[] = {
 	  "in milliseconds" },
 	{ { "skip_bid_check", no_argument, &skip_bid_check, 1 },
 	  "Skips board id check and sends image to device." },
+	{ { "device_ids", required_argument, NULL, 2 },
+	  "Get the device IDs "
+	  "[get_scratch|get_info|commit|delete_scratch|[id_type:value]" },
+	{ { "strongbox", required_argument, NULL, 3 },
+	  "[enable|disable]%Control strongbox" },
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -4198,6 +4200,31 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode,
 	printf("RMA unlock succeeded.\n");
 }
 
+/* Enable or disable strongbox. */
+static int process_set_strongbox(struct transfer_descriptor *td, uint8_t arg)
+{
+	char *cmd_str;
+	int rv;
+
+	if (arg)
+		cmd_str = "en";
+	else
+		cmd_str = "dis";
+
+	printf("%sabling factory mode\n", cmd_str);
+	rv = send_vendor_command(td, VENDOR_CC_SET_STRONGBOX_STATE, &arg,
+				 sizeof(arg), NULL, 0);
+	if (rv) {
+		fprintf(stderr,
+			"Failed %sabling strongbox\nvc error "
+			"%d\n",
+			cmd_str, rv);
+		return update_error;
+	}
+	printf("Strongbox %sable succeeded.\n", cmd_str);
+	return 0;
+}
+
 /*
  * Enable or disable factory mode. Factory mode will only be enabled if HW
  * write protect is removed.
@@ -5395,6 +5422,8 @@ int main(int argc, char *argv[])
 	bool get_chassis_open = false;
 	bool get_dev_ids = false;
 	bool get_aprov_reset_counts = false;
+	bool set_strongbox = false;
+	uint8_t set_strongbox_arg = 0;
 	int upload_owner_config = 0;
 
 	/*
@@ -5440,6 +5469,19 @@ int main(int argc, char *argv[])
 		case 2:
 			parse_device_ids = true;
 			device_ids_arg = optarg;
+			break;
+		case 3:
+			set_strongbox = true;
+			if (!strcasecmp(optarg, "enable")) {
+				set_strongbox_arg = 1;
+			} else if (!strcasecmp(optarg, "disable")) {
+				set_strongbox_arg = 0;
+			} else {
+				fprintf(stderr,
+					"Invalid strongbox argument: \"%s\"\n",
+					optarg);
+				errorcnt++;
+			}
 			break;
 		case 'A':
 			get_apro_hash = 1;
@@ -5738,7 +5780,7 @@ int main(int argc, char *argv[])
 	    !show_fw_ver && !sn_bits && !sn_inc_rma && !start_apro_verify &&
 	    !openbox_desc_file && !tstamp && !tpm_mode && (wp == WP_NONE) &&
 	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts &&
-	    !upload_owner_config && !parse_device_ids) {
+	    !upload_owner_config && !parse_device_ids && !set_strongbox) {
 		num_images = argc - optind;
 		if (num_images <= 0) {
 			fprintf(stderr,
@@ -5915,6 +5957,14 @@ int main(int argc, char *argv[])
 
 	if (sn_inc_rma)
 		process_sn_inc_rma(&td, sn_inc_rma_arg);
+
+	if (set_strongbox) {
+		if (is_ti50_device()) {
+			printf("set strongbox not supported on Ti50\n");
+			exit(1);
+		}
+		exit(process_set_strongbox(&td, set_strongbox_arg));
+	}
 
 	if (get_apro_hash)
 		exit(process_get_apro_hash(&td));

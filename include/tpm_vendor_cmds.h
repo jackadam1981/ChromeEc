@@ -231,6 +231,9 @@ enum vendor_cmd_cc {
 	/* Get device IDs */
 	VENDOR_CC_GET_DEVICE_IDS = 79,
 
+	/* Test only: update to 80 with .321 release */
+	VENDOR_CC_SET_STRONGBOX_STATE = 78,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
