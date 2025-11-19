@@ -106,7 +106,7 @@
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
-    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
+    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
@@ -167,7 +167,7 @@
     <vif:Accepts_PR_Swap_As_Snk value="true" />
     <vif:Requests_PR_Swap_As_Src value="true" />
     <vif:Requests_PR_Swap_As_Snk value="true" />
-    <vif:FR_Swap_Supported_As_Initial_Sink value="true" />
+    <vif:FR_Swap_Supported_As_Initial_Sink value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;SOP Discover ID-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -273,7 +273,7 @@
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
-    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="3">3A @ 5V</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
+    <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
@@ -334,7 +334,7 @@
     <vif:Accepts_PR_Swap_As_Snk value="true" />
     <vif:Requests_PR_Swap_As_Src value="true" />
     <vif:Requests_PR_Swap_As_Snk value="true" />
-    <vif:FR_Swap_Supported_As_Initial_Sink value="true" />
+    <vif:FR_Swap_Supported_As_Initial_Sink value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;SOP Discover ID-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -346,7 +346,7 @@
     <vif:DFP_VDO_Port_Number value="1">1</vif:DFP_VDO_Port_Number>
     <vif:Modal_Operation_Supported_SOP value="false" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
-    <vif:PID_SOP value="20570">505A</vif:PID_SOP>
+    <vif:PID_SOP value="20570">505</vif:PID_SOP>
     <vif:bcdDevice_SOP value="0">0000</vif:bcdDevice_SOP>
   </vif:Component>
   <!--Non-USB Content-->
