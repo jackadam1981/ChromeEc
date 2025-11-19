@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9f9816_b6d8372d",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-19T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d04d0e_211cc940",
+      "range": {
+        "startLine": 25,
+        "startChar": 69,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00fb01a_c6ed18a5",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-19T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757a6992_91d88041",
+      "range": {
+        "startLine": 25,
+        "startChar": 69,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a58b2e9_378d4f1d",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-11-18T12:08:45Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Trailing Whitespace: Please remove the trailing whitespace.\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 27,
+        "startChar": 33,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d057d5f6_01133753",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-19T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a58b2e9_378d4f1d",
       "range": {
         "startLine": 27,
         "startChar": 33,
