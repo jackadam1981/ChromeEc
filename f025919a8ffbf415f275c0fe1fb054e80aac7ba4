@@ -63,6 +63,30 @@
       },
       "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e60f8c_2b5e92ec",
+        "filename": "zephyr/include/cros/cbi_ufsc_std_schema.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-19T16:51:19Z",
+      "side": 1,
+      "message": "The node label `ufsc_kb_backlight_present` is duplicated. As all node labels share the same namespace, they can\u0027t be double-defined.",
+      "parentUuid": "52cadc66_016e4195",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
