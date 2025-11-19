@@ -1,0 +1,55 @@
+# Copyright 2026 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if PLATFORM_EC_FINGERPRINT_ASCP_PLATFORM
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_PK_M
+	hex "Address of pk_m"
+	default 0x80000138 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the public key of the manufacturer.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_S_GOOG
+	hex "Address of s_goog"
+	default 0x80000179 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the signature of the google public key.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_PK_D
+	hex "Address of pk_d"
+	default 0x80000035 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the public key of the device.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_S_M
+	hex "Address of s_m"
+	default 0x80000076 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the signature of the manufacturer public key.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_PK_F
+	hex "Address of pk_f"
+	default 0x90000060 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the public key of the factory.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_H_F
+	hex "Address of h_f"
+	default 0x90000000 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the hash of the factory public key.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_S_D
+	hex "Address of s_d"
+	default 0x90000020 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the signature of the device public key.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_ADDR_SK_F
+	hex "Address of sk_f"
+	default 0x900000A0 if PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	help
+	  Address of the private key of the factory.
+
+endif # PLATFORM_EC_FINGERPRINT_ASCP_PLATFORM
