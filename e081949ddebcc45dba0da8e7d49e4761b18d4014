@@ -22,6 +22,30 @@
       },
       "revId": "e081949ddebcc45dba0da8e7d49e4761b18d4014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85d1d1e_2097335b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-19T07:29:40Z",
+      "side": 1,
+      "message": "It only needs 2 bytes. Fixed in separate CL:7172059",
+      "parentUuid": "ac9bd982_3f065e6f",
+      "range": {
+        "startLine": 316,
+        "startChar": 9,
+        "endLine": 316,
+        "endChar": 19
+      },
+      "revId": "e081949ddebcc45dba0da8e7d49e4761b18d4014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
