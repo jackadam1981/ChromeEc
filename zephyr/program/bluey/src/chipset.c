@@ -6,6 +6,7 @@
 /* Bluey chipset-specific configuration */
 
 #include "battery.h"
+#include "chipset.h"
 #include "common.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -48,4 +49,14 @@ void reset_all_passthru_pmic_signal(void)
 {
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_acok), 0);
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pmic_lid_open_od), 0);
+}
+
+enum battery_access_type battery_check_access_limit(void)
+{
+	if (!chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		CPRINTS("battery access not allowed when chipset on");
+		return BATTERY_ACCESS_NOT_ALLOWED;
+	}
+
+	return BATTERY_ACCESS_ALLOWED;
 }
