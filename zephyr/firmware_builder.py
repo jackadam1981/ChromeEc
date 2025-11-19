@@ -151,6 +151,7 @@ def build(opts):
     )
 
     platform_ec = ZEPHYR_DIR.parent
+    platform_ec_private = platform_ec.parent / "ec-private"
     modules = zmake.modules.locate_from_checkout(find_checkout())
     projects_path = zmake.modules.default_projects_dirs(modules)
 
@@ -165,7 +166,7 @@ def build(opts):
         env=env,
     )
 
-    cmd = ["zmake", "-D", "build", "-a", "--static"]
+    cmd = ["zmake", "-D", "build", "--static"]
     if opts.code_coverage:
         cmd.append("--coverage")
     if opts.bcs_version:
@@ -174,6 +175,16 @@ def build(opts):
         version = get_version()
         if version:
             cmd.extend(["-v", version])
+
+    for project in zmake.project.find_projects(projects_path).values():
+        # Skip some projects if ec-private dir is missing until the builders
+        # are fixed correctly.
+        if (
+            project.config.project_name in ["ruby"]
+            and not platform_ec_private.exists()
+        ):
+            continue
+        cmd.append(project.config.project_name)
 
     log_cmd(cmd)
     subprocess.run(
