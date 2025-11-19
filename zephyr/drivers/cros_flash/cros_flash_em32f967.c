@@ -1,11 +1,14 @@
-/* Copyright 2025 The ChromiumOS Authors
+/* Copyright 2026 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 #define DT_DRV_COMPAT elan_em32f967_cros_flash
 
+#include "cros_flash_em32f967_wp.h"
 #include "flash.h"
+#include "system.h"
+#include "write_protect.h"
 
 #include <zephyr/drivers/flash.h>
 #include <zephyr/drivers/gpio.h>
@@ -36,7 +39,30 @@ static const struct cros_flash_em32f967_config cros_flash_config = {
 /* cros ec flash api functions */
 static int cros_flash_em32f967_init(const struct device *dev)
 {
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
 	LOG_DBG("cros_flash_em32f967_init.");
+	LOG_DBG("CONFIG_WP_STORAGE_OFF=%x CONFIG_WP_STORAGE_SIZE=%x",
+		CONFIG_WP_STORAGE_OFF, CONFIG_WP_STORAGE_SIZE);
+	LOG_DBG("CONFIG_ROLLBACK_OFF=%x CONFIG_ROLLBACK_SIZE=%x",
+		CONFIG_ROLLBACK_OFF, CONFIG_ROLLBACK_SIZE);
+	LOG_DBG("CONFIG_EC_WRITABLE_STORAGE_OFF=%x CONFIG_EC_WRITABLE_STORAGE_SIZE=%x",
+		CONFIG_EC_WRITABLE_STORAGE_OFF,
+		CONFIG_EC_WRITABLE_STORAGE_SIZE);
+	LOG_DBG("CONFIG_WP_STORAGE_OFF=%x CONFIG_FLASH_SIZE_BYTES=%x",
+		CONFIG_WP_STORAGE_OFF, CONFIG_FLASH_SIZE_BYTES);
+
+	LOG_INF("==> write_protect_is_asserted() = %s",
+		write_protect_is_asserted() ? "true" : "false");
+	if (write_protect_is_asserted()) {
+		flash_em32_write_protect_1(WP_BANK_OFFSET, WP_BANK_COUNT);
+		LOG_INF("=====> system_is_in_rw = %d", system_is_in_rw());
+		if (!system_is_in_rw()) {
+			flash_em32_write_protect_2_disable();
+		}
+	}
 
 	return 0;
 }
@@ -101,26 +127,105 @@ static int cros_flash_em32f967_erase(const struct device *dev, int offset,
 
 static int cros_flash_em32f967_get_protect(const struct device *dev, int bank)
 {
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
 	LOG_DBG("cros_flash_em32f967_get_protect.");
-	return 0;
+	bool protected = false;
+	protected = flash_em32_check_bank_protected(bank);
+
+	return protected ? 1 : 0;
 }
 
 static uint32_t cros_flash_em32f967_get_protect_flags(const struct device *dev)
 {
-	LOG_DBG("cros_flash_em32f967_get_protect_flags.");
-	return 0;
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
+	uint32_t flags = 0;
+	if (flash_em32_check_region_protected(CONFIG_WP_STORAGE_OFF,
+					      CONFIG_WP_STORAGE_SIZE)) {
+		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
+	}
+	if (flash_em32_check_region_protected(CONFIG_ROLLBACK_OFF,
+					      CONFIG_ROLLBACK_SIZE)) {
+		flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+	}
+	if (flash_em32_check_region_protected(CONFIG_EC_WRITABLE_STORAGE_OFF,
+					      CONFIG_EC_WRITABLE_STORAGE_SIZE)) {
+		flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
+	}
+	if (flash_em32_check_region_protected(CONFIG_WP_STORAGE_OFF,
+					      CONFIG_FLASH_SIZE_BYTES)) {
+		flags |= EC_FLASH_PROTECT_ALL_AT_BOOT;
+	}
+	LOG_DBG("cros_flash_em32f967_get_protect_flags flags=%x.", flags);
+	return flags;
 }
 
 static int cros_flash_em32f967_protect_at_boot(const struct device *dev,
 					       uint32_t new_flags)
 {
-	LOG_DBG("cros_flash_em32f967_protect_at_boot.");
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
+	LOG_INF("cros_flash_em32f967_protect_at_boot.");
+
+	uint32_t offset = 0x0;
+	int bank_count = 0x0;
+
+	if ((new_flags & (EC_FLASH_PROTECT_RO_AT_BOOT |
+			  EC_FLASH_PROTECT_ALL_AT_BOOT)) == 0) {
+		/* Clear protection bits in status register */
+		LOG_INF("cros_flash_em32f967_protect_at_boot clear all.");
+		flash_em32_write_protect_1_disable();
+		flash_em32_write_protect_2_disable();
+		return EC_SUCCESS;
+	}
+
+	if (new_flags & EC_FLASH_PROTECT_RO_AT_BOOT) {
+		LOG_INF("cros_flash_em32f967_protect_at_boot protect RO.");
+		flash_em32_write_protect_2_disable();
+		flash_em32_write_protect_1(WP_BANK_OFFSET, WP_BANK_COUNT);
+	}
+
+	if (new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) {
+		LOG_INF("cros_flash_em32f967_protect_at_boot protect all.");
+		offset = CONFIG_WP_STORAGE_OFF + CONFIG_WP_STORAGE_SIZE;
+		bank_count =
+			(CONFIG_FLASH_SIZE_BYTES - CONFIG_WP_STORAGE_SIZE) /
+			CONFIG_FLASH_BANK_SIZE;
+		LOG_INF("cros_flash_em32f967_protect_at_boot offset=0x%x bank_count=0x%x.",
+			offset, bank_count);
+		flash_em32_write_protect_2(offset, bank_count);
+	}
+
 	return 0;
 }
 
 static int cros_flash_em32f967_protect_now(const struct device *dev, bool all)
 {
-	LOG_DBG("cros_flash_em32f967_protect_now.");
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
+	LOG_INF("cros_flash_em32f967_protect_now all=%s.",
+		all ? "true" : "false");
+	uint32_t offset = CONFIG_WP_STORAGE_OFF + CONFIG_WP_STORAGE_SIZE;
+	int bank_count = (CONFIG_FLASH_SIZE_BYTES - CONFIG_WP_STORAGE_SIZE) /
+			 CONFIG_FLASH_BANK_SIZE;
+
+	if (all) {
+		LOG_INF("offset = 0x%x bank_count = 0x%x", offset, bank_count);
+		flash_em32_write_protect_2(offset, bank_count);
+	} else {
+		LOG_INF("disable RB+RW wp offset = 0x%x bank_count = 0x%x.",
+			offset, bank_count);
+		flash_em32_write_protect_2_disable();
+	}
 	return 0;
 }
 
