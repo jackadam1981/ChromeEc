@@ -19,10 +19,6 @@
 #include <host_command.h>
 #include <mkbp_event.h>
 
-DEFINE_FFF_GLOBALS;
-
-FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
-
 const static uint32_t fp_vendor_param1 = 0xabcd;
 static int fp_vendor_command_custom_ret;
 static int is_locked;
