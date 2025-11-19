@@ -171,3 +171,9 @@ config FLASH_ANDES_QSPI_INIT_PRIORITY
 	default 50
 
 endif
+
+config CROS_FLASH_WP_LIBRARY_EM32F967
+    bool
+    help
+      If enabled, it indicates that the elan em32f967
+      flash write protect library is present.
