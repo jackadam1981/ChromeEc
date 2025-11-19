@@ -28,4 +28,11 @@ config PLATFORM_EC_FINGERPRINT_VENDOR_COMMAND
 
 	  If enabled, the fp_vendor_command function has to be defined.
 
+config PLATFORM_EC_FINGERPRINT_SDCP
+	bool "Enable fingerprint SDCP support"
+	help
+	  Enables support for FP SDCP.
+
+	  If enabled, the get_sdcp_claim function has to be defined.
+
 endif # PLATFORM_EC_FINGERPRINT

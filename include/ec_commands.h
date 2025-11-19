@@ -8800,6 +8800,29 @@ struct ec_response_fp_sign_match {
 	uint8_t signature[FP_MAC_LENGTH];
 } __ec_align4;
 
+/*
+ * Fingerprint SDCP claim command.
+ *
+ */
+#define EC_CMD_FP_SDCP_CLAIM 0x0420
+
+/* ECC public keys with no point compression (0x04||x||y), v1 P256 curve */
+#define FP_SDCP_KEY_SIZE 65
+/* ECC signatures (r||s), v1 P256 curve */
+#define FP_SDCP_SIGNATURE_SIZE 64
+/* SHA256 */
+#define FP_SDCP_HASH_SIZE 32
+
+struct ec_response_fp_sdcp_claim {
+	uint8_t pk_m[FP_SDCP_KEY_SIZE];
+	uint8_t s_goog[FP_SDCP_SIGNATURE_SIZE];
+	uint8_t pk_d[FP_SDCP_KEY_SIZE];
+	uint8_t s_m[FP_SDCP_SIGNATURE_SIZE];
+	uint8_t pk_f[FP_SDCP_KEY_SIZE];
+	uint8_t h_f[FP_SDCP_HASH_SIZE];
+	uint8_t s_d[FP_SDCP_SIGNATURE_SIZE];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
