@@ -87,6 +87,24 @@
       "parentUuid": "6cd6bd73_3881416b",
       "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8e701c_e93906b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2025-11-19T03:15:36Z",
+      "side": 1,
+      "message": "Hi Jayvik,\n\nI removed the battery status check in this CL and added a TODO to restore it once the ADSP is ready, so the LED function does not depend on the battery status for now.\n\nCould we merge this CL to unblock the LED function?",
+      "parentUuid": "70fbe7ad_f08e6db4",
+      "revId": "59e8508db8a4ce0b09856bf56f4faed650a37331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
