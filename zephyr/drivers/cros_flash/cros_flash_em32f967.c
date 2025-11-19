@@ -5,6 +5,7 @@
 
 #define DT_DRV_COMPAT elan_em32f967_cros_flash
 
+#include "cros_flash_em32f967_wp.h"
 #include "flash.h"
 
 #include <zephyr/drivers/flash.h>
@@ -37,6 +38,12 @@ static const struct cros_flash_em32f967_config cros_flash_config = {
 static int cros_flash_em32f967_init(const struct device *dev)
 {
 	LOG_DBG("cros_flash_em32f967_init.");
+	uint32_t offset = 0x0;
+	int bank_count = 0x10;
+
+	LOG_WRN("cros_flash_em32f967_init offset=0x%x bank_count=0x%x.", offset,
+		bank_count);
+	flash_em32_write_protect_1(offset, bank_count);
 
 	return 0;
 }
@@ -101,12 +108,23 @@ static int cros_flash_em32f967_erase(const struct device *dev, int offset,
 
 static int cros_flash_em32f967_get_protect(const struct device *dev, int bank)
 {
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
 	LOG_DBG("cros_flash_em32f967_get_protect.");
-	return 0;
+	bool protected = false;
+	protected = flash_em32_check_bank_protected(bank);
+
+	return protected ? 1 : 0;
 }
 
 static uint32_t cros_flash_em32f967_get_protect_flags(const struct device *dev)
 {
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
 	LOG_DBG("cros_flash_em32f967_get_protect_flags.");
 	return 0;
 }
@@ -114,13 +132,34 @@ static uint32_t cros_flash_em32f967_get_protect_flags(const struct device *dev)
 static int cros_flash_em32f967_protect_at_boot(const struct device *dev,
 					       uint32_t new_flags)
 {
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
 	LOG_DBG("cros_flash_em32f967_protect_at_boot.");
 	return 0;
 }
 
 static int cros_flash_em32f967_protect_now(const struct device *dev, bool all)
 {
+	if (!IS_ENABLED(CONFIG_CROS_FLASH_WP_LIBRARY_EM32F967)) {
+		return 0;
+	}
+
 	LOG_DBG("cros_flash_em32f967_protect_now.");
+	LOG_WRN("cros_flash_em32f967_protect_now all=%s.",
+		all ? "true" : "false");
+	uint32_t offset = 0x20000;
+	int bank_count = 0x33;
+
+	if (all) {
+		LOG_WRN("offset = 0x%x bank_count = 0x%x.", offset, bank_count);
+		flash_em32_write_protect_2(offset, bank_count);
+	} else {
+		LOG_WRN("disable RB+RW wp offset = 0x%x bank_count = 0x%x.",
+			offset, bank_count);
+		flash_em32_write_protect_2_disable();
+	}
 	return 0;
 }
 
