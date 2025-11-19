@@ -157,6 +157,7 @@ enum adc_channel board_get_vbus_adc(int port)
 	CPRINTS("Unknown vbus adc port id: %d", port);
 	return ADC_VBUS_C0;
 }
+#endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
 
 __override int pd_snk_is_vbus_provided(int port)
 {
@@ -164,7 +165,25 @@ __override int pd_snk_is_vbus_provided(int port)
 	 * (b:181203590#comment20) TODO(yllin): use
 	 *  PD_VSINK_DISCONNECT_PD for non-5V case.
 	 */
-	return adc_read_channel(board_get_vbus_adc(port)) >=
-	       PD_V_SINK_DISCONNECT_MAX;
+	return pd_check_vbus_level(port, VBUS_REMOVED);
 }
-#endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	/*
+	 * Experimentally determined, Navi requires an offset of 150 mV
+	 * to accurately detect VBUS Measurement.
+	 */
+	int vbus = adc_read_channel(board_get_vbus_adc(port)) - 150;
+
+	switch (level) {
+	case VBUS_SAFE0V:
+		return vbus <= PD_V_SAFE0V_MAX;
+	case VBUS_PRESENT:
+		return vbus >= PD_V_SAFE5V_MIN;
+	case VBUS_REMOVED:
+		return vbus <= PD_V_SINK_DISCONNECT_MAX;
+	default:
+		return false;
+	}
+}
