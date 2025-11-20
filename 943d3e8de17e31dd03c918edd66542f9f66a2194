@@ -16,6 +16,40 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb06e38_f1d276d9",
+        "filename": "zephyr/shim/chip/egis/Kconfig.egis",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T06:33:59Z",
+      "side": 1,
+      "message": "You need to probably add dependency on Egis HAL.",
+      "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "282d94b6_d070bf5e",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T06:33:59Z",
+      "side": 1,
+      "message": "Do we need to add any dependency to make sure we can use this function?",
+      "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

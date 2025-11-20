@@ -356,6 +356,24 @@
       "parentUuid": "acd96161_d8edea1d",
       "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b132f32_e2ca1c65",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T06:33:59Z",
+      "side": 1,
+      "message": "The ET171 chips are not able to init OTP in runtime. In case of NPCX, we were able to do that, so the SOC paniced if OTP key provisioning failed in runtime and it tried again in the following boot. If the ET171 chip doesn\u0027t have the OTP initialized in the factory flow e.g. it is a EVB board, this code will case a boot loop.\n\nIn terms of security - the fp code detects that OTP key is trivial and [returns](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/fpsensor/fpsensor_crypto.cc;l\u003d118) error, so I think we are fine.",
+      "parentUuid": "8a387a80_9d924a20",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
