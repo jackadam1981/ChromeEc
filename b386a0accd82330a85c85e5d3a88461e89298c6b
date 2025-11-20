@@ -16,6 +16,24 @@
       "message": "Please rework to elan80series",
       "revId": "b386a0accd82330a85c85e5d3a88461e89298c6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86cc3e47_0015d92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T19:52:41Z",
+      "side": 1,
+      "message": "done. It it still uses `elan80sg` in the following instances:\n\n1. In `native_sim.overlay` compatible \u003d \"elan,elan80sg\"\n2. In `emul_elan80series.c`, `#define DT_DRV_COMPAT elan_elan80sg`\n3. In `zephyr/emul/Kconfig`, `depends on ZTEST \u0026\u0026 DT_HAS_ELAN_ELAN80SG_ENABLED`\n\nThis is necessary to enable `FINGERPRINT_SENSOR_ELAN80SG` and in turns enable the driver for the `elan80series` in order to enable the below configs:\n\n```\nCONFIG_DT_HAS_ELAN_ELAN80SG_ENABLED\u003dy\nCONFIG_FINGERPRINT_SENSOR_ELAN80SERIES\u003dy\nCONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_PAL\u003dy\nCONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_HEAP_SIZE\u003d36864\nCONFIG_FINGERPRINT_SENSOR_ELAN80SG\u003dy\n```\n\nIf you do not like this, we might need to create a config for testing.",
+      "parentUuid": "9da39622_1169c98f",
+      "revId": "b386a0accd82330a85c85e5d3a88461e89298c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
