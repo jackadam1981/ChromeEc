@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7fdb8f6_95f9f41c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T07:35:25Z",
+      "side": 1,
+      "message": "Ping",
+      "parentUuid": "bafd43eb_998df9be",
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44d04d0e_211cc940",
         "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
         "patchSetId": 18
