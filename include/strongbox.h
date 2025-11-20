@@ -153,8 +153,14 @@ enum strongbox_error {
 	SBERR_RKP_STATUS_INVALID_EEK = -205, /* 5 */
 	SBERR_RKP_STATUS_REMOVED = -206, /* 6 */
 
-	SBERR_UnknownError = -1000,
+	/* Note, Keymint use -1000 for UnknownError u*/
+	SBERR_UnknownError = -255,
 };
+
+/* Set the range for the TPM_RC for the STRONGBOX commands.
+ * Use same as Vendor commands
+ */
+#define STRONGBOX_RC_ERR VENDOR_RC_ERR
 
 /* Forward declaration of the internal Keymint state struct */
 struct km;

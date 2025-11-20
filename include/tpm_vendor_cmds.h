@@ -221,11 +221,19 @@ enum vendor_cmd_cc {
 	/* Returns info to identify the specific GSC chip type. */
 	VENDOR_CC_GET_CHIP_ID = 75,
 
-	/* Loads and stores superblock macs for the Trusty storage application.
+	/*
+	 * Loads and stores superblock macs for the Trusty storage application.
 	 */
 	VENDOR_CC_TRUSTY_STORAGE_MAC = 77,
 
-	VENDOR_CC_SET_STRONGBOX_STATE = 78,
+	/*
+	 * Ti50 get/set device IDs vendor commands
+	 * VENDOR_CC_SET_DEVICE_IDS = 78
+	 * VENDOR_CC_GET_DEVICE_IDS = 79
+	 */
+
+	/* Enables/disables strongbox commands. */
+	VENDOR_CC_SET_STRONGBOX_STATE = 80,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
