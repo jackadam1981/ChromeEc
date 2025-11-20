@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a889eae2_2293da16",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2025-11-20T05:59:06Z",
+      "side": 1,
+      "message": "Modifications are based on bma4. But most of registers are different.",
+      "parentUuid": "4d851343_b5497876",
+      "revId": "590ad740535d6e03be41b876d75feec4ea4fb465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91334a1f_d3298c4a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-11-05T18:36:58Z",
       "side": 1,
       "message": "Add CONFIG_ACCEL_BMA5XY_INT_EVENT:\n```suggestion\n#undef CONFIG_ACCEL_BMA4XX_INT_EVENT\n#undef CONFIG_ACCEL_BMA5XY_INT_EVENT\n```",
+      "revId": "590ad740535d6e03be41b876d75feec4ea4fb465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af868c20_50cb8df4",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 3543745
+      },
+      "writtenOn": "2025-11-20T05:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91334a1f_d3298c4a",
       "revId": "590ad740535d6e03be41b876d75feec4ea4fb465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
