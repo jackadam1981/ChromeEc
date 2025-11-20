@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae3bd08_5a1bc62d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-20T04:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9877411f_b9422b44",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7a7a129_39127d82",
@@ -325,6 +349,30 @@
       "side": 1,
       "message": "ok good so it does not need much, ideally we\u0027d do a measurement of the propagation delay and see what margin we have exactly but if it works with 1 I think we can leave 5 and that should be plenty enough, would you change it to 5 in this PR? thanks for testing this",
       "parentUuid": "1e252ed5_fdb65098",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "d620dec6cb97b987f1e1ec4e1a9355ba540b0dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b8ccd3_c8efeb57",
+        "filename": "zephyr/program/fatcat/ruby/keyboard.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-20T04:55:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2efb472_9b0d26d4",
       "range": {
         "startLine": 124,
         "startChar": 24,
