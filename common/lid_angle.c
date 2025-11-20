@@ -149,9 +149,11 @@ void lid_angle_update(int lid_ang)
 			ignore = 0;
 	}
 
-	/* Enable or disable peripherals as necessary. */
-	if (accept)
-		lid_angle_peripheral_enable(1);
-	else if (ignore && !accept)
-		lid_angle_peripheral_enable(0);
+	if (!IS_ENABLED(CONFIG_PLATFORM_EC_DSP_CLIENT)) {
+		/* Enable or disable peripherals as necessary. */
+		if (accept)
+			lid_angle_peripheral_enable(1);
+		else if (ignore && !accept)
+			lid_angle_peripheral_enable(0);
+	}
 }

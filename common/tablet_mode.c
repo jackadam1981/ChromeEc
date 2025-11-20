@@ -249,7 +249,8 @@ void gmr_tablet_switch_isr_handler(void)
 		}
 	}
 
-	if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) && gmr_sensor_at_360) {
+	if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) && gmr_sensor_at_360 &&
+	    !IS_ENABLED(CONFIG_PLATFORM_EC_DSP_CLIENT)) {
 		lid_angle_peripheral_enable(0);
 	}
 }
@@ -294,7 +295,8 @@ static __maybe_unused void tablet_mode_lid_event(void)
 	if (!lid_is_open()) {
 		gmr_sensor_at_0 = true;
 		tablet_set_mode(0, TABLET_TRIGGER_LID);
-		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
+		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) &&
+		    !IS_ENABLED(CONFIG_PLATFORM_EC_DSP_CLIENT))
 			lid_angle_peripheral_enable(1);
 	} else {
 		gmr_sensor_at_0 = false;
@@ -350,7 +352,8 @@ static enum ec_status tablet_mode_command(struct host_cmd_handler_args *args)
 	case TABLET_MODE_FORCE_CLAMSHELL:
 		tablet_mode = 0;
 		tablet_mode_forced = true;
-		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
+		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) &&
+		    !IS_ENABLED(CONFIG_PLATFORM_EC_DSP_CLIENT))
 			lid_angle_peripheral_enable(1);
 		break;
 	default:
