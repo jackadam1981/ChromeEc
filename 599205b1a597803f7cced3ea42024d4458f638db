@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08dbced8_83be515a",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:22:44Z",
+      "side": 1,
+      "message": "I\u0027m also wondering if the `ectool_` in the file name is necessary, feels redundant.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8837a19_eed3becf",
         "filename": "util/ectool_usb/ectool_communication.py",
         "patchSetId": 4
