@@ -29,6 +29,6 @@ if(CONFIG_PLATFORM_EC_DSP_SERVICE)
   zephyr_append_cmake_library(dsp.service)
 endif()
 
-target_sources_ifdef(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE
-  ec_shim PRIVATE "${PLATFORM_EC}/common/lid_angle_common.c"
-)
+if (CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE AND NOT DEFINED CONFIG_PLATFORM_EC_DSP_CLIENT)
+  zephyr_library_sources("${PLATFORM_EC}/common/lid_angle_common.c")
+endif ()
