@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d0e459_9032f36f",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-20T17:17:46Z",
+      "side": 1,
+      "message": "Nit - you might want `k_work_reschedule` in case a test decides to call `set_rdo` multiple times.",
+      "range": {
+        "startLine": 564,
+        "startChar": 1,
+        "endLine": 564,
+        "endChar": 16
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94baabef_1ce2d27b",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-20T17:17:46Z",
+      "side": 1,
+      "message": "`k_work_reschedule`?",
+      "range": {
+        "startLine": 523,
+        "startChar": 1,
+        "endLine": 523,
+        "endChar": 16
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781d6a0b_4b302a40",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-20T17:17:46Z",
+      "side": 1,
+      "message": "How was this timeout determined?  3 seconds is quite a long time for a contract negotiation.",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f134546_ef13ea67",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2679,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-20T17:17:46Z",
+      "side": 1,
+      "message": "There\u0027s no delay in sending another GET_CONNECTOR_STATUS.  How much does this fill up the EC log?",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2679,
+        "endChar": 56
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6814bbc8_faa6422d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-20T17:17:46Z",
+      "side": 1,
+      "message": "You should create a test for this path.  With the deferred RDO in the emulator, you can invoke a failure by cancelling the scheduled work.",
+      "range": {
+        "startLine": 2687,
+        "startChar": 0,
+        "endLine": 2692,
+        "endChar": 0
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
