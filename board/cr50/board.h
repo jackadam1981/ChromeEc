@@ -50,6 +50,8 @@
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 5000
 
+/* TODO(b/462195667): reenable once Cr50 has more space */
+#undef CONFIG_CMD_GPIOCFG
 /* Features that we don't want */
 #undef CONFIG_CMD_LID_ANGLE
 #undef CONFIG_CMD_POWERINDEBUG
