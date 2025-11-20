@@ -22,6 +22,30 @@
       },
       "revId": "18bc316dd6fa5fe8deaef40e4e29be5500671c46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23782684_fa28ad0a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-20T05:42:19Z",
+      "side": 1,
+      "message": "removed it in PS7.",
+      "parentUuid": "d4a7da45_48f1156c",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 14
+      },
+      "revId": "18bc316dd6fa5fe8deaef40e4e29be5500671c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
