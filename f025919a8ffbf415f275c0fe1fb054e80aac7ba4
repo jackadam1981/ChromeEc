@@ -87,6 +87,30 @@
       },
       "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0f5927_3d7ef3a7",
+        "filename": "zephyr/include/cros/cbi_ufsc_std_schema.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1558852
+      },
+      "writtenOn": "2025-11-20T15:53:03Z",
+      "side": 1,
+      "message": "Done. Removed present suffix from all fields.",
+      "parentUuid": "77e60f8c_2b5e92ec",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "f025919a8ffbf415f275c0fe1fb054e80aac7ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
