@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0f111b25_f5d2b08b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T17:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b08cb4f_256dba36",
+      "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0ca93b30_d4a2ebf3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2025-11-18T22:23:39Z",
       "side": 1,
       "message": "This might work, because nobody else is using it. But I don\u0027t think this is the right function to override. It\u0027s supposed to be used by BC1.2, which this board doesn\u0027t support.\n\nTry it this way, because I don\u0027t think it will hurt. But if it works, we\u0027ll need to figure out the right way to do it.",
+      "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c3f7d3_53beeb75",
+        "filename": "zephyr/program/nissa/pujjoga/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T17:53:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb44eed_41be6c02",
       "revId": "910a3f8cca9c5b1efa25fcf588d34cbfbca0e830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

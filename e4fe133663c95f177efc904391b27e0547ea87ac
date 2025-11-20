@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fd8acd_1640b7fa",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T17:53:46Z",
+      "side": 1,
+      "message": "This isn\u0027t doing what you want. `port` is already the active charge port, so this won\u0027t change anything. When we\u0027re running the compliance test, nothing should be plugged into the other port, so what `charge_manager_refresh` will ultimately do is call `board_set_active_charge_port(CHARGE_PORT_NONE)`. But in the general case, there might be something in the other port, so we can\u0027t call that here.\n\nFor the sake of experiment, you should just be able to call `ppc_vbus_sink_enable(port, false);` here. If that works, we\u0027ll need to make a wrapper function that works for boards without PPCs.",
+      "revId": "e4fe133663c95f177efc904391b27e0547ea87ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
