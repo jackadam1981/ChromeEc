@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a1f927a_85345136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-20T09:46:47Z",
+      "side": 1,
+      "message": "Hi Dawid, I\u0027m working on reworking it to FT98XX series driver, I will upload code today later.",
+      "parentUuid": "f7fdb8f6_95f9f41c",
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44d04d0e_211cc940",
         "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
         "patchSetId": 18
