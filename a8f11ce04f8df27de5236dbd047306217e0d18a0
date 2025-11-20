@@ -22,6 +22,23 @@
       },
       "revId": "a8f11ce04f8df27de5236dbd047306217e0d18a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4a6334_a739c0a3",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T18:00:23Z",
+      "side": 1,
+      "message": "This looks like the opposite of what you want. Shouldn\u0027t it be checking for VBUS_PRESENT?",
+      "revId": "a8f11ce04f8df27de5236dbd047306217e0d18a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

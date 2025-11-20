@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "918e0ddf_758f9345",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T18:00:23Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like we have any real [documentation](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/chromeos-ec-firmware-test-requirements.md#testing-project-specific-code) for doing this. I\u0027d just copy-paste stuff from another project until it builds. If that doesn\u0027t work for you, I can take a closer look.",
+      "parentUuid": "3d68db6a_136db967",
+      "revId": "82ca7e188ffd7bf5781833a33597e1f0de21ad0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26bbca6f_3c6bcd64",
         "filename": "zephyr/program/rauru/src/usbc.c",
         "patchSetId": 1
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Yes new logic address all 3 levels, I think this TODO is resolved now",
       "parentUuid": "26bbca6f_3c6bcd64",
+      "revId": "82ca7e188ffd7bf5781833a33597e1f0de21ad0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "923004e7_3c7b9eab",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T18:00:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4087b0f7_5bd446bf",
       "revId": "82ca7e188ffd7bf5781833a33597e1f0de21ad0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +154,24 @@
       "side": 1,
       "message": "Today enormously tested with higher/lower offsets, looks test passes on both GRL \u0026 Ellisys without any offest. Therefore updating patchset with No offset value while reading VBUS values.",
       "parentUuid": "34e23b4e_918127be",
+      "revId": "82ca7e188ffd7bf5781833a33597e1f0de21ad0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e097a77_8ceb1c2d",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-20T18:00:23Z",
+      "side": 1,
+      "message": "In that case, what is the effective change in behavior from this CL?",
+      "parentUuid": "6ec0767d_3b02af2a",
       "revId": "82ca7e188ffd7bf5781833a33597e1f0de21ad0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
