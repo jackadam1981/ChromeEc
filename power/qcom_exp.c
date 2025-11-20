@@ -22,6 +22,7 @@
  *  - If POWER_GOOD is dropped by the AP, then we power the AP off
  */
 
+#include "battery.h"
 #include "builtin/assert.h"
 #include "chipset.h"
 #include "common.h"
@@ -151,6 +152,13 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
  */
 #define AC_IRQ_DISABLE_DURATION (750 * MSEC)
 
+/*
+ * Allowed battery discharge threshold
+ */
+#define BATTERY_STATE_OF_CHARGE_DISCHARGE_THRESHOLD 1
+
+#define BATTERY_BAD_STATE_OF_CHARGE -1
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
@@ -170,6 +178,8 @@ static int auto_power_on;
 /* 1 if long warm reset is going on */
 static char long_warm_reset;
 
+/* Cache the battery SoC during shutdown. Init to bad state. */
+static int shutdown_battery_soc = BATTERY_BAD_STATE_OF_CHARGE;
 /*
  *  Stores the power_state before performing long warm reset
  *  This variable is initialized to 0 i.e. POWER_G3
@@ -305,6 +315,70 @@ static void power_ac_changed(void)
 	task_wake(TASK_ID_CHIPSET);
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, power_ac_changed, HOOK_PRIO_DEFAULT);
+
+static int get_battery_state_of_charge(void)
+{
+	struct batt_params batt;
+	battery_get_params(&batt);
+
+	if (batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) {
+		return BATTERY_BAD_STATE_OF_CHARGE;
+	}
+
+	return batt.state_of_charge;
+}
+
+/*
+ * On chipset shutdown cache the battery SoC.
+ *
+ * This will allow us to compare the battery SoC once it discharges.
+ */
+void board_chipset_cache_soc_on_shutdown(void)
+{
+	shutdown_battery_soc = get_battery_state_of_charge();
+	CPRINTS("Battery SoC cached!");
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_cache_soc_on_shutdown,
+	     HOOK_PRIO_DEFAULT);
+
+/*
+ * Monitor battery SoC while on AC.
+ *
+ * If discharging while on AC, ensure the chipset boots up
+ * once we hit the allowed discharge threshold to continue charging.
+ */
+void battery_soc_changed(void)
+{
+	int battery_soc;
+
+	/* Proceed only if AC is connected. */
+	if (!extpower_is_present())
+		return;
+
+	battery_soc = get_battery_state_of_charge();
+
+	if (BATTERY_BAD_STATE_OF_CHARGE == battery_soc) {
+		return;
+	}
+
+	/* Ensure the cached SoC is also valid before comparison. */
+	if (BATTERY_BAD_STATE_OF_CHARGE == shutdown_battery_soc) {
+		return;
+	}
+
+	if (shutdown_battery_soc - battery_soc >=
+	    BATTERY_STATE_OF_CHARGE_DISCHARGE_THRESHOLD) {
+		CPRINTS("Battery discharged by %d%% power-on to charge the battery",
+			BATTERY_STATE_OF_CHARGE_DISCHARGE_THRESHOLD);
+		/*
+		 * Explicitly set ac_on to signal the chipset task to boot up
+		 * and continue the charging process.
+		 */
+		ac_on = 1;
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, battery_soc_changed, HOOK_PRIO_DEFAULT);
 
 /**
  * Wait the switchcap GPIO0 PVC_PG signal asserted.
