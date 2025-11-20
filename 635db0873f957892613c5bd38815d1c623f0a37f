@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3964844_a582420e",
+        "filename": "common/fpsensor/fpsensor_sdcp_command.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-20T10:18:11Z",
+      "side": 1,
+      "message": "The data is not automatically exposed in any logs so it should be OK. It is useful for debugging. Not so much when we have EC command over USB for this so we could remove it I guess",
+      "parentUuid": "61401f8d_0159da1b",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "635db0873f957892613c5bd38815d1c623f0a37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae71f777_35a9f1d8",
         "filename": "zephyr/CMakeLists.txt",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-19T16:45:30Z",
       "side": 1,
       "message": "This file should be included only when SDCP command is enabled.\n```suggestion\nzephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FINGERPRINT_SDCP\n\t\t\t\t\t\"${PLATFORM_EC}/common/fpsensor/fpsensor_sdcp_command.cc\")\n```",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 69
+      },
+      "revId": "635db0873f957892613c5bd38815d1c623f0a37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274cd084_d57000f1",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-20T10:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae71f777_35a9f1d8",
       "range": {
         "startLine": 391,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-19T16:45:30Z",
       "side": 1,
       "message": "I would remove `_COMMAND` suffix here, because enabling SDCP support can introduce more changes than just the command itself.",
+      "range": {
+        "startLine": 31,
+        "startChar": 35,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "635db0873f957892613c5bd38815d1c623f0a37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b41187_442ce880",
+        "filename": "zephyr/Kconfig.fingerprint",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-20T10:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c110c87f_d0a22374",
       "range": {
         "startLine": 31,
         "startChar": 35,
