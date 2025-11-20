@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3947d3_5e5d6370",
+        "filename": "zephyr/shim/chip/egis/Kconfig.egis",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T21:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb06e38_f1d276d9",
+      "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "282d94b6_d070bf5e",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-11-20T06:33:59Z",
       "side": 1,
       "message": "Do we need to add any dependency to make sure we can use this function?",
+      "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a5cb9c_d2e0035a",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T21:05:07Z",
+      "side": 1,
+      "message": "I believe this is the header [#include \"openssl/mem.h\"](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/boringssl/include/openssl/mem.h;l\u003d108?q\u003dopenssl%2Fmem.h#:~:text\u003d107-,108,-109) where this function is declared.\n\nI already included it.",
+      "parentUuid": "282d94b6_d070bf5e",
       "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
