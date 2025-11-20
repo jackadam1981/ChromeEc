@@ -156,6 +156,34 @@ def build(opts):
     print(f'# Running {" ".join(cmd)}.')
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
+    # Build MP Cr50 image
+    cmd = [
+        "make",
+        "out=build/mp_build",
+        "BOARD=cr50",
+        "BRANCH=MP",
+        "RW_SIGNER_EXTRAS=' --override-keyid'",
+        "all",
+        "dis",
+        "-j{}".format(opts.cpus),
+    ]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+
+    # Build PREPVT Cr50 image
+    cmd = [
+        "make",
+        "out=build/prepvt_build",
+        "BOARD=cr50",
+        "BRANCH=PREPVT",
+        "RW_SIGNER_EXTRAS=' --override-keyid'",
+        "all",
+        "dis",
+        "-j{}".format(opts.cpus),
+    ]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
+
     with open(opts.metrics, "w") as f:
         f.write(json_format.MessageToJson(metrics))
 
