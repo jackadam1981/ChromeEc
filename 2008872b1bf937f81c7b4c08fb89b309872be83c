@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f2d93d_9250508d",
+        "filename": "zephyr/program/fatcat/lapis/keyboard.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-20T13:45:11Z",
+      "side": 1,
+      "message": "note that this won\u0027t work until the coreboot change is merged as well, but no harm enabling it now on the EC",
+      "revId": "2008872b1bf937f81c7b4c08fb89b309872be83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
