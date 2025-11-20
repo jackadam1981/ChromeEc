@@ -198,6 +198,10 @@ build_cr50_extras: build_boards
 	$(MAKE) proj-cr50 H1_RED_BOARD=1 CR50_USE_FIXED_CERT=1 \
 		out=build/cr50_rb_cert
 	$(MAKE) proj-cr50 CR50_DEV=1 out=build/cr50_dbg
+	$(MAKE) proj-cr50 BRANCH=PREPVT out=build/prepvt_build \
+		RW_SIGNER_EXTRAS=" --override-keyid"
+	$(MAKE) proj-cr50 BRANCH=MP out=build/mp_build \
+		RW_SIGNER_EXTRAS=" --override-keyid"
 
 .PHONY: buildall
 buildall: build_cr50_extras
