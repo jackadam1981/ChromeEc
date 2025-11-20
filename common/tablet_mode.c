@@ -249,9 +249,11 @@ void gmr_tablet_switch_isr_handler(void)
 		}
 	}
 
+#ifndef CONFIG_SOC_FAMILY_INTEL_ISH
 	if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) && gmr_sensor_at_360) {
 		lid_angle_peripheral_enable(0);
 	}
+#endif
 }
 DECLARE_DEFERRED(gmr_tablet_switch_isr_handler);
 #endif /* GMR_TABLET_MODE */
@@ -294,8 +296,10 @@ static __maybe_unused void tablet_mode_lid_event(void)
 	if (!lid_is_open()) {
 		gmr_sensor_at_0 = true;
 		tablet_set_mode(0, TABLET_TRIGGER_LID);
+#ifndef CONFIG_SOC_FAMILY_INTEL_ISH
 		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
 			lid_angle_peripheral_enable(1);
+#endif
 	} else {
 		gmr_sensor_at_0 = false;
 	}
@@ -350,8 +354,10 @@ static enum ec_status tablet_mode_command(struct host_cmd_handler_args *args)
 	case TABLET_MODE_FORCE_CLAMSHELL:
 		tablet_mode = 0;
 		tablet_mode_forced = true;
+#ifndef CONFIG_SOC_FAMILY_INTEL_ISH
 		if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE))
 			lid_angle_peripheral_enable(1);
+#endif
 		break;
 	default:
 		CPRINTS("Invalid EC_CMD_SET_TABLET_MODE parameter: %d",
