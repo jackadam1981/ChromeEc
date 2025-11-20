@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9db25b05_855bfa2c",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T18:33:03Z",
+      "side": 1,
+      "message": "The PD spec has timing requirements for the PDC\u003c-\u003eport partner communication for requesting an RDO, but AFAIK there is no such bound on the PDC\u0027s overhead for processing SET_RDO and reporting back through GET_CONNECTOR_STATUS.\n\nEmpirically, I have observed times in the high-hundreds of milliseconds for the full cycle. I could likely make it shorter than 3 sec, but I don\u0027t see harm in making it generous, esp. since having a mismatch can lead to a poor user experience (e.g. battery trickle charges despite a high-wattage supply being available). Of course if the RDO is activated before 3 seconds, we move on, so this isn\u0027t adding more delay than necessary. Please let me know your thoughts.",
+      "parentUuid": "781d6a0b_4b302a40",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f134546_ef13ea67",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 5
@@ -95,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3a18a68_ded0afcf",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2679,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T18:33:03Z",
+      "side": 1,
+      "message": "The polling rate gets limited by the state machine interval and is about one poll every ~60 ms. This log line prints roughly 5 times when changing RDOs, but there is additional clutter from the send, ping, read log messages as the driver executes GET_CONNECTOR_STATUS. You can see an example log in http://b/457551375#comment28",
+      "parentUuid": "3f134546_ef13ea67",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2679,
+        "endChar": 56
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6814bbc8_faa6422d",
         "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
         "patchSetId": 5
@@ -106,6 +154,30 @@
       "writtenOn": "2025-11-20T17:17:46Z",
       "side": 1,
       "message": "You should create a test for this path.  With the deferred RDO in the emulator, you can invoke a failure by cancelling the scheduled work.",
+      "range": {
+        "startLine": 2687,
+        "startChar": 0,
+        "endLine": 2692,
+        "endChar": 0
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735295bd_1e714c54",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T18:33:03Z",
+      "side": 1,
+      "message": "I think the coverage might be shifted here. The section you highlighted should be the normal path where the RDO is activated after a short delay. Do you mean the `else if (sys_timepoint_expired` branch? let me run locally with `--coverage`...",
+      "parentUuid": "6814bbc8_faa6422d",
       "range": {
         "startLine": 2687,
         "startChar": 0,
