@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6dbbc94_3e56cd90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-20T12:09:27Z",
+      "side": 1,
+      "message": "Hi Dawid, I uploaded it. the private lib also modified.",
+      "parentUuid": "4a1f927a_85345136",
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44d04d0e_211cc940",
         "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
         "patchSetId": 18
