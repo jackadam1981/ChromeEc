@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b777a16_a14ebcfc",
+        "filename": "zephyr/emul/emul_realtek_rts54xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41d0e459_9032f36f",
+      "range": {
+        "startLine": 564,
+        "startChar": 1,
+        "endLine": 564,
+        "endChar": 16
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94baabef_1ce2d27b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-20T17:17:46Z",
       "side": 1,
       "message": "`k_work_reschedule`?",
+      "range": {
+        "startLine": 523,
+        "startChar": 1,
+        "endLine": 523,
+        "endChar": 16
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5da18a8_4ab1b7c0",
+        "filename": "zephyr/emul/emul_tps6699x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94baabef_1ce2d27b",
       "range": {
         "startLine": 523,
         "startChar": 1,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda4d424_17c1c1e9",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T23:31:35Z",
+      "side": 1,
+      "message": "Per IRL conversation, added explanatory comment to macro",
+      "parentUuid": "9db25b05_855bfa2c",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f134546_ef13ea67",
@@ -141,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dfa6f6_c457bb14",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2679,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a18a68_ded0afcf",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2679,
+        "endChar": 56
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6814bbc8_faa6422d",
@@ -178,6 +274,30 @@
       "side": 1,
       "message": "I think the coverage might be shifted here. The section you highlighted should be the normal path where the RDO is activated after a short delay. Do you mean the `else if (sys_timepoint_expired` branch? let me run locally with `--coverage`...",
       "parentUuid": "6814bbc8_faa6422d",
+      "range": {
+        "startLine": 2687,
+        "startChar": 0,
+        "endLine": 2692,
+        "endChar": 0
+      },
+      "revId": "3e1d3743134362bbdc7bf2315e9c4369a0927466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea8c254_244878f1",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-20T23:31:35Z",
+      "side": 1,
+      "message": "Added coverage for all paths (confirmed by inspecting log lines in handler.log since the line coverage is unreliable)",
+      "parentUuid": "735295bd_1e714c54",
       "range": {
         "startLine": 2687,
         "startChar": 0,
