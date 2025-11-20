@@ -293,6 +293,12 @@ if(DEFINED CONFIG_BOARD_DOMIKA)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC "domika/src/usbc.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGER "domika/src/charger.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_FAN "domika/src/fan.c")
+
+	function(kernel_lto_allow_list out_var)
+	  set(extra timer.c)
+	  set(${out_var} "${extra}" PARENT_SCOPE)
+	endfunction()
+
 endif()
 if(DEFINED CONFIG_BOARD_TELIKS)
 	project(teliks)
