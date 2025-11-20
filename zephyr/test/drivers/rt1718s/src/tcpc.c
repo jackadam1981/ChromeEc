@@ -236,3 +236,54 @@ ZTEST(rt1718s_tcpc, test_set_src_ctrl)
 		rt1718s_emul, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW,
 		TCPC_REG_COMMAND_SRC_CTRL_HIGH | TCPC_REG_COMMAND_SRC_CTRL_LOW);
 }
+
+ZTEST(rt1718s_tcpc, test_non_vendor_alert_triggers_handler)
+{
+	// Define an alert value that is NOT in TCPC_REG_ALERT_VENDOR_DEF.
+	// Assuming BIT(9) is a non-vendor-defined bit.
+	const uint16_t non_vendor_alert_bit = BIT(9);
+	const uint16_t test_alert_value = non_vendor_alert_bit;
+
+	// Reset the call count for the generic alert handler fake
+	tcpci_tcpc_alert_with_value_fake.call_count = 0;
+
+	// Set the TCPC_REG_ALERT register with the non-vendor bit
+	tcpci_emul_set_reg(emul, TCPC_REG_ALERT, test_alert_value);
+
+	// Baseline assertion: Ensure the generic handler hasn't been called
+	zassert_equal(tcpci_tcpc_alert_with_value_fake.call_count, 0,
+		      "Generic alert handler was called before tcpc_alert");
+
+	// Action: Call the driver's alert handler. It should process the alert.
+	tcpc_config[PORT].drv->tcpc_alert(PORT);
+
+	// Verification: The generic handler MUST be called exactly once because
+	// test_alert_value & ~TCPC_REG_ALERT_VENDOR_DEF will be non-zero.
+	zassert_equal(
+		tcpci_tcpc_alert_with_value_fake.call_count, 1,
+		"Generic alert handler was not called for non-vendor alert");
+}
+
+ZTEST(rt1718s_tcpc, test_vendor_only_alert_skips_handler)
+{
+	// The alert value is set to only vendor-defined bits
+	const uint16_t test_alert_value = TCPC_REG_ALERT_VENDOR_DEF;
+
+	// Reset the call count for the generic alert handler fake
+	tcpci_tcpc_alert_with_value_fake.call_count = 0;
+
+	// Set the TCPC_REG_ALERT register with ONLY vendor-defined bits
+	tcpci_emul_set_reg(emul, TCPC_REG_ALERT, test_alert_value);
+
+	// Baseline assertion: Ensure the generic handler hasn't been called
+	zassert_equal(tcpci_tcpc_alert_with_value_fake.call_count, 0,
+		      "Generic alert handler was called before tcpc_alert");
+
+	// Action: Call the driver's alert handler.
+	tcpc_config[PORT].drv->tcpc_alert(PORT);
+
+	// Verification: The generic handler MUST NOT be called because
+	// test_alert_value & ~TCPC_REG_ALERT_VENDOR_DEF will be zero.
+	zassert_equal(tcpci_tcpc_alert_with_value_fake.call_count, 0,
+		      "Generic alert handler was called for vendor-only alert");
+}
