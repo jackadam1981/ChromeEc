@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee2c966_7e3ae66e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Please address all check while running `repo upload`",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8837a19_eed3becf",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Please use doc string",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac8730d4_571f564d",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Please add doc strings for public methods.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecdf86a0_7886125f",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Maybe define a new exception class for this specific error or use a built-in one if there is anything suitable.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158da8fd_54c2f942",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Please make sure intf in not None.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220ebdeb_3b453fa7",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Please make sure all endpoints are not None.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c7ecdf_167fbeeb",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Maybe use some class-level constants for timeout values?",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4924a5a9_2f65f258",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-20T08:21:29Z",
+      "side": 1,
+      "message": "Please use type hints everywhere.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
