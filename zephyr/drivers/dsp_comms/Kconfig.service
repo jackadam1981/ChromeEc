@@ -14,3 +14,13 @@ config PLATFORM_EC_DSP_SERVICE
 
 	  If enabled, the core will enable a service which is used to
 	  serve the DSP core (this should be done on the EC).
+
+config PLATFORM_EC_DSP_SERVICE_MODE_CHANGE_DELAY_MS
+    int "Delay in milliseconds for mode handling work scheduling"
+    depends on PLATFORM_EC_DSP_SERVICE
+    default 10
+    range 10 200
+    help
+      Delay in milliseconds for rescheduling the mode_handling_work when
+	  notebook/tablet mode changes. This provides debouncing period and
+	  avoids mode handling execution from ISR context. Default is 100 msec.

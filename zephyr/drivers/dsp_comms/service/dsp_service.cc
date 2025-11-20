@@ -179,6 +179,19 @@ static inline int ReadCbiValue(cros_dsp_comms_GetCbiFlagsResponse& response,
   return rc;
 }
 
+// Add delayed work for lid angle peripheral enable
+static struct k_work_delayable mode_handling_work;
+static int pending_enable_state = 0, mode_val = 0;
+
+static void mode_handling_delayed(struct k_work *work)
+{
+  ARG_UNUSED(work);
+  tablet_set_mode(mode_val, TABLET_TRIGGER_LID);
+  if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+    lid_angle_peripheral_enable(pending_enable_state);
+  }
+}
+
 void dsp_service_handle_get_cbi_flags_request(struct k_work*) {
   const cros_dsp_comms_GetCbiFlagsRequest* request =
       &(cros::dsp::service::driver.pending_service_request_.request
@@ -228,17 +241,17 @@ void cros::dsp::service::Driver::SetNotebookMode(
   switch (mode) {
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK:
       LOG_DBG("    NOTEBOOK mode, tablet_get_mode()=%d", tablet_get_mode());
-      tablet_set_mode(0, TABLET_TRIGGER_LID);
-      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
-        lid_angle_peripheral_enable(1);
-      }
+      mode_val = 0;
+      pending_enable_state = 1;
+      k_work_reschedule(&mode_handling_work,
+        K_MSEC(CONFIG_PLATFORM_EC_DSP_SERVICE_MODE_CHANGE_DELAY_MS));
       break;
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_TABLET:
       LOG_DBG("    TABLET mode, tablet_get_mode()=%d", tablet_get_mode());
-      tablet_set_mode(1, TABLET_TRIGGER_LID);
-      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
-        lid_angle_peripheral_enable(0);
-      }
+      mode_val = 1;
+      pending_enable_state = 0;
+      k_work_reschedule(&mode_handling_work,
+          K_MSEC(CONFIG_PLATFORM_EC_DSP_SERVICE_MODE_CHANGE_DELAY_MS));
       break;
     default:
       LOG_WRN("Unsupported notebook mode");
@@ -323,6 +336,7 @@ pw::Status cros::dsp::service::Driver::Init() {
   }
 #endif
   k_work_init(&get_cbi_flags_work_, dsp_service_handle_get_cbi_flags_request);
+  k_work_init_delayable(&mode_handling_work, mode_handling_delayed);
 
   LOG_INF("Setting up target %s::0x%02x", bus_->name, target_cfg_.address);
 
