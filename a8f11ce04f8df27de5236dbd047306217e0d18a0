@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ec7cbb_b435b9d6",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-11-20T12:29:34Z",
+      "side": 1,
+      "message": "This #endif should go to the end as you are using board_get_vbus_adc() function in pd_check_vbus_level().",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 1
+      },
+      "revId": "a8f11ce04f8df27de5236dbd047306217e0d18a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
