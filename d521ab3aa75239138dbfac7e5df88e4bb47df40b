@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed580d4_dba3926c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.egis",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "maybe in the future we should clean the existing config to match \n \n `FINGERPRINT_SENSOR_EGIS_EC630_PAL`??",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e01a895_f62fb3fb",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.egis",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "I do not believe default n is necessary.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8638818e_ab46fa86",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "where is struct being used?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f836f226_26c69282",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "is this what the library called for Egis? you are copying code from the fpc code",
+      "range": {
+        "startLine": 198,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 26
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9677b04_47510d6d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "the `check (id \u003e\u003e 4) !\u003d FP_SENSOR_HWID_EGIS` only verifies the upper 12 bits of the ID. Please add a comment explaining if the lower 4 bits are variants or don\u0027t care.",
+      "range": {
+        "startLine": 213,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 37
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c4c259_69c3b605",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "The `write_pending buffer` is only `8 bytes`. Is this guaranteed to be sufficient for all `leave_cs_asserted \u003d\u003d true` calls?",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f2a9b6_bd108bb3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "egis_malloc is called within the SPI function to create a temporary receive buffer (data_tmp). Dynamic allocation in low-level drivers, especially for I/O operations, can lead to latency issues, heap fragmentation, or failures. It\u0027s better to use pre-allocated buffers or stack arrays if the maximum size is known and reasonable.",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 41
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b917a3b_b0b1fb3c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "Malloc failure returns -1, while SPI failures return `EGIS_BEP_RESULT_IO_ERROR`. It would be better to return `EGIS_BEP_RESULT_NO_MEMORY` for allocation failures",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6314f814_bfcbefab",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "This uses `k_busy_wait`. This is acceptable for very short delays, but if the EGIS library requests longer delays, it will unnecessarily consume CPU cycles. If delays can be longer than a few milliseconds, `k_msleep` should be used, assuming the calling context permits sleeping. Please clarify the expected range of delay values.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 27
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8edca0c_f988fdf8",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "This function currently uses `printk`. It should be integrated with Zephyr\u0027s logging system (e.g., using LOG_INF, LOG_ERR, etc.) to respect system-wide log levels and configuration. The level parameter is currently unused",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 14
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd251309_a259f7ea",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_pal.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "Functions like `egis_assert_fail`, `egis_sensor_spi_init`, and `egis_sensor_wfi` are empty. Add comments explaining why these are not needed for this implementation or if they are pending TODOs.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 1
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73de4f5_aa9d1051",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis_ec6601_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-20T22:36:52Z",
+      "side": 1,
+      "message": "do you need these? \n```\nEGIS_CAPTURE_BLACK_PXL_TEST \u003d 1,\nEGIS_CAPTURE_WHITE_PXL_TEST \u003d 2,\nEGIS_CAPTURE_DEFECT_PXL_TEST \u003d 3,\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "d521ab3aa75239138dbfac7e5df88e4bb47df40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
