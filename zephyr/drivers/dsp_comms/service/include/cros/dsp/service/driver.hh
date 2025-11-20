@@ -10,10 +10,12 @@
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/kernel.h>
 
-#include "cros/dsp/service/cros_transport.hh"
+#include "cros_transport.hh"
 #include "proto/ec_dsp.pb.h"
 
 #define CROS_DSP_RESPONSE_BUFFER_SIZE 128
+/* Delay in milliseconds for mode handling work scheduling */
+#define DSP_SERVICE_MODE_HANDLE_DELAY_MS 10
 
 namespace cros::dsp::util {
 
@@ -59,6 +61,7 @@ int dsp_service_buf_read_requested(struct i2c_target_config* cfg,
 void dsp_service_handle_get_cbi_flags_request(struct k_work* work_item);
 void dsp_service_hook_lid_change();
 void dsp_service_hook_tablet_mode_change();
+void mode_handling_delayed(struct k_work* work);
 #ifdef __cplusplus
 }
 #endif
@@ -97,6 +100,8 @@ class Driver {
       struct k_work* work_item);
   friend void ::dsp_service_hook_lid_change();
   friend void ::dsp_service_hook_tablet_mode_change();
+  int get_mode_val() const { return mode_val; }
+  void set_mode_val(int val) { mode_val = val; }
 
  private:
   constexpr static const size_t kRequestBufferSize =
@@ -108,6 +113,8 @@ class Driver {
   struct i2c_target_config target_cfg_;
   const struct device* bus_;
   const struct gpio_dt_spec interrupt_;
+
+  struct k_work_delayable mode_handling_work_ = {};
 
   struct k_work get_cbi_flags_work_ = {};
 
@@ -127,6 +134,7 @@ class Driver {
   uint8_t request_buffer_[kRequestBufferSize] = {};
   uint32_t request_buffer_size_ = 0;
   cros_dsp_comms_EcService pending_service_request_ = {};
+  uint8_t mode_val = 0;
 };
 
 extern Driver driver;

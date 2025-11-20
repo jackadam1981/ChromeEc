@@ -17,8 +17,10 @@
 
 #include "ap_power/ap_power_events.h"
 #include "cros/dsp/client.h"
+#include "service/include/cros/dsp/service/driver.hh"
 #include "cros_board_info.h"
 #include "hooks.h"
+#include "lid_angle.h"
 #include "proto/ec_dsp.pb.h"
 #include "pw_assert/check.h"
 #include "pw_transport/proto/transport.pb.h"
@@ -450,5 +452,54 @@ TEST_F(DspComms, LidAnglePeripheralEnableIsNoOp) {
   // The test verifies that the function exists and can be called without errors
 }
 #endif /* CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE */
+
+TEST_F(DspComms, ModeHandlingDelayedWithModeValZero) {
+  // Reset tablet mode to ensure clean state
+  tablet_reset();
+
+  // Set mode_val to 0 (NOTEBOOK mode)
+  cros::dsp::service::driver.set_mode_val(0);
+
+  // Emulate lid open to enable tablet mode processing
+  gpio_emul_input_set(kLidOpenInterruptSpec.port, kLidOpenInterruptSpec.pin, 1);
+  // Emulate clamshell mode (uses a low active)
+  gpio_emul_input_set(
+      KTabletModeInterruptSpec.port, KTabletModeInterruptSpec.pin, 1);
+
+  // Call mode_handling_delayed
+  mode_handling_delayed(nullptr);
+
+  // Verify tablet_set_mode was called with mode=0 (NOTEBOOK mode)
+  EXPECT_EQ(0, tablet_get_mode());
+}
+
+TEST_F(DspComms, ModeHandlingDelayedWithModeValOne) {
+  // Reset tablet mode to ensure clean state
+  tablet_reset();
+
+  // Set mode_val to 1 (TABLET mode)
+  cros::dsp::service::driver.set_mode_val(1);
+
+  // Emulate lid open to enable tablet mode processing
+  gpio_emul_input_set(kLidOpenInterruptSpec.port, kLidOpenInterruptSpec.pin, 1);
+  // Emulate clamshell mode (uses a low active)
+  gpio_emul_input_set(
+      KTabletModeInterruptSpec.port, KTabletModeInterruptSpec.pin, 0);
+
+  // Call mode_handling_delayed
+  mode_handling_delayed(nullptr);
+
+  // Verify tablet_set_mode was called with mode=1 (TABLET mode)
+  EXPECT_EQ(1, tablet_get_mode());
+}
+
+TEST_F(DspComms, GetModeValReturnsSetValue) {
+  // Test that get_mode_val returns the value set by set_mode_val
+  cros::dsp::service::driver.set_mode_val(0);
+  EXPECT_EQ(0, cros::dsp::service::driver.get_mode_val());
+
+  cros::dsp::service::driver.set_mode_val(1);
+  EXPECT_EQ(1, cros::dsp::service::driver.get_mode_val());
+}
 
 }  // namespace
