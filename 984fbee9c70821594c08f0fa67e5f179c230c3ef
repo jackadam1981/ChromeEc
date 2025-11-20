@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59415f5a_9a047ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-11-20T20:51:02Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8697660843985749137) is being automatically retried for the following reasons:\n- Some child builders are now retryable:fatcat-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "984fbee9c70821594c08f0fa67e5f179c230c3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
