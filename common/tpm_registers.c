@@ -704,9 +704,9 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 #ifdef CONFIG_STRONGBOX
 		case TPM_CC_VENDOR_STRONGBOX:
 			rc = extension_route_strongbox_command(&p);
-			/* Strongbox errors are in the range -1 .. -1000 */
+			/* Strongbox errors are in the range -1 .. -255 */
 			if (rc)
-				rc = 0x400 - rc;
+				rc = STRONGBOX_RC_ERR - rc;
 			break;
 #endif
 		default:

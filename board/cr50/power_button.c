@@ -56,7 +56,7 @@ static void power_button_press_enable_interrupt(int enable)
 	}
 }
 
-#ifdef CONFIG_AP_RO_VERIFICATION
+#ifdef CONFIG_AP_RO_VERIFICATION_KEY_COMBO
 
 /*
  * Implement sequence detecting trigger for starting AP RO verification.
@@ -123,7 +123,6 @@ static int rctd_poll_handler(void)
 				 * Report timeout only in case the process
 				 * started.
 				 */
-				ap_ro_add_flash_event(APROF_CHECK_TIMED_OUT);
 				CPRINTS("Timeout, no RO check triggered");
 			}
 			return 0;
@@ -139,7 +138,6 @@ static int rctd_poll_handler(void)
 			 */
 			CPRINTS("Power button released, "
 				"RO Check Detection stopped");
-			ap_ro_add_flash_event(APROF_CHECK_STOPPED);
 		}
 		return 0;
 	}
@@ -161,13 +159,11 @@ static int rctd_poll_handler(void)
 		return 1;
 
 	if (++ref_press_count != PRESS_COUNT) {
-		ap_ro_add_flash_event(APROF_REFRESH_PRESSED);
 		CPRINTS("Refresh press registered");
 		return 1;
 	}
 
 	CPRINTS("RO Validation triggered");
-	ap_ro_add_flash_event(APROF_CHECK_TRIGGERED);
 
 	validate_ap_ro();
 
@@ -187,7 +183,7 @@ static void power_button_handler(void)
 {
 	CPRINTS("power button pressed");
 
-#ifdef CONFIG_AP_RO_VERIFICATION
+#ifdef CONFIG_AP_RO_VERIFICATION_KEY_COMBO
 	if (rctd_start_time == 0)
 		hook_call_deferred(&rctd_poll_data, 0);
 #endif
