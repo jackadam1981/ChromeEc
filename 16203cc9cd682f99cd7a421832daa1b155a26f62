@@ -69,6 +69,30 @@
       },
       "revId": "16203cc9cd682f99cd7a421832daa1b155a26f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a1e1d2_099d0fbc",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-21T23:16:05Z",
+      "side": 1,
+      "message": "Also, FAB ID \u0026 BOM ID are not used by them.",
+      "parentUuid": "6afca5b6_c61c1753",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "16203cc9cd682f99cd7a421832daa1b155a26f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
