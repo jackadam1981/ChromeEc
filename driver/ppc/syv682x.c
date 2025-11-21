@@ -434,10 +434,12 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 
 static int syv682x_vbus_sink_enable(int port, int enable)
 {
+	CPRINTS("L-437\n");
 	int regval;
 	int rv;
 
 	if (!enable) {
+		CPRINTS("L-442\n");
 		atomic_clear(&sink_ocp_count[port]);
 		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SINK_ENABLED);
 		/*
@@ -472,11 +474,13 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		atomic_clear_bits(&flags[port], SYV682X_FLAGS_SOURCE_ENABLED);
 		atomic_or(&flags[port], SYV682X_FLAGS_SINK_ENABLED);
 	} else {
+		CPRINTS("L-477\n");
 		/*
 		 * No need to change the voltage path or channel direction. But,
 		 * turn both paths off because we are currently a sink.
 		 */
 		regval |= SYV682X_CONTROL_1_PWR_ENB;
+		CPRINTS("L-483 regval=%d\n", regval);
 	}
 
 	return write_reg(port, SYV682X_CONTROL_1_REG, regval);

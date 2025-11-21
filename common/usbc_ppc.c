@@ -219,6 +219,7 @@ int ppc_dev_is_connected(int port, enum ppc_device_role dev)
 
 test_mockable int ppc_vbus_sink_enable(int port, int enable)
 {
+	CPRINTS("L-222\n");
 	int rv = EC_ERROR_UNIMPLEMENTED;
 	const struct ppc_config_t *ppc;
 
@@ -228,8 +229,10 @@ test_mockable int ppc_vbus_sink_enable(int port, int enable)
 	}
 
 	ppc = &ppc_chips[port];
-	if (ppc->drv->vbus_sink_enable)
+	if (ppc->drv->vbus_sink_enable) {
+		CPRINTS("L-233\n");
 		rv = ppc->drv->vbus_sink_enable(port, enable);
+	}
 
 	return rv;
 }
