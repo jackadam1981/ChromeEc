@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea14523a_7dbf4a64",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-21T18:49:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd098a5c_8cb41465",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d04b664_b4b64e99",
@@ -102,6 +120,24 @@
       "writtenOn": "2025-11-11T21:36:27Z",
       "side": 1,
       "message": "This is an OK optimization for this bit, but it begs the question about other optimizations. There are a handful of other functions that touch this register, and some of them have different optimizations. They should all be able to share the same optimization:\n\nTCPCI says this register is changed only by the TCPM after power-on initialization. That means that we should be able to cache the entire register value and compare any new value to the cached value. That also means that other than the first access after init, we should never have to read the value of the register before writing it.\n\nThis will be essentially the same optimization that @abin.roy@7rays.corp-partner.google.com did for TCPC_CONTROL, that we ended up not needing. You might want a helper function for accessing POWER_CONTROL, if the individual functions get redundant. I think if we do this right, all of these functions could look almost identical, and each would involve at most one I2C access.",
+      "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6deb59_7543dac9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-21T18:49:27Z",
+      "side": 1,
+      "message": "If you wanted to leave this for future work, I\u0027d be OK with that.",
+      "parentUuid": "7dfd8030_3a188e3c",
       "revId": "30976886cfb1c4efc615a02d6881bf0fb4237ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
