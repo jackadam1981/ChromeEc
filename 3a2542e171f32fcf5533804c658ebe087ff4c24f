@@ -22,6 +22,54 @@
       },
       "revId": "3a2542e171f32fcf5533804c658ebe087ff4c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd3286d_76e726a8",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 22
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-21T09:40:35Z",
+      "side": 1,
+      "message": "thanks Dawid, I have done this on patchset23",
+      "parentUuid": "9a6af238_ebb68746",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "3a2542e171f32fcf5533804c658ebe087ff4c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a77856_44e3187c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 22
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-21T09:40:35Z",
+      "side": 1,
+      "message": "thanks Dawid, I have done this.",
+      "parentUuid": "9a6af238_ebb68746",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "3a2542e171f32fcf5533804c658ebe087ff4c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
