@@ -46,6 +46,30 @@
       },
       "revId": "fbb3a3cb7c0f257c31175f2abedb17475da1f607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1536c992_b9b08075",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-21T23:48:56Z",
+      "side": 1,
+      "message": "Also  Another reference from EC log  too : 25-11-22 03:14:39.617 D: BOARD_ID: 0x21\n25-11-22 03:14:39.620 D: FAB_ID: 0x1\n25-11-22 03:14:39.624 D: RVP_ID: 289 from driver\n\nTHis is read from ioexpander as part of get_rvp_id_config() function.",
+      "parentUuid": "4c672050_86981a11",
+      "range": {
+        "startLine": 20,
+        "startChar": 32,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "fbb3a3cb7c0f257c31175f2abedb17475da1f607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
