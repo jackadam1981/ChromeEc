@@ -16,7 +16,7 @@
 #include <ap_power/ap_pwrseq_sm.h>
 #endif
 
-LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
+LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_DBG);
 
 #define X86_NON_DSX_FORCE_SHUTDOWN_TO_MS 50
 
@@ -53,6 +53,8 @@ int board_ap_power_action_g3_entry(void *data)
 
 static int board_ap_power_action_g3_run(void *data)
 {
+	LOG_INF("%s", __func__);
+
 	if (ap_pwrseq_sm_is_event_set(data, AP_PWRSEQ_EVENT_POWER_STARTUP)) {
 		LOG_DBG("Turning on EN_S5_RAILS");
 		power_signal_set(PWR_EN_PP5000_A, 1);
