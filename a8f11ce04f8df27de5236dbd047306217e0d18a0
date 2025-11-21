@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30570c0d_300e2af0",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-21T06:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ec7cbb_b435b9d6",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 1
+      },
+      "revId": "a8f11ce04f8df27de5236dbd047306217e0d18a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c4a6334_a739c0a3",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-11-20T18:00:23Z",
       "side": 1,
       "message": "This looks like the opposite of what you want. Shouldn\u0027t it be checking for VBUS_PRESENT?",
+      "revId": "a8f11ce04f8df27de5236dbd047306217e0d18a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a142a11b_44ec8b3f",
+        "filename": "zephyr/program/rauru/src/usbc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-21T06:59:56Z",
+      "side": 1,
+      "message": "Thanks, you are right the intent of the function to check VBUS presence",
+      "parentUuid": "6c4a6334_a739c0a3",
       "revId": "a8f11ce04f8df27de5236dbd047306217e0d18a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
