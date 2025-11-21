@@ -45,6 +45,30 @@
       },
       "revId": "16203cc9cd682f99cd7a421832daa1b155a26f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afca5b6_c61c1753",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-11-21T23:14:53Z",
+      "side": 1,
+      "message": "I checked with Coreboot folk. Got confirmation that CB is further retrieving the board id bits from the value recieved from EC for memory training. So,this is correct to return only board id itself for board version now.",
+      "parentUuid": "69b1f02c_5fcfa1f9",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "16203cc9cd682f99cd7a421832daa1b155a26f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
