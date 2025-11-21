@@ -16,9 +16,23 @@
 	frame-size = <5120>; \
 	v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 
+#define FT9869_COMMON_IMAGE_PROPS \
+	width = <40>; \
+	height = <196>; \
+	bits-per-pixel = <8>; \
+	frame-size = <7840>; \
+	v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
+#define FT9849_COMMON_IMAGE_PROPS \
+	width = <80>; \
+	height = <128>; \
+	bits-per-pixel = <8>; \
+	frame-size = <10240>; \
+	v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
 / {
 	chosen {
-		cros-fp,fingerprint-sensor = &fp_sensor;
+		cros-fp,fingerprint-sensor = &fp_sensor_9865;
 		/* Reference the flash header not to omit it. */
 		flash-header = &flash_header;
 	};
@@ -130,8 +144,8 @@
 };
 
 &spi2 {
-	fp_sensor: ft9865@0 {
-		compatible = "ft,ft9865";
+	fp_sensor_9865: ft9865@0 {
+		compatible = "ft,ft98xx";
 		reg = <0>;
 		spi-max-frequency = <6000000>;
 
@@ -165,5 +179,82 @@
 
 		irq-gpios = <&eport5 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		reset-gpios = <&eport5 2 GPIO_ACTIVE_LOW>;
+		status = "okay";
+	};
+
+	fp_sensor_9869: ft9869@0 {
+		compatible = "ft,ft98xx";
+		reg = <0>;
+		spi-max-frequency = <6000000>;
+
+		configs {
+			compatible = "fingerprint-image-frame-params";
+			config0 {
+				FT9869_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT";
+			};
+			config1 {
+				FT9869_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE";
+			};
+			config2 {
+				FT9869_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN0";
+			};
+			config3 {
+				FT9869_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN1";
+			};
+			config4 {
+				FT9869_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST";
+			};
+			config5 {
+				FT9869_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_RESET_TEST";
+			};
+		};
+
+		irq-gpios = <&eport5 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+		reset-gpios = <&eport5 2 GPIO_ACTIVE_LOW>;
+		status = "disabled";
+	};
+
+	fp_sensor_9849: ft9849@0 {
+		compatible = "ft,ft98xx";
+		reg = <0>;
+		spi-max-frequency = <6000000>;
+
+		configs {
+			compatible = "fingerprint-image-frame-params";
+			config0 {
+				FT9849_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT";
+			};
+			config1 {
+				FT9849_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE";
+			};
+			config2 {
+				FT9849_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN0";
+			};
+			config3 {
+				FT9849_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN1";
+			};
+			config4 {
+				FT9849_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST";
+			};
+			config5 {
+				FT9849_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_RESET_TEST";
+			};
+		};
+
+		irq-gpios = <&eport5 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+		reset-gpios = <&eport5 2 GPIO_ACTIVE_LOW>;
+		status = "disabled";
 	};
 };
