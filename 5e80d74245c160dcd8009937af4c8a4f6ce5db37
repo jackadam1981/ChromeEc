@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d7b6db_82680156",
+        "filename": "zephyr/program/nissa/domika/ite_allow_lto.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-21T13:02:11Z",
+      "side": 1,
+      "message": "hey it all seems a bit convoluted, would it not be possible to extend the DEFAULT_LTO_ALLOWLIST directly from the CMakeLists file? (actual question, this stuff is really beyond me)",
+      "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
