@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26c98c42_19cf8c86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-21T02:24:29Z",
+      "side": 1,
+      "message": "I also upload the chojnik.dts for reference, https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7181526/1",
+      "parentUuid": "a6dbbc94_3e56cd90",
+      "revId": "5c657c371da1627cc74a0aaf4ff2dabb690ab6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44d04d0e_211cc940",
         "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
         "patchSetId": 18
