@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d3d9ea_3db005e2",
+        "filename": "zephyr/test/drivers/rt1718s/src/tcpc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-21T18:20:55Z",
+      "side": 1,
+      "message": "Nit: You might want a comment explaining the purpose of this test. It\u0027s not obvious just from looking at it why the generic TCPC tests wouldn\u0027t be sufficient.",
+      "revId": "7b7b684fc7c413a5f16eeb09deec1dc3d41a4e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff8d76e_aabc446c",
+        "filename": "zephyr/test/drivers/rt1718s/src/tcpc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-21T18:20:55Z",
+      "side": 1,
+      "message": "It looks like the rest of this test assumes that the `drv` struct is filled out. I think you can too.",
+      "revId": "7b7b684fc7c413a5f16eeb09deec1dc3d41a4e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
