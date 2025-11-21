@@ -104,6 +104,24 @@
       "parentUuid": "a6a5cb9c_d2e0035a",
       "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c11489e_08d7d654",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-21T16:42:54Z",
+      "side": 1,
+      "message": "I added dependency on `config BORINGSSL_CRYPTO`",
+      "parentUuid": "ae87c48d_0d97a558",
+      "revId": "943d3e8de17e31dd03c918edd66542f9f66a2194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
