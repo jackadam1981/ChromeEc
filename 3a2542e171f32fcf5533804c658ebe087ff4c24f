@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6af238_ebb68746",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 22
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-21T02:47:01Z",
+      "side": 1,
+      "message": "@dawidn@google.com  Hi Dawid, This place, I want to make it auto enable the selected sensor according to the chosen fingerprint-sensor in chojnik.dts, I tried some way, but failed, do you have any suggestions.",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "3a2542e171f32fcf5533804c658ebe087ff4c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
