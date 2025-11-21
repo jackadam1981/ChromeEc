@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b576621b_c17b8bef",
+        "filename": "zephyr/test/drivers/rt1718s/src/tcpc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-21T19:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d3d9ea_3db005e2",
+      "revId": "7b7b684fc7c413a5f16eeb09deec1dc3d41a4e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fff8d76e_aabc446c",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-21T18:20:55Z",
       "side": 1,
       "message": "It looks like the rest of this test assumes that the `drv` struct is filled out. I think you can too.",
+      "revId": "7b7b684fc7c413a5f16eeb09deec1dc3d41a4e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed22fbf_a8d1a1e3",
+        "filename": "zephyr/test/drivers/rt1718s/src/tcpc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-21T19:38:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff8d76e_aabc446c",
       "revId": "7b7b684fc7c413a5f16eeb09deec1dc3d41a4e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
