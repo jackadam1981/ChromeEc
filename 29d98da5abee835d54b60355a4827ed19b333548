@@ -16,6 +16,24 @@
       "message": "Add low coverage reason",
       "revId": "29d98da5abee835d54b60355a4827ed19b333548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77804ea_26f5d955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-21T05:35:36Z",
+      "side": 1,
+      "message": "Sure, I added the low coverage reason.\nJust to confirm — do you want this added only for this CL, or should I update the other related CLs as well?",
+      "parentUuid": "9cb3348a_dc20983f",
+      "revId": "29d98da5abee835d54b60355a4827ed19b333548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
