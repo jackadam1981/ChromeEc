@@ -16,6 +16,137 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ba273c3406920634cde84136f314b84f97c78b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb219c5_a76ca29d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 44
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Overall good, some minor comments",
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ccb6897_24fdb3dc",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 44
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Does it make sense to change it to \n```\ndepends on ZTEST \u0026\u0026 ARCH_POSIX\ndepends on DT_HAS_ELAN_ELAN80SG_ENABLED\n```\nthen you can add a new elan80series sensor e.g.\n```\ndepends on ZTEST \u0026\u0026 ARCH_POSIX\ndepends on DT_HAS_ELAN_ELAN80SG_ENABLED || DT_HAS_ELAN_ELANI80SA_ENABLED\n```",
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b58170_27b04daf",
+        "filename": "zephyr/emul/emul_elan80series.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Minor - you can probably use uint16_t",
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb574eda_650a79d6",
+        "filename": "zephyr/emul/emul_elan80series.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Maybe add ifdef for the sg sensor and add #error if no elan80series sensor is enabled?",
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5a1bb2_b6912f0a",
+        "filename": "zephyr/test/fingerprint/drivers/elan80series/boards/native_sim.overlay",
+        "patchSetId": 44
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Please move the sensor node to a separate file. We can include a correct sensor dts file in the test yaml",
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8fd119_6734f73d",
+        "filename": "zephyr/test/fingerprint/drivers/elan80series/src/elan80series.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Is this needed or I\u0027m missing something",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae63326_64a9210e",
+        "filename": "zephyr/test/fingerprint/drivers/elan80series/src/elan80series.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-21T14:29:17Z",
+      "side": 1,
+      "message": "Add ifdef for elan80sg sensor?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 45
+      },
+      "revId": "ba273c3406920634cde84136f314b84f97c78b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
