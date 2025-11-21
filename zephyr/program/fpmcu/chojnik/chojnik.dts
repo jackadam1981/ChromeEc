@@ -131,7 +131,7 @@
 
 &spi2 {
 	fp_sensor: ft9865@0 {
-		compatible = "ft,ft9865";
+		compatible = "ft,ft98xx";
 		reg = <0>;
 		spi-max-frequency = <6000000>;
 
