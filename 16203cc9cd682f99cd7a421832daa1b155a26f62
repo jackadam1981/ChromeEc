@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a9cf8c_f95b8afc",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-21T23:09:28Z",
+      "side": 1,
+      "message": "please add CBI as a dependency in Kconfig.",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "16203cc9cd682f99cd7a421832daa1b155a26f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b1f02c_5fcfa1f9",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-21T23:09:28Z",
+      "side": 1,
+      "message": "does coreboot currently use the FAB/BOM ID bits for memory type?\nif not, i think this is OK. else we\u0027ll have to stage this until\nafter coreboot has been updated to use `MODULE_ID` to detect the\nmemory configuration.",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "16203cc9cd682f99cd7a421832daa1b155a26f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
