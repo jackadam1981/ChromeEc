@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d64bba9_f2a11feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee2c966_7e3ae66e",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08dbced8_83be515a",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-20T08:22:44Z",
       "side": 1,
       "message": "I\u0027m also wondering if the `ectool_` in the file name is necessary, feels redundant.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9e1185_a6581888",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08dbced8_83be515a",
       "revId": "599205b1a597803f7cced3ea42024d4458f638db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb0cb73_081cfcb7",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8837a19_eed3becf",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac8730d4_571f564d",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-11-20T08:21:29Z",
       "side": 1,
       "message": "Please add doc strings for public methods.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773cbc77_19b6f003",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8730d4_571f564d",
       "revId": "599205b1a597803f7cced3ea42024d4458f638db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d67413_bfd46c16",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecdf86a0_7886125f",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "158da8fd_54c2f942",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-11-20T08:21:29Z",
       "side": 1,
       "message": "Please make sure intf in not None.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9dd3a6c_879e039c",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158da8fd_54c2f942",
       "revId": "599205b1a597803f7cced3ea42024d4458f638db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e7ed55_17ec099c",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220ebdeb_3b453fa7",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0c7ecdf_167fbeeb",
@@ -137,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b153610_da209eb1",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c7ecdf_167fbeeb",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4924a5a9_2f65f258",
@@ -150,6 +294,24 @@
       "writtenOn": "2025-11-20T08:21:29Z",
       "side": 1,
       "message": "Please use type hints everywhere.",
+      "revId": "599205b1a597803f7cced3ea42024d4458f638db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79c7205_3a82dd76",
+        "filename": "util/ectool_usb/ectool_communication.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-21T14:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4924a5a9_2f65f258",
       "revId": "599205b1a597803f7cced3ea42024d4458f638db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
