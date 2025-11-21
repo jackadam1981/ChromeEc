@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2509d41a_a8a861d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-21T20:19:17Z",
+      "side": 1,
+      "message": "This CL fixes the ISH crash issue that\u0027s detailed in https://issuetracker.google.com/442991892 comment #12. I found with uldrenite360 that if I had the lid angle near 360, just enough to trigger the GRM sensor, that I could reproduce the ISH crashing until the lid+accel sensor init fails. And at this point the ISH isn\u0027t functional. After pulling in this CL, I am not able to reproduce this issue using the exact same lid angle.",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "470f96f729f1ab821811f6dab3e805d5d054a830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
