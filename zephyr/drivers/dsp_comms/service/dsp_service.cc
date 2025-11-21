@@ -326,8 +326,8 @@ pw::Status cros::dsp::service::Driver::Init() {
 
   LOG_INF("Setting up target %s::0x%02x", bus_->name, target_cfg_.address);
 
-  rc |= i2c_target_register(bus_, &target_cfg_);
-  PW_CHECK_INT_EQ(rc, 0);
+  // rc |= i2c_target_register(bus_, &target_cfg_);
+  // PW_CHECK_INT_EQ(rc, 0);
 
   PW_CHECK(gpio_is_ready_dt(&interrupt_));
 
@@ -361,6 +361,60 @@ void dsp_service_hook_lid_change() {
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
+
+/* ITE Debug */
+static void dsp_service_suspend_hook(void) {
+  const struct device* bus = cros::dsp::service::driver.bus_;
+  int rc;
+
+  /* ITE Debug - set gpiog7 as low */
+  sys_write8(0x40, 0xf01697);
+  sys_write8(sys_read8(0xf01607) & ~BIT(7), 0xf01607);
+
+  /* ITE Debug - set gpiog4 as low */
+  sys_write8(0x40, 0xf01694);
+  sys_write8(sys_read8(0xf01607) & ~BIT(4), 0xf01607);
+
+  rc = i2c_target_unregister(bus, &cros::dsp::service::driver.target_cfg_);
+#if 1
+  if (rc) {
+    LOG_ERR("Failed to unregister i2c target device");
+    /* ITE Debug - set gpiog7 as high */
+    sys_write8(0x40, 0xf01697);
+    sys_write8(sys_read8(0xf01607) | BIT(7), 0xf01607);
+  }
+#else
+  PW_CHECK_INT_EQ(rc, 0);
+#endif
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, dsp_service_suspend_hook, HOOK_PRIO_DEFAULT);
+
+static void dsp_service_resume_hook(void) {
+  const struct device* bus = cros::dsp::service::driver.bus_;
+  int rc;
+
+  /* ITE Debug - set gpiog7 as low */
+  sys_write8(0x40, 0xf01697);
+  sys_write8(sys_read8(0xf01607) & ~BIT(7), 0xf01607);
+
+  /* ITE Debug - set gpiog4 as high */
+  sys_write8(0x40, 0xf01694);
+  sys_write8(sys_read8(0xf01607) | BIT(4), 0xf01607);
+
+  rc = i2c_target_register(bus, &cros::dsp::service::driver.target_cfg_);
+#if 1
+  if (rc) {
+    LOG_ERR("Failed to register i2c target device");
+    /* ITE Debug - set gpiog7 as high */
+    sys_write8(0x40, 0xf01697);
+    sys_write8(sys_read8(0xf01607) | BIT(7), 0xf01607);
+  }
+#else
+  PW_CHECK_INT_EQ(rc, 0);
+#endif
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, dsp_service_resume_hook, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_PLATFORM_EC_TABLET_MODE
 void dsp_service_hook_tablet_mode_change() {
