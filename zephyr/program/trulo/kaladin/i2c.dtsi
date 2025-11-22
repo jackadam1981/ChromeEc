@@ -45,6 +45,7 @@
 		     &i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
 	target-enable;
+	target-pio-mode;
 
 	label = "I2C_SENSOR";
 	clock-frequency = <I2C_BITRATE_FAST>;
