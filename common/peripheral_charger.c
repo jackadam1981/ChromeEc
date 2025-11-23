@@ -815,7 +815,9 @@ static void pchg_startup(void)
 	if (active_pchg_count)
 		task_wake(TASK_ID_PCHG);
 }
+#ifndef CONFIG_WPC_LID_ENABLE
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_startup, HOOK_PRIO_DEFAULT);
+#endif
 
 static void pchg_shutdown(void)
 {
@@ -830,7 +832,40 @@ static void pchg_shutdown(void)
 		board_pchg_power_on(p, 0);
 	}
 }
+#ifndef CONFIG_WPC_LID_ENABLE
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pchg_shutdown, HOOK_PRIO_DEFAULT);
+#endif
+
+#ifdef CONFIG_WPC_LID_ENABLE
+void wpc_lid_handler(void)
+{
+	if (!gpio_get_level(GPIO_LID_PEN))
+		pchg_startup();
+	else
+		pchg_shutdown();
+}
+DECLARE_DEFERRED(wpc_lid_handler);
+
+void wpc_lid_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&wpc_lid_handler_data, CONFIG_WPC_LID_DEBOUNCE_US);
+}
+
+static void wpc_lid_enable(void)
+{
+	gpio_enable_interrupt(GPIO_LID_PEN);
+	pchg_startup();
+	hook_call_deferred(&wpc_lid_handler_data, CONFIG_WPC_LID_DEBOUNCE_US);
+}
+static void wpc_lid_disable(void)
+{
+	gpio_disable_interrupt(GPIO_LID_PEN);
+	pchg_shutdown();
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, wpc_lid_enable, HOOK_PRIO_POST_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, wpc_lid_disable, HOOK_PRIO_DEFAULT);
+#endif
 
 void pchg_task(void *u)
 {
