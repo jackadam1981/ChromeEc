@@ -391,6 +391,12 @@ void pchg_irq(enum gpio_signal signal);
 void pchg_task(void *u);
 
 /**
+ * Interrupt handler for the WPC lid.
+ *
+ * @param signal
+ */
+void wpc_lid_interrupt(enum gpio_signal signal);
+/**
  * Turn on/off power for a PCHG charger.
  *
  * @param port  Port number of the PCHG charger.
