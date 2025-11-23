@@ -3237,6 +3237,7 @@
 /* Add support for skipping lid close when the system into tablet mode. */
 #undef CONFIG_TABLET_MODE_SKIP_LID_CLOSE
 
+#undef CONFIG_WPC_LID_ENABLE
 /*
  * Minimum CPU clocks between scans.  This ensures that keyboard scanning
  * doesn't starve the other EC tasks of CPU when running at a decreased system

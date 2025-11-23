@@ -62,4 +62,10 @@ config PLATFORM_EC_EXTERNAL_NOTEBOOK_MODE
       clamshell/tablet mode changes. The motionsense task notifies the EC
       using the GPIO mapped to the devicetree alias "gpio_nb_mode".
 
+config PLATFORM_EC_WPC_LID_ENABLE
+    bool "Enable WPC Lid feature"
+    default n
+    help
+      Enable support for the WPC Lid functionality.
+
 endif # PLATFORM_EC_TABLET_MODE
