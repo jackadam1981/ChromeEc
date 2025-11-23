@@ -332,6 +332,9 @@
 		imu_int_ec_l {
 			gpios = <&gpiod 0 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
 		};
+		gpio_kb_charge_blocked: kb_charge_blocked {
+			gpios = <&gpioe 2 (GPIO_OUTPUT | GPIO_OUTPUT_INIT_LOW)>;
+		};
 	};
 
 	unused-pins {
