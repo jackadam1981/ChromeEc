@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0ce29e_f961b43c",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e17361_850950e2",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "380fc010_eb0cff5a",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-24T09:23:30Z",
       "side": 1,
       "message": "Please add an assert len of bytes is \u003e\u003d header size",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf765ca_ac833a90",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "380fc010_eb0cff5a",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bb22aaa_d5fbcd98",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Google Python Style Guide (https://google.github.io/styleguide/pyguide.html) suggests one underscore for private methods.",
+      "parentUuid": "e78315ea_5e94993f",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "793c03b6_c74c1db5",
         "filename": "util/ectool_usb/commands.py",
         "patchSetId": 8
@@ -65,6 +119,24 @@
       "writtenOn": "2025-11-24T09:23:30Z",
       "side": 1,
       "message": "maybe check if received at least header size",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4852bf6c_be292b6d",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "793c03b6_c74c1db5",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61743426_62735cee",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7d38247_f208e9ec",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72d0486d_83e83e34",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-11-24T09:23:30Z",
       "side": 1,
       "message": "Maybe check if first?",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e4dd7e_3120cce5",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72d0486d_83e83e34",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee28cd1_42f98f47",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da9a1da1_57b1ec3d",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f61d18b_d35a8584",
@@ -133,6 +259,24 @@
       "writtenOn": "2025-11-24T09:23:30Z",
       "side": 1,
       "message": "Please check if received at least `response_len` before overwritting.",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34dea3da_15ba507e",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f61d18b_d35a8584",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +300,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b88ffef2_95a2cab7",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "We could have a combined definition like this:\nself.response_msg \u003d [(\"ro_ver\", \"32s\"), (\"rw_ver\", \"32s\"), (\"fwid_ro\", \"32s\"), (\"curr_image\", \"I\"), (\"fwid_rw\", \"32s\")]\nAnd later generate response_fmt and response_type based on this.",
+      "parentUuid": "832567b5_146644a3",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5121054f_6c995373",
         "filename": "util/ectool_usb/commands.py",
         "patchSetId": 8
@@ -167,6 +329,24 @@
       "writtenOn": "2025-11-24T09:23:30Z",
       "side": 1,
       "message": "Can you use last element of `self.response` instead of passing `payload_field` every time? If not, maybe somehow store the `ec_flash_banks` name in the base class if possible, something like `self.payload_field_name` in case of `variable_response`",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f118f1_ed0e9f46",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T11:30:41Z",
+      "side": 1,
+      "message": "Changed to use always last field",
+      "parentUuid": "5121054f_6c995373",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
