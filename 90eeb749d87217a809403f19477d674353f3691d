@@ -16,6 +16,57 @@
       "message": "I have attached the bug ID now. Thanks",
       "revId": "90eeb749d87217a809403f19477d674353f3691d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0855e036_2b62b8a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-24T19:37:16Z",
+      "side": 1,
+      "message": "If common/lid_angle_common.c is not compiled on the ISH anymore, remove #ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE on line 41.\n\nlid_angle_peripheral_enable is overridable. We could defined as a noop in a ISH specific file.",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cd28ad_1ab03b2b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-24T19:37:16Z",
+      "side": 1,
+      "message": "CONFIG_SOC_FAMILY_INTEL_ISH is not widely used and IMOH to architecture specific. Can we we another define, like CONFIG_CROS_EC_KEYBOARD_INPUT?",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63611b2_79691579",
+        "filename": "zephyr/program/trulo/kaladin-ish/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-24T19:37:16Z",
+      "side": 1,
+      "message": "This is risky: the config have now double meaning: when set to N:\n- the lid angle calculation and the lid angle users reside on the same EC,\nor\n- we are running on the ISH. \n\n\nSince we are not compiling `common/lid_angle_common.c` anymore, is still needed?",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
