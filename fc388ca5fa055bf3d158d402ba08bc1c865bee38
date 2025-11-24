@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2311c16a_33e45e3d",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T14:11:04Z",
+      "side": 1,
+      "message": "Typo To -\u003e Too",
+      "parentUuid": "bcf765ca_ac833a90",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e78315ea_5e94993f",
         "filename": "util/ectool_usb/commands.py",
         "patchSetId": 8
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Google Python Style Guide (https://google.github.io/styleguide/pyguide.html) suggests one underscore for private methods.",
       "parentUuid": "e78315ea_5e94993f",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4562f8_783b8287",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T14:11:04Z",
+      "side": 1,
+      "message": "Thanks for the pointer",
+      "parentUuid": "8bb22aaa_d5fbcd98",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -312,6 +348,24 @@
       "side": 1,
       "message": "We could have a combined definition like this:\nself.response_msg \u003d [(\"ro_ver\", \"32s\"), (\"rw_ver\", \"32s\"), (\"fwid_ro\", \"32s\"), (\"curr_image\", \"I\"), (\"fwid_rw\", \"32s\")]\nAnd later generate response_fmt and response_type based on this.",
       "parentUuid": "832567b5_146644a3",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1d1a9f2_20d4a8ec",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T14:11:04Z",
+      "side": 1,
+      "message": "I think that makes sense. You pair field name and format in a better way. Can this format be used also with the variable response?",
+      "parentUuid": "b88ffef2_95a2cab7",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
