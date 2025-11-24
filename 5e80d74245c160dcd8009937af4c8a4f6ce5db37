@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3f23100_dc10ef96",
+        "filename": "zephyr/boards/google/it8xxx2/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-24T10:06:03Z",
+      "side": 1,
+      "message": "\u003e Instead of searching for the deep CMake script, you could add a Kconfig option that the board can enable.\n\u003e \n\u003e ```\n\u003e # Note - downstream symbol\n\u003e config ITE_ADDITIONAL_LTO_ALLOWLIST\n\u003e     depends on KERNEL_NO_LTO\n\u003e \n\u003e if(ITE_ADDITIONAL_LTO_ALLOWLIST)\n\u003e   function(kernel_lto_allow_list out_var)\n\u003e ```\n\nJust to confirm, is your suggestion that enabling a Kconfig option would directly activate the CMake function and use a fixed set of allow-listed .c files?\nIn our case, the additional LTO allowlist is specific to each board.\nFor example, DOMIKA needs timer.c, while another board may require a different set of files. Using a single boolean Kconfig option would effectively hard-code one allowlist for all boards, which doesn’t scale when their requirements differ.\n\n \n\u003e And I agree with Fabio\u0027s question - test if you can set `ADDITIONAL_ALLOWLIST` directly without the helper function.\n\nAs mentioned above in my response to Fabio.",
+      "parentUuid": "c2281049_9abca374",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62d7b6db_82680156",
         "filename": "zephyr/program/nissa/domika/ite_allow_lto.cmake",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2025-11-21T13:02:11Z",
       "side": 1,
       "message": "hey it all seems a bit convoluted, would it not be possible to extend the DEFAULT_LTO_ALLOWLIST directly from the CMakeLists file? (actual question, this stuff is really beyond me)",
+      "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047c5189_eba0f2a3",
+        "filename": "zephyr/program/nissa/domika/ite_allow_lto.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2025-11-24T10:06:03Z",
+      "side": 1,
+      "message": "The reason I used a kernel_lto_allow_list() function is because the additional allowlist comes from a separate .cmake file (ite_allow_lto.cmake) under platform/ec/zephyr/program/..., while the base DEFAULT_LTO_ALLOWLIST is created in kernel/kernel_no_lto.cmake (https://github.com/zephyrproject-rtos/zephyr/pull/99124).\n\nSince these are different CMake contexts, I cannot directly modify DEFAULT_LTO_ALLOWLIST from the program-level CMake file. Using a helper function was the way to pass the additional list back into kernel_no_lto.cmake via PARENT_SCOPE.\n\nTo simplify the implementation, I updated the function as patchset7",
+      "parentUuid": "62d7b6db_82680156",
       "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
