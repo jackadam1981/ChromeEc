@@ -410,6 +410,24 @@
       "parentUuid": "f3478e5a_31ba946c",
       "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94cbd8f_dbc87c73",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T06:49:50Z",
+      "side": 1,
+      "message": "I think it\u0027s fine.",
+      "parentUuid": "f1ddf9f4_7b797c0e",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
