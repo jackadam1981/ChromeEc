@@ -52,6 +52,24 @@
       "parentUuid": "30b09878_cdc615bc",
       "revId": "08ffa0b22a123af541345566bac1dc4020f7829d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c66943c_e2992ffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-24T19:40:13Z",
+      "side": 1,
+      "message": "As discussed OOB, you can guarantee the merge order you want with `Cq-Depend`.",
+      "parentUuid": "14ee349d_3331786c",
+      "revId": "08ffa0b22a123af541345566bac1dc4020f7829d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
