@@ -34,6 +34,24 @@
       "parentUuid": "5bb31b5c_c15492c8",
       "revId": "08ffa0b22a123af541345566bac1dc4020f7829d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ee349d_3331786c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-24T09:35:51Z",
+      "side": 1,
+      "message": "7186285: drivers: i2c: npcx: add more timing parameters for I2C clock frequency | https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/7186285",
+      "parentUuid": "30b09878_cdc615bc",
+      "revId": "08ffa0b22a123af541345566bac1dc4020f7829d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
