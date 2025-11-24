@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4c2d6276_ace72b38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-24T11:36:00Z",
+      "side": 1,
+      "message": "oh yeah, there\u0027s like 8 bugs for this stuff for some reason I got overwhelmed and not bothered marking it at all, let me add it, and adjust the test string too, thanks for pointing it out",
+      "parentUuid": "26eeb46e_bbe28a01",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "990a482089743141690e18a13fec8a09c641e26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3f09623b_8420c78c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
