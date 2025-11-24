@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f88aada0_2cd9536a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-24T19:38:30Z",
+      "side": 1,
+      "message": "New stuff in latest patchset LGTM. But the debug code added here will need to come out before this merges.",
+      "parentUuid": "64641d25_f20a960c",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a2c3f3b_268a7852",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
