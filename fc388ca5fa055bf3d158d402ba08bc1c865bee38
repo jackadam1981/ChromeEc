@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc703a60_0bec53d1",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T16:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2311c16a_33e45e3d",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e78315ea_5e94993f",
@@ -366,6 +384,24 @@
       "side": 1,
       "message": "I think that makes sense. You pair field name and format in a better way. Can this format be used also with the variable response?",
       "parentUuid": "b88ffef2_95a2cab7",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5707a3a9_c652c5f5",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-24T16:58:03Z",
+      "side": 1,
+      "message": "Used for request, response and variable part of response.",
+      "parentUuid": "a1d1a9f2_20d4a8ec",
       "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
