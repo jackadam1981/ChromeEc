@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce72e65f_d0b2977c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-24T19:31:50Z",
+      "side": 1,
+      "message": "To fix the build failure, you need to change the prototype in `driver/tcpm/stub.c` to match the ones you already changed.",
+      "revId": "0a3d9cc3e35424efd669a4866b78ddb50f9a75e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
