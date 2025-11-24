@@ -991,6 +991,8 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
+		pd_record_timestamp_start(new_port,
+					  PD_INTERVAL_CM_REFRESH_TO_PPC);
 		/*
 		 * A different port or a supplier was selected. Make an attempt
 		 * to switch to the port.
@@ -1488,7 +1490,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_CM_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE);
+
 	CM_MUTEX_LOCK(&cm_refresh);
+
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.
