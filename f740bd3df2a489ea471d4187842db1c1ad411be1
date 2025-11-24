@@ -103,6 +103,24 @@
       "parentUuid": "a182a694_a1fd394b",
       "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e31aa43_c2c6e6ed",
+        "filename": "zephyr/dts/bindings/fingerprint/ft,ft9849.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:28:47Z",
+      "side": 1,
+      "message": "Yes, at this point, our approach is different project per different sensor",
+      "parentUuid": "4809da8a_5c8498ab",
+      "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
