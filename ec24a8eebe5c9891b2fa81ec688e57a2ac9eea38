@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a49b4de_514f28f2",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-24T18:07:51Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "19b560a8_1ed649b1",
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f347588_4309750c",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-11-14T21:12:24Z",
       "side": 1,
       "message": "`dut_control` doesn\u0027t return anything.  This if branch is not needed.",
+      "range": {
+        "startLine": 923,
+        "startChar": 0,
+        "endLine": 923,
+        "endChar": 68
+      },
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76ef44a_daf308a7",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-24T18:07:51Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "8f347588_4309750c",
       "range": {
         "startLine": 923,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01457769_55e58b72",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-24T18:07:51Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.org, I did not get here if I m calling version command twice. Please let me know what I m missing here.",
+      "parentUuid": "3aacb51e_1d24a0f5",
+      "range": {
+        "startLine": 925,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 55
+      },
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cfd0a73_63ab803c",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5686cf_32a9a15c",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-24T18:07:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cfd0a73_63ab803c",
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604caa03_b6953519",
@@ -94,6 +178,30 @@
       "writtenOn": "2025-11-14T21:12:24Z",
       "side": 1,
       "message": "Formatting is not correct from this point forward.  Please use hard tabs for consistency.",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 72
+      },
+      "revId": "ec24a8eebe5c9891b2fa81ec688e57a2ac9eea38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "333e97e2_c73c1274",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-24T18:07:51Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "604caa03_b6953519",
       "range": {
         "startLine": 931,
         "startChar": 0,
