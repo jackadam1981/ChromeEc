@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0c9101_fbdf3fdd",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-24T21:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a043739c_7b6d9d4f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 32
+      },
+      "revId": "19d7ec9d509a7f5b35f11a1b078d2ae7d6e1c1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4263c825_3cfd1211",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-24T09:24:35Z",
       "side": 1,
       "message": "To build COS EC OS target, preprocessor conditionals should be used instead of `IS_ENABLED`.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 50
+      },
+      "revId": "19d7ec9d509a7f5b35f11a1b078d2ae7d6e1c1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308472da_f689a6ac",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-24T21:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4263c825_3cfd1211",
       "range": {
         "startLine": 206,
         "startChar": 0,

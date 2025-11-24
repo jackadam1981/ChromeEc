@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdc309c_16574562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-24T21:02:55Z",
+      "side": 1,
+      "message": "This can be done as part of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7171423",
+      "parentUuid": "eedc19d8_d153b819",
+      "revId": "af3881c6db0f1384adca7622421a2f3bdeb60687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1405aaa_d2961d0a",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Or maybe s/ISH/isr/",
       "parentUuid": "e1405aaa_d2961d0a",
+      "revId": "af3881c6db0f1384adca7622421a2f3bdeb60687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc42155_a8fe0022",
+        "filename": "zephyr/include/drivers/dsp_service.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-11-24T21:02:55Z",
+      "side": 1,
+      "message": "It was supposed to be ISR. I have fixed the comment.",
+      "parentUuid": "e0f2aa5a_fc93bff1",
       "revId": "af3881c6db0f1384adca7622421a2f3bdeb60687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
