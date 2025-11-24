@@ -26,6 +26,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 #include "util.h"
 #include "zephyr/include/usbc/pdc_dpm.h"
 #ifdef CONFIG_ZEPHYR
@@ -954,13 +955,18 @@ static void charge_manager_refresh(void)
 {
 	/* Always initialize charge port on first pass */
 	static int active_charge_port_initialized;
-	int new_supplier, new_port;
+	int new_supplier, new_port = 0;
 	int new_charge_current, new_charge_current_uncapped;
 	int new_charge_voltage, i;
 	int updated_new_port = CHARGE_PORT_NONE;
 	int updated_old_port = CHARGE_PORT_NONE;
 	int ceil;
 	int power_changed = 0;
+
+	pd_record_timestamp_end(new_port,
+				PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH);
+
+	pd_record_timestamp_start(new_port, PD_INTERVAL_CM_REFRESH_TO_PPC);
 
 	CM_MUTEX_LOCK(&cm_refresh);
 
@@ -1207,6 +1213,8 @@ static void charge_manager_refresh(void)
 	}
 
 	CM_MUTEX_UNLOCK(&cm_refresh);
+	CPRINTS("Inside CM");
+	pd_print_timestamps(new_port);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1428,6 +1436,8 @@ charge_manager_update_charge(int supplier, int port,
 
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap)
 {
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH); /* Entry to CM */
 	if (!is_pd_port(port))
 		return;
 
@@ -1487,12 +1497,19 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_CM_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE);
+
 	CM_MUTEX_LOCK(&cm_refresh);
+
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.
 	 */
 	if (left_safe_mode && port == charge_port && ceil < charge_current) {
+		if (ceil == 0) {
+			ppc_vbus_sink_enable(port, 0);
+		}
 		board_set_charge_limit(port, CHARGE_SUPPLIER_PD, ceil,
 				       charge_current_uncapped, charge_voltage);
 		/* Enforcing charge_ceil here prevents race conditions between
