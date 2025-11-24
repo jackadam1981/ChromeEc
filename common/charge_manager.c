@@ -962,6 +962,8 @@ static void charge_manager_refresh(void)
 	int ceil;
 	int power_changed = 0;
 
+	timestamp_t ts_cm = get_time();
+
 	CM_MUTEX_LOCK(&cm_refresh);
 
 	/* Hunt for an acceptable charge port */
@@ -1013,6 +1015,13 @@ static void charge_manager_refresh(void)
 			available_charge[i][new_port].voltage = 0;
 		}
 	}
+
+	pd_record_timestamp(new_port, PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH,
+			    PD_END, ts_cm);
+
+	pd_record_timestamp(new_port,
+			    PD_INTERVAL_CM_REFRESH_TO_PPC_VBUS_SINK_DISABLE,
+			    PD_START, ts_cm);
 
 	active_charge_port_initialized = 1;
 
@@ -1207,6 +1216,8 @@ static void charge_manager_refresh(void)
 	}
 
 	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	pd_print_timestamps(new_port);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1347,6 +1358,8 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 
 void charge_manager_invalidate_suppliers(int port)
 {
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH); /* Entry to CM */
 	int i;
 
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
@@ -1487,7 +1500,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	/* pd_record_timestamp_start(
+		port, PD_INTERVAL_CM_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE); */
+
 	CM_MUTEX_LOCK(&cm_refresh);
+
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
 	 * waiting for our deferred task to run.

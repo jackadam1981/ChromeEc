@@ -134,14 +134,42 @@ static int syv682x_wait_for_ready(int port, int reg)
 
 static int write_reg(uint8_t port, int reg, int regval)
 {
+	if (reg == SYV682X_CONTROL_1_REG && regval == 234) {
+		CPRINTS("write_reg: port=%d reg=0x%02x val=0x%02x", port, reg,
+			regval);
+		pd_record_timestamp_end(
+			port,
+			PD_INTERVAL_SYV682X_VBUS_SINK_DISABLE_TO_WRITE_REG);
+
+		pd_record_timestamp_start(
+			port, PD_INTERVAL_WRITE_REG_TO_SYV682X_WAIT_FOR_READY);
+	}
+
 	int rv;
 
 	rv = syv682x_wait_for_ready(port, reg);
+
+	if (reg == SYV682X_CONTROL_1_REG && regval == 234) {
+		pd_record_timestamp_end(
+			port, PD_INTERVAL_WRITE_REG_TO_SYV682X_WAIT_FOR_READY);
+		pd_record_timestamp_start(
+			port,
+			PD_INTERVAL_SYV682X_WAIT_FOR_READY_TO_WRITE_COMPLETE);
+	}
+
 	if (rv)
 		return rv;
 
-	return i2c_write8(ppc_chips[port].i2c_port,
-			  ppc_chips[port].i2c_addr_flags, reg, regval);
+	rv = i2c_write8(ppc_chips[port].i2c_port,
+			ppc_chips[port].i2c_addr_flags, reg, regval);
+
+	if (reg == SYV682X_CONTROL_1_REG && regval == 234)
+
+		pd_record_timestamp_end(
+			port,
+			PD_INTERVAL_SYV682X_WAIT_FOR_READY_TO_WRITE_COMPLETE);
+
+	return rv;
 }
 
 static int syv682x_is_sourcing_vbus(int port)
@@ -437,6 +465,14 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 
 static int syv682x_vbus_sink_enable(int port, int enable)
 {
+	if (enable == 0) {
+		pd_record_timestamp_end(
+			port,
+			PD_INTERVAL_PPC_VBUS_SINK_DISABLE_TO_SYV682X_VBUS_SINK_DISABLE);
+		pd_record_timestamp_start(
+			port,
+			PD_INTERVAL_SYV682X_VBUS_SINK_DISABLE_TO_WRITE_REG);
+	}
 	int regval;
 	int rv;
 
