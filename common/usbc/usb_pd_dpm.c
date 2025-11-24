@@ -1165,7 +1165,7 @@ union sido dpm_get_source_info_msg(int port)
 	/* Reported PDP: voltage * current offered in Source Caps. */
 	if (pdo_count <= 0) {
 		/* This should never happen, but 0 is the most plausible
-		 * default.
+		 * default. Just checking.
 		 */
 		source_info.port_reported_pdp = 0;
 	} else {
