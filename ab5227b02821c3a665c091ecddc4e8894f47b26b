@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6299f4f8_f92500db",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-24T11:43:48Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9a2c3f3b_268a7852",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba07e80_f9a643c5",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9500a34_4974e1b3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-24T11:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba07e80_f9a643c5",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5180747d_a7d335f1",
@@ -65,6 +101,24 @@
       "writtenOn": "2025-10-30T22:31:06Z",
       "side": 1,
       "message": "IMO, this should happen inside `pd_got_frs_signal`. `prl_request_discard` happens to be safe to call from interrupt context, although its name doesn\u0027t indicate that.",
+      "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad2b993_8d89577a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-11-24T11:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5180747d_a7d335f1",
       "revId": "ab5227b02821c3a665c091ecddc4e8894f47b26b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
