@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb47e14e_d1f351e0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-24T09:17:07Z",
+      "side": 1,
+      "message": "yes, Dawid, I\u0027ll modify this.",
+      "parentUuid": "50734c41_42531eff",
+      "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b864fb2_cc0cecae",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 23
@@ -65,6 +83,24 @@
       "writtenOn": "2025-11-24T08:28:33Z",
       "side": 1,
       "message": "Following up the Kconfig discussion. Do we even need separate `compatible` per each sensor? Can we just use `ft,ft98xx` for all?",
+      "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4809da8a_5c8498ab",
+        "filename": "zephyr/dts/bindings/fingerprint/ft,ft9849.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-24T09:17:07Z",
+      "side": 1,
+      "message": "will per each sensor have different project code? 9865 is chojnik, 9869 and 9849 are something others. so these 3 sensors will define in different dts?",
+      "parentUuid": "a182a694_a1fd394b",
       "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
