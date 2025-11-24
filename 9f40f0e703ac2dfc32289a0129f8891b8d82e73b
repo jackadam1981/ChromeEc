@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e469082_2801ff2b",
+        "filename": "zephyr/emul/emul_elan80series.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-24T17:00:43Z",
+      "side": 1,
+      "message": "@dawidn@google.com\n\nThis was added to the emulator file. It can be updated for different 80series sensors.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "9f40f0e703ac2dfc32289a0129f8891b8d82e73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
