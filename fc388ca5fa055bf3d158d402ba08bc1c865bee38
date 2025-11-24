@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e17361_850950e2",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Can we add `variable_response` argument here?",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380fc010_eb0cff5a",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Please add an assert len of bytes is \u003e\u003d header size",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78315ea_5e94993f",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Use `__` instead of `_` for private methods?",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793c03b6_c74c1db5",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "maybe check if received at least header size",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d38247_f208e9ec",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "`response_len` -\u003e `expected_response_len`.",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d0486d_83e83e34",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Maybe check if first?",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9a1da1_57b1ec3d",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Rename to expected_response_len?",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f61d18b_d35a8584",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Please check if received at least `response_len` before overwritting.",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832567b5_146644a3",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "I\u0027m wondering how we can document in a good way the response format. Currently, you need to enter the implementation of each command every time and check the `response_type` variable. Do you have any ideas?",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5121054f_6c995373",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T09:23:30Z",
+      "side": 1,
+      "message": "Can you use last element of `self.response` instead of passing `payload_field` every time? If not, maybe somehow store the `ec_flash_banks` name in the base class if possible, something like `self.payload_field_name` in case of `variable_response`",
+      "revId": "fc388ca5fa055bf3d158d402ba08bc1c865bee38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
