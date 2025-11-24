@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c33b069_efa33599",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-24T18:14:39Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"Verfied\" is a possible misspelling of \"Verified\".\n\nTo bypass Spellchecker, add ...\n\n\"Verfied\" is a possible misspelling of \"Verified\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "888e6278b1dd15de3c497d004cfd4eca04bbfaad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134d4c20_cd9ba360",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-24T18:14:39Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"swicthing\" is a possible misspelling of \"switching\".\n\nTo bypass Spellchecker, a...\n\n\"swicthing\" is a possible misspelling of \"switching\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 15,
+        "startChar": 24,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "888e6278b1dd15de3c497d004cfd4eca04bbfaad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
