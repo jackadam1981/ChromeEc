@@ -142,6 +142,8 @@ static int write_reg(uint8_t port, int reg, int regval)
 
 	return i2c_write8(ppc_chips[port].i2c_port,
 			  ppc_chips[port].i2c_addr_flags, reg, regval);
+	pd_record_timestamp_end(
+		port, PD_INTERVAL_SYV682X_VBUS_SINK_DISABLE_TO_WRITE_REG);
 }
 
 static int syv682x_is_sourcing_vbus(int port)
@@ -434,6 +436,11 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 
 static int syv682x_vbus_sink_enable(int port, int enable)
 {
+	pd_record_timestamp_end(
+		port,
+		PD_INTERVAL_PPC_VBUS_SINK_DISABLE_TO_SYV682X_VBUS_SINK_DISABLE);
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_SYV682X_VBUS_SINK_DISABLE_TO_WRITE_REG);
 	int regval;
 	int rv;
 

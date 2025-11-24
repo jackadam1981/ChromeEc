@@ -1488,6 +1488,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
+	pd_record_timestamp_end(
+		port, PD_INTERVAL_ACCEPT_TO_CHARGE_MANAGER_FORCE_CEIL);
+	pd_record_timestamp_start(
+		port,
+		PD_INTERVAL_CHARGE_MANAGER_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE);
 	CM_MUTEX_LOCK(&cm_refresh);
 	/*
 	 * Force our input current to ceil if we're exceeding it, without

@@ -3729,7 +3729,11 @@ static void pe_snk_select_capability_run(int port)
 			 * Accept Message Received
 			 */
 			if (type == PD_CTRL_ACCEPT) {
+				pd_record_timestamp_start(
+					port,
+					PD_INTERVAL_ACCEPT_TO_CHARGE_MANAGER_FORCE_CEIL);
 				pe_snk_apply_transition_current(port);
+				pd_print_timestamps(port);
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
 				return;
 			}

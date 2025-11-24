@@ -868,6 +868,14 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
 	"Invalid interval",
+	[PD_INTERVAL_ACCEPT_TO_CHARGE_MANAGER_FORCE_CEIL] =
+		"accept to charge_manager_force_ceil",
+	[PD_INTERVAL_CHARGE_MANAGER_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE] =
+		"charge_manager_force_ceil to ppc_vbus_sink_disable",
+	[PD_INTERVAL_PPC_VBUS_SINK_DISABLE_TO_SYV682X_VBUS_SINK_DISABLE] =
+		"ppc_vbus_sink_disable to syv682x_vbus_sink_disable",
+	[PD_INTERVAL_SYV682X_VBUS_SINK_DISABLE_TO_WRITE_REG] =
+		"syv682x_vbus_sink_disable to write_reg",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 
