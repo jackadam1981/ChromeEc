@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "747ba08f_c4efac94",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-24T16:23:31Z",
+      "side": 1,
+      "message": "I will keep this comment open until Egis Hal is added to the Chromium sources.",
+      "parentUuid": "722fe6ea_fb715077",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "350b161e_be9b64a2",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 15
