@@ -219,6 +219,20 @@ int ppc_dev_is_connected(int port, enum ppc_device_role dev)
 
 test_mockable int ppc_vbus_sink_enable(int port, int enable)
 {
+	if (enable == 0) {
+		pd_record_timestamp_end(
+			port,
+			PD_INTERVAL_CM_REFRESH_TO_PPC_VBUS_SINK_DISABLE); /* inactive
+									     port
+									   */
+		pd_record_timestamp_end(
+			port,
+			PD_INTERVAL_CM_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE);
+		pd_record_timestamp_start(
+			port,
+			PD_INTERVAL_PPC_VBUS_SINK_DISABLE_TO_SYV682X_VBUS_SINK_DISABLE);
+	}
+
 	int rv = EC_ERROR_UNIMPLEMENTED;
 	const struct ppc_config_t *ppc;
 
