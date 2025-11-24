@@ -28,6 +28,7 @@
  * Aliases to common names
  */
 gpio_ec_pch_wake_odl: &gpio_soc_wake_odl {};
+cse_early_rec_sw: &gpio_ec_soc_rec_switch_odl {};
 
 /* AP interface */
 &espi0 {
