@@ -576,10 +576,13 @@ static void call_cci_event_cb(struct pdc_data_t *data)
 	 * one callback or the other.
 	 */
 	if (cci.connector_change) {
+		LOG_INF("cci.connector_change");
 		pdc_fire_callbacks(&data->ci_cb_list, data->dev, cci);
 	} else if (data->cc_cb_tmp) {
+		LOG_INF("data->cc_cb_tmp");
 		data->cc_cb_tmp->handler(data->dev, data->cc_cb_tmp, cci);
 	} else if (data->cc_cb) {
+		LOG_INF("data->cc_cb");
 		data->cc_cb->handler(data->dev, data->cc_cb, cci);
 	}
 
@@ -989,6 +992,7 @@ static enum smf_state_result st_idle_run(void *o)
 {
 	struct pdc_data_t *data = (struct pdc_data_t *)o;
 
+	printk("\n----st_idle_run----\n");
 	/* Do not start executing commands if suspended */
 	if (check_comms_suspended()) {
 		set_state(data, ST_SUSPENDED);

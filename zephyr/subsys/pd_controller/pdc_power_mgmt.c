@@ -33,6 +33,7 @@
 #include <zephyr/smf.h>
 #include <zephyr/sys/atomic.h>
 #include <zephyr/sys_clock.h>
+#include <zephyr/sys/printk.h>
 
 #ifdef CONFIG_ZTEST
 #include <zephyr/ztest.h>
@@ -1160,6 +1161,7 @@ static void send_pending_public_commands(struct pdc_port_t *port)
 
 	/* Send a pending public command */
 	if (port->send_cmd.public.pending) {
+		printk("\n----send_pending_public_commands----\n");
 		set_pdc_state(port, PDC_SEND_CMD_START);
 	}
 }
@@ -1251,6 +1253,7 @@ static int queue_public_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd)
  */
 static void queue_internal_cmd(struct pdc_port_t *port, enum pdc_cmd_t pdc_cmd)
 {
+	printk("\n----queue_internal_cmd----\n");
 	k_mutex_lock(&port->mtx, K_FOREVER);
 	port->send_cmd.intern.cmd = pdc_cmd;
 	port->send_cmd.intern.error = 0;
@@ -1296,7 +1299,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 
 	conn_status_change_bits.raw_value = status->raw_conn_status_change_bits;
 
-	LOG_DBG("C%d: Connector Change: 0x%04x", port_number,
+	LOG_INF("C%d: Connector Change: 0x%04x", port_number,
 		conn_status_change_bits.raw_value);
 
 	if (port->sink_path_status != status->sink_path_status) {
@@ -1991,6 +1994,7 @@ static enum smf_state_result pdc_unattached_run(void *obj)
 	 * connector status and take the appropriate action.
 	 */
 	if (atomic_test_and_clear_bit(port->cci_flags, CCI_EVENT)) {
+		printk("\n----UN CCI_EVENT----\n");
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		return SMF_EVENT_HANDLED;
 	}
@@ -2007,6 +2011,7 @@ static enum smf_state_result pdc_unattached_run(void *obj)
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 		return SMF_EVENT_HANDLED;
 	case UNATTACHED_RUN:
+		printk("\n----UNATTACHED_RUN----\n");
 		run_unattached_policies(port);
 		break;
 	}
@@ -2733,7 +2738,7 @@ static int send_pdc_cmd(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	uint32_t *rdo;
 
-	LOG_DBG("C%d: Send %s (%d) %s", config->connector_num,
+	LOG_INF("C%d: Send %s (%d) %s", config->connector_num,
 		pdc_cmd_names[port->cmd->cmd], port->cmd->cmd,
 		(port->cmd == &port->send_cmd.intern) ? "internal" : "public");
 
@@ -3611,6 +3616,7 @@ static void pdc_cc_handler_cb(const struct device *dev,
 		CONTAINER_OF(callback, struct pdc_port_t, cc_cb);
 	bool post_event = false;
 
+	printk("\n----pdc_cc_handler_cb----\n");
 	/* Handle busy event from driver */
 	if (cci_event.busy) {
 		atomic_set_bit(port->cci_flags, CCI_BUSY);
@@ -3642,6 +3648,7 @@ static void pdc_ci_handler_cb(const struct device *dev,
 	const struct pdc_config_t *const config = port->dev->config;
 	bool post_event = false;
 
+	printk("\n----pdc_ci_handler_cb----\n");
 	/* Handle generic vendor defined event from driver */
 	if (cci_event.vendor_defined_indicator) {
 		atomic_set_bit(port->cci_flags, CCI_EVENT);

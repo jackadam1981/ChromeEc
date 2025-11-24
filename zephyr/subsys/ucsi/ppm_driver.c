@@ -285,7 +285,7 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 	}
 
 	data_size = ucsi_commands[ucsi_command].command_copy_length;
-	LOG_DBG("%s: Executing conn=%u cmd=0x%02x data_size=%d", __func__, conn,
+	LOG_INF("%s: Executing conn=%u cmd=0x%02x data_size=%d", __func__, conn,
 		ucsi_command, data_size);
 
 	timeout = sys_timepoint_calc(K_MSEC(SYNC_CMD_TIMEOUT_MSEC));
@@ -312,7 +312,7 @@ static int ucsi_ppm_execute_cmd_sync(const struct device *device,
 		k_sleep(K_MSEC(RETRY_INTERVAL_MS));
 	} while (true);
 
-	LOG_DBG("C%d: Posted command. Waiting for completion.", conn - 1);
+	LOG_INF("C%d: Posted command. Waiting for completion.", conn - 1);
 	/* Wait for command completion, error, or timeout. */
 	events = k_event_wait(&ppm_event, PPM_EVENT_ALL, false,
 			      sys_timepoint_timeout(timeout));
@@ -372,7 +372,7 @@ static void ppm_cc_cb(const struct device *dev,
 	struct ppm_data *data = CONTAINER_OF(callback, struct ppm_data, cc_cb);
 	uint32_t events = 0;
 
-	LOG_DBG("%s called", __func__);
+	LOG_INF("%s called", __func__);
 
 	data->cci_event = cci_event;
 
@@ -397,7 +397,7 @@ static void ppm_ci_cb(const struct device *dev,
 {
 	struct ppm_data *data = CONTAINER_OF(callback, struct ppm_data, ci_cb);
 
-	LOG_DBG("%s: CCI=0x%08x", __func__, cci_event.raw_value);
+	LOG_INF("%s: CCI=0x%08x", __func__, cci_event.raw_value);
 
 	if (cci_event.connector_change == 0 ||
 	    cci_event.connector_change > data->active_port_count) {

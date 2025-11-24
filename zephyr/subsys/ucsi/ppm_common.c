@@ -425,7 +425,7 @@ static int ppm_common_execute_pending_cmd(struct ucsi_ppm_device *dev)
 	}
 
 success:
-	LOG_DBG("Completed UCSI command 0x%x (%s). Read %d bytes.",
+	LOG_INF("Completed UCSI command 0x%x (%s). Read %d bytes.",
 		ucsi_command, get_ucsi_command_name(ucsi_command), ret);
 
 	if (ret > 0) {
@@ -536,7 +536,7 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 	/* Check what command is currently pending. */
 	next_command = dev->ucsi_data.control.command;
 
-	LOG_DBG("PEND_CMD: Started command processing in "
+	LOG_INF("PEND_CMD: Started command processing in "
 		"state %d (%s), cmd 0x%x (%s)",
 		dev->ppm_state, ppm_state_to_string(dev->ppm_state),
 		next_command, get_ucsi_command_name(next_command));
@@ -646,7 +646,7 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 		k_condvar_wait(&dev->ppm_condvar, &dev->ppm_lock, K_FOREVER);
 	}
 
-	LOG_DBG("Handling next task at state %d (%s)", dev->ppm_state,
+	LOG_INF("Handling next task at state %d (%s)", dev->ppm_state,
 		ppm_state_to_string(dev->ppm_state));
 
 	bool is_ppm_reset = match_pending_command(dev, UCSI_PPM_RESET);
@@ -1000,7 +1000,7 @@ int ucsi_ppm_register_notify(struct ucsi_ppm_device *dev,
 
 void ucsi_ppm_lpm_alert(struct ucsi_ppm_device *dev, uint8_t lpm_id)
 {
-	LOG_DBG("LPM alert seen on connector %d!", lpm_id);
+	LOG_INF("LPM alert seen on connector %d!", lpm_id);
 
 	k_mutex_lock(&dev->ppm_lock, K_FOREVER);
 
