@@ -16,6 +16,24 @@
       "message": "Trailing whitespace",
       "revId": "062368e4124b97bf9afc5847585f2952c81a4b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bafec6b_b0c96bd9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-11-24T10:29:50Z",
+      "side": 1,
+      "message": "Yes, Corrected that in latest patchset.",
+      "parentUuid": "9b15366c_7ca031a7",
+      "revId": "062368e4124b97bf9afc5847585f2952c81a4b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
