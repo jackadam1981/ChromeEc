@@ -70,6 +70,30 @@
       },
       "revId": "3a2542e171f32fcf5533804c658ebe087ff4c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5308e9ed_38e31fc4",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 22
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-24T08:28:33Z",
+      "side": 1,
+      "message": "We have the same case for Elan sensors. The sensor specific [selects](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/Kconfig.elan;l\u003d40) the sensor series internal config. Can you adjust it to use the same pattern?",
+      "parentUuid": "6dd3286d_76e726a8",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "3a2542e171f32fcf5533804c658ebe087ff4c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
