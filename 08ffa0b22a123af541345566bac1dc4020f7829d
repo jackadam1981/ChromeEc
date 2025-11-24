@@ -16,6 +16,24 @@
       "message": "7158239: drivers: i2c: npcx: add more timing parameters for I2C clock frequency | https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/7158239\nhas not be merged to the nissa branch and it has merge conflicts when I try it.",
       "revId": "08ffa0b22a123af541345566bac1dc4020f7829d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b09878_cdc615bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-24T06:46:11Z",
+      "side": 1,
+      "message": "Merge conflicts.",
+      "parentUuid": "5bb31b5c_c15492c8",
+      "revId": "08ffa0b22a123af541345566bac1dc4020f7829d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
