@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66228cb8_82c6fb3f",
+        "filename": "zephyr/test/fingerprint/drivers/elan80series/boards/elan80series.overlay",
+        "patchSetId": 45
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-24T16:59:40Z",
+      "side": 1,
+      "message": "this was removed.",
+      "parentUuid": "ecec61f9_52b2c44e",
+      "revId": "dbda784a564d16aebb6b57e3ca74afefa1fa0dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "796561e8_7fc02b9f",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-24T06:46:52Z",
       "side": 1,
       "message": "My idea was to do it like this:\n```\n  fingerprint.drivers.elan80sg:\n    extra_dtc_overlay_files:\n      - boards/elan80sg.dtsi\n```\nand current `elan80series.overlay` rename to `native_sim.overlay`, without the `#include \"elan80sg.dtsi\"`.\n\nThis way you can create separate test cases per sensor type and include a proper dts file.",
+      "revId": "dbda784a564d16aebb6b57e3ca74afefa1fa0dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57765b2_1534fd53",
+        "filename": "zephyr/test/fingerprint/drivers/elan80series/testcase.yaml",
+        "patchSetId": 45
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-11-24T16:59:40Z",
+      "side": 1,
+      "message": "ok. I modified it. now the 80sg test test takes the correct additional overlay without the #include.\n\nI still thought need to add \n\n```\n  extra_dtc_overlay_files:\n    - boards/native_sim.overlay\n```\n\nto the common. I am not sure why this was not included by default. I thought the native native_sim should be included by default.",
+      "parentUuid": "796561e8_7fc02b9f",
       "revId": "dbda784a564d16aebb6b57e3ca74afefa1fa0dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
