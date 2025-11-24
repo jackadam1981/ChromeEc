@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eedc19d8_d153b819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2025-11-24T19:06:14Z",
+      "side": 1,
+      "message": "If `common/lid_angle_common.c` is not compiled on the ISH anymore, remove #ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE on line 41.\n\n`lid_angle_peripheral_enable` is overridable. We could defined as a noop in a ISH specific file.",
+      "revId": "af3881c6db0f1384adca7622421a2f3bdeb60687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1405aaa_d2961d0a",
         "filename": "zephyr/include/drivers/dsp_service.h",
         "patchSetId": 11
