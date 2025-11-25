@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5e6b5c_4fa861b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2025-11-25T09:51:15Z",
+      "side": 1,
+      "message": "I need the OS (userspace) part of this CL to be cherrypicked to R143 to work with https://crrev.com/c/7171678. Is the current branch the correct branch?",
+      "revId": "a59fcc0ae39db64aac298f7b3e7e6098377ad12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
