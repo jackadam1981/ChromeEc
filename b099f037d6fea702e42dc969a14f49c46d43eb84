@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb178cd_6426b8ea",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1552197
+      },
+      "writtenOn": "2025-11-25T13:28:51Z",
+      "side": 1,
+      "message": "We could probably use `EC_CMD_OFFMODE_SHUTDOWN` or `EC_CMD_ENABLE_OFFMODE_HEARTBEAT`. WDYT?",
+      "range": {
+        "startLine": 334,
+        "startChar": 21,
+        "endLine": 334,
+        "endChar": 51
+      },
+      "revId": "b099f037d6fea702e42dc969a14f49c46d43eb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
