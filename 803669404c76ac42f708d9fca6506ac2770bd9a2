@@ -16,6 +16,24 @@
       "message": "This is set as input as this pin is not effectively used on Intel RVP\u0027s.",
       "revId": "803669404c76ac42f708d9fca6506ac2770bd9a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc2c9db_8926d445",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-25T22:24:43Z",
+      "side": 1,
+      "message": "The EEs want to test something with this EC pin",
+      "parentUuid": "46090391_f42ec8d0",
+      "revId": "803669404c76ac42f708d9fca6506ac2770bd9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
