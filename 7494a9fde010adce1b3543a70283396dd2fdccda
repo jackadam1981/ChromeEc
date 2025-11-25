@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfbdd4cd_0ef4d720",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "I haven\u0027t checked. Is there any guideline for naming variables? E.g. adding `_` for internal only usage.",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cc49b8_9006947b",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "It just and \"\u003c\" in case of variable response entry (format string is empty). Isn\u0027t it a problem?",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02afcd3_11d76bd1",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "Will this overwrite `None`? \n\nThe `_unpack_response` function check if response_type is `None`. Can you explain what happens if `response_msg` is an empty list? Maybe it should also be an optional argument with `None` as default?",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0726aba_72254e56",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "To follow the pattern. Should it be `variable_payload_msg`?\n\nMaybe it also makes sense to convert it here to _fmt and _type variables to follow pattern for `response`?",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0dbbe3_3a471a71",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "IMO it would be better to just return `response_bytes`, because these are redundant data and let `_validate_response` function to unpack the header on its own. But up to you.",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f72f91_7a78ec3f",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "Print number of expected bytes",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "404136ca_3ceba498",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "`_adjust_format` -\u003e `_adjust_response_fmt`?",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abfc05b_964767bb",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T07:17:57Z",
+      "side": 1,
+      "message": "Please add version information to all HostCommand classes",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
