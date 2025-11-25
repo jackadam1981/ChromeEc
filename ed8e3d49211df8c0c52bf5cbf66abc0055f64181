@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe7d274_ecf303e6",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-11-25T22:48:56Z",
+      "side": 1,
+      "message": "The signal is active low; isn\u0027t the convention to use \"GPIO_ACTIVE_LOW\" in the declaration also?",
+      "revId": "ed8e3d49211df8c0c52bf5cbf66abc0055f64181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
