@@ -83,6 +83,7 @@
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_BMA255
 #undef CONFIG_ACCEL_BMA4XX
+#undef CONFIG_ACCEL_BMA5XY
 #undef CONFIG_ACCEL_KXCJ9
 #undef CONFIG_ACCEL_KX022
 
