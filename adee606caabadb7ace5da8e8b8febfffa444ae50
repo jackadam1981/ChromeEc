@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877cba87_cd421cff",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-25T17:51:13Z",
+      "side": 1,
+      "message": "You should use `k_work_reschedule()` instead of trying cancel pending work.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 1
+      },
+      "revId": "adee606caabadb7ace5da8e8b8febfffa444ae50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
