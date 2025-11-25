@@ -161,7 +161,6 @@ void watchdog_reload(void)
 		wdt_feed(wdt_info[i].wdt_dev, wdt_chan[i]);
 	}
 }
-DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
 static void print_sp_pc(const struct k_thread *thread)
 {
@@ -259,3 +258,22 @@ wdt_warning_handler_with_enable(const struct device *wdt_dev, int channel_id)
 	/* Watchdog is disabled after calling handler. Re-enable it now. */
 	watchdog_enable(wdt_dev);
 }
+
+#ifdef CONFIG_PLATFORM_EC_WATCHDOG_RELOAD_THREAD
+void watchdog_task(void *p1, void *p2, void *p3)
+{
+	while (1) {
+		watchdog_reload();
+		k_msleep(CONFIG_WATCHDOG_PERIOD_MS / 2);
+	}
+}
+K_THREAD_DEFINE(watchdog, CONFIG_PLATFORM_EC_WATCHDOG_RELOAD_THREAD_STACK_SIZE,
+		watchdog_task, NULL, NULL, NULL,
+		EC_TASK_PRIORITY(EC_TASK_WATCHDOG_PRIO), 0, 0);
+BUILD_ASSERT(
+	EC_TASK_PRIORITY(EC_TASK_WATCHDOG_PRIO) >
+		CONFIG_SYSTEM_WORKQUEUE_PRIORITY,
+	"EC_TASK_PRIORITY(EC_TASK_WATCHDOG_PRIO) lower than CONFIG_SYSTEM_WORKQUEUE_PRIORITY.");
+#else
+DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
+#endif
