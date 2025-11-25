@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c77bdd_902c68cf",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-25T16:58:57Z",
+      "side": 1,
+      "message": "These types of dependencies should be managed directly in Kconfig and not in CMake.\n\nIt could make sense to rename `lid_angle_common.c` to `lid_angle_keyboard_policy.c`.\n\n```\nconfig PLATFORM_EC_LID_ANGLE_UPDATE\n    bool \"Lid Angle Update\"\n    depends on PLATFORM_EC_LID_ANGLE\n    help\n      Enable this to allow using the lid angle measurement to determine if\n      peripheral devices should be enabled or disabled, like key scanning,\n      trackpad interrupt.\n\nconfig PLATFORM_EC_LID_ANGLE_UPDATE_KEYBOARD_POLICY\n    bool \"Update keyboard policy based on lid angle changes\"\n    depends on PLATFORM_EC_LID_ANGLE_UPDATE and !PLATFORM_EC_DSP_CLIENT\n```",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 86
+      },
+      "revId": "be366e7a75cea86b82d4fb327fc33fecb9be9cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2411f9_30972fe7",
+        "filename": "zephyr/drivers/dsp_comms/service/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-25T16:58:57Z",
+      "side": 1,
+      "message": "Should CMake be compiling this directory if DSP_CLIENT is active?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 90
+      },
+      "revId": "be366e7a75cea86b82d4fb327fc33fecb9be9cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
