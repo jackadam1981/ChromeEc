@@ -16,6 +16,75 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8697557351185523521) is being automatically retried for the following reasons:\n- Some child builders are now retryable:ocelot-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef332df_236cdd4d",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-25T16:45:54Z",
+      "side": 1,
+      "message": "Tablet mode detection is part of our Platform Enabled gate, so this feature needs to remain enabled (specifically the `tabletmode` EC console command), or replaced by ISH/motion sense somehow.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4370f2e5_d4ef85e7",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-25T16:45:54Z",
+      "side": 1,
+      "message": "Same here, just delete this from `generated.dtsi`",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c2bb28_7984cbe8",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-25T16:45:54Z",
+      "side": 1,
+      "message": "You can just delete it from `generated.dtsi`",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
