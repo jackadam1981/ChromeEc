@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f80e31d_c362e71e",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-25T06:08:45Z",
+      "side": 1,
+      "message": "the file lid_angle_common.c looks generic hence used CONFIG_PLATFORM_EC_DSP_CLIENT instead of CONFIG_CROS_EC_KEYBOARD_INPUT.",
+      "parentUuid": "c8b7c65a_c2bab73b",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b63611b2_79691579",
