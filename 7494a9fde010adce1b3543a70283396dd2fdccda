@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbe9069c_020b4559",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T09:52:45Z",
+      "side": 1,
+      "message": "How about renaming the file to host_command.py and implementation of all commands to a separate file like ec_host_commands.py?",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfbdd4cd_0ef4d720",
         "filename": "util/ectool_usb/commands.py",
         "patchSetId": 12
