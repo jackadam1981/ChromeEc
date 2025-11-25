@@ -38,4 +38,23 @@ config PLATFORM_EC_WATCHDOG_HELPER
 	  Watchdog helper is used to trigger warning and gather debugging
 	  information before hardware watchdog resets the SoC.
 
+config PLATFORM_EC_WATCHDOG_DUMP_THREADS_CALL_STACK
+	bool "Dump thread call stack to log on watchdog"
+	depends on ARCH_STACKWALK
+	help
+	  Dump each thread's current call stack when watchdog is detected
+
+config PLATFORM_EC_WATCHDOG_RELOAD_THREAD
+	bool "Watchdog reload thread"
+	select HAS_TASK_WATCHDOG_RELOAD
+	default y
+	help
+	  This enables the watchdog reload thread which simply periodically reloads the watchdog timer.
+	  This allows moving non-essential tasks, like shell, to a lower priority than the
+	  sysworkqueue.
+
+config PLATFORM_EC_WATCHDOG_RELOAD_THREAD_STACK_SIZE
+	int "Watchdog reload thread stack size"
+	default 500
+
 endif # WATCHDOG
