@@ -87,6 +87,24 @@
       "parentUuid": "f57765b2_1534fd53",
       "revId": "dbda784a564d16aebb6b57e3ca74afefa1fa0dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ae50f0_348f873c",
+        "filename": "zephyr/test/fingerprint/drivers/elan80series/testcase.yaml",
+        "patchSetId": 45
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T06:23:05Z",
+      "side": 1,
+      "message": "This part is nod even documented in [Zephyr](https://docs.zephyrproject.org/latest/develop/test/twister.html). I found in our [EC doc](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/docs/zephyr/ztest.md;l\u003d62) that it replaces `DTC_OVERLAY_FILE`",
+      "parentUuid": "ec3e4a09_4a760c09",
+      "revId": "dbda784a564d16aebb6b57e3ca74afefa1fa0dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

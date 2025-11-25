@@ -22,6 +22,30 @@
       },
       "revId": "9f40f0e703ac2dfc32289a0129f8891b8d82e73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69865be2_ffc5ea57",
+        "filename": "zephyr/emul/emul_elan80series.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-25T06:23:05Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "8e469082_2801ff2b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "9f40f0e703ac2dfc32289a0129f8891b8d82e73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
