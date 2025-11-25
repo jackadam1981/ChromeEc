@@ -213,6 +213,7 @@
 #define IT83XX_USBPD_CCPSR0(p) REG8(IT83XX_USBPD_BASE(p) + 0x70)
 #define IT83XX_USBPD_CCPSR3_RISE(p) REG8(IT83XX_USBPD_BASE(p) + 0x73)
 #define IT83XX_USBPD_CCPSR4_FALL(p) REG8(IT83XX_USBPD_BASE(p) + 0x74)
+#define IT8XXX2_USBPD_CCPSR5_SWING(p) REG8(IT83XX_USBPD_BASE(p) + 0x75)
 #endif /* !defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX) */
 
 /*
@@ -427,6 +428,7 @@ struct usbpd_ctrl_t {
 struct cc_para_t {
 	enum tuning_unit rising_time;
 	enum tuning_unit falling_time;
+	enum tuning_unit swing_time;
 };
 
 extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
