@@ -1,6 +1,92 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905fd6d6_bbe816f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-11-25T07:21:43Z",
+      "side": 1,
+      "message": "I reviewed all the pins defined in the table; however, the table doesn\u0027t specify the output level when a pin is defined as GPIO_OUTPUT, so the output level was not reviewed.",
+      "revId": "8a9a5070d926d2e606740106b505dfee1f83faf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9986b2b3_054bcfcb",
+        "filename": "zephyr/program/ocelot/ocicat/gpios.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-11-25T07:21:43Z",
+      "side": 1,
+      "message": "Since it\u0027s interrupt pin, should this also declare in interrupt.dtsi?",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "8a9a5070d926d2e606740106b505dfee1f83faf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae63916_bb9ed2f9",
+        "filename": "zephyr/program/ocelot/ocicat/gpios.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-11-25T07:21:43Z",
+      "side": 1,
+      "message": "it\u0027s defined GPIO_OUTPUT in the table.",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "8a9a5070d926d2e606740106b505dfee1f83faf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0cfe5ce_11baaf90",
+        "filename": "zephyr/program/ocelot/ocicat/gpios.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-11-25T07:21:43Z",
+      "side": 1,
+      "message": "it\u0027s defined GPIO_OUTPUT and GPIO_OPEN_DRAIN in the table.",
+      "range": {
+        "startLine": 54,
+        "startChar": 22,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "8a9a5070d926d2e606740106b505dfee1f83faf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f1ec9c3_112af543",
@@ -204,6 +290,23 @@
         "endLine": 183,
         "endChar": 31
       },
+      "revId": "8a9a5070d926d2e606740106b505dfee1f83faf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7dac9a_0a702c90",
+        "filename": "zephyr/program/ocelot/ocicat/pwm.dtsi",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-11-25T07:21:43Z",
+      "side": 1,
+      "message": "it also needs to declare `\u0026pwm2`, `\u0026pwm3`, `\u0026pwm4`, `\u0026pwm5` for LEDs",
       "revId": "8a9a5070d926d2e606740106b505dfee1f83faf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
