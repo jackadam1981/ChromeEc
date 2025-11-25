@@ -22,6 +22,30 @@
       },
       "revId": "59c95afbaa510fe5ea15791e154ff218a3363659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d966662_f16ab736",
+        "filename": "docs/zephyr/zephyr_ufsc.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-25T18:53:17Z",
+      "side": 1,
+      "message": "Added the `cbi-util` example. The `cbi` console command doesn\u0027t support `set`.",
+      "parentUuid": "2ea26fbb_c68f6342",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 8
+      },
+      "revId": "59c95afbaa510fe5ea15791e154ff218a3363659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
