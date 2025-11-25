@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ce0580_f9da0fab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-11-25T23:03:21Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"suppport\" is a possible misspelling of \"support\".\n\nTo bypass Spellchecker, add ...\n\n\"suppport\" is a possible misspelling of \"support\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "e2af1e9f88208b83602f997ad3c4ea1cfbc416b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
