@@ -24,6 +24,7 @@
 #include "thermal.dtsi"
 #include "usba.dtsi"
 #include "usbc.dtsi"
+#include <ruby/overlay.dtsi>
 
 /* ruby overrides follow... */
 
@@ -66,12 +67,12 @@
     data-bits = <8>;                // (2+8=10, a multiple of 5)
     tx-invert;                      // Mandatory for idle-low signal
 
-    led_strip: ws2812-strip {
+    led_strip_uart: ws2812-strip {
         compatible = "worldsemi,ws2812-uart";
         status = "okay";
         chain-length = <8>;
-        color-mapping = <LED_COLOR_ID_GREEN
-                         LED_COLOR_ID_RED
+        color-mapping = <LED_COLOR_ID_RED
+                         LED_COLOR_ID_GREEN
                          LED_COLOR_ID_BLUE>;
         reset-delay = <200>;
         bits-per-symbol = <5>;
