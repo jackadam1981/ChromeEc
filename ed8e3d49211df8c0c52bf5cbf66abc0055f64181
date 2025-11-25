@@ -16,6 +16,24 @@
       "message": "The signal is active low; isn\u0027t the convention to use \"GPIO_ACTIVE_LOW\" in the declaration also?",
       "revId": "ed8e3d49211df8c0c52bf5cbf66abc0055f64181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbafdc8_93396955",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-25T23:00:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure if `gpioset` would actually respect that since legacy code didn\u0027t have a concept of active low vs high. There is no other code manipulating this GPIO. You probably have to set it by physical level (0 to assert, 1 to deassert).",
+      "parentUuid": "dfe7d274_ecf303e6",
+      "revId": "ed8e3d49211df8c0c52bf5cbf66abc0055f64181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
