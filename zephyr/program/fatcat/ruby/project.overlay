@@ -24,6 +24,7 @@
 #include "thermal.dtsi"
 #include "usba.dtsi"
 #include "usbc.dtsi"
+#include <ruby/overlay.dtsi>
 
 /* ruby overrides follow... */
 
@@ -66,9 +67,27 @@
     data-bits = <8>;                // (2+8=10, a multiple of 5)
     tx-invert;                      // Mandatory for idle-low signal
 
+<<<<<<< PATCH SET (5b74128cdd1b96289c1f136fd79eb2502216f0f8 ruby: configure side LEDs)
+    led_strip_uart: ws2812-strip {
+        compatible = "worldsemi,ws2812-uart";
+||||||| BASE      (e39a00369951657667367dba2371d1ad4ff3a80d pujjolo: Do not use CONFIG_SOC_FAMILY_INTEL_ISH outside of c)
+    led_strip: ws2812-strip {
+        compatible = "worldsemi,ws2812-uart";
+=======
     uart4_dev0: uart4_dev0 {
+>>>>>>> BASE      (458294e1f2b05b6c2afb29cfa9785ab2b664ff93 lapis: Add UFSC configuration)
         status = "okay";
         chain-length = <8>;
+<<<<<<< PATCH SET (5b74128cdd1b96289c1f136fd79eb2502216f0f8 ruby: configure side LEDs)
+        color-mapping = <LED_COLOR_ID_RED
+                         LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_BLUE>;
+||||||| BASE      (e39a00369951657667367dba2371d1ad4ff3a80d pujjolo: Do not use CONFIG_SOC_FAMILY_INTEL_ISH outside of c)
+        color-mapping = <LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_RED
+                         LED_COLOR_ID_BLUE>;
+=======
+>>>>>>> BASE      (458294e1f2b05b6c2afb29cfa9785ab2b664ff93 lapis: Add UFSC configuration)
         reset-delay = <200>;
         bits-per-symbol = <5>;
         one-symbol = <BINARY(1,1,1,0,0)>;
