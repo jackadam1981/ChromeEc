@@ -16,6 +16,23 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8697557351185523521) is being automatically retried for the following reasons:\n- Some child builders are now retryable:ocelot-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "b2528b96258c0657b1726a03b56951958449242d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96089a8e_3cbf2a66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-11-25T14:35:45Z",
+      "side": 1,
+      "message": "The firmware-ec-cq builder is failing with a merge conflict.  Please rebase this CL.",
+      "revId": "b2528b96258c0657b1726a03b56951958449242d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
