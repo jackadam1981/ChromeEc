@@ -73,13 +73,6 @@ static void set_prochot_duration(void)
 	rv = isl95522_write(0, ISL95522_REG_PROCHOT_DURATION, ctl_val);
 }
 
-static void set_reg_control_1(void)
-{
-	/* Set bit for PSYS */
-	isl95522_update(0, ISL95522_REG_CONTROL1, ISL95522_REG_CONTROL1_PSYS,
-			MASK_SET);
-}
-
 static void set_reg_control_2(void)
 {
 	/* Clr bit for trickle charge 256mA */
@@ -97,7 +90,6 @@ static void set_chg_custom_setting(void)
 	isl95522_set_dc_prochot(0, 4352);
 	/* Set ISL95522 data sheet 0x47H default value */
 	isl95522_set_ac_prochot(0, 6144);
-	set_reg_control_1();
 	set_reg_control_2();
 }
 DECLARE_HOOK(HOOK_INIT, set_chg_custom_setting,
