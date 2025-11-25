@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1501c0_10bf41fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-25T05:21:51Z",
+      "side": 1,
+      "message": "I see DSP service code which is running at EC is enabling this config hence this was retained as it is.\n\nRelooked into the existing code, CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE should be enabled by both DSP Client(ISH) and Service(EC). Client is compiling \"remote_lid_angle.c\" based on this config. Hence correcting the patch and keeping the config CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE enabled for both DSP client and service.",
+      "parentUuid": "0855e036_2b62b8a3",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2cd28ad_1ab03b2b",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b7c65a_c2bab73b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-25T05:21:51Z",
+      "side": 1,
+      "message": "ok, i have used CONFIG_PLATFORM_EC_DSP_CLIENT config which is specific to ISH as DSP client is complied for ISH.",
+      "parentUuid": "b2cd28ad_1ab03b2b",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b63611b2_79691579",
@@ -65,6 +101,24 @@
       "writtenOn": "2025-11-24T19:37:16Z",
       "side": 1,
       "message": "This is risky: the config have now double meaning: when set to N:\n- the lid angle calculation and the lid angle users reside on the same EC,\nor\n- we are running on the ISH. \n\n\nSince we are not compiling `common/lid_angle_common.c` anymore, is still needed?",
+      "revId": "90eeb749d87217a809403f19477d674353f3691d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb9fd16_5b049c5b",
+        "filename": "zephyr/program/trulo/kaladin-ish/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-25T05:21:51Z",
+      "side": 1,
+      "message": "Initially i thought ISH is calculating the LID angle hence config DSP_REMOTE_LID_ANGLE should be enabled only at EC DSP service side. But realize CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE is needed at both client and service side, indicates ISH is computing the lid angle and EC DSP service uses it.\n\nI have removed this change now.",
+      "parentUuid": "b63611b2_79691579",
       "revId": "90eeb749d87217a809403f19477d674353f3691d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
