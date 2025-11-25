@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f957d61_97c15b6c",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/generated.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3793447
+      },
+      "writtenOn": "2025-11-25T18:10:11Z",
+      "side": 1,
+      "message": "This pin is open drain and should be configured as `GPIO_OPEN_DRAIN`:\n```suggestion\n\t\tgpio_ec_ish_int_odl: ec_ish_int_odl {\n\t\t\tgpios \u003d \u003c\u0026gpioh 6 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8)\u003e;\n\t\t};\n```",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "13cd12f49b134ec88764762a55f452aa07f7a9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
