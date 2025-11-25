@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "798054a7_c0ca3b44",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-11-25T20:27:57Z",
+      "side": 1,
+      "message": "Try leaving this on and applying [Scott\u0027s recent CL](https://crrev.com/c/7137348). You might be dealing with an accidental mutex usage in ISR context.",
+      "parentUuid": "8ef332df_236cdd4d",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4370f2e5_d4ef85e7",
         "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.overlay",
         "patchSetId": 2
