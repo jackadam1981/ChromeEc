@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195c948c_7ff5c496",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2025-11-26T21:21:22Z",
+      "side": 1,
+      "message": "Should there be 1 byte of padding? I don\u0027t see it being set to anything.",
+      "revId": "656a7586fe8ab0fb8987987d80c03822ae01a0d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
