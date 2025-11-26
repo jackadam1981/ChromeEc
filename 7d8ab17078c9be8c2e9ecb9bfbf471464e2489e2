@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8175c8_5c225743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-26T01:12:40Z",
+      "side": 1,
+      "message": "When you upload, I presume that at least some of these files, e.g. fusb302.c, are being flagged as not being used in Zephyr, and you have to ignore that warning.\n\nFor each of those files, you can surround the lines being flagged here or the whole file with something like this.\n```\n/* LCOV_EXCL_START - This driver is not used in Zephyr */\n...\n/* LCOV_EXCL_STOP */\n```\nIf coverage isn\u0027t listed here, it means it\u0027s already excluded.\n\nDo that and then see how the coverage looks.",
+      "revId": "7d8ab17078c9be8c2e9ecb9bfbf471464e2489e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
