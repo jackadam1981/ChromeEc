@@ -135,13 +135,27 @@ static int syv682x_wait_for_ready(int port, int reg)
 static int write_reg(uint8_t port, int reg, int regval)
 {
 	int rv;
+	/* Measure total write delay (including BUSY wait) */
+	CPRINTS("write_reg: port=%d reg=0x%02x val=0x%02x", port, reg, regval);
 
 	rv = syv682x_wait_for_ready(port, reg);
-	if (rv)
+	if (rv) {
+		pd_record_timestamp_end(port,
+					PD_INTERVAL_SYV682X_WAIT_FOR_READY);
+		pd_print_timestamps(port);
+		CPRINTS("L-146");
 		return rv;
+	}
 
-	return i2c_write8(ppc_chips[port].i2c_port,
-			  ppc_chips[port].i2c_addr_flags, reg, regval);
+	rv = i2c_write8(ppc_chips[port].i2c_port,
+			ppc_chips[port].i2c_addr_flags, reg, regval);
+
+	/* End of total write operation */
+	pd_record_timestamp_end(port, PD_INTERVAL_SYV682X_WAIT_FOR_READY);
+	pd_print_timestamps(port);
+	CPRINTS("write_reg complete");
+
+	return rv;
 }
 
 static int syv682x_is_sourcing_vbus(int port)
