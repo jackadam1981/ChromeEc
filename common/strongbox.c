@@ -1717,8 +1717,10 @@ static enum strongbox_error sb_GenerateKeyPair(struct km *km, uint32_t *buf,
 	((CBOR_MACED_KEY_LEN + sizeof(uint32_t) - 1) / sizeof(uint32_t))
 
 	/* After the key blob add MacedPublicKey, but check we have space. */
-	if (total_words + CBOR_MACED_KEY_WORDS > buf_size_words)
+	if (total_words + 1 + CBOR_MACED_KEY_WORDS > buf_size_words)
 		return SBERR_UnknownError;
+	always_memset(buf + total_words, 0,
+		(1 + CBOR_MACED_KEY_WORDS) * sizeof(uint32_t));
 
 	/* Place the length of the Mac'ed key in bytes.	 */
 	buf[total_words] = CBOR_MACED_KEY_LEN;
@@ -1763,8 +1765,8 @@ static enum strongbox_error sb_GenerateKeyPair(struct km *km, uint32_t *buf,
 	digest = HMAC_SHA256_final(&sha);
 
 	memcpy(b8 + CBOR_MACED_SIGNED_LEN, digest->b8, SHA256_DIGEST_SIZE);
-	*out_len_bytes = /* key blob, 4-byte len, MACed Key, 1-byte padding */
-		total_words * sizeof(uint32_t) + CBOR_MACED_KEY_LEN + 4 + 1;
+	*out_len_bytes = /* key blob, 4-byte len, MACed Key */
+		(total_words + 1 + CBOR_MACED_KEY_WORDS) * sizeof(uint32_t);
 	return err;
 }
 
