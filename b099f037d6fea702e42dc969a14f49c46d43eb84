@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "705e0c8a_b53c3098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-11-26T12:34:38Z",
+      "side": 1,
+      "message": "Another reason for having a host-command here is that we can\u0027t be sure that the charging applet will always charge to a 100%, so whenever its determined that the charging is done, we cache that SoC and wait for discharge.",
+      "parentUuid": "4357b8ee_55a2b83b",
+      "revId": "b099f037d6fea702e42dc969a14f49c46d43eb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeb178cd_6426b8ea",
