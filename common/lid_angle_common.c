@@ -48,6 +48,7 @@ static void reset_tablet_mode(void)
 	 * clamshell mode until the lid angle is calculated, we should reset the
 	 * state too.
 	 */
+	scott
 	tablet_set_mode(0, TABLET_TRIGGER_LID | TABLET_TRIGGER_OVERRIDE_GMR);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reset_tablet_mode, HOOK_PRIO_DEFAULT);

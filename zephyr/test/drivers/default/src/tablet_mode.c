@@ -78,6 +78,27 @@ ZTEST_USER(tabletmode, test_tablet_disable)
 	zassert_equal(ret, 0, "unexpected tablet mode: %d", ret);
 }
 
+
+/**
+ * @brief TestPurpose: test the tablet_disable functionality.
+ */
+ZTEST_USER(tabletmode, test_tablet_resettabletmode)
+{
+	int ret;
+
+	printk("running Scotts new test\n");
+	ret = tablet_get_mode();
+	printk("tablet_mode = %d\n", ret);
+	zassert_equal(ret, 0, "unexpected tablet initial mode: %d", ret);
+
+	tablet_disable();
+	tablet_set_mode(1, TABLET_TRIGGER_LID);
+
+	ret = tablet_get_mode();
+	zassert_equal(ret, 0, "unexpected tablet mode: %d", ret);
+}
+
+
 /**
  * @brief TestPurpose: check that tabletmode on and off changes the mode.
  */
