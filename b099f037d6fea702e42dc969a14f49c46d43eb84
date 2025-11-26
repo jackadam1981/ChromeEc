@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c1fdb06_6ff1d094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-11-26T16:36:43Z",
+      "side": 1,
+      "message": "\u003e \u003e the AP FW wants to send a host command to allow the EC to initiate the heartbeat implementation only after receiving this special command. Otherwise, there\u0027s no point in automatically waking the AP for every shutdown request from the OS, FW shell, or elsewhere.\n\u003e \n\u003e I don\u0027t understand. Regrading the crrev.com/c/7123326 approach, the EC automatically wakes up the AP when the battery SOC is lower than the `sustain_soc.lower`. If, as you said, the AP was not woken up, the battery SOC would drain to zero. Does this make sense?\n\nWe\u0027ve comprehensively covered these scenarios in the design document, as reviewed. Here\u0027s a recap:\n\n1.  We assume a shutdown is initiated when the battery reaches 100%.\n2.  The AP should only wake when AC power is present if the battery has discharged by 1%. This is the heartbeat implementation.\n\nHowever, shutdowns can occur for various reasons, such as OS shutdowns (e.g., lid close without login) or device screen shutdowns due to an invalid OS partition. Why should we attempt to wake the AP after receiving a shutdown request from these different sources?\n\nThe purpose of low-battery or off-mode charging is to address specific scenarios: either the device is unable to boot to the OS due to \u003c\u003d 4% charge, or the device boots due to AC power. For any other shutdown initiated by the OS or other sources, why should we try to wake the AP and enter the charging loop? Such a boot represents wasted energy that the AP should be conserving.\n\n\u003e \n\u003e \u003e  we can\u0027t be sure that the charging applet will always charge to a 100%, so whenever its determined that the charging is done, we cache that SoC and wait for discharge.\n\u003e \n\u003e This sounds like a bug, right? Is there a bug number? Will this be fixed later? This seems to me that the whole purpose of the host command is to work around this bug. \n\nThis addresses a practical scenario raised by the QC team. Specifically, if the ADSP Lite detects a critical charging condition (e.g., thermal issue, input surge), it may halt charging, causing the AP FW charging applet to initiate a power-off. This could occur even if the battery isn\u0027t fully charged. To address this, we propose reattempting charging by entering a charging loop. This is possible if the battery discharges to 1%. Without this intervention, the device might not reach 100% charge, as the EC would not wake the AP and the AP FW would not restart charging.\n\n\u003e If you need a temporary fix, we can define a lower threshold for `sustain_soc.lower`. For example, if the charging applet only charged to 36%, we could set `sustain_soc.lower` to 34%.\n\nThis approach of limiting the SoC lower limit is not scalable, as the limit might vary across different batteries. Ideally, we should rely on the ADSP/PMIC to cut the charge rather than implementing a workaround.",
+      "parentUuid": "202c9d09_e59fc0d1",
+      "revId": "b099f037d6fea702e42dc969a14f49c46d43eb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aeb178cd_6426b8ea",
         "filename": "power/qcom_exp.c",
         "patchSetId": 5
