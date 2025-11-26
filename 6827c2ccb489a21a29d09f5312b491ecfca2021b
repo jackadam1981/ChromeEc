@@ -16,6 +16,24 @@
       "message": "You need to resolve this conflict.",
       "revId": "6827c2ccb489a21a29d09f5312b491ecfca2021b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07670cea_47d27371",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3584,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-11-26T11:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2857fd35_ec7789b9",
+      "revId": "6827c2ccb489a21a29d09f5312b491ecfca2021b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
