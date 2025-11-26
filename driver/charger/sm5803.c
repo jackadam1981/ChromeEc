@@ -1065,7 +1065,7 @@ static void sm5803_enable_runtime_low_power_mode(void)
 	int reg;
 	int chgnum = TASK_ID_TO_PD_PORT(task_get_current());
 
-	CPRINTS("%s %d: enable runtime low power mode", CHARGER_NAME, chgnum);
+	//CPRINTS("%s %d: enable runtime low power mode", CHARGER_NAME, chgnum);
 	rv = main_read8(chgnum, SM5803_REG_REFERENCE, &reg);
 	if (rv) {
 		CPRINTS("%s %d: Failed to read REFERENCE reg", CHARGER_NAME,

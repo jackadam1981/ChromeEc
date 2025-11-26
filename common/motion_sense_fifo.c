@@ -14,6 +14,8 @@
 #include "task.h"
 #include "util.h"
 
+#include <ilm.h>
+
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
 
 /**
@@ -247,7 +249,7 @@ static inline bool is_new_timestamp(uint8_t sensor_num)
  * @param valid_data The number of readable data entries in the data.
  *   sensor can be NULL (for activity sensors). valid_data must be 0 then.
  */
-test_export_static void
+test_export_static void __soc_ram_code
 fifo_stage_unit(struct ec_response_motion_sensor_data *data,
 		struct motion_sensor_t *sensor, int valid_data)
 {
@@ -409,7 +411,7 @@ void motion_sense_fifo_reset_needed_flags(void)
 	bypass_needed = 0;
 }
 
-void motion_sense_fifo_insert_async_event(struct motion_sensor_t *sensor,
+void __soc_ram_code motion_sense_fifo_insert_async_event(struct motion_sensor_t *sensor,
 					  enum motion_sense_async_event event)
 {
 	struct ec_response_motion_sensor_data vector;
@@ -428,7 +430,7 @@ inline void motion_sense_fifo_add_timestamp(uint32_t timestamp)
 	motion_sense_fifo_commit_data();
 }
 
-void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
+void __soc_ram_code motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
 				  struct motion_sensor_t *sensor,
 				  int valid_data, uint32_t time)
 {
@@ -648,7 +650,7 @@ void motion_sense_fifo_reset(void)
 	motion_sense_fifo_get_info(fifo_info, /*reset=*/true);
 }
 
-void motion_sense_set_data_period(int sensor_num, uint32_t data_period)
+void __soc_ram_code motion_sense_set_data_period(int sensor_num, uint32_t data_period)
 {
 	expected_data_periods[sensor_num] = data_period;
 	/*
