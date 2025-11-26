@@ -11,6 +11,11 @@
 #include "../power_signal.dtsi"
 #include "cbi.dtsi"
 #include "led.dtsi"
+<<<<<<< PATCH SET (1b826074bec416d19c08ace9b30d95e43f7e0586 sapphire: configure side LEDs)
+#include <sapphire/overlay.dtsi>
+||||||| BASE      (28fa20c5eaa0fc603154106843b7168598626531 led: Generalize LED pins node lookup using a devicetree labe)
+=======
+>>>>>>> BASE      (458294e1f2b05b6c2afb29cfa9785ab2b664ff93 lapis: Add UFSC configuration)
 
 / {
 	aliases {
