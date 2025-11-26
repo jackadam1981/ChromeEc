@@ -33,6 +33,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include <ilm.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ##args)
@@ -648,7 +650,7 @@ static void update_sense_data(uint8_t *lpc_status, int *psample_id)
 }
 #endif
 
-static int motion_sense_read(struct motion_sensor_t *sensor)
+static int __soc_ram_code motion_sense_read(struct motion_sensor_t *sensor)
 {
 	/*
 	 * If the sensor is in spoof mode, the readings are already present in
@@ -726,7 +728,7 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s)
 	}
 }
 
-static int motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
+static int __soc_ram_code motion_sense_process(struct motion_sensor_t *sensor, uint32_t *event,
 				const timestamp_t *ts)
 {
 	int ret = EC_SUCCESS;
@@ -920,7 +922,7 @@ static void check_and_queue_gestures(uint32_t *event)
  *    1 in the A/B(lid, display) and 1 in the C/D(base, keyboard)
  * Gyro Sensor (optional)
  */
-void motion_sense_task(void *u)
+void __soc_ram_code motion_sense_task(void *u)
 {
 	int i, ret, sample_id = 0;
 	timestamp_t ts_end_task;
