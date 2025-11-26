@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f93c50c_8c47773f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2025-11-26T21:26:16Z",
+      "side": 1,
+      "message": "Is there any use for generating a key but not returning a cert? Should we return an error instead?",
+      "revId": "a7164579ab25dcca309f5b290ce1a886a9f72f8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
