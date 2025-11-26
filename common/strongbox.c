@@ -1301,7 +1301,7 @@ static enum strongbox_error generate_key_blob(
  * same format as above.
  * - [ m bytes ] Encrypted key material, prefixed with its size in bytes.
  * - [ 4 bytes ] uint32_t cert_chain_len_bytes: The size of the certificate
- * chain in bytes (currently always 0).
+ * chain in bytes.
  *
  * @param km KeyMint context.
  * @param buf Input/Output buffer.
@@ -1319,6 +1319,7 @@ static enum strongbox_error sb_GenerateKey(struct km *km, uint32_t *buf,
 	size_t total_words = ARRAY_SIZE(out_buf);
 	enum strongbox_error err;
 
+	always_memset(out_buf, 0, sizeof(out_buf));
 	err = generate_key_blob(km, buf, req_len_words, out_buf, &total_words,
 				true);
 	if (err != SB_OK)
