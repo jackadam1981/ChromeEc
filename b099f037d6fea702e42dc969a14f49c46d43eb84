@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "202c9d09_e59fc0d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-11-26T16:07:56Z",
+      "side": 1,
+      "message": "\u003e the AP FW wants to send a host command to allow the EC to initiate the heartbeat implementation only after receiving this special command. Otherwise, there\u0027s no point in automatically waking the AP for every shutdown request from the OS, FW shell, or elsewhere.\n\nI don\u0027t understand. Regrading the crrev.com/c/7123326 approach, the EC automatically wakes up the AP when the battery SOC is lower than the `sustain_soc.lower`. If, as you said, the AP was not woken up, the battery SOC would drain to zero. Does this make sense?\n\n\u003e  we can\u0027t be sure that the charging applet will always charge to a 100%, so whenever its determined that the charging is done, we cache that SoC and wait for discharge.\n\nThis sounds like a bug, right? Is there a bug number? Will this be fixed later? This seems to me that the whole purpose of the host command is to work around this bug. If you need a temporary fix, we can define a lower threshold for `sustain_soc.lower`. For example, if the charging applet only charged to 36%, we could set `sustain_soc.lower` to 34%.",
+      "parentUuid": "7f1d094e_10abe0ba",
+      "revId": "b099f037d6fea702e42dc969a14f49c46d43eb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aeb178cd_6426b8ea",
         "filename": "power/qcom_exp.c",
         "patchSetId": 5
