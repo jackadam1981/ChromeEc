@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4357b8ee_55a2b83b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-11-26T02:11:17Z",
+      "side": 1,
+      "message": "\u003e What are the differences between this change and the crrev.com/c/7123326?\n\nThis implementation aligns with the design document, where the AP FW wants to send a host command to allow the EC to initiate the heartbeat implementation only after receiving this special command. Otherwise, there\u0027s no point in automatically waking the AP for every shutdown request from the OS, FW shell, or elsewhere. We only need special handling for the charger applet-driven shutdown if charging stops or reaches 100%.\n\nThe earlier CL causes auto waking of AP in every shutdown request from different entity which is not required or desired. That would result in unwanted waking of AP and burning the critical energy.",
+      "parentUuid": "3e4551ff_5a55c7a3",
+      "revId": "b099f037d6fea702e42dc969a14f49c46d43eb84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeb178cd_6426b8ea",
