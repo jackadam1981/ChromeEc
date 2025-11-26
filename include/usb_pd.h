@@ -3768,6 +3768,7 @@ enum pd_debug_interval {
 	 * pd_ts_name valid.
 	 */
 	PD_INTERVAL_INVALID,
+	PD_INTERVAL_SYV682X_WAIT_FOR_READY,
 	PD_INTERVAL_COUNT,
 };
 
