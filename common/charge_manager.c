@@ -1493,6 +1493,9 @@ void charge_manager_force_ceil(int port, int ceil)
 	 * waiting for our deferred task to run.
 	 */
 	if (left_safe_mode && port == charge_port && ceil < charge_current) {
+		if (ceil == 0) {
+			ppc_vbus_sink_enable(port, 0);
+		}
 		board_set_charge_limit(port, CHARGE_SUPPLIER_PD, ceil,
 				       charge_current_uncapped, charge_voltage);
 		/* Enforcing charge_ceil here prevents race conditions between

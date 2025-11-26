@@ -3729,6 +3729,9 @@ static void pe_snk_select_capability_run(int port)
 			 * Accept Message Received
 			 */
 			if (type == PD_CTRL_ACCEPT) {
+				pd_record_timestamp_start(
+					port,
+					PD_INTERVAL_SYV682X_WAIT_FOR_READY);
 				pe_snk_apply_transition_current(port);
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
 				return;
