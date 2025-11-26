@@ -268,12 +268,17 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 	const struct strongbox_command *cmd_p;
 	const struct strongbox_command *end_p;
 	uint32_t board_cfg;
+	size_t buf_size_words = p->out_size / sizeof(uint32_t);
 
 #ifdef DEBUG_EXTENSION
 	CPRINTS("%s(%d,%s) is=%d os=%d", __func__, p->code,
 		p->flags & VENDOR_CMD_FROM_USB ? "USB" : "AP", p->in_size,
 		p->out_size);
 #endif
+
+	/* Set the response size to 0 for all error cases. */
+	p->out_size = 0;
+
 	/* Check that command came from valid interface in a valid state. */
 	if ((p->flags & (VENDOR_CMD_FROM_USB | VENDOR_CMD_FROM_ALT_IF))
 #ifdef CONFIG_BOARD_ID_SUPPORT
@@ -309,7 +314,7 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 			}
 
 			return cmd_p->handler(&km, p->buffer,
-					      p->out_size / sizeof(uint32_t),
+					      buf_size_words,
 					      p->in_size / sizeof(uint32_t),
 					      &p->out_size);
 		}
@@ -317,7 +322,6 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 	}
 
 	/* Command not found or not allowed */
-	p->out_size = 0;
 	return SBERR_Unimplemented;
 }
 
@@ -401,8 +405,6 @@ enum strongbox_error sb_GetHardwareInfo(struct km *km, uint32_t *buf,
 	};
 	(void)km;
 
-	/* Clean output len in case of errors. */
-	*out_len_bytes = 0;
 	if (buf_size_words < sizeof(r) / sizeof(uint32_t))
 		return SBERR_InvalidArgument;
 	/* No arguments are expected for the command. */
@@ -438,9 +440,6 @@ enum strongbox_error sb_SetHalBootInfo(struct km *km, uint32_t *buf,
 				       size_t req_len_words,
 				       size_t *out_len_bytes)
 {
-	/* Clean output len. */
-	*out_len_bytes = 0;
-
 	/* 4 32-bit word arguments are expected for the command. */
 	if (req_len_words != 4)
 		return SBERR_InvalidArgument;
@@ -1318,17 +1317,14 @@ static enum strongbox_error sb_GenerateKey(struct km *km, uint32_t *buf,
 {
 	uint32_t out_buf[512];
 	size_t total_words = ARRAY_SIZE(out_buf);
-	size_t out_len_max = *out_len_bytes;
-
 	enum strongbox_error err;
 
-	*out_len_bytes = 0;
 	err = generate_key_blob(km, buf, req_len_words, out_buf, &total_words,
 				true);
 	if (err != SB_OK)
 		return err;
 
-	if (total_words * sizeof(uint32_t) >= out_len_max)
+	if (total_words > buf_size_words)
 		return SBERR_UnknownError;
 
 	memcpy(buf, out_buf, total_words * sizeof(uint32_t));
@@ -1380,8 +1376,6 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 	uint32_t slot;
 	bool unique = true;
 	uint32_t operation_id;
-
-	*out_len_bytes = 0;
 
 	/* Minimum size of the input parameters: purpose, blob, sizes */
 	if (req_len_words < 3 + KM_KEY_CHARACTERISTICS_WORDS)
@@ -1493,7 +1487,6 @@ static enum strongbox_error sb_Update(struct km *km, uint32_t *buf,
 {
 	size_t op_index, update_size;
 
-	*out_len_bytes = 0;
 	if (req_len_words < 2)
 		return SBERR_InvalidArgument;
 
@@ -1558,7 +1551,6 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	enum dcrypto_result result;
 	const uint32_t *sign_data = NULL;
 
-	*out_len_bytes = 0;
 	/* Minimum 2 words - Operation Handler and Input Size */
 	if (req_len_words < 2)
 		return SBERR_InvalidArgument;
@@ -1686,7 +1678,6 @@ static enum strongbox_error sb_GenerateKeyPair(struct km *km, uint32_t *buf,
 	enum dcrypto_result result;
 	const struct sha256_digest *digest;
 
-	*out_len_bytes = 0;
 	err = generate_key_blob(km, attest_key_params,
 				ARRAY_SIZE(attest_key_params), buf,
 				&total_words, false);
@@ -1785,20 +1776,18 @@ DECLARE_STRONGBOX_COMMAND(SB_RpcGenerateEcdsaP256KeyPair, sb_GenerateKeyPair);
  * This command doesn't take any arguments and returns DICE chain in CBOR
  * encoding as is.
  *
- * @param km Keymint context
- * @param buf Input buffer
- * @param buf_size_words Input buffer size in 32-bit words
- * @param req_len_words Request size in words
- * @param out_len_bytes Output buffer size in bytes
- * @return enum strongbox_error
+ * @param km KeyMint context.
+ * @param buf Input/Output buffer.
+ * @param buf_size_words Size of the I/O buffer in 32-bit words.
+ * @param req_len_words Size of the input data in 32-bit words.
+ * @param out_len_bytes On success, the number of bytes written to the buffer.
+ * @return SB_OK on success, or an error code on failure.
  */
 enum strongbox_error sb_GetDiceChain(struct km *km, uint32_t *buf,
 				     size_t buf_size_words,
 				     size_t req_len_words,
 				     size_t *out_len_bytes)
 {
-	*out_len_bytes = 0;
-
 	/* No arguments are expected for the command. */
 	if (req_len_words)
 		return SBERR_InvalidArgument;
@@ -1814,12 +1803,12 @@ DECLARE_STRONGBOX_COMMAND(SB_GetDiceChain, sb_GetDiceChain);
 /**
  * Implementation for GenerateCertificateV2Request command.
  *
- * @param km Keymint context
- * @param buf Input buffer
- * @param buf_size_words Input buffer size in 32-bit words
- * @param req_len_words Request size in words
- * @param out_len_bytes Output buffer size in bytes
- * @return enum strongbox_error
+ * @param km KeyMint context.
+ * @param buf Input/Output buffer.
+ * @param buf_size_words Size of the I/O buffer in 32-bit words.
+ * @param req_len_words Size of the input data in 32-bit words.
+ * @param out_len_bytes On success, the number of bytes written to the buffer.
+ * @return SB_OK on success, or an error code on failure.
  *
  * generateCertificateRequestV2 creates a certificate signing request to be sent
  * to the provisioning server. Implements:
@@ -1917,8 +1906,6 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	/* We should have at least 1 key + challenge + DeviceInfo */
 	if (req_len_words < CBOR_MACED_KEY_WORDS + 4)
 		return SBERR_InvalidArgument;
-
-	*out_len_bytes = 0;
 
 	key_count = buf[0];
 	if (key_count == 0 || key_count > MAX_CSR_PUB_KEYS)
