@@ -1258,8 +1258,11 @@ static enum strongbox_error generate_key_blob(
 		/* Prepend certificate with 32-bit little-endian size field. */
 		total_words += (*cert_size + 3 + sizeof(*cert_size)) /
 			       sizeof(uint32_t);
-	} else if (attest == ATTEST_NO_KEY)
+	} else if (attest == ATTEST_NO_KEY) {
+		/* Add word for cert_size of 0 */
+		total_words += 1;
 		*cert_size = 0;
+	}
 	*out_words = total_words + 1; /* + blob size */
 	return SB_OK;
 };
