@@ -11,6 +11,8 @@
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
 #include "cbi.dtsi"
+#include "led.dtsi"
+#include <sapphire/overlay.dtsi>
 
 / {
 	aliases {
