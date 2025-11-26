@@ -169,6 +169,7 @@ riven = register_nissa_project(
 domika = register_nissa_project(
     project_name="domika",
     chip="it8xxx2/it81302bx",
+    modules=["picolibc", "ec", "pigweed"],
 )
 
 teliks = register_nissa_project(
