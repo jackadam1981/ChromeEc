@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6be63d3_c3ec6856",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-26T12:06:02Z",
+      "side": 1,
+      "message": "Hi @honscheid@google.com, I have rebased changes (scott CL is included) and checked. I am still observing the assert. On customer platforms like uldrenite, we are not observing this issue because \"CONFIG_PLATFORM_EC_DEBUG_ASSERT\u003dn\" is disabled which is suppressing the underline issue. \n\nWith these CLs for ocelot platform, we will be enabling the tablet mode functionality but screen rotation will not work because of the configs we are disabling to bypass the assert failure. Also, it will not block platform enabled gate as \"tabletmode\" command from ec console returns the correct mode. Here is the reference logs. \n\n25-11-26 16:52:05.820 ec:\u003e\n25-11-26 16:52:13.156 ec:\u003e ![66.794400 tablet mode]\n25-11-26 16:52:18.200 ![66.795400 event set 0x0000000010000000]\n25-11-26 16:52:18.202 ![66.799500 event clear 0x0000000010000000]\n25-11-26 16:52:18.205 ![66.803000 ACPI query \u003d 29]\n25-11-26 16:52:22.272\n25-11-26 16:52:22.273 ec:\u003e\n25-11-26 16:52:22.904 ec:\u003e tabletmode\n25-11-26 16:52:26.081 [74.700700 tablet mode]\n25-11-26 16:52:26.084 ec:\u003e\n25-11-26 16:52:26.643 ec:\u003e\n25-11-26 16:52:26.822 ec:\u003e ![77.432200 clamshell mode]\n25-11-26 16:52:28.809 ![77.433400 event set 0x0000000010000000]\n25-11-26 16:52:28.813 ![77.437700 event clear 0x0000000010000000]\n25-11-26 16:52:28.817 ![77.441100 ACPI query \u003d 29]\n25-11-26 16:52:30.792\n25-11-26 16:52:30.794 ec:\u003e\n25-11-26 16:52:30.964 ec:\u003e\n25-11-26 16:52:31.121 ec:\u003e tabletmode\n25-11-26 16:52:34.207 [82.850200 clamshell mode]\n\n\nSo my request is to merge these CLs to unblock the tablet mode support and we will create another partner bug to enable screen orientation and keyboard functionality and will handle this assert there.",
+      "parentUuid": "798054a7_c0ca3b44",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4370f2e5_d4ef85e7",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b126e65_995822eb",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-26T12:06:02Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "4370f2e5_d4ef85e7",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c2bb28_7984cbe8",
@@ -101,6 +149,30 @@
       "writtenOn": "2025-11-25T16:45:54Z",
       "side": 1,
       "message": "You can just delete it from `generated.dtsi`",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "7b3e6e3a58d53a96470dd175161aad43ad65fcf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787d930d_385be2f6",
+        "filename": "zephyr/program/ocelot/ocelotrvp-npcx/project.overlay",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2025-11-26T12:06:02Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "67c2bb28_7984cbe8",
       "range": {
         "startLine": 123,
         "startChar": 0,
