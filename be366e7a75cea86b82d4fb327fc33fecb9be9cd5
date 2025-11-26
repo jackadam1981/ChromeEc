@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a3d143_a50ff04b",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-26T13:02:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c77bdd_902c68cf",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 86
+      },
+      "revId": "be366e7a75cea86b82d4fb327fc33fecb9be9cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce2411f9_30972fe7",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-25T16:58:57Z",
       "side": 1,
       "message": "Should CMake be compiling this directory if DSP_CLIENT is active?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 90
+      },
+      "revId": "be366e7a75cea86b82d4fb327fc33fecb9be9cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5bbf36_611eaa0c",
+        "filename": "zephyr/drivers/dsp_comms/service/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-11-26T13:02:21Z",
+      "side": 1,
+      "message": "Yes, this is my observation, when i remove lid_angle_common.c compile from zehyr/CMakeLists.txt, the file gets compiled for ISH client.",
+      "parentUuid": "ce2411f9_30972fe7",
       "range": {
         "startLine": 32,
         "startChar": 0,
