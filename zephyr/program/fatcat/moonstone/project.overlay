@@ -6,6 +6,7 @@
 /* moonstone program common DTS includes */
 
 #include <cros/integrated_fwid.dtsi>
+#include "keyboard.dtsi"
 
 /* moonstone project DTS includes */
 #include "fan.dtsi"
@@ -25,6 +26,7 @@
 #include "../kinmen/pwm.dtsi"
 #include "../kinmen/temp_sensors.dtsi"
 #include "../kinmen/usba.dtsi"
+#include <moonstone/overlay.dtsi>
 
 / {
 	batteries {
