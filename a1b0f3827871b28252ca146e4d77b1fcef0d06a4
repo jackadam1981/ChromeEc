@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cbf5cdd_e9f9e2b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-11-26T17:29:58Z",
+      "side": 1,
+      "message": "As it stands, this is an empty CL. I think it was already picked to this branch, and I just LGTMed a revert for that. If you want to submit this one later, you\u0027ll need to rebase it after the revert lands. Still, I have no objection to the intended change here, at the appropriate time.",
+      "revId": "a1b0f3827871b28252ca146e4d77b1fcef0d06a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
