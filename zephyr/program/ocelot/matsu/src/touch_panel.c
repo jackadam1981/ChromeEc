@@ -64,3 +64,10 @@ static void touch_lid_change(void)
 	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, touch_lid_change, HOOK_PRIO_DEFAULT);
+
+static void touch_enable_init(void)
+{
+	LOG_INF("%s", __func__);
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_soc_edp_bl_en));
+}
+DECLARE_HOOK(HOOK_INIT, touch_enable_init, HOOK_PRIO_DEFAULT);
