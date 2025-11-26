@@ -361,6 +361,13 @@ void board_chipset_cache_soc_on_shutdown(void)
 		CPRINTS("Battery SoC cached!");
 		heartbeat_mode = 0;
 	}
+
+	/* If chipset shutdown and external power is connected, boot the AP to
+	 * enable charging */
+	if (extpower_is_present()) {
+		ac_on = 1;
+		task_wake(TASK_ID_CHIPSET);
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE,
 	     board_chipset_cache_soc_on_shutdown, HOOK_PRIO_DEFAULT);
