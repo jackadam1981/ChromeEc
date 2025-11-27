@@ -16,6 +16,24 @@
       "message": "I was wrong when I told you that you don\u0027t need a secondary check for `ceil \u003d\u003d 0` here. The way it is now should be fine for purposes of experimenting with this compliance test, but we\u0027ll need a check for 0 to deal with the case where we\u0027re dropping from 3A to 1.5A, for instance.",
       "revId": "6df1197ef32f58ef84774bbefb7dac843de5cb50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a1775f_4a608ebd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-11-27T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842588df_80a04fe5",
+      "revId": "6df1197ef32f58ef84774bbefb7dac843de5cb50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
