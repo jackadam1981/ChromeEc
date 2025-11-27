@@ -52,6 +52,24 @@
       "parentUuid": "9b105544_4924780a",
       "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4a0c5d_4f6dca5c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-11-27T06:06:17Z",
+      "side": 1,
+      "message": "Here is an updated direction based on the discussion.\nThe read behavior is selected using a build-time ELAN_READ_MODE defined in the sensor-specific config header. The PAL code simply dispatches to the appropriate read function:\nstatic int elan_read_fn(uint16_t *short_raw)\n{\n    switch (ELAN_READ_MODE) {\n    case IMAGE_READ_MODE:\n        return elan_image_read(short_raw);\n    case LINEWISE_READ_MODE:\n        return elan_image_read_linewise(short_raw);\n    default:\n        return -EINVAL;\n    }\n}\nThis keeps the logic build-time determined, avoids adding #ifdef to the PAL file, and keeps the configuration clean and centralized.\nIf this direction looks good, I can update the full CL accordingly.",
+      "parentUuid": "b4983959_b8d15bc0",
+      "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
