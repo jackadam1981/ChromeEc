@@ -48,7 +48,7 @@ enum psl_pin_t {
 };
 
 /* Issue a watchdog reset */
-void system_watchdog_reset(void);
+void system_watchdog_reset(int enable_interrupt);
 
 /* Stops the watchdog timer and unlocks configuration. */
 void watchdog_stop_and_unlock(void);

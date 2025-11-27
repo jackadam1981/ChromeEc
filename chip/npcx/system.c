@@ -59,7 +59,7 @@ static int is_rtc_overflow_event;
 /*****************************************************************************/
 /* Internal functions */
 
-void system_watchdog_reset(void)
+void system_watchdog_reset(int enable_interrupt)
 {
 	/* Unlock & stop watchdog registers */
 	watchdog_stop_and_unlock();
@@ -86,8 +86,10 @@ void system_watchdog_reset(void)
 	/* Wait for timer is loaded and restart */
 	while (IS_BIT_SET(NPCX_T0CSR, NPCX_T0CSR_RST))
 		;
-	/* Enable interrupt */
-	interrupt_enable();
+	if (enable_interrupt) {
+		/* Enable interrupt */
+		interrupt_enable();
+	}
 }
 
 /* Return true if index is stored as a single byte in bbram */
@@ -1009,7 +1011,7 @@ void system_reset(int flags)
 	}
 
 	/* Ask the watchdog to trigger a hard reboot */
-	system_watchdog_reset();
+	system_watchdog_reset(0);
 
 	/* Spin and wait for reboot; should never return */
 	while (1)
