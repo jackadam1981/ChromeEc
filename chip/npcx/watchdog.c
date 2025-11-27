@@ -81,7 +81,8 @@ void __keep watchdog_check(uint32_t excep_lr, uint32_t excep_sp)
 		cflush();
 
 		/* Trigger watchdog immediately */
-		system_watchdog_reset();
+		/* 123 */
+		system_watchdog_reset(1);
 	}
 }
 
