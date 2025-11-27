@@ -51,6 +51,23 @@
       "parentUuid": "26a443a2_d77ae33c",
       "revId": "c269703145cafda86d836446cae7f2b02243796f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225518ef_0b111912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546109
+      },
+      "writtenOn": "2025-11-27T01:56:00Z",
+      "side": 1,
+      "message": "Temporary workaround for popping sound until we have coreboot (https://review.coreboot.org/c/coreboot/+/90238) fix",
+      "revId": "c269703145cafda86d836446cae7f2b02243796f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
