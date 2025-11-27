@@ -16,6 +16,24 @@
       "message": "Should there be 1 byte of padding? I don\u0027t see it being set to anything.",
       "revId": "656a7586fe8ab0fb8987987d80c03822ae01a0d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2d2d89_ba2c0506",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-11-27T00:43:01Z",
+      "side": 1,
+      "message": "yes, it is a 1 byte padding, it is what it is. CBOR_MACED_KEY_LEN is always 87 bytes in our case (13 + 32 + 10 + 32) , make it 88, so the output is aligned. It is not added or skipped because it is at the end of the buffer.  We may instead explicitly set it to 0 after the memcpy in line 1761",
+      "parentUuid": "195c948c_7ff5c496",
+      "revId": "656a7586fe8ab0fb8987987d80c03822ae01a0d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
