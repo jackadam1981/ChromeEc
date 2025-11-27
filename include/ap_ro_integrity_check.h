@@ -16,12 +16,6 @@
 void validate_ap_ro(void);
 
 /*
- * ap_ro_add_flash_event: add a flash log event to keep track of AP RO
- *       verification attempt progress.
- */
-void ap_ro_add_flash_event(enum ap_ro_verification_ev event);
-
-/*
  * ap_ro_board_id_blocked: Returns True if AP RO verification is disabled for
  *       the board's RLZ.
  */
