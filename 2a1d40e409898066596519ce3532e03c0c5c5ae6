@@ -16,6 +16,24 @@
       "message": "I think this should be a zephyr style driver, not a legacy-ec driver with a shim.",
       "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e81ea4a_e0121782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-11-27T01:59:51Z",
+      "side": 1,
+      "message": "I added bma5xy related files like bma4xy committed code style. This driver has been verified on Riven board.",
+      "parentUuid": "f126e040_5d247d86",
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
