@@ -16,6 +16,24 @@
       "message": "that does not sound right, shouldn\u0027t the specific driver do this instead? Either way drop the LOG_INF print",
       "revId": "388c00be90facd900ed728de5785875a16ac4054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a9bffd_f975ea29",
+        "filename": "zephyr/program/ocelot/matsu/src/touch_panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-11-27T00:46:11Z",
+      "side": 1,
+      "message": "This is for oem specific circuit, see b:313494799",
+      "parentUuid": "7667c259_980e488d",
+      "revId": "388c00be90facd900ed728de5785875a16ac4054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
