@@ -231,6 +231,9 @@ enum vendor_cmd_cc {
 	/* Get device IDs */
 	VENDOR_CC_GET_DEVICE_IDS = 79,
 
+	/* Enable/disable strongbox commands */
+	VENDOR_CC_SET_STRONGBOX_STATE = 80,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
