@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8ee55b4_9e5392b2",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c6ec0fb_b75b76ec",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c21489b_76c49222",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-27T06:00:16Z",
       "side": 1,
       "message": "BQ25710_REG_CHARGE_OPTION_2",
+      "range": {
+        "startLine": 24,
+        "startChar": 37,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a702dd_4855c46b",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c21489b_76c49222",
       "range": {
         "startLine": 24,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d0d333_f553053e",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab3988a3_1efb2d9e",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4efe07_c1bc4125",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-11-27T06:00:16Z",
       "side": 1,
       "message": "maybe use `LOG_DBG` here and set the default to `INF`.\ni\u0027m not convinced it\u0027s useful print this out on every boot\nin production.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95bdc64_08cc2d2c",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db4efe07_c1bc4125",
       "range": {
         "startLine": 29,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7f00a4_75f87ae4",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2abd36bd_d039775a",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c3ec94_c251ec40",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-11-27T06:00:16Z",
       "side": 1,
       "message": "BQ25720_REG_CHARGE_OPTION_4",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c9d5b7_42ad5c86",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c3ec94_c251ec40",
       "range": {
         "startLine": 38,
         "startChar": 37,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbe9887_a81b7eb1",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa9bd202_7e156a2a",
+      "range": {
+        "startLine": 52,
+        "startChar": 37,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a28e31c_c90ae7f5",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-11-27T06:00:16Z",
       "side": 1,
       "message": "BQ25710_REG_MIN_SYSTEM_VOLTAGE",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "e696a7961ed1cc0e52ab4f1051393867f3dfc1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b30fe1_a558dcef",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3693003
+      },
+      "writtenOn": "2025-11-27T09:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a28e31c_c90ae7f5",
       "range": {
         "startLine": 66,
         "startChar": 37,
