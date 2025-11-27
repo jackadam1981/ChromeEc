@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e79a192e_5ba2ce73",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "would it be an option to move the function implementation here and drop the forward declaration?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3244135_8159fcf5",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "you could drop the else, just\n\n```\nif (reg \u003d\u003d 0)\n         return ...;\n         \nreturn ...;\n```",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6da3555a_d8693998",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "nit: no need for the outer parenthesis",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4f9135_f33aa2cb",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "you can use BIT here, `rt9478_perf_mode_req |\u003d BIT(task_get_current());`",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a289b3c_a09660b2",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "how about changing enable to `bool`? then I think you could get away with not doing the `!!` trick",
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d5f104_bf53a178",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "same, `bool *mode` then the compiler will make any assignment of this either 0 or 1",
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ef67b5_348dc7fb",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-11-27T13:41:29Z",
+      "side": 1,
+      "message": "is this really the intended logic? like if any of these three calls function fails then execute the if below, regardless of the combination of failure?",
+      "range": {
+        "startLine": 543,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
