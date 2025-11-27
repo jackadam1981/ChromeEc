@@ -688,6 +688,19 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_data_swap_capable)
 					   SOURCE_PDO :
 					   SINK_PDO),
 				  PDO_OFFSET_0, 1, PARTNER_PDO, &test[i].pdo);
+
+		/* If the partner is a DRP, set PDO for the opposite role with
+		 * same flags
+		 */
+		if (test[i].pdo & PDO_FIXED_DUAL_ROLE) {
+			emul_pdc_set_pdos(emul,
+					  (test[i].power_role == PD_ROLE_SINK ?
+						   SINK_PDO :
+						   SOURCE_PDO),
+					  PDO_OFFSET_0, 1, PARTNER_PDO,
+					  &test[i].pdo);
+		}
+
 		emul_pdc_connect_partner(emul, &connector_status);
 
 		zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
