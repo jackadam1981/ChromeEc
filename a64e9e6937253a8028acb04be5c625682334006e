@@ -16,6 +16,24 @@
       "message": "[ocicat:ro] devicetree error: /gpio-interrupts/tablet-mode: undefined node label \u0027gpio_tablet_mode_l\u0027\n[ocicat:ro] CMake Error at /mnt/host/source/src/third_party/zephyr/main/cmake/modules/dts.cmake:306 (execute_process):\n[ocicat:ro]   execute_process failed command indexes:\n[ocicat:ro]     1: \"Child return code: 1\"\n[ocicat:ro] Call Stack (most recent call first):\n[ocicat:ro]   /mnt/host/source/src/third_party/zephyr/main/cmake/modules/zephyr_default.cmake:129 (include)\n[ocicat:ro] -- Found devicetree overlay: /mnt/host/source/src/platform/ec/zephyr/program/ocelot/ocicat/project.overlay\n[ocicat:ro] -- Configuring incomplete, errors occurred!\n[ocicat:ro]   /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)\n[ocicat:ro]   /mnt/host/source/src/third_party/zephyr/main/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)\n[ocicat:ro]   CMakeLists.txt:7 (find_package)\nExecution failed (return code\u003d1): /usr/bin/cmake -S /mnt/host/source/src/platform/ec/zephyr/program/ocelot -B /mnt/host/source/src/platform/ec/build/zephyr/ocicat/build-ro -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON -DZEPHYR_BASE\u003d/mnt/host/source/src/third_party/zephyr/main -DZMAKE_INCLUDE_DIR\u003d/mnt/host/source/src/platform/ec/build/zephyr/ocicat/include -DPython3_EXECUTABLE\u003d/usr/bin/python3.11 -DDTS_ROOT\u003d/mnt/host/source/src/platform/ec/zephyr -DSYSCALL_INCLUDE_DIRS\u003d/mnt/host/source/src/platform/ec/zephyr/include/drivers -DUSER_CACHE_DIR\u003d/mnt/host/source/src/platform/ec/build/zephyr/user-cache \u0027-DEXTRA_EC_VERSION_FLAGS\u003d--version 16494.0.0 --static\u0027 -DTOOLCHAIN_ROOT\u003d/mnt/host/source/src/platform/ec/zephyr -DCOREBOOT_SDK_ROOT_x86\u003d/home/chrome-bot/.cache/coreboot-sdk/i386-elf/dfbb0486385d938cfa9d73080b9d18d598ed4f49 -DCOREBOOT_SDK_ROOT_picolibc_x86\u003d/home/chrome-bot/.cache/coreboot-sdk/picolibc-i386-elf/eb8e8e687b95461de8cbf278f1c2076952d0ad17 -DCOREBOOT_SDK_ROOT_riscv64\u003d/home/chrome-bot/.cache/coreboot-sdk/riscv64-elf/96b949749225b6aaa92ed810ab769e8dfb12f000 -DCOREBOOT_SDK_ROOT_picolibc_arm\u003d/home/chrome-bot/.cache/coreboot-sdk/picolibc-arm-eabi/422a2aa3e1ef891b5bece9a3deb696ff83840d2e -DCOREBOOT_SDK_ROOT_nds32\u003d/home/chrome-bot/.cache/coreboot-sdk/nds32le-elf/d1a518c4a097666d86058e1444f85ca015d15511 -DCOREBOOT_SDK_ROOT_picolibc_riscv64\u003d/home/chrome-bot/.cache/coreboot-sdk/picolibc-riscv64-elf/f571e990ef0278564b31124f8bb109d9a697eb69 -DCOREBOOT_SDK_ROOT_arm\u003d/home/chrome-bot/.cache/coreboot-sdk/arm-eabi/ea40ddd1d190c3b48435c474c0b545719371813a -DCOREBOOT_SDK_ROOT_libstdcxx_riscv64\u003d/home/chrome-bot/.cache/coreboot-sdk/libstdcxx-riscv64-elf/17abf22a3a252e2d5d2062ced5324f7a623689e0 -DCOREBOOT_SDK_ROOT_libstdcxx_arm\u003d/home/chrome-bot/.cache/coreboot-sdk/libstdcxx-arm-eabi/5d7d82e150e44aa1968f1d366e267e6687b328ac -DCOREBOOT_SDK_ROOT_riscv\u003d/home/chrome-bot/.cache/coreboot-sdk/riscv-elf/9a27b9e82341c6e9126624f516ab3f261abb3e73 -DCOREBOOT_SDK_ROOT_libstdcxx_x86\u003d/home/chrome-bot/.cache/coreboot-sdk/libstdcxx-i386-elf/42ef9d2e87a76a37963175d7d428734e65648b87 -DZEPHYR_TOOLCHAIN_VARIANT\u003dcoreboot-sdk -DZEPHYR_MODULES\u003d/mnt/host/source/src/platform/ec/build/zephyr/ocicat/modules/ec -DDTC_OVERLAY_FILE\u003d/mnt/host/source/src/platform/ec/zephyr/program/ocelot/ocicat/project.overlay -DBOARD\u003dit8xxx2/it82002bw -DCMAKE_C_FLAGS\u003d-DSECTION_IS_RO \u0027-DCONF_FILE\u003d/mnt/host/source/src/platform/ec/zephyr/program/ocelot/program.conf;/mnt/host/source/src/platform/ec/zephyr/program/ocelot/rvp_program.conf;/mnt/host/source/src/platform/ec/zephyr/program/ocelot/ocicat/project.conf;/mnt/host/source/src/platform/ec/build/zephyr/ocicat/kconfig-ro.conf\u0027\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 383, in _run_fn\n    result \u003d func()\n             ^^^^^^\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 799, in _configure_one_build\n    raise OSError(get_process_failure_msg(proc))",
       "revId": "a64e9e6937253a8028acb04be5c625682334006e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb3d438_e2ded13e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-11-28T03:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382e8000_147fe522",
+      "revId": "a64e9e6937253a8028acb04be5c625682334006e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
