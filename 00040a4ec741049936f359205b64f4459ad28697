@@ -85,6 +85,24 @@
       "message": "I believe this config doesn\u0027t make sense if there are no FT9865 dts nodes",
       "revId": "00040a4ec741049936f359205b64f4459ad28697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d15075e_1a224a3c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-28T09:12:20Z",
+      "side": 1,
+      "message": "so, I think this config can be removed, only use config FINGERPRINT_SENSOR_FT98XX in line 5, and make it depends on DT_HAS_FT_FT98XX_ENABLED",
+      "parentUuid": "c3bab866_bc362a58",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
