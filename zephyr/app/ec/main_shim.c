@@ -5,12 +5,15 @@
 
 #include "ec_app_main.h"
 #include "host_command.h"
+#include "system.h"
 
 #include <zephyr/kernel.h>
 
 /** A stub main to call the real ec app main function. LCOV_EXCL_START */
 int main(void)
 {
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+
 	ec_app_main();
 
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
