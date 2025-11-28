@@ -43,6 +43,8 @@
 
 LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
 
+extern enum ec_error_list isl9241_set_acokref(int chgnum, int mv);
+
 #ifdef CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS
 /* Faking PDC APIs directly causes compilation errors of the function being
  * redefined.  For testing only create a wrapper function that can be faked.
@@ -1795,6 +1797,10 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		port->sink_path_to_send =
 			charge_manager_get_active_charge_port() ==
 			config->connector_num;
+		if (port->sink_path_to_send &&
+		    IS_ENABLED(CONFIG_PLATFORM_EC_CHARGER_SET_ACOKREF)) {
+			isl9241_set_acokref(0, 5000);
+		}
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_SRC_CAPS)) {
@@ -2512,6 +2518,18 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 		if (sink_path_mask == 0) {
 			/* No other ports have sink path enabled,
 			 * proceed to enable */
+
+			/* FIXME - have charge manager handle this */
+			if (IS_ENABLED(
+				    CONFIG_PLATFORM_EC_CHARGER_SET_ACOKREF)) {
+				int pdo_mv;
+				int pdo_ma;
+				int pdo_mw;
+				pd_extract_pdo_power_unclamped(
+					port->snk_policy.pdo, &pdo_ma, &pdo_mv,
+					&pdo_mw);
+				isl9241_set_acokref(0, pdo_mv);
+			}
 			port->sink_path_to_send = true;
 			queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 			return true;
