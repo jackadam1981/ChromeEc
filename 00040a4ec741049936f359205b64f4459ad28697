@@ -121,6 +121,24 @@
       "parentUuid": "8d15075e_1a224a3c",
       "revId": "00040a4ec741049936f359205b64f4459ad28697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2e05d4_f5e4a120",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-28T09:33:05Z",
+      "side": 1,
+      "message": "There is a problem, the FP_ALGORITHM_TEMPLATE_SIZE may different per each sensor, I still need some way to seperate each sensor",
+      "parentUuid": "8d15075e_1a224a3c",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
