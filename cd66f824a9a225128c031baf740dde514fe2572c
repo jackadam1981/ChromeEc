@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a61f16_c4a72458",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-28T13:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79de5986_fe56a534",
+      "range": {
+        "startLine": 292,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1ae465d_f6e1b389",

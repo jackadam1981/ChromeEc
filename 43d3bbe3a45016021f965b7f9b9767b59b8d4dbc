@@ -34,6 +34,24 @@
       "parentUuid": "13601981_80dd7c61",
       "revId": "43d3bbe3a45016021f965b7f9b9767b59b8d4dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c73d0a_fa86a55d",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-28T13:33:32Z",
+      "side": 1,
+      "message": "\u003e The check size is always CONFIG_FLASH_BANK_SIZE, which is a flash protection unit. This means that part of flash can not be protected partially, all or nothing.\n\nThis is a very important assumption that deserves a comment in the code. I opened a separate comment with a suggestion.",
+      "parentUuid": "27272568_11f01b86",
+      "revId": "43d3bbe3a45016021f965b7f9b9767b59b8d4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e1257d_ff2a469f",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-11-28T13:33:32Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t/*\n\t\t * The check_prot_reg() function reports that the region is\n\t\t * protected, even if only part of the region protected, but in\n\t\t * this case:\n\t\t * - The size of the checked region is always\n\t\t * CONFIG_FLASH_BANK_SIZE\n\t\t * - The region address is also aligned to CONFIG_FLASH_BANK_SIZE\n\t\t * - CONFIG_FLASH_BANK_SIZE is a flash protection unit\n\t\t * This means that the checked region can\u0027t be protected partially,\n\t\t * so we are safe here.\n\t\t */\n\t\tret \u003d check_prot_reg(dev, addr_start, CONFIG_FLASH_BANK_SIZE);\n```",
+      "revId": "d20960b693e59f3887c4cc7141bb6af68487d92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
