@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "313f12a0_2d67035d",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe9069c_020b4559",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfbdd4cd_0ef4d720",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "In Google Python Style Guide: \"Prepending a single underscore (_) has some support for protecting module variables and functions (linters will flag protected member access). Note that it is okay for unit tests to access protected constants from the modules under test.\" I added it where applies in my opinion.",
       "parentUuid": "cfbdd4cd_0ef4d720",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92744e70_d8122152",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Thanks for checking it",
+      "parentUuid": "e552ad0a_2b5f0e69",
       "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddbdd1f_2068a5a6",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f9b2066_3aeca348",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a02afcd3_11d76bd1",
@@ -137,6 +191,24 @@
       "side": 1,
       "message": "\u0027if empty_list: \u0027 works the same as \u0027if None: \u0027. Anyway, refactored for consistency. LAter in _unpack_response we check _response_type. If not set we skipp unpacking. Maybe could be more explicit but it works just fine.",
       "parentUuid": "a02afcd3_11d76bd1",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e919e6a_e864f2e4",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62e405d4_62d58c84",
       "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +279,24 @@
       "side": 1,
       "message": "Somehow I cannot stand unpacking header twice. Left as is.",
       "parentUuid": "6e0dbbe3_3a471a71",
+      "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d85ff97_f9818870",
+        "filename": "util/ectool_usb/commands.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Understood",
+      "parentUuid": "dff9ccde_fcfb7c21",
       "revId": "7494a9fde010adce1b3543a70283396dd2fdccda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f346e4b5_0d40ffa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Just `utils: add host command over USB library`? It can be used by other tools than ectool",
+      "revId": "891f35e73f5e38a5253707e89672be1c1d9d7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4639ab9_d8305474",
+        "filename": "util/ectool_usb/ec_commands.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T10:29:09Z",
+      "side": 1,
+      "message": "Please add this file in a separate CL?",
+      "revId": "891f35e73f5e38a5253707e89672be1c1d9d7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
