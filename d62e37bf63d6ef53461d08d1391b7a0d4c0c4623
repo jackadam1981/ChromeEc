@@ -70,6 +70,24 @@
       "parentUuid": "b4983959_b8d15bc0",
       "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1501101_e1dd2f39",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T07:28:37Z",
+      "side": 1,
+      "message": "But switch statement is used for run-time, not for build-time. What you can do is you can define e.g. `IMAGE_READ_MODE` in the sensor specific header, as you mention and do the #ifdef tree in `elan_read_fn`. However I still think using Kconfigs is better and follows Zephyr style in a better way. IMO the best solution would be to define a [choice](https://docs.zephyrproject.org/latest/build/kconfig/setting.html#configuring-choices) config, something like `ELAN_READ_MODE`, add proper choices that are selected by sensor specific config.",
+      "parentUuid": "0a4a0c5d_4f6dca5c",
+      "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
