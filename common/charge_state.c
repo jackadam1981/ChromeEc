@@ -1529,6 +1529,9 @@ void charger_task(void *u)
 	charger_setup(info);
 
 	while (1) {
+		k_sleep(K_MSEC(10));
+		continue;
+
 		/* Let's see what's going on... */
 		curr.ts = get_time();
 		sleep_usec = 0;

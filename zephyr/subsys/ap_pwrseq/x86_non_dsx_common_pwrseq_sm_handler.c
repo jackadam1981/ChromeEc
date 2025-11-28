@@ -345,7 +345,7 @@ void rsmrst_pass_thru_handler(void)
 
 #ifndef CONFIG_AP_PWRSEQ_DRIVER
 /* Common power sequencing */
-static int common_pwr_sm_run(int state)
+__maybe_unused static int common_pwr_sm_run(int state)
 {
 	switch (state) {
 	case SYS_POWER_STATE_G3: {
@@ -679,17 +679,20 @@ static void pwr_seq_set_initial_state(void)
 
 static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 {
+#if 0
 	enum power_states_ndsx curr_state, new_state;
 	power_signal_mask_t this_in_signals;
 	power_signal_mask_t last_in_signals = 0;
 	enum power_states_ndsx last_state = -1;
-
+#endif
 	/*
 	 * Let clients know that the AP power state is now
 	 * initialized and ready.
 	 */
-	ap_power_ev_send_callbacks(AP_POWER_INITIALIZED);
+	//ap_power_ev_send_callbacks(AP_POWER_INITIALIZED);
 	while (1) {
+		k_sleep(K_MSEC(100));
+#if 0
 		curr_state = pwr_sm_get_state();
 
 		/*
@@ -731,6 +734,7 @@ static void pwrseq_loop_thread(void *p1, void *p2, void *p3)
 			 */
 			k_sem_take(&pwrseq_sem, K_FOREVER);
 		}
+#endif
 	}
 }
 
