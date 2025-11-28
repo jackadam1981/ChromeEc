@@ -16,6 +16,24 @@
       "message": "[Documentation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/flash.h;l\u003d209-215;drc\u003d3bbdefd678ce52d8f7672b0189ba88972a64dfde) says that any positive return value means that the region is protected. Unfortunately [EC_ERROR_* codes are positive](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/common.h;l\u003d359;drc\u003d9c9df9c7d40daf7f77f8b4132aa959ab024b219c) which means that error from `check_prot_reg()` will be interpreted as enabled protection.\n\nI believe, this is a problem with `check_prot_reg()` it should return 0 if it\u0027s not possible to determine if the region is protected.\n\nAlso, `check_prot_reg()` returns that the region is protected even if it\u0027s only partially protected. It\u0027s good for checking before writing/erasing, but I\u0027m not sure if it\u0027s good here.",
       "revId": "43d3bbe3a45016021f965b7f9b9767b59b8d4dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27272568_11f01b86",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T12:53:05Z",
+      "side": 1,
+      "message": "In this function, the check size is always `CONFIG_FLASH_BANK_SIZE`, which is a flash protection unit. This means that part of flash can not be protected partially, all or nothing.\n\nIn terms of what happens if `check_prot_reg` return error (not `EC_ERROR_ACCESS_DENIED`), I agree it is safer to return \"not protected\" state.",
+      "parentUuid": "13601981_80dd7c61",
+      "revId": "43d3bbe3a45016021f965b7f9b9767b59b8d4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
