@@ -22,9 +22,9 @@ extern "C" void dsp_service_buf_write_received(struct i2c_target_config*,
 
   // Check capacity
   if (len > cros_dsp_comms_EcService_size) {
-    LOG_ERR("Overflow, trying to write (%uB), capacity is %uB",
-            len,
-            cros_dsp_comms_EcService_size);
+    // LOG_ERR("Overflow, trying to write (%uB), capacity is %uB",
+    //         len,
+    //         cros_dsp_comms_EcService_size);
     k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
     return;
   }
@@ -43,13 +43,13 @@ extern "C" int dsp_service_buf_read_requested(struct i2c_target_config*,
   LOG_DBG("%s: Taking semaphore...", __FUNCTION__);
   if (k_sem_take(&cros::dsp::service::driver.data_processing_semaphore_,
                  K_NO_WAIT) != 0) {
-    LOG_ERR("Can't process a request at this time");
+    // LOG_ERR("Can't process a request at this time");
     return -EBUSY;
   }
 
   auto response = cros::dsp::service::driver.transport_.ReadNextMessage();
   if (!response.ok()) {
-    LOG_ERR("No pending response");
+    // LOG_ERR("No pending response");
     k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
     return -ENODATA;
   }

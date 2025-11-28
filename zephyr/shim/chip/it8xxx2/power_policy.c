@@ -10,13 +10,14 @@
 #include <zephyr/pm/policy.h>
 
 #include <soc.h>
-
+#if 0
 static const struct pm_state_info pm_states[] =
 	PM_STATE_INFO_LIST_FROM_DT_CPU(DT_NODELABEL(cpu0));
-
+#endif
 /* CROS PM policy handler */
 const struct pm_state_info *pm_policy_next_state(uint8_t cpu, int32_t ticks)
 {
+#if 0
 	ARG_UNUSED(cpu);
 
 	/* Deep sleep is allowed */
@@ -38,6 +39,6 @@ const struct pm_state_info *pm_policy_next_state(uint8_t cpu, int32_t ticks)
 			return &pm_states[i];
 		}
 	}
-
+#endif
 	return NULL;
 }

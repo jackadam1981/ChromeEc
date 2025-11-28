@@ -628,7 +628,7 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 }
 
 /* TODO(b/348486617) - Switch to SMF for state management. */
-static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
+__maybe_unused static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 {
 	/* We will handle async events only in idle state if there is
 	 * one pending.
@@ -765,7 +765,8 @@ static void ppm_common_task(void *context)
 	}
 
 	do {
-		ppm_common_taskloop(dev);
+		k_sleep(K_MSEC(100));
+	//	ppm_common_taskloop(dev);
 	} while (true);
 
 	__ASSERT_UNREACHABLE;
