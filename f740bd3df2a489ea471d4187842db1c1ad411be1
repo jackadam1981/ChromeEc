@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce5804a_aa5649bc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60616cb9_f56064ba",
+      "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b864fb2_cc0cecae",
@@ -209,6 +227,24 @@
       "side": 1,
       "message": "Ok Dawid, thanks",
       "parentUuid": "65088035_17beba8c",
+      "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91515ed1_66028829",
+        "filename": "zephyr/dts/bindings/fingerprint/ft,ft9849.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3595dd2_a91139dc",
       "revId": "f740bd3df2a489ea471d4187842db1c1ad411be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
