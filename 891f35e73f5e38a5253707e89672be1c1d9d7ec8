@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f09b801_cb9379d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-28T15:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f346e4b5_0d40ffa7",
+      "revId": "891f35e73f5e38a5253707e89672be1c1d9d7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4639ab9_d8305474",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-28T10:29:09Z",
       "side": 1,
       "message": "Please add this file in a separate CL?",
+      "revId": "891f35e73f5e38a5253707e89672be1c1d9d7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f113d13d_43c4f12d",
+        "filename": "util/ectool_usb/ec_commands.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-11-28T15:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4639ab9_d8305474",
       "revId": "891f35e73f5e38a5253707e89672be1c1d9d7ec8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
