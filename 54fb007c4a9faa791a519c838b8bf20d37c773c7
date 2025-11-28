@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d903eac_2dc28833",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "I want to keep the function implementations sorted with the order of struct charger_drv ops.",
+      "parentUuid": "e79a192e_5ba2ce73",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3244135_8159fcf5",
         "filename": "driver/charger/rt9478.c",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-27T13:41:29Z",
       "side": 1,
       "message": "you could drop the else, just\n\n```\nif (reg \u003d\u003d 0)\n         return ...;\n         \nreturn ...;\n```",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c173453_49e312f6",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "OK, good idea, will fix in Patchset 8.",
+      "parentUuid": "c3244135_8159fcf5",
       "range": {
         "startLine": 166,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4f430c_57d23c7d",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da3555a_d8693998",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d4f9135_f33aa2cb",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-11-27T13:41:29Z",
       "side": 1,
       "message": "you can use BIT here, `rt9478_perf_mode_req |\u003d BIT(task_get_current());`",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51029625_8080a531",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4f9135_f33aa2cb",
       "range": {
         "startLine": 218,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4854a1c2_fa27d307",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a289b3c_a09660b2",
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0d5f104_bf53a178",
@@ -127,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b80fe1_adc51cbf",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d5f104_bf53a178",
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ef67b5_348dc7fb",
@@ -140,6 +272,30 @@
       "writtenOn": "2025-11-27T13:41:29Z",
       "side": 1,
       "message": "is this really the intended logic? like if any of these three calls function fails then execute the if below, regardless of the combination of failure?",
+      "range": {
+        "startLine": 543,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6584084e_ead4edd9",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1475908
+      },
+      "writtenOn": "2025-11-28T10:49:12Z",
+      "side": 1,
+      "message": "The RESET_REG is the crucial action, it is protected with if (!rv) condition, in other word, with EC_SUCCESS condition of those three calls.",
+      "parentUuid": "46ef67b5_348dc7fb",
       "range": {
         "startLine": 543,
         "startChar": 0,
