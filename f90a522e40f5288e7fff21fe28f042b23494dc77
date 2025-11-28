@@ -16,6 +16,23 @@
       "message": "I\u0027m not sure why rebasing caused the change to become empty in PS2..",
       "revId": "f90a522e40f5288e7fff21fe28f042b23494dc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c9fa6b_291965ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2025-11-28T08:42:41Z",
+      "side": 1,
+      "message": "Verified:\n\nhttps://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8696975526714023537/+/u/install_packages/call_chromite.api.SysrootService_InstallPackages/call_build_API_script/stdout:\nCompleted (1117 of 1647) chromeos-base/chromeos-zephyr-4.3.0-r13780::chromiumos to /build/fatcat/",
+      "revId": "f90a522e40f5288e7fff21fe28f042b23494dc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
