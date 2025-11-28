@@ -229,6 +229,24 @@
       "parentUuid": "e79264c0_c8e20d17",
       "revId": "00040a4ec741049936f359205b64f4459ad28697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711534dc_b8526898",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T11:45:23Z",
+      "side": 1,
+      "message": "Ok, my proposal as temporary solution is manually assign the FP_ALGORITHM_TEMPLATE_SIZE in prj.conf file. I can handle that per project. Would it work for you?",
+      "parentUuid": "a6a8ae73_f9f54f32",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
