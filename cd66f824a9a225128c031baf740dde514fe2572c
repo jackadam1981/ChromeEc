@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d72752e_03d950c0",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "It is done this way to handle potential overflow of the `offset + bytes` calculation.",
+      "parentUuid": "3f8dd1d7_9e891de5",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf32a991_14437954",
         "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
         "patchSetId": 33
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-27T11:42:37Z",
       "side": 1,
       "message": "Should it be `offset + bytes`? Otherwise `bytes` is not used.",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 11
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7232800e_b808c20d",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Removed unnecessary assumption about the protection start and took bytes into account. The function checks if the ranges overlap at least partially.",
+      "parentUuid": "cf32a991_14437954",
       "range": {
         "startLine": 171,
         "startChar": 5,
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-27T11:42:37Z",
       "side": 1,
       "message": "You are not unlocking the mutex on error.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 2
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9295c80_4ad4b9a8",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "39ba8c5c_4bdc5645",
       "range": {
         "startLine": 262,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79de5986_fe56a534",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Updated. I think `prot_start \u003e CONFIG_WP_STORAGE_OFF` state we should just treat as inconsistency and return such error.",
+      "parentUuid": "57326a07_08efd9a2",
+      "range": {
+        "startLine": 292,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1ae465d_f6e1b389",
         "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
         "patchSetId": 33
@@ -106,6 +202,30 @@
       "writtenOn": "2025-11-27T11:42:37Z",
       "side": 1,
       "message": "EC_SUCCESS is confusing here. I think you should just assign 0 here.",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 18
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c24051_bf9a9012",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ae465d_f6e1b389",
       "range": {
         "startLine": 355,
         "startChar": 8,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79302f0_35a34c76",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b0cfc3_ed287194",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 48
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec8704da_ea5b54b0",
@@ -152,6 +296,30 @@
       "writtenOn": "2025-11-27T11:42:37Z",
       "side": 1,
       "message": "range",
+      "range": {
+        "startLine": 400,
+        "startChar": 32,
+        "endLine": 400,
+        "endChar": 36
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4b3a62_5f330123",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8704da_ea5b54b0",
       "range": {
         "startLine": 400,
         "startChar": 32,
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c46577_f8ca3057",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c5af00_abdce205",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 65
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428ffba6_782d6b7d",
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac74a1e_cc371a91",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "428ffba6_782d6b7d",
+      "range": {
+        "startLine": 429,
+        "startChar": 19,
+        "endLine": 429,
+        "endChar": 47
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1733d66a_d675d681",
@@ -221,6 +437,30 @@
       "writtenOn": "2025-11-27T11:42:37Z",
       "side": 1,
       "message": "How about `check_operation_status`?",
+      "range": {
+        "startLine": 465,
+        "startChar": 11,
+        "endLine": 465,
+        "endChar": 31
+      },
+      "revId": "cd66f824a9a225128c031baf740dde514fe2572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6fd379_190cd899",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_andestech_xip.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T09:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1733d66a_d675d681",
       "range": {
         "startLine": 465,
         "startChar": 11,
