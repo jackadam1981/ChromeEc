@@ -175,6 +175,24 @@
       "parentUuid": "43c6f5d2_cabfd4b5",
       "revId": "00040a4ec741049936f359205b64f4459ad28697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32316702_292b8eea",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-28T09:59:05Z",
+      "side": 1,
+      "message": "currently, yes, but in the next version of algorithem, FP_ALGORITHM_TEMPLATE_SIZE will be the same per sensor.",
+      "parentUuid": "f0e3f8f0_7f5e9e56",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
