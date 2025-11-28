@@ -963,7 +963,7 @@ static void pd_chipset_shutdown(void);
 static void pdc_update_battery_status(struct pdc_port_t *port, bool force);
 static void pdc_update_battery_capability(struct pdc_port_t *port);
 
-static bool should_suspend(struct pdc_port_t *port)
+__maybe_unused static bool should_suspend(struct pdc_port_t *port)
 {
 	if (!atomic_get(&port->suspend)) {
 		return false;
@@ -1015,12 +1015,16 @@ static bool should_suspend(struct pdc_port_t *port)
 static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 				     void *unused2)
 {
+#if 0
 	const struct device *dev = (const struct device *)pdc_dev;
 	struct pdc_data_t *data = dev->data;
 	struct pdc_port_t *port = &data->port;
 	int rv;
+#endif
 
 	while (1) {
+		k_sleep(K_MSEC(100));
+#if 0
 		/* Wait for timeout or event */
 		rv = k_event_wait(&port->sm_event, PDC_SM_EVENT, false,
 				  K_MSEC(LOOP_DELAY_MS));
@@ -1042,6 +1046,7 @@ static ALWAYS_INLINE void pdc_thread(void *pdc_dev, void *unused1,
 
 		/* Run port connection state machine */
 		smf_run_state(&port->ctx);
+#endif
 	}
 }
 

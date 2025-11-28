@@ -915,7 +915,7 @@ static bool any_irq_gpio_asserted(void)
 /**
  * @brief Called from the main thread to handle interrupts
  */
-static void handle_irqs(struct pdc_data_t *data)
+__maybe_unused static void handle_irqs(struct pdc_data_t *data)
 {
 	uint8_t ara;
 	int rv;
@@ -3006,12 +3006,16 @@ static int pdc_init(const struct device *dev)
 
 static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 {
+#if 0
 	const struct pdc_config_t *cfg = ((const struct device *)dev)->config;
 	struct pdc_data_t *data = ((const struct device *)dev)->data;
 	uint32_t events;
 	bool irq_pending_for_idle = false;
+#endif
 
 	while (1) {
+		k_sleep(K_MSEC(10));
+#if 0
 		smf_run_state(SMF_CTX(data));
 
 		events = k_event_wait(&data->driver_event,
@@ -3035,6 +3039,7 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 			}
 			handle_irqs(data);
 		}
+#endif
 	}
 }
 

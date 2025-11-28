@@ -67,6 +67,8 @@ static void dsp_service_startup(struct ap_power_ev_callback* cb,
 static int init_driver() {
   static struct ap_power_ev_callback cb;
 
+  cros::dsp::service::driver.Init().IgnoreError();
+
   ap_power_ev_init_callback(&cb, dsp_service_startup, AP_POWER_STARTUP);
   ap_power_ev_add_callback(&cb);
   return 0;
@@ -311,16 +313,16 @@ pw::Status cros::dsp::service::Driver::Init() {
   int rc = 0;
 #if DT_PROP(DT_DRV_INST(0), allow_runtime_disable)
   // Check if the FW config is set to the disable value
-  uint32_t ish_enabled;
+  // uint32_t ish_enabled;
 
-  rc |= cros_cbi_get_fw_config(ISH, &ish_enabled);
-  PW_CHECK_INT_EQ(rc, 0);
+  // rc |= cros_cbi_get_fw_config(ISH, &ish_enabled);
+  // PW_CHECK_INT_EQ(rc, 0);
 
-  if (ish_enabled == ISH_DISABLED) {
-    // Match, disable the service
-    LOG_INF("Disabling DSP comms service");
-    return pw::OkStatus();
-  }
+  // if (ish_enabled == ISH_DISABLED) {
+  //   // Match, disable the service
+  //   LOG_INF("Disabling DSP comms service");
+  //   return pw::OkStatus();
+  // }
 #endif
   k_work_init(&get_cbi_flags_work_, dsp_service_handle_get_cbi_flags_request);
 
