@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462b2a10_5e368ee6",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 27
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T07:31:27Z",
+      "side": 1,
+      "message": "There are no such configs. I think you can drop these lines and rely on [code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/fpsensor_driver.h;l\u003d25) getting maximum frame size from dts. You couldn\u0027t use the `CONFIG_FINGERPRINT_SENSOR_IMAGE_SIZE` in driver code then.\n\n@fsammoura@google.com to correct me if I\u0027m wrong.",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa83087b_f9e6e538",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 27
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T07:31:27Z",
+      "side": 1,
+      "message": "Just use FINGERPRINT_SENSOR_FT98XX",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bab866_bc362a58",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-11-28T07:31:27Z",
+      "side": 1,
+      "message": "I believe this config doesn\u0027t make sense if there are no FT9865 dts nodes",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
