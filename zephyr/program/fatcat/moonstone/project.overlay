@@ -25,7 +25,6 @@
 #include "../kinmen/pwm.dtsi"
 #include "../kinmen/temp_sensors.dtsi"
 #include "../kinmen/usba.dtsi"
-#include <moonstone/overlay.dtsi>
 
 / {
 	batteries {
