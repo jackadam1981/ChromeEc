@@ -43,6 +43,8 @@
 
 LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
 
+extern enum ec_error_list isl9241_set_acokref(int chgnum, int mv);
+
 #ifdef CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS
 /* Faking PDC APIs directly causes compilation errors of the function being
  * redefined.  For testing only create a wrapper function that can be faked.
@@ -1795,6 +1797,13 @@ static void run_typec_snk_policies(struct pdc_port_t *port)
 		port->sink_path_to_send =
 			charge_manager_get_active_charge_port() ==
 			config->connector_num;
+		if (port->sink_path_to_send &&
+		    IS_ENABLED(CONFIG_PLATFORM_EC_CHARGER_SET_ACOKREF)) {
+			/* Set ACOKREF to 0, forcing default behavior
+			 * of 3.6V threshold.
+			 */
+			isl9241_set_acokref(0, 0);
+		}
 		queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 	} else if (atomic_test_and_clear_bit(port->snk_policy.flags,
 					     SNK_POLICY_UPDATE_SRC_CAPS)) {
@@ -2490,6 +2499,21 @@ static bool pdc_is_rdo_valid(const union connector_status_t *cs)
 		cs->power_operation_mode == PD_OPERATION);
 }
 
+static int pdo_mv_to_acokref_mv(int pdo_mv)
+{
+	if (pdo_mv == 5000) {
+		/* For 5V, the threshold is a fixed 3.6V, which is the default
+		 * used by the ISL9241 if ACOKREF is set to 0.
+		 */
+		return 0;
+	}
+	int vNew = (pdo_mv * 95) / 100;
+	int vValid = -500;
+	int vSinkPD_min1 = vNew - 750 + vValid;
+	int vSinkDisconnectPD_min = (vSinkPD_min1 * 9) / 10;
+	return vSinkDisconnectPD_min;
+}
+
 /**
  * @brief Set the sink path handler for SNK_ATTACHED state
  *
@@ -2512,6 +2536,21 @@ static bool pdc_snk_attached_set_sink_path(struct pdc_port_t *port)
 		if (sink_path_mask == 0) {
 			/* No other ports have sink path enabled,
 			 * proceed to enable */
+
+			/* FIXME - have charge manager handle this */
+			if (IS_ENABLED(
+				    CONFIG_PLATFORM_EC_CHARGER_SET_ACOKREF)) {
+				int pdo_mv;
+				int pdo_ma;
+				int pdo_mw;
+				pd_extract_pdo_power_unclamped(
+					port->snk_policy.pdo, &pdo_ma, &pdo_mv,
+					&pdo_mw);
+				int acokref = pdo_mv_to_acokref_mv(pdo_mv);
+				LOG_INF("C%d: setting ACOKREF to %d mv (PDO %d mV)",
+					config->connector_num, acokref, pdo_mv);
+				isl9241_set_acokref(0, acokref);
+			}
 			port->sink_path_to_send = true;
 			queue_internal_cmd(port, CMD_PDC_SET_SINK_PATH);
 			return true;
