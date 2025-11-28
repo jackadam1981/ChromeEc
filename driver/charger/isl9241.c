@@ -1077,6 +1077,12 @@ static enum ec_error_list isl9241_enable_bypass_mode(int chgnum, bool enable)
 }
 #endif /* CONFIG_CHARGER_BYPASS_MODE */
 
+enum ec_error_list isl9241_set_acokref(int chgnum, int mv)
+{
+	return isl9241_write(chgnum, ISL9241_REG_ACOK_REFERENCE,
+			     ISL9241_MV_TO_ACOK_REFERENCE(mv));
+}
+
 /*****************************************************************************/
 /* ISL-9241 initialization */
 static void isl9241_init(int chgnum)
