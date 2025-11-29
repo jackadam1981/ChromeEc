@@ -62,8 +62,9 @@ int panic_sw_reason_is_valid(uint32_t reason)
  * @return 0 if the character was transmitted, 1 if it was dropped.
  */
 #ifndef CONFIG_DEBUG_PRINTF
-static int panic_txchar(void *context, int c)
+__maybe_unused static int panic_txchar(void *context, int c)
 {
+#if 0
 	if (c == '\n')
 		panic_txchar(context, '\r');
 
@@ -73,7 +74,7 @@ static int panic_txchar(void *context, int c)
 
 	/* Write the character directly to the transmit FIFO */
 	uart_write_char(c);
-
+#endif
 	return 0;
 }
 
@@ -87,6 +88,7 @@ void panic_puts(const char *outstr)
 	usb_puts(outstr);
 #endif
 
+#if 0
 	/* Don't write to uart before it's initialized */
 	if (!uart_init_done())
 		return;
@@ -103,10 +105,12 @@ void panic_puts(const char *outstr)
 
 	/* Flush the transmit FIFO */
 	uart_tx_flush();
+#endif
 }
 
 void panic_printf(const char *format, ...)
 {
+#if 0
 	va_list args;
 
 	/* Don't write to uart before it's initialized */
@@ -128,6 +132,7 @@ void panic_printf(const char *format, ...)
 
 	/* Flush the transmit FIFO */
 	uart_tx_flush();
+#endif
 }
 #endif
 
@@ -512,7 +517,7 @@ int test_command_crash(int argc, const char **argv)
 }
 #endif /* TEST_BUILD*/
 #endif /* CONFIG_CMD_CRASH */
-
+#if 0
 static int command_panicinfo(int argc, const char **argv)
 {
 	struct panic_data *const pdata_ptr = panic_get_data();
@@ -547,7 +552,7 @@ static int command_panicinfo(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, "[clear]",
 			"Print info from a previous panic");
-
+#endif
 /*****************************************************************************/
 /* Host commands */
 

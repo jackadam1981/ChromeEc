@@ -380,6 +380,7 @@ DECLARE_HOST_COMMAND(EC_CMD_SET_TABLET_MODE, tablet_mode_command,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 #ifdef CONFIG_TABLET_MODE
+#if 0
 static int command_settabletmode(int argc, const char **argv)
 {
 	if (argc == 1) {
@@ -412,6 +413,7 @@ static int command_settabletmode(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(tabletmode, command_settabletmode, "[on | off | reset]",
 			"Manually force tablet mode to on, off or reset.");
+#endif
 #endif
 
 __test_only void tablet_reset(void)

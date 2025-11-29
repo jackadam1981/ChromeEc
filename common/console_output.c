@@ -160,7 +160,9 @@ int cprints(enum console_channel channel, const char *format, ...)
 
 void cflush(void)
 {
+#if 0
 	uart_flush_output();
+#endif
 }
 
 /*****************************************************************************/
