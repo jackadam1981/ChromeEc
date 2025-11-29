@@ -37,6 +37,8 @@ extern "C" void dsp_service_buf_write_received(struct i2c_target_config*,
   k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
 }
 
+auto ite_ptr = std::array<uint8_t, 8>{0xFF, 0xFE, 0xFD, 0xFC, 0xFB, 0xFA, 0xF9, 0xF8};
+
 extern "C" int dsp_service_buf_read_requested(struct i2c_target_config*,
                                               uint8_t** ptr,
                                               uint32_t* len) {
@@ -47,16 +49,16 @@ extern "C" int dsp_service_buf_read_requested(struct i2c_target_config*,
     return -EBUSY;
   }
 
-  auto response = cros::dsp::service::driver.transport_.ReadNextMessage();
-  if (!response.ok()) {
-    // LOG_ERR("No pending response");
-    k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
-    return -ENODATA;
-  }
+  // auto response = cros::dsp::service::driver.transport_.ReadNextMessage();
+  // if (!response.ok()) {
+  //   // LOG_ERR("No pending response");
+  //   k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
+  //   return -ENODATA;
+  // }
 
   // Yes, really remove const, Zephyr upstream should make the ptr a const.
-  *ptr = reinterpret_cast<uint8_t*>(const_cast<std::byte*>(response->data()));
-  *len = response->size();
+  *ptr = ite_ptr.data();
+  *len = ite_ptr.size();
   k_sem_give(&cros::dsp::service::driver.data_processing_semaphore_);
   return 0;
 }
