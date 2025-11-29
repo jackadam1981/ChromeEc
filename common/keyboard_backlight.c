@@ -153,7 +153,7 @@ static void kblight_lid_change(void)
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, kblight_lid_change, HOOK_PRIO_DEFAULT);
 #endif
-
+#if 0
 /*
  * Console and host commands
  */
@@ -175,7 +175,7 @@ static int cc_kblight(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(kblight, cc_kblight, "percent",
 			"Get/set keyboard backlight");
-
+#endif
 static enum ec_status
 hc_get_keyboard_backlight(struct host_cmd_handler_args *args)
 {

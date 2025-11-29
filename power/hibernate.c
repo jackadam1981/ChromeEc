@@ -110,6 +110,7 @@ static void ap_change(struct ap_power_ev_callback *callback,
  */
 DECLARE_HOOK(HOOK_AC_CHANGE, change_detected, HOOK_PRIO_DEFAULT);
 
+#if 0
 /*
  * EC Console command to get/set the hibernation delay
  */
@@ -139,6 +140,7 @@ static int command_hibernation_delay(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(hibdelay, command_hibernation_delay, "[sec]",
 			"Set the delay before going into hibernation");
+#endif
 /*
  * Host command to set the hibernation delay
  */

@@ -1204,6 +1204,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 	return EC_SUCCESS;
 }
 
+#if 0
 static int command_sysinfo(int argc, const char **argv)
 {
 	struct ec_response_sysinfo info;
@@ -1241,6 +1242,7 @@ static int command_sysinfo(int argc, const char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(sysinfo, command_sysinfo, NULL,
 			     "Print system info");
+#endif
 
 static enum ec_status host_command_sysinfo(struct host_cmd_handler_args *args)
 {
@@ -1288,7 +1290,7 @@ static int command_scratchpad(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(scratchpad, command_scratchpad, "[val]",
 			"Get or set scratchpad value");
 #endif /* CONFIG_CMD_SCRATCHPAD */
-
+#if 0
 __maybe_unused static int command_hibernate(int argc, const char **argv)
 {
 	int seconds = 0;
@@ -1619,7 +1621,7 @@ static int command_rflags(int argc, const char **argv)
 DECLARE_CONSOLE_COMMAND(rflags, command_rflags, NULL,
 			"Print reset flags saved in non-volatile memory");
 #endif
-
+#endif
 /*****************************************************************************/
 /* Host commands */
 

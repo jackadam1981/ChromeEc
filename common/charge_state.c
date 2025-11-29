@@ -2344,6 +2344,7 @@ DECLARE_CONSOLE_COMMAND(pwr_avg, command_pwr_avg, NULL,
 
 #endif /* CONFIG_CMD_PWR_AVG */
 
+#if 0
 static int command_chgstate(int argc, const char **argv)
 {
 	int rv;
@@ -2409,3 +2410,4 @@ DECLARE_CONSOLE_COMMAND(chgstate, command_chgstate,
 			"[idle|discharge" CHGSTATE_DEBUG_HELP "]"
 			"\n[sustain <lower> <upper>]",
 			"Get/set charge state machine status");
+#endif
