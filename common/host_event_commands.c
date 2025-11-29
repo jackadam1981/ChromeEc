@@ -443,6 +443,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clear_events_copy_b, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Console commands */
+#if 0
 static int command_host_event(int argc, const char **argv)
 {
 	/* Handle sub-commands */
@@ -493,7 +494,7 @@ DECLARE_CONSOLE_COMMAND(
 	hostevent, command_host_event,
 	"[set | clear | clearb | smi | sci | wake | always_report] [mask]",
 	"Print / set host event state");
-
+#endif
 /*****************************************************************************/
 /* Host commands */
 

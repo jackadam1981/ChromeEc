@@ -8,8 +8,8 @@
 		gpio-wp = &gpio_ec_wp_odl;
 	};
 	chosen {
-		zephyr,console = &uart2;
-		zephyr,shell-uart = &uart2;
+//		zephyr,console = &uart2;
+//		zephyr,shell-uart = &uart2;
 	};
 
 	named-gpios {
@@ -57,12 +57,12 @@
 };
 
 &uart2 {
-	status = "okay";
+	status = "disabled";
 	current-speed = <115200>;
 };
 
 &ite_uart2_wrapper {
-	status = "okay";
+	status = "disabled";
 	pinctrl-0 = <&uart2_rx_gpf0_default
 		     &uart2_tx_gpf1_default>;
 	pinctrl-names = "default";

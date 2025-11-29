@@ -414,6 +414,7 @@ DECLARE_CONSOLE_COMMAND(waitms, command_wait, "msec",
  * especially when going "backward" in time, because task deadlines are
  * left un-adjusted.
  */
+#if 0
 static int command_force_time(int argc, const char **argv)
 {
 	char *e;
@@ -437,6 +438,7 @@ static int command_force_time(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(forcetime, command_force_time, "hi lo",
 			"Force current time");
+#endif
 #endif
 
 #ifdef CONFIG_CMD_GETTIME

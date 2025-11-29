@@ -519,7 +519,7 @@ static enum ec_status hc_cbi_bin_write(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CBI_BIN_WRITE, hc_cbi_bin_write, EC_VER_MASK(0));
-
+#if 0
 #ifdef CONFIG_CMD_CBI
 static void print_tag(const char *const tag, int rv, const uint32_t *val)
 {
@@ -677,6 +677,7 @@ DECLARE_CONSOLE_COMMAND(cbi, cc_cbi,
 			"remove <tag>] [init | skip_write]",
 			"Print or change Cros Board Info from flash");
 #endif /* CONFIG_CMD_CBI */
+#endif
 
 int cbi_set_model_id(uint32_t model_id)
 {

@@ -18,6 +18,7 @@ enum format {
 	FMT_STRING,
 };
 
+#if 0
 #ifdef CONFIG_CMD_MD
 static void show_val(uint32_t address, uint32_t index, enum format fmt)
 {
@@ -204,3 +205,4 @@ DECLARE_CONSOLE_COMMAND_FLAGS(
 	"Read or write a word in memory optionally specifying the size",
 	CMD_FLAG_RESTRICTED);
 #endif /* CONFIG_CMD_RW */
+#endif

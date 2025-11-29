@@ -633,6 +633,7 @@ int battery_wait_for_stable(void)
 	return EC_ERROR_NOT_POWERED;
 }
 
+#if 0
 #if defined(CONFIG_CMD_BATTFAKE)
 static int command_battfake(int argc, const char **argv)
 {
@@ -724,6 +725,7 @@ DECLARE_CONSOLE_COMMAND(battmfgacc, command_batt_mfg_access_read,
 			"cmd block | len",
 			"Read battery manufacture access data");
 #endif /* CONFIG_CMD_BATT_MFG_ACCESS */
+#endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_BATTERY
 test_mockable int sb_i2c_test_read(int cmd, int *param)

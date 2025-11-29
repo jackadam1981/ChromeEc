@@ -143,7 +143,7 @@ void enable_lid_detect(bool enable)
 		lid_switch_open();
 	}
 }
-
+#if 0
 static int command_lidopen(int argc, const char **argv)
 {
 	lid_switch_open();
@@ -165,7 +165,7 @@ static int command_lidstate(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(lidstate, command_lidstate, NULL, "Get state of lid");
-
+#endif
 /**
  * Host command to enable/disable lid opened.
  */

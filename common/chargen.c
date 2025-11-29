@@ -39,12 +39,12 @@ struct deferred_chargen_ctx {
 	int (*putc)(int c);
 	int (*tx_is_blocked)(void);
 };
-static struct deferred_chargen_ctx chargen_ctx;
+__maybe_unused static struct deferred_chargen_ctx chargen_ctx;
 
-static void acquire_console(void)
+__maybe_unused static void acquire_console(void)
 {
 #if !defined(CONFIG_USB_CONSOLE) && !defined(CONFIG_USB_CONSOLE_STREAM)
-	uart_shell_rx_bypass(true);
+	//uart_shell_rx_bypass(true);
 #endif
 #if !defined(CONFIG_ZEPHYR) && !defined(BOARD_HOST)
 	/* The legacy fw console does not have an rx bypass feature (it is
@@ -56,10 +56,10 @@ static void acquire_console(void)
 #endif /* !CONFIG_ZEPHYR  && !BOARD_HOST */
 }
 
-static void release_console(void)
+__maybe_unused static void release_console(void)
 {
 #if !defined(CONFIG_USB_CONSOLE) && !defined(CONFIG_USB_CONSOLE_STREAM)
-	uart_shell_rx_bypass(false);
+	//uart_shell_rx_bypass(false);
 #endif
 #if !defined(CONFIG_ZEPHYR) && !defined(BOARD_HOST)
 	if (task_start_called())
@@ -69,6 +69,8 @@ static void release_console(void)
 
 static void run_chargen(void)
 {
+	return;
+#if 0
 	int wrap_value = chargen_ctx.wrap_value;
 	uint32_t seq_number = chargen_ctx.seq_number;
 	int (*putc_)(int c) = chargen_ctx.putc;
@@ -136,6 +138,7 @@ static void run_chargen(void)
 	putc_('\n');
 
 	release_console();
+#endif
 }
 DECLARE_DEFERRED(run_chargen);
 
@@ -156,6 +159,7 @@ DECLARE_DEFERRED(run_chargen);
  *
  * Hitting 'x' on the keyboard stops the generator.
  */
+#if 0
 static int command_chargen(int argc, const char **argv)
 {
 	int wrap_value = 0;
@@ -188,6 +192,7 @@ static int command_chargen(int argc, const char **argv)
 	return hook_call_deferred(&run_chargen_data, 0);
 }
 DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
+
 #if defined(CONFIG_USB_CONSOLE) || defined(CONFIG_USB_CONSOLE_STREAM)
 			     "[seq_length [num_chars [usb]]]",
 #else
@@ -196,4 +201,5 @@ DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
 			     "Generate a constant stream of characters on the "
 			     "UART console,\nrepeating every 'seq_length' "
 			     "characters, up to 'num_chars' total.");
+#endif
 #endif /* !SECTION_IS_RO */
