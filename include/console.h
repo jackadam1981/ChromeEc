@@ -149,8 +149,10 @@ void console_channel_disable(const char *name);
 #ifdef CONFIG_CONSOLE_CHANNEL
 bool console_channel_is_disabled(enum console_channel channel);
 #else
-static inline bool console_channel_is_disabled(enum console_channel channel)
+__maybe_unused static inline bool console_channel_is_disabled(enum console_channel channel)
 {
+	ARG_UNUSED(channel);
+
 	return false;
 }
 #endif

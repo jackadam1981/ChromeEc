@@ -1143,6 +1143,7 @@ test_mockable void keyboard_update_button(enum keyboard_button_type button,
 
 /*****************************************************************************/
 /* Console commands */
+#if 0
 #ifdef CONFIG_CMD_KEYBOARD
 static int command_typematic(int argc, const char **argv)
 {
@@ -1363,6 +1364,7 @@ DECLARE_CONSOLE_COMMAND(8042, command_8042,
 			"[internal | typematic | codeset | ctrlram |"
 			" kblog | kbd]",
 			"Print 8042 state in one place");
+#endif
 #endif
 
 /*****************************************************************************/

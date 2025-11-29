@@ -5,7 +5,7 @@
 
 #include "ap_reset_log.h"
 #include "system_boot_time.h"
-#include "zephyr_console_shim.h"
+//#include "zephyr_console_shim.h"
 
 #include <zephyr/init.h>
 
@@ -16,7 +16,7 @@
 #include "ap_power/ap_pwrseq.h"
 #include "ap_power/ap_pwrseq_sm.h"
 #include "x86_non_dsx_common_pwrseq_sm_handler.h"
-#include "zephyr_console_shim.h"
+//#include "zephyr_console_shim.h"
 #endif
 
 /* Delay in ms when starting from G3 */

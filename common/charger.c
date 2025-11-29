@@ -125,7 +125,7 @@ void charger_get_params(struct charger_params *chg)
 	if (charger_get_option(&chg->option))
 		chg->flags |= CHG_FLAG_BAD_OPTION;
 }
-
+#if 0
 static void print_item_name(const char *name)
 {
 	ccprintf("  %-8s", name);
@@ -284,6 +284,7 @@ DECLARE_CONSOLE_COMMAND(charger, command_charger,
 			". Dump registers."
 #endif
 );
+#endif
 
 /* Driver wrapper functions */
 

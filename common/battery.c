@@ -57,7 +57,7 @@ enum battery_present battery_is_present(void)
 	return gpio_get_level(CONFIG_BATTERY_PRESENT_GPIO) ? BP_NO : BP_YES;
 }
 #endif
-
+#if 0
 static const char *get_error_text(int rv)
 {
 	if (rv == EC_ERROR_UNIMPLEMENTED)
@@ -331,7 +331,7 @@ static int command_battery(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(battery, command_battery, "<repeat_count> <sleep_ms>",
 			"Print battery info");
-
+#endif
 #ifdef CONFIG_BATTERY_CUT_OFF
 test_mockable int battery_is_cut_off(void)
 {
@@ -528,7 +528,7 @@ static void check_pending_cutoff(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, check_pending_cutoff, HOOK_PRIO_LAST);
-
+#if 0
 static int command_cutoff(int argc, const char **argv)
 {
 	if (argc > 1) {
@@ -545,6 +545,7 @@ static int command_cutoff(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(cutoff, command_cutoff, "[at-shutdown]",
 			"Cut off the battery output");
+#endif
 #else
 test_mockable int battery_is_cut_off(void)
 {

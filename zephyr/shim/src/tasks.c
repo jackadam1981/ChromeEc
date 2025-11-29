@@ -160,8 +160,8 @@ k_tid_t task_id_to_thread_id(task_id_t task_id)
 		case TASK_ID_IDLE:
 			return get_idle_thread();
 
-		case TASK_ID_SHELL:
-			return get_shell_thread();
+//		case TASK_ID_SHELL:
+//			return get_shell_thread();
 
 #ifdef CONFIG_AP_PWRSEQ
 		case TASK_ID_AP_PWRSEQ:
@@ -200,9 +200,9 @@ task_id_t thread_id_to_task_id(k_tid_t thread_id)
 		return TASK_ID_IDLE;
 	}
 
-	if (get_shell_thread() == thread_id) {
-		return TASK_ID_SHELL;
-	}
+//	if (get_shell_thread() == thread_id) {
+//		return TASK_ID_SHELL;
+//	}
 
 #ifdef CONFIG_AP_PWRSEQ
 	if (get_ap_pwrseq_thread() == thread_id) {
