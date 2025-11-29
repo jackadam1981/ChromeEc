@@ -250,7 +250,7 @@ void power_button_simulate_press(unsigned int duration)
 
 /*****************************************************************************/
 /* Console commands */
-
+#if 0
 static int command_powerbtn(int argc, const char **argv)
 {
 	int ms = 200; /* Press duration in ms */
@@ -267,3 +267,4 @@ static int command_powerbtn(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn, "[msec]",
 			"Simulate power button press");
+#endif

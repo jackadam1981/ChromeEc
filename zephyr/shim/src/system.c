@@ -167,6 +167,7 @@ test_mockable void system_hibernate(uint32_t seconds, uint32_t microseconds)
 /**
  * Print low power idle statistics
  */
+#if 0
 static int command_idle_stats(int argc, const char **argv)
 {
 	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
@@ -181,6 +182,7 @@ static int command_idle_stats(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
 			"Print last idle stats");
+#endif
 #endif
 
 const char *system_get_chip_vendor(void)

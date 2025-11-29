@@ -193,7 +193,7 @@ static void set_duty_cycle(int fan, int percent)
 
 /*****************************************************************************/
 /* Console commands */
-
+#if 0
 static int cc_fanauto(int argc, const char **argv)
 {
 	char *e;
@@ -370,6 +370,7 @@ static int cc_fanduty(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(fanduty, cc_fanduty, "[fan] percent",
 			"Set fan duty cycle");
+#endif
 
 /*****************************************************************************/
 /* DPTF interface functions */

@@ -47,7 +47,7 @@ static enum {
 } hcdebug = CONFIG_HOSTCMD_DEBUG_MODE;
 
 #ifdef CONFIG_CMD_HCDEBUG
-static const char *const hcdebug_mode_names[HCDEBUG_MODES] = { "off", "normal",
+__maybe_unused static const char *const hcdebug_mode_names[HCDEBUG_MODES] = { "off", "normal",
 							       "every",
 							       "params" };
 #endif
@@ -600,7 +600,7 @@ uint8_t host_command_get_saved_result(void)
 
 /*****************************************************************************/
 /* Console commands */
-
+#if 0
 #ifdef CONFIG_CMD_HOSTCMD
 static int parse_byte(const char *b, uint8_t *out)
 {
@@ -734,3 +734,4 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+#endif

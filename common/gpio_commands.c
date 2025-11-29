@@ -21,7 +21,7 @@ static uint8_t last_val[(GPIO_COUNT + 7) / 8];
  *
  * @return the signal index, or GPIO_COUNT if no match.
  */
-static enum gpio_signal find_signal_by_name(const char *name)
+__maybe_unused static enum gpio_signal find_signal_by_name(const char *name)
 {
 	int i;
 
@@ -44,7 +44,7 @@ static enum gpio_signal find_signal_by_name(const char *name)
  *
  * @return 1 if last_val[i] was updated, 0 if last_val[i]==v.
  */
-static int last_val_changed(int i, int v)
+__maybe_unused static int last_val_changed(int i, int v)
 {
 	if (v && !(last_val[i / 8] & (1 << (i % 8)))) {
 		last_val[i / 8] |= 1 << (i % 8);
@@ -57,7 +57,7 @@ static int last_val_changed(int i, int v)
 	}
 }
 
-static enum ec_error_list set(const char *name, int value)
+__maybe_unused static enum ec_error_list set(const char *name, int value)
 {
 	enum gpio_signal signal = find_signal_by_name(name);
 
@@ -96,6 +96,7 @@ __maybe_unused static const struct gpio_flag_description gpio_descriptions[] = {
 #endif
 };
 
+#if 0
 static void print_gpio_info(int gpio)
 {
 	int changed, v, i;
@@ -224,7 +225,7 @@ DECLARE_CONSOLE_COMMAND_FLAGS(gpioset, command_gpio_set,
 			      "name <0 | 1>",
 #endif
 			      "Set a GPIO", CMD_FLAG_RESTRICTED);
-
+#endif
 /*****************************************************************************/
 /* Host commands */
 

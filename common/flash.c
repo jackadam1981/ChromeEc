@@ -1201,7 +1201,7 @@ void crec_flash_print_region_info(void)
 
 /*****************************************************************************/
 /* Console commands */
-
+#if 0
 #ifdef CONFIG_CMD_FLASHINFO
 #define BIT_TO_ON_OFF(value, mask) \
 	((((value) & (mask)) == (mask)) ? "ON" : "OFF")
@@ -1424,7 +1424,7 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
 			,
 			"Modify flash write protect");
 #endif /* CONFIG_CMD_FLASH_WP */
-
+#endif
 /*****************************************************************************/
 /* Host commands */
 

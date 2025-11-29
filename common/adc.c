@@ -14,7 +14,7 @@
 
 /* 'adc' console command is not supported in continuous mode */
 #ifndef CONFIG_ADC_PROFILE_FAST_CONTINUOUS
-
+#if 0
 static int print_one_adc(int channel)
 {
 	int v;
@@ -49,7 +49,7 @@ static int command_adc(int argc, const char **argv)
 	}
 }
 DECLARE_CONSOLE_COMMAND(adc, command_adc, "[id]", NULL);
-
+#endif
 static enum ec_status hc_adc_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_adc_read *params = args->params;

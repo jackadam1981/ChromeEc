@@ -183,7 +183,7 @@ DECLARE_HOOK(HOOK_SECOND, thermal_control_dptf, HOOK_PRIO_TEMP_SENSOR_DONE);
 
 /*****************************************************************************/
 /* Console commands */
-
+#if 0
 static int command_dptftemp(int argc, const char **argv)
 {
 	int id, t;
@@ -209,3 +209,4 @@ static int command_dptftemp(int argc, const char **argv)
 }
 DECLARE_CONSOLE_COMMAND(dptftemp, command_dptftemp, NULL,
 			"Print DPTF thermal parameters (degrees Kelvin)");
+#endif
