@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55de8265_cf4fc000",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 27
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-29T07:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "462b2a10_5e368ee6",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa83087b_f9e6e538",
@@ -66,6 +84,24 @@
       "writtenOn": "2025-11-28T07:31:27Z",
       "side": 1,
       "message": "Just use FINGERPRINT_SENSOR_FT98XX",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cf9e92_ddae5365",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 27
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-29T07:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa83087b_f9e6e538",
       "revId": "00040a4ec741049936f359205b64f4459ad28697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -263,6 +299,24 @@
       "side": 1,
       "message": "OK， it\u0027s good for me",
       "parentUuid": "711534dc_b8526898",
+      "revId": "00040a4ec741049936f359205b64f4459ad28697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40cc8318_dd442f5c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 27
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-29T07:10:25Z",
+      "side": 1,
+      "message": "I have done this and update the code.",
+      "parentUuid": "74cfb9ff_4ca2d0f6",
       "revId": "00040a4ec741049936f359205b64f4459ad28697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe34970_508c4c09",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-11-29T07:10:25Z",
+      "side": 1,
+      "message": "@dawidn@google.com  here I want to use FP_SENSOR_IMAGE_SIZE, but it show error while compile, I don\u0027t find the reason.",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 55
+      },
+      "revId": "722a82bb7d25852eb754ace45e3fb0f38fb4c4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
