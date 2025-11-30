@@ -404,6 +404,7 @@ void wpc_lid_interrupt(enum gpio_signal signal);
  */
 __override_proto void board_pchg_power_on(int port, bool on);
 
+int pchg_get_battery_percent(int port);
 /**
  * Return counts for PCHG charger.
  */

@@ -10,7 +10,9 @@
 #include "extpower.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "peripheral_charger.h"
+#include "power.h"
 #include "timer.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -19,6 +21,8 @@
 #include <ap_power/ap_power.h>
 
 #define INT_RECHECK_US 5000
+#define PCHG_POLICY_DELAY (1000 * USEC_PER_MSEC)
+bool pchg_low_power_mode = false;
 
 static void board_backlight_handler(struct ap_power_ev_callback *cb,
 				    struct ap_power_ev_data data)
@@ -121,7 +125,91 @@ static void board_setup_init()
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
 
+static void pchg_policy(void);
+DECLARE_DEFERRED(pchg_policy);
+
+static int wpc_i2c_write(int port, int addr, const uint8_t *buf, size_t len)
+{
+	int rv;
+
+	/* Assumes a write is always 2 bytes. */
+	rv = i2c_xfer(port, addr, buf, len, NULL, 0);
+
+	if (rv) {
+		k_msleep(10);
+		rv = i2c_xfer(port, addr, buf, len, NULL, 0);
+	}
+	if (rv)
+		ccprints("Failed to write: %d", rv);
+
+	return rv;
+}
+
+static int wpc_write32(int port, int addr, uint32_t reg, uint32_t val)
+{
+	uint8_t buf[8];
+
+	buf[0] = (reg >> 24) & 0xff;
+	buf[1] = (reg >> 16) & 0xff;
+	buf[2] = (reg >> 8) & 0xff;
+	buf[3] = (reg >> 0) & 0xff;
+
+	buf[4] = (val >> 0) & 0xff;
+	buf[5] = (val >> 8) & 0xff;
+	buf[6] = (val >> 16) & 0xff;
+	buf[7] = (val >> 24) & 0xff;
+
+	return wpc_i2c_write(port, addr, buf, sizeof(buf));
+}
+
+static void pchg_policy(void)
+{
+	enum power_state chipset_state = power_get_state();
+	if (chipset_state == POWER_S0) {
+		ccprints("pchg s0 : %d ", pchg_get_battery_percent(0));
+		if (pchg_low_power_mode == true) {
+			pchg_low_power_mode = false;
+			wpc_write32(pchgs[0].cfg->i2c_port, 0x41, 0xFFFFFF00,
+				    0x0000000E);
+			wpc_write32(pchgs[0].cfg->i2c_port, 0x41, 0xFFFFFF80,
+				    0x00000000);
+			ccprints("pchg resume");
+		}
+
+		hook_call_deferred(&pchg_policy_data, PCHG_POLICY_DELAY);
+	} else if (chipset_state == POWER_S3) {
+		ccprints("pchg s3 : %d ", pchg_get_battery_percent(0));
+		if (pchg_get_battery_percent(0) == 100) {
+			if (pchg_low_power_mode == false) {
+				pchg_low_power_mode = true;
+				wpc_write32(pchgs[0].cfg->i2c_port, 0x41,
+					    0xFFFFFF00, 0x0000000E);
+				wpc_write32(pchgs[0].cfg->i2c_port, 0x41,
+					    0x40040030, 0xFFFFFFFF);
+				wpc_write32(pchgs[0].cfg->i2c_port, 0x41,
+					    0x40040030, 0x0000A061);
+				wpc_write32(pchgs[0].cfg->i2c_port, 0x41,
+					    0xFFFFFF80, 0x00000001);
+				ccprints("pchg sleep");
+			}
+		}
+		hook_call_deferred(&pchg_policy_data, PCHG_POLICY_DELAY);
+	}
+}
+
 void board_pchg_power_on(int port, bool on)
 {
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pen_dis), on);
+	if (on) {
+		pchg_low_power_mode = true;
+		wpc_write32(pchgs[0].cfg->i2c_port, 0x41, 0xFFFFFF00,
+			    0x0000000E);
+		wpc_write32(pchgs[0].cfg->i2c_port, 0x41, 0xFFFFFF80,
+			    0x00000000);
+		ccprints("pchg resume");
+		hook_call_deferred(&pchg_policy_data, 0);
+	} else {
+		pchg_low_power_mode = false;
+		hook_call_deferred(&pchg_policy_data, -1);
+	}
 }
