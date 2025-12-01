@@ -16,6 +16,24 @@
       "message": "Have you tried to improve adding commands to reduce copy-paste?",
       "revId": "8891efa30f3f691d5d57556cf4b43ebb623153d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61d02b9_fd1865a4",
+        "filename": "util/ectool_usb/ectool.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-01T09:35:56Z",
+      "side": 1,
+      "message": "I added \u0027add_subcommand\u0027 functions Adding arguments left at the main level. It would not create nice code if those passed to function.",
+      "parentUuid": "6668632a_279aefa7",
+      "revId": "8891efa30f3f691d5d57556cf4b43ebb623153d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

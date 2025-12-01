@@ -16,6 +16,24 @@
       "message": "How about moving this to the `ec_commands.py` file + adding additional helper function to get highest supported version (both on device and host sides)? Something like in the FP Info command handler.",
       "revId": "029b7741b7b64e94a659398beec0b30a6fd1d984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30c7191_b4d90439",
+        "filename": "util/ectool_usb/ectool.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-01T09:35:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e42d3c1_69f11d63",
+      "revId": "029b7741b7b64e94a659398beec0b30a6fd1d984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
