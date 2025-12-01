@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aac3a75_8f792ad6",
+        "filename": "zephyr/test/hwtest/src/fpsensor_hw.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-01T21:43:14Z",
+      "side": 1,
+      "message": "added here:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7214030/1",
+      "parentUuid": "2363b493_084589fe",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "859084a3bfdcbdf5cdfb1f125f208f864a5ac5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b8602b9_bb7ff688",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-01T21:29:06Z",
       "side": 1,
       "message": "Let\u0027s go ahead and zero-initialize these structs.\n\n```suggestion\n\t\tstruct fingerprint_sensor_info sensor_info{};\n\t\tstruct fingerprint_image_frame_params\n\t\t\timage_frame_params_array[NUM_IMAGE_CAPTURE_TYPES] \u003d {};\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "859084a3bfdcbdf5cdfb1f125f208f864a5ac5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8d0230_697714fd",
+        "filename": "zephyr/test/hwtest/src/fpsensor_hw.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-01T21:43:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b8602b9_bb7ff688",
       "range": {
         "startLine": 30,
         "startChar": 0,
