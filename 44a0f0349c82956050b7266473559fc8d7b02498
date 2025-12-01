@@ -70,6 +70,24 @@
       "parentUuid": "45097a49_178e2952",
       "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856579df_557a2bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-01T23:52:33Z",
+      "side": 1,
+      "message": "\u003e We can update migrated_file.sh to run as part of firmware-ec-legacy-cq and post a comment on the CL.\n\nYes, please add this.",
+      "parentUuid": "627f1315_7ad54d5c",
+      "revId": "44a0f0349c82956050b7266473559fc8d7b02498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
