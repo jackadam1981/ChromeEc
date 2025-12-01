@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84ca399_c3e9d418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-01T17:15:53Z",
+      "side": 1,
+      "message": "Dumping out regions on NPCX:\n```\nec:~\u003e flashregion \nRegion 0: offset 0x00000040, size 0x00080000\nRegion 1: offset 0x00080000, size 0x00050000\nRegion 2: offset 0x00000000, size 0x00080000\nRegion 3: offset 0x00080000, size 0x00050000\n```\n\nSo NPCX also reports `EC_FLASH_REGION_RO` with a range outside of `EC_FLASH_REGION_WP_RO`.\n\nIs there an AP side utility (coreboot, flashrom, etc) that has an issue with the bounds of `EC_FLASH_REGION_RO`?  I want to make sure that there isn\u0027t an AP side utility that has a workaround for ECs that use `CONFIG_RO_STORAGE_OFF`.",
+      "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "740101bf_58e8832a",
