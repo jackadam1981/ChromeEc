@@ -22,6 +22,30 @@
       },
       "revId": "f72cff1025d09a42b6f8811d38a29eb0af3aff97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f58b2a0_65babd8c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5828,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-12-01T09:10:30Z",
+      "side": 1,
+      "message": "\u003e Not sure I understand what this is solving, if anything adding an explicit value when referring to something that is meant to be used as a bitmask is more confusing, how is this mean to be used in the code?\n\u003e \n\u003e If the issue is lack of clarity of the default behavior of this api, how about expanding the comment above?\n\nWe want to issue a cold reset (EC) and therefore, we wish to pass zero as an argument. Using a macro is more maintainable than passing a hardcoded zero.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/7210226/2/src/board/bluey/charging.c\n\nsimilar changes at https://review.coreboot.org/c/coreboot/+/90278 . idea is to use macro and not hardcoded value zero.",
+      "parentUuid": "18ffaec1_b1034825",
+      "range": {
+        "startLine": 5828,
+        "startChar": 0,
+        "endLine": 5828,
+        "endChar": 65
+      },
+      "revId": "f72cff1025d09a42b6f8811d38a29eb0af3aff97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
