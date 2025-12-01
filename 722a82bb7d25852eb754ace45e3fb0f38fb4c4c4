@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3686b7e7_3d62efc7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-01T09:13:05Z",
+      "side": 1,
+      "message": "I think we can search in sensor_image_configs[], that belong to struct ft98xx_cfg, accroding to the specific capture type to get the frame_size, use frame_size to check if image_buf is enough or not.",
+      "parentUuid": "bd9d4f51_cbf78b17",
+      "revId": "722a82bb7d25852eb754ace45e3fb0f38fb4c4c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbe34970_508c4c09",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 29
