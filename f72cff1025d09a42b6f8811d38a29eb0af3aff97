@@ -93,6 +93,30 @@
       },
       "revId": "f72cff1025d09a42b6f8811d38a29eb0af3aff97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d9927a_67d95eb6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5828,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-01T13:34:27Z",
+      "side": 1,
+      "message": "Ok I\u0027m starting to piece the information together:\n\n- ec_commands.h is synced to coreboot and normally updated with `./util/chromeos/update_ec_headers.sh`, that\u0027s brilliant, looks like there\u0027s extra diff btw you may want to sync it up after this\n- the normal behavior of the reboot HC is to reboot instantaneously, this can be changed by setting the EC_REBOOT_FLAG_ON_AP_SHUTDOWN\n\nSo, since you are using this in coreboot and there\u0027s value in the files staying in sync then it maeke sense to have this define, but then it should be named in a way that make it evident that it\u0027s the opposite of \"ON_AP_SHUTDOWN\", I mean \"force reboot is meaningless\", can one do\n\n`EC_REBOOT_FLAG_FORCE_REBOOT | EC_REBOOT_FLAG_ON_AP_SHUTDOWN`? Makes no sense, but\n\n`EC_REBOOT_FLAG_FORCE_REBOOT | EC_REBOOT_FLAG_SWITCH_RW_SLOT` kindof does\n\nHow about calling this `EC_REBOOT_FLAG_IMMEDIATE` instead?\n\n0 is fine, it\u0027d be nice to have (0 \u003c\u003c 1) and (1 \u003c\u003c 1) for the other flag but it\u0027s not worth expanding the macro.\n\nAlso fix the comment too \"Issue EC based reboot\" does not give any information.",
+      "parentUuid": "9f58b2a0_65babd8c",
+      "range": {
+        "startLine": 5828,
+        "startChar": 0,
+        "endLine": 5828,
+        "endChar": 65
+      },
+      "revId": "f72cff1025d09a42b6f8811d38a29eb0af3aff97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
