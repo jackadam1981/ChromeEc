@@ -931,6 +931,9 @@ struct pdc_config_t {
 	void (*create_thread)(const struct device *dev);
 };
 
+uint8_t Select_9V_0A = 0;
+uint8_t Select_5V_0A = 0;
+
 /* Source PDO(s) */
 
 #if defined(CONFIG_PDC_POWER_MGMT_SRC_PDO_PEAK_OCP_100)
@@ -967,12 +970,12 @@ static const uint32_t pdc_snk_pdos[] = {
 		  pdo_snk_fixed_flags),
 	/* Battery PDO covering 5V-5% to the board maximum voltage and current
 	 */
-	PDO_BATT(4750, CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV,
-		 CONFIG_PLATFORM_EC_USB_PD_OPERATING_POWER_MW),
+	//PDO_BATT(4750, CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV,
+	//	 CONFIG_PLATFORM_EC_USB_PD_OPERATING_POWER_MW),
 	/* Variable PDO covering 5V-5% to the board maximum voltage and current
 	 */
-	PDO_VAR(4750, CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV,
-		CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA),
+	//PDO_VAR(4750, CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV,
+	//	CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA),
 };
 
 static const struct smf_state pdc_states[];
@@ -2414,8 +2417,25 @@ pdc_snk_attached_send_set_rdo(struct pdc_port_t *port,
 			RDO_BATT(snk_policy->pdo_index, max_mw, max_mw, flags);
 	} else {
 		/* Fixed or variable RDO. */
-		snk_policy->rdo_to_send =
-			RDO_FIXED(snk_policy->pdo_index, max_ma, max_ma, flags);
+		if (Select_9V_0A) {
+			/* Select 9V/3A SRC_CAP and operate current to 0 */
+			snk_policy->pdo_index = 2;
+			max_ma = 3000;
+			snk_policy->rdo_to_send =
+				RDO_FIXED(snk_policy->pdo_index, 0/*500*/, max_ma, flags);
+			Select_9V_0A = 0;
+			Select_5V_0A = 1;
+		} else if (Select_5V_0A) {
+			/* Select 5V/3A SRC_CAP and operate current to 0 */
+			snk_policy->pdo_index = 1;
+			max_ma = 3000;
+			snk_policy->rdo_to_send =
+				RDO_FIXED(snk_policy->pdo_index, 0/*500*/, max_ma, flags);
+			Select_5V_0A = 0;
+		} else {
+			snk_policy->rdo_to_send =
+				RDO_FIXED(snk_policy->pdo_index, max_ma, max_ma, flags);
+		}
 	}
 
 	LOG_INF("C%d: Send RDO: %d (%08x), battery_is_present=%d, mismatch=%d",
@@ -3728,6 +3748,8 @@ static enum smf_state_result pdc_init_run(void *obj)
 		}
 
 		port->init_local_state = INIT_SET_SINK_PDOS;
+		Select_9V_0A = 1;
+		Select_5V_0A = 0;
 
 		/* Proceed directly to next sub-state */
 		__fallthrough;
