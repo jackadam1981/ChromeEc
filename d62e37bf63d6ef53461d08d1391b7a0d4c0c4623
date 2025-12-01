@@ -88,6 +88,24 @@
       "parentUuid": "0a4a0c5d_4f6dca5c",
       "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24a5155_fab41670",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-01T08:25:28Z",
+      "side": 1,
+      "message": "I added a choice for ELAN80 series read modes in Kconfig. As I understand, users can select the mode via prj.conf or Kconfig.defconfig. I’m a bit unclear how this interacts with a “sensor-specific config” that might select a mode—could you clarify?",
+      "parentUuid": "d1501101_e1dd2f39",
+      "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
