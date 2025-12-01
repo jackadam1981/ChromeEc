@@ -34,6 +34,24 @@
       "parentUuid": "2d8175c8_5c225743",
       "revId": "7d8ab17078c9be8c2e9ecb9bfbf471464e2489e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a72fb9_aa6720e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-01T18:02:21Z",
+      "side": 1,
+      "message": "IMO, you can LCOV_EXCL `fusb302.c`. In Zephyr, it\u0027s only used in RVP builds.\n\nIdeally, we should add tests for the two ITE files. Right now, I don\u0027t see an emulator for the TCPC component of the IT8xxx2. (There\u0027s some emulation for other components on the chip, but keep in mind that this chip integrates the TCPC and a bunch of other things.) Adding this should be relatively simple, but it will probably be a fair amount of boilerplate code.\n\nHow I would go about this:\n1. Create new CLs _before_ this CL in the stack. Don\u0027t change the contents of this CL if you can help it.\n2. Create a CL to add an emulator for the IT8xxx2 TCPC. You can base it on something like CL:5283117. This depends heavily on `emul_tcpci.c` and doesn\u0027t have much of its own functionality. For purposes of basic coverage, we can not worry about special features of this TCPC outside of TCPCI. Note that this also adds some extra small files to allow the emulator to be used.\n3. Create a CL to add basic tests for this TCPC driver. You can base this on something like CL:5283118. Again, note the secondary files beyond just the test source file. This should result in coverage for _something_ in `driver/tcpm/it*`. I don\u0027t really care what it specifically covers.\n4. Get that stack to build and run, then CQ+1 it with this CL at the top. It\u0027s possible that that will be all of the coverage you need for these files.\n5. If not, add specific additional test coverage as a new patchset to this CL.",
+      "parentUuid": "f6fdeefe_af95e485",
+      "revId": "7d8ab17078c9be8c2e9ecb9bfbf471464e2489e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
