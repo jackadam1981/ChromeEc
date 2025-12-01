@@ -67,11 +67,17 @@ void soc_edp_bl_interrupt(const struct device *device,
 	LOG_INF("%s: %d", __func__, state);
 
 	if (state) {
-		k_work_schedule(&touch_enable_deferred_data,
-				K_MSEC(TOUCH_ENABLE_DELAY_MS));
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_en_od), 1);
+		if (touch_sequence_enable) {
+			k_work_schedule(&touch_enable_deferred_data,
+					K_MSEC(TOUCH_ENABLE_DELAY_MS));
+		}
 	} else {
-		k_work_schedule(&touch_disable_deferred_data,
-				K_MSEC(TOUCH_DISABLE_DELAY_MS));
+		if (touch_sequence_enable) {
+			k_work_schedule(&touch_disable_deferred_data,
+					K_MSEC(TOUCH_DISABLE_DELAY_MS));
+		}
+		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_bl_en_od), 0);
 	}
 }
 
@@ -119,14 +125,6 @@ static void touch_enable_init(void)
 	LOG_INF("%s: %sable", __func__,
 		(val == FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) ? "en" : "dis");
 
-	if (val != FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) {
-		return;
-	}
-
-	ap_power_ev_init_callback(&power_cb, board_power_event_handler,
-				  AP_POWER_SHUTDOWN | AP_POWER_HARD_OFF);
-	ap_power_ev_add_callback(&power_cb);
-
 	gpio_init_callback(&cb, soc_edp_bl_interrupt, BIT(tpgpio_gpio->pin));
 	gpio_add_callback(tpgpio_gpio->port, &cb);
 
@@ -142,6 +140,19 @@ static void touch_enable_init(void)
 	irq_key = irq_lock();
 	soc_edp_bl_interrupt(tpgpio_gpio->port, &cb, BIT(tpgpio_gpio->pin));
 	irq_unlock(irq_key);
+
+	/*
+	 * For gpio_bl_en_od also need to follow gpio_edp_bl_en_3v3, the
+	 * interrupt of edp_bl_en_3v3 should be enable before the return
+	 * caused by unsupport touch enable sequence.
+	 */
+	if (val != FW_PANEL_PWRSEQ_EC_CONTROL_ENABLE) {
+		return;
+	}
+
+	ap_power_ev_init_callback(&power_cb, board_power_event_handler,
+				  AP_POWER_SHUTDOWN | AP_POWER_HARD_OFF);
+	ap_power_ev_add_callback(&power_cb);
 
 	touch_sequence_enable = true;
 
