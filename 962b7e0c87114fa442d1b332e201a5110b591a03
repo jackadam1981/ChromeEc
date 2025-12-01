@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4954101f_66216802",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-01T23:42:21Z",
+      "side": 1,
+      "message": "The Zephyr way to do this is to create 2 `k_timepoint_t` fields. One for the long press and one for press timeout.\n\n```\npb_press_timeout \u003d sys_timepoint_calc(K_SECONDS(8));\npb_long_press \u003d sys_timepoint_calc(K_SECONDS(4));\n```\n\nYou then test using\n\n```\n   if (!sys_timepoint_expired(pb_press_timeout)) {\n       if (sys_timepoint_expired(pb_long_press)) {\n           /* Shutdown if AP is on */\n```",
+      "range": {
+        "startLine": 903,
+        "startChar": 0,
+        "endLine": 903,
+        "endChar": 31
+      },
+      "revId": "962b7e0c87114fa442d1b332e201a5110b591a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
