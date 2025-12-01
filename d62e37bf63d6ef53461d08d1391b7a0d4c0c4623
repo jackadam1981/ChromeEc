@@ -106,6 +106,24 @@
       "parentUuid": "d1501101_e1dd2f39",
       "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b448a070_29d99b35",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-01T10:23:53Z",
+      "side": 1,
+      "message": "\u003e I added a choice for ELAN80 series read modes in Kconfig\n\nI don\u0027t see a new patchset with it. Do you mean locally?\n\n\u003e As I understand, users can select the mode via prj.conf or Kconfig.defconfig\n\nThis shouldn\u0027t be selected via `prj.conf`. The sensor specific config should select the mode. I haven\u0027t verified the syntax by it should be something like this.\n\n```\nchoice READ_MODE\n    bool\n    default READ_MODE_A\n\nconfig READ_MODE_A\n    bool\n\nconfig READ_MODE_B\n    bool\n\nendchoice\n```\nthen the sensor specific config\n```\nconfig FINGERPRINT_SENSOR_A\n\tbool \"Fingerprint driver for A\"\n...\n\tselect READ_MODE_A\n...\n```",
+      "parentUuid": "e24a5155_fab41670",
+      "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
