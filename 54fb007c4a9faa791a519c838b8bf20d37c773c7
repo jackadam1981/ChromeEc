@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d791ff1_5202faba",
+        "filename": "driver/charger/rt9478.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-01T13:37:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7d903eac_2dc28833",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "54fb007c4a9faa791a519c838b8bf20d37c773c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3244135_8159fcf5",
