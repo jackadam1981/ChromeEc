@@ -2049,6 +2049,8 @@ static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
 		BYTE0(rdo),  BYTE1(rdo),  BYTE2(rdo),  BYTE3(rdo),
 	};
 
+	LOG_ERR("Set RDO:08 06 04 00 %x %x %x %x", BYTE0(rdo), BYTE1(rdo), BYTE2(rdo), BYTE3(rdo));
+
 	return rts54_post_command(dev, CMD_SET_RDO, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
