@@ -2078,6 +2078,8 @@ static int rts54_set_rdo(const struct device *dev, uint32_t rdo)
 		BYTE0(rdo),  BYTE1(rdo),  BYTE2(rdo),  BYTE3(rdo),
 	};
 
+	LOG_ERR("Set RDO:%x %x %x %x %x %x %x %x", payload[0], payload[1], payload[2], payload[3], payload[4], payload[5], payload[6], payload[7]);
+
 	return rts54_post_command(dev, CMD_SET_RDO, payload,
 				  ARRAY_SIZE(payload), NULL);
 }
