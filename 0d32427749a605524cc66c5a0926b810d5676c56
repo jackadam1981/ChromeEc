@@ -16,6 +16,24 @@
       "message": "Needs Tom\u0027s vote on the FP boards.",
       "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d561ab96_223d6e15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-02T00:11:59Z",
+      "side": 1,
+      "message": "Before deleting the fingerprint boards and shared code, please:\n\n* Create a CL that updates the [documentation on creating a fingerprint firmware release](http://shortn/_w7pcBoTjDR).\n* Address [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7122379/comments/9cd0a895_3d5c689d).\n* Point the [fingerprint documentation](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/sitemap.md#fingerprint-mcu-fpmcu) in the legacy repo to the docs in `main`.\n* Set up a session for the FP team to walk everyone else through what is changing and where to find everything.\n\nI would also suggest splitting this into two CLs:\n\n* One that deletes everything except what is needed to build `bloonchipper` and `helipilot`.\n* A second one that then deletes the `bloonchipper` and `helipilot` code.\n\nThat way you can make forward progress on deleting code without our approval and have an easy way to revert only the fingerprint-related code if there are issues that come up after deleting it.\n\nAdding @patrykd@google.com and @dabros@google.com in case they have any other requests.",
+      "parentUuid": "cf486f1e_8fb5d146",
+      "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
