@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd38986_ff9b8946",
+        "filename": "zephyr/drivers/dsp_comms/Kconfig.service",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-02T20:58:45Z",
+      "side": 1,
+      "message": "Does this need to be configurable?\n\nIf you want this configurable, it probably make more sense as devicetree property.",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "a05f662ed03e99025fba930c88c17bec99c3dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548fa760_371cde65",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-02T20:58:45Z",
+      "side": 1,
+      "message": "These should be added to dsp/service/driver.hh, similar to `get_cbi_flags_work_`.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "a05f662ed03e99025fba930c88c17bec99c3dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622f79ce_f5272100",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-02T20:58:45Z",
+      "side": 1,
+      "message": "You don\u0027t need a second variable to set lid angle enable.  Just set to the opposite of tablet mode.\n\n```suggestion\n    lid_angle_peripheral_enable(!mode_val);\n```",
+      "range": {
+        "startLine": 191,
+        "startChar": 32,
+        "endLine": 191,
+        "endChar": 52
+      },
+      "revId": "a05f662ed03e99025fba930c88c17bec99c3dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186ef578_1a1ce914",
+        "filename": "zephyr/drivers/dsp_comms/service/dsp_service.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-02T20:58:45Z",
+      "side": 1,
+      "message": "Nit - Move this outside the switch case and add a return statement for the default case.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 0
+      },
+      "revId": "a05f662ed03e99025fba930c88c17bec99c3dc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
