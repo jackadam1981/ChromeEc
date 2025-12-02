@@ -22,6 +22,30 @@
       },
       "revId": "d74852bbe1ba22e866b7e1afdf2b3fa6168fa30b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06142aa7_6dd0c09c",
+        "filename": "zephyr/program/fatcat/moonstone/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2025-12-02T00:29:54Z",
+      "side": 1,
+      "message": "Ok, I will separate to two CLs.",
+      "parentUuid": "bdf41c6f_bd73246a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "d74852bbe1ba22e866b7e1afdf2b3fa6168fa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
