@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "690f89c6_2232f0fc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589e6f6d_9580d0aa",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a4789a_70e26a4a",
@@ -139,6 +157,24 @@
       "side": 1,
       "message": "mode 0 and mode 1 is 9865 sensor sleep mode, the mode 2 is finger detect mode.",
       "parentUuid": "a3a4789a_70e26a4a",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28081d5_e1a1b4f9",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ccefdf_3d25c95f",
       "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -210,6 +246,24 @@
       "side": 1,
       "message": "All 4 functions in this file will be referenced by the private lib",
       "parentUuid": "6bbd1f48_bee8fb1e",
+      "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "037b3ce5_2212ce61",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft9865_pal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea724b6c_bcf5939a",
       "revId": "8479020dde55beb05b71dbf9c5191ee1d462fe05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

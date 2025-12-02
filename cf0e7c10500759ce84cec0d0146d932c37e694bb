@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403a0cc9_78bc8970",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:28:32Z",
+      "side": 1,
+      "message": "I don\u0027t think both ifs are needed.",
+      "revId": "cf0e7c10500759ce84cec0d0146d932c37e694bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8dc7c68_7ab16cf6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:28:32Z",
+      "side": 1,
+      "message": "`ft_sensor_acquire_image_with_mode` takes `int` as `capture_type`. Does the `enum fingerprint_capture_type` match FT capture types values in the private lib?",
+      "revId": "cf0e7c10500759ce84cec0d0146d932c37e694bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d98a718_9e7ed352",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:28:32Z",
+      "side": 1,
+      "message": "Can the library handle lack of memory instead of panicing? E.g. just return error.",
+      "revId": "cf0e7c10500759ce84cec0d0146d932c37e694bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
