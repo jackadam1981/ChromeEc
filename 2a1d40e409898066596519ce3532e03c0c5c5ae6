@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1465b5d0_35c22bd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "No, I have deleted it.",
+      "parentUuid": "c098dcc0_badf6212",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f126e040_5d247d86",
@@ -117,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ccbb5b_a0a937fb",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe4d4b4_a6bffaae",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b64f4c5_2e8d2703",
@@ -130,6 +178,30 @@
       "writtenOn": "2025-12-02T00:12:11Z",
       "side": 1,
       "message": "You need to also create an emulator for this new driver.  [emul_bma4xx.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/emul/emul_bma4xx.c) for reference.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a95e88_27b05db4",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b64f4c5_2e8d2703",
       "range": {
         "startLine": 3,
         "startChar": 0,
@@ -163,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c671f5c4_01cca765",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e989434_3fdeb22d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74d99085_0a966ce7",
@@ -176,6 +272,30 @@
       "writtenOn": "2025-12-02T00:12:11Z",
       "side": 1,
       "message": "Is this delay still required for the BMA5xy?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9494a1a_0bb01e51",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Better to keep as I have tested it with delay.",
+      "parentUuid": "74d99085_0a966ce7",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -209,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17f4475_d400a3a0",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf14ce47_dada3807",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 1
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67020ba_c8d0c608",
@@ -232,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436e520d_f7735ae8",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67020ba_c8d0c608",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 1
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccf73bf7_0f29ecb2",
@@ -245,6 +413,30 @@
       "writtenOn": "2025-12-02T00:12:11Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Trailing Whitespace: Please remove the trailing whitespace.\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 522,
+        "startChar": 30,
+        "endLine": 522,
+        "endChar": 31
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf51814_b114b510",
+        "filename": "driver/accel_bma5xy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccf73bf7_0f29ecb2",
       "range": {
         "startLine": 522,
         "startChar": 30,
@@ -301,6 +493,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3002aeca_742e87bf",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40dbfb43_5bd5f1e6",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c607caa_b442458c",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb278426_ce57772d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c767764_bf9ac0b5",
@@ -314,6 +554,30 @@
       "writtenOn": "2025-12-02T00:12:11Z",
       "side": 1,
       "message": "BMA5xy",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22fb4d9_2289e1df",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c767764_bf9ac0b5",
       "range": {
         "startLine": 6,
         "startChar": 3,
@@ -347,6 +611,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a03b677_43dd5d16",
+        "filename": "driver/accel_bma5xy.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c95811d_43e95753",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0972c5bc_37dcbeab",
@@ -360,6 +648,30 @@
       "writtenOn": "2025-12-02T00:12:11Z",
       "side": 1,
       "message": "This won\u0027t be supported by legacy EC platforms.  You don\u0027t need to update this file.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31acf497_cf5bcd01",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0972c5bc_37dcbeab",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -393,6 +705,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a77f502_d80591e4",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b764fb6_824d9972",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a484e77a_62382313",
@@ -406,6 +742,30 @@
       "writtenOn": "2025-12-02T00:12:11Z",
       "side": 1,
       "message": "Delete - this is only needed for legacy EC support.",
+      "range": {
+        "startLine": 2611,
+        "startChar": 0,
+        "endLine": 2615,
+        "endChar": 0
+      },
+      "revId": "2a1d40e409898066596519ce3532e03c0c5c5ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d1aa5e_6490f8b9",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2615,
+      "author": {
+        "id": 4495208
+      },
+      "writtenOn": "2025-12-02T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a484e77a_62382313",
       "range": {
         "startLine": 2611,
         "startChar": 0,
