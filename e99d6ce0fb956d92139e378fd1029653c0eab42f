@@ -22,6 +22,30 @@
       },
       "revId": "e99d6ce0fb956d92139e378fd1029653c0eab42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae25e8a_1b2a682f",
+        "filename": "test/usb_pe_drp_old.mocklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-02T15:51:03Z",
+      "side": 1,
+      "message": "I am wondering how I missed that. VS Code sometimes doesn\u0027t flag merge conflicts clearly.",
+      "parentUuid": "42ff227e_e19f4ccf",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "e99d6ce0fb956d92139e378fd1029653c0eab42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
