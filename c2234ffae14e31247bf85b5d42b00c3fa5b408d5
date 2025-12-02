@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0af71a6_0518611d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "Suggestion: Add a note indicating that this driver requires a separate binary library/blob for full functionality, and that `CONFIG_HAVE_FT98XX_PRIVATE_DRIVER` must be enabled when this library is present.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54079c8f_5ea7bbc6",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 31
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "The default `FINGERPRINT_SENSOR_FT98XX_HEAP_SIZE` is `21504` bytes. The help text states this is \"sufficient.\"\n\nSuggestion: Briefly mention how this size was determined (e.g., vendor recommendation, empirical testing) in the help text or commit message for better maintainability.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7aafbf9_b59eb33c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 31
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "no need. It is `n` by default.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1fab52_d8daab64",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "Error Handling in `ft98xx_set_mode`:\n\nIn `fingerprint_ft98xx.c`, within the `ft98xx_set_mode` function, the return code from `ft_sensor_set_mode()` is potentially overwritten by the return code from `ft98xx_enable_irq()` or `ft98xx_disable_irq()`. This means an error from the private library\u0027s mode set function could be masked.\n\nSuggestion: Check the return code from `ft_sensor_set_mode()` first and only proceed to enable/disable IRQ if it was successful. Propagate the error otherwise. Example for FINGERPRINT_SENSOR_MODE_DETECT:\n\n```\ncase FINGERPRINT_SENSOR_MODE_DETECT:\n    if (IS_ENABLED(CONFIG_HAVE_FT98XX_PRIVATE_DRIVER)) {\n        rc \u003d ft_sensor_set_mode(FOCAL_SENSOR_MODE_DETECT);\n        if (rc \u003d\u003d 0) {\n            rc \u003d ft98xx_enable_irq(dev);\n        }\n    } else {\n        rc \u003d -ENOTSUP;\n    }\n    break;\n```\nThis pattern should be applied to all cases in the switch statement.",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde36628_99bb403b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "In `fingerprint_ft98xx.c`, the `ft98xx_maintenance` function returns 0 without performing any action when `CONFIG_HAVE_FT98XX_PRIVATE_DRIVER` is enabled.\nSuggestion: Clarify the intended purpose of this function. If it\u0027s a placeholder, add a TODO. If it\u0027s expected to interact with the private library, implement the call.",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 29
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0274a141_cb2675d5",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 31
@@ -14,6 +129,75 @@
       "writtenOn": "2025-12-02T12:29:47Z",
       "side": 1,
       "message": "I don\u0027t think this #ifdef is needed once the IF_ENABLE is used.",
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78cd6df2_a2ffb5fd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "In `fingerprint_ft98xx_pal.c`, the variable `tx_len_demmy` in `ft_spi_write_then_read` is slightly confusing.\n\nSuggestion: Rename to something clearer, like `dummy_buf_len` or `read_phase_len`.\n\nmaybe you cannot use `dummy`. try something else.",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431ff3ad_9c82f73a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "Heap Allocation Failure in PAL:\n\nIn `fingerprint_ft98xx_pal.c`, focal_malloc uses `k_oops()` if memory allocation fails. This halts the system.\n\nSuggestion: Confirm if the private library can handle a `NULL` return on allocation failure. If it can, return NULL to allow for potential graceful degradation. If the library requires successful allocation, then k_oops() is a valid, albeit drastic, measure. Document this requirement.",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3407b94b_ea9ecaec",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_private.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T16:56:00Z",
+      "side": 1,
+      "message": "this is not proper doxygen documentation??",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 116
+      },
       "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
