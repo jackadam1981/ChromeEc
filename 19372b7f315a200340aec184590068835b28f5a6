@@ -16,6 +16,24 @@
       "message": "@alevkoy@chromium.org\nShould I cherry pick the CLs that adds and modifies the navi_vif before cherry picking this one?\n\n1. 6298129: navi: add navi VIF | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6298129\n\n2. 6994378: navi: Update VIF to spec version 3.36 | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/6994378\n\n3. 7041182: navi_vif: Change Snk_PDO_Op_Current value from 3100mA to 3150mA | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7041182\n\n4. 7172058: navi_vif: Disable FRS in VIF | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7172058",
       "revId": "19372b7f315a200340aec184590068835b28f5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5a16c2_ec3c73aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-02T15:08:47Z",
+      "side": 1,
+      "message": "?",
+      "parentUuid": "b19f5ac0_325725be",
+      "revId": "19372b7f315a200340aec184590068835b28f5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
