@@ -55,6 +55,7 @@ if(DEFINED CONFIG_BOARD_OCICAT)
 	zephyr_library_sources("ocicat/src/board_power.c")
 	zephyr_library_sources("ocicat/src/fan.c")
 	zephyr_library_sources("ocicat/src/led.c")
+	zephyr_library_sources("ocicat/src/board.c")
 endif()
 
 zephyr_include_directories("include/")

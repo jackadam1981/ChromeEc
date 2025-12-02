@@ -24,6 +24,7 @@
 #include "adc.dtsi"
 #include "temp_sensors.dtsi"
 #include "leds_pins.dtsi"
+#include "keyboard.dtsi"
 
 /*
  * Map GPIOs used for interrupts to common names
@@ -40,7 +41,6 @@ gpio_temp_sensor_power_good: &gpio_en_s5_rails {};
 tach_fan0: &tach0 {};
 
 #include "../ite_hibernate.dtsi"
-#include "../rvp_keyboard.dtsi"
 
 /* ocicat overrides follow... */
 / {
@@ -55,8 +55,4 @@ tach_fan0: &tach0 {};
 
 &sha0 {
 	status = "okay";
-};
-
-&kblight {
-	pwms = <&pwm1 PWM_CHANNEL_1 PWM_HZ(324) PWM_POLARITY_NORMAL>;
 };
