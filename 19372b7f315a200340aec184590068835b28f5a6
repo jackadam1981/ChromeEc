@@ -34,6 +34,24 @@
       "parentUuid": "b19f5ac0_325725be",
       "revId": "19372b7f315a200340aec184590068835b28f5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fd7307_6d1d2c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T15:13:44Z",
+      "side": 1,
+      "message": "That\u0027s probably the least surprising thing to do. IMO, people running tests should be using the ToT VIF regardless of the build, but I also like clean cherry picks, (That being said, feel free to do whatever is easiest for non-rauru board files.)\n\nGo ahead and cherry pick the other CLs.",
+      "parentUuid": "1b5a16c2_ec3c73aa",
+      "revId": "19372b7f315a200340aec184590068835b28f5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
