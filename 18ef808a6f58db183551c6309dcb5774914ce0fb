@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a899805b_e048c7f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:09:22Z",
+      "side": 1,
+      "message": "I haven\u0027t encountered any issues because if this problem by myself. I just want to get this fixed, because I noticed this during my development.\n\nI checked the `flashrom` tool and if I checked correctly, the flash region info is used to determine if a coming write/erase operations touches [current image](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/flashrom/cros_ec.c;l\u003d787). I can see a case when current image is RO, flashtool tries to flash RW, but the `in_current_image` reports true, because the RO flash region info overlaps with RW (0x40 bytes for NPCX), because of incorrect size. This doesn\u0027t happen for NPCX because it runs from RAM (the check is ignored in such case) and there are rollback regions between RO and RW (for FPMCUs). I haven\u0027t found any specific workaround for problem in flashrom.\n\nOn the other hand, coreboot uses the flash_region info is [used](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/security/vboot/ec_sync.c;l\u003d351) to check if the region is big enough to store a new image + it uses the offset for erasing and writing. However, it uses [EC_FLASH_REGION_WP_RO](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/security/vboot/ec_sync.c;l\u003d231) instead of `EC_FLASH_REGION_RO`. [\"ecro\"](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/security/vboot/ec_sync.c;l\u003d17) is passed to [cbfs_map](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/security/vboot/ec_sync.c;l\u003d344) function, but not sure what exactly it means.\n\nThe [libfpupdater uses](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/desktop/fingerprint/libfpupdater/src/lib.rs;l\u003d197) the flash region host command only for RW at the moment.",
+      "parentUuid": "f84ca399_c3e9d418",
+      "revId": "18ef808a6f58db183551c6309dcb5774914ce0fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "740101bf_58e8832a",
