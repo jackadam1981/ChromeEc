@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f3c212_e020372e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5828,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-02T09:23:39Z",
+      "side": 1,
+      "message": "\u003e 0 is fine, it\u0027d be nice to have (0 \u003c\u003c 1) and (1 \u003c\u003c 1) for the other flag but it\u0027s not worth expanding the macro.\n\nLeave it at just 0, see my reasoning above.",
+      "revId": "b4bc252bed16b49f56ea23b656636ae5a3533b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
