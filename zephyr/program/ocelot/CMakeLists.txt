@@ -54,6 +54,7 @@ if(DEFINED CONFIG_BOARD_OCICAT)
 	zephyr_library_sources("ocicat/src/board_power.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"ocicat/src/keyboard_customization.c")
+	zephyr_library_sources("ocicat/src/led.c")
 endif()
 
 
