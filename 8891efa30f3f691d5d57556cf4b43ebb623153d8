@@ -34,6 +34,24 @@
       "parentUuid": "6668632a_279aefa7",
       "revId": "8891efa30f3f691d5d57556cf4b43ebb623153d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6affdc2e_c90721a2",
+        "filename": "util/ectool_usb/ectool.py",
+        "patchSetId": 26
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T11:23:34Z",
+      "side": 1,
+      "message": "That\u0027s definitely improvement. Can you improve it even more to use a kind of array for the supported commands as it is done in [ectool](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/ectool.cc;l\u003d12791)?",
+      "parentUuid": "b61d02b9_fd1865a4",
+      "revId": "8891efa30f3f691d5d57556cf4b43ebb623153d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
