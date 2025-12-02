@@ -16,6 +16,23 @@
       "message": "Hi folks, I am cherry-picking the DR swap fix for TCPMv2 devices with the purpose of deploying it on the brya devices.\n\nPTAL,",
       "revId": "b0542376bc2227a010c1e74e49dfb6eb59e0b67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "660ea461_d8e4b520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-12-02T20:32:45Z",
+      "side": 1,
+      "message": "Thanks Radu, calling @nvaccaro@google.com for approval as well.",
+      "revId": "b0542376bc2227a010c1e74e49dfb6eb59e0b67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
