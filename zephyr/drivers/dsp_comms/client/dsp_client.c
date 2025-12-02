@@ -19,12 +19,14 @@
 
 #include "cros/dsp/client.h"
 #include "proto/ec_dsp.pb.h"
+#include "motion_sense.h"
 #include "pw_transport/proto/transport.pb.h"
 #include "tablet_mode.h"
 
 LOG_MODULE_REGISTER(dsp_client, CONFIG_DSP_COMMS_LOG_LEVEL);
 
 static void dsp_client_read_status(struct k_work* item);
+static struct k_work_delayable gmr_tablet_work;
 
 const struct device* default_client_device =
     DEVICE_DT_GET(DT_INST(0, DT_DRV_COMPAT));
@@ -258,6 +260,17 @@ static void dsp_client_gpio_callback(const struct device* port,
   k_work_submit(&data->read_status_work);
 }
 
+static void gmr_tablet_work_handler(struct k_work *work)
+{
+    ARG_UNUSED(work);
+    if (all_sensors_initialized()) {
+        gmr_tablet_switch_isr_handler();
+    } else {
+        // Reschedule after 20ms if sensors not ready
+        k_work_reschedule(&gmr_tablet_work, K_MSEC(20));
+    }
+}
+
 static void dsp_client_read_status(struct k_work* item) {
   struct dsp_client_data* data =
       CONTAINER_OF(item, struct dsp_client_data, read_status_work);
@@ -316,7 +329,7 @@ static void dsp_client_read_status(struct k_work* item) {
   if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE) &&
       (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_SWITCH) ||
        IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH))) {
-    gmr_tablet_switch_isr_handler();
+    k_work_submit(&gmr_tablet_work.work);
   }
 }
 
@@ -378,6 +391,7 @@ static int dsp_client_init(const struct device* dev) {
   k_mutex_init(&data->mutex);
   k_event_init(&data->response_ready_event);
   k_work_init(&data->read_status_work, dsp_client_read_status);
+  k_work_init_delayable(&gmr_tablet_work, gmr_tablet_work_handler);
 
   rc = dsp_client_gpio_init(dev);
   if (rc != 0) {

@@ -133,6 +133,19 @@ enum sensor_config motion_sense_get_ec_config(void)
 	}
 }
 
+bool all_sensors_initialized(void) {
+	int i;
+	for (i = 0; i < motion_sensor_count; i++) {
+		struct motion_sensor_t *sensor = &motion_sensors[i];
+
+		if (sensor->state != SENSOR_READY &&
+			sensor->state != SENSOR_INITIALIZED) {
+			return false;  // At least one sensor not initialized
+		}
+	}
+	return true;  // All active sensors are initialized
+}
+
 #ifndef CONFIG_ACCEL_FORCE_MODE_MASK
 #define CONFIG_ACCEL_FORCE_MODE_MASK 0
 #endif

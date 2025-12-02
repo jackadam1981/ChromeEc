@@ -306,6 +306,8 @@ void motion_sense_push_raw_xyz(struct motion_sensor_t *s);
  */
 bool motion_sensor_in_forced_mode(const struct motion_sensor_t *s);
 
+bool all_sensors_initialized(void);
+
 /* A sensor ID set to this value is invalid. */
 #define MOTION_SENSE_INVALID_SENSOR_ID (0xff)
 
