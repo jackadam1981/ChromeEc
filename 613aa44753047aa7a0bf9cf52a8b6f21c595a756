@@ -16,6 +16,23 @@
       "message": "this is the original output:\n\n```\nkaris-rev3 ~ # ectool --name\u003dcros_fp fpencstatus \nFPMCU encryption status: 0x00000001 FPTPM_seed_setValid flags:             0x00000001 FPTPM_seed_setkaris-rev3 ~ # \n```",
       "revId": "613aa44753047aa7a0bf9cf52a8b6f21c595a756",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da529c2_b2784ec5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3487009
+      },
+      "writtenOn": "2025-12-02T04:10:30Z",
+      "side": 1,
+      "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "613aa44753047aa7a0bf9cf52a8b6f21c595a756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
