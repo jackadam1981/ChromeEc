@@ -33,6 +33,24 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "613aa44753047aa7a0bf9cf52a8b6f21c595a756",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a81d97_a15d9fcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T04:32:45Z",
+      "side": 1,
+      "message": "The tast test output is exactly the same whether the `\\n` exists or not before the `Valid Flags`:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/go.chromium.org/tast-tests/cros/remote/firmware/fingerprint/fingerprint_encryption.go;l\u003d73?q\u003dTPMSeedSet\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fgo.chromium.org%2Ftast-tests%2F#:~:text\u003d72-,73,-74",
+      "parentUuid": "30986a85_28bc92b9",
+      "revId": "613aa44753047aa7a0bf9cf52a8b6f21c595a756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
