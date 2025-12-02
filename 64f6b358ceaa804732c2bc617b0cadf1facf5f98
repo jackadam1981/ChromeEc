@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd77b19_7f865410",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T22:28:19Z",
+      "side": 1,
+      "message": "This is recorded in a loop. I think theoretically, the recorded value here will be the last one before `board_set_active_charge_port` succeeds, but the end of this interval is recorded unconditionally, which makes this interval hard to reason about.\n\nMaybe more importantly, when this is recorded, `charge_manager_refresh` may have been looping for a while. I think what we really want to record is when `charge_manager_refresh` is first called. I\u0027d put this at the beginning of the function, outside the loop, unconditionally.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32ba600_c3da488a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3733,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T22:28:19Z",
+      "side": 1,
+      "message": "This is the only place that you print out the timestamps. At this point, I would expect all of the timestamps on the fast path to be current, but I have no idea about the slow path.\n\nI think you\u0027ll need to add another print at the end of `charge_manager_refresh`, and you may need to reason about which timestamps are valid at which times, based on the code flow.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d85698d_c42c3614",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T22:28:19Z",
+      "side": 1,
+      "message": "These checks are unconditional, but this function gets called to enable VBUS as well as to disable it. That could mean that you\u0027re recording times that you don\u0027t care about. You should probably check `enable \u003d\u003d 0` before recording. Same goes for most of the other timestamps in this CL.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5813f4d5_6b1ddc11",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T22:28:19Z",
+      "side": 1,
+      "message": "Like some of the other timestamps, I think these should only be logged when the sink path is being disabled to avoid confounding by other register writes.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc05ea3d_8becba66",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T22:28:19Z",
+      "side": 1,
+      "message": "IMO, there\u0027s no point in recording the timestamps for cases where these calls fails. AFAIK, we\u0027re not seeing this. If we are, we should debug that failure before the timing. The way it is now should be OK in terms of understanding the output, but simplifying it would make it easier to think about.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
