@@ -142,6 +142,24 @@
       "parentUuid": "b448a070_29d99b35",
       "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c59a932_622c8698",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:14:21Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of that. You can set a proper default option based on the used sensor, something like [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/Kconfig.host_interface;l\u003d7)",
+      "parentUuid": "cc08d935_da4cc9ee",
+      "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
