@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0274a141_cb2675d5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-02T12:29:47Z",
+      "side": 1,
+      "message": "I don\u0027t think this #ifdef is needed once the IF_ENABLE is used.",
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
