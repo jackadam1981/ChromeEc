@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00607778_2d14b40e",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T05:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38602abe_26d5a1d8",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 44
+      },
+      "revId": "e9ccf2764ac526f70bdce5bf38d956571856f423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "196fd441_eb8d1f09",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-12-02T00:45:29Z",
       "side": 1,
       "message": "Let\u0027s add a check to make sure the size of the two different types are the same:\n\n```\nstatic_assert(sizeof(struct fp_image_frame_params) \u003d\u003d \n              sizeof(struct fingerprint_image_frame_params),\n              \"Frame param structures must be the same size\");\n```",
+      "revId": "e9ccf2764ac526f70bdce5bf38d956571856f423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d09a7e0_5bdea6f3",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-02T05:35:11Z",
+      "side": 1,
+      "message": "I added it to the top of this file, line 38.",
+      "parentUuid": "196fd441_eb8d1f09",
       "revId": "e9ccf2764ac526f70bdce5bf38d956571856f423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
