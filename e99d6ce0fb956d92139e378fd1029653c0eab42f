@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ff227e_e19f4ccf",
+        "filename": "test/usb_pe_drp_old.mocklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-02T15:46:54Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Conflict Markers: Complete set of conflict markers found. If this is a false alarm, add IGNORE_MER...\n\nComplete set of conflict markers found. If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "e99d6ce0fb956d92139e378fd1029653c0eab42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
