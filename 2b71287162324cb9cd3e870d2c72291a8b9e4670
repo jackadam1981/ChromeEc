@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d17b89e_cf8cb4d0",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-02T01:00:22Z",
+      "side": 1,
+      "message": "```suggestion\n\tconstexpr struct fp_image_frame_params zero_params{};\n```",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 44
+      },
+      "revId": "2b71287162324cb9cd3e870d2c72291a8b9e4670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adc707f_e3e58ec5",
+        "filename": "test/fpsensor_debug.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-02T01:00:22Z",
+      "side": 1,
+      "message": "Does something like this work?\n\n(I think the flexible array member will cause problems, but want to check.)\n\n\n```\n\tstruct FpInfo {\n         struct ec_response_fp_info_v2 header;\n         struct fp_image_frame_params payload[FP_MAX_CAPTURE_TYPES];\n        };\n```\n\n\n```suggestion\n\n\n        struct FpInfo fp_info;\n        struct ec_response_fp_info_v2 *info \u003d \u0026fp_info.header;\n```",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 72
+      },
+      "revId": "2b71287162324cb9cd3e870d2c72291a8b9e4670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
