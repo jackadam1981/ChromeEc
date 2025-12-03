@@ -16,6 +16,24 @@
       "message": "It\u0027s not technically a revert, but rather fix/workaround. Shouldn\u0027t we revert the original CL and define such value in the boards that originally had to have higher value?",
       "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dadb2ab_7fd1b06f",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1520718
+      },
+      "writtenOn": "2025-12-03T14:36:34Z",
+      "side": 1,
+      "message": "Yes its not full revert but specific to servo and would prefer to keep it like this, as this is following recommendations from Abe\u0027s analysis https://b.corp.google.com/issues/459532639#comment36 I can adjust git log title if that makes more sense to you?\n\nThe original change targeted some DUT side fixes unrelated to servo, but servo shares this code so it unexpectedly gave side effects. Looking on the culpirt CL it seems to target all DUTs so I believe its much cleaner to keep all default and specific override for servo. Also note that this proposed CL will land only in ec-legacy",
+      "parentUuid": "1e116532_8dd48eaf",
+      "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
