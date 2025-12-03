@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea19aeed_077c805c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T20:01:55Z",
+      "side": 1,
+      "message": "In patchset 5, I think the fast-path-to-slow-path interval needs to be fixed, but the other ones (inside the fast path and inside the slow path) look correct to me.",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4b4902_34775e1b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T20:01:55Z",
+      "side": 1,
+      "message": "This is tricky. This is the point in time that you want to record, but `new_port` has not been chosen yet, and it won\u0027t be until after the loop. In this situation, you can just save a timestamp in a local variable here and then use `pd_record_timestamp` later, when you have all of the information.",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d216c5_c5aae787",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T20:01:55Z",
+      "side": 1,
+      "message": "Is this the relevant charge manager entry point? I would have thought that it was `charge_manager_invalidate_suppliers`.",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

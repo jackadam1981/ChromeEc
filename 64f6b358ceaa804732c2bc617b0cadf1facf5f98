@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "713b67bc_d315ac37",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T20:01:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "42537462_8d2b4a72",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d32ba600_c3da488a",
@@ -143,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00de7ef9_58e5a70c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T20:01:55Z",
+      "side": 1,
+      "message": "Nit: This would be a weird coincidence, but you should probably also be checking `reg`, just in case it\u0027s not the right one.",
+      "parentUuid": "94cb9964_7a56311e",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc05ea3d_8becba66",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -172,6 +208,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "dc05ea3d_8becba66",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "367bab3a_6c0ee61d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T20:01:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0a3ee84c_a616f41a",
       "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
