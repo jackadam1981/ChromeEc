@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42537462_8d2b4a72",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-03T17:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd77b19_7f865410",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d32ba600_c3da488a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a5f6689_b2c06a92",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3733,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-03T17:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d32ba600_c3da488a",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d85698d_c42c3614",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2025-12-02T22:28:19Z",
       "side": 1,
       "message": "These checks are unconditional, but this function gets called to enable VBUS as well as to disable it. That could mean that you\u0027re recording times that you don\u0027t care about. You should probably check `enable \u003d\u003d 0` before recording. Same goes for most of the other timestamps in this CL.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa53caa9_61bc1e6b",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-03T17:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d85698d_c42c3614",
       "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94cb9964_7a56311e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-03T17:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5813f4d5_6b1ddc11",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc05ea3d_8becba66",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2025-12-02T22:28:19Z",
       "side": 1,
       "message": "IMO, there\u0027s no point in recording the timestamps for cases where these calls fails. AFAIK, we\u0027re not seeing this. If we are, we should debug that failure before the timing. The way it is now should be OK in terms of understanding the output, but simplifying it would make it easier to think about.",
+      "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3ee84c_a616f41a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-03T17:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc05ea3d_8becba66",
       "revId": "64f6b358ceaa804732c2bc617b0cadf1facf5f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
