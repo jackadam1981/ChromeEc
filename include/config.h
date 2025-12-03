@@ -4797,6 +4797,12 @@
 #define CONFIG_USB_PD_STARTUP_DELAY_MS 0
 
 /*
+ * Set to a nonzero value to override the default PD CC debounce time.
+ * If undefined, the default value (PD_T_CC_DEBOUNCE) is used.
+ */
+#undef CONFIG_USB_PD_T_CC_DEBOUNCE_MS_OVERRIDE
+
+/*
  * Define if this board is using runtime flags instead of build time configs
  * to control USB PD properties.
  */
