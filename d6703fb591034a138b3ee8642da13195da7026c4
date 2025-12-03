@@ -16,6 +16,24 @@
       "message": "Is this intended to be no-op change to preserve the value before you added the facility to the driver? If so, this and other no-op board changes should be part of the first driver CL.",
       "revId": "d6703fb591034a138b3ee8642da13195da7026c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4647f269_e043ba66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-12-03T06:20:43Z",
+      "side": 1,
+      "message": "Yes, it\u0027s no-op change to preserve the value. I merge all no-op changes board code to the first driver CL.",
+      "parentUuid": "2c4f2f9d_145644e8",
+      "revId": "d6703fb591034a138b3ee8642da13195da7026c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
