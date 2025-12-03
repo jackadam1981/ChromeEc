@@ -287,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "877283c7_35e14463",
+        "filename": "zephyr/program/skywalker/anakin/anakin_vif.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2025-12-03T14:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e82cca8_7d60995c",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 45
+      },
+      "revId": "bcf06facbb5cf9418dc57688a623c38b1c335a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3340b8f_373949ab",
