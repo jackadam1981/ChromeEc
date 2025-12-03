@@ -30,19 +30,20 @@
 		(.imbalance_mv = DT_STRING_TOKEN(node, imbalance_mv),), ()) \
 },
 
-#define NODE_BATT_INFO(node)                                                 \
-	{                                                                    \
-		.voltage_max = DT_PROP(node, voltage_max),                   \
-		.voltage_normal = DT_PROP(node, voltage_normal),             \
-		.voltage_min = DT_PROP(node, voltage_min),                   \
-		.precharge_voltage = DT_PROP_OR(node, precharge_voltage, 0), \
-		.precharge_current = DT_PROP_OR(node, precharge_current, 0), \
-		.start_charging_min_c = DT_PROP(node, start_charging_min_c), \
-		.start_charging_max_c = DT_PROP(node, start_charging_max_c), \
-		.charging_min_c = DT_PROP(node, charging_min_c),             \
-		.charging_max_c = DT_PROP(node, charging_max_c),             \
-		.discharging_min_c = DT_PROP(node, discharging_min_c),       \
-		.discharging_max_c = DT_PROP(node, discharging_max_c),       \
+#define NODE_BATT_INFO(node)                                                   \
+	{                                                                      \
+		.voltage_max = DT_PROP(node, voltage_max),                     \
+		.voltage_normal = DT_PROP(node, voltage_normal),               \
+		.voltage_min = DT_PROP(node, voltage_min),                     \
+		.precharge_voltage = DT_PROP_OR(node, precharge_voltage, 0),   \
+		.precharge_current = DT_PROP_OR(node, precharge_current, 0),   \
+		.start_charging_min_c = DT_PROP(node, start_charging_min_c),   \
+		.start_charging_max_c = DT_PROP(node, start_charging_max_c),   \
+		.charging_min_c = DT_PROP(node, charging_min_c),               \
+		.charging_max_c = DT_PROP(node, charging_max_c),               \
+		.discharging_min_c = DT_PROP(node, discharging_min_c),         \
+		.discharging_max_c = DT_PROP(node, discharging_max_c),         \
+		.vendor_param_start = DT_PROP_OR(node, vendor_param_start, 0), \
 	},
 
 #define NODE_BATT_PARAMS(node)                                              \

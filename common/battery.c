@@ -622,6 +622,7 @@ static enum ec_status
 host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 {
 	int rv;
+	uint32_t value;
 	const struct ec_params_battery_vendor_param *p = args->params;
 	struct ec_response_battery_vendor_param *r = args->response;
 
@@ -637,7 +638,8 @@ host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 			return rv;
 	}
 
-	rv = battery_get_vendor_param(p->param, &r->value);
+	rv = battery_get_vendor_param(p->param, &value);
+	r->value = value;
 	return rv;
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
