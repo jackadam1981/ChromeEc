@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322ca229_b0349c95",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:25:26Z",
+      "side": 1,
+      "message": "Is this needed only for the i80sa sensor?",
+      "revId": "b334a6d8ea327272b75d9d48aa307fd71539914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04038e37_6f83c196",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:25:26Z",
+      "side": 1,
+      "message": "Is this function used by the private lib? If that\u0027s not the case, is should be placed only in driver file.",
+      "revId": "b334a6d8ea327272b75d9d48aa307fd71539914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
