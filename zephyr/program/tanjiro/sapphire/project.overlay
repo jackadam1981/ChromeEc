@@ -18,7 +18,6 @@
 #include "../interrupts.dtsi"
 #include "../overlay.dtsi"
 #include "../power_signal.dtsi"
-#include "cbi.dtsi"
 #include "led.dtsi"
 #include "sapphire_ec_ufsc.dtsi"
 
@@ -211,7 +210,7 @@
 			rot-standard-ref = <&lid_rot_ref_lsm6dsm>;
 			drv-data = <&lsm6dsm_data_accel>;
 			alternate-for = <&lid_accel>;
-			alternate-ssfc-indicator = <&lid_sensor_1>;
+			alternate-ufsc-indicator = <&ufsc_lid_sensor_lsm6dsm>;
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
@@ -234,7 +233,7 @@
 			default-range = <(1000 | ROUND_UP_FLAG)>; /* dps */
 			drv-data = <&lsm6dsm_data_gyro>;
 			alternate-for = <&lid_gyro>;
-			alternate-ssfc-indicator = <&lid_sensor_1>;
+			alternate-ufsc-indicator = <&ufsc_lid_sensor_lsm6dsm>;
 		};
 	};
 
