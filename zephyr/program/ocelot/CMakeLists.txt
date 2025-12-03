@@ -60,6 +60,8 @@ if(DEFINED CONFIG_BOARD_OCELOTRVP_RTK)
 	project(ocelotrvp-rtk)
 	zephyr_library_sources("src/rvp_board_id.c")
 	zephyr_library_sources("src/rvp_board_power.c")
+	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
+					"src/rvp_keyboard_customization.c")
 endif()
 
 zephyr_include_directories("include/")
