@@ -463,6 +463,7 @@ _CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_SET, ucsi_ppm_set);
 _CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_GET, ucsi_ppm_get);
 _CROS_EC_C0_F_PF(EC_CMD_FP_VENDOR, fp_vendor);
 _CROS_EC_C0_F_RF(EC_CMD_FP_SDCP_CLAIM, fp_sdcp_claim);
+_CROS_EC_C0_F_PF(EC_CMD_FP_SDCP_ESTABLISH, fp_sdcp_establish);
 _CROS_EC_C0_F_PF(EC_CMD_ENTER_BOOTLOADER, enter_bootloader);
 
 #ifdef __cplusplus
