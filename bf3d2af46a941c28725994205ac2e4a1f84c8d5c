@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d293d40_d94ddac0",
+        "filename": "zephyr/test/rauru/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "Nit: This file is probably unnecessary at this point in time. I think people generally know how the Zephyr tests are set up.",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4e541d_256214fe",
+        "filename": "zephyr/test/rauru/common.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "I didn\u0027t check every component in here to see if it matched the actual rauru device tree. If you did, great job. If you didn\u0027t, it\u0027s probably sufficient for now to get the USB components right. You can leave a comment here noting which ones are as intended and which ones are just placeholders to make the build work.",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79d3a03_55827cc6",
+        "filename": "zephyr/test/rauru/common.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Trailing Whitespace: Please remove the trailing whitespace.\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25288934_ec3f64f2",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "Is the idea here that this function needs to run without crashing or something? In general, we try to have meaningful assertions.",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257d836a_9a958782",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "Is this true?",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951d403c_33593c25",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be code here to put the board in each power state to test each case?",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306ca043_6a3d9144",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:08:44Z",
+      "side": 1,
+      "message": "Why \"not\"?",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
