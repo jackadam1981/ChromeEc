@@ -178,6 +178,24 @@
       "parentUuid": "5c59a932_622c8698",
       "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "564d9514_8e4f5977",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:22:10Z",
+      "side": 1,
+      "message": "Looks good now, some minor comments.\n\nI\u0027ll comment on CL:7149424",
+      "parentUuid": "e31e8810_fc8d9e01",
+      "revId": "d62e37bf63d6ef53461d08d1391b7a0d4c0c4623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

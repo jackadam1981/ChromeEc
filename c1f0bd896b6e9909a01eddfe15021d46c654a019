@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72877947_d3cf8d0c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:22:10Z",
+      "side": 1,
+      "message": "80 series read mode",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476eef93_6c8f93be",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:22:10Z",
+      "side": 1,
+      "message": "Please name the modes in a way `FINGERPRINT_SENSOR_ELAN80SERIES_READ_MODE_modeX` e.g. `FINGERPRINT_SENSOR_ELAN80SERIES_READ_MODE_IMAGE`.",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc13809_179be8cb",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:22:10Z",
+      "side": 1,
+      "message": "`elan_read_image`?",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "889bd603_88ec481e",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:22:10Z",
+      "side": 1,
+      "message": "Just `elan_read`?",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4c31dc_4338bfa3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-03T11:22:10Z",
+      "side": 1,
+      "message": "No need to add return since the compilation fails",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
