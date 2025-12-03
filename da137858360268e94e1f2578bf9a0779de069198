@@ -110,6 +110,30 @@
       },
       "revId": "da137858360268e94e1f2578bf9a0779de069198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf32390_d0ab105a",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-03T06:01:00Z",
+      "side": 1,
+      "message": "I\u0027ve updated the CL to shutdown on long presses, similar to the TCPM implementation.",
+      "parentUuid": "b271094b_be900110",
+      "range": {
+        "startLine": 1701,
+        "startChar": 2,
+        "endLine": 1701,
+        "endChar": 44
+      },
+      "revId": "da137858360268e94e1f2578bf9a0779de069198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
