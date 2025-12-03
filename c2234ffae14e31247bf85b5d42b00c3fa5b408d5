@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "770b336b_db1f0781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T07:12:51Z",
+      "side": 1,
+      "message": "OK I have modified this.",
+      "parentUuid": "a0af71a6_0518611d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54079c8f_5ea7bbc6",
         "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
         "patchSetId": 31
