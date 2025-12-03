@@ -52,6 +52,41 @@
       "parentUuid": "0dadb2ab_7fd1b06f",
       "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96c5c85_6fe2383b",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:29:38Z",
+      "side": 1,
+      "message": "Nit: +1 WRT calling this CL a revert. It\u0027s a fix forward.\n\nAFAIK, this is probably a beneficial change for at least TCPMv2 ec-legacy boards. It was originally developed for dedede. If we needed to change this value for other TCPMv2 boards, I\u0027d expect that to be in the form of per-board tweaks based on compliance results, not a global revert back to the original minimum value.\n\nI\u0027m not sure about TCPMv1 boards. Besides Servo, I wouldn\u0027t really expect to cherry pick USB tweaks for TCPMv1 boards.",
+      "parentUuid": "8d9c5de6_20f20d02",
+      "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115daad1_7232e85e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:29:38Z",
+      "side": 1,
+      "message": "As noted in my other comment, I\u0027d expect the change to default value to stick around, and we might need to change the value per-board besides Servo at some point. That being the case, it\u0027s probably a good idea to make this override intuitive for somebody who comes back here later.\n\nI\u0027d suggest creating a `CONFIG_USB_PD_T_CC_DEBOUNCE_MS_OVERRIDE` item in `config.h` and doing something like this here:\n```\n#ifdef CONFIG_USB_PD_T_CC_DEBOUNCE_MS_OVERRIDE\n#define PD_T_CC_DEBOUNCE (CONFIG_USB_PD_T_CC_DEBOUNCE_MS_OVERRIDE * MSEC)\n#else\n#define PD_T_CC_DEBOUNCE (140 * MSEC)\n#endif\n```\n(You could also just have a config with a default value of 140 and use it unconditionally here. Whatever seems more natural to you.)\n\nThat way, the result here doesn\u0027t change based on include order (as unlikely as that would be to change), and it\u0027s obvious looking at this code that if somebody wanted to override this, they\u0027d do it in `board.h`/Kconfig.",
+      "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
