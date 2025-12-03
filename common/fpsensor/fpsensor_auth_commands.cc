@@ -9,6 +9,7 @@
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_auth_secrets.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
@@ -27,9 +28,6 @@
 
 /* Pointer to the FPMCU's ECDH private key */
 static bssl::UniquePtr<EC_KEY> ecdh_key;
-
-/* The GSC pairing key. */
-static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
 /* The session nonce for session key. */
 static std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
