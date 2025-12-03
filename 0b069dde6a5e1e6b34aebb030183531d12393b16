@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e116532_8dd48eaf",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2025-12-03T13:12:55Z",
+      "side": 1,
+      "message": "It\u0027s not technically a revert, but rather fix/workaround. Shouldn\u0027t we revert the original CL and define such value in the boards that originally had to have higher value?",
+      "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
