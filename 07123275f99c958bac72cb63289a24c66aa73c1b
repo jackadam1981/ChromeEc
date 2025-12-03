@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62b19a2_78a9e7c1",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:34:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9afe93d8_099d673b",
+      "revId": "07123275f99c958bac72cb63289a24c66aa73c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe24dcb0_94b364a4",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "enums have separated.",
       "parentUuid": "fe24dcb0_94b364a4",
+      "revId": "07123275f99c958bac72cb63289a24c66aa73c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85484c5b_2726b704",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-03T19:34:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7a01b2f2_3aa95319",
       "revId": "07123275f99c958bac72cb63289a24c66aa73c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
