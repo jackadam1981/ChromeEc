@@ -198,6 +198,16 @@ int fp_vendor_command(uint32_t param, uint8_t *buf, size_t buf_size);
  */
 int fp_sdcp_command(struct ec_response_fp_sdcp_claim *res);
 
+/**
+ * FP SDCP defined routine for getting private ephemeral key
+ *
+ * @param[out] res SDCP claim data to fill
+
+ * @return 0 on success
+ * @return negative value on error
+ */
+int fp_sdcp_sk_f(uint8_t *buf, size_t buf_size);
+
 #ifdef CONFIG_ZEPHYR
 /**
  * Put the sensor into idle state

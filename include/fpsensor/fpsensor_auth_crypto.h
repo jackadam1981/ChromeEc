@@ -39,6 +39,17 @@ bssl::UniquePtr<EC_KEY>
 create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey);
 
 /**
+ * Create a boringssl @EC_KEY from the raw uncompressed public key.
+ *
+ * @param[in] pubkey public key
+ *
+ * @return @p EC_KEY on success
+ * @return nullptr on error
+ */
+bssl::UniquePtr<EC_KEY> create_ec_key_from_pubkey(const uint8_t *pubkey,
+						  size_t pubkey_size);
+
+/**
  * Create a boringssl @EC_KEY from a private key.
  *
  * @param[in] privkey private key

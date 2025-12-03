@@ -9,6 +9,7 @@
 #include "fpsensor/fpsensor.h"
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_auth_secrets.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
 #include "fpsensor/fpsensor_state.h"
@@ -27,9 +28,6 @@
 
 /* Pointer to the FPMCU's ECDH private key */
 static bssl::UniquePtr<EC_KEY> ecdh_key;
-
-/* The GSC pairing key. */
-static std::array<uint8_t, FP_PAIRING_KEY_LEN> pairing_key;
 
 /* The session nonce for session key. */
 static std::array<uint8_t, FP_CK_SESSION_NONCE_LEN> session_nonce;
@@ -164,7 +162,7 @@ fp_command_load_pairing_key(struct host_cmd_handler_args *args)
 
 	ret = decrypt_pairing_key(params->encrypted_pairing_key.info,
 				  params->encrypted_pairing_key.data,
-				  pairing_key);
+				  get_pairing_key());
 	if (ret != EC_SUCCESS) {
 		CPRINTS("load_pairing_key: Failed to decrypt pairing key");
 		return EC_RES_UNAVAILABLE;
@@ -229,7 +227,7 @@ fp_command_establish_session(struct host_cmd_handler_args *args)
 	ScopedFastCpu fast_cpu;
 
 	enum ec_error_list ret = generate_session_key(
-		session_nonce, p->peer_nonce, pairing_key, session_key);
+		session_nonce, p->peer_nonce, get_pairing_key(), session_key);
 	if (ret != EC_SUCCESS) {
 		return EC_RES_INVALID_PARAM;
 	}
