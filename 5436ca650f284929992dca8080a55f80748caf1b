@@ -46,6 +46,30 @@
       },
       "revId": "5436ca650f284929992dca8080a55f80748caf1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc028276_f10bce9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-03T19:28:44Z",
+      "side": 1,
+      "message": "Without a project enabling this driver, this is CL adds dead code to the project.\n\nAt a minimum the unit tests need to be updated to include the BMA5xy driver.\n\n* Add the BMX5xy driver to the [native_sim.overlay](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/boards/native_sim.overlay;l\u003d640;drc\u003d28fa20c5eaa0fc603154106843b7168598626531).\n* Create a test suite for the bma5xy, similar to the [bma4xx](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/src/bma4xx.c)\n* Update the [CMake file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/default/CMakeLists.txt) for the drivers.default test\n* Run `./twister -ivc drivers.default` locally to test.",
+      "parentUuid": "3b9387d5_89a68a16",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "5436ca650f284929992dca8080a55f80748caf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
