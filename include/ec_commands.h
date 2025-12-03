@@ -8816,6 +8816,16 @@ struct ec_response_fp_sdcp_claim {
 	uint8_t s_d[FP_SDCP_SIGNATURE_SIZE];
 } __ec_align4;
 
+/*
+ * Fingerprint SDCP establish command.
+ *
+ */
+#define EC_CMD_FP_SDCP_ESTABLISH 0x0421
+
+struct ec_params_fp_sdcp_establish {
+	uint8_t pk_g[FP_SDCP_KEY_SIZE];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 

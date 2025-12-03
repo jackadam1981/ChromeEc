@@ -5,6 +5,9 @@
 
 #include "common.h"
 #include "console.h"
+#include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_auth_secrets.h"
+#include "openssl/mem.h"
 #include "system.h"
 
 #include <zephyr/drivers/emul.h>
@@ -25,6 +28,49 @@ int fp_sdcp_command(struct ec_response_fp_sdcp_claim *res)
 {
 	memcpy(res->pk_m, (uint8_t *)"pk_m", 4);
 	return fp_sdcp_command_custom_ret;
+}
+
+static const uint8_t sk_f[] = {
+	0x64, 0xfb, 0xd5, 0x8f, 0x6b, 0x57, 0x2a, 0x41, 0xef, 0x00, 0x0e,
+	0x18, 0x92, 0xf8, 0xb5, 0x52, 0xc7, 0x41, 0x34, 0x35, 0xb1, 0xce,
+	0x7c, 0x11, 0xfc, 0xf5, 0xa5, 0x94, 0x97, 0xaa, 0xc4, 0x91
+};
+
+static const uint8_t pk_f[] = {
+	0x04, 0x48, 0x04, 0x5c, 0x21, 0x5b, 0x8d, 0x9b, 0x23, 0x31, 0x95,
+	0x0e, 0x2a, 0x8d, 0x8f, 0x26, 0x22, 0x66, 0xe9, 0x59, 0xc2, 0x37,
+	0xc9, 0x4f, 0x94, 0x73, 0x27, 0xc2, 0xb1, 0x11, 0xa0, 0x01, 0x78,
+	0x13, 0x2f, 0x08, 0x9e, 0x94, 0xe7, 0x6d, 0x58, 0x76, 0xa1, 0x1a,
+	0x20, 0xda, 0x0c, 0xc1, 0xef, 0x91, 0xaf, 0xb1, 0x5d, 0x48, 0x81,
+	0x1b, 0x6b, 0xe1, 0x6e, 0xc0, 0xd5, 0xfb, 0x9d, 0x69, 0x82
+};
+
+static const uint8_t sk_g[] = {
+	0x2e, 0xdd, 0x7a, 0x67, 0x2f, 0x22, 0x21, 0x5c, 0x23, 0x80, 0xf0,
+	0x80, 0x29, 0x5c, 0x6d, 0x95, 0xe9, 0x0b, 0x31, 0x9c, 0x17, 0xc1,
+	0xc6, 0xcc, 0xe3, 0xbe, 0x9b, 0x7c, 0xd7, 0x2a, 0x18, 0x3f
+};
+
+static const uint8_t pk_g[] = {
+	0x04, 0x65, 0xf5, 0xd4, 0x79, 0x82, 0x7e, 0xc1, 0xaf, 0x28, 0x2e,
+	0x4b, 0xd0, 0xa6, 0xcb, 0xf4, 0xf4, 0xf5, 0x16, 0x63, 0xa6, 0x85,
+	0x40, 0xdc, 0xa4, 0x26, 0xe8, 0x63, 0xc3, 0xa8, 0x52, 0xd3, 0x25,
+	0x42, 0x8d, 0xd4, 0x7d, 0x85, 0x30, 0x6c, 0x16, 0x6e, 0x99, 0x24,
+	0x65, 0x5c, 0x6d, 0x9b, 0x04, 0xfe, 0xfb, 0x83, 0x49, 0x9d, 0xa9,
+	0x2a, 0xae, 0x75, 0x3e, 0x79, 0xdc, 0xa1, 0x80, 0x6e, 0x6e
+};
+
+static uint8_t fp_sdcp_sk_f_custom_sk_f[32];
+
+static int fp_sdcp_sk_f_custom_ret;
+
+int fp_sdcp_sk_f(uint8_t *buf, size_t buf_size)
+{
+	zassert_equal(sizeof(fp_sdcp_sk_f_custom_sk_f), 32);
+	zassert_equal(buf_size, 32);
+	zassert_not_equal(buf, nullptr);
+	memcpy(buf, fp_sdcp_sk_f_custom_sk_f, sizeof(fp_sdcp_sk_f_custom_sk_f));
+	return fp_sdcp_sk_f_custom_ret;
 }
 
 ZTEST(hc_fp_sdcp, test_fp_sdcp_ok)
@@ -73,11 +119,88 @@ ZTEST(hc_fp_sdcp, test_shell_command_failure)
 	zassert_equal(rv, EC_RES_ERROR);
 }
 
+ZTEST(hc_fp_sdcp, test_fp_sdcp_establish_ok)
+{
+	int ret;
+	struct ec_params_fp_sdcp_establish params;
+	memcpy(params.pk_g, pk_g, sizeof(pk_g));
+
+	ret = ec_cmd_fp_sdcp_establish(NULL, &params);
+	zassert_equal(EC_RES_SUCCESS, ret);
+
+	bssl::UniquePtr<EC_KEY> public_key = create_ec_key_from_pubkey(
+		*reinterpret_cast<const fp_elliptic_curve_public_key *>(
+			&pk_f[1]));
+	bssl::UniquePtr<EC_KEY> private_key =
+		create_ec_key_from_privkey(sk_g, sizeof(sk_g));
+	zassert_not_equal(public_key, nullptr);
+	zassert_not_equal(private_key, nullptr);
+
+	std::array<uint8_t, FP_PAIRING_KEY_LEN> host_pairing_key;
+	ret = generate_ecdh_shared_secret_without_kdf(*private_key, *public_key,
+						      host_pairing_key);
+	zassert_equal(EC_SUCCESS, ret);
+
+	ret = memcmp(host_pairing_key.data(), pairing_key.data(),
+		     FP_PAIRING_KEY_LEN);
+	zassert_equal(ret, 0);
+}
+
+ZTEST(hc_fp_sdcp, test_fp_sdcp_establish_pk_g_first_not_ok)
+{
+	int ret;
+	struct ec_params_fp_sdcp_establish params;
+	memcpy(params.pk_g, pk_g, sizeof(pk_g));
+
+	params.pk_g[0] = 0x05;
+
+	ret = ec_cmd_fp_sdcp_establish(NULL, &params);
+	zassert_equal(EC_RES_INVALID_PARAM, ret);
+}
+
+ZTEST(hc_fp_sdcp, test_fp_sdcp_establish_pk_g_later_not_ok)
+{
+	int ret;
+	struct ec_params_fp_sdcp_establish params;
+	memcpy(params.pk_g, pk_g, sizeof(pk_g));
+
+	params.pk_g[1] = 0x00;
+
+	ret = ec_cmd_fp_sdcp_establish(NULL, &params);
+	zassert_equal(EC_RES_INVALID_PARAM, ret);
+}
+
+ZTEST(hc_fp_sdcp, test_fp_sdcp_establish_fp_sdcp_sk_f_not_ok)
+{
+	int ret;
+	struct ec_params_fp_sdcp_establish params;
+	memcpy(params.pk_g, pk_g, sizeof(pk_g));
+
+	fp_sdcp_sk_f_custom_ret = EC_ERROR_UNKNOWN;
+
+	ret = ec_cmd_fp_sdcp_establish(NULL, &params);
+	zassert_equal(EC_RES_ERROR, ret);
+}
+
+ZTEST(hc_fp_sdcp, test_fp_sdcp_establish_sk_f_not_ok)
+{
+	int ret;
+	struct ec_params_fp_sdcp_establish params;
+	memcpy(params.pk_g, pk_g, sizeof(pk_g));
+
+	memset(fp_sdcp_sk_f_custom_sk_f, 0, sizeof(sk_f));
+
+	ret = ec_cmd_fp_sdcp_establish(NULL, &params);
+	zassert_equal(EC_RES_ERROR, ret);
+}
+
 static void reset(void *data)
 {
 	ARG_UNUSED(data);
 
 	fp_sdcp_command_custom_ret = 0;
+	fp_sdcp_sk_f_custom_ret = 0;
+	memcpy(fp_sdcp_sk_f_custom_sk_f, sk_f, sizeof(sk_f));
 }
 
 ZTEST_SUITE(hc_fp_sdcp, NULL, NULL, reset, reset, NULL);
