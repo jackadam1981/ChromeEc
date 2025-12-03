@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84383ed7_8270bf6c",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 31
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T06:05:05Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "54079c8f_5ea7bbc6",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7aafbf9_b59eb33c",
         "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
         "patchSetId": 31
@@ -60,6 +84,30 @@
       "writtenOn": "2025-12-02T16:56:00Z",
       "side": 1,
       "message": "no need. It is `n` by default.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed393e8b_0ab91527",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 31
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T06:05:05Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "f7aafbf9_b59eb33c",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2ad68b6_ab2b42aa",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T06:05:05Z",
+      "side": 1,
+      "message": "ok, I modified this.",
+      "parentUuid": "2d1fab52_d8daab64",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cde36628_99bb403b",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 31
@@ -118,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bcbf826_cd8dfe42",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T06:05:05Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "cde36628_99bb403b",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 29
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0274a141_cb2675d5",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 31
@@ -129,6 +225,24 @@
       "writtenOn": "2025-12-02T12:29:47Z",
       "side": 1,
       "message": "I don\u0027t think this #ifdef is needed once the IF_ENABLE is used.",
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afb2b14_ee39cebf",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T06:05:05Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "0274a141_cb2675d5",
       "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -169,6 +283,30 @@
       "writtenOn": "2025-12-02T16:56:00Z",
       "side": 1,
       "message": "Heap Allocation Failure in PAL:\n\nIn `fingerprint_ft98xx_pal.c`, focal_malloc uses `k_oops()` if memory allocation fails. This halts the system.\n\nSuggestion: Confirm if the private library can handle a `NULL` return on allocation failure. If it can, return NULL to allow for potential graceful degradation. If the library requires successful allocation, then k_oops() is a valid, albeit drastic, measure. Document this requirement.",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e19591_eb34c714",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-03T06:05:05Z",
+      "side": 1,
+      "message": "ok, I will modify this",
+      "parentUuid": "431ff3ad_9c82f73a",
       "range": {
         "startLine": 92,
         "startChar": 15,
