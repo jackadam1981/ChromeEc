@@ -34,6 +34,24 @@
       "parentUuid": "1e116532_8dd48eaf",
       "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9c5de6_20f20d02",
+        "filename": "board/servo_v4p1/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1501133
+      },
+      "writtenOn": "2025-12-03T14:47:06Z",
+      "side": 1,
+      "message": "Right about the ec-legacy. I was wondering if the original CL won\u0027t affect other boards and if it shouldn\u0027t be reverted just in case. I\u0027m okay with this change.",
+      "parentUuid": "0dadb2ab_7fd1b06f",
+      "revId": "0b069dde6a5e1e6b34aebb030183531d12393b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
