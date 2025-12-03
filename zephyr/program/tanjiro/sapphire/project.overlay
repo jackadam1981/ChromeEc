@@ -21,7 +21,6 @@
 #include "cbi.dtsi"
 #include "led.dtsi"
 #include "sapphire_ec_ufsc.dtsi"
-#include <sapphire/overlay.dtsi>
 
 / {
 	aliases {
