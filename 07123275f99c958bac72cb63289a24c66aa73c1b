@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9afe93d8_099d673b",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-12-03T06:19:55Z",
+      "side": 1,
+      "message": "I separate enums with different registers for descriptive names.",
+      "parentUuid": "99c14866_9890be00",
+      "revId": "07123275f99c958bac72cb63289a24c66aa73c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe24dcb0_94b364a4",
         "filename": "driver/tcpm/it83xx_pd.h",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-02T18:15:07Z",
       "side": 1,
       "message": "Do each of these parameters take values from `enum tuning_unit`? If so, can you mention that here.",
+      "revId": "07123275f99c958bac72cb63289a24c66aa73c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a01b2f2_3aa95319",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2025-12-03T06:19:55Z",
+      "side": 1,
+      "message": "enums have separated.",
+      "parentUuid": "fe24dcb0_94b364a4",
       "revId": "07123275f99c958bac72cb63289a24c66aa73c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
