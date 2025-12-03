@@ -75,6 +75,32 @@ create_ec_key_from_pubkey(const fp_elliptic_curve_public_key &pubkey)
 	return key;
 }
 
+bssl::UniquePtr<EC_KEY> create_ec_key_from_pubkey(const uint8_t *pubkey,
+						  size_t pubkey_size)
+{
+	if (pubkey_size != 65 || pubkey[0] != 0x04) {
+		return nullptr;
+	}
+	bssl::UniquePtr<BIGNUM> x_bn(BN_bin2bn(pubkey + 1, 32, nullptr));
+	if (x_bn == nullptr) {
+		return nullptr;
+	}
+	bssl::UniquePtr<BIGNUM> y_bn(BN_bin2bn(pubkey + 33, 32, nullptr));
+	if (y_bn == nullptr) {
+		return nullptr;
+	}
+	bssl::UniquePtr<EC_KEY> key(
+		EC_KEY_new_by_curve_name(NID_X9_62_prime256v1));
+	if (key == nullptr) {
+		return nullptr;
+	}
+	if (EC_KEY_set_public_key_affine_coordinates(key.get(), x_bn.get(),
+						     y_bn.get()) != 1) {
+		return nullptr;
+	}
+	return key;
+}
+
 bssl::UniquePtr<EC_KEY> create_ec_key_from_privkey(const uint8_t *privkey,
 						   size_t privkey_size)
 {

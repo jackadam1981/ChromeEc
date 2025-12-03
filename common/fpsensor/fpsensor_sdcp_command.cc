@@ -4,11 +4,17 @@
  */
 
 #include "common.h"
+#include "crypto/cleanse_wrapper.h"
 #include "ec_commands.h"
 #include "fpsensor/fpsensor.h"
+#include "fpsensor/fpsensor_auth_crypto.h"
+#include "fpsensor/fpsensor_auth_secrets.h"
 #include "host_command.h"
+#include "openssl/mem.h"
 #include "system.h"
 #include "util.h"
+
+#include <array>
 
 static enum ec_status fp_command_sdcp_claim(struct host_cmd_handler_args *args)
 {
@@ -58,3 +64,37 @@ static int command_fp_sdcp_command(int argc, const char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(fpsdcp, command_fp_sdcp_command, "", "");
+
+static enum ec_status
+fp_command_sdcp_establish(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const ec_params_fp_sdcp_establish *>(args->params);
+	bssl::UniquePtr<EC_KEY> public_key =
+		create_ec_key_from_pubkey(params->pk_g, sizeof(params->pk_g));
+	if (public_key == nullptr) {
+		return EC_RES_INVALID_PARAM;
+	}
+
+	using SdcpSecretKey = CleanseWrapper<std::array<uint8_t, 32> >;
+	SdcpSecretKey sk_f{};
+	auto ret = fp_sdcp_sk_f(sk_f.data(), sk_f.size());
+	if (ret < 0) {
+		return EC_RES_ERROR;
+	}
+	bssl::UniquePtr<EC_KEY> private_key =
+		create_ec_key_from_privkey(sk_f.data(), sk_f.size());
+	if (private_key == nullptr) {
+		return EC_RES_ERROR;
+	}
+
+	ret = generate_ecdh_shared_secret_without_kdf(*private_key, *public_key,
+						      get_pairing_key());
+	if (ret != EC_SUCCESS) {
+		return EC_RES_ERROR;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_SDCP_ESTABLISH, fp_command_sdcp_establish,
+		     EC_VER_MASK(0));
