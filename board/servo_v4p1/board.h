@@ -229,6 +229,9 @@
 #define CC_NC(port, cc, sel) (pd_tcpc_cc_nc(port, cc, sel))
 #define CC_RA(port, cc, sel) (pd_tcpc_cc_ra(port, cc, sel))
 
+/* Override CC debounce time */
+#define PD_T_CC_DEBOUNCE (100 * MSEC)
+
 /*
  * These power-supply timing values are now set towards maximum spec limit,
  * to give the upstream charger the maximum time to respond.
