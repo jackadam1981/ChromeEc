@@ -34,6 +34,24 @@
       "parentUuid": "dfe7d274_ecf303e6",
       "revId": "ed8e3d49211df8c0c52bf5cbf66abc0055f64181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ac3708_6f556380",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/generated.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-12-03T23:21:32Z",
+      "side": 1,
+      "message": "I\u0027m fine manually toggling this with \u0027gpioset\u0027 as long as the default power on behavior is open drain high.",
+      "parentUuid": "ecbafdc8_93396955",
+      "revId": "ed8e3d49211df8c0c52bf5cbf66abc0055f64181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
