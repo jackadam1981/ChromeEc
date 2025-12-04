@@ -5,6 +5,8 @@
 
 #include "system.h"
 
+#include <zephyr/arch/riscv/pmp.h>
+
 /* For the Egis chips, a jump instruction is placed at the beginning of firmware
  * image. Refer to start.S file for more details.
  */
