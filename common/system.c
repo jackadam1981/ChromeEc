@@ -41,6 +41,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <zephyr/arch/riscv/pmp.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -652,6 +654,9 @@ test_mockable_static void jump_to_image(uintptr_t init_addr)
 
 	/* Jump to the reset vector */
 	resetvec = (void (*)(void))init_addr;
+#ifdef CONFIG_RISCV_PMP
+	z_riscv_pmp_clear_all();
+#endif
 	resetvec();
 }
 
