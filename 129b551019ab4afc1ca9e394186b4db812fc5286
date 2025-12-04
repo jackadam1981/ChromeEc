@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72460d38_d2df3008",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-04T23:33:41Z",
+      "side": 1,
+      "message": "@dawidn@google.com\nI believe the Egis Hal was merged, am I right?\nI rebased on top of the sanok CL.",
+      "parentUuid": "747ba08f_c4efac94",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "350b161e_be9b64a2",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 15
