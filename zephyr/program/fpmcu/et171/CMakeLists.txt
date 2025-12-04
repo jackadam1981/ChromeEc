@@ -5,6 +5,7 @@
 
 zephyr_library_sources("src/platform.c")
 zephyr_library_sources("src/flash_qspi.c")
+zephyr_library_sources("src/ec_quirks.c")
 
 if(DEFINED CONFIG_CROS_EC_RO)
 
