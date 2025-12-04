@@ -45,7 +45,7 @@ LOG_MODULE_DECLARE(ap_pwrseq, LOG_LEVEL_INF);
 #define LOW_ADP_BLINK_END_STEP 60
 
 static int blink_cnt;
-
+static int led_ready_counter;
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED,
 					     EC_LED_ID_POWER_LED };
 
@@ -231,6 +231,13 @@ static void led_set_battery(void)
 	static bool battery_low_triggeied = 0;
 	static bool battery_critical_triggeied = 0;
 	battery_ticks++;
+	/* Avoid LED flicker during EC init. curr.state defaults to ST_IDLE,
+	 * causing led_pwr_get_state() to return LED_PWRS_IDLE before init
+	 * completes.*/
+	if (led_ready_counter < 2) {
+		led_ready_counter++;
+		return;
+	}
 
 	switch (led_pwr_get_state()) {
 	case LED_PWRS_CHARGE:
@@ -527,6 +534,7 @@ static void pwr_led_init(void)
 		pwr_led_shutdown_hook();
 
 	low_adp_blink_init();
+	led_ready_counter = 0;
 }
 DECLARE_HOOK(HOOK_INIT, pwr_led_init, HOOK_PRIO_DEFAULT);
 
