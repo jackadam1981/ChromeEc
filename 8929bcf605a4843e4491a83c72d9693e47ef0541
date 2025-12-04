@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342f8516_8ea780cb",
+        "filename": "zephyr/program/intelrvp/ptlrvp/src/usbc_runtime.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-12-04T23:36:03Z",
+      "side": 1,
+      "message": "`zephyr/program/ocelot/src/rvp_usbc_runtime.c` has explicitly defined PDC configurations that are supported, I would follow that example.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "8929bcf605a4843e4491a83c72d9693e47ef0541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
