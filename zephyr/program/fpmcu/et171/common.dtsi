@@ -136,3 +136,13 @@
 		};
 	};
 };
+
+/ {
+       rollback: rollback@80040000 {
+               compatible = "zephyr,memory-region";
+               reg = <0x80040000 DT_SIZE_K(8)>;
+               zephyr,memory-region = "ROLLBACK_REGION";
+			   /* no access permissions (no read, no write, and no execute) */
+               zephyr,memory-attr = <(DT_MEM_RISCV_TYPE_EMPTY)>;
+       };
+};
