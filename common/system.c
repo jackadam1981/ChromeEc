@@ -586,6 +586,10 @@ __overridable void board_pulse_entering_rw(void)
 	gpio_set_level(GPIO_ENTERING_RW, 0);
 }
 
+__overridable void arch_pre_image_jump(void)
+{
+}
+
 /**
  * Jump to what we hope is the init address of an image.
  *
@@ -649,6 +653,12 @@ test_mockable_static void jump_to_image(uintptr_t init_addr)
 	/* Disable all DMA channels to avoid memory corruption */
 	dma_disable_all();
 #endif /* CONFIG_DMA_CROS */
+
+	/*
+	 * Perform architecture-specific hardware cleanup before jumping to the
+	 * new image.
+	 */
+	arch_pre_image_jump();
 
 	/* Jump to the reset vector */
 	resetvec = (void (*)(void))init_addr;
