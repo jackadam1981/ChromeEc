@@ -495,3 +495,20 @@ inline bool in_deferred_context(void)
 	 */
 	return (k_current_get() == get_sysworkq_thread());
 }
+
+static void task_info_print_list_cb(const struct k_thread *thread,
+				    void *user_data)
+{
+	task_id_t task_id = thread_id_to_task_id((struct k_thread *)thread);
+	printk("%d: %p %s\n", task_id, thread,
+	       k_thread_name_get((struct k_thread *)thread));
+}
+
+static int command_task_info(int argc, const char **argv)
+{
+	printk("TASK_ID: THREAD_ID THREAD_NAME\n");
+	k_thread_foreach_unlocked(task_info_print_list_cb, NULL);
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(taskinfo, command_task_info, NULL,
+			     "Print task info");
