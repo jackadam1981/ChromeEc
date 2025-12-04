@@ -16,6 +16,24 @@
       "message": "@dawidn@google.com\nWith this CL, you can read the PMP entries when you execute the `sysinfo` command. You can jump between RO and RW.",
       "revId": "2e6344b84691598ed0779323ad29675d07a2c583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a8174a_db741cbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-04T23:07:52Z",
+      "side": 1,
+      "message": "- In `RW`:\n\n```\nfpmcu:~$ sysinfo\nReset flags: 0x00000402 (reset-pin sysjump)\nCopy:   RW\nJumped: yes\nRecovery: no\nFlags:  unlocked\n[3.628600 mstatus: 0x00022088]\n[3.631400 PMP initial register dump:]\n[3.634900   0: 0x00000004 0x08 --\u003e 0x00000000-0x0000000f ---]\n[3.640500   1: 0x20010800 0x00]\n[3.643500   2: 0x2002e340 0x0d --\u003e 0x80042000-0x800b8cff R-X]\n[3.649100   3: 0x00009c7f 0x18 --\u003e 0x00027000-0x000273ff ---]\n[3.654700   4: 0x200013ff 0x19 --\u003e 0x80004000-0x80005fff R--]\n[3.660300   5: 0x0000927f 0x18 --\u003e 0x00024800-0x00024bff ---]\n[3.665800   6: 0x1fffffff 0x1f --\u003e 0x00000000-0xffffffff RWX]\n[3.671400   7: 0x00000000 0x00]\n```\n\n- Jump to `RO`:\n\n```\nfpmcu:~$ sysjump RO\n[7.183400 Jumping to image RO (0x00080402)]\n*** Booting Zephyr OS build 4.3.99 ***\n!\n![0.007700 UART initialized after sysjump]\n![Image: RO, sanok-0.0.0-360fdf9+ 2025-12-04 14:38:49 root@fsammoura-glaptop]\n![Reset cause: !reset-pin! !sysjump! !stay-in-ro!]\n![0.023300 event set 0x0000000000002000]\n![0.027000 hostcmd init 0x0000000000002000]\n![0.030900 Inits done]\n\n[0.034400] \u003cinf\u003e usbd_init: usb message: Device suspended\n[0.168300] \u003cinf\u003e usbd_init: usb message: Device resumed\n[0.175000] \u003cinf\u003e usbd_init: usb message: Bus reset\n[0.289000] \u003cinf\u003e usbd_init: usb message: Bus reset\n[0.442400] \u003cinf\u003e ec_host_cmd_usb: Configuration enabled\n[0.451600] \u003cinf\u003e usbd_init: usb message: New device configuration\n[1.027100 MKBP not cleared within threshold, toggling.]\n```\n\n- In `RO`:\n\n```\nfpmcu:~$ sysinfo\nReset flags: 0x00080402 (reset-pin sysjump stay-in-ro)\nCopy:   RO\nJumped: yes\nRecovery: no\nFlags:  unlocked\n[2.033200 mstatus: 0x00022088]\n[2.036000 PMP initial register dump:]\n[2.039600   0: 0x00000004 0x08 --\u003e 0x00000000-0x0000000f ---]\n[2.045100   1: 0x20000400 0x00]\n[2.048100   2: 0x2000ea1e 0x0d --\u003e 0x80001000-0x8003a877 R-X]\n[2.053600   3: 0x0000397f 0x18 --\u003e 0x0000e400-0x0000e7ff ---]\n[2.059200   4: 0x200013ff 0x19 --\u003e 0x80004000-0x80005fff R--]\n[2.064800   5: 0x0000317f 0x18 --\u003e 0x0000c400-0x0000c7ff ---]\n[2.070300   6: 0x1fffffff 0x1f --\u003e 0x00000000-0xffffffff RWX]\n[2.075900   7: 0x00000000 0x00]\n[2.079700 MKBP: The AP is failing to respond because it is sleeping or off]\n```\n\nThis is the entries by type:\n```\n1) 0x00000000-0x0000000f: Null pointer entry\n2) 0x80001000-0x8003a877: ROM entry\n3) 0x0000e400-0x0000e7ff: IRQ stack entry\n4) 0x80004000-0x80005fff: Rollback entry\n5) 0x0000c400-0x0000c7ff: Thread stack entry\n6) 0x00000000-0xffffffff: Catchall\n```\n\n`mstatus: 0x00022088` indicate MRPV\u003d1 (bit 17) and MPP\u003d00 (bits 11 and 12). So the unlocked entries are protected in kernel mode.",
+      "parentUuid": "0f48b588_35924f5b",
+      "revId": "2e6344b84691598ed0779323ad29675d07a2c583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
