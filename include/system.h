@@ -826,6 +826,15 @@ uint32_t flash_get_rw_offset(enum ec_image copy);
  */
 void system_compensate_rtc(void);
 
+/**
+ * @brief Platform-specific preparation before jumping to a new image.
+ *
+ * This function performs any necessary hardware cleanup or state reset
+ * immediately before transferring control to a new image.
+ *
+ */
+void arch_pre_image_jump(void);
+
 #ifdef __cplusplus
 }
 #endif
