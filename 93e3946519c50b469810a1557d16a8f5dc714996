@@ -194,6 +194,30 @@
       },
       "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f277000_b55ed8f3",
+        "filename": "zephyr/program/intelrvp/ptlrvp/ioex_gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-12-04T19:42:37Z",
+      "side": 1,
+      "message": "I have used similar solution to https://crrev.com/c/6682245, probing PD chips runtime.\n\nPlease share your thoughts on this, I will work on adding test cases in the meantime.",
+      "parentUuid": "4ec568d7_29c8ecbf",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "93e3946519c50b469810a1557d16a8f5dc714996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
