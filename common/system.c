@@ -41,6 +41,8 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <zephyr/arch/riscv/pmp.h>
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
@@ -652,6 +654,16 @@ test_mockable_static void jump_to_image(uintptr_t init_addr)
 
 	/* Jump to the reset vector */
 	resetvec = (void (*)(void))init_addr;
+#ifdef CONFIG_RISCV_PMP
+	/*
+	 * Clear all Physical Memory Protection (PMP) entries before jumping to
+	 * the new image. When CONFIG_HW_STACK_PROTECTION is enabled, the
+	 * current image's PMP configuration for stack boundaries can interfere
+	 * with the stack setup of the new image, leading to crashes. Clearing
+	 * ensures the new image starts with a clean PMP state.
+	 */
+	z_riscv_pmp_clear_all();
+#endif
 	resetvec();
 }
 
