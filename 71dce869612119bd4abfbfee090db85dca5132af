@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a525f3ea_221102d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-04T04:38:00Z",
+      "side": 1,
+      "message": "We need to at least run unit tests. Also, I think we should check this manually. It may also require an update to the PDC FW config to enable FRS",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "71dce869612119bd4abfbfee090db85dca5132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "39a69e19_b30f8bb4",
@@ -31,6 +54,30 @@
       "writtenOn": "2025-11-17T13:42:50Z",
       "side": 1,
       "message": "Should I add also CONFIG_PLATFORM_EC_USB_PD_FRS_PPC? What does this option do?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "71dce869612119bd4abfbfee090db85dca5132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad67824_f8ee1d1f",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-04T04:38:00Z",
+      "side": 1,
+      "message": "Also not sure what that does, I\u0027d suggest comparing against another PDC platform that enabled FRS (uldrenite)",
+      "parentUuid": "5048183a_b4dcb0c5",
       "range": {
         "startLine": 10,
         "startChar": 0,
