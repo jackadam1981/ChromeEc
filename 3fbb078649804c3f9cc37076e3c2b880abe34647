@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27090937_1ea46095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-12-04T21:30:37Z",
+      "side": 1,
+      "message": "Can you please add some context for these custom settings that are being written in the new function in charger.c. I assume it\u0027s related to the 4S + 1P battery.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "3fbb078649804c3f9cc37076e3c2b880abe34647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "785b8600_b91ccb70",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-12-04T21:30:37Z",
+      "side": 1,
+      "message": "Might be helpful to add a summary comment here to explain why these custom settings are being applied.",
+      "revId": "3fbb078649804c3f9cc37076e3c2b880abe34647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
