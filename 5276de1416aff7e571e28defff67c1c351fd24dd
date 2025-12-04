@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5154ee0_5e7ebd89",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-04T12:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4b4902_34775e1b",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49d216c5_c5aae787",
         "filename": "common/charge_manager.c",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2025-12-03T20:01:55Z",
       "side": 1,
       "message": "Is this the relevant charge manager entry point? I would have thought that it was `charge_manager_invalidate_suppliers`.",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f354b1_d1a85ff5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-04T12:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d216c5_c5aae787",
       "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
