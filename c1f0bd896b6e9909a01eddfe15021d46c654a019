@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ea04c7_9b40bb37",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-04T09:54:54Z",
+      "side": 1,
+      "message": "Fixed it in PS10.",
+      "parentUuid": "72877947_d3cf8d0c",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9813845c_5b7514b9",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-12-03T17:38:12Z",
       "side": 1,
       "message": "The default for FINGERPRINT_SENSOR_ELAN80SERIES_READ_MODE is only set if FINGERPRINT_SENSOR_ELAN80SG is enabled. The commit message states, \"Default read modes are assigned per sensor variant,\" but defaults for other ELAN 80-series variants are missing. Please add the other intended defaults or clarify the scope.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 82
+      },
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d79b3b_db61ac1f",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-04T09:54:54Z",
+      "side": 1,
+      "message": "Updated the commit message to clarify that the default read mode is currently assigned only for the ELAN80SG variant.",
+      "parentUuid": "9813845c_5b7514b9",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5477a8_e72bb653",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-04T09:54:54Z",
+      "side": 1,
+      "message": "Renamed the Kconfig option to FINGERPRINT_SENSOR_ELAN80SERIES_READ_MODE_FULL to follow the requested READ_MODE_\u003cX\u003e naming convention.",
+      "parentUuid": "476eef93_6c8f93be",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbc13809_179be8cb",
@@ -71,6 +131,24 @@
       "writtenOn": "2025-12-03T11:22:10Z",
       "side": 1,
       "message": "`elan_read_image`?",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f355e0_dcc6c82c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-04T09:54:54Z",
+      "side": 1,
+      "message": "Renamed the function to elan_read_image_full() to clearly indicate that it checks the ready bit for the entire image before reading.",
+      "parentUuid": "bbc13809_179be8cb",
       "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "291e6690_dfb68434",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-04T09:54:54Z",
+      "side": 1,
+      "message": "Renamed the function to elan_read_image() to clearly indicate that it reads image data.",
+      "parentUuid": "889bd603_88ec481e",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4c31dc_4338bfa3",
@@ -105,6 +201,24 @@
       "writtenOn": "2025-12-03T11:22:10Z",
       "side": 1,
       "message": "No need to add return since the compilation fails",
+      "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6330232_6a8588cf",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-04T09:54:54Z",
+      "side": 1,
+      "message": "Removed the return statement.",
+      "parentUuid": "ce4c31dc_4338bfa3",
       "revId": "c1f0bd896b6e9909a01eddfe15021d46c654a019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
