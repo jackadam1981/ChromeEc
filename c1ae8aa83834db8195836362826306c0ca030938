@@ -16,6 +16,24 @@
       "message": "Looks like review enforcement of two +2s are not met and hence the failure.\nRequesting for one more +2 for merging.",
       "revId": "c1ae8aa83834db8195836362826306c0ca030938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0da89c7_cc144673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2025-12-04T22:02:14Z",
+      "side": 1,
+      "message": "The builds for multiple RVP boards including Ocelot failed with linker error `multiple definition of \u0027board_get_version\u0027`. Please run `zmake build --clobber` locally to test your changes.\n\n```\nAll failed projects: ocelotrvp-npcx mtlrvpp_mchp adlrvp_mchp ptlgcs mtlrvpp_m1723 mtlrvpp_npcx ptlrvp_mchp ocelotrvp-mchp ptlrvp_npcx ocelotrvp-ite adlrvp_npcx\n```",
+      "parentUuid": "43cd495b_ae47656a",
+      "revId": "c1ae8aa83834db8195836362826306c0ca030938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
