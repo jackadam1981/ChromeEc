@@ -22,6 +22,30 @@
       },
       "revId": "4f688765fbf2cf718981d8e7c0763de7ce92ed3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f9bd4f_2a0bf669",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-05T02:50:55Z",
+      "side": 1,
+      "message": "you are referring to this unit test: [src/platform/ec/zephyr/test/hwtest/src/null_pointer.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/null_pointer.c).\nI am not aware that we started running the unit tests on `sanok`. I believe this unit test needs some modification for `RISCV`. I see that it uses `CONFIG_ARM`",
+      "parentUuid": "63c22987_7e5e6f94",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "4f688765fbf2cf718981d8e7c0763de7ce92ed3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
