@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00b56a3d_f01be44f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-05T02:18:34Z",
+      "side": 1,
+      "message": "ok, I have modified this",
+      "parentUuid": "16ed6d54_11239e75",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03958a7e_e510c0b3",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 35
@@ -84,6 +102,24 @@
       "writtenOn": "2025-12-04T10:05:17Z",
       "side": 1,
       "message": "I think this can be changed to LOG_INF",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b754553_35fbd789",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-05T02:18:34Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "03958a7e_e510c0b3",
       "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -142,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fc87947_c61a39bd",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-05T02:18:34Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "b9ffc759_8e604d91",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8045a5b_a2db6eb4",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 35
@@ -159,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5b86b72_a783bc60",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-05T02:18:34Z",
+      "side": 1,
+      "message": "Ok, I have removed it.",
+      "parentUuid": "e8045a5b_a2db6eb4",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a56c722c_ac794131",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
         "patchSetId": 35
@@ -170,6 +242,24 @@
       "writtenOn": "2025-12-04T10:05:17Z",
       "side": 1,
       "message": "Just use `rx_len`?",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71dd6e43_c294e39a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-05T02:18:34Z",
+      "side": 1,
+      "message": "Yes, I think just use rx_len will be more clear, I have modified this.",
+      "parentUuid": "a56c722c_ac794131",
       "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
