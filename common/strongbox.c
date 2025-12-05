@@ -313,8 +313,7 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 					return err;
 			}
 
-			return cmd_p->handler(&km, p->buffer,
-					      buf_size_words,
+			return cmd_p->handler(&km, p->buffer, buf_size_words,
 					      p->in_size / sizeof(uint32_t),
 					      &p->out_size);
 		}
@@ -1570,6 +1569,9 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	if (op_index >= ARRAY_SIZE(km->ops))
 		return SBERR_InvalidOperationHandle;
 
+	/* Cleanup slot if found, early, so it is freed on error too. */
+	km->used_slots &= ~(1u << op_index);
+
 	if (km->ops[op_index].attrs.algorithm != KM_ALG_EC)
 		return SBERR_UnsupportedAlgorithm;
 
@@ -1603,7 +1605,6 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	always_memset(&km->ops[op_index].attrs, 0,
 		      sizeof(km->ops[op_index]) -
 			      offsetof(struct km_operation, attrs));
-	km->used_slots &= ~(1u << op_index);
 	*out_len_bytes = ECDSA_SIG_BYTES;
 	return SB_OK;
 }
@@ -1720,7 +1721,7 @@ static enum strongbox_error sb_GenerateKeyPair(struct km *km, uint32_t *buf,
 	if (total_words + 1 + CBOR_MACED_KEY_WORDS > buf_size_words)
 		return SBERR_UnknownError;
 	always_memset(buf + total_words, 0,
-		(1 + CBOR_MACED_KEY_WORDS) * sizeof(uint32_t));
+		      (1 + CBOR_MACED_KEY_WORDS) * sizeof(uint32_t));
 
 	/* Place the length of the Mac'ed key in bytes.	 */
 	buf[total_words] = CBOR_MACED_KEY_LEN;
