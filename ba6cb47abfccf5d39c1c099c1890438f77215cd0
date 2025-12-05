@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b63ce4_a4de4b0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-12-05T03:00:05Z",
+      "side": 1,
+      "message": "For non-PD role, maybe you could simply chek pdc_is_rdo_valid, which returns true when connector status is valid and power_operation_mode \u003d\u003d PD_OPERATION",
+      "revId": "ba6cb47abfccf5d39c1c099c1890438f77215cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
