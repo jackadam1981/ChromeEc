@@ -454,9 +454,10 @@ enum km_security_level {
 /* Keymint's key origin. */
 enum km_origin {
 	KM_ORIGIN_GENERATED = 0,
-	KM_ORIGIN_IMPORTED = 1,
-	KM_ORIGIN_UNKNOWN = 2,
-	KM_ORIGIN_SECURELY_IMPORTED = 3,
+	KM_ORIGIN_DERIVED = 1,
+	KM_ORIGIN_IMPORTED = 2,
+	KM_ORIGIN_RESERVED = 3,
+	KM_ORIGIN_SECURELY_IMPORTED = 4,
 };
 
 enum km_digest {
