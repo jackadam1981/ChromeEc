@@ -313,8 +313,7 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 					return err;
 			}
 
-			return cmd_p->handler(&km, p->buffer,
-					      buf_size_words,
+			return cmd_p->handler(&km, p->buffer, buf_size_words,
 					      p->in_size / sizeof(uint32_t),
 					      &p->out_size);
 		}
@@ -833,9 +832,9 @@ enum dcrypto_result cryptokey_generate(struct km *km, enum km_algorithm alg,
 			/* Test P256 key candidate and save its public key. */
 			result = DCRYPTO_p256_key_from_bytes(
 				&km->last_pk_x, &km->last_pk_y, &d, key);
+			memcpy(key, &d, sizeof(d));
 			if (result != DCRYPTO_RETRY)
 				break;
-			memcpy(key, &d, sizeof(d));
 		}
 	} while (result != DCRYPTO_OK);
 	return result;
@@ -1506,7 +1505,7 @@ static enum strongbox_error sb_Update(struct km *km, uint32_t *buf,
 
 	if (km->ops[op_index].attrs.digest == KM_DIGEST_SHA_2_256) {
 		SHA256_sw_update(&km->ops[op_index].sha256_ctx,
-				 (uint8_t *)buf + 2, update_size);
+				 (uint8_t *)(buf + 2), update_size);
 	} else if (km->ops[op_index].attrs.digest == KM_DIGEST_NONE) {
 		if (update_size + km->ops[op_index].none_ctx.update_size >
 		    sizeof(km->ops[op_index].none_ctx.update_context))
@@ -1553,7 +1552,8 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 {
 	size_t op_index, update_size;
 	enum dcrypto_result result;
-	const uint32_t *sign_data = NULL;
+	p256_int p256_digest, p256_r, p256_s;
+	const uint8_t *sign_data = NULL;
 
 	/* Minimum 2 words - Operation Handler and Input Size */
 	if (req_len_words < 2)
@@ -1575,8 +1575,8 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 
 	if (km->ops[op_index].attrs.digest == KM_DIGEST_SHA_2_256) {
 		SHA256_sw_update(&km->ops[op_index].sha256_ctx,
-				 (uint8_t *)buf + 2, update_size);
-		sign_data = SHA256_sw_final(&km->ops[op_index].sha256_ctx)->b32;
+				 (uint8_t *)(buf + 2), update_size);
+		sign_data = SHA256_sw_final(&km->ops[op_index].sha256_ctx)->b8;
 	} else if (km->ops[op_index].attrs.digest == KM_DIGEST_NONE) {
 		if (update_size + km->ops[op_index].none_ctx.update_size >
 		    sizeof(km->ops[op_index].none_ctx.update_context))
@@ -1586,15 +1586,17 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 			       km->ops[op_index].none_ctx.update_size,
 		       buf + 2, update_size);
 		km->ops[op_index].none_ctx.update_size += update_size;
-		sign_data = km->ops[op_index].none_ctx.update_context;
+		sign_data =
+			(uint8_t *)km->ops[op_index].none_ctx.update_context;
 
 	} else
 		return SBERR_UnsupportedAlgorithm;
 
+	p256_from_bin(sign_data, &p256_digest);
 	result = DCRYPTO_p256_ecdsa_sign((p256_int *)km->ops[op_index].key,
-					 (p256_int *)sign_data,
-					 (p256_int *)&buf[0],
-					 (p256_int *)&buf[8]);
+					 &p256_digest, &p256_r, &p256_s);
+	p256_to_bin(&p256_r, (uint8_t *)&buf[0]);
+	p256_to_bin(&p256_s, (uint8_t *)&buf[8]);
 
 	if (result != DCRYPTO_OK)
 		return SBERR_UnknownError;
@@ -1720,7 +1722,7 @@ static enum strongbox_error sb_GenerateKeyPair(struct km *km, uint32_t *buf,
 	if (total_words + 1 + CBOR_MACED_KEY_WORDS > buf_size_words)
 		return SBERR_UnknownError;
 	always_memset(buf + total_words, 0,
-		(1 + CBOR_MACED_KEY_WORDS) * sizeof(uint32_t));
+		      (1 + CBOR_MACED_KEY_WORDS) * sizeof(uint32_t));
 
 	/* Place the length of the Mac'ed key in bytes.	 */
 	buf[total_words] = CBOR_MACED_KEY_LEN;
