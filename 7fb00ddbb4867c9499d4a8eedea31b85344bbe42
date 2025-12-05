@@ -16,6 +16,29 @@
       "message": "Is it better using uint8_t for key to match p256_from_bin() signature?",
       "revId": "7fb00ddbb4867c9499d4a8eedea31b85344bbe42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20794f10_40455eca",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-05T18:24:22Z",
+      "side": 1,
+      "message": "this changes order of bytes, making it a different key. likely need a memcpy instead.",
+      "range": {
+        "startLine": 1186,
+        "startChar": 3,
+        "endLine": 1186,
+        "endChar": 48
+      },
+      "revId": "7fb00ddbb4867c9499d4a8eedea31b85344bbe42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
