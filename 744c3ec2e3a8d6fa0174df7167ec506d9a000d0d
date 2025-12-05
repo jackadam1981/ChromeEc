@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "be0b5eb9_b50bb93f",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2025-12-05T23:31:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "944185b9_980ee03e",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 836,
+        "endChar": 35
+      },
+      "revId": "744c3ec2e3a8d6fa0174df7167ec506d9a000d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8c1f8b9b_fa782079",
         "filename": "common/strongbox.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2025-12-05T18:28:41Z",
       "side": 1,
       "message": "if you remove this in key gen, you don\u0027t need it here.",
+      "range": {
+        "startLine": 1597,
+        "startChar": 1,
+        "endLine": 1597,
+        "endChar": 60
+      },
+      "revId": "744c3ec2e3a8d6fa0174df7167ec506d9a000d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38d0904_40063b1d",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2025-12-05T23:31:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cbd3740_0bc3f1e2",
       "range": {
         "startLine": 1597,
         "startChar": 1,
