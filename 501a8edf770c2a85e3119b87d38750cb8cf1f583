@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7a73b83_70d5d5ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-05T01:00:53Z",
+      "side": 1,
+      "message": "yes, I have run cros format on all modifyed files.",
+      "parentUuid": "e1f9f82b_76d04dfc",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16ed6d54_11239e75",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 35
