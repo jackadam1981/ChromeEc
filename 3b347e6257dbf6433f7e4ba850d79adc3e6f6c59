@@ -85,6 +85,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de9aaa3_7746f5f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-05T21:22:28Z",
+      "side": 1,
+      "message": "Looks like the original EC patch added a `flash_preserve_state` function. Why is that not needed here?",
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
