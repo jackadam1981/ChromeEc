@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944185b9_980ee03e",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-05T18:28:41Z",
+      "side": 1,
+      "message": "i don\u0027t think you need it here. if you add it here, you have to add it before the key usage. Let\u0027s keep private key in `d` as raw little-endian suitable for our use.",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 836,
+        "endChar": 35
+      },
+      "revId": "744c3ec2e3a8d6fa0174df7167ec506d9a000d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1f8b9b_fa782079",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-05T18:28:41Z",
+      "side": 1,
+      "message": "oh, this is a good catch!",
+      "range": {
+        "startLine": 1596,
+        "startChar": 1,
+        "endLine": 1596,
+        "endChar": 40
+      },
+      "revId": "744c3ec2e3a8d6fa0174df7167ec506d9a000d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbd3740_0bc3f1e2",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-05T18:28:41Z",
+      "side": 1,
+      "message": "if you remove this in key gen, you don\u0027t need it here.",
+      "range": {
+        "startLine": 1597,
+        "startChar": 1,
+        "endLine": 1597,
+        "endChar": 60
+      },
+      "revId": "744c3ec2e3a8d6fa0174df7167ec506d9a000d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0104ca1_a4ad5c52",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1601,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-05T18:28:41Z",
+      "side": 1,
+      "message": "and this one is good too!",
+      "range": {
+        "startLine": 1600,
+        "startChar": 0,
+        "endLine": 1601,
+        "endChar": 42
+      },
+      "revId": "744c3ec2e3a8d6fa0174df7167ec506d9a000d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
