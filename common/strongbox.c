@@ -1457,10 +1457,6 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 	    params.attrs.digest_flags != KM_DIGESTFLAG_NONE)
 		return SBERR_IncompatibleDigest;
 
-	/* Mark slot as allocated. */
-	km->used_slots |= 1U << slot;
-	km->ops[slot].attrs = params.attrs;
-
 	/* Generate random and unique operation id. */
 	do {
 		if (!fips_rand_bytes(&operation_id, sizeof(operation_id)))
@@ -1471,6 +1467,10 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 				break;
 			};
 	} while (!unique);
+
+	/* Mark slot as allocated. */
+	km->used_slots |= 1U << slot;
+	km->ops[slot].attrs = params.attrs;
 
 	/* Initialize hash if requested. */
 	km->ops[slot].none_ctx.update_size = 0;
@@ -1606,6 +1606,9 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	if (op_index >= ARRAY_SIZE(km->ops))
 		return SBERR_InvalidOperationHandle;
 
+	/* Cleanup slot if found, early, so it is freed on error too. */
+	km->used_slots &= ~(1u << op_index);
+
 	if (km->ops[op_index].attrs.algorithm != KM_ALG_EC)
 		return SBERR_UnsupportedAlgorithm;
 
@@ -1647,7 +1650,6 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	always_memset(&km->ops[op_index].attrs, 0,
 		      sizeof(km->ops[op_index]) -
 			      offsetof(struct km_operation, attrs));
-	km->used_slots &= ~(1u << op_index);
 	*out_len_bytes = ECDSA_SIG_BYTES;
 	return SB_OK;
 }
