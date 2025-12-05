@@ -194,7 +194,7 @@ struct km_operation {
 	uint32_t operation_id;
 	struct km_key_attr attrs;
 	enum km_purpose purpose;
-	uint32_t key[8];
+	uint8_t key[P256_NBYTES];
 	union {
 		struct digest_none_ctx none_ctx;
 		struct sha256_ctx sha256_ctx;
@@ -205,8 +205,8 @@ struct km_operation {
 
 /* Persistent configuration parameters */
 struct keymint_config {
-	uint32_t hmac_tag_key[8];
-	uint32_t drbg_seed_key[8];
+	uint8_t hmac_tag_key[P256_NBYTES];
+	uint8_t drbg_seed_key[P256_NBYTES];
 };
 
 /* Keymint context */
@@ -930,7 +930,7 @@ clean:
 enum dcrypto_result cryptokey_import_bound(
 	struct km *km, const uint32_t *tags_start, size_t tag_words,
 	const struct slice application_id, const struct slice application_data,
-	const uint32_t *blob, size_t blob_size_words, uint32_t *key)
+	const uint32_t *blob, size_t blob_size_words, uint8_t *key)
 {
 	enum dcrypto_result result = DCRYPTO_FAIL;
 	const struct sha256_digest *digest;
@@ -967,7 +967,7 @@ enum dcrypto_result cryptokey_import_bound(
 	blob += KM_AES_IV_WORDS;
 
 	/* Decrypt key */
-	result = DCRYPTO_aes_ctr((uint8_t *)key, (uint8_t *)aes_key,
+	result = DCRYPTO_aes_ctr(key, (uint8_t *)aes_key,
 				 KM_AES_ENCRYPT_KEY_BITS, iv, (uint8_t *)blob,
 				 key_size);
 
@@ -1042,7 +1042,7 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 					const uint32_t *param_tags,
 					size_t param_tags_words,
 					struct km_key_params *params,
-					uint32_t *key)
+					uint8_t *key)
 {
 	uint32_t hw_tag_words, sw_tag_words, tag_words, key_blob_size;
 	enum dcrypto_result result;
@@ -1134,6 +1134,7 @@ static enum strongbox_error generate_key_blob(
 	struct km_key_params params = { 0 };
 	struct km_key_params sign_params = { 0 };
 	p256_int attest_key;
+	uint8_t attest_key_bytes[P256_NBYTES];
 	uint32_t *key_blob_size = out_buf;
 	size_t blob_start_words = 0;
 	size_t blob_size_words;
@@ -1181,7 +1182,8 @@ static enum strongbox_error generate_key_blob(
 			/* Import attestation key, skipping length */
 			err = import_blob(km, tags + tags[0] + 2,
 					  attest_key_size, NULL, 0,
-					  &sign_params, attest_key.a);
+					  &sign_params, attest_key_bytes);
+			p256_from_bin(attest_key_bytes, &attest_key);
 			if (err != SB_OK)
 				return err;
 			if ((sign_params.attrs.purpose_flags &
@@ -1594,7 +1596,7 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 		return SBERR_UnsupportedAlgorithm;
 
 	p256_from_bin(sign_data, &p256_digest);
-	p256_from_bin((uint8_t *)km->ops[op_index].key, &p256_key);
+	p256_from_bin(km->ops[op_index].key, &p256_key);
 	result = DCRYPTO_p256_ecdsa_sign(&p256_key, &p256_digest,
 		&p256_r, &p256_s);
 	p256_to_bin(&p256_r, (uint8_t *)&buf[0]);
