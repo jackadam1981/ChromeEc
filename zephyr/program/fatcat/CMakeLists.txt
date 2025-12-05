@@ -88,3 +88,5 @@ if(DEFINED CONFIG_BOARD_RUBY)
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"ruby/src/keyboard_customization.c")
 endif()
+
+zephyr_library_sources("board_chipset.c")
