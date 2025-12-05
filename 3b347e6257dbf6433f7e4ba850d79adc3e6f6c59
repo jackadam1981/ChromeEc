@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a12dad_d9854a0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-05T21:19:33Z",
+      "side": 1,
+      "message": "Please add a link to the original EC commit.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98381192_982bb2bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-05T21:19:33Z",
+      "side": 1,
+      "message": "If we\u0027re not preserving the WP status across reboot, why doesn\u0027t the Zephyr RO + Zephyr RW case fail as well?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ba8824_02fe0d07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-05T21:19:33Z",
+      "side": 1,
+      "message": "It won\u0027t solve the coverage since it runs on hardware, but let\u0027s go ahead and add a unit test for this since we\u0027ve hit it twice.\n\nIf we accidentally break this somehow in the future (upstream change, etc.), it affects security, which we don\u0027t want.\n\nWe have [unit tests that reboot](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/flash_write_protect.c), so it should be possible to put these steps into a test.\n\nOne caveat is that I don\u0027t think we have anything in `run_device_tests.py` that will use EC_RO and Zephyr RW.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bf5469ef_f499c46b",
