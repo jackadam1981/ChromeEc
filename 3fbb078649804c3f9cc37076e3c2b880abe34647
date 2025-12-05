@@ -63,6 +63,24 @@
       "message": "Might be helpful to add a summary comment here to explain why these custom settings are being applied.",
       "revId": "3fbb078649804c3f9cc37076e3c2b880abe34647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6dbaa8_786677f1",
+        "filename": "zephyr/program/fatcat/ruby/src/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2025-12-05T20:35:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "785b8600_b91ccb70",
+      "revId": "3fbb078649804c3f9cc37076e3c2b880abe34647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
