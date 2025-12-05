@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9459a6_cf95e2b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24667dd9_6dcd535d",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "688470bc_8b1dff4f",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-18T11:17:43Z",
       "side": 1,
       "message": "Add a proper dependency, otherwise it will be enabled for every project.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d513818d_462eb157",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "688470bc_8b1dff4f",
       "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c0627e_3e7de36a",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "I’ve added the dependency in Kconfig (depends on SOC_EM32F967).\nIs it ok?",
+      "parentUuid": "e8865045_398ae0a4",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da3ffc2_e20c4486",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-11-18T11:17:43Z",
       "side": 1,
       "message": "Move to previous line",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55a6f85_ac98370b",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da3ffc2_e20c4486",
       "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8510dc87_0177ab35",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af8b88b_c55f2273",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "679c7774_32523667",
@@ -99,6 +189,24 @@
       "writtenOn": "2025-11-18T11:17:43Z",
       "side": 1,
       "message": "Null terminate the buf with buf[8] \u003d \u0027\\0\u0027; The buf pointer is shared outside this function, so we are not 100% sure it was not modified.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35b6340_2bc2ac2d",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679c7774_32523667",
       "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff61e99c_cb3c3a1a",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbc26c6_5bbbad68",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "874b6d0b_1f635e14",
@@ -133,6 +259,24 @@
       "writtenOn": "2025-11-18T11:17:43Z",
       "side": 1,
       "message": "I think DEBUG_RST is fine. There is no a perfect match for `RESET_LOW_POWER_WAKE`, so I believe mapping it to `DEBUG_RST` is acceptable to differentiate it from other reset causes. You can add a comment explaining it.",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c475cbcd_cbc0b861",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1112822
+      },
+      "writtenOn": "2025-12-05T14:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874b6d0b_1f635e14",
       "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
