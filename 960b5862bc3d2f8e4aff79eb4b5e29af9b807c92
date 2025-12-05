@@ -16,6 +16,23 @@
       "message": "Ran the PD tests on both the ports and did not observe any new failures.",
       "revId": "960b5862bc3d2f8e4aff79eb4b5e29af9b807c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "789dc600_b54b8591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-05T22:58:31Z",
+      "side": 1,
+      "message": "I would guess that the coverage might be addressed by Smit\u0027s coverage work on a separate CL stack.",
+      "revId": "960b5862bc3d2f8e4aff79eb4b5e29af9b807c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
