@@ -22,6 +22,30 @@
       },
       "revId": "ad7232f7063a38b1350de4979f11e01db6adb5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8e6db1_c1e10a03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-05T02:47:03Z",
+      "side": 1,
+      "message": "I have not implemented [mpu_lock_rollback](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/mpu.h;l\u003d36?q\u003dmpu_lock_rollback#:~:text\u003d35-,36,-37) yet. It is pending merging this last PR: https://github.com/zephyrproject-rtos/zephyr/pull/99530\n\nI had approvals from `npitre` and `fkokosinski`. `kartben` requested some minor changes and he has not approved the PR yet.",
+      "parentUuid": "281709ad_a892ccba",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "ad7232f7063a38b1350de4979f11e01db6adb5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
