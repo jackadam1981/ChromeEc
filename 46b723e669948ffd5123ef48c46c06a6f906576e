@@ -224,6 +224,30 @@
       },
       "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1033b33e_0fd04af0",
+        "filename": "zephyr/subsys/fingerprint/alg/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T09:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002f0573_a448610b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "46b723e669948ffd5123ef48c46c06a6f906576e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
