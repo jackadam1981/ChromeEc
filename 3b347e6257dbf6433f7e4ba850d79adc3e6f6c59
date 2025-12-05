@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef5d506_67838e04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-05T21:40:46Z",
+      "side": 1,
+      "message": "I added that at the bottom of the commit message:\n\n```\nThis change mirrors the logic from the original EC repository,\nfound at https://crrev.com/c/4885833.\n```",
+      "parentUuid": "b1a12dad_d9854a0e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98381192_982bb2bd",
