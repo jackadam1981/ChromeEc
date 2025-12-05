@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57f7a2e1_44997195",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.ft",
+        "patchSetId": 31
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed393e8b_0ab91527",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1fab52_d8daab64",
@@ -271,6 +295,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be93eca_cc202cc3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afb2b14_ee39cebf",
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78cd6df2_a2ffb5fd",
@@ -379,6 +421,30 @@
       "side": 1,
       "message": "I have modified this, the private lib can handle NULL.",
       "parentUuid": "a2e19591_eb34c714",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "264d8d42_e98209ca",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "242ace45_9b8bbd20",
       "range": {
         "startLine": 92,
         "startChar": 15,

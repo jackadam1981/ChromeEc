@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "191e98b5_ca05267d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1f9f82b_76d04dfc",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16ed6d54_11239e75",
@@ -89,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b8cafa_943d2d1b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00b56a3d_f01be44f",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03958a7e_e510c0b3",
@@ -120,6 +156,24 @@
       "side": 1,
       "message": "modified",
       "parentUuid": "03958a7e_e510c0b3",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29db802_a2993f0c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b754553_35fbd789",
       "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5201197_68177117",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "I mean you just return 0 if both cases - with and without the private library, so I believe the additional `if` is not needed.",
+      "parentUuid": "21d86e75_6c339d9f",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9ffc759_8e604d91",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 35
@@ -190,6 +262,24 @@
       "side": 1,
       "message": "modified",
       "parentUuid": "b9ffc759_8e604d91",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc43f950_59ef2886",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc87947_c61a39bd",
       "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +319,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bec22e5_561e17c7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b86b72_a783bc60",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a56c722c_ac794131",
@@ -260,6 +368,24 @@
       "side": 1,
       "message": "Yes, I think just use rx_len will be more clear, I have modified this.",
       "parentUuid": "a56c722c_ac794131",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4eca11_f05f3529",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-05T07:45:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71dd6e43_c294e39a",
       "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
