@@ -120,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0964db87_0f955e12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-05T23:40:46Z",
+      "side": 1,
+      "message": "I added a unit test in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7233318\n\nIt passed on helipilot:\n\n```\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ sudo ./test/run_device_tests.py -b helipilot -f servo_micro -t system_is_locked_wp_on.* --zephyr\n\nTest \"system_is_locked_wp_on\": PASSED\nTest \"system_is_locked_wp_on_helipilot_v2.0.24337\": PASSED\nTest \"system_is_locked_wp_on_helipilot_v2.0.27609\": PASSED\nTest \"system_is_locked_wp_on_buccaneer_v2.0.26328\": PASSED\n```\n\nIt fails without this CL. The tests also pass with the `--zephyr` flag. I have not tested on `dartmonkey` and `bloonchipper` because I do not have the boards with me now. I foresee this a very low risk.",
+      "parentUuid": "a49bb644_97c54f93",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bf5469ef_f499c46b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
