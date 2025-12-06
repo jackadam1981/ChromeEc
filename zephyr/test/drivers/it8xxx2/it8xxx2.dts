@@ -1,0 +1,44 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <dt-bindings/usb_pd_tcpm.h>
+/* * Assuming this header defines the specific IRQ numbers 
+ * (e.g., IT8XXX2_IRQ_USBPD1) used by the driver.
+ */
+#include <dt-bindings/interrupt-controller/ite-intc.h>
+
+
+/ {
+	usbc {
+		port1@1 {
+			compatible = "named-usbc-port";
+			tcpc = <&it8xxx2_emul>;
+		};
+	};
+};
+
+&i2c2 {
+	status="okay";
+
+	it8xxx2_emul: it8xxx2@4e {
+		/* * 1. Using the correct driver compatible string (ite,it8xxx2-tcpc 
+		 * is the actual hardware part, cros,it8xxx2-tcpc-emul is the emulation name).
+		 */
+		compatible = "cros,it8xxx2-tcpc-emul", "ite,it8xxx2-tcpc";
+		status = "okay";
+		reg = <0x4e>;
+        
+		/* * 2. Define the interrupt (irq) line. 
+		 * The test relies on usbpd_ctrl_regs[port].irq which is populated
+		 * from the DTS 'irq' property in Zephyr. We use a placeholder IRQ value.
+		 */
+        interrupts = <IT8XXX2_IRQ_USBPD1 0>; /* Assuming USBPD1 is the IRQ for Port 1 */
+
+		tcpc-flags = <(
+			TCPC_FLAGS_TCPCI_REV2_0 |
+			TCPC_FLAGS_CONTROL_VCONN |
+			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V)>;
+	};
+};
