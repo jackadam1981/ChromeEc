@@ -22,6 +22,30 @@
       },
       "revId": "8b73b0d275fdc17d2afe89ba0d9b4fc6a2994873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de364a8d_ade308b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-12-06T13:30:42Z",
+      "side": 1,
+      "message": "\u003e Could you please elaborate on the role of BIOS in this scenario?\n\n\nare you asking a general question for why BIOS would like to use it ? then, the answer is here https://github.com/coreboot/coreboot/blob/main/src/ec/google/chromeec/ec.c#L1186 or are you asking to update the commit msg about the usage ?",
+      "parentUuid": "9fd260e7_7cff7084",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "8b73b0d275fdc17d2afe89ba0d9b4fc6a2994873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
