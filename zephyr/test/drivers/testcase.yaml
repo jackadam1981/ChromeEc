@@ -783,6 +783,23 @@ tests:
     extra_conf_files:
     - prj.conf
     - ec_host_cmd.conf
+  drivers.it8xxx2:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_IT8XXX2=y
+    - CONFIG_PLATFORM_EC_USB_PD_TCPC_LOW_POWER=y
+    extra_dtc_overlay_files:
+    - ./boards/native_sim.overlay
+    - ./it8xxx2/tcpc_policy.dts
+  drivers.it8xxx2.ec_host_cmd:
+    extra_configs:
+    - CONFIG_LINK_TEST_SUITE_IT8XXX2=y
+    - CONFIG_PLATFORM_EC_USB_PD_TCPC_LOW_POWER=y
+    extra_dtc_overlay_files:
+    - ./boards/native_sim.overlay
+    - ./it8xxx2/tcpc_policy.dts
+    extra_conf_files:
+    - prj.conf
+    - ec_host_cmd.conf
   drivers.it8xxx2_hw_sha256:
     extra_configs:
     - CONFIG_LINK_TEST_SUITE_IT8XXX2_HW_SHA256=y
