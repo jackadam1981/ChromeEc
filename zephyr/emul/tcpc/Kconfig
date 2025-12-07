@@ -32,6 +32,13 @@ config EMUL_ANX7447
 	  TCPCI emulator. ANX7447 specific API is available in
 	  zephyr/include/emul/tcpc/emul_anx7447.h
 
+config EMUL_IT8XXX2
+	bool "ITE IT8xxx2 emulator"
+	default y
+	depends on DT_HAS_ITE_IT8XXX2_TCPC_ENABLED
+	help
+	  Enable emulator for IT8XXX2 family of TCPC. This emulator is extension
+	  of the TCPCI emulator.
 
 config EMUL_NCT38XX
 	bool "Nuvoton NCT38xx emulator"
