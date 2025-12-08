@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69931412_43f19543",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-08T07:21:08Z",
+      "side": 1,
+      "message": "Yes, this is only required for the i80sa sensor.\nI introduced HAVE_ELAN80SERIES_FLASH_SETTING and made FINGERPRINT_SENSOR_ELANI80SA select it.",
+      "parentUuid": "322ca229_b0349c95",
+      "revId": "b334a6d8ea327272b75d9d48aa307fd71539914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04038e37_6f83c196",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-03T11:25:26Z",
       "side": 1,
       "message": "Is this function used by the private lib? If that\u0027s not the case, is should be placed only in driver file.",
+      "revId": "b334a6d8ea327272b75d9d48aa307fd71539914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33164483_06695221",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-08T07:21:08Z",
+      "side": 1,
+      "message": "elan_use_flash_addresses() is not used by the private library.\nI\u0027ve moved the function into the driver file.",
+      "parentUuid": "04038e37_6f83c196",
       "revId": "b334a6d8ea327272b75d9d48aa307fd71539914c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
