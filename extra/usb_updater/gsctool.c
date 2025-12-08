@@ -4205,13 +4205,23 @@ static int process_set_strongbox(struct transfer_descriptor *td, uint8_t arg)
 {
 	char *cmd_str;
 	int rv;
-
+	/*
+	 * Set strongbox state support was added in 0.{5,6}.322. Don't run the
+	 * command if the Cr50 image does not support it.
+	 * TODO(b/466410556): Remove this check after Q2 2026 when the cr50
+	 * support has been out for a while.
+	 */
+	if (targ.shv[1].major < 5 ||
+	    (targ.shv[1].major < 7 && targ.shv[1].minor < 320)) {
+		printf("%s: skip command\n", __func__);
+		return 0;
+	}
 	if (arg)
 		cmd_str = "en";
 	else
 		cmd_str = "dis";
 
-	printf("%sabling factory mode\n", cmd_str);
+	printf("%sabling strongbox\n", cmd_str);
 	rv = send_vendor_command(td, VENDOR_CC_SET_STRONGBOX_STATE, &arg,
 				 sizeof(arg), NULL, 0);
 	if (rv) {
