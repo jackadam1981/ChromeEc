@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fea5a76_f5e9bd1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-08T17:37:34Z",
+      "side": 1,
+      "message": "Can you verify that this test fails without https://crrev.com/c/7228977?\n\nDoes it fail in Renode too?\n\nAdd a `TEST` comment mentioning that you tried this to make sure the test actually catches the bug we were seeing.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "489f859a6622e95ff8b9b2be597bfdb80c967856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92854c94_5451b329",
         "filename": "test/run_device_tests.py",
         "patchSetId": 3
