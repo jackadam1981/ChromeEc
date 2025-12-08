@@ -5204,6 +5204,10 @@ static int process_cr50_get_metrics(struct transfer_descriptor *td,
 	       (stats.misc_status >> CR50_METRICSV_CCD_MODE_EN_SHIFT) & 1);
 	printf("   ambigous straps:   %7d\n",
 	       (stats.misc_status >> CR50_METRICSV_AMBIGUOUS_STRAP_SHIFT) & 1);
+	printf("   sb disable: %14d\n",
+	       (stats.misc_status >> CR50_METRICSV_SB_DISABLE_SHIFT) & 1);
+	printf("   sb enable: %15d\n",
+	       (stats.misc_status >> CR50_METRICSV_SB_ENABLE_SHIFT) & 1);
 
 	return 0;
 }
