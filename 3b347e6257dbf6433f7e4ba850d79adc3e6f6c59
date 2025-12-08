@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a37abc17_8d34e125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-08T17:41:17Z",
+      "side": 1,
+      "message": "\u003e It does not actually set the hardware UMA_LOCK bit.\n\nWhy is Zephyr doing it differently than EC? Is \"tracking UMA_LOCK in software\" secure? Usually it\u0027s more secure to leverage hardware mechanisms for security rather than emulating it in software.",
+      "parentUuid": "9999c8b0_5389972e",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ba8824_02fe0d07",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
