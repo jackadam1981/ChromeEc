@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9999c8b0_5389972e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-08T17:00:56Z",
+      "side": 1,
+      "message": "Based on the discussion with CH, the reason the Zephyr RO + Zephyr RW firmware configuration does not fail, even when the WP (Write Protect) status is not preserved across a reboot, is primarily due to how the Zephyr-EC flash driver handles the UMA_LOCK mechanism compared to the original CROS-EC flash driver.\n\nThe key difference between CROS-EC and Zephyr-EC is the Handling of UMA_LOCK:\n\n```\n- CROS-EC Flash Driver:\n\n1) It enabled the UMA_LOCK bit in the NPCX_UMA_ECTS register when the system was protected.\n\n2) Once UMA_LOCK bit is set, it cannot be cleared until an EC Core domain reset.\n\n3) Setting this bit blocks all flash operations, including the necessary reading of the status registers. This blockage is what caused the failure mode in configurations when the RO firmware was based on CROS-EC.\n\n4) The values of Status-Register-1 and Status-Register-2 of the internal SPI NOR flash are saved to variables saved_sr1/saved_sr2 before locking. This is why we needed to restore them when using the CROS-EC RO and Zephyr-EC RW.\n\n- Zephyr Flash Driver:\n\n1) It does not actually set the hardware UMA_LOCK bit.\n\n2) Instead, it uses a global variable to track the UMA_LOCK state in software.\n\n3) By avoiding the hardware lock, the system can still successfully read the SPI flash\u0027s status registers even when the system is protected (i.e., when the software state indicates a lock). This is why things behaved as expected in Zephyr-EC RO and Zephyr-EC RW.\n```",
+      "parentUuid": "98381192_982bb2bd",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71ba8824_02fe0d07",
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "I believe this is already implemented in zephyr: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_flash/cros_flash.c;drc\u003d3bbdefd678ce52d8f7672b0189ba88972a64dfde;l\u003d450#:~:text\u003d449-,450,-451\n\nI am confirming with CH",
       "parentUuid": "8de9aaa3_7746f5f4",
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9b7df8_a9069378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-08T17:00:56Z",
+      "side": 1,
+      "message": "This is not required in the Zephy-EC implementation based on explanation in the other comment.",
+      "parentUuid": "371fb29e_f0eed980",
       "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
