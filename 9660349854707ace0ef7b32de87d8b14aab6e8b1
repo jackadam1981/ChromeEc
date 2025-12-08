@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5317e9e0_1c2d9308",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2025-12-08T16:12:18Z",
+      "side": 1,
+      "message": "This can leak the slot.",
+      "range": {
+        "startLine": 1437,
+        "startChar": 3,
+        "endLine": 1437,
+        "endChar": 29
+      },
+      "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "233071a1_6823508d",
         "filename": "include/strongbox.h",
         "patchSetId": 1
