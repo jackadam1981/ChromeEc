@@ -12,4 +12,13 @@ config PLATFORM_EC_ET171_ENTER_BOOTLOADER
 	  Add implementation of chip_enter_bootloader for the ET171 chip
 	  needed for the EC_CMD_ENTER_BOOTLOADER host command.
 
+config PLATFORM_EC_ET171_QSPI
+	bool "Enable QSPI mode for ET171"
+	default y
+	depends on SOC_EGIS_ET171
+	depends on FLASH_ANDES_QSPI_XIP
+	depends on FLASH_EX_OP_ENABLED
+	help
+	  Enable QSPI mode for flash operations for ET171 chip.
+
 endif # PLATFORM_EC
