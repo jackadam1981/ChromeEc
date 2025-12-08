@@ -56,12 +56,17 @@ void fan_set_count(int count)
  * Convert the percentage to a target RPM. We can't simply scale all
  * the way down to zero because most fans won't turn that slowly, so
  * we'll map [1,100] => [FAN_MIN,FAN_MAX], and [0] => "off".
+ * Note: thermal_fan_percent() should return 1% minimum to ensure fan
+ * runs at rpm_min rather than stopping completely in case of thermal
+ * fan control.
  */
 int fan_percent_to_rpm(int fan_index, int temp_ratio)
 {
 	int rpm, max, min;
 
 	if (temp_ratio <= 0) {
+		/* Only set to 0 RPM for explicit shutdown, not thermal control
+		 */
 		rpm = 0;
 	} else {
 		min = fans[fan_index].rpm->rpm_min;
