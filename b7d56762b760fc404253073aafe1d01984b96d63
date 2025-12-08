@@ -16,6 +16,24 @@
       "message": "This can be static now",
       "revId": "b7d56762b760fc404253073aafe1d01984b96d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc9086f_0f8d5aa1",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-08T02:05:15Z",
+      "side": 1,
+      "message": "OK, I have modified it.",
+      "parentUuid": "caa4dd9f_a93e9f91",
+      "revId": "b7d56762b760fc404253073aafe1d01984b96d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
