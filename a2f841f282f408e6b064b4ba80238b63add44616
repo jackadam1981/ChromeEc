@@ -68,6 +68,30 @@
       },
       "revId": "a2f841f282f408e6b064b4ba80238b63add44616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b025f18f_c1dafb29",
+        "filename": "zephyr/drivers/board_id/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-08T21:38:01Z",
+      "side": 1,
+      "message": "Hi Caveh! I couldnot find any condition that stands out between old RVP boards \u0026 ocelot RVP or future RVPs. Even CONFIG_PLATFORM_EC_CBI is used by older boards as well. May be, how about changing config name to COMMON_BOARD_ID ?",
+      "parentUuid": "9f0a0b69_41a052ec",
+      "range": {
+        "startLine": 14,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "a2f841f282f408e6b064b4ba80238b63add44616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
