@@ -45,6 +45,30 @@
       },
       "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e90a1bb_eddd9209",
+        "filename": "include/strongbox.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2025-12-08T16:29:22Z",
+      "side": 1,
+      "message": "The AIDL and wire formats don\u0027t match. See: \nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/keymint/wire/src/keymint.rs;l\u003d351\n\n```\npub enum KeyOrigin {\n    Generated \u003d 0,\n    Derived \u003d 1,\n    Imported \u003d 2,\n    Reserved \u003d 3,\n    SecurelyImported \u003d 4,\n}\n```",
+      "parentUuid": "233071a1_6823508d",
+      "range": {
+        "startLine": 457,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 23
+      },
+      "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
