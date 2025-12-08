@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892fda59_295b1111",
+        "filename": "zephyr/test/drivers/it8xxx2/src/it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-08T22:54:45Z",
+      "side": 1,
+      "message": "Can you explain what this test is doing? Why do you need to tell the emulator explicitly to change CC status?",
+      "revId": "07577ac39116845f541fd8fbde261ef57eb040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
