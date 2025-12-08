@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29b0567_ca5591a1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T07:55:00Z",
+      "side": 1,
+      "message": "FLASH_BASE_ADDR is flash base address, which means it is not a sensor property, but project/soc property. Different projects can use a different address with the same sensor.\n\nPlease move it to dts as property.",
+      "revId": "01c4505e1b627826c5b4cf18fdf49d43f14a2f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fcf3f1_c8e580aa",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80sg_config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T07:55:00Z",
+      "side": 1,
+      "message": "Is this needed for 80sg?",
+      "revId": "01c4505e1b627826c5b4cf18fdf49d43f14a2f51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
