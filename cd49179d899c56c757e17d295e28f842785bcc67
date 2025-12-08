@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e4e26d_4151be27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-12-08T23:34:32Z",
+      "side": 1,
+      "message": "This assumes the EC CPU is little-endian, although it\u0027s confusing because I see `cbi_read_ufsc` treats the UFSC struct as a blob of bytes as well. Are the fields ever treated as 32-bit integers (the way they\u0027re declared), or is their interpretation also endianness-dependent (which seems bad)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
