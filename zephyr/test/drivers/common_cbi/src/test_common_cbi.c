@@ -8,6 +8,7 @@
 #include "host_command.h"
 #include "test/drivers/test_mocks.h"
 #include "test/drivers/test_state.h"
+#include "test/drivers/utils.h"
 #include "test_util.h"
 
 #include <zephyr/drivers/eeprom.h>
@@ -675,6 +676,8 @@ ZTEST_USER(common_cbi, test_board_id_fails_when_set)
 	zassert_equal(hc_get_response.data[0], board_id);
 }
 
+#define EXPECTED_UFSC_STR "4433221188776655ccbbaa9900ffeedd"
+
 ZTEST_USER(common_cbi, test_cbi_get_ufsc__read_write)
 {
 	const struct cbi_ufsc ufsc_to_write = {
@@ -706,6 +709,18 @@ ZTEST_USER(common_cbi, test_cbi_get_ufsc__read_write)
 	zassert_ok(cbi_get_ufsc(&ufsc_read), "cbi_get_ufsc failed");
 	zassert_mem_equal(&ufsc_to_write, &ufsc_read, sizeof(struct cbi_ufsc),
 			  "Read UFSC data does not match written data");
+
+	/* Test the console command output for the written data. */
+	const char *expected_scan = EXPECTED_UFSC_STR;
+	char ufsc_scan[sizeof(EXPECTED_UFSC_STR)];
+	BUILD_ASSERT(sizeof(EXPECTED_UFSC_STR) - 1 == 32);
+
+	SCAN_CONSOLE_LINE("cbi", EC_SUCCESS, "UFSC:", 1, "UFSC: %32s",
+			  ufsc_scan);
+	zassert_equal(strcmp(ufsc_scan, expected_scan), 0,
+		      "Console print of UFSC value does not match. "
+		      "Expected '%s', got '%s'",
+		      expected_scan, ufsc_scan);
 }
 
 ZTEST_USER(common_cbi, test_cbi_get_ufsc__not_found)
