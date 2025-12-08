@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88fa92f9_66dd717c",
+        "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T07:45:52Z",
+      "side": 1,
+      "message": "Please add BUILD_ASSERT making sure the watchdog config is enabled and remove `#ifdef CONFIG_WATCHDOG`. If watchdog is disabled, the driver is dysfunctional.",
+      "parentUuid": "66c0627e_3e7de36a",
+      "revId": "80cf02214fa8ce60ec5c9ef26c886cb9cad82e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3da3ffc2_e20c4486",
         "filename": "zephyr/drivers/cros_system/cros_system_em32.c",
         "patchSetId": 11
