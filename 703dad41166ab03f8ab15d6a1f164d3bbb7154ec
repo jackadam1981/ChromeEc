@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ffd1eb9_67d98953",
+        "filename": "zephyr/program/ocelot/ocicat/generated.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-08T08:12:31Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "d6b3efa7_84832cca",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 1
+      },
+      "revId": "703dad41166ab03f8ab15d6a1f164d3bbb7154ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccb7c471_f5001728",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4917a8ba_6daaa9af",
+        "filename": "zephyr/program/ocelot/ocicat/generated.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-08T08:12:31Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "ccb7c471_f5001728",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "703dad41166ab03f8ab15d6a1f164d3bbb7154ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80105968_777584d6",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-12-08T08:04:47Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Trailing Whitespace: Please remove the trailing whitespace.\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "703dad41166ab03f8ab15d6a1f164d3bbb7154ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "928ad592_ef5c916a",
+        "filename": "zephyr/program/ocelot/ocicat/generated.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-08T08:12:31Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "80105968_777584d6",
       "range": {
         "startLine": 137,
         "startChar": 0,
