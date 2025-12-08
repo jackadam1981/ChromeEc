@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bd0806_903502f7",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "Use `/* */` comments above every buffer.",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb14b72_c0acca86",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "Please store pointers to",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ed1b2d_0aad6d31",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "Does it make sense to make some of these parameters configurable via Kconfig?",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06713ac0_b2bf939a",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "Can you store pointers to all needed buffers in the `ft_libfp_data` structure instead of using global variables?",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdebcf32_5bc297ee",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "I think we can use LOG_INF in the init function.",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ecc125a_e3a0889f",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "I think we can use LOG_INF in the init function.",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece081a1_66272591",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "You change this condition to !\u003d and return, then the following code can avoid additional indentation:\n```\n\tif (ret !\u003d 0) {\n\t\tLOG_ERR(\"focal_getfeature failed: ret \u003d %d\", ret);\n\t\t*completion \u003d (data-\u003emax_enroll_samples - data-\u003eremain) * 100 /\n\t\t\t      data-\u003emax_enroll_samples;\n\t\treturn FP_ENROLLMENT_RESULT_LOW_QUALITY;\n\t}\n\tret \u003d focal_algo_enroll_by_feature(g_feature, enroll_index, g_finger_template_data);\n\tif (ret \u003d\u003d 0) {\n...\n```",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7692d937_fe68cf51",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-08T08:15:59Z",
+      "side": 1,
+      "message": "Same here, use `ret !\u003d 0`",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
