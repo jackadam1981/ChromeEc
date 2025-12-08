@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92854c94_5451b329",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-08T17:35:14Z",
+      "side": 1,
+      "message": "We can use an f-string here:\n\n\n\n```suggestion\n                    config_name\u003df\"system_is_locked_wp_on_{variant_name}\",\n```",
+      "range": {
+        "startLine": 830,
+        "startChar": 32,
+        "endLine": 830,
+        "endChar": 72
+      },
+      "revId": "489f859a6622e95ff8b9b2be597bfdb80c967856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
