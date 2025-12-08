@@ -16,6 +16,46 @@
       "message": "@smit.patel@7rays.corp-partner.google.com It looks like you could rebase this to be before the Tx timestamp CL and submit it without waiting.",
       "revId": "039997927b6a2e4ae7b4edbe8829a05d62e608da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe544e3_151e8202",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-12-08T04:07:53Z",
+      "side": 1,
+      "message": "\"add\" is a word, so this naming seems confusing. I\u0027d prefer to expand `add` into `auto_dischard_disconnect` to make this clearer.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 59
+      },
+      "revId": "039997927b6a2e4ae7b4edbe8829a05d62e608da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0056e3dd_baff1c11",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-12-08T04:07:53Z",
+      "side": 1,
+      "message": "If `tcpc_update8` fails for any reason then this gets out of sync. I think this update needs to be done last, and the result of the I2C transaction checked.",
+      "revId": "039997927b6a2e4ae7b4edbe8829a05d62e608da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
