@@ -34,6 +34,24 @@
       "parentUuid": "43cd495b_ae47656a",
       "revId": "c1ae8aa83834db8195836362826306c0ca030938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a471e08e_9b2d0c6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-08T06:33:45Z",
+      "side": 1,
+      "message": "Thanks Tristan. Looks like board id driver was getting build for ADL,MTL \u0026 PTL based RVPs too, though they were still using zephyr/program/intelrvp/src/intel_rvp_board_id.c. As we are planning to use common driver from ocelot \u0026 future boards, i have created a new config to limit the driver building only for specific boards now. I am not moving the old boards\u0027 dependency to  common driver now, as i dont have boards to cheack now. Corresponding CL is added -\u003e  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7235727",
+      "parentUuid": "b0da89c7_cc144673",
+      "revId": "c1ae8aa83834db8195836362826306c0ca030938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
