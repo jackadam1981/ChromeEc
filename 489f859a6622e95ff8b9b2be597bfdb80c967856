@@ -45,6 +45,30 @@
       },
       "revId": "489f859a6622e95ff8b9b2be597bfdb80c967856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b265ad72_f4e4f496",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-08T17:44:50Z",
+      "side": 1,
+      "message": "how about doing this as a follow up CL to clean all `for variant_name, variant_info` loops. I was aware that Duckie made this suggestion but was hesitant to made the change to keep things well structured.",
+      "parentUuid": "92854c94_5451b329",
+      "range": {
+        "startLine": 830,
+        "startChar": 32,
+        "endLine": 830,
+        "endChar": 72
+      },
+      "revId": "489f859a6622e95ff8b9b2be597bfdb80c967856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
