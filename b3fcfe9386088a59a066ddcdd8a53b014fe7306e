@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b933f60d_b5455479",
+        "filename": "zephyr/shim/chip/egis/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-08T14:28:30Z",
+      "side": 0,
+      "message": "I don\u0027t think this belongs to EC shim, how about moving it to `zephyr/program/fpmcu/et171/src`?",
+      "revId": "b3fcfe9386088a59a066ddcdd8a53b014fe7306e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
