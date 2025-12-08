@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d7c05c_de7b4b55",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-12-08T21:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d58461a1_80c1e412",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 46
+      },
+      "revId": "2e32b98ce18d7b4b026b249229a100f5bfa7a627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3cfa017_378ea5d3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-06T00:57:55Z",
       "side": 1,
       "message": "This is clearer as\n```\nif (is_response_ready) {\n  LOG_DBG(\"response is ready: response_length\");\nelse if (is_processing_error) {\n  LOG_ERR(\"processing error\");\n} else {\n  dsp_client_process_status();\n}\n```",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 0
+      },
+      "revId": "2e32b98ce18d7b4b026b249229a100f5bfa7a627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f5b876_05030fa2",
+        "filename": "zephyr/drivers/dsp_comms/client/dsp_client.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-12-08T21:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3cfa017_378ea5d3",
       "range": {
         "startLine": 316,
         "startChar": 0,
