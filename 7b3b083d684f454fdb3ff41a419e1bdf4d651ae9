@@ -46,6 +46,30 @@
       },
       "revId": "7b3b083d684f454fdb3ff41a419e1bdf4d651ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2821af1a_e481fbbc",
+        "filename": "zephyr/shim/src/fpsensor.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-08T07:20:42Z",
+      "side": 1,
+      "message": "OK, I have uploaded a separate CL, https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7233354",
+      "parentUuid": "c25bbb08_7c83e05e",
+      "range": {
+        "startLine": 51,
+        "startChar": 25,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "7b3b083d684f454fdb3ff41a419e1bdf4d651ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
