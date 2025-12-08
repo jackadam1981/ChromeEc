@@ -69,6 +69,30 @@
       },
       "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a0f5dd_0ee8b272",
+        "filename": "include/strongbox.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2025-12-08T21:53:54Z",
+      "side": 1,
+      "message": "keymint.rs and KeyOrigin.aidl match each other. We should change strongbox.h to also match.",
+      "parentUuid": "5e90a1bb_eddd9209",
+      "range": {
+        "startLine": 457,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 23
+      },
+      "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
