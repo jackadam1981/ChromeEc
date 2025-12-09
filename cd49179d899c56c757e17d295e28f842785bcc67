@@ -22,6 +22,30 @@
       },
       "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e51804_ab1c945a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-09T01:26:00Z",
+      "side": 1,
+      "message": "Actually, the format of printing out is independent of how it is stored (either in the EC flash or in the EEPROM) and how it is used.\n\nThe way the UFSC is stored (or the `cbi_get_ufsc()` you mentioned) depends on the common `cbi_get_board_info()` call, which uses byte-ordered little-endian. Since this is a common call that other CBI fields share, we don\u0027t have a strong reason not to use it.\n\nWhen the UFSC is used, it is cast to a `struct cbi_struct`, which is 32-bit-ordered little-endian (or `uint32_t data[4]`). Since all the EC CPUs are 32-bit architecture, this helps speed up the computation, like bit-wise operations.\n\nBack to the question, when the UFSC is printed, it follows the same format as the `ectool cbi`. The format of `ectool cbi` has a historical reason that some other CBI fields, like battery configs, are already decided to use byte-ordered little-endian. So the UFSC field simply follows that decision.",
+      "parentUuid": "56e4e26d_4151be27",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
