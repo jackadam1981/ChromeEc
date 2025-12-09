@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6c916f_0a73baec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-09T06:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717c0cac_33562f4f",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "a2f841f282f408e6b064b4ba80238b63add44616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fedb3e6_cc7c0f08",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-08T20:58:53Z",
       "side": 1,
       "message": "`default n` should already be the default.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "a2f841f282f408e6b064b4ba80238b63add44616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a24992_11b6af32",
+        "filename": "zephyr/drivers/board_id/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-09T06:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fedb3e6_cc7c0f08",
       "range": {
         "startLine": 7,
         "startChar": 1,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "Hi Caveh! I couldnot find any condition that stands out between old RVP boards \u0026 ocelot RVP or future RVPs. Even CONFIG_PLATFORM_EC_CBI is used by older boards as well. May be, how about changing config name to COMMON_BOARD_ID ?",
       "parentUuid": "9f0a0b69_41a052ec",
+      "range": {
+        "startLine": 14,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 61
+      },
+      "revId": "a2f841f282f408e6b064b4ba80238b63add44616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d4ed9a_bddbe164",
+        "filename": "zephyr/drivers/board_id/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-09T06:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b025f18f_c1dafb29",
       "range": {
         "startLine": 14,
         "startChar": 49,
