@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4994b9c2_5b3d5be2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-09T19:28:11Z",
+      "side": 1,
+      "message": "Since we\u0027re not shipping the `zephyr` `helipilot` version, I think we can go ahead and submit this before https://crrev.com/c/7228977 lands.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "fab77f8bdb4951bf5171f6400151dc27c9e0f5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
