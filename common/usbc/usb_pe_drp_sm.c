@@ -3730,7 +3730,7 @@ static void pe_snk_select_capability_run(int port)
 			 */
 			if (type == PD_CTRL_ACCEPT) {
 				pe_snk_apply_transition_current(port);
-				/* pd_print_timestamps(port); */
+				pd_print_timestamps(port);
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
 				return;
 			}
