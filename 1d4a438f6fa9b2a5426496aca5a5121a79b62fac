@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93a47f28_0de2ae93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-12-09T10:04:33Z",
+      "side": 1,
+      "message": "What are the vendor specific stuff for IT8xxx2 which I can use.? From where I get those things?",
+      "parentUuid": "bf6f41ab_cc77cf5f",
+      "revId": "1d4a438f6fa9b2a5426496aca5a5121a79b62fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97810724_495db677",
         "filename": "zephyr/emul/tcpc/Kconfig",
         "patchSetId": 5
