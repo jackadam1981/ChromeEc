@@ -1059,17 +1059,19 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	hw_tag_words = buf[1];
 	/* Skip KM_SECURITY_STRONGBOX word + size word */
 	tag_words = hw_tag_words + 2;
-	if (hw_tag_words >= blob_words)
+	/* Check we have enough to read sw_tag_words */
+	if (tag_words + 1 >= blob_words)
 		return SBERR_InvalidKeyBlob;
 
 	if (buf[tag_words] != KM_SECURITY_KEYSTORE)
 		return SBERR_InvalidKeyBlob;
 	sw_tag_words = buf[tag_words + 1];
-	if (sw_tag_words + tag_words >= blob_words)
-		return SBERR_InvalidKeyBlob;
 
 	/* Skip KM_SECURITY_KEYSTORE word + size word */
 	tag_words += sw_tag_words + 2;
+	/* Check we have enough to read key_blob_size */
+	if (tag_words >= blob_words)
+		return SBERR_InvalidKeyBlob;
 
 	/* Actual encrypted key blob size */
 	key_blob_size = buf[tag_words];
@@ -1397,7 +1399,7 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 	purpose = buf[0];
 
 	blob_words = buf[1];
-	if (blob_words > req_len_words - 1)
+	if (blob_words + 2 >= req_len_words)
 		return SBERR_InvalidKeyBlob;
 
 	params_words = buf[blob_words + 2];
@@ -1954,7 +1956,7 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	challenge_words =
 		(challenge_len + sizeof(uint32_t) - 1) / sizeof(uint32_t);
 	if (challenge_len > KM_MAX_CHALLENGE_LEN ||
-	    (challenge_words + index > req_len_words))
+	    (challenge_words + index + 1 >= req_len_words))
 		return SBERR_InvalidArgument;
 
 	memcpy(challenge, buf + index + 1, challenge_len);
