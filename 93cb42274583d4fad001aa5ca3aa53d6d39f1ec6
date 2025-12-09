@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e52ba9_00413cf8",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-12-09T21:08:31Z",
+      "side": 1,
+      "message": "Could you keep `jump_to_image` free of architecture-specific code? This should not have have the platform-specific code in it.",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 6
+      },
+      "revId": "93cb42274583d4fad001aa5ca3aa53d6d39f1ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
