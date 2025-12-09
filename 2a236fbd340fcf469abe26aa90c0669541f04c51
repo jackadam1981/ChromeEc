@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ccb0e5_20a752d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-09T20:44:14Z",
+      "side": 1,
+      "message": "I included the new test.",
+      "parentUuid": "42d1cdd4_c310ae5f",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "2a236fbd340fcf469abe26aa90c0669541f04c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23de8c8d_238bbf7f",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-09T19:25:01Z",
       "side": 1,
       "message": "Are you actually planning on implementing a host-side (emulator) test for this? If so, please file a bug to track it. I don\u0027t think we\u0027ll ever remember if it\u0027s the generic http://b/445467149 bug.",
+      "range": {
+        "startLine": 35,
+        "startChar": 32,
+        "endLine": 35,
+        "endChar": 57
+      },
+      "revId": "2a236fbd340fcf469abe26aa90c0669541f04c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd14f2e_e6869f32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-09T20:44:14Z",
+      "side": 1,
+      "message": "I mentioned that the test was verified on an actual board",
+      "parentUuid": "23de8c8d_238bbf7f",
       "range": {
         "startLine": 35,
         "startChar": 32,
