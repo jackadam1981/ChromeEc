@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22eda587_7e5e74f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-09T16:06:54Z",
+      "side": 1,
+      "message": "The code not covered by the tests is this line:\n```\n \t\t\t/* TODO(b/463750635): Implement UFSC set command */\n\t\t\treturn EC_ERROR_UNIMPLEMENTED;\n```\n\nLeave this to the TODO(b/463750635).",
+      "revId": "805c527ac7c2af813c9209493d0666f23c321838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
