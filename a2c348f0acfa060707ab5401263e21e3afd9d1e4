@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc48739b_5feaac89",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-09T19:40:45Z",
+      "side": 1,
+      "message": "Does it work if you write it as:\n\n\n\n```suggestion\nstatic const struct device *const fp_sensor_dev \u003d\n    DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor));\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 74
+      },
+      "revId": "a2c348f0acfa060707ab5401263e21e3afd9d1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
