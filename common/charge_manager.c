@@ -26,6 +26,7 @@
 #include "usb_pd.h"
 #include "usb_pd_dpm_sm.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 #include "util.h"
 #include "zephyr/include/usbc/pdc_dpm.h"
 #ifdef CONFIG_ZEPHYR
@@ -1500,9 +1501,6 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
-	/* pd_record_timestamp_start(
-		port, PD_INTERVAL_CM_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE); */
-
 	CM_MUTEX_LOCK(&cm_refresh);
 
 	/*
