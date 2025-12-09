@@ -46,6 +46,30 @@
       },
       "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba2d088_6eedf11c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-12-09T02:31:53Z",
+      "side": 1,
+      "message": "`cbi_get_board_info` doesn\u0027t do anything with endianness because it treats values as opaque bytes. Your comment that \"all EC CPUs are 32-bit architecture\" glosses over the assumption that all EC CPUs are little-endian 32-bit which may currently be the case but may not be the case in the future.\n\nSince it\u0027s assumed that the values are little-endian in the EEPROM this change doesn\u0027t seem problematic, but code that interprets the UFSC value as multibyte integers would be wrong on a big-endian CPU (it would need to byte-swap the values first). It also seems misleading to refer to the output as little-endian, since it\u0027s printed as opaque bytes without interpreting the values as the integers they are.",
+      "parentUuid": "a1e51804_ab1c945a",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

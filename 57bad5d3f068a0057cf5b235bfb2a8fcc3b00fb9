@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63659d3e_811434f1",
+        "filename": "zephyr/test/drivers/common_cbi/src/test_common_cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2025-12-09T02:31:53Z",
+      "side": 1,
+      "message": "Why make this a macro instead of inlining the string constant?\n\n```c\nconst char expected_scan[] \u003d \"...\";\nchar ufsc_scan[sizeof(expected_scan)];\n```",
+      "revId": "57bad5d3f068a0057cf5b235bfb2a8fcc3b00fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
