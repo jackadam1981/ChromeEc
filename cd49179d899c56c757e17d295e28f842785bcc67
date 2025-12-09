@@ -70,6 +70,54 @@
       },
       "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43cd4218_5785f7e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-09T03:58:12Z",
+      "side": 1,
+      "message": "I think \n```\n\tmemcpy(buf, d-\u003evalue, d-\u003esize);\n```\nor\n```\n\tfor (i \u003d\u003d 0; i \u003c d-\u003esize; i++)\n\t\tbuf[i] \u003d d-\u003evalue[i];\n```",
+      "parentUuid": "1ba2d088_6eedf11c",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffa5b6b_2566b8b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-09T03:58:12Z",
+      "side": 1,
+      "message": "You are correct that if the CPU was big-endian, this statement would be broken. This is based on the assumption that the CPU is little-endian (by far this assumption is true).\n\nMore correctly speaking, it prints the UFSC value as a hex string in the same endianness as the CPU. I updated the comment in this CL. For other documents, the term \"little-endian\" is used to avoid confusion, as you see in many comments in the EC codebase, as not all readers know the CPU\u0027s endianness.",
+      "parentUuid": "1ba2d088_6eedf11c",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "cd49179d899c56c757e17d295e28f842785bcc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
