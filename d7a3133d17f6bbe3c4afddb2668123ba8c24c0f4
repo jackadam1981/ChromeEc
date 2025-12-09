@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8039bc3b_b81452e8",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "e5bd0806_903502f7",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fcb14b72_c0acca86",
         "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
         "patchSetId": 23
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-08T08:15:59Z",
       "side": 1,
       "message": "Please store pointers to",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b7c6c3_009f5c61",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "fcb14b72_c0acca86",
       "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce4d9ea6_3662ba72",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "enroll_template_num  can be config via Kconfig, it\u0027s the number of enroll times. and log_level can be config via Kconfig. others we suggest config in source code",
+      "parentUuid": "c6ed1b2d_0aad6d31",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06713ac0_b2bf939a",
         "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
         "patchSetId": 23
@@ -65,6 +119,24 @@
       "writtenOn": "2025-12-08T08:15:59Z",
       "side": 1,
       "message": "Can you store pointers to all needed buffers in the `ft_libfp_data` structure instead of using global variables?",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28f59e4_d3236753",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "06713ac0_b2bf939a",
       "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7e148ef_b1f35e26",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "fdebcf32_5bc297ee",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ecc125a_e3a0889f",
         "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
         "patchSetId": 23
@@ -99,6 +189,24 @@
       "writtenOn": "2025-12-08T08:15:59Z",
       "side": 1,
       "message": "I think we can use LOG_INF in the init function.",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729ba958_7133ef6f",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "7ecc125a_e3a0889f",
       "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d69617e8_de26e190",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "ece081a1_66272591",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7692d937_fe68cf51",
         "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
         "patchSetId": 23
@@ -133,6 +259,24 @@
       "writtenOn": "2025-12-08T08:15:59Z",
       "side": 1,
       "message": "Same here, use `ret !\u003d 0`",
+      "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6e9725_53a4b529",
+        "filename": "zephyr/subsys/fingerprint/alg/ft98xx_bio_alg.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-09T02:42:15Z",
+      "side": 1,
+      "message": "modified this",
+      "parentUuid": "7692d937_fe68cf51",
       "revId": "d7a3133d17f6bbe3c4afddb2668123ba8c24c0f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
