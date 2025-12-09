@@ -867,13 +867,10 @@ __overridable void pd_notify_dp_alt_mode_entry(int port)
 struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
-	"Invalid interval",
 	[PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH] =
 		" cm_entry to run_cm_refresh",
 	[PD_INTERVAL_CM_REFRESH_TO_PPC_VBUS_SINK_DISABLE] =
 		"cm_refresh to ppc_vbus_sink_disable",
-	/* [PD_INTERVAL_CM_FORCE_CEIL_TO_PPC_VBUS_SINK_DISABLE] =
-		"cm_force_ceil to ppc_vbus_sink_disable",*/
 	[PD_INTERVAL_PPC_VBUS_SINK_DISABLE_TO_SYV682X_VBUS_SINK_DISABLE] =
 		"ppc_vbus_sink_disable to syv682x_vbus_sink_disable",
 	[PD_INTERVAL_SYV682X_VBUS_SINK_DISABLE_TO_WRITE_REG] =
