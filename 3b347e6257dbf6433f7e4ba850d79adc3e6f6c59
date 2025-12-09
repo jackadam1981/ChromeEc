@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a448f496_9f59a004",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-09T03:36:54Z",
+      "side": 1,
+      "message": "Based on the latest discussion with CH, `UMA_LOCK` blocks the UMA controller. This means we can no longer send any `SPI NOR` flash command protocol to the flash.  Because the `UMA_LOCK` disables all flash access including the Status Registers read, it has the side effect of making it impossible to read the flash status registers when the system is protected.\n\nThe `UMA_LOCK` bit was an early NPCX feature and is no longer needed  for flash protection. This is why it was removed from the Zephyr firmware.\n\nBecause it was enabled in the Cros-EC firmware, we need to restore the `sr1` and `sr2` to retrieve the SW-WP status. They are saved into RAM before the `UMA_LOCK` bit is enabled in the Cros-EC firmware. We do not need to preserve them in the Zephyr firmware because the `UMA_LOCK` bit is not used.",
+      "parentUuid": "db62fc79_4a0721b5",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "3b347e6257dbf6433f7e4ba850d79adc3e6f6c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ba8824_02fe0d07",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
