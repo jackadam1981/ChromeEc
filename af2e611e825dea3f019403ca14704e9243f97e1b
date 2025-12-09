@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac1d8c0_8fc783cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2025-12-09T08:11:14Z",
+      "side": 1,
+      "message": "1) fullcheckout-presubmit failed\nThis is fixed in latest Patchset 13\n\n2) firmware-zephyr-cq failed. \n   firmware-zephyr-public-cq failed. \n   \n  tested by command \"./twister -v -i -T zephyr/test/\"\n  Result: 534 of 535 executed test configurations passed (99.81%), 0 built (not run), 0 failed, 0 errored, with no warnings in 7069.52 seconds.\n\nPlease help with the (2) failure.",
+      "revId": "af2e611e825dea3f019403ca14704e9243f97e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
