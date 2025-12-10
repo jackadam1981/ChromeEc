@@ -14,6 +14,7 @@
 #include "binman.dtsi"
 #include "generated.dtsi"
 #include "power_signals.dtsi"
+#include "console.dtsi"
 
 /*
  * Map I2C buses to common names
