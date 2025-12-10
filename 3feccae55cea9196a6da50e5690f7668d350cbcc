@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96d03d63_6ed9306e",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-12-10T21:29:55Z",
+      "side": 1,
+      "message": "Consider moving this function out of this file.\n\nCould you check the implementations of \"dma_disable_all\" and \"interrupt_disable_all\" for chip-specific fcode? I think they provide an example to follow.",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 25
+      },
+      "revId": "3feccae55cea9196a6da50e5690f7668d350cbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1b17198_b94d7944",
         "filename": "common/system.c",
         "patchSetId": 5
