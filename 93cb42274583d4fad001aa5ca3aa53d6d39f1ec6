@@ -46,6 +46,30 @@
       },
       "revId": "93cb42274583d4fad001aa5ca3aa53d6d39f1ec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6436ba9_7c1a4691",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T19:50:02Z",
+      "side": 1,
+      "message": "You\u0027re most recent change doesn\u0027t quite solve the issue that Eric mentioned. There should be a `platform_pre_image_jump` function for each architecture. Or to keep things simple, there can be a default `platform_pre_image_jump` that is a no-op and then a RISC-V specific version in the RISC-V code. You could use the \"override\" (weak symbol) pattern to do this.\n\nAlso, for clarity, I would call it `arch_pre_image_jump` to since this is architecture-specific, which is clearer than \"platform\".",
+      "parentUuid": "1af1143c_4543b636",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 6
+      },
+      "revId": "93cb42274583d4fad001aa5ca3aa53d6d39f1ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

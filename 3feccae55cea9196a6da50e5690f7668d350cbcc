@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34ccf8b_920be436",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T19:50:02Z",
+      "side": 1,
+      "message": "Let\u0027s create a unit test that verifies the correct PMP settings are set when jumping from RO-\u003eRW and RW-\u003eRO.\n\nYou can dump the PMP entries and check that they match what we expect using code [like this](https://crrev.com/c/7227917), right?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "3feccae55cea9196a6da50e5690f7668d350cbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b17198_b94d7944",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T19:50:02Z",
+      "side": 1,
+      "message": "Is there a reason this is in between assigning `resetvec` and calling `resetvec()`? I would put it before the assignment to avoid breaking that up.",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 27
+      },
+      "revId": "3feccae55cea9196a6da50e5690f7668d350cbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c985bb7_31f4babf",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T19:50:02Z",
+      "side": 1,
+      "message": "Since this is being called from `jump_to_image`, I think it will be called for both RO-\u003eRW and RW-\u003eRO jumps. That\u0027s the behavior you want, right?",
+      "range": {
+        "startLine": 678,
+        "startChar": 1,
+        "endLine": 678,
+        "endChar": 27
+      },
+      "revId": "3feccae55cea9196a6da50e5690f7668d350cbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
