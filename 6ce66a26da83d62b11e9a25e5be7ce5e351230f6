@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e05aec8_c20fb773",
+        "filename": "zephyr/program/fpmcu/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-10T12:12:13Z",
+      "side": 1,
+      "message": "Fix board name, or change it to `RWSIG`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406d5950_79420869",
+        "filename": "zephyr/program/fpmcu/et171/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-10T12:12:13Z",
+      "side": 1,
+      "message": "I think you should be able to override these in `zephyr/program/fpmcu/et171/Kconfig` using data from DTS.\n\nEDIT: The default should be actually set in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/app/ec/chip/riscv/riscv-egis/Kconfig.et171;l\u003d28-36;drc\u003d4f07791ed025c75eb3f65a3638f691b87c1ffb05, but I found your comment that it\u0027s not possible to get offset of `ec-ro` node. Do you know why? Does the following work?\n```\ndefault $(dt_node_int_prop_hex,/binman/wp-ro/ec-ro,offset)\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0118491_ac420343",
+        "filename": "zephyr/program/fpmcu/et171/sanok.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-10T12:12:13Z",
+      "side": 1,
+      "message": "I think it should be fingerprint driver Kconfig option rather than DTS property.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cd010f_5fb89aac",
+        "filename": "zephyr/program/fpmcu/et171/soc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-10T12:12:13Z",
+      "side": 1,
+      "message": "First 256 bytes are used for SDCP. Is the size rounded to kilobytes?",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
