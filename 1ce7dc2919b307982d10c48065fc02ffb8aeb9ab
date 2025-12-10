@@ -16,6 +16,24 @@
       "message": "Should PP3300 be turned off as well?",
       "revId": "1ce7dc2919b307982d10c48065fc02ffb8aeb9ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b6a06a_0ed6ad65",
+        "filename": "zephyr/program/ocelot/ocicat/src/board_power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-10T08:12:08Z",
+      "side": 1,
+      "message": "The PP3300 and PP5000 rails are both controlled by the same PWR_EN_PP5000_A. See the schematic at the link.\n\nhttps://partnerissuetracker.corp.google.com/issues/438030605",
+      "parentUuid": "4be73212_d85ee98d",
+      "revId": "1ce7dc2919b307982d10c48065fc02ffb8aeb9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
