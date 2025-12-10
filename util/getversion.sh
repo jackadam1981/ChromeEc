@@ -88,6 +88,7 @@ main() {
   local values
   local vbase
   local ver
+  local builder
 
   IFS="${dc}"
   ver="${CR50_DEV:+DBG/}${CRYPTO_TEST:+CT/}${BOARD}_"
@@ -136,6 +137,14 @@ main() {
     popd > /dev/null
   done
 
+  if [ "$REPRODUCIBLE_BUILD" = 1 ]; then
+    builder="reproducible@build"
+  else
+    # Make the builder string length always be 60 chars to avoid annoying
+    # image size variations.
+    builder=$(printf "%-60.60s" "${USER}@`hostname`")
+  fi
+
   # On some boards where the version number consists of multiple components we
   # want to separate the first word of the version string as the version of the
   # EC tree.
@@ -155,11 +164,7 @@ main() {
   echo "/* Sub-fields for use in Makefile.rules and to form build info string"
   echo " * in common/version.c. */"
   echo "#define VERSION \"${ver}\""
-  if [ "$REPRODUCIBLE_BUILD" = 1 ]; then
-    echo '#define BUILDER "reproducible@build"'
-  else
-    echo "#define BUILDER \"${USER}@`hostname`\""
-  fi
+  echo "#define BUILDER \"${builder}\""
 
   if [[ ${#most_recents[@]} != 0 ]]; then
     # There are modified files, use the timestamp of the most recent one as
