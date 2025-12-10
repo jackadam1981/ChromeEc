@@ -22,6 +22,30 @@
       },
       "revId": "727f9c86107129621cf483b19d3ebb1029f1411b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f471d76_d2f794e8",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-10T18:43:12Z",
+      "side": 1,
+      "message": "Is ocicat board also rvp based ?  I see that rvp_program.conf is used by ocicat as well along with other Intel\u0027s rvp boards. The board id concept of reading from ioexpander is required only for intel\u0027s rvp based boards only right?",
+      "parentUuid": "72ea998e_55e8ed9c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "727f9c86107129621cf483b19d3ebb1029f1411b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
