@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e94265c_b7b34c3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-10T09:45:24Z",
+      "side": 1,
+      "message": "Please add more extensive commit message.",
+      "parentUuid": "568a07f7_83781ecb",
+      "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fcc8fd4_a1c22657",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Could we separate upload CLs for adding emulator and tests?",
       "parentUuid": "8fcc8fd4_a1c22657",
+      "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba79973f_9480bf98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-10T09:45:24Z",
+      "side": 1,
+      "message": "Why you want to separate it? Tests are made to make sure driver is implemented correctly, so that\u0027s the best moment to add it.",
+      "parentUuid": "81782643_29063e24",
       "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
