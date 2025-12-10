@@ -46,6 +46,30 @@
       },
       "revId": "4f688765fbf2cf718981d8e7c0763de7ce92ed3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29947f2b_a075fbc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T21:12:30Z",
+      "side": 1,
+      "message": "Yes, that test. The [`test_null_pointer_dereference` test does not rely on `CONFIG_ARM`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/hwtest/src/null_pointer.c;l\u003d16-23;drc\u003d07d22f40c328591afbb19b23b501630d7b4e9067).\n\n\u003e I am not aware that we started running the unit tests on `sanok`\n\nI\u0027m looking at this: http://b/467739154",
+      "parentUuid": "e3f9bd4f_2a0bf669",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "4f688765fbf2cf718981d8e7c0763de7ce92ed3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
