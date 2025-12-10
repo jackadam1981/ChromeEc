@@ -54,6 +54,7 @@ static int get_data_size(enum ec_mkbp_event e)
 	switch (e) {
 #if defined(HAS_TASK_KEYSCAN) || defined(CONFIG_CROS_EC_KEYBOARD_INPUT)
 	case EC_MKBP_EVENT_KEY_MATRIX:
+		CPRINTS("%s key matrix", __func__);
 		return keyboard_get_cols();
 #endif
 	case EC_MKBP_EVENT_HOST_EVENT64:
@@ -85,6 +86,7 @@ static int fifo_remove(uint8_t *buffp)
 		int last = (fifo_start + FIFO_DEPTH - 1) % FIFO_DEPTH;
 
 		size = get_data_size(fifo[last].event_type);
+		CPRINTS("%s B %d", __func__, size);
 
 		memcpy(buffp, &fifo[last].data, size);
 		mutex_unlock(&fifo_remove_mutex);
@@ -100,6 +102,7 @@ static int fifo_remove(uint8_t *buffp)
 	/* Return just the event data. */
 	if (buffp) {
 		size = get_data_size(fifo[fifo_start].event_type);
+		CPRINTS("%s B %d", __func__, size);
 		/* skip over event_type. */
 		memcpy(buffp, &fifo[fifo_start].data, size);
 	}
