@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02f61fa_0bf57834",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T23:52:02Z",
+      "side": 1,
+      "message": "Let\u0027s add this comment in `flash_physical_restore_state`.\n\nThis makes it clear that the only reason we have `flash_physical_restore_state` is to handle the EC RO case.\n\nWithout this information, it\u0027s not clear when reading the code why we need to restore anything since the Zephyr version doesn\u0027t have code to use `UMA_LOCK`.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
