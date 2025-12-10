@@ -16,6 +16,23 @@
       "message": "@jason.huang@egistec.corp-partner.google.com is this commit ready for review or not? It is marked as WIP.",
       "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fcc8fd4_a1c22657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-10T06:17:44Z",
+      "side": 1,
+      "message": "Please also add emulator and tests, following pattern used by other fingerprint sensors",
+      "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
