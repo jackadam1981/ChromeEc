@@ -7,20 +7,15 @@
 	gpio_interrupts: gpio-interrupts {
 		compatible = "cros-ec,gpio-interrupts";
 
-		int_lid_accel: int-lid-accel {
-			irq-pin = <&gpio_accel_db_int_l>;
+		int_imu: ec_imu {
+			irq-pin = <&gpio_imu_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "bmi260_interrupt";
+		};
+		int_lid_imu: lid_imu {
+			irq-pin = <&gpio_acc_int_l>;
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bma4xx_interrupt";
-		};
-		int_base_accel: int-base-accel {
-			irq-pin = <&gpio_accel_mb_int_l>;
-			flags = <GPIO_INT_EDGE_FALLING>;
-			handler = "bmi3xx_interrupt";
-		};
-		int_lid_open: int-lid-open {
-			irq-pin = <&gpio_lid_open>;
-			flags = <GPIO_INT_EDGE_BOTH>;
-			handler = "lid_interrupt";
 		};
 	};
 };
