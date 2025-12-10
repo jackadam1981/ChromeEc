@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81515b9_f092dda8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-12-10T17:22:55Z",
+      "side": 1,
+      "message": "This enables prochot monitoring, and if PROCHOT line is asserted it will set fan to 100%. This change doesn\u0027t reboot the device. I didn\u0027t see any comments about the fan noise in the bug, so I don\u0027t understand how this change is the root cause.\nDisabling prochot monitoring is a bit dangerous, as we want to detect when something goes wrong (i.e. fan failure) and avoid overheating.",
+      "revId": "9d1cd5e938ab80196152fe10d063946f6b2a5151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
