@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6088a95_6cffa460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2025-12-10T11:21:28Z",
+      "side": 1,
+      "message": "As I saw in the bug, this GPIO change starts from DVT. What about pre-DVT devices? These will have flash_fp_mcu functionality broken, right?",
+      "revId": "8fb406ce3e907478d0c5ad1039a0fd1c418b1a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
