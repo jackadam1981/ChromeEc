@@ -46,6 +46,30 @@
       },
       "revId": "727f9c86107129621cf483b19d3ebb1029f1411b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b6efa5_4b3b748e",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2025-12-10T20:22:41Z",
+      "side": 1,
+      "message": "I thought ocicat is not based on Intel\u0027s RVP and hence I enabled the config under specific RVPs project.config. If ocicat is also RVP based, then i will move the config to rvp_program.conf. Plz let me know. Thanks.",
+      "parentUuid": "7f471d76_d2f794e8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "727f9c86107129621cf483b19d3ebb1029f1411b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
