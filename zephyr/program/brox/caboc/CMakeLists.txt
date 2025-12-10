@@ -7,3 +7,4 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CUSTOM_FAN_CONTROL
 		"src/thermal.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 		"src/keyboard_customization.c")
+zephyr_library_sources("src/led.c")
