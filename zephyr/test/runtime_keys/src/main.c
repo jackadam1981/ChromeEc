@@ -24,11 +24,6 @@ FAKE_VOID_FUNC(system_enter_hibernate, uint32_t, uint32_t);
 #define VOL_UP_ROW 0
 #define VOL_UP_COL 1
 
-bool vivaldi_kbd_is_vol_up(uint8_t row, uint8_t col)
-{
-	return row == VOL_UP_ROW && col == VOL_UP_COL;
-}
-
 #define CROS_EC_KEYBOARD_NODE DT_CHOSEN(cros_ec_keyboard)
 
 #define TEST_BOOT_KEYS_NODE DT_NODELABEL(test_runtime_keys)
