@@ -122,9 +122,12 @@
         <vif:Src_PDO_Supply_Type value="0">Fixed</vif:Src_PDO_Supply_Type>
         <vif:Src_PDO_Peak_Current value="1">130% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
-        <vif:Src_PDO_Max_Current value="150">1500 mA (Factor = 10)</vif:Src_PDO_Max_Current>
+        <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_OC_Debounce value="0">0 msec</vif:Src_PD_OCP_OC_Debounce>
-        <vif:Src_PD_OCP_OC_Threshold value="150">1500 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_OC_Threshold value="310">3100 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_UV_Debounce value="0">0 msec</vif:Src_PD_OCP_UV_Debounce>
+        <vif:Src_PD_OCP_UV_Threshold_Type value="1">Percentage</vif:Src_PD_OCP_UV_Threshold_Type>
+        <vif:Src_PD_OCP_UV_Threshold value="95">95 %</vif:Src_PD_OCP_UV_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -318,9 +321,12 @@
         <vif:Src_PDO_Supply_Type value="0">Fixed</vif:Src_PDO_Supply_Type>
         <vif:Src_PDO_Peak_Current value="1">130% IOC</vif:Src_PDO_Peak_Current>
         <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50)</vif:Src_PDO_Voltage>
-        <vif:Src_PDO_Max_Current value="150">1500 mA (Factor = 10)</vif:Src_PDO_Max_Current>
+        <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_OC_Debounce value="0">0 msec</vif:Src_PD_OCP_OC_Debounce>
-        <vif:Src_PD_OCP_OC_Threshold value="150">1500 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_OC_Threshold value="310">3100 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
+        <vif:Src_PD_OCP_UV_Debounce value="0">0 msec</vif:Src_PD_OCP_UV_Debounce>
+        <vif:Src_PD_OCP_UV_Threshold_Type value="1">Percentage</vif:Src_PD_OCP_UV_Threshold_Type>
+        <vif:Src_PD_OCP_UV_Threshold value="95">95 %</vif:Src_PD_OCP_UV_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
