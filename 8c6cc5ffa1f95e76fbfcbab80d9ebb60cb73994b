@@ -22,6 +22,29 @@
       },
       "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fe880c_aff71239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T23:53:33Z",
+      "side": 1,
+      "message": "Add a comment here about why we don\u0027t need `flash_preserve_state` from that change.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
