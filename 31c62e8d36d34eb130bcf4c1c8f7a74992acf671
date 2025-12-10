@@ -16,6 +16,24 @@
       "message": "wait, did we intro a typo? SIGNER -\u003e SINGER",
       "revId": "31c62e8d36d34eb130bcf4c1c8f7a74992acf671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a2a39e_ca83754d",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-10T00:43:59Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7244334",
+      "parentUuid": "640060c9_4ced8730",
+      "revId": "31c62e8d36d34eb130bcf4c1c8f7a74992acf671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
