@@ -942,6 +942,8 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			best_supplier = charge_supplier;
 	}
 
+	CPRINTS("L-945 best port: C%d", best_port);
+
 	*new_port = best_port;
 	*new_supplier = best_supplier;
 }
@@ -961,6 +963,8 @@ static void charge_manager_refresh(void)
 	int updated_old_port = CHARGE_PORT_NONE;
 	int ceil;
 	int power_changed = 0;
+
+	timestamp_t ts_cm = get_time();
 
 	CM_MUTEX_LOCK(&cm_refresh);
 
@@ -1012,6 +1016,19 @@ static void charge_manager_refresh(void)
 			available_charge[i][new_port].current = 0;
 			available_charge[i][new_port].voltage = 0;
 		}
+	}
+
+	CPRINTS("L-1021 best port: C%d", new_port);
+
+	if (new_port == 1) {
+		pd_record_timestamp(new_port,
+				    PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH,
+				    PD_END, ts_cm);
+
+		pd_record_timestamp(
+			new_port,
+			PD_INTERVAL_CM_REFRESH_TO_PPC_VBUS_SINK_DISABLE,
+			PD_START, ts_cm);
 	}
 
 	active_charge_port_initialized = 1;
@@ -1207,6 +1224,12 @@ static void charge_manager_refresh(void)
 	}
 
 	CM_MUTEX_UNLOCK(&cm_refresh);
+
+	CPRINTS("L-1227 best port: C%d", new_port);
+
+	if (new_port == 0) {
+		pd_print_timestamps(port);
+	}
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
@@ -1347,6 +1370,12 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 
 void charge_manager_invalidate_suppliers(int port)
 {
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_CM_ENTRY_TO_RUN_CM_REFRESH); /* Entry to
+								  Charge manager
+								  from PE layer
+								*/
+
 	int i;
 
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
