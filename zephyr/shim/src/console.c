@@ -138,7 +138,7 @@ void bypass_cb(const struct shell *shell, uint8_t *data, size_t len)
 
 void uart_shell_rx_bypass(bool enable)
 {
-	shell_set_bypass(shell_zephyr, enable ? bypass_cb : NULL);
+	shell_set_bypass(shell_zephyr, enable ? bypass_cb : NULL, NULL);
 	rx_bypass_enabled = enable;
 }
 
