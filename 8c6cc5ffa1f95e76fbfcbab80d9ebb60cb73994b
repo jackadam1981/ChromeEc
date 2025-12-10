@@ -45,6 +45,52 @@
       },
       "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a716783_71a63869",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T23:57:30Z",
+      "side": 1,
+      "message": "Add a note that `FLASH_SYSJUMP_TAG` is only set in EC RO: https://crrev.com/c/4885833.",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 39
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0824572_440d4404",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-10T23:57:30Z",
+      "side": 1,
+      "message": "What is the meaning of these different return values?\n\nSince we only have two values, let\u0027s make the return type `bool`.\n\nLet\u0027s add doxygen comments for them.",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 11
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
