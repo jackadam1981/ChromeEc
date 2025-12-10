@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "568a07f7_83781ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2025-12-10T09:43:59Z",
+      "side": 1,
+      "message": "I think its ready for review. Removed WIP.",
+      "parentUuid": "8782d932_ffb92729",
+      "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fcc8fd4_a1c22657",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-10T06:17:44Z",
       "side": 1,
       "message": "Please also add emulator and tests, following pattern used by other fingerprint sensors",
+      "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81782643_29063e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2025-12-10T09:43:59Z",
+      "side": 1,
+      "message": "Could we separate upload CLs for adding emulator and tests?",
+      "parentUuid": "8fcc8fd4_a1c22657",
       "revId": "9e37885b1ca773484dccebc4b8becac6c76b3972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
