@@ -5,6 +5,10 @@
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_EGIS630	fingerprint_egis630.c)
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_EGIS630_PAL
 			     fingerprint_egis630_pal.c)
+zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_EGIS_EC660
+			     fingerprint_egis_ec660.c)
+zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_EGIS_EC660_PAL
+			     fingerprint_egis_ec660_pal.c)
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES	fingerprint_elan80series.c)
 zephyr_library_sources_ifdef(CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_PAL
 			     fingerprint_elan80series_pal.c)
