@@ -88,6 +88,11 @@
 		compatible = "ite,it8801-mfd";
 		reg = <0x39>;
 	};
+	cros_imvp: richtek-imvp@20 {
+		compatible = "richtek,rt3645";
+		status = "okay";
+		reg = <0x20>;
+	};
 };
 
 &i2c_port_ish {
