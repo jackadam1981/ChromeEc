@@ -52,6 +52,24 @@
       "parentUuid": "993ef09c_d042f381",
       "revId": "acf3727bdbab6790dc40dc6f0cadfdade9cd7004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7164d93_3df16345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-12-11T14:47:00Z",
+      "side": 1,
+      "message": "\u003e repo sync is your friend\n\nI\u0027ve encountered this issue after a `repo sync`. Are you suggesting that other changes have landed in mainline that resolve this compilation problem if i repo sync? If so, could you point me to the relevant CL?",
+      "parentUuid": "c3c696a5_fea6651e",
+      "revId": "acf3727bdbab6790dc40dc6f0cadfdade9cd7004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
