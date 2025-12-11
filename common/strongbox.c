@@ -1885,7 +1885,7 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	uint32_t challenge[KM_MAX_CHALLENGE_WORDS], challenge_words,
 		challenge_len;
 	uint8_t *b8, *data_to_sign, *data_start;
-	size_t index, data_len, data_len_to_sign, prefix_bytes;
+	size_t index, data_len, data_len_csr, data_len_to_sign, prefix_bytes;
 	static const uint8_t kSigStructFixedHdr[] = {
 		/* Array header: 4 elements */
 		CBOR_HDR1(CBOR_MAJOR_ARR, 4),
@@ -2002,10 +2002,24 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	*b8++ = CBOR_HDR1(CBOR_MAJOR_MAP, 0);
 	prefix_bytes = 6;
 
-	/* payload: bstr .cbor Data / nil, Data is array [challenge, CsrPayload]
+	/*
+	 * CsrPayload = [
+	 *   version: 3, CertificateType: tstr, ; "keymint" - 10 bytes
+	 *   DeviceInfo - device_info_len
+	 *   KeysToSign: [ *PublicKey] - 1 + key_count * CBOR_PUBLIC_KEY_LEN
+	 * ]
 	 */
-	data_len = 1 + 2 + challenge_len + 10 + device_info_len + 1 +
-		   key_count * CBOR_PUBLIC_KEY_LEN;
+	data_len_csr =
+		10 + device_info_len + 1 + key_count * CBOR_PUBLIC_KEY_LEN;
+	/* payload: bstr .cbor Data / nil,
+	 * Data is array [challenge, .bstr CsrPayload]
+	 * Note wrapping in .bstr for the whole Data, and for the CsrPayload
+	 */
+	data_len = 1 /* array */ + 2 /* challenge  .bstr*/ + challenge_len +
+		   data_len_csr + 2 /* min CsrPayload .bstr wrapping */;
+	/* Account for .bstr wrapping of the CsrPayload*/
+	if (data_len_csr > 255)
+		data_len++;
 
 	if (data_len > 255) {
 		*b8++ = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES2);
@@ -2047,6 +2061,15 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	*b8++ = challenge_len;
 	memcpy(b8, challenge, challenge_len);
 	b8 += challenge_len;
+	/* Wrap CsrPayload into .bstr */
+	if (data_len_csr > 255) {
+		*b8++ = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES2);
+		*b8++ = (uint8_t)(((data_len_csr) & 0xFF00) >> 8);
+		*b8++ = (uint8_t)((data_len_csr) & 0x00FF);
+	} else {
+		*b8++ = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES1);
+		*b8++ = data_len_csr;
+	}
 
 	/*
 	 * CsrPayload = [
