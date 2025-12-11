@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f3d28e_d2153cdb",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-11T21:01:22Z",
+      "side": 1,
+      "message": "Is using the current AC status, like `extpower_is_present()`, simpler? The EC bootup time is so short that the AC status won\u0027t change.",
+      "range": {
+        "startLine": 762,
+        "startChar": 5,
+        "endLine": 762,
+        "endChar": 43
+      },
+      "revId": "339535a94cded8a68347534363d074d690672b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
