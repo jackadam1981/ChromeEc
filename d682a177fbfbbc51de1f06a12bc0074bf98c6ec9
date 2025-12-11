@@ -16,6 +16,24 @@
       "message": "Please use the `revert` button on the top right corner of the CL to be reverted and abandon this one.",
       "revId": "d682a177fbfbbc51de1f06a12bc0074bf98c6ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "341b2f12_bbd5e25f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-12-11T07:34:17Z",
+      "side": 1,
+      "message": "Hi Kyle, \nFor CL:7185865, we can\u0027t push ```revert``` button on the top right corner of the CL.\nIt will show ```Cannot reland: Error 409: Cherry pick failed: identical tree```\nCan google help to revert it? Thanks.",
+      "parentUuid": "019d6008_98f5fd47",
+      "revId": "d682a177fbfbbc51de1f06a12bc0074bf98c6ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
