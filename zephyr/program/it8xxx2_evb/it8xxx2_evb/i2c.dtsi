@@ -32,6 +32,12 @@
 	pinctrl-0 = <&i2c0_clk_gpb3_default
 		     &i2c0_data_gpb4_default>;
 	pinctrl-names = "default";
+
+	ite_ctrl_0: ite_ctrl_0@21 {
+		compatible = "ite,i2c-controller";
+		reg = <0x21>;
+		status = "okay";
+	};
 };
 
 &i2c1 {
@@ -40,6 +46,12 @@
 	pinctrl-0 = <&i2c1_clk_gpc1_default
 		     &i2c1_data_gpc2_default>;
 	pinctrl-names = "default";
+
+	ite_ctrl_1: ite_ctrl_1@21 {
+		compatible = "ite,i2c-controller";
+		reg = <0x21>;
+		status = "okay";
+	};
 };
 
 &i2c2 {

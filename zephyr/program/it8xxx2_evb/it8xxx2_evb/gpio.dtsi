@@ -45,11 +45,13 @@
 		};
 	};
 
+/*
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-irqs = <&int_power_button
 			       &int_lid_open>;
 	};
+*/
 
 	unused-pins {
 		compatible = "unused-gpios";
@@ -166,4 +168,41 @@
 			/* gpiom6 */
 			<&gpiom 6 GPIO_INPUT_PULL_DOWN>;
 	};
+	gpio_keys: gpio_keys {
+		compatible = "gpio-keys";
+
+		gpio1: gpio1 {
+			gpios = <&gpioa 5 GPIO_PULL_UP>;
+			label = "gpio1-test";
+		};
+		gpio2: gpio2 {
+			gpios = <&gpioa 6 GPIO_PULL_UP>;
+			label = "gpio2-test";
+		};
+		gpio3: gpio3 {
+			gpios = <&gpiod 0 GPIO_PULL_UP>;
+			label = "gpio3-test";
+		};
+		gpio4: gpio4 {
+			gpios = <&gpioc 6 GPIO_PULL_UP>;
+			label = "gpio4-test";
+		};
+		gpio5: gpio5 {
+			gpios = <&gpioj 0 GPIO_PULL_UP>;
+			label = "gpio5-test";
+		};
+		gpio6: gpio6 {
+			gpios = <&gpiom 6 GPIO_PULL_UP>;
+			label = "gpio6-test";
+		};
+		gpio7: gpio7 {
+			gpios = <&gpioe 5 GPIO_PULL_UP>;
+			label = "gpio7-test";
+		};
+		gpio8: gpio8 {
+			gpios = <&gpioe 6 GPIO_PULL_UP>;
+			label = "gpio8-test";
+		};
+	};
 };
+
