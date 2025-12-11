@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "036abf55_d021257b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-12-11T21:54:45Z",
+      "side": 1,
+      "message": "CQ failure seems unrelated to this patch:\n```\nUnhandled exception. System.TypeInitializationException: The type initializer for \u0027Antmicro.Renode.Emulator\u0027 threw an exception.\n ---\u003e System.UnauthorizedAccessException: Access to the path \u0027/home/chrome-bot/.config/renode\u0027 is denied.\n ---\u003e System.IO.IOException: Permission denied\n ```",
+      "revId": "727f9c86107129621cf483b19d3ebb1029f1411b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72ea998e_55e8ed9c",
