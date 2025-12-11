@@ -11,8 +11,25 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "power/qcom.h"
+#include "registers.h"
+#include "system_chip.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+
+/* PSL wake source mask for AC */
+#define WAKE_SOURCE_AC_MASK 0x4
+
+int board_check_hibernate_wake_source_ac(void)
+{
+	int ret = 0;
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE))
+		return ret;
+
+	ret = system_get_hibernate_wake_source();
+	CPRINTS("wake source register val: 0x%x", ret);
+
+	return ret & WAKE_SOURCE_AC_MASK;
+}
 
 void board_chipset_startup(void)
 {
