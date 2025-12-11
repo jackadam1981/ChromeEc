@@ -9,6 +9,7 @@ zephyr_library_sources(mpu.c)
 zephyr_library_sources_ifdef(CONFIG_CROS_EC  system.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ET171_ENTER_BOOTLOADER enter_bootloader.c)
 zephyr_library_sources_ifdef(CONFIG_EGIS_ET171_OTP_KEY otp_key_et171.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_ROLLBACK_MPU_PROTECT rollback.c)
 
 if(CONFIG_EGIS_ET171_OTP_KEY)
 	zephyr_library_link_libraries(ET171HAL)
