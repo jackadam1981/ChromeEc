@@ -69,6 +69,23 @@
       "message": "Pending on owners\u0027 approval.",
       "revId": "8fb406ce3e907478d0c5ad1039a0fd1c418b1a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc93ee3_83ff5030",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2025-12-11T21:31:30Z",
+      "side": 1,
+      "message": "Retry CQ as the failure looks to be irrelevant to the change.",
+      "revId": "8fb406ce3e907478d0c5ad1039a0fd1c418b1a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
