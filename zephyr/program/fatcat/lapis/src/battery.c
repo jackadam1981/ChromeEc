@@ -5,6 +5,8 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "charger.h"
+#include "hooks.h"
 
 enum battery_present battery_is_present(void)
 {
@@ -31,3 +33,9 @@ enum battery_present battery_is_present(void)
 
 	return BP_YES;
 }
+
+static void set_chg_reg_custom(void)
+{
+	charger_set_frequency(808);
+}
+DECLARE_HOOK(HOOK_INIT, set_chg_reg_custom, HOOK_PRIO_POST_BATTERY_INIT + 1);
