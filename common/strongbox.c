@@ -1993,11 +1993,11 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	buf[0] = U32(
 		/* SignedData<Data>, 4 elements array */
 		CBOR_HDR1(CBOR_MAJOR_ARR, 4),
-		/* bstr .cbor { 1 : AlgorithmES256 } 43 A10127 */
+		/* bstr .cbor { 1 : AlgorithmES256 } 43 A10126 */
 		CBOR_HDR1(CBOR_MAJOR_BSTR, 3), CBOR_HDR1(CBOR_MAJOR_MAP, 1),
 		CBOR_HDR1(CBOR_MAJOR_UINT, 1));
 	b8 = (uint8_t *)(buf + 1);
-	*b8++ = CBOR_HDR1(CBOR_MAJOR_NINT, 7);
+	*b8++ = CBOR_NINT0(-7);
 	/* unprotected: {} */
 	*b8++ = CBOR_HDR1(CBOR_MAJOR_MAP, 0);
 	prefix_bytes = 6;
