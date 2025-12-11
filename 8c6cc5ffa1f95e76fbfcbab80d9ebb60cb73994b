@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51c5458_61010d9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-11T00:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a02f61fa_0bf57834",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0fe880c_aff71239",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-10T23:53:33Z",
       "side": 1,
       "message": "Add a comment here about why we don\u0027t need `flash_preserve_state` from that change.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d222ff3_bc7876f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-11T00:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0fe880c_aff71239",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acd403d_c9e44268",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-11T00:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a716783_71a63869",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 39
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0824572_440d4404",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-12-10T23:57:30Z",
       "side": 1,
       "message": "What is the meaning of these different return values?\n\nSince we only have two values, let\u0027s make the return type `bool`.\n\nLet\u0027s add doxygen comments for them.",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 11
+      },
+      "revId": "8c6cc5ffa1f95e76fbfcbab80d9ebb60cb73994b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346d8949_8430105b",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-11T00:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0824572_440d4404",
       "range": {
         "startLine": 447,
         "startChar": 0,
