@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283bbe4f_3fd5653a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-11T00:02:44Z",
+      "side": 1,
+      "message": "Similar to [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7227920/comment/c34ccf8b_920be436/), let\u0027s create a unit test for this.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "e3ad8d6fff87297f24affc1bcd2849481c6565cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277848ef_dc8bc64d",
+        "filename": "zephyr/program/fpmcu/sanok/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-11T00:02:44Z",
+      "side": 1,
+      "message": "It would be helpful to provide some more context here on why it\u0027s needed. Something like:\n\n```suggestion\n# b/406946889: Allow modifying PMP entries so that we can reconfigure them\n# when jumping between RO and RW.\n```",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "e3ad8d6fff87297f24affc1bcd2849481c6565cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
