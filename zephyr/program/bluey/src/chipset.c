@@ -11,8 +11,28 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "power/qcom.h"
+#include "registers.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+
+/* Get NPCX9 GLUE registers */
+#define NPCX_GLUE_REGS_BASE 0x400A5000
+#define NPCX_GLUE_PSL_CTS REG8(NPCX_GLUE_REGS_BASE + 0x027)
+
+/* PSL wake source mask for AC */
+#define WAKE_SOURCE_AC_MASK 0x4
+
+int board_check_hibernate_wake_source_ac(void)
+{
+	int ret = 0;
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE))
+		return ret;
+
+	ret = NPCX_GLUE_PSL_CTS & 0xf;
+	CPRINTS("PSL_CTS: 0x%x", ret);
+
+	return ret & WAKE_SOURCE_AC_MASK;
+}
 
 void passthru_lid_open_to_pmic(void)
 {
