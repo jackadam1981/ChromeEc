@@ -34,6 +34,24 @@
       "parentUuid": "f6088a95_6cffa460",
       "revId": "8fb406ce3e907478d0c5ad1039a0fd1c418b1a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e1098b_dd22c6de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408870
+      },
+      "writtenOn": "2025-12-11T02:06:00Z",
+      "side": 1,
+      "message": "Add more info.\nThere\u0027s no AU from M145 Dev for EVT units. The latest \u0026 last EVT firmware is on 16503.13.0. The DVT firmware landed on M145 and as long as any further updates on dev after M144 are on hold for Caboc - we should be good for both EVT \u0026 DVT units.",
+      "parentUuid": "de17a12d_e8dec8a0",
+      "revId": "8fb406ce3e907478d0c5ad1039a0fd1c418b1a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
