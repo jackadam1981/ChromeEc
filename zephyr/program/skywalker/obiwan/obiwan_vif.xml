@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--USB VIF file for Obiwan-->
 <vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
-  <vif:VIF_Specification>3.32</vif:VIF_Specification>
+  <vif:VIF_Specification>3.36</vif:VIF_Specification>
   <vif:VIF_App>
     <vif:Vendor>USB-IF</vif:Vendor>
     <vif:Name>VIF Editor</vif:Name>
-    <vif:Version>3.10.0.0</vif:Version>
+    <vif:Version>3.14.0.0</vif:Version>
   </vif:VIF_App>
   <vif:Vendor_Name>Google</vif:Vendor_Name>
   <vif:Model_Part_Number>Obiwan</vif:Model_Part_Number>
@@ -105,6 +104,7 @@
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Power_As_Source value="15000">15000 mW</vif:PD_Power_As_Source>
+    <vif:PD_Power_As_Source_Guaranteed value="7500">7500 mW</vif:PD_Power_As_Source_Guaranteed>
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
@@ -112,6 +112,7 @@
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
+    <vif:DPS_Supported value="false" />
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="0">Over-Current Response</vif:PD_OCP_Method>
@@ -125,9 +126,6 @@
         <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_OC_Debounce value="0">0 msec</vif:Src_PD_OCP_OC_Debounce>
         <vif:Src_PD_OCP_OC_Threshold value="310">3100 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
-        <vif:Src_PD_OCP_UV_Debounce value="0">0 msec</vif:Src_PD_OCP_UV_Debounce>
-        <vif:Src_PD_OCP_UV_Threshold_Type value="1">Percentage</vif:Src_PD_OCP_UV_Threshold_Type>
-        <vif:Src_PD_OCP_UV_Threshold value="95">95 %</vif:Src_PD_OCP_UV_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -183,8 +181,7 @@
     <vif:Modal_Operation_Supported_SOP value="false" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
     <vif:PID_SOP value="20594">5072</vif:PID_SOP>
-    <!--BCD value below is for production FW. The main branch uses different PDC FW.-->
-    <vif:bcdDevice_SOP value="44">2C</vif:bcdDevice_SOP>
+    <vif:bcdDevice_SOP value="44">002C</vif:bcdDevice_SOP>
   </vif:Component>
   <vif:Component>
     <!--Component 1: Port 1-->
@@ -275,6 +272,7 @@
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Power_As_Source value="15000">15000 mW</vif:PD_Power_As_Source>
+    <vif:PD_Power_As_Source_Guaranteed value="7500">7500 mW</vif:PD_Power_As_Source_Guaranteed>
     <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
@@ -282,6 +280,7 @@
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="false" />
     <vif:Port_Managed_Guaranteed_Type value="0">Managed Capability</vif:Port_Managed_Guaranteed_Type>
+    <vif:DPS_Supported value="false" />
     <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="true" />
     <vif:PD_OCP_Method value="0">Over-Current Response</vif:PD_OCP_Method>
@@ -295,9 +294,6 @@
         <vif:Src_PDO_Max_Current value="300">3000 mA (Factor = 10)</vif:Src_PDO_Max_Current>
         <vif:Src_PD_OCP_OC_Debounce value="0">0 msec</vif:Src_PD_OCP_OC_Debounce>
         <vif:Src_PD_OCP_OC_Threshold value="310">3100 mA (Factor = 10)</vif:Src_PD_OCP_OC_Threshold>
-        <vif:Src_PD_OCP_UV_Debounce value="0">0 msec</vif:Src_PD_OCP_UV_Debounce>
-        <vif:Src_PD_OCP_UV_Threshold_Type value="1">Percentage</vif:Src_PD_OCP_UV_Threshold_Type>
-        <vif:Src_PD_OCP_UV_Threshold value="95">95 %</vif:Src_PD_OCP_UV_Threshold>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -353,7 +349,6 @@
     <vif:Modal_Operation_Supported_SOP value="false" />
     <vif:USB_VID_SOP value="6353">18D1</vif:USB_VID_SOP>
     <vif:PID_SOP value="20594">5072</vif:PID_SOP>
-    <!--BCD value below is for production FW. The main branch uses different PDC FW.-->
-    <vif:bcdDevice_SOP value="44">2C</vif:bcdDevice_SOP>
+    <vif:bcdDevice_SOP value="44">002C</vif:bcdDevice_SOP>
   </vif:Component>
 </vif:VIF>
