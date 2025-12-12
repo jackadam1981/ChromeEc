@@ -49,7 +49,7 @@ struct km_key_attr {
 	uint32_t algorithm;
 	uint32_t key_size;
 	uint32_t curve_id;
-	uint32_t digest;
+	uint32_t digest_flags;
 	bool caller_nonce;
 };
 
@@ -168,7 +168,6 @@ static const struct tag_offset uint32t_tags[] = {
 	TAG_OFFSET(KM_TAG_ALGORITHM, attrs.algorithm),
 	TAG_OFFSET(KM_TAG_KEY_SIZE, attrs.key_size),
 	TAG_OFFSET(KM_TAG_EC_CURVE, attrs.curve_id),
-	TAG_OFFSET(KM_TAG_DIGEST, attrs.digest),
 	TAG_OFFSET(KM_TAG_OS_VERSION, osVersion),
 	TAG_OFFSET(KM_TAG_OS_PATCHLEVEL, osPatchLevel),
 	TAG_OFFSET(KM_TAG_VENDOR_PATCHLEVEL, vendorPatchLevel),
@@ -187,17 +186,19 @@ static const struct tag_offset bool_tags[] = {
 /* Make DIGEST::NONE to use same space as SHA256 context */
 struct digest_none_ctx {
 	uint32_t update_size;
-	uint32_t update_context[sizeof(struct sha256_ctx) / 4 - 1];
+	uint32_t update_context[sizeof(struct sha512_ctx) / 4 - 1];
 };
 
 struct km_operation {
 	uint32_t operation_id;
+	/* Note, attr.digest is actual digest, not a flag! */
 	struct km_key_attr attrs;
 	enum km_purpose purpose;
 	uint32_t key[8];
 	union {
 		struct digest_none_ctx none_ctx;
 		struct sha256_ctx sha256_ctx;
+		struct sha512_ctx sha512_ctx;
 	};
 };
 
@@ -617,6 +618,15 @@ static enum strongbox_error process_tag(enum km_tag tag,
 		params->attrs.purpose_flags |= (1 << purpose);
 		break;
 	}
+	case KM_TAG_DIGEST: {
+		uint32_t digest = p_tag[1];
+
+		if (digest > KM_DIGEST_SHA_2_512)
+			return SBERR_InvalidTag;
+		params->attrs.digest_flags |= (1 << digest);
+		break;
+	}
+
 	default:
 		break;
 	}
@@ -1027,7 +1037,8 @@ static enum strongbox_error parse_params(const uint32_t *buf, size_t buf_len,
  * @param buf Pointer to the buffer containing the key blob to import.
  * @param blob_words The size of the key blob buffer in 32-bit words.
  * @param param_tags Pointer to a buffer with additional parameters for the
- *                   import operation (e.g., application ID).
+ *                   import operation (e.g., application ID). Note, that some
+ *                   parameters have special rules to combine.
  * @param param_tags_words The size of the `param_tags` buffer in 32-bit words.
  * @param params Output parameter. A struct to be filled with the parsed key
  *               attributes from the blob.
@@ -1046,6 +1057,7 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	uint32_t hw_tag_words, sw_tag_words, tag_words, key_blob_size;
 	enum dcrypto_result result;
 	enum strongbox_error err;
+	uint32_t digest_flags, purpose_flags;
 
 	/* Blobs have a fixed elements in structure.
 	 * see `process_gen_import_tags`
@@ -1084,10 +1096,25 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	if (err != SB_OK)
 		return err;
 
+	/* Additional parameters have special rules to combine. */
+	digest_flags = params->attrs.digest_flags;
+	params->attrs.digest_flags = 0;
+	purpose_flags = params->attrs.purpose_flags;
 	/* Process additional parameters to get application id and data */
 	err = parse_params(param_tags, param_tags_words, params);
 	if (err != SB_OK)
 		return err;
+
+	/* Only allow bits that were allowed in HW enforced params.
+	 * If no digest is specified, than use HW enforced digest.
+	 */
+	if (params->attrs.digest_flags)
+		params->attrs.digest_flags &= digest_flags;
+	else
+		params->attrs.digest_flags = digest_flags;
+
+	/* Purpose is HW enforced, don't update it. */
+	params->attrs.purpose_flags = purpose_flags;
 
 	result = cryptokey_import_bound(km, buf, tag_words,
 					params->application_id,
@@ -1422,12 +1449,13 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 
 	/* TODO: EC keys can be Sign or Agree */
 	if (purpose != KM_PURPOSE_SIGN)
-		return SBERR_UnsupportedPurpose;
+		return SBERR_IncompatiblePurpose;
 
-	/* We only support None or SHA256 digests. */
-	if (params.attrs.digest != KM_DIGEST_SHA_2_256 &&
-	    params.attrs.digest != KM_DIGEST_NONE)
-		return SBERR_UnsupportedAlgorithm;
+	/* We should have only single flag - SHA256, SHA512 or NONE. */
+	if (params.attrs.digest_flags != KM_DIGESTFLAG_SHA_2_256 &&
+	    params.attrs.digest_flags != KM_DIGESTFLAG_SHA_2_512 &&
+	    params.attrs.digest_flags != KM_DIGESTFLAG_NONE)
+		return SBERR_IncompatibleDigest;
 
 	/* Mark slot as allocated. */
 	km->used_slots |= 1U << slot;
@@ -1446,8 +1474,10 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 
 	/* Initialize hash if requested. */
 	km->ops[slot].none_ctx.update_size = 0;
-	if (params.attrs.digest == KM_DIGEST_SHA_2_256)
+	if (params.attrs.digest_flags == KM_DIGESTFLAG_SHA_2_256)
 		SHA256_sw_init(&km->ops[slot].sha256_ctx);
+	else if (params.attrs.digest_flags == KM_DIGESTFLAG_SHA_2_512)
+		SHA512_sw_init(&km->ops[slot].sha512_ctx);
 
 	km->ops[slot].operation_id = operation_id;
 	km->ops[slot].purpose = purpose;
@@ -1505,10 +1535,14 @@ static enum strongbox_error sb_Update(struct km *km, uint32_t *buf,
 	if (op_index >= ARRAY_SIZE(km->ops))
 		return SBERR_InvalidOperationHandle;
 
-	if (km->ops[op_index].attrs.digest == KM_DIGEST_SHA_2_256) {
+	if (km->ops[op_index].attrs.digest_flags == KM_DIGESTFLAG_SHA_2_256) {
 		SHA256_sw_update(&km->ops[op_index].sha256_ctx,
 				 (uint8_t *)(buf + 2), update_size);
-	} else if (km->ops[op_index].attrs.digest == KM_DIGEST_NONE) {
+	} else if (km->ops[op_index].attrs.digest_flags ==
+		   KM_DIGESTFLAG_SHA_2_512) {
+		SHA512_sw_update(&km->ops[op_index].sha512_ctx,
+				 (uint8_t *)(buf + 2), update_size);
+	} else if (km->ops[op_index].attrs.digest_flags == KM_DIGESTFLAG_NONE) {
 		if (update_size + km->ops[op_index].none_ctx.update_size >
 		    sizeof(km->ops[op_index].none_ctx.update_context))
 			return SBERR_InvalidArgument;
@@ -1575,11 +1609,17 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	if (km->ops[op_index].attrs.algorithm != KM_ALG_EC)
 		return SBERR_UnsupportedAlgorithm;
 
-	if (km->ops[op_index].attrs.digest == KM_DIGEST_SHA_2_256) {
+	if (km->ops[op_index].attrs.digest_flags == KM_DIGESTFLAG_SHA_2_256) {
 		SHA256_sw_update(&km->ops[op_index].sha256_ctx,
 				 (uint8_t *)(buf + 2), update_size);
 		sign_data = SHA256_sw_final(&km->ops[op_index].sha256_ctx)->b8;
-	} else if (km->ops[op_index].attrs.digest == KM_DIGEST_NONE) {
+	} else if (km->ops[op_index].attrs.digest_flags ==
+		   KM_DIGESTFLAG_SHA_2_512) {
+		SHA512_sw_update(&km->ops[op_index].sha512_ctx,
+				 (uint8_t *)(buf + 2), update_size);
+		/* Truncate to 32 bytes implicitly */
+		sign_data = SHA512_sw_final(&km->ops[op_index].sha512_ctx)->b8;
+	} else if (km->ops[op_index].attrs.digest_flags == KM_DIGESTFLAG_NONE) {
 		if (update_size + km->ops[op_index].none_ctx.update_size >
 		    sizeof(km->ops[op_index].none_ctx.update_context))
 			return SBERR_InvalidArgument;
@@ -2628,37 +2668,22 @@ static void add_key_purpose(struct asn1 *ctx, uint32_t km_purpose)
 	SEQ_END(*ctx);
 }
 
-static void add_key_purpose_ext(struct asn1 *ctx, uint32_t km_purpose)
-{
-	uint8_t *p;
-	/* Write the EXPLICIT tag [1] */
-	asn1_write_context_tag(ctx, 1);
-	/* Location where to output length. It is known to be short */
-	p = ctx->p + ctx->n;
-	ctx->n++;
-	SEQ_START(*ctx, V_SET, SEQ_SMALL)
-	{
-		/* Up to 30 bits in length to have 1-byte encoding. */
-		for (size_t i = 0; i < KM_PURPOSE_LAST; i++) {
-			if (km_purpose & (1U << i))
-				asn1_int(ctx, i);
-		}
-	}
-	SEQ_END(*ctx);
-	*p = ctx->n - (p - ctx->p) - 1;
-}
-
 static void add_set_int(struct asn1 *ctx, uint32_t tag, uint32_t value)
 {
 	uint8_t *p;
 
 	/* Write the EXPLICIT tag [1] */
 	asn1_write_context_tag(ctx, tag);
+	/* Location where to output length. It is known to be short */
 	p = ctx->p + ctx->n;
 	ctx->n++;
 	SEQ_START(*ctx, V_SET, SEQ_SMALL)
 	{
-		asn1_int(ctx, value);
+		/* Up to 30 bits in length to have 1-byte encoding. */
+		for (size_t i = 0; i < 30; i++) {
+			if (value & (1U << i))
+				asn1_int(ctx, i);
+		}
 	}
 	SEQ_END(*ctx);
 	*p = ctx->n - (p - ctx->p) - 1;
@@ -2724,12 +2749,12 @@ static void add_km_enforcements(struct asn1 *ctx,
 	/* hardwareEnforced */
 	SEQ_START(*ctx, V_SEQ, SEQ_LARGE)
 	{
-		add_key_purpose_ext(ctx, params->attrs.purpose_flags);
+		add_set_int(ctx, 1, params->attrs.purpose_flags);
 		asn1_explicit_int(ctx, 2, params->attrs.algorithm);
 		if (params->attrs.key_size)
 			asn1_explicit_int(ctx, 3, params->attrs.key_size);
-		if (params->attrs.digest)
-			add_set_int(ctx, 5, params->attrs.digest);
+		if (params->attrs.digest_flags)
+			add_set_int(ctx, 5, params->attrs.digest_flags);
 
 		if (params->attrs.curve_id)
 			asn1_explicit_int(ctx, 10, params->attrs.curve_id);
