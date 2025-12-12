@@ -11,7 +11,7 @@ int mpu_lock_rollback(int lock)
 	if (lock) {
 		z_riscv_pmp_change_permissions(0, PMP_R);
 	} else {
-		z_riscv_pmp_change_permissions(0, PMP_R | PMP_W);
+		z_riscv_pmp_change_permissions(0, PMP_R);
 	}
 	return 0;
 }
