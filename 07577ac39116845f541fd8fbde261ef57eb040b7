@@ -16,6 +16,24 @@
       "message": "Can you explain what this test is doing? Why do you need to tell the emulator explicitly to change CC status?",
       "revId": "07577ac39116845f541fd8fbde261ef57eb040b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a3efe5_f3abccee",
+        "filename": "zephyr/test/drivers/it8xxx2/src/it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-12T18:34:34Z",
+      "side": 1,
+      "message": "Code deleted. The point is moot.",
+      "parentUuid": "892fda59_295b1111",
+      "revId": "07577ac39116845f541fd8fbde261ef57eb040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
