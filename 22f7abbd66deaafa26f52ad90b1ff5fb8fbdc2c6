@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1267c047_9ff9a7d6",
+        "filename": "zephyr/program/nissa/pujjoga/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-12T18:47:01Z",
+      "side": 1,
+      "message": "Nit: Can you add a comment like, \"Smart discharge causes an unnecessary delay when disabling the sink path. See b/445132756.\"",
+      "revId": "22f7abbd66deaafa26f52ad90b1ff5fb8fbdc2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
