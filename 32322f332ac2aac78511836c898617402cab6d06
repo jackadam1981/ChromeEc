@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53bdb87f_bd88d32d",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-12-12T17:09:59Z",
+      "side": 1,
+      "message": "nit: the comments here make it harder to read. Remove them.",
+      "range": {
+        "startLine": 2018,
+        "startChar": 0,
+        "endLine": 2019,
+        "endChar": 58
+      },
+      "revId": "32322f332ac2aac78511836c898617402cab6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
