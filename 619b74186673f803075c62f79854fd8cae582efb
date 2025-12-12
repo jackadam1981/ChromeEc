@@ -16,6 +16,24 @@
       "message": "Suppose we don\u0027t want to remove the DPAM portion, is it ?",
       "revId": "619b74186673f803075c62f79854fd8cae582efb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71060e55_05029c11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2025-12-12T18:38:14Z",
+      "side": 1,
+      "message": "Hi Ivan,\n\nI\u0027m going to file a bug, but with the DPAM portion, the GRL tester popped a warning and the USB-IF VIF Generator tool failed to import the VIF.\n\nI\u0027m not sure where this DPAM section comes from and if it\u0027s compliant with the latest DPAM VIF generater either.",
+      "parentUuid": "637a5986_9620c493",
+      "revId": "619b74186673f803075c62f79854fd8cae582efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
