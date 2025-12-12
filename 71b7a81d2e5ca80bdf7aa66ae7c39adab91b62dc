@@ -16,6 +16,24 @@
       "message": "Is there any technical limitation preventing the new behavior from being described in the device tree policy? We strongly advise against the C implementation for LED control.",
       "revId": "71b7a81d2e5ca80bdf7aa66ae7c39adab91b62dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a53dd77_3a995e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2025-12-12T01:34:26Z",
+      "side": 1,
+      "message": "It is indeed a technical limitation. The current LED driver cannot define LED_TRANSITION_LINEAR separately for each color. In this OEM spec, only LED_OFF needs a linear transition, whereas LED_AMBER needs to turn on instantly.",
+      "parentUuid": "96e700a5_e56b6701",
+      "revId": "71b7a81d2e5ca80bdf7aa66ae7c39adab91b62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
