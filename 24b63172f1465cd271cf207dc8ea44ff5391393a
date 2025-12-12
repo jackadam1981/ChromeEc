@@ -22,6 +22,30 @@
       },
       "revId": "24b63172f1465cd271cf207dc8ea44ff5391393a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f74ac39_1ec82f46",
+        "filename": "zephyr/program/fatcat/kinmen/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-12T16:47:14Z",
+      "side": 1,
+      "message": "Hey Keith, I have more context on http://crrev.com/c/7252070 (was hoping it\u0027d get linked from the hash).\n\nThe problem is that the priority validation script has been modified to flag nodes that depend on a node that has deferred init set, which makes sense, so we do need to flag these or disable priority check validation, which is not ideal, it exposes us to priority related bugs.\n\nAlso this is unfortunately not only used for mapping, looks like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/subsys/pd_controller/pdc_power_mgmt.c defines devices for those nodes and it looks like they must be initialized before the one they depend on, my brox boar would bootloop with this deferred-init added and I had to add an explicit SYS_INIT to fix it again. Not ideal but I think we are better off with this rather than losing init sequence validation.",
+      "parentUuid": "3574532e_f33fc0e7",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "24b63172f1465cd271cf207dc8ea44ff5391393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
