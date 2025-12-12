@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb47cd8_54f91911",
+        "filename": "zephyr/program/rauru/navi/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-12T18:46:18Z",
+      "side": 1,
+      "message": "Nit: Can you add a comment like, \"Smart discharge causes an unnecessary delay when disabling the sink path. See b/448133607.\"",
+      "revId": "b2708278a151611a8a3ef369008671ff45282aa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
