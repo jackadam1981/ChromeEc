@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097a9050_14409fc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-12T18:12:58Z",
+      "side": 1,
+      "message": "unit tests for this should go here: zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116badbf_ad7bd05d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-12T18:12:58Z",
+      "side": 1,
+      "message": "We shouldn\u0027t change this, that is a snk policy variable. Swapping to sink is a source policy",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 57
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75c4d16_1d3a0448",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-12T18:12:58Z",
+      "side": 1,
+      "message": "We should move this further down in Src Policies, maybe after SRC_POLICY_GET_RDO. it needs to be after we get the partner sink caps. The entire path here should depend on the partner being a DRP",
+      "range": {
+        "startLine": 1975,
+        "startChar": 10,
+        "endLine": 1975,
+        "endChar": 37
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416a9f43_e3188dcd",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2192,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2025-12-12T18:12:58Z",
+      "side": 1,
+      "message": "We can\u0027t use this variable to evaluate swapping to sink. This gets populated by the sink\n\nWe need to add 2 Src policy states\n\n1. Get partner Src Caps (only do this if the partner is a DRP, it will say in the vSafe5 PDO)\n2. After getting Src Caps, evaluate swap to sink",
+      "range": {
+        "startLine": 2192,
+        "startChar": 0,
+        "endLine": 2192,
+        "endChar": 57
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
