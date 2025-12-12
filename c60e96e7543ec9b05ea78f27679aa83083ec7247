@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617af1ce_3db22213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-12-12T10:52:57Z",
+      "side": 1,
+      "message": "I think we should have a CL as the replacement also deal with the original issue, rather than simply revert it. Thoughts ?",
+      "revId": "c60e96e7543ec9b05ea78f27679aa83083ec7247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
