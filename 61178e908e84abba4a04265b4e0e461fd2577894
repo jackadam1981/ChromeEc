@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800e993f_34b97e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-12T23:38:33Z",
+      "side": 1,
+      "message": "I had previously alluded to an existing generic test that you could parameterize to get coverage for free.\n\nStructurally, I was thinking of something like [drivers.default variants](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/drivers/testcase.yaml;l\u003d5;drc\u003d935d426444c4cdb71200478aa0ad3570ef97e575), where the same test code is built and run with multiple configs and device trees. Content-wise, I was thinking of something like the [TCPCI driver tests](https://crsrc.org/o/src/platform/ec/zephyr/test/drivers/default/src/tcpci.c), where they call a bunch of API functions. However, this test is calling directly into the TCPCI driver, so it\u0027s not quite as generic as I was thinking. You could probably refactor it to do what you want, but it would be annoying and error-prone.\n\nIt might make more sense to just copy some of the structure of the existing TCPC tests like [raa489000](https://crsrc.org/o/src/platform/ec/zephyr/test/drivers/raa489000/) or [anx7447](https://crsrc.org/o/src/platform/ec/zephyr/test/drivers/anx7447/) for your own use in this test. The latter might be a better example, because it has tests for TCPC alert.\n\nYou can do that as a follow-on CL. This CL looks fine to merge as an initial skeleton.",
+      "revId": "61178e908e84abba4a04265b4e0e461fd2577894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
