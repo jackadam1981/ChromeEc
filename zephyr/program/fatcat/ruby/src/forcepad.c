@@ -1,0 +1,32 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+#include "gpio/gpio_int.h"
+#include "hooks.h"
+#include "console.h"
+#include <zephyr/devicetree.h>
+#include <zephyr/drivers/gpio.h>
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+
+#define INT_DELAY_US 500
+
+static void forcepad_interrupt_change(void)
+{
+	int det = gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_fpad_det));
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_fpad_5v_en), det);
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_fpad_1p8v_en), det);
+}
+DECLARE_DEFERRED(forcepad_interrupt_change);
+
+void forcepad_interrupt(enum gpio_signal s)
+{
+	hook_call_deferred(&forcepad_interrupt_change_data, INT_DELAY_US);
+}
+
+static void fpad_init(void)
+{
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_fpad_det));
+}
+DECLARE_HOOK(HOOK_INIT, fpad_init, HOOK_PRIO_DEFAULT);
