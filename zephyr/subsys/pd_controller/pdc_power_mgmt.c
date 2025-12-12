@@ -682,6 +682,8 @@ enum policy_src_attached_t {
 	SRC_POLICY_SET_RP,
 	/** Trigger a call into DPM source current balancing policy */
 	SRC_POLICY_EVAL_SNK_FIXED_PDO,
+	/** Runs a test to determine if we should become a sink instead */
+	SRC_POLICY_EVAL_SWAP_TO_SNK,
 	/** Triggers a Get_Sink_Cap message to the partner. */
 	SRC_POLICY_GET_SINK_CAPS,
 	/** Set new SRC CAP for PDC port in source power role */
@@ -1272,8 +1274,8 @@ static void invalidate_charger_settings(struct pdc_port_t *port,
 
 	/* Invalidate PDOS */
 	port->snk_policy.pdo = 0;
-	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.snk.pdos));
-	port->snk_policy.src.pdo_count = 0;
+	/* Do not clear source PDOs, they may be used for Try.Src policies */
+	/* TODO(kamilplucinski): Clear source PDOs correctly. */
 	memset(port->src_policy.snk.pdos, 0, sizeof(port->src_policy.snk.pdos));
 	port->src_policy.snk.pdo_count = 0;
 }
@@ -1714,6 +1716,28 @@ static bool should_swap_to_source(struct pdc_port_t *port)
 	return true;
 }
 
+static bool should_swap_to_sink(struct pdc_port_t *port)
+{
+	const struct pdc_config_t *config = port->dev->config;
+	int port_num = config->connector_num;
+
+	/* If partner has no source caps, don't swap */
+	if (port->snk_policy.src.pdo_count == 0) {
+		return false;
+	}
+
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
+	/* if partner has unconstrained power, swap to sink */
+	if (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) {
+		LOG_INF("C%d: %s: Swapping to sink, partner has unconstrained pwr",
+			port_num, __func__);
+		return true;
+	}
+
+	return false;
+}
+
 static void handle_attention_vdo(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *config = port->dev->config;
@@ -1948,6 +1972,13 @@ static void run_src_policies(struct pdc_port_t *port)
 		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_EVAL_SWAP_TO_SNK)) {
+		if (should_swap_to_sink(port)) {
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_SWAP_TO_SNK);
+		}
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_EVAL_SNK_FIXED_PDO)) {
 		/* Adjust source current limits if necessary */
 		pdc_dpm_eval_sink_fixed_pdo(port_num,
@@ -2158,13 +2189,20 @@ static void pdc_src_attached_entry(void *obj)
 	port->send_cmd.intern.pending = false;
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
+		struct pdc_pdos_t temp_src_pdos = port->snk_policy.src;
+
 		invalidate_charger_settings(port, true);
+		port->snk_policy.src = temp_src_pdos;
 		port->src_attached_local_state = SRC_ATTACHED_SET_SINK_PATH_OFF;
 		port->get_pdo = (struct get_pdo_t){ 0 };
 
 		/* We always want to evalulate sink caps when we a source. */
 		atomic_set_bit(port->src_policy.flags,
 			       SRC_POLICY_GET_SINK_CAPS);
+
+		/* Check if we should swap to sink */
+		atomic_set_bit(port->src_policy.flags,
+			       SRC_POLICY_EVAL_SWAP_TO_SNK);
 
 		if (IS_ENABLED(CONFIG_PDC_POWER_MGMT_USB_MUX)) {
 			usb_mux_set(
