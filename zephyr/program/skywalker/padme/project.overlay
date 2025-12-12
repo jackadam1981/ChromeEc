@@ -101,9 +101,8 @@
 			gpios = <&gpioi 5 (GPIO_INPUT| GPIO_ACTIVE_LOW)>;
 		};
 
-		// gpio_ap_ec_revd0 changed to ec_ap_hid_int_odl
 		ec_ap_hid_int_odl: ec-ap-hid-int-odl {
-			gpios = <&gpioi 6 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8 |
+			gpios = <&gpiof 2 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8 |
 					   GPIO_ACTIVE_LOW)>;
 		};
 
@@ -166,7 +165,6 @@
 		unused-gpios =
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
-			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
@@ -308,7 +306,7 @@
 		pid = <0x507a>;
 
 		/* Zephyr preferred style for specifying ec_ap_hid_int_odl */
-		irq-gpios = <&gpioi 6 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8 |
+		irq-gpios = <&gpiof 2 (GPIO_OPEN_DRAIN | GPIO_VOLTAGE_1P8 |
 			     GPIO_ACTIVE_LOW)>;
 	};
 };
