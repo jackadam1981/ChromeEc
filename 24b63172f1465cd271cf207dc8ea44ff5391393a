@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3574532e_f33fc0e7",
+        "filename": "zephyr/program/fatcat/kinmen/usb_typec.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-12T16:26:09Z",
+      "side": 1,
+      "message": "I don\u0027t think this actually does anything.  The `named-usbc-port` compatible isn\u0027t proper Zephyr driver and doesn\u0027t have it\u0027s own init routine.\n\nThe compatible is only used to create the mapping of each driver property to the USB C port number.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "24b63172f1465cd271cf207dc8ea44ff5391393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
