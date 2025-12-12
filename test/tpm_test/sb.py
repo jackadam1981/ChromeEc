@@ -500,6 +500,7 @@ def sb_test(tpm):
             Tag(KM_TAG_KEY_SIZE, 256),
             Tag(KM_TAG_PURPOSE, KM_PURPOSE_SIGN),
             Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_256),
+            Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_512),
             Tag(KM_TAG_ALLOW_WHILE_ON_BODY, 0),
             Tag(KM_TAG_USER_ID, 0xF00),
             Tag(KM_TAG_APPLICATION_ID, b"\xaa\xaa\xaa\xaa"),
@@ -518,6 +519,7 @@ def sb_test(tpm):
             Tag(KM_TAG_KEY_SIZE, 256),
             Tag(KM_TAG_PURPOSE, KM_PURPOSE_SIGN),
             Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_256),
+            Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_512),
             Tag(KM_TAG_ALLOW_WHILE_ON_BODY, 0),
             Tag(KM_TAG_USER_ID, 0xF00),
             Tag(KM_TAG_CERTIFICATE_SUBJECT, b"gECC"),
@@ -548,7 +550,7 @@ def sb_test(tpm):
     expected_tags = (
         # KeyCharacteristics
         U32(KM_SECURITY_STRONGBOX)
-        + U32(19)
+        + U32(21)
         + Tag(KM_TAG_ORIGIN, KM_ORIGIN_GENERATED)
         + Tag(KM_TAG_OS_VERSION, 0x027100)
         + Tag(KM_TAG_OS_PATCHLEVEL, 0x031710)
@@ -558,6 +560,7 @@ def sb_test(tpm):
         + Tag(KM_TAG_KEY_SIZE, 256)
         + Tag(KM_TAG_PURPOSE, KM_PURPOSE_SIGN)
         + Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_256)
+        + Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_512)
         + Tag(KM_TAG_NO_AUTH_REQUIRED, 0)
         + U32(KM_SECURITY_KEYSTORE)
         + U32(3)
@@ -570,10 +573,12 @@ def sb_test(tpm):
             f"KeyCharacteristics doesn't match:\nexpected: {expected_tags.hex()}, {len(expected_tags)} bytes\nreceived: {key_tags.hex()} {len(key_tags)} bytes"
         )
 
+    print("Begin signing")
     # Additional parameters for blob authentication for begin()
-    key_params = U32(4) + (
+    key_params = U32(6) + (
         Tag(KM_TAG_APPLICATION_ID, b"\xaa\xaa\xaa\xaa")
         + Tag(KM_TAG_APPLICATION_DATA, b"\xbb\xbb\xbb\xbb")
+        + Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_256)
     )
     begin_cmd = U32(KM_PURPOSE_SIGN) + key_blob + key_params
     w_rsp = tpm.command(wrap_sb_command(SB_DeviceBegin, begin_cmd))
@@ -586,6 +591,7 @@ def sb_test(tpm):
             operation_id + U32(32) + b"0123456789ABCDEF0123456789ABCDEF",
         )
     )
+
     rsp = tpm.unwrap_ext_response(SB_OperationUpdate, w_rsp)
     print("r=", rsp.hex())
 
