@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc2b28b_5595e9a7",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-12T22:05:42Z",
+      "side": 1,
+      "message": "thanks! fixed.",
+      "parentUuid": "5317e9e0_1c2d9308",
+      "range": {
+        "startLine": 1437,
+        "startChar": 3,
+        "endLine": 1437,
+        "endChar": 29
+      },
+      "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "233071a1_6823508d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "keymint.rs and KeyOrigin.aidl match each other. We should change strongbox.h to also match.",
       "parentUuid": "5e90a1bb_eddd9209",
+      "range": {
+        "startLine": 457,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 23
+      },
+      "revId": "9660349854707ace0ef7b32de87d8b14aab6e8b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4159d4_8143640e",
+        "filename": "include/strongbox.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-12T22:05:42Z",
+      "side": 1,
+      "message": "Let\u0027s use AIDL:\n\n```\nenum KeyOrigin {\n    GENERATED \u003d 0,\n    DERIVED \u003d 1,\n    IMPORTED \u003d 2,\n    RESERVED \u003d 3,\n    SECURELY_IMPORTED \u003d 4,\n}\n```\n\nI suspect i copied this from Pixel\u0027s implementation sometime early on in the process, and since nothing but Generated was used, never noticed issue.",
+      "parentUuid": "80a0f5dd_0ee8b272",
       "range": {
         "startLine": 457,
         "startChar": 1,
