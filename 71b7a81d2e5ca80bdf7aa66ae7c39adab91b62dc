@@ -70,6 +70,24 @@
       "parentUuid": "76092aa0_600dceac",
       "revId": "71b7a81d2e5ca80bdf7aa66ae7c39adab91b62dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38169727_6717aa54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-12T05:08:41Z",
+      "side": 1,
+      "message": "Please file a bug. We can support `period-ms \u003d \u003c0\u003e` for instant color change in a linear transition sequence.",
+      "parentUuid": "00ac3e02_58bb0b93",
+      "revId": "71b7a81d2e5ca80bdf7aa66ae7c39adab91b62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
