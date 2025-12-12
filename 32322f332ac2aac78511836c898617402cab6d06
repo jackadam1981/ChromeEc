@@ -22,6 +22,30 @@
       },
       "revId": "32322f332ac2aac78511836c898617402cab6d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef95346c_57cf08c3",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-12T21:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53bdb87f_bd88d32d",
+      "range": {
+        "startLine": 2018,
+        "startChar": 0,
+        "endLine": 2019,
+        "endChar": 58
+      },
+      "revId": "32322f332ac2aac78511836c898617402cab6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
