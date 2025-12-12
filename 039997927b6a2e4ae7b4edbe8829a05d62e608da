@@ -56,6 +56,24 @@
       "message": "If `tcpc_update8` fails for any reason then this gets out of sync. I think this update needs to be done last, and the result of the I2C transaction checked.",
       "revId": "039997927b6a2e4ae7b4edbe8829a05d62e608da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd45a767_6fa036ca",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-12T18:41:50Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0056e3dd_baff1c11",
+      "revId": "039997927b6a2e4ae7b4edbe8829a05d62e608da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
