@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd7ff82c_4396e3ef",
+        "filename": "zephyr/program/ocelot/ocicat/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-12T05:24:41Z",
+      "side": 1,
+      "message": "Thank you for pointing out the error. I will correct it.",
+      "parentUuid": "47a357c5_c7a193be",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "bea1fffa3a104b1c7a5d2b225b9f354864a260d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d32d3a0_c222520e",
         "filename": "zephyr/program/ocelot/ocicat/cbi.dtsi",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2025-12-12T01:45:43Z",
       "side": 1,
       "message": "ocicat or ocelot ?",
+      "revId": "bea1fffa3a104b1c7a5d2b225b9f354864a260d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2a14ca_d5abbe26",
+        "filename": "zephyr/program/ocelot/ocicat/cbi.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-12T05:24:41Z",
+      "side": 1,
+      "message": "Thank you for pointing out the error. I will correct it.",
+      "parentUuid": "2d32d3a0_c222520e",
       "revId": "bea1fffa3a104b1c7a5d2b225b9f354864a260d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
