@@ -407,7 +407,12 @@ static void pchg_state_enabled(struct pchg *ctx)
 
 	switch (ctx->event) {
 	case PCHG_EVENT_RESET:
-		ctx->state = pchg_reset(ctx);
+		if (ctx->bist_cmd != PCHG_BIST_CMD_NONE) {
+			ctx->mode = PCHG_MODE_BIST;
+			ctx->state = pchg_reset(ctx);
+		} else {
+			ctx->state = pchg_reset(ctx);
+		}
 		break;
 	case PCHG_EVENT_DISABLE:
 		rv = ctx->cfg->drv->enable(ctx, false);
@@ -842,7 +847,7 @@ static void pchg_shutdown(void)
 	CPRINTS("%s", __func__);
 
 	for (p = 0; p < pchg_count; p++) {
-		ctx = &pchgs[0];
+		ctx = &pchgs[p];
 		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 0);
 	}
