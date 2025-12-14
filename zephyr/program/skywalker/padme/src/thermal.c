@@ -4,6 +4,7 @@
  */
 
 #include "battery.h"
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -24,6 +25,10 @@ static int thermals[COL_NUM], time[ROW_NUM][COL_NUM];
 static int thermal_cyc;
 static int current = -1;
 static int charger_temp_ave_bef, charger_temp_ave;
+static int save_charge_ma, save_charge_mv;
+static int typec_policy_cyc;
+bool typec_policy = false;
+bool pre_typec_policy;
 
 enum {
 	TEMP_ZONE_0, /* not limit */
@@ -33,6 +38,15 @@ enum {
 	TEMP_ZONE_COUNT,
 	TEMP_OUT_OF_RANGE = TEMP_ZONE_COUNT /* Not charging */
 } temp_zone = TEMP_ZONE_0;
+
+__overridable void board_set_charge_limit(int port, int supplier, int charge_ma,
+					  int max_ma, int charge_mv)
+{
+	save_charge_ma = charge_ma;
+	save_charge_mv = charge_mv;
+	pre_typec_policy = !typec_policy;
+	charge_set_input_current_limit(charge_ma, charge_mv);
+}
 
 /*
  * Except time[exceptrow][exceptcol], everything else is cleared to 0
@@ -56,6 +70,44 @@ static void clear_remaining_array(int arr[][COL_NUM], int row, int exceptrow,
 		}
 	}
 }
+
+static void typec_tempature_policy(void)
+{
+	int typec_temp, typec_temp_c;
+
+	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_typec)),
+			 &typec_temp);
+
+	typec_temp_c = K_TO_C(typec_temp);
+	if (typec_temp_c >= 100) {
+		if (typec_policy)
+			typec_policy_cyc = 5;
+
+		if (typec_policy_cyc < 5)
+			typec_policy_cyc++;
+		else
+			typec_policy = true;
+	} else {
+		if (!typec_policy) {
+			typec_policy_cyc = 0;
+		} else {
+			if (typec_policy_cyc > 5)
+				typec_policy_cyc--;
+			else
+				typec_policy = false;
+		}
+	}
+
+	if (pre_typec_policy != typec_policy) {
+		pre_typec_policy = typec_policy;
+		if (typec_policy)
+			charge_set_input_current_limit(0, save_charge_mv);
+		else
+			charge_set_input_current_limit(save_charge_ma,
+						       save_charge_mv);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, typec_tempature_policy, HOOK_PRIO_DEFAULT);
 
 /* Called by hook task every hook second (1 sec) */
 static void average_tempature(void)
