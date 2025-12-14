@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "power.h"
 #include "temp_sensor/temp_sensor.h"
+#include "usb_pd.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
@@ -24,6 +25,9 @@ static int thermals[COL_NUM], time[ROW_NUM][COL_NUM];
 static int thermal_cyc;
 static int current = -1;
 static int charger_temp_ave_bef, charger_temp_ave;
+static int typec_policy_cyc;
+bool typec_policy = false;
+bool pre_typec_policy;
 
 enum {
 	TEMP_ZONE_0, /* not limit */
@@ -56,6 +60,40 @@ static void clear_remaining_array(int arr[][COL_NUM], int row, int exceptrow,
 		}
 	}
 }
+
+static void typec_temperature_policy(void)
+{
+	int typec_temp, typec_temp_c;
+
+	temp_sensor_read(TEMP_SENSOR_ID_BY_DEV(DT_NODELABEL(temp_typec)),
+			 &typec_temp);
+
+	typec_temp_c = K_TO_C(typec_temp);
+	if (typec_temp_c >= 100) {
+		if (typec_policy)
+			typec_policy_cyc = 3;
+
+		if (typec_policy_cyc < 3)
+			typec_policy_cyc++;
+		else
+			typec_policy = true;
+	} else {
+		if (!typec_policy) {
+			typec_policy_cyc = 0;
+		} else {
+			if (typec_policy_cyc > 0)
+				typec_policy_cyc--;
+			else
+				typec_policy = false;
+		}
+	}
+
+	if (pre_typec_policy != typec_policy) {
+		pre_typec_policy = typec_policy;
+		pd_set_suspend(0, typec_policy);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, typec_temperature_policy, HOOK_PRIO_DEFAULT);
 
 /* Called by hook task every hook second (1 sec) */
 static void average_tempature(void)
