@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dfeb1d_aa3cde85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-15T22:25:10Z",
+      "side": 1,
+      "message": "```suggestion\nThis restoration is crucial when transitioning from a legacy EC RO\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 61,
+        "endLine": 18,
+        "endChar": 68
+      },
+      "revId": "0a04b8538099d64f68ccc717139a187fd9d3cf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e288fe2_857c6a02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-15T22:25:10Z",
+      "side": 1,
+      "message": "```suggestion\nSR1, SR2, and all_protected and the new Zephyr RW image must restore\n```",
+      "range": {
+        "startLine": 21,
+        "startChar": 40,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "0a04b8538099d64f68ccc717139a187fd9d3cf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac337a8e_9188a27d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-15T22:25:10Z",
+      "side": 1,
+      "message": "```suggestion\nuse UMA_LOCK, but needs to honor the state set by the legacy EC RO.\n```",
+      "range": {
+        "startLine": 23,
+        "startChar": 61,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "0a04b8538099d64f68ccc717139a187fd9d3cf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f208945b_87db9da2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-15T22:25:10Z",
+      "side": 1,
+      "message": "```suggestion\nflash_preserve_state function in the Zephyr version of the firmware because the\n```",
+      "range": {
+        "startLine": 27,
+        "startChar": 37,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "0a04b8538099d64f68ccc717139a187fd9d3cf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e08b75_f6f61bc7",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-15T22:25:10Z",
+      "side": 1,
+      "message": "Let\u0027s change all instances of `Cros-EC` in this comment to just `EC`",
+      "range": {
+        "startLine": 435,
+        "startChar": 64,
+        "endLine": 435,
+        "endChar": 71
+      },
+      "revId": "0a04b8538099d64f68ccc717139a187fd9d3cf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2b696a_ee292bb6",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-15T22:25:10Z",
+      "side": 1,
+      "message": "Let\u0027s just use \"Zephyr\"",
+      "range": {
+        "startLine": 438,
+        "startChar": 38,
+        "endLine": 438,
+        "endChar": 47
+      },
+      "revId": "0a04b8538099d64f68ccc717139a187fd9d3cf8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
