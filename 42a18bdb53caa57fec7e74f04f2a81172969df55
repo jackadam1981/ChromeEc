@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73631b4d_c72a5672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-15T18:24:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure how you\u0027re doing this, but each of the navi and pujjoga board changes using this config shows up in Gerrit as the top of its own CL stack with the charge manager CL as the parent, even though the charge manager CL shows up as the parent of both of them in its own CL. Try to keep your local development branches reasonably organized with any one CL only in a single development branch.\n\n(AFAICT, none of these CLs have any dependence on each other. It would make equal sense for them to each be their own stack or to be in one stack or to be cleanly split across two stacks. It\u0027s splitting them across two stacks with duplication that\u0027s weird.)",
+      "revId": "42a18bdb53caa57fec7e74f04f2a81172969df55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
