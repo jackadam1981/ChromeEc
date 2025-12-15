@@ -16,6 +16,24 @@
       "message": "Remove commented out code.",
       "revId": "353971bbec3c43bc7707e08bf0b0d7ca56d48d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930fd4be_173c8e63",
+        "filename": "zephyr/emul/tcpc/emul_it8xxx2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-12-15T05:49:57Z",
+      "side": 1,
+      "message": "Updated in latest patchset.",
+      "parentUuid": "3eb6ab00_3461d0f4",
+      "revId": "353971bbec3c43bc7707e08bf0b0d7ca56d48d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
