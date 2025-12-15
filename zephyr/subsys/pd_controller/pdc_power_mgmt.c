@@ -43,7 +43,7 @@
 #include <drivers/pdc.h>
 #include <usbc/utils.h>
 
-LOG_MODULE_REGISTER(pdc_power_mgmt, CONFIG_USB_PDC_LOG_LEVEL);
+LOG_MODULE_REGISTER(pdc_power_mgmt, LOG_LEVEL_DBG);
 
 #ifdef CONFIG_TEST_SNIFF_POWER_MGMT_PDC_APIS
 /* Faking PDC APIs directly causes compilation errors of the function being
@@ -682,6 +682,12 @@ enum policy_src_attached_t {
 	SRC_POLICY_SET_RP,
 	/** Trigger a call into DPM source current balancing policy */
 	SRC_POLICY_EVAL_SNK_FIXED_PDO,
+	/** Runs a test to determine if we should become a sink instead */
+	// SRC_POLICY_EVAL_SWAP_TO_SNK,
+	/** Triggers a Get_Sink_Cap message to the partner. */
+	SRC_POLICY_GET_SRC_CAPS,
+	/** Evaluate source PDOs from sink partner to evauluate swap to sink. */
+	SRC_POLICY_EVAL_SRC_PDOS,
 	/** Triggers a Get_Sink_Cap message to the partner. */
 	SRC_POLICY_GET_SINK_CAPS,
 	/** Set new SRC CAP for PDC port in source power role */
@@ -1259,6 +1265,7 @@ void pdc_power_mgmt_clear_event(int port, atomic_t event_mask)
 static void invalidate_charger_settings(struct pdc_port_t *port,
 					bool reset_charge_manager)
 {
+	LOG_INF("invalidate_charger_settings\n");
 	const struct pdc_config_t *const config = port->dev->config;
 
 	if (reset_charge_manager) {
@@ -1272,7 +1279,7 @@ static void invalidate_charger_settings(struct pdc_port_t *port,
 
 	/* Invalidate PDOS */
 	port->snk_policy.pdo = 0;
-	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.snk.pdos));
+	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.src.pdos));
 	port->snk_policy.src.pdo_count = 0;
 	memset(port->src_policy.snk.pdos, 0, sizeof(port->src_policy.snk.pdos));
 	port->src_policy.snk.pdo_count = 0;
@@ -1609,10 +1616,12 @@ static struct pdc_pdos_t *get_pdc_pdos_ptr(struct pdc_port_t *port,
 
 static bool run_common_policies(struct pdc_port_t *port)
 {
+	LOG_INF("run_common_policies\n");
 	if (atomic_test_and_clear_bit(port->common_policy.flags,
 				      COMMON_POLICY_SET_POWER_STATE)) {
 		/* Send new AP power state to PDC */
 		queue_internal_cmd(port, CMD_PDC_SET_AP_POWER_STATE);
+		LOG_INF("run_common_policies1: true\n");
 		return true;
 	}
 
@@ -1620,9 +1629,10 @@ static bool run_common_policies(struct pdc_port_t *port)
 				      COMMON_POLICY_GET_ALERT)) {
 		/* Read latest ADO */
 		queue_internal_cmd(port, CMD_PDC_GET_ALERT);
+		LOG_INF("run_common_policies2: true\n");
 		return true;
 	}
-
+	LOG_INF("run_common_policies: false\n");
 	return false;
 }
 
@@ -1677,6 +1687,7 @@ static void run_unattached_policies(struct pdc_port_t *port)
 
 static bool should_swap_to_source(struct pdc_port_t *port)
 {
+	LOG_INF("should_swap_to_source\n");
 	const struct pdc_config_t *config = port->dev->config;
 	int port_num = config->connector_num;
 
@@ -1710,9 +1721,33 @@ static bool should_swap_to_source(struct pdc_port_t *port)
 			port_num, __func__);
 		return false;
 	}
-
+	LOG_INF("should_swap_to_source: true\n");
 	return true;
 }
+
+/*static bool should_swap_to_sink(struct pdc_port_t *port)
+{
+	LOG_INF("should_swap_to_sink\n");
+	const struct pdc_config_t *config = port->dev->config;
+	int port_num = config->connector_num;
+
+	If partner has no source caps, don't swap
+	if (port->snk_policy.src.pdo_count == 0) {
+		return false;
+	}
+
+	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
+
+	if partner has unconstrained power, swap to sink
+	if (vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) {
+		LOG_INF("C%d: %s: Swapping to sink, partner has unconstrained pwr",
+			port_num, __func__);
+		return true;
+	}
+
+	LOG_INF("should_swap_to_sink: false\n");
+	return false;
+}*/
 
 static void handle_attention_vdo(struct pdc_port_t *port)
 {
@@ -1947,11 +1982,27 @@ static void run_src_policies(struct pdc_port_t *port)
 					     SRC_POLICY_FORCE_SNK)) {
 		queue_internal_cmd(port, CMD_PDC_SET_CCOM);
 		return;
+	/* We should move this further down in Src Policies,
+	maybe after SRC_POLICY_GET_RDO. it needs to be after
+	we get the partner sink caps. The entire path here
+	should depend on the partner being a DRP*/
+	/*} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_EVAL_SWAP_TO_SNK)) {
+		if (should_swap_to_sink(port)) {
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_SWAP_TO_SNK);
+		}
+		return;*/
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_EVAL_SNK_FIXED_PDO)) {
 		/* Adjust source current limits if necessary */
 		pdc_dpm_eval_sink_fixed_pdo(port_num,
 					    port->src_policy.snk.pdos[0]);
+		/* If partner is DRP set bit to request SRC Caps */
+		if (port->src_policy.snk.pdos[0] & PDO_FIXED_GET_DRP) {
+			atomic_set_bit(port->src_policy.flags, SRC_POLICY_GET_SRC_CAPS);
+			LOG_INF("Setting SRC_POLICY_GET_SRC_CAPS bit since partner is DRP\n");
+		}
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_GET_SINK_CAPS)) {
@@ -2002,6 +2053,44 @@ static void run_src_policies(struct pdc_port_t *port)
 		/* Get the RDO from the port partner */
 		queue_internal_cmd(port, CMD_PDC_GET_RDO);
 		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_GET_SRC_CAPS)) {
+		LOG_INF("Processing SRC_POLICY_GET_SRC_CAPS\n");
+		/* Request up to 4 pdos to honor USCI 6.5.15 Get PDOs - Number
+		 * of PDOs to return starting from the PDO Offset. The number of
+		 * PDOs to return is the value in this field plus 1.
+		 */
+		if (!port->get_pdo.updating) {
+			port->get_pdo.num_pdos = PDO_MAX_OBJECTS;
+			port->get_pdo.pdo_offset = PDO_OFFSET_0;
+			port->get_pdo.updating = true;
+		}
+		if (port->get_pdo.num_pdos > UCSI_GET_PDOS_MAX_NUM) {
+			/* More src caps needed, rearm this path. */
+			/* TODO(kamilplucinski) How does it work? */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_GET_SRC_CAPS);
+		} else {
+			/* All sink caps will be known following the next
+			 * queued GET_PDOS operation. Trigger source policy
+			 * evaluation.
+			 */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_EVAL_SRC_PDOS);
+			port->get_pdo.updating = false;
+		}
+		port->get_pdo.pdo_type = SOURCE_PDO;
+		port->get_pdo.pdo_source = PARTNER_PDO;
+		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_EVAL_SRC_PDOS)) {
+		LOG_INF("Processing SRC_POLICY_EVAL_SRC_PDOS\n");
+		/* Evaluate the received source PDOs to adjust check for Swap to Sink */
+		if (port->src_policy.src.pdos[0] & PDO_FIXED_GET_UNCONSTRAINED_PWR) {
+			atomic_set_bit(port->src_policy.flags, SRC_POLICY_SWAP_TO_SNK);
+		}
+
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_UPDATE_ALLOW_PR_SWAP)) {
 		/* Remain a source but update external swap policy */
@@ -2148,6 +2237,7 @@ static enum smf_state_result pdc_unattached_run(void *obj)
  */
 static void pdc_src_attached_entry(void *obj)
 {
+	LOG_INF("pdc_src_attached_entry\n");
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
