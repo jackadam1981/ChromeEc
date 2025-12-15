@@ -24,7 +24,7 @@
 			start = <UFSC_BIT(3, 29)>;
 			size = <2>;
 		};
-		oem-1bit-field-0 {
+		ufsc_usbc_ports: oem-1bit-field-0 {
 			status = "disabled";
 			start = <UFSC_BIT(3, 31)>;
 			size = <1>;
