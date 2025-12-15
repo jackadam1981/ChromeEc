@@ -46,6 +46,30 @@
       },
       "revId": "339535a94cded8a68347534363d074d690672b33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518f7b77_f681c0c7",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-15T22:57:36Z",
+      "side": 1,
+      "message": "OK. A `board_`-specific function can be a short-term solution. For long term, I expect it is a `chip_`-specific function.",
+      "parentUuid": "eb69d956_78e5ad60",
+      "range": {
+        "startLine": 762,
+        "startChar": 5,
+        "endLine": 762,
+        "endChar": 43
+      },
+      "revId": "339535a94cded8a68347534363d074d690672b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
