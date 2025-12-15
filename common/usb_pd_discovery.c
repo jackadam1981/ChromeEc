@@ -104,6 +104,7 @@ void pd_set_svdm_ver(int port, enum tcpci_msg_type type,
 void dfp_consume_svids(int port, enum tcpci_msg_type type, int cnt,
 		       uint32_t *payload)
 {
+	CPRINTF("DFP_CONSUME_SVIDS\n");
 	int i;
 	uint32_t *ptr = payload + 1;
 	int vdo = 1;

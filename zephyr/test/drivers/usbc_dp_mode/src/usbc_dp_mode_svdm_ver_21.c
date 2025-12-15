@@ -438,28 +438,56 @@ ZTEST_SUITE(usbc_dp_mode_svdm_ver_21, drivers_predicate_post_main,
 	    usbc_dp_mode_setup_svdm_ver_21, usbc_dp_mode_before,
 	    usbc_dp_mode_after, NULL);
 
-ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery)
+void print_binary(unsigned int number)
 {
-	setup_passive_cable(&fixture->partner);
-	/* But with DP mode response and modal operation set to true */
-	fixture->partner.cable->identity_vdm[VDO_INDEX_IDH] |=
-		VDO_MODAL_OPERATION_BIT;
-	fixture->partner.cable->svids_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_PD, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_SVID) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	fixture->partner.cable->svids_vdm[VDO_INDEX_HDR + 1] =
-		VDO_SVID(USB_SID_DISPLAYPORT, 0);
-	fixture->partner.cable->svids_vdos = VDO_INDEX_HDR + 2;
-	fixture->partner.cable->modes_vdm[VDO_INDEX_HDR] =
-		VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
-		    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_MODES) |
-		VDO_SVDM_VERS(SVDM_VER_2_1);
-	fixture->partner.cable->modes_vdm[VDO_INDEX_HDR + 1] =
-		VDO_MODE_DP(MODE_DP_PIN_C | MODE_DP_PIN_D, 0, 1,
-			    CABLE_RECEPTACLE, MODE_DP_GEN2, MODE_DP_SNK) |
-		DPAM_VER_VDO(0x1);
-	fixture->partner.cable->modes_vdos = VDO_INDEX_HDR + 2;
+    int width = sizeof(number) * 8;
+    for (int i = width - 1; i >= 0; i--) {
+        int bit = (number >> i) & 1;
+        printk("%d", bit);
+        if (i % 4 == 0 && i != 0) {
+            printk(" ");
+        }
+    }
+    printk("\n");
+}
+
+ ZTEST_F(usbc_dp_mode_svdm_ver_21, test_discovery)
+ {
+        setup_passive_cable(&fixture->partner);
+        /* But with DP mode response and modal operation set to true */
+        fixture->partner.cable->identity_vdm[VDO_INDEX_IDH] |=
+                VDO_MODAL_OPERATION_BIT;
+        fixture->partner.cable->svids_vdm[VDO_INDEX_HDR] =
+                VDO(USB_SID_PD, /* structured VDM */ true,
+                    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_SVID) |
+                VDO_SVDM_VERS(SVDM_VER_2_1);
+        fixture->partner.cable->modes_vdm[VDO_INDEX_HDR] =
+                VDO(USB_SID_DISPLAYPORT, /* structured VDM */ true,
+                    VDO_CMDT(CMDT_RSP_ACK) | CMD_DISCOVER_MODES) |
+                VDO_SVDM_VERS(SVDM_VER_2_1);
+       printk("Probably not SVID: \n");
+       print_binary(fixture->partner.cable->svids_vdm[VDO_INDEX_HDR]);
+       print_binary(fixture->partner.cable->modes_vdm[VDO_INDEX_HDR]);
+
+       fixture->partner.cable->svids_vdm[VDO_INDEX_HDR + 1] =
+               VDO_SVID(USB_PID2_ELLISYS, USB_PID2_ELLISYS);
+       fixture->partner.cable->modes_vdm[VDO_INDEX_HDR + 1] = 0;
+       printk("Second SVID (DP): \n");
+       print_binary(fixture->partner.cable->svids_vdm[VDO_INDEX_HDR+1]);
+       print_binary(fixture->partner.cable->modes_vdm[VDO_INDEX_HDR+1]);
+
+       fixture->partner.cable->svids_vdm[VDO_INDEX_HDR + 2] =
+               VDO_SVID(USB_SID_DISPLAYPORT, 0);
+       fixture->partner.cable->modes_vdm[VDO_INDEX_HDR + 2] =
+                VDO_MODE_DP(MODE_DP_PIN_C | MODE_DP_PIN_D, 0, 1,
+                            CABLE_RECEPTACLE, MODE_DP_GEN2, MODE_DP_SNK) |
+                DPAM_VER_VDO(0x1);
+       printk("Thirth SVID (DP): \n");
+       print_binary(fixture->partner.cable->svids_vdm[VDO_INDEX_HDR+2]);
+       print_binary(fixture->partner.cable->modes_vdm[VDO_INDEX_HDR+2]);
+
+       fixture->partner.cable->svids_vdos = VDO_INDEX_HDR + 3;
+       fixture->partner.cable->modes_vdos = VDO_INDEX_HDR + 3;
 
 	connect_sink_to_port(&fixture->partner, fixture->tcpci_emul,
 			     fixture->charger_emul);

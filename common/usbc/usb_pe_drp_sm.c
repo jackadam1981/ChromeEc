@@ -6142,6 +6142,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
+		CPRINTS("C%d: VDM_RESULT_WAITING", port);
 		/*
 		 * The common code didn't parse a message. Handle protocol
 		 * errors; otherwise, continue waiting.
@@ -6161,6 +6162,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 		}
 		return;
 	case VDM_RESULT_NO_ACTION:
+		CPRINTS("C%d: VDM_RESULT_NO_ACTION", port);
 		/*
 		 * If the received message doesn't change the discovery state,
 		 * there is nothing to do but return to the previous ready
@@ -6179,6 +6181,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 		}
 		break;
 	case VDM_RESULT_ACK:
+		CPRINTS("C%d: VDM_RESULT_ACK", port);
 		/* PE_INIT_PORT_VDM_Identity_ACKed embedded here */
 		dfp_consume_identity(port, sop, cnt, payload);
 
@@ -6194,6 +6197,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				      PD_HEADER_REV(rx_emsg[port].header));
 		break;
 	case VDM_RESULT_NAK:
+		CPRINTS("C%d: VDM_RESULT_NAK", port);
 		/* PE_INIT_PORT_VDM_IDENTITY_NAKed embedded here */
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 		break;
@@ -6523,6 +6527,7 @@ static void pe_init_vdm_modes_request_entry(int port)
 
 static void pe_init_vdm_modes_request_run(int port)
 {
+	CPRINTF("PE_INIT_VDM_Modes_Request_RUN: %d\n", port);
 	const struct svid_mode_data *mode_data;
 	uint16_t requested_svid;
 
@@ -6534,9 +6539,11 @@ static void pe_init_vdm_modes_request_run(int port)
 
 	switch (parse_vdm_response_common(port)) {
 	case VDM_RESULT_WAITING:
+		CPRINTF("PE_INIT_VDM_Modes_Request_WAITING: %d\n", port);
 		/* If common code didn't parse a message, continue waiting. */
 		return;
 	case VDM_RESULT_NO_ACTION:
+		CPRINTF("PE_INIT_VDM_Modes_Request_NO_ACTION: %d\n", port);
 		/*
 		 * If the received message doesn't change the discovery state,
 		 * there is nothing to do but return to the previous ready
@@ -6544,6 +6551,7 @@ static void pe_init_vdm_modes_request_run(int port)
 		 */
 		break;
 	case VDM_RESULT_ACK: {
+		CPRINTF("PE_INIT_VDM_Modes_Request_ACK: %d\n", port);
 		/* Retrieve the message information. */
 		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
 		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
@@ -6558,6 +6566,7 @@ static void pe_init_vdm_modes_request_run(int port)
 		break;
 	}
 	case VDM_RESULT_NAK:
+		CPRINTF("PE_INIT_VDM_Modes_Request_NAK: %d\n", port);
 		/* PE_INIT_VDM_Modes_NAKed embedded here */
 		pd_set_modes_discovery(port, pe[port].tx_type, requested_svid,
 				       PD_DISC_FAIL);

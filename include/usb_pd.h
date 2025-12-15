@@ -1061,6 +1061,8 @@ struct pd_cable {
 #define USB_PID1_APPLE 0x1012
 #define USB_PID2_APPLE 0x1013
 
+#define USB_PID2_ELLISYS 0x1500
+
 #define USB_VID_HP 0x03F0
 #define USB_PID_HP_USB_C_DOCK_G5 0x036B
 #define USB_PID_HP_USB_C_A_UNIV_DOCK_G2 0x096B
