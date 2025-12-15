@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd47dc8_8a324171",
+        "filename": "zephyr/shim/chip/egis/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-12-15T19:16:03Z",
+      "side": 1,
+      "message": "I think this should be placed under `zephyr/shim/core/risc-v/`.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "e23b20953e327b9a5e8242a24029e9053e2e8394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b570ef7_a8ee4da8",
+        "filename": "zephyr/shim/chip/egis/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2025-12-15T19:16:03Z",
+      "side": 1,
+      "message": "please add attribute `__override`.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "e23b20953e327b9a5e8242a24029e9053e2e8394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
