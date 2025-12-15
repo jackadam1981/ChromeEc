@@ -186,12 +186,19 @@ static void set_color(int node_idx)
 			    patterns[i].pattern_color[0].led_color_node->led_id))
 			continue; /* Auto control is disabled */
 
+		// Apply the cached pattern immediately.
 		patterns[i]
 			.pattern_color[0]
 			.led_color_node->api.led_set_color_with_pattern(
 				&patterns[i]);
 
-		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0) {
+		/* Calculate the color that needs to be implemented at the next
+		 * time step and cache it. Preemptively calculating the color
+		 * for the next step allows us to apply the color with minimal
+		 * delay.
+		 */
+		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0 ||
+		    patterns[i].cur_color != patterns[i].pattern_len - 1) {
 			patterns[i].elapsed_ms += HOOK_TICK_INTERVAL_MS;
 
 			while (patterns[i].elapsed_ms >=
@@ -207,7 +214,9 @@ static void set_color(int node_idx)
 				}
 
 				if (GET_DURATION(patterns[i],
-						 patterns[i].cur_color) == 0) {
+						 patterns[i].cur_color) == 0 &&
+				    patterns[i].cur_color ==
+					    patterns[i].pattern_len - 1) {
 					break;
 				}
 			}
