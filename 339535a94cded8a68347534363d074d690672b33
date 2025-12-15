@@ -22,6 +22,30 @@
       },
       "revId": "339535a94cded8a68347534363d074d690672b33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb69d956_78e5ad60",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-15T07:27:12Z",
+      "side": 1,
+      "message": "we also want to explore this in the future b/449810712, where we enter hibernate even with AC connected.",
+      "parentUuid": "66f3d28e_d2153cdb",
+      "range": {
+        "startLine": 762,
+        "startChar": 5,
+        "endLine": 762,
+        "endChar": 43
+      },
+      "revId": "339535a94cded8a68347534363d074d690672b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
