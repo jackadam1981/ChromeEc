@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e069d045_1afb478e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-15T16:51:57Z",
+      "side": 1,
+      "message": "Add the bug number.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ddbcaf_040c39c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-15T16:51:57Z",
+      "side": 1,
+      "message": "Please add a unit test for the instant transition.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3098a76f_280dab4a",
+        "filename": "zephyr/program/brox/caboc/led_policy.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-15T16:51:57Z",
+      "side": 1,
+      "message": "Move it to a separate change.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0adb5d2_b32da926",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-15T16:51:57Z",
+      "side": 1,
+      "message": "Once the `cur_color` is advanced, does the new color need to be applied, i.e. calling the following function? The new color may not be the same.\n```\n \t\tpatterns[i]\n\t\t\t.pattern_color[0]\n\t\t\t.led_color_node-\u003eapi.led_set_color_with_pattern(\n\t\t\t\t\u0026patterns[i]);\n```",
+      "range": {
+        "startLine": 203,
+        "startChar": 15,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
