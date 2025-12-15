@@ -191,6 +191,25 @@ static void set_color(int node_idx)
 			.led_color_node->api.led_set_color_with_pattern(
 				&patterns[i]);
 
+		/*
+		 * If the current period-ms is 0, this state should be skipped
+		 * immediately. The while loop is used to prevent multiple
+		 * consecutive nodes from being 0. loop_safety is used to
+		 * prevent an infinite loop crash caused by all nodes being 0.
+		 */
+		int loop_safety = 0;
+		while (GET_DURATION(patterns[i], patterns[i].cur_color) == 0 &&
+		       loop_safety < patterns[i].pattern_len) {
+			patterns[i].cur_color++;
+
+			if (patterns[i].cur_color >= patterns[i].pattern_len) {
+				patterns[i].cur_color = 0;
+			}
+
+			patterns[i].elapsed_ms = 0;
+			loop_safety++;
+		}
+
 		if (GET_DURATION(patterns[i], patterns[i].cur_color) != 0) {
 			patterns[i].elapsed_ms += HOOK_TICK_INTERVAL_MS;
 

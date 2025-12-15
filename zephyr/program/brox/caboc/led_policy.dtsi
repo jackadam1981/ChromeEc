@@ -48,8 +48,7 @@
 
 		power-state-discharge-batt-low {
 			charge-state = "LED_PWRS_DISCHARGE";
-			batt-lvl = <BATTERY_LEVEL_EMPTY
-				    (BATTERY_LEVEL_LOW - 1)>;
+			batt-lvl = <51 60>;
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
@@ -60,6 +59,30 @@
 					period-ms = <1000>;
 				};
 				color-1 {
+					led-color = <&battery_led_off>;
+					period-ms = <1000>;
+				};
+			};
+		};
+
+		power-state-discharge-batt-critical {
+			charge-state = "LED_PWRS_DISCHARGE";
+			batt-lvl = <BATTERY_LEVEL_EMPTY 50>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+				transition = "LED_TRANSITION_LINEAR";
+
+				/* Amber fast flashing */
+				color-0 {
+					led-color = <&battery_led_amber>;
+					period-ms = <0>;
+				};
+				color-1 {
+					led-color = <&battery_led_amber>;
+					period-ms = <1000>;
+				};
+				color-2 {
 					led-color = <&battery_led_off>;
 					period-ms = <1000>;
 				};
