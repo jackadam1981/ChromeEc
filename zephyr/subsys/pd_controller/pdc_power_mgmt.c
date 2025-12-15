@@ -5296,7 +5296,7 @@ pdc_power_mgmt_get_cable_prop(int port, union cable_property_t *cable_prop)
 
 enum usb_typec_current_t pdc_power_mgmt_get_default_current_limit(int port)
 {
-	return TC_CURRENT_1_5A;
+	return TC_CURRENT_3_0A;
 }
 
 /**
