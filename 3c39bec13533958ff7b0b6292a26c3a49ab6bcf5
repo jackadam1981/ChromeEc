@@ -16,6 +16,24 @@
       "message": "Just use `false`. No need to define your own constant.",
       "revId": "3c39bec13533958ff7b0b6292a26c3a49ab6bcf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df103e5_f348e622",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2025-12-15T09:55:25Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "e7e3ad3e_fe5e55f4",
+      "revId": "3c39bec13533958ff7b0b6292a26c3a49ab6bcf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
