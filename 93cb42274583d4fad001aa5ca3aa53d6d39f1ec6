@@ -70,6 +70,30 @@
       },
       "revId": "93cb42274583d4fad001aa5ca3aa53d6d39f1ec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1c403f_28665b83",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-15T17:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6436ba9_7c1a4691",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 6
+      },
+      "revId": "93cb42274583d4fad001aa5ca3aa53d6d39f1ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
