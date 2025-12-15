@@ -63,15 +63,41 @@ ZTEST(led_pwm_fade, test_led_fade)
 	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
 	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
 
-	k_sleep(K_SECONDS(8));
-	/* After a full cycle, the color remains the same. */
-	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) > 65, NULL);
-	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) < 85, NULL);
+	k_sleep(K_SECONDS(2));
+	/* left LED should be at about 25% blue */
+	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) > 15, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) < 35, NULL);
 	zassert_equal(pwm_mock_get_duty(pwm_white_left, 0), 0, NULL);
 	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
 	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
 
-	int old_duty = pwm_mock_get_duty(pwm_blue_left, 0);
+	k_sleep(K_SECONDS(1));
+	// Slightly desync the timing so we're not testing right on the edge of
+	// the jump.
+	k_sleep(K_MSEC(100));
+	/* left LED should jump to 100% white */
+	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) < 10, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_white_left, 0) > 90, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
+
+	k_sleep(K_SECONDS(1));
+	/* left LED should be at about 75% white */
+	zassert_equal(pwm_mock_get_duty(pwm_blue_left, 0), 0, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_white_left, 0) > 65, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_white_left, 0) < 85, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
+
+	k_sleep(K_SECONDS(12));
+	/* After a full cycle, the color remains the same. */
+	zassert_equal(pwm_mock_get_duty(pwm_blue_left, 0), 0, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_white_left, 0) > 65, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_white_left, 0) < 85, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_amber_right, 0), 0, NULL);
+	zassert_equal(pwm_mock_get_duty(pwm_white_right, 0), 0, NULL);
+
+	int old_duty = pwm_mock_get_duty(pwm_white_left, 0);
 	/* pwm driver uses 30ms update intervals.
 	 * Because k_sleep does not necessarily line up with real time, changes
 	 * in execution speed may cause a desync and can cause this test to
@@ -79,7 +105,7 @@ ZTEST(led_pwm_fade, test_led_fade)
 	 */
 	k_sleep(K_MSEC(100));
 	/* Even in small time increments, color changes slightly */
-	zassert_true(pwm_mock_get_duty(pwm_blue_left, 0) < old_duty, NULL);
+	zassert_true(pwm_mock_get_duty(pwm_white_left, 0) < old_duty, NULL);
 
 	test_set_chipset_to_power_level(POWER_S3);
 	k_sleep(K_SECONDS(4));
@@ -129,21 +155,6 @@ ZTEST(led_pwm_fade, test_led_fade)
 	 * whether it is intended behavior.
 	 */
 	k_sleep(K_SECONDS(1));
-	/* right LED should be at about 50% white */
-	zassert_equal(pwm_mock_get_duty(pwm_blue_left, 0), 0, NULL);
-	zassert_equal(pwm_mock_get_duty(pwm_white_left, 0), 0, NULL);
-	zassert_true(pwm_mock_get_duty(pwm_amber_right, 0) < 10, NULL);
-	zassert_true(pwm_mock_get_duty(pwm_white_right, 0) > 40, NULL);
-	zassert_true(pwm_mock_get_duty(pwm_white_right, 0) < 60, NULL);
-
-	k_sleep(K_SECONDS(2));
-	/* right LED should be at about 100% white */
-	zassert_equal(pwm_mock_get_duty(pwm_blue_left, 0), 0, NULL);
-	zassert_equal(pwm_mock_get_duty(pwm_white_left, 0), 0, NULL);
-	zassert_true(pwm_mock_get_duty(pwm_amber_right, 0) < 10, NULL);
-	zassert_true(pwm_mock_get_duty(pwm_white_right, 0) > 90, NULL);
-
-	k_sleep(K_SECONDS(2));
 	/* right LED should be at about 50% amber, 60% white */
 	zassert_equal(pwm_mock_get_duty(pwm_blue_left, 0), 0, NULL);
 	zassert_equal(pwm_mock_get_duty(pwm_white_left, 0), 0, NULL);

@@ -22,6 +22,14 @@
 					led-color = <&left_led_off>;
 					period-ms = <4000>;
 				};
+				color-2 {
+					led-color = <&left_led_white>;
+					period-ms = <0>;
+				};
+				color-3 {
+					led-color = <&left_led_off>;
+					period-ms = <4000>;
+				};
 			};
 			led-1 {
 				led-id = "EC_LED_ID_RIGHT_LED";
@@ -77,7 +85,7 @@
 
 				color-0 {
 					led-color = <&right_led_white>;
-					period-ms = <4000>;
+					period-ms = <0>;
 				};
 				color-1 {
 					led-color = <&right_led_yellow>;
