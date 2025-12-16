@@ -13,6 +13,7 @@
 #include "extension.h"
 #include "nvmem_vars.h"
 #include "system.h"
+#include "trusty_storage_mac.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
@@ -123,6 +124,35 @@ static int trusty_storage_mac_delete(const uint8_t *key)
 	data.flags = data.flags & ~TS_FLAGS_MASK;
 
 	return trusty_storage_mac_write(key, &data);
+}
+
+/* Helper function to check if a mac exists. */
+static bool trusty_storage_mac_exists(const uint8_t *key)
+{
+	const struct tuple *ptr;
+	bool exists = false;
+
+	ptr = getvar(key, g_trusty_key_len);
+	exists = !!ptr;
+	freevar(ptr);
+	return exists;
+
+}
+
+/* Delete the storage macs. */
+int trusty_storage_mac_handle_owner_clear(void)
+{
+	const uint8_t *key;
+	int ret_tdp = EC_SUCCESS;
+	int ret_td = EC_SUCCESS;
+
+	key = trusty_storage_mac_key(trusty_storage_mac_file_index_tdp);
+	if (trusty_storage_mac_exists(key))
+		ret_tdp = trusty_storage_mac_delete(key);
+	key = trusty_storage_mac_key(trusty_storage_mac_file_index_td);
+	if (trusty_storage_mac_exists(key))
+		ret_td = trusty_storage_mac_delete(key);
+	return ret_tdp != EC_SUCCESS ? ret_tdp : ret_td;
 }
 
 static enum vendor_cmd_rc process_trusty_storage_mac(enum vendor_cmd_cc code,
