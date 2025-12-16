@@ -56,6 +56,7 @@ menuconfig PLATFORM_EC
 
 if PLATFORM_EC
 
+rsource "shim/chip/egis/Kconfig.egis"
 rsource "shim/chip/npcx/Kconfig.npcx"
 rsource "shim/chip/mchp/Kconfig.xec"
 rsource "Kconfig.adc"
@@ -483,9 +484,18 @@ config PLATFORM_EC_HOOKS
 
 config PLATFORM_EC_HOOK_SECOND
 	bool "Enable the one second period hook"
+	default n if SOC_FAMILY_INTEL_ISH
 	default y
 	help
 	  Enable support for the one second hook. Disabling the hook save
+	  some memory and CPU time.
+
+config PLATFORM_EC_HOOK_TICK
+	bool "Enable the one tick period hook"
+	default n if SOC_FAMILY_INTEL_ISH
+	default y
+	help
+	  Enable support for the one tick hook. Disabling the hook save
 	  some memory and CPU time.
 
 menuconfig PLATFORM_EC_HOSTCMD
@@ -1127,5 +1137,17 @@ config PLATFORM_EC_SHARED_MEM_LIBC
 	  Use version of shared memory implementation for applications
 	  that use libc with malloc. Malloc uses the same memory as
 	  shared_mem which can cause collisions if it is not synchronized.
+
+config PLATFORM_EC_WP_CUSTOM
+	bool "Custom Write Protection status"
+	help
+	  Use custom method to get the write protection status via the
+	  write_protect_is_asserted function. If enabled, the
+	  write_protect_is_asserted_custom function has to be provided, which
+	  returns current status of write protection.
+
+	  This is needed for EC based projects that don't have the WP pin
+	  connected via GPIO, e.g. USB FPMCU modules with limited number of
+	  pins in the connector.
 
 endif # PLATFORM_EC

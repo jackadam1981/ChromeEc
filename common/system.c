@@ -859,7 +859,7 @@ int system_get_image_used(enum ec_image copy)
 {
 	const struct image_data *data = system_get_image_data(copy);
 
-	return data ? MAX((int)data->size, 0) : 0;
+	return data ? max((int)data->size, 0) : 0;
 }
 
 /*
@@ -1818,6 +1818,43 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 	}
 }
 DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC, host_command_reboot, EC_VER_MASK(0));
+
+#ifdef CONFIG_PLATFORM_EC_HOST_COMMAND_ENTER_BOOTLOADER
+static enum ec_status
+host_command_bootloader(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_enter_bootloader *p = args->params;
+	uint8_t mode = p->mode;
+
+	if (system_is_locked()) {
+		return EC_RES_ACCESS_DENIED;
+	}
+
+	/*
+	 * We trust bootloader by definition and system is unlocked,
+	 * so no need to clear secrets.
+	 */
+#ifndef CONFIG_EC_HOST_CMD
+	args->result = EC_RES_SUCCESS;
+	host_send_response(args);
+#else
+	ec_host_cmd_send_response(EC_HOST_CMD_SUCCESS,
+				  (struct ec_host_cmd_handler_args *)args);
+#endif
+	/*
+	 * Make sure to send response before entering bootloader, which can
+	 * break the communication.
+	 */
+	k_msleep(10);
+	/* TODO(b/460674359): Handle all security consequences. */
+	chip_enter_bootloader(mode);
+	CPRINTS("Failed to enter bootloader");
+
+	return EC_RES_ERROR;
+}
+DECLARE_HOST_COMMAND(EC_CMD_ENTER_BOOTLOADER, host_command_bootloader,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_PLATFORM_EC_HOST_COMMAND_ENTER_BOOTLOADER */
 
 test_mockable int system_can_boot_ap(void)
 {
