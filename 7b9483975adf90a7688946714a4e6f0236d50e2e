@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "059b05b9_f3bb9308",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-16T02:07:15Z",
+      "side": 1,
+      "message": "I don\u0027t think we have this kind of examples for the GPIO and PWM leds. `period-ms \u003d \u003c0\u003e` (or default to `0`) only used for a sequence with a single entry. For a sequence with more than one entry, it is a repeated sequence and the last `period-ms` is non-zero (because `period-ms \u003d \u003c0\u003e` hasn\u0027t been supported yet).\n\nWe may use another number, like `\u003c-1\u003e` to terminate a play-once sequence.",
+      "parentUuid": "3b5c51f5_b14898e5",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 65
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0adb5d2_b32da926",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 1
