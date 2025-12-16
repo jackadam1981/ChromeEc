@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b5c51f5_b14898e5",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-16T00:11:54Z",
+      "side": 1,
+      "message": "We also use a duration of 0 to indicate the pattern is terminating. I think your change would cause any patterns that has a sequence of colors then end on 0 to start looping.\n\nAlso, I don\u0027t think we need to put this condition as a separate loop, can you try this patch and see if it works?\n\ncrrev.com/c/7262101",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 65
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0adb5d2_b32da926",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 1
@@ -83,6 +106,30 @@
       "writtenOn": "2025-12-15T16:51:57Z",
       "side": 1,
       "message": "Once the `cur_color` is advanced, does the new color need to be applied, i.e. calling the following function? The new color may not be the same.\n```\n \t\tpatterns[i]\n\t\t\t.pattern_color[0]\n\t\t\t.led_color_node-\u003eapi.led_set_color_with_pattern(\n\t\t\t\t\u0026patterns[i]);\n```",
+      "range": {
+        "startLine": 203,
+        "startChar": 15,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "7b9483975adf90a7688946714a4e6f0236d50e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90cc1be2_5e08a333",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-16T00:11:54Z",
+      "side": 1,
+      "message": "No the LED driver is not supposed to (and does not) keep a memory of past states, it should just apply whatever transition is between `cur_color` and `cur_color - 1`. e.g. if we go from `cur_color \u003d 0` to `cur_color \u003d 2` the LED should immediately apply the transition from 1 to 2.",
+      "parentUuid": "b0adb5d2_b32da926",
       "range": {
         "startLine": 203,
         "startChar": 15,
