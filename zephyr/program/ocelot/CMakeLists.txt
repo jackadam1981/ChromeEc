@@ -31,6 +31,13 @@ endif()
 
 if(DEFINED CONFIG_BOARD_OJAL)
 	project(ojal)
+	zephyr_library_sources("ojal/src/board_power.c")
+endif()
+
+if(DEFINED CONFIG_BOARD_KODKOD)
+	project(kodkod)
+	zephyr_library_sources("kodkod/src/board_power.c")
+	zephyr_library_sources("kodkod/src/keyboard_customization.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_MATSU)
@@ -40,6 +47,13 @@ if(DEFINED CONFIG_BOARD_MATSU)
 	zephyr_library_sources("matsu/src/touch_panel.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"matsu/src/keyboard_customization.c")
+endif()
+
+if(DEFINED CONFIG_BOARD_OCICAT)
+	project(ocicat)
+	zephyr_library_sources("ocicat/src/keyboard_customization.c")
+	zephyr_library_sources("ocicat/src/board_power.c")
+	zephyr_library_sources("ocicat/src/fan.c")
 endif()
 
 zephyr_include_directories("include/")
