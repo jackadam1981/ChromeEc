@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c43ead_94256440",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-16T23:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5b52844_10966342",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 59
+      },
+      "revId": "039997927b6a2e4ae7b4edbe8829a05d62e608da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0056e3dd_baff1c11",
