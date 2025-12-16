@@ -104,6 +104,7 @@ static const struct ccd_capability_info ti50_cap_info[] = {
 };
 
 #define CR50_CCD_CAP_COUNT CCD_CAP_COUNT
+#define FLASH_PAGE_SIZE 2048
 
 /*
  * One of the basic assumptions of the code handling multiple ccd_info layouts
@@ -582,7 +583,7 @@ static const struct option_container cmd_line_options[] = {
 	{ { "boot_trace", optional_argument, NULL, 'J' },
 	  "[erase]%Retrieve boot trace from the chip, optionally erasing "
 	  "the trace buffer" },
-	{ { "owner_config", no_argument, NULL, 'j' },
+	{ { "upload_owner_config", no_argument, NULL, 'j' },
 	  "<binary image> is a 2kB blob containing new owners configuration,"
 	  " OpenTitan only" },
 	{ { "get_value", required_argument, NULL, 'K' },
@@ -608,6 +609,8 @@ static const struct option_container cmd_line_options[] = {
 	  "Set or clear CCD password. Use 'clear:<cur password>' to clear it" },
 	{ { "post_reset", no_argument, NULL, 'p' },
 	  "Request post reset after transfer" },
+	{ { "download_owner_config", no_argument, NULL, 'Q' },
+	  "Read RW owner config into a file (opentitan only)" },
 	{ { "force_ro", no_argument, NULL, 'q' }, "Force inactive RO update" },
 	{ { "sn_rma_inc", required_argument, NULL, 'R' },
 	  "RMA_INC%Increment SN RMA count by RMA_INC. RMA_INC should be 0-7." },
@@ -1896,7 +1899,7 @@ static void send_owner_config(struct transfer_descriptor *td,
 			      const char *file_name)
 {
 	struct stat st;
-	const size_t config_size = 2048;
+	const size_t config_size = FLASH_PAGE_SIZE;
 	uint8_t config[config_size];
 	FILE *f;
 	uint32_t fake_addr;
@@ -1943,6 +1946,51 @@ static void send_owner_config(struct transfer_descriptor *td,
 	 */
 	fake_addr = (1 << 31) + (1 << 30) + (3 << 26);
 	transfer_section(td, config, fake_addr, config_size);
+	exit(0);
+}
+
+
+static void get_owner_config(struct transfer_descriptor *td, const char* file_name)
+{
+	size_t index;
+
+	FILE *fp;
+
+	fp = fopen(file_name, "wb");
+	if (fp == NULL) {
+		fprintf(stderr, "Error opening %s\n", file_name);
+		exit(1);
+	}
+
+	for (index = 0; index < FLASH_PAGE_SIZE;) {
+		uint8_t buf[48];
+		size_t chunk_size = MIN(sizeof(buf), FLASH_PAGE_SIZE - index);
+		struct vendor_cc_get_owners_config get_conf = { index, chunk_size };
+		uint32_t rv;
+		size_t byte_count = chunk_size;
+
+		rv = send_vendor_command(td, VENDOR_CC_READ_OWNERS_CONFIG, &get_conf,
+					 sizeof(get_conf), buf, &byte_count);
+		if (rv || byte_count != chunk_size) {
+			fprintf(stderr,
+				"*%s: Error %#x, requested %zd, returned %zd\n",
+				__func__, rv, byte_count, chunk_size);
+			break;
+		}
+		if (fwrite(buf, 1, chunk_size, fp) != chunk_size) {
+			fprintf(stderr,
+				"Failed to save config at offset %zd\n",
+				index);
+			break;
+		}
+		index += chunk_size;
+	}
+
+	fclose(fp);
+	if (index != FLASH_PAGE_SIZE) {
+		remove(file_name);
+		exit(1);
+	}
 	exit(0);
 }
 
@@ -4675,7 +4723,7 @@ static int getopt_all(int argc, char *argv[])
 static int get_crashlog(struct transfer_descriptor *td)
 {
 	uint32_t rv;
-	uint8_t response[2048] = { 0 };
+	uint8_t response[FLASH_PAGE_SIZE] = { 0 };
 	size_t response_size = sizeof(response);
 
 	rv = send_vendor_command(td, VENDOR_CC_GET_CRASHLOG, NULL, 0, response,
@@ -4697,7 +4745,7 @@ static int get_crashlog(struct transfer_descriptor *td)
 static int get_console_logs(struct transfer_descriptor *td, bool *empty)
 {
 	uint32_t rv;
-	uint8_t response[2048] = { 0 };
+	uint8_t response[FLASH_PAGE_SIZE] = { 0 };
 	size_t response_size = sizeof(response);
 
 	rv = send_vendor_command(td, VENDOR_CC_GET_CONSOLE_LOGS, NULL, 0,
@@ -5425,6 +5473,7 @@ int main(int argc, char *argv[])
 	bool set_strongbox = false;
 	uint8_t set_strongbox_arg = 0;
 	int upload_owner_config = 0;
+	int download_owner_config = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -5436,6 +5485,7 @@ int main(int argc, char *argv[])
 		{ 'H', &erase_ap_ro_hash }, { 'j', &upload_owner_config },
 		{ 'k', &ccd_lock },	    { 'o', &ccd_open },
 		{ 'P', &password },	    { 'p', &td.post_reset },
+		{ 'Q', &download_owner_config },
 		{ 'U', &ccd_unlock },	    { 'u', &td.upstart_mode },
 		{ 'V', &verbose_mode },	    {},
 	};
@@ -5780,7 +5830,8 @@ int main(int argc, char *argv[])
 	    !show_fw_ver && !sn_bits && !sn_inc_rma && !start_apro_verify &&
 	    !openbox_desc_file && !tstamp && !tpm_mode && (wp == WP_NONE) &&
 	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts &&
-	    !upload_owner_config && !parse_device_ids && !set_strongbox) {
+	    !upload_owner_config && !parse_device_ids && !set_strongbox &&
+	    !download_owner_config) {
 		num_images = argc - optind;
 		if (num_images <= 0) {
 			fprintf(stderr,
@@ -5825,7 +5876,7 @@ int main(int argc, char *argv[])
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
 	     (wp != WP_NONE) + !!get_endorsement_seed + !!erase_ap_ro_hash +
 	     !!set_capability + !!get_clog + !!get_console +
-	     !!upload_owner_config) > 1) {
+	     !!upload_owner_config + !!download_owner_config) > 1) {
 		fprintf(stderr,
 			"Error: options "
 			"-e, -F, -g, -H, -I, -i, -j -k, -L, -l, -O, -o, -P, -r,"
@@ -5871,20 +5922,23 @@ int main(int argc, char *argv[])
 	/* Perform run selection of GSC device now that we have a connection */
 	gsc_dev = determine_gsc_type(&td);
 
-	if (upload_owner_config) {
+	if (upload_owner_config || download_owner_config) {
 		if (gsc_dev != GSC_DEVICE_NT) {
-			fprintf(stderr, "Owner's config can be uploaded only "
+			fprintf(stderr, "Owner's config exists only "
 					"on opentitan devices\n");
 			exit(1);
 		}
 
 		if ((argc - optind) != 1) {
 			fprintf(stderr,
-				"A single owner's config file is required\n");
+				"Owner's config file name is required\n");
 			exit(1);
 		}
 
-		send_owner_config(&td, argv[optind]);
+		if (download_owner_config)
+			get_owner_config(&td, argv[optind]);
+		else
+			send_owner_config(&td, argv[optind]);
 	}
 
 	if (openbox_desc_file)
