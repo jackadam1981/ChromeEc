@@ -29,3 +29,24 @@ int write_protect_is_asserted_custom(void)
 {
 	return 0;
 }
+
+int get_sdcp_claim(struct ec_response_fp_sdcp_claim *res)
+{
+	memcpy(res->pk_m, (uint8_t *)0x80000138, sizeof(res->pk_m));
+	memcpy(res->s_goog, (uint8_t *)0x80000179, sizeof(res->s_goog));
+	memcpy(res->pk_d, (uint8_t *)0x80000035, sizeof(res->pk_d));
+	memcpy(res->s_m, (uint8_t *)0x80000076, sizeof(res->s_m));
+	// 0x90000000 is mirroring 0x00000000 in order to avoid NULL dereference
+	memcpy(res->pk_f, (uint8_t *)0x90000060, sizeof(res->pk_f));
+	memcpy(res->h_f, (uint8_t *)0x90000000, sizeof(res->h_f));
+	memcpy(res->s_d, (uint8_t *)0x90000020, sizeof(res->s_d));
+
+	return EC_SUCCESS;
+}
+
+int get_sdcp_sk_f(uint8_t *buf, size_t buf_size)
+{
+	memcpy(buf, (uint8_t *)0x900000A0, buf_size);
+
+	return EC_SUCCESS;
+}
