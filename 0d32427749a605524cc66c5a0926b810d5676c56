@@ -34,6 +34,24 @@
       "parentUuid": "cf486f1e_8fb5d146",
       "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d156eaee_750ade87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-12-16T17:32:43Z",
+      "side": 1,
+      "message": "1. There\u0027s currently no delta to creating the releases due to the update in the release script and taking advantage of the fact that they\u0027re all branches of the EC repo.  See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7133683/7/util/update_release_branch.py#502\n      1. Added cl/845309142 to call out the delta\n2. crrev/c/7266285\n3. crrev/c/7266284\n4. https://calendar.google.com/calendar/event?action\u003dTEMPLATE\u0026tmeid\u003dNDcybzI5YWN2aWRwc20zcmZuNThpMWJpYW4ganBtdXJwaHlAZ29vZ2xlLmNvbQ\u0026tmsrc\u003djpmurphy%40google.com\n\nI would prefer not to split this and fix forward as it\u0027s a large complicated change, and I\u0027ve already split deletion and updates.",
+      "parentUuid": "d561ab96_223d6e15",
+      "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
