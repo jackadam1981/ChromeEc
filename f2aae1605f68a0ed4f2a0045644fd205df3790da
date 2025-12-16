@@ -16,6 +16,52 @@
       "message": "tested with https://crrev.com/c/7262216",
       "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2176aba_27e7b836",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-16T17:29:01Z",
+      "side": 1,
+      "message": "In this implementation, this new color will be applied in the next tick, which results in a delay of `HOOK_TICK_INTERVAL_MS`. This is not an instant transition.\n\nFor example, in the following sequence:\n```\n    color-0 {\n        led-color \u003d \u003c\u0026battery_led_amber\u003e;\n        period-ms \u003d \u003c0\u003e;\n    };\n    color-1 {\n        led-color \u003d \u003c\u0026battery_led_off\u003e;\n        period-ms \u003d \u003c500\u003e;\n    };\n    ...\n```\n\nThe color-1 (or transition to `off`) is advanced at 0ms but it is applied at 250ms (the next tick, assuming `HOOK_TICK_INTERVAL_MS` is 250ms). This is not an expected behavior that the transition to `off` should start at 0ms, instead of 250ms.\n\nThis implementation has the correct behavior only when the next color is the same as the previous one and its delay is `HOOK_TICK_INTERVAL_MS`, like:\n```\n    color-0 {\n        led-color \u003d \u003c\u0026battery_led_amber\u003e;\n        period-ms \u003d \u003c0\u003e;\n    };\n    color-1 {\n        led-color \u003d \u003c\u0026battery_led_amber\u003e;\n        period-ms \u003d \u003c250\u003e;\n    };\n    color-2 {\n        led-color \u003d \u003c\u0026battery_led_off\u003e;\n        period-ms \u003d \u003c500\u003e;\n    };\n```\n\nYou need another similar color advancing loop before applying the color, like in line 188.",
+      "range": {
+        "startLine": 203,
+        "startChar": 16,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecaa95ae_d4b41a2f",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-16T17:29:01Z",
+      "side": 1,
+      "message": "In this color advancing loop, just break here (no AND condition). The original break works for both the instant transition and the termination scenarios. The termination should be handled in the next tick. For example, in the line 188.\n```\n\tif ((GET_DURATION(patterns[i], patterns[i].cur_color) \u003d\u003d 0 \u0026\u0026\n\t    patterns[i].cur_color \u003d\u003d patterns[i].pattern_len - 1)\n\t\tcontinue;\n```",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 36
+      },
+      "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
