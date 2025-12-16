@@ -1,0 +1,26 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef __CROS_EC_FPSENSOR_FPSENSOR_BTN_IGN_H
+#define __CROS_EC_FPSENSOR_FPSENSOR_BTN_IGN_H
+
+#include "ec_commands.h"
+
+#include <stdint.h>
+#ifdef CONFIG_ZEPHYR
+#include <drivers/btn_ign.h>
+#endif
+
+inline void update_btn_ign(std::uint32_t sensor_mode)
+{
+#ifdef CONFIG_PLATFORM_EC_BTN_IGN
+	if (sensor_mode & (FP_MODE_ENROLL_SESSION | FP_MODE_MATCH))
+		btn_ign_activate();
+	else
+		btn_ign_deactivate();
+#endif
+}
+
+#endif /* __CROS_EC_FPSENSOR_FPSENSOR_BTN_IGN_H */
