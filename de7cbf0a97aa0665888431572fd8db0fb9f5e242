@@ -16,6 +16,24 @@
       "message": "It should be migrated to ufsc.",
       "revId": "de7cbf0a97aa0665888431572fd8db0fb9f5e242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a11fde_e055deed",
+        "filename": "zephyr/program/ocelot/ocicat/src/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2025-12-16T10:15:46Z",
+      "side": 1,
+      "message": "My next CL will add the UFSC device tree and change the method to identify the keyboard and other components to use UFSC.",
+      "parentUuid": "124b8132_174d3d28",
+      "revId": "de7cbf0a97aa0665888431572fd8db0fb9f5e242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
