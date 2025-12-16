@@ -22,6 +22,30 @@
       },
       "revId": "945a6bda14f03a89ebb2f1df9d2a78d39de4d7bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69396d49_65cd20e5",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-12-16T14:57:11Z",
+      "side": 1,
+      "message": "There is a linked bug.",
+      "parentUuid": "9742d701_666ee5dd",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 47
+      },
+      "revId": "945a6bda14f03a89ebb2f1df9d2a78d39de4d7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
