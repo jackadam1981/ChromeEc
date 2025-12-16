@@ -1006,6 +1006,9 @@ static void pe_set_frs_enable(int port, int enable)
 	if (!IS_ENABLED(CONFIG_USB_PD_FRS) || !IS_ENABLED(CONFIG_USB_PD_REV30))
 		return;
 
+	CPRINTS_L1("C%d: pe_set_frs_enable: %sable %sable", port,
+		   current ? "en" : "dis", enable ? "en" : "dis");
+
 	/* Request an FRS change, only if the state has changed */
 	if (!!current == !!enable)
 		return;
@@ -5704,6 +5707,8 @@ __maybe_unused static void pe_prs_frs_shared_entry(int port)
 	if (!IS_ENABLED(CONFIG_USB_PD_REV30))
 		assert(0);
 
+	CPRINTS_L1("C%d: Entry %s", port, pe_state_names[PE_PRS_FRS_SHARED]);
+
 	/*
 	 * Shared PRS/FRS code, assume PRS path
 	 *
@@ -5719,6 +5724,8 @@ __maybe_unused static void pe_prs_frs_shared_exit(int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_REV30))
 		assert(0);
+
+	CPRINTS_L1("C%d: Exit %s", port, pe_state_names[PE_PRS_FRS_SHARED]);
 
 	/*
 	 * Shared PRS/FRS code, when not in shared path
