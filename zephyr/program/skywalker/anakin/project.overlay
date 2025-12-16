@@ -25,6 +25,9 @@
 		celxpert_b340442 {
 			compatible = "celxpert,b340442","battery-smart";
 		};
+		smp_c31n2313 {
+			compatible = "smp,c31n2313","battery-smart";
+		};
 	};
 
 	gpio-interrupts {
@@ -159,6 +162,14 @@
 
 &sha0 {
 	status = "okay";
+};
+
+&usbc_port0 {
+	zephyr,deferred-init;
+};
+
+&usbc_port1 {
+	zephyr,deferred-init;
 };
 
 &pdc_power_p0 {

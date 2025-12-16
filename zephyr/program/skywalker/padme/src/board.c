@@ -6,9 +6,11 @@
 #include "charger.h"
 #include "chipset.h"
 #include "common.h"
+#include "driver/charger/rt9490.h"
 #include "extpower.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "peripheral_charger.h"
 #include "timer.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -77,6 +79,18 @@ static int install_backlight_handler(void)
 
 SYS_INIT(install_backlight_handler, APPLICATION, 1);
 
+__overridable void board_rt9490_adc_control(void)
+{
+	rt9490_enable_adc(CHARGER_SOLO, extpower_is_present());
+}
+
+static void board_hook_ac_change(void)
+{
+	board_rt9490_adc_control();
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_hook_ac_change, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_hook_ac_change, HOOK_PRIO_LAST);
+
 static void check_audio_jack(void)
 {
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)) {
@@ -106,3 +120,8 @@ static void board_setup_init()
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_jd1));
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
+
+void board_pchg_power_on(int port, bool on)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_pen_dis), on);
+}

@@ -77,6 +77,7 @@
 		board-gpios = <&pca95xx_0 8 0>, <&pca95xx_0 9 0>,
 			      <&pca95xx_0 10 0>, <&pca95xx_0 11 0>,
 			      <&pca95xx_0 12 0>, <&pca95xx_0 13 0>;
+		zephyr,deferred-init;
 	};
 	seven_seg_display: max695x-seven-seg-display@38 {
 		compatible = "maxim,max695x";
@@ -92,5 +93,9 @@
 
 &i2c_port_ish {
 	label = "I2C_PORT_ISH";
-	clock-frequency = <I2C_BITRATE_STANDARD>;
+	clock-frequency = <I2C_BITRATE_FAST>;
+	dsp_service: dsp-service@29 {
+		compatible = "cros,dsp-service";
+		reg = <0x29>;
+	};
 };

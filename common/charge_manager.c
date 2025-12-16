@@ -160,6 +160,7 @@ static int override_port = OVERRIDE_OFF;
 
 static int delayed_override_port = OVERRIDE_OFF;
 static timestamp_t delayed_override_deadline;
+static bool charger_insufficient_adapter_found = false;
 
 /* Source-out Rp values for TCPMv1 */
 __maybe_unused static uint8_t source_port_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -764,7 +765,7 @@ static int get_candidate_port_power(int supplier, int port)
 	 * This can happen in dead battery scenarios. */
 	if (IS_ENABLED(CONFIG_USB_PDC_POWER_MGMT) && is_pd_port(port)) {
 		candidate_port_power =
-			MAX(get_pd_port_max_power(port), candidate_port_power);
+			max(get_pd_port_max_power(port), candidate_port_power);
 	}
 
 	return candidate_port_power;
@@ -831,6 +832,7 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 					 EC_SUCCESS;
 	}
 
+	charger_insufficient_adapter_found = false;
 	/*
 	 * Charge supplier selection logic:
 	 * 1. Prefer DPS charge port.
@@ -863,6 +865,7 @@ static void charge_manager_get_best_port(int *new_port, int *new_supplier)
 			    !is_voltage_sufficient(
 				    &available_charge[sup_idx][port_idx],
 				    min_required_mv)) {
+				charger_insufficient_adapter_found = true;
 				continue;
 			}
 
@@ -1045,7 +1048,7 @@ static void charge_manager_refresh(void)
 		ceil = charge_manager_get_ceil(new_port);
 		if (left_safe_mode && ceil != CHARGE_CEIL_NONE)
 			new_charge_current =
-				MIN(ceil, new_charge_current_uncapped);
+				min(ceil, new_charge_current_uncapped);
 		else
 			new_charge_current = new_charge_current_uncapped;
 
@@ -1385,7 +1388,7 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
 	 * if we can't ramp.
 	 */
 	if (dts)
-		charge.current = MIN(charge.current, 500);
+		charge.current = min(charge.current, 500);
 #endif
 
 	supplier = dts ? CHARGE_SUPPLIER_TYPEC_DTS : CHARGE_SUPPLIER_TYPEC;
@@ -1583,6 +1586,12 @@ bool charge_manager_has_active_charge_port(void)
 {
 	return charge_manager_get_active_charge_port_no_lock() !=
 	       CHARGE_PORT_NONE;
+}
+
+bool charge_manager_has_insufficient_adapter(void)
+{
+	return !charge_manager_has_active_charge_port() &&
+	       charger_insufficient_adapter_found;
 }
 
 int charge_manager_get_selected_charge_port(void)
