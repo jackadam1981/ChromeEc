@@ -22,6 +22,30 @@
       },
       "revId": "12b96c2b1975efd930376776ea674acd8e5aaf51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59182e07_1964005a",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-12-16T19:03:09Z",
+      "side": 1,
+      "message": "crrev/c/7264533",
+      "parentUuid": "8b3d8f4d_85fe5393",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "12b96c2b1975efd930376776ea674acd8e5aaf51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
