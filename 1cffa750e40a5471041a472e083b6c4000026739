@@ -16,6 +16,24 @@
       "message": "This needs to be `if (IS_ENABLED(CONFIG_USBC_PPC) \u0026\u0026 ceil \u003d\u003d 0)` to fix the build errors. It might need to be some more specific PPC config check, but try that first. (Ideally, the config check would actually be inside the PPC API function, but I think that\u0027s out of scope here.)\n\nAssuming that fixes the build, there\u0027s a larger issue of whether we need to do anything different here to solve this same problem on boards that don\u0027t use PPCs. I think that still requires investigation and shouldn\u0027t hold up this CL. For now, maybe just leave a comment like, \"TODO: Investigate whether boards that don\u0027t use PPCs need a different action here.\"",
       "revId": "1cffa750e40a5471041a472e083b6c4000026739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec7728a_0a6f2af0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2025-12-16T10:01:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9df1035_006ea00f",
+      "revId": "1cffa750e40a5471041a472e083b6c4000026739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
