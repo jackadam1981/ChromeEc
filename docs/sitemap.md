@@ -23,15 +23,15 @@
 
 ## Fingerprint MCU (FPMCU)
 
-*   [Fingerprint MCU (FPMCU)](./fingerprint/fingerprint.md)
-*   [FPMCU Development for Partners](./fingerprint/fingerprint-dev-for-partners.md)
-*   [FPMCU Firmware Testing for Partners](./fingerprint/fingerprint-firmware-testing-for-partners.md)
-*   [FPMCU Debugging](./fingerprint/fingerprint-debugging.md)
-*   [Fingerprint Authentication Design Doc](./fingerprint/fingerprint-authentication-design-doc.md)
-*   [Fingerprint Factory Requirements](./fingerprint/fingerprint-factory-requirements.md)
-*   [Fingerprint Quick Factory Guide](./fingerprint/fingerprint-factory-quick-guide.md)
+*   [Fingerprint MCU (FPMCU)](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md)
+*   [FPMCU Development for Partners](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-dev-for-partners.md)
+*   [FPMCU Firmware Testing for Partners](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-firmware-testing-for-partners.md)
+*   [FPMCU Debugging](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-debugging.md)
+*   [Fingerprint Authentication Design Doc](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-authentication-design-doc.md)
+*   [Fingerprint Factory Requirements](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-requirements.md)
+*   [Fingerprint Quick Factory Guide](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-factory-quick-guide.md)
 *   [Dragonclaw Schematics and Layout](./schematics/dragonclaw)
-*   [Fingerprint MCU RAM and Flash](./fingerprint/fingerprint-ram-and-flash.md)
+*   [Fingerprint MCU RAM and Flash](https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint-ram-and-flash.md)
 
 ## Renode
 
