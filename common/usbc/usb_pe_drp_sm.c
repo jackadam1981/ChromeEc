@@ -777,8 +777,16 @@ static void init_cable_rev(int port)
 #define prl_send_ext_data_msg DO_NOT_USE
 #define prl_send_ctrl_msg DO_NOT_USE
 
+static void pe_set_frs_enable(int port, int enable);
+
 static void pe_init(int port)
 {
+	if (PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_ENABLED)) {
+		/* Calling set_frs_enable(port, 1) twice in a roll may break the
+		 * underlying state. We reach here when reboot with frs enabled.
+		 */
+		pe_set_frs_enable(port, 0);
+	}
 	memset(&pe[port].flags_a, 0, sizeof(pe[port].flags_a));
 	pe[port].dpm_request = 0;
 	pe[port].dpm_curr_request = 0;
