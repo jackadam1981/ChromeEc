@@ -19,10 +19,10 @@
 #include "../i2c.dtsi"
 #include "../ioex_gpio.dtsi"
 #include "../interrupts.dtsi"
-#include "../pd.dtsi"
+#include "../rt_pd.dtsi"
 #include "../power_signals.dtsi"
 #include "../temp_sensor.dts"
-#include "../usbc.dtsi"
+#include "../rt_usbc.dtsi"
 #include "../led_pins.dtsi"
 #include "../led_policy.dtsi"
 
@@ -81,3 +81,19 @@
 		reg = <0x20>;
 	};
 };
+
+&usbc_p0 {
+	pdc = <&pdc_rtk_c0>;
+};
+
+&usbc_p1 {
+	pdc = <&pdc_rtk_c1>;
+};
+
+&usbc_p2 {
+	pdc = <&pdc_rtk_c2>;
+};
+
+/delete-node/ &pdc_ti_c0;
+/delete-node/ &pdc_ti_c1;
+/delete-node/ &pdc_ti_c2;
