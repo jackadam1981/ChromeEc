@@ -18,6 +18,7 @@
 #include "strongbox.h"
 #include "tpm_nvmem.h"
 #include "tpm_nvmem_ops.h"
+#include "trusty_storage_mac.h"
 #include "dcrypto.h"
 #include "u2f_impl.h"
 #include "util.h"
@@ -296,6 +297,7 @@ void _plat__OwnerClearCallback(void)
 #endif
 
 	boot_param_handle_owner_clear();
+	trusty_storage_mac_handle_owner_clear();
 }
 
 /* Prints the contents of pcr0 */
