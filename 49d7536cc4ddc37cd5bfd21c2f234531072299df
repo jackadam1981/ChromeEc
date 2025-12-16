@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48887fc3_7a8e8506",
+        "filename": "zephyr/drivers/fingerprint/Kconfig.elan",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-16T09:45:49Z",
+      "side": 1,
+      "message": "I don\u0027t think you need additional config. You can call the `use_flash_addresses` function or not, depending of the `base-image-addr` is defined.",
+      "revId": "49d7536cc4ddc37cd5bfd21c2f234531072299df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956f5a33_1626a1a0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-16T09:45:49Z",
+      "side": 1,
+      "message": "You can call this function if the value from cfg struct !\u003d 0.",
+      "revId": "49d7536cc4ddc37cd5bfd21c2f234531072299df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bf532d_7ff5f94a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-16T09:45:49Z",
+      "side": 1,
+      "message": "Are these two addresses always used in parallel? Or e.g. the base image address can be used without FT info address?",
+      "revId": "49d7536cc4ddc37cd5bfd21c2f234531072299df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce187f25_2cf0b695",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-16T09:45:49Z",
+      "side": 1,
+      "message": "Please just store the address in config using `DT_PROP_OR` macro, something like:\n```\n\t.base_image_addr \u003d DT_INST_PROP_OR(inst, base_image_addr, 0),\n```",
+      "revId": "49d7536cc4ddc37cd5bfd21c2f234531072299df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
