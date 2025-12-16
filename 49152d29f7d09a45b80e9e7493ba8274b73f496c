@@ -22,6 +22,48 @@
       },
       "revId": "49152d29f7d09a45b80e9e7493ba8274b73f496c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d84f5d_22726294",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2025-12-16T21:57:20Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "06cf6f05_6d899000",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b7fa3740_e4dfbc5c",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "zephyr/program/fatcat/lapis/project.conf",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "49152d29f7d09a45b80e9e7493ba8274b73f496c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
