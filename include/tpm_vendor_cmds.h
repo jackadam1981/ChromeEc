@@ -234,6 +234,9 @@ enum vendor_cmd_cc {
 	/* Enable/disable strongbox commands */
 	VENDOR_CC_SET_STRONGBOX_STATE = 80,
 
+	/* Read slice of Owner Configuration space */
+	VENDOR_CC_READ_OWNERS_CONFIG = 81,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
@@ -559,6 +562,11 @@ struct vendor_cc_spi_hash_request {
 	uint32_t size; /* Size in bytes to hash/read */
 } __packed;
 
+/* Structure for VENDOR_CC_GET_OWNERS_CONFIG */
+struct vendor_cc_get_owners_config {
+	uint16_t offset;
+	uint16_t size;
+};
 
 /* End Cr50 Specific Structs */
 
