@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50a93b4d_e7759477",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-16T10:06:11Z",
+      "side": 1,
+      "message": "@paul.liang@emc.com.tw ping. Use 72 line size for commit message.",
+      "parentUuid": "16ecc36a_e1d97287",
+      "revId": "5d35bed362d785bef81c3ad533057af540e04835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0252a0b3_0fc39d85",
         "filename": "zephyr/drivers/cros_system/Kconfig",
         "patchSetId": 3
