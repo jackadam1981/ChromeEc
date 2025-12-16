@@ -428,4 +428,7 @@ config LINK_TEST_SUITE_WRITE_PROTECTION_CUSTOM
 	help
 	  Verifies functionality of custom write protection
 
+config LINK_TEST_SUITE_BTN_IGN_OUT
+	bool "Link and test the BTN_IGN as output tests"
+
 source "Kconfig.zephyr"
