@@ -38,6 +38,8 @@
 
 #ifdef CONFIG_ZEPHYR
 #include <zephyr/shell/shell.h>
+
+#include <drivers/btn_ign.h>
 #endif
 
 #if !defined(CONFIG_RNG)
@@ -391,6 +393,12 @@ extern "C" void fp_task(void)
 				fp_sensor_low_power();
 			}
 		}
+#ifdef CONFIG_PLATFORM_EC_BTN_IGN
+		if (global_context.sensor_mode & FP_MODES_WITH_AUTHENTICATION)
+			btn_ign_activate();
+		else
+			btn_ign_deactivate();
+#endif
 	}
 #else /* !HAVE_FP_PRIVATE_DRIVER */
 	while (1) {
