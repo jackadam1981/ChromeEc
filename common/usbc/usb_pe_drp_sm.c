@@ -1810,7 +1810,9 @@ static bool source_dpm_requests(int port)
 					 DPM_REQUEST_FRS_DET_ENABLE |
 					 DPM_REQUEST_FRS_DET_DISABLE);
 
-	if (!pe[port].dpm_request)
+	const uint32_t dpm_request_orig = atomic_get(&pe[port].dpm_request);
+
+	if (!dpm_request_orig)
 		return false;
 
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
@@ -1839,9 +1841,10 @@ static bool source_dpm_requests(int port)
 		return true;
 	}
 
-	const uint32_t dpm_request = pe[port].dpm_request;
+	const uint32_t dpm_request = atomic_get(&pe[port].dpm_request);
 
-	CPRINTF("Unhandled DPM Request %x received\n", dpm_request);
+	CPRINTF("Unhandled DPM Request %x %x received\n", dpm_request_orig,
+		dpm_request);
 	PE_CLR_DPM_REQUEST(port, dpm_request);
 	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 
