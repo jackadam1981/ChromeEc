@@ -52,6 +52,8 @@ class ECCommandsIds(IntEnum):
     FP_MODE = 0x0402
     FP_INFO = 0x0403
     FP_VENDOR = 0x040B
+    FP_SDCP_CLAIM = 0x0420
+    FP_SDCP_ESTABLISH = 0x0421
 
 
 class ImageType(IntEnum):
@@ -421,6 +423,34 @@ class RebootECCmd0(ECCommand):
         super().__init__(ECCommandsIds.REBOOT_EC, 0, request_msg=request_msg)
 
 
+class FpSdcpClaimCmd0(ECCommand):
+    """Gets SDCP claim."""
+
+    def __init__(self):
+        response_msg = [
+            ("pk_m", "65s"),
+            ("s_goog", "64s"),
+            ("pk_d", "65s"),
+            ("s_m", "64s"),
+            ("pk_f", "65s"),
+            ("h_f", "32s"),
+            ("s_d", "64s"),
+        ]
+        super().__init__(
+            ECCommandsIds.FP_SDCP_CLAIM, 0, response_msg=response_msg
+        )
+
+
+class FpSdcpEstablishCmd0(ECCommand):
+    """Establishes SDCP session."""
+
+    def __init__(self, pk_g: bytearray):
+        request_msg = [(pk_g, "65s")]
+        super().__init__(
+            ECCommandsIds.FP_SDCP_ESTABLISH, 0, request_msg=request_msg
+        )
+
+
 VERSIONED_COMMANDS = {
     ECCommandsIds.GET_VERSION: {1: GetVersionCmd1},
     ECCommandsIds.GET_VERSIONS: {1: GetVersionsCmd1},
@@ -435,6 +465,8 @@ VERSIONED_COMMANDS = {
     ECCommandsIds.FP_MODE: {0: FpModeCmd0},
     ECCommandsIds.FP_INFO: {1: FpInfoCmd1, 2: FpInfoCmd2},
     ECCommandsIds.FP_VENDOR: {0: FpVendorCmd0},
+    ECCommandsIds.FP_SDCP_CLAIM: {0: FpSdcpClaimCmd0},
+    ECCommandsIds.FP_SDCP_ESTABLISH: {0: FpSdcpEstablishCmd0},
 }
 
 
