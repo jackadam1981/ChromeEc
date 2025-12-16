@@ -82,35 +82,47 @@ static int install_backlight_handler(void)
 
 SYS_INIT(install_backlight_handler, APPLICATION, 1);
 
+<<<<<<< HEAD   (74dc90a02c5a960854485509141fff80bf80a9d5 padme: Add wireless charger policy)
 static void check_audio_jack(void)
+||||||| BASE   (a67c7a887f0ed4b9ac9f2534dbf94eab46df5553 ocicat: Add temp sensor device tree for ocicat)
+__overridable void board_rt9490_adc_control(void)
 {
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON)) {
-		if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_jd1)))
-			gpio_pin_set_dt(
-				GPIO_DT_FROM_NODELABEL(gpio_5p0va_pwr_mode), 0);
-		else
-			gpio_pin_set_dt(
-				GPIO_DT_FROM_NODELABEL(gpio_5p0va_pwr_mode), 1);
-	} else {
-		gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_5p0va_pwr_mode), 0);
-	}
-}
-DECLARE_DEFERRED(check_audio_jack);
-
-DECLARE_HOOK(HOOK_INIT, check_audio_jack, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_audio_jack, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_audio_jack, HOOK_PRIO_DEFAULT);
-
-void audio_jack_interrupt(enum gpio_signal s)
-{
-	hook_call_deferred(&check_audio_jack_data, INT_RECHECK_US);
+	rt9490_enable_adc(CHARGER_SOLO, extpower_is_present());
 }
 
-static void board_setup_init()
+static void board_hook_ac_change(void)
 {
-	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_jd1));
+	board_rt9490_adc_control();
 }
-DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
+DECLARE_HOOK(HOOK_AC_CHANGE, board_hook_ac_change, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_hook_ac_change, HOOK_PRIO_LAST);
+
+static void check_audio_jack(void)
+=======
+__overridable void board_rt9490_adc_control(void)
+{
+	rt9490_enable_adc(CHARGER_SOLO, extpower_is_present());
+}
+
+static void board_hook_ac_change(void)
+{
+	board_rt9490_adc_control();
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_hook_ac_change, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_hook_ac_change, HOOK_PRIO_LAST);
+
+static void usm_enable(void)
+>>>>>>> CHANGE (adeaeb61d5c4ea80134eb3173dd33f685252ae68 padme: modify the control logic of the USM)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_5p0va_pwr_mode), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, usm_enable, HOOK_PRIO_DEFAULT);
+
+static void usm_disable(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_5p0va_pwr_mode), 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, usm_disable, HOOK_PRIO_DEFAULT);
 
 static void pchg_policy(void);
 DECLARE_DEFERRED(pchg_policy);
