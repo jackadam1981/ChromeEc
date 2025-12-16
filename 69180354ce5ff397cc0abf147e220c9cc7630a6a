@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8efc24e_38216441",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-16T18:11:34Z",
+      "side": 1,
+      "message": "I don\u0027t think this is true.  The [`dt_node_int_prop`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/scripts/kconfig/kconfigfunctions.py;l\u003d696;drc\u003dcd23709f52ff6203ba96f68fb8f6f301894163d6) function only uses the devicetree path information and doesn\u0027t reference the compatible string.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "69180354ce5ff397cc0abf147e220c9cc7630a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
