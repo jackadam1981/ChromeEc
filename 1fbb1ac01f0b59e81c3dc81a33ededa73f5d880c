@@ -16,6 +16,24 @@
       "message": "Are you sure `zephyr/program/intelrvp/ptlrvp/program.conf` is the correct config file? `pdc_power_mgmt.c` is triggering a build assertion that you are using multiple PDC options and deferred initialization while `CONFIG_PDC_RUNTIME_PORT_CONFIG` is **off**. \n\n```c\n#ifndef CONFIG_PDC_RUNTIME_PORT_CONFIG\n/*\n * When static port config is used (normal), each named-usbc-port must have\n * only one PDC phandle entry, and it must not be marked zephyr,deferred-init.\n */\n#define CHECK_NAMED_USBC_PORT(inst)                                  \\\n\tBUILD_ASSERT(1 \u003d\u003d DT_INST_PROP_LEN(inst, pdc));              \\\n\tBUILD_ASSERT(0 \u003d\u003d DT_PROP(DT_INST_PROP_BY_IDX(inst, pdc, 0), \\\n\t\t\t\t  zephyr_deferred_init));\n\n#ifndef CONFIG_ZTEST\n/* Only enforce this on real builds so tests can try some failure scenarios */\nDT_INST_FOREACH_STATUS_OKAY(CHECK_NAMED_USBC_PORT)    \u003c---- fail\n#endif /* !defined(CONFIG_ZTEST) */\n...\n```\n\n```py\nregister_npcx9_project(\n    project_name\u003d\"fatcatrvp-npcx\",\n    zephyr_board\u003d\"npcx9/npcx9m7f\",\n    extra_kconfig_files\u003d[\n        here / \"..\" / \"intelrvp\" / \"zephyr_ap_pwrseq.conf\",\n        here / \"..\" / \"intelrvp\" / \"ptlrvp\" / \"pd.conf\",\n        here / \"rvp_program.conf\",\n    ],\n)\n```\n\n```\nAll failed projects: ptlgcs ptlrvp_mchp fatcatrvp-ite ptlrvp_npcx fatcatrvp-npcx\n```",
       "revId": "1fbb1ac01f0b59e81c3dc81a33ededa73f5d880c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee997316_caf3ff7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2025-12-16T19:45:42Z",
+      "side": 1,
+      "message": "Oops!, I forgot `fatcat` builds are `ptlrvp` dependent.",
+      "parentUuid": "8bf18c8f_aeb5fa53",
+      "revId": "1fbb1ac01f0b59e81c3dc81a33ededa73f5d880c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
