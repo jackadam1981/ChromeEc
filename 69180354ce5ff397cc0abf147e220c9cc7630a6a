@@ -22,6 +22,30 @@
       },
       "revId": "69180354ce5ff397cc0abf147e220c9cc7630a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818e9f32_a83a3534",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-16T18:33:33Z",
+      "side": 1,
+      "message": "[The property type](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/scripts/kconfig/kconfigfunctions.py;l\u003d255-256;drc\u003dcd23709f52ff6203ba96f68fb8f6f301894163d6) comes from YAML file, so the `compatible` is necessary to use proper YAML file.\n\nFrom [edtlib](https://python-devicetree.readthedocs.io/en/latest/edtlib.html#devicetree.edtlib.PropertySpec)\n```\ntype:\nThe type of the property as a string, as given in the binding.\n```",
+      "parentUuid": "f8efc24e_38216441",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "69180354ce5ff397cc0abf147e220c9cc7630a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
