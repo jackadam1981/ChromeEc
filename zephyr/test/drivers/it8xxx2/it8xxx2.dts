@@ -17,7 +17,7 @@
 &i2c2 {
 	status="okay";
 
-	it8xxx2_emul: it8xxx2@4e {
+	it8xxx2_emul: it8xxx2@48 {
 		compatible = "cros,it8xxx2-tcpc-emul", "ite,it8xxx2-tcpc";
 		status = "okay";
 		reg = <0x48>;
