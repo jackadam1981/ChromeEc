@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee705d8_5cf415ac",
+        "filename": "zephyr/drivers/keyboard_input/keyboard_input.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-12-16T20:39:51Z",
+      "side": 1,
+      "message": "Why not just set CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP in the test?",
+      "range": {
+        "startLine": 93,
+        "startChar": 66,
+        "endLine": 93,
+        "endChar": 78
+      },
+      "revId": "f7efa2355399d512c9ae931d614af93be2411b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
