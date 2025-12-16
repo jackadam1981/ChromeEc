@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa2c30a0_7c227ff3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-16T18:25:08Z",
+      "side": 1,
+      "message": "I want the test before approving the change.",
+      "parentUuid": "e049f556_81a589d7",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "e3ad8d6fff87297f24affc1bcd2849481c6565cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "277848ef_dc8bc64d",
         "filename": "zephyr/program/fpmcu/sanok/prj.conf",
         "patchSetId": 4
