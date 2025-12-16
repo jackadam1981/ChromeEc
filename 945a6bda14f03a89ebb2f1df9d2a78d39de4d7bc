@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9742d701_666ee5dd",
+        "filename": "zephyr/program/fpmcu/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-16T00:13:55Z",
+      "side": 1,
+      "message": "This is kind of ambiguous. What header problems?\n\nLinks to context would be helpful. How about something like:\n\n```suggestion\n# The LLVM toolchain\u0027s newlib provides a correct posix_limits.h.\n# See http://go/zephyr-pr/95931 and\n# https://crsrc.org/o/src/third_party/zephyr/main/lib/libc/newlib/Kconfig;l\u003d80-81;drc\u003d17a2fd7f6b4983fc733c06b4e3bbf588ad5f0530.\n```\n\nI haven\u0027t actually checked what our version of newlib has.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 47
+      },
+      "revId": "945a6bda14f03a89ebb2f1df9d2a78d39de4d7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
