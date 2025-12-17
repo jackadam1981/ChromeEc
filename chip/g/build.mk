@@ -179,7 +179,7 @@ ifeq ($(H1_DEVIDS),)
 CR50_RW_KEY = loader-testkey-A.pem
 else
 # Try to build signer from the known location, if it is missing
-ifeq ($(wildcard $(SINGER)),)
+ifeq ($(wildcard $(SIGNER)),)
 # If source path is present, build codesigner later as dependency
 ifneq ($(wildcard $(CODESIGNER_PATH)),)
 SIGNER := $(CODESIGNER_PATH)/codesigner
