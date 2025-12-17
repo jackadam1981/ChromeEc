@@ -16,6 +16,24 @@
       "message": "I think we should have a CL as the replacement also deal with the original issue, rather than simply revert it. Thoughts ?",
       "revId": "c60e96e7543ec9b05ea78f27679aa83083ec7247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "399b1216_6a41967a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2025-12-17T22:47:53Z",
+      "side": 1,
+      "message": "let\u0027s make this change for BUG\u003db:464956285 and explain that the\ncharger scales max values according the sense resistors.",
+      "parentUuid": "617af1ce_3db22213",
+      "revId": "c60e96e7543ec9b05ea78f27679aa83083ec7247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
