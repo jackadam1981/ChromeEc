@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3986194e_f79c0348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-17T19:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a52ff852_499cffaf",
+      "revId": "baa0da625d548aa085b9391c962089335240884b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415f134d_2d10b4a0",
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "no it will not cause an infinite recursion. I confirmed it with this change:\n\n```\nfsammoura@fsammoura-glaptop:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/test/hwtest/src/null_pointer.c b/zephyr/test/hwtest/src/null_pointer.c\nindex e22d19e52d..8534d9c390 100644\n--- a/zephyr/test/hwtest/src/null_pointer.c\n+++ b/zephyr/test/hwtest/src/null_pointer.c\n@@ -15,7 +15,7 @@ ZTEST_SUITE(null_pointer, NULL, NULL, NULL, NULL, NULL);\n void ztest_post_fatal_error_hook(unsigned int reason,\n                                 const struct arch_esf *pEsf)\n {\n-       zassert_equal(reason, K_ERR_CPU_EXCEPTION);\n+       zassert_equal(reason, K_ERR_KERNEL_PANIC);\n }\n \n void null_pointer_dereference(void)\n ```\n\nThis is the output log:\n```\nDEBUG:fpmcu:~$ ztest run-all\nDEBUG:Running TESTSUITE null_pointer\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:START - test_null_pointer_dereference\nDEBUG:[1.248000] \u003cerr\u003e os: ***** Debug monitor exception *****\nDEBUG:Null-pointer exception?\nDEBUG:[1.255000] \u003cerr\u003e os: \u003e\u003e\u003e ZEPHYR FATAL ERROR 0: CPU exception on CPU 0\nDEBUG:[1.261000] \u003cerr\u003e os: Current thread: 0x200aa410 (test_null_point)\nDEBUG:Caught system error -- reason 0 1\nDEBUG:Fatal error expected as part of test case.\nDEBUG:\nDEBUG:    Assertion failed at EC_BASE/ec/zephyr/test/hwtest/src/null_pointer.c:18: ztest_post_fatal_error_hook: reason not equal to K_ERR_KERNEL_PANIC\nDEBUG:\nDEBUG: FAIL - test_null_pointer_dereference in 0.040 seconds\nDEBUG:\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nDEBUG:TESTSUITE null_pointer failed.\nDEBUG:[b\u0027\\r\\n\u0027, b\u0027------ TESTSUITE SUMMARY START ------\\r\\n\u0027, b\u0027\\r\\n\u0027, b\u0027SUITE FAIL -   0.00% [null_pointer]: pass \u003d 0, fail \u003d 1, skip \u003d 0, total \u003d 1 duration \u003d 0.040 seconds\\r\\n\u0027, b\u0027 - FAIL - [null_pointer.test_null_pointer_dereference] duration \u003d 0.040 seconds\\r\\n\u0027, b\u0027\\r\\n\u0027, b\u0027------ TESTSUITE SUMMARY END ------\\r\\n\u0027, b\u0027\\r\\n\u0027, b\u0027\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\\r\\n\u0027, b\u0027PROJECT EXECUTION FAILED\\r\\n\u0027, b\u0027fpmcu:~$ \\x1b[9D\\x1b[J[2.107600 MKBP: The AP is failing to respond because it is sleeping or off]\\r\\n\u0027]\nDEBUG:Calling post-test callback\nTest \"null_pointer\": FAILED\n\nTests failed for helipilot Zephyr\n```\n\ndoes this answer your concern?",
       "parentUuid": "415f134d_2d10b4a0",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "baa0da625d548aa085b9391c962089335240884b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8103341_5b3165ed",
+        "filename": "zephyr/test/hwtest/src/null_pointer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-17T19:44:36Z",
+      "side": 1,
+      "message": "\u003e does this answer your concern?\n\nYes, that looks good.",
+      "parentUuid": "c421f6e1_a1553b8c",
       "range": {
         "startLine": 18,
         "startChar": 0,
