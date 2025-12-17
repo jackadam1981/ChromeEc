@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff5dd18_417eef2a",
+        "filename": "zephyr/program/skywalker/grogu/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-12-17T04:36:09Z",
+      "side": 1,
+      "message": "Grogu\n```suggestion\n * USB-C board functions for the Grogu board only\n```",
+      "range": {
+        "startLine": 5,
+        "startChar": 33,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "741fd22674655908d5f176c7cde901f91074c413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "692366d3_b7c34187",
+        "filename": "zephyr/program/skywalker/grogu/src/usbc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2025-12-17T04:36:09Z",
+      "side": 1,
+      "message": "```suggestion\nLOG_MODULE_REGISTER(grogu_usbc, LOG_LEVEL_INF);\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "741fd22674655908d5f176c7cde901f91074c413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
