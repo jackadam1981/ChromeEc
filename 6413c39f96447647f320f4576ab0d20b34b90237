@@ -22,6 +22,30 @@
       },
       "revId": "6413c39f96447647f320f4576ab0d20b34b90237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0e84044_bcd66d95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2025-12-17T06:37:01Z",
+      "side": 1,
+      "message": "It should be:\n```\nTEST\u003d(7) Without this change, the 8th bit of Reg 0x4 is 1\nTEST\u003d(8) With this change, the 8th bit of Reg 0x4 is 0\n```\n\nIn the 0x4 register of syv682, bit7 and bit6 represent cc1_bps and cc2_bps respectively. If the dock is inserted correctly in steps 1-5, the AC will be normal orientation as described in steps 7-8, the 0x4 register will then change as described above; if it is flipped orientation, bit 6 will change.",
+      "parentUuid": "a34b5792_1a770bb6",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "6413c39f96447647f320f4576ab0d20b34b90237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
