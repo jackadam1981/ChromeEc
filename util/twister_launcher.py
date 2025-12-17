@@ -519,6 +519,9 @@ def main():
             twister_cli.extend(["--disable-warnings-as-errors"])
         elif intercepted_args.toolchain == "llvm":
             gcov_tool = str(ec_base / "util" / "llvm-gcov.sh")
+            twister_cli.extend(
+                ["-x", "CONFIG_NEWLIB_LIBC_USE_POSIX_LIMITS_H=n"]
+            )
         else:
             print("Unknown toolchain specified:", intercepted_args.toolchain)
         if intercepted_args.gcov_tool:
