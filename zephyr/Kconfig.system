@@ -110,6 +110,7 @@ config PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY
 config PLATFORM_EC_FW_RESET_VECTOR
 	bool "Firmware Reset Vector chip specific retrieval"
 	default y if SOC_FAMILY_ITE_EC
+	default y if SOC_EGIS_ET171
 	help
 	  This defines if there is a chip specific machanism for
 	  retrieving the firmware reset vector. The function that
@@ -147,5 +148,12 @@ config PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP
 	  Enables fetching a memory dump using host commands. This is useful when
 	  debugging panics. May not dump all memory, e.g. sensitive memory will
 	  not be dumped.
+
+config PLATFORM_EC_HOST_COMMAND_ENTER_BOOTLOADER
+	bool "Enable Enter Bootloader Host Command"
+	help
+	  Enables entering bootloader mode via host command.
+	  If the config is enabled, the chip_enter_bootloader function
+	  has to be implemented.
 
 endif # PLATFORM_EC

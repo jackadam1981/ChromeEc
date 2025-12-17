@@ -6,16 +6,6 @@
 / {
 	aliases {
 		gpio-wp = &gpio_ec_wp_odl;
-		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
-	};
-
-	hibernate-wake-pins {
-		compatible = "cros-ec,hibernate-wake-pins";
-		wakeup-irqs = <
-			&int_power_button
-			&int_lid_open
-			&int_ac_present
-		>;
 	};
 
 	gpio-interrupts {
@@ -73,14 +63,11 @@
 			gpios = <&gpio7 5 GPIO_OUTPUT>;
 			enum-name = "GPIO_PACKET_MODE_EN";
 		};
-		gpio_ec_kso_02_inv: ec_kso_02_inv {
-			gpios = <&gpio1 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH)>;
-		};
 		gpio_ec_pch_wake_odl: ec_pch_wake_odl {
 			gpios = <&gpio7 3 (GPIO_ODR_LOW | GPIO_VOLTAGE_1P8)>;
 		};
 		gpio_ec_soc_int_odl: ec_soc_int_odl {
-			gpios = <&gpio5 7 (GPIO_OUTPUT | GPIO_VOLTAGE_1P8)>;
+			gpios = <&gpio5 7 (GPIO_ODR_HIGH | GPIO_ACTIVE_LOW | GPIO_VOLTAGE_1P8)>;
 			enum-name = "GPIO_EC_INT_L";
 		};
 		gpio_ec_plt_pwrok: ec_plt_pwrok {
@@ -182,7 +169,7 @@
 			gpios = <&gpio7 7 GPIO_INPUT>;
 		};
 		gpio_en_pp5000_usba: en_pp5000_usba {
-			gpios = <&gpiod 7 GPIO_INPUT>;
+			gpios = <&gpiod 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
 		};
 		gpio_en_s5_rails: en_s5_rails {
 			gpios = <&gpiob 6 GPIO_OUTPUT>;
@@ -236,6 +223,24 @@
 	psl-in-pol = "low-falling";
 };
 
+&psl_in2_gp00 {
+	/* ACOK_R_OD */
+	psl-in-mode = "edge";
+	psl-in-pol = "high-rising";
+};
+
+&psl_in1_gpd2 {
+	/* LID_OPEN_R */
+	psl-in-mode = "edge";
+	psl-in-pol = "high-rising";
+};
+
+/* Power domain device controlled by PSL (Power Switch Logic) IO pads */
+&power_ctrl_psl {
+	status = "okay";
+	pinctrl-names = "sleep";
+	pinctrl-0 = <&psl_in1_gpd2 &psl_in2_gp00 &psl_in4_gp02>;
+};
 
 /* These GPIOS are initialized by the PDC driver */
 &gpio_i2c_ec_pd0_int_odl {

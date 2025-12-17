@@ -13,6 +13,10 @@
 #include "tablet_mode.h"
 #include "timer.h"
 
+#ifdef CONFIG_ZEPHYR
+#include "drivers/dsp_service.h"
+#endif
+
 #include <stdbool.h>
 #include <string.h>
 
@@ -136,13 +140,40 @@ void tablet_set_mode(int mode, uint32_t trigger)
 		 * would be misleading since the mode wouldn't change anyway, so
 		 * skip it.
 		 */
-		if (!tablet_mode_forced)
-			CPRINTS("Ignoring %s mode entry while gmr sensors "
-				"reports lid %s",
-				tablet_mode_names[mode],
-				(gmr_sensor_at_360 ? "flipped" : "closed"));
-		return;
+		if (!tablet_mode_forced) {
+			if (trigger & TABLET_TRIGGER_OVERRIDE_GMR) {
+				CPRINTS("Allowing %s mode entry while gmr "
+					"sensor active to sync with ISH",
+					tablet_mode_names[mode]);
+			} else {
+				CPRINTS("Ignoring %s mode entry while gmr "
+					"sensors reports lid %s",
+					tablet_mode_names[mode],
+					(gmr_sensor_at_360 ? "flipped" :
+							     "closed"));
+			}
+		}
+
+		/*
+		 * When lid angle calculation is done on ISH, whenever the AP
+		 * resumes or reboots this function is called to set the EC to
+		 * clamshell mode to keep in sync with the ISH which assumes
+		 * tablet_mode is clamshell mode. This call is done with a
+		 * special trigger to override the GMR sensor reading. This
+		 * handles the case where the lid is at 360 and the AP is
+		 * rebooted, but then moved to clamshell during the reboot.
+		 */
+		if (!(trigger & TABLET_TRIGGER_OVERRIDE_GMR)) {
+			return;
+		}
 	}
+
+	/*
+	 * Always clear TABLET_TRIGGER_OVERRIDE_GMR as this is only used to
+	 * ensure the EC will always start with clamsell when tablet mode is
+	 * controlled by the ISH.
+	 */
+	trigger &= ~TABLET_TRIGGER_OVERRIDE_GMR;
 
 	if (mode)
 		new_mode |= trigger;
@@ -200,6 +231,15 @@ void gmr_tablet_switch_isr_handler(void)
 		board_sensor_at_360();
 #else
 		!gpio_get_level(GPIO_TABLET_MODE_L);
+#endif
+
+#if defined(CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH) && \
+	defined(CONFIG_PLATFORM_EC_DSP_SERVICE)
+	/*
+	 * If lid angle is calculated in ISH, then notify ISH about
+	 * the GMR sensor GPIO change.
+	 */
+	dsp_service_hook_tablet_mode_change();
 #endif
 
 	/*

@@ -25,7 +25,7 @@
 /* Host event queue. Shared by all ports. */
 static struct queue const host_events =
 	QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, uint32_t);
-mutex_t host_event_mtx;
+static K_MUTEX_DEFINE(host_event_mtx);
 
 static int pchg_count;
 
@@ -134,6 +134,16 @@ static const char *_text_error(uint32_t error)
 
 	return "UNDEF";
 }
+#ifdef CONFIG_ZEPHYR
+static int init_pchg_mutex(void)
+{
+	for (int i = 0; i < board_get_pchg_count(); i++) {
+		k_mutex_init(&pchgs[i].mtx);
+	}
+	return 0;
+}
+SYS_INIT(init_pchg_mutex, POST_KERNEL, 50);
+#endif /* CONFIG_ZEPHYR */
 
 static void pchg_queue_event(struct pchg *ctx, enum pchg_event event)
 {
@@ -205,6 +215,11 @@ static void pchg_print_status(const struct pchg *ctx)
 		 ctx->dropped_event_count, ctx->fw_version);
 	ccprintf("bist_cmd=0x%02x next_event=%s\n", ctx->bist_cmd,
 		 _text_event(event));
+}
+
+int pchg_get_battery_percent(int port)
+{
+	return pchgs[port].battery_percent;
 }
 
 static void _clear_port(struct pchg *ctx)
@@ -815,7 +830,9 @@ static void pchg_startup(void)
 	if (active_pchg_count)
 		task_wake(TASK_ID_PCHG);
 }
+#ifndef CONFIG_WPC_HALL_ENABLE
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_startup, HOOK_PRIO_DEFAULT);
+#endif
 
 static void pchg_shutdown(void)
 {
@@ -830,7 +847,40 @@ static void pchg_shutdown(void)
 		board_pchg_power_on(p, 0);
 	}
 }
+#ifndef CONFIG_WPC_HALL_ENABLE
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pchg_shutdown, HOOK_PRIO_DEFAULT);
+#endif
+
+#ifdef CONFIG_WPC_HALL_ENABLE
+void wpc_hall_handler(void)
+{
+	if (!gpio_get_level(GPIO_HALL_CTL_PCHG))
+		pchg_startup();
+	else
+		pchg_shutdown();
+}
+DECLARE_DEFERRED(wpc_hall_handler);
+
+void wpc_hall_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&wpc_hall_handler_data, CONFIG_WPC_HALL_DEBOUNCE_US);
+}
+
+static void wpc_hall_enable(void)
+{
+	gpio_enable_interrupt(GPIO_HALL_CTL_PCHG);
+	pchg_startup();
+	hook_call_deferred(&wpc_hall_handler_data, CONFIG_WPC_HALL_DEBOUNCE_US);
+}
+static void wpc_hall_disable(void)
+{
+	gpio_disable_interrupt(GPIO_HALL_CTL_PCHG);
+	pchg_shutdown();
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, wpc_hall_enable, HOOK_PRIO_POST_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, wpc_hall_disable, HOOK_PRIO_DEFAULT);
+#endif
 
 void pchg_task(void *u)
 {
@@ -962,7 +1012,10 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 
 	case EC_PCHG_UPDATE_CMD_OPEN:
 		HCPRINTS("Resetting to download mode");
-
+#ifdef CONFIG_WPC_HALL_ENABLE
+		hook_call_deferred(&wpc_hall_handler_data, -1);
+		pchg_startup();
+#endif
 		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		_clear_port(ctx);
 		ctx->mode = PCHG_MODE_DOWNLOAD;
@@ -1002,6 +1055,9 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 		HCPRINTS("Closing update session (crc=0x%x)", p->crc32);
 		ctx->update.crc32 = p->crc32;
 		pchg_queue_event(ctx, PCHG_EVENT_UPDATE_CLOSE);
+#ifdef CONFIG_WPC_HALL_ENABLE
+		hook_call_deferred(&wpc_hall_handler_data, 5 * SECOND);
+#endif
 		break;
 
 	case EC_PCHG_UPDATE_CMD_RESET:
