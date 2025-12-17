@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52ff852_499cffaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-17T17:29:31Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nI ran this test on sanok and it passed:\n\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE null_pointer\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_null_pointer_dereference\n[8.271400] \u003cerr\u003e os: \n[8.273400] \u003cerr\u003e os:  mcause: 5, Load access fault\n[8.277900] \u003cerr\u003e os:   mtval: 0\n[8.280700] \u003cerr\u003e os:      a0: 000095a8    t0: 9c7a3f6e\n[8.285600] \u003cerr\u003e os:      a1: 00009c98    t1: 573a7413\n[8.290500] \u003cerr\u003e os:      a2: 00000002    t2: aee6ecae\n[8.295400] \u003cerr\u003e os:      a3: 00000000    t3: b50d4620\n[8.300300] \u003cerr\u003e os:      a4: 8006969a    t4: 5adca412\n[8.305100] \u003cerr\u003e os:      a5: 9083ad97    t5: 6ac98514\n[8.310000] \u003cerr\u003e os:      a6: b242990c    t6: 10458dd6\n[8.314900] \u003cerr\u003e os:      a7: cc826409\n[8.318400] \u003cerr\u003e os:      sp: 0001ffc0\n[8.321900] \u003cerr\u003e os:      ra: 800696e8\n[8.325300] \u003cerr\u003e os:    mepc: 80073964\n[8.328800] \u003cerr\u003e os: mstatus: 00023880\n[8.332300] \u003cerr\u003e os: \n[8.334300] \u003cerr\u003e os:      s0: 8008cbe4    s6: 00000000\n[8.339200] \u003cerr\u003e os:      s1: 8008cbe4    s7: 00000000\n[8.344100] \u003cerr\u003e os:      s2: 8008cbac    s8: 00000000\n[8.348900] \u003cerr\u003e os:      s3: 00009000    s9: 00000000\n[8.353800] \u003cerr\u003e os:      s4: 00000000   s10: 00000000\n[8.358700] \u003cerr\u003e os:      s5: 8008cbc8   s11: 00000000\n[8.363600] \u003cerr\u003e os: \n[8.365600] \u003cerr\u003e os: call trace:\n[8.368600] \u003cerr\u003e os:       0: sp: 0001ffc0 ra: 80073964\n[8.373500] \u003cerr\u003e os:       1: sp: 0001ffd0 ra: 800696e8\n[8.378500] \u003cerr\u003e os:       2: sp: 0001ffd4 ra: 8006969a\n[8.383400] \u003cerr\u003e os:       3: sp: 0001fff0 ra: 800607a0\n[8.388400] \u003cerr\u003e os:       4: sp: 0001fff4 ra: 80060792\n[8.393400] \u003cerr\u003e os: \n[8.395400] \u003cerr\u003e os: \u003e\u003e\u003e ZEPHYR FATAL ERROR 0: CPU exception on CPU 0\n[8.401600] \u003cerr\u003e os: Current thread: 0x9c98 (test_null_point)\nCaught system error -- reason 0 1\nFatal error expected as part of test case.\n PASS - test_null_pointer_dereference in 0.143 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE null_pointer succeeded\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE PASS - 100.00% [null_pointer]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.143 seconds\n - PASS - [null_pointer.test_null_pointer_dereference] duration \u003d 0.143 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION SUCCESSFUL\n```",
+      "revId": "baa0da625d548aa085b9391c962089335240884b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
