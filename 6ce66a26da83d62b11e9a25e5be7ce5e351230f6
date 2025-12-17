@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bf39a8c_34ba5863",
+        "filename": "zephyr/program/fpmcu/et171/sanok.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-17T13:26:40Z",
+      "side": 1,
+      "message": "\u003e in my opinion it is done correctly\n\nIn most cases providing raw address is not the good idea.\n\nI think the calibration data are stored in the flash. You should be able to provide phandle to correct partition here. This may not be trivial to implement though.\n\nIf you agree with this approach, please add a TODO comment here, so we can fix this later.",
+      "parentUuid": "2fafd3bf_abb23151",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8cd010f_5fb89aac",
         "filename": "zephyr/program/fpmcu/et171/soc.dtsi",
         "patchSetId": 2
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "Not here, but I found that the [SRAM_SIZE](https://github.com/zephyrproject-rtos/zephyr/blob/main/arch/Kconfig#L215) config defines the SRAM size in Kbytes, so I decided to round the size to the kilobytes here to keep that convention.",
       "parentUuid": "f8cd010f_5fb89aac",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c788f99_4736487f",
+        "filename": "zephyr/program/fpmcu/et171/soc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-17T13:26:40Z",
+      "side": 1,
+      "message": "How about adding comment that the size is rounded by Zephyr? Two week older me will wonder why we are losing 768 bytes here.",
+      "parentUuid": "66ce68c7_d1d5bf0b",
       "range": {
         "startLine": 19,
         "startChar": 20,
