@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65492761_220f1e10",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-17T01:58:39Z",
+      "side": 1,
+      "message": "I didn\u0027t mean the pre-compute logic. I meant that the resulting behavior is not expected in my first example. In the current implementation, the `color-1` transition starts at 250ms, but we expect it to start at 0ms.\n\nIn the other CL, you mentioned that the current PWM driver does not fully support the assumptions this color advancing loop is based on. Given that, I think we should limit our discussion to the current implementation.",
+      "parentUuid": "cc65df51_bd31cfd6",
+      "range": {
+        "startLine": 203,
+        "startChar": 16,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecaa95ae_d4b41a2f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 1
