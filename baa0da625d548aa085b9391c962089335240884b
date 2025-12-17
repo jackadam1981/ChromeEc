@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d069a43_edcdfab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-17T20:20:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "74b3c359_14bdbc0d",
+      "revId": "baa0da625d548aa085b9391c962089335240884b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "540d24dc_ee287860",
@@ -84,6 +102,30 @@
       "writtenOn": "2025-12-17T19:45:15Z",
       "side": 1,
       "message": "Do we need to explicitly include this or is it automatically included in `ztest.h` above?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "baa0da625d548aa085b9391c962089335240884b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce822bab_5c922413",
+        "filename": "zephyr/test/hwtest/src/null_pointer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-17T20:20:23Z",
+      "side": 1,
+      "message": "If I do not include the header, I get this error:\n\n```\n1 warning generated.\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/test/hwtest/src/null_pointer.c.obj \n/mnt/host/source/src/platform/ec/zephyr/test/hwtest/src/null_pointer.c:25:2: error: call to undeclared function \u0027ztest_set_fault_valid\u0027; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]\n   25 |         ztest_set_fault_valid(true);\n      |         ^\n1 error generated.\nExecution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-rw\nTraceback (most recent call last):\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/multiproc.py\", line 383, in _run_fn\n    result \u003d func()\n             ^^^^^^\n  File \"/mnt/host/source/src/platform/ec/zephyr/zmake/zmake/zmake.py\", line 942, in _build_one_dir\n    raise OSError(get_process_failure_msg(proc))\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/helipilot/build-rw\n```",
+      "parentUuid": "540d24dc_ee287860",
       "range": {
         "startLine": 9,
         "startChar": 0,
