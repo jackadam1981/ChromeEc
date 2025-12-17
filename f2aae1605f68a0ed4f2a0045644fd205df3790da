@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc65df51_bd31cfd6",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-17T01:22:24Z",
+      "side": 1,
+      "message": "I don\u0027t believe you\u0027re reading the logic of the code correctly. The reason the new color is applied in the next tick is because it is the color for the next tick.\n\nThe logic of the is this: first apply the current color stored in the cache, then pre-compute the expected color for the next tick and store it in the cache. This way, there\u0027s no delay between receiving the tick signal and displaying the new color.\n\nIt also makes the swapping policy logic more straight forward. Currently swapping policy just requires deleting the cache before applying color, but if we calculated transition before the application we would need to make an explicit exception for the first tick because there is no transition to apply.\n\nI\u0027ve added comments to document this logic.",
+      "parentUuid": "e2176aba_27e7b836",
+      "range": {
+        "startLine": 203,
+        "startChar": 16,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecaa95ae_d4b41a2f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2025-12-16T17:29:01Z",
       "side": 1,
       "message": "In this color advancing loop, just break here (no AND condition). The original break works for both the instant transition and the termination scenarios. The termination should be handled in the next tick. For example, in the line 188.\n```\n\tif ((GET_DURATION(patterns[i], patterns[i].cur_color) \u003d\u003d 0 \u0026\u0026\n\t    patterns[i].cur_color \u003d\u003d patterns[i].pattern_len - 1)\n\t\tcontinue;\n```",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 36
+      },
+      "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0107bb35_db37f90a",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-17T01:22:24Z",
+      "side": 1,
+      "message": "The LED driver is currently designed to apply the expected color on every tick even for patterns that have terminated (instead of just skipping the application for a terminated pattern).\n\nMy reasoning is because the LED policy manager is not guaranteed to be always in control of the LED. For example, if `auto_control` is turned off, there is no guarantee the color is correct when `auto_control` is turned back on. So the LED policy manager should be constantly updating with the correct information so that the LED can be restored to the proper color after any interruptions.",
+      "parentUuid": "ecaa95ae_d4b41a2f",
       "range": {
         "startLine": 212,
         "startChar": 8,
