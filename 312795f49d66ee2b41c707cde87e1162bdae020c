@@ -51,6 +51,24 @@
       "message": "@chuang.melo@inventec.corp-partner.google.com, @wu.johnson@inventec.corp-partner.google.com. Can you confirm if this is AU targeted FW change?",
       "revId": "312795f49d66ee2b41c707cde87e1162bdae020c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157490e4_1dd47d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3283234
+      },
+      "writtenOn": "2025-12-17T02:13:26Z",
+      "side": 1,
+      "message": "yes, we plan AU to fix this bug.",
+      "parentUuid": "88b9f426_5d169730",
+      "revId": "312795f49d66ee2b41c707cde87e1162bdae020c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
