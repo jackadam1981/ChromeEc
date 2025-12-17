@@ -70,6 +70,24 @@
       "parentUuid": "e3028128_6974be45",
       "revId": "8e8d10154118df724db58e5710329d32e0e65b17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d75e10_2ac6baae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-17T21:30:29Z",
+      "side": 1,
+      "message": "It looks like the check on Gerrit is still failing. Maybe the change needs to be deployed?",
+      "parentUuid": "e3028128_6974be45",
+      "revId": "8e8d10154118df724db58e5710329d32e0e65b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
