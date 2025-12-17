@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c652b482_ce980639",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-17T18:22:27Z",
+      "side": 1,
+      "message": "What if this is a repeated sequence where the color has `period-ms \u003d \u003c0\u003e`? For example:\n```\n    color-0 {\n        led-color \u003d \u003c\u0026battery_led_amber\u003e;\n        period-ms \u003d \u003c100\u003e;\n    };\n    color-1 {\n        led-color \u003d \u003c\u0026battery_led_off\u003e;\n        period-ms \u003d \u003c0\u003e;\n    };\n```\n\nThis will be misinterpreted as a play-once sequence. I would prefer not to overload the definition of `period-ms \u003d \u003c0\u003e` with 2 meanings:\n * sequence termination (existing definition),\n * instant transition (new).\n \nHaving 2 meanings complicate the logic, like this if condition, line 216\u0027s, and line 320\u0027s. You need to write equally complicated unit tests to cover all the corner cases.\n\nIt would be better to use a different value for sequence termination, e.g. `period \u003d \u003cINT32_MAX\u003e`. Using `INT32_MAX` keeps the calculation logic unchanged.\n * sequence termination: `0` --\u003e `INT_MAX`;\n * instant transition: `0`.\n\nSo the change here just replaces the sequence termination value from `0` to `INT_MAX`:\n```\n\t\tif (GET_DURATION(patterns[i], patterns[i].cur_color) !\u003d INT32_MAX) {\n```\n\nAnd line 216 and line 320 are similar.",
+      "range": {
+        "startLine": 201,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "915194bd274cd5c5ec9f1cfbac6942b1409184eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d95aafc_17f7ef34",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-17T18:22:27Z",
+      "side": 1,
+      "message": "You need a loop similar to [1] to handle consecutive colors with `period-ms \u003d \u003c0\u003e`. If you want to limit this to no more than one color with `period-ms \u003d \u003c0\u003e` , you will need to document this restriction and add a build time check. IMO, implementing a loop is more general and more simple than a build time check.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7260419/1/zephyr/shim/src/led_driver/led.c#201",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 4
+      },
+      "revId": "915194bd274cd5c5ec9f1cfbac6942b1409184eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
