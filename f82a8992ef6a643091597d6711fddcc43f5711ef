@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab781b0_6b5499b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2025-12-17T16:45:30Z",
+      "side": 1,
+      "message": "The CQ errors on the other CL in the stack probably come from this CL. The chain is in a weird state where each CL shows up in Gerrit as the parent of the other. The other CL seems fine. I think I\u0027ll submit that one, and then we can debug any remaining CQ issues with this one.",
+      "revId": "f82a8992ef6a643091597d6711fddcc43f5711ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
