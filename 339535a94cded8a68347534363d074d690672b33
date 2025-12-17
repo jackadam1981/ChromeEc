@@ -70,6 +70,30 @@
       },
       "revId": "339535a94cded8a68347534363d074d690672b33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be632d9e_974e695e",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-17T08:57:08Z",
+      "side": 1,
+      "message": "To do that, we need to refactor PSL_IN to identify the wake sources (using an enum or label), and move these checks to chip-specific code. Let me file a bug for that and we can discuss it further.",
+      "parentUuid": "518f7b77_f681c0c7",
+      "range": {
+        "startLine": 762,
+        "startChar": 5,
+        "endLine": 762,
+        "endChar": 43
+      },
+      "revId": "339535a94cded8a68347534363d074d690672b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
