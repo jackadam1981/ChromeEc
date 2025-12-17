@@ -1461,7 +1461,7 @@ static void cmd_set_rdo(struct pdc_data_t *data)
 		an_min_power = PDO_BATT_MAX_POWER(pdo) / 1000 / 250;
 	} else {
 		an_max_v = an_min_v = PDO_FIXED_VOLTAGE(pdo) / 50;
-		an_max_a = MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
+		an_max_a = min(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA,
 			       PDO_FIXED_CURRENT(pdo)) /
 			   10;
 		an_min_power = (an_max_v * an_max_a) / 500;
@@ -2361,6 +2361,10 @@ static enum smf_state_result st_task_wait_run(void *o)
 		offset = 1;
 		len = sizeof(union cable_property_t);
 		break;
+	case UCSI_GET_CURRENT_CAM:
+		offset = 1;
+		len = sizeof(uint32_t);
+		break;
 	case UCSI_GET_ALTERNATE_MODES:
 	case UCSI_GET_ERROR_STATUS:
 		offset = 2;
@@ -3159,7 +3163,7 @@ static void tps_check_and_notify_irq(void)
 		cfg = data->dev->config;
 
 		if (!gpio_pin_get_dt(&cfg->irq_gpios)) {
-			break;
+			continue;
 		}
 
 		/* Read the pending interrupt events */

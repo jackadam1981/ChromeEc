@@ -22,6 +22,7 @@
 #include "proto/ec_dsp.pb.h"
 #include "pw_assert/check.h"
 #include "pw_transport/proto/transport.pb.h"
+#include "service/include/cros/dsp/service/driver.hh"
 #include "tablet_mode.h"
 
 // DECLARE_FAKE_VALUE_FUNC(int, crec_flash_unprotected_read, int, int, char *);
@@ -434,6 +435,64 @@ TEST_F(DspComms, LidPosition) {
       IsFlagSet(status, cros_dsp_comms_StatusFlag_STATUS_FLAG_LID_OPEN));
   ASSERT_FALSE(
       IsFlagSet(status, cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE));
+}
+
+#ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE
+TEST_F(DspComms, LidAnglePeripheralEnableIsNoOp) {
+  // Verify lid_angle_peripheral_enable can be called with enable=1
+  // This is a no-op function when DSP handles lid angle
+  lid_angle_peripheral_enable(1);
+
+  // Verify lid_angle_peripheral_enable can be called with enable=0
+  // This is a no-op function when DSP handles lid angle
+  lid_angle_peripheral_enable(0);
+
+  // No assertions needed - the function is a no-op
+  // The test verifies that the function exists and can be called without errors
+}
+#endif /* CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE */
+
+TEST_F(DspComms, DspServiceNotebookMode) {
+  // Send a notebook mode change request
+  cros_dsp_comms_EcService service = {
+      .which_request = cros_dsp_comms_EcService_notify_notebook_mode_change_tag,
+      .request =
+          {
+              .notify_notebook_mode_change =
+                  {
+                      .new_mode =
+                          cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK,
+                  },
+          },
+  };
+
+  // Reset tablet mode to ensure clean state
+  tablet_reset();
+
+  ASSERT_EQ(0, SendServiceRequest(service));
+
+  // Verify that mode_val is set to 0
+  ASSERT_EQ(0, cros::dsp::service::driver.get_mode_val());
+}
+
+TEST_F(DspComms, DspServiceTabletMode) {
+  // Send a tablet mode change request
+  cros_dsp_comms_EcService service = {
+      .which_request = cros_dsp_comms_EcService_notify_notebook_mode_change_tag,
+      .request =
+          {
+              .notify_notebook_mode_change =
+                  {
+                      .new_mode =
+                          cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_TABLET,
+                  },
+          },
+  };
+
+  ASSERT_EQ(0, SendServiceRequest(service));
+
+  // Verify that mode_val is set to 1
+  ASSERT_EQ(1, cros::dsp::service::driver.get_mode_val());
 }
 
 }  // namespace

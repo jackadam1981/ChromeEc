@@ -440,7 +440,7 @@ int charge_request(bool use_curr, bool is_full)
 		if (is_full)
 			voltage = battery_get_info()->voltage_max;
 		/* And handle dead battery case */
-		voltage = MAX(voltage, battery_get_info()->voltage_normal);
+		voltage = max(voltage, battery_get_info()->voltage_normal);
 #else
 		voltage = current = 0;
 #endif
@@ -1014,7 +1014,7 @@ static int get_desired_input_current(const struct charger_info *const info)
 	int ilim = charge_manager_get_charger_current();
 	return ilim == CHARGE_CURRENT_UNINITIALIZED ?
 		       CHARGE_CURRENT_UNINITIALIZED :
-		       MAX(CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT, ilim);
+		       max(CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT, ilim);
 #else
 	return CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT;
 #endif
@@ -1768,39 +1768,9 @@ uint32_t charge_get_led_flags(void)
 	return flags;
 }
 
-#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
-test_export_static bool charge_is_adapter_sufficient(int chgnum)
-{
-	uint32_t min_voltage;
-	int voltage;
-
-	/* Handle error */
-	if (charger_get_minimum_charging_mv(chgnum, &min_voltage) ==
-	    EC_ERROR_INVAL) {
-		return false;
-	}
-
-	if (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
-		return false;
-	}
-
-	voltage = charge_manager_get_charger_voltage();
-	CPRINTS("min_voltage=%d mv, voltage=%d mv", min_voltage, voltage);
-
-	return (voltage > 0 && voltage >= min_voltage);
-}
-#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
-
 enum led_pwr_state led_pwr_get_state(void)
 {
 	uint32_t chflags = charge_get_led_flags();
-#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
-	int chgnum = 0;
-
-	if (IS_ENABLED(CONFIG_OCPC)) {
-		chgnum = charge_get_active_chg_chip();
-	}
-#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 
 	switch (curr.state) {
 	case ST_IDLE:
@@ -1812,26 +1782,22 @@ enum led_pwr_state led_pwr_get_state(void)
 			return LED_PWRS_FORCED_IDLE;
 		else
 			return LED_PWRS_IDLE;
+
 	case ST_DISCHARGE:
-#ifdef CONFIG_PWR_STATE_DISCHARGE_FULL
-		if (battery_near_full())
+		if (IS_ENABLED(CONFIG_PWR_STATE_DISCHARGE_FULL) &&
+		    battery_near_full())
 			return LED_PWRS_DISCHARGE_FULL;
+		else if (charge_manager_has_insufficient_adapter())
+			return LED_PWRS_INSUFFICIENT_ADAPTER;
 		else
-#endif
 			return LED_PWRS_DISCHARGE;
+
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
 		    charge_manager_get_active_charge_port() ==
 			    CHARGE_PORT_NONE) {
-#ifdef CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST
-			if (!charge_is_adapter_sufficient(chgnum)) {
-				return LED_PWRS_INSUFFICIENT_ADAPTER;
-			} else
-#endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
-			{
-				return LED_PWRS_DISCHARGE;
-			}
+			return LED_PWRS_DISCHARGE;
 		} else if (battery_near_full()) {
 			return LED_PWRS_CHARGE_NEAR_FULL;
 		} else {
@@ -1936,7 +1902,7 @@ int charge_set_input_current_limit(int ma, int mv)
 		"Charger minimum input current limit is unreasonably low."
 		" Consider unsetting it, and refer to the Kconfig help for details.");
 	if (CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT > 0) {
-		ma = MAX(ma, CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT);
+		ma = max(ma, CONFIG_CHARGER_MIN_INPUT_CURRENT_LIMIT);
 	}
 #endif
 
@@ -1992,7 +1958,7 @@ int charge_set_input_current_limit(int ma, int mv)
 
 #ifdef CONFIG_CHARGER_MAX_INPUT_CURRENT
 	/* Limit input current limit to max limit for this board */
-	ma = MIN(ma, CONFIG_CHARGER_MAX_INPUT_CURRENT);
+	ma = min(ma, CONFIG_CHARGER_MAX_INPUT_CURRENT);
 #endif
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
@@ -2270,7 +2236,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 				};
 				break;
 			case CS_PARAM_CHG_IS_ADAPTER_SUFFICIENT:
-				val = charge_is_adapter_sufficient(chgnum);
+				val = !charge_manager_has_insufficient_adapter();
 				break;
 #endif /* CONFIG_PLATFORM_EC_CHARGER_HYBRID_POWER_BOOST */
 			default:
