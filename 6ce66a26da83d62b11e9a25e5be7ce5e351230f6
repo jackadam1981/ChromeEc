@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90706ab3_96d2eaa3",
+        "filename": "zephyr/program/fpmcu/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-17T13:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e05aec8_c20fb773",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "406d5950_79420869",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "It doesn\u0027t work, because `ec-ro` node [doesn\u0027t use](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/cros/binman.dtsi;l\u003d31) the \"cros-ec,flash-layout\" compatible string as `wp-ro` does.",
       "parentUuid": "406d5950_79420869",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0e10bf_6fd8d646",
+        "filename": "zephyr/program/fpmcu/et171/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-17T13:04:25Z",
+      "side": 1,
+      "message": "Updated after recent changes.",
+      "parentUuid": "2a20f116_cdd1e63d",
       "range": {
         "startLine": 79,
         "startChar": 0,
