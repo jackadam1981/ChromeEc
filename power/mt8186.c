@@ -176,13 +176,9 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&reset_request_interrupt_deferred_data, 0);
 }
 
-static bool first_wdt_received = false;
-
 static void watchdog_interrupt_deferred(void)
 {
 	uint32_t flags = IN_AP_RST;
-
-	first_wdt_received = false;
 
 	if (!IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_ALLOW_S3_WDT)) {
 		flags |= IN_SUSPEND_ASSERTED;
@@ -204,19 +200,9 @@ void chipset_watchdog_interrupt(enum gpio_signal signal)
 	 * 2. If a warm reset request or AP shutdown is processing, then this
 	 *    interrupt tirgger is a fake WDT interrupt, we should skip it.
 	 */
-	if (!is_resetting && !is_shutdown) {
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT) &&
-		    !first_wdt_received) {
-			/* first WDT is from kernel, wait for coreboot to send
-			 * another WDT */
-			first_wdt_received = true;
-			hook_call_deferred(&watchdog_interrupt_deferred_data,
-					   15 * SECOND);
-		} else {
-			hook_call_deferred(&watchdog_interrupt_deferred_data,
-					   NORMAL_SHUTDOWN_DELAY);
-		}
-	}
+	if (!is_resetting && !is_shutdown)
+		hook_call_deferred(&watchdog_interrupt_deferred_data,
+				   NORMAL_SHUTDOWN_DELAY);
 }
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
@@ -366,16 +352,6 @@ enum power_state power_chipset_init(void)
 		}
 	} else if (system_get_reset_flags() & EC_RESET_FLAG_AP_OFF) {
 		exit_hard_off = 0;
-	} else if ((system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
-		   gpio_get_level(GPIO_AC_PRESENT)) {
-		/*
-		 * If AC present, assume this is a wake-up by AC insert.
-		 * Boot EC only.
-		 *
-		 * Note that extpower module is not initialized at this point,
-		 * the only way is to ask GPIO_AC_PRESENT directly.
-		 */
-		exit_hard_off = 0;
 	}
 
 	/* If the init signal state is at S5, assigns it to G3 to match the
@@ -419,6 +395,11 @@ enum power_state power_handle_state(enum power_state state)
 
 	switch (state) {
 	case POWER_G3:
+#if CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+		if (is_exiting_off && !power_is_enough()) {
+			is_exiting_off = false;
+		}
+#endif
 		if (next_state != POWER_G3)
 			return POWER_G3S5;
 		break;
@@ -554,11 +535,6 @@ enum power_state power_handle_state(enum power_state state)
 		power_signal_disable_interrupt(GPIO_AP_IN_SLEEP_L);
 		power_signal_disable_interrupt(GPIO_AP_EC_WDTRST_L);
 		power_signal_disable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
-		if (IS_ENABLED(CONFIG_PLATFORM_EC_POWERSEQ_MTK_DOUBLE_WDT)) {
-			first_wdt_received = false;
-			hook_call_deferred(&watchdog_interrupt_deferred_data,
-					   -1);
-		}
 
 		/* Only actively reset AP with hard shutdown.
 		 * For AP initiated shutdown, the AP has been reset by PMIC.

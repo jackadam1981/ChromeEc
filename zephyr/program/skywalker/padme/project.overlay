@@ -47,8 +47,11 @@
 	};
 
 	batteries {
-		default_battery: b300049 {
-			compatible = "celxpert,b300049", "battery-smart";
+		default_battery: cosmx_cm32054 {
+			compatible = "cosmx,cm32054", "battery-smart";
+		};
+		celxpert_b300049 {
+			compatible = "celxpert,b300049","battery-smart";
 		};
 	};
 
@@ -69,6 +72,16 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "base_detect_interrupt";
 		};
+		wpc_irq: wpc_irq{
+			irq-pin = <&gpio_wpc_irq>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "pchg_irq";
+		};
+		wpc_lid_irq: wpc_lid_irq{
+			irq-pin = <&gpio_pen_eject_od_l>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "wpc_hall_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -81,6 +94,7 @@
 		/delete-node/ lid_accel_int_ec_l;
 		/delete-node/ dp_aux_path_sel;
 		/delete-node/ en_pp5000_usba_vbus;
+		/delete-node/ ec_pen_chg_dis_odl;
 
 		// POGO_PRSNT_INT_L  GPI5
 		pogo_prsnt_int_l: pogo_prsnt_int_l{
@@ -125,6 +139,7 @@
 		//PEN_EJECT_OD_L GPD1
 		gpio_pen_eject_od_l: gpio_pen_eject_od_l {
 			gpios = <&gpiod 1 (GPIO_INPUT)>;
+			enum-name = "GPIO_HALL_CTL_PCHG";
 		};
 
 		//CCD_MODE_L GPE5
@@ -135,6 +150,15 @@
 		en_cc_lid_base_pu: en-cc-lid-base-pu {
 			gpios = <&gpioa 3 GPIO_INPUT>;
 		};
+		gpio_wpc_irq: gpio_wpc_irq{
+			gpios = <&gpiod 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			enum-name = "GPIO_WPC_IRQ";
+		};
+
+		gpio_ec_pen_dis: ec_pen_dis {
+			gpios = <&gpiof 5 (GPIO_OUTPUT_HIGH)>;
+			enum-name = "GPIO_QI_RESET_L";
+		};
 	};
 
 	unused-pins {
@@ -142,7 +166,6 @@
 		unused-gpios =
 			<&gpioa 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiob 6 GPIO_INPUT_PULL_DOWN>,
-			<&gpiod 4 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpiog 1 GPIO_INPUT_PULL_DOWN>,
@@ -175,6 +198,29 @@
 			i2c-port = <&i2c5>;
 			enum-names = "I2C_PORT_DETACHABLE_BASE";
 		};
+	};
+	cros-keyscan {
+		compatible = "cros-ec,keyscan";
+		actual-key-mask = <
+			0x08	/* C0 */
+			0xff	/* C1 */
+			0xff	/* C2 */
+			0xff	/* C3 */
+			0xff	/* C4 */
+			0xff	/* C5 */
+			0xff	/* C6 */
+			0xa4	/* C7 */
+			0xff	/* C8 */
+			0xf7	/* C9 */
+			0x55	/* C10 */
+			0xff	/* C11 */
+			0xff	/* C12 */
+			0x40	/* C13 */
+			0x0a	/* C14 */
+			0x40	/* C15 */
+			0xff	/* C16 */
+			0xff	/* C17 */
+		>;
 	};
 };
 
@@ -225,6 +271,14 @@
 
 &i2c2 {
 	/delete-node/ rts54-pdc@67;
+};
+
+&i2c4 {
+	scp8601@41 {
+		compatible = "convenientpower,cps8601";
+		reg = <0x41>;
+		irq-gpios=<&gpiod 4 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+	};
 };
 
 &i2c5 {
