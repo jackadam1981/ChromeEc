@@ -251,6 +251,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7429d580_fd9dab9c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-17T03:09:35Z",
+      "side": 1,
+      "message": "OK, I\u0027ll remove the if, and just return 0.",
+      "parentUuid": "c5fc970d_3d8dfc3b",
+      "revId": "501a8edf770c2a85e3119b87d38750cb8cf1f583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9ffc759_8e604d91",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 35
