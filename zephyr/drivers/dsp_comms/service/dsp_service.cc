@@ -14,7 +14,7 @@
 #include <cstddef>
 
 #include "ap_power/ap_power.h"
-#include "body_detection.h"
+#include "body_detection_client.h"
 #include "cros/dsp/service/cros_transport.hh"
 #include "cros/dsp/service/driver.hh"
 #include "cros_board_info.h"
@@ -44,6 +44,7 @@ static constexpr const struct i2c_target_callbacks dsp_service_callbacks = {
     .buf_read_requested = dsp_service_buf_read_requested,
 #endif
     .stop = dsp_service_stop,
+    .error = dsp_service_error,
 };
 
 namespace cros::dsp::service {
@@ -178,6 +179,17 @@ static inline int ReadCbiValue(cros_dsp_comms_GetCbiFlagsResponse& response,
   return rc;
 }
 
+static void mode_handling_delayed(struct k_work* work) {
+  ARG_UNUSED(work);
+  int mode_val = cros::dsp::service::driver.get_mode_val();
+  if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE)) {
+    tablet_set_mode(mode_val, TABLET_TRIGGER_LID);
+  }
+  if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
+    lid_angle_peripheral_enable(!mode_val);
+  }
+}
+
 void dsp_service_handle_get_cbi_flags_request(struct k_work*) {
   const cros_dsp_comms_GetCbiFlagsRequest* request =
       &(cros::dsp::service::driver.pending_service_request_.request
@@ -227,22 +239,18 @@ void cros::dsp::service::Driver::SetNotebookMode(
   switch (mode) {
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK:
       LOG_DBG("    NOTEBOOK mode, tablet_get_mode()=%d", tablet_get_mode());
-      tablet_set_mode(0, TABLET_TRIGGER_LID);
-      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
-        lid_angle_peripheral_enable(1);
-      }
+      cros::dsp::service::driver.mode_val = 0;
       break;
     case cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_TABLET:
       LOG_DBG("    TABLET mode, tablet_get_mode()=%d", tablet_get_mode());
-      tablet_set_mode(1, TABLET_TRIGGER_LID);
-      if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
-        lid_angle_peripheral_enable(0);
-      }
+      cros::dsp::service::driver.mode_val = 1;
       break;
     default:
       LOG_WRN("Unsupported notebook mode");
-      break;
+      return;
   }
+  k_work_reschedule(&mode_handling_work_,
+                    K_MSEC(DSP_SERVICE_MODE_HANDLE_DELAY_MS));
 }
 
 bool cros::dsp::service::Driver::HandleDecodedRequest() {
@@ -255,11 +263,10 @@ bool cros::dsp::service::Driver::HandleDecodedRequest() {
 #ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_BODY_DETECTION
     case cros_dsp_comms_EcService_notify_body_detection_change_tag:
       LOG_DBG("GOT: NotifyBodyDetectionChangeRequest");
-      body_detect_change_state(
+      body_detect_change_state_extern(
           pending_service_request_.request.notify_body_detection_change.on_body
               ? BODY_DETECTION_ON_BODY
-              : BODY_DETECTION_OFF_BODY,
-          false);
+              : BODY_DETECTION_OFF_BODY);
       return false;
 #endif
     case cros_dsp_comms_EcService_get_cbi_flags_tag:
@@ -323,6 +330,7 @@ pw::Status cros::dsp::service::Driver::Init() {
   }
 #endif
   k_work_init(&get_cbi_flags_work_, dsp_service_handle_get_cbi_flags_request);
+  k_work_init_delayable(&mode_handling_work_, mode_handling_delayed);
 
   LOG_INF("Setting up target %s::0x%02x", bus_->name, target_cfg_.address);
 
@@ -369,12 +377,6 @@ void dsp_service_hook_tablet_mode_change() {
   cros::dsp::service::driver.transport_.SetStatusBit(
       cros_dsp_comms_StatusFlag_STATUS_FLAG_TABLET_MODE, is_in_tablet_mode);
 }
-#ifdef CONFIG_PLATFORM_EC_DSP_REMOTE_TABLET_SWITCH
-extern "C" void dsp_service_gmr_tablet_switch_isr(enum gpio_signal signal) {
-  dsp_service_hook_tablet_mode_change();
-  gmr_tablet_switch_isr(signal);
-}
-#endif
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_tablet_mode_change, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_PLATFORM_EC_TABLET_MODE */
 

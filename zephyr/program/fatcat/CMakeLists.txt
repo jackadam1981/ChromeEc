@@ -51,8 +51,11 @@ if(DEFINED CONFIG_BOARD_KINMEN)
 	zephyr_include_directories("kinmen/include")
 	zephyr_library_sources("kinmen/src/board_power.c")
 	zephyr_library_sources("kinmen/src/suspend_resume.c")
+	zephyr_library_sources("kinmen/src/thermal.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"kinmen/src/keyboard_customization.c")
+	zephyr_library_sources_ifdef(CONFIG_PDC_RUNTIME_PORT_CONFIG
+					"kinmen/src/usbc_runtime.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_LAPIS)
@@ -66,10 +69,14 @@ endif()
 if(DEFINED CONFIG_BOARD_MOONSTONE)
 	project(moonstone)
 	zephyr_include_directories("moonstone/include")
+	zephyr_library_sources("moonstone/src/alt_charger.c")
 	zephyr_library_sources("moonstone/src/board_power.c")
 	zephyr_library_sources("moonstone/src/suspend_resume.c")
+	zephyr_library_sources("moonstone/src/thermal.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"moonstone/src/keyboard_customization.c")
+	zephyr_library_sources_ifdef(CONFIG_PDC_RUNTIME_PORT_CONFIG
+					"moonstone/src/usbc_runtime.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_RUBY)

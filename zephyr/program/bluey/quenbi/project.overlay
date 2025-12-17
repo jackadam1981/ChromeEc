@@ -13,11 +13,12 @@
 #include "../common.dtsi"
 #include "../battery.dtsi"
 #include "../psl.dtsi"
-#include "../keyboard.dtsi"
 
 /* quenbi project DTS includes */
 
 #include "gpios.dtsi"
 #include "fan.dtsi"
+#include "keyboard.dtsi"
+#include "temp_sensors.dtsi"
 
 /* quenbi overrides follow... */

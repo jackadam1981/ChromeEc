@@ -6,7 +6,7 @@
 
 Newer devices use a unified system called **UFSC (Unified Firmware and
 Second-source Configuration)**. This system replaces the separate legacy
-[`FW_CONFIG`] and [`SSFC`] fields with a single, schema-driven 20-byte (5-DWORD)
+[`FW_CONFIG`] and [`SSFC`] fields with a single, schema-driven 128-bit (4-DWORD)
 value stored in the [`CBI`].
 
 The primary goals of UFSC are to:
@@ -16,11 +16,14 @@ The primary goals of UFSC are to:
     board-specific decoding logic.
 *   Provide a clear and maintainable way to manage hardware variations.
 
-The 20-byte UFSC field is structured as follows:
-*   **DWORDS 0-3 (Standardized Firmware Configuration):** Contain standardized
-    definitions for common hardware components (e.g., audio codecs, sensors).
-*   **DWORD 4 (OEM Customization Field):** Reserved for OEM/ODM partners to
-    encode board-specific information.
+The 128-bit UFSC field is structured as follows:
+*   **BITS 0-55, 64-119 (Standardized Firmware Configuration):** Contain
+    standardized definitions for common hardware components (e.g., audio codecs,
+    sensors).
+*   **BITS 56-63 (AP OEM Customization Field):** Reserved for OEM/ODM partners
+    to encode board-specific information for the AP use.
+*   **BITS 120-127 (EC OEM Customization Field):** Reserved for OEM/ODM partners
+    to encode board-specific information for the EC use.
 
 ## Kconfig Options
 
@@ -43,9 +46,10 @@ the hardware present on that device. The schema for these nodes is defined in
 The structure of the UFSC bitfield is defined in two template files that should
 be included by a project's overlay:
 *   [`zephyr/include/cros/cbi_ufsc_std_schema.dtsi`]: Defines the standardized
-    fields located in DWORDs 0-3.
+    fields. Only the fields the EC is interested in are defined.
 *   [`zephyr/include/cros/cbi_ufsc_oem_schema.dtsi`]: Defines the generic,
-    optional fields for OEM customization in DWORD 4.
+    optional fields for OEM customization. Only the fields the EC is interested
+    in are defined.
 
 These files define the field names, `start` bit, and `size` for each
 configuration item.
@@ -153,7 +157,32 @@ if (cros_cbi_ufsc_check_match(
 ## Testing and Debugging
 
 The `cbi` console command and the `ectool cbi` host command can be used to read
-and write UFSC data.
+UFSC data.
+
+When setting the UFSC value using `ectool`, the argument provided must be a
+byte-ordered hex string using **little-endian** format (least significant byte
+first).
+
+For example, if the desired UFSC data consists of the following 32-bit words:
+*   **DWORD[0]:** `0x11223344`
+*   **DWORD[1]:** `0x55667788`
+*   **DWORD[2]:** `0x99aabbcc`
+*   **DWORD[3]:** `0xddeeff00`
+
+The command to write this to the UFSC tag (`29`) is:
+```bash
+ectool cbi set 29 4433221188776655ccbbaa9900ffeedd
+```
+
+To generate a CBI image file containing UFSC data, use the `cbi-util` tool.
+The `--ufsc` argument requires four comma-separated 32-bit hexadecimal values
+(DWORD 0 to DWORD 3).
+
+Using the same example data as above:
+```bash
+cbi-util create --file cbi.bin --board_version 1 --sku_id 1 --size 256 \
+    --ufsc 0x11223344,0x55667788,0x99aabbcc,0xddeeff00
+```
 
 [`CBI`]: ./zephyr_cbi.md
 [`FW_CONFIG`]: ./zephyr_fw_config.md

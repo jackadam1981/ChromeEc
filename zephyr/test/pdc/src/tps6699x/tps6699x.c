@@ -367,7 +367,7 @@ ZTEST_USER(tps6699x, test_set_rdo)
 	emul_pdc_get_autoneg_sink(emul, &max_voltage, &max_current);
 	zassert_equal(max_voltage, 20000 / 50);
 	zassert_equal(max_current,
-		      MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 5000) / 10);
+		      min(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 5000) / 10);
 
 	/* Test Battery PDO selection */
 	pdos[PDO_OFFSET_0] = PDO_BATT(5000, 20000, 45000);
@@ -507,4 +507,44 @@ ZTEST_USER(tps6699x, test_get_pd_message_identity)
 	for (int i = 0; i < PDC_DISC_IDENTITY_VDO_COUNT; i++) {
 		zassert_equal(disc_in[i], disc_out[i]);
 	}
+}
+
+/* Cover the tps6699x driver returning discover identity with GET_CURRENT_CAM */
+ZTEST_USER(tps6699x, test_get_current_cam)
+{
+	struct ucsi_memory_region ucsi_data;
+	struct ucsi_control_t *control = &ucsi_data.control;
+	uint32_t current_cam = 0;
+
+	access = ACCESS_OK;
+	RESET_FAKE(tps_rw_port_control);
+	tps_rw_port_control_fake.custom_fake = custom_fake_tps_rw_port_control;
+
+	/* Set fake CAM in PDC emulator */
+	emul_pdc_set_current_cam(emul, 0);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Send GET_CURRENT_CAM */
+	zassert_ok(pdc_execute_ucsi_cmd(
+		dev, UCSI_GET_CURRENT_CAM, sizeof(uint32_t),
+		control->command_specific, ucsi_data.message_in, NULL));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify returned CAM matches emulator. */
+	memcpy(&current_cam, &ucsi_data.message_in, sizeof(uint32_t));
+	zassert_equal(current_cam, 0);
+
+	/* Set fake CAM in PDC emulator */
+	emul_pdc_set_current_cam(emul, 0x1);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Send GET_CURRENT_CAM */
+	zassert_ok(pdc_execute_ucsi_cmd(
+		dev, UCSI_GET_CURRENT_CAM, sizeof(uint32_t),
+		control->command_specific, ucsi_data.message_in, NULL));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify returned CAM matches emulator. */
+	memcpy(&current_cam, &ucsi_data.message_in, sizeof(uint32_t));
+	zassert_equal(current_cam, 0x1);
 }
