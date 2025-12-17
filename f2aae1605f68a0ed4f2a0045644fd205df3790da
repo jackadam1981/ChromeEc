@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c0c8d3c_65736878",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-17T03:25:07Z",
+      "side": 1,
+      "message": "OK I see what you mean now, you\u0027re talking about in the combination of the very first time we swap into a policy if the first color of that policy is also `period-ms \u003d \u003c0\u003e`.\n\nI think in that case it\u0027s better to put the logic in the \"clear cache\" step instead of in the \"apply color\" step, since it will only happen the first time that the pattern is entered.\n\nSee new update.",
+      "parentUuid": "65492761_220f1e10",
+      "range": {
+        "startLine": 203,
+        "startChar": 16,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "f2aae1605f68a0ed4f2a0045644fd205df3790da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecaa95ae_d4b41a2f",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 1
