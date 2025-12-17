@@ -8,6 +8,7 @@
 #include "host_command.h"
 #include "test/drivers/test_mocks.h"
 #include "test/drivers/test_state.h"
+#include "test/drivers/utils.h"
 #include "test_util.h"
 
 #include <zephyr/drivers/eeprom.h>
@@ -535,6 +536,84 @@ ZTEST_USER(common_cbi, test_init_fails_when_locked)
 #endif /* CONFIG_SYSTEM_UNLOCKED */
 }
 
+ZTEST_USER(common_cbi, test_model_id_set)
+{
+	uint32_t model_id = 234;
+	int rv;
+
+	/* Turn off write-protect so we can actually write */
+	gpio_wp_l_set(1);
+	zassert_ok(cbi_clear());
+
+	/* Set model ID directly */
+	rv = cbi_set_model_id(model_id);
+	zassert_equal(rv, EC_SUCCESS);
+}
+
+ZTEST_USER(common_cbi, test_model_id_hc_set_get)
+{
+	uint32_t model_id = 234;
+	uint32_t model_id_read;
+
+	struct actual_set_params {
+		struct ec_params_set_cbi params;
+		uint8_t actual_data[sizeof(model_id)];
+	};
+
+	struct actual_set_params hc_set_params = {
+	.params = {
+		.tag = CBI_TAG_MODEL_ID,
+		.flag = CBI_SET_INIT,  /* This is crucial! */
+		.size = sizeof(model_id),
+		},
+	};
+
+	struct host_cmd_handler_args set_args = BUILD_HOST_COMMAND_PARAMS(
+		EC_CMD_SET_CROS_BOARD_INFO, 0, hc_set_params);
+
+	memcpy(hc_set_params.params.data, &model_id, sizeof(model_id));
+
+	/* Turn off write-protect so we can actually write */
+	gpio_wp_l_set(1);
+	zassert_ok(cbi_clear());
+
+	/* Set model ID via host command */
+	zassert_ok(host_command_process(&set_args));
+
+	/* Verify model ID was set correctly */
+	zassert_ok(cbi_get_model_id(&model_id_read));
+	zassert_equal(model_id_read, model_id);
+}
+
+ZTEST_USER(common_cbi, test_model_id_set_fail_bad_magic)
+{
+	uint32_t model_id = 456;
+
+	/* Turn off write-protect */
+	gpio_wp_l_set(1);
+
+	/* First create valid CBI */
+	zassert_ok(cbi_clear());
+	zassert_ok(cbi_set_model_id(model_id));
+
+	/* Now corrupt the magic in storage to make do_cbi_read() fail */
+	uint8_t bad_magic[4] = { 0xDE, 0xAD, 0xBE, 0xEF };
+
+	/* Write bad magic to EEPROM offset 0 */
+	const struct device *eeprom_dev = CBI_EEPROM_DEV;
+	zassert_ok(eeprom_write(eeprom_dev, 0, bad_magic, sizeof(bad_magic)));
+
+	/* Invalidate cache to force read from storage */
+	cbi_invalidate_cache();
+
+	/*
+	 * Try to set model ID.do_cbi_read() will fail due to bad magic.
+	 * But cbi_create() will be called, so function should succeed.
+	 */
+	int rv = cbi_set_model_id(model_id + 1);
+	zassert_ok(rv);
+}
+
 ZTEST_USER(common_cbi, test_board_id_fails_when_set)
 {
 	uint8_t board_id = 42;
@@ -628,6 +707,18 @@ ZTEST_USER(common_cbi, test_cbi_get_ufsc__read_write)
 	zassert_ok(cbi_get_ufsc(&ufsc_read), "cbi_get_ufsc failed");
 	zassert_mem_equal(&ufsc_to_write, &ufsc_read, sizeof(struct cbi_ufsc),
 			  "Read UFSC data does not match written data");
+
+	/* Test the console command output for the written data. */
+	const char expected_scan[] = "4433221188776655ccbbaa9900ffeedd";
+	char ufsc_scan[sizeof(expected_scan)];
+	BUILD_ASSERT(sizeof(expected_scan) - 1 == 32);
+
+	SCAN_CONSOLE_LINE("cbi", EC_SUCCESS, "UFSC:", 1, "UFSC: %32s",
+			  ufsc_scan);
+	zassert_equal(strcmp(ufsc_scan, expected_scan), 0,
+		      "Console print of UFSC value does not match. "
+		      "Expected '%s', got '%s'",
+		      expected_scan, ufsc_scan);
 }
 
 ZTEST_USER(common_cbi, test_cbi_get_ufsc__not_found)

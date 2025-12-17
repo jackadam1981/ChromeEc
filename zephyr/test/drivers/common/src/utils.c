@@ -11,7 +11,6 @@
 #include "chipset.h"
 #include "emul/emul_isl923x.h"
 #include "emul/emul_smart_battery.h"
-#include "emul/emul_stub_device.h"
 #include "emul/tcpc/emul_tcpci_partner_src.h"
 #include "hooks.h"
 #include "lpc.h"
@@ -21,6 +20,7 @@
 #include "test/drivers/stubs.h"
 #include "test/drivers/utils.h"
 
+#include <zephyr/drivers/emul_stub_device.h>
 #include <zephyr/drivers/gpio/gpio_emul.h>
 #include <zephyr/kernel.h>
 #include <zephyr/mgmt/ec_host_cmd/simulator.h>
@@ -556,7 +556,7 @@ int host_cmd_cec_write(const uint8_t *msg, uint8_t msg_len)
 	struct host_cmd_handler_args args =
 		BUILD_HOST_COMMAND_PARAMS(EC_CMD_CEC_WRITE_MSG, 0, params);
 
-	memcpy(params.msg, msg, MIN(msg_len, sizeof(params.msg)));
+	memcpy(params.msg, msg, min(msg_len, sizeof(params.msg)));
 	args.params_size = msg_len;
 
 	return host_command_process(&args);
@@ -568,7 +568,7 @@ int host_cmd_cec_write_v1(int port, const uint8_t *msg, uint8_t msg_len)
 
 	params_v1.port = port;
 	params_v1.msg_len = msg_len;
-	memcpy(params_v1.msg, msg, MIN(msg_len, sizeof(params_v1.msg)));
+	memcpy(params_v1.msg, msg, min(msg_len, sizeof(params_v1.msg)));
 
 	return ec_cmd_cec_write_v1(NULL, &params_v1);
 }
@@ -870,23 +870,62 @@ void check_console_cmd(const char *cmd, const char *expected_output,
 	}
 }
 
+static const char *get_console_output(const char *cmd, const int expected_rv,
+				      const char *file, const int line)
+{
+	const char *buffer;
+	size_t buffer_size;
+
+	call_console_cmd(cmd, expected_rv, file, line);
+
+	buffer = shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
+	return buffer;
+}
+
 void scan_console_cmd(const char *cmd, const int expected_rv,
 		      const int expected_count, const char *file,
 		      const int line, const char *format, ...)
 {
-	const char *buffer;
-	size_t buffer_size;
+	const char *output = get_console_output(cmd, expected_rv, file, line);
 	va_list args;
-
-	call_console_cmd(cmd, expected_rv, file, line);
+	int count;
 
 	zassert_not_null(format);
-	buffer = shell_backend_dummy_get_output(get_ec_shell(), &buffer_size);
+
 	va_start(args, format);
-	int count = vsscanf(buffer, format, args);
+	count = vsscanf(output, format, args);
 	va_end(args);
+
 	zassert_equal(expected_count, count,
 		      "%s:%u \'%s\' outputs \'%s\' which does not match \'%s\'",
-		      file, line, cmd, buffer, format);
+		      file, line, cmd, output, format);
 }
+
+void scan_console_line(const char *cmd, const int expected_rv,
+		       const char *line_prefix, const int expected_count,
+		       const char *file, const int line, const char *format,
+		       ...)
+{
+	const char *output = get_console_output(cmd, expected_rv, file, line);
+	const char *target_line = strstr(output, line_prefix);
+
+	zassert_not_null(format);
+	zassert_not_null(
+		target_line,
+		"Could not find prefix '%s' in the output of '%s'. Output:\n%s",
+		line_prefix, cmd, output);
+
+	va_list args;
+	int count;
+
+	va_start(args, format);
+	count = vsscanf(target_line, format, args);
+	va_end(args);
+
+	zassert_equal(expected_count, count,
+		      "%s:%u \'%s\' outputs \'%s\' which does not match \'%s\'",
+		      file, line, cmd, output, format);
+}
+
 #endif /* CONFIG_SHELL_BACKEND_DUMMY */
