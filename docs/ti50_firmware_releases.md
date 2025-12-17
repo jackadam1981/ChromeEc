@@ -8,7 +8,8 @@ This document captures major feature differences between Ti50 firmware releases
 
 ChromeOS Version    | DT PrePVT version | DT Prod Version | NT PrePVT version | NT Prod Version
 ------------------- | ----------------- | --------------- | ----------------- | ---------------
-[ToT][ToT ebuild]   | 0.24.242          | 0.23.241        | 0.34.242          | 0.33.241
+[ToT][ToT ebuild]   | 0.24.242          | 0.23.242        | 0.34.242          | 0.33.242
+[M144][144 release] | 0.24.241          | 0.23.241        | 0.34.241          | 0.33.241
 [M143][143 release] | 0.24.241          | 0.23.230        | 0.34.241          | 0.33.230
 [M142][142 release] | 0.24.230          | 0.23.230        | 0.34.230          | 0.33.230
 [M141][141 release] | 0.24.220          | 0.23.210        | 0.34.220          | 0.33.210
@@ -1194,6 +1195,33 @@ Build:   0.{2,3}3.241/ti50_common_mp-15980.B:v0.0.656-0449cdd5
          tock:v0.0.9685-1f9552cfa
          ms-tpm-20-ref:v0.0.343-b28a970
          chrome-bot@chromeos-firmware-mpa-us-central1-c-x32-0-t5jx 2025-10-20 10:09:36
+```
+
+### 0.x3.242 Released in DT-M145 NT-M145
+
+DT/NT Release
+[CL](https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/7230122)
+
+Builder
+[firmware-ti50-mp-15980.B-branch/111](https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-ti50-mp-15980.B-branch/111/overview)
+
+Artifacts:
+[15980.108.0](https://pantheon.corp.google.com/storage/browser/chromeos-releases/firmware-ti50-mp-15980.B-branch-firmware/R129-15980.108.0/)
+
+**Features**
+
+* N/A
+
+**NT Features**
+* Remove internal pullup to fix leakage on INT\_AP\_L.
+  [b/459380744](https://b.corp.google.com/issues/459380744)
+
+```
+Build:   0.{2,3}3.242/ti50_common_mp-15980.B:v0.0.674-a85ab29e
+         libtock-rs:v0.0.925-1213708
+         tock:v0.0.9685-1f9552cfa
+         ms-tpm-20-ref:v0.0.343-b28a970
+         chrome-bot@chromeos-firmware-mpa-us-east1-d-x32-1-98tb 2025-11-14 11:44:51
 ```
 
 ## PrePVT images
@@ -2695,4 +2723,5 @@ Build:   0.{2,3}4.241/ti50_common_prepvt-15974.B:v0.0.682-2a1ffcb9
 [141 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R141-16404.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [142 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R142-16433.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [143 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R143-16463.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
+[144 release]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/release-R144-16503.B/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
 [ToT ebuild]: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-ti50/chromeos-ti50-0.0.1.ebuild
