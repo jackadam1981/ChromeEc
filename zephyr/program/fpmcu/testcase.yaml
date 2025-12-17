@@ -129,6 +129,7 @@ tests:
     extra_configs:
     - CONFIG_HW_TEST_NULL_POINTER=y
     - CONFIG_ZTEST_FATAL_HOOK=y
+    - CONFIG_EXTRA_EXCEPTION_INFO=y
     extra_conf_files:
     - prj_hw_tests.conf
   panic:

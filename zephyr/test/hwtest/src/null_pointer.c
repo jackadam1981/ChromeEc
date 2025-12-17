@@ -16,6 +16,14 @@ void ztest_post_fatal_error_hook(unsigned int reason,
 				 const struct arch_esf *pEsf)
 {
 	zassert_equal(reason, K_ERR_CPU_EXCEPTION);
+#if defined(CONFIG_EXTRA_EXCEPTION_INFO) && defined(CONFIG_ARM)
+	zassert_true((pEsf->extra_info.cfsr & 0xff) == 0x82,
+		     "Expected a data access violation, but cfsr is 0x%x",
+		     pEsf->extra_info.cfsr);
+	zassert_equal(pEsf->extra_info.mmfar, 0,
+		      "Expected mmfar to be 0, but was 0x%x",
+		      pEsf->extra_info.mmfar);
+#endif
 	ztest_set_fault_valid(false);
 }
 
