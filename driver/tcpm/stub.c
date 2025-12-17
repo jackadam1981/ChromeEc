@@ -89,7 +89,11 @@ int tcpm_set_rx_enable(int port, int enable)
 	return tcpc_set_rx_enable(port, enable);
 }
 
+<<<<<<< HEAD
 void tcpm_enable_auto_discharge_disconnect(int port, bool enable)
+=======
+void tcpm_enable_auto_discharge_disconnect(int port, int enable)
+>>>>>>> a9f40d939a (EC: Add back some legacy code for coverage)
 {
 }
 
