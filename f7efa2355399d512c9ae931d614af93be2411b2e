@@ -22,6 +22,30 @@
       },
       "revId": "f7efa2355399d512c9ae931d614af93be2411b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bab29c55_409ecf01",
+        "filename": "zephyr/drivers/keyboard_input/keyboard_input.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-17T10:56:35Z",
+      "side": 1,
+      "message": "When I wrote the test originally it did not have to depend from the whole EC code base, which made it simpler to setup and I think well isolated, basically it just needed to mock output keyboard function. This is still the case but now it wants this option too, I can\u0027t enable it alone because it enables the actual code with needs loads of includes to compile, I did try to add stubs for those but it wasn\u0027t enough either, figured I\u0027d just enable the whole code for the test, which is not exactly pretty but at least it keeps the test isolated.",
+      "parentUuid": "dee705d8_5cf415ac",
+      "range": {
+        "startLine": 93,
+        "startChar": 66,
+        "endLine": 93,
+        "endChar": 78
+      },
+      "revId": "f7efa2355399d512c9ae931d614af93be2411b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
