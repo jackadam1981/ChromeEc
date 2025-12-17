@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69f5400_6c25f3bf",
+        "filename": "zephyr/program/fpmcu/et171/sanok.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-17T14:41:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "95fde025_dee92ccb",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8cd010f_5fb89aac",
@@ -299,6 +323,30 @@
       "side": 1,
       "message": "Makes sense, done.",
       "parentUuid": "3c788f99_4736487f",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "6ce66a26da83d62b11e9a25e5be7ce5e351230f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377b12b4_d7686e5e",
+        "filename": "zephyr/program/fpmcu/et171/soc.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2025-12-17T14:41:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d96f23e6_20756d12",
       "range": {
         "startLine": 19,
         "startChar": 20,
