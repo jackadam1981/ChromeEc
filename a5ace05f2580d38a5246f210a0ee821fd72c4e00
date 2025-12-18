@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4741a0_2a3ed730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T18:40:54Z",
+      "side": 1,
+      "message": "yes, the test fails if the entries are wrong:\n\n```\nfsammoura@fsammoura-glaptop:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/test/hwtest/src/pmp_entries.c b/zephyr/test/hwtest/src/pmp_entries.c\nindex 4da90a481f..feaacf086d 100644\n--- a/zephyr/test/hwtest/src/pmp_entries.c\n+++ b/zephyr/test/hwtest/src/pmp_entries.c\n@@ -39,7 +39,7 @@ struct pmp_region {\n  */\n static struct pmp_region expected_regions[] \u003d {\n        { .base \u003d 0,\n-         .size \u003d CONFIG_NULL_POINTER_EXCEPTION_REGION_SIZE,\n+         .size \u003d CONFIG_NULL_POINTER_EXCEPTION_REGION_SIZE + 1,\n          .perm \u003d 0x0,\n          .found \u003d false },\n        { .base \u003d (uintptr_t)__rom_region_start,\n ```\n\n\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE pmp_entries\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_pmp_entries\n[5.670900] \u003cinf\u003e pmp_entries: Running the test in RW.\n\n    Assertion failed at EC_BASE/ec/zephyr/test/hwtest/src/pmp_entries.c:111: pmp_entries_test_pmp_entries: (expected_regions[i].found is false)\nPMP entry for region 1 (base 0x0, size 0x11, perm 0x0) not found.\n FAIL - test_pmp_entries in 0.024 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE pmp_entries failed.\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE FAIL -   0.00% [pmp_entries]: pass \u003d 0, fail \u003d 1, skip \u003d 0, total \u003d 1 duration \u003d 0.024 seconds\n - FAIL - [pmp_entries.test_pmp_entries] duration \u003d 0.024 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION FAILED\n```\n\n\nsame thing for this change:\n\n```\nfsammoura@fsammoura-glaptop:~/chromiumos/src/platform/ec$ git diff\ndiff --git a/zephyr/test/hwtest/src/pmp_entries.c b/zephyr/test/hwtest/src/pmp_entries.c\nindex 4da90a481f..7423caf1ea 100644\n--- a/zephyr/test/hwtest/src/pmp_entries.c\n+++ b/zephyr/test/hwtest/src/pmp_entries.c\n@@ -43,7 +43,7 @@ static struct pmp_region expected_regions[] \u003d {\n          .perm \u003d 0x0,\n          .found \u003d false },\n        { .base \u003d (uintptr_t)__rom_region_start,\n-         .size \u003d (size_t)__rom_region_size,\n+         .size \u003d (size_t)__rom_region_size-1,\n          .perm \u003d PMP_R | PMP_X,\n          .found \u003d false },\n        { .base \u003d DT_REG_ADDR(DT_NODELABEL(rollback)),\n```\n\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE pmp_entries\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_pmp_entries\n[4.473300] \u003cinf\u003e pmp_entries: Running the test in RW.\n\n    Assertion failed at EC_BASE/ec/zephyr/test/hwtest/src/pmp_entries.c:111: pmp_entries_test_pmp_entries: (expected_regions[i].found is false)\nPMP entry for region 2 (base 0x80042000, size 0x5772f, perm 0x5) not found.\n FAIL - test_pmp_entries in 0.025 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE pmp_entries failed.\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE FAIL -   0.00% [pmp_entries]: pass \u003d 0, fail \u003d 1, skip \u003d 0, total \u003d 1 duration \u003d 0.025 seconds\n - FAIL - [pmp_entries.test_pmp_entries] duration \u003d 0.025 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION FAILED\n```",
+      "parentUuid": "2d2600bb_f87f5fce",
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f773120a_a205fd9a",
@@ -49,6 +67,30 @@
       "writtenOn": "2025-12-18T17:40:18Z",
       "side": 1,
       "message": "Let\u0027s add a comment that these come from upstream Zephyr and provide the path to the file that contains them.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d11f83_c7e1674b",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T18:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f773120a_a205fd9a",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -82,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5867e605_88600cab",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T18:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "256e162c_ea8786ac",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 73
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5744a4b4_553242bb",
@@ -95,6 +161,30 @@
       "writtenOn": "2025-12-18T17:40:18Z",
       "side": 1,
       "message": "Does `pmp_decode_region` return the end address inclusive, or is it an exclusive bound? According to Gemini, the standard TOR PMP entries are exclusive (one past the address). Is `pmp_decode_region` changing it to inclusive?",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af759532_80d19d5c",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T18:40:54Z",
+      "side": 1,
+      "message": "it returns the end address inclusive, i.e. start + size - 1\n\nif start address: 0xADBEEF00U\nsize \u003d 4\nend address \u003d 0xADBEEF00U + 3\nThe protected region is [0xADBEEF00, 0xADBEEF04[\n\nthis is the test that I added in zephyr upstream:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/pmp-decode-region/src/main.c",
+      "parentUuid": "5744a4b4_553242bb",
       "range": {
         "startLine": 85,
         "startChar": 7,
@@ -141,6 +231,54 @@
       "writtenOn": "2025-12-18T17:40:18Z",
       "side": 1,
       "message": "Let\u0027s use constants for this `PMP_R`, etc.",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a249f62_f19fae6c",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T18:40:54Z",
+      "side": 1,
+      "message": "added check for the LOCK bit. I do not believe we can have a locked entry in RW alone if that region changes in RO. Currently, there is a config to make all global entries unlocked and the mechanism to enforce them via MPRV is enabled for every case (IRQ, thread change, etc.)",
+      "parentUuid": "79f7bdf0_ebf9c26d",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a51b5ea_e1836528",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T18:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "394c064f_a57e6a99",
       "range": {
         "startLine": 88,
         "startChar": 20,
