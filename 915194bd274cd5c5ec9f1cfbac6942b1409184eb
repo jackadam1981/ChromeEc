@@ -93,6 +93,30 @@
       },
       "revId": "915194bd274cd5c5ec9f1cfbac6942b1409184eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aab96b1_c56860ab",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-12-18T01:57:49Z",
+      "side": 1,
+      "message": "I am OK with either way. If you choose not to allow consecutive 0-duration colors, make sure you have a BUILD_ASSERT to check for that.",
+      "parentUuid": "f34f3a1d_f4d7cef5",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 4
+      },
+      "revId": "915194bd274cd5c5ec9f1cfbac6942b1409184eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
