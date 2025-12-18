@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba61ecf_11e00dc4",
+        "filename": "zephyr/test/fingerprint/drivers/fpc1025/boards/native_sim.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:38:09Z",
+      "side": 1,
+      "message": "To reduce duplication, consider re-introducing a common macro for the shared properties (`width`, `height`, `bits-per-pixel`, `v4l2-pixel-format`) and including it within `FPC1025_RAW_IMAGE_PROPS` and `FPC1025_REAL_IMAGE_PROPS`.\n\nFor example:\n```\n#define FPC1025_COMMON_IMAGE_PROPS \\\n\twidth \u003d \u003c160\u003e; \\\n\theight \u003d \u003c160\u003e; \\\n\tbits-per-pixel \u003d \u003c8\u003e; \\\n\tv4l2-pixel-format \u003d \"V4L2_PIX_FMT_GREY\";\n\n#define FPC1025_RAW_IMAGE_PROPS \\\n\tFPC1025_COMMON_IMAGE_PROPS \\\n\tframe-size \u003d \u003c26260\u003e;\n\n#define FPC1025_REAL_IMAGE_PROPS \\\n\tFPC1025_COMMON_IMAGE_PROPS \\\n\tframe-size \u003d \u003c25600\u003e;\n```",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "522936dec6703480dd9f553fb15ad94bbbb7d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
