@@ -287,6 +287,30 @@
       },
       "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ddb264d_d96c9bff",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T18:44:50Z",
+      "side": 1,
+      "message": "\u003e I do not believe we can have a locked entry in RW alone if that region changes in RO\n\nWe can if we only ever reboot (reset) into RO, since that is a power-on reset, right? We just can\u0027t do a `sysjump`.",
+      "parentUuid": "1a249f62_f19fae6c",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

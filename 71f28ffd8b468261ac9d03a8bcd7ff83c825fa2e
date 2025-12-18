@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630ec46f_1b914e12",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T18:44:50Z",
+      "side": 1,
+      "message": "Can\u0027t we just do this:\n\n\n\n```suggestion\n\t\t\t    ((cfg_byte \u0026 (PMP_R | PMP_W | PMP_X | PMP_L)) \u003d\u003d\n\t\t\t     expected_regions[i].perm) {\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "71f28ffd8b468261ac9d03a8bcd7ff83c825fa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
