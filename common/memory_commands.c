@@ -90,12 +90,12 @@ static int command_mem_dump(int argc, const char **argv)
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	address = strtoi(argv[1], &e, 0);
+	address = strtoull(argv[1], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM1;
 
 	if (argc >= 3)
-		num = strtoi(argv[2], &e, 0);
+		num = strtoull(argv[2], &e, 0);
 
 	for (i = 0; i < num; i++) {
 		show_val(address, i, fmt);
@@ -150,7 +150,7 @@ static int command_read_word(int argc, const char **argv)
 		}
 	}
 
-	address = (uint32_t *)(uintptr_t)strtoi(argv[1 + argc_offs], &e, 0);
+	address = (uint32_t *)strtoull(argv[1 + argc_offs], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM1 + argc_offs;
 
@@ -174,7 +174,7 @@ static int command_read_word(int argc, const char **argv)
 	}
 
 	/* Writing! */
-	value = strtoi(argv[2 + argc_offs], &e, 0);
+	value = strtoull(argv[2 + argc_offs], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM2 + argc_offs;
 
