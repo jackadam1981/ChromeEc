@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d9f911_5be1457a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:13:20Z",
+      "side": 1,
+      "message": "Let\u0027s run the rollback unit tests.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "b071036efc2d968d73be666e0373ed7cee41f7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d7f929_0bbca486",
+        "filename": "zephyr/shim/chip/egis/rollback.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:13:20Z",
+      "side": 1,
+      "message": "This should be in `zephyr/shim/core/riscv/`, since it\u0027s something supported by the RISC-V architecture, not just this specific chip.\n\nMight make sense to call it `mpu.c` to mirror the [cortex-m version](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/core/cortex-m/mpu.c;l\u003d144-159;drc\u003db088e3950aa69eca808f585917220ea0b576531c). Although this uses PMP, the function is called `mpu_lock_rollback`, so I think it makes sense. In a future CL, we may want to rename \"mpu_lock_rollback\" to something more generic that applies to both ARM\u0027s MPU and RISC-V\u0027s PMP.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 1
+      },
+      "revId": "b071036efc2d968d73be666e0373ed7cee41f7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
