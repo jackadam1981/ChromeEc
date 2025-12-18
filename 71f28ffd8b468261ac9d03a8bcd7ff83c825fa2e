@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2fb9276_588b5608",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T18:48:34Z",
+      "side": 1,
+      "message": "```suggestion\n * The following functions are defined in upstream Zephyr:\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "71f28ffd8b468261ac9d03a8bcd7ff83c825fa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074fd459_0802e5c8",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T18:48:34Z",
+      "side": 1,
+      "message": "I think you can remove this line since it\u0027s obvious if you look at the source code path you provided.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "71f28ffd8b468261ac9d03a8bcd7ff83c825fa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "630ec46f_1b914e12",
         "filename": "zephyr/test/hwtest/src/pmp_entries.c",
         "patchSetId": 10

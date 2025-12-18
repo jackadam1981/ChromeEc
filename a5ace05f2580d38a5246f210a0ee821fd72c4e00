@@ -197,6 +197,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8782e08_d3820ee0",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T18:48:34Z",
+      "side": 1,
+      "message": "Ok, it\u0027s probably worth modifying this comment to mention the difference between `pmp_decode_region` and the PMP entry values.\n\n```\n\t\t/* Decode the configured PMP region (start and end addresses) */\n```",
+      "parentUuid": "af759532_80d19d5c",
+      "range": {
+        "startLine": 85,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79f7bdf0_ebf9c26d",
         "filename": "zephyr/test/hwtest/src/pmp_entries.c",
         "patchSetId": 7
