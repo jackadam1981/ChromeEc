@@ -16,6 +16,23 @@
       "message": "Add Verified+1 if verified",
       "revId": "c19a21ae921b483d660693249e9dd65c60152aac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dca153_d7899e1a",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 15
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-18T07:59:25Z",
+      "side": 1,
+      "message": "Last note -  please add\n```\n\tselect HWINFO\n```",
+      "revId": "c19a21ae921b483d660693249e9dd65c60152aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
