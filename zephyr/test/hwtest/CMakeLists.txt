@@ -23,6 +23,7 @@ zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_DEBUG ${PLATFORM_EC}/zephyr
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_HW src/fpsensor_hw.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FPSENSOR_UTILS ${PLATFORM_EC}/zephyr/test/fingerprint/task/src/fpsensor_utils.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_FTRAPV src/ftrapv.c)
+zephyr_library_sources_ifdef(CONFIG_HW_TEST_IRQ_STACK_GUARD src/irq_stack.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_LIBC_PRINTF src/libc_printf.c)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_LIBCXX src/libcxx.cc)
 zephyr_library_sources_ifdef(CONFIG_HW_TEST_MALLOC src/malloc.c)
