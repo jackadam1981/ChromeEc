@@ -24,6 +24,8 @@ enum emul_pdc_feature_flag {
 	/** Enable support for SBU mux override commands, used on PDC-driven CCD
 	 *  DUTs */
 	EMUL_PDC_FEATURE_SBU_MUX_OVERRIDE,
+	/** Never update the effective RDO after processing SET_RDO */
+	EMUL_PDC_FEATURE_DONT_APPLY_RDO,
 	EMUL_PDC_FEATURE_COUNT,
 };
 
@@ -134,6 +136,9 @@ typedef int (*emul_pdc_set_identity_t)(const struct emul *target,
 				       uint32_t *vdos);
 typedef int (*emul_pdc_set_revision_t)(const struct emul *target,
 				       uint32_t rmdo);
+typedef int (*emul_pdc_set_current_cam_t)(const struct emul *target,
+					  uint32_t current_cam);
+typedef int (*emul_pdc_set_alert_t)(const struct emul *target, uint32_t ado);
 
 __subsystem struct emul_pdc_driver_api {
 	emul_pdc_set_response_delay_t set_response_delay;
@@ -184,6 +189,8 @@ __subsystem struct emul_pdc_driver_api {
 	emul_pdc_get_sys_power_state_t get_sys_power_state;
 	emul_pdc_set_identity_t set_identity;
 	emul_pdc_set_revision_t set_revision;
+	emul_pdc_set_current_cam_t set_current_cam;
+	emul_pdc_set_alert_t set_alert;
 };
 
 static inline int emul_pdc_set_ucsi_version(const struct emul *target,
@@ -975,6 +982,34 @@ static inline int emul_pdc_set_revision(const struct emul *target,
 
 	if (api->set_revision) {
 		return api->set_revision(target, rmdo);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_current_cam(const struct emul *target,
+					   const uint32_t current_cam)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->set_current_cam) {
+		return api->set_current_cam(target, current_cam);
+	}
+	return -ENOSYS;
+}
+
+static inline int emul_pdc_set_alert(const struct emul *target,
+				     const uint32_t ado)
+{
+	if (!target || !target->backend_api) {
+		return -ENOTSUP;
+	}
+
+	const struct emul_pdc_driver_api *api = target->backend_api;
+	if (api->set_alert) {
+		return api->set_alert(target, ado);
 	}
 	return -ENOSYS;
 }

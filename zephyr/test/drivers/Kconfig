@@ -196,6 +196,13 @@ config LINK_TEST_SUITE_RT1715
 	  Link rt1715 test suite for the TCPM driver related function
 	  tests.
 
+config LINK_TEST_SUITE_IT8XXX2
+	bool "Link and test the it8xxx2 tests"
+	help
+	  Link it8xxx2 test suite for the TCPM driver related function
+	  tests.
+
+
 config LINK_TEST_SUITE_RT1718S
 	bool "Link and test the rt1718s tests"
 	help
@@ -412,5 +419,10 @@ config LINK_TEST_SUITE_TABLETMODE_INTERRUPT
 	help
 	  Verifies a singleton driver which handles an external interrupt
 	  signaling to the EC when to switch in or out of tablet mode.
+
+config LINK_TEST_SUITE_WRITE_PROTECTION_CUSTOM
+	bool "Link and test the write protection tests"
+	help
+	  Verifies functionality of custom write protection
 
 source "Kconfig.zephyr"

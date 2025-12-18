@@ -10,6 +10,7 @@ def register_npcx9_project(
     zephyr_board,
     extra_kconfig_files=(),
     inherited_from=None,
+    extra_modules=(),
 ):
     """Register an npcx9 based variant of fatcat."""
     if inherited_from is None:
@@ -29,6 +30,7 @@ def register_npcx9_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        modules=["cmsis", "cmsis_6", "ec", *extra_modules],
         inherited_from=inherited_from,
     )
 
@@ -65,6 +67,7 @@ def register_it8xxx2_project(
 def register_realtek_project(
     project_name,
     extra_kconfig_files=(),
+    extra_modules=(),
 ):
     """Register an realtek_ec based variant of fatcat."""
     register_rtk_project(
@@ -81,6 +84,7 @@ def register_realtek_project(
             # Additional project-specific KConfig customization.
             *extra_kconfig_files,
         ],
+        modules=["cmsis", "cmsis_6", "ec", *extra_modules],
     )
 
 
@@ -111,6 +115,7 @@ register_npcx9_project(
 register_npcx9_project(
     project_name="ruby",
     zephyr_board="npcx9/npcx9m7fb",
+    extra_modules=["google-private"],
 )
 
 register_it8xxx2_project(
@@ -138,6 +143,7 @@ register_it8xxx2_project(
 register_realtek_project(
     project_name="lapis",
     extra_kconfig_files=[],
+    extra_modules=["google-private"],
 )
 
 register_it8xxx2_project(
@@ -145,7 +151,7 @@ register_it8xxx2_project(
     extra_kconfig_files=[
         here / "dsp_comms.conf",
     ],
-    extra_modules=["pigweed", "nanopb"],
+    extra_modules=["google-private", "pigweed", "nanopb"],
 )
 
 register_ish_project(
@@ -163,6 +169,20 @@ register_ish_project(
 )
 
 register_ish_project(
+    project_name="ruby-ish",
+    zephyr_board="intel_ish_5_8_0",
+    dts_overlays=[
+        here / "ruby-ish" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "dsp_comms.conf",
+        here / "ruby-ish" / "project.conf",
+    ],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    inherited_from=["fatcat"],
+)
+
+register_ish_project(
     project_name="moonstone-ish",
     zephyr_board="intel_ish_5_8_0",
     dts_overlays=[
@@ -174,6 +194,17 @@ register_ish_project(
     ],
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
     inherited_from=["fatcat"],
+)
+
+register_ish_project(
+    project_name="fatcat-ish-idle",
+    zephyr_board="intel_ish_5_8_0",
+    dts_overlays=[
+        here / "fatcat-ish-idle" / "project.overlay",
+    ],
+    kconfig_files=[
+        here / "fatcat-ish-idle" / "project.conf",
+    ],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses

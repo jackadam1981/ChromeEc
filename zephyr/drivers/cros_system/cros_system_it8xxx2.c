@@ -240,6 +240,8 @@ static int system_it8xxx2_hibernate_by_deep_doze(const struct device *dev,
 
 #define ELPMF1_WAKE_UP_CTRL3 0xF1
 #define XLPINS_BYPASS_EN BIT(2)
+#define FIRMWARE_CTRL_EN BIT(1)
+#define FIRMWARE_CTRL_OUTPUT_H BIT(0)
 
 #define ELPMF2_XLPIN_LATCH_STS 0xF2
 #define ELPMF3_XLPIN_RISING_EDGE_STS 0xF3
@@ -250,7 +252,10 @@ static int system_it8xxx2_hibernate_by_deep_doze(const struct device *dev,
 
 PINCTRL_DT_DEFINE(ELPM_NODE);
 
-#define XLPIN_ENTRY(child) [DT_REG_ADDR(child)] = DT_ENUM_IDX(child, polarity),
+#define XLPIN_POL_ENTRY(child) \
+	[DT_REG_ADDR(child)] = DT_ENUM_IDX(child, polarity),
+#define XLPIN_LATCH_ENTRY(child) \
+	[DT_REG_ADDR(child)] = DT_PROP_OR(child, latch_enable, false),
 
 enum elpm_xlpin_polarity {
 	ELPM_POL_DEFAULT = 0, /* default, disable xlpin */
@@ -263,8 +268,12 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 	const struct pinctrl_dev_config *elpm_pcfg =
 		PINCTRL_DT_DEV_CONFIG_GET(ELPM_NODE);
 	const enum elpm_xlpin_polarity xlpin_polarities[] = { DT_FOREACH_CHILD(
-		ELPM_NODE, XLPIN_ENTRY) };
-	uint8_t xlpins_enable = 0, polarity_ctrl_val = 0;
+		ELPM_NODE, XLPIN_POL_ENTRY) };
+	const bool xlpin_latches[] = { DT_FOREACH_CHILD(ELPM_NODE,
+							XLPIN_LATCH_ENTRY) };
+	uint8_t wake_up_ctrl3;
+	uint8_t xlpins_enable = 0, polarity_ctrl_val = 0,
+		xlpins_latch_enable = 0;
 	int ret;
 
 	/* apply xlpins pinctrl */
@@ -283,6 +292,9 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 			__fallthrough;
 		case ELPM_POL_LOW:
 			xlpins_enable |= BIT(i);
+			if (xlpin_latches[i]) {
+				xlpins_latch_enable |= BIT(i);
+			}
 			break;
 		default:
 			/* unknown polarity control setting */
@@ -295,11 +307,14 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 	}
 
 	/* write 1 to clear xlpin latch status before enabling them */
-	sys_write8(xlpins_enable, ELPM_BASE_ADDR + ELPMF2_XLPIN_LATCH_STS);
-	sys_write8(xlpins_enable, ELPM_BASE_ADDR + ELPMF8_XLPIN_LATCH_EN);
+	sys_write8(xlpins_latch_enable,
+		   ELPM_BASE_ADDR + ELPMF2_XLPIN_LATCH_STS);
+	sys_write8(xlpins_latch_enable, ELPM_BASE_ADDR + ELPMF8_XLPIN_LATCH_EN);
 
 	/* enable bypass mode (non-debounced) */
-	sys_write8(XLPINS_BYPASS_EN, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+	wake_up_ctrl3 = sys_read8(ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
+	wake_up_ctrl3 |= XLPINS_BYPASS_EN;
+	sys_write8(wake_up_ctrl3, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
 
 	/* clear xlpins status before enabling them */
 	sys_write8(xlpins_enable,
@@ -307,14 +322,17 @@ static int system_it8xxx2_hibernate_by_elpm(void)
 	sys_write8(xlpins_enable,
 		   ELPM_BASE_ADDR + ELPMF4_XLPIN_FALLING_EDGE_STS);
 
-	/* configure xlpins polarity and enable them. This setup allows the EC
-	 * chip's main power(VSTBY) to turn off (entering hibernate mode) and
-	 * the chip is only woken upon the assertion of one of configured XLPIN
-	 * wake-up pins.
-	 */
+	/* configure xlpins polarity and enable them */
 	sys_write8(polarity_ctrl_val,
 		   ELPM_BASE_ADDR + ELPMF7_XLPIN_POLARITY_CTRL);
 	sys_write8(xlpins_enable, ELPM_BASE_ADDR + ELPMF5_XLPIN_INPUT_ENABLE);
+
+	/* Disable firmware control mode so that the EC chip’s main
+	 * power (VSTBY) turns off, entering hibernate mode. The chip is only
+	 * woken upon the assertion of one of configured XLPIN wake-up pins.
+	 */
+	wake_up_ctrl3 &= ~(FIRMWARE_CTRL_EN | FIRMWARE_CTRL_OUTPUT_H);
+	sys_write8(wake_up_ctrl3, ELPM_BASE_ADDR + ELPMF1_WAKE_UP_CTRL3);
 
 	return 0;
 }

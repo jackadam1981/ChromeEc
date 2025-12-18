@@ -12,6 +12,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "fpsensor_driver.h"
+#include "fpsensor_frame_size.h"
 #include "fpsensor_matcher.h"
 #include "fpsensor_state_driver.h"
 #include "link_defs.h"
@@ -23,6 +24,22 @@
 #include <array>
 #include <optional>
 #include <span>
+
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/linker/devicetree_regions.h>
+
+#if DT_NODE_EXISTS(DT_CHOSEN(cros_fp_fingerprint_memory_frame))
+#define FP_FRAME_SECTION                                       \
+	__attribute__((__section__(LINKER_DT_NODE_REGION_NAME( \
+		DT_CHOSEN(cros_fp_fingerprint_memory_frame)))))
+#endif
+
+#if DT_NODE_EXISTS(DT_CHOSEN(cros_fp_fingerprint_memory_template))
+#define FP_TEMPLATE_SECTION                                    \
+	__attribute__((__section__(LINKER_DT_NODE_REGION_NAME( \
+		DT_CHOSEN(cros_fp_fingerprint_memory_template)))))
+#endif
+#endif /* CONFIG_ZEPHYR */
 
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
@@ -77,6 +94,12 @@ struct fpsensor_context {
 	uint32_t fp_encryption_status;
 	atomic_t fp_events;
 	uint32_t sensor_mode;
+	/** Type of the image captured from the fingerprint sensor in the
+	 * most recent successful capture.
+	 */
+	enum fp_capture_type current_capture_type;
+	/** Map of the capture type to frame size. */
+	FpFrameSizeCache fp_frame_size_cache;
 	/** Part of the IKM used to derive encryption keys received from the
 	 * TPM.
 	 */
