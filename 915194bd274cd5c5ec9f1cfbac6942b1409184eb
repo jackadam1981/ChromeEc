@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a94424e_32ddb7d6",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-18T00:45:57Z",
+      "side": 1,
+      "message": "Yes I agree, I actually was thinking of proposing this change but I thought it might delay this patch since we\u0027ll also have to go through the existing policies and update them.\n\nBut you\u0027re right, we should get this cleaned up properly.",
+      "parentUuid": "c652b482_ce980639",
+      "range": {
+        "startLine": 201,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "915194bd274cd5c5ec9f1cfbac6942b1409184eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d95aafc_17f7ef34",
         "filename": "zephyr/shim/src/led_driver/led.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-17T18:22:27Z",
       "side": 1,
       "message": "You need a loop similar to [1] to handle consecutive colors with `period-ms \u003d \u003c0\u003e`. If you want to limit this to no more than one color with `period-ms \u003d \u003c0\u003e` , you will need to document this restriction and add a build time check. IMO, implementing a loop is more general and more simple than a build time check.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7260419/1/zephyr/shim/src/led_driver/led.c#201",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 4
+      },
+      "revId": "915194bd274cd5c5ec9f1cfbac6942b1409184eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34f3a1d_f4d7cef5",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2025-12-18T00:45:57Z",
+      "side": 1,
+      "message": "I actually don\u0027t think we want a loop for consecutive colors with `period-ms \u003d \u003c0\u003e`. There\u0027s no physical reality that actually creates a need for consecutive instantaneous transitions, you\u0027d just want a single step to the end color.\n\nWhile a loop is simpler, I think disallowing consecutive zero-duration colors is more correct.",
+      "parentUuid": "0d95aafc_17f7ef34",
       "range": {
         "startLine": 320,
         "startChar": 0,
