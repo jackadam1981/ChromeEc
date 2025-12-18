@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdb070b_f1201558",
+        "filename": "zephyr/program/bluey/src/adsp_i2c_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-18T17:33:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "32083cc0_fedc808a",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "c88bf1abe37553cc86d64b34907c7dbf148ebcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10b65e8f_e8eebffd",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-15T23:21:08Z",
       "side": 1,
       "message": "What happen if the callbacks are NULL? Is implementing some dummy callbacks better?",
+      "range": {
+        "startLine": 25,
+        "startChar": 14,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "c88bf1abe37553cc86d64b34907c7dbf148ebcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e3d30c_19c69667",
+        "filename": "zephyr/program/bluey/src/adsp_i2c_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-18T17:33:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "10b65e8f_e8eebffd",
       "range": {
         "startLine": 25,
         "startChar": 14,
