@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d8d651_4dd3aaf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T04:46:58Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\n\nThese are the logs when running `pmp_entries_rw`:\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE pmp_entries\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_pmp_entries\n[4.858200] \u003cinf\u003e pmp_entries: Running the test in RW.\n PASS - test_pmp_entries in 0.006 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE pmp_entries succeeded\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE PASS - 100.00% [pmp_entries]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.006 seconds\n - PASS - [pmp_entries.test_pmp_entries] duration \u003d 0.006 seconds\n\n------ TESTSUITE SUMMARY END ------\n```\n\nThese are the logs when running `pmp_entries_ro`:\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE pmp_entries\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_pmp_entries\n[12.314400] \u003cinf\u003e pmp_entries: Running the test in RO.\n PASS - test_pmp_entries in 0.006 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE pmp_entries succeeded\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE PASS - 100.00% [pmp_entries]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.006 seconds\n - PASS - [pmp_entries.test_pmp_entries] duration \u003d 0.006 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION SUCCESSFUL\n```",
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
