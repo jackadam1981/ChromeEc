@@ -103,6 +103,12 @@ tests:
     - CONFIG_HW_TEST_FTRAPV=y
     extra_conf_files:
     - prj_hw_tests.conf
+  irq_stack:
+    extra_configs:
+    - CONFIG_HW_TEST_IRQ_STACK_GUARD=y
+    - CONFIG_ZTEST_FATAL_HOOK=y
+    extra_conf_files:
+    - prj_hw_tests.conf
   libc_printf:
     extra_configs:
     - CONFIG_HW_TEST_LIBC_PRINTF=y
