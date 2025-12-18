@@ -383,6 +383,30 @@
       },
       "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e74d41_11dbe8d6",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T22:52:22Z",
+      "side": 1,
+      "message": "\u003e The current zephyr upstream z_riscv_pmp_init can allow either locked global entries or unlocked global entries configured by CONFIG_PMP_NO_LOCK_GLOBAL. If we still need to sysjump from RO to RW, our best option is to use the CONFIG_PMP_NO_LOCK_GLOBAL.\n\nYou could set `CONFIG_PMP_NO_LOCK_GLOBAL` and then lock them ourselves, right?",
+      "parentUuid": "1f638684_de519a70",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
