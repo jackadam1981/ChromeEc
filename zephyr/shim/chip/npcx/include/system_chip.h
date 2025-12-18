@@ -73,4 +73,9 @@ extern unsigned int __flash_lplfw_start;
 extern unsigned int __flash_lplfw_end;
 #endif
 
+#if defined(CONFIG_PLATFORM_EC_HIBERNATE_PSL)
+/* Report the hibernate wake source flag */
+int system_get_hibernate_wake_source(void);
+#endif
+
 #endif // __CROS_EC_SYSTEM_CHIP_H_
