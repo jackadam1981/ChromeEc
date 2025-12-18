@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f966acc_5d9af5ec",
+        "filename": "zephyr/program/fpmcu/bloonchipper/bloonchipper.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:36:31Z",
+      "side": 1,
+      "message": "To reduce duplication, you could extract the common properties into a base macro, and then define the `RAW` and `REAL` image properties on top of it. This would also make the difference between the two more explicit.\n\nFor example:\n\n```c\n#define FPC1025_BASE_IMAGE_PROPS \\\n\twidth \u003d \u003c160\u003e; \\\n\theight \u003d \u003c160\u003e; \\\n\tbits-per-pixel \u003d \u003c8\u003e; \\\n\tv4l2-pixel-format \u003d \"V4L2_PIX_FMT_GREY\";\n\n#define FPC1025_RAW_IMAGE_PROPS \\\n\tFPC1025_BASE_IMAGE_PROPS \\\n\t/*\n\t * Sensor raw image size\n\t *\n\t * Value from fpc_bep_image_get_buffer_size(): (160*160)+660\n\t */ \\\n\tframe-size \u003d \u003c26260\u003e;\n\n#define FPC1025_REAL_IMAGE_PROPS \\\n\tFPC1025_BASE_IMAGE_PROPS \\\n\t/* Sensor real image size: (160*160) */ \\\n\tframe-size \u003d \u003c25600\u003e;\n```\n\nThis same suggestion applies to `helipilot.dts` as well.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "d19215cfab1fe7279b8d405035da0a4608ab4536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2a0adb_c67c82e2",
+        "filename": "zephyr/program/fpmcu/helipilot/helipilot.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:36:31Z",
+      "side": 1,
+      "message": "nit: Remove this extra blank line",
+      "revId": "d19215cfab1fe7279b8d405035da0a4608ab4536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
