@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d2600bb_f87f5fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T17:41:44Z",
+      "side": 1,
+      "message": "It\u0027s also good to verify that the test fails if the configuration is wrong to make sure the test fails when things are broken. If you change `expected_regions` to have a wrong value, does the test fail?",
+      "parentUuid": "62d8d651_4dd3aaf5",
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f773120a_a205fd9a",
         "filename": "zephyr/test/hwtest/src/pmp_entries.c",
         "patchSetId": 7
