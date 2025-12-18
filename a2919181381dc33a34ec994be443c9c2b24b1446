@@ -22,6 +22,30 @@
       },
       "revId": "a2919181381dc33a34ec994be443c9c2b24b1446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306bc019_8b013eb9",
+        "filename": "zephyr/program/skywalker/padme/src/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1501901
+      },
+      "writtenOn": "2025-12-18T04:46:44Z",
+      "side": 1,
+      "message": "However, we need to re-enable cps8601 when we return from S3 to S0.\n\nThis may require us to add an additional hook function.",
+      "parentUuid": "105481e0_49b281c1",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "a2919181381dc33a34ec994be443c9c2b24b1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
