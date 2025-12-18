@@ -729,6 +729,7 @@ class AllTests:
                     GWENDOLIN,
                 ],
             ),
+            TestConfig(test_name="pmp_irq_stack"),
             TestConfig(test_name="printf"),
             TestConfig(test_name="queue"),
             TestConfig(

@@ -148,6 +148,11 @@ tests:
     - CONFIG_HW_TEST_PMP_ENTRIES=y
     extra_conf_files:
     - prj_hw_tests.conf
+  pmp_irq_stack:
+    extra_configs:
+    - CONFIG_HW_TEST_PMP_IRQ_STACK_GUARd=y
+    extra_conf_files:
+    - prj_hw_tests.conf
   printf:
     extra_configs:
     - CONFIG_HW_TEST_PRINTF=y
