@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d93845_53c094ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T00:12:02Z",
+      "side": 1,
+      "message": "How did it pass here, but [fail for the other CL](https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/7271327/comment/7d945d32_fc52eaa8/)? Both changes are tested together, right?",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "ee55a5b94125bc7182c67cde1e8274025b74fb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
