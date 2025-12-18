@@ -22,6 +22,30 @@
       },
       "revId": "068556f1e4d0c0152f68280d090be710162d029c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1520f8c3_cbb3c455",
+        "filename": "zephyr/program/bluey/src/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-18T16:39:45Z",
+      "side": 1,
+      "message": "Acknowledged, moved this to crrev/c/7274758",
+      "parentUuid": "d4df21ec_8737bbc1",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "068556f1e4d0c0152f68280d090be710162d029c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
