@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3781e243_33519827",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:47:04Z",
+      "side": 1,
+      "message": "Let\u0027s add the test lines from https://crrev.com/c/7272184",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "33736c9e732f1c5c526c95a218a498e6a8079df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12042eab_a1627c49",
+        "filename": "zephyr/program/fpmcu/et171/prj.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:47:04Z",
+      "side": 1,
+      "message": "This line probably isn\u0027t needed, since the comment already talks about PMP and the CONFIG has PMP in the name.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "33736c9e732f1c5c526c95a218a498e6a8079df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
