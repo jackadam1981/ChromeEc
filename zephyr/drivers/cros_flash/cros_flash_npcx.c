@@ -71,6 +71,11 @@ static int cros_flash_npcx_get_status_reg(const struct device *dev,
 		.count = 2,
 	};
 
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
+
 	if (data == 0)
 		return -EINVAL;
 
@@ -139,6 +144,11 @@ static int cros_flash_npcx_set_write_enable(const struct device *dev)
 		.count = 1,
 	};
 
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
+
 	/* Wait for previous operation to complete */
 	ret = cros_flash_npcx_wait_ready(dev);
 	if (ret != 0)
@@ -176,6 +186,11 @@ static int cros_flash_npcx_set_status_reg(const struct device *dev,
 		.count = 2,
 	};
 
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
+
 	if (data == 0) {
 		return -EINVAL;
 	}
@@ -196,6 +211,11 @@ static int cros_flash_npcx_write_protection_set(const struct device *dev,
 {
 	int ret = 0;
 
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
+
 	/* Write protection can be cleared only by core domain reset */
 	if (!enable) {
 		LOG_ERR("WP can be disabled only via core domain reset ");
@@ -214,6 +234,11 @@ static int cros_flash_npcx_write_protection_is_set(const struct device *dev)
 static int cros_flash_npcx_uma_lock(const struct device *dev, bool enable)
 {
 	struct cros_flash_npcx_data *data = DRV_DATA(dev);
+
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
 
 	if (enable) {
 		spi_cfg.operation |= SPI_LOCK_ON;
@@ -431,6 +456,11 @@ static int cros_flash_npcx_write(const struct device *dev, int offset, int size,
 	int ret = 0;
 	struct cros_flash_npcx_data *data = DRV_DATA(dev);
 
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
+
 	/* check protection */
 	if (all_protected)
 		return EC_ERROR_ACCESS_DENIED;
@@ -467,6 +497,11 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 {
 	int ret = 0;
 	struct cros_flash_npcx_data *data = DRV_DATA(dev);
+
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
 
 	/* check protection */
 	if (all_protected)
@@ -598,6 +633,11 @@ static int cros_flash_npcx_get_jedec_id(const struct device *dev,
 	int ret;
 	uint8_t jedec_id[3];
 	struct cros_flash_npcx_data *data = DRV_DATA(dev);
+
+	if (!device_is_ready(dev)) {
+		LOG_ERR("device %s not ready", dev->name);
+		return -ENODEV;
+	}
 
 	/* Lock physical flash operations */
 	crec_flash_lock_mapped_storage(1);
