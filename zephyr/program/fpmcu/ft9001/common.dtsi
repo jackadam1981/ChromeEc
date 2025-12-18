@@ -128,7 +128,7 @@
 	fp_sensor: ft98xx@0 {
 		compatible = "ft,ft98xx";
 		reg = <0>;
-		spi-max-frequency = <6000000>;
+		spi-max-frequency = <4000000>;
 
 		irq-gpios = <&eport5 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		reset-gpios = <&eport5 2 GPIO_ACTIVE_LOW>;
