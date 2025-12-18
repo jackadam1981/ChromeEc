@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105481e0_49b281c1",
+        "filename": "zephyr/program/skywalker/padme/src/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-12-18T02:55:47Z",
+      "side": 1,
+      "message": "spec: 2. In S3 mode, the CPS8601 should be powered off when the stylus is\nfully charged.\n\nIn S3 mode, should pchg_policy be called when the battery percentage goes from 100\u003c to \u003e\u003d100?",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "a2919181381dc33a34ec994be443c9c2b24b1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
