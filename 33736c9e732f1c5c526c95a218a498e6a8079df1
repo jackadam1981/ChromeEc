@@ -69,6 +69,30 @@
       },
       "revId": "33736c9e732f1c5c526c95a218a498e6a8079df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52326116_afdbe616",
+        "filename": "zephyr/program/fpmcu/et171/prj.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:50:00Z",
+      "side": 1,
+      "message": "Ok, I see. In that case let\u0027s put a space to be consistent with the rest of the comments in this file:\n\n```suggestion\n# RISCV PMP entry configurations\n```",
+      "parentUuid": "97d887c3_b6ffefe2",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "33736c9e732f1c5c526c95a218a498e6a8079df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
