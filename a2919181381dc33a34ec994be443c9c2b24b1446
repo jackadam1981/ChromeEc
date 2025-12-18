@@ -46,6 +46,30 @@
       },
       "revId": "a2919181381dc33a34ec994be443c9c2b24b1446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a45e14_bc9c2c6a",
+        "filename": "zephyr/program/skywalker/padme/src/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2025-12-18T09:54:26Z",
+      "side": 1,
+      "message": "Thank you for the offline explanation. The thing I missed was the line `hook_call_deferred(\u0026pchg_policy_data, PCHG_POLICY_DELAY);`, which polls the battery percent every 1000ms.",
+      "parentUuid": "306bc019_8b013eb9",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "a2919181381dc33a34ec994be443c9c2b24b1446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
