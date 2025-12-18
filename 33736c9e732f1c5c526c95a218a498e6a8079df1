@@ -45,6 +45,30 @@
       },
       "revId": "33736c9e732f1c5c526c95a218a498e6a8079df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d887c3_b6ffefe2",
+        "filename": "zephyr/program/fpmcu/et171/prj.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T23:48:19Z",
+      "side": 1,
+      "message": "I wanted to put a title for the whole block. In the next CLs, I am adding more configs for PMP entries. Please let me know if you still believe this is unnecessary.",
+      "parentUuid": "12042eab_a1627c49",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "33736c9e732f1c5c526c95a218a498e6a8079df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
