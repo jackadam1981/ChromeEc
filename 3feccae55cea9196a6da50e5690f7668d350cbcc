@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8366d29_95bc7f84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T23:06:17Z",
+      "side": 1,
+      "message": "Looks like `z_interrupt_stacks` might be the start of the IRQ stack. In that case you should be able to write a test:\n\n```\nextern uint8_t z_interrupt_stacks[];\n\nvoid test_trigger_irq_stack_fault(void)\n{\n\tvolatile uint8_t *address \u003d (uint8_t *)z_interrupt_stacks;\n\n\tprintk(\"Attempting to write to IRQ stack guard at address: %p\\n\", address);\n\n\t*address \u003d 0x00;\n    \n        // expect crash\n}\n```",
+      "parentUuid": "db1046fd_d7c30590",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "3feccae55cea9196a6da50e5690f7668d350cbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96d03d63_6ed9306e",
         "filename": "common/system.c",
         "patchSetId": 5
