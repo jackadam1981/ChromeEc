@@ -190,7 +190,7 @@ static int command_read_word(int argc, const char **argv)
 		*((uint16_t *)address) = (uint16_t)value;
 		break;
 	default:
-		ccprintf("write 0x%p = 0x%02x\n", address, value);
+		ccprintf("write 0x%p = 0x%08x\n", address, value);
 		cflush();
 		*address = value;
 		break;
