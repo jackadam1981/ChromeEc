@@ -2442,6 +2442,12 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	/* Only the fixed 5V PDO at index 0 has the UP and DRP bits set */
 	uint32_t vsafe_5v_pdo = port->snk_policy.src.pdos[0];
 
+	if (max_mw > CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW) {
+		max_ma = CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW /
+			 (max_mv / 1000);
+		max_mw = max_ma * max_mv / 1000;
+	}
+
 	LOG_INF("C%d: Available charging (%sconstrained)",
 		config->connector_num,
 		(vsafe_5v_pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
