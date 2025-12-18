@@ -163,6 +163,7 @@ def build(opts):
         "out=build/mp_build",
         "BOARD=cr50",
         "BRANCH=MP",
+        "SPACE_BUFFER=2048", # Support updating from 0.3.22
         "RW_SIGNER_EXTRAS=' --override-keyid'",
         "all",
         "dis",
@@ -177,6 +178,7 @@ def build(opts):
         "out=build/prepvt_build",
         "BOARD=cr50",
         "BRANCH=PREPVT",
+        "SPACE_BUFFER=2048", # Support updating from 0.3.22
         "RW_SIGNER_EXTRAS=' --override-keyid'",
         "all",
         "dis",
