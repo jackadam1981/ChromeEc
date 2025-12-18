@@ -407,6 +407,30 @@
       },
       "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5935e0_e5e0b7a2",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-18T23:29:20Z",
+      "side": 1,
+      "message": "it is possible. We have to write those functions ourselves to change the lock bit. We can use the macros `csr_read` and `csr_write` to manipulate the PMP configuration registers.",
+      "parentUuid": "23e74d41_11dbe8d6",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "a5ace05f2580d38a5246f210a0ee821fd72c4e00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
