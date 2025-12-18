@@ -178,6 +178,7 @@ static const struct ap_ro_check *p_chk =
 static enum ap_ro_status apro_result = AP_RO_NOT_RUN;
 static timestamp_t ignore_device_rst_deadline;
 
+#ifdef CONFIG_AP_RO_VERIFICATION_VERIFY_CHECKSUM
 /*
  * Verify the saved hash has a supported type, correct number of ranges, and
  * a valid checksum. Return EC_ERROR_CRC if any of these checks fail.
@@ -213,6 +214,7 @@ static int verify_ap_ro_check_space(void)
 
 	return EC_SUCCESS;
 }
+#endif
 
 /*
  * ap_ro_check_unsupported: Returns non-zero value if the AP RO hash is not
@@ -228,16 +230,18 @@ static int verify_ap_ro_check_space(void)
 static enum ap_ro_check_vc_errors ap_ro_check_unsupported(int add_flash_event)
 {
 	/* Validate the saved hash contents */
-	if (p_chk->header.num_ranges == (uint16_t)~0) {
-		CPRINTS("%s: not programmed", __func__);
+	if (p_chk->header.num_ranges == (uint16_t)~0)
 		return ARCVE_NOT_PROGRAMMED;
-	}
 
-	/* Are the v1 contents intact? */
-	if (verify_ap_ro_check_space() != EC_SUCCESS) {
-		CPRINTS("%s: read failed", __func__);
+#ifdef CONFIG_AP_RO_VERIFICATION_VERIFY_CHECKSUM
+	if (verify_ap_ro_check_space() != EC_SUCCESS)
 		return ARCVE_FLASH_READ_FAILED; /* No verification possible. */
-	}
+#else
+	/* Just validate the header version */
+	if (p_chk->header.type != AP_RO_HASH_TYPE_FACTORY)
+		return ARCVE_FLASH_READ_FAILED; /* Just check the header type */
+#endif
+
 	return ARCVE_DISABLED;
 }
 
@@ -514,17 +518,15 @@ static enum vendor_cmd_rc vc_get_ap_ro_hash(enum vendor_cmd_cc code,
 	if (input_size)
 		return VENDOR_RC_BOGUS_ARGS;
 
+
 	rv = ap_ro_check_unsupported(false);
-	if (rv != ARCVE_OK) {
-		if (ARCVE_DISABLED) {
-			CPRINTS("%s: hash ok", __func__);
-			CPRINTS("%s: disabled", __func__);
-		} else {
-			*response_size = 1;
-			*response = rv;
-			return VENDOR_RC_INTERNAL_ERROR;
-		}
+	if (rv != ARCVE_OK && rv != ARCVE_DISABLED &&
+		rv != ARCVE_NOT_PROGRAMMED) {
+		*response_size = 1;
+		*response = rv;
+		return VENDOR_RC_INTERNAL_ERROR;
 	}
+
 	*response_size = SHA256_DIGEST_SIZE;
 	memcpy(buf, p_chk->payload.digest, *response_size);
 
