@@ -8,6 +8,7 @@
 #include "driver/tcpm/tcpm.h"
 #include "emul/tcpc/emul_nct38xx.h"
 #include "test/drivers/utils.h"
+#include "zephyr/shim/include/usbc/tcpc_nct38xx.h"
 
 #include <zephyr/drivers/emul.h>
 #include <zephyr/ztest.h>
@@ -129,6 +130,7 @@ static void validate_init(void)
 {
 	int rv;
 	uint16_t val;
+	const struct device *dev;
 
 	/* Validate REG_CTRL_OUT_EN flags.*/
 	rv = nct38xx_emul_test_get_reg(NCT38XX_REG_CTRL_OUT_EN, &val);
@@ -164,6 +166,10 @@ static void validate_init(void)
 	zassert_true(val & (NCT38XX_REG_VBC_FAULT_CTL_VC_OCP_EN |
 			    NCT38XX_REG_VBC_FAULT_CTL_VC_SCP_EN |
 			    NCT38XX_REG_VBC_FAULT_CTL_FAULT_VC_OFF));
+
+	dev = nct38xx_get_gpio_device_from_port(NCT38XX_PORT);
+	zassert_not_null(dev);
+	zassert_true(device_is_ready(dev));
 }
 
 /* Tests nct38xx_tcpm_init from a non-dead battery. */
