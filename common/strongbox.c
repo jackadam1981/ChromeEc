@@ -1057,7 +1057,7 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	uint32_t hw_tag_words, sw_tag_words, tag_words, key_blob_size;
 	enum dcrypto_result result;
 	enum strongbox_error err;
-	uint32_t digest_flags, purpose_flags;
+	uint32_t digest_flags, purpose_flags, key_alg, key_size;
 
 	/* Blobs have a fixed elements in structure.
 	 * see `process_gen_import_tags`
@@ -1100,6 +1100,11 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	digest_flags = params->attrs.digest_flags;
 	params->attrs.digest_flags = 0;
 	purpose_flags = params->attrs.purpose_flags;
+	key_alg = params->attrs.algorithm;
+	key_size = params->attrs.key_size;
+	params->attrs.algorithm = 0;
+	params->attrs.key_size = 0;
+
 	/* Process additional parameters to get application id and data */
 	err = parse_params(param_tags, param_tags_words, params);
 	if (err != SB_OK)
@@ -1112,6 +1117,13 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 		params->attrs.digest_flags &= digest_flags;
 	else
 		params->attrs.digest_flags = digest_flags;
+
+	if (params->attrs.algorithm && params->attrs.algorithm != key_alg)
+		return SBERR_IncompatibleAlgorithm;
+	if (params->attrs.key_size && params->attrs.key_size != key_size)
+		return SBERR_IncompatibleAlgorithm;
+	params->attrs.algorithm = key_alg;
+	params->attrs.key_size = key_size;
 
 	/* Purpose is HW enforced, don't update it. */
 	params->attrs.purpose_flags = purpose_flags;
