@@ -116,6 +116,30 @@
       },
       "revId": "c88bf1abe37553cc86d64b34907c7dbf148ebcf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47734850_dbbd261c",
+        "filename": "zephyr/program/bluey/src/adsp_i2c_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-18T18:04:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "47f87892_85d9d325",
+      "range": {
+        "startLine": 61,
+        "startChar": 50,
+        "endLine": 61,
+        "endChar": 67
+      },
+      "revId": "c88bf1abe37553cc86d64b34907c7dbf148ebcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
