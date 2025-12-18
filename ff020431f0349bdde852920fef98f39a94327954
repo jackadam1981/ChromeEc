@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb85762_33a13c66",
+        "filename": "zephyr/program/ocelot/ocicat/src/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2025-12-18T04:44:19Z",
+      "side": 1,
+      "message": "Assume you could use cros_cbi_ufsc_check_match(CBI_UFSC_VALUE_ID(DT_NODELABEL(ufsc_kb_backlight_*))) directly in board_vavaldi_keybd_idx without the additional has_backlight variable ?",
+      "revId": "ff020431f0349bdde852920fef98f39a94327954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
