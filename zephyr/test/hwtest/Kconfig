@@ -150,6 +150,14 @@ config HW_TEST_PMP_ENTRIES
 	help
 	  The test verifies the pmp entries in both RO and RW.
 
+config HW_TEST_PMP_IRQ_STACK_GUARD
+	bool "pmp IRQ stacj guard test"
+	select ZTEST
+	depends on RISCV_PMP
+	help
+	  The test verifies dereference an address protected by
+	  IRQ stack crashes.
+
 config HW_TEST_PRINTF
 	bool "printf test"
 	select ZTEST
