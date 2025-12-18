@@ -2297,6 +2297,12 @@ static void pdc_snk_seed_charge_manager(struct pdc_port_t *port, uint32_t pdo)
 	max_mv = PDO_FIXED_VOLTAGE(pdo);
 	max_mw = max_ma * max_mv / 1000;
 
+	if (max_mw > CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW) {
+		max_ma = CONFIG_PLATFORM_EC_USB_PD_MAX_POWER_MW /
+			 (max_mv / 1000);
+		max_mw = max_ma * max_mv / 1000;
+	}
+
 	LOG_INF("C%d: Available charging (%sconstrained)",
 		config->connector_num,
 		(pdo & PDO_FIXED_GET_UNCONSTRAINED_PWR) ? "un" : "");
