@@ -165,6 +165,12 @@ def locate_from_directory(directory):
         modpath = (directory / name).resolve()
         if (modpath / "zephyr" / "module.yml").is_file():
             result[name] = modpath
+        modpath = (directory / "hal" / name).resolve()
+        if (modpath / "zephyr" / "module.yml").is_file():
+            result[name] = modpath
+        modpath = (directory / "lib" / name).resolve()
+        if (modpath / "zephyr" / "module.yml").is_file():
+            result[name] = modpath
 
     return result
 
