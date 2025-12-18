@@ -729,6 +729,16 @@ class AllTests:
                     GWENDOLIN,
                 ],
             ),
+            TestConfig(
+                test_name="pmp_irq_stack",
+                exclude_boards=[
+                    BLOONCHIPPER,
+                    DARTMONKEY,
+                    HELIPILOT,
+                    BUCCANEER,
+                    GWENDOLIN,
+                ],
+            ),
             TestConfig(test_name="printf"),
             TestConfig(test_name="queue"),
             TestConfig(
