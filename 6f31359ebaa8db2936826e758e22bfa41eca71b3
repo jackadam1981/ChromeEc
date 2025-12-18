@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21ee5b5_3d3c62a4",
+        "filename": "zephyr/test/hwtest/src/pmp_entries.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-18T18:52:17Z",
+      "side": 1,
+      "message": "Do these have different values when running RO and RW: `__rom_region_start` and `__rom_region_size`?\n\n(I thought these were constants generated at compile time, but something must update them as part of the jump if they are changing at runtime when switching between RO and RW.)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "6f31359ebaa8db2936826e758e22bfa41eca71b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
