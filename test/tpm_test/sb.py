@@ -511,6 +511,8 @@ def sb_test(tpm):
     )
     print(f"Key blob[{len(key_blob)}]={key_blob.hex()}")
     print(f"Key cert[{len(cert)}]={cert.hex()}")
+    with open("cert_self.der", "wb") as f:
+        f.write(cert)
 
     # Test with attestation key
     key_blob, key_tags, cert = sb_GenerateKey(
