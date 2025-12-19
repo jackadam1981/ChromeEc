@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea5808b_2ae780b0",
+        "filename": "zephyr/program/bluey/src/adsp_i2c_mode.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-19T08:11:31Z",
+      "side": 1,
+      "message": "FYI, I switched to the dev_config to avoid errors while reconfiguring. The dev_config is the default config for this I2C controller.",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "df3ce34236f7ee231a7d7754946cefc936515b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
