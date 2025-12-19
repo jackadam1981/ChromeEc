@@ -51,6 +51,42 @@
       "parentUuid": "ad02c60c_83a592ae",
       "revId": "e55beb17708b4fedf3ee0e8f39c79408239c3864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27cf8d2e_9cb053dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-12-19T17:06:02Z",
+      "side": 1,
+      "message": "We\u0027ve ended the delay window; we have agreement with Intel hardware to proceed with this release.",
+      "parentUuid": "bf0a4de4_fdde2688",
+      "revId": "e55beb17708b4fedf3ee0e8f39c79408239c3864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c2bc29_d2004fac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2025-12-19T17:06:02Z",
+      "side": 1,
+      "message": "Google rework for SKU3 is complete; Intel has agreed to the release.  Please proceed.",
+      "parentUuid": "f53d0c71_feeaf43c",
+      "revId": "e55beb17708b4fedf3ee0e8f39c79408239c3864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
