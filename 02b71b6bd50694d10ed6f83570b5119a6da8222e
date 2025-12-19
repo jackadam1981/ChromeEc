@@ -142,6 +142,30 @@
       },
       "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd00ad92_3ae7471c",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T17:43:56Z",
+      "side": 1,
+      "message": "I already upstreamed the null_pointer test\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/null-pointer/\n\nthe stack tests are also upstreamed:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/isr-stack-guard/\n\nHowever, they use a filter to [allow](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/isr-stack-guard/testcase.yaml;l\u003d2#:~:text\u003d1-,2,-3)\n\n```\n  platform_allow:\n    - qemu_riscv32\n    - qemu_riscv32e\n    - qemu_riscv64\n    ```\n \nWith the platform_allow, I do not believe we can run them on a different platform. But it might be possible to remove the platform allow.\n do you still want to write our internal test?",
+      "parentUuid": "b757b8ae_5e32a95e",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
