@@ -16,6 +16,29 @@
       "message": "this is the matching Ti50 patch https://chrome-internal-review.googlesource.com/c/ti50/common/ti50/+/8865607/1\n\nI was not able to run the tast test requested by the presubmit check, but not due to this patch changes, there seems to be some setup problem",
       "revId": "cdd9795c6fdbd43ad00620c32f8f00cc573a8400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde9bd79_a9a4bc1d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2025-12-19T19:58:35Z",
+      "side": 1,
+      "message": "nit: do we actually need a short opt for this? We\u0027re running out of them. I don\u0027t think download_owner_config is common. I\u0027d rather leave one of the remaining short opts for a common command.\n\nCan you use 4 or make --owner_config take in a get/set arg",
+      "range": {
+        "startLine": 612,
+        "startChar": 50,
+        "endLine": 612,
+        "endChar": 51
+      },
+      "revId": "cdd9795c6fdbd43ad00620c32f8f00cc573a8400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
