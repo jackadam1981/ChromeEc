@@ -22,6 +22,30 @@
       },
       "revId": "96a24e13ced9df23c550a94483230e17c57d3b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110333f6_92c2d77b",
+        "filename": "zephyr/test/hwtest/src/irq_stack.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T17:37:26Z",
+      "side": 1,
+      "message": "yes, it does. I can add this as well.\n\nI believe I should modify the irq address reading to:\n\n```\nvolatile uint8_t *address \u003d (uint8_t *)\u0026z_interrupt_stacks[_current_cpu-\u003eid]\n```\n\nWe use multi threads. However, I assume we have only single CPU and this is why both yield the same results.\n\nI tried both and both yield the same results in our case.",
+      "parentUuid": "0c11e30d_0743f9b5",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "96a24e13ced9df23c550a94483230e17c57d3b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
