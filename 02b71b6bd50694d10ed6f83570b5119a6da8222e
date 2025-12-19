@@ -214,6 +214,30 @@
       },
       "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9762f3_22b34032",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T22:06:29Z",
+      "side": 1,
+      "message": "this test is now `stack_protection`: it include `irq_stack_check` and `main_stack_guard`.",
+      "parentUuid": "01b43ab0_6a4292e1",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
