@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0103f4ea_efc30694",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T00:44:02Z",
+      "side": 1,
+      "message": "This isn\u0027t specific to PMP. It\u0027s tied to `CONFIG_HW_STACK_PROTECTION`, which is generic stack protection (uses PMP on RISC-V and MPU for ARM), so it should work on all platforms that support `CONFIG_HW_STACK_PROTECTION`",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

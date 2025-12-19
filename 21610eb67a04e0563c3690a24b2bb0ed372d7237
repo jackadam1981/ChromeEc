@@ -16,6 +16,24 @@
       "message": "@tomhughes@chromium.org\n\nThis is the output:\n\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE pmp_irq_stack\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_trigger_irq_stack_fault\n[4.691500] \u003cinf\u003e pmp_irq_stack: Attempting to write to IRQ stack guard at address: 0x23800\n\n[4.699600] \u003cerr\u003e os: \n[4.701600] \u003cerr\u003e os:  mcause: 7, Store/AMO access fault\n[4.706600] \u003cerr\u003e os:   mtval: 23800\n[4.709900] \u003cerr\u003e os:      a0: 00024000    t0: 80092433\n[4.714800] \u003cerr\u003e os:      a1: 00009c98    t1: 800779a0\n[4.719700] \u003cerr\u003e os:      a2: 00019cfc    t2: ccccd000\n[4.724600] \u003cerr\u003e os:      a3: 00000008    t3: 8009240d\n[4.729500] \u003cerr\u003e os:      a4: f0200034    t4: 00000200\n[4.734500] \u003cerr\u003e os:      a5: 00000020    t5: 00000010\n[4.739400] \u003cerr\u003e os:      a6: 00000000    t6: 0001ff1c\n[4.744300] \u003cerr\u003e os:      a7: 00000000\n[4.747800] \u003cerr\u003e os:      sp: 0001ffc0\n[4.751300] \u003cerr\u003e os:      ra: 80073950\n[4.754800] \u003cerr\u003e os:    mepc: 80073978\n[4.758300] \u003cerr\u003e os: mstatus: 00023880\n[4.761800] \u003cerr\u003e os: \n[4.763900] \u003cerr\u003e os:      s0: 8008cbfc    s6: 00000000\n[4.768800] \u003cerr\u003e os:      s1: 8008cbfc    s7: 00000000\n[4.773700] \u003cerr\u003e os:      s2: 8008cbc4    s8: 00000000\n[4.778600] \u003cerr\u003e os:      s3: 00009000    s9: 00000000\n[4.783600] \u003cerr\u003e os:      s4: 00000000   s10: 00000000\n[4.788500] \u003cerr\u003e os:      s5: 8008cbe0   s11: 00000000\n[4.793400] \u003cerr\u003e os: \n[4.795400] \u003cerr\u003e os: call trace:\n[4.798400] \u003cerr\u003e os:       0: sp: 0001ffc0 ra: 80073978\n[4.803400] \u003cerr\u003e os:       1: sp: 0001ffd0 ra: 800696e8\n[4.808400] \u003cerr\u003e os:       2: sp: 0001ffd4 ra: 8006969a\n[4.813400] \u003cerr\u003e os:       3: sp: 0001fff0 ra: 800607a0\n[4.818400] \u003cerr\u003e os:       4: sp: 0001fff4 ra: 80060792\n[4.823400] \u003cerr\u003e os: \n[4.825500] \u003cerr\u003e os: \u003e\u003e\u003e ZEPHYR FATAL ERROR 0: CPU exception on CPU 0\n[4.831700] \u003cerr\u003e os: Current thread: 0x9c98 (test_trigger_ir)\nCaught system error -- reason 0 1\nFatal error expected as part of test case.\n PASS - test_trigger_irq_stack_fault in 0.154 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE pmp_irq_stack succeeded\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE PASS - 100.00% [pmp_irq_stack]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.154 seconds\n - PASS - [pmp_irq_stack.test_trigger_irq_stack_fault] duration \u003d 0.154 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION SUCCESSFUL\n```",
       "revId": "21610eb67a04e0563c3690a24b2bb0ed372d7237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4502d867_20010a9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T00:44:02Z",
+      "side": 1,
+      "message": "Can you also verify it fails with `CONFIG_HW_STACK_PROTECTION\u003dn`?",
+      "parentUuid": "98a327e6_1bd99d93",
+      "revId": "21610eb67a04e0563c3690a24b2bb0ed372d7237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
