@@ -166,6 +166,30 @@
       },
       "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f290adbf_e8db2484",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T17:49:38Z",
+      "side": 1,
+      "message": "It looks like ARM has [two different ways to enable hardware stack protection](https://github.com/thughes/zephyr/blob/525df83013d67dede7dd4971e266348eb9148675/arch/arm/core/Kconfig#L201-L216). I\u0027m guessing that it\u0027s currently using `BUILTIN_STACK_GUARD`, not `MPU_STACK_GUARD`. If so, how does the test behave with that?\n\nIt sounds like `BUILTIN_STACK_GUARD` will only check that the stack limit has been exceeded, not just writing to it.\n\nYou could do something like this (Gemini coded):\n\n```\n/* Recursive function to consume stack depth */\nvoid recurse_and_bust_stack(volatile int depth)\n{\n    /* * Create a purely local array to eat up stack space quickly.\n     * Volatile prevents the compiler from optimizing it away.\n     */\n    volatile uint8_t stack_eater[128];\n    \n    /* Touch the memory to ensure it\u0027s actually allocated/used */\n    stack_eater[0] \u003d (uint8_t)depth; \n\n    printk(\"Stack depth: %d, SP approx: %p\\n\", depth, \u0026stack_eater[0]);\n\n    /* Recursion ensures the Stack Pointer (SP) moves down */\n    recurse_and_bust_stack(depth + 1);\n}\n\nvoid test_stack_overflow(void)\n{\n    printk(\"Starting stack overflow test...\\n\");\n    \n    /* * This will eventually hit the PMP guard (RISC-V) \n     * OR the MSPLIM register limit (ARM).\n     */\n    recurse_and_bust_stack(0);\n}\n```\n\nThis is similar to [this upstream test](https://github.com/thughes/zephyr/blob/525df83013d67dede7dd4971e266348eb9148675/tests/kernel/fatal/exception/src/main.c#L397-L406). It would probably be good to run that upstream test in `run_device_tests`; it should pass on all architectures (make sure it\u0027s testing the `CONFIG_HW_STACK_PROTECTION` part).\n\nThen we could keep this test focused on the IRQ stack and any other stacks that aren\u0027t tested by that test. It looks like that test is checking the thread stack. `irq_stack` is definitely separate. What about `z_main_stack`?",
+      "parentUuid": "43b51977_fe04b448",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
