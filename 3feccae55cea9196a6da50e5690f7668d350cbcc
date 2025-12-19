@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ef1e85_1324fa92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T00:33:03Z",
+      "side": 1,
+      "message": "ok. I created a test in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7278680",
+      "parentUuid": "e8366d29_95bc7f84",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "3feccae55cea9196a6da50e5690f7668d350cbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d03d63_6ed9306e",
