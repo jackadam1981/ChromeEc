@@ -1,0 +1,94 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ */
+
+/ {
+	aliases {
+		gpio-wp = &gpio_ec_flash_wp_odl;
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+		
+		/* Charger Temps */
+		adc_temp_sensor2: temp_sensor2 {
+			enum-name = "ADC_TEMP_SENSOR_2";
+			io-channels = <&adc0 4>;
+		};
+		
+		adc_temp_sensor3: temp_sensor3 {
+			enum-name = "ADC_TEMP_SENSOR_3";
+			io-channels = <&adc0 5>;
+		};
+	};
+
+	gpio-interrupts {
+		/delete-node/ volume-up;
+		/delete-node/ volume-down;
+	};
+
+	named-gpios {
+
+		/delete-node/ ec_pen_chg_dis_odl;
+		/delete-node/ en_pp5000_z1;
+		/delete-node/ ec_pmic_en_odl_r;
+		/delete-node/ ec_volup_btn_odl;
+		/delete-node/ ec_voldn_btn_odl;
+
+		gpio_tchpad_lid_close: tchpad_lid_close {
+			gpios = <&gpiof 0 GPIO_OUTPUT>;
+		};
+		gpio_ec_pmic_en_odl_r: ec_pmic_en_odl_r {
+			gpios = <&gpio7 4 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
+			enum-name = "GPIO_EC_PMIC_EN_ODL";
+		};
+		gpio_en_pwr_s3: en_pwr_s3 {
+			gpios = <&gpioc 7 (GPIO_OUTPUT | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
+		//CCD_MODE_L
+		gpio_ccd_mode_l: ccd_mode_l {
+			gpios = <&gpioe 5 (GPIO_INPUT)>;
+		};
+	};
+
+	unused-pins {
+		compatible = "unused-gpios";
+		unused-gpios =
+			<&gpio3 4 0>,
+			<&gpio8 0 0>,
+			<&gpio9 4 0>,
+			<&gpio9 7 0>,
+			<&gpioc 3 0>,
+			<&gpiod 5 0>,
+			<&gpiod 6 0>,
+			<&gpiod 7 0>,
+			<&gpioe 2 0>,
+			<&gpioe 4 0>;
+	};
+};
+
+&pwm0_gpc3 {
+	status = "disabled";
+
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc0_chan0_gp45
+		&adc0_chan1_gp44
+		&adc0_chan2_gp43
+		&adc0_chan3_gp42
+		&adc0_chan4_gp41
+		&adc0_chan5_gp37>;
+	pinctrl-names = "default";
+};
+
+&i2c5_0 {
+	label = "I2C_SMB_BATT";
+	clock-frequency = <I2C_BITRATE_FAST>;
+	/* Upstream zephyr uses an irregular name here */
+	pinctrl-0 = <&i2c5_0_sda_scl_gp33_36>;
+};
+
