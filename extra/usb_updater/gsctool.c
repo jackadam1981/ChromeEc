@@ -946,6 +946,42 @@ static void shut_down(struct usb_endpoint *uep)
 	exit(update_error);
 }
 
+static void print_indented(const char *text, int indent)
+{
+	/* At this point the line is printed up to the indent column. */
+	const char *cursor = text;
+	const char *previous_space = text;
+	const char *line_start = text;
+	int help_string_cols = 90 - indent;
+	int last_index = 0;
+	int i;
+
+	while ((cursor = strchr(cursor, ' ')) != NULL) {
+		last_index = cursor - line_start;
+		if (last_index < help_string_cols) {
+			while (previous_space != cursor)
+				printf("%c", *previous_space++);
+			cursor++;
+			continue;
+		}
+		printf("\n");
+		for (i = 0; i < indent; i++)
+			printf(" ");
+		previous_space++;
+		cursor = previous_space;
+		line_start = previous_space;
+	}
+	if ((last_index + strlen(previous_space)) > (unsigned)help_string_cols) {
+		/* The last word would not fit in the current line. */
+		printf("\n");
+		for (i = 0; i < indent; i++)
+			printf(" ");
+		previous_space++;
+	}
+
+	printf("%s\n", previous_space);
+}
+
 static void usage(int errs)
 {
 	size_t i;
@@ -1010,7 +1046,7 @@ static void usage(int errs)
 
 		while (printed_length++ < indent)
 			printf(" ");
-		printf("%s\n", help_text);
+		print_indented(help_text, indent);
 	}
 	printf("\n");
 	exit(errs ? update_error : noop);
@@ -1917,7 +1953,7 @@ static void send_owner_config(struct transfer_descriptor *td,
 		exit(1);
 	}
 
-	if (st.st_size != config_size) {
+	if (st.st_size != (long)config_size) {
 		fprintf(stderr, "Unexpected size %zd of %s\n", st.st_size,
 			file_name);
 		exit(1);
