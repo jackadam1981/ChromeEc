@@ -238,6 +238,30 @@
       },
       "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086763a6_77597949",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T23:17:58Z",
+      "side": 1,
+      "message": "\u003e I already upstreamed the null_pointer test\n\u003e  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/null-pointer/\n\u003e \n\u003e the stack tests are also upstreamed:\n\u003e\n\u003e https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/isr-stack-guard/\n\nI didn\u0027t realize we had these tests upstream. We should always try to do things upstream when possible, so let\u0027s see if they will work. There\u0027s no point in creating an exact copy of an upstream test in our repo. If we want to test something that we can\u0027t upstream, then we can write our own test. \n\nTry adding them to `run_device_tests.py` like I showed. We\u0027re not using `twister` to run these tests, which I think is the only thing that uses `platform_allow` (not the way we\u0027re building it). But we probably shouldn\u0027t restrict it to qemu only upstream.\n\nLooking at the upstream null pointer test, it looks close, but slightly different than our version, but I don\u0027t see a reason why it needs to be that way. We can also add an upstream one for ARM to test `NULL_POINTER_EXCEPTION_DETECTION_MPU` and `CONFIG_NULL_POINTER_EXCEPTION_DETECTION_DWT`. There\u0027s no reason for it to be different than the RISC-V one (as we\u0027ve shown in our version), so maybe we can just make it a symlink to the [RISC-V version you added](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/null-pointer/src/main.c).\n\nI think if we run these upstream tests, we\u0027ll get the coverage I was looking for for RISC-V:\n\n1. [irq / main stack](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/arch/riscv/pmp/isr-stack-guard/)\n1. [thread stack](https://github.com/thughes/zephyr/blob/525df83013d67dede7dd4971e266348eb9148675/tests/kernel/fatal/exception/src/main.c)\n\nWe can run (2) on ARM, but then we\u0027d also want to add something to test the irq and main stack as well like (1) does. For that you can probably add the code in your latest CL here to [this upstream test](https://github.com/thughes/zephyr/blob/525df83013d67dede7dd4971e266348eb9148675/tests/kernel/fatal/exception/src/main.c) since it already has code for blowing up the stack.",
+      "parentUuid": "9a9762f3_22b34032",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
