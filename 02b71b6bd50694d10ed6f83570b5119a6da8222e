@@ -22,6 +22,30 @@
       },
       "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c19e06_bcae0f8d",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T00:46:12Z",
+      "side": 1,
+      "message": "You can test it on `bloonchipper` and `helipilot` and it should pass. If that\u0027s the case, then we can go ahead and move this up in the stack and submit it first. (We know unit tests are failing on `sanok` right now, and it will start working once https://crrev.com/c/7227920 is merged.",
+      "parentUuid": "0103f4ea_efc30694",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
