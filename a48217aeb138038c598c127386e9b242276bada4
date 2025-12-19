@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e1eb580_5ba57222",
+        "filename": "zephyr/program/fpmcu/et171/src/ec_quirks.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T19:17:45Z",
+      "side": 1,
+      "message": "We\u0027ll want to do this for all RISC-V devices. How about putting it in the RISC-V core code: `zephyr/shim/core/riscv`. Probably `mpu.c` to be in the same file [as this code](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7256694/comment/f6d7f929_0bbca486/).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "a48217aeb138038c598c127386e9b242276bada4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
