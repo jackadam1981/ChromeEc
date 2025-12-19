@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3ad6b03_0b91d910",
+        "filename": "include/system.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T18:01:07Z",
+      "side": 1,
+      "message": "It looks like we may actually [already have a different way of doing this that we\u0027re using on ARM](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/helipilot/src/ec_quirks.c;l\u003d15-32;drc\u003d4b7b47d82bc50d7ecbba63d56af8e18cfc875e08). Does that same `HOOK_SYSJUMP` approach work? If so, it\u0027s probably good to use that instead of inventing something new.",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 836,
+        "endChar": 48
+      },
+      "revId": "ce6bb6011608250e53232a3683ab787af66ba105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c990d2f_52cdac4d",
         "filename": "zephyr/shim/core/CMakeLists.txt",
         "patchSetId": 24
