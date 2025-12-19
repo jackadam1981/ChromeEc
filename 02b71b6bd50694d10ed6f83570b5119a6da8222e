@@ -94,6 +94,30 @@
       },
       "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b51977_fe04b448",
+        "filename": "zephyr/test/hwtest/src/pmp_irq_stack.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T17:31:25Z",
+      "side": 1,
+      "message": "\u003e I am not sure if the region start is different for arm technologies?\n\nI wouldn\u0027t expect so, since `z_interrupt_stacks` sounds generic. Are you sure `CONFIG_HW_STACK_PROTECTION` is enabled for our ARM boards? Maybe ARM is not set up to guard the IRQ stack (only the main stack: `z_main_stack`)? \n\nAlso, let\u0027s upstream this test (and the null pointer test, and any others that we\u0027ve written that are generic Zephyr). We can run upstream tests in [like this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/run_device_tests.py;l\u003d887-926;drc\u003d39782171697eb70b15109137e51b1ac8781ee0a8).",
+      "parentUuid": "a39ca7f2_8c9f4519",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "02b71b6bd50694d10ed6f83570b5119a6da8222e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
