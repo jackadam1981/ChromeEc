@@ -1,0 +1,17 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ */
+
+/ {
+	aliases {
+		gpio-wp = &gpio_ec_flash_wp_odl;
+	};
+
+	named-gpios {
+		gpio_tchpad_lid_close: tchpad_lid_close {
+			gpios = <&gpiof 0 GPIO_OUTPUT>;
+		};
+	};
+};
