@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46255c3_eeb791d1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-19T10:07:04Z",
+      "side": 1,
+      "message": "Should this be in fingerprint_elan80series_private.h, since it is a function from priv library?",
+      "revId": "f55ebb350b92b55f3f32b6fdc9586487ff961ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
