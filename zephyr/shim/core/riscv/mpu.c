@@ -19,3 +19,15 @@ static void prepare_for_sysjump_to_ec(void)
 	z_riscv_pmp_clear_all();
 }
 DECLARE_HOOK(HOOK_SYSJUMP, prepare_for_sysjump_to_ec, HOOK_PRIO_LAST);
+
+#if defined(CONFIG_PLATFORM_EC_ROLLBACK_MPU_PROTECT)
+int mpu_lock_rollback(int lock)
+{
+	if (lock) {
+		z_riscv_pmp_change_permissions(0, 0);
+	} else {
+		z_riscv_pmp_change_permissions(0, PMP_R | PMP_W);
+	}
+	return 0;
+}
+#endif
