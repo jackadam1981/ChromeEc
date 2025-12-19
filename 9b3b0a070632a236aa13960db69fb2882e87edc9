@@ -16,6 +16,24 @@
       "message": "Please use DT_ANY_INST_HAS_PROP_STATUS_OKAY instead.",
       "revId": "9b3b0a070632a236aa13960db69fb2882e87edc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54427c5_5f6343f8",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-19T10:04:16Z",
+      "side": 1,
+      "message": "Updated. I\u0027ve switched to DT_ANY_INST_HAS_PROP_STATUS_OKAY as suggested. Thanks.",
+      "parentUuid": "6c878cf5_58e22002",
+      "revId": "9b3b0a070632a236aa13960db69fb2882e87edc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
