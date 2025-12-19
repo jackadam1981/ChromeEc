@@ -70,6 +70,24 @@
       "parentUuid": "36e7c74f_436106ce",
       "revId": "21610eb67a04e0563c3690a24b2bb0ed372d7237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c31531_fc7d2024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T07:45:54Z",
+      "side": 1,
+      "message": "yes the test fails if `CONFIG_HW_STACK_PROTECTION\u003dy`. I had to also disable `CONFIG_TEST_HW_STACK_PROTECTION\u003dn`.\n\n```\nfpmcu:~$ ztest run-all\nRunning TESTSUITE irq_stack\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_trigger_irq_stack_fault\n[4.585800] \u003cinf\u003e irq_stack: Attempting to write to IRQ stack guard at address: 0x22b40\n\n\n    Assertion failed at EC_BASE/ec/zephyr/test/hwtest/src/irq_stack.c:35: trigger_irq_stack_fault: Reached unreachable code\n\n FAIL - test_trigger_irq_stack_fault in 0.020 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE irq_stack failed.\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE FAIL -   0.00% [irq_stack]: pass \u003d 0, fail \u003d 1, skip \u003d 0, total \u003d 1 duration \u003d 0.020 seconds\n - FAIL - [irq_stack.test_trigger_irq_stack_fault] duration \u003d 0.020 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION FAILED\n```",
+      "parentUuid": "87c7a5b3_775da3bb",
+      "revId": "21610eb67a04e0563c3690a24b2bb0ed372d7237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
