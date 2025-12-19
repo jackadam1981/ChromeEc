@@ -237,6 +237,8 @@ enum vendor_cmd_cc {
 	/* Read slice of Owner Configuration space */
 	VENDOR_CC_READ_OWNERS_CONFIG = 81,
 
+	VENDOR_CC_PASS_THROUGH = 82,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 

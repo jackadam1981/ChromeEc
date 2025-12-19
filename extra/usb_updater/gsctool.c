@@ -245,6 +245,9 @@ BUILD_ASSERT((CR50_CCD_CAP_COUNT / 32) == (TI50_CCD_CAP_COUNT / 32));
 #define SUBCLASS USB_SUBCLASS_GOOGLE_CR50
 #define PROTOCOL USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE
 
+#define TPM_TAG_NO_SESSION 0x8001
+#define TPM_TAG_SESSION	   0x8002
+
 /*
  * CCD Info from GSC is communicated using different structure layouts.
  * Version 0 does not have a header and includes just the payload information.
@@ -635,6 +638,10 @@ static const struct option_container cmd_line_options[] = {
 	{ { "metrics", no_argument, NULL, 'W' }, "Get GSC metrics" },
 	{ { "wp", optional_argument, NULL, 'w' },
 	  "[enable|disable|follow]%Get or set the write protect setting" },
+	{ { "raw-xchange", required_argument, NULL, 'X' },
+	  "Send the PDU represented as hex dump straight to TPM,"
+	  " get response. First symbol N means add 'no session' "
+	  "header, S means add 'session' header, R means send raw" },
 	{ { "clog", no_argument, NULL, 'x' },
 	  "Retrieve contents of the most recent crash log." },
 	{ { "factory_config", optional_argument, NULL, 'y' },
@@ -819,7 +826,7 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 
 	debug("%s: sending to %#x %d bytes\n", __func__, addr, size);
 
-	out->tag = htobe16(0x8001);
+	out->tag = htobe16(TPM_TAG_NO_SESSION);
 	out->subcmd = htobe16(subcmd);
 
 	if (subcmd <= LAST_EXTENSION_COMMAND)
@@ -1950,6 +1957,115 @@ static void send_owner_config(struct transfer_descriptor *td,
 }
 
 /*
+ * Convert the input hex dump into binary and send it directly to the TPM
+ * using the dedicated vendor command.
+ *
+ * By default send the message as is. If the fist character of the
+ * hex_dump_text is S or N add the 'session' or 'no session' TPM header
+ * respectively. The header consists of the 16 bit tag and 32 bit number of
+ * bytes in the following blob, both in big endian representation.
+ */
+static void handle_raw_exchange(struct transfer_descriptor *td,
+				const char *hex_dump_text)
+{
+	/* Tpm header structure. */
+	struct tpmh {
+		uint16_t tag;
+		uint32_t size;
+	} __attribute__((__packed__));
+	bool no_session = false;
+	bool send_raw = true;
+	char c;
+	int nibble_count;
+	uint8_t byte;
+	size_t byte_count;
+	size_t rx_count;
+	/* should be large enough for any reasonable use. */
+	const size_t max_dump_size = 100;
+	uint8_t bin_dump[max_dump_size + sizeof(struct tpmh)];
+
+	if (td->ep_type != usb_xfer) {
+		fprintf(stderr, "Raw transfer is possible over USB only\n");
+		exit(1);
+	}
+
+	switch (*hex_dump_text) {
+	case 'N':
+		no_session = true;
+		send_raw = false;
+		hex_dump_text++;
+		break;
+	case 'S':
+		send_raw = false;
+		no_session = false;
+		hex_dump_text++;
+		break;
+	}
+
+	nibble_count = 0;
+	byte_count = send_raw ? 0 : sizeof(struct tpmh);
+	while ((c = *hex_dump_text++) && (byte_count < sizeof(bin_dump))) {
+		int nibble;
+
+		if (c == ' ')
+			continue;
+		nibble = from_hexascii(c);
+
+		if (nibble < 0) {
+			fprintf(stderr, "%c is not a hex character\n", c);
+			exit(1);
+		}
+		if (nibble_count++ == 0) {
+			byte = nibble & 0xf;
+		} else {
+			byte = (byte << 4) | (nibble & 0xf);
+			nibble_count = 0;
+			bin_dump[byte_count++] = byte;
+		}
+	}
+
+	if (nibble_count) {
+		fprintf(stderr, "Uneven number of hex characters\n");
+		exit(1);
+	}
+
+	if (byte_count == (send_raw ? 0 : sizeof(struct tpmh))) {
+		fprintf(stderr, "Empty input hex string\n");
+		exit(1);
+	}
+
+	if (byte_count == sizeof(bin_dump)) {
+		fprintf(stderr, "Input string too long\n");
+		exit(1);
+	}
+
+	if (!send_raw) {
+		/* Add the appropriate TPM header. */
+		struct tpmh *header;
+
+		header = (struct tpmh *)bin_dump;
+		header->tag = htobe16(no_session ? TPM_TAG_NO_SESSION :
+						   TPM_TAG_SESSION);
+		header->size = htobe32(byte_count);
+	}
+
+	rx_count = sizeof(bin_dump);
+	send_vendor_command(td, VENDOR_CC_PASS_THROUGH, bin_dump, byte_count,
+			    bin_dump, &rx_count);
+
+	if (rx_count) {
+		size_t i;
+
+		printf("TPM response: ");
+		for (i = 0; i < rx_count; i++)
+			printf("%02x", bin_dump[i]);
+		printf("\n");
+	}
+
+	exit(0);
+}
+
+/*
  * This function retrieves the owners config from an Opentitan chip.
  *
  * The owners config occupies a certain INFO page on the chip, this function
@@ -2090,7 +2206,7 @@ uint32_t send_vendor_command(struct transfer_descriptor *td,
 			     size_t command_body_size, void *response,
 			     size_t *response_size)
 {
-	int32_t rv;
+	int32_t rv = 0;
 
 	if (td->ep_type == usb_xfer) {
 		/*
@@ -2117,6 +2233,7 @@ uint32_t send_vendor_command(struct transfer_descriptor *td,
 		ext_cmd_over_usb(&td->uep, subcommand, command_body,
 				 command_body_size, temp_response,
 				 &max_response_size);
+
 		if (!max_response_size) {
 			/*
 			 * we must be talking to an older Cr50 firmware, which
@@ -2127,11 +2244,23 @@ uint32_t send_vendor_command(struct transfer_descriptor *td,
 				*response_size = 0;
 			rv = 0;
 		} else {
-			rv = temp_response[0];
-			if (response_size) {
-				*response_size = max_response_size - 1;
-				memcpy(response, temp_response + 1,
-				       *response_size);
+			if (response && response_size && *response_size) {
+				void *resp_body;
+
+				if (subcommand == VENDOR_CC_PASS_THROUGH) {
+					/* In passthrough mode there is no
+					 * leading byte, the input is the raw
+					 * TPM response.
+					 */
+					rv = 0;
+					resp_body = temp_response;
+					*response_size = max_response_size;
+				} else {
+					rv = temp_response[0];
+					*response_size = max_response_size - 1;
+					resp_body = temp_response + 1;
+				}
+				memcpy(response, resp_body, *response_size);
 			}
 		}
 	} else {
@@ -5487,6 +5616,7 @@ int main(int argc, char *argv[])
 	uint8_t set_strongbox_arg = 0;
 	int upload_owner_config = 0;
 	int download_owner_config = 0;
+	const char *hex_dump_text = NULL;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
@@ -5793,6 +5923,9 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Illegal wp option \"%s\"\n", optarg);
 			errorcnt++;
 			break;
+		case 'X':
+			hex_dump_text = optarg;
+			break;
 		case 'x':
 			get_clog = 1;
 			break;
@@ -5851,7 +5984,7 @@ int main(int argc, char *argv[])
 	    !openbox_desc_file && !tstamp && !tpm_mode && (wp == WP_NONE) &&
 	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts &&
 	    !upload_owner_config && !parse_device_ids && !set_strongbox &&
-	    !download_owner_config) {
+	    !download_owner_config && !hex_dump_text) {
 		num_images = argc - optind;
 		if (num_images <= 0) {
 			fprintf(stderr,
@@ -5896,11 +6029,12 @@ int main(int argc, char *argv[])
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
 	     (wp != WP_NONE) + !!get_endorsement_seed + !!erase_ap_ro_hash +
 	     !!set_capability + !!get_clog + !!get_console +
-	     !!upload_owner_config + !!download_owner_config) > 1) {
+	     !!upload_owner_config + !!download_owner_config +
+	     !!hex_dump_text) > 1) {
 		fprintf(stderr,
 			"Error: options "
 			"-e, -F, -g, -H, -I, -i, -j -k, -L, -l, -O, -o, -P, -Q,"
-			"-r, -U, -x and -w are mutually exclusive\n");
+			"-r, -U, -X, -x and -w are mutually exclusive\n");
 		exit(update_error);
 	}
 
@@ -6113,6 +6247,9 @@ int main(int argc, char *argv[])
 			exit(process_cr50_get_metrics(&td,
 						      show_machine_output));
 	}
+
+	if (hex_dump_text)
+		handle_raw_exchange(&td, hex_dump_text);
 
 	if (images || show_fw_ver) {
 		struct image *match = NULL;
