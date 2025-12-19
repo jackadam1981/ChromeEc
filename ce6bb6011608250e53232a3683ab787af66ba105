@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16aeff58_4cdb35f9",
+        "filename": "include/system.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T18:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ad6b03_0b91d910",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 836,
+        "endChar": 48
+      },
+      "revId": "ce6bb6011608250e53232a3683ab787af66ba105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c990d2f_52cdac4d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-12-19T17:56:22Z",
       "side": 1,
       "message": "In our [EC code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core) and [upstream Zephyr](https://github.com/thughes/zephyr/tree/525df83013d67dede7dd4971e266348eb9148675/arch/riscv), it uses `riscv`, so let\u0027s do that for consistency.\n\n```suggestion\n    add_subdirectory(riscv)\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 21,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "ce6bb6011608250e53232a3683ab787af66ba105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024caddc_faa5c71c",
+        "filename": "zephyr/shim/core/CMakeLists.txt",
+        "patchSetId": 24
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-19T18:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c990d2f_52cdac4d",
       "range": {
         "startLine": 8,
         "startChar": 21,
