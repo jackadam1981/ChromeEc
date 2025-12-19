@@ -46,6 +46,30 @@
       },
       "revId": "a48217aeb138038c598c127386e9b242276bada4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fdebecb_5d8c41cf",
+        "filename": "zephyr/program/fpmcu/et171/src/ec_quirks.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2025-12-19T20:13:29Z",
+      "side": 1,
+      "message": "\u003e  I do not believe I can add it in the mpu.c library, because that is include for rollback purposes.\n\nYou can, but you\u0027ll need to configure `mpu.c` to be conditional on `CONFIG_RISCV_PMP` and then guard `mpu_lock_rollback` in the file with `CONFIG_PLATFORM_EC_ROLLBACK_MPU_PROTECT`.",
+      "parentUuid": "5149a9c7_7ed4fea5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "a48217aeb138038c598c127386e9b242276bada4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
