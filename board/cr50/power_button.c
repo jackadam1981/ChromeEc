@@ -56,7 +56,8 @@ static void power_button_press_enable_interrupt(int enable)
 	}
 }
 
-#ifdef CONFIG_AP_RO_VERIFICATION_KEY_COMBO
+#if defined(CONFIG_AP_RO_VERIFICATION) && \
+	defined(CONFIG_AP_RO_VERIFICATION_KEY_COMBO)
 
 /*
  * Implement sequence detecting trigger for starting AP RO verification.
@@ -182,7 +183,8 @@ static void power_button_handler(void)
 {
 	CPRINTS("power button pressed");
 
-#ifdef CONFIG_AP_RO_VERIFICATION_KEY_COMBO
+#if defined(CONFIG_AP_RO_VERIFICATION) && \
+	defined(CONFIG_AP_RO_VERIFICATION_KEY_COMBO)
 	if (rctd_start_time == 0)
 		hook_call_deferred(&rctd_poll_data, 0);
 #endif
