@@ -52,6 +52,24 @@
       "parentUuid": "a5ace48a_728ba51d",
       "revId": "47d89fe1193e8f5ad691a77b475ab50f32455a8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e713ae_14b86bca",
+        "filename": "zephyr/program/fpmcu/et171/prj.conf",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T06:16:28Z",
+      "side": 1,
+      "message": "Every EC based application uses RO and RW. I linked Kconfig to ET171 chip support in our EC repo, not in Zephyr.",
+      "parentUuid": "e077ab6c_46c57ee2",
+      "revId": "47d89fe1193e8f5ad691a77b475ab50f32455a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
