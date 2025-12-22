@@ -16,6 +16,8 @@
 #undef CONFIG_CCD_OPEN_PREPVT
 /* MP: Remove chargen command. */
 #undef CONFIG_CMD_CHARGEN
+/* MP: Remove pinmux command. */
+#undef CONFIG_CMD_PINMUX
 
 /* PrePVT branch config options. */
 #elif defined(BRANCH_PREPVT)
@@ -25,6 +27,8 @@
 #define CONFIG_CCD_OPEN_PREPVT
 /* PrePVT: Remove chargen command. */
 #undef CONFIG_CMD_CHARGEN
+/* PrePVT: Remove pinmux command. */
+#undef CONFIG_CMD_PINMUX
 
 /* TOT branch config options. */
 #elif defined(BRANCH_TOT)
