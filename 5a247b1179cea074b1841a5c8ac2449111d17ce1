@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34193b5d_5313779e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-22T11:50:40Z",
+      "side": 1,
+      "message": "fixed this",
+      "parentUuid": "b499733f_94722ba9",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "907ebaf3_dd349a3c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-12-22T08:11:53Z",
       "side": 1,
       "message": "Please use b:450508398",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec5ee38_28b09cec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-22T11:50:40Z",
+      "side": 1,
+      "message": "fixed this",
+      "parentUuid": "907ebaf3_dd349a3c",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49ed9097_0bfa9283",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-22T11:50:40Z",
+      "side": 1,
+      "message": "fixed this",
+      "parentUuid": "9111baa3_2d41515a",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a657c75d_23381623",
         "filename": "zephyr/drivers/cros_system/Kconfig",
         "patchSetId": 1
@@ -65,6 +119,24 @@
       "writtenOn": "2025-12-22T08:11:53Z",
       "side": 1,
       "message": "`Focaltech`",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c9a556_dadca410",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-22T11:50:40Z",
+      "side": 1,
+      "message": "fixed this",
+      "parentUuid": "a657c75d_23381623",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09d628d0_430ed37f",
+        "filename": "zephyr/drivers/cros_system/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-22T11:50:40Z",
+      "side": 1,
+      "message": "fixed this",
+      "parentUuid": "46a60f05_1d5ff97b",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "230efbb9_e785cf6e",
         "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
         "patchSetId": 1
@@ -99,6 +189,24 @@
       "writtenOn": "2025-12-22T08:11:53Z",
       "side": 1,
       "message": "2025",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c14ecea_c556cbee",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-22T11:50:40Z",
+      "side": 1,
+      "message": "fixed this",
+      "parentUuid": "230efbb9_e785cf6e",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
