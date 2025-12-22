@@ -264,6 +264,11 @@ static enum strongbox_error keymint_init(void)
 	return SB_OK;
 }
 
+void keymint_deinit(void)
+{
+	km.initialized = false;
+}
+
 uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 {
 	const struct strongbox_command *cmd_p;
