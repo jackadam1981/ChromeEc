@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f567a6_676645bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T06:58:38Z",
+      "side": 1,
+      "message": "I thought we agreed that this CL won\u0027t be merged until we figure out how to mark with the rollback regions as uncachable.\n\nAdditionally, you mark the rollback regions as no read, but it is needed during rwsig. Does this change break sanok firmware? If not, why? [The CL](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7256694) that unlocks rollbacks is not merged yet",
+      "revId": "b5ec31a662940bae5c264579a2a1d9c29af704ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
