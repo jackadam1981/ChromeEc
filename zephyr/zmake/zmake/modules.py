@@ -152,6 +152,9 @@ known_modules = {
         / "lib"
         / "picolibc"
     ),
+    "elan_zephyr": lambda name, checkout: (
+        checkout / "src" / "platform" / "elan-zephyr"
+    ),
 }
 
 
