@@ -123,7 +123,7 @@ static int rctd_poll_handler(void)
 				 * Report timeout only in case the process
 				 * started.
 				 */
-				CPRINTS("Timeout, no RO check triggered");
+				CPRINTS("RCTD timeout");
 			}
 			return 0;
 		}
@@ -136,8 +136,7 @@ static int rctd_poll_handler(void)
 			 * Report interruption only in case the process
 			 * started.
 			 */
-			CPRINTS("Power button released, "
-				"RO Check Detection stopped");
+			CPRINTS("RTCD stop");
 		}
 		return 0;
 	}
@@ -159,11 +158,11 @@ static int rctd_poll_handler(void)
 		return 1;
 
 	if (++ref_press_count != PRESS_COUNT) {
-		CPRINTS("Refresh press registered");
+		CPRINTS("Ref count");
 		return 1;
 	}
 
-	CPRINTS("RO Validation triggered");
+	CPRINTS("RTCD triggered");
 
 	validate_ap_ro();
 
