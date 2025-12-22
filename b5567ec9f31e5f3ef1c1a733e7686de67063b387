@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f65bc2b_156d8137",
+        "filename": "zephyr/program/bluey/src/chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-22T17:23:51Z",
+      "side": 1,
+      "message": "Why is this a board specific function?  If you extend `cros_system_driver_api`, the qcom_exp driver should call system_get_hibernate_wake_source directly.\n\nAlso consider whether CONFIG_PLATFORM_EC_HIBERNATE_EXIT_AC_WAKE is really needed. If the qcom_exp driver always needs to know if the wake source was AC connect, then no need to guard behind a Kconfig.",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "b5567ec9f31e5f3ef1c1a733e7686de67063b387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
