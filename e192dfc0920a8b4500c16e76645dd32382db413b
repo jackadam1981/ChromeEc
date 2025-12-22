@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d92df7_87f73b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T14:40:55Z",
+      "side": 1,
+      "message": "More general comment, I would like to also get opinion from @patrykd@google.com.\n\nThis is not Zephyr-style code. Have you consider any other approach? Having in mind needed scope of work, does it make sense e.g. to add a new Zephyr subsystem SDCP, not fingerprint specific? Everything around establishing connection, exchanging keys etc. would land there.\n\nPersonally, I don\u0027t have any clarified vision in my head what would be the best.",
+      "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8644bdcd_39b0f828",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 8803,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T14:40:55Z",
+      "side": 1,
+      "message": "I\u0027m wondering if this Host command should be has a prefix `_FP`. On one hand, the SDCP was designed to work on biometrics devices, but on the other hand, the protocol itself has nothing to do with FP.",
+      "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f498b9b8_37f4f49c",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T14:40:55Z",
+      "side": 1,
+      "message": "IMO the name suggests it will send/receive some command. How about something like `get_sdcp_claim`?",
+      "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
