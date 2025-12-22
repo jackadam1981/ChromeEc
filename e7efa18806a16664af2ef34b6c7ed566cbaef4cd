@@ -22,6 +22,30 @@
       },
       "revId": "e7efa18806a16664af2ef34b6c7ed566cbaef4cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd3e871_a6a71637",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2025-12-22T23:08:07Z",
+      "side": 1,
+      "message": "it actually is going to cleanup on line 1224 - those specific errors are set for unsupported RSA and AES, but only EC is implemented. Practically RSA and AES checks can be removed altogether.",
+      "parentUuid": "a3d9d4f4_c9f6337e",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1222,
+        "endChar": 34
+      },
+      "revId": "e7efa18806a16664af2ef34b6c7ed566cbaef4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
