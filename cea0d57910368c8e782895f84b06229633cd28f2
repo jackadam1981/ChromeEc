@@ -16,6 +16,91 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fb8dc2_0d639587",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-22T12:10:22Z",
+      "side": 1,
+      "message": "how about putting this in the header file and defining the api as noop when it\u0027s not set? then you have the config confined to the specific subsystem files rather than leaking into the application, the application code will always be compile-tested regardless of the config and the optimizer will drop that code anyway when it\u0027s not needed",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4c115c_ba6ab610",
+        "filename": "zephyr/Kconfig.fingerprint",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-22T12:10:22Z",
+      "side": 1,
+      "message": "just use `CONFIG_GPIO_INIT_PRIORITY` in the code, the subpriority will put the call just after it automatically and you\u0027ll get away with one less option and build assert",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587155e3_e7cb2847",
+        "filename": "zephyr/drivers/btn_ign/btn_ign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-22T12:10:22Z",
+      "side": 1,
+      "message": "```suggestion\nvoid btn_ign_activate(void)\n```",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ed0a3f_71655da3",
+        "filename": "zephyr/drivers/btn_ign/btn_ign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-22T12:10:22Z",
+      "side": 1,
+      "message": "maybe reschedule? so it turns off 2 secs from the last call",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be3a48e_9ee24934",
+        "filename": "zephyr/program/fpmcu/et171/btn_ign.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2025-12-22T12:10:22Z",
+      "side": 1,
+      "message": "drop? it\u0027s literally in the name of the file and the name of the gpio, does not really add any information",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
