@@ -16,6 +16,75 @@
       "message": "can you change to `#if defined(CONFIG_FINGERPRINT_SENSOR_ELAN80SG)`?",
       "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42e2d24_f20002e0",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T07:21:43Z",
+      "side": 1,
+      "message": "The include guard `ZEPHYR_DRIVERS_FINGERPRINT_ELANI80SA_CONFIG_SENSOR_H_` seems to not match the filename. Please consider renaming it to `ZEPHYR_DRIVERS_FINGERPRINT_FINGERPRINT_ELANI80SA_CONFIG_H_` to follow convention and avoid confusion.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac05546_e44f7333",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T07:21:43Z",
+      "side": 1,
+      "message": "Typo: EFSAI80SA should probably be ELANI80SA.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbdf6ed0_1c62dbdc",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 32
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-22T07:21:43Z",
+      "side": 1,
+      "message": "For consistency across the codebase, could you change \"The Chromium OS Authors\" to \"The ChromiumOS Authors\"? The other new file in this CL (`fingerprint_elani80sa_config.h`) uses it.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 0
+      },
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
