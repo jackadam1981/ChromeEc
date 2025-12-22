@@ -16,6 +16,52 @@
       "message": "Add Keith to review, who implemented the hibernate_z5 driver. We may define this common API in that driver.",
       "revId": "9a5af59e10a8750e517011d9b4f70a09617cf3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf858dc_68679818",
+        "filename": "zephyr/shim/chip/npcx/include/system_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-22T17:19:56Z",
+      "side": 1,
+      "message": "Don\u0027t guard prototypes with CONFIG #ifdefs.  This forces callers to wrap calls with the same #ifdefs instead of using `is (IF_ENABLED(CONFIG_XXX))`",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 45
+      },
+      "revId": "9a5af59e10a8750e517011d9b4f70a09617cf3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9628cde0_2eebfa6b",
+        "filename": "zephyr/shim/chip/npcx/system_hibernate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-22T17:19:56Z",
+      "side": 1,
+      "message": "Add this to the existing [`cros_system_driver_api`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/include/drivers/cros_system.h;l\u003d101;drc\u003db35da1c126e6651fee2327df2cf8d3877d4a5877).\n\nThis routine should return an enum specifying the hibernate wake type to hide the implementation details of the EC register.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "9a5af59e10a8750e517011d9b4f70a09617cf3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
