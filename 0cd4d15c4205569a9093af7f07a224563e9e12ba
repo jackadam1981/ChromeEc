@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1bf74f_1e44f340",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-22T09:25:36Z",
+      "side": 1,
+      "message": "Fixed in PS33",
+      "parentUuid": "192b4cd0_254b65c5",
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f42e2d24_f20002e0",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-12-22T07:21:43Z",
       "side": 1,
       "message": "The include guard `ZEPHYR_DRIVERS_FINGERPRINT_ELANI80SA_CONFIG_SENSOR_H_` seems to not match the filename. Please consider renaming it to `ZEPHYR_DRIVERS_FINGERPRINT_FINGERPRINT_ELANI80SA_CONFIG_H_` to follow convention and avoid confusion.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7550449b_1ec1216b",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-22T09:25:36Z",
+      "side": 1,
+      "message": "Fixed in PS33",
+      "parentUuid": "f42e2d24_f20002e0",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d5be95_84e2e525",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-22T09:25:36Z",
+      "side": 1,
+      "message": "Fixed in PS33",
+      "parentUuid": "aac05546_e44f7333",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbdf6ed0_1c62dbdc",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-12-22T07:21:43Z",
       "side": 1,
       "message": "For consistency across the codebase, could you change \"The Chromium OS Authors\" to \"The ChromiumOS Authors\"? The other new file in this CL (`fingerprint_elani80sa_config.h`) uses it.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 0
+      },
+      "revId": "0cd4d15c4205569a9093af7f07a224563e9e12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d012f14c_f386b074",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 32
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-22T09:25:36Z",
+      "side": 1,
+      "message": "Fixed in PS33",
+      "parentUuid": "dbdf6ed0_1c62dbdc",
       "range": {
         "startLine": 1,
         "startChar": 0,
