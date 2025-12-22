@@ -5,6 +5,7 @@
  * Test charge_state behavior
  */
 
+#include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
 #include "chipset.h"
@@ -165,7 +166,7 @@ __override int charge_get_display_charge(void)
 	return display_soc;
 }
 
-__override int calc_is_full(void)
+__override bool battery_is_full(struct batt_params *batt)
 {
 	return is_full;
 }
