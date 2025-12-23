@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "594fa542_ad9bbf4d",
+        "filename": "zephyr/test/rauru/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d293d40_d94ddac0",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cd4e541d_256214fe",
         "filename": "zephyr/test/rauru/common.dtsi",
         "patchSetId": 4
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de255c7_ec2128d9",
+        "filename": "zephyr/test/rauru/common.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79d3a03_55827cc6",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25288934_ec3f64f2",
@@ -71,6 +113,24 @@
       "writtenOn": "2025-12-03T19:08:44Z",
       "side": 1,
       "message": "Is the idea here that this function needs to run without crashing or something? In general, we try to have meaningful assertions.",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7cc2f63_c8a9150a",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "Since the board function has no action, nothing to assert yet, the idea of adding test case to just confirm no crash \u0026 also primarily to keep coverage complete",
+      "parentUuid": "25288934_ec3f64f2",
       "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +154,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8ba62f5_59979625",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "updated latest patch set removed this test assertion, board_vbus_source_enabled is covered with existing test cases",
+      "parentUuid": "257d836a_9a958782",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "951d403c_33593c25",
         "filename": "zephyr/test/rauru/src/usbc_test.c",
         "patchSetId": 4
@@ -111,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1b58111_e7b26423",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "Thanks! yes updated test case with simulating each power state using power_set_state()",
+      "parentUuid": "951d403c_33593c25",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "306ca043_6a3d9144",
         "filename": "zephyr/test/rauru/src/usbc_test.c",
         "patchSetId": 4
@@ -122,6 +218,24 @@
       "writtenOn": "2025-12-03T19:08:44Z",
       "side": 1,
       "message": "Why \"not\"?",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402f4d84_ffdea84e",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "Agreed, board_set_active_charge_port() does not control charge manager state.\nI’ve removed that assertion and updated the test to validate the PPC sink enable/disable behavior directly.",
+      "parentUuid": "306ca043_6a3d9144",
       "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

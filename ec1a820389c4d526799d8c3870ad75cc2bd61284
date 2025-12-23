@@ -16,6 +16,24 @@
       "message": "Why the change from `syv682@42` to `rt1739@70`?",
       "revId": "ec1a820389c4d526799d8c3870ad75cc2bd61284",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e9e920_faaf473a",
+        "filename": "zephyr/test/rauru/common.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2025-12-23T11:38:21Z",
+      "side": 1,
+      "message": "During debugging ppc port changed to rt1739 since no benefit of it, reverting back to syv682 thanks for reminding",
+      "parentUuid": "27727a3a_5ea8b423",
+      "revId": "ec1a820389c4d526799d8c3870ad75cc2bd61284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
