@@ -9001,6 +9001,46 @@ struct ec_response_get_boot_time {
  */
 #define EC_CMD_ENABLE_OFFMODE_HEARTBEAT 0x0606
 
+/**
+ * Get runtime statistics (exec time and idle time).
+ */
+#define EC_CMD_RUNTIME_STATS_SYS 0x0607
+
+struct ec_request_runtime_stats_sys {
+	bool stop_tracking_threads; /* Stops tracking of thread usage */
+	bool start_tracking_threads; /* Starts tracking of thread usage */
+	bool stop_tracking_sys; /* Stop tracking of system usage */
+	bool start_tracking_sys; /* Start tracking of system usage */
+} __packed;
+
+struct ec_response_runtime_stats_sys {
+	uint64_t current_time_us;
+	uint64_t exec_us;
+	uint64_t idle_us;
+	uint16_t num_threads;
+} __ec_align4;
+
+/**
+ * Get runtime statistics (exec time and idle time).
+ */
+#define EC_CMD_RUNTIME_STATS_THREAD 0x0608
+
+struct ec_request_runtime_stats_thread {
+	uint16_t thread_index;
+	bool stop_tracking;
+	bool start_tracking;
+	bool reset_peak;
+} __ec_align4;
+
+struct ec_response_runtime_stats_thread {
+	uint64_t current_time_us;
+	uint64_t exec_us;
+	uint64_t peak_us;
+	uint32_t num_windows;
+	uint32_t thread_id;
+	bool is_idle_thread;
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or

@@ -1150,4 +1150,29 @@ config PLATFORM_EC_WP_CUSTOM
 	  connected via GPIO, e.g. USB FPMCU modules with limited number of
 	  pins in the connector.
 
+config PLATFORM_EC_RUNTIME_STATS
+	bool "Enable runtime statistics"
+	default n
+	select THREAD_MONITOR
+	select THREAD_RUNTIME_STATS
+	select SCHED_THREAD_USAGE
+	select SCHED_THREAD_USAGE_ALL
+	select SCHED_THREAD_USAGE_ANALYSIS
+	help
+	  Enable runtime statistics.
+
+config PLATFORM_EC_CONSOLE_CMD_RUNTIME_STATS
+	bool "Enable runtime statistics shell commands"
+	default n
+	depends on PLATFORM_EC_RUNTIME_STATS
+	help
+	  Enable runtime statistics shell commands.
+
+config PLATFORM_EC_HOSTCMD_RUNTIME_STATS
+	bool "Enable runtime statistics host commands"
+	default n
+	depends on PLATFORM_EC_RUNTIME_STATS
+	help
+	  Enable runtime statistics host commands.
+
 endif # PLATFORM_EC
