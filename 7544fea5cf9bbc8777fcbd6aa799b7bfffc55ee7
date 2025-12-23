@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95bde7e_4a4b28b1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T17:19:46Z",
+      "side": 1,
+      "message": "Loop Simplification: \n\nfor this config, I have noticed that `IMAGE_HEIGHT \u003d ELAN_DMA_LOOP`. Is this the case for all sensors using `elan_image_read_linewise`. If so, I believe you can simplify the for loop:\n\nThe inner loop for (int y \u003d 0; y \u003c IMAGE_HEIGHT / ELAN_DMA_LOOP; y++) will only execute for y \u003d 0 because IMAGE_HEIGHT equals ELAN_DMA_LOOP. This loop can be removed, and y can be replaced by 0 in the index calculations within to improve clarity.\n\n```\n// Simplified index calculations after removing the \u0027y\u0027 loop\nrx_index \u003d x * 2;\nshort_raw[x + i * IMAGE_WIDTH] \u003d (rx_buf[rx_index] \u003c\u003c 8) + rx_buf[rx_index + 1];\n```",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 329,
+        "endChar": 58
+      },
+      "revId": "7544fea5cf9bbc8777fcbd6aa799b7bfffc55ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf4dd3e_66f89fb7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T17:19:46Z",
+      "side": 1,
+      "message": "Endianness: Please add a comment to clarify the expected byte order of the pixel data received from the sensor. The code (rx_buf[rx_index] \u003c\u003c 8) + rx_buf[rx_index + 1] assumes the most significant byte is received first (big-endian for the 16-bit pixel).",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 335,
+        "endChar": 26
+      },
+      "revId": "7544fea5cf9bbc8777fcbd6aa799b7bfffc55ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea0b2fc_9b35d917",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T17:19:46Z",
+      "side": 1,
+      "message": "can you write it as below to make it symmetric with the other elif\n`#if defined(CONFIG_FINGERPRINT_SENSOR_ELAN80SERIES_READ_MODE_FULL)`",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 60
+      },
+      "revId": "7544fea5cf9bbc8777fcbd6aa799b7bfffc55ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b4d9845_c24cc434",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T17:19:46Z",
+      "side": 1,
+      "message": "Timeout Value: The `POLLING_SCAN_TIMER` is set to `10000`. It\u0027s recommended to add a comment explaining how this value was determined (e.g., based on sensor datasheet specifications for line read timeout).",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "7544fea5cf9bbc8777fcbd6aa799b7bfffc55ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
