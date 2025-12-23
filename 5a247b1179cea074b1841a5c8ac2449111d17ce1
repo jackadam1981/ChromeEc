@@ -388,6 +388,24 @@
       "parentUuid": "4953864a_b06f5939",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22911111_bf0d9c25",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-23T06:13:32Z",
+      "side": 1,
+      "message": "\u003e  meanwhile \u0027CONFIG_REBOOT\u003dy\u0027 should be added to prj.conf\n\nYou can select REBOOT config in the Kconfig, as it is done for CROS_SYSTEM_STM32\n\n\u003e I checked it, \u0027sys_reboot\u0027 can be used\n\nDoes it fully reboot SOC? Is there any difference between sys_reboot(NVIC method) and the previous method (reset module).",
+      "parentUuid": "32d188fc_b7326b5e",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
