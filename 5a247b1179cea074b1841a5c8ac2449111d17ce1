@@ -424,6 +424,24 @@
       "parentUuid": "22911111_bf0d9c25",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f54def_0defa53b",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-23T08:15:24Z",
+      "side": 1,
+      "message": "I would prefer to use method that performs full SOC reset then if possible.",
+      "parentUuid": "b2ab8952_f9a401e6",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
