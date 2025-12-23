@@ -5987,6 +5987,22 @@ struct ec_params_enter_bootloader {
 	uint8_t mode;
 } __ec_align1;
 
+#define EC_CMD_HOSTCMD_WATCHDOG_INFO 0x00E3
+
+struct ec_params_hostcmd_watchdog_info {
+	bool reset_max;
+} __ec_align1;
+
+struct ec_response_hostcmd_watchdog_info {
+	uint64_t now_timestamp_ms;
+	uint32_t watchdog_period_ms;
+	uint32_t watchdog_warning_period_ms;
+	uint32_t watchdog_reload_nominal_period_ms;
+	uint32_t watchdog_reload_max_period_ms;
+	uint64_t watchdog_reload_max_timestamp_ms;
+	uint32_t watchdog_reload_count;
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * PD commands

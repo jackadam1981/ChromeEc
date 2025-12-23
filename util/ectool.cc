@@ -5968,6 +5968,49 @@ static int cmd_motionsense(int argc, char **argv)
 	return ms_help(argv[0]);
 }
 
+static int cmd_watchdog_info(int argc, char *argv[])
+{
+	struct ec_params_hostcmd_watchdog_info p;
+	struct ec_response_hostcmd_watchdog_info r;
+	int rv;
+
+	if (argc == 0) {
+		p.reset_max = false;
+	} else if (argc == 2) {
+		if (strcasecmp(argv[1], "reset_max") == 0)
+			p.reset_max = true;
+		else
+			goto usage;
+	} else {
+		goto usage;
+	}
+
+	rv = ec_command(EC_CMD_HOSTCMD_WATCHDOG_INFO, 0, &p, sizeof(p), &r,
+			sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("Watchdog Info:\n");
+	printf("Period: %u ms\n", r.watchdog_period_ms);
+	printf("Warning Period: %u ms\n", r.watchdog_warning_period_ms);
+	printf("Reload Nominal Period: %u ms\n",
+	       r.watchdog_reload_nominal_period_ms);
+	printf("Max Reload Period: %u ms\n", r.watchdog_reload_max_period_ms);
+	printf("Max Reload Timestamp: %" PRIu64 "\n",
+	       r.watchdog_reload_max_timestamp_ms);
+	printf("Average Reload Period: %" PRIu64 "\n",
+	       r.watchdog_reload_count > 0 ?
+		       r.now_timestamp_ms / r.watchdog_reload_count :
+		       0);
+	printf("Reload Count: %u\n", r.watchdog_reload_count);
+
+	return 0;
+
+usage:
+	fprintf(stderr, "Usage: %s [reset_max]\n", argv[0]);
+	return -1;
+}
+
 int cmd_next_event(int argc, char *argv[])
 {
 	uint8_t *rdata = (uint8_t *)ec_inbuf;
@@ -13162,6 +13205,12 @@ const struct command commands[] = {
 	  "\tWait for the MKBP event of type and display it.\n"
 	  "\tOptionaly, run the command and wait for the mkbp event.\n"
 	  "\tRun with no arguments for more information." },
+	{ "waitfor", cmd_wait_for,
+	  "[--timeout=<sec>] <string>\n"
+	  "\tWait for the EC to print <string> on the console." },
+	{ "watchdoginfo", cmd_watchdog_info,
+	  "[reset_max]\n"
+	  "\tGet watchdog info." },
 	{ "wireless", cmd_wireless,
 	  "<flags> [<mask> [<suspend_flags> <suspend_mask>]]\n"
 	  "\tEnable/disable WLAN/Bluetooth radio." },
