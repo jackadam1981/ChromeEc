@@ -478,6 +478,24 @@
       "parentUuid": "a6b6bda9_3e440345",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b545a353_142f1801",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-23T08:40:57Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll back to previous method",
+      "parentUuid": "342e1f01_c1e5d9c7",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
