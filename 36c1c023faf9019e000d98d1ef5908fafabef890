@@ -16,6 +16,24 @@
       "message": "The preprocessor checks #if DT_ANY_INST_HAS_PROP_STATUS_OKAY(base_image_addr) \u0026\u0026 DT_ANY_INST_HAS_PROP_STATUS_OKAY(ft_info_addr) are not strictly necessary for correctness because DT_INST_PROP_OR handles missing properties by providing the default (0). The runtime check if (cfg-\u003ebase_image_addr !\u003d 0 \u0026\u0026 cfg-\u003eft_info_addr !\u003d 0) is sufficient. Removing the #if block would simplify the code:\n\nstatic void elan80series_use_flash_addresses(const struct device *dev)\n{\n    const struct elan80series_cfg *cfg \u003d dev-\u003econfig;\n\n    if (cfg-\u003ebase_image_addr !\u003d 0 \u0026\u0026 cfg-\u003eft_info_addr !\u003d 0) {\n        // Consider handling a return value if use_flash_addresses can fail\n        use_flash_addresses(cfg-\u003ebase_image_addr, cfg-\u003eft_info_addr);\n    }\n}",
       "revId": "36c1c023faf9019e000d98d1ef5908fafabef890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cccbcb8_9515617a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2025-12-23T05:26:21Z",
+      "side": 1,
+      "message": "The #if check is necessary here to prevent link errors. The function use_flash_addresses() is provided by a private library that is currently only available for ELANI80SA; it is not defined in the library for ELAN80SG.\nIf we use only a runtime if check, the linker will still attempt to resolve the symbol, resulting in the following error during the linking stage: ld.lld: error: undefined symbol: use_flash_addresses",
+      "parentUuid": "9c9a95e4_06fde32f",
+      "revId": "36c1c023faf9019e000d98d1ef5908fafabef890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
