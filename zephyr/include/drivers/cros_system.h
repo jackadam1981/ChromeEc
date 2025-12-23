@@ -38,6 +38,20 @@ enum system_reset_cause {
 	UNKNOWN_RST,
 };
 
+enum hibernate_wake_source {
+
+	/* Wake source detection unimplemented */
+	NOT_SUPPORTED = -ENOSYS,
+	/* The wake source is AC */
+	WAKE_SOURCE_ACOK = 0,
+	/* The wake source is Lid open */
+	WAKE_SOURCE_LID_OPEN = 1,
+	/* The wake source is Power button */
+	WAKE_SOURCE_PWR_BTN = 2,
+	/* Unknown wake source */
+	WAKE_SOURCE_UNKNOWN,
+};
+
 /**
  * @brief Get a node from path '/hibernate_wakeup_pins' which has a property
  *        'wakeup-pins' contains GPIO list for hibernate wake-up
@@ -97,6 +111,14 @@ typedef const char *(*cros_system_chip_revision_api)(const struct device *dev);
  */
 typedef uint64_t (*cros_system_deep_sleep_ticks_api)(const struct device *dev);
 
+/**
+ * @typedef cros_system_get_hibernate_wake_source_api
+ * @brief Callback API for getting the hibernate wake source on hibernate exit.
+ * See cros_system_get_hibernate_wake_source for argument description
+ */
+typedef enum hibernate_wake_source (*cros_system_get_hibernate_wake_source_api)(
+	const struct device *dev);
+
 /** @brief Driver API structure. */
 __subsystem struct cros_system_driver_api {
 	cros_system_get_reset_cause_api get_reset_cause;
@@ -106,6 +128,7 @@ __subsystem struct cros_system_driver_api {
 	cros_system_chip_name_api chip_name;
 	cros_system_chip_revision_api chip_revision;
 	cros_system_deep_sleep_ticks_api deep_sleep_ticks;
+	cros_system_get_hibernate_wake_source_api get_hibernate_wake_source;
 };
 
 /**
@@ -263,6 +286,28 @@ z_impl_cros_system_deep_sleep_ticks(const struct device *dev)
 	}
 
 	return api->deep_sleep_ticks(dev);
+}
+
+/**
+ * @brief Get hibernate wake source.
+ *
+ * @param dev Pointer to the device structure for the driver instance.
+ * @retval The hibernate wake source (see enum hibernate_wake_source).
+ */
+__syscall enum hibernate_wake_source
+cros_system_get_hibernate_wake_source(const struct device *dev);
+
+static inline enum hibernate_wake_source
+z_impl_cros_system_get_hibernate_wake_source(const struct device *dev)
+{
+	const struct cros_system_driver_api *api =
+		(const struct cros_system_driver_api *)dev->api;
+
+	if (!api->get_hibernate_wake_source) {
+		return NOT_SUPPORTED;
+	}
+
+	return api->get_hibernate_wake_source(dev);
 }
 
 /**
