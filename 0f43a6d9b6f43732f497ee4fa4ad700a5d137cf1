@@ -16,6 +16,23 @@
       "message": "Do we have any more information how the protected memory works with cache?",
       "revId": "0f43a6d9b6f43732f497ee4fa4ad700a5d137cf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6942dc03_d0f26046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-23T13:21:05Z",
+      "side": 1,
+      "message": "Let\u0027s wait with these CLs until we figure out the cache issue.",
+      "revId": "0f43a6d9b6f43732f497ee4fa4ad700a5d137cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
