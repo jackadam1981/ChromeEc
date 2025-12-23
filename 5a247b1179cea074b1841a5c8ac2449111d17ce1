@@ -352,6 +352,24 @@
       "parentUuid": "754c31e3_5d96df2f",
       "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4953864a_b06f5939",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-23T02:00:27Z",
+      "side": 1,
+      "message": "I checked it, \u0027sys_reboot\u0027 can be used, meanwhile \u0027CONFIG_REBOOT\u003dy\u0027 should be added to prj.conf, I will create another CL to update the prj.conf in fpmcu/ft9001",
+      "parentUuid": "d2fa75f4_c50e3fed",
+      "revId": "5a247b1179cea074b1841a5c8ac2449111d17ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
