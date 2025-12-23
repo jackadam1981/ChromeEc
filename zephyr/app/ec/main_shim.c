@@ -8,11 +8,18 @@
 
 #include <zephyr/kernel.h>
 
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(main_shim, LOG_LEVEL_INF);
+
 /** A stub main to call the real ec app main function. LCOV_EXCL_START */
 int main(void)
 {
 	ec_app_main();
 
+	LOG_ERR("%s B ITE Debug %d", __func__, __LINE__);
+	printk("\n%s printk ITE Debug %d\n", __func__, __LINE__);
+	LOG_ERR("%s A ITE Debug %d", __func__, __LINE__);
 	if (IS_ENABLED(CONFIG_TASK_HOSTCMD_THREAD_MAIN)) {
 		host_command_main();
 	} else if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {

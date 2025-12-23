@@ -18,6 +18,7 @@ def register_it8xxx2_evb_project(project_name, zephyr_board):
         kconfig_files=[
             here / project_name / "project.conf",
         ],
+        modules=["cmsis", "cmsis_6", "picolibc", "ec", "pigweed", "nanopb"],
     )
 
 

@@ -113,6 +113,7 @@ zephyr_library_sources_ifdef(CONFIG_HECI
 endif()
 
 if(CONFIG_PIGWEED_LOG_TOKENIZED_LIB)
+  message(INFO "ITE Debug>>>>>>>>>>>>>>>>>>>>>> ${ZEPHYR_PIGWEED_MODULE_DIR}")
   if (DEFINED CONFIG_SOC_FAMILY_NPCX)
     set(CHIP "npcx")
   elseif (DEFINED CONFIG_SOC_FAMILY_ITE_EC)
