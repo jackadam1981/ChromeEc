@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a80085_6ff48c87",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-23T11:39:29Z",
+      "side": 1,
+      "message": "Can you get the address from DTS?",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f012f6_bb611dda",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-23T11:39:29Z",
+      "side": 1,
+      "message": "Is this okay to overwrite other bits in `RCR`?",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1e21df_580790bc",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2025-12-23T11:39:29Z",
+      "side": 1,
+      "message": "Can you just use `sys_write32` and `BIT` macro?",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
