@@ -16,6 +16,24 @@
       "message": "Thanks for finding this, we needed a similar fix in EC (crrev/c/4917182)",
       "revId": "1b4cb61a540ac03d29d1c9605abea817c936e0cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42eab4d7_f774d69d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T20:34:11Z",
+      "side": 1,
+      "message": "it was not needed for the Zephyr firmware, because the Zephyr firmware does not set the all_now. But since we are using the EC RO, we need it now. IIUC, if one is executing from flash, there is not need to jump to RO to update the firmware.",
+      "parentUuid": "a4362da0_31d2a920",
+      "revId": "1b4cb61a540ac03d29d1c9605abea817c936e0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
