@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba8e19d_01854b58",
+        "filename": "zephyr/program/ocelot/BUILD.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-23T18:08:28Z",
+      "side": 1,
+      "message": "Delete this extra directory.  All files can be put under `zephyr/program/ocelot/ocicat-ish/`.",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 43
+      },
+      "revId": "285d6e355f75500e3cfb0611f8fc66d61ac47850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b314df86_3c19db8a",
+        "filename": "zephyr/program/ocelot/ocicat-ish/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-23T18:08:28Z",
+      "side": 1,
+      "message": "ocicat schematic dated 2025-11-11 shows this is connected to `\u0026i2c2`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "285d6e355f75500e3cfb0611f8fc66d61ac47850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a8c957_0c0d3c08",
+        "filename": "zephyr/program/ocelot/ocicat-ish/i2c.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-23T18:08:28Z",
+      "side": 1,
+      "message": "Remove this comment - EC_ISH_INT_ODL is connected to `\u0026gpio0 1`",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "285d6e355f75500e3cfb0611f8fc66d61ac47850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe8d005_af842f5f",
+        "filename": "zephyr/program/ocelot/ocicat-ish/ocicat-ish/gpio.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-23T18:08:28Z",
+      "side": 1,
+      "message": "Move up one directory.",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "285d6e355f75500e3cfb0611f8fc66d61ac47850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d59678_056ee379",
+        "filename": "zephyr/program/ocelot/ocicat-ish/ocicat-ish/project.overlay",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-23T18:08:28Z",
+      "side": 1,
+      "message": "Move this file up one directory.  No need to nest `ocicat-ish` twice.",
+      "revId": "285d6e355f75500e3cfb0611f8fc66d61ac47850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
