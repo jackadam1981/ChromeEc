@@ -33,6 +33,24 @@
       "message": "Let\u0027s wait with these CLs until we figure out the cache issue.",
       "revId": "0f43a6d9b6f43732f497ee4fa4ad700a5d137cf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5eb63eb_f5672cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T18:22:54Z",
+      "side": 1,
+      "message": "I did more investigation:\nhttps://b.corp.google.com/issues/468379650#comment15\n\nI believe the best way is to check if the address belongs to a nocache area and force crec_flash_read to get it from the source again. \n\nThis has to be implemented inside the flash driver. Let us discuss.\n\n1) potentially add att to the device tree\n2) create `is_nocase` function\n3) force read from source if this function returns true\n\nI do not believe the invalidate functions are safe to use. This can crashes \n\nmaybe simply modify the data in the rollback common file to make it non-volatile similar to what I did in the test",
+      "parentUuid": "a8c281b5_ab71f595",
+      "revId": "0f43a6d9b6f43732f497ee4fa4ad700a5d137cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
