@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432170ac_8388d974",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2025-12-23T15:30:49Z",
+      "side": 1,
+      "message": "do we need this runtime check here?\nWe know that if those parameters do not exist in the DTS, their values are zero. Does the function crash if the values are zero? why you do not pass the logic to the function? The function should return an error if the values cannot be zero?\n\nI feel we are doing redundant stuff here by calling a compile guard and a runtime guard for the same purpose.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "5e6ec42bf62822353bc78b36c886fcd5a86662f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
