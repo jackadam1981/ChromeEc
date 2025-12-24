@@ -104,6 +104,24 @@
       "parentUuid": "bc1e21df_580790bc",
       "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11aca921_dc6c9c8e",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-24T12:01:09Z",
+      "side": 1,
+      "message": "I tried this, it works, I\u0027ll modify it.",
+      "parentUuid": "dde24f0e_3672ee6e",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
