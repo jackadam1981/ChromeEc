@@ -3233,10 +3233,13 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 /**
  * @brief Called from a public API function to block until the command completes
  * or time outs
+ *
+ * @param timeout The time.
  */
-static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
+static int public_api_block_withtimeout(int port, enum pdc_cmd_t pdc_cmd, k_timeout_t timeout)
 {
 	int ret;
+	int wait_times = 0;
 	struct cmd_t *public_cmd;
 	k_timepoint_t cmd_timepoint;
 
@@ -3252,7 +3255,7 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	/* TODO: Investigate using a semaphore here instead of while loop */
 	/* Block calling thread until command is processed, errors or timeout
 	 * occurs. */
-	cmd_timepoint = sys_timepoint_calc(K_MSEC(PDC_CMD_TIMEOUT_MS));
+	cmd_timepoint = sys_timepoint_calc(timeout);
 
 	while (public_cmd->pending && !public_cmd->error) {
 		/* block until command completes or max block count is reached
@@ -3274,6 +3277,10 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 				pdc_cmd_names[public_cmd->cmd]);
 			public_cmd->pending = false;
 			return -EBUSY;
+		} else {
+			wait_times++;
+			LOG_ERR("C%d: Public API blocking ... %d: %s", port,
+				wait_times, pdc_cmd_names[public_cmd->cmd]);
 		}
 
 		/* Check for commands that don't require a connection */
@@ -3297,6 +3304,14 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 	}
 
 	return 0;
+}
+
+/**
+ * @brief Called from a public API function to block until the command completes
+ * or time outs
+ */
+static int public_api_block(int port, enum pdc_cmd_t pdc_cmd) {
+	return public_api_block_withtimeout(port, pdc_cmd, K_MSEC(PDC_CMD_TIMEOUT_MS));
 }
 
 bool is_pdc_port_valid(int port)
@@ -3523,7 +3538,7 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 	}
 
 	/* Block until command completes */
-	if (public_api_block(port, CMD_PDC_SET_PDR)) {
+	if (public_api_block_withtimeout(port, CMD_PDC_SET_PDR, K_MSEC(1000))) {
 		/* something went wrong */
 		return 1;
 	}

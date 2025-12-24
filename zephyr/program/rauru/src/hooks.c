@@ -17,6 +17,9 @@
 #include "usbc/pdc_power_mgmt.h"
 
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(rauru_hooks, LOG_LEVEL_INF);
 
 static void rauru_common_init(void)
 {
@@ -42,16 +45,22 @@ DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 #ifdef CONFIG_PDC_POWER_MGMT_USB_MUX
 static bool is_pr_swap_needed(int port)
 {
-	return pd_get_power_role(port) == PD_ROLE_SINK &&
-	       charge_manager_get_active_charge_port() != port;
+	int connected = pdc_power_mgmt_is_connected(port);
+	int active_charge_port = charge_manager_get_active_charge_port();
+	enum pd_power_role role = pd_get_power_role(port);
+	LOG_INF("C%d: swap_to_src check ======================== connected %d role %d ap %d",
+			port, connected, role, active_charge_port);
+	return connected && role == PD_ROLE_SINK && active_charge_port != port;
 }
 
 static void swap_to_src(void)
 {
 	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
 		if (is_pr_swap_needed(i)) {
+			LOG_INF("C%d: swap_to_src start ======================== time %d", i, (int)(get_time().val));
 			/* We are a sink, swap to source */
 			pdc_power_mgmt_request_power_swap(i);
+			LOG_INF("C%d: swap_to_src end   ======================== time %d", i, (int)(get_time().val));
 		}
 	}
 }
@@ -72,6 +81,8 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif
 
+	LOG_INF("xhci_interrupt start ======================== time %d", (int)(get_time().val));
+
 #if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
 	defined(CONFIG_PDC_POWER_MGMT_USB_MUX)
 	const int xhci_stat = gpio_get_level(signal);
@@ -81,6 +92,9 @@ void xhci_interrupt(enum gpio_signal signal)
 		if (xhci_stat) {
 			/* Apply PDC platform policy, enable DRP toggling */
 			pdc_power_mgmt_set_dual_role(i, PD_DRP_TOGGLE_ON);
+			// if (is_pr_swap_needed(i)) {
+			// 	pdc_power_mgmt_request_power_swap(i);
+			// }
 		}
 #else /* CONFIG_PLATFORM_EC_USB_PD_TCPMV2 */
 		/*
@@ -110,6 +124,8 @@ void xhci_interrupt(enum gpio_signal signal)
 		hook_call_deferred(&swap_to_src_data, 0);
 	}
 #endif
+
+	LOG_INF("xhci_interrupt end   ======================== time %d", (int)(get_time().val));
 }
 
 #if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
