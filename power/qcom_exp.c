@@ -38,6 +38,12 @@
 #include "task.h"
 #include "util.h"
 
+#ifdef CONFIG_ZEPHYR
+#include <zephyr/device.h>
+
+#include <drivers/cros_system.h>
+#endif
+
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
 
 /* Power signal list. Must match order of enum power_signal. */
@@ -753,6 +759,28 @@ enum power_state power_chipset_init(void)
 	} else if (!(reset_flags & EC_RESET_FLAG_EFS) &&
 		   (reset_flags & EC_RESET_FLAG_SYSJUMP)) {
 		auto_power_on = 0;
+	} else if ((reset_flags & EC_RESET_FLAG_HIBERNATE)) {
+		/*
+		 * When exiting from hibernate, check the wake source. If it
+		 * was AC, we need to set ac_on = 1 so that the subsequent
+		 * power-on sequence uses POWER_ON_BY_AC_ON. This informs the
+		 * AP firmware that it was powered on by a cable insertion
+		 * (CBLPWR).
+		 */
+#ifdef CONFIG_ZEPHYR
+		/* b:431715716: Justification for using CONFIG_ZEPHYR in legacy
+		 * ec code, this power sequence flow will be ported to zephyr
+		 * ap-pwrseq driver.
+		 */
+		const struct device *cros_system =
+			device_get_binding("CROS_SYSTEM");
+
+		if (cros_system && cros_system_get_hibernate_wake_source(
+					   cros_system) == WAKE_SOURCE_ACOK) {
+			ac_on = 1;
+			auto_power_on = 0;
+		}
+#endif
 	}
 #ifdef CONFIG_PLATFORM_EC_HIBERNATE_EXIT_AC_WAKE
 	if ((reset_flags & EC_RESET_FLAG_HIBERNATE) &&
