@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffdcefdf_5a85bbf8",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-24T06:25:11Z",
+      "side": 1,
+      "message": "OK, I\u0027ll get the address from DTS.",
+      "parentUuid": "b5a80085_6ff48c87",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55f012f6_bb611dda",
         "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
         "patchSetId": 5
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc57d2ec_84c6535c",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-24T06:25:11Z",
+      "side": 1,
+      "message": "It only set the specific bit, will not overwrite other bits.",
+      "parentUuid": "55f012f6_bb611dda",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc1e21df_580790bc",
         "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
         "patchSetId": 5
@@ -48,6 +84,24 @@
       "writtenOn": "2025-12-23T11:39:29Z",
       "side": 1,
       "message": "Can you just use `sys_write32` and `BIT` macro?",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde24f0e_3672ee6e",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2025-12-24T06:25:11Z",
+      "side": 1,
+      "message": "I\u0027ll check this.",
+      "parentUuid": "bc1e21df_580790bc",
       "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
