@@ -2783,7 +2783,7 @@ static void add_km_enforcements(struct asn1 *ctx,
 				const struct km_key_params *params)
 {
 	/* softwareEnforced */
-	SEQ_START(*ctx, V_SEQ, SEQ_MEDIUM)
+	SEQ_START(*ctx, V_SEQ, SEQ_LARGE)
 	{
 		if (params->creationDateTime)
 			asn1_explicit_int(ctx, 701, params->creationDateTime);
