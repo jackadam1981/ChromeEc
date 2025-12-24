@@ -6,6 +6,7 @@
 #include "atomic.h"
 #include "chipset.h"
 #include "common.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -883,6 +884,30 @@ static void wpc_hall_disable(void)
 
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, wpc_hall_enable, HOOK_PRIO_POST_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, wpc_hall_disable, HOOK_PRIO_DEFAULT);
+#endif
+
+#ifdef CONFIG_WPC_AC_S5_CHARGE
+static void wpc_ac_s5_handler(void)
+{
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		return;
+	}
+
+#ifdef CONFIG_WPC_HALL_ENABLE
+	if (extpower_is_present()) {
+		wpc_hall_enable();
+	} else {
+		wpc_hall_disable();
+	}
+#else
+	if (extpower_is_present()) {
+		pchg_startup();
+	} else {
+		pchg_shutdown();
+	}
+#endif
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, wpc_ac_s5_handler, HOOK_PRIO_POST_DEFAULT);
 #endif
 
 void pchg_task(void *u)
