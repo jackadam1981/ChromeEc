@@ -116,9 +116,9 @@ enum pd_data_role pdc_power_mgmt_pd_get_data_role(int port);
  *
  * @param port USB-C port number
  *
- * @retval void
+ * @retval int The result code.
  */
-void pdc_power_mgmt_request_swap_to_src(int port);
+int pdc_power_mgmt_request_swap_to_src(int port);
 
 /**
  * @brief Request power swap to Sink

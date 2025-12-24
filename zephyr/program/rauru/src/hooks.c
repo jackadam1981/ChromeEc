@@ -17,6 +17,9 @@
 #include "usbc/pdc_power_mgmt.h"
 
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(rauru_hooks, LOG_LEVEL_INF);
 
 static void rauru_common_init(void)
 {
@@ -40,22 +43,29 @@ static void rauru_common_init(void)
 DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 
 #ifdef CONFIG_PDC_POWER_MGMT_USB_MUX
-static bool is_pr_swap_needed(int port)
+static bool is_pr_swap_needed(int port, enum pd_power_role role)
 {
-	return pd_get_power_role(port) == PD_ROLE_SINK &&
-	       charge_manager_get_active_charge_port() != port;
+	int active_charge_port = charge_manager_get_active_charge_port();
+	LOG_INF("C%d: swap_to_src check ===================================== role %d ap %d", port, role, active_charge_port);
+	return role == PD_ROLE_SINK && active_charge_port != port;
 }
 
 static void swap_to_src(void)
 {
-	for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		if (is_pr_swap_needed(i)) {
-			pdc_power_mgmt_request_swap_to_src(i);
+	for (int i=0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		enum pd_power_role role = pd_get_power_role(i);
+		if (is_pr_swap_needed(i, role)) {
+			LOG_INF("C%d: swap_to_src start ===================================== %d", i, (int)(get_time().val));
+			int result = pdc_power_mgmt_request_swap_to_src(i);
+			LOG_INF("C%d: swap_to_src end   ===================================== %d %d", i, (int)(get_time().val), result);
 		}
 	}
 }
 DECLARE_DEFERRED(swap_to_src);
 #endif
+
+BUILD_ASSERT(IS_ENABLED(CONFIG_PDC_POWER_MGMT_USB_MUX), "TEST1");
+BUILD_ASSERT(!IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_TCPMV2), "TEST2");
 
 /* USB-A */
 void xhci_interrupt(enum gpio_signal signal)

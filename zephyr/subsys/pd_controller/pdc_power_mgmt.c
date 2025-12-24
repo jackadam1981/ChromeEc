@@ -1006,7 +1006,7 @@ static void print_current_pdc_state(struct pdc_port_t *port)
 {
 	const struct pdc_config_t *const config = port->dev->config;
 
-	LOG_INF("C%d: %s", config->connector_num,
+	LOG_DBG("C%d: %s", config->connector_num,
 		pdc_state_names[get_pdc_state(port)]);
 }
 
@@ -3508,7 +3508,7 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 {
 	/* Make sure port is connected */
 	if (!pdc_power_mgmt_is_connected(port)) {
-		return 1;
+		return -EIO;
 	}
 
 	/* Set PR accept swap policy */
@@ -3523,17 +3523,19 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 	}
 
 	/* Block until command completes */
-	if (public_api_block(port, CMD_PDC_SET_PDR)) {
+	int result;
+	result = public_api_block(port, CMD_PDC_SET_PDR);
+	if (result) {
 		/* something went wrong */
-		return 1;
+		return result;
 	}
 
 	return EC_SUCCESS;
 }
 
-void pdc_power_mgmt_request_swap_to_src(int port)
+int pdc_power_mgmt_request_swap_to_src(int port)
 {
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+	return pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
 }
 
 void pdc_power_mgmt_request_swap_to_snk(int port)
