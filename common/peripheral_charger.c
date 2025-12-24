@@ -6,6 +6,7 @@
 #include "atomic.h"
 #include "chipset.h"
 #include "common.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -833,9 +834,6 @@ static void pchg_startup(void)
 	if (active_pchg_count)
 		task_wake(TASK_ID_PCHG);
 }
-#ifndef CONFIG_WPC_HALL_ENABLE
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_startup, HOOK_PRIO_DEFAULT);
-#endif
 
 static void pchg_shutdown(void)
 {
@@ -848,19 +846,19 @@ static void pchg_shutdown(void)
 		ctx = &pchgs[0];
 		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 0);
+		ctx->battery_percent = 0;
+		pchg_queue_event(ctx, PCHG_EVENT_DEVICE_LOST);
 	}
+	task_wake(TASK_ID_PCHG);
 }
-#ifndef CONFIG_WPC_HALL_ENABLE
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pchg_shutdown, HOOK_PRIO_DEFAULT);
-#endif
 
 #ifdef CONFIG_WPC_HALL_ENABLE
-void wpc_hall_handler(void)
+static bool hall_allows_pchg;
+
+static void wpc_hall_handler(void)
 {
-	if (!gpio_get_level(GPIO_HALL_CTL_PCHG))
-		pchg_startup();
-	else
-		pchg_shutdown();
+	hall_allows_pchg = !gpio_get_level(GPIO_HALL_CTL_PCHG);
+	pchg_update_state();
 }
 DECLARE_DEFERRED(wpc_hall_handler);
 
@@ -868,21 +866,49 @@ void wpc_hall_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&wpc_hall_handler_data, CONFIG_WPC_HALL_DEBOUNCE_US);
 }
+#endif
 
-static void wpc_hall_enable(void)
+static bool pchg_allowed(void)
 {
-	gpio_enable_interrupt(GPIO_HALL_CTL_PCHG);
-	pchg_startup();
-	hook_call_deferred(&wpc_hall_handler_data, CONFIG_WPC_HALL_DEBOUNCE_US);
-}
-static void wpc_hall_disable(void)
-{
-	gpio_disable_interrupt(GPIO_HALL_CTL_PCHG);
-	pchg_shutdown();
+	bool system_off;
+
+	system_off =
+		chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF);
+
+#ifdef CONFIG_WPC_HALL_ENABLE
+	if (!hall_allows_pchg)
+		return false;
+#endif
+
+	if (!system_off)
+		return true;
+
+#ifdef CONFIG_WPC_AC_S5_CHARGE
+	if (extpower_is_present())
+		return true;
+#endif
+
+	return false;
 }
 
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, wpc_hall_enable, HOOK_PRIO_POST_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, wpc_hall_disable, HOOK_PRIO_DEFAULT);
+static bool pchg_enabled;
+
+static void pchg_update_state(void)
+{
+	bool allow = pchg_allowed();
+
+	if (allow && !pchg_enabled) {
+		pchg_startup();
+		pchg_enabled = true;
+	} else if (!allow && pchg_enabled) {
+		pchg_shutdown();
+		pchg_enabled = false;
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pchg_update_state, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pchg_update_state, HOOK_PRIO_DEFAULT);
+#ifdef CONFIG_WPC_AC_S5_CHARGE
+DECLARE_HOOK(HOOK_AC_CHANGE, pchg_update_state, HOOK_PRIO_POST_DEFAULT);
 #endif
 
 void pchg_task(void *u)
