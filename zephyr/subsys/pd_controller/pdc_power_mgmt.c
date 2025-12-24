@@ -2590,6 +2590,7 @@ static void pdc_send_cmd_wait_exit(void *obj)
 	struct pdc_pdos_t *pdc_pdos;
 
 	if (port->cmd == &port->send_cmd.public) {
+		LOG_INF("PD: Public cmd completed: %s", pdc_cmd_names[port->cmd->cmd]);
 		k_event_post(&port->sm_event, PDC_PUBLIC_CMD_COMPLETE_EVENT);
 	}
 
@@ -3237,6 +3238,7 @@ static bool is_connectionless_cmd(enum pdc_cmd_t pdc_cmd)
 static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 {
 	int ret;
+	int wait_times = 0;
 	struct cmd_t *public_cmd;
 	k_timepoint_t cmd_timepoint;
 
@@ -3264,6 +3266,8 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 				   K_MSEC(PUBLIC_CMD_DELAY_MS));
 
 		if (ret != 0) {
+			LOG_INF("PD: clear bit Public cmd: %s",
+					pdc_cmd_names[public_cmd->cmd]);
 			k_event_clear(&pdc_data[port]->port.sm_event,
 				      PDC_PUBLIC_CMD_COMPLETE_EVENT);
 		}
@@ -3274,6 +3278,10 @@ static int public_api_block(int port, enum pdc_cmd_t pdc_cmd)
 				pdc_cmd_names[public_cmd->cmd]);
 			public_cmd->pending = false;
 			return -EBUSY;
+		} else {
+			wait_times++;
+			LOG_ERR("C%d: Public API blocking ... %d: %s", port,
+				wait_times, pdc_cmd_names[public_cmd->cmd]);
 		}
 
 		/* Check for commands that don't require a connection */
@@ -3533,7 +3541,9 @@ static int pdc_power_mgmt_request_power_swap_intern(int port,
 
 void pdc_power_mgmt_request_swap_to_src(int port)
 {
-	pdc_power_mgmt_request_power_swap_intern(port, PD_ROLE_SOURCE);
+	atomic_set_bit(
+		pdc_data[port]->port.snk_policy.flags,
+		SNK_POLICY_SWAP_TO_SRC);
 }
 
 void pdc_power_mgmt_request_swap_to_snk(int port)
