@@ -293,8 +293,8 @@ static int command_battery(int argc, const char **argv)
 	char *e;
 
 #ifdef CONFIG_BATTERY_ACCESS_LIMIT
-	if (BATTERY_ACCESS_NOT_ALLOWED == battery_check_access_limit())
-		return EC_ERROR_ACCESS_DENIED;
+		if (BATTERY_ACCESS_NOT_ALLOWED == battery_check_access_limit())
+				return EC_ERROR_ACCESS_DENIED;
 #endif
 
 	if (argc > 1) {
