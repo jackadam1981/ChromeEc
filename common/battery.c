@@ -53,6 +53,8 @@ static enum battery_cutoff_states battery_cutoff_state =
  */
 enum battery_present battery_is_present(void)
 {
+	ccprintf("battery_is_present: %d\n", gpio_get_level(CONFIG_BATTERY_PRESENT_GPIO));
+
 	/* The GPIO is low when the battery is present */
 	return gpio_get_level(CONFIG_BATTERY_PRESENT_GPIO) ? BP_NO : BP_YES;
 }
@@ -291,11 +293,6 @@ static int command_battery(int argc, const char **argv)
 	int loop;
 	int sleep_ms = 0;
 	char *e;
-
-#ifdef CONFIG_BATTERY_ACCESS_LIMIT
-	if (BATTERY_ACCESS_NOT_ALLOWED == battery_check_access_limit())
-		return EC_ERROR_ACCESS_DENIED;
-#endif
 
 	if (argc > 1) {
 		repeat = strtoi(argv[1], &e, 0);
