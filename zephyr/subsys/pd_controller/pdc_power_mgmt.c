@@ -2577,6 +2577,8 @@ pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 	 */
 	if (port->sink_path_status && battery_is_present() == BP_NO &&
 	    !chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		LOG_INF("battery_is_present: %d\n", battery_is_present());
+
 		LOG_INF("C%d: Dead battery detected. Keep current RDO.",
 			config->connector_num);
 		return EVAL_PDO_OUTCOME_RETAIN_CURRENT_RDO;

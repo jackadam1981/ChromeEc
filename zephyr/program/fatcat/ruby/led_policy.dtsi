@@ -62,7 +62,7 @@
 		power-state-discharge-s3 {
 			charge-state = "LED_PWRS_DISCHARGE";
 			chipset-state = "POWER_S3";
-
+	
 			batter-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
 				color-0 {
