@@ -47,10 +47,7 @@ static void elan80series_use_flash_addresses(const struct device *dev)
 #if DT_ANY_INST_HAS_PROP_STATUS_OKAY(base_image_addr) && \
 	DT_ANY_INST_HAS_PROP_STATUS_OKAY(ft_info_addr)
 	const struct elan80series_cfg *cfg = dev->config;
-
-	if (cfg->base_image_addr != 0 && cfg->ft_info_addr != 0) {
-		use_flash_addresses(cfg->base_image_addr, cfg->ft_info_addr);
-	}
+	use_flash_addresses(cfg->base_image_addr, cfg->ft_info_addr);
 #endif
 }
 
