@@ -12,10 +12,13 @@
 #include "system.h"
 #include "util.h"
 
+#include <string.h>
+
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/pinctrl.h>
 #include <zephyr/drivers/watchdog.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/sys/sys_io.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/toolchain.h>
 
@@ -496,6 +499,78 @@ static int cros_system_npcx_get_reset_cause(const struct device *dev)
 	return data->reset;
 }
 
+/**
+ * Check if a PSL input is active.
+ *
+ * @param name Node full name.
+ * @param psl_cts PSL_CTS register value.
+ * @return True if the PSL input corresponding to the name is active.
+ */
+static bool cros_system_npcx_check_psl_active(const char *name, uint8_t psl_cts)
+{
+	/* PSL input nodes are named psl_in1, psl_in2, etc. */
+	const char *p = strstr(name, "psl_in");
+
+	if (p && p[6] >= '1' && p[6] <= '4') {
+		/* PSL_CTS bits 0-3 correspond to PSL_IN1-PSL_IN4 */
+		int bit = p[6] - '1';
+
+		if (psl_cts & BIT(bit))
+			return true;
+	}
+
+	return false;
+}
+
+/**
+ * Match PSL node with a known wake source label.
+ */
+#define MATCH_PSL_WAKE_SOURCE(node_id, prop, idx, label, source)              \
+	COND_CODE_1(DT_NODE_EXISTS(DT_NODELABEL(label)),                      \
+		    (if (DT_DEP_ORD(DT_PHANDLE_BY_IDX(node_id, prop, idx)) == \
+			 DT_DEP_ORD(DT_NODELABEL(label))) {                   \
+			    wake_source = source;                             \
+		    }),                                                       \
+		    ())
+
+/**
+ * Check if the PSL wake source matches one of the known signals (lid, power
+ * button, AC).
+ */
+#define CHECK_PSL_WAKE(node_id, prop, idx)                                    \
+	if (cros_system_npcx_check_psl_active(                                \
+		    DT_NODE_FULL_NAME(DT_PHANDLE_BY_IDX(node_id, prop, idx)), \
+		    psl_cts)) {                                               \
+		MATCH_PSL_WAKE_SOURCE(node_id, prop, idx, lid_open,           \
+				      WAKE_SOURCE_LID);                       \
+		MATCH_PSL_WAKE_SOURCE(node_id, prop, idx, pwr_btn,            \
+				      WAKE_SOURCE_PWRBTN);                    \
+		MATCH_PSL_WAKE_SOURCE(node_id, prop, idx, acok,               \
+				      WAKE_SOURCE_AC);                        \
+	}
+
+/**
+ * NPCX implementation to get hibernate wake source.
+ *
+ * It reads the PSL_CTS register to find which PSL_IN pin triggered the wake
+ * and then maps it to a wake source using devicetree node labels.
+ */
+static enum hibernate_wake_source
+cros_system_npcx_get_hibernate_wake_source(const struct device *dev)
+{
+	enum hibernate_wake_source wake_source = WAKE_SOURCE_UNKNOWN;
+	struct glue_reg *inst_glue = (struct glue_reg *)(NPCX_GLUE_REG_ADDR);
+	/* PSL_CTS bits 0-3 indicate which PSL_IN triggered wake from hibernate
+	 */
+	uint8_t psl_cts = inst_glue->PSL_CTS & 0xf;
+
+	if (DT_NODE_HAS_STATUS(PSL_NODE, okay)) {
+		DT_FOREACH_PROP_ELEM(PSL_NODE, pinctrl_0, CHECK_PSL_WAKE)
+	}
+
+	return wake_source;
+}
+
 static int cros_system_npcx_init(const struct device *dev)
 {
 	struct scfg_reg *const inst_scfg = HAL_SCFG_INST(dev);
@@ -619,6 +694,7 @@ static DEVICE_API(cros_system, cros_system_driver_npcx_api) = {
 	.chip_vendor = cros_system_npcx_get_chip_vendor,
 	.chip_name = cros_system_npcx_get_chip_name,
 	.chip_revision = cros_system_npcx_get_chip_revision,
+	.get_hibernate_wake_source = cros_system_npcx_get_hibernate_wake_source,
 #ifdef CONFIG_PM
 	.deep_sleep_ticks = cros_system_npcx_deep_sleep_ticks,
 #endif
