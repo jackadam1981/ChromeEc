@@ -45,17 +45,6 @@ static bool is_pr_swap_needed(int port)
 	return pd_get_power_role(port) == PD_ROLE_SINK &&
 	       charge_manager_get_active_charge_port() != port;
 }
-
-static void swap_to_src(void)
-{
-	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
-		if (is_pr_swap_needed(i)) {
-			/* We are a sink, swap to source */
-			pdc_power_mgmt_request_power_swap(i);
-		}
-	}
-}
-DECLARE_DEFERRED(swap_to_src);
 #endif
 
 /* USB-A */
@@ -81,6 +70,10 @@ void xhci_interrupt(enum gpio_signal signal)
 		if (xhci_stat) {
 			/* Apply PDC platform policy, enable DRP toggling */
 			pdc_power_mgmt_set_dual_role(i, PD_DRP_TOGGLE_ON);
+			if (is_pr_swap_needed(i)) {
+				/* We are a sink, swap to source */
+				pdc_power_mgmt_request_power_swap(i);
+			}
 		}
 #else /* CONFIG_PLATFORM_EC_USB_PD_TCPMV2 */
 		/*
@@ -101,15 +94,6 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif /* defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
 	  defined(CONFIG_PDC_POWER_MGMT_USB_MUX) */
-
-#ifdef CONFIG_PDC_POWER_MGMT_USB_MUX
-	/* pdc_power_mgmt_request_swap_to_src is a blocking function, call
-	 * it in hook task instead of IRQ context
-	 */
-	if (xhci_stat) {
-		hook_call_deferred(&swap_to_src_data, 0);
-	}
-#endif
 }
 
 #if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
