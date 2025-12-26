@@ -200,6 +200,16 @@ int charge_manager_get_override(void);
 
 /**
  * Get the current active charge port, as determined by charge manager.
+ *  ** WARNING **
+ *    This API does not use mutex locking,
+ *    make sure your code can handle a stale charge port.
+ *
+ * @return	Current active charge port.
+ */
+int charge_manager_get_active_charge_port_no_lock(void);
+
+/**
+ * Get the current active charge port, as determined by charge manager.
  *
  * @return	Current active charge port.
  */

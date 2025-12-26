@@ -1419,12 +1419,17 @@ int charge_manager_get_override(void)
 	return override_port;
 }
 
+int charge_manager_get_active_charge_port_no_lock(void)
+{
+	return charge_port;
+}
+
 int charge_manager_get_active_charge_port(void)
 {
 	int retval = 0;
 
 	CM_MUTEX_LOCK(&cm_refresh);
-	retval = charge_port;
+	retval = charge_manager_get_active_charge_port_no_lock();
 	CM_MUTEX_UNLOCK(&cm_refresh);
 
 	return retval;
