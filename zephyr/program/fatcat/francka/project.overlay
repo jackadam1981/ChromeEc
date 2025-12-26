@@ -12,6 +12,7 @@
 /* francka project DTS includes */
 
 #include <cros/cbi_flash.dtsi>
+#include <cros/cbi_ufsc_std_schema.dtsi>
 
 #include "adc.dtsi"
 #include "battery.dtsi"
@@ -44,4 +45,50 @@
 	status = "okay";
 	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
 	pinctrl-names = "default";
+};
+
+/* PDC Selector configuration */
+/ {
+	pdc_selector: pdc-selector {
+		compatible = "cros-ec,cbi-ufsc-pdc-selector";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		port0@0 {
+			reg = <0>;
+			selections = <&ufsc_p0_rtk  &pdc_power_p0>,
+			             <&ufsc_p0_ti   &pdc_power_p0_ti>;
+		};
+		port1@1 {
+			reg = <1>;
+			selections = <&ufsc_p1_rtk  &pdc_power_p1>,
+			             <&ufsc_p1_ti   &pdc_power_p1_ti>;
+		};
+	};
+};
+
+/* Define UFSC-Value nodes (should be auto-generated) */
+&ufsc_pdc_chip_vendor_port_0 {
+	ufsc_p0_rtk: rtk {
+		compatible = "cros-ec,cbi-ufsc-value";
+		status = "okay";
+		value = <0>;
+	};
+	ufsc_p0_ti: ti {
+		compatible = "cros-ec,cbi-ufsc-value";
+		status = "okay";
+		value = <1>;
+	};
+};
+
+&ufsc_pdc_chip_vendor_port_1 {
+	ufsc_p1_rtk: rtk {
+		compatible = "cros-ec,cbi-ufsc-value";
+		status = "okay";
+		value = <0>;
+	};
+	ufsc_p1_ti: ti {
+		compatible = "cros-ec,cbi-ufsc-value";
+		status = "okay";
+		value = <1>;
+	};
 };
