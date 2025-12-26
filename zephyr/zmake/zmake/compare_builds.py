@@ -311,15 +311,16 @@ class CompareBuilds:
                         continue
                     for module in os.listdir(module_type_dir):
                         module_dir = os.path.join(module_type_dir, module)
+                        updated_module = zmake.modules.module_name_overrides.get(module, module)
                         if module in flattened_module_list:
                             print(
                                 "Copying module %s to %s",
                                 module,
-                                checkout.modules_dir / module,
+                                checkout.modules_dir / updated_module,
                             )
                             shutil.copytree(
                                 module_dir,
-                                checkout.modules_dir / module,
+                                checkout.modules_dir / updated_module,
                                 dirs_exist_ok=True,
                             )
 
