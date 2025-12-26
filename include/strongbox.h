@@ -207,6 +207,12 @@ struct strongbox_command {
 uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p);
 
 /**
+ * Reset initialization state of the Keymint/SB. This would cause initialization
+ * on first command.
+ */
+void keymint_deinit(void);
+
+/**
  * @brief Bitfield positions and masks for a 32-bit Keymint tag. It is following
  * with AIDL definition in
  * https://source.corp.google.com/h/android/platform/superproject/main/+/main:hardware/interfaces/security/keymint/aidl/android/hardware/security/keymint/Tag.aidl
