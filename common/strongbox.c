@@ -264,6 +264,11 @@ static enum strongbox_error keymint_init(void)
 	return SB_OK;
 }
 
+void keymint_deinit(void)
+{
+	km.initialized = false;
+}
+
 uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 {
 	const struct strongbox_command *cmd_p;
@@ -823,8 +828,9 @@ enum dcrypto_result cryptokey_derive_wrapping(
 	return result;
 }
 
-enum dcrypto_result cryptokey_generate(struct km *km, enum km_algorithm alg,
-				       void *key, size_t key_len)
+static enum dcrypto_result cryptokey_generate(struct km *km,
+					      enum km_algorithm alg, void *key,
+					      size_t key_len)
 {
 	enum dcrypto_result result;
 
@@ -860,21 +866,22 @@ enum dcrypto_result cryptokey_generate(struct km *km, enum km_algorithm alg,
  * @param application_id KM_TAG_APPLICATION_ID slice
  * @param application_data KM_TAG_APPLICATION_DATA slice
  * @param blob_size_words in: max size of output; out: actual size
- * @param out_buf output buffer
+ * @param out_buf output buffer for encrypted key blob
+ * @param key output key buffer for the raw key generated
  * @return enum dcrypto_result
  */
-enum dcrypto_result cryptokey_export_bound(struct km *km, enum km_algorithm alg,
-					   uint32_t *tags_start,
-					   size_t tag_words,
-					   const struct slice application_id,
-					   const struct slice application_data,
-					   size_t *blob_size_words,
-					   uint32_t *out_buf)
+static enum dcrypto_result cryptokey_export_bound(
+	struct km *km, enum km_algorithm alg, uint32_t *tags_start,
+	size_t tag_words, const struct slice application_id,
+	const struct slice application_data, size_t *blob_size_words,
+	uint32_t *out_buf, uint32_t *key)
 {
 	enum dcrypto_result result = DCRYPTO_FAIL;
 	const struct sha256_digest *digest;
-	uint32_t aes_key[KM_AES_ENCRYPT_KEY_WORDS],
-		hmac_key[KM_HMAC_SIGN_KEY_WORDS], key[P256_NDIGITS];
+	struct {
+		uint32_t aes_key[KM_AES_ENCRYPT_KEY_WORDS],
+			hmac_key[KM_HMAC_SIGN_KEY_WORDS];
+	} k;
 
 	uint32_t *blob_size = out_buf;
 	uint8_t *iv;
@@ -893,8 +900,8 @@ enum dcrypto_result cryptokey_export_bound(struct km *km, enum km_algorithm alg,
 	result = cryptokey_derive_wrapping(km, tags_start,
 					   tag_words * sizeof(uint32_t),
 					   application_id, application_data,
-					   aes_key, sizeof(aes_key), hmac_key,
-					   sizeof(hmac_key));
+					   k.aes_key, sizeof(k.aes_key),
+					   k.hmac_key, sizeof(k.hmac_key));
 	if (result != DCRYPTO_OK)
 		goto clean;
 
@@ -905,23 +912,24 @@ enum dcrypto_result cryptokey_export_bound(struct km *km, enum km_algorithm alg,
 	out_buf += KM_AES_IV_WORDS;
 
 	/* So far hardcoded to 256-bit key */
-	result = cryptokey_generate(km, alg, key, sizeof(key));
+	result = cryptokey_generate(km, alg, key, P256_NBYTES);
 	if (result != DCRYPTO_OK)
 		goto clean;
 
 	/* Encrypt key */
-	result = DCRYPTO_aes_ctr((uint8_t *)out_buf, (uint8_t *)aes_key,
+	result = DCRYPTO_aes_ctr((uint8_t *)out_buf, (uint8_t *)k.aes_key,
 				 KM_AES_ENCRYPT_KEY_BITS, iv, (uint8_t *)key,
-				 sizeof(key));
+				 P256_NBYTES);
 	if (result != DCRYPTO_OK)
 		goto clean;
-	out_buf += sizeof(key) / sizeof(uint32_t);
+	out_buf += P256_NBYTES / sizeof(uint32_t);
 
 	/* Add an HMAC tag for integrity */
-	result = DCRYPTO_hw_hmac_sha256_init(&sha, hmac_key, sizeof(hmac_key));
+	result = DCRYPTO_hw_hmac_sha256_init(&sha, k.hmac_key,
+					     sizeof(k.hmac_key));
 	if (result != DCRYPTO_OK)
 		goto clean;
-	HMAC_SHA256_update(&sha, key, sizeof(key));
+	HMAC_SHA256_update(&sha, key, P256_NBYTES);
 	digest = HMAC_SHA256_final(&sha);
 
 	memcpy(out_buf, digest->b8, SHA256_DIGEST_SIZE);
@@ -931,8 +939,7 @@ enum dcrypto_result cryptokey_export_bound(struct km *km, enum km_algorithm alg,
 	*blob_size_words = out_buf - blob_size;
 	result = DCRYPTO_OK;
 clean:
-	always_memset(aes_key, 0xAA, sizeof(aes_key));
-	always_memset(hmac_key, 0xAA, sizeof(hmac_key));
+	always_memset(&k, 0xAA, sizeof(k));
 	return result;
 }
 
@@ -943,8 +950,10 @@ enum dcrypto_result cryptokey_import_bound(
 {
 	enum dcrypto_result result = DCRYPTO_FAIL;
 	const struct sha256_digest *digest;
-	uint32_t aes_key[KM_AES_ENCRYPT_KEY_WORDS],
-		hmac_key[KM_HMAC_SIGN_KEY_WORDS];
+	struct {
+		uint32_t aes_key[KM_AES_ENCRYPT_KEY_WORDS],
+			hmac_key[KM_HMAC_SIGN_KEY_WORDS];
+	} k;
 	uint32_t blob_size = blob[0];
 	uint8_t *iv;
 	struct hmac_sha256_ctx sha;
@@ -967,8 +976,8 @@ enum dcrypto_result cryptokey_import_bound(
 	result = cryptokey_derive_wrapping(km, tags_start,
 					   tag_words * sizeof(uint32_t),
 					   application_id, application_data,
-					   aes_key, sizeof(aes_key), hmac_key,
-					   sizeof(hmac_key));
+					   k.aes_key, sizeof(k.aes_key),
+					   k.hmac_key, sizeof(k.hmac_key));
 	if (result != DCRYPTO_OK)
 		goto clean;
 
@@ -976,7 +985,7 @@ enum dcrypto_result cryptokey_import_bound(
 	blob += KM_AES_IV_WORDS;
 
 	/* Decrypt key */
-	result = DCRYPTO_aes_ctr((uint8_t *)key, (uint8_t *)aes_key,
+	result = DCRYPTO_aes_ctr((uint8_t *)key, (uint8_t *)k.aes_key,
 				 KM_AES_ENCRYPT_KEY_BITS, iv, (uint8_t *)blob,
 				 key_size);
 
@@ -985,7 +994,8 @@ enum dcrypto_result cryptokey_import_bound(
 	blob += key_size / sizeof(uint32_t);
 
 	/* Verify integrity using HMAC tag */
-	result = DCRYPTO_hw_hmac_sha256_init(&sha, hmac_key, sizeof(hmac_key));
+	result = DCRYPTO_hw_hmac_sha256_init(&sha, k.hmac_key,
+					     sizeof(k.hmac_key));
 	if (result != DCRYPTO_OK)
 		goto clean;
 	HMAC_SHA256_update(&sha, key, key_size);
@@ -997,8 +1007,7 @@ enum dcrypto_result cryptokey_import_bound(
 	} else
 		result = DCRYPTO_OK;
 clean:
-	always_memset(aes_key, 0xAA, sizeof(aes_key));
-	always_memset(hmac_key, 0xAA, sizeof(hmac_key));
+	always_memset(&k, 0xAA, sizeof(k));
 	return result;
 }
 
@@ -1057,7 +1066,7 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	uint32_t hw_tag_words, sw_tag_words, tag_words, key_blob_size;
 	enum dcrypto_result result;
 	enum strongbox_error err;
-	uint32_t digest_flags, purpose_flags;
+	uint32_t digest_flags, purpose_flags, key_alg, key_size;
 
 	/* Blobs have a fixed elements in structure.
 	 * see `process_gen_import_tags`
@@ -1100,6 +1109,11 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 	digest_flags = params->attrs.digest_flags;
 	params->attrs.digest_flags = 0;
 	purpose_flags = params->attrs.purpose_flags;
+	key_alg = params->attrs.algorithm;
+	key_size = params->attrs.key_size;
+	params->attrs.algorithm = 0;
+	params->attrs.key_size = 0;
+
 	/* Process additional parameters to get application id and data */
 	err = parse_params(param_tags, param_tags_words, params);
 	if (err != SB_OK)
@@ -1112,6 +1126,13 @@ static enum strongbox_error import_blob(struct km *km, const uint32_t *buf,
 		params->attrs.digest_flags &= digest_flags;
 	else
 		params->attrs.digest_flags = digest_flags;
+
+	if (params->attrs.algorithm && params->attrs.algorithm != key_alg)
+		return SBERR_IncompatibleAlgorithm;
+	if (params->attrs.key_size && params->attrs.key_size != key_size)
+		return SBERR_IncompatibleAlgorithm;
+	params->attrs.algorithm = key_alg;
+	params->attrs.key_size = key_size;
 
 	/* Purpose is HW enforced, don't update it. */
 	params->attrs.purpose_flags = purpose_flags;
@@ -1159,37 +1180,72 @@ static enum strongbox_error generate_key_blob(
 	struct km *km, const uint32_t *tags, size_t tag_words,
 	uint32_t *out_buf, size_t *out_words, enum attest attest)
 {
-	struct km_key_params params = { 0 };
-	struct km_key_params sign_params = { 0 };
-	p256_int attest_key;
+	struct {
+		struct km_key_params params;
+		struct km_key_params sign_params;
+		p256_int attest_key;
+		uint32_t key[P256_NDIGITS];
+	} k;
 	uint32_t *key_blob_size = out_buf;
 	size_t blob_start_words = 0;
 	size_t blob_size_words;
 	size_t total_words;
 	size_t out_buf_words = *out_words;
 	uint32_t *cert_size;
+
 	enum dcrypto_result result;
 	enum strongbox_error err;
 
+	always_memset(&k, 0, sizeof(k));
 	/* Reserve 1 word for size field (in 32-bit words) */
 	out_buf += 1;
 	out_buf_words -= 1;
 
-	params.attrs.algorithm = -1;
-	err = process_gen_import_tags(km, &params, KM_ORIGIN_GENERATED, tags,
+	k.params.attrs.algorithm = -1;
+	err = process_gen_import_tags(km, &k.params, KM_ORIGIN_GENERATED, tags,
 				      tag_words, out_buf, out_buf_words,
 				      &blob_start_words);
 	if (err != SB_OK)
 		return err;
 
+	err = SBERR_Unimplemented;
+
+	/* Return more specific error for unsupported RSA and AES keys.*/
+	if (k.params.attrs.algorithm == KM_ALG_RSA) {
+		if (k.params.attrs.key_size != 1024 &&
+		    k.params.attrs.key_size != 2048)
+			err = SBERR_UnsupportedKeySize;
+		if (k.params.attrs.rsa_exponent != 3 &&
+		    k.params.attrs.rsa_exponent != 65537)
+			err = SBERR_InvalidArgument;
+	}
+
+	if (k.params.attrs.algorithm == KM_ALG_AES) {
+		if ((k.params.attrs.key_size != 128 &&
+		     k.params.attrs.key_size != 192 &&
+		     k.params.attrs.key_size != 256))
+			err = SBERR_UnsupportedKeySize;
+	}
+	if (k.params.attrs.algorithm != KM_ALG_EC)
+		goto cleanup;
+
+	/* Need at least one of the curve_id or
+	 * key size to be specified.
+	 */
+	if (k.params.attrs.curve_id != KM_EC_CURVE_P_256 &&
+	    k.params.attrs.key_size != 256)
+		goto cleanup;
+
+	err = SBERR_InsufficientBufferSpace;
+
 	if (blob_start_words >= out_buf_words)
-		return SBERR_UnknownError;
+		goto cleanup;
 
 	if (attest == ATTEST_TRUE) {
 		size_t attest_key_space, attest_key_size = 0;
 		/* Check below is already done, but keep it for safety */
 		if (tags[0] > tag_words - 1)
-			return SBERR_UnknownError;
+			goto cleanup; /* return SBERR_UnknownError; */
 		attest_key_space = tag_words - tags[0] - 1;
 		if (attest_key_space >= 1) {
 			/* peek into blob's total size */
@@ -1204,49 +1260,27 @@ static enum strongbox_error generate_key_blob(
 			attest = ATTEST_NO_KEY;
 		} else {
 			/* Check if attest key blob is plausible */
-			if (attest_key_size + 1 != attest_key_space)
-				return SBERR_InvalidKeyBlob;
+			if (attest_key_size + 1 != attest_key_space) {
+				err = SBERR_InvalidKeyBlob;
+				goto cleanup;
+			}
 			/* Import attestation key, skipping length */
 			err = import_blob(km, tags + tags[0] + 2,
 					  attest_key_size, NULL, 0,
-					  &sign_params, attest_key.a);
+					  &k.sign_params, k.attest_key.a);
 			if (err != SB_OK)
-				return err;
-			if ((sign_params.attrs.purpose_flags &
+				goto cleanup;
+			if ((k.sign_params.attrs.purpose_flags &
 			     ((1 << KM_PURPOSE_SIGN) |
-			      (1 << KM_PURPOSE_ATTEST_KEY))) == 0)
-				return SBERR_IncompatiblePurpose;
+			      (1 << KM_PURPOSE_ATTEST_KEY))) == 0) {
+				err = SBERR_IncompatiblePurpose;
+				goto cleanup;
+			}
 		}
 	}
 
 	/* Set max size for the actual key blob */
 	blob_size_words = out_buf_words - blob_start_words;
-
-	if (params.attrs.algorithm == KM_ALG_RSA) {
-		if (params.attrs.key_size != 1024 &&
-		    params.attrs.key_size != 2048)
-			return SBERR_UnsupportedKeySize;
-		if (params.attrs.rsa_exponent != 3 &&
-		    params.attrs.rsa_exponent != 65537)
-			return SBERR_InvalidArgument;
-		return SBERR_Unimplemented;
-	}
-
-	if (params.attrs.algorithm == KM_ALG_AES) {
-		if ((params.attrs.key_size != 128 &&
-		     params.attrs.key_size != 192 &&
-		     params.attrs.key_size != 256))
-			return SBERR_UnsupportedKeySize;
-	}
-	if (params.attrs.algorithm != KM_ALG_EC)
-		return SBERR_Unimplemented;
-
-	/* Need at least one of the curve_id or
-	 * key size to be specified.
-	 */
-	if (params.attrs.curve_id != KM_EC_CURVE_P_256 &&
-	    params.attrs.key_size != 256)
-		return SBERR_Unimplemented;
 
 	/* Create a random key and place it into encrypted key blob with
 	 * security tag. Encrypted blob is bound to all the tags and the
@@ -1254,14 +1288,24 @@ static enum strongbox_error generate_key_blob(
 	 * the key characteristics, but provided later with the `begin`
 	 * operation.
 	 */
-	result = cryptokey_export_bound(km, params.attrs.algorithm, out_buf,
-					blob_start_words, params.application_id,
-					params.application_data,
-					&blob_size_words,
-					&out_buf[blob_start_words]);
-	if (result != DCRYPTO_OK)
-		return SBERR_UnknownError;
-
+	result = cryptokey_export_bound(
+		km, k.params.attrs.algorithm, out_buf, blob_start_words,
+		k.params.application_id, k.params.application_data,
+		&blob_size_words, &out_buf[blob_start_words], k.key);
+	if (result != DCRYPTO_OK) {
+		err = SBERR_UnknownError;
+		goto cleanup;
+	}
+	if (attest == ATTEST_NO_KEY &&
+	    (k.params.attrs.purpose_flags &
+	     ((1 << KM_PURPOSE_SIGN) | (1 << KM_PURPOSE_ATTEST_KEY)))) {
+		/* If no attestation key is provided and generated key is SIGN
+		 * or ATTEST, use self-signed certificate.
+		 */
+		memcpy(k.attest_key.a, k.key, sizeof(k.attest_key));
+		k.sign_params = k.params;
+		attest = ATTEST_TRUE;
+	}
 	total_words = blob_start_words + blob_size_words;
 	/* Total size of key blob in 32-bit words */
 	*key_blob_size = total_words;
@@ -1274,14 +1318,14 @@ static enum strongbox_error generate_key_blob(
 		 * specified during generateKey and importKey. If not provided
 		 * the subject name shall default to CN="Android Keystore Key".
 		 */
-		if (!params.certificate_subject.p) {
+		if (!k.params.certificate_subject.p) {
 			static const char cname[] = "Android Keystore Key";
 
-			params.certificate_subject = SLICE_STR(cname);
+			k.params.certificate_subject = SLICE_STR(cname);
 		}
 		*cert_size = SB_cert_name(
-			&attest_key, &km->last_pk_x, &km->last_pk_y, &params,
-			(uint8_t *)(cert_size + 1),
+			&k.attest_key, &km->last_pk_x, &km->last_pk_y,
+			&k.params, (uint8_t *)(cert_size + 1),
 			(out_buf_words - total_words - 1) * sizeof(uint32_t));
 		/* Prepend certificate with 32-bit little-endian size field. */
 		total_words += (*cert_size + 3 + sizeof(*cert_size)) /
@@ -1292,7 +1336,10 @@ static enum strongbox_error generate_key_blob(
 		*cert_size = 0;
 	}
 	*out_words = total_words + 1; /* + blob size */
-	return SB_OK;
+	err = SB_OK;
+cleanup:
+	always_memset(&k, 0, sizeof(k));
+	return err;
 };
 
 /**
@@ -2736,7 +2783,7 @@ static void add_km_enforcements(struct asn1 *ctx,
 				const struct km_key_params *params)
 {
 	/* softwareEnforced */
-	SEQ_START(*ctx, V_SEQ, SEQ_MEDIUM)
+	SEQ_START(*ctx, V_SEQ, SEQ_LARGE)
 	{
 		if (params->creationDateTime)
 			asn1_explicit_int(ctx, 701, params->creationDateTime);
