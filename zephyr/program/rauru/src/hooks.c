@@ -17,6 +17,9 @@
 #include "usbc/pdc_power_mgmt.h"
 
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(rauru_hooks, LOG_LEVEL_INF);
 
 static void rauru_common_init(void)
 {
@@ -42,8 +45,12 @@ DECLARE_HOOK(HOOK_INIT, rauru_common_init, HOOK_PRIO_PRE_DEFAULT);
 #ifdef CONFIG_PDC_POWER_MGMT_USB_MUX
 static bool is_pr_swap_needed(int port)
 {
-	return pd_get_power_role(port) == PD_ROLE_SINK &&
-	       charge_manager_get_active_charge_port_no_lock() != port;
+	int connected = pdc_power_mgmt_is_connected(port);
+	int active_charge_port = charge_manager_get_active_charge_port_no_lock();
+	enum pd_power_role role = pd_get_power_role(port);
+	LOG_INF("C%d: swap_to_src check ======================== connected %d role %d ap %d",
+			port, connected, role, active_charge_port);
+	return connected && role == PD_ROLE_SINK && active_charge_port != port;
 }
 #endif
 
@@ -60,6 +67,8 @@ void xhci_interrupt(enum gpio_signal signal)
 		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
 	}
 #endif
+
+	LOG_INF("xhci_interrupt start ======================== time %d", (int)(get_time().val));
 
 #if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
 	defined(CONFIG_PDC_POWER_MGMT_USB_MUX)
@@ -94,6 +103,8 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif /* defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
 	  defined(CONFIG_PDC_POWER_MGMT_USB_MUX) */
+
+	LOG_INF("xhci_interrupt end   ======================== time %d", (int)(get_time().val));
 }
 
 #if defined(CONFIG_PLATFORM_EC_USB_PD_TCPMV2) || \
