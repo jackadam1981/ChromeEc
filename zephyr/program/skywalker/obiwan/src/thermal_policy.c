@@ -4,17 +4,30 @@
  */
 
 #include "charge_state.h"
+#include "console.h"
+#include "driver/charger/bq25710.h"
+#include "driver/charger/bq257x0_regs.h"
 #include "extpower.h"
 #include "hooks.h"
 #include "power.h"
 #include "temp_sensor/temp_sensor.h"
 #include "usb_pd.h"
+#include "util.h"
 
 #define POLL_COUNT 3
 #define CHARGER_LIMIT_LEVELS 4
 #define TYPEC_LIMIT_LEVELS 3
 #define TEMP_MAX 120
 #define TEMP_MIN 0
+
+#define BATT_2_CELL 2
+#define BATT_3_CELL 3
+#define BATT_2_CELL_VSYS 6600
+#define BATT_3_CELL_VSYS 9200
+#define RETRY_CHARGER 3
+
+#define MODEL_L25D2PK6 "l25d2pk6"
+#define MODEL_L25N2PK6 "l25n2pk6"
 
 static int current_limit;
 
@@ -25,6 +38,10 @@ static uint8_t charger_release_cnt = 0;
 static uint8_t typec_limit_level = 0;
 static uint8_t typec_trigger_cnt = 0;
 static uint8_t typec_release_cnt = 0;
+
+static uint8_t pre_battery_cells = BATT_3_CELL;
+static bool check_charger_state = false;
+static uint8_t retry_charger_cyc = 0;
 
 typedef enum {
 	LIMIT_NONE = 9999,
@@ -195,10 +212,89 @@ static void update_current_limit(void)
 }
 DECLARE_HOOK(HOOK_SECOND, update_current_limit, HOOK_PRIO_TEMP_SENSOR_DONE);
 
+static inline int min_system_reg_to_voltage_mv(int reg)
+{
+	int steps;
+	steps = GET_BQ_FIELD(BQ25710, MIN_SYSTEM, VOLTAGE, reg);
+	return steps * BQ25710_MIN_SYSTEM_VOLTAGE_STEP_MV;
+}
+
+static bool is_2s_battery(const char *model)
+{
+	return !strncasecmp(model, MODEL_L25D2PK6, strlen(MODEL_L25D2PK6)) ||
+	       !strncasecmp(model, MODEL_L25N2PK6, strlen(MODEL_L25N2PK6));
+}
+
+void battery_policy(void)
+{
+	struct battery_static_info *bs = &battery_static[BATT_IDX_MAIN];
+
+	if (!is_2s_battery(bs->model_ext)) {
+		/* 3-cell*/
+		if (pre_battery_cells != BATT_3_CELL) {
+			pre_battery_cells = BATT_3_CELL;
+			check_charger_state = true;
+			retry_charger_cyc = 0;
+		}
+	} else {
+		/* 2-cell*/
+		if (pre_battery_cells != BATT_2_CELL) {
+			pre_battery_cells = BATT_2_CELL;
+			check_charger_state = true;
+			retry_charger_cyc = 0;
+		}
+	}
+
+	if (check_charger_state == true) {
+		if (retry_charger_cyc >= RETRY_CHARGER) {
+			check_charger_state = false;
+			return;
+		}
+		int value, vsys;
+		bq25710_set_min_system_voltage(
+			0, pre_battery_cells == BATT_2_CELL ? BATT_2_CELL_VSYS :
+							      BATT_3_CELL_VSYS);
+		if (i2c_read16(chg_chips[0].i2c_port,
+			       chg_chips[0].i2c_addr_flags,
+			       BQ25710_REG_MIN_SYSTEM_VOLTAGE, &value)) {
+			ccprints("charger read failed");
+			retry_charger_cyc++;
+			return;
+		}
+
+		vsys = min_system_reg_to_voltage_mv(value);
+		retry_charger_cyc++;
+
+		if (pre_battery_cells == BATT_2_CELL &&
+		    vsys >= BATT_2_CELL_VSYS && vsys <= BATT_3_CELL_VSYS) {
+			check_charger_state = false;
+			return;
+		} else if (pre_battery_cells == BATT_3_CELL &&
+			   vsys >= BATT_3_CELL_VSYS) {
+			check_charger_state = false;
+			return;
+		} else {
+			ccprints("charger vsys set %d but read %d",
+				 pre_battery_cells == BATT_2_CELL ?
+					 BATT_2_CELL_VSYS :
+					 BATT_3_CELL_VSYS,
+				 vsys);
+
+			if (retry_charger_cyc >= RETRY_CHARGER) {
+				for (int i = 0;
+				     i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+					pd_set_suspend(i, 1);
+				}
+			}
+		}
+	}
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
 	curr->requested_current = min(curr->requested_current, current_limit);
 
+	battery_policy();
 	return EC_SUCCESS;
 }
 
