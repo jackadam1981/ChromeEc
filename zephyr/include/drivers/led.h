@@ -173,6 +173,8 @@ struct led_pattern_node_t {
 	enum led_transition transition;
 	struct pattern_color_node_t *pattern_color;
 	uint8_t pattern_len;
+	uint8_t cycle_limit;
+	uint8_t cycle_curr;
 };
 
 #define GET_COLOR(pattern_element, color_index) \
