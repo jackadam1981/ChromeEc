@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b949fcea_cc879f54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-29T14:14:54Z",
+      "side": 1,
+      "message": "The test cases you have written is touching/covering enough lines of code, but I am not convinced that it is testing things as intended. Eg. as per your `test_pd_set_power_supply_ready()` I expect it to execute lines #103 and #105 in src/usbc.c and `test_pd_power_supply_reset()` to cover #119. This suggests that those tests are not running as expected.",
+      "revId": "0563294828cf0c8d2b1081d6358383633fff7420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd31902_9e0c9332",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-29T14:14:54Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "0563294828cf0c8d2b1081d6358383633fff7420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e571f938_facb72d5",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-29T14:14:54Z",
+      "side": 1,
+      "message": "Redundant, will always be true",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "0563294828cf0c8d2b1081d6358383633fff7420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
