@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31dd6b5_b283c7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2025-12-29T23:47:23Z",
+      "side": 1,
+      "message": "The CQ is failing the `drivers.rt3645` test when using the `host` toolchain.\n\nTo reproduce locally:\n```\n./twister -ivc -s drivers.rt3645 --toolchain host\n```",
+      "revId": "ff93e382a3bd947246e00b89d1398f8316b6a26c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
