@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9d7b1a03_fa507508",
+        "filename": "zephyr/Makefile.cq",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-12-29T16:50:41Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "eb74a2f3_94805a17",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59cd9ddb_57fd863f",
         "filename": "zephyr/firmware_builder.py",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2025-11-10T15:54:59Z",
       "side": 0,
       "message": "I think we need to keep the legacy tests.  They provide some coverage of shared code.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 80
+      },
+      "revId": "0d32427749a605524cc66c5a0926b810d5676c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2bf2852_41b3ca22",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-12-29T16:50:41Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "445500b9_31bf2bd2",
       "range": {
         "startLine": 503,
         "startChar": 0,
