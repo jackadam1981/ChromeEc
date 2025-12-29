@@ -16,7 +16,23 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
+<<<<<<< Updated upstream:zephyr/program/ocelot/kodkod/led_policy.dtsi
 					led-color = <&battery_led_amber>;
+=======
+					led-color = "LED_WHITE";
+				};
+			};
+		};
+
+		power-state-near-full {
+			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+
+			batter-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_OFF";
+>>>>>>> Stashed changes:zephyr/program/skywalker/vader/led_policy.dtsi
 				};
 			};
 		};
@@ -31,7 +47,7 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = <&battery_led_off>;
+					led-color = "LED_OFF";
 				};
 			};
 		};
@@ -44,7 +60,7 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = <&battery_led_off>;
+					led-color = "LED_OFF";
 				};
 			};
 		};
@@ -57,7 +73,7 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = <&battery_led_off>;
+					led-color = "LED_OFF";
 				};
 			};
 		};
@@ -71,13 +87,49 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
+<<<<<<< Updated upstream:zephyr/program/ocelot/kodkod/led_policy.dtsi
 					led-color = <&battery_led_amber>;
+=======
+					led-color = "LED_AMBER";
+				};
+			};
+		};
+
+		power-state-discharge-s3-batt-low {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S3";
+			batt-lvl = <BATTERY_LEVEL_EMPTY BATTERY_LEVEL_LOW>;
+
+			batter-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = "LED_AMBER";
+				};
+			};
+		};
+
+		power-state-error-s0 {
+			charge-state = "LED_PWRS_ERROR";
+			chipset-state = "POWER_S0";
+
+			batter-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+				/* Amber 1 sec, off 1 sec */
+				color-0 {
+					led-color = "LED_AMBER";
+>>>>>>> Stashed changes:zephyr/program/skywalker/vader/led_policy.dtsi
 					period-ms = <1000>;
 				};
 
 				color-1 {
+<<<<<<< Updated upstream:zephyr/program/ocelot/kodkod/led_policy.dtsi
 					led-color = <&battery_led_off>;
 					period-ms = <3000>;
+=======
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+>>>>>>> Stashed changes:zephyr/program/skywalker/vader/led_policy.dtsi
 				};
 			};
 		};
@@ -90,11 +142,11 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = <&battery_led_amber>;
+					led-color = "LED_AMBER";
 					period-ms = <1000>;
 				};
 				color-1 {
-					led-color = <&battery_led_off>;
+					led-color = "LED_OFF";
 					period-ms = <1000>;
 				};
 			};
@@ -107,7 +159,16 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
+<<<<<<< Updated upstream:zephyr/program/ocelot/kodkod/led_policy.dtsi
 					led-color = <&battery_led_amber>;
+=======
+					led-color = "LED_AMBER";
+					period-ms = <1000>;
+				};
+				color-1 {
+					led-color = "LED_OFF";
+					period-ms = <1000>;
+>>>>>>> Stashed changes:zephyr/program/skywalker/vader/led_policy.dtsi
 				};
 			};
 		};
@@ -119,7 +180,7 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = <&battery_led_off>;
+					led-color = "LED_OFF";
 				};
 			};
 		};
@@ -131,7 +192,7 @@
 				led-id = "EC_LED_ID_BATTERY_LED";
 
 				color-0 {
-					led-color = <&battery_led_off>;
+					led-color = "LED_OFF";
 				};
 			};
 		};
