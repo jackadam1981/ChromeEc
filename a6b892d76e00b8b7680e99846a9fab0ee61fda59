@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545fbde9_e5b0ec78",
+        "filename": "zephyr/Makefile.cq",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2025-12-29T23:50:20Z",
+      "side": 1,
+      "message": "You want to delete the files in the platform/ec dir, not here. So probably add ../ to all of these.",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 43
+      },
+      "revId": "a6b892d76e00b8b7680e99846a9fab0ee61fda59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
