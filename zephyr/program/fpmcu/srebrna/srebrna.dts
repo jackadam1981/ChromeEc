@@ -1,0 +1,185 @@
+/* Copyright 2023 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <egis/common_priv.dtsi>
+
+#include "soc.dtsi"
+#include "gpio.dtsi"
+#include "rwsig.dtsi"
+
+#include <cros/integrated_fwid.dtsi>
+
+#define EGIS_EC660_COMMON_IMAGE_PROPS \
+	width = <96>; \
+	height = <100>; \
+	bits-per-pixel = <8>; \
+	frame-size = <10260>; \
+	v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
+/ {
+	chosen {
+		cros-fp,fingerprint-sensor = &fp_sensor;
+		cros-ec,flash = &p25q16;
+		zephyr,flash = &p25q16;
+		zephyr,flash-controller = &p25q16;
+		flash-header = &flash_header;
+	};
+
+	named-bbram-regions {
+		compatible = "named-bbram-regions";
+
+		scratchpad {
+			offset = <0x00>;
+			size = <0x02>;
+		};
+		saved-reset-flags {
+			offset = <0x02>;
+			size = <0x04>;
+		};
+		saved-panic-reason {
+			offset = <0x06>;
+			size = <0x02>;
+		};
+		saved-panic-info {
+			offset = <0x08>;
+			size = <0x02>;
+		};
+		saved-panic-exception {
+			offset = <0x0a>;
+			size = <0x02>;
+		};
+		saved-panic-flags {
+			offset = <0x0c>;
+			size = <0x02>;
+		};
+	};
+
+
+	/* Map the sections to fit the flash chip protection table */ 
+	binman {
+		/* SDCP flash header 4kB */
+
+		/* Fill 1/4 of 1MB */
+		wp-ro {
+			size = <0x40000>;
+			flash-header {
+				offset = <0x0>;
+				size = <0x1000>;
+				type = "blob";
+				filename = "../build-ro/flash_header.bin";
+			};
+			ec-ro {
+				offset = <0x1000>;
+				size = <(0x40000 - 0x1000)>;
+				pad-byte = <0xff>;
+			};
+		};
+
+		/* Use the rest for RW + Rollbacks. Erase unit(4kB) per rollback */
+		rollback0 {
+			offset = <0x40000>;
+			size = <0x1000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		rollback1 {
+			offset = <0x41000>;
+			size = <0x1000>;
+			type = "blob";
+			filename = "../build-rw/rollback_initial_data.bin";
+		};
+
+		ec-rw {
+			offset = <0x42000>;
+			size = <0xb1000>;
+			rw-fw {
+				/*
+				 * Clang doesn't emit STT_SECTION symbols (also
+				 * called 'section symbols'), so 'rom_start'
+				 * symbol is not available. Fortunately, Zephyr
+				 * linker scripts provide '__rom_start_address'
+				 * symbol which points to the beginning of
+				 * 'rom_start' section.
+				 */
+				zephyr-rw {
+					elf-base-sym = "__rom_start_address";
+				};
+			};
+		};
+
+                instance_data {
+                        offset = <0xf3000>;
+                        size = <0xd000>;
+                };
+		pad-byte = <0xff>;
+	};
+};
+
+&spi0 {
+	p25q16: qspi-nor-flash {
+		compatible = "andestech,qspi-nor-xip", "jedec,spi-nor";
+		size = <DT_SIZE_K(1024)>;
+		status = "okay";
+	};
+};
+
+&p25q16 {
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		calibration_data: partition@1b9 {
+			label = "calibration_data";
+			reg = <0x1b9 256>;
+		};
+
+		rollback0: partition@40000 {
+			label = "rollback0";
+			reg = <0x40000 DT_SIZE_K(4)>;
+		};
+
+		rollback1: partition@41000 {
+			label = "rollback1";
+			reg = <0x41000 DT_SIZE_K(4)>;
+		};
+	};
+};
+
+&spi1 {
+	fp_sensor: ec660@0 {
+		compatible = "egis,ec660";
+		reg = <0>;
+		spi-max-frequency = <4000000>;
+
+		configs {
+			compatible = "fingerprint-image-frame-params";
+			config0 {
+				EGIS_EC660_COMMON_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT";
+			};
+                        config1 {
+                                EGIS_EC660_COMMON_IMAGE_PROPS
+                                capture-type = "FINGERPRINT_CAPTURE_TYPE_SIMPLE_IMAGE";
+                        };
+                        config2 {
+                                EGIS_EC660_COMMON_IMAGE_PROPS
+                                capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN0";
+                        };
+                        config3 {
+                                EGIS_EC660_COMMON_IMAGE_PROPS
+                                capture-type = "FINGERPRINT_CAPTURE_TYPE_PATTERN1";
+                        };
+                        config4 {
+                                EGIS_EC660_COMMON_IMAGE_PROPS
+                                capture-type = "FINGERPRINT_CAPTURE_TYPE_RESET_TEST";
+                        };
+		};
+
+		irq-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+	};
+};
