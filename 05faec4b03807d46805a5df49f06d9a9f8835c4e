@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9852c355_5b859aa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2025-12-30T22:33:10Z",
+      "side": 1,
+      "message": "This is not a proper fix for this issue. Changing the PDC log level to ERR may severely impact ability to analyze/debug issues seen in the field.",
+      "revId": "05faec4b03807d46805a5df49f06d9a9f8835c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
