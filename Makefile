@@ -368,7 +368,6 @@ endif
 include test/build.mk
 include third_party/build.mk
 include util/build.mk
-include util/lock/build.mk
 
 
 ifeq ($(CONFIG_BORINGSSL_CRYPTO), y)

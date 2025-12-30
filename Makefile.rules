@@ -211,12 +211,8 @@ build_boards: | $(FAILED_BOARDS_DIR)
 	@rm -f $(FAILED_BOARDS_DIR)/*
 	$(MAKE) try_build_boards
 
-.PHONY: check_undef
-check_undef:
-	$(call quiet,check_undef)
-
 .PHONY: buildall_only
-buildall_only: build_boards build_cros_ec_commands check_undef
+buildall_only: build_boards
 	$(MAKE) BOARD=host utils
 	$(MAKE) buildfuzztests
 
@@ -247,15 +243,9 @@ print-boards:
 	$(call cmd_pretty_print_list,\
 		$(sort $(boards)))
 
-cmd_check_allowed = true
-cmd_check_undef = true
-quiet_cmd_check_allowed = CHECK_ALLOWED ${config}
-quiet_cmd_check_undef = CHECK_UNDEF
-
 # Print any important notices at the end of the build.
 .PHONY: notice
 notice: $(config)
-	$(call quiet,check_allowed)
 
 proj-%: | $(FAILED_BOARDS_DIR)
 	@touch $(FAILED_BOARDS_DIR)/$*
@@ -911,15 +901,6 @@ endif
 stats: build_boards
 	$(call cmd_stats,RO)
 	$(call cmd_stats,RW)
-
-
-out_cros_ec_commands=build/kernel/include/linux/mfd/cros_ec_commands.h
-.PHONY: build_cros_ec_commands
-build_cros_ec_commands: $(out_cros_ec_commands)
-
-
-$(out_cros_ec_commands): include/ec_commands.h util/make_linux_ec_commands_h.sh
-	util/make_linux_ec_commands_h.sh $< $@
 
 # Include IDE configurations targets.
 include Makefile.ide
