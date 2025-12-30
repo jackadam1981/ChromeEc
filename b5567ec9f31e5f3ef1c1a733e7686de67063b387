@@ -22,6 +22,30 @@
       },
       "revId": "b5567ec9f31e5f3ef1c1a733e7686de67063b387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f7d438_46beece5",
+        "filename": "zephyr/program/bluey/src/chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-30T17:23:31Z",
+      "side": 1,
+      "message": "Moved this implementation to https://chromium-review.googlesource.com/q/topic:%22hibernate_wake_source%22",
+      "parentUuid": "5f65bc2b_156d8137",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "b5567ec9f31e5f3ef1c1a733e7686de67063b387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
