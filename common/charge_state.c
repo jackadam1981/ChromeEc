@@ -1811,8 +1811,13 @@ enum led_pwr_state led_pwr_get_state(void)
 		/* we're in battery discovery mode */
 		if (chflags & CHARGE_LED_FLAG_FORCE_IDLE)
 			return LED_PWRS_FORCED_IDLE;
-		else
+		else {
+#ifndef CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO
+			if (battery_is_present() == BP_NOT_SURE)
+				return LED_PWRS_ERROR;
+#endif
 			return LED_PWRS_IDLE;
+		}
 	default:
 		/* Anything else can be considered an error for LED purposes */
 		return LED_PWRS_ERROR;
