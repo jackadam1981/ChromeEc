@@ -62,6 +62,30 @@
       },
       "revId": "9a5af59e10a8750e517011d9b4f70a09617cf3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d153645_70d3ba7a",
+        "filename": "zephyr/shim/chip/npcx/system_hibernate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2025-12-30T17:23:04Z",
+      "side": 1,
+      "message": "Moved this implementation to https://chromium-review.googlesource.com/q/topic:%22hibernate_wake_source%22",
+      "parentUuid": "9628cde0_2eebfa6b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "9a5af59e10a8750e517011d9b4f70a09617cf3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
